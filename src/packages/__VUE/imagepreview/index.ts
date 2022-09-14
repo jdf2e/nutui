@@ -1,6 +1,6 @@
 import ImagePreview from './index.vue';
 import { render, createVNode, h } from 'vue';
-import { ImageInterface } from './types'
+import { ImageInterface } from './types';
 export class ImagePreviewOptions {
   show: Boolean = false;
   images: ImageInterface[] = [];

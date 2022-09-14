@@ -1,21 +1,24 @@
-# Progress
+# Invoice
 
 ### Intro
 
-Used to show the current progress of the operation.
+
+Display the application invoice page.
 
 ### Install
 
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { Progress,Icon } from '@nutui/nutui';
+import { Invoice,Form,FormItem,Button } from '@nutui/nutui';
 //taro
-import { Progress,Icon } from '@nutui/nutui-taro';
+import { Invoice,Form,FormItem,Button } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Progress);
-app.use(Icon);
+app.use(Invoice);
+app.use(Form);
+app.use(FormItem);
+app.use(Button);
 
 ```
 
@@ -24,133 +27,143 @@ app.use(Icon);
 :::demo
 ```html
 <template>
-  <nut-cell>
-     <nut-progress percentage="30" />
-  </nut-cell>
+  <nut-invoice 
+    :data="data" 
+    :formValue="formValue" 
+    @onSubmit="submit"
+  >
+  </nut-invoice>
 </template>
-```
-:::
-### Custom Style
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
+  setup(){
+    // Promise 异步校验
+    const asyncValidator = (val: string) => {
+      return new Promise((resolve) => {
+        Toast.loading('模拟异步验证中...');
+        setTimeout(() => {
+          Toast.hide();
+          resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
+        }, 1000);
+      });
+    };
 
-:::demo
-```html
-<template>
-  <nut-cell>
-    <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
-   </nut-cell>
-</template>
-```
-:::
-### Don't  Show Percentage
-:::demo
-```html
-<template>
-  <nut-cell>
-     <nut-progress percentage="50" :show-text="false" stroke-height="24" />
-  </nut-cell>
-</template>
-```
-:::
-### Show Percentage
+    let data: any = ref([
+      {
+        type: 'radio',
+        label: '发票类型',
+        
+        radioLabel: [
+          {
+            label: '企业'
+          },
+          {
+            label: '个人或事业单位'
+          }
+        ],
+        formItemProp: 'type',
+        required: true
+      },
+      {
+        label: '发票抬头',
+        placeholder: '请输入发票抬头',
+        formItemProp: 'name',
+        rules: [{ required: true, message: '请输入发票抬头' }],
+        required: true
+      },
+      {
+        label: '纳税人识别号',
+        placeholder: '请输入纳税人识别号',
+        formItemProp: 'num',
+        rules: [{ message: '请输入纳税人识别号' }],
+      },
+      {
+        label: '注册地址',
+        placeholder: '请输入注册地址',
+        formItemProp: 'adress',
+        rules: [{ required: true, message: '请输入地址' }],
+        required: true
+      },
+      {
+        label: '注册电话',
+        placeholder: '请输入注册电话',
+        formItemProp: 'tel',
+        rules: [
+          { required: true, message: '请输入联系电话' },
+          { validator: asyncValidator, message: '电话格式不正确' }
+        ],
+        required: true
+      },
+      {
+        label: '开户行',
+        placeholder: '请输入开户行',
+        formItemProp: 'bank'
+      },
+      {
+        label: '银行账户',
+        placeholder: '请输入银行账户',
+        formItemProp: 'account'
+      }
+    ]);
 
-:::demo
-```html
-<template>
-  <nut-cell>
-     <nut-progress percentage="30" />
-  </nut-cell>
-</template>
-```
-:::
+    const formValue = reactive({
+      type: '企业',
+      name: '',
+      num: '',
+      adress: '',
+      tel: '',
+      address: '',
+      bank: '',
+      account: ''
+    });
 
-### Text Inside
-:::demo
-```html
-<template>
-     <nut-cell>
-        <nut-progress percentage="60" :text-inside="true" />
-      </nut-cell>
-</template>
-```
-:::
-### Custom Content
-:::demo
-```html
-<template>
-     <nut-cell>
-        <nut-progress percentage="60" :text-inside="true">
-          <nut-icon
-            style="display: block"
-            size="30"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          ></nut-icon>
-        </nut-progress>
-      </nut-cell>
-</template>
-```
-:::
+    const submit = (valid: boolean, errors: []) => {
+      if (valid) {
+        console.log('success', formValue);
+      } else {
+        console.log('error submit!!', errors);
+      }
+    };
 
-## Custom Size
-
- **small**，**base**，**large** .
-:::demo
-```html
-<template>
-  <nut-cell>
-        <nut-progress percentage="30" :text-inside="true" size="small"> </nut-progress>
-      </nut-cell>
-      <nut-cell>
-        <nut-progress percentage="50" :text-inside="true" size="base"> </nut-progress>
-      </nut-cell>
-      <nut-cell>
-        <nut-progress percentage="70" :text-inside="true" size="large"> </nut-progress>
-      </nut-cell>
-</template>
-```
-:::
-### Status Display
-:::demo
-```html
-<template>
-   <div>
-      <nut-cell>
-        <nut-progress
-          percentage="30"
-          stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-          status="active"
-        />
-      </nut-cell>
-      <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
-      </nut-cell>
-      <nut-cell>
-        <nut-progress
-          percentage="100"
-          stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-          stroke-width="15"
-          status="icon"
-          icon-name="issue"
-          icon-color="red"
-        />
-      </nut-cell>
-    </div>
-</template>
+    return {
+      translate,
+      data,
+      formValue,
+      submit,
+      asyncValidator
+    };
+  }
+}
+</script>
 ```
 :::
 
-## Prop
+## Props
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | percentage | Number | 0
-| is-show-percentage | Whether to display the percent sign | Boolean | true
-| stroke-color |Stroke color | String | #f30
-| stroke-width |Stroke width | String | ''
-| size | Progress bar and text size, small/base/large | String | -
-| show-text | Whether to show text | Boolean | true
-| text-inside | Progress bar text display position(false:outside，true:Inside) | Boolean | false
-| text-color | Progress bar text color setting | String | #333
-| text-background | Progress bar text background color setting | String | Same progress bar color
-| status | The current state of the progress bar,active(show animation)/icon(show icon) | String | text
-| icon-name | Icon Name | String | checked
-| icon-color | Icon Color | String | #439422
+| data | Invoice data | array | []
+| formValue | Form data object (required when using form verification) | object | -
+| submit | Whether to show the submit button | boolean | true
+
+## Data Props
+
+
+The optional attributes are as follows:
+
+| Attribute | Description | Type 
+|----- | ----- | ----- 
+| type  | Type, eg `input`、`radio` | string                                 |
+| label  | Label         | string                                 |
+| placeholder   | Input placeholder           | string                                  |
+| radio-label   | Radio label           | string                                  |
+| form-item-prop | The v-model field of the form field is required | string | -
+| rules | Check rules，[Refer to FormItem Rule data structure](#/form) | array | []
+| required | Is it a required field | Boolean | `false`
+
+### Events
+
+| Event   | Description      | Arguments    |
+|--------|----------------|-------------|
+| on-submit| Method of submitting form for verification  | Promise  |

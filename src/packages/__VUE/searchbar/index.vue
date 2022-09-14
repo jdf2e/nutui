@@ -27,14 +27,14 @@
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
-            :style="(styleSearchbar as CSSProperties)"
+            :style="styleSearchbar"
           />
         </form>
         <view
           @click="handleClear"
           class="nut-searchbar__input-clear"
           v-if="clearable"
-          v-show="(modelValue as string).length > 0"
+          v-show="String(modelValue).length > 0"
         >
           <nut-icon :name="clearIcon" size="12" color="#555"></nut-icon>
         </view>
@@ -207,9 +207,10 @@ export default create({
     };
 
     const styleSearchbar = computed(() => {
-      return {
-        textAlign: props.inputAlign
+      const style: CSSProperties = {
+        textAlign: props.inputAlign as import('./type').TextAlign
       };
+      return style;
     });
     const inputsearch: Ref<HTMLElement | null> = ref(null);
     onMounted(() => {
