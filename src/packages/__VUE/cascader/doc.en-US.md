@@ -14,9 +14,9 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader)
-.use(Tabs)
-.use(TabPane);
+app.use(Cascader);
+app.use(Tabs);
+app.use(TabPane);
 ```
 
 ### Basic Usage
@@ -441,4 +441,4 @@ export default {
 | Event      | Description                               | Arguments          |
 |------------|-------------------------------------------|--------------------|
 | change     | Triggered when the selected value changes | (value, pathNodes) |
-| pathChange | Triggered when the selected item changes  | (pathNodes)        |
+| path-change | Triggered when the selected item changes  | (pathNodes)        |
