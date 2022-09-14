@@ -12,8 +12,8 @@
     </nut-cell>
     <view class="title">{{ translate('title2') }}</view>
     <nut-cell>
-      <nut-trendarrow :digits="0" :rate="10.2365" />
-      <nut-trendarrow :digits="0" :rate="-0.2535" />
+      <nut-trendarrow :digits="1" :rate="10.2365" />
+      <nut-trendarrow :digits="3" :rate="-0.2535" />
     </nut-cell>
     <view class="title">{{ translate('title3') }}</view>
     <nut-cell>
@@ -42,12 +42,20 @@
         drop-color="rgb(255, 190, 13)"
       />
     </nut-cell>
+    <view class="title">{{ translate('title7') }}</view>
+    <nut-cell>
+      <nut-trendarrow :rate="10.2365" :up-icon-name="'success'" />
+      <nut-trendarrow :rate="-10.2365" :down-icon-name="'failure'" />
+      <nut-trendarrow :rate="10.2365">
+        <nut-icon name="heart-fill" color="#fa2c19" size="12px"></nut-icon>
+      </nut-trendarrow>
+    </nut-cell>
   </div>
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('trendarrow');
-import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+import { reactive, toRefs, getCurrentInstance, onMounted, ref } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -58,7 +66,8 @@ const initTranslate = () =>
       title3: '箭头在前面',
       title4: '显示正负号',
       title5: '是否展示0',
-      title6: '自定义颜色'
+      title6: '自定义颜色',
+      title7: '自定义图标'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -67,7 +76,8 @@ const initTranslate = () =>
       title3: 'Arrow ahead',
       title4: 'show sign',
       title5: 'Whether to show 0',
-      title6: 'Custom color'
+      title6: 'Custom color',
+      title7: 'Custom icon'
     }
   });
 export default createDemo({

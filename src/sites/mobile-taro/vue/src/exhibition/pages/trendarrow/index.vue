@@ -12,8 +12,8 @@
     </nut-cell>
     <view class="title">指定小数位</view>
     <nut-cell>
-      <nut-trendarrow :digits="0" :rate="10.2365" />
-      <nut-trendarrow :digits="0" :rate="-0.2535" />
+      <nut-trendarrow :digits="3" :rate="10.2365" />
+      <nut-trendarrow :digits="1" :rate="-0.2535" />
     </nut-cell>
     <view class="title">箭头在前面</view>
     <nut-cell>
@@ -41,6 +41,14 @@
         text-color="rgb(39,197,48)"
         drop-color="rgb(255, 190, 13)"
       />
+    </nut-cell>
+    <view class="title">自定义图标</view>
+    <nut-cell>
+      <nut-trendarrow :rate="10.2365" :up-icon-name="'success'" />
+      <nut-trendarrow :rate="-10.2365" :down-icon-name="'failure'" />
+      <nut-trendarrow :rate="10.2365">
+        <nut-icon name="heart-fill" color="#fa2c19" size="12px"></nut-icon>
+      </nut-trendarrow>
     </nut-cell>
   </div>
 </template>

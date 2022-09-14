@@ -140,3 +140,11 @@ app.use(TrendArrow);
 | rise-color         | up arrow color               | String | '#fa2c19'               |
 | drop-color         | down arrow color               | String | ‘#64b578’               |
 | icon-size         | arrow size               | String | '12px'               |
+| up-icon-name         | custom up arrow icon               | String | 'triangle-up'               |
+| down-icon-name         | custom down arrow icon               | String | 'triangle-down'               |
+
+### Slots
+
+| Name    | Description         |
+|---------|--------------|
+| default | 	The default slot is used to customize the icon |

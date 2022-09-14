@@ -1,20 +1,19 @@
 <template>
   <view :class="classes" @click="handleClick">
-    <nut-icon
-      v-if="arrowLeft && Number(rate) !== 0"
-      class="nut-trendarrow-icon-before"
-      :size="calcIconProps.size"
-      :name="calcIconProps.name"
-      :color="calcIconProps.color"
-    />
-    <span :style="calcStyle" class="nut-trendarrow-rate">{{ calcRate }}</span
-    ><nut-icon
-      v-if="!arrowLeft && Number(rate) !== 0"
-      class="nut-trendarrow-icon-after"
-      :size="calcIconProps.size"
-      :name="calcIconProps.name"
-      :color="calcIconProps.color"
-    />
+    <span v-if="!arrowLeft" class="nut-trendarrow-icon-before nut-trendarrow-rate" :style="calcStyle">{{
+      calcRate
+    }}</span>
+    <slot>
+      <nut-icon
+        v-if="Number(rate) !== 0"
+        :size="calcIconProps.size"
+        :name="calcIconProps.name"
+        :color="calcIconProps.color"
+      />
+    </slot>
+    <span v-if="arrowLeft" class="nut-trendarrow-icon-after nut-trendarrow-rate" :style="calcStyle">{{
+      calcRate
+    }}</span>
   </view>
 </template>
 <script lang="ts">
@@ -64,6 +63,14 @@ export default create({
     iconSize: {
       type: String,
       default: '12px'
+    },
+    upIconName: {
+      type: String,
+      default: 'triangle-up'
+    },
+    downIconName: {
+      type: String,
+      default: 'triangle-down'
     }
   },
 
@@ -71,7 +78,6 @@ export default create({
     const state = reactive({
       rateTrend: props.rate > 0 ? true : false
     });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -100,10 +106,10 @@ export default create({
       return style;
     });
     const calcIconProps = computed(() => {
-      const { dropColor, riseColor, iconSize } = props;
+      const { dropColor, riseColor, iconSize, upIconName, downIconName } = props;
 
       let iconProps = {
-        name: state.rateTrend ? 'triangle-up' : 'triangle-down',
+        name: state.rateTrend ? upIconName : downIconName,
         color: state.rateTrend ? riseColor : dropColor,
         size: iconSize
       };

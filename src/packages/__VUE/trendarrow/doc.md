@@ -141,4 +141,12 @@ app.use(TrendArrow);
 | rise-color         | 向上箭头颜色               | String | '#fa2c19'               |
 | drop-color         | 向下箭头颜色               | String | ‘#64b578’               |
 | icon-size         | 箭头大小               | String | '12px'               |
+| up-icon-name         | 自定义向上箭头icon               | String | 'triangle-up'               |
+| down-icon-name         | 自定义向下箭头icon               | String | 'triangle-down'               |
 
+
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| default | 	默认slot，用以自定义Icon内容 |
