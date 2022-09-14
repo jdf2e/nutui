@@ -56,7 +56,6 @@
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-// import { TextAlignProperty } from 'csstype';
 const { create, translate } = createComponent('searchbar');
 // interface Events {
 //   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
@@ -209,7 +208,7 @@ export default create({
 
     const styleSearchbar = computed(() => {
       const style: CSSProperties = {
-        textAlign: props.inputAlign
+        textAlign: props.inputAlign as import('./type').TextAlign
       };
       return style;
     });
