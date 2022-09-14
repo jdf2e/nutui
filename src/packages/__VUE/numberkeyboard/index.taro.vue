@@ -33,7 +33,7 @@
                 { delete: item.type == 'delete' }
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
-              @touchmove="(event) => onTouchMove(item, event)"
+              @touchmove="(event) => onTouchMove(event)"
               @touchend="onTouchEnd"
             >
               <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
@@ -53,7 +53,7 @@
             <div
               :class="['key', { active: clickKeyIndex == 'delete' }]"
               @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
-              @touchmove="(event) => onTouchMove({ id: 'delete', type: 'delete' }, event)"
+              @touchmove="(event) => onTouchMove(event)"
               @touchend="onTouchEnd"
             >
               <img
@@ -121,7 +121,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    const clickKeyIndex = ref(undefined);
+    const clickKeyIndex: Ref<string | undefined> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
@@ -190,7 +190,7 @@ export default create({
       }
     );
 
-    function onTouchstart(item: any, event: any) {
+    function onTouchstart(item: { id: string; type: string }, event: TouchEvent) {
       event.stopPropagation();
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
@@ -207,7 +207,7 @@ export default create({
         emit('update:value', props.value.slice(0, props.value.length - 1));
       }
     }
-    function onTouchMove(id: any, event: any) {
+    function onTouchMove(event: TouchEvent) {
       event.stopPropagation();
     }
     function onTouchEnd() {
@@ -217,8 +217,6 @@ export default create({
     function closeBoard() {
       emit('close');
     }
-
-    onMounted(() => {});
     return {
       clickKeyIndex,
       defaultKey,

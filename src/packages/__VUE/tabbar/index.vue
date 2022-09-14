@@ -45,7 +45,7 @@ export default create({
       val: props.visible,
       children: []
     });
-    function changeIndex(index: number, active: any) {
+    function changeIndex(index: number, active: number | string) {
       emit('update:visible', active);
       parentData.modelValue = active;
       emit('tab-switch', parentData.children[index], active);
