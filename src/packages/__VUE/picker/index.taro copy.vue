@@ -19,7 +19,7 @@
         }}</view>
       </view>
       <slot name="top"></slot>
-      <view class="nut-picker__column" v-if="false">
+      <view class="nut-picker__column">
         <view class="nut-picker__hairline" ref="pickerline" :id="'pickerline' + refRandomId"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
@@ -40,23 +40,6 @@
           ></nut-picker-column>
         </view>
       </view>
-
-      <picker-view
-        indicator-style="height: 34px;"
-        :value="defaultValuesConvert"
-        style="width: 100%; height: 252px"
-        @change="tileChange"
-      >
-        <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
-          <view
-            class="nut-picker-roller-item-tile"
-            v-for="(item, index) in column"
-            :key="item.value ? item.value : index"
-          >
-            {{ item.text }}
-          </view>
-        </picker-view-column>
-      </picker-view>
       <slot name="default"></slot>
     </nut-popup>
   </view>
@@ -238,36 +221,6 @@ export default create({
       }
     };
 
-    const defaultValuesConvert = computed(() => {
-      let defaultIndexs = [];
-      if (defaultValues.value.length > 0) {
-        defaultValues.value.forEach((value, index) => {
-          for (let i = 0; i < columnsList.value[index].length; i++) {
-            if (columnsList.value[index][i].value == value) {
-              defaultIndexs.push(i);
-              break;
-            }
-          }
-        });
-      }
-
-      return defaultIndexs;
-    });
-
-    // 平铺展示时，滚动选择
-    const tileChange = ({ detail }) => {
-      const prevDefaultValue = defaultValuesConvert.value;
-      let changeIndex = 0;
-      // 判断变化的是第几个
-      detail.value.forEach((col, index) => {
-        if (prevDefaultValue[index] != col) changeIndex = index;
-      });
-
-      console.log('选择', changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
-      // 选择的是哪个 option
-      changeHandler(changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
-    };
-
     const confirmHandler = () => {
       pickerColumn.value.length > 0 &&
         pickerColumn.value.forEach((column) => {
@@ -280,7 +233,7 @@ export default create({
           selectedOptions.value.push(columns[0]);
         });
       }
-      console.log('确定', defaultValues.value);
+
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value
@@ -291,8 +244,8 @@ export default create({
     const refRandomId = Math.random().toString(36).slice(-8);
 
     const getReference = async () => {
-      // const refe = await useTaroRect(pickerline, Taro);
-      // state.lineSpacing = refe.height ? refe.height : 36;
+      const refe = await useTaroRect(pickerline, Taro);
+      state.lineSpacing = refe.height ? refe.height : 36;
     };
 
     onMounted(() => {
@@ -365,9 +318,7 @@ export default create({
       pickerColumn,
       swipeRef,
       refRandomId,
-      pickerline,
-      tileChange,
-      defaultValuesConvert
+      pickerline
     };
   }
 });

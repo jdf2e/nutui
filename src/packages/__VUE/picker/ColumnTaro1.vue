@@ -3,6 +3,7 @@
     <view
       class="nut-picker-roller"
       ref="roller"
+      :id="'roller' + refRandomId"
       :style="threeDimensional ? touchRollerStyle : touchTileStyle"
       @transitionend="stopMomentum"
     >
@@ -23,24 +24,26 @@
       </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <!-- 3D 效果 时使用 -->
-    <view class="nut-picker-content" v-if="threeDimensional"
-      ><view class="nut-picker-list-panel" ref="list" :style="touchTileStyle"></view
-    ></view>
   </view>
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { PickerColumnOption, PickerOption, TouchParams } from './types';
+import { PickerOption, TouchParams } from './types';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
+import Taro from '@tarojs/taro';
 
 export default create({
   props: {
     // 当前选中项
     value: [String, Number],
     columnsType: String,
+    lineSpacing: {
+      type: Number,
+      default: 36
+    },
     itemShow: {
       type: Boolean,
       default: false
@@ -58,6 +61,7 @@ export default create({
       type: Boolean,
       default: true
     },
+    // 惯性滚动 时长
     swipeDuration: {
       type: [Number, String],
       default: 1000
@@ -67,8 +71,8 @@ export default create({
   emits: ['click', 'change'],
   setup(props, { emit }) {
     const touch: any = useTouch();
-
-    const wrapper = ref();
+    const wrapper = ref<HTMLElement>();
+    const itemref = ref();
     const state = reactive({
       touchParams: {
         startY: 0,
@@ -78,21 +82,21 @@ export default create({
         lastY: 0,
         lastTime: 0
       },
-
       currIndex: 1,
       transformY: 0,
-      scrollDistance: 0, // 滚动的距离
-      lineSpacing: 36,
+      scrollDistance: 0,
       rotation: 20,
       timer: null
     });
 
     const roller = ref(null);
     const list = ref(null);
+    const listitem = ref(null);
 
     const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
     const touchTime = ref(0);
+    const touchTranslateY = ref(0);
 
     const DEFAULT_DURATION = 200;
 
@@ -102,13 +106,6 @@ export default create({
     const INERTIA_TIME = 300;
     const INERTIA_DISTANCE = 15;
 
-    const touchRollerStyle = computed(() => {
-      return {
-        transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-        transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
-      };
-    });
-
     const touchTileStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
@@ -116,20 +113,26 @@ export default create({
       };
     });
 
+    const touchRollerStyle = computed(() => {
+      return {
+        transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
+        transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
+      };
+    });
     const setRollerStyle = (index: number) => {
       return `transform: rotate3d(1, 0, 0, ${-state.rotation * index}deg) translate3d(0px, 0px, 104px)`;
     };
 
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
-
       if (moving.value) {
         let dom = list.value as any;
         if (!props.threeDimensional) {
           dom = roller.value as any;
         }
+
         const { transform } = window.getComputedStyle(dom);
-        state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
+        state.scrollDistance = +parseInt(transform.split(', ')[1]);
       }
 
       state.touchParams.startY = touch.deltaY.value;
@@ -140,7 +143,7 @@ export default create({
     const onTouchMove = (event: TouchEvent) => {
       touch.move(event);
 
-      if ((touch as any).isVertical()) {
+      if ((touch as any).isVertical) {
         moving.value = true;
         preventDefault(event, true);
       }
@@ -203,25 +206,24 @@ export default create({
         touchTime.value = 0;
       }
       touchDeg.value = deg as number;
+      touchTranslateY.value = translateY;
       state.scrollDistance = translateY;
     };
 
     const setMove = (move: number, type?: string, time?: number) => {
       let updateMove = move + state.transformY;
-
       if (type === 'end') {
         // 限定滚动距离
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
-          updateMove = -(props.column.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * props.lineSpacing) {
+          updateMove = -(props.column.length - 1) * props.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
-        let endMove = Math.round(updateMove / state.lineSpacing) * state.lineSpacing;
-        let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
-
+        let endMove = Math.round(updateMove / props.lineSpacing) * props.lineSpacing;
+        let deg = `${(Math.abs(Math.round(endMove / props.lineSpacing)) + 1) * state.rotation}deg`;
         setTransform(endMove, type, time, deg);
 
         // let t = time ? time / 2 : 0;
@@ -229,10 +231,10 @@ export default create({
         //   setChooseValue();
         // }, t);
 
-        state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
+        state.currIndex = Math.abs(Math.round(endMove / props.lineSpacing)) + 1;
       } else {
         let deg = 0;
-        let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
+        let currentDeg = (-updateMove / props.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
@@ -242,7 +244,7 @@ export default create({
 
         if (minDeg < deg && deg < maxDeg) {
           setTransform(updateMove, null, undefined, deg + 'deg');
-          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+          state.currIndex = Math.abs(Math.round(updateMove / props.lineSpacing)) + 1;
         }
       }
     };
@@ -256,7 +258,7 @@ export default create({
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
-      let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
+      let move = index === -1 ? 0 : (index as number) * props.lineSpacing;
       type && setChooseValue();
       setMove(-move);
     };
@@ -304,23 +306,28 @@ export default create({
     );
 
     onMounted(() => {
-      modifyStatus(true);
+      modifyStatus(false);
     });
+
+    const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
       ...toRefs(state),
       ...toRefs(props),
       wrapper,
+      itemref,
       setRollerStyle,
       isHidden,
       roller,
       list,
+      listitem,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
-      touchRollerStyle,
       touchTileStyle,
+      touchRollerStyle,
       setMove,
+      refRandomId,
       stopMomentum
     };
   }
