@@ -148,7 +148,20 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      text-align: center;
+    }
+
+    &-item-tarotile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: $picker-item-text-color;
+      font-size: $picker-item-text-font-size;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 

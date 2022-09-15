@@ -22,13 +22,16 @@
 
       <picker-view
         indicator-style="height: 34px;"
-        :value="defaultValuesConvert"
+        :value="defaultIndexes"
         style="width: 100%; height: 252px"
+        :immediate-change="true"
         @change="tileChange"
+        @pickstart="handlePickstart"
+        @pickend="handlePickend"
       >
         <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <view
-            class="nut-picker-roller-item-tile"
+            class="nut-picker-roller-item-tarotile"
             v-for="(item, index) in column"
             :key="item.value ? item.value : index"
           >
@@ -44,14 +47,9 @@
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
-import column from './ColumnTaro.vue';
-import { useTaroRect } from '@/packages/utils/useTaroRect';
-import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('picker');
 export default create({
-  components: {
-    [column.name]: column
-  },
+  components: {},
   props: {
     ...popupProps,
     modelValue: {
@@ -83,7 +81,7 @@ export default create({
     // 是否开启3D效果
     threeDimensional: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 惯性滚动 时长
     swipeDuration: {
@@ -96,21 +94,13 @@ export default create({
     const state = reactive({
       show: false,
       formattedColumns: props.columns as import('./types').PickerOption[],
-      lineSpacing: 36
+      picking: false
     });
-
-    const pickerline = ref(null);
 
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
-
-    const pickerColumn = ref<any[]>([]);
-
-    const swipeRef = (el: any) => {
-      if (el && pickerColumn.value.length < columnsList.value.length) {
-        pickerColumn.value.push(el);
-      }
-    };
+    // 选中项的位置
+    let defaultIndexes = ref<number[]>([]);
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -144,6 +134,7 @@ export default create({
       }
       return 'single';
     });
+
     // 将传入的 columns 格式化
     const columnsList = computed(() => {
       switch (columnsType.value) {
@@ -181,6 +172,7 @@ export default create({
       return formatted;
     };
 
+    // 关闭
     const close = () => {
       emit('close', {
         selectedValue: defaultValues.value,
@@ -189,6 +181,7 @@ export default create({
       emit('update:visible', false);
     };
 
+    // 选择
     const changeHandler = (columnIndex: number, option: import('./types').PickerOption) => {
       if (option && Object.keys(option).length) {
         if (columnsType.value === 'cascade') {
@@ -235,24 +228,34 @@ export default create({
 
     // 平铺展示时，滚动选择
     const tileChange = ({ detail }) => {
-      const prevDefaultValue = defaultValuesConvert.value;
+      console.log('选择');
+      const prevDefaultValue = defaultIndexes.value;
       let changeIndex = 0;
       // 判断变化的是第几个
       detail.value.forEach((col, index) => {
         if (prevDefaultValue[index] != col) changeIndex = index;
       });
 
-      console.log('选择', changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
-      // 选择的是哪个 option
-      changeHandler(changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
+      if (state.show) {
+        defaultIndexes.value = detail.value;
+        // 选择的是哪个 option
+        changeHandler(changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
+      }
     };
 
+    // 确定
     const confirmHandler = () => {
-      pickerColumn.value.length > 0 &&
-        pickerColumn.value.forEach((column) => {
-          column.stopMomentum();
-        });
+      if (state.picking) {
+        console.log('滚动中');
+        setTimeout(() => {
+          confirmHandlerAwit();
+        }, 0);
+      } else {
+        confirmHandlerAwit();
+      }
+    };
 
+    const confirmHandlerAwit = () => {
       if (defaultValues.value && !defaultValues.value.length) {
         columnsList.value.forEach((columns) => {
           defaultValues.value.push(columns[0].value);
@@ -265,26 +268,26 @@ export default create({
         selectedOptions: selectedOptions.value
       });
       emit('update:visible', false);
+
+      state.show = false;
     };
 
-    const refRandomId = Math.random().toString(36).slice(-8);
-
-    const getReference = async () => {
-      // const refe = await useTaroRect(pickerline, Taro);
-      // state.lineSpacing = refe.height ? refe.height : 36;
+    // 开始滚动
+    const handlePickstart = () => {
+      console.log('开始滚动');
+      state.picking = true;
+    };
+    // 开始滚动
+    const handlePickend = () => {
+      console.log('滚动结束');
+      state.picking = false;
     };
 
     onMounted(() => {
-<<<<<<< HEAD
-      if (props.visible) state.show = props.visible;
-=======
       if (props.visible) {
-        setTimeout(() => {
-          getReference();
-        }, 200);
         state.show = props.visible;
+        defaultIndexes.value = defaultValuesConvert.value;
       }
->>>>>>> next
     });
 
     onBeforeUnmount(() => {
@@ -297,6 +300,7 @@ export default create({
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
+          defaultIndexes.value = defaultValuesConvert.value;
         }
       },
       { deep: true }
@@ -317,18 +321,9 @@ export default create({
       () => props.visible,
       (val) => {
         state.show = val;
-<<<<<<< HEAD
-        console.log(defaultValues.value);
-        if (val) pickerColumn.value = [];
-=======
         if (val) {
-          setTimeout(() => {
-            getReference();
-          }, 200);
-
-          pickerColumn.value = [];
+          defaultIndexes.value = defaultValuesConvert.value;
         }
->>>>>>> next
       }
     );
 
@@ -342,24 +337,17 @@ export default create({
     return {
       classes,
       ...toRefs(state),
-      column,
       columnsType,
       columnsList,
       close,
-      changeHandler,
       confirmHandler,
       defaultValues,
+      defaultIndexes,
       translate,
-      pickerColumn,
-<<<<<<< HEAD
-      swipeRef
-=======
-      swipeRef,
-      refRandomId,
-      pickerline,
       tileChange,
-      defaultValuesConvert
->>>>>>> next
+      defaultValuesConvert,
+      handlePickstart,
+      handlePickend
     };
   }
 });
