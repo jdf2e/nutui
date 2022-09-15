@@ -216,8 +216,8 @@ export default create({
     const markClassName = (mark: any) => {
       const classPrefix = 'nut-range-mark';
       const { modelValue, max, min } = props;
-      let lowerBound: any = Number(min);
-      let upperBound: any = Number(max);
+      let lowerBound: number = Number(min);
+      let upperBound: number | number[] = Number(max);
       if (props.range) {
         const [left, right] = modelValue as any;
         lowerBound = left;
@@ -231,7 +231,7 @@ export default create({
         [`${classPrefix}-text-active`]: isActive
       };
     };
-    const marksStyle = (mark: any) => {
+    const marksStyle = (mark: number) => {
       const { max, min, vertical } = props;
       let style: any = {
         left: `${((mark - Number(min)) / scope.value) * 100}%`
@@ -243,10 +243,10 @@ export default create({
       }
       return style;
     };
-    const tickStyle = (mark: any) => {
+    const tickStyle = (mark: number) => {
       const { modelValue, max, min } = props;
-      let lowerBound: any = Number(min);
-      let upperBound: any = Number(max);
+      let lowerBound: number = Number(min);
+      let upperBound: number = Number(max);
       if (props.range) {
         const [left, right] = modelValue as any;
         lowerBound = left;
@@ -300,8 +300,6 @@ export default create({
       const rect = await useTaroRect(root, Taro);
       let delta = (event as any).touches[0].clientX - rect.left;
       let total = rect.width;
-      console.log(delta);
-      console.log(total);
       if (props.vertical) {
         delta = (event as any).touches[0].clientY - rect.top;
         total = rect.height;

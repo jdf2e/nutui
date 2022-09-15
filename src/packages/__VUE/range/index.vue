@@ -211,13 +211,13 @@ export default create({
         };
       }
     });
-    const markClassName = (mark: any) => {
+    const markClassName = (mark: number) => {
       const classPrefix = 'nut-range-mark';
       const { modelValue, max, min } = props;
-      let lowerBound: any = Number(min);
-      let upperBound: any = Number(max);
+      let lowerBound: number = Number(min);
+      let upperBound: number | number[] = Number(max);
       if (props.range) {
-        const [left, right] = modelValue as any;
+        const [left, right] = modelValue as number[];
         lowerBound = left;
         upperBound = right;
       } else {
@@ -229,9 +229,9 @@ export default create({
         [`${classPrefix}-text-active`]: isActive
       };
     };
-    const marksStyle = (mark: any) => {
+    const marksStyle = (mark: number) => {
       const { max, min, vertical } = props;
-      let style: any = {
+      let style: CSSProperties = {
         left: `${((mark - Number(min)) / scope.value) * 100}%`
       };
       if (vertical) {
@@ -241,17 +241,17 @@ export default create({
       }
       return style;
     };
-    const tickStyle = (mark: any) => {
+    const tickStyle = (mark: number) => {
       const { modelValue, max, min } = props;
-      let lowerBound: any = Number(min);
-      let upperBound: any = Number(max);
+      let lowerBound: number = Number(min);
+      let upperBound: number = Number(max);
       if (props.range) {
-        const [left, right] = modelValue as any;
+        const [left, right] = modelValue as number[];
         lowerBound = left;
         upperBound = right;
       }
       let isActive = mark <= upperBound && mark >= lowerBound;
-      let style: any = {
+      let style: CSSProperties = {
         background: !isActive ? props.inactiveColor : props.activeColor
       };
 
