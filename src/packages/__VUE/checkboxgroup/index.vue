@@ -31,7 +31,7 @@ export default create({
       }
     };
 
-    const updateValue = (value: any[]) => {
+    const updateValue = (value: string[]) => {
       emit('update:modelValue', value);
       emit('change', value);
     };

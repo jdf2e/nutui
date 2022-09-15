@@ -33,20 +33,7 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('ecard');
-
-interface props {
-  chooseText: string; // 选择文案
-  dataList: Array<any>; // 电子卡列表
-  cardAmountMin: number; // 其他面值最小值
-  cardAmountMax: number; // 其他面值最大值
-  cardBuyMin: number; // 其他面值最小值
-  cardBuyMax: number; // 其他面值最大值
-  modelValue: number; // 购买电子卡需花费的价钱
-  placeholder: string; //提示语
-  suffix: string; // 符号标示
-  otherValueText: string; // 其他面值
-}
+const { create, translate } = createComponent('ecard');
 
 export default create({
   props: {

@@ -93,7 +93,7 @@ export default create({
     }
   },
   emits: ['click-item', 'click-index'],
-  setup(props: any, context: any) {
+  setup(props, context) {
     const spaceHeight = 23;
     const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>;
     const state = reactive({
@@ -154,7 +154,7 @@ export default create({
       state.listHeight.push(height);
       for (let i = 0; i < state.listGroup.length; i++) {
         state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
-        state.query.exec((res: any) => {
+        state.query.exec((res) => {
           height += res[i][0].height;
           state.listHeight.push(height);
         });
