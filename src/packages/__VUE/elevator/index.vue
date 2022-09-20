@@ -78,7 +78,7 @@ export default create({
     }
   },
   emits: ['click-item', 'click-index'],
-  setup(props: any, context: any) {
+  setup(props, context) {
     const listview: Ref<any> = ref(null);
     const state = reactive({
       anchorIndex: 0,
