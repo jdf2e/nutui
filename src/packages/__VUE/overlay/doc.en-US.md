@@ -25,8 +25,8 @@ app.use(OverLay);
 
 ```html
 <template>
-<nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
-<nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
+  <nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
+  <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
@@ -53,8 +53,8 @@ It can be set through `overlay-style`
 
 ```html
 <template>
-<nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
-<nut-overlay v-model:visible="state.show" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
+  <nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
+  <nut-overlay v-model:visible="state.show" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
@@ -82,8 +82,8 @@ It can be set through `overlay-style`
 
 ```html
 <template>
-<nut-button type="success" @click="state.show2 = true">Nested content</nut-button>
-<nut-overlay v-model:visible="state.show2" :z-index="2000">
+  <nut-button type="success" @click="state.show2 = true">Nested content</nut-button>
+  <nut-overlay v-model:visible="state.show2" :z-index="2000">
   <div class="wrapper">
     <div class="content">Here is the text</div>
   </div>
