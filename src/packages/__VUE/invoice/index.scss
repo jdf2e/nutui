@@ -1,0 +1,33 @@
+.nut-theme-dark {
+  .nut-invoice {
+    .nut-invoice__submit {
+      background: $dark-background2;
+    }
+  }
+}
+
+.nut-invoice {
+  width: 100%;
+  position: relative;
+  .nut-cell {
+    align-items: baseline;
+  }
+  &__submit {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: $invoice-padding;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    box-sizing: border-box;
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
+  }
+  .nut-radio {
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 0;
+  }
+}

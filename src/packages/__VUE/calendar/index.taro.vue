@@ -28,6 +28,7 @@
       :end-text="endText"
       :show-today="showToday"
       :show-title="showTitle"
+      :to-date-animation="toDateAnimation"
       :show-sub-title="showSubTitle"
     >
       <template v-slot:btn v-if="showTopBtn">
@@ -62,6 +63,7 @@
     @select="select"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
+    :to-date-animation="toDateAnimation"
     :show-today="showToday"
   >
     <template v-slot:btn v-if="showTopBtn">
@@ -84,6 +86,8 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
 import Utils from '@/packages/utils/date';
+import { useExpose } from '@/packages/utils/useExpose/index';
+
 export default create({
   components: {
     [CalendarItem.name]: CalendarItem
@@ -96,6 +100,10 @@ export default create({
     isAutoBackFill: {
       type: Boolean,
       default: false
+    },
+    toDateAnimation: {
+      type: Boolean,
+      default: true
     },
     poppable: {
       type: Boolean,
@@ -162,7 +170,12 @@ export default create({
     let show = ref(props.visible);
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
-
+    const scrollToDate = (date: string) => {
+      calendarRef.value?.scrollToDate(date);
+    };
+    useExpose({
+      scrollToDate
+    });
     // methods
     const update = () => {
       show.value = false;

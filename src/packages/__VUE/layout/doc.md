@@ -88,7 +88,7 @@ app.use(Col);
 </style>
 ```
 :::
-### 设置元素间距
+### 分栏间隔
 :::demo
 ```html
 <template>

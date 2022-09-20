@@ -41,9 +41,9 @@
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }} </view>
-          </view>
 
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
+            <view :class="{ 'region-tab-line-mini': true, active: index == tabIndex }" ref="regionLine"></view>
+          </view>
         </view>
 
         <view class="region-con">
@@ -78,8 +78,8 @@
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
+            <view :class="{ 'region-tab-line-mini': true, active: index == tabIndex }"></view>
           </view>
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
         <view class="elevator-group">
           <nut-elevator
@@ -349,7 +349,6 @@ export default create({
             }
           }
         }
-        lineAnimation();
       }
     };
 
@@ -393,20 +392,7 @@ export default create({
     const clickOverlay = () => {
       closeWay.value = 'mask';
     };
-    // 移动下面的红线
-    const lineAnimation = () => {
-      setTimeout(() => {
-        Taro.createSelectorQuery()
-          .selectAll(`.${tabName.value[tabIndex.value]}`)
-          .boundingClientRect((rects) => {
-            // console.log(rects);
-            (rects as any).forEach((rect) => {
-              if (rect.width > 0) lineDistance.value = rect.left;
-            });
-          })
-          .exec();
-      }, 100);
-    };
+
     // 切换下一级列表
     const nextAreaList = (item: RegionData | string) => {
       // onchange 接收的参数
@@ -428,8 +414,6 @@ export default create({
       if (tabIndex.value < 3) {
         tabIndex.value = tabIndex.value + 1;
 
-        lineAnimation();
-
         // 切换下一个
         calBack.next = tabName.value[tabIndex.value];
         calBack.value = item as string;
@@ -443,7 +427,6 @@ export default create({
     const changeRegionTab = (item: RegionData, key: number, index: number) => {
       if (getTabName(item, index)) {
         tabIndex.value = index;
-        lineAnimation();
       }
     };
 
@@ -473,7 +456,6 @@ export default create({
         (selectedRegion as any)[tabName.value[i]] = {};
       }
       tabIndex.value = 0;
-      lineAnimation();
     };
 
     // 关闭

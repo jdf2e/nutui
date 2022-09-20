@@ -4,7 +4,7 @@
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
-    <view class="nut-searchbar__search-input" :style="inputSearchbarStyle">
+    <view class="nut-searchbar__search-input" :style="{ ...inputSearchbarStyle, ...focusCss }">
       <view
         v-if="$slots.leftin"
         class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon"
@@ -30,8 +30,13 @@
             :style="styleSearchbar"
           />
         </form>
-        <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
-          <nut-icon name="circle-close" size="12" color="#555"></nut-icon>
+        <view
+          @click="handleClear"
+          class="nut-searchbar__input-clear"
+          v-if="clearable"
+          v-show="String(modelValue).length > 0"
+        >
+          <nut-icon :name="clearIcon" size="12" color="#555"></nut-icon>
         </view>
       </view>
       <view
@@ -49,14 +54,13 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, onMounted, ref } from 'vue';
+import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { nextTick } from '@tarojs/taro';
 const { create, translate } = createComponent('searchbar');
-interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
-  params: (string | number | Event)[];
-}
+// interface Events {
+//   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
+//   params: (string | number | Event)[];
+// }
 export default create({
   props: {
     modelValue: {
@@ -83,6 +87,10 @@ export default create({
       type: Boolean,
       default: true
     },
+    clearIcon: {
+      type: String,
+      default: 'circle-close'
+    },
     background: {
       type: String,
       default: ''
@@ -90,6 +98,11 @@ export default create({
     inputBackground: {
       type: String,
       default: ''
+    },
+    focusStyle: {
+      type: Object,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      default: () => {}
     },
     autofocus: {
       type: Boolean,
@@ -148,10 +161,12 @@ export default create({
       emit('change', val, event);
     };
 
+    const focusCss = ref({});
     const valueFocus = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
       state.active = true;
+      focusCss.value = props.focusStyle;
       emit('focus', value, event);
     };
 
@@ -165,6 +180,7 @@ export default create({
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.slice(0, Number(props.maxLength));
       }
+      focusCss.value = {};
       emit('blur', value, event);
     };
 
@@ -190,15 +206,16 @@ export default create({
       emit('click-right-icon', props.modelValue, event);
     };
 
-    const styleSearchbar: any = computed(() => {
-      return {
-        'text-align': props.inputAlign
+    const styleSearchbar = computed(() => {
+      const style: CSSProperties = {
+        textAlign: props.inputAlign as import('./type').TextAlign
       };
+      return style;
     });
-    const inputsearch: any = ref(null);
+    const inputsearch: Ref<HTMLElement | null> = ref(null);
     onMounted(() => {
       if (props.autofocus) {
-        inputsearch.value.focus();
+        (inputsearch.value as HTMLElement).focus();
       }
     });
 
@@ -212,6 +229,7 @@ export default create({
       handleSubmit,
       searchbarStyle,
       inputSearchbarStyle,
+      focusCss,
       translate,
       clickInput,
       leftIconClick,

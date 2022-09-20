@@ -40,6 +40,7 @@
       "
       v-model:visible="show"
       :is-show-chinese="true"
+      :threeDimensional="false"
     ></nut-datepicker>
     <!-- 选择月日 -->
     <nut-datepicker

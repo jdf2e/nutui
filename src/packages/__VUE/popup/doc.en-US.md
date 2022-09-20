@@ -14,7 +14,8 @@ import { Popup,OverLay } from '@nutui/nutui';
 import { Popup,OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Popup).use(OverLay)
+app.use(Popup)
+app.use(OverLay)
 ```
 
 ### Basic Usage

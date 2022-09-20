@@ -24,9 +24,6 @@
       </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <view class="nut-picker-content" ref="listbox" :id="'listbox' + refRandomId" v-if="threeDimensional">
-      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchTileStyle"> </view>
-    </view>
   </view>
 </template>
 <script lang="ts">
@@ -43,6 +40,10 @@ export default create({
     // 当前选中项
     value: [String, Number],
     columnsType: String,
+    lineSpacing: {
+      type: Number,
+      default: 36
+    },
     itemShow: {
       type: Boolean,
       default: false
@@ -59,6 +60,11 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
 
@@ -79,7 +85,6 @@ export default create({
       currIndex: 1,
       transformY: 0,
       scrollDistance: 0,
-      lineSpacing: 36,
       rotation: 20,
       timer: null
     });
@@ -87,12 +92,13 @@ export default create({
     const roller = ref(null);
     const list = ref(null);
     const listitem = ref(null);
-    const listbox = ref(null);
 
     const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
     const touchTime = ref(0);
     const touchTranslateY = ref(0);
+
+    const DEFAULT_DURATION = 200;
 
     // 触发惯性滑动条件:
     // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
@@ -164,7 +170,7 @@ export default create({
       if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         // 惯性滚动
         const distance = momentum(move, moveTime);
-        setMove(distance, 'end', moveTime + 1000);
+        setMove(distance, 'end', +props.swipeDuration);
         return;
       } else {
         setMove(move, 'end');
@@ -193,7 +199,7 @@ export default create({
       }
     };
 
-    const setTransform = (translateY = 0, type: string | null, time = 1000, deg: string | number) => {
+    const setTransform = (translateY = 0, type: string | null, time = DEFAULT_DURATION, deg: string | number) => {
       if (type === 'end') {
         touchTime.value = time;
       } else {
@@ -211,13 +217,13 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
-          updateMove = -(props.column.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * props.lineSpacing) {
+          updateMove = -(props.column.length - 1) * props.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
-        let endMove = Math.round(updateMove / state.lineSpacing) * state.lineSpacing;
-        let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
+        let endMove = Math.round(updateMove / props.lineSpacing) * props.lineSpacing;
+        let deg = `${(Math.abs(Math.round(endMove / props.lineSpacing)) + 1) * state.rotation}deg`;
         setTransform(endMove, type, time, deg);
 
         // let t = time ? time / 2 : 0;
@@ -225,10 +231,10 @@ export default create({
         //   setChooseValue();
         // }, t);
 
-        state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
+        state.currIndex = Math.abs(Math.round(endMove / props.lineSpacing)) + 1;
       } else {
         let deg = 0;
-        let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
+        let currentDeg = (-updateMove / props.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
@@ -238,7 +244,7 @@ export default create({
 
         if (minDeg < deg && deg < maxDeg) {
           setTransform(updateMove, null, undefined, deg + 'deg');
-          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+          state.currIndex = Math.abs(Math.round(updateMove / props.lineSpacing)) + 1;
         }
       }
     };
@@ -252,7 +258,7 @@ export default create({
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
-      let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
+      let move = index === -1 ? 0 : (index as number) * props.lineSpacing;
       type && setChooseValue();
       setMove(-move);
     };
@@ -271,20 +277,17 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
+      touchTime.value = 0;
       setChooseValue();
-    };
-
-    const getReference = async () => {
-      const refe = await useTaroRect(listbox, Taro);
-      state.lineSpacing = refe.height ? refe.height : 36;
-      modifyStatus(true);
     };
 
     watch(
       () => props.column,
       (val) => {
-        state.transformY = 0;
-        modifyStatus(false);
+        if (props.column && props.column.length > 0) {
+          state.transformY = 0;
+          modifyStatus(false);
+        }
       },
       {
         deep: true
@@ -302,26 +305,8 @@ export default create({
       }
     );
 
-    watch(
-      () => props.itemShow,
-      (val) => {
-        if (val) {
-          setTimeout(() => {
-            getReference();
-          }, 200);
-        } else {
-          state.transformY = 0;
-        }
-      },
-      {
-        deep: true
-      }
-    );
-
     onMounted(() => {
-      setTimeout(() => {
-        getReference();
-      }, 200);
+      modifyStatus(false);
     });
 
     const refRandomId = Math.random().toString(36).slice(-8);
@@ -336,7 +321,6 @@ export default create({
       roller,
       list,
       listitem,
-      listbox,
       onTouchStart,
       onTouchMove,
       onTouchEnd,

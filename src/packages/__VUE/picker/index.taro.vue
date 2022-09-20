@@ -20,15 +20,18 @@
       </view>
       <slot name="top"></slot>
       <view class="nut-picker__column">
-        <view class="nut-picker__hairline"></view>
+        <view class="nut-picker__hairline" ref="pickerline" :id="'pickerline' + refRandomId"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
+            :ref="swipeRef"
             :itemShow="show"
             :column="column"
             :readonly="readonly"
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
             :threeDimensional="threeDimensional"
+            :swipeDuration="swipeDuration"
+            :lineSpacing="lineSpacing"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -46,6 +49,8 @@ import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRe
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
 import column from './ColumnTaro.vue';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
+import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('picker');
 export default create({
   components: {
@@ -83,17 +88,33 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
   setup(props, { emit }) {
     const state = reactive({
       show: false,
-      formattedColumns: props.columns as import('./types').PickerOption[]
+      formattedColumns: props.columns as import('./types').PickerOption[],
+      lineSpacing: 36
     });
+
+    const pickerline = ref(null);
 
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
+
+    const pickerColumn = ref<any[]>([]);
+
+    const swipeRef = (el: any) => {
+      if (el && pickerColumn.value.length < columnsList.value.length) {
+        pickerColumn.value.push(el);
+      }
+    };
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -201,6 +222,11 @@ export default create({
     };
 
     const confirmHandler = () => {
+      pickerColumn.value.length > 0 &&
+        pickerColumn.value.forEach((column) => {
+          column.stopMomentum();
+        });
+
       if (defaultValues.value && !defaultValues.value.length) {
         columnsList.value.forEach((columns) => {
           defaultValues.value.push(columns[0].value);
@@ -215,9 +241,20 @@ export default create({
       emit('update:visible', false);
     };
 
+    const refRandomId = Math.random().toString(36).slice(-8);
+
+    const getReference = async () => {
+      const refe = await useTaroRect(pickerline, Taro);
+      state.lineSpacing = refe.height ? refe.height : 36;
+    };
+
     onMounted(() => {
-      console.log('更新');
-      if (props.visible) state.show = props.visible;
+      if (props.visible) {
+        setTimeout(() => {
+          getReference();
+        }, 200);
+        state.show = props.visible;
+      }
     });
 
     onBeforeUnmount(() => {
@@ -250,6 +287,13 @@ export default create({
       () => props.visible,
       (val) => {
         state.show = val;
+        if (val) {
+          setTimeout(() => {
+            getReference();
+          }, 200);
+
+          pickerColumn.value = [];
+        }
       }
     );
 
@@ -270,7 +314,11 @@ export default create({
       changeHandler,
       confirmHandler,
       defaultValues,
-      translate
+      translate,
+      pickerColumn,
+      swipeRef,
+      refRandomId,
+      pickerline
     };
   }
 });

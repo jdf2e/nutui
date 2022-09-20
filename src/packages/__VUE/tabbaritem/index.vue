@@ -123,7 +123,7 @@ export default create({
       let key = props.name ?? state.index;
       let index = null;
       if (props.name) {
-        index = parent.children.findIndex((item: any) => {
+        index = parent.children.findIndex((item: { name: string | number }) => {
           return item.name == key;
         });
       }
@@ -139,24 +139,22 @@ export default create({
       state.active = value;
       let index = value;
       if (props.name) {
-        index = parent.children.findIndex((item: any) => {
+        index = parent.children.findIndex((item: { name: string | number }) => {
           return item.name == value;
         });
       }
-      setTimeout(() => {
-        if (parent.children[index].href) {
-          window.location.href = parent.children[index].href;
-          return;
+      if (parent.children[index]?.href) {
+        window.location.href = parent.children[index].href;
+        return;
+      }
+      if (parent.children[index]?.to) {
+        let to = parent.children[index].to;
+        if (to && router) {
+          router.push(to);
+        } else {
+          location.replace(to);
         }
-        if (parent.children[index].to) {
-          let to = parent.children[index].to;
-          if (to && router) {
-            router.push(to);
-          } else {
-            location.replace(to);
-          }
-        }
-      });
+      }
     });
     return {
       state,

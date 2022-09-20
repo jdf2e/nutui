@@ -224,6 +224,7 @@ Use the children field of the Columns attribute to cascade options
   <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model:visible="show"
+    v-model="selectedCascader"
     :columns="cascaderColumns"
     title="Choose City"
     @confirm="confirm"
@@ -236,6 +237,7 @@ Use the children field of the Columns attribute to cascade options
     setup(props) {
       const show = ref(false);
       const desc = ref('');
+      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
       const cascaderColumns = ref([
         {
           text: 'ZheJiang',
@@ -290,7 +292,7 @@ Use the children field of the Columns attribute to cascade options
         console.log(selectedValue);
       };
 
-      return {show,desc,cascaderColumns,change, confirm};
+      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
     }
   };
 </script>
@@ -428,6 +430,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | cancel-text            | Text of cancel button               | String  | cancel   |
 | ok-text                | Text of confirm button               | String  | confirm   |
 | three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
+| swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
 
 ### Data Structure of Columns
 

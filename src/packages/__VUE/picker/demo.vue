@@ -88,6 +88,7 @@
     ></nut-cell>
     <nut-picker
       v-model:visible="showCascader"
+      v-model="selectedCascader"
       :columns="cascaderColumns"
       :title="translate('chooseCity')"
       @confirm="(options) => confirm('cascader', options)"
@@ -129,25 +130,6 @@
     >
       <nut-button block type="primary" @click="alwaysFun">{{ translate('always') }}</nut-button></nut-picker
     >
-
-    <!-- <h2>异步获取</h2>
-    <nut-cell
-      :title="translate('validTime')"
-      :desc="effect"
-      @click="
-        () => {
-          showJK = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model:visible="showJK"
-      :columns="jkColumns"
-      :title="translate('chooseDate')"
-      @confirm="(options) => confirm('effect', options)"
-      @change="changeJK"
-    ></nut-picker
-    > -->
   </div>
 </template>
 <script lang="ts">
@@ -164,6 +146,7 @@ export default createDemo({
   setup() {
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
+    const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>([]);
     const columsNum = ref([]);
     const columns = computed(() => [
@@ -411,6 +394,7 @@ export default createDemo({
       alwaysFun,
       translate,
       selectedTime,
+      selectedCascader,
       columsNum,
       showTile,
       showJK,

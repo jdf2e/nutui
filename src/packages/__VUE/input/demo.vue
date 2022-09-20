@@ -1,11 +1,5 @@
 <template>
   <div class="demo full">
-    <!-- <h2>校验</h2>
-    <nut-form>
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-      <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
-    </nut-form-item>
-    </nut-form> -->
     <h2>{{ translate('basic') }}</h2>
     <nut-input v-model="state.val1" :label="translate('text')" :placeholder="translate('text')" />
 

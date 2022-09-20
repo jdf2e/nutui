@@ -4,10 +4,13 @@
     :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class]"
     :style="$attrs.style"
   >
-    <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
-      <slot name="label">
-        {{ label }}
-      </slot>
+    <view
+      class="nut-cell__title nut-form-item__label"
+      :style="labelStyle"
+      v-if="label || getSlots('label')"
+      :class="{ required: required }"
+    >
+      <slot name="label">{{ label }}</slot>
     </view>
     <view class="nut-cell__value nut-form-item__body">
       <view class="nut-form-item__body__slots" :style="bodyStyle">
@@ -73,9 +76,8 @@ export default create({
   components: {},
   emits: [''],
 
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const parent = inject('formErrorTip') as any;
-
     provide('form', {
       props
     });
@@ -96,8 +98,8 @@ export default create({
         textAlign: props.errorMessageAlign
       } as CSSProperties;
     });
-
-    return { parent, labelStyle, bodyStyle, errorMessageStyle };
+    const getSlots = (name: string) => slots[name];
+    return { parent, labelStyle, bodyStyle, errorMessageStyle, getSlots };
   }
 });
 </script>

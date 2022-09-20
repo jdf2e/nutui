@@ -57,6 +57,10 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
 
@@ -89,6 +93,8 @@ export default create({
     const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
     const touchTime = ref(0);
+
+    const DEFAULT_DURATION = 200;
 
     // 触发惯性滑动条件:
     // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
@@ -161,7 +167,7 @@ export default create({
       if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         // 惯性滚动
         const distance = momentum(move, moveTime);
-        setMove(distance, 'end', moveTime + 1000);
+        setMove(distance, 'end', +props.swipeDuration);
         return;
       } else {
         setMove(move, 'end');
@@ -190,7 +196,7 @@ export default create({
       }
     };
 
-    const setTransform = (translateY = 0, type: string | null, time = 1000, deg: string | number) => {
+    const setTransform = (translateY = 0, type: string | null, time = DEFAULT_DURATION, deg: string | number) => {
       if (type === 'end') {
         touchTime.value = time;
       } else {
@@ -269,7 +275,7 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
-
+      touchTime.value = 0;
       setChooseValue();
     };
 
