@@ -15,7 +15,9 @@ import { Comment,Icon,Rate } from '@nutui/nutui';
 import { Comment,Icon,Rate } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Comment).use(Icon).use(Rate);
+app.use(Comment);
+app.use(Icon);
+app.use(Rate);
 
 ```
 

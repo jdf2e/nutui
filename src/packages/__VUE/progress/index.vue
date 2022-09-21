@@ -101,7 +101,7 @@ export default create({
       default: true
     }
   },
-  setup(props, { emit }) {
+  setup(props) {
     const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');
     const progressOuter = ref();

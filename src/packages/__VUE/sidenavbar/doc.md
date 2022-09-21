@@ -14,7 +14,9 @@ import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui';
 import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(SideNavBar).use(SubSideNavBar).use(SideNavBarItem);
+app.use(SideNavBar);
+app.use(SubSideNavBar);
+app.use(SideNavBarItem);
 ```
 
 ### 基本用法

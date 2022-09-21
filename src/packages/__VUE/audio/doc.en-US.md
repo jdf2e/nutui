@@ -228,10 +228,10 @@ export default {
 
 | Attribute            | Description               | CallBack   |
 |--------|----------------|--------------|
-| fastBack  | Emitted when audio back | play time（millisecond） |
+| fast-back  | Emitted when audio back | play time（millisecond） |
 | forward  | Emitted when audio forward | play time（millisecond） |
 | play  | Emitted when audio play or pause | play status |
 | ended  | Emitted when audio ended | —— |
 | mute  | Emitted when audio mute | —— |
-| changeProgress  | Emitted when audio progress change | play time（millisecond） |
+| change-progress  | Emitted when audio progress change | play time（millisecond） |
 | can-play `v3.2.0` | Emitted when the user agent can play the media | `event: Event` |

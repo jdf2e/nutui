@@ -14,7 +14,9 @@ import { Radio,RadioGroup,Icon } from '@nutui/nutui';
 import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio).use(RadioGroup).use(Icon);
+app.use(Radio);
+app.use(RadioGroup);
+app.use(Icon);
 ```
 ## Basic Usage
 

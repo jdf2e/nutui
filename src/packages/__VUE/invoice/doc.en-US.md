@@ -157,8 +157,8 @@ The optional attributes are as follows:
 | type  | Type, eg `input`、`radio` | string                                 |
 | label  | Label         | string                                 |
 | placeholder   | Input placeholder           | string                                  |
-| radioLabel   | Radio label           | string                                  |
-| formItemProp | The v-model field of the form field is required | string | -
+| radio-label   | Radio label           | string                                  |
+| form-item-prop | The v-model field of the form field is required | string | -
 | rules | Check rules，[Refer to FormItem Rule data structure](#/form) | array | []
 | required | Is it a required field | Boolean | `false`
 
@@ -166,4 +166,4 @@ The optional attributes are as follows:
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| onSubmit| Method of submitting form for verification  | Promise  |
+| on-submit| Method of submitting form for verification  | Promise  |

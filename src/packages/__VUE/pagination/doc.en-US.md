@@ -13,7 +13,8 @@ import { Pagination,Icon } from '@nutui/nutui';
 import { Pagination,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Pagination).use(Icon);
+app.use(Pagination);
+app.use(Icon);
 ```    
     
 ### Basic Usage

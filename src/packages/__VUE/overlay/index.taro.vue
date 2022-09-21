@@ -59,7 +59,7 @@ export default create({
         zIndex: props.zIndex,
         ...props.overlayStyle
       };
-    });
+    }) as CSSProperties;
 
     const onClick = (e: MouseEvent) => {
       emit('click', e);
