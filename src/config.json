@@ -1098,6 +1098,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "liukun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TrendArrow",
+          "cType": "展示组件",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "liukun"
         }
       ]
     },

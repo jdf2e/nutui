@@ -6,6 +6,20 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "4175511",
+      "name": "下箭头",
+      "font_class": "triangle-down",
+      "unicode": "eb6d",
+      "unicode_decimal": 60269
+    },
+    {
+      "icon_id": "4175512",
+      "name": "上箭头",
+      "font_class": "triangle-up",
+      "unicode": "eb6e",
+      "unicode_decimal": 60270
+    },
+    {
       "icon_id": "30188161",
       "name": "image-error",
       "font_class": "image-error",
