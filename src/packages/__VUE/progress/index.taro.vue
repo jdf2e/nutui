@@ -3,7 +3,6 @@
     <div
       class="nut-progress-outer"
       :id="'nut-progress-outer-taro-' + randRef"
-      ref="progressOuter"
       :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
@@ -107,7 +106,6 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');
-    const progressOuter = ref<any>();
     const insideText = ref();
     const refRandomId = Math.random().toString(36).slice(-8);
     const randRef = ref(refRandomId);
@@ -130,7 +128,6 @@ export default create({
       height,
       bgStyle,
       textStyle,
-      progressOuter,
       insideText,
       randRef,
       slotDefault

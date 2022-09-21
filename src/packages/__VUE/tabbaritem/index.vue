@@ -123,7 +123,7 @@ export default create({
       let key = props.name ?? state.index;
       let index = null;
       if (props.name) {
-        index = parent.children.findIndex((item: any) => {
+        index = parent.children.findIndex((item: { name: string | number }) => {
           return item.name == key;
         });
       }

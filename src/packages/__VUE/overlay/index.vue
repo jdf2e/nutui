@@ -90,7 +90,7 @@ export default create({
         zIndex: props.zIndex,
         ...props.overlayStyle
       };
-    });
+    }) as CSSProperties;
 
     const touchmove = (e: TouchEvent) => {
       if (props.lockScroll) e.preventDefault();

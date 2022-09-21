@@ -40,7 +40,7 @@
           :title="translate('addressTip')"
           v-model:visible="demo2.visible"
           v-model="demo2.value"
-          label-key="text"
+          text-key="text"
           @change="events.change"
           @path-change="events.pathChange"
           value-key="text"

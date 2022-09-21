@@ -14,9 +14,9 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader)
-.use(Tabs)
-.use(TabPane);
+app.use(Cascader);
+app.use(Tabs);
+app.use(TabPane);
 ```
 
 ### 基础用法
@@ -139,7 +139,7 @@ export default {
       title="地址选择"
       v-model:visible="state.visible"
       v-model="state.value"
-      label-key="text"
+      text-key="text"
       @change="events.change"
       @path-change="events.pathChange"
       value-key="text"
@@ -441,4 +441,4 @@ export default {
 | 事件名     | 说明             | 回调参数           |
 | ---------- | ---------------- | ------------------ |
 | change     | 选中值改变时触发 | (value, pathNodes) |
-| pathChange | 选中项改变时触发 | (pathNodes)        |
+| path-change | 选中项改变时触发 | (pathNodes)        |
