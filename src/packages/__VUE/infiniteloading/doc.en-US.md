@@ -259,7 +259,7 @@ Scrolling to the bottom of the list automatically loads more data.
 | is-open-refresh  | Enable pull refresh                                                                                                | Boolean | `false`          |
 | pull-icon        | Pull refresh[图标名称](#/icon)                                                                                       | String  | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
 | pull-txt         | Pull refresh text                                                                                                   | String  |`Loose to refresh`|
-| load-icon        | Pull on loading[图标名称](#/icon)                                                                                    | Boolean | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
+| load-icon        | Pull on loading[图标名称](#/icon)                                                                                    | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
 | load-txt         | Pull on loading text                                                                                                | String  | `Loading...`      |
 
 ### Events

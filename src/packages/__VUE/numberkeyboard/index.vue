@@ -35,7 +35,7 @@
                 { delete: item.type == 'delete' }
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
-              @touchmove="(event) => onTouchMove(item, event)"
+              @touchmove="(event) => onTouchMove(event)"
               @touchend="(event) => onTouchEnd(event)"
             >
               <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
@@ -131,9 +131,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    // console.log(props.overlay);
-
-    const clickKeyIndex = ref(undefined);
+    const clickKeyIndex: Ref<string | undefined> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
@@ -153,7 +151,7 @@ export default create({
     }
 
     function getBasicKeys() {
-      const keys: any = [];
+      const keys: Array<unknown> = [];
       for (let i = 1; i <= 9; i++) {
         keys.push({ id: i, type: 'number' });
       }
@@ -202,7 +200,7 @@ export default create({
       }
     );
 
-    function onTouchstart(item: any, event: any) {
+    function onTouchstart(item: { id: string; type: string }, event: TouchEvent) {
       event.stopPropagation();
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
@@ -219,10 +217,10 @@ export default create({
         emit('update:value', props.value.slice(0, props.value.length - 1));
       }
     }
-    function onTouchMove(id: any, event: any) {
+    function onTouchMove(event: TouchEvent) {
       event.stopPropagation();
     }
-    function onTouchEnd(event: any) {
+    function onTouchEnd(event: TouchEvent) {
       event.preventDefault();
       clickKeyIndex.value = undefined;
     }
@@ -231,7 +229,6 @@ export default create({
       emit('close');
     }
 
-    onMounted(() => {});
     return {
       clickKeyIndex,
       defaultKey,
