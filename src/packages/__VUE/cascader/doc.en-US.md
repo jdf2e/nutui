@@ -14,9 +14,9 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader)
-.use(Tabs)
-.use(TabPane);
+app.use(Cascader);
+app.use(Tabs);
+app.use(TabPane);
 ```
 
 ### Basic Usage
@@ -139,7 +139,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
       title="Select address"
       v-model:visible="state.visible"
       v-model="state.value"
-      label-key="text"
+      text-key="text"
       @change="events.change"
       @path-change="events.pathChange"
       value-key="text"
@@ -441,4 +441,4 @@ export default {
 | Event      | Description                               | Arguments          |
 |------------|-------------------------------------------|--------------------|
 | change     | Triggered when the selected value changes | (value, pathNodes) |
-| pathChange | Triggered when the selected item changes  | (pathNodes)        |
+| path-change | Triggered when the selected item changes  | (pathNodes)        |

@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { nav } from '../../../../../../config.json';
 import Taro from '@tarojs/taro';

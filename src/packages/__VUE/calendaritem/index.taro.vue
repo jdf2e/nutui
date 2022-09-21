@@ -612,7 +612,7 @@ export default create({
       let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
 
       state.containerHeight = `${containerHeight}px`;
-      state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
 
       if (months?.value) {
@@ -646,7 +646,6 @@ export default create({
           //     selectorQuery
           //       .select('.nut-calendar-content')
           //       .scrollOffset((res) => {
-          //         console.log(res);
           //         if (props.toDateAnimation) {
           //           let scrollTop = res.scrollTop;
           //           let distance = state.monthsData[index].cssScrollHeight - scrollTop;

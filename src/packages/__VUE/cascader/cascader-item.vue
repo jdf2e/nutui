@@ -33,7 +33,7 @@ import { watch, ref, Ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
-import { CascaderPane, CascaderOption, CascaderValue, convertConfig } from './types';
+import { CascaderPane, CascaderOption, CascaderValue, convertConfig, Tabs } from './types';
 import Tree from './tree';
 
 export default create({
@@ -268,9 +268,9 @@ export default create({
           methods.handleNode(node, silent);
         }
       },
-      handleTabClick(tab: any) {
+      handleTabClick(tab: Tabs) {
         currentProcessNode = null;
-        tabsCursor.value = tab.paneKey as number;
+        tabsCursor.value = Number(tab.paneKey);
       },
       formatTabTitle(pane: CascaderPane) {
         return pane.selectedNode ? pane.selectedNode.text : translate('select');
