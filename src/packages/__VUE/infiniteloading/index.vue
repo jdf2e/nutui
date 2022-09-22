@@ -41,8 +41,10 @@ import {
   ref
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Icon from '../icon';
 const { componentName, create, translate } = createComponent('infiniteloading');
 export default create({
+  components: { [Icon.name]: Icon },
   props: {
     hasMore: {
       type: Boolean,
