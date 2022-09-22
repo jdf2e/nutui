@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo watermark-demo">
     <h2>基础用法</h2>
     <nut-cell class="wrap">
       <nut-button @click="showTextMark">文字水印</nut-button>
@@ -41,8 +41,8 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss" scoped>
-.demo {
+<style lang="scss">
+.watermark-demo {
   .wrap {
     width: 100%;
     height: 240px;
