@@ -14,15 +14,13 @@
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <!-- <nut-swiper-item v-for="(item, index) in videos" :key="index">
-          <nut-video :source="item.source" :options="item.options"></nut-video>
-        </nut-swiper-item> -->
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <image mode="aspectFit" :src="item.src" class="nut-imagepreview-img" />
+          <!-- <image mode="aspectFit" :src="item.src" class="nut-imagepreview-img" /> -->
+          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <!-- <view class="nut-imagepreview-index"> {{ active }} / {{ images.length + videos.length }} </view> -->
+
     <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length }} </view>
     <view class="nut-imagepreview-close-icon" @click="handleCloseIcon" :style="styles" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
