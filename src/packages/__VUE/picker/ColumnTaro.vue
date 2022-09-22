@@ -7,12 +7,12 @@
       :style="threeDimensional ? touchRollerStyle : touchTileStyle"
       @transitionend="stopMomentum"
     >
-      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+      <template v-for="(item, index) in renderItems" :key="item.value ? item.value : index">
         <!-- 3D 效果 -->
         <view
           class="nut-picker-roller-item"
-          :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-          :style="setRollerStyle(index + 1)"
+          :class="{ 'nut-picker-roller-item-hidden': isHidden(renderItemsStartIndex + index + 1) }"
+          :style="setRollerStyle(renderItemsStartIndex + index + 1)"
           v-if="item && item.text && threeDimensional"
         >
           {{ item.text }}
@@ -34,6 +34,9 @@ import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 import Taro from '@tarojs/taro';
+
+// Max items count of once scroll, don't change this unless you sure your count is better.
+const SAFE_SCROLL_COUNT = 30;
 
 export default create({
   props: {
@@ -86,7 +89,9 @@ export default create({
       transformY: 0,
       scrollDistance: 0,
       rotation: 20,
-      timer: null
+      timer: null,
+      renderItems: props.column.slice(0, SAFE_SCROLL_COUNT * 2) as PickerOption[],
+      renderItemsStartIndex: 0
     });
 
     const roller = ref(null);
@@ -130,9 +135,11 @@ export default create({
         if (!props.threeDimensional) {
           dom = roller.value as any;
         }
-
-        const { transform } = window.getComputedStyle(dom);
-        state.scrollDistance = +parseInt(transform.split(', ')[1]);
+        // prevent dom is null
+        if (dom) {
+          const { transform } = window.getComputedStyle(dom);
+          state.scrollDistance = +parseInt(transform.split(', ')[1]);
+        }
       }
 
       state.touchParams.startY = touch.deltaY.value;
@@ -210,6 +217,25 @@ export default create({
       state.scrollDistance = translateY;
     };
 
+    const setRenderItems = (currIndex: number) => {
+      if (currIndex < SAFE_SCROLL_COUNT) {
+        state.renderItems = props.column.slice(0, SAFE_SCROLL_COUNT * 2);
+        state.renderItemsStartIndex = 0;
+        return;
+      }
+
+      const columnLen = props.column.length;
+
+      if (currIndex + SAFE_SCROLL_COUNT > columnLen) {
+        state.renderItems = props.column.slice(columnLen - SAFE_SCROLL_COUNT * 2, columnLen);
+        state.renderItemsStartIndex = columnLen - SAFE_SCROLL_COUNT * 2;
+        return;
+      }
+
+      state.renderItems = props.column.slice(currIndex - SAFE_SCROLL_COUNT - 1, currIndex + SAFE_SCROLL_COUNT);
+      state.renderItemsStartIndex = currIndex - SAFE_SCROLL_COUNT - 1;
+    };
+
     const setMove = (move: number, type?: string, time?: number) => {
       let updateMove = move + state.transformY;
       if (type === 'end') {
@@ -232,6 +258,11 @@ export default create({
         // }, t);
 
         state.currIndex = Math.abs(Math.round(endMove / props.lineSpacing)) + 1;
+
+        // Count is enough, so optimize scrolling performance, otherwise not.
+        if (props.column.length > SAFE_SCROLL_COUNT * 2) {
+          setRenderItems(state.currIndex);
+        }
       } else {
         let deg = 0;
         let currentDeg = (-updateMove / props.lineSpacing + 1) * state.rotation;
@@ -258,6 +289,8 @@ export default create({
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
+      // column changed should reset renderItems
+      setRenderItems(state.currIndex);
       let move = index === -1 ? 0 : (index as number) * props.lineSpacing;
       type && setChooseValue();
       setMove(-move);
