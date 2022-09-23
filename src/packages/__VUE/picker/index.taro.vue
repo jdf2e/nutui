@@ -20,7 +20,9 @@
       </view>
       <slot name="top"></slot>
 
+      <!-- Taro 下转换成 微信小程序 -->
       <picker-view
+        v-if="ENV == ENV_TYPE.WEAPP"
         indicator-style="height: 34px;"
         :value="defaultIndexes"
         style="width: 100%; height: 252px"
@@ -39,6 +41,28 @@
           </view>
         </picker-view-column>
       </picker-view>
+      <!-- Taro 下转换成 H5 -->
+      <view class="nut-picker__column" v-if="ENV == ENV_TYPE.WEB">
+        <view class="nut-picker__hairline" ref="pickerline" :id="'pickerline' + refRandomId"></view>
+        <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+          <nut-picker-column
+            :ref="swipeRef"
+            :itemShow="show"
+            :column="column"
+            :readonly="readonly"
+            :columnsType="columnsType"
+            :value="defaultValues[columnIndex]"
+            :threeDimensional="false"
+            :swipeDuration="swipeDuration"
+            :lineSpacing="lineSpacing"
+            @change="
+              (option) => {
+                changeHandler(columnIndex, option);
+              }
+            "
+          ></nut-picker-column>
+        </view>
+      </view>
       <slot name="default"></slot>
     </nut-popup>
   </view>
@@ -47,9 +71,14 @@
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
+import column from './ColumnTaro.vue';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
+import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('picker');
 export default create({
-  components: {},
+  components: {
+    [column.name]: column
+  },
   props: {
     ...popupProps,
     modelValue: {
@@ -81,7 +110,7 @@ export default create({
     // 是否开启3D效果
     threeDimensional: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 惯性滚动 时长
     swipeDuration: {
@@ -94,13 +123,25 @@ export default create({
     const state = reactive({
       show: false,
       formattedColumns: props.columns as import('./types').PickerOption[],
-      picking: false
+      lineSpacing: 36,
+      picking: false,
+      ENV: Taro.getEnv(),
+      ENV_TYPE: Taro.ENV_TYPE
     });
 
+    const pickerline = ref(null);
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
     // 选中项的位置
     let defaultIndexes = ref<number[]>([]);
+
+    const pickerColumn = ref<any[]>([]);
+
+    const swipeRef = (el: any) => {
+      if (el && pickerColumn.value.length < columnsList.value.length) {
+        pickerColumn.value.push(el);
+      }
+    };
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -283,10 +324,24 @@ export default create({
       state.picking = false;
     };
 
+    const refRandomId = Math.random().toString(36).slice(-8);
+
+    const getReference = async () => {
+      const refe = await useTaroRect(pickerline, Taro);
+      console.log(refe.height);
+      state.lineSpacing = refe.height ? refe.height : 36;
+    };
+
     onMounted(() => {
       if (props.visible) {
+        if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+          setTimeout(() => {
+            getReference();
+          }, 200);
+        } else {
+          defaultIndexes.value = defaultValuesConvert.value;
+        }
         state.show = props.visible;
-        defaultIndexes.value = defaultValuesConvert.value;
       }
     });
 
@@ -321,8 +376,17 @@ export default create({
       () => props.visible,
       (val) => {
         state.show = val;
+
         if (val) {
-          defaultIndexes.value = defaultValuesConvert.value;
+          if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+            setTimeout(() => {
+              getReference();
+            }, 200);
+
+            pickerColumn.value = [];
+          } else {
+            defaultIndexes.value = defaultValuesConvert.value;
+          }
         }
       }
     );
@@ -337,13 +401,19 @@ export default create({
     return {
       classes,
       ...toRefs(state),
+      column,
       columnsType,
       columnsList,
       close,
+      changeHandler,
       confirmHandler,
       defaultValues,
       defaultIndexes,
       translate,
+      pickerColumn,
+      swipeRef,
+      refRandomId,
+      pickerline,
       tileChange,
       defaultValuesConvert,
       handlePickstart,
