@@ -78,8 +78,8 @@ test('should render left icon when arrowLeft', async () => {
       arrowLeft: true
     }
   });
-  expect(wrapper.findAll('.nut-trendarrow-icon-before').length).toBe(1);
-  expect(wrapper.findAll('.nut-trendarrow-icon-after').length).toBe(0);
+  expect(wrapper.findAll('.nut-trendarrow-icon-before').length).toBe(0);
+  expect(wrapper.findAll('.nut-trendarrow-icon-after').length).toBe(1);
 });
 test('should render sync text color when syncTextColor is true', async () => {
   const wrapper = mount(Trendarrow, {
