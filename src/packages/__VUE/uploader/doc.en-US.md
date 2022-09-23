@@ -35,11 +35,11 @@ app.use(Progress);
   <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { reactive } from 'vue';
 export default {
   setup() {
      const uploadUrl = 'https://xxxxx';
-     const defaultFileList = ref([
+     const defaultFileList = reactive([
       {
         name: 'file 1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -81,11 +81,11 @@ export default {
   </nut-uploader>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { reactive } from 'vue';
 export default {
   setup() {
      const uploadUrl = 'https://xxxxx';
-     const defaultFileList = ref([
+     const defaultFileList = reactive([
       {
         name: 'file 1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -325,6 +325,7 @@ export default {
   <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
   <br />
   <nut-button type="success" size="small" @click="submitUpload">Perform upload</nut-button>
+  <nut-button type="danger" size="small" @click="clearUpload">Clear upload</nut-button>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -335,10 +336,14 @@ export default {
     const submitUpload = () => {
       uploadRef.value.submit();
     };
+    const clearUpload = () => {
+      uploadRef.value.clearUploadQueue();
+    };
     return {
       uploadUrl,
       uploadRef,
-      submitUpload
+      submitUpload,
+      clearUpload
     };
   }
 }
@@ -419,4 +424,4 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 | Name             | Description                                                                                 | Arguments | Return value |
 |------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
 | submit           | Manual upload mode, perform upload operation                                                | -         | -            |
-| clearUploadQueue | Empty the selected file queue (this method is generally used when uploading in manual mode) | -         | -            |
+| clearUploadQueue | Empty the selected file queue (this method is generally used when uploading in manual mode) | index         | -            |
