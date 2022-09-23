@@ -132,7 +132,8 @@ export default create({
         }
 
         const { transform } = window.getComputedStyle(dom);
-        state.scrollDistance = +parseInt(transform.split(', ')[1]);
+
+        state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
       }
 
       state.touchParams.startY = touch.deltaY.value;
@@ -298,6 +299,17 @@ export default create({
       () => props.value,
       (val) => {
         state.transformY = 0;
+        modifyStatus(false);
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.lineSpacing,
+      (val) => {
+        console.log('更新');
         modifyStatus(false);
       },
       {
