@@ -389,7 +389,7 @@ export default {
 | timeout           | timeout, in milliseconds                                                                                                                         | Number丨String                    | 1000 * 30        |
 | before-upload     | Hook before reading the file, return false to stop reading the file, can return Promise                                                          | Function                          | null             |
 | before-xhr-upload`v3.2.1` | Customize the method when uploading XHR                                                                                                                                                                          | Function(xhr，option)                          | null             |
-| before-delete     | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file): boolean 丨Promise | -                |
+| before-delete     | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file,fileList): boolean 丨Promise | -                |
 
 
 
