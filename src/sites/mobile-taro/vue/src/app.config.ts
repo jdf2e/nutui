@@ -1,6 +1,6 @@
 const subPackages = [
   {
-    root: 'base',
+    root: 'basic',
     pages: [
       'pages/button/index',
       'pages/cell/index',
