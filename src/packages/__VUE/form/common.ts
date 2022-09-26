@@ -84,7 +84,9 @@ export const component = {
       tipMessage({ prop, message: '' });
       let _rules = [...rules];
       while (_rules.length) {
-        const { required, validator, regex, message } = _rules.shift() as FormItemRule;
+        const rule = _rules.shift() as FormItemRule;
+        const { validator, ...ruleWithoutValidator } = rule;
+        const { required, regex, message } = ruleWithoutValidator;
         const errorMsg = { prop, message };
         if (required) {
           if (value === '' || value === undefined || value === null) {
@@ -95,7 +97,7 @@ export const component = {
           return _Promise(errorMsg);
         }
         if (validator) {
-          const result = validator(value);
+          const result = validator(value, ruleWithoutValidator);
           if (isPromise(result)) {
             return new Promise((r, j) => {
               result.then((res) => {
