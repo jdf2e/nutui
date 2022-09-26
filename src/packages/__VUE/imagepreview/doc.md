@@ -302,8 +302,8 @@ app.use(ImagePreview);
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | show | 是否展示预览图片 | Boolean | false
-| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<`Object`> | []
-| images | 预览图片数组 | { src: String }[] | []
+| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | VideoArray[] | []
+| images | 预览图片数组 | ImageArray[] | []
 | autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
 | init-no | 初始页码 | Number | 1
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
@@ -316,6 +316,22 @@ app.use(ImagePreview);
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 | max-zoom`v3.1.23`  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
+
+
+### ImageArray 数据结构
+
+| 键名 | 说明 | 类型 | 
+|----- | ----- | ----- | 
+| src | 预览图片链接 | String | 
+
+### VideoArray 数据结构
+
+| 键名 | 说明 | 类型 | 
+|----- | ----- | ----- | 
+| source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | Object | 
+| options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | Object | 
+
+
 
 ### Events
 

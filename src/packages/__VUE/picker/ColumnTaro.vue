@@ -135,10 +135,12 @@ export default create({
         if (!props.threeDimensional) {
           dom = roller.value as any;
         }
+        
         // prevent dom is null
         if (dom) {
           const { transform } = window.getComputedStyle(dom);
-          state.scrollDistance = +parseInt(transform.split(', ')[1]);
+
+          state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
         }
       }
 
@@ -331,6 +333,17 @@ export default create({
       () => props.value,
       (val) => {
         state.transformY = 0;
+        modifyStatus(false);
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.lineSpacing,
+      (val) => {
+        console.log('更新');
         modifyStatus(false);
       },
       {
