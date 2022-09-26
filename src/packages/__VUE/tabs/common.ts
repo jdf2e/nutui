@@ -1,6 +1,6 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -65,7 +65,7 @@ export const component = {
     provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
     const renderTitles = (vnodes: VNode[]) => {
-      vnodes?.forEach((vnode: VNode, index: number) => {
+      vnodes.forEach((vnode: VNode, index: number) => {
         let type = vnode.type;
         type = (type as any).name || type;
         if (type == 'nut-tabpane') {
