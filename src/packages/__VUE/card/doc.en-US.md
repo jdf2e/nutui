@@ -144,7 +144,7 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
-### Prop  
+### Props  
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
@@ -156,6 +156,12 @@ app.use(Card).use(Tag).use(Price);
 | delivery     | delivery | String  | -      |
 | shop-name   | shop-name | String  | -      |
 | is-need-price  | Whether price display is required| Boolean  | true   |
+
+### Events
+
+| Event             | Description                     | Arguments        |
+|----------|----------|----------|
+| click    | click event | event: MouseEvent    |
 
 
 ### Slots
