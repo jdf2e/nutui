@@ -1,13 +1,13 @@
 <template>
-  <view ref="dmBody" :class="classes">
-    <view ref="dmContainer" class="dmContainer"></view>
-    <!-- <view v-for="(item, index) of danmuList" :key="'danmu'+index" class="dmitem">
-      {{item}}
-    </view> -->
-  </view>
+  <div ref="dmBody" :class="classes">
+    <div ref="dmContainer" class="dmContainer slotContainer" v-if="$slots.default">
+      <slot></slot>
+    </div>
+    <div ref="dmContainer" class="dmContainer" v-else></div>
+  </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUnmounted, onDeactivated, ref, reactive, toRefs, watch, nextTick } from 'vue';
+import { computed, onMounted, onUnmounted, onDeactivated, ref, watch, nextTick, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('barrage');
 
@@ -23,7 +23,7 @@ export default create({
     },
     speeds: {
       type: Number,
-      default: 2000
+      default: 5000
     },
     rows: {
       type: Number,
@@ -40,7 +40,9 @@ export default create({
   },
   emits: ['click'],
 
-  setup(props, { emit }) {
+  setup(props, { slots }) {
+    const slotDefault = !!useSlots().default;
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -51,8 +53,8 @@ export default create({
     let dmBody = ref<HTMLDivElement>(document.createElement('div'));
     let dmContainer = ref<HTMLDivElement>(document.createElement('div'));
 
-    let timer: number = 0;
-    const danmuList = ref<any[]>(props.danmu);
+    let timer = 0;
+    const danmuList: any = ref(props.danmu);
     const rows = ref<number>(props.rows);
     const top = ref<number>(props.top);
     const index = ref<number>(0);
@@ -61,7 +63,12 @@ export default create({
 
     onMounted(() => {
       danmuCWidth.value = dmBody.value.offsetWidth;
-      run();
+      if (slotDefault) {
+        danmuList.value = slots?.default?.();
+        run();
+      } else {
+        run();
+      }
     });
 
     onUnmounted(() => {
@@ -76,8 +83,10 @@ export default create({
 
     watch(
       () => props.danmu,
-      (newValue, oldVlaue) => {
-        danmuList.value = [...newValue];
+      (newValue) => {
+        if (props.danmu.length > 0) {
+          danmuList.value = [...newValue];
+        }
       }
     );
 
@@ -98,34 +107,74 @@ export default create({
         run();
       }, props.frequency);
     };
-
+    const distance = ref('0');
     const play = () => {
       if (!props.loop && index.value >= danmuList.value.length) {
         return;
       }
       const _index = props.loop ? index.value % danmuList.value.length : index.value;
-      let el = document.createElement(`view`);
-      el.innerHTML = danmuList.value[_index] as string;
-      el.classList.add('dmitem');
-      dmContainer.value.appendChild(el);
-
+      let el = document.createElement(`div`);
+      if (slotDefault && danmuList.value[_index]?.el) {
+        el = danmuList.value[_index]?.el;
+        if (el?.classList.contains('dmitem')) {
+          el.classList.remove('dmitem');
+        }
+        if (el?.classList.contains('move')) {
+          el.classList.remove('move');
+        }
+        el?.classList.add('dmitem');
+      } else {
+        el.innerHTML = danmuList.value[_index] as string;
+        el.classList.add('dmitem');
+        dmContainer.value.appendChild(el);
+      }
+      // let el = document.createElement(`div`);
+      // el.innerHTML = danmuList.value[_index] as string;
+      // el.classList.add('dmitem');
+      // dmContainer.value.appendChild(el);
       nextTick(() => {
-        const width = el.offsetWidth;
         const height = el.offsetHeight;
         el.classList.add('move');
         el.style.animationDuration = `${speeds}ms`;
         el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px';
-        el.style.width = width + 20 + 'px';
+        if (!slotDefault) {
+          const width = el.offsetWidth;
+          el.style.width = width + 20 + 'px';
+        }
         // el.style.left = "-"+(_index % rows.value) + 'px';
         el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
+        distance.value = '-' + (speeds / 1000) * 150 + '%';
         el.dataset.index = `${_index}`;
-        el.addEventListener('animationend', () => {
-          dmContainer.value.removeChild(el);
-        });
-        index.value++;
+        if (slotDefault) {
+          index.value++;
+        } else {
+          el.addEventListener('animationend', () => {
+            dmContainer.value.removeChild(el);
+          });
+          index.value++;
+        }
       });
     };
-    return { classes, danmuList, dmBody, dmContainer, add };
+    return { classes, danmuList, dmBody, dmContainer, add, distance };
   }
 });
 </script>
+
+<style lang="scss">
+@keyframes moving {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(v-bind('distance'));
+  }
+}
+@-webkit-keyframes moving {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    transform: translateX(v-bind('distance'));
+  }
+}
+</style>
