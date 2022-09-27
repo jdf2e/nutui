@@ -119,7 +119,7 @@ export default create({
             styleInfo(index, nodeTop, width);
           })
           .exec();
-      }, 1500);
+      }, 500);
     };
 
     const runStep = () => {
