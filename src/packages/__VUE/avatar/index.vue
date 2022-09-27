@@ -139,7 +139,6 @@ export default create({
 
     const activeAvatar = (event: MouseEvent) => {
       emit('active-avatar', event);
-      console.log(event);
     };
 
     const onError = (event: MouseEvent) => {
