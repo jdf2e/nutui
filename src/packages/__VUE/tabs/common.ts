@@ -64,7 +64,6 @@ export const component = {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
-
     const renderTitles = (vnodes: VNode[]) => {
       vnodes.forEach((vnode: VNode, index: number) => {
         let type = vnode.type;
@@ -105,9 +104,9 @@ export const component = {
         currentIndex.value = index;
       }
     };
-
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
+      vnodes = vnodes.filter((item) => typeof item.children !== 'string');
       if (vnodes && vnodes.length) {
         renderTitles(vnodes);
       }
