@@ -39,7 +39,7 @@ export const component = {
       vnodes.forEach((vnode: VNode, index: number) => {
         let type = vnode.type;
         type = (type as any).name || type;
-        if (type == 'nut-form-item') {
+        if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
           task.push({
             prop: vnode.props?.['prop'],
             rules: vnode.props?.['rules'] || []
