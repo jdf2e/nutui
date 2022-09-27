@@ -127,7 +127,8 @@ export default create({
         let el = danmuList.value[index]?.el;
         if (!el) {
           danmuListSlots.value.push(item);
-          let s = String(danmuList.value.length) + '' + danmuListSlots.value.indexOf(item);
+          let l = slotDefault ? String(danmuList.value.length) : '';
+          let s = l + danmuListSlots.value.indexOf(item);
           getNode(Number(s));
         } else {
           if (el?.classList.contains('dmitem')) {
