@@ -3,7 +3,7 @@
   "version": "3.2.2",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
-  "module": "dist/nutui.mjs",
+  "module": "dist/nutui.es.js",
   "style": "dist/style.css",
   "typings": "dist/types/index.d.ts",
   "vetur": {
@@ -116,7 +116,7 @@
     "transliteration": "^2.2.0",
     "ts-jest": "^26.5.5",
     "typescript": "^4.6.4",
-    "vite": "^3.0.0",
+    "vite": "^2.9.15",
     "vite-plugin-dts": "^1.0.5",
     "vite-plugin-md": "^0.11.8",
     "vue": "^3.2.24",
