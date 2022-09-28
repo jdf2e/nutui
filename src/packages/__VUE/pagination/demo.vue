@@ -1,13 +1,13 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-pagination v-model="currentPage" total-items="25" items-per-page="5" @change="pageChange" />
+    <nut-pagination v-model="currentPage" :total-items="25" :items-per-page="5" @change="pageChange" />
     <h2>{{ translate('simpleMode') }}</h2>
-    <nut-pagination v-model="currentPage1" page-count="12" mode="simple" @change="pageChange" />
+    <nut-pagination v-model="currentPage1" :page-count="12" mode="simple" @change="pageChange" />
     <h2>{{ translate('showEllipses') }}</h2>
-    <nut-pagination v-model="currentPage2" total-items="125" show-page-size="3" force-ellipses @change="pageChange" />
+    <nut-pagination v-model="currentPage2" :total-items="125" :show-page-size="3" force-ellipses @change="pageChange" />
     <h2>{{ translate('customButton') }}</h2>
-    <nut-pagination v-model="currentPage3" total-items="500" show-page-size="5" @change="pageChange">
+    <nut-pagination v-model="currentPage3" :total-items="500" :show-page-size="5" @change="pageChange">
       <template #prev-text>
         <nut-icon name="left" size="10px" />
       </template>
