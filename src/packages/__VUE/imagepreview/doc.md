@@ -8,9 +8,10 @@
 
 ```javascript
 import { createApp, reactive, toRefs } from 'vue';
-
+//vue
 import { ImagePreview } from '@nutui/nutui';
-
+//taro
+import { ImagePreview } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ImagePreview);

@@ -5,6 +5,7 @@
     :isWrapTeleport="isWrapTeleport"
     @click="onClose"
     style="width: 100%"
+    lock-scroll
   >
     <!-- @click.stop="closeOnImg" @touchstart.capture="onTouchStart" -->
     <view class="nut-imagepreview" ref="swipeRef">
@@ -54,7 +55,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
+import { toRefs, reactive, watch, onMounted, ref, computed, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
@@ -62,10 +63,10 @@ import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
-import { isPromise } from '@/packages/utils/util.ts';
+import { isPromise } from '@/packages/utils/util';
 import ImagePreviewItem from './imagePreviewItem.vue';
 import { ImageInterface } from './types';
-const { componentName, create } = createComponent('imagepreview');
+const { create } = createComponent('imagepreview');
 
 export default create({
   props: {
@@ -142,8 +143,6 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const { show, images } = toRefs(props);
-
     const swipeRef = ref();
 
     const state = reactive({
@@ -155,7 +154,7 @@ export default create({
     });
 
     const styles = computed(() => {
-      let style: any = {};
+      let style: CSSProperties = {};
       if (props.closeIconPosition == 'top-right') {
         style.right = '10px';
       } else {
