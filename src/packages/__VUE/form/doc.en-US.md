@@ -131,7 +131,7 @@ export default {
 ```html
 <template>
 <nut-form :model-value="formData" :rules="{name: [{
-            message: '名称两个字以上',
+            message: 'Name should be at least two characters',
             validator: nameLengthValidator
           }]}" ref="ruleForm">
   <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
