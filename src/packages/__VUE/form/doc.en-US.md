@@ -138,6 +138,7 @@ export default {
   <nut-form-item label="Age" prop="age" required :rules="[
       { required: true, message: 'Please enter age' },
       { validator: customValidator, message: 'You must enter a number' },
+      { validator: customRulePropValidator, message: 'You must enter a number', reg: /^\d+$/ },
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: 'The range 0-200 must be entered' }
     ]">
     <input class="nut-input-text" v-model="formData.age" placeholder="Please enter the age, which must be numeric and in the range of 0-200" type="text" />
@@ -196,6 +197,9 @@ setup(){
     };
 
     const customValidator = (val: string) => /^\d+$/.test(val);
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      return (rule?.reg as RegExp).test(val);
+    };
     // Promise async validator
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -206,7 +210,7 @@ setup(){
         }, 1000);
       });
     };
-    return { ruleForm, formData, validate, customValidator, asyncValidator, customBlurValidate, submit, reset };
+    return { ruleForm, formData, validate, customValidator, customRulePropValidator, asyncValidator, customBlurValidate, submit, reset };
 }
 }
 </script>

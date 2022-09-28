@@ -1,4 +1,4 @@
-import { getPropByPath, isFunction, isObject, isPromise } from '@/packages/utils/util';
+import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule } from './types';
@@ -78,11 +78,11 @@ export const component = {
         console.warn('[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数');
       }
 
-      let value = getPropByPath(props.modelValue, prop || '');
+      const value = getPropByPath(props.modelValue, prop || '');
 
       // clear tips
       tipMessage({ prop, message: '' });
-      let _rules = [...rules];
+      const _rules = [...rules];
       while (_rules.length) {
         const rule = _rules.shift() as FormItemRule;
         const { validator, ...ruleWithoutValidator } = rule;
@@ -124,11 +124,11 @@ export const component = {
      * @param customProp 指定校验，用于用户自定义场景时触发，例如 blur、change 事件
      * @returns
      */
-    const validate = (customProp: string = '') => {
+    const validate = (customProp = '') => {
       return new Promise((resolve, reject) => {
-        let task = findFormItem(slots.default());
+        const task = findFormItem(slots.default());
 
-        let errors = task.map((item) => {
+        const errors = task.map((item) => {
           if (customProp) {
             if (customProp == item.prop) {
               return checkRule(item);
