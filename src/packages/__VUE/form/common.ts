@@ -1,11 +1,15 @@
 import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
-import { ErrorMessage, FormRule } from './types';
+import { ErrorMessage, FormRule, FormRules } from './types';
 
 export const component = {
   props: {
     modelValue: {
+      type: Object,
+      default: {}
+    },
+    rules: {
       type: Object,
       default: {}
     }
@@ -82,7 +86,8 @@ export const component = {
 
       // clear tips
       tipMessage({ prop, message: '' });
-      const _rules = [...rules];
+      const formRules: FormRules = props.rules || {};
+      const _rules = [...(formRules?.[prop] || []), ...rules];
       while (_rules.length) {
         const rule = _rules.shift() as FormItemRule;
         const { validator, ...ruleWithoutValidator } = rule;

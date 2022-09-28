@@ -57,7 +57,18 @@
       </nut-cell>
     </nut-form>
     <h2>{{ translate('title2') }}</h2>
-    <nut-form :model-value="formData" ref="ruleForm">
+    <nut-form
+      :model-value="formData"
+      :rules="{
+        name: [
+          {
+            message: '名称两个字以上',
+            validator: nameLengthValidator
+          }
+        ]
+      }"
+      ref="ruleForm"
+    >
       <nut-form-item
         :label="translate('name')"
         prop="name"
@@ -396,6 +407,7 @@ export default createDemo({
     const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
       return (rule?.reg as RegExp).test(val);
     };
+    const nameLengthValidator = (val: string) => val?.length >= 2;
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -412,6 +424,7 @@ export default createDemo({
       validate,
       customValidator,
       customRulePropValidator,
+      nameLengthValidator,
       asyncValidator,
       customBlurValidate,
       submit,
