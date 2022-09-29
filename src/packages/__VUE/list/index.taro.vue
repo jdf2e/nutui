@@ -2,7 +2,7 @@
   <scroll-view
     :class="classes"
     :scroll-y="true"
-    :style="{ height: containerHeight + 'px' }"
+    :style="{ height: `${getContainerHeight}px` }"
     scroll-top="0"
     @scroll="handleScrollEvent"
     ref="list"
@@ -20,6 +20,7 @@ import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('list');
+const clientHeight = Taro.getSystemInfoSync().windowHeight;
 export default create({
   props: {
     height: {
@@ -34,7 +35,7 @@ export default create({
     },
     containerHeight: {
       type: [Number],
-      default: Taro.getSystemInfoSync().windowHeight || 667
+      default: clientHeight || 667
     }
   },
   emits: ['scroll', 'scroll-bottom'],
@@ -47,8 +48,12 @@ export default create({
       list: props.listData.slice()
     });
 
+    const getContainerHeight = computed(() => {
+      return Math.min(props.containerHeight, clientHeight);
+    });
+
     const visibleCount = computed(() => {
-      return Math.ceil(props.containerHeight / props.height);
+      return Math.ceil(getContainerHeight.value / props.height);
     });
 
     const end = computed(() => {
@@ -98,6 +103,7 @@ export default create({
       listHeight,
       visibleData,
       classes,
+      getContainerHeight,
       handleScrollEvent
     };
   }
