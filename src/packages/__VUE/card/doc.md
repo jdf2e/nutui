@@ -144,7 +144,7 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
-### Prop  
+### Props
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
@@ -157,6 +157,11 @@ app.use(Card).use(Tag).use(Price);
 | shop-name   | 店铺名称| String  | -      |
 | is-need-price  | 是否需要价格展示| Boolean  | true   |
 
+### Events
+
+| 事件名称 | 说明     | 回调参数 |
+|----------|----------|----------|
+| click    | 点击事件 | event: MouseEvent    |
 
 ### Slots
 

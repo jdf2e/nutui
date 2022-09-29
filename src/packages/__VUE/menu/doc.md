@@ -269,7 +269,8 @@ export default {
 
 ```html
 <template>
-  <nut-menu>
+  <div class="blank"></div>
+  <nut-menu direction="up">
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
   </nut-menu>
@@ -306,6 +307,12 @@ export default {
   }
 }
 </script>
+<style>
+.blank {
+  width: 200px;
+  height: 200px;
+}
+</style>
 ```
 
 :::
