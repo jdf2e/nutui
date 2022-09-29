@@ -1,4 +1,4 @@
-import { getPropByPath, isFunction, isObject, isPromise } from '@/packages/utils/util';
+import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule } from './types';
@@ -78,13 +78,15 @@ export const component = {
         console.warn('[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数');
       }
 
-      let value = getPropByPath(props.modelValue, prop || '');
+      const value = getPropByPath(props.modelValue, prop || '');
 
       // clear tips
       tipMessage({ prop, message: '' });
-      let _rules = [...rules];
+      const _rules = [...rules];
       while (_rules.length) {
-        const { required, validator, regex, message } = _rules.shift() as FormItemRule;
+        const rule = _rules.shift() as FormItemRule;
+        const { validator, ...ruleWithoutValidator } = rule;
+        const { required, regex, message } = ruleWithoutValidator;
         const errorMsg = { prop, message };
         if (required) {
           if (value === '' || value === undefined || value === null) {
@@ -95,7 +97,7 @@ export const component = {
           return _Promise(errorMsg);
         }
         if (validator) {
-          const result = validator(value);
+          const result = validator(value, ruleWithoutValidator);
           if (isPromise(result)) {
             return new Promise((r, j) => {
               result.then((res) => {
@@ -122,11 +124,11 @@ export const component = {
      * @param customProp 指定校验，用于用户自定义场景时触发，例如 blur、change 事件
      * @returns
      */
-    const validate = (customProp: string = '') => {
+    const validate = (customProp = '') => {
       return new Promise((resolve, reject) => {
-        let task = findFormItem(slots.default());
+        const task = findFormItem(slots.default());
 
-        let errors = task.map((item) => {
+        const errors = task.map((item) => {
           if (customProp) {
             if (customProp == item.prop) {
               return checkRule(item);
