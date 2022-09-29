@@ -12,7 +12,7 @@
 import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('list');
-const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
 export default create({
   props: {
     height: {
@@ -27,7 +27,7 @@ export default create({
     },
     containerHeight: {
       type: [Number],
-      default: clientHeight || 667
+      default: clientHeight
     }
   },
   emits: ['scroll', 'scroll-bottom'],
