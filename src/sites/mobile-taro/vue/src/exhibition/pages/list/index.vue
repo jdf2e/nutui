@@ -37,9 +37,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .list-demo {
-  .nut-cell {
-    height: 100%;
-  }
   .list-item {
     display: flex;
     align-items: center;
