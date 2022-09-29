@@ -27,9 +27,7 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider />
-    </nut-cell>
+  <nut-divider />
 </template>
 ```
 
@@ -43,9 +41,7 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider>文本</nut-divider>
-    </nut-cell>
+  <nut-divider>文本</nut-divider>
 </template>
 ```
 
@@ -59,12 +55,8 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider content-position="left">文本</nut-divider>
-    </nut-cell>
-    <nut-cell>
-        <nut-divider content-position="right">文本</nut-divider>
-    </nut-cell>
+  <nut-divider content-position="left">文本</nut-divider>
+  <nut-divider content-position="right">文本</nut-divider>
 </template>
 ```
 
@@ -78,9 +70,7 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider dashed>文本</nut-divider>
-    </nut-cell>
+  <nut-divider dashed>文本</nut-divider>
 </template>
 ```
 
@@ -94,9 +84,7 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
-    </nut-cell>
+  <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
 </template>
 ```
 
@@ -108,15 +96,15 @@ app.use(Divider);
 
 ``` html
 <template>
-    <nut-cell>
-        <div :style="{fontSize: '14px'}">
-            文本
-            <nut-divider direction="vertical" />
-            <a href="#" :style="{ color: '#1989fa' }">链接</a>
-            <nut-divider direction="vertical" />
-            <a href="#" :style="{ color: '#1989fa' }">链接</a>
-        </div>
-    </nut-cell>
+  <nut-cell>
+    <div :style="{fontSize: '14px'}">
+      文本
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+    </div>
+  </nut-cell>
 </template>
 ```
 
