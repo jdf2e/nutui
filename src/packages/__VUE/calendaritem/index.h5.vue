@@ -65,12 +65,14 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, toRefs, computed, PropType } from 'vue';
+import { reactive, ref, watch, toRefs, computed, PropType, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import Taro from '@tarojs/taro';
+const TARO_ENV = Taro.getEnv();
 
 type InputDate = string | string[];
 type StringArr = string[];
@@ -192,6 +194,7 @@ export default create({
   setup(props, { emit, slots }) {
     const weeks = ref(translate('weekdays'));
     // element refs
+    const scalePx = ref(2);
     const months = ref<null | HTMLElement>(null);
     const monthsPanel = ref<null | HTMLElement>(null);
     const weeksPanel = ref<null | HTMLElement>(null);
@@ -460,13 +463,22 @@ export default create({
         cssHeight: 0,
         cssScrollHeight: 0
       };
-      monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+      let titleHeight, itemHeight;
+      if (TARO_ENV === Taro.ENV_TYPE.WEB) {
+        titleHeight = 46 * scalePx.value + 16 * scalePx.value * 2;
+        itemHeight = 128 * scalePx.value;
+      } else {
+        titleHeight = Math.floor(46 * scalePx.value) + Math.floor(16 * scalePx.value) * 2;
+        itemHeight = Math.floor(128 * scalePx.value);
+      }
+      monthInfo.cssHeight = titleHeight + (monthInfo.monthData.length > 35 ? itemHeight * 6 : itemHeight * 5);
+
       let cssScrollHeight = 0;
 
       if (state.monthsData.length > 0) {
         cssScrollHeight =
-          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssScrollHeight +
-          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssHeight;
+          state.monthsData[state.monthsData.length - 1].cssScrollHeight +
+          state.monthsData[state.monthsData.length - 1].cssHeight;
       }
       monthInfo.cssScrollHeight = cssScrollHeight;
       if (type == 'next') {
@@ -624,7 +636,11 @@ export default create({
         if (months?.value && monthsPanel?.value && viewArea?.value) {
           viewHeight.value = months.value.clientHeight;
           monthsPanel.value.style.height = `${containerHeight}px`;
-          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+          Taro.nextTick(() => {
+            if (months?.value) {
+              months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+            }
+          });
         }
       });
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
@@ -764,8 +780,22 @@ export default create({
     };
 
     // 初始化数据
-    initData();
-
+    onMounted(() => {
+      // 初始化数据
+      Taro.getSystemInfo({
+        success(res) {
+          let scale = 2;
+          let screenWidth = res.screenWidth;
+          let toFixed = 3;
+          if (TARO_ENV === Taro.ENV_TYPE.WEB) {
+            toFixed = 5;
+          }
+          scale = Number((screenWidth / 750).toFixed(toFixed));
+          scalePx.value = scale;
+          initData();
+        }
+      });
+    });
     // //监听 默认值更改
     watch(
       () => props.defaultValue,
