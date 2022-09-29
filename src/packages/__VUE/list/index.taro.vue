@@ -20,7 +20,7 @@ import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('list');
-const clientHeight = Taro.getSystemInfoSync().windowHeight;
+const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
 export default create({
   props: {
     height: {
@@ -35,7 +35,7 @@ export default create({
     },
     containerHeight: {
       type: [Number],
-      default: clientHeight || 667
+      default: clientHeight
     }
   },
   emits: ['scroll', 'scroll-bottom'],

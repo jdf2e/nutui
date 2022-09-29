@@ -34,9 +34,9 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, watchEffect, computed } from 'vue';
+import { toRefs, watchEffect, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('pagination');
+const { create, translate } = createComponent('pagination');
 
 export default create({
   props: {
@@ -92,13 +92,13 @@ export default create({
     });
 
     //点击选择page
-    const select = (curPage, isSelect) => {
+    const select = (curPage: number, isSelect: boolean) => {
       if (curPage > countRef.value || curPage < 1) return;
       if (curPage != modelValue.value) emit('update:modelValue', curPage);
       if (isSelect) emit('change', curPage);
     };
     //set page 对象
-    const setPage = (number, text, active) => {
+    const setPage = (number: number, text: string | number, active = false) => {
       return { number, text, active };
     };
     //生成pages数组，用来遍历
@@ -106,17 +106,17 @@ export default create({
       if (mode.value == 'simple') return;
       let items = [];
       const pageCount = countRef.value; //总的页面数量
-      const pageSize = showPageSize.value; //展示的页面个数
+      const pageSize = +showPageSize.value; //展示的页面个数
       let startPage = 1;
       let endPage = pageCount;
       const partialShow = pageCount > pageSize;
       if (partialShow) {
         //选中的page在展示的page中间
         startPage = Math.max(modelValue.value - Math.floor(pageSize / 2), 1);
-        endPage = startPage + pageSize - 1;
+        endPage = startPage + +pageSize - 1;
         if (endPage > pageCount) {
           endPage = pageCount;
-          startPage = endPage - pageSize + 1;
+          startPage = endPage - +pageSize + 1;
         }
       }
       //遍历生成数组

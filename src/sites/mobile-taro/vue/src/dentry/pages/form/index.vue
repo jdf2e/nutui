@@ -43,7 +43,18 @@
       </nut-cell>
     </nut-form>
     <h2>表单校验</h2>
-    <nut-form :model-value="formData" ref="ruleForm">
+    <nut-form
+      :model-value="formData"
+      :rules="{
+        name: [
+          {
+            message: 'Name should be at least two characters',
+            validator: nameLengthValidator
+          }
+        ]
+      }"
+      ref="ruleForm"
+    >
       <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
         <input
           class="nut-input-text"
@@ -294,6 +305,7 @@ export default {
     const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
       return (rule?.reg as RegExp).test(val);
     };
+    const nameLengthValidator = (val: string) => val?.length >= 2;
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -310,6 +322,7 @@ export default {
       validate,
       customValidator,
       customRulePropValidator,
+      nameLengthValidator,
       asyncValidator,
       customBlurValidate,
       submit,
