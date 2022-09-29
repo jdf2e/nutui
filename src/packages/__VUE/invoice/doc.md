@@ -1,8 +1,8 @@
-# Invoice f发票
+# Invoice 发票
 
 ### 介绍
 
-展示操作或任务的当前进度。
+展示申请发票页面。
 
 ### 安装
 
@@ -50,6 +50,20 @@ export default {
 
     let data: any = ref([
       {
+        type: 'radio',
+        label: '发票类型',
+        radioLabel: [
+          {
+            label: '企业'
+          },
+          {
+            label: '个人或事业单位'
+          }
+        ],
+        formItemProp: 'type',
+        required: true
+      },
+      {
         label: '发票抬头',
         placeholder: '请输入发票抬头',
         formItemProp: 'name',
@@ -92,6 +106,7 @@ export default {
     ]);
 
     const formValue = reactive({
+      type: '企业',
       name: '',
       num: '',
       adress: '',
@@ -123,23 +138,26 @@ export default {
 :::
 
 
-## Prop
+## Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | data | 发票数据 | array | -
-| formValue | 表单数据对象(使用表单校验时，_必填_) | object | -
+| form-value | 表单数据对象(使用表单校验时，_必填_) | object | -
 | submit | 是否显示提交按钮 | boolean | true
 
-### data 数据结构
+### Data Props
+
 
 可选属性如下:
 
 | 键名      | 说明                   | 类型                                    |
 |-----------|------------------------|-----------------------------------------|
+| type  | 类型，可选值有 `input`、`radio` | string                                 |
 | label  | 表单项 label         | string                                 |
 | placeholder   | 输入框 placeholder           | string                                  |
-| formItemProp | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string | -
+| radio-label   | 单选 label           | string                                  |
+| form-item-prop | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string | -
 | rules | 校验规则，[可参考 FormItem Rule 数据结构](#/form) | array | []
 | required | 是否显示必填字段的标签旁边的红色星号 | Boolean | `false`
 
@@ -147,4 +165,4 @@ export default {
 
 | 方法名            | 说明                                                               | 参数                | 返回值  |
 |-------------------|--------------------------------------------------------------------|---------------------|---------|
-| onSubmit            | 提交表单的方法                                             | -                   | Promise |
+| on-submit            | 提交表单的方法                                             | -                   | Promise |

@@ -79,6 +79,7 @@
         :rules="[
           { required: true, message: translate('ageTip') },
           { validator: customValidator, message: translate('ageTip2') },
+          { validator: customRulePropValidator, message: translate('ageTip2'), reg: /^\d+$/ },
           { regex: /^(\d{1,2}|1\d{2}|200)$/, message: translate('ageTip3') }
         ]"
       >
@@ -168,6 +169,7 @@ import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('form');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { FormItemRuleWithoutValidator } from '../formitem/types';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -391,6 +393,9 @@ export default createDemo({
     };
     // 函数校验
     const customValidator = (val: string) => /^\d+$/.test(val);
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      return (rule?.reg as RegExp).test(val);
+    };
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -406,6 +411,7 @@ export default createDemo({
       formData,
       validate,
       customValidator,
+      customRulePropValidator,
       asyncValidator,
       customBlurValidate,
       submit,

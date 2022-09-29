@@ -31,13 +31,6 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
-</script>
 <style lang="scss">
 #app{
   height: auto !important;
@@ -59,13 +52,6 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
-</script>
 <style lang="scss">
 #app{
   height: auto !important;
@@ -126,13 +112,6 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
-</script>
 <style lang="scss">
 #app{
   height: auto !important;

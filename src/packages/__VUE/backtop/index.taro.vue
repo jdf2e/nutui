@@ -65,7 +65,7 @@ export default create({
       };
     });
 
-    const scroll = (e) => {
+    const scroll = (e: any) => {
       state.scrollTop = 2;
       state.backTop = e.detail.scrollTop >= props.distance;
     };

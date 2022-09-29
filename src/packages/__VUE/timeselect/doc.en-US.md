@@ -14,7 +14,12 @@ import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui
 import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
+app.use(TimeSelect);
+app.use(TimePannel);
+app.use(TimeDetail);
+app.use(Popup);
+app.use(Icon);
+app.use(Overlay);
 ```
 
 ### Basic Usage
@@ -290,21 +295,19 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
   };
 </script>
 <style lang="scss" scoped>
-.demo {
-  .timeselect-title{
-    height: 50px;
-    p{
-      line-height: 1;
-      padding: 0;
-      margin: 0;
-      &.title{
-        margin: 10px 0;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      &.subtitle{
-        color: #999;
-      }
+.timeselect-title {
+  height: 50px;
+  p {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    &.title {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &.subtitle {
+      color: #999;
     }
   }
 }

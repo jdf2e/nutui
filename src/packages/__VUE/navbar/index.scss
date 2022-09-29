@@ -40,6 +40,12 @@
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
   }
+  &--fixed {
+    &.nut-navbar--safe-area-inset-top {
+      height: calc($navbar-height + constant(safe-area-inset-top));
+      height: calc($navbar-height + env(safe-area-inset-top));
+    }
+  }
   &--clickable {
     &::before {
       position: absolute;
@@ -110,10 +116,6 @@
   &__left {
     font-size: $cell-desc-font;
     color: $cell-desc-color;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -122,10 +124,6 @@
   &__right {
     font-size: $cell-desc-font;
     color: $cell-desc-color;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     padding: 0 16px;

@@ -138,6 +138,7 @@ export default {
   <nut-form-item label="年龄" prop="age" required :rules="[
       { required: true, message: '请填写年龄' },
       { validator: customValidator, message: '必须输入数字' },
+      { validator: customRulePropValidator, message: '必须输入数字', reg: /^\d+$/ },
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
     ]">
     <input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
@@ -196,6 +197,9 @@ setup(){
     };
     // 函数校验
     const customValidator = (val: string) => /^\d+$/.test(val);
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      return (rule?.reg as RegExp).test(val);
+    };
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -206,7 +210,7 @@ setup(){
         }, 1000);
       });
     };
-    return { ruleForm, formData, validate, customValidator, asyncValidator, customBlurValidate, submit, reset };
+    return { ruleForm, formData, validate, customValidator, customRulePropValidator, asyncValidator, customBlurValidate, submit, reset };
 }
 }
 </script>
