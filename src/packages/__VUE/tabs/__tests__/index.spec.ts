@@ -3,10 +3,12 @@ import Tabs from '../index.vue';
 import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
 import NutIcon from '../../icon/index.vue';
+import NutSticky from '../../sticky/index.vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    NutIcon,
+    NutSticky
   };
 });
 
