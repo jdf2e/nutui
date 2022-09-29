@@ -100,7 +100,7 @@ export default create({
     },
     filter: Function as PropType<import('./type').Filter>
   },
-  emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
+  emits: ['click', 'update:visible', 'change', 'confirm', 'update:modelValue'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -317,6 +317,9 @@ export default create({
     };
 
     const confirm = (val: Event) => {
+      if (state.currentDate.getTime() !== new Date(props.modelValue).getTime()) {
+        emit('update:modelValue', state.currentDate);
+      }
       emit('update:visible', false);
       emit('confirm', val);
     };

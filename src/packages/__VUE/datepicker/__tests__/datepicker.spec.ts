@@ -80,3 +80,19 @@ test('Increment step setting', async () => {
   const yearItem = wrapper.findAll('.nut-picker__list')[1].findAll('.nut-picker-roller-item');
   expect(yearItem.length).toBe(12);
 });
+
+test('should emit "update:modelValue" event when item is selected', async () => {
+  const wrapper = mount(DatePicker, {
+    props: {
+      type: 'year-month',
+      minDate: new Date(2020, 0, 1),
+      visible: true,
+      isWrapTeleport: false
+    }
+  });
+  await nextTick();
+  expect(wrapper.find('.nut-picker__confirm').exists()).toBeTruthy();
+  const confirm = wrapper.find('.nut-picker__confirm');
+  confirm.trigger('click');
+  expect(wrapper.emitted('update:modelValue')!.pop()).toEqual([new Date(2020, 0, 1)]);
+});
