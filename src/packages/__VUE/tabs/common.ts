@@ -117,7 +117,7 @@ export const component = {
     };
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
-      vnodes = vnodes.filter((item) => typeof item.children !== 'string');
+      vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
       if (vnodes && vnodes.length) {
         renderTitles(vnodes);
       }
