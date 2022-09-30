@@ -1,18 +1,35 @@
 <template>
-  <nut-popup
-    v-model:visible="innerVisible"
-    position="bottom"
-    pop-class="nut-cascader__popup"
-    round
-    :closeable="!closeable"
-    :close-icon="closeIcon"
-    :destroy-on-close="false"
-    :close-icon-position="closeIconPosition"
-  >
-    <template v-if="title">
-      <view class="nut-cascader__bar" v-html="title"></view>
-    </template>
+  <template v-if="poppable">
+    <nut-popup
+      v-model:visible="innerVisible"
+      position="bottom"
+      pop-class="nut-cascader__popup"
+      round
+      :closeable="!closeable"
+      :close-icon="closeIcon"
+      :destroy-on-close="false"
+      :close-icon-position="closeIconPosition"
+    >
+      <template v-if="title">
+        <view class="nut-cascader__bar" v-html="title"></view>
+      </template>
 
+      <nut-cascader-item
+        @change="onChange"
+        @path-change="onPathChange"
+        :modelValue="innerValue"
+        :options="options"
+        :lazy="lazy"
+        :lazy-load="lazyLoad"
+        :value-key="valueKey"
+        :text-key="textKey"
+        :children-key="childrenKey"
+        :convert-config="convertConfig"
+        :visible="innerVisible"
+      />
+    </nut-popup>
+  </template>
+  <template v-else>
     <nut-cascader-item
       @change="onChange"
       @path-change="onPathChange"
@@ -26,7 +43,7 @@
       :convert-config="convertConfig"
       :visible="innerVisible"
     />
-  </nut-popup>
+  </template>
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
@@ -62,6 +79,10 @@ export default create({
     childrenKey: {
       type: String,
       default: 'children'
+    },
+    poppable: {
+      type: Boolean,
+      default: true
     },
     convertConfig: Object
   },
