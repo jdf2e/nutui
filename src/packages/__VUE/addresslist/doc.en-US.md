@@ -254,15 +254,15 @@ export default {
 
 | Event              | Description                  | Arguments         | Remark               |
 | ------------------ | ---------------------------- | ----------------- | ------------------ |
-| handelDelIcon      | Click the delete icon        | event: Event,item | public               |
-| handelEditIcon     | Click the edit icon          | event: Event,item | public               |
-| handelDelIcon      | Click the delete icon        | event: Event,item | public               |
-| handelItem         | Click on each item in the address list | event: Event,item | public     |
-| addAddressClick    | Click the Add Address button at the bottom | event: Event   | public |
-| longPressCopyClick | Click the Copy Address button      | event: Event,item | Click event under long press function |
-| longPressSetClick  | Click the Set Default button       | event: Event,item | Click event under long press function  |
-| longPressDelClick  | Click the Delete Address button    | event: Event,item | Click event under long press function |
-| swipeDelClick      | Default right swipe delete button  | event: Event,item | Click event under swipe function |
+| handel-del-icon      | Click the delete icon        | event: Event,item | public               |
+| handel-edit-icon     | Click the edit icon          | event: Event,item | public               |
+| handel-del-icon      | Click the delete icon        | event: Event,item | public               |
+| handel-item         | Click on each item in the address list | event: Event,item | public     |
+| add-address-click    | Click the Add Address button at the bottom | event: Event   | public |
+| long-press-copy-click | Click the Copy Address button      | event: Event,item | Click event under long press function |
+| long-press-set-click  | Click the Set Default button       | event: Event,item | Click event under long press function  |
+| long-press-del-click  | Click the Delete Address button    | event: Event,item | Click event under long press function |
+| swipe-del-click      | Default right swipe delete button  | event: Event,item | Click event under swipe function |
 
 ### Slots
 

@@ -25,6 +25,7 @@ const config = {
     options: {}
   },
   framework: 'vue3',
+  compiler: 'webpack5',
   mini: {
     postcss: {
       pxtransform: {

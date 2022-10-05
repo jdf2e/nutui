@@ -69,7 +69,7 @@
   "nav": [
     {
       "name": "基础组件",
-      "enName": "base",
+      "enName": "basic",
       "packages": [
         {
           "version": "3.0.0",
@@ -1098,6 +1098,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "liukun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TrendArrow",
+          "cType": "展示组件",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "liukun"
         }
       ]
     },
@@ -1247,6 +1258,18 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Invoice",
+          "cType": "特色组件",
+          "cName": "发票",
+          "desc": "发票",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "ailululu",
+          "taro": true
         }
       ]
     }

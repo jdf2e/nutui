@@ -11,8 +11,6 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('t2')">
       <nut-cell is-Link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('t3')">
       <nut-cell is-Link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
       <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
     </nut-cell-group>
@@ -36,7 +34,7 @@ const initTranslate = () =>
     'zh-CN': {
       basic: '基本用法',
       t1: '通知类型',
-      t2: '自定义样式',
+      t2: '自定义',
       t3: '自定义时长',
       cusPostion: '自定义位置',
       useTemplate: '组件调用',
@@ -49,7 +47,7 @@ const initTranslate = () =>
     'en-US': {
       basic: 'Basic Usage',
       t1: 'Notify Type',
-      t2: 'Custom Style',
+      t2: 'Custom',
       t3: 'Custom Duration',
       cusPostion: 'Custom Postion',
       useTemplate: 'Template use',

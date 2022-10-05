@@ -14,9 +14,9 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader)
-.use(Tabs)
-.use(TabPane);
+app.use(Cascader);
+app.use(Tabs);
+app.use(TabPane);
 ```
 
 ### Basic Usage
@@ -139,7 +139,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
       title="Select address"
       v-model:visible="state.visible"
       v-model="state.value"
-      label-key="text"
+      text-key="text"
       @change="events.change"
       @path-change="events.pathChange"
       value-key="text"
@@ -435,10 +435,11 @@ export default {
 | close-icon-position `v3.1.21` | Cancel the button position and inherit the popup component                                                   | String   | "top-right" |
 | close-icon `v3.1.21` | Customize the close button and inherit the popup component                                                   | String   | "close"     |
 | closeable `v3.1.21` | Whether to display the close button and inherit the popup component                                          | Boolean  | true        |
+| poppable `v3.2.3` | Whether to display the popup（After setting to false, the title is invalid） | Boolean   | true     |
 
 ### Events
 
 | Event      | Description                               | Arguments          |
 |------------|-------------------------------------------|--------------------|
 | change     | Triggered when the selected value changes | (value, pathNodes) |
-| pathChange | Triggered when the selected item changes  | (pathNodes)        |
+| path-change | Triggered when the selected item changes  | (pathNodes)        |

@@ -1,17 +1,18 @@
 <template>
-  <view :class="classes" @scroll.passive="handleScrollEvent" ref="list">
+  <div :class="classes" :style="{ height: `${getContainerHeight}px` }" @scroll.passive="handleScrollEvent" ref="list">
     <div class="nut-list-phantom" :style="{ height: listHeight + 'px' }"></div>
     <div class="nut-list-container" :style="{ transform: getTransform }">
       <div class="nut-list-item" :style="{ height: height + 'px' }" v-for="(item, index) in visibleData" :key="item">
         <slot :item="item" :index="index"></slot>
       </div>
     </div>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('list');
+const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
 export default create({
   props: {
     height: {
@@ -26,7 +27,7 @@ export default create({
     },
     containerHeight: {
       type: [Number],
-      default: document.documentElement.clientHeight || document.body.clientHeight || 667
+      default: clientHeight
     }
   },
   emits: ['scroll', 'scroll-bottom'],
@@ -39,8 +40,12 @@ export default create({
       list: props.listData.slice()
     });
 
+    const getContainerHeight = computed(() => {
+      return Math.min(props.containerHeight, clientHeight);
+    });
+
     const visibleCount = computed(() => {
-      return Math.ceil(props.containerHeight / props.height);
+      return Math.ceil(getContainerHeight.value / props.height);
     });
 
     const end = computed(() => {
@@ -90,6 +95,7 @@ export default create({
       listHeight,
       visibleData,
       classes,
+      getContainerHeight,
       handleScrollEvent
     };
   }
