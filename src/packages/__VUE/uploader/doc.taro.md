@@ -82,7 +82,7 @@ app.use(Progress);
 :::demo
 ```html
 <template>
-  <nut-uploader url="https://xxxx" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">

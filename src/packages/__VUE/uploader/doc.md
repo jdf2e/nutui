@@ -293,7 +293,7 @@ export default {
 ```html
 <!-- 当上传方式为put时，直接上传源文件file流 -->
 <template>
-  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
