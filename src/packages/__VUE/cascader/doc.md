@@ -435,6 +435,7 @@ export default {
 | close-icon-position `v3.1.21` | 取消按钮位置，继承 Popup 组件 | String   | "top-right"      |
 | close-icon `v3.1.21` | 自定义关闭按钮，继承 Popup 组件 | String   | "close"     |
 | closeable `v3.1.21` | 是否显示关闭按钮，继承 Popup 组件 | Boolean   | true     |
+| poppable `v3.2.3` | 是否需要弹层展示（设置为false后，title失效） | Boolean   | true     |
 
 ### Events
 

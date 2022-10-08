@@ -20,6 +20,7 @@
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
+      transition="transition-none"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"

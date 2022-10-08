@@ -302,8 +302,8 @@ app.use(ImagePreview);
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | ----- 
 | show | Whether to show preview | Boolean | false
-| videos | Videos Array(Videos are before images, not support in taro) | Array<`Object`> | []
-| images | Images array | Array<`String`> | []
+| videos | Videos Array(Videos are before images, not support in taro) |  VideoArray[] | []
+| images | Images array | ImageArray[] | []
 | autoplay | Autoplay time, zero means not autoplay | Number、String  | 3000  |
 | init-no | Init no | Number | 1
 | pagination-visible | Whether to show pagination    | Boolean | false |
@@ -317,7 +317,18 @@ app.use(ImagePreview);
 | max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
 
+### Data Structure of ImageArray 
 
+| Key | Description | Type | 
+|----- | ----- | ----- | 
+| src | img url | String | 
+
+### Data Structure of VideoArray
+
+| Key | Description | Type | 
+|----- | ----- | ----- | 
+| source | Video url and type settings | Object | 
+| options | Control video playback properties| Object | 
     
 ### Events
 

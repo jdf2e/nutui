@@ -25,9 +25,7 @@ Default render one horizontal divider line.
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider />
-    </nut-cell>
+  <nut-divider />
 </template>
 ```
 
@@ -41,9 +39,7 @@ Insert text into divider with default slot.
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider>text</nut-divider>
-    </nut-cell>
+  <nut-divider>text</nut-divider>
 </template>
 ```
 
@@ -57,12 +53,8 @@ Set Content Position with content-position attribute.
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider content-position="left">text</nut-divider>
-    </nut-cell>
-    <nut-cell>
-        <nut-divider content-position="right">text</nut-divider>
-    </nut-cell>
+  <nut-divider content-position="left">text</nut-divider>
+  <nut-divider content-position="right">text</nut-divider>
 </template>
 ```
 
@@ -77,9 +69,7 @@ Render dashed divider line with dashed attribute.
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider dashed>text</nut-divider>
-    </nut-cell>
+  <nut-divider dashed>text</nut-divider>
 </template>
 ```
 
@@ -93,9 +83,7 @@ User can custom divider style with style attribute.
 
 ``` html
 <template>
-    <nut-cell>
-        <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">text</nut-divider>
-    </nut-cell>
+  <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">text</nut-divider>
 </template>
 ```
 
@@ -107,15 +95,15 @@ User can custom divider style with style attribute.
 
 ``` html
 <template>
-    <nut-cell>
-        <div :style="{fontSize: '14px'}">
-            Text
-            <nut-divider direction="vertical" />
-            <a href="#" :style="{ color: '#1989fa' }">Link</a>
-            <nut-divider direction="vertical" />
-            <a href="#" :style="{ color: '#1989fa' }">Link</a>
-        </div>
-    </nut-cell>
+  <nut-cell>
+    <div :style="{fontSize: '14px'}">
+      Text
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">Link</a>
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">Link</a>
+    </div>
+  </nut-cell>
 </template>
 ```
 

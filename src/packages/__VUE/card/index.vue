@@ -74,8 +74,6 @@ export default create({
   },
 
   setup(props, { emit, slots }) {
-    // console.log(slots['origin']);
-
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };

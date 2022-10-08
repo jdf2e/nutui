@@ -38,25 +38,6 @@
     >
     </nut-picker>
 
-    <h2>平铺展示</h2>
-    <nut-cell
-      title="请选择城市"
-      :desc="title"
-      @click="
-        () => {
-          showTitle = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model:visible="showTitle"
-      :columns="columns"
-      title="城市选择"
-      :three-dimensional="false"
-      @confirm="(options) => confirm('title', options)"
-    >
-    </nut-picker>
-
     <h2>多列样式</h2>
     <nut-cell
       title="请选择时间"
@@ -130,24 +111,6 @@
     >
       <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
     >
-
-    <!-- <h2>异步获取</h2>
-    <nut-cell
-      title="异步获取"
-      :desc="effect"
-      @click="
-        () => {
-          showPort = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model:visible="showPort"
-      :columns="portColumns"
-      title="异步获取"
-      @confirm="(options) => confirm('effect', options)"
-      @change="portChange"
-    ></nut-picker> -->
   </div>
 </template>
 <script lang="ts">

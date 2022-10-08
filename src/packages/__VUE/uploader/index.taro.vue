@@ -68,6 +68,7 @@ import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
+import { isPromise } from '@/packages/utils/util';
 export default create({
   props: {
     name: { type: String, default: 'file' },
@@ -220,6 +221,7 @@ export default create({
         uploadQueue.splice(index, 1);
       } else {
         uploadQueue = [];
+        fileList.splice(0, fileList.length);
       }
     };
     const submit = () => {
@@ -282,17 +284,31 @@ export default create({
       }
       return files;
     };
+
+    const deleted = (file: import('./type').FileItem, index: number) => {
+      fileList.splice(index, 1);
+      emit('delete', {
+        file,
+        fileList,
+        index
+      });
+    };
+
     const onDelete = (file: import('./type').FileItem, index: number) => {
       clearUploadQueue(index);
-      if (props.beforeDelete(file, fileList)) {
-        fileList.splice(index, 1);
-        emit('delete', {
-          file,
-          fileList,
-          index
+      let fn = props.beforeDelete(file, fileList);
+      if (isPromise(fn)) {
+        fn.then((res) => {
+          if (res) {
+            deleted(file, index);
+          }
+        }).catch((error) => {
+          console.log(error, '用户阻止了删除！');
         });
+      } else if (fn) {
+        deleted(file, index);
       } else {
-        // console.log('用户阻止了删除！');
+        console.log('用户阻止了删除！');
       }
     };
 

@@ -98,7 +98,7 @@ body {
 |--------------|----------------------------------|--------|------------------|
 | height         | The height of the list item               | Number | `50`                |
 | list-data         | List data               | any[] | `[]`                |
-| container-height `v3.1.19`        | Container height              | Number | `Visual area height`                |
+| container-height `v3.1.19`        | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
 
 ### Slot
 
