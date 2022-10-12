@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Cascader change tab 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -66,11 +66,11 @@ exports[`Cascader change tab 1`] = `
 `;
 
 exports[`Cascader change tab 2`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -131,11 +131,11 @@ exports[`Cascader change tab 2`] = `
 `;
 
 exports[`Cascader change tab 3`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -196,11 +196,11 @@ exports[`Cascader change tab 3`] = `
 `;
 
 exports[`Cascader modelValue 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-fade-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -228,11 +228,11 @@ exports[`Cascader modelValue 1`] = `
 `;
 
 exports[`Cascader modelValue 2`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -293,11 +293,11 @@ exports[`Cascader modelValue 2`] = `
 `;
 
 exports[`Cascader modelValue 3`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -331,11 +331,11 @@ exports[`Cascader modelValue 3`] = `
 `;
 
 exports[`Cascader modelValue 4`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -369,11 +369,11 @@ exports[`Cascader modelValue 4`] = `
 `;
 
 exports[`Cascader modelValue with lazy 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -397,11 +397,11 @@ exports[`Cascader modelValue with lazy 1`] = `
 `;
 
 exports[`Cascader modelValue with lazy 2`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -465,11 +465,11 @@ exports[`Cascader modelValue with lazy 2`] = `
 `;
 
 exports[`Cascader options 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -530,11 +530,11 @@ exports[`Cascader options 1`] = `
 `;
 
 exports[`Cascader options with convertConfig 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -577,11 +577,11 @@ exports[`Cascader options with convertConfig 1`] = `
 `;
 
 exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -642,11 +642,11 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
 `;
 
 exports[`Cascader select 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -680,11 +680,11 @@ exports[`Cascader select 1`] = `
 `;
 
 exports[`Cascader select 2`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -745,11 +745,11 @@ exports[`Cascader select 2`] = `
 `;
 
 exports[`Cascader select 3`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -810,11 +810,11 @@ exports[`Cascader select 3`] = `
 `;
 
 exports[`Cascader select 4`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -848,11 +848,11 @@ exports[`Cascader select 4`] = `
 `;
 
 exports[`Cascader select with lazy 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-fade-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -870,11 +870,11 @@ exports[`Cascader select with lazy 1`] = `
 `;
 
 exports[`Cascader select with lazy 2`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -905,11 +905,11 @@ exports[`Cascader select with lazy 2`] = `
 `;
 
 exports[`Cascader select with lazy 3`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -955,11 +955,11 @@ exports[`Cascader select with lazy 3`] = `
 `;
 
 exports[`Cascader select with lazy 4`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -1020,11 +1020,11 @@ exports[`Cascader select with lazy 4`] = `
 `;
 
 exports[`Cascader select with lazy 5`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -1085,11 +1085,11 @@ exports[`Cascader select with lazy 5`] = `
 `;
 
 exports[`Cascader select with lazy 6`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -1120,11 +1120,11 @@ exports[`Cascader select with lazy 6`] = `
 `;
 
 exports[`Cascader select with lazy 7`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000; display: none;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
@@ -1170,11 +1170,11 @@ exports[`Cascader select with lazy 7`] = `
 `;
 
 exports[`Cascader visible 1`] = `
-"<teleport-stub to=\\"body\\">
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+"<teleport-stub>
+  <transition-stub class=\\"\\">
     <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2001;\\"></view>
   </transition-stub>
-  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <transition-stub>
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2001; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">

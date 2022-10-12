@@ -3,10 +3,10 @@
 exports[`should render sure actionsheet when use custom props 1`] = `
 "<view class=\\"nut-actionsheet\\">
   <view>
-    <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
+    <transition-stub class=\\"\\">
       <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
     </transition-stub>
-    <transition-stub name=\\"popup-fade-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+    <transition-stub>
       <view class=\\"nut-popup round popup-bottom popclass\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
         <view class=\\"nut-actionsheet-panel\\">
           <!--v-if-->
