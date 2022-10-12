@@ -17,6 +17,12 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 
 ## 视频教程
 
+- [NutUI 项目实践 - 开发京东购物小程序之首页开发](https://www.bilibili.com/video/BV1PP411n7Mq/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI 组件能力分析和夯实](https://www.bilibili.com/video/BV1UP4y1d7fq/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI 项目实践 - 开发京东购物小程序之项目搭建](https://www.bilibili.com/video/BV1EB4y1q7hM/?spm_id_from=333.337.search-card.all.click&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI 一分钟快速在线主题定制](https://www.bilibili.com/video/BV1fi4y1D7qb/?share_source=copy_web&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI-VSCode智能提示来了](https://www.bilibili.com/video/BV1xZ4y1h7Pg/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+
 
 ## 开发技巧
 
@@ -26,7 +32,8 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 - [主流移动端组件库的对比和分析](https://jelly.jd.com/article/62cfc23825ea640188105a7f)
 - [可线性渐变的环形进度条的实现探究](https://jelly.jd.com/article/62df9cab05de4d019ec758fd)
 - [开发者的福利 - NutUI-VSCode 智能提示来了](https://jelly.jd.com/article/6278e71f8acc790195e0c254)
-- 
+- [Vue组件库工程探索与实践——按需加载](https://www.jianshu.com/p/a07b1f699c0e)
+
 
 ## 项目实践
 
@@ -41,6 +48,8 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 - [如何用 Canvas 拍出 JDer's 工作照](https://jelly.jd.com/article/5ecf17905ea1c6015178a7c5)
 - [倒带，回看我们「动」起来的2019](https://jelly.jd.com/article/5e202f35fc9e0d0152c1d534)
 - [京东PLUS会员项目前端性能优化实践](https://jelly.jd.com/article/5c66173eef943d0054d09b3f)
+
+
 
 
 
