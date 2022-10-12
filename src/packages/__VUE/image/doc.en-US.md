@@ -134,8 +134,8 @@ The Image component provides a default loading failure warning and supports cust
 | height         | Height，Default unit px              | String | -                |
 | round         | Whether to be round               | Boolean | false              |
 | radius         | Border Raduis               | String \| Numer | -                |
-| showError         | Whether to show error placeholder | Boolean | false              |
-| showLoading         | Whether to show loading placeholder | Boolean | true              |
+| show-error         | Whether to show error placeholder | Boolean | false              |
+| show-loading         | Whether to show loading placeholder | Boolean | true              |
 
 ### ImageFit 
 
