@@ -57,6 +57,23 @@ export default {
 
 :::
 
+### slot usage
+
+:::demo
+
+```html
+<template>
+  <nut-barrage>
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+    <span>ddd</span>
+  </nut-barrage>
+</template>
+```
+
+:::
+
 
 ## API
 

@@ -19,7 +19,30 @@
         }}</view>
       </view>
       <slot name="top"></slot>
-      <view class="nut-picker__column">
+
+      <!-- Taro 下转换成 微信小程序 -->
+      <picker-view
+        v-if="ENV == ENV_TYPE.WEAPP"
+        indicator-style="height: 34px;"
+        :value="defaultIndexes"
+        style="width: 100%; height: 252px"
+        :immediate-change="true"
+        @change="tileChange"
+        @pickstart="handlePickstart"
+        @pickend="handlePickend"
+      >
+        <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+          <view
+            class="nut-picker-roller-item-tarotile"
+            v-for="(item, index) in column"
+            :key="item.value ? item.value : index"
+          >
+            {{ item.text }}
+          </view>
+        </picker-view-column>
+      </picker-view>
+      <!-- Taro 下转换成 H5 -->
+      <view class="nut-picker__column" v-if="ENV == ENV_TYPE.WEB">
         <view class="nut-picker__hairline" ref="pickerline" :id="'pickerline' + refRandomId"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
@@ -29,7 +52,7 @@
             :readonly="readonly"
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
-            :threeDimensional="threeDimensional"
+            :threeDimensional="false"
             :swipeDuration="swipeDuration"
             :lineSpacing="lineSpacing"
             @change="
@@ -100,13 +123,17 @@ export default create({
     const state = reactive({
       show: false,
       formattedColumns: props.columns as import('./types').PickerOption[],
-      lineSpacing: 36
+      lineSpacing: 36,
+      picking: false,
+      ENV: Taro.getEnv(),
+      ENV_TYPE: Taro.ENV_TYPE
     });
 
     const pickerline = ref(null);
-
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
+    // 选中项的位置
+    let defaultIndexes = ref<number[]>([]);
 
     const pickerColumn = ref<any[]>([]);
 
@@ -148,6 +175,7 @@ export default create({
       }
       return 'single';
     });
+
     // 将传入的 columns 格式化
     const columnsList = computed(() => {
       switch (columnsType.value) {
@@ -185,6 +213,7 @@ export default create({
       return formatted;
     };
 
+    // 关闭
     const close = () => {
       emit('close', {
         selectedValue: defaultValues.value,
@@ -193,6 +222,7 @@ export default create({
       emit('update:visible', false);
     };
 
+    // 选择
     const changeHandler = (columnIndex: number, option: import('./types').PickerOption) => {
       if (option && Object.keys(option).length) {
         if (columnsType.value === 'cascade') {
@@ -221,38 +251,96 @@ export default create({
       }
     };
 
-    const confirmHandler = () => {
-      pickerColumn.value.length > 0 &&
-        pickerColumn.value.forEach((column) => {
-          column.stopMomentum();
+    const defaultValuesConvert = computed(() => {
+      let defaultIndexs = [];
+      if (defaultValues.value.length > 0) {
+        defaultValues.value.forEach((value, index) => {
+          for (let i = 0; i < columnsList.value[index].length; i++) {
+            if (columnsList.value[index][i].value == value) {
+              defaultIndexs.push(i);
+              break;
+            }
+          }
         });
+      }
 
+      return defaultIndexs;
+    });
+
+    // 平铺展示时，滚动选择
+    const tileChange = ({ detail }) => {
+      console.log('选择');
+      const prevDefaultValue = defaultIndexes.value;
+      let changeIndex = 0;
+      // 判断变化的是第几个
+      detail.value.forEach((col, index) => {
+        if (prevDefaultValue[index] != col) changeIndex = index;
+      });
+
+      if (state.show) {
+        defaultIndexes.value = detail.value;
+        // 选择的是哪个 option
+        changeHandler(changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
+      }
+    };
+
+    // 确定
+    const confirmHandler = () => {
+      if (state.picking) {
+        console.log('滚动中');
+        setTimeout(() => {
+          confirmHandlerAwit();
+        }, 0);
+      } else {
+        confirmHandlerAwit();
+      }
+    };
+
+    const confirmHandlerAwit = () => {
       if (defaultValues.value && !defaultValues.value.length) {
         columnsList.value.forEach((columns) => {
           defaultValues.value.push(columns[0].value);
           selectedOptions.value.push(columns[0]);
         });
       }
-
+      console.log('确定', defaultValues.value);
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value
       });
       emit('update:visible', false);
+
+      state.show = false;
+    };
+
+    // 开始滚动
+    const handlePickstart = () => {
+      console.log('开始滚动');
+      state.picking = true;
+    };
+    // 开始滚动
+    const handlePickend = () => {
+      console.log('滚动结束');
+      state.picking = false;
     };
 
     const refRandomId = Math.random().toString(36).slice(-8);
 
     const getReference = async () => {
       const refe = await useTaroRect(pickerline, Taro);
+      console.log(refe.height);
       state.lineSpacing = refe.height ? refe.height : 36;
     };
 
     onMounted(() => {
       if (props.visible) {
-        setTimeout(() => {
-          getReference();
-        }, 200);
+        if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+          setTimeout(() => {
+            getReference();
+          }, 200);
+        } else {
+          defaultIndexes.value = defaultValuesConvert.value;
+        }
         state.show = props.visible;
       }
     });
@@ -267,6 +355,7 @@ export default create({
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
+          defaultIndexes.value = defaultValuesConvert.value;
         }
       },
       { deep: true }
@@ -287,12 +376,17 @@ export default create({
       () => props.visible,
       (val) => {
         state.show = val;
-        if (val) {
-          setTimeout(() => {
-            getReference();
-          }, 200);
 
-          pickerColumn.value = [];
+        if (val) {
+          if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+            setTimeout(() => {
+              getReference();
+            }, 200);
+
+            pickerColumn.value = [];
+          } else {
+            defaultIndexes.value = defaultValuesConvert.value;
+          }
         }
       }
     );
@@ -314,11 +408,16 @@ export default create({
       changeHandler,
       confirmHandler,
       defaultValues,
+      defaultIndexes,
       translate,
       pickerColumn,
       swipeRef,
       refRandomId,
-      pickerline
+      pickerline,
+      tileChange,
+      defaultValuesConvert,
+      handlePickstart,
+      handlePickend
     };
   }
 });

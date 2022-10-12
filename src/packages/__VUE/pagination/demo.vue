@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -51,7 +51,7 @@ export default createDemo({
       currentPage3: 1
     });
     const pageChange = (value: number) => {
-      console.log(value);
+      console.log('page change', value);
     };
 
     return {

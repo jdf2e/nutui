@@ -69,7 +69,7 @@
   "nav": [
     {
       "name": "基础组件",
-      "enName": "base",
+      "enName": "basic",
       "packages": [
         {
           "version": "3.0.0",
