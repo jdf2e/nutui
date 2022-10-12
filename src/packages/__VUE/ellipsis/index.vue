@@ -2,9 +2,9 @@
   <view :class="classes" @click="handleClick" ref="root">
     <view v-if="!exceeded">{{ content }}</view>
     <view v-if="exceeded && !expanded">
-      {{ ellipsis.leading
-      }}<span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span
-      >{{ ellipsis.tailing }}
+      {{ ellipsis.leading }}
+      <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span>
+      {{ ellipsis.tailing }}
     </view>
     <view v-if="exceeded && expanded">
       {{ content }}
@@ -48,6 +48,10 @@ export default create({
     symbol: {
       type: String,
       default: '...'
+    },
+    lineHeight: {
+      type: [Number, String],
+      default: '20'
     }
   },
   emits: ['click', 'change'],
@@ -105,7 +109,7 @@ export default create({
       container.style.whiteSpace = 'normal';
       container.style.webkitLineClamp = 'unset';
       container.style.display = 'block';
-      const lineHeight = pxToNumber(originStyle.lineHeight);
+      const lineHeight = pxToNumber(originStyle.lineHeight === 'normal' ? props.lineHeight : originStyle.lineHeight);
       maxHeight = Math.floor(
         lineHeight * (Number(props.rows) + 0.5) +
           pxToNumber(originStyle.paddingTop) +
@@ -114,7 +118,6 @@ export default create({
 
       container.innerText = props.content;
       document.body.appendChild(container);
-
       calcEllipse();
     };
 
@@ -202,9 +205,9 @@ export default create({
       }
     };
 
-    const pxToNumber = (value: string | null) => {
+    const pxToNumber = (value: string | null | number) => {
       if (!value) return 0;
-      const match = value.match(/^\d*(\.\d*)?/);
+      const match = (value as string).match(/^\d*(\.\d*)?/);
       return match ? Number(match[0]) : 0;
     };
 

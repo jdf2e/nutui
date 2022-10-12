@@ -93,6 +93,7 @@ app.use(Ellipsis);
 | expand-text         | 展开操作的文案               | String | ''              |
 | collapse-text         | 收起操作的文案               | String | ''               |
 | symbol         | 省略的符号     | String | '...'       |
+| line-height          | 容器的行高     | String、Number | 20       |
 
 ### Events
 
