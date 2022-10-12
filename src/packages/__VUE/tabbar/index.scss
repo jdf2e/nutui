@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   height: 50px;
-  box-sizing: border-box;
+  box-sizing: content-box;
   background: $white;
 
   &:last-child {
