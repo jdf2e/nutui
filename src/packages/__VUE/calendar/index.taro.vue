@@ -1,5 +1,5 @@
 <template>
-  <template v-if="ENV == ENV_TYPE.WEAPP">
+  <template v-if="ENV != ENV_TYPE.WEB">
     <nut-popup
       v-if="poppable"
       v-model:visible="show"
