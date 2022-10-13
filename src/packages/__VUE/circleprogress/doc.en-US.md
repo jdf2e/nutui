@@ -131,8 +131,8 @@ export default {
 ```
 :::
 
-
-## Prop
+## API
+### Props
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
@@ -143,7 +143,7 @@ export default {
 | path-color | Track Color| String | '#d9d9d9'
 | stroke-linecap | Stroke linecap, can be set to square butt| String | 'round'
 | clockwise| Whether to be clockwise| Boolean | true
-## Slots
+### Slots
 
 | Name | Description | 
 |----- | ----- |

@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ```
 
-## Code demonstration
 
 ### Basic usage
 

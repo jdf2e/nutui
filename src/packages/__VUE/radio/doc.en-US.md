@@ -199,9 +199,9 @@ It is suggested to modify `icon-name` and `icon-active-name`
 ```
 :::
 
-## Props
+## API
 
-### Radio
+### Radio Props
 
 | Attribute             | Description                                                         | Type                    | Default            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
@@ -214,7 +214,7 @@ It is suggested to modify `icon-name` and `icon-active-name`
 | label            | Radio box ID                                                  | String、Number、Boolean | -                 |
 | shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
 
-### RadioGroup
+### RadioGroup Props
 
 | Attribute          | Description                                          | Type                    | Default     |
 |---------------|-----------------------------------------------|-------------------------|------------|
@@ -222,7 +222,7 @@ It is suggested to modify `icon-name` and `icon-active-name`
 | text-position | The position of the text, optional value：`left`,`right`        | String                  | `right`    |
 | direction     | Use horizontal and vertical optional values `horizontal`、`vertical`      | String                  | `vertical` |
 
-### RadioGroup Event
+### RadioGroup Events
 
 | Event   | Description         | Arguments                                           |
 |--------|--------------|----------------------------------------------------|

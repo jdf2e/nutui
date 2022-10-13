@@ -304,7 +304,7 @@ app.use(CountDown);
 
 ```
 :::
-### API
+## API
 
 ### Props
 
@@ -333,7 +333,7 @@ app.use(CountDown);
 | SS | 毫秒（2位） | 
 | SSS | 毫秒（3位） | 
 
-### Event
+### Events
 
 | 字段 | 说明 | 回调参数
 | ----- | ----- | ----- 

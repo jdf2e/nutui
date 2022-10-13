@@ -255,6 +255,8 @@ export default {
 </script>
 ```
 :::
+
+## API
 ### Collapse Props
 
 | 字段 | 说明 | 类型 | 默认值

@@ -131,8 +131,8 @@ export default {
 ```
 :::
 
-
-## Prop
+## API
+### Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
@@ -143,7 +143,7 @@ export default {
 | path-color | 圆环轨道颜色| String | '#d9d9d9'
 | stroke-linecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
 | clockwise| 是否顺时针展示| Boolean | true
-## Slots
+### Slots
 
 | 字段 | 说明 | 
 |----- | ----- |

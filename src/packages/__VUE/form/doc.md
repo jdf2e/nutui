@@ -340,7 +340,7 @@ setup(){
 ```
 :::
 
-
+## API
 ### Form Props
 
 | 参数        | 说明                                 | 类型   | 默认值 |
@@ -377,7 +377,7 @@ setup(){
 | validator | 通过函数进行校验       | (value) => boolean \| string \| Promise |
 | regex     | 通过正则表达式进行校验 | RegExp                                  |
 
-## FormItem Slots
+### FormItem Slots
 
 | 名称            | 说明              |
 |-----------------|-------------------|

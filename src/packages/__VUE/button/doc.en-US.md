@@ -17,7 +17,6 @@ const app = createApp();
 app.use(Button);
 ```
 
-## Code demonstration
 
 ### Type
 
@@ -130,7 +129,7 @@ Set the button shape through the `shape` property, support circle and square but
 
 :::
 
-#### Custom Icon
+### Custom Icon
 
 Refer to the custom icon in the `Icon` component description, where `icon-font-class-name` corresponds to the `font-class-name` of the Icon component, and `icon-class-prefix` corresponds to the `class-prefix` of the Icon component .
 

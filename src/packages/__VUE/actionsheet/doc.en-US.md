@@ -305,8 +305,8 @@ export default {
 
 ```
 :::
-
-## Props
+## API
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 |------------------|----------------------------------------|---------|-----------|
@@ -321,7 +321,7 @@ export default {
 | cancel-txt       | Text of cancel button                               | String  | 'cancel'   |
 | close-abled      | Whether the mask layer can be closed                       | Boolean | true      |
 
-## menu-items
+### MenuItems
 
 | Attribute            | Description               | Type   |
 |--------|--------------------|-----------------------------------|
@@ -331,7 +331,7 @@ export default {
 | loading | Whether to be loading status | Boolean          |
 | disable | Whether to be disabled | Boolean       |
 
-## Events
+### Events
 
 | Event | Description                  | Arguments    |
 |--------|--------------------|-----------------------------------|

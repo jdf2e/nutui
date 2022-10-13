@@ -146,8 +146,8 @@ export default {
 ```
 :::
 
-
-### Prop
+## API
+### Props
 | 字段                | 说明                       | 类型    | 默认值                       |
 |:--------------------|:---------------------------|:--------|:-----------------------------|
 | visible             | 是否打开                   | Boolean | false                        |
@@ -160,14 +160,14 @@ export default {
 | position            | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
 
 
-### Event
+### Events
 
 | 字段     | 说明         | 回调参数                 |
 |----------|--------------|--------------------------|
 | selected | 选择之后触发 | {item:item,$event:Event} |
 
 
-### Slot
+### Slots
 
 | 名称 | 说明               |
 |------|--------------------|
