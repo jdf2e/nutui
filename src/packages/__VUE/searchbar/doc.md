@@ -210,7 +210,8 @@ app.use(SearchBar).use(Icon);
 </script>
 ```
 :::
-    
+
+## API
 ### Props
     
 | 参数         | 说明                             | 类型   | 默认值           |
@@ -248,7 +249,7 @@ app.use(SearchBar).use(Icon);
 | click-left-icon `v3.1.21`|	点击左侧图标时触发 |	val, event |
 | click-right-icon `v3.1.21`|	点击右侧图标时触发 |	val, event |
 
-## Slots
+### Slots
 
 | 名称          | 说明                 |
 |---------------|----------------------|

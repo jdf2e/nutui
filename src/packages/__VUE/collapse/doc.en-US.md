@@ -19,7 +19,6 @@ app.use(Collapse);
 app.use(CollapseItem);
 ```
 
-### Code demonstration
 
 
 ### Basic Usage

@@ -360,7 +360,7 @@ export default {
 </template>
 ```
 :::
-
+## API
 ### Props
 
 | Attribute         | Description                                                                                                                                      | Type                              | Default          |

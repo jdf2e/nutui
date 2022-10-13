@@ -255,7 +255,8 @@ toast.hide();
 ```
 
 
-### API
+## API
+### Methods
 | Methods                    | Description              | Attribute          | Return value     |
 | ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
 | Toast.text                | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
@@ -265,7 +266,7 @@ toast.hide();
 | Toast.hide                | Close toast     | clearAll: boolean   | void       |
 | Toast.loading             | Show loading toast      | message｜ options | toast instance |
 
-## Options
+### ToastOptions
 
 | 字段                | 说明                                                                          | 类型          | 默认值                        |
 | ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |

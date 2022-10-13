@@ -144,6 +144,7 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
+## API
 ### Props  
 
 | Attribute            | Description               | Type   | Default  |

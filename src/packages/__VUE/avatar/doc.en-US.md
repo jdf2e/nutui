@@ -193,7 +193,7 @@ Icon and letter types can have custom colors and background colors
 
 :::
 
-
+## API
 ### Avatar Props
 
 | Attribute | Description                                                        | Type   | Default |

@@ -212,7 +212,7 @@ export default {
 | --------- | -------------------- | ---------- |
 | on-change | 点击右侧分类数据触发 | 点击的数据 |
 
-## CategoryPane Slots
+### CategoryPane Slots
 
 | 名称    | 说明       |
 | ------- | ---------- |

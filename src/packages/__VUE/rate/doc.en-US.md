@@ -194,8 +194,8 @@ export default {
 :::
 
 
-
-## Prop
+## API
+### Props
 
 | Attribute          | Description                                                                      | Type    | Default          |
 |--------------------|----------------------------------------------------------------------------------|---------|------------------|
@@ -215,7 +215,7 @@ export default {
 | touchable`v3.1.22` | Whether to allow select rate by touch gesture                                    | Boolean | true             |
 
 
-## Event
+### Events
 | Event  | Description                                                | Arguments |
 |--------|------------------------------------------------------------|-----------|
 | change | An event that fires whenever the current score is modified | val       |

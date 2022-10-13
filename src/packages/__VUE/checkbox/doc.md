@@ -372,7 +372,9 @@ app.use(Icon);
 :::
 
 
-### Checkbox
+## API
+
+### Checkbox Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -387,7 +389,7 @@ app.use(Icon);
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
-### CheckboxGroup
+### CheckboxGroup Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -397,13 +399,13 @@ app.use(Icon);
 
 
 
-### Checkbox Event
+### Checkbox Events
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
 
-### CheckboxGroup Event
+### CheckboxGroup Events
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 

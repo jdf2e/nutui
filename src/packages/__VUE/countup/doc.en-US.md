@@ -18,7 +18,6 @@ const app = createApp();
 app.use(CountUp);
 ```
 
-### Code demonstration
 
 ### Basic Usage
 :::demo
@@ -141,7 +140,7 @@ export default {
 ```
 :::
 
-
+## API
 ### Props
 
 | Attribute | Description | Type   | Default |

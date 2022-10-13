@@ -19,7 +19,6 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 
-### 代码实例
 
 ### 基础用法
 
@@ -144,6 +143,7 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
+## API
 ### Props
 
 | 字段    | 说明                                       | 类型    | 默认值    |

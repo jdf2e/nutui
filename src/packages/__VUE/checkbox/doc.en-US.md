@@ -369,8 +369,8 @@ When the value changes, the `change` event will be triggered
 ```
 
 :::
-
-### Checkbox
+## API
+### Checkbox Props
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
@@ -387,7 +387,7 @@ When the value changes, the `change` event will be triggered
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
 
 
-### CheckboxGroup
+### CheckboxGroup Props
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
@@ -397,13 +397,13 @@ When the value changes, the `change` event will be triggered
 
 
 
-### Checkbox Event
+### Checkbox Events
 
 | Event | Description                  | Arguments   
 |----- | ----- | ----- 
 | change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value 
 
-### CheckboxGroup Event
+### CheckboxGroup Events
 
 | Event | Description                  | Arguments   
 |----- | ----- | ----- 

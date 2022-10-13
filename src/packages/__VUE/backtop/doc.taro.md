@@ -16,7 +16,6 @@ app.use(BackTop);
 app.use(Icon);
 ```
 
-### 代码实例
 
 ### 基础用法
 

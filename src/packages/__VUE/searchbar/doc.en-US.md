@@ -183,7 +183,7 @@ app.use(SearchBar).use(Icon);
 </script>
 ```
 :::
-
+## API
 ### Props
 
 | Attribute | Description | Type   | Default |
@@ -219,7 +219,7 @@ app.use(SearchBar).use(Icon);
 | click-right-icon `v3.1.21`| Triggered when the icon on the right is clicked| val, event |
 
 
-## Slots
+### Slots
 
 | Name          | Description        |
 |---------------|----------------------|
