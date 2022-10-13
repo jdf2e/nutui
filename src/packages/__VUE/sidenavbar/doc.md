@@ -19,7 +19,7 @@ app.use(SubSideNavBar);
 app.use(SideNavBarItem);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 

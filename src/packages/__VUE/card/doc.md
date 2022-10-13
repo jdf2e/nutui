@@ -21,7 +21,7 @@ app.use(Card).use(Tag).use(Price);
 
 ### 代码实例
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html

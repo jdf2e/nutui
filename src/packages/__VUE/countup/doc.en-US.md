@@ -18,9 +18,9 @@ const app = createApp();
 app.use(CountUp);
 ```
 
-## Code demonstration
+### Code demonstration
 
-## Basic Usage
+### Basic Usage
 :::demo
 
 ```html
@@ -32,7 +32,7 @@ app.use(CountUp);
 ```
 
 :::
-## Digital scrolling
+### Digital scrolling
 :::demo
 
 ```html
@@ -43,7 +43,7 @@ app.use(CountUp);
 
 :::
 
-## Custom scrolling picture display
+### Custom scrolling picture display
 :::demo
 
 ```html
@@ -84,7 +84,7 @@ export default {
 ```
 :::
 
-## luck draw
+### luck draw
 :::demo
 
 ```html
@@ -142,7 +142,7 @@ export default {
 :::
 
 
-## Prop
+### Props
 
 | Attribute | Description | Type   | Default |
 |----- | ----- | ----- | ----- 
@@ -171,7 +171,7 @@ export default {
 
 
 
-## Event
+### Events
 
 | Event | Description   | Arguments   |
 |----- | ----- | -----

@@ -17,7 +17,6 @@ const app = createApp();
 app.use(Button);
 ```
 
-## 代码演示
 
 ### 按钮类型
 

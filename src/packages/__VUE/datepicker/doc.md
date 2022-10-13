@@ -20,7 +20,6 @@ app.use(Popup);
 app.use(OverLay);
 ```
     
-## 代码演示
 ### 选择年月日
 :::demo
 

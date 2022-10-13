@@ -12,7 +12,7 @@ import { Notify } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Notify);
 ```    
-## 使用示例
+### 使用示例
 
 ``` html 
 <nut-cell-group :title="baseState.state.desc">

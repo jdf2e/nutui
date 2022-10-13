@@ -458,7 +458,7 @@ app.use(Elevator);
 
 ## API
 
-### Prop
+### Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -469,13 +469,13 @@ app.use(Elevator);
 | space-height             | Up and down spacing of right anchor point              | Number  | `23` |
 | title-height             | Height of left index                                                     | Number  | `35` |
 
-### Slot
+### Slots
 
 | Attribute                   | Description                                                             |
 |------------------------|----------------------------------------------------------------|
 | default                 | Customize the contents of each data under the left index        |
 
-### Event
+### Events
 
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|

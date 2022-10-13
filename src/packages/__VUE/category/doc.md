@@ -15,8 +15,6 @@ app.use(Category);
 app.use(CategoryPane);
 ```
 
-## 代码演示
-
 ### 经典分类模式
 
 :::demo
