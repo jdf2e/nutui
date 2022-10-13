@@ -409,7 +409,7 @@ When the value changes, the `change` event will be triggered
 |----- | ----- | ----- 
 | change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items 
 
-### CheckboxGroup API
+### CheckboxGroup Methods
 
 | methodName | Description | Arguments 
 |----- | ----- | ----- 

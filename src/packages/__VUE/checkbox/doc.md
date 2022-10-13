@@ -412,7 +412,7 @@ app.use(Icon);
 | change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
 
 
-### CheckboxGroup API
+### CheckboxGroup 方法
 
 | 方法名 | 说明 | 参数 
 |----- | ----- | ----- 
