@@ -2,7 +2,7 @@
 
 ### 介绍
 
-按需加载请加载对应依赖组件 Icon Popup Elevator
+请加载对应依赖组件 Icon Popup Elevator
 
 ### 安装
 

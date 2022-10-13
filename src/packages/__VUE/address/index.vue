@@ -460,6 +460,7 @@ export default create({
 
     // 关闭
     const close = () => {
+      console.log('关闭', closeWay.value, showPopup.value);
       const resCopy = Object.assign(
         {
           addressIdStr: '',
@@ -530,8 +531,9 @@ export default create({
     watch(
       () => showPopup.value,
       (value) => {
+        console.log('监听 showpopup', showPopup.value);
         if (value == false) {
-          close();
+          // close();
         } else {
           initCustomSelected();
         }
