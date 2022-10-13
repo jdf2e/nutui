@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { nav } from '../../../../../../config.json';
+import config from '../../../../../../config.json';
 import Taro from '@tarojs/taro';
 export default {
   name: 'NutUI',
@@ -52,7 +52,7 @@ export default {
   // },
   setup() {
     const state = reactive({
-      nav
+      nav: config.nav
     });
 
     const reorder = (packages: any) => {
