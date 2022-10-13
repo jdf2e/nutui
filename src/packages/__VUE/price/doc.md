@@ -19,7 +19,7 @@ app.use(Price);
 ```
 
 
-### 基本用法 small normal large
+### 基础用法 small normal large
 
 :::demo
 

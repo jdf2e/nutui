@@ -45,7 +45,7 @@ export default {
 ```
 :::
 
-## Notify Type
+### Notify Type
 
 :::demo
 ```html
@@ -85,7 +85,7 @@ export default {
 </script>
 ```
 :::
-## Custom
+### Custom
 :::demo
 ```html
 <template>
@@ -126,7 +126,7 @@ export default {
 
 
 
-## Template use
+### Template use
 :::demo
 ```html
 <template>
@@ -160,7 +160,7 @@ export default {
 :::
    
     
-## API
+### API
     
 ### Props
     

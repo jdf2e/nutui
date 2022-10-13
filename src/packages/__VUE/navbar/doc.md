@@ -21,7 +21,7 @@ app.use(Tabs);
 app.use(TabPane);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html

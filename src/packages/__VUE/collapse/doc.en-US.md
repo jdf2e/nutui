@@ -19,7 +19,7 @@ app.use(Collapse);
 app.use(CollapseItem);
 ```
 
-## Code demonstration
+### Code demonstration
 
 
 ### Basic Usage
@@ -257,7 +257,7 @@ export default {
 </script>
 ```
 :::
-## Collapse Prop
+### Collapse Prop
 
 | Attribute | Description | Type   | Default |
 |----- | ----- | ----- | ----- 

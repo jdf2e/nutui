@@ -18,7 +18,7 @@ app.use(Radio);
 app.use(RadioGroup);
 app.use(Icon);
 ```
-## 基本用法
+### 基础用法
 
 通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
 
@@ -64,7 +64,7 @@ app.use(Icon);
 
 :::
 
-## 水平使用
+### 水平使用
 
 :::demo
 
@@ -107,7 +107,7 @@ app.use(Icon);
 ```
 
 :::
-## 自定义尺寸
+### 自定义尺寸
 
 :::demo
 
@@ -136,7 +136,7 @@ app.use(Icon);
 
 :::
 
-## 自定义图标
+### 自定义图标
 
 建议 `icon-name` `icon-active-name` 一起修改
 
@@ -167,7 +167,7 @@ app.use(Icon);
 
 :::
 
-## 触发 change 事件
+### 触发 change 事件
 
 :::demo
 
@@ -199,7 +199,7 @@ app.use(Icon);
 ```
 :::
 
-## Prop
+## Props
 
 ### Radio
 
@@ -222,7 +222,7 @@ app.use(Icon);
 | text-position | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
 | direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
 
-## RadioGroup Event
+### RadioGroup Events
 
 | 字段   | 说明         | 回调参数                                           |
 |--------|--------------|----------------------------------------------------|

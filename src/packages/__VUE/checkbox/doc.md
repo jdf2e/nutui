@@ -19,7 +19,7 @@ app.use(CheckboxGroup);
 app.use(Icon);
 ```
 
-## 基本用法
+### 基础用法
 
 :::demo
 
@@ -54,7 +54,7 @@ app.use(Icon);
 
 :::
 
-## 半选状态
+### 半选状态
 
 :::demo
 
@@ -80,7 +80,7 @@ app.use(Icon);
 
 :::
 
-## 禁用状态
+### 禁用状态
 
 :::demo
 
@@ -106,7 +106,7 @@ app.use(Icon);
 
 :::
 
-## 自定义尺寸
+### 自定义尺寸
 
 :::demo
 
@@ -132,7 +132,7 @@ app.use(Icon);
 
 :::
 
-## 自定义图标
+### 自定义图标
 
 这里建议同时设置 `icon-name` 和 `icon-active-name` 属性
 
@@ -158,7 +158,7 @@ app.use(Icon);
 
 :::
 
-## change事件
+### change事件
 
 值发生变化时，将触发 `change` 事件
 
@@ -187,7 +187,7 @@ app.use(Icon);
 
 :::
 
-## checkboxGroup使用
+### checkboxGroup使用
 
 :::demo
 
@@ -221,7 +221,7 @@ app.use(Icon);
 
 :::
 
-## checkboxGroup 全选/取消
+### checkboxGroup 全选/取消
 
 :::demo
 
@@ -276,7 +276,7 @@ app.use(Icon);
 
 :::
 
-## checkboxGroup使用，限制最大可选数（2个）
+### checkboxGroup使用，限制最大可选数（2个）
 
 :::demo
 
@@ -316,7 +316,7 @@ app.use(Icon);
 :::
 
 
-## 全选/半选/取消
+### 全选/半选/取消
 
 :::demo
 
@@ -372,7 +372,7 @@ app.use(Icon);
 :::
 
 
-## Checkbox
+### Checkbox
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -387,7 +387,7 @@ app.use(Icon);
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
-## CheckboxGroup
+### CheckboxGroup
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -397,20 +397,20 @@ app.use(Icon);
 
 
 
-## Checkbox Event
+### Checkbox Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
 
-## CheckboxGroup Event
+### CheckboxGroup Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
 
 
-## CheckboxGroup API
+### CheckboxGroup API
 
 | 方法名 | 说明 | 参数 
 |----- | ----- | ----- 

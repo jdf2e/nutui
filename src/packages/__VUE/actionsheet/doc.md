@@ -17,7 +17,7 @@ app.use(ActionSheet);
 app.use(Popup);
 ```
 
-## 基本用法
+### 基础用法
 
 默认
 :::demo
@@ -79,7 +79,7 @@ export default {
 ```
 :::
 
-## 展示取消按钮
+### 展示取消按钮
 :::demo
 ``` html
 <template>
@@ -138,7 +138,7 @@ export default {
  </script>
 ```
 :::
-## 展示描述信息
+### 展示描述信息
 :::demo
 ``` html
 <template>
@@ -200,7 +200,7 @@ export default {
 ```
 :::
 
-## 选项状态
+### 选项状态
 
 :::demo
 ``` html
@@ -263,7 +263,7 @@ export default {
 
 
 
-## 自定义内容
+### 自定义内容
 
 :::demo
 ``` html

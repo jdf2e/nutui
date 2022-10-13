@@ -17,7 +17,7 @@ app.use(ActionSheet);
 app.use(Popup);
 ```
 
-## Basic Usage
+### Basic Usage
 
 :::demo
 ``` html
@@ -78,7 +78,7 @@ export default {
 ```
 :::
 
-## Show Cancel Button
+### Show Cancel Button
 :::demo
 ``` html
 <template>
@@ -137,7 +137,7 @@ export default {
  </script>
 ```
 :::
-## Show Description
+### Show Description
 :::demo
 ``` html
 <template>
@@ -199,7 +199,7 @@ export default {
 ```
 :::
 
-## Option Status
+### Option Status
 
 :::demo
 ``` html
@@ -260,7 +260,7 @@ export default {
 ```
 :::
 
-## Custom Content
+### Custom Content
 
 :::demo
 ``` html
