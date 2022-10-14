@@ -147,7 +147,7 @@ export default {
 | formValue | Form data object (required when using form verification) | object | -
 | submit | Whether to show the submit button | boolean | true
 
-### Data Structure of Data
+### Data Props
 
 
 The optional attributes are as follows:
