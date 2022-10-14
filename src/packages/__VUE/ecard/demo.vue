@@ -17,16 +17,18 @@ import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('ecard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法'
-  },
-  'en-US': {
-    basic: 'Basic Usage'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法'
+    },
+    'en-US': {
+      basic: 'Basic Usage'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const dataList = reactive([
       {
         price: 10

@@ -14,7 +14,8 @@ import { Steps, Step } from '@nutui/nutui';
 import { Steps, Step  } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Steps).use(Step);
+app.use(Steps);
+app.use(Step);
 ```
 
 ### Basic Usage
@@ -132,11 +133,10 @@ app.use(Steps).use(Step);
 :::
 
 
+
 ## API
 
-### Props
-
-#### nut-steps
+### Steps Props
 
 | Attribute       | Description                                         | Type             | Default |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
@@ -144,13 +144,13 @@ app.use(Steps).use(Step);
 | current	               | 	Current step           | Number、String        | '0'      |
 | progress-dot            |  Dot step bar     | Boolean | false         |
 
-#### nut-steps events
+### Steps Events
 
 | Event | Description                  | Arguments   |
 |--------|----------------|--------------|
 | click-step  | Triggered when the title or icon of the step is clicked | index: number |
 
-#### nut-step
+### Step Props
 
 | Attribute       | Description                         | Type             | Default |
 | ---------------- | ---------------------- | ------------ | ----------- |
@@ -159,7 +159,7 @@ app.use(Steps).use(Step);
 | icon          | Icon       | String | null |
 | icon-color          | Icon color       | String | null |
 
-#### nut-step slots
+### Step Slots
 
 | Event | Description                  |
 | ---------------- | ---------------------- |

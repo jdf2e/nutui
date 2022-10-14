@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <view class="nut-menu__bar" :class="{ opened: opened }" ref="barRef">
+    <view class="nut-menu__bar" :class="{ opened: opened, 'offset-signal': offsetSignal }" ref="barRef">
       <template v-for="(item, index) in children" :key="index">
         <view
           class="nut-menu__item"
@@ -11,7 +11,8 @@
           <view class="nut-menu__title" :class="getClasses(item.state.showPopup)">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
             <nut-icon
-              :name="item.titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
+              v-bind="$attrs"
+              :name="titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
               size="10"
               class="nut-menu__title-icon"
             ></nut-icon>
@@ -45,6 +46,8 @@ export default create({
       type: [Number, String],
       default: 0.3
     },
+    titleIcon: String,
+
     closeOnClickOverlay: {
       type: Boolean,
       default: true
@@ -107,17 +110,24 @@ export default create({
       };
     });
 
-    const updateOffset = () => {
+    // updateOffset 操作的标识位
+    // 解决 taro 下初次展开菜单栏闪跳问题 #1541
+    const offsetSignal = ref(false);
+
+    const updateOffset = (item) => {
       if (barRef.value) {
+        offsetSignal.value = true;
         setTimeout(() => {
           Taro.createSelectorQuery()
-            .select('.nut-menu__bar.opened')
+            .select('.nut-menu__bar.offset-signal')
             .boundingClientRect((rect) => {
               if (props.direction === 'down') {
                 offset.value = rect.bottom;
               } else {
                 offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
               }
+              offsetSignal.value = false;
+              item.toggle();
             })
             .exec();
         }, 100);
@@ -129,8 +139,7 @@ export default create({
     const toggleItem = (active: number) => {
       children.forEach((item, index) => {
         if (index === active) {
-          updateOffset();
-          item.toggle();
+          updateOffset(item);
         } else if (item.state.showPopup) {
           item.toggle(false, { immediate: true });
         }
@@ -172,6 +181,7 @@ export default create({
       toggleItem,
       children,
       opened,
+      offsetSignal,
       classes,
       barRef,
       getClasses

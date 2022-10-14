@@ -578,4 +578,10 @@ If you want to select a province, you need to set the region ID in the order of 
 |----- | ----- | ----- 
 | type | Selected Type  |  exist/custom/custom2
 | data | Selected Data | {} 
+
+
+## Slot
+| Attribute | Description | 
+|----- | ----- |  
+| bottom `3.1.23` | Bottom slot |  
     

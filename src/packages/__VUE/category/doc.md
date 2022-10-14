@@ -15,8 +15,6 @@ app.use(Category);
 app.use(CategoryPane);
 ```
 
-## 代码演示
-
 ### 经典分类模式
 
 :::demo
@@ -214,7 +212,7 @@ export default {
 | --------- | -------------------- | ---------- |
 | on-change | 点击右侧分类数据触发 | 点击的数据 |
 
-## CategoryPane Slots
+### CategoryPane Slots
 
 | 名称    | 说明       |
 | ------- | ---------- |

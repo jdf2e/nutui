@@ -2,7 +2,7 @@
   <view
     :style="!showMax ? styles : maxStyles"
     :class="classes"
-    @click="activeAvatar(e)"
+    @click="activeAvatar"
     ref="avatarRef"
     v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
@@ -11,7 +11,7 @@
         <img :src="url" :alt="alt" @error="onError" />
       </template>
       <template v-else-if="icon">
-        <nut-icon class="icon" :name="iconStyles"></nut-icon>
+        <nut-icon v-bind="$attrs" class="icon" :name="iconStyles"></nut-icon>
       </template>
       <view class="text" v-if="isShowText">
         <slot></slot>
@@ -137,11 +137,11 @@ export default create({
       }
     };
 
-    const activeAvatar = (event: any) => {
+    const activeAvatar = (event: MouseEvent) => {
       emit('active-avatar', event);
     };
 
-    const onError = (event: any) => {
+    const onError = (event: MouseEvent) => {
       emit('onError', event);
     };
 

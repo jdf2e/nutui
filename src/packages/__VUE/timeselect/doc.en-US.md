@@ -14,7 +14,12 @@ import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui
 import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
+app.use(TimeSelect);
+app.use(TimePannel);
+app.use(TimeDetail);
+app.use(Popup);
+app.use(Icon);
+app.use(Overlay);
 ```
 
 ### Basic Usage
@@ -290,21 +295,19 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
   };
 </script>
 <style lang="scss" scoped>
-.demo {
-  .timeselect-title{
-    height: 50px;
-    p{
-      line-height: 1;
-      padding: 0;
-      margin: 0;
-      &.title{
-        margin: 10px 0;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      &.subtitle{
-        color: #999;
-      }
+.timeselect-title {
+  height: 50px;
+  p {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    &.title {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &.subtitle {
+      color: #999;
     }
   }
 }
@@ -315,7 +318,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 
 ## API
 
-### TimeSelect Prop
+### TimeSelect Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -326,7 +329,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
 | lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
 
-### Slot
+### Slots
 
 | Attribute                   | Description                                                             |
 |------------------------|----------------------------------------------------------------|
@@ -334,21 +337,21 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | pannel                 | List for left                                                    |
 | detail                 | Detail Content for right                                                    |
 
-### TimePannel Prop
+### TimePannel Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | name                 | Name of display                                                    | String  | ``
 | pannel-key           | Unique ID, which identifies the currently selected day together with `current-key`                      | Number、String  | `0`
 
-### TimeDetail Prop
+### TimeDetail Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | times                 | Selectable time, the same as array elements `current-time`                              | Array  | `[]`
 
 
-### TimeSelect Event
+### TimeSelect Events
 
 | Event | Description                  | Arguments   |
 |-------|----------|-------------|

@@ -17,7 +17,6 @@ app.use(Signature);
 ```
     
     
-## 代码演示
     
 ### 基础用法
 
@@ -49,26 +48,6 @@ export default {
         return { confirm, clear };
     }
 }
-</script>
-<script>
-import { reactive } from 'vue';
-export default {
-  props: {},
-  setup() {
-    const confirm = (canvas, data) => {
-        let img = document.createElement('img');
-        img.src = data;
-        document.querySelector('.demo').appendChild(img);
-    };
-    const clear = () => {
-        let img = document.querySelector('.demo img'); 
-        if (img) {
-            img.remove();
-        }
-    }
-    return { confirm, clear };
-  }
-};
 </script>
 ```
 :::
@@ -125,9 +104,12 @@ export default {
 | type | 图片格式 | String | 'png'
 | un-support-tpl | 不支持Canvas情况下的展示文案 | String | '对不起，当前浏览器不支持Canvas，无法使用本控件！'
 
-## Event
+### Events
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
+| start `v3.2.0` | 签名开始回调函数（指某次笔画的开始） | 无
+| signing `v3.2.0` | 正在签名的回调函数（指某次笔画进行中） | event
+| end `v3.2.0` | 签名结束回调函数（指某次笔画的结束）| 无
 | confirm | 点击确认按钮触发事件回调函数 | canvas和签名图片展示的 data URI
 | clear | 点击重签按钮触发事件回调函数 | 无

@@ -163,5 +163,17 @@ test('slot test', () => {
       }
     }
   });
+
   expect(wrapper.html()).toMatchSnapshot();
+});
+
+test('custom clear icon', async () => {
+  const wrapper = mount(SearchBar, {
+    props: {
+      clearIcon: 'close',
+      modelValue: 'test'
+    }
+  });
+  const input = wrapper.find('.nut-searchbar__input-clear i');
+  expect(input.classes()).toContain('nut-icon-close');
 });

@@ -195,7 +195,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 <template>
     <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <template v-slot:rightIcon>
-        <nut-icon type="trolley" color="#f0250f"></nut-icon>
+        <nut-icon name="fabulous" color="#f0250f"></nut-icon>
       </template>
     </nut-noticebar>
 </template>
@@ -212,16 +212,16 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 ```
 
 :::
-
-### Prop
+## API
+### Props
 
 | Attribute  | Description                                        | Type          | Default |
 | ---------- | ---------------------------------------------------| ------------- | ------- |
 | direction  | Rolling direction                                  | String        | across  |
 | text       | Notice text content                                | String        |  -      |
-| closeMode  | Whether to enable the off mode                     | Boolean       | false   |
-| leftIcon   | Left Icon                                          | String        | -       |
-| rightIcon  | Right Icon                                         | String        | -       |
+| close-mode  | Whether to enable the off mode                     | Boolean       | false   |
+| left-icon   | Left Icon                                          | String        | -       |
+| right-icon  | Right Icon                                         | String        | -       |
 | color      | Text Color                                         | String        | -       |
 | background | Background                                         | String        | -       |
 | delay      | Delay time                                         | String/Number | 1       |
@@ -229,16 +229,16 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | speed      | Scrolling speed (px/s)                             | Number         | 50      |
 | wrapable`v3.1.18` | Whether to enable text wrap                        | Boolean       | false    |
 
-### Prop（direction=vertical）
+### Props（direction=vertical）
 
 | Attribute    | Description                             | Type     | Default          |
 |--------------|-----------------------------------------|----------|------------------|
 | list         | List                                    | Array    | []               |
 | speed        | Scrolling speed                         | Number   | 50               |
-| standTime    | Show time(millisecond)                  | Number   | 1000             |
-| complexAm    | Complex animation                       | Boolean  | false            |
+| stand-time    | Show time(millisecond)                  | Number   | 1000             |
+| complex-am    | Complex animation                       | Boolean  | false            |
 | height       | height                                  | Number   | 40               |
-| closeMode    | Whether to enable the off mode          | Boolean  | false            |
+| close-mode    | Whether to enable the off mode          | Boolean  | false            |
 
 ### Slots
 
@@ -248,7 +248,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | right-icon        | Custom right icon                |
 | left-icon         | Custom left icon                 |
 
-### Event
+### Events
 
 | Attribute  | Description                             | Arguments     |
 | ---------- | --------------------------------------- | ------------ |

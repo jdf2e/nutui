@@ -17,7 +17,6 @@ app.use(Swipe);
 app.use(Button);
 ```
 
-## 代码演示
 
 ### 基础用法
 
@@ -256,15 +255,15 @@ export default {
 
 | 事件名             | 说明                 | 回调参数          | 备注               |
 | ------------------ | -------------------- | ----------------- | ------------------ |
-| handelDelIcon      | 点击删除图标         | event: Event,item | 公共               |
-| handelEditIcon     | 点击编辑图标         | event: Event,item | 公共               |
-| handelDelIcon      | 点击删除图标         | event: Event,item | 公共               |
-| handelItem         | 点击地址列表每一项   | event: Event,item | 公共               |
-| addAddressClick    | 点击底部添加地址按钮 | event: Event      | 公共               |
-| longPressCopyClick | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
-| longPressSetClick  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
-| longPressDelClick  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
-| swipeDelClick      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
+| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
+| handel-edit-icon     | 点击编辑图标         | event: Event,item | 公共               |
+| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
+| handel-item         | 点击地址列表每一项   | event: Event,item | 公共               |
+| add-address-click    | 点击底部添加地址按钮 | event: Event      | 公共               |
+| long-press-copy-click | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
+| long-press-set-click  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
+| long-press-del-click  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
+| swipe-del-click      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
 
 ### Slots
 

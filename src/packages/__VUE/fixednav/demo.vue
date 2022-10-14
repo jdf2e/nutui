@@ -56,35 +56,37 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    left1: '左侧收起',
-    left2: '左侧展开',
-    cus1: '关',
-    cus2: '开',
-    drag: '支持拖拽',
-    index: '首页',
-    category: '分类',
-    cart: '购物车',
-    my: '我的'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    left1: 'Left Closed',
-    left2: 'Left Open',
-    cus1: 'Closed',
-    cus2: 'Open',
-    drag: 'Drag',
-    index: 'Index',
-    category: 'Category',
-    cart: 'Cart',
-    my: 'My'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      left1: '左侧收起',
+      left2: '左侧展开',
+      cus1: '关',
+      cus2: '开',
+      drag: '支持拖拽',
+      index: '首页',
+      category: '分类',
+      cart: '购物车',
+      my: '我的'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      left1: 'Left Closed',
+      left2: 'Left Open',
+      cus1: 'Closed',
+      cus2: 'Open',
+      drag: 'Drag',
+      index: 'Index',
+      category: 'Category',
+      cart: 'Cart',
+      my: 'My'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const visible = ref(false);
     const visible1 = ref(false);
     const visible2 = ref(false);

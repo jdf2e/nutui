@@ -18,6 +18,8 @@ app.use(Toast);
 ```
 
 
+### 基础用法
+
 ``` html
 <nut-toast :msg="page.state.msg" v-model:visible="page.state.show" :type="page.state.type" @closed="page.methods.onClosed" :cover="page.state.cover" />
 <nut-cell title="Text 文字提示" is-link @click="page.methods.openToast('text','网络失败，请稍后再试~')"></nut-cell>
@@ -62,9 +64,8 @@ export default {
   }
 };
 ```
-### 基本用法
-
-## Props
+## API
+### Props
 
 | 字段                   | 说明                                                                    | 类型         | 默认值                        |
 |------------------------|-------------------------------------------------------------------------|--------------|-------------------------------|

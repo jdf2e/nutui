@@ -14,9 +14,11 @@ import { Radio,RadioGroup,Icon } from '@nutui/nutui';
 import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio).use(RadioGroup).use(Icon);
+app.use(Radio);
+app.use(RadioGroup);
+app.use(Icon);
 ```
-## Basic Usage
+### Basic Usage
 
 Bind the **label** of the current option through **v-model**. And it must be used in combination with **nut-radiogroup** and **nut-radio**
 
@@ -62,7 +64,7 @@ Bind the **label** of the current option through **v-model**. And it must be use
 
 :::
 
-## Horizontal use
+### Horizontal use
 
 :::demo
 
@@ -105,7 +107,7 @@ Bind the **label** of the current option through **v-model**. And it must be use
 ```
 
 :::
-## Custom size
+### Custom size
 
 :::demo
 
@@ -134,7 +136,7 @@ Bind the **label** of the current option through **v-model**. And it must be use
 
 :::
 
-## Custom icon
+### Custom icon
 
 It is suggested to modify `icon-name` and `icon-active-name`
 
@@ -165,7 +167,7 @@ It is suggested to modify `icon-name` and `icon-active-name`
 
 :::
 
-## Trigger change event
+### Trigger change event
 
 :::demo
 
@@ -197,9 +199,9 @@ It is suggested to modify `icon-name` and `icon-active-name`
 ```
 :::
 
-## Prop
+## API
 
-### Radio
+### Radio Props
 
 | Attribute             | Description                                                         | Type                    | Default            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
@@ -212,7 +214,7 @@ It is suggested to modify `icon-name` and `icon-active-name`
 | label            | Radio box ID                                                  | String、Number、Boolean | -                 |
 | shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
 
-### RadioGroup
+### RadioGroup Props
 
 | Attribute          | Description                                          | Type                    | Default     |
 |---------------|-----------------------------------------------|-------------------------|------------|
@@ -220,7 +222,7 @@ It is suggested to modify `icon-name` and `icon-active-name`
 | text-position | The position of the text, optional value：`left`,`right`        | String                  | `right`    |
 | direction     | Use horizontal and vertical optional values `horizontal`、`vertical`      | String                  | `vertical` |
 
-## RadioGroup Event
+### RadioGroup Events
 
 | Event   | Description         | Arguments                                           |
 |--------|--------------|----------------------------------------------------|

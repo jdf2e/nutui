@@ -9,11 +9,14 @@ The menu list that pops down downwards.
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Menu, MenuItem } from '@nutui/nutui';
+import { Menu, MenuItem,OverLay, Popup } from '@nutui/nutui';
 // taro
-import { Menu, MenuItem } from '@nutui/nutui-taro';
+import { Menu, MenuItem,OverLay, Popup } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Menu);
+app.use(MenuItem);
+app.use(OverLay);
+app.use(Popup);
 
 ```
 
@@ -264,7 +267,8 @@ export default {
 
 ```html
 <template>
-  <nut-menu>
+  <div class="blank"></div>
+  <nut-menu direction="up">
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
   </nut-menu>
@@ -301,6 +305,12 @@ export default {
   }
 }
 </script>
+<style>
+.blank {
+  width: 200px;
+  height: 200px;
+}
+</style>
 ```
 
 :::
@@ -385,28 +395,35 @@ export default {
 
 ### Menu Props
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| active-color         | Active color of title and option     | String | #F2270C               |
-| close-on-click-overlay `v3.1.21`        | Whether to close when overlay is clicked     | Boolean | true               |
-| scroll-fixed `v3.1.22`        | Whether to fixed when window is scrolled, fixed position can be set     | Boolean、String、Number | false               |
-| title-class `v3.1.22`        | Custome title class     | String | -               |
-| lock-scroll `v3.1.22`        | Whether the background is locked     | Boolean | true               |
+| Attribute                        | Description                                                         | Type                    | Default |
+|----------------------------------|---------------------------------------------------------------------|-------------------------|---------|
+| active-color                     | Active color of title and option                                    | String                  | #F2270C |
+| close-on-click-overlay `v3.1.21` | Whether to close when overlay is clicked                            | Boolean                 | true    |
+| scroll-fixed `v3.1.22`           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
+| title-class `v3.1.22`            | Custome title class                                                 | String                  | -       |
+| lock-scroll `v3.1.22`            | Whether the background is locked                                    | Boolean                 | true    |
+| title-icon `3.2.1`               | Custome title icon                                                  | String                  | -       |
 
 ### MenuItem Props
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| title         | Item title     | String | 当前选中项文字               |
-| options         | Options     | Array | -                |
-| disabled         | Whether to disable dropdown item     | Boolean | false                |
-| cols         | Display how many options in one line     | Number | 1                |
-| title-icon         | Custome title icon     | String | -                |
-| option-icon `v3.1.22`         | Custome option icon     | String | 'Check'                |
-| direction `v3.1.22`         | Expand direction, can be set to up     | String | 'down'                |
+| Attribute | Description                          | Type    | Default        |
+|-----------|--------------------------------------|---------|----------------|
+| title     | Item title                           | String  | 当前选中项文字 |
+| options   | Options                              | Array   | -              |
+| disabled  | Whether to disable dropdown item     | Boolean | false          |
+| cols      | Display how many options in one line | Number  | 1              |
+
+| option-icon `v3.1.22`         | Custome option icon                  | String  | 'Check'        |
+| direction `v3.1.22`           | Expand direction, can be set to up   | String  | 'down'         |
+| active-title-class `v3.2.0`   | Active custome title class           | String  | -              |
+| inactive-title-class `v3.2.0` | Inactive custome title class         | String  | -              |
+| font-class-name`v3.2.1` | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
+| class-prefix`v3.2.1`    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
+
+
 
 ### MenuItem Events
 
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| change  | Emitted select option changed | Selected value |
+| Event  | Description                   | Arguments      |
+|--------|-------------------------------|----------------|
+| change | Emitted select option changed | Selected value |

@@ -15,7 +15,7 @@ import { Ellipsis } from '@nutui/nutui';
 import { Ellipsis } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use();
+app.use(Ellipsis);
 
 ```
 
@@ -90,9 +90,10 @@ app.use();
 | content         | 文本内容               | String | -                |
 | direction         | 省略位置               | 'start' | 'end' | 'middle' | 'end'               |
 | rows         | 展示几行               | Number | 1              |
-| expandText         | 展开操作的文案               | String | ''              |
-| collapseText         | 收起操作的文案               | String | ''               |
+| expand-text         | 展开操作的文案               | String | ''              |
+| collapse-text         | 收起操作的文案               | String | ''               |
 | symbol         | 省略的符号     | String | '...'       |
+| line-height          | 容器的行高     | String、Number | 20       |
 
 ### Events
 

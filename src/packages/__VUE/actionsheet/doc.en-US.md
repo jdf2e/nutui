@@ -13,10 +13,11 @@ import { ActionSheet, Popup } from '@nutui/nutui';
 import { ActionSheet, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(ActionSheet).use(Popup);
+app.use(ActionSheet);
+app.use(Popup);
 ```
 
-## Basic Usage
+### Basic Usage
 
 :::demo
 ``` html
@@ -77,7 +78,7 @@ export default {
 ```
 :::
 
-## Show Cancel Button
+### Show Cancel Button
 :::demo
 ``` html
 <template>
@@ -136,7 +137,7 @@ export default {
  </script>
 ```
 :::
-## Show Description
+### Show Description
 :::demo
 ``` html
 <template>
@@ -198,7 +199,7 @@ export default {
 ```
 :::
 
-## Option Status
+### Option Status
 
 :::demo
 ``` html
@@ -259,7 +260,53 @@ export default {
 ```
 :::
 
-## Prop
+### Custom Content
+
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+     
+    >
+      <span><label>Custom Content</label></span>
+    </nut-cell>
+     <nut-actionsheet v-model:visible="state.isVisible" title="title">
+      <div class="custom-content">Custom Content</div>
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+    return {
+      state,
+      switchActionSheet,
+    };
+  }
+}
+ </script>
+ <style lang="scss" scoped>
+.custom-content {
+  padding: 10px 10px 160px;
+}
+</style>
+
+```
+:::
+## API
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 |------------------|----------------------------------------|---------|-----------|
@@ -271,10 +318,10 @@ export default {
 | color            | selected item color，when choose-tag-value == option-tag   | String  | '#ee0a24' |
 | title            | set list item title                         | String  | ''        |
 | description      | set list item description                | String  | ''        |
-| cancel-txt       | Text of cancel button                               | String  | '取消'   |
+| cancel-txt       | Text of cancel button                               | String  | 'cancel'   |
 | close-abled      | Whether the mask layer can be closed                       | Boolean | true      |
 
-## menu-items
+### MenuItems
 
 | Attribute            | Description               | Type   |
 |--------|--------------------|-----------------------------------|
@@ -284,7 +331,7 @@ export default {
 | loading | Whether to be loading status | Boolean          |
 | disable | Whether to be disabled | Boolean       |
 
-## Event
+### Events
 
 | Event | Description                  | Arguments    |
 |--------|--------------------|-----------------------------------|

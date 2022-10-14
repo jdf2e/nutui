@@ -1,3 +1,159 @@
+## v3.2.3
+
+`2022-09-30` 
+
+小程序版本依赖 Taro3.5
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @yoyo837 @jwaterwater 
+
+* :sparkles: chore: taro env jd Adapter @richard1015 
+* :sparkles: chore: component types @szg2008
+* :sparkles: chore: taro3.5 support @szg2008
+* :sparkles: chore: updrade typescript to v4.8 @szg2008
+* :sparkles: chore: style variables del animation #1689 #1375 @richard1015 
+* :sparkles: feat: add trendArrow component(#1660) @lkjh3214
+* :zap: upd: change export module name @szg2008
+* :zap: feat: validator 支持回传rule, 用以在自定义 validator 时获得配置在rule的属性来处理不同的逻辑, 含自定义属性 @yoyo837 
+* :zap: feat(form): add props rules属性, 可以统一配置每个FormItem的rules (#1704)  @yoyo837 
+* :bug: fix(searchbar): textalign types @szg2008
+* :bug: fix(components): docs and type optimization (#1661) @Drjingfubo
+* :bug: fix(avatar): events callback undefined (#1686) @Drjingfubo
+* :bug: fix(components): type optimization (#1666) @lkjh3214 
+* :bug: fix: 修复 ImagePreview 在Taro编译成H5后报错的问题 (#1687) @yangxiaolu1993  
+* :bug: test(trendarrow): test error @szg2008  
+* :bug: test(tabs,cascader): resolve test error (#1709) @szg2008  
+* :bug: fix(uploader): method clearUploadQueue #1597 @richard1015  
+* :bug: fix(uploader): before-delete support Promise #1672 @richard1015  
+* :bug: fix(picker): 在Taro中卡顿的问题 (#1685)  @yangxiaolu1993  
+* :bug: fix(tabs): resolve conditional rendering issues #1500 (#1698)  @Drjingfubo  
+* :bug: fix(form-item): tsx 类型捕获 (#1697)  @yoyo837  
+* :bug: fix(barrage): add slot，demo及文档完善 (#1699) @Ymm0008  
+* :bug: fix(menu): 修复文档中部分错误 & 修复 taro 小程序下闪跳问题 #1541 (#1678) @eiinu  
+* :bug: fix(menu): remove taro menu-popup entry animation (#1703) @eiinu  
+* :bug: fix(tabbar): add default height (#1701) @jwaterwater  
+* :bug: fix(tabs): h5 add sticky props (#1707) @Drjingfubo  
+* :bug: fix(list): 组件事件不被触发 #1607 @szg2008  
+* :bug: test(list): test error #1607 @szg2008  
+* :bug: fix(divider,imagePreview,pagination): components optimization (#1705)@eiinu   
+📖 docs(components): optimization (#1662) @Drjingfubo
+📖 docs(components): optimization (#1683) @Drjingfubo
+📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
+📖 docs(infiniteloading): type load-icon props to string @szg2008
+📖 docs(timeselect,overlay): edit (#1679) @eiinu 
+📖 docs(card): add click events (#1700) @Drjingfubo 
+
+
+
+
+
+
+
+
+
+## v3.2.2
+
+`2022-09-08` 
+
+小程序版本依赖 Taro3.4
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @hydraZty @YoungsunLi @tolking @LarryHangFan
+
+* :sparkles: feat: 发票组件+taro (#1590) @ailululu
+* :zap: feat(icon): demo 页面增加点击图标复制 name 功能 (#1563) @eiinu
+* :zap: feat(inputnumber): 增加自定义左右操作符图标功能 #1562 @eiinu
+* :zap: feat(searchbar): 新增自定义设置清除图标功能， 新增聚焦时自定义样式 (#1618) @Ymm0008
+* :bug: fix(picker): 解决惯性滚动问题 (#1546)  @yangxiaolu1993
+* :bug: fix(imagePreview): replace the type for images (#1543) @hydraZty
+* :bug: fix(calendar): 兼容支付宝小程序。修改滚动判断逻辑。修复h5 demo问题。修复滚动动画props失效问题 (#1547) @lkjh3214
+* :bug: fix(tabbar): resolve href error #1533 (#1556) @Drjingfubo
+* :bug: test(menu): resolve error (#1557) @Drjingfubo
+* :bug: fix(cell): Cell Slots中使用Layout，会导致Cell和Row的@click事件全部失效(#1408) @eiinu
+* :bug: fix(radio): radio对齐问题(#1419) @eiinu
+* :bug: fix(picker): taro-picker 问题修改 (#1582) @yangxiaolu1993
+* :bug: fix(picker): Picker新增点击确定停止滚动逻辑 (#1586)  @yangxiaolu1993
+* :bug: fix(picker): 解决Picker 在Taro 上的高度问题 (#1604) @yangxiaolu1993
+* :bug: fix(form&radio): 修复 radio 表单校验相关问题 (#1587) @eiinu
+* :bug: fix(tabs): whitespace children bug (#1599) @YoungsunLi
+* :bug: fix(dialog): 标题判断时未考虑插槽 (#1601) @tolking
+* :bug: fix: loadingrotate is false, which is invalid (#1613) @LarryHangFan
+* :bug: fix(menu): menu list cannot be scrolled #1615 (#1633) @Drjingfubo
+* :bug: fix(drag): resolve console error (#1634) @Drjingfubo
+* :bug: fix(picker): 在Taro适配中的优化以及Issue 问题修改（#1620、#1572） @yangxiaolu1993
+* :bug: fix(tabs): resolve tabpane show errors #1544 (#1636) @Drjingfubo
+* :bug: fix(form): resolve slot invalid issue #1637 (#1638) @Drjingfubo
+* :bug: fix(picker): 文本超长省略号处理 (#1639) @yangxiaolu1993
+* :bug: fix(price): price 在小程序中样式展示不对 #1628 @szg2008
+* :bug: fix(calendar): demo错误问题修复 (#1644) @lkjh3214
+* 📖 docs(list): 文档 demo 增加 css 样式 (#1565) @eiinu
+* 📖 docs(actionsheet,toast): edit (#1635) @Drjingfubo
+* 📖 docs(backtop,badge,button,popover,tag,watermark): 文档调整，demo修改 (#1624) @lkjh3214
+
+
+## v3.2.1
+
+`2022-08-09`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @zjyau @sushi-su
+
+* :sparkles: 暗黑模式所有组件适配完成 @nutui-teams
+* :sparkles: feat(uploader): taro env before-xhr-upload #1535 @richard1015
+* :sparkles: chore(fixednav): add props active-color #1393 @LadyChatterleyLover @richard1015
+* :sparkles: feat(steps): 横向缺少点状步骤条样式 (#1540) @sushi-su
+* :sparkles: feat(cell、step、menu...): add props font-class-name、class-prefix (#1372) # @richard1015
+* :bug: fix: 🔥 Vue warn Failed to resolve component scroll-view  (#1523) @yangxiaolu1993
+* :bug: fix(picker): 首次弹起点击确定无返回值bug @yangxiaolu1993
+* :bug: fix(numberkeyboard): props conflict issue #1486 (#1526) @Drjingfubo
+* :bug: fix(audiooperate): 修复打包结果d.ts中props的类型错误 (#1534) @eiinu
+* :bug: fix(tag): 修复 plain 与其他 prop 组合使用时未生效问题 #1472 (#1530) @eiinu
+* :bug: fix(swiper): 解决PC端轮播图滑动失效问题 #1217 (#1531) @eiinu
+* :bug: fix: card nut-pric错误 (#1536) @zjyau
+* 📖docs(menu): add install OverLay, Popup #1485 @richard1015
+* 🍭style(watermark、category、menu): edit sass @richard1015
+
+## v3.2.0
+
+`2022-08-01`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @Zhengqbbb @zjyau @hydraZty
+
+* :sparkles: 暗黑模式适配支持 @nutui-teams
+* :sparkles: feat: 新增 WaterMark 水印组件 @lkjh3214
+* :sparkles: feat: imagepreview 缩放功能 (#1425) @yangxiaolu1993
+* :sparkles: feat(popup): support muti stacks @szg2008
+* :sparkles: feat(swiper): support show center @szg2008
+* :sparkles: feat(category): onchange add (sku) (#1440) @zjyau
+* :sparkles: feat(picker): 惯性滚动与性能优化 (#1453) & 平铺功能 @yangxiaolu1993
+* :sparkles: feat(card): add price slot (#1452) @zjyau
+* :sparkles: feat(tabbar): add new props name#1449 (#1471) @Drjingfubo
+* :sparkles: feat(uploader): add props before-xhr-upload @richard1015
+* :sparkles: feat(Table): 增加标题,列表样式参数 (#1460) @zjyau
+* :sparkles: feat(audio): 新增can-play事件 (#1515) @eiinu
+* :sparkles: feat(menuitem): 增加自定义titleClass属性和优化input组件disabled和readonly状态下的事件处理 (#1480) @LadyChatterleyLover
+* :sparkles: feat(address): address 新增底部插槽 (#1509) @yangxiaolu1993
+* :sparkles: feat(signature): 组件增加签名开始、结束、进行中回调函数 (#1520) @Ymm0008
+* :zap: chore: use cz-git commitizen adapter (#1424) @Zhengqbbb
+* :bug: fix(navbar): taro init height error @ailululu
+* :bug: fix(textarea): 支付宝小程序限制重影问题 #1514 @richard1015
+* :bug: fix(picker): 小程序重影问题 #1514 @richard1015
+* :bug: fix(checkbox、switch): async change value , emit change fn @richard1015
+* :bug: fix(actionsheet): add new props #1395 (#1456) @Drjingfubo
+* :bug: fix(datepicker): top 插槽未生效问题 (#1501) @eiinu
+* :bug: fix(noticebar、swiper): md文档问题；修复noticebar右侧图标垂直居中问题；修复audio显示时长问题 (#1510)  @eiinu
+* :bug: fix: 修复折叠面板手风琴模式；  @Ymm0008
+* :bug: fix: 修复notify标签式展示报错问题及class类名问题；  @Ymm0008
+* :bug: fix: 解决签名组件(Signat…  @Ymm0008
+* :bug: fix: 类型声明文件命名错误修复(#1442) @szg2008
+* :bug: fix: addresslist datalist清空后不同步问题 (#1483) @zjyau
+* 📖docs: Update README.md @snandy
+* 📖docs(radio): install add icon @richard1015
+* 📖docs(card): add install desc @richard1015
+* 📖docs(toast): taro env eidt @richard1015
+* 🍭style: fix Picker options partially overlap in older versions of Safa… @hydraZty
+
 ## v3.1.22
 
 `2022-06-24`
@@ -44,7 +200,6 @@ NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 * 📖doc: calendar 文档修改 (#1410) @lkjh3214
 * 📖docs(elevator): 增加吸顶props @szg2008
 * 🍭style: fix font family of highlighted code (#1354) @renbaoshuo
-
 
 ## v3.1.21
 

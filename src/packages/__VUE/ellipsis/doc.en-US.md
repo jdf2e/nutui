@@ -15,7 +15,7 @@ import { Ellipsis } from '@nutui/nutui';
 import { Ellipsis } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use();
+app.use(Ellipsis);
 
 ```
 
@@ -90,9 +90,10 @@ app.use();
 | content         | Content               | String | -                |
 | direction         | Direction                | 'start' | 'end' | 'middle' | 'end'               |
 | rows         | Rows               | Number | 1              |
-| expandText         | Expand text               | String | ''              |
-| collapseText         | Collapse text               | String | ''               |
+| expand-text         | Expand text               | String | ''              |
+| collapse-text         | Collapse text               | String | ''               |
 | symbol         | Symbol     | String | '...'       |
+| line-height         | the row height of the container     | String、Number | 20       |
 
 ### Events
 

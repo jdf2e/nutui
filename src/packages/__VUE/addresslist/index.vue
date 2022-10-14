@@ -122,8 +122,8 @@ export default create({
     });
     //磨平参数差异
     const trowelData = () => {
-      console.log('props.data', props.data);
-      if (Object.keys(props.dataMapOptions).length > 0 && props.data.length > 0) {
+      // console.log('props.data', props.data);
+      if (Object.keys(props.dataMapOptions).length > 0) {
         dataArray.value = props.data.map((item, index) => {
           return floatData(dataInfo, item, props.dataMapOptions);
         });

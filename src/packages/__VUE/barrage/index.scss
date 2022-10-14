@@ -1,3 +1,11 @@
+.slotContainer {
+  > * {
+    opacity: 0;
+  }
+  > .dmitem {
+    opacity: 1;
+  }
+}
 .nut-barrage {
   position: absolute;
   left: 0;
@@ -27,22 +35,30 @@
       animation-play-state: running;
     }
   }
-  @keyframes moving {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-250%);
-      // transform: translateX(-180%);
-      // transform: translateX(var(--move-distance));
-    }
-  }
-  @-webkit-keyframes moving {
-    from {
-      -webkit-transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-250%);
+}
+.nut-theme-dark {
+  .nut-barrage {
+    .dmitem {
+      color: $dark-color-gray;
     }
   }
 }
+
+// @keyframes moving {
+//   from {
+//     transform: translateX(100%);
+//   }
+//   to {
+//     transform: translateX(-150%);
+//     // transform: translateX(-180%);
+//     // transform: translateX(var(--move-distance));
+//   }
+// }
+// @-webkit-keyframes moving {
+//   from {
+//     -webkit-transform: translateX(100%);
+//   }
+//   to {
+//     transform: translateX(-150%);
+//   }
+// }

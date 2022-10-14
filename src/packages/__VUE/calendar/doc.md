@@ -19,7 +19,6 @@ app.use(Popup);
 
 ```
 
-## 代码演示
 
 ### 基础用法
 :::demo
@@ -544,8 +543,8 @@ export default {
 | is-auto-back-fill | 自动回填                                          | Boolean         | false           |
 | title             | 显示标题                                          | String          | ‘日期选择’      |
 | default-value     | 默认值，单个日期选择 String，其他为 Array  | String 、 Array | null            |
-| start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
-| end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
+| start-date        | 开始日期         | String          | 今天            |
+| end-date          | 结束日期              | String          | 距离今天 365 天 |
 | show-today          | 是否展示今天标记               | Boolean          | true |
 | start-text         | 范围选择，开始信息文案               | String          | ’开始‘ |
 | end-text         | 范围选择，结束信息文案               | String          | ‘结束’ |

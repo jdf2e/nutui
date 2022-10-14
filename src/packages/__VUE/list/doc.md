@@ -60,6 +60,32 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+body {
+  width: 100%;
+  height: 100vh;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.demo {
+  height: 100%;
+  .nut-cell {
+    height: 100%;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: #f4a8b6;
+    border-radius: 10px;
+  }
+}
+</style>
 ```
 
 :::
@@ -72,9 +98,9 @@ export default {
 |--------------|----------------------------------|--------|------------------|
 | height         | 列表项的高度               | Number | `50`                |
 | list-data         | 列表数据               | any[] | `[]`                |
-| container-height `v3.1.19`        | 容器高度              | Number | `可视区高度`                |
+| container-height `v3.1.19`        | 容器高度(最大值不能超过可视区)              | Number | `可视区高度`                |
 
-### Slot
+### Slots
 
 | 参数         | 说明                             | 类型   |
 |--------------|----------------------------------|--------|

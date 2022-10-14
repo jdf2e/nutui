@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full">
+  <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
     <nut-numberkeyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-numberkeyboard>
@@ -16,7 +16,7 @@
     <nut-numberkeyboard
       type="rightColumn"
       v-model:visible="visible3"
-      randomKeys="true"
+      :randomKeys="true"
       :custom-key="customKey1"
       @input="input"
       @close="close(3)"
@@ -58,7 +58,7 @@ export default {
     const visible6 = ref(false);
     const value = ref('');
     const customKey1 = reactive(['.']);
-    const customKey2 = reactive(['.']);
+    const customKey2 = reactive(['.', 'x']);
     const customKey3 = reactive(['X']);
     const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
     function input(number: any) {}

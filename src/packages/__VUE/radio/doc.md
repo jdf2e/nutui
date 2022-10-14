@@ -14,9 +14,11 @@ import { Radio,RadioGroup,Icon } from '@nutui/nutui';
 import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio).use(RadioGroup).use(Icon);
+app.use(Radio);
+app.use(RadioGroup);
+app.use(Icon);
 ```
-## 基本用法
+### 基础用法
 
 通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
 
@@ -62,7 +64,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 
 :::
 
-## 水平使用
+### 水平使用
 
 :::demo
 
@@ -105,7 +107,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 ```
 
 :::
-## 自定义尺寸
+### 自定义尺寸
 
 :::demo
 
@@ -134,7 +136,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 
 :::
 
-## 自定义图标
+### 自定义图标
 
 建议 `icon-name` `icon-active-name` 一起修改
 
@@ -165,7 +167,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 
 :::
 
-## 触发 change 事件
+### 触发 change 事件
 
 :::demo
 
@@ -197,9 +199,9 @@ app.use(Radio).use(RadioGroup).use(Icon);
 ```
 :::
 
-## Prop
+## API
 
-### Radio
+### Radio Props
 
 | 字段             | 说明                                                         | 类型                    | 默认值            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
@@ -212,7 +214,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 | label            | 单选框标识                                                   | String、Number、Boolean | -                 |
 | shape            | 形状，可选值为 button、round                                 | String                  | round             |
 
-### RadioGroup
+### RadioGroup Props
 
 | 字段          | 说明                                          | 类型                    | 默认值     |
 |---------------|-----------------------------------------------|-------------------------|------------|
@@ -220,7 +222,7 @@ app.use(Radio).use(RadioGroup).use(Icon);
 | text-position | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
 | direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
 
-## RadioGroup Event
+### RadioGroup Events
 
 | 字段   | 说明         | 回调参数                                           |
 |--------|--------------|----------------------------------------------------|

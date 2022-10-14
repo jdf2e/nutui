@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full">
+  <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" :title="translate('basic')"></nut-cell>
     <nut-numberkeyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-numberkeyboard>
@@ -60,31 +60,33 @@ import { ref, getCurrentInstance, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('numberkeyboard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '默认键盘',
-    sidebar: '带右侧栏键盘',
-    confirmText: '支付',
-    randomKeyOrder: '随机数键盘',
-    title: '标题',
-    withTitle: '带标题栏键盘',
-    idNumberKeyboard: '身份证键盘',
-    bindValue: '双向绑定：'
-  },
-  'en-US': {
-    basic: 'Default Keyboard',
-    sidebar: 'Keyboard With Sidebar',
-    confirmText: 'pay',
-    randomKeyOrder: 'Random Key Order',
-    title: 'title',
-    withTitle: 'Show Keyboard With Title',
-    idNumberKeyboard: 'Show IdNumber Keyboard',
-    bindValue: 'Bind Value：'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '默认键盘',
+      sidebar: '带右侧栏键盘',
+      confirmText: '支付',
+      randomKeyOrder: '随机数键盘',
+      title: '标题',
+      withTitle: '带标题栏键盘',
+      idNumberKeyboard: '身份证键盘',
+      bindValue: '双向绑定：'
+    },
+    'en-US': {
+      basic: 'Default Keyboard',
+      sidebar: 'Keyboard With Sidebar',
+      confirmText: 'pay',
+      randomKeyOrder: 'Random Key Order',
+      title: 'title',
+      withTitle: 'Show Keyboard With Title',
+      idNumberKeyboard: 'Show IdNumber Keyboard',
+      bindValue: 'Bind Value：'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let { proxy } = getCurrentInstance() as any;
     const visible1 = ref(false);
     const visible2 = ref(false);

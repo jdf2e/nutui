@@ -44,7 +44,7 @@
                     >
                     <view
                       class="calendar-day-tip"
-                      :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
+                      :class="{ 'calendar-curr-tips-top': rangeTip() }"
                       v-if="isStartTip(day, month)"
                     >
                       {{ startText || translate('start') }}
@@ -65,7 +65,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed } from 'vue';
+import { reactive, ref, watch, toRefs, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
@@ -73,20 +73,30 @@ import requestAniFrame from '@/packages/utils/raf';
 import { useExpose } from '@/packages/utils/useExpose/index';
 
 type InputDate = string | string[];
+type StringArr = string[];
+interface TouchParam {
+  startY: number;
+  endY: number;
+  startTime: number;
+  endTime: number;
+  lastY: number;
+  lastTime: number;
+}
+
 interface CalendarState {
   yearMonthTitle: string;
-  currDate: any;
+  currDate: string | string[];
   propStartDate: string;
   propEndDate: string;
   currentIndex: number;
   unLoadPrev: boolean;
-  touchParams: any;
+  touchParams: TouchParam;
   transformY: number;
   translateY: number;
   scrollDistance: number;
   defaultData: InputDate;
-  chooseData: any;
-  monthsData: any[];
+  chooseData: (string | string[])[];
+  monthsData: MonthInfo[];
   dayPrefix: string;
   startData: InputDate;
   endData: InputDate;
@@ -94,7 +104,7 @@ interface CalendarState {
   timer: number;
   avgHeight: number;
   monthsNum: number;
-  defaultRange: any[];
+  defaultRange: number[];
 }
 interface Day {
   day: string | number;
@@ -105,8 +115,17 @@ interface MonthInfo {
   curData: string[] | string;
   title: string;
   monthData: Day[];
-  cssHeight?: Number;
-  cssScrollHeight?: Number;
+  cssHeight: number;
+  cssScrollHeight: number;
+}
+interface Dateprop {
+  year: string;
+  month: string;
+}
+interface DateInfo {
+  year: string;
+  month: string;
+  day: string;
 }
 
 export default create({
@@ -156,8 +175,8 @@ export default create({
       default: ''
     },
     defaultValue: {
-      type: [String, Array],
-      default: null
+      type: [String, Array] as PropType<string>,
+      default: ''
     },
     startDate: {
       type: String,
@@ -235,7 +254,7 @@ export default create({
     };
     const isMultiple = (currDate: string) => {
       if (state.currDate.length > 0) {
-        return state.currDate.some((item: any) => {
+        return (state.currDate as StringArr).some((item: string) => {
           return Utils.isEqual(item, currDate);
         });
       } else {
@@ -300,8 +319,8 @@ export default create({
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
           if (state.currDate.length > 0) {
-            let hasIndex: any = '';
-            state.currDate.forEach((item: any, index: number) => {
+            let hasIndex: number | undefined = undefined;
+            (state.currDate as StringArr).forEach((item: string, index: number) => {
               if (item == days[3]) {
                 hasIndex = index;
               }
@@ -309,11 +328,11 @@ export default create({
             if (isFirst) {
               state.chooseData.push([...days]);
             } else {
-              if (hasIndex !== '') {
-                state.currDate.splice(hasIndex, 1);
+              if (hasIndex !== undefined) {
+                (state.currDate as StringArr).splice(hasIndex, 1);
                 state.chooseData.splice(hasIndex, 1);
               } else {
-                state.currDate.push(days[3]);
+                (state.currDate as StringArr).push(days[3]);
                 state.chooseData.push([...days]);
               }
             }
@@ -348,7 +367,6 @@ export default create({
         }
         if (!isFirst) {
           // 点击日期 触发
-          console.log(state.chooseData);
           emit('select', state.chooseData);
           if (props.isAutoBackFill || !props.poppable) {
             confirm();
@@ -372,11 +390,11 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month))];
+      return [year + '', Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month)) + ''];
     };
 
     // 获取日期状态
-    const getDaysStatus = (days: number, type: string, dateInfo: any) => {
+    const getDaysStatus = (days: number, type: string, dateInfo: Dateprop) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -392,7 +410,7 @@ export default create({
       });
     };
     // 获取上一个月的最后一周天数，填充当月空白
-    const getPreDaysStatus = (days: number, type: string, dateInfo: any, preCurrMonthDays: number) => {
+    const getPreDaysStatus = (days: number, type: string, dateInfo: Dateprop, preCurrMonthDays: number) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -409,18 +427,18 @@ export default create({
       return months.slice(preCurrMonthDays - days);
     };
     // 获取月数据
-    const getMonth = (curData: any[], type: string) => {
+    const getMonth = (curData: string[], type: string) => {
       // 一号为周几
       const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
 
-      let preMonth = curData[1] - 1;
-      let preYear = curData[0];
+      let preMonth = Number(curData[1]) - 1;
+      let preYear = Number(curData[0]);
       if (preMonth <= 0) {
         preMonth = 12;
         preYear += 1;
       }
       //当月天数与上个月天数
-      const currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
+      const currMonthDays = Utils.getMonthDays(String(curData[0]), String(curData[1]));
       const preCurrMonthDays = Utils.getMonthDays(preYear + '', preMonth + '');
 
       const title = {
@@ -431,17 +449,24 @@ export default create({
         curData: curData,
         title: translate('monthTitle', title.year, title.month),
         monthData: [
-          ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
+          ...(getPreDaysStatus(
+            preMonthDays,
+            'prev',
+            { month: preMonth + '', year: preYear + '' },
+            preCurrMonthDays
+          ) as Day[]),
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
-        ]
+        ],
+        cssHeight: 0,
+        cssScrollHeight: 0
       };
       monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
       let cssScrollHeight = 0;
 
       if (state.monthsData.length > 0) {
         cssScrollHeight =
-          state.monthsData[state.monthsData.length - 1].cssScrollHeight +
-          state.monthsData[state.monthsData.length - 1].cssHeight;
+          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssScrollHeight +
+          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssHeight;
       }
       monthInfo.cssScrollHeight = cssScrollHeight;
       if (type == 'next') {
@@ -525,15 +550,15 @@ export default create({
       } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
         if (state.currDate.length > 0) {
           let defaultArr: string[] = [];
-          let obj: any = {};
-          state.currDate.forEach((item: string, index: number) => {
+          let obj: Record<string, unknown> = {};
+          state.currDate.forEach((item: string) => {
             if (
               propStartDate &&
               !Utils.compareDate(item, propStartDate) &&
               propEndDate &&
               !Utils.compareDate(propEndDate, item)
             ) {
-              if (!obj.hasOwnProperty(item)) {
+              if (!Object.hasOwnProperty.call(obj, item)) {
                 defaultArr.push(item);
                 obj[item] = item;
               }
@@ -577,7 +602,7 @@ export default create({
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
           chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
         } else if (props.type == 'multiple') {
-          [...state.currDate].forEach((item: any) => {
+          [...state.currDate].forEach((item: string) => {
             let dateArr = splitDate(item);
             let current = state.currentIndex;
             state.monthsData.forEach((item, index) => {
@@ -675,22 +700,24 @@ export default create({
       return false;
     };
     // 开始结束时间是否相等
-    const rangeTip = (day: Day, month: MonthInfo) => {
+    const rangeTip = () => {
       if (state.currDate.length >= 2) {
         return Utils.isEqual(state.currDate[0], state.currDate[1]);
       }
     };
     // 是否有 当前日期
-    const isCurrDay = (dateInfo: any) => {
-      const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
+    const isCurrDay = (dateInfo: DateInfo) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${
+        Number(dateInfo.day) < 10 ? '0' + dateInfo.day : dateInfo.day
+      }`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
     // 滚动处理事件
-    const mothsViewScroll = (e: any) => {
+    const mothsViewScroll = (e: Event) => {
       if (state.monthsData.length <= 1) {
         return;
       }
-      const currentScrollTop = e.target.scrollTop;
+      const currentScrollTop = (e.target as Element).scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {

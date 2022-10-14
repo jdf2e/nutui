@@ -10,6 +10,7 @@
             <nut-icon
               v-if="titleIcon"
               :name="titleIcon"
+              v-bind="$attrs"
               :size="titleIconSize"
               :color="titleIconColor"
               :class="[titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
@@ -28,6 +29,7 @@
       <nut-icon
         v-if="icon"
         :name="icon"
+        v-bind="$attrs"
         :size="iconSize"
         :color="iconColor"
         :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"

@@ -1,3 +1,36 @@
+.nut-theme-dark {
+  .nut-table {
+    &__main {
+      color: $dark-color;
+      background-color: $dark-background2;
+      &--striped {
+        .nut-table__main__head {
+          &__tr {
+            background-color: $dark-background3;
+          }
+        }
+        .nut-table__main__body {
+          &__tr:nth-child(odd) {
+            background-color: $dark-color-gray;
+          }
+        }
+        .nut-table__main__body {
+          &__tr:nth-child(even) {
+            background-color: $dark-background3;
+          }
+        }
+      }
+    }
+    &__summary {
+      color: $dark-color;
+      background-color: $dark-background;
+    }
+    &__nodata {
+      color: $dark-color;
+      background-color: $dark-background;
+    }
+  }
+}
 .nut-table {
   display: flex;
   width: 100%;

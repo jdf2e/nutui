@@ -32,18 +32,13 @@
         ref="calendarRef"
         v-model:visible="isVisible1"
         :default-value="date1"
-        type="multiple"
+        type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
       >
-        <template v-slot:btn>
-          <div class="wrapper">
-            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
-          </div>
-        </template>
       </nut-calendar>
     </div>
     <div>
@@ -189,54 +184,55 @@ import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const { createDemo, translate } = createComponent('calendar');
-useTranslate({
-  'zh-CN': {
-    title: '基础用法',
-    title1: '快捷选择',
-    title2: '自定义日历',
-    title3: '平铺展示',
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      title: '基础用法',
+      title1: '快捷选择',
+      title2: '自定义日历',
+      title3: '平铺展示',
 
-    please: '请选择',
-    single: '选择单个日期',
-    range: '选择日期区间',
-    multiple: '选择多个日期',
+      please: '请选择',
+      single: '选择单个日期',
+      range: '选择日期区间',
+      multiple: '选择多个日期',
 
-    conjunction: '至',
-    custom_btn: '自定义按钮',
-    timeText: '自定义时间文案',
+      conjunction: '至',
+      custom_btn: '自定义按钮',
+      timeText: '自定义时间文案',
 
-    goDate: '去某个月',
-    seven: '最近七天',
-    current: '当月',
-    enter: '入店',
-    leave: '离店',
-    mid: '中旬',
-    selected: '已选择：'
-  },
-  'en-US': {
-    title: 'Basic Usage',
-    title1: 'Quick Select',
-    title2: 'Custom Calendar',
-    title3: 'Tiled Display',
+      goDate: '去某个月',
+      seven: '最近七天',
+      current: '当月',
+      enter: '入店',
+      leave: '离店',
+      mid: '中旬',
+      selected: '已选择：'
+    },
+    'en-US': {
+      title: 'Basic Usage',
+      title1: 'Quick Select',
+      title2: 'Custom Calendar',
+      title3: 'Tiled Display',
 
-    please: 'Please Select Date',
-    single: 'Select Single Date',
-    range: 'Select Date Range',
-    multiple: 'Select Multiple Date',
+      please: 'Please Select Date',
+      single: 'Select Single Date',
+      range: 'Select Date Range',
+      multiple: 'Select Multiple Date',
 
-    conjunction: '-',
-    custom_btn: 'Custom Button',
-    timeText: 'Custom Date Text',
+      conjunction: '-',
+      custom_btn: 'Custom Button',
+      timeText: 'Custom Date Text',
 
-    goDate: 'Go Date',
-    seven: 'Last Seven Days',
-    current: 'This Month',
-    enter: 'enter',
-    leave: 'leave',
-    mid: 'mid',
-    selected: 'selected:'
-  }
-});
+      goDate: 'Go Date',
+      seven: 'Last Seven Days',
+      current: 'This Month',
+      enter: 'enter',
+      leave: 'leave',
+      mid: 'mid',
+      selected: 'selected:'
+    }
+  });
 interface TestCalendarState {
   isVisible: boolean;
   date: string;
@@ -259,6 +255,7 @@ interface TestCalendarState {
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const calendarRef = ref(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
@@ -299,7 +296,6 @@ export default createDemo({
       let dateArr = chooseData.map((item: any) => {
         return item[3];
       });
-      console.log('changevalue 1 ', chooseData, dateArr);
       state.date1 = [...dateArr];
     };
     const setChooseValue2 = (param: string) => {

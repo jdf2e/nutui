@@ -22,7 +22,7 @@
         :class="[item.className, { 'popover-menu-item': true, disabled: item.disabled }]"
         @click.stop="chooseItem(item, index)"
       >
-        <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
+        <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
         <view class="popover-menu-name">{{ item.name }}</view>
       </view>
     </view>
@@ -107,7 +107,6 @@ export default create({
     });
 
     const createPopperInstance = () => {
-      console.log(reference.value, popoverRef.value);
       if (reference.value && popoverRef.value) {
         return createPopper(reference.value, popoverRef.value.popupRef, {
           placement: props.location,
@@ -131,7 +130,7 @@ export default create({
     };
 
     const clickOverlay = () => {
-      console.log('关闭');
+      // console.log('关闭');
     };
 
     const uploadLocation = () => {
@@ -139,7 +138,6 @@ export default create({
         if (!showPopup.value) return;
         if (!popper) {
           popper = createPopperInstance();
-          console.log(popper);
         } else {
           popper.setOptions({
             placement: props.location
@@ -148,9 +146,9 @@ export default create({
       });
     };
 
-    const clickAway = (event: any) => {
+    const clickAway = (event: Event) => {
       const element = reference.value;
-      if (element && !element.contains(event.target as Node)) {
+      if (element && !element.contains(event.target)) {
         closePopover();
       }
     };

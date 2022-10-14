@@ -1,7 +1,7 @@
 <template>
   <view :class="classes" @click="onClick" :style="style">
     <view class="switch-button">
-      <nut-icon v-if="loading" :name="name" :size="size" :color="color"></nut-icon>
+      <nut-icon v-if="loading" v-bind="$attrs" :name="name" :size="size" :color="color"></nut-icon>
       <!-- <view v-show="!modelValue" class="close-line"></view> -->
       <template v-if="activeText">
         <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>

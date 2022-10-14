@@ -213,9 +213,9 @@ app.use(TabbarItem);
 </template>
 ```
 :::
-### Prop
+## API
 
-### nut-tabbar
+### Tabbar Props
 
 | 字段            | 说明               | 类型   | 默认值  |
 |-----------------|--------------------|--------|---------|
@@ -225,7 +225,7 @@ app.use(TabbarItem);
 | unactive-color  | icon未激活的颜色   | string | #7d7e80 |
 | active-color    | icon激活的颜色     | string | #1989fa |
 | safe-area-inset-bottom   | 是否开启iphone系列全面屏底部安全区适配    | boolean | false |
-### tabbar-item
+### TabbarItem Props
 
 | 字段      | 说明                                      | 类型   | 默认值 |
 |-----------|-------------------------------------------|--------|--------|
@@ -242,7 +242,7 @@ app.use(TabbarItem);
 | dot       | 是否显示图标右上角小红点   | boolean | false    |
 
 
-### Event
+### Tabbar Events
 
 | 事件名称   | 说明               | 回调参数           |
 |------------|--------------------|--------------------|

@@ -3,6 +3,7 @@ export class UploadOptions {
   name = 'file';
   fileType? = 'image';
   formData?: FormData;
+  sourceFile: any;
   method = 'post';
   xhrState = 200;
   timeout = 30 * 1000;
@@ -13,6 +14,7 @@ export class UploadOptions {
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
+  beforeXhrUpload?: Function;
 }
 export class Uploader {
   options: UploadOptions;
@@ -47,7 +49,11 @@ export class Uploader {
         xhr.setRequestHeader(key, value as string);
       }
       options.onStart?.(options);
-      xhr.send(options.formData);
+      if (options.beforeXhrUpload) {
+        options.beforeXhrUpload(xhr, options);
+      } else {
+        xhr.send(options.formData);
+      }
     } else {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
@@ -57,36 +63,39 @@ export class Uploader {
     if (env === 'WEB') {
       this.upload();
     } else {
-      const uploadTask = uploadFile({
-        url: options.url,
-        filePath: options.taroFilePath,
-        fileType: options.fileType,
-        header: {
-          'Content-Type': 'multipart/form-data',
-          ...options.headers
-        }, //
-        formData: options.formData,
-        name: options.name,
-        success(response: { errMsg: any; statusCode: number; data: string }) {
-          if (options.xhrState == response.statusCode) {
-            options.onSuccess?.(response, options);
-          } else {
-            options.onFailure?.(response, options);
+      if (options.beforeXhrUpload) {
+        options.beforeXhrUpload(uploadFile, options);
+      } else {
+        const uploadTask = uploadFile({
+          url: options.url,
+          filePath: options.taroFilePath,
+          fileType: options.fileType,
+          header: {
+            'Content-Type': 'multipart/form-data',
+            ...options.headers
+          }, //
+          formData: options.formData,
+          name: options.name,
+          success(response: { errMsg: any; statusCode: number; data: string }) {
+            if (options.xhrState == response.statusCode) {
+              options.onSuccess?.(response, options);
+            } else {
+              options.onFailure?.(response, options);
+            }
+          },
+          fail(e: any) {
+            options.onFailure?.(e, options);
           }
-        },
-        fail(e: any) {
-          options.onFailure?.(e, options);
-        }
-      });
-      options.onStart?.(options);
-      uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
-        options.onProgress?.(res, options);
-        // console.log('上传进度', res.progress);
-        // console.log('已经上传的数据长度', res.totalBytesSent);
-        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
-      });
-
-      // uploadTask.abort(); // 取消上传任务
+        });
+        options.onStart?.(options);
+        uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+          options.onProgress?.(res, options);
+          // console.log('上传进度', res.progress);
+          // console.log('已经上传的数据长度', res.totalBytesSent);
+          // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+        });
+        // uploadTask.abort(); // 取消上传任务
+      }
     }
   }
 }

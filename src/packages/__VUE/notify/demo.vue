@@ -11,8 +11,6 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('t2')">
       <nut-cell is-Link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('t3')">
       <nut-cell is-Link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
       <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
     </nut-cell-group>
@@ -31,36 +29,38 @@ import { Notify } from '../../nutui.vue';
 import { ref } from 'vue';
 const { createDemo, translate } = createComponent('notify');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    t1: '通知类型',
-    t2: '自定义样式',
-    t3: '自定义时长',
-    cusPostion: '自定义位置',
-    useTemplate: '组件调用',
-    primaryNotify: '主要通知',
-    successNotify: '成功通知',
-    errorNotify: '危险通知',
-    warningNotify: '警告通知',
-    cusBgNotify: '自定义背景色和字体颜色'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    t1: 'Notify Type',
-    t2: 'Custom Style',
-    t3: 'Custom Duration',
-    cusPostion: 'Custom Postion',
-    useTemplate: 'Template use',
-    primaryNotify: 'Primary Notify',
-    successNotify: 'Success Notify',
-    errorNotify: 'Error Notify',
-    warningNotify: 'Warning Notify',
-    cusBgNotify: 'Customize background and font colors'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      t1: '通知类型',
+      t2: '自定义',
+      t3: '自定义时长',
+      cusPostion: '自定义位置',
+      useTemplate: '组件调用',
+      primaryNotify: '主要通知',
+      successNotify: '成功通知',
+      errorNotify: '危险通知',
+      warningNotify: '警告通知',
+      cusBgNotify: '自定义背景色和字体颜色'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      t1: 'Notify Type',
+      t2: 'Custom',
+      t3: 'Custom Duration',
+      cusPostion: 'Custom Postion',
+      useTemplate: 'Template use',
+      primaryNotify: 'Primary Notify',
+      successNotify: 'Success Notify',
+      errorNotify: 'Error Notify',
+      warningNotify: 'Warning Notify',
+      cusBgNotify: 'Customize background and font colors'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const baseNotify = (msg: string) => {
       Notify.text(msg, {
         onClose: () => {

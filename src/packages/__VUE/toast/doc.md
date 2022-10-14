@@ -14,9 +14,8 @@ const app = createApp();
 app.use(Toast);
 ```
 
-## 代码演示
 
-#### 全局使用方式
+### 全局使用方式
 :::demo
 ``` html
 <template>
@@ -34,7 +33,7 @@ export default {
 ```
 :::
 
-#### 文字提示
+### 文字提示
 :::demo
 ```html
 <template>
@@ -55,7 +54,7 @@ export default {
 </script>
 ```
 :::
-#### 标题提示
+### 标题提示
 
 :::demo
 ```html
@@ -79,7 +78,7 @@ export default {
 </script>
 ```
 :::
-#### 成功提示
+### 成功提示
 
 :::demo
 ```html
@@ -102,7 +101,7 @@ export default {
 ```
 :::
 
-#### 失败提示
+### 失败提示
 
 :::demo
 ```html
@@ -125,7 +124,7 @@ export default {
 ```
 :::
 
-#### 警告提示
+### 警告提示
 
 :::demo
 ```html
@@ -148,7 +147,7 @@ export default {
 ```
 :::
 
-#### 加载提示
+### 加载提示
 
 :::demo
 ```html
@@ -171,7 +170,7 @@ export default {
 ```
 :::
 
-#### Toast不消失
+### Toast不消失
 
 :::demo
 ```html
@@ -195,7 +194,7 @@ export default {
 </script>
 ```
 :::
-#### Toast自定义底部高度
+### Toast自定义底部高度
 
 :::demo
 ```html
@@ -221,7 +220,7 @@ export default {
 ```
 :::
 
-#### Loading带透明罩
+### Loading带透明罩
 :::demo
 ```html
 <template>
@@ -246,7 +245,7 @@ export default {
 :::
 
 
-####  支持在JS模块中导入使用
+###  支持在JS模块中导入使用
 ``` javascript
 import { Toast } from "@nutui/nutui";
 Toast.text('在js模块中使用');
@@ -256,7 +255,8 @@ toast.hide();
 ```
 
 
-### API
+## API
+### 方法
 | 方法名                    | 说明                                                                    | 参数            | 返回值     |
 | ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
 | Toast.text                | 展示文字提示                                                            |  message｜ options | toast 实例(message支持传入HTML) |
@@ -266,7 +266,7 @@ toast.hide();
 | Toast.hide                | 关闭提示                                                                | 默认关闭所有实例，可传id关闭指定实例   | void       |
 | Toast.loading             | 展示加载提示                                                            | message｜ options | toast 实例 |
 
-## Options
+### ToastOptions 数据结构
 
 | 字段                | 说明                                                                          | 类型          | 默认值                        |
 | ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |
@@ -275,15 +275,15 @@ toast.hide();
 | title            | 标题     | String        |           -             |
 | center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
 | bottom              | 距页面底部的距离（像素或者百分比），option.center为false时生效                          | String       | 30px                    |
-| textAlignCenter     | 多行文案是否居中                                                              | Boolean       | true                          |
-| bgColor             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
-| customClass         | 自定义类名                                                                    | String        |          -                   |
+| text-align-center     | 多行文案是否居中                                                              | Boolean       | true                          |
+| bg-color             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
+| custom-class         | 自定义类名                                                                    | String        |          -                   |
 | icon                | 自定义图标，**支持图片链接或base64格式**                                        | String        |         -                   |
-| iconSize                | 自定义图标尺寸                                      | String        | 20                           |
+| icon-size                | 自定义图标尺寸                                      | String        | 20                           |
 | size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | base                      |
 | cover               | 是否显示遮罩层                                          | Boolean       | false |
 | cover-color          | 遮罩层颜色，默认透明                                                          | String        | rgba(0,0,0,0)             |
-| loadingRotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
+| loading-rotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
 | close             | 关闭时触发的事件                                                              | function      | null                          |
 | close-on-click-overlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
 | custom-class          | 提示框class                                                        | String       |               -          |

@@ -209,8 +209,8 @@ app.use(Badge);
 ```
 :::
 
-
-### Prop  
+## API
+### Props 
 
 | Attribute | Description | Type | Default |
 |---------|--------------------------------------------|---------|-----------|

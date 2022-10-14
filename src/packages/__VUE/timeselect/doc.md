@@ -14,10 +14,15 @@ import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui
 import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
+app.use(TimeSelect);
+app.use(TimePannel);
+app.use(TimeDetail);
+app.use(Popup);
+app.use(Icon);
+app.use(Overlay);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -290,21 +295,19 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
   };
 </script>
 <style lang="scss" scoped>
-.demo {
-  .timeselect-title{
-    height: 50px;
-    p{
-      line-height: 1;
-      padding: 0;
-      margin: 0;
-      &.title{
-        margin: 10px 0;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      &.subtitle{
-        color: #999;
-      }
+.timeselect-title {
+  height: 50px;
+  p {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    &.title {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &.subtitle {
+      color: #999;
     }
   }
 }
@@ -315,7 +318,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 
 ## API
 
-### TimeSelect Prop
+### TimeSelect Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -326,7 +329,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | current-time                 | 当前选择的时间，数组元素包含:key: string; list: string[]      | Array  | `[]`
 | lock-scroll            | 背景是否锁定                                                | Boolean        | `false`       |
 
-### Slot
+### Slots
 
 | 字段                   | 说明                                                             |
 |------------------------|----------------------------------------------------------------|
@@ -334,14 +337,14 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | pannel                 | 左侧列表                                                    |
 | detail                 | 右侧详细内容                                                    |
 
-### TimePannel Prop
+### TimePannel Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
 | name                 | 显示的名称                                                    | String  | ``
 | pannel-key           | 唯一标识，和 current-key一起标识当前选择的天                      | Number、String  | `0`
 
-### TimeDetail Prop
+### TimeDetail Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|

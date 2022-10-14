@@ -30,7 +30,7 @@
     <nut-cell-group v-for="item in icons.data" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="item in item.icons" :key="item">
+          <li v-for="item in item.icons" :key="item" @click="copyTag(item)">
             <nut-icon :name="item"></nut-icon>
             <span>{{ item }}</span>
           </li>
@@ -40,7 +40,7 @@
     <nut-cell-group v-for="item in icons.style" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="it in item.icons" :key="it">
+          <li v-for="it in item.icons" :key="it" @click="copyTag(it['animation-name'])">
             <nut-icon :name="it.name" :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`">
             </nut-icon>
             <span>{{ it['animation-name'] }}</span>
@@ -53,28 +53,46 @@
 
 <script lang="ts">
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    imageLink: '图片链接',
-    iconColor: '图标颜色',
-    iconSize: '图标大小'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    imageLink: 'Image Link',
-    iconColor: 'Icon Color',
-    iconSize: 'Icon Size'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      imageLink: '图片链接',
+      iconColor: '图标颜色',
+      iconSize: '图标大小',
+      copyToast: '复制成功'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      imageLink: 'Image Link',
+      iconColor: 'Icon Color',
+      iconSize: 'Icon Size',
+      copyToast: 'Copied successfully'
+    }
+  });
 // import icons from '@/packages/styles/font/iconfont.json';
 import icons from '@/packages/styles/font/config.json';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('icon');
+import { Toast } from '@/packages/nutui.vue';
 export default createDemo({
   props: {},
   setup() {
-    return { icons, translate, currentLang };
+    initTranslate();
+    const copyTag = (name: string) => {
+      const text = `<nut-icon name="${name}"></nut-icon>`;
+      const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
+      const input = document.createElement('input');
+      document.body.appendChild(input);
+      input.setAttribute('value', text);
+      input.select();
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        Toast.text(`${translate('copyToast')}: <br/>${displayText}`);
+      }
+      document.body.removeChild(input);
+    };
+    return { icons, translate, currentLang, copyTag };
   }
 });
 </script>

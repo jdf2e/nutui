@@ -39,12 +39,14 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('backtop');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
-  'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
+    'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
+  });
 export default createDemo({
   setup(props, { emit }) {
+    initTranslate();
     const handleClick = () => {
       console.log(translate('clg'));
     };

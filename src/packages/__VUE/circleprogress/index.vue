@@ -63,7 +63,7 @@ export default create({
     }
   },
 
-  setup(props, { emit }) {
+  setup(props) {
     const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
@@ -99,7 +99,7 @@ export default create({
       let color = props.color;
       const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
       let stopArr: object[] = [];
-      colorArr.map((item, index) => {
+      colorArr.map((item) => {
         let obj = {
           key: '',
           value: ''

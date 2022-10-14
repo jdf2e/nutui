@@ -11,6 +11,7 @@
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
           <nut-icon
+            v-bind="$attrs"
             :name="backBtnIcon"
             color="#cccccc"
             v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
@@ -26,7 +27,7 @@
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
-          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
+          <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
@@ -40,9 +41,9 @@
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }} </view>
-          </view>
 
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
+            <view :class="{ 'region-tab-line-mini': true, active: index == tabIndex }" ref="regionLine"></view>
+          </view>
         </view>
 
         <view class="region-con">
@@ -56,6 +57,7 @@
               <nut-icon
                 class="region-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="selectedIcon"
                 size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
@@ -76,8 +78,8 @@
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
+            <view :class="{ 'region-tab-line-mini': true, active: index == tabIndex }"></view>
           </view>
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
         <view class="elevator-group">
           <nut-elevator
@@ -102,6 +104,7 @@
               <nut-icon
                 class="exist-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="item.selectedAddress ? selectedIcon : defaultIcon"
                 size="13px"
               ></nut-icon>
@@ -122,6 +125,9 @@
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
+        <template v-if="!isShowCustomAddress">
+          <slot name="bottom"></slot>
+        </template>
       </view>
     </view>
   </nut-popup>
@@ -322,7 +328,7 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
-      console.log(props.modelValue);
+      // console.log(props.modelValue);
       if (props.modelValue.length > 0) {
         tabIndex.value = props.modelValue.length - 1;
         for (let index = 0; index < props.modelValue.length; index++) {
@@ -343,7 +349,6 @@ export default create({
             }
           }
         }
-        lineAnimation();
       }
     };
 
@@ -387,20 +392,7 @@ export default create({
     const clickOverlay = () => {
       closeWay.value = 'mask';
     };
-    // 移动下面的红线
-    const lineAnimation = () => {
-      setTimeout(() => {
-        Taro.createSelectorQuery()
-          .selectAll(`.${tabName.value[tabIndex.value]}`)
-          .boundingClientRect((rects) => {
-            console.log(rects);
-            (rects as any).forEach((rect) => {
-              if (rect.width > 0) lineDistance.value = rect.left;
-            });
-          })
-          .exec();
-      }, 100);
-    };
+
     // 切换下一级列表
     const nextAreaList = (item: RegionData | string) => {
       // onchange 接收的参数
@@ -422,8 +414,6 @@ export default create({
       if (tabIndex.value < 3) {
         tabIndex.value = tabIndex.value + 1;
 
-        lineAnimation();
-
         // 切换下一个
         calBack.next = tabName.value[tabIndex.value];
         calBack.value = item as string;
@@ -437,7 +427,6 @@ export default create({
     const changeRegionTab = (item: RegionData, key: number, index: number) => {
       if (getTabName(item, index)) {
         tabIndex.value = index;
-        lineAnimation();
       }
     };
 
@@ -467,7 +456,6 @@ export default create({
         (selectedRegion as any)[tabName.value[i]] = {};
       }
       tabIndex.value = 0;
-      lineAnimation();
     };
 
     // 关闭

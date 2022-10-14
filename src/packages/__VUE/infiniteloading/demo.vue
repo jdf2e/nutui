@@ -51,26 +51,28 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('infiniteloading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-useTranslate({
-  'zh-CN': {
-    basic: '基础用法',
-    pullRefresh: '下拉刷新',
-    customTxt: '自定义加载文案',
-    none: '没有啦~',
-    success: '刷新成功'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    pullRefresh: 'Pull to refresh',
-    customTxt: 'Custom loading copywriting',
-    none: 'No more',
-    success: 'Refresh success'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基础用法',
+      pullRefresh: '下拉刷新',
+      customTxt: '自定义加载文案',
+      none: '没有啦~',
+      success: '刷新成功'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      pullRefresh: 'Pull to refresh',
+      customTxt: 'Custom loading copywriting',
+      none: 'No more',
+      success: 'Refresh success'
+    }
+  });
 
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let { proxy } = getCurrentInstance() as any;
 
     const hasMore = ref(true);
@@ -155,6 +157,11 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .infiniteLi {
+    color: $dark-color;
+  }
+}
 .infiniteUl {
   height: 300px;
   width: 100%;

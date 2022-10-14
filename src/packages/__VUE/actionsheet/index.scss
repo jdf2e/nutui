@@ -1,3 +1,20 @@
+.nut-theme-dark {
+  .nut-actionsheet-panel {
+    .nut-actionsheet-cancel {
+      border-top: 1px solid $dark-background2;
+    }
+    .nut-actionsheet-title {
+      border-bottom: 1px solid $dark-background2;
+    }
+    .nut-actionsheet-cancel,
+    .nut-actionsheet-item,
+    .nut-actionsheet-title {
+      background: $dark-background;
+      color: $dark-color;
+    }
+  }
+}
+
 .nut-actionsheet-panel {
   display: block;
   .nut-actionsheet-title {

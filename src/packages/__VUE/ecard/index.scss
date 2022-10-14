@@ -1,3 +1,34 @@
+.nut-theme-dark {
+  .nut-ecard {
+    color: $dark-color3;
+    ::placeholder {
+      color: rgb(29, 31, 32);
+    }
+    .nut-ecard__list__item {
+      background: $dark-background5;
+      &.active {
+        background: $dark-background6;
+        outline: 1px solid $dark-color2;
+        color: $dark-color2;
+      }
+    }
+    .nut-ecard__list__input {
+      color: $dark-color3;
+      background: $dark-background7;
+      &.active {
+        background: $dark-background7;
+        > view > input {
+          background: $dark-background7;
+        }
+      }
+      .nut-ecard__list__input--con > input {
+        background-color: transparent;
+        color: $dark-color3;
+      }
+    }
+  }
+}
+
 .nut-ecard {
   width: 100%;
 
@@ -6,7 +37,6 @@
     font-size: 15px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: rgba(0, 0, 0, 0.6);
   }
 
   &__list {

@@ -17,6 +17,7 @@
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
+      @can-play="onCanplay"
       type="none"
       ref="audioDemo"
     >
@@ -75,24 +76,26 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    voicePlay: '语音播放',
-    progress: '进度条展示',
-    customControl: '自定义操作按钮'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    voicePlay: 'Voice Playing',
-    progress: 'Progress',
-    customControl: 'Custom Control'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      voicePlay: '语音播放',
+      progress: '进度条展示',
+      customControl: '自定义操作按钮'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      voicePlay: 'Voice Playing',
+      progress: 'Progress',
+      customControl: 'Custom Control'
+    }
+  });
 
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const audioDemo = ref(null);
     const playing = ref(false);
     const duration = ref(0);
@@ -122,11 +125,12 @@ export default createDemo({
       console.log('改变进度条', val);
     };
 
+    const onCanplay = (e: Event) => {
+      duration.value = audioDemo.value.second.toFixed();
+    };
+
     onMounted(() => {
       console.log(audioDemo.value);
-      setTimeout(() => {
-        duration.value = audioDemo.value.second.toFixed();
-      }, 500);
     });
 
     return {
@@ -139,12 +143,26 @@ export default createDemo({
       ended,
       duration,
       changeProgress,
-      translate
+      translate,
+      onCanplay
     };
   }
 });
 </script>
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .demo {
+    .nut-voice {
+      background: $dark-color;
+      border: 1px solid $dark-color;
+      border-radius: 18px;
+    }
+
+    .nut-audio-operate {
+      color: $dark-color;
+    }
+  }
+}
 .demo {
   .nut-voice {
     display: flex;

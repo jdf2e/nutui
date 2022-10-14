@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ```
 
-## 代码演示
 
 ### 基础用法
 
@@ -53,6 +52,23 @@ export default {
   }
 };
 </script>
+```
+
+:::
+
+### slot 用法
+
+:::demo
+
+```html
+<template>
+  <nut-barrage>
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+    <span>ddd</span>
+  </nut-barrage>
+</template>
 ```
 
 :::

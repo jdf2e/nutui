@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />

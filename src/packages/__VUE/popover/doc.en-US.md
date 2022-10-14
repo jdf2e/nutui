@@ -15,6 +15,8 @@ import { Popover, Popup } from '@nutui/nutui';
 import { Popover, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
+
+app.use(Popup);
 app.use(Popover);
 
 ```
@@ -282,8 +284,8 @@ export default {
 :::
 
 
-
-### Prop  
+## API
+### Props  
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|

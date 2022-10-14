@@ -52,10 +52,20 @@ export const component = (componentName: string, translate: Function) => {
         };
       };
 
+      const stylehead = (item: TableColumnProps) => {
+        return item.stylehead ? item.stylehead : '';
+      };
+      const stylecolumn = (item: TableColumnProps) => {
+        return item.stylecolumn ? item.stylecolumn : '';
+      };
+
       const getColumnItem = (value: string): TableColumnProps => {
         return props.columns.filter((item: TableColumnProps) => item.key === value)[0];
       };
-
+      const getColumnItemStyle = (value: string) => {
+        const style = props.columns.filter((item: TableColumnProps) => item.key === value);
+        return style[0].stylecolumn ? style[0].stylecolumn : '';
+      };
       const handleSorterClick = (item: TableColumnProps) => {
         if (item.sorter) {
           emit('sorter', item);
@@ -86,9 +96,12 @@ export const component = (componentName: string, translate: Function) => {
         classes,
         cellClasses,
         getColumnItem,
+        getColumnItemStyle,
         handleSorterClick,
         sortDataItem,
-        translate
+        translate,
+        stylehead,
+        stylecolumn
       };
     }
   };

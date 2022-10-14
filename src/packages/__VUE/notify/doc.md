@@ -12,7 +12,7 @@ import { Notify } from '@nutui/nutui';
 const app = createApp();
 app.use(Notify);
 ```    
-## 基本用法
+### 基础用法
 :::demo
 ```html
 <template>
@@ -41,7 +41,7 @@ export default {
 </script>
 ```
 :::
-## 通知类型
+### 通知类型
 :::demo
 ```html
 <template>
@@ -80,15 +80,18 @@ export default {
 </script>
 ```
 :::
-## 自定义
+### 自定义
 :::demo
 ```html
 <template>
-  <nut-cell-group title="自定义样式">
+  <nut-cell-group title="自定义背景色和字体颜色">
     <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">自定义背景色和字体颜色</nut-cell>
   </nut-cell-group>
-    <nut-cell-group title="自定义时长">
-      <nut-cell is-Link @click="timeNotify('自定义时长')">自定义时长</nut-cell>
+  <nut-cell-group title="自定义时长">
+    <nut-cell is-Link @click="timeNotify('自定义时长')">自定义时长</nut-cell>
+  </nut-cell-group>
+  <nut-cell-group title="自定义位置">
+    <nut-cell is-Link @click="positionNotify('自定义位置')">自定义位置</nut-cell>
   </nut-cell-group>
 </template>
 <script lang="ts">
@@ -102,9 +105,46 @@ export default {
     const timeNotify = (msg: string) => {
       Notify.text(msg, { duration: 10000 });
     };
+    const positionNotify = (msg: string) => {
+      Notify.text(msg, { position: 'bottom' });
+    };
     return {
       cusBgNotify,
-      timeNotify
+      timeNotify,
+      positionNotify
+    };
+  }
+}
+</script>
+```
+:::
+
+### 组件调用
+:::demo
+```html
+<template>
+  <nut-cell-group title="组件调用">
+    <nut-cell is-Link @click="showNotify">组件调用</nut-cell>
+    <nut-notify v-model:visible="show">
+      <span>Content</span>
+    </nut-notify>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Notify } from '@nutui/nutui';
+export default {
+  setup() {
+    const show = ref(false);
+    const showNotify = () => {
+      show.value = true;
+      setTimeout(() => {
+        show.value = false;
+      }, 2000);
+    };
+    return {
+      show,
+      showNotify
     };
   }
 }
@@ -112,7 +152,7 @@ export default {
 ```
 :::
     
-## API
+### API
     
 ### Props
     

@@ -14,7 +14,7 @@ test('should render height', async () => {
   await nextTick();
 
   const listItem = wrapper.findAll('.nut-list-item')[0];
-  expect((listItem.element as any).style.height).toEqual('50px');
+  expect((listItem.element as HTMLDivElement).style.height).toEqual('50px');
 });
 
 test('should render height', async () => {

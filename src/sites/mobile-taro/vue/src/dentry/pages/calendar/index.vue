@@ -202,7 +202,7 @@ export default {
       date1: ['2020-01-23', '2020-01-26'],
       date2: '2020-07-08',
       date3: '',
-      date4: ['2021-12-23', '2021-12-26'],
+      date4: ['2022-02-23', '2022-04-26'],
       date5: ['2021-12-23', '2021-12-26'],
       date6: [],
       date7: [],
@@ -272,9 +272,8 @@ export default {
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
     };
     const goDate = () => {
-      console.log(calendarRef.value);
       if (calendarRef.value) {
-        calendarRef.value.calendarRef.scrollToDate('2022-04-01');
+        calendarRef.value.scrollToDate('2022-04-01');
       }
     };
     return {

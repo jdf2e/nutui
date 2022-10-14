@@ -26,34 +26,36 @@ const { createDemo, translate } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { onUnmounted } from 'vue';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    toastText: '文字提示',
-    toastTitle: '标题展示',
-    toastSuccess: '成功提示',
-    toastError: '错误提示',
-    toastWarning: '警告提示',
-    toastLoading: '加载提示',
-    toastAll: 'Toast 不消失',
-    toastBottom: '自定义底部高度',
-    toastTransparent: '加载状态透明遮罩'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    toastText: 'Text Message',
-    toastTitle: 'Title',
-    toastSuccess: 'Success',
-    toastError: 'Error',
-    toastWarning: 'Warning',
-    toastLoading: 'Loading',
-    toastAll: 'Not Disappear',
-    toastBottom: 'Custom Bottom Height',
-    toastTransparent: 'Loading Transparent Cover'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      toastText: '文字提示',
+      toastTitle: '标题展示',
+      toastSuccess: '成功提示',
+      toastError: '错误提示',
+      toastWarning: '警告提示',
+      toastLoading: '加载提示',
+      toastAll: 'Toast 不消失',
+      toastBottom: '自定义底部高度',
+      toastTransparent: '加载状态透明遮罩'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      toastText: 'Text Message',
+      toastTitle: 'Title',
+      toastSuccess: 'Success',
+      toastError: 'Error',
+      toastWarning: 'Warning',
+      toastLoading: 'Loading',
+      toastAll: 'Not Disappear',
+      toastBottom: 'Custom Bottom Height',
+      toastTransparent: 'Loading Transparent Cover'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const textToast = (msg: string) => {
       Toast.text(msg);
     };

@@ -15,7 +15,7 @@ export default create({
       default: 'round' // button
     },
     label: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: ''
     },
     iconName: {
@@ -43,7 +43,7 @@ export default create({
     let parent: any = inject('parent', null);
 
     const isCurValue = computed(() => {
-      return parent.label.value == props.label;
+      return parent.label.value === props.label;
     });
 
     const color = computed(() => {

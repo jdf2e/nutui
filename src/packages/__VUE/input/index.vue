@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" @click="onClick">
     <template v-if="$slots.input">
       <view
         v-if="label"
@@ -23,7 +23,7 @@
     </template>
     <template v-else>
       <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-        <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
+        <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
       </view>
       <view
         v-if="label"
@@ -40,51 +40,58 @@
         </view>
       </view>
       <view class="nut-input-value">
-        <view class="nut-input-inner" @click="onClickInput">
-          <textarea
-            v-if="type == 'textarea'"
-            class="input-text"
-            ref="inputRef"
-            :style="stylesTextarea"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-          />
-          <input
-            v-else
-            class="input-text"
-            ref="inputRef"
-            :style="styles"
-            :type="inputType(type)"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-          />
-          <nut-icon
-            class="nut-input-clear"
-            v-if="clearable && !readonly"
-            v-show="active && modelValue.length > 0"
-            :name="clearIcon"
-            :size="clearSize"
-            @click="clear"
-          >
-          </nut-icon>
+        <view class="nut-input-inner">
+          <view class="nut-input-box">
+            <textarea
+              v-if="type == 'textarea'"
+              class="input-text"
+              ref="inputRef"
+              :style="stylesTextarea"
+              :maxlength="maxLength"
+              :placeholder="placeholder"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+            <input
+              v-else
+              class="input-text"
+              ref="inputRef"
+              :style="styles"
+              :type="inputType(type)"
+              :maxlength="maxLength"
+              :placeholder="placeholder"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+          </view>
+          <view class="nut-input-clear-box">
+            <nut-icon
+              class="nut-input-clear"
+              v-if="clearable && !readonly"
+              v-show="active && modelValue.length > 0"
+              :name="clearIcon"
+              v-bind="$attrs"
+              :size="clearSize"
+              @click="clear"
+            >
+            </nut-icon>
+          </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-            <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
+            <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
         </view>
@@ -110,7 +117,7 @@ import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject }
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
-const { componentName, create, translate } = createComponent('input');
+const { componentName, create } = createComponent('input');
 
 export default create({
   props: {
@@ -282,12 +289,12 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: any = computed(() => {
       return {
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea = computed(() => {
+    const stylesTextarea: any = computed(() => {
       return {
         textAlign: props.inputAlign,
         height: Number(props.rows) * 24 + 'px'
@@ -320,9 +327,6 @@ export default create({
       updateValue(value);
     };
 
-    const blur = () => inputRef.value?.blur();
-    const focus = () => inputRef.value?.focus();
-
     const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
@@ -347,6 +351,9 @@ export default create({
     };
 
     const onFocus = (event: Event) => {
+      if (props.disabled || props.readonly) {
+        return;
+      }
       const input = event.target as HTMLInputElement;
       let value = input.value;
       active.value = true;
@@ -357,6 +364,9 @@ export default create({
     };
 
     const onBlur = (event: Event) => {
+      if (props.disabled || props.readonly) {
+        return;
+      }
       setTimeout(() => {
         active.value = false;
       }, 200);
@@ -371,6 +381,7 @@ export default create({
     };
 
     const clear = (event: Event) => {
+      if (props.disabled) return;
       emit('update:modelValue', '', event);
       emit('change', '', event);
       emit('clear', '', event);
@@ -384,12 +395,32 @@ export default create({
     };
 
     const onClickInput = (event: MouseEvent) => {
+      if (props.disabled) {
+        return;
+      }
       emit('click-input', event);
     };
 
-    const onClickLeftIcon = (event: MouseEvent) => emit('click-left-icon', event);
+    const onClickLeftIcon = (event: MouseEvent) => {
+      if (props.disabled) {
+        return;
+      }
+      emit('click-left-icon', event);
+    };
 
-    const onClickRightIcon = (event: MouseEvent) => emit('click-right-icon', event);
+    const onClickRightIcon = (event: MouseEvent) => {
+      if (props.disabled) {
+        return;
+      }
+      emit('click-right-icon', event);
+    };
+
+    const onClick = (e: PointerEvent) => {
+      if (props.disabled) {
+        e.stopImmediatePropagation();
+        return;
+      }
+    };
 
     watch(
       () => props.modelValue,
@@ -417,7 +448,7 @@ export default create({
       onClickInput,
       onClickLeftIcon,
       onClickRightIcon,
-      translate
+      onClick
     };
   }
 });

@@ -14,9 +14,8 @@ const app = createApp();
 app.use(Toast);
 ```
 
-## Usage
 
-#### Global Usage
+### Global Usage
 :::demo
 ``` html
 <template>
@@ -34,7 +33,7 @@ export default {
 ```
 :::
 
-#### Text
+### Text
 :::demo
 ```html
 <template>
@@ -55,7 +54,7 @@ export default {
 </script>
 ```
 :::
-#### Title
+### Title
 
 :::demo
 ```html
@@ -79,7 +78,7 @@ export default {
 </script>
 ```
 :::
-#### Success
+### Success
 
 :::demo
 ```html
@@ -102,7 +101,7 @@ export default {
 ```
 :::
 
-#### Fail
+### Fail
 
 :::demo
 ```html
@@ -125,7 +124,7 @@ export default {
 ```
 :::
 
-#### Warn
+### Warn
 
 :::demo
 ```html
@@ -148,7 +147,7 @@ export default {
 ```
 :::
 
-#### Loading
+### Loading
 
 :::demo
 ```html
@@ -171,7 +170,7 @@ export default {
 ```
 :::
 
-#### Not Disappear
+### Not Disappear
 
 :::demo
 ```html
@@ -195,7 +194,7 @@ export default {
 </script>
 ```
 :::
-#### Custom Bottom Height
+### Custom Bottom Height
 
 :::demo
 ```html
@@ -221,7 +220,7 @@ export default {
 ```
 :::
 
-#### Loading with transparent cover
+### Loading with transparent cover
 :::demo
 ```html
 <template>
@@ -246,7 +245,7 @@ export default {
 :::
 
 
-####  Support import and use in JS modules
+###  Support import and use in JS modules
 ``` javascript
 import { Toast } from "@nutui/nutui";
 Toast.text('use in js module');
@@ -256,7 +255,8 @@ toast.hide();
 ```
 
 
-### API
+## API
+### Methods
 | Methods                    | Description              | Attribute          | Return value     |
 | ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
 | Toast.text                | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
@@ -266,7 +266,7 @@ toast.hide();
 | Toast.hide                | Close toast     | clearAll: boolean   | void       |
 | Toast.loading             | Show loading toast      | message｜ options | toast instance |
 
-## Options
+### ToastOptions
 
 | 字段                | 说明                                                                          | 类型          | 默认值                        |
 | ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |
@@ -275,15 +275,15 @@ toast.hide();
 | title            | title     | String        |           -             |
 | center  | Whether to display in the middle of the page (display at the bottom when false) | Boolean| true                          |
 | bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String| 30px       |
-| textAlignCenter     | Whether the multi-line copy is centered           | Boolean       | true                          |
+| text-align-center     | Whether the multi-line copy is centered           | Boolean       | true                          |
 | bgColor             | background color (transparency) | String        | rgba(0, 0, 0, 0.8)      |
-| customClass         |   Custom Class          | String        |          -                   |
+| custom-class         |   Custom Class          | String        |          -                   |
 | icon                | Custom Icon        | String        |         -                   |
-| iconSize    | Custom iconSize      | String        | 20                           |
+| icon-size    | Custom iconSize      | String        | 20                           |
 | size        | Text Size **small**/**base**/**large**          | String        | base      |
 | cover      | Whether to show the mask layer     | Boolean       | false |
 | cover-color   | Cover Color   | String        | rgba(0,0,0,0)             |
-| loadingRotate  | Whether the loading icon is rotated, only valid for the loading type  | Boolean | true                          |
+| loading-rotate  | Whether the loading icon is rotated, only valid for the loading type  | Boolean | true                          |
 | close             | Callback function after close                   | function      | null                          |
 | close-on-click-overlay | 	Whether to close when overlay is clicked                  | Boolean       | false                         |
 | custom-class          | Custom Class                      | String       |               -          |

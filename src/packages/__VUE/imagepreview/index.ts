@@ -1,12 +1,13 @@
 import ImagePreview from './index.vue';
-import { render, createVNode, h } from 'vue';
+import { render, createVNode, h, VNode } from 'vue';
+import { ImageInterface } from './types';
 export class ImagePreviewOptions {
-  show?: Boolean = false;
-  images?: Array<string> = [];
-  initNo?: Number = 1;
-  paginationVisible?: Boolean = false;
-  paginationColor?: string = '';
-  teleport?: String | HTMLElement = 'body';
+  show = false;
+  images: ImageInterface[] = [];
+  initNo = 1;
+  paginationVisible = false;
+  paginationColor = '';
+  teleport: string | HTMLElement = 'body';
 
   // function
   onClose?: Function = () => {};
@@ -16,9 +17,9 @@ class ImagePreviewFunction {
   options: ImagePreviewOptions = new ImagePreviewOptions();
 
   constructor(_options: ImagePreviewOptions) {
-    let options = Object.assign(this.options, _options);
+    const options = Object.assign(this.options, _options);
     let elWarp: HTMLElement = document.body;
-    let teleport = options.teleport as string;
+    const teleport = options.teleport as string;
     if (teleport != 'body') {
       if (typeof teleport == 'string') {
         elWarp = document.querySelector(teleport) as HTMLElement;
@@ -39,13 +40,13 @@ class ImagePreviewFunction {
         };
       }
     };
-    const instance: any = createVNode(Wrapper);
+    const instance: VNode = createVNode(Wrapper);
     elWarp.appendChild(root);
     render(instance, root);
   }
 }
 
-const _ImagePreview = function (options: ImagePreviewOptions) {
+const _ImagePreview = (options: ImagePreviewOptions): ImagePreviewFunction => {
   return new ImagePreviewFunction(options);
 };
 _ImagePreview.install = (app: any) => {

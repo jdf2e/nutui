@@ -1,6 +1,6 @@
 <!--
 请务必阅读贡献者指南:
-https://nutui.jd.com/#/contributing
+https://nutui.jd.com/#/zh-CN/guide/contributing
 -->
 
 <!-- PULL REQUEST TEMPLATE -->

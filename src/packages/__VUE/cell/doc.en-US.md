@@ -11,7 +11,9 @@ import { createApp } from 'vue';
 import { Cell, CellGroup, Icon } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Cell).use(CellGroup).use(Icon);
+app.use(Cell);
+app.use(CellGroup);
+app.use(Icon)
 ```
 
 ### Basic Usage
@@ -190,37 +192,40 @@ You can center the left and right contents of the cell vertically through the 'c
 
 ## API
 
-### CellGroup Prop
+### CellGroup Props
 
 | Attribute | Description | Type   | Default |
 |-----------|-------------|--------|---------|
 | title     | Title       | String | -       |
 | desc      | Description | String | -       |
 
-### Cell Prop
+### Cell Props
 
-| Attribute       | Description                                                                                              | Type             | Default |
-|-----------------|----------------------------------------------------------------------------------------------------------|------------------|---------|
-| title           | Title                                                                                                    | String           | -       |
-| sub-title       | Subtitle                                                                                                 | String           | -       |
-| desc            | Description                                                                                              | String           | -       |
-| desc-text-align | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String           | right   |
-| is-link         | Whether to show the right arrow and turn on click feedback                                               | Boolean          | false   |
-| icon            | Left [icon name](#/icon) or image url                                                                    | String           | -       |
-| round-radius    | Corner radius                                                                                            | Number           | 6px     |
-| url             | Link URL                                                                                                 | String           | -       |
-| to              | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -       |
-| replace         | If true, the navigation will not leave a history record                                                  | Boolean          | false   |
-| center`v3.1.21` | Whether to center content vertically                                                                     | Boolean          | false   |
-| size`v3.1.22`   | Size, can be set to `large`                                                                              | String           | ''      |
+| Attribute               | Description                                                                                              | Type             | Default          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
+| title                   | Title                                                                                                    | String           | -                |
+| sub-title               | Subtitle                                                                                                 | String           | -                |
+| desc                    | Description                                                                                              | String           | -                |
+| desc-text-align         | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String           | right            |
+| is-link                 | Whether to show the right arrow and turn on click feedback                                               | Boolean          | false            |
+| icon                    | Left [icon name](#/icon) or image url                                                                    | String           | -                |
+| right-icon`v3.2.1`      | Right [icon name](#/icon) or image url                                                                   | String           | right            |
+| round-radius            | Corner radius                                                                                            | Number           | 6px              |
+| url                     | Link URL                                                                                                 | String           | -                |
+| to                      | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -                |
+| replace                 | If true, the navigation will not leave a history record                                                  | Boolean          | false            |
+| center`v3.1.21`         | Whether to center content vertically                                                                     | Boolean          | false            |
+| size`v3.1.22`           | Size, can be set to `large`                                                                              | String           | ''               |
+| font-class-name`v3.2.1` | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
+| class-prefix`v3.2.1`    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
 
-### Cell Event
+### Cell Events
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
 | click | Emitted when cell is clicked | event:Event |
 
-## Cell Slots
+### Cell Slots
 
 | Name            | Description        |
 |-----------------|--------------------|
@@ -229,7 +234,7 @@ You can center the left and right contents of the cell vertically through the 'c
 | link            | Custom Right`link` |
 | title `v3.1.22` | Custom`title`slot  |
 
-## CellGroup Slots
+### CellGroup Slots
 
 | Name            | Description       |
 |-----------------|-------------------|

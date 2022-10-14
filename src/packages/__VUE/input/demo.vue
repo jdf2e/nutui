@@ -1,11 +1,5 @@
 <template>
   <div class="demo full">
-    <!-- <h2>校验</h2>
-    <nut-form>
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-      <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
-    </nut-form-item>
-    </nut-form> -->
     <h2>{{ translate('basic') }}</h2>
     <nut-input v-model="state.val1" :label="translate('text')" :placeholder="translate('text')" />
 
@@ -145,82 +139,84 @@ import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('input');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '自定义类型',
-    title2: '禁用和只读',
-    title3: '显示图标',
-    title4: '错误提示',
-    title5: '插入按钮',
-    title6: '格式化输入内容',
-    title7: '显示字数统计',
-    title8: '对齐方式',
-    title9: '无边框',
-    title10: '点击事件',
-    text: '文本',
-    password: '密码',
-    number: '数字',
-    digit: '整数',
-    tel: '手机号',
-    readonly: '只读',
-    disabled: '禁用',
-    icon: '显示图标',
-    clear: '显示清除图标',
-    required: '必填项',
-    error: '输入内容标红',
-    errorBottom: '底部错误提示文案',
-    code: '短信验证码',
-    codeplaceholder: '请输入短信验证码',
-    sendCode: '发送验证码',
-    message: '留言',
-    noBorder: '无边框',
-    click: '点击',
-    placeholder1: '在输入时执行格式化',
-    placeholder2: '在失焦时执行格式化',
-    placeholder3: '请输入留言',
-    placeholder4: '文本内容对齐',
-    placeholder5: '输入框内容对齐'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Custom Type',
-    title2: 'Readonly And Disabled',
-    title3: 'Show Icon',
-    title4: 'Error Info',
-    title5: 'Insert Button',
-    title6: 'Format Value',
-    title7: 'Show Word Limit',
-    title8: 'Input Align',
-    title9: 'No Border',
-    title10: 'Click Event',
-    text: 'Text',
-    password: 'Password',
-    number: 'Number',
-    digit: 'Digit',
-    tel: 'Tel',
-    readonly: 'Readonly',
-    disabled: 'Disabled',
-    icon: 'Show Icon',
-    clear: 'Show Clear Icon',
-    required: 'Required',
-    error: 'Error',
-    errorBottom: 'Error Message',
-    code: 'Code',
-    codeplaceholder: 'Please enter code',
-    sendCode: 'Send',
-    message: 'Message',
-    noBorder: 'No Border',
-    click: 'Click',
-    placeholder1: 'Format On Change',
-    placeholder2: 'Format On Blur',
-    placeholder3: 'Message',
-    placeholder4: 'Label Align',
-    placeholder5: 'Input Align'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '自定义类型',
+      title2: '禁用和只读',
+      title3: '显示图标',
+      title4: '错误提示',
+      title5: '插入按钮',
+      title6: '格式化输入内容',
+      title7: '显示字数统计',
+      title8: '对齐方式',
+      title9: '无边框',
+      title10: '点击事件',
+      text: '文本',
+      password: '密码',
+      number: '数字',
+      digit: '整数',
+      tel: '手机号',
+      readonly: '只读',
+      disabled: '禁用',
+      icon: '显示图标',
+      clear: '显示清除图标',
+      required: '必填项',
+      error: '输入内容标红',
+      errorBottom: '底部错误提示文案',
+      code: '短信验证码',
+      codeplaceholder: '请输入短信验证码',
+      sendCode: '发送验证码',
+      message: '留言',
+      noBorder: '无边框',
+      click: '点击',
+      placeholder1: '在输入时执行格式化',
+      placeholder2: '在失焦时执行格式化',
+      placeholder3: '请输入留言',
+      placeholder4: '文本内容对齐',
+      placeholder5: '输入框内容对齐'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Custom Type',
+      title2: 'Readonly And Disabled',
+      title3: 'Show Icon',
+      title4: 'Error Info',
+      title5: 'Insert Button',
+      title6: 'Format Value',
+      title7: 'Show Word Limit',
+      title8: 'Input Align',
+      title9: 'No Border',
+      title10: 'Click Event',
+      text: 'Text',
+      password: 'Password',
+      number: 'Number',
+      digit: 'Digit',
+      tel: 'Tel',
+      readonly: 'Readonly',
+      disabled: 'Disabled',
+      icon: 'Show Icon',
+      clear: 'Show Clear Icon',
+      required: 'Required',
+      error: 'Error',
+      errorBottom: 'Error Message',
+      code: 'Code',
+      codeplaceholder: 'Please enter code',
+      sendCode: 'Send',
+      message: 'Message',
+      noBorder: 'No Border',
+      click: 'Click',
+      placeholder1: 'Format On Change',
+      placeholder2: 'Format On Blur',
+      placeholder3: 'Message',
+      placeholder4: 'Label Align',
+      placeholder5: 'Input Align'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       val1: '',
       text: '',

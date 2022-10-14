@@ -19,7 +19,6 @@ app.use(Row);
 app.use(Col);
 ```
 
-## 代码演示
 
 ### 基础用法
 :::demo
@@ -88,7 +87,7 @@ app.use(Col);
 </style>
 ```
 :::
-### 设置元素间距
+### 分栏间隔
 :::demo
 ```html
 <template>
@@ -223,9 +222,9 @@ app.use(Col);
 </style>
 ```
 :::
-## Prop
+## API
 
-### row
+### Row Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -235,20 +234,20 @@ app.use(Col);
 | align | Flex 交叉轴对齐方式，可选值为 flex-start center flex-end | String | flex-start
 | flex-wrap | Flex是否换行，可选值为 nowrap wrap reverse | String | nowrap
 
-### col
+### Col Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | span | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | String、Number | 24
 | offset | 列元素偏移距离 | String、Number | 0
 
-### row events
+### Row Events
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | ----- 
 | click | 点击时触发 | event: MouseEvent
 
-### col events
+### Col Events
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | ----- 

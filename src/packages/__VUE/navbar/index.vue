@@ -8,7 +8,7 @@
       </view>
       <view class="nut-navbar__title">
         <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-        <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+        <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
         <slot name="content"></slot>
       </view>
       <view class="nut-navbar__right" @click="handleRight">
@@ -25,7 +25,7 @@
     </view>
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+      <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
     <view class="nut-navbar__right" @click="handleRight">
@@ -41,7 +41,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {
-    leftShow: { type: Boolean, default: true }, //左侧  是否显示返回icon
+    leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon
     title: { type: String, default: '' }, //中间  文字标题
     titIcon: { type: String, default: '' }, //中间  标题icon
     leftText: { type: String, default: '' }, //左侧文字

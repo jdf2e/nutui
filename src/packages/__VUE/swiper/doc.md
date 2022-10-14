@@ -14,7 +14,8 @@ import { Swiper,SwiperItem } from '@nutui/nutui';
 import { Swiper,SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Swiper).use(SwiperItem);
+app.use(Swiper);
+app.use(SwiperItem);
 ```
 
 ### 基础用法
@@ -430,7 +431,7 @@ app.use(Swiper).use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -477,7 +478,7 @@ app.use(Swiper).use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -542,7 +543,7 @@ app.use(Swiper).use(SwiperItem);
 
 
 
-### API
+### Swipe 方法
 
 | 事件名           | 说明                   | 参数     |
 | ---------------- | ---------------------- | ------------ |

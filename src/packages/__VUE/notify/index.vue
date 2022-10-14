@@ -13,10 +13,10 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, watch, ref } from 'vue';
+import { reactive, onMounted, watch, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
-const { componentName, create } = createComponent('notify');
+const { create } = createComponent('notify');
 
 export default create({
   components: {
@@ -36,14 +36,14 @@ export default create({
       type: String,
       default: 'danger'
     },
-    showPopup: {
-      type: Boolean,
-      default: false
-    },
-    // visible: {
+    // showPopup: {
     //   type: Boolean,
     //   default: false
     // },
+    modelVisible: {
+      type: Boolean,
+      default: false
+    },
     position: {
       type: String,
       default: 'top'
@@ -57,7 +57,7 @@ export default create({
     unmount: Function
   },
 
-  setup(props, { slots }) {
+  setup(props) {
     let timer: null | number = null;
     const state = reactive({
       mounted: false
@@ -66,7 +66,7 @@ export default create({
       // state.mounted = true;
     });
 
-    const visible = ref(false);
+    const showPopup = ref(props.modelVisible);
 
     const clickCover = () => {
       props.onClick && props.onClick();
@@ -113,7 +113,7 @@ export default create({
       props.unmount && props.unmount(props.id);
       props.onClose && props.onClose();
     };
-    return { state, hide, onAfterLeave, clickCover, visible };
+    return { state, hide, onAfterLeave, clickCover, showPopup };
   }
 });
 </script>

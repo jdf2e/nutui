@@ -1,21 +1,29 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-picker-roller" ref="roller" :style="touchTileStyle" @transitionend="stopMomentum">
-      <!-- 3D 效果 -->
-      <view
-        class="nut-picker-roller-item"
-        :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in column"
-        :style="setRollerStyle(index + 1)"
-        :key="item.value ? item.value : index"
-      >
-        {{ item.text }}
-      </view>
+    <view
+      class="nut-picker-roller"
+      ref="roller"
+      :id="'roller' + refRandomId"
+      :style="threeDimensional ? touchRollerStyle : touchTileStyle"
+      @transitionend="stopMomentum"
+    >
+      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+        <!-- 3D 效果 -->
+        <view
+          class="nut-picker-roller-item"
+          :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
+          :style="setRollerStyle(index + 1)"
+          v-if="item && item.text && threeDimensional"
+        >
+          {{ item.text }}
+        </view>
+        <!-- 平铺 -->
+        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
+          {{ item.text }}
+        </view>
+      </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <view class="nut-picker-content">
-      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle"> </view>
-    </view>
   </view>
 </template>
 <script lang="ts">
@@ -32,6 +40,10 @@ export default create({
     // 当前选中项
     value: [String, Number],
     columnsType: String,
+    lineSpacing: {
+      type: Number,
+      default: 36
+    },
     itemShow: {
       type: Boolean,
       default: false
@@ -48,6 +60,11 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
 
@@ -68,7 +85,6 @@ export default create({
       currIndex: 1,
       transformY: 0,
       scrollDistance: 0,
-      lineSpacing: 36,
       rotation: 20,
       timer: null
     });
@@ -82,20 +98,22 @@ export default create({
     const touchTime = ref(0);
     const touchTranslateY = ref(0);
 
+    const DEFAULT_DURATION = 200;
+
     // 触发惯性滑动条件:
     // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
     // 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
     const INERTIA_TIME = 300;
     const INERTIA_DISTANCE = 15;
 
-    const touchListStyle = computed(() => {
+    const touchTileStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `translate3d(0, ${state.scrollDistance}px, 0)`
       };
     });
 
-    const touchTileStyle = computed(() => {
+    const touchRollerStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
@@ -108,9 +126,14 @@ export default create({
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
       if (moving.value) {
-        const { transform } = window.getComputedStyle(list.value as any);
+        let dom = list.value as any;
+        if (!props.threeDimensional) {
+          dom = roller.value as any;
+        }
 
-        state.scrollDistance = +parseInt(transform.split(', ')[1]);
+        const { transform } = window.getComputedStyle(dom);
+
+        state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
       }
 
       state.touchParams.startY = touch.deltaY.value;
@@ -148,7 +171,7 @@ export default create({
       if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         // 惯性滚动
         const distance = momentum(move, moveTime);
-        setMove(distance, 'end', moveTime + 1000);
+        setMove(distance, 'end', +props.swipeDuration);
         return;
       } else {
         setMove(move, 'end');
@@ -177,7 +200,7 @@ export default create({
       }
     };
 
-    const setTransform = (translateY = 0, type: string | null, time = 1000, deg: string | number) => {
+    const setTransform = (translateY = 0, type: string | null, time = DEFAULT_DURATION, deg: string | number) => {
       if (type === 'end') {
         touchTime.value = time;
       } else {
@@ -195,13 +218,13 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
-          updateMove = -(props.column.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * props.lineSpacing) {
+          updateMove = -(props.column.length - 1) * props.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
-        let endMove = Math.round(updateMove / state.lineSpacing) * state.lineSpacing;
-        let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
+        let endMove = Math.round(updateMove / props.lineSpacing) * props.lineSpacing;
+        let deg = `${(Math.abs(Math.round(endMove / props.lineSpacing)) + 1) * state.rotation}deg`;
         setTransform(endMove, type, time, deg);
 
         // let t = time ? time / 2 : 0;
@@ -209,10 +232,10 @@ export default create({
         //   setChooseValue();
         // }, t);
 
-        state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
+        state.currIndex = Math.abs(Math.round(endMove / props.lineSpacing)) + 1;
       } else {
         let deg = 0;
-        let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
+        let currentDeg = (-updateMove / props.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
@@ -222,7 +245,7 @@ export default create({
 
         if (minDeg < deg && deg < maxDeg) {
           setTransform(updateMove, null, undefined, deg + 'deg');
-          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+          state.currIndex = Math.abs(Math.round(updateMove / props.lineSpacing)) + 1;
         }
       }
     };
@@ -236,7 +259,7 @@ export default create({
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
-      let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
+      let move = index === -1 ? 0 : (index as number) * props.lineSpacing;
       type && setChooseValue();
       setMove(-move);
     };
@@ -255,16 +278,25 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
-      console.log('滚动结束');
+      touchTime.value = 0;
       setChooseValue();
-    };
-
-    const getReference = async () => {
-      modifyStatus(true);
     };
 
     watch(
       () => props.column,
+      (val) => {
+        if (props.column && props.column.length > 0) {
+          state.transformY = 0;
+          modifyStatus(false);
+        }
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.value,
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
@@ -275,15 +307,10 @@ export default create({
     );
 
     watch(
-      () => props.itemShow,
+      () => props.lineSpacing,
       (val) => {
-        if (val) {
-          setTimeout(() => {
-            getReference();
-          }, 200);
-        } else {
-          state.transformY = 0;
-        }
+        console.log('更新');
+        modifyStatus(false);
       },
       {
         deep: true
@@ -291,9 +318,7 @@ export default create({
     );
 
     onMounted(() => {
-      setTimeout(() => {
-        getReference();
-      }, 200);
+      modifyStatus(false);
     });
 
     const refRandomId = Math.random().toString(36).slice(-8);
@@ -312,7 +337,7 @@ export default create({
       onTouchMove,
       onTouchEnd,
       touchTileStyle,
-      touchListStyle,
+      touchRollerStyle,
       setMove,
       refRandomId,
       stopMomentum

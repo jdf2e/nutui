@@ -14,11 +14,11 @@ import { BackTop,Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
+
 ```
 
-### 代码实例
 
-### 基本用法
+### 基础用法
 
 ```html
 <view class="demo">
@@ -197,7 +197,7 @@ export default {
 
 ### API
 
-### Prop  
+### Props  
 
 | 字段            | 说明                 | 类型    | 默认值  |
 |-----------------|------------------------------------------|---------|---------|
@@ -207,7 +207,14 @@ export default {
 | distance     | 页面垂直滚动多高后出现   | Number  | `200`      |
 | z-index         | 设置组件页面层级   | Number  | `10`       |                                          
 
-### Event
+### Events
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | click | 按钮点击时触发事件 | event: MouseEvent |
+
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| content | 	滚动容器中包含的内容 |
+| icon | 	返回到顶部，按钮内容 |

@@ -36,13 +36,7 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon
-          v-if="isDeletable"
-          color="rgba(0,0,0,0.6)"
-          @click="onDelete(item, index)"
-          class="close"
-          name="failure"
-        ></nut-icon>
+        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -81,7 +75,7 @@
       :class="[listType]"
       v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
     >
-      <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
       <input
         class="nut-uploader__input"
         v-if="capture"
@@ -112,6 +106,7 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
+import { isPromise } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('uploader');
 export default create({
   props: {
@@ -140,6 +135,10 @@ export default create({
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
     beforeUpload: {
+      type: Function,
+      default: null
+    },
+    beforeXhrUpload: {
       type: Function,
       default: null
     },
@@ -191,6 +190,10 @@ export default create({
       uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
       uploadOption.withCredentials = props.withCredentials;
+      uploadOption.beforeXhrUpload = props.beforeXhrUpload;
+      try {
+        uploadOption.sourceFile = fileItem.formData.get(props.name);
+      } catch (error) {}
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');
@@ -239,6 +242,7 @@ export default create({
         uploadQueue.splice(index, 1);
       } else {
         uploadQueue = [];
+        fileList.splice(0, fileList.length);
       }
     };
     const submit = () => {
@@ -297,17 +301,31 @@ export default create({
       }
       return files;
     };
+
+    const deleted = (file: import('./type').FileItem, index: number) => {
+      fileList.splice(index, 1);
+      emit('delete', {
+        file,
+        fileList,
+        index
+      });
+    };
+
     const onDelete = (file: import('./type').FileItem, index: number) => {
       clearUploadQueue(index);
-      if (props.beforeDelete(file, fileList)) {
-        fileList.splice(index, 1);
-        emit('delete', {
-          file,
-          fileList,
-          index
+      let fn = props.beforeDelete(file, fileList);
+      if (isPromise(fn)) {
+        fn.then((res) => {
+          if (res) {
+            deleted(file, index);
+          }
+        }).catch((error) => {
+          console.log(error, '用户阻止了删除！');
         });
+      } else if (fn) {
+        deleted(file, index);
       } else {
-        // console.log('用户阻止了删除！');
+        console.log('用户阻止了删除！');
       }
     };
 

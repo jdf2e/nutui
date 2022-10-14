@@ -37,31 +37,33 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('circleprogress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    customWidth: '自定义宽度',
-    Gradient: '渐变色',
-    customSize: '自定义尺寸',
-    customContent: '自定义内容',
-    custom: '自定义',
-    dynamicChange: '动态改变',
-    reduce: '减少',
-    add: '增加'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    customWidth: 'Custom Width',
-    Gradient: 'Gradient',
-    custom: 'custom',
-    customContent: 'Custom Content',
-    dynamicChange: 'Dynamic Change',
-    reduce: 'reduce',
-    add: 'add'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      customWidth: '自定义宽度',
+      Gradient: '渐变色',
+      customSize: '自定义尺寸',
+      customContent: '自定义内容',
+      custom: '自定义',
+      dynamicChange: '动态改变',
+      reduce: '减少',
+      add: '增加'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customWidth: 'Custom Width',
+      Gradient: 'Gradient',
+      custom: 'custom',
+      customContent: 'Custom Content',
+      dynamicChange: 'Dynamic Change',
+      reduce: 'reduce',
+      add: 'add'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const gradientColor = {
       '0%': '#FF5E5E',
       '100%': '#FFA062'
@@ -109,5 +111,12 @@ export default createDemo({
   justify-content: center;
   background: rgba(255, 255, 255, 1);
   padding: 10px 0;
+}
+.nut-theme-dark {
+  .demo__piece,
+  .demo__btn {
+    background: black;
+    border-top: none;
+  }
 }
 </style>
