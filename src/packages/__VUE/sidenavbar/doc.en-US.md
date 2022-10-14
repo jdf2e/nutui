@@ -151,13 +151,13 @@ app.use(SideNavBarItem);
 
 ## API
 
-### SideNavBar
+### SideNavBar Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | offset                 | Navigation indent width                                                    | Number、String  | `15`
 
-### SubSideNavBar
+### SubSideNavBar Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -165,7 +165,7 @@ app.use(SideNavBarItem);
 | ikey                 | Navigation unique identifier                                                    | String、Number  | ``
 | open                 | Whether navigation is expanded by default                                                    | Boolean  | `true`
 
-### SideNavBarItem
+### SideNavBarItem Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -173,13 +173,13 @@ app.use(SideNavBarItem);
 | ikey                 | Navigation unique identifier                                                    | String、Number  | ``
 
 
-### SubSideNavBar Event
+### SubSideNavBar Events
 
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|
 | title-click | Navigation Click | - |
 
-### SideNavBarItem Event
+### SideNavBarItem Events
 
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|

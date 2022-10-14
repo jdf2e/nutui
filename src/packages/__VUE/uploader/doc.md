@@ -18,7 +18,7 @@ app.use(Progress);
 ```
 
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html
@@ -293,7 +293,7 @@ export default {
 ```html
 <!-- 当上传方式为put时，直接上传源文件file流 -->
 <template>
-  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -360,8 +360,8 @@ export default {
 </template>
 ```
 :::
-
-### Prop
+## API
+### Props
 
 | 字段                      | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
@@ -404,7 +404,7 @@ export default {
 | type     | 文件类型                                        | "image/jpeg"                    |
 | formData | 上传所需的data                                  | new FormData()                  |
 
-### Event
+### Events
 
 | 名称            | 说明                   | 回调参数                       |
 |-----------------|------------------------|--------------------------------|

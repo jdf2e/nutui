@@ -35,7 +35,7 @@
     <h2>{{ translate('title9') }}</h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
     <h2>{{ translate('title13') }}</h2>
-    <nut-uploader :url="uploadUrl" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+    <nut-uploader :url="uploadUrl" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>{{ translate('title10') }}</h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />

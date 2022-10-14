@@ -138,8 +138,8 @@ export default {
 </script>
 ```
 :::
-
-## Props
+## API
+### Props
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
@@ -147,7 +147,7 @@ export default {
 | formValue | Form data object (required when using form verification) | object | -
 | submit | Whether to show the submit button | boolean | true
 
-## Data Props
+### Data Structure of Data
 
 
 The optional attributes are as follows:

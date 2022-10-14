@@ -301,7 +301,7 @@ Paused and restarted the countdown with the paused attribute
 
 ```
 :::
-### API
+## API
 
 ### Props
 
@@ -330,7 +330,7 @@ Paused and restarted the countdown with the paused attribute
 | SS | Millisecond, 2-digits | 
 | SSS | Millisecond, 3-digits | 
 
-### Event
+### Events
 
 | Event | Description | Arguments
 | ----- | ----- | ----- 

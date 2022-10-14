@@ -265,8 +265,8 @@ export default{
 </script>
 ```
 :::
-
-### Prop
+## API
+### Props
 
 
 | 字段                   | 说明                | 类型           | 默认值                       |
@@ -282,7 +282,7 @@ export default{
 | error-msg              | 错误信息提示        | String         | ''                           |
 
 
-### Event
+### Events
 
 | 事件名称 | 说明                   | 回调参数 |
 |----------|------------------------|----------|

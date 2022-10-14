@@ -19,8 +19,7 @@ app.use(Collapse);
 app.use(CollapseItem);
 ```
 
-## 代码演示
-## 基本用法
+### 基础用法
 
 通过`v-model`控制展开的面板列表，`activeNames`为数组格式
 :::demo
@@ -256,7 +255,9 @@ export default {
 </script>
 ```
 :::
-## Collapse Prop
+
+## API
+### Collapse Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -272,7 +273,7 @@ export default {
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |
 
 
-### CollapseItem Prop
+### CollapseItem Props
 | 参数 | 说明 | 类型 | 默认值 | 
 |------|------|------|------|
 | name | 唯一标识符，必填 | string \ number | -1 |

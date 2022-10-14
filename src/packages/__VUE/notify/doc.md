@@ -12,7 +12,7 @@ import { Notify } from '@nutui/nutui';
 const app = createApp();
 app.use(Notify);
 ```    
-## 基本用法
+### 基础用法
 :::demo
 ```html
 <template>
@@ -41,7 +41,7 @@ export default {
 </script>
 ```
 :::
-## 通知类型
+### 通知类型
 :::demo
 ```html
 <template>
@@ -80,7 +80,7 @@ export default {
 </script>
 ```
 :::
-## 自定义
+### 自定义
 :::demo
 ```html
 <template>
@@ -119,7 +119,7 @@ export default {
 ```
 :::
 
-## 组件调用
+### 组件调用
 :::demo
 ```html
 <template>
@@ -152,7 +152,7 @@ export default {
 ```
 :::
     
-## API
+### API
     
 ### Props
     

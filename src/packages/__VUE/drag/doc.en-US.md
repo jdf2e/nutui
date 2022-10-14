@@ -13,7 +13,7 @@ const app = createApp();
 app.use(Drag);
 ```
 
-## Basic Usage
+### Basic Usage
 :::demo
 ```html
 <template>
@@ -23,7 +23,7 @@ app.use(Drag);
 </template>
 ```
 :::
-## Limit Direction
+### Limit Direction
 :::demo
 ```html
 <template>
@@ -33,7 +33,7 @@ app.use(Drag);
   </template>
 ```
 :::
-## Attract
+### Attract
 :::demo
 ```html
 <template>
@@ -46,7 +46,7 @@ app.use(Drag);
     </template>
 ```
 :::
-## Limit Boundaries
+### Limit Boundaries
 :::demo
 ```html
 <template>
@@ -88,7 +88,8 @@ app.use(Drag);
 
 ```
 :::
-## Prop
+## API
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |

@@ -55,7 +55,7 @@ const updateToast = (opts: any) => {
     }
     const instance: any = createVNode(Toast, opts);
     render(instance, container);
-    return instance.component.ctx;
+    return ToastFunction;
   }
 };
 
@@ -80,7 +80,7 @@ const mountToast = (opts: any) => {
   const instance: any = createVNode(Toast, opts);
   render(instance, container);
   document.body.appendChild(container);
-  return instance.component.ctx;
+  return ToastFunction;
 };
 
 const errorMsg = (msg: string) => {

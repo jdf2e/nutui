@@ -14,10 +14,11 @@ const app = createApp();
 app.use(Uploader);
 app.use(Icon);
 app.use(Progress);
+
 ```
 
 
-### 基本用法
+### 基础用法
 
 ``` html
 <nut-uploader :url="uploadUrl"></nut-uploader>
@@ -82,7 +83,7 @@ app.use(Progress);
 :::demo
 ```html
 <template>
-  <nut-uploader url="https://xxxx" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -226,8 +227,8 @@ setup() {
   };
 }
 ```
-
-### Prop
+## API
+### Props
 
 | 字段                      | 说明                                                                                                                   | 类型                              | 默认值                    |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|
@@ -266,7 +267,7 @@ setup() {
 | url      | 文件路径                                        | ""                              |
 | formData | 上传所需的data                                  | {}                              |
 
-### Event
+### Events
 
 | 名称            | 说明                   | 回调参数                  |
 |-----------------|------------------------|---------------------------|

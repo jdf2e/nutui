@@ -60,14 +60,14 @@
 ##  特性
 
 * 🚀 70+ 高质量组件，覆盖移动端主流场景
-* 💪 支持一套代码同时开发多端小程序+H5
+* 💪 支持一套代码同时开发 H5+多端小程序
 * 📖 基于京东APP 10.0 视觉规范
 * 🍭 支持按需引用
 * 📖 详尽的文档和示例
 * 💪 支持 TypeScript
 * 💪 支持服务端渲染（测试阶段）
-* 🍭 支持定制主题，内置 700+ 个主题变量
-* 🌍 国际化支持
+* 🍭 支持组件级别定制主题，内置 700+ 个变量
+* 🌍 国际化支持，已支持英文，印尼语和繁体中文
 * 🍭 单元测试覆盖率超过 80%，保障稳定性
 * 📖 提供 Sketch 设计资源
 
@@ -153,7 +153,7 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 参与共建
 
-非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [贡献指南](https://nutui.jd.com/#/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
+非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [贡献指南](https://nutui.jd.com/#/zh-CN/guide/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
 
 感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
 

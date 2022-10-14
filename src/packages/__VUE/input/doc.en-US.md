@@ -477,7 +477,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 ```
 
 :::
-
+## API
 ### Props
 
 | Attribute   | Description               | Type       | Default  |

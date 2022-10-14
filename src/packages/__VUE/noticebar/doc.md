@@ -22,7 +22,7 @@ app.use(NoticeBar);
 ```
 
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -214,7 +214,7 @@ app.use(NoticeBar);
 ```
 :::
 
-
+## API
 ### Props
 
 | 字段       | 说明                                                       | 类型          | 默认值 |
