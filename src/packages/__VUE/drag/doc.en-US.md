@@ -88,6 +88,7 @@ app.use(Drag);
 
 ```
 :::
+## API
 ### Props
 
 | Attribute            | Description               | Type   | Default  |

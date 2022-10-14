@@ -14,6 +14,7 @@ const app = createApp();
 app.use(Uploader);
 app.use(Icon);
 app.use(Progress);
+
 ```
 
 

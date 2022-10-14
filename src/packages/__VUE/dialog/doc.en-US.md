@@ -14,7 +14,10 @@ import { createApp,createVNode } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Dialog).use(Popup).use(OverLay)
+app.use(Dialog);
+app.use(Popup);
+app.use(OverLay);
+
 ```
 
 

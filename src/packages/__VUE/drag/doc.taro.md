@@ -32,7 +32,7 @@ app.use(Drag);
   <div class="touch-dom">只能在Y轴拖动</div>
 </nut-drag>
 ```
-
+## API
 ### Props
 
 | 字段      | 说明                                              | 类型           | 默认值                              |

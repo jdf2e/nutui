@@ -14,6 +14,7 @@ import { BackTop,Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
+
 ```
 
 
