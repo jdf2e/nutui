@@ -1073,7 +1073,7 @@
           "desc": "给页面元素添加动画效果",
           "show": true,
           "taro": true,
-          "tarodoc": true,
+          "tarodoc": false,
           "type": "component",
           "author": "lijiamiao"
         },

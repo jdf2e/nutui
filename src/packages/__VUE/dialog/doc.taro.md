@@ -15,7 +15,7 @@ const app = createApp();
 app.use(Dialog).use(Popup).use(OverLay)
 ```
 
-## 使用方式
+### 使用方式
 
 ```html
 <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
@@ -111,8 +111,8 @@ export default {
 };
 ```
 
-
-## Props
+## API
+### Props
 
 | 字段                   | 说明                                                          | 类型                     | 默认值     |
 |------------------------|---------------------------------------------------------------|--------------------------|------------|
@@ -138,7 +138,7 @@ export default {
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
 
 
-## Events
+### Events
 
 | 字段   | 说明         | 类型     | 默认值 |
 |--------|--------------|----------|--------|
@@ -148,7 +148,7 @@ export default {
 | opened | 打开弹框回调 | Function | -      |
 
 
-## Slots
+### Slots
 
 | 名称    | 说明               |
 |---------|--------------------|
