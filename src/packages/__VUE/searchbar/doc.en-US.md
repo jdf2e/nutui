@@ -15,7 +15,9 @@ import { SearchBar, Icon } from '@nutui/nutui';
 import { SearchBar, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(SearchBar).use(Icon);
+app.use(SearchBar);
+app.use(Icon);
+
 ```    
     
 ### Basic Usage

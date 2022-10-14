@@ -12,7 +12,10 @@ import { createApp } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Dialog).use(Popup).use(OverLay)
+app.use(Dialog);
+app.use(Popup);
+app.use(OverLay);
+
 ```
 
 ### 使用方式
