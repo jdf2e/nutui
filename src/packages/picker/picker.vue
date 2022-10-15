@@ -16,6 +16,7 @@
             @chooseItem="chooseItem"
             :key="index"
             :key-index="index"
+            :swipe-duration="swipeDuration"
           ></nut-picker-slot>
         </template>
       </div>
@@ -33,45 +34,49 @@ export default {
   props: {
     isVisible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     customClassName: {
       type: String,
-      default: null
+      default: null,
     },
     title: {
       type: String,
-      default: ' '
+      default: ' ',
     },
     listData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     defaultValueData: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
+    swipeDuration: {
+      type: Number | String,
+      default: '1000',
+    },
   },
   components: {
     [nutactionsheet.name]: nutactionsheet,
-    [nutpickerslot.name]: nutpickerslot
+    [nutpickerslot.name]: nutpickerslot,
   },
   data() {
     return {
       chooseValueData: [],
       cacheValueData: [],
-      isUpdate: false
+      isUpdate: false,
     };
   },
   watch: {
-    defaultValueData: function() {
+    defaultValueData: function () {
       this.chooseValueData = [...this.defaultValueData];
       this.cacheValueData = [...this.defaultValueData];
       this.$emit('confirm', this.cacheValueData);
     },
-    listData: function() {
+    listData: function () {
       this.init();
-    }
+    },
   },
   methods: {
     updateChooseValue(self, index, value) {
@@ -108,11 +113,11 @@ export default {
         });
         this.chooseValueData = [...defaultValueData];
       }
-    }
+    },
   },
 
   created() {
     this.init();
-  }
+  },
 };
 </script>
