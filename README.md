@@ -27,7 +27,9 @@
     <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
     </a>
-    <a href="https://github.com/jdf2e/nutui">
+</p>
+<p align="center">
+ <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
     </a>
     <a href="https://github.com/jdf2e/nutui">
@@ -40,6 +42,7 @@
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
   </a>
 </p>
+
 
 <p align="center">
   <a href="https://nutui.jd.com/jdl/#/index" target="_blank">京东物流视觉（Vue2）</a>
