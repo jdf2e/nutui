@@ -200,16 +200,13 @@ export default create({
     const env = Taro.getEnv();
     onMounted(() => {
       if (props.autosize) {
-        eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+        Taro.nextTick(() => {
           if (Taro.getEnv() === 'ALIPAY') {
             getRefWidth();
             copyHeight();
           } else {
             getRefHeight();
           }
-          // setTimeout(() => {
-          //   nextTick(getContentHeight);
-          // }, 300);
         });
       }
     });
