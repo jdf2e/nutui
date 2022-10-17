@@ -24,12 +24,13 @@
     <a href="https://travis-ci.org/jdf2e/nutui">
     <img src="https://img.shields.io/travis/jdf2e/nutui.svg?style=flat-square">
     </a>  
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
-    </a>
+
 </p>
 <p align="center">
- <a href="https://github.com/jdf2e/nutui">
+    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
+    </a>  
+    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
     </a>
     <a href="https://github.com/jdf2e/nutui">
