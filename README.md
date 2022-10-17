@@ -155,7 +155,9 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 参与共建
 
-非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)，[如何有效报告bug](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，最后 [贡献指南](https://nutui.jd.com/#/zh-CN/guide/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
+请参考 [《贡献指南》](https://nutui.jd.com/#/zh-CN/guide/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)
+
+> 非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)，[《如何有效报告bug》](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，能够更容易的理解和获得帮助。
 
 感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
 
