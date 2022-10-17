@@ -14,7 +14,6 @@ const app = createApp();
 app.use(Video);
 ```
 
-## 代码演示
 
 ### 基础用法
 

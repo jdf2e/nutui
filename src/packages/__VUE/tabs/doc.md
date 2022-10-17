@@ -351,7 +351,7 @@ export default {
 | sticky`v3.2.3` `小程序不支持` | 是否使用粘性布局 | boolean       | false      |
 | top`v3.2.3` `小程序不支持` | 粘性布局下的吸顶距离 | number       | 0      |
 
-## Tabs Slots
+### Tabs Slots
 
 | 名称    | 说明           |
 |---------|----------------|
@@ -367,7 +367,7 @@ export default {
 | disabled | 是否禁用标签            | boolean | false            |
 
 
-## Tabpane Slots
+### Tabpane Slots
 
 | 名称    | 说明       |
 |---------|------------|

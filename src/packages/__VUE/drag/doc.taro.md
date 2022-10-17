@@ -13,27 +13,27 @@ const app = createApp();
 app.use(Drag);
 ```
 
-## 基本用法
+### 基础用法
 ```html
 <nut-drag>
   <div class="touch-dom">可点击，可拖拽</div>
 </nut-drag>
 ```
-## 限制拖拽方向
+### 限制拖拽方向
 ```html
 <nut-drag direction="x">
   <div class="touch-dom">只能在X轴拖动</div>
 </nut-drag>
 ```
 
-## 限制拖拽方向
+### 限制拖拽方向
 ```html
 <nut-drag direction="y">
   <div class="touch-dom">只能在Y轴拖动</div>
 </nut-drag>
 ```
-
-## Prop
+## API
+### Props
 
 | 字段      | 说明                                              | 类型           | 默认值                              |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |

@@ -21,7 +21,7 @@ app.use(Tabs);
 app.use(TabPane);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html
@@ -185,7 +185,7 @@ export default {
 
 ```
 :::
-
+## API
 ### Props
 
 | 字段            | 说明                                                    | 类型    | 默认值  |

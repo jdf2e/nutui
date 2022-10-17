@@ -19,7 +19,6 @@ app.use(Skeleton);
 
 ```
 
-## Code demonstration
 
 ### Basic usage
 
@@ -156,8 +155,8 @@ export default {
 
 
 
-
-### Prop  
+## API
+### Props
 
 | Attribute | Description | Type   | Default |
 |------------|-------------------------------------------------|---------|----------|

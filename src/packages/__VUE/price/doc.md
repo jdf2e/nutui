@@ -19,7 +19,7 @@ app.use(Price);
 ```
 
 
-### 基本用法 small normal large
+### 基础用法 small normal large
 
 :::demo
 
@@ -105,7 +105,7 @@ app.use(Price);
 </script>
 ```
 :::
-
+## API
 ### Props
 
 | 字段           | 说明                                    | 类型    | 默认值 |

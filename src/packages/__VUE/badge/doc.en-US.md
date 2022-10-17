@@ -209,7 +209,7 @@ app.use(Badge);
 ```
 :::
 
-
+## API
 ### Props 
 
 | Attribute | Description | Type | Default |

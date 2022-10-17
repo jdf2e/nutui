@@ -212,7 +212,7 @@ export default {
 | --------- | -------------------- | ---------- |
 | on-change | Click on the right classified data trigger | Clicked data |
 
-## CategoryPane Slots
+### CategoryPane Slots
 
 | Name    | Description       |
 | ------- | ---------- |
