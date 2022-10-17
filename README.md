@@ -3,7 +3,7 @@
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
-<p align="center">京东风格的轻量级移动端 Vue2、Vue3 组件库，支持一套代码生成 H5 和小程序</p>
+<p align="center">京东风格的移动端 Vue2、Vue3 组件库，支持一套代码生成 H5 和小程序</p>
 
 <p align="center">
     <a href="http://makeapullrequest.com">
