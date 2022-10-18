@@ -172,14 +172,6 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI」 | 1022545110 |
 
 
-## 贡献者们
-
-感谢以下小伙伴们为 NutUI 发展做出的贡献：
-
-<a href="https://github.com/jdf2e/nutui/graphs/contributors">
-  <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
-</a>
-
 ## 参与共建
 
 请参考 [《贡献指南》](https://nutui.jd.com/#/zh-CN/guide/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)
@@ -187,6 +179,14 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 > 非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)，[《如何有效报告bug》](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，[《NutUI 邀您共建》](https://jelly.jd.com/article/6320528b92d94a0068685525) 能够更容易的理解和获得帮助。
 
 感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
+
+## 贡献者们
+
+感谢以下小伙伴们为 NutUI 发展做出的贡献：
+
+<a href="https://github.com/jdf2e/nutui/graphs/contributors">
+  <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
+</a>
 
 ## 开发计划
 
