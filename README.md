@@ -88,8 +88,8 @@
 
 | 版本 | 框架 | 视觉规范 | 应用类型 | 兼容
 | --- | --- | --- | --- | --- |
-| @nutui/nutui  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
-| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5&小程序，可[开发多端](https://nutui.jd.com/#/starttaro) | 现代浏览器及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
+| @nutui/nutui  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0
+| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5&小程序，可[开发多端](https://nutui.jd.com/#/starttaro) | 现代浏览器及 Chrome >= 51、iOS >= 10.0
 | @nutui/nutui@2  | Vue 2x | 京东 APP 7.0  | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
 | @nutui/nutui-jdl  | Vue 2x | [京东物流视觉](https://nutui.jd.com/jdl/#/design) | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
 
