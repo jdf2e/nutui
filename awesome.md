@@ -22,6 +22,9 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 - [NutUI 项目实践 - 开发京东购物小程序之项目搭建](https://www.bilibili.com/video/BV1EB4y1q7hM/?spm_id_from=333.337.search-card.all.click&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [NutUI 一分钟快速在线主题定制](https://www.bilibili.com/video/BV1fi4y1D7qb/?share_source=copy_web&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [NutUI-VSCode智能提示来了](https://www.bilibili.com/video/BV1xZ4y1h7Pg/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI 和辅助学习路径](https://www.bilibili.com/video/av587127439/?p=4&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [使用Vue3的UI框架NutUI](https://haokan.baidu.com/v?pd=wisenatural&vid=2556215112548154993)
+- [大前端-移动端方向-Vue3 && Taro集成NutUI按需加载与定制主题](https://www.bilibili.com/video/BV1wt4y1H7UY/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 
 
 ## 开发技巧
