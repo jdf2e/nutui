@@ -85,15 +85,10 @@
 
 ## 版本说明
 
-> @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果想要兼容低版本 ios 10 以下，请使用 @nutui/nutui@2
+> @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果要兼容 ios 10 以下，请使用 @nutui/nutui@2
 
-| 版本 | 框架 | 视觉规范 | 应用类型 | 兼容
-| --- | --- | --- | --- | --- |
-| @nutui/nutui  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0
-| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource)  | H5&小程序 | 现代浏览器及 Chrome >= 51、iOS >= 10.0
-| @nutui/nutui@2  | Vue 2x | 京东 APP 7.0  | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
-| @nutui/nutui-jdl  | Vue 2x | [京东物流视觉](https://nutui.jd.com/jdl/#/design) | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
-
+* NutUI 2x & NutUI-JDL 使用 Vue2 开发，支持现代浏览器及 Android >= 4.0、iOS >= 8.0，仅 H5 应用。
+* NutUI 3x 使用 Vue3 开发，现代浏览器及 Chrome >= 51、iOS >= 10.0，可输出 H5 和小程序两类应用。
 
 ## 构建版本
 
