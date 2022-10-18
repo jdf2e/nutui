@@ -88,7 +88,7 @@
 > @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分差异，版本号始终保持一致。如果兼容 ios 10 以下请使用 @nutui/nutui@2
 
 * NutUI 2x & NutUI-JDL 使用 Vue2 开发，支持现代浏览器及 Android >= 4.0、iOS >= 8.0，仅 H5 应用。
-* NutUI 3x 使用 Vue3 开发，现代浏览器及 Chrome >= 51、iOS >= 10.0，可输出 H5 和小程序两类应用。
+* NutUI 3x 使用 Vue3 开发，支持现代浏览器及 Chrome >= 51、iOS >= 10.0，可输出 H5 和小程序两类应用。
 
 ## 构建版本
 
