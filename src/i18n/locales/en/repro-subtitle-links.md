@@ -1,0 +1,1 @@
+For Vue 3 core reproductions, try reproducing it in [The SFC Playground](https://sfc.vuejs.org). If it is a Vue 2 bug or cannot be reproduced in the playground, you can use [CodePen](https://codepen.io/pen/), [CodeSandbox](https://codesandbox.io/s/vue) or provide a GitHub repo.
