@@ -47,22 +47,13 @@
 <p align="center">
    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="170" alt="NutUI" />
   &nbsp;
-   <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="170" alt="NutUI">
-  &nbsp;
    <img src="https://img10.360buyimg.com/imagetools/jfs/t1/132314/24/25697/64565/634dfdcfE5e6ed546/8c480f8e2e11f2f4.png" width="170" alt="NutUI">
+  &nbsp;
+  <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="170" alt="NutUI">
   &nbsp;
    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/205124/1/15643/30360/62aad730Ea5734bf9/703bb91a0b73282f.png" width="170" alt="NutUI">
 </p>
 
-<p align="center">
-  <a href="https://nutui.jd.com/jdl/#/index" target="_blank">京东物流视觉（Vue2）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/jdt/#/" target="_blank">京东科技视觉（Vue3）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城视觉（Vue3）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/theme/#/base" target="_blank">组件级UI定制</a>
-</p>
 
 > Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 ---
@@ -82,12 +73,16 @@
 * 🍭 单元测试覆盖率超过 80%，保障稳定性
 * 📖 提供 Sketch 设计资源
 
-## 示例 H5 & 小程序
+## 主题
 
-<p>
-  <!--
-   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" /> -->
-   <img src="https://img14.360buyimg.com/imagetools/jfs/t1/82310/37/20242/66386/62b57bb6Ebcad837d/a57b1fcdcc61dcc7.png" height="250" alt="NutUI" />
+<p align="center">
+  <a href="https://nutui.jd.com/jdl/#/index" target="_blank">京东物流视觉（Vue2）</a>
+  &nbsp;
+  <a href="https://nutui.jd.com/jdt/#/" target="_blank">京东科技视觉（Vue3）</a>
+  &nbsp;
+  <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城视觉（Vue3）</a>
+  &nbsp;
+  <a href="https://nutui.jd.com/theme/#/base" target="_blank">组件级UI定制</a>
 </p>
 
 ## 版本说明
