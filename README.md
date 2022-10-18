@@ -49,7 +49,7 @@
   &nbsp;
    <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="170" alt="NutUI">
   &nbsp;
-   <img src="https://img14.360buyimg.com/imagetools/jfs/t1/134481/11/21574/64045/634dfd41Ee2e8a346/452a09f16150a817.png" width="170" alt="NutUI">
+   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/132314/24/25697/64565/634dfdcfE5e6ed546/8c480f8e2e11f2f4.png" width="170" alt="NutUI">
   &nbsp;
    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/205124/1/15643/30360/62aad730Ea5734bf9/703bb91a0b73282f.png" width="170" alt="NutUI">
 </p>
