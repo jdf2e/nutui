@@ -47,7 +47,7 @@
 <p align="center">
    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="166" alt="NutUI" />
   &nbsp;
-   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/132314/24/25697/64565/634dfdcfE5e6ed546/8c480f8e2e11f2f4.png" width="170" title="请用京东APP扫码">
+   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/211804/23/22232/12144/634e4801Eac435cb6/cfd9e1773cf9423d.png" width="170" title="请用京东APP扫码">
   &nbsp;
   <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="166" title="请用微信扫码">
   &nbsp;
