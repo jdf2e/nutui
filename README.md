@@ -109,7 +109,7 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 <p>
 <img src="http://storage.360buyimg.com/jdc-article/nutuiDemo/user-cases.jpg" alt="NutUI" />
 </p>
-<p><a href="https://nutui.jd.com/#/case">查看等多的案例，请点击</a></p>
+<p><a href="https://nutui.jd.com/#/case">查看更多案例</a></p>
 <p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a></p>
 
 ## 链接
