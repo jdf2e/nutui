@@ -103,6 +103,13 @@ import "@nutui/nutui/dist/style.css";
 createApp(App).use(NutUI).mount("#app");
 ```
 
+## 学习资源
+
+[NutUI 实战快速入门](https://www.bilibili.com/video/BV14r4y1e7LK/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+
+[awesome-nutui](https://github.com/jdf2e/nutui/blob/next/awesome.md)
+
+
 ## 主题
 
 我们提供了几套官方主题，来自京东内部实际业务，欢迎在项目中使用，如果不能满足需求，你也可以  <a href="https://nutui.jd.com/theme/#/base" target="_blank">自定义主题</a>
