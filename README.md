@@ -74,12 +74,13 @@
 
 ## 主题
 
+我们提供了几套官方主题，来自京东内部实际业务，欢迎在项目中使用，如果还是不能满足需求，你也可以  <a href="https://nutui.jd.com/theme/#/base" target="_blank">自定义主题</a>
+
 * <a href="https://nutui.jd.com/#/zh-CN/component/button" target="_blank">京东APP视觉（Vue3）</a>
 * <a href="https://nutui.jd.com/jdt/#/zh-CN/component/button" target="_blank">京东科技视觉（Vue3）</a>
 * <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城主题（Vue3）</a>
 * <a href="https://nutui.jd.com/?jddkh#" target="_blank">京东企业业务主题（Vue3，即将发布）</a>
 * <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">京东物流视觉（Vue2）</a>
-* <a href="https://nutui.jd.com/theme/#/base" target="_blank">您也可以自定义主题</a>
 
 
 ## 版本说明
