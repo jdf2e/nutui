@@ -86,7 +86,7 @@
 
 > @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果想要兼容低版本 ios 10 以下，请使用 @nutui/nutui@2
 
-| 版本 | 支持的框架 | 视觉规范 | 支持的应用类型 | 兼容
+| 版本 | 框架 | 视觉规范 | 应用类型 | 兼容
 | --- | --- | --- | --- | --- |
 | @nutui/nutui  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
 | @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5&小程序，可[开发多端](https://nutui.jd.com/#/starttaro) | 现代浏览器及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
