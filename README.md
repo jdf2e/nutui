@@ -2,6 +2,16 @@
 
 NutUI Issue Helper
 
+### Development
+
+```javascript
+
+yarn
+
+yarn dev
+
+```
+
 官网：[https://nutui.jd.com](https://nutui.jd.com/#/)
 
 邮箱：nutui@jd.com

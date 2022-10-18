@@ -38,7 +38,7 @@
             <VueInput v-model="title" required autofocus @blur="findIssues" />
             <template slot="subtitle">
               <div class="similar-issues" v-if="issues.length">
-                {{ i18n('similar-issues') }}:
+                {{ i18n("similar-issues") }}:
 
                 <ul>
                   <li v-for="issue in issues" :key="issue.id">
@@ -60,10 +60,10 @@
                     role="button"
                     @click="showingAllIssues = true"
                   >
-                    {{ i18n('show-more') }}
+                    {{ i18n("show-more") }}
                   </span>
                   <span v-else role="button" @click="showingAllIssues = false">
-                    {{ i18n('show-less') }}
+                    {{ i18n("show-less") }}
                   </span>
                 </p>
               </div>
@@ -115,18 +115,18 @@
   </div>
 </template>
 
-<script lang="babel">
-import { repos } from '../config'
-import { getQuery, updateQuery } from '../helpers'
+<script>
+import { repos } from "../config";
+import { getQuery, updateQuery } from "../helpers";
 
-import FormIntro from './FormIntro.vue'
-import AppHeader from './AppHeader.vue'
-import BugReport from './BugReport.vue'
-import FeatureRequest from './FeatureRequest.vue'
-import search from '../mixins/github-search'
+import FormIntro from "./FormIntro.vue";
+import AppHeader from "./AppHeader.vue";
+import BugReport from "./BugReport.vue";
+import FeatureRequest from "./FeatureRequest.vue";
+import search from "../mixins/github-search";
 
 export default {
-  name: 'App',
+  name: "App",
 
   mixins: [search],
 
@@ -134,76 +134,81 @@ export default {
     FormIntro,
     AppHeader,
     BugReport,
-    FeatureRequest
+    FeatureRequest,
   },
 
-  data () {
+  data() {
     return {
-      title: '',
+      title: "",
       generated: {
-        markdown: '',
-        html: ''
+        markdown: "",
+        html: "",
       },
       show: false,
       preview: false,
       repo: null,
       repos,
-      type: 'bug-report',
+      type: "bug-report",
       versions: {},
-    }
+    };
   },
 
   computed: {
-    types () {
-      return this.$lang && [
-        { id: 'bug-report', name: this.i18n('bug-report') },
-        { id: 'feature-request', name: this.i18n('feature-request') }
-      ]
-    }
+    types() {
+      return (
+        this.$lang && [
+          { id: "bug-report", name: this.i18n("bug-report") },
+          { id: "feature-request", name: this.i18n("feature-request") },
+        ]
+      );
+    },
   },
 
   watch: {
-    repo (value) {
-      if (value) updateQuery({ repo: value.id })
+    repo(value) {
+      if (value) updateQuery({ repo: value.id });
     },
 
-    type (value) {
-      updateQuery({ type: value })
-    }
+    type(value) {
+      updateQuery({ type: value });
+    },
   },
 
-  created () {
-    const { repo, type } = getQuery()
-    this.repo = this.repos.find(r => r.id === repo) || this.repos[0]
-    this.type = type || 'bug-report'
+  created() {
+    const { repo, type } = getQuery();
+    this.repo = this.repos.find((r) => r.id === repo) || this.repos[0];
+    this.type = type || "bug-report";
   },
 
   methods: {
-    setLang (lang) {
-      this.$lang = lang
-      updateQuery({ lang })
+    setLang(lang) {
+      this.$lang = lang;
+      updateQuery({ lang });
     },
 
-    findIssues () {
-      this.issues = []
+    findIssues() {
+      this.issues = [];
       if (this.title) {
-        this.fetchIssues(this.title, { is: 'issue', repo: this.repo.id })
+        this.fetchIssues(this.title, { is: "issue", repo: this.repo.id });
       }
     },
 
-    generate () {
-      this.generated = this.$refs.content.generate()
-      this.show = true
+    generate() {
+      this.generated = this.$refs.content.generate();
+      this.show = true;
     },
 
-    create () {
-      const title = encodeURIComponent(this.title)
-      const body = encodeURIComponent(this.generated.markdown)
-      const label = this.type === 'feature-request' ? '&labels=feature%20request' : ''
-      window.open(`https://github.com/${this.repo.id}/issues/new?title=${title}&body=${body}${label}`)
+    create() {
+      const title = encodeURIComponent(this.title);
+      const body = encodeURIComponent(this.generated.markdown);
+      const label =
+        this.type === "feature-request" ? "&labels=feature%20request" : "";
+      window.open(
+        `https://github.com/${this.repo.id}/issues/new?title=${title}&body=${body}${label}`
+      );
     },
   },
-}
+};
 </script>
 
 <style lang="stylus">
@@ -213,11 +218,15 @@ export default {
 <style lang="stylus" scoped>
 @import "../style/imports"
 
+.app
+  background #f0f2f5
 .container
-  max-width $page-width
+  width $page-width
+  max-width: calc(100% - 48px);
   margin 0 auto
   box-sizing border-box
   padding 0 24px
+  background #fff
 
 .first-row
   margin-bottom 24px

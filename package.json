@@ -1,5 +1,5 @@
 {
-  "name": "new-issue-helper",
+  "name": "nutui-issue-helper",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,9 +15,9 @@
     "vue": "^2.6.14"
   },
   "devDependencies": {
-    "vite": "^2.7.0",
     "stylus": "^0.56.0",
-    "vue-template-compiler": "^2.6.14",
-    "vite-plugin-vue2": "^1.9.3"
+    "vite": "^2.7.0",
+    "vite-plugin-vue2": "^1.9.3",
+    "vue-template-compiler": "^2.6.14"
   }
 }

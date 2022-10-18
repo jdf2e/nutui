@@ -1,15 +1,15 @@
-import { createVuePlugin } from 'vite-plugin-vue2'
+import { createVuePlugin } from "vite-plugin-vue2";
 
 export default {
   plugins: [
     createVuePlugin(),
     {
-      name: 'load-raw-md',
+      name: "load-raw-md",
       transform(code, id) {
-        if (id.endsWith('.md')) {
-          return `export default ${JSON.stringify(code)}`
+        if (id.endsWith(".md")) {
+          return `export default ${JSON.stringify(code)}`;
         }
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};
