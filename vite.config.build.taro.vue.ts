@@ -53,7 +53,9 @@ export default defineConfig({
         }
       }
     }),
-    transformFinalCode()
+    transformFinalCode({
+      include: ['__VUE/.*/index.taro']
+    })
   ],
   build: {
     minify: false,

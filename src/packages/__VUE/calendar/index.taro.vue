@@ -1,71 +1,35 @@
 <template>
-  <template v-if="ENV != ENV_TYPE.WEB">
-    <nut-popup
-      v-if="poppable"
-      v-model:visible="show"
-      position="bottom"
-      round
-      closeable
-      @click-overlay="closePopup"
-      @click-close-icon="closePopup"
-      :style="{ height: '85vh' }"
-    >
-      <nut-calendar-item
-        v-if="show"
-        ref="calendarRef"
-        :type="type"
-        :is-auto-back-fill="isAutoBackFill"
-        :poppable="poppable"
-        :title="title"
-        :default-value="defaultValue"
-        :start-date="startDate"
-        :end-date="endDate"
-        @update="update"
-        @close="close"
-        @choose="choose"
-        @select="select"
-        :confirm-text="confirmText"
-        :start-text="startText"
-        :end-text="endText"
-        :show-today="showToday"
-        :show-title="showTitle"
-        :show-sub-title="showSubTitle"
-        :to-date-animation="toDateAnimation"
-      >
-        <template v-slot:btn v-if="showTopBtn">
-          <slot name="btn"> </slot>
-        </template>
-        <template v-slot:day="date" v-if="dayInfo">
-          <slot name="day" :date="date.date"> </slot>
-        </template>
-        <template v-slot:topInfo="date" v-if="topInfo">
-          <slot name="topInfo" :date="date.date"> </slot>
-        </template>
-        <template v-slot:bottomInfo="date" v-if="bottomInfo">
-          <slot name="bottomInfo" :date="date.date"> </slot>
-        </template>
-      </nut-calendar-item>
-    </nut-popup>
-
+  <nut-popup
+    v-if="poppable"
+    v-model:visible="show"
+    position="bottom"
+    round
+    closeable
+    @click-overlay="closePopup"
+    @click-close-icon="closePopup"
+    :style="{ height: '85vh' }"
+  >
     <nut-calendar-item
-      v-else
+      v-if="show"
+      ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
       :title="title"
-      :confirm-text="confirmText"
-      :start-text="startText"
-      :end-text="endText"
       :default-value="defaultValue"
       :start-date="startDate"
       :end-date="endDate"
+      @update="update"
       @close="close"
       @choose="choose"
       @select="select"
+      :confirm-text="confirmText"
+      :start-text="startText"
+      :end-text="endText"
+      :show-today="showToday"
       :show-title="showTitle"
       :show-sub-title="showSubTitle"
       :to-date-animation="toDateAnimation"
-      :show-today="showToday"
     >
       <template v-slot:btn v-if="showTopBtn">
         <slot name="btn"> </slot>
@@ -80,108 +44,53 @@
         <slot name="bottomInfo" :date="date.date"> </slot>
       </template>
     </nut-calendar-item>
-  </template>
-
-  <template v-if="ENV == ENV_TYPE.WEB">
-    <nut-popup
-      v-if="poppable"
-      :visible="visible"
-      position="bottom"
-      round
-      :closeable="true"
-      @click-overlay="closePopup"
-      @click-close-icon="closePopup"
-      :destroy-on-close="true"
-      :style="{ height: '85vh' }"
-    >
-      <nut-calendar-item-h5
-        v-if="show"
-        props
-        ref="calendarRef"
-        :type="type"
-        :is-auto-back-fill="isAutoBackFill"
-        :poppable="poppable"
-        :title="title"
-        :confirm-text="confirmText"
-        :start-text="startText"
-        :end-text="endText"
-        :default-value="defaultValue"
-        :start-date="startDate"
-        :end-date="endDate"
-        @update="update"
-        @close="close"
-        @choose="choose"
-        @select="select"
-        :show-today="showToday"
-        :show-title="showTitle"
-        :show-sub-title="showSubTitle"
-        :to-date-animation="toDateAnimation"
-      >
-        <template v-slot:btn v-if="showTopBtn">
-          <slot name="btn"> </slot>
-        </template>
-        <template v-slot:day="date" v-if="dayInfo">
-          <slot name="day" :date="date.date"> </slot>
-        </template>
-        <template v-slot:topInfo="date" v-if="topInfo">
-          <slot name="topInfo" :date="date.date"> </slot>
-        </template>
-        <template v-slot:bottomInfo="date" v-if="bottomInfo">
-          <slot name="bottomInfo" :date="date.date"> </slot>
-        </template>
-      </nut-calendar-item-h5>
-    </nut-popup>
-    <nut-calendar-item-h5
-      v-else
-      :type="type"
-      :is-auto-back-fill="isAutoBackFill"
-      :poppable="poppable"
-      :title="title"
-      :confirm-text="confirmText"
-      :start-text="startText"
-      :end-text="endText"
-      :default-value="defaultValue"
-      :start-date="startDate"
-      :end-date="endDate"
-      @update="update"
-      @close="close"
-      @choose="choose"
-      @select="select"
-      :show-today="showToday"
-      :show-title="showTitle"
-      :show-sub-title="showSubTitle"
-      :to-date-animation="toDateAnimation"
-      ref="calendarRef"
-    >
-      <template v-slot:btn v-if="showTopBtn">
-        <slot name="btn"> </slot>
-      </template>
-      <template v-slot:day="date" v-if="dayInfo">
-        <slot name="day" :date="date.date"> </slot>
-      </template>
-      <template v-slot:topInfo="date" v-if="topInfo">
-        <slot name="topInfo" :date="date.date"> </slot>
-      </template>
-      <template v-slot:bottomInfo="date" v-if="bottomInfo">
-        <slot name="bottomInfo" :date="date.date"> </slot>
-      </template>
-    </nut-calendar-item-h5>
-  </template>
+  </nut-popup>
+  <nut-calendar-item
+    v-else
+    :type="type"
+    :is-auto-back-fill="isAutoBackFill"
+    :poppable="poppable"
+    :title="title"
+    :confirm-text="confirmText"
+    :start-text="startText"
+    :end-text="endText"
+    :default-value="defaultValue"
+    :start-date="startDate"
+    :end-date="endDate"
+    @close="close"
+    @choose="choose"
+    @select="select"
+    :show-title="showTitle"
+    :show-sub-title="showSubTitle"
+    :to-date-animation="toDateAnimation"
+    :show-today="showToday"
+  >
+    <template v-slot:btn v-if="showTopBtn">
+      <slot name="btn"> </slot>
+    </template>
+    <template v-slot:day="date" v-if="dayInfo">
+      <slot name="day" :date="date.date"> </slot>
+    </template>
+    <template v-slot:topInfo="date" v-if="topInfo">
+      <slot name="topInfo" :date="date.date"> </slot>
+    </template>
+    <template v-slot:bottomInfo="date" v-if="bottomInfo">
+      <slot name="bottomInfo" :date="date.date"> </slot>
+    </template>
+  </nut-calendar-item>
 </template>
 <script lang="ts">
 import { ref, watch, computed, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
-import CalendarItem2 from '../calendaritem/index.h5.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro from '@tarojs/taro';
 
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem,
-    NutCalendarItemH5: CalendarItem2
+    [CalendarItem.name]: CalendarItem
   },
   props: {
     type: {

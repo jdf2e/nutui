@@ -26,9 +26,6 @@ configPkg.nav.map((item) => {
 });
 
 export default defineConfig({
-  define: {
-    'process.env.TARO_ENV': 'process.env.TARO_ENV'
-  },
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
@@ -92,7 +89,9 @@ declare module 'vue' {
         };
       }
     }),
-    transformFinalCode()
+    transformFinalCode({
+      include: ['__VUE/.*/index.taro']
+    })
   ],
   build: {
     minify: false,
