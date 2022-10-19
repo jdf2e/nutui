@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="app">
     <AppHeader :lang="$lang" @change-lang="setLang" />
-
     <div class="container">
       <form class="main-form" @submit.prevent="generate">
         <FormIntro />
@@ -94,23 +93,28 @@
         <div class="default-body" v-html="generated.html" />
 
         <div slot="footer" class="actions">
-          <VueButton
+          <!-- <VueButton
             class="primary big"
             :label="i18n('create')"
             @click="create()"
-          />
+          /> -->
+          <el-button type="primary" @click="create()">{{
+            i18n("create")
+          }}</el-button>
         </div>
       </VueModal>
     </div>
 
     <footer class="app-footer">
-      <p>&hellip;</p>
-      <small>
-        Source on
-        <a target="_blank" href="https://github.com/vuejs/vue-issue-helper"
-          >GitHub</a
-        >
-      </small>
+      Inspired by
+      <a
+        href="https://new-issue.vuejs.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Vue Issue Helper </a
+      >&nbsp;·&nbsp;
+      <a href="https://github.com/jdf2e/nutui-issue-helper"> Source Code </a>
     </footer>
   </div>
 </template>
@@ -213,6 +217,7 @@ export default {
 
 <style lang="stylus">
 @import '@vue/ui/dist/vue-ui.css'
+@import '../assets/style/common.styl'
 </style>
 
 <style lang="stylus" scoped>
@@ -227,6 +232,10 @@ export default {
   box-sizing border-box
   padding 0 24px
   background #fff
+  >>> .vue-ui-button
+    background: rgba(230,70,54,.1)
+    border: 1px solid rgba(255,59,41,.2)
+    color: #fa2c19
 
 .first-row
   margin-bottom 24px
@@ -237,9 +246,26 @@ export default {
 .form-actions
   h-box()
   box-center()
-  margin 24px 0
-
+  padding 24px 0
+  >>> .vue-ui-button
+    height auto
+    padding: 11px 20px
+    border-radius: 5px
+    background-color: #F56C6C
+    border-color: #F56C6C
+    color: #fff
+    font-size: 14px;
+    font-weight 600
+    &:hover
+      background: #f78989;
+      border-color: #f78989;
+      color: #FFF;
 .app-footer
   text-align center
-  margin 24px 0
+  padding 24px 0
+  font-size 14px
+  a
+    color #fa2c19
+
+@import "../assets/style/form.styl"
 </style>

@@ -1,0 +1,25 @@
+.main-form, .bug-report
+    >>> .title span
+      position relative
+      padding-left 10px
+      color rgba(0,0,0,.85)
+      font-weight 600
+      font-size 14px
+      &:before
+        content "*"
+        position absolute
+        top 10%
+        left 1px
+        width 10px
+        height 10px
+        color #fa2c19
+    >>> .span-or .title span
+      padding-left 0
+      &:before
+        display none
+    >>> .subtitle
+      span
+        font-size 12px
+      a
+        color #fa2c19
+ 

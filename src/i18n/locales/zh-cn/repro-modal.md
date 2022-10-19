@@ -20,4 +20,4 @@
 
 ##### 如何提供一个重现
 
-除非你的 bug 只有在构建工具下才能重现，否则我们建议使用诸如 [JSFiddle](https://jsfiddle.net), [JSBin](https://jsbin.com) 或是 [Codepen](https://codepen.io) 这样的在线代码服务来提供重现。如果你的 bug 必须用到构建工具，那么我们建议使用 [vue-cli](https://github.com/vuejs/vue-cli) 来搭建一个新项目，推送到 GitHub 并提供仓库的链接。
+除非你的 bug 只有在构建工具下才能重现，否则我们建议使用诸如 [JSFiddle](https://jsfiddle.net), [JSBin](https://jsbin.com) 或是 [Codepen](https://codepen.io) 这样的在线代码服务来提供重现。如果你的 bug 必须用到构建工具，那么我们建议使用 [nutui-demo](https://github.com/jdf2e/nutui-demo) 来复现，推送到 GitHub 并提供仓库的链接。

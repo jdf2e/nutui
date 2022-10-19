@@ -71,4 +71,6 @@ export default {
     &:not(.active)
       cursor pointer
       color $vue-ui-color-dark
+    &.active
+      color #fa2c19
 </style>

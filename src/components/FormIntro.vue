@@ -1,6 +1,8 @@
 <template>
   <div class="form-intro">
-    <i18n id="intro" class="intro bg-faded" @click-modal="show = true" />
+    <el-link>
+      <i18n id="intro" class="intro bg-faded" @click-modal="show = true" />
+    </el-link>
 
     <VueModal
       v-if="show"
@@ -40,4 +42,16 @@ export default {
   padding 24px 0
   margin 24px 0
   border-radius $br
+  >>> .el-link.is-underline:hover:after {
+    display none
+  }
+  .bg-faded
+    color rgba(0,0,0,.85)
+    font-weight 400
+    >>> h2
+      color rgba(0,0,0,.85)
+      font-weight 500
+      font-size 22px
+    >>> a
+      color #fa2c19
 </style>
