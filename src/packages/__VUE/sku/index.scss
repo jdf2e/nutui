@@ -51,10 +51,11 @@
     margin-top: 18px;
     padding: 0 18px;
     > img {
-      width: 100px;
-      height: 100px;
+      width: $sku-product-img-width;
+      height: $sku-product-img-height;
       flex-shrink: 0;
       margin-right: 12px;
+      border-radius: $sku-product-img-border-radius;
     }
     &-right {
       flex: 1;
@@ -83,25 +84,25 @@
       flex-direction: column;
       &-title {
         height: 13px;
-        font-weight: bold;
-        font-size: 13px;
-        color: $black;
-        margin-bottom: 18px;
+        font-weight: $sku-spec-title-font-weight;
+        font-size: $sku-spec-title-font-size;
+        color: $sku-spec-title-color;
+        margin-bottom: $sku-spec-title-margin-bottom;
       }
       &-skus {
         display: flex;
         flex-wrap: wrap;
         &-sku {
-          margin-right: 12px;
-          height: 30px;
-          line-height: 30px;
-          padding: 0 18px;
+          margin-right: $sku-spec-margin-right;
+          height: $sku-spec-height;
+          line-height: $sku-spec-line-height;
+          padding: $sku-spec-padding;
           border-radius: 15px;
-          font-size: 11px;
-          color: $black;
+          font-size: $sku-spec-font-size;
+          color: $sku-spec-color;
           flex-shrink: 0;
           margin-bottom: 12px;
-          background: rgba(242, 242, 242, 1);
+          background: $sku-spec-background;
           border: 1px solid rgba(242, 242, 242, 1);
 
           &.active {
@@ -156,7 +157,7 @@
       font-size: 12px;
     }
     &-btn {
-      height: 54px;
+      height: $sku-operate-btn-height;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -165,14 +166,16 @@
       text-align: center;
       padding: 0 18px;
       box-sizing: border-box;
+      border-top: $sku-operate-btn-border-top;
       &-item {
         width: 100%;
-        height: 40px;
-        line-height: 40px;
+        height: $sku-operate-btn-item-height;
+        line-height: $sku-operate-btn-item-line-height;
         margin-right: 18px;
         background: $sku-opetate-bg-default;
         border-radius: 21px;
-        font-size: 15px;
+        font-size: $sku-operate-btn-item-font-size;
+        font-weight: $sku-operate-btn-item-font-weight;
         color: $white;
         &:last-child {
           margin-right: 0;

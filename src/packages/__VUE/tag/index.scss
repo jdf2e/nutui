@@ -4,6 +4,7 @@
   align-items: center;
   font-size: $tag-font-size;
   border-radius: $tag-default-border-radius;
+  height: $tag-height;
   &--default {
     color: $tag-default-color;
     background: $tag-default-background-color;
