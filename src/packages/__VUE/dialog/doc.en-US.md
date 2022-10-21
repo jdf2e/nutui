@@ -14,11 +14,14 @@ import { createApp,createVNode } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Dialog).use(Popup).use(OverLay)
+app.use(Dialog);
+app.use(Popup);
+app.use(OverLay);
+
 ```
 
 
-## Function use
+### Function use
 
 :::demo
 ```html
@@ -125,7 +128,7 @@ export default {
 ```
 ::: 
 
-## Teleport use, mount to the specified element node
+### Teleport use, mount to the specified element node
 
 ``` html
 <nut-dialog teleport="#app" ... />
@@ -142,7 +145,7 @@ Dialog({
 });
 ```
 
-## Function use proxy.&dialog(...)
+### Function use proxy.&dialog(...)
 
 ```javascript
 import { ref } from 'vue';
@@ -161,7 +164,7 @@ export default {
 ```
 
 
-## Template use
+### Template use
 
 
 :::demo
@@ -205,8 +208,8 @@ export default {
 </script>
 ```
 :::
-
 ## API
+### DialogOptions
 | Attribute             | Description                                                                    | Type                     | Default              |
 |-----------------------|--------------------------------------------------------------------------------|--------------------------|----------------------|
 | title                 | Title                                                                          | String                   | -                    |
@@ -235,7 +238,7 @@ export default {
 | beforeClose`v3.1.22`  | Callback function before close support return `promise`                        | Function(action: string) | -                    |
 
 
-## Props
+### Props
 
 | Attribute              | Description                                                                                               | Type                     | Default    |
 |------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------|------------|
@@ -260,7 +263,7 @@ export default {
 | custom-class`v3.1.22`  | Custom dialog class                                                                                       | String                   | -          |
 | before-close`v3.1.22`  | Callback function before close support return `promise`                                                   | Function(action: string) | -          |
 
-## Events
+### Events
 
 | Event           | Description                                | Type     | Default |
 |-----------------|--------------------------------------------|----------|---------|
@@ -270,7 +273,7 @@ export default {
 | opened`v3.1.22` | Emitted when Dialog is Opened              | Function | -       |
 
 
-## Slots
+### Slots
 
 | Name    | Description    |
 |---------|----------------|

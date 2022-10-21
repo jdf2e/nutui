@@ -146,8 +146,8 @@ export default {
 ```
 :::
 
-
-### Prop
+## API
+### Props
 | Attribute           | Description                                         | Type    | Default                      |
 |:--------------------|:----------------------------------------------------|:--------|:-----------------------------|
 | visible             | visible is                                          | Boolean | false                        |
@@ -160,14 +160,14 @@ export default {
 | position            | `fixed` Vertical position                           | Object  | {top: 'auto',bottom: 'auto'} |
 
 
-### Event
+### Events
 
 | Event    | Description               | Arguments                |
 |----------|---------------------------|--------------------------|
 | selected | Triggered after selection | {item:item,$event:Event} |
 
 
-### Slot
+### Slotss
 
 | Name | Description                       |
 |------|-----------------------------------|

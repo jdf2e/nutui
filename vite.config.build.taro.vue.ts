@@ -2,14 +2,17 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
+import { transformFinalCode, DEFAULT_Components } from './transformFinalCode';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;
-
 export default defineConfig({
+  define: {
+    'process.env.TARO_ENV': 'process.env.TARO_ENV'
+  },
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
@@ -28,17 +31,30 @@ export default defineConfig({
         compilerOptions: {
           isCustomElement: (tag) => {
             return (
-              tag.startsWith('scroll-view') ||
               tag.startsWith('swiper') ||
               tag.startsWith('swiper-item') ||
+              tag.startsWith('scroll-view') ||
               tag.startsWith('picker') ||
               tag.startsWith('picker-view') ||
               tag.startsWith('picker-view-column')
             );
           },
-          whitespace: 'preserve'
+          whitespace: 'preserve',
+          nodeTransforms: [
+            (node) => {
+              if (node.type === 1 /* ELEMENT */) {
+                const nodeName = node.tag;
+                if (DEFAULT_Components.has(nodeName)) {
+                  node.tagType = 1; /* 0: ELEMENT, 1: COMPONENT */
+                }
+              }
+            }
+          ]
         }
       }
+    }),
+    transformFinalCode({
+      include: ['__VUE/.*/index.taro']
     })
   ],
   build: {

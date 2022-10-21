@@ -1,8 +1,10 @@
 // color
 
 // 主色调
-$primary-color: #2c68ff !default;
-$primary-color-end: #2c68ff !default;
+$primary-color: #fa2c19 !default;
+$primary-color-start: $primary-color !default;
+$primary-color-end: #fa6419 !default;
+
 // 辅助色
 $help-color: #f5f5f5 !default;
 // 标题常规文字
@@ -50,60 +52,72 @@ $font-size-large: $font-size-3 !default;
 $line-height-base: 1.5 !default;
 
 // button
-$button-border-radius: 25px !default;
+$button-border-radius: 21px !default;
 $button-border-width: 1px !default;
 $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
 $button-default-color: rgba(102, 102, 102, 1) !default;
-$button-default-padding: 0 22px !default;
+$button-default-padding: 0 16px !default;
 $button-mini-padding: 0 12px !default;
-$button-small-padding: 0 16px !default;
-$button-small-height: 32px !default;
+$button-small-padding: 0 15px !default;
+$button-small-height: 29px !default;
 $button-mini-height: 24px !default;
-$button-default-height: 44px !default;
+$button-default-height: 37px !default;
 $button-large-height: 48px !default;
 $button-large-line-height: 46px !default;
-$button-small-line-height: 26px !default;
+$button-small-line-height: 29px !default;
 $button-block-height: 48px !default;
-$button-default-line-height: 36px !default;
+$button-default-line-height: 37px !default;
 $button-block-line-height: 46px !default;
-$button-default-font-size: $font-size-3 !default;
+$button-default-font-size: $font-size-2 !default;
 $button-large-font-size: $button-default-font-size !default;
-$button-small-font-size: $font-size-2 !default;
+$button-small-font-size: $font-size-1 !default;
 $button-mini-font-size: $font-size-1 !default;
 $button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
-$button-primary-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$button-primary-background-color: linear-gradient(135deg, rgba(255, 64, 79, 1) 0%, rgba(250, 44, 25, 1) 100%) !default;
 $button-info-color: $white !default;
 $button-info-border-color: rgba(73, 106, 242, 1) !default;
 $button-info-background-color: linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%) !default;
 $button-success-color: $white !default;
-$button-success-border-color: #0ed57d !default;
-$button-success-background-color: #0ed57d !default;
+$button-success-border-color: rgba(38, 191, 38, 1) !default;
+$button-success-background-color: linear-gradient(
+  135deg,
+  rgba(38, 191, 38, 1) 0%,
+  rgba(39, 197, 48, 1) 45%,
+  rgba(40, 207, 63, 1) 83%,
+  rgba(41, 212, 70, 1) 100%
+) !default;
 
 $button-danger-color: $white !default;
-$button-danger-border-color: #f52f3e !default;
-$button-danger-background-color: #f52f3e !default;
+$button-danger-border-color: rgba(250, 44, 25, 1) !default;
+$button-danger-background-color: rgba(250, 44, 25, 1) !default;
 $button-warning-color: $white !default;
-$button-warning-border-color: #ff9c00 !default;
-$button-warning-background-color: #ff9c00 !default;
+$button-warning-border-color: rgba(255, 158, 13, 1) !default;
+$button-warning-background-color: linear-gradient(
+  135deg,
+  rgba(255, 158, 13, 1) 0%,
+  rgba(255, 167, 13, 1) 45%,
+  rgba(255, 182, 13, 1) 83%,
+  rgba(255, 190, 13, 1) 100%
+) !default;
 $button-plain-background-color: $white !default;
-$button-small-round-border-radius: $button-border-radius !default;
+$button-small-round-border-radius: 15px !default;
 
 // cell
 
-$cell-color: rgba(0, 0, 0, 0.85) !default;
+$cell-color: $title-color2 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: rgba(0, 0, 0, 0.25) !default;
-$cell-border-radius: 0px !default;
-$cell-padding: 14px 16px !default;
-$cell-line-height: 22px !default;
-$cell-after-right: 0 !default;
-$cell-after-border-bottom: 1px solid rgba(0, 0, 0, 0.1) !default;
+$cell-desc-color: $disable-color !default;
+$cell-border-radius: 6px !default;
+$cell-padding: 13px 16px !default;
+$cell-line-height: 20px !default;
+$cell-after-right: 16px !default;
+$cell-after-border-bottom: 1px solid #f5f6f7 !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
@@ -113,7 +127,7 @@ $cell-background: $white !default;
 // cell-group
 
 $cell-group-title-padding: 0 10px !default;
-$cell-group-title-color: rgba(69, 90, 100, 0.6) !default;
+$cell-group-title-color: #909ca4 !default;
 $cell-group-title-font-size: $font-size-2 !default;
 $cell-group-title-line-height: 20px !default;
 $cell-group-desc-padding: 0 10px !default;
@@ -125,8 +139,8 @@ $cell-group-background-color: $white !default;
 // divider
 
 $divider-margin: 16px 0 !default;
-$divider-text-font-size: 16px !default;
-$divider-text-color: rgba(0, 0, 0, 0.3) !default;
+$divider-text-font-size: $font-size-2 !default;
+$divider-text-color: #909ca4 !default;
 $divider-line-height: 2px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
@@ -148,19 +162,19 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 // picker
-$picker-cancel-color: #595959 !default;
+$picker-cancel-color: #808080 !default;
 $picker-ok-color: $primary-color !default;
-$picker-bar-cancel-font-size: 16px !default;
-$picker-bar-ok-font-size: 16px !default;
-$picker-bar-button-padding: 0 16px !default;
-$picker-bar-title-font-size: 18px !default;
-$picker-bar-title-color: #323233 !default;
-$picker-bar-title-font-weight: 600 !default;
+$picker-bar-cancel-font-size: 14px !default;
+$picker-bar-ok-font-size: 14px !default;
+$picker-bar-button-padding: 0 15px !default;
+$picker-bar-title-font-size: 16px !default;
+$picker-bar-title-color: $title-color !default;
+$picker-bar-title-font-weight: normal !default;
 $picker-item-height: 36px !default;
 $picker-item-text-color: $title-color !default;
-$picker-item-active-text-color: $primary-color !default;
+$picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
-$picker-item-active-line-border: 1px solid rgba(0, 0, 0, 0.06) !default;
+$picker-item-active-line-border: 1px solid #d8d8d8 !default;
 $picker-columns-item-color: $title-color !default;
 
 //input
@@ -178,33 +192,34 @@ $textarea-text-color: $title-color !default;
 $textarea-disabled-color: $disable-color !default;
 
 // inputnumber
+
 $inputnumber-icon-color: $title-color !default;
 $inputnumber-icon-void-color: $disable-color !default;
 $inputnumber-icon-size: 20px !default;
 $inputnumber-input-font-size: 12px !default;
 $inputnumber-input-font-color: $title-color !default;
-$inputnumber-input-background-color: $help-color !default;
-$inputnumber-input-border-radius: 4px !default;
-$inputnumber-input-width: 40px !default;
-$inputnumber-input-margin: 0 6px !default;
-$inputnumber-input-border: 0 !default;
-$inputnumber-border: 0 !default;
-$inputnumber-border-radius: 0 !default;
-$inputnumber-height: auto !default;
-$inputnumber-line-height: normal !default;
-$inputnumber-input-border-left: 0 !default;
-$inputnumber-input-border-right: 0 !default;
-$inputnumber-border-box: content-box !default;
-$inputnumber-display: flex !default;
+$inputnumber-input-background-color: transparent !default;
+$inputnumber-input-border-radius: 0 !default;
+$inputnumber-input-width: 31px !default;
+$inputnumber-input-margin: 0 !default;
+$inputnumber-input-border: 1 !default;
+$inputnumber-border: 1px solid $disable-color !default;
+$inputnumber-border-radius: 2px !default;
+$inputnumber-height: 18px !default;
+$inputnumber-line-height: 18px !default;
+$inputnumber-input-border-left: $inputnumber-border !default;
+$inputnumber-input-border-right: $inputnumber-border !default;
+$inputnumber-border-box: border-box !default;
+$inputnumber-display: inline-flex !default;
 
 // actionsheet
 $actionsheet-light-color: #f6f6f6 !default;
-$actionsheet-item-border-bottom: 1px solid rgba(0, 0, 0, 0.1) !default;
-$actionsheet-item-font-size: $font-size-4 !default;
+$actionsheet-item-border-bottom: none !default;
+$actionsheet-item-font-size: $font-size-2 !default;
 $actionsheet-item-subdesc-font-size: $font-size-1 !default;
-$actionsheet-item-cancel-border-top: none !default;
-$actionsheet-item-line-height: 28px !default;
-$actionsheet-item-font-color: #4e5969 !default;
+$actionsheet-item-cancel-border-top: 1px solid $actionsheet-light-color !default;
+$actionsheet-item-line-height: 24px !default;
+$actionsheet-item-font-color: $title-color !default;
 
 //shortpassword
 $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
@@ -242,9 +257,9 @@ $countdown-color: inherit !default;
 $countdown-font-size: initial !default;
 
 //large price
-$price-symbol-big-size: 18px !default;
+$price-symbol-big-size: $font-size-2 !default;
 $price-big-size: 24px !default;
-$price-decimal-big-size: 18px !default;
+$price-decimal-big-size: $font-size-2 !default;
 
 //normal price
 $price-symbol-medium-size: 14px !default;
@@ -268,22 +283,22 @@ $avatar-normal-height: 40px !default;
 //switch
 $switch-close-bg-color: #ebebeb !default;
 $switch-close--cline-bg-color: #f0f0f0 !default;
-$switch-width: 50px !default;
-$switch-height: 27px !default;
-$switch-line-height: 27px !default;
-$switch-border-radius: 27px !default;
-$switch-inside-width: 23px !default;
-$switch-inside-height: 23px !default;
-$switch-inside-open-transform: translateX(100%) !default;
-$switch-inside-close-transform: translateX(10%) !default;
+$switch-width: 35px !default;
+$switch-height: 21px !default;
+$switch-line-height: 21px !default;
+$switch-border-radius: 12px !default;
+$switch-inside-width: 13px !default;
+$switch-inside-height: 13px !default;
+$switch-inside-open-transform: translateX(146%) !default;
+$switch-inside-close-transform: translateX(30%) !default;
 
 // toast
-$toast-title-font-size: 18px !default;
+$toast-title-font-size: 16px !default;
 $toast-text-font-size: 14px !default;
 $toast-font-color: $white !default;
-$toast-inner-padding: 12px 20px !default;
-$toast-inner-bg-color: rgba(0, 0, 0, 0.65) !default;
-$toast-inner-border-radius: 4px !default;
+$toast-inner-padding: 24px 30px !default;
+$toast-inner-bg-color: rgba(0, 0, 0, 0.85) !default;
+$toast-inner-border-radius: 12px !default;
 $toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
 
 //backtop
@@ -291,41 +306,51 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: rgba($primary-color, 0.09) !default;
-$calendar-choose-font-color: $primary-color !default;
-$calendar-base-color: #323233 !default;
+$calendar-choose-color: rgba(250, 44, 25, 0.12) !default;
+$calendar-choose-font-color: $title-color !default;
+$calendar-base-color: $title-color !default;
 $calendar-disable-color: #d1d0d0 !default;
 $calendar-base-font: $font-size-3 !default;
 $calendar-title-font: $font-size-4 !default;
-$calendar-title-font-weight: 500 !default;
+$calendar-title-font-weight: normal !default;
 $calendar-sub-title-font: $font-size-2 !default;
 $calendar-text-font: $font-size-1 !default;
 $calendar-day-font: 16px !default;
-$calendar-day-active-border-radius: 4px !default;
+$calendar-day-active-border-radius: 0px !default;
 $calendar-day-width: 14.28% !default;
-$calendar-day-height: 64px !default;
-$calendar-day-font-weight: normal !default;
+$calendar-day-height: 54px !default;
+$calendar-day-font-weight: 500 !default;
 $calendar-day67-font-color: $primary-color !default;
-$calendar-month-title-font-size: inherit !default;
+$calendar-month-title-font-size: $font-size-2 !default;
 
 //overlay
-$overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
+$overlay-bg-color: rgba(0, 0, 0, 0.65) !default;
 
 //popup
 $popup-close-icon-margin: 16px !default;
-$popup-border-radius: 8px !default;
+$popup-border-radius: 12px !default;
 
 // Notify
 $notify-text-color: $white !default;
-$notify-padding: 7px 16px !default;
+$notify-padding: 12px 0 !default;
 $notify-font-size: 14px !default;
-$notify-height: auto !default;
-$notify-line-height: 22px !default;
+$notify-height: 44px !default;
+$notify-line-height: auto !default;
 $notify-base-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
-$notify-primary-background-color: #2c68ff !default;
-$notify-success-background-color: #0ed57d !default;
-$notify-danger-background-color: #f52f3e !default;
-$notify-warning-background-color: #ff9c00 !default;
+$notify-primary-background-color: linear-gradient(
+  315deg,
+  rgba(73, 143, 242, 1) 0%,
+  rgba(73, 101, 242, 1) 100%
+) !default;
+$notify-success-background-color: linear-gradient(
+  135deg,
+  rgba(38, 191, 38, 1) 0%,
+  rgba(39, 197, 48, 1) 45%,
+  rgba(40, 207, 63, 1) 83%,
+  rgba(41, 212, 70, 1) 100%
+) !default;
+$notify-danger-background-color: rgba(250, 50, 25, 1) !default;
+$notify-warning-background-color: linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%) !default;
 
 // rate
 $rate-icon-color: $primary-color !default;
@@ -333,61 +358,62 @@ $rate-icon-void-color: $disable-color !default;
 
 // tabbar
 $tabbar-active-color: $primary-color !default;
-$tabbar-border-top: 0 !default;
-$tabbar-border-bottom: 0 !default;
-$tabbar-box-shadow: 0 -1.5px 5px rgba(0, 0, 0, 0.04) !default;
-$tabbar-item-text-font-size: 12px !default;
-$tabbar-item-text-line-height: 18px !default;
-$tabbar-height: auto !default;
-$tabbar-word-margin-top: auto !default;
-$tabbar-word-line-height: normal !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
+$tabbar-height: 54px !default;
+$tabbar-word-margin-top: 6px !default;
+$tabbar-word-line-height: 1 !default;
 
 //infiniteloading
 $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range
 $range-tip-font-color: #333333 !default;
-$range-bg-color: rgba(0, 0, 0, 0.15) !default;
-$range-bg-color-tick: #d9d9d9 !default;
+$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color-tick: #fa958c !default;
 $range-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
-$range-bar-btn-bg-color: $primary-color !default;
-$range-bar-btn-width: 22px !default;
-$range-bar-btn-height: 22px !default;
-$range-bar-btn-border: none !default;
+$range-bar-btn-bg-color: $white !default;
+$range-bar-btn-width: 24px !default;
+$range-bar-btn-height: 24px !default;
+$range-bar-btn-border: 1px solid $primary-color !default;
 
 //swiper
-$swiper-pagination-item-width: 5px !default;
-$swiper-pagination-item-height: 5px !default;
-$swiper-pagination-item-margin-right: 6px !default;
-$swiper-pagination-item-border-radius: 50% !default;
+$swiper-pagination-item-width: 8px !default;
+$swiper-pagination-item-height: 3px !default;
+$swiper-pagination-item-margin-right: 7px !default;
+$swiper-pagination-item-border-radius: 2px !default;
 
 //address
 $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
 $address-icon-color: $primary-color !default;
-$address-header-title-font-size: 18px !default;
-$address-header-title-color: #262626 !default;
-$address-region-tab-font-size: 13px !default;
-$address-region-tab-color: #1d1e1e !default;
-$address-region-tab-active-item-font-weight: bold !default;
-$address-region-tab-line-border-radius: 0 !default;
-$address-region-tab-line-opacity: 1 !default;
-$address-region-item-color: #333 !default;
-$address-region-item-font-size: $font-size-1 !default;
-$address-item-margin-right: 9px !default;
+$address-header-title-font-size: $font-size-3 !default;
+$address-header-title-color: $title-color !default;
+$address-region-tab-font-size: $font-size-3 !default;
+$address-region-tab-color: $title-color !default;
+$address-region-tab-active-item-font-weight: 600 !default;
+$address-region-tab-line-border-radius: 2px !default;
+$address-region-tab-line-opacity: 0.8 !default;
+$address-region-item-color: $title-color !default;
+$address-region-item-font-size: $font-size-2 !default;
+$address-item-margin-right: 10px !default;
 
 //steps
-$steps-base-icon-width: 18px !default;
-$steps-base-icon-height: 18px !default;
-$steps-base-icon-line-height: 18px !default;
-$steps-base-icon-font-size: 12px !default;
-$steps-base-title-font-size: 12px !default;
-$steps-base-line-color: #e1e1e1 !default;
-$steps-base-title-color: rgba(0, 0, 0, 0.85) !default;
+$steps-base-icon-width: 25px !default;
+$steps-base-icon-height: 25px !default;
+$steps-base-icon-line-height: 25px !default;
+$steps-base-icon-font-size: 13px !default;
+$steps-base-title-font-size: 14px !default;
+$steps-base-line-color: #909ca4 !default;
+$steps-base-title-color: #909ca4 !default;
 $steps-base-title-margin-bottom: 10px !default;
-$steps-base-content-font-size: 10px !default;
-$steps-base-content-color: rgba(0, 0, 0, 0.65) !default;
+$steps-base-content-font-size: 14px !default;
+$steps-base-content-color: #666 !default;
 
-$steps-wait-icon-bg-color: #e1e1e1 !default;
+$steps-wait-icon-bg-color: #959fb1 !default;
 $steps-wait-icon-color: $white !default;
 $steps-wait-head-color: #909ca4 !default;
 $steps-wait-head-border-color: #909ca4 !default;
@@ -405,34 +431,34 @@ $steps-process-title-color: $primary-color !default;
 $steps-process-icon-text-color: $primary-color !default;
 
 // dialog
-$dialog-width: 296px !default;
-$dialog-header-font-weight: normal !default;
-$dialog-header-color: rgba(38, 38, 38, 1) !default;
-$dialog-footer-justify-content: space-around !default;
+$dialog-width: 290px !default;
+$dialog-header-font-weight: 600 !default;
+$dialog-header-color: $title-color !default;
+$dialog-footer-justify-content: center !default;
 
 // checkbox
-$checkbox-label-color: rgba(0, 0, 0, 0.85) !default;
+$checkbox-label-color: #1d1e1e !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
-$checkbox-label-margin-left: 8px !default;
-$checkbox-label-font-size: 16px !default;
-$checkbox-icon-font-size: 20px !default;
-$checkbox-icon-disable-color2: $help-color !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
+$checkbox-icon-disable-color2: $checkbox-icon-disable-color !default;
 
 //radio
-$radio-label-font-color: rgba(0, 0, 0, 0.85) !default;
+$radio-label-font-color: #1d1e1e !default;
 $radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
-$radio-label-margin-left: 8px !default;
+$radio-label-margin-left: 15px !default;
 $radio-button-border-radius: 15px !default;
 $radio-label-font-size: 14px !default;
 $radio-button-font-size: 12px !default;
 $radio-button-padding: 5px 18px !default;
-$radio-icon-font-size: 20px !default;
-$radio-icon-disable-color2: $help-color !default;
+$radio-icon-font-size: 18px !default;
+$radio-icon-disable-color2: $radio-icon-disable-color !default;
 
 //fixednav
 $fixednav-bg-color: $white !default;
@@ -442,17 +468,17 @@ $fixednav-btn-bg: linear-gradient(135deg, $primary-color 0%, $primary-color-end 
 $fixednav-item-active-color: $primary-color !default;
 
 // NoticeBar
-$noticebar-background: #f2f8ff !default;
-$noticebar-color: #2c68ff !default;
-$noticebar-font-size: 14px !default;
+$noticebar-background: rgba(255, 252, 217, 1) !default;
+$noticebar-color: #d9500b !default;
+$noticebar-font-size: $font-size-1 !default;
 $noticebar-height: 40px !default;
 $noticebar-line-height: 24px !default;
-$noticebar-left-icon-width: 16px !default;
-$noticebar-right-icon-width: 16px !default;
-$noticebar-box-padding: 0 16px !default;
+$noticebar-left-icon-width: 12px !default;
+$noticebar-right-icon-width: 10px !default;
+$noticebar-box-padding: 0 12px !default;
 $noticebar-wrapable-padding: 16px !default;
-$noticebar-lefticon-margin: 0px 10px !default;
-$noticebar-righticon-margin: 0px 10px !default;
+$noticebar-lefticon-margin: 0 6px 0 0 !default;
+$noticebar-righticon-margin: 0 0 0 6px !default;
 
 // TimeSelect
 $timeselect-title-font-size: $font-size-2 !default;
@@ -487,8 +513,8 @@ $timeselect-timedetail-time-text-color: #999 !default;
 $timeselect-timedetail-time-font-size: $font-size-1 !default;
 
 //tag
-$tag-font-size: 12px !default;
-$tag-default-border-radius: 4px !default;
+$tag-font-size: $font-size-0 !default;
+$tag-default-border-radius: 2px !default;
 $tag-round-border-radius: 8px !default;
 $tag-default-background-color: #000000 !default;
 $tag-primary-background-color: #3460fa !default;
@@ -504,13 +530,13 @@ $tag-warning-background-color: #f3812e !default;
 $tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;
 $tag-plain-background-color: #fff !default;
-$tag-height: auto !default;
+$tag-height: 11px !default;
 
 //badge
 $badge-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $badge-color: #fff !default;
 $badge-font-size: $font-size-1 !default;
-$badge-border-radius: 14px !default;
+$badge-border-radius: 8px !default;
 $badge-padding: 0 5px !default;
 $badge-content-transform: translateY(-50%) translateX(100%) !default;
 $badge-z-index: 1 !default;
@@ -522,26 +548,26 @@ $badge-dot-padding: 0px !default;
 //popover
 $popover-white-background-color: rgba(255, 255, 255, 1) !default;
 $popover-dark-background-color: rgba(75, 76, 77, 1) !default;
-$popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
+$popover-border-bottom-color: #f0f0f0 !default;
 $popover-primary-text-color: rgba(51, 51, 51, 1) !default;
 $popover-disable-color: rgba(154, 155, 157, 1) !default;
-$popover-menu-item-padding: 8px 0 !default;
-$popover-menu-item-margin: 0 8px !default;
-$popover-menu-name-line-height: normal !default;
+$popover-menu-item-padding: 16px 0 !default;
+$popover-menu-item-margin: 0 20px !default;
+$popover-menu-name-line-height: 1 !default;
 
 //progress
 $progress-inner-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $progress-insidetext-background: $progress-inner-background-color !default;
-$progress-outer-background-color: rgba(0, 0, 0, 0.15) !default;
-$progress-outer-border-radius: 0 !default;
-$progress-insidetext-border-radius: 10px !default;
+$progress-outer-background-color: #f3f3f3 !default;
+$progress-outer-border-radius: 12px !default;
+$progress-insidetext-border-radius: 5px !default;
 $progress-insidetext-padding: 3px 5px 3px 6px !default;
 $progress-insidetext-top: -42% !default;
-$progress-small-height: 4px !default;
-$progress-small-text-font-size: 14px !default;
-$progress-small-text-line-height: 1.6 !default;
-$progress-small-text-padding: 0 8px !default;
-$progress-small-text-top: -200% !default;
+$progress-small-height: 5px !default;
+$progress-small-text-font-size: 7px !default;
+$progress-small-text-line-height: 10px !default;
+$progress-small-text-padding: 2px 4px !default;
+$progress-small-text-top: -100% !default;
 $progress-base-height: 10px !default;
 $progress-base-text-font-size: 9px !default;
 $progress-base-text-line-height: 13px !default;
@@ -567,22 +593,22 @@ $pagination-prev-next-padding: 0 11px !default;
 // tabs
 $tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
-$tabs-titles-item-large-font-size: $font-size-4 !default;
-$tabs-titles-item-font-size: $font-size-3 !default;
-$tabs-titles-item-small-font-size: $font-size-2 !default;
-$tabs-titles-item-color: rgba(0, 0, 0, 0.45) !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
+$tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+$tabs-titles-item-color: $title-color !default;
 $tabs-titles-item-active-color: $title-color !default;
-$tabs-titles-background-color: #fff !default;
-$tabs-horizontal-tab-line-color: $primary-color !default;
+$tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-tab-line-color: linear-gradient(90deg, rgba(250, 44, 25, 1) 0%, rgba(250, 44, 25, 0.08) 100%) !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
-$tabs-horizontal-titles-item-active-line-width: 14px !default;
-$tabs-vertical-tab-line-color: linear-gradient(180deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
-$tabs-vertical-titles-item-height: 40px !default;
+$tabs-horizontal-titles-item-active-line-width: 31px !default;
+$tabs-vertical-tab-line-color: linear-gradient(180deg, rgba(250, 44, 25, 1) 0%, rgba(250, 44, 25, 0.08) 100%) !default;
+$tabs-vertical-titles-item-height: 31px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
-$tabs-titles-item-line-border-radius: 0 !default;
-$tabs-titles-item-line-opacity: 1 !default;
+$tabs-titles-item-line-border-radius: 2px !default;
+$tabs-titles-item-line-opacity: 0.8 !default;
 
 // indicator
 $indicator-color: $primary-color !default;
@@ -595,8 +621,8 @@ $indicator-number-font-size: 10px !default;
 
 // menu
 $menu-bar-line-height: 48px !default;
-$menu-item-font-size: 15px !default;
-$menu-item-text-color: rgba(0, 0, 0, 0.85) !default;
+$menu-item-font-size: $font-size-2 !default;
+$menu-item-text-color: $title-color !default;
 $menu-item-active-text-color: $primary-color !default;
 $menu-bar-border-bottom-color: #eaf0fb !default;
 $menu-bar-opened-z-index: 2001 !default;
@@ -611,19 +637,19 @@ $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
 $menu-scroll-fixed-z-index: 1000 !default;
-$menu-active-item-font-weight: 500 !default;
+$menu-active-item-font-weight: 600 !default;
 
 // collapse
 $collapse-item-padding: 13px 36px 13px 26px !default;
-$collapse-item-color: rgba(0, 0, 0, 0.85) !default;
-$collapse-item-disabled-color: #bfbfbf !default;
+$collapse-item-color: #666666 !default;
+$collapse-item-disabled-color: #c8c9cc !default;
 $collapse-item-icon-color: #666666 !default;
 $collapse-item-font-size: $font-size-2 !default;
 $collapse-item-line-height: 24px !default;
 $collapse-item-sub-title-color: #666666 !default;
 $collapse-wrapper-content-padding: 12px 26px !default;
 $collapse-wrapper-empty-content-padding: 0 26px !default;
-$collapse-wrapper-content-color: #8c8c8c !default;
+$collapse-wrapper-content-color: #666666 !default;
 $collapse-wrapper-content-font-size: $font-size-2 !default;
 $collapse-wrapper-content-line-height: 1.5 !default;
 $collapse-wrapper-content-background-color: $white !default;
@@ -633,21 +659,21 @@ $searchbar-background: $white !default;
 $searchbar-right-out-color: $black !default;
 $searchbar-padding: 9px 16px !default;
 $searchbar-width: 100% !default;
-$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-background: $help-color !default;
 $searchbar-input-padding: 0 0 0 13px !default;
-$searchbar-input-height: 32px !default;
+$searchbar-input-height: 31px !default;
 $searchbar-input-width: 100% !default;
-$searchbar-input-border-radius: 16px !default;
+$searchbar-input-border-radius: 15px !default;
 $searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
-$searchbar-input-bar-color: inherit !default;
-$searchbar-input-bar-placeholder-color: inherit !default;
+$searchbar-input-bar-color: $title-color !default;
+$searchbar-input-bar-placeholder-color: $disable-color !default;
 
 // empty
 $empty-padding: 32px 0 !default;
 $empty-image-size: 170px !default;
 $empty-description-margin-top: 4px !default;
-$empty-description-color: #666666 !default;
-$empty-description-font-size: 14px !default;
+$empty-description-color: #bbb !default;
+$empty-description-font-size: $font-size-3 !default;
 $empty-description-line-height: 20px !default;
 $empty-description-padding: 0 40px !default;
 
@@ -675,52 +701,52 @@ $form-item-label-text-align: left !default;
 $form-item-required-margin-right: 4px !default;
 $form-item-body-font-size: 14px !default;
 $form-item-body-slots-text-align: left !default;
-$form-item-body-input-text-align: right !default;
-$form-item-tip-font-size: 12px !default;
-$form-item-tip-text-align: right !default;
+$form-item-body-input-text-align: left !default;
+$form-item-tip-font-size: 10px !default;
+$form-item-tip-text-align: left !default;
 
 // skeleton
-$skeleton-content-line-title-background-color: #efefef !default;
+$skeleton-content-line-title-background-color: #fafafa !default;
 
 // sku
-$sku-item-border: 1px solid $primary-color !default;
+$sku-item-border: 0 !default;
 $sku-item-disable-line: line-through !default;
-$sku-opetate-bg-default: linear-gradient(90deg, $primary-color, $primary-color-end 100%) !default;
-$sku-item-active-bg: rgba($primary-color, 0.15) !default;
+$sku-opetate-bg-default: linear-gradient(135deg, rgba(255, 64, 79, 1) 0%, rgba(250, 44, 25, 1) 100%) !default;
+$sku-item-active-bg: rgba(250, 44, 25, 0.08) !default;
 $sku-opetate-bg-buy: linear-gradient(
   135deg,
   rgba(255, 186, 13, 1) 0%,
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
 ) !default;
-$sku-spec-height: 30px !default;
+$sku-spec-height: 27px !default;
 $sku-spec-line-height: $sku-spec-height !default;
-$sku-spec-font-size: 11px !default;
-$sku-spec-background: rgba(242, 242, 242, 1) !default;
-$sku-spec-color: $black !default;
-$sku-spec-margin-right: 12px !default;
-$sku-spec-padding: 0 18px !default;
-$sku-spec-title-font-weight: bold !default;
-$sku-spec-title-font-size: 13px !default;
-$sku-spec-title-color: $black !default;
-$sku-spec-title-margin-bottom: 18px !default;
-$sku-operate-btn-height: 54px !default;
-$sku-operate-btn-border-top: 0 !default;
-$sku-operate-btn-item-height: 40px !default;
+$sku-spec-font-size: $font-size-2 !default;
+$sku-spec-background: $help-color !default;
+$sku-spec-color: $title-color !default;
+$sku-spec-margin-right: 8px !default;
+$sku-spec-padding: 0 16px !default;
+$sku-spec-title-font-weight: 500 !default;
+$sku-spec-title-font-size: 14px !default;
+$sku-spec-title-color: #333 !default;
+$sku-spec-title-margin-bottom: 16px !default;
+$sku-operate-btn-height: 49px !default;
+$sku-operate-btn-border-top: 1px solid #f2f2f2 !default;
+$sku-operate-btn-item-height: 37px !default;
 $sku-operate-btn-item-line-height: $sku-operate-btn-item-height;
-$sku-operate-btn-item-font-size: 15px !default;
-$sku-operate-btn-item-font-weight: normal !default;
-$sku-product-img-width: 100px !default;
+$sku-operate-btn-item-font-size: 14px !default;
+$sku-operate-btn-item-font-weight: 600 !default;
+$sku-product-img-width: 98px !default;
 $sku-product-img-height: $sku-product-img-width !default;
-$sku-product-img-border-radius: 0 !default;
+$sku-product-img-border-radius: 5px !default;
 
 // card
 $card-font-size-0: $font-size-0 !default;
 $card-font-size-1: $font-size-1 !default;
 $card-font-size-2: $font-size-2 !default;
 $card-font-size-3: $font-size-3 !default;
-$card-left-border-radius: 0 !default;
-$card-left-background-color: inherit !default;
+$card-left-border-radius: 6px !default;
+$card-left-background-color: rgba(0, 0, 0, 0.02) !default;
 
 // grid
 $grid-border-color: #f5f6f7 !default;
@@ -737,16 +763,16 @@ $table-tr-even-bg-color: #f3f3f3 !default;
 $table-tr-odd-bg-color: $white !default;
 
 // navbar
-$navbar-height: 46px !default;
+$navbar-height: 44px !default;
 $navbar-margin-bottom: 20px !default;
 $navbar-padding: 0 16px !default;
 $navbar-background: $white !default;
 $navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
-$navbar-color: $title-color2 !default;
+$navbar-color: $title-color !default;
 $navbar-title-base-font: $font-size-2 !default;
-$navbar-title-font: 18px !default;
-$navbar-title-font-weight: 600 !default;
-$navbar-title-font-color: rgba(0, 0, 0, 0.85) !default;
+$navbar-title-font: $font-size-4 !default;
+$navbar-title-font-weight: 0 !default;
+$navbar-title-font-color: $navbar-color !default;
 $navbar-title-width: 100px !default;
 $navbar-title-icon-margin: 0 0 0 13px !default;
 
@@ -864,8 +890,5 @@ $watermark-z-index: 2000 !default;
 // invoice
 $invoice-padding: 10px 10px 20px !default;
 
-// TrendArrow
-$trendarrow-font-size: 14px !default;
-$trendarrow-before-icon-margin: 4px !default;
-
 @import './mixins/index';
+@import './animation/index';

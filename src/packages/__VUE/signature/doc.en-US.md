@@ -17,7 +17,6 @@ app.use(Signature);
 ```
     
 
-## Code demonstration
 
 
 ### Basic usage
@@ -126,7 +125,7 @@ export default {
 | type | Picture format | String | 'png'
 | un-support-tpl | Display copy without canvas | String | 'sorry, the current browser doesn't support canvas, so we can't use this control! '
 
-## Event
+### Events
 
 | Event | Description   | Arguments   |
 |----- | ----- | ----- 

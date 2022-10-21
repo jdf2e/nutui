@@ -90,7 +90,7 @@ app.use(Icon);
 ```
 :::
 
-## Custom Size
+### Custom Size
 
  **small**，**base**，**large** .
 :::demo
@@ -137,8 +137,8 @@ app.use(Icon);
 </template>
 ```
 :::
-
-## Prop
+## API
+### Props
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----

@@ -109,7 +109,7 @@ Icon and letter types can have custom colors and background colors
 
 :::
 
-## Avatar group display
+### Avatar group display
 
 :::demo
 
@@ -141,7 +141,7 @@ Icon and letter types can have custom colors and background colors
 
 :::
 
-## Avatar group to control hierarchy direction
+### Avatar group to control hierarchy direction
 
 :::demo
 
@@ -165,7 +165,7 @@ Icon and letter types can have custom colors and background colors
 
 :::
 
-## Click on the avatar to trigger the event
+### Click on the avatar to trigger the event
 
 :::demo
 
@@ -193,7 +193,7 @@ Icon and letter types can have custom colors and background colors
 
 :::
 
-
+## API
 ### Avatar Props
 
 | Attribute | Description                                                        | Type   | Default |

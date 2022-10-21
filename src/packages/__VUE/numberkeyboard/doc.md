@@ -282,8 +282,8 @@ export default{
 ```
 :::
 
-
-### Prop
+## API
+### Props
 
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
@@ -300,7 +300,7 @@ export default{
 | pop-class    | 自定义弹框类名     | String         | -             |
 
 
-### Event
+### Events
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----

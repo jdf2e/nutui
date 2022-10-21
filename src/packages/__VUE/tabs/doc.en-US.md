@@ -351,7 +351,7 @@ export default {
 | sticky`v3.2.3` `applet not supported` | Whether to use sticky mode| boolean       | false      |
 | top`v3.2.3` `applet not supported` | Sticky offset top | number       | 0      |
 
-## Tabs Slots
+### Tabs Slots
 
 | Name    | Description            |
 |---------|------------------------|
@@ -367,7 +367,7 @@ export default {
 | disabled  | whether to disable tabs           | boolean | false            |
 
 
-## Tabpane Slots
+### Tabpane Slots
 
 | Name    | Description            |
 |---------|------------------------|

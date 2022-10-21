@@ -100,7 +100,7 @@ body {
 | list-data         | List data               | any[] | `[]`                |
 | container-height `v3.1.19`        | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
 
-### Slot
+### Slots
 
 | Attribute         | Description                             | Type   |
 |--------------|----------------------------------|--------|

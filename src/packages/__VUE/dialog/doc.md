@@ -14,11 +14,14 @@ import { createApp,createVNode } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Dialog).use(Popup).use(OverLay)
+app.use(Dialog);
+app.use(Popup);
+app.use(OverLay);
+
 ```
 
 
-## 函数调用（小程序模式暂不支持）
+### 函数调用（小程序模式暂不支持）
 
 :::demo
 ```html
@@ -125,7 +128,7 @@ export default {
 ```
 ::: 
 
-## teleport 使用，挂载到指定节点
+### teleport 使用，挂载到指定节点
 
 ``` html
 <nut-dialog teleport="#app" ... />
@@ -142,7 +145,7 @@ Dialog({
 });
 ```
 
-## 函数调用 proxy.&dialog(...)
+### 函数调用 proxy.&dialog(...)
 
 ```javascript
 import { ref } from 'vue';
@@ -161,7 +164,7 @@ export default {
 ```
 
 
-## 标签式组件使用
+### 标签式组件使用
 
 
 :::demo
@@ -207,6 +210,7 @@ export default {
 :::
 
 ## API
+### DialogOptions
 | 字段                  | 说明                                                          | 类型                     | 默认值               |
 |-----------------------|---------------------------------------------------------------|--------------------------|----------------------|
 | title                 | 标题                                                          | String                   | -                    |
@@ -235,7 +239,7 @@ export default {
 | beforeClose`v3.1.22`  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -                    |
 
 
-## Props
+### Props
 
 | 字段                   | 说明                                                          | 类型                     | 默认值     |
 |------------------------|---------------------------------------------------------------|--------------------------|------------|
@@ -260,7 +264,7 @@ export default {
 | custom-class`v3.1.22`  | 自定义class                                                   | String                   | -          |
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
 
-## Events
+### Events
 
 | 字段   | 说明         | 类型     | 默认值 |
 |--------|--------------|----------|--------|
@@ -270,7 +274,7 @@ export default {
 | opened | 打开弹框回调 | Function | -      |
 
 
-## Slots
+### Slots
 
 | 名称    | 说明               |
 |---------|--------------------|

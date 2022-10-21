@@ -18,9 +18,7 @@ const app = createApp();
 app.use(CountUp);
 ```
 
-## 代码演示
-
-## 基本用法
+### 基础用法
 :::demo
 
 ```html
@@ -32,7 +30,7 @@ app.use(CountUp);
 ```
 
 :::
-## 数字滚动
+### 数字滚动
 :::demo
 
 ```html
@@ -43,7 +41,7 @@ app.use(CountUp);
 
 :::
 
-## 自定义数字图片展示
+### 自定义数字图片展示
 :::demo
 
 ```html
@@ -84,7 +82,7 @@ export default {
 ```
 :::
 
-## 抽奖
+### 抽奖
 :::demo
 
 ```html
@@ -141,8 +139,8 @@ export default {
 ```
 :::
 
-
-## Prop
+## API
+### Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -171,7 +169,7 @@ export default {
 
 
 
-## Event
+### Events
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----

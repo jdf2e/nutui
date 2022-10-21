@@ -340,7 +340,7 @@ setup(){
 ```
 :::
 
-
+## API
 ### Form Props
 
 | Attribute   | Description                                              | Type   | Default |
@@ -377,7 +377,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 | validator | Verification by function           | (value) => boolean \| string \| Promise |
 | regex     | Verification by regular expression | RegExp                                  |
 
-## FormItem Slots
+### FormItem Slots
 
 | Name            | Description         |
 |-----------------|---------------------|

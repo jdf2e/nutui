@@ -105,7 +105,7 @@ app.use(Price);
 </script>
 ```
 :::
-
+## API
 ### Props
 
 | Attribute      | Description                                                | Type            | Default |

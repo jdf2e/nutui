@@ -6,4 +6,7 @@ const isJDT = () => {
 const isJDB = () => {
   return window.parent.location.href.includes('jdb');
 };
-export { isMobile, isJDT, isJDB };
+const isJDDKH = () => {
+  return window.parent.location.href.includes('jddkh');
+};
+export { isMobile, isJDT, isJDB, isJDDKH };

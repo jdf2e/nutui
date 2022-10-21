@@ -282,8 +282,8 @@ export default{
 ```
 :::
 
-
-### Prop
+## API
+### Props
 
 | Attribute | Description | Type | Default |
 |----- | ----- | ----- | ----- |

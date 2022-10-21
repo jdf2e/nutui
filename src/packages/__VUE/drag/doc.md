@@ -13,7 +13,7 @@ const app = createApp();
 app.use(Drag);
 ```
 
-## 基本用法
+### 基础用法
 :::demo
 ```html
 <template>
@@ -23,7 +23,7 @@ app.use(Drag);
 </template>
 ```
 :::
-## 限制拖拽方向
+### 限制拖拽方向
 :::demo
 ```html
 <template>
@@ -33,7 +33,7 @@ app.use(Drag);
   </template>
 ```
 :::
-## 自动吸边
+### 自动吸边
 :::demo
 ```html
 <template>
@@ -46,7 +46,7 @@ app.use(Drag);
     </template>
 ```
 :::
-## 限制拖拽边界
+### 限制拖拽边界
 :::demo
 ```html
 <template>
@@ -88,7 +88,8 @@ app.use(Drag);
 
 ```
 :::
-## Prop
+## API
+### Props
 
 | 字段      | 说明                                              | 类型           | 默认值                              |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
