@@ -8,15 +8,6 @@
 
 > 自 `v3.2.3` 起，@nutui/nutui-taro 中的 Picker 组件不在支持 3D 展示效果。依赖 Taro 版本 `V3.5.6`
 
-Picker 组件在 3.1.18 版本进行重构，调整了之前 API 设计不合理的地方，主要变更如下：
-
-* 支持通过 `v-model` 绑定当前选中的值，移除 `default-index` 属性
-* 重命名选项集合属性 `list-data` 为 `columns` 
-* 重新定义 `columns` 属性的数据格式，是由对象构成的一维或多维数组
-* 重新定义 `confirm`、`close`、`change` 事件的回调参数
-
-同时也对重构前的 Picker 组件进行了保留，如有需要可通过 [OldPicker 组件](https://nutui.jd.com/#/component/oldpicker) 进行查看。
-
 ### 安装
 
 ```javascript
