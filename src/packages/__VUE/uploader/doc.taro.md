@@ -250,6 +250,7 @@ setup() {
 | upload-icon-size          | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                 | String or Number                  | -                         |
 | xhr-state                 | 接口响应的成功状态（status）值                                                                                         | Number                            | 200                       |
 | disabled                  | 是否禁用文件上传                                                                                                       | Boolean                           | false                     |
+| multiple`v2.3.4`                  | 是否支持文件多选                                                                                                       | Boolean                           | true            |
 | timeout                   | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | before-upload             | 上传前的函数需要返回一个`Promise`对象                                                                                  | Function                          | null                      |
 | before-xhr-upload`v3.2.1` | 执行 Taro.uploadFile 上传时，自定义方式                                                                                | Function(Taro.uploadFile，option) | null                      |
