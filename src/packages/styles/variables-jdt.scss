@@ -192,8 +192,6 @@ $inputnumber-border: 0 !default;
 $inputnumber-border-radius: 0 !default;
 $inputnumber-height: auto !default;
 $inputnumber-line-height: normal !default;
-$inputnumber-input-border-left: 0 !default;
-$inputnumber-input-border-right: 0 !default;
 $inputnumber-border-box: content-box !default;
 $inputnumber-display: flex !default;
 
@@ -333,6 +331,7 @@ $rate-icon-void-color: $disable-color !default;
 
 // tabbar
 $tabbar-active-color: $primary-color !default;
+$tabbar-unactive-color: $primary-color !default;
 $tabbar-border-top: 0 !default;
 $tabbar-border-bottom: 0 !default;
 $tabbar-box-shadow: 0 -1.5px 5px rgba(0, 0, 0, 0.04) !default;
