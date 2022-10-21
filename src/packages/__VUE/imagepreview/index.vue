@@ -3,7 +3,7 @@
     pop-class="custom-pop"
     v-model:visible="showPop"
     :isWrapTeleport="isWrapTeleport"
-    @click="onClose"
+    @closed="onClose"
     style="width: 100%"
     lock-scroll
   >
