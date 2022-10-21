@@ -58,6 +58,8 @@ export default {
 
 ### slot 用法
 
+> 使用插槽需要将滚动内容放在html标签内，小程序环境暂不支持
+
 :::demo
 
 ```html

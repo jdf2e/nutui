@@ -58,6 +58,8 @@ export default {
 
 ### slot usage
 
+> Using the slot requires putting the scrolling content inside the html tag, the applet environment is not currently supported
+
 :::demo
 
 ```html

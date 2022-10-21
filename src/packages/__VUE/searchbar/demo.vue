@@ -112,7 +112,6 @@ export default createDemo({
 
     return {
       icon,
-      icon2,
       clickLeft,
       clickLeftIcon,
       clickRightIcon,
