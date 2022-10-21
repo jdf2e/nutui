@@ -8,6 +8,8 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
       :round="true"
+      :safeAreaInsetBottom="safeAreaInsetBottom"
+      :destroyOnClose="destroyOnClose"
     >
       <view class="nut-picker__bar">
         <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
