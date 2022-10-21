@@ -2,7 +2,6 @@
 
 // 主色调
 $primary-color: #fa2c19 !default;
-$primary-color-start: $primary-color !default;
 $primary-color-end: #fa6419 !default;
 
 // 辅助色
@@ -202,13 +201,11 @@ $inputnumber-input-background-color: transparent !default;
 $inputnumber-input-border-radius: 0 !default;
 $inputnumber-input-width: 31px !default;
 $inputnumber-input-margin: 0 !default;
-$inputnumber-input-border: 1 !default;
+$inputnumber-input-border: 1px solid $disable-color !default;
 $inputnumber-border: 1px solid $disable-color !default;
 $inputnumber-border-radius: 2px !default;
 $inputnumber-height: 18px !default;
 $inputnumber-line-height: 18px !default;
-$inputnumber-input-border-left: $inputnumber-border !default;
-$inputnumber-input-border-right: $inputnumber-border !default;
 $inputnumber-border-box: border-box !default;
 $inputnumber-display: inline-flex !default;
 
@@ -890,5 +887,8 @@ $watermark-z-index: 2000 !default;
 // invoice
 $invoice-padding: 10px 10px 20px !default;
 
+// TrendArrow
+$trendarrow-font-size: 14px !default;
+$trendarrow-before-icon-margin: 4px !default;
+
 @import './mixins/index';
-@import './animation/index';
