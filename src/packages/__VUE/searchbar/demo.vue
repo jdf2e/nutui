@@ -28,7 +28,7 @@
     </nut-searchbar>
 
     <h2>{{ translate('basic7') }}</h2>
-    <nut-searchbar v-model="searchValue6" :clear-icon="icon2"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue6" :clear-icon="icon"> </nut-searchbar>
 
     <h2>{{ translate('basic6') }}</h2>
     <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
@@ -63,7 +63,7 @@ const initTranslate = () =>
       basic4: '右侧添加搜索文字',
       basic5: '更改输入框内部及外部的背景样式',
       basic6: '显示全部 icon',
-      basic7: '自定义清除按钮 icon',
+      basic7: '自定义清除图标 icon',
       word1: '标签',
       word2: '搜索',
       title3: '标题3'
@@ -75,7 +75,7 @@ const initTranslate = () =>
       basic4: 'Add search text to the right',
       basic5: 'Change the background style inside and outside the input box',
       basic6: 'Show all icons',
-      basic7: 'custom clear button icons',
+      basic7: 'custom clear button icon',
       word1: 'label',
       word2: 'search'
     }
@@ -83,8 +83,7 @@ const initTranslate = () =>
 export default createDemo({
   props: {},
   setup() {
-    const icon = 'close';
-    const icon2 =
+    const icon =
       'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
     initTranslate();
     const state = reactive({
@@ -113,7 +112,6 @@ export default createDemo({
 
     return {
       icon,
-      icon2,
       clickLeft,
       clickLeftIcon,
       clickRightIcon,

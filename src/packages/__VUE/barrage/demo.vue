@@ -6,7 +6,7 @@
     </nut-cell>
     <h2>{{ translate('slotTitle') }}</h2>
     <nut-cell>
-      <nut-barrage ref="danmu">
+      <nut-barrage>
         <span>aaa</span>
         <span>bbb</span>
         <span>ccc</span>
