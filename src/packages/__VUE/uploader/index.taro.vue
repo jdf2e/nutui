@@ -99,6 +99,7 @@ export default create({
     uploadIcon: { type: String, default: 'photograph' },
     uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
+    multiple: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
     beforeUpload: {
@@ -145,7 +146,7 @@ export default create({
       }
       Taro.chooseImage({
         // 选择数量
-        count: (props.maximum as number) * 1 - props.fileList.length,
+        count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType: props.sizeType,
         sourceType: props.sourceType,
