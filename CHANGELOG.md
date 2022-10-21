@@ -36,12 +36,12 @@ NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 * :bug: fix(list): 组件事件不被触发 #1607 @szg2008  
 * :bug: test(list): test error #1607 @szg2008  
 * :bug: fix(divider,imagePreview,pagination): components optimization (#1705)@eiinu   
-📖 docs(components): optimization (#1662) @Drjingfubo
-📖 docs(components): optimization (#1683) @Drjingfubo
-📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
-📖 docs(infiniteloading): type load-icon props to string @szg2008
-📖 docs(timeselect,overlay): edit (#1679) @eiinu 
-📖 docs(card): add click events (#1700) @Drjingfubo 
+* 📖 docs(components): optimization (#1662) @Drjingfubo
+* 📖 docs(components): optimization (#1683) @Drjingfubo
+* 📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
+* 📖 docs(infiniteloading): type load-icon props to string @szg2008
+* 📖 docs(timeselect,overlay): edit (#1679) @eiinu 
+* 📖 docs(card): add click events (#1700) @Drjingfubo 
 
 
 
