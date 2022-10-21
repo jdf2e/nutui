@@ -148,10 +148,10 @@ export default create({
       if (props.visible) {
         unlockScroll();
         emit('update:visible', false);
+        emit('close');
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
-            emit('close');
           }, +props.duration * 1000);
         }
       }

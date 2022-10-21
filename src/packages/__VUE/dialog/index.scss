@@ -12,7 +12,8 @@
     text-align: center;
     height: 20px;
     font-size: 16px;
-    color: rgba(38, 38, 38, 1);
+    color: $dialog-header-color;
+    font-weight: $dialog-header-font-weight;
     @include oneline-ellipsis();
   }
   &__content {
@@ -32,7 +33,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: space-around;
+    justify-content: $dialog-footer-justify-content;
 
     &.vertical {
       flex-direction: column;
