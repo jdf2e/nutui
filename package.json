@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "upload": "yarn build && NODE_ENV=dev node upload.js"
   },
   "dependencies": {
+    "@jd/upload-oss-tools": "^1.1.21",
     "@vue/ui": "^0.5.2",
     "babel-plugin-component": "^1.1.1",
     "copy-to-clipboard": "^3.0.8",

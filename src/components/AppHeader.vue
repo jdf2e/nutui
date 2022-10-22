@@ -4,8 +4,8 @@
       <a class="brand" href="#">
         <img
           class="logo"
-          src="../assets/images/logo.png"
-          alt="Vue's logo"
+          src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+          alt="nutui's logo"
           height="24"
         />
         NutUI Issue Helper

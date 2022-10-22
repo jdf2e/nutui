@@ -2,7 +2,11 @@ export default {
   watch: {
     show(val) {
       if (!val) {
-        const newUrl = window.location.origin + "/" + window.location.search;
+        // const newUrl = window.location.origin + "/" + window.location.search;
+        const newUrl =
+          window.location.origin +
+          window.location.pathname +
+          window.location.search;
         window.history.pushState(
           {
             path: newUrl,

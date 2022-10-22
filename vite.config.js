@@ -1,6 +1,13 @@
 import { createVuePlugin } from "vite-plugin-vue2";
+import { url } from "./src/helpers/env";
 
 export default {
+  base: url.base,
+  resolve: {
+    alias: {
+      "/images": "./src/assets/images",
+    },
+  },
   plugins: [
     createVuePlugin(),
     {

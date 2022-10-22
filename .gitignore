@@ -7,6 +7,10 @@
 yarn.lock
 package-lock.json
 
+# company
+upload.js
+env.js
+
 # testing
 /coverage
 
