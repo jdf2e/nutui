@@ -29,6 +29,7 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 
 ## 开发技巧
 
+- [Taro Vue3版本安装使用 NutUI 手动安装](https://blog.csdn.net/yunchong_zhao/article/details/125508771)
 - [NutUI 视频组件开发心得](https://jelly.jd.com/article/5ed9ac37c27b86015c501423)
 - [移动端日历组件设计与实现](https://jelly.jd.com/article/6258c1aa89548f01acd2c31a)
 - [折叠面板组件的设计与实现](https://jelly.jd.com/article/62aac30d5deaaa01b341e616)
