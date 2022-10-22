@@ -93,6 +93,11 @@ export default {
     },
 
     confirm() {
+      this.listData.map((tag, i) => {
+        let ref = `picker-slot-${i}`;
+        this.$refs[ref] && this.$refs[ref][0].stopMomentum();
+      });
+
       this.$emit('confirm', this.cacheValueData);
       this.chooseValueData = [...this.cacheValueData];
       this.$emit('close');

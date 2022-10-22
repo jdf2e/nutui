@@ -1,6 +1,6 @@
 <template>
-  <div class="nut-picker-list">
-    <div class="nut-picker-roller" ref="roller">
+  <div class="nut-picker-list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <div class="nut-picker-roller" ref="roller" @transitionend="stopMomentum">
       <div
         class="nut-picker-roller-item"
         :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
@@ -24,6 +24,14 @@
   </div>
 </template>
 <script>
+const DEFAULT_DURATION = 200;
+
+// 触发惯性滑动条件:
+// 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
+// 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
+const INERTIA_TIME = 300;
+const INERTIA_DISTANCE = 15;
+
 export default {
   name: 'nut-picker-slot',
   props: {
@@ -61,6 +69,8 @@ export default {
       lineSpacing: 36,
       rotation: 20,
       timer: null,
+
+      touchTime: 0,
     };
   },
   watch: {
@@ -95,7 +105,7 @@ export default {
       }
     },
 
-    setTransform(translateY = 0, type, time = 1000, deg) {
+    setTransform(translateY = 0, type, time = DEFAULT_DURATION, deg) {
       if (type === 'end') {
         this.$refs.list.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
         this.$refs.roller.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
@@ -103,9 +113,12 @@ export default {
         this.$refs.list.style.webkitTransition = '';
         this.$refs.roller.style.webkitTransition = '';
       }
-      this.$refs.list.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`;
-      this.$refs.roller.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`;
-      this.scrollDistance = translateY;
+
+      if (translateY != null) {
+        this.$refs.list.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`;
+        this.$refs.roller.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`;
+        this.scrollDistance = translateY;
+      }
     },
 
     setMove(move, type, time) {
@@ -145,7 +158,7 @@ export default {
       this.$emit('chooseItem', this.listData[Math.round(-move / this.lineSpacing)], this.keyIndex);
     },
 
-    touchStart(event) {
+    onTouchStart(event) {
       event.preventDefault();
 
       let changedTouches = event.changedTouches[0];
@@ -154,7 +167,7 @@ export default {
       this.transformY = this.scrollDistance;
     },
 
-    touchMove(event) {
+    onTouchMove(event) {
       event.preventDefault();
 
       let changedTouches = event.changedTouches[0];
@@ -165,7 +178,7 @@ export default {
       this.setMove(move);
     },
 
-    touchEnd(event) {
+    onTouchEnd(event) {
       event.preventDefault();
 
       let changedTouches = event.changedTouches[0];
@@ -174,9 +187,9 @@ export default {
       let move = this.touchParams.lastY - this.touchParams.startY;
 
       let moveTime = this.touchParams.lastTime - this.touchParams.startTime;
-      if (moveTime <= 300) {
-        move = move * 2;
-        this.setMove(move, 'end', +this.swipeDuration);
+      if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
+        const distance = this.momentum(move, moveTime);
+        this.setMove(distance, 'end', +this.swipeDuration);
       } else {
         this.setMove(move, 'end');
       }
@@ -200,22 +213,38 @@ export default {
       type && this.setChooseValue(-move);
       this.setMove(-move);
     },
+
+    // 惯性滚动结束
+    stopMomentum() {
+      console.log('惯性滚动结束');
+      this.setChooseValue(this.scrollDistance);
+      this.setTransform(null, 'end');
+    },
+
+    // 惯性滚动 距离
+    momentum(distance, duration) {
+      // 惯性滚动的速度
+      const speed = Math.abs(distance / duration);
+      // 惯性滚动的距离
+      distance = (speed / 0.003) * (distance < 0 ? -1 : 1);
+      return distance;
+    },
   },
 
   mounted() {
     this.$nextTick(() => {
       this.modifyStatus(true);
       // 监听
-      this.$el.addEventListener('touchstart', this.touchStart);
-      this.$el.addEventListener('touchmove', this.touchMove);
-      this.$el.addEventListener('touchend', this.touchEnd);
+      // this.$el.addEventListener('touchstart', this.touchStart);
+      // this.$el.addEventListener('touchmove', this.touchMove);
+      // this.$el.addEventListener('touchend', this.touchEnd);
     });
   },
   beforeDestroy() {
     // 移除监听
-    this.$el.removeEventListener('touchstart', this.touchStart);
-    this.$el.removeEventListener('touchmove', this.touchMove);
-    this.$el.removeEventListener('touchend', this.touchEnd);
+    // this.$el.removeEventListener('touchstart', this.touchStart);
+    // this.$el.removeEventListener('touchmove', this.touchMove);
+    // this.$el.removeEventListener('touchend', this.touchEnd);
     clearTimeout(this.timer);
   },
 };
