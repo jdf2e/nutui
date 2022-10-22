@@ -56,7 +56,7 @@
 
 ---
 
-> Nut[nʌt]: the one Squirrel Scrat pursues resolutely for a lifetime and will never let go even if it causes a catastrophe from the animated film *Ice Age*.
+> Nut[nʌt]: the one Squirrel Scrat pursues resolutely for a lifetime and will never let go even if it causes a catastrophe from the animated film ***Ice Age***.
 
 [简体中文](./README.md) | English
 
