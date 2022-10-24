@@ -5,7 +5,9 @@
     </view>
 
     <view class="nut-imagepreview-box" v-if="video && video.source">
-      <nut-video :source="video.source" :options="video.options"></nut-video>
+      <div @click="videoClick">111</div>
+
+      <!-- <nut-video :source="video.source" :options="video.options" ></nut-video> -->
     </view>
   </nut-swiper-item>
 </template>
@@ -291,6 +293,12 @@ export default create({
 
     const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
 
+    // 视频点击
+    const videoClick = (event: any) => {
+      console.log('点击视频');
+      // event.preventDefault();
+    };
+
     watch(() => props.initNo, resetScale);
     watch(
       () => props.show,
@@ -308,7 +316,8 @@ export default create({
       onTouchEnd,
       getDistance,
       imageStyle,
-      imageLoad
+      imageLoad,
+      videoClick
     };
   }
 });
