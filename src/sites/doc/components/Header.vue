@@ -1,7 +1,7 @@
 <template>
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#/base"></a>
+      <a class="logo-link" href="https://nutui.jd.com/#/"></a>
       <span class="logo-border"></span>
       <span class="version">{{ version }}</span>
     </div>
