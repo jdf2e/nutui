@@ -14,9 +14,8 @@ const app = createApp();
 app.use(Toast);
 ```
 
-## Usage
 
-#### Global Usage
+### Global Usage
 :::demo
 ``` html
 <template>
@@ -34,7 +33,7 @@ export default {
 ```
 :::
 
-#### Text
+### Text
 :::demo
 ```html
 <template>
@@ -55,7 +54,7 @@ export default {
 </script>
 ```
 :::
-#### Title
+### Title
 
 :::demo
 ```html
@@ -79,7 +78,7 @@ export default {
 </script>
 ```
 :::
-#### Success
+### Success
 
 :::demo
 ```html
@@ -102,7 +101,7 @@ export default {
 ```
 :::
 
-#### Fail
+### Fail
 
 :::demo
 ```html
@@ -125,7 +124,7 @@ export default {
 ```
 :::
 
-#### Warn
+### Warn
 
 :::demo
 ```html
@@ -148,7 +147,7 @@ export default {
 ```
 :::
 
-#### Loading
+### Loading
 
 :::demo
 ```html
@@ -171,7 +170,7 @@ export default {
 ```
 :::
 
-#### Not Disappear
+### Not Disappear
 
 :::demo
 ```html
@@ -195,7 +194,7 @@ export default {
 </script>
 ```
 :::
-#### Custom Bottom Height
+### Custom Bottom Height
 
 :::demo
 ```html
@@ -221,7 +220,7 @@ export default {
 ```
 :::
 
-#### Loading with transparent cover
+### Loading with transparent cover
 :::demo
 ```html
 <template>
@@ -246,7 +245,7 @@ export default {
 :::
 
 
-####  Support import and use in JS modules
+###  Support import and use in JS modules
 ``` javascript
 import { Toast } from "@nutui/nutui";
 Toast.text('use in js module');
@@ -256,7 +255,8 @@ toast.hide();
 ```
 
 
-### API
+## API
+### Methods
 | Methods                    | Description              | Attribute          | Return value     |
 | ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
 | Toast.text                | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
@@ -266,7 +266,7 @@ toast.hide();
 | Toast.hide                | Close toast     | clearAll: boolean   | void       |
 | Toast.loading             | Show loading toast      | message｜ options | toast instance |
 
-## Options
+### ToastOptions
 
 | 字段                | 说明                                                                          | 类型          | 默认值                        |
 | ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |

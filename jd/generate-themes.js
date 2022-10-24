@@ -26,7 +26,8 @@ Promise.all(tasks).then((res) => {
   let themes = [
     { file: 'default.scss', sourcePath: `@import '../variables.scss';` },
     { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';` },
-    { file: 'jdb.scss', sourcePath: `@import '../variables-jdb.scss';` }
+    { file: 'jdb.scss', sourcePath: `@import '../variables-jdb.scss';` },
+    { file: 'jddkh.scss', sourcePath: `@import '../variables-jddkh.scss';` }
   ];
 
   themes.forEach((item) => {

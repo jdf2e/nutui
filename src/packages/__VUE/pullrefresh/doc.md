@@ -17,7 +17,6 @@ const app = createApp();
 app.use(PullRefresh);
 ```
     
-## 代码演示
 
 ### 纵向
 

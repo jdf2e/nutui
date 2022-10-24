@@ -74,7 +74,6 @@ export default create({
     };
 
     const onClick = (event: MouseEvent) => {
-      event.stopPropagation();
       emit('click', event);
     };
 

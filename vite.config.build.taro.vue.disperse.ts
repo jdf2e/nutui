@@ -5,6 +5,7 @@ import path from 'path';
 const fs = require('fs-extra');
 import config from './package.json';
 import configPkg from './src/config.json';
+import { transformFinalCode, DEFAULT_Components } from './transformFinalCode';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -17,8 +18,10 @@ let input = {};
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name } = element;
+    // if (name.toLowerCase().indexOf('calendar') != -1) {
     const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
     input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    // }
   });
 });
 
@@ -35,10 +38,23 @@ export default defineConfig({
               tag.startsWith('scroll-view') ||
               tag.startsWith('swiper') ||
               tag.startsWith('swiper-item') ||
-              tag.startsWith('picker')
+              tag.startsWith('picker') ||
+              tag.startsWith('picker-view') ||
+              tag.startsWith('picker-view-column')
             );
           },
-          whitespace: 'preserve'
+          whitespace: 'preserve',
+          nodeTransforms: [
+            (node) => {
+              if (node.type === 1 /* ELEMENT */) {
+                const nodeName = node.tag;
+                if (DEFAULT_Components.has(nodeName)) {
+                  // node.tag = `taro-${nodeName}`,
+                  node.tagType = 1; /* 0: ELEMENT, 1: COMPONENT */
+                }
+              }
+            }
+          ]
         }
       }
     }),
@@ -72,6 +88,9 @@ declare module 'vue' {
           content: fileContent + changeContent
         };
       }
+    }),
+    transformFinalCode({
+      include: ['__VUE/.*/index.taro']
     })
   ],
   build: {

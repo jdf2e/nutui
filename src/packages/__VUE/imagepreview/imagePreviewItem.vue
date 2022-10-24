@@ -4,22 +4,22 @@
       <img :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
     </view>
 
-    <view class="nut-imagepreview-box" v-if="video">
+    <view class="nut-imagepreview-box" v-if="video && video.source">
       <nut-video :source="video.source" :options="video.options"></nut-video>
     </view>
   </nut-swiper-item>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed, CSSProperties } from 'vue';
+import { toRefs, reactive, watch, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
-import { isPromise } from '@/packages/utils/util.ts';
 import { useTouch } from '@/packages/utils/useTouch';
-const { componentName, create } = createComponent('imagepreviewitem');
+import { ImageInterface } from './types';
+const { create } = createComponent('imagepreviewitem');
 
 export default create({
   props: {
@@ -29,12 +29,12 @@ export default create({
     },
     initNo: Number,
     image: {
-      type: Object,
-      default: () => {}
+      type: Object as PropType<ImageInterface>,
+      default: () => ({})
     },
     video: {
-      type: Array,
-      default: () => {}
+      type: Object,
+      default: () => ({})
     },
 
     showIndex: {
@@ -126,7 +126,7 @@ export default create({
     });
 
     // 图片加载完成
-    const imageLoad = (event: any) => {
+    const imageLoad = (event: TouchEvent) => {
       const { naturalWidth, naturalHeight } = event.target as HTMLImageElement;
       state.imageRatio = naturalHeight / naturalWidth;
     };
@@ -165,7 +165,7 @@ export default create({
     let startMoveY: number;
     let startScale: number;
     let startDistance: number;
-    let doubleTapTimer: null;
+    let doubleTapTimer: number | null;
     let touchStartTime: number;
     let fingerNum: number;
 
@@ -279,7 +279,7 @@ export default create({
     };
 
     // 阻止
-    const preventDefault = (event: any, isStopPropagation?: boolean) => {
+    const preventDefault = (event: Event, isStopPropagation?: boolean) => {
       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
         event.preventDefault();
       }

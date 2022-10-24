@@ -319,7 +319,7 @@ export default create({
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
           if (state.currDate.length > 0) {
-            let hasIndex: number = NaN;
+            let hasIndex: number | undefined = undefined;
             (state.currDate as StringArr).forEach((item: string, index: number) => {
               if (item == days[3]) {
                 hasIndex = index;
@@ -328,7 +328,7 @@ export default create({
             if (isFirst) {
               state.chooseData.push([...days]);
             } else {
-              if (hasIndex !== NaN) {
+              if (hasIndex !== undefined) {
                 (state.currDate as StringArr).splice(hasIndex, 1);
                 state.chooseData.splice(hasIndex, 1);
               } else {

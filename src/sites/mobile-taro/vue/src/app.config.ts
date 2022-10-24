@@ -1,6 +1,6 @@
 const subPackages = [
   {
-    root: 'base',
+    root: 'basic',
     pages: [
       'pages/button/index',
       'pages/cell/index',
@@ -87,7 +87,8 @@ const subPackages = [
       'pages/table/index',
       'pages/animate/index',
       'pages/ellipsis/index',
-      'pages/watermark/index'
+      'pages/watermark/index',
+      'pages/trendarrow/index'
     ]
   },
   {

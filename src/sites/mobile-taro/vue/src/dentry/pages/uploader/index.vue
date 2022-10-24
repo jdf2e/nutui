@@ -41,18 +41,19 @@
     <h2>自定义数据 FormData 、 headers </h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
     <h2>自定义 Taro.uploadFile 上传方式(before-xhr-upload) </h2>
-    <nut-uploader :url="uploadUrl" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+    <nut-uploader :url="uploadUrl" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />
-    <nut-button type="success" size="small" @click="submitUpload">执行上传</nut-button>
+    <nut-button type="success" size="small" @click="submitUpload">手动执行上传</nut-button>
+    <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
     <h2>禁用状态</h2>
     <nut-uploader disabled></nut-uploader>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 export default {
   setup() {
     const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
@@ -60,7 +61,7 @@ export default {
     const formData = {
       custom: 'test'
     };
-    const defaultFileList = ref([
+    const defaultFileList = reactive([
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -96,6 +97,9 @@ export default {
     const uploadRef = ref<any>(null);
     const submitUpload = () => {
       uploadRef.value.submit();
+    };
+    const clearUpload = () => {
+      uploadRef.value.clearUploadQueue();
     };
 
     const beforeXhrUpload = (taroUploadFile: any, options: any) => {
@@ -141,6 +145,7 @@ export default {
       formData,
       uploadRef,
       submitUpload,
+      clearUpload,
       beforeXhrUpload
     };
   }

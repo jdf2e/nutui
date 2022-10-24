@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render triangle size when set iconsize 1`] = `
+"<view class=\\"nut-trendarrow\\"><span class=\\"nut-trendarrow-icon-before nut-trendarrow-rate\\" style=\\"color: rgb(100, 181, 120);\\">10.00%</span><i class=\\"nutui-iconfont nut-icon nut-icon-triangle-down\\" style=\\"color: rgb(100, 181, 120); font-size: 14px; width: 14px; height: 14px;\\" src=\\"\\"></i>
+  <!--v-if-->
+</view>"
+`;

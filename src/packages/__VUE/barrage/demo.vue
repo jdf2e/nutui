@@ -4,6 +4,15 @@
     <nut-cell>
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
+    <h2>{{ translate('slotTitle') }}</h2>
+    <nut-cell>
+      <nut-barrage>
+        <span>aaa</span>
+        <span>bbb</span>
+        <span>ccc</span>
+        <span>ddd</span>
+      </nut-barrage>
+    </nut-cell>
     <div class="test">
       <button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</button>
     </div>
@@ -11,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('barrage');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -19,10 +28,12 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: '基本用法',
+      slotTitle: 'slot 用法',
       btn1: '随机添加'
     },
     'en-US': {
       basic: 'Basic Usage',
+      slotTitle: 'slot usage',
       btn1: 'Random addition'
     }
   });
@@ -30,8 +41,8 @@ export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    const inputVal = ref<any>('');
-    const danmu = ref<any>(null);
+    const inputVal = ref('');
+    const danmu = ref();
     let list = ref(['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结']);
     function addDanmu() {
       let n = Math.random();

@@ -167,7 +167,7 @@ test('slot test', () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('custom clear icon', async () => {
+test('custom clear icon', () => {
   const wrapper = mount(SearchBar, {
     props: {
       clearIcon: 'close',

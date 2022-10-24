@@ -10,6 +10,7 @@
     :style="{ height: '85vh' }"
   >
     <nut-calendar-item
+      v-if="show"
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
@@ -22,14 +23,13 @@
       @close="close"
       @choose="choose"
       @select="select"
-      v-if="show"
       :confirm-text="confirmText"
       :start-text="startText"
       :end-text="endText"
       :show-today="showToday"
       :show-title="showTitle"
-      :to-date-animation="toDateAnimation"
       :show-sub-title="showSubTitle"
+      :to-date-animation="toDateAnimation"
     >
       <template v-slot:btn v-if="showTopBtn">
         <slot name="btn"> </slot>
@@ -45,7 +45,6 @@
       </template>
     </nut-calendar-item>
   </nut-popup>
-
   <nut-calendar-item
     v-else
     :type="type"
@@ -81,12 +80,13 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { ref, watch, computed } from 'vue';
+import { ref, watch, computed, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import Taro from '@tarojs/taro';
 
 export default create({
   components: {
@@ -155,6 +155,10 @@ export default create({
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
   setup(props, { emit, slots }) {
+    const state = reactive({
+      ENV: Taro.getEnv(),
+      ENV_TYPE: Taro.ENV_TYPE
+    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -208,6 +212,7 @@ export default create({
     );
 
     return {
+      ...toRefs(state),
       show,
       closePopup,
       update,

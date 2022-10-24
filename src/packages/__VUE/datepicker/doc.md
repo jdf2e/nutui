@@ -20,7 +20,6 @@ app.use(Popup);
 app.use(OverLay);
 ```
     
-## 代码演示
 ### 选择年月日
 :::demo
 
@@ -390,6 +389,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | cancel-text           | 取消按钮文案                                          | String  | 取消   |
 | three-dimensional `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
 | swipe-duration `v3.2.2`          | 惯性滚动时长               | Number、String  | 1000    |
+| safe-area-inset-bottom `v3.2.4`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	Boolean	|`false`     |
 
 ### Events
     

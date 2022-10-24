@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ```
 
-## Code demonstration
 
 ### Basic usage
 
@@ -53,6 +52,25 @@ export default {
   }
 };
 </script>
+```
+
+:::
+
+### slot usage
+
+> Using the slot requires putting the scrolling content inside the html tag, the applet environment is not currently supported
+
+:::demo
+
+```html
+<template>
+  <nut-barrage>
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+    <span>ddd</span>
+  </nut-barrage>
+</template>
 ```
 
 :::

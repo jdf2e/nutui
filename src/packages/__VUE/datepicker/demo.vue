@@ -1,6 +1,7 @@
 <template>
   <div class="demo">
     <nut-cell-group :title="translate('basic')">
+      {{ currentDate }}
       <nut-cell :title="translate('showChinese')" :desc="desc1" @click="show = true"></nut-cell>
     </nut-cell-group>
 

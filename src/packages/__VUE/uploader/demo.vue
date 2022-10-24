@@ -35,20 +35,20 @@
     <h2>{{ translate('title9') }}</h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
     <h2>{{ translate('title13') }}</h2>
-    <nut-uploader :url="uploadUrl" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+    <nut-uploader :url="uploadUrl" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>{{ translate('title10') }}</h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />
     <nut-button type="success" size="small" @click="submitUpload">{{ translate('title11') }}</nut-button>
+    <nut-button type="danger" size="small" @click="clearUpload">{{ translate('title14') }}</nut-button>
     <h2>{{ translate('title12') }}</h2>
     <nut-uploader disabled></nut-uploader>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue';
+import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { FileItem } from './index.vue';
 const { createDemo, translate } = createComponent('uploader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -66,9 +66,10 @@ const initTranslate = () =>
       title8: '图片压缩（在 beforeupload 钩子中处理）',
       title9: '自定义数据 FormData 、 headers ',
       title10: '选中文件后，通过按钮手动执行上传',
-      title11: '执行上传',
+      title11: '手动执行上传',
       title12: '禁用状态',
-      title13: '自定义 xhr 上传方式(before-xhr-upload)'
+      title13: '自定义 xhr 上传方式(before-xhr-upload)',
+      title14: '手动清空上传'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -83,9 +84,10 @@ const initTranslate = () =>
       title8: 'Image compression (handled in the beforeupload hook)',
       title9: 'Custom data FormData , headers',
       title10: 'Once the file is selected, manually perform the upload via the button',
-      title11: 'Perform upload',
+      title11: 'Manual upload',
       title12: 'Disabled state',
-      title13: 'Customize XHR upload (before-xhr-upload)'
+      title13: 'Customize XHR upload (before-xhr-upload)',
+      title14: 'Clear upload manually'
     }
   });
 export default createDemo({
@@ -97,7 +99,7 @@ export default createDemo({
       custom: 'test'
     };
 
-    const defaultFileList = computed(() => [
+    const defaultFileList = reactive([
       {
         name: 'file 1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -174,6 +176,9 @@ export default createDemo({
     const submitUpload = () => {
       uploadRef.value.submit();
     };
+    const clearUpload = () => {
+      uploadRef.value.clearUploadQueue();
+    };
     return {
       onOversize,
       beforeUpload,
@@ -186,6 +191,7 @@ export default createDemo({
       formData,
       uploadRef,
       submitUpload,
+      clearUpload,
       translate
     };
   }

@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ```
 
-## 代码演示
 
 ### 基础用法
 
@@ -53,6 +52,25 @@ export default {
   }
 };
 </script>
+```
+
+:::
+
+### slot 用法
+
+> 使用插槽需要将滚动内容放在html标签内，小程序环境暂不支持
+
+:::demo
+
+```html
+<template>
+  <nut-barrage>
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+    <span>ddd</span>
+  </nut-barrage>
+</template>
 ```
 
 :::

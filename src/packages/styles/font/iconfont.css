@@ -1,8 +1,8 @@
 @font-face {
   font-family: "nutui-iconfont"; /* Project id 2166874 */
-  src: url('iconfont.woff2?t=1654497552263') format('woff2'),
-       url('iconfont.woff?t=1654497552263') format('woff'),
-       url('iconfont.ttf?t=1654497552263') format('truetype');
+  src: url('iconfont.woff2?t=1662618531522') format('woff2'),
+       url('iconfont.woff?t=1662618531522') format('woff'),
+       url('iconfont.ttf?t=1662618531522') format('truetype');
 }
 
 .nutui-iconfont {
@@ -11,6 +11,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.nut-icon-triangle-down:before {
+  content: "\eb6d";
+}
+
+.nut-icon-triangle-up:before {
+  content: "\eb6e";
 }
 
 .nut-icon-image-error:before {

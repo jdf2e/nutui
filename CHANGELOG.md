@@ -1,3 +1,90 @@
+## v3.2.4
+
+`2022-10-21` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @jwaterwater @Sorryhx @xxxsf @subordon
+
+Tips: 重点修复 Scroll-View 在 Taro H5 场景下，不生效问题 #1766
+
+* :sparkles: chore: vite打包配置修改，添加taro标签处理 (#1766) @lkjh3214
+* :sparkles: chore: vscode extension support new components @szg2008
+* :sparkles: chore: update dts plugin @szg2008
+* :sparkles: feat(ellipsis): add lineHeight props @szg2008
+* :sparkles: feat(Picker、DatePicker): 新增safe-area-inset-bottom属性 (#1770) @yangxiaolu1993
+style: add jddkh theme @yangjinjun3
+* :bug: fix(textarea): 小程序端组件按需加载的时候，未正确获取到文本框的高度 (#1756) @subordon
+* :bug: fix(barrage): barrage 样式报错，H5环境 slot 插槽适配 (#1771) @Ymm0008
+* :bug: fix(imagepreview): 组件，滑动时弹窗出现关闭现象 (#1761) @xxxsf
+* :bug: fix(popup): close事件触发时机 (#1730) @Sorryhx
+* :bug: fix(address、datepicker): DatePicker 的 v-model 没有实现双向绑定 (#1745) @yangxiaolu1993
+* :bug: fix(tabbar): safe-bottom样式异常 (#1742) @jwaterwater
+* :bug: fix(toast): resolve problem of method failure in production (#1744) @Drjingfubo
+* :bug: fix(calendar): taro h5 scroll-view compatible (#1718) @lkjh3214
+* :bug: fix(uploader): taro 环境 multiple 参数支持 ，用于优化只选中1个照片场景 @richard1015
+* 📖 docs(image): showError showLoading props CamelCase @szg2008
+* 📖 docs: upd contributing link @richard1015
+* 📖 docs: add awesome.md @snandy
+* 📖 docs: change readme.md @snandy
+* 📖 docs(imagepreview): add import component @szg2008
+* 📖 docs(uploader): before-xhr-upload #1725 @richard1015
+* 📖 docs(components): optimization @Drjingfubo
+
+## v3.2.3
+
+`2022-09-30` 
+
+小程序版本依赖 Taro3.5
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @yoyo837 @jwaterwater 
+
+* :sparkles: chore: taro env jd Adapter @richard1015 
+* :sparkles: chore: component types @szg2008
+* :sparkles: chore: taro3.5 support @szg2008
+* :sparkles: chore: updrade typescript to v4.8 @szg2008
+* :sparkles: chore: style variables del animation #1689 #1375 @richard1015 
+* :sparkles: feat: add trendArrow component(#1660) @lkjh3214
+* :zap: upd: change export module name @szg2008
+* :zap: feat: validator 支持回传rule, 用以在自定义 validator 时获得配置在rule的属性来处理不同的逻辑, 含自定义属性 @yoyo837 
+* :zap: feat(form): add props rules属性, 可以统一配置每个FormItem的rules (#1704)  @yoyo837 
+* :bug: fix(searchbar): textalign types @szg2008
+* :bug: fix(components): docs and type optimization (#1661) @Drjingfubo
+* :bug: fix(avatar): events callback undefined (#1686) @Drjingfubo
+* :bug: fix(components): type optimization (#1666) @lkjh3214 
+* :bug: fix: 修复 ImagePreview 在Taro编译成H5后报错的问题 (#1687) @yangxiaolu1993  
+* :bug: test(trendarrow): test error @szg2008  
+* :bug: test(tabs,cascader): resolve test error (#1709) @szg2008  
+* :bug: fix(uploader): method clearUploadQueue #1597 @richard1015  
+* :bug: fix(uploader): before-delete support Promise #1672 @richard1015  
+* :bug: fix(picker): 在Taro中卡顿的问题 (#1685)  @yangxiaolu1993  
+* :bug: fix(tabs): resolve conditional rendering issues #1500 (#1698)  @Drjingfubo  
+* :bug: fix(form-item): tsx 类型捕获 (#1697)  @yoyo837  
+* :bug: fix(barrage): add slot，demo及文档完善 (#1699) @Ymm0008  
+* :bug: fix(menu): 修复文档中部分错误 & 修复 taro 小程序下闪跳问题 #1541 (#1678) @eiinu  
+* :bug: fix(menu): remove taro menu-popup entry animation (#1703) @eiinu  
+* :bug: fix(tabbar): add default height (#1701) @jwaterwater  
+* :bug: fix(tabs): h5 add sticky props (#1707) @Drjingfubo  
+* :bug: fix(list): 组件事件不被触发 #1607 @szg2008  
+* :bug: test(list): test error #1607 @szg2008  
+* :bug: fix(divider,imagePreview,pagination): components optimization (#1705)@eiinu   
+* 📖 docs(components): optimization (#1662) @Drjingfubo
+* 📖 docs(components): optimization (#1683) @Drjingfubo
+* 📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
+* 📖 docs(infiniteloading): type load-icon props to string @szg2008
+* 📖 docs(timeselect,overlay): edit (#1679) @eiinu 
+* 📖 docs(card): add click events (#1700) @Drjingfubo 
+
+
+
+
+
+
+
+
+
 ## v3.2.2
 
 `2022-09-08` 
