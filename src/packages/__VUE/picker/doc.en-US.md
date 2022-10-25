@@ -431,6 +431,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | ok-text                | Text of confirm button               | String  | confirm   |
 | three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
 | swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
+| safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Data Structure of Columns
 
