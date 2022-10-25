@@ -173,7 +173,6 @@ export default create({
     };
 
     const onClose = () => {
-      console.log('关闭');
       if (props.beforeClose) {
         const returnVal = props.beforeClose.apply(null, state.active);
 
