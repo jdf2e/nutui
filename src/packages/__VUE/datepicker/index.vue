@@ -12,6 +12,8 @@
     :isWrapTeleport="isWrapTeleport"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
+    :safeAreaInsetBottom="safeAreaInsetBottom"
+    :destroyOnClose="destroyOnClose"
   >
     <template #top>
       <slot name="top"></slot>
