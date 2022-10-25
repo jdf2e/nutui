@@ -34,7 +34,7 @@ export default defineComponent({
     initSiteLang();
     const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const state = reactive({
-      fixed: false, // 是否吸顶
+      fixed: true, // 是否吸顶
       hidden: false, // 是否隐藏
       // 组件名称
       componentName: {
@@ -111,7 +111,7 @@ export default defineComponent({
       componentTitle();
       watchDemoUrl(route);
       data.curKey = isTaro(route) ? 'taro' : 'vue';
-      document.addEventListener('scroll', scrollTitle);
+      // document.addEventListener('scroll', scrollTitle);
     });
 
     const scrollTitle = () => {
