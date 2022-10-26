@@ -1,5 +1,5 @@
 // Components that need to be converted
-export const DEFAULT_Components = new Set(['scroll-view', 'picker-view', 'picker-view-column']);
+export const DEFAULT_Components = new Set(['scroll-view']);
 //whether to include the path to the current file
 export const judgePath = (paths: string[], targetPath: string) => {
   for (let i = 0; i < paths.length; i++) {
