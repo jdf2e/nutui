@@ -206,7 +206,7 @@ export default {
       const title = encodeURIComponent(this.title);
       const body = encodeURIComponent(this.generated.markdown);
       const label =
-        this.type === "feature-request" ? "&labels=feature%20request" : "";
+        this.type === "feature-request" ? "&labels=help%20wanted" : "";
       window.open(
         `https://github.com/${this.repo.id}/issues/new?title=${title}&body=${body}${label}`
       );
@@ -218,6 +218,20 @@ export default {
 <style lang="stylus">
 @import '@vue/ui/dist/vue-ui.css'
 @import '../assets/style/common.styl'
+.vue-ui-modal
+  .default-body, .header
+    padding 10px 24px!important
+  .close-button
+    top 13px!important
+    width: 20px
+    height: 20px
+  .body
+    h3
+      font-size 16px
+      font-weight 700
+      margin: 15px 0 8px
+    p
+      font-size 14px
 </style>
 
 <style lang="stylus" scoped>
@@ -254,12 +268,12 @@ export default {
     background-color: #F56C6C
     border-color: #F56C6C
     color: #fff
-    font-size: 14px;
+    font-size: 14px
     font-weight 600
     &:hover
-      background: #f78989;
-      border-color: #f78989;
-      color: #FFF;
+      background: rgba(245,108,108,0.83)!important
+      border-color: #f78989
+      color: #FFF
 .app-footer
   text-align center
   padding 24px 0

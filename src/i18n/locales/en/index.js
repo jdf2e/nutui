@@ -23,6 +23,17 @@ export default {
   "version-subtitle":
     "Check if the issue is reproducible with the latest stable version of Vue.",
 
+  "nutui-repo-scenes": "nutui scenes",
+  "nutui-repo-placeholder": "Please choose",
+  "nutui-repo-boswer": "The browser and its version",
+  "nutui-repo-boswer-placeholder": "Chrome(106.0.5249.119)",
+  "nutui-repo-system": "System and its version",
+  "nutui-repo-system-placeholder": "MacOS(12.6)",
+  "nutui-repo-node": "Node version",
+  "nutui-repo-use": "Reference method",
+  "nutui-repo-execution": "Running Environment",
+  "nutui-repo-vue": "vue version",
+
   "repro-title": "Link to minimal reproduction",
   "repro-modal-title": "About Reproductions",
   "cli-no-repro": "If your issue cannot be reproduced with code, check here.",

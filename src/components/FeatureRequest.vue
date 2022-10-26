@@ -1,58 +1,46 @@
 <template>
   <div class="feature-request">
     <div class="vue-ui-grid col-1 default-gap">
-      <VueFormField
-        :title="i18n('rationale-title')"
-      >
-        <VueInput
-          type="textarea"
-          rows="4"
-          v-model="attrs.rationale"
-          required
-        />
-        <i18n slot="subtitle" id="rationale-subtitle"/>
+      <VueFormField :title="i18n('rationale-title')">
+        <VueInput type="textarea" rows="4" v-model="attrs.rationale" required />
+        <i18n slot="subtitle" id="rationale-subtitle" />
       </VueFormField>
 
-      <VueFormField
-        :title="i18n('proposal-title')"
-      >
-        <VueInput
-          type="textarea"
-          rows="4"
-          v-model="attrs.proposal"
-          required
-        />
-        <i18n slot="subtitle" id="proposal-subtitle"/>
+      <VueFormField :title="i18n('proposal-title')">
+        <VueInput type="textarea" rows="4" v-model="attrs.proposal" required />
+        <i18n slot="subtitle" id="proposal-subtitle" />
       </VueFormField>
     </div>
   </div>
 </template>
 
 <script>
-import { generate } from '../helpers'
+import { generate } from "../helpers";
 
 export default {
-  data () {
+  data() {
     return {
       attrs: {
-        rationale: '',
-        proposal: ''
+        rationale: "",
+        proposal: "",
       },
-    }
+    };
   },
 
   methods: {
-    generate () {
-      const { rationale, proposal } = this.attrs
+    generate() {
+      const { rationale, proposal } = this.attrs;
 
-      return generate(`
-### What problem does this feature solve?
+      return generate(
+        `
+### What problem does this feature solve?（这个功能解决的问题）
 ${rationale}
 
-### What does the proposed API look like?
+### What does the proposed API look like?（期望的 API）
 ${proposal}
-  `.trim())
-    }
-  }
-}
+  `.trim()
+      );
+    },
+  },
+};
 </script>
