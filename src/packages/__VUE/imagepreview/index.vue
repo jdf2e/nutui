@@ -13,7 +13,7 @@
         v-if="showPop"
         :auto-play="autoplay"
         class="nut-imagepreview-swiper"
-        :loop="true"
+        :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
         @change="slideChangeEnd"
@@ -130,6 +130,10 @@ export default create({
     maxZoom: {
       type: Number,
       default: 3
+    },
+    isLoop: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change'],

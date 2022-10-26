@@ -1,3 +1,49 @@
+## v3.2.5
+
+`2022-10-25` 
+
+小程序版本依赖 Taro ^3.5.x
+
+* :sparkles: chore: update dts plugin @richard1015
+* :sparkles: chore: update webstorm plugin @szg2008
+* :sparkles: chore: change build vite config @Drjingfubo
+* :bug: fix(fitabbar): defalut unactive-color #1779 (#1780) @yangjinjun3
+* 📖 docs: docs: add README_EN.md (#1772) @eiinu
+
+## v3.2.4
+
+`2022-10-21` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @jwaterwater @Sorryhx @xxxsf @subordon
+
+Tips: 重点修复 Scroll-View 在 Taro H5 场景下，不生效问题 #1766
+
+* :sparkles: chore: vite打包配置修改，添加taro标签处理 (#1766) @lkjh3214
+* :sparkles: chore: vscode extension support new components @szg2008
+* :sparkles: chore: update dts plugin @szg2008
+* :sparkles: feat(ellipsis): add lineHeight props @szg2008
+* :sparkles: feat(Picker、DatePicker): 新增safe-area-inset-bottom属性 (#1770) @yangxiaolu1993
+style: add jddkh theme @yangjinjun3
+* :bug: fix(textarea): 小程序端组件按需加载的时候，未正确获取到文本框的高度 (#1756) @subordon
+* :bug: fix(barrage): barrage 样式报错，H5环境 slot 插槽适配 (#1771) @Ymm0008
+* :bug: fix(imagepreview): 组件，滑动时弹窗出现关闭现象 (#1761) @xxxsf
+* :bug: fix(popup): close事件触发时机 (#1730) @Sorryhx
+* :bug: fix(address、datepicker): DatePicker 的 v-model 没有实现双向绑定 (#1745) @yangxiaolu1993
+* :bug: fix(tabbar): safe-bottom样式异常 (#1742) @jwaterwater
+* :bug: fix(toast): resolve problem of method failure in production (#1744) @Drjingfubo
+* :bug: fix(calendar): taro h5 scroll-view compatible (#1718) @lkjh3214
+* :bug: fix(uploader): taro 环境 multiple 参数支持 ，用于优化只选中1个照片场景 @richard1015
+* 📖 docs(image): showError showLoading props CamelCase @szg2008
+* 📖 docs: upd contributing link @richard1015
+* 📖 docs: add awesome.md @snandy
+* 📖 docs: change readme.md @snandy
+* 📖 docs(imagepreview): add import component @szg2008
+* 📖 docs(uploader): before-xhr-upload #1725 @richard1015
+* 📖 docs(components): optimization @Drjingfubo
+
 ## v3.2.3
 
 `2022-09-30` 
@@ -36,12 +82,12 @@ NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 * :bug: fix(list): 组件事件不被触发 #1607 @szg2008  
 * :bug: test(list): test error #1607 @szg2008  
 * :bug: fix(divider,imagePreview,pagination): components optimization (#1705)@eiinu   
-📖 docs(components): optimization (#1662) @Drjingfubo
-📖 docs(components): optimization (#1683) @Drjingfubo
-📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
-📖 docs(infiniteloading): type load-icon props to string @szg2008
-📖 docs(timeselect,overlay): edit (#1679) @eiinu 
-📖 docs(card): add click events (#1700) @Drjingfubo 
+* 📖 docs(components): optimization (#1662) @Drjingfubo
+* 📖 docs(components): optimization (#1683) @Drjingfubo
+* 📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
+* 📖 docs(infiniteloading): type load-icon props to string @szg2008
+* 📖 docs(timeselect,overlay): edit (#1679) @eiinu 
+* 📖 docs(card): add click events (#1700) @Drjingfubo 
 
 
 
