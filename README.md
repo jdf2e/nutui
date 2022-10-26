@@ -58,6 +58,8 @@
 
 > Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 
+简体中文 | [English](./README_EN.md)
+
 ##  特性
 
 * 🚀 70+ 高质量组件，覆盖移动端主流场景
@@ -117,7 +119,7 @@ createApp(App).use(NutUI).mount("#app");
 * <a href="https://nutui.jd.com/#/zh-CN/component/button" target="_blank">京东APP视觉（Vue3，默认）</a>
 * <a href="https://nutui.jd.com/jdt/#/zh-CN/component/button" target="_blank">京东科技视觉（Vue3）</a>
 * <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城主题（Vue3）</a>
-* <a href="https://nutui.jd.com/?jddkh#" target="_blank">京东企业业务主题（Vue3，即将发布）</a>
+* <a href="https://nutui.jd.com/?jddkh#/zh-CN/component/button" target="_blank">京东企业业务主题（Vue3）</a>
 * <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">京东物流视觉（Vue2）</a>
 
 
@@ -143,8 +145,8 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 <p>
 <img src="http://storage.360buyimg.com/jdc-article/nutuiDemo/user-cases.jpg" alt="NutUI" />
 </p>
-<p><a href="https://nutui.jd.com/#/case">查看更多案例</a></p>
-<p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a></p>
+<p><a href="https://nutui.jd.com/#/case">更多案例</a></p>
+<p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集社区优秀案例，欢迎点击提交</a></p>
 
 ## 链接
 
@@ -175,8 +177,8 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 | 版本 | 微信群 |内部咚咚群 |
 | --- | --- |--- |
-| [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://nutui.jd.com/3x/3.1.17/vx-codeys.png" width="100" /> 关注后回复「NutUI」 | 82957939
-| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI」 | 1022545110 |
+| [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> 回复「NutUI」 | 82957939
+| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 回复「NutUI」 | 1022545110 |
 
 
 ## 参与共建

@@ -4,15 +4,15 @@
     <nut-cell>
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
-    <h2>slot 用法</h2>
+    <!-- <h2>slot 用法</h2>
     <nut-cell>
-      <nut-barrage ref="danmu">
+      <nut-barrage>
         <span>aaa</span>
         <span>bbb</span>
         <span>ccc</span>
         <span>ddd</span>
       </nut-barrage>
-    </nut-cell>
+    </nut-cell> -->
     <div class="test">
       <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
     </div>

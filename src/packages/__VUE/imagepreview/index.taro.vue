@@ -6,7 +6,7 @@
         v-if="showPop"
         :auto-play="autoplay"
         class="nut-imagepreview-swiper"
-        :loop="true"
+        :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
         @change="slideChangeEnd"
@@ -84,7 +84,11 @@ export default create({
       type: String,
       default: 'top-right' // top-right  top-left
     },
-    beforeClose: Function
+    beforeClose: Function,
+    isLoop: {
+      type: Boolean,
+      default: true
+    }
   },
   emits: ['close', 'change'],
   components: {

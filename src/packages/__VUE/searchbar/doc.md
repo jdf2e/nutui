@@ -160,11 +160,11 @@ app.use(Icon);
   import { toRefs, reactive } from 'vue';
   export default {
     setup() {
+      const icon = 
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
       const state = reactive({
         searchValue: ""
       });
-      const icon =
-      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
 
       return {
         ...toRefs(state),
@@ -225,7 +225,7 @@ app.use(Icon);
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
-| close-icon `v3.2.2`     | 自定义关闭图标 | String | 'circle-close'   |
+| clear-icon `v3.2.2`         | 自定义清除按钮图标 | String | "circle-close"     |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |

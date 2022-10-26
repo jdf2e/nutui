@@ -13,6 +13,8 @@
   .nut-card__left {
     width: 120px;
     flex-shrink: 0;
+    background-color: $card-left-background-color;
+    border-radius: $card-left-border-radius;
 
     > img {
       display: block;

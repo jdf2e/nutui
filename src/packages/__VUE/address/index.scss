@@ -55,8 +55,8 @@
     line-height: 20px;
     &__title {
       display: block;
-      color: #262626;
-      font-size: 18px;
+      color: $address-header-title-color;
+      font-size: $address-header-title-font-size;
     }
   }
 
@@ -68,8 +68,8 @@
       margin-top: 32px;
       padding: 0 20px;
       display: flex;
-      font-size: 13px;
-      color: #1d1e1e;
+      font-size: $address-region-tab-font-size;
+      color: $address-region-tab-color;
 
       .tab-item {
         position: relative;
@@ -77,7 +77,7 @@
         margin-right: 30px;
         display: block;
         &.active {
-          font-weight: bold;
+          font-weight: $address-region-tab-active-item-font-weight;
         }
 
         view {
@@ -123,6 +123,8 @@
         height: 3px;
         background: $address-region-tab-line;
         transition: 0.2s all linear;
+        border-radius: $address-region-tab-line-border-radius;
+        opacity: $address-region-tab-line-opacity;
       }
     }
 
@@ -139,8 +141,8 @@
           display: flex;
           align-items: center;
           margin-bottom: 20px;
-          font-size: $font-size-1;
-          color: #333;
+          font-size: $address-region-item-font-size;
+          color: $address-region-item-color;
           &.active {
             font-weight: bold;
           }
@@ -182,7 +184,7 @@
             font-weight: bold;
           }
           .exist-item-icon {
-            margin-right: 9px;
+            margin-right: $address-item-margin-right;
             color: $address-icon-color !important;
           }
           span {

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.2.3",
+  "version": "3.2.5",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -117,7 +117,7 @@
     "ts-jest": "^26.5.5",
     "typescript": "^4.6.4",
     "vite": "^2.9.15",
-    "vite-plugin-dts": "1.0.5",
+    "vite-plugin-dts": "1.4.1",
     "vite-plugin-md": "^0.11.8",
     "vue": "^3.2.24",
     "vue-jest": "^5.0.0-alpha.7"
