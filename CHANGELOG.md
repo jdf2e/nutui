@@ -1,3 +1,15 @@
+## v3.2.5
+
+`2022-10-25` 
+
+小程序版本依赖 Taro ^3.5.x
+
+* :sparkles: chore: update dts plugin @richard1015
+* :sparkles: chore: update webstorm plugin @szg2008
+* :sparkles: chore: change build vite config @Drjingfubo
+* :bug: fix(fitabbar): defalut unactive-color #1779 (#1780) @yangjinjun3
+* 📖 docs: docs: add README_EN.md (#1772) @eiinu
+
 ## v3.2.4
 
 `2022-10-21` 
