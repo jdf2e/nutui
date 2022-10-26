@@ -1,25 +1,41 @@
 <template>
-  <nut-swiper-item @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
-    <view :style="imageStyle" class="nut-imagepreview-box" v-if="image && image.src">
+  <nut-swiper-item @click="closeSwiper">
+    <view
+      :style="imageStyle"
+      class="nut-imagepreview-box"
+      v-if="image && image.src"
+      @touchstart="onTouchStart"
+      @touchmove="onTouchMove"
+      @touchend="onTouchEnd"
+      @touchcancel="onTouchEnd"
+    >
       <img :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
     </view>
 
-    <view class="nut-imagepreview-box" v-if="video">
+    <view
+      class="nut-imagepreview-box"
+      v-if="video && video.source"
+      @click="videoClick"
+      @touchstart="onTouchStart"
+      @touchmove="onTouchMove"
+      @touchend="onTouchEnd"
+      @touchcancel="onTouchEnd"
+    >
       <nut-video :source="video.source" :options="video.options"></nut-video>
     </view>
   </nut-swiper-item>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed, CSSProperties } from 'vue';
+import { toRefs, reactive, watch, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
-import { isPromise } from '@/packages/utils/util.ts';
 import { useTouch } from '@/packages/utils/useTouch';
-const { componentName, create } = createComponent('imagepreviewitem');
+import { ImageInterface } from './types';
+const { create } = createComponent('imagepreviewitem');
 
 export default create({
   props: {
@@ -29,12 +45,12 @@ export default create({
     },
     initNo: Number,
     image: {
-      type: Object,
-      default: () => {}
+      type: Object as PropType<ImageInterface>,
+      default: () => ({})
     },
     video: {
-      type: Array,
-      default: () => {}
+      type: Object,
+      default: () => ({})
     },
 
     showIndex: {
@@ -126,7 +142,7 @@ export default create({
     });
 
     // 图片加载完成
-    const imageLoad = (event: any) => {
+    const imageLoad = (event: TouchEvent) => {
       const { naturalWidth, naturalHeight } = event.target as HTMLImageElement;
       state.imageRatio = naturalHeight / naturalWidth;
     };
@@ -165,7 +181,7 @@ export default create({
     let startMoveY: number;
     let startScale: number;
     let startDistance: number;
-    let doubleTapTimer: null;
+    let doubleTapTimer: number | null;
     let touchStartTime: number;
     let fingerNum: number;
 
@@ -215,6 +231,9 @@ export default create({
     };
 
     const checkTap = () => {
+      if (fingerNum == 1 && props.video && props.video.source) {
+        return;
+      }
       if (fingerNum > 1) {
         return;
       }
@@ -239,6 +258,7 @@ export default create({
     };
 
     const onTouchEnd = (event: TouchEvent) => {
+      console.log('ontauchend');
       let stopPropagation = false;
 
       /* istanbul ignore else */
@@ -279,7 +299,7 @@ export default create({
     };
 
     // 阻止
-    const preventDefault = (event: any, isStopPropagation?: boolean) => {
+    const preventDefault = (event: Event, isStopPropagation?: boolean) => {
       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
         event.preventDefault();
       }
@@ -290,6 +310,13 @@ export default create({
     };
 
     const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
+
+    // 视频点击
+    const closeSwiper = (event: any) => {
+      console.log('关闭视频');
+      // event.preventDefault();
+      emit('close');
+    };
 
     watch(() => props.initNo, resetScale);
     watch(
@@ -308,7 +335,8 @@ export default create({
       onTouchEnd,
       getDistance,
       imageStyle,
-      imageLoad
+      imageLoad,
+      closeSwiper
     };
   }
 });

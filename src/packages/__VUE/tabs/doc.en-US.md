@@ -348,8 +348,10 @@ export default {
 | title-gutter         | Label gap                                                                                                                          | number,string | 0          |
 | size`v3.1.13`        | Tab bar font size optional value  `large` `normal` `small`                                                                         | string        | normal     |
 | auto-height`v3.1.21` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean       | false      |
+| sticky`v3.2.3` `applet not supported` | Whether to use sticky mode| boolean       | false      |
+| top`v3.2.3` `applet not supported` | Sticky offset top | number       | 0      |
 
-## Tabs Slots
+### Tabs Slots
 
 | Name    | Description            |
 |---------|------------------------|
@@ -365,7 +367,7 @@ export default {
 | disabled  | whether to disable tabs           | boolean | false            |
 
 
-## Tabpane Slots
+### Tabpane Slots
 
 | Name    | Description            |
 |---------|------------------------|

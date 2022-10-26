@@ -3,9 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
+        <nut-swiper-item v-for="item in list" :key="item"> <img :src="item" alt="" /> </nut-swiper-item>
       </nut-swiper>
     </view>
     <h2>{{ translate('asyc') }}</h2>
@@ -182,6 +180,7 @@ export default createDemo({
     const handleNext = () => {
       swiper.value.next();
     };
+
     onMounted(() => {
       setTimeout(() => {
         state.list1 = state.list.slice();

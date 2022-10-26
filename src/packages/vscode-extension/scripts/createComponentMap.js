@@ -31,7 +31,7 @@ const genaratorComponentMap = () => {
       let sources = MarkdownIt.parse(data, {});
       sources = getSubSources(sources);
       componentMap[componentDir] = {
-        site: `/${componentDir}`,
+        site: `/zh-CN/component/${componentDir}`,
         props: sources.filter((source) => source.type === 'inline').length
           ? [`${sources.filter((source) => source.type === 'inline')[0].content}=''`]
           : ['']

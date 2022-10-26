@@ -542,7 +542,7 @@ You can manually switch through `api` (`prev`, `next`)
 
 
 
-### API
+### Swipe Methods
 
 | Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |

@@ -17,7 +17,7 @@ app.use(ActionSheet);
 app.use(Popup);
 ```
 
-## 基本用法
+### 基础用法
 
 默认
 :::demo
@@ -79,7 +79,7 @@ export default {
 ```
 :::
 
-## 展示取消按钮
+### 展示取消按钮
 :::demo
 ``` html
 <template>
@@ -138,7 +138,7 @@ export default {
  </script>
 ```
 :::
-## 展示描述信息
+### 展示描述信息
 :::demo
 ``` html
 <template>
@@ -200,7 +200,7 @@ export default {
 ```
 :::
 
-## 选项状态
+### 选项状态
 
 :::demo
 ``` html
@@ -263,7 +263,7 @@ export default {
 
 
 
-## 自定义内容
+### 自定义内容
 
 :::demo
 ``` html
@@ -309,8 +309,8 @@ export default {
 ```
 :::
 
-
-## Props
+## API
+### Props
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
@@ -325,7 +325,7 @@ export default {
 | cancel-txt       | 取消文案                               | String  | '取消'   |
 | close-abled      | 遮罩层是否可关闭                       | Boolean | true      |
 
-## menu-items数据结构
+### MenuItems 数据结构
 
 | 字段   | 说明               | 类型                          |
 |--------|--------------------|-----------------------------------|
@@ -335,7 +335,7 @@ export default {
 | loading | 是否为loading状态 | Boolean          |
 | disable | 是否为禁用状态 | Boolean       |
 
-## Events
+### Events
 
 | 字段   | 说明               | 回调参数                          |
 |--------|--------------------|-----------------------------------|

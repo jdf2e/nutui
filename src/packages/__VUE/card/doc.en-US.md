@@ -15,7 +15,9 @@ import { Card,Tag,Price} from '@nutui/nutui';
 import { Card ,Tag,Price} from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Card).use(Tag).use(Price);
+app.use(Card);
+app.use(Tag);
+app.use(Price);
 
 ```
 
@@ -144,7 +146,8 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
-### Prop  
+## API
+### Props  
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
@@ -156,6 +159,12 @@ app.use(Card).use(Tag).use(Price);
 | delivery     | delivery | String  | -      |
 | shop-name   | shop-name | String  | -      |
 | is-need-price  | Whether price display is required| Boolean  | true   |
+
+### Events
+
+| Event             | Description                     | Arguments        |
+|----------|----------|----------|
+| click    | click event | event: MouseEvent    |
 
 
 ### Slots

@@ -130,7 +130,10 @@ export default {
 
 ```html
 <template>
-<nut-form :model-value="formData" ref="ruleForm">
+<nut-form :model-value="formData" :rules="{name: [{
+            message: 'Name should be at least two characters',
+            validator: nameLengthValidator
+          }]}" ref="ruleForm">
   <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
     <input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
       placeholder="Please enter , blur event validate" type="text" />
@@ -138,6 +141,7 @@ export default {
   <nut-form-item label="Age" prop="age" required :rules="[
       { required: true, message: 'Please enter age' },
       { validator: customValidator, message: 'You must enter a number' },
+      { validator: customRulePropValidator, message: 'You must enter a number', reg: /^\d+$/ },
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: 'The range 0-200 must be entered' }
     ]">
     <input class="nut-input-text" v-model="formData.age" placeholder="Please enter the age, which must be numeric and in the range of 0-200" type="text" />
@@ -196,6 +200,10 @@ setup(){
     };
 
     const customValidator = (val: string) => /^\d+$/.test(val);
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      return (rule?.reg as RegExp).test(val);
+    };
+    const nameLengthValidator = (val: string) => val?.length >= 2;
     // Promise async validator
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
@@ -206,7 +214,7 @@ setup(){
         }, 1000);
       });
     };
-    return { ruleForm, formData, validate, customValidator, asyncValidator, customBlurValidate, submit, reset };
+    return { ruleForm, formData, validate, customValidator, customRulePropValidator, nameLengthValidator, asyncValidator, customBlurValidate, submit, reset };
 }
 }
 </script>
@@ -332,7 +340,7 @@ setup(){
 ```
 :::
 
-
+## API
 ### Form Props
 
 | Attribute   | Description                                              | Type   | Default |
@@ -369,7 +377,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 | validator | Verification by function           | (value) => boolean \| string \| Promise |
 | regex     | Verification by regular expression | RegExp                                  |
 
-## FormItem Slots
+### FormItem Slots
 
 | Name            | Description         |
 |-----------------|---------------------|

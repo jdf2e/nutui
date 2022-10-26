@@ -137,8 +137,8 @@ export default {
 ```
 :::
 
-
-## Props
+## API
+### Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
@@ -146,7 +146,7 @@ export default {
 | form-value | 表单数据对象(使用表单校验时，_必填_) | object | -
 | submit | 是否显示提交按钮 | boolean | true
 
-### Data Props
+### Data 数据结构
 
 
 可选属性如下:

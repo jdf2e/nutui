@@ -18,7 +18,7 @@ app.use(Progress);
 ```
 
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html
@@ -293,7 +293,7 @@ export default {
 ```html
 <!-- 当上传方式为put时，直接上传源文件file流 -->
 <template>
-  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -360,8 +360,8 @@ export default {
 </template>
 ```
 :::
-
-### Prop
+## API
+### Props
 
 | 字段                      | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
@@ -391,7 +391,7 @@ export default {
 | before-xhr-upload`v3.2.1` | 执行 XHR 上传时，自定义方式                                                                                                                                                            | Function(xhr，option)             | null             |
 | before-delete             | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file,fileList): boolean 丨Promise | -                |
 
-
+> 注意：accept、capture 和 multiple 为浏览器 input 标签的原生属性，移动端各种机型对这些属性的支持程度有所差异，因此在不同机型和 WebView 下可能出现一些兼容性问题。
 
 ### FileItem
 
@@ -404,7 +404,7 @@ export default {
 | type     | 文件类型                                        | "image/jpeg"                    |
 | formData | 上传所需的data                                  | new FormData()                  |
 
-### Event
+### Events
 
 | 名称            | 说明                   | 回调参数                       |
 |-----------------|------------------------|--------------------------------|

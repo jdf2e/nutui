@@ -1,7 +1,7 @@
 import config from '../../config/env';
 import { reactive, watch, onMounted, computed, onBeforeUnmount } from 'vue';
 import { nav } from '../../../config.json';
-import { isJDB, isJDT } from '.';
+import { isJDB, isJDT, isJDDKH } from '.';
 
 type Obj = {
   [k: string]: any;
@@ -175,6 +175,8 @@ export const useThemeEditor = function () {
         customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source';
       } else if (isJDB()) {
         customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jdb.scss_source';
+      } else if (isJDDKH()) {
+        customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jddkh.scss_source';
       }
       if (customUrl) {
         loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then((res) => {

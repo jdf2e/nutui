@@ -39,7 +39,7 @@ const genaratorTags = () => {
       componentTags[`nut-${componentDir}`] = { attributes: [] };
       for (let sourceMap of sourcesMap) {
         let propItem = sourceMap.filter((source) => source.type === 'inline').length
-          ? `${sourceMap.filter((source) => source.type === 'inline')[0].content}`
+          ? `${sourceMap.filter((source) => source.type === 'inline')[0].content.replace(/`.*?`/g, '')}`
           : '';
         componentTags[`nut-${componentDir}`]['attributes'].push(propItem);
       }
@@ -64,7 +64,7 @@ const genaratorAttributes = () => {
         const inlineItem = sourceMap.filter((source) => source.type === 'inline').length
           ? sourceMap.filter((source) => source.type === 'inline')
           : [];
-        const propItem = inlineItem.length ? `${inlineItem[0].content}` : '';
+        const propItem = inlineItem.length ? `${inlineItem[0].content.replace(/`.*?`/g, '')}` : '';
         const infoItem = inlineItem.length ? `${inlineItem[1].content}` : '';
         const typeItem = inlineItem.length ? `${inlineItem[2].content.toLowerCase()}` : '';
         const defaultItem = inlineItem.length ? `${inlineItem[3].content}` : '';
@@ -109,7 +109,7 @@ const genaratorWebTypes = () => {
         const inlineItem = sourceMap.filter((source) => source.type === 'inline').length
           ? sourceMap.filter((source) => source.type === 'inline')
           : [];
-        const propItem = inlineItem.length ? `${inlineItem[0].content}` : '';
+        const propItem = inlineItem.length ? `${inlineItem[0].content.replace(/`.*?`/g, '')}` : '';
         const infoItem = inlineItem.length ? `${inlineItem[1].content}` : '';
         const typeItem = inlineItem.length ? `${inlineItem[2].content.toLowerCase()}` : '';
         const defaultItem = inlineItem.length ? `${inlineItem[3].content}` : '';

@@ -1,26 +1,28 @@
 <template>
-  <view :class="classes" @click="handleClick" ref="root" :id="'root' + refRandomId">
-    <view v-if="!exceeded">{{ content }}</view>
+  <view>
+    <view :class="classes" @click="handleClick" ref="root" :id="'root' + refRandomId">
+      <view v-if="!exceeded">{{ content }}</view>
 
-    <view v-if="exceeded && !expanded">
-      {{ ellipsis.leading
-      }}<view class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</view
-      >{{ ellipsis.tailing }}
+      <view v-if="exceeded && !expanded">
+        {{ ellipsis.leading
+        }}<view class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</view
+        >{{ ellipsis.tailing }}
+      </view>
+      <view v-if="exceeded && expanded">
+        {{ content }}
+        <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
+      </view>
     </view>
-    <view v-if="exceeded && expanded">
-      {{ content }}
-      <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
-    </view>
-  </view>
 
-  <view
-    class="nut-ellipsis-copy"
-    @click="handleClick"
-    ref="rootContain"
-    :id="'rootContain' + refRandomId"
-    :style="{ width: widthRef }"
-  >
-    <view>{{ contantCopy }}</view>
+    <view
+      class="nut-ellipsis-copy"
+      @click="handleClick"
+      ref="rootContain"
+      :id="'rootContain' + refRandomId"
+      :style="{ width: widthRef }"
+    >
+      <view>{{ contantCopy }}</view>
+    </view>
   </view>
 </template>
 
@@ -62,6 +64,10 @@ export default create({
     symbol: {
       type: String,
       default: '...'
+    },
+    lineHeight: {
+      type: [Number, String],
+      default: '20'
     }
   },
   emits: ['click', 'change'],
@@ -119,7 +125,7 @@ export default create({
               computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom']
             },
             (res) => {
-              lineHeight = pxToNumber(res.lineHeight);
+              lineHeight = pxToNumber(res.lineHeight === 'normal' ? props.lineHeight : res.lineHeight);
               maxHeight = Math.floor(
                 lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)
               );
@@ -163,8 +169,6 @@ export default create({
     // 计算 start/end 省略
     const tailor = async (left: number, right: number) => {
       const actionText = state.expanded ? props.collapseText : props.expandText;
-
-      console.log(actionText);
       const end = props.content.length;
 
       if (right - left <= 1) {

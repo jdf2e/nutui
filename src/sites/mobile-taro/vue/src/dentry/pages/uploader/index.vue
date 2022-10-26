@@ -41,7 +41,7 @@
     <h2>自定义数据 FormData 、 headers </h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
     <h2>自定义 Taro.uploadFile 上传方式(before-xhr-upload) </h2>
-    <nut-uploader :url="uploadUrl" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+    <nut-uploader :url="uploadUrl" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />

@@ -19,7 +19,7 @@ app.use(CheckboxGroup);
 app.use(Icon);
 ```
 
-## Basic Usage
+### Basic Usage
 
 :::demo
 
@@ -54,7 +54,7 @@ app.use(Icon);
 
 :::
 
-## Semi selective
+### Semi selective
 
 :::demo
 
@@ -80,7 +80,7 @@ app.use(Icon);
 
 :::
 
-## Disabled state
+### Disabled state
 
 :::demo
 
@@ -106,7 +106,7 @@ app.use(Icon);
 
 :::
 
-## Custom size
+### Custom size
 
 :::demo
 
@@ -132,7 +132,7 @@ app.use(Icon);
 
 :::
 
-## Custom icon
+### Custom icon
 
 It is recommended to set the `icon-name` and `icon-active-name` attributes at the same time
 
@@ -158,7 +158,7 @@ It is recommended to set the `icon-name` and `icon-active-name` attributes at th
 
 :::
 
-## change Event
+### change Event
 
 When the value changes, the `change` event will be triggered
 
@@ -187,7 +187,7 @@ When the value changes, the `change` event will be triggered
 
 :::
 
-## use checkboxGroup
+### use checkboxGroup
 
 :::demo
 
@@ -221,7 +221,7 @@ When the value changes, the `change` event will be triggered
 
 :::
 
-## Checkboxgroup select all / cancel
+### Checkboxgroup select all / cancel
 
 :::demo
 
@@ -276,7 +276,7 @@ When the value changes, the `change` event will be triggered
 
 :::
 
-## use checkboxGroup, Limit the maximum number of options (2)
+### use checkboxGroup, Limit the maximum number of options (2)
 
 :::demo
 
@@ -315,7 +315,7 @@ When the value changes, the `change` event will be triggered
 
 :::
 
-## Select all / half / cancel
+### Select all / half / cancel
 
 :::demo
 
@@ -369,8 +369,8 @@ When the value changes, the `change` event will be triggered
 ```
 
 :::
-
-## Checkbox
+## API
+### Checkbox Props
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
@@ -387,7 +387,7 @@ When the value changes, the `change` event will be triggered
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
 
 
-## CheckboxGroup
+### CheckboxGroup Props
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
@@ -397,19 +397,19 @@ When the value changes, the `change` event will be triggered
 
 
 
-## Checkbox Event
+### Checkbox Events
 
 | Event | Description                  | Arguments   
 |----- | ----- | ----- 
 | change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value 
 
-## CheckboxGroup Event
+### CheckboxGroup Events
 
 | Event | Description                  | Arguments   
 |----- | ----- | ----- 
 | change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items 
 
-## CheckboxGroup API
+### CheckboxGroup Methods
 
 | methodName | Description | Arguments 
 |----- | ----- | ----- 

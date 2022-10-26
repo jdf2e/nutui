@@ -26,6 +26,11 @@
   padding: $searchbar-padding;
   background: $searchbar-background;
   box-sizing: border-box;
+  color: $searchbar-input-bar-color;
+
+  &::placeholder {
+    color: $searchbar-input-bar-placeholder-color;
+  }
 
   &__search-label {
     padding: 0 5px;

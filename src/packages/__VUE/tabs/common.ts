@@ -1,5 +1,6 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
+import { useRect } from '@/packages/utils/useRect';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';
@@ -54,6 +55,14 @@ export const component = {
     titleGutter: {
       type: [Number, String],
       default: 0
+    },
+    sticky: {
+      type: Boolean,
+      default: false
+    },
+    top: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -61,6 +70,8 @@ export const component = {
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
+    const container = ref(null);
+    let stickyFixed: boolean;
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
@@ -106,23 +117,37 @@ export const component = {
     };
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
-      vnodes = vnodes.filter((item) => typeof item.children !== 'string');
+      vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
       if (vnodes && vnodes.length) {
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
     };
+    const onStickyScroll = (params: { top: number; fixed: boolean }) => {
+      stickyFixed = params.fixed;
+    };
+
     watch(
       () => slots.default?.(),
       (vnodes: VNode[]) => {
         init(vnodes);
       }
     );
-
+    const getScrollTopRoot = () => {
+      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    };
     watch(
       () => props.modelValue,
       (value: string | number) => {
         findTabsIndex(value);
+        if (stickyFixed) {
+          let top = useRect(container.value!).top + getScrollTopRoot();
+          let value = Math.ceil(top - props.top);
+          window.scrollTo({
+            top: value,
+            behavior: 'smooth'
+          });
+        }
       }
     );
     onMounted(init);
@@ -164,13 +189,14 @@ export const component = {
         emit('change', item);
       }
     };
-
     return {
       titles,
       contentStyle,
       tabsNavStyle,
       titleStyle,
       tabsActiveStyle,
+      container,
+      onStickyScroll,
       ...methods
     };
   }

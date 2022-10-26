@@ -14,9 +14,10 @@
           "scene": null
         },
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
+          "name": "business/pages/barrage/index",
+          "pathName": "business/pages/barrage/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

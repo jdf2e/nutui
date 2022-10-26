@@ -8,9 +8,10 @@
 
 ```javascript
 import { createApp, reactive, toRefs } from 'vue';
-
-import { ImagePreview } from '@nutui/nutui';
-
+//vue
+import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
+//taro
+import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ImagePreview);
@@ -296,7 +297,7 @@ app.use(ImagePreview);
 </script>
 ```
 :::
-    
+## API
 ### Props
 
 | 字段 | 说明 | 类型 | 默认值
@@ -316,6 +317,7 @@ app.use(ImagePreview);
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 | max-zoom`v3.1.23`  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
+| is-Loop`v3.2.5`  | 是否循环播放   | Boolean  | `true`  | 
 
 
 ### ImageArray 数据结构

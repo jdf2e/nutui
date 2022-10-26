@@ -19,7 +19,6 @@ app.use(Collapse);
 app.use(CollapseItem);
 ```
 
-## Code demonstration
 
 
 ### Basic Usage
@@ -257,7 +256,8 @@ export default {
 </script>
 ```
 :::
-## Collapse Prop
+## API
+### Collapse Props
 
 | Attribute | Description | Type   | Default |
 |----- | ----- | ----- | ----- 
@@ -273,7 +273,7 @@ export default {
 | rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | string \ number | 180 |
 
 
-### CollapseItem Prop
+### CollapseItem Props
 | Attribute | Description | Type   | Default  | 
 |------|------|------|------|
 |name | unique identifier, required | string \ number | - 1|

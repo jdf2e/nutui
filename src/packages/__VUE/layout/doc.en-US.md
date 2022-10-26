@@ -21,7 +21,6 @@ app.use(Col);
 ```
 
 
-## Code demonstration
 
 ### Basic Usage
 :::demo
@@ -231,7 +230,7 @@ app.use(Col);
 :::
 ## API
 
-### Row Prop
+### Row Props
 
 | Attribute | Description | Type   | Default
 |----- | ----- | ----- | ----- 
@@ -241,20 +240,20 @@ app.use(Col);
 | align | Flex cross axis alignment, optional values are flex-start center flex-end | String | flex-start
 | flex-wrap | Whether flex breaks a line. The optional values are nowrap wrap reverse | String | nowrap
 
-### Col Prop
+### Col Props
 
 | Attribute | Description | Type   | Default
 |----- | ----- | ----- | ----- 
 | span | Column element width（There are 24 copies in total. For example, if you set 3 in a row, the span value is 8） | String、Number | 24
 | offset | Column element offset distance | String、Number | 0
 
-### Row Event
+### Row Events
 
 | Attribute | Description | callback
 |----- | ----- | ----- 
 | click | Triggered when clicked | event: MouseEvent
 
-### Col Event
+### Col Events
 
 | Attribute | Description | Callback Arguments
 |----- | ----- | ----- 

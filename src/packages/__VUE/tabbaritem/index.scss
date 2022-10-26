@@ -76,6 +76,7 @@
     &_nav-word {
       font-size: $tabbar-item-text-font-size;
       line-height: $tabbar-item-text-line-height;
+      margin-top: $tabbar-word-margin-top;
       display: block;
     }
     &_big-word {

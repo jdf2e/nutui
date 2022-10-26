@@ -27,6 +27,7 @@
       v-model:visible="show"
       :threeDimensional="false"
       :is-show-chinese="true"
+      :safeAreaInsetBottom="true"
     ></nut-datepicker>
     <!-- 选择月日 -->
     <nut-datepicker

@@ -10,9 +10,10 @@
   border-top: $tabbar-border-top;
   width: 100%;
   display: flex;
-  padding: 7px 0;
-  box-sizing: border-box;
+  align-items: center;
+  box-sizing: content-box;
   background: $white;
+  height: $tabbar-height;
 
   &:last-child {
     border-right: 0;

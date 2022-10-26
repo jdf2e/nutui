@@ -6,7 +6,7 @@
         v-if="showPop"
         :auto-play="autoplay"
         class="nut-imagepreview-swiper"
-        :loop="true"
+        :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
         @change="slideChangeEnd"
@@ -28,15 +28,15 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, computed } from 'vue';
+import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
-// import Video from '../video/index.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
 import Icon from '../icon/index.taro.vue';
-import { isPromise } from '@/packages/utils/util.ts';
-const { componentName, create } = createComponent('imagepreview');
+import { isPromise } from '@/packages/utils/util';
+import { ImageInterface } from './types';
+const { create } = createComponent('imagepreview');
 
 export default create({
   props: {
@@ -45,13 +45,9 @@ export default create({
       default: false
     },
     images: {
-      type: Array,
+      type: Array as PropType<ImageInterface[]>,
       default: () => []
     },
-    // videos: {
-    //   type: Array,
-    //   default: () => []
-    // },
     contentClose: {
       type: Boolean,
       default: false
@@ -88,7 +84,11 @@ export default create({
       type: String,
       default: 'top-right' // top-right  top-left
     },
-    beforeClose: Function
+    beforeClose: Function,
+    isLoop: {
+      type: Boolean,
+      default: true
+    }
   },
   emits: ['close', 'change'],
   components: {
@@ -100,8 +100,6 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const { show, images } = toRefs(props);
-
     const state = reactive({
       showPop: false,
       active: 1,
@@ -114,16 +112,18 @@ export default create({
         muted: true,
         controls: true
       },
-      eleImg: null,
+      eleImg: null as HTMLElement | null,
       store: {
         scale: 1,
-        moveable: false
+        moveable: false,
+        originScale: 1,
+        oriDistance: 1
       },
       lastTouchEndTime: 0 // 用来辅助监听双击
     });
 
     const styles = computed(() => {
-      let style = {};
+      let style: CSSProperties = {};
       if (props.closeIconPosition == 'top-right') {
         style.right = '10px';
       } else {
@@ -171,7 +171,7 @@ export default create({
     };
 
     // 计算两个点的距离
-    const getDistance = (first: any, second: any) => {
+    const getDistance = (first: { x: number; y: number }, second: { x: number; y: number }) => {
       // 计算两个点起始时刻的距离和终止时刻的距离，终止时刻距离变大了则放大，变小了则缩小
       // 放大 k 倍则 scale 也 扩大 k 倍
       return Math.hypot(Math.abs(second.x - first.x), Math.abs(second.y - first.y));
@@ -179,11 +179,11 @@ export default create({
 
     const scaleNow = () => {
       if (state.eleImg != null) {
-        (state.eleImg as any).style.transform = 'scale(' + state.store.scale + ')';
+        state.eleImg.style.transform = 'scale(' + state.store.scale + ')';
       }
     };
 
-    const onTouchStart = (event: any) => {
+    const onTouchStart = (event: TouchEvent) => {
       // console.log('start');
       // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
       const curTouchTime = new Date().getTime();
@@ -203,7 +203,7 @@ export default create({
 
       // event.preventDefault();
 
-      const store = state.store as any;
+      const store = state.store;
       store.moveable = true;
 
       if (events2) {
@@ -223,11 +223,11 @@ export default create({
       store.originScale = store.scale || 1;
     };
 
-    const onTouchMove = (event: any) => {
+    const onTouchMove = (event: TouchEvent) => {
       if (!state.store.moveable) {
         return;
       }
-      const store = state.store as any;
+      const store = state.store;
       // event.preventDefault();
       var touches = event.touches;
       var events = touches[0];
@@ -264,7 +264,7 @@ export default create({
     const onTouchEnd = () => {
       // console.log('end');
       state.lastTouchEndTime = new Date().getTime();
-      const store = state.store as any;
+      const store = state.store;
       store.moveable = false;
       if ((store.scale < 1.1 && store.scale > 1) || store.scale < 1) {
         store.scale = 1;
@@ -273,7 +273,7 @@ export default create({
     };
 
     const init = () => {
-      state.eleImg = document.querySelector('.nut-imagepreview') as any;
+      state.eleImg = document.querySelector('.nut-imagepreview');
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
       document.addEventListener('touchcancel', onTouchEnd);
