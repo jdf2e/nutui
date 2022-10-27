@@ -6,7 +6,7 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    base: process.env.VITE_APP_BASE,
+    base: process.env.VITE_NUTUI_ISSUE_HELPER_BASE,
     resolve: {
       alias: {
         "/images": "./src/assets/images",
