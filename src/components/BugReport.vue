@@ -28,7 +28,13 @@
         />
       </VueFormField>
     </div>
-    <div class="vue-ui-grid col-2 default-gap">
+    <div
+      :class="[
+        'vue-ui-grid',
+        'default-gap',
+        attrs.scenes.name != 'H5' ? 'col-2' : '',
+      ]"
+    >
       <VueFormField :title="i18n('nutui-repo-vue')">
         <VueTypeAhead
           v-model="attrs.versionVue"
@@ -40,7 +46,10 @@
           required
         />
       </VueFormField>
-      <VueFormField :title="i18n('nutui-repo-execution')">
+      <VueFormField
+        :title="i18n('nutui-repo-execution')"
+        v-if="attrs.scenes.name != 'H5'"
+      >
         <VueSelect
           v-model="attrs.runEnvVal"
           :label="attrs.runEnvVal.name"
@@ -334,7 +343,6 @@ export default {
     findNodejs() {},
 
     generate() {
-      console.log(this.attrs);
       const {
         scenes,
         version,
@@ -362,8 +370,14 @@ ${version}
 ### Vue version（vue 版本）
 ${versionVue}
 
+${
+  scenes.name != "H5"
+    ? `
 ### Operating environment（运行环境）
 ${runEnvVal.name}
+`
+    : ""
+}
 
 ### Citation method（引用方式）
 ${useWay.name}

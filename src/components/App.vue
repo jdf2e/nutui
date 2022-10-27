@@ -232,6 +232,8 @@ export default {
       margin: 15px 0 8px
     p
       font-size 14px
+  .vue-ui-button.flat>.content>.button-icon svg
+        fill: #f44336
 </style>
 
 <style lang="stylus" scoped>

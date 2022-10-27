@@ -1,11 +1,12 @@
 {
   "name": "nutui-issue-helper",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "upload": "yarn build && NODE_ENV=dev node upload.js"
+    "build": "vite build --mode staging",
+    "build:online": "vite build",
+    "upload": "yarn build && node upload.js"
   },
   "dependencies": {
     "@jd/upload-oss-tools": "^1.1.21",
