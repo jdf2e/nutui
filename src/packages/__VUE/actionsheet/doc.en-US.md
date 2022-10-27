@@ -15,6 +15,7 @@ import { ActionSheet, Popup, OverLay } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(ActionSheet);
 app.use(Popup);
+app.use(OverLay);
 ```
 
 ### Basic Usage
