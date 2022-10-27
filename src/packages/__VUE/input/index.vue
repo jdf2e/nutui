@@ -425,13 +425,17 @@ export default create({
     watch(
       () => props.modelValue,
       () => {
-        updateValue(getModelValue());
-        resetValidation();
+        if (!slots.input) {
+          updateValue(getModelValue());
+          resetValidation();
+        }
       }
     );
 
     onMounted(() => {
-      updateValue(getModelValue(), props.formatTrigger);
+      if (!slots.input) {
+        updateValue(getModelValue(), props.formatTrigger);
+      }
     });
 
     return {
