@@ -47,7 +47,7 @@ export default {
       console.log('签名开始');
     };
     const signing = (e) => {
-      console.log('签名进行中', e);
+      // console.log('签名进行中', e);
     };
     const end = () => {
       console.log('签名结束');
@@ -58,8 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nut-cell,
-.nut-barrage {
+.nut-cell {
   padding: 20px 0;
   height: 120px;
 }

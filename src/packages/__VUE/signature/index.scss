@@ -1,11 +1,14 @@
 .nut-signature {
   .nut-signature-inner {
-    height: 10rem;
+    // height: 10rem;
     margin-bottom: 1rem;
     border: 1px solid #dadada;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .spcanvas_WEAPP {
+    height: 10rem;
   }
 
   .nut-signature-btn {
