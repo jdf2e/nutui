@@ -329,8 +329,6 @@ export default create({
         value = value.slice(0, Number(props.maxLength));
       }
       updateValue(value);
-      emit('update:modelValue', value, event);
-      emit('change', value, event);
     };
 
     const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
