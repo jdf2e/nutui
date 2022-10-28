@@ -27,8 +27,8 @@ export default {
     const clear = () => {
       console.log('清除事件');
     };
-    const confirm = (data: any) => {
-      console.log('图片地址', data);
+    const confirm = (canvas, data: any) => {
+      console.log('图片地址', canvas, data);
       Taro.saveImageToPhotosAlbum({
         filePath: `${data}`,
         success(res) {
@@ -47,7 +47,7 @@ export default {
       console.log('签名开始');
     };
     const signing = (e) => {
-      // console.log('签名进行中', e);
+      console.log('签名进行中', e);
     };
     const end = () => {
       console.log('签名结束');

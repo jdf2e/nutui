@@ -20,7 +20,7 @@
   </div>
 </template>
 <script lang="ts">
-import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
@@ -132,11 +132,11 @@ export default create({
             canvas: res[0].node,
             canvasId: 'spcanvas',
             fileType: props.type,
-            success: function (res) {
-              emit('confirm', res.tempFilePath);
+            success: function (result) {
+              emit('confirm', state.canvas, result.tempFilePath);
             },
-            fail: function (res) {
-              emit('confirm', res);
+            fail: function (result) {
+              emit('confirm', result);
             }
           });
 
@@ -176,7 +176,13 @@ export default create({
               )
               .exec();
           } else {
-            const canvas: any = document.getElementById('spcanvas')?.getElementsByTagName('canvas')[0];
+            console.log(document.getElementById('spcanvas')?.tagName);
+            const canvasDom: HTMLElement | null = document.getElementById('spcanvas');
+            let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement;
+            if (canvasDom?.tagName !== 'CANVAS') {
+              canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
+            }
+            // const canvas: any = document.getElementById('spcanvas')?.getElementsByTagName('canvas')[0];
             const ctx = canvas.getContext('2d');
             state.canvas = canvas;
             state.ctx = ctx;
