@@ -33,7 +33,7 @@
             :column="column"
             :readonly="readonly"
             :columnsType="columnsType"
-            :value="defaultValues[columnIndex]"
+            :value="defaultValues && defaultValues[columnIndex]"
             :threeDimensional="threeDimensional"
             :swipeDuration="swipeDuration"
             @change="
@@ -116,7 +116,9 @@ export default create({
     });
 
     // 选中项
-    let defaultValues = ref<(number | string)[]>(props.modelValue);
+    let defaultValues = ref<(number | string)[]>(
+      Array.isArray(props.modelValue) && props.modelValue.length > 0 ? props.modelValue : []
+    );
 
     const pickerColumn = ref<any[]>([]);
 
@@ -163,7 +165,11 @@ export default create({
           return state.formattedColumns as PickerOption[][];
         case 'cascade':
           // 级联数据处理
-          return formatCascade(state.formattedColumns as PickerOption[], defaultValues.value);
+
+          return formatCascade(
+            state.formattedColumns as PickerOption[],
+            defaultValues.value ? defaultValues.value : []
+          );
         default:
           return [state.formattedColumns] as PickerOption[][];
       }
@@ -204,6 +210,8 @@ export default create({
 
     const changeHandler = (columnIndex: number, option: PickerOption) => {
       if (option && Object.keys(option).length) {
+        defaultValues.value = defaultValues.value ? defaultValues.value : [];
+
         if (columnsType.value === 'cascade') {
           defaultValues.value[columnIndex] = option.value ? option.value : '';
           let index = columnIndex;
@@ -277,14 +285,16 @@ export default create({
           emit('update:modelValue', newValues);
         }
       },
-      { immediate: true }
+      { deep: true }
     );
 
     watch(
       () => props.visible,
       (val) => {
         state.show = val;
-        if (val) pickerColumn.value = [];
+        if (val) {
+          pickerColumn.value = [];
+        }
       }
     );
 
