@@ -240,6 +240,7 @@ app.use(TabbarItem);
 | to  `小程序不支持`      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string｜object | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | number | --     |
 | dot       | 是否显示图标右上角小红点   | boolean | false    |
+| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | false |
 
 
 ### Tabbar Events
