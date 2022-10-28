@@ -185,6 +185,7 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 | unactive-color  | Color of unactive tab item  | string | #7d7e80 |
 | active-color    | Color of active tab item    | string | #1989fa |
 | safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
+| placeholder `3.2.6` | Whether to generate a placeholder element when fixed | boolean | false |
 ### TabbarItem Props
 
 | Attribute      | Description                                      | Type   | Default |
