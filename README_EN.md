@@ -188,13 +188,19 @@ NutUI has been used in our production environment, and widely used in the indust
 
 #### Contribute to NutUI
 
+There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
+
 You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://nutui.jd.com/#/zh-CN/guide/contributing).
 
-## Issue
+## Issue & Discussion
 
 [Report issues to NutUI](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui&lang=en)
 
 > It is highly recommended to read [*How To Ask Questions The Smart Way*](http://www.catb.org/~esr/faqs/smart-questions.html), [*How To Ask Questions Of GitHub Community*](https://github.com/seajs/seajs/issues/545) and [*How to Report Bugs Effectively*](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html), then you can get understanding and help more easily.
+
+[NutUI Discussion](https://github.com/jdf2e/nutui/discussions)
+
+If you have any ideas, questions or suggestions, you can share your opinions here.
 
 ## Contributors
 
