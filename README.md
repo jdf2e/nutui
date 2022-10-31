@@ -183,15 +183,23 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 参与共建
 
-请参考 [《贡献指南》](https://nutui.jd.com/#/zh-CN/guide/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)
+#### NutUI 社区共建倡议
 
-> 非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)，[《如何有效报告bug》](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，[《NutUI 邀您共建》](https://jelly.jd.com/article/6320528b92d94a0068685525) 能够更容易的理解和获得帮助。
+[《NutUI 邀您共建，Contributor 您好》](https://github.com/jdf2e/nutui/issues/1789)
 
-感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
+#### 为 NutUI 贡献代码
+
+NutUI 非常欢迎社区开发者参与共建，在贡献您的代码之前请先阅读 [《NutUI 贡献指南》](https://nutui.jd.com/#/zh-CN/guide/contributing)。
+
+## 问题反馈与建议
+
+[给 NutUI 提 Issue](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui&lang=zh-cn)
+
+> 在反馈问题之前，推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545)和[《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)，这样您能够更容易获得理解和帮助。
 
 ## 贡献者们
 
-感谢以下小伙伴们为 NutUI 发展做出的贡献：
+感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
 
 <a href="https://github.com/jdf2e/nutui/graphs/contributors">
   <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
