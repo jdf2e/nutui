@@ -10,7 +10,11 @@ export default (Vue) => {
       if (this.$root === this) {
         this.$locales = locales;
         const query = qs.parse(window.location.search.slice(1));
-        Vue.util.defineReactive(this, "$lang", (query && query.lang) || "en");
+        Vue.util.defineReactive(
+          this,
+          "$lang",
+          (query && query.lang) || "zh-cn"
+        );
       }
     },
   });
