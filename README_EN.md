@@ -190,7 +190,7 @@ NutUI has been used in our production environment, and widely used in the indust
 
 There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
 
-You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://nutui.jd.com/#/zh-CN/guide/contributing).
+You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://github.com/jdf2e/nutui/issues/1671).
 
 ## Issue & Discussion
 
