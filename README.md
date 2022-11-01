@@ -185,7 +185,7 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 #### NutUI 社区共建倡议
 
-[《NutUI 邀您共建，Contributor 您好》](https://github.com/jdf2e/nutui/issues/1789)
+[NutUI 邀您共建，Contributor 您好](https://github.com/jdf2e/nutui/issues/1789)
 
 #### 为 NutUI 贡献代码
 
