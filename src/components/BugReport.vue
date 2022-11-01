@@ -333,6 +333,7 @@ export default {
 
   watch: {
     repo() {
+      this.setScenes();
       this.versions = [];
       this.attrs.version = "";
       this.fetchVersions();
@@ -340,11 +341,7 @@ export default {
   },
 
   created() {
-    this.nutuiScenes =
-      this.repo.name == "nutui-vue"
-        ? this.nutuiScenesVue
-        : this.nutuiScenesReact;
-    this.attrs.scenes = this.nutuiScenes[0];
+    this.setScenes();
     this.fetchVersions();
     this.fetchVueVersions();
     this.fetchReactVersions();
@@ -352,6 +349,13 @@ export default {
   },
 
   methods: {
+    setScenes() {
+      this.nutuiScenes =
+        this.repo.name == "nutui-vue"
+          ? this.nutuiScenesVue
+          : this.nutuiScenesReact;
+      this.attrs.scenes = this.nutuiScenes[0];
+    },
     async fetchVersions(page = 1) {
       this.loadingVersion = true;
       const repoId = this.repo.npmid;
