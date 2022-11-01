@@ -1,7 +1,13 @@
 <template>
   <div class="bug-report" style="margin: 0">
     <div class="vue-ui-grid col-2 default-gap">
-      <VueFormField :title="i18n('nutui-repo-scenes')">
+      <VueFormField
+        :title="
+          repo.name === 'nutui-vue'
+            ? i18n('nutui-repo-scenes-vue')
+            : i18n('nutui-repo-scenes-react')
+        "
+      >
         <VueSelect
           v-model="attrs.scenes"
           :label="attrs.scenes.name"
@@ -16,7 +22,21 @@
           </VueSelectButton>
         </VueSelect>
       </VueFormField>
-      <VueFormField :title="i18n('version-title')">
+      <VueFormField
+        :title="i18n('version-title-vue')"
+        v-if="repo.name === 'nutui-vue'"
+      >
+        <VueTypeAhead
+          v-model="attrs.version"
+          :suggestions="suggestions"
+          :loading="loadingVersion"
+          show-all
+          show-max="300"
+          restrict-choice
+          required
+        />
+      </VueFormField>
+      <VueFormField :title="i18n('version-title-react')" v-else>
         <VueTypeAhead
           v-model="attrs.version"
           :suggestions="suggestions"
@@ -28,14 +48,18 @@
         />
       </VueFormField>
     </div>
+
     <div
       :class="[
         'vue-ui-grid',
         'default-gap',
-        attrs.scenes.name != 'H5' ? 'col-2' : '',
+        attrs.scenes.id != 'h5-env' ? 'col-2' : '',
       ]"
     >
-      <VueFormField :title="i18n('nutui-repo-vue')">
+      <VueFormField
+        :title="i18n('nutui-repo-vue')"
+        v-if="repo.name == 'nutui-vue'"
+      >
         <VueTypeAhead
           v-model="attrs.versionVue"
           :suggestions="suggestionsVue"
@@ -46,9 +70,20 @@
           required
         />
       </VueFormField>
+      <VueFormField :title="i18n('nutui-repo-react')" v-else>
+        <VueTypeAhead
+          v-model="attrs.versionReact"
+          :suggestions="suggestionsReact"
+          :loading="loadingVersionReact"
+          show-all
+          show-max="300"
+          restrict-choice
+          required
+        />
+      </VueFormField>
       <VueFormField
         :title="i18n('nutui-repo-execution')"
-        v-if="attrs.scenes.name != 'H5'"
+        v-if="attrs.scenes.id != 'h5-env'"
       >
         <VueSelect
           v-model="attrs.runEnvVal"
@@ -65,6 +100,7 @@
         </VueSelect>
       </VueFormField>
     </div>
+
     <div class="vue-ui-grid col-2 default-gap">
       <VueFormField :title="i18n('nutui-repo-use')">
         <VueSelect
@@ -91,6 +127,7 @@
         />
       </VueFormField>
     </div>
+
     <div class="vue-ui-grid col-2 default-gap">
       <VueFormField :title="i18n('nutui-repo-boswer')">
         <VueInput
@@ -110,6 +147,16 @@
         />
       </VueFormField>
     </div>
+
+    <VueFormField
+      class="span-2"
+      :title="i18n('nutui-repo-taro-info')"
+      v-if="attrs.scenes.id != 'h5-env'"
+    >
+      <VueInput type="textarea" rows="4" v-model="attrs.taroEnvInfo" required />
+      <i18n slot="subtitle" id="steps-subtitle-taro" />
+    </VueFormField>
+
     <VueFormField :title="i18n('repro-title')">
       <VueInput
         type="url"
@@ -202,9 +249,16 @@ export default {
 
   data() {
     return {
-      nutuiScenes: [
-        { id: "h5-env", name: "H5" },
-        { id: "wechat-env", name: "小程序" },
+      nutuiScenes: [],
+      nutuiScenesVue: [
+        { id: "h5-env", name: "H5（@nutui/nutui）" },
+        { id: "wechat-env", name: "小程序（@nutui/nutui-taro）" },
+        { id: "h5-wechat", name: "H5 + 小程序" },
+      ],
+      nutuiScenesReact: [
+        { id: "h5-env", name: "H5（@nutui/nutui-react）" },
+        { id: "wechat-env", name: "小程序（@nutui/nutui-react-taro）" },
+        { id: "h5-wechat", name: "H5 + 小程序" },
       ],
       wayList: [
         { id: "npm", name: "npm" },
@@ -222,7 +276,7 @@ export default {
       ],
       show: false,
       attrs: {
-        scenes: { id: "h5-env", name: "H5" },
+        scenes: { id: "h5-env", name: "H5（@nutui/nutui）" },
         version: "",
         versionVue: "",
         runEnvVal: { id: "h5", name: "dev:h5" },
@@ -238,11 +292,14 @@ export default {
         browserAndOS: "",
         nodeAndOS: "",
         cliEnvInfo: "",
+        taroEnvInfo: "",
       },
       versions: [],
       loadingVersion: false,
       versionsVue: [],
       loadingVersionVue: false,
+      versionsReact: [],
+      loadingVersionReact: false,
       reproNotAvailable: false,
     };
   },
@@ -255,6 +312,12 @@ export default {
     },
     suggestionsVue() {
       return this.versionsVue
+        .slice()
+        .sort((a, b) => (gt(a.value, b.value) ? -1 : 1));
+    },
+
+    suggestionsReact() {
+      return this.versionsReact
         .slice()
         .sort((a, b) => (gt(a.value, b.value) ? -1 : 1));
     },
@@ -277,23 +340,32 @@ export default {
   },
 
   created() {
+    this.nutuiScenes =
+      this.repo.name == "nutui-vue"
+        ? this.nutuiScenesVue
+        : this.nutuiScenesReact;
+    this.attrs.scenes = this.nutuiScenes[0];
     this.fetchVersions();
     this.fetchVueVersions();
+    this.fetchReactVersions();
     // this.checkModal("why-repro");
   },
 
   methods: {
     async fetchVersions(page = 1) {
       this.loadingVersion = true;
-      const repoId = this.repo.id;
+      const repoId = this.repo.npmid;
       const response = await fetch(
-        "https://registry.npmmirror.com/@nutui/nutui"
+        `https://registry.npmmirror.com/${repoId}`
         // `https://api.github.com/repos/jdf2e/nutui/releases?page=1&per_page=100`
       );
       const result = await response.json();
-      const releases = await Object.keys(result.versions);
+      const versionsList = await Object.keys(result.versions);
+      const releases = await versionsList.filter(
+        (item) => item.indexOf("beta") == -1
+      );
 
-      if (this.repo.id !== repoId) return;
+      if (this.repo.npmid !== repoId) return;
 
       if (!releases || !(releases instanceof Array)) return false;
 
@@ -325,8 +397,10 @@ export default {
         // `https://api.github.com/repos/jdf2e/nutui/releases?page=1&per_page=100`
       );
       const result = await response.json();
-      const releases = await Object.keys(result.versions);
-
+      const versionsList = await Object.keys(result.versions);
+      const releases = await versionsList.filter(
+        (item) => item.indexOf("beta") == -1
+      );
       this.versionsVue = this.versionsVue.concat(
         releases.map((r) => ({
           value: r,
@@ -340,18 +414,42 @@ export default {
       }
     },
 
-    findNodejs() {},
+    async fetchReactVersions() {
+      this.loadingVersionReact = true;
+      const response = await fetch(
+        "https://registry.npmmirror.com/react"
+        // `https://api.github.com/repos/jdf2e/nutui/releases?page=1&per_page=100`
+      );
+      const result = await response.json();
+      const versionsList = await Object.keys(result.versions);
+      const releases = await versionsList.filter(
+        (item) => item.indexOf("beta") == -1 && item.indexOf("-") == -1
+      );
+      this.versionsReact = this.versionsReact.concat(
+        releases.map((r) => ({
+          value: r,
+        }))
+      );
+
+      this.loadingVersionReact = false;
+      // set current version to the latest
+      if (this.suggestionsVue.length) {
+        this.attrs.versionReact = this.suggestionsReact[0].value;
+      }
+    },
 
     generate() {
       const {
         scenes,
         version,
         versionVue,
+        versionReact,
         runEnvVal,
         useWay,
         nodejs,
         boswer,
         system,
+        taroEnvInfo,
         reproduction,
         steps,
         expected,
@@ -364,11 +462,26 @@ export default {
         ### NutUI scenes（nutui 场景）
 ${scenes.name}
 
-### NutUI version（nutui 版本）
+${
+  this.repo.name == "nutui-vue"
+    ? `
+### NutUI-vue version（nutui-vue 版本）
+`
+    : `### NutUI-react version（nutui-react 版本）`
+}
 ${version}
 
+${
+  this.repo.name == "nutui-vue"
+    ? `
 ### Vue version（vue 版本）
 ${versionVue}
+`
+    : `
+### React version（react 版本）
+${versionReact}
+`
+}
 
 ${
   scenes.name != "H5"
@@ -390,6 +503,15 @@ ${boswer}
 
 ### System and its version（系统及其版本）
 ${system}
+
+${
+  scenes.id != "h5-env"
+    ? `
+### Taro environmental information（taro 环境信息）
+${taroEnvInfo}
+`
+    : ""
+}
 
 ### Reproduction link（重现链接）
 ${`[${getReproLinkTitle(reproduction)}](${reproduction})`}

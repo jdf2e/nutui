@@ -4,7 +4,6 @@
     <div class="container">
       <form class="main-form" @submit.prevent="generate">
         <FormIntro />
-
         <div class="common-fields vue-ui-grid col-2 default-gap">
           <VueFormField
             :title="i18n('repo-title')"
@@ -150,7 +149,12 @@ export default {
       },
       show: false,
       preview: false,
-      repo: null,
+      repo: {
+        id: "jdf2e/nutui",
+        name: "nutui-vue",
+        npmid: "@nutui/nutui",
+        reproSubtitleId: "repro-subtitle-links",
+      },
       repos,
       type: "bug-report",
       versions: {},

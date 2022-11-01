@@ -19,10 +19,12 @@ export default {
   "type-title": "Issue 类别",
   "title-title": "Issue 标题",
 
-  "version-title": "nutui 版本",
+  "version-title-vue": "nutui-vue 版本",
+  "version-title-react": "nutui-react 版本",
   "version-subtitle": "请检查问题是否存在于 Vue 的最新版本中。",
 
-  "nutui-repo-scenes": "nutui 场景",
+  "nutui-repo-scenes-vue": "nutui-vue 场景",
+  "nutui-repo-scenes-react": "nutui-react 场景",
   "nutui-repo-placeholder": "请选择",
   "nutui-repo-boswer": "浏览器及其版本",
   "nutui-repo-boswer-placeholder": "Chrome(106.0.5249.119)",
@@ -32,6 +34,8 @@ export default {
   "nutui-repo-use": "引用方式",
   "nutui-repo-execution": "运行环境",
   "nutui-repo-vue": "vue 版本",
+  "nutui-repo-react": "react 版本",
+  "nutui-repo-taro-info": "taro 环境信息",
 
   "repro-title": "重现链接",
   "repro-modal-title": "关于重现",

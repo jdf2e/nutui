@@ -19,11 +19,13 @@ export default {
   "type-title": "This is a",
   "title-title": "Issue title",
 
-  "version-title": "Version",
+  "version-title-vue": "NutUI-vue version",
+  "version-title-react": "NutUI-react version",
   "version-subtitle":
     "Check if the issue is reproducible with the latest stable version of Vue.",
 
-  "nutui-repo-scenes": "nutui scenes",
+  "nutui-repo-scenes-vue": "nutui-vue scenes",
+  "nutui-repo-scenes-react": "nutui-react scenes",
   "nutui-repo-placeholder": "Please choose",
   "nutui-repo-boswer": "The browser and its version",
   "nutui-repo-boswer-placeholder": "Chrome(106.0.5249.119)",
@@ -32,7 +34,9 @@ export default {
   "nutui-repo-node": "Node version",
   "nutui-repo-use": "Reference method",
   "nutui-repo-execution": "Running Environment",
-  "nutui-repo-vue": "vue version",
+  "nutui-repo-vue": "Vue version",
+  "nutui-repo-react": "React version",
+  "nutui-repo-taro-info": "Taro environmental information",
 
   "repro-title": "Link to minimal reproduction",
   "repro-modal-title": "About Reproductions",
