@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType, reactive } from 'vue';
+import { computed, onMounted, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
@@ -331,6 +331,17 @@ export default create({
         fileList
       });
     };
+
+    onMounted(() => {
+      if (Taro.getEnv() == 'WEB') {
+        const obj = document.createElement('input');
+        obj.setAttribute('type', 'file');
+        obj.setAttribute('id', 'taroChooseImage');
+        obj.setAttribute('accept', props.accept);
+        obj.setAttribute('style', 'position: fixed; top: -4000px; left: -3000px; z-index: -300;');
+        document.body.appendChild(obj);
+      }
+    });
 
     return {
       onDelete,
