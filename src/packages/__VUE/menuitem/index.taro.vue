@@ -10,17 +10,16 @@
     </div>
     <nut-popup
       :style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down'
+          ? { position: 'absolute', top: parent.offset.value + 'px' }
+          : { position: 'absolute', bottom: parent.offset.value + 'px' }
       "
-      :overlayStyle="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
-      "
+      :overlayStyle="overlayStyle"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      transition="transition-none"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
@@ -132,6 +131,16 @@ export default create({
       };
     });
 
+    const overlayStyle = computed(() => {
+      const overlayStyle = { position: 'absolute', height: 'auto', top: 0 + 'px', bottom: 0 + 'px' };
+      if (parent.props.direction === 'down') {
+        overlayStyle.top = parent.offset.value + 'px';
+      } else {
+        overlayStyle.bottom = parent.offset.value + 'px';
+      }
+      return overlayStyle;
+    });
+
     const placeholderElementStyle = computed(() => {
       const heightStyle = { height: parent.offset.value + 'px' };
 
@@ -187,6 +196,7 @@ export default create({
 
     return {
       classes,
+      overlayStyle,
       placeholderElementStyle,
       renderTitle,
       state,
