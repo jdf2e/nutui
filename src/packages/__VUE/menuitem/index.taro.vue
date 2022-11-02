@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
+  <view :class="classes" v-show="state.showWrapper" style="position: fixed" :style="{ zIndex: state.zIndex }">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -9,12 +9,10 @@
     >
     </div>
     <nut-popup
-      :style="
-        parent.props.direction === 'down'
-          ? { position: 'absolute', top: parent.offset.value + 'px' }
-          : { position: 'absolute', bottom: parent.offset.value + 'px' }
+      class="menu-item__pop-container"
+      :containerStyle="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
-      :overlayStyle="overlayStyle"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
@@ -67,7 +65,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
-
+let _zIndex = 2000;
 export default create({
   props: {
     title: String,
@@ -98,6 +96,7 @@ export default create({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
     const state = reactive({
+      zIndex: _zIndex,
       showPopup: false,
       transition: true,
       showWrapper: false,
@@ -131,16 +130,6 @@ export default create({
       };
     });
 
-    const overlayStyle = computed(() => {
-      const overlayStyle = { position: 'absolute', height: 'auto', top: 0 + 'px', bottom: 0 + 'px' };
-      if (parent.props.direction === 'down') {
-        overlayStyle.top = parent.offset.value + 'px';
-      } else {
-        overlayStyle.bottom = parent.offset.value + 'px';
-      }
-      return overlayStyle;
-    });
-
     const placeholderElementStyle = computed(() => {
       const heightStyle = { height: parent.offset.value + 'px' };
 
@@ -162,6 +151,7 @@ export default create({
 
       if (show) {
         state.showWrapper = true;
+        state.zIndex = ++_zIndex;
       }
     };
 
@@ -196,7 +186,6 @@ export default create({
 
     return {
       classes,
-      overlayStyle,
       placeholderElementStyle,
       renderTitle,
       state,
