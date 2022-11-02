@@ -827,5 +827,9 @@ $watermark-z-index: 2000 !default;
 // invoice
 $invoice-padding: 10px 10px 20px !default;
 
+// TrendArrow
+$trendarrow-font-size: 14px !default;
+$trendarrow-before-icon-margin: 4px !default;
+
 @import './mixins/index';
 @import './animation/index';
