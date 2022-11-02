@@ -1,5 +1,5 @@
 <template>
-  <view :catch-move="lockScroll">
+  <view :catch-move="lockScroll" :style="containerStyle">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -55,6 +55,9 @@ export const popupProps = {
     default: 'center'
   },
   transition: String,
+  containerStyle: {
+    type: Object as PropType<CSSProperties>
+  },
   style: {
     type: Object as PropType<CSSProperties>
   },
