@@ -1,7 +1,6 @@
 require('../../runtime');
 require('../../taro');
 require('../../vendors');
-require('../../common');
 
 (wx['webpackJsonp'] = wx['webpackJsonp'] || []).push([
   ['components/button/index'],
@@ -74,9 +73,6 @@ require('../../common');
         /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           vue__WEBPACK_IMPORTED_MODULE_1__
         );
-        /* harmony import */ var _nutIcon_index_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../nutIcon/index.vue */ './src/components/nutIcon/index.vue'
-        );
 
         /* harmony default export */ __webpack_exports__['a'] = /*#__PURE__*/ Object(
           vue__WEBPACK_IMPORTED_MODULE_1__['defineComponent']
@@ -123,7 +119,8 @@ require('../../common');
             iconFontClassName: {
               type: String,
               default: 'nutui-iconfont'
-            }
+            },
+            _scope: null
           },
           setup: function setup(__props, _ref) {
             var expose = _ref.expose;
@@ -138,6 +135,7 @@ require('../../common');
               color = _toRefs.color,
               plain = _toRefs.plain,
               block = _toRefs.block;
+            var hello = Object(vue__WEBPACK_IMPORTED_MODULE_1__['ref'])('hello');
             var handleClick = function handleClick() {
               if (!loading.value && !disabled.value) {
               }
@@ -223,10 +221,10 @@ require('../../common');
               color: color,
               plain: plain,
               block: block,
+              hello: hello,
               handleClick: handleClick,
               classes: classes,
-              getStyle: getStyle,
-              nutIcon: _nutIcon_index_vue__WEBPACK_IMPORTED_MODULE_2__['default']
+              getStyle: getStyle
             };
             Object.defineProperty(__returned__, '__isScriptSetup', {
               enumerable: false,
@@ -279,16 +277,7 @@ require('../../common');
               },
               [
                 Object(vue__WEBPACK_IMPORTED_MODULE_0__['createElementVNode'])('view', _hoisted_1, [
-                  $setup.loading
-                    ? (Object(vue__WEBPACK_IMPORTED_MODULE_0__['openBlock'])(),
-                      Object(vue__WEBPACK_IMPORTED_MODULE_0__['createBlock'])($setup['nutIcon'], {
-                        key: 0,
-                        class: 'nut-icon-loading'
-                      }))
-                    : Object(vue__WEBPACK_IMPORTED_MODULE_0__['createCommentVNode'])('v-if', true),
-                  Object(vue__WEBPACK_IMPORTED_MODULE_0__['createCommentVNode'])(
-                    ' <Article v-if="loading" name="loading"></Article> '
-                  ),
+                  Object(vue__WEBPACK_IMPORTED_MODULE_0__['createCommentVNode'])(' <Article>111</Article> '),
                   Object(vue__WEBPACK_IMPORTED_MODULE_0__['createElementVNode'])(
                     'view',
                     {
@@ -423,6 +412,6 @@ require('../../common');
         /***/
       }
   },
-  [['./src/components/button/index.vue', 'runtime', 'taro', 'vendors', 'common']]
+  [['./src/components/button/index.vue', 'runtime', 'taro', 'vendors']]
 ]);
 //# sourceMappingURL=index.js.map

@@ -56,10 +56,39 @@ Page({
     btnLoading: {
       loading: true,
       type: 'info'
+    },
+    overlayProps: {
+      visible: false,
+      zIndex: '2000'
+    },
+    popupProps: {
+      visible: true,
+      zIndex: '100',
+      popClass: 'popclass'
+    },
+    articleProps: {
+      msg: 'nihao'
     }
   },
   // 事件处理函数
-  bindViewTap() {},
+  bindViewTap() {
+    console.log('时间处理');
+    this.data.overlayProps.visible = true;
+    this.setData({
+      popupProps: {
+        visible: true
+      }
+    });
+  },
+
+  bindClose() {
+    console.log('关闭啦');
+    this.setData({
+      overlayProps: {
+        visible: false
+      }
+    });
+  },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({

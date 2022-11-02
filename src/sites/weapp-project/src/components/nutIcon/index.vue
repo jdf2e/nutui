@@ -1,6 +1,6 @@
 <template>
   <view>
-    <i :class="classes" :style="styled"></i>
+    <view :class="classes" :style="styled"></view>
   </view>
 </template>
 
@@ -8,7 +8,7 @@
 import { PropType, defineEmits, defineProps, computed } from 'vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const props = defineProps({
-  name: { type: String, default: 'loading' },
+  name: { type: String, default: '' },
   size: { type: [String, Number], default: '' },
   classPrefix: { type: String, default: 'nut-icon' },
   fontClassName: { type: String, default: 'nutui-iconfont' },
@@ -46,5 +46,5 @@ const srcUrl = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../icon/index.scss';
+@import './index.scss';
 </style>

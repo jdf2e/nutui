@@ -4,8 +4,8 @@ require('../../vendors');
 require('../../common');
 
 (wx['webpackJsonp'] = wx['webpackJsonp'] || []).push([
-  ['components/nutIcon/index'],
+  ['components/overlay/index'],
   [],
-  [['./src/components/nutIcon/index.vue', 'runtime', 'taro', 'vendors', 'common']]
+  [['./src/components/overlay/index.vue', 'runtime', 'taro', 'vendors', 'common']]
 ]);
 //# sourceMappingURL=index.js.map

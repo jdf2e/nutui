@@ -97,6 +97,22 @@
   <block>{{i.v}}</block>
 </template>
 
+<template name="tmpl_0_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_0_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_0_container">
   <template is="{{xs.a(0, i.nn, l)}}" data="{{i:i,cid:0,l:xs.f(l,i.nn)}}" />
 </template>
@@ -165,6 +181,22 @@
   </view>
 </template>
 
+<template name="tmpl_1_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_1_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_1_container">
   <template is="{{xs.a(1, i.nn, l)}}" data="{{i:i,cid:1,l:xs.f(l,i.nn)}}" />
 </template>
@@ -233,6 +265,22 @@
   </view>
 </template>
 
+<template name="tmpl_2_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_2_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_2_container">
   <template is="{{xs.a(2, i.nn, l)}}" data="{{i:i,cid:2,l:xs.f(l,i.nn)}}" />
 </template>
@@ -301,6 +349,22 @@
   </view>
 </template>
 
+<template name="tmpl_3_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_3_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_3_container">
   <template is="{{xs.a(3, i.nn, l)}}" data="{{i:i,cid:3,l:xs.f(l,i.nn)}}" />
 </template>
@@ -361,6 +425,22 @@
   </view>
 </template>
 
+<template name="tmpl_4_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_4_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_4_container">
   <template is="{{xs.a(4, i.nn, l)}}" data="{{i:i,cid:4,l:xs.f(l,i.nn)}}" />
 </template>
@@ -421,6 +501,22 @@
   </view>
 </template>
 
+<template name="tmpl_5_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_5_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_5_container">
   <template is="{{xs.a(5, i.nn, l)}}" data="{{i:i,cid:5,l:xs.f(l,i.nn)}}" />
 </template>
@@ -473,6 +569,22 @@
   </view>
 </template>
 
+<template name="tmpl_6_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_6_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_6_container">
   <template is="{{xs.a(6, i.nn, l)}}" data="{{i:i,cid:6,l:xs.f(l,i.nn)}}" />
 </template>
@@ -525,6 +637,22 @@
   </view>
 </template>
 
+<template name="tmpl_7_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_7_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_7_container">
   <template is="{{xs.a(7, i.nn, l)}}" data="{{i:i,cid:7,l:xs.f(l,i.nn)}}" />
 </template>
@@ -569,6 +697,22 @@
   </text>
 </template>
 
+<template name="tmpl_8_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_8_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_8_container">
   <template is="{{xs.a(8, i.nn, l)}}" data="{{i:i,cid:8,l:xs.f(l,i.nn)}}" />
 </template>
@@ -613,6 +757,22 @@
   </text>
 </template>
 
+<template name="tmpl_9_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_9_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_9_container">
   <template is="{{xs.a(9, i.nn, l)}}" data="{{i:i,cid:9,l:xs.f(l,i.nn)}}" />
 </template>
@@ -657,6 +817,22 @@
   </text>
 </template>
 
+<template name="tmpl_10_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_10_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_10_container">
   <template is="{{xs.a(10, i.nn, l)}}" data="{{i:i,cid:10,l:xs.f(l,i.nn)}}" />
 </template>
@@ -701,6 +877,22 @@
   </text>
 </template>
 
+<template name="tmpl_11_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_11_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_11_container">
   <template is="{{xs.a(11, i.nn, l)}}" data="{{i:i,cid:11,l:xs.f(l,i.nn)}}" />
 </template>
@@ -745,6 +937,22 @@
   </text>
 </template>
 
+<template name="tmpl_12_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_12_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_12_container">
   <template is="{{xs.a(12, i.nn, l)}}" data="{{i:i,cid:12,l:xs.f(l,i.nn)}}" />
 </template>
@@ -789,6 +997,22 @@
   </text>
 </template>
 
+<template name="tmpl_13_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_13_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_13_container">
   <template is="{{xs.a(13, i.nn, l)}}" data="{{i:i,cid:13,l:xs.f(l,i.nn)}}" />
 </template>
@@ -833,6 +1057,22 @@
   </text>
 </template>
 
+<template name="tmpl_14_nut-icon">
+  <nut-icon  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-icon>
+</template>
+  
+<template name="tmpl_14_nut-overlay">
+  <nut-overlay  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </nut-overlay>
+</template>
+  
 <template name="tmpl_14_container">
   <template is="{{xs.a(14, i.nn, l)}}" data="{{i:i,cid:14,l:xs.f(l,i.nn)}}" />
 </template>

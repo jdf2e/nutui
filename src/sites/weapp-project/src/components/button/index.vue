@@ -1,8 +1,7 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
-      <nutIcon class="nut-icon-loading" v-if="loading"></nutIcon>
-      <!-- <Article v-if="loading" name="loading"></Article> -->
+      <!-- <Article>111</Article> -->
       <view :class="{ text: icon || loading }">
         <native-slot />
       </view>
@@ -11,9 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import { CSSProperties, computed, toRefs, defineProps } from 'vue';
-import Article from '../article/index.vue';
-import nutIcon from '../nutIcon/index.vue';
+import { CSSProperties, computed, toRefs, defineProps, ref } from 'vue';
+import { pxCheck } from '@/packages/utils/pxCheck';
 const props = defineProps({
   color: String,
   shape: {
@@ -55,10 +53,13 @@ const props = defineProps({
   iconFontClassName: {
     type: String,
     default: 'nutui-iconfont'
-  }
+  },
+  _scope: null
 });
 
 const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
+
+const hello = ref('hello');
 
 const handleClick = () => {
   if (!loading.value && !disabled.value) {

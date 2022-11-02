@@ -85,14 +85,6 @@
   </view>
 </template>
 
-<template name="tmpl_0_33">
-  <slot name="{{i.p0}}"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
-    <block wx:for="{{i.cn}}" wx:key="sid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </slot>
-</template>
-
 <template name="tmpl_0_8">
   <block>{{i.v}}</block>
 </template>

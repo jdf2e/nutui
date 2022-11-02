@@ -1,7 +1,3 @@
-require('./runtime');
-require('./taro');
-require('./vendors');
-
 (wx['webpackJsonp'] = wx['webpackJsonp'] || []).push([
   ['comp'],
   [],

@@ -1,5 +1,6 @@
 export default defineAppConfig({
-  components: ['components/button/index', 'components/nutIcon/index'],
+  pages: ['pages/index/index'],
+  components: [],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
