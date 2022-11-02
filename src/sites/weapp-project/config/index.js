@@ -12,9 +12,10 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [path.join(process.cwd(), '/plugin-mv/index.js'), '@tarojs/plugin-html'],
+  plugins: ['@tarojs/plugin-html', path.join(process.cwd(), '/plugin-mv/index.js')],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../../src/packages')
+    '@/packages': path.resolve(__dirname, '../../../../src/packages'),
+    '@weapp': path.resolve(__dirname, '../../../src/sites/weapp-project')
   },
   sass: {
     resource: path.resolve(__dirname, '../../../', 'packages/styles/variables.scss')

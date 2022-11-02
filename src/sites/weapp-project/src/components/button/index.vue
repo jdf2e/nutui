@@ -1,7 +1,8 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
-      <!-- <Article>111</Article> -->
+      <Article msg="eee">dafd</Article>
+
       <view :class="{ text: icon || loading }">
         <native-slot />
       </view>
@@ -10,8 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import { CSSProperties, computed, toRefs, defineProps, ref } from 'vue';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { CSSProperties, computed, toRefs, defineProps, reactive } from 'vue';
+import * as Article from '../article/index.vue';
+// import { pxCheck } from '@/packages/utils/pxCheck';
 const props = defineProps({
   color: String,
   shape: {
@@ -59,9 +61,12 @@ const props = defineProps({
 
 const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
 
-const hello = ref('hello');
+// const hello = reactive({
+//   mgs:'hello'
+// })
 
 const handleClick = () => {
+  // console.log(pxCheck(19))
   if (!loading.value && !disabled.value) {
   }
 };

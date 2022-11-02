@@ -1,5 +1,5 @@
 <template>
-  <view> 111{{ msg }}<native-slot /> </view>
+  <view class="artile"> 111{{ msg }}<native-slot /> </view>
 </template>
 
 <script lang="ts" setup>
