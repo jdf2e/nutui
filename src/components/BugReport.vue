@@ -532,7 +532,7 @@ ${actual}
 ${
   extra
     ? `### Remarks（补充说明）
-${actual}`
+${extra}`
     : ""
 }
   `.trim()
