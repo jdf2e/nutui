@@ -63,6 +63,7 @@
         :closeMode="true"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
+        height="50"
       ></nut-noticebar>
     </div>
 
