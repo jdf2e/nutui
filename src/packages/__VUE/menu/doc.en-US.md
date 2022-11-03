@@ -414,4 +414,4 @@ export default {
 | Event  | Description                   | Arguments      |
 |--------|-------------------------------|----------------|
 | change | Emitted select option changed | Selected value |
-| toggle | Toggle display | show?: boolean |
+| toggle | Toggle menu display status, `true` to show，`false` to hide, no param is negated | show?: boolean |
