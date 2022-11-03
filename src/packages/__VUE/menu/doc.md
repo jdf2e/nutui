@@ -413,4 +413,4 @@ export default {
 | 事件名 | 说明                 | 回调参数     |
 |--------|----------------------|--------------|
 | change | 选择 option 之后触发 | 选择的 value |
-| toggle | 切换菜单展示状态，传 `true` 为显示，`false` 为隐藏，不传参为取反 | show?: boolean |
+| toggle | Toggle menu display status, `true` to show，`false` to hide, no param is negated | show?: boolean |
