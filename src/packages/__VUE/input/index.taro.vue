@@ -329,8 +329,6 @@ export default create({
         value = value.slice(0, Number(props.maxLength));
       }
       updateValue(value);
-      emit('update:modelValue', value, event);
-      emit('change', value, event);
     };
 
     const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
@@ -428,16 +426,20 @@ export default create({
     watch(
       () => props.modelValue,
       () => {
-        updateValue(getModelValue());
-        resetValidation();
+        if (!slots.input) {
+          updateValue(getModelValue());
+          resetValidation();
+        }
       }
     );
 
     onMounted(() => {
-      if (props.autofocus) {
-        inputRef.value.focus();
+      if (!slots.input) {
+        if (props.autofocus) {
+          inputRef.value.focus();
+        }
+        updateValue(getModelValue(), props.formatTrigger);
       }
-      updateValue(getModelValue(), props.formatTrigger);
     });
 
     return {

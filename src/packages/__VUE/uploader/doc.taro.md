@@ -243,7 +243,7 @@ setup() {
 | source-type               | [选择图片的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)                 | String                            | ['album','camera']        |
 | maximize                  | 可以设定最大上传文件的大小（字节）                                                                                     | Number丨String                    | 9                         |
 | maximum                   | 文件上传数量限制                                                                                                       | Number丨String                    | 1                         |
-| size-type                 | 选择图片的来源，[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)       | String                            | ['original','compressed'] |
+| size-type                 | 是否压缩所选文件[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)       | String                            | ['original','compressed'] |
 | headers                   | 设置上传的请求头部                                                                                                     | Object                            | {}                        |
 | data                      | 附加上传的信息 formData                                                                                                | Object                            | {}                        |
 | upload-icon               | 上传区域[图标名称](#/icon)或图片链接                                                                                   | String                            | "photograph"              |

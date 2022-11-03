@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
+  <view :class="classes" v-show="state.showWrapper" style="position: fixed" :style="{ zIndex: state.zIndex }">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -9,10 +9,8 @@
     >
     </div>
     <nut-popup
-      :style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
-      "
-      :overlayStyle="
+      class="menu-item__pop-container"
+      :containerStyle="
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       v-bind="$attrs"
@@ -20,7 +18,6 @@
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      transition="transition-none"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
@@ -69,6 +66,7 @@ const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import NutScrollView from '../scrollView/index.taro.vue';
+let _zIndex = 2000;
 
 export default create({
   props: {
@@ -101,6 +99,7 @@ export default create({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
     const state = reactive({
+      zIndex: _zIndex,
       showPopup: false,
       transition: true,
       showWrapper: false,
@@ -155,6 +154,7 @@ export default create({
 
       if (show) {
         state.showWrapper = true;
+        state.zIndex = ++_zIndex;
       }
     };
 
