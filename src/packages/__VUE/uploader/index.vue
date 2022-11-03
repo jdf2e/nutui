@@ -245,11 +245,9 @@ export default create({
         fileList.splice(0, fileList.length);
       }
     };
-    const submit = () => {
-      Promise.all(uploadQueue).then((res) => {
+    const submit = () => Promise.all(uploadQueue).then((res) => {
         res.forEach((i) => i.upload());
       });
-    };
 
     const readFile = (files: File[]) => {
       files.forEach((file: File, index: number) => {

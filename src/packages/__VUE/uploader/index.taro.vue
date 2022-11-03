@@ -225,11 +225,9 @@ export default create({
         fileList.splice(0, fileList.length);
       }
     };
-    const submit = () => {
-      Promise.all(uploadQueue).then((res) => {
+    const submit = () => Promise.all(uploadQueue).then((res) => {
         res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()));
       });
-    };
 
     const readFile = (files: Taro.chooseImage.ImageFile[]) => {
       const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i;
