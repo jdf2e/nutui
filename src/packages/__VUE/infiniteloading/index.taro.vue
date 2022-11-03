@@ -1,5 +1,5 @@
 <template>
-  <scroll-view
+  <Nut-Scroll-View
     :class="classes"
     scrollY="true"
     style="height: 100%"
@@ -32,11 +32,12 @@
         <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
       </template>
     </view>
-  </scroll-view>
+  </Nut-Scroll-View>
 </template>
 <script lang="ts">
 import { toRefs, onMounted, reactive, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import NutScrollView from '../scrollView/index.taro.vue';
 const { componentName, create, translate } = createComponent('infiniteloading');
 import Icon from '../icon/index.taro.vue';
 import Taro from '@tarojs/taro';
@@ -93,7 +94,8 @@ export default create({
   },
   emits: ['scroll-change', 'load-more', 'refresh'],
   components: {
-    'nut-icon': Icon
+    'nut-icon': Icon,
+    NutScrollView
   },
   setup(props, { emit, slots }) {
     const state = reactive({

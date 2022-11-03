@@ -74,6 +74,7 @@
     }
   },
   "dependencies": {
+    "@tarojs/components": "^3.5.6",
     "sass": "^1.50.0",
     "vscode": "^1.1.37",
     "vue-router": "^4.0.12"
@@ -82,7 +83,7 @@
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
     "@popperjs/core": "^2.11.5",
-    "@tarojs/taro": "^3.4.0",
+    "@tarojs/taro": "3.5.6",
     "@types/jest": "^26.0.22",
     "@types/node": "^17.0.16",
     "@typescript-eslint/eslint-plugin": "^4.20.0",

@@ -18,7 +18,7 @@
       </view>
     </view>
     <!-- content-->
-    <scroll-view
+    <Nut-Scroll-View
       :scroll-top="scrollTop"
       :scroll-y="true"
       class="nut-calendar-content"
@@ -60,7 +60,7 @@
           </view>
         </view>
       </view>
-    </scroll-view>
+    </Nut-Scroll-View>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
       <view class="calendar-confirm-btn" @click="confirm">{{ confirmText || translate('confirm') }}</view>
@@ -75,7 +75,7 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
-
+import NutScrollView from '../scrollView/index.taro.vue';
 const TARO_ENV = Taro.getEnv();
 
 type InputDate = string | string[];
@@ -119,6 +119,9 @@ interface MonthInfo {
 }
 
 export default create({
+  components: {
+    NutScrollView
+  },
   props: {
     type: {
       type: String,
@@ -809,6 +812,7 @@ export default create({
           }
           scale = Number((screenWidth / 750).toFixed(toFixed));
           scalePx.value = scale;
+          let transfromNum = Taro.pxTransform(64);
           initData();
         }
       });
