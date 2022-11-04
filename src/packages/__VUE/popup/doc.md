@@ -207,6 +207,7 @@ app.use(OverLay)
 | close-on-click-overlay | 是否点击遮罩关闭                                            | Boolean        | `true`        |
 | position               | 弹出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
 | transition             | 动画名                                                      | String         | -             |
+| container-style        | 自定义外层容器样式                                          | CSSProperties  | -             |
 | style                  | 自定义弹框样式                                              | CSSProperties  | -             |
 | pop-class              | 自定义弹框类名                                              | String         | -             |
 | closeable              | 是否显示关闭按钮                                            | Boolean        | `false`        |

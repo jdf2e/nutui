@@ -180,12 +180,27 @@ NutUI has been used in our production environment, and widely used in the indust
 | [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> Reply 'NutUI' after following | 82957939
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> Reply 'NutUI' after following | 1022545110 |
 
-
 ## Join Us
 
-Please read [*Developer Contributing Guide*](https://nutui.jd.com/#/en-US/guide/contributing) before you create a [Pull Request](https://github.com/jdf2e/nutui/pulls).
+#### NutUI Community
 
-> You are very welcome to contribute code to NutUI. It is highly recommended to read [*How To Ask Questions The Smart Way*](http://www.catb.org/~esr/faqs/smart-questions.html), [*How to Report Bugs Effectively*](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html) and [*Welcome to NutUI  community*](https://jelly.jd.com/article/6320528b92d94a0068685525), then you can get understanding and help more easily.
+[*Welcome To NutUI  Community*](https://github.com/jdf2e/nutui/issues/1789)
+
+#### Contribute to NutUI
+
+There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
+
+You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://github.com/jdf2e/nutui/issues/1671).
+
+## Issue & Discussion
+
+[Report issues to NutUI](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui&lang=en)
+
+> It is highly recommended to read [*How To Ask Questions The Smart Way*](http://www.catb.org/~esr/faqs/smart-questions.html), [*How To Ask Questions Of GitHub Community*](https://github.com/seajs/seajs/issues/545) and [*How to Report Bugs Effectively*](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html), then you can get understanding and help more easily.
+
+[NutUI Discussion](https://github.com/jdf2e/nutui/discussions)
+
+If you have any ideas, questions or suggestions, you can share your opinions here.
 
 ## Contributors
 

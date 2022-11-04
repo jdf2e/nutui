@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <scroll-view
+    <Nut-Scroll-View
       class="nut-elevator__list scrollview"
       :scroll-top="scrollTop"
       :scroll-y="true"
@@ -33,7 +33,7 @@
       <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
         <span class="fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
-    </scroll-view>
+    </Nut-Scroll-View>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
       {{ indexList[codeIndex][acceptKey] }}
     </view>
@@ -57,6 +57,8 @@ import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
+import NutScrollView from '../scrollView/index.taro.vue';
+
 import Taro from '@tarojs/taro';
 interface ElevatorData {
   name: string;
@@ -64,6 +66,9 @@ interface ElevatorData {
   [key: string]: string | number;
 }
 export default create({
+  components: {
+    NutScrollView
+  },
   props: {
     height: {
       type: [Number, String],
