@@ -59,7 +59,7 @@
 <script lang="ts">
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { throttle } from '@/packages/utils/throttle.js';
+import { throttle } from '@/packages/utils/throttle';
 const { create, translate } = createComponent('video');
 
 export default create({
@@ -187,7 +187,7 @@ export default create({
         });
         (state.videoElm as any).addEventListener('ended', playEnded);
 
-        (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000, 1));
+        (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000));
       }
     };
 
