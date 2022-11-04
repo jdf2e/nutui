@@ -143,7 +143,7 @@ NutUI provides several sets of official themes from actual business inside JD.co
 
 NutUI has been used in our production environment, and widely used in the industry for cross-platform development.
 <p>
-<img src="http://storage.360buyimg.com/jdc-article/nutuiDemo/user-cases.jpg" alt="NutUI" />
+<img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" alt="NutUI" />
 </p>
 <p><a href="https://nutui.jd.com/#/case">View more cases</a></p>
 <p>We are collecting more excellent cases, please click <a href="https://get.jd.com/#/survey/index?id=4217247740034539"> here </a> to submit.</p>
