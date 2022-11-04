@@ -16,7 +16,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('useTemplate')">
       <nut-cell is-Link @click="showNotify">{{ translate('useTemplate') }}</nut-cell>
-      <nut-notify v-model:visible="show">
+      <nut-notify v-model:visible="show" :duration="2000">
         <span>Content</span>
       </nut-notify>
     </nut-cell-group>
@@ -95,9 +95,6 @@ export default createDemo({
     const show = ref(false);
     const showNotify = () => {
       show.value = true;
-      setTimeout(() => {
-        show.value = false;
-      }, 2000);
     };
     return {
       baseNotify,
