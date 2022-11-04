@@ -5,7 +5,6 @@ import path from 'path';
 const fs = require('fs-extra');
 import config from './package.json';
 import configPkg from './src/config.json';
-import { transformFinalCode, DEFAULT_Components } from './transformFinalCode';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -43,18 +42,7 @@ export default defineConfig({
               tag.startsWith('picker-view-column')
             );
           },
-          whitespace: 'preserve',
-          nodeTransforms: [
-            (node) => {
-              if (node.type === 1 /* ELEMENT */) {
-                const nodeName = node.tag;
-                if (DEFAULT_Components.has(nodeName)) {
-                  // node.tag = `taro-${nodeName}`,
-                  node.tagType = 1; /* 0: ELEMENT, 1: COMPONENT */
-                }
-              }
-            }
-          ]
+          whitespace: 'preserve'
         }
       }
     }),
@@ -88,9 +76,6 @@ declare module 'vue' {
           content: fileContent + changeContent
         };
       }
-    }),
-    transformFinalCode({
-      include: ['__VUE/.*/index.taro']
     })
   ],
   build: {
@@ -103,7 +88,7 @@ declare module 'vue' {
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale'],
+      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale', '@tarojs/components'],
       input,
       output: {
         banner,
