@@ -2,7 +2,6 @@ import { createVNode, defineComponent, render, h, onMounted } from 'vue';
 import Notify from '../index.vue';
 const defaultOptions = {
   type: 'base',
-  showPopup: false,
   msg: '',
   color: undefined,
   background: undefined,

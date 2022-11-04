@@ -1,6 +1,11 @@
 import { mount } from '@vue/test-utils';
 import Notify from '../index.vue';
-import { nextTick } from 'vue';
+
+const sleep = (delay = 0): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+};
 
 describe('Notify', () => {
   test('base notify', () => {
@@ -49,5 +54,18 @@ describe('Notify', () => {
     const wrapper = mount(Notify, { props: { isWrapTeleport: false, 'class-name': 'xxx' } });
     const rate = wrapper.findAll('.xxx');
     expect(rate.length).toBe(1);
+  });
+
+  test('base notify message', async () => {
+    const wrapper = mount(Notify, {
+      props: {
+        isWrapTeleport: false,
+        visible: true,
+        duration: 3000
+      }
+    });
+    await sleep(3001);
+    const notify = wrapper.find('.nut-popup').find('.nut-notify');
+    expect((notify.element as HTMLElement).style.display).toEqual('');
   });
 });
