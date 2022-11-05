@@ -67,7 +67,7 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 <template>
   <nut-collapse v-model:active="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      Introduce new features of vue3, such as composition API, teleport, emits, etc
+      Introduce new features of vue3, such as Composition API, teleport, emits, etc
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2"> Full use of TypeScript </nut-collapse-item>
   </nut-collapse>

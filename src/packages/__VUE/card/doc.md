@@ -155,7 +155,7 @@ app.use(Price);
 
 | 字段          | 说明             | 类型    | 默认值 |
 | ------------- | ---------------- | ------- | ------ |
-| img-url       | 左侧图片 Url     | String  | -      |
+| img-url       | 左侧图片 URL     | String  | -      |
 | title         | 标题             | String  | -      |
 | price         | 商品价格         | String  | -      |
 | vip-price     | 会员价格         | String  | -      |

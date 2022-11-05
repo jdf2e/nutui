@@ -231,7 +231,7 @@ app.use(Audio);
 
 | Attribute | Description              | Type    | Default    |
 | --------- | ------------------------ | ------- | ---------- |
-| url       | Audio Url                | String  | ''         |
+| url       | Audio URL                | String  | ''         |
 | muted     | Whether to be muted      | Boolean | false      |
 | autoplay  | Whether to autoplay      | Boolean | false      |
 | loop      | Whether to loop playback | Boolean | false      |

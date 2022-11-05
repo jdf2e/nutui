@@ -128,7 +128,7 @@ NutUI provides several sets of official themes from actual business inside JD.co
 
 ## Build Versions
 
-> If you are using AMD environment or build tools such as Webpack, Vite, etc., we recommend using the `es` version. If it is a non-module environment (such as direct reference through the `<script>` tag), it is recommended to use the `umd` compressed version.
+> If you are using AMD environment or build tools such as webpack, Vite, etc., we recommend using the `es` version. If it is a non-module environment (such as direct reference through the `<script>` tag), it is recommended to use the `umd` compressed version.
 
 - es **nutui.es.js**
 
@@ -212,6 +212,6 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui/graphs/c
 
 NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui/releases).
 
-## Github Stargazers
+## GitHub Stargazers
 
 ![stargazers](https://starchart.cc/jdf2e/nutui.svg)
