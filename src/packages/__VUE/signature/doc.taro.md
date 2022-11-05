@@ -15,8 +15,6 @@ const app = createApp();
 app.use(Signature);
 
 ```
-    
-    
  
 ### 修改颜色和签字粗细
 
@@ -28,12 +26,15 @@ app.use(Signature);
       @confirm="confirm"
       @clear="clear"
     />
-  </div>
-setup() {
+</div>
+```
+
+``` javascript
+export default {
+  setup() {
     const state = reactive({
       lineWidth: 4,
-      strokeStyle: 'green',
-      testimg: ''
+      strokeStyle: 'green'
     });
     const clear = () => {
       console.log('清除事件');
@@ -56,6 +57,7 @@ setup() {
     };
     return { ...state, confirm, clear };
   }
+}
 ```
     
 ## API
