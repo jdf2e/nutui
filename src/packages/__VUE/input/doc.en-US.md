@@ -6,17 +6,16 @@ The user can enter content in the text box.
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
-import { Input,Icon } from '@nutui/nutui';
+import { Input, Icon } from '@nutui/nutui';
 // taro
-import { Input,Icon } from '@nutui/nutui-taro';
+import { Input, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
 app.use(Icon);
-
 ```
 
 ### Basic Usage
@@ -25,12 +24,9 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.text" 
-    label="Text" 
-    placeholder="Text" 
-  />
+  <nut-input v-model="state.text" label="Text" placeholder="Text" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -42,7 +38,7 @@ app.use(Icon);
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -54,36 +50,13 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input 
-    label="Text" 
-    placeholder="Text" 
-    v-model="state.text" 
-  />
-  <nut-input 
-    label="Password" 
-    placeholder="Password" 
-    v-model="state.password" 
-    type="password" 
-  />
-  <nut-input 
-    label="Number" 
-    placeholder="Number" 
-    v-model="state.number" 
-    type="number" 
-  />
-  <nut-input 
-    label="Digit" 
-    placeholder="Digit" 
-    v-model="state.digit" 
-    type="digit" 
-  />
-  <nut-input 
-    label="Tel" 
-    placeholder="Tel" 
-    v-model="state.tel" 
-    type="tel" 
-  />
+  <nut-input label="Text" placeholder="Text" v-model="state.text" />
+  <nut-input label="Password" placeholder="Password" v-model="state.password" type="password" />
+  <nut-input label="Number" placeholder="Number" v-model="state.number" type="number" />
+  <nut-input label="Digit" placeholder="Digit" v-model="state.digit" type="digit" />
+  <nut-input label="Tel" placeholder="Tel" v-model="state.tel" type="tel" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -99,7 +72,7 @@ app.use(Icon);
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -111,19 +84,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input 
-    label="Text" 
-    placeholder="Readonly" 
-    v-model="state.readonly" 
-    readonly 
-  />
-  <nut-input 
-    label="Text" 
-    placeholder="Disabled" 
-    v-model="state.disabled" 
-    disabled 
-  />
+  <nut-input label="Text" placeholder="Readonly" v-model="state.readonly" readonly />
+  <nut-input label="Text" placeholder="Disabled" v-model="state.disabled" disabled />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -136,7 +100,7 @@ app.use(Icon);
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -150,63 +114,39 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.showIcon" 
-    label="Text" 
-    placeholder="Show Icon" 
-    left-icon="dongdong" 
-    right-icon="ask2" 
-  />
-  <nut-input 
-    v-model="state.clear" 
-    label="Text" 
-    placeholder="Show Clear Icon" 
-    clearable
-    clearSize="14" 
-  />
+  <nut-input v-model="state.showIcon" label="Text" placeholder="Show Icon" left-icon="dongdong" right-icon="ask2" />
+  <nut-input v-model="state.clear" label="Text" placeholder="Show Clear Icon" clearable clearSize="14" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
         showIcon: '',
-        required: '',
+        required: ''
       });
       return {
         state
       };
     }
-  }
+  };
 </script>
 ```
 
 :::
+
 ### Error Info
 
 :::demo
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.required" 
-    label="Text" 
-    placeholder="Required" 
-    required 
-  />
-  <nut-input 
-    v-model="state.error1" 
-    label="Text" 
-    placeholder="Error" 
-    error 
-  />
-  <nut-input 
-    v-model="state.error2" 
-    label="Text" 
-    placeholder="Error Message" 
-    error-message="Error Message" 
-  />
+  <nut-input v-model="state.required" label="Text" placeholder="Required" required />
+  <nut-input v-model="state.error1" label="Text" placeholder="Error" error />
+  <nut-input v-model="state.error2" label="Text" placeholder="Error Message" error-message="Error Message" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -214,13 +154,13 @@ The user can enter content in the text box. Configure the icons on both sides of
       const state = reactive({
         required: '',
         error1: '',
-        error2: '',
+        error2: ''
       });
       return {
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -232,18 +172,13 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.buttonVal" 
-    label="Code"
-    placeholder="Please enter code"
-    clearable 
-    center 
-  >
+  <nut-input v-model="state.buttonVal" label="Code" placeholder="Please enter code" clearable center>
     <template #button>
       <nut-button size="small" type="primary">Send</nut-button>
     </template>
   </nut-input>
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -255,7 +190,7 @@ The user can enter content in the text box. Configure the icons on both sides of
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -267,12 +202,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.format1" 
-    label="Text" 
-    placeholder="Format On Change" 
-    :formatter="formatter" 
-  />
+  <nut-input v-model="state.format1" label="Text" placeholder="Format On Change" :formatter="formatter" />
   <nut-input
     v-model="state.format2"
     label="Text"
@@ -281,6 +211,7 @@ The user can enter content in the text box. Configure the icons on both sides of
     format-trigger="onBlur"
   />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -295,7 +226,7 @@ The user can enter content in the text box. Configure the icons on both sides of
         formatter
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -317,6 +248,7 @@ The user can enter content in the text box. Configure the icons on both sides of
     placeholder="Message"
   />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -328,7 +260,7 @@ The user can enter content in the text box. Configure the icons on both sides of
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -340,19 +272,10 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.align1" 
-    label="Text" 
-    label-align="right" 
-    placeholder="Label Align" 
-  />
-  <nut-input 
-    v-model="state.align2" 
-    label="Text" 
-    input-align="right" 
-    placeholder="Input Align"
-   />
+  <nut-input v-model="state.align1" label="Text" label-align="right" placeholder="Label Align" />
+  <nut-input v-model="state.align2" label="Text" input-align="right" placeholder="Input Align" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -365,7 +288,7 @@ The user can enter content in the text box. Configure the icons on both sides of
         state
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -377,17 +300,10 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input 
-    v-model="state.noBorder1" 
-    :border="false" 
-    label="No Border" 
-  />
-  <nut-input 
-    v-model="state.noBorder2" 
-    :border="false" 
-    label="No Border" 
-  />
+  <nut-input v-model="state.noBorder1" :border="false" label="No Border" />
+  <nut-input v-model="state.noBorder2" :border="false" label="No Border" />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -400,11 +316,12 @@ The user can enter content in the text box. Configure the icons on both sides of
         state
       };
     }
-  }
+  };
 </script>
 ```
 
 :::
+
 ### Click Event
 
 :::demo
@@ -428,6 +345,7 @@ The user can enter content in the text box. Configure the icons on both sides of
     @click-right-icon="clickRightIcon"
   />
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -472,71 +390,65 @@ The user can enter content in the text box. Configure the icons on both sides of
         clickRightIcon
       };
     }
-  }
+  };
 </script>
 ```
 
 :::
+
 ## API
+
 ### Props
 
-| Attribute   | Description               | Type       | Default  |
-|--------------|----------------------------------------|----------------|---------|
-| v-model      | Input value, two-way binding           | String         | -       |
-| type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
-| placeholder  | Placeholder when the input box is empty  | String         | -       |
-| label        | Left text                                | String         | -       |
-| label-class  | Left text extra class name               | String | -  |
-| label-width  | Label width, default unit is `px`        | String、Number | `80`    |
-| label-align  | Label align,  eg `left`、`center`、`right` | String | `left` |
-| input-align  | Input align, eg `left`、`center`、`right` | String | `left` |
-| colon        | Whether to display colon after label     | Boolean        | `false` |
-| required     | Whether to show required mark            | Boolean        | `false` |
-| border       | Whether to show inner borde         | Boolean        | `true` |
-| disabled     | Whether to disable field            | Boolean        | `false` |
-| readonly     | Whether to be readonly              | Boolean        | `false` |
-| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| max-length   | Max length of value                  | String、Number  | -       |
-| clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clear-icon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
-| clear-size   | Clear Icon `font-size`               | String        | `14`  |
-| left-icon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| right-icon   | Right side Icon name, [name of icon](#/icon) | String        | - |
-| left-icon-size    | Left side Icon `font-size`    | String        | `14`  |
-| right-icon-size   | Right side Icon `font-size`   | String        | `14`  |
-| show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
-| error         | Whether to mark the input content in red   | Boolean | `false`  |
-| error-message | Error message            | String、Number | - |
-| error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
-| formatter      | Input value formatter    | `(val: string) => string` | - |
-| format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type   | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
-| adjust-position| Whether to automatically push the page up when the keyboard pops up, only native     | Boolean | `true` |
+| Attribute           | Description                                                                                                                                                  | Type                      | Default      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ------------ |
+| v-model             | Input value, two-way binding                                                                                                                                 | String                    | -            |
+| type                | Input type, support all native types and `textarea` `number` `digit` type                                                                                    | String                    | `text`       |
+| placeholder         | Placeholder when the input box is empty                                                                                                                      | String                    | -            |
+| label               | Left text                                                                                                                                                    | String                    | -            |
+| label-class         | Left text extra class name                                                                                                                                   | String                    | -            |
+| label-width         | Label width, default unit is `px`                                                                                                                            | String、Number            | `80`         |
+| label-align         | Label align, eg `left`、`center`、`right`                                                                                                                    | String                    | `left`       |
+| input-align         | Input align, eg `left`、`center`、`right`                                                                                                                    | String                    | `left`       |
+| colon               | Whether to display colon after label                                                                                                                         | Boolean                   | `false`      |
+| required            | Whether to show required mark                                                                                                                                | Boolean                   | `false`      |
+| border              | Whether to show inner border                                                                                                                                 | Boolean                   | `true`       |
+| disabled            | Whether to disable field                                                                                                                                     | Boolean                   | `false`      |
+| readonly            | Whether to be readonly                                                                                                                                       | Boolean                   | `false`      |
+| autofocus           | Whether to auto focus, unsupported in iOS                                                                                                                    | Boolean                   | `false`      |
+| max-length          | Max length of value                                                                                                                                          | String、Number            | -            |
+| clearable           | Whether to be clearable                                                                                                                                      | Boolean                   | `false`      |
+| clear-icon          | Clear Icon name, [name of icon](#/icon)                                                                                                                      | String                    | `mask-close` |
+| clear-size          | Clear Icon `font-size`                                                                                                                                       | String                    | `14`         |
+| left-icon           | Left side Icon name, [name of icon](#/icon)                                                                                                                  | String                    | -            |
+| right-icon          | Right side Icon name, [name of icon](#/icon)                                                                                                                 | String                    | -            |
+| left-icon-size      | Left side Icon `font-size`                                                                                                                                   | String                    | `14`         |
+| right-icon-size     | Right side Icon `font-size`                                                                                                                                  | String                    | `14`         |
+| show-word-limit     | Whether to show word limit, need to set the `max-length` prop                                                                                                | Boolean                   | `false`      |
+| error               | Whether to mark the input content in red                                                                                                                     | Boolean                   | `false`      |
+| error-message       | Error message                                                                                                                                                | String、Number            | -            |
+| error-message-align | Error message align, eg `left`、`center`、`right`                                                                                                            | String                    | -            |
+| formatter           | Input value formatter                                                                                                                                        | `(val: string) => string` | -            |
+| format-trigger      | When to format value, eg `onChange`、`onBlur`                                                                                                                | String                    | -            |
+| confirm-type        | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String                    | `done`       |
+| adjust-position     | Whether to automatically push the page up when the keyboard pops up, only native                                                                             | Boolean                   | `true`       |
 
 ### Events
 
-| Event   | Description      | Arguments    |
-|--------|----------------|-------------|
-| update:model-value | Emitted when input value changed | val  |
-| focus  | Emitted when input is focused     | val  ,event |
-| blur   | Emitted when input is blurred     | val ,event  |
-| clear  | Emitted when the clear icon is clicked   | val ,event  |
-| click  | Emitted when component is clicked	      | val ,event  |
-| click-input      | Emitted when the input is clicked      | val ,event  |
-| click-left-icon  | Emitted when the left icon is clicked      | val ,event  |
-| click-right-icon | Emitted when the right icon is clicked      | val ,event  |
+| Event              | Description                            | Arguments  |
+| ------------------ | -------------------------------------- | ---------- |
+| update:model-value | Emitted when input value changed       | val        |
+| focus              | Emitted when input is focused          | val ,event |
+| blur               | Emitted when input is blurred          | val ,event |
+| clear              | Emitted when the clear icon is clicked | val ,event |
+| click              | Emitted when component is clicked      | val ,event |
+| click-input        | Emitted when the input is clicked      | val ,event |
+| click-left-icon    | Emitted when the left icon is clicked  | val ,event |
+| click-right-icon   | Emitted when the right icon is clicked | val ,event |
 
 ### Slots
 
-| Name  | Description     | 
-|-------|----------|
-| button | Insert button |
-| input `v3.1.22` | Custom input |
-
-
-
-
-
-
-
-
+| Name            | Description   |
+| --------------- | ------------- |
+| button          | Insert button |
+| input `v3.1.22` | Custom input  |

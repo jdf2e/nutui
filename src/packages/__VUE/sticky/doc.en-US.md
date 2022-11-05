@@ -7,7 +7,6 @@ The effect is the same as `position: sticky` in `CSS`, which can be used for com
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 // vue
 import { Sticky } from '@nutui/nutui';
@@ -16,7 +15,6 @@ import { Sticky } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Sticky);
-
 ```
 
 ### Basic Usage
@@ -31,10 +29,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -52,10 +51,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -73,6 +73,7 @@ app.use(Sticky);
     </nut-sticky>
   </div>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
@@ -84,17 +85,19 @@ app.use(Sticky);
     }
   };
 </script>
-<style lang="scss" scoped>
-.sticky-container{
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-}
+
+<style scoped>
+  .sticky-container {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+  }
 </style>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -112,10 +115,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -125,17 +129,17 @@ app.use(Sticky);
 
 ### Props
 
-| Attribute    | Description                      | Type   | Default          |
-|--------------|----------------------------------|--------|------------------|
-| position         | Adsorption position（`top`、`bottom`）               | String | `top`                |
-| top         | Ceiling distance               | Number | `0`                |
-| bottom         | Suction distance               | Number | `0`                |
-| container         | The 'HTML' node of the container needs to specify the `id` at the same time in the miniProgram        | Element | -                |
-| z-index         | Level of adsorption               | Number | `2000`               |
+| Attribute | Description                                                                                    | Type    | Default |
+| --------- | ---------------------------------------------------------------------------------------------- | ------- | ------- |
+| position  | Adsorption position（`top`、`bottom`）                                                         | String  | `top`   |
+| top       | Ceiling distance                                                                               | Number  | `0`     |
+| bottom    | Suction distance                                                                               | Number  | `0`     |
+| container | The 'HTML' node of the container needs to specify the `id` at the same time in the miniProgram | Element | -       |
+| z-index   | Level of adsorption                                                                            | Number  | `2000`  |
 
 ### Events
 
-| Event | Description                  | Arguments   |
-|--------|----------------|--------------|
-| change  | Triggered when the adsorption state changes | `val: Boolean` |
-| scroll  | Triggered when scrolling | `{ top: Number, fixed: Boolean }` |
+| Event  | Description                                 | Arguments                         |
+| ------ | ------------------------------------------- | --------------------------------- |
+| change | Triggered when the adsorption state changes | `val: Boolean`                    |
+| scroll | Triggered when scrolling                    | `{ top: Number, fixed: Boolean }` |

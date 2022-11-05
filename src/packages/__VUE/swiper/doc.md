@@ -9,9 +9,9 @@
 ```javascript
 import { createApp } from 'vue';
 //vue
-import { Swiper,SwiperItem } from '@nutui/nutui';
+import { Swiper, SwiperItem } from '@nutui/nutui';
 //taro
-import { Swiper,SwiperItem } from '@nutui/nutui-taro';
+import { Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swiper);
@@ -44,24 +44,28 @@ app.use(SwiperItem);
     </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        page: 2,
+        page: 2
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -75,11 +79,12 @@ app.use(SwiperItem);
 ```html
 <template>
   <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
-     <nut-swiper-item v-for="item in list" :key="item">
-        <img :src="item" alt="" />
-      </nut-swiper-item>
+    <nut-swiper-item v-for="item in list" :key="item">
+      <img :src="item" alt="" />
+    </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, onMounted } from 'vue';
   export default {
@@ -98,17 +103,20 @@ app.use(SwiperItem);
           ];
         }, 3000);
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -124,11 +132,12 @@ app.use(SwiperItem);
 ```html
 <template>
   <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
-     <nut-swiper-item v-for="item in list" :key="item">
-        <img :src="item" alt="" />
-      </nut-swiper-item>
+    <nut-swiper-item v-for="item in list" :key="item">
+      <img :src="item" alt="" />
+    </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, onMounted } from 'vue';
   export default {
@@ -147,17 +156,20 @@ app.use(SwiperItem);
           state.list.splice(1, 1);
         }, 3000);
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -187,24 +199,28 @@ app.use(SwiperItem);
     </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        page2: 2,
+        page2: 2
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -220,23 +236,24 @@ app.use(SwiperItem);
 ```html
 <template>
   <nut-swiper :init-page="page3" :loop="true" @change="change">
-      <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </nut-swiper-item>
-      <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
-      </nut-swiper-item>
-      <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </nut-swiper-item>
-      <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </nut-swiper-item>
-      <template v-slot:page>
-        <div class="page"> {{ current }}/4 </div>
-      </template>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+    </nut-swiper-item>
+    <template v-slot:page>
+      <div class="page"> {{ current }}/4 </div>
+    </template>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -248,17 +265,21 @@ app.use(SwiperItem);
       const change = (index: number) => {
         state.current = index + 1;
       };
-      return { ...toRefs(state), change };
+      return {
+        ...toRefs(state),
+        change
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
   .page {
     position: absolute;
@@ -293,14 +314,15 @@ app.use(SwiperItem);
     </nut-swiper>
     <view class="nut-swiper-btns">
       <span class="nut-swiper-btns__left" @click="handlePrev">
-        <nut-icon name='left'></nut-icon>
+        <nut-icon name="left"></nut-icon>
       </span>
       <span class="nut-swiper-btns__left" @click="handleNext">
-        <nut-icon name='right'></nut-icon>
+        <nut-icon name="right"></nut-icon>
       </span>
     </view>
   </view>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, ref, Ref } from 'vue';
   export default {
@@ -313,7 +335,7 @@ app.use(SwiperItem);
           'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-        ],
+        ]
       });
       const handlePrev = () => {
         swiper.value.prev();
@@ -321,23 +343,29 @@ app.use(SwiperItem);
       const handleNext = () => {
         swiper.value.next();
       };
-      
-      return { ...toRefs(state), swiper, handlePrev, handleNext };
+
+      return {
+        ...toRefs(state),
+        swiper,
+        handlePrev,
+        handleNext
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
-  .demo-box{
+
+<style scoped>
+  .demo-box {
     position: relative;
   }
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
-  .nut-swiper-btns{
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
+  }
+  .nut-swiper-btns {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -345,14 +373,14 @@ app.use(SwiperItem);
     z-index: 1;
     display: flex;
     justify-content: space-between;
-    span{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 30px;
-      background-color: rgba(0,0,0,.2);
-    }
+  }
+  .nut-swiper-btns span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
 </style>
 ```
@@ -367,7 +395,15 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page4" :loop="true" auto-play="3000" direction="vertical" height="150" :pagination-visible="true" style="height: 150px">
+  <nut-swiper
+    :init-page="page4"
+    :loop="true"
+    auto-play="3000"
+    direction="vertical"
+    height="150"
+    :pagination-visible="true"
+    style="height: 150px;"
+  >
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
@@ -382,6 +418,7 @@ app.use(SwiperItem);
     </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -389,34 +426,34 @@ app.use(SwiperItem);
       const state = reactive({
         page4: 0
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-    ::v-deep(.nut-swiper-pagination-vertical) {
-      i{
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        &.active{
-          height: 18px;
-          border-radius: 5px;
-        }
-      }
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
+  }
+  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i.active {
+    height: 18px;
+    border-radius: 5px;
   }
 </style>
 ```
 
 :::
-
 
 ### 水平居中展示
 
@@ -426,7 +463,7 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
+  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px;">
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
@@ -441,6 +478,7 @@ app.use(SwiperItem);
     </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -448,17 +486,20 @@ app.use(SwiperItem);
       const state = reactive({
         page: 0
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -473,7 +514,14 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
+  <nut-swiper
+    :init-page="page"
+    :loop="false"
+    direction="vertical"
+    height="220"
+    :is-center="true"
+    style="height: 300px;"
+  >
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
@@ -488,6 +536,7 @@ app.use(SwiperItem);
     </nut-swiper-item>
   </nut-swiper>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -495,58 +544,56 @@ app.use(SwiperItem);
       const state = reactive({
         page: 0
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .nut-swiper-item {
     line-height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
 
 :::
 
-
 ## API
 
 ### Props
 
-| 参数                   | 说明                                                        | 类型           | 默认值      |
-| ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
-| height                | 轮播卡片的高度                                                    | String、Number | 0        |
-| direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
-| pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
-| pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |
-| loop           | 是否循环轮播                                                | Boolean        | true       |
-| duration                | 动画时长（单位是ms）                                                | Number、String        | 500        |
-| auto-play | 自动轮播时长，0表示不会自动轮播                                          | Number、String        | 0        |
-| init-page               | 初始化索引值                   | Number、String         | 0    |
-| touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
-| is-center               | 是否居中展示，必须传对应的`width` 和 `height`                    | Boolean         | false    |
-
-
+| 参数               | 说明                                          | 类型           | 默认值            |
+| ------------------ | --------------------------------------------- | -------------- | ----------------- |
+| width              | 轮播卡片的宽度                                | Number、String | window.innerWidth |
+| height             | 轮播卡片的高度                                | String、Number | 0                 |
+| direction          | 轮播方向,可选值`horizontal`,`vertical`        | String         | 'horizontal'      |
+| pagination-visible | 分页指示器是否展示                            | Boolean        | false             |
+| pagination-color   | 分页指示器选中的颜色                          | String         | '#fff'            |
+| loop               | 是否循环轮播                                  | Boolean        | true              |
+| duration           | 动画时长（单位是 ms）                         | Number、String | 500               |
+| auto-play          | 自动轮播时长，0 表示不会自动轮播              | Number、String | 0                 |
+| init-page          | 初始化索引值                                  | Number、String | 0                 |
+| touchable          | 是否可触摸滑动                                | Boolean        | true              |
+| is-preventDefault  | 滑动过程中是否禁用默认事件                    | Boolean        | true              |
+| is-stopPropagation | 滑动过程中是否禁止冒泡                        | Boolean        | true              |
+| is-center          | 是否居中展示，必须传对应的`width` 和 `height` | Boolean        | false             |
 
 ### Events
 
-| 事件名           | 说明                   | 回调参数     |
-| ---------------- | ---------------------- | ------------ |
-| change            | 滑动之后的回调         | 当前索引值index |
-
-
+| 事件名 | 说明           | 回调参数         |
+| ------ | -------------- | ---------------- |
+| change | 滑动之后的回调 | 当前索引值 index |
 
 ### Swipe 方法
 
-| 事件名           | 说明                   | 参数     |
-| ---------------- | ---------------------- | ------------ |
-| prev            | 切换到上一页         | - |
-| next            | 切换到下一页         | - |
-| to            | 切换到指定轮播         | index:number |
+| 事件名 | 说明           | 参数         |
+| ------ | -------------- | ------------ |
+| prev   | 切换到上一页   | -            |
+| next   | 切换到下一页   | -            |
+| to     | 切换到指定轮播 | index:number |

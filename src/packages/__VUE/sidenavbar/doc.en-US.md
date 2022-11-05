@@ -6,7 +6,7 @@ For content selection and switching
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui';
@@ -23,7 +23,7 @@ app.use(SideNavBarItem);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick1">
     <span><label>right</label></span>
@@ -43,6 +43,7 @@ app.use(SideNavBarItem);
     </nut-sidenavbar>
   </nut-popup>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -50,7 +51,7 @@ app.use(SideNavBarItem);
       const state = reactive({
         show1: false,
         width: '80%',
-        height: '100%',
+        height: '100%'
       });
 
       const handleClick1 = () => {
@@ -62,25 +63,30 @@ app.use(SideNavBarItem);
         handleClick1
       };
     }
-  }
+  };
 </script>
 ```
 
 :::
 
 ### Nesting (up to three layers recommended)
+
 > The miniProgram does not support asynchronous loading temporarily
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick3">
     <span><label>show</label></span>
   </nut-cell>
   <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
     <nut-sidenavbar :show="show3">
-      <nut-sidenavbaritem ikey="1" title="Face recognition" @click="handleClick4('Face recognition')"></nut-sidenavbaritem>
+      <nut-sidenavbaritem
+        ikey="1"
+        title="Face recognition"
+        @click="handleClick4('Face recognition')"
+      ></nut-sidenavbaritem>
       <nut-sidenavbaritem ikey="2" title="natural language processing"></nut-sidenavbaritem>
       <nut-subsidenavbar title="image understanding" ikey="3" :open="false">
         <nut-sidenavbaritem ikey="4" title="Dish identification"></nut-sidenavbaritem>
@@ -104,6 +110,7 @@ app.use(SideNavBarItem);
     </nut-sidenavbar>
   </nut-popup>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -121,21 +128,19 @@ app.use(SideNavBarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
+              name: 'async abc16',
               arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
+              name: 'async abc17',
               arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
             }
           ];
         }, 2000);
       };
 
-      const handleClick4 = (msg: string) => {
-        
-      }
+      const handleClick4 = (msg: string) => {};
 
       return {
         ...toRefs(state),
@@ -143,7 +148,7 @@ app.use(SideNavBarItem);
         handleClick4
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -153,36 +158,33 @@ app.use(SideNavBarItem);
 
 ### SideNavBar Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | Navigation indent width                                                    | Number、String  | `15`
+| Attribute | Description             | Type           | Default |
+| --------- | ----------------------- | -------------- | ------- |
+| offset    | Navigation indent width | Number、String | `15`    |
 
 ### SubSideNavBar Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | String  | ``
-| ikey                 | Navigation unique identifier                                                    | String、Number  | ``
-| open                 | Whether navigation is expanded by default                                                    | Boolean  | `true`
+| Attribute | Description                               | Type           | Default |
+| --------- | ----------------------------------------- | -------------- | ------- |
+| title     | Navigation title                          | String         | ``      |
+| ikey      | Navigation unique identifier              | String、Number | ``      |
+| open      | Whether navigation is expanded by default | Boolean        | `true`  |
 
 ### SideNavBarItem Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | String  | `15`
-| ikey                 | Navigation unique identifier                                                    | String、Number  | ``
-
+| Attribute | Description                  | Type           | Default |
+| --------- | ---------------------------- | -------------- | ------- |
+| title     | Navigation title             | String         | `15`    |
+| ikey      | Navigation unique identifier | String、Number | ``      |
 
 ### SubSideNavBar Events
 
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
-| title-click | Navigation Click | - |
+| Event       | Description      | Arguments |
+| ----------- | ---------------- | --------- |
+| title-click | Navigation Click | -         |
 
 ### SideNavBarItem Events
 
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
-| click | Navigation Click | - |
-
-
+| Event | Description      | Arguments |
+| ----- | ---------------- | --------- |
+| click | Navigation Click | -         |

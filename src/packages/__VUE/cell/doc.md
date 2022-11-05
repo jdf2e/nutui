@@ -13,7 +13,7 @@ import { Cell, CellGroup, Icon } from '@nutui/nutui';
 const app = createApp();
 app.use(Cell);
 app.use(CellGroup);
-app.use(Icon)
+app.use(Icon);
 ```
 
 ### 基础用法
@@ -27,6 +27,7 @@ app.use(Icon)
   <nut-cell title="点击测试" @click="testClick"></nut-cell>
   <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 </template>
+
 <script>
   import { ref } from 'vue';
   import { Toast } from '@nutui/nutui';
@@ -36,7 +37,10 @@ app.use(Icon)
       const testClick = (event) => {
         Toast.text('点击事件');
       };
-      return { testClick, switchChecked };
+      return {
+        testClick,
+        switchChecked
+      };
     }
   };
 </script>
@@ -71,8 +75,6 @@ app.use(Icon)
 
 :::
 
-
-
 ### 直接使用插槽(slot title)
 
 :::demo
@@ -80,9 +82,9 @@ app.use(Icon)
 ```html
 <template>
   <nut-cell desc="描述文字">
-      <template v-slot:title>
-        <span>Title <b style="color: red">1</b></span>
-      </template>
+    <template v-slot:title>
+      <span>Title <b style="color: red;">1</b></span>
+    </template>
   </nut-cell>
 </template>
 ```
@@ -119,6 +121,7 @@ app.use(Icon)
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
@@ -127,7 +130,10 @@ app.use(Icon)
         console.log('点击事件');
       };
       const switchChecked = ref(true);
-      return { testClick, switchChecked };
+      return {
+        testClick,
+        switchChecked
+      };
     }
   };
 </script>
@@ -179,6 +185,7 @@ app.use(Icon)
 ```
 
 :::
+
 ### 垂直居中
 
 通过 `center` 属性可以让 Cell 的左右内容都垂直居中。
@@ -198,14 +205,14 @@ app.use(Icon)
 ### CellGroup Props
 
 | 字段  | 说明     | 类型   | 默认值 |
-|-------|----------|--------|--------|
+| ----- | -------- | ------ | ------ |
 | title | 分组标题 | String | -      |
 | desc  | 分组描述 | String | -      |
 
 ### Cell Props
 
 | 字段                    | 说明                                                                                           | 类型             | 默认值           |
-|-------------------------|------------------------------------------------------------------------------------------------|------------------|------------------|
+| ----------------------- | ---------------------------------------------------------------------------------------------- | ---------------- | ---------------- |
 | title                   | 标题名称                                                                                       | String           | -                |
 | sub-title               | 左侧副标题                                                                                     | String           | -                |
 | desc                    | 右侧描述                                                                                       | String           | -                |
@@ -219,20 +226,19 @@ app.use(Icon)
 | replace `小程序不支持`  | 是否在跳转时替换当前页面历史                                                                   | Boolean          | false            |
 | center`v3.1.21`         | 是否使内容垂直居中                                                                             | Boolean          | false            |
 | size`v3.1.22`           | 单元格大小，可选值为 `large`                                                                   | String           | -                |
-| font-class-name`v3.2.1` | 自定义icon 字体基础类名                                                                        | string           | `nutui-iconfont` |
-| class-prefix`v3.2.1`    | 自定义icon 类名前缀，用于使用自定义图标                                                        | string           | `nut-icon`       |
-
+| font-class-name`v3.2.1` | 自定义 icon 字体基础类名                                                                       | string           | `nutui-iconfont` |
+| class-prefix`v3.2.1`    | 自定义 icon 类名前缀，用于使用自定义图标                                                       | string           | `nut-icon`       |
 
 ### Cell Events
 
 | 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
+| ----- | -------- | ----------- |
 | click | 点击事件 | event:Event |
 
 ### Cell Slots
 
 | 名称            | 说明                  |
-|-----------------|-----------------------|
+| --------------- | --------------------- |
 | icon `v3.1.4`   | 自定义左侧`icon`区域  |
 | default         | 自定义内容            |
 | link            | 自定义右侧`link`区域  |
@@ -241,6 +247,6 @@ app.use(Icon)
 ### CellGroup Slots
 
 | 名称            | 说明                  |
-|-----------------|-----------------------|
+| --------------- | --------------------- |
 | title `v3.1.10` | 自定义`title`标题区域 |
 | desc `v3.1.12`  | 自定义`desc`描述区域  |

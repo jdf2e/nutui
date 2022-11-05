@@ -26,15 +26,10 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="columns"
-    title="Choose City"
-    @change="change"
-    @confirm="confirm"
-  >
+  <nut-picker v-model:visible="show" :columns="columns" title="Choose City" @change="change" @confirm="confirm">
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -50,15 +45,21 @@ app.use(OverLay);
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {
+        show,
+        desc,
+        columns,
+        change,
+        confirm
+      };
     }
   };
 </script>
@@ -75,15 +76,10 @@ The default selection is implemented by setting `modelValue`, which is an array 
 ```html
 <template>
   <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
-  <nut-picker
-    v-model="selectedValue"
-    v-model:visible="show"
-    :columns="columns"
-    title="Choose City"
-    @confirm="confirm"
-  >
+  <nut-picker v-model="selectedValue" v-model:visible="show" :columns="columns" title="Choose City" @confirm="confirm">
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -100,12 +96,18 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
-      }
 
-      return {show,desc,columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        desc.value = selectedValue.join(',');
+      };
+
+      return {
+        show,
+        desc,
+        columns,
+        selectedValue,
+        confirm
+      };
     }
   };
 </script>
@@ -130,6 +132,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
   >
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -146,12 +149,18 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
-      }
 
-      return {show,desc,columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        desc.value = selectedValue.join(',');
+      };
+
+      return {
+        show,
+        desc,
+        columns,
+        selectedValue,
+        confirm
+      };
     }
   };
 </script>
@@ -166,15 +175,10 @@ The default selection is implemented by setting `modelValue`, which is an array 
 ```html
 <template>
   <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
-    <nut-picker
-      v-model:visible="show"
-      :columns="multipleColumns"
-      title="Choose City"
-      @confirm="confirm"
-      @change="change"
-    >
-    </nut-picker>
+  <nut-picker v-model:visible="show" :columns="multipleColumns" title="Choose City" @confirm="confirm" @change="change">
+  </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -197,15 +201,21 @@ The default selection is implemented by setting `modelValue`, which is an array 
           { text: 'Evening', value: 'Evening' }
         ]
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {
+        show,
+        desc,
+        columns,
+        change,
+        confirm
+      };
     }
   };
 </script>
@@ -231,13 +241,14 @@ Use the children field of the Columns attribute to cascade options
     @change="change"
   ></nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
       const desc = ref('');
-      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
+      const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
       const cascaderColumns = ref([
         {
           text: 'ZheJiang',
@@ -284,15 +295,22 @@ Use the children field of the Columns attribute to cascade options
           ]
         }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
+      return {
+        show,
+        desc,
+        selectedCascader,
+        cascaderColumns,
+        change,
+        confirm
+      };
     }
   };
 </script>
@@ -315,6 +333,7 @@ Use the children field of the Columns attribute to cascade options
     @confirm="confirm"
   ></nut-picker>
 </template>
+
 <script>
   import { ref, onMounted } from 'vue';
   export default {
@@ -340,7 +359,7 @@ Use the children field of the Columns attribute to cascade options
           asyncValue.value = ['ZangZu'];
         }, 500);
       });
-      
+
       const confirm = ( { selectedValue,selectedOptions })=>{
         desc.value = selectedValue.join(',');
       }
@@ -362,15 +381,11 @@ Slots are arranged at the bottom and top respectively for custom Settings
 ```html
 <template>
   <nut-cell title="Valid Time" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="asyncColumns"
-    title="Choose Date"
-    @confirm="confirm"
-  >
-   <nut-button block  @click="alwaysFun">Always</nut-button>
+  <nut-picker v-model:visible="show" :columns="asyncColumns" title="Choose Date" @confirm="confirm">
+    <nut-button block @click="alwaysFun">Always</nut-button>
   </nut-picker>
 </template>
+
 <script>
   import { ref, onMounted } from 'vue';
   export default {
@@ -396,20 +411,25 @@ Slots are arranged at the bottom and top respectively for custom Settings
             { text: '2022-11', value: 'November' },
             { text: '2022-12', value: 'December' }
           ];
-
         }, 500);
       });
-      
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
+      };
 
       const alwaysFun = () => {
         showEffect.value = false;
         desc.effect = 'Always';
       };
 
-      return {show,desc,alwaysFun,effectColumns, confirm};
+      return {
+        show,
+        desc,
+        alwaysFun,
+        effectColumns,
+        confirm
+      };
     }
   };
 </script>
@@ -421,38 +441,38 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| v-model:value         | Default Index               | Array | []              |
-| v-model:visible          | Is Show               | Boolean | -                |
-| columns         | Columns data              | Array | -                |
-| title                  | Toolbar title                   | String  | -      |
-| cancel-text            | Text of cancel button               | String  | cancel   |
-| ok-text                | Text of confirm button               | String  | confirm   |
-| three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
-| swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
-| safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| Attribute                       | Description                                                                                                                | Type           | Default |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------- | ------- |
+| v-model:value                   | Default Index                                                                                                              | Array          | []      |
+| v-model:visible                 | Is Show                                                                                                                    | Boolean        | -       |
+| columns                         | Columns data                                                                                                               | Array          | -       |
+| title                           | Toolbar title                                                                                                              | String         | -       |
+| cancel-text                     | Text of cancel button                                                                                                      | String         | cancel  |
+| ok-text                         | Text of confirm button                                                                                                     | String         | confirm |
+| three-dimensional `v3.1.23`     | Turn on 3D effects                                                                                                         | Boolean        | true    |
+| swipe-duration`v3.2.2`          | Duration of the momentum animation                                                                                         | Number、String | 1000    |
+| safe-area-inset-bottom `v3.2.4` | Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is `bottom` | Boolean        | `false` |
 
 ### Data Structure of Columns
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| text        | Text of column              | String|Number |               |
-| value          | Value of column               | String|Number |            |
-| children         | Cascader Option              | Array | -                |
-| className                  | Extra CalssName                   | String  |      |
+| Attribute | Description     | Type   | Default |
+| --------- | --------------- | ------ | ------- | --- |
+| text      | Text of column  | String | Number  |     |
+| value     | Value of column | String | Number  |     |
+| children  | Cascader Option | Array  | -       |
+| className | Extra ClassName | String |         |
 
 ### Events
 
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| confirm  | Emitted when click confirm button. | { selectedValue, selectedOptions } |
-| close  | Emitted when click close button. | { selectedValue, selectedOptions } |
+| Event   | Description                          | Arguments                                       |
+| ------- | ------------------------------------ | ----------------------------------------------- |
+| confirm | Emitted when click confirm button.   | { selectedValue, selectedOptions }              |
+| close   | Emitted when click close button.     | { selectedValue, selectedOptions }              |
 | change  | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
 
 ### Slots
 
-| Event | Description           |
-|--------|----------------|
-| default  | Custom content bottom columns |
-| top  | Custom content top columns |
+| Event   | Description                   |
+| ------- | ----------------------------- |
+| default | Custom content bottom columns |
+| top     | Custom content top columns    |

@@ -6,7 +6,7 @@ For delivery time selection
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui/nutui';
@@ -26,12 +26,18 @@ app.use(Overlay);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick1">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+  <nut-timeselect
+    v-model:visible="visible1"
+    height="50%"
+    :current-key="currentKey1"
+    :current-time="currentTime1"
+    @select="handleSelected1"
+  >
     <template #pannel>
       <nut-timepannel name="February 23rd(Today)" pannel-key="0" @change="handleChange1"></nut-timepannel>
       <nut-timepannel name="February 24th(Wednesday)" pannel-key="1" @change="handleChange1"></nut-timepannel>
@@ -41,10 +47,10 @@ app.use(Overlay);
     </template>
   </nut-timeselect>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
   export default {
-    props: {},
     setup() {
       const { proxy } = getCurrentInstance() as any;
       const state = reactive({
@@ -59,8 +65,8 @@ app.use(Overlay);
           {
             key: 1,
             list: ['9:00-10:00', '10:00-11:00']
-          },
-        ],
+          }
+        ]
       });
 
       const handleChange1 = (pannelKey: number) => {
@@ -78,7 +84,7 @@ app.use(Overlay);
 
       const selectTime1 = (item: string) => {
         let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
-        if(curTimeIndex === -1) {
+        if (curTimeIndex === -1) {
           state.currentTime1[0]['list'].push(item);
         } else {
           state.currentTime1[0]['list'].splice(curTimeIndex, 1);
@@ -96,12 +102,12 @@ app.use(Overlay);
         });
       });
 
-      return { 
-        ...toRefs(state), 
+      return {
+        ...toRefs(state),
         handleChange1,
         handleSelected1,
         selectTime1,
-        handleClick1, 
+        handleClick1
       };
     }
   };
@@ -114,12 +120,18 @@ app.use(Overlay);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick2">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+  <nut-timeselect
+    v-model:visible="visible2"
+    height="50%"
+    :current-key="currentKey2"
+    :current-time="currentTime2"
+    @select="handleSelected2"
+  >
     <template #pannel>
       <nut-timepannel name="February 23rd(Today)" pannel-key="0" @change="handleChange2"></nut-timepannel>
       <nut-timepannel name="February 24th(Wednesday)" pannel-key="1" @change="handleChange2"></nut-timepannel>
@@ -129,10 +141,10 @@ app.use(Overlay);
     </template>
   </nut-timeselect>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
   export default {
-    props: {},
     setup() {
       const { proxy } = getCurrentInstance() as any;
       const state = reactive({
@@ -147,14 +159,14 @@ app.use(Overlay);
           {
             key: 1,
             list: ['9:00-10:00', '10:00-11:00']
-          },
+          }
         ]
       });
 
       const handleChange2 = (pannelKey: number) => {
         state.currentKey2 = pannelKey;
         let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
-        if(!curTime) {
+        if (!curTime) {
           state.currentTime2.push({
             key: pannelKey,
             list: []
@@ -169,7 +181,7 @@ app.use(Overlay);
       const selectTime2 = (item: string) => {
         let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
         let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
-        if(curTimeIndex === -1) {
+        if (curTimeIndex === -1) {
           state.currentTime2[findIndex]['list'].push(item);
         } else {
           state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
@@ -187,12 +199,12 @@ app.use(Overlay);
         });
       });
 
-      return { 
-        ...toRefs(state), 
+      return {
+        ...toRefs(state),
         handleChange2,
         handleSelected2,
         selectTime2,
-        handleClick2, 
+        handleClick2
       };
     }
   };
@@ -205,12 +217,18 @@ app.use(Overlay);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick2">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+  <nut-timeselect
+    v-model:visible="visible2"
+    height="50%"
+    :current-key="currentKey2"
+    :current-time="currentTime2"
+    @select="handleSelected2"
+  >
     <template #title>
       <div class="timeselect-title">
         <p class="title">It is title</p>
@@ -226,10 +244,10 @@ app.use(Overlay);
     </template>
   </nut-timeselect>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
   export default {
-    props: {},
     setup() {
       const { proxy } = getCurrentInstance() as any;
       const state = reactive({
@@ -244,14 +262,14 @@ app.use(Overlay);
           {
             key: 1,
             list: ['9:00-10:00', '10:00-11:00']
-          },
+          }
         ]
       });
 
       const handleChange2 = (pannelKey: number) => {
         state.currentKey2 = pannelKey;
         let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
-        if(!curTime) {
+        if (!curTime) {
           state.currentTime2.push({
             key: pannelKey,
             list: []
@@ -266,7 +284,7 @@ app.use(Overlay);
       const selectTime2 = (item: string) => {
         let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
         let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
-        if(curTimeIndex === -1) {
+        if (curTimeIndex === -1) {
           state.currentTime2[findIndex]['list'].push(item);
         } else {
           state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
@@ -284,33 +302,34 @@ app.use(Overlay);
         });
       });
 
-      return { 
-        ...toRefs(state), 
+      return {
+        ...toRefs(state),
         handleChange2,
         handleSelected2,
         selectTime2,
-        handleClick2, 
+        handleClick2
       };
     }
   };
 </script>
-<style lang="scss" scoped>
-.timeselect-title {
-  height: 50px;
-  p {
+
+<style scoped>
+  .timeselect-title {
+    height: 50px;
+  }
+  .timeselect-title p {
     line-height: 1;
     padding: 0;
     margin: 0;
-    &.title {
-      margin: 10px 0;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &.subtitle {
-      color: #999;
-    }
   }
-}
+  .timeselect-title p.title {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .timeselect-title p.subtitle {
+    color: #999;
+  }
 </style>
 ```
 
@@ -320,53 +339,50 @@ app.use(Overlay);
 
 ### TimeSelect Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| visible                 | Whether to display elastic layer                                                    | Boolean  | `false`
-| height                 | Height of bomb layer                                                    | String  | `20%`
-| title                 | Bomb layer title                                                    | String  | `Pickup Time`
-| current-key                 | Unique identification                                                    | String、Number  | `0`
-| current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
-| lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
+| Attribute    | Description                                                                         | Type           | Default       |
+| ------------ | ----------------------------------------------------------------------------------- | -------------- | ------------- |
+| visible      | Whether to display elastic layer                                                    | Boolean        | `false`       |
+| height       | Height of bomb layer                                                                | String         | `20%`         |
+| title        | Bomb layer title                                                                    | String         | `Pickup Time` |
+| current-key  | Unique identification                                                               | String、Number | `0`           |
+| current-time | The currently selected time, the array element contains:key: string; list: string[] | Array          | `[]`          |
+| lock-scroll  | Whether the background is locked                                                    | Boolean        | `false`       |
 
 ### Slots
 
-| Attribute                   | Description                                                             |
-|------------------------|----------------------------------------------------------------|
-| title                 | Change Title                                                    |
-| pannel                 | List for left                                                    |
-| detail                 | Detail Content for right                                                    |
+| Attribute | Description              |
+| --------- | ------------------------ |
+| title     | Change Title             |
+| pannel    | List for left            |
+| detail    | Detail Content for right |
 
 ### TimePannel Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| name                 | Name of display                                                    | String  | ``
-| pannel-key           | Unique ID, which identifies the currently selected day together with `current-key`                      | Number、String  | `0`
+| Attribute  | Description                                                                        | Type           | Default |
+| ---------- | ---------------------------------------------------------------------------------- | -------------- | ------- |
+| name       | Name of display                                                                    | String         | ``      |
+| pannel-key | Unique ID, which identifies the currently selected day together with `current-key` | Number、String | `0`     |
 
 ### TimeDetail Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| times                 | Selectable time, the same as array elements `current-time`                              | Array  | `[]`
-
+| Attribute | Description                                                | Type  | Default |
+| --------- | ---------------------------------------------------------- | ----- | ------- |
+| times     | Selectable time, the same as array elements `current-time` | Array | `[]`    |
 
 ### TimeSelect Events
 
-| Event | Description                  | Arguments   |
-|-------|----------|-------------|
+| Event  | Description                 | Arguments   |
+| ------ | --------------------------- | ----------- | ---------------- |
 | select | Callback after closing mask | key: string | number, list: [] |
 
 ### TimePannel Event
 
-| Event | Description                  | Arguments   |
-|-------|----------|-------------|
+| Event  | Description                       | Arguments                   |
+| ------ | --------------------------------- | --------------------------- |
 | change | Click the callback of the content | pannelKey: string ｜ number |
 
 ### TimeDetail Event
 
-| Event | Description                  | Arguments   |
-|-------|----------|-------------|
+| Event  | Description            | Arguments    |
+| ------ | ---------------------- | ------------ |
 | select | Callback of click time | time: string |
-
-

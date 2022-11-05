@@ -7,16 +7,13 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
-import { BackTop,Icon } from '@nutui/nutui-taro';
+import { BackTop, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
-
 ```
-
 
 ### 基础用法
 
@@ -52,21 +49,21 @@ app.use(Icon);
   </nut-backtop>
 </view>
 <script>
-export default {
-  setup() {
-    const click = () => {
-      console.log('click');
-    };
+  export default {
+    setup() {
+      const click = () => {
+        console.log('click');
+      };
 
-    return {
-      click
-    };
-  }
-};
+      return {
+        click
+      };
+    }
+  };
 </script>
-<style lang="scss">
-.demo {
-  .text-data {
+
+<style>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -82,7 +79,6 @@ export default {
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 
@@ -127,7 +123,7 @@ export default {
 <nut-backtop :distance="100" :bottom="90"><div>自定义内容</div></nut-backtop>
 ```
 
-### click事件
+### click 事件
 
 ```html
 <view class="demo">
@@ -161,21 +157,21 @@ export default {
   </nut-backtop>
 </view>
 <script>
-export default {
-  setup() {
-    const click = () => {
-      console.log('click');
-    };
+  export default {
+    setup() {
+      const click = () => {
+        console.log('click');
+      };
 
-    return {
-      click
-    };
-  }
-};
+      return {
+        click
+      };
+    }
+  };
 </script>
-<style lang="scss">
-.demo {
-  .text-data {
+
+<style>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -191,30 +187,30 @@ export default {
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 
 ### API
 
-### Props  
+### Props
 
-| 字段            | 说明                 | 类型    | 默认值  |
-|-----------------|------------------------------------------|---------|---------|
-| height           | 滚动区域的高度         | String | `100vh`       |
-| bottom         | 距离页面底部距离    | Number  | `20`       |
-| right        | 距离页面右侧距离      | Number |  `10`  |
-| distance     | 页面垂直滚动多高后出现   | Number  | `200`      |
-| z-index         | 设置组件页面层级   | Number  | `10`       |                                          
+| 字段     | 说明                   | 类型   | 默认值  |
+| -------- | ---------------------- | ------ | ------- |
+| height   | 滚动区域的高度         | String | `100vh` |
+| bottom   | 距离页面底部距离       | Number | `20`    |
+| right    | 距离页面右侧距离       | Number | `10`    |
+| distance | 页面垂直滚动多高后出现 | Number | `200`   |
+| z-index  | 设置组件页面层级       | Number | `10`    |
 
 ### Events
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
+
+| 名称  | 说明               | 回调参数          |
+| ----- | ------------------ | ----------------- |
 | click | 按钮点击时触发事件 | event: MouseEvent |
 
 ### Slots
 
-| 名称    | 说明         |
-|---------|--------------|
-| content | 	滚动容器中包含的内容 |
-| icon | 	返回到顶部，按钮内容 |
+| 名称    | 说明                 |
+| ------- | -------------------- |
+| content | 滚动容器中包含的内容 |
+| icon    | 返回到顶部，按钮内容 |

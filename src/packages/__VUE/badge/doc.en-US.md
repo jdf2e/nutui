@@ -7,7 +7,6 @@ A red dot, number or text appearing in the upper right corner of the icon or tex
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 // vue
 import { Badge } from '@nutui/nutui';
@@ -16,13 +15,12 @@ import { Badge } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Badge);
-
 ```
-
 
 ### Basic Usage
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -41,21 +39,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### Max
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -71,21 +70,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### Custom Color
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -104,21 +104,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### Custom Content
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -143,21 +144,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
-### Custom Position 
+### Custom Position
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -170,24 +172,25 @@ app.use(Badge);
     <nut-badge value="NEW">
       <nut-avatar icon="my" shape="square"></nut-avatar>
     </nut-badge>
-   </div>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### Standalone
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -197,35 +200,36 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ## API
-### Props 
 
-| Attribute | Description | Type | Default |
-|---------|--------------------------------------------|---------|-----------|
-| value   | content                                 | String  | -         |
-| max     | When value is a numeric value, the maximum value                     | Number  | `10000`   |
-| z-index | badge z-index                          | Number  | `10`      |
-| dot     | whether to dot                                 | Boolean | `false`   |
-| hidden  | whether to hide                                   | Boolean | `false`   |
-| top     | Up and down offset, support unit setting, for example: 5px | Number  | `0`       |
-| right   | Left and right offset, support unit setting, for example: 5px | Number  | `0`       |
-| color   |  badge background color    | String  | `#fa2c19` |
+### Props
+
+| Attribute | Description                                                   | Type    | Default   |
+| --------- | ------------------------------------------------------------- | ------- | --------- |
+| value     | content                                                       | String  | -         |
+| max       | When value is a numeric value, the maximum value              | Number  | `10000`   |
+| z-index   | badge z-index                                                 | Number  | `10`      |
+| dot       | whether to dot                                                | Boolean | `false`   |
+| hidden    | whether to hide                                               | Boolean | `false`   |
+| top       | Up and down offset, support unit setting, for example: 5px    | Number  | `0`       |
+| right     | Left and right offset, support unit setting, for example: 5px | Number  | `0`       |
+| color     | badge background color                                        | String  | `#fa2c19` |
 
 ### Slots
 
-| Name   | Description           |
-|---------|--------------|
+| Name    | Description  |
+| ------- | ------------ |
 | default | Default slot |
-| icons | 	Icon slot |
+| icons   | Icon slot    |

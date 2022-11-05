@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 // vue
 import { Badge } from '@nutui/nutui';
@@ -16,13 +15,12 @@ import { Badge } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Badge);
-
 ```
-
 
 ### 基础用法
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -41,21 +39,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### 最大值
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -71,21 +70,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### 自定义颜色
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -104,21 +104,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### 自定义徽标内容
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -143,21 +144,22 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### 自定义位置
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -170,24 +172,25 @@ app.use(Badge);
     <nut-badge value="NEW">
       <nut-avatar icon="my" shape="square"></nut-avatar>
     </nut-badge>
-   </div>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ### 独立展示
 
 :::demo
+
 ```html
 <template>
   <div class="demo">
@@ -197,23 +200,24 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo{
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
+<style scoped>
+  .demo {
+    padding: 30px 17px 0 17px;
+  }
+  .nut-badge {
+    margin-right: 40px;
+  }
 </style>
-
 ```
+
 :::
 
 ## API
-### Props  
+
+### Props
 
 | 字段    | 说明                                       | 类型    | 默认值    |
-|---------|--------------------------------------------|---------|-----------|
+| ------- | ------------------------------------------ | ------- | --------- |
 | value   | 显示的内容                                 | String  | -         |
 | max     | value 为数值时，最大值                     | Number  | `10000`   |
 | z-index | 徽标的 z-index 值                          | Number  | `10`      |
@@ -225,7 +229,7 @@ app.use(Badge);
 
 ### Slots
 
-| 名称    | 说明         |
-|---------|--------------|
-| default | 	徽标包裹的子元素 |
-| icons | 	徽标自定义 |
+| 名称    | 说明             |
+| ------- | ---------------- |
+| default | 徽标包裹的子元素 |
+| icons   | 徽标自定义       |

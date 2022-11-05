@@ -17,7 +17,6 @@ const app = createApp();
 app.use(Button);
 ```
 
-
 ### Type
 
 The button supports six types: `default`, `primary`, `info`, `warning`, `danger`, `success`, the default is `default`.
@@ -135,7 +134,14 @@ Refer to the custom icon in the `Icon` component description, where `icon-font-c
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon-font-class-name="iconfont" icon-class-prefix="icon" icon="close"></nut-button>
+  <nut-button
+    shape="square"
+    plain
+    type="primary"
+    icon-font-class-name="iconfont"
+    icon-class-prefix="icon"
+    icon="close"
+  ></nut-button>
 </template>
 ```
 
@@ -190,22 +196,22 @@ The color of the button can be customized through the color property.
 
 ### Props
 
-| Attribute     | Description                                                         | Type    | Default    |
-| -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | Can be set to  `primary` `info` `warning` `danger` `success` | String  | `default` |
-| size     | 	Can be set to `large` `small` `mini`                        | String  | `normal`  |
-| shape    | Can be set to `square`                                      | String  | `round`   |
-| color    | Button color, support incoming linear-gradient gradient color                    | String  | -         |
-| plain    | Whether to be plain button     | Boolean | `false`   |
-| disabled | Whether to disable button         | Boolean | `false`   |
-| block    | Whether to set display block      | Boolean | `false`   |
-| icon     | Left Icon                     | String  | -         |
-| icon-font-class-name`v3.1.17` | Custom icon font base class name    | String | `nutui-iconfont` |
-| icon-class-prefix `v3.1.17`   | Custom icon class name prefix for using custom icons           | String | `nut-icon`       |
-| loading  | Whether to show loading status     | Boolean | `false`   |
+| Attribute                     | Description                                                   | Type    | Default          |
+| ----------------------------- | ------------------------------------------------------------- | ------- | ---------------- |
+| type                          | Can be set to `primary` `info` `warning` `danger` `success`   | String  | `default`        |
+| size                          | Can be set to `large` `small` `mini`                          | String  | `normal`         |
+| shape                         | Can be set to `square`                                        | String  | `round`          |
+| color                         | Button color, support incoming linear-gradient gradient color | String  | -                |
+| plain                         | Whether to be plain button                                    | Boolean | `false`          |
+| disabled                      | Whether to disable button                                     | Boolean | `false`          |
+| block                         | Whether to set display block                                  | Boolean | `false`          |
+| icon                          | Left Icon                                                     | String  | -                |
+| icon-font-class-name`v3.1.17` | Custom icon font base class name                              | String  | `nutui-iconfont` |
+| icon-class-prefix `v3.1.17`   | Custom icon class name prefix for using custom icons          | String  | `nut-icon`       |
+| loading                       | Whether to show loading status                                | Boolean | `false`          |
 
 ### Events
 
-| Event | Description           | Arguments          |
-| ------ | -------------- | ----------------- |
-| click  | Emitted when component is clicked | event: MouseEvent |
+| Event | Description                       | Arguments         |
+| ----- | --------------------------------- | ----------------- |
+| click | Emitted when component is clicked | event: MouseEvent |

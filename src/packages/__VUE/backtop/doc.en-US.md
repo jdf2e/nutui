@@ -7,21 +7,19 @@ Provides a quick return to the top function for long pages.
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
-import { BackTop,Icon } from '@nutui/nutui';
+import { BackTop, Icon } from '@nutui/nutui';
 
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
-
 ```
 
 ### Basic Usage
 
 :::demo
-```html
 
+```html
 <template>
   <div class="demo" id="elId">
     <div class="text-data">test data1</div>
@@ -48,9 +46,10 @@ app.use(Icon);
     <div class="text-data">test data22</div>
     <div class="text-data">test data23</div>
     <div class="text-data">test data24</div>
-    <nut-backtop @click="handleClick" ></nut-backtop>
+    <nut-backtop @click="handleClick"></nut-backtop>
   </div>
 </template>
+
 <script>
   export default {
     setup() {
@@ -64,9 +63,9 @@ app.use(Icon);
     }
   };
 </script>
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -82,15 +81,15 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
-
 ```
+
 :::
 
 ### Distance
 
 :::demo
+
 ```html
 <template>
   <div class="demo" id="elId">
@@ -118,13 +117,12 @@ app.use(Icon);
     <div class="text-data">test data22</div>
     <div class="text-data">test data23</div>
     <div class="text-data">test data24</div>
-    <nut-backtop :distance="200" ></nut-backtop>
+    <nut-backtop :distance="200"></nut-backtop>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -140,14 +138,15 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
+
 :::
 
 ### Custom Style
 
 :::demo
+
 ```html
 <template>
   <div class="demo" id="elId">
@@ -175,13 +174,12 @@ app.use(Icon);
     <div class="text-data">test data22</div>
     <div class="text-data">test data23</div>
     <div class="text-data">test data24</div>
-    <nut-backtop @click="handleClick" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
+    <nut-backtop @click="handleClick" :distance="100" :bottom="90"><div>无</div></nut-backtop>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -197,31 +195,33 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
+
 :::
+
 ### API
 
 ### Props
 
-| Attribute            | Description                 | Type    | Default  |
-|-----------------|------------------------------------------|---------|---------|
-| el-id           | Get the parent element of the listening element         | String | -       |
-| bottom         | Distance from bottom of page    | Number  | `20`       |
-| right        | Distance from the right side of the page      | Number |  `10`  |
-| distance     | How high to scroll the page vertically   | Number  | `200`      |
-| z-index         | Set the component z-index   | Number  | `10`       |  
-| is-animation         | Whether there is animation, mutually exclusive with the duration parameter   | Boolean  | `true`       |  
-| duration         | Set animation duration   | Number  | `1000`       |                                          
+| Attribute    | Description                                                                | Type    | Default |
+| ------------ | -------------------------------------------------------------------------- | ------- | ------- |
+| el-id        | Get the parent element of the listening element                            | String  | -       |
+| bottom       | Distance from bottom of page                                               | Number  | `20`    |
+| right        | Distance from the right side of the page                                   | Number  | `10`    |
+| distance     | How high to scroll the page vertically                                     | Number  | `200`   |
+| z-index      | Set the component z-index                                                  | Number  | `10`    |
+| is-animation | Whether there is animation, mutually exclusive with the duration parameter | Boolean | `true`  |
+| duration     | Set animation duration                                                     | Number  | `1000`  |
 
 ### Events
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
+
+| Event | Description                       | Arguments         |
+| ----- | --------------------------------- | ----------------- |
 | click | Emitted when component is clicked | event: MouseEvent |
 
 ### Slots
 
-| Name    | Description         |
-|---------|--------------|
-| default | 	The default slot is used to customize the content |
+| Name    | Description                                       |
+| ------- | ------------------------------------------------- |
+| default | The default slot is used to customize the content |

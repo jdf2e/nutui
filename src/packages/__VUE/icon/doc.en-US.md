@@ -6,7 +6,7 @@ The font-based icon set that can be used via the Icon component or referenced in
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { Icon } from '@nutui/nutui';
@@ -15,7 +15,6 @@ import { Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Icon);
-
 ```
 
 ### Basic Usage
@@ -23,13 +22,18 @@ app.use(Icon);
 Use `name` prop to set icon name or icon URL.
 
 :::demo
+
 ```html
 <template>
   <nut-icon name="dongdong"></nut-icon>
   <nut-icon name="JD"></nut-icon>
-  <nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+  <nut-icon
+    size="40"
+    name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+  ></nut-icon>
 </template>
 ```
+
 :::
 
 ### Icon Color
@@ -37,6 +41,7 @@ Use `name` prop to set icon name or icon URL.
 Use `color` prop to set icon color.
 
 :::demo
+
 ```html
 <template>
   <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
@@ -44,6 +49,7 @@ Use `color` prop to set icon color.
   <nut-icon name="JD" color="#fa2c19"></nut-icon>
 </template>
 ```
+
 :::
 
 ### Icon Size
@@ -51,6 +57,7 @@ Use `color` prop to set icon color.
 Use `size` prop to set icon size default unit is `px` .
 
 :::demo
+
 ```html
 <template>
   <nut-icon name="dongdong"></nut-icon>
@@ -58,12 +65,15 @@ Use `size` prop to set icon size default unit is `px` .
   <nut-icon name="dongdong" size="16"></nut-icon>
 </template>
 ```
+
 :::
+
 ### Universal motion icons
 
 Adding the specified class class can realize the dynamic effect of the picture. The default is to play once, and adding the `nut-icon-am-infinite` class can realize the loop playback. By setting css, the delay interval before the animation starts, and how long the animation will be completed
 
 :::demo
+
 ```html
 <template>
   <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
@@ -76,26 +86,24 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 </template>
 
 <style>
-  .nut-icon{
-    --animate-duration: 1s ; 
+  .nut-icon {
+    --animate-duration: 1s;
     --animate-delay: 0s;
   }
 </style>
 ```
+
 :::
-
-
-
 
 ### custom iconfont
 
 If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then you can use it directly in the Icon component.
 
-> use [iconfont](https://www.iconfont.cn/)   recommend
+> use [iconfont](https://www.iconfont.cn/) recommend
 
-1：first in [iconfont](https://www.iconfont.cn/) generate your custom Icon file and download it to the local project  [Docs](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+1：first in [iconfont](https://www.iconfont.cn/) generate your custom Icon file and download it to the local project [Docs](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
 
-``` bash
+```bash
 /assets/font/demo.css
 /assets/font/demo_index.html
 /assets/font/iconfont.css
@@ -108,8 +116,7 @@ If you need to use more icons based on the existing Icon, you can import the fon
 
 2：project entry file main.js add `iconfont.css`
 
-
-``` javascript
+```javascript
 import './assets/font/iconfont.css';
 ```
 
@@ -123,8 +130,6 @@ import './assets/font/iconfont.css';
 -->
 <nut-icon font-class-name="iconfont" class-prefix="icon" name="close" />
 ```
-
-
 
 > Use a third-party custom font library
 
@@ -150,17 +155,16 @@ import './assets/font/iconfont.css';
   class-prefix  my-icon
 -->
 <nut-icon font-class-name="my-icon" class-prefix="my-icon" name="extra" />
-
 ```
 
-custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15) 
+custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15)
 
 ## API
 
 ### Props
 
 | Attribute       | Description                                          | Type             | Default          |
-|-----------------|------------------------------------------------------|------------------|------------------|
+| --------------- | ---------------------------------------------------- | ---------------- | ---------------- |
 | name            | Icon name or URL                                     | String           | -                |
 | color           | Icon color                                           | String           | -                |
 | size            | Icon size , eg `20px` `2em` `2rem`                   | String or Number | -                |
@@ -171,6 +175,5 @@ custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/
 ### Events
 
 | Event | Description                  | Arguments    |
-|-------|------------------------------|--------------|
+| ----- | ---------------------------- | ------------ |
 | click | Emitted when icon is clicked | event: Event |
-

@@ -6,18 +6,19 @@
 
 ### 安装
 
-``` ts
+```ts
 import { createApp } from 'vue';
 //vue
-import { Radio,RadioGroup,Icon } from '@nutui/nutui';
+import { Radio, RadioGroup, Icon } from '@nutui/nutui';
 //taro
-import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
+import { Radio, RadioGroup, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
 app.use(Icon);
 ```
+
 ### 基础用法
 
 通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
@@ -50,14 +51,16 @@ app.use(Icon);
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -94,19 +97,22 @@ app.use(Icon);
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
 
 :::
+
 ### 自定义尺寸
 
 :::demo
@@ -122,14 +128,16 @@ app.use(Icon);
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -153,14 +161,16 @@ app.use(Icon);
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -183,47 +193,51 @@ app.use(Icon);
     <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
       const handleChange = (value: any) => {
         console.log(value);
       };
-      return { radioVal, handleChange };
-    },
+      return {
+        radioVal,
+        handleChange
+      };
+    }
   };
 </script>
 ```
+
 :::
 
 ## API
 
 ### Radio Props
 
-| 字段             | 说明                                                         | 类型                    | 默认值            |
-|------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| icon-size        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| icon-name        | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
-| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
-| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
-| label            | 单选框标识                                                   | String、Number、Boolean | -                 |
-| shape            | 形状，可选值为 button、round                                 | String                  | round             |
+| 字段                 | 说明                                                         | 类型                    | 默认值            |
+| -------------------- | ------------------------------------------------------------ | ----------------------- | ----------------- |
+| disabled             | 是否禁用选择                                                 | Boolean                 | `false`           |
+| icon-size            | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
+| icon-name            | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
+| icon-active-name     | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
+| icon-class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标                     | String                  | `nut-icon`        |
+| icon-font-class-name | 自定义 icon 字体基础类名                                     | String                  | `nutui-iconfont`  |
+| label                | 单选框标识                                                   | String、Number、Boolean | -                 |
+| shape                | 形状，可选值为 button、round                                 | String                  | round             |
 
 ### RadioGroup Props
 
-| 字段          | 说明                                          | 类型                    | 默认值     |
-|---------------|-----------------------------------------------|-------------------------|------------|
-| v-model       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
-| text-position | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
+| 字段          | 说明                                            | 类型                    | 默认值     |
+| ------------- | ----------------------------------------------- | ----------------------- | ---------- |
+| v-model       | 当前选中项的标识符，与 label 值一致时呈选中状态 | String、Number、Boolean | -          |
+| text-position | 文本所在的位置，可选值：`left`,`right`          | String                  | `right`    |
+| direction     | 使用横纵方向 可选值 horizontal、vertical        | String                  | `vertical` |
 
 ### RadioGroup Events
 
-| 字段   | 说明         | 回调参数                                           |
-|--------|--------------|----------------------------------------------------|
-| change | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】 |
+| 字段   | 说明         | 回调参数                                             |
+| ------ | ------------ | ---------------------------------------------------- |
+| change | 值变化时触发 | 当前选中项值（label）【设置 label 后有值、默认为空】 |

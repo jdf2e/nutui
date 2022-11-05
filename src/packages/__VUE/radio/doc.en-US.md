@@ -6,18 +6,19 @@ Used to make a single selection in a set of alternatives
 
 ### Install
 
-``` ts
+```ts
 import { createApp } from 'vue';
 //vue
-import { Radio,RadioGroup,Icon } from '@nutui/nutui';
+import { Radio, RadioGroup, Icon } from '@nutui/nutui';
 //taro
-import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
+import { Radio, RadioGroup, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
 app.use(Icon);
 ```
+
 ### Basic Usage
 
 Bind the **label** of the current option through **v-model**. And it must be used in combination with **nut-radiogroup** and **nut-radio**
@@ -50,14 +51,16 @@ Bind the **label** of the current option through **v-model**. And it must be use
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -94,19 +97,22 @@ Bind the **label** of the current option through **v-model**. And it must be use
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
 
 :::
+
 ### Custom size
 
 :::demo
@@ -122,14 +128,16 @@ Bind the **label** of the current option through **v-model**. And it must be use
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -153,14 +161,16 @@ It is suggested to modify `icon-name` and `icon-active-name`
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
-      return { radioVal };
-    },
+      return {
+        radioVal
+      };
+    }
   };
 </script>
 ```
@@ -183,47 +193,51 @@ It is suggested to modify `icon-name` and `icon-active-name`
     <nut-cell title="Currently selected value" :desc="radioVal"></nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const radioVal = ref('1');
       const handleChange = (value: any) => {
         console.log(value);
       };
-      return { radioVal, handleChange };
-    },
+      return {
+        radioVal,
+        handleChange
+      };
+    }
   };
 </script>
 ```
+
 :::
 
 ## API
 
 ### Radio Props
 
-| Attribute             | Description                                                         | Type                    | Default            |
-|------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | Disable selection                                           | Boolean                 | `false`           |
-| icon-size        | [Icon Size](#/en-US/icon)                                           | String、Number          | `18`              |
-| icon-name        | [Icon Name](#en-US//icon)，Before selection (it is suggested to modify it together with `icon-active-name`) | String                  | `'check-normal'`  |
-| icon-active-name | [Icon Name](#en-US//icon)，After selection (it is suggested to modify it together with `icon-name`)       | String                  | `'check-checked'` |
-| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
-| label            | Radio box ID                                                  | String、Number、Boolean | -                 |
-| shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
+| Attribute            | Description                                                                                                 | Type                    | Default           |
+| -------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------- | ----------------- |
+| disabled             | Disable selection                                                                                           | Boolean                 | `false`           |
+| icon-size            | [Icon Size](#/en-US/icon)                                                                                   | String、Number          | `18`              |
+| icon-name            | [Icon Name](#en-US//icon)，Before selection (it is suggested to modify it together with `icon-active-name`) | String                  | `'check-normal'`  |
+| icon-active-name     | [Icon Name](#en-US//icon)，After selection (it is suggested to modify it together with `icon-name`)         | String                  | `'check-checked'` |
+| icon-class-prefix    | Custom icon class name prefix, used to use custom icons                                                     | String                  | `nut-icon`        |
+| icon-font-class-name | Basic class name of custom icon font                                                                        | String                  | `nutui-iconfont`  |
+| label                | Radio box ID                                                                                                | String、Number、Boolean | -                 |
+| shape                | Shape, optional values are `button`、`round`                                                                | String                  | round             |
 
 ### RadioGroup Props
 
-| Attribute          | Description                                          | Type                    | Default     |
-|---------------|-----------------------------------------------|-------------------------|------------|
+| Attribute     | Description                                                                                            | Type                    | Default    |
+| ------------- | ------------------------------------------------------------------------------------------------------ | ----------------------- | ---------- |
 | v-model       | The identifier of the currently selected item is selected when it is consistent with the `label` value | String、Number、Boolean | -          |
-| text-position | The position of the text, optional value：`left`,`right`        | String                  | `right`    |
-| direction     | Use horizontal and vertical optional values `horizontal`、`vertical`      | String                  | `vertical` |
+| text-position | The position of the text, optional value：`left`,`right`                                               | String                  | `right`    |
+| direction     | Use horizontal and vertical optional values `horizontal`、`vertical`                                   | String                  | `vertical` |
 
 ### RadioGroup Events
 
-| Event   | Description         | Arguments                                           |
-|--------|--------------|----------------------------------------------------|
+| Event  | Description                      | Arguments                                                                                                   |
+| ------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | change | Triggered when the value changes | Currently selected item value（label）【There is a value after setting `label`, which is empty by default】 |

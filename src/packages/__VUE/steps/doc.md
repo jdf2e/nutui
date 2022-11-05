@@ -11,7 +11,7 @@ import { createApp } from 'vue';
 //vue
 import { Steps, Step } from '@nutui/nutui';
 //taro
-import { Steps, Step  } from '@nutui/nutui-taro';
+import { Steps, Step } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Steps);
@@ -34,21 +34,26 @@ app.use(Step);
     <nut-step title="未开始">4</nut-step>
   </nut-steps>
 </template>
+
 <script>
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        current1: 1,
+        current1: 1
       });
       const handleClickStep = (index: number) => {
-        console.log(index)
+        console.log(index);
       };
-      return { ...toRefs(state), handleClickStep };
+      return {
+        ...toRefs(state),
+        handleClickStep
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 标题和描述信息
@@ -63,14 +68,17 @@ app.use(Step);
     <nut-step title="未开始" content="步骤描述">3</nut-step>
   </nut-steps>
 </template>
+
 <script>
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        current2: 1,
+        current2: 1
       });
-      return { ...toRefs(state) };
+      return {
+        ...toRefs(state)
+      };
     }
   };
 </script>
@@ -132,37 +140,34 @@ app.use(Step);
 
 :::
 
-
-
-
 ## API
 
 ### Steps Props
 
-| 参数                   | 说明                                                        | 类型           | 默认值      |
-| ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number、String        | '0'      |
-| progress-dot            |  点状步骤条     | Boolean | false         |
+| 参数         | 说明                              | 类型           | 默认值       |
+| ------------ | --------------------------------- | -------------- | ------------ |
+| direction    | 显示方向，`horizontal`,`vertical` | String         | 'horizontal' |
+| current      | 当前所在的步骤                    | Number、String | '0'          |
+| progress-dot | 点状步骤条                        | Boolean        | false        |
 
 ### Steps Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| click-step  | 点击步骤的标题或图标时触发 | index: number |
+| 事件名     | 说明                       | 回调参数      |
+| ---------- | -------------------------- | ------------- |
+| click-step | 点击步骤的标题或图标时触发 | index: number |
 
 ### Step Props
 
-| 参数           | 说明                   | 类型     | 默认值      |
-| ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | 步骤 |
-| content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
-| icon          | 图标       | String | null |
-| icon-color          | 图标颜色       | String | null |
+| 参数       | 说明                                 | 类型   | 默认值   |
+| ---------- | ------------------------------------ | ------ | -------- |
+| title      | 流程步骤的标题                       | String | 步骤     |
+| content    | 流程步骤的描述性文字(支持 html 结构) | String | 步骤描述 |
+| icon       | 图标                                 | String | null     |
+| icon-color | 图标颜色                             | String | null     |
 
 ### Step Slots
 
-| 参数           | 说明                   |
-| ---------------- | ---------------------- |
-| title            | 步骤标题         |
-| content          | 步骤内容       |
+| 参数    | 说明     |
+| ------- | -------- |
+| title   | 步骤标题 |
+| content | 步骤内容 |

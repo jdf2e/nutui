@@ -3,9 +3,10 @@
 ### 介绍
 
 底部导航常用场景
+
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 //vue
 import { Tabbar, TabbarItem, Icon } from '@nutui/nutui';
@@ -17,11 +18,12 @@ app.use(Tabbar);
 app.use(TabbarItem);
 ```
 
-
 ### 基础用法
-如果需要在现有 Icon 的基础上使用更多图标，请参考icon组件自定义图标引入。
+
+如果需要在现有 Icon 的基础上使用更多图标，请参考 icon 组件自定义图标引入。
 
 :::demo
+
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
@@ -32,27 +34,30 @@ app.use(TabbarItem);
     <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
+
 <script>
-  export default{
+  export default {
     setup() {
       function tabSwitch(item, index) {
         console.log(item, index);
       }
       return {
-        tabSwitch,
+        tabSwitch
       };
-    },
-  }
+    }
+  };
 </script>
 ```
+
 :::
 
 ### 通过名称匹配
 
 :::demo
+
 ```html
 <template>
-  <nut-tabbar @tab-switch="tabSwitch"  v-model:visible="activeName">
+  <nut-tabbar @tab-switch="tabSwitch" v-model:visible="activeName">
     <nut-tabbar-item tab-title="首页" name="home" icon="home"></nut-tabbar-item>
     <nut-tabbar-item tab-title="分类" name="category" icon="category"></nut-tabbar-item>
     <nut-tabbar-item tab-title="发现" name="find" icon="find"></nut-tabbar-item>
@@ -60,25 +65,29 @@ app.use(TabbarItem);
     <nut-tabbar-item tab-title="我的" name="my" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
+
 <script>
-  export default{
+  export default {
     setup() {
-      const activeName = ref("category");
+      const activeName = ref('category');
       function tabSwitch(item, index) {
         console.log(item, index);
       }
       return {
         tabSwitch,
-        activeName,
+        activeName
       };
-    },
-  }
+    }
+  };
 </script>
 ```
+
 :::
 
 ### 自定义图片链接
+
 :::demo
+
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
@@ -109,23 +118,27 @@ app.use(TabbarItem);
     ></nut-tabbar-item>
   </nut-tabbar>
 </template>
+
 <script>
-  export default{
+  export default {
     setup() {
       function tabSwitch(item, index) {
         console.log(item, index);
       }
       return {
-        tabSwitch,
+        tabSwitch
       };
-    },
-  }
+    }
+  };
 </script>
 ```
+
 :::
 
 ### 自定义选中
+
 :::demo
+
 ```html
 <template>
   <nut-tabbar v-model:visible="active" size="18px">
@@ -136,8 +149,9 @@ app.use(TabbarItem);
     <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
+
 <script>
-  export default{
+  export default {
     setup() {
       const active = ref(2);
       function tabSwitch(item, index) {
@@ -145,15 +159,19 @@ app.use(TabbarItem);
       }
       return {
         tabSwitch,
-        activeName,
+        activeName
       };
-    },
-  }
+    }
+  };
 </script>
 ```
+
 :::
+
 ### 徽标提示
+
 :::demo
+
 ```html
 <template>
   <nut-tabbar>
@@ -165,11 +183,13 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 ```
+
 :::
+
 ### 自定义颜色
 
-
 :::demo
+
 ```html
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
@@ -181,12 +201,13 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 ```
+
 :::
 
 ### 三个图标的标签栏
 
-
 :::demo
+
 ```html
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
@@ -196,11 +217,13 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 ```
+
 :::
+
 ### 固定底部，可自由跳转
 
-
 :::demo
+
 ```html
 <template>
   <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
@@ -212,42 +235,41 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 ```
+
 :::
+
 ## API
 
 ### Tabbar Props
 
-| 字段            | 说明               | 类型   | 默认值  |
-|-----------------|--------------------|--------|---------|
-| v-model:visible | 选中标签的索引值   | number | 0       |
-| bottom          | 是否固定在页面底部 | boolean | false   |
-| size          | icon的尺寸/图片的宽高 | string | '20px'  |
-| unactive-color  | icon未激活的颜色   | string | #7d7e80 |
-| active-color    | icon激活的颜色     | string | #1989fa |
-| safe-area-inset-bottom   | 是否开启iphone系列全面屏底部安全区适配    | boolean | false |
+| 字段                   | 说明                                     | 类型    | 默认值  |
+| ---------------------- | ---------------------------------------- | ------- | ------- |
+| v-model:visible        | 选中标签的索引值                         | number  | 0       |
+| bottom                 | 是否固定在页面底部                       | boolean | false   |
+| size                   | icon 的尺寸/图片的宽高                   | string  | '20px'  |
+| unactive-color         | icon 未激活的颜色                        | string  | #7d7e80 |
+| active-color           | icon 激活的颜色                          | string  | #1989fa |
+| safe-area-inset-bottom | 是否开启 iphone 系列全面屏底部安全区适配 | boolean | false   |
+
 ### TabbarItem Props
 
-| 字段      | 说明                                      | 类型   | 默认值 |
-|-----------|-------------------------------------------|--------|--------|
-| tab-title | 标签页的标题                              | string | --    |
-| name| 标签名称，作为匹配的标识符                             | string | 当前标签的索引值   |
-| icon      | 标签页显示的[图标名称](#/icon)  | string | --     |
-| font-class-name | 自定义icon 字体基础类名     | string           | `nutui-iconfont` |
-| class-prefix | 自定义icon 类名前缀，用于使用自定义图标     | string           | `nut-icon` |
-| img      | 标签页显示图片链接 | String | --     |
-| active-img      | 激活以后的标签页显示图片链接（同一个item中icon和img只能选择一个） | string | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`    | string | --     |
-| to  `小程序不支持`      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string｜object | --     |
-| num       | 页签右上角的数字角标，超出99之后为99+     | number | --     |
-| dot       | 是否显示图标右上角小红点   | boolean | false    |
-| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | false |
-
+| 字段                | 说明                                                                                     | 类型             | 默认值           |
+| ------------------- | ---------------------------------------------------------------------------------------- | ---------------- | ---------------- |
+| tab-title           | 标签页的标题                                                                             | string           | --               |
+| name                | 标签名称，作为匹配的标识符                                                               | string           | 当前标签的索引值 |
+| icon                | 标签页显示的[图标名称](#/icon)                                                           | string           | --               |
+| font-class-name     | 自定义 icon 字体基础类名                                                                 | string           | `nutui-iconfont` |
+| class-prefix        | 自定义 icon 类名前缀，用于使用自定义图标                                                 | string           | `nut-icon`       |
+| img                 | 标签页显示图片链接                                                                       | String           | --               |
+| active-img          | 激活以后的标签页显示图片链接（同一个 item 中 icon 和 img 只能选择一个）                  | string           | --               |
+| href                | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`                                     | string           | --               |
+| to `小程序不支持`   | 标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string ｜ object | --               |
+| num                 | 页签右上角的数字角标，超出 99 之后为 99+                                                 | number           | --               |
+| dot                 | 是否显示图标右上角小红点                                                                 | boolean          | false            |
+| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素                                       | boolean          | false            |
 
 ### Tabbar Events
 
 | 事件名称   | 说明               | 回调参数           |
-|------------|--------------------|--------------------|
+| ---------- | ------------------ | ------------------ |
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
-
-
-

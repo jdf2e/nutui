@@ -17,7 +17,6 @@ const app = createApp();
 app.use(Button);
 ```
 
-
 ### 按钮类型
 
 按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
@@ -135,7 +134,14 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon-font-class-name="iconfont" icon-class-prefix="icon" icon="close"></nut-button>
+  <nut-button
+    shape="square"
+    plain
+    type="primary"
+    icon-font-class-name="iconfont"
+    icon-class-prefix="icon"
+    icon="close"
+  ></nut-button>
 </template>
 ```
 
@@ -189,19 +195,19 @@ app.use(Button);
 
 ### Props
 
-| 参数     | 说明                                                         | 类型    | 默认值    |
-| -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String  | `default` |
-| size     | 尺寸，可选值为 `large` `small` `mini`                        | String  | `normal`  |
-| shape    | 形状，可选值为 `square`                                      | String  | `round`   |
-| color    | 按钮颜色，支持传入 linear-gradient 渐变色                    | String  | -         |
-| plain    | 是否为朴素按钮                                               | Boolean | `false`   |
-| disabled | 是否禁用按钮                                                 | Boolean | `false`   |
-| block    | 是否为块级元素                                               | Boolean | `false`   |
-| icon     | 按钮图标，同 Icon 组件 name 属性                             | String  | -         |
-| icon-font-class-name`v3.1.17` | 自定义 icon 字体基础类名                         | String | `nutui-iconfont` |
-| icon-class-prefix `v3.1.17`   | 自定义 icon 类名前缀，用于使用自定义图标           | String | `nut-icon`       |
-| loading  | 按钮 loading 状态                                            | Boolean | `false`   |
+| 参数                          | 说明                                                         | 类型    | 默认值           |
+| ----------------------------- | ------------------------------------------------------------ | ------- | ---------------- |
+| type                          | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String  | `default`        |
+| size                          | 尺寸，可选值为 `large` `small` `mini`                        | String  | `normal`         |
+| shape                         | 形状，可选值为 `square`                                      | String  | `round`          |
+| color                         | 按钮颜色，支持传入 linear-gradient 渐变色                    | String  | -                |
+| plain                         | 是否为朴素按钮                                               | Boolean | `false`          |
+| disabled                      | 是否禁用按钮                                                 | Boolean | `false`          |
+| block                         | 是否为块级元素                                               | Boolean | `false`          |
+| icon                          | 按钮图标，同 Icon 组件 name 属性                             | String  | -                |
+| icon-font-class-name`v3.1.17` | 自定义 icon 字体基础类名                                     | String  | `nutui-iconfont` |
+| icon-class-prefix `v3.1.17`   | 自定义 icon 类名前缀，用于使用自定义图标                     | String  | `nut-icon`       |
+| loading                       | 按钮 loading 状态                                            | Boolean | `false`          |
 
 ### Events
 

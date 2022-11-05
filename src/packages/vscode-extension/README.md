@@ -1,1 +1,1 @@
-# NutUI组件库vscode插件
+# NutUI 组件库 vscode 插件

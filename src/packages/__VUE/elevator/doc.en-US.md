@@ -6,7 +6,7 @@ It is used to quickly locate the list and display the index
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { Elevator } from '@nutui/nutui';
@@ -21,10 +21,11 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -87,7 +88,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -99,10 +104,17 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
-  <nut-elevator :index-list="dataList2" :height="220" :acceptKey="acceptKey" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator
+    :index-list="dataList2"
+    :height="220"
+    :acceptKey="acceptKey"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  ></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -220,7 +232,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -232,10 +248,17 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
-  <nut-elevator :index-list="dataList3" :is-sticky="true" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator
+    :index-list="dataList3"
+    :is-sticky="true"
+    :height="220"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  ></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -365,7 +388,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -377,15 +404,16 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
-      <template v-slot:default="slotProps">
-        <nut-icon name='JD' size="12"></nut-icon>
-        <span :style="{marginLeft: '15px'}">{{ slotProps.item.name }}</span>
-      </template>
+    <template v-slot:default="slotProps">
+      <nut-icon name="JD" size="12"></nut-icon>
+      <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
+    </template>
   </nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -448,7 +476,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -460,30 +492,30 @@ app.use(Elevator);
 
 ### Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| height                 | Height of elevator area                                                    | Number、String  | `200px`
-| accept-key             | Index key value                                                      | String  | `title` |
-| index-list             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
-| is-sticky            | Whether the index is ceiling                                                    | Boolean  | `false` |
-| space-height             | Up and down spacing of right anchor point              | Number  | `23` |
-| title-height             | Height of left index                                                     | Number  | `35` |
+| Attribute    | Description                               | Type                                                                                                         | Default               |
+| ------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------- |
+| height       | Height of elevator area                   | Number、String                                                                                               | `200px`               |
+| accept-key   | Index key value                           | String                                                                                                       | `title`               |
+| index-list   | Index list                                | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure） | `[{id: 0, name: ''}]` |
+| is-sticky    | Whether the index is ceiling              | Boolean                                                                                                      | `false`               |
+| space-height | Up and down spacing of right anchor point | Number                                                                                                       | `23`                  |
+| title-height | Height of left index                      | Number                                                                                                       | `35`                  |
 
 ### Slots
 
-| Attribute                   | Description                                                             |
-|------------------------|----------------------------------------------------------------|
-| default                 | Customize the contents of each data under the left index        |
+| Attribute | Description                                              |
+| --------- | -------------------------------------------------------- |
+| default   | Customize the contents of each data under the left index |
 
 ### Events
 
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
-| click-item | Click content | key: string, item: { id: 0, name: '' } |
-| click-index | Click index | key: string |
+| Event       | Description   | Arguments                              |
+| ----------- | ------------- | -------------------------------------- |
+| click-item  | Click content | key: string, item: { id: 0, name: '' } |
+| click-index | Click index   | key: string                            |
 
 ### API
 
-| Event           | Description                   | Arguments           |
-| ---------------- | ---------------------- | ------------ |
-| scrollTo         | Scroll to the location of the corresponding index       | index:number |
+| Event    | Description                                       | Arguments    |
+| -------- | ------------------------------------------------- | ------------ |
+| scrollTo | Scroll to the location of the corresponding index | index:number |

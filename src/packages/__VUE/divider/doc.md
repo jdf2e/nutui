@@ -1,11 +1,12 @@
 # Divider 分割线
 
 ### 介绍
-    
+
 用于将内容分隔为多个区域。
 
 ### 安装
-``` javascript
+
+```javascript
 import { createApp } from 'vue';
 // vue
 import { Divider } from '@nutui/nutui';
@@ -16,15 +17,13 @@ const app = createApp();
 app.use(Divider);
 ```
 
-
-
 ### 基础用法
 
 默认渲染一条水平分割线。
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-divider />
 </template>
@@ -38,7 +37,7 @@ app.use(Divider);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-divider>文本</nut-divider>
 </template>
@@ -52,7 +51,7 @@ app.use(Divider);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-divider content-position="left">文本</nut-divider>
   <nut-divider content-position="right">文本</nut-divider>
@@ -67,7 +66,7 @@ app.use(Divider);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-divider dashed>文本</nut-divider>
 </template>
@@ -81,9 +80,16 @@ app.use(Divider);
 
 :::demo
 
-``` html
+```html
 <template>
-  <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
+  <nut-divider
+    :style="{ 
+      color: '#1989fa', 
+      borderColor: '#1989fa', 
+      padding: '0 16px' 
+    }"
+    >文本</nut-divider
+  >
 </template>
 ```
 
@@ -93,10 +99,10 @@ app.use(Divider);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell>
-    <div :style="{fontSize: '14px'}">
+    <div :style="{ fontSize: '14px' }">
       文本
       <nut-divider direction="vertical" />
       <a href="#" :style="{ color: '#1989fa' }">链接</a>
@@ -113,16 +119,15 @@ app.use(Divider);
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| dashed         | 是否使用虚线               | Boolean | false                |
-| hairline        | 是否使用 0.5px 线                         | Boolean | true                |
-| content-position        | 内容位置，可选值为left right                         | String | center                |
-| direction `v3.1.21`         | 水平还是垂直类型               | String | 'horizontal'                |
+| 参数                | 说明                          | 类型    | 默认值       |
+| ------------------- | ----------------------------- | ------- | ------------ |
+| dashed              | 是否使用虚线                  | Boolean | false        |
+| hairline            | 是否使用 0.5px 线             | Boolean | true         |
+| content-position    | 内容位置，可选值为 left right | String  | center       |
+| direction `v3.1.21` | 水平还是垂直类型              | String  | 'horizontal' |
 
 ### Slots
 
-| 名称 | 说明           | 
-|--------|----------------|
-| default  | 内容 | 
-    
+| 名称    | 说明 |
+| ------- | ---- |
+| default | 内容 |

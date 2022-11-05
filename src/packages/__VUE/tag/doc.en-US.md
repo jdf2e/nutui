@@ -7,7 +7,6 @@ Labels for tagging and classification.
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 // vue
 import { Tag } from '@nutui/nutui';
@@ -16,15 +15,15 @@ import { Tag } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tag);
-
 ```
 
 ### Basic Usage
 
 :::demo
+
 ```html
 <template>
- <nut-cell-group title="Basic Usage">
+  <nut-cell-group title="Basic Usage">
     <nut-cell title="primary">
       <template v-slot:link>
         <nut-tag type="primary">Tag</nut-tag>
@@ -47,13 +46,14 @@ app.use(Tag);
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
+
 :::
 
-### Style 
+### Style
 
 :::demo
+
 ```html
 <template>
   <nut-cell-group title="Style">
@@ -80,34 +80,31 @@ app.use(Tag);
   </nut-cell-group>
 </template>
 
-
 <script lang="ts">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-export default {
-  setup() {
-    const show = ref(true);
-    const close = () => {
-      show.value = false;
-    };
+  export default {
+    setup() {
+      const show = ref(true);
+      const close = () => {
+        show.value = false;
+      };
 
-    return {
-      close,
-      show
-    };
-  }
-};
+      return {
+        close,
+        show
+      };
+    }
+  };
 </script>
-
-
-
 ```
-:::
 
+:::
 
 ### Custom Color
 
 :::demo
+
 ```html
 <template>
   <nut-cell-group title="Custom Color">
@@ -128,34 +125,33 @@ export default {
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
+
 :::
 
-
 ## API
-### Props  
 
-| Attribute | Description | Type | Default |
-|------------|--------------------------------------------------|---------|-----------|
+### Props
+
+| Attribute  | Description                                                   | Type    | Default   |
+| ---------- | ------------------------------------------------------------- | ------- | --------- |
 | type       | Label type，can be set `primary` `success` `danger` `warning` | String  | `default` |
-| color      | Label color                                         | String  | -         |
-| text-color | Text color, which takes precedence over the color attribute| String  | `white`   |
-| plain      | Whether it is plain | Boolean | `false`   |
-| round      | Whether it is round                                   | Boolean | `false`   |
-| mark       | Whether it is mark                                   | Boolean | `false`   |
-| closeable  | Whether it is a closeable tag       | Boolean | `false`   |
-
+| color      | Label color                                                   | String  | -         |
+| text-color | Text color, which takes precedence over the color attribute   | String  | `white`   |
+| plain      | Whether it is plain                                           | Boolean | `false`   |
+| round      | Whether it is round                                           | Boolean | `false`   |
+| mark       | Whether it is mark                                            | Boolean | `false`   |
+| closeable  | Whether it is a closeable tag                                 | Boolean | `false`   |
 
 ### Slots
 
-| Name   | Description           |
-|---------|--------------|
+| Name    | Description           |
+| ------- | --------------------- |
 | default | Label display content |
 
 ### Events
 
-| Event             | Description                     | Arguments        |
-|----------|----------|----------|
-| click    | click event | event    |
-| close    | close event | event    |
+| Event | Description | Arguments |
+| ----- | ----------- | --------- |
+| click | click event | event     |
+| close | close event | event     |

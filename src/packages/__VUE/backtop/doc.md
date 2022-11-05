@@ -7,21 +7,19 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
-import { BackTop,Icon } from '@nutui/nutui';
+import { BackTop, Icon } from '@nutui/nutui';
 
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
-
 ```
 
 ### 基础用法
 
 :::demo
-```html
 
+```html
 <template>
   <div class="demo" id="elId">
     <div class="text-data">我是测试数据1</div>
@@ -48,10 +46,10 @@ app.use(Icon);
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" ></nut-backtop>
-
+    <nut-backtop @click="handleClick"></nut-backtop>
   </div>
 </template>
+
 <script>
   export default {
     setup() {
@@ -65,9 +63,9 @@ app.use(Icon);
     }
   };
 </script>
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -83,15 +81,15 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
-
 ```
+
 :::
 
 ### 设置出现位置
 
 :::demo
+
 ```html
 <template>
   <div class="demo" id="elId">
@@ -119,13 +117,12 @@ app.use(Icon);
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop :distance="200" ></nut-backtop>
+    <nut-backtop :distance="200"></nut-backtop>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -141,14 +138,15 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
+
 :::
 
 ### 自定义样式
 
 :::demo
+
 ```html
 <template>
   <div class="demo" id="elId">
@@ -176,13 +174,12 @@ app.use(Icon);
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
+    <nut-backtop @click="handleClick" :distance="100" :bottom="90"><div>无</div></nut-backtop>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
-  .text-data {
+<style scoped>
+  .demo .text-data {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -198,34 +195,33 @@ app.use(Icon);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
+
 :::
-
-
 
 ### API
 
-### Props  
+### Props
 
-| 字段            | 说明                 | 类型    | 默认值  |
-|-----------------|------------------------------------------|---------|---------|
-| el-id           | 获取监听元素的父级元素         | String | -       |
-| bottom         | 距离页面底部距离    | Number  | `20`       |
-| right        | 距离页面右侧距离      | Number |  `10`  |
-| distance     | 页面垂直滚动多高后出现   | Number  | `200`      |
-| z-index         | 设置组件页面层级   | Number  | `10`       |  
-| is-animation         | 是否有动画,和duration参数互斥   | Boolean  | `true`       |  
-| duration         | 设置动画持续时间   | Number  | `1000`       |                                          
+| 字段         | 说明                            | 类型    | 默认值 |
+| ------------ | ------------------------------- | ------- | ------ |
+| el-id        | 获取监听元素的父级元素          | String  | -      |
+| bottom       | 距离页面底部距离                | Number  | `20`   |
+| right        | 距离页面右侧距离                | Number  | `10`   |
+| distance     | 页面垂直滚动多高后出现          | Number  | `200`  |
+| z-index      | 设置组件页面层级                | Number  | `10`   |
+| is-animation | 是否有动画,和 duration 参数互斥 | Boolean | `true` |
+| duration     | 设置动画持续时间                | Number  | `1000` |
 
 ### Events
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
+
+| 名称  | 说明               | 回调参数          |
+| ----- | ------------------ | ----------------- |
 | click | 按钮点击时触发事件 | event: MouseEvent |
 
 ### Slots
 
-| 名称    | 说明         |
-|---------|--------------|
-| default | 	默认slot，用以自定义内容 |
+| 名称    | 说明                      |
+| ------- | ------------------------- |
+| default | 默认 slot，用以自定义内容 |

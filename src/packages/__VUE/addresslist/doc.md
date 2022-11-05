@@ -7,8 +7,8 @@
 ### 安装
 
 ```javascript
-import { createApp } from "vue";
-import { AddressList, Icon, Swipe, Button } from "@nutui/nutui";
+import { createApp } from 'vue';
+import { AddressList, Icon, Swipe, Button } from '@nutui/nutui';
 
 const app = createApp();
 app.use(AddressList);
@@ -16,7 +16,6 @@ app.use(Icon);
 app.use(Swipe);
 app.use(Button);
 ```
-
 
 ### 基础用法
 
@@ -34,57 +33,59 @@ app.use(Button);
   >
   </nut-addresslist>
 </template>
+
 <script lang="ts">
-import { ref, reactive } from 'vue';
-export default {
-  setup() {
-    const data = ref([
-      {
-        testid:3,
-        testaddressName:'姓名',
-        phone:'123****4567',
-        defaultAddress:false,
-        fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
-      },
-      {
-        testid:4,
-        testaddressName:'姓名',
-        phone:'123****4567',
-        defaultAddress:true,
-        fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
-      },
-    ]);
-    const dataMapOptions = reactive({
-      id: 'testid',
-      addressDetail:'testaddressDetail',
-      addressName:'testaddressName'
-    });
-    const itemClick = ()=>{
-      Toast.text('Click To Address');
+  import { ref, reactive } from 'vue';
+  export default {
+    setup() {
+      const data = ref([
+        {
+          testid: 3,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: false,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+        },
+        {
+          testid: 4,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: true,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+        }
+      ]);
+      const dataMapOptions = reactive({
+        id: 'testid',
+        addressDetail: 'testaddressDetail',
+        addressName: 'testaddressName'
+      });
+      const itemClick = () => {
+        Toast.text('Click To Address');
+      };
+      const delClick = () => {
+        Toast.text('Click To Delete');
+      };
+      const editClick = () => {
+        Toast.text('Click To Edit');
+      };
+      return {
+        itemClick,
+        holdDownClick,
+        data,
+        delClick,
+        editClick,
+        copyClick,
+        setClick,
+        addAddress,
+        dataMapOptions
+      };
     }
-    const delClick = ()=>{
-      Toast.text('Click To Delete');
-    }
-    const editClick = ()=>{
-      Toast.text('Click To Edit');
-    }
-    return {
-      itemClick,
-      holdDownClick,
-      data,
-      delClick,
-      editClick,
-      copyClick,
-      setClick,
-      addAddress,
-      dataMapOptions
-    };
-  }
-};
+  };
 </script>
 ```
 
 :::
+
 ### 长按功能
 
 :::demo
@@ -105,52 +106,53 @@ export default {
   >
   </nut-addresslist>
 </template>
+
 <script lang="ts">
-import { ref, reactive } from 'vue';
-export default {
-  setup() {
-    const data = ref([
+  import { ref, reactive } from 'vue';
+  export default {
+    setup() {
+      const data = ref([
         {
-          testid:3,
-          testaddressName:'姓名',
-          phone:'123****4567',
-          defaultAddress:false,
-          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+          testid: 3,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: false,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
         },
         {
-          testid:4,
-          testaddressName:'姓名',
-          phone:'123****4567',
-          defaultAddress:true,
-          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
-        },
+          testid: 4,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: true,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+        }
       ]);
       const dataMapOptions = reactive({
         id: 'testid',
-        addressDetail:'testaddressDetail',
-        addressName:'testaddressName'
+        addressDetail: 'testaddressDetail',
+        addressName: 'testaddressName'
       });
-      const itemClick = ()=>{
+      const itemClick = () => {
         Toast.text('Click To Address');
-      }
-      const delClick = ()=>{
+      };
+      const delClick = () => {
         Toast.text('Click To Delete');
-      }
-      const editClick = ()=>{
+      };
+      const editClick = () => {
         Toast.text('Click To Edit');
-      }
-      const copyClick = ()=>{
+      };
+      const copyClick = () => {
         Toast.text('Click To Copy');
-      }
-      const holdDownClick = (event: Event,id:number)=>{
+      };
+      const holdDownClick = (event: Event, id: number) => {
         Toast.text('Long Press');
-      }
-      const setClick = ()=>{
+      };
+      const setClick = () => {
         Toast.text('Click On Settings');
-      }
-      const addAddress = ()=>{
+      };
+      const addAddress = () => {
         Toast.text('Click To Add');
-      }
+      };
       return {
         itemClick,
         holdDownClick,
@@ -166,7 +168,9 @@ export default {
   };
 </script>
 ```
+
 :::
+
 ### 滑动功能
 
 :::demo
@@ -186,43 +190,44 @@ export default {
   >
   </nut-addresslist>
 </template>
+
 <script lang="ts">
-import { ref, reactive } from 'vue';
-export default {
-  setup() {
-    const data = ref([
+  import { ref, reactive } from 'vue';
+  export default {
+    setup() {
+      const data = ref([
         {
-          testid:3,
-          testaddressName:'姓名',
-          phone:'123****4567',
-          defaultAddress:false,
-          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+          testid: 3,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: false,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
         },
         {
-          testid:4,
-          testaddressName:'姓名',
-          phone:'123****4567',
-          defaultAddress:true,
-          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
-        },
+          testid: 4,
+          testaddressName: '姓名',
+          phone: '123****4567',
+          defaultAddress: true,
+          fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+        }
       ]);
       const dataMapOptions = reactive({
         id: 'testid',
-        addressDetail:'testaddressDetail',
-        addressName:'testaddressName'
+        addressDetail: 'testaddressDetail',
+        addressName: 'testaddressName'
       });
-      const itemClick = ()=>{
+      const itemClick = () => {
         Toast.text('Click To Address');
-      }
-      const editClick = ()=>{
+      };
+      const editClick = () => {
         Toast.text('Click To Edit');
-      }
-      const delClick = ()=>{
+      };
+      const delClick = () => {
         Toast.text('Click To Delete');
-      }
-      const addAddress = ()=>{
+      };
+      const addAddress = () => {
         Toast.text('Click To Add');
-      }
+      };
       return {
         itemClick,
         holdDownClick,
@@ -240,6 +245,7 @@ export default {
 ```
 
 :::
+
 ## API
 
 ### Props
@@ -253,17 +259,17 @@ export default {
 
 ### Events
 
-| 事件名             | 说明                 | 回调参数          | 备注               |
-| ------------------ | -------------------- | ----------------- | ------------------ |
-| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
-| handel-edit-icon     | 点击编辑图标         | event: Event,item | 公共               |
-| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
-| handel-item         | 点击地址列表每一项   | event: Event,item | 公共               |
-| add-address-click    | 点击底部添加地址按钮 | event: Event      | 公共               |
+| 事件名                | 说明                 | 回调参数          | 备注               |
+| --------------------- | -------------------- | ----------------- | ------------------ |
+| handel-del-icon       | 点击删除图标         | event: Event,item | 公共               |
+| handel-edit-icon      | 点击编辑图标         | event: Event,item | 公共               |
+| handel-del-icon       | 点击删除图标         | event: Event,item | 公共               |
+| handel-item           | 点击地址列表每一项   | event: Event,item | 公共               |
+| add-address-click     | 点击底部添加地址按钮 | event: Event      | 公共               |
 | long-press-copy-click | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
 | long-press-set-click  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
 | long-press-del-click  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
-| swipe-del-click      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
+| swipe-del-click       | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
 
 ### Slots
 
@@ -284,10 +290,10 @@ export default {
 ```javascript
 const dataInfo = {
   id: 2, //地址id
-  addressName: "姓名", //地址姓名
-  phone: "123****4567", //联系方式
+  addressName: '姓名', //地址姓名
+  phone: '123****4567', //联系方式
   defaultAddress: false, //是否是默认
-  fullAddress: "北京市通州区测试测试测试测试测试测试测试测试测试", //详细地址
+  fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试' //详细地址
 };
 ```
 
@@ -295,8 +301,8 @@ const dataInfo = {
 
 ```javascript
 const dataMapOptions = {
-  id: "testid",
-  addressDetail: "testaddressDetail",
-  addressName: "testaddressName",
+  id: 'testid',
+  addressDetail: 'testaddressDetail',
+  addressName: 'testaddressName'
 };
 ```

@@ -24,19 +24,16 @@ app.use(OverLay);
 ```
 
 ### 基础用法
+
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="columns"
-    title="城市选择"
-    @change="change"
-    @confirm="confirm"
-  >
+  <nut-picker v-model:visible="show" :columns="columns" title="城市选择" @change="change" @confirm="confirm">
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -52,19 +49,26 @@ app.use(OverLay);
         { text: '浙江市', value: 'ZheJiang' },
         { text: '江苏市', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {
+        show,
+        desc,
+        columns,
+        change,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 默认选中项
@@ -72,18 +76,14 @@ app.use(OverLay);
 通过设置 modelValue 实现默认选中项，modelValue 是一个包含每项配置 value 值的数组。
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
-  <nut-picker
-    v-model="selectedValue"
-    v-model:visible="show"
-    :columns="columns"
-    title="城市选择"
-    @confirm="confirm"
-  >
+  <nut-picker v-model="selectedValue" v-model:visible="show" :columns="columns" title="城市选择" @confirm="confirm">
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -100,16 +100,23 @@ app.use(OverLay);
         { text: '浙江市', value: 'ZheJiang' },
         { text: '江苏市', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
-      }
 
-      return {show,desc,columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        desc.value = selectedValue.join(',');
+      };
+
+      return {
+        show,
+        desc,
+        columns,
+        selectedValue,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 平铺展示
@@ -117,6 +124,7 @@ app.use(OverLay);
 `threeDimensional` 可关闭 3D 滚动效果。
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
@@ -130,6 +138,7 @@ app.use(OverLay);
   >
   </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -146,16 +155,23 @@ app.use(OverLay);
         { text: '浙江市', value: 'ZheJiang' },
         { text: '江苏市', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
-      }
 
-      return {show,desc,columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        desc.value = selectedValue.join(',');
+      };
+
+      return {
+        show,
+        desc,
+        columns,
+        selectedValue,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 多列展示
@@ -163,25 +179,27 @@ app.use(OverLay);
 columns 属性可以通过二维数组的形式配置多列选择。
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
-    <nut-picker
-      v-model="selectedTime"
-      v-model:visible="show"
-      :columns="multipleColumns"
-      title="城市选择"
-      @confirm="confirm"
-      @change="change"
-    >
-    </nut-picker>
+  <nut-picker
+    v-model="selectedTime"
+    v-model:visible="show"
+    :columns="multipleColumns"
+    title="城市选择"
+    @confirm="confirm"
+    @change="change"
+  >
+  </nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
-      const selectedTime = ref(['Wednesday','Afternoon']);
+      const selectedTime = ref(['Wednesday', 'Afternoon']);
       const desc = ref('');
       const multipleColumns = ref([
         // 第一列
@@ -199,19 +217,27 @@ columns 属性可以通过二维数组的形式配置多列选择。
           { text: '晚上', value: 'Evening' }
         ]
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm, selectedTime};
+      return {
+        show,
+        desc,
+        columns,
+        change,
+        confirm,
+        selectedTime
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 多级联动
@@ -219,6 +245,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 使用 columns 属性的 children 字段可以实现选项级联的效果。
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
@@ -231,13 +258,14 @@ columns 属性可以通过二维数组的形式配置多列选择。
     @change="change"
   ></nut-picker>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
       const desc = ref('');
-      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
+      const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
       const cascaderColumns = ref([
         {
           text: '浙江',
@@ -284,19 +312,27 @@ columns 属性可以通过二维数组的形式配置多列选择。
           ]
         }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
+      return {
+        show,
+        desc,
+        selectedCascader,
+        cascaderColumns,
+        change,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 异步获取
@@ -304,6 +340,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 在实际开发中，大部分情况 Columns 属性的数据是通过异步方式获取的。
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
@@ -315,6 +352,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
     @confirm="confirm"
   ></nut-picker>
 </template>
+
 <script>
   import { ref, onMounted } from 'vue';
   export default {
@@ -340,16 +378,23 @@ columns 属性可以通过二维数组的形式配置多列选择。
           asyncValue.value = ['ZangZu'];
         }, 500);
       });
-      
+
       const confirm = ( { selectedValue,selectedOptions })=>{
         desc.value = selectedValue.join(',');
       }
 
-      return {show,desc,asyncColumns,asyncValue, confirm};
+      return {
+        show,
+        desc,
+        asyncColumns,
+        asyncValue,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ### 自定义按钮
@@ -357,18 +402,15 @@ columns 属性可以通过二维数组的形式配置多列选择。
 Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="请选择截止时间" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="asyncColumns"
-    title="日期选择"
-    @confirm="confirm"
-  >
-   <nut-button block  @click="alwaysFun">永远有效</nut-button>
+  <nut-picker v-model:visible="show" :columns="asyncColumns" title="日期选择" @confirm="confirm">
+    <nut-button block @click="alwaysFun">永远有效</nut-button>
   </nut-picker>
 </template>
+
 <script>
   import { ref, onMounted } from 'vue';
   export default {
@@ -394,63 +436,70 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
             { text: '2022-11', value: 'November' },
             { text: '2022-12', value: 'December' }
           ];
-
         }, 500);
       });
-      
-      const confirm = ( { selectedValue,selectedOptions })=>{
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
         desc.value = selectedValue.join(',');
-      }
+      };
 
       const alwaysFun = () => {
         showEffect.value = false;
         desc.effect = '永远有效';
       };
 
-      return {show,desc,alwaysFun,effectColumns, confirm};
+      return {
+        show,
+        desc,
+        alwaysFun,
+        effectColumns,
+        confirm
+      };
     }
   };
 </script>
 ```
+
 :::
 
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| v-model:value         | 默认选中项               | Array | []              |
-| v-model:visible          | 是否可见               | Boolean | -                |
-| columns         | 对象数组，配置每一列显示的数据               | Array | -                |
-| title                  | 设置标题                   | String  | -      |
-| cancel-text            | 取消按钮文案               | String  | 取消   |
-| ok-text                | 确定按钮文案               | String  | 确定   |
-| three-dimensional`v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
-| swipe-duration`v3.2.2`          | 惯性滚动时长        | Number、String  | 1000   |
-| safe-area-inset-bottom `v3.2.4`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	Boolean	|`false`     |
+| 参数                            | 说明                                                                        | 类型           | 默认值  |
+| ------------------------------- | --------------------------------------------------------------------------- | -------------- | ------- |
+| v-model:value                   | 默认选中项                                                                  | Array          | []      |
+| v-model:visible                 | 是否可见                                                                    | Boolean        | -       |
+| columns                         | 对象数组，配置每一列显示的数据                                              | Array          | -       |
+| title                           | 设置标题                                                                    | String         | -       |
+| cancel-text                     | 取消按钮文案                                                                | String         | 取消    |
+| ok-text                         | 确定按钮文案                                                                | String         | 确定    |
+| three-dimensional`v3.1.23`      | 是否开启 3D 效果                                                            | Boolean        | true    |
+| swipe-duration`v3.2.2`          | 惯性滚动时长                                                                | Number、String | 1000    |
+| safe-area-inset-bottom `v3.2.4` | 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 | Boolean        | `false` |
 
 > 注：自 `v3.2.3` 起，在 @nutui/nutui-taro 中，取消 3D 展示效果，`three-dimensional` 废弃。
+
 ### Columns 数据结构
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | String|Number |               |
-| value          | 选项对应的值，且唯一               | String|Number |            |
-| children         | 用于级联选项               | Array | -                |
-| className                  | 添加额外的类名                   | String  |      |
+| 参数      | 说明                 | 类型   | 默认值 |
+| --------- | -------------------- | ------ | ------ | --- |
+| text      | 选项的文字内容       | String | Number |     |
+| value     | 选项对应的值，且唯一 | String | Number |     |
+| children  | 用于级联选项         | Array  | -      |
+| className | 添加额外的类名       | String |        |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | { selectedValue, selectedOptions } |
-| close  | 点击取消按钮时触发 | { selectedValue, selectedOptions } |
+| 事件名  | 说明               | 回调参数                                        |
+| ------- | ------------------ | ----------------------------------------------- |
+| confirm | 点击确定按钮时触发 | { selectedValue, selectedOptions }              |
+| close   | 点击取消按钮时触发 | { selectedValue, selectedOptions }              |
 | change  | 选项发生改变时触发 | { columnIndex, selectedValue, selectedOptions } |
 
 ### Slots
 
-| 事件名 | 说明           | 
-|--------|----------------|
-| default  | 自定义滑动数据底部区域 |
-| top  | 自定义滑动数据顶部区域 |
+| 事件名  | 说明                   |
+| ------- | ---------------------- |
+| default | 自定义滑动数据底部区域 |
+| top     | 自定义滑动数据顶部区域 |

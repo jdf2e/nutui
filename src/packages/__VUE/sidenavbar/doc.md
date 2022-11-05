@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui';
@@ -23,7 +23,7 @@ app.use(SideNavBarItem);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick1">
     <span><label>右侧</label></span>
@@ -43,6 +43,7 @@ app.use(SideNavBarItem);
     </nut-sidenavbar>
   </nut-popup>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -50,7 +51,7 @@ app.use(SideNavBarItem);
       const state = reactive({
         show1: false,
         width: '80%',
-        height: '100%',
+        height: '100%'
       });
 
       const handleClick1 = () => {
@@ -62,18 +63,19 @@ app.use(SideNavBarItem);
         handleClick1
       };
     }
-  }
+  };
 </script>
 ```
 
 :::
 
 ### 嵌套（建议最多三层）
+
 > 小程序暂不支持异步加载
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick3">
     <span><label>显示</label></span>
@@ -104,6 +106,7 @@ app.use(SideNavBarItem);
     </nut-sidenavbar>
   </nut-popup>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -121,21 +124,19 @@ app.use(SideNavBarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
+              name: 'async abc16',
               arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
+              name: 'async abc17',
               arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
             }
           ];
         }, 2000);
       };
 
-      const handleClick4 = (msg: string) => {
-        
-      }
+      const handleClick4 = (msg: string) => {};
 
       return {
         ...toRefs(state),
@@ -143,7 +144,7 @@ app.use(SideNavBarItem);
         handleClick4
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -153,36 +154,33 @@ app.use(SideNavBarItem);
 
 ### SideNavBar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | 导航缩进宽度                                                    | Number、String  | `15`
+| 字段   | 说明         | 类型           | 默认值 |
+| ------ | ------------ | -------------- | ------ |
+| offset | 导航缩进宽度 | Number、String | `15`   |
 
 ### SubSideNavBar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | ``
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
-| open                 | 导航是否默认展开                                                    | Boolean  | `true`
+| 字段  | 说明             | 类型           | 默认值 |
+| ----- | ---------------- | -------------- | ------ |
+| title | 导航标题         | String         | ``     |
+| ikey  | 导航唯一标识     | String、Number | ``     |
+| open  | 导航是否默认展开 | Boolean        | `true` |
 
 ### SideNavBarItem Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | `15`
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
-
+| 字段  | 说明         | 类型           | 默认值 |
+| ----- | ------------ | -------------- | ------ |
+| title | 导航标题     | String         | `15`   |
+| ikey  | 导航唯一标识 | String、Number | ``     |
 
 ### SubSideNavBar Events
 
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| title-click | 导航点击 | - |
+| 名称        | 说明     | 回调参数 |
+| ----------- | -------- | -------- |
+| title-click | 导航点击 | -        |
 
 ### SideNavBarItem Events
 
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| click | 导航点击 | - |
-
-
+| 名称  | 说明     | 回调参数 |
+| ----- | -------- | -------- |
+| click | 导航点击 | -        |

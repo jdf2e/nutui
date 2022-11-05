@@ -25,10 +25,10 @@ app.use(Table);
 <template>
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, h } from 'vue';
   export default {
-    props: {},
     setup() {
       const state = reactive({
         columns: [
@@ -94,10 +94,10 @@ app.use(Table);
 <template>
   <nut-table :columns="columns" :data="data" :bordered="bordered"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
-    props: {},
     setup() {
       const state = reactive({
         bordered: false,
@@ -152,10 +152,10 @@ app.use(Table);
 <template>
   <nut-table :columns="columns" :data="data" :summary="summary"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
-    props: {},
     setup() {
       const state = reactive({
         columns: [
@@ -228,10 +228,10 @@ app.use(Table);
 <template>
   <nut-table :columns="columns3" :data="data2" :striped="striped"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
-    props: {},
     setup() {
       const state = reactive({
         striped: true,
@@ -304,6 +304,7 @@ app.use(Table);
     </template>
   </nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -374,6 +375,7 @@ app.use(Table);
 <template>
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, h } from 'vue';
   import { Button, Icon } from '@nutui/nutui';
@@ -465,10 +467,10 @@ app.use(Table);
   <h2>Support asynchronous rendering(See the effect after 5S)</h2>
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs, onMounted } from 'vue';
   export default {
-    props: {},
     setup() {
       const state = reactive({
         columns: [
@@ -541,6 +543,7 @@ app.use(Table);
 <template>
   <nut-table :columns="columns" :data="data" @sorter="handleSorter"></nut-table>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   import { Toast } from '@nutui/nutui';
@@ -611,28 +614,28 @@ app.use(Table);
 
 ### Props
 
-| Attribute     | Description             | Type               | Default  |
-| -------- | ---------------- | ------------------ | ------- |
-| bordered | Show border     | Boolean            | `true`  |
-| columns  | Header data         | TableColumnProps[] | `[]`    |
-| data     | Table data         | Object[]           | `[]`    |
-| summary  | Show profile    | Function           | -       |
-| striped  | Whether the stripes alternate light and dark | Boolean            | `false` |
+| Attribute | Description                                  | Type               | Default |
+| --------- | -------------------------------------------- | ------------------ | ------- |
+| bordered  | Show border                                  | Boolean            | `true`  |
+| columns   | Header data                                  | TableColumnProps[] | `[]`    |
+| data      | Table data                                   | Object[]           | `[]`    |
+| summary   | Show profile                                 | Function           | -       |
+| striped   | Whether the stripes alternate light and dark | Boolean            | `false` |
 
 ### TableColumnProps
 
-| Attribute   | Description                                                                                                                                                     | Type                      | Default |
-| ------ | ------------------------------------------------------------------ | ------------------------- | ------ |
-| key    | Unique identification of the column                                          | String                    | ``     |
-| title  | Header title                                                                                                                                                 | String                    | ``     |
-| stylehead  | Header style                                                                                                                                                 | String                    | ``     |
-| stylecolumn  | Column style                                                                                                                                                 | String                    | ``     |
-| align  | Alignment of columns, optional values`left`,`center`,`right`                                                                                                              | String                    | `left` |
-| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | Boolean、Function、String | -      |
-| render | Custom render column data, high priority                                                                                                                               | Function(record)          | -      |
+| Attribute   | Description                                                                                                                                                                                                                                             | Type                      | Default |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------- |
+| key         | Unique identification of the column                                                                                                                                                                                                                     | String                    | ``      |
+| title       | Header title                                                                                                                                                                                                                                            | String                    | ``      |
+| stylehead   | Header style                                                                                                                                                                                                                                            | String                    | ``      |
+| stylecolumn | Column style                                                                                                                                                                                                                                            | String                    | ``      |
+| align       | Alignment of columns, optional values`left`,`center`,`right`                                                                                                                                                                                            | String                    | `left`  |
+| sorter      | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | Boolean、Function、String | -       |
+| render      | Custom render column data, high priority                                                                                                                                                                                                                | Function(record)          | -       |
 
 ### Events
 
-| Event | Description             | Arguments                   |
-| ------ | ---------------- | -------------------------- |
+| Event  | Description                      | Arguments                                  |
+| ------ | -------------------------------- | ------------------------------------------ |
 | sorter | Click the sort button to trigger | item: Data of the currently clicked header |

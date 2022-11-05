@@ -1,4 +1,4 @@
-# Temp xx组件
+# Temp xx 组件
 
 ### 介绍
 
@@ -6,50 +6,44 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { Temp } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Temp);
-
 ```
 
-
-### 基础用法1
+### 基础用法 1
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-temp name="wifi"></nut-temp> <nut-temp name="mail"></nut-temp>
 ```
 
-### 基础用法2
+### 基础用法 2
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-temp name="wifi"></nut-temp> <nut-temp name="mail"></nut-temp>
 ```
 
-### 基础用法3
+### 基础用法 3
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-temp name="wifi"></nut-temp> <nut-temp name="mail"></nut-temp>
 ```
-
 
 ## API
 
 ### Props
 
 | 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
+| ------------ | -------------------------------- | ------ | ---------------- |
 | name         | 图标名称或图片链接               | String | -                |
 | color        | 图标颜色                         | String | -                |
 | size         | 图标大小，如 `20px` `2em` `2rem` | String | -                |
@@ -59,5 +53,5 @@ app.use(Temp);
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
+| ------ | -------------- | ------------ |
 | click  | 点击图标时触发 | event: Event |

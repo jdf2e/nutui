@@ -13,7 +13,7 @@ import { Cell, CellGroup, Icon } from '@nutui/nutui';
 const app = createApp();
 app.use(Cell);
 app.use(CellGroup);
-app.use(Icon)
+app.use(Icon);
 ```
 
 ### Basic Usage
@@ -27,6 +27,7 @@ app.use(Icon)
   <nut-cell title="Click Test" @click="testClick"></nut-cell>
   <nut-cell title="Round Radius 0" round-radius="0"></nut-cell>
 </template>
+
 <script>
   import { ref } from 'vue';
   export default {
@@ -35,7 +36,10 @@ app.use(Icon)
       const testClick = (event) => {
         console.log('Click Test');
       };
-      return { testClick, switchChecked };
+      return {
+        testClick,
+        switchChecked
+      };
     }
   };
 </script>
@@ -77,14 +81,15 @@ app.use(Icon)
 ```html
 <template>
   <nut-cell desc="Description">
-      <template v-slot:title>
-        <span>Title <b style="color: red">1</b></span>
-      </template>
+    <template v-slot:title>
+      <span>Title <b style="color: red;">1</b></span>
+    </template>
   </nut-cell>
 </template>
 ```
 
 :::
+
 ### Link | CellGroup Usage
 
 :::demo
@@ -115,6 +120,7 @@ app.use(Icon)
     </nut-cell>
   </nut-cell-group>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
@@ -123,7 +129,10 @@ app.use(Icon)
         console.log('Click Test');
       };
       const switchChecked = ref(true);
-      return { testClick, switchChecked };
+      return {
+        testClick,
+        switchChecked
+      };
     }
   };
 </script>
@@ -195,14 +204,14 @@ You can center the left and right contents of the cell vertically through the 'c
 ### CellGroup Props
 
 | Attribute | Description | Type   | Default |
-|-----------|-------------|--------|---------|
+| --------- | ----------- | ------ | ------- |
 | title     | Title       | String | -       |
 | desc      | Description | String | -       |
 
 ### Cell Props
 
 | Attribute               | Description                                                                                              | Type             | Default          |
-|-------------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
+| ----------------------- | -------------------------------------------------------------------------------------------------------- | ---------------- | ---------------- |
 | title                   | Title                                                                                                    | String           | -                |
 | sub-title               | Subtitle                                                                                                 | String           | -                |
 | desc                    | Description                                                                                              | String           | -                |
@@ -222,13 +231,13 @@ You can center the left and right contents of the cell vertically through the 'c
 ### Cell Events
 
 | Event | Description                  | Arguments   |
-|-------|------------------------------|-------------|
+| ----- | ---------------------------- | ----------- |
 | click | Emitted when cell is clicked | event:Event |
 
 ### Cell Slots
 
 | Name            | Description        |
-|-----------------|--------------------|
+| --------------- | ------------------ |
 | icon `v3.1.4`   | Custom Left `icon` |
 | default         | Default slot       |
 | link            | Custom Right`link` |
@@ -237,6 +246,6 @@ You can center the left and right contents of the cell vertically through the 'c
 ### CellGroup Slots
 
 | Name            | Description       |
-|-----------------|-------------------|
+| --------------- | ----------------- |
 | title `v3.1.10` | Custom`title`slot |
 | desc `v3.1.12`  | Custom`desc`slot  |

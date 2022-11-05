@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 // vue
 import { Sticky } from '@nutui/nutui';
@@ -16,7 +15,6 @@ import { Sticky } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Sticky);
-
 ```
 
 ### 基础用法
@@ -31,10 +29,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -52,10 +51,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -73,6 +73,7 @@ app.use(Sticky);
     </nut-sticky>
   </div>
 </template>
+
 <script lang="ts">
   import { ref } from 'vue';
   export default {
@@ -84,17 +85,19 @@ app.use(Sticky);
     }
   };
 </script>
-<style lang="scss" scoped>
-.sticky-container{
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-}
+
+<style scoped>
+  .sticky-container {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+  }
 </style>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -112,10 +115,11 @@ app.use(Sticky);
     </nut-sticky>
   </nut-cell>
 </template>
-<style lang="scss">
-#app{
-  height: auto !important;
-}
+
+<style>
+  #app {
+    height: auto !important;
+  }
 </style>
 ```
 
@@ -125,17 +129,17 @@ app.use(Sticky);
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| position         | 吸附位置（`top`、`bottom`）               | String | `top`                |
-| top         | 吸顶距离               | Number | `0`                |
-| bottom         | 吸底距离               | Number | `0`                |
-| container         | 容器的 `HTML` 节点, 在小程序环境下需要同时指定 `id`               | Element | -                |
-| z-index         | 吸附时的层级               | Number | `2000`               |
+| 参数      | 说明                                                | 类型    | 默认值 |
+| --------- | --------------------------------------------------- | ------- | ------ |
+| position  | 吸附位置（`top`、`bottom`）                         | String  | `top`  |
+| top       | 吸顶距离                                            | Number  | `0`    |
+| bottom    | 吸底距离                                            | Number  | `0`    |
+| container | 容器的 `HTML` 节点, 在小程序环境下需要同时指定 `id` | Element | -      |
+| z-index   | 吸附时的层级                                        | Number  | `2000` |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| change  | 吸附状态改变时触发 | `val: Boolean` |
-| scroll  | 滚动时触发 | `{ top: Number, fixed: Boolean }` |
+| 事件名 | 说明               | 回调参数                          |
+| ------ | ------------------ | --------------------------------- |
+| change | 吸附状态改变时触发 | `val: Boolean`                    |
+| scroll | 滚动时触发         | `{ top: Number, fixed: Boolean }` |

@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 // vue
 import { Elevator } from '@nutui/nutui';
@@ -21,10 +21,11 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -87,7 +88,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -99,10 +104,17 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
-  <nut-elevator :index-list="dataList2" :height="220" :acceptKey="acceptKey" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator
+    :index-list="dataList2"
+    :height="220"
+    :acceptKey="acceptKey"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  ></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -220,7 +232,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -232,10 +248,17 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
-  <nut-elevator :index-list="dataList3" :is-sticky="true" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator
+    :index-list="dataList3"
+    :is-sticky="true"
+    :height="220"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  ></nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -365,7 +388,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -377,15 +404,16 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
-      <template v-slot:default="slotProps">
-        <nut-icon name='JD' size="12"></nut-icon>
-        <span :style="{marginLeft: '15px'}">{{ slotProps.item.name }}</span>
-      </template>
+    <template v-slot:default="slotProps">
+      <nut-icon name="JD" size="12"></nut-icon>
+      <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
+    </template>
   </nut-elevator>
 </template>
+
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
@@ -448,7 +476,11 @@ app.use(Elevator);
         console.log(key);
       };
 
-      return { ...toRefs(state), clickItem, clickIndex };
+      return {
+        ...toRefs(state),
+        clickItem,
+        clickIndex
+      };
     }
   };
 </script>
@@ -460,31 +492,30 @@ app.use(Elevator);
 
 ### Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------------------|---------|------|
-| height                 | 电梯区域的高度                                                    | Number、String  | `200px`
-| accept-key             | 索引 key 值                                                      | String  | `title` |
-| index-list             | 索引列表                                                         | Array（item需包含 id、name属性, name支持传入 html 结构）  | `[{id: 0, name: ''}]` |
-| is-sticky            | 索引是否吸顶                                                    | Boolean  | `false` |
-| space-height             | 右侧锚点的上下间距                                                   | Number  | `23` |
-| title-height             | 左侧索引的高度                                                     | Number  | `35` |
-
+| 字段         | 说明               | 类型                                                        | 默认值                |
+| ------------ | ------------------ | ----------------------------------------------------------- | --------------------- |
+| height       | 电梯区域的高度     | Number、String                                              | `200px`               |
+| accept-key   | 索引 key 值        | String                                                      | `title`               |
+| index-list   | 索引列表           | Array（item 需包含 id、name 属性, name 支持传入 html 结构） | `[{id: 0, name: ''}]` |
+| is-sticky    | 索引是否吸顶       | Boolean                                                     | `false`               |
+| space-height | 右侧锚点的上下间距 | Number                                                      | `23`                  |
+| title-height | 左侧索引的高度     | Number                                                      | `35`                  |
 
 ### Slots
 
-| 字段                   | 说明                                                             |
-|------------------------|----------------------------------------------------------------|
-| default                 | 自定义左侧索引下每条数据的内容                                     |
+| 字段    | 说明                           |
+| ------- | ------------------------------ |
+| default | 自定义左侧索引下每条数据的内容 |
 
 ### Events
 
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| click-item | 点击内容 | key: string, item: { id: 0, name: '' } |
-| click-index | 点击索引 | key: string |
+| 名称        | 说明     | 回调参数                               |
+| ----------- | -------- | -------------------------------------- |
+| click-item  | 点击内容 | key: string, item: { id: 0, name: '' } |
+| click-index | 点击索引 | key: string                            |
 
 ### API
 
-| 事件名           | 说明                   | 参数           |
-| ---------------- | ---------------------- | ------------ |
-| scrollTo         | 滚动到对应索引的位置       | index:number |
+| 事件名   | 说明                 | 参数         |
+| -------- | -------------------- | ------------ |
+| scrollTo | 滚动到对应索引的位置 | index:number |

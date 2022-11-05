@@ -6,7 +6,6 @@
 
 ### 安装
 
-
 ```javascript
 import { createApp } from 'vue';
 // vue
@@ -27,12 +26,13 @@ app.use(OverLay);
   <nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
   <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         state
@@ -55,6 +55,7 @@ app.use(OverLay);
   <nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
   <nut-overlay v-model:visible="state.show" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
@@ -83,17 +84,18 @@ app.use(OverLay);
 <template>
   <nut-button type="success" @click="state.show2 = true">嵌套内容</nut-button>
   <nut-overlay v-model:visible="state.show2" :z-index="2000">
-  <div class="wrapper">
-    <div class="content">这里是正文</div>
-  </div>
-</nut-overlay>
+    <div class="wrapper">
+      <div class="content">这里是正文</div>
+    </div>
+  </nut-overlay>
 </template>
+
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        show2: false,
+        show2: false
       });
       return {
         state
@@ -101,13 +103,15 @@ app.use(OverLay);
     }
   };
 </script>
-<style lang="scss" scoped>
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  .content {
+
+<style scoped>
+  .wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper .content {
     display: flex;
     width: 150px;
     height: 150px;
@@ -117,7 +121,6 @@ app.use(OverLay);
     justify-content: center;
     color: red;
   }
-}
 </style>
 ```
 
@@ -127,15 +130,15 @@ app.use(OverLay);
 
 ### Props
 
-| 参数                   | 说明             | 类型           | 默认值 |
-| ---------------------- | ---------------- | -------------- | ------ |
-| v-model:visible                   | 当前组件是否显示 | Boolean        | `false`  |
-| z-index                | 遮罩层级         | String, Number | `2000`   |
-| duration               | 动画时长，单位秒 | String, Number | `0.3`    |
-| overlay-class          | 自定义遮罩类名   | String         | -      |
-| overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `false`  |
-| close-on-click-overlay | 是否点击遮罩关闭 | Boolean        | `true`   |
+| 参数                   | 说明                         | 类型           | 默认值  |
+| ---------------------- | ---------------------------- | -------------- | ------- |
+| v-model:visible        | 当前组件是否显示             | Boolean        | `false` |
+| z-index                | 遮罩层级                     | String, Number | `2000`  |
+| duration               | 动画时长，单位秒             | String, Number | `0.3`   |
+| overlay-class          | 自定义遮罩类名               | String         | -       |
+| overlay-style          | 自定义遮罩样式               | CSSProperties  | -       |
+| lock-scroll            | 背景是否锁定(`小程序不支持`) | Boolean        | `false` |
+| close-on-click-overlay | 是否点击遮罩关闭             | Boolean        | `true`  |
 
 ### Events
 
