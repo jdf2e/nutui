@@ -7,30 +7,32 @@
     display: flex;
     .avatarClass {
       margin-right: 20px;
-      background: rgb(239, 239, 239);
-    }
-
-    .blockClass,
-    .blockClass--round {
-      width: 100%;
-      height: 100%;
-      background: rgb(239, 239, 239);
-      margin-top: 10px;
-      &:last-child {
-        width: 70% !important;
-      }
-    }
-    .blockClass--round {
-      border-radius: 10px;
+      background-color: $skeleton-content-line-title-background-color;
     }
 
     .content-line {
       display: flex;
       flex-direction: column;
-      .title {
+      .blockTitle,
+      .blockLine {
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: $skeleton-content-line-title-background-color;
+      }
+      .blockTitle {
         width: 30%;
-        height: 15px;
-        background: $skeleton-content-line-title-background-color;
+      }
+      .blockLine ~ .blockLine:last-of-type {
+        width: 70%;
+      }
+      .blockTitle:last-of-type,
+      .blockLine:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .blockTitle--round,
+      .blockLine--round {
+        border-radius: 10px;
       }
     }
   }
