@@ -168,7 +168,11 @@ export default create({
         const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
         query.selectAll('.collapse-content').boundingClientRect();
         query.exec((res) => {
-          getH(res[0]);
+          if (Taro.getEnv() === 'WEB') {
+            getH5();
+          } else {
+            getH(res[0]);
+          }
         });
         if (!proxyData.openExpanded) {
           onTransitionEnd();
@@ -178,7 +182,9 @@ export default create({
 
     const open = () => {
       proxyData.openExpanded = !proxyData.openExpanded;
-      animation();
+      timer.value = setInterval(() => {
+        animation();
+      }, 600);
     };
 
     const defaultOpen = () => {
@@ -238,25 +244,26 @@ export default create({
       }
     });
 
-    watch(
-      () => ctx?.slots?.default?.(),
-      (vnodes: VNode[]) => {
-        setTimeout(() => {
-          getRefHeight();
-        }, 300);
-      }
-    );
-
+    // watch(
+    //   () => ctx?.slots?.default?.(),
+    //   () => {
+    //     getRefHeight();
+    //   }
+    // );
     const getH = (list: any) => {
       parent.children.forEach((item1: any, index1: number) => {
         let ary: any = Array.from(item1.$el.children);
         let _uid = ary[1].children[0]['uid'];
-        let tm = list.filter((item2: any) => item2.id == _uid);
+        let tm = list?.filter((item2: any) => item2.id == _uid);
         if (tm && tm.length > 0) {
           let h = tm[0]['height'];
           item1.conHeight = h;
+          resetHeight(h);
         }
       });
+
+      // clearInterval(timer.value);
+      //     timer.value = null;
     };
 
     const getH5 = () => {
@@ -264,7 +271,22 @@ export default create({
         let ary: any = Array.from(item1.$el.children);
         let h = ary[1].children[0]['offsetHeight'];
         item1.conHeight = h;
+        resetHeight(h);
       });
+    };
+    const prevHeight = ref(0);
+    const nums = ref(0);
+    const timer = ref();
+
+    const resetHeight = (h: number) => {
+      // console.log(prevHeight.value, h, nums.value);
+      if (prevHeight.value >= h && nums.value > 5) {
+        clearInterval(timer.value);
+        timer.value = null;
+      } else {
+        nums.value++;
+      }
+      prevHeight.value = h;
     };
 
     const getRefHeight = () => {
@@ -279,11 +301,18 @@ export default create({
         }
       });
     };
-
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
-
+      // const MutationObserver: any =
+      //   window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+      // var observer = new MutationObserver(() => {
+      //   animation();
+      // });
+      // observer.observe(document.getElementsByClassName('collapse-wrapper')[0], {
+      //   childList: true,
+      //   subtree: true
+      // });
       if (typeof active == 'number' || typeof active == 'string') {
         if (name == active) {
           defaultOpen();
