@@ -144,6 +144,21 @@ export default create({
       if (props.disabled) {
         return;
       }
+
+      if (Taro.getEnv() == 'WEB') {
+        let el = document.getElementById('taroChooseImage');
+        if (el) {
+          el?.setAttribute('accept', props.accept);
+        } else {
+          const obj = document.createElement('input');
+          obj.setAttribute('type', 'file');
+          obj.setAttribute('id', 'taroChooseImage');
+          obj.setAttribute('accept', props.accept);
+          obj.setAttribute('style', 'position: fixed; top: -4000px; left: -3000px; z-index: -300;');
+          document.body.appendChild(obj);
+        }
+      }
+
       Taro.chooseImage({
         // 选择数量
         count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
@@ -331,17 +346,6 @@ export default create({
         fileList
       });
     };
-
-    onMounted(() => {
-      if (Taro.getEnv() == 'WEB') {
-        const obj = document.createElement('input');
-        obj.setAttribute('type', 'file');
-        obj.setAttribute('id', 'taroChooseImage');
-        obj.setAttribute('accept', props.accept);
-        obj.setAttribute('style', 'position: fixed; top: -4000px; left: -3000px; z-index: -300;');
-        document.body.appendChild(obj);
-      }
-    });
 
     return {
       onDelete,
