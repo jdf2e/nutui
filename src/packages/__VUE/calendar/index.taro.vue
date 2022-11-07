@@ -30,6 +30,7 @@
       :show-title="showTitle"
       :show-sub-title="showSubTitle"
       :to-date-animation="toDateAnimation"
+      :first-day-of-week="firstDayOfWeek"
     >
       <template v-slot:btn v-if="showTopBtn">
         <slot name="btn"> </slot>
@@ -64,6 +65,7 @@
     :show-sub-title="showSubTitle"
     :to-date-animation="toDateAnimation"
     :show-today="showToday"
+    :first-day-of-week="firstDayOfWeek"
   >
     <template v-slot:btn v-if="showTopBtn">
       <slot name="btn"> </slot>
@@ -151,6 +153,10 @@ export default create({
     endDate: {
       type: String,
       default: Utils.getDay(365)
+    },
+    firstDayOfWeek: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
