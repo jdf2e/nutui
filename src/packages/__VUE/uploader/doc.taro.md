@@ -14,10 +14,11 @@ const app = createApp();
 app.use(Uploader);
 app.use(Icon);
 app.use(Progress);
+
 ```
 
 
-### 基本用法
+### 基础用法
 
 ``` html
 <nut-uploader :url="uploadUrl"></nut-uploader>
@@ -82,7 +83,7 @@ app.use(Progress);
 :::demo
 ```html
 <template>
-  <nut-uploader url="https://xxxx" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -226,8 +227,8 @@ setup() {
   };
 }
 ```
-
-### Prop
+## API
+### Props
 
 | 字段                      | 说明                                                                                                                   | 类型                              | 默认值                    |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|
@@ -242,13 +243,14 @@ setup() {
 | source-type               | [选择图片的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)                 | String                            | ['album','camera']        |
 | maximize                  | 可以设定最大上传文件的大小（字节）                                                                                     | Number丨String                    | 9                         |
 | maximum                   | 文件上传数量限制                                                                                                       | Number丨String                    | 1                         |
-| size-type                 | 选择图片的来源，[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)       | String                            | ['original','compressed'] |
+| size-type                 | 是否压缩所选文件[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)       | String                            | ['original','compressed'] |
 | headers                   | 设置上传的请求头部                                                                                                     | Object                            | {}                        |
 | data                      | 附加上传的信息 formData                                                                                                | Object                            | {}                        |
 | upload-icon               | 上传区域[图标名称](#/icon)或图片链接                                                                                   | String                            | "photograph"              |
 | upload-icon-size          | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                 | String or Number                  | -                         |
 | xhr-state                 | 接口响应的成功状态（status）值                                                                                         | Number                            | 200                       |
 | disabled                  | 是否禁用文件上传                                                                                                       | Boolean                           | false                     |
+| multiple`v2.3.4`                  | 是否支持文件多选                                                                                                       | Boolean                           | true            |
 | timeout                   | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | before-upload             | 上传前的函数需要返回一个`Promise`对象                                                                                  | Function                          | null                      |
 | before-xhr-upload`v3.2.1` | 执行 Taro.uploadFile 上传时，自定义方式                                                                                | Function(Taro.uploadFile，option) | null                      |
@@ -266,7 +268,7 @@ setup() {
 | url      | 文件路径                                        | ""                              |
 | formData | 上传所需的data                                  | {}                              |
 
-### Event
+### Events
 
 | 名称            | 说明                   | 回调参数                  |
 |-----------------|------------------------|---------------------------|

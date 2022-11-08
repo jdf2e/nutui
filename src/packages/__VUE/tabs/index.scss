@@ -157,6 +157,8 @@
         left: 50%;
         transform: translate(-50%, 0);
         overflow: hidden;
+        border-radius: $tabs-titles-item-line-border-radius;
+        opacity: $tabs-titles-item-line-opacity;
       }
 
       &__smile {

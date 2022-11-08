@@ -1,3 +1,80 @@
+## v3.2.6
+
+`2022-11-04` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @thx125 @gyt95 @HuziG @mikasayw @motain
+
+* :bug: fix(imagePreview): 解决 imagepreview 视频点击关闭蒙层问题 (#1783)  @yangxiaolu1993  
+* :bug: fix(picker): 解决 Picker 在微信小程序中无法使用的问题 (#1786)  @yangxiaolu1993  
+* :bug: fix(tabbar): add props placeholder #1692 (#1796)  @Drjingfubo
+* :bug: fix(video): add new events time #1055 (#1798)  @Drjingfubo
+* :bug: fix(Signature): 签名组件taro环境适配 (#1797)  @Ymm0008
+* :bug: fix(uploader): taro h5 模式 accept 不生效 #1448 #1445 #1474   @richard1015 
+* :bug: fix(picker): 修改 Picker 组件在 Taro 中v-model 失效问题 (#1801)  @yangxiaolu1993  
+* :bug: fix(noticeBar): NoticeBar修改height之后，垂直轮播会卡顿(#1809) (#1813)    @yangxiaolu1993 
+* :bug: fix(datepicker): 删除Datepicker Demo演示中多余内容 (#1814)     @yangxiaolu1993 
+* :bug: fix(icon): demo 复制功能优化 (#1773)   @eiinu
+* :bug: fix(input): 修复taro中input@update:model-value事件会触发两次 #1632 (#1790)  @ailululu
+* :bug: fix(menu): 修改Menu弹出失效问题 (#1812)   @thx125
+* :bug: fix: scroll-view标签问题修复 (#1817)  @lkjh3214
+* :bug: fix(badge): 修复在自定义徽标内容下设置样式无效的问题 (#1821)  @gyt95
+* :bug: fix(notify): fix notify duration (#1810)  @mikasayw
+* 📖 docs: update vue3 CLI self-test link (#1822)  @gyt95
+* 📖 docs(actionsheet): edit doc (#1794)  @HuziG  
+* 📖 docs(image): taro media image doc 404 fixed (#1795)  @motain 
+* 📖 docs(uploader): capture tips add @richard1015 
+* 📖 docs(menu): 菜单组件文档添加 toggle 事件说明 (#1818)   @yangjinjun3
+
+
+## v3.2.5
+
+`2022-10-25` 
+
+小程序版本依赖 Taro ^3.5.x
+
+* :sparkles: chore: update dts plugin @richard1015
+* :sparkles: chore: update webstorm plugin @szg2008
+* :sparkles: chore: change build vite config @Drjingfubo
+* :bug: fix(fitabbar): defalut unactive-color #1779 (#1780) @yangjinjun3
+* 📖 docs: docs: add README_EN.md (#1772) @eiinu
+
+## v3.2.4
+
+`2022-10-21` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @jwaterwater @Sorryhx @xxxsf @subordon
+
+Tips: 重点修复 Scroll-View 在 Taro H5 场景下，不生效问题 #1766
+
+* :sparkles: chore: vite打包配置修改，添加taro标签处理 (#1766) @lkjh3214
+* :sparkles: chore: vscode extension support new components @szg2008
+* :sparkles: chore: update dts plugin @szg2008
+* :sparkles: feat(ellipsis): add lineHeight props @szg2008
+* :sparkles: feat(Picker、DatePicker): 新增safe-area-inset-bottom属性 (#1770) @yangxiaolu1993
+style: add jddkh theme @yangjinjun3
+* :bug: fix(textarea): 小程序端组件按需加载的时候，未正确获取到文本框的高度 (#1756) @subordon
+* :bug: fix(barrage): barrage 样式报错，H5环境 slot 插槽适配 (#1771) @Ymm0008
+* :bug: fix(imagepreview): 组件，滑动时弹窗出现关闭现象 (#1761) @xxxsf
+* :bug: fix(popup): close事件触发时机 (#1730) @Sorryhx
+* :bug: fix(address、datepicker): DatePicker 的 v-model 没有实现双向绑定 (#1745) @yangxiaolu1993
+* :bug: fix(tabbar): safe-bottom样式异常 (#1742) @jwaterwater
+* :bug: fix(toast): resolve problem of method failure in production (#1744) @Drjingfubo
+* :bug: fix(calendar): taro h5 scroll-view compatible (#1718) @lkjh3214
+* :bug: fix(uploader): taro 环境 multiple 参数支持 ，用于优化只选中1个照片场景 @richard1015
+* 📖 docs(image): showError showLoading props CamelCase @szg2008
+* 📖 docs: upd contributing link @richard1015
+* 📖 docs: add awesome.md @snandy
+* 📖 docs: change readme.md @snandy
+* 📖 docs(imagepreview): add import component @szg2008
+* 📖 docs(uploader): before-xhr-upload #1725 @richard1015
+* 📖 docs(components): optimization @Drjingfubo
+
 ## v3.2.3
 
 `2022-09-30` 
@@ -36,12 +113,12 @@ NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 * :bug: fix(list): 组件事件不被触发 #1607 @szg2008  
 * :bug: test(list): test error #1607 @szg2008  
 * :bug: fix(divider,imagePreview,pagination): components optimization (#1705)@eiinu   
-📖 docs(components): optimization (#1662) @Drjingfubo
-📖 docs(components): optimization (#1683) @Drjingfubo
-📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
-📖 docs(infiniteloading): type load-icon props to string @szg2008
-📖 docs(timeselect,overlay): edit (#1679) @eiinu 
-📖 docs(card): add click events (#1700) @Drjingfubo 
+* 📖 docs(components): optimization (#1662) @Drjingfubo
+* 📖 docs(components): optimization (#1683) @Drjingfubo
+* 📖 docs(imagePreview): type optimization (#1691) @Drjingfubo
+* 📖 docs(infiniteloading): type load-icon props to string @szg2008
+* 📖 docs(timeselect,overlay): edit (#1679) @eiinu 
+* 📖 docs(card): add click events (#1700) @Drjingfubo 
 
 
 

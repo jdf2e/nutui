@@ -8,7 +8,7 @@
 
 .nut-menu-item {
   .active {
-    font-weight: 500;
+    font-weight: $menu-active-item-font-weight;
     color: $menu-item-active-text-color !important;
   }
 }
@@ -36,14 +36,23 @@
   }
 }
 
-.nut-menu__overlay {
-  top: auto !important;
+.menu-item__pop-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .nut-menu__pop {
   transition: all 0 ease 0;
   transform: none;
-  // top: auto !important;
+  position: absolute !important;
+}
+
+.nut-menu__overlay {
+  position: absolute !important;
 }
 
 .placeholder-element {

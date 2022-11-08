@@ -252,7 +252,7 @@ setup(){
         <nut-range hidden-tag v-model="formData2.range"></nut-range>
     </nut-form-item>
     <nut-form-item label="Upload file">
-        <nut-uploader url="http://apiurl" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+        <nut-uploader url="http://apiurl" accept="image/*" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
         </nut-uploader>
     </nut-form-item>
     <nut-form-item label="Address">
@@ -340,7 +340,7 @@ setup(){
 ```
 :::
 
-
+## API
 ### Form Props
 
 | Attribute   | Description                                              | Type   | Default |
@@ -377,7 +377,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 | validator | Verification by function           | (value) => boolean \| string \| Promise |
 | regex     | Verification by regular expression | RegExp                                  |
 
-## FormItem Slots
+### FormItem Slots
 
 | Name            | Description         |
 |-----------------|---------------------|

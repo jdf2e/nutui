@@ -8,6 +8,8 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
       :round="true"
+      :safeAreaInsetBottom="safeAreaInsetBottom"
+      :destroyOnClose="destroyOnClose"
     >
       <view class="nut-picker__bar">
         <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
@@ -83,7 +85,7 @@ export default create({
     ...popupProps,
     modelValue: {
       type: Array as PropType<(string | number)[]>,
-      default: () => []
+      default: []
     },
     title: {
       type: String,
@@ -131,7 +133,9 @@ export default create({
 
     const pickerline = ref(null);
     // 选中项
-    let defaultValues = ref<(number | string)[]>(props.modelValue);
+    let defaultValues = ref<(number | string)[]>(
+      Array.isArray(props.modelValue) && props.modelValue.length > 0 ? props.modelValue : []
+    );
     // 选中项的位置
     let defaultIndexes = ref<number[]>([]);
 
@@ -242,7 +246,6 @@ export default create({
         } else {
           defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
         }
-
         emit('change', {
           columnIndex: columnIndex,
           selectedValue: defaultValues.value,
@@ -251,7 +254,7 @@ export default create({
       }
     };
 
-    const defaultValuesConvert = computed(() => {
+    const defaultValuesConvert = () => {
       let defaultIndexs = [];
       if (defaultValues.value.length > 0) {
         defaultValues.value.forEach((value, index) => {
@@ -262,14 +265,18 @@ export default create({
             }
           }
         });
+      } else {
+        columnsList.value.forEach((item) => {
+          defaultIndexs.push(0);
+          defaultValues.value.push(item[0].value);
+        });
       }
 
       return defaultIndexs;
-    });
+    };
 
     // 平铺展示时，滚动选择
     const tileChange = ({ detail }) => {
-      console.log('选择');
       const prevDefaultValue = defaultIndexes.value;
       let changeIndex = 0;
       // 判断变化的是第几个
@@ -287,7 +294,6 @@ export default create({
     // 确定
     const confirmHandler = () => {
       if (state.picking) {
-        console.log('滚动中');
         setTimeout(() => {
           confirmHandlerAwit();
         }, 0);
@@ -303,7 +309,7 @@ export default create({
           selectedOptions.value.push(columns[0]);
         });
       }
-      console.log('确定', defaultValues.value);
+
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value
@@ -315,12 +321,10 @@ export default create({
 
     // 开始滚动
     const handlePickstart = () => {
-      console.log('开始滚动');
       state.picking = true;
     };
     // 开始滚动
     const handlePickend = () => {
-      console.log('滚动结束');
       state.picking = false;
     };
 
@@ -328,7 +332,6 @@ export default create({
 
     const getReference = async () => {
       const refe = await useTaroRect(pickerline, Taro);
-      console.log(refe.height);
       state.lineSpacing = refe.height ? refe.height : 36;
     };
 
@@ -339,7 +342,7 @@ export default create({
             getReference();
           }, 200);
         } else {
-          defaultIndexes.value = defaultValuesConvert.value;
+          defaultIndexes.value = defaultValuesConvert();
         }
         state.show = props.visible;
       }
@@ -355,7 +358,7 @@ export default create({
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
-          defaultIndexes.value = defaultValuesConvert.value;
+          defaultIndexes.value = defaultValuesConvert();
         }
       },
       { deep: true }
@@ -369,7 +372,7 @@ export default create({
           emit('update:modelValue', newValues);
         }
       },
-      { immediate: true }
+      { deep: true }
     );
 
     watch(
@@ -385,7 +388,7 @@ export default create({
 
             pickerColumn.value = [];
           } else {
-            defaultIndexes.value = defaultValuesConvert.value;
+            defaultIndexes.value = defaultValuesConvert();
           }
         }
       }
@@ -415,7 +418,6 @@ export default create({
       refRandomId,
       pickerline,
       tileChange,
-      defaultValuesConvert,
       handlePickstart,
       handlePickend
     };

@@ -17,7 +17,6 @@ const app = createApp();
 app.use(TextArea);
 
 ```
-## Code demonstration
 
 ### Basic usage
 :::demo
@@ -70,8 +69,8 @@ export default {
 ```
 :::
 
-
-### Prop
+## API
+### Props
 
 | Attribute | Description | Type   | Default |
 |-------------|--------------------------------------------------|----------------|----------------|
@@ -87,7 +86,7 @@ export default {
 |autofocus | get focus automatically | Boolean | ` false `|
 
 
-### Event
+### Events
 
 | Event | Description                  | Arguments   |
 |--------|----------------|-------------|

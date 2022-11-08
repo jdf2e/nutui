@@ -2,7 +2,7 @@
 
 ### 介绍
 
-按需加载请加载对应依赖组件 Icon Popup Elevator
+请加载对应依赖组件 Icon Popup Elevator
 
 ### 安装
 
@@ -20,7 +20,6 @@ app.use(Elevator);
 
 ```
 
-## 代码演示
 
 ### 选择自定义地址
 
@@ -533,7 +532,8 @@ app.use(Elevator);
   </script>
 ```
 :::
-# API
+## API
+### Props
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -564,7 +564,7 @@ app.use(Elevator);
   * addressDetail 具体地址
   * selectedAddress 字段用于判断当前地址列表的选中项。
 
-## Event
+### Events
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 自定义选择地址时，选择地区时触发 |  参考 onChange
@@ -574,27 +574,27 @@ app.use(Elevator);
 | switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'}
 
 
-## change 回调参数
+### change 回调参数
 | 参数 | 说明 | 可能值 
 |----- | ----- | ----- 
 | custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡)
 | next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡)
 | value | 当前点击的行政区域的值（返回传入的值） | {}
 
-## selected 回调参数
+### selected 回调参数
 | 参数 | 说明 | 可能值 
 |----- | ----- | ----- 
 | 第一个参数（prevExistAdd） |  选择前选中的地址 |  {}
 | 第二个参数（nowExistAdd） |  当前选中的地址 |  {}
 | 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {}
 
-## close 回调参数
+### close 回调参数
 | 参数 | 说明 | 可能值 
 |----- | ----- | ----- 
 | type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
 
-## Slot
+### Slots
 | 字段 | 说明 | 
 |----- | ----- |  
 | bottom `3.1.23` | 可自定义底部 |  

@@ -45,7 +45,7 @@ export default {
 ```
 :::
 
-## Notify Type
+### Notify Type
 
 :::demo
 ```html
@@ -85,7 +85,7 @@ export default {
 </script>
 ```
 :::
-## Custom
+### Custom
 :::demo
 ```html
 <template>
@@ -126,13 +126,13 @@ export default {
 
 
 
-## Template use
+### Template use
 :::demo
 ```html
 <template>
   <nut-cell-group title="Template use">
     <nut-cell is-Link @click="showNotify">Template use</nut-cell>
-    <nut-notify v-model:visible="show">
+    <nut-notify v-model:visible="show" :duration="2000">
       <span>Content</span>
     </nut-notify>
   </nut-cell-group>
@@ -145,9 +145,6 @@ export default {
     const show = ref(false);
     const showNotify = () => {
       show.value = true;
-      setTimeout(() => {
-        show.value = false;
-      }, 2000);
     };
     return {
       show,
@@ -160,7 +157,7 @@ export default {
 :::
    
     
-## API
+### API
     
 ### Props
     
@@ -168,7 +165,7 @@ export default {
 |------------|----------------------------------------------------------|---------------|----------|
 | type       | Display Type（primary,success ,danger,warning）      | String        | 'danger' |
 | message    | Display copy, support line feed through \n              | Boolean       | false    |
-| duration   | Display duration (ms),value is 0 ,notify not disappear | String        | 3000     |
+| duration   | Display duration (ms),value is 0 ,notify not disappear | Number        | 3000     |
 | color      | Font Color                                               | String        | -        |
 | background | Background color                                         | String        | -        |
 | class-name | Custom class name                                        | String/Number | 1        |

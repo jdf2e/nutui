@@ -15,13 +15,14 @@ import { Card,Tag,Price} from '@nutui/nutui';
 import { Card ,Tag,Price} from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Card).use(Tag).use(Price);
+app.use(Card);
+app.use(Tag);
+app.use(Price);
 
 ```
 
-### 代码实例
 
-### 基本用法
+### 基础用法
 
 :::demo
 ```html
@@ -144,6 +145,7 @@ app.use(Card).use(Tag).use(Price);
 
 ```
 :::
+## API
 ### Props
 
 | 字段    | 说明                                       | 类型    | 默认值    |

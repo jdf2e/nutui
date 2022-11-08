@@ -173,9 +173,9 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 </template>
 ```
 :::
-### Prop
+## API
 
-### nut-tabbar
+### Tabbar Props
 
 | Attribute            | Description               | Type   | Default  |
 |-----------------|--------------------|--------|---------|
@@ -185,7 +185,8 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 | unactive-color  | Color of unactive tab item  | string | #7d7e80 |
 | active-color    | Color of active tab item    | string | #1989fa |
 | safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
-### tabbar-item
+| placeholder `3.2.6` | Whether to generate a placeholder element when fixed | boolean | false |
+### TabbarItem Props
 
 | Attribute      | Description                                      | Type   | Default |
 |-----------|-------------------------------------------|--------|--------|
@@ -202,7 +203,7 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 | dot       | Whether to show red dot   | boolean | false    |
 
 
-### Event
+### Tabbar Events
 
 | Event | Description                  | Arguments    |
 |------------|--------------------|--------------------|

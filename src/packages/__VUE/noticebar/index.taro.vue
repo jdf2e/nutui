@@ -48,7 +48,7 @@
             class="horseLamp_list_item"
             v-for="(item, index) in scrollList"
             :key="index"
-            :style="{ height: height }"
+            :style="{ height: pxCheck(height) }"
             @click="go(item)"
           >
             {{ item }}
@@ -82,6 +82,7 @@ import {
   h
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 
@@ -409,7 +410,8 @@ export default create({
       onAnimationEnd,
       go,
       handleClickIcon,
-      slots
+      slots,
+      pxCheck
     };
   }
 });

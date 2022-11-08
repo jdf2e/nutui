@@ -265,8 +265,8 @@ export default{
 </script>
 ```
 :::
-
-### Prop
+## API
+### Props
 
 
 | Attribute      | Description                                      | Type   | Default |
@@ -282,7 +282,7 @@ export default{
 | error-msg              | Error message        | String         | ''                           |
 
 
-### Event
+### Events
 
 | Event | Description                  | Arguments    |
 |----------|------------------------|----------|

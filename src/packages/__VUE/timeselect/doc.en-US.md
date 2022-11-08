@@ -318,7 +318,7 @@ app.use(Overlay);
 
 ## API
 
-### TimeSelect Prop
+### TimeSelect Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -329,7 +329,7 @@ app.use(Overlay);
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
 | lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
 
-### Slot
+### Slots
 
 | Attribute                   | Description                                                             |
 |------------------------|----------------------------------------------------------------|
@@ -337,21 +337,21 @@ app.use(Overlay);
 | pannel                 | List for left                                                    |
 | detail                 | Detail Content for right                                                    |
 
-### TimePannel Prop
+### TimePannel Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | name                 | Name of display                                                    | String  | ``
 | pannel-key           | Unique ID, which identifies the currently selected day together with `current-key`                      | Number、String  | `0`
 
-### TimeDetail Prop
+### TimeDetail Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | times                 | Selectable time, the same as array elements `current-time`                              | Array  | `[]`
 
 
-### TimeSelect Event
+### TimeSelect Events
 
 | Event | Description                  | Arguments   |
 |-------|----------|-------------|

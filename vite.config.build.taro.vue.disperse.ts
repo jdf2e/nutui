@@ -17,8 +17,10 @@ let input = {};
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name } = element;
+    // if (name.toLowerCase().indexOf('calendar') != -1) {
     const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
     input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    // }
   });
 });
 
@@ -86,7 +88,7 @@ declare module 'vue' {
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale'],
+      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale', '@tarojs/components'],
       input,
       output: {
         banner,

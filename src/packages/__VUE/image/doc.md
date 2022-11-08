@@ -133,8 +133,8 @@ app.use();
 | height         | 高度，默认单位`px`               | String | -                |
 | round         | 是否显示为圆角               | Boolean | false              |
 | radius         | 圆角大小               | String \| Numer | -                |
-| showError         | 是否展示图片加载失败| Boolean | false              |
-| showLoading         | 是否展示加载中图片               | Boolean | true              |
+| show-error         | 是否展示图片加载失败| Boolean | false              |
+| show-loading         | 是否展示加载中图片               | Boolean | true              |
 
 ### ImageFit 图片填充模式
 

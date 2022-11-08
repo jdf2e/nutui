@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-imagepreview :show="showPreview1" :images="imgData" @close="hideFn(1)" />
+    <nut-imagepreview :show="showPreview1" :images="imgData" @close="hideFn(1)" :isLoop="false" />
     <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn(1)"></nut-cell>
 
     <h2>设置初始页码</h2>

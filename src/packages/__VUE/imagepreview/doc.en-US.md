@@ -8,8 +8,13 @@ Support full screen preview videos and images, support functional call.
 
 ```javascript
 import { createApp, reactive, toRefs } from 'vue';
+//vue
+import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
+//taro
+import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui-taro';
 
-import { ImagePreview } from '@nutui/nutui';
+const app = createApp();
+app.use(ImagePreview);
 
 
 const app = createApp();
@@ -316,6 +321,7 @@ app.use(ImagePreview);
 | before-close`v3.1.22`  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 | max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
+| is-Loop`v3.2.5`  | Whether to loop   | Boolean  | `true`  | 
 
 ### Data Structure of ImageArray 
 

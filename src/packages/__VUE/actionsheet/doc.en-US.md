@@ -8,16 +8,17 @@ Action menu panel that pops up from the bottom.
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { ActionSheet, Popup } from '@nutui/nutui';
+import { ActionSheet, Popup, OverLay } from '@nutui/nutui';
 // taro
-import { ActionSheet, Popup } from '@nutui/nutui-taro';
+import { ActionSheet, Popup, OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ActionSheet);
 app.use(Popup);
+app.use(OverLay);
 ```
 
-## Basic Usage
+### Basic Usage
 
 :::demo
 ``` html
@@ -78,7 +79,7 @@ export default {
 ```
 :::
 
-## Show Cancel Button
+### Show Cancel Button
 :::demo
 ``` html
 <template>
@@ -137,7 +138,7 @@ export default {
  </script>
 ```
 :::
-## Show Description
+### Show Description
 :::demo
 ``` html
 <template>
@@ -199,7 +200,7 @@ export default {
 ```
 :::
 
-## Option Status
+### Option Status
 
 :::demo
 ``` html
@@ -260,7 +261,7 @@ export default {
 ```
 :::
 
-## Custom Content
+### Custom Content
 
 :::demo
 ``` html
@@ -305,8 +306,8 @@ export default {
 
 ```
 :::
-
-## Props
+## API
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 |------------------|----------------------------------------|---------|-----------|
@@ -321,7 +322,7 @@ export default {
 | cancel-txt       | Text of cancel button                               | String  | 'cancel'   |
 | close-abled      | Whether the mask layer can be closed                       | Boolean | true      |
 
-## menu-items
+### MenuItems
 
 | Attribute            | Description               | Type   |
 |--------|--------------------|-----------------------------------|
@@ -331,7 +332,7 @@ export default {
 | loading | Whether to be loading status | Boolean          |
 | disable | Whether to be disabled | Boolean       |
 
-## Events
+### Events
 
 | Event | Description                  | Arguments    |
 |--------|--------------------|-----------------------------------|

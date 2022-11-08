@@ -11,9 +11,9 @@
   width: 100%;
   display: flex;
   align-items: center;
-  height: 50px;
-  box-sizing: border-box;
+  box-sizing: content-box;
   background: $white;
+  height: $tabbar-height;
 
   &:last-child {
     border-right: 0;

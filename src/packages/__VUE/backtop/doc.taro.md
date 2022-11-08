@@ -14,11 +14,11 @@ import { BackTop,Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(BackTop);
 app.use(Icon);
+
 ```
 
-### 代码实例
 
-### 基本用法
+### 基础用法
 
 ```html
 <view class="demo">

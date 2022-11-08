@@ -8,8 +8,10 @@ const banner = `/*!
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;
-
 export default defineConfig({
+  define: {
+    'process.env.TARO_ENV': 'process.env.TARO_ENV'
+  },
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
@@ -28,9 +30,9 @@ export default defineConfig({
         compilerOptions: {
           isCustomElement: (tag) => {
             return (
-              tag.startsWith('scroll-view') ||
               tag.startsWith('swiper') ||
               tag.startsWith('swiper-item') ||
+              tag.startsWith('scroll-view') ||
               tag.startsWith('picker') ||
               tag.startsWith('picker-view') ||
               tag.startsWith('picker-view-column')
@@ -45,7 +47,7 @@ export default defineConfig({
     minify: false,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro'],
+      external: ['vue', 'vue-router', '@tarojs/taro', '@tarojs/components'],
       output: {
         banner,
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量

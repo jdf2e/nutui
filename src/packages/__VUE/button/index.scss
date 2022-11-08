@@ -138,6 +138,10 @@
     line-height: $button-small-line-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
+
+    &.nut-button--round {
+      border-radius: $button-small-round-border-radius;
+    }
   }
   &--mini {
     height: $button-mini-height;

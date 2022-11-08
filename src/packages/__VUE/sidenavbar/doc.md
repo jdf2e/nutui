@@ -19,7 +19,7 @@ app.use(SubSideNavBar);
 app.use(SideNavBarItem);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -151,13 +151,13 @@ app.use(SideNavBarItem);
 
 ## API
 
-### SideNavBar
+### SideNavBar Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
 | offset                 | 导航缩进宽度                                                    | Number、String  | `15`
 
-### SubSideNavBar
+### SubSideNavBar Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -165,7 +165,7 @@ app.use(SideNavBarItem);
 | ikey                 | 导航唯一标识                                                    | String、Number  | ``
 | open                 | 导航是否默认展开                                                    | Boolean  | `true`
 
-### SideNavBarItem
+### SideNavBarItem Props
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
@@ -173,13 +173,13 @@ app.use(SideNavBarItem);
 | ikey                 | 导航唯一标识                                                    | String、Number  | ``
 
 
-### SubSideNavBar Event
+### SubSideNavBar Events
 
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | title-click | 导航点击 | - |
 
-### SideNavBarItem Event
+### SideNavBarItem Events
 
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|

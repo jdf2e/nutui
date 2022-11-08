@@ -1,6 +1,6 @@
 <!--
 请务必阅读贡献者指南:
-https://nutui.jd.com/#/contributing
+https://nutui.jd.com/#/zh-CN/guide/contributing
 -->
 
 <!-- PULL REQUEST TEMPLATE -->
@@ -28,6 +28,6 @@ https://nutui.jd.com/#/contributing
 
 **这个 PR 是否已自测:**
 
-- [ ] 自测 vue3 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/vue3)
+- [ ] 自测 vue3 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/vue3-vue-cli)
 - [ ] 自测 vite 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/vite-ts)
 - [ ] 自测 taro 脚手架使用小程序 & h5 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/taro)

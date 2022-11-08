@@ -1,5 +1,5 @@
 <template>
-  <view :catch-move="lockScroll">
+  <view :catch-move="lockScroll" :style="containerStyle">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -55,6 +55,9 @@ export const popupProps = {
     default: 'center'
   },
   transition: String,
+  containerStyle: {
+    type: Object as PropType<CSSProperties>
+  },
   style: {
     type: Object as PropType<CSSProperties>
   },
@@ -148,10 +151,10 @@ export default create({
       if (props.visible) {
         unlockScroll();
         emit('update:visible', false);
+        emit('close');
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
-            emit('close');
           }, +props.duration * 1000);
         }
       }

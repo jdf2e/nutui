@@ -293,7 +293,7 @@ export default {
 ```html
 <!-- When the upload method is put, upload the source file stream directly -->
 <template>
-  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader url="https://xxxx" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -360,8 +360,8 @@ export default {
 </template>
 ```
 :::
-
-### Prop
+## API
+### Props
 
 | Attribute         | Description                                                                                                                                      | Type                              | Default          |
 |-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
@@ -404,7 +404,7 @@ export default {
 | type      | File type                                                   | "image/jpeg"                    |
 | formData  | Upload the required data                                    | new FormData()                  |
 
-### Event
+### Events
 
 | Event           | Description                                              | Arguments                      |
 |-----------------|----------------------------------------------------------|--------------------------------|

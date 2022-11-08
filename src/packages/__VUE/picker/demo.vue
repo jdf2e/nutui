@@ -350,8 +350,11 @@ export default createDemo({
       }, 500);
     });
 
-    const confirm = (tag: string, { selectedValue }: { selectedValue: string[] }) => {
-      (desc as any)[tag] = selectedValue.join(',');
+    const confirm = (
+      tag: string,
+      { selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }
+    ) => {
+      (desc as any)[tag] = selectedOptions.map((val: any) => val.text).join(',');
     };
     const change = ({ selectedValue }: { selectedValue: string[] }) => {
       console.log(selectedValue);

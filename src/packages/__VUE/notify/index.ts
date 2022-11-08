@@ -3,7 +3,6 @@ import { App } from 'vue';
 import Notify from './index.vue';
 const defaultOptions = {
   type: 'base',
-  // showPopup: true,
   visible: true,
   msg: '',
   color: undefined,

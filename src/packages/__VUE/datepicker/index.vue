@@ -12,6 +12,8 @@
     :isWrapTeleport="isWrapTeleport"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
+    :safeAreaInsetBottom="safeAreaInsetBottom"
+    :destroyOnClose="destroyOnClose"
   >
     <template #top>
       <slot name="top"></slot>
@@ -101,7 +103,7 @@ export default create({
     },
     filter: Function as PropType<import('./type').Filter>
   },
-  emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
+  emits: ['click', 'update:visible', 'change', 'confirm', 'update:modelValue'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -249,11 +251,11 @@ export default create({
           formatDate.push(item);
         });
         if (props.type == 'month-day' && formatDate.length < 3) {
-          formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
+          formatDate.unshift(new Date(state.currentDate || props.minDate || props.maxDate).getFullYear());
         }
 
         if (props.type == 'year-month' && formatDate.length < 3) {
-          formatDate.push(new Date(props.modelValue || props.minDate || props.maxDate).getDate());
+          formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
         }
 
         const year = Number(formatDate[0]);
@@ -340,7 +342,21 @@ export default create({
     watch(
       () => props.modelValue,
       (value) => {
-        state.currentDate = formatValue(value);
+        const newValues = formatValue(value);
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(state.currentDate);
+        if (!isSameValue) {
+          state.currentDate = newValues;
+        }
+      }
+    );
+
+    watch(
+      () => state.currentDate,
+      (newValues) => {
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
+        if (!isSameValue) {
+          emit('update:modelValue', newValues);
+        }
       }
     );
 

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 我要反馈 NutUI 的 Issue
+    url: https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui&lang=zh-cn
+    about: 请点击 「Open」 按钮打开新链接创建 Issue
+  - name: 我想要一个 NutUI 的新功能
+    url: https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui&lang=zh-cn&type=feature-request
+    about: 请点击 「Open」 按钮打开新链接创建 Feature Request

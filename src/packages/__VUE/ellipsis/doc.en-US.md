@@ -93,6 +93,7 @@ app.use(Ellipsis);
 | expand-text         | Expand text               | String | ''              |
 | collapse-text         | Collapse text               | String | ''               |
 | symbol         | Symbol     | String | '...'       |
+| line-height         | the row height of the container     | String、Number | 20       |
 
 ### Events
 
