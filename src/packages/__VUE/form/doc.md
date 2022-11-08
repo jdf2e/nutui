@@ -28,19 +28,38 @@ app.use(CellGroup);
 <template>
   <nut-form>
     <nut-form-item label="姓名">
-      <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="请输入姓名"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="年龄">
-      <input class="nut-input-text" placeholder="请输入年龄" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="请输入年龄"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="联系电话">
-      <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="请输入联系电话"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="地址">
-      <input class="nut-input-text" placeholder="请输入地址" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="请输入地址"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="备注">
-      <nut-textarea placeholder="请输入备注" type="text" />
+      <nut-textarea
+        placeholder="请输入备注"
+        type="text"
+      />
     </nut-form-item>
   </nut-form>
 </template>
@@ -54,9 +73,22 @@ app.use(CellGroup);
 
 ```html
 <template>
-  <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+  <nut-form
+    :model-value="dynamicForm.state"
+    ref="dynamicRefForm"
+  >
+    <nut-form-item
+      label="姓名"
+      prop="name"
+      required
+      :rules="[{ required: true, message: '请填写姓名' }]"
+    >
+      <input
+        class="nut-input-text"
+        v-model="dynamicForm.state.name"
+        placeholder="请输入姓名"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item
       :label="'联系方式'+index"
@@ -66,15 +98,38 @@ app.use(CellGroup);
       :key="item.key"
       v-for="(item,index) in dynamicForm.state.tels"
     >
-      <input class="nut-input-text" v-model="item.value" :placeholder="`请输入联系方式${index}`" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="item.value"
+        :placeholder="`请输入联系方式${index}`"
+        type="text"
+      />
     </nut-form-item>
     <nut-cell>
-      <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.add">添加</nut-button>
-      <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.remove">删除</nut-button>
-      <nut-button type="primary" style="margin-right: 10px;" size="small" @click="dynamicForm.methods.submit"
+      <nut-button
+        size="small"
+        style="margin-right: 10px;"
+        @click="dynamicForm.methods.add"
+        >添加</nut-button
+      >
+      <nut-button
+        size="small"
+        style="margin-right: 10px;"
+        @click="dynamicForm.methods.remove"
+        >删除</nut-button
+      >
+      <nut-button
+        type="primary"
+        style="margin-right: 10px;"
+        size="small"
+        @click="dynamicForm.methods.submit"
         >提交</nut-button
       >
-      <nut-button size="small" @click="dynamicForm.methods.reset">重置提示状态</nut-button>
+      <nut-button
+        size="small"
+        @click="dynamicForm.methods.reset"
+        >重置提示状态</nut-button
+      >
     </nut-cell>
   </nut-form>
 </template>
@@ -145,7 +200,12 @@ app.use(CellGroup);
           }]}"
     ref="ruleForm"
   >
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+    <nut-form-item
+      label="姓名"
+      prop="name"
+      required
+      :rules="[{ required: true, message: '请填写姓名' }]"
+    >
       <input
         class="nut-input-text"
         @blur="customBlurValidate('name')"
@@ -165,7 +225,12 @@ app.use(CellGroup);
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
     ]"
     >
-      <input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="formData.age"
+        placeholder="请输入年龄，必须数字且0-200区间"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item
       label="联系电话"
@@ -176,14 +241,39 @@ app.use(CellGroup);
       { validator: asyncValidator, message: '电话格式不正确' }
     ]"
     >
-      <input class="nut-input-text" v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="formData.tel"
+        placeholder="请输入联系电话，异步校验电话格式"
+        type="text"
+      />
     </nut-form-item>
-    <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-      <input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
+    <nut-form-item
+      label="地址"
+      prop="address"
+      required
+      :rules="[{ required: true, message: '请填写地址' }]"
+    >
+      <input
+        class="nut-input-text"
+        v-model="formData.address"
+        placeholder="请输入地址"
+        type="text"
+      />
     </nut-form-item>
     <nut-cell>
-      <nut-button type="primary" size="small" style="margin-right: 10px;" @click="submit">提交</nut-button>
-      <nut-button size="small" @click="reset">重置提示状态</nut-button>
+      <nut-button
+        type="primary"
+        size="small"
+        style="margin-right: 10px;"
+        @click="submit"
+        >提交</nut-button
+      >
+      <nut-button
+        size="small"
+        @click="reset"
+        >重置提示状态</nut-button
+      >
     </nut-cell>
   </nut-form>
 </template>
@@ -274,9 +364,16 @@ app.use(CellGroup);
       <nut-checkbox v-model="formData2.checkbox">复选框</nut-checkbox>
     </nut-form-item>
     <nut-form-item label="单选按钮">
-      <nut-radiogroup direction="horizontal" v-model="formData2.radio">
+      <nut-radiogroup
+        direction="horizontal"
+        v-model="formData2.radio"
+      >
         <nut-radio label="1">选项1</nut-radio>
-        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >选项2</nut-radio
+        >
         <nut-radio label="3">选项3</nut-radio>
       </nut-radiogroup>
     </nut-form-item>
@@ -287,10 +384,18 @@ app.use(CellGroup);
       <nut-inputnumber v-model="formData2.number" />
     </nut-form-item>
     <nut-form-item label="滑块">
-      <nut-range hidden-tag v-model="formData2.range"></nut-range>
+      <nut-range
+        hidden-tag
+        v-model="formData2.range"
+      ></nut-range>
     </nut-form-item>
     <nut-form-item label="文件上传">
-      <nut-uploader url="http://服务地址" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+      <nut-uploader
+        url="http://服务地址"
+        v-model:file-list="formData2.defaultFileList"
+        maximum="3"
+        multiple
+      >
       </nut-uploader>
     </nut-form-item>
     <nut-form-item label="地址">

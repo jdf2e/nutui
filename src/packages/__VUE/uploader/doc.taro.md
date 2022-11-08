@@ -25,14 +25,29 @@ app.use(Progress);
 ### 上传状态
 
 ```html
-<nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  v-model:file-list="defaultFileList"
+  maximum="3"
+  multiple
+></nut-uploader>
 ```
 
 ### 基础用法-上传列表展示
 
 ```html
-<nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
-  <nut-button type="success" size="small">上传文件</nut-button>
+<nut-uploader
+  :url="uploadUrl"
+  v-model:file-list="defaultFileList"
+  maximum="10"
+  multiple
+  list-type="list"
+>
+  <nut-button
+    type="success"
+    size="small"
+    >上传文件</nut-button
+  >
 </nut-uploader>
 ```
 
@@ -40,15 +55,26 @@ app.use(Progress);
 
 ```html
 <nut-uploader :url="uploadUrl">
-  <nut-button type="success" size="small">上传文件</nut-button>
+  <nut-button
+    type="success"
+    size="small"
+    >上传文件</nut-button
+  >
 </nut-uploader>
 ```
 
 ### 自定义上传使用默认进度条
 
 ```html
-<nut-uploader :url="uploadUrl" @progress="onProgress">
-  <nut-button type="success" size="small">上传文件</nut-button>
+<nut-uploader
+  :url="uploadUrl"
+  @progress="onProgress"
+>
+  <nut-button
+    type="success"
+    size="small"
+    >上传文件</nut-button
+  >
 </nut-uploader>
 <br />
 <nut-progress
@@ -62,25 +88,42 @@ app.use(Progress);
 ### 直接调起摄像头 camera
 
 ```html
-<nut-uploader :url="uploadUrl" :source-type="['camera']"></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  :source-type="['camera']"
+></nut-uploader>
 ```
 
 ### 限制上传数量 5 个
 
 ```html
-<nut-uploader :url="uploadUrl" multiple maximum="5"></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  multiple
+  maximum="5"
+></nut-uploader>
 ```
 
 ### 限制上传大小（每个文件最大不超过 50kb）
 
 ```html
-<nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  multiple
+  :maximize="1024 * 50"
+  @oversize="onOversize"
+></nut-uploader>
 ```
 
 ### 自定义 FormData headers
 
 ```html
-<nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-Credentials="true"></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  :data="formData"
+  :headers="formData"
+  :with-Credentials="true"
+></nut-uploader>
 ```
 
 ### 自定义上传方式(before-xhr-upload)
@@ -89,7 +132,10 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader url="https://xxxx" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader
+    url="https://xxxx"
+    :before-xhr-upload="beforeXhrUpload"
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -142,10 +188,25 @@ app.use(Progress);
 ### 选中文件后，通过按钮手动执行上传
 
 ```html
-<nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+<nut-uploader
+  :url="uploadUrl"
+  maximum="5"
+  :auto-upload="false"
+  ref="uploadRef"
+></nut-uploader>
 <br />
-<nut-button type="success" size="small" @click="submitUpload">手动执行上传</nut-button>
-<nut-button type="success" size="small" @click="clearUpload">手动清空上传</nut-button>
+<nut-button
+  type="success"
+  size="small"
+  @click="submitUpload"
+  >手动执行上传</nut-button
+>
+<nut-button
+  type="success"
+  size="small"
+  @click="clearUpload"
+  >手动清空上传</nut-button
+>
 ```
 
 ### 禁用状态

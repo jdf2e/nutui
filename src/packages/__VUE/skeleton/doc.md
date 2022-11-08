@@ -23,7 +23,12 @@ app.use(Skeleton);
 
 ```html
 <template>
-  <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
+  <nut-skeleton
+    width="250px"
+    height="15px"
+    animated
+  >
+  </nut-skeleton>
 </template>
 ```
 
@@ -35,7 +40,14 @@ app.use(Skeleton);
 
 ```html
 <template>
-  <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
+  <nut-skeleton
+    width="250px"
+    height="15px"
+    title
+    animated
+    row="3"
+  >
+  </nut-skeleton>
 </template>
 ```
 
@@ -47,7 +59,16 @@ app.use(Skeleton);
 
 ```html
 <template>
-  <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="100px" row="3"> </nut-skeleton>
+  <nut-skeleton
+    width="250px"
+    height="15px"
+    title
+    animated
+    avatar
+    avatarSize="100px"
+    row="3"
+  >
+  </nut-skeleton>
 </template>
 ```
 
@@ -59,7 +80,12 @@ app.use(Skeleton);
 
 ```html
 <template>
-  <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
+  <nut-skeleton
+    width="250px"
+    height="15px"
+    animated
+    round
+  ></nut-skeleton>
 </template>
 ```
 
@@ -72,8 +98,24 @@ app.use(Skeleton);
 ```html
 <template>
   <div class="pic-compose">
-    <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
-    <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
+    <nut-skeleton
+      width="250px"
+      height="15px"
+      title
+      animated
+      row="3"
+      class="item"
+    >
+    </nut-skeleton>
+    <nut-skeleton
+      width="250px"
+      height="15px"
+      title
+      animated
+      row="3"
+      class="item"
+    >
+    </nut-skeleton>
   </div>
 </template>
 ```
@@ -99,8 +141,19 @@ app.use(Skeleton);
 ```html
 <template>
   <div class="content">
-    <nut-switch v-model="checked" size="15px" />
-    <nut-skeleton width="250px" height="15px" title animated avatar row="3" :loading="!checked">
+    <nut-switch
+      v-model="checked"
+      size="15px"
+    />
+    <nut-skeleton
+      width="250px"
+      height="15px"
+      title
+      animated
+      avatar
+      row="3"
+      :loading="!checked"
+    >
       <div class="container">
         <nut-avatar
           size="50"

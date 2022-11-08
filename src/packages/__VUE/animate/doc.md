@@ -23,19 +23,31 @@ app.use(Animate);
 
 ```html
 <template>
-  <nut-animate type="slide-right" action="click">
+  <nut-animate
+    type="slide-right"
+    action="click"
+  >
     <nut-button type="primary">由右向左划入</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-left" action="click">
+  <nut-animate
+    type="slide-left"
+    action="click"
+  >
     <nut-button type="primary">由左向右划入</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-top" action="click">
+  <nut-animate
+    type="slide-top"
+    action="click"
+  >
     <nut-button type="primary">由上至下划入</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-bottom" action="click">
+  <nut-animate
+    type="slide-bottom"
+    action="click"
+  >
     <nut-button type="primary">由下至上划入</nut-button>
   </nut-animate>
 </template>
@@ -57,31 +69,52 @@ app.use(Animate);
 
 ```html
 <template>
-  <nut-animate type="shake" :loop="true">
+  <nut-animate
+    type="shake"
+    :loop="true"
+  >
     <nut-button type="primary">shake-抖动</nut-button>
   </nut-animate>
 
-  <nut-animate type="ripple" :loop="true">
+  <nut-animate
+    type="ripple"
+    :loop="true"
+  >
     <nut-button type="primary">ripple-心跳</nut-button>
   </nut-animate>
 
-  <nut-animate type="breath" :loop="true">
+  <nut-animate
+    type="breath"
+    :loop="true"
+  >
     <nut-button type="primary">breath-呼吸灯</nut-button>
   </nut-animate>
 
-  <nut-animate type="twinkle" :loop="true">
+  <nut-animate
+    type="twinkle"
+    :loop="true"
+  >
     <nut-button type="primary">twinkle-水波</nut-button>
   </nut-animate>
 
-  <nut-animate type="flicker" :loop="true">
+  <nut-animate
+    type="flicker"
+    :loop="true"
+  >
     <nut-button type="primary">flicker-擦亮</nut-button>
   </nut-animate>
 
-  <nut-animate type="jump" :loop="true">
+  <nut-animate
+    type="jump"
+    :loop="true"
+  >
     <nut-button type="primary">jump-跳跃</nut-button>
   </nut-animate>
 
-  <nut-animate type="float" :loop="true">
+  <nut-animate
+    type="float"
+    :loop="true"
+  >
     <nut-button type="primary">float-漂浮</nut-button>
   </nut-animate>
 </template>

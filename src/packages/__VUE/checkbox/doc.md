@@ -25,8 +25,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox1"
+    label="复选框"
+    >复选框</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox2"
+    text-position="left"
+    >复选框</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -64,7 +72,12 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-checkbox v-model="checkbox9" :indeterminate="true" label="复选框">复选框</nut-checkbox>
+    <nut-checkbox
+      v-model="checkbox9"
+      :indeterminate="true"
+      label="复选框"
+      >复选框</nut-checkbox
+    >
   </nut-cell>
 </template>
 
@@ -91,8 +104,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
-  <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox3"
+    disabled
+    >未选时禁用状态</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox4"
+    disabled
+    >选中时禁用状态</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -119,8 +140,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
-  <nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox5"
+    icon-size="25"
+    >自定义尺寸25</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox6"
+    icon-size="10"
+    >自定义尺寸10</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -149,7 +178,12 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox7"
+    icon-name="checklist"
+    icon-active-name="checklist"
+    >自定义图标</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -177,7 +211,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox" @change="changeBox3">change复选框</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox"
+    @change="changeBox3"
+    >change复选框</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -243,13 +281,36 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
-    <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{item.value}}</nut-checkbox>
+  <nut-checkboxgroup
+    v-model="checkboxgroup3"
+    ref="group"
+    @change="changeBox4"
+  >
+    <nut-checkbox
+      v-for="item in checkboxsource"
+      :key="item.label"
+      :label="item.label"
+      >{{item.value}}</nut-checkbox
+    >
   </nut-checkboxgroup>
   <span class="btn">
-    <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0;">全选</nut-button>
-    <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0;">取消</nut-button>
-    <nut-button type="warning" @click="toggleReverse()">反选</nut-button>
+    <nut-button
+      type="primary"
+      @click="toggleAll(true)"
+      style="margin: 0 20px 0 0;"
+      >全选</nut-button
+    >
+    <nut-button
+      type="primary"
+      @click="toggleAll(false)"
+      style="margin: 0 20px 0 0;"
+      >取消</nut-button
+    >
+    <nut-button
+      type="warning"
+      @click="toggleReverse()"
+      >反选</nut-button
+    >
   </span>
 </template>
 
@@ -305,10 +366,21 @@ app.use(Icon);
 <template>
   <nut-cell-group title="checkboxGroup使用，限制最大可选数（2个）">
     <nut-cell>
-      <nut-checkboxgroup v-model="checkboxgroup4" :max="2">
-        <nut-checkbox label="1" style="margin: 2px 20px 0 0;">组合复选框</nut-checkbox>
+      <nut-checkboxgroup
+        v-model="checkboxgroup4"
+        :max="2"
+      >
+        <nut-checkbox
+          label="1"
+          style="margin: 2px 20px 0 0;"
+          >组合复选框</nut-checkbox
+        >
         <nut-checkbox label="2">组合复选框</nut-checkbox>
-        <nut-checkbox label="3" style="margin: 2px 20px 0 0;">组合复选框</nut-checkbox>
+        <nut-checkbox
+          label="3"
+          style="margin: 2px 20px 0 0;"
+          >组合复选框</nut-checkbox
+        >
         <nut-checkbox label="4">组合复选框</nut-checkbox>
       </nut-checkboxgroup>
     </nut-cell>
@@ -346,10 +418,25 @@ app.use(Icon);
 <template>
   <nut-cell-group title="全选/半选/取消">
     <nut-cell>
-      <nut-checkbox :indeterminate="indeterminate" v-model="checkbox10" @change="changeBox5">全选</nut-checkbox>
+      <nut-checkbox
+        :indeterminate="indeterminate"
+        v-model="checkbox10"
+        @change="changeBox5"
+        >全选</nut-checkbox
+      >
     </nut-cell>
-    <nut-checkboxgroup v-model="checkboxgroup5" ref="group2" @change="changeBox6">
-      <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0;">组合复选框</nut-checkbox></nut-cell>
+    <nut-checkboxgroup
+      v-model="checkboxgroup5"
+      ref="group2"
+      @change="changeBox6"
+    >
+      <nut-cell
+        ><nut-checkbox
+          label="1"
+          style="margin: 2px 20px 0 0;"
+          >组合复选框</nut-checkbox
+        ></nut-cell
+      >
       <nut-cell><nut-checkbox label="2">组合复选框</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="3">组合复选框</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="4">组合复选框</nut-checkbox></nut-cell>

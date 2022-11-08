@@ -23,9 +23,24 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
-  <nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
-  <nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+  <nut-price
+    :price="0"
+    size="small"
+    :need-symbol="false"
+    :thousands="true"
+  />
+  <nut-price
+    :price="0"
+    size="normal"
+    :need-symbol="false"
+    :thousands="true"
+  />
+  <nut-price
+    :price="0"
+    size="large"
+    :need-symbol="false"
+    :thousands="true"
+  />
 </template>
 ```
 
@@ -37,7 +52,13 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+  <nut-price
+    :price="8888"
+    decimal-digits="0"
+    size="normal"
+    :need-symbol="true"
+    :thousands="true"
+  />
 </template>
 ```
 
@@ -49,7 +70,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
+  <nut-price
+    :price="10010.01"
+    :need-symbol="true"
+    :thousands="false"
+  />
 </template>
 ```
 
@@ -61,7 +86,12 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="15213.1221" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+  <nut-price
+    :price="15213.1221"
+    :decimal-digits="3"
+    :need-symbol="true"
+    :thousands="true"
+  />
 </template>
 ```
 
@@ -73,7 +103,14 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+  <nut-price
+    :price="8888.01"
+    position="after"
+    symbol="元"
+    size="normal"
+    :need-symbol="true"
+    :thousands="true"
+  />
 </template>
 ```
 
@@ -85,7 +122,12 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-price :price="price" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+  <nut-price
+    :price="price"
+    :decimal-digits="3"
+    :need-symbol="true"
+    :thousands="true"
+  />
 </template>
 
 <script lang="ts">

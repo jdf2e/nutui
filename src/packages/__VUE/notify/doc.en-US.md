@@ -20,7 +20,11 @@ app.use(Notify);
 
 ```html
 <template>
-  <nut-cell is-Link @click="baseNotify('Basic Usage')">Basic Usage</nut-cell>
+  <nut-cell
+    is-Link
+    @click="baseNotify('Basic Usage')"
+    >Basic Usage</nut-cell
+  >
 </template>
 
 <script lang="ts">
@@ -55,10 +59,26 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="Notify Type">
-    <nut-cell is-Link @click="primaryNotify('Primary Notify')">Primary Notify</nut-cell>
-    <nut-cell is-Link @click="successNotify('Success Notify')">Success Notify</nut-cell>
-    <nut-cell is-Link @click="errorNotify('Error Notify')">Error Notify</nut-cell>
-    <nut-cell is-Link @click="warningNotify('Warning Notify')">Warning Notify</nut-cell>
+    <nut-cell
+      is-Link
+      @click="primaryNotify('Primary Notify')"
+      >Primary Notify</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="successNotify('Success Notify')"
+      >Success Notify</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="errorNotify('Error Notify')"
+      >Error Notify</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="warningNotify('Warning Notify')"
+      >Warning Notify</nut-cell
+    >
   </nut-cell-group>
 </template>
 
@@ -99,15 +119,25 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="Custom Style">
-    <nut-cell is-Link @click="cusBgNotify('Customize background and font colors')"
+    <nut-cell
+      is-Link
+      @click="cusBgNotify('Customize background and font colors')"
       >Customize background and font colors</nut-cell
     >
   </nut-cell-group>
   <nut-cell-group title="Custom Duration">
-    <nut-cell is-Link @click="timeNotify('Custom Duration')">Custom Duration</nut-cell>
+    <nut-cell
+      is-Link
+      @click="timeNotify('Custom Duration')"
+      >Custom Duration</nut-cell
+    >
   </nut-cell-group>
   <nut-cell-group title="Custom Postion">
-    <nut-cell is-Link @click="positionNotify('Custom Postion')">Custom Postion</nut-cell>
+    <nut-cell
+      is-Link
+      @click="positionNotify('Custom Postion')"
+      >Custom Postion</nut-cell
+    >
   </nut-cell-group>
 </template>
 
@@ -144,8 +174,15 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="Template use">
-    <nut-cell is-Link @click="showNotify">Template use</nut-cell>
-    <nut-notify v-model:visible="show" :duration="2000">
+    <nut-cell
+      is-Link
+      @click="showNotify"
+      >Template use</nut-cell
+    >
+    <nut-notify
+      v-model:visible="show"
+      :duration="2000"
+    >
       <span>Content</span>
     </nut-notify>
   </nut-cell-group>

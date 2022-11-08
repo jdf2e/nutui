@@ -23,7 +23,10 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -92,7 +95,11 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data" :bordered="bordered"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+    :bordered="bordered"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -150,7 +157,11 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data" :summary="summary"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+    :summary="summary"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -226,7 +237,11 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns3" :data="data2" :striped="striped"></nut-table>
+  <nut-table
+    :columns="columns3"
+    :data="data2"
+    :striped="striped"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -297,8 +312,14 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data"></nut-table>
-  <nut-table :columns="columns3" :data="data3">
+  <nut-table
+    :columns="columns"
+    :data="data"
+  ></nut-table>
+  <nut-table
+    :columns="columns3"
+    :data="data3"
+  >
     <template #nodata>
       <div class="no-data"> Here is the custom display </div>
     </template>
@@ -373,7 +394,10 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -465,7 +489,10 @@ app.use(Table);
 ```html
 <template>
   <h2>Support asynchronous rendering(See the effect after 5S)</h2>
-  <nut-table :columns="columns" :data="data"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+  ></nut-table>
 </template>
 
 <script lang="ts">
@@ -541,7 +568,11 @@ app.use(Table);
 
 ```html
 <template>
-  <nut-table :columns="columns" :data="data" @sorter="handleSorter"></nut-table>
+  <nut-table
+    :columns="columns"
+    :data="data"
+    @sorter="handleSorter"
+  ></nut-table>
 </template>
 
 <script lang="ts">

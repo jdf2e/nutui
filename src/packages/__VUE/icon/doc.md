@@ -44,9 +44,18 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-  <nut-icon name="dongdong" color="#64b578"></nut-icon>
-  <nut-icon name="JD" color="#fa2c19"></nut-icon>
+  <nut-icon
+    name="dongdong"
+    color="#fa2c19"
+  ></nut-icon>
+  <nut-icon
+    name="dongdong"
+    color="#64b578"
+  ></nut-icon>
+  <nut-icon
+    name="JD"
+    color="#fa2c19"
+  ></nut-icon>
 </template>
 ```
 
@@ -61,8 +70,14 @@ app.use(Icon);
 ```html
 <template>
   <nut-icon name="dongdong"></nut-icon>
-  <nut-icon name="dongdong" size="24"></nut-icon>
-  <nut-icon name="dongdong" size="16"></nut-icon>
+  <nut-icon
+    name="dongdong"
+    size="24"
+  ></nut-icon>
+  <nut-icon
+    name="dongdong"
+    size="16"
+  ></nut-icon>
 </template>
 ```
 
@@ -76,13 +91,34 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
+  <nut-icon
+    name="dou-arrow-up"
+    class="nut-icon-am-jump nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="star-fill-n"
+    class="nut-icon-am-blink nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="refresh2"
+    class="nut-icon-am-rotate nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="heart-fill"
+    class="nut-icon-am-breathe nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="microphone"
+    class="nut-icon-am-flash nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="download"
+    class="nut-icon-am-bounce nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="message"
+    class="nut-icon-am-shake nut-icon-am-infinite"
+  ></nut-icon>
 </template>
 
 <style>
@@ -128,7 +164,11 @@ import './assets/font/iconfont.css';
   class-prefix 指定默认 icon
   name 值根据 iconfont.css 中值对应填写 
 -->
-<nut-icon font-class-name="iconfont" class-prefix="icon" name="close" />
+<nut-icon
+  font-class-name="iconfont"
+  class-prefix="icon"
+  name="close"
+/>
 ```
 
 > 方案二 第三方自定义字体库
@@ -154,7 +194,11 @@ import './assets/font/iconfont.css';
   font-class-name 指定类名为默认 my-icon
   class-prefix 指定默认 my-icon
 -->
-<nut-icon font-class-name="my-icon" class-prefix="my-icon" name="extra" />
+<nut-icon
+  font-class-name="my-icon"
+  class-prefix="my-icon"
+  name="extra"
+/>
 ```
 
 自定义 iconfont [Demo 示例](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15)

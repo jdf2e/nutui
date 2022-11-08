@@ -25,8 +25,18 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker v-model:visible="show" :columns="columns" title="Choose City" @change="change" @confirm="confirm">
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="columns"
+    title="Choose City"
+    @change="change"
+    @confirm="confirm"
+  >
   </nut-picker>
 </template>
 
@@ -75,8 +85,18 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
-  <nut-picker v-model="selectedValue" v-model:visible="show" :columns="columns" title="Choose City" @confirm="confirm">
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="() => { show = true;}"
+  ></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="Choose City"
+    @confirm="confirm"
+  >
   </nut-picker>
 </template>
 
@@ -121,7 +141,11 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="() => { show = true;}"
+  ></nut-cell>
   <nut-picker
     v-model="selectedValue"
     v-model:visible="show"
@@ -174,8 +198,18 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker v-model:visible="show" :columns="multipleColumns" title="Choose City" @confirm="confirm" @change="change">
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="multipleColumns"
+    title="Choose City"
+    @confirm="confirm"
+    @change="change"
+  >
   </nut-picker>
 </template>
 
@@ -231,7 +265,11 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
   <nut-picker
     v-model:visible="show"
     v-model="selectedCascader"
@@ -324,7 +362,11 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-cell
+    title="Choose City"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
   <nut-picker
     v-model="asyncValue"
     v-model:visible="show"
@@ -380,9 +422,22 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ```html
 <template>
-  <nut-cell title="Valid Time" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker v-model:visible="show" :columns="asyncColumns" title="Choose Date" @confirm="confirm">
-    <nut-button block @click="alwaysFun">Always</nut-button>
+  <nut-cell
+    title="Valid Time"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="asyncColumns"
+    title="Choose Date"
+    @confirm="confirm"
+  >
+    <nut-button
+      block
+      @click="alwaysFun"
+      >Always</nut-button
+    >
   </nut-picker>
 </template>
 

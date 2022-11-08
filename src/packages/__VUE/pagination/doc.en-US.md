@@ -25,7 +25,12 @@ Bind current page with v-model.
 
 ```html
 <template>
-  <nut-pagination v-model="currentPage" :total-items="25" :items-per-page="5" @change="pageChange" />
+  <nut-pagination
+    v-model="currentPage"
+    :total-items="25"
+    :items-per-page="5"
+    @change="pageChange"
+  />
 </template>
 
 <script lang="ts">
@@ -63,7 +68,12 @@ Pagination can be switched to simple mode with simple mode attribute, and pagina
 
 ```html
 <template>
-  <nut-pagination v-model="currentPage1" :page-count="12" mode="simple" @change="pageChange" />
+  <nut-pagination
+    v-model="currentPage1"
+    :page-count="12"
+    mode="simple"
+    @change="pageChange"
+  />
 </template>
 
 <script lang="ts">
@@ -101,7 +111,13 @@ The ellipses button will display after with force-ellipses attribute, click it c
 
 ```html
 <template>
-  <nut-pagination v-model="currentPage2" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
+  <nut-pagination
+    v-model="currentPage2"
+    :total-items="125"
+    :show-page-size="3"
+    @change="pageChange"
+    force-ellipses
+  />
 </template>
 
 <script lang="ts">
@@ -139,12 +155,23 @@ Custom pagination button content with pre-text slot、next-text slot and so on.
 
 ```html
 <template>
-  <nut-pagination v-model="currentPage3" :total-items="500" @change="pageChange" :show-page-size="5">
+  <nut-pagination
+    v-model="currentPage3"
+    :total-items="500"
+    @change="pageChange"
+    :show-page-size="5"
+  >
     <template #prev-text>
-      <nut-icon name="left" size="10px" />
+      <nut-icon
+        name="left"
+        size="10px"
+      />
     </template>
     <template #next-text>
-      <nut-icon name="right" size="10px" />
+      <nut-icon
+        name="right"
+        size="10px"
+      />
     </template>
     <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
   </nut-pagination>

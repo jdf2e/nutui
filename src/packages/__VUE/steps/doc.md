@@ -24,7 +24,10 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps :current="current1" @click-step="handleClickStep">
+  <nut-steps
+    :current="current1"
+    @click-step="handleClickStep"
+  >
     <nut-step title="步骤一">
       1
       <template v-slot:title>步骤一</template>
@@ -63,9 +66,21 @@ app.use(Step);
 ```html
 <template>
   <nut-steps :current="current2">
-    <nut-step title="已完成" content="步骤描述">1</nut-step>
-    <nut-step title="进行中" content="步骤描述">2</nut-step>
-    <nut-step title="未开始" content="步骤描述">3</nut-step>
+    <nut-step
+      title="已完成"
+      content="步骤描述"
+      >1</nut-step
+    >
+    <nut-step
+      title="进行中"
+      content="步骤描述"
+      >2</nut-step
+    >
+    <nut-step
+      title="未开始"
+      content="步骤描述"
+      >3</nut-step
+    >
   </nut-steps>
 </template>
 
@@ -93,9 +108,21 @@ app.use(Step);
 ```html
 <template>
   <nut-steps current="1">
-    <nut-step title="已完成" icon="service">1</nut-step>
-    <nut-step title="进行中" icon="people">2</nut-step>
-    <nut-step title="未开始" icon="location2">3</nut-step>
+    <nut-step
+      title="已完成"
+      icon="service"
+      >1</nut-step
+    >
+    <nut-step
+      title="进行中"
+      icon="people"
+      >2</nut-step
+    >
+    <nut-step
+      title="未开始"
+      icon="location2"
+      >3</nut-step
+    >
   </nut-steps>
 </template>
 ```
@@ -108,10 +135,25 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps direction="vertical" current="2">
-    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-    <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
+  <nut-steps
+    direction="vertical"
+    current="2"
+  >
+    <nut-step
+      title="已完成"
+      content="您的订单已经打包完成，商品已发出"
+      >1</nut-step
+    >
+    <nut-step
+      title="进行中"
+      content="您的订单正在配送途中"
+      >2</nut-step
+    >
+    <nut-step
+      title="未开始"
+      content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+      >3</nut-step
+    >
   </nut-steps>
 </template>
 ```
@@ -124,9 +166,21 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps direction="vertical" progress-dot current="2">
-    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
+  <nut-steps
+    direction="vertical"
+    progress-dot
+    current="2"
+  >
+    <nut-step
+      title="已完成"
+      content="您的订单已经打包完成，商品已发出"
+      >1</nut-step
+    >
+    <nut-step
+      title="进行中"
+      content="您的订单正在配送途中"
+      >2</nut-step
+    >
     <nut-step title="未开始">
       3
       <template v-slot:content>

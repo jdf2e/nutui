@@ -18,8 +18,17 @@ app.use(Notify);
 
 ```html
 <nut-cell-group :title="baseState.state.desc">
-  <nut-cell is-Link @click="baseState.methods.cellClick">基础用法</nut-cell>
-  <nut-notify @click="onClick" @closed="onClosed" v-model:visible="baseState.state.show" :msg="baseState.state.desc" />
+  <nut-cell
+    is-Link
+    @click="baseState.methods.cellClick"
+    >基础用法</nut-cell
+  >
+  <nut-notify
+    @click="onClick"
+    @closed="onClosed"
+    v-model:visible="baseState.state.show"
+    :msg="baseState.state.desc"
+  />
 </nut-cell-group>
 
 <nut-cell-group title="通知类型">
@@ -30,10 +39,26 @@ app.use(Notify);
     v-model:visible="notifyState.state.show"
     :msg="notifyState.state.desc"
   />
-  <nut-cell is-Link @click="notifyState.methods.cellClick('primary','主要通知')">主要通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('success','成功通知')">成功通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('danger','危险通知')">危险通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('warning','警告通知')">警告通知</nut-cell>
+  <nut-cell
+    is-Link
+    @click="notifyState.methods.cellClick('primary','主要通知')"
+    >主要通知</nut-cell
+  >
+  <nut-cell
+    is-Link
+    @click="notifyState.methods.cellClick('success','成功通知')"
+    >成功通知</nut-cell
+  >
+  <nut-cell
+    is-Link
+    @click="notifyState.methods.cellClick('danger','危险通知')"
+    >危险通知</nut-cell
+  >
+  <nut-cell
+    is-Link
+    @click="notifyState.methods.cellClick('warning','警告通知')"
+    >警告通知</nut-cell
+  >
 </nut-cell-group>
 
 <nut-cell-group title="自定义样式">
@@ -47,10 +72,18 @@ app.use(Notify);
     :msg="customState.state.desc"
     :duration="customState.state.duration"
   />
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义背景色和字体颜色')">
+  <nut-cell
+    is-Link
+    @click="customState.methods.cellClick('primary','自定义背景色和字体颜色')"
+  >
     自定义背景色和字体颜色
   </nut-cell>
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义时长5s',5000)"> 自定义时长5s </nut-cell>
+  <nut-cell
+    is-Link
+    @click="customState.methods.cellClick('primary','自定义时长5s',5000)"
+  >
+    自定义时长5s
+  </nut-cell>
 </nut-cell-group>
 ```
 

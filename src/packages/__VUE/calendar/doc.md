@@ -202,7 +202,12 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :showIcon="true" title="选择单个日期" :desc="date ? date : '请选择'" @click="openSwitch('isVisible')">
+  <nut-cell
+    :showIcon="true"
+    title="选择单个日期"
+    :desc="date ? date : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
   </nut-cell>
   <nut-calendar
     v-model:visible="isVisible"
@@ -326,8 +331,20 @@ app.use(Popup);
   >
     <template v-slot:btn>
       <div class="wrapper">
-        <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
-        <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
+        <div class="d_div">
+          <span
+            class="d_btn"
+            @click="clickBtn"
+            >最近七天</span
+          ></div
+        >
+        <div class="d_div">
+          <span
+            class="d_btn"
+            @click="clickBtn1"
+            >当月</span
+          ></div
+        >
       </div>
     </template>
     <template v-slot:day="date">
@@ -460,7 +477,9 @@ app.use(Popup);
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
     <template v-slot:bottomInfo="date">
-      <span class="info" style="fontSize: 12px; lineHeight: 14px;"
+      <span
+        class="info"
+        style="fontSize: 12px; lineHeight: 14px;"
         >{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span
       >
     </template>
@@ -504,7 +523,12 @@ app.use(Popup);
 ```html
 <template>
   <div class="test-calendar-wrapper">
-    <nut-calendar :poppable="false" :default-value="date" :is-auto-back-fill="true" @choose="setChooseValue">
+    <nut-calendar
+      :poppable="false"
+      :default-value="date"
+      :is-auto-back-fill="true"
+      @choose="setChooseValue"
+    >
     </nut-calendar>
   </div>
 </template>

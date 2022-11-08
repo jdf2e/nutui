@@ -29,18 +29,35 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+  <nut-swiper
+    :init-page="page"
+    :pagination-visible="true"
+    pagination-color="#426543"
+    auto-play="3000"
+  >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -78,9 +95,20 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
-    <nut-swiper-item v-for="item in list" :key="item">
-      <img :src="item" alt="" />
+  <nut-swiper
+    :init-page="page"
+    :pagination-visible="true"
+    pagination-color="#426543"
+    auto-play="3000"
+  >
+    <nut-swiper-item
+      v-for="item in list"
+      :key="item"
+    >
+      <img
+        :src="item"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -131,9 +159,20 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
-    <nut-swiper-item v-for="item in list" :key="item">
-      <img :src="item" alt="" />
+  <nut-swiper
+    :init-page="page"
+    :pagination-visible="true"
+    pagination-color="#426543"
+    auto-play="3000"
+  >
+    <nut-swiper-item
+      v-for="item in list"
+      :key="item"
+    >
+      <img
+        :src="item"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -184,18 +223,34 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page2" :loop="false" width="300">
+  <nut-swiper
+    :init-page="page2"
+    :loop="false"
+    width="300"
+  >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -235,18 +290,34 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page3" :loop="true" @change="change">
+  <nut-swiper
+    :init-page="page3"
+    :loop="true"
+    @change="change"
+  >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <template v-slot:page>
       <div class="page"> {{ current }}/4 </div>
@@ -307,16 +378,32 @@ app.use(SwiperItem);
 ```html
 <template>
   <view class="demo-box">
-    <nut-swiper :init-page="page" :loop="true" ref="swiper">
-      <nut-swiper-item v-for="item in list" :key="item">
-        <img :src="item" alt="" />
+    <nut-swiper
+      :init-page="page"
+      :loop="true"
+      ref="swiper"
+    >
+      <nut-swiper-item
+        v-for="item in list"
+        :key="item"
+      >
+        <img
+          :src="item"
+          alt=""
+        />
       </nut-swiper-item>
     </nut-swiper>
     <view class="nut-swiper-btns">
-      <span class="nut-swiper-btns__left" @click="handlePrev">
+      <span
+        class="nut-swiper-btns__left"
+        @click="handlePrev"
+      >
         <nut-icon name="left"></nut-icon>
       </span>
-      <span class="nut-swiper-btns__left" @click="handleNext">
+      <span
+        class="nut-swiper-btns__left"
+        @click="handleNext"
+      >
         <nut-icon name="right"></nut-icon>
       </span>
     </view>
@@ -405,16 +492,28 @@ app.use(SwiperItem);
     style="height: 150px;"
   >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -463,18 +562,37 @@ app.use(SwiperItem);
 
 ```html
 <template>
-  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px;">
+  <nut-swiper
+    :init-page="page"
+    :loop="false"
+    width="280"
+    height="150"
+    :is-center="true"
+    style="height: 150px;"
+  >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>
@@ -523,16 +641,28 @@ app.use(SwiperItem);
     style="height: 300px;"
   >
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg"
+        alt=""
+      />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      <img
+        src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg"
+        alt=""
+      />
     </nut-swiper-item>
   </nut-swiper>
 </template>

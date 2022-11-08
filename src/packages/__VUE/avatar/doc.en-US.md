@@ -51,8 +51,14 @@ Support two shapes：square、round
 
 ```html
 <template>
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-  <nut-avatar icon="my" shape="round"></nut-avatar>
+  <nut-avatar
+    icon="my"
+    shape="square"
+  ></nut-avatar>
+  <nut-avatar
+    icon="my"
+    shape="round"
+  ></nut-avatar>
 </template>
 ```
 
@@ -85,8 +91,17 @@ Icon and letter types can have custom colors and background colors
 
 ```html
 <template>
-  <nut-avatar class="demo-avatar" icon="my" color="#fff" bg-color="#FA2C19"></nut-avatar>
-  <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+  <nut-avatar
+    class="demo-avatar"
+    icon="my"
+    color="#fff"
+    bg-color="#FA2C19"
+  ></nut-avatar>
+  <nut-avatar
+    color="rgb(245, 106, 0)"
+    bg-color="rgb(253, 227, 207)"
+    >U</nut-avatar
+  >
 </template>
 ```
 
@@ -99,10 +114,16 @@ Icon and letter types can have custom colors and background colors
 ```html
 <template>
   <nut-badge value="8">
-    <nut-avatar icon="my" shape="square"></nut-avatar>
+    <nut-avatar
+      icon="my"
+      shape="square"
+    ></nut-avatar>
   </nut-badge>
   <nut-badge dot>
-    <nut-avatar icon="my" shape="square"></nut-avatar>
+    <nut-avatar
+      icon="my"
+      shape="square"
+    ></nut-avatar>
   </nut-badge>
 </template>
 ```
@@ -121,15 +142,27 @@ Icon and letter types can have custom colors and background colors
     >
     </nut-avatar>
     <nut-avatar icon="my"></nut-avatar>
-    <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+    <nut-avatar
+      color="rgb(245, 106, 0)"
+      bg-color="rgb(253, 227, 207)"
+      >U</nut-avatar
+    >
   </nut-avatar-group>
-  <nut-avatar-group max-count="3" max-color="#fff" max-bgColor="#498ff2">
+  <nut-avatar-group
+    max-count="3"
+    max-color="#fff"
+    max-bgColor="#498ff2"
+  >
     <nut-avatar
       url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
     >
     </nut-avatar>
     <nut-avatar icon="my"></nut-avatar>
-    <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+    <nut-avatar
+      color="rgb(245, 106, 0)"
+      bg-color="rgb(253, 227, 207)"
+      >U</nut-avatar
+    >
     <nut-avatar icon="my"></nut-avatar>
   </nut-avatar-group>
 </template>
@@ -143,13 +176,21 @@ Icon and letter types can have custom colors and background colors
 
 ```html
 <template>
-  <nut-avatar-group max-count="3" zIndex="right" max-content="...">
+  <nut-avatar-group
+    max-count="3"
+    zIndex="right"
+    max-content="..."
+  >
     <nut-avatar
       url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
     >
     </nut-avatar>
     <nut-avatar icon="my"></nut-avatar>
-    <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+    <nut-avatar
+      color="rgb(245, 106, 0)"
+      bg-color="rgb(253, 227, 207)"
+      >U</nut-avatar
+    >
     <nut-avatar icon="my"></nut-avatar>
   </nut-avatar-group>
 </template>
@@ -164,7 +205,10 @@ Icon and letter types can have custom colors and background colors
 ```html
 <template>
   <nut-cell>
-    <nut-avatar icon="my" @active-avatar="handleClick"></nut-avatar>
+    <nut-avatar
+      icon="my"
+      @active-avatar="handleClick"
+    ></nut-avatar>
   </nut-cell>
 </template>
 

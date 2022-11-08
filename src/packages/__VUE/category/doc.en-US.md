@@ -21,8 +21,15 @@ app.use(CategoryPane);
 
 ```html
 <template>
-  <nut-category :category="category" @change="change">
-    <nut-categorypane :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane>
+  <nut-category
+    :category="category"
+    @change="change"
+  >
+    <nut-categorypane
+      :categoryChild="categoryChild"
+      @onChange="onChange"
+    >
+    </nut-categorypane>
   </nut-category>
 </template>
 
@@ -79,8 +86,16 @@ app.use(CategoryPane);
 
 ```html
 <template>
-  <nut-category :category="category" @change="changeText">
-    <nut-categorypane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane
+  <nut-category
+    :category="category"
+    @change="changeText"
+  >
+    <nut-categorypane
+      type="text"
+      :categoryChild="categoryChild"
+      @onChange="onChange"
+    >
+    </nut-categorypane
   ></nut-category>
 </template>
 
@@ -140,7 +155,12 @@ app.use(CategoryPane);
 ```html
 <template>
   <nut-category @change="changeCustom"
-    ><nut-categorypane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-categorypane
+    ><nut-categorypane
+      type="custom"
+      :customCategory="customCategory"
+      @onChange="changeCustom"
+    >
+    </nut-categorypane
   ></nut-category>
 </template>
 

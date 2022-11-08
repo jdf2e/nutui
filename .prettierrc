@@ -7,5 +7,15 @@
   "printWidth": 120,
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "strict",
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": [
+        "*.md"
+      ],
+      "options": {
+        "singleAttributePerLine": true
+      }
+    }
+  ]
 }

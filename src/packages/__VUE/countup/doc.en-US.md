@@ -23,9 +23,22 @@ app.use(CountUp);
 
 ```html
 <template>
-  <nut-countup :init-num="0" :end-num="200"></nut-countup>
-  <nut-countup :init-num="150.00" :end-num="0.00" :speed="2.62" :to-fixed="2"></nut-countup>
-  <nut-countup :init-num="1000.00" :end-num="0.00" :speed="50" :to-fixed="2"></nut-countup>
+  <nut-countup
+    :init-num="0"
+    :end-num="200"
+  ></nut-countup>
+  <nut-countup
+    :init-num="150.00"
+    :end-num="0.00"
+    :speed="2.62"
+    :to-fixed="2"
+  ></nut-countup>
+  <nut-countup
+    :init-num="1000.00"
+    :end-num="0.00"
+    :speed="50"
+    :to-fixed="2"
+  ></nut-countup>
 </template>
 ```
 
@@ -37,7 +50,11 @@ app.use(CountUp);
 
 ```html
 <template>
-  <nut-countup :scrolling="true" :init-num="17.618" :during="600"></nut-countup>
+  <nut-countup
+    :scrolling="true"
+    :init-num="17.618"
+    :during="600"
+  ></nut-countup>
 </template>
 ```
 
@@ -108,7 +125,11 @@ app.use(CountUp);
     @scroll-end="scrollAniEnd"
   >
   </nut-countup>
-  <nut-button @click="startRole" :disabled="startFlag">luck draw</nut-button>
+  <nut-button
+    @click="startRole"
+    :disabled="startFlag"
+    >luck draw</nut-button
+  >
 </template>
 
 <script>

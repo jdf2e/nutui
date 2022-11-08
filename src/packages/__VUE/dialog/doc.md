@@ -25,13 +25,34 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell-group title="函数式调用">
-    <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-    <nut-cell title="透明弹框" @click="transparentClick"></nut-cell>
-    <nut-cell title="支持富文本 html" @click="htmlClick"></nut-cell>
-    <nut-cell title="异步关闭" @click="beforeCloseClick"></nut-cell>
-    <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-    <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
-    <nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
+    <nut-cell
+      title="基础弹框"
+      @click="baseClick"
+    ></nut-cell>
+    <nut-cell
+      title="透明弹框"
+      @click="transparentClick"
+    ></nut-cell>
+    <nut-cell
+      title="支持富文本 html"
+      @click="htmlClick"
+    ></nut-cell>
+    <nut-cell
+      title="异步关闭"
+      @click="beforeCloseClick"
+    ></nut-cell>
+    <nut-cell
+      title="无标题弹框"
+      @click="noTitleClick"
+    ></nut-cell>
+    <nut-cell
+      title="提示弹框"
+      @click="tipsClick"
+    ></nut-cell>
+    <nut-cell
+      title="底部按钮 垂直调用"
+      @click="verticalClick"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 
@@ -131,7 +152,10 @@ app.use(OverLay);
 ### teleport 使用，挂载到指定节点
 
 ```html
-<nut-dialog teleport="#app" ... />
+<nut-dialog
+  teleport="#app"
+  ...
+/>
 ```
 
 ```javascript
@@ -170,7 +194,10 @@ export default {
 ```html
 <template>
   <nut-cell-group title="标签式使用">
-    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+    <nut-cell
+      title="组件调用"
+      @click="componentClick"
+    ></nut-cell>
     <nut-dialog
       teleport="#app"
       title="组件调用"
@@ -178,7 +205,10 @@ export default {
       v-model:visible="visible"
     >
     </nut-dialog>
-    <nut-cell title="底部按钮 垂直使用" @click="componentVerticalClick"></nut-cell>
+    <nut-cell
+      title="底部按钮 垂直使用"
+      @click="componentVerticalClick"
+    ></nut-cell>
     <nut-dialog
       footer-direction="vertical"
       teleport="#app"

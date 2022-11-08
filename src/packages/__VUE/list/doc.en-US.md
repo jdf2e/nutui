@@ -26,7 +26,11 @@ app.use();
   <div class="demo">
     <h2>Basic Usage</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
+      <nut-list
+        :height="50"
+        :listData="count"
+        @scroll-bottom="handleScroll"
+      >
         <template v-slot="{ item }">
           <div class="list-item"> {{ item }} </div>
         </template>

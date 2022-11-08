@@ -26,12 +26,20 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>Basic Usage</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
     <!-- demo Basic Usage -->
-    <nut-actionsheet v-model:visible="state.isVisible" :menu-items="menuItems" @choose="chooseItem"></nut-actionsheet>
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      @choose="chooseItem"
+    ></nut-actionsheet>
   </div>
 </template>
 
@@ -80,7 +88,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>Show Cancel Button</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -139,7 +151,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>Show Description</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -200,7 +216,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>Option Status</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -258,10 +278,17 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>Custom Content</label></span>
     </nut-cell>
-    <nut-actionsheet v-model:visible="state.isVisible" title="title">
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      title="title"
+    >
       <div class="custom-content">Custom Content</div>
     </nut-actionsheet>
   </div>

@@ -22,10 +22,23 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell title="我是标题" desc="描述文字"></nut-cell>
-  <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
-  <nut-cell title="点击测试" @click="testClick"></nut-cell>
-  <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
+  <nut-cell
+    title="我是标题"
+    desc="描述文字"
+  ></nut-cell>
+  <nut-cell
+    title="我是标题"
+    sub-title="副标题描述"
+    desc="描述文字"
+  ></nut-cell>
+  <nut-cell
+    title="点击测试"
+    @click="testClick"
+  ></nut-cell>
+  <nut-cell
+    title="圆角设置 0"
+    round-radius="0"
+  ></nut-cell>
 </template>
 
 <script>
@@ -54,8 +67,17 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell size="large" title="我是标题" desc="描述文字"></nut-cell>
-  <nut-cell size="large" title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+  <nut-cell
+    size="large"
+    title="我是标题"
+    desc="描述文字"
+  ></nut-cell>
+  <nut-cell
+    size="large"
+    title="我是标题"
+    sub-title="副标题描述"
+    desc="描述文字"
+  ></nut-cell>
 </template>
 ```
 
@@ -97,10 +119,24 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell-group title="链接 | 分组用法" desc="使用 nut-cell-group 支持 title desc slots">
-    <nut-cell title="链接" is-link></nut-cell>
-    <nut-cell title="URL 跳转" desc="https://m.jd.com" is-link url="https://m.jd.com"></nut-cell>
-    <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
+  <nut-cell-group
+    title="链接 | 分组用法"
+    desc="使用 nut-cell-group 支持 title desc slots"
+  >
+    <nut-cell
+      title="链接"
+      is-link
+    ></nut-cell>
+    <nut-cell
+      title="URL 跳转"
+      desc="https://m.jd.com"
+      is-link
+      url="https://m.jd.com"
+    ></nut-cell>
+    <nut-cell
+      title="路由跳转 ’/‘ "
+      to="/"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 ```
@@ -168,7 +204,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell title="姓名" icon="my" desc="张三"></nut-cell>
+  <nut-cell
+    title="姓名"
+    icon="my"
+    desc="张三"
+  ></nut-cell>
 </template>
 ```
 
@@ -180,7 +220,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell desc-text-align="left" desc="张三"></nut-cell>
+  <nut-cell
+    desc-text-align="left"
+    desc="张三"
+  ></nut-cell>
 </template>
 ```
 
@@ -194,7 +237,12 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell center title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+  <nut-cell
+    center
+    title="我是标题"
+    sub-title="副标题描述"
+    desc="描述文字"
+  ></nut-cell>
 </template>
 ```
 

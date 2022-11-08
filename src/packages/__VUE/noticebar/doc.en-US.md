@@ -65,12 +65,21 @@ Scrolling is automatically enabled when the content length of the notification b
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar
+    :closeMode="true"
+    :background="`rgba(251, 248, 220, 1)`"
+    :color="`#D9500B`"
+  >
     Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be
     used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
   </nut-noticebar>
 
-  <nut-noticebar :closeMode="true" right-icon="circle-close" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar
+    :closeMode="true"
+    right-icon="circle-close"
+    :background="`rgba(251, 248, 220, 1)`"
+    :color="`#D9500B`"
+  >
     Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be
     used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
   </nut-noticebar>
@@ -190,7 +199,13 @@ When text is long, you can enable multi-line display by setting the wrapable pro
     :background="`rgba(251, 248, 220, 1)`"
     :color="`#D9500B`"
   >
-    <div class="custom-item" :data-index="index" v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
+    <div
+      class="custom-item"
+      :data-index="index"
+      v-for="(item,index) in horseLamp3"
+      :key="index"
+      >{{item}}</div
+    >
   </nut-noticebar>
 </template>
 
@@ -224,7 +239,10 @@ When text is long, you can enable multi-line display by setting the wrapable pro
     :color="`#D9500B`"
   >
     <template v-slot:rightIcon>
-      <nut-icon name="fabulous" color="#f0250f"></nut-icon>
+      <nut-icon
+        name="fabulous"
+        color="#f0250f"
+      ></nut-icon>
     </template>
   </nut-noticebar>
 </template>

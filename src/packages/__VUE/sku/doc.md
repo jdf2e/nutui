@@ -26,7 +26,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+  <nut-cell
+    :title="`基本用法`"
+    desc=""
+    @click="base = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="base"
     :sku="sku"
@@ -96,7 +100,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>
+  <nut-cell
+    title="不可售"
+    desc=""
+    @click="notSell = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="notSell"
     :sku="sku"
@@ -107,8 +115,16 @@ app.use(Price);
   >
     <template #sku-operate>
       <div class="sku-operate-box">
-        <nut-button class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
-        <nut-button class="sku-operate-box-dis" type="info">到货通知</nut-button>
+        <nut-button
+          class="sku-operate-box-dis"
+          type="warning"
+          >查看相似商品</nut-button
+        >
+        <nut-button
+          class="sku-operate-box-dis"
+          type="info"
+          >到货通知</nut-button
+        >
       </div>
     </template>
   </nut-sku>
@@ -196,7 +212,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-cell title="自定义计步器" desc="" @click="customStepper = true"></nut-cell>
+  <nut-cell
+    title="自定义计步器"
+    desc=""
+    @click="customStepper = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="customStepper"
     :sku="sku"
@@ -291,7 +311,11 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
 
 ```html
 <template>
-  <nut-cell title="通过插槽自定义设置" desc="" @click="customBySlot = true"></nut-cell>
+  <nut-cell
+    title="通过插槽自定义设置"
+    desc=""
+    @click="customBySlot = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="customBySlot"
     :sku="sku"
@@ -303,7 +327,12 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
     <!-- 商品展示区，价格区域 -->
     <template #sku-header-price>
       <div>
-        <nut-price :price="goods.price" :needSymbol="true" :thousands="false"> </nut-price>
+        <nut-price
+          :price="goods.price"
+          :needSymbol="true"
+          :thousands="false"
+        >
+        </nut-price>
         <span class="tag"></span>
       </div>
     </template>
@@ -325,8 +354,18 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
     <!-- 底部按钮操作区 -->
     <template #sku-operate>
       <div class="sku-operate-box">
-        <nut-button class="sku-operate-item" shape="square" type="warning">加入购物车</nut-button>
-        <nut-button class="sku-operate-item" shape="square" type="primary">立即购买</nut-button>
+        <nut-button
+          class="sku-operate-item"
+          shape="square"
+          type="warning"
+          >加入购物车</nut-button
+        >
+        <nut-button
+          class="sku-operate-item"
+          shape="square"
+          type="primary"
+          >立即购买</nut-button
+        >
       </div>
     </template>
   </nut-sku>

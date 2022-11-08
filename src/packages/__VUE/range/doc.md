@@ -24,7 +24,10 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" @change="onChange"></nut-range>
+    <nut-range
+      v-model="value"
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -53,7 +56,11 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range range v-model="value" @change="onChange"></nut-range>
+    <nut-range
+      range
+      v-model="value"
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -82,7 +89,12 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :max="10" :min="-10" @change="onChange" />
+    <nut-range
+      v-model="value"
+      :max="10"
+      :min="-10"
+      @change="onChange"
+    />
   </nut-cell>
 </template>
 
@@ -111,7 +123,11 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :step="5" @change="onChange"></nut-range>
+    <nut-range
+      v-model="value"
+      :step="5"
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -140,7 +156,11 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" hidden-range @change="onChange"></nut-range>
+    <nut-range
+      v-model="value"
+      hidden-range
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -169,7 +189,11 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :hidden-tag="true" @change="onChange"></nut-range>
+    <nut-range
+      v-model="value"
+      :hidden-tag="true"
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -198,7 +222,11 @@ app.use(Range);
 ```html
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" disabled @change="onChange"></nut-range>
+    <nut-range
+      v-model="value"
+      disabled
+      @change="onChange"
+    ></nut-range>
   </nut-cell>
 </template>
 
@@ -275,7 +303,10 @@ app.use(Range);
 
 <template>
   <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" @change="onChange">
+    <nut-range
+      v-model="value"
+      @change="onChange"
+    >
       <template #button>
         <div class="custom-button">{{ value }}</div>
       </template>
@@ -319,10 +350,19 @@ app.use(Range);
 <template>
   <nut-cell class="vertical_div">
     <div class="div">
-      <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
+      <nut-range
+        v-model="value10"
+        @change="onChange"
+        :vertical="true"
+      ></nut-range>
     </div>
     <div class="div">
-      <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
+      <nut-range
+        range
+        v-model="value11"
+        @change="onChange"
+        :vertical="true"
+      ></nut-range>
     </div>
   </nut-cell>
 </template>
@@ -364,14 +404,31 @@ app.use(Range);
 <template>
   <div>
     <nut-cell class="cell">
-      <nut-range v-model="value12" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+      <nut-range
+        v-model="value12"
+        @change="onChange"
+        :marks="marks"
+        :hiddenRange="true"
+      ></nut-range>
     </nut-cell>
     <nut-cell class="cell">
-      <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+      <nut-range
+        range
+        v-model="value13"
+        @change="onChange"
+        :marks="marks"
+        :hiddenRange="true"
+      ></nut-range>
     </nut-cell>
     <nut-cell class="vertical_div">
       <div class="div">
-        <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
+        <nut-range
+          v-model="value14"
+          @change="onChange"
+          :vertical="true"
+          :marks="marks"
+          :hiddenRange="true"
+        ></nut-range>
       </div>
       <div class="div">
         <nut-range

@@ -44,9 +44,18 @@ Use `color` prop to set icon color.
 
 ```html
 <template>
-  <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-  <nut-icon name="dongdong" color="#64b578"></nut-icon>
-  <nut-icon name="JD" color="#fa2c19"></nut-icon>
+  <nut-icon
+    name="dongdong"
+    color="#fa2c19"
+  ></nut-icon>
+  <nut-icon
+    name="dongdong"
+    color="#64b578"
+  ></nut-icon>
+  <nut-icon
+    name="JD"
+    color="#fa2c19"
+  ></nut-icon>
 </template>
 ```
 
@@ -61,8 +70,14 @@ Use `size` prop to set icon size default unit is `px` .
 ```html
 <template>
   <nut-icon name="dongdong"></nut-icon>
-  <nut-icon name="dongdong" size="24"></nut-icon>
-  <nut-icon name="dongdong" size="16"></nut-icon>
+  <nut-icon
+    name="dongdong"
+    size="24"
+  ></nut-icon>
+  <nut-icon
+    name="dongdong"
+    size="16"
+  ></nut-icon>
 </template>
 ```
 
@@ -76,13 +91,34 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 
 ```html
 <template>
-  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
+  <nut-icon
+    name="dou-arrow-up"
+    class="nut-icon-am-jump nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="star-fill-n"
+    class="nut-icon-am-blink nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="refresh2"
+    class="nut-icon-am-rotate nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="heart-fill"
+    class="nut-icon-am-breathe nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="microphone"
+    class="nut-icon-am-flash nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="download"
+    class="nut-icon-am-bounce nut-icon-am-infinite"
+  ></nut-icon>
+  <nut-icon
+    name="message"
+    class="nut-icon-am-shake nut-icon-am-infinite"
+  ></nut-icon>
 </template>
 
 <style>
@@ -128,7 +164,11 @@ import './assets/font/iconfont.css';
   class-prefix  icon
   name The name value is filled in according to the value in iconfont.css 
 -->
-<nut-icon font-class-name="iconfont" class-prefix="icon" name="close" />
+<nut-icon
+  font-class-name="iconfont"
+  class-prefix="icon"
+  name="close"
+/>
 ```
 
 > Use a third-party custom font library
@@ -154,7 +194,11 @@ import './assets/font/iconfont.css';
   font-class-name  my-icon
   class-prefix  my-icon
 -->
-<nut-icon font-class-name="my-icon" class-prefix="my-icon" name="extra" />
+<nut-icon
+  font-class-name="my-icon"
+  class-prefix="my-icon"
+  name="extra"
+/>
 ```
 
 custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15)

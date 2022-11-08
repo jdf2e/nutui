@@ -142,7 +142,10 @@ app.use(Col);
 
 ```html
 <template>
-  <nut-row type="flex" wrap="nowrap">
+  <nut-row
+    type="flex"
+    wrap="nowrap"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>
@@ -153,7 +156,10 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
-  <nut-row type="flex" justify="center">
+  <nut-row
+    type="flex"
+    justify="center"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>
@@ -164,7 +170,10 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
-  <nut-row type="flex" justify="end">
+  <nut-row
+    type="flex"
+    justify="end"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>
@@ -175,7 +184,10 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
-  <nut-row type="flex" justify="space-between">
+  <nut-row
+    type="flex"
+    justify="space-between"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>
@@ -186,7 +198,10 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
-  <nut-row type="flex" justify="space-around">
+  <nut-row
+    type="flex"
+    justify="space-around"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>
@@ -197,7 +212,10 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
-  <nut-row type="flex" justify="space-evenly">
+  <nut-row
+    type="flex"
+    justify="space-evenly"
+  >
     <nut-col :span="6">
       <div class="flex-content">span:6</div>
     </nut-col>

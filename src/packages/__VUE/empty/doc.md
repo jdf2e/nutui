@@ -36,9 +36,18 @@ app.use(Empty);
 
 ```html
 <template>
-  <nut-empty image="empty" description="无内容"></nut-empty>
-  <nut-empty image="error" description="加载失败/错误"></nut-empty>
-  <nut-empty image="network" description="无网络"></nut-empty>
+  <nut-empty
+    image="empty"
+    description="无内容"
+  ></nut-empty>
+  <nut-empty
+    image="error"
+    description="加载失败/错误"
+  ></nut-empty>
+  <nut-empty
+    image="network"
+    description="无网络"
+  ></nut-empty>
 </template>
 ```
 
@@ -66,9 +75,16 @@ app.use(Empty);
 
 ```html
 <template>
-  <nut-empty image="error" description="加载失败">
+  <nut-empty
+    image="error"
+    description="加载失败"
+  >
     <div style="margin-top: 10px;">
-      <nut-button icon="refresh" type="primary">重试</nut-button>
+      <nut-button
+        icon="refresh"
+        type="primary"
+        >重试</nut-button
+      >
     </div>
   </nut-empty>
 </template>

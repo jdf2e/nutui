@@ -52,7 +52,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-searchbar v-model="searchValue" @search="search"></nut-searchbar>
+  <nut-searchbar
+    v-model="searchValue"
+    @search="search"
+  ></nut-searchbar>
 </template>
 
 <script lang="ts">
@@ -87,7 +90,10 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <nut-icon
+        size="14"
+        name="search2"
+      ></nut-icon>
     </template>
   </nut-searchbar>
 </template>
@@ -180,16 +186,29 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      <nut-icon
+        @click="clickLeft"
+        size="20"
+        name="left"
+      ></nut-icon>
     </template>
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <nut-icon
+        size="14"
+        name="search2"
+      ></nut-icon>
     </template>
     <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
+      <nut-icon
+        size="20"
+        name="photograph"
+      ></nut-icon>
     </template>
     <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
+      <nut-icon
+        size="20"
+        name="message"
+      ></nut-icon>
     </template>
   </nut-searchbar>
 </template>

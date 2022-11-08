@@ -41,7 +41,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Text 文字提示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
+  <nut-cell
+    title="Text 文字提示"
+    is-link
+    @click="textToast('网络失败，请稍后再试~')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -67,7 +71,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 标题展示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
+  <nut-cell
+    title="Toast 标题展示"
+    is-link
+    @click="textToast('网络失败，请稍后再试~')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -95,7 +103,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 成功提示" is-link @click="textToast('成功提示')"></nut-cell>
+  <nut-cell
+    title="Toast 成功提示"
+    is-link
+    @click="textToast('成功提示')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -121,7 +133,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 失败提示" is-link @click="textToast('失败提示')"></nut-cell>
+  <nut-cell
+    title="Toast 失败提示"
+    is-link
+    @click="textToast('失败提示')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -147,7 +163,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 警告提示" is-link @click="textToast('警告提示')"></nut-cell>
+  <nut-cell
+    title="Toast 警告提示"
+    is-link
+    @click="textToast('警告提示')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -173,7 +193,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 加载提示" is-link @click="textToast('加载中')"></nut-cell>
+  <nut-cell
+    title="Toast 加载提示"
+    is-link
+    @click="textToast('加载中')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -199,7 +223,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast不消失" is-link @click="textToast('Toast不消失')"></nut-cell>
+  <nut-cell
+    title="Toast不消失"
+    is-link
+    @click="textToast('Toast不消失')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -227,7 +255,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast 自定义底部高度" is-link @click="textToast('自定义距离')"></nut-cell>
+  <nut-cell
+    title="Toast 自定义底部高度"
+    is-link
+    @click="textToast('自定义距离')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -256,7 +288,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Loading带透明罩" is-link @click="textToast('加载中')"></nut-cell>
+  <nut-cell
+    title="Loading带透明罩"
+    is-link
+    @click="textToast('加载中')"
+  ></nut-cell>
 </template>
 
 <script>

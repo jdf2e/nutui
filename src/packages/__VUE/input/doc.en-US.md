@@ -24,7 +24,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.text" label="Text" placeholder="Text" />
+  <nut-input
+    v-model="state.text"
+    label="Text"
+    placeholder="Text"
+  />
 </template>
 
 <script lang="ts">
@@ -50,11 +54,35 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input label="Text" placeholder="Text" v-model="state.text" />
-  <nut-input label="Password" placeholder="Password" v-model="state.password" type="password" />
-  <nut-input label="Number" placeholder="Number" v-model="state.number" type="number" />
-  <nut-input label="Digit" placeholder="Digit" v-model="state.digit" type="digit" />
-  <nut-input label="Tel" placeholder="Tel" v-model="state.tel" type="tel" />
+  <nut-input
+    label="Text"
+    placeholder="Text"
+    v-model="state.text"
+  />
+  <nut-input
+    label="Password"
+    placeholder="Password"
+    v-model="state.password"
+    type="password"
+  />
+  <nut-input
+    label="Number"
+    placeholder="Number"
+    v-model="state.number"
+    type="number"
+  />
+  <nut-input
+    label="Digit"
+    placeholder="Digit"
+    v-model="state.digit"
+    type="digit"
+  />
+  <nut-input
+    label="Tel"
+    placeholder="Tel"
+    v-model="state.tel"
+    type="tel"
+  />
 </template>
 
 <script lang="ts">
@@ -84,8 +112,18 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input label="Text" placeholder="Readonly" v-model="state.readonly" readonly />
-  <nut-input label="Text" placeholder="Disabled" v-model="state.disabled" disabled />
+  <nut-input
+    label="Text"
+    placeholder="Readonly"
+    v-model="state.readonly"
+    readonly
+  />
+  <nut-input
+    label="Text"
+    placeholder="Disabled"
+    v-model="state.disabled"
+    disabled
+  />
 </template>
 
 <script lang="ts">
@@ -114,8 +152,20 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.showIcon" label="Text" placeholder="Show Icon" left-icon="dongdong" right-icon="ask2" />
-  <nut-input v-model="state.clear" label="Text" placeholder="Show Clear Icon" clearable clearSize="14" />
+  <nut-input
+    v-model="state.showIcon"
+    label="Text"
+    placeholder="Show Icon"
+    left-icon="dongdong"
+    right-icon="ask2"
+  />
+  <nut-input
+    v-model="state.clear"
+    label="Text"
+    placeholder="Show Clear Icon"
+    clearable
+    clearSize="14"
+  />
 </template>
 
 <script lang="ts">
@@ -142,9 +192,24 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.required" label="Text" placeholder="Required" required />
-  <nut-input v-model="state.error1" label="Text" placeholder="Error" error />
-  <nut-input v-model="state.error2" label="Text" placeholder="Error Message" error-message="Error Message" />
+  <nut-input
+    v-model="state.required"
+    label="Text"
+    placeholder="Required"
+    required
+  />
+  <nut-input
+    v-model="state.error1"
+    label="Text"
+    placeholder="Error"
+    error
+  />
+  <nut-input
+    v-model="state.error2"
+    label="Text"
+    placeholder="Error Message"
+    error-message="Error Message"
+  />
 </template>
 
 <script lang="ts">
@@ -172,9 +237,19 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.buttonVal" label="Code" placeholder="Please enter code" clearable center>
+  <nut-input
+    v-model="state.buttonVal"
+    label="Code"
+    placeholder="Please enter code"
+    clearable
+    center
+  >
     <template #button>
-      <nut-button size="small" type="primary">Send</nut-button>
+      <nut-button
+        size="small"
+        type="primary"
+        >Send</nut-button
+      >
     </template>
   </nut-input>
 </template>
@@ -202,7 +277,12 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.format1" label="Text" placeholder="Format On Change" :formatter="formatter" />
+  <nut-input
+    v-model="state.format1"
+    label="Text"
+    placeholder="Format On Change"
+    :formatter="formatter"
+  />
   <nut-input
     v-model="state.format2"
     label="Text"
@@ -272,8 +352,18 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.align1" label="Text" label-align="right" placeholder="Label Align" />
-  <nut-input v-model="state.align2" label="Text" input-align="right" placeholder="Input Align" />
+  <nut-input
+    v-model="state.align1"
+    label="Text"
+    label-align="right"
+    placeholder="Label Align"
+  />
+  <nut-input
+    v-model="state.align2"
+    label="Text"
+    input-align="right"
+    placeholder="Input Align"
+  />
 </template>
 
 <script lang="ts">
@@ -300,8 +390,16 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ```html
 <template>
-  <nut-input v-model="state.noBorder1" :border="false" label="No Border" />
-  <nut-input v-model="state.noBorder2" :border="false" label="No Border" />
+  <nut-input
+    v-model="state.noBorder1"
+    :border="false"
+    label="No Border"
+  />
+  <nut-input
+    v-model="state.noBorder2"
+    :border="false"
+    label="No Border"
+  />
 </template>
 
 <script lang="ts">

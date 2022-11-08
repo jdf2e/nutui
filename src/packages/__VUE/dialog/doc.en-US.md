@@ -25,13 +25,34 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell-group title="Function Use">
-    <nut-cell title="Basic Usage" @click="baseClick"></nut-cell>
-    <nut-cell title="Transparent Dialog" @click="transparentClick"></nut-cell>
-    <nut-cell title="Use html" @click="htmlClick"></nut-cell>
-    <nut-cell title="Before Close" @click="beforeCloseClick"></nut-cell>
-    <nut-cell title="No Title" @click="noTitleClick"></nut-cell>
-    <nut-cell title="Tips Dialog" @click="tipsClick"></nut-cell>
-    <nut-cell title="Bottom button vertical use" @click="verticalClick"></nut-cell>
+    <nut-cell
+      title="Basic Usage"
+      @click="baseClick"
+    ></nut-cell>
+    <nut-cell
+      title="Transparent Dialog"
+      @click="transparentClick"
+    ></nut-cell>
+    <nut-cell
+      title="Use html"
+      @click="htmlClick"
+    ></nut-cell>
+    <nut-cell
+      title="Before Close"
+      @click="beforeCloseClick"
+    ></nut-cell>
+    <nut-cell
+      title="No Title"
+      @click="noTitleClick"
+    ></nut-cell>
+    <nut-cell
+      title="Tips Dialog"
+      @click="tipsClick"
+    ></nut-cell>
+    <nut-cell
+      title="Bottom button vertical use"
+      @click="verticalClick"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 
@@ -131,7 +152,10 @@ app.use(OverLay);
 ### Teleport use, mount to the specified element node
 
 ```html
-<nut-dialog teleport="#app" ... />
+<nut-dialog
+  teleport="#app"
+  ...
+/>
 ```
 
 ```javascript
@@ -170,7 +194,10 @@ export default {
 ```html
 <template>
   <nut-cell-group title="Template use">
-    <nut-cell title="Template use" @click="componentClick"></nut-cell>
+    <nut-cell
+      title="Template use"
+      @click="componentClick"
+    ></nut-cell>
     <nut-dialog
       teleport="#app"
       title="Template use"
@@ -178,7 +205,10 @@ export default {
       v-model:visible="visible"
     >
     </nut-dialog>
-    <nut-cell title="Bottom button vertical use" @click="componentVerticalClick"></nut-cell>
+    <nut-cell
+      title="Bottom button vertical use"
+      @click="componentVerticalClick"
+    ></nut-cell>
     <nut-dialog
       footer-direction="vertical"
       teleport="#app"

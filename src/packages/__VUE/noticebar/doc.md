@@ -65,12 +65,21 @@ app.use(NoticeBar);
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar
+    :closeMode="true"
+    :background="`rgba(251, 248, 220, 1)`"
+    :color="`#D9500B`"
+  >
     NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
     H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
 
-  <nut-noticebar :closeMode="true" right-icon="circle-close" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar
+    :closeMode="true"
+    right-icon="circle-close"
+    :background="`rgba(251, 248, 220, 1)`"
+    :color="`#D9500B`"
+  >
     NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
     H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
@@ -200,7 +209,13 @@ app.use(NoticeBar);
     :background="`rgba(251, 248, 220, 1)`"
     :color="`#D9500B`"
   >
-    <div class="custom-item" :data-index="index" v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
+    <div
+      class="custom-item"
+      :data-index="index"
+      v-for="(item,index) in horseLamp3"
+      :key="index"
+      >{{item}}</div
+    >
   </nut-noticebar>
 </template>
 
@@ -234,7 +249,10 @@ app.use(NoticeBar);
     :color="`#D9500B`"
   >
     <template v-slot:rightIcon>
-      <nut-icon name="fabulous" color="#f0250f"></nut-icon>
+      <nut-icon
+        name="fabulous"
+        color="#f0250f"
+      ></nut-icon>
     </template>
   </nut-noticebar>
 </template>

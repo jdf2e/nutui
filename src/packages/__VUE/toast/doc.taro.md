@@ -26,7 +26,11 @@ app.use(Toast);
   @closed="page.methods.onClosed"
   :cover="page.state.cover"
 />
-<nut-cell title="Text 文字提示" is-link @click="page.methods.openToast('text','网络失败，请稍后再试~')"></nut-cell>
+<nut-cell
+  title="Text 文字提示"
+  is-link
+  @click="page.methods.openToast('text','网络失败，请稍后再试~')"
+></nut-cell>
 <nut-cell
   title="Title 标题文字"
   is-link
@@ -37,11 +41,31 @@ app.use(Toast);
   is-link
   @click="page.methods.openToast('text', '自定义位置',false,'','20%',false)"
 ></nut-cell>
-<nut-cell title="Success 成功提示" is-link @click="page.methods.openToast('success','成功提示')"></nut-cell>
-<nut-cell title="Error 失败提示" is-link @click="page.methods.openToast('fail','失败提示')"></nut-cell>
-<nut-cell title="Warning 警告提示" is-link @click="page.methods.openToast('warn','警告提示')"></nut-cell>
-<nut-cell title="Loading 加载提示" is-link @click="page.methods.openToast('loading','加载中')"></nut-cell>
-<nut-cell title="Loading 带白色背景遮罩" is-link @click="page.methods.openToast('loading','加载中',true)"></nut-cell>
+<nut-cell
+  title="Success 成功提示"
+  is-link
+  @click="page.methods.openToast('success','成功提示')"
+></nut-cell>
+<nut-cell
+  title="Error 失败提示"
+  is-link
+  @click="page.methods.openToast('fail','失败提示')"
+></nut-cell>
+<nut-cell
+  title="Warning 警告提示"
+  is-link
+  @click="page.methods.openToast('warn','警告提示')"
+></nut-cell>
+<nut-cell
+  title="Loading 加载提示"
+  is-link
+  @click="page.methods.openToast('loading','加载中')"
+></nut-cell>
+<nut-cell
+  title="Loading 带白色背景遮罩"
+  is-link
+  @click="page.methods.openToast('loading','加载中',true)"
+></nut-cell>
 ```
 
 ```javascript

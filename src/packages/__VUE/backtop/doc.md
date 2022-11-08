@@ -21,7 +21,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <div class="demo" id="elId">
+  <div
+    class="demo"
+    id="elId"
+  >
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -92,7 +95,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <div class="demo" id="elId">
+  <div
+    class="demo"
+    id="elId"
+  >
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -149,7 +155,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <div class="demo" id="elId">
+  <div
+    class="demo"
+    id="elId"
+  >
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -174,7 +183,12 @@ app.use(Icon);
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" :distance="100" :bottom="90"><div>无</div></nut-backtop>
+    <nut-backtop
+      @click="handleClick"
+      :distance="100"
+      :bottom="90"
+      ><div>无</div></nut-backtop
+    >
   </div>
 </template>
 

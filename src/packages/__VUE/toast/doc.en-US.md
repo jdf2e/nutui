@@ -41,7 +41,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Text" is-link @click="textToast('text message~')"></nut-cell>
+  <nut-cell
+    title="Text"
+    is-link
+    @click="textToast('text message~')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -67,7 +71,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Title" is-link @click="textToast('title message~')"></nut-cell>
+  <nut-cell
+    title="Toast Title"
+    is-link
+    @click="textToast('title message~')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -95,7 +103,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Success" is-link @click="textToast('Success')"></nut-cell>
+  <nut-cell
+    title="Toast Success"
+    is-link
+    @click="textToast('Success')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -121,7 +133,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Fail" is-link @click="textToast('Fail')"></nut-cell>
+  <nut-cell
+    title="Toast Fail"
+    is-link
+    @click="textToast('Fail')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -147,7 +163,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Warn" is-link @click="textToast('Warn')"></nut-cell>
+  <nut-cell
+    title="Toast Warn"
+    is-link
+    @click="textToast('Warn')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -173,7 +193,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Loading" is-link @click="textToast('Loading')"></nut-cell>
+  <nut-cell
+    title="Toast Loading"
+    is-link
+    @click="textToast('Loading')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -199,7 +223,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Toast Not Disappear" is-link @click="textToast('Toast Not Disappear')"></nut-cell>
+  <nut-cell
+    title="Toast Not Disappear"
+    is-link
+    @click="textToast('Toast Not Disappear')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -227,7 +255,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Custom Bottom Height" is-link @click="textToast('Custom Bottom Height')"></nut-cell>
+  <nut-cell
+    title="Custom Bottom Height"
+    is-link
+    @click="textToast('Custom Bottom Height')"
+  ></nut-cell>
 </template>
 
 <script>
@@ -256,7 +288,11 @@ app.use(Toast);
 
 ```html
 <template>
-  <nut-cell title="Loading with transparent cover" is-link @click="textToast('Loading')"></nut-cell>
+  <nut-cell
+    title="Loading with transparent cover"
+    is-link
+    @click="textToast('Loading')"
+  ></nut-cell>
 </template>
 
 <script>

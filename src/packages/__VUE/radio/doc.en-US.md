@@ -31,22 +31,46 @@ Bind the **label** of the current option through **v-model**. And it must be use
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
         <nut-radio label="1">Option 1</nut-radio>
-        <nut-radio disabled label="2">Option 2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >Option 2</nut-radio
+        >
         <nut-radio label="3">Option 3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" text-position="left">
+      <nut-radiogroup
+        v-model="radioVal"
+        text-position="left"
+      >
         <nut-radio label="1">Option 1</nut-radio>
-        <nut-radio disabled label="2">Option 2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >Option 2</nut-radio
+        >
         <nut-radio label="3">Option 3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio shape="button" label="1">Option 1</nut-radio>
-        <nut-radio disabled shape="button" label="2">Option 2</nut-radio>
-        <nut-radio shape="button" label="3">Option 3</nut-radio>
+        <nut-radio
+          shape="button"
+          label="1"
+          >Option 1</nut-radio
+        >
+        <nut-radio
+          disabled
+          shape="button"
+          label="2"
+          >Option 2</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="3"
+          >Option 3</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -75,24 +99,46 @@ Bind the **label** of the current option through **v-model**. And it must be use
 <template>
   <nut-cell-group title="Horizontal use">
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" direction="horizontal">
+      <nut-radiogroup
+        v-model="radioVal"
+        direction="horizontal"
+      >
         <nut-radio label="1">Option 1</nut-radio>
         <nut-radio label="2">Option 2</nut-radio>
         <nut-radio label="3">Option 3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
+      <nut-radiogroup
+        v-model="radioVal"
+        text-position="left"
+        direction="horizontal"
+      >
         <nut-radio label="1">Option 1</nut-radio>
         <nut-radio label="2">Option 2</nut-radio>
         <nut-radio label="3">Option 3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" direction="horizontal">
-        <nut-radio shape="button" label="1">Option 1</nut-radio>
-        <nut-radio shape="button" label="2">Option 2</nut-radio>
-        <nut-radio shape="button" label="3">Option 3</nut-radio>
+      <nut-radiogroup
+        v-model="radioVal"
+        direction="horizontal"
+      >
+        <nut-radio
+          shape="button"
+          label="1"
+          >Option 1</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="2"
+          >Option 2</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="3"
+          >Option 3</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -122,8 +168,16 @@ Bind the **label** of the current option through **v-model**. And it must be use
   <nut-cell-group title="Custom size">
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio label="1" icon-size="12">Custom size 12</nut-radio>
-        <nut-radio label="2" icon-size="12">Custom size 12</nut-radio>
+        <nut-radio
+          label="1"
+          icon-size="12"
+          >Custom size 12</nut-radio
+        >
+        <nut-radio
+          label="2"
+          icon-size="12"
+          >Custom size 12</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -155,8 +209,18 @@ It is suggested to modify `icon-name` and `icon-active-name`
   <nut-cell-group title="Radio Custom icon">
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-radio>
-        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-radio>
+        <nut-radio
+          label="1"
+          icon-name="checklist"
+          icon-active-name="checklist"
+          >Custom icon</nut-radio
+        >
+        <nut-radio
+          label="2"
+          icon-name="checklist"
+          icon-active-name="checklist"
+          >Custom icon</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -185,12 +249,18 @@ It is suggested to modify `icon-name` and `icon-active-name`
 <template>
   <nut-cell-group title="Trigger event">
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" @change="handleChange">
+      <nut-radiogroup
+        v-model="radioVal"
+        @change="handleChange"
+      >
         <nut-radio label="1">Trigger event</nut-radio>
         <nut-radio label="2">Trigger event</nut-radio>
       </nut-radiogroup>
     </nut-cell>
-    <nut-cell title="Currently selected value" :desc="radioVal"></nut-cell>
+    <nut-cell
+      title="Currently selected value"
+      :desc="radioVal"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 

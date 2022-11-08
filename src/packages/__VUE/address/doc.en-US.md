@@ -25,7 +25,12 @@ app.use(Elevator);
 
 ```html
 <template>
-  <nut-cell title="Choose Address" :desc="text" is-link @click="showAddress"></nut-cell>
+  <nut-cell
+    title="Choose Address"
+    :desc="text"
+    is-link
+    @click="showAddress"
+  ></nut-cell>
   <nut-address
     v-model:visible="showPopup"
     :province="province"
@@ -104,7 +109,12 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="text" is-link @click="showAddress"></nut-cell>
+  <nut-cell
+    title="Choose City"
+    :desc="text"
+    is-link
+    @click="showAddress"
+  ></nut-cell>
   <nut-address
     v-model="value"
     v-model:visible="showPopup"
@@ -186,7 +196,13 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ```html
 <template>
-  <nut-cell title="Choose Address" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
+  <nut-cell
+    title="Choose Address"
+    :desc="text"
+    type="custom2"
+    is-link
+    @click="showAddress"
+  ></nut-cell>
   <nut-address
     v-model:visible="showPopup"
     :province="province"
@@ -266,7 +282,12 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ```html
 <template>
-  <nut-cell title="Choose Address" :desc="text" is-link @click="showAddressExist"></nut-cell>
+  <nut-cell
+    title="Choose Address"
+    :desc="text"
+    is-link
+    @click="showAddressExist"
+  ></nut-cell>
   <nut-address
     v-model:visible="showPopupExist"
     type="exist"
@@ -360,7 +381,12 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ```html
 <template>
-  <nut-cell title="选择地址" :desc="text" is-link @click="showCustomImg"></nut-cell>
+  <nut-cell
+    title="选择地址"
+    :desc="text"
+    is-link
+    @click="showCustomImg"
+  ></nut-cell>
   <nut-address
     v-model:visible="showPopupCustomImg"
     type="exist"
@@ -463,7 +489,12 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ```html
 <template>
-  <nut-cell title="Choose Address" :desc="text" is-link @click="showAddressOther"></nut-cell>
+  <nut-cell
+    title="Choose Address"
+    :desc="text"
+    is-link
+    @click="showAddressOther"
+  ></nut-cell>
   <nut-address
     v-model:visible="showPopupOther"
     type="exist"

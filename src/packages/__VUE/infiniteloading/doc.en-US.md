@@ -20,9 +20,23 @@ app.use(InfiniteLoading);
 
 ```html
 <template>
-  <ul class="infiniteUl" id="scroll" style="height: 300px;">
-    <nut-infiniteloading containerId="scroll" :use-window="false" :has-more="hasMore" @load-more="loadMore">
-      <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</li>
+  <ul
+    class="infiniteUl"
+    id="scroll"
+    style="height: 300px;"
+  >
+    <nut-infiniteloading
+      containerId="scroll"
+      :use-window="false"
+      :has-more="hasMore"
+      @load-more="loadMore"
+    >
+      <li
+        class="infiniteLi"
+        v-for="(item, index) in defultList"
+        :key="index"
+        >{{item}}</li
+      >
     </nut-infiniteloading>
   </ul>
 </template>
@@ -89,7 +103,11 @@ app.use(InfiniteLoading);
 
 ```html
 <template>
-  <ul class="infiniteUl" id="refreshScroll" style="height: 300px;">
+  <ul
+    class="infiniteUl"
+    id="refreshScroll"
+    style="height: 300px;"
+  >
     <nut-infiniteloading
       pull-icon="JD"
       container-id="refreshScroll"
@@ -99,7 +117,12 @@ app.use(InfiniteLoading);
       @load-more="refreshLoadMore"
       @refresh="refresh"
     >
-      <li class="infiniteLi" v-for="(item, index) in refreshList" :key="index">{{ item }}</li>
+      <li
+        class="infiniteLi"
+        v-for="(item, index) in refreshList"
+        :key="index"
+        >{{ item }}</li
+      >
     </nut-infiniteloading>
   </ul>
 </template>
@@ -175,7 +198,10 @@ app.use(InfiniteLoading);
 
 ```html
 <template>
-  <ul class="infiniteUl" id="customScroll">
+  <ul
+    class="infiniteUl"
+    id="customScroll"
+  >
     <nut-infiniteloading
       load-txt="loading"
       load-more-txt="No more"
@@ -184,7 +210,12 @@ app.use(InfiniteLoading);
       :has-more="customHasMore"
       @load-more="customLoadMore"
     >
-      <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
+      <li
+        class="infiniteLi"
+        v-for="(item, index) in customList"
+        :key="index"
+        >{{ item }}</li
+      >
     </nut-infiniteloading>
   </ul>
 </template>

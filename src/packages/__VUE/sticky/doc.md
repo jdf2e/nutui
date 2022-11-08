@@ -67,8 +67,15 @@ app.use(Sticky);
 
 ```html
 <template>
-  <div class="sticky-container" ref="container">
-    <nut-sticky top="100" :container="container" z-index="1">
+  <div
+    class="sticky-container"
+    ref="container"
+  >
+    <nut-sticky
+      top="100"
+      :container="container"
+      z-index="1"
+    >
       <nut-button type="info">指定容器</nut-button>
     </nut-sticky>
   </div>
@@ -110,7 +117,10 @@ app.use(Sticky);
 ```html
 <template>
   <nut-cell>
-    <nut-sticky bottom="100" position="bottom">
+    <nut-sticky
+      bottom="100"
+      position="bottom"
+    >
       <nut-button type="primary">吸底距离100px</nut-button>
     </nut-sticky>
   </nut-cell>

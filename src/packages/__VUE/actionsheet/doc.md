@@ -27,12 +27,20 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>基础用法</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
     <!-- demo 基础用法 -->
-    <nut-actionsheet v-model:visible="state.isVisible" :menu-items="menuItems" @choose="chooseItem"></nut-actionsheet>
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      @choose="chooseItem"
+    ></nut-actionsheet>
   </div>
 </template>
 
@@ -81,7 +89,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>展示取消按钮</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -140,7 +152,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>展示描述信息</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -201,7 +217,11 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>选项状态</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
@@ -259,10 +279,17 @@ app.use(OverLay);
 ```html
 <template>
   <div>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
+    <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
       <span><label>自定义内容</label></span>
     </nut-cell>
-    <nut-actionsheet v-model:visible="state.isVisible" title="标题">
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      title="标题"
+    >
       <div class="custom-content">自定义内容</div>
     </nut-actionsheet>
   </div>

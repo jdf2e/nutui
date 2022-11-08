@@ -24,7 +24,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="基础用法" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="基础用法"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -72,7 +76,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="显示按钮组"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -129,7 +137,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="显示按钮组"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -183,7 +195,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="显示按钮组"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -235,7 +251,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="显示按钮组"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"

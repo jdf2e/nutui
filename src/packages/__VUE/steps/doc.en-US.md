@@ -24,7 +24,10 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps :current="current1" @click-step="handleClickStep">
+  <nut-steps
+    :current="current1"
+    @click-step="handleClickStep"
+  >
     <nut-step title="Step One">
       1
       <template v-slot:title>Step One</template>
@@ -63,9 +66,21 @@ app.use(Step);
 ```html
 <template>
   <nut-steps :current="current2">
-    <nut-step title="Completed" content="Step description">1</nut-step>
-    <nut-step title="In progress" content="Step description">2</nut-step>
-    <nut-step title="Not started" content="Step description">3</nut-step>
+    <nut-step
+      title="Completed"
+      content="Step description"
+      >1</nut-step
+    >
+    <nut-step
+      title="In progress"
+      content="Step description"
+      >2</nut-step
+    >
+    <nut-step
+      title="Not started"
+      content="Step description"
+      >3</nut-step
+    >
   </nut-steps>
 </template>
 
@@ -93,9 +108,21 @@ app.use(Step);
 ```html
 <template>
   <nut-steps current="1">
-    <nut-step title="Completed" icon="service">1</nut-step>
-    <nut-step title="In progress" icon="people">2</nut-step>
-    <nut-step title="Not started" icon="location2">3</nut-step>
+    <nut-step
+      title="Completed"
+      icon="service"
+      >1</nut-step
+    >
+    <nut-step
+      title="In progress"
+      icon="people"
+      >2</nut-step
+    >
+    <nut-step
+      title="Not started"
+      icon="location2"
+      >3</nut-step
+    >
   </nut-steps>
 </template>
 ```
@@ -108,9 +135,20 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps direction="vertical" current="2">
-    <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>
-    <nut-step title="In progress" content="Your order is in transit">2</nut-step>
+  <nut-steps
+    direction="vertical"
+    current="2"
+  >
+    <nut-step
+      title="Completed"
+      content="Your order has been packaged and the goods have been delivered"
+      >1</nut-step
+    >
+    <nut-step
+      title="In progress"
+      content="Your order is in transit"
+      >2</nut-step
+    >
     <nut-step
       title="Not started"
       content="The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone"
@@ -128,9 +166,21 @@ app.use(Step);
 
 ```html
 <template>
-  <nut-steps direction="vertical" progress-dot current="2">
-    <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>
-    <nut-step title="In progress" content="Your order is in transit">2</nut-step>
+  <nut-steps
+    direction="vertical"
+    progress-dot
+    current="2"
+  >
+    <nut-step
+      title="Completed"
+      content="Your order has been packaged and the goods have been delivered"
+      >1</nut-step
+    >
+    <nut-step
+      title="In progress"
+      content="Your order is in transit"
+      >2</nut-step
+    >
     <nut-step title="Not started">
       3
       <template v-slot:content>

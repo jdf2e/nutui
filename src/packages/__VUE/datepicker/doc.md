@@ -26,7 +26,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="显示中文" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="显示中文"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     v-model:visible="show"
@@ -73,7 +77,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="限制开始结束时间" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="限制开始结束时间"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     type="month-day"
@@ -116,7 +124,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期时间选择" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="日期时间选择"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="日期时间选择"
@@ -161,7 +173,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="日期选择"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="时间选择"
@@ -206,7 +222,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="日期选择"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="时间选择"
@@ -216,7 +236,12 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
     :formatter="formatter"
     @confirm="confirm"
     v-model:visible="show"
-    ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-datepicker
+    ><nut-button
+      block
+      type="primary"
+      @click="alwaysFun"
+      >永远有效</nut-button
+    ></nut-datepicker
   >
 </template>
 
@@ -285,7 +310,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="日期选择"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     type="time"
@@ -329,7 +358,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="日期选择"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="时间选择"

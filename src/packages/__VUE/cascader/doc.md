@@ -380,7 +380,10 @@ app.use(TabPane);
 ```html
 <template>
   <nut-form>
-    <nut-form-item label="选择地址" @click="state.visible = true">
+    <nut-form-item
+      label="选择地址"
+      @click="state.visible = true"
+    >
       <input
         class="nut-input-text"
         @click="state.visible = true"

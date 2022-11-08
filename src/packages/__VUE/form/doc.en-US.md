@@ -28,19 +28,38 @@ app.use(CellGroup);
 <template>
   <nut-form>
     <nut-form-item label="Name">
-      <input class="nut-input-text" placeholder="Please enter your name" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="Please enter your name"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="Age">
-      <input class="nut-input-text" placeholder="Please enter age" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="Please enter age"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="Tel">
-      <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="请输入联系电话"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="Address">
-      <input class="nut-input-text" placeholder="Please enter address" type="text" />
+      <input
+        class="nut-input-text"
+        placeholder="Please enter address"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item label="备注">
-      <nut-textarea placeholder="请输入备注" type="text" />
+      <nut-textarea
+        placeholder="请输入备注"
+        type="text"
+      />
     </nut-form-item>
   </nut-form>
 </template>
@@ -54,9 +73,22 @@ app.use(CellGroup);
 
 ```html
 <template>
-  <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
-    <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
-      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="Please enter your name" type="text" />
+  <nut-form
+    :model-value="dynamicForm.state"
+    ref="dynamicRefForm"
+  >
+    <nut-form-item
+      label="Name"
+      prop="name"
+      required
+      :rules="[{ required: true, message: 'Please enter your name' }]"
+    >
+      <input
+        class="nut-input-text"
+        v-model="dynamicForm.state.name"
+        placeholder="Please enter your name"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item
       :label="'Tel'+index"
@@ -66,15 +98,38 @@ app.use(CellGroup);
       :key="item.key"
       v-for="(item,index) in dynamicForm.state.tels"
     >
-      <input class="nut-input-text" v-model="item.value" :placeholder="'Please enter tel'+index" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="item.value"
+        :placeholder="'Please enter tel'+index"
+        type="text"
+      />
     </nut-form-item>
     <nut-cell>
-      <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.add">Add</nut-button>
-      <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.remove">Remove</nut-button>
-      <nut-button type="primary" style="margin-right: 10px;" size="small" @click="dynamicForm.methods.submit"
+      <nut-button
+        size="small"
+        style="margin-right: 10px;"
+        @click="dynamicForm.methods.add"
+        >Add</nut-button
+      >
+      <nut-button
+        size="small"
+        style="margin-right: 10px;"
+        @click="dynamicForm.methods.remove"
+        >Remove</nut-button
+      >
+      <nut-button
+        type="primary"
+        style="margin-right: 10px;"
+        size="small"
+        @click="dynamicForm.methods.submit"
         >Submit</nut-button
       >
-      <nut-button size="small" @click="dynamicForm.methods.reset">Reset prompt status</nut-button>
+      <nut-button
+        size="small"
+        @click="dynamicForm.methods.reset"
+        >Reset prompt status</nut-button
+      >
     </nut-cell>
   </nut-form>
 </template>
@@ -140,7 +195,12 @@ app.use(CellGroup);
           }]}"
     ref="ruleForm"
   >
-    <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
+    <nut-form-item
+      label="Name"
+      prop="name"
+      required
+      :rules="[{ required: true, message: 'Please enter your name' }]"
+    >
       <input
         class="nut-input-text"
         @blur="customBlurValidate('name')"
@@ -176,7 +236,12 @@ app.use(CellGroup);
       { validator: asyncValidator, message: 'Tel format is incorrect' }
     ]"
     >
-      <input class="nut-input-text" v-model="formData.tel" placeholder="Async check tel format" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="formData.tel"
+        placeholder="Async check tel format"
+        type="text"
+      />
     </nut-form-item>
     <nut-form-item
       label="Address"
@@ -184,11 +249,26 @@ app.use(CellGroup);
       required
       :rules="[{ required: true, message: 'Please enter address' }]"
     >
-      <input class="nut-input-text" v-model="formData.address" placeholder="Please enter address" type="text" />
+      <input
+        class="nut-input-text"
+        v-model="formData.address"
+        placeholder="Please enter address"
+        type="text"
+      />
     </nut-form-item>
     <nut-cell>
-      <nut-button type="primary" size="small" style="margin-right: 10px;" @click="submit">Submit</nut-button>
-      <nut-button size="small" @click="reset">Reset prompt status</nut-button>
+      <nut-button
+        type="primary"
+        size="small"
+        style="margin-right: 10px;"
+        @click="submit"
+        >Submit</nut-button
+      >
+      <nut-button
+        size="small"
+        @click="reset"
+        >Reset prompt status</nut-button
+      >
     </nut-cell>
   </nut-form>
 </template>
@@ -279,9 +359,16 @@ app.use(CellGroup);
       <nut-checkbox v-model="formData2.checkbox">checkbox</nut-checkbox>
     </nut-form-item>
     <nut-form-item label="radio">
-      <nut-radiogroup direction="horizontal" v-model="formData2.radio">
+      <nut-radiogroup
+        direction="horizontal"
+        v-model="formData2.radio"
+      >
         <nut-radio label="1">Option 1</nut-radio>
-        <nut-radio disabled label="2">Option 2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >Option 2</nut-radio
+        >
         <nut-radio label="3">Option 3</nut-radio>
       </nut-radiogroup>
     </nut-form-item>
@@ -292,10 +379,18 @@ app.use(CellGroup);
       <nut-inputnumber v-model="formData2.number" />
     </nut-form-item>
     <nut-form-item label="Range">
-      <nut-range hidden-tag v-model="formData2.range"></nut-range>
+      <nut-range
+        hidden-tag
+        v-model="formData2.range"
+      ></nut-range>
     </nut-form-item>
     <nut-form-item label="Upload file">
-      <nut-uploader url="http://apiurl" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+      <nut-uploader
+        url="http://apiurl"
+        v-model:file-list="formData2.defaultFileList"
+        maximum="3"
+        multiple
+      >
       </nut-uploader>
     </nut-form-item>
     <nut-form-item label="Address">

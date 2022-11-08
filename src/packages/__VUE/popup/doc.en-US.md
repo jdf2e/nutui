@@ -26,8 +26,16 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Show pop-up layer" is-link @click="state.showBasic = true"></nut-cell>
-  <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="state.showBasic" :z-index="100"
+  <nut-cell
+    title="Show pop-up layer"
+    is-link
+    @click="state.showBasic = true"
+  ></nut-cell>
+  <nut-popup
+    pop-class="popclass"
+    :style="{ padding: '30px 50px' }"
+    v-model:visible="state.showBasic"
+    :z-index="100"
     >text</nut-popup
   >
 </template>
@@ -55,14 +63,46 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Top pop-up" is-link @click="state.showTop = true"></nut-cell>
-  <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="state.showTop"></nut-popup>
-  <nut-cell title="Bottom pop-up" is-link @click="state.showBottom = true"></nut-cell>
-  <nut-popup position="bottom" :style="{ height: '20%' }" v-model:visible="state.showBottom"></nut-popup>
-  <nut-cell title="Left pop-up" is-link @click="state.showLeft = true"></nut-cell>
-  <nut-popup position="left" :style="{ width: '20%', height: '100%' }" v-model:visible="state.showLeft"></nut-popup>
-  <nut-cell title="Right pop-up" is-link @click="state.showRight = true"></nut-cell>
-  <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="state.showRight"></nut-popup>
+  <nut-cell
+    title="Top pop-up"
+    is-link
+    @click="state.showTop = true"
+  ></nut-cell>
+  <nut-popup
+    position="top"
+    :style="{ height: '20%' }"
+    v-model:visible="state.showTop"
+  ></nut-popup>
+  <nut-cell
+    title="Bottom pop-up"
+    is-link
+    @click="state.showBottom = true"
+  ></nut-cell>
+  <nut-popup
+    position="bottom"
+    :style="{ height: '20%' }"
+    v-model:visible="state.showBottom"
+  ></nut-popup>
+  <nut-cell
+    title="Left pop-up"
+    is-link
+    @click="state.showLeft = true"
+  ></nut-cell>
+  <nut-popup
+    position="left"
+    :style="{ width: '20%', height: '100%' }"
+    v-model:visible="state.showLeft"
+  ></nut-popup>
+  <nut-cell
+    title="Right pop-up"
+    is-link
+    @click="state.showRight = true"
+  ></nut-cell>
+  <nut-popup
+    position="right"
+    :style="{ width: '20%', height: '100%' }"
+    v-model:visible="state.showRight"
+  ></nut-popup>
 </template>
 
 <script lang="ts">
@@ -91,9 +131,22 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Close icon" is-link @click="state.showIcon = true"></nut-cell>
-  <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="state.showIcon"></nut-popup>
-  <nut-cell title="Icon location" is-link @click="state.showIconPosition = true"></nut-cell>
+  <nut-cell
+    title="Close icon"
+    is-link
+    @click="state.showIcon = true"
+  ></nut-cell>
+  <nut-popup
+    position="bottom"
+    closeable
+    :style="{ height: '20%' }"
+    v-model:visible="state.showIcon"
+  ></nut-popup>
+  <nut-cell
+    title="Icon location"
+    is-link
+    @click="state.showIconPosition = true"
+  ></nut-cell>
   <nut-popup
     position="bottom"
     closeable
@@ -101,7 +154,11 @@ app.use(OverLay);
     :style="{ height: '20%' }"
     v-model:visible="state.showIconPosition"
   ></nut-popup>
-  <nut-cell title="Custom icon" is-link @click="state.showCloseIcon = true"></nut-cell>
+  <nut-cell
+    title="Custom icon"
+    is-link
+    @click="state.showCloseIcon = true"
+  ></nut-cell>
   <nut-popup
     position="bottom"
     closeable
@@ -137,8 +194,18 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Rounded pop-up" is-link @click="state.showRound = true"></nut-cell>
-  <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="state.showRound"></nut-popup>
+  <nut-cell
+    title="Rounded pop-up"
+    is-link
+    @click="state.showRound = true"
+  ></nut-cell>
+  <nut-popup
+    position="bottom"
+    closeable
+    round
+    :style="{ height: '30%' }"
+    v-model:visible="state.showRound"
+  ></nut-popup>
 </template>
 
 <script lang="ts">
@@ -164,8 +231,17 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Specify mount node" is-link @click="state.showTeleport = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="state.showTeleport">app</nut-popup>
+  <nut-cell
+    title="Specify mount node"
+    is-link
+    @click="state.showTeleport = true"
+  ></nut-cell>
+  <nut-popup
+    :style="{ padding: '30px 50px' }"
+    teleport="#app"
+    v-model:visible="state.showTeleport"
+    >app</nut-popup
+  >
 </template>
 
 <script lang="ts">
@@ -191,11 +267,22 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Multi stack" is-link @click="state.showPop1 = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop1">
+  <nut-cell
+    title="Multi stack"
+    is-link
+    @click="state.showPop1 = true"
+  ></nut-cell>
+  <nut-popup
+    :style="{ padding: '30px 50px' }"
+    v-model:visible="state.showPop1"
+  >
     <div @click="state.showPop2 = true">Click it</div>
   </nut-popup>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop2">text</nut-popup>
+  <nut-popup
+    :style="{ padding: '30px 50px' }"
+    v-model:visible="state.showPop2"
+    >text</nut-popup
+  >
 </template>
 
 <script lang="ts">

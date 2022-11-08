@@ -24,7 +24,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-fixednav :position="{ top:'70px' }" v-model:visible="visible" :nav-list="navList" />
+  <nut-fixednav
+    :position="{ top:'70px' }"
+    v-model:visible="visible"
+    :nav-list="navList"
+  />
 </template>
 
 <script lang="ts">
@@ -69,20 +73,37 @@ app.use(OverLay);
 ### Left effect
 
 ```html
-<nut-fixednav type="left" :position="{ top: '140px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixednav
+  type="left"
+  :position="{ top: '140px' }"
+  v-model:visible="visible"
+  :nav-list="navList"
+/>
 ```
 
 ### Unmask background
 
 ```html
-<nut-fixednav :overlay="false" :position="{ top: '210px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixednav
+  :overlay="false"
+  :position="{ top: '210px' }"
+  v-model:visible="visible"
+  :nav-list="navList"
+/>
 ```
 
 ### Support drag and drop with drag
 
 ```html
-<nut-drag direction="y" :style="{ right: '0px', bottom: '240px' }">
-  <nut-fixednav un-active-text="drag" v-model:visible="visible" :nav-list="navList" />
+<nut-drag
+  direction="y"
+  :style="{ right: '0px', bottom: '240px' }"
+>
+  <nut-fixednav
+    un-active-text="drag"
+    v-model:visible="visible"
+    :nav-list="navList"
+  />
 </nut-drag>
 ```
 
@@ -92,7 +113,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-fixednav :position="{ top: '280px' }" type="left" v-model:visible="myActive">
+  <nut-fixednav
+    :position="{ top: '280px' }"
+    type="left"
+    v-model:visible="myActive"
+  >
     <template v-slot:list>
       <ul class="nut-fixednav__list">
         <li class="nut-fixednav__list-item">1</li>
@@ -103,7 +128,11 @@ app.use(OverLay);
       </ul>
     </template>
     <template v-slot:btn>
-      <nut-icon name="retweet" color="#fff"> </nut-icon>
+      <nut-icon
+        name="retweet"
+        color="#fff"
+      >
+      </nut-icon>
       <span class="text">{{ myActive ? 'Open' : 'Close' }}</span>
     </template>
   </nut-fixednav>

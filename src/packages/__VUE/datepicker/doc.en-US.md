@@ -26,7 +26,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Show Chinese" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Show Chinese"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     v-model:visible="show"
@@ -71,7 +75,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Limit the start and end time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Limit the start and end time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     type="month-day"
@@ -112,7 +120,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Choose Time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="Choose Time"
@@ -157,7 +169,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Choose Time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="Choose Time"
@@ -200,7 +216,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Choose Time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="Choose Time"
@@ -210,7 +230,12 @@ app.use(OverLay);
     :formatter="formatter"
     @confirm="confirm"
     v-model:visible="show"
-    ><nut-button block type="primary" @click="alwaysFun">Forever</nut-button></nut-datepicker
+    ><nut-button
+      block
+      type="primary"
+      @click="alwaysFun"
+      >Forever</nut-button
+    ></nut-datepicker
   >
 </template>
 
@@ -279,7 +304,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Choose Time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     type="time"
@@ -321,7 +350,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-cell
+    title="Choose Time"
+    :desc="desc"
+    @click="show = true"
+  ></nut-cell>
   <nut-datepicker
     v-model="currentDate"
     title="Choose Time"

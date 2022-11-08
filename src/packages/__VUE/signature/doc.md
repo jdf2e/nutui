@@ -21,7 +21,10 @@ app.use(Signature);
 
 ```html
 <template>
-  <nut-signature @confirm="confirm" @clear="clear"></nut-signature>
+  <nut-signature
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
   <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
 </template>
 
@@ -56,7 +59,12 @@ app.use(Signature);
 
 ```html
 <template>
-  <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @confirm="confirm" @clear="clear"></nut-signature>
+  <nut-signature
+    :lineWidth="lineWidth"
+    :strokeStyle="strokeStyle"
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
   <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
 </template>
 

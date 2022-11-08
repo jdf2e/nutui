@@ -48,7 +48,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate allow-half v-model="value"></nut-rate>
+  <nut-rate
+    allow-half
+    v-model="value"
+  ></nut-rate>
 </template>
 
 <script lang="ts">
@@ -72,7 +75,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+  <nut-rate
+    checked-icon="heart-fill1"
+    unchecked-icon="heart"
+    v-model="value"
+  />
 </template>
 
 <script lang="ts">
@@ -96,7 +103,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate :count="6" v-model="value" />
+  <nut-rate
+    :count="6"
+    v-model="value"
+  />
 </template>
 
 <script lang="ts">
@@ -120,7 +130,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate active-color="#FFC800" v-model="value" />
+  <nut-rate
+    active-color="#FFC800"
+    v-model="value"
+  />
 </template>
 
 <script lang="ts">
@@ -144,7 +157,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate disabled v-model="value" />
+  <nut-rate
+    disabled
+    v-model="value"
+  />
 </template>
 
 <script lang="ts">
@@ -168,7 +184,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate v-model="value" readonly />
+  <nut-rate
+    v-model="value"
+    readonly
+  />
 </template>
 
 <script lang="ts">
@@ -192,7 +211,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate v-model="value" @change="onChange" />
+  <nut-rate
+    v-model="value"
+    @change="onChange"
+  />
 </template>
 
 <script lang="ts">
@@ -221,7 +243,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-rate v-model="value" icon-size="35" />
+  <nut-rate
+    v-model="value"
+    icon-size="35"
+  />
 </template>
 
 <script lang="ts">

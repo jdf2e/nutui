@@ -44,8 +44,16 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button plain type="primary">朴素按钮</nut-button>
-  <nut-button plain type="info">朴素按钮</nut-button>
+  <nut-button
+    plain
+    type="primary"
+    >朴素按钮</nut-button
+  >
+  <nut-button
+    plain
+    type="info"
+    >朴素按钮</nut-button
+  >
 </template>
 ```
 
@@ -59,9 +67,23 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button disabled type="primary">禁用状态</nut-button>
-  <nut-button plain disabled type="info">禁用状态</nut-button>
-  <nut-button plain disabled type="primary">禁用状态</nut-button>
+  <nut-button
+    disabled
+    type="primary"
+    >禁用状态</nut-button
+  >
+  <nut-button
+    plain
+    disabled
+    type="info"
+    >禁用状态</nut-button
+  >
+  <nut-button
+    plain
+    disabled
+    type="primary"
+    >禁用状态</nut-button
+  >
 </template>
 ```
 
@@ -75,7 +97,11 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button shape="square" type="primary">方形按钮</nut-button>
+  <nut-button
+    shape="square"
+    type="primary"
+    >方形按钮</nut-button
+  >
   <nut-button type="info">圆形按钮</nut-button>
 </template>
 ```
@@ -88,9 +114,21 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button loading type="info"></nut-button>
-  <nut-button loading type="warning">加载中...</nut-button>
-  <nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
+  <nut-button
+    loading
+    type="info"
+  ></nut-button>
+  <nut-button
+    loading
+    type="warning"
+    >加载中...</nut-button
+  >
+  <nut-button
+    :loading="isLoading"
+    type="success"
+    @click="changeLoading"
+    >Click me!</nut-button
+  >
 </template>
 
 <script>
@@ -121,8 +159,18 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-  <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+  <nut-button
+    shape="square"
+    plain
+    type="primary"
+    icon="star-fill"
+  ></nut-button>
+  <nut-button
+    shape="square"
+    type="primary"
+    icon="star"
+    >收藏</nut-button
+  >
 </template>
 ```
 
@@ -153,10 +201,22 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button size="large" type="primary">大号按钮</nut-button>
+  <nut-button
+    size="large"
+    type="primary"
+    >大号按钮</nut-button
+  >
   <nut-button type="primary">普通按钮</nut-button>
-  <nut-button size="small" type="primary">小型按钮</nut-button>
-  <nut-button size="mini" type="primary">迷你按钮</nut-button>
+  <nut-button
+    size="small"
+    type="primary"
+    >小型按钮</nut-button
+  >
+  <nut-button
+    size="mini"
+    type="primary"
+    >迷你按钮</nut-button
+  >
 </template>
 ```
 
@@ -170,7 +230,11 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button block type="primary">块级元素</nut-button>
+  <nut-button
+    block
+    type="primary"
+    >块级元素</nut-button
+  >
 </template>
 ```
 
@@ -184,7 +248,11 @@ app.use(Button);
 ```html
 <template>
   <nut-button color="#7232dd">单色按钮</nut-button>
-  <nut-button color="#7232dd" plain>单色按钮</nut-button>
+  <nut-button
+    color="#7232dd"
+    plain
+    >单色按钮</nut-button
+  >
   <nut-button color="linear-gradient(to right, #ff6034, #ee0a24)"> 渐变色按钮 </nut-button>
 </template>
 ```

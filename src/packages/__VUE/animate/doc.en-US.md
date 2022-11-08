@@ -23,19 +23,31 @@ app.use(Animate);
 
 ```html
 <template>
-  <nut-animate type="slide-right" action="click">
+  <nut-animate
+    type="slide-right"
+    action="click"
+  >
     <nut-button type="primary">From right to left</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-left" action="click">
+  <nut-animate
+    type="slide-left"
+    action="click"
+  >
     <nut-button type="primary">From left to right</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-top" action="click">
+  <nut-animate
+    type="slide-top"
+    action="click"
+  >
     <nut-button type="primary">From top to bottom</nut-button>
   </nut-animate>
 
-  <nut-animate type="slide-bottom" action="click">
+  <nut-animate
+    type="slide-bottom"
+    action="click"
+  >
     <nut-button type="primary">From bottom to top</nut-button>
   </nut-animate>
 </template>
@@ -57,31 +69,52 @@ app.use(Animate);
 
 ```html
 <template>
-  <nut-animate type="shake" :loop="true">
+  <nut-animate
+    type="shake"
+    :loop="true"
+  >
     <nut-button type="primary">shake-shake</nut-button>
   </nut-animate>
 
-  <nut-animate type="ripple" :loop="true">
+  <nut-animate
+    type="ripple"
+    :loop="true"
+  >
     <nut-button type="primary">ripple-ripple</nut-button>
   </nut-animate>
 
-  <nut-animate type="breath" :loop="true">
+  <nut-animate
+    type="breath"
+    :loop="true"
+  >
     <nut-button type="primary">breath-breath</nut-button>
   </nut-animate>
 
-  <nut-animate type="twinkle" :loop="true">
+  <nut-animate
+    type="twinkle"
+    :loop="true"
+  >
     <nut-button type="primary">twinkle-twinkle</nut-button>
   </nut-animate>
 
-  <nut-animate type="flicker" :loop="true">
+  <nut-animate
+    type="flicker"
+    :loop="true"
+  >
     <nut-button type="primary">flicker-flicker</nut-button>
   </nut-animate>
 
-  <nut-animate type="jump" :loop="true">
+  <nut-animate
+    type="jump"
+    :loop="true"
+  >
     <nut-button type="primary">jump-jump</nut-button>
   </nut-animate>
 
-  <nut-animate type="float" :loop="true">
+  <nut-animate
+    type="float"
+    :loop="true"
+  >
     <nut-button type="primary">float-float</nut-button>
   </nut-animate>
 </template>

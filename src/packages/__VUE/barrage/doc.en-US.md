@@ -24,9 +24,16 @@ app.use(Barrage);
 
 ```html
 <template>
-  <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
+  <nut-barrage
+    ref="danmu"
+    :danmu="list"
+  ></nut-barrage>
   <div class="test">
-    <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
+    <button
+      @click="addDanmu"
+      class="add nut-button--primary"
+      >随机添加</button
+    >
   </div>
 </template>
 

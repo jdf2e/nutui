@@ -23,7 +23,12 @@ app.use(Elevator);
 
 ```html
 <template>
-  <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator
+    :index-list="dataList"
+    :height="260"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  ></nut-elevator>
 </template>
 
 <script lang="ts">
@@ -406,9 +411,17 @@ app.use(Elevator);
 
 ```html
 <template>
-  <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
+  <nut-elevator
+    :index-list="dataList"
+    :height="260"
+    @click-item="clickItem"
+    @click-index="clickIndex"
+  >
     <template v-slot:default="slotProps">
-      <nut-icon name="JD" size="12"></nut-icon>
+      <nut-icon
+        name="JD"
+        size="12"
+      ></nut-icon>
       <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
     </template>
   </nut-elevator>

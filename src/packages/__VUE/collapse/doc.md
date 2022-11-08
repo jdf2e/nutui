@@ -25,15 +25,26 @@ app.use(CollapseItem);
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeNames" icon="down-arrow">
+  <nut-collapse
+    v-model:active="activeNames"
+    icon="down-arrow"
+  >
     <nut-collapse-item :name="1">
       <template v-slot:mTitle> {{title1}} </template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
       在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
     </nut-collapse-item>
-    <nut-collapse-item :title="title3" :name="3" disabled> </nut-collapse-item>
+    <nut-collapse-item
+      :title="title3"
+      :name="3"
+      disabled
+    >
+    </nut-collapse-item>
   </nut-collapse>
 </template>
 
@@ -64,11 +75,22 @@ app.use(CollapseItem);
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       引入Vue3新特性 Composition API、Teleport、Emits 等
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2"> 全面使用 TypeScript </nut-collapse-item>
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
+      全面使用 TypeScript
+    </nut-collapse-item>
   </nut-collapse>
 </template>
 
@@ -101,10 +123,28 @@ app.use(CollapseItem);
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
-    <nut-collapse-item :title="title1" :name="1"> 基于京东设计语言体系，构建场景 </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle"> 提高界⾯的模块化通用程度 </nut-collapse-item>
-    <nut-collapse-item :title="title3" :name="3">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+    icon="down-arrow"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
+      基于京东设计语言体系，构建场景
+    </nut-collapse-item>
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      :sub-title="subTitle"
+    >
+      提高界⾯的模块化通用程度
+    </nut-collapse-item>
+    <nut-collapse-item
+      :title="title3"
+      :name="3"
+    >
       采用组合式 API Composition 语法重构，结构清晰，功能模块化
     </nut-collapse-item>
   </nut-collapse>
@@ -141,12 +181,24 @@ app.use(CollapseItem);
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true" icon="arrow-right2" rotate="90">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+    icon="arrow-right2"
+    rotate="90"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       <template v-slot:sTitle> 文本测试 </template>
       NUTUI3.0重新思考其内在的一致性和可组合性
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      sub-title="文本内容"
+    >
       提⾼产研输出对接的效率，降低输出工作量
     </nut-collapse-item>
   </nut-collapse>
@@ -188,8 +240,17 @@ app.use(CollapseItem);
     icon="down-arrow"
     :accordion="true"
   >
-    <nut-collapse-item :title="title1" :name="1"> 组件 emits 事件单独提取，增强代码可读性 </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
+      组件 emits 事件单独提取，增强代码可读性
+    </nut-collapse-item>
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      sub-title="文本内容"
+    >
       使用 Teleport 新特性重构挂载类组件
     </nut-collapse-item>
   </nut-collapse>
@@ -222,12 +283,22 @@ app.use(CollapseItem);
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" icon="down-arrow" :accordion="true">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    icon="down-arrow"
+    :accordion="true"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       <template v-slot:extraRender>固定内容</template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
       在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
     </nut-collapse-item>
   </nut-collapse>

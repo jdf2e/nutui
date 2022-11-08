@@ -98,7 +98,11 @@ The Image component provides a default loading prompt and supports custom conten
 
 ```html
 <template>
-  <nut-image width="100" height="100" showLoading>
+  <nut-image
+    width="100"
+    height="100"
+    showLoading
+  >
     <template #loading>
       <nut-icon name="loading"></nut-icon>
     </template>
@@ -116,7 +120,12 @@ The Image component provides a default loading failure warning and supports cust
 
 ```html
 <template>
-  <nut-image src="https://x" width="100" height="100" showLoading>
+  <nut-image
+    src="https://x"
+    width="100"
+    height="100"
+    showLoading
+  >
     <template #error>
       <nut-icon name="circle-close"></nut-icon>
     </template>

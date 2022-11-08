@@ -105,9 +105,17 @@ User can custom divider style with style attribute.
     <div :style="{ fontSize: '14px' }">
       Text
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">Link</a>
+      <a
+        href="#"
+        :style="{ color: '#1989fa' }"
+        >Link</a
+      >
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">Link</a>
+      <a
+        href="#"
+        :style="{ color: '#1989fa' }"
+        >Link</a
+      >
     </div>
   </nut-cell>
 </template>

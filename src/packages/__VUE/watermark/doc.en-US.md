@@ -24,7 +24,12 @@ app.use(Watermark);
   <nut-cell class="wrap">
     <nut-button @click="showTextMark">Text WaterMark</nut-button>
     <nut-button @click="showImageMark">Image WaterMark</nut-button>
-    <nut-watermark v-if="!flag" class="mark1" z-index="1" content="nut-ui-water-mark"></nut-watermark>
+    <nut-watermark
+      v-if="!flag"
+      class="mark1"
+      z-index="1"
+      content="nut-ui-water-mark"
+    ></nut-watermark>
     <nut-watermark
       v-if="flag"
       class="mark1"
@@ -89,8 +94,15 @@ app.use(Watermark);
 ```html
 <template>
   <nut-cell class="wrap">
-    <img :src="src" alt="" />
-    <nut-watermark :fullPage="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
+    <img
+      :src="src"
+      alt=""
+    />
+    <nut-watermark
+      :fullPage="false"
+      font-color="#fa2c19"
+      content="nut-ui"
+    ></nut-watermark>
   </nut-cell>
 </template>
 

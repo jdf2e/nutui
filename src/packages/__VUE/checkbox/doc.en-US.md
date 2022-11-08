@@ -25,8 +25,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox1" label="check box">check box</nut-checkbox>
-  <nut-checkbox v-model="checkbox2" text-position="left">check box</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox1"
+    label="check box"
+    >check box</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox2"
+    text-position="left"
+    >check box</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -64,7 +72,12 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-checkbox v-model="checkbox9" :indeterminate="true" label="check box">check box</nut-checkbox>
+    <nut-checkbox
+      v-model="checkbox9"
+      :indeterminate="true"
+      label="check box"
+      >check box</nut-checkbox
+    >
   </nut-cell>
 </template>
 
@@ -91,8 +104,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox3" disabled>Disabled when not selected</nut-checkbox>
-  <nut-checkbox v-model="checkbox4" disabled>Disabled when selected</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox3"
+    disabled
+    >Disabled when not selected</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox4"
+    disabled
+    >Disabled when selected</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -119,8 +140,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox5" icon-size="25">Custom size 25</nut-checkbox>
-  <nut-checkbox v-model="checkbox6" icon-size="10">Custom size 10</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox5"
+    icon-size="25"
+    >Custom size 25</nut-checkbox
+  >
+  <nut-checkbox
+    v-model="checkbox6"
+    icon-size="10"
+    >Custom size 10</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -149,7 +178,12 @@ It is recommended to set the `icon-name` and `icon-active-name` attributes at th
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox7"
+    icon-name="checklist"
+    icon-active-name="checklist"
+    >Custom icon</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -177,7 +211,11 @@ When the value changes, the `change` event will be triggered
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox" @change="changeBox3">change check box</nut-checkbox>
+  <nut-checkbox
+    v-model="checkbox"
+    @change="changeBox3"
+    >change check box</nut-checkbox
+  >
 </template>
 
 <script lang="ts">
@@ -243,13 +281,36 @@ When the value changes, the `change` event will be triggered
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
-    <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{item.value}}</nut-checkbox>
+  <nut-checkboxgroup
+    v-model="checkboxgroup3"
+    ref="group"
+    @change="changeBox4"
+  >
+    <nut-checkbox
+      v-for="item in checkboxsource"
+      :key="item.label"
+      :label="item.label"
+      >{{item.value}}</nut-checkbox
+    >
   </nut-checkboxgroup>
   <span class="btn">
-    <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0;">Select all</nut-button>
-    <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0;">cancel</nut-button>
-    <nut-button type="warning" @click="toggleReverse()">reverse selection</nut-button>
+    <nut-button
+      type="primary"
+      @click="toggleAll(true)"
+      style="margin: 0 20px 0 0;"
+      >Select all</nut-button
+    >
+    <nut-button
+      type="primary"
+      @click="toggleAll(false)"
+      style="margin: 0 20px 0 0;"
+      >cancel</nut-button
+    >
+    <nut-button
+      type="warning"
+      @click="toggleReverse()"
+      >reverse selection</nut-button
+    >
   </span>
 </template>
 
@@ -305,10 +366,21 @@ When the value changes, the `change` event will be triggered
 <template>
   <nut-cell-group title="use checkboxGroup, Limit the maximum number of options (2)">
     <nut-cell>
-      <nut-checkboxgroup v-model="checkboxgroup4" :max="2">
-        <nut-checkbox label="1" style="margin: 2px 20px 0 0;">Combined check box</nut-checkbox>
+      <nut-checkboxgroup
+        v-model="checkboxgroup4"
+        :max="2"
+      >
+        <nut-checkbox
+          label="1"
+          style="margin: 2px 20px 0 0;"
+          >Combined check box</nut-checkbox
+        >
         <nut-checkbox label="2">Combined check box</nut-checkbox>
-        <nut-checkbox label="3" style="margin: 2px 20px 0 0;">Combined check box</nut-checkbox>
+        <nut-checkbox
+          label="3"
+          style="margin: 2px 20px 0 0;"
+          >Combined check box</nut-checkbox
+        >
         <nut-checkbox label="4">Combined check box</nut-checkbox>
       </nut-checkboxgroup>
     </nut-cell>
@@ -346,10 +418,25 @@ When the value changes, the `change` event will be triggered
 <template>
   <nut-cell-group title="Select all / half / cancel">
     <nut-cell>
-      <nut-checkbox :indeterminate="indeterminate" v-model="checkbox10" @change="changeBox5">selectAll</nut-checkbox>
+      <nut-checkbox
+        :indeterminate="indeterminate"
+        v-model="checkbox10"
+        @change="changeBox5"
+        >selectAll</nut-checkbox
+      >
     </nut-cell>
-    <nut-checkboxgroup v-model="checkboxgroup5" ref="group2" @change="changeBox6">
-      <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0;">Combined check box</nut-checkbox></nut-cell>
+    <nut-checkboxgroup
+      v-model="checkboxgroup5"
+      ref="group2"
+      @change="changeBox6"
+    >
+      <nut-cell
+        ><nut-checkbox
+          label="1"
+          style="margin: 2px 20px 0 0;"
+          >Combined check box</nut-checkbox
+        ></nut-cell
+      >
       <nut-cell><nut-checkbox label="2">Combined check box</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="3">Combined check box</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="4">Combined check box</nut-checkbox></nut-cell>

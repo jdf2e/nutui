@@ -30,10 +30,17 @@ app.use(ConfigProvider);
   <nut-config-provider :theme="theme">
     <nut-cell title="切换暗黑">
       <template v-slot:link>
-        <nut-switch v-model="switchChecked" @change="switchChange" />
+        <nut-switch
+          v-model="switchChecked"
+          @change="switchChange"
+        />
       </template>
     </nut-cell>
-    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <nut-cell
+      title="我是标题"
+      sub-title="副标题描述"
+      desc="描述文字"
+    ></nut-cell>
   </nut-config-provider>
 </template>
 

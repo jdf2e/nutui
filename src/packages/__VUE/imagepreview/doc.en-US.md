@@ -26,8 +26,17 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" @close="hideFn" />
-  <nut-cell isLink title="Show preview" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="Show preview"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -78,8 +87,19 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn" />
-  <nut-cell isLink title="With init no" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    :content-close="true"
+    :init-no="3"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="With init no"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -137,7 +157,12 @@ app.use(ImagePreview);
     pagination-color="red"
     @close="hideFn"
   />
-  <nut-cell isLink title="With pagination" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-cell
+    isLink
+    title="With pagination"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -190,8 +215,18 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" :videos="videoData" @close="hideFn" />
-  <nut-cell isLink title="With videos" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    :videos="videoData"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="With videos"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -266,7 +301,12 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-cell isLink title="Functional call" :showIcon="true" @click="fnShow"></nut-cell>
+  <nut-cell
+    isLink
+    title="Functional call"
+    :showIcon="true"
+    @click="fnShow"
+  ></nut-cell>
 </template>
 
 <script lang="ts">

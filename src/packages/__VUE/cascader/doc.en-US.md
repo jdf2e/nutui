@@ -380,7 +380,10 @@ If your data is a flat structure that can be converted into a tree structure, yo
 ```html
 <template>
   <nut-form>
-    <nut-form-item label="Select address" @click="state.visible = true">
+    <nut-form-item
+      label="Select address"
+      @click="state.visible = true"
+    >
       <input
         class="nut-input-text"
         @click="state.visible = true"

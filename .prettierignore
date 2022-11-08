@@ -4,6 +4,8 @@
 **/*.ttf
 **/*.woff
 **/*.eot
+dist
+coverage
 package.json
 node_modules
 CHANGELOG.md

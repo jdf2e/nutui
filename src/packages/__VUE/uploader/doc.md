@@ -34,7 +34,12 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
+  <nut-uploader
+    :url="uploadUrl"
+    v-model:file-list="defaultFileList"
+    maximum="3"
+    multiple
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -82,8 +87,18 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
-    <nut-button type="success" size="small">上传文件</nut-button>
+  <nut-uploader
+    :url="uploadUrl"
+    v-model:file-list="defaultFileList"
+    maximum="10"
+    multiple
+    list-type="list"
+  >
+    <nut-button
+      type="success"
+      size="small"
+      >上传文件</nut-button
+    >
   </nut-uploader>
 </template>
 
@@ -133,7 +148,11 @@ app.use(Progress);
 ```html
 <template>
   <nut-uploader url="https://xxxx">
-    <nut-button type="success" size="small">上传文件</nut-button>
+    <nut-button
+      type="success"
+      size="small"
+      >上传文件</nut-button
+    >
   </nut-uploader>
 </template>
 ```
@@ -146,8 +165,15 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" @progress="onProgress">
-    <nut-button type="success" size="small">上传文件</nut-button>
+  <nut-uploader
+    :url="uploadUrl"
+    @progress="onProgress"
+  >
+    <nut-button
+      type="success"
+      size="small"
+      >上传文件</nut-button
+    >
   </nut-uploader>
   <br />
   <nut-progress
@@ -186,7 +212,10 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader url="https://xxxx" capture></nut-uploader>
+  <nut-uploader
+    url="https://xxxx"
+    capture
+  ></nut-uploader>
 </template>
 ```
 
@@ -198,7 +227,11 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader url="https://xxxx" multiple maximum="5"></nut-uploader>
+  <nut-uploader
+    url="https://xxxx"
+    multiple
+    maximum="5"
+  ></nut-uploader>
 </template>
 ```
 
@@ -210,7 +243,12 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
+  <nut-uploader
+    :url="uploadUrl"
+    multiple
+    :maximize="1024 * 50"
+    @oversize="onOversize"
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -238,7 +276,11 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"></nut-uploader>
+  <nut-uploader
+    :url="uploadUrl"
+    multiple
+    :before-upload="beforeUpload"
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -296,7 +338,12 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
+  <nut-uploader
+    :url="uploadUrl"
+    :data="formData"
+    :headers="formData"
+    :with-credentials="true"
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -325,7 +372,11 @@ app.use(Progress);
 ```html
 <!-- 当上传方式为put时，直接上传源文件file流 -->
 <template>
-  <nut-uploader url="https://xxxx" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
+  <nut-uploader
+    url="https://xxxx"
+    method="put"
+    :before-xhr-upload="beforeXhrUpload"
+  ></nut-uploader>
 </template>
 
 <script lang="ts">
@@ -356,10 +407,25 @@ app.use(Progress);
 
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+  <nut-uploader
+    :url="uploadUrl"
+    maximum="5"
+    :auto-upload="false"
+    ref="uploadRef"
+  ></nut-uploader>
   <br />
-  <nut-button type="success" size="small" @click="submitUpload">手动执行上传</nut-button>
-  <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
+  <nut-button
+    type="success"
+    size="small"
+    @click="submitUpload"
+    >手动执行上传</nut-button
+  >
+  <nut-button
+    type="danger"
+    size="small"
+    @click="clearUpload"
+    >手动清空上传</nut-button
+  >
 </template>
 
 <script lang="ts">

@@ -26,7 +26,12 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-invoice :data="data" :formValue="formValue" @onSubmit="submit"> </nut-invoice>
+  <nut-invoice
+    :data="data"
+    :formValue="formValue"
+    @onSubmit="submit"
+  >
+  </nut-invoice>
 </template>
 
 <script lang="ts">

@@ -64,17 +64,31 @@ app.use(Tag);
     </nut-cell>
     <nut-cell title="round">
       <template v-slot:link>
-        <nut-tag round type="primary">Tag</nut-tag>
+        <nut-tag
+          round
+          type="primary"
+          >Tag</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="mark">
       <template v-slot:link>
-        <nut-tag mark type="primary">Tag</nut-tag>
+        <nut-tag
+          mark
+          type="primary"
+          >Tag</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="closeable">
       <template v-slot:link>
-        <nut-tag v-if="show" closeable @close="close" type="primary">Tag</nut-tag>
+        <nut-tag
+          v-if="show"
+          closeable
+          @close="close"
+          type="primary"
+          >Tag</nut-tag
+        >
       </template>
     </nut-cell>
   </nut-cell-group>
@@ -115,12 +129,20 @@ app.use(Tag);
     </nut-cell>
     <nut-cell title="text color">
       <template v-slot:link>
-        <nut-tag color="#E9E9E9" textColor="#999999">Tag</nut-tag>
+        <nut-tag
+          color="#E9E9E9"
+          textColor="#999999"
+          >Tag</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="plain color">
       <template v-slot:link>
-        <nut-tag color="#FA2400" plain>Tag</nut-tag>
+        <nut-tag
+          color="#FA2400"
+          plain
+          >Tag</nut-tag
+        >
       </template>
     </nut-cell>
   </nut-cell-group>

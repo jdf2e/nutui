@@ -168,11 +168,24 @@ app.use(Audio);
     @changeProgress="changeProgress"
   >
     <div class="nut-audio-operate-group">
-      <nut-audio-operate type="back"><nut-icon name="play-double-back" size="35"></nut-icon></nut-audio-operate>
-      <nut-audio-operate type="play"
-        ><nut-icon :name="!playing ? 'play-start' : 'play-stop'" size="35"></nut-icon
+      <nut-audio-operate type="back"
+        ><nut-icon
+          name="play-double-back"
+          size="35"
+        ></nut-icon
       ></nut-audio-operate>
-      <nut-audio-operate type="forward"><nut-icon name="play-double-forward" size="35"></nut-icon></nut-audio-operate>
+      <nut-audio-operate type="play"
+        ><nut-icon
+          :name="!playing ? 'play-start' : 'play-stop'"
+          size="35"
+        ></nut-icon
+      ></nut-audio-operate>
+      <nut-audio-operate type="forward"
+        ><nut-icon
+          name="play-double-forward"
+          size="35"
+        ></nut-icon
+      ></nut-audio-operate>
     </div>
   </nut-audio>
 </template>

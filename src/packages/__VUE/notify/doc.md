@@ -20,7 +20,11 @@ app.use(Notify);
 
 ```html
 <template>
-  <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
+  <nut-cell
+    is-Link
+    @click="baseNotify('基础用法')"
+    >基础用法</nut-cell
+  >
 </template>
 
 <script lang="ts">
@@ -55,10 +59,26 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="通知类型">
-    <nut-cell is-Link @click="primaryNotify('主要通知')">主要通知</nut-cell>
-    <nut-cell is-Link @click="successNotify('成功通知')">成功通知</nut-cell>
-    <nut-cell is-Link @click="errorNotify('危险通知')">危险通知</nut-cell>
-    <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
+    <nut-cell
+      is-Link
+      @click="primaryNotify('主要通知')"
+      >主要通知</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="successNotify('成功通知')"
+      >成功通知</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="errorNotify('危险通知')"
+      >危险通知</nut-cell
+    >
+    <nut-cell
+      is-Link
+      @click="warningNotify('警告通知')"
+      >警告通知</nut-cell
+    >
   </nut-cell-group>
 </template>
 
@@ -99,13 +119,25 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="自定义背景色和字体颜色">
-    <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">自定义背景色和字体颜色</nut-cell>
+    <nut-cell
+      is-Link
+      @click="cusBgNotify('自定义背景色和字体颜色')"
+      >自定义背景色和字体颜色</nut-cell
+    >
   </nut-cell-group>
   <nut-cell-group title="自定义时长">
-    <nut-cell is-Link @click="timeNotify('自定义时长')">自定义时长</nut-cell>
+    <nut-cell
+      is-Link
+      @click="timeNotify('自定义时长')"
+      >自定义时长</nut-cell
+    >
   </nut-cell-group>
   <nut-cell-group title="自定义位置">
-    <nut-cell is-Link @click="positionNotify('自定义位置')">自定义位置</nut-cell>
+    <nut-cell
+      is-Link
+      @click="positionNotify('自定义位置')"
+      >自定义位置</nut-cell
+    >
   </nut-cell-group>
 </template>
 
@@ -142,8 +174,15 @@ app.use(Notify);
 ```html
 <template>
   <nut-cell-group title="组件调用">
-    <nut-cell is-Link @click="showNotify">组件调用</nut-cell>
-    <nut-notify v-model:visible="show" :duration="2000">
+    <nut-cell
+      is-Link
+      @click="showNotify"
+      >组件调用</nut-cell
+    >
+    <nut-notify
+      v-model:visible="show"
+      :duration="2000"
+    >
       <span>Content</span>
     </nut-notify>
   </nut-cell-group>

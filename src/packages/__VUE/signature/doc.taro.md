@@ -19,7 +19,12 @@ app.use(Signature);
 
 ```html
 <div class="demo">
-  <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @confirm="confirm" @clear="clear" />
+  <nut-signature
+    :lineWidth="lineWidth"
+    :strokeStyle="strokeStyle"
+    @confirm="confirm"
+    @clear="clear"
+  />
 </div>
 ```
 

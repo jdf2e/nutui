@@ -26,15 +26,26 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeNames" icon="down-arrow">
+  <nut-collapse
+    v-model:active="activeNames"
+    icon="down-arrow"
+  >
     <nut-collapse-item :name="1">
       <template v-slot:mTitle> {{title1}} </template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </nut-collapse-item>
-    <nut-collapse-item :title="title3" :name="3" disabled> </nut-collapse-item>
+    <nut-collapse-item
+      :title="title3"
+      :name="3"
+      disabled
+    >
+    </nut-collapse-item>
   </nut-collapse>
 </template>
 
@@ -65,11 +76,22 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       Introduce new features of vue3, such as Composition API, teleport, emits, etc
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2"> Full use of TypeScript </nut-collapse-item>
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
+      Full use of TypeScript
+    </nut-collapse-item>
   </nut-collapse>
 </template>
 
@@ -102,12 +124,28 @@ You can set accordion mode through 'accordion', and expand up to one panel. At t
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
-    <nut-collapse-item :title="title1" :name="1"> Build scenes based on JD design language system </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+    icon="down-arrow"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
+      Build scenes based on JD design language system
+    </nut-collapse-item>
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      :sub-title="subTitle"
+    >
       Improve the modularity and generality of the boundary
     </nut-collapse-item>
-    <nut-collapse-item :title="title3" :name="3">
+    <nut-collapse-item
+      :title="title3"
+      :name="3"
+    >
       It adopts combinatorial API composition syntax to reconstruct, with clear structure and modular function
     </nut-collapse-item>
   </nut-collapse>
@@ -144,12 +182,24 @@ Set custom icons through icon and rotate to set the rotation angle of icons
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true" icon="arrow-right2" rotate="90">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+    icon="arrow-right2"
+    rotate="90"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       <template v-slot:sTitle> text test </template>
       NUTUI3. 0 rethink its internal consistency and composability
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" sub-title="text content">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      sub-title="text content"
+    >
       Improve the efficiency of production research output docking and reduce the output workload
     </nut-collapse-item>
   </nut-collapse>
@@ -191,10 +241,17 @@ Set custom icons through icon and rotate to set the rotation angle of icons
     icon="down-arrow"
     :accordion="true"
   >
-    <nut-collapse-item :title="title1" :name="1">
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       component emits events are extracted separately to enhance code readability
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+      sub-title="文本内容"
+    >
       reconstruct and mount class components using the new feature of teleport
     </nut-collapse-item>
   </nut-collapse>
@@ -226,12 +283,22 @@ Set content through slot: extrarender
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" icon="down-arrow" :accordion="true">
-    <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse
+    v-model:active="activeName"
+    icon="down-arrow"
+    :accordion="true"
+  >
+    <nut-collapse-item
+      :title="title1"
+      :name="1"
+    >
       <template v-slot:extraRender>fixed content</template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2">
+    <nut-collapse-item
+      :title="title2"
+      :name="2"
+    >
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </nut-collapse-item>
   </nut-collapse>

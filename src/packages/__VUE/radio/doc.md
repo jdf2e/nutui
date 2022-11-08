@@ -31,22 +31,46 @@ app.use(Icon);
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
         <nut-radio label="1">选项1</nut-radio>
-        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >选项2</nut-radio
+        >
         <nut-radio label="3">选项3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" text-position="left">
+      <nut-radiogroup
+        v-model="radioVal"
+        text-position="left"
+      >
         <nut-radio label="1">选项1</nut-radio>
-        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio
+          disabled
+          label="2"
+          >选项2</nut-radio
+        >
         <nut-radio label="3">选项3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
-        <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-        <nut-radio shape="button" label="3">选项3</nut-radio>
+        <nut-radio
+          shape="button"
+          label="1"
+          >选项1</nut-radio
+        >
+        <nut-radio
+          disabled
+          shape="button"
+          label="2"
+          >选项2</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="3"
+          >选项3</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -75,24 +99,46 @@ app.use(Icon);
 <template>
   <nut-cell-group title="水平使用">
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" direction="horizontal">
+      <nut-radiogroup
+        v-model="radioVal"
+        direction="horizontal"
+      >
         <nut-radio label="1">选项1</nut-radio>
         <nut-radio label="2">选项2</nut-radio>
         <nut-radio label="3">选项3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
+      <nut-radiogroup
+        v-model="radioVal"
+        text-position="left"
+        direction="horizontal"
+      >
         <nut-radio label="1">选项1</nut-radio>
         <nut-radio label="2">选项2</nut-radio>
         <nut-radio label="3">选项3</nut-radio>
       </nut-radiogroup>
     </nut-cell>
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" direction="horizontal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
-        <nut-radio shape="button" label="2">选项2</nut-radio>
-        <nut-radio shape="button" label="3">选项3</nut-radio>
+      <nut-radiogroup
+        v-model="radioVal"
+        direction="horizontal"
+      >
+        <nut-radio
+          shape="button"
+          label="1"
+          >选项1</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="2"
+          >选项2</nut-radio
+        >
+        <nut-radio
+          shape="button"
+          label="3"
+          >选项3</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -122,8 +168,16 @@ app.use(Icon);
   <nut-cell-group title="自定义尺寸">
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio label="1" icon-size="12">自定义尺寸12</nut-radio>
-        <nut-radio label="2" icon-size="12">自定义尺寸12</nut-radio>
+        <nut-radio
+          label="1"
+          icon-size="12"
+          >自定义尺寸12</nut-radio
+        >
+        <nut-radio
+          label="2"
+          icon-size="12"
+          >自定义尺寸12</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -155,8 +209,18 @@ app.use(Icon);
   <nut-cell-group title="Radio自定义图标">
     <nut-cell>
       <nut-radiogroup v-model="radioVal">
-        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+        <nut-radio
+          label="1"
+          icon-name="checklist"
+          icon-active-name="checklist"
+          >自定义图标</nut-radio
+        >
+        <nut-radio
+          label="2"
+          icon-name="checklist"
+          icon-active-name="checklist"
+          >自定义图标</nut-radio
+        >
       </nut-radiogroup>
     </nut-cell>
   </nut-cell-group>
@@ -185,12 +249,18 @@ app.use(Icon);
 <template>
   <nut-cell-group title="触发事件">
     <nut-cell>
-      <nut-radiogroup v-model="radioVal" @change="handleChange">
+      <nut-radiogroup
+        v-model="radioVal"
+        @change="handleChange"
+      >
         <nut-radio label="1">触发事件</nut-radio>
         <nut-radio label="2">触发事件</nut-radio>
       </nut-radiogroup>
     </nut-cell>
-    <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
+    <nut-cell
+      title="当前选中值"
+      :desc="radioVal"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 

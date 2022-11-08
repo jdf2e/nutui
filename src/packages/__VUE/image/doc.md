@@ -98,7 +98,11 @@ app.use();
 
 ```html
 <template>
-  <nut-image width="100" height="100" showLoading>
+  <nut-image
+    width="100"
+    height="100"
+    showLoading
+  >
     <template #loading>
       <nut-icon name="loading"></nut-icon>
     </template>
@@ -116,7 +120,12 @@ app.use();
 
 ```html
 <template>
-  <nut-image src="https://x" width="100" height="100" showError>
+  <nut-image
+    src="https://x"
+    width="100"
+    height="100"
+    showError
+  >
     <template #error> 加载失败 </template>
   </nut-image>
 </template>

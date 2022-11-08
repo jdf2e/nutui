@@ -105,9 +105,17 @@ app.use(Divider);
     <div :style="{ fontSize: '14px' }">
       文本
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <a
+        href="#"
+        :style="{ color: '#1989fa' }"
+        >链接</a
+      >
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <a
+        href="#"
+        :style="{ color: '#1989fa' }"
+        >链接</a
+      >
     </div>
   </nut-cell>
 </template>

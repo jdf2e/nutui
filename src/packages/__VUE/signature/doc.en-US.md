@@ -21,7 +21,10 @@ app.use(Signature);
 
 ```html
 <template>
-  <nut-signature @confirm="confirm" @clear="clear"></nut-signature>
+  <nut-signature
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
   <p class="demo-tips demo">Tips: click the confirm button, and the signature image is displayed below</p>
 </template>
 
@@ -78,7 +81,12 @@ app.use(Signature);
 
 ```html
 <template>
-  <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @confirm="confirm" @clear="clear"></nut-signature>
+  <nut-signature
+    :lineWidth="lineWidth"
+    :strokeStyle="strokeStyle"
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
   <p class="demo-tips demo">Tips: click the confirm button, and the signature image is displayed below</p>
 </template>
 

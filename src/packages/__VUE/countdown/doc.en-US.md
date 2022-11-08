@@ -54,7 +54,10 @@ Different countdown display text can be realized by setting the `format` attribu
 ```html
 <template>
   <nut-cell>
-    <nut-countdown :endTime="end" format="DD Day HH : mm : ss" />
+    <nut-countdown
+      :endTime="end"
+      format="DD Day HH : mm : ss"
+    />
   </nut-cell>
 </template>
 
@@ -82,7 +85,11 @@ Different countdown display text can be realized by setting the `format` attribu
 ```html
 <template>
   <nut-cell>
-    <nut-countdown :endTime="end" millisecond format="HH:mm:ss:SS" />
+    <nut-countdown
+      :endTime="end"
+      millisecond
+      format="HH:mm:ss:SS"
+    />
   </nut-cell>
 </template>
 
@@ -110,7 +117,10 @@ Different countdown display text can be realized by setting the `format` attribu
 ```html
 <template>
   <nut-cell>
-    <nut-countdown :startTime="serverTime" :endTime="end"></nut-countdown>
+    <nut-countdown
+      :startTime="serverTime"
+      :endTime="end"
+    ></nut-countdown>
   </nut-cell>
 </template>
 
@@ -173,9 +183,19 @@ Paused and restarted the countdown with the paused attribute
 ```html
 <template>
   <nut-cell>
-    <nut-countdown :endTime="end" :paused="paused" @on-paused="onPaused" @on-restart="onRestart" />
+    <nut-countdown
+      :endTime="end"
+      :paused="paused"
+      @on-paused="onPaused"
+      @on-restart="onRestart"
+    />
     <div style="position: absolute; right: 10px; top: 9px;">
-      <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
+      <nut-button
+        type="primary"
+        size="small"
+        @click="toggle"
+        >{{ paused ? 'start' : 'stop' }}</nut-button
+      >
     </div>
   </nut-cell>
 </template>
@@ -218,7 +238,10 @@ Paused and restarted the countdown with the paused attribute
 ```html
 <template>
   <nut-cell>
-    <nut-countdown v-model="resetTime" :endTime="end">
+    <nut-countdown
+      v-model="resetTime"
+      :endTime="end"
+    >
       <div class="countdown-part-box">
         <div class="part-item-symbol">{{ resetTime.d }}Day</div>
         <div class="part-item h">{{ resetTime.h }}</div>
@@ -283,12 +306,35 @@ Paused and restarted the countdown with the paused attribute
 ```html
 <template>
   <nut-cell>
-    <nut-countdown time="20000" ref="CountDown" :autoStart="false" format="ss:SS" />
+    <nut-countdown
+      time="20000"
+      ref="CountDown"
+      :autoStart="false"
+      format="ss:SS"
+    />
   </nut-cell>
   <nut-grid :column-num="3">
-    <nut-grid-item><nut-button type="primary" @click="start">Start</nut-button></nut-grid-item>
-    <nut-grid-item><nut-button type="primary" @click="pause">Pause</nut-button></nut-grid-item>
-    <nut-grid-item><nut-button type="primary" @click="reset">Reset</nut-button></nut-grid-item>
+    <nut-grid-item
+      ><nut-button
+        type="primary"
+        @click="start"
+        >Start</nut-button
+      ></nut-grid-item
+    >
+    <nut-grid-item
+      ><nut-button
+        type="primary"
+        @click="pause"
+        >Pause</nut-button
+      ></nut-grid-item
+    >
+    <nut-grid-item
+      ><nut-button
+        type="primary"
+        @click="reset"
+        >Reset</nut-button
+      ></nut-grid-item
+    >
   </nut-grid>
 </template>
 

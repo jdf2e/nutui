@@ -22,10 +22,23 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell title="Title" desc="Description"></nut-cell>
-  <nut-cell title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
-  <nut-cell title="Click Test" @click="testClick"></nut-cell>
-  <nut-cell title="Round Radius 0" round-radius="0"></nut-cell>
+  <nut-cell
+    title="Title"
+    desc="Description"
+  ></nut-cell>
+  <nut-cell
+    title="Title"
+    sub-title="Subtitle Description"
+    desc="Desc"
+  ></nut-cell>
+  <nut-cell
+    title="Click Test"
+    @click="testClick"
+  ></nut-cell>
+  <nut-cell
+    title="Round Radius 0"
+    round-radius="0"
+  ></nut-cell>
 </template>
 
 <script>
@@ -53,8 +66,17 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell size="large" title="Title" desc="Description"></nut-cell>
-  <nut-cell size="large" title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
+  <nut-cell
+    size="large"
+    title="Title"
+    desc="Description"
+  ></nut-cell>
+  <nut-cell
+    size="large"
+    title="Title"
+    sub-title="Subtitle Description"
+    desc="Desc"
+  ></nut-cell>
 </template>
 ```
 
@@ -96,10 +118,24 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell-group title="Link | CellGroup Usage" desc="Usage nut-cell-group support title desc slots">
-    <nut-cell title="Link Usage" is-link></nut-cell>
-    <nut-cell title="URL Jump" desc="https://m.jd.com" is-link url="https://m.jd.com"></nut-cell>
-    <nut-cell title="Router Jump ’/‘ " to="/"></nut-cell>
+  <nut-cell-group
+    title="Link | CellGroup Usage"
+    desc="Usage nut-cell-group support title desc slots"
+  >
+    <nut-cell
+      title="Link Usage"
+      is-link
+    ></nut-cell>
+    <nut-cell
+      title="URL Jump"
+      desc="https://m.jd.com"
+      is-link
+      url="https://m.jd.com"
+    ></nut-cell>
+    <nut-cell
+      title="Router Jump ’/‘ "
+      to="/"
+    ></nut-cell>
   </nut-cell-group>
 </template>
 ```
@@ -167,7 +203,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell title="Name" icon="my" desc="Description"></nut-cell>
+  <nut-cell
+    title="Name"
+    icon="my"
+    desc="Description"
+  ></nut-cell>
 </template>
 ```
 
@@ -179,7 +219,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-cell desc-text-align="left" desc="Description"></nut-cell>
+  <nut-cell
+    desc-text-align="left"
+    desc="Description"
+  ></nut-cell>
 </template>
 ```
 
@@ -193,7 +236,12 @@ You can center the left and right contents of the cell vertically through the 'c
 
 ```html
 <template>
-  <nut-cell center title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
+  <nut-cell
+    center
+    title="Title"
+    sub-title="Subtitle Description"
+    desc="Desc"
+  ></nut-cell>
 </template>
 ```
 

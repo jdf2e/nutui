@@ -47,7 +47,11 @@ app.use(TextArea);
 
 ```html
 <template>
-  <nut-textarea v-model="value" limit-show max-length="20" />
+  <nut-textarea
+    v-model="value"
+    limit-show
+    max-length="20"
+  />
 </template>
 ```
 
@@ -59,7 +63,11 @@ app.use(TextArea);
 
 ```html
 <template>
-  <nut-textarea v-model="value" rows="10" autosize />
+  <nut-textarea
+    v-model="value"
+    rows="10"
+    autosize
+  />
 </template>
 ```
 
@@ -71,8 +79,16 @@ app.use(TextArea);
 
 ```html
 <template>
-  <nut-textarea readonly model-value="textarea只读状态" />
-  <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+  <nut-textarea
+    readonly
+    model-value="textarea只读状态"
+  />
+  <nut-textarea
+    disabled
+    model-value="textarea禁用状态"
+    limit-show
+    max-length="20"
+  />
 </template>
 ```
 

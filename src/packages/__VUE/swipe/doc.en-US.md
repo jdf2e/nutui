@@ -26,9 +26,17 @@ app.use(Button);
 ```html
 <template>
   <nut-swipe>
-    <nut-cell round-radius="0" desc="Swipe left to delete" />
+    <nut-cell
+      round-radius="0"
+      desc="Swipe left to delete"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">Delete</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >Delete</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -43,9 +51,17 @@ app.use(Button);
 ```html
 <template>
   <nut-swipe disabled>
-    <nut-cell round-radius="0" desc="Disable swipe" />
+    <nut-cell
+      round-radius="0"
+      desc="Disable swipe"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">Delete</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >Delete</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -61,12 +77,30 @@ app.use(Button);
 <template>
   <nut-swipe>
     <template #left>
-      <nut-button shape="square" style="height: 100%;" type="success">Select</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="success"
+        >Select</nut-button
+      >
     </template>
-    <nut-cell round-radius="0" desc="You can swipe left and right" />
+    <nut-cell
+      round-radius="0"
+      desc="You can swipe left and right"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">Delete</nut-button>
-      <nut-button shape="square" style="height: 100%;" type="info">Collect</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >Delete</nut-button
+      >
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="info"
+        >Collect</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -82,14 +116,28 @@ Need to introduce the `switch` component separately
 
 ```html
 <template>
-  <nut-swipe ref="refSwipe" @open="open" @close="close">
+  <nut-swipe
+    ref="refSwipe"
+    @open="open"
+    @close="close"
+  >
     <nut-cell title="Async on and off">
       <template v-slot:link>
-        <nut-switch v-model="checked" @change="changSwitch" active-text="on" inactive-text="off" />
+        <nut-switch
+          v-model="checked"
+          @change="changSwitch"
+          active-text="on"
+          inactive-text="off"
+        />
       </template>
     </nut-cell>
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">Delete</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >Delete</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -138,7 +186,12 @@ Need to introduce the `inputnumber` component separately
 <template>
   <nut-swipe>
     <template #left>
-      <nut-button shape="square" style="height: 100%;" type="success">Select</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="success"
+        >Select</nut-button
+      >
     </template>
     <nut-cell title="product description">
       <template v-slot:link>
@@ -146,8 +199,18 @@ Need to introduce the `inputnumber` component separately
       </template>
     </nut-cell>
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">Delete</nut-button>
-      <nut-button shape="square" style="height: 100%;" type="info">Collect</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >Delete</nut-button
+      >
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="info"
+        >Collect</nut-button
+      >
     </template>
   </nut-swipe>
 </template>

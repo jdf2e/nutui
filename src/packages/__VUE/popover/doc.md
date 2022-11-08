@@ -27,15 +27,30 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible.lightTheme"
+    :list="iconItemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">明朗风格</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >明朗风格</nut-button
+      >
     </template>
   </nut-popover>
 
-  <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible.darkTheme"
+    theme="dark"
+    :list="iconItemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">暗黑风格</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >暗黑风格</nut-button
+      >
     </template>
   </nut-popover>
 </template>
@@ -68,15 +83,30 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
+  <nut-popover
+    v-model:visible="visible.showIcon"
+    theme="dark"
+    :list="itemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">展示图标</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >展示图标</nut-button
+      >
     </template>
   </nut-popover>
 
-  <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
+  <nut-popover
+    v-model:visible="visible.disableAction"
+    :list="itemListDisabled"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">禁用选项</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >禁用选项</nut-button
+      >
     </template>
   </nut-popover>
 </template>
@@ -141,13 +171,24 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 <template>
   <nut-popover v-model:visible="visible.Customized">
     <template #reference>
-      <nut-button type="primary" shape="square">自定义内容</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >自定义内容</nut-button
+      >
     </template>
 
     <template #content>
       <div class="self-content">
-        <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <nut-icon :name="item.name" size="15"></nut-icon>
+        <div
+          class="self-content-item"
+          v-for="(item, index) in selfContent"
+          :key="index"
+        >
+          <nut-icon
+            :name="item.name"
+            size="15"
+          ></nut-icon>
           <div class="self-content-desc">{{ item.desc }}</div>
         </div>
       </div>
@@ -250,7 +291,12 @@ bottom-end    # 底部右侧位置
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible" location="top" theme="dark" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible"
+    location="top"
+    theme="dark"
+    :list="iconItemList"
+  >
     <template #reference>
       <div class="brick"></div>
     </template>

@@ -19,13 +19,33 @@ app.use(OverLay);
 ### 使用方式
 
 ```html
-<nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-<nut-dialog title="基础弹框" content="这是基础弹框。" v-model:visible="visible1" @cancel="onCancel" @ok="onOk" />
+<nut-cell
+  title="基础弹框"
+  @click="baseClick"
+></nut-cell>
+<nut-dialog
+  title="基础弹框"
+  content="这是基础弹框。"
+  v-model:visible="visible1"
+  @cancel="onCancel"
+  @ok="onOk"
+/>
 
-<nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-<nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
+<nut-cell
+  title="无标题弹框"
+  @click="noTitleClick"
+></nut-cell>
+<nut-dialog
+  content="这是无标题弹框。"
+  v-model:visible="visible2"
+  @cancel="onCancel"
+  @ok="onOk"
+/>
 
-<nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
+<nut-cell
+  title="提示弹框"
+  @click="tipsClick"
+></nut-cell>
 <nut-dialog
   no-cancel-btn
   title="温馨提示"
@@ -35,7 +55,10 @@ app.use(OverLay);
   @ok="onOk"
 />
 
-<nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
+<nut-cell
+  title="底部按钮 垂直调用"
+  @click="verticalClick"
+></nut-cell>
 <nut-dialog
   footer-direction="vertical"
   teleport="#app"
@@ -44,8 +67,17 @@ app.use(OverLay);
   v-model:visible="visible5"
 />
 
-<nut-cell title="异步关闭" @click="componentClick"></nut-cell>
-<nut-dialog title="异步关闭" :content="closeContent" :visible="visible4" @cancel="onCancel" @ok="onOkAsync" />
+<nut-cell
+  title="异步关闭"
+  @click="componentClick"
+></nut-cell>
+<nut-dialog
+  title="异步关闭"
+  :content="closeContent"
+  :visible="visible4"
+  @cancel="onCancel"
+  @ok="onOkAsync"
+/>
 ```
 
 ```javascript

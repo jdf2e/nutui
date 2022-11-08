@@ -27,11 +27,26 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="home"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="cart"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="my"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 
@@ -108,12 +123,30 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 
 ```html
 <template>
-  <nut-tabbar v-model:visible="active" size="18px">
-    <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
+  <nut-tabbar
+    v-model:visible="active"
+    size="18px"
+  >
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="home"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="cart"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="my"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -127,11 +160,29 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 ```html
 <template>
   <nut-tabbar>
-    <nut-tabbar-item tab-title="tab" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category" :dot="true"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="cart" num="110"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="home"
+      num="11"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+      :dot="true"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="cart"
+      num="110"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="my"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -144,12 +195,30 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 
 ```html
 <template>
-  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
+  <nut-tabbar
+    unactive-color="#7d7e80"
+    active-color="#1989fa"
+  >
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="home"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="cart"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="my"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -162,10 +231,22 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 
 ```html
 <template>
-  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
+  <nut-tabbar
+    unactive-color="#7d7e80"
+    active-color="#1989fa"
+  >
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="home"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -178,12 +259,33 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 
 ```html
 <template>
-  <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
-    <nut-tabbar-item tab-title="tab" href="" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" href="https://m.jd.com" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" href="######" icon="my"></nut-tabbar-item>
+  <nut-tabbar
+    :bottom="true"
+    :safeAreaInsetBottom="true"
+  >
+    <nut-tabbar-item
+      tab-title="tab"
+      href=""
+      icon="home"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="category"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      icon="find"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      href="https://m.jd.com"
+      icon="cart"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="tab"
+      href="######"
+      icon="my"
+    ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```

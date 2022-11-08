@@ -26,9 +26,17 @@ app.use(Button);
 ```html
 <template>
   <nut-swipe>
-    <nut-cell round-radius="0" desc="左滑删除" />
+    <nut-cell
+      round-radius="0"
+      desc="左滑删除"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">删除</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >删除</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -43,9 +51,17 @@ app.use(Button);
 ```html
 <template>
   <nut-swipe disabled>
-    <nut-cell round-radius="0" desc="禁止滑动" />
+    <nut-cell
+      round-radius="0"
+      desc="禁止滑动"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">删除</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >删除</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -61,12 +77,30 @@ app.use(Button);
 <template>
   <nut-swipe>
     <template #left>
-      <nut-button shape="square" style="height: 100%;" type="success">选择</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="success"
+        >选择</nut-button
+      >
     </template>
-    <nut-cell round-radius="0" desc="左滑右滑都可以哦" />
+    <nut-cell
+      round-radius="0"
+      desc="左滑右滑都可以哦"
+    />
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">删除</nut-button>
-      <nut-button shape="square" style="height: 100%;" type="info">收藏</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >删除</nut-button
+      >
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="info"
+        >收藏</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -82,14 +116,28 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-swipe ref="refSwipe" @open="open" @close="close">
+  <nut-swipe
+    ref="refSwipe"
+    @open="open"
+    @close="close"
+  >
     <nut-cell title="异步打开关闭">
       <template v-slot:link>
-        <nut-switch v-model="checked" @change="changSwitch" active-text="开" inactive-text="关" />
+        <nut-switch
+          v-model="checked"
+          @change="changSwitch"
+          active-text="开"
+          inactive-text="关"
+        />
       </template>
     </nut-cell>
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">删除</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >删除</nut-button
+      >
     </template>
   </nut-swipe>
 </template>
@@ -138,7 +186,12 @@ app.use(Button);
 <template>
   <nut-swipe>
     <template #left>
-      <nut-button shape="square" style="height: 100%;" type="success">选择</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="success"
+        >选择</nut-button
+      >
     </template>
     <nut-cell title="商品描述">
       <template v-slot:link>
@@ -146,8 +199,18 @@ app.use(Button);
       </template>
     </nut-cell>
     <template #right>
-      <nut-button shape="square" style="height: 100%;" type="danger">删除</nut-button>
-      <nut-button shape="square" style="height: 100%;" type="info">收藏</nut-button>
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="danger"
+        >删除</nut-button
+      >
+      <nut-button
+        shape="square"
+        style="height: 100%;"
+        type="info"
+        >收藏</nut-button
+      >
     </template>
   </nut-swipe>
 </template>

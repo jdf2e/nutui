@@ -26,8 +26,15 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+    <nut-menu-item
+      v-model="state.value1"
+      :options="state.options1"
+    />
+    <nut-menu-item
+      v-model="state.value2"
+      @change="handleChange"
+      :options="state.options2"
+    />
   </nut-menu>
 </template>
 
@@ -75,8 +82,14 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" />
-    <nut-menu-item title="筛选" ref="item">
+    <nut-menu-item
+      v-model="state.value1"
+      :options="state.options1"
+    />
+    <nut-menu-item
+      title="筛选"
+      ref="item"
+    >
       <div
         :style="{ 
           display: 'flex', 
@@ -132,7 +145,11 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
+    <nut-menu-item
+      v-model="state.value3"
+      :cols="2"
+      :options="state.options3"
+    />
   </nut-menu>
 </template>
 
@@ -182,8 +199,15 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu active-color="green">
-    <nut-menu-item v-model="state.value1" :options="state.options1" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+    <nut-menu-item
+      v-model="state.value1"
+      :options="state.options1"
+    />
+    <nut-menu-item
+      v-model="state.value2"
+      @change="handleChange"
+      :options="state.options2"
+    />
   </nut-menu>
 </template>
 
@@ -229,8 +253,17 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+    <nut-menu-item
+      v-model="state.value1"
+      :options="state.options1"
+      titleIcon="joy-smile"
+    />
+    <nut-menu-item
+      v-model="state.value2"
+      @change="handleChange"
+      :options="state.options2"
+      optionIcon="checklist"
+    />
   </nut-menu>
 </template>
 
@@ -277,8 +310,15 @@ app.use(Popup);
 <template>
   <div class="blank"></div>
   <nut-menu direction="up">
-    <nut-menu-item v-model="state.value1" :options="state.options1" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+    <nut-menu-item
+      v-model="state.value1"
+      :options="state.options1"
+    />
+    <nut-menu-item
+      v-model="state.value2"
+      @change="handleChange"
+      :options="state.options2"
+    />
   </nut-menu>
 </template>
 
@@ -331,8 +371,16 @@ app.use(Popup);
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
-    <nut-menu-item disabled v-model="state.value2" :options="state.options2" />
+    <nut-menu-item
+      disabled
+      v-model="state.value1"
+      :options="state.options1"
+    />
+    <nut-menu-item
+      disabled
+      v-model="state.value2"
+      :options="state.options2"
+    />
   </nut-menu>
 </template>
 

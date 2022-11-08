@@ -39,7 +39,12 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
+    <nut-progress
+      percentage="30"
+      stroke-color=" rgba(250,44,25,0.47)"
+      stroke-width="20"
+      text-color="red"
+    />
   </nut-cell>
 </template>
 ```
@@ -53,7 +58,11 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="50" :show-text="false" stroke-height="24" />
+    <nut-progress
+      percentage="50"
+      :show-text="false"
+      stroke-height="24"
+    />
   </nut-cell>
 </template>
 ```
@@ -81,7 +90,10 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="60" :text-inside="true" />
+    <nut-progress
+      percentage="60"
+      :text-inside="true"
+    />
   </nut-cell>
 </template>
 ```
@@ -95,7 +107,10 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="60" :text-inside="true">
+    <nut-progress
+      percentage="60"
+      :text-inside="true"
+    >
       <nut-icon
         style="display: block;"
         size="30"
@@ -117,13 +132,28 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="30" :text-inside="true" size="small"> </nut-progress>
+    <nut-progress
+      percentage="30"
+      :text-inside="true"
+      size="small"
+    >
+    </nut-progress>
   </nut-cell>
   <nut-cell>
-    <nut-progress percentage="50" :text-inside="true" size="base"> </nut-progress>
+    <nut-progress
+      percentage="50"
+      :text-inside="true"
+      size="base"
+    >
+    </nut-progress>
   </nut-cell>
   <nut-cell>
-    <nut-progress percentage="70" :text-inside="true" size="large"> </nut-progress>
+    <nut-progress
+      percentage="70"
+      :text-inside="true"
+      size="large"
+    >
+    </nut-progress>
   </nut-cell>
 </template>
 ```
@@ -145,7 +175,11 @@ app.use(Icon);
       />
     </nut-cell>
     <nut-cell>
-      <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
+      <nut-progress
+        percentage="50"
+        :stroke-width="strokeWidth"
+        status="icon"
+      />
     </nut-cell>
     <nut-cell>
       <nut-progress

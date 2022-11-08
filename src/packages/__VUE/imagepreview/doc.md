@@ -23,8 +23,17 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" @close="hideFn" />
-  <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="展示图片预览"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -75,8 +84,19 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn" />
-  <nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    :content-close="true"
+    :init-no="3"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="设置初始页码的图片预览"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -134,7 +154,12 @@ app.use(ImagePreview);
     pagination-color="red"
     @close="hideFn"
   />
-  <nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-cell
+    isLink
+    title="设置轮播指示器及颜色"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -187,8 +212,18 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-imagepreview :show="showPreview" :images="imgData" :videos="videoData" @close="hideFn" />
-  <nut-cell isLink title="视频、图片预览" :showIcon="true" @click="showFn"></nut-cell>
+  <nut-imagepreview
+    :show="showPreview"
+    :images="imgData"
+    :videos="videoData"
+    @close="hideFn"
+  />
+  <nut-cell
+    isLink
+    title="视频、图片预览"
+    :showIcon="true"
+    @click="showFn"
+  ></nut-cell>
 </template>
 
 <script lang="ts">
@@ -263,7 +298,12 @@ app.use(ImagePreview);
 
 ```html
 <template>
-  <nut-cell isLink title="函数式调用的图片预览" :showIcon="true" @click="fnShow"></nut-cell>
+  <nut-cell
+    isLink
+    title="函数式调用的图片预览"
+    :showIcon="true"
+    @click="fnShow"
+  ></nut-cell>
 </template>
 
 <script lang="ts">

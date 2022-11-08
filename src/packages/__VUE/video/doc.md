@@ -20,7 +20,14 @@ app.use(Video);
 
 ```html
 <template>
-  <nut-video :source="source" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+    @play="play"
+    @pause="pause"
+    @playend="playend"
+  >
+  </nut-video>
 </template>
 
 <script lang="ts">
@@ -61,7 +68,10 @@ autoplay 属性设置视频自动播放
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -98,7 +108,10 @@ muted 属性设置视频初始化静音
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -134,7 +147,10 @@ poster 属性设置视频海报
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -171,7 +187,10 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -207,7 +226,10 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -247,8 +269,15 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 ```html
 <template>
-  <nut-video :source="source1" :options="options"></nut-video>
-  <nut-button type="primary" @click="changeVideo">切换视频</nut-button>
+  <nut-video
+    :source="source1"
+    :options="options"
+  ></nut-video>
+  <nut-button
+    type="primary"
+    @click="changeVideo"
+    >切换视频</nut-button
+  >
 </template>
 
 <script lang="ts">

@@ -24,7 +24,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="Basic Usage" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="Basic Usage"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -72,7 +76,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="Show Button Group" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="Show Button Group"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -129,7 +137,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="Custom Password Length" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="Custom Password Length"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -183,7 +195,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="Forget password" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="Forget password"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"
@@ -235,7 +251,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="Error Message" is-link @click="state.visible = true;"></nut-cell>
+  <nut-cell
+    title="Error Message"
+    is-link
+    @click="state.visible = true;"
+  ></nut-cell>
   <nut-shortpassword
     v-model="state.value"
     v-model:visible="state.visible"

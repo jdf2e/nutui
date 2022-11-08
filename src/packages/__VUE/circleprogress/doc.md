@@ -38,7 +38,11 @@ app.use(CircleProgress);
 ```html
 <template>
   <nut-cell>
-    <nut-circleprogress :progress="50" strokeWidth="10"> </nut-circleprogress>
+    <nut-circleprogress
+      :progress="50"
+      strokeWidth="10"
+    >
+    </nut-circleprogress>
   </nut-cell>
 </template>
 ```
@@ -52,8 +56,14 @@ app.use(CircleProgress);
 ```html
 <template>
   <nut-cell>
-    <nut-circleprogress :progress="50" color="red" />
-    <nut-circleprogress :progress="100" :color="gradientColor" />
+    <nut-circleprogress
+      :progress="50"
+      color="red"
+    />
+    <nut-circleprogress
+      :progress="100"
+      :color="gradientColor"
+    />
   </nut-cell>
 </template>
 
@@ -82,7 +92,10 @@ app.use(CircleProgress);
 ```html
 <template>
   <nut-cell>
-    <nut-circleprogress :progress="50" radius="60"></nut-circleprogress>
+    <nut-circleprogress
+      :progress="50"
+      radius="60"
+    ></nut-circleprogress>
   </nut-cell>
 </template>
 ```
@@ -96,7 +109,11 @@ app.use(CircleProgress);
 ```html
 <template>
   <nut-cell>
-    <nut-circleprogress :progress="50" radius="60">自定义</nut-circleprogress>
+    <nut-circleprogress
+      :progress="50"
+      radius="60"
+      >自定义</nut-circleprogress
+    >
   </nut-cell>
 </template>
 ```
@@ -113,8 +130,16 @@ app.use(CircleProgress);
     <nut-circleprogress :progress="percent"></nut-circleprogress>
   </div>
   <div>
-    <nut-button type="primary" @click="setReduceVal">减少</nut-button>
-    <nut-button type="primary" @click="setAddVal">增加</nut-button>
+    <nut-button
+      type="primary"
+      @click="setReduceVal"
+      >减少</nut-button
+    >
+    <nut-button
+      type="primary"
+      @click="setAddVal"
+      >增加</nut-button
+    >
   </div>
 </template>
 

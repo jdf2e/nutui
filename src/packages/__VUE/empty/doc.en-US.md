@@ -36,9 +36,18 @@ app.use(Empty);
 
 ```html
 <template>
-  <nut-empty image="empty" description="no content"></nut-empty>
-  <nut-empty image="error" description="error"></nut-empty>
-  <nut-empty image="network" description="no network"></nut-empty>
+  <nut-empty
+    image="empty"
+    description="no content"
+  ></nut-empty>
+  <nut-empty
+    image="error"
+    description="error"
+  ></nut-empty>
+  <nut-empty
+    image="network"
+    description="no network"
+  ></nut-empty>
 </template>
 ```
 
@@ -66,9 +75,16 @@ app.use(Empty);
 
 ```html
 <template>
-  <nut-empty image="error" description="Failed to load">
+  <nut-empty
+    image="error"
+    description="Failed to load"
+  >
     <div style="margin-top: 10px;">
-      <nut-button icon="refresh" type="primary">Retry</nut-button>
+      <nut-button
+        icon="refresh"
+        type="primary"
+        >Retry</nut-button
+      >
     </div>
   </nut-empty>
 </template>

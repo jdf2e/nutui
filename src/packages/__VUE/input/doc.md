@@ -24,7 +24,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.text" label="文本" placeholder="文本" />
+  <nut-input
+    v-model="state.text"
+    label="文本"
+    placeholder="文本"
+  />
 </template>
 
 <script lang="ts">
@@ -50,11 +54,35 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input label="文本" placeholder="文本" v-model="state.text" />
-  <nut-input label="密码" placeholder="密码" v-model="state.password" type="password" />
-  <nut-input label="数字" placeholder="数字" v-model="state.number" type="number" />
-  <nut-input label="整数" placeholder="整数" v-model="state.digit" type="digit" />
-  <nut-input label="手机号" placeholder="手机号" v-model="state.tel" type="tel" />
+  <nut-input
+    label="文本"
+    placeholder="文本"
+    v-model="state.text"
+  />
+  <nut-input
+    label="密码"
+    placeholder="密码"
+    v-model="state.password"
+    type="password"
+  />
+  <nut-input
+    label="数字"
+    placeholder="数字"
+    v-model="state.number"
+    type="number"
+  />
+  <nut-input
+    label="整数"
+    placeholder="整数"
+    v-model="state.digit"
+    type="digit"
+  />
+  <nut-input
+    label="手机号"
+    placeholder="手机号"
+    v-model="state.tel"
+    type="tel"
+  />
 </template>
 
 <script lang="ts">
@@ -84,8 +112,18 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input label="文本" placeholder="只读" v-model="state.readonly" readonly />
-  <nut-input label="文本" placeholder="禁用" v-model="state.disabled" disabled />
+  <nut-input
+    label="文本"
+    placeholder="只读"
+    v-model="state.readonly"
+    readonly
+  />
+  <nut-input
+    label="文本"
+    placeholder="禁用"
+    v-model="state.disabled"
+    disabled
+  />
 </template>
 
 <script lang="ts">
@@ -114,8 +152,20 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.showIcon" label="文本" placeholder="显示图标" left-icon="dongdong" right-icon="ask2" />
-  <nut-input v-model="state.clear" label="文本" placeholder="显示清除图标" clearable clearSize="14" />
+  <nut-input
+    v-model="state.showIcon"
+    label="文本"
+    placeholder="显示图标"
+    left-icon="dongdong"
+    right-icon="ask2"
+  />
+  <nut-input
+    v-model="state.clear"
+    label="文本"
+    placeholder="显示清除图标"
+    clearable
+    clearSize="14"
+  />
 </template>
 
 <script lang="ts">
@@ -142,9 +192,24 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.required" label="文本" placeholder="必填项" required />
-  <nut-input v-model="state.error1" label="文本" placeholder="输入内容标红" error />
-  <nut-input v-model="state.error2" label="文本" placeholder="底部错误提示文案" error-message="底部错误提示文案" />
+  <nut-input
+    v-model="state.required"
+    label="文本"
+    placeholder="必填项"
+    required
+  />
+  <nut-input
+    v-model="state.error1"
+    label="文本"
+    placeholder="输入内容标红"
+    error
+  />
+  <nut-input
+    v-model="state.error2"
+    label="文本"
+    placeholder="底部错误提示文案"
+    error-message="底部错误提示文案"
+  />
 </template>
 
 <script lang="ts">
@@ -172,9 +237,19 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.buttonVal" label="短信验证码" placeholder="请输入短信验证码" clearable center>
+  <nut-input
+    v-model="state.buttonVal"
+    label="短信验证码"
+    placeholder="请输入短信验证码"
+    clearable
+    center
+  >
     <template #button>
-      <nut-button size="small" type="primary">发送验证码</nut-button>
+      <nut-button
+        size="small"
+        type="primary"
+        >发送验证码</nut-button
+      >
     </template>
   </nut-input>
 </template>
@@ -202,7 +277,12 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.format1" label="文本" placeholder="在输入时执行格式化" :formatter="formatter" />
+  <nut-input
+    v-model="state.format1"
+    label="文本"
+    placeholder="在输入时执行格式化"
+    :formatter="formatter"
+  />
   <nut-input
     v-model="state.format2"
     label="文本"
@@ -272,8 +352,18 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.align1" label="文本" label-align="right" placeholder="文本内容对齐" />
-  <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
+  <nut-input
+    v-model="state.align1"
+    label="文本"
+    label-align="right"
+    placeholder="文本内容对齐"
+  />
+  <nut-input
+    v-model="state.align2"
+    label="文本"
+    input-align="right"
+    placeholder="输入框内容对齐"
+  />
 </template>
 
 <script lang="ts">
@@ -300,8 +390,16 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.noBorder1" :border="false" label="无边框" />
-  <nut-input v-model="state.noBorder2" :border="false" label="无边框" />
+  <nut-input
+    v-model="state.noBorder1"
+    :border="false"
+    label="无边框"
+  />
+  <nut-input
+    v-model="state.noBorder2"
+    :border="false"
+    label="无边框"
+  />
 </template>
 
 <script lang="ts">

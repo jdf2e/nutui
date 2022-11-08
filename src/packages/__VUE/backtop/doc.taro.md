@@ -120,7 +120,11 @@ app.use(Icon);
 ### 自定义样式
 
 ```html
-<nut-backtop :distance="100" :bottom="90"><div>自定义内容</div></nut-backtop>
+<nut-backtop
+  :distance="100"
+  :bottom="90"
+  ><div>自定义内容</div></nut-backtop
+>
 ```
 
 ### click 事件

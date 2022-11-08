@@ -26,7 +26,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-cell :title="Basic Usage" desc="" @click="base = true"></nut-cell>
+  <nut-cell
+    :title="Basic Usage"
+    desc=""
+    @click="base = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="base"
     :sku="sku"
@@ -96,7 +100,11 @@ app.use(Price);
 
 ```html
 <template>
-  <nut-cell title="Not Sell" desc="" @click="notSell = true"></nut-cell>
+  <nut-cell
+    title="Not Sell"
+    desc=""
+    @click="notSell = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="notSell"
     :sku="sku"
@@ -107,8 +115,16 @@ app.use(Price);
   >
     <template #sku-operate>
       <div class="sku-operate-box">
-        <nut-button class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
-        <nut-button class="sku-operate-box-dis" type="info">到货通知</nut-button>
+        <nut-button
+          class="sku-operate-box-dis"
+          type="warning"
+          >查看相似商品</nut-button
+        >
+        <nut-button
+          class="sku-operate-box-dis"
+          type="info"
+          >到货通知</nut-button
+        >
       </div>
     </template>
   </nut-sku>
@@ -196,7 +212,11 @@ You can configure the maximum value and minimum value of the digital input box a
 
 ```html
 <template>
-  <nut-cell title="Custom Stepper" desc="" @click="customStepper = true"></nut-cell>
+  <nut-cell
+    title="Custom Stepper"
+    desc=""
+    @click="customStepper = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="customStepper"
     :sku="sku"
@@ -291,7 +311,11 @@ The default partition is divided into several areas, which are defined as slots 
 
 ```html
 <template>
-  <nut-cell title="Custom Slots" desc="" @click="customBySlot = true"></nut-cell>
+  <nut-cell
+    title="Custom Slots"
+    desc=""
+    @click="customBySlot = true"
+  ></nut-cell>
   <nut-sku
     v-model:visible="customBySlot"
     :sku="sku"
@@ -303,7 +327,12 @@ The default partition is divided into several areas, which are defined as slots 
     <!-- 商品展示区，价格区域 -->
     <template #sku-header-price>
       <div>
-        <nut-price :price="goods.price" :needSymbol="true" :thousands="false"> </nut-price>
+        <nut-price
+          :price="goods.price"
+          :needSymbol="true"
+          :thousands="false"
+        >
+        </nut-price>
         <span class="tag"></span>
       </div>
     </template>
@@ -325,8 +354,18 @@ The default partition is divided into several areas, which are defined as slots 
     <!-- 底部按钮操作区 -->
     <template #sku-operate>
       <div class="sku-operate-box">
-        <nut-button class="sku-operate-item" shape="square" type="warning">加入购物车</nut-button>
-        <nut-button class="sku-operate-item" shape="square" type="primary">立即购买</nut-button>
+        <nut-button
+          class="sku-operate-item"
+          shape="square"
+          type="warning"
+          >加入购物车</nut-button
+        >
+        <nut-button
+          class="sku-operate-item"
+          shape="square"
+          type="primary"
+          >立即购买</nut-button
+        >
       </div>
     </template>
   </nut-sku>

@@ -26,12 +26,19 @@ app.use(TabPane);
 
 ```html
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+  <nut-navbar
+    @on-click-back="back"
+    @on-click-title="title"
+    title="订单详情"
+  >
     <template #left>
       <div>返回</div>
     </template>
     <template #right>
-      <nut-icon class="right" name="share-n"></nut-icon>
+      <nut-icon
+        class="right"
+        name="share-n"
+      ></nut-icon>
     </template>
   </nut-navbar>
 
@@ -54,7 +61,10 @@ app.use(TabPane);
     desc="编辑"
   >
     <template #right>
-      <nut-icon class="right" name="more-x"></nut-icon>
+      <nut-icon
+        class="right"
+        name="more-x"
+      ></nut-icon>
     </template>
   </nut-navbar>
 </template>
@@ -91,16 +101,27 @@ app.use(TabPane);
 
 ```html
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
+  <nut-navbar
+    @on-click-back="back"
+    @on-click-title="title"
+    @on-click-right="rightClick"
+    desc="编辑"
+  >
     <template #content>
-      <nut-tabs v-model="tab1value" @click="changeTab">
+      <nut-tabs
+        v-model="tab1value"
+        @click="changeTab"
+      >
         <nut-tabpane title="标题1"> </nut-tabpane>
         <nut-tabpane title="标题2"> </nut-tabpane>
       </nut-tabs>
     </template>
 
     <template #right>
-      <nut-icon class="right" name="more-x"></nut-icon>
+      <nut-icon
+        class="right"
+        name="more-x"
+      ></nut-icon>
     </template>
   </nut-navbar>
 </template>
@@ -144,18 +165,27 @@ app.use(TabPane);
 <template>
   <nut-navbar @on-click-back="back">
     <template #content>
-      <nut-tabs v-model="tab2value" @click="changeTabList">
+      <nut-tabs
+        v-model="tab2value"
+        @click="changeTabList"
+      >
         <nut-tabpane title="标题1"> </nut-tabpane>
         <nut-tabpane title="标题2"> </nut-tabpane>
         <nut-tabpane title="标题3"> </nut-tabpane>
       </nut-tabs>
     </template>
     <template #icons>
-      <nut-icon class="icon" name="share"></nut-icon>
+      <nut-icon
+        class="icon"
+        name="share"
+      ></nut-icon>
     </template>
 
     <template #right>
-      <nut-icon class="right" name="horizontal-n"></nut-icon>
+      <nut-icon
+        class="right"
+        name="horizontal-n"
+      ></nut-icon>
     </template>
   </nut-navbar>
 </template>

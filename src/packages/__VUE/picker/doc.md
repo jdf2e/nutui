@@ -29,8 +29,18 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker v-model:visible="show" :columns="columns" title="城市选择" @change="change" @confirm="confirm">
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    @change="change"
+    @confirm="confirm"
+  >
   </nut-picker>
 </template>
 
@@ -79,8 +89,18 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
-  <nut-picker v-model="selectedValue" v-model:visible="show" :columns="columns" title="城市选择" @confirm="confirm">
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="() => { show = true;}"
+  ></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    @confirm="confirm"
+  >
   </nut-picker>
 </template>
 
@@ -127,7 +147,11 @@ app.use(OverLay);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="() => { show = true;}"
+  ></nut-cell>
   <nut-picker
     v-model="selectedValue"
     v-model:visible="show"
@@ -182,7 +206,11 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
   <nut-picker
     v-model="selectedTime"
     v-model:visible="show"
@@ -248,7 +276,11 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
   <nut-picker
     v-model:visible="show"
     v-model="selectedCascader"
@@ -343,7 +375,11 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
   <nut-picker
     v-model="asyncValue"
     v-model:visible="show"
@@ -405,9 +441,22 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
 
 ```html
 <template>
-  <nut-cell title="请选择截止时间" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker v-model:visible="show" :columns="asyncColumns" title="日期选择" @confirm="confirm">
-    <nut-button block @click="alwaysFun">永远有效</nut-button>
+  <nut-cell
+    title="请选择截止时间"
+    :desc="desc"
+    @click="()=>{show=true}"
+  ></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="asyncColumns"
+    title="日期选择"
+    @confirm="confirm"
+  >
+    <nut-button
+      block
+      @click="alwaysFun"
+      >永远有效</nut-button
+    >
   </nut-picker>
 </template>
 

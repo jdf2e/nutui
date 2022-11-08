@@ -26,8 +26,17 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
-  <nut-old-picker v-model:visible="show" :list-data="listData" title="城市选择" @confirm="confirm"></nut-old-picker>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="open"
+  ></nut-cell>
+  <nut-old-picker
+    v-model:visible="show"
+    :list-data="listData"
+    title="城市选择"
+    @confirm="confirm"
+  ></nut-old-picker>
 </template>
 
 <script>
@@ -63,7 +72,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="open"
+  ></nut-cell>
   <nut-old-picker
     v-model:visible="show"
     :list-data="listData"
@@ -106,8 +119,17 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
-  <nut-old-picker v-model:visible="show" :list-data="listData" title="城市选择" @confirm="confirm"></nut-old-picker>
+  <nut-cell
+    title="请选择城市"
+    :desc="desc"
+    @click="open"
+  ></nut-cell>
+  <nut-old-picker
+    v-model:visible="show"
+    :list-data="listData"
+    title="城市选择"
+    @confirm="confirm"
+  ></nut-old-picker>
 </template>
 
 <script>
@@ -155,8 +177,17 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="地址" :desc="desc" @click="open"></nut-cell>
-  <nut-old-picker v-model:visible="show" :list-data="listData" title="地址选择" @confirm="confirm"></nut-old-picker>
+  <nut-cell
+    title="地址"
+    :desc="desc"
+    @click="open"
+  ></nut-cell>
+  <nut-old-picker
+    v-model:visible="show"
+    :list-data="listData"
+    title="地址选择"
+    @confirm="confirm"
+  ></nut-old-picker>
 </template>
 
 <script>
@@ -223,7 +254,11 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
+  <nut-cell
+    title="请选择时间"
+    :desc="desc"
+    @click="open"
+  ></nut-cell>
   <nut-old-picker
     v-model:visible="show"
     :list-data="listData"

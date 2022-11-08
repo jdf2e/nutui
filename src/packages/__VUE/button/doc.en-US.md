@@ -44,8 +44,16 @@ The button is set as a plain button through the `plain` property, the text of th
 
 ```html
 <template>
-  <nut-button plain type="primary">Plain</nut-button>
-  <nut-button plain type="info">Plain</nut-button>
+  <nut-button
+    plain
+    type="primary"
+    >Plain</nut-button
+  >
+  <nut-button
+    plain
+    type="info"
+    >Plain</nut-button
+  >
 </template>
 ```
 
@@ -59,9 +67,23 @@ The button is disabled through the `disabled` property, and the button cannot be
 
 ```html
 <template>
-  <nut-button disabled type="primary">Disabled</nut-button>
-  <nut-button plain disabled type="info">Disabled</nut-button>
-  <nut-button plain disabled type="primary">Disabled</nut-button>
+  <nut-button
+    disabled
+    type="primary"
+    >Disabled</nut-button
+  >
+  <nut-button
+    plain
+    disabled
+    type="info"
+    >Disabled</nut-button
+  >
+  <nut-button
+    plain
+    disabled
+    type="primary"
+    >Disabled</nut-button
+  >
 </template>
 ```
 
@@ -75,7 +97,11 @@ Set the button shape through the `shape` property, support circle and square but
 
 ```html
 <template>
-  <nut-button shape="square" type="primary">Square</nut-button>
+  <nut-button
+    shape="square"
+    type="primary"
+    >Square</nut-button
+  >
   <nut-button type="info">Round</nut-button>
 </template>
 ```
@@ -88,9 +114,21 @@ Set the button shape through the `shape` property, support circle and square but
 
 ```html
 <template>
-  <nut-button loading type="info"></nut-button>
-  <nut-button loading type="warning">Loading...</nut-button>
-  <nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
+  <nut-button
+    loading
+    type="info"
+  ></nut-button>
+  <nut-button
+    loading
+    type="warning"
+    >Loading...</nut-button
+  >
+  <nut-button
+    :loading="isLoading"
+    type="success"
+    @click="changeLoading"
+    >Click me!</nut-button
+  >
 </template>
 
 <script>
@@ -121,8 +159,18 @@ Set the button shape through the `shape` property, support circle and square but
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-  <nut-button shape="square" type="primary" icon="star">Star</nut-button>
+  <nut-button
+    shape="square"
+    plain
+    type="primary"
+    icon="star-fill"
+  ></nut-button>
+  <nut-button
+    shape="square"
+    type="primary"
+    icon="star"
+    >Star</nut-button
+  >
 </template>
 ```
 
@@ -153,10 +201,22 @@ Support `large`, `normal`, `small`, `mini` four sizes, the default is `normal`.
 
 ```html
 <template>
-  <nut-button size="large" type="primary">Large</nut-button>
+  <nut-button
+    size="large"
+    type="primary"
+    >Large</nut-button
+  >
   <nut-button type="primary">Normal</nut-button>
-  <nut-button size="small" type="primary">Small</nut-button>
-  <nut-button size="mini" type="primary">Mini</nut-button>
+  <nut-button
+    size="small"
+    type="primary"
+    >Small</nut-button
+  >
+  <nut-button
+    size="mini"
+    type="primary"
+    >Mini</nut-button
+  >
 </template>
 ```
 
@@ -170,7 +230,11 @@ By default, the button is an inline block-level element. The `block` attribute c
 
 ```html
 <template>
-  <nut-button block type="primary">Block Element</nut-button>
+  <nut-button
+    block
+    type="primary"
+    >Block Element</nut-button
+  >
 </template>
 ```
 
@@ -185,7 +249,11 @@ The color of the button can be customized through the color property.
 ```html
 <template>
   <nut-button color="#7232dd">Pure</nut-button>
-  <nut-button color="#7232dd" plain>Pure</nut-button>
+  <nut-button
+    color="#7232dd"
+    plain
+    >Pure</nut-button
+  >
   <nut-button color="linear-gradient(to right, #ff6034, #ee0a24)"> Gradient </nut-button>
 </template>
 ```

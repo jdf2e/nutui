@@ -21,10 +21,23 @@ app.use(PullRefresh);
 
 ```html
 <div class="vertical">
-  <nut-pullrefresh @refresh="refresh" @down-refresh="downRefresh" :useWindow="false" containerId="pull">
-    <div class="content" id="pull">
+  <nut-pullrefresh
+    @refresh="refresh"
+    @down-refresh="downRefresh"
+    :useWindow="false"
+    containerId="pull"
+  >
+    <div
+      class="content"
+      id="pull"
+    >
       <div class="main">
-        <div class="text-data" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item">我是测试数据 {{ item }}</div>
+        <div
+          class="text-data"
+          v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          :key="item"
+          >我是测试数据 {{ item }}</div
+        >
       </div>
     </div>
   </nut-pullrefresh>
@@ -66,9 +79,17 @@ export default {
     containerId="pullH"
     direction="horizontal"
   >
-    <div class="contentH" id="pullH">
+    <div
+      class="contentH"
+      id="pullH"
+    >
       <div class="mainH">
-        <div class="text-data" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item">我是测试数据 {{ item }}</div>
+        <div
+          class="text-data"
+          v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          :key="item"
+          >我是测试数据 {{ item }}</div
+        >
       </div>
     </div>
   </nut-pullrefresh>

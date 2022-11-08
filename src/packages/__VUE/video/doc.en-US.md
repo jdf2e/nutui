@@ -20,7 +20,14 @@ app.use(Video);
 
 ```html
 <template>
-  <nut-video :source="source" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+    @play="play"
+    @pause="pause"
+    @playend="playend"
+  >
+  </nut-video>
 </template>
 
 <script lang="ts">
@@ -61,7 +68,10 @@ app.use(Video);
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -98,7 +108,10 @@ The `muted` property sets the initial mute of the video
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -134,7 +147,10 @@ The `poster` property sets the video poster
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -171,7 +187,10 @@ The `playsinline` property sets the mobile terminal video to play in line and pr
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -207,7 +226,10 @@ When setting the video as the background image, it is necessary to set `muted`, 
 
 ```html
 <template>
-  <nut-video :source="source" :options="options"></nut-video>
+  <nut-video
+    :source="source"
+    :options="options"
+  ></nut-video>
 </template>
 
 <script lang="ts">
@@ -247,8 +269,15 @@ Reset the video when the video address changes
 
 ```html
 <template>
-  <nut-video :source="source1" :options="options"></nut-video>
-  <nut-button type="primary" @click="changeVideo">Video switching</nut-button>
+  <nut-video
+    :source="source1"
+    :options="options"
+  ></nut-video>
+  <nut-button
+    type="primary"
+    @click="changeVideo"
+    >Video switching</nut-button
+  >
 </template>
 
 <script lang="ts">

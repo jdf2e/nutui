@@ -25,8 +25,19 @@ For online debugging, please change the browser to mobile mode
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Default Keyboard"></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-numberkeyboard>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="Default Keyboard"
+  ></nut-cell>
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    @input="input"
+    @delete="onDelete"
+    @close="close"
+  >
+  </nut-numberkeyboard>
 </template>
 
 <script>
@@ -67,7 +78,12 @@ For online debugging, please change the browser to mobile mode
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Keyboard With Sidebar"></nut-cell>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="Keyboard With Sidebar"
+  ></nut-cell>
   <nut-numberkeyboard
     type="rightColumn"
     v-model:visible="visible"
@@ -115,7 +131,12 @@ For online debugging, please change the browser to mobile mode
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Random Key Order"></nut-cell>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="Random Key Order"
+  ></nut-cell>
   <nut-numberkeyboard
     type="rightColumn"
     v-model:visible="visible"
@@ -163,8 +184,19 @@ For online debugging, please change the browser to mobile mode
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="Show Keyboard With Title"></nut-cell>
-  <nut-numberkeyboard title="title" v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard(4)"
+    :showIcon="true"
+    title="Show Keyboard With Title"
+  ></nut-cell>
+  <nut-numberkeyboard
+    title="title"
+    v-model:visible="visible"
+    :custom-key="customKey"
+    @input="input"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 
@@ -204,8 +236,18 @@ For online debugging, please change the browser to mobile mode
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="IdNumber Keyboard"></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard(4)"
+    :showIcon="true"
+    title="IdNumber Keyboard"
+  ></nut-cell>
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    :custom-key="customKey"
+    @input="input"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 
@@ -253,7 +295,12 @@ For online debugging, please change the browser to mobile mode
     :showIcon="true"
     title="Bind Value"
   ></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" v-model:value="value" maxlength="6" @close="close">
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    v-model:value="value"
+    maxlength="6"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 

@@ -25,8 +25,19 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="默认键盘"></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-numberkeyboard>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="默认键盘"
+  ></nut-cell>
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    @input="input"
+    @delete="onDelete"
+    @close="close"
+  >
+  </nut-numberkeyboard>
 </template>
 
 <script>
@@ -67,7 +78,12 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="带右侧栏键盘"></nut-cell>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="带右侧栏键盘"
+  ></nut-cell>
   <nut-numberkeyboard
     type="rightColumn"
     v-model:visible="visible"
@@ -115,7 +131,12 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="随机数键盘"></nut-cell>
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard"
+    :showIcon="true"
+    title="随机数键盘"
+  ></nut-cell>
   <nut-numberkeyboard
     type="rightColumn"
     v-model:visible="visible"
@@ -163,8 +184,19 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
-  <nut-numberkeyboard title="默认键盘" v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard(4)"
+    :showIcon="true"
+    title="带标题栏键盘"
+  ></nut-cell>
+  <nut-numberkeyboard
+    title="默认键盘"
+    v-model:visible="visible"
+    :custom-key="customKey"
+    @input="input"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 
@@ -204,8 +236,18 @@ app.use(Popup);
 
 ```html
 <template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="身份证键盘"></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
+  <nut-cell
+    :isLink="true"
+    @click="showKeyBoard(4)"
+    :showIcon="true"
+    title="身份证键盘"
+  ></nut-cell>
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    :custom-key="customKey"
+    @input="input"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 
@@ -253,7 +295,12 @@ app.use(Popup);
     :showIcon="true"
     title="双向绑定："
   ></nut-cell>
-  <nut-numberkeyboard v-model:visible="visible" v-model:value="value" maxlength="6" @close="close">
+  <nut-numberkeyboard
+    v-model:visible="visible"
+    v-model:value="value"
+    maxlength="6"
+    @close="close"
+  >
   </nut-numberkeyboard>
 </template>
 

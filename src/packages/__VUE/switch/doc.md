@@ -47,7 +47,10 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch v-model="checked" disable />
+  <nut-switch
+    v-model="checked"
+    disable
+  />
 </template>
 
 <script lang="ts">
@@ -71,7 +74,11 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch v-model="checked" loading color="red" />
+  <nut-switch
+    v-model="checked"
+    loading
+    color="red"
+  />
 </template>
 
 <script lang="ts">
@@ -95,7 +102,10 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch v-model="checked" @change="change" />
+  <nut-switch
+    v-model="checked"
+    @change="change"
+  />
 </template>
 
 <script lang="ts">
@@ -124,7 +134,10 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch :model-value="checkedAsync" @change="changeAsync" />
+  <nut-switch
+    :model-value="checkedAsync"
+    @change="changeAsync"
+  />
 </template>
 
 <script lang="ts">
@@ -157,7 +170,10 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch v-model="checked" active-color="blue" />
+  <nut-switch
+    v-model="checked"
+    active-color="blue"
+  />
 </template>
 
 <script lang="ts">
@@ -181,7 +197,11 @@ app.use(Switch);
 
 ```html
 <template>
-  <nut-switch v-model="checked" active-text="开" inactive-text="关" />
+  <nut-switch
+    v-model="checked"
+    active-text="开"
+    inactive-text="关"
+  />
 </template>
 
 <script lang="ts">

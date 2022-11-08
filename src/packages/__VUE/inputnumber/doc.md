@@ -52,7 +52,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="5" />
+  <nut-inputnumber
+    v-model="value"
+    step="5"
+  />
 </template>
 
 <script lang="ts">
@@ -78,7 +81,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" min="10" max="20" />
+  <nut-inputnumber
+    v-model="value"
+    min="10"
+    max="20"
+  />
 </template>
 
 <script lang="ts">
@@ -104,7 +111,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" disabled />
+  <nut-inputnumber
+    v-model="value"
+    disabled
+  />
 </template>
 
 <script lang="ts">
@@ -130,7 +140,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" readonly />
+  <nut-inputnumber
+    v-model="value"
+    readonly
+  />
 </template>
 
 <script lang="ts">
@@ -156,7 +169,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="0.1" decimal-places="1" />
+  <nut-inputnumber
+    v-model="value"
+    step="0.1"
+    decimal-places="1"
+  />
 </template>
 
 <script lang="ts">
@@ -182,7 +199,10 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber :model-value="value" @change="onChange" />
+  <nut-inputnumber
+    :model-value="value"
+    @change="onChange"
+  />
 </template>
 
 <script lang="ts">
@@ -217,7 +237,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" button-size="30" input-width="50" />
+  <nut-inputnumber
+    v-model="value"
+    button-size="30"
+    input-width="50"
+  />
 </template>
 
 <script lang="ts">
@@ -241,7 +265,11 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+  <nut-inputnumber
+    icon-left="left"
+    icon-right="right"
+    v-model="value"
+  />
 </template>
 
 <script lang="ts">

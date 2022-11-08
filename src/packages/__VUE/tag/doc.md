@@ -64,17 +64,31 @@ app.use(Tag);
     </nut-cell>
     <nut-cell title="圆角样式">
       <template v-slot:link>
-        <nut-tag round type="primary">标签</nut-tag>
+        <nut-tag
+          round
+          type="primary"
+          >标签</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="标记样式">
       <template v-slot:link>
-        <nut-tag mark type="primary">标签</nut-tag>
+        <nut-tag
+          mark
+          type="primary"
+          >标签</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="可关闭标签">
       <template v-slot:link>
-        <nut-tag v-if="show" closeable @close="close" type="primary">标签</nut-tag>
+        <nut-tag
+          v-if="show"
+          closeable
+          @close="close"
+          type="primary"
+          >标签</nut-tag
+        >
       </template>
     </nut-cell>
   </nut-cell-group>
@@ -115,12 +129,20 @@ app.use(Tag);
     </nut-cell>
     <nut-cell title="文字颜色">
       <template v-slot:link>
-        <nut-tag color="#E9E9E9" textColor="#999999">标签</nut-tag>
+        <nut-tag
+          color="#E9E9E9"
+          textColor="#999999"
+          >标签</nut-tag
+        >
       </template>
     </nut-cell>
     <nut-cell title="空心颜色">
       <template v-slot:link>
-        <nut-tag color="#FA2400" plain>标签</nut-tag>
+        <nut-tag
+          color="#FA2400"
+          plain
+          >标签</nut-tag
+        >
       </template>
     </nut-cell>
   </nut-cell-group>

@@ -28,16 +28,41 @@ app.use(SideNavBarItem);
   <nut-cell @click="handleClick1">
     <span><label>right</label></span>
   </nut-cell>
-  <nut-popup position="right" v-model:visible="show1" :style="{ width, height }">
+  <nut-popup
+    position="right"
+    v-model:visible="show1"
+    :style="{ width, height }"
+  >
     <nut-sidenavbar>
-      <nut-subsidenavbar title="Intelligent City Ai" ikey="6">
-        <nut-subsidenavbar title="Human body recognition 1" ikey="9">
-          <nut-sidenavbaritem ikey="10" title="Human testing 1"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="11" title="Fine grained portrait segment 1"></nut-sidenavbaritem>
+      <nut-subsidenavbar
+        title="Intelligent City Ai"
+        ikey="6"
+      >
+        <nut-subsidenavbar
+          title="Human body recognition 1"
+          ikey="9"
+        >
+          <nut-sidenavbaritem
+            ikey="10"
+            title="Human testing 1"
+          ></nut-sidenavbaritem>
+          <nut-sidenavbaritem
+            ikey="11"
+            title="Fine grained portrait segment 1"
+          ></nut-sidenavbaritem>
         </nut-subsidenavbar>
-        <nut-subsidenavbar title="Human body recognition 2" ikey="12">
-          <nut-sidenavbaritem ikey="13" title="Human testing 2"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="14" title="Fine grained portrait segment 2"></nut-sidenavbaritem>
+        <nut-subsidenavbar
+          title="Human body recognition 2"
+          ikey="12"
+        >
+          <nut-sidenavbaritem
+            ikey="13"
+            title="Human testing 2"
+          ></nut-sidenavbaritem>
+          <nut-sidenavbaritem
+            ikey="14"
+            title="Fine grained portrait segment 2"
+          ></nut-sidenavbaritem>
         </nut-subsidenavbar>
       </nut-subsidenavbar>
     </nut-sidenavbar>
@@ -80,32 +105,85 @@ app.use(SideNavBarItem);
   <nut-cell @click="handleClick3">
     <span><label>show</label></span>
   </nut-cell>
-  <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
+  <nut-popup
+    position="right"
+    v-model:visible="show3"
+    :style="{ width, height }"
+  >
     <nut-sidenavbar :show="show3">
       <nut-sidenavbaritem
         ikey="1"
         title="Face recognition"
         @click="handleClick4('Face recognition')"
       ></nut-sidenavbaritem>
-      <nut-sidenavbaritem ikey="2" title="natural language processing"></nut-sidenavbaritem>
-      <nut-subsidenavbar title="image understanding" ikey="3" :open="false">
-        <nut-sidenavbaritem ikey="4" title="Dish identification"></nut-sidenavbaritem>
-        <nut-sidenavbaritem ikey="5" title="Photo shopping"></nut-sidenavbaritem>
+      <nut-sidenavbaritem
+        ikey="2"
+        title="natural language processing"
+      ></nut-sidenavbaritem>
+      <nut-subsidenavbar
+        title="image understanding"
+        ikey="3"
+        :open="false"
+      >
+        <nut-sidenavbaritem
+          ikey="4"
+          title="Dish identification"
+        ></nut-sidenavbaritem>
+        <nut-sidenavbaritem
+          ikey="5"
+          title="Photo shopping"
+        ></nut-sidenavbaritem>
       </nut-subsidenavbar>
-      <nut-subsidenavbar title="Intelligent City Ai" ikey="6">
-        <nut-sidenavbaritem ikey="7" title="Enterprise risk early warning model"></nut-sidenavbaritem>
-        <nut-sidenavbaritem ikey="8" title="Water quality inspection"></nut-sidenavbaritem>
-        <nut-subsidenavbar title="Human body recognition" ikey="9">
-          <nut-sidenavbaritem ikey="10" title="Human testing"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="11" title="Fine grained portrait segment"></nut-sidenavbaritem>
+      <nut-subsidenavbar
+        title="Intelligent City Ai"
+        ikey="6"
+      >
+        <nut-sidenavbaritem
+          ikey="7"
+          title="Enterprise risk early warning model"
+        ></nut-sidenavbaritem>
+        <nut-sidenavbaritem
+          ikey="8"
+          title="Water quality inspection"
+        ></nut-sidenavbaritem>
+        <nut-subsidenavbar
+          title="Human body recognition"
+          ikey="9"
+        >
+          <nut-sidenavbaritem
+            ikey="10"
+            title="Human testing"
+          ></nut-sidenavbaritem>
+          <nut-sidenavbaritem
+            ikey="11"
+            title="Fine grained portrait segment"
+          ></nut-sidenavbaritem>
         </nut-subsidenavbar>
       </nut-subsidenavbar>
-      <nut-subsidenavbar title="natural language processing" ikey="12">
-        <nut-sidenavbaritem ikey="13" title="lexical analysis"></nut-sidenavbaritem>
-        <nut-sidenavbaritem ikey="14" title="Syntactic analysis"></nut-sidenavbaritem>
+      <nut-subsidenavbar
+        title="natural language processing"
+        ikey="12"
+      >
+        <nut-sidenavbaritem
+          ikey="13"
+          title="lexical analysis"
+        ></nut-sidenavbaritem>
+        <nut-sidenavbaritem
+          ikey="14"
+          title="Syntactic analysis"
+        ></nut-sidenavbaritem>
       </nut-subsidenavbar>
-      <nut-subsidenavbar v-for="item in navs" :key="item.id" :title="item.name" :ikey="item.id">
-        <nut-sidenavbaritem v-for="citem in item.arr" :key="citem.id" :title="citem.name"></nut-sidenavbaritem>
+      <nut-subsidenavbar
+        v-for="item in navs"
+        :key="item.id"
+        :title="item.name"
+        :ikey="item.id"
+      >
+        <nut-sidenavbaritem
+          v-for="citem in item.arr"
+          :key="citem.id"
+          :title="citem.name"
+        ></nut-sidenavbaritem>
       </nut-subsidenavbar>
     </nut-sidenavbar>
   </nut-popup>

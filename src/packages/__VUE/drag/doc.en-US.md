@@ -34,7 +34,10 @@ app.use(Drag);
 
 ```html
 <template>
-  <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
+  <nut-drag
+    direction="x"
+    :style="{ top: '200px', left: '8px' }"
+  >
     <nut-button type="primary">Button</nut-button>
   </nut-drag>
 </template>
@@ -48,7 +51,10 @@ app.use(Drag);
 
 ```html
 <template>
-  <nut-drag direction="x" :attract="true">
+  <nut-drag
+    direction="x"
+    :attract="true"
+  >
     <nut-button type="primary">Button</nut-button>
   </nut-drag>
 </template>
@@ -63,7 +69,10 @@ app.use(Drag);
 ```html
 <template>
   <div class="drag-boundary"></div>
-  <nut-drag :boundary="{ top: 100, left: 9, bottom: bottom(), right: right() }" :style="{ top: '100px', left: '50px' }">
+  <nut-drag
+    :boundary="{ top: 100, left: 9, bottom: bottom(), right: right() }"
+    :style="{ top: '100px', left: '50px' }"
+  >
     <nut-button type="primary">Button</nut-button>
   </nut-drag>
 </template>

@@ -27,15 +27,30 @@ Popover supports both light and dark styles. The default is light style. Set the
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible.lightTheme"
+    :list="iconItemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">Light</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >Light</nut-button
+      >
     </template>
   </nut-popover>
 
-  <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible.darkTheme"
+    theme="dark"
+    :list="iconItemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">Dark</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >Dark</nut-button
+      >
     </template>
   </nut-popover>
 </template>
@@ -68,15 +83,30 @@ In the list array, an option can be disabled via the `disabled` field.
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
+  <nut-popover
+    v-model:visible="visible.showIcon"
+    theme="dark"
+    :list="itemList"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">Show Icon</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >Show Icon</nut-button
+      >
     </template>
   </nut-popover>
 
-  <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
+  <nut-popover
+    v-model:visible="visible.disableAction"
+    :list="itemListDisabled"
+  >
     <template #reference>
-      <nut-button type="primary" shape="square">Disabled</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >Disabled</nut-button
+      >
     </template>
   </nut-popover>
 </template>
@@ -141,13 +171,24 @@ Customize the content in the slot named content.
 <template>
   <nut-popover v-model:visible="visible.Customized">
     <template #reference>
-      <nut-button type="primary" shape="square">custom content</nut-button>
+      <nut-button
+        type="primary"
+        shape="square"
+        >custom content</nut-button
+      >
     </template>
 
     <template #content>
       <div class="self-content">
-        <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <nut-icon :name="item.name" size="15"></nut-icon>
+        <div
+          class="self-content-item"
+          v-for="(item, index) in selfContent"
+          :key="index"
+        >
+          <nut-icon
+            :name="item.name"
+            size="15"
+          ></nut-icon>
           <div class="self-content-desc">{{ item.desc }}</div>
         </div>
       </div>
@@ -250,7 +291,12 @@ bottom-end    # Bottom right
 
 ```html
 <template>
-  <nut-popover v-model:visible="visible" location="top" theme="dark" :list="iconItemList">
+  <nut-popover
+    v-model:visible="visible"
+    location="top"
+    theme="dark"
+    :list="iconItemList"
+  >
     <template #reference>
       <div class="brick"></div>
     </template>
