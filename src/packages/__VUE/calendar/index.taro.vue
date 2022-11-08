@@ -156,7 +156,8 @@ export default create({
     },
     firstDayOfWeek: {
       type: Number,
-      default: 0
+      default: 0,
+      validator: (val: number) => val >= 0 && val <= 6
     }
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
