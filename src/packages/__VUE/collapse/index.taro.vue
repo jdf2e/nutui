@@ -114,11 +114,19 @@ export default create({
           let doms: any = childrenDom.value;
           Array.from(doms).forEach((item: any, index: number) => {
             if (typeof newval == 'number' || typeof newval == 'string') {
-              if (domsProps[index] && domsProps[index].props) {
-                if (newval == domsProps[index].props.name) {
-                  item.changeOpen(true);
+              if (domsProps[index]) {
+                if (domsProps[index].props) {
+                  if (newval == domsProps[index].props.name) {
+                    item.changeOpen(true);
+                  } else {
+                    item.changeOpen(false);
+                  }
                 } else {
-                  item.changeOpen(false);
+                  if (newval == item.name) {
+                    item.changeOpen(true);
+                  } else {
+                    item.changeOpen(false);
+                  }
                 }
               } else {
                 if (newval == item.name) {
