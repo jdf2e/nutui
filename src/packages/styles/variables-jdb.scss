@@ -771,7 +771,14 @@ $form-item-tip-font-size: 10px !default;
 $form-item-tip-text-align: left !default;
 
 // skeleton
-$skeleton-content-line-title-background-color: #efefef !default;
+$skeleton-content-avatar-background-color: #efefef !default;
+$skeleton-content-line-background-color: #efefef !default;
+$skeleton-animation-background-color: linear-gradient(
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, 0.5) 50%,
+  hsla(0, 0%, 100%, 0) 80%
+) !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color !default;
