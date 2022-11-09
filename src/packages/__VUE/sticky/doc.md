@@ -2,7 +2,9 @@
 
 ### 介绍
 
-效果同 `css` 中的 `position: sticky`,对低端浏览器可使用其做兼容
+效果同 `css` 中的 `position: sticky`,对低端浏览器可使用其做兼容。
+
+> 小程序只支持吸顶效果，也可以使用官方推荐 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
 
 ### 安装
 
@@ -129,13 +131,14 @@ app.use(Sticky);
 |--------------|----------------------------------|--------|------------------|
 | position         | 吸附位置（`top`、`bottom`）               | String | `top`                |
 | top         | 吸顶距离               | Number | `0`                |
-| bottom         | 吸底距离               | Number | `0`                |
-| container         | 容器的 `HTML` 节点, 在小程序环境下需要同时指定 `id`               | Element | -                |
+| bottom`小程序不支持，直接通过设置top实现`         | 吸底距离               | Number | `0`                |
+| container`小程序不支持`         | 容器的 `HTML` 节点, 在小程序环境下需要同时指定 `id`               | Element | -                |
 | z-index         | 吸附时的层级               | Number | `2000`               |
+| parent-height`小程序新增`         | 设置粘性元素父级高度               | Number | `667`               |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| change  | 吸附状态改变时触发 | `val: Boolean` |
-| scroll  | 滚动时触发 | `{ top: Number, fixed: Boolean }` |
+| change`小程序不支持`  | 吸附状态改变时触发 | `val: Boolean` |
+| scroll`小程序不支持`  | 滚动时触发 | `{ top: Number, fixed: Boolean }` |
