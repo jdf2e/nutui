@@ -216,6 +216,10 @@ export default create({
       }
     );
 
+    watch([props.videos, props.images], () => {
+      state.maxNo = props.images.length + props.videos.length;
+    });
+
     onMounted(() => {
       // 初始化页码
       state.active = props.initNo;

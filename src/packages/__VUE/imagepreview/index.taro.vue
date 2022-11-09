@@ -287,6 +287,10 @@ export default create({
       }
     );
 
+    watch([props.images], () => {
+      state.maxNo = props.images.length;
+    });
+
     // 点击关闭按钮
     const handleCloseIcon = () => {
       onClose();
