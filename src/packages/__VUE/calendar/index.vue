@@ -176,8 +176,12 @@ export default create({
     const scrollToDate = (date: string) => {
       calendarRef.value?.scrollToDate(date);
     };
+    const initPosition = () => {
+      calendarRef.value?.initPosition();
+    };
     useExpose({
-      scrollToDate
+      scrollToDate,
+      initPosition
     });
     // methods
     const update = () => {
