@@ -37,7 +37,7 @@
     <h2>{{ translate('disableMenu') }}</h2>
     <nut-menu>
       <nut-menu-item disabled v-model="state.value1" :options="options1" />
-      <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="options2" />
+      <nut-menu-item disabled v-model="state.value2" :options="options2" />
     </nut-menu>
   </div>
 </template>

@@ -482,6 +482,7 @@ app.use(Elevator);
 |-------|----------|-------------|
 | click-item | 点击内容 | key: string, item: { id: 0, name: '' } |
 | click-index | 点击索引 | key: string |
+| change | 索引改变 | index: number |
 
 ### API
 

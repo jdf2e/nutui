@@ -1,3 +1,34 @@
+## v3.2.6
+
+`2022-11-04` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @thx125 @gyt95 @HuziG @mikasayw @motain
+
+* :bug: fix(imagePreview): 解决 imagepreview 视频点击关闭蒙层问题 (#1783)  @yangxiaolu1993  
+* :bug: fix(picker): 解决 Picker 在微信小程序中无法使用的问题 (#1786)  @yangxiaolu1993  
+* :bug: fix(tabbar): add props placeholder #1692 (#1796)  @Drjingfubo
+* :bug: fix(video): add new events time #1055 (#1798)  @Drjingfubo
+* :bug: fix(Signature): 签名组件taro环境适配 (#1797)  @Ymm0008
+* :bug: fix(uploader): taro h5 模式 accept 不生效 #1448 #1445 #1474   @richard1015 
+* :bug: fix(picker): 修改 Picker 组件在 Taro 中v-model 失效问题 (#1801)  @yangxiaolu1993  
+* :bug: fix(noticeBar): NoticeBar修改height之后，垂直轮播会卡顿(#1809) (#1813)    @yangxiaolu1993 
+* :bug: fix(datepicker): 删除Datepicker Demo演示中多余内容 (#1814)     @yangxiaolu1993 
+* :bug: fix(icon): demo 复制功能优化 (#1773)   @eiinu
+* :bug: fix(input): 修复taro中input@update:model-value事件会触发两次 #1632 (#1790)  @ailululu
+* :bug: fix(menu): 修改Menu弹出失效问题 (#1812)   @thx125
+* :bug: fix: scroll-view标签问题修复 (#1817)  @lkjh3214
+* :bug: fix(badge): 修复在自定义徽标内容下设置样式无效的问题 (#1821)  @gyt95
+* :bug: fix(notify): fix notify duration (#1810)  @mikasayw
+* 📖 docs: update vue3 CLI self-test link (#1822)  @gyt95
+* 📖 docs(actionsheet): edit doc (#1794)  @HuziG  
+* 📖 docs(image): taro media image doc 404 fixed (#1795)  @motain 
+* 📖 docs(uploader): capture tips add @richard1015 
+* 📖 docs(menu): 菜单组件文档添加 toggle 事件说明 (#1818)   @yangjinjun3
+
+
 ## v3.2.5
 
 `2022-10-25` 

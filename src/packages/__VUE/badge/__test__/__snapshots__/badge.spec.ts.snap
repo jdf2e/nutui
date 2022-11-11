@@ -6,27 +6,27 @@ exports[`should change dot position when using offset prop: 4px 1`] = `""`;
 
 exports[`should render content slot correctly 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"slot-icons\\"></view>Custom Content<view class=\\"nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+  <view class=\\"slot-icons\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>Custom Content<view class=\\"nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is empty string 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"slot-icons\\"></view>
+  <view class=\\"slot-icons\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
   <view class=\\"nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is undefined 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"slot-icons\\"></view>
+  <view class=\\"slot-icons\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
   <view class=\\"nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is zero 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"slot-icons\\"></view>
+  <view class=\\"slot-icons\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
   <view class=\\"nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\">0</view>
 </view>"
 `;
