@@ -357,6 +357,7 @@ export default create({
     };
 
     const init = async (active: number = +props.initPage) => {
+      if (!container.value) return;
       stopAutoPlay();
       state.rect = await useTaroRect(container, Taro);
       if (state.rect) {
