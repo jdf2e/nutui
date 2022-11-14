@@ -63,5 +63,6 @@
       ]
     }
   },
-  "projectname": "vue"
+  "projectname": "vue",
+  "libVersion": "2.27.1"
 }

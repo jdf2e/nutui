@@ -24,7 +24,7 @@
 
       <!-- Taro 下转换成 微信小程序 -->
       <picker-view
-        v-if="ENV == ENV_TYPE.WEAPP"
+        v-if="ENV != ENV_TYPE.WEB"
         indicator-style="height: 34px;"
         :value="defaultIndexes"
         style="width: 100%; height: 252px"
@@ -336,6 +336,7 @@ export default create({
     };
 
     onMounted(() => {
+      console.log('当前环境', Taro.ENV_TYPE, Taro.getEnv());
       if (props.visible) {
         if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
           setTimeout(() => {
