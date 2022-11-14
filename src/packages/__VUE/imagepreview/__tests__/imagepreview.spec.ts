@@ -108,3 +108,24 @@ test('video surported in H5 env', async () => {
   await nextTick();
   expect(wrapper.find('.custom-pop').html()).toMatchSnapshot();
 });
+
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
+test('dynamic images', async () => {
+  const wrapper = mount(ImagePreview, {
+    props: {
+      show: true,
+      images: []
+    }
+  });
+  await nextTick();
+  wrapper.setProps({
+    images
+  });
+  await sleep(1);
+  expect((wrapper.find('.nut-swiper-inner').element as any).style.transform).toEqual('translateX(0px)');
+});

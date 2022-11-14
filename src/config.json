@@ -640,17 +640,6 @@
           "taro": true,
           "exportEmpty": true,
           "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "OldPicker",
-          "cName": "选择器",
-          "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
-          "show": false,
-          "tarodoc": false,
-          "exportEmpty": true,
-          "type": "component",
-          "author": "yangxiaolu"
         }
       ]
     },
