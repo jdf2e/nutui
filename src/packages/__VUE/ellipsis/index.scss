@@ -5,6 +5,10 @@
     color: $ellipsis-expand-collapse-color;
     display: inline;
   }
+
+  .nut-ellipsis-wordbreak {
+    word-break: break-all;
+  }
 }
 
 .nut-ellipsis-copy {
