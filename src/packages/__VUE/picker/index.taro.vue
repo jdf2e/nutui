@@ -336,7 +336,6 @@ export default create({
     };
 
     onMounted(() => {
-      console.log('当前环境', Taro.ENV_TYPE, Taro.getEnv());
       if (props.visible) {
         if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
           setTimeout(() => {
