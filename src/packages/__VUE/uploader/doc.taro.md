@@ -255,7 +255,7 @@ setup() {
 | before-upload             | 上传前的函数需要返回一个`Promise`对象                                                                                  | Function                          | null                      |
 | before-xhr-upload`v3.2.1` | 执行 Taro.uploadFile 上传时，自定义方式                                                                                | Function(Taro.uploadFile，option) | null                      |
 | before-delete             | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | Function(file,fileList): boolean 丨Promise | -                         |
-
+| delete-icon               | 自定义删除按钮，可传入[图标名称](/#/zh-CN/component/icon)或图片链接                                                                                                                                                   | String                            | "photograph"     |
 
 
 ### FileItem
