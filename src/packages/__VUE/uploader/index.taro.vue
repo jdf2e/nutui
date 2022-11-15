@@ -16,7 +16,13 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" :name="deleteIcon"></nut-icon>
+        <nut-icon
+          v-if="isDeletable"
+          v-bind="$attrs"
+          @click="onDelete(item, index)"
+          class="close"
+          :name="deleteIcon"
+        ></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
