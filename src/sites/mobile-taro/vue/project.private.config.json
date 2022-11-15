@@ -33,8 +33,8 @@
           "scene": null
         },
         {
-          "name": "business/pages/signature/index",
-          "pathName": "business/pages/signature/index",
+          "name": "exhibition/pages/ellipsis/index",
+          "pathName": "exhibition/pages/ellipsis/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -63,5 +63,6 @@
       ]
     }
   },
-  "projectname": "vue"
+  "projectname": "vue",
+  "libVersion": "2.27.1"
 }
