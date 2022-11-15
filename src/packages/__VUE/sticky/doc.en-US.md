@@ -4,6 +4,8 @@
 
 The effect is the same as `position: sticky` in `CSS`, which can be used for compatibility with low-end browsers
 
+> The applet only supports the ceiling effect, you can also use the official recommendation https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
+
 ### Install
 
 ```javascript
@@ -129,13 +131,14 @@ app.use(Sticky);
 |--------------|----------------------------------|--------|------------------|
 | position         | Adsorption position（`top`、`bottom`）               | String | `top`                |
 | top         | Ceiling distance               | Number | `0`                |
-| bottom         | Suction distance               | Number | `0`                |
-| container         | The 'HTML' node of the container needs to specify the `id` at the same time in the miniProgram        | Element | -                |
+| bottom`miniprogram not supported, Directly by setting top`         | Suction distance               | Number | `0`                |
+| container`miniprogram not supported`         | The 'HTML' node of the container needs to specify the `id` at the same time in the miniProgram        | Element | -                |
 | z-index         | Level of adsorption               | Number | `2000`               |
+| parent-height`miniprogram added`         | Set sticky element parent height               | Number | `667`               |
 
 ### Events
 
 | Event | Description                  | Arguments   |
 |--------|----------------|--------------|
-| change  | Triggered when the adsorption state changes | `val: Boolean` |
-| scroll  | Triggered when scrolling | `{ top: Number, fixed: Boolean }` |
+| change`miniprogram not supported`  | Triggered when the adsorption state changes | `val: Boolean` |
+| scroll`miniprogram not supported`  | Triggered when scrolling | `{ top: Number, fixed: Boolean }` |

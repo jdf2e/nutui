@@ -1,6 +1,6 @@
 <template>
   <view class="nut-badge">
-    <view class="slot-icons">
+    <view class="slot-icons" v-show="!hidden && !dot" :style="stl">
       <slot name="icons"></slot>
     </view>
     <slot></slot>

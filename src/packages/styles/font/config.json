@@ -105,6 +105,10 @@
       "name": "基础图标",
       "nameEn": "Basic Icon",
       "icons": [
+        "rect-up",
+        "rect-down",
+        "rect-left",
+        "rect-right",
         "uploader",
         "mask-close",
         "circle-close",

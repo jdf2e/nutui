@@ -97,7 +97,7 @@ export default create({
       default: 35
     }
   },
-  emits: ['click-item', 'click-index'],
+  emits: ['click-item', 'click-index', 'change'],
   setup(props, context) {
     const spaceHeight = 23;
     const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>;
@@ -247,6 +247,13 @@ export default create({
         }
         if (state.fixedTop === fixedTop) return;
         state.fixedTop = fixedTop;
+      }
+    );
+
+    watch(
+      () => state.currentIndex,
+      (newVal: number) => {
+        context.emit('change', newVal);
       }
     );
 
