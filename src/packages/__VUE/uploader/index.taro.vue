@@ -16,7 +16,13 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
+        <nut-icon
+          v-if="isDeletable"
+          v-bind="$attrs"
+          @click="onDelete(item, index)"
+          class="close"
+          :name="deleteIcon"
+        ></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -102,6 +108,7 @@ export default create({
     multiple: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
+    deleteIcon: { type: String, default: 'failure' },
     beforeUpload: {
       type: Function,
       default: null
@@ -251,7 +258,7 @@ export default create({
       files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
         let fileType = file.type;
         const fileItem = reactive(new FileItem());
-        if (!fileType && imgReg.test(file.path)) {
+        if (!fileType && (imgReg.test(file.path) || file.path.includes('data:image'))) {
           fileType = 'image';
         }
         fileItem.path = file.path;
