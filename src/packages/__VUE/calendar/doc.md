@@ -494,7 +494,7 @@ export default {
 <template>
   <nut-cell
     :showIcon="true"
-    title="选择单个日期"
+    title="自定义周起始日"
     :desc="date ? `${date} ${dateWeek}` : '请选择'"
     @click="openSwitch('isVisible')"
     :first-day-of-week="2"
@@ -607,6 +607,7 @@ export default {
 | show-title          | 是否在展示日历标题               | Boolean          | true |
 | show-sub-title          | 是否展示日期标题              | Boolean          | true |
 | to-date-animation          | 是否启动滚动动画              | Boolean          | true |
+| first-day-of-week          | 设置周起始日              | 0-6          | 0 |
 
 ### Events
 

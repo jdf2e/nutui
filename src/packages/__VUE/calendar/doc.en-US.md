@@ -503,7 +503,7 @@ export default {
 <template>
   <nut-cell
     :showIcon="true"
-    title="Select Single Date"
+    title="Custom First Day Of Week"
     :desc="date ? `${date} ${dateWeek}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
     :first-day-of-week="2"
@@ -614,6 +614,7 @@ export default {
 | show-title          | Whether to show the calendar title               | Boolean          | true |
 | show-sub-title          | Whether to display the date title              | Boolean          | true |
 | to-date-animation          | Whether to use scroll animation              | Boolean          | true |
+| first-day-of-week          | Set the start day of week              | 0-6          | 0 |
 
 ### Events
 
