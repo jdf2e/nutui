@@ -415,3 +415,5 @@ export default {
 |--------|-------------------------------|----------------|
 | change | Emitted select option changed | Selected value |
 | toggle | Toggle menu display status, `true` to show，`false` to hide, no param is negated | show?: boolean |
+| open `v3.2.7` | Emitted when opening menu | - |
+| close `v3.2.7` | Emitted when closing menu | - |
