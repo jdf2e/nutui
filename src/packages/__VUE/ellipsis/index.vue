@@ -1,10 +1,10 @@
 <template>
   <view :class="classes" @click="handleClick" ref="root">
     <view v-if="!exceeded">{{ content }}</view>
-    <view v-if="exceeded && !expanded">
-      {{ ellipsis.leading }}
-      <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span>
-      {{ ellipsis.tailing }}
+    <view v-if="exceeded && !expanded"
+      >{{ ellipsis.leading
+      }}<span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span
+      >{{ ellipsis.tailing }}
     </view>
     <view v-if="exceeded && expanded">
       {{ content }}

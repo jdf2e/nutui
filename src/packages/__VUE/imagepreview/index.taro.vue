@@ -10,7 +10,7 @@
         :is-preventDefault="false"
         direction="horizontal"
         @change="slideChangeEnd"
-        :init-page="initNo > maxNo ? maxNo - 1 : initNo - 1"
+        :init-page="initPage"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
@@ -103,7 +103,6 @@ export default create({
     const state = reactive({
       showPop: false,
       active: 1,
-      maxNo: 1,
       source: {
         src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
         type: 'video/mp4'
@@ -287,6 +286,12 @@ export default create({
       }
     );
 
+    const initPage = computed(() => {
+      const maxNo = props.images.length;
+      const _initPage = props.initNo > maxNo ? maxNo - 1 : props.initNo - 1;
+      return _initPage >= 0 ? _initPage : 0;
+    });
+
     // 点击关闭按钮
     const handleCloseIcon = () => {
       onClose();
@@ -296,12 +301,11 @@ export default create({
       // 初始化页码
       state.active = props.initNo;
       state.showPop = props.show;
-      // state.maxNo = props.images.length + props.videos.length;
-      state.maxNo = props.images.length;
     });
 
     return {
       ...toRefs(state),
+      initPage,
       slideChangeEnd,
       onClose,
       closeOnImg,
