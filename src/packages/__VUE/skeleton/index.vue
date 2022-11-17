@@ -5,20 +5,12 @@
   <view v-else class="skeleton">
     <view class="skeleton-animation" v-if="animated"></view>
     <view class="content">
-      <nut-avatar
-        v-if="avatar"
-        :class="avatarClass"
-        :shape="avatarShape"
-        :style="getStyle()"
-        bg-color="rgb(239, 239, 239)"
-      ></nut-avatar>
+      <nut-avatar v-if="avatar" :class="avatarClass" :shape="avatarShape" :style="getStyle()"></nut-avatar>
 
-      <view v-if="Number(row) == 1" :class="blockClass" :style="{ width, height }"> </view>
-
-      <view class="content-line">
-        <view v-if="title" class="title"></view>
-        <view v-for="(item, index) in Number(row)" :key="index" :class="blockClass" :style="{ width, height }"> </view
-      ></view>
+      <view class="content-line" :style="{ width }">
+        <view v-if="title" :class="getBlockClass('blockTitle')" :style="{ height }"></view>
+        <view v-for="_ in Number(row)" :key="_" :class="getBlockClass('blockLine')" :style="{ height }" />
+      </view>
     </view>
   </view>
 </template>
