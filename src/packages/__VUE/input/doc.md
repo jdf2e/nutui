@@ -172,6 +172,7 @@ app.use(Icon);
       const state = reactive({
         showIcon: '',
         required: '',
+        clear:''
       });
       return {
         state
