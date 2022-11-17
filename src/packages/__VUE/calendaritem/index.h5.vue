@@ -187,12 +187,18 @@ export default create({
     endDate: {
       type: String,
       default: Utils.getDay(365)
+    },
+    firstDayOfWeek: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['choose', 'update', 'close', 'select'],
 
   setup(props, { emit, slots }) {
-    const weeks = ref(translate('weekdays'));
+    // 新增：自定义周起始日
+    const weekdays = translate('weekdays');
+    const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
     // element refs
     const scalePx = ref(2);
     const months = ref<null | HTMLElement>(null);
@@ -398,6 +404,8 @@ export default create({
 
     // 获取日期状态
     const getDaysStatus = (days: number, type: string, dateInfo: Dateprop) => {
+      // 新增：自定义周起始日
+      days = days - props.firstDayOfWeek;
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
