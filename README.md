@@ -211,6 +211,16 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
   <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
 </a>
 
+
+## Stargazers 
+
+[![Stargazers repo roster for @jdf2e/nutui](https://reporoster.com/stars/jdf2e/nutui)](https://github.com/jdf2e/nutui/stargazers)
+
+## Forkers
+
+[![Forkers repo roster for @jdf2e/nutui](https://reporoster.com/forks/jdf2e/nutui)](https://github.com/jdf2e/nutui/network/members)
+
+
 ## 开发计划
 
 [Milestones](https://github.com/jdf2e/nutui/projects)
