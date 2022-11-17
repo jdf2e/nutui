@@ -88,7 +88,7 @@ export default create({
     [Icon.name]: Icon,
     [Popup.name]: Popup
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'change', 'open', 'close'],
   setup(props, { emit, slots }) {
     const state = reactive({
       showPopup: false,
@@ -145,6 +145,7 @@ export default create({
 
       if (show) {
         state.showWrapper = true;
+        emit('open');
       }
     };
 
@@ -169,12 +170,14 @@ export default create({
     };
 
     const handleClose = () => {
+      emit('close');
       state.showWrapper = false;
       state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {
       state.showPopup = false;
+      emit('close');
     };
 
     return {
