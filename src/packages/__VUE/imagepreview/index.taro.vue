@@ -15,8 +15,8 @@
         :pagination-color="paginationColor"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <!-- <image mode="aspectFit" :src="item.src" class="nut-imagepreview-img" /> -->
-          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" />
+          <image mode="aspectFit" :src="item.src" class="nut-imagepreview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
+          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" v-else />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -36,6 +36,7 @@ import SwiperItem from '../swiperitem/index.taro.vue';
 import Icon from '../icon/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
 import { ImageInterface } from './types';
+import Taro from '@tarojs/taro';
 const { create } = createComponent('imagepreview');
 
 export default create({
@@ -118,7 +119,10 @@ export default create({
         originScale: 1,
         oriDistance: 1
       },
-      lastTouchEndTime: 0 // 用来辅助监听双击
+      lastTouchEndTime: 0, // 用来辅助监听双击
+
+      ENV: Taro.getEnv(),
+      ENV_TYPE: Taro.ENV_TYPE
     });
 
     const styles = computed(() => {
