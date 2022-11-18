@@ -499,10 +499,10 @@ The user can enter content in the text box. Configure the icons on both sides of
 | autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
 | max-length   | Max length of value                  | String、Number  | -       |
 | clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clear-icon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
+| clear-icon   | Clear Icon name, [name of icon](#/en-US/component/icon)           | String        | `mask-close`  |
 | clear-size   | Clear Icon `font-size`               | String        | `14`  |
-| left-icon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| right-icon   | Right side Icon name, [name of icon](#/icon) | String        | - |
+| left-icon    | Left side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
+| right-icon   | Right side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
 | left-icon-size    | Left side Icon `font-size`    | String        | `14`  |
 | right-icon-size   | Right side Icon `font-size`   | String        | `14`  |
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |

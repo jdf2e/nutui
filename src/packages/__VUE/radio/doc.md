@@ -206,9 +206,9 @@ app.use(Icon);
 | 字段             | 说明                                                         | 类型                    | 默认值            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| icon-size        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| icon-name        | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
-| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
+| icon-size        | [图标尺寸](#/zh-CN/component/icon)                                           | String、Number          | `18`              |
+| icon-name        | [图标名称](#/zh-CN/component/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
+| icon-active-name | [图标名称](#/zh-CN/component/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
 | icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label            | 单选框标识                                                   | String、Number、Boolean | -                 |
