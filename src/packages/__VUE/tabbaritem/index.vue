@@ -19,8 +19,10 @@
       <template v-if="dot">
         <div class="nut-tabbar-item_icon-box_dot"></div>
       </template>
-
-      <view v-if="icon">
+      <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+        <slot name="icon" :active="active"></slot>
+      </div>
+      <view v-if="icon && !isHaveSlot('icon')">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
@@ -30,7 +32,7 @@
         ></nut-icon>
       </view>
       <div
-        v-if="!icon && activeImg"
+        v-if="!icon && activeImg && !isHaveSlot('icon')"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
           backgroundImage: `url(${active ? activeImg : img})`,
@@ -39,7 +41,10 @@
         }"
       ></div>
       <view
-        :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
+        :class="[
+          'nut-tabbar-item_icon-box_nav-word',
+          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !isHaveSlot('icon') }
+        ]"
       >
         <view v-if="tabTitle">{{ tabTitle }}</view>
         <slot v-if="!tabTitle"></slot>
@@ -99,7 +104,10 @@ export default create({
     },
     to: [Object, String]
   },
-  setup(props, ctx) {
+  setup(props, { emit, slots }) {
+    const isHaveSlot = (slot: string) => {
+      return slots[slot];
+    };
     const parent: any = inject('parent');
     const state = reactive({
       size: parent.size,
@@ -159,6 +167,7 @@ export default create({
     return {
       state,
       active,
+      isHaveSlot,
       change
     };
   }
