@@ -30,8 +30,8 @@
     <nut-cell-group v-for="item in icons.data" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="item in item.icons" :key="item" @click="copyTag(item)">
-            <nut-icon :name="item"></nut-icon>
+          <li v-for="item in item.icons" :key="item">
+            <nut-icon :name="item" @click="copyTag(item)"></nut-icon>
             <span>{{ item }}</span>
           </li>
         </ul>
@@ -40,8 +40,12 @@
     <nut-cell-group v-for="item in icons.style" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="it in item.icons" :key="it" @click="copyTag(it['animation-name'])">
-            <nut-icon :name="it.name" :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`">
+          <li v-for="it in item.icons" :key="it">
+            <nut-icon
+              :name="it.name"
+              :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
+              @click="copyTag(it['animation-name'])"
+            >
             </nut-icon>
             <span>{{ it['animation-name'] }}</span>
           </li>

@@ -18,7 +18,7 @@
       </view>
     </view>
     <!-- content-->
-    <scroll-view
+    <Nut-Scroll-View
       :scroll-top="scrollTop"
       :scroll-y="true"
       class="nut-calendar-content"
@@ -60,7 +60,7 @@
           </view>
         </view>
       </view>
-    </scroll-view>
+    </Nut-Scroll-View>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
       <view class="calendar-confirm-btn" @click="confirm">{{ confirmText || translate('confirm') }}</view>
@@ -75,7 +75,7 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
-
+import NutScrollView from '../scrollView/index.taro.vue';
 const TARO_ENV = Taro.getEnv();
 
 type InputDate = string | string[];
@@ -119,6 +119,9 @@ interface MonthInfo {
 }
 
 export default create({
+  components: {
+    NutScrollView
+  },
   props: {
     type: {
       type: String,
@@ -175,12 +178,18 @@ export default create({
     endDate: {
       type: String,
       default: Utils.getDay(365)
+    },
+    firstDayOfWeek: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['choose', 'update', 'close', 'select'],
 
   setup(props, { emit, slots }) {
-    const weeks = ref(translate('weekdays'));
+    // 新增：自定义周起始日
+    const weekdays = translate('weekdays');
+    const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
     // element refs
     const scalePx = ref(2);
     const viewHeight = ref(0);
@@ -401,6 +410,8 @@ export default create({
     };
     // 获取上一个月的最后一周天数，填充当月空白
     const getPreDaysStatus = (days: number, type: string, dateInfo: any, preCurrMonthDays: number) => {
+      // 新增：自定义周起始日
+      days = days - props.firstDayOfWeek;
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -809,6 +820,7 @@ export default create({
           }
           scale = Number((screenWidth / 750).toFixed(toFixed));
           scalePx.value = scale;
+          let transfromNum = Taro.pxTransform(64);
           initData();
         }
       });

@@ -16,7 +16,13 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
+        <nut-icon
+          v-if="isDeletable"
+          v-bind="$attrs"
+          @click="onDelete(item, index)"
+          class="close"
+          :name="deleteIcon"
+        ></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -62,7 +68,7 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType, reactive } from 'vue';
+import { computed, onMounted, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
@@ -102,6 +108,7 @@ export default create({
     multiple: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
+    deleteIcon: { type: String, default: 'failure' },
     beforeUpload: {
       type: Function,
       default: null
@@ -144,6 +151,21 @@ export default create({
       if (props.disabled) {
         return;
       }
+
+      if (Taro.getEnv() == 'WEB') {
+        let el = document.getElementById('taroChooseImage');
+        if (el) {
+          el?.setAttribute('accept', props.accept);
+        } else {
+          const obj = document.createElement('input');
+          obj.setAttribute('type', 'file');
+          obj.setAttribute('id', 'taroChooseImage');
+          obj.setAttribute('accept', props.accept);
+          obj.setAttribute('style', 'position: fixed; top: -4000px; left: -3000px; z-index: -300;');
+          document.body.appendChild(obj);
+        }
+      }
+
       Taro.chooseImage({
         // 选择数量
         count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
@@ -236,7 +258,7 @@ export default create({
       files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
         let fileType = file.type;
         const fileItem = reactive(new FileItem());
-        if (!fileType && imgReg.test(file.path)) {
+        if (!fileType && (imgReg.test(file.path) || file.path.includes('data:image'))) {
           fileType = 'image';
         }
         fileItem.path = file.path;

@@ -172,6 +172,7 @@ The user can enter content in the text box. Configure the icons on both sides of
       const state = reactive({
         showIcon: '',
         required: '',
+        clear:''
       });
       return {
         state

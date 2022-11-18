@@ -8,13 +8,14 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { ActionSheet, Popup } from '@nutui/nutui';
+import { ActionSheet, Popup, OverLay } from '@nutui/nutui';
 // taro
-import { ActionSheet, Popup } from '@nutui/nutui-taro';
+import { ActionSheet, Popup, OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ActionSheet);
 app.use(Popup);
+app.use(OverLay);
 ```
 
 ### 基础用法

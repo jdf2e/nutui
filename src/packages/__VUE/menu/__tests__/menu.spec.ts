@@ -292,3 +292,38 @@ test('menu title-class props: nut-menu__title classes should contain custom-titl
 
   expect(menuTitle.classes()).toContain('custom-title-class');
 });
+
+test('menu item open and close events: should be both emitted', async () => {
+  const wrapper = mount({
+    components: {
+      NutMenu: Menu,
+      NutMenuItem: MenuItem
+    },
+    template: `
+    <nut-menu>
+    <nut-menu-item v-model="value2" @open="handleOpen" @close="handleClose" :options="options2" />
+  </nut-menu>
+    `,
+    data: () => {
+      return {
+        value2: 'a',
+        options2
+      };
+    },
+    methods: {
+      handleOpen(val: any) {
+        (this as any).value2 = 'b';
+      },
+      handleClose(val: any) {
+        (this as any).value2 = 'c';
+      }
+    }
+  });
+
+  await nextTick();
+  wrapper.find('.nut-menu__item').trigger('click');
+  expect(wrapper.vm.value2).toBe('b');
+
+  wrapper.find('.placeholder-element').trigger('click');
+  expect(wrapper.vm.value2).toBe('c');
+});

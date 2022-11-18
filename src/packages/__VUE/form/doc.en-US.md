@@ -252,7 +252,7 @@ setup(){
         <nut-range hidden-tag v-model="formData2.range"></nut-range>
     </nut-form-item>
     <nut-form-item label="Upload file">
-        <nut-uploader url="http://apiurl" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+        <nut-uploader url="http://apiurl" accept="image/*" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
         </nut-uploader>
     </nut-form-item>
     <nut-form-item label="Address">

@@ -27,8 +27,8 @@ export default {
     const clear = () => {
       console.log('清除事件');
     };
-    const confirm = (data: any) => {
-      console.log('图片地址', data);
+    const confirm = (canvas, data: any) => {
+      console.log('图片地址', canvas, data);
       Taro.saveImageToPhotosAlbum({
         filePath: `${data}`,
         success(res) {
@@ -58,8 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nut-cell,
-.nut-barrage {
+.nut-cell {
   padding: 20px 0;
   height: 120px;
 }
