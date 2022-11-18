@@ -68,13 +68,12 @@ export const component = {
       };
     });
 
-    const blockClass = computed(() => {
-      const prefixCls = 'blockClass';
+    const getBlockClass = (prefixCls: string) => {
       return {
         [prefixCls]: true,
         [`${prefixCls}--round`]: round.value
       };
-    });
+    };
 
     const getStyle = (): import('vue').CSSProperties => {
       const style: import('vue').CSSProperties = {};
@@ -97,7 +96,7 @@ export const component = {
     return {
       avatarShape,
       avatarClass,
-      blockClass,
+      getBlockClass,
       getStyle
     };
   }
