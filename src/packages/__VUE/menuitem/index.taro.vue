@@ -60,7 +60,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed } from 'vue';
+import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
@@ -113,10 +113,15 @@ export default create({
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
 
-        const { link } = parent;
+        const { link, removeLink } = parent;
 
         // @ts-ignore
         link(instance);
+
+        onUnmounted(() => {
+          // @ts-ignore
+          removeLink(instance);
+        });
 
         return {
           parent
