@@ -21,6 +21,8 @@ app.use(Icon);
 
 ### 基础用法
 
+可以通过 `v-model` 双向绑定输入框的值，通过 `label` 设置输入框左侧文本，通过 `placeholder` 设置占位提示文字。
+
 :::demo
 
 ```html
@@ -28,7 +30,7 @@ app.use(Icon);
   <nut-input 
     v-model="state.text" 
     label="文本" 
-    placeholder="文本" 
+    placeholder="请输入文本" 
   />
 </template>
 <script lang="ts">
@@ -50,36 +52,38 @@ app.use(Icon);
 
 ### 自定义类型
 
+根据 `type` 属性定义不同类型的输入框，默认值为 `text`。
+
 :::demo
 
 ```html
 <template>
   <nut-input 
     label="文本" 
-    placeholder="文本" 
+    placeholder="请输入文本" 
     v-model="state.text" 
   />
   <nut-input 
     label="密码" 
-    placeholder="密码" 
+    placeholder="请输入密码" 
     v-model="state.password" 
     type="password" 
   />
   <nut-input 
     label="数字" 
-    placeholder="数字" 
+    placeholder="请输入数字" 
     v-model="state.number" 
     type="number" 
   />
   <nut-input 
     label="整数" 
-    placeholder="整数" 
+    placeholder="请输入整数" 
     v-model="state.digit" 
     type="digit" 
   />
   <nut-input 
     label="手机号" 
-    placeholder="手机号" 
+    placeholder="请输入手机号" 
     v-model="state.tel" 
     type="tel" 
   />
@@ -107,19 +111,21 @@ app.use(Icon);
 
 ### 禁用和只读
 
+通过 `readonly` 将输入框设置为只读状态，通过 `disabled` 将输入框设置为禁用状态。
+
 :::demo
 
 ```html
 <template>
   <nut-input 
     label="文本" 
-    placeholder="只读" 
+    placeholder="输入框只读" 
     v-model="state.readonly" 
     readonly 
   />
   <nut-input 
     label="文本" 
-    placeholder="禁用" 
+    placeholder="输入框已禁用" 
     v-model="state.disabled" 
     disabled 
   />
@@ -186,6 +192,8 @@ app.use(Icon);
 
 ### 错误提示
 
+设置 `required` 属性表示这是一个必填项，可以配合 `error` 或 `error-message` 属性显示对应的错误提示。
+
 :::demo
 
 ```html
@@ -230,6 +238,8 @@ app.use(Icon);
 
 ### 插入按钮
 
+通过 `button` 插槽可以在输入框尾部插入按钮。
+
 :::demo
 
 ```html
@@ -265,6 +275,8 @@ app.use(Icon);
 
 ### 格式化输入内容
 
+通过 `formatter` 属性可以对输入的内容进行格式化，通过 `format-trigger` 属性可以指定执行格式化的时机。例如只允许输入非数字的字符：
+
 :::demo
 
 ```html
@@ -274,6 +286,7 @@ app.use(Icon);
     label="文本" 
     placeholder="在输入时执行格式化" 
     :formatter="formatter" 
+    format-trigger="onChange"
   />
   <nut-input
     v-model="state.format2"
@@ -305,13 +318,15 @@ app.use(Icon);
 
 ### 显示字数统计
 
+设置 `maxlength` 和 `show-word-limit` 属性后会在底部显示字数统计。
+
 :::demo
 
 ```html
 <template>
   <nut-input
     v-model="state.textarea"
-    label="留言"
+    label="文本"
     type="textarea"
     show-word-limit
     rows="2"
@@ -337,6 +352,8 @@ app.use(Icon);
 :::
 
 ### 对齐方式
+
+通过 `input-align` 属性可以设置输入框内容的对齐方式，可选值为 `left`、`center` 和 `right`。
 
 :::demo
 
@@ -375,6 +392,8 @@ app.use(Icon);
 
 ### 无边框
 
+通过 `border` 属性可以设置输入框的边框。
+
 :::demo
 
 ```html
@@ -382,12 +401,14 @@ app.use(Icon);
   <nut-input 
     v-model="state.noBorder1" 
     :border="false" 
-    label="无边框" 
+    label="文本" 
+    placeholder="输入框无边框" 
   />
   <nut-input 
     v-model="state.noBorder2" 
     :border="false" 
-    label="无边框" 
+    label="文本" 
+    placeholder="输入框无边框" 
   />
 </template>
 <script lang="ts">
@@ -407,7 +428,7 @@ app.use(Icon);
 ```
 
 :::
-### 点击事件
+### 事件演示
 
 :::demo
 
@@ -415,11 +436,11 @@ app.use(Icon);
 <template>
   <nut-input
     v-model="state.event"
-    label="点击"
+    label="文本"
     left-icon="dongdong"
     right-icon="ask2"
     clearable
-    placeholder="点击"
+    placeholder="事件演示"
     @update:model-value="change"
     @focus="focus"
     @blur="blur"
@@ -533,6 +554,8 @@ app.use(Icon);
 |-------|----------|
 | button | 自定义输入框尾部按钮 |
 | input `v3.1.22` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+| rightExtra `v3.2.7` | 自定义输入框最右侧的区域 |
+
 
 
 
