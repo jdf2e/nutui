@@ -10,12 +10,12 @@
 
 import { createApp } from 'vue';
 // vue
-import { Watermark } from '@nutui/nutui';
+import { WaterMark } from '@nutui/nutui';
 // taro
-import { Watermark } from '@nutui/nutui-taro';
+import { WaterMark } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Watermark);
+app.use(WaterMark);
 
 ```
 

@@ -169,7 +169,7 @@ export default create({
       state.showPop = false;
       state.store.scale = 1;
       scaleNow();
-      state.active = 1;
+      // state.active = 1;
       emit('close');
     };
 
@@ -287,6 +287,15 @@ export default create({
       (val) => {
         state.showPop = val;
         init();
+      }
+    );
+
+    watch(
+      () => props.initNo,
+      (val) => {
+        if (val != state.active) {
+          state.active = val;
+        }
       }
     );
 
