@@ -15,13 +15,13 @@ afterAll(() => {
   config.global.components = {};
 });
 
-test('should render with row width array correctly', () => {
+test('should render with row‘s father content width correctly', () => {
   const wrapper = mount(Skeleton, {
     props: {
       width: '100px'
     }
   });
-  const skeleton: any = wrapper.find('.blockClass');
+  const skeleton: any = wrapper.find('.content-line');
   expect(skeleton.element.style.width).toBe('100px');
 });
 
@@ -79,4 +79,18 @@ test('should render default slot', () => {
     }
   });
   expect(wrapper.html()).toMatchSnapshot();
+});
+
+test('should render correctly when title uses false', () => {
+  const wrapper = mount(Skeleton, {
+    props: {
+      title: false,
+      row: '1'
+    }
+  });
+
+  const content = wrapper.find('.content-line');
+
+  expect(content.find('.blockTitle').exists()).toBeFalsy();
+  expect(content.findAll('.blockLine').length).toBe(1);
 });

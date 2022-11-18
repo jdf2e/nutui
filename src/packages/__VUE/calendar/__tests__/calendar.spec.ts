@@ -62,6 +62,29 @@ test('show-today prop', async () => {
   expect(wrapper.find('.calendar-curr-tip-curr').exists()).toBeFalsy();
 });
 
+test('first-day-of-week prop', async () => {
+  const wrapper = mount(Calendar, {
+    props: {
+      poppable: false,
+      firstDayOfWeek: 2,
+      startDate: '2022-01-01',
+      endDate: '2022-01-31'
+    }
+  });
+  await nextTick();
+  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+  // 头部周第1个元素
+  const weekday = wrapper.findAll('.calendar-week-item')[0].text();
+  expect(weekday).toEqual(weekdays[2]);
+  // 日期面板第7个元素, 判断最后一天的日期是否匹配
+  const calendarMonth = wrapper.find('.calendar-month');
+  const monthTitle = calendarMonth.find('.calendar-month-title').text();
+  const dayText = calendarMonth.findAll('.calendar-day')[6].text();
+  const date = new Date(monthTitle.replace(/[年月]/g, '/') + dayText);
+  const index = date.getDay();
+  expect(index).toEqual(1);
+});
+
 test('should render slot correctly', async () => {
   const wrapper = mount(Calendar, {
     props: {
