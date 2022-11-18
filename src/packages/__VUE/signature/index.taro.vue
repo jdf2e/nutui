@@ -148,7 +148,7 @@ export default create({
     onMounted(() => {
       Taro.nextTick(() => {
         setTimeout(() => {
-          if (Taro.getEnv() === 'WEAPP') {
+          if (Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD') {
             Taro.createSelectorQuery()
               .select('#spcanvas')
               .fields(
