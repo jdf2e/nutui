@@ -143,7 +143,8 @@ export default create({
             (state.videoElm as any).load();
           });
         }
-      }
+      },
+      { immediate: true, deep: true }
     );
 
     watch(

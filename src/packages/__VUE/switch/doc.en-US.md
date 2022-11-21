@@ -169,9 +169,9 @@ app.use(Switch);
 | v-model        | Status of Switch       | Boolean ｜ String ｜ Number | `false`  |
 | disable        | Disable status         | Boolean | `false`               |
 | loading        | Loading status         | Boolean | `false`               |
-| name           | [Name of icon](#/icon) | String | `loading`               |
-| color          | [Color of icon](#/icon)，only takes effect in `loading` state | String | -     |
-| size           | [Size of icon](#/icon)，only takes effect in `loading` state  | String ｜ Number | `12px`   |
+| name           | [Name of icon](#/en-US/component/icon) | String | `loading`               |
+| color          | [Color of icon](#/en-US/component/icon)，only takes effect in `loading` state | String | -     |
+| size           | [Size of icon](#/en-US/component/icon)，only takes effect in `loading` state  | String ｜ Number | `12px`   |
 | active-color   | Background color when active | String  | `#fa2c19`    |
 | inactive-color | Background color when inactive | String  | `#ebebeb` | 
 | active-text    | Word description when active   | String  | -         |

@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport" v-if="isWrapTeleport">
+  <Teleport :to="teleport" :disabled="!isWrapTeleport">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -25,32 +25,6 @@
       </view>
     </Transition>
   </Teleport>
-  <view v-else>
-    <nut-overlay
-      v-if="overlay"
-      :visible="visible"
-      :close-on-click-overlay="closeOnClickOverlay"
-      :class="overlayClass"
-      :style="overlayStyle"
-      :z-index="zIndex"
-      :lock-scroll="lockScroll"
-      :duration="duration"
-      @click="onClickOverlay"
-    />
-    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
-      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
-        <slot v-if="showSlot"></slot>
-        <view
-          v-if="closed"
-          @click="onClickCloseIcon"
-          class="nutui-popup__close-icon"
-          :class="'nutui-popup__close-icon--' + closeIconPosition"
-        >
-          <nut-icon :name="closeIcon" size="12px" />
-        </view>
-      </view>
-    </Transition>
-  </view>
 </template>
 <script lang="ts">
 import {
@@ -131,7 +105,7 @@ export const popupProps = {
 
   isWrapTeleport: {
     type: Boolean,
-    default: true
+    default: false
   },
   safeAreaInsetBottom: {
     type: Boolean,

@@ -42,6 +42,8 @@ import {
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('infiniteloading');
+import { useTouch } from '@/packages/utils/useTouch';
+
 export default create({
   props: {
     hasMore: {
@@ -92,6 +94,7 @@ export default create({
   emits: ['scroll-change', 'load-more', 'refresh'],
 
   setup(props, { emit, slots }) {
+    const touch: any = useTouch();
     const state = reactive({
       scrollEl: window as Window | HTMLElement | (Node & ParentNode),
       scroller: null as null | HTMLElement,
@@ -198,6 +201,8 @@ export default create({
     };
 
     const touchStart = (event: TouchEvent) => {
+      touch.start(event);
+
       if (state.beforeScrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
         state.y = event.touches[0].pageY;
         state.isTouching = true;
@@ -208,9 +213,11 @@ export default create({
     };
 
     const touchMove = (event: TouchEvent) => {
+      touch.move(event);
+
       state.distance = event.touches[0].pageY - state.y;
 
-      if (state.distance > 0 && state.isTouching) {
+      if ((touch as any).isVertical() && state.distance > 0 && state.isTouching) {
         event.preventDefault();
         if (state.distance >= state.refreshMaxH) state.distance = state.refreshMaxH;
       } else {
@@ -227,6 +234,10 @@ export default create({
           emit('refresh', refreshDone);
         }
       }
+
+      setTimeout(() => {
+        touch.reset();
+      }, 0);
     };
 
     // 滚动监听对象

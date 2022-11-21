@@ -521,10 +521,10 @@ app.use(Icon);
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | max-length      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clear-icon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
+| clear-icon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon)   | String        | `mask-close`  |
 | clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| left-icon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| right-icon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
+| left-icon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon) | String        | - |
+| right-icon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon) | String        | - |
 | left-icon-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
 | right-icon-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |

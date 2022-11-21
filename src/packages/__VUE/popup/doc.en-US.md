@@ -210,7 +210,7 @@ app.use(OverLay)
 | pop-class              | Custom bullet box classname                                              | String         | -             |
 | closeable              | Show close button                                           | Boolean        | `false`        |
 | close-icon-position    | Close button position（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
-| close-icon             | Custom Icon                                                 | String         | `"close"`     |
+| close-icon             | [icon name](#/en-US/component/icon) or image url          | String         | `"close"`     |
 | destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed   | Boolean        | `true`        |
 | round                  | Show fillet                                                | Boolean        | `false`       |
 | teleport               | Specify the mount node (`not supported by miniProgram')   | String         | `"body"`      |

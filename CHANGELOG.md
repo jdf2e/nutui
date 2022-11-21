@@ -1,3 +1,44 @@
+## v3.2.7
+
+`2022-11-18`
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @gyt95 @Anberm @jwaterwater @mikasayw @thx125 @Yill625
+
+* :sparkles: feat: 京东小程序适配 @nutui-teams
+* :zap: feat(elevator): add change event(#1826) @szg2008
+* :zap: feat: add rectangle arrow icons (#1833) @eiinu
+* :zap: feat(uploader): add delete-icon prop (#1841)  @gyt95
+* :zap: feat(calendar): 添加自定义周起始日配置 (#1827) @thx125
+* :zap: feat(menu): 增加open和close事件 (#1848) @yangjinjun3
+* :zap: feat: upd icon close @richard1015
+* :bug: fix(uploader): taro env 多组件多accept限制bug #1448  @richard1015
+* :bug: fix(sticky): sticky小程序跳动现象修复(#1571) @szg2008
+* :bug: fix(swiper): swiper 加载动态图片时报Cannot read property id of null #1537 @szg2008
+* :bug: fix(form): android site bug #1673 @richard1015
+* :bug: fix(form): input ios 16 bug #1503 @richard1015
+* :bug: fix(collapse): 修复小程序环境下使用手风琴模式无效问题 (#1830) @gyt95
+* :bug: fix(collapse)：折叠面板加载问题处理 #1743 (#1829) @Ymm0008
+* :bug: fix(imagepreview): 动态设置图片导致偏移 (#1836) @Anberm
+* :bug: fix(avatar): 修复在H5环境下运行报错问题 (#1831) @gyt95
+* :bug: fix: 修复 H5 下向上展开样式错误 (#1840) @eiinu
+* :bug: fix(Drag): 修复拖拽表现异常 (#1716) @jwaterwater
+* :bug: fix(card): too much content causes image stretched (#1839) @gyt95
+* :bug: fix(uploader): taro jd env image base64 preview bug @richard1015
+* :bug: fix(skeleton): fix some bugs for skeleton (#1832) @mikasayw
+* :bug: fix(tabbar): add custom Icon slot #1807 (#1852) @Drjingfubo
+* :bug: fix(video): Dynamically change source.src (#1860) @Drjingfubo
+* :bug: fix(popup): 优化挂载逻辑 (#1861) @yangjinjun3
+* :bug: fix(input): 优化了一些问题 (#1858) @ailululu
+* :bug: fix(Signature): 签名组件文档，demo (#1856) @Ymm0008
+* :bug: fix: 修复 imagepreview 动态设置 initNo 显示不正确问题 #1849 && InfiniteLoading 某些情况下会错误触发下拉刷新#1819 (#1853) @yangjinjun3
+* 📖 docs(input): add demo md clear @richard1015
+* 📖 docs: icon link edit @richard1015
+* 📖 docs(popup): modify close icon props description @szg2008
+* 📖 docs: 修改水印导出名称 (#1855) @Yill625
+
 ## v3.2.6
 
 `2022-11-04` 
