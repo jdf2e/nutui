@@ -257,9 +257,9 @@ Scrolling to the bottom of the list automatically loads more data.
 | container-id     | When useWindow is false, set the node ID by default                                                                | String  | `''`             |
 | load-more-txt    | "No more" text                                                                                                     | String  | 'Oops, this is the bottom'|
 | is-open-refresh  | Enable pull refresh                                                                                                | Boolean | `false`          |
-| pull-icon        | Pull refresh[图标名称](#/icon)                                                                                       | String  | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
+| pull-icon        | Pull refresh[图标名称](#/zh-CN/component/icon)                                                                                       | String  | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
 | pull-txt         | Pull refresh text                                                                                                   | String  |`Loose to refresh`|
-| load-icon        | Pull on loading[图标名称](#/icon)                                                                                    | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
+| load-icon        | Pull on loading[图标名称](#/zh-CN/component/icon)                                                                                    | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
 | load-txt         | Pull on loading text                                                                                                | String  | `Loading...`      |
 
 ### Events

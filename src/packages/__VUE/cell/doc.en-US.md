@@ -208,8 +208,8 @@ You can center the left and right contents of the cell vertically through the 'c
 | desc                    | Description                                                                                              | String           | -                |
 | desc-text-align         | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String           | right            |
 | is-link                 | Whether to show the right arrow and turn on click feedback                                               | Boolean          | false            |
-| icon                    | Left [icon name](#/icon) or image url                                                                    | String           | -                |
-| right-icon`v3.2.1`      | Right [icon name](#/icon) or image url                                                                   | String           | right            |
+| icon                    | Left [icon name](#/en-US/component/icon) or image url                                                                    | String           | -                |
+| right-icon`v3.2.1`      | Right [icon name](#/en-US/component/icon) or image url                                                                   | String           | right            |
 | round-radius            | Corner radius                                                                                            | Number           | 6px              |
 | url                     | Link URL                                                                                                 | String           | -                |
 | to                      | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -                |
