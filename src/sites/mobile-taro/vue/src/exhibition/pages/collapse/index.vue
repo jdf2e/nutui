@@ -56,6 +56,13 @@
         在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
       </nut-collapse-item>
     </nut-collapse>
+    <h2>动态生成</h2>
+    <nut-collapse v-model:active="active7" icon="down-arrow">
+      <nut-collapse-item v-for="item in item7" :key="item.key" :name="item.name">
+        <template v-slot:mTitle> title: {{ item.name }} </template>
+        content: {{ item.desc }}
+      </nut-collapse-item>
+    </nut-collapse>
   </div>
 </template>
 <script lang="ts">
@@ -69,10 +76,28 @@ export default {
       active4: 1,
       active5: 1,
       active6: 1,
+      active7: '集合1',
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
-      subTitle: '副标题'
+      subTitle: '副标题',
+      item7: [
+        {
+          key: '1',
+          name: '集合1',
+          desc: '内容1'
+        },
+        {
+          key: '2',
+          name: '集合2',
+          desc: '内容2'
+        },
+        {
+          key: '3',
+          name: '集合3',
+          desc: '内容3'
+        }
+      ]
     });
     const change = (name: string) => {
       console.log(`点击了name是${name}的面板`);

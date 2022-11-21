@@ -65,6 +65,13 @@
         {{ translate('desc2') }}
       </nut-collapse-item>
     </nut-collapse>
+    <h2>{{ translate('basic7') }}</h2>
+    <nut-collapse v-model:active="active7" icon="down-arrow">
+      <nut-collapse-item v-for="item in item7" :key="item.key" :name="item.name">
+        <template v-slot:mTitle> title: {{ item.name }} </template>
+        content: {{ item.desc }}
+      </nut-collapse-item>
+    </nut-collapse>
   </div>
 </template>
 <script lang="ts">
@@ -81,12 +88,14 @@ const initTranslate = () =>
       basic4: '自定义折叠图标',
       basic5: '自定义标题图标',
       basic6: '设置固定内容（不折叠）',
+      basic7: '动态生成',
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
       title4: '文本测试',
       title5: '固定内容',
       title6: '文本内容',
+      title7: '动态生成',
       desc1: 'NutUI是一套拥有京东风格的轻量级的 Vue 组件库',
       desc2: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
       desc3: '引入Vue3新特性 Composition API、Teleport、Emits 等',
@@ -107,12 +116,14 @@ const initTranslate = () =>
       basic4: 'Custom collapse Icon',
       basic5: 'Custom title Icon',
       basic6: 'Set fixed content (do not collapse)',
+      basic7: 'Dynamic generation',
       title1: 'title1',
       title2: 'title2',
       title3: 'title3',
       title4: 'text test',
       title5: 'fixed content',
       title6: 'text content',
+      title7: 'dynamic generation',
       desc1: 'Nutui is a lightweight Vue component library with JD style',
       desc2:
         'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
@@ -138,10 +149,28 @@ export default createDemo({
       active4: 1,
       active5: 1,
       active6: 1,
+      active7: '集合1',
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
-      subTitle: '副标题'
+      subTitle: '副标题',
+      item7: [
+        {
+          key: '1',
+          name: '集合1',
+          desc: '内容1'
+        },
+        {
+          key: '2',
+          name: '集合2',
+          desc: '内容2'
+        },
+        {
+          key: '3',
+          name: '集合3',
+          desc: '内容3'
+        }
+      ]
     });
     const change = (name: string) => {
       console.log(`点击了name是${name}的面板`);

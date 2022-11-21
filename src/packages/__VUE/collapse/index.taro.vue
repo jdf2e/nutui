@@ -64,14 +64,17 @@ export default create({
 
     const changeValAry = (name: string) => {
       const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
-      let index = -1;
 
-      activeItem.forEach((item: string | number, idx: number) => {
-        if (String(item) == String(name)) {
-          index = idx;
-        }
-      });
-      index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
+      if (Array.isArray(activeItem)) {
+        let index = -1;
+        activeItem.forEach((item: string | number, idx: number) => {
+          if (String(item) == String(name)) {
+            index = idx;
+          }
+        });
+        index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
+      }
+
       changeVal(activeItem);
     };
 

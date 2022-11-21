@@ -179,13 +179,7 @@ export default create({
     };
     const open = () => {
       proxyData.openExpanded = !proxyData.openExpanded;
-      let time = contentRef.value.childNodes?.length || 1;
-      setTimeout(() => {
-        animation();
-      }, 500 * time);
-      // timer.value = setInterval(() => {
-      // animation();
-      // }, 600);
+      animation();
     };
 
     const defaultOpen = () => {
