@@ -17,7 +17,7 @@
         :is-preventDefault="false"
         direction="horizontal"
         @change="slideChangeEnd"
-        :init-page="initNo > maxNo ? maxNo - 1 : initNo - 1"
+        :init-page="initPage"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
@@ -152,7 +152,6 @@ export default create({
     const state = reactive({
       showPop: false,
       active: 1,
-      maxNo: 1,
       rootWidth: 0,
       rootHeight: 0
     });
@@ -192,7 +191,7 @@ export default create({
     // 执行关闭
     const closeDone = () => {
       state.showPop = false;
-      state.active = 1;
+      // state.active = 1;
       emit('close');
     };
 
@@ -216,16 +215,31 @@ export default create({
       }
     );
 
+    watch(
+      () => props.initNo,
+      (val) => {
+        if (val != state.active) {
+          state.active = val;
+        }
+      }
+    );
+
+    const initPage = computed(() => {
+      const maxNo = props.images.length + props.videos.length;
+      const _initPage = props.initNo > maxNo ? maxNo - 1 : props.initNo - 1;
+      return _initPage >= 0 ? _initPage : 0;
+    });
+
     onMounted(() => {
       // 初始化页码
       state.active = props.initNo;
       state.showPop = props.show;
-      state.maxNo = props.images.length + props.videos.length;
     });
 
     return {
       swipeRef,
       ...toRefs(state),
+      initPage,
       slideChangeEnd,
       onClose,
       handleCloseIcon,

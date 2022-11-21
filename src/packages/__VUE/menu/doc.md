@@ -414,3 +414,5 @@ export default {
 |--------|----------------------|--------------|
 | change | 选择 option 之后触发 | 选择的 value |
 | toggle | 切换菜单展示状态，传 `true` 为显示，`false` 为隐藏，不传参为取反 | show?: boolean |
+| open `v3.2.7` | 打开菜单栏时触发 | - |
+| close `v3.2.7` | 关闭菜单栏时触发 | - |

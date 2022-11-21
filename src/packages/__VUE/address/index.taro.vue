@@ -54,15 +54,17 @@
               :class="['region-item', selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
-              <nut-icon
-                class="region-item-icon"
-                type="self"
-                v-bind="$attrs"
-                :name="selectedIcon"
-                size="13px"
-                v-if="selectedRegion[tabName[tabIndex]].id == item.id"
-              ></nut-icon
-              >{{ item.name }}
+              <div>
+                <nut-icon
+                  class="region-item-icon"
+                  type="self"
+                  v-bind="$attrs"
+                  :name="selectedIcon"
+                  size="13px"
+                  v-if="selectedRegion[tabName[tabIndex]].id == item.id"
+                ></nut-icon
+                >{{ item.name }}
+              </div>
             </li>
           </ul>
         </view>
@@ -136,7 +138,6 @@
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
 import { popupProps } from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
 
 const { create, componentName, translate } = createComponent('address');
 

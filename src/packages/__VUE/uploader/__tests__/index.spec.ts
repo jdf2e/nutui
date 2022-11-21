@@ -266,3 +266,13 @@ test('multiFile upload filter max-size file', async () => {
   await sleep();
   // expect(wrapper.emitted<[File]>('oversize')![0]).toBeTruthy();
 });
+
+test('delete-icon prop', () => {
+  const wrapper = mount(Uploader, {
+    props: {
+      deleteIcon: 'dongdong'
+    }
+  });
+
+  expect(wrapper.html()).toMatchSnapshot();
+});

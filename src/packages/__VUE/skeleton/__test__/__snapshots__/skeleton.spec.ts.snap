@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should change avatar shape when using avatarShape prop 1`] = `
-"<view style=\\"width: 50px; height: 50px; background-color: rgb(239, 239, 239); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-square avatarClass avatarClass--square\\">
+"<view style=\\"width: 50px; height: 50px; background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-square avatarClass avatarClass--square\\">
   <!--v-if-->
   <!--v-if-->
   <!-- 折叠头像 -->
@@ -18,10 +18,9 @@ exports[`should render default slot 1`] = `
   <!--v-if-->
   <view class=\\"content\\">
     <!--v-if-->
-    <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
-    <view class=\\"content-line\\">
-      <view class=\\"title\\"></view>
-      <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
+    <view class=\\"content-line\\" style=\\"width: 100px;\\">
+      <view class=\\"blockTitle\\" style=\\"height: 100px;\\"></view>
+      <view class=\\"blockLine\\" style=\\"height: 100px;\\"></view>
     </view>
   </view>
 </view>"

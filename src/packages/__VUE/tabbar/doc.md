@@ -124,6 +124,42 @@ app.use(TabbarItem);
 ```
 :::
 
+### 自定义图标
+通过 icon 插槽自定义图标，可以通过 slot-scope 判断标签是否选中
+
+:::demo
+```html
+<template>
+  <nut-tabbar @tab-switch="tabSwitch">
+    <nut-tabbar-item tab-title="首页">
+      <template #icon="props">
+          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+        </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+  </nut-tabbar>
+</template>
+<script>
+  export default{
+    setup() {
+      function tabSwitch(item, index) {
+        console.log(item, index);
+      }
+      const icon = {
+        active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
+        unactive:'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png',
+      };
+      return {
+        icon，
+        tabSwitch,
+      };
+    },
+  }
+</script>
+```
+:::
+
 ### 自定义选中
 :::demo
 ```html
@@ -231,7 +267,7 @@ app.use(TabbarItem);
 |-----------|-------------------------------------------|--------|--------|
 | tab-title | 标签页的标题                              | string | --    |
 | name| 标签名称，作为匹配的标识符                             | string | 当前标签的索引值   |
-| icon      | 标签页显示的[图标名称](#/icon)  | string | --     |
+| icon      | 标签页显示的[图标名称](#/zh-CN/component/icon)  | string | --     |
 | font-class-name | 自定义icon 字体基础类名     | string           | `nutui-iconfont` |
 | class-prefix | 自定义icon 类名前缀，用于使用自定义图标     | string           | `nut-icon` |
 | img      | 标签页显示图片链接 | String | --     |
@@ -242,6 +278,12 @@ app.use(TabbarItem);
 | dot       | 是否显示图标右上角小红点   | boolean | false    |
 | placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | false |
 
+
+### TabbarItem Slots
+
+| 事件名称   | 说明               | 参数           |
+|------------|--------------------|--------------------|
+| icon | 自定义图标	 | active: boolean |
 
 ### Tabbar Events
 

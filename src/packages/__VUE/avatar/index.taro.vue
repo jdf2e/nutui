@@ -127,8 +127,10 @@ export default create({
       for (let i = 0; i < children.length; i++) {
         children[i].setAttribute('data-index', i + 1);
       }
-      // state.index = avatarRef?.value?.dataset?.index;
-      state.index = avatarRef?.value?.props['data-index'];
+
+      if (avatarRef?.value?.props) {
+        state.index = avatarRef?.value?.props['data-index'];
+      }
       if (state.index == state.maxIndex && state.index != avatarGroup?.props?.maxCount) {
         state.showMax = true;
       }
