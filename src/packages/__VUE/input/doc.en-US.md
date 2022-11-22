@@ -531,7 +531,8 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
 | confirm-type   | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
-| adjust-position| Whether to automatically push the page up when the keyboard pops up, only native     | Boolean | `true` |
+| adjust-position`v3.1.21` | Whether to automatically push the page up when the keyboard pops up (`applets only`)     | Boolean | `true` |
+| always-system`v3.2.8` | Whether to force the use of input elements created by system keyboard and Web-view. When true, `confirm-type`, `confirm-hold` may fail (`applets only`)     | Boolean | `false` |
 
 ### Events
 
