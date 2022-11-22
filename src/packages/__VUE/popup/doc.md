@@ -212,7 +212,7 @@ app.use(OverLay)
 | pop-class              | 自定义弹框类名                                              | String         | -             |
 | closeable              | 是否显示关闭按钮                                            | Boolean        | `false`        |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
-| close-icon             | 自定义 Icon                                                 | String         | `"close"`     |
+| close-icon             | [图标名称](#/zh-CN/component/icon) 或图片链接                                                  | String         | `"close"`     |
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                          | Boolean        | `true`        |
 | round                  | 是否显示圆角                                                | Boolean        | `false`       |
 | teleport               | 指定挂载节点(`小程序不支持`)                                                | String         | `"body"`      |

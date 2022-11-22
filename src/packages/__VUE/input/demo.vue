@@ -1,20 +1,29 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
-    <nut-input v-model="state.val1" :label="translate('text')" :placeholder="translate('text')" />
+    <nut-input v-model="state.val1" :label="translate('text')" :placeholder="translate('textPlaceholder')" />
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-input v-model="state.text" :label="translate('text')" :placeholder="translate('text')" />
+    <nut-input v-model="state.text" :label="translate('text')" :placeholder="translate('textPlaceholder')" />
     <nut-input
       v-model="state.password"
       :label="translate('password')"
-      :placeholder="translate('password')"
+      :placeholder="translate('passwordPlaceholder')"
       type="password"
     />
-    <nut-input :label="translate('number')" :placeholder="translate('number')" v-model="state.number" type="number" />
-    <nut-input :label="translate('digit')" :placeholder="translate('digit')" v-model="state.digit" type="digit" />
-    <nut-input :label="translate('tel')" :placeholder="translate('tel')" v-model="state.tel" type="tel" />
-
+    <nut-input
+      :label="translate('number')"
+      :placeholder="translate('numberPlaceholder')"
+      v-model="state.number"
+      type="number"
+    />
+    <nut-input
+      :label="translate('digit')"
+      :placeholder="translate('digitPlaceholder')"
+      v-model="state.digit"
+      type="digit"
+    />
+    <nut-input :label="translate('tel')" :placeholder="translate('telPlaceholder')" v-model="state.tel" type="tel" />
     <h2>{{ translate('title2') }}</h2>
     <nut-input :label="translate('text')" :placeholder="translate('readonly')" v-model="state.readonly" readonly />
     <nut-input :label="translate('text')" :placeholder="translate('disabled')" v-model="state.disabled" disabled />
@@ -49,7 +58,7 @@
     <nut-input
       v-model="state.buttonVal"
       :label="translate('code')"
-      :placeholder="translate('codeplaceholder')"
+      :placeholder="translate('codePlaceholder')"
       clearable
       center
     >
@@ -78,7 +87,7 @@
     <h2>{{ translate('title7') }}</h2>
     <nut-input
       v-model="state.textarea"
-      :label="translate('message')"
+      :label="translate('text')"
       :placeholder="translate('message')"
       type="textarea"
       show-word-limit
@@ -104,21 +113,21 @@
     <nut-input
       v-model="state.noBorder1"
       :border="false"
-      :label="translate('noBorder')"
+      :label="translate('text')"
       :placeholder="translate('noBorder')"
     />
     <nut-input
       v-model="state.noBorder2"
       :border="false"
-      :label="translate('noBorder')"
+      :label="translate('text')"
       :placeholder="translate('noBorder')"
     />
 
     <h2>{{ translate('title10') }}</h2>
     <nut-input
       v-model="state.event"
-      :label="translate('click')"
-      :placeholder="translate('click')"
+      :label="translate('text')"
+      :placeholder="translate('event')"
       left-icon="dongdong"
       right-icon="ask2"
       clearable
@@ -128,9 +137,8 @@
       @clear="clear"
       @click="click"
       @click-input="clickInput"
-      @click-left-icon="clickLeftIcon"
-      @click-right-icon="clickRightIcon"
     />
+    <nut-icon @click="click1" name="dongdong"></nut-icon>
   </div>
 </template>
 
@@ -152,25 +160,30 @@ const initTranslate = () =>
       title7: '显示字数统计',
       title8: '对齐方式',
       title9: '无边框',
-      title10: '点击事件',
+      title10: '事件演示',
       text: '文本',
+      textPlaceholder: '请输入文本',
       password: '密码',
+      passwordPlaceholder: '请输入密码',
       number: '数字',
+      numberPlaceholder: '请输入数字',
       digit: '整数',
+      digitPlaceholder: '请输入整数',
       tel: '手机号',
-      readonly: '只读',
-      disabled: '禁用',
+      telPlaceholder: '请输入手机号',
+      readonly: '输入框只读',
+      disabled: '输入框已禁用',
       icon: '显示图标',
       clear: '显示清除图标',
       required: '必填项',
       error: '输入内容标红',
       errorBottom: '底部错误提示文案',
       code: '短信验证码',
-      codeplaceholder: '请输入短信验证码',
+      codePlaceholder: '请输入短信验证码',
       sendCode: '发送验证码',
-      message: '留言',
-      noBorder: '无边框',
-      click: '点击',
+      message: '请输入留言',
+      noBorder: '输入框无边框',
+      event: '事件演示',
       placeholder1: '在输入时执行格式化',
       placeholder2: '在失焦时执行格式化',
       placeholder3: '请输入留言',
@@ -188,12 +201,17 @@ const initTranslate = () =>
       title7: 'Show Word Limit',
       title8: 'Input Align',
       title9: 'No Border',
-      title10: 'Click Event',
+      title10: 'Event Demonstration',
       text: 'Text',
+      textPlaceholder: 'Text',
       password: 'Password',
+      passwordPlaceholder: 'Password',
       number: 'Number',
+      numberPlaceholder: 'Number',
       digit: 'Digit',
+      digitPlaceholder: 'Digit',
       tel: 'Tel',
+      telPlaceholder: 'Tel',
       readonly: 'Readonly',
       disabled: 'Disabled',
       icon: 'Show Icon',
@@ -202,11 +220,11 @@ const initTranslate = () =>
       error: 'Error',
       errorBottom: 'Error Message',
       code: 'Code',
-      codeplaceholder: 'Please enter code',
+      codePlaceholder: 'Please enter code',
       sendCode: 'Send',
       message: 'Message',
       noBorder: 'No Border',
-      click: 'Click',
+      event: 'Event',
       placeholder1: 'Format On Change',
       placeholder2: 'Format On Blur',
       placeholder3: 'Message',
@@ -256,7 +274,10 @@ export default createDemo({
       console.log('clear:', value, event);
     };
     const click = (value: string | number) => {
-      console.log('click:', value);
+      console.log('click1:', value);
+    };
+    const click1 = (value: string | number) => {
+      console.log('click1111:', value);
     };
     const clickInput = (value: string | number) => {
       console.log('clickInput:', value);
@@ -280,7 +301,8 @@ export default createDemo({
       clickLeftIcon,
       clickRightIcon,
       formatter,
-      translate
+      translate,
+      click1
     };
   }
 });
