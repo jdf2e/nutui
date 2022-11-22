@@ -40,6 +40,13 @@
     z-index: 2002;
     top: 50px;
     right: 15px;
+
+    &-right {
+      right: 10px;
+    }
+    &-left {
+      left: 10px;
+    }
   }
 
   .popup-bg {

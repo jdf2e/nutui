@@ -7,7 +7,6 @@
     style="width: 100%"
     lock-scroll
   >
-    <!-- @click.stop="closeOnImg" @touchstart.capture="onTouchStart" -->
     <view class="nut-imagepreview" ref="swipeRef">
       <nut-swiper
         v-if="showPop"
@@ -21,35 +20,29 @@
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <template v-if="videos.length">
-          <image-preview-item
-            v-for="(item, index) in videos"
-            :key="index"
-            :video="item"
-            :rootHeight="rootHeight"
-            :rootWidth="rootWidth"
-            :show="showPop"
-            :init-no="active"
-            @close="onClose"
-            :maxZoom="maxZoom"
-            :minZoom="minZoom"
-          ></image-preview-item>
-        </template>
-
-        <template v-for="(item, index) in images" :key="index">
-          <image-preview-item
-            :image="item"
-            :rootHeight="rootHeight"
-            :rootWidth="rootWidth"
-            :show="showPop"
-            :init-no="active"
-            @close="onClose"
-          ></image-preview-item>
-        </template>
+        <image-preview-item
+          v-for="(item, index) in mergeImages"
+          :key="index"
+          :video="index < videos.length ? item : {}"
+          :image="index >= videos.length ? item : {}"
+          :rootHeight="rootHeight"
+          :rootWidth="rootWidth"
+          :show="showPop"
+          :init-no="active"
+          @close="onClose"
+          :maxZoom="maxZoom"
+          :minZoom="minZoom"
+        ></image-preview-item>
       </nut-swiper>
     </view>
     <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length + videos.length }} </view>
-    <view class="nut-imagepreview-close-icon" @click="handleCloseIcon" :style="styles" v-if="closeable"
+    <view
+      :class="[
+        'nut-imagepreview-close-icon',
+        closeIconPosition == 'top-right' ? 'nut-imagepreview-close-icon-right' : 'nut-imagepreview-close-left'
+      ]"
+      @click="onClose"
+      v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
@@ -156,17 +149,20 @@ export default create({
       rootHeight: 0
     });
 
-    const styles = computed(() => {
-      let style: CSSProperties = {};
-      if (props.closeIconPosition == 'top-right') {
-        style.right = '10px';
-      } else {
-        style.left = '10px';
+    const mergeImages = computed(() => {
+      if (Array.isArray(props.videos)) {
+        return ([] as any).concat(props.videos).concat(props.images);
       }
-      return style;
+      return props.images;
     });
 
-    const slideChangeEnd = function (page: number) {
+    const initPage = computed(() => {
+      const maxNo = props.images.length + props.videos.length;
+      const _initPage = props.initNo > maxNo ? maxNo - 1 : props.initNo - 1;
+      return _initPage >= 0 ? _initPage : 0;
+    });
+
+    const slideChangeEnd = (page: number) => {
       state.active = page + 1;
       emit('change', state.active);
     };
@@ -174,12 +170,9 @@ export default create({
     const onClose = () => {
       if (props.beforeClose) {
         const returnVal = props.beforeClose.apply(null, state.active);
-
         if (isPromise(returnVal)) {
           returnVal.then((value) => {
-            if (value) {
-              closeDone();
-            }
+            value && closeDone();
           });
         } else if (returnVal) {
           closeDone();
@@ -191,19 +184,14 @@ export default create({
     // 执行关闭
     const closeDone = () => {
       state.showPop = false;
-      // state.active = 1;
       emit('close');
-    };
-
-    // 点击关闭按钮
-    const handleCloseIcon = () => {
-      onClose();
     };
 
     const init = () => {
       setTimeout(() => {
-        state.rootHeight = swipeRef.value.offsetHeight;
-        state.rootWidth = swipeRef.value.offsetWidth;
+        const { offsetHeight, offsetWidth } = swipeRef.value;
+        state.rootHeight = offsetHeight;
+        state.rootWidth = offsetWidth;
       }, 100);
     };
 
@@ -223,15 +211,7 @@ export default create({
         }
       }
     );
-
-    const initPage = computed(() => {
-      const maxNo = props.images.length + props.videos.length;
-      const _initPage = props.initNo > maxNo ? maxNo - 1 : props.initNo - 1;
-      return _initPage >= 0 ? _initPage : 0;
-    });
-
     onMounted(() => {
-      // 初始化页码
       state.active = props.initNo;
       state.showPop = props.show;
     });
@@ -242,8 +222,7 @@ export default create({
       initPage,
       slideChangeEnd,
       onClose,
-      handleCloseIcon,
-      styles
+      mergeImages
     };
   }
 });

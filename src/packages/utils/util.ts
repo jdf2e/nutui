@@ -112,3 +112,13 @@ export function myFixed(num: any, digit: number = 2) {
   num = parseFloat(num);
   return (Math.round((num + Number.EPSILON) * Math.pow(10, digit)) / Math.pow(10, digit)).toFixed(digit);
 }
+
+export function preventDefault(event: Event, isStopPropagation?: boolean) {
+  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+    event.preventDefault();
+  }
+
+  if (isStopPropagation) {
+    event.stopPropagation();
+  }
+}
