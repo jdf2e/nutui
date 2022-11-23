@@ -1,51 +1,45 @@
 <template>
-  <!-- 气泡弹出层  按钮 -->
-  <view style="display: inline-block" :class="customClass" @click.stop="openPopover" ref="reference">
-    <slot name="reference"></slot
-  ></view>
+  <view :class="classes">
+    <view class="nut-popover-wrapper" @click="openPopover" ref="popoverRef"><slot name="reference"></slot></view>
 
-  <nut-popup
-    ref="popoverRef"
-    :pop-class="classes"
-    v-model:visible="showPopup"
-    :overlay="false"
-    @clickOverlay="clickOverlay"
-  >
-    <!-- 气泡弹出层  箭头 -->
-    <view :class="popoverArrow" v-if="showArrow"> </view>
-    <!-- 气泡弹出层  内容 -->
-    <slot name="content"></slot>
-    <view class="popover-menu" :class="popoverContent" ref="popoverMenu">
-      <view
-        v-for="(item, index) in list"
-        :key="index"
-        :class="[item.className, { 'popover-menu-item': true, disabled: item.disabled }]"
-        @click.stop="chooseItem(item, index)"
-      >
-        <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
-        <view class="popover-menu-name">{{ item.name }}</view>
+    <Transition name="nut-popover">
+      <view :class="popoverContent" :style="getStyles" ref="contentRef" v-if="showPopup">
+        <!-- 气泡弹出层  箭头 -->
+        <view :class="popoverArrow" v-if="showArrow"> </view>
+        <slot name="content"></slot>
+        <view
+          v-for="(item, index) in list"
+          :key="index"
+          :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
+          @click.stop="chooseItem(item, index)"
+        >
+          <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
+          <view class="nut-popover-menu-name">{{ item.name }}</view>
+        </view>
       </view>
-    </view>
-  </nut-popup>
+    </Transition>
+
+    <nut-overlay
+      :visible="showPopup"
+      :duration="0"
+      @click="closePopover"
+      :overlayStyle="{ background: 'transparent' }"
+    />
+  </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, nextTick, onUnmounted } from 'vue';
+import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import overlay, { overlayProps } from '../overlay/index.vue';
 const { componentName, create } = createComponent('popover');
-import Popup, { popupProps } from '../popup/index.vue';
-import Button from '../button/index.vue';
-import { createPopper } from '@popperjs/core/lib/popper-lite';
-import offsetModifier from '@popperjs/core/lib/modifiers/offset';
-import type { Instance, Placement } from '@popperjs/core';
 
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
+    [overlay.name]: overlay
   },
   props: {
-    ...popupProps,
+    ...overlayProps,
     list: {
       type: Array,
       default: []
@@ -76,22 +70,25 @@ export default create({
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
-    let popper: Instance | null;
-    const reference = ref();
     const popoverRef = ref();
-
+    const contentRef = ref();
     const showPopup = ref(props.visible);
 
-    const { theme, location } = toRefs(props);
+    const state = reactive({
+      rootWidth: 0,
+      rootHeight: 0
+    });
+
+    const { location } = toRefs(props);
 
     const classes = computed(() => {
       const prefixCls = componentName;
-
-      return `${prefixCls} ${prefixCls}--${theme.value}`;
+      const { theme, customClass } = props;
+      return `${prefixCls} ${prefixCls}--${theme} ${customClass}`;
     });
 
     const popoverContent = computed(() => {
-      const prefixCls = 'popover-content';
+      const prefixCls = 'nut-popover-content';
       return {
         [prefixCls]: true,
         [`${prefixCls}--${location.value}`]: location.value
@@ -99,80 +96,60 @@ export default create({
     });
 
     const popoverArrow = computed(() => {
-      const prefixCls = 'popover-arrow';
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${location.value}`]: location.value
-      };
+      const prefixCls = 'nut-popover-arrow';
+      const direction = props.location.split('-')[0];
+      return `${prefixCls} ${prefixCls}-${direction} ${location ? `${prefixCls}--${props.location}` : ''}`;
     });
 
-    const createPopperInstance = () => {
-      if (reference.value && popoverRef.value) {
-        return createPopper(reference.value, popoverRef.value.popupRef, {
-          placement: props.location,
-          modifiers: [
-            {
-              name: 'computeStyles',
-              options: {
-                adaptive: false,
-                gpuAcceleration: false
-              }
-            },
-            Object.assign({}, offsetModifier, {
-              options: {
-                offset: props.offset
-              }
-            })
-          ]
-        });
+    const getStyles = computed(() => {
+      let cross = +state.rootHeight;
+      let lengthways = +state.rootWidth;
+      if (Array.isArray(props.offset) && props.offset.length == 2) {
+        cross += +props.offset[1];
+        lengthways += +props.offset[1];
       }
-      return null;
-    };
+      const direction = props.location.split('-')[0];
+      const style: CSSProperties = {};
+      const mapd: any = {
+        top: 'bottom',
+        bottom: 'top',
+        left: 'right',
+        right: 'left'
+      };
+      if (['top', 'bottom'].includes(direction)) {
+        style[mapd[direction]] = `${cross}px`;
+        style.marginLeft = `${props.offset[0]}px`;
+      } else {
+        style[mapd[direction]] = `${lengthways}px`;
+        style.marginTop = `${props.offset[0]}px`;
+      }
+      return style;
+    });
 
-    const clickOverlay = () => {
-      // console.log('关闭');
-    };
+    // 获取宽度
+    const getContentWidth = () => {
+      const { offsetHeight, offsetWidth } = popoverRef.value;
+      state.rootHeight = offsetHeight;
+      state.rootWidth = offsetWidth;
 
-    const uploadLocation = () => {
-      nextTick(() => {
-        if (!showPopup.value) return;
-        if (!popper) {
-          popper = createPopperInstance();
-        } else {
-          popper.setOptions({
-            placement: props.location
-          });
-        }
+      setTimeout(() => {
+        console.log(contentRef.value.offsetWidth);
       });
     };
-
-    const clickAway = (event: Event) => {
-      const element = reference.value;
-      if (element && !element.contains(event.target)) {
-        closePopover();
-      }
-    };
-    onMounted(() => {
-      window.addEventListener('click', clickAway, true);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('click', clickAway, true);
-    });
 
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
-        uploadLocation();
+        if (value) {
+          getContentWidth();
+        }
       }
     );
 
     watch(
       () => props.location,
-      (value) => {
-        uploadLocation();
-      }
+      (value) => {}
     );
 
     const update = (val: boolean) => {
@@ -186,14 +163,12 @@ export default create({
     };
 
     const closePopover = () => {
-      emit('close');
+      console.log('关闭');
       emit('update:visible', false);
+      emit('close');
     };
 
     const chooseItem = (item: any, index: number) => {
-      if (item.disabled) {
-        return;
-      }
       emit('choose', item, index);
     };
 
@@ -205,9 +180,9 @@ export default create({
       popoverArrow,
       closePopover,
       chooseItem,
-      reference,
       popoverRef,
-      clickOverlay
+      getStyles,
+      contentRef
     };
   }
 });
