@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click="onClick">
+  <view :class="classes">
     <template v-if="$slots.input">
       <view
         v-if="label"
@@ -55,6 +55,7 @@
               :value="modelValue"
               :formatTrigger="formatTrigger"
               :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -75,6 +76,7 @@
               :formatTrigger="formatTrigger"
               :confirm-type="confirmType"
               :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -98,6 +100,7 @@
             <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
+          <slot v-if="$slots.rightExtra" name="rightExtra"></slot>
         </view>
         <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
           <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -260,6 +263,10 @@ export default create({
     adjustPosition: {
       type: Boolean,
       default: true
+    },
+    alwaysSystem: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -416,13 +423,6 @@ export default create({
       emit('click-right-icon', event);
     };
 
-    const onClick = (e: MouseEvent) => {
-      if (props.disabled) {
-        e.stopPropagation();
-        return;
-      }
-    };
-
     watch(
       () => props.modelValue,
       () => {
@@ -455,8 +455,7 @@ export default create({
       clear,
       onClickInput,
       onClickLeftIcon,
-      onClickRightIcon,
-      onClick
+      onClickRightIcon
     };
   }
 });

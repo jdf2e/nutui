@@ -211,8 +211,8 @@ app.use(Icon)
 | desc                    | 右侧描述                                                                                       | String           | -                |
 | desc-text-align         | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String           | right            |
 | is-link                 | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean          | false            |
-| icon                    | 左侧 [图标名称](#/icon) 或图片链接                                                             | String           | -                |
-| right-icon`v3.2.1`      | 右侧箭头 [图标名称](#/icon) 或图片链接                                                         | String           | right            |
+| icon                    | 左侧 [图标名称](#/zh-CN/component/icon) 或图片链接                                                             | String           | -                |
+| right-icon`v3.2.1`      | 右侧箭头 [图标名称](#/zh-CN/component/icon) 或图片链接                                                         | String           | right            |
 | round-radius            | 圆角半径                                                                                       | Number           | 6px              |
 | url `小程序不支持`      | 点击后跳转的链接地址                                                                           | String           | -                |
 | to `小程序不支持`       | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String ｜ Object | -                |

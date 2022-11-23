@@ -120,6 +120,27 @@ test('should label', () => {
   expect(label.text()).toBe('文本');
 });
 
+test('should label-class', () => {
+  const wrapper = mount(Input, {
+    props: {
+      label: '文本',
+      labelClass: 'test-class'
+    }
+  });
+  const label = wrapper.find('.nut-input-label');
+  expect(label.classes()).toContain('test-class');
+});
+
+test('should colon', () => {
+  const wrapper = mount(Input, {
+    props: {
+      label: 'test',
+      colon: true
+    }
+  });
+  expect(wrapper.find('.nut-input-label').html()).toMatchSnapshot();
+});
+
 test('should require', () => {
   const wrapper = mount(Input, {
     props: {
@@ -148,4 +169,48 @@ test('should readonly', () => {
   });
   const input = wrapper.find('input');
   expect(input.attributes('readonly')).toBe('');
+});
+
+test('should render word limit correctly', () => {
+  const wrapper = mount(Input, {
+    props: {
+      modelValue: '123',
+      maxlength: 3,
+      showWordLimit: true
+    }
+  });
+  expect(wrapper.find('.nut-input-word-limit').html()).toMatchSnapshot();
+});
+
+test('should render word limit correctly when modelValue is null', () => {
+  const wrapper = mount(Input, {
+    props: {
+      modelValue: undefined,
+      maxlength: 3,
+      showWordLimit: true
+    }
+  });
+  expect(wrapper.html()).toMatchSnapshot();
+});
+
+test('should labelAlign', () => {
+  const wrapper = mount(Input, {
+    props: {
+      label: '文本',
+      labelAlign: 'right'
+    }
+  });
+  const input: any = wrapper.find('.nut-input-label');
+  expect(input.element.style.textAlign).toEqual('right');
+});
+
+test('should inputAlign', () => {
+  const wrapper = mount(Input, {
+    props: {
+      label: '文本',
+      inputAlign: 'right'
+    }
+  });
+  const input: any = wrapper.find('.input-text');
+  expect(input.element.style.textAlign).toEqual('right');
 });
