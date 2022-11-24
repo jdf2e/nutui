@@ -36,10 +36,9 @@
 import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
-const { componentName, create } = createComponent('popover');
+const { create } = createComponent('popover');
 
 export default create({
-  inheritAttrs: false,
   components: {
     [Popup.name]: Popup
   },
@@ -76,7 +75,7 @@ export default create({
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
       const direction = props.location.split('-')[0];
-      return `${prefixCls} ${prefixCls}-${direction} ${location ? `${prefixCls}--${props.location}` : ''}`;
+      return `${prefixCls} ${prefixCls}-${direction} ${location ? `${prefixCls}--${location}` : ''}`;
     });
 
     const getStyles = computed(() => {
