@@ -2,7 +2,7 @@
   <div class="s-bar demo-list">
     <h4>基本用法</h4>
     <div class="demo1">
-      <nut-searchbar v-model="value"></nut-searchbar>
+      <nut-searchbar v-model="value" @click-right-icon="bb"></nut-searchbar>
     </div>
     <p>右侧搜索按钮可根据需要进行配置</p>
     <div class="demo1">
@@ -10,7 +10,15 @@
     </div>
     <p>可配置输入框前面是否显示搜索图标、右侧是否显示文字按钮、显示文字、自定义 class</p>
     <div class="demo1">
-      <nut-searchbar v-model="value" placeText="ERP/姓名/邮箱" :hasIcon="true" :hasTextButton="true" customClass="search_demo"></nut-searchbar>
+      <nut-searchbar
+        @click-left-icon="aa"
+        @click-right-icon="bb"
+        v-model="value"
+        placeText="ERP/姓名/邮箱"
+        :hasIcon="true"
+        :hasTextButton="true"
+        customClass="search_demo"
+      ></nut-searchbar>
     </div>
     <h4>事件</h4>
     <div class="demo1">
@@ -34,13 +42,13 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '',
     };
   },
   mounted() {
     const th = this;
-    this.$nextTick(function() {
-      setTimeout(function() {
+    this.$nextTick(function () {
+      setTimeout(function () {
         th.$refs.myInput.focus();
       }, 2000);
     });
@@ -65,8 +73,14 @@ export default {
     search(value) {
       this.$refs.myInput.blur();
       console.log('搜索');
-    }
-  }
+    },
+    aa() {
+      console.log('点击左边');
+    },
+    bb() {
+      console.log('点击右边');
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

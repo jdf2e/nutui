@@ -129,3 +129,5 @@ export default {
 | blur | 输入框失去焦点时触发事件 | value
 | submit | 默认提交事件，点击右侧Icon或文字也会触发 | value
 | clear | 清空事件 | 无
+| click-left-icon | 点击左侧图标时触发 | 无
+| click-right-icon | 点击右侧图标或文字时触发 | 无
