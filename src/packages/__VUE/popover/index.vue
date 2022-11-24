@@ -1,9 +1,9 @@
 <template>
-  <view :class="classes">
+  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]">
     <view class="nut-popover-wrapper" @click="openPopover" ref="popoverRef"><slot name="reference"></slot></view>
 
     <nut-popup
-      :popClass="popoverContent"
+      :popClass="`nut-popover-content nut-popover-content--${location}`"
       :style="getStyles"
       v-model:visible="showPopup"
       position=""
@@ -72,17 +72,6 @@ export default create({
     });
 
     const { location } = toRefs(props);
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      const { theme, customClass } = props;
-      return `${prefixCls} ${prefixCls}--${theme} ${customClass} `;
-    });
-
-    const popoverContent = computed(() => {
-      const prefixCls = 'nut-popover-content';
-      return `${prefixCls} ${prefixCls}--${location.value}`;
-    });
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
@@ -176,10 +165,8 @@ export default create({
     });
 
     return {
-      classes,
       showPopup,
       openPopover,
-      popoverContent,
       popoverArrow,
       closePopover,
       chooseItem,
