@@ -39,7 +39,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="Customized" location="bottom-start" custom-class="customClass">
+    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -56,49 +56,18 @@
 
     <h2>{{ translate('title3') }}</h2>
 
-    <nut-cell
-      title="方向"
-      @click="
-        () => {
-          showPicker = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change">
+    <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
+    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
       <template #top>
-        <nut-popover
-          v-model:visible="customPositon"
-          :location="curPostion"
-          theme="dark"
-          :list="positionList"
-          customClass="brickBox"
-        >
-          <template #reference>
-            <div class="brick"></div>
-          </template>
-        </nut-popover>
+        <div class="brickBox">
+          <nut-popover v-model:visible="customPositon" :location="curPostion" theme="dark" :list="positionList">
+            <template #reference>
+              <div class="brick"></div>
+            </template>
+          </nut-popover>
+        </div>
       </template>
     </nut-picker>
-
-    <!-- <nut-row type="flex" justify="center">
-      <nut-col :span="24" style="text-align: center">
-        <nut-popover
-          v-model:visible="customPositon"
-          :location="curPostion"
-          theme="dark"
-          :list="positionList"
-          customClass="brickBox"
-        >
-          <template #reference>
-            <div class="brick"></div>
-          </template>
-        </nut-popover>
-      </nut-col>
-    </nut-row>
-
-    <nut-radiogroup v-model="curPostion" direction="horizontal" class="radiogroup">
-      <nut-radio shape="button" :label="pos" v-for="(pos, i) in position" :key="i">{{ pos }}</nut-radio>
-    </nut-radiogroup> -->
   </div>
 </template>
 <script lang="ts">
@@ -150,20 +119,6 @@ export default createDemo({
       showPicker: false
     });
     const curPostion = ref('top');
-    const position = ref([
-      'top',
-      'top-start',
-      'top-end',
-      'right',
-      'right-start',
-      'right-end',
-      'bottom',
-      'bottom-start',
-      'bottom-end',
-      'left',
-      'left-start',
-      'left-end'
-    ]);
 
     const columns = ref([
       { text: 'top', value: 'top' },
@@ -259,11 +214,18 @@ export default createDemo({
 
     const chooseItem = (item: unknown, index: number) => {
       console.log(item, index);
-      alert('selected');
+    };
+
+    const handlePicker = () => {
+      state.showPicker = true;
+      setTimeout(() => {
+        state.customPositon = true;
+      });
     };
 
     const change = ({ selectedValue }) => {
-      console.log('change', selectedValue[0]);
+      curPostion.value = selectedValue[0];
+      state.customPositon = true;
     };
     return {
       iconItemList,
@@ -272,12 +234,12 @@ export default createDemo({
       itemListDisabled,
       selfContent,
       chooseItem,
-      position,
       curPostion,
       positionList,
       translate,
       columns,
-      change
+      change,
+      handlePicker
     };
   }
 });
@@ -293,7 +255,7 @@ export default createDemo({
   .brick {
     width: 60px;
     height: 60px;
-    background: #1989fa;
+    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
     border-radius: 10px;
   }
 }

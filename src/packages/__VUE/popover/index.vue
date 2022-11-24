@@ -2,6 +2,7 @@
   <view :class="classes">
     <view class="nut-popover-wrapper" @click="openPopover" ref="popoverRef"><slot name="reference"></slot></view>
 
+    <!-- <Teleport :to="teleport" > -->
     <Transition name="nut-popover">
       <view :class="popoverContent" :style="getStyles" ref="contentRef" v-if="showPopup">
         <!-- 气泡弹出层  箭头 -->
@@ -18,28 +19,22 @@
         </view>
       </view>
     </Transition>
-
-    <nut-overlay
-      :visible="showPopup"
-      :duration="0"
-      @click="closePopover"
-      :overlayStyle="{ background: 'transparent' }"
-    />
+    <!-- </Teleport> -->
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive } from 'vue';
+import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import overlay, { overlayProps } from '../overlay/index.vue';
 const { componentName, create } = createComponent('popover');
 
 export default create({
   inheritAttrs: false,
-  components: {
-    [overlay.name]: overlay
-  },
+  components: {},
   props: {
-    ...overlayProps,
+    visible: {
+      type: Boolean,
+      default: false
+    },
     list: {
       type: Array,
       default: []
@@ -66,6 +61,18 @@ export default create({
     showArrow: {
       type: Boolean,
       default: true
+    },
+    closeOnClickAction: {
+      type: Boolean,
+      default: true
+    },
+    closeOnClickOutside: {
+      type: Boolean,
+      default: true
+    },
+    teleport: {
+      type: [String, Element],
+      default: 'body'
     }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
@@ -104,11 +111,12 @@ export default create({
     const getStyles = computed(() => {
       let cross = +state.rootHeight;
       let lengthways = +state.rootWidth;
-      if (Array.isArray(props.offset) && props.offset.length == 2) {
-        cross += +props.offset[1];
-        lengthways += +props.offset[1];
+      let { offset, location } = props;
+      if (Array.isArray(offset) && offset.length == 2) {
+        cross += +offset[1];
+        lengthways += +offset[1];
       }
-      const direction = props.location.split('-')[0];
+      const direction = location.split('-')[0];
       const style: CSSProperties = {};
       const mapd: any = {
         top: 'bottom',
@@ -118,10 +126,10 @@ export default create({
       };
       if (['top', 'bottom'].includes(direction)) {
         style[mapd[direction]] = `${cross}px`;
-        style.marginLeft = `${props.offset[0]}px`;
+        style.marginLeft = `${offset[0]}px`;
       } else {
         style[mapd[direction]] = `${lengthways}px`;
-        style.marginTop = `${props.offset[0]}px`;
+        style.marginTop = `${offset[0]}px`;
       }
       return style;
     });
@@ -131,10 +139,6 @@ export default create({
       const { offsetHeight, offsetWidth } = popoverRef.value;
       state.rootHeight = offsetHeight;
       state.rootWidth = offsetWidth;
-
-      setTimeout(() => {
-        console.log(contentRef.value.offsetWidth);
-      });
     };
 
     watch(
@@ -146,12 +150,6 @@ export default create({
         }
       }
     );
-
-    watch(
-      () => props.location,
-      (value) => {}
-    );
-
     const update = (val: boolean) => {
       emit('update', val);
       emit('update:visible', val);
@@ -163,14 +161,37 @@ export default create({
     };
 
     const closePopover = () => {
-      console.log('关闭');
       emit('update:visible', false);
       emit('close');
     };
 
     const chooseItem = (item: any, index: number) => {
       emit('choose', item, index);
+      if (props.closeOnClickAction) {
+        closePopover();
+      }
     };
+
+    const clickAway = (event: Event) => {
+      const element = popoverRef.value;
+      const elContent = contentRef.value;
+      if (
+        element &&
+        !element.contains(event.target) &&
+        elContent &&
+        !elContent.contains(event.target) &&
+        props.closeOnClickOutside
+      ) {
+        closePopover();
+      }
+    };
+    onMounted(() => {
+      window.addEventListener('touchstart', clickAway, true);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('touchstart', clickAway, true);
+    });
 
     return {
       classes,
