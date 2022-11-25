@@ -4,12 +4,10 @@ import { ImageInterface } from './types';
 export class ImagePreviewOptions {
   show = false;
   images: ImageInterface[] = [];
-  initNo = 1;
+  initNo = 0;
   paginationVisible = false;
   paginationColor = '';
   teleport: string | HTMLElement = 'body';
-
-  // function
   onClose?: Function = () => {};
 }
 
@@ -31,9 +29,6 @@ class ImagePreviewFunction {
     root.id = 'imagepreview-' + new Date().getTime();
     const Wrapper = {
       setup() {
-        // options.onClose = () => {
-        //     elWarp.removeChild(root);
-        // };
         options.teleport = `#${root.id}`;
         return () => {
           return h(ImagePreview, options);

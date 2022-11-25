@@ -7,7 +7,6 @@
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
-      @click="video && video.source && videoClick"
     >
       <img v-if="image && image.src" :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
       <nut-video v-if="video && video.source" :source="video.source" :options="video.options"></nut-video>
@@ -92,7 +91,7 @@ export default create({
       return state.imageRatio > rootRatio;
     });
 
-    // 图片放大
+    // 图片缩放
     const imageStyle = computed(() => {
       if (props.image && props.image.src) {
         const { scale, moveX, moveY, moving, zooming } = state;
