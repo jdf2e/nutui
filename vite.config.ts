@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite';
+import { defineConfig, PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import legacy from '@vitejs/plugin-legacy';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
 import config from './package.json';
-const hljs = require('highlight.js'); // https://highlightjs.org/
+import { visualizer } from 'rollup-plugin-visualizer';
+import hljs from 'highlight.js';
+import autoprefixer from 'autoprefixer';
 import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
@@ -39,7 +40,7 @@ export default defineConfig({
     },
     postcss: {
       plugins: [
-        require('autoprefixer')({
+        autoprefixer({
           overrideBrowserslist: ['> 0.5%', 'last 2 versions', 'ie > 11', 'iOS >= 10', 'Android >= 5']
         })
       ]
@@ -86,6 +87,7 @@ export default defineConfig({
     // legacy({
     //   targets: ['defaults', 'not IE 11']
     // })
+    // ,[visualizer() as PluginOption]
   ],
   build: {
     target: 'es2015',

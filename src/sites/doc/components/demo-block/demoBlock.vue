@@ -28,7 +28,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ref, getCurrentInstance, onMounted, computed } from 'vue';
 import { compressText, copyCodeHtml, decompressText } from './basedUtil';
 
