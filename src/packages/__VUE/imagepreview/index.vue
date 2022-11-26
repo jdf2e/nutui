@@ -2,7 +2,7 @@
   <nut-popup
     pop-class="custom-pop"
     v-model:visible="showPop"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     @closed="onClose"
     style="width: 100%"
     lock-scroll
@@ -102,7 +102,7 @@ export default create({
       type: [Number, String],
       default: 0
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: false
     },

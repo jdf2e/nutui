@@ -6,7 +6,7 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     :teleport="teleport"
   >
     <view class="nut-address">
@@ -140,7 +140,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { popupProps } from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('address');
 interface RegionData {
   name: string;

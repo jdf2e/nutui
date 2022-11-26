@@ -32,7 +32,8 @@
 import { onMounted, computed, watch, ref, PropType, toRefs, nextTick, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
-import Popup, { popupProps } from '../popup/index.vue';
+import Popup from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 import Button from '../button/index.vue';
 import { createPopper } from '@popperjs/core/lib/popper-lite';
 import offsetModifier from '@popperjs/core/lib/modifiers/offset';

@@ -22,7 +22,7 @@ test('should emit input event after clicking number key', async () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   clickKey(wrapper.findAll('.key')[0]);
@@ -33,7 +33,7 @@ test('should shuffle key order when using random-key prop', async () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       randomKeys: true
     }
   });
@@ -54,7 +54,7 @@ test('should emit delete event after clicking delete key', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   clickKey(wrapper.findAll('.key')[11]);
@@ -64,7 +64,7 @@ test('should emit close event after clicking collapse key', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   clickKey(wrapper.findAll('.key')[9]);
@@ -75,7 +75,7 @@ test('should emit close event after clicking close button', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       type: 'rightColumn'
     }
   });
@@ -87,7 +87,7 @@ test('should render title and close button correctly', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       title: '默认键盘'
     }
   });
@@ -99,7 +99,7 @@ test('should render finish button correctly', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       type: 'rightColumn',
       confirmText: '支付'
     }
@@ -112,7 +112,7 @@ test('should emit "update:modelValue" event after clicking key', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       maxlength: 6
     }
   });
