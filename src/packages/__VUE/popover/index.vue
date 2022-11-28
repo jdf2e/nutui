@@ -13,27 +13,27 @@
       :overlayStyle="overlayStyle"
       :overlayClass="overlayClass"
       :closeOnClickOverlay="closeOnClickOverlay"
-      ref="popoverContentRef"
     >
-      <!-- 气泡弹出层  箭头 -->
-      <view :class="popoverArrow" v-if="showArrow"> </view>
-      <slot name="content"></slot>
-      <view
-        v-for="(item, index) in list"
-        :key="index"
-        :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
-        @click.stop="chooseItem(item, index)"
-      >
-        <slot v-if="item.icon">
-          <nut-icon v-bind="$attrs" class="item-img" :classPrefix="iconPrefix" :name="item.icon"></nut-icon
-        ></slot>
-        <view class="nut-popover-menu-name">{{ item.name }}</view>
+      <view ref="popoverContentRef" class="nut-popover-content-group">
+        <view :class="popoverArrow" v-if="showArrow"> </view>
+        <slot name="content"></slot>
+        <view
+          v-for="(item, index) in list"
+          :key="index"
+          :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
+          @click.stop="chooseItem(item, index)"
+        >
+          <slot v-if="item.icon">
+            <nut-icon v-bind="$attrs" class="item-img" :classPrefix="iconPrefix" :name="item.icon"></nut-icon
+          ></slot>
+          <view class="nut-popover-menu-name">{{ item.name }}</view>
+        </view>
       </view>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive, onMounted, onUnmounted } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('popover');
 export default create({
@@ -53,8 +53,7 @@ export default create({
     overlayStyle: { type: Object as PropType<CSSProperties> },
     closeOnClickOverlay: { type: Boolean, default: true },
     closeOnClickAction: { type: Boolean, default: true },
-    closeOnClickOutside: { type: Boolean, default: true },
-    teleportDisable: { type: Boolean, default: true }
+    closeOnClickOutside: { type: Boolean, default: true }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
@@ -68,8 +67,9 @@ export default create({
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
-      const direction = props.location.split('-')[0];
-      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${props.location}`;
+      const loca = props.location;
+      const direction = loca.split('-')[0];
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`;
     });
     const getStyles = computed(() => {
       let cross = +state.rootHeight;
@@ -134,7 +134,7 @@ export default create({
     };
     const clickAway = (event: Event) => {
       const element = popoverRef.value;
-      const elContent = popoverContentRef.value?.popupRef;
+      const elContent = popoverContentRef.value;
       if (
         element &&
         !element.contains(event.target) &&

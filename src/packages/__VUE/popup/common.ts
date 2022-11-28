@@ -20,8 +20,6 @@ export const component = (componentName: string) => {
         closed: props.closeable
       });
 
-      const popupRef = ref();
-
       const classes = computed(() => {
         const prefixCls = componentName;
         return {
@@ -107,8 +105,7 @@ export const component = (componentName: string) => {
         onClickCloseIcon,
         onClickOverlay,
         onOpened,
-        onClosed,
-        popupRef
+        onClosed
       };
     }
   };

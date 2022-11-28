@@ -103,9 +103,15 @@
     max-height: initial;
     overflow-y: initial;
 
+    &-group {
+      display: block;
+      // position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
     .nut-popover-menu-item {
-      display: flex;
-      align-items: center;
+      display: block;
       padding-bottom: 8px;
       margin: 8px;
       border-bottom: 1px solid $popover-border-bottom-color;
