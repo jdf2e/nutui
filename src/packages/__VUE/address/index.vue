@@ -6,7 +6,7 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     :teleport="teleport"
   >
     <view class="nut-address">
@@ -58,15 +58,17 @@
               :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
-              <nut-icon
-                class="region-item-icon"
-                type="self"
-                v-bind="$attrs"
-                :name="selectedIcon"
-                size="13px"
-                v-if="selectedRegion[tabName[tabIndex]].id == item.id"
-              ></nut-icon
-              >{{ item.name }}
+              <div>
+                <nut-icon
+                  class="region-item-icon"
+                  type="self"
+                  v-bind="$attrs"
+                  :name="selectedIcon"
+                  size="13px"
+                  v-if="selectedRegion[tabName[tabIndex]].id == item.id"
+                ></nut-icon
+                >{{ item.name }}
+              </div>
             </li>
           </ul>
         </view>
@@ -140,7 +142,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { popupProps } from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('address');
 interface RegionData {
   name: string;

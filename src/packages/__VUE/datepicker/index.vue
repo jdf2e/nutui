@@ -9,7 +9,7 @@
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
     :safeAreaInsetBottom="safeAreaInsetBottom"
@@ -25,7 +25,7 @@
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import Picker from '../picker/index.vue';
-import { popupProps } from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';

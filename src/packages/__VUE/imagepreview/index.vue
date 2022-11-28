@@ -1,10 +1,10 @@
 <template>
   <nut-popup
-    pop-class="custom-pop"
+    pop-class="nut-imagepreview-custom-pop"
     v-model:visible="showPop"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
+    :teleport="teleport"
     @closed="onClose"
-    style="width: 100%"
     lock-scroll
   >
     <view class="nut-imagepreview" ref="swipeRef">
@@ -15,8 +15,8 @@
         :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
-        @change="slideChangeEnd"
-        :init-page="initPage"
+        @change="setActive"
+        :init-page="initNo"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
@@ -28,81 +28,42 @@
           :rootHeight="rootHeight"
           :rootWidth="rootWidth"
           :show="showPop"
-          :init-no="active"
+          :init-no="active + 1"
           @close="onClose"
           :maxZoom="maxZoom"
           :minZoom="minZoom"
         ></image-preview-item>
       </nut-swiper>
     </view>
-    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length + videos.length }} </view>
-    <view
-      :class="[
-        'nut-imagepreview-close-icon',
-        closeIconPosition == 'top-right' ? 'nut-imagepreview-close-icon-right' : 'nut-imagepreview-close-left'
-      ]"
-      @click="onClose"
-      v-if="closeable"
+    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
+    <view :class="iconClasses" @click="onClose" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed, CSSProperties } from 'vue';
+import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
 import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
-import Video from '../video/index.vue';
-import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
-import Icon from '../icon/index.vue';
-import { isPromise } from '@/packages/utils/util';
+
+import { isArray } from '@/packages/utils/util';
+import { funInterceptor, Interceptor } from '@/packages/utils/util';
+import { useRect } from '@/packages/utils/useRect';
 import ImagePreviewItem from './imagePreviewItem.vue';
-import { ImageInterface } from './types';
+import { ImageInterface, baseProps } from './types';
 const { create } = createComponent('imagepreview');
 
 export default create({
   props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    images: {
-      type: Array as PropType<ImageInterface[]>,
-      default: () => []
-    },
-    videos: {
-      type: Array,
-      default: () => []
-    },
-    contentClose: {
-      type: Boolean,
-      default: true
-    },
-    initNo: {
-      type: Number,
-      default: 1
-    },
-    paginationVisible: {
-      type: Boolean,
-      default: false
-    },
-    paginationColor: {
-      type: String,
-      default: '#fff'
-    },
-    autoplay: {
-      type: [Number, String],
-      default: 0
-    },
-    isWrapTeleport: {
-      type: Boolean,
-      default: false
-    },
-    showIndex: {
-      type: Boolean,
-      default: true
-    },
+    ...baseProps,
+    images: { type: Array as PropType<ImageInterface[]>, default: () => [] },
+    videos: { type: Array, default: () => [] },
+    contentClose: { type: Boolean, default: true },
+    paginationVisible: { type: Boolean, default: false },
+    paginationColor: { type: String, default: '#fff' },
+    autoplay: { type: [Number, String], default: 0 },
+    teleport: { type: [String, Element], default: 'body' },
+    teleportDisable: { ype: Boolean, default: false },
     closeable: {
       type: Boolean,
       default: false
@@ -115,15 +76,7 @@ export default create({
       type: String,
       default: 'top-right' // top-right  top-left
     },
-    beforeClose: Function,
-    minZoom: {
-      type: Number,
-      default: 1 / 3
-    },
-    maxZoom: {
-      type: Number,
-      default: 3
-    },
+    beforeClose: Function as PropType<Interceptor>,
     isLoop: {
       type: Boolean,
       default: true
@@ -131,11 +84,6 @@ export default create({
   },
   emits: ['close', 'change'],
   components: {
-    [Popup.name]: Popup,
-    [Video.name]: Video,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
-    [Icon.name]: Icon,
     ImagePreviewItem: ImagePreviewItem
   },
 
@@ -143,43 +91,37 @@ export default create({
     const swipeRef = ref();
 
     const state = reactive({
-      showPop: false,
-      active: 1,
+      showPop: props.show,
+      active: 0,
       rootWidth: 0,
       rootHeight: 0
     });
 
+    const iconClasses = computed(() => {
+      const pre = 'nut-imagepreview-close';
+      const iconn = props.closeIconPosition == 'top-right' ? `${pre}-right` : `${pre}-left`;
+      return `nut-imagepreview-close-icon ${iconn}`;
+    });
+
     const mergeImages = computed(() => {
-      if (Array.isArray(props.videos)) {
+      if (isArray(props.videos)) {
         return ([] as any).concat(props.videos).concat(props.images);
       }
       return props.images;
     });
-
-    const initPage = computed(() => {
-      const maxNo = props.images.length + props.videos.length;
-      const _initPage = props.initNo > maxNo ? maxNo - 1 : props.initNo - 1;
-      return _initPage >= 0 ? _initPage : 0;
-    });
-
-    const slideChangeEnd = (page: number) => {
-      state.active = page + 1;
-      emit('change', state.active);
+    // 设置当前选中第几个
+    const setActive = (active: number) => {
+      if (active !== state.active) {
+        state.active = active;
+        emit('change', state.active);
+      }
     };
 
     const onClose = () => {
-      if (props.beforeClose) {
-        const returnVal = props.beforeClose.apply(null, state.active);
-        if (isPromise(returnVal)) {
-          returnVal.then((value) => {
-            value && closeDone();
-          });
-        } else if (returnVal) {
-          closeDone();
-        }
-      } else {
-        closeDone();
-      }
+      funInterceptor(props.beforeClose, {
+        args: [state.active],
+        done: () => closeDone()
+      });
     };
     // 执行关闭
     const closeDone = () => {
@@ -188,11 +130,11 @@ export default create({
     };
 
     const init = () => {
-      setTimeout(() => {
-        const { offsetHeight, offsetWidth } = swipeRef.value;
-        state.rootHeight = offsetHeight;
-        state.rootWidth = offsetWidth;
-      }, 100);
+      if (swipeRef.value) {
+        const rect = useRect(swipeRef.value);
+        state.rootHeight = rect.height;
+        state.rootWidth = rect.width;
+      }
     };
 
     watch(
@@ -206,23 +148,21 @@ export default create({
     watch(
       () => props.initNo,
       (val) => {
-        if (val != state.active) {
-          state.active = val;
-        }
+        if (val != state.active) setActive(val);
       }
     );
+
     onMounted(() => {
-      state.active = props.initNo;
-      state.showPop = props.show;
+      setActive(props.initNo);
     });
 
     return {
       swipeRef,
       ...toRefs(state),
-      initPage,
-      slideChangeEnd,
       onClose,
-      mergeImages
+      mergeImages,
+      setActive,
+      iconClasses
     };
   }
 });

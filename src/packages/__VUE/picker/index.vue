@@ -8,7 +8,7 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
       :round="true"
-      :isWrapTeleport="isWrapTeleport"
+      :teleportDisable="teleportDisable"
       :safeAreaInsetBottom="safeAreaInsetBottom"
       :destroyOnClose="destroyOnClose"
     >
@@ -47,7 +47,8 @@
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import popup, { popupProps } from '../popup/index.vue';
+import popup from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 import column from './Column.vue';
 const { componentName, create, translate } = createComponent('picker');
 

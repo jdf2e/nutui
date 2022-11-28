@@ -6,7 +6,7 @@
     :popClass="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     overlay-class="nut-numberkeyboard-overlay"
   >
     <div class="nut-numberkeyboard" ref="root">
@@ -116,7 +116,7 @@ export default create({
       type: Boolean,
       default: true
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: true
     },

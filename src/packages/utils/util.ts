@@ -1,3 +1,5 @@
+export * from './interceptor';
+
 // 变量类型判断
 export const TypeOfFun = (value: any) => {
   if (null === value) {
@@ -58,6 +60,12 @@ export const isObject = (val: unknown): val is Record<any, any> => val !== null 
 export const isPromise = <T = any>(val: unknown): val is Promise<T> => {
   return isObject(val) && isFunction(val.then) && isFunction(val.catch);
 };
+
+export const win = window;
+
+export const docu = document;
+
+export const body = docu.body;
 
 export const getPropByPath = (obj: any, keyPath: string) => {
   try {

@@ -7,7 +7,6 @@
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
-      @click="video && video.source && videoClick"
     >
       <img v-if="image && image.src" :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
       <nut-video v-if="video && video.source" :source="video.source" :options="video.options"></nut-video>
@@ -20,20 +19,12 @@ import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault } from '@/packages/utils/util';
 import { ImageInterface } from './types';
-import Popup from '../popup/index.vue';
-import Video from '../video/index.vue';
-import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
-import Icon from '../icon/index.vue';
+import { baseProps } from './types';
 const { create } = createComponent('imagepreviewitem');
 
 export default create({
   props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    initNo: Number,
+    ...baseProps,
     image: {
       type: Object as PropType<ImageInterface>,
       default: () => ({})
@@ -42,10 +33,6 @@ export default create({
       type: Object,
       default: () => ({})
     },
-    showIndex: {
-      type: Boolean,
-      default: true
-    },
     rootWidth: {
       type: Number,
       default: 0
@@ -53,24 +40,10 @@ export default create({
     rootHeight: {
       type: Number,
       default: 0
-    },
-    minZoom: {
-      type: Number,
-      default: 1 / 3
-    },
-    maxZoom: {
-      type: Number,
-      default: 3
     }
   },
   emits: ['close', 'scale'],
-  components: {
-    [Popup.name]: Popup,
-    [Video.name]: Video,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
-    [Icon.name]: Icon
-  },
+  components: {},
 
   setup(props, { emit }) {
     const state = reactive({
@@ -92,9 +65,10 @@ export default create({
       return state.imageRatio > rootRatio;
     });
 
-    // 图片放大
+    // 图片缩放
     const imageStyle = computed(() => {
-      if (props.image && props.image.src) {
+      const images = props.image;
+      if (images && images.src) {
         const { scale, moveX, moveY, moving, zooming } = state;
         const style: CSSProperties = {
           transitionDuration: zooming || moving ? '0s' : '.3s'
@@ -290,7 +264,7 @@ export default create({
 
     const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
 
-    const closeSwiper = (event: any) => {
+    const closeSwiper = () => {
       emit('close');
     };
 
