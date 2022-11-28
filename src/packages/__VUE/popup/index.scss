@@ -96,9 +96,6 @@
   overflow-y: auto;
   background-color: $white;
   -webkit-overflow-scrolling: touch;
-  .nut-popup__content-wrapper {
-    height: 100%;
-  }
   &__close-icon {
     position: absolute !important;
     z-index: 1;
