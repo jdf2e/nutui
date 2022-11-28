@@ -1,4 +1,4 @@
-import { computed, ComputedRef, watchEffect, reactive, toRefs } from 'vue';
+import { computed, ComputedRef, watchEffect, reactive, toRefs, ref } from 'vue';
 
 import { popupProps } from './props';
 
@@ -19,6 +19,8 @@ export const component = (componentName: string) => {
         showSlot: true,
         closed: props.closeable
       });
+
+      const popupRef = ref();
 
       const classes = computed(() => {
         const prefixCls = componentName;
@@ -105,7 +107,8 @@ export const component = (componentName: string) => {
         onClickCloseIcon,
         onClickOverlay,
         onOpened,
-        onClosed
+        onClosed,
+        popupRef
       };
     }
   };

@@ -13,7 +13,7 @@
       :overlayStyle="overlayStyle"
       :overlayClass="overlayClass"
       :closeOnClickOverlay="closeOnClickOverlay"
-      ref="contentRef"
+      ref="popoverContentRef"
     >
       <!-- 气泡弹出层  箭头 -->
       <view :class="popoverArrow" v-if="showArrow"> </view>
@@ -35,13 +35,9 @@
 <script lang="ts">
 import { computed, watch, ref, PropType, toRefs, CSSProperties, reactive, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
-
 export default create({
-  components: {
-    [Popup.name]: Popup
-  },
+  components: {},
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array, default: [] },
@@ -57,27 +53,24 @@ export default create({
     overlayStyle: { type: Object as PropType<CSSProperties> },
     closeOnClickOverlay: { type: Boolean, default: true },
     closeOnClickAction: { type: Boolean, default: true },
-    closeOnClickOutside: { type: Boolean, default: true }
+    closeOnClickOutside: { type: Boolean, default: true },
+    teleportDisable: { type: Boolean, default: true }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
     const popoverRef = ref();
-    const contentRef = ref();
+    const popoverContentRef = ref();
     const showPopup = ref(props.visible);
-
     const state = reactive({
       rootWidth: 0,
       rootHeight: 0
     });
 
-    const { location } = toRefs(props);
-
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
       const direction = props.location.split('-')[0];
-      return `${prefixCls} ${prefixCls}-${direction} ${location ? `${prefixCls}--${location}` : ''}`;
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${props.location}`;
     });
-
     const getStyles = computed(() => {
       let cross = +state.rootHeight;
       let lengthways = +state.rootWidth;
@@ -103,20 +96,21 @@ export default create({
       }
       return style;
     });
-
     // 获取宽度
     const getContentWidth = () => {
       const { offsetHeight, offsetWidth } = popoverRef.value;
       state.rootHeight = offsetHeight;
       state.rootWidth = offsetWidth;
     };
-
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
         if (value) {
+          window.addEventListener('touchstart', clickAway, true);
           getContentWidth();
+        } else {
+          window.removeEventListener('touchstart', clickAway, true);
         }
       }
     );
@@ -124,27 +118,23 @@ export default create({
       emit('update', val);
       emit('update:visible', val);
     };
-
     const openPopover = () => {
       update(!props.visible);
       emit('open');
     };
-
     const closePopover = () => {
       emit('update:visible', false);
       emit('close');
     };
-
     const chooseItem = (item: any, index: number) => {
       emit('choose', item, index);
       if (props.closeOnClickAction) {
         closePopover();
       }
     };
-
     const clickAway = (event: Event) => {
       const element = popoverRef.value;
-      const elContent = contentRef.value?.popupRef;
+      const elContent = popoverContentRef.value?.popupRef;
       if (
         element &&
         !element.contains(event.target) &&
@@ -155,13 +145,6 @@ export default create({
         closePopover();
       }
     };
-    onMounted(() => {
-      window.addEventListener('touchstart', clickAway, true);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('touchstart', clickAway, true);
-    });
 
     return {
       showPopup,
@@ -171,7 +154,7 @@ export default create({
       chooseItem,
       popoverRef,
       getStyles,
-      contentRef
+      popoverContentRef
     };
   }
 });
