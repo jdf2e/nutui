@@ -58,15 +58,17 @@
               :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
-              <nut-icon
-                class="region-item-icon"
-                type="self"
-                v-bind="$attrs"
-                :name="selectedIcon"
-                size="13px"
-                v-if="selectedRegion[tabName[tabIndex]].id == item.id"
-              ></nut-icon
-              >{{ item.name }}
+              <div>
+                <nut-icon
+                  class="region-item-icon"
+                  type="self"
+                  v-bind="$attrs"
+                  :name="selectedIcon"
+                  size="13px"
+                  v-if="selectedRegion[tabName[tabIndex]].id == item.id"
+                ></nut-icon
+                >{{ item.name }}
+              </div>
             </li>
           </ul>
         </view>

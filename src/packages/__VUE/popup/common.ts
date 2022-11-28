@@ -2,19 +2,12 @@ import { computed, ComputedRef, watchEffect, reactive, toRefs } from 'vue';
 
 import { popupProps } from './props';
 
-import overlay from '../overlay/index.vue';
-import icon from '../icon/index.vue';
-
 const initIndex = 2000;
 let _zIndex = initIndex;
 
 export const component = (componentName: string) => {
   return {
-    components: {
-      //函数式调用时需引入，dialog
-      [overlay.name]: overlay,
-      [icon.name]: icon
-    },
+    components: {},
     props: {
       ...popupProps
     },
