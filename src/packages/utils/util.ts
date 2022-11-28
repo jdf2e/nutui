@@ -1,3 +1,5 @@
+import { createApp, reactive, Component } from 'vue';
+
 // 变量类型判断
 export const TypeOfFun = (value: any) => {
   if (null === value) {
@@ -122,3 +124,65 @@ export function preventDefault(event: Event, isStopPropagation?: boolean) {
     event.stopPropagation();
   }
 }
+
+export type Interceptor = (...args: any[]) => Promise<boolean> | boolean | undefined | void;
+
+export const funInterceptor = (
+  interceptor: Interceptor | undefined,
+  {
+    args = [],
+    done,
+    canceled
+  }: {
+    args?: unknown[];
+    done: () => void;
+    canceled?: () => void;
+  }
+) => {
+  if (interceptor) {
+    const returnVal = interceptor.apply(null, args);
+
+    if (isPromise(returnVal)) {
+      returnVal
+        .then((value) => {
+          if (value) {
+            done();
+          } else if (canceled) {
+            canceled();
+          }
+        })
+        .catch(() => {});
+    } else if (returnVal) {
+      done();
+    } else if (canceled) {
+      canceled();
+    }
+  } else {
+    done();
+  }
+};
+
+export const CreateComponent = (options: any, component: any) => {
+  let elWarp: HTMLElement = document.body;
+  const teleport = options.teleport as string;
+  if (teleport != 'body') {
+    if (typeof teleport == 'string') {
+      elWarp = document.querySelector(teleport) as HTMLElement;
+    } else {
+      elWarp = options.teleport as HTMLElement;
+    }
+  }
+  const root = document.createElement('view');
+  root.id = `${component.name}-` + new Date().getTime();
+  const Wrapper = component.wrapper;
+  const instance: Component = createApp(Wrapper);
+
+  const componens = component.components;
+  for (let key in componens) {
+    instance.component(key, componens[key]);
+  }
+
+  elWarp.appendChild(root);
+
+  instance.mount(root);
+};

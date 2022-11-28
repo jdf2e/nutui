@@ -23,16 +23,12 @@ import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
-import Icon from '../icon/index.vue';
+import { baseProps } from './types';
 const { create } = createComponent('imagepreviewitem');
 
 export default create({
   props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    initNo: Number,
+    ...baseProps,
     image: {
       type: Object as PropType<ImageInterface>,
       default: () => ({})
@@ -41,10 +37,6 @@ export default create({
       type: Object,
       default: () => ({})
     },
-    showIndex: {
-      type: Boolean,
-      default: true
-    },
     rootWidth: {
       type: Number,
       default: 0
@@ -52,14 +44,6 @@ export default create({
     rootHeight: {
       type: Number,
       default: 0
-    },
-    minZoom: {
-      type: Number,
-      default: 1 / 3
-    },
-    maxZoom: {
-      type: Number,
-      default: 3
     }
   },
   emits: ['close', 'scale'],
@@ -67,8 +51,7 @@ export default create({
     [Popup.name]: Popup,
     [Video.name]: Video,
     [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
-    [Icon.name]: Icon
+    [SwiperItem.name]: SwiperItem
   },
 
   setup(props, { emit }) {
@@ -93,7 +76,8 @@ export default create({
 
     // 图片缩放
     const imageStyle = computed(() => {
-      if (props.image && props.image.src) {
+      const images = props.image;
+      if (images && images.src) {
         const { scale, moveX, moveY, moving, zooming } = state;
         const style: CSSProperties = {
           transitionDuration: zooming || moving ? '0s' : '.3s'
@@ -289,7 +273,7 @@ export default create({
 
     const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
 
-    const closeSwiper = (event: any) => {
+    const closeSwiper = () => {
       emit('close');
     };
 

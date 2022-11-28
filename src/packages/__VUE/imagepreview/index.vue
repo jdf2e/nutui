@@ -35,13 +35,7 @@
       </nut-swiper>
     </view>
     <view class="nut-imagepreview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
-    <view
-      :class="[
-        'nut-imagepreview-close-icon',
-        closeIconPosition == 'top-right' ? 'nut-imagepreview-close-icon-right' : 'nut-imagepreview-close-left'
-      ]"
-      @click="onClose"
-      v-if="closeable"
+    <view :class="iconClasses" @click="onClose" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
@@ -56,27 +50,22 @@ import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
 import { isArray } from '@/packages/utils/util';
-import { funInterceptor, Interceptor } from '@/packages/utils/Interceptor';
+import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import ImagePreviewItem from './imagePreviewItem.vue';
-import { ImageInterface } from './types';
+import { ImageInterface, baseProps } from './types';
 const { create } = createComponent('imagepreview');
 
 export default create({
   props: {
-    show: { type: Boolean, default: false },
+    ...baseProps,
     images: { type: Array as PropType<ImageInterface[]>, default: () => [] },
     videos: { type: Array, default: () => [] },
     contentClose: { type: Boolean, default: true },
-    initNo: { type: Number, default: 0 },
     paginationVisible: { type: Boolean, default: false },
     paginationColor: { type: String, default: '#fff' },
     autoplay: { type: [Number, String], default: 0 },
     isWrapTeleport: { type: Boolean, default: false },
-    showIndex: {
-      type: Boolean,
-      default: true
-    },
     closeable: {
       type: Boolean,
       default: false
@@ -90,14 +79,6 @@ export default create({
       default: 'top-right' // top-right  top-left
     },
     beforeClose: Function as PropType<Interceptor>,
-    minZoom: {
-      type: Number,
-      default: 1 / 3
-    },
-    maxZoom: {
-      type: Number,
-      default: 3
-    },
     isLoop: {
       type: Boolean,
       default: true
@@ -121,6 +102,12 @@ export default create({
       active: 0,
       rootWidth: 0,
       rootHeight: 0
+    });
+
+    const iconClasses = computed(() => {
+      const pre = 'nut-imagepreview-close';
+      const iconn = props.closeIconPosition == 'top-right' ? `${pre}-right` : `${pre}-left`;
+      return `nut-imagepreview-close-icon ${iconn}`;
     });
 
     const mergeImages = computed(() => {
@@ -181,7 +168,8 @@ export default create({
       ...toRefs(state),
       onClose,
       mergeImages,
-      setActive
+      setActive,
+      iconClasses
     };
   }
 });

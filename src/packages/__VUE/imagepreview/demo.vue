@@ -116,7 +116,7 @@ export default createDemo({
       ImagePreview({
         show: true,
         images: resData.imgData,
-        onClose
+        close: () => onClose()
       });
     };
 

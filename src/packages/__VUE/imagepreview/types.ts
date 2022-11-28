@@ -1,4 +1,4 @@
-import { Interceptor } from '@/packages/utils/Interceptor';
+import { Interceptor } from '@/packages/utils/util';
 
 export interface ImageInterface {
   src: string;
@@ -24,4 +24,12 @@ export type ImagePreviewOptions = {
   isLoop?: boolean;
   close?(): void;
   change?(index: number): void;
+};
+
+export const baseProps = {
+  show: { type: Boolean, default: false },
+  initNo: { type: Number, default: 0 },
+  showIndex: { type: Boolean, default: true },
+  minZoom: { type: Number, default: 1 / 3 },
+  maxZoom: { type: Number, default: 3 }
 };
