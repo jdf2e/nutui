@@ -57,9 +57,7 @@ export const component = (componentName: string) => {
         emit('update:visible', true);
         state.zIndex = ++_zIndex;
         if (props.destroyOnClose) {
-          setTimeout(() => {
-            state.showSlot = true;
-          }, +props.duration * 1000);
+          state.showSlot = true;
         }
         emit('open');
       };
