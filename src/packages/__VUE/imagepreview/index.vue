@@ -2,7 +2,7 @@
   <nut-popup
     pop-class="nut-imagepreview-custom-pop"
     v-model:visible="showPop"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     @closed="onClose"
     lock-scroll
   >
@@ -65,7 +65,7 @@ export default create({
     paginationVisible: { type: Boolean, default: false },
     paginationColor: { type: String, default: '#fff' },
     autoplay: { type: [Number, String], default: 0 },
-    isWrapTeleport: { type: Boolean, default: false },
+    teleportDisable: { ype: Boolean, default: false },
     closeable: {
       type: Boolean,
       default: false

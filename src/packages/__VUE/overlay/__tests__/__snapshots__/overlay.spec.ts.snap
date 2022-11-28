@@ -2,6 +2,6 @@
 
 exports[`slots test 1`] = `
 "<transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
-  <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\">这里是正文</view>
+  <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000;\\">这里是正文</view>
 </transition-stub>"
 `;

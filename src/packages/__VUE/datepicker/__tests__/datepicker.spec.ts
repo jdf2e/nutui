@@ -33,7 +33,7 @@ test('Do not display Chinese', async () => {
       modelValue: new Date(2020, 0, 1),
       type: 'year-month',
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       isShowChinese: false
     }
   });
@@ -59,7 +59,7 @@ test('min date & max date', async () => {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2022, 10, 1),
       visible: true,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -73,7 +73,7 @@ test('Increment step setting', async () => {
       type: 'time',
       minuteStep: 5,
       visible: true,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
