@@ -47,16 +47,13 @@
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
-import Popup from '../popup/index.vue';
+import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
-import Button from '../button/index.vue';
+
 import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
-  components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
-  },
+  components: {},
   props: {
     ...popupProps,
     closeOnClickOverlay: {
@@ -114,9 +111,7 @@ export default create({
     popStyle: {
       type: Object as PropType<CSSProperties>
     },
-    beforeClose: {
-      type: Function
-    }
+    beforeClose: Function as PropType<Interceptor>
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
@@ -152,22 +147,13 @@ export default create({
     };
 
     const closed = (action: string) => {
-      if (props.beforeClose) {
-        const result = props.beforeClose(action);
-        if (isPromise(result)) {
-          result.then((bool) => {
-            if (bool) {
-              update(false);
-              emit('closed');
-            } else {
-              // 用户阻止删除
-            }
-          });
+      funInterceptor(props.beforeClose, {
+        args: [action],
+        done: () => {
+          update(false);
+          emit('closed');
         }
-      } else {
-        update(false);
-        emit('closed');
-      }
+      });
     };
 
     const onCancel = () => {

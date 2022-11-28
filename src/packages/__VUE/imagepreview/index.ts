@@ -8,6 +8,7 @@ import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
+import OverLay from '../overlay/index.vue';
 
 export class ImagePreviewOptions {
   show: Boolean = false;
@@ -27,8 +28,8 @@ export class ImagePreviewOptions {
   maxZoom?: number = 3;
   minZoom?: number = 1 / 3;
   isLoop?: boolean = true;
-  close?(): void;
-  change?(index: number): void;
+  onClose?: Function = () => {};
+  onChange?(index: number): void;
   teleport?: string | HTMLElement = 'body';
 }
 
@@ -37,15 +38,20 @@ class ImagePreviewFunction {
 
   constructor(_options: ImagePreviewOptions) {
     const options = Object.assign(this.options, _options);
-    const intertace = CreateComponent(options, {
+    const { instance, unmount } = CreateComponent(options, {
       name: 'imagepreview',
-      components: [Popup, Video, Swiper, SwiperItem, Icon],
-      wrapper: {
-        setup() {
-          return () => {
-            return h(ImagePreview, options);
-          };
-        }
+      components: [Popup, Video, Swiper, SwiperItem, Icon, OverLay],
+      wrapper: () => {
+        return {
+          setup() {
+            return () => {
+              options.onClose = () => {
+                unmount();
+              };
+              return h(ImagePreview, options);
+            };
+          }
+        };
       }
     });
   }
