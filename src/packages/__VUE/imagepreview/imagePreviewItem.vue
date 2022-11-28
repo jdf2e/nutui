@@ -19,10 +19,6 @@ import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault } from '@/packages/utils/util';
 import { ImageInterface } from './types';
-import Popup from '../popup/index.vue';
-import Video from '../video/index.vue';
-import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
 import { baseProps } from './types';
 const { create } = createComponent('imagepreviewitem');
 
@@ -47,12 +43,7 @@ export default create({
     }
   },
   emits: ['close', 'scale'],
-  components: {
-    [Popup.name]: Popup,
-    [Video.name]: Video,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem
-  },
+  components: {},
 
   setup(props, { emit }) {
     const state = reactive({

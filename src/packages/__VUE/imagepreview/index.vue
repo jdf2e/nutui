@@ -3,6 +3,7 @@
     pop-class="nut-imagepreview-custom-pop"
     v-model:visible="showPop"
     :teleportDisable="teleportDisable"
+    :teleport="teleport"
     @closed="onClose"
     lock-scroll
   >
@@ -44,11 +45,7 @@
 import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
 import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
-import Video from '../video/index.vue';
-import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
-import Icon from '../icon/index.vue';
+
 import { isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
@@ -65,6 +62,7 @@ export default create({
     paginationVisible: { type: Boolean, default: false },
     paginationColor: { type: String, default: '#fff' },
     autoplay: { type: [Number, String], default: 0 },
+    teleport: { type: [String, Element], default: 'body' },
     teleportDisable: { ype: Boolean, default: false },
     closeable: {
       type: Boolean,
@@ -86,11 +84,6 @@ export default create({
   },
   emits: ['close', 'change'],
   components: {
-    [Popup.name]: Popup,
-    [Video.name]: Video,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
-    [Icon.name]: Icon,
     ImagePreviewItem: ImagePreviewItem
   },
 

@@ -1,7 +1,7 @@
-import { render, createVNode, VNode } from 'vue';
-import { createApp, reactive, Component } from 'vue';
+import { createApp, Component } from 'vue';
 
 export const CreateComponent = (options: any, component: any) => {
+  console.log(111);
   let elWarp: HTMLElement = document.body;
   const teleport = options.teleport as string;
   if (teleport != 'body') {
@@ -17,9 +17,10 @@ export const CreateComponent = (options: any, component: any) => {
   const instance: Component = createApp(Wrapper);
 
   const componens = component.components;
-  for (let key in componens) {
-    instance.component(key, componens[key]);
-  }
+
+  componens.forEach((comp: Component) => {
+    instance.use(comp);
+  });
 
   elWarp.appendChild(root);
 

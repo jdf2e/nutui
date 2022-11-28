@@ -1,8 +1,13 @@
 import ImagePreview from './index.vue';
 import { h } from 'vue';
 import { ImageInterface } from './types';
-import { CreateComponent } from '@/packages/utils/util';
+import { CreateComponent } from '@/packages/utils/create';
 import { Interceptor } from '@/packages/utils/util';
+import Popup from '../popup/index.vue';
+import Video from '../video/index.vue';
+import Swiper from '../swiper/index.vue';
+import SwiperItem from '../swiperitem/index.vue';
+import Icon from '../icon/index.vue';
 
 export class ImagePreviewOptions {
   show: Boolean = false;
@@ -34,6 +39,7 @@ class ImagePreviewFunction {
     const options = Object.assign(this.options, _options);
     const intertace = CreateComponent(options, {
       name: 'imagepreview',
+      components: [Popup, Video, Swiper, SwiperItem, Icon],
       wrapper: {
         setup() {
           return () => {
