@@ -62,8 +62,7 @@ export interface PickerOption {
 
 export default create({
   components: {
-    [column.name]: column,
-    [popup.name]: popup
+    [column.name]: column
   },
   props: {
     ...popupProps,

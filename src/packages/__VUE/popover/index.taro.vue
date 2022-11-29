@@ -42,6 +42,8 @@
         </view>
       </view>
     </nut-popup>
+
+    <view class="nut-popover-content-bg" v-if="showPopup" @touchmove="clickAway" @click="clickAway"></view>
   </view>
 </template>
 <script lang="ts">
@@ -125,12 +127,9 @@ export default create({
       (value) => {
         showPopup.value = value;
         if (value) {
-          // window.addEventListener('touchstart', clickAway, true);
           setTimeout(() => {
             getContentWidth();
-          }, 500);
-        } else {
-          // window.removeEventListener('touchstart', clickAway, true);
+          }, 200);
         }
       }
     );
@@ -153,17 +152,7 @@ export default create({
       }
     };
     const clickAway = (event: Event) => {
-      const element = popoverRef.value;
-      const elContent = popoverContentRef.value;
-      if (
-        element &&
-        !element.contains(event.target) &&
-        elContent &&
-        !elContent.contains(event.target) &&
-        props.closeOnClickOutside
-      ) {
-        closePopover();
-      }
+      closePopover();
     };
 
     onMounted(() => {
@@ -183,7 +172,8 @@ export default create({
       popoverRef,
       getStyles,
       popoverContentRef,
-      refRandomId
+      refRandomId,
+      clickAway
     };
   }
 });
