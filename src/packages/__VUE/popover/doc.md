@@ -295,6 +295,14 @@ export default {
 | offset `v3.1.21`       | 出现位置的偏移量  | [number, number]   | [0, 12]  |
 | show-arrow `v3.1.21`       | 是否显示小箭头  | boolean  | true  |
 | custom-class `v3.1.21`       | 自定义 class 值  | string  | ''  |
+| duration `v3.1.21`       | 动画时长  |  [number, number]  | 0.3  |
+| iconPrefix `v3.1.21`       | 图标自定义类值,等同于 Icon 组件的[ class-prefix 属性](https://nutui.jd.com/#/zh-CN/component/icon)  | string  | 'nut-icon''  |
+| overlay `v3.2.8`       | 是否显示遮罩层  | Boolean  | false  |
+| overlay-class `v3.2.8`       | 自定义遮罩层类名 | string  | ''  |
+| overlay-style `v3.2.8`       | 自定义遮罩层样式  | string  | ''  |
+| close-on-click-overlay `v3.2.8`       | 是否在点击遮罩层后关闭菜单  | boolean  | true  |
+| close-on-click-action `v3.2.8`       | 是否在点击选项后关闭  | boolean  | true |
+| close-on-click-outside `v3.2.8`       | 是否在点击外部元素后关闭菜单 | boolean  | true  |
 
 ### List 数据结构  
 

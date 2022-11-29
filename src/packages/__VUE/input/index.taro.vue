@@ -55,6 +55,7 @@
               :value="modelValue"
               :formatTrigger="formatTrigger"
               :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -75,6 +76,7 @@
               :formatTrigger="formatTrigger"
               :confirm-type="confirmType"
               :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -261,6 +263,10 @@ export default create({
     adjustPosition: {
       type: Boolean,
       default: true
+    },
+    alwaysSystem: {
+      type: Boolean,
+      default: false
     }
   },
 

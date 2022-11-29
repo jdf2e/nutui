@@ -136,7 +136,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
-import { popupProps } from '../popup/index.taro.vue';
+import { popupProps } from '../popup/props';
 import { createComponent } from '@/packages/utils/create';
 
 const { create, componentName, translate } = createComponent('address');

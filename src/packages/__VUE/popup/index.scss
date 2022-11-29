@@ -1,17 +1,17 @@
 .nut-theme-dark {
   .nut-popup {
     background: $dark-background2;
-  }
-  .nutui-popup {
     &__close-icon {
       color: $dark-color;
     }
   }
 }
+
 .popup-slide {
   &-center-enter-active,
   &-center-leave-active {
-    transition: opacity 0.5s ease;
+    transition-property: opacity;
+    transition-timing-function: ease;
   }
 
   &-center-enter-from,
@@ -95,18 +95,7 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $white;
-  transition: transform 0.2s;
   -webkit-overflow-scrolling: touch;
-  .nutui-popup__content-wrapper {
-    height: 100%;
-  }
-}
-
-.nut-overflow-hidden {
-  overflow: hidden !important;
-}
-
-.nutui-popup {
   &__close-icon {
     position: absolute !important;
     z-index: 1;

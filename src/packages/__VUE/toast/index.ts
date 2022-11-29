@@ -1,5 +1,6 @@
-import { createVNode, render } from 'vue';
+import { createVNode, render, h } from 'vue';
 import Toast from './index.vue';
+import { CreateComponent } from '@/packages/utils/create';
 const defaultOptions = {
   msg: '',
   id: '',
@@ -75,11 +76,11 @@ const mountToast = (opts: any) => {
   opts.id = _id;
   idsMap.push(opts.id);
   optsMap.push(opts);
-  const container = document.createElement('div');
-  container.id = opts.id;
-  const instance: any = createVNode(Toast, opts);
-  render(instance, container);
-  document.body.appendChild(container);
+
+  const { unmount } = CreateComponent(opts, {
+    wrapper: Toast
+  });
+
   return ToastFunction;
 };
 

@@ -3,7 +3,7 @@
     position="bottom"
     closeable
     round
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     :visible="visible"
     :style="popStyle"
     :lock-scroll="lockScroll"
@@ -60,7 +60,7 @@ export default create({
       type: [Boolean],
       default: false
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: false
     }
