@@ -56,7 +56,7 @@
     "add": "node jd/createComponentMode.js",
     "publish:beta": "npm publish --tag=beta",
     "publish": "npm publish",
-    "generate:file": "node jd/generate-nutui.js",
+    "generate:file": "node jd/generate-nutui.cjs",
     "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.js",
     "generate:types": "node jd/generate-types.js",
     "generate:types:taro": "node jd/generate-types-taro.js",
@@ -98,7 +98,6 @@
     "axios": "^0.21.0",
     "canvas": "^2.9.0",
     "codesandbox": "^2.2.3",
-    "cz-git": "^1.3.8",
     "eslint": "^7.23.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.8.0",
@@ -143,11 +142,6 @@
     "rules": {
       "vue/no-unused-components": "off",
       "no-debugger": "off"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-git"
     }
   },
   "engines": {
