@@ -1,4 +1,4 @@
-import * as LZUTF8 from 'lzutf8';
+import LZUTF8 from 'lzutf8';
 function encodeBase64(str: Uint8Array): any {
   // @ts-ignore
   return LZUTF8.encodeBase64(str);

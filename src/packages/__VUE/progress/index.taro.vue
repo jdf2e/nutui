@@ -49,7 +49,6 @@
 import { computed, onMounted, useSlots, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-import { log } from 'lzutf8';
 const { create } = createComponent('progress');
 export default create({
   props: {

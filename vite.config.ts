@@ -1,6 +1,7 @@
 import { defineConfig, PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
+import MarkdownIt from 'markdown-it-container';
 import path from 'path';
 import config from './package.json';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -65,7 +66,7 @@ export default defineConfig({
         }
       },
       markdownItSetup(md) {
-        md.use(require('markdown-it-container'), 'demo', {
+        md.use(MarkdownIt, 'demo', {
           validate: function (params) {
             return params.match(/^demo\s*(.*)$/);
           },
