@@ -138,7 +138,6 @@
       @click="click"
       @click-input="clickInput"
     />
-    <nut-icon @click="click1" name="dongdong"></nut-icon>
   </div>
 </template>
 
