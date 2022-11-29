@@ -29,7 +29,6 @@
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { isPromise, isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import Taro from '@tarojs/taro';

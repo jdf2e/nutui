@@ -14,8 +14,8 @@
           "scene": null
         },
         {
-          "name": "business/pages/barrage/index",
-          "pathName": "business/pages/barrage/index",
+          "name": "exhibition/pages/popover/index",
+          "pathName": "exhibition/pages/popover/index",
           "query": "",
           "launchMode": "default",
           "scene": null

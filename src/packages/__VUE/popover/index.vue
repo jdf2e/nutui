@@ -24,7 +24,12 @@
           @click.stop="chooseItem(item, index)"
         >
           <slot v-if="item.icon">
-            <nut-icon v-bind="$attrs" class="item-img" :classPrefix="iconPrefix" :name="item.icon"></nut-icon
+            <nut-icon
+              v-bind="$attrs"
+              class="nut-popover-item-img"
+              :classPrefix="iconPrefix"
+              :name="item.icon"
+            ></nut-icon
           ></slot>
           <view class="nut-popover-menu-name">{{ item.name }}</view>
         </view>
@@ -35,6 +40,7 @@
 <script lang="ts">
 import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { isArray } from '@/packages/utils/util';
 const { create } = createComponent('popover');
 export default create({
   components: {},
@@ -75,7 +81,7 @@ export default create({
       let cross = +state.rootHeight;
       let lengthways = +state.rootWidth;
       let { offset, location } = props;
-      if (Array.isArray(offset) && offset.length == 2) {
+      if (isArray(offset) && offset.length == 2) {
         cross += +offset[1];
         lengthways += +offset[1];
       }
