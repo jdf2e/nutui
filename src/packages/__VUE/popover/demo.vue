@@ -4,19 +4,14 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover
-          v-model:visible="visible.lightTheme"
-          :list="iconItemList"
-          location="bottom-start"
-          @choose="chooseItem"
-        >
+        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
+        <nut-popover v-model:visible="darkTheme" theme="dark" :list="iconItemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
@@ -28,14 +23,14 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
+        <nut-popover v-model:visible="showIcon" theme="dark" :list="itemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('showIcon') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
+        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="bottom-end">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('disableAction') }}</nut-button>
           </template>
@@ -44,7 +39,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="visible.Customized" location="bottom-start">
+    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -61,29 +56,22 @@
 
     <h2>{{ translate('title3') }}</h2>
 
-    <nut-row type="flex" justify="center">
-      <nut-col :span="24" style="text-align: center">
-        <nut-popover
-          v-model:visible="visible.customPositon"
-          :location="curPostion"
-          theme="dark"
-          :list="positionList"
-          customClass="brickBox"
-        >
-          <template #reference>
-            <div class="brick"></div>
-          </template>
-        </nut-popover>
-      </nut-col>
-    </nut-row>
-
-    <nut-radiogroup v-model="curPostion" direction="horizontal" class="radiogroup">
-      <nut-radio shape="button" :label="pos" v-for="(pos, i) in position" :key="i">{{ pos }}</nut-radio>
-    </nut-radiogroup>
+    <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
+    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
+      <template #top>
+        <div class="brickBox">
+          <nut-popover v-model:visible="customPositon" :location="curPostion" theme="dark" :list="positionList">
+            <template #reference>
+              <div class="brick"></div>
+            </template>
+          </nut-popover>
+        </div>
+      </template>
+    </nut-picker>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -116,7 +104,7 @@ const initTranslate = () =>
 export default createDemo({
   setup() {
     initTranslate();
-    const visible = ref({
+    const state = reactive({
       showIcon: false,
       placement: false,
       darkTheme: false,
@@ -126,22 +114,25 @@ export default createDemo({
       topLocation: false, //向上弹出
       rightLocation: false, //向右弹出
       leftLocation: false, //向左弹出
-      customPositon: false
+      customPositon: false,
+
+      showPicker: false
     });
     const curPostion = ref('top');
-    const position = ref([
-      'top',
-      'top-start',
-      'top-end',
-      'right',
-      'right-start',
-      'right-end',
-      'bottom',
-      'bottom-start',
-      'bottom-end',
-      'left',
-      'left-start',
-      'left-end'
+
+    const columns = ref([
+      { text: 'top', value: 'top' },
+      { text: 'top-start', value: 'top-start' },
+      { text: 'top-end', value: 'top-end' },
+      { text: 'right', value: 'right' },
+      { text: 'right-start', value: 'right-start' },
+      { text: 'right-end', value: 'right-end' },
+      { text: 'bottom', value: 'bottom' },
+      { text: 'bottom-start', value: 'bottom-start' },
+      { text: 'bottom-end', value: 'bottom-end' },
+      { text: 'left', value: 'left' },
+      { text: 'left-start', value: 'left-start' },
+      { text: 'left-end', value: 'left-end' }
     ]);
 
     const iconItemList = reactive([
@@ -223,20 +214,32 @@ export default createDemo({
 
     const chooseItem = (item: unknown, index: number) => {
       console.log(item, index);
-      alert('selected');
     };
 
+    const handlePicker = () => {
+      state.showPicker = true;
+      setTimeout(() => {
+        state.customPositon = true;
+      });
+    };
+
+    const change = ({ selectedValue }) => {
+      curPostion.value = selectedValue[0];
+      state.customPositon = true;
+    };
     return {
       iconItemList,
       itemList,
-      visible,
+      ...toRefs(state),
       itemListDisabled,
       selfContent,
       chooseItem,
-      position,
       curPostion,
       positionList,
-      translate
+      translate,
+      columns,
+      change,
+      handlePicker
     };
   }
 });
@@ -247,10 +250,12 @@ export default createDemo({
 }
 .brickBox {
   margin: 80px 0;
+  display: flex;
+  justify-content: center;
   .brick {
     width: 60px;
     height: 60px;
-    background: #1989fa;
+    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
     border-radius: 10px;
   }
 }
@@ -271,23 +276,32 @@ export default createDemo({
   }
 }
 
-.self-content {
-  width: 195px;
-  display: flex;
-  flex-wrap: wrap;
-  &-item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.nut-popover-content {
+  width: 120px;
+}
+
+.customClass {
+  .nut-popover-content {
+    width: auto;
   }
-  &-desc {
-    margin-top: 5px;
-    width: 60px;
-    font-size: 10px;
-    text-align: center;
+  .self-content {
+    width: 195px;
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    &-desc {
+      margin-top: 5px;
+      width: 60px;
+      font-size: 10px;
+      text-align: center;
+    }
   }
 }
 </style>

@@ -49,7 +49,8 @@
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
-import Popup, { popupProps } from '../popup/index.taro.vue';
+import Popup from '../popup/index.taro.vue';
+import { popupProps } from '../popup/props';
 import Button from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
 export default create({

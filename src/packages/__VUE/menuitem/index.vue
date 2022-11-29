@@ -24,7 +24,7 @@
       :overlay="parent.props.overlay"
       @closed="handleClose"
       :lockScroll="parent.props.lockScroll"
-      :isWrapTeleport="false"
+      :teleportDisable="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
       <view class="nut-menu-item__content nut-menu-item__overflow">
