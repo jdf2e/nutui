@@ -21,7 +21,7 @@ test('should change animation duration when using duration prop', () => {
   });
 
   const overlay: any = wrapper.find('.nut-overlay');
-  expect(overlay.element.style.animationDuration).toEqual('1s');
+  expect(overlay.element.style.transitionDuration).toEqual('1s');
 });
 
 test('prop overlay-class test', () => {

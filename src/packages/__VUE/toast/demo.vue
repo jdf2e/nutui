@@ -89,6 +89,7 @@ export default createDemo({
 
     const BottomToast = (msg: string) => {
       Toast.text(msg, {
+        id: 'taset11',
         center: false,
         bottom: '10%'
       });
