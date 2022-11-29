@@ -7,8 +7,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "business/pages/signature/index",
-          "pathName": "business/pages/signature/index",
+          "name": "exhibition/pages/imagepreview/index",
+          "pathName": "exhibition/pages/imagepreview/index",
           "query": "",
           "launchMode": "default",
           "scene": null
