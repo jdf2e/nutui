@@ -4,7 +4,7 @@ const MarkdownIt = require('markdown-it')();
 
 const basePath = path.resolve(__dirname, './../src/packages/__VUE');
 const componentDirs = fs.readdirSync(basePath, 'utf8');
-const config = require('./../package.json');
+const config = require('../package.json');
 const TYPE_IDENTIFY_OPEN = 'tbody_open';
 const TYPE_IDENTIFY_CLOSE = 'tbody_close';
 const TR_TYPE_IDENTIFY_OPEN = 'tr_open';
