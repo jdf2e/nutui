@@ -34,13 +34,13 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '',
     };
   },
   mounted() {
     const th = this;
-    this.$nextTick(function() {
-      setTimeout(function() {
+    this.$nextTick(function () {
+      setTimeout(function () {
         th.$refs.myInput.focus();
       }, 2000);
     });
@@ -65,8 +65,8 @@ export default {
     search(value) {
       this.$refs.myInput.blur();
       console.log('搜索');
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

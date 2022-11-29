@@ -2,7 +2,9 @@
   <div :class="['nut-searchbar', customClass ? customClass : '']">
     <div class="search-input" :class="[animation ? 'nut-search-ani' : '', inputFocusAnimation ? 'focus' : '']">
       <form id="input-form" action="javascript:return true">
-        <nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
+        <div class="nut-search-left-icon" v-if="hasIcon" @click="clickLeftIcon">
+          <nut-icon type="search" class="nut-search-left-icon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
+        </div>
         <input
           type="search"
           :value="value"
@@ -18,7 +20,7 @@
         </span>
       </form>
     </div>
-    <a href="javascript:;" class="btn-search" v-if="hasSearchButton" @click="submitFun">
+    <a href="javascript:;" class="btn-search" v-if="hasSearchButton" @click="clickRightText">
       <span v-if="hasTextButton">{{ textInfo || nutTranslate('lang.searchbar.textInfo') }}</span>
       <nut-icon type="search" v-else :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
     </a>
@@ -33,76 +35,76 @@ export default {
   props: {
     hasIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     searchIconSize: {
       type: String,
-      default: '20px'
+      default: '20px',
     },
     searchIconColor: {
       type: String,
-      default: '#2e2d2d'
+      default: '#2e2d2d',
     },
     searchBtnIconSize: {
       type: String,
-      default: '20px'
+      default: '20px',
     },
     searchBtnIconColor: {
       type: String,
-      default: '#2e2d2d'
+      default: '#2e2d2d',
     },
     clearIconSize: {
       type: String,
-      default: '15px'
+      default: '15px',
     },
     clearIconColor: {
       type: String,
-      default: '#2e2d2d'
+      default: '#2e2d2d',
     },
     placeText: {
-      type: String
+      type: String,
     },
     hasSearchButton: {
       type: Boolean,
-      default: true
+      default: true,
     },
     hasTextButton: {
       type: Boolean,
-      default: false
+      default: false,
     },
     textInfo: {
-      type: String
+      type: String,
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     customClass: {
       type: String,
-      default: ''
+      default: '',
     },
     value: {
       type: [String, Number],
-      default: ''
-    }
+      default: '',
+    },
   },
   components: {
-    [nuticon.name]: nuticon
+    [nuticon.name]: nuticon,
   },
   data() {
     return {
-      inputFocusAnimation: false
+      inputFocusAnimation: false,
     };
   },
   watch: {
     value(newValue, oldValue) {
       this.updateValue('change');
-    }
+    },
   },
   computed: {
     hasCloseIcon() {
       return this.value ? true : false;
-    }
+    },
   },
   mounted() {},
   methods: {
@@ -127,6 +129,9 @@ export default {
       this.updateValue('blur');
     },
     submitFun() {
+      if (document.activeElement) {
+        document.activeElement.blur();
+      }
       this.updateValue('submit');
     },
     // 失去焦点
@@ -135,10 +140,18 @@ export default {
     },
     //js控制获取焦点
     focus() {
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         this.$refs.searchInput.focus();
       });
-    }
-  }
+    },
+    // 点击左侧图标
+    clickLeftIcon() {
+      this.$emit('click-left-icon');
+    },
+    // 点击右侧图标或文字
+    clickRightText() {
+      this.$emit('click-right-icon');
+    },
+  },
 };
 </script>
