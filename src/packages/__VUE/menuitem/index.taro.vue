@@ -9,8 +9,10 @@
     >
     </div>
     <nut-popup
-      class="menu-item__pop-container"
-      :containerStyle="
+      :style="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
+      :overlay-style="
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       v-bind="$attrs"
@@ -18,7 +20,6 @@
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
       @closed="handleClose"
