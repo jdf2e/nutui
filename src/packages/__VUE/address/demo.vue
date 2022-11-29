@@ -103,7 +103,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, ref, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('address');
 
@@ -168,13 +168,7 @@ export default createDemo({
   setup() {
     initTranslate();
     const address = reactive({
-      province: [
-        { id: 1, name: '北京', title: 'B' },
-        { id: 2, name: '广西', title: 'G' },
-        { id: 3, name: '江西', title: 'J' },
-        { id: 4, name: '四川', title: 'S' },
-        { id: 5, name: '浙江', title: 'Z' }
-      ],
+      province: [],
       city: [
         { id: 7, name: '朝阳区', title: 'C' },
         { id: 8, name: '崇文区', title: 'C' },
@@ -189,6 +183,18 @@ export default createDemo({
         { id: 4, name: '常营乡', title: 'C' }
       ],
       town: []
+    });
+
+    onMounted(() => {
+      setTimeout(() => {
+        address.province = [
+          { id: 1, name: '北京', title: 'B' },
+          { id: 2, name: '广西', title: 'G' },
+          { id: 3, name: '江西', title: 'J' },
+          { id: 4, name: '四川', title: 'S' },
+          { id: 5, name: '浙江', title: 'Z' }
+        ];
+      }, 1000);
     });
 
     const placeholder = ref(['请选择省', '请选择市', '请选择县']);
