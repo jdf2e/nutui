@@ -34,7 +34,7 @@
       </view>
 
       <!-- 请选择 -->
-      <view class="custom-address" v-if="privateType == 'custom'">
+      <view class="custom-address" v-if="['custom', 'custom2'].includes(privateType)">
         <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
@@ -49,7 +49,7 @@
           <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
 
-        <view class="region-con">
+        <view class="region-con" v-if="privateType == 'custom'">
           <ul class="region-group">
             <li
               v-for="(item, index) in regionList[tabName[tabIndex]]"
@@ -72,23 +72,8 @@
             </li>
           </ul>
         </view>
-      </view>
 
-      <!-- 请选择 -->
-      <view class="custom-address" v-else-if="privateType == 'custom2'">
-        <view class="region-tab" ref="tabRegion">
-          <view
-            class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
-            v-for="(item, key, index) in selectedRegion"
-            :key="index"
-            @click="changeRegionTab(item, key, index)"
-          >
-            <view>{{ getTabName(item, index) }}</view>
-          </view>
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
-        </view>
-        <view class="elevator-group">
+        <view class="elevator-group" v-else>
           <nut-elevator
             :height="height"
             :index-list="regionList[tabName[tabIndex]]"
@@ -142,6 +127,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { isArray } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('address');
 interface RegionData {
@@ -255,7 +241,7 @@ export default create({
     const isCustom2 = computed(() => props.type === 'custom2');
 
     const transformData = (data: RegionData[]) => {
-      if (!Array.isArray(data)) throw new TypeError('params muse be array.');
+      if (!isArray(data)) throw new TypeError('params muse be array.');
 
       if (!data.length) return [];
 
@@ -401,9 +387,6 @@ export default create({
       };
 
       (selectedRegion as any)[tabName.value[tabIndex.value]] = item;
-      // for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
-      //   (selectedRegion as any)[tabName.value[i + 1]] = {};
-      // }
 
       for (let i = tabIndex.value; i < 4; i++) {
         (selectedRegion as any)[tabName.value[i + 1]] = {};
@@ -462,7 +445,6 @@ export default create({
 
     // 关闭
     const close = () => {
-      console.log('关闭', closeWay.value, showPopup.value);
       const resCopy = Object.assign(
         {
           addressIdStr: '',
