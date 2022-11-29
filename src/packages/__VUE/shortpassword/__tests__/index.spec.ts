@@ -20,7 +20,7 @@ test('should render shortpassword when visible is true', async () => {
     props: {
       visible: false,
       modelValue: '123',
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   const input: DOMWrapper<Element> = wrapper.find('.nut-input-real');
@@ -38,7 +38,7 @@ test('should render buttonShortpassword and error msg when noButton is false ', 
       length: 4,
       modelValue: '123',
       noButton: false,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   const input = wrapper.find('.nut-input-real');
@@ -63,7 +63,7 @@ test('should change  value when prop changed', async () => {
     props: {
       visible: true,
       modelValue: '777',
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('777');
@@ -76,7 +76,7 @@ test('should format input value when input', async () => {
     props: {
       visible: true,
       modelValue: '',
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   const div: DOMWrapper<Element> = wrapper.find('.nut-shortpsd-fake');
@@ -100,7 +100,7 @@ test('should output input value when finish', async () => {
     props: {
       visible: true,
       modelValue: '',
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   const div: DOMWrapper<Element> = wrapper.find('.nut-shortpsd-fake');

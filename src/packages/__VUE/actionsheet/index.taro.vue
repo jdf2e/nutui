@@ -39,7 +39,7 @@
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
-import { popupProps } from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 export default create({
   props: {
     ...popupProps,

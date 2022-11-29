@@ -92,7 +92,7 @@ test('first render', async () => {
     props: {
       visible: true,
       listData: simpleColumns,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -105,7 +105,7 @@ test('simple list-data confirm & close event', async () => {
     props: {
       visible: true,
       columns: simpleColumns,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -125,7 +125,7 @@ test('simple columns default checked item', async () => {
       modelValue: ['WuXi'],
       visible: true,
       columns: simpleColumns,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -143,7 +143,7 @@ test('multiple columns render', async () => {
     props: {
       visible: true,
       columns: multipleColumns,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();

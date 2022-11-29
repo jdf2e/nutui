@@ -2,28 +2,28 @@
 
 exports[`should render sure actionsheet when use custom props 1`] = `
 "<view class=\\"nut-actionsheet\\">
-  <view>
-    <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" class=\\"\\">
-      <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
-    </transition-stub>
-    <transition-stub name=\\"popup-fade-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
-      <view class=\\"nut-popup round popup-bottom popclass\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
-        <view class=\\"nut-actionsheet-panel\\">
-          <!--v-if-->
-          <view>
-            <!--v-if-->
-            <view class=\\"nut-actionsheet-menu\\">
-              <view class=\\"nut-actionsheet-item\\">
-                <view>选项一</view>
-                <view class=\\"subdesc\\">描述信息</view>
-              </view>
-            </view>
-            <!--v-if-->
-          </view>
-        </view>
+  <!--teleport start-->
+  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" iswrapteleport=\\"true\\">
+    <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2003;\\"></view>
+  </transition-stub>
+  <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+    <view class=\\"nut-popup round popup-bottom popclass\\" style=\\"z-index: 2003; transition-duration: 0.3s;\\">
+      <view class=\\"nut-actionsheet-panel\\">
         <!--v-if-->
+        <view>
+          <!--v-if-->
+          <view class=\\"nut-actionsheet-menu\\">
+            <view class=\\"nut-actionsheet-item\\">
+              <view>选项一</view>
+              <view class=\\"subdesc\\">描述信息</view>
+            </view>
+          </view>
+          <!--v-if-->
+        </view>
       </view>
-    </transition-stub>
-  </view>
+      <!--v-if-->
+    </view>
+  </transition-stub>
+  <!--teleport end-->
 </view>"
 `;

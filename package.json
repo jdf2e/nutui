@@ -84,7 +84,6 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
-    "@popperjs/core": "^2.11.5",
     "@tarojs/taro": "3.5.6",
     "@types/jest": "^26.0.22",
     "@types/node": "^17.0.16",
