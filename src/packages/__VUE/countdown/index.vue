@@ -11,7 +11,8 @@
 <script lang="ts">
 import { toRefs, computed, watch, reactive, onBeforeMount, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { padZero, getTimeStamp } from './util';
+import { getTimeStamp } from './util';
+import { padZero } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('countdown');
 export default create({
   props: {
@@ -261,7 +262,6 @@ export default create({
       ...toRefs(props),
       slots,
       classes,
-      getTimeStamp,
       start,
       pause,
       renderTime,

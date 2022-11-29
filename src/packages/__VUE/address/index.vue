@@ -35,10 +35,9 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-if="['custom', 'custom2'].includes(privateType)">
-        <view class="region-tab" ref="tabRegion">
+        <view class="nut-address-region-tab" ref="tabRegion">
           <view
-            class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
+            :class="['tab-item', index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, key, index)"
@@ -127,7 +126,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { isArray } from '@/packages/utils/util';
+import { isArray, isString, TypeOfFun } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('address');
 interface RegionData {
@@ -236,7 +235,7 @@ export default create({
     const privateType = ref(props.type);
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
-    const tabNameDefault = ref(['']);
+    const tabNameDefault = ref(new Array(4).fill(translate('select')));
 
     const isCustom2 = computed(() => props.type === 'custom2');
 
@@ -296,10 +295,6 @@ export default create({
 
     const lineDistance = ref(20);
 
-    onMounted(() => {
-      customPlaceholder();
-    });
-
     // 设置选中省市县
     const initCustomSelected = () => {
       if (props.modelValue.length > 0) {
@@ -327,18 +322,13 @@ export default create({
     };
     // 自定义‘请选择’文案
     const customPlaceholder = () => {
-      let selectStr = translate('select');
-      let typeD = Object.prototype.toString.call(props.columnsPlaceholder || selectStr);
-      if (typeD == '[object String]') {
-        tabNameDefault.value = new Array(4).fill(props.columnsPlaceholder || selectStr);
-      } else if (typeD == '[object Array]') {
-        tabNameDefault.value = new Array(4).fill('');
-        tabNameDefault.value.forEach((val, index) => {
-          if (props.columnsPlaceholder[index]) {
-            tabNameDefault.value[index] = props.columnsPlaceholder[index];
-          } else {
-            tabNameDefault.value[index] = selectStr;
-          }
+      const { columnsPlaceholder } = props;
+      if (!columnsPlaceholder) return;
+      if (isString(columnsPlaceholder)) {
+        tabNameDefault.value = new Array(4).fill(columnsPlaceholder);
+      } else if (isArray(columnsPlaceholder) && columnsPlaceholder.length < 5) {
+        columnsPlaceholder.forEach((val, index) => {
+          tabNameDefault.value[index] = val;
         });
       }
     };
@@ -505,6 +495,10 @@ export default create({
       nextAreaList(item);
     };
 
+    const updateRegion = (type: string, value: any) => {
+      regionList[type] = isCustom2.value ? transformData(value) : value;
+    };
+
     watch(
       () => props.visible,
       (value) => {
@@ -515,10 +509,8 @@ export default create({
     watch(
       () => showPopup.value,
       (value) => {
-        console.log('监听 showpopup', showPopup.value);
-        if (value == false) {
-          // close();
-        } else {
+        if (value) {
+          customPlaceholder();
           initCustomSelected();
         }
       }
@@ -527,33 +519,32 @@ export default create({
     watch(
       () => props.province,
       (value) => {
-        regionList.province = isCustom2.value ? transformData(value) : value;
+        updateRegion('province', value);
       }
     );
     watch(
       () => props.city,
       (value) => {
-        regionList.city = isCustom2.value ? transformData(value) : value;
+        updateRegion('city', value);
       }
     );
     watch(
       () => props.country,
       (value) => {
-        regionList.country = isCustom2.value ? transformData(value) : value;
+        updateRegion('country', value);
       }
     );
     watch(
       () => props.town,
       (value) => {
-        regionList.town = isCustom2.value ? transformData(value) : value;
+        updateRegion('town', value);
       }
     );
 
     watch(
       () => props.existAddress,
       (value) => {
-        //  existAddress.value = value;
-        value.forEach((item, index) => {
+        value.forEach((item) => {
           if ((item as AddressList).selectedAddress) {
             selectedExistAddress = item as {};
           }
