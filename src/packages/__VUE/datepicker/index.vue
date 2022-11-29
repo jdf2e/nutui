@@ -28,12 +28,12 @@ import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/props';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
-import { padZero } from './utils';
+import { padZero, isDate as isDateU } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('datepicker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
-  return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
+  return isDateU(val) && !isNaN(val.getTime());
 }
 
 const zhCNType: {

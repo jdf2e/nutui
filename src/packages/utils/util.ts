@@ -130,3 +130,11 @@ export function preventDefault(event: Event, isStopPropagation?: boolean) {
     event.stopPropagation();
   }
 }
+
+export const padZero = (num: number | string, length = 2): string => {
+  num += '';
+  while ((num as string).length < length) {
+    num = '0' + num;
+  }
+  return num.toString();
+};
