@@ -1,34 +1,19 @@
 .nut-theme-dark {
   .nut-addresslist {
-    .nut-long-press-shell {
-      &__contain {
-        background-color: $dark-background2;
-        border-bottom: 1px solid $dark-color-gray;
-        color: $dark-color;
-        &-mask {
-          background-color: $dark-color3;
-          &-copy {
-            color: $dark-color-gray;
-            background-color: $dark-color;
-          }
-        }
-      }
-    }
-    .nut-swipe-shell,
-    .nut-general-shell {
+    &-swipe,
+    &-general {
       background-color: $dark-background2;
       border-bottom: 1px solid $dark-color-gray;
       color: $dark-color;
-    }
-    .nut-item-contents {
-      &__info {
-        &-contact {
-          &-default {
-            background: $addresslist-contnts-contact-default;
-            color: $addresslist-contnts-contact-color;
-          }
+      &__mask {
+        background-color: $dark-color3;
+        &-copy {
+          color: $dark-color-gray;
+          background-color: $dark-color;
         }
       }
+    }
+    &-item {
       &__addr {
         color: $dark-color-gray;
       }
@@ -40,73 +25,11 @@
 }
 .nut-addresslist {
   overflow: hidden;
-  .nut-long-press-shell {
-    &__contain {
-      width: 100%;
-      min-height: 76px;
-      padding: 5px 10px;
-      background-color: $addresslist-bg;
-      border-bottom: 1px solid $addresslist-border;
-      color: $addresslist-font-color;
-      font-size: $addresslist-font-size;
-      display: flex;
-      align-items: center;
-      position: relative;
-      box-sizing: border-box;
-      &-mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: $addresslist-mask-bg;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0 40px;
-        z-index: 2001;
-        &-copy,
-        &-set,
-        &-del {
-          height: 55px;
-          width: 55px;
-          border-radius: 50%;
-          text-align: center;
-          background-color: $white;
-          font-size: 14px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        &-set {
-          color: $white;
-          background-color: $addresslist-set-bg;
-        }
-        &-del {
-          color: $white;
-          background-color: $addresslist-del-bg;
-        }
-      }
-    }
-    //设置mask
-    &__mask-bottom {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2000;
-      background-color: transparent;
-    }
+  &:last-child {
+    padding-bottom: 84px;
   }
-  .nut-long-press-shell:last-child {
-    &__contain {
-      border-bottom: none;
-    }
-  }
-  .nut-swipe-shell,
-  .nut-general-shell {
-    // width:100%;
+  &-swipe,
+  &-general {
     min-height: 76px;
     padding: 5px 10px;
     background-color: $addresslist-bg;
@@ -116,15 +39,46 @@
     display: flex;
     align-items: center;
     position: relative;
-  }
-  .nut-swipe-shell:last-child,
-  .nut-general-shell:last-child {
-    border-bottom: none;
-  }
-  .nut-item-contents {
-    &__contain {
-      width: 100%;
+    &:last-child {
+      border-bottom: none;
     }
+    &__mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: $addresslist-mask-bg;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 40px;
+      z-index: 2001;
+      &-copy,
+      &-set,
+      &-del {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: $white;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &-set {
+        color: $white;
+        background-color: $addresslist-set-bg;
+      }
+      &-del {
+        color: $white;
+        background-color: $addresslist-del-bg;
+      }
+    }
+  }
+  &-item {
+    width: 100%;
     &__info {
       display: flex;
       justify-content: space-between;
@@ -178,7 +132,13 @@
     background-color: $addresslist-bg;
     box-sizing: border-box;
   }
-}
-.nut-addresslist:last-child {
-  padding-bottom: 84px;
+  .nut-addresslist__mask-bottom {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    background-color: transparent;
+  }
 }
