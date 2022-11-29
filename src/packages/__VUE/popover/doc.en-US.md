@@ -296,6 +296,14 @@ export default {
 | offset `v3.1.21`       | the offset of the occurrence position  | [number, number]   | [0, 12]  |
 | show-arrow `v3.1.21`       | whether to show small arrows  | boolean  | true  |
 | custom-class `v3.1.21`       | custom class   | string  | ''  |
+| duration `v3.1.21`       | Transition duration  |  [number, number]  | 0.3  |
+| iconPrefix `v3.1.21`       | Icon className prefix | string  | 'nut-icon''  |
+| overlay `v3.2.8`       | Whether to show overlay  | Boolean  | false  |
+| overlay-class `v3.2.8`       | Custom overlay class | string  | ''  |
+| overlay-style `v3.2.8`       | Custom overlay style  | string  | ''  |
+| close-on-click-overlay `v3.2.8`       | Whether to close when clicking overlay  | boolean  | true  |
+| close-on-click-action `v3.2.8`       | Whether to close when clicking action  | boolean  | true |
+| close-on-click-outside `v3.2.8`       | Whether to close when clicking outside | boolean  | true  |
 
 ### List data structure  
 
