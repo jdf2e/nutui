@@ -1,13 +1,15 @@
 import { config, mount } from '@vue/test-utils';
 import Popover from '../index.vue';
 import NutPupup from '../../popup/index.vue';
+import NutOverlay from '../../overlay/index.vue';
 import NutIcon from '../../icon/index.vue';
-import { nextTick, toRefs, reactive, ref, onMounted } from 'vue';
+import { nextTick, reactive } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
     NutIcon,
-    NutPupup
+    NutPupup,
+    NutOverlay
   };
 });
 
@@ -48,7 +50,7 @@ test('Props theme dark', async () => {
   expect(wrapper.find('.nut-popover--dark').exists()).toBeTruthy();
 });
 
-test('Action Disabled', async () => {
+test('should not emit select event when the action is disabled', async () => {
   const wrapper = mount(Popover, {
     props: {
       visible: true,
@@ -60,7 +62,25 @@ test('Action Disabled', async () => {
   expect(wrapper.findAll('.nut-popover-menu-disabled').length).toEqual(2);
 
   wrapper.find('.nut-popover-menu-item').trigger('click');
-  expect(wrapper.emitted('select')).toBeFalsy();
+  expect(wrapper.emitted('choose')).toBeFalsy();
+});
+
+test('should close popover when clicking the action', async () => {
+  const wrapper = mount(Popover, {
+    props: {
+      visible: true,
+      list: iconItemList,
+      teleportDisable: false
+    }
+  });
+  await nextTick();
+
+  await wrapper.find('.nut-popover-menu-item').trigger('click');
+  expect(wrapper.emitted('update:visible')![0]).toEqual([false]);
+
+  await wrapper.setProps({ closeOnClickAction: false });
+  await wrapper.find('.nut-popover-menu-item').trigger('click');
+  expect(wrapper.emitted('update:visible')).toHaveLength(1);
 });
 
 test('Set Props Position', async () => {
@@ -69,10 +89,9 @@ test('Set Props Position', async () => {
       visible: true,
       list: iconItemList,
       teleportDisable: false,
-      location: 'bottom-start'
+      location: 'top-start'
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-popover-arrow--bottom-start').exists()).toBeTruthy();
-  expect(wrapper.find('.nut-popover-content--bottom-start').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-popover-arrow--top-start').exists()).toBeTruthy();
 });

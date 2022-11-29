@@ -133,7 +133,7 @@ export default create({
       emit('close');
     };
     const chooseItem = (item: any, index: number) => {
-      emit('choose', item, index);
+      !item.disabled && emit('choose', item, index);
       if (props.closeOnClickAction) {
         closePopover();
       }
