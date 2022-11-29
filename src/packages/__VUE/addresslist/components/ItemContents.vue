@@ -1,23 +1,23 @@
 <template>
-  <div class="nut-item-contents__contain" @click="contentsClick">
-    <div class="nut-item-contents__info">
-      <div class="nut-item-contents__info-contact">
+  <div class="nut-addresslist-item" @click="contentsClick">
+    <div class="nut-addresslist-item__info">
+      <div class="nut-addresslist-item__info-contact">
         <slot name="contentTop">
-          <div class="nut-item-contents__info-contact-name">{{ item.addressName }}</div>
-          <div class="nut-item-contents__info-contact-tel">{{ item.phone }}</div>
-          <div class="nut-item-contents__info-contact-default" v-if="item.defaultAddress">{{
+          <div class="nut-addresslist-item__info-contact-name">{{ item.addressName }}</div>
+          <div class="nut-addresslist-item__info-contact-tel">{{ item.phone }}</div>
+          <div class="nut-addresslist-item__info-contact-default" v-if="item.defaultAddress">{{
             translate('default')
           }}</div>
         </slot>
       </div>
-      <div class="nut-item-contents__info-handle">
+      <div class="nut-addresslist-item__info-handle">
         <slot name="contentIcon">
-          <nut-icon name="del" class="nut-item-contents__info-handle-del" @click="delClick"></nut-icon>
-          <nut-icon name="edit" class="nut-item-contents__info-handle-edit" @click="editClick"></nut-icon>
+          <nut-icon name="del" class="nut-addresslist-item__info-handle-del" @click="delClick"></nut-icon>
+          <nut-icon name="edit" class="nut-addresslist-item__info-handle-edit" @click="editClick"></nut-icon>
         </slot>
       </div>
     </div>
-    <div class="nut-item-contents__addr">
+    <div class="nut-addresslist-item__addr">
       <slot name="contentAddr">
         {{ item.fullAddress }}
       </slot>
@@ -25,36 +25,29 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('item-contents');
+const { create } = createComponent('addresslist-item');
 const { translate } = createComponent('addresslist');
 
 export default create({
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
     item: {
       type: Object,
       default: {}
     }
   },
-  components: {},
-  emits: ['delIconClick', 'editIconClick', 'itemClick'],
+  emits: ['delIcon', 'editIcon', 'itemClick'],
 
   setup(props, { emit }) {
     const delClick = (event: Event) => {
-      emit('delIconClick', event, props.item);
-      // console.log(123);
+      emit('delIcon', event, props.item);
       event.stopPropagation();
     };
     const editClick = (event: Event) => {
-      emit('editIconClick', event, props.item);
+      emit('editIcon', event, props.item);
       event.stopPropagation();
     };
-    const contentsClick = (event: event) => {
+    const contentsClick = (event: Event) => {
       emit('itemClick', event, props.item);
       event.stopPropagation();
     };
@@ -68,7 +61,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-/* @import './index.scss'; */
-</style>
