@@ -56,7 +56,7 @@ export const component = (componentName: string) => {
       };
 
       const close = () => {
-        if (!props.visible) return; //避免重复调用
+        // if (!props.visible) return; //避免重复调用
         emit('update:visible', false);
         emit('close');
         if (props.destroyOnClose) {
@@ -79,7 +79,8 @@ export const component = (componentName: string) => {
       const onClickOverlay = (e: Event) => {
         if (props.closeOnClickOverlay) {
           emit('click-overlay', e);
-          close();
+          emit('update:visible', false);
+          // close();
         }
       };
 
