@@ -77,6 +77,7 @@ export const component = (componentName: string) => {
       };
 
       const onClickOverlay = (e: Event) => {
+        console.log('关闭遮罩');
         if (props.closeOnClickOverlay) {
           emit('click-overlay', e);
           emit('update:visible', false);
@@ -93,6 +94,7 @@ export const component = (componentName: string) => {
       };
 
       watchEffect(() => {
+        console.log('展示popup', props.visible);
         props.visible ? open() : close();
         state.closed = props.closeable;
       });
