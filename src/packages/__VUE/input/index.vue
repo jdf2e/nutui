@@ -54,6 +54,7 @@
               :value="modelValue"
               :formatTrigger="formatTrigger"
               :autofocus="autofocus"
+              :enterkeyhint="confirmType"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -72,6 +73,7 @@
               :value="modelValue"
               :formatTrigger="formatTrigger"
               :autofocus="autofocus"
+              :enterkeyhint="confirmType"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
@@ -249,6 +251,10 @@ export default create({
     autofocus: {
       type: Boolean,
       default: false
+    },
+    confirmType: {
+      type: String as PropType<import('./type').ConfirmTextType>,
+      default: 'done'
     }
   },
 
