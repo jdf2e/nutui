@@ -33,7 +33,7 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-if="privateType == 'custom'">
-        <view class="region-tab" ref="tabRegion">
+        <view class="nut-address-region-tab" ref="tabRegion">
           <view
             :class="{ 'tab-item': true, active: index == tabIndex, [tabName[index]]: true }"
             v-for="(item, key, index) in selectedRegion"
@@ -72,7 +72,7 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-else-if="privateType == 'custom2'">
-        <view class="region-tab" ref="tabRegion">
+        <view class="nut-address-region-tab" ref="tabRegion">
           <view
             :class="{ 'tab-item': true, active: index == tabIndex, [tabName[index]]: true }"
             v-for="(item, key, index) in selectedRegion"
