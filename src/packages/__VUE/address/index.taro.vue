@@ -532,7 +532,7 @@ export default create({
       () => showPopup.value,
       (value) => {
         if (value == false) {
-          close();
+          // close();
         } else {
           initCustomSelected();
         }
