@@ -28,30 +28,11 @@
       <view class="nut-input-value">
         <view class="nut-input-inner">
           <view class="nut-input-box">
-            <textarea
-              v-if="type == 'textarea'"
-              class="input-text"
-              ref="inputRef"
-              :style="stylesTextarea"
-              :maxlength="maxLength"
-              :placeholder="placeholder"
-              :disabled="disabled"
-              :readonly="readonly"
-              :value="modelValue"
-              :formatTrigger="formatTrigger"
-              :autofocus="autofocus"
-              :enterkeyhint="confirmType"
-              @input="onInput"
-              @focus="onFocus"
-              @blur="onBlur"
-              @click="onClickInput"
-            />
-            <input
-              v-else
+            <component
+              :is="renderInput(type)"
               class="input-text"
               ref="inputRef"
               :style="styles"
-              :type="inputType(type)"
               :maxlength="maxLength"
               :placeholder="placeholder"
               :disabled="disabled"
@@ -64,7 +45,7 @@
               @focus="onFocus"
               @blur="onBlur"
               @click="onClickInput"
-            />
+            ></component>
           </view>
           <view class="nut-input-clear-box">
             <nut-icon
@@ -102,7 +83,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
@@ -271,6 +252,12 @@ export default create({
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
 
+    const renderInput = (type: InputType) => {
+      return h(type == 'textarea' ? 'textarea' : 'input', {
+        style: type == 'textarea' ? stylesTextarea : styles
+      });
+    };
+
     const state = reactive({
       focused: false,
       validateFailed: false, // 校验失败
@@ -349,7 +336,8 @@ export default create({
       const input = event.target as HTMLInputElement;
       let value = input.value;
       active.value = true;
-      emit('focus', value, event);
+      emit('focus', event);
+      emit('update:modelValue', value);
     };
 
     const onBlur = (event: Event) => {
@@ -366,13 +354,13 @@ export default create({
         value = value.slice(0, Number(props.maxLength));
       }
       updateValue(getModelValue(), 'onBlur');
-      emit('blur', value, event);
+      emit('blur', event);
+      emit('update:modelValue', value);
     };
 
     const clear = (event: Event) => {
+      event.stopPropagation();
       if (props.disabled) return;
-      emit('update:modelValue', '', event);
-      emit('change', '', event);
       emit('clear', '', event);
     };
 
@@ -391,6 +379,7 @@ export default create({
     };
 
     const onClickLeftIcon = (event: MouseEvent) => {
+      event.stopPropagation();
       if (props.disabled) {
         return;
       }
@@ -398,6 +387,7 @@ export default create({
     };
 
     const onClickRightIcon = (event: MouseEvent) => {
+      event.stopPropagation();
       if (props.disabled) {
         return;
       }
@@ -421,6 +411,7 @@ export default create({
     });
 
     return {
+      renderInput,
       inputRef,
       active,
       classes,
