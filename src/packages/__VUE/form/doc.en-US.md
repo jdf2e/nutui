@@ -403,6 +403,6 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 | Name              | Description                                                                                                       | Arguments                   | Return value |
 |-------------------|-------------------------------------------------------------------------------------------------------------------|-----------------------------|--------------|
-| submit`v3.2.8`            | Method of submitting form for verification                                                                        | -                           | Promise      |
+| submit`v3.2.8`            | Method of submitting form for verification                                                                        | -                           | -      |
 | reset             | Clear verification results                                                                                        | -                           | -            |
 | validate`v3.1.13` | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |
