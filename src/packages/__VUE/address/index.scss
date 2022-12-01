@@ -235,4 +235,9 @@
       color: $white;
     }
   }
+
+  &-select-icon {
+    margin-right: $address-item-margin-right;
+    color: $address-icon-color !important;
+  }
 }

@@ -9,8 +9,10 @@
     >
     </div>
     <nut-popup
-      class="menu-item__pop-container"
-      :containerStyle="
+      :style="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
+      :overlay-style="
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       v-bind="$attrs"
@@ -18,7 +20,6 @@
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
       @closed="handleClose"
@@ -60,7 +61,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed } from 'vue';
+import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
@@ -113,10 +114,15 @@ export default create({
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
 
-        const { link } = parent;
+        const { link, removeLink } = parent;
 
         // @ts-ignore
         link(instance);
+
+        onUnmounted(() => {
+          // @ts-ignore
+          removeLink(instance);
+        });
 
         return {
           parent
