@@ -14,7 +14,7 @@ exports[`should render word limit correctly when modelValue is null 1`] = `
   <!--v-if-->
   <view class=\\"nut-input-value\\">
     <view class=\\"nut-input-inner\\">
-      <view class=\\"nut-input-box\\"><input class=\\"input-text\\" style=\\"text-align: left;\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"\\" formattrigger=\\"onChange\\"></view>
+      <view class=\\"nut-input-box\\"><input class=\\"input-text\\" style=\\"text-align: left;\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"\\" formattrigger=\\"onChange\\" enterkeyhint=\\"done\\"></view>
       <view class=\\"nut-input-clear-box\\">
         <!--v-if-->
       </view>

@@ -361,7 +361,7 @@ setup(){
 | prop                | The v-model field of the form field is required when the form verification function is used | string           | -       |
 | label-width         | The width of the form item label. The default unit is `px`                                  | number \| string | `90px`  |
 | label-align         | Form item label alignment. The optional values are `center` `right`                         | string           | `left`  |
-| body-align          | Input box alignment. The optional values are `center` `right`                               | string           | `left`  |
+| body-align          | Default Solt box alignment. The optional values are `center` `right`                               | string           | `left`  |
 | error-message-align | Error prompt text alignment. The optional values are `center` and `right`                   | string           | `left`  |
 | show-error-line     | Whether to mark the input box in red when the verification fails                            | boolean          | `true`  |
 | show-error-message  | Whether to display the error prompt under the input box when the verification fails         | boolean          | `true`  |

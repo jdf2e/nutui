@@ -361,7 +361,7 @@ setup(){
 | prop                | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
 | label-width         | 表单项 label 宽度，默认单位为`px`                                | number \| string | `90px`  |
 | label-align         | 表单项 label 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
-| body-align          | 输入框对齐方式，可选值为 `center` `right`                        | string           | `left`  |
+| body-align          | 右侧插槽对齐方式，可选值为 `center` `right`                        | string           | `left`  |
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
 | show-error-line     | 是否在校验不通过时标红输入框                                     | boolean          | `true`  |
 | show-error-message  | 是否在校验不通过时在输入框下方展示错误提示                       | boolean          | `true`  |
