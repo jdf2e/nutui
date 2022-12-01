@@ -3,11 +3,9 @@
 exports[`should render sure actionsheet when use custom props 1`] = `
 "<view class=\\"nut-actionsheet\\">
   <!--teleport start-->
-  <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" iswrapteleport=\\"true\\">
-    <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2003;\\"></view>
-  </transition-stub>
+  <nut-overlay visible=\\"true\\" close-on-click-overlay=\\"true\\" z-index=\\"2000\\" lock-scroll=\\"false\\" duration=\\"0.3\\" iswrapteleport=\\"true\\"></nut-overlay>
   <transition-stub name=\\"popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
-    <view class=\\"nut-popup round popup-bottom popclass\\" style=\\"z-index: 2003; transition-duration: 0.3s;\\">
+    <view class=\\"nut-popup round popup-bottom popclass\\" style=\\"z-index: 2000; transition-duration: 0.3s;\\">
       <view class=\\"nut-actionsheet-panel\\">
         <!--v-if-->
         <view>

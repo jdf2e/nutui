@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`init page No. 1`] = `"<view class=\\"nut-imagepreview-index\\">3 / 4</view>"`;
+exports[`init page No. 1`] = `"<view class=\\"nut-imagepreview-index\\">4 / 4</view>"`;
 
 exports[`video surported in H5 env 1`] = `
 "<view class=\\"nut-popup popup-center custom-pop\\" style=\\"z-index: 2005; transition-duration: 0.3s; width: 100%;\\">
