@@ -75,6 +75,7 @@ app.use(CellGroup);
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
 export default {
   setup(){
     const dynamicRefForm = ref<any>(null);
@@ -93,6 +94,7 @@ export default {
             if (valid) {
               console.log('success', dynamicForm);
             } else {
+              Toast.warn(errors[0].message);
               console.log('error submit!!', errors);
             }
           });
@@ -163,6 +165,7 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
 export default {
 setup(){
     const formData = reactive({
@@ -346,6 +349,7 @@ setup(){
 | Attribute   | Description                                              | Type   | Default |
 |-------------|----------------------------------------------------------|--------|---------|
 | model-value | Form data object (required when using form verification) | object |         |
+| rules`v3.2.3` | Unified configuration FormItem attr rules  | { prop: FormItemRule[] } |  {}      |
 
 ### Form Events
 
@@ -359,6 +363,7 @@ setup(){
 |---------------------|---------------------------------------------------------------------------------------------|------------------|---------|
 | required            | Whether to display the red asterisk next to the label of the required field                 | boolean          | `false` |
 | prop                | The v-model field of the form field is required when the form verification function is used | string           | -       |
+| rules               | Define validation rules                                                                     | FormItemRule []  | []      |
 | label-width         | The width of the form item label. The default unit is `px`                                  | number \| string | `90px`  |
 | label-align         | Form item label alignment. The optional values are `center` `right`                         | string           | `left`  |
 | body-align          | Default Solt box alignment. The optional values are `center` `right`                               | string           | `left`  |
@@ -366,7 +371,7 @@ setup(){
 | show-error-line     | Whether to mark the input box in red when the verification fails                            | boolean          | `true`  |
 | show-error-message  | Whether to display the error prompt under the input box when the verification fails         | boolean          | `true`  |
 
-### FormItem Rule data structure
+### FormItemRule data structure
 
 Use the `rules` attribute of FormItem to define verification rules. The optional attributes are as follows:
 
@@ -374,7 +379,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 |-----------|------------------------------------|-----------------------------------------|
 | required  | Is it a required field             | boolean                                 |
 | message   | Error prompt copy                  | string                                  |
-| validator | Verification by function           | (value) => boolean \| string \| Promise |
+| validator | Verification by function           | (value:string,rule?:FormItemRule) => boolean \| string \| Promise |
 | regex     | Verification by regular expression | RegExp                                  |
 
 ### FormItem Slots
@@ -398,6 +403,6 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 | Name              | Description                                                                                                       | Arguments                   | Return value |
 |-------------------|-------------------------------------------------------------------------------------------------------------------|-----------------------------|--------------|
-| submit            | Method of submitting form for verification                                                                        | -                           | Promise      |
+| submit`v3.2.8`            | Method of submitting form for verification                                                                        | -                           | Promise      |
 | reset             | Clear verification results                                                                                        | -                           | -            |
 | validate`v3.1.13` | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |
