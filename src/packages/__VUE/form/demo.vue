@@ -295,6 +295,7 @@ export default createDemo({
             if (valid) {
               console.log('success', dynamicForm);
             } else {
+              Toast.warn(errors[0].message);
               console.log('error submit!!', errors);
             }
           });
