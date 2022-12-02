@@ -264,7 +264,8 @@ export default create({
 
     const renderInput = (type: InputType) => {
       return h(type == 'textarea' ? 'textarea' : 'input', {
-        style: type == 'textarea' ? stylesTextarea : styles
+        style: type == 'textarea' ? stylesTextarea : styles,
+        type: type != 'textarea' && inputType(type)
       });
     };
 
