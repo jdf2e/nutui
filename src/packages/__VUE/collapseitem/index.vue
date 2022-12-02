@@ -257,10 +257,14 @@ export default create({
       var observer = new MutationObserver(() => {
         animation();
       });
-      observer.observe(document.getElementsByClassName('collapse-wrapper')[0], {
-        childList: true,
-        subtree: true
-      });
+      const ele = document.getElementsByClassName('collapse-wrapper')[0];
+      if (ele) {
+        observer.observe(ele, {
+          childList: true,
+          subtree: true
+        });
+      }
+
       init();
       // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {

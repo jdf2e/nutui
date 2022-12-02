@@ -160,7 +160,7 @@ export default create({
       for (let i = 0; i < state.listGroup.length; i++) {
         state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
         state.query.exec((res) => {
-          height += res[i][0].height;
+          height += Math.floor(res[i][0].height);
           state.listHeight.push(height);
         });
       }
