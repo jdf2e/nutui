@@ -26,7 +26,7 @@ test('address render', async () => {
       city: addressListData.city,
       country: addressListData.country,
       town: addressListData.town,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -42,7 +42,7 @@ test('choose address item', async () => {
       city: addressListData.city,
       country: addressListData.country,
       town: addressListData.town,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   wrapper.find('.region-item').trigger('click');
@@ -59,7 +59,7 @@ test('default choose address', async () => {
       city: addressListData.city,
       country: addressListData.country,
       town: addressListData.town,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   wrapper.vm.initCustomSelected();
@@ -76,7 +76,7 @@ test('Exist address', async () => {
       visible: true,
       existAddress: addressExistData,
       isShowCustomAddress: false,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -90,7 +90,7 @@ test('Exist address choose event', async () => {
       type: 'exist',
       visible: true,
       existAddress: addressExistData,
-      isWrapTeleport: false
+      teleportDisable: false
     }
   });
   await nextTick();
@@ -105,7 +105,7 @@ test('Exist address & list address', async () => {
       type: 'exist',
       visible: true,
       existAddress: addressExistData,
-      isWrapTeleport: false,
+      teleportDisable: false,
       province: addressListData.province,
       city: addressListData.city,
       country: addressListData.country,

@@ -1,60 +1,52 @@
 <template>
   <Transition name="overlay-fade">
-    <view :class="classes" @touchmove.stop="touchmove" @click="onClick" :style="style" v-show="visible">
+    <view :class="classes" @click.stop="onClick" :style="style" v-show="visible">
       <slot></slot>
     </view>
   </Transition>
 </template>
 <script lang="ts">
-import {
-  CSSProperties,
-  PropType,
-  computed,
-  watch,
-  onBeforeUnmount,
-  onDeactivated,
-  onMounted,
-  onActivated,
-  watchEffect
-} from 'vue';
+import { CSSProperties, PropType, computed, watchEffect, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { useLockScroll } from '@/packages/utils/useLockScroll';
 const { componentName, create } = createComponent('overlay');
-const overlayProps = {
-  visible: {
-    type: Boolean,
-    default: false
-  },
-  zIndex: {
-    type: [Number, String],
-    default: 2000
-  },
-  duration: {
-    type: [Number, String],
-    default: 0.3
-  },
-  overlayClass: {
-    type: String,
-    default: ''
-  },
-  lockScroll: {
-    type: Boolean,
-    default: false
-  },
-  overlayStyle: {
-    type: Object as PropType<CSSProperties>
-  },
-  closeOnClickOverlay: {
-    type: Boolean,
-    default: true
-  }
-};
-
-export { overlayProps };
 
 export default create({
-  props: overlayProps,
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    zIndex: {
+      type: [Number, String],
+      default: 2000
+    },
+    duration: {
+      type: [Number, String],
+      default: 0.3
+    },
+    lockScroll: {
+      type: Boolean,
+      default: false
+    },
+    overlayClass: {
+      type: String,
+      default: ''
+    },
+    overlayStyle: {
+      type: Object as PropType<CSSProperties>
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    }
+  },
+
   emits: ['click', 'update:visible'],
+
   setup(props, { emit }) {
+    const [lock, unlock] = useLockScroll(() => props.lockScroll);
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -63,47 +55,26 @@ export default create({
       };
     });
 
-    watch(
-      () => props.visible,
-      (value) => {
-        value ? lock() : unlock();
-      }
-    );
-
-    const lock = () => {
-      if (props.lockScroll && props.visible) {
-        document.body.classList.add('nut-overflow-hidden');
-      }
-    };
-    const unlock = () => {
-      document.body.classList.remove('nut-overflow-hidden');
-    };
-
-    onDeactivated(unlock);
-    onBeforeUnmount(unlock);
-    onMounted(lock);
-    onActivated(lock);
-
-    const style = computed(() => {
+    const style: ComputedRef = computed(() => {
       return {
-        animationDuration: `${props.duration}s`,
+        transitionDuration: `${props.duration}s`,
         zIndex: props.zIndex,
         ...props.overlayStyle
       };
-    }) as CSSProperties;
+    });
 
-    const touchmove = (e: TouchEvent) => {
-      if (props.lockScroll) e.preventDefault();
-    };
+    watchEffect(() => {
+      props.visible ? lock() : unlock();
+    });
 
     const onClick = (e: MouseEvent) => {
-      emit('click', e);
       if (props.closeOnClickOverlay) {
         emit('update:visible', false);
+        emit('click', e);
       }
     };
 
-    return { classes, style, touchmove, onClick };
+    return { classes, style, onClick };
   }
 });
 </script>

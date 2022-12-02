@@ -133,7 +133,7 @@ export default create({
       state.listHeight.push(height);
       for (let i = 0; i < state.listGroup.length; i++) {
         let item = state.listGroup[i];
-        height += item.clientHeight;
+        height += Math.floor(item.clientHeight);
         state.listHeight.push(height);
       }
     };

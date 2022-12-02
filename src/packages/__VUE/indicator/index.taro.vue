@@ -2,7 +2,7 @@
   <view :class="classes">
     <template v-for="item in size" :key="item">
       <view v-if="item === current" :class="`${componentName}--number`">
-        {{ fillZero && item < 10 ? `0${item}` : item }}
+        {{ (fillZero && padZero(item)) || item }}
       </view>
       <view v-else :class="`${componentName}--dot`"></view>
     </template>
@@ -13,6 +13,7 @@ import Taro from '@tarojs/taro';
 
 import { toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { padZero } from '@/packages/utils/util';
 const { componentName, create } = createComponent('indicator');
 
 export default create({
@@ -52,7 +53,7 @@ export default create({
       };
     });
 
-    return { classes, componentName };
+    return { classes, componentName, padZero };
   }
 });
 </script>

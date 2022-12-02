@@ -79,10 +79,25 @@ export default create({
           }
         };
 
+        const removeLink = (child: any) => {
+          if (child.proxy) {
+            let internalIndex = internalChildren.indexOf(child);
+            if (internalIndex > -1) {
+              internalChildren.splice(internalIndex, 1);
+            }
+
+            let publicIndex = publicChildren.indexOf(child.proxy);
+            if (internalIndex > -1) {
+              publicChildren.splice(publicIndex, 1);
+            }
+          }
+        };
+
         provide(
           'menuParent',
           Object.assign(
             {
+              removeLink,
               link,
               children: publicChildren,
               internalChildren
