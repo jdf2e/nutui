@@ -130,9 +130,8 @@
       }
 
       .nut-popover-menu-item-name {
-        margin-right: 12px;
-        margin-left: 8px;
         width: 100%;
+        word-break: keep-all;
       }
 
       &.nut-popover-menu-disabled {
