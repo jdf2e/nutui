@@ -137,8 +137,9 @@
       @clear="clear"
       @click="click"
       @click-input="clickInput"
+      @click-left-icon="clickLeftIcon"
+      @click-right-icon="clickRightIcon"
     />
-    <nut-icon @click="click1" name="dongdong"></nut-icon>
   </div>
 </template>
 
@@ -261,32 +262,29 @@ export default createDemo({
     setTimeout(function () {
       // state.val1 = '异步数据';
     }, 2000);
-    const change = (value: string | number) => {
+    const change = (value: string) => {
       console.log('change: ', value);
     };
-    const focus = (value: string | number, event: Event) => {
-      console.log('focus:', value, event);
+    const focus = (event: Event) => {
+      console.log('focus:', event);
     };
-    const blur = (value: string | number, event: Event) => {
-      console.log('blur:', value, event);
+    const blur = (event: Event) => {
+      console.log('blur:', event);
     };
-    const clear = (value: string | number, event: Event) => {
-      console.log('clear:', value, event);
+    const clear = (event: Event) => {
+      console.log('clear:', event);
     };
-    const click = (value: string | number) => {
-      console.log('click1:', value);
+    const click = (event: Event) => {
+      console.log('click:', event);
     };
-    const click1 = (value: string | number) => {
-      console.log('click1111:', value);
+    const clickInput = (event: Event) => {
+      console.log('clickInput:', event);
     };
-    const clickInput = (value: string | number) => {
-      console.log('clickInput:', value);
+    const clickLeftIcon = (event: Event) => {
+      console.log('clickLeftIcon:', event);
     };
-    const clickLeftIcon = (value: string | number) => {
-      console.log('clickLeftIcon:', value);
-    };
-    const clickRightIcon = (value: string | number) => {
-      console.log('clickRightIcon:', value);
+    const clickRightIcon = (event: Event) => {
+      console.log('clickRightIcon:', event);
     };
     const formatter = (value: string) => value.replace(/\d/g, '');
 
@@ -301,8 +299,7 @@ export default createDemo({
       clickLeftIcon,
       clickRightIcon,
       formatter,
-      translate,
-      click1
+      translate
     };
   }
 });
