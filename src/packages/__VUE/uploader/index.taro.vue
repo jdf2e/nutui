@@ -70,7 +70,7 @@
 <script lang="ts">
 import { computed, onMounted, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { Uploader, UploadOptions } from './uploader';
+import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem } from './type';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
@@ -138,7 +138,7 @@ export default create({
   ],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<import('./type').FileItem>;
-    let uploadQueue: Promise<Uploader>[] = [];
+    let uploadQueue: Promise<UploaderTaro>[] = [];
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -227,7 +227,7 @@ export default create({
           fileItem
         });
       };
-      let task = new Uploader(uploadOption);
+      let task = new UploaderTaro(uploadOption);
       if (props.autoUpload) {
         task.uploadTaro(Taro.uploadFile, Taro.getEnv());
       } else {

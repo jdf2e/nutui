@@ -7,12 +7,12 @@
 
     <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
       <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
-        <view class="nut-uploader__preview__progress" v-if="item.status == 'ready'">
-          <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
-        </view>
-
-        <view class="nut-uploader__preview__progress" v-else-if="item.status != 'success'">
-          <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
+        <view class="nut-uploader__preview__progress" v-if="item.status != 'success'">
+          <nut-icon
+            color="#fff"
+            :name="item.status == 'error' ? 'failure' : 'loading'"
+            v-if="item.status != 'ready'"
+          ></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
 
@@ -29,13 +29,18 @@
           v-if="item.type.includes('image') && item.url"
           :src="item.url"
         />
-        <view v-else class="nut-uploader__preview-img__file">
+
+        <!-- 应该不会触发 -->
+        <!-- <view v-else class="nut-uploader__preview-img__file">
           <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
             <nut-icon color="#808080" name="link"></nut-icon>&nbsp;{{ item.name }}
           </view>
-        </view>
-        <view class="tips">{{ item.name }}</view>
+        </view> -->
+
+        <!-- 高度 为 0 -->
+        <!-- <view class="tips">{{ item.name }}</view> -->
       </view>
+
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
         <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
           <nut-icon name="link" />&nbsp;{{ item.name }}
@@ -160,6 +165,7 @@ export default create({
     };
 
     const fileItemClick = (fileItem: import('./type').FileItem) => {
+      ß;
       emit('file-item-click', { fileItem });
     };
 
@@ -219,6 +225,7 @@ export default create({
         );
       }
     };
+
     const clearUploadQueue = (index = -1) => {
       if (index > -1) {
         uploadQueue.splice(index, 1);
@@ -309,13 +316,9 @@ export default create({
       let { files } = $el;
 
       if (props.beforeUpload) {
-        props.beforeUpload(files).then((f: Array<File>) => {
-          const _files: File[] = filterFiles(new Array<File>().slice.call(f));
-          readFile(_files);
-        });
+        props.beforeUpload(files).then((f: Array<File>) => changeReadFile(f));
       } else {
-        const _files: File[] = filterFiles(new Array<File>().slice.call(files));
-        readFile(_files);
+        changeReadFile(files);
       }
 
       emit('change', {
@@ -326,6 +329,11 @@ export default create({
       if (props.clearInput) {
         clearInput($el);
       }
+    };
+
+    const changeReadFile = (f: any) => {
+      const _files: File[] = filterFiles(new Array<File>().slice.call(f));
+      readFile(_files);
     };
 
     return {
