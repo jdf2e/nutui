@@ -29,16 +29,13 @@
           v-if="item.type.includes('image') && item.url"
           :src="item.url"
         />
-
-        <!-- 应该不会触发 -->
-        <!-- <view v-else class="nut-uploader__preview-img__file">
+        <view v-else class="nut-uploader__preview-img__file">
           <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
             <nut-icon color="#808080" name="link"></nut-icon>&nbsp;{{ item.name }}
           </view>
-        </view> -->
+        </view>
 
-        <!-- 高度 为 0 -->
-        <!-- <view class="tips">{{ item.name }}</view> -->
+        <view class="tips">{{ item.name }}</view>
       </view>
 
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
@@ -147,16 +144,17 @@ export default create({
     });
 
     const renderInput = () => {
-      let params = {
+      let params: any = {
         class: `nut-uploader__input`,
         type: 'file',
-        capture: 'camera',
         accept: props.accept,
         multiple: props.multiple,
         name: props.name,
         disabled: props.disabled
       };
+
       if (props.capture) params.capture = 'camera';
+
       return h('input', params);
     };
 
@@ -165,7 +163,6 @@ export default create({
     };
 
     const fileItemClick = (fileItem: import('./type').FileItem) => {
-      ß;
       emit('file-item-click', { fileItem });
     };
 
