@@ -9,7 +9,7 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Signature} from '@nutui/nutui';
+import { Signature} from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Signature);
@@ -22,14 +22,16 @@ app.use(Signature);
 
 ```html
 <div class="demo">
-    <nut-signature
-      :lineWidth="lineWidth"
-      :strokeStyle="strokeStyle"
-      @confirm="confirm"
-      @clear="clear"
-    />
-  </div>
-setup() {
+  <nut-signature
+    :lineWidth="lineWidth"
+    :strokeStyle="strokeStyle"
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
+</div>
+<script>
+export default {
+  setup() {
     const state = reactive({
       lineWidth: 4,
       strokeStyle: 'green',
@@ -56,6 +58,8 @@ setup() {
     };
     return { ...state, confirm, clear };
   }
+}
+</script>
 ```
     
 ## API
