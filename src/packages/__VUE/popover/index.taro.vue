@@ -38,7 +38,7 @@
               :name="item.icon"
             ></nut-icon
           ></slot>
-          <view class="nut-popover-menu-name">{{ item.name }}</view>
+          <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
     </nut-popup>
