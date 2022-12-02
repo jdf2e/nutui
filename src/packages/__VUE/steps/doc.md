@@ -141,9 +141,9 @@ app.use(Step);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number、String        | '0'      |
-| progress-dot            |  点状步骤条     | Boolean | false         |
+| direction	             | 	显示方向，`horizontal`,`vertical`  | string        | `horizontal`  | 
+| current	               | 	当前所在的步骤           | number、string        | `0`      |
+| progress-dot            |  点状步骤条     | boolean | `false`         |
 
 ### Steps Events
 
@@ -155,10 +155,11 @@ app.use(Step);
 
 | 参数           | 说明                   | 类型     | 默认值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | 步骤 |
-| content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
-| icon          | 图标       | String | null |
-| icon-color          | 图标颜色       | String | null |
+| title            | 流程步骤的标题         | string | `步骤` |
+| content          | 流程步骤的描述性文字(支持 html 结构)       | string | `步骤描述` |
+| icon          | [图标名称](#/zh-CN/component/icon)       | string | null |
+| icon-color          | [图标颜色](#/zh-CN/component/icon)       | string | null |
+| size          | [图标尺寸](#/zh-CN/component/icon)       | string | `12px` |
 
 ### Step Slots
 

@@ -455,29 +455,29 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
       const state = reactive({
         event: ''
       });
-      const change = (value: string | number) => {
+      const change = (value: string) => {
         console.log('change: ', value);
       };
-      const focus = (value: string | number, event: Event) => {
-        console.log('focus:', value, event);
+      const focus = (event: Event) => {
+        console.log('focus:', event);
       };
-      const blur = (value: string | number, event: Event) => {
-        console.log('blur:', value, event);
+      const blur = (event: Event) => {
+        console.log('blur:', event);
       };
-      const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event);
+      const clear = (event: Event) => {
+        console.log('clear:', event);
       };
-      const click = (value: string | number) => {
-        console.log('click:', value);
+      const click = (event: Event) => {
+        console.log('click:', event);
       };
-      const clickInput = (value: string | number) => {
-        console.log('clickInput:', value);
+      const clickInput = (event: Event) => {
+        console.log('clickInput:', event);
       };
-      const clickLeftIcon = (value: string | number) => {
-        console.log('clickLeftIcon:', value);
+      const clickLeftIcon = (event: Event) => {
+        console.log('clickLeftIcon:', event);
       };
-      const clickRightIcon = (value: string | number) => {
-        console.log('clickRightIcon:', value);
+      const clickRightIcon = (event: Event) => {
+        console.log('clickRightIcon:', event);
       };
 
       return {
@@ -539,13 +539,13 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
 | update:model-value | Emitted when input value changed | val  |
-| focus  | Emitted when input is focused     | val  ,event |
-| blur   | Emitted when input is blurred     | val ,event  |
-| clear  | Emitted when the clear icon is clicked   | val ,event  |
-| click  | Emitted when component is clicked	      | val ,event  |
-| click-input      | Emitted when the input is clicked      | val ,event  |
-| click-left-icon  | Emitted when the left icon is clicked      | val ,event  |
-| click-right-icon | Emitted when the right icon is clicked      | val ,event  |
+| focus  | Emitted when input is focused     | event |
+| blur   | Emitted when input is blurred     | event  |
+| clear  | Emitted when the clear icon is clicked   | event  |
+| click  | Emitted when component is clicked	      | event  |
+| click-input      | Emitted when the input is clicked      | event  |
+| click-left-icon  | Emitted when the left icon is clicked      | event  |
+| click-right-icon | Emitted when the right icon is clicked      | event  |
 
 ### Slots
 
