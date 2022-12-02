@@ -13,14 +13,16 @@
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       :overlayStyle="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down'
+          ? { top: parent.offset.value + 'px' }
+          : { bottom: parent.offset.value + 'px', top: 'auto' }
       "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      overlayClass="nut-menu__overlay"
+      :destroy-on-close="false"
       :overlay="parent.props.overlay"
       @closed="handleClose"
       :lockScroll="parent.props.lockScroll"
