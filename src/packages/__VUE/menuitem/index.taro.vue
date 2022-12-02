@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper" style="position: fixed" :style="{ zIndex: state.zIndex }">
+  <view :class="classes" v-show="state.showWrapper" :style="{ zIndex: state.zIndex }">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -13,13 +13,16 @@
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       :overlay-style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down'
+          ? { top: parent.offset.value + 'px' }
+          : { bottom: parent.offset.value + 'px', top: 'auto' }
       "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
+      :destroy-on-close="false"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
       @closed="handleClose"
