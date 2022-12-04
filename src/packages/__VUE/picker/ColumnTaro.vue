@@ -31,6 +31,7 @@ import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { clamp } from '@/packages/utils/util';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 import Taro from '@tarojs/taro';
@@ -241,7 +242,7 @@ export default create({
         const maxDeg = (props.column.length + 1) * state.rotation;
         const minDeg = 0;
 
-        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg);
+        deg = clamp(currentDeg, minDeg, maxDeg);
 
         if (minDeg < deg && deg < maxDeg) {
           setTransform(updateMove, null, undefined, deg + 'deg');
