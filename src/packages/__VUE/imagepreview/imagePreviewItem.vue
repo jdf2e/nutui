@@ -17,7 +17,7 @@
 import { toRefs, reactive, watch, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
-import { preventDefault } from '@/packages/utils/util';
+import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
 const { create } = createComponent('imagepreviewitem');
@@ -261,8 +261,6 @@ export default create({
       checkTap();
       touch.reset();
     };
-
-    const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
 
     const closeSwiper = () => {
       emit('close');
