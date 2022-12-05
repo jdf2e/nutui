@@ -42,12 +42,9 @@
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
-interface ElevatorData {
-  name: string;
-  id: number | string;
-  [key: string]: string | number;
-}
+
 export default create({
   props: {
     height: {

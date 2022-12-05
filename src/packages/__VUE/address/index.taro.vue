@@ -137,19 +137,10 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
 import { popupProps } from '../popup/props';
+import { RegionData, CustomRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
 
 const { create, componentName, translate } = createComponent('address');
-
-interface RegionData {
-  id: string;
-  name: string;
-  [key: string]: any;
-}
-interface CustomRegionData {
-  title: string;
-  list: any[];
-}
 
 interface AddressList {
   id?: string | number;

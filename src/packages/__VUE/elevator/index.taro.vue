@@ -56,15 +56,12 @@
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
 import NutScrollView from '../scrollView/index.taro.vue';
 
 import Taro from '@tarojs/taro';
-interface ElevatorData {
-  name: string;
-  id: number | string;
-  [key: string]: string | number;
-}
+
 export default create({
   components: {
     NutScrollView

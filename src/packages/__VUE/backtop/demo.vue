@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('backtop');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

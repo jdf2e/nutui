@@ -142,16 +142,9 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { RegionData, CustomRegionData } from './type';
 import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('address');
-interface RegionData {
-  name: string;
-  [key: string]: any;
-}
-interface CustomRegionData {
-  title: string;
-  list: any[];
-}
 
 interface AddressList {
   id?: string | number;
