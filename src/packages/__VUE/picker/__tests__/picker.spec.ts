@@ -2,15 +2,16 @@ import { config, mount } from '@vue/test-utils';
 import Picker from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 import NutPupup from '../../popup/index.vue';
+import NutOverlay from '../../overlay/index.vue';
 import NutPickerColumn from '../Column.vue';
-import { nextTick, toRefs, reactive, ref, onMounted } from 'vue';
-import { triggerDrag } from '../../../utils/test/event';
+import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
     NutIcon,
     NutPupup,
-    NutPickerColumn
+    NutPickerColumn,
+    NutOverlay
   };
 });
 
@@ -96,8 +97,8 @@ test('first render', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-picker__cancel').exists()).toBeTruthy();
-  expect(wrapper.find('.nut-picker__confirm').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-picker__left').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-picker__right').exists()).toBeTruthy();
 });
 
 test('simple list-data confirm & close event', async () => {
@@ -109,8 +110,8 @@ test('simple list-data confirm & close event', async () => {
     }
   });
   await nextTick();
-  wrapper.find('.nut-picker__cancel').trigger('click');
-  wrapper.find('.nut-picker__confirm').trigger('click');
+  wrapper.find('.nut-picker__left').trigger('click');
+  wrapper.find('.nut-picker__right').trigger('click');
   expect(wrapper.emitted('confirm')![0]).toEqual([
     {
       selectedOptions: [{ text: '南京市', value: 'NanJing' }],
@@ -129,7 +130,7 @@ test('simple columns default checked item', async () => {
     }
   });
   await nextTick();
-  wrapper.find('.nut-picker__confirm').trigger('click');
+  wrapper.find('.nut-picker__right').trigger('click');
   expect(wrapper.emitted('confirm')![0]).toEqual([
     {
       selectedOptions: [{ text: '无锡市', value: 'WuXi' }],

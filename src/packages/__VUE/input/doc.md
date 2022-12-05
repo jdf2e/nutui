@@ -458,29 +458,29 @@ app.use(Icon);
       const state = reactive({
         event: ''
       });
-      const change = (value: string | number) => {
+      const change = (value: string) => {
         console.log('change: ', value);
       };
-      const focus = (value: string | number, event: Event) => {
-        console.log('focus:', value, event);
+      const focus = (event: Event) => {
+        console.log('focus:', event);
       };
-      const blur = (value: string | number, event: Event) => {
-        console.log('blur:', value, event);
+      const blur = (event: Event) => {
+        console.log('blur:', event);
       };
-      const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event);
+      const clear = (event: Event) => {
+        console.log('clear:', event);
       };
-      const click = (value: string | number) => {
-        console.log('click:', value);
+      const click = (event: Event) => {
+        console.log('click:', event);
       };
-      const clickInput = (value: string | number) => {
-        console.log('clickInput:', value);
+      const clickInput = (event: Event) => {
+        console.log('clickInput:', event);
       };
-      const clickLeftIcon = (value: string | number) => {
-        console.log('clickLeftIcon:', value);
+      const clickLeftIcon = (event: Event) => {
+        console.log('clickLeftIcon:', event);
       };
-      const clickRightIcon = (value: string | number) => {
-        console.log('clickRightIcon:', value);
+      const clickRightIcon = (event: Event) => {
+        console.log('clickRightIcon:', event);
       };
 
       return {
@@ -533,7 +533,7 @@ app.use(Icon);
 | error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
+| confirm-type `H5(v3.2.8)` | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 | adjust-position`v3.1.21` | 键盘弹起时，是否自动上推页面（`仅支持小程序`）     | Boolean | `true` |
 | always-system`v3.2.8` | 是否强制使用系统键盘和 Web-view 创建的 input 元素。为 true 时，`confirm-type`、`confirm-hold` 可能失效（`仅支持小程序`）     | Boolean | `false` |
 
@@ -542,13 +542,13 @@ app.use(Icon);
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
 | update:model-value | 输入框内容变化时触发 | val  |
-| focus  | 输入框聚焦时触发     | val  ,event |
-| blur   | 输入框失焦时触发     | val ,event  |
-| clear  | 点击清除按钮时触发   | val ,event  |
-| click  | 点击组件时触发      | val ,event  |
-| click-input      | 点击输入区域时触发      | val ,event  |
-| click-left-icon  | 点击左侧图标时触发      | val ,event  |
-| click-right-icon | 点击右侧图标时触发      | val ,event  |
+| focus  | 输入框聚焦时触发     | event |
+| blur   | 输入框失焦时触发     | event  |
+| clear  | 点击清除按钮时触发   | event  |
+| click  | 点击组件时触发      | event  |
+| click-input      | 点击输入区域时触发      | event  |
+| click-left-icon  | 点击左侧图标时触发      | event  |
+| click-right-icon | 点击右侧图标时触发      | event  |
 
 ### Slots
 | 名称  | 说明     | 

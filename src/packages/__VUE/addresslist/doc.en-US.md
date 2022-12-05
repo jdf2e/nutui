@@ -25,9 +25,9 @@ app.use(Button);
 <template>
   <nut-addresslist
     :data="data"
-    @handelDelIcon="delClick"
-    @handelEditIcon="editClick"
-    @handelItem="itemClick"
+    @delIcon="delClick"
+    @editIcon="editClick"
+    @itemClick="itemClick"
     :show-bottom-button="false"
     :dataMapOptions="dataMapOptions"
   >
@@ -69,7 +69,6 @@ export default {
     }
     return {
       itemClick,
-      holdDownClick,
       data,
       delClick,
       editClick,
@@ -92,11 +91,11 @@ export default {
 <template>
   <nut-addresslist
     :data="data"
-    long-press-edition
+    long-press
     :show-bottom-button="false"
-    @handelDelIcon="delClick"
-    @handelEditIcon="editClick"
-    @handelItem="itemClick"
+    @DelIcon="delClick"
+    @EditIcon="editClick"
+    @Item="itemClick"
     @longPressCopyClick="copyClick"
     @longPressSetClick="setClick"
     @longPressDelClick="delClick"
@@ -141,9 +140,6 @@ export default {
       const copyClick = ()=>{
         Toast.text('Click To Copy');
       }
-      const holdDownClick = (event: Event,id:number)=>{
-        Toast.text('Long Press');
-      }
       const setClick = ()=>{
         Toast.text('Click On Settings');
       }
@@ -152,7 +148,6 @@ export default {
       }
       return {
         itemClick,
-        holdDownClick,
         data,
         delClick,
         editClick,
@@ -176,11 +171,11 @@ export default {
     :data="data"
     swipe-edition
     show-bottom-button
-    @handelItem="itemClick"
-    @handelEditIcon="editClick"
-    @handelDelIcon="delClick"
+    @Item="itemClick"
+    @EditIcon="editClick"
+    @DelIcon="delClick"
     @swipeDelClick="delClick"
-    @addAddressClick="addAddress"
+    @add="addAddress"
     :dataMapOptions="dataMapOptions"
   >
   </nut-addresslist>
@@ -224,7 +219,6 @@ export default {
       }
       return {
         itemClick,
-        holdDownClick,
         data,
         delClick,
         editClick,
@@ -246,7 +240,7 @@ export default {
 | Attribute          | Description       | Type   | Default |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | Address array         | Array   | -      |
-| long-press-edition | Long Press Function   | Boolean | false  |
+| long-press | Long Press Function   | Boolean | false  |
 | swipe-edition      | Swipe right           | Boolean | false  |
 | show-bottom-button | Whether to show the bottom button | Boolean | true   |
 
@@ -254,15 +248,14 @@ export default {
 
 | Event              | Description                  | Arguments         | Remark               |
 | ------------------ | ---------------------------- | ----------------- | ------------------ |
-| handel-del-icon      | Click the delete icon        | event: Event,item | public               |
-| handel-edit-icon     | Click the edit icon          | event: Event,item | public               |
-| handel-del-icon      | Click the delete icon        | event: Event,item | public               |
-| handel-item         | Click on each item in the address list | event: Event,item | public     |
-| add-address-click    | Click the Add Address button at the bottom | event: Event   | public |
-| long-press-copy-click | Click the Copy Address button      | event: Event,item | Click event under long press function |
-| long-press-set-click  | Click the Set Default button       | event: Event,item | Click event under long press function  |
-| long-press-del-click  | Click the Delete Address button    | event: Event,item | Click event under long press function |
-| swipe-del-click      | Default right swipe delete button  | event: Event,item | Click event under swipe function |
+| del-icon      | Click the delete icon        | event: Event,item | public               |
+| edit-icon     | Click the edit icon          | event: Event,item | public               |          |
+| click-item         | Click on each item in the address list | event: Event,item | public     |
+| add    | Click the Add Address button at the bottom | event: Event   | public |
+| long-copy | Click the Copy Address button      | event: Event,item | Click event under long press function |
+| long-set  | Click the Set Default button       | event: Event,item | Click event under long press function  |
+| long-del  | Click the Delete Address button    | event: Event,item | Click event under long press function |
+| swipe-del      | Default right swipe delete button  | event: Event,item | Click event under swipe function |
 
 ### Slots
 

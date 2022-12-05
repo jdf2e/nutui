@@ -115,13 +115,13 @@ describe('function Dialog', () => {
       cancelText: '取消文案自定义',
       okText: '确定文案自定义'
     });
-    await sleep(500);
+    await sleep(1000);
     let cancelText = document.querySelector(
-      `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer-cancel > view > view`
+      `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer-cancel `
     ) as HTMLDivElement;
     expect(cancelText.innerHTML).toEqual('取消文案自定义');
     let okText = document.querySelector(
-      `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer-ok > view > view`
+      `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer-ok`
     ) as HTMLDivElement;
     expect(okText.innerHTML).toEqual('确定文案自定义');
   });

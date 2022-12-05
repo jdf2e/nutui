@@ -7,7 +7,7 @@
     >
     <h2>弹出位置</h2>
     <nut-cell title="顶部弹出" is-link @click="showTop = true"></nut-cell>
-    <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="showTop"></nut-popup>
+    <nut-popup position="top" :style="{ height: '10%' }" v-model:visible="showTop"></nut-popup>
     <nut-cell title="底部弹出" is-link @click="showBottom = true"></nut-cell>
     <nut-popup position="bottom" :style="{ height: '20%' }" v-model:visible="showBottom"></nut-popup>
     <nut-cell title="左侧弹出" is-link @click="showLeft = true"></nut-cell>

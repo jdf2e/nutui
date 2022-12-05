@@ -1,5 +1,5 @@
 import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
-import { computed, provide, reactive, VNode, watch } from 'vue';
+import { computed, PropType, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules } from './types';
 
@@ -10,7 +10,7 @@ export const component = {
       default: {}
     },
     rules: {
-      type: Object,
+      type: Object as PropType<import('./types').FormRules>,
       default: {}
     }
   },
@@ -20,7 +20,7 @@ export const component = {
   setup(props: any, { emit, slots }: any) {
     const formErrorTip = computed(() => reactive<any>({}));
     provide('formErrorTip', formErrorTip);
-    const clearErrorTips = (value = props.modelValue) => {
+    const clearErrorTips = () => {
       Object.keys(formErrorTip.value).forEach((item) => {
         formErrorTip.value[item] = '';
       });
@@ -32,15 +32,15 @@ export const component = {
 
     watch(
       () => props.modelValue,
-      (value: any) => {
-        clearErrorTips(value);
+      () => {
+        clearErrorTips();
       },
       { immediate: true }
     );
 
     const findFormItem = (vnodes: VNode[]) => {
       let task: FormRule[] = [];
-      vnodes.forEach((vnode: VNode, index: number) => {
+      vnodes.forEach((vnode: VNode) => {
         let type = vnode.type;
         type = (type as any).name || type;
         if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
@@ -73,8 +73,12 @@ export const component = {
 
       const _Promise = (errorMsg: ErrorMessage): Promise<ErrorMessage> => {
         return new Promise((resolve, reject) => {
-          tipMessage(errorMsg);
-          resolve(errorMsg);
+          try {
+            tipMessage(errorMsg);
+            resolve(errorMsg);
+          } catch (error) {
+            reject(error);
+          }
         });
       };
 
@@ -94,7 +98,7 @@ export const component = {
         const { required, regex, message } = ruleWithoutValidator;
         const errorMsg = { prop, message };
         if (required) {
-          if (value === '' || value === undefined || value === null) {
+          if (!value) {
             return _Promise(errorMsg);
           }
         }
@@ -105,14 +109,16 @@ export const component = {
           const result = validator(value, ruleWithoutValidator);
           if (isPromise(result)) {
             return new Promise((r, j) => {
-              result.then((res) => {
-                if (!res) {
-                  tipMessage(errorMsg);
-                  r(errorMsg);
-                } else {
-                  r(true);
-                }
-              });
+              result
+                .then((res) => {
+                  if (!res) {
+                    tipMessage(errorMsg);
+                    r(errorMsg);
+                  } else {
+                    r(true);
+                  }
+                })
+                .catch((e) => j(e));
             });
           } else {
             if (!result) {
@@ -131,35 +137,39 @@ export const component = {
      */
     const validate = (customProp = '') => {
       return new Promise((resolve, reject) => {
-        const task = findFormItem(slots.default());
+        try {
+          const task = findFormItem(slots.default());
 
-        const errors = task.map((item) => {
-          if (customProp) {
-            if (customProp == item.prop) {
-              return checkRule(item);
+          const errors = task.map((item) => {
+            if (customProp) {
+              if (customProp == item.prop) {
+                return checkRule(item);
+              } else {
+                return Promise.resolve(true);
+              }
             } else {
-              return Promise.resolve(true);
+              return checkRule(item);
             }
-          } else {
-            return checkRule(item);
-          }
-        });
+          });
 
-        Promise.all(errors).then((errorRes) => {
-          errorRes = errorRes.filter((item) => item != true);
-          const res = { valid: true, errors: [] };
-          if (errorRes.length) {
-            res.valid = false;
-            res.errors = errorRes as any;
-          }
-          resolve(res);
-        });
+          Promise.all(errors).then((errorRes) => {
+            errorRes = errorRes.filter((item) => item != true);
+            const res = { valid: true, errors: [] };
+            if (errorRes.length) {
+              res.valid = false;
+              res.errors = errorRes as any;
+            }
+            resolve(res);
+          });
+        } catch (error) {
+          reject(error);
+        }
       });
     };
-    const onSubmit = () => {
+    const submit = () => {
       validate();
       return false;
     };
-    return { validate, reset, onSubmit, formErrorTip };
+    return { validate, reset, submit, formErrorTip };
   }
 };

@@ -10,7 +10,8 @@ import NutUI from '@/packages/nutui.vue';
 import { isMobile } from '@/sites/assets/util';
 
 if (isMobile) {
-  location.replace('demo.html' + location.hash);
+  let url = location.hash.replace('/zh-CN/', '').replace('/en-US/', '');
+  location.replace('demo.html' + url);
 }
 
 createApp(App).directive('hover', Hover).component('demo-block', DemoBlock).use(router).use(NutUI).mount('#doc');

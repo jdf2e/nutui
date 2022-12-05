@@ -1,177 +1,179 @@
 <template>
-  <view @click.stop="openPopover" :class="classes">
-    <div ref="reference" :id="'reference-' + refRandomId" :class="customClass"> <slot name="reference"></slot></div>
-    <template v-if="showPopup">
-      <view class="more-background" @click.stop="closePopover"> </view>
-      <view :class="popoverContent" :style="getStyle">
-        <view :class="popoverArrow" v-if="showArrow"> </view>
+  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]">
+    <view class="nut-popover-wrapper" @click="openPopover" ref="popoverRef" :id="'popoverRef' + refRandomId"
+      ><slot name="reference"></slot
+    ></view>
 
-        <view class="popover-menu">
-          <slot name="content"></slot>
-          <view
-            v-for="(item, index) in list"
-            :key="index"
-            :class="{ 'popover-menu-item': true, disabled: item.disabled }"
-            @click.stop="chooseItem(item, index)"
-          >
-            <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
-            <view class="popover-menu-name">{{ item.name }}</view>
-          </view>
+    <nut-popup
+      :popClass="`nut-popover-content nut-popover-content--${location}`"
+      :style="getStyles"
+      v-model:visible="showPopup"
+      position=""
+      transition="nut-popover"
+      :overlay="overlay"
+      :duration="duration"
+      :overlayStyle="overlayStyle"
+      :overlayClass="overlayClass"
+      :closeOnClickOverlay="closeOnClickOverlay"
+    >
+      <view ref="popoverContentRef" :id="'popoverContentRef' + refRandomId" class="nut-popover-content-group">
+        <view :class="popoverArrow" v-if="showArrow"> </view>
+        <slot name="content"></slot>
+        <view
+          v-for="(item, index) in list"
+          :key="index"
+          :class="[
+            item.className,
+            item.disabled && 'nut-popover-menu-disabled',
+            'nut-popover-menu-item',
+            'nut-popover-menu-taroitem'
+          ]"
+          @click.stop="chooseItem(item, index)"
+        >
+          <slot v-if="item.icon">
+            <nut-icon
+              v-bind="$attrs"
+              class="nut-popover-item-img"
+              :classPrefix="iconPrefix"
+              :name="item.icon"
+            ></nut-icon
+          ></slot>
+          <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
-    </template>
+    </nut-popup>
+
+    <view class="nut-popover-content-bg" v-if="showPopup" @touchmove="clickAway" @click="clickAway"></view>
   </view>
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
-import Popup from '../popup/index.taro.vue';
-import { popupProps } from '../popup/props';
-import Button from '../button/index.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { isArray } from '@/packages/utils/util';
 import Taro from '@tarojs/taro';
 
 export default create({
   inheritAttrs: false,
-  components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
-  },
+  components: {},
   props: {
-    ...popupProps,
-    list: {
-      type: Array,
-      default: []
-    },
-
-    theme: {
-      type: String as PropType<import('./type').PopoverTheme>,
-      default: 'light'
-    },
-
-    location: {
-      type: String as PropType<import('./type').PopoverLocation>,
-      default: 'bottom'
-    },
-    // 位置出现的偏移量
-    offset: {
-      type: Array,
-      default: [0, 12]
-    },
-    customClass: {
-      type: String,
-      default: ''
-    },
-    showArrow: {
-      type: Boolean,
-      default: true
-    }
+    visible: { type: Boolean, default: false },
+    list: { type: Array, default: [] },
+    theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
+    location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
+    offset: { type: Array, default: [0, 12] },
+    customClass: { type: String, default: '' },
+    showArrow: { type: Boolean, default: true },
+    iconPrefix: { type: String, default: 'nut-icon' },
+    duration: { type: [Number, String], default: 0.3 },
+    overlay: { type: Boolean, default: false },
+    overlayClass: { type: String, default: '' },
+    overlayStyle: { type: Object as PropType<CSSProperties> },
+    closeOnClickOverlay: { type: Boolean, default: true },
+    closeOnClickAction: { type: Boolean, default: true },
+    closeOnClickOutside: { type: Boolean, default: true }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
-    const reference = ref<HTMLElement>();
-    const state = reactive({
-      elWidth: 0,
-      elHeight: 0
-    });
+    const popoverRef = ref();
+    const popoverContentRef = ref();
     const showPopup = ref(props.visible);
-
-    const { theme, location, offset } = toRefs(props);
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [`${prefixCls}-taro`]: true,
-        [`${prefixCls}-taro--${theme.value}`]: theme.value
-      };
-    });
-
-    const popoverContent = computed(() => {
-      const prefixCls = 'popover-content';
-      return {
-        [`${prefixCls}`]: true,
-        [`${prefixCls}--${location.value}`]: location.value
-      };
+    const state = reactive({
+      rootWidth: 0,
+      rootHeight: 0
     });
 
     const popoverArrow = computed(() => {
-      const prefixCls = 'popover-arrow';
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${location.value}`]: location.value
-      };
+      const prefixCls = 'nut-popover-arrow';
+      const loca = props.location;
+      const direction = loca.split('-')[0];
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`;
     });
-
-    const getReference = async () => {
-      const refe = await useTaroRect(reference, Taro);
-      console.log(refe);
-      state.elWidth = refe.width;
-      state.elHeight = refe.height;
-    };
-
-    const getStyle = computed(() => {
-      console.log(offset);
-      const style: CSSProperties = {};
-      if (location.value.indexOf('top') !== -1) {
-        style.bottom = state.elHeight + (offset.value as any)[1] + 'px';
-      } else if (location.value.indexOf('right') !== -1) {
-        style.left = state.elWidth + (offset.value as any)[1] + 'px';
-      } else if (location.value.indexOf('left') !== -1) {
-        style.right = state.elWidth + (offset.value as any)[1] + 'px';
-      } else {
-        style.top = state.elHeight + (offset.value as any)[1] + 'px';
+    const getStyles = computed(() => {
+      let cross = +state.rootHeight;
+      let lengthways = +state.rootWidth;
+      let { offset, location } = props;
+      if (isArray(offset) && offset.length == 2) {
+        cross += +offset[1];
+        lengthways += +offset[1];
       }
-
+      const direction = location.split('-')[0];
+      const style: CSSProperties = {};
+      const mapd: any = {
+        top: 'bottom',
+        bottom: 'top',
+        left: 'right',
+        right: 'left'
+      };
+      if (['top', 'bottom'].includes(direction)) {
+        style[mapd[direction]] = `${cross}px`;
+        style.marginLeft = `${offset[0]}px`;
+      } else {
+        style[mapd[direction]] = `${lengthways}px`;
+        style.marginTop = `${offset[0]}px`;
+      }
       return style;
     });
-
-    onMounted(() => {
-      setTimeout(() => {
-        getReference();
-      }, 200);
-    });
-
+    // 获取宽度
+    const getContentWidth = async () => {
+      const refe = await useTaroRect(popoverRef, Taro);
+      const { height, width } = refe;
+      state.rootHeight = height;
+      state.rootWidth = width;
+    };
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
+        if (value) {
+          setTimeout(() => {
+            getContentWidth();
+          }, 200);
+        }
       }
     );
-
     const update = (val: boolean) => {
       emit('update', val);
       emit('update:visible', val);
     };
-
     const openPopover = () => {
       update(!props.visible);
       emit('open');
     };
-
     const closePopover = () => {
-      emit('close');
       emit('update:visible', false);
+      emit('close');
+    };
+    const chooseItem = (item: any, index: number) => {
+      emit('choose', item, index);
+      if (props.closeOnClickAction) {
+        closePopover();
+      }
+    };
+    const clickAway = (event: Event) => {
+      closePopover();
     };
 
-    const chooseItem = (item: unknown, index: number) => {
-      emit('choose', item, index);
-    };
+    onMounted(() => {
+      setTimeout(() => {
+        getContentWidth();
+      }, 200);
+    });
 
     const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
-      classes,
       showPopup,
       openPopover,
-      popoverContent,
       popoverArrow,
       closePopover,
       chooseItem,
-      getReference,
-      reference,
-      getStyle,
-      refRandomId
+      popoverRef,
+      getStyles,
+      popoverContentRef,
+      refRandomId,
+      clickAway
     };
   }
 });
