@@ -14,32 +14,22 @@
     <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
         <view class="bottom-box">
-          <template v-if="!slots.loading">
+          <slot name="loading">
             <nut-icon class="bottom-img" v-bind="$attrs" :name="loadIcon"></nut-icon>
             <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
-          </template>
-          <slot name="loading" v-else></slot>
+          </slot>
         </view>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips" v-if="!slots.finished">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
-        <slot name="finished" v-else></slot>
+        <slot name="finished">
+          <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+        </slot>
       </template>
     </view>
   </view>
 </template>
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  CSSProperties,
-  onActivated,
-  onDeactivated,
-  ref
-} from 'vue';
+import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeactivated, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('infiniteloading');
 import { useTouch } from '@/packages/utils/useTouch';
@@ -132,8 +122,9 @@ export default create({
       let offsetDistance = 0;
       let resScrollTop = 0;
       let direction = 'down';
-      const windowScrollTop = getScrollTopRoot();
+
       if (props.useWindow) {
+        const windowScrollTop = getScrollTopRoot();
         if (state.scroller) {
           offsetDistance =
             calculateTopPosition(state.scroller) + state.scroller.offsetHeight - windowScrollTop - window.innerHeight;
