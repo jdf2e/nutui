@@ -43,6 +43,8 @@ import {
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('infiniteloading');
 import { useTouch } from '@/packages/utils/useTouch';
+import requestAniFrame from '@/packages/utils/raf';
+import { getScrollTopRoot } from '@/packages/utils/util';
 
 export default create({
   props: {
@@ -116,30 +118,11 @@ export default create({
     });
 
     const getStyle = computed(() => {
-      const style: CSSProperties = {};
       return {
         height: state.distance < 0 ? `0px` : `${state.distance}px`,
-        transition: state.isTouching
-          ? `height 0s cubic-bezier(0.25,0.1,0.25,1)`
-          : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
+        transitionDuration: state.isTouching ? 0 : `0.2s`
       };
     });
-
-    const requestAniFrame = () => {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        function (callback) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    };
-
-    const getWindowScrollTop = () => {
-      return window.pageYOffset !== undefined
-        ? window.pageYOffset
-        : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    };
 
     const calculateTopPosition = (el: HTMLElement): number => {
       return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
@@ -149,7 +132,7 @@ export default create({
       let offsetDistance = 0;
       let resScrollTop = 0;
       let direction = 'down';
-      const windowScrollTop = getWindowScrollTop();
+      const windowScrollTop = getScrollTopRoot();
       if (props.useWindow) {
         if (state.scroller) {
           offsetDistance =
@@ -181,7 +164,7 @@ export default create({
     };
 
     const handleScroll = () => {
-      requestAniFrame()(() => {
+      requestAniFrame(() => {
         if (!isScrollAtBottom() || !props.hasMore || state.isInfiniting) {
           return false;
         } else {
@@ -245,17 +228,19 @@ export default create({
       return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
     };
 
+    const removeScrollListener = () => {
+      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+    };
+
     onMounted(() => {
       const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode;
       state.scrollEl = props.useWindow ? window : parentElement;
 
       scrollListener();
-
-      console.log(slots);
     });
 
     onUnmounted(() => {
-      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+      removeScrollListener();
     });
 
     const isKeepAlive = ref(false);
@@ -269,7 +254,7 @@ export default create({
 
     onDeactivated(() => {
       isKeepAlive.value = true;
-      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+      removeScrollListener();
     });
 
     return {
