@@ -1,4 +1,4 @@
-import { computed, ComputedRef, watchEffect, reactive, toRefs, ref } from 'vue';
+import { computed, ComputedRef, watchEffect, reactive, toRefs, ref, watch } from 'vue';
 
 import { popupProps } from './props';
 
@@ -73,7 +73,8 @@ export const component = (componentName: string) => {
       const onClickCloseIcon = (e: Event) => {
         e.stopPropagation();
         emit('click-close-icon', e);
-        close();
+        emit('update:visible', false);
+        // close();
       };
 
       const onClickOverlay = (e: Event) => {
@@ -92,8 +93,14 @@ export const component = (componentName: string) => {
         emit('closed', e);
       };
 
+      watch(
+        () => props.visible,
+        (val) => {
+          props.visible ? open() : close();
+        }
+      );
       watchEffect(() => {
-        props.visible ? open() : close();
+        // props.visible ? open() : close();
         state.closed = props.closeable;
       });
 

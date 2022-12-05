@@ -1,3 +1,39 @@
+## v3.3.0
+
+`2022-12-02`
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @mikasayw  @thx125
+* :sparkles: chore: npm source set registry.npmmirror.com @richard1015
+* :zap: feat(input): 添加小程序属性always-system (#1863) @mikasayw
+* :zap: feat: 抽离 CreateComponent 函数，用于 函数式组件开发 (#1876) @yangxiaolu1993 
+* :zap: feat: 重构 Popover，去除第三方依赖 (#1873)  @yangxiaolu1993 
+* :zap: feat: Popover 组件 Taro 小程序适配 (#1882)  @yangxiaolu1993 
+* :zap: feat(input): 新增enterkeyhint属性(H5版本支持confirm-type) (#1867) @mikasayw
+* :zap: upd: overlay,popup @szg2008 
+* :bug: fix(popup): update hide animation @szg2008
+* :bug: fix(addresslist): 地址组件优化 (#1877)@ailululu 
+* :bug: fix(popup): 组件修改(#1877)(#1883)  @yangxiaolu1993
+* :bug: fix(Address): 组件体积优化 (#1885)  @yangxiaolu1993
+* :bug: test(countdown,picker,imagepreview,dialog): 组件单元测试修改 (#1886)  @yangxiaolu1993
+* :bug: fix: change mobile jump bug @richard1015
+* :bug: fix(inputNumber): taro h5 style issues #1874 (#1887)@Drjingfubo
+* :bug: upd(form): add try catch ,fix submit method @richard1015
+* :bug: fix(Menu): 修复MenuItem 无法销毁问题 #1788 (#1857) @thx125
+* :bug: fix(elevator): elevator组件elevator__item__${i}渲染出现小数 #1844 @szg2008
+* :bug: fix(menu): 隐藏菜单时，不移除Popup里的内容 (#1891) @yangjinjun3
+* :bug: fix(input): 合并template代码 (#1890) @ailululu 
+* :bug: fix(textarea): 渲染问题处理，collapse 单测修复 (#1892) @Ymm0008  
+* :bug: fix(input): commontent增加类型 (#1893) @ailululu  
+* :bug: fix(menu): 修复弹框跳转问题 (#1894) @yangjinjun3  
+* :bug: fix(Uploader): H5 打包去掉Taro 内容 (#1895) @yangxiaolu1993  
+* :bug: fix(popup): popover 小程序warn解决 @szg2008  
+* :bug: fix(popover): 样式换行问题修改 (#1897)  @yangxiaolu1993 
+* 📖 docs(form): en us submit desc edit @richard1015
+* 📖 docs(steps): 补充icon自定义的文档 @szg2008
+* 📖 docs(Signature): 签名组件文档修改 (#1896) @szg2008
 ## v3.2.7
 
 `2022-11-18`

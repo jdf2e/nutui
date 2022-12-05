@@ -58,6 +58,12 @@ export class Uploader {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
   }
+}
+
+export class UploaderTaro extends Uploader {
+  constructor(options: UploadOptions) {
+    super(options);
+  }
   uploadTaro(uploadFile: Function, env: string) {
     const options = this.options;
     if (env === 'WEB') {
@@ -90,11 +96,7 @@ export class Uploader {
         options.onStart?.(options);
         uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
           options.onProgress?.(res, options);
-          // console.log('上传进度', res.progress);
-          // console.log('已经上传的数据长度', res.totalBytesSent);
-          // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
         });
-        // uploadTask.abort(); // 取消上传任务
       }
     }
   }

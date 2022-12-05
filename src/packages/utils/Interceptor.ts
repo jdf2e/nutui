@@ -9,7 +9,7 @@ export const funInterceptor = (
     canceled
   }: {
     args?: unknown[];
-    done: () => void;
+    done: (val?: any) => void;
     canceled?: () => void;
   }
 ) => {
@@ -20,7 +20,7 @@ export const funInterceptor = (
       returnVal
         .then((value) => {
           if (value) {
-            done();
+            done(value);
           } else if (canceled) {
             canceled();
           }

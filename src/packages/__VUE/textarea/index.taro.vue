@@ -201,12 +201,14 @@ export default create({
     onMounted(() => {
       if (props.autosize) {
         Taro.nextTick(() => {
-          if (Taro.getEnv() === 'ALIPAY') {
-            getRefWidth();
-            copyHeight();
-          } else {
-            getRefHeight();
-          }
+          setTimeout(() => {
+            if (Taro.getEnv() === 'ALIPAY') {
+              getRefWidth();
+              copyHeight();
+            } else {
+              getRefHeight();
+            }
+          }, 300);
         });
       }
     });
