@@ -8,10 +8,12 @@
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading, Icon } from '@nutui/nutui';
 
   const app = createApp();
   app.use(InfiniteLoading);
+  app.use(Icon);
+  
 ```
 
 ### 基础用法
@@ -269,5 +271,6 @@
 
 | 名称 | 说明           | 
 |--------|----------------|
+| default  | 自定义滚动列表 |
 | loading  | 自定义底部记载中提示 |
 | finished  | 自定义加载完成后的提示文案 |

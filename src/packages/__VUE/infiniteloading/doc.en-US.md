@@ -8,10 +8,12 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading, Icon } from '@nutui/nutui';
 
   const app = createApp();
   app.use(InfiniteLoading);
+  app.use(Icon);
+  
 ```
 
 ### Basic Usage
@@ -274,5 +276,6 @@ Scrolling to the bottom of the list automatically loads more data.
 
 | Attribute | Description  | 
 |--------|----------------|
+| default  | Scroll content |
 | loading  | Loading text |
 | finished  | Finished text |
