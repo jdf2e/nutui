@@ -33,7 +33,7 @@ test('audio init render', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-audio-icon').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-audio__icon').exists()).toBeTruthy();
 });
 
 test('audio init render', async () => {

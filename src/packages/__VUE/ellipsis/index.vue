@@ -3,12 +3,12 @@
     <view v-if="!exceeded">{{ content }}</view>
     <view v-if="exceeded && !expanded"
       >{{ ellipsis.leading
-      }}<span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span
+      }}<span class="nut-ellipsis__text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span
       >{{ ellipsis.tailing }}
     </view>
     <view v-if="exceeded && expanded">
       {{ content }}
-      <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
+      <span class="nut-ellipsis__text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
     </view>
   </view>
 </template>

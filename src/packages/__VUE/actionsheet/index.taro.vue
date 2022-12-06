@@ -1,39 +1,40 @@
 <template>
-  <view :class="classes">
-    <nut-popup
-      pop-class="popclass"
-      :visible="visible"
-      position="bottom"
-      round
-      @click-overlay="close"
-      :closeOnClickOverlay="closeAbled"
-    >
-      <view class="nut-actionsheet-panel">
-        <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
-        <slot></slot>
-        <view v-if="!slotDefault">
-          <view class="nut-actionsheet-item desc" v-if="description">{{ description }}</view>
-          <view class="nut-actionsheet-menu" v-if="menuItems.length">
-            <view
-              v-for="(item, index) of menuItems"
-              class="nut-actionsheet-item"
-              :class="{ 'nut-actionsheet-item-disabled': item.disable, 'nut-actionsheet-item-loading': item.loading }"
-              :style="{ color: isHighlight(item) || item.color }"
-              :key="index"
-              @click="chooseItem(item, index)"
-            >
-              <nut-icon v-if="item.loading" name="loading"> </nut-icon>
-              <view v-else> {{ item[optionTag] }}</view>
-              <view class="subdesc">{{ item[optionSubTag] }}</view>
-            </view>
-          </view>
-          <view class="nut-actionsheet-cancel" v-if="cancelTxt" @click="cancelActionSheet">
-            {{ cancelTxt }}
+  <nut-popup
+    :visible="visible"
+    :isWrapTeleport="isWrapTeleport"
+    position="bottom"
+    round
+    @click-overlay="close"
+    :closeOnClickOverlay="closeAbled"
+  >
+    <view :class="classes">
+      <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
+      <slot></slot>
+      <view v-if="!slotDefault">
+        <view class="nut-action-sheet__item nut-action-sheet__desc" v-if="description">{{ description }}</view>
+        <view class="nut-action-sheet__menu" v-if="menuItems.length">
+          <view
+            v-for="(item, index) of menuItems"
+            class="nut-action-sheet__item"
+            :class="{
+              'nut-action-sheet__item--disabled': item.disable,
+              'nut-action-sheet__item--loading': item.loading
+            }"
+            :style="{ color: isHighlight(item) || item.color }"
+            :key="index"
+            @click="chooseItem(item, index)"
+          >
+            <nut-icon v-if="item.loading" name="loading"> </nut-icon>
+            <view v-else> {{ item[optionTag] }}</view>
+            <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
         </view>
+        <view class="nut-action-sheet__cancel" v-if="cancelTxt" @click="cancelActionSheet">
+          {{ cancelTxt }}
+        </view>
       </view>
-    </nut-popup>
-  </view>
+    </view>
+  </nut-popup>
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';

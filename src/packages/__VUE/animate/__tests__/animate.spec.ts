@@ -25,7 +25,7 @@ test('should change classname when using type prop', () => {
       }
     });
 
-    const animate: any = wrapper.find('.nut-ani-container');
+    const animate: any = wrapper.find('.nut-animate__container');
     expect(animate.classes(`nut-animate-${typeProp}`)).toBe(true);
   }
 });
@@ -45,7 +45,7 @@ test('trigger animate with loop', async () => {
       }
     });
 
-    const animate: any = wrapper.find('.nut-ani-container');
+    const animate: any = wrapper.find('.nut-animate__container');
 
     animate.trigger('click');
     await nextTick();
@@ -77,7 +77,7 @@ test('trigger animate', async () => {
       }
     });
 
-    const animate: any = wrapper.find('.nut-ani-container');
+    const animate: any = wrapper.find('.nut-animate__container');
 
     animate.trigger('click');
     await nextTick();

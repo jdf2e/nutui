@@ -9,7 +9,7 @@
 .nut-badge {
   position: relative;
   display: inline-block;
-  .slot-icons {
+  .nut-badge__icon {
     position: absolute;
     background: $badge-background-color;
     top: -20%;
@@ -19,23 +19,23 @@
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
   }
-  .sup {
-    position: absolute;
-    background: $badge-background-color;
-    padding: $badge-padding;
-    text-align: center;
-    border-radius: $badge-border-radius;
-    font-size: $badge-font-size;
-    font-weight: normal;
-    color: $badge-color;
-  }
   .nut-badge__content {
     transform: $badge-content-transform;
-  }
-  .is-dot {
-    width: $badge-dot-width;
-    height: $badge-dot-height;
-    border-radius: $badge-dot-border-radius;
-    padding: $badge-dot-padding;
+    &--sup {
+      position: absolute;
+      background: $badge-background-color;
+      padding: $badge-padding;
+      text-align: center;
+      border-radius: $badge-border-radius;
+      font-size: $badge-font-size;
+      font-weight: normal;
+      color: $badge-color;
+    }
+    &--dot {
+      width: $badge-dot-width;
+      height: $badge-dot-height;
+      border-radius: $badge-dot-border-radius;
+      padding: $badge-dot-padding;
+    }
   }
 }

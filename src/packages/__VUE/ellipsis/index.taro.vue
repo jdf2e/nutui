@@ -1,25 +1,25 @@
 <template>
   <view>
     <view :class="classes" @click="handleClick" ref="root" :id="'root' + refRandomId">
-      <view class="nut-ellipsis-wordbreak" v-if="!exceeded">{{ content }}</view>
+      <view class="nut-ellipsis__wordbreak" v-if="!exceeded">{{ content }}</view>
 
-      <view v-if="exceeded && !expanded" class="nut-ellipsis-wordbreak">
+      <view v-if="exceeded && !expanded" class="nut-ellipsis__wordbreak">
         {{ ellipsis.leading }}{{ ellipsis.leading && symbol
-        }}<view class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</view
+        }}<view class="nut-ellipsis__text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</view
         >{{ ellipsis.tailing && symbol }}{{ ellipsis.tailing }}
       </view>
       <view v-if="exceeded && expanded">
         {{ content }}
-        <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
+        <span class="nut-ellipsis__text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
       </view>
     </view>
 
-    <view class="nut-ellipsis-copy" ref="rootContain" :id="'rootContain' + refRandomId" :style="{ width: widthRef }">
+    <view class="nut-ellipsis__copy" ref="rootContain" :id="'rootContain' + refRandomId" :style="{ width: widthRef }">
       <view>{{ contantCopy }}</view>
     </view>
 
     <!-- 省略号 symbol  -->
-    <view class="nut-ellipsis-copy" ref="symbolContain" :id="'symbolContain' + refRandomId" style="display: inline">{{
+    <view class="nut-ellipsis__copy" ref="symbolContain" :id="'symbolContain' + refRandomId" style="display: inline">{{
       symbolText
     }}</view>
 

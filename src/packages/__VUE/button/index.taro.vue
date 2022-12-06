@@ -9,7 +9,7 @@
         :class-prefix="iconClassPrefix"
         :font-class-name="iconFontClassName"
       ></nut-icon>
-      <view :class="{ text: icon || loading }" v-if="$slots.default">
+      <view :class="{ 'nut-button__text': icon || loading }" v-if="$slots.default">
         <slot></slot>
       </view>
     </view>

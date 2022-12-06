@@ -6,11 +6,11 @@
           <stop v-for="(item, index) in stop" :key="index" :offset="item.key" :stop-color="item.value"></stop>
         </linearGradient>
       </defs>
-      <path class="nut-circleprogress-path" :style="pathStyle" :d="path" fill="none" :stroke-width="strokeWidth">
+      <path class="nut-circleprogress__path" :style="pathStyle" :d="path" fill="none" :stroke-width="strokeWidth">
         >
       </path>
       <path
-        class="nut-circleprogress-hover"
+        class="nut-circleprogress__hover"
         :style="hoverStyle"
         :d="path"
         fill="none"
@@ -19,7 +19,7 @@
         :stroke-width="strokeWidth"
       ></path>
     </svg>
-    <div class="nut-circleprogress-text">
+    <div class="nut-circleprogress__text">
       <slot></slot>
       <div v-if="!slotDefault">{{ progress }}%</div>
     </div>

@@ -31,7 +31,7 @@
         </view>
       </view>
       <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
-        <span class="fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
+        <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
     </Nut-Scroll-View>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
