@@ -36,7 +36,7 @@ import {
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('infiniteloading');
-import { useTouch } from '@/packages/utils/useTouch';
+import { useScrollParent } from '@/packages/utils/useScrollParent';
 import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
 
@@ -82,10 +82,10 @@ export default create({
   emits: ['scroll-change', 'load-more', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    const touch: any = useTouch();
+    const scroller = ref<HTMLElement>();
+    const scrollParent = useScrollParent(scroller);
     const state = reactive({
       scrollEl: window as Window | HTMLElement | (Node & ParentNode),
-      scroller: null as null | HTMLElement,
       beforeScrollTop: 0,
       isInfiniting: false,
       y: 0,
@@ -109,16 +109,17 @@ export default create({
       let resScrollTop = 0;
       let direction = 'down';
 
-      if (props.useWindow) {
+      if (scrollParent.value == window) {
         const windowScrollTop = getScrollTopRoot();
 
-        if (state.scroller) {
+        if (scroller.value) {
           offsetDistance =
-            calculateTopPosition(state.scroller) + state.scroller.offsetHeight - windowScrollTop - window.innerHeight;
+            calculateTopPosition(scroller.value) + scroller.value.offsetHeight - windowScrollTop - window.innerHeight;
         }
+
         resScrollTop = windowScrollTop;
       } else {
-        const { scrollHeight, clientHeight, scrollTop } = state.scrollEl as HTMLElement;
+        const { scrollHeight, clientHeight, scrollTop } = scrollParent.value as HTMLElement;
 
         offsetDistance = scrollHeight - clientHeight - scrollTop;
         resScrollTop = scrollTop;
@@ -143,7 +144,6 @@ export default create({
           return false;
         } else {
           state.isInfiniting = true;
-
           emit('update:modelValue', true);
           nextTick(() => emit('load-more'));
         }
@@ -151,22 +151,14 @@ export default create({
     };
 
     const scrollListener = () => {
-      state.scrollEl.addEventListener('scroll', handleScroll, props.useCapture);
-    };
-
-    // 滚动监听对象
-    const getParentElement = (el: HTMLElement) => {
-      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
+      scrollParent.value && scrollParent.value.addEventListener('scroll', handleScroll, props.useCapture);
     };
 
     const removeScrollListener = () => {
-      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+      scrollParent.value && scrollParent.value.removeEventListener('scroll', handleScroll, props.useCapture);
     };
 
     onMounted(() => {
-      const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode;
-      state.scrollEl = props.useWindow ? window : parentElement;
-
       scrollListener();
     });
 
@@ -191,9 +183,7 @@ export default create({
     watch(
       () => props.modelValue,
       (val) => {
-        console.log('监听', val);
-        if (val) {
-        } else {
+        if (!val) {
           state.isInfiniting = false;
         }
       }
@@ -201,6 +191,7 @@ export default create({
 
     return {
       classes,
+      scroller,
       ...toRefs(state),
       translate,
       slots

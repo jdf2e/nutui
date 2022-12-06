@@ -1,6 +1,15 @@
 <template>
   <div class="demo">
-    <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
+    <nut-infiniteloading
+      v-model="infinityValue2"
+      load-txt="Loading..."
+      :load-more-txt="translate('none')"
+      :has-more="customHasMore"
+      @load-more="customLoadMore"
+    >
+      <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
+    </nut-infiniteloading>
+    <!-- <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
       <nut-tabpane :title="translate('basic')">
         <ul class="infiniteUl" id="scroll">
           <nut-infiniteloading
@@ -21,8 +30,6 @@
             v-model="infinityValue2"
             load-txt="Loading..."
             :load-more-txt="translate('none')"
-            container-id="customScroll"
-            :use-window="false"
             :has-more="customHasMore"
             @load-more="customLoadMore"
           >
@@ -30,7 +37,7 @@
           </nut-infiniteloading>
         </ul>
       </nut-tabpane>
-    </nut-tabs>
+    </nut-tabs> -->
   </div>
 </template>
 
@@ -117,8 +124,10 @@ export default createDemo({
 
     const customLoadMore = () => {
       setTimeout(() => {
-        data.customList = data.defultList.concat(letter);
+        data.customList = data.customList.concat(letter);
         cycle2++;
+
+        console.log(cycle2, data.customList);
         if (cycle2 > 2) customHasMore.value = false;
 
         data.infinityValue2 = false;
@@ -153,6 +162,7 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo {
+  overflow: inherit !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
@@ -167,12 +177,11 @@ export default createDemo({
   padding-left: 16px !important;
 }
 .infiniteUl {
-  height: calc(100vh - 110px);
   width: 100%;
   padding: 0;
   margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* overflow-y: auto; */
+  /* overflow-x: hidden; */
 }
 .infiniteLi {
   font-size: 14px;
