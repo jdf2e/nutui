@@ -58,6 +58,15 @@
         </nut-form-item>
       </nut-form>
     </nut-config-provider>
+    <h2>{{ translate('custom') }}</h2>
+    <nut-config-provider :theme-vars="themeVars">
+      <nut-form>
+        <nut-form-item :label="translate('range')">
+          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+        </nut-form-item>
+      </nut-form>
+      <!-- <nut-button type="primary">定制绿色</nut-button> -->
+    </nut-config-provider>
   </div>
 </template>
 <script lang="ts">
@@ -69,6 +78,7 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: '基本用法',
+      custom: '定制主题',
       title1: '切换暗黑',
       title2: '我是标题',
       title3: '副标题描述',
@@ -93,6 +103,7 @@ const initTranslate = () =>
     },
     'en-US': {
       basic: 'Basic Usage',
+      custom: 'Custom Theme',
       title1: 'Switch Dark Mode',
       title2: 'Title',
       title3: 'Subtitle Description',
@@ -191,12 +202,18 @@ export default createDemo({
       }
     });
 
+    const themeVars = {
+      rangeBgColor: 'rgba(25,137,250,0.15)',
+      rangeBarBgColor: '#0289fa',
+      rangeBarBtnBorder: '1px solid #0289fa'
+    };
     return {
       formData2,
       addressModule,
       switchChecked,
       switchChange,
       theme,
+      themeVars,
       translate
     };
   }

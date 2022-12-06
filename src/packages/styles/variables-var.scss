@@ -1,0 +1,861 @@
+// color
+// 主色调
+$primary-color: var(--nut-primary-color) !default;
+$primary-color-end: var(--nut-primary-color-end) !default;
+
+// 辅助色
+$help-color: var(--nut-help-color) !default;
+// 标题常规文字
+$title-color: var(--nut-title-color) !default;
+// 副标题
+$title-color2: var(--nut-title-color2) !default;
+// 次内容
+$text-color: var(--nut-text-color) !default;
+// 特殊禁用色
+$disable-color: var(--nut-disable-color) !default;
+$white: var(--nut-white) !default;
+$black: var(--nut-black) !default;
+$required-color: var(--nut-required-color) !default;
+
+$dark-background: var(--nut-dark-background) !default;
+$dark-background2: var(--nut-dark-background2) !default;
+$dark-background3: var(--nut-dark-background3) !default;
+$dark-background4: var(--nut-dark-background4) !default;
+$dark-background5: var(--nut-dark-background5) !default;
+$dark-background6: var(--nut-dark-background6) !default;
+$dark-background7: var(--nut-dark-background7) !default;
+$dark-color: var(--nut-dark-color) !default;
+$dark-color2: var(--nut-dark-color2) !default;
+$dark-color3: var(--nut-dark-color3) !default;
+$dark-color-gray: var(--nut-dark-color-gray) !default;
+$dark-calendar-choose-color: var(--nut-dark-calendar-choose-color) !default;
+
+$font-family: var(--nut-font-family) !default;
+
+// Animation
+$animation-duration: var(--nut-animation-duration) !default;
+$animation-timing-fun: var(--nut-animation-timing-fun) !default;
+
+// Font
+$font-size-0: var(--nut-font-size-0) !default;
+$font-size-1: var(--nut-font-size-1) !default;
+$font-size-2: var(--nut-font-size-2) !default;
+$font-size-3: var(--nut-font-size-3) !default;
+$font-size-4: var(--nut-font-size-4) !default;
+$font-weight-bold: var(--nut-font-weight-bold) !default;
+
+$font-size-small: var(--nut-font-size-small) !default;
+$font-size-base: var(--nut-font-size-base) !default;
+$font-size-large: var(--nut-font-size-large) !default;
+$line-height-base: var(--nut-line-height-base) !default;
+
+// button
+$button-border-radius: var(--nut-button-border-radius) !default;
+$button-border-width: var(--nut-button-border-width) !default;
+$button-default-bg-color: var(--nut-button-default-bg-color) !default;
+$button-default-border-color: var(--nut-button-default-border-color) !default;
+$button-default-color: var(--nut-button-default-color) !default;
+$button-default-padding: var(--nut-button-default-padding) !default;
+$button-mini-padding: var(--nut-button-mini-padding) !default;
+$button-small-padding: var(--nut-button-small-padding) !default;
+$button-small-height: var(--nut-button-small-height) !default;
+$button-mini-height: var(--nut-button-mini-height) !default;
+$button-default-height: var(--nut-button-default-height) !default;
+$button-large-height: var(--nut-button-large-height) !default;
+$button-large-line-height: var(--nut-button-large-line-height) !default;
+$button-small-line-height: var(--nut-button-small-line-height) !default;
+$button-block-height: var(--nut-button-block-height) !default;
+$button-default-line-height: var(--nut-button-default-line-height) !default;
+$button-block-line-height: var(--nut-button-default-line-height) !default;
+$button-default-font-size: var(--nut-button-default-font-size) !default;
+$button-large-font-size: var(--nut-button-large-font-size) !default;
+$button-small-font-size: var(--nut-button-small-font-size) !default;
+$button-mini-font-size: var(--nut-button-mini-font-size) !default;
+$button-mini-line-height: var(--nut-button-mini-line-height) !default;
+$button-disabled-opacity: var(--nut-button-disabled-opacity) !default;
+$button-primary-color: var(--nut-button-primary-color) !default;
+$button-primary-border-color: var(--nut-button-primary-border-color) !default;
+$button-primary-background-color: var(--nut-button-primary-background-color) !default;
+$button-info-color: var(--nut-button-info-color) !default;
+$button-info-border-color: var(--nut-button-info-border-color) !default;
+$button-info-background-color: var(--nut-button-info-background-color) !default;
+$button-success-color: var(--nut-button-success-color) !default;
+$button-success-border-color: var(--nut-button-success-border-color) !default;
+$button-success-background-color: var(--nut-button-success-background-color) !default;
+
+$button-danger-color: var(--nut-button-danger-color) !default;
+$button-danger-border-color: var(--nut-button-danger-border-color) !default;
+$button-danger-background-color: var(--nut-button-danger-background-color) !default;
+$button-warning-color: var(--nut-button-warning-color) !default;
+$button-warning-border-color: var(--nut-button-warning-border-color) !default;
+$button-warning-background-color: var(--nut-button-warning-background-color) !default;
+$button-plain-background-color: var(--nut-button-plain-background-color) !default;
+$button-small-round-border-radius: var(--nut-button-small-round-border-radius) !default;
+
+// cell
+
+$cell-color: var(--nut-cell-color) !default;
+$cell-title-font: var(--nut-cell-title-font) !default;
+$cell-title-desc-font: var(--nut-cell-title-font) !default;
+$cell-desc-font: var(--nut-cell-desc-font) !default;
+$cell-desc-color: var(--nut-cell-desc-color) !default;
+$cell-border-radius: var(--nut-cell-border-radius) !default;
+$cell-padding: var(--nut-cell-padding) !default;
+$cell-line-height: var(--nut-cell-line-height) !default;
+$cell-after-right: var(--nut-cell-after-right) !default;
+$cell-after-border-bottom: var(--nut-cell-after-border-bottom) !default;
+$cell-default-icon-margin: var(--nut-cell-default-icon-margin) !default;
+$cell-large-title-font: var(--nut-cell-large-title-font) !default;
+$cell-large-title-desc-font: var(--nut-cell-large-title-desc-font) !default;
+$cell-large-padding: var(--nut-cell-large-padding) !default;
+$cell-background: var(--nut-cell-background) !default;
+
+// cell-group
+
+$cell-group-title-padding: var(--nut-cell-group-title-padding) !default;
+$cell-group-title-color: var(--nut-cell-group-title-color) !default;
+$cell-group-title-font-size: var(--nut-cell-group-title-font-size) !default;
+$cell-group-title-line-height: var(--nut-cell-group-title-line-height) !default;
+$cell-group-desc-padding: var(--nut-cell-group-desc-padding) !default;
+$cell-group-desc-color: var(--nut-cell-group-desc-color) !default;
+$cell-group-desc-font-size: var(--nut-cell-group-desc-font-size) !default;
+$cell-group-desc-line-height: var(--nut-cell-group-desc-line-height) !default;
+$cell-group-background-color: var(--nut-cell-group-background-color) !default;
+
+// divider
+
+$divider-margin: var(--nut-divider-margin) !default;
+$divider-text-font-size: var(--nut-divider-text-font-size) !default;
+$divider-text-color: var(--nut-divider-text-color) !default;
+$divider-line-height: var(--nut-divider-line-height) !default;
+$divider-before-margin-right: var(--nut-divider-before-margin-right) !default;
+$divider-after-margin-left: var(--nut-divider-after-margin-left) !default;
+$divider-vertical-height: var(--nut-divider-vertical-height) !default;
+$divider-vertical-top: var(--nut-divider-vertical-top) !default;
+$divider-vertical-border-left: var(--nut-divider-vertical-border-left) !default;
+$divider-vertical-margin: var(--nut-divider-vertical-margin) !default;
+
+// icon
+
+$icon-height: var(--nut-icon-height) !default;
+$icon-width: var(--nut-icon-width) !default;
+$icon-line-height: var(--nut-icon-line-height) !default;
+
+// uploader
+
+$uploader-picture-width: var(--nut-uploader-picture-width) !default;
+$uploader-picture-height: var(--nut-uploader-picture-height) !default;
+$uploader-background: var(--nut-uploader-picture-height) !default;
+
+// picker
+$picker-cancel-color: var(--nut-picker-cancel-color) !default;
+$picker-ok-color: var(--nut-picker-ok-color) !default;
+$picker-bar-cancel-font-size: var(--nut-picker-bar-cancel-font-size) !default;
+$picker-bar-ok-font-size: var(--nut-picker-bar-ok-font-size) !default;
+$picker-bar-button-padding: var(--nut-picker-bar-button-padding) !default;
+$picker-bar-title-font-size: var(--nut-picker-bar-title-font-size) !default;
+$picker-bar-title-color: var(--nut-picker-bar-title-color) !default;
+$picker-bar-title-font-weight: var(--nut-picker-bar-title-font-weight) !default;
+$picker-item-height: var(--nut-picker-item-height) !default;
+$picker-item-text-color: var(--nut-picker-item-text-color) !default;
+$picker-item-active-text-color: var(--nut-picker-item-active-text-color) !default;
+$picker-item-text-font-size: var(--nut-picker-item-text-font-size) !default;
+$picker-item-active-line-border: var(--nut-picker-item-active-line-border) !default;
+$picker-columns-item-color: var(--nut-picker-columns-item-color) !default;
+
+//input
+$input-border-bottom: var(--nut-input-border-bottom) !default;
+$input-disabled-color: var(--nut-input-disabled-color) !default;
+$input-required-color: var(--nut-input-required-color) !default;
+$input-font-size: var(--nut-input-font-size) !default;
+
+// textarea
+
+$textarea-font: var(--nut-textarea-font) !default;
+$textarea-height: var(--nut-textarea-height) !default;
+$textarea-limit-color: var(--nut-textarea-limit-color) !default;
+$textarea-text-color: var(--nut-textarea-text-color) !default;
+$textarea-disabled-color: var(--nut-textarea-disabled-color) !default;
+
+// inputnumber
+
+$inputnumber-icon-color: var(--nut-inputnumber-icon-color) !default;
+$inputnumber-icon-void-color: var(--nut-inputnumber-icon-void-color) !default;
+$inputnumber-icon-size: var(--nut-inputnumber-icon-size) !default;
+$inputnumber-input-font-size: var(--nut-inputnumber-input-font-size) !default;
+$inputnumber-input-font-color: var(--nut-inputnumber-input-font-color) !default;
+$inputnumber-input-background-color: var(--nut-inputnumber-input-background-color) !default;
+$inputnumber-input-border-radius: var(--nut-inputnumber-input-border-radius) !default;
+$inputnumber-input-width: var(--nut-inputnumber-input-width) !default;
+$inputnumber-input-margin: var(--nut-inputnumber-input-margin) !default;
+$inputnumber-input-border: var(--nut-inputnumber-input-border) !default;
+$inputnumber-border: var(--nut-inputnumber-border) !default;
+$inputnumber-border-radius: var(--nut-inputnumber-border-radius) !default;
+$inputnumber-height: var(--nut-inputnumber-height) !default;
+$inputnumber-line-height: var(--nut-inputnumber-line-height) !default;
+$inputnumber-border-box: var(--nut-inputnumber-border-box) !default;
+$inputnumber-display: var(--nut-inputnumber-display) !default;
+
+// actionsheet
+$actionsheet-light-color: var(--nut-actionsheet-light-color) !default;
+$actionsheet-item-border-bottom: var(--nut-actionsheet-item-border-bottom) !default;
+$actionsheet-item-font-size: var(--nut-actionsheet-item-font-size) !default;
+$actionsheet-item-subdesc-font-size: var(--nut-actionsheet-item-subdesc-font-size) !default;
+$actionsheet-item-cancel-border-top: var(--nut-actionsheet-item-cancel-border-topwhite) !default;
+$actionsheet-item-line-height: var(--nut-actionsheet-item-line-height) !default;
+$actionsheet-item-font-color: var(--nut-actionsheet-item-font-color) !default;
+
+//shortpassword
+$shortpassword-background-color: var(--nut-shortpassword-background-color) !default;
+$shortpassword-border-color: var(--nut-shortpassword-border-color) #ddd !default;
+$shortpassword-error: var(--nut-shortpassword-error) !default;
+$shortpassword-forget: var(--nut-shortpassword-forget) !default;
+
+//numberkeyboard
+$numberkeyboard-width: var(--nut-numberkeyboard-width) !default;
+$numberkeyboard-padding: var(--nut-numberkeyboard-padding) !default;
+$numberkeyboard-background-color: var(--nut-numberkeyboard-background-color) !default;
+$numberkeyboard-header-height: var(--nut-numberkeyboard-header-height) !default;
+$numberkeyboard-header-padding: var(--nut-numberkeyboard-header-padding) !default;
+$numberkeyboard-header-color: var(--nut-numberkeyboard-header-color) !default;
+$numberkeyboard-header-font-size: var(--nut-numberkeyboard-header-color) !default;
+$numberkeyboard-header-close-padding: var(--nut-numberkeyboard-header-close-padding) !default;
+$numberkeyboard-header-close-color: var(--nut-numberkeyboard-header-close-color) !default;
+$numberkeyboard-header-close-font-size: var(--nut-numberkeyboard-header-close-font-size) !default;
+$numberkeyboard-header-close-background-color: var(--nut-numberkeyboard-header-close-background-color) !default;
+$numberkeyboard-key-background-color: var(--nut-numberkeyboard-key-background-color) !default;
+$numberkeyboard-key-active-background-color: var(--nut-numberkeyboard-key-active-background-color) !default;
+$numberkeyboard-key-height: var(--nut-numberkeyboard-key-height) !default;
+$numberkeyboard-key-line-height: var(--nut-numberkeyboard-key-line-height) !default;
+$numberkeyboard-key-border-radius: var(--nut-numberkeyboard-key-border-radius) !default;
+$numberkeyboard-key-font-size: var(--nut-numberkeyboard-key-font-size) !default;
+$numberkeyboard-key-font-size-color: var(--nut-numberkeyboard-key-font-size-color) !default;
+$numberkeyboard-key-finish-font-size: var(--nut-numberkeyboard-key-finish-font-size) !default;
+$numberkeyboard-key-finish-font-size-color: var(--nut-numberkeyboard-key-finish-font-size-color) !default;
+$numberkeyboard-key-finish-background-color: var(--nut-numberkeyboard-key-finish-background-color) !default;
+$numberkeyboard-key-activeFinsh-background-color: var(--nut-numberkeyboard-key-activeFinsh-background-color) !default;
+
+// countdown
+$countdown-display: var(--nut-countdown-display) !default;
+$countdown-color: var(--nut-countdown-color) !default;
+$countdown-font-size: var(--nut-countdown-font-size) !default;
+
+//large price
+$price-symbol-big-size: var(--nut-price-symbol-big-size) !default;
+$price-big-size: var(--nut-price-big-size) !default;
+$price-decimal-big-size: var(--nut-price-decimal-big-size) !default;
+
+//normal price
+$price-symbol-medium-size: var(--nut-price-symbol-medium-size) !default;
+$price-medium-size: var(--nut-price-medium-size) !default;
+$price-decimal-medium-size: var(--nut-price-decimal-medium-size) !default;
+
+// small price
+$price-symbol-small-size: var(--nut-price-symbol-small-size) !default;
+$price-small-size: var(--nut-price-small-size) !default;
+$price-decimal-small-size: var(--nut-price-decimal-small-size) !default;
+
+//avatar
+$avatar-square: var(--nut-avatar-square) !default;
+$avatar-large-width: var(--nut-avatar-large-width) !default;
+$avatar-large-height: var(--nut-avatar-large-height) !default;
+$avatar-small-width: var(--nut-avatar-small-width) !default;
+$avatar-small-height: var(--nut-avatar-small-height) !default;
+$avatar-normal-width: var(--nut-avatar-normal-width) !default;
+$avatar-normal-height: var(--nut-avatar-normal-height) !default;
+
+//switch
+$switch-close-bg-color: var(--nut-switch-close-bg-color) !default;
+$switch-close-cline-bg-color: var(--nut-switch-close--nut-cline-bg-color) !default;
+$switch-width: var(--nut-switch-width) !default;
+$switch-height: var(--nut-switch-height) !default;
+$switch-line-height: var(--nut-switch-line-height) !default;
+$switch-border-radius: var(--nut-switch-border-radius) !default;
+$switch-inside-width: var(--nut-switch-inside-width) !default;
+$switch-inside-height: var(--nut-switch-inside-height) !default;
+$switch-inside-open-transform: var(--nut-switch-inside-open-transform) !default;
+$switch-inside-close-transform: var(--nut-switch-inside-close-transform) !default;
+
+// toast
+$toast-title-font-size: var(--nut-toast-title-font-size) !default;
+$toast-text-font-size: var(--nut-toast-text-font-size) !default;
+$toast-font-color: var(--nut-toast-font-color) !default;
+$toast-inner-padding: var(--nut-toast-inner-padding) !default;
+$toast-inner-bg-color: var(--nut-toast-inner-bg-color) !default;
+$toast-inner-border-radius: var(--nut-toast-inner-border-radius) !default;
+$toast-cover-bg-color: var(--nut-toast-cover-bg-color) !default;
+
+//backtop
+$backtop-border-color: var(--nut-backtop-border-color) !default;
+
+// calendar
+$calendar-primary-color: var(--nut-calendar-primary-color) !default;
+$calendar-choose-color: var(--nut-calendar-choose-color) !default;
+$calendar-choose-font-color: var(--nut-calendar-choose-font-color) !default;
+$calendar-base-color: var(--nut-calendar-base-color) !default;
+$calendar-disable-color: var(--nut-calendar-disable-color) !default;
+$calendar-base-font: var(--nut-calendar-base-font) !default;
+$calendar-title-font: var(--nut-calendar-title-font) !default;
+$calendar-title-font-weight: var(--nut-calendar-title-font-weight) !default;
+$calendar-sub-title-font: var(--nut-calendar-sub-title-font) !default;
+$calendar-text-font: var(--nut-calendar-text-font) !default;
+$calendar-day-font: var(--nut-calendar-day-font) !default;
+$calendar-day-active-border-radius: var(--nut-calendar-day-active-border-radius) !default;
+$calendar-day-width: var(--nut-calendar-day-width) !default;
+$calendar-day-height: var(--nut-calendar-day-height) !default;
+$calendar-day-font-weight: var(--nut-calendar-day-font-weight) !default;
+$calendar-day67-font-color: var(--nut-calendar-day67-font-color) !default;
+$calendar-month-title-font-size: var(--nut-calendar-month-title-font-size) !default;
+
+//overlay
+$overlay-bg-color: var(--nut-overlay-bg-color) !default;
+
+//popup
+$popup-close-icon-margin: var(--nut-popup-close-icon-margin) !default;
+$popup-border-radius: var(--nut-popup-border-radius) !default;
+
+// Notify
+$notify-text-color: var(--nut-notify-text-color) !default;
+$notify-padding: var(--nut-notify-padding) !default;
+$notify-font-size: var(--nut-notify-font-size) !default;
+$notify-height: var(--nut-notify-height) !default;
+$notify-line-height: var(--nut-notify-line-height) !default;
+$notify-base-background-color: var(--nut-notify-base-background-color) !default;
+$notify-primary-background-color: var(--nut-notify-primary-background-color) !default;
+$notify-success-background-color: var(--nut-notify-success-background-color) !default;
+$notify-danger-background-color: var(--nut-notify-danger-background-color) !default;
+$notify-warning-background-color: var(--nut-wnotify-warning-background-colorhite) !default;
+
+// rate
+$rate-icon-color: var(--nut-rate-icon-color) !default;
+$rate-icon-void-color: var(--nut-rate-icon-void-color) !default;
+
+// tabbar
+$tabbar-active-color: var(--nut-tabbar-active-color) !default;
+$tabbar-unactive-color: var(--nut-tabbar-unactive-color) !default;
+$tabbar-border-top: var(--nut-tabbar-border-top) !default;
+$tabbar-border-bottom: var(--nut-tabbar-border-bottom) !default;
+$tabbar-box-shadow: var(--nut-tabbar-box-shadow) !default;
+$tabbar-item-text-font-size: var(--nut-tabbar-item-text-font-size) !default;
+$tabbar-item-text-line-height: var(--nut-tabbar-item-text-line-height) !default;
+$tabbar-height: var(--nut-tabbar-height) !default;
+$tabbar-word-margin-top: var(--nut-tabbar-word-margin-top) !default;
+
+//infiniteloading
+$infiniteloading-bottom-color: var(--nut-infiniteloading-bottom-color) !default;
+
+//range
+$range-tip-font-color: var(--nut-range-tip-font-color) !default;
+$range-bg-color: var(--nut-range-bg-color) !default;
+$range-bg-color-tick: var(--nut-range-bg-color-tick) !default;
+$range-bar-bg-color: var(--nut-range-bar-bg-color) !default;
+$range-bar-btn-bg-color: var(--nut-range-bar-btn-bg-color) !default;
+$range-bar-btn-width: var(--nut-range-bar-btn-width) !default;
+$range-bar-btn-height: var(--nut-range-bar-btn-height) !default;
+$range-bar-btn-border: var(--nut-range-bar-btn-border) !default;
+
+//swiper
+$swiper-pagination-item-width: var(--nut-swiper-pagination-item-width) !default;
+$swiper-pagination-item-height: var(--nut-swiper-pagination-item-height) !default;
+$swiper-pagination-item-margin-right: var(--nut-swiper-pagination-item-margin-right) !default;
+$swiper-pagination-item-border-radius: var(--nut-swiper-pagination-item-border-radius) !default;
+
+//address
+$address-region-tab-line: var(--nut-address-region-tab-line) !default;
+$address-icon-color: var(--nut-address-icon-color) !default;
+$address-header-title-font-size: var(--nut-address-header-title-font-size) !default;
+$address-header-title-color: var(--nut-address-header-title-color) !default;
+$address-region-tab-font-size: var(--nut-address-region-tab-color) !default;
+$address-region-tab-color: var(--nut-address-region-tab-color) !default;
+$address-region-tab-active-item-font-weight: var(--nut-address-region-tab-active-item-font-weight) !default;
+$address-region-tab-line-border-radius: var(--nut-address-region-tab-line-border-radius) !default;
+$address-region-tab-line-opacity: var(--nut-address-region-tab-line-opacity) !default;
+$address-region-item-color: var(--nut-address-region-item-color) !default;
+$address-region-item-font-size: var(--nut-address-region-item-font-size) !default;
+$address-item-margin-right: var(--nut-address-item-margin-right) !default;
+
+//steps
+$steps-base-icon-width: var(--nut-steps-base-icon-width) !default;
+$steps-base-icon-height: var(--nut-steps-base-icon-height) !default;
+$steps-base-icon-line-height: var(--nut-steps-base-icon-line-height) !default;
+$steps-base-icon-font-size: var(--nut-steps-base-icon-font-size) !default;
+$steps-base-title-font-size: var(--nut-steps-base-title-font-size) !default;
+$steps-base-line-color: var(--nut-steps-base-title-color) !default;
+$steps-base-title-color: var(--nut-steps-base-title-color) !default;
+$steps-base-title-margin-bottom: var(--nut-steps-base-title-margin-bottom) !default;
+$steps-base-content-font-size: var(--nut-steps-base-content-font-size) !default;
+$steps-base-content-color: var(--nut-steps-base-content-color) !default;
+
+$steps-wait-icon-bg-color: var(--nut-steps-wait-icon-bg-color) !default;
+$steps-wait-icon-color: var(--nut-steps-wait-icon-color) !default;
+$steps-wait-head-color: var(--nut-steps-wait-head-color) !default;
+$steps-wait-head-border-color: var(--nut-steps-wait-head-border-color) !default;
+$steps-wait-content-color: var(--nut-steps-wait-content-color) !default;
+
+$steps-finish-head-color: var(--nut-steps-finish-head-color) !default;
+$steps-finish-head-border-color: var(--nut-steps-finish-head-border-color) !default;
+$steps-finish-title-color: var(--nut-primary-color) !default;
+$steps-finish-line-background: var(--nut-primary-color) !default;
+$steps-finish-icon-text-color: var(--nut-white) !default;
+
+$steps-process-head-color: var(--nut-steps-process-head-color) !default;
+$steps-process-head-border-color: var(--nut-primary-color) !default;
+$steps-process-title-color: var(--nut-primary-color) !default;
+$steps-process-icon-text-color: var(--nut-primary-color) !default;
+
+// dialog
+$dialog-width: var(--nut-dialog-width) !default;
+$dialog-header-font-weight: var(--nut-dialog-header-font-weight) !default;
+$dialog-header-color: var(--nut-dialog-header-color) !default;
+$dialog-footer-justify-content: var(--nut-dialog-footer-justify-content) !default;
+
+// checkbox
+$checkbox-label-color: var(--nut-checkbox-label-color) !default;
+$checkbox-label-disable-color: var(--nut-checkbox-label-disable-color) !default;
+$checkbox-icon-disable-color: var(--nut-checkbox-icon-disable-color) !default;
+$checkbox-label-margin-left: var(--nut-checkbox-label-margin-left) !default;
+$checkbox-label-font-size: var(--nut-checkbox-label-font-size) !default;
+$checkbox-icon-font-size: var(--nut-checkbox-icon-font-size) !default;
+$checkbox-icon-disable-color2: var(--nut-checkbox-icon-disable-color2) !default;
+
+//radio
+$radio-label-font-color: var(--nut-radio-label-font-color) !default;
+$radio-label-font-active-color: var(--nut-radio-label-font-active-color) !default;
+$radio-label-disable-color: var(--nut-radio-label-disable-color) !default;
+$radio-icon-disable-color: var(--nut-radio-icon-disable-color) !default;
+$radio-label-button-border-color: var(--nut-radio-label-button-border-color) !default;
+$radio-label-button-background: var(--nut-radio-label-button-background) !default;
+$radio-label-margin-left: var(--nut-radio-label-margin-left) !default;
+$radio-button-border-radius: var(--nut-radio-button-border-radius) !default;
+$radio-label-font-size: var(--nut-radio-label-font-size) !default;
+$radio-button-font-size: var(--nut-radio-button-font-size) !default;
+$radio-button-padding: var(--nut-radio-button-padding) !default;
+$radio-icon-font-size: var(--nut-radio-icon-font-size) !default;
+$radio-icon-disable-color2: var(--nut-radio-icon-disable-color2) !default;
+
+//fixednav
+$fixednav-bg-color: var(--nut-fixednav-bg-color) !default;
+$fixednav-font-color: var(--nut-fixednav-font-color) !default;
+$fixednav-index: var(--nut-fixednav-index) !default;
+$fixednav-btn-bg: var(--nut-fixednav-btn-bg) !default;
+$fixednav-item-active-color: var(--nut-fixednav-item-active-color) !default;
+
+// NoticeBar
+$noticebar-background: var(--nut-noticebar-background) !default;
+$noticebar-color: var(--nut-noticebar-color) !default;
+$noticebar-font-size: var(--nut-noticebar-font-size) !default;
+$noticebar-height: var(--nut-noticebar-height) !default;
+$noticebar-line-height: var(--nut-noticebar-line-height) !default;
+$noticebar-left-icon-width: var(--nut-noticebar-left-icon-width) !default;
+$noticebar-right-icon-width: var(--nut-noticebar-right-icon-width) !default;
+$noticebar-box-padding: var(--nut-noticebar-box-padding) !default;
+$noticebar-wrapable-padding: var(--nut-noticebar-wrapable-padding) !default;
+$noticebar-lefticon-margin: var(--nut-noticebar-lefticon-margin) !default;
+$noticebar-righticon-margin: var(--nut-noticebar-righticon-margin) !default;
+
+// TimeSelect
+$timeselect-title-font-size: var(--nut-timeselect-title-font-size) !default;
+$timeselect-title-color: var(--nut-timeselect-title-color) !default;
+$timeselect-title-width: var(--nut-timeselect-title-width) !default;
+$timeselect-title-height: var(--nut-timeselect-title-height) !default;
+$timeselect-title-line-height: var(--nut-timeselect-title-line-height) !default;
+$timeselect-pannel-bg-color: var(--nut-timeselect-pannel-bg-color) !default;
+
+// TimePannel
+$timeselect-timepannel-text-color: var(--nut-timeselect-timepannel-text-color) !default;
+$timeselect-timepannel-font-size: var(--nut-timeselect-timepannel-font-size) !default;
+$timeselect-timepannel-cur-bg-color: var(--nut-timeselect-timepannel-cur-bg-color) !default;
+$timeselect-timepannel-cur-text-color: var(--nut-timeselect-timepannel-cur-text-color) !default;
+$timeselect-timepannel-width: var(--nut-timeselect-timepannel-width) !default;
+$timeselect-timepannel-height: var(--nut-timeselect-timepannel-height) !default;
+$timeselect-timepannel-padding: var(--nut-timeselect-timepannel-padding) !default;
+
+// TimeDetail
+$timeselect-timedetail-padding: var(--nut-timeselect-timedetail-padding) !default;
+$timeselect-timedetail-item-width: var(--nut-timeselect-timedetail-item-width) !default;
+$timeselect-timedetail-item-height: var(--nut-timeselect-timedetail-item-height) !default;
+$timeselect-timedetail-item-line-height: var(--nut-timeselect-timedetail-item-line-height) !default;
+$timeselect-timedetail-item-bg-color: var(--nut-timeselect-timedetail-item-bg-color) !default;
+$timeselect-timedetail-item-border-radius: var(--nut-timeselect-timedetail-item-border-radius) !default;
+$timeselect-timedetail-item-text-color: var(--nut-timeselect-timedetail-item-text-color) !default;
+$timeselect-timedetail-item-text-font-size: var(--nut-timeselect-timedetail-item-text-font-size) !default;
+$timeselect-timedetail-item-cur-bg-color: var(--nut-timeselect-timedetail-item-cur-bg-color) !default;
+$timeselect-timedetail-item-cur-border: var(--nut-timeselect-timedetail-item-cur-border) !default;
+$timeselect-timedetail-item-cur-text-color: var(--nut-timeselect-timedetail-item-cur-text-color) !default;
+$timeselect-timedetail-time-text-color: var(--nut-timeselect-timedetail-time-text-color) !default;
+$timeselect-timedetail-time-font-size: var(--nut-timeselect-timedetail-time-font-size) !default;
+
+//tag
+$tag-font-size: var(--nut-tag-font-size) !default;
+$tag-default-border-radius: var(--nut-tag-default-border-radius) !default;
+$tag-round-border-radius: var(--nut-tag-round-border-radius) !default;
+$tag-default-background-color: var(--nut-tag-default-background-color) !default;
+$tag-primary-background-color: var(--nut-tag-primary-background-color) !default;
+$tag-success-background-color: var(--nut-tag-success-background-color) !default;
+$tag-danger-background-color: var(--nut-tag-danger-background-color) !default;
+$tag-danger-background-color-plain: var(--nut-tag-danger-background-color-plain) !default;
+$tag-warning-background-color: var(--nut-tag-warning-background-color) !default;
+$tag-default-color: var(--nut-tag-default-color) !default;
+$tag-border-width: var(--nut-tag-border-width) !default;
+$tag-plain-background-color: var(--nut-tag-plain-background-color) !default;
+$tag-height: var(--nut-tag-height) !default;
+
+//badge
+$badge-background-color: var(--nut-badge-background-color) !default;
+$badge-color: var(--nut-badge-color) !default;
+$badge-font-size: var(--nut-badge-font-size) !default;
+$badge-border-radius: var(--nut-badge-border-radius) !default;
+$badge-padding: var(--nut-badge-padding) !default;
+$badge-content-transform: var(--nut-badge-content-transform) !default;
+$badge-z-index: var(--nut-badge-z-index) !default;
+$badge-dot-width: var(--nut-badge-dot-width) !default;
+$badge-dot-height: var(--nut-badge-dot-height) !default;
+$badge-dot-border-radius: var(--nut-badge-dot-border-radius) !default;
+$badge-dot-padding: var(--nut-badge-dot-padding) !default;
+
+$popover-white-background-color: var(--nut-popover-white-background-color) !default;
+$popover-dark-background-color: var(--nut-popover-dark-background-color) !default;
+$popover-border-bottom-color: var(--nut-popover-border-bottom-color) !default;
+$popover-primary-text-color: var(--nut-popover-primary-text-color) !default;
+$popover-disable-color: var(--nut-popover-disable-color) !default;
+$popover-menu-item-padding: var(--nut-popover-menu-item-padding) !default;
+$popover-menu-item-margin: var(--nut-popover-menu-item-margin) !default;
+$popover-menu-name-line-height: var(--nut-popover-menu-name-line-height) !default;
+
+//progress
+$progress-inner-background-color: var(--nut-progress-inner-background-color) !default;
+$progress-insidetext-background: var(--nut-progress-insidetext-background) !default;
+$progress-outer-background-color: var(--nut-progress-insidetext-backgroundr) !default;
+$progress-outer-border-radius: var(--nut-progress-insidetext-border-radius) !default;
+$progress-insidetext-border-radius: var(--nut-progress-insidetext-border-radius) !default;
+$progress-insidetext-padding: var(--nut-progress-insidetext-padding) !default;
+$progress-insidetext-top: var(--nut-progress-insidetext-top) !default;
+$progress-small-height: var(--nut-progress-small-height) !default;
+$progress-small-text-font-size: var(--nut-progress-small-text-font-size) !default;
+$progress-small-text-line-height: var(--nut-progress-small-text-line-height) !default;
+$progress-small-text-padding: var(--nut-progress-small-text-padding) !default;
+$progress-small-text-top: var(--nut-progress-small-text-top) !default;
+$progress-base-height: var(--nut-progress-base-height) !default;
+$progress-base-text-font-size: var(--nut-progress-base-text-font-size) !default;
+$progress-base-text-line-height: var(--nut-progress-base-text-line-height) !default;
+$progress-base-text-padding: var(--nut-progress-base-text-padding) !default;
+$progress-base-text-top: var(--nut-progress-base-text-top) !default;
+$progress-large-height: var(--nut-progress-large-height) !default;
+$progress-large-text-font-size: var(--nut-progress-large-text-font-size) !default;
+$progress-large-text-line-height: var(--nut-progress-large-text-line-height) !default;
+$progress-large-text-padding: var(--nut-progress-large-text-padding) !default;
+$progress-large-text-top: var(--nut-progress-large-text-top) !default;
+
+//pagination
+$pagination-color: var(--nut-pagination-color) !default;
+$pagination-font-size: var(--nut-pagination-font-size) !default;
+$pagination-item-border-color: var(--nut-pagination-item-border-color) !default;
+$pagination-active-background-color: var(--nut-pagination-active-background-color) !default;
+$pagination-disable-color: var(--nut-pagination-disable-color) !default;
+$pagination-disable-background-color: var(--nut-pagination-disable-background-color) !default;
+$pagination-item-border-width: var(--nut-pagination-item-border-width) !default;
+$pagination-item-border-radius: var(--nut-pagination-item-border-radius) !default;
+$pagination-prev-next-padding: var(--nut-pagination-prev-next-padding) !default;
+
+// tabs
+$tabs-tab-smile-color: var(--nut-tabs-tab-smile-color) !default;
+$tabs-titles-border-radius: var(--nut-tabs-titles-border-radius) !default;
+$tabs-titles-item-large-font-size: var(--nut-tabs-titles-item-large-font-size) !default;
+$tabs-titles-item-font-size: var(--nut-tabs-titles-item-font-size) !default;
+$tabs-titles-item-small-font-size: var(--nut-tabs-titles-item-small-font-size) !default;
+$tabs-titles-item-color: var(--nut-tabs-titles-item-small-font-size) !default;
+$tabs-titles-item-active-color: var(--nut-tabs-titles-item-active-color) !default;
+$tabs-titles-background-color: var(--nut-tabs-titles-background-color) !default;
+$tabs-horizontal-tab-line-color: var(--nut-tabs-horizontal-tab-line-color) !default;
+$tabs-horizontal-titles-height: var(--nut-tabs-horizontal-titles-height) !default;
+$tabs-horizontal-titles-item-min-width: var(--nut-tabs-horizontal-titles-item-min-width) !default;
+$tabs-horizontal-titles-item-active-line-width: var(--nut-tabs-horizontal-titles-item-active-line-width) !default;
+$tabs-vertical-tab-line-color: var(--nut-tabs-vertical-tab-line-color) !default;
+$tabs-vertical-titles-item-height: var(--nut-tabs-vertical-titles-item-height) !default;
+$tabs-vertical-titles-item-active-line-height: var(--nut-tabs-vertical-titles-item-active-line-height) !default;
+$tabs-vertical-titles-width: var(--nut-tabs-vertical-titles-width) !default;
+$tabs-titles-item-line-border-radius: var(--nut-tabs-titles-item-line-border-radius) !default;
+$tabs-titles-item-line-opacity: var(--nut-tabs-titles-item-line-opacity) !default;
+
+// indicator
+$indicator-color: var(--nut-indicator-color) !default;
+$indicator-dot-color: var(--nut-indicator-dot-color) !default;
+$indicator-white: var(--nut-indicator-white) !default;
+$indicator-size: var(--nut-indicator-size) !default;
+$indicator-dot-size: var(--nut-indicator-dot-size) !default;
+$indicator-border-size: var(--nut-indicator-border-size) !default;
+$indicator-number-font-size: var(--nut-indicator-number-font-size) !default;
+
+// menu
+$menu-bar-line-height: var(--nut-menu-bar-line-height) !default;
+$menu-item-font-size: var(--nut-menu-item-font-size) !default;
+$menu-item-text-color: var(--nut-menu-item-text-color) !default;
+$menu-item-active-text-color: var(--nut-menu-item-active-text-color) !default;
+$menu-bar-border-bottom-color: var(--nut-menu-bar-border-bottom-color) !default;
+$menu-bar-opened-z-index: var(--nut-menu-bar-opened-z-index) !default;
+$menu-item-disabled-color: var(--nut-menu-item-disabled-color) !default;
+$menu-title-text-padding-left: var(--nut-menu-title-text-padding-left) !default;
+$menu-title-text-padding-right: var(--nut-menu-title-text-padding-right) !default;
+$menu-item-content-padding: var(--nut-menu-item-content-padding) !default;
+$menu-item-content-max-height: var(--nut-menu-item-content-max-heigh) !default;
+$menu-item-option-padding-top: var(--nut-menu-item-option-padding-top) !default;
+$menu-item-option-padding-bottom: var(--nut-menu-item-option-padding-bottom) !default;
+$menu-item-option-i-margin-right: var(--nut-menu-item-option-i-margin-right) !default;
+$menu-bar-box-shadow: var(--nut-menu-bar-box-shadow) !default;
+$menu-scroll-fixed-top: var(--nut-menu-scroll-fixed-top) !default;
+$menu-scroll-fixed-z-index: var(--nut-menu-scroll-fixed-z-index) !default;
+$menu-active-item-font-weight: var(--nut-menu-active-item-font-weight) !default;
+
+// collapse
+$collapse-item-padding: var(--nut-collapse-item-padding) !default;
+$collapse-item-color: var(--nut-collapse-item-color) !default;
+$collapse-item-disabled-color: var(--nut-collapse-item-disabled-color) !default;
+$collapse-item-icon-color: var(--nut-collapse-item-icon-color) !default;
+$collapse-item-font-size: var(--nut-collapse-item-font-size) !default;
+$collapse-item-line-height: var(--nut-collapse-item-line-height) !default;
+$collapse-item-sub-title-color: var(--nut-collapse-item-sub-title-color) !default;
+$collapse-wrapper-content-padding: var(--nut-collapse-wrapper-content-padding) !default;
+$collapse-wrapper-empty-content-padding: var(--nut-collapse-wrapper-empty-content-padding) !default;
+$collapse-wrapper-content-color: var(--nut-collapse-wrapper-content-color) !default;
+$collapse-wrapper-content-font-size: var(--nut-collapse-wrapper-content-font-size) !default;
+$collapse-wrapper-content-line-height: var(--nut-collapse-wrapper-content-line-height) !default;
+$collapse-wrapper-content-background-color: var(--nut-collapse-wrapper-content-background-color) !default;
+
+// searchbar
+$searchbar-background: var(--nut-searchbar-background) !default;
+$searchbar-right-out-color: var(--nut-searchbar-right-out-color) !default;
+$searchbar-padding: var(--nut-searchbar-padding) !default;
+$searchbar-width: var(--nut-searchbar-width) !default;
+$searchbar-input-background: var(--nut-searchbar-input-background) !default;
+$searchbar-input-padding: var(--nut-searchbar-input-padding) !default;
+$searchbar-input-height: var(--nut-searchbar-input-height) !default;
+$searchbar-input-width: var(--nut-searchbar-input-width) !default;
+$searchbar-input-border-radius: var(--nut-searchbar-input-border-radius) !default;
+$searchbar-input-box-shadow: var(--nut-searchbar-input-box-shadow) !default;
+$searchbar-input-bar-color: var(--nut-searchbar-input-bar-color) !default;
+$searchbar-input-bar-placeholder-color: var(--nut-searchbar-input-bar-placeholder-color) !default;
+
+// empty
+$empty-padding: var(--nut-empty-padding) !default;
+$empty-image-size: var(--nut-empty-image-size) !default;
+$empty-description-margin-top: var(--nut-empty-description-margin-top) !default;
+$empty-description-color: var(--nut-empty-description-color) !default;
+$empty-description-font-size: var(--nut-empty-description-font-size) !default;
+$empty-description-line-height: var(--nut-empty-description-line-height) !default;
+$empty-description-padding: var(--nut-empty-description-padding) !default;
+
+// cascader
+$cascader-font-size: var(--nut-cascader-font-size) !default;
+$cascader-line-height: var(--nut-cascader-line-height) !default;
+$cascader-tabs-item-padding: var(--nut-cascader-tabs-item-padding) !default;
+$cascader-bar-padding: var(--nut-cascader-bar-padding) !default;
+$cascader-bar-font-size: var(--nut-cascader-bar-font-size) !default;
+$cascader-bar-line-height: var(--nut-cascader-bar-line-height) !default;
+$cascader-bar-color: var(--nut-cascader-bar-color) !default;
+$cascader-item-padding: var(--nut-cascader-item-padding) !default;
+$cascader-item-color: var(--nut-cascader-item-color) !default;
+$cascader-item-font-size: var(--nut-cascader-item-font-size) !default;
+$cascader-item-active-color: var(--nut-cascader-item-active-color) !default;
+
+// form
+$form-item-error-line-color: var(--nut-form-item-error-line-color) !default;
+$form-item-required-color: var(--nut-form-item-required-color) !default;
+$form-item-error-message-color: var(--nut-form-item-error-message-color) !default;
+$form-item-label-font-size: var(--nut-form-item-label-font-size) !default;
+$form-item-label-width: var(--nut-form-item-label-width) !default;
+$form-item-label-margin-right: var(--nut-form-item-label-margin-right) !default;
+$form-item-label-text-align: var(--nut-form-item-label-text-align) !default;
+$form-item-required-margin-right: var(--nut-form-item-required-margin-right) !default;
+$form-item-body-font-size: var(--nut-form-item-body-font-size) !default;
+$form-item-body-slots-text-align: var(--nut-form-item-body-slots-text-align) !default;
+$form-item-body-input-text-align: var(--nut-form-item-body-input-text-align) !default;
+$form-item-tip-font-size: var(--nut-form-item-tip-font-size) !default;
+$form-item-tip-text-align: var(--nut-form-item-tip-text-align) !default;
+
+// skeleton
+$skeleton-content-avatar-background-color: var(--nut-skeleton-content-avatar-background-color) !default;
+$skeleton-content-line-background-color: var(--nut-skeleton-content-line-background-color) !default;
+$skeleton-animation-background-color: var(--nut-skeleton-animation-background-color) !default;
+
+// sku
+$sku-item-border: var(--nut-sku-item-border) !default;
+$sku-item-disable-line: var(--nut-sku-item-disable-line) !default;
+$sku-opetate-bg-default: var(--nut-sku-opetate-bg-default) !default;
+$sku-item-active-bg: var(--nut-sku-item-active-bg) !default;
+$sku-opetate-bg-buy: var(--nut-sku-opetate-bg-buy) !default;
+$sku-spec-height: var(--nut-sku-spec-height) !default;
+$sku-spec-line-height: var(--nut-sku-spec-line-height) !default;
+$sku-spec-font-size: var(--nut-sku-spec-font-size) !default;
+$sku-spec-background: var(--nut-sku-spec-background) !default;
+$sku-spec-color: var(--nut-sku-spec-color) !default;
+$sku-spec-margin-right: var(--nut-sku-spec-margin-right) !default;
+$sku-spec-padding: var(--nut-sku-spec-padding) !default;
+$sku-spec-title-font-weight: var(--nut-sku-spec-title-font-weight) !default;
+$sku-spec-title-font-size: var(--nut-sku-spec-title-font-size) !default;
+$sku-spec-title-color: var(--nut-sku-spec-title-color) !default;
+$sku-spec-title-margin-bottom: var(--nut-sku-spec-title-margin-bottom) !default;
+$sku-operate-btn-height: var(--nut-sku-operate-btn-height) !default;
+$sku-operate-btn-border-top: var(--nut-sku-operate-btn-border-top) !default;
+$sku-operate-btn-item-height: var(--nut-sku-operate-btn-item-height) !default;
+$sku-operate-btn-item-line-height: var(--nut-sku-operate-btn-item-line-height);
+$sku-operate-btn-item-font-size: var(--nut-sku-operate-btn-item-font-size) !default;
+$sku-operate-btn-item-font-weight: var(--nut-sku-operate-btn-item-font-weight) !default;
+$sku-product-img-width: var(--nut-sku-product-img-width) !default;
+$sku-product-img-height: var(--nut-sku-product-img-height) !default;
+$sku-product-img-border-radius: var(--nut-sku-product-img-border-radius) !default;
+
+// card
+$card-font-size-0: var(--nut-card-font-size-0) !default;
+$card-font-size-1: var(--nut-card-font-size-1) !default;
+$card-font-size-2: var(--nut-card-font-size-2) !default;
+$card-font-size-3: var(--nut-card-font-size-3) !default;
+$card-left-border-radius: var(--nut-card-left-border-radius) !default;
+$card-left-background-color: var(--nut-card-left-background-color) !default;
+
+// grid
+$grid-border-color: var(--nut-grid-border-color) !default;
+$grid-item-content-padding: var(--nut-grid-item-content-padding) !default;
+$grid-item-content-bg-color: var(--nut-grid-item-content-bg-color) !default;
+$grid-item-text-margin: var(--nut-grid-item-text-margin) !default;
+$grid-item-text-color: var(--nut-grid-item-text-color) !default;
+$grid-item-text-font-size: var(--nut-grid-item-text-font-size) !default;
+
+// table
+$table-border-color: var(--nut-table-border-color) !default;
+$table-cols-padding: var(--nut-table-cols-padding) !default;
+$table-tr-even-bg-color: var(--nut-table-tr-even-bg-color) !default;
+$table-tr-odd-bg-color: var(--nut-table-tr-odd-bg-color) !default;
+
+// navbar
+$navbar-height: var(--nut-navbar-height) !default;
+$navbar-margin-bottom: var(--nut-navbar-margin-bottom) !default;
+$navbar-padding: var(--nut-navbar-padding) !default;
+$navbar-background: var(--nut-navbar-background) !default;
+$navbar-box-shadow: var(--nut-navbar-box-shadow) !default;
+$navbar-color: var(--nut-navbar-color) !default;
+$navbar-title-base-font: var(--nut-navbar-title-base-font) !default;
+$navbar-title-font: var(--nut-navbar-title-font) !default;
+$navbar-title-font-weight: var(--nut-navbar-title-font-weight) !default;
+$navbar-title-font-color: var(--nut-navbar-title-font-color) !default;
+$navbar-title-width: var(--nut-navbar-title-width) !default;
+$navbar-title-icon-margin: var(--nut-navbar-title-icon-margin) !default;
+
+// sidenavbar
+$sidenavbar-content-bg-color: var(--nut-sidenavbar-content-bg-color) !default;
+
+// subsidenavbar
+$sidenavbar-sub-title-border-color: var(--nut-sidenavbar-sub-title-border-color) !default;
+$sidenavbar-sub-title-bg-color: var(--nut-sidenavbar-sub-title-bg-color) !default;
+$sidenavbar-sub-title-font-size: var(--nut-sidenavbar-sub-title-font-size) !default;
+$sidenavbar-sub-title-radius: var(--nut-sidenavbar-sub-title-radius) !default;
+$sidenavbar-sub-title-border: var(--nut-sidenavbar-sub-title-border) !default;
+$sidenavbar-sub-title-width: var(--nut-sidenavbar-sub-title-width) !default;
+$sidenavbar-sub-title-height: var(--nut-sidenavbar-sub-title-height) !default;
+$sidenavbar-sub-title-text-line-height: var(--nut-sidenavbar-sub-title-text-line-height) !default;
+$sidenavbar-sub-title-text-color: var(--nut-sidenavbar-sub-title-text-color) !default;
+
+// sidenavbaritem
+$sidenavbar-item-title-color: var(--nut-sidenavbar-item-title-color) !default;
+$sidenavbar-item-title-bg-color: var(--nut-sidenavbar-item-title-bg-color) !default;
+$sidenavbar-item-height: var(--nut-sidenavbar-item-height) !default;
+$sidenavbar-item-line-height: var(--nut-sidenavbar-item-line-height) !default;
+$sidenavbar-item-font-size: var(--nut-sidenavbar-item-font-size) !default;
+
+// elevator
+$elevator-list-item-highcolor: var(--nut-elevator-list-item-highcolor) !default;
+$elevator-list-item-font-size: var(--nut-elevator-list-item-font-size) !default;
+$elevator-list-item-font-color: var(--nut-elevator-list-item-font-color) !default;
+$elevator-list-item-name-padding: var(--nut-elevator-list-item-name-padding) !default;
+$elevator-list-item-name-height: var(--nut-elevator-list-item-name-padding) !default;
+$elevator-list-item-name-line-height: var(--nut-elevator-list-item-name-line-height) !default;
+$elevator-list-item-code-font-size: var(--nut-elevator-list-item-code-font-size) !default;
+$elevator-list-item-code-font-color: var(--nut-elevator-list-item-code-font-color) !default;
+$elevator-list-item-code-font-weight: var(--nut-elevator-list-item-code-font-weight) !default;
+$elevator-list-item-code-padding: var(--nut-elevator-list-item-code-padding) !default;
+$elevator-list-item-code-height: var(--nut-elevator-list-item-code-height) !default;
+$elevator-list-item-code-line-height: var(--nut-elevator-list-item-code-line-height) !default;
+$elevator-list-item-code-after-width: var(--nut-elevator-list-item-code-after-width) !default;
+$elevator-list-item-code-after-height: var(--nut-elevator-list-item-code-after-height) !default;
+$elevator-list-item-code-after-bg-color: var(--nut-elevator-list-item-code-current-box-shadow) !default;
+$elevator-list-item-code-current-box-shadow: var(--nut-elevator-list-item-code-current-box-shadow) !default;
+$elevator-list-item-code-current-bg-color: var(--nut-elevator-list-item-code-current-bg-color) !default;
+$elevator-list-item-code-current-border-radius: var(--nut-elevator-list-item-code-current-border-radius) !default;
+$elevator-list-item-code-current-width: var(--nut-elevator-list-item-code-current-width) !default;
+$elevator-list-item-code-current-height: var(--nut-elevator-list-item-code-current-height) !default;
+$elevator-list-item-code-current-line-height: var(--nut-elevator-list-item-code-current-line-height) !default;
+$elevator-list-item-code-current-position: var(--nut-elevator-list-item-code-current-position) !default;
+$elevator-list-item-code-current-right: var(--nut-elevator-list-item-code-current-right) !default;
+$elevator-list-item-code-current-top: var(--nut-elevator-list-item-code-current-top) !default;
+$elevator-list-item-code-current-transform: var(--nut-elevator-list-item-code-current-transform) !default;
+$elevator-list-item-code-current-text-align: var(--nut-elevator-list-item-code-current-text-align) !default;
+$elevator-list-item-bars-position: var(--nut-elevator-list-item-bars-position) !default;
+$elevator-list-item-bars-right: var(--nut-elevator-list-item-bars-right) !default;
+$elevator-list-item-bars-top: var(--nut-elevator-list-item-bars-top) !default;
+$elevator-list-item-bars-transform: var(--nut-elevator-list-item-bars-transform) !default;
+$elevator-list-item-bars-padding: var(--nut-elevator-list-item-bars-padding) !default;
+$elevator-list-item-bars-background-color: var(--nut-elevator-list-item-bars-background-color) !default;
+$elevator-list-item-bars-border-radius: var(--nut-elevator-list-item-bars-border-radius) !default;
+$elevator-list-item-bars-text-align: var(--nut-elevator-list-item-bars-text-align) !default;
+$elevator-list-item-bars-z-index: var(--nut-elevator-list-item-bars-z-index) !default;
+$elevator-list-item-bars-inner-item-padding: var(--nut-elevator-list-item-bars-inner-item-padding) !default;
+$elevator-list-item-bars-inner-item-font-size: var(--nut-elevator-list-item-bars-inner-item-font-size) !default;
+$elevator-list-fixed-color: var(--nut-elevator-list-fixed-color) !default;
+$elevator-list-fixed-bg-color: var(--nut-elevator-list-fixed-bg-color) !default;
+$elevator-list-fixed-box-shadow: var(--nut-elevator-list-fixed-box-shadow) !default;
+$elevator-list-item-bars-inner-item-active-color: var(--nut-elevator-list-item-bars-inner-item-active-color) !default;
+
+// list
+$list-item-margin: var(--nut-list-item-margin) !default;
+
+//Ecard
+$ecard-bg-color: var(--nut-ecard-bg-color) !default;
+
+//addresslist
+$addresslist-bg: var(--nut-addresslist-bg) !default;
+$addresslist-border: var(--nut-addresslist-border) !default;
+$addresslist-font-color: var(--nut-addresslist-font-color) !default;
+$addresslist-font-size: var(--nut-addresslist-font-size) !default;
+$addresslist-mask-bg: var(--nut-addresslist-mask-bg) !default;
+$addresslist-addr-font-color: var(--nut-addresslist-addr-font-color) !default;
+$addresslist-addr-font-size: var(--nut-addresslist-addr-font-size) !default;
+$addresslist-set-bg: var(--nut-addresslist-set-bg) !default;
+$addresslist-del-bg: var(--nut-ddresslist-del-bg) !default;
+$addresslist-contnts-contact-default: var(--nut-addresslist-contnts-contact-default) !default;
+$addresslist-contnts-contact-color: var(--nut-addresslist-contnts-contact-color) !default;
+
+//category
+$category-bg-color: var(--nut-category-bg-color) !default;
+$category-list-left-bg-color: var(--nut-category-list-left-bg-color) !default;
+$category-list-item-color: var(--nut-category-list-item-color) !default;
+$category-list-item-checked-color: var(--nut-category-list-item-checked-color) !default;
+$category-list-item-checked-img-bg-color: var(--nut-category-list-item-checked-img-bg-color) !default;
+$category-pane-gray-color: var(--nut-category-pane-gray-color) !default;
+$category-pane-border-color: var(--nut-category-pane-border-color) !default;
+$category-pane-title-color: var(--nut-category-pane-title-color) !default;
+
+// circleProgress
+$circleprogress-primary-color: var(--nut-circleprogress-primary-color) !default;
+$circleprogress-path-color: var(--nut-circleprogress-path-color) !default;
+$circleprogress-text-color: var(--nut-circleprogress-text-color) !default;
+$circleprogress-text-size: var(--nut-circleprogress-text-size) !default;
+
+// Comment
+$comment-header-user-name-color: var(--nut-comment-header-user-name-color) !default;
+$comment-header-time-color: var(--nut-comment-header-time-color) !default;
+$comment-bottom-label-color: var(--nut-comment-bottom-label-color) !default;
+$comment-shop-color: var(--nut-comment-shop-color) !default;
+
+// Ellipsis
+$ellipsis-expand-collapse-color: var(--nut-ellipsis-expand-collapse-color) !default;
+
+// WaterMark
+$watermark-z-index: var(--nut-watermark-z-index) !default;
+
+// invoice
+$invoice-padding: var(--nut-invoice-padding) !default;
+
+// TrendArrow
+$trendarrow-font-size: var(--nut-trendarrow-font-size) !default;
+$trendarrow-before-icon-margin: var(--nut-trendarrow-before-icon-margin) !default;
+
+@import './mixins/index';

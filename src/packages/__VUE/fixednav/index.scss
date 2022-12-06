@@ -24,7 +24,7 @@
     position: absolute;
     right: 0;
 
-    z-index: $fixednav-index + 1;
+    z-index: calc($fixednav-index + 1);
     width: 80px;
     padding-left: 12px;
     height: 100%;

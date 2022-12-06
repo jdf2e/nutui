@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-searchbar v-model="searchValue" :label="translate('word1')" :focus-style="{ border: '1px solid red' }">
+    <nut-searchbar v-model="searchValue" :label="translate('word1')" :focus-style="{ outline: '1px solid red' }">
     </nut-searchbar>
 
     <h2>{{ translate('basic2') }}</h2>

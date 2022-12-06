@@ -14,6 +14,7 @@ config.nav.map((item) => {
     packages.push(name);
   });
 });
+let importCssVar = `import '../packages/styles/css-variables.scss';\n`;
 let installFunction = `function install(app: App) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {
@@ -36,6 +37,7 @@ fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fil
 
 let fileStrDev = `${importStr}
 ${installFunction}
+${importCssVar}
 ${importScssStr}
 export const testComponents = { ${packages.join(',')}};
 export { install, Locale, ${packages.join(',')}  };
