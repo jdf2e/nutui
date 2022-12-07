@@ -65,7 +65,6 @@
           <nut-range hidden-tag v-model="formData2.range"></nut-range>
         </nut-form-item>
       </nut-form>
-      <!-- <nut-button type="primary">定制绿色</nut-button> -->
     </nut-config-provider>
   </div>
 </template>

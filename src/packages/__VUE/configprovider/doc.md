@@ -56,6 +56,40 @@ app.use(ConfigProvider);
 
 :::
 
+### 动态主题
+ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme-vars 属性来配置一些主题变量
+:::demo
+
+```html
+<template>
+    <nut-config-provider :theme-vars="themeVars">
+      <nut-form>
+        <nut-form-item :label="动态主题">
+          <nut-range hidden-tag v-model="range"></nut-range>
+        </nut-form-item>
+      </nut-form>
+    </nut-config-provider>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const range = ref(30);
+       const themeVars = {
+      rangeBgColor: 'rgba(25,137,250,0.15)',
+      rangeBarBgColor: '#0289fa',
+      rangeBarBtnBorder: '1px solid #0289fa'
+    };
+
+      return { range, themeVars };
+    }
+  };
+</script>
+```
+
+:::
+
+
 ## API
 
 ### Props
