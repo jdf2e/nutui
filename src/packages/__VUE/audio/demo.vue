@@ -70,8 +70,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
+import { reactive, toRefs, ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

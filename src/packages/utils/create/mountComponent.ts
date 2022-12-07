@@ -12,7 +12,7 @@ export const CreateComponent = (options: any, component: any) => {
     }
   }
   const root = document.createElement('view');
-  const name = component.name && component.name + '-';
+  const name = component.name ? component.name + '-' : '';
   const id1 = options.id || new Date().getTime();
   root.id = name + id1;
 

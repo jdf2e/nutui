@@ -67,7 +67,8 @@
     "codeformat": "prettier --write .",
     "copydocs": "node ./jd/copymd.js",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
-    "attrs": "node ./jd/createAttributes.cjs"
+    "attrs": "node ./jd/createAttributes.cjs",
+    "dts": "vue-tsc --declaration --emitDeclarationOnly --skipLibCheck"
   },
   "standard-version": {
     "scripts": {
@@ -75,6 +76,7 @@
     }
   },
   "dependencies": {
+    "@nutui/icons-vue": "0.0.2",
     "@tarojs/components": "3.5.6",
     "consola": "2.15.3",
     "sass": "^1.50.0",
@@ -123,7 +125,8 @@
     "vite-plugin-dts": "^1.7.1",
     "vite-plugin-md": "^0.20.4",
     "vue": "^3.2.24",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "^5.0.0-alpha.7",
+    "vue-tsc": "^1.0.9"
   },
   "eslintConfig": {
     "root": true,

@@ -6,11 +6,11 @@
   position: relative;
   flex: 0 0 auto; // 防止被压缩
   text-align: center;
-  img {
+  > img {
     width: 100%;
     height: 100%;
   }
-  .icon {
+  .nut-avatar__icon {
     background-size: 100% 100%;
     position: absolute;
     top: 50%;
@@ -21,7 +21,7 @@
     width: 100%;
     height: 100%;
   }
-  .text {
+  .nut-avatar__text {
     display: inline-block;
     width: 100%;
     height: 100%;

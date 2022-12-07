@@ -8,12 +8,9 @@
 import { computed, reactive, inject, getCurrentInstance, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { IStyle } from './type';
 const { create, componentName } = createComponent('swiper-item');
-interface IStyle {
-  width?: string;
-  height?: string;
-  transform?: string;
-}
+
 export default create({
   setup(props, { slots }) {
     const parent = inject('parent') as any;

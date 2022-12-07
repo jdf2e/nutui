@@ -1,12 +1,12 @@
 <template>
   <view class="nut-empty">
     <!-- 占位图 -->
-    <view class="nut-empty-image" :style="imgStyle">
+    <view class="nut-empty__box" :style="imgStyle">
       <template v-if="$slots.image">
         <slot name="image"></slot>
       </template>
       <template v-else>
-        <img v-if="imageUrl" class="img" :src="imageUrl" />
+        <img v-if="imageUrl" class="nut-empty__box--img" :src="imageUrl" />
       </template>
     </view>
 
@@ -15,7 +15,7 @@
       <slot name="description"></slot>
     </template>
     <template v-else>
-      <view class="nut-empty-description">{{ description || translate('noData') }}</view>
+      <view class="nut-empty__description">{{ description || translate('noData') }}</view>
     </template>
 
     <!-- 自定义slot -->

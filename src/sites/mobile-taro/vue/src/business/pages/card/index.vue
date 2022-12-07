@@ -86,7 +86,7 @@
 </template>
 
 <script lang="ts">
-import { reactive } from '@vue/reactivity';
+import { reactive } from 'vue';
 
 export default {
   setup() {

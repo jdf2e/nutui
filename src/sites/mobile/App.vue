@@ -35,8 +35,8 @@ export default defineComponent({
       // demo转换index
       const { origin, hash, pathname } = window.top.location;
       if (!isMobile && pathname.includes('demo')) {
-        window.top.location.href = `${origin}/3x/index.html${hash}`;
-        window.location.href = `${origin}/3x/demo.html${hash}`;
+        window.top.location.href = `${origin}/4x/index.html${hash}`;
+        window.location.href = `${origin}/4x/demo.html${hash}`;
       }
       // 接收数据
       window.addEventListener('message', handledemoFromParent);

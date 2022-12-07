@@ -49,8 +49,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
+import { reactive, toRefs, onMounted } from 'vue';
 const { createDemo, translate } = createComponent('countup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>

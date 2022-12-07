@@ -5,6 +5,7 @@ import NutRange from '../../range/index.vue';
 import NutPicker from '../../picker/index.vue';
 import NutPopup from '../../popup/index.vue';
 import NutPickerColumn from '../../picker/Column.vue';
+import NutOverlay from '../../overlay/index.vue';
 import DatePicker from '../../datepicker/index.vue';
 
 function sleep(delay = 0): Promise<void> {
@@ -19,7 +20,8 @@ beforeAll(() => {
     NutRange,
     NutPicker,
     NutPopup,
-    NutPickerColumn
+    NutPickerColumn,
+    NutOverlay
   };
 });
 
@@ -38,8 +40,8 @@ test('Do not display Chinese', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-picker__confirm').exists()).toBeTruthy();
-  const confirm = wrapper.find('.nut-picker__confirm');
+  expect(wrapper.find('.nut-picker__right').exists()).toBeTruthy();
+  const confirm = wrapper.find('.nut-picker__right');
   confirm.trigger('click');
   expect(wrapper.emitted().confirm[0]).toEqual([
     {

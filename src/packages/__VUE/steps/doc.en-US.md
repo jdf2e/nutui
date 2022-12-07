@@ -140,9 +140,9 @@ app.use(Step);
 
 | Attribute       | Description                                         | Type             | Default |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	Show direction，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	Current step           | Number、String        | '0'      |
-| progress-dot            |  Dot step bar     | Boolean | false         |
+| direction	             | 	Show direction，`horizontal`,`vertical`  | String        | `horizontal`  | 
+| current	               | 	Current step           | Number、String        | `0`      |
+| progress-dot            |  Dot step bar     | Boolean | `false`         |
 
 ### Steps Events
 
@@ -154,10 +154,11 @@ app.use(Step);
 
 | Attribute       | Description                         | Type             | Default |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | Title of the process step         | String | Step |
-| content          | Descriptive text of process steps (supporting HTML structure)      | String | Step description |
-| icon          | Icon       | String | null |
-| icon-color          | Icon color       | String | null |
+| title            | Title of the process step         | String | `Step` |
+| content          | Descriptive text of process steps (supporting HTML structure)      | String | `Step description` |
+| icon          | [Icon Name](#/en-US/component/icon)       | String | null |
+| icon-color          | [Icon Color](#/en-US/component/icon)        | String | null |
+| size          | [Icon Size](#/zh-CN/component/icon)       | string | `12px` |
 
 ### Step Slots
 

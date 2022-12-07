@@ -47,8 +47,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { reactive, toRefs } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
+import { reactive, toRefs, onMounted } from 'vue';
 export default {
   props: {},
   setup() {

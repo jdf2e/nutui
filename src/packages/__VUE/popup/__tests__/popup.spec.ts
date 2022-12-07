@@ -1,6 +1,19 @@
-import { mount } from '@vue/test-utils';
+import { mount, config } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import PopUp from '../index.vue';
+import NutOverlay from '../../overlay/index.vue';
+import NutIcon from '../../icon/index.vue';
+
+beforeAll(() => {
+  config.global.components = {
+    NutOverlay,
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
@@ -18,7 +31,7 @@ test('should change z-index when using z-index prop', async () => {
   });
   await nextTick();
   const pop: any = wrapper.find('.nut-popup');
-  expect(pop.element.style.zIndex).toEqual('100');
+  expect(pop.element.style.zIndex).toEqual('99');
 });
 
 test('should change animation duration when using duration prop', () => {
@@ -205,7 +218,7 @@ test('event close test', async () => {
   });
   await wrapper.find('.nut-overlay').trigger('click');
   await sleep(2000);
-  expect(wrapper.emitted('close')).toBeTruthy();
+  expect(wrapper.emitted('click-overlay')).toBeTruthy();
 });
 
 test('event click-overlay test', async () => {

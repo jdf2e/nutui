@@ -20,7 +20,7 @@ test('endTime props', async () => {
     }
   });
   expect(wrapper.emitted('on-end')).toBeFalsy();
-  await sleep(1000);
+  await sleep(1100);
   expect(wrapper.emitted('on-end')).toBeTruthy();
 });
 

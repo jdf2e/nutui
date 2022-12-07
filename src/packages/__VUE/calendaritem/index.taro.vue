@@ -75,48 +75,9 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
+import { MonthInfo, Day } from './type';
 import NutScrollView from '../scrollView/index.taro.vue';
 const TARO_ENV = Taro.getEnv();
-
-type InputDate = string | string[];
-interface CalendarState {
-  yearMonthTitle: string;
-  containerHeight: string;
-  currDate: any;
-  propStartDate: string;
-  propEndDate: string;
-  currentIndex: number;
-  unLoadPrev: boolean;
-  touchParams: any;
-  transformY: number;
-  translateY: number;
-  scrollDistance: number;
-  defaultData: InputDate;
-  chooseData: any;
-  monthsData: any[];
-  dayPrefix: string;
-  startData: InputDate;
-  endData: InputDate;
-  isRange: boolean;
-  timer: number;
-  avgHeight: number;
-  monthsNum: number;
-  defaultRange: any[];
-  scrollTop: number;
-  compConthsDatas: any[];
-}
-interface Day {
-  day: string | number;
-  type: string;
-}
-
-interface MonthInfo {
-  curData: string[] | string;
-  title: string;
-  monthData: Day[];
-  cssHeight?: number;
-  cssScrollHeight?: number;
-}
 
 export default create({
   components: {
@@ -205,7 +166,7 @@ export default create({
       return slots.bottomInfo;
     });
     // state
-    const state: CalendarState = reactive({
+    const state: import('./type').CalendarState = reactive({
       yearMonthTitle: '',
       defaultRange: [0, 1],
       compConthsDatas: [],

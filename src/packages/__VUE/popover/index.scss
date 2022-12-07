@@ -125,15 +125,22 @@
         border-bottom: none;
       }
 
+      .nut-popover-item-img {
+        vertical-align: top;
+      }
+
       .nut-popover-menu-item-name {
-        margin-right: 12px;
-        margin-left: 8px;
         width: 100%;
+        word-break: keep-all;
       }
 
       &.nut-popover-menu-disabled {
         color: $popover-disable-color;
         cursor: not-allowed;
+      }
+
+      &.nut-popover-menu-taroitem {
+        display: flex;
       }
     }
 
@@ -262,4 +269,14 @@
 
 .nut-popover-leave-active {
   transition-timing-function: ease-in;
+}
+
+.nut-popover-content-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1999;
 }

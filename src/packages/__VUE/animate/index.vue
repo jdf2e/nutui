@@ -36,7 +36,7 @@ export default create({
     let classes = computed(() => {
       const prefixCls = componentName;
       return {
-        'nut-ani-container': true,
+        'nut-animate__container': true,
         [`${prefixCls}-${type.value}`]: action.value === 'initial' || state.clicked ? type.value : false,
         loop: loop.value
       };

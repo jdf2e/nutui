@@ -17,7 +17,7 @@
         </view>
       </view>
       <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
-        <span class="fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
+        <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
     </view>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">{{
@@ -42,12 +42,9 @@
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
-interface ElevatorData {
-  name: string;
-  id: number | string;
-  [key: string]: string | number;
-}
+
 export default create({
   props: {
     height: {
@@ -133,7 +130,7 @@ export default create({
       state.listHeight.push(height);
       for (let i = 0; i < state.listGroup.length; i++) {
         let item = state.listGroup[i];
-        height += item.clientHeight;
+        height += Math.floor(item.clientHeight);
         state.listHeight.push(height);
       }
     };

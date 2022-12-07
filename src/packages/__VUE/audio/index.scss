@@ -1,6 +1,6 @@
 .nut-theme-dark {
-  .nut-audio-icon {
-    .nut-audio-icon-box {
+  .nut-audio__icon {
+    .nut-audio__icon--box {
       background: $dark-color;
     }
   }
@@ -8,30 +8,30 @@
 
 .nut-audio {
   padding: 0;
-  .progress-wrapper {
+  .nut-audio__progress {
     display: flex;
     align-items: center;
     width: 100%;
     margin: 0px auto;
     padding: 10px 0;
 
-    .progress-bar-wrapper {
+    .nut-audio__bar {
       flex: 1;
       margin: 0 10px;
     }
 
-    .time {
+    .nut-audio__time {
       min-width: 50px;
       font-size: 12px;
       text-align: center;
     }
   }
 
-  .nut-audio-icon {
+  .nut-audio__icon {
     position: relative;
     display: inline-block;
 
-    .nut-audio-icon-box {
+    .nut-audio__icon--box {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,7 +40,7 @@
       background: #fff;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba($color: $text-color, $alpha: 0.5);
-      &.nut-audio-icon-stop {
+      &.nut-audio__icon--stop {
         &::after {
           position: absolute;
           left: 50%;
@@ -61,7 +61,7 @@
     margin-top: 30px;
   }
 
-  .custom-button {
+  .nut-audio__button--custom {
     width: 8px;
     height: 8px;
     color: #fff;

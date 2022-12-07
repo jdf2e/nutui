@@ -31,7 +31,7 @@
         </view>
       </view>
       <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
-        <span class="fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
+        <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
     </Nut-Scroll-View>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
@@ -56,15 +56,12 @@
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
 import NutScrollView from '../scrollView/index.taro.vue';
 
 import Taro from '@tarojs/taro';
-interface ElevatorData {
-  name: string;
-  id: number | string;
-  [key: string]: string | number;
-}
+
 export default create({
   components: {
     NutScrollView
@@ -160,7 +157,7 @@ export default create({
       for (let i = 0; i < state.listGroup.length; i++) {
         state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
         state.query.exec((res) => {
-          height += res[i][0].height;
+          height += Math.floor(res[i][0].height);
           state.listHeight.push(height);
         });
       }

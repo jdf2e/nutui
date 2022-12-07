@@ -26,9 +26,9 @@ app.use(Button);
 <template>
   <nut-addresslist
     :data="data"
-    @handelDelIcon="delClick"
-    @handelEditIcon="editClick"
-    @handelItem="itemClick"
+    @delIcon="delClick"
+    @editIcon="editClick"
+    @itemClick="itemClick"
     :show-bottom-button="false"
     :dataMapOptions="dataMapOptions"
   >
@@ -93,11 +93,11 @@ export default {
 <template>
   <nut-addresslist
     :data="data"
-    long-press-edition
+    long-press
     :show-bottom-button="false"
-    @handelDelIcon="delClick"
-    @handelEditIcon="editClick"
-    @handelItem="itemClick"
+    @DelIcon="delClick"
+    @EditIcon="editClick"
+    @Item="itemClick"
     @longPressCopyClick="copyClick"
     @longPressSetClick="setClick"
     @longPressDelClick="delClick"
@@ -142,9 +142,6 @@ export default {
       const copyClick = ()=>{
         Toast.text('Click To Copy');
       }
-      const holdDownClick = (event: Event,id:number)=>{
-        Toast.text('Long Press');
-      }
       const setClick = ()=>{
         Toast.text('Click On Settings');
       }
@@ -177,11 +174,11 @@ export default {
     :data="data"
     swipe-edition
     show-bottom-button
-    @handelItem="itemClick"
-    @handelEditIcon="editClick"
-    @handelDelIcon="delClick"
+    @Item="itemClick"
+    @EditIcon="editClick"
+    @DelIcon="delClick"
     @swipeDelClick="delClick"
-    @addAddressClick="addAddress"
+    @add="addAddress"
     :dataMapOptions="dataMapOptions"
   >
   </nut-addresslist>
@@ -247,7 +244,7 @@ export default {
 | 参数               | 说明             | 类型    | 默认值 |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | 地址数组         | Array   | -      |
-| long-press-edition | 长按功能         | Boolean | false  |
+| long-press | 长按功能         | Boolean | false  |
 | swipe-edition      | 右滑功能         | Boolean | false  |
 | show-bottom-button | 是否展示底部按钮 | Boolean | true   |
 
@@ -255,15 +252,14 @@ export default {
 
 | 事件名             | 说明                 | 回调参数          | 备注               |
 | ------------------ | -------------------- | ----------------- | ------------------ |
-| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
-| handel-edit-icon     | 点击编辑图标         | event: Event,item | 公共               |
-| handel-del-icon      | 点击删除图标         | event: Event,item | 公共               |
-| handel-item         | 点击地址列表每一项   | event: Event,item | 公共               |
-| add-address-click    | 点击底部添加地址按钮 | event: Event      | 公共               |
-| long-press-copy-click | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
-| long-press-set-click  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
-| long-press-del-click  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
-| swipe-del-click      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
+| del-icon      | 点击删除图标         | event: Event,item | 公共               |
+| edit-icon     | 点击编辑图标         | event: Event,item | 公共               |             |
+| click-item         | 点击地址列表每一项   | event: Event,item | 公共               |
+| add    | 点击底部添加地址按钮 | event: Event      | 公共               |
+| long-copy | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
+| long-set  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
+| long-del  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
+| swipe-del      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
 
 ### Slots
 
