@@ -1,112 +1,71 @@
-#  InfiniteLoading 滚动加载
+#  PullRefresh 下拉刷新
 
 ### 介绍
 
-列表滚动到底部自动加载更多数据。
+用于提供下拉刷新的交互操作。
 
 ### 安装
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { PullRefresh,Icon } from '@nutui/nutui';
 
   const app = createApp();
-  app.use(InfiniteLoading);
+  app.use(PullRefresh);
+  app.use(Icon);
+
 ```
 
 ### 基础用法
 
+下拉时会触发 refresh 事件，在回调事件中可进行异步操作刷新数据，操作完成之后将 v-model 设置为 false，即刷新完成。
 
 :::demo
 
 ```html
 <template>
-  <ul class="infiniteUl" id="scroll"  style='height: 300px;'>
-    <nut-infiniteloading
-        containerId = 'scroll'
-        :use-window='false'
-        :has-more="hasMore"
-        @load-more="loadMore"
-    >
-        <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</li>
-    </nut-infiniteloading>
-  </ul>
+  <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+    <div class="pull-block">向下拉试试吧！</div>
+  </nut-pullrefresh>
 </template>
 
 <script>
   import { ref,reactive,onMounted,toRefs} from 'vue';
   export default {
     setup(props) {
-      const hasMore = ref(true);
-      const data = reactive({
-        defultList: []
-      });
-      const loadMore = done => {  
+      const refresh = ref(false);
+      const refreshFun = () => {  
         setTimeout(() => {
-          const curLen = data.defultList.length;
-          for (let i = curLen; i < curLen + 10; i++) {
-            data.defultList.push(`${i}`);
-          }
-          if (data.defultList.length > 30) hasMore.value = false;
-          done()
-        }, 500);
+          refresh.value = false;
+        }, 3000);
       };
-      const init = () => {
-        for (let i = 0; i < 10; i++) {
-          data.defultList.push(`${i}`);
-        }
-      }
-      onMounted(() => {
-        init()
-      });
-      return { loadMore, hasMore, ...toRefs(data) };
+      return { refresh, refreshFun };
     }
   }
 </script>
 
-<style>
-.infiniteUl {
-  height: 300px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background:#eee
-}
-.infiniteLi {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgba(100, 100, 100, 1);
-  text-align: center;
-}
-</style>
 ```
 :::
-### 下拉刷新
+### 自定义文案
+
+下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
 ```html
 <template>
-  <ul class="infiniteUl" id="refreshScroll" style='height: 300px;'>
-    <nut-infiniteloading
-      pull-icon="JD"
-      container-id="refreshScroll"
-      :use-window="false"
-      :is-open-refresh="true"
-      :has-more="refreshHasMore"
-      @load-more="refreshLoadMore"
-      @refresh="refresh"
-    >
-      <li
-        class="infiniteLi"
-        v-for="(item, index) in refreshList"
-        :key="index"
-        >{{ item }}</li
-      >
-    </nut-infiniteloading>
-  </ul>
+  <nut-pullrefresh
+    v-model="refresh2"
+    loosingTxt="松开吧"
+    loadingTxt="玩命加载中..."
+    completeTxt="好啦"
+    @refresh="refreshFun"
+  >
+    <template #pullingTxt>
+      <div>用力拉</div>
+    </template>
+    <div class="pull-block">向下拉试试吧！</div>
+  </nut-pullrefresh>
 </template>
 
 <script>
@@ -114,126 +73,57 @@
   import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
-      const refreshHasMore = ref(true);
-      const data = reactive({
-        refreshList: []
-      });
-      const refreshLoadMore = done => {
+      const refresh2 = ref(false);
+      const refreshFun = () => {  
         setTimeout(() => {
-          const curLen = data.refreshList.length;
-          for (let i = curLen; i < curLen + 10; i++) {
-            data.refreshList.push(
-              `${i}`
-            );
-          }
-          if (data.refreshList.length > 30) refreshHasMore.value = false;
-          done()
-        }, 500);
+          refresh2.value = false;
+        }, 3000);
       };
-
-      const refresh = (done) => {
-        setTimeout(()=>{
-          Toast.success('刷新成功');
-          done()
-        },1000)
-      }
-      const init = () => {
-        for (let i = 0; i < 10; i++) {
-          data.refreshList.push(`${i}`);
-        }
-      }
-      onMounted(() => {
-        init()
-      });
-      return { refreshLoadMore, refreshHasMore, refresh, ...toRefs(data) };
+      return { refresh, refreshFun };
     }
   }
 </script>
 
-<style>
-.infiniteUl {
-  height: 300px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background:#eee
-}
-.infiniteLi {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgba(100, 100, 100, 1);
-  text-align: center;
-}
-</style>
 ```
 :::
-### 自定义加载文案
+### 自定义监听对象
+
+PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置，父级滚动元素的判定是通过父级是否设置了 `overflowY: scroll|auto|overlay `，若父级为 `Element`, 触发条件为 `Element.scrollTop === 0`。
+
 :::demo
 
 ```html
 <template>
-  <ul class="infiniteUl" id="customScroll">
-    <nut-infiniteloading
-      load-txt="loading"
-      load-more-txt="没有啦～"
-      container-id="customScroll"
-      :use-window="false"
-      :has-more="customHasMore"
-      @load-more="customLoadMore"
-    >
-      <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
-    </nut-infiniteloading>
-  </ul>
+  <div class="parentpage">
+    <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+      <div class="pull-letter" v-for="item in refreshList2">
+        <div>{{item}}</div>
+      </div>
+    </nut-pullrefresh>
+  </div>
 </template>
 
 <script>
-  import { ref,reactive,onMounted,toRefs} from 'vue';
+  import { ref } from 'vue';
   export default {
     setup(props) {
-      const customHasMore = ref(true);
-      const data = reactive({
-        customList: ['']
-      });
-      const customLoadMore = done => {
+      setup(props) {
+      const refresh = ref(false);
+      const refreshFun = () => {  
         setTimeout(() => {
-          const curLen = data.customList.length;
-          for (let i = curLen; i < curLen + 10; i++) {
-            data.customList.push(`${i}`);
-          }
-          if (data.customList.length > 30) customHasMore.value = false;
-          done()
-        }, 500);
+          refresh.value = false;
+        }, 3000);
       };
-      const init = () => {
-        for (let i = 0; i < 10; i++) {
-          data.customList.push(`${i}`);
-        }
-      }
-      onMounted(() => {
-        init()
-      });
-      return { customHasMore, customLoadMore,...toRefs(data) };
+      return { refresh, refreshFun };
+    }
     }
   }
 </script>
 
 <style>
-.infiniteUl {
-  height: 300px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background:#eee
-}
-.infiniteLi {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgba(100, 100, 100, 1);
-  text-align: center;
+.parentpage {
+  height: 600px;
+  overflow: auto;
 }
 </style>
 ```
@@ -245,29 +135,29 @@
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| has-more         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | Number | `200`               |
-| use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| container-id          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
-| load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| is-open-refresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pull-icon        | 下拉刷新[图标名称](#/zh-CN/component/icon)                        | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
-| pull-txt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| load-icon        | 上拉加载[图标名称](#/zh-CN/component/icon)                       | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
-| load-txt        | 上拉加载提示文案                         | String | `加载中...`                |
+| v-model        | 是否触发下拉刷新               | Boolean | `false`                |
+| pull-distance         | 触发下拉刷新的距离 | number \| string | `50`               |
+| head-height | 顶部内容高度     | number \| string | `50`  |
+| loading-icon         | 加载中状态时，loading 图标。为空表示去掉        | String | `loading`            |
+| pulling-txt         | 下拉过程提示文案                       | String | `下拉刷新`            |
+| loosing-txt         | 释放过程提示文案                       | String | `释放刷新`            |
+| loading-txt        | 加载过程提示文案                         | String | `加载中...`                |
+| complete-txt        | 刷新成功提示文案                       | String | ''           |
+| duration       | 动画加载时长                         | Number | 0.3                |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| load-more  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
-| scroll-change  | 实时监听滚动高度 | 滚动高度 |
-| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
+| change  | 下拉过程或状态改变时触发 | {status:string,distance:number} |
+| refresh  | 下拉刷新事件回调 | - |
 
 ### Slots
 
 | 名称 | 说明           | 
 |--------|----------------|
-| loading  | 自定义底部记载中提示 |
-| finished  | 自定义加载完成后的提示文案 |
+| pulling  | 下拉过程的顶部内容 |
+| loosing  | 释放过程中顶部内容 |
+| loading  | 加载过程中顶部内容 |
+| complete  | 加载完成顶部内容 |
+| default  | 自定义内容 |

@@ -85,7 +85,6 @@ export default create({
     const scroller = ref<HTMLElement>();
     const scrollParent = useScrollParent(scroller);
     const state = reactive({
-      scrollEl: window as Window | HTMLElement | (Node & ParentNode),
       beforeScrollTop: 0,
       isInfiniting: false,
       y: 0,

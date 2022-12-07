@@ -100,5 +100,11 @@ class Lang extends BaseLang {
     forward: 'Forward',
     mute: 'Mute'
   };
+
+  pullrefresh = {
+    pulling: 'Pull to refresh...',
+    loosing: 'Loose to refresh...',
+    loading: 'Loading...'
+  };
 }
 export default Lang;

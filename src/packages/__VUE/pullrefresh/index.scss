@@ -12,19 +12,17 @@
       height: 50px;
       transform: translateY(-100%);
       text-align: center;
-      line-height: 50px;
       font-size: 14px;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
-      // justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &-icon {
         width: 28px;
         height: 24px;
       }
       &-text {
-        font-size: 14px;
+        font-size: $font-size-2;
         color: $text-color;
       }
     }

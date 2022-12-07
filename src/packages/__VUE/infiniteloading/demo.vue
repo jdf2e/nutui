@@ -1,31 +1,16 @@
 <template>
   <div class="demo">
-    <nut-infiniteloading
-      v-model="infinityValue2"
-      load-txt="Loading..."
-      :load-more-txt="translate('none')"
-      :has-more="customHasMore"
-      @load-more="customLoadMore"
-    >
-      <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
-    </nut-infiniteloading>
-    <!-- <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
+    <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
       <nut-tabpane :title="translate('basic')">
-        <ul class="infiniteUl" id="scroll">
-          <nut-infiniteloading
-            v-model="infinityValue"
-            container-id="scroll"
-            :use-window="false"
-            :has-more="hasMore"
-            @load-more="loadMore"
-          >
+        <ul class="infiniteUl">
+          <nut-infiniteloading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
             <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
           </nut-infiniteloading>
         </ul>
       </nut-tabpane>
 
       <nut-tabpane :title="translate('customTxt')">
-        <ul class="infiniteUl" id="customScroll">
+        <ul class="infiniteUl">
           <nut-infiniteloading
             v-model="infinityValue2"
             load-txt="Loading..."
@@ -37,12 +22,12 @@
           </nut-infiniteloading>
         </ul>
       </nut-tabpane>
-    </nut-tabs> -->
+    </nut-tabs>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
+import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('infiniteloading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -162,7 +147,6 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo {
-  overflow: inherit !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
@@ -178,10 +162,11 @@ export default createDemo({
 }
 .infiniteUl {
   width: 100%;
+  height: calc(100vh - 120px);
   padding: 0;
   margin: 0;
-  /* overflow-y: auto; */
-  /* overflow-x: hidden; */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .infiniteLi {
   font-size: 14px;

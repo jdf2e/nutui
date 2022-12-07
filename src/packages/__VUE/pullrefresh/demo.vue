@@ -1,28 +1,30 @@
 <template>
   <div class="demo">
     <nut-tabs v-model="tabsValue" animatedTime="0">
-      <nut-tabpane title="基础用法">
+      <nut-tabpane :title="translate('basic')">
         <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
-          <div class="pull-block">向下拉试试吧！</div>
+          <div class="pull-block">{{ translate('content') }}</div>
         </nut-pullrefresh>
       </nut-tabpane>
-      <nut-tabpane title="自定义文案">
+      <nut-tabpane :title="translate('customTxt')">
         <nut-pullrefresh
           v-model="refresh2"
-          pullingTxt="用力拉"
-          loosingTxt="松开吧"
-          loadingTxt="玩命加载中..."
-          completeTxt="好啦"
+          :loosingTxt="translate('loose')"
+          :loadingTxt="translate('load')"
+          :completeTxt="translate('ok')"
           @refresh="refreshFun"
         >
-          <div class="pull-block">向下拉试试吧！</div>
+          <template #pulling>
+            <div>{{ translate('pull') }}</div>
+          </template>
+          <div class="pull-block">{{ translate('content') }}</div>
         </nut-pullrefresh>
       </nut-tabpane>
-      <nut-tabpane title="Tab 3">
+      <nut-tabpane :title="translate('listenerTxt')">
         <div class="parentpage">
           <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
-            <div class="pull-block" v-for="item in refreshList">
-              <div>item</div>
+            <div class="pull-letter" v-for="item in refreshList2">
+              <div>{{ item }}</div>
             </div>
           </nut-pullrefresh>
         </div>
@@ -37,22 +39,31 @@ import { createComponent } from '@/packages/utils/create';
 
 const { createDemo, translate } = createComponent('pullrefresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Toast } from '@/packages/nutui.vue';
 
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: '基础用法',
       pullRefresh: '下拉刷新',
-      customTxt: '自定义加载文案',
-      none: '没有啦~',
-      success: '刷新成功'
+      customTxt: '自定义文案',
+      listenerTxt: '自定义监听对象',
+      content: '向下拉试试吧！',
+      loose: '松开吧',
+      load: '玩命加载中...',
+      ok: '好啦',
+      pull: '用力拉'
     },
     'en-US': {
       basic: 'Basic Usage',
       pullRefresh: 'Pull to refresh',
-      customTxt: 'Custom loading copywriting',
-      none: 'No more',
-      success: 'Refresh success'
+      customTxt: 'Custom Tips',
+      listenerTxt: 'Customize the listener',
+      content: 'Try it down',
+      loose: 'Let go',
+      load: 'Desperate loading...',
+      ok: 'Ok!',
+      pull: 'Pull'
     }
   });
 
@@ -61,20 +72,51 @@ export default createDemo({
   setup() {
     initTranslate();
 
+    const letter: any[] = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'IJ',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z'
+    ];
+
     const refresh = ref(false);
     const refresh2 = ref(false);
 
     const data = reactive({
       tabsValue: 0,
       customList: [],
-      refreshList: new Array(10).fill(11)
+      refreshList: new Array(10).fill(11),
+
+      refreshList2: [].concat(letter)
     });
 
     const refreshFun = () => {
       setTimeout(() => {
-        console.log('加载中');
         refresh.value = false;
         refresh2.value = false;
+
+        Toast.text('刷新成功！');
       }, 3000);
     };
 
@@ -109,8 +151,15 @@ export default createDemo({
   padding-top: 60px;
 }
 
+.pull-letter {
+  font-size: 14px;
+  color: #333;
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+
 .parentpage {
   height: 600px;
-  /* background: #ee; */
+  overflow: auto;
 }
 </style>

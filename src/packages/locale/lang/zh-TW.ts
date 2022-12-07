@@ -100,5 +100,10 @@ class Lang extends BaseLang {
     forward: '快進',
     mute: '靜音'
   };
+  pullrefresh = {
+    pulling: '下拉刷新',
+    loosing: '釋放刷新',
+    loading: '加載中...'
+  };
 }
 export default Lang;
