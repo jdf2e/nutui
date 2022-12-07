@@ -34,7 +34,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -177,7 +177,7 @@ Support dynamic addition / deletion of pictures
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -224,7 +224,7 @@ Support dynamic addition / deletion of pictures
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -372,7 +372,7 @@ You can manually switch through `api` (`prev`, `next`)
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -528,8 +528,8 @@ You can manually switch through `api` (`prev`, `next`)
 | auto-play | Automatic rotation duration, 0 means no automatic rotation                                          | Number、String        | 0        |
 | init-page               | Initialize index value                   | Number、String         | 0    |
 | touchable             | if touchable to slide                                                      | Boolean         | true          |
-| is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
-| is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
+| is-prevent-default                  | Disable default events during sliding                                              | Boolean  | true           |
+| is-stop-propagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
 | is-center| The corresponding `width` and `height` must be passed to determine whether to display in the middle`  | Boolean   | false    |
 
 
@@ -539,6 +539,12 @@ You can manually switch through `api` (`prev`, `next`)
 | Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |
 | change            | Callback after sliding        |  Current index value |
+
+### Slots
+
+| Name | Description       |
+| ------ | ---------- |
+| page  | Custom Pager |
 
 
 
