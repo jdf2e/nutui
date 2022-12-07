@@ -55,6 +55,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
+    "@vue/compiler-dom": "^3.2.45",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-preset-taro": "3.5.6",
     "eslint": "^8.12.0",

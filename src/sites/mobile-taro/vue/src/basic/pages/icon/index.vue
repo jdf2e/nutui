@@ -55,11 +55,11 @@
 </template>
 
 <script lang="ts">
-import icons from './../../../../../../../packages/styles/font/config.json';
+import { config } from '@nutui/icons-vue';
 export default {
   props: {},
   setup() {
-    return { icons };
+    return { icons: [] };
   }
 };
 </script>

@@ -11,6 +11,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^4.20.0
   '@typescript-eslint/parser': ^4.20.0
   '@vitejs/plugin-vue': ^3.2.0
+  '@vue/compiler-dom': ^3.2.45
   '@vue/compiler-sfc': ^3.2.45
   '@vue/eslint-config-prettier': ^6.0.0
   '@vue/eslint-config-typescript': ^7.0.0
@@ -68,6 +69,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 4.33.0_b437dje45jwsli5vlhomcei76i
   '@typescript-eslint/parser': 4.33.0_77fvizpdb3y4icyeo2mf4eo7em
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
+  '@vue/compiler-dom': 3.2.45
   '@vue/compiler-sfc': 3.2.45
   '@vue/eslint-config-prettier': 6.0.0_wvmg4sjtwia6bdnpdvf46743dy
   '@vue/eslint-config-typescript': 7.0.0_ob3axklb7fo2mxqqmorgb74bbi
