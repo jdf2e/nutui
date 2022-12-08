@@ -9,6 +9,7 @@ specifiers:
   '@tarojs/mini-runner': 3.5.6
   '@tarojs/plugin-framework-vue3': 3.5.6
   '@tarojs/plugin-html': 3.5.6
+  '@tarojs/plugin-platform-weapp': 3.5.6
   '@tarojs/runtime': 3.5.6
   '@tarojs/taro': 3.5.6
   '@tarojs/webpack5-runner': 3.5.6
@@ -16,6 +17,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^4.15.1
   '@typescript-eslint/parser': ^4.15.1
   '@vue/babel-plugin-jsx': ^1.0.6
+  '@vue/compiler-dom': ^3.2.45
   '@vue/compiler-sfc': ^3.0.0
   babel-preset-taro: 3.5.6
   eslint: ^8.12.0
@@ -33,6 +35,7 @@ dependencies:
   '@nutui/nutui-taro': registry.npmmirror.com/@nutui/nutui-taro/3.2.7_vue@3.2.45
   '@tarojs/components': registry.npmmirror.com/@tarojs/components/3.5.6_vue@3.2.45
   '@tarojs/mini-runner': registry.npmmirror.com/@tarojs/mini-runner/3.5.6_vue@3.2.45
+  '@tarojs/plugin-platform-weapp': registry.npmmirror.com/@tarojs/plugin-platform-weapp/3.5.6_vue@3.2.45
   '@tarojs/runtime': registry.npmmirror.com/@tarojs/runtime/3.5.6
   '@tarojs/taro': registry.npmmirror.com/@tarojs/taro/3.5.6_vue@3.2.45
   vue: registry.npmmirror.com/vue/3.2.45
@@ -47,6 +50,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/4.33.0_ekowkkkwdr5ncjvzeqnheulnxa
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/4.33.0_hsf322ms6xhhd4b5ne6lb74y4a
   '@vue/babel-plugin-jsx': registry.npmmirror.com/@vue/babel-plugin-jsx/1.1.1_@babel+core@7.20.5
+  '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.45
   '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.45
   babel-preset-taro: registry.npmmirror.com/babel-preset-taro/3.5.6_zygvl4tir2cnojoreiobuixpcm
   eslint: registry.npmmirror.com/eslint/8.28.0

@@ -33,7 +33,7 @@ test('should render ActionSheet when visible is true', async () => {
       ]
     }
   });
-  const menuItem = wrapper.findAll('.nut-actionsheet-item');
+  const menuItem = wrapper.findAll('.nut-action-sheet__item');
   expect(menuItem.length).toBe(3);
 });
 test('should emit select event after clicking option', async () => {
@@ -44,7 +44,7 @@ test('should emit select event after clicking option', async () => {
       menuItems: [{ name: '选项一' }]
     }
   });
-  const menuItem = wrapper.find('.nut-actionsheet-item');
+  const menuItem = wrapper.find('.nut-action-sheet__item');
   menuItem.trigger('click');
   await nextTick();
   expect(wrapper.emitted('choose')).toHaveLength(1);
@@ -81,7 +81,7 @@ test('should render sure choose when use choose-tag-value', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item = wrapper.findAll<HTMLElement>('.nut-actionsheet-item');
+  let item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
   expect(item[0].element.style.color).toContain('238, 10, 36');
 });
 
@@ -95,7 +95,7 @@ test('should render sure color when use color', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item = wrapper.findAll<HTMLElement>('.nut-actionsheet-item');
+  let item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
   expect(item[0].element.style.color).toContain('green');
 });
 
@@ -108,7 +108,7 @@ test('should not emit select event after clicking disabled option', async () => 
     }
   });
 
-  wrapper.find('.nut-actionsheet-item').trigger('click');
+  wrapper.find('.nut-action-sheet__item').trigger('click');
   await nextTick();
   expect(wrapper.emitted('select')).toBeFalsy();
 });
@@ -124,7 +124,7 @@ test('should render description when use description', async () => {
     }
   });
   let desc = wrapper.find('.desc');
-  let title = wrapper.find('.nut-actionsheet-title');
+  let title = wrapper.find('.nut-action-sheet__title');
   expect(desc.exists()).toBeTruthy();
   expect(title.exists()).toBeTruthy();
 });
@@ -138,6 +138,6 @@ test('should emit cancel event after clicking cancel ', () => {
       cancelTxt: '取消'
     }
   });
-  wrapper.find('.nut-actionsheet-cancel').trigger('click');
+  wrapper.find('.nut-action-sheet__cancel').trigger('click');
   expect(wrapper.emitted('cancel')).toHaveLength(1);
 });

@@ -62,7 +62,7 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, ref } from '@vue/runtime-core';
+import { onMounted, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('comment');

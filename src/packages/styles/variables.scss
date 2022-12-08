@@ -279,7 +279,7 @@ $avatar-normal-height: 40px !default;
 
 //switch
 $switch-close-bg-color: #ebebeb !default;
-$switch-close--cline-bg-color: #f0f0f0 !default;
+$switch-close-cline-bg-color: #f0f0f0 !default;
 $switch-width: 36px !default;
 $switch-height: 21px !default;
 $switch-line-height: 21px !default;
@@ -303,7 +303,7 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-color: rgba($primary-color, 0.15) !default;
 $calendar-choose-font-color: $primary-color !default;
 $calendar-base-color: #333333 !default;
 $calendar-disable-color: #d1d0d0 !default;
@@ -369,7 +369,7 @@ $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range
 $range-tip-font-color: #333333 !default;
-$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color: rgba($primary-color, 0.15) !default;
 $range-bg-color-tick: #fa958c !default;
 $range-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $range-bar-btn-bg-color: $white !default;
@@ -447,7 +447,7 @@ $radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 $radio-label-button-border-color: $primary-color !default;
-$radio-label-button-background: rgba($primary-color, 0.05) !default;
+$radio-label-button-background: rgba($primary-color, 0.15) !default;
 $radio-label-margin-left: 15px !default;
 $radio-button-border-radius: 15px !default;
 $radio-label-font-size: 14px !default;

@@ -11,15 +11,15 @@
         <img :src="url" :alt="alt" @error="onError" />
       </template>
       <template v-else-if="icon">
-        <nut-icon v-bind="$attrs" class="icon" :name="iconStyles"></nut-icon>
+        <nut-icon v-bind="$attrs" class="nut-avatar__icon" :name="iconStyles"></nut-icon>
       </template>
-      <view class="text" v-if="isShowText">
+      <view class="nut-avatar__text" v-if="isShowText">
         <slot></slot>
       </view>
     </template>
     <!-- 折叠头像 -->
     <template v-if="showMax">
-      <view class="text">
+      <view class="nut-avatar__text">
         {{
           avatarGroup?.props?.maxContent
             ? avatarGroup?.props?.maxContent

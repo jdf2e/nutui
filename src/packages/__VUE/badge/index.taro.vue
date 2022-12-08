@@ -1,14 +1,14 @@
 <template>
   <view class="nut-badge">
-    <view class="slot-icons" v-show="!hidden && !dot" :style="stl">
+    <view class="nut-badge__icon" v-show="!hidden && !dot" :style="stl">
       <slot name="icons"></slot>
     </view>
     <slot></slot>
     <view
       v-show="!hidden && (content || dot)"
       v-text="content"
-      class="nut-badge__content sup"
-      :class="{ 'is-dot': dot }"
+      class="nut-badge__content nut-badge__content--sup"
+      :class="{ 'nut-badge__content--dot': dot }"
       :style="stl"
     >
     </view>

@@ -7,16 +7,16 @@
 .nut-circleprogress {
   position: relative;
 
-  &-hover {
+  &__hover {
     stroke: $circleprogress-primary-color;
     transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
   }
 
-  &-path {
+  &__path {
     stroke: $circleprogress-path-color;
   }
 
-  &-text {
+  &__text {
     position: absolute;
     top: 50%;
     left: 0;

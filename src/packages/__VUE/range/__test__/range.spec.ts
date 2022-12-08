@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
-import { nextTick, reactive, toRefs } from 'vue';
+import { nextTick } from 'vue';
 import Range from '../index.vue';
-import { trigger, triggerDrag } from '../../../utils/test/event';
+import { trigger, triggerDrag } from '../../../utils/unit';
 
 test('should render range when used ', async () => {
   const wrapper = mount(Range, {

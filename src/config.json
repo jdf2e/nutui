@@ -715,7 +715,23 @@
           "desc": "列表滚动到底部自动加载更多数据",
           "sort": 15,
           "show": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "exportEmpty": false,
+          "exportEmptyTaro": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "PullRefresh",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "在列表中通过手指下拉刷新加载新内容的交互操作",
+          "sort": 16,
+          "show": true,
+          "author": "yangxiaolu",
+          "exportEmpty": false,
+          "exportEmptyTaro": false
         },
         {
           "version": "3.0.0",

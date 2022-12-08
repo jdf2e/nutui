@@ -1,52 +1,33 @@
 <template>
   <div class="demo">
-    <nut-cell-group :title="translate('basic')">
-      <nut-cell>
-        <ul class="infiniteUl" id="scroll">
-          <nut-infiniteloading container-id="scroll" :use-window="false" :has-more="hasMore" @load-more="loadMore">
+    <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
+      <nut-tabpane :title="translate('basic')">
+        <ul class="infiniteUl">
+          <nut-infiniteloading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
             <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
           </nut-infiniteloading>
         </ul>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('pullRefresh')">
-      <nut-cell>
-        <ul class="infiniteUl" id="refreshScroll">
+      </nut-tabpane>
+
+      <nut-tabpane :title="translate('customTxt')">
+        <ul class="infiniteUl">
           <nut-infiniteloading
-            pull-icon="JD"
-            container-id="refreshScroll"
-            :use-window="false"
-            :is-open-refresh="true"
-            :has-more="refreshHasMore"
-            @load-more="refreshLoadMore"
-            @refresh="refresh"
-          >
-            <li class="infiniteLi" v-for="(item, index) in refreshList" :key="index">{{ item }}</li>
-          </nut-infiniteloading>
-        </ul>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('customTxt')">
-      <nut-cell>
-        <ul class="infiniteUl" id="customScroll">
-          <nut-infiniteloading
-            load-txt="loading"
+            v-model="infinityValue2"
+            load-txt="Loading..."
             :load-more-txt="translate('none')"
-            container-id="customScroll"
-            :use-window="false"
             :has-more="customHasMore"
             @load-more="customLoadMore"
           >
             <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
           </nut-infiniteloading>
         </ul>
-      </nut-cell>
-    </nut-cell-group>
+      </nut-tabpane>
+    </nut-tabs>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
+import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('infiniteloading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -73,72 +54,81 @@ export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    let { proxy } = getCurrentInstance() as any;
+    const letter: any[] = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'IJ',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z'
+    ];
 
     const hasMore = ref(true);
     const customHasMore = ref(true);
     const refreshHasMore = ref(true);
 
     const data = reactive({
+      tabsValue: 0,
+      infinityValue: false,
+      infinityValue2: false,
       defultList: [],
       customList: [],
       refreshList: []
     });
 
-    const loadMore = (done) => {
+    let cycle = 0;
+    let cycle2 = 0;
+
+    const loadMore = () => {
       setTimeout(() => {
-        const curLen = data.defultList.length;
-
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.defultList.push(`${i}`);
-        }
-
-        if (data.defultList.length > 30) hasMore.value = false;
-
-        done();
-      }, 500);
-    };
-
-    const customLoadMore = (done) => {
-      setTimeout(() => {
-        const curLen = data.customList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.customList.push(`${i}`);
-        }
-        if (data.customList.length > 30) customHasMore.value = false;
-        done();
-      }, 500);
-    };
-
-    const refreshLoadMore = (done) => {
-      setTimeout(() => {
-        const curLen = data.refreshList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.refreshList.push(`${i}`);
-        }
-        if (data.refreshList.length > 30) refreshHasMore.value = false;
-        done();
-      }, 500);
-    };
-
-    const refresh = (done) => {
-      setTimeout(() => {
-        proxy.$toast.text(translate('success'));
-        data.refreshList = data.refreshList.slice(0, 10);
-        refreshHasMore.value = true;
-        done();
+        data.defultList = data.defultList.concat(letter);
+        cycle++;
+        if (cycle > 2) hasMore.value = false;
+        data.infinityValue = false;
       }, 1000);
     };
 
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.defultList.push(`${i}`);
-        data.customList.push(`${i}`);
-        data.refreshList.push(`${i}`);
-      }
+    const customLoadMore = () => {
+      setTimeout(() => {
+        data.customList = data.customList.concat(letter);
+        cycle2++;
+
+        console.log(cycle2, data.customList);
+        if (cycle2 > 2) customHasMore.value = false;
+
+        data.infinityValue2 = false;
+      }, 1000);
+    };
+
+    const chagetabs = () => {
+      data.defultList = [].concat(letter);
+      data.customList = [].concat(letter);
+      data.infinityValue2 = false;
+      data.infinityValue = false;
+      customHasMore.value = true;
+      hasMore.value = true;
     };
     onMounted(() => {
-      init();
+      chagetabs();
     });
 
     return {
@@ -147,34 +137,42 @@ export default createDemo({
       customHasMore,
       customLoadMore,
       refreshHasMore,
-      refreshLoadMore,
-      refresh,
       translate,
-      ...toRefs(data)
+      ...toRefs(data),
+      chagetabs
     };
   }
 });
 </script>
 
 <style lang="scss" scoped>
+.demo {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 .nut-theme-dark {
   .infiniteLi {
     color: $dark-color;
   }
 }
+
+.nut-tabpane {
+  padding: 0 !important;
+  padding-left: 16px !important;
+}
 .infiniteUl {
-  height: 300px;
   width: 100%;
+  height: calc(100vh - 120px);
   padding: 0;
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .infiniteLi {
-  margin-top: 10px;
   font-size: 14px;
-  color: rgba(100, 100, 100, 1);
-  text-align: center;
+  color: #333;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
 }
 
 .loading {

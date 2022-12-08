@@ -1,23 +1,23 @@
 .nut-theme-dark {
-  .nut-actionsheet-panel {
-    .nut-actionsheet-cancel {
+  .nut-actionsheet {
+    .nut-action-sheet__cancel {
       border-top: 1px solid $dark-background2;
     }
-    .nut-actionsheet-title {
+    .nut-action-sheet__title {
       border-bottom: 1px solid $dark-background2;
     }
-    .nut-actionsheet-cancel,
-    .nut-actionsheet-item,
-    .nut-actionsheet-title {
+    .nut-action-sheet__cancel,
+    .nut-action-sheet__item,
+    .nut-action-sheet__title {
       background: $dark-background;
       color: $dark-color;
     }
   }
 }
 
-.nut-actionsheet-panel {
+.nut-actionsheet {
   display: block;
-  .nut-actionsheet-title {
+  .nut-action-sheet__title {
     display: block;
     padding: 10px;
     margin: 0;
@@ -27,32 +27,16 @@
     font-size: $font-size-base;
     color: $title-color;
   }
-
-  .nut-actionsheet-modal {
-    .nut-actionsheet-title,
-    .nut-actionsheet-sub-title {
-      padding: 5px 0;
-    }
-
-    .nut-actionsheet-sub-title {
-      display: block;
-      font-size: $font-size-small;
-      color: $title-color;
-      margin-inline-start: 0px;
-    }
-  }
-
-  .nut-actionsheet-menu {
+  .nut-action-sheet__menu {
     display: block;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .nut-actionsheet-cancel,
-  .nut-actionsheet-item {
+  .nut-action-sheet__cancel,
+  .nut-action-sheet__item {
     display: block;
-    //   height: 24px;
     padding: 10px;
     line-height: $actionsheet-item-line-height;
     font-size: $actionsheet-item-font-size;
@@ -63,27 +47,27 @@
     cursor: pointer;
   }
 
-  .desc {
+  .nut-action-sheet__desc {
     font-size: $actionsheet-item-font-size;
     color: #999;
     cursor: default;
   }
 
-  .subdesc {
+  .nut-action-sheet__subdesc {
     display: block;
     font-size: $actionsheet-item-subdesc-font-size;
     color: #999;
   }
 
-  .nut-actionsheet-item-disabled {
+  .nut-action-sheet__item--disabled {
     color: #e1e1e1 !important;
     cursor: not-allowed;
   }
-  .nut-actionsheet-item-loading {
+  .nut-action-sheet__item--loading {
     cursor: default;
   }
 
-  .nut-actionsheet-cancel {
+  .nut-action-sheet__cancel {
     margin-top: 5px;
     border-top: $actionsheet-item-cancel-border-top;
   }

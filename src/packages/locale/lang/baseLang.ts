@@ -84,5 +84,10 @@ export abstract class BaseLang {
     pullTxt: string;
     loadMoreTxt: string;
   };
+  abstract pullrefresh: {
+    pulling: string;
+    loosing: string;
+    loading: string;
+  };
 }
 export default BaseLang;

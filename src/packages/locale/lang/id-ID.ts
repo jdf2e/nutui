@@ -100,5 +100,10 @@ class Lang extends BaseLang {
     forward: 'Maju cepat',
     mute: 'Bisu'
   };
+  pullrefresh = {
+    pulling: 'Tarik ke bawah untuk menyegarkan',
+    loosing: 'Lepaskan Refresh',
+    loading: 'Memuat...'
+  };
 }
 export default Lang;

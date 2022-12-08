@@ -3,10 +3,10 @@
 
   <div class="nut-audio">
     <!-- 进度条 -->
-    <div class="progress-wrapper" v-if="type == 'progress'">
+    <div class="nut-audio__progress" v-if="type == 'progress'">
       <!-- 时间显示 -->
-      <div class="time">{{ currentDuration }}</div>
-      <div class="progress-bar-wrapper">
+      <div class="nut-audio__time">{{ currentDuration }}</div>
+      <div class="nut-audio__bar">
         <nut-range
           v-model="percent"
           hidden-range
@@ -15,18 +15,18 @@
           active-color="#fa2c19"
         >
           <template #button>
-            <div class="custom-button"></div>
+            <div class="nut-audio__button--custom"></div>
           </template>
         </nut-range>
       </div>
 
-      <div class="time">{{ duration }}</div>
+      <div class="nut-audio__time">{{ duration }}</div>
     </div>
 
     <!-- 自定义 -->
-    <div class="nut-audio-icon" v-if="type == 'icon'">
+    <div class="nut-audio__icon" v-if="type == 'icon'">
       <div
-        :class="['nut-audio-icon-box', playing ? 'nut-audio-icon-play' : 'nut-audio-icon-stop']"
+        :class="['nut-audio__icon--box', playing ? 'nut-audio__icon--play' : 'nut-audio__icon--stop']"
         @click="changeStatus"
       >
         <nut-icon v-if="playing" name="service" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>

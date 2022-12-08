@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^10.0.0
   '@commitlint/config-conventional': ^10.0.0
+  '@nutui/icons-vue': 0.0.2
   '@tarojs/components': 3.5.6
   '@tarojs/taro': 3.5.6
   '@types/jest': ^26.0.22
@@ -10,6 +11,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^4.20.0
   '@typescript-eslint/parser': ^4.20.0
   '@vitejs/plugin-vue': ^3.2.0
+  '@vue/compiler-dom': ^3.2.45
   '@vue/compiler-sfc': ^3.2.45
   '@vue/eslint-config-prettier': ^6.0.0
   '@vue/eslint-config-typescript': ^7.0.0
@@ -51,6 +53,7 @@ specifiers:
   vue-tsc: ^1.0.9
 
 dependencies:
+  '@nutui/icons-vue': 0.0.2
   '@tarojs/components': 3.5.6_vue@3.2.45
   consola: 2.15.3
   sass: 1.56.1
@@ -66,6 +69,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 4.33.0_b437dje45jwsli5vlhomcei76i
   '@typescript-eslint/parser': 4.33.0_77fvizpdb3y4icyeo2mf4eo7em
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
+  '@vue/compiler-dom': 3.2.45
   '@vue/compiler-sfc': 3.2.45
   '@vue/eslint-config-prettier': 6.0.0_wvmg4sjtwia6bdnpdvf46743dy
   '@vue/eslint-config-typescript': 7.0.0_ob3axklb7fo2mxqqmorgb74bbi
@@ -963,6 +967,12 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@nutui/icons-vue/0.0.2:
+    resolution: {integrity: sha512-l9ifwPCxfnX6SXAJiSASQpx8TJ6LR0WIQf6tzDBxWaIf4jWTl/3f2WKDtUkIaxlVJAwZx14UcL3XdirQzcmi8Q==}
+    dependencies:
+      vue: 3.2.45
+    dev: false
 
   /@rollup/pluginutils/5.0.2:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
@@ -2745,8 +2755,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
