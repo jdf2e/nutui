@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+    <Add color="red" width="100px" height="100px" />
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
       <Icon name="dongdong" />
@@ -57,7 +58,7 @@
 
 <script lang="ts">
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
-import { config } from '@nutui/icons-vue';
+import { IconFontConfig, Add } from '@nutui/icons-vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -82,7 +83,7 @@ import { Toast } from '@/packages/nutui.vue';
 import { Icon } from '@nutui/icons-vue';
 export default createDemo({
   props: {},
-  components: { Icon },
+  components: { Icon, Add },
   setup() {
     initTranslate();
     const copyTag = (name: string) => {
@@ -98,7 +99,7 @@ export default createDemo({
       }
       document.body.removeChild(input);
     };
-    return { icons: config, translate, currentLang, copyTag };
+    return { icons: IconFontConfig, translate, currentLang, copyTag };
   }
 });
 </script>
