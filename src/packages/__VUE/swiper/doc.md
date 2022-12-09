@@ -34,7 +34,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -177,7 +177,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -224,7 +224,7 @@ app.use(SwiperItem);
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -372,7 +372,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -529,8 +529,8 @@ app.use(SwiperItem);
 | auto-play | 自动轮播时长，0表示不会自动轮播                                          | Number、String        | 0        |
 | init-page               | 初始化索引值                   | Number、String         | 0    |
 | touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
+| is-prevent-default                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
+| is-stop-propagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
 | is-center               | 是否居中展示，必须传对应的`width` 和 `height`                    | Boolean         | false    |
 
 
@@ -540,6 +540,12 @@ app.use(SwiperItem);
 | 事件名           | 说明                   | 回调参数     |
 | ---------------- | ---------------------- | ------------ |
 | change            | 滑动之后的回调         | 当前索引值index |
+
+### Slots
+
+| 名称 | 说明       |
+| ------ | ---------- |
+| page  | 自定义分页器 |
 
 
 
