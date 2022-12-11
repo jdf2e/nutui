@@ -377,7 +377,7 @@
           "show": true,
           "taro": true,
           "author": "richard1015",
-          "styleDeps": []
+          "styleDeps": ["Sticky"]
         },
         {
           "version": "3.1.9",
@@ -651,7 +651,7 @@
           "show": true,
           "desc": "上传文件、图片",
           "author": "richard1015",
-          "styleDeps": ["Progress"]
+          "styleDeps": ["Progress", "Button"]
         },
         {
           "version": "3.0.0",
