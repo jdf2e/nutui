@@ -25,7 +25,7 @@ test('prop modelValue test', () => {
       modelValue: true
     }
   });
-  expect(wrapper.classes()).toContain('switch-open');
+  expect(wrapper.classes()).toContain('nut-switch-open');
 });
 
 test('prop disable test', () => {
@@ -54,7 +54,7 @@ test('prop  color and size on loading mode', () => {
       size: '16px'
     }
   });
-  const style = wrapper.find('.switch-button').findAll('i')[0].element.style;
+  const style = wrapper.find('.nut-switch-button').findAll('i')[0].element.style;
   expect(style.color).toEqual('blue');
   expect(style.fontSize).toEqual('16px');
 });

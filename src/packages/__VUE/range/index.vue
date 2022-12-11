@@ -1,6 +1,6 @@
 <template>
   <view :class="containerClasses">
-    <view class="min" v-if="!hiddenRange">{{ +min }}</view>
+    <view class="nut-range-min" v-if="!hiddenRange">{{ +min }}</view>
     <view ref="root" :style="wrapperStyle" :class="classes" @click.stop="onClick">
       <view class="nut-range-mark" v-if="marksList.length > 0">
         <span v-for="marks in marksList" :key="marks" :class="markClassName(marks)" :style="marksStyle(marks)">
@@ -70,7 +70,7 @@
         </template>
       </view>
     </view>
-    <view class="max" v-if="!hiddenRange">{{ +max }}</view>
+    <view class="nut-range-max" v-if="!hiddenRange">{{ +max }}</view>
   </view>
 </template>
 <script lang="ts">

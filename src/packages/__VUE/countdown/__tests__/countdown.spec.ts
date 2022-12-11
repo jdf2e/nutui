@@ -32,8 +32,8 @@ test('format props', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-cd-block').exists()).toBeTruthy();
-  const prevSnapShot = wrapper.find('.nut-cd-block');
+  expect(wrapper.find('.nut-countdown__content').exists()).toBeTruthy();
+  const prevSnapShot = wrapper.find('.nut-countdown__content');
   expect(prevSnapShot.text() == '00天00时00分00秒').toBe(true);
 });
 

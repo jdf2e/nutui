@@ -11,7 +11,7 @@
   >
     <view class="nut-address">
       <view class="nut-address__header">
-        <view class="arrow-back" @click="switchModule">
+        <view class="nut-address__header-back" @click="switchModule">
           <nut-icon
             v-bind="$attrs"
             :name="backBtnIcon"
@@ -28,35 +28,35 @@
           }}
         </view>
 
-        <view class="arrow-close" @click="handClose('cross')">
+        <view class="nut-address__header-close" @click="handClose('cross')">
           <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
       <!-- 请选择 -->
-      <view class="custom-address" v-if="['custom', 'custom2'].includes(privateType)">
-        <view class="nut-address-region-tab" ref="tabRegion">
+      <view class="nut-address__custom" v-if="['custom', 'custom2'].includes(privateType)">
+        <view class="nut-address__region" ref="tabRegion">
           <view
-            :class="['tab-item', index == tabIndex ? 'active' : '']"
+            :class="['nut-address__region-item', index == tabIndex ? 'active' : '']"
             v-for="(item, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, index)"
           >
             <view>{{ getTabName(item, index) }} </view>
           </view>
-          <view class="active tab-item" v-if="tabIndex == selectedRegion.length">
+          <view class="active nut-address__region-item" v-if="tabIndex == selectedRegion.length">
             <view>{{ getTabName(null, selectedRegion.length) }} </view>
           </view>
 
-          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
+          <view class="nut-address__region-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
 
-        <view class="region-con" v-if="privateType == 'custom'">
-          <ul class="region-group">
+        <view class="nut-address__detail" v-if="privateType == 'custom'">
+          <ul class="nut-address__detail-list">
             <li
               v-for="(item, index) in regionList"
               :key="index"
-              :class="['region-item', selectedRegion[tabIndex]?.id == item.id ? 'active' : '']"
+              :class="['nut-address__detail-item', selectedRegion[tabIndex]?.id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
               <div>
@@ -71,7 +71,7 @@
           </ul>
         </view>
 
-        <view class="elevator-group" v-else>
+        <view class="nut-address__elevator-group" v-else>
           <nut-elevator
             :height="height"
             :index-list="transformData(regionList)"
@@ -81,11 +81,11 @@
       </view>
 
       <!-- 配送至 -->
-      <view class="exist-address" v-else>
-        <div class="exist-address-group">
-          <ul class="exist-ul">
+      <view class="nut-address__exist" v-else>
+        <div class="nut-address__exist-group">
+          <ul class="nut-address__exist-group-list">
             <li
-              :class="['exist-item', item.selectedAddress ? 'active' : '']"
+              :class="['nut-address__exist-group-item', item.selectedAddress ? 'active' : '']"
               v-for="(item, index) in existAddress"
               :key="index"
               @click="selectedExist(item)"
@@ -94,10 +94,10 @@
                 :is="renderIcon(item.selectedAddress ? selectedIcon : defaultIcon)"
                 v-bind="$attrs"
               ></component>
-              <div class="exist-item-info">
-                <div class="exist-item-info-name" v-if="item.name">{{ item.name }}</div>
-                <div class="exist-item-info-phone" v-if="item.phone">{{ item.phone }}</div>
-                <div class="exist-item-info-bottom">
+              <div class="nut-address__exist-item-info">
+                <div class="nut-address__exist-item-info-name" v-if="item.name">{{ item.name }}</div>
+                <div class="nut-address__exist-item-info-phone" v-if="item.phone">{{ item.phone }}</div>
+                <div class="nut-address__exist-item-info-bottom">
                   <view>
                     {{ item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}
                   </view>
@@ -107,8 +107,10 @@
           </ul>
         </div>
 
-        <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
-          <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
+        <div class="nut-address__exist-choose" @click="switchModule" v-if="isShowCustomAddress">
+          <div class="nut-address__exist-choose-btn">{{
+            customAndExistTitle || translate('chooseAnotherAddress')
+          }}</div>
         </div>
       </view>
 

@@ -2,19 +2,23 @@
   <view :class="classes">
     <view
       v-show="showNoticeBar"
-      class="nut-noticebar-page"
-      :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
+      class="nut-noticebar__page"
+      :class="{
+        'nut-noticebar__page--withicon': closeMode,
+        'nut-noticebar__page--close': closeMode,
+        'nut-noticebar__page--wrapable': wrapable
+      }"
       :style="barStyle"
       @click="handleClick"
       v-if="direction == 'across'"
     >
-      <view class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
+      <view class="nut-noticebar__page-lefticon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
         <slot name="left-icon"><nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon></slot>
       </view>
-      <view ref="wrap" :class="`wrap wrap${id}`">
+      <view ref="wrap" :class="`nut-noticebar__page-wrap wrap${id}`">
         <view
           ref="content"
-          class="content"
+          class="nut-noticebar__page-wrap-content"
           :class="[animationClass, { 'nut-ellipsis': isEllipsis }, `content${id}`]"
           :style="contentStyle"
           @animationend="onAnimationEnd"
@@ -23,16 +27,16 @@
           <slot>{{ text }}</slot>
         </view>
       </view>
-      <view v-if="closeMode || rightIcon" class="right-icon" @click.stop="onClickIcon">
+      <view v-if="closeMode || rightIcon" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
         <slot name="right-icon">
           <nut-icon v-bind="$attrs" :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon
         ></slot>
       </view>
     </view>
 
-    <view class="nut-noticebar-vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
+    <view class="nut-noticebar__vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
       <template v-if="slots.default">
-        <view class="horseLamp_list" :style="horseLampStyle">
+        <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <ScrollItem
             v-for="(item, index) in scrollList"
             v-bind:key="index"
@@ -43,9 +47,9 @@
       </template>
 
       <template v-else>
-        <ul class="horseLamp_list" :style="horseLampStyle">
+        <ul class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <li
-            class="horseLamp_list_item"
+            class="nut-noticebar__vertical-item"
             v-for="(item, index) in scrollList"
             :key="index"
             :style="{ height: pxCheck(height) }"

@@ -1,7 +1,6 @@
 <template>
   <view :class="classes">
     <view class="nut-timedetail__detail nut-timedetail__detail--moring">
-      <!-- <view class="nut-timedetail__detail__time">上午</view> -->
       <view class="nut-timedetail__detail__list">
         <view :class="getClass(item)" v-for="item in renderData" :key="item" @click="handleTime(item)">{{ item }}</view>
       </view>

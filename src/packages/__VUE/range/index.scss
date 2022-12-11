@@ -1,8 +1,8 @@
 .nut-theme-dark {
   .nut-range-container {
     background: $dark-background;
-    .min,
-    .max {
+    .nut-range-min,
+    .nut-range-max {
       color: $dark-color-gray;
     }
     .nut-range {
@@ -23,8 +23,8 @@
   width: 100%;
   height: 4px;
   align-items: center;
-  .min,
-  .max {
+  .nut-range-min,
+  .nut-range-max {
     font-size: $font-size-1;
     color: $range-tip-font-color;
     user-select: none;

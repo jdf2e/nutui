@@ -5,14 +5,14 @@
     </view>
     <view
       v-if="label"
-      class="nut-input-label"
+      class="nut-input__label"
       :class="labelClass"
       :style="{
         width: `${labelWidth}px`,
         textAlign: labelAlign
       }"
     >
-      <view class="label-string">
+      <view class="nut-input__label-string">
         {{ label }}
         {{ colon ? ':' : '' }}
       </view>
@@ -270,10 +270,10 @@ export default create({
       return {
         [prefixCls]: true,
         center: props.center,
-        [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-required`]: props.required,
-        [`${prefixCls}-error`]: props.error,
-        [`${prefixCls}-border`]: props.border
+        [`${prefixCls}--disabled`]: props.disabled,
+        [`${prefixCls}--required`]: props.required,
+        [`${prefixCls}--error`]: props.error,
+        [`${prefixCls}--border`]: props.border
       };
     });
 

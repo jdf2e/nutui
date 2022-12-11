@@ -7,9 +7,8 @@
   overflow: hidden;
   box-sizing: border-box;
   background-color: #f7f8fa;
-  .dmitem {
+  &__item {
     width: 100px;
-    // max-width: 150px;
     display: block;
     position: absolute;
     right: 0;
@@ -30,27 +29,8 @@
 }
 .nut-theme-dark {
   .nut-barrage {
-    .dmitem {
+    .nut-barrage__item {
       color: $dark-color-gray;
     }
   }
 }
-
-// @keyframes moving {
-//   from {
-//     transform: translateX(100%);
-//   }
-//   to {
-//     transform: translateX(-150%);
-//     // transform: translateX(-180%);
-//     // transform: translateX(var(--move-distance));
-//   }
-// }
-// @-webkit-keyframes moving {
-//   from {
-//     -webkit-transform: translateX(100%);
-//   }
-//   to {
-//     transform: translateX(-150%);
-//   }
-// }

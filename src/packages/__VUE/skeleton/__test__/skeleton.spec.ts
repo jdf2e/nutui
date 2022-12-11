@@ -32,7 +32,7 @@ test('should allow to disable animation', async () => {
     }
   });
 
-  expect(wrapper.find('.skeleton').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-skeleton').exists()).toBeTruthy();
 
   await wrapper.setProps({ animated: false });
   expect(wrapper.find('.skeleton-animation').exists()).toBeFalsy();

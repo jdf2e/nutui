@@ -30,8 +30,8 @@ test('address render', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.arrow-close').exists()).toBeTruthy();
-  expect(wrapper.findAll('.region-item').length).toBe(5);
+  expect(wrapper.find('.nut-address__header-close').exists()).toBeTruthy();
+  expect(wrapper.findAll('.nut-address__detail-item').length).toBe(5);
 });
 
 test('choose address item', async () => {
@@ -45,9 +45,9 @@ test('choose address item', async () => {
       teleportDisable: false
     }
   });
-  wrapper.find('.region-item').trigger('click');
+  wrapper.find('.nut-address__detail-item').trigger('click');
   await nextTick();
-  expect(wrapper.find('.tab-item').text()).toEqual('北京');
+  expect(wrapper.find('.nut-address__region-item ').text()).toEqual('北京');
 });
 
 test('default choose address', async () => {
@@ -64,9 +64,9 @@ test('default choose address', async () => {
   });
   wrapper.vm.initCustomSelected();
   await nextTick();
-  expect(wrapper.findAll('.tab-item')[0].text()).toEqual('北京');
-  expect(wrapper.findAll('.tab-item')[1].text()).toEqual('朝阳区');
-  expect(wrapper.findAll('.tab-item')[2].text()).toEqual('八里庄街道');
+  expect(wrapper.findAll('.nut-address__region-item ')[0].text()).toEqual('北京');
+  expect(wrapper.findAll('.nut-address__region-item ')[1].text()).toEqual('朝阳区');
+  expect(wrapper.findAll('.nut-address__region-item ')[2].text()).toEqual('八里庄街道');
 });
 
 test('Exist address', async () => {
@@ -81,7 +81,7 @@ test('Exist address', async () => {
   });
   await nextTick();
   expect(wrapper.find('.choose-other').exists()).toBeFalsy();
-  expect(wrapper.findAll('.exist-item').length).toBe(3);
+  expect(wrapper.findAll('.nut-address__exist-group-item').length).toBe(3);
 });
 
 test('Exist address choose event', async () => {
@@ -94,7 +94,7 @@ test('Exist address choose event', async () => {
     }
   });
   await nextTick();
-  wrapper.find('.exist-item').trigger('click');
+  wrapper.find('.nut-address__exist-group-item').trigger('click');
   const chooseAddress = wrapper.emitted().selected[0];
   expect((chooseAddress as []).length).toBe(3);
 });
@@ -118,6 +118,6 @@ test('Exist address & list address', async () => {
 
   changeBtn.trigger('click');
   await nextTick();
-  expect(wrapper.find('.arrow-back').exists()).toBeTruthy();
-  expect(wrapper.find('.custom-address').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-address__header-back').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-address__custom').exists()).toBeTruthy();
 });

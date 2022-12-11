@@ -7,20 +7,22 @@
     :overlay="overlay"
     @click-overlay="closeBoard()"
     :teleportDisable="teleportDisable"
-    overlay-class="nut-numberkeyboard-overlay"
+    overlay-class="nut-number-keyboard-overlay"
   >
-    <div class="nut-numberkeyboard" ref="root">
-      <div class="number-board-header" v-if="title">
-        <h3 class="tit">{{ title }}</h3>
-        <span class="keyboard-close" v-if="type == 'default'" @click="closeBoard()">{{ translate('done') }}</span>
+    <div class="nut-number-keyboard" ref="root">
+      <div class="nut-number-keyboard__header" v-if="title">
+        <h3 class="nut-number-keyboard__title">{{ title }}</h3>
+        <span class="nut-number-keyboard__close" v-if="type == 'default'" @click="closeBoard()">{{
+          translate('done')
+        }}</span>
       </div>
-      <div class="number-board-body">
-        <div class="number-board">
+      <div class="nut-number-keyboard__body">
+        <div class="nut-number-keyboard__keys">
           <div
             :class="[
-              'key-board-wrapper',
+              'nut-key__wrapper',
               {
-                'key-board-wrapper-large':
+                'nut-key__wrapper--wider':
                   item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
               }
             ]"
@@ -29,10 +31,10 @@
           >
             <div
               :class="[
-                'key',
-                { active: item.id == clickKeyIndex },
-                { lock: item.type == 'lock' },
-                { delete: item.type == 'delete' }
+                'nut-key',
+                { 'nut-key--active': item.id == clickKeyIndex },
+                { 'nut-key--lock': item.type == 'lock' },
+                { 'nut-key--delete': item.type == 'delete' }
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
               @touchmove="(event) => onTouchMove(event)"
@@ -50,10 +52,10 @@
             </div>
           </div>
         </div>
-        <div class="number-board-sidebar" v-if="type == 'rightColumn'">
-          <div class="key-board-wrapper">
+        <div class="nut-number-keyboard__sidebar" v-if="type == 'rightColumn'">
+          <div class="nut-key__wrapper">
             <div
-              :class="['key', { active: clickKeyIndex == 'delete' }]"
+              :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
               @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
               @touchmove="(event) => onTouchMove({ id: 'delete', type: 'delete' }, event)"
               @touchend="onTouchEnd"
@@ -63,8 +65,8 @@
               />
             </div>
           </div>
-          <div class="key-board-wrapper key-board-finish" @click="closeBoard()">
-            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]">
+          <div class="nut-key__wrapper nut-key__wrapper--finish" @click="closeBoard()">
+            <div :class="['nut-key', 'nut-key--finish ', { activeFinsh: clickKeyIndex == 'finish' }]">
               {{ confirmText || translate('done') }}
             </div>
           </div>

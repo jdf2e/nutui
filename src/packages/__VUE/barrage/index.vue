@@ -131,22 +131,22 @@ export default create({
 
       if (slotDefault && typeof danmuList.value[_index] == 'object') {
         el = danmuList.value[_index];
-        if (el?.classList?.contains('dmitem')) {
-          el.classList.remove('dmitem');
+        if (el?.classList?.contains('nut-barrage__item')) {
+          el.classList.remove('nut-barrage__item');
         }
         if (el?.classList?.contains('move')) {
           el.classList.remove('move');
         }
-        el?.classList?.add('dmitem');
+        el?.classList?.add('nut-barrage__item');
       } else {
         el.innerHTML = danmuList.value[_index] as string;
-        el.classList.add('dmitem');
+        el.classList.add('nut-barrage__item');
         dmContainer.value.appendChild(el);
       }
 
       // let el = document.createElement(`div`);
       // el.innerHTML = danmuList.value[_index] as string;
-      // el.classList.add('dmitem');
+      // el.classList.add('nut-barrage__item');
       // dmContainer.value.appendChild(el);
       nextTick(() => {
         const height = el.offsetHeight;

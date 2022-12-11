@@ -1,21 +1,21 @@
 <template>
   <view :class="classes" ref="scroller">
-    <view class="nut-infinite-container">
+    <view class="nut-infinite__container">
       <slot></slot>
     </view>
 
-    <view class="nut-infinite-bottom">
+    <view class="nut-infinite__bottom">
       <template v-if="isInfiniting">
-        <view class="bottom-box">
+        <view class="nut-infinite__bottom-box">
           <slot name="loading">
-            <nut-icon v-if="loadIcon" class="bottom-img" v-bind="$attrs" :name="loadIcon"></nut-icon>
-            <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
+            <nut-icon v-if="loadIcon" class="nut-infinite__bottom-box__img" v-bind="$attrs" :name="loadIcon"></nut-icon>
+            <view class="nut-infinite__bottom-box__text">{{ loadTxt || translate('loading') }}</view>
           </slot>
         </view>
       </template>
       <template v-else-if="!hasMore">
         <slot name="finished">
-          <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+          <view class="nut-infinite__bottom-tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
         </slot>
       </template>
     </view>

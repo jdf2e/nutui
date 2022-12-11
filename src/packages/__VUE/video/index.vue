@@ -13,7 +13,7 @@
     >
       <source :src="source.src" :type="source.type" />
     </video>
-    <div class="playing-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
+    <div class="nut-video-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
     <div
       class="nut-video-play-btn"
       v-if="showToolbox && !isDisabled"
@@ -24,15 +24,15 @@
     <div
       class="nut-video-controller"
       v-show="showToolbox && !isDisabled"
-      :class="{ 'show-control': !state.playing, 'hide-control': state.playing }"
+      :class="{ 'nut-video-controller--show': !state.playing, 'nut-video-controller--hide': state.playing }"
     >
-      <div class="control-play-btn" @click="play"></div>
-      <div class="current-time">{{ videoSet.displayTime }}</div>
-      <div class="progress-container">
-        <div class="progress" ref="progressBar">
+      <div class="nut-video-controller__playbtn" @click="play"></div>
+      <div class="nut-video-controller__now">{{ videoSet.displayTime }}</div>
+      <div class="nut-video-controller__progress">
+        <div class="nut-video-controller__progress-value" ref="progressBar">
           <div class="buffered" :style="{ width: `${videoSet.loaded}%` }"></div>
           <div
-            class="video-ball"
+            class="nut-video-controller__ball"
             :style="{
               transform: `translate3d(${videoSet.progress.current}px, -50%, 0)`
             }"
@@ -40,19 +40,19 @@
             @touchstart.stop="touchSlidSrart($event)"
             @touchend.stop="touchSlidEnd($event)"
           >
-            <div class="move-handle"></div>
+            <div class="nut-video-controller__ball-move"></div>
           </div>
-          <div class="played" ref="playedBar"></div>
+          <div class="nut-video-controller__played" ref="playedBar"></div>
         </div>
       </div>
-      <div class="duration-time">{{ videoSet.totalTime }}</div>
-      <div class="volume" @click="handleMuted" :class="{ muted: state.isMuted }"></div>
-      <div class="fullscreen-icon" @click="fullScreen"></div>
+      <div class="nut-video-controller__total">{{ videoSet.totalTime }}</div>
+      <div class="nut-video-controller__volume" @click="handleMuted" :class="{ muted: state.isMuted }"></div>
+      <div class="nut-video-controller__full" @click="fullScreen"></div>
     </div>
     <!-- 错误弹窗 -->
     <div class="nut-video-error" v-show="state.isError">
-      <p class="lose">{{ translate('errorTip') }}</p>
-      <p class="retry" @click="retry">{{ translate('clickRetry') }}</p>
+      <p class="nut-video-error-tip">{{ translate('errorTip') }}</p>
+      <p class="nut-video-error-retry" @click="retry">{{ translate('clickRetry') }}</p>
     </div>
   </div>
 </template>
@@ -194,7 +194,7 @@ export default create({
 
     const customerInit = () => {
       const $player = root.value;
-      const $progress = root.value!.getElementsByClassName('progress')[0];
+      const $progress = root.value!.getElementsByClassName('nut-video-controller__progress-value')[0];
       // 播放器位置
       (state.player.$player as any) = $player;
       (state.progressBar.progressElm as any) = $progress;

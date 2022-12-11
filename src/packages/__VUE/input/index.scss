@@ -1,7 +1,7 @@
 .nut-theme-dark {
   .nut-input {
     background: $dark-background;
-    &-label {
+    &__label {
       color: $dark-color;
     }
     .input-text,
@@ -35,7 +35,7 @@ textarea {
   &.center {
     align-items: center;
   }
-  &.nut-input-border {
+  &--border {
     border-bottom: 1px solid $input-border-bottom;
   }
 
@@ -53,16 +53,11 @@ textarea {
     resize: none;
   }
 
-  &-label {
+  &__label {
     width: 80px;
     overflow: hidden;
     margin-right: 6px;
     text-align: left;
-    .label-string {
-      // overflow: hidden;
-      // white-space: nowrap;
-      // text-overflow: ellipsis;
-    }
   }
   &-value {
     flex: 1;
@@ -125,7 +120,7 @@ textarea {
   .nut-button {
     margin-left: 10px;
   }
-  &.nut-input-required {
+  &--required {
     &::before {
       position: absolute;
       left: 14px;
@@ -133,7 +128,7 @@ textarea {
       content: '*';
     }
   }
-  &-disabled {
+  &--disabled {
     color: $input-disabled-color !important;
     input:disabled {
       background: none;

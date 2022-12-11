@@ -25,8 +25,8 @@ export const component = (componentName: string) => {
         return {
           [prefixCls]: true,
           ['round']: props.round,
-          [`popup-${props.position}`]: true,
-          [`popup-${props.position}--safebottom`]: props.position === 'bottom' && props.safeAreaInsetBottom,
+          [`nut-popup--${props.position}`]: true,
+          [`nut-popup--${props.position}--safebottom`]: props.position === 'bottom' && props.safeAreaInsetBottom,
           [props.popClass]: true
         };
       });
@@ -40,7 +40,7 @@ export const component = (componentName: string) => {
       });
 
       const transitionName: ComputedRef = computed(() => {
-        return props.transition ? props.transition : `popup-slide-${props.position}`;
+        return props.transition ? props.transition : `nut-popup-slide-${props.position}`;
       });
 
       const open = () => {

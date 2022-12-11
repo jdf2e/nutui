@@ -1,12 +1,12 @@
 <template>
-  <view ref="collapseDom">
+  <view :class="classes" ref="collapseDom">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { getCurrentInstance, onMounted, provide, ref, watch } from 'vue';
+import { computed, getCurrentInstance, onMounted, provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('collapse');
+const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     active: {
@@ -15,10 +15,6 @@ export default create({
     accordion: {
       type: Boolean
     },
-    // expandIconPosition: {
-    //   type: String,
-    //   default: 'right'
-    // },
     titleIcon: {
       type: String,
       default: ''
@@ -56,6 +52,12 @@ export default create({
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
     const collapseChldren: any = ref([]);
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
     watch(
       () => props.active,
       (newval: any, oldval) => {
@@ -108,7 +110,7 @@ export default create({
       isExpanded
     });
 
-    return { collapseDom };
+    return { collapseDom, classes };
   }
 });
 </script>

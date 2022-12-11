@@ -7,7 +7,7 @@
 }
 
 .nut-menu-item {
-  .active {
+  &.active {
     font-weight: $menu-active-item-font-weight;
     color: $menu-item-active-text-color !important;
   }
@@ -41,7 +41,7 @@
   transform: none;
 }
 
-.placeholder-element {
+.nut-menu-item-placeholder-element {
   position: fixed;
   top: -$menu-bar-line-height;
   left: 0;
