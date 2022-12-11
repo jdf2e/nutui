@@ -39,7 +39,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
@@ -56,7 +56,7 @@ export default create({
       default: 'title'
     },
     indexList: {
-      type: Array,
+      type: Array as PropType<any[]>,
       default: () => {
         return [];
       }
@@ -117,7 +117,7 @@ export default create({
       return el.getAttribute(prefix + name) as string;
     };
 
-    const setListGroup = (el: HTMLLIElement) => {
+    const setListGroup = (el: any) => {
       nextTick(() => {
         if (!state.listGroup.includes(el) && el != null) {
           state.listGroup.push(el);
