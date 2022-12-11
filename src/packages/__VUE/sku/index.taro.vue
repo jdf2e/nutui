@@ -67,6 +67,7 @@ import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
+import Popup from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku');
 
@@ -181,7 +182,8 @@ export default create({
     SkuHeader,
     SkuSelect,
     SkuStepper,
-    SkuOperate
+    SkuOperate,
+    [Popup.name]: Popup
   },
 
   setup(props: any, { emit, slots }) {

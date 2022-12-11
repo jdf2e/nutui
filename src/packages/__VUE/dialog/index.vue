@@ -49,11 +49,16 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
+import Popup from '../popup/index.vue';
+import Button from '../button/index.vue';
 
 import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
-  components: {},
+  components: {
+    [Popup.name]: Popup,
+    [Button.name]: Button
+  },
   props: {
     ...popupProps,
     closeOnClickOverlay: {

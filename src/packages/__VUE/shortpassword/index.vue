@@ -50,8 +50,12 @@
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Popup from '../popup/index.vue';
 const { create, translate } = createComponent('shortpassword');
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     title: {
       type: String,

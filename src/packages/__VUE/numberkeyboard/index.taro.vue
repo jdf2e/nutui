@@ -77,8 +77,12 @@
 <script lang="ts">
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Popup from '../popup/index.taro.vue';
 const { create, translate } = createComponent('numberkeyboard');
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     confirmText: {
       type: String,

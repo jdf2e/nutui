@@ -40,8 +40,12 @@
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
+import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     ...popupProps,
     cancelTxt: {
