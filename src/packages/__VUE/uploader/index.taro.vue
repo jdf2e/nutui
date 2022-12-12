@@ -75,10 +75,16 @@ import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
+import Progress from '../progress/index.taro.vue';
+import Button from '../button/index.taro.vue';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
 import { isPromise } from '@/packages/utils/util';
 export default create({
+  components: {
+    [Progress.name]: Progress,
+    [Button.name]: Button
+  },
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },

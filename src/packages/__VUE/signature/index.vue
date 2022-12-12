@@ -12,6 +12,7 @@
 <script lang="ts">
 import { ref, reactive, onMounted, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Button from '../button/index.vue';
 const { componentName, create, translate } = createComponent('signature');
 
 export default create({
@@ -45,7 +46,9 @@ export default create({
       default: ''
     }
   },
-  components: {},
+  components: {
+    [Button.name]: Button
+  },
   emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {

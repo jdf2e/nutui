@@ -41,9 +41,12 @@
 import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
+import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
-  components: {},
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array, default: [] },

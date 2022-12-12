@@ -130,7 +130,8 @@ import { reactive, ref, toRefs, watch, computed } from 'vue';
 import { popupProps } from '../popup/props';
 import { RegionData, CustomRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
-
+import Popup from '../popup/index.taro.vue';
+import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 
 interface AddressList {
@@ -143,6 +144,10 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
+  components: {
+    [Popup.name]: Popup,
+    [Elevator.name]: Elevator
+  },
   inheritAttrs: false,
   props: {
     ...popupProps,

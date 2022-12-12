@@ -53,10 +53,12 @@ import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 const { create } = createComponent('cascader');
 import CascaderItem from './cascader-item.vue';
+import Popup from '../popup/index.taro.vue';
 
 export default create({
   components: {
-    [CascaderItem.name]: CascaderItem
+    [CascaderItem.name]: CascaderItem,
+    [Popup.name]: Popup
   },
   props: {
     ...popupProps,

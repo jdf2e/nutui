@@ -25,6 +25,7 @@
 <script lang="ts">
 import { toRefs, ref, useSlots, onMounted, reactive, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Button from '../button/index.vue';
 const { componentName, create, translate } = createComponent('audio-operate');
 
 export default create({
@@ -35,7 +36,9 @@ export default create({
       default: () => 'play'
     }
   },
-  components: {},
+  components: {
+    [Button.name]: Button
+  },
   emits: ['click'],
 
   setup(props, { emit }) {
