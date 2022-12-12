@@ -1,38 +1,41 @@
 <template>
   <div class="demo">
-    <Add color="red" width="100px" height="100px" />
+    <h2>{{ translate('svg') }}</h2>
+    <nut-cell>
+      <Add color="red" />
+    </nut-cell>
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <Icon name="dongdong" />
-      <Icon name="JD" />
+      <IconFont name="dongdong" />
+      <IconFont name="JD" />
     </nut-cell>
     <h2>{{ translate('imageLink') }}</h2>
     <nut-cell>
-      <Icon
+      <IconFont
         size="40"
         name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
       >
-      </Icon>
+      </IconFont>
     </nut-cell>
     <h2>{{ translate('iconColor') }}</h2>
     <nut-cell>
-      <Icon name="dongdong" color="#fa2c19" />
-      <Icon name="dongdong" color="#64b578" />
-      <Icon name="JD" color="#fa2c19" />
+      <IconFont name="dongdong" color="#fa2c19" />
+      <IconFont name="dongdong" color="#64b578" />
+      <IconFont name="JD" color="#fa2c19" />
     </nut-cell>
 
     <h2>{{ translate('iconSize') }}</h2>
     <nut-cell>
-      <Icon name="dongdong" />
-      <Icon name="dongdong" size="24" />
-      <Icon name="dongdong" size="26" />
+      <IconFont name="dongdong" />
+      <IconFont name="dongdong" size="24" />
+      <IconFont name="dongdong" size="26" />
     </nut-cell>
 
     <nut-cell-group v-for="item in icons.data" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
           <li v-for="_item in item.icons" :key="_item">
-            <Icon :name="_item" @click="copyTag(_item)" />
+            <IconFont :name="_item" @click="copyTag(_item)" />
             <span>{{ _item }}</span>
           </li>
         </ul>
@@ -42,12 +45,12 @@
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">
-            <Icon
+            <IconFont
               :name="it.name"
               :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
               @click="copyTag(it['animation-name'])"
             >
-            </Icon>
+            </IconFont>
             <span>{{ it['animation-name'] }}</span>
           </li>
         </ul>
@@ -58,19 +61,19 @@
 
 <script lang="ts">
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
-import { IconFontConfig, Add } from '@nutui/icons-vue';
-
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: 'IconFont 基本用法',
+      svg: 'Svg 按需使用',
       imageLink: '图片链接',
       iconColor: '图标颜色',
       iconSize: '图标大小',
       copyToast: '复制成功'
     },
     'en-US': {
-      basic: 'Basic Usage',
+      basic: 'IconFont Basic Usage',
+      svg: 'Svg import on demand',
       imageLink: 'Image Link',
       iconColor: 'Icon Color',
       iconSize: 'Icon Size',
@@ -80,14 +83,14 @@ const initTranslate = () =>
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('icon');
 import { Toast } from '@/packages/nutui.vue';
-import { Icon } from '@nutui/icons-vue';
+import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
 export default createDemo({
   props: {},
-  components: { Icon, Add },
+  components: { IconFont, Add },
   setup() {
     initTranslate();
     const copyTag = (name: string) => {
-      const text = `<Icon name="${name}"></Icon>`;
+      const text = `<IconFont name="${name}"></IconFont>`;
       const displayText = `&lt;Icon name="${name}"&gt;&lt;/Icon&gt;`;
       const input = document.createElement('input');
       document.body.appendChild(input);
