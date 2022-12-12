@@ -1,7 +1,10 @@
 <template src="./template.html"></template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('fixednav');
 import { component } from './common';
-export default create(component);
+import OverLay from '../overlay/index.vue';
+const { create } = createComponent('fixednav');
+export default create(component({
+  [OverLay.name]: OverLay
+}));
 </script>
