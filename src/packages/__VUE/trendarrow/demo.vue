@@ -55,7 +55,6 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('trendarrow');
-import { reactive, toRefs, getCurrentInstance, onMounted, ref } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
