@@ -90,13 +90,15 @@ import { PropType, ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
+import Popup from '../popup/index.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 
 type InputDate = string | string[];
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem
+    [CalendarItem.name]: CalendarItem,
+    [Popup.name]: Popup
   },
   props: {
     type: {

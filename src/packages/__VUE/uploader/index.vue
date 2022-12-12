@@ -77,8 +77,12 @@ import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
+import Progress from '../progress/index.vue';
 const { componentName, create, translate } = createComponent('uploader');
 export default create({
+  components: {
+    [Progress.name]: Progress
+  },
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },

@@ -74,12 +74,14 @@ import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRe
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 import column from './ColumnTaro.vue';
+import Popup from '../popup/index.taro.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('picker');
 export default create({
   components: {
-    [column.name]: column
+    [column.name]: column,
+    [Popup.name]: Popup
   },
   props: {
     ...popupProps,

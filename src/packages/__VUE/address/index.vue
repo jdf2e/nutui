@@ -124,6 +124,8 @@ import { createComponent } from '@/packages/utils/create';
 import { RegionData, CustomRegionData } from './type';
 import { popupProps } from '../popup/props';
 import Icon from '../icon/index.vue';
+import Popup from '../popup/index.vue';
+import Elevator from '../elevator/index.vue';
 const { componentName, create, translate } = createComponent('address');
 
 interface AddressList {
@@ -136,6 +138,10 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
+  components: {
+    [Popup.name]: Popup,
+    [Elevator.name]: Elevator
+  },
   inheritAttrs: false,
   props: {
     ...popupProps,

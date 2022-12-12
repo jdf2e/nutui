@@ -23,6 +23,7 @@
 import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Button from '../button/index.taro.vue';
 const { componentName, create, translate } = createComponent('signature');
 
 export default create({
@@ -48,7 +49,9 @@ export default create({
       default: ''
     }
   },
-  components: {},
+  components: {
+    [Button.name]: Button
+  },
   emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {

@@ -32,8 +32,12 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import InputNumber from '../inputnumber/index.taro.vue';
 const { componentName, create, translate } = createComponent('ecard');
 export default create({
+  components: {
+    [InputNumber.name]: InputNumber
+  },
   props: {
     chooseText: {
       type: String,

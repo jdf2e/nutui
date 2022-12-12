@@ -62,6 +62,7 @@
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Range from '../range/index.vue';
 const { componentName, create } = createComponent('audio');
 
 export default create({
@@ -104,7 +105,9 @@ export default create({
       default: 'progress'
     }
   },
-  components: {},
+  components: {
+    [Range.name]: Range
+  },
   emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],
 
   setup(props, { emit }) {

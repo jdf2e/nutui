@@ -34,8 +34,12 @@
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('ecard');
+import InputNumber from '../inputnumber/index.vue';
 
 export default create({
+  components: {
+    [InputNumber.name]: InputNumber
+  },
   props: {
     chooseText: {
       type: String,
