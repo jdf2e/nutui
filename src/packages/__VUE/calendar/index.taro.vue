@@ -90,6 +90,7 @@ import Popup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro from '@tarojs/taro';
+import { CalendarRef } from '../calendaritem/type';
 
 export default create({
   components: {
@@ -182,7 +183,7 @@ export default create({
     });
     let show = ref(props.visible);
     // element refs
-    const calendarRef = ref<null | HTMLElement>(null);
+    const calendarRef = ref<null | CalendarRef>(null);
     const scrollToDate = (date: string) => {
       calendarRef.value?.scrollToDate(date);
     };
