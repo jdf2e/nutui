@@ -588,3 +588,4 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 | Name | Description             | Arguments          |
 |--------|------------------|---------------|
 | scrollToDate   | Scroll to the month of the specified date | string:'2021-12-30' |
+| initPosition`v3.2.7`   | Initialize scroll position |  |
