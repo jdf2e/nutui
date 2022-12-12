@@ -6,7 +6,6 @@
         class="spcanvas"
         id="spcanvas"
         canvasId="spcanvas"
-        canvas-id="spcanvas"
         type="2d"
         disable-scroll="true"
         @touchstart="startEventHandler"
@@ -61,14 +60,14 @@ export default create({
     });
     const spcanvas: any = ref<HTMLElement | null>(null);
 
-    const state: any = reactive({
+    const state = reactive({
       canvas: null,
       canvasHeight: 0,
       canvasWidth: 0,
-      ctx: null
+      ctx: null as any
     });
 
-    const startEventHandler = (event: MouseEvent) => {
+    const startEventHandler = (event: TouchEvent) => {
       event.preventDefault();
       if (!state.ctx) {
         return false;
@@ -79,15 +78,15 @@ export default create({
       state.ctx.strokeStyle = props.strokeStyle;
     };
 
-    const moveEventHandler = (event: { preventDefault: () => void; changedTouches: any[] }) => {
+    const moveEventHandler = (event: TouchEvent) => {
       event.preventDefault();
       if (!state.ctx) {
         return false;
       }
       let evt = event.changedTouches[0];
       emit('signing', evt);
-      let mouseX = evt.x || evt.clientX;
-      let mouseY = evt.y || evt.clientY;
+      let mouseX = evt.clientX;
+      let mouseY = evt.clientY;
 
       if (Taro.getEnv() === 'WEB') {
         let coverPos = spcanvas.value.getBoundingClientRect();
@@ -134,7 +133,7 @@ export default create({
           Taro.canvasToTempFilePath({
             canvas: res[0].node,
             canvasId: 'spcanvas',
-            fileType: props.type,
+            fileType: props.type as any,
             success: function (result) {
               emit('confirm', state.canvas, result.tempFilePath);
             },
