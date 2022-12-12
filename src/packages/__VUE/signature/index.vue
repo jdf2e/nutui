@@ -61,10 +61,10 @@ export default create({
         [`${props.customClass}`]: props.customClass
       };
     });
-    const state: any = reactive({
+    const state = reactive({
       canvasHeight: 0,
       canvasWidth: 0,
-      ctx: null,
+      ctx: null as any,
       isSupportTouch: 'ontouchstart' in window,
       events:
         'ontouchstart' in window

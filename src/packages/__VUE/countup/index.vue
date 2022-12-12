@@ -35,7 +35,8 @@
                 'px',
               backgroundImage: 'url(' + customBgImg + ')',
               backgroundPositionX: '0',
-              backgroundPositionY: -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
+              backgroundPositionY:
+                -(+String(relNum)[index] * numHeight + customSpacNum * +String(relNum)[index]) + 'px',
               transition: 'all linear ' + during / 10 + 'ms'
             }"
           ></view>
@@ -64,7 +65,7 @@
         }"
       >
         <view
-          :ref="setRef"
+          :ref="(el) => setRef(el)"
           class="nut-countup__number-item"
           v-for="(val, index) of num_total_len"
           :key="val"
@@ -215,8 +216,10 @@ export default create({
   setup(props, { emit }) {
     const runNumberImg = ref(null);
     const numberItemRef = ref<any>([]);
-    const setRef = (el: Element) => {
-      numberItemRef.value.push(el);
+    const setRef = (el: any) => {
+      if (el) {
+        numberItemRef.value.push(el);
+      }
     };
     const data: IData = reactive({
       valFlag: false,
