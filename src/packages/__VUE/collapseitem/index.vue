@@ -222,8 +222,8 @@ export default create({
       });
     };
     onMounted(() => {
-      const MutationObserver: any =
-        window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+      // const MutationObserver: any =
+      //   window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
       var observer = new MutationObserver(() => {
         animation();
       });

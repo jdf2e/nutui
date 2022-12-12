@@ -109,7 +109,7 @@ export default create({
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    const proxyData: any = reactive({
+    const proxyData = reactive({
       icon: parent.props.icon,
       iconSize: parent.props.iconSize,
       iconColor: parent.props.iconColor,
@@ -159,6 +159,7 @@ export default create({
       }
       nextTick(() => {
         // const query = Taro.createSelectorQuery();
+        // @ts-ignore
         const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
         query.selectAll('.nut-collapse__item-wrapper__content').boundingClientRect();
         query.exec((res: any[]) => {
@@ -252,6 +253,7 @@ export default create({
     };
 
     const getRefHeight = () => {
+      // @ts-ignore
       const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
       query.selectAll('.nut-collapse__item-wrapper__content').boundingClientRect();
       query.exec((res: any[]) => {
