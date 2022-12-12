@@ -7,12 +7,11 @@ export class Title {
   titleSlot?: VNode[];
   paneKey: string = '';
   disabled: boolean = false;
-  constructor() { }
+  constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small';
 export const component = (components: any) => {
   return {
-    components,
     props: {
       modelValue: {
         type: [String, Number],
@@ -68,7 +67,7 @@ export const component = (components: any) => {
       }
     },
 
-    components: {},
+    components,
     emits: ['update:modelValue', 'click', 'change'],
 
     setup(props: any, { emit, slots }: any) {
@@ -203,4 +202,4 @@ export const component = (components: any) => {
       };
     }
   };
-}
+};
