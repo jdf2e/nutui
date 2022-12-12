@@ -51,7 +51,6 @@ export default create({
       startTime: 0,
       keepAlive: false
     });
-    let scrollEl: Window | HTMLElement = window;
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
