@@ -10,7 +10,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Cell, CellGroup } from '@nutui/nutui';
+import { Cell, CellGroup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Cell);
@@ -30,12 +30,11 @@ app.use(CellGroup);
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const switchChecked = ref(true);
       const testClick = (event) => {
-        Toast.text('点击事件');
+        console.log('click')
       };
       return { testClick, switchChecked };
     }
@@ -205,19 +204,16 @@ app.use(CellGroup);
 
 ### Cell Props
 
-| 字段            | 说明                                                                                           | 类型             | 默认值 |
-|-----------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title           | 标题名称                                                                                       | String           | -      |
-| sub-title       | 左侧副标题                                                                                     | String           | -      |
-| desc            | 右侧描述                                                                                       | String           | -      |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String           | right  |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean          | false  |
-| round-radius    | 圆角半径                                                                                       | Number           | 6px    |
-| url             | 点击后跳转的链接地址                                                                           | String           | -      |
-| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String ｜ Object | -      |
-| replace         | 是否在跳转时替换当前页面历史                                                                   | Boolean          | false  |
-| center          | 是否使内容垂直居中                                                                             | Boolean          | false  |
-| size            | 单元格大小，可选值为 `large`                                                                   | String           | -      |
+| 字段            | 说明                                                                                         | 类型    | 默认值 |
+|-----------------|----------------------------------------------------------------------------------------------|---------|--------|
+| title           | 标题名称                                                                                     | String  | -      |
+| sub-title       | 左侧副标题                                                                                   | String  | -      |
+| desc            | 右侧描述                                                                                     | String  | -      |
+| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String  | right  |
+| is-link         | 是否展示右侧箭头并开启点击反馈                                                               | Boolean | false  |
+| round-radius    | 圆角半径                                                                                     | Number  | 6px    |
+| center          | 是否使内容垂直居中                                                                           | Boolean | false  |
+| size            | 单元格大小，可选值为 `large`                                                                 | String  | -      |
 
 
 ### Cell Events
