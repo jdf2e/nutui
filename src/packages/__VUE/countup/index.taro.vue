@@ -35,7 +35,7 @@
                 'px',
               backgroundImage: 'url(' + customBgImg + ')',
               backgroundPosition:
-                '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
+                '0 ' + -(+String(relNum)[index] * numHeight + customSpacNum * +String(relNum)[index]) + 'px',
               transition: 'all linear ' + during / 10 + 'ms'
             }"
           ></view>
@@ -69,7 +69,7 @@
           v-for="(val, index) of num_total_len"
           :key="val"
           :style="{
-            all: turnNumber(index),
+            all: turnNumber(index) as any,
             top: topNumber(index),
             left: numWidth * (index > num_total_len - pointNum - 1 ? index * 1.1 : index) + 'px'
           }"
