@@ -31,7 +31,7 @@ app.use(Overlay);
   <nut-cell @click="handleClick1">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+  <nut-time-select v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
     <template #pannel>
       <nut-timepannel name="February 23rd(Today)" pannel-key="0" @change="handleChange1"></nut-timepannel>
       <nut-timepannel name="February 24th(Wednesday)" pannel-key="1" @change="handleChange1"></nut-timepannel>
@@ -39,7 +39,7 @@ app.use(Overlay);
     <template #detail>
       <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
     </template>
-  </nut-timeselect>
+  </nut-time-select>
 </template>
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
@@ -119,7 +119,7 @@ app.use(Overlay);
   <nut-cell @click="handleClick2">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+  <nut-time-select v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
     <template #pannel>
       <nut-timepannel name="February 23rd(Today)" pannel-key="0" @change="handleChange2"></nut-timepannel>
       <nut-timepannel name="February 24th(Wednesday)" pannel-key="1" @change="handleChange2"></nut-timepannel>
@@ -127,7 +127,7 @@ app.use(Overlay);
     <template #detail>
       <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
     </template>
-  </nut-timeselect>
+  </nut-time-select>
 </template>
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
@@ -210,7 +210,7 @@ app.use(Overlay);
   <nut-cell @click="handleClick2">
     <span><label>Please select the delivery time</label></span>
   </nut-cell>
-  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+  <nut-time-select v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
     <template #title>
       <div class="timeselect-title">
         <p class="title">It is title</p>
@@ -224,7 +224,7 @@ app.use(Overlay);
     <template #detail>
       <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
     </template>
-  </nut-timeselect>
+  </nut-time-select>
 </template>
 <script lang="ts">
   import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';

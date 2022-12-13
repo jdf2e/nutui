@@ -20,7 +20,7 @@ app.use(TimeSelect);
 ### 基础用法
 
 ``` html
-<nut-timeselect></nut-timeselect>
+<nut-time-select></nut-time-select>
 ```
 ``` javascript
 setup() {

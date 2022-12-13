@@ -4,7 +4,7 @@
     <nut-cell @click="handleClick1">
       <span><label>请选择配送时间</label></span>
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible1"
       height="50%"
       :current-key="currentKey1"
@@ -18,12 +18,12 @@
       <template #detail>
         <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
     <h2>可选择多个日期时间</h2>
     <nut-cell @click="handleClick2">
       <span><label>请选择配送时间</label></span>
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible2"
       height="50%"
       :current-key="currentKey2"
@@ -37,12 +37,12 @@
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
     <h2>更改标题</h2>
     <nut-cell @click="handleClick3">
       <span><label>请选择配送时间</label></span>
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible3"
       height="50%"
       :current-key="currentKey2"
@@ -62,7 +62,7 @@
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
     <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
   </div>
 </template>
