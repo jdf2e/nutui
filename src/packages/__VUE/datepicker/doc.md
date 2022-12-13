@@ -26,7 +26,7 @@ app.use(Overlay);
 ```html
 <template>
   <nut-cell title="显示中文" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       v-model:visible="show"
       :min-date="minDate"
@@ -34,7 +34,7 @@ app.use(Overlay);
       :is-show-chinese="true"
       :three-dimensional="false"
       @confirm="confirm"
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 
 <script>
@@ -72,7 +72,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="限制开始结束时间" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       type="month-day"
       title="日期选择"
@@ -80,7 +80,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :max-date="new Date(2022, 7, 1)"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 
 <script>
@@ -113,7 +113,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="日期时间选择" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="日期时间选择"
       type="datetime"
@@ -121,7 +121,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show" 
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 <script>
   import { ref } from 'vue';
@@ -154,7 +154,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="时间选择"
       type="time"
@@ -162,7 +162,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -196,7 +196,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="时间选择"
       type="datetime"
@@ -205,7 +205,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :formatter="formatter"
       @confirm="confirm"
       v-model:visible="show"
-  ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-datepicker>
+  ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -265,7 +265,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       type="time"
       :minute-step="5"
@@ -273,7 +273,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -306,7 +306,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 ```html
 <template>
   <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="时间选择"
       type="datehour"
@@ -316,7 +316,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :formatter="formatter"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';

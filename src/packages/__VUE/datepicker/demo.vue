@@ -29,7 +29,7 @@
     </nut-cell-group>
 
     <!-- 选择年月日 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate"
       :min-date="minDate"
       :max-date="maxDate"
@@ -41,9 +41,9 @@
       v-model:visible="show"
       :is-show-chinese="true"
       :threeDimensional="false"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择月日 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate2"
       type="month-day"
       :title="translate('basic')"
@@ -55,9 +55,9 @@
         }
       "
       v-model:visible="show2"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择年月日时分 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate3"
       :title="translate('chooseDate')"
       type="datetime"
@@ -69,9 +69,9 @@
         }
       "
       v-model:visible="show3"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择时分秒 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate4"
       :title="translate('chooseTime')"
       type="time"
@@ -83,9 +83,9 @@
         }
       "
       v-model:visible="show4"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 格式化选项 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate5"
       :title="translate('chooseTime')"
       type="datetime"
@@ -98,10 +98,10 @@
         }
       "
       v-model:visible="show5"
-      ><nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button></nut-datepicker
+      ><nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button></nut-date-picker
     >
     <!-- 分钟数递增步长设置 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate6"
       :title="translate('chooseTime')"
       type="time"
@@ -114,9 +114,9 @@
         }
       "
       v-model:visible="show6"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 过滤选项 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate7"
       :title="translate('chooseTime')"
       type="datehour"
@@ -130,14 +130,14 @@
         }
       "
       v-model:visible="show7"
-    ></nut-datepicker>
+    ></nut-date-picker>
   </div>
 </template>
 
 <script lang="ts">
 import { toRefs, watch, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('datepicker');
+const { createDemo, translate } = createComponent('date-picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
