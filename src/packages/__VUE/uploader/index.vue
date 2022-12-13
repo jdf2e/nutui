@@ -2,7 +2,7 @@
   <view :class="classes">
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
-      <component :is="renderInput" @change="onChange" v-if="maximum - fileList.length"></component>
+      <component :is="renderInput" @change="onChange" v-if="Number(maximum) - fileList.length"></component>
     </view>
 
     <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
@@ -26,7 +26,7 @@
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
-          v-if="item.type.includes('image') && item.url"
+          v-if="item?.type?.includes('image') && item.url"
           :src="item.url"
         />
         <view v-else class="nut-uploader__preview-img__file">
@@ -62,10 +62,11 @@
     <view
       class="nut-uploader__upload"
       :class="[listType]"
-      v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
+      v-if="listType == 'picture' && !$slots.default && Number(maximum) - fileList.length"
     >
-      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
-
+      <slot name="upload-icon">
+        <Photograph color="#808080" />
+      </slot>
       <component :is="renderInput" @change="onChange"></component>
     </view>
   </view>
@@ -78,10 +79,12 @@ import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.vue';
+import { Photograph } from '@nutui/icons-vue';
 const { componentName, create, translate } = createComponent('uploader');
 export default create({
   components: {
-    [Progress.name]: Progress
+    [Progress.name]: Progress,
+    Photograph
   },
   props: {
     name: { type: String, default: 'file' },
