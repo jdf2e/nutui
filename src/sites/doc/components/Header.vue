@@ -399,7 +399,7 @@ export default defineComponent({
   }
   // 黑色
   &-black {
-    background: $black;
+    background: black;
     color: $theme-black-word;
     border-bottom: 1px solid $theme-black-box-border;
     .header {
