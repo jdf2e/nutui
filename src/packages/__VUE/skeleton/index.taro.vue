@@ -18,6 +18,9 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { component } from './common';
+import Avatar from '../avatar/index.taro.vue';
 const { create } = createComponent('skeleton');
-export default create(component);
+export default create(component({
+  [Avatar.name]: Avatar
+}));
 </script>

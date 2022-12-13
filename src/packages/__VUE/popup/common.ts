@@ -5,9 +5,9 @@ import { popupProps } from './props';
 const initIndex = 2000;
 let _zIndex = initIndex;
 
-export const component = (componentName: string) => {
+export const component = (componentName: string, components: any) => {
   return {
-    components: {},
+    components,
     props: {
       ...popupProps
     },
