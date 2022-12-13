@@ -42,7 +42,7 @@ import { computed, useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
-const { componentName, create } = createComponent('actionsheet');
+const { componentName, create } = createComponent('action-sheet');
 export interface menuItems {
   disable: boolean;
   loading: boolean;
@@ -103,7 +103,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-actionsheet';
       return {
         [prefixCls]: true
       };

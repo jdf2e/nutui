@@ -38,23 +38,23 @@
     </nut-cell>
 
     <!-- demo 基础用法 -->
-    <nut-actionsheet
+    <nut-action-sheet
       :safe-area-inset-bottom="true"
       v-model:visible="state.isVisible1"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- demo(带取消按钮） -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible2"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- 展示描述信息 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible3"
       :title="translate('title')"
       :description="desc"
@@ -62,26 +62,26 @@
       @choose="chooseItemThree"
       :cancel-txt="translate('cancelTxt')"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- demo 选项状态-->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible4"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsThree"
       @choose="chooseItemFour"
       :choose-tag-value="chooseTagValue"
-    ></nut-actionsheet>
+    ></nut-action-sheet>
     <!-- 自定义面板-->
-    <nut-actionsheet v-model:visible="state.isVisible5" :title="translate('title')">
+    <nut-action-sheet v-model:visible="state.isVisible5" :title="translate('title')">
       <div class="custom-content">{{ translate('customContent') }}</div>
-    </nut-actionsheet>
+    </nut-action-sheet>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('actionsheet');
+const { createDemo, translate } = createComponent('action-sheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

@@ -33,7 +33,7 @@
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 import type { PropType } from 'vue';
-const { componentName, create } = createComponent('actionsheet');
+const { componentName, create } = createComponent('action-sheet');
 import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
 export interface menuItems {
@@ -92,7 +92,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-actionsheet';
       return {
         [prefixCls]: true
       };

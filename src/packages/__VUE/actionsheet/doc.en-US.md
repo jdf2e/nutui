@@ -34,12 +34,12 @@ app.use(Overlay);
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo Basic Usage -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -93,13 +93,13 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo Show Cancel Button -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       cancel-txt="cancel"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -152,14 +152,14 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo Show Description -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       cancel-txt="cancel"
       description="This is a presentation"
       :menu-items="menuItems"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -216,14 +216,14 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo Option Status -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       choose-tag-value="Shading Options"
       @choose="chooseItem"
        cancel-txt="cancel"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -275,9 +275,9 @@ export default {
     >
       <span><label>Custom Content</label></span>
     </nut-cell>
-     <nut-actionsheet v-model:visible="state.isVisible" title="title">
+     <nut-action-sheet v-model:visible="state.isVisible" title="title">
       <div class="custom-content">Custom Content</div>
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
