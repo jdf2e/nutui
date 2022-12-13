@@ -60,7 +60,7 @@
 <script lang="ts">
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('addresslist');
+const { componentName, create, translate } = createComponent('address-list');
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
@@ -105,7 +105,7 @@ export default create({
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
     });
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-addresslist';
       return {
         [prefixCls]: true
       };

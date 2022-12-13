@@ -24,7 +24,7 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-addresslist
+  <nut-address-list
     :data="data"
     @delIcon="delClick"
     @editIcon="editClick"
@@ -32,7 +32,7 @@ app.use(Button);
     :show-bottom-button="false"
     :dataMapOptions="dataMapOptions"
   >
-  </nut-addresslist>
+  </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
@@ -91,7 +91,7 @@ export default {
 
 ```html
 <template>
-  <nut-addresslist
+  <nut-address-list
     :data="data"
     long-press
     :show-bottom-button="false"
@@ -103,7 +103,7 @@ export default {
     @longPressDelClick="delClick"
     :dataMapOptions="dataMapOptions"
   >
-  </nut-addresslist>
+  </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
@@ -170,7 +170,7 @@ export default {
 
 ```html
 <template>
-  <nut-addresslist
+  <nut-address-list
     :data="data"
     swipe-edition
     show-bottom-button
@@ -181,7 +181,7 @@ export default {
     @add="addAddress"
     :dataMapOptions="dataMapOptions"
   >
-  </nut-addresslist>
+  </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
