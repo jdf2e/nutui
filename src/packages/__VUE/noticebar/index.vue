@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      v-show="showNoticeBar"
+      v-show="showNoticebar"
       class="nut-noticebar__page"
       :class="{
         'nut-noticebar__page--withicon': closeMode,
@@ -93,7 +93,7 @@ interface StateProps {
   firstRound: boolean;
   duration: number;
   offsetWidth: number;
-  showNoticeBar: boolean;
+  showNoticebar: boolean;
   animationClass: string;
 
   animate: boolean;
@@ -183,7 +183,7 @@ export default create({
       firstRound: true,
       duration: 0,
       offsetWidth: 0,
-      showNoticeBar: true,
+      showNoticebar: true,
       animationClass: '',
 
       animate: false,
@@ -278,7 +278,7 @@ export default create({
     );
 
     const initScrollWrap = (value: string) => {
-      if (state.showNoticeBar == false) {
+      if (state.showNoticebar == false) {
         return;
       }
       setTimeout(() => {
@@ -308,7 +308,7 @@ export default create({
 
     const onClickIcon = (event: Event) => {
       if (props.closeMode) {
-        state.showNoticeBar = !props.closeMode;
+        state.showNoticebar = !props.closeMode;
       }
       emit('close', event);
     };

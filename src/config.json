@@ -924,7 +924,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "NoticeBar",
+          "name": "Noticebar",
           "type": "component",
           "cName": "公告栏",
           "desc": "用于循环播放展示一组消息通知",
