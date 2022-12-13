@@ -9,13 +9,13 @@ Hover stow experience Interaction for quick navigation
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { FixedNav,OverLay } from '@nutui/nutui';
+import { FixedNav,Overlay } from '@nutui/nutui';
 // taro
-import { FixedNav,OverLay } from '@nutui/nutui-taro';
+import { FixedNav,Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(FixedNav);
-app.use(OverLay);
+app.use(Overlay);
 
 ```
 

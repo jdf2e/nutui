@@ -107,7 +107,7 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 - Button  
 - Cell  
 - Icon  
-- OverLay  
+- Overlay  
 - Popup  
 - Layout  
 - Sticky  

@@ -73,7 +73,7 @@ At present, only the following components support dark mode, other components ar
 - Button  
 - Cell  
 - Icon  
-- OverLay  
+- Overlay  
 - Popup  
 - Layout  
 - Sticky  

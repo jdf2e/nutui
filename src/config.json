@@ -122,7 +122,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "OverLay",
+          "name": "Overlay",
           "taro": true,
           "type": "component",
           "cName": "遮罩层",
@@ -142,7 +142,7 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
-          "styleDeps": ["OverLay"]
+          "styleDeps": ["Overlay"]
         },
         {
           "version": "3.0.0",
@@ -290,7 +290,7 @@
           "sort": 9,
           "show": true,
           "author": "richard1015",
-          "styleDeps": ["OverLay"]
+          "styleDeps": ["Overlay"]
         },
         {
           "version": "3.0.0",
