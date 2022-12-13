@@ -276,7 +276,7 @@ export default create({
         return pane.selectedNode ? pane.selectedNode.text : translate('select');
       },
       isSelected(pane: CascaderPane, node: CascaderOption) {
-        return pane.selectedNode && pane.selectedNode.value === node.value;
+        return pane?.selectedNode?.value === node.value;
       }
     };
 
