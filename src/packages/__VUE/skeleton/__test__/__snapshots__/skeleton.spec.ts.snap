@@ -14,13 +14,13 @@ exports[`should change avatar size when using avatarSize prop: 20px 1`] = `"20px
 exports[`should change avatar size when using avatarSize prop: 20px 2`] = `"20px"`;
 
 exports[`should render default slot 1`] = `
-"<view class=\\"skeleton\\">
+"<view class=\\"nut-skeleton\\">
   <!--v-if-->
-  <view class=\\"content\\">
+  <view class=\\"nut-skeleton-content\\">
     <!--v-if-->
-    <view class=\\"content-line\\" style=\\"width: 100px;\\">
-      <view class=\\"blockTitle\\" style=\\"height: 100px;\\"></view>
-      <view class=\\"blockLine\\" style=\\"height: 100px;\\"></view>
+    <view class=\\"nut-skeleton-content__line\\" style=\\"width: 100px;\\">
+      <view class=\\"nut-skeleton-blockTitle\\" style=\\"height: 100px;\\"></view>
+      <view class=\\"nut-skeleton-blockLine\\" style=\\"height: 100px;\\"></view>
     </view>
   </view>
 </view>"
