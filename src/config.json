@@ -631,7 +631,7 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "name": "TextArea",
+          "name": "Textarea",
           "type": "component",
           "cName": "文本域",
           "desc": "文本输入",
