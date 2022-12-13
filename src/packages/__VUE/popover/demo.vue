@@ -4,14 +4,26 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
+        <nut-popover
+          v-model:visible="lightTheme"
+          :list="iconItemList"
+          location="bottom-end"
+          @choose="chooseItem"
+          overlay="true"
+        >
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="darkTheme" theme="dark" :list="iconItemList">
+        <nut-popover
+          v-model:visible="darkTheme"
+          theme="dark"
+          location="bottom-start"
+          :list="iconItemList"
+          :offset="[0, 12]"
+        >
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
@@ -30,7 +42,7 @@
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="bottom-end">
+        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="right">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('disableAction') }}</nut-button>
           </template>
@@ -39,7 +51,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
+    <nut-popover v-model:visible="Customized" location="top" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -60,14 +72,27 @@
     <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
       <template #top>
         <div class="brickBox">
-          <nut-popover v-model:visible="customPositon" :location="curPostion" theme="dark" :list="positionList">
-            <template #reference>
-              <div class="brick"></div>
-            </template>
-          </nut-popover>
+          <div class="brick" id="pickerTarget"></div>
         </div>
       </template>
     </nut-picker>
+
+    <nut-popover
+      v-model:visible="customPositon"
+      targetId="pickerTarget"
+      :location="curPostion"
+      bgColor="#f00"
+      theme="dark"
+      :list="positionList"
+    >
+    </nut-popover>
+
+    <h2>自定义对象</h2>
+    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle;">{{
+      translate('light')
+    }}</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="iconItemList" location="top-start">
+    </nut-popover>
   </div>
 </template>
 <script lang="ts">
@@ -116,7 +141,9 @@ export default createDemo({
       leftLocation: false, //向左弹出
       customPositon: false,
 
-      showPicker: false
+      showPicker: false,
+
+      customTarget: false
     });
     const curPostion = ref('top');
 
@@ -220,12 +247,18 @@ export default createDemo({
       state.showPicker = true;
       setTimeout(() => {
         state.customPositon = true;
-      });
+      }, 0);
     };
 
     const change = ({ selectedValue }) => {
+      console.log('change');
       curPostion.value = selectedValue[0];
-      state.customPositon = true;
+      if (state.showPicker) state.customPositon = true;
+    };
+
+    const clickCustomHandle = () => {
+      console.log('点击', state.customTarget);
+      state.customTarget = !state.customTarget;
     };
     return {
       iconItemList,
@@ -239,7 +272,8 @@ export default createDemo({
       translate,
       columns,
       change,
-      handlePicker
+      handlePicker,
+      clickCustomHandle
     };
   }
 });
@@ -276,8 +310,10 @@ export default createDemo({
   }
 }
 
-.nut-popover-content {
-  width: 120px;
+.demo {
+  .nut-popover-content {
+    width: 120px;
+  }
 }
 
 .customClass {

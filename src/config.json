@@ -1104,6 +1104,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "liukun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tour",
+          "cType": "展示组件",
+          "cName": "引导组件",
+          "desc": "漫游式引导组件",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },
