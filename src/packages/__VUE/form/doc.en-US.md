@@ -249,7 +249,7 @@ setup(){
         <nut-rate v-model="formData2.rate" />
     </nut-form-item>
     <nut-form-item label="Inputnumber">
-        <nut-inputnumber v-model="formData2.number" />
+        <nut-input-number v-model="formData2.number" />
     </nut-form-item>
     <nut-form-item label="Range">
         <nut-range hidden-tag v-model="formData2.range"></nut-range>

@@ -48,7 +48,7 @@
       </template>
       <nut-cell :title="translate('desc')">
         <template v-slot:link>
-          <nut-inputnumber v-model="number" />
+          <nut-input-number v-model="number" />
         </template>
       </nut-cell>
       <template #right>

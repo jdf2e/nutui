@@ -27,7 +27,7 @@
           <nut-rate v-model="formData2.rate" />
         </nut-form-item>
         <nut-form-item :label="translate('inputnumber')">
-          <nut-inputnumber v-model="formData2.number" />
+          <nut-input-number v-model="formData2.number" />
         </nut-form-item>
         <nut-form-item :label="translate('range')">
           <nut-range hidden-tag v-model="formData2.range"></nut-range>

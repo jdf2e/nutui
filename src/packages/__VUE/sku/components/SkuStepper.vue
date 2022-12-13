@@ -3,7 +3,7 @@
     <view class="nut-sku-stepper-title">{{ stepperTitle }}</view>
     <view class="nut-sku-stepper-limit" v-html="getExtraText()"></view>
     <view class="nut-sku-stepper-count">
-      <nut-inputnumber
+      <nut-input-number
         v-model="goodsCount"
         :min="stepperMin"
         :max="stepperMax"

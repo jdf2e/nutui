@@ -41,7 +41,7 @@
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('inputnumber');
+const { componentName, create } = createComponent('input-number');
 export default create({
   props: {
     modelValue: {
@@ -92,7 +92,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-inputnumber';
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: props.disabled

@@ -24,7 +24,7 @@
       </view>
       <view class="nut-ecard__list__step">
         <view>{{ suffix }}{{ money }}</view>
-        <nut-inputnumber v-model="stepValue" :min="cardBuyMin" :max="cardBuyMax" @change="changeStep" />
+        <nut-input-number v-model="stepValue" :min="cardBuyMin" :max="cardBuyMax" @change="changeStep" />
       </view>
     </view>
   </view>

@@ -28,7 +28,7 @@ Initialize a default value
 
 ``` html
 <template>
-  <nut-inputnumber v-model="value" />
+  <nut-input-number v-model="value" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -52,7 +52,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="5" />
+  <nut-input-number v-model="value" step="5" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -76,7 +76,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" min="10" max="20" />
+  <nut-input-number v-model="value" min="10" max="20" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -100,7 +100,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" disabled />
+  <nut-input-number v-model="value" disabled />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -124,7 +124,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" readonly />
+  <nut-input-number v-model="value" readonly />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -148,7 +148,7 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="0.1" decimal-places="1" />
+  <nut-input-number v-model="value" step="0.1" decimal-places="1" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -171,7 +171,7 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber :model-value="value" @change="onChange" />
+  <nut-input-number :model-value="value" @change="onChange" />
 </template>
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
@@ -202,7 +202,7 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber v-model="value"  button-size="30" input-width="50" />
+  <nut-input-number v-model="value"  button-size="30" input-width="50" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -223,7 +223,7 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+  <nut-input-number icon-left="left" icon-right="right" v-model="value" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
