@@ -193,12 +193,12 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup1">
+  <nut-checkbox-group v-model="checkboxgroup1">
     <nut-checkbox label="1">组合复选框</nut-checkbox>
     <nut-checkbox label="2">组合复选框</nut-checkbox>
     <nut-checkbox label="3">组合复选框</nut-checkbox>
     <nut-checkbox label="4">组合复选框</nut-checkbox>
-  </nut-checkboxgroup>
+  </nut-checkbox-group>
   <nut-cell>
     <div class="demo-check">当前选中值</div>
     <div>{{ checkboxgroup1 }}</div>
@@ -227,9 +227,9 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+  <nut-checkbox-group v-model="checkboxgroup3" ref="group" @change="changeBox4">
     <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{item.value}}</nut-checkbox>
-  </nut-checkboxgroup>
+  </nut-checkbox-group>
   <span class="btn">
     <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">全选</nut-button>
     <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0">取消</nut-button>
@@ -284,12 +284,12 @@ app.use(Icon);
 <template>
   <nut-cell-group title="checkboxGroup使用，限制最大可选数（2个）">
     <nut-cell>
-      <nut-checkboxgroup v-model="checkboxgroup4" :max="2">
+      <nut-checkbox-group v-model="checkboxgroup4" :max="2">
         <nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
         <nut-checkbox label="2">组合复选框</nut-checkbox>
         <nut-checkbox label="3" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
         <nut-checkbox label="4">组合复选框</nut-checkbox>
-      </nut-checkboxgroup>
+      </nut-checkbox-group>
     </nut-cell>
     <nut-cell>
       <div class="demo-check">选中</div>
@@ -326,12 +326,12 @@ app.use(Icon);
     <nut-cell>
       <nut-checkbox :indeterminate="indeterminate" v-model="checkbox10" @change="changeBox5">全选</nut-checkbox>
     </nut-cell>
-    <nut-checkboxgroup v-model="checkboxgroup5" ref="group2" @change="changeBox6">
+    <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
       <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="2">组合复选框</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="3">组合复选框</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="4">组合复选框</nut-checkbox></nut-cell>
-    </nut-checkboxgroup>
+    </nut-checkbox-group>
   </nut-cell-group>
 </template>
 <script lang="ts">
