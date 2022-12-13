@@ -21,6 +21,7 @@
 import { onMounted, provide, reactive, toRefs, ref, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabbar');
+import { useRect } from '@/packages/utils/useRect';
 export default create({
   props: {
     visible: {
@@ -30,10 +31,6 @@ export default create({
     bottom: {
       type: Boolean,
       default: false
-    },
-    type: {
-      type: String,
-      default: 'base'
     },
     size: {
       type: String,
@@ -64,7 +61,7 @@ export default create({
       val: props.visible,
       children: []
     });
-    const nutTabbar = ref<HTMLElement | null>(null);
+    const nutTabbar = ref<HTMLElement>();
     function changeIndex(index: number, active: number | string) {
       emit('update:visible', active);
       parentData.modelValue = active;
@@ -88,7 +85,7 @@ export default create({
     onMounted(() => {
       if (bottom.value && placeholder.value) {
         nextTick(() => {
-          height.value = nutTabbar?.value?.getBoundingClientRect().height;
+          height.value = useRect(nutTabbar).height;
         });
       }
     });

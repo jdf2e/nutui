@@ -23,7 +23,7 @@ export function useTouch() {
   const deltaY = ref(0);
   const offsetX = ref(0);
   const offsetY = ref(0);
-  const direction = ref<Direction>('');
+  const direction = ref<Direction | string>('');
 
   const isVertical = () => direction.value === 'vertical';
   const isHorizontal = () => direction.value === 'horizontal';

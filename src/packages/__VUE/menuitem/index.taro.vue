@@ -17,6 +17,7 @@
           ? { top: parent.offset.value + 'px' }
           : { bottom: parent.offset.value + 'px', top: 'auto' }
       "
+      transition="none"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"

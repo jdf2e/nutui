@@ -138,3 +138,9 @@ export const padZero = (num: number | string, length = 2): string => {
   }
   return num.toString();
 };
+
+export const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
+
+export const getScrollTopRoot = (): number => {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+};
