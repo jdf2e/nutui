@@ -30,12 +30,13 @@
 import { computed, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isObject } from '@/packages/utils/util';
+const { componentName, create } = createComponent('circle-progress');
 import type { PropType } from 'vue';
-const { componentName, create } = createComponent('circleprogress');
 export interface stopArr {
   key: string;
   value: string;
 }
+
 export default create({
   props: {
     progress: {
@@ -72,7 +73,7 @@ export default create({
     const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-circleprogress';
       return {
         [prefixCls]: true
       };

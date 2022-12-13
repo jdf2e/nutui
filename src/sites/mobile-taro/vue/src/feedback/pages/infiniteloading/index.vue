@@ -3,7 +3,7 @@
     <h2>基础演示</h2>
     <nut-cell>
       <view class="infiniteUl" id="scrollDemo">
-        <nut-infiniteloading
+        <nut-infinite-loading
           pull-icon="JD"
           load-txt="loading"
           load-more-txt="没有啦～"
@@ -14,7 +14,7 @@
           @refresh="refresh"
         >
           <view class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</view>
-        </nut-infiniteloading>
+        </nut-infinite-loading>
       </view>
     </nut-cell>
   </view>

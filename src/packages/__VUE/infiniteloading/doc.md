@@ -22,13 +22,13 @@
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
       v-model="infinityValue"
       :has-more="hasMore"
       @load-more="loadMore"
   >
       <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>
@@ -61,7 +61,7 @@
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
     v-model="infinityValue2"
     load-txt="Loading..."
     load-more-txt="没有啦~"
@@ -69,7 +69,7 @@
     @load-more="loadMore"
   >
     <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>

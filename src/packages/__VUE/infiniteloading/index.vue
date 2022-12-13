@@ -35,7 +35,7 @@ import {
   nextTick
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('infiniteloading');
+const { componentName, create, translate } = createComponent('infinite-loading');
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
@@ -93,7 +93,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-infiniteloading';
       return {
         [prefixCls]: true
       };

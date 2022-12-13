@@ -21,13 +21,13 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
       v-model="infinityValue"
       :has-more="hasMore"
       @load-more="loadMore"
   >
       <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>
@@ -60,7 +60,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
     v-model="infinityValue2"
     load-txt="Loading..."
     load-more-txt="No more ~"
@@ -68,7 +68,7 @@ Scrolling to the bottom of the list automatically loads more data.
     @load-more="loadMore"
   >
     <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>

@@ -16,18 +16,18 @@ afterAll(() => {
 test('infiniteloading base', async () => {
   const wrapper = mount({
     components: {
-      'nut-infiniteloading': InfiniteLoading,
+      'nut-infinite-loading': InfiniteLoading,
       'nut-icon': NutIcon
     },
     template: `
     <div class="box" style="height:300px;overflow:auto">
-      <nut-infiniteloading
+      <nut-infinite-loading
         v-model="infiteValue"
         :has-more="hasMore"
         load-more-txt="没有啦～"
         @load-more="loadMore">
           <div style='height: 50px;' v-for="(item, index) in defultList" :key="index">{{item}}</div>
-      </nut-infiniteloading>
+      </nut-infinite-loading>
     </div>
     `,
     setup() {

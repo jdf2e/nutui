@@ -24,7 +24,7 @@
 
 ```html
 <div class="infiniteUl" id="scrollDemo">
-  <nut-infiniteloading
+  <nut-infinite-loading
     pull-icon="JD"
     load-txt="loading"
     load-more-txt="没有啦～"
@@ -40,7 +40,7 @@
       :key="index"
       >{{ item }}</div
     >
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </div>
 ```
 ```javascript
