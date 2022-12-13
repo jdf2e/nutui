@@ -22,7 +22,7 @@
             <div class="nut-tour-content" v-if="type == 'step'">
               <div class="nut-tour-content-top">
                 <div class="nut-tour-content-top-close" @click="close">
-                  <Icon size="10" name="close"> </Icon>
+                  <Close size="10" name="close" />
                 </div>
               </div>
               <div class="nut-tour-content-inner">
@@ -63,7 +63,7 @@ import { computed, watch, ref, reactive, toRefs, PropType, nextTick } from 'vue'
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
-import { Icon } from '@nutui/icons-vue';
+import { Close } from '@nutui/icons-vue';
 
 interface StepOptions {
   target: Element;
@@ -73,7 +73,7 @@ interface StepOptions {
 const { create } = createComponent('tour');
 export default create({
   components: {
-    Icon
+    Close
   },
   props: {
     visible: { type: Boolean, default: false },

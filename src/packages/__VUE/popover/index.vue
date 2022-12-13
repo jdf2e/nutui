@@ -22,9 +22,9 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <slot v-if="item.icon">
+          <!-- <slot v-if="item.icon">
             <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
-          ></slot>
+          ></slot> -->
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
@@ -36,12 +36,12 @@ import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
-import { Icon } from '@nutui/icons-vue';
+// import { Icon } from '@nutui/icons-vue';
 import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
   components: {
-    Icon
+    // Icon
   },
   props: {
     visible: { type: Boolean, default: false },

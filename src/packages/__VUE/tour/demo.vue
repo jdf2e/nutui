@@ -155,9 +155,9 @@ export default createDemo({
       type: 'normal'
     });
 
-    // setTimeout(() => {
-    //   state.showTour = true;
-    // }, 1000);
+    setTimeout(() => {
+      state.showTour = true;
+    }, 1000);
 
     const showTourHandle = () => {
       state.showTour1 = true;
@@ -180,9 +180,9 @@ export default createDemo({
   .nut-popover-content {
     width: auto !important;
   }
-  .nut-tour-content-inner {
+  /* .nut-tour-content-inner {
     width: max-content;
-  }
+  } */
 }
 
 .index-header {
