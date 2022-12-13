@@ -34,7 +34,7 @@
         </ul>
       </template>
       <template v-slot:btn>
-        <nut-icon name="retweet" color="#fff"> </nut-icon>
+        <Retweet color="#fff" />
         <span class="text">{{ myActive ? translate('cus1') : translate('cus2') }}</span>
       </template>
     </nut-fixed-nav>
@@ -56,6 +56,7 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Retweet } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -85,6 +86,9 @@ const initTranslate = () =>
   });
 export default createDemo({
   props: {},
+  components: {
+    Retweet
+  },
   setup() {
     initTranslate();
     const visible = ref(false);
