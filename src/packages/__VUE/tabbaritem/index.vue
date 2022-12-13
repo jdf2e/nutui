@@ -12,17 +12,17 @@
         <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
           {{ num }}
         </view>
-        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
+        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num >= 100">{{
           '99+'
         }}</view>
       </template>
       <template v-if="dot">
         <div class="nut-tabbar-item_icon-box_dot"></div>
       </template>
-      <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+      <div class="nut-tabbar-item_icon-box_icon" v-if="$slots.icon">
         <slot name="icon" :active="active"></slot>
       </div>
-      <view v-if="icon && !isHaveSlot('icon')">
+      <view v-else-if="icon">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
@@ -32,7 +32,7 @@
         ></nut-icon>
       </view>
       <div
-        v-if="!icon && activeImg && !isHaveSlot('icon')"
+        v-else-if="activeImg"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
           backgroundImage: `url(${active ? activeImg : img})`,
@@ -43,11 +43,12 @@
       <view
         :class="[
           'nut-tabbar-item_icon-box_nav-word',
-          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !isHaveSlot('icon') }
+          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !$slots.icon }
         ]"
       >
-        <view v-if="tabTitle">{{ tabTitle }}</view>
-        <slot v-if="!tabTitle"></slot>
+        <slot>
+          <view v-if="tabTitle">{{ tabTitle }}</view>
+        </slot>
       </view>
     </view>
   </div>
@@ -79,7 +80,7 @@ export default create({
     },
     num: {
       // 页签右上角的数字角标
-      type: String,
+      type: Number,
       default: ''
     },
     activeImg: {

@@ -92,7 +92,7 @@
       <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>
     </nut-tabbar>
     <h2>{{ translate('fixedBottom') }}</h2>
-    <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true">
       <nut-tabbar-item :tab-title="translate('title')" href="" icon="home"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="category"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>

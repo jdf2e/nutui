@@ -15,6 +15,7 @@ import { Tabbar,TabbarItem,Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Tabbar);
 app.use(TabbarItem);
+app.use(Icon);
 
 ```
 
@@ -125,7 +126,7 @@ Use icon slot to custom icon.
         unactive:'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png',
       };
       return {
-        icon，
+        icon,
         tabSwitch,
       };
     },
@@ -244,6 +245,7 @@ Use icon slot to custom icon.
 | Name   | Description               | SlotProps           |
 |------------|--------------------|--------------------|
 | icon | Custom Icon	 | active: boolean |
+| defalut | Custom tabbar title	 |  |
 
 ### Tabbar Events
 

@@ -1,5 +1,5 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { TypeOfFun } from '@/packages/utils/util';
+import { TypeOfFun, getScrollTopRoot } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
@@ -133,9 +133,7 @@ export const component = {
         init(vnodes);
       }
     );
-    const getScrollTopRoot = () => {
-      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    };
+
     watch(
       () => props.modelValue,
       (value: string | number) => {
