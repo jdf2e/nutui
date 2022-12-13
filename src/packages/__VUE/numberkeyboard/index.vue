@@ -80,7 +80,7 @@
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
-const { create, translate } = createComponent('numberkeyboard');
+const { create, translate } = createComponent('numberkey-board');
 export interface keys {
   id: number | string;
   type: string;
