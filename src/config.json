@@ -1048,7 +1048,7 @@
           "styleDeps": []
         },
         {
-          "name": "CountDown",
+          "name": "Countdown",
           "type": "component",
           "cName": "倒计时",
           "desc": "倒计时",
