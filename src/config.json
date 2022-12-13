@@ -631,7 +631,7 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "name": "TextArea",
+          "name": "Textarea",
           "type": "component",
           "cName": "文本域",
           "desc": "文本输入",
@@ -1171,7 +1171,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "WaterMark",
+          "name": "Watermark",
           "cType": "展示组件",
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
