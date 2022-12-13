@@ -2,29 +2,29 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="20"> </nut-circleprogress>
+      <nut-circle-progress :progress="20"> </nut-circle-progress>
     </div>
     <h2>{{ translate('customWidth') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" strokeWidth="10"> </nut-circleprogress>
+      <nut-circle-progress :progress="50" strokeWidth="10"> </nut-circle-progress>
     </div>
 
     <h2>{{ translate('Gradient') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" color="red" />
-      <nut-circleprogress :progress="100" :color="gradientColor" />
+      <nut-circle-progress :progress="50" color="red" />
+      <nut-circle-progress :progress="100" :color="gradientColor" />
     </div>
     <h2>{{ translate('customSize') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" radius="60"></nut-circleprogress>
+      <nut-circle-progress :progress="50" radius="60"></nut-circle-progress>
     </div>
     <h2>{{ translate('customContent') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" radius="60">{{ translate('custom') }}</nut-circleprogress>
+      <nut-circle-progress :progress="50" radius="60">{{ translate('custom') }}</nut-circle-progress>
     </div>
     <h2>{{ translate('dynamicChange') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="percent"> </nut-circleprogress>
+      <nut-circle-progress :progress="percent"> </nut-circle-progress>
     </div>
     <div class="demo__btn">
       <nut-button type="primary" @click="setReduceVal">{{ translate('reduce') }}</nut-button>
@@ -35,7 +35,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('circleprogress');
+const { createDemo, translate } = createComponent('circle-progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

@@ -30,7 +30,7 @@
 import { computed, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isObject } from '@/packages/utils/util';
-const { componentName, create } = createComponent('circleprogress');
+const { componentName, create } = createComponent('circle-progress');
 export default create({
   props: {
     progress: {
@@ -67,7 +67,7 @@ export default create({
     const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-circleprogress';
       return {
         [prefixCls]: true
       };
