@@ -26,7 +26,7 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Cell from '../cell/index.vue';
+import Cell from '../cell/index.taro.vue';
 const { componentName, create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
