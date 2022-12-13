@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, computed, toRefs, ref, nextTick } from 'vue';
+import { onMounted, computed, toRefs, ref, nextTick, ComputedRef, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
@@ -71,9 +71,9 @@ export default create({
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
     const { border, fixed, safeAreaInsetTop, placeholder, zIndex } = toRefs(props);
-    const navBarWrap = ref(null);
-    const navBarHtml = ref(null);
-    let navHeight = ref(0);
+    const navBarWrap = ref(null) as Ref;
+    const navBarHtml = ref<HTMLElement | null>(null);
+    let navHeight = ref();
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -84,7 +84,7 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: ComputedRef = computed(() => {
       return {
         zIndex: zIndex.value
       };
@@ -93,8 +93,8 @@ export default create({
     onMounted(() => {
       if (fixed.value && placeholder.value) {
         nextTick(() => {
-          navHeight = navBarHtml?.value?.getBoundingClientRect().height;
-          navBarWrap.value.style.height = navHeight + 'px';
+          navHeight.value = navBarHtml?.value?.getBoundingClientRect().height;
+          navBarWrap.value.style.height = navHeight.value + 'px';
         });
       }
     });

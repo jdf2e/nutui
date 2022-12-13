@@ -46,15 +46,20 @@
   </div>
 </template>
 <script lang="ts">
-import { Ref, ref, toRefs, warn, watch, onMounted } from 'vue';
+import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('categorypane');
+const { componentName, create } = createComponent('category-pane');
 
-//经典分类
-//商品池
-//自定义
+export type ChildType = {
+  catName?: string;
+  catType?: number;
+  [key: string]: any;
+};
+export type CustomType = {
+  catName?: string;
+  [key: string]: any;
+};
 
-interface props {}
 export default create({
   props: {
     //分类模式
@@ -65,19 +70,19 @@ export default create({
 
     //右侧导航数据
     categoryChild: {
-      type: Array,
+      type: Array as PropType<ChildType>,
       default: () => []
     },
 
     //模式传入自定义数据
     customCategory: {
-      type: Array,
+      type: Array as PropType<CustomType>,
       default: () => []
     }
   },
 
   setup(props, { emit }) {
-    const onChange = (sku: any) => {
+    const onChange = (sku: string) => {
       emit('onChange', sku);
     };
 

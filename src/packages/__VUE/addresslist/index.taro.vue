@@ -96,7 +96,7 @@ export default create({
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
-    const dataArray = ref([]);
+    const dataArray = ref([]) as any;
     const dataInfo = reactive({
       id: 2,
       addressName: '姓名',
