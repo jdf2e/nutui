@@ -406,7 +406,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBar",
+          "name": "SideNavbar",
           "type": "component",
           "cName": "侧边栏导航",
           "desc": "垂直展示的导航栏，用于内容选择和切换",
@@ -418,7 +418,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBarItem",
+          "name": "SideNavbarItem",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",
@@ -431,7 +431,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SubSideNavBar",
+          "name": "SubSideNavbar",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",

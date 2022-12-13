@@ -8,7 +8,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sidenavbaritem');
+const { componentName, create } = createComponent('side-navbar-item');
 export default create({
   props: {
     title: {
@@ -23,7 +23,7 @@ export default create({
   emits: ['click'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-sidenavbaritem';
       return {
         [prefixCls]: true
       };

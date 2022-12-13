@@ -10,7 +10,7 @@
 <script lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sidenavbar');
+const { componentName, create } = createComponent('side-navbar');
 export default create({
   props: {
     offset: {
@@ -27,7 +27,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-sidenavbar';
       return {
         [prefixCls]: true
       };

@@ -12,7 +12,7 @@
 <script lang="ts">
 import { computed, onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('subsidenavbar');
+const { componentName, create } = createComponent('sub-side-navbar');
 export default create({
   props: {
     title: {
@@ -35,7 +35,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-subsidenavbar';
       return {
         [prefixCls]: true
       };

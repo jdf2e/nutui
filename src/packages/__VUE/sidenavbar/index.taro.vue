@@ -11,7 +11,7 @@
 import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 // import { createIntersectionObserver, IntersectionObserver } from '@tarojs/taro';
-const { componentName, create } = createComponent('sidenavbar');
+const { componentName, create } = createComponent('side-navbar');
 export default create({
   props: {
     offset: {
@@ -28,7 +28,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-sidenavbar';
       return {
         [prefixCls]: true
       };

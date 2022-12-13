@@ -22,26 +22,26 @@ afterAll(() => {
 });
 
 const template = `
-<nut-sidenavbar offset="30">
-  <nut-subsidenavbar title="智能城市AI" ikey="6">
-    <nut-subsidenavbar title="人体识别1" ikey="9" :open="false">
-      <nut-sidenavbaritem ikey="10" title="人体检测1"></nut-sidenavbaritem>
-      <nut-sidenavbaritem ikey="11" title="细粒度人像分割1"></nut-sidenavbaritem>
-    </nut-subsidenavbar>
-    <nut-subsidenavbar title="人体识别2" ikey="12">
-      <nut-sidenavbaritem ikey="13" title="人体检测2"></nut-sidenavbaritem>
-      <nut-sidenavbaritem ikey="14" title="细粒度人像分割2"></nut-sidenavbaritem>
-    </nut-subsidenavbar>
-  </nut-subsidenavbar>
-</nut-sidenavbar>
+<nut-side-navbar offset="30">
+  <nut-sub-side-navbar title="智能城市AI" ikey="6">
+    <nut-sub-side-navbar title="人体识别1" ikey="9" :open="false">
+      <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
+      <nut-sidenavbar-item ikey="11" title="细粒度人像分割1"></nut-sidenavbar-item>
+    </nut-sub-side-navbar>
+    <nut-sub-side-navbar title="人体识别2" ikey="12">
+      <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
+      <nut-side-navbar-item ikey="14" title="细粒度人像分割2"></nut-side-navbar-item>
+    </nut-sub-side-navbar>
+  </nut-sub-side-navbar>
+</nut-side-navbar>
 `;
 
 test('render offset props', async () => {
   const wrapper = mount({
     components: {
-      'nut-sidenavbar': SideNavBar,
-      'nut-sidenavbaritem': SideNavBarItem,
-      'nut-subsidenavbar': SubSideNavBar
+      'nut-side-navbar': SideNavBar,
+      'nut-side-navbar-item': SideNavBarItem,
+      'nut-sub-side-navbar': SubSideNavBar
     },
     template,
     setup: () => {}
@@ -59,9 +59,9 @@ test('render offset props', async () => {
 test('render subsidenavbar open props', async () => {
   const wrapper = mount({
     components: {
-      'nut-sidenavbar': SideNavBar,
-      'nut-sidenavbaritem': SideNavBarItem,
-      'nut-subsidenavbar': SubSideNavBar
+      'nut-side-navbar': SideNavBar,
+      'nut-side-navbar-item': SideNavBarItem,
+      'nut-sub-side-navbar': SubSideNavBar
     },
     template,
     setup: () => {}
@@ -77,9 +77,9 @@ test('render subsidenavbar open props', async () => {
 test('subsidenavbar trigger click', async () => {
   const wrapper = mount({
     components: {
-      'nut-sidenavbar': SideNavBar,
-      'nut-sidenavbaritem': SideNavBarItem,
-      'nut-subsidenavbar': SubSideNavBar
+      'nut-side-navbar': SideNavBar,
+      'nut-side-navbar-item': SideNavBarItem,
+      'nut-sub-side-navbar': SubSideNavBar
     },
     template,
     setup: () => {}
