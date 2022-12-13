@@ -462,7 +462,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "SearchBar",
+          "name": "Searchbar",
           "type": "component",
           "cName": "搜索栏",
           "desc": "搜索栏",
