@@ -11,7 +11,7 @@
 <script lang="ts">
 import { reactive, toRefs, inject, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('timedetail');
+const { componentName, create } = createComponent('time-detail');
 export default create({
   name: 'timedetail',
   props: {
@@ -37,7 +37,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-timedetail';
       return {
         [prefixCls]: true
       };
