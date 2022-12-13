@@ -7,17 +7,17 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
   const wrapper = mount({
     emits: ['change'],
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" @change="change">
+        <nut-radio-group v-model="radioVal" @change="change">
           <nut-radio label="1" icon-size="12"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
           <nut-radio label="3" icon-size="12"></nut-radio>
           <nut-radio label="4" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup(props: any, { emit }: any) {
@@ -44,15 +44,15 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
 test('radiogroup text-position test', () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" text-position="left">
+        <nut-radio-group v-model="radioVal" text-position="left">
           <nut-radio label="1" icon-size="12"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -72,15 +72,15 @@ test('radiogroup text-position test', () => {
 test('radiogroup direction test', () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio label="1" icon-size="12"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -100,15 +100,15 @@ test('radiogroup direction test', () => {
 test('radio disabled test', async () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio label="1"></nut-radio>
           <nut-radio label="2" disabled></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -128,15 +128,15 @@ test('radio disabled test', async () => {
 test('radio icon-size test', async () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio label="1" icon-size="25"></nut-radio>
           <nut-radio label="2" icon-size="12" disabled></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -157,15 +157,15 @@ test('radio icon-size test', async () => {
 test('radio icon-name test', async () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio label="1" icon-size="25" icon-name="checklist" icon-active-name="checklist"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -185,15 +185,15 @@ test('radio icon-name test', async () => {
 test('radio label test', async () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio icon-size="25" label="testlabel"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
@@ -213,15 +213,15 @@ test('radio label test', async () => {
 test('radio shape test', async () => {
   const wrapper = mount({
     components: {
-      'nut-radiogroup': RadioGroup,
+      'nut-radio-group': RadioGroup,
       'nut-radio': Radio
     },
     template: `
       <template>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio icon-size="25" label="1" shape="button"></nut-radio>
           <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </template>
     `,
     setup() {
