@@ -127,7 +127,7 @@ test('should label-class', () => {
       labelClass: 'test-class'
     }
   });
-  const label = wrapper.find('.nut-input-label');
+  const label = wrapper.find('.nut-input__label');
   expect(label.classes()).toContain('test-class');
 });
 
@@ -138,7 +138,7 @@ test('should colon', () => {
       colon: true
     }
   });
-  expect(wrapper.find('.nut-input-label').html()).toMatchSnapshot();
+  expect(wrapper.find('.nut-input__label').html()).toMatchSnapshot();
 });
 
 test('should require', () => {
@@ -200,7 +200,7 @@ test('should labelAlign', () => {
       labelAlign: 'right'
     }
   });
-  const input: any = wrapper.find('.nut-input-label');
+  const input: any = wrapper.find('.nut-input__label');
   expect(input.element.style.textAlign).toEqual('right');
 });
 

@@ -39,9 +39,22 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
+import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
-const { componentName, create } = createComponent('actionsheet');
+import Popup from '../popup/index.vue';
+const { componentName, create } = createComponent('action-sheet');
+export interface menuItems {
+  disable: boolean;
+  loading: boolean;
+  color: string;
+  name: string;
+  subname: string;
+  [x: string]: string | boolean;
+}
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     ...popupProps,
     cancelTxt: {
@@ -73,7 +86,7 @@ export default create({
       default: ''
     },
     menuItems: {
-      type: Array,
+      type: Array as PropType<menuItems[]>,
       default: () => []
     },
     isWrapTeleport: {
@@ -90,13 +103,13 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-actionsheet';
       return {
         [prefixCls]: true
       };
     });
 
-    const isHighlight = (item: { [x: string]: string }) => {
+    const isHighlight = (item: { [x: string]: string | boolean }) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
     };
 

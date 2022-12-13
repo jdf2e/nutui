@@ -1,13 +1,13 @@
 <template>
-  <view ref="collapseDom">
+  <view :class="classes" ref="collapseDom">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { onMounted, provide, ref, watch, getCurrentInstance } from 'vue';
+import { onMounted, provide, ref, watch, getCurrentInstance, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { nextTick } from '@tarojs/taro';
-const { create } = createComponent('collapse');
+const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     active: {
@@ -16,10 +16,6 @@ export default create({
     accordion: {
       type: Boolean
     },
-    // expandIconPosition: {
-    //   type: String,
-    //   default: 'right'
-    // },
     titleIcon: {
       type: String,
       default: ''
@@ -56,6 +52,12 @@ export default create({
   emits: ['update:active', 'change'],
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
 
     const changeVal = (val: string | number | Array<string | number>) => {
       emit('update:active', val);
@@ -147,7 +149,7 @@ export default create({
       activeIndex,
       getParentChildren
     });
-    return { collapseDom };
+    return { collapseDom, classes };
   }
 });
 </script>

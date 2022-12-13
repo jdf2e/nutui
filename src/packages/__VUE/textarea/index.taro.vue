@@ -21,7 +21,7 @@
       :auto-focus="autofocus"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
-    <view class="cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
+    <view class="nut-textarea__cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
   </view>
 </template>
 <script lang="ts">
@@ -33,7 +33,7 @@ const { componentName, create, translate } = createComponent('textarea');
 export default create({
   props: {
     modelValue: {
-      type: [String, Number],
+      type: String,
       default: ''
     },
     textAlign: {

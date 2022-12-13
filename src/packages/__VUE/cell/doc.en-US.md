@@ -6,14 +6,15 @@ The cell is a single display item in the list.
 
 ### Install
 
+Register component globally via `app.use`, refer to [Component Registration](#/en-US/xinyunewlink) for more registration ways.
+
 ```javascript
 import { createApp } from 'vue';
-import { Cell, CellGroup, Icon } from '@nutui/nutui';
+import { Cell, CellGroup } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cell);
 app.use(CellGroup);
-app.use(Icon)
 ```
 
 ### Basic Usage
@@ -201,23 +202,19 @@ You can center the left and right contents of the cell vertically through the 'c
 
 ### Cell Props
 
-| Attribute               | Description                                                                                              | Type             | Default          |
-|-------------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
-| title                   | Title                                                                                                    | String           | -                |
-| sub-title               | Subtitle                                                                                                 | String           | -                |
-| desc                    | Description                                                                                              | String           | -                |
-| desc-text-align         | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String           | right            |
-| is-link                 | Whether to show the right arrow and turn on click feedback                                               | Boolean          | false            |
-| icon                    | Left [icon name](#/en-US/component/icon) or image url                                                                    | String           | -                |
-| right-icon`v3.2.1`      | Right [icon name](#/en-US/component/icon) or image url                                                                   | String           | right            |
-| round-radius            | Corner radius                                                                                            | Number           | 6px              |
-| url                     | Link URL                                                                                                 | String           | -                |
-| to                      | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -                |
-| replace                 | If true, the navigation will not leave a history record                                                  | Boolean          | false            |
-| center`v3.1.21`         | Whether to center content vertically                                                                     | Boolean          | false            |
-| size`v3.1.22`           | Size, can be set to `large`                                                                              | String           | ''               |
-| font-class-name`v3.2.1` | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
-| class-prefix`v3.2.1`    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
+| Attribute       | Description                                                                                              | Type             | Default |
+|-----------------|----------------------------------------------------------------------------------------------------------|------------------|---------|
+| title           | Title                                                                                                    | String           | -       |
+| sub-title       | Subtitle                                                                                                 | String           | -       |
+| desc            | Description                                                                                              | String           | -       |
+| desc-text-align | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String           | right   |
+| is-link         | Whether to show the right arrow and turn on click feedback                                               | Boolean          | false   |
+| round-radius    | Corner radius                                                                                            | Number           | 6px     |
+| url             | Link URL                                                                                                 | String           | -       |
+| to              | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -       |
+| replace         | If true, the navigation will not leave a history record                                                  | Boolean          | false   |
+| center          | Whether to center content vertically                                                                     | Boolean          | false   |
+| size            | Size, can be set to `large`                                                                              | String           | ''      |
 
 ### Cell Events
 
@@ -227,16 +224,16 @@ You can center the left and right contents of the cell vertically through the 'c
 
 ### Cell Slots
 
-| Name            | Description        |
-|-----------------|--------------------|
-| icon `v3.1.4`   | Custom Left `icon` |
-| default         | Default slot       |
-| link            | Custom Right`link` |
-| title `v3.1.22` | Custom`title`slot  |
+| Name    | Description        |
+|---------|--------------------|
+| icon    | Custom Left `icon` |
+| default | Default slot       |
+| link    | Custom Right`link` |
+| title   | Custom`title`slot  |
 
 ### CellGroup Slots
 
-| Name            | Description       |
-|-----------------|-------------------|
-| title `v3.1.10` | Custom`title`slot |
-| desc `v3.1.12`  | Custom`desc`slot  |
+| Name  | Description       |
+|-------|-------------------|
+| title | Custom`title`slot |
+| desc  | Custom`desc`slot  |

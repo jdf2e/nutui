@@ -2,23 +2,32 @@
 
 ### Intro
 
-The font-based icon set that can be used via the Icon component or referenced in other components via the icon attribute.
+Install the @nutui/icons-vue icon package independently.
 
 ### Install
 
-``` javascript
-import { createApp } from 'vue';
-// vue
-import { Icon } from '@nutui/nutui';
-// taro
-import { Icon } from '@nutui/nutui-taro';
-
-const app = createApp();
-app.use(Icon);
-
+```bash
+npm i --save @nutui/icons-vue
 ```
 
-### Basic Usage
+``` javascript
+import { createApp } from 'vue';
+import { IconFont } from '@nutui/icons-vue';
+
+const app = createApp();
+app.use(IconFont);
+```
+### Svg import on demand
+
+Use mode of on-demand loading components, see @nutui/icons-vue/dist/types/index.d.ts
+
+```js
+import { Add } from '@nutui/icons-vue';
+// template
+<Add color='red'>
+```
+
+### IconFont Basic Usage
 
 Use `name` prop to set icon name or icon URL.
 
@@ -32,7 +41,7 @@ Use `name` prop to set icon name or icon URL.
 ```
 :::
 
-### Icon Color
+#### Icon Color
 
 Use `color` prop to set icon color.
 
@@ -46,7 +55,7 @@ Use `color` prop to set icon color.
 ```
 :::
 
-### Icon Size
+#### Icon Size
 
 Use `size` prop to set icon size default unit is `px` .
 
@@ -59,7 +68,7 @@ Use `size` prop to set icon size default unit is `px` .
 </template>
 ```
 :::
-### Universal motion icons
+#### Universal motion icons
 
 Adding the specified class class can realize the dynamic effect of the picture. The default is to play once, and adding the `nut-icon-am-infinite` class can realize the loop playback. By setting css, the delay interval before the animation starts, and how long the animation will be completed
 
@@ -87,7 +96,7 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 
 
 
-### custom iconfont
+#### custom iconfont
 
 If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then you can use it directly in the Icon component.
 

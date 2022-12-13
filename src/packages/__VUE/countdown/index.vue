@@ -4,7 +4,7 @@
       <slot></slot>
     </template>
     <template v-else>
-      <view class="nut-cd-block" v-html="renderTime"></view>
+      <view class="nut-countdown__content" v-html="renderTime"></view>
     </template>
   </view>
 </template>

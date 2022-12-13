@@ -160,12 +160,10 @@
         :title="translate('please')"
       >
         <template v-slot:day="date">
-          <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
+          <span>{{ renderDate(date) }}</span>
         </template>
         <template v-slot:bottomInfo="date">
-          <span class="info">{{
-            date.date ? (date.date.day <= 10 ? '' : date.date.day <= 20 ? translate('mid') : '') : ''
-          }}</span>
+          <span class="info">{{ renderBottomDate(date) }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -200,6 +198,7 @@ import { reactive, toRefs, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { CalendarRef, Day } from '../calendaritem/type';
 
 const { createDemo, translate } = createComponent('calendar');
 const initTranslate = () =>
@@ -253,18 +252,11 @@ const initTranslate = () =>
       selected: 'selected:'
     }
   });
-interface TestCalendarState {
+interface TestCalendarState extends TestCalendarStateVisible {
   isVisible: boolean;
   date: string;
   dateWeek: string;
-  isVisible1: boolean;
-  isVisible2: boolean;
-  isVisible3: boolean;
-  isVisible4: boolean;
-  isVisible5: boolean;
-  isVisible6: boolean;
-  isVisible7: boolean;
-  isVisible8: boolean;
+
   date1: string[];
   date2: string;
   date3: string;
@@ -274,11 +266,21 @@ interface TestCalendarState {
   date7: string[];
   date8: string;
 }
+interface TestCalendarStateVisible {
+  isVisible1: boolean;
+  isVisible2: boolean;
+  isVisible3: boolean;
+  isVisible4: boolean;
+  isVisible5: boolean;
+  isVisible6: boolean;
+  isVisible7: boolean;
+  isVisible8: boolean;
+}
 export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    const calendarRef = ref(null);
+    const calendarRef = ref<null | CalendarRef>(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
       date: '2022-02-01',
@@ -300,11 +302,11 @@ export default createDemo({
       isVisible7: false,
       isVisible8: false
     });
-    const openSwitch = (param: string) => {
+    const openSwitch = (param: keyof TestCalendarStateVisible) => {
       state[`${param}`] = true;
     };
 
-    const closeSwitch = (param: string) => {
+    const closeSwitch = (param: keyof TestCalendarStateVisible) => {
       state[`${param}`] = false;
     };
 
@@ -366,6 +368,12 @@ export default createDemo({
         calendarRef.value.scrollToDate('2022-04-01');
       }
     };
+    const renderDate = (date: { date: Day }) => {
+      return date.date.day <= 9 ? '0' + date.date.day : date.date.day;
+    };
+    const renderBottomDate = (date: { date: Day }) => {
+      return date.date ? (date.date.day <= 10 ? '' : date.date.day <= 20 ? translate('mid') : '') : '';
+    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -384,7 +392,9 @@ export default createDemo({
       goDate,
       calendarRef,
       select,
-      translate
+      translate,
+      renderDate,
+      renderBottomDate
     };
   }
 });

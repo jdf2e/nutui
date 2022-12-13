@@ -8,29 +8,29 @@
       }
     }
 
-    .custom-address {
-      .nut-address-region-tab {
+    .nut-address__custom {
+      .nut-address__region {
         color: $dark-color;
       }
-      .region-con {
-        .region-group {
-          .region-item {
+      .nut-address__detail {
+        .nut-address__detail-list {
+          .nut-address__detail-item {
             color: $dark-color;
           }
         }
       }
     }
 
-    .exist-address {
-      .exist-address-group {
-        .exist-ul {
-          .exist-item {
+    .nut-address__exist {
+      .nut-address__exist-group {
+        .nut-address__exist-group-list {
+          .nut-address__exist-group-item {
             color: $dark-color;
           }
         }
       }
 
-      .choose-other {
+      .nut-address__exist-choose {
         border-top: 1px solid $dark-background;
       }
     }
@@ -61,9 +61,9 @@
   }
 
   // 请选择
-  .custom-address {
+  .nut-address__custom {
     display: block;
-    .nut-address-region-tab {
+    .nut-address__region {
       position: relative;
       margin-top: 32px;
       padding: 0 20px;
@@ -71,7 +71,7 @@
       font-size: $address-region-tab-font-size;
       color: $address-region-tab-color;
 
-      .tab-item {
+      .nut-address__region-item {
         position: relative;
         min-width: 2px;
         margin-right: 30px;
@@ -96,7 +96,7 @@
           text-overflow: ellipsis;
         }
 
-        .region-tab-line-mini {
+        .nut-address__region-line--mini {
           position: absolute;
           bottom: -10px;
           left: 0px;
@@ -113,7 +113,7 @@
         }
       }
 
-      .region-tab-line {
+      .nut-address__region-line {
         position: absolute;
         bottom: -10px;
         left: 20px;
@@ -128,16 +128,16 @@
       }
     }
 
-    .region-con {
+    .nut-address__detail {
       display: block;
       margin: 20px 20px 0;
-      .region-group {
+      .nut-address__detail-list {
         padding-top: 15px;
         height: 270px;
         overflow-y: auto;
         box-sizing: border-box;
         padding: 0;
-        .region-item {
+        .nut-address__detail-item {
           display: flex;
           align-items: center;
 
@@ -146,38 +146,32 @@
           &.active {
             font-weight: bold;
           }
-
-          .region-item-icon {
-            margin-right: 6px;
-            color: $address-icon-color !important;
-          }
-
           > div {
             margin: 10px 0;
           }
         }
       }
     }
-    .elevator-group {
+    .nut-address__elevator-group {
       display: flex;
       margin-top: 20px;
     }
   }
 
   // 配送至
-  .exist-address {
+  .nut-address__exist {
     display: block;
     margin-top: 15px;
 
-    .exist-address-group {
+    .nut-address__exist-group {
       padding: 15px 20px 0;
       height: 279px;
       overflow-y: scroll;
 
-      .exist-ul {
+      .nut-address__exist-group-list {
         box-sizing: border-box;
         padding: 0;
-        .exist-item {
+        .nut-address__exist-group-item {
           display: flex;
           align-items: center;
           margin-bottom: 20px;
@@ -199,12 +193,12 @@
       }
     }
 
-    .choose-other {
+    .nut-address__exist-choose {
       width: 100%;
       height: 54px;
       padding: 6px 0px 0;
       border-top: 1px solid #f2f2f2;
-      .btn {
+      .nut-address__exist-choose-btn {
         width: 90%;
         height: 42px;
         line-height: 42px;
@@ -215,24 +209,6 @@
         font-size: 15px;
         color: $white;
       }
-    }
-  }
-
-  &-custom-buttom {
-    width: 100%;
-    height: 54px;
-    padding: 6px 0px 0;
-    border-top: 1px solid #f2f2f2;
-    .btn {
-      width: 90%;
-      height: 42px;
-      line-height: 42px;
-      margin: auto;
-      text-align: center;
-      background: $button-primary-background-color;
-      border-radius: 21px;
-      font-size: 15px;
-      color: $white;
     }
   }
 

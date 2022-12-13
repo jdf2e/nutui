@@ -13,7 +13,8 @@ exports[`prop isLink  1`] = `
 "<view class=\\"nut-cell nut-cell--clickable\\" style=\\"border-radius: px;\\">
   <!--v-if-->
   <!--v-if-->
-  <!--v-if--><i class=\\"nutui-iconfont nut-icon nut-icon-right nut-cell__link\\" src=\\"\\"></i>
+  <!--v-if-->
+  <right class=\\"nut-cell__link\\"></right>
 </view>"
 `;
 

@@ -8,14 +8,10 @@
   background-repeat: no-repeat;
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
-  &.switch-close {
+  &.nut-switch-close {
     background-color: $switch-close-bg-color;
-    .close-line {
-      background: $switch-close-cline-bg-color;
-      border-radius: 2px;
-    }
   }
-  .switch-button {
+  .nut-switch-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,20 +37,14 @@
     height: $switch-height;
     line-height: $switch-line-height;
     overflow: hidden;
-    .switch-button {
+    .nut-switch-button {
       height: $switch-inside-height;
       width: $switch-inside-width;
       transform: $switch-inside-close-transform;
     }
-    &.switch-open {
-      .switch-button {
+    &.nut-switch-open {
+      .nut-switch-button {
         transform: $switch-inside-open-transform;
-      }
-    }
-    &.switch-close {
-      .close-line {
-        width: 8px;
-        height: 2px;
       }
     }
   }

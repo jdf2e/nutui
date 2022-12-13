@@ -1,15 +1,15 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-imagepreview :show="showPreview1" :images="imgData" @close="hideFn(1)" />
+    <nut-image-preview :show="showPreview1" :images="imgData" @close="hideFn(1)" />
     <nut-cell isLink :title="translate('showPreview')" :showIcon="true" @click="showFn(1)"></nut-cell>
 
     <h2>{{ translate('withInitNo') }}</h2>
-    <nut-imagepreview :show="showPreview2" :images="imgData" :content-close="true" :init-no="3" @close="hideFn(2)" />
+    <nut-image-preview :show="showPreview2" :images="imgData" :content-close="true" :init-no="3" @close="hideFn(2)" />
     <nut-cell isLink :title="translate('withInitNo')" :showIcon="true" @click="showFn(2)"></nut-cell>
 
     <h2>{{ translate('withPagination') }}</h2>
-    <nut-imagepreview
+    <nut-image-preview
       :show="showPreview3"
       :images="imgData"
       :pagination-visible="true"
@@ -19,7 +19,7 @@
     <nut-cell isLink :title="translate('withPagination')" :showIcon="true" @click="showFn(3)"></nut-cell>
 
     <h2>{{ translate('withVideos') }}</h2>
-    <nut-imagepreview :show="showPreview4" :videos="videoData" :images="imgData" @close="hideFn(4)" />
+    <nut-image-preview :show="showPreview4" :videos="videoData" :images="imgData" @close="hideFn(4)" />
     <nut-cell isLink :title="translate('withVideos')" :showIcon="true" @click="showFn(4)"></nut-cell>
 
     <h2>{{ translate('functionalCall') }}</h2>

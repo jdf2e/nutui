@@ -9,13 +9,13 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { FixedNav,OverLay } from '@nutui/nutui';
+import { FixedNav,Overlay } from '@nutui/nutui';
 // taro
-import { FixedNav,OverLay } from '@nutui/nutui-taro';
+import { FixedNav,Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(FixedNav);
-app.use(OverLay);
+app.use(Overlay);
 
 ```
 
@@ -25,7 +25,7 @@ app.use(OverLay);
 :::demo
 ```html
 <template>
-  <nut-fixednav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
+  <nut-fixed-nav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
@@ -68,21 +68,21 @@ export default {
 ### 左侧效果
 
 ``` html
-<nut-fixednav type="left" :position="{top:'140px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixed-nav type="left" :position="{top:'140px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
 
 ### 取消背景遮罩
 
 ``` html
-<nut-fixednav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixed-nav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
 ### 配合 Drag 支持拖拽 , 小程序暂不支持
 
 ``` html
 <nut-drag direction="y" :style="{right:'0px',bottom:'240px'}">
-  <nut-fixednav un-active-text="支持拖拽" v-model:visible="visible" :nav-list="navList" />
+  <nut-fixed-nav un-active-text="支持拖拽" v-model:visible="visible" :nav-list="navList" />
 </nut-drag>
 ```
 
@@ -91,7 +91,7 @@ export default {
 :::demo
 ```html
 <template>
-<nut-fixednav :position="{top:'280px' }" type="left" v-model:visible="myActive">
+<nut-fixed-nav :position="{top:'280px' }" type="left" v-model:visible="myActive">
     <template v-slot:list>
         <ul class="nut-fixednav__list">
             <li class="nut-fixednav__list-item">1</li>
@@ -106,7 +106,7 @@ export default {
     </nut-icon>
     <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
 </template>
-</nut-fixednav>
+</nut-fixed-nav>
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';

@@ -86,13 +86,16 @@ import { ref, watch, computed, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
+import Popup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro from '@tarojs/taro';
+import { CalendarRef } from '../calendaritem/type';
 
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem
+    [CalendarItem.name]: CalendarItem,
+    [Popup.name]: Popup
   },
   props: {
     type: {
@@ -180,7 +183,7 @@ export default create({
     });
     let show = ref(props.visible);
     // element refs
-    const calendarRef = ref<null | HTMLElement>(null);
+    const calendarRef = ref<null | CalendarRef>(null);
     const scrollToDate = (date: string) => {
       calendarRef.value?.scrollToDate(date);
     };

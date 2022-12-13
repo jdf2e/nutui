@@ -1,14 +1,13 @@
 <template>
   <div v-if="isShow" id="nav">
     <div class="back" @click="goBack">
-      <nut-icon name="left"></nut-icon>
+      <Left />
     </div>
     {{ title }}
     <div class="translate" @click="translateChange">
-      <nut-icon
-        name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
-      >
-      </nut-icon>
+      <img
+        src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
+      />
     </div>
   </div>
   <router-view />
@@ -21,10 +20,12 @@ import { isMobile } from '@/sites/assets/util';
 import { useThemeEditor } from '@/sites/assets/util/helper';
 import Icon from '@/sites/mobile/components/Icon.vue';
 import { translateChange } from '../assets/util/useTranslate';
+import { Left } from '@nutui/icons-vue';
 export default defineComponent({
   name: 'app',
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
+    Left
   },
   setup() {
     const title = ref('NutUI');
@@ -152,6 +153,10 @@ body {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      > img {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 

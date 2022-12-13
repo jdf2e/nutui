@@ -5,20 +5,22 @@
     :popClass="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
-    overlay-class="nut-numberkeyboard-overlay"
+    overlay-class="nut-number-keyboard-overlay"
   >
-    <div class="nut-numberkeyboard" ref="root">
-      <div class="number-board-header" v-if="title">
-        <h3 class="tit">{{ title }}</h3>
-        <span class="keyboard-close" v-if="type == 'default'" @click="closeBoard()">{{ translate('done') }}</span>
+    <div class="nut-number-keyboard" ref="root">
+      <div class="nut-number-keyboard__header" v-if="title">
+        <h3 class="nut-number-keyboard__title">{{ title }}</h3>
+        <span class="van-number-keyboard__close" v-if="type == 'default'" @click="closeBoard()">{{
+          translate('done')
+        }}</span>
       </div>
-      <div class="number-board-body">
-        <div class="number-board">
+      <div class="nut-number-keyboard__body">
+        <div class="nut-number-keyboard__keys">
           <div
             :class="[
-              'key-board-wrapper',
+              'nut-key__wrapper',
               {
-                'key-board-wrapper-large':
+                'nut-key__wrapper--wider':
                   item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
               }
             ]"
@@ -27,10 +29,10 @@
           >
             <div
               :class="[
-                'key',
-                { active: item.id == clickKeyIndex },
-                { lock: item.type == 'lock' },
-                { delete: item.type == 'delete' }
+                'nut-key',
+                { 'nut-key--active': item.id == clickKeyIndex },
+                { 'nut-key--lock': item.type == 'lock' },
+                { 'nut-key--delete': item.type == 'delete' }
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
               @touchmove="(event) => onTouchMove(event)"
@@ -48,10 +50,10 @@
             </div>
           </div>
         </div>
-        <div class="number-board-sidebar" v-if="type == 'rightColumn'">
-          <div class="key-board-wrapper">
+        <div class="nut-number-keyboard__sidebar" v-if="type == 'rightColumn'">
+          <div class="nut-key__wrapper">
             <div
-              :class="['key', { active: clickKeyIndex == 'delete' }]"
+              :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
               @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
               @touchmove="(event) => onTouchMove(event)"
               @touchend="onTouchEnd"
@@ -61,8 +63,8 @@
               />
             </div>
           </div>
-          <div class="key-board-wrapper" @click="closeBoard()">
-            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]">
+          <div class="nut-key__wrapper nut-key__wrapper--finish" @click="closeBoard()">
+            <div :class="['nut-key', 'nut-key--finish ', { activeFinsh: clickKeyIndex == 'finish' }]">
               {{ confirmText || translate('done') }}
             </div>
           </div>
@@ -75,8 +77,16 @@
 <script lang="ts">
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('numberkeyboard');
+import Popup from '../popup/index.taro.vue';
+const { create, translate } = createComponent('numberkey-board');
+export interface keys {
+  id: number | string;
+  type: string;
+}
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     confirmText: {
       type: String,
@@ -121,7 +131,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    const clickKeyIndex: Ref<string | undefined> = ref(undefined);
+    const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
@@ -141,7 +151,7 @@ export default create({
     }
 
     function getBasicKeys() {
-      const keys: any = [];
+      const keys: keys[] = [];
       for (let i = 1; i <= 9; i++) {
         keys.push({ id: i, type: 'number' });
       }
@@ -190,7 +200,7 @@ export default create({
       }
     );
 
-    function onTouchstart(item: { id: string; type: string }, event: TouchEvent) {
+    function onTouchstart(item: { id: string | number; type: string }, event: TouchEvent) {
       event.stopPropagation();
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {

@@ -60,10 +60,11 @@
 <script lang="ts">
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('addresslist');
+const { componentName, create, translate } = createComponent('address-list');
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
+import Button from '../button/index.taro.vue';
 export default create({
   props: {
     data: {
@@ -89,12 +90,13 @@ export default create({
   },
   components: {
     SwipeShell,
-    GeneralShell
+    GeneralShell,
+    [Button.name]: Button
   },
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
-    const dataArray = ref([]);
+    const dataArray = ref([]) as any;
     const dataInfo = reactive({
       id: 2,
       addressName: '姓名',
@@ -103,7 +105,7 @@ export default create({
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
     });
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-addresslist';
       return {
         [prefixCls]: true
       };

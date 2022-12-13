@@ -5,8 +5,10 @@ import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { Right } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('cell');
 export default create({
+  components: { Right },
   props: {
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },
@@ -17,8 +19,6 @@ export default create({
     replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
-    icon: { type: String, default: '' },
-    rightIcon: { type: String, default: 'right' },
     center: { type: Boolean, default: false },
     size: { type: String, default: '' } // large
   },

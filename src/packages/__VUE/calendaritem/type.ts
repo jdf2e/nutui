@@ -33,6 +33,11 @@ export interface CalendarState {
   monthsNum: number;
   defaultRange: number[];
 }
+export interface CalendarTaroState extends CalendarState {
+  compConthsDatas: MonthInfo[];
+  scrollTop: number;
+  containerHeight: string;
+}
 export interface Day {
   day: string | number;
   type: string;
@@ -61,4 +66,7 @@ export interface MonthInfo {
   monthData: Day[];
   cssHeight: number;
   cssScrollHeight: number;
+}
+export interface CalendarRef extends HTMLElement {
+  scrollToDate: (date: string) => void;
 }

@@ -1,9 +1,7 @@
 <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
         <view class="nut-cell__icon" v-if="icon || $slots.icon">
-            <slot name="icon">
-                <nut-icon v-bind="$attrs" v-if="icon" class="icon" :name="icon"></nut-icon>
-            </slot>
+            <slot name="icon"></slot>
         </view>
         <view class="nut-cell__title" v-if="title || subTitle || $slots.title">
 
@@ -23,7 +21,7 @@
             :class="{ 'nut-cell__value--alone': (!title && !subTitle && !$slots.title) }"
             :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
         <slot name="link">
-            <nut-icon v-if="isLink || to" class="nut-cell__link" v-bind="$attrs" :name="rightIcon"></nut-icon>
+            <Right v-if="isLink || to" class="nut-cell__link"></Right>
         </slot>
     </slot>
 </view>

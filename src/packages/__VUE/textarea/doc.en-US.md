@@ -1,4 +1,4 @@
-# TextArea 
+# Textarea 
 
 ### Intro
 
@@ -9,12 +9,12 @@ Enter or edit text in the text box, and limit the number of entries is supported
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { TextArea } from '@nutui/nutui';
+import { Textarea } from '@nutui/nutui';
 //taro
-import { TextArea } from '@nutui/nutui-taro';
+import { Textarea } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(TextArea);
+app.use(Textarea);
 
 ```
 

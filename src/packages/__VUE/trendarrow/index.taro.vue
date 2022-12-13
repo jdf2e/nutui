@@ -20,7 +20,7 @@
 import { reactive, toRefs, computed } from 'vue';
 import { myFixed } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('trendarrow');
+const { componentName, create } = createComponent('trend-arrow');
 
 export default create({
   props: {
@@ -79,7 +79,7 @@ export default create({
       rateTrend: props.rate > 0 ? true : false
     });
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-trendarrow';
       return {
         [prefixCls]: true
       };

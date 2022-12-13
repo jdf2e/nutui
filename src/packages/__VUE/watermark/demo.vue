@@ -37,8 +37,8 @@ const initTranslate = () =>
     'en-US': {
       basic: 'Basic Usage',
       title2: 'Part Usage',
-      btn1: 'Text WaterMark',
-      btn2: 'Image WaterMark'
+      btn1: 'Text Watermark',
+      btn2: 'Image Watermark'
     }
   });
 export default createDemo({

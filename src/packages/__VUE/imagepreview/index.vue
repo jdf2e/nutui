@@ -50,8 +50,10 @@ import { isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import ImagePreviewItem from './imagePreviewItem.vue';
+import Popup from '../popup/index.vue';
+import Swiper from '../swiper/index.vue';
 import { ImageInterface, baseProps } from './types';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {
@@ -84,7 +86,9 @@ export default create({
   },
   emits: ['close', 'change'],
   components: {
-    ImagePreviewItem: ImagePreviewItem
+    ImagePreviewItem: ImagePreviewItem,
+    [Popup.name]: Popup,
+    [Swiper.name]: Swiper
   },
 
   setup(props, { emit }) {

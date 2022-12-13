@@ -31,8 +31,11 @@ import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType }
 import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
+import Popup from '../popup/index.taro.vue';
+import Swiper from '../swiper/index.taro.vue';
+import SwiperItem from '../swiperitem/index.taro.vue';
 import Taro from '@tarojs/taro';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {
@@ -87,7 +90,11 @@ export default create({
     }
   },
   emits: ['close', 'change'],
-  components: {},
+  components: {
+    [Popup.name]: Popup,
+    [Swiper.name]: Swiper,
+    [SwiperItem.name]: SwiperItem
+  },
 
   setup(props, { emit }) {
     const state = reactive({

@@ -37,6 +37,7 @@ import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
 import { Icon } from '@nutui/icons-vue';
+import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
   components: {
@@ -44,7 +45,7 @@ export default create({
   },
   props: {
     visible: { type: Boolean, default: false },
-    list: { type: Array, default: [] },
+    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
     theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
     location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },

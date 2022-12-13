@@ -1,17 +1,16 @@
 .nut-theme-dark {
-  .nut-noticebar-page {
+  .nut-noticebar__page {
     background: $dark-background2;
     color: $dark-color;
   }
 
-  .nut-noticebar-vertical {
-    .horseLamp_list_item {
+  .nut-noticebar__vertical {
+    .nut-noticebar__vertical-item {
       color: $dark-color;
     }
   }
 }
-.nut-noticebar-page {
-  // width: 100%;
+.nut-noticebar__page {
   display: flex;
   padding: $noticebar-box-padding;
   height: $noticebar-height;
@@ -20,12 +19,12 @@
   align-items: center;
   background: $noticebar-background;
   color: $noticebar-color;
-  &.wrapable {
+  &--wrapable {
     height: auto;
     padding: $noticebar-wrapable-padding;
-    .wrap {
+    .nut-noticebar__page-wrap {
       height: auto;
-      .content {
+      .nut-noticebar__page-wrap-content {
         position: relative;
         white-space: normal;
         word-wrap: break-word;
@@ -33,24 +32,24 @@
     }
   }
 
-  .withicon {
+  .nut-noticebar__page--withicon {
     position: relative;
     padding-right: 40px;
   }
-  .left-icon {
+  .nut-noticebar__page-lefticon {
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
     margin: $noticebar-lefticon-margin;
     background-size: 100% 100%;
   }
-  .right-icon {
+  .nut-noticebar__page-righticon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: $noticebar-right-icon-width;
     margin: $noticebar-righticon-margin;
   }
-  .wrap {
+  .nut-noticebar__page-wrap {
     display: flex;
     flex: 1;
     height: $noticebar-line-height;
@@ -58,7 +57,7 @@
     overflow: hidden;
     position: relative;
   }
-  .content {
+  .nut-noticebar__page-wrap-content {
     position: absolute;
     white-space: nowrap;
     &.nut-ellipsis {
@@ -99,7 +98,7 @@
 }
 
 // 纵向
-.nut-noticebar-vertical {
+.nut-noticebar__vertical {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -108,12 +107,12 @@
   overflow: hidden;
   padding: $noticebar-box-padding;
 
-  .horseLamp_list {
+  .nut-noticebar__vertical-list {
     margin: 0;
     padding: 0;
     display: block;
     flex: 1;
-    .horseLamp_list_item {
+    .nut-noticebar__vertical-item {
       display: flex;
       align-items: center;
       height: $noticebar-height;

@@ -16,7 +16,7 @@
   </Nut-Scroll-View>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
+import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutScrollView from '../scrollView/index.taro.vue';
 import Taro from '@tarojs/taro';
@@ -79,7 +79,7 @@ export default create({
       return state.list.length * props.height;
     });
 
-    const visibleData = computed(() => {
+    const visibleData: ComputedRef = computed(() => {
       return state.list.slice(state.start, Math.min(end.value, state.list.length));
     });
 

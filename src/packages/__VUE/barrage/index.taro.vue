@@ -1,39 +1,17 @@
 <template>
-  <view class="dmBody" :class="classes">
-    <div ref="dmContainer" :class="['dmContainer', $slots.default && 'slotContainer']">
-      <div :class="['slotBody', 'slotBody' + classTime]">
-        <!-- <slot></slot> -->
+  <view :class="classes">
+    <div ref="dmContainer">
+      <div :class="['nut-barrage__slotBody' + classTime]">
         <view
           v-for="(item, index) of danmuList"
           :key="'danmu' + index"
-          :class="['dmitem', 'dmitem' + index, 'move']"
+          :class="['nut-barrage__item', 'nut-barrage__item' + index, 'move']"
           :style="styleList[index]"
         >
           {{ item.length > 8 ? item.substr(0, 8) + '...' : item }}
         </view>
       </div>
     </div>
-    <!-- <div ref="dmContainer" class="dmContainer slotContainer" v-if="$slots.default">
-      <slot></slot>
-      <view
-        v-for="(item, index) of danmuListSlots"
-        :key="'danmu' + index"
-        :class="['dmitem', 'dmitem' + danmuList.length + index, 'move']"
-        :style="styleList[index]"
-      >
-        {{ item.length > 8 ? item.substr(0, 8) + '...' : item }}
-      </view>
-    </div> -->
-    <!-- <view class="dmContainer" id="dmContainer">
-      <view
-        v-for="(item, index) of danmuList"
-        :key="'danmu' + index"
-        :class="['dmitem', 'dmitem' + index, 'move']"
-        :style="styleList[index]"
-      >
-        {{ item.length > 8 ? item.substr(0, 8) + '...' : item }}
-      </view>
-    </view> -->
   </view>
 </template>
 <script lang="ts">
@@ -87,13 +65,15 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        ['dmBody' + timeId.value]: true
+        ['nut-barrage--dmBody' + timeId.value]: true
       };
     });
 
     onMounted(() => {
       if (slotDefault) {
-        const list = document.getElementsByClassName('slotBody' + classTime)[0].getElementsByClassName('dmitem');
+        const list = document
+          .getElementsByClassName('nut-barrage__slotBody' + classTime)[0]
+          .getElementsByClassName('nut-barrage__item');
         console.log(list);
 
         let childrens = list?.[0]?.children || [];
@@ -125,11 +105,11 @@ export default create({
       const query = Taro.createSelectorQuery();
       setTimeout(() => {
         let width = 100;
-        query.select('.dmBody' + timeId.value).boundingClientRect((rec) => {
+        query.select('.nut-barrage--dmBody' + timeId.value).boundingClientRect((rec) => {
           width = rec.width || 300;
         });
         query
-          .select('.dmitem' + index)
+          .select('.nut-barrage__item' + index)
           .boundingClientRect((recs) => {
             let height = recs.height;
             let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px';
@@ -141,26 +121,9 @@ export default create({
 
     const runStep = () => {
       danmuList.value.forEach((item: any, index: number) => {
-        // let el = danmuList.value[index];
         if (typeof danmuList.value[index] == 'object') {
-          // danmuListSlots.value.push(item);
-          // let l = slotDefault ? String(danmuList.value.length) : '';
-          // let s = l + danmuListSlots.value.indexOf(item);
           getNode(index);
         } else {
-          // if (el?.classList.contains('dmitem')) {
-          //   el.classList.remove('dmitem');
-          // }
-          // if (el?.classList.contains('dmitem' + index)) {
-          //   el.classList.remove('dmitem' + index);
-          // }
-          // if (slotDefault && el) {
-          //   if (el?.classList.contains('move')) {
-          //     el.classList.remove('move');
-          //   }
-          //   el.classList.add('.move');
-          // }
-          // el.classList.add('.dmitem .dmitem' + index);
           getNode(index);
         }
       });
@@ -168,7 +131,6 @@ export default create({
     const distance = ref('0');
     let styleList: any[] = reactive([]);
     const styleInfo = (index: number, nodeTop: string, width: number) => {
-      // let n = Math.floor(Math.random() * (10 - 5)) + 5;
       let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
       let list = styleList;
       let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;

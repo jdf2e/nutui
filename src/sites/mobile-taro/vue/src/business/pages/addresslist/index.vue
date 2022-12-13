@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       @delIcon="delClick"
       @editIcon="editClick"
@@ -9,9 +9,9 @@
       :showBottomButton="false"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
     <h2>长按功能</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       longPress
       :showBottomButton="false"
@@ -23,9 +23,9 @@
       @longDel="delClick"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
     <h2>滑动功能</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       swipeEdition
       showBottomButton
@@ -36,7 +36,7 @@
       @add="addAddress"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
   </div>
 </template>
 

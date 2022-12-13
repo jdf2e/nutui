@@ -13,14 +13,14 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { Picker, Popup, OverLay } from '@nutui/nutui';
+import { Picker, Popup, Overlay } from '@nutui/nutui';
 // taro
-import { Picker, Popup, OverLay } from '@nutui/nutui-taro';
+import { Picker, Popup, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);
 app.use(Popup);
-app.use(OverLay);
+app.use(Overlay);
 ```
 
 ### 基础用法

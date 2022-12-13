@@ -1,4 +1,4 @@
-# SearchBar
+# Searchbar
 
 ### Intro
 
@@ -10,12 +10,12 @@ Search bar
 import { createApp } from 'vue';
 
 // vue
-import { SearchBar, Icon } from '@nutui/nutui';
+import { Searchbar, Icon } from '@nutui/nutui';
 // taro
-import { SearchBar, Icon } from '@nutui/nutui-taro';
+import { Searchbar, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(SearchBar);
+app.use(Searchbar);
 app.use(Icon);
 
 ```    

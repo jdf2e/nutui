@@ -53,7 +53,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
@@ -76,7 +76,7 @@ export default create({
       default: 'title'
     },
     indexList: {
-      type: Array,
+      type: Array as PropType<any[]>,
       default: () => {
         return [];
       }
@@ -142,7 +142,7 @@ export default create({
       return el.dataset.index as string;
     };
 
-    const setListGroup = (el: HTMLLIElement) => {
+    const setListGroup = (el: any) => {
       nextTick(() => {
         if (!state.listGroup.includes(el) && el != null) {
           state.listGroup.push(el);

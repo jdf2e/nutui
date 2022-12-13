@@ -86,17 +86,19 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { PropType, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
+import Popup from '../popup/index.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { CalendarRef } from '../calendaritem/type';
 
-type InputDate = string | string[];
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem
+    [CalendarItem.name]: CalendarItem,
+    [Popup.name]: Popup
   },
   props: {
     type: {
@@ -179,7 +181,7 @@ export default create({
       return slots.bottomInfo;
     });
     // element refs
-    const calendarRef = ref<null | HTMLElement>(null);
+    const calendarRef = ref<null | CalendarRef>(null);
     const scrollToDate = (date: string) => {
       calendarRef.value?.scrollToDate(date);
     };

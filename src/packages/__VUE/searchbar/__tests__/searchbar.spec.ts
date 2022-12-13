@@ -1,5 +1,5 @@
 import { mount, config } from '@vue/test-utils';
-import SearchBar from '../index.vue';
+import Searchbar from '../index.vue';
 
 import NutIcon from '../../icon/index.vue';
 
@@ -14,7 +14,7 @@ afterAll(() => {
 });
 
 test('basic usage', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
     }
@@ -24,7 +24,7 @@ test('basic usage', () => {
 });
 
 test('should limit maxlength of input value when using maxlength prop', async () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       maxLength: 3,
       modelValue: '9999'
@@ -38,7 +38,7 @@ test('should limit maxlength of input value when using maxlength prop', async ()
 });
 
 test('should format input value when type is number', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       type: 'number',
       modelValue: ''
@@ -51,7 +51,7 @@ test('should format input value when type is number', () => {
 });
 
 test('should format input value when type is number', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       type: 'number',
       modelValue: ''
@@ -68,7 +68,7 @@ test('should format input value when type is number', () => {
 });
 
 test('backgrounds prop test', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: '',
       background: 'red',
@@ -82,7 +82,7 @@ test('backgrounds prop test', () => {
 });
 
 test('change event test', async () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
     }
@@ -94,7 +94,7 @@ test('change event test', async () => {
 });
 
 test('change event test', async () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
     }
@@ -106,7 +106,7 @@ test('change event test', async () => {
 });
 
 test('focus event focus', async () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
     }
@@ -118,7 +118,7 @@ test('focus event focus', async () => {
 });
 
 test('blur event test', async () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
     }
@@ -130,7 +130,7 @@ test('blur event test', async () => {
 });
 
 test('clear event test', async () => {
-  const wrapper = mount(SearchBar, { props: { modelValue: 3 } });
+  const wrapper = mount(Searchbar, { props: { modelValue: 3 } });
   const input = wrapper.find('input');
   const clear = wrapper.find('.nut-searchbar__input-clear');
   wrapper.find('input').trigger('input');
@@ -142,7 +142,7 @@ test('clear event test', async () => {
 });
 
 test('slot test', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: { modelValue: '' },
     slots: {
       default: () => {
@@ -168,7 +168,7 @@ test('slot test', () => {
 });
 
 test('custom clear icon', () => {
-  const wrapper = mount(SearchBar, {
+  const wrapper = mount(Searchbar, {
     props: {
       clearIcon: 'close',
       modelValue: 'test'

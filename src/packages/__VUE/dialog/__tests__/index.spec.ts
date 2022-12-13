@@ -3,14 +3,14 @@ import DialogTemplate from '../index.vue';
 import Icon from '../../icon/index.vue';
 import Popup from '../../popup/index.vue';
 import Button from '../../button/index.vue';
-import OverLay from '../../overlay/index.vue';
+import Overlay from '../../overlay/index.vue';
 
 beforeAll(() => {
   config.global.components = {
     [Icon.name]: Icon,
     [Popup.name]: Popup,
     [Button.name]: Button,
-    [OverLay.name]: OverLay
+    [Overlay.name]: Overlay
   };
 });
 
@@ -34,7 +34,7 @@ test('should render dialog template', async () => {
     }
   });
 
-  const overLay = wrapper.getComponent(OverLay);
+  const overLay = wrapper.getComponent(Overlay);
   expect(await overLay.find('.nut-dialog__content'));
 });
 
@@ -45,7 +45,7 @@ test('header slot', async () => {
     }
   });
 
-  const overLay = wrapper.getComponent(OverLay);
+  const overLay = wrapper.getComponent(Overlay);
   expect(await overLay.find('.nut-dialog__header'));
 });
 
@@ -56,6 +56,6 @@ test('header slot', async () => {
 //   onCancel,
 //   onOk
 // });
-// const overLay = wrapper.getComponent(OverLay);
+// const overLay = wrapper.getComponent(Overlay);
 // expect(await overLay.find('.nut-dialog__content'))
 // });

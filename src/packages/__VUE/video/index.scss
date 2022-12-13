@@ -10,7 +10,7 @@
       outline: none;
     }
   }
-  .playing-mask {
+  .nut-video-mask {
     width: 100%;
     position: absolute;
     left: 0;
@@ -71,13 +71,13 @@
     align-items: center;
     opacity: 0;
     transition: all 1s;
-    &.show-control {
+    &.nut-video-controller--show {
       opacity: 1;
     }
-    &.hide-control {
+    &.nut-video-controller--hide {
       opacity: 0;
     }
-    .control-play-btn {
+    .nut-video-controller__playbtn {
       width: 18px;
       height: 18px;
       background-image: -webkit-image-set(
@@ -97,13 +97,13 @@
       }
     }
 
-    .duration-time,
-    .current-time {
+    .nut-video-controller__total,
+    .nut-video-controller__now {
       color: #fff;
       padding: 0 5px;
       font-size: 10px;
     }
-    .progress-container {
+    .nut-video-controller__progress {
       position: relative;
       display: inline-block;
       height: 100%;
@@ -112,7 +112,7 @@
       margin: 0 5px;
       transition: all 0.2s ease-in;
       flex: 1;
-      .progress {
+      .nut-video-controller__progress-value {
         position: absolute;
         top: 50%;
         width: 100%;
@@ -125,24 +125,18 @@
         background: rgba(255, 255, 255, 0.8);
         height: 2px;
       }
-      .video-ball {
+      .nut-video-controller__ball {
         width: 10px;
         height: 10px;
-        // background: #fff;
-        // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
         position: absolute;
         top: 50%;
         left: 0;
-        // margin-left: -7px;
         border-radius: 50%;
         div {
           width: 10px;
           height: 10px;
           background: #fff;
           box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
-          // position: absolute;
-          // top: 0;
-          // left: 8px;
           margin: 0 -5px;
           border-radius: 50%;
         }
@@ -152,7 +146,7 @@
         }
       }
     }
-    .fullscreen-icon {
+    .nut-video-controller__full {
       width: 40px;
       height: 35px;
       background-image: -webkit-image-set(
@@ -171,7 +165,7 @@
         background-position: center;
       }
     }
-    .volume {
+    .nut-video-controller__volume {
       width: 30px;
       height: 30px;
       background-image: -webkit-image-set(

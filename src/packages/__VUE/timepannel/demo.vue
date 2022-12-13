@@ -6,7 +6,7 @@
       <div class="selected-option"> {{ val1 }} </div>
     </nut-cell>
     <div class="timeselect-wrapper">
-      <nut-timeselect :visible="visible1"></nut-timeselect>
+      <nut-time-select :visible="visible1"></nut-time-select>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('timeselect');
+const { createDemo } = createComponent('time-select');
 export default createDemo({
   setup() {
     const state = reactive({

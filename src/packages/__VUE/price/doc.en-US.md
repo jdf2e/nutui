@@ -39,7 +39,7 @@ app.use(Price);
 
 ``` html
 <template>
-    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888" :decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
 </template>
 ```
 
@@ -113,7 +113,7 @@ app.use(Price);
 | price          | Price                                                      | Number ｜ String | 0       |
 | need-symbol    | Add symbol                                                 | Boolean          | true   |
 | symbol         | Symbol type                                                | String           | &yen;  |
-| decimal-digits | Decimal digits                                             | Number ｜ String | 2      |
+| decimal-digits | Decimal digits                                             | Number | 2      |
 | thousands      | Thousands separation                                       | Boolean          | false  |
 | position       | The symbol appear before or after the price，`before`、`after` | String           | before |
 | size           | Size，`large`、`normal`、`small`                            | String           | large |

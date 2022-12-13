@@ -410,6 +410,25 @@ app.use(Elevator);
     }
   }
 </script>
+<style>
+  .nut-address-custom-buttom {
+    width: 100%;
+    height: 54px;
+    padding: 6px 0px 0;
+    border-top: 1px solid #f2f2f2;
+  }
+  .btn {
+      width: 90%;
+      height: 42px;
+      line-height: 42px;
+      margin: auto;
+      text-align: center;
+      background: linear-gradient(135deg,#fa2c19 0%,#fa6419 100%);
+      border-radius: 21px;
+      font-size: 15px;
+      color: white;
+    }
+</style>
 ```
 :::
 ### 自定义地址与已有地址切换

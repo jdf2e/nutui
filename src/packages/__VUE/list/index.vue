@@ -9,7 +9,7 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
+import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('list');
 const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
@@ -67,7 +67,7 @@ export default create({
       return state.list.length * props.height;
     });
 
-    const visibleData = computed(() => {
+    const visibleData: ComputedRef = computed(() => {
       return state.list.slice(state.start, Math.min(end.value, state.list.length));
     });
 

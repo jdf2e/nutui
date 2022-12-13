@@ -61,7 +61,7 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY);
-    if (!Parent.parent) return;
+    if (!Parent.parent) return {} as any;
     const index = Parent.index;
     const parent = Parent.parent.props;
 

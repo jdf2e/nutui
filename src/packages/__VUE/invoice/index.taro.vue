@@ -39,8 +39,20 @@
 <script lang="ts">
 import { reactive, toRefs, computed, ref, onMounted, watch, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Form from '../form/index.taro.vue';
+import FormItem from '../formitem/index.taro.vue';
+import Radio from '../radio/index.taro.vue';
+import RadioGroup from '../radiogroup/index.taro.vue';
+import Button from '../button/index.taro.vue';
 const { componentName, create } = createComponent('invoice');
 export default create({
+  components: {
+    [Form.name]: Form,
+    [FormItem.name]: FormItem,
+    [Radio.name]: Radio,
+    [RadioGroup.name]: RadioGroup,
+    [Button.name]: Button
+  },
   props: {
     data: {
       type: Array,

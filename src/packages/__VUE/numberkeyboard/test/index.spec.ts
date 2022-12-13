@@ -91,7 +91,7 @@ test('should render title and close button correctly', () => {
       title: '默认键盘'
     }
   });
-  let title = wrapper.find('.tit');
+  let title = wrapper.find('.nut-number-keyboard__title');
   expect(title.html()).toContain('默认键盘');
 });
 

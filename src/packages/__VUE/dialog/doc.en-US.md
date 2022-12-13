@@ -11,12 +11,12 @@ The popup box component supports function call and component call.
     
 ```javascript
 import { createApp,createVNode } from 'vue';
-import { Dialog,Popup,OverLay } from '@nutui/nutui';
+import { Dialog,Popup,Overlay } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Dialog);
 app.use(Popup);
-app.use(OverLay);
+app.use(Overlay);
 
 ```
 

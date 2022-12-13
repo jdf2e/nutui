@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
     <div class="nut-circleprogress__text">
       <slot></slot>
@@ -11,7 +11,7 @@
 <script lang="ts">
 import { computed, ref, watch, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('circleprogress');
+const { componentName, create } = createComponent('circle-progress');
 interface Item {
   key?: string;
   value?: string;
@@ -51,7 +51,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-circleprogress';
       return {
         [prefixCls]: true
       };

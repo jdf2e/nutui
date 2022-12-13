@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <svg viewBox="0 0 100 100">
       <defs>
         <linearGradient :id="refRandomId" x1="100%" y1="0%" x2="0%" y2="0%">
@@ -30,7 +30,13 @@
 import { computed, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isObject } from '@/packages/utils/util';
-const { componentName, create } = createComponent('circleprogress');
+const { componentName, create } = createComponent('circle-progress');
+import type { PropType } from 'vue';
+export interface stopArr {
+  key: string;
+  value: string;
+}
+
 export default create({
   props: {
     progress: {
@@ -46,7 +52,7 @@ export default create({
       default: 50
     },
     strokeLinecap: {
-      type: String,
+      type: String as PropType<CanvasLineCap>,
       default: 'round'
     },
     color: {
@@ -67,7 +73,7 @@ export default create({
     const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-circleprogress';
       return {
         [prefixCls]: true
       };
@@ -98,7 +104,7 @@ export default create({
       }
       let color = props.color;
       const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
-      let stopArr: object[] = [];
+      let stopArr: stopArr[] = [];
       colorArr.map((item) => {
         let obj = {
           key: '',

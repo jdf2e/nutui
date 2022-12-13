@@ -25,7 +25,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-imagepreview :show="showPreview" :images="imgData" @close="hideFn"/>
+    <nut-image-preview :show="showPreview" :images="imgData" @close="hideFn"/>
     <nut-cell isLink title="Show preview" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 
@@ -74,7 +74,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-imagepreview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
+    <nut-image-preview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
     <nut-cell isLink title="With init no" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script lang="ts">
@@ -122,7 +122,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-imagepreview
+    <nut-image-preview
         :show="showPreview"
         :images="imgData"
         :pagination-visible="true"
@@ -178,7 +178,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-imagepreview
+    <nut-image-preview
         :show="showPreview"
         :images="imgData"
         :videos="videoData"      

@@ -20,7 +20,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
-const { create } = createComponent('imagepreviewitem');
+const { create } = createComponent('image-preview-item');
 
 export default create({
   props: {

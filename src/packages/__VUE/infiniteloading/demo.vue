@@ -3,15 +3,15 @@
     <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
       <nut-tabpane :title="translate('basic')">
         <ul class="infiniteUl">
-          <nut-infiniteloading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
+          <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
             <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-          </nut-infiniteloading>
+          </nut-infinite-loading>
         </ul>
       </nut-tabpane>
 
       <nut-tabpane :title="translate('customTxt')">
         <ul class="infiniteUl">
-          <nut-infiniteloading
+          <nut-infinite-loading
             v-model="infinityValue2"
             load-txt="Loading..."
             :load-more-txt="translate('none')"
@@ -19,7 +19,7 @@
             @load-more="customLoadMore"
           >
             <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
-          </nut-infiniteloading>
+          </nut-infinite-loading>
         </ul>
       </nut-tabpane>
     </nut-tabs>
@@ -29,7 +29,7 @@
 <script lang="ts">
 import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('infiniteloading');
+const { createDemo, translate } = createComponent('infinite-loading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>

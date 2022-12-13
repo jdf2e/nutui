@@ -1,8 +1,7 @@
 <template>
   <view :class="classes" @click="onClick" :style="style">
-    <view class="switch-button">
+    <view class="nut-switch-button">
       <nut-icon v-if="loading" :name="name" v-bind="$attrs" :size="size" :color="color"></nut-icon>
-      <!-- <view v-show="!modelValue" class="close-line"></view> -->
       <template v-if="activeText">
         <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>
         <view class="nut-switch-label close" v-show="!modelValue">{{ inactiveText }}</view>
@@ -74,7 +73,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [isActive.value ? 'switch-open' : 'switch-close']: true,
+        [isActive.value ? 'nut-switch-open' : 'nut-switch-close']: true,
         [`${prefixCls}-disable`]: props.disable,
         [`${prefixCls}-base`]: true
       };

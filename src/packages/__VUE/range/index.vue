@@ -1,6 +1,6 @@
 <template>
   <view :class="containerClasses">
-    <view class="min" v-if="!hiddenRange">{{ +min }}</view>
+    <view class="nut-range-min" v-if="!hiddenRange">{{ +min }}</view>
     <view ref="root" :style="wrapperStyle" :class="classes" @click.stop="onClick">
       <view class="nut-range-mark" v-if="marksList.length > 0">
         <span v-for="marks in marksList" :key="marks" :class="markClassName(marks)" :style="marksStyle(marks)">
@@ -70,7 +70,7 @@
         </template>
       </view>
     </view>
-    <view class="max" v-if="!hiddenRange">{{ +max }}</view>
+    <view class="nut-range-max" v-if="!hiddenRange">{{ +max }}</view>
   </view>
 </template>
 <script lang="ts">
@@ -127,7 +127,7 @@ export default create({
 
   emits: ['change', 'drag-end', 'drag-start', 'update:modelValue'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const buttonIndex = ref(0);
     let startValue: import('./type').SliderValue;
     let currentValue: import('./type').SliderValue;
@@ -139,7 +139,6 @@ export default create({
     const marksList = computed(() => {
       const { marks, max, min } = props;
       const marksKeys = Object.keys(marks);
-      const range = Number(max) - Number(min);
       const list = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
@@ -214,7 +213,7 @@ export default create({
     const markClassName = (mark: number) => {
       const classPrefix = 'nut-range-mark';
       const { modelValue, max, min } = props;
-      let lowerBound: number = Number(min);
+      let lowerBound = Number(min);
       let upperBound: number | number[] = Number(max);
       if (props.range) {
         const [left, right] = modelValue as number[];
@@ -230,7 +229,7 @@ export default create({
       };
     };
     const marksStyle = (mark: number) => {
-      const { max, min, vertical } = props;
+      const { min, vertical } = props;
       let style: CSSProperties = {
         left: `${((mark - Number(min)) / scope.value) * 100}%`
       };
@@ -243,8 +242,8 @@ export default create({
     };
     const tickStyle = (mark: number) => {
       const { modelValue, max, min } = props;
-      let lowerBound: number = Number(min);
-      let upperBound: number = Number(max);
+      let lowerBound = Number(min);
+      let upperBound = Number(max);
       if (props.range) {
         const [left, right] = modelValue as number[];
         lowerBound = left;

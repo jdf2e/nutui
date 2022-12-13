@@ -1,43 +1,43 @@
-.skeleton {
+.nut-skeleton {
   display: inline-block;
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  .content {
+  .nut-skeleton-content {
     display: flex;
     .avatarClass {
       margin-right: 20px;
       background-color: $skeleton-content-avatar-background-color;
     }
 
-    .content-line {
+    .nut-skeleton-content__line {
       display: flex;
       flex-direction: column;
-      .blockTitle,
-      .blockLine {
+      .nut-skeleton-blockTitle,
+      .nut-skeleton-blockLine {
         width: 100%;
         margin-bottom: 10px;
         background-color: $skeleton-content-line-background-color;
       }
-      .blockTitle {
+      .nut-skeleton-blockTitle {
         width: 30%;
       }
       .blockLine ~ .blockLine:last-of-type {
         width: 70%;
       }
-      .blockTitle:last-of-type,
-      .blockLine:last-of-type {
+      .nut-skeleton-blockTitle:last-of-type,
+      .nut-skeleton-blockLine:last-of-type {
         margin-bottom: 0;
       }
 
-      .blockTitle--round,
-      .blockLine--round {
+      .nut-skeleton-blockTitle--round,
+      .nut-skeleton-blockLine--round {
         border-radius: 10px;
       }
     }
   }
 
-  .skeleton-animation {
+  .nut-skeleton-animation {
     position: absolute;
     top: 0;
     left: 0;

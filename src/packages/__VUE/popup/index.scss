@@ -7,7 +7,7 @@
   }
 }
 
-.popup-slide {
+.nut-popup-slide {
   &-center-enter-active,
   &-center-leave-active {
     transition-property: opacity;
@@ -40,7 +40,7 @@
   }
 }
 
-.popup-center {
+.nut-popup--center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,7 +49,7 @@
   }
 }
 
-.popup-bottom {
+.nut-popup--bottom {
   bottom: 0;
   left: 0;
   width: 100%;
@@ -62,7 +62,7 @@
   }
 }
 
-.popup-right {
+.nut-popup--right {
   top: 0;
   right: 0;
 
@@ -71,7 +71,7 @@
   }
 }
 
-.popup-left {
+.nut-popup--left {
   top: 0;
   left: 0;
 
@@ -80,7 +80,7 @@
   }
 }
 
-.popup-top {
+.nut-popup--top {
   top: 0;
   left: 0;
   width: 100%;

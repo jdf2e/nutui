@@ -90,13 +90,13 @@ test('digital scrolling during props', async () => {
   await nextTick();
   await sleep(1000);
 
-  expect(wrapper.findAll('.run-number')).toHaveLength(1);
+  expect(wrapper.findAll('.nut-countup__number')).toHaveLength(1);
 
-  const numberItemList = wrapper.findAll('.numberItem');
+  const numberItemList = wrapper.findAll('.nut-countup__number-item');
   const numItem = numberItemList[numberItemList.length - 1].element as HTMLElement;
   expect(numItem.style.transition).toEqual(`all linear ${wrapper.vm.during}ms`);
 
-  const itemSpan = wrapper.find('.itemSpan').element as HTMLElement;
+  const itemSpan = wrapper.find('.nut-countup__number-item__span').element as HTMLElement;
   expect(itemSpan.style.width).toBe(`${wrapper.vm.numWidth}px`);
   expect(itemSpan.style.height).toBe(`${wrapper.vm.numHeight}px`);
 });
@@ -126,7 +126,7 @@ test('custom img size props', async () => {
   const wrapper = mount(component);
   await nextTick();
   await sleep(2000);
-  const numberItemList = wrapper.findAll('.run-number-img-li');
+  const numberItemList = wrapper.findAll('.nut-countup__numberimg__item');
   const ele = numberItemList[0].element as HTMLElement;
   const _y = Math.abs(parseFloat(ele.style.backgroundPositionY));
   const _num = Number(String(wrapper.vm.customChangeNum).charAt(0));
@@ -178,9 +178,9 @@ test('game machine props', async () => {
   const wrapper = mount(component);
   await nextTick();
   // await sleep(2000);
-  const machine = wrapper.findAll('.run-number-machine-img');
+  const machine = wrapper.findAll('.nut-countup__machine');
   expect(machine).toHaveLength(1);
-  const machineItemList = wrapper.findAll('.run-number-machine-img-li');
+  const machineItemList = wrapper.findAll('.nut-countup__machine-item');
   expect(machineItemList).toHaveLength(wrapper.vm.machineNum);
   wrapper.vm.startRole();
   await sleep(4000);

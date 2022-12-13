@@ -9,15 +9,15 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui';
+import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui';
 // taro
-import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui-taro';
+import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(DatePicker);
 app.use(Picker);
 app.use(Popup);
-app.use(OverLay);
+app.use(Overlay);
 ```
     
 ### 选择年月日

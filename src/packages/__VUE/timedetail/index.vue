@@ -1,7 +1,6 @@
 <template>
   <view :class="classes">
     <view class="nut-timedetail__detail nut-timedetail__detail--moring">
-      <!-- <view class="nut-timedetail__detail__time">上午</view> -->
       <view class="nut-timedetail__detail__list">
         <view :class="getClass(item)" v-for="item in renderData" :key="item" @click="handleTime(item)">{{ item }}</view>
       </view>
@@ -12,7 +11,7 @@
 <script lang="ts">
 import { reactive, toRefs, inject, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('timedetail');
+const { componentName, create } = createComponent('time-detail');
 export default create({
   name: 'timedetail',
   props: {
@@ -38,7 +37,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-timedetail';
       return {
         [prefixCls]: true
       };

@@ -2,10 +2,9 @@
   <view class="nut-countup">
     <template v-if="customBgImg != ''">
       <template v-if="type == 'machine'">
-        <view class="run-number-machine-img" :style="{ height: numHeight + 'px' }">
+        <view class="nut-countup__machine" :style="{ height: numHeight + 'px' }">
           <view
-            class="run-number-machine-img-li"
-            ref="run-number-machine-img-li"
+            class="nut-countup__machine-item"
             v-for="(val, index) of machineNum"
             :key="'mImg' + index"
             :style="{
@@ -15,13 +14,12 @@
               backgroundPosition: '0 ' + prizeY[index] + 'px'
             }"
           ></view>
-          <!-- backgroundPositionY: prizeLevelTrun + 'px', -->
         </view>
       </template>
       <template v-else>
-        <view class="run-number-img" :style="{ height: numHeight + 'px' }">
+        <view class="nut-countup__numberimg" :style="{ height: numHeight + 'px' }">
           <view
-            class="run-number-img-li"
+            class="nut-countup__numberimg__item"
             v-for="(val, index) of num_total_len"
             :key="'cImg' + index"
             :style="{
@@ -37,13 +35,13 @@
                 'px',
               backgroundImage: 'url(' + customBgImg + ')',
               backgroundPosition:
-                '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
+                '0 ' + -(+String(relNum)[index] * numHeight + customSpacNum * +String(relNum)[index]) + 'px',
               transition: 'all linear ' + during / 10 + 'ms'
             }"
           ></view>
           <view
             v-if="pointNum > 0"
-            class="pointstyl"
+            class="nut-countup-pointstyl"
             :style="{
               width: numWidth / 2 + 'px',
               bottom: 0,
@@ -58,7 +56,7 @@
     <template v-else>
       <view
         v-if="scrolling"
-        class="run-number"
+        class="nut-countup__number"
         :style="{
           width: numWidth * num_total_len + numWidth / 3 + 'px',
           height: numHeight + 'px',
@@ -66,12 +64,12 @@
         }"
       >
         <view
-          ref="numberItem"
-          class="numberItem"
+          ref="nut-countup__number-item"
+          class="nut-countup__number-item"
           v-for="(val, index) of num_total_len"
           :key="val"
           :style="{
-            all: turnNumber(index),
+            all: turnNumber(index) as any,
             top: topNumber(index),
             left: numWidth * (index > num_total_len - pointNum - 1 ? index * 1.1 : index) + 'px'
           }"
@@ -79,7 +77,7 @@
         >
           <view
             v-for="(item, idx) of to0_10"
-            class="itemSpan"
+            class="nut-countup__number-item__span"
             :key="'dote' + idx"
             :style="{
               width: numWidth + 'px',
@@ -92,7 +90,7 @@
         </view>
         <view
           v-if="pointNum > 0"
-          class="pointstyl"
+          class="nut-countup-pointstyl"
           :style="{
             width: numWidth / 3 + 'px',
             height: numHeight + 'px',
@@ -454,7 +452,7 @@ export default create({
           if (data.sortFlag == 'equal') {
             return false;
           }
-          let refsDom: HTMLCollectionOf<Element> = document.getElementsByClassName('numberItem');
+          let refsDom: HTMLCollectionOf<Element> = document.getElementsByClassName('nut-countup__number-item');
           let element = refsDom[data.num_total_len - 1];
           runTurn(element);
         });
@@ -532,7 +530,7 @@ export default create({
         m = Math.pow(10, data.pointNum);
       }
       nextTick(() => {
-        let f = document.getElementsByClassName('run-number-img')[0];
+        let f = document.getElementsByClassName('nut-countup__numberimg')[0];
         // setTimeout(() => {
         //   data.relNum = calculation(data.relNum, m * props.speed, '+');
         // }, props.during);
@@ -599,17 +597,6 @@ export default create({
           t = null;
           data.finshMachine += 1;
           data.prizeY[index] = total;
-          // 动画未完成的时候触发了判断，需要加个延时或者监听最后一个动画执行结束，保证在动画执行结束
-          // this.$nextTick(() => {
-          //     var f = document.getElementsByClassName('run-number-machine-img-li');
-          //     f[f.length-1].addEventListener('webkitTransitionEnd', () => {
-          //         setTimeout(() => {
-          //             if(this.finshMachine == this.machineNum) {
-          //                 this.finshMachine = 0;
-          //             }
-          //         },200)
-          //     });
-          // })
           if (data.finshMachine == props.machineNum) {
             let distance = props.numHeight * props.machinePrizeNum;
             data.prizeYPrev = [];

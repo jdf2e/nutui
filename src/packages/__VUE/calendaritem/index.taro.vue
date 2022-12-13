@@ -75,8 +75,9 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
-import { MonthInfo, Day } from './type';
+import { MonthInfo, Day, DateInfo } from './type';
 import NutScrollView from '../scrollView/index.taro.vue';
+import { isArray } from '@/packages/utils/util';
 const TARO_ENV = Taro.getEnv();
 
 export default create({
@@ -130,7 +131,8 @@ export default create({
     },
     defaultValue: {
       type: [String, Array],
-      default: null
+      default: null,
+      valid: (value: string | string[]) => value
     },
     startDate: {
       type: String,
@@ -166,7 +168,7 @@ export default create({
       return slots.bottomInfo;
     });
     // state
-    const state: import('./type').CalendarState = reactive({
+    const state: import('./type').CalendarTaroState = reactive({
       yearMonthTitle: '',
       defaultRange: [0, 1],
       compConthsDatas: [],
@@ -212,8 +214,8 @@ export default create({
       return Utils.isEqual(state.currDate[1], currDate);
     };
     const isMultiple = (currDate: string) => {
-      if (state.currDate.length > 0) {
-        return state.currDate.some((item: any) => {
+      if (isArray(state.currDate) && state.currDate.length > 0) {
+        return state.currDate.some((item: string) => {
           return Utils.isEqual(item, currDate);
         });
       } else {
@@ -277,9 +279,9 @@ export default create({
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
-          if (state.currDate.length > 0) {
-            let hasIndex: any = '';
-            state.currDate.forEach((item: any, index: number) => {
+          if (isArray(state.currDate) && state.currDate.length > 0) {
+            let hasIndex = NaN;
+            state.currDate.forEach((item: string, index: number) => {
               if (item == days[3]) {
                 hasIndex = index;
               }
@@ -287,7 +289,7 @@ export default create({
             if (isFirst) {
               state.chooseData.push([...days]);
             } else {
-              if (hasIndex !== '') {
+              if (!isNaN(hasIndex)) {
                 state.currDate.splice(hasIndex, 1);
                 state.chooseData.splice(hasIndex, 1);
               } else {
@@ -350,11 +352,11 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month))];
+      return [year + '', Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month)) + ''];
     };
 
     // 获取日期状态
-    const getDaysStatus = (days: number, type: string, dateInfo: any) => {
+    const getDaysStatus = (days: number, type: string, dateInfo: { year: string; month: string }) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -370,7 +372,13 @@ export default create({
       });
     };
     // 获取上一个月的最后一周天数，填充当月空白
-    const getPreDaysStatus = (days: number, type: string, dateInfo: any, preCurrMonthDays: number) => {
+    const getPreDaysStatus = (
+      days: number,
+      type: string,
+      dateInfo: { year: number; month: number },
+      preCurrMonthDays: number
+    ) => {
+      // 新增：自定义周起始日}, preCurrMonthDays: number) => {
       // 新增：自定义周起始日
       days = days - props.firstDayOfWeek;
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
@@ -389,12 +397,12 @@ export default create({
       return months.slice(preCurrMonthDays - days);
     };
     // 获取月数据
-    const getMonth = (curData: any[], type: string) => {
+    const getMonth = (curData: string[], type: string) => {
       // 一号为周几
       const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
 
-      let preMonth = curData[1] - 1;
-      let preYear = curData[0];
+      let preMonth = +curData[1] - 1;
+      let preYear = +curData[0];
       if (preMonth <= 0) {
         preMonth = 12;
         preYear += 1;
@@ -413,7 +421,9 @@ export default create({
         monthData: [
           ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
-        ]
+        ],
+        cssHeight: 0,
+        cssScrollHeight: 0
       };
       let titleHeight, itemHeight;
       if (TARO_ENV === Taro.ENV_TYPE.WEB) {
@@ -472,7 +482,8 @@ export default create({
 
       // 根据是否存在默认时间，初始化当前日期,
       if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
-        state.currDate = props.type != 'one' ? [...props.defaultValue] : props.defaultValue;
+        state.currDate =
+          props.type != 'one' ? ([...props.defaultValue] as string[]) : (props.defaultValue as string | string[]);
       }
       // 判断时间范围内存在多少个月
       const startDate = {
@@ -513,6 +524,7 @@ export default create({
       } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
         if (state.currDate.length > 0) {
           let defaultArr: string[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           let obj: any = {};
           state.currDate.forEach((item: string) => {
             if (
@@ -565,7 +577,7 @@ export default create({
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
           chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
         } else if (props.type == 'multiple') {
-          [...state.currDate].forEach((item: any) => {
+          [...state.currDate].forEach((item: string) => {
             let dateArr = splitDate(item);
             let current = state.currentIndex;
             state.monthsData.forEach((item, index) => {
@@ -656,7 +668,7 @@ export default create({
       scrollToDate
     });
     const setDefaultRange = (monthsNum: number, current: number) => {
-      let rangeArr: any[] = [];
+      let rangeArr: number[] = [];
       if (monthsNum >= 3) {
         if (current > 0 && current < monthsNum) {
           rangeArr = [current - 1, current + 3];
@@ -700,11 +712,14 @@ export default create({
       }
     };
     // 是否有是当前日期
-    const isCurrDay = (dateInfo: any) => {
-      const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
+    const isCurrDay = (dateInfo: DateInfo) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${
+        Number(dateInfo.day) < 10 ? '0' + dateInfo.day : dateInfo.day
+      }`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mothsViewScroll = (e: any) => {
       if (state.monthsData.length <= 1) {
         return;
@@ -723,39 +738,6 @@ export default create({
           current -= 1;
         }
       }
-      // else {
-      //   if (!viewHeight.value || viewHeight.value < 0) {
-      //     if (TARO_ENV === Taro.ENV_TYPE.ALIPAY) {
-      //       if (months.value) {
-      //         viewHeight.value = months.value.clientHeight;
-      //       }
-      //     } else {
-      //       Taro.createSelectorQuery()
-      //         .select('.nut-calendar-content')
-      //         .boundingClientRect((res) => {
-      //           viewHeight.value = res.height;
-      //         })
-      //         .exec();
-      //     }
-      //   }
-      //   const viewPosition = Math.round(currentScrollTop + viewHeight.value);
-      //   if (
-      //     viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
-      //     currentScrollTop < state.monthsData[current].cssScrollHeight
-      //   ) {
-      //     current -= 1;
-      //   }
-      //   if (
-      //     current + 1 <= state.monthsNum &&
-      //     viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
-      //   ) {
-      //     current += 1;
-      //   }
-      //   if (current >= 1 && currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
-      //     current -= 1;
-      //   }
-      // }
-
       if (state.currentIndex !== current) {
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
@@ -781,7 +763,6 @@ export default create({
           }
           scale = Number((screenWidth / 750).toFixed(toFixed));
           scalePx.value = scale;
-          let transfromNum = Taro.pxTransform(64);
           initData();
         }
       });

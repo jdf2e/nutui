@@ -6,8 +6,6 @@
     :lock-scroll="lockScroll"
     :pop-class="popClass"
     :style="popStyle"
-    :overlay-class="overlayClass"
-    :overlay-style="overlayStyle"
     round
     @click-overlay="closed"
     @click-close-icon="closed"
@@ -18,7 +16,7 @@
         <template v-else>{{ title }}</template>
       </view>
 
-      <view class="nut-dialog__content" :style="{ textAlign }">
+      <view class="nut-dialog__content" :style="contentStyle">
         <slot v-if="$slots.default" name="default"></slot>
         <view v-else-if="typeof content === 'string'" v-html="content"></view>
         <component v-else :is="content" />
@@ -184,12 +182,19 @@ export default create({
       emit('ok');
     };
 
+    const contentStyle = computed(() => {
+      return {
+        textAlign: props.textAlign
+      } as CSSProperties;
+    });
+
     return {
       closed,
       classes,
       onCancel,
       onOk,
       showPopup,
+      contentStyle,
       translate
     };
   }

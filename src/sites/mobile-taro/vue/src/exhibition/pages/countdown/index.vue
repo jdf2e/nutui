@@ -55,7 +55,7 @@
 
     <h2>手动控制</h2>
     <nut-cell>
-      <nut-countdown time="20000" ref="CountDown" :autoStart="false" format="ss:SS" />
+      <nut-countdown time="20000" ref="Countdown" :autoStart="false" format="ss:SS" />
     </nut-cell>
 
     <nut-grid :column-num="3">
@@ -72,7 +72,7 @@ import { toRefs, onMounted, ref, reactive } from 'vue';
 export default {
   props: {},
   setup() {
-    const CountDown = ref(null);
+    const Countdown = ref(null);
     const state = reactive({
       serverTime: Date.now() - 20 * 1000,
       end: Date.now() + 60 * 1000,
@@ -100,18 +100,18 @@ export default {
       console.log('restart: ', v);
     };
     const start = () => {
-      CountDown.value.start();
+      Countdown.value.start();
     };
 
     const pause = () => {
-      CountDown.value.pause();
+      Countdown.value.pause();
     };
 
     const reset = () => {
-      CountDown.value.reset();
+      Countdown.value.reset();
     };
     onMounted(() => {
-      console.log(CountDown.value);
+      console.log(Countdown.value);
     });
 
     setTimeout(() => {
@@ -124,7 +124,7 @@ export default {
       onend,
       onpaused,
       onrestart,
-      CountDown,
+      Countdown,
       start,
       pause,
       reset

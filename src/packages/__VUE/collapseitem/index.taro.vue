@@ -1,54 +1,52 @@
 <template>
   <view :class="classes">
-    <view
-      :class="['collapse-item', { 'item-expanded': openExpanded }, { 'nut-collapse-item-disabled': disabled }]"
-      @click="toggleOpen"
-    >
-      <view class="collapse-title">
-        <view>
-          <view class="collapse-title-value">
-            <nut-icon
-              v-if="titleIcon"
-              :name="titleIcon"
-              v-bind="$attrs"
-              :size="titleIconSize"
-              :color="titleIconColor"
-              :class="['collapse-title-icon', titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
-            ></nut-icon>
-            <template v-if="$slots.mTitle">
-              <slot name="mTitle"></slot>
-            </template>
-            <template v-else>
-              <view v-html="title" class="collapse-icon-title"></view>
-            </template>
-          </view>
+    <view :class="['nut-collapse-item__title', { 'nut-collapse-item__title--disabled': disabled }]" @click="toggleOpen">
+      <view class="nut-collapse-item__title-main">
+        <view class="nut-collapse-item__title-main-value">
+          <nut-icon
+            v-if="titleIcon"
+            :name="titleIcon"
+            v-bind="$attrs"
+            :size="titleIconSize"
+            :color="titleIconColor"
+            :class="[
+              'nut-collapse-item__title-main-icon',
+              titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
+            ]"
+          ></nut-icon>
+          <template v-if="$slots.mTitle">
+            <slot name="mTitle"></slot>
+          </template>
+          <template v-else>
+            <view v-html="title" class="nut-collapse-item__title-mtitle"></view>
+          </template>
         </view>
       </view>
-      <view v-if="$slots.sTitle" class="subTitle">
+      <view v-if="$slots.sTitle" class="nut-collapse-item__title-sub">
         <slot name="sTitle"></slot>
       </view>
-      <view v-else v-html="subTitle" class="subTitle"></view>
+      <view v-else v-html="subTitle" class="nut-collapse-item__title-sub"></view>
       <nut-icon
         v-if="icon"
         :name="icon"
         v-bind="$attrs"
         :size="iconSize"
         :color="iconColor"
-        :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"
+        :class="['nut-collapse-item__title-icon', { 'nut-collapse-item__title-icon--expanded': openExpanded }]"
         :style="iconStyle"
       ></nut-icon>
     </view>
-    <view v-if="$slots.extraRender" class="collapse-extraWrapper">
-      <div class="collapse-extraRender">
+    <view v-if="$slots.extraRender" class="nut-collapse__item-extraWrapper">
+      <div class="nut-collapse__item-extraWrapper__extraRender">
         <slot name="extraRender"></slot>
       </div>
     </view>
     <view
-      :class="['collapse-wrapper', openExpanded ? 'open-style' : 'close-style']"
+      :class="['nut-collapse__item-wrapper', openExpanded ? 'open-style' : 'close-style']"
       ref="wrapperRef"
       :style="{ height: openExpanded ? (conHeight == 'auto' ? 'auto' : conHeight + 'px') : 0 }"
     >
-      <view class="collapse-content" ref="contentRef">
+      <view class="nut-collapse__item-wrapper__content" ref="contentRef">
         <slot></slot>
       </view>
     </view>
@@ -101,9 +99,7 @@ export default create({
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true,
-        // [`${prefixCls}-left`]: parent.props.classDirection === 'left',
-        [`${prefixCls}-icon`]: parent.props.icon
+        [prefixCls]: true
       };
     });
 
@@ -113,7 +109,7 @@ export default create({
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    const proxyData: any = reactive({
+    const proxyData = reactive({
       icon: parent.props.icon,
       iconSize: parent.props.iconSize,
       iconColor: parent.props.iconColor,
@@ -146,7 +142,7 @@ export default create({
         parent.children.forEach((item1: any, index: number) => {
           let ary = Array.from(item1.$el.children);
           ary.forEach((item2: any, index: number) => {
-            if (item2.className.includes('collapse-wrapper')) {
+            if (item2.className.includes('nut-collapse__item-wrapper')) {
               item2.style.willChange = 'auto';
             }
           });
@@ -163,8 +159,9 @@ export default create({
       }
       nextTick(() => {
         // const query = Taro.createSelectorQuery();
+        // @ts-ignore
         const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
-        query.selectAll('.collapse-content').boundingClientRect();
+        query.selectAll('.nut-collapse__item-wrapper__content').boundingClientRect();
         query.exec((res: any[]) => {
           if (Taro.getEnv() === 'WEB') {
             getH5();
@@ -252,28 +249,13 @@ export default create({
         let ary: any = Array.from(item1.$el.children);
         let h = ary[1].children[0]['offsetHeight'];
         item1.conHeight = h;
-        // resetHeight(h);
       });
     };
-    // const prevHeight = ref(0);
-    // const nums = ref(0);
-    // const timer = ref();
-
-    // const resetHeight = (h: number) => {
-    //   // console.log(prevHeight.value, h, nums.value);
-    //   if (prevHeight.value >= h && nums.value > 5) {
-    //     clearInterval(timer.value);
-    //     timer.value = null;
-    //   } else {
-    //     nums.value++;
-    //   }
-    //   prevHeight.value = h;
-    // };
 
     const getRefHeight = () => {
+      // @ts-ignore
       const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
-      // const query = Taro.createSelectorQuery();
-      query.selectAll('.collapse-content').boundingClientRect();
+      query.selectAll('.nut-collapse__item-wrapper__content').boundingClientRect();
       query.exec((res: any[]) => {
         if (Taro.getEnv() === 'WEB') {
           getH5();
