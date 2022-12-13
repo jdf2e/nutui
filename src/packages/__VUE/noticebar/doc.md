@@ -1,4 +1,4 @@
-# NoticeBar 通告栏
+# Noticebar 通告栏
 
 ### 介绍 
 
@@ -12,12 +12,12 @@
 
 import { createApp } from 'vue';
 // vue
-import { NoticeBar } from '@nutui/nutui';
+import { Noticebar } from '@nutui/nutui';
 // taro
-import { NoticeBar } from '@nutui/nutui-taro';
+import { Noticebar } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(NoticeBar);
+app.use(Noticebar);
 
 ```
 
@@ -136,7 +136,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp1 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+      const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       const go = (item) => {
         console.log(item)
       }
@@ -160,7 +160,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp2 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+      const horseLamp2 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp2 };
     }
   }
@@ -182,7 +182,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp3 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+      const horseLamp3 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp3 };
     }
   }
@@ -206,7 +206,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp1 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+      const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp1 };
     }
   }

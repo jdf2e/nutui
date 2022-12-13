@@ -12,7 +12,7 @@
         <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
           {{ num }}
         </view>
-        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
+        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num >= 100">{{
           '99+'
         }}</view>
       </template>
@@ -79,7 +79,7 @@ export default create({
     },
     num: {
       // 页签右上角的数字角标
-      type: String,
+      type: [String, Number],
       default: ''
     },
     activeImg: {

@@ -37,7 +37,7 @@
               transform: `translate3d(${videoSet.progress.current}px, -50%, 0)`
             }"
             @touchmove.stop.prevent="touchSlidMove($event)"
-            @touchstart.stop="touchSlidSrart($event)"
+            @touchstart.stop="touchSlidSrart()"
             @touchend.stop="touchSlidEnd($event)"
           >
             <div class="nut-video-controller__ball-move"></div>
@@ -57,7 +57,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
+import { computed, reactive, ref, toRefs, watch, nextTick, onMounted, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { throttle } from '@/packages/utils/throttle';
 const { create, translate } = createComponent('video');
@@ -130,7 +130,7 @@ export default create({
       },
       showTouchMask: false
     });
-    const root = ref(null);
+    const root = ref(null) as Ref;
     const isDisabled = computed(() => {
       return props.options.disabled;
     });
@@ -221,7 +221,7 @@ export default create({
               getLoadTime();
             });
             // 监听播放进度
-            (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000, 1));
+            (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000));
             // 监听结束
             (state.videoElm as any).addEventListener('ended', playEnded);
             emit('play', state.videoElm);

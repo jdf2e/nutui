@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
     <div class="nut-circleprogress__text">
       <slot></slot>

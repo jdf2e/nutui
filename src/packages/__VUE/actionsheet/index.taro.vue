@@ -1,12 +1,5 @@
 <template>
-  <nut-popup
-    :visible="visible"
-    :isWrapTeleport="isWrapTeleport"
-    position="bottom"
-    round
-    @click-overlay="close"
-    :closeOnClickOverlay="closeAbled"
-  >
+  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :closeOnClickOverlay="closeAbled">
     <view :class="classes">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
@@ -39,9 +32,18 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
+import type { PropType } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
 import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
+export interface menuItems {
+  disable: boolean;
+  loading: boolean;
+  color: string;
+  name: string;
+  subname: string;
+  [x: string]: string | boolean;
+}
 export default create({
   components: {
     [Popup.name]: Popup
@@ -77,7 +79,7 @@ export default create({
       default: ''
     },
     menuItems: {
-      type: Array,
+      type: Array as PropType<menuItems[]>,
       default: () => []
     },
     closeAbled: {
@@ -96,7 +98,7 @@ export default create({
       };
     });
 
-    const isHighlight = (item: { [x: string]: string }) => {
+    const isHighlight = (item: { [x: string]: string | boolean }) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
     };
 

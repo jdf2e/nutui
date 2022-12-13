@@ -1,6 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import { nextTick, ref, reactive } from 'vue';
-import NoticeBar from '../index.vue';
+import Noticebar from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 
 function sleep(delay = 0): Promise<void> {
@@ -24,7 +24,7 @@ Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {
 });
 
 test('close event', async () => {
-  const wrapper = mount(NoticeBar, {
+  const wrapper = mount(Noticebar, {
     props: {
       text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！',
       direction: 'across',
@@ -46,7 +46,7 @@ test('close event', async () => {
 });
 
 test('slot event', async () => {
-  const wrapper = mount(NoticeBar, {
+  const wrapper = mount(Noticebar, {
     slots: {
       default: () => 'Custom Content'
     }
@@ -59,7 +59,7 @@ test('slot event', async () => {
 test('icon custom', async () => {
   const wrapper = mount({
     components: {
-      'nut-noticebar': NoticeBar
+      'nut-noticebar': Noticebar
     },
     template: `
         <nut-noticebar
@@ -77,7 +77,7 @@ test('icon custom', async () => {
 test('vertical scroll', async () => {
   const wrapper = mount({
     components: {
-      'nut-noticebar': NoticeBar
+      'nut-noticebar': Noticebar
     },
     template: `
       <nut-noticebar direction='vertical'  :list="horseLamp" ></nut-noticebar>
@@ -94,7 +94,7 @@ test('vertical scroll', async () => {
 test('custon scroll list', async () => {
   const wrapper = mount({
     components: {
-      'nut-noticebar': NoticeBar
+      'nut-noticebar': Noticebar
     },
     template: `
       <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]" >

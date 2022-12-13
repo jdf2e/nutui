@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: 'CountUp'
+  navigationBarTitleText: 'Countup'
 };
