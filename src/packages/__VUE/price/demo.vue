@@ -13,7 +13,7 @@
     </nut-cell-group>
     <h2>{{ translate('title2') }}</h2>
     <nut-cell>
-      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+      <nut-price :price="8888" :decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
     </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>

@@ -13,7 +13,7 @@
     </nut-cell-group>
     <h2>不保留小数</h2>
     <nut-cell>
-      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+      <nut-price :price="8888" :decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
     </nut-cell>
     <h2>调整 symbol 符号位置</h2>
     <nut-cell>

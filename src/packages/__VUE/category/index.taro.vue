@@ -17,15 +17,15 @@
   </div>
 </template>
 <script lang="ts">
-import { Ref, ref, toRefs, warn, watch, onMounted } from 'vue';
+import { PropType, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('category');
 
-//经典分类
-//商品池
-//自定义
+export type CategoryType = {
+  catName?: string;
+  [key: string]: any;
+};
 
-interface props {}
 export default create({
   props: {
     //分类模式
@@ -36,7 +36,7 @@ export default create({
 
     //左侧导航栏
     category: {
-      type: Array,
+      type: Array as PropType<CategoryType>,
       default: () => []
     }
   },
@@ -49,8 +49,6 @@ export default create({
       checkIndex.value = index;
       emit('change', index);
     };
-
-    onMounted(() => {});
 
     return {
       getChildList,
