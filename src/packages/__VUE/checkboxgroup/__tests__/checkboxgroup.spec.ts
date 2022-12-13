@@ -6,17 +6,17 @@ import { reactive, toRefs } from 'vue';
 test('checkbox-group basic usage', async () => {
   const wrapper = mount({
     components: {
-      'nut-checkboxgroup': Checkboxgroup,
+      'nut-checkbox-group': Checkboxgroup,
       'nut-checkbox': Checkbox
     },
     template: `
       <template>
-        <nut-checkboxgroup v-model="checkboxgroup1">
+        <nut-checkbox-group v-model="checkboxgroup1">
           <nut-checkbox label="1">组合复选框</nut-checkbox>
           <nut-checkbox label="2">组合复选框</nut-checkbox>
           <nut-checkbox label="3">组合复选框</nut-checkbox>
           <nut-checkbox label="4">组合复选框</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </template>
     `,
     setup() {
@@ -36,17 +36,17 @@ test('checkbox-group basic usage', async () => {
 test('checkbox-group disabled test', async () => {
   const wrapper = mount({
     components: {
-      'nut-checkboxgroup': Checkboxgroup,
+      'nut-checkbox-group': Checkboxgroup,
       'nut-checkbox': Checkbox
     },
     template: `
       <template>
-        <nut-checkboxgroup v-model="checkboxgroup1" disabled>
+        <nut-checkbox-group v-model="checkboxgroup1" disabled>
           <nut-checkbox label="1">组合复选框</nut-checkbox>
           <nut-checkbox label="2">组合复选框</nut-checkbox>
           <nut-checkbox label="3">组合复选框</nut-checkbox>
           <nut-checkbox label="4">组合复选框</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </template>
     `,
     setup() {
@@ -67,17 +67,17 @@ test('checkbox-group disabled test', async () => {
 // test('checkbox-group change event test',async () => {
 //   const wrapper = mount({
 //     components: {
-//       'nut-checkboxgroup': Checkboxgroup,
+//       'nut-checkbox-group': Checkboxgroup,
 //       'nut-checkbox': Checkbox
 //     },
 //     template: `
 //       <template>
-//         <nut-checkboxgroup v-model="checkboxgroup1" @change="">
+//         <nut-checkbox-group v-model="checkboxgroup1" @change="">
 //           <nut-checkbox label="1">组合复选框</nut-checkbox>
 //           <nut-checkbox label="2">组合复选框</nut-checkbox>
 //           <nut-checkbox label="3">组合复选框</nut-checkbox>
 //           <nut-checkbox label="4">组合复选框</nut-checkbox>
-//         </nut-checkboxgroup>
+//         </nut-checkbox-group>
 //       </template>
 //     `,
 //     setup() {

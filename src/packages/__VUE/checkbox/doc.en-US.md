@@ -193,12 +193,12 @@ When the value changes, the `change` event will be triggered
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup1">
+  <nut-checkbox-group v-model="checkboxgroup1">
     <nut-checkbox label="1">Combined check box</nut-checkbox>
     <nut-checkbox label="2">Combined check box</nut-checkbox>
     <nut-checkbox label="3">Combined check box</nut-checkbox>
     <nut-checkbox label="4">Combined check box</nut-checkbox>
-  </nut-checkboxgroup>
+  </nut-checkbox-group>
   <nut-cell>
     <div class="demo-check">Currently selected value</div>
     <div>{{ checkboxgroup1 }}</div>
@@ -227,9 +227,9 @@ When the value changes, the `change` event will be triggered
 
 ```html
 <template>
-  <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+  <nut-checkbox-group v-model="checkboxgroup3" ref="group" @change="changeBox4">
     <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{item.value}}</nut-checkbox>
-  </nut-checkboxgroup>
+  </nut-checkbox-group>
   <span class="btn">
     <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">Select all</nut-button>
     <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0">cancel</nut-button>
@@ -284,12 +284,12 @@ When the value changes, the `change` event will be triggered
 <template>
   <nut-cell-group title="use checkboxGroup, Limit the maximum number of options (2)">
     <nut-cell>
-      <nut-checkboxgroup v-model="checkboxgroup4" :max="2">
+      <nut-checkbox-group v-model="checkboxgroup4" :max="2">
         <nut-checkbox label="1" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox>
         <nut-checkbox label="2">Combined check box</nut-checkbox>
         <nut-checkbox label="3" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox>
         <nut-checkbox label="4">Combined check box</nut-checkbox>
-      </nut-checkboxgroup>
+      </nut-checkbox-group>
     </nut-cell>
     <nut-cell>
       <div class="demo-check">selected</div>
@@ -325,12 +325,12 @@ When the value changes, the `change` event will be triggered
     <nut-cell>
       <nut-checkbox :indeterminate="indeterminate" v-model="checkbox10" @change="changeBox5">selectAll</nut-checkbox>
     </nut-cell>
-    <nut-checkboxgroup v-model="checkboxgroup5" ref="group2" @change="changeBox6">
+    <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
       <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="2">Combined check box</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="3">Combined check box</nut-checkbox></nut-cell>
       <nut-cell><nut-checkbox label="4">Combined check box</nut-checkbox></nut-cell>
-    </nut-checkboxgroup>
+    </nut-checkbox-group>
   </nut-cell-group>
 </template>
 <script lang="ts">
