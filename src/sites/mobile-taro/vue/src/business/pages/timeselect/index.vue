@@ -12,8 +12,8 @@
       @select="handleSelected1"
     >
       <template #pannel>
-        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+        <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+        <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
@@ -31,8 +31,8 @@
       @select="handleSelected2"
     >
       <template #pannel>
-        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
-        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+        <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-time-pannel>
+        <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
@@ -56,8 +56,8 @@
         </div>
       </template>
       <template #pannel>
-        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
-        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+        <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-time-pannel>
+        <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
