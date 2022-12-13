@@ -35,7 +35,11 @@ import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('ecard');
 import InputNumber from '../inputnumber/index.vue';
+import type { PropType } from 'vue';
 
+export interface dataList {
+  price: string | number;
+}
 export default create({
   components: {
     [InputNumber.name]: InputNumber
@@ -50,10 +54,8 @@ export default create({
       default: ''
     },
     dataList: {
-      type: [Object, Array],
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<dataList[]>,
+      default: () => []
     },
     cardAmountMin: {
       type: Number,
