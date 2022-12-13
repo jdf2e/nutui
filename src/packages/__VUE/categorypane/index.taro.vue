@@ -48,7 +48,7 @@
 <script lang="ts">
 import { Ref, ref, toRefs, warn, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('categorypane');
+const { componentName, create } = createComponent('category-pane');
 
 //经典分类
 //商品池
