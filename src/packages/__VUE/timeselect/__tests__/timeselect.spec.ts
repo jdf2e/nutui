@@ -29,24 +29,24 @@ test('props test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
-      'nut-timeselect': TimeSelect,
-      'nut-timepannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-select': TimeSelect,
+      'nut-time-pannel': TimePanel,
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
         <div id="cell" @click="handleClick1">
           <span><label>请选择配送时间</label></span>
         </div>
-        <nut-timeselect v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+        <nut-time-select v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
           <template #pannel>
-            <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-            <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+            <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+            <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
-        </nut-timeselect>
+        </nut-time-select>
       </template>
     `,
     setup() {
@@ -131,24 +131,24 @@ test('Events test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
-      'nut-timeselect': TimeSelect,
-      'nut-timepannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-select': TimeSelect,
+      'nut-time-pannel': TimePanel,
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
         <div id="cell" @click="handleClick1">
           <span><label>请选择配送时间</label></span>
         </div>
-        <nut-timeselect v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+        <nut-time-select v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
           <template #pannel>
-            <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-            <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+            <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+            <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
-        </nut-timeselect>
+        </nut-time-select>
       </template>
     `,
     setup() {

@@ -31,7 +31,7 @@
 <script lang="ts">
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('timeselect');
+const { componentName, create, translate } = createComponent('time-select');
 export default create({
   props: {
     visible: {
@@ -68,7 +68,7 @@ export default create({
   emits: ['update:visible', 'select'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-timeselect';
       return {
         [prefixCls]: true
       };

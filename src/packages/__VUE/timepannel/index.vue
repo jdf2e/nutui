@@ -5,7 +5,7 @@
 <script lang="ts">
 import { reactive, toRefs, inject, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('timepannel');
+const { componentName, create } = createComponent('time-pannel');
 export default create({
   name: 'timepannel',
   props: {
@@ -27,7 +27,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-timepannel';
       return {
         [prefixCls]: true,
         'nut-timepannel--curr': state.currentKey == props.pannelKey
