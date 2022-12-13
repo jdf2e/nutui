@@ -266,7 +266,7 @@ app.use(SwiperItem);
     right: 0;
     width: 46px;
     height: 22px;
-    background: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.33);
     border-radius: 22px;
     text-align: center;
     color: #fff;
@@ -291,7 +291,7 @@ app.use(SwiperItem);
         <img :src="item" alt="" />
       </nut-swiper-item>
     </nut-swiper>
-    <view class="nut-swiper-btns">
+    <view class="nut-swiper-btns" style="width: 100%;">
       <span class="nut-swiper-btns__left" @click="handlePrev">
         <nut-icon name='left'></nut-icon>
       </span>
@@ -338,7 +338,6 @@ app.use(SwiperItem);
     }
   }
   .nut-swiper-btns{
-    width: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -519,8 +518,8 @@ app.use(SwiperItem);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
-| height                | 轮播卡片的高度                                                    | String、Number | 0        |
+| width                   | 轮播卡片的宽度           | Number、String        | `auto`       |
+| height                | 轮播卡片的高度                                                    | String、Number | `auto`        |
 | direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
 | pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
 | pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |

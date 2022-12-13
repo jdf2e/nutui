@@ -15,6 +15,7 @@ import { Tabbar, TabbarItem, Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Tabbar);
 app.use(TabbarItem);
+app.use(Icon);
 ```
 
 
@@ -25,14 +26,15 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
+  import { ref } from 'vue';
   export default{
     setup() {
       function tabSwitch(item, index) {
@@ -53,14 +55,15 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch"  v-model:visible="activeName">
-    <nut-tabbar-item tab-title="首页" name="home" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" name="category" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" name="find" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" name="cart" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" name="my" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" name="home" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" name="category" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" name="find" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" name="cart" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" name="my" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
+  import { ref } from 'vue';
   export default{
     setup() {
       const activeName = ref("category");
@@ -77,39 +80,40 @@ app.use(TabbarItem);
 ```
 :::
 
-### 自定义图片链接
+### 自定义图片
 :::demo
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
     <nut-tabbar-item
-      tab-title="首页"
+      tab-title="标签"
       img="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg"
       activeImg="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg"
     ></nut-tabbar-item>
     <nut-tabbar-item
-      tab-title="分类"
+      tab-title="标签"
       img="http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg"
       activeImg="http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg"
     ></nut-tabbar-item>
     <nut-tabbar-item
-      tab-title="发现"
+      tab-title="标签"
       img="http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg"
       activeImg="http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg"
     ></nut-tabbar-item>
     <nut-tabbar-item
-      tab-title="购物车"
+      tab-title="标签"
       img="http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg"
       activeImg="http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg"
     ></nut-tabbar-item>
     <nut-tabbar-item
-      tab-title="我的"
+      tab-title="标签"
       img="http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg"
       activeImg="http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg"
     ></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
+  import { ref } from 'vue';
   export default{
     setup() {
       function tabSwitch(item, index) {
@@ -131,16 +135,17 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="首页">
+    <nut-tabbar-item tab-title="标签">
       <template #icon="props">
           <img :src="props.active ? icon.active : icon.unactive" alt="" />
         </template>
     </nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
+  import { ref } from 'vue';
   export default{
     setup() {
       function tabSwitch(item, index) {
@@ -151,7 +156,7 @@ app.use(TabbarItem);
         unactive:'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png',
       };
       return {
-        icon，
+        icon,
         tabSwitch,
       };
     },
@@ -165,14 +170,15 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar v-model:visible="active" size="18px">
-    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
+  import { ref } from 'vue';
   export default{
     setup() {
       const active = ref(2);
@@ -193,11 +199,11 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar>
-    <nut-tabbar-item tab-title="首页" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category" :dot="true"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" icon="cart" num="110"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="home" num="11"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category" :dot="true"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="cart" num="110"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -209,26 +215,26 @@ app.use(TabbarItem);
 ```html
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
 :::
 
-### 三个图标的标签栏
+### 自定义数量
 
 
 :::demo
 ```html
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -239,12 +245,12 @@ app.use(TabbarItem);
 :::demo
 ```html
 <template>
-  <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
-    <nut-tabbar-item tab-title="首页" href="" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" href="https://m.jd.com" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" href="######" icon="my"></nut-tabbar-item>
+  <nut-tabbar :bottom="true" :safe-area-inset-bottom="true">
+    <nut-tabbar-item tab-title="标签" href="" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" href="https://m.jd.com" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" href="######" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 ```
@@ -285,6 +291,7 @@ app.use(TabbarItem);
 |------------|--------------------|--------------------|
 | icon | 自定义图标	 | active: boolean |
 
+| defalut | 自定义tabbar title内容	 |  |
 ### Tabbar Events
 
 | 事件名称   | 说明               | 回调参数           |

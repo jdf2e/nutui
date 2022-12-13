@@ -32,10 +32,6 @@ export default create({
       type: Boolean,
       default: false
     },
-    type: {
-      type: String,
-      default: 'base'
-    },
     size: {
       type: String,
       default: '20px'
