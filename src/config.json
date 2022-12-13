@@ -1037,7 +1037,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "CountUp",
+          "name": "Countup",
           "taro": true,
           "sort": 12,
           "cName": "数字滚动",
