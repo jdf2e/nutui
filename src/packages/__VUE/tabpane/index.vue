@@ -6,7 +6,7 @@
 <script lang="ts">
 import { inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('tabpane');
+const { create } = createComponent('tab-pane');
 
 export default create({
   props: {

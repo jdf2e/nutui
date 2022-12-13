@@ -37,8 +37,8 @@
     <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" :desc="translate('desc2')">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
-          <nut-tabpane :title="translate('tab1')"> </nut-tabpane>
-          <nut-tabpane :title="translate('tab2')"> </nut-tabpane>
+          <nut-tab-pane :title="translate('tab1')"> </nut-tab-pane>
+          <nut-tab-pane :title="translate('tab2')"> </nut-tab-pane>
         </nut-tabs>
       </template>
 
@@ -51,9 +51,9 @@
     <nut-navbar @on-click-back="back">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
-          <nut-tabpane :title="translate('tab1')"> </nut-tabpane>
-          <nut-tabpane :title="translate('tab2')"> </nut-tabpane>
-          <nut-tabpane :title="translate('tab3')"> </nut-tabpane>
+          <nut-tab-pane :title="translate('tab1')"> </nut-tab-pane>
+          <nut-tab-pane :title="translate('tab2')"> </nut-tab-pane>
+          <nut-tab-pane :title="translate('tab3')"> </nut-tab-pane>
         </nut-tabs>
       </template>
       <template #icons>

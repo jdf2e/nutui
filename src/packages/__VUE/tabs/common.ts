@@ -80,7 +80,7 @@ export const component = (components: any) => {
         vnodes.forEach((vnode: VNode, index: number) => {
           let type = vnode.type;
           type = (type as any).name || type;
-          if (type == 'nut-tabpane') {
+          if (type == 'nut-tab-pane') {
             let title = new Title();
             if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
               let paneKeyType = TypeOfFun(vnode.props?.['pane-key']);

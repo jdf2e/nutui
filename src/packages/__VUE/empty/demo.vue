@@ -8,15 +8,15 @@
     <h2>{{ translate('imageType') }}</h2>
     <div class="show">
       <nut-tabs v-model="tabValue">
-        <nut-tabpane :title="translate('noContent')">
+        <nut-tab-pane :title="translate('noContent')">
           <nut-empty image="empty" :description="translate('noContent')"></nut-empty>
-        </nut-tabpane>
-        <nut-tabpane :title="translate('error')">
+        </nut-tab-pane>
+        <nut-tab-pane :title="translate('error')">
           <nut-empty image="error" :description="translate('error')"></nut-empty>
-        </nut-tabpane>
-        <nut-tabpane :title="translate('noNetWork')">
+        </nut-tab-pane>
+        <nut-tab-pane :title="translate('noNetWork')">
           <nut-empty image="network" :description="translate('noNetWork')"></nut-empty>
-        </nut-tabpane>
+        </nut-tab-pane>
       </nut-tabs>
     </div>
 
