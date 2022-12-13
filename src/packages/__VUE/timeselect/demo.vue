@@ -18,7 +18,7 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange1"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+        <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>{{ translate('title') }}</h2>
@@ -39,7 +39,7 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>{{ translate('changeTitle') }}</h2>
@@ -66,7 +66,7 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
   </div>

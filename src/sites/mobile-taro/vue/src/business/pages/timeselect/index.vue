@@ -16,7 +16,7 @@
         <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+        <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>可选择多个日期时间</h2>
@@ -35,7 +35,7 @@
         <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>更改标题</h2>
@@ -60,7 +60,7 @@
         <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
     <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />

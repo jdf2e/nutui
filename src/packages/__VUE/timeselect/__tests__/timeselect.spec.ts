@@ -31,7 +31,7 @@ test('props test', async () => {
     components: {
       'nut-time-select': TimeSelect,
       'nut-time-pannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
@@ -44,7 +44,7 @@ test('props test', async () => {
             <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
         </nut-time-select>
       </template>
@@ -133,7 +133,7 @@ test('Events test', async () => {
     components: {
       'nut-time-select': TimeSelect,
       'nut-time-pannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
@@ -146,7 +146,7 @@ test('Events test', async () => {
             <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
         </nut-time-select>
       </template>

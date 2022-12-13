@@ -37,7 +37,7 @@ app.use(Overlay);
       <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
     </template>
     <template #detail>
-      <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+      <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
     </template>
   </nut-time-select>
 </template>
@@ -125,7 +125,7 @@ app.use(Overlay);
       <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
     </template>
     <template #detail>
-      <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+      <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
     </template>
   </nut-time-select>
 </template>
@@ -222,7 +222,7 @@ app.use(Overlay);
       <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-time-pannel>
     </template>
     <template #detail>
-      <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+      <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
     </template>
   </nut-time-select>
 </template>
