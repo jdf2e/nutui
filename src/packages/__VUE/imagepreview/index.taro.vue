@@ -35,7 +35,7 @@ import Popup from '../popup/index.taro.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
 import Taro from '@tarojs/taro';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {

@@ -53,7 +53,7 @@ import ImagePreviewItem from './imagePreviewItem.vue';
 import Popup from '../popup/index.vue';
 import Swiper from '../swiper/index.vue';
 import { ImageInterface, baseProps } from './types';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {
