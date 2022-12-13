@@ -3,7 +3,7 @@ import { h, VNode, CSSProperties } from 'vue';
 import Popup from '../popup/index.vue';
 import Icon from '../icon/index.vue';
 import Button from '../button/index.vue';
-import OverLay from '../overlay/index.vue';
+import Overlay from '../overlay/index.vue';
 import { CreateComponent } from '@/packages/utils/create';
 export class DialogOptions {
   title?: string = '';
@@ -44,7 +44,7 @@ class DialogFunction {
     let options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
-      components: [Popup, Icon, Button, OverLay],
+      components: [Popup, Icon, Button, Overlay],
       wrapper: (elWarp: any, root: any) => {
         return {
           setup() {

@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
-import OverLay from '../index.vue';
+import Overlay from '../index.vue';
 
 test('should change z-index when using z-index prop', () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true,
       zIndex: 99
@@ -13,7 +13,7 @@ test('should change z-index when using z-index prop', () => {
 });
 
 test('should change animation duration when using duration prop', () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true,
       duration: 1
@@ -25,7 +25,7 @@ test('should change animation duration when using duration prop', () => {
 });
 
 test('prop overlay-class test', () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true,
       overlayClass: 'testclass'
@@ -37,7 +37,7 @@ test('prop overlay-class test', () => {
 });
 
 test('prop close-on-click-overlay test', async () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true,
       closeOnClickOverlay: false
@@ -49,7 +49,7 @@ test('prop close-on-click-overlay test', async () => {
 });
 
 test('event click test', async () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true,
       closeOnClickOverlay: true
@@ -63,7 +63,7 @@ test('event click test', async () => {
 });
 
 test('slots test', () => {
-  const wrapper = mount(OverLay, {
+  const wrapper = mount(Overlay, {
     props: {
       visible: true
     },

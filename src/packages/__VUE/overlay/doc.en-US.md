@@ -1,4 +1,4 @@
-# OverLay
+# Overlay
 
 ### Intro
 
@@ -10,12 +10,12 @@ Create a mask layer, which is usually used to prevent users from doing other ope
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { OverLay } from '@nutui/nutui';
+import { Overlay } from '@nutui/nutui';
 // taro
-import { OverLay } from '@nutui/nutui-taro';
+import { Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(OverLay);
+app.use(Overlay);
 ```
 
 

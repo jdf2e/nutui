@@ -9,13 +9,13 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Menu, MenuItem,OverLay, Popup } from '@nutui/nutui';
+import { Menu, MenuItem,Overlay, Popup } from '@nutui/nutui';
 // taro
-import { Menu, MenuItem,OverLay, Popup } from '@nutui/nutui-taro';
+import { Menu, MenuItem,Overlay, Popup } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Menu);
 app.use(MenuItem);
-app.use(OverLay);
+app.use(Overlay);
 app.use(Popup);
 
 ```
