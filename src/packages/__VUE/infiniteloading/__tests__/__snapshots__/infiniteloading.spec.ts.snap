@@ -2,7 +2,7 @@
 
 exports[`infiniteloading base 1`] = `
 "<div class=\\"box\\" style=\\"height: 300px; overflow: auto;\\">
-  <view class=\\"nut-infiniteloading\\">
+  <view class=\\"nut-infinite-loading\\">
     <view class=\\"nut-infinite__container\\"></view>
     <view class=\\"nut-infinite__bottom\\">
       <!--v-if-->
