@@ -4,26 +4,14 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover
-          v-model:visible="lightTheme"
-          :list="iconItemList"
-          location="bottom-end"
-          @choose="chooseItem"
-          overlay="true"
-        >
+        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover
-          v-model:visible="darkTheme"
-          theme="dark"
-          location="bottom-start"
-          :list="iconItemList"
-          :offset="[0, 12]"
-        >
+        <nut-popover v-model:visible="darkTheme" theme="dark" location="bottom-start" :list="iconItemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
@@ -81,17 +69,28 @@
       v-model:visible="customPositon"
       targetId="pickerTarget"
       :location="curPostion"
-      bgColor="#f00"
       theme="dark"
       :list="positionList"
     >
     </nut-popover>
 
-    <h2>自定义对象</h2>
-    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle;">{{
-      translate('light')
-    }}</nut-button>
-    <nut-popover v-model:visible="customTarget" targetId="popid" :list="iconItemList" location="top-start">
+    <h2>{{ translate('contentTarget') }}</h2>
+    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">
+      {{ translate('contentTarget') }}
+    </nut-button>
+    <nut-popover
+      v-model:visible="customTarget"
+      targetId="popid"
+      :list="iconItemList"
+      location="top-start"
+    ></nut-popover>
+
+    <h2>{{ translate('contentColor') }}</h2>
+
+    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square">{{ translate('contentColor') }}</nut-button>
+      </template>
     </nut-popover>
   </div>
 </template>
@@ -112,7 +111,9 @@ const initTranslate = () =>
       dark: '暗黑风格',
       showIcon: '展示图标',
       disableAction: '禁用选项',
-      content: '自定义内容'
+      content: '自定义内容',
+      contentColor: '自定义颜色',
+      contentTarget: '自定义对象'
     },
     'en-US': {
       title: 'Basic Usage',
@@ -123,7 +124,9 @@ const initTranslate = () =>
       dark: 'dark',
       showIcon: 'show icon',
       disableAction: 'disabled',
-      content: 'custom content'
+      content: 'custom content',
+      contentColor: 'custom color',
+      contentTarget: 'custom target'
     }
   });
 export default createDemo({
@@ -143,7 +146,8 @@ export default createDemo({
 
       showPicker: false,
 
-      customTarget: false
+      customTarget: false,
+      customColor: false
     });
     const curPostion = ref('top');
 
@@ -257,9 +261,9 @@ export default createDemo({
     };
 
     const clickCustomHandle = () => {
-      console.log('点击', state.customTarget);
       state.customTarget = !state.customTarget;
     };
+
     return {
       iconItemList,
       itemList,
