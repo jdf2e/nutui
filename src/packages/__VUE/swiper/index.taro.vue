@@ -96,10 +96,6 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
-    },
-    isCenter: {
-      type: Boolean,
-      default: false
     }
   },
   emits: ['change'],
@@ -175,14 +171,7 @@ export default create({
 
     const getStyle = () => {
       let offset = 0;
-      if (!props.isCenter) {
-        offset = state.offset;
-      } else {
-        let val = isVertical.value
-          ? (state.rect as DOMRect).height - size.value
-          : (state.rect as DOMRect).width - size.value;
-        offset = state.offset + (state.active === childCount.value - 1 ? -val / 2 : val / 2);
-      }
+      offset = state.offset;
       state.style = {
         transitionDuration: `${state.moving ? 0 : props.duration}ms`,
         transform: `translate${isVertical.value ? 'Y' : 'X'}(${offset}px)`,
@@ -293,30 +282,27 @@ export default create({
       clearTimeout(state.autoplayTimer);
     };
 
-    const prev = () => {
+    const jump = (pace: number) => {
       resettPosition();
       touch.reset();
 
       requestAniFrame(() => {
-        state.moving = false;
-        move({
-          pace: -1,
-          isEmit: true
+        requestAniFrame(() => {
+          state.moving = false;
+          move({
+            pace,
+            isEmit: true
+          });
         });
       });
     };
 
-    const next = () => {
-      resettPosition();
-      touch.reset();
+    const prev = () => {
+      jump(-1);
+    };
 
-      requestAniFrame(() => {
-        state.moving = false;
-        move({
-          pace: 1,
-          isEmit: true
-        });
-      });
+    const next = () => {
+      jump(1);
     };
 
     const to = (index: number) => {
