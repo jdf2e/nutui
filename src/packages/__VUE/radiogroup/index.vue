@@ -37,7 +37,7 @@ export default create({
       return h(
         'view',
         {
-          class: `nut-radiogroup nut-radiogroup--${props.direction}`
+          class: `${componentName} ${componentName}--${props.direction}`
         },
         slots.default?.()
       );
