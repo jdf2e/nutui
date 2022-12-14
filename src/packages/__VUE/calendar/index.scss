@@ -2,13 +2,13 @@
   .nut-calendar {
     background: $dark-background;
     color: $dark-color;
-    .nut-calendar-header {
+    .nut-calendar__header {
       background: $dark-background;
       color: $dark-color;
     }
-    .nut-calendar-content {
-      .calendar-months-panel {
-        .calendar-month-con {
+    .nut-calendar__content {
+      .nut-calendar__panel {
+        .nut-calendar__days {
           .calendar-month-day {
             &-choose {
               background-color: $dark-calendar-choose-color;
@@ -18,7 +18,7 @@
         }
       }
     }
-    .nut-calendar-footer {
+    .nut-calendar__footer {
       background: $dark-background2;
       color: $dark-color;
     }
@@ -34,20 +34,17 @@
   overflow: hidden;
   height: 100%;
   flex-direction: column;
-  &.nut-calendar-tile {
-    .nut-calendar-header {
-      .calendar-title {
+  &.nut-calendar--nopop {
+    .nut-calendar__header {
+      .nut-calendar__header-title {
         font-size: $calendar-base-font;
       }
     }
   }
-  .nut-calendar-taro {
-    height: 60vh;
-  }
   .popup-box {
     height: 100%;
   }
-  .nut-calendar-content {
+  .nut-calendar__content {
     overflow-y: auto;
   }
   ::-webkit-scrollbar {
@@ -55,28 +52,28 @@
   }
 
   // 头部导航
-  .nut-calendar-header {
+  .nut-calendar__header {
     display: flex;
     flex-direction: column;
     text-align: center;
     padding-top: 1px;
     background-color: $white;
 
-    .calendar-title {
+    .nut-calendar__header-title {
       font-size: $calendar-title-font;
       font-weight: $calendar-title-font-weight;
       line-height: 44px;
     }
-    .calendar-top-slot {
+    .nut-calendar__header-slot {
       height: 24px;
     }
-    .calendar-curr-month {
+    .nut-calendar__header-subtitle {
       padding: 7px 0;
       line-height: 22px;
       font-size: $calendar-sub-title-font;
     }
 
-    .calendar-weeks {
+    .nut-calendar__weekdays {
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -84,7 +81,7 @@
       border-radius: 0px 0px 12px 12px;
       box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
 
-      .calendar-week-item {
+      .nut-calendar__weekday {
         &:first-of-type,
         &:last-of-type {
           color: $calendar-day67-font-color;
@@ -94,27 +91,27 @@
   }
 
   // 月份
-  .nut-calendar-content {
+  .nut-calendar__content {
     flex: 1;
     width: 100%;
     display: block;
-    .calendar-months-panel {
+    .nut-calendar__panel {
       position: relative;
       width: 100%;
       height: auto;
       display: block;
       box-sizing: border-box;
-      .viewArea {
+      .nut-calendar__body {
         display: block;
       }
-      .calendar-month {
+      .nut-calendar__month {
         display: flex;
         flex-direction: column;
         text-align: center;
       }
 
       div:nth-of-type(2) {
-        .calendar-month-title {
+        .nut-calendar__month-title {
           padding-top: 0;
         }
       }
@@ -131,22 +128,22 @@
         color: $text-color;
       }
 
-      .calendar-month-title {
+      .nut-calendar__month-title {
         height: 23px;
         line-height: 23px;
         margin: 8px 0;
         font-size: $calendar-month-title-font-size;
       }
 
-      .calendar-month-con {
+      .nut-calendar__days {
         overflow: hidden;
-        .calendar-month-item {
-          .calendar-month-day:nth-child(7n + 0),
-          .calendar-month-day:nth-child(7n + 1) {
+        .nut-calendar__days-item {
+          .nut-calendar__day:nth-child(7n + 0),
+          .nut-calendar__day:nth-child(7n + 1) {
             color: $calendar-day67-font-color;
           }
         }
-        .calendar-month-day {
+        .nut-calendar__day {
           float: left;
           width: $calendar-day-width;
           height: $calendar-day-height;
@@ -157,19 +154,19 @@
           flex-direction: column;
           position: relative;
 
-          .calendar-curr-tips {
+          .nut-calendar__day-tips {
             position: absolute;
             width: 100%;
           }
 
-          .calendar-curr-tip-curr {
+          .nut-calendar__day-tips--curr {
             position: absolute;
             bottom: 6px;
             width: 100%;
             font-size: 12px;
             line-height: 14px;
           }
-          .calendar-day-tip {
+          .nut-calendar__day-tip {
             position: absolute;
             bottom: 6px;
             width: 100%;
@@ -177,25 +174,24 @@
             line-height: 14px;
             color: $calendar-primary-color;
           }
-          .calendar-curr-tips-top {
+          .nut-calendar__day-tips--top {
             top: 6px;
           }
-          .calendar-curr-tips-bottom {
+          .nut-calendar__day-tips--bottom {
             bottom: 6px;
           }
-          &-active {
+          &--active {
             background-color: $calendar-primary-color;
             color: $white !important;
             border-radius: $calendar-day-active-border-radius;
 
-            .calendar-curr-tips {
-              // color: $white !important;
+            .nut-calendar__day-tips {
               visibility: hidden;
             }
-            .calendar-curr-tip-curr {
+            .nut-calendar__day-tips--curr {
               visibility: hidden;
             }
-            .calendar-day-tip {
+            .nut-calendar__day-tip {
               color: $white;
             }
           }
@@ -204,12 +200,12 @@
             color: $calendar-disable-color !important;
           }
 
-          &-choose {
+          &--choose {
             background-color: $calendar-choose-color;
             color: $calendar-choose-font-color;
           }
 
-          .calendar-day {
+          .nut-calendar__day-value {
             padding: 2px 0;
             font-size: $calendar-day-font;
           }
@@ -219,13 +215,13 @@
   }
 
   // 底部导航
-  .nut-calendar-footer {
+  .nut-calendar__footer {
     display: flex;
     height: 62px;
     width: 100%;
     background-color: $white;
 
-    .calendar-confirm-btn {
+    .nut-calendar__confirm {
       height: 44px;
       width: 100%;
       margin: 10px 18px;
