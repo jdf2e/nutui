@@ -16,15 +16,6 @@ export const gridProps = {
     type: [Number, String],
     default: 4
   },
-  // 图标大小
-  iconSize: {
-    type: [Number, String],
-    default: 28
-  },
-  // 图标颜色
-  iconColor: {
-    type: String
-  },
   // 是否显示边框
   border: {
     type: Boolean,

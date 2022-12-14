@@ -1,13 +1,13 @@
 import { config, mount } from '@vue/test-utils';
 import ActionSheet from '../index.vue';
-import NutIcon from '../../icon/index.vue';
 import NutPopup from '../../popup/index.vue';
+import { Loading } from '@nutui/icons-vue';
 import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
-    NutPopup
+    NutPopup,
+    Loading
   };
 });
 
@@ -68,7 +68,7 @@ test('should render sure actionsheet when use custom props', () => {
   });
 
   expect(wrapper.html()).toMatchSnapshot();
-  let subdesc = wrapper.find('.subdesc');
+  let subdesc = wrapper.find('.nut-action-sheet__subdesc');
   expect(subdesc.html()).toContain('描述信息');
 });
 
@@ -123,7 +123,7 @@ test('should render description when use description', async () => {
       menuItems: [{ name: '选项一', disabled: true }]
     }
   });
-  let desc = wrapper.find('.desc');
+  let desc = wrapper.find('.nut-action-sheet__desc');
   let title = wrapper.find('.nut-action-sheet__title');
   expect(desc.exists()).toBeTruthy();
   expect(title.exists()).toBeTruthy();
