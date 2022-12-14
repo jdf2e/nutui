@@ -26,7 +26,7 @@ const template = `
   <nut-sub-side-navbar title="智能城市AI" ikey="6">
     <nut-sub-side-navbar title="人体识别1" ikey="9" :open="false">
       <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
-      <nut-sidenavbar-item ikey="11" title="细粒度人像分割1"></nut-sidenavbar-item>
+      <nut-side-navbar-item ikey="11" title="细粒度人像分割1"></nut-side-navbar-item>
     </nut-sub-side-navbar>
     <nut-sub-side-navbar title="人体识别2" ikey="12">
       <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
@@ -49,7 +49,7 @@ test('render offset props', async () => {
 
   await nextTick();
 
-  const subSideNavBar = wrapper.findAll('.nut-subsidenavbar__title');
+  const subSideNavBar = wrapper.findAll('.nut-sub-side-navbar__title');
 
   expect((subSideNavBar[0].element as HTMLElement).style.paddingLeft).toEqual('30px');
   expect((subSideNavBar[1].element as HTMLElement).style.paddingLeft).toEqual('60px');
@@ -69,7 +69,7 @@ test('render subsidenavbar open props', async () => {
 
   await nextTick();
 
-  const subSideNavBar = wrapper.findAll('.nut-subsidenavbar__list');
+  const subSideNavBar = wrapper.findAll('.nut-sub-side-navbar__list');
 
   expect((subSideNavBar[1].element as HTMLElement).style.height).toEqual('0px');
 });
@@ -87,8 +87,8 @@ test('subsidenavbar trigger click', async () => {
 
   await nextTick();
 
-  const subSideNavBarTitle = wrapper.findAll('.nut-subsidenavbar__title');
-  const subSideNavBarList = wrapper.findAll('.nut-subsidenavbar__list');
+  const subSideNavBarTitle = wrapper.findAll('.nut-sub-side-navbar__title');
+  const subSideNavBarList = wrapper.findAll('.nut-sub-side-navbar__list');
 
   await subSideNavBarTitle[0].trigger('click');
   await sleep(100);
