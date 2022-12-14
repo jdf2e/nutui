@@ -51,7 +51,7 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
     <nut-audio
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -62,14 +62,18 @@ export default {
       ref="audioDemo"
     >
       <div class="nut-voice">
-        <div><nut-icon name="voice"></nut-icon></div>
+        <div><Voice></Voice></div>
         <div>{{ duration }}"</div>
       </div>
     </nut-audio>
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { Voice } from '@nutui/icons-vue'
 export default {
+  components: {
+    Voice
+  },
   setup() {
     const audioDemo = ref(null);
     const data = reactive({
@@ -148,7 +152,7 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
     <nut-audio
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -163,17 +167,29 @@ export default {
       @changeProgress="changeProgress"
     >
       <div class="nut-audio-operate-group">
-        <nut-audio-operate type="back"><nut-icon name="play-double-back" size="35"></nut-icon></nut-audio-operate>
-        <nut-audio-operate type="play"
-          ><nut-icon :name="!playing ? 'play-start' : 'play-stop'" size="35"></nut-icon
-        ></nut-audio-operate>
-        <nut-audio-operate type="forward"><nut-icon name="play-double-forward" size="35"></nut-icon></nut-audio-operate>
+        <nut-audio-operate type="back">
+          <PlayDoubleBack width="35px"></PlayDoubleBack>
+        </nut-audio-operate>
+        <nut-audio-operate type="play">
+          <PlayStart v-if="!playing" width="35px"></PlayStart>
+          <PlayStop v-else width="35px"></PlayStop>
+        </nut-audio-operate>
+        <nut-audio-operate type="forward">
+          <PlayDoubleForward width="35px"></PlayDoubleForward>
+        </nut-audio-operate>
       </div>
     </nut-audio>
 </template>
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop } from '@nutui/icons-vue'
 export default {
+  components: {
+    PlayDoubleBack,
+    PlayDoubleForward,
+    PlayStart, 
+    PlayStop
+  },
   setup() {
     const data = reactive({
       muted: false,
@@ -185,11 +201,11 @@ export default {
       console.log('倒退');
     };
 
-    const forward = (progress) => {
+    const forward = (progress: number) => {
       console.log('快进', '当前时间' + progress);
     };
 
-    const changeStatus = (status) => {
+    const changeStatus = (status: boolean) => {
       console.log('当前播放状态', status);
       playing.value = status;
     };
@@ -198,11 +214,20 @@ export default {
       console.log('播放结束');
     };
 
-    const changeProgress = (val) => {
+    const changeProgress = (val: number) => {
       console.log('改变进度条', val);
     };
+
     return {
-      ...toRefs(data),playing, fastBack, forward, changeStatus, audioDemo, ended, duration, changeProgress
+      ...toRefs(data),
+      playing, 
+      fastBack, 
+      forward, 
+      changeStatus, 
+      audioDemo, 
+      ended, 
+      duration, 
+      changeProgress
     };
   }
 };
