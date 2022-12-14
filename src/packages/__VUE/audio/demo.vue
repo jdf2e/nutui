@@ -22,7 +22,7 @@
       ref="audioDemo"
     >
       <div class="nut-voice">
-        <Voice></Voice>
+        <div><Voice></Voice></div>
         <div>{{ duration }}"</div>
       </div>
     </nut-audio>
