@@ -27,10 +27,10 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = 'nut-timepannel';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        'nut-timepannel--curr': state.currentKey == props.pannelKey
+        'nut-time-pannel--curr': state.currentKey == props.pannelKey
       };
     });
 
