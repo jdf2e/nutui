@@ -202,7 +202,7 @@ export default {
 .demo-check {
   margin-right: 10px;
 }
-.nut-checkboxgroup {
+.nut-checkbox-group {
   display: flex;
   flex-wrap: wrap;
 }
