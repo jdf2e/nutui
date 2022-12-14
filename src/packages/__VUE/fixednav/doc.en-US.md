@@ -93,12 +93,12 @@ export default {
 <template>
 <nut-fixed-nav :position="{top:'280px' }" type="left" v-model:visible="myActive">
     <template v-slot:list>
-        <ul class="nut-fixednav__list">
-            <li class="nut-fixednav__list-item">1</li>
-            <li class="nut-fixednav__list-item">2</li>
-            <li class="nut-fixednav__list-item">3</li>
-            <li class="nut-fixednav__list-item">4</li>
-            <li class="nut-fixednav__list-item">5</li>
+        <ul class="nut-fixed-nav__list">
+            <li class="nut-fixed-nav__list-item">1</li>
+            <li class="nut-fixed-nav__list-item">2</li>
+            <li class="nut-fixed-nav__list-item">3</li>
+            <li class="nut-fixed-nav__list-item">4</li>
+            <li class="nut-fixed-nav__list-item">5</li>
         </ul>
     </template>
 <template v-slot:btn>

@@ -47,7 +47,7 @@ export const component = (components: any) => {
 
     setup(props: any, { emit }: any) {
       const classes = computed(() => {
-        const prefixCls = 'nut-fixednav';
+        const prefixCls = componentName;
         return {
           [prefixCls]: true,
           active: props.visible,
