@@ -185,7 +185,7 @@ export const componentWeapp = {
     let defaultIndexes = ref<number[]>([]);
 
     const defaultValuesConvert = () => {
-      let defaultIndexs = [];
+      let defaultIndexs: number[] = [];
       if (defaultValues.value.length > 0) {
         defaultValues.value.forEach((value, index) => {
           for (let i = 0; i < columnsList.value[index].length; i++) {
@@ -206,18 +206,18 @@ export const componentWeapp = {
     };
 
     // 平铺展示时，滚动选择
-    const tileChange = ({ detail }) => {
+    const tileChange = (data: any) => {
       const prevDefaultValue = defaultIndexes.value;
       let changeIndex = 0;
       // 判断变化的是第几个
-      detail.value.forEach((col, index) => {
+      data.detail.value.forEach((col: number, index: number) => {
         if (prevDefaultValue[index] != col) changeIndex = index;
       });
 
       if (state.show) {
-        defaultIndexes.value = detail.value;
+        defaultIndexes.value = data.detail.value;
         // 选择的是哪个 option
-        changeHandler(changeIndex, columnsList.value[changeIndex][detail.value[changeIndex]]);
+        changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
       }
     };
 
