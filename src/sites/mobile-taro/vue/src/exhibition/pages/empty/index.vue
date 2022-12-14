@@ -8,15 +8,15 @@
     <h2>图片类型，内置3个</h2>
     <div class="show">
       <nut-tabs v-model="tabValue">
-        <nut-tabpane title="无内容">
+        <nut-tab-pane title="无内容">
           <nut-empty image="empty" description="无内容"></nut-empty>
-        </nut-tabpane>
-        <nut-tabpane title="加载失败/错误">
+        </nut-tab-pane>
+        <nut-tab-pane title="加载失败/错误">
           <nut-empty image="error" description="加载失败/错误"></nut-empty>
-        </nut-tabpane>
-        <nut-tabpane title="无网络">
+        </nut-tab-pane>
+        <nut-tab-pane title="无网络">
           <nut-empty image="network" description="无网络"></nut-empty>
-        </nut-tabpane>
+        </nut-tab-pane>
       </nut-tabs>
     </div>
 

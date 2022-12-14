@@ -2,72 +2,72 @@
   <div class="demo full">
     <nut-cell-group :title="translate('basic')">
       <nut-cell>
-        <nut-radiogroup v-model="radioVal">
+        <nut-radio-group v-model="radioVal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radiogroup v-model="radioVal" text-position="left">
+        <nut-radio-group v-model="radioVal" text-position="left">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radiogroup v-model="radioVal">
+        <nut-radio-group v-model="radioVal">
           <nut-radio shape="button" label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('vertical')">
       <nut-cell>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
+        <nut-radio-group v-model="radioVal" text-position="left" direction="horizontal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="radioVal" direction="horizontal">
           <nut-radio shape="button" label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('size')">
       <nut-cell>
-        <nut-radiogroup v-model="radioVal4">
+        <nut-radio-group v-model="radioVal4">
           <nut-radio label="1" icon-size="12">{{ translate('size') }} 12</nut-radio>
           <nut-radio label="2" icon-size="12">{{ translate('size') }} 12</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('icon')">
       <nut-cell>
-        <nut-radiogroup v-model="radioVal5">
+        <nut-radio-group v-model="radioVal5">
           <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">{{ translate('icon') }}</nut-radio>
           <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">{{ translate('icon') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('trigger')">
       <nut-cell>
-        <nut-radiogroup v-model="radioVal6" @change="handleChange">
+        <nut-radio-group v-model="radioVal6" @change="handleChange">
           <nut-radio label="1">{{ translate('trigger') }}</nut-radio>
           <nut-radio label="2">{{ translate('trigger') }}</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-cell>
       <nut-cell :title="translate('current')" :desc="radioVal6"></nut-cell>
     </nut-cell-group>

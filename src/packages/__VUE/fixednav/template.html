@@ -1,8 +1,8 @@
 <view :class="classes" :style="position">
     <nut-overlay v-if="overlay" :visible="visible" :z-index="200" @click="updateValue(false)" />
     <slot name="list">
-        <view class="nut-fixednav__list">
-            <view class="nut-fixednav__list-item" :class="{ active: item.id == current }"
+        <view class="nut-fixed-nav__list">
+            <view class="nut-fixed-nav__list-item" :class="{ active: item.id == current }"
                 v-for="(item, index) in navList" @click="selected(item, $event)" :key="item.id || index">
                 <img :src="item.icon" />
                 <view class="span">{{ item.text }}</view>
@@ -10,7 +10,7 @@
             </view>
         </view>
     </slot>
-    <div class="nut-fixednav__btn" @click="updateValue()">
+    <div class="nut-fixed-nav__btn" @click="updateValue()">
         <slot name="btn">
             <Left color="#fff" />
             <view class="text">{{ visible ? activeText || translate('activeText') : unActiveText ||

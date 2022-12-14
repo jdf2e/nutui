@@ -69,7 +69,7 @@ export default defineComponent({
     padding: 0 10px;
     font-weight: normal;
   }
-  .nut-trendarrow {
+  .nut-trend-arrow {
     margin-right: 10px;
   }
 }

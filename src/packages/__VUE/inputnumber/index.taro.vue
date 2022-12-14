@@ -2,20 +2,20 @@
   <view :class="classes" :style="{ height: pxCheck(buttonSize) }">
     <nut-icon
       :name="iconLeft"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
+      class="nut-input-number__icon"
+      :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       :size="buttonSize"
       v-bind="$attrs"
       @click="reduce"
     >
     </nut-icon>
-    <view v-if="readonly" class="nut-inputnumber__text--readonly">
+    <view v-if="readonly" class="nut-input-number__text--readonly">
       {{ modelValue }}
     </view>
     <input
       v-else
       type="number"
-      class="nut-inputnumber__text--input"
+      class="nut-input-number__text--input"
       :min="min"
       :max="max"
       :style="{ width: pxCheck(inputWidth) }"
@@ -28,8 +28,8 @@
     />
     <nut-icon
       :name="iconRight"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
+      class="nut-input-number__icon"
+      :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
       :size="buttonSize"
       v-bind="$attrs"
       @click="add"
@@ -92,7 +92,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
     const classes = computed(() => {
-      const prefixCls = 'nut-inputnumber';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: props.disabled

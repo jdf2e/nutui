@@ -35,7 +35,7 @@ test('base tabs props', async () => {
     },
     components: {
       'nut-tabs': Tabs,
-      'nut-tabpane': TabPane
+      'nut-tab-pane': TabPane
     }
   });
   await nextTick();
@@ -59,7 +59,7 @@ test('base other props', async () => {
     },
     components: {
       'nut-tabs': Tabs,
-      'nut-tabpane': TabPane
+      'nut-tab-pane': TabPane
     }
   });
   await nextTick();
@@ -75,7 +75,7 @@ test('base Tabs Slots', async () => {
   const wrapper = mount({
     components: {
       'nut-tabs': Tabs,
-      'nut-tabpane': TabPane
+      'nut-tab-pane': TabPane
     },
     template: `
     <nut-tabs v-model="state.tab7value">
@@ -92,9 +92,9 @@ test('base Tabs Slots', async () => {
           <span class="nut-tabs__titles-item__line"></span>
         </div>
       </template>
-      <nut-tabpane v-for="item in state.list6" :pane-key="item.paneKey">
+      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey">
         {{ item.title }}
-      </nut-tabpane>
+      </nut-tab-pane>
     </nut-tabs>
     `,
     setup() {
@@ -137,13 +137,13 @@ test('base Tabpane Props', async () => {
   const wrapper = mount({
     components: {
       'nut-tabs': Tabs,
-      'nut-tabpane': TabPane
+      'nut-tab-pane': TabPane
     },
     template: `
     <nut-tabs v-model="state.tab2value">
-      <nut-tabpane title="Tab 1" pane-key="0"> </nut-tabpane>
-      <nut-tabpane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1" pane-key="0"> </nut-tab-pane>
+      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     `,
     setup() {
@@ -168,13 +168,13 @@ test('base click', async () => {
   const wrapper = mount({
     components: {
       'nut-tabs': Tabs,
-      'nut-tabpane': TabPane
+      'nut-tab-pane': TabPane
     },
     template: `
     <nut-tabs v-model="state.tab1value">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     `,
     setup() {

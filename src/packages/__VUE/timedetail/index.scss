@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-timedetail {
+  .nut-time-detail {
     background-color: $dark-background2;
     &__detail {
       &__list {
@@ -14,7 +14,7 @@
     }
   }
 }
-.nut-timedetail {
+.nut-time-detail {
   display: flex;
   width: 100%;
   padding: $timeselect-timedetail-padding;

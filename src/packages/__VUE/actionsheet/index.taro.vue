@@ -92,7 +92,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = 'nut-actionsheet';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

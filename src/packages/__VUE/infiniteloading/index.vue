@@ -93,7 +93,7 @@ export default create({
     });
 
     const classes = computed(() => {
-      const prefixCls = 'nut-infiniteloading';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

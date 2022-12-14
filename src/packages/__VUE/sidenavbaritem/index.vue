@@ -1,6 +1,6 @@
 <template>
-  <view class="nut-sidenavbaritem" @click.stop="handleClick" :ikey="ikey">
-    <span class="nut-sidenavbaritem__title">
+  <view :class="classes" @click.stop="handleClick" :ikey="ikey">
+    <span class="nut-side-navbar-item__title">
       {{ title }}
     </span>
   </view>
@@ -23,7 +23,7 @@ export default create({
   emits: ['click'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {
-      const prefixCls = 'nut-sidenavbaritem';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

@@ -1,15 +1,15 @@
 <template>
   <div class="demo">
     <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
-      <nut-tabpane :title="translate('basic')">
+      <nut-tab-pane :title="translate('basic')">
         <ul class="infiniteUl">
           <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
             <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
-      </nut-tabpane>
+      </nut-tab-pane>
 
-      <nut-tabpane :title="translate('customTxt')">
+      <nut-tab-pane :title="translate('customTxt')">
         <ul class="infiniteUl">
           <nut-infinite-loading
             v-model="infinityValue2"
@@ -21,7 +21,7 @@
             <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
-      </nut-tabpane>
+      </nut-tab-pane>
     </nut-tabs>
   </div>
 </template>

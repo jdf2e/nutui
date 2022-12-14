@@ -10,17 +10,17 @@
     @click-close-icon="close"
   >
     <view :class="classes">
-      <view class="nut-timeselect__title">
-        <view class="nut-timeselect__title__fixed">
+      <view class="nut-time-select__title">
+        <view class="nut-time-select__title__fixed">
           <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
           <slot name="title" v-else></slot>
         </view>
       </view>
-      <view class="nut-timeselect__content">
-        <view class="nut-timeselect__content__pannel">
+      <view class="nut-time-select__content">
+        <view class="nut-time-select__content__pannel">
           <slot name="pannel"></slot>
         </view>
-        <view class="nut-timeselect__content__detail">
+        <view class="nut-time-select__content__detail">
           <slot name="detail"></slot>
         </view>
       </view>
@@ -67,7 +67,7 @@ export default create({
   emits: ['update:visible', 'select'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {
-      const prefixCls = 'nut-timeselect';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

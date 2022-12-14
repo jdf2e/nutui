@@ -6,11 +6,11 @@
           <stop v-for="(item, index) in stop" :key="index" :offset="item.key" :stop-color="item.value"></stop>
         </linearGradient>
       </defs>
-      <path class="nut-circleprogress__path" :style="pathStyle" :d="path" fill="none" :stroke-width="strokeWidth">
+      <path class="nut-circle-progress__path" :style="pathStyle" :d="path" fill="none" :stroke-width="strokeWidth">
         >
       </path>
       <path
-        class="nut-circleprogress__hover"
+        class="nut-circle-progress__hover"
         :style="hoverStyle"
         :d="path"
         fill="none"
@@ -19,7 +19,7 @@
         :stroke-width="strokeWidth"
       ></path>
     </svg>
-    <div class="nut-circleprogress__text">
+    <div class="nut-circle-progress__text">
       <slot></slot>
       <div v-if="!slotDefault">{{ progress }}%</div>
     </div>
@@ -73,7 +73,7 @@ export default create({
     const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
-      const prefixCls = 'nut-circleprogress';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };
