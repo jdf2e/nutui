@@ -18,12 +18,11 @@
       <view ref="wrap" class="nut-noticebar__page-wrap">
         <view
           ref="content"
-          :class="['nut-noticebar__page-wrap-content', animationClass, { 'nut-ellipsis': isEllipsis }]"
+          :class="wrapContentClass"
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
-        >
-          <slot>{{ text }}</slot>
+          ><slot>{{ text }}</slot>
         </view>
       </view>
       <view v-if="closeMode || rightIcon" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
@@ -77,12 +76,12 @@ import {
   onUnmounted,
   reactive,
   computed,
-  CSSProperties,
   onActivated,
   onDeactivated,
   ref,
   watch,
-  h
+  h,
+  Slots
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('noticebar');
@@ -97,7 +96,7 @@ interface StateProps {
   animationClass: string;
 
   animate: boolean;
-  scrollList: [];
+  scrollList: Slots[];
   distance: number;
   timer: null;
   keepAlive: boolean;
@@ -173,8 +172,6 @@ export default create({
   emits: ['click', 'close'],
 
   setup(props, { emit, slots }) {
-    // console.log('componentName', componentName);
-
     const wrap = ref<null | HTMLElement>(null);
     const content = ref<null | HTMLElement>(null);
 
@@ -185,7 +182,6 @@ export default create({
       offsetWidth: 0,
       showNoticebar: true,
       animationClass: '',
-
       animate: false,
       scrollList: [],
       distance: 0,
@@ -207,6 +203,14 @@ export default create({
       } else {
         return !state.isCanScroll && !props.wrapable;
       }
+    });
+
+    const wrapContentClass = computed(() => {
+      return {
+        'nut-noticebar__page-wrap-content': true,
+        'nut-ellipsis': isEllipsis.value,
+        [state.animationClass]: true
+      };
     });
 
     const iconShow = computed(() => {
@@ -416,7 +420,8 @@ export default create({
       go,
       handleClickIcon,
       slots,
-      pxCheck
+      pxCheck,
+      wrapContentClass
     };
   }
 });

@@ -109,7 +109,7 @@ export default create({
     });
 
     // 图片加载完成
-    const imageLoad = (event: TouchEvent) => {
+    const imageLoad = (event: Event) => {
       const { naturalWidth, naturalHeight } = event.target as HTMLImageElement;
       state.imageRatio = naturalHeight / naturalWidth;
     };

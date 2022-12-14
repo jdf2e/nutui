@@ -14,7 +14,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, PropType, useSlots, watch } from 'vue';
+import { reactive, toRefs, computed, PropType, useSlots, watch, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('image');
@@ -91,10 +91,7 @@ export default create({
       return style;
     });
     const styles = computed(() => {
-      let styless: {
-        objectFit: string;
-        objectPosition: string;
-      } = {
+      let styless: CSSProperties = {
         objectFit: props.fit,
         objectPosition: props.position
       };

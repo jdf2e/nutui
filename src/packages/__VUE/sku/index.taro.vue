@@ -62,7 +62,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, PropType } from 'vue';
 import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
@@ -119,7 +119,7 @@ export default create({
 
     // 底部按钮配置  confirm cart  buy
     btnOptions: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: () => ['confirm']
     },
 
@@ -167,15 +167,15 @@ export default create({
   },
   emits: [
     'update:visible',
-    'selectSku',
-    'changeStepper',
-    'clickBtnOperate',
-    'clickCloseIcon',
-    'clickOverlay',
+    'select-sku',
+    'change-stepper',
+    'click-btn-operate',
+    'click-close-icon',
+    'click-overlay',
     'close',
     'reduce',
     'add',
-    'overLimit'
+    'over-limit'
   ],
 
   components: {
@@ -211,14 +211,14 @@ export default create({
 
     // 商品规格 sku 选择
     const selectSku = (skus: any) => {
-      emit('selectSku', skus);
+      emit('select-sku', skus);
     };
 
     // 数量计步器变化
     const changeStepper = (value: number) => {
       goodsCount.value = value;
 
-      emit('changeStepper', value);
+      emit('change-stepper', value);
     };
 
     // 修改购买数量 add 加  reduce 减
@@ -232,12 +232,12 @@ export default create({
 
     // 触发极限值
     const stepperOverLimit = (count: any) => {
-      emit('overLimit', count);
+      emit('over-limit', count);
     };
 
     // 点击 button 操作
     const clickBtnOperate = (btn: string) => {
-      emit('clickBtnOperate', {
+      emit('click-btn-operate', {
         type: btn,
         value: goodsCount.value
       });

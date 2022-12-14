@@ -119,9 +119,9 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref, h } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, h, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { RegionData, CustomRegionData } from './type';
+import { RegionData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
 import Icon from '../icon/index.vue';
 import Popup from '../popup/index.vue';
@@ -158,19 +158,19 @@ export default create({
       default: ''
     },
     province: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     },
     city: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 市
     country: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 县
     town: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 镇
     isShowCustomAddress: {
@@ -178,7 +178,7 @@ export default create({
       default: true
     },
     existAddress: {
-      type: Array,
+      type: Array as PropType<existRegionData[]>,
       default: () => []
     },
     existAddressTitle: {
@@ -267,7 +267,7 @@ export default create({
         if (index <= -1) {
           newData.push({
             title: item.title,
-            list: [].concat(item)
+            list: ([] as any).concat(item)
           });
         } else {
           newData[index].list.push(item);
@@ -297,7 +297,7 @@ export default create({
           return;
         }
         for (let index = 0; index < num; index++) {
-          let arr: [] = [];
+          let arr: RegionData[] = [];
           switch (index) {
             case 0:
               arr = props.province;
@@ -373,11 +373,11 @@ export default create({
       }
     };
 
-    const selectedExist = (item: RegionData) => {
-      const copyExistAdd = props.existAddress as AddressList[];
+    const selectedExist = (item: existRegionData) => {
+      const copyExistAdd = props.existAddress;
       let prevExistAdd = {};
 
-      copyExistAdd.forEach((list: AddressList) => {
+      copyExistAdd.forEach((list: existRegionData) => {
         if (list && list.selectedAddress) prevExistAdd = list;
         list.selectedAddress = false;
       });
