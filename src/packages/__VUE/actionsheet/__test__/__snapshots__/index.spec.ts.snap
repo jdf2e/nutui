@@ -7,7 +7,7 @@ exports[`should render sure actionsheet when use custom props 1`] = `
 </transition-stub>
 <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
   <view class=\\"nut-popup round nut-popup--bottom\\" style=\\"z-index: 2000; transition-duration: 0.3s;\\">
-    <view class=\\"nut-actionsheet\\">
+    <view class=\\"nut-action-sheet\\">
       <!--v-if-->
       <view>
         <!--v-if-->
