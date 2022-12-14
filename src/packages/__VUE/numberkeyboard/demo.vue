@@ -1,10 +1,10 @@
 <template>
   <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" :title="translate('basic')"></nut-cell>
-    <nut-numberkey-board v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
-    </nut-numberkey-board>
+    <nut-number-keyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
+    </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" :title="translate('sidebar')"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible2"
       :custom-key="customKey1"
@@ -12,9 +12,9 @@
       @input="input"
       @close="close(2)"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" :title="translate('randomKeyOrder')"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible3"
       :randomKeys="true"
@@ -22,17 +22,17 @@
       @input="input"
       @close="close(3)"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 
     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" :title="translate('withTitle')"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       :title="translate('title')"
       v-model:visible="visible4"
       :custom-key="customKey2"
       @input="input"
       @close="close(4)"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 
     <nut-cell
       :isLink="true"
@@ -40,8 +40,8 @@
       :showIcon="true"
       :title="translate('idNumberKeyboard')"
     ></nut-cell>
-    <nut-numberkey-board v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
-    </nut-numberkey-board>
+    <nut-number-keyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    </nut-number-keyboard>
     <nut-cell
       :isLink="true"
       desc-text-align="left"
@@ -50,15 +50,15 @@
       :showIcon="true"
       :title="translate('bindValue')"
     ></nut-cell>
-    <nut-numberkey-board v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
-    </nut-numberkey-board>
+    <nut-number-keyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
+    </nut-number-keyboard>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, getCurrentInstance, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('numberkey-board');
+const { createDemo, translate } = createComponent('number-keyboard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

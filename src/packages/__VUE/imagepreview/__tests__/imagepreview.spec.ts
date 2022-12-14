@@ -60,7 +60,7 @@ test('basic usage test', async () => {
     }
   });
   await nextTick();
-  expect((wrapper.find('.nut-imagepreview-custom-pop').element as any).style.display).toEqual('');
+  expect((wrapper.find('.nut-image-preview-custom-pop').element as any).style.display).toEqual('');
 });
 
 test('test autoplay', async () => {
@@ -90,7 +90,7 @@ test('init page No.', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-imagepreview-index').text()).toEqual('4 / 4');
+  expect(wrapper.find('.nut-image-preview-index').text()).toEqual('4 / 4');
 });
 
 test('customize pagination and color', async () => {

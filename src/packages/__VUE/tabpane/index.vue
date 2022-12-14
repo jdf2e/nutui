@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabpane" :class="{ inactive: paneKey != activeKey && autoHeight }">
+  <view class="nut-tab-pane" :class="{ inactive: paneKey != activeKey && autoHeight }">
     <slot></slot>
   </view>
 </template>

@@ -2,13 +2,13 @@
   <nut-swiper-item @click="closeSwiper">
     <view
       :style="imageStyle"
-      class="nut-imagepreview-box"
+      class="nut-image-preview-box"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <img v-if="image && image.src" :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
+      <img v-if="image && image.src" :src="image.src" class="nut-image-preview-img" @load="imageLoad" />
       <nut-video v-if="video && video.source" :source="video.source" :options="video.options"></nut-video>
     </view>
   </nut-swiper-item>

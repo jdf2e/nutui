@@ -156,7 +156,7 @@ export default createDemo({
   }
 }
 
-.nut-tabpane {
+.nut-tab-pane {
   padding: 0 !important;
   padding-left: 16px !important;
 }
