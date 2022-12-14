@@ -27,7 +27,7 @@
     <div class="text-data">{{ translate('content') }}24</div>
     <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="110">
       <view class="backtop-demo">
-        <nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon
+        <Top width="12px" height="12px" class="nut-backtop-main"></Top
         ><view class="title">{{ translate('backText') }}</view>
       </view>
     </nut-backtop>
@@ -39,12 +39,14 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('backtop');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Top } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
     'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
   });
 export default createDemo({
+  components: { Top },
   setup(props, { emit }) {
     initTranslate();
     const handleClick = () => {
