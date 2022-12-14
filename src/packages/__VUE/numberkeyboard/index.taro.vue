@@ -78,7 +78,7 @@
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
-const { create, translate } = createComponent('numberkey-board');
+const { create, translate } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;
   type: string;
