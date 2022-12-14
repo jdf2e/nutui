@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-inputnumber {
+  .nut-input-number {
     &__icon {
       color: $dark-color;
       &--disabled {
@@ -19,7 +19,7 @@
     }
   }
 }
-.nut-inputnumber {
+.nut-input-number {
   display: $inputnumber-display;
   align-items: center;
   border: $inputnumber-border;
