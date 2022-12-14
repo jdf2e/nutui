@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
-    <div class="nut-circleprogress__text">
+    <div class="nut-circle-progress__text">
       <slot></slot>
       <span v-if="!slotDefault">{{ progress }}%</span>
     </div>
@@ -51,7 +51,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const classes = computed(() => {
-      const prefixCls = 'nut-circleprogress';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };
