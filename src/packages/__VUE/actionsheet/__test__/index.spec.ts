@@ -1,11 +1,13 @@
 import { config, mount } from '@vue/test-utils';
 import ActionSheet from '../index.vue';
 import NutPopup from '../../popup/index.vue';
+import { Loading } from '@nutui/icons-vue';
 import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutPopup
+    NutPopup,
+    Loading
   };
 });
 
