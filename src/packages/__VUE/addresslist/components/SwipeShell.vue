@@ -1,6 +1,6 @@
 <template>
   <nut-swipe>
-    <div class="nut-addresslist-swipe">
+    <div class="nut-address-list-swipe">
       <item-contents
         :item="item"
         @delIcon="delClick"
