@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      class="nut-input-number__icon"
+      class="nut-input-number__icon nut-input-number__left"
       :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       @click="reduce"
     >
@@ -26,7 +26,11 @@
       @blur="blur"
       @focus="focus"
     />
-    <view class="nut-input-number__icon" :class="{ 'nut-input-number__icon--disabled': !addAllow() }" @click="add">
+    <view
+      class="nut-input-number__icon nut-input-number__right"
+      :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
+      @click="add"
+    >
       <slot name="rightIcon">
         <Plus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
       </slot>
