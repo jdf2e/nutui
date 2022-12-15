@@ -282,6 +282,86 @@ export default {
 ```
 :::
 
+### 自定义目标元素
+
+Popover 提供了 `targetId` 属性，用于匹配目标元素，在目标元素上添加对应的 id 值即可
+
+:::demo
+```html
+<template>
+  <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">自定义目标元素</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customTarget:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    const clickCustomHandle = () => {
+      visible.customTarget = !visible.customTarget;
+    };
+
+    return {
+        itemList,
+        visible,
+        clickCustomHandle,
+      };
+    }
+}
+</script>
+
+
+```
+:::
+
+### 自定义颜色
+
+Popopver 提供了 2 种主题色，同样可以通过 `bgColor` 属性改变背景色
+
+:::demo
+```html
+<template>
+  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square" >自定义颜色</nut-button>
+      </template>
+    </nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customColor:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    return {
+        itemList,
+        visible
+      };
+    }
+}
+</script>
+
+```
+:::
 
 ## API
 ### Props  
@@ -303,6 +383,9 @@ export default {
 | close-on-click-overlay `v3.2.8`       | 是否在点击遮罩层后关闭菜单  | boolean  | true  |
 | close-on-click-action `v3.2.8`       | 是否在点击选项后关闭  | boolean  | true |
 | close-on-click-outside `v3.2.8`       | 是否在点击外部元素后关闭菜单 | boolean  | true  |
+| bg-color `v3.3.1`       | 自定义背景色 | String  | -  |
+| target-id `v3.3.1`       | 自定义目标元素 id | String  | -  |
+| arrow-offset `v3.3.1`       | 小箭头的偏移量 | Number  | 0  |
 
 ### List 数据结构  
 
