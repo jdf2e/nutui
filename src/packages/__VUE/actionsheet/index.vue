@@ -24,7 +24,7 @@
             :key="index"
             @click="chooseItem(item, index)"
           >
-            <loading v-if="item.loading"></loading>
+            <Loading v-if="item.loading" name="loading"></Loading>
             <view v-else> {{ item[optionTag] }}</view>
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
@@ -55,7 +55,7 @@ export interface menuItems {
 export default create({
   components: {
     [Popup.name]: Popup,
-    [Loading.name]: Loading
+    Loading
   },
   props: {
     ...popupProps,
