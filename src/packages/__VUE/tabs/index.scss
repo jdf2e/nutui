@@ -65,7 +65,7 @@
             height: $tabs-vertical-titles-item-active-line-height;
           }
           .nut-tabs__titles-item__smile {
-            right: -2px;
+            right: -8px;
             bottom: 2px;
             left: auto;
             width: 3px;
@@ -117,8 +117,8 @@
       .nut-tabs__titles-item {
         &.active {
           .nut-tabs__titles-item__smile {
-            width: 20px;
-            height: 8px;
+            width: 36px;
+            height: 10px;
           }
         }
       }
