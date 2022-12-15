@@ -1,12 +1,7 @@
 .nut-popover {
-  position: relative;
+  position: absolute;
   display: inline-block;
   word-break: normal;
-
-  > .nut-popover-wrapper {
-    display: inline-block;
-    vertical-align: top;
-  }
 
   &-arrow {
     position: absolute;
@@ -112,8 +107,8 @@
 
     .nut-popover-menu-item {
       display: block;
-      padding-bottom: 8px;
-      margin: 8px;
+      // padding-bottom: 8px;
+      padding: 8px;
       border-bottom: 1px solid $popover-border-bottom-color;
 
       &:first-child {
@@ -145,9 +140,6 @@
     }
 
     &--top {
-      left: 50%;
-      transform: translateX(-50%);
-
       .nut-popover-arrow--top {
         left: 50%;
         transform: translateX(-50%);
@@ -172,26 +164,8 @@
       }
     }
 
-    // bottom
-    &--bottom {
-      left: 50%;
-      transform: translateX(-50%);
-      // transform-origin:50% 0 ;
-    }
-
     &--bottom-end {
       right: 0;
-    }
-
-    &--bottom-start {
-      left: 0;
-      // transform-origin:0 0;
-    }
-
-    // left
-    &--left {
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     &--left-end {
@@ -200,12 +174,6 @@
 
     &--left-start {
       top: 0;
-    }
-
-    // right
-    &--right {
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     &--right-end {
@@ -220,8 +188,8 @@
 
 .nut-popover--dark {
   .nut-popover-content {
-    background: $popover-dark-background-color !important;
-    color: $popover-white-background-color !important;
+    background: $popover-dark-background-color;
+    color: $popover-white-background-color;
 
     &--bottom,
     &--bottom-start,
@@ -259,7 +227,7 @@
 
 .nut-popover-enter-from,
 .nut-popover-leave-active {
-  // transform: scale(0.8);
+  transform: scale(0.8);
   opacity: 0;
 }
 
@@ -279,4 +247,8 @@
   left: 0;
   background: transparent;
   z-index: 1999;
+}
+
+.nut-popover-wrapper {
+  display: inline-block;
 }

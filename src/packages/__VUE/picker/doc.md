@@ -429,6 +429,8 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
 | three-dimensional`v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
 | swipe-duration`v3.2.2`          | 惯性滚动时长        | Number、String  | 1000   |
 | safe-area-inset-bottom `v3.2.4`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	Boolean	|`false`     |
+| show-ok-text `v3.3.1`	| 是否展示确定按钮 |	Boolean	|`true`     |
+| show-cancel-text `v3.3.1`	| 是否展示取消按钮 |	Boolean	|`true`     |
 
 > 注：自 `v3.2.3` 起，在 @nutui/nutui-taro 中，取消 3D 展示效果，`three-dimensional` 废弃。
 ### Columns 数据结构

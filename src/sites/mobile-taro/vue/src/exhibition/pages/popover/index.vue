@@ -57,14 +57,36 @@
     <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
       <template #top>
         <div class="brickBox">
-          <nut-popover v-model:visible="customPositon" :location="curPostion" theme="dark" :list="positionList">
-            <template #reference>
-              <div class="brick"></div>
-            </template>
-          </nut-popover>
+          <div class="brick" id="pickerTarget"></div>
         </div>
       </template>
     </nut-picker>
+
+    <nut-popover
+      v-model:visible="customPositon"
+      targetId="pickerTarget"
+      :location="curPostion"
+      theme="dark"
+      :list="positionList"
+    >
+    </nut-popover>
+
+    <h2>自定义对象</h2>
+    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle"> 自定义对象 </nut-button>
+    <nut-popover
+      v-model:visible="customTarget"
+      targetId="popid"
+      :list="iconItemList"
+      location="top-start"
+    ></nut-popover>
+
+    <h2>自定义颜色</h2>
+
+    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square">自定义颜色</nut-button>
+      </template>
+    </nut-popover>
   </div>
 </template>
 <script lang="ts">
@@ -84,7 +106,9 @@ export default {
       leftLocation: false, //向左弹出
       customPositon: false,
 
-      showPicker: false
+      showPicker: false,
+      customTarget: false,
+      customColor: false
     });
     const curPostion = ref('top');
 
@@ -188,12 +212,16 @@ export default {
       state.showPicker = true;
       setTimeout(() => {
         state.customPositon = true;
-      });
+      }, 500);
     };
 
     const change = ({ selectedValue }) => {
       curPostion.value = selectedValue[0];
-      state.customPositon = true;
+      if (state.showPicker) state.customPositon = true;
+    };
+
+    const clickCustomHandle = () => {
+      state.customTarget = !state.customTarget;
     };
 
     return {
@@ -207,7 +235,8 @@ export default {
       positionList,
       columns,
       change,
-      handlePicker
+      handlePicker,
+      clickCustomHandle
     };
   }
 };

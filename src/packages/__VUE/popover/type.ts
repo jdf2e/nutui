@@ -13,3 +13,11 @@ export type PopoverLocation =
   | 'left-end'
   | 'right-start'
   | 'right-end';
+
+export type PopoverList = {
+  name: string;
+  icon?: string;
+  disabled?: boolean;
+  className?: any;
+  [key: PropertyKey]: any;
+};

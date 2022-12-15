@@ -13,9 +13,13 @@
       :destroyOnClose="destroyOnClose"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left" @click="close">{{ cancelText || translate('cancel') }}</view>
+        <view class="nut-picker__left" v-if="showCancelText" @click="close">{{
+          cancelText || translate('cancel')
+        }}</view>
         <view class="nut-picker__title"> {{ title }}</view>
-        <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
+        <view class="nut-picker__right" v-if="showOkText" @click="confirmHandler()">{{
+          okText || translate('confirm')
+        }}</view>
       </view>
 
       <slot name="top"></slot>
@@ -100,6 +104,14 @@ export default create({
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    showOkText: {
+      type: Boolean,
+      default: true
+    },
+    showCancelText: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
