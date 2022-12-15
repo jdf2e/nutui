@@ -76,7 +76,7 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue": "0.0.10",
+    "@nutui/icons-vue": "0.0.11",
     "@tarojs/components": "3.5.6",
     "consola": "2.15.3",
     "sass": "^1.50.0",
