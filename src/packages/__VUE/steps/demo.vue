@@ -5,7 +5,7 @@
       <nut-steps :current="current1" @click-step="handleClickStep">
         <nut-step :title="translate('step1')">
           1
-          <template v-slot:title>{{ translate('step1') }}</template>
+          <template #title>{{ translate('step1') }}</template>
         </nut-step>
         <nut-step :title="translate('step2')">2</nut-step>
         <nut-step :title="translate('step3')">3</nut-step>
@@ -38,11 +38,20 @@
     </div>
     <h2>{{ translate('cicon') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps current="1">
-        <nut-step :title="translate('complete')" icon="service">1</nut-step>
-        <nut-step :title="translate('progress')" icon="people">2</nut-step>
-        <nut-step :title="translate('start')" icon="location2">3</nut-step>
+      <nut-steps :current="current4">
+        <nut-step :title="translate('complete')">
+          <template #icon><Service /></template>
+        </nut-step>
+        <nut-step :title="translate('progress')">
+          <template #icon><People /></template>
+        </nut-step>
+        <nut-step :title="translate('start')">
+          <template #icon><Location2 /></template>
+        </nut-step>
       </nut-steps>
+      <div class="steps-button" style="margin-top: 10px">
+        <nut-button size="mini" type="primary" @click="handleStep('current4')">{{ translate('next') }}</nut-button>
+      </div>
     </div>
     <h2>{{ translate('verstep') }}</h2>
     <div class="steps-wrapper" style="height: 300px; padding: 15px 30px">
@@ -59,7 +68,7 @@
         <nut-step :content="translate('content2')" :title="translate('progress')">2</nut-step>
         <nut-step :title="translate('start')"
           >3
-          <template v-slot:content>
+          <template #content>
             <p>{{ translate('content4') }}：</p>
             <p>{{ translate('content5') }}</p>
           </template>
@@ -73,6 +82,7 @@
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Service, People, Location2 } from '@nutui/icons-vue';
 
 const { createDemo, translate } = createComponent('steps');
 const initTranslate = () =>
@@ -120,6 +130,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Service, People, Location2 },
   props: {},
   setup() {
     initTranslate();

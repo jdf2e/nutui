@@ -29,20 +29,19 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-    .nut-icon {
-      width: 100%;
-      height: 100%;
+    &-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    &.is-text {
-      border-radius: 50%;
-      border-width: 1px;
-      border-style: solid;
+    .nut-icon {
+      width: $steps-base-icon-font-size;
+      height: $steps-base-icon-font-size;
     }
     &.is-icon {
       border-radius: 50%;
       border-width: 1px;
       border-style: solid;
-      background-color: transparent;
     }
   }
   &-main {

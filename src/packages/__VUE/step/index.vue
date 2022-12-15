@@ -2,14 +2,15 @@
   <view :class="classes" @click="handleClickStep">
     <view class="nut-step-head">
       <view class="nut-step-line"></view>
-      <view class="nut-step-icon" :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']">
-        <template v-if="icon">
-          <nut-icon class="nut-step-icon-inner" v-bind="$attrs" :color="iconColor" :name="icon" :size="size" />
-        </template>
-        <template v-else-if="dot"></template>
-        <template v-else>
-          <view class="nut-step-inner">{{ index }}</view>
-        </template>
+      <view class="nut-step-icon" :class="[!dot ? 'is-icon' : '']">
+        <view class="nut-step-icon-inner">
+          <slot name="icon">
+            <template v-if="dot"></template>
+            <template v-else>
+              <view class="nut-step-inner">{{ index }}</view>
+            </template>
+          </slot>
+        </view>
       </view>
     </view>
     <view class="nut-step-main">
@@ -39,23 +40,11 @@ export default create({
     content: {
       type: String,
       default: ''
-    },
-    icon: {
-      type: String,
-      default: null
-    },
-    iconColor: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: [String, Number],
-      default: '12px'
     }
   },
   emits: ['click-step'],
 
-  setup(props, { emit, slots }) {
+  setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;
     const parent: any = inject('parent');
     parent['relation'](proxy);
