@@ -56,13 +56,18 @@ export default create({
     size: {
       type: String,
       default: 'large'
+    },
+    strikeThrough: {
+      type: Boolean,
+      default: false
     }
   },
 
   setup(props) {
     const classes = computed(() => {
       return {
-        [componentName]: true
+        [componentName]: true,
+        [`${componentName}--strike`]: props.strikeThrough
       };
     });
     const showSymbol = computed(() => {
