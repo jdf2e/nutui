@@ -51,7 +51,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
-const { create, translate } = createComponent('shortpassword');
+const { create, translate } = createComponent('short-password');
 export default create({
   components: {
     [Popup.name]: Popup

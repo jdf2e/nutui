@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <nut-shortpassword
+    <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       :no-button="state.noButton"
@@ -13,7 +13,7 @@
       @close="methods.close"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
     <nut-cell
       title="基础用法"
       is-link
@@ -64,12 +64,7 @@
         state.errorMsg = '请输入正确密码';
       "
     ></nut-cell>
-    <nut-toast
-      msg="忘记密码"
-      v-model:visible="state.show"
-      type="text"
-      :cover="state.cover"
-    />
+    <nut-toast msg="忘记密码" v-model:visible="state.show" type="text" :cover="state.cover" />
   </div>
 </template>
 

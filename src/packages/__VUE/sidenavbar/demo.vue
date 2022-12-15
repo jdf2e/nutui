@@ -7,18 +7,18 @@
       >
     </nut-cell>
     <nut-popup position="right" v-model:visible="show1" :style="{ width, height }">
-      <nut-sidenavbar>
-        <nut-subsidenavbar :title="translate('title1')" ikey="6">
-          <nut-subsidenavbar :title="translate('title2')" ikey="9">
-            <nut-sidenavbaritem ikey="10" :title="translate('title3')"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="11" :title="translate('title4')"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar :title="translate('title16')" ikey="12">
-            <nut-sidenavbaritem ikey="13" :title="translate('title5')"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="14" :title="translate('title6')"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-        </nut-subsidenavbar>
-      </nut-sidenavbar>
+      <nut-side-navbar>
+        <nut-sub-side-navbar :title="translate('title1')" ikey="6">
+          <nut-sub-side-navbar :title="translate('title2')" ikey="9">
+            <nut-side-navbar-item ikey="10" :title="translate('title3')"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="11" :title="translate('title4')"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar :title="translate('title16')" ikey="12">
+            <nut-side-navbar-item ikey="13" :title="translate('title5')"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="14" :title="translate('title6')"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+        </nut-sub-side-navbar>
+      </nut-side-navbar>
     </nut-popup>
     <nut-cell @click="handleClick2">
       <span
@@ -26,16 +26,16 @@
       >
     </nut-cell>
     <nut-popup position="left" v-model:visible="show2" :style="{ width, height }">
-      <nut-sidenavbar>
-        <nut-subsidenavbar :title="translate('title7')" ikey="3" :open="false">
-          <nut-sidenavbaritem ikey="4" :title="translate('title8')"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="5" :title="translate('title9')"></nut-sidenavbaritem>
-        </nut-subsidenavbar>
-        <nut-subsidenavbar :title="translate('title10')" ikey="12">
-          <nut-sidenavbaritem ikey="13" :title="translate('title11')"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="14" :title="translate('title12')"></nut-sidenavbaritem>
-        </nut-subsidenavbar>
-      </nut-sidenavbar>
+      <nut-side-navbar>
+        <nut-sub-side-navbar :title="translate('title7')" ikey="3" :open="false">
+          <nut-side-navbar-item ikey="4" :title="translate('title8')"></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="5" :title="translate('title9')"></nut-side-navbar-item>
+        </nut-sub-side-navbar>
+        <nut-sub-side-navbar :title="translate('title10')" ikey="12">
+          <nut-side-navbar-item ikey="13" :title="translate('title11')"></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="14" :title="translate('title12')"></nut-side-navbar-item>
+        </nut-sub-side-navbar>
+      </nut-side-navbar>
     </nut-popup>
     <h2>{{ translate('nest') }}</h2>
     <div>
@@ -45,33 +45,33 @@
         >
       </nut-cell>
       <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
-        <nut-sidenavbar :show="show3">
-          <nut-sidenavbaritem
+        <nut-side-navbar :show="show3">
+          <nut-side-navbar-item
             ikey="1"
             :title="translate('title13')"
             @click="handleClick4(translate('title13'))"
-          ></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="2" :title="translate('title10')"></nut-sidenavbaritem>
-          <nut-subsidenavbar :title="translate('title7')" ikey="3" :open="false">
-            <nut-sidenavbaritem ikey="4" :title="translate('title8')"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="5" :title="translate('title9')"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar :title="translate('title1')" ikey="6">
-            <nut-sidenavbaritem ikey="7" :title="translate('title14')"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="8" :title="translate('title15')"></nut-sidenavbaritem>
-            <nut-subsidenavbar :title="translate('title2')" ikey="9">
-              <nut-sidenavbaritem ikey="10" :title="translate('title3')"></nut-sidenavbaritem>
-              <nut-sidenavbaritem ikey="11" :title="translate('title4')"></nut-sidenavbaritem>
-            </nut-subsidenavbar>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar :title="translate('title10')" ikey="12">
-            <nut-sidenavbaritem ikey="13" :title="translate('title11')"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="14" :title="translate('title12')"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar v-for="item in navs" :key="item.id" :title="item.name" :ikey="item.id">
-            <nut-sidenavbaritem v-for="citem in item.arr" :key="citem.id" :title="citem.name"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-        </nut-sidenavbar>
+          ></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="2" :title="translate('title10')"></nut-side-navbar-item>
+          <nut-sub-side-navbar :title="translate('title7')" ikey="3" :open="false">
+            <nut-side-navbar-item ikey="4" :title="translate('title8')"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="5" :title="translate('title9')"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar :title="translate('title1')" ikey="6">
+            <nut-side-navbar-item ikey="7" :title="translate('title14')"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="8" :title="translate('title15')"></nut-side-navbar-item>
+            <nut-sub-side-navbar :title="translate('title2')" ikey="9">
+              <nut-side-navbar-item ikey="10" :title="translate('title3')"></nut-side-navbar-item>
+              <nut-side-navbar-item ikey="11" :title="translate('title4')"></nut-side-navbar-item>
+            </nut-sub-side-navbar>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar :title="translate('title10')" ikey="12">
+            <nut-side-navbar-item ikey="13" :title="translate('title11')"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="14" :title="translate('title12')"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar v-for="item in navs" :key="item.id" :title="item.name" :ikey="item.id">
+            <nut-side-navbar-item v-for="citem in item.arr" :key="citem.id" :title="citem.name"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+        </nut-side-navbar>
       </nut-popup>
     </div>
   </div>
@@ -80,7 +80,7 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('sidenavbar');
+const { createDemo, translate } = createComponent('side-navbar');
 import { Toast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>

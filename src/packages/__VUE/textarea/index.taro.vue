@@ -33,7 +33,7 @@ const { componentName, create, translate } = createComponent('textarea');
 export default create({
   props: {
     modelValue: {
-      type: [String, Number],
+      type: String,
       default: ''
     },
     textAlign: {

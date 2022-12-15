@@ -1,7 +1,14 @@
 <template src="./template.html"></template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('fixednav');
 import { component } from './common';
-export default create(component);
+import OverLay from '../overlay/index.taro.vue';
+const { create } = createComponent('fixed-nav');
+import { Left } from '@nutui/icons-vue';
+export default create(
+  component({
+    [OverLay.name]: OverLay,
+    Left
+  })
+);
 </script>

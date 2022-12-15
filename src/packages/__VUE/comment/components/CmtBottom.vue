@@ -23,7 +23,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, PropType } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment-bottom');
@@ -40,7 +40,7 @@ export default create({
     },
 
     operation: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: ['replay', 'like', 'more']
     }
   },

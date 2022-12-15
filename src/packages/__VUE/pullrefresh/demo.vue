@@ -1,12 +1,12 @@
 <template>
   <div class="demo">
     <nut-tabs v-model="tabsValue" animatedTime="0">
-      <nut-tabpane :title="translate('basic')">
+      <nut-tab-pane :title="translate('basic')">
         <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
           <div class="pull-block">{{ translate('content') }}</div>
         </nut-pullrefresh>
-      </nut-tabpane>
-      <nut-tabpane :title="translate('customTxt')">
+      </nut-tab-pane>
+      <nut-tab-pane :title="translate('customTxt')">
         <nut-pullrefresh
           v-model="refresh2"
           :loosingTxt="translate('loose')"
@@ -19,8 +19,8 @@
           </template>
           <div class="pull-block">{{ translate('content') }}</div>
         </nut-pullrefresh>
-      </nut-tabpane>
-      <nut-tabpane :title="translate('listenerTxt')">
+      </nut-tab-pane>
+      <nut-tab-pane :title="translate('listenerTxt')">
         <div class="parentpage">
           <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
             <div class="pull-letter" v-for="item in refreshList2">
@@ -28,7 +28,7 @@
             </div>
           </nut-pullrefresh>
         </div>
-      </nut-tabpane>
+      </nut-tab-pane>
     </nut-tabs>
   </div>
 </template>
@@ -138,7 +138,7 @@ export default createDemo({
   padding-bottom: 0 !important;
 }
 
-.nut-tabpane {
+.nut-tab-pane {
   padding: 0;
 }
 .nut-pullrefresh {

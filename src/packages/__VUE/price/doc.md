@@ -39,7 +39,7 @@ app.use(Price);
 
 ``` html
 <template>
-    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888" :decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
 </template>
 ```
 
@@ -113,7 +113,7 @@ app.use(Price);
 | price          | 价格数量                                | Number ｜ String | 0      |
 | need-symbol    | 是否需要加上 symbol 符号                 | Boolean          | true   |
 | symbol         | 符号类型                                | String           | &yen;  |
-| decimal-digits | 小数位位数                              | Number ｜ String  | 2     |
+| decimal-digits | 小数位位数                              | Number  | 2     |
 | thousands      | 是否按照千分号形式显示                    | Boolean          | false  |
 | position       | 符号显示在价格前或者后，`before`、`after`  | String           | before |
 | size           | 价格尺寸，`large`、`normal`、`small`     | String           | large |

@@ -1,6 +1,6 @@
 <template>
-  <view class="nut-sidenavbaritem" @click.stop="handleClick" :ikey="ikey">
-    <span class="nut-sidenavbaritem__title">
+  <view :class="classes" @click.stop="handleClick" :ikey="ikey">
+    <span class="nut-side-navbar-item__title">
       {{ title }}
     </span>
   </view>
@@ -8,7 +8,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sidenavbaritem');
+const { componentName, create } = createComponent('side-navbar-item');
 export default create({
   props: {
     title: {

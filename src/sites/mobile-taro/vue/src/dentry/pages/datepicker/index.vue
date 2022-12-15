@@ -15,7 +15,7 @@
     <h2>过滤选项</h2>
     <nut-cell title="时间选择" :desc="desc7" @click="show7 = true"></nut-cell>
     <!-- 选择年月日 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate"
       :min-date="minDate"
       :max-date="maxDate"
@@ -28,9 +28,9 @@
       :threeDimensional="false"
       :is-show-chinese="true"
       :safeAreaInsetBottom="true"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择月日 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate2"
       type="month-day"
       title="日期选择"
@@ -42,9 +42,9 @@
         }
       "
       v-model:visible="show2"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择年月日时分 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate3"
       title="日期时间选择"
       type="datetime"
@@ -56,9 +56,9 @@
         }
       "
       v-model:visible="show3"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 选择时分秒 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate4"
       title="时间选择"
       type="time"
@@ -70,9 +70,9 @@
         }
       "
       v-model:visible="show4"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 格式化选项 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate5"
       title="日期选择"
       type="datetime"
@@ -85,10 +85,10 @@
         }
       "
       v-model:visible="show5"
-      ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-datepicker
+      ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-date-picker
     >
     <!-- 分钟数递增步长设置 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate6"
       title="时间选择"
       type="time"
@@ -101,9 +101,9 @@
         }
       "
       v-model:visible="show6"
-    ></nut-datepicker>
+    ></nut-date-picker>
     <!-- 过滤选项 -->
-    <nut-datepicker
+    <nut-date-picker
       v-model="currentDate7"
       title="时间选择"
       type="datehour"
@@ -117,7 +117,7 @@
         }
       "
       v-model:visible="show7"
-    ></nut-datepicker>
+    ></nut-date-picker>
   </div>
 </template>
 

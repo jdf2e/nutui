@@ -17,17 +17,17 @@
           <nut-checkbox v-model="formData2.checkbox">{{ translate('checkbox') }}</nut-checkbox>
         </nut-form-item>
         <nut-form-item :label="translate('radiogroup')">
-          <nut-radiogroup direction="horizontal" v-model="formData2.radio">
+          <nut-radio-group direction="horizontal" v-model="formData2.radio">
             <nut-radio label="1">{{ translate('option', 1) }}</nut-radio>
             <nut-radio disabled label="2">{{ translate('option', 2) }}</nut-radio>
             <nut-radio label="3">{{ translate('option', 3) }}</nut-radio>
-          </nut-radiogroup>
+          </nut-radio-group>
         </nut-form-item>
         <nut-form-item :label="translate('rate')">
           <nut-rate v-model="formData2.rate" />
         </nut-form-item>
         <nut-form-item :label="translate('inputnumber')">
-          <nut-inputnumber v-model="formData2.number" />
+          <nut-input-number v-model="formData2.number" />
         </nut-form-item>
         <nut-form-item :label="translate('range')">
           <nut-range hidden-tag v-model="formData2.range"></nut-range>

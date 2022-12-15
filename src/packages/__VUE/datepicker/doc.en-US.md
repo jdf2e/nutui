@@ -9,15 +9,15 @@ Used to select time, support date and time dimensions, usually used with the Pop
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui';
+import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui';
 // taro
-import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui-taro';
+import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(DatePicker);
 app.use(Picker);
 app.use(Popup);
-app.use(OverLay);
+app.use(Overlay);
 ```
     
 ### Choose Date
@@ -26,7 +26,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Show Chinese" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       v-model:visible="show"
       :min-date="minDate"
@@ -34,7 +34,7 @@ app.use(OverLay);
       :is-show-chinese="true"
       :three-dimensional="false"
       @confirm="confirm"
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 
 <script>
@@ -70,7 +70,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Limit the start and end time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       type="month-day"
       title="Choose Time"
@@ -78,7 +78,7 @@ app.use(OverLay);
       :max-date="new Date(2022, 7, 1)"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 
 <script>
@@ -109,7 +109,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
       type="datetime"
@@ -117,7 +117,7 @@ app.use(OverLay);
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show" 
-  ></nut-datepicker> 
+  ></nut-date-picker> 
 </template>
 <script>
   import { ref } from 'vue';
@@ -150,7 +150,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
       type="time"
@@ -158,7 +158,7 @@ app.use(OverLay);
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -189,7 +189,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
       type="datetime"
@@ -198,7 +198,7 @@ app.use(OverLay);
       :formatter="formatter"
       @confirm="confirm"
       v-model:visible="show"
-  ><nut-button block type="primary" @click="alwaysFun">Forever</nut-button></nut-datepicker>
+  ><nut-button block type="primary" @click="alwaysFun">Forever</nut-button></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -258,7 +258,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       type="time"
       :minute-step="5"
@@ -266,7 +266,7 @@ app.use(OverLay);
       :max-date="maxDate"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -297,7 +297,7 @@ app.use(OverLay);
 ```html
 <template>
   <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
-  <nut-datepicker
+  <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
       type="datehour"
@@ -307,7 +307,7 @@ app.use(OverLay);
       :formatter="formatter"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';

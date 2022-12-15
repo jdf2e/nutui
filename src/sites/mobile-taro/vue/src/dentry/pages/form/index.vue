@@ -115,17 +115,17 @@
         <nut-checkbox v-model="formData2.checkbox">复选框</nut-checkbox>
       </nut-form-item>
       <nut-form-item label="单选按钮">
-        <nut-radiogroup direction="horizontal" v-model="formData2.radio">
+        <nut-radio-group direction="horizontal" v-model="formData2.radio">
           <nut-radio label="1">选项1</nut-radio>
           <nut-radio disabled label="2">选项2</nut-radio>
           <nut-radio label="3">选项3</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
       </nut-form-item>
       <nut-form-item label="评分">
         <nut-rate v-model="formData2.rate" />
       </nut-form-item>
       <nut-form-item label="步进器">
-        <nut-inputnumber v-model="formData2.number" />
+        <nut-input-number v-model="formData2.number" />
       </nut-form-item>
       <nut-form-item label="滑块">
         <nut-range hidden-tag v-model="formData2.range"></nut-range>

@@ -1,19 +1,19 @@
 <template>
   <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
-    <nut-numberkeyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
-    </nut-numberkeyboard>
+    <nut-number-keyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
+    </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" title="带右侧栏键盘"></nut-cell>
-    <nut-numberkeyboard
+    <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible2"
       :custom-key="customKey1"
       @input="input"
       @close="close(2)"
     >
-    </nut-numberkeyboard>
+    </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" title="随机数键盘"></nut-cell>
-    <nut-numberkeyboard
+    <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible3"
       :randomKeys="true"
@@ -21,27 +21,27 @@
       @input="input"
       @close="close(3)"
     >
-    </nut-numberkeyboard>
+    </nut-number-keyboard>
 
     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
-    <nut-numberkeyboard
+    <nut-number-keyboard
       title="默认键盘"
       v-model:visible="visible4"
       :custom-key="customKey2"
       @input="input"
       @close="close(4)"
     >
-    </nut-numberkeyboard>
+    </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(6)" :showIcon="true" title="身份证键盘"></nut-cell>
-    <nut-numberkeyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
-    </nut-numberkeyboard>
+    <nut-number-keyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    </nut-number-keyboard>
     <div class="boardValue" @click="showKeyBoard(5)">
       <div class="value">
         <nut-input v-model="value" readonly label="双向绑定：" />
       </div>
     </div>
-    <nut-numberkeyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
-    </nut-numberkeyboard>
+    <nut-number-keyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
+    </nut-number-keyboard>
   </div>
 </template>
 

@@ -30,7 +30,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, computed, inject, reactive, ref } from 'vue';
+import { toRefs, onMounted, computed, inject, reactive, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar');
 export default create({
@@ -69,7 +69,7 @@ export default create({
     const { size, shape, bgColor, color, icon } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];
     const avatarGroup: any = inject('avatarGroup', null);
-    const avatarRef = ref(null);
+    const avatarRef = ref(null) as Ref;
     const visible = reactive({
       lightTheme: false
     });
@@ -82,7 +82,6 @@ export default create({
     onMounted(() => {
       const children = avatarGroup?.avatarGroupRef?.value?.children;
       if (children) {
-        // console.log('children', children);
         avatarLength(children);
       }
     });
@@ -115,7 +114,7 @@ export default create({
     });
 
     const iconStyles = computed(() => {
-      return !!icon.value ? icon.value : '';
+      return icon?.value ? icon.value : '';
     });
 
     const isShowText = computed(() => {
@@ -141,8 +140,8 @@ export default create({
       emit('active-avatar', event);
     };
 
-    const onError = (event: MouseEvent) => {
-      emit('onError', event);
+    const onError = () => {
+      emit('onError');
     };
 
     return {

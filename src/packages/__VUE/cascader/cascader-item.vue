@@ -1,7 +1,7 @@
 <template>
   <nut-tabs class="nut-cascader" v-model="tabsCursor" @click="handleTabClick" title-scroll>
     <template v-if="!initLoading && panes.length">
-      <nut-tabpane v-for="(pane, index) in panes" :title="formatTabTitle(pane)" :key="index">
+      <nut-tab-pane v-for="(pane, index) in panes" :title="formatTabTitle(pane)" :key="index">
         <view role="menu" class="nut-cascader-pane">
           <template v-for="node in pane.nodes" :key="node.value">
             <view
@@ -19,12 +19,12 @@
             </view>
           </template>
         </view>
-      </nut-tabpane>
+      </nut-tab-pane>
     </template>
     <template v-else>
-      <nut-tabpane title="Loading...">
+      <nut-tab-pane title="Loading...">
         <view class="nut-cascader-pane"></view>
-      </nut-tabpane>
+      </nut-tab-pane>
     </template>
   </nut-tabs>
 </template>
@@ -276,7 +276,7 @@ export default create({
         return pane.selectedNode ? pane.selectedNode.text : translate('select');
       },
       isSelected(pane: CascaderPane, node: CascaderOption) {
-        return pane.selectedNode && pane.selectedNode.value === node.value;
+        return pane?.selectedNode?.value === node.value;
       }
     };
 

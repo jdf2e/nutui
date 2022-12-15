@@ -52,7 +52,7 @@
         </template>
       </swipe-shell>
     </template>
-    <div class="nut-addresslist__bottom" v-if="showBottomButton" @click="addAddress">
+    <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
   </div>
@@ -60,7 +60,7 @@
 <script lang="ts">
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('addresslist');
+const { componentName, create, translate } = createComponent('address-list');
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
@@ -96,7 +96,7 @@ export default create({
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
-    const dataArray = ref([]);
+    const dataArray = ref([]) as any;
     const dataInfo = reactive({
       id: 2,
       addressName: '姓名',

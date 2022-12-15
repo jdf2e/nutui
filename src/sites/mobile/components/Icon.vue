@@ -1,13 +1,13 @@
 <template>
   <div class="icon-moudle">
     <div class="item home" @click="goHome">
-      <nut-icon name="home"></nut-icon>
+      <Home />
     </div>
     <div class="item refresh" @click="refresh">
-      <nut-icon name="refresh"></nut-icon>
+      <Refresh />
     </div>
     <div class="item category" @click="toCategory($event)">
-      <nut-icon name="category"></nut-icon>
+      <Category />
     </div>
     <div class="qrcodepart" v-if="showCode" ref="codeRef" @click="stopClick($event)">
       <div class="qrcode"> </div>
@@ -18,8 +18,10 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, onMounted, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { Home, Refresh, Category } from '@nutui/icons-vue';
 export default defineComponent({
   name: 'demo-icon',
+  components: { Home, Refresh, Category },
   setup() {
     const router = useRouter();
 

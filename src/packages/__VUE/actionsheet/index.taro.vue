@@ -1,12 +1,5 @@
 <template>
-  <nut-popup
-    :visible="visible"
-    :isWrapTeleport="isWrapTeleport"
-    position="bottom"
-    round
-    @click-overlay="close"
-    :closeOnClickOverlay="closeAbled"
-  >
+  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :closeOnClickOverlay="closeAbled">
     <view :class="classes">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
@@ -24,7 +17,7 @@
             :key="index"
             @click="chooseItem(item, index)"
           >
-            <nut-icon v-if="item.loading" name="loading"> </nut-icon>
+            <loading v-if="item.loading"></loading>
             <view v-else> {{ item[optionTag] }}</view>
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
@@ -39,12 +32,23 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
-const { componentName, create } = createComponent('actionsheet');
+import type { PropType } from 'vue';
+const { componentName, create } = createComponent('action-sheet');
 import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
+import { Loading } from '@nutui/icons-vue';
+export interface menuItems {
+  disable: boolean;
+  loading: boolean;
+  color: string;
+  name: string;
+  subname: string;
+  [x: string]: string | boolean;
+}
 export default create({
   components: {
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    [Loading.name]: Loading
   },
   props: {
     ...popupProps,
@@ -77,7 +81,7 @@ export default create({
       default: ''
     },
     menuItems: {
-      type: Array,
+      type: Array as PropType<menuItems[]>,
       default: () => []
     },
     closeAbled: {
@@ -96,7 +100,7 @@ export default create({
       };
     });
 
-    const isHighlight = (item: { [x: string]: string }) => {
+    const isHighlight = (item: { [x: string]: string | boolean }) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
     };
 

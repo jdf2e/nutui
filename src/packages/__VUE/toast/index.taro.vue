@@ -104,7 +104,7 @@ export default create({
   },
   emits: ['update:visible', 'closed'],
   setup(props, { emit }) {
-    let timer;
+    let timer: number | null | undefined;
     const clearTimer = () => {
       if (timer) {
         clearTimeout(timer);

@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
-    <view class="nut-sidenavbar__content">
-      <view class="nut-sidenavbar__content__list" ref="list">
+    <view class="nut-side-navbar__content">
+      <view class="nut-side-navbar__content__list" ref="list">
         <slot></slot>
       </view>
     </view>
@@ -10,7 +10,7 @@
 <script lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sidenavbar');
+const { componentName, create } = createComponent('side-navbar');
 export default create({
   props: {
     offset: {
@@ -37,7 +37,7 @@ export default create({
       for (let i = 0; i < nodeList.length; i++) {
         let item = nodeList[i];
         item.children[0].style.paddingLeft = +props.offset * level + 'px';
-        if (!item.className.includes('nut-sidenavbaritem')) {
+        if (!item.className.includes('nut-side-navbar-item')) {
           setPaddingLeft(Array.from(item.children[1].children), ++state.count);
         }
       }

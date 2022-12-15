@@ -24,7 +24,7 @@
       </view>
       <view class="nut-ecard__list__step">
         <view>{{ suffix }}{{ money }}</view>
-        <nut-inputnumber v-model="stepValue" :min="cardBuyMin" :max="cardBuyMax" @change="changeStep" />
+        <nut-input-number v-model="stepValue" :min="cardBuyMin" :max="cardBuyMax" @change="changeStep" />
       </view>
     </view>
   </view>
@@ -33,7 +33,11 @@
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import InputNumber from '../inputnumber/index.taro.vue';
+import type { PropType } from 'vue';
 const { componentName, create, translate } = createComponent('ecard');
+export interface dataList {
+  price: string | number;
+}
 export default create({
   components: {
     [InputNumber.name]: InputNumber
@@ -48,10 +52,8 @@ export default create({
       default: ''
     },
     dataList: {
-      type: [Object, Array],
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<dataList[]>,
+      default: () => []
     },
     cardAmountMin: {
       type: Number,

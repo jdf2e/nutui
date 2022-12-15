@@ -38,8 +38,8 @@
     <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="店铺"> </nut-tabpane>
+          <nut-tab-pane title="商品"> </nut-tab-pane>
+          <nut-tab-pane title="店铺"> </nut-tab-pane>
         </nut-tabs>
       </template>
 
@@ -52,10 +52,10 @@
     <nut-navbar @on-click-back="back">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="评价"> </nut-tabpane>
-          <nut-tabpane title="详情"> </nut-tabpane>
-          <nut-tabpane title="推荐"> </nut-tabpane>
+          <nut-tab-pane title="商品"> </nut-tab-pane>
+          <nut-tab-pane title="评价"> </nut-tab-pane>
+          <nut-tab-pane title="详情"> </nut-tab-pane>
+          <nut-tab-pane title="推荐"> </nut-tab-pane>
         </nut-tabs>
       </template>
       <template #icons>

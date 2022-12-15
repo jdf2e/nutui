@@ -9,13 +9,13 @@ Hover stow experience Interaction for quick navigation
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { FixedNav,OverLay } from '@nutui/nutui';
+import { FixedNav,Overlay } from '@nutui/nutui';
 // taro
-import { FixedNav,OverLay } from '@nutui/nutui-taro';
+import { FixedNav,Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(FixedNav);
-app.use(OverLay);
+app.use(Overlay);
 
 ```
 
@@ -25,7 +25,7 @@ app.use(OverLay);
 :::demo
 ```html
 <template>
-  <nut-fixednav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
+  <nut-fixed-nav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
@@ -68,21 +68,21 @@ export default {
 ### Left effect
 
 ``` html
-<nut-fixednav type="left" :position="{top:'140px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixed-nav type="left" :position="{top:'140px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
 
 ### Unmask background
 
 ``` html
-<nut-fixednav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
+<nut-fixed-nav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
 ### Support drag and drop with drag
 
 ``` html
 <nut-drag direction="y" :style="{right:'0px',bottom:'240px'}">
-  <nut-fixednav un-active-text="drag" v-model:visible="visible" :nav-list="navList" />
+  <nut-fixed-nav un-active-text="drag" v-model:visible="visible" :nav-list="navList" />
 </nut-drag>
 ```
 
@@ -91,14 +91,14 @@ export default {
 :::demo
 ```html
 <template>
-<nut-fixednav :position="{top:'280px' }" type="left" v-model:visible="myActive">
+<nut-fixed-nav :position="{top:'280px' }" type="left" v-model:visible="myActive">
     <template v-slot:list>
-        <ul class="nut-fixednav__list">
-            <li class="nut-fixednav__list-item">1</li>
-            <li class="nut-fixednav__list-item">2</li>
-            <li class="nut-fixednav__list-item">3</li>
-            <li class="nut-fixednav__list-item">4</li>
-            <li class="nut-fixednav__list-item">5</li>
+        <ul class="nut-fixed-nav__list">
+            <li class="nut-fixed-nav__list-item">1</li>
+            <li class="nut-fixed-nav__list-item">2</li>
+            <li class="nut-fixed-nav__list-item">3</li>
+            <li class="nut-fixed-nav__list-item">4</li>
+            <li class="nut-fixed-nav__list-item">5</li>
         </ul>
     </template>
 <template v-slot:btn>
@@ -106,7 +106,7 @@ export default {
     </nut-icon>
     <span class="text">{{ myActive ? 'Open' : 'Close' }}</span>
 </template>
-</nut-fixednav>
+</nut-fixed-nav>
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';

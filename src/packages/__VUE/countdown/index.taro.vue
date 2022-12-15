@@ -31,14 +31,14 @@ export default create({
     startTime: {
       // 可以是服务器当前时间
       type: [Number, String],
-      validator(v) {
+      validator(v: Date) {
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
       }
     },
     endTime: {
       type: [Number, String],
-      validator(v) {
+      validator(v: Date) {
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
       }

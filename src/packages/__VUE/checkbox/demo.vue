@@ -53,12 +53,12 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('useGroup')">
       <nut-cell>
-        <nut-checkboxgroup v-model="checkboxgroup1">
+        <nut-checkbox-group v-model="checkboxgroup1">
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </nut-cell>
       <nut-cell>
         <div class="demo-check">{{ translate('selected') }}</div>
@@ -67,21 +67,21 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('disableGroup')">
       <nut-cell>
-        <nut-checkboxgroup v-model="checkboxgroup1" disabled>
+        <nut-checkbox-group v-model="checkboxgroup1" disabled>
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('selectGroup')">
       <nut-cell>
-        <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+        <nut-checkbox-group v-model="checkboxgroup3" ref="group" @change="changeBox4">
           <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{
             item.value
           }}</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </nut-cell>
       <nut-cell>
         <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">{{
@@ -95,12 +95,12 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('useGroupLimit')">
       <nut-cell>
-        <nut-checkboxgroup v-model="checkboxgroup4" :max="2">
+        <nut-checkbox-group v-model="checkboxgroup4" :max="2">
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
-        </nut-checkboxgroup>
+        </nut-checkbox-group>
       </nut-cell>
       <nut-cell>
         <div class="demo-check">{{ translate('selected') }}</div>
@@ -113,7 +113,7 @@
           translate('selectAll')
         }}</nut-checkbox>
       </nut-cell>
-      <nut-checkboxgroup v-model="checkboxgroup5" ref="group2" @change="changeBox6">
+      <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
         <nut-cell
           ><nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox></nut-cell
         >
@@ -126,7 +126,7 @@
         <nut-cell
           ><nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox></nut-cell
         >
-      </nut-checkboxgroup>
+      </nut-checkbox-group>
     </nut-cell-group>
   </div>
 </template>
@@ -277,7 +277,7 @@ export default createDemo({
 .demo-check {
   margin-right: 10px;
 }
-.nut-checkboxgroup {
+.nut-checkbox-group {
   display: flex;
   flex-wrap: wrap;
 }

@@ -1,4 +1,4 @@
-# OverLay 遮罩层
+# Overlay 遮罩层
 
 ### 介绍
 
@@ -9,12 +9,12 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { OverLay } from '@nutui/nutui';
+import { Overlay } from '@nutui/nutui';
 // taro
-import { OverLay } from '@nutui/nutui-taro';
+import { Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(OverLay);
+app.use(Overlay);
 ```
 
 ### 基础用法

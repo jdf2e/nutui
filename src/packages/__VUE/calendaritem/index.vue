@@ -1,55 +1,57 @@
 <template>
   <view
-    class="nut-calendar nut-calendar-taro"
+    class="nut-calendar"
     :class="{
-      'nut-calendar-tile': !poppable,
-      'nut-calendar-nofooter': isAutoBackFill
+      'nut-calendar--nopop': !poppable,
+      'nut-calendar--nofooter': isAutoBackFill
     }"
   >
     <!-- header -->
-    <view class="nut-calendar-header" :class="{ 'nut-calendar-header-tile': !poppable }">
-      <view class="calendar-title" v-if="showTitle">{{ title || translate('title') }}</view>
-      <view class="calendar-top-slot" v-if="showTopBtn">
+    <view class="nut-calendar__header">
+      <view class="nut-calendar__header-title" v-if="showTitle">{{ title || translate('title') }}</view>
+      <view class="nut-calendar__header-slot" v-if="showTopBtn">
         <slot name="btn"> </slot>
       </view>
-      <view class="calendar-curr-month" v-if="showSubTitle">{{ yearMonthTitle }}</view>
-      <view class="calendar-weeks" ref="weeksPanel">
-        <view class="calendar-week-item" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
+      <view class="nut-calendar__header-subtitle" v-if="showSubTitle">{{ yearMonthTitle }}</view>
+      <view class="nut-calendar__weekdays" ref="weeksPanel">
+        <view class="nut-calendar__weekday" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
       </view>
     </view>
     <!-- content-->
-    <view class="nut-calendar-content" ref="months" @scroll="mothsViewScroll">
-      <view class="calendar-months-panel" ref="monthsPanel">
-        <view class="viewArea" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="calendar-month" v-for="(month, index) of compConthsData" :key="index">
-            <view class="calendar-month-title">{{ month.title }}</view>
-            <view class="calendar-month-con">
-              <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
+    <view class="nut-calendar__content" ref="months" @scroll="mothsViewScroll">
+      <view class="nut-calendar__panel" ref="monthsPanel">
+        <view class="nut-calendar__body" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
+          <view class="nut-calendar__month" v-for="(month, index) of compConthsData" :key="index">
+            <view class="nut-calendar__month-title">{{ month.title }}</view>
+            <view class="nut-calendar__days">
+              <view class="nut-calendar__days-item" :class="type === 'range' ? 'nut-calendar__days-item--range' : ''">
                 <template v-for="(day, i) of month.monthData" :key="i">
-                  <view class="calendar-month-day" :class="getClass(day, month)" @click="chooseDay(day, month)">
+                  <view class="nut-calendar__day" :class="getClass(day, month)" @click="chooseDay(day, month)">
                     <!-- 日期显示slot -->
-                    <view class="calendar-day">
+                    <view class="nut-calendar__day-value">
                       <slot name="day" :date="day.type == 'curr' ? day : ''">
                         {{ day.type == 'curr' ? day.day : '' }}
                       </slot>
                     </view>
-                    <view class="calendar-curr-tips calendar-curr-tips-top" v-if="topInfo">
+                    <view class="nut-calendar__day-tips nut-calendar__day-tips--top" v-if="topInfo">
                       <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
+                    <view class="nut-calendar__day-tips nut-calendar__day-tips--bottom" v-if="bottomInfo">
                       <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
+                    <view class="nut-calendar__day-tips--curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
                       {{ translate('today') }}</view
                     >
                     <view
-                      class="calendar-day-tip"
-                      :class="{ 'calendar-curr-tips-top': rangeTip() }"
+                      class="nut-calendar__day-tip"
+                      :class="{ 'nut-calendar__day-tips--top': rangeTip() }"
                       v-if="isStartTip(day, month)"
                     >
                       {{ startText || translate('start') }}
                     </view>
-                    <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText || translate('end') }}</view>
+                    <view class="nut-calendar__day-tip" v-if="isEndTip(day, month)">{{
+                      endText || translate('end')
+                    }}</view>
                   </view>
                 </template>
               </view>
@@ -59,8 +61,8 @@
       </view>
     </view>
     <!-- footer-->
-    <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
-      <view class="calendar-confirm-btn" @click="confirm">{{ confirmText || translate('confirm') }}</view>
+    <view class="nut-calendar__footer" v-if="poppable && !isAutoBackFill">
+      <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
     </view>
   </view>
 </template>
@@ -189,7 +191,7 @@ export default create({
       defaultData: [],
       chooseData: [],
       monthsData: [],
-      dayPrefix: 'calendar-month-day',
+      dayPrefix: 'nut-calendar__day',
       startData: '',
       endData: '',
       isRange: props.type === 'range',
@@ -234,12 +236,12 @@ export default create({
           (type == 'range' && (isStart(currDate) || isEnd(currDate))) ||
           (type == 'multiple' && isMultiple(currDate))
         ) {
-          return `${state.dayPrefix}-active`;
+          return `${state.dayPrefix}--active`;
         } else if (
           (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
           (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
         ) {
-          return `${state.dayPrefix}-disabled`;
+          return `${state.dayPrefix}--disabled`;
         } else if (
           type == 'range' &&
           Array.isArray(state.currDate) &&
@@ -247,12 +249,12 @@ export default create({
           Utils.compareDate(state.currDate[0], currDate) &&
           Utils.compareDate(currDate, state.currDate[1])
         ) {
-          return `${state.dayPrefix}-choose`;
+          return `${state.dayPrefix}--choose`;
         } else {
           return null;
         }
       } else {
-        return `${state.dayPrefix}-disabled`;
+        return `${state.dayPrefix}--disabled`;
       }
     };
     // 确认选择时触发
@@ -269,7 +271,7 @@ export default create({
 
     // 选中数据
     const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean) => {
-      if (getClass(day, month) != `${state.dayPrefix}-disabled`) {
+      if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
         let days = [...month.curData];
         days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
@@ -644,7 +646,7 @@ export default create({
     };
     // 区间选择&&当前月&&选中态
     const isActive = (day: Day, month: MonthInfo) => {
-      return props.type == 'range' && day.type == 'curr' && getClass(day, month) == 'calendar-month-day-active';
+      return props.type == 'range' && day.type == 'curr' && getClass(day, month) == 'nut-calendar__day--active';
     };
 
     // 是否有开始提示

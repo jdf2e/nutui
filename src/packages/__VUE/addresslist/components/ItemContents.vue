@@ -1,23 +1,23 @@
 <template>
-  <div class="nut-addresslist-item" @click="contentsClick">
-    <div class="nut-addresslist-item__info">
-      <div class="nut-addresslist-item__info-contact">
+  <div class="nut-address-list-item" @click="contentsClick">
+    <div class="nut-address-list-item__info">
+      <div class="nut-address-list-item__info-contact">
         <slot name="contentTop">
-          <div class="nut-addresslist-item__info-contact-name">{{ item.addressName }}</div>
-          <div class="nut-addresslist-item__info-contact-tel">{{ item.phone }}</div>
-          <div class="nut-addresslist-item__info-contact-default" v-if="item.defaultAddress">{{
+          <div class="nut-address-list-item__info-contact-name">{{ item.addressName }}</div>
+          <div class="nut-address-list-item__info-contact-tel">{{ item.phone }}</div>
+          <div class="nut-address-list-item__info-contact-default" v-if="item.defaultAddress">{{
             translate('default')
           }}</div>
         </slot>
       </div>
-      <div class="nut-addresslist-item__info-handle">
+      <div class="nut-address-list-item__info-handle">
         <slot name="contentIcon">
-          <nut-icon name="del" class="nut-addresslist-item__info-handle-del" @click="delClick"></nut-icon>
-          <nut-icon name="edit" class="nut-addresslist-item__info-handle-edit" @click="editClick"></nut-icon>
+          <nut-icon name="del" class="nut-address-list-item__info-handle-del" @click="delClick"></nut-icon>
+          <nut-icon name="edit" class="nut-address-list-item__info-handle-edit" @click="editClick"></nut-icon>
         </slot>
       </div>
     </div>
-    <div class="nut-addresslist-item__addr">
+    <div class="nut-address-list-item__addr">
       <slot name="contentAddr">
         {{ item.fullAddress }}
       </slot>

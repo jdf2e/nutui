@@ -1,22 +1,11 @@
 <template>
   <view :class="rootClass" :style="rootStyle" @click="handleClick">
     <view :class="contentClass">
-      <template v-if="$slots.default">
-        <slot></slot>
-      </template>
-      <template v-else>
-        <slot v-if="$slots.icon" name="icon"></slot>
-        <nut-icon
-          v-else
-          :name="iconProps.name"
-          v-bind="$attrs"
-          :size="iconProps.size"
-          :color="iconProps.color"
-        ></nut-icon>
-
-        <slot v-if="$slots.text" name="text"></slot>
-        <view v-else class="nut-grid-item__text">{{ text }}</view>
-      </template>
+      <slot></slot>
+      <view class="nut-grid-item__text">
+        <template v-if="text">{{ text }}</template>
+        <slot v-else name="text"></slot>
+      </view>
     </view>
   </view>
 </template>
@@ -35,16 +24,6 @@ export default create({
     text: {
       type: String
     },
-    // icon
-    icon: {
-      type: String
-    },
-    iconSize: {
-      type: [Number, String]
-    },
-    iconColor: {
-      type: String
-    },
     // router
     to: {
       type: [String, Object]
@@ -61,7 +40,7 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY);
-    if (!Parent.parent) return;
+    if (!Parent.parent) return {} as any;
     const index = Parent.index;
     const parent = Parent.parent.props;
 
@@ -105,15 +84,6 @@ export default create({
       };
     });
 
-    // icon
-    const iconProps = computed(() => {
-      return {
-        name: props.icon,
-        size: props.iconSize || parent.iconSize,
-        color: props.iconColor || parent.iconColor
-      };
-    });
-
     // click
     const router = useRouter();
     const handleClick = (event: Event) => {
@@ -130,7 +100,6 @@ export default create({
       rootClass,
       rootStyle,
       contentClass,
-      iconProps,
       handleClick
     };
   }

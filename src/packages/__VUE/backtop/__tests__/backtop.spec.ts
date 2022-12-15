@@ -1,13 +1,11 @@
 import { mount, config } from '@vue/test-utils';
-import BackTop from '../index.vue';
+import Backtop from '../index.vue';
 import { mockScrollTop } from './../../../utils/unit';
-
-import NutIcon from '../../icon/index.vue';
 import { nextTick } from 'vue';
-
+import { Top } from '@nutui/icons-vue';
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    Top
   };
 });
 
@@ -16,19 +14,19 @@ afterAll(() => {
 });
 
 test('emit click event', () => {
-  const wrapper = mount(BackTop);
+  const wrapper = mount(Backtop);
   wrapper.trigger('click');
   expect(wrapper.emitted('click')!.length).toEqual(1);
 });
 
 test('backtop show', () => {
-  const wrapper = mount(BackTop);
+  const wrapper = mount(Backtop);
   const backtop = wrapper.find('.nut-backtop');
   expect(backtop.exists()).toBe(true);
 });
 
 test('backtop style', () => {
-  const wrapper = mount(BackTop, {
+  const wrapper = mount(Backtop, {
     props: {
       bottom: 50
     }
@@ -38,7 +36,7 @@ test('backtop style', () => {
 });
 
 test('backtop style,backtop show', async () => {
-  const wrapper = mount(BackTop, {
+  const wrapper = mount(Backtop, {
     props: {
       right: 40
     }
@@ -51,7 +49,7 @@ test('backtop style,backtop show', async () => {
 });
 
 test('backtop style', async () => {
-  const wrapper = mount(BackTop, {
+  const wrapper = mount(Backtop, {
     props: {
       zIndex: 100,
       distance: 0

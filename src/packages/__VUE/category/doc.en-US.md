@@ -22,8 +22,8 @@ app.use(CategoryPane);
 ```html
 <template>
   <nut-category :category="category" @change="change">
-    <nut-categorypane :categoryChild="categoryChild" @onChange="onChange">
-    </nut-categorypane>
+    <nut-category-pane :categoryChild="categoryChild" @onChange="onChange">
+    </nut-category-pane>
   </nut-category>
 </template>
 <script lang="ts">
@@ -78,12 +78,12 @@ export default {
 ```html
 <template>
   <nut-category :category="category" @change="changeText">
-    <nut-categorypane
+    <nut-category-pane
       type="text"
       :categoryChild="categoryChild"
       @onChange="onChange"
     >
-    </nut-categorypane
+    </nut-category-pane
   ></nut-category>
 </template>
 <script lang="ts">
@@ -140,12 +140,12 @@ export default {
 ```html
 <template>
   <nut-category @change="changeCustom"
-    ><nut-categorypane
+    ><nut-category-pane
       type="custom"
       :customCategory="customCategory"
       @onChange="changeCustom"
     >
-    </nut-categorypane
+    </nut-category-pane
   ></nut-category>
 </template>
 <script lang="ts">

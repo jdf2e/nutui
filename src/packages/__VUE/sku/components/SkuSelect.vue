@@ -21,6 +21,13 @@ import { ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-select');
 
+interface SkuInfo {
+  name: string;
+  id: number;
+  active: boolean;
+  disable: boolean;
+  [props: string]: any;
+}
 export default create({
   props: {
     sku: {
@@ -31,7 +38,7 @@ export default create({
   emits: ['selectSku'],
 
   setup(props: any, { emit }) {
-    const skuInfo = ref([]);
+    const skuInfo = ref<SkuInfo[]>([]);
 
     watch(
       () => props.sku,

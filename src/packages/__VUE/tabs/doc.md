@@ -23,15 +23,15 @@ app.use(TabPane);
 ```html
 <template>
 <nut-tabs v-model="state.tab1value">
-  <nut-tabpane title="Tab 1">
+  <nut-tab-pane title="Tab 1">
     Tab 1
-  </nut-tabpane>
-  <nut-tabpane title="Tab 2">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 2">
     Tab 2
-  </nut-tabpane>
-  <nut-tabpane title="Tab 3">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 3">
     Tab 3
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -53,15 +53,15 @@ export default {
 ```html
 <template>
 <nut-tabs v-model="state.tab11value" type="smile">
-  <nut-tabpane title="Tab 1">
+  <nut-tab-pane title="Tab 1">
     Tab 1
-  </nut-tabpane>
-  <nut-tabpane title="Tab 2">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 2">
     Tab 2
-  </nut-tabpane>
-  <nut-tabpane title="Tab 3">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 3">
     Tab 3
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -84,15 +84,15 @@ export default {
 ```html
 <template>
 <nut-tabs v-model="state.tab2value">
-  <nut-tabpane title="Tab 1" pane-key="0">
+  <nut-tab-pane title="Tab 1" pane-key="0">
     Tab 1
-  </nut-tabpane>
-  <nut-tabpane title="Tab 2" pane-key="1" :disabled="true">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true">
     Tab 2
-  </nut-tabpane>
-  <nut-tabpane title="Tab 3" pane-key="2">
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 3" pane-key="2">
     Tab 3
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -111,20 +111,20 @@ export default {
 
 ### Tabpane 自动高度
 
-自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。
+自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。
 
 :::demo
 ```html
 <template>
   <nut-tabs v-model="state.tab2value" :auto-height="true">
-    <nut-tabpane title="Tab 1" pane-key="0">
+    <nut-tab-pane title="Tab 1" pane-key="0">
       <p>Tab 1</p>
       <p>Tab 1</p>
       <p>Tab 1</p>
       <p>Tab 1</p>
-    </nut-tabpane>
-    <nut-tabpane title="Tab 2" pane-key="1"> Tab 2 </nut-tabpane>
-    <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+    </nut-tab-pane>
+    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
+    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
   </nut-tabs>
 </template>
 <script lang="ts">
@@ -147,9 +147,9 @@ export default {
 ```html
 <template>
 <nut-tabs v-model="state.tab3value">
-  <nut-tabpane v-for="item in state.list3" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list3" :title="'Tab '+ item">
     Tab {{item}}
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -177,9 +177,9 @@ export default {
 ```html
 <template>
 <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
-  <nut-tabpane v-for="item in state.list4" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list4" :title="'Tab '+ item">
     Tab {{item}}
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -203,9 +203,9 @@ export default {
 ```html
 <template>
 <nut-tabs style="height:300px" v-model="state.tab5value" title-scroll direction="vertical">
-  <nut-tabpane v-for="item in state.list5" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list5" :title="'Tab '+ item">
     Tab {{item}}
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -229,9 +229,9 @@ export default {
 ```html
 <template>
 <nut-tabs style="height:300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-  <nut-tabpane v-for="item in state.list5" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list5" :title="'Tab '+ item">
     Tab {{item}}
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -254,19 +254,19 @@ export default {
 ```html
 <template>
 <nut-tabs v-model="state.tab1value" size="large">
-  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+  <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+  <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+  <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
 </nut-tabs>
 <nut-tabs v-model="state.tab1value" size="normal">
-  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+  <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+  <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+  <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
 </nut-tabs>
 <nut-tabs v-model="state.tab1value" size="small">
-  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+  <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+  <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+  <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -296,9 +296,9 @@ export default {
       <span class="nut-tabs__titles-item__line"></span>
     </div>
   </template>
-  <nut-tabpane v-for="item in state.list6" :pane-key="item.paneKey">
+  <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey">
     {{item.title}}
-  </nut-tabpane>
+  </nut-tab-pane>
 </nut-tabs>
 </template>
 <script lang="ts">
@@ -347,7 +347,7 @@ export default {
 | animated-time        | 切换动画时长,单位 ms 0 代表无动画                                                                 | number,string | 300        |
 | title-gutter         | 标签间隙                                                                                          | number,string | 0          |
 | size`v3.1.13`        | 标签栏字体尺寸大小 可选值  large normal small                                                     | string        | normal     |
-| auto-height`v3.1.21` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean       | false      |
+| auto-height`v3.1.21` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean       | false      |
 | sticky`v3.2.3` `小程序不支持` | 是否使用粘性布局 | boolean       | false      |
 | top`v3.2.3` `小程序不支持` | 粘性布局下的吸顶距离 | number       | 0      |
 

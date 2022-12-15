@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, computed, toRefs, ref } from 'vue';
+import { onMounted, computed, toRefs, ref, ComputedRef } from 'vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
@@ -84,7 +84,7 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: ComputedRef = computed(() => {
       return {
         zIndex: zIndex.value
       };

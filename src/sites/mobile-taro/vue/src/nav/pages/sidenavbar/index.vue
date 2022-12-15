@@ -5,33 +5,33 @@
       <span><label>右侧</label></span>
     </nut-cell>
     <nut-popup position="right" v-model:visible="show1" :style="{ width, height }">
-      <nut-sidenavbar>
-        <nut-subsidenavbar title="智能城市AI" ikey="6">
-          <nut-subsidenavbar title="人体识别1" ikey="9">
-            <nut-sidenavbaritem ikey="10" title="人体检测1"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="11" title="细粒度人像分割1"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar title="人体识别2" ikey="12">
-            <nut-sidenavbaritem ikey="13" title="人体检测2"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="14" title="细粒度人像分割2"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-        </nut-subsidenavbar>
-      </nut-sidenavbar>
+      <nut-side-navbar>
+        <nut-sub-side-navbar title="智能城市AI" ikey="6">
+          <nut-sub-side-navbar title="人体识别1" ikey="9">
+            <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="11" title="细粒度人像分割1"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar title="人体识别2" ikey="12">
+            <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="14" title="细粒度人像分割2"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+        </nut-sub-side-navbar>
+      </nut-side-navbar>
     </nut-popup>
     <nut-cell @click="handleClick2">
       <span><label>左侧</label></span>
     </nut-cell>
     <nut-popup position="left" v-model:visible="show2" :style="{ width, height }">
-      <nut-sidenavbar>
-        <nut-subsidenavbar title="图像理解" ikey="3" :open="false">
-          <nut-sidenavbaritem ikey="4" title="菜品识别"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="5" title="拍照购"></nut-sidenavbaritem>
-        </nut-subsidenavbar>
-        <nut-subsidenavbar title="自然语言处理" ikey="12">
-          <nut-sidenavbaritem ikey="13" title="词法分析"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="14" title="句法分析"></nut-sidenavbaritem>
-        </nut-subsidenavbar>
-      </nut-sidenavbar>
+      <nut-side-navbar>
+        <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
+          <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="5" title="拍照购"></nut-side-navbar-item>
+        </nut-sub-side-navbar>
+        <nut-sub-side-navbar title="自然语言处理" ikey="12">
+          <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
+        </nut-sub-side-navbar>
+      </nut-side-navbar>
     </nut-popup>
     <h2>导航嵌套（建议最多三层）,点击第一条回调</h2>
     <div>
@@ -39,26 +39,26 @@
         <span><label>显示</label></span>
       </nut-cell>
       <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
-        <nut-sidenavbar :show="show3">
-          <nut-sidenavbaritem ikey="1" title="人脸识别" @click="handleClick4('人脸识别')"></nut-sidenavbaritem>
-          <nut-sidenavbaritem ikey="2" title="云存自然语言处理"></nut-sidenavbaritem>
-          <nut-subsidenavbar title="图像理解" ikey="3" :open="false">
-            <nut-sidenavbaritem ikey="4" title="菜品识别"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="5" title="拍照购"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar title="智能城市AI" ikey="6">
-            <nut-sidenavbaritem ikey="7" title="企业风险预警模型"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="8" title="水质量检测"></nut-sidenavbaritem>
-            <nut-subsidenavbar title="人体识别" ikey="9">
-              <nut-sidenavbaritem ikey="10" title="人体检测"></nut-sidenavbaritem>
-              <nut-sidenavbaritem ikey="11" title="细粒度人像分割"></nut-sidenavbaritem>
-            </nut-subsidenavbar>
-          </nut-subsidenavbar>
-          <nut-subsidenavbar title="自然语言处理" ikey="12">
-            <nut-sidenavbaritem ikey="13" title="词法分析"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="14" title="句法分析"></nut-sidenavbaritem>
-          </nut-subsidenavbar>
-        </nut-sidenavbar>
+        <nut-side-navbar :show="show3">
+          <nut-side-navbar-item ikey="1" title="人脸识别" @click="handleClick4('人脸识别')"></nut-side-navbar-item>
+          <nut-side-navbar-item ikey="2" title="云存自然语言处理"></nut-side-navbar-item>
+          <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
+            <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="5" title="拍照购"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar title="智能城市AI" ikey="6">
+            <nut-side-navbar-item ikey="7" title="企业风险预警模型"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="8" title="水质量检测"></nut-side-navbar-item>
+            <nut-sub-side-navbar title="人体识别" ikey="9">
+              <nut-side-navbar-item ikey="10" title="人体检测"></nut-side-navbar-item>
+              <nut-side-navbar-item ikey="11" title="细粒度人像分割"></nut-side-navbar-item>
+            </nut-sub-side-navbar>
+          </nut-sub-side-navbar>
+          <nut-sub-side-navbar title="自然语言处理" ikey="12">
+            <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
+            <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
+          </nut-sub-side-navbar>
+        </nut-side-navbar>
       </nut-popup>
     </div>
   </div>

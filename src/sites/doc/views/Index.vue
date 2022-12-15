@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="doc-content-document isComponent">
-        <div class="doc-content-tabs" v-if="isShowTaroDoc">
+        <div class="doc-content-tabs">
           <div
             class="tab-item"
             :class="{ cur: curKey === item.key }"
@@ -19,9 +19,6 @@
             @click="handleTabs(item.key)"
             >{{ item.text }}</div
           >
-        </div>
-        <div class="doc-content-tabs single" v-if="!isShowTaroDoc">
-          <div class="tab-item cur">vue / taro</div>
         </div>
         <router-view />
       </div>
@@ -76,28 +73,9 @@ export default defineComponent({
       ]
     });
 
-    const configNav = computed(() => {
-      let tarodocs = [] as string[];
-      nav.map((item) => {
-        item.packages.forEach((element) => {
-          let { tarodoc, name } = element;
-          if (tarodoc) {
-            tarodocs.push(name.toLowerCase());
-            tarodocs.push(`${name.toLowerCase()}-taro`);
-          }
-        });
-      });
-      return tarodocs;
-    });
-
     const isTaro = (router: RouteLocationNormalized) => {
       return router.path.indexOf('taro') > -1;
     };
-
-    const isShowTaroDoc = computed(() => {
-      let routename = route.path.toLocaleLowerCase().split('/').pop() || '';
-      return configNav.value.findIndex((item) => item === routename) > -1;
-    });
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
@@ -179,8 +157,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       ...toRefs(data),
-      handleTabs,
-      isShowTaroDoc
+      handleTabs
     };
   }
 });

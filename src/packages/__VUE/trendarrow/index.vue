@@ -1,6 +1,6 @@
 <template>
   <view :class="classes" @click="handleClick">
-    <span v-if="!arrowLeft" class="nut-trendarrow-icon-before nut-trendarrow-rate" :style="calcStyle">{{
+    <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
     <slot>
@@ -11,7 +11,7 @@
         :color="calcIconProps.color"
       />
     </slot>
-    <span v-if="arrowLeft" class="nut-trendarrow-icon-after nut-trendarrow-rate" :style="calcStyle">{{
+    <span v-if="arrowLeft" class="nut-trend-arrow-icon-after nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
   </view>
@@ -20,7 +20,7 @@
 import { reactive, toRefs, computed } from 'vue';
 import { myFixed } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('trendarrow');
+const { componentName, create } = createComponent('trend-arrow');
 
 export default create({
   props: {

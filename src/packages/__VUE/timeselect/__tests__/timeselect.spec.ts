@@ -29,24 +29,24 @@ test('props test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
-      'nut-timeselect': TimeSelect,
-      'nut-timepannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-select': TimeSelect,
+      'nut-time-pannel': TimePanel,
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
         <div id="cell" @click="handleClick1">
           <span><label>请选择配送时间</label></span>
         </div>
-        <nut-timeselect v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+        <nut-time-select v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
           <template #pannel>
-            <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-            <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+            <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+            <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
-        </nut-timeselect>
+        </nut-time-select>
       </template>
     `,
     setup() {
@@ -108,47 +108,47 @@ test('props test', async () => {
   // height test
   expect(popup.element.style.height).toEqual('50%');
   // title test
-  expect(wrapper.find('.nut-timeselect__title__fixed').html()).toContain('标题测试');
+  expect(wrapper.find('.nut-time-select__title__fixed').html()).toContain('标题测试');
 
   // current-key test
-  const leftPannel = wrapper.findAll('.nut-timepannel');
+  const leftPannel = wrapper.findAll('.nut-time-pannel');
   await leftPannel[1].trigger('click');
-  expect(leftPannel[1].find('.nut-timepannel--curr')).toBeTruthy();
+  expect(leftPannel[1].find('.nut-time-pannel--curr')).toBeTruthy();
 
   // current-time test
-  const rightPannel = wrapper.findAll('.nut-timedetail__detail__list__item');
+  const rightPannel = wrapper.findAll('.nut-time-detail__detail__list__item');
   await rightPannel[1].trigger('click');
-  expect(rightPannel[1].find('.nut-timedetail__detail__list__item--curr')).toBeTruthy();
+  expect(rightPannel[1].find('.nut-time-detail__detail__list__item--curr')).toBeTruthy();
 
   // timepannel name test
-  expect(wrapper.find('.nut-timepannel').html()).toContain('2月23日(今天)');
+  expect(wrapper.find('.nut-time-pannel').html()).toContain('2月23日(今天)');
 
   // timedetail times test, 2 月 24 日的取件时间有两个，长度应该为 2
-  expect(wrapper.findAll('.nut-timedetail__detail__list__item').length).toEqual(2);
+  expect(wrapper.findAll('.nut-time-detail__detail__list__item').length).toEqual(2);
 });
 
 test('Events test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
-      'nut-timeselect': TimeSelect,
-      'nut-timepannel': TimePanel,
-      'nut-timedetail': TimeDetail
+      'nut-time-select': TimeSelect,
+      'nut-time-pannel': TimePanel,
+      'nut-time-detail': TimeDetail
     },
     template: `
       <template>
         <div id="cell" @click="handleClick1">
           <span><label>请选择配送时间</label></span>
         </div>
-        <nut-timeselect v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+        <nut-time-select v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
           <template #pannel>
-            <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-            <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+            <nut-time-pannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+            <nut-time-pannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-time-pannel>
           </template>
           <template #detail>
-            <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+            <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
           </template>
-        </nut-timeselect>
+        </nut-time-select>
       </template>
     `,
     setup() {
@@ -207,7 +207,7 @@ test('Events test', async () => {
 
   // event test
   await nextTick();
-  const timepannel = wrapper.find('.nut-timeselect__content__pannel').findAll('.nut-timepannel')[1];
+  const timepannel = wrapper.find('.nut-time-select__content__pannel').findAll('.nut-time-pannel')[1];
   await timepannel.trigger('click');
-  expect(timepannel.classes()).toContain('nut-timepannel--curr');
+  expect(timepannel.classes()).toContain('nut-time-pannel--curr');
 });

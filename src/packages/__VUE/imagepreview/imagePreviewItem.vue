@@ -2,13 +2,13 @@
   <nut-swiper-item @click="closeSwiper">
     <view
       :style="imageStyle"
-      class="nut-imagepreview-box"
+      class="nut-image-preview-box"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <img v-if="image && image.src" :src="image.src" class="nut-imagepreview-img" @load="imageLoad" />
+      <img v-if="image && image.src" :src="image.src" class="nut-image-preview-img" @load="imageLoad" />
       <nut-video v-if="video && video.source" :source="video.source" :options="video.options"></nut-video>
     </view>
   </nut-swiper-item>
@@ -20,7 +20,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
-const { create } = createComponent('imagepreviewitem');
+const { create } = createComponent('image-preview-item');
 
 export default create({
   props: {
@@ -109,7 +109,7 @@ export default create({
     });
 
     // 图片加载完成
-    const imageLoad = (event: TouchEvent) => {
+    const imageLoad = (event: Event) => {
       const { naturalWidth, naturalHeight } = event.target as HTMLImageElement;
       state.imageRatio = naturalHeight / naturalWidth;
     };

@@ -58,7 +58,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
-const { create, translate } = createComponent('shortpassword');
+const { create, translate } = createComponent('short-password');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   components: {

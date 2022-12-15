@@ -122,7 +122,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "OverLay",
+          "name": "Overlay",
           "taro": true,
           "type": "component",
           "cName": "遮罩层",
@@ -142,7 +142,7 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
-          "styleDeps": ["OverLay"]
+          "styleDeps": ["Overlay"]
         },
         {
           "version": "3.0.0",
@@ -290,7 +290,7 @@
           "sort": 9,
           "show": true,
           "author": "richard1015",
-          "styleDeps": ["OverLay"]
+          "styleDeps": ["Overlay"]
         },
         {
           "version": "3.0.0",
@@ -406,7 +406,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBar",
+          "name": "SideNavbar",
           "type": "component",
           "cName": "侧边栏导航",
           "desc": "垂直展示的导航栏，用于内容选择和切换",
@@ -418,7 +418,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBarItem",
+          "name": "SideNavbarItem",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",
@@ -431,7 +431,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SubSideNavBar",
+          "name": "SubSideNavbar",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",
@@ -462,7 +462,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "SearchBar",
+          "name": "Searchbar",
           "type": "component",
           "cName": "搜索栏",
           "desc": "搜索栏",
@@ -631,7 +631,7 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "name": "TextArea",
+          "name": "Textarea",
           "type": "component",
           "cName": "文本域",
           "desc": "文本输入",
@@ -722,7 +722,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "BackTop",
+          "name": "Backtop",
           "taro": true,
           "tarodoc": true,
           "sort": "1",
@@ -924,7 +924,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "NoticeBar",
+          "name": "Noticebar",
           "type": "component",
           "cName": "公告栏",
           "desc": "用于循环播放展示一组消息通知",
@@ -1037,7 +1037,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "CountUp",
+          "name": "Countup",
           "taro": true,
           "sort": 12,
           "cName": "数字滚动",
@@ -1048,7 +1048,7 @@
           "styleDeps": []
         },
         {
-          "name": "CountDown",
+          "name": "Countdown",
           "type": "component",
           "cName": "倒计时",
           "desc": "倒计时",
@@ -1171,7 +1171,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "WaterMark",
+          "name": "Watermark",
           "cType": "展示组件",
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
@@ -1192,6 +1192,17 @@
           "type": "component",
           "author": "liukun",
           "styleDeps": []
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tour",
+          "cType": "展示组件",
+          "cName": "引导组件",
+          "desc": "漫游式引导组件",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },

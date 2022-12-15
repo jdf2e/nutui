@@ -1,13 +1,13 @@
 <template>
   <div class="demo">
-    <nut-fixednav
+    <nut-fixed-nav
       active-text="基础用法"
       :position="{ top: '70px' }"
       v-model:visible="visible"
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
+    <nut-fixed-nav
       type="left"
       :position="{ top: '140px' }"
       v-model:visible="visible1"
@@ -16,7 +16,7 @@
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
+    <nut-fixed-nav
       :position="{ top: '210px' }"
       :overlay="false"
       v-model:visible="visible2"
@@ -24,28 +24,30 @@
       @selected="selected"
     />
 
-    <nut-fixednav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
+    <nut-fixed-nav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
       <template v-slot:list>
-        <ul class="nut-fixednav__list">
-          <li class="nut-fixednav__list-item">1</li>
-          <li class="nut-fixednav__list-item">2</li>
-          <li class="nut-fixednav__list-item">3</li>
-          <li class="nut-fixednav__list-item">4</li>
-          <li class="nut-fixednav__list-item">5</li>
+        <ul class="nut-fixed-nav__list">
+          <li class="nut-fixed-nav__list-item">1</li>
+          <li class="nut-fixed-nav__list-item">2</li>
+          <li class="nut-fixed-nav__list-item">3</li>
+          <li class="nut-fixed-nav__list-item">4</li>
+          <li class="nut-fixed-nav__list-item">5</li>
         </ul>
       </template>
       <template v-slot:btn>
-        <nut-icon name="retweet" color="#fff"> </nut-icon>
+        <Retweet color="#fff" />
         <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
       </template>
-    </nut-fixednav>
+    </nut-fixed-nav>
   </div>
 </template>
 
 <script lang="ts">
 import { onMounted, reactive, ref } from 'vue';
+import { Retweet } from '@nutui/icons-vue';
 export default {
   props: {},
+  components: { Retweet },
   setup() {
     const visible = ref(false);
     const visible1 = ref(false);

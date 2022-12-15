@@ -3,13 +3,17 @@
 exports[`image load error 1`] = `
 "<view class=\\"nut-image\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"https://x\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
   <!--v-if-->
-  <view class=\\"nut-img-error\\"><i class=\\"nutui-iconfont nut-icon nut-icon-image-error\\" src=\\"\\"></i></view>
+  <view class=\\"nut-img-error\\">
+    <!---->
+  </view>
 </view>"
 `;
 
 exports[`image loading 1`] = `
 "<view class=\\"nut-image\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
-  <view class=\\"nut-img-loading\\"><i class=\\"nutui-iconfont nut-icon nut-icon-image\\" src=\\"\\"></i></view>
+  <view class=\\"nut-img-loading\\">
+    <!---->
+  </view>
   <!--v-if-->
 </view>"
 `;

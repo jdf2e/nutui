@@ -16,7 +16,7 @@
         <template v-else>{{ title }}</template>
       </view>
 
-      <view class="nut-dialog__content" :style="{ textAlign }">
+      <view class="nut-dialog__content" :style="contentStyle">
         <slot v-if="$slots.default" name="default"></slot>
         <view v-else-if="typeof content === 'string'" v-html="content"></view>
         <component v-else :is="content" />
@@ -51,7 +51,7 @@ import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
 import Button from '../button/index.vue';
-
+export type TextAlign = 'left' | 'center' | 'right' | 'top';
 import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
@@ -98,7 +98,7 @@ export default create({
       default: true
     },
     textAlign: {
-      type: String,
+      type: String as PropType<TextAlign>,
       default: 'center'
     },
     closeOnPopstate: {
@@ -173,12 +173,19 @@ export default create({
       closed('ok');
     };
 
+    const contentStyle = computed(() => {
+      return {
+        textAlign: props.textAlign
+      } as CSSProperties;
+    });
+
     return {
       closed,
       classes,
       onCancel,
       onOk,
       showPopup,
+      contentStyle,
       translate
     };
   }

@@ -6,7 +6,7 @@
         ><label>{{ translate('deliveryTime') }}</label></span
       >
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible1"
       height="50%"
       :current-key="currentKey1"
@@ -14,20 +14,20 @@
       @select="handleSelected1"
     >
       <template #pannel>
-        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange1"></nut-timepannel>
-        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange1"></nut-timepannel>
+        <nut-time-pannel :name="translate('time1')" pannel-key="0" @change="handleChange1"></nut-time-pannel>
+        <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange1"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+        <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
     <h2>{{ translate('title') }}</h2>
     <nut-cell @click="handleClick2">
       <span
         ><label>{{ translate('deliveryTime') }}</label></span
       >
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible2"
       height="50%"
       :current-key="currentKey2"
@@ -35,20 +35,20 @@
       @select="handleSelected2"
     >
       <template #pannel>
-        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-timepannel>
-        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-timepannel>
+        <nut-time-pannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-time-pannel>
+        <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
     <h2>{{ translate('changeTitle') }}</h2>
     <nut-cell @click="handleClick3">
       <span
         ><label>{{ translate('deliveryTime') }}</label></span
       >
     </nut-cell>
-    <nut-timeselect
+    <nut-time-select
       v-model:visible="visible3"
       height="50%"
       :current-key="currentKey2"
@@ -62,20 +62,20 @@
         </div>
       </template>
       <template #pannel>
-        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-timepannel>
-        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-timepannel>
+        <nut-time-pannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-time-pannel>
+        <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
       </template>
-    </nut-timeselect>
+    </nut-time-select>
   </div>
 </template>
 
 <script lang="ts">
 import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('timeselect');
+const { createDemo, translate } = createComponent('time-select');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

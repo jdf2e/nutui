@@ -19,7 +19,7 @@ test('should render rate when used ', async () => {
       rate: 12.325
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('12.33%');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('12.33%');
 });
 
 test('should render digits when used ', async () => {
@@ -29,7 +29,7 @@ test('should render digits when used ', async () => {
       digits: 1
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('12.3%');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('12.3%');
 });
 
 test('should render digits when used ', async () => {
@@ -39,7 +39,7 @@ test('should render digits when used ', async () => {
       digits: 1
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('12.3%');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('12.3%');
 });
 
 test('should render showSign when used ', async () => {
@@ -49,7 +49,7 @@ test('should render showSign when used ', async () => {
       showSign: true
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('+12.33%');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('+12.33%');
 });
 test('should render showZero when used ', async () => {
   const wrapper = mount(Trendarrow, {
@@ -59,7 +59,7 @@ test('should render showZero when used ', async () => {
       showZero: true
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('0.00%');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('0.00%');
 });
 test('should not render 0  when showZero is false ', async () => {
   const wrapper = mount(Trendarrow, {
@@ -69,7 +69,7 @@ test('should not render 0  when showZero is false ', async () => {
       showZero: false
     }
   });
-  expect(wrapper.find('.nut-trendarrow-rate').text()).toBe('--');
+  expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('--');
 });
 test('should render left icon when arrowLeft', async () => {
   const wrapper = mount(Trendarrow, {
@@ -78,8 +78,8 @@ test('should render left icon when arrowLeft', async () => {
       arrowLeft: true
     }
   });
-  expect(wrapper.findAll('.nut-trendarrow-icon-before').length).toBe(0);
-  expect(wrapper.findAll('.nut-trendarrow-icon-after').length).toBe(1);
+  expect(wrapper.findAll('.nut-trend-arrow-icon-before').length).toBe(0);
+  expect(wrapper.findAll('.nut-trend-arrow-icon-after').length).toBe(1);
 });
 test('should render sync text color when syncTextColor is true', async () => {
   const wrapper = mount(Trendarrow, {
@@ -88,7 +88,7 @@ test('should render sync text color when syncTextColor is true', async () => {
       syncTextColor: true
     }
   });
-  const span = wrapper.find<HTMLElement>('.nut-trendarrow-rate');
+  const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('250, 44, 25');
 });
 
@@ -100,7 +100,7 @@ test('should render text color when textColor used', async () => {
       syncTextColor: false
     }
   });
-  const span = wrapper.find<HTMLElement>('.nut-trendarrow-rate');
+  const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('(39, 197, 48)');
 });
 
@@ -111,7 +111,7 @@ test('should render triangle color when riseColor used', async () => {
       riseColor: 'rgb(73,143,242)'
     }
   });
-  const span = wrapper.find<HTMLElement>('.nut-trendarrow-rate');
+  const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('(73, 143, 242)');
 });
 
@@ -123,7 +123,7 @@ test('should render triangle color when dropColor used', async () => {
       showSign: true
     }
   });
-  const span = wrapper.find<HTMLElement>('.nut-trendarrow-rate');
+  const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('(73, 143, 242)');
 });
 test('should render triangle size when set iconsize', async () => {

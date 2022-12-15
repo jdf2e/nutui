@@ -1,17 +1,17 @@
 <template>
   <nut-popup
-    pop-class="nut-imagepreview-custom-pop"
+    pop-class="nut-image-preview-custom-pop"
     v-model:visible="showPop"
     :teleportDisable="teleportDisable"
     :teleport="teleport"
     @closed="onClose"
     lock-scroll
   >
-    <view class="nut-imagepreview" ref="swipeRef">
+    <view class="nut-image-preview" ref="swipeRef">
       <nut-swiper
         v-if="showPop"
         :auto-play="autoplay"
-        class="nut-imagepreview-swiper"
+        class="nut-image-preview-swiper"
         :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
@@ -35,7 +35,7 @@
         ></image-preview-item>
       </nut-swiper>
     </view>
-    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
+    <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
     <view :class="iconClasses" @click="onClose" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
@@ -53,7 +53,7 @@ import ImagePreviewItem from './imagePreviewItem.vue';
 import Popup from '../popup/index.vue';
 import Swiper from '../swiper/index.vue';
 import { ImageInterface, baseProps } from './types';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {
@@ -102,9 +102,9 @@ export default create({
     });
 
     const iconClasses = computed(() => {
-      const pre = 'nut-imagepreview-close';
+      const pre = 'nut-image-preview-close';
       const iconn = props.closeIconPosition == 'top-right' ? `${pre}-right` : `${pre}-left`;
-      return `nut-imagepreview-close-icon ${iconn}`;
+      return `nut-image-preview-close-icon ${iconn}`;
     });
 
     const mergeImages = computed(() => {

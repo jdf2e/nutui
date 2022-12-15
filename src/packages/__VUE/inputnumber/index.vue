@@ -2,8 +2,8 @@
   <view :class="classes" :style="{ height: pxCheck(buttonSize) }">
     <nut-icon
       :name="iconLeft"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
+      class="nut-input-number__icon"
+      :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       :size="buttonSize"
       v-bind="$attrs"
       @click="reduce"
@@ -23,8 +23,8 @@
     />
     <nut-icon
       :name="iconRight"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
+      class="nut-input-number__icon"
+      :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
       :size="buttonSize"
       v-bind="$attrs"
       @click="add"
@@ -36,7 +36,7 @@
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('inputnumber');
+const { componentName, create } = createComponent('input-number');
 export default create({
   props: {
     modelValue: {

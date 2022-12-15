@@ -1,4 +1,4 @@
-# BackTop 返回顶部
+# Backtop 返回顶部
 
 ### 介绍
 
@@ -9,11 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { BackTop,Icon } from '@nutui/nutui-taro';
+import { Backtop } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(BackTop);
-app.use(Icon);
+app.use(Backtop);
 
 ```
 

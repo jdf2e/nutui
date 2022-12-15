@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <nut-shortpassword
+    <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       :no-button="state.noButton"
@@ -13,7 +13,7 @@
       @close="methods.close"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
     <nut-cell
       :title="translate('basic')"
       is-link
@@ -70,7 +70,7 @@
 <script lang="ts">
 import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('shortpassword');
+const { createDemo, translate } = createComponent('short-password');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

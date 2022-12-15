@@ -1,6 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import { nextTick, toRefs, reactive } from 'vue';
-import CountDown from '../index.vue';
+import Countdown from '../index.vue';
 import Button from '../../button/index.vue';
 
 function sleep(delay = 0): Promise<void> {
@@ -14,7 +14,7 @@ afterAll(() => {
 });
 
 test('endTime props', async () => {
-  const wrapper = mount(CountDown, {
+  const wrapper = mount(Countdown, {
     props: {
       endTime: Date.now() + 1 * 1000
     }
@@ -25,7 +25,7 @@ test('endTime props', async () => {
 });
 
 test('format props', async () => {
-  const wrapper = mount(CountDown, {
+  const wrapper = mount(Countdown, {
     props: {
       endTime: Date.now() + 1 * 1000,
       format: 'DD天HH时mm分ss秒'
@@ -40,7 +40,7 @@ test('format props', async () => {
 test('paused props', async () => {
   const wrapper = mount({
     components: {
-      'nut-countdown': CountDown,
+      'nut-countdown': Countdown,
       'nut-button': Button
     },
     template: `

@@ -78,7 +78,11 @@
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
-const { create, translate } = createComponent('numberkeyboard');
+const { create, translate } = createComponent('number-keyboard');
+export interface keys {
+  id: number | string;
+  type: string;
+}
 export default create({
   components: {
     [Popup.name]: Popup
@@ -127,7 +131,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    const clickKeyIndex: Ref<string | undefined> = ref(undefined);
+    const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
@@ -147,7 +151,7 @@ export default create({
     }
 
     function getBasicKeys() {
-      const keys: any = [];
+      const keys: keys[] = [];
       for (let i = 1; i <= 9; i++) {
         keys.push({ id: i, type: 'number' });
       }
@@ -196,7 +200,7 @@ export default create({
       }
     );
 
-    function onTouchstart(item: { id: string; type: string }, event: TouchEvent) {
+    function onTouchstart(item: { id: string | number; type: string }, event: TouchEvent) {
       event.stopPropagation();
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {

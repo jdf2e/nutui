@@ -1,10 +1,10 @@
 <template>
-  <nut-popup pop-class="nut-imagepreview-custom-pop" v-model:visible="showPop" @closed="onClose">
-    <view class="nut-imagepreview" @touchstart.capture="onTouchStart">
+  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop" @closed="onClose">
+    <view class="nut-image-preview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
         :auto-play="autoplay"
-        class="nut-imagepreview-swiper"
+        class="nut-image-preview-swiper"
         :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
@@ -14,14 +14,14 @@
         :pagination-color="paginationColor"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index" @click="onClose">
-          <image mode="aspectFit" :src="item.src" class="nut-imagepreview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
-          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" v-else />
+          <image mode="aspectFit" :src="item.src" class="nut-image-preview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
+          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" v-else />
         </nut-swiper-item>
       </nut-swiper>
     </view>
 
-    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
-    <view class="nut-imagepreview-close-icon" @click="onClose" :style="styles" v-if="closeable"
+    <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
+    <view class="nut-image-preview-close-icon" @click="onClose" :style="styles" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
@@ -35,7 +35,7 @@ import Popup from '../popup/index.taro.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
 import Taro from '@tarojs/taro';
-const { create } = createComponent('imagepreview');
+const { create } = createComponent('image-preview');
 
 export default create({
   props: {
@@ -251,7 +251,7 @@ export default create({
     };
 
     const init = () => {
-      state.eleImg = document.querySelector('.nut-imagepreview');
+      state.eleImg = document.querySelector('.nut-image-preview');
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
       document.addEventListener('touchcancel', onTouchEnd);

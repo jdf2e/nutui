@@ -2,7 +2,7 @@
 import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
-const { create, componentName } = createComponent('checkboxgroup');
+const { create, componentName } = createComponent('checkbox-group');
 
 export default create({
   props: {
@@ -84,7 +84,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}`
+          class: componentName
         },
         slots.default?.()
       );

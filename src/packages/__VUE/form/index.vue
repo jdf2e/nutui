@@ -7,7 +7,12 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('form');
 import { component } from './common';
-export default create(component);
+import CellGroup from '../cellgroup/index.vue';
+const { create } = createComponent('form');
+export default create(
+  component({
+    [CellGroup.name]: CellGroup
+  })
+);
 </script>
