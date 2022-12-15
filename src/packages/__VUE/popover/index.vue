@@ -1,10 +1,11 @@
 <template>
-  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]">
-    <view class="nut-popover-wrapper" @click="openPopover" ref="popoverRef"><slot name="reference"></slot></view>
-
+  <div class="nut-popover-wrapper" @click="openPopover" ref="popoverRef" v-if="!targetId"
+    ><slot name="reference"></slot
+  ></div>
+  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
     <nut-popup
       :popClass="`nut-popover-content nut-popover-content--${location}`"
-      :style="getStyles"
+      :style="customStyle"
       v-model:visible="showPopup"
       position=""
       transition="nut-popover"
@@ -15,7 +16,7 @@
       :closeOnClickOverlay="closeOnClickOverlay"
     >
       <view ref="popoverContentRef" class="nut-popover-content-group">
-        <view :class="popoverArrow" v-if="showArrow"> </view>
+        <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
         <slot name="content"></slot>
         <view
           v-for="(item, index) in list"
@@ -24,12 +25,7 @@
           @click.stop="chooseItem(item, index)"
         >
           <slot v-if="item.icon">
-            <nut-icon
-              v-bind="$attrs"
-              class="nut-popover-item-img"
-              :classPrefix="iconPrefix"
-              :name="item.icon"
-            ></nut-icon
+            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
           ></slot>
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
@@ -41,15 +37,17 @@
 import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
+import { useRect, rect } from '@/packages/utils/useRect';
 const { create } = createComponent('popover');
 export default create({
   components: {},
   props: {
     visible: { type: Boolean, default: false },
-    list: { type: Array, default: [] },
+    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
     theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
     location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },
+    arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },
     showArrow: { type: Boolean, default: true },
     iconPrefix: { type: String, default: 'nut-icon' },
@@ -59,17 +57,22 @@ export default create({
     overlayStyle: { type: Object as PropType<CSSProperties> },
     closeOnClickOverlay: { type: Boolean, default: true },
     closeOnClickAction: { type: Boolean, default: true },
-    closeOnClickOutside: { type: Boolean, default: true }
+    closeOnClickOutside: { type: Boolean, default: true },
+    targetId: { type: String, default: '' },
+    bgColor: { type: String, default: '' }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
     const popoverRef = ref();
     const popoverContentRef = ref();
     const showPopup = ref(props.visible);
-    const state = reactive({
-      rootWidth: 0,
-      rootHeight: 0
-    });
+
+    let rootRect = ref<rect>();
+
+    let conentRootRect = ref<{
+      height: number;
+      width: number;
+    }>();
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
@@ -77,36 +80,124 @@ export default create({
       const direction = loca.split('-')[0];
       return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`;
     });
-    const getStyles = computed(() => {
-      let cross = +state.rootHeight;
-      let lengthways = +state.rootWidth;
-      let { offset, location } = props;
+
+    const popoverArrowStyle = computed(() => {
+      const styles: CSSProperties = {};
+      const { bgColor, arrowOffset, location } = props;
+      const direction = location.split('-')[0];
+      const skew = location.split('-')[1];
+      const base = 16;
+
+      if (bgColor) {
+        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
+      }
+
+      if (props.arrowOffset != 0) {
+        if (['bottom', 'top'].includes(direction)) {
+          if (!skew) {
+            styles.left = `calc(50% + ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.left = `${base + arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.right = `${base - arrowOffset}px`;
+          }
+        }
+
+        if (['left', 'right'].includes(direction)) {
+          if (!skew) {
+            styles.top = `calc(50% - ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.top = `${base - arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.bottom = `${base + arrowOffset}px`;
+          }
+        }
+      }
+      return styles;
+    });
+
+    const upperCaseFirst = (str: string) => {
+      var str = str.toLowerCase();
+      str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1));
+      return str;
+    };
+
+    const getRootPosition = computed(() => {
+      let styles: CSSProperties = {};
+
+      if (!rootRect.value || !conentRootRect.value) return {};
+
+      const conentWidth = conentRootRect.value.width;
+      const conentHeight = conentRootRect.value.height;
+      const { width, height, left, top } = rootRect.value;
+
+      const { location, offset } = props;
+      const direction = location.split('-')[0];
+      const skew = location.split('-')[1];
+      let cross = 0;
+      let parallel = 0;
       if (isArray(offset) && offset.length == 2) {
         cross += +offset[1];
-        lengthways += +offset[1];
+        parallel += +offset[0];
       }
-      const direction = location.split('-')[0];
-      const style: CSSProperties = {};
-      const mapd: any = {
-        top: 'bottom',
-        bottom: 'top',
-        left: 'right',
-        right: 'left'
-      };
-      if (['top', 'bottom'].includes(direction)) {
-        style[mapd[direction]] = `${cross}px`;
-        style.marginLeft = `${offset[0]}px`;
-      } else {
-        style[mapd[direction]] = `${lengthways}px`;
-        style.marginTop = `${offset[0]}px`;
+      if (width) {
+        if (['bottom', 'top'].includes(direction)) {
+          const h = direction == 'bottom' ? height + cross : -(conentHeight + cross);
+          styles.top = `${top + h}px`;
+
+          if (!skew) {
+            styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
+          }
+          if (skew == 'start') {
+            styles.left = `${left + parallel}px`;
+          }
+          if (skew == 'end') {
+            styles.left = `${rootRect.value.right + parallel}px`;
+          }
+        }
+        if (['left', 'right'].includes(direction)) {
+          const contentW = direction == 'left' ? -(conentWidth + cross) : width + cross;
+          styles.left = `${left + contentW}px`;
+          if (!skew) {
+            styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
+          }
+          if (skew == 'start') {
+            styles.top = `${top + parallel}px`;
+          }
+          if (skew == 'end') {
+            styles.top = `${top + height + parallel}px`;
+          }
+        }
       }
-      return style;
+
+      return styles;
+    });
+
+    const customStyle = computed(() => {
+      const styles: CSSProperties = {};
+      if (props.bgColor) {
+        styles.background = props.bgColor;
+      }
+
+      return styles;
     });
     // 获取宽度
     const getContentWidth = () => {
-      const { offsetHeight, offsetWidth } = popoverRef.value;
-      state.rootHeight = offsetHeight;
-      state.rootWidth = offsetWidth;
+      let rect = useRect(popoverRef.value);
+      if (props.targetId) {
+        rect = useRect(document.querySelector(`#${props.targetId}`));
+      }
+      rootRect.value = rect;
+      setTimeout(() => {
+        conentRootRect.value = {
+          height: popoverContentRef.value.clientHeight,
+          width: popoverContentRef.value.clientWidth
+        };
+      }, 0);
     };
     watch(
       () => props.visible,
@@ -141,13 +232,14 @@ export default create({
     const clickAway = (event: Event) => {
       const element = popoverRef.value;
       const elContent = popoverContentRef.value;
-      if (
-        element &&
-        !element.contains(event.target) &&
-        elContent &&
-        !elContent.contains(event.target) &&
-        props.closeOnClickOutside
-      ) {
+
+      let el = element && !element.contains(event.target);
+
+      if (props.targetId) {
+        const dom = document.querySelector(`#${props.targetId}`);
+        el = dom && !dom.contains(event.target);
+      }
+      if (el && elContent && !elContent.contains(event.target) && props.closeOnClickOutside) {
         closePopover();
       }
     };
@@ -159,8 +251,10 @@ export default create({
       closePopover,
       chooseItem,
       popoverRef,
-      getStyles,
-      popoverContentRef
+      popoverContentRef,
+      getRootPosition,
+      customStyle,
+      popoverArrowStyle
     };
   }
 });
