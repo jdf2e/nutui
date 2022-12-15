@@ -211,11 +211,12 @@ export default create({
     watch(
       () => props.visible,
       (val) => {
-        state.showTour = val;
-        state.showPopup = val;
         if (val) {
           getRootPosition();
         }
+        state.active = 0;
+        state.showTour = val;
+        state.showPopup = val;
       }
     );
 
