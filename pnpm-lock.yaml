@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^10.0.0
   '@commitlint/config-conventional': ^10.0.0
-  '@nutui/icons-vue': 0.0.9
+  '@nutui/icons-vue': 0.0.10
   '@tarojs/components': 3.5.6
   '@tarojs/taro': 3.5.6
   '@types/jest': ^26.0.22
@@ -53,7 +53,7 @@ specifiers:
   vue-tsc: ^1.0.9
 
 dependencies:
-  '@nutui/icons-vue': 0.0.9
+  '@nutui/icons-vue': 0.0.10
   '@tarojs/components': 3.5.6_vue@3.2.45
   consola: 2.15.3
   sass: 1.56.1
@@ -968,8 +968,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@nutui/icons-vue/0.0.9:
-    resolution: {integrity: sha512-r9mAatgbxhui2RJYYsGJB2s6nxr9bwawDn7pDq3jdiLoJgLTKk04dDaRx+gWywkwVDz6yKGJfIq0KEdBS7oGvw==}
+  /@nutui/icons-vue/0.0.10:
+    resolution: {integrity: sha512-lZ1zJBHVdC71LWIjoB0PwX/5wnqP9xhFoZVjVL+RNdvw6ovhHn6cahHgZAXr3OXerwktbmLn4oitLGqMoxWFZg==}
     dependencies:
       vue: 3.2.45
     dev: false
