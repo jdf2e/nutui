@@ -34,7 +34,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
@@ -203,6 +203,13 @@ export default create({
         };
       }, 0);
     };
+
+    onMounted(() => {
+      setTimeout(() => {
+        getContentWidth();
+      }, 200);
+    });
+
     watch(
       () => props.visible,
       (value) => {

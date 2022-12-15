@@ -64,7 +64,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
@@ -208,6 +208,10 @@ export default create({
       props.closeOnClickOverlay && close();
     };
 
+    onMounted(() => {
+      state.active = 0;
+      getRootPosition();
+    });
     watch(
       () => props.visible,
       (val) => {
