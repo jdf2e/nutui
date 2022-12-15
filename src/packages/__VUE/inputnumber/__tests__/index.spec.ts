@@ -1,12 +1,10 @@
 import { mount, config } from '@vue/test-utils';
 import InputNumber from '../index.vue';
-import { nextTick } from 'vue';
-import NutIcon from '../../icon/index.vue';
+import { h, nextTick } from 'vue';
+import { Minus, Plus, Left, Right } from '@nutui/icons-vue';
 
 beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
+  config.global.components = { Minus, Plus };
 });
 
 afterAll(() => {
@@ -24,7 +22,7 @@ test('should render modelValue', () => {
   expect(input.value).toBe('12');
 });
 
-test('should add step 2 when trigger click plus button', async () => {
+test('should add step 2 when trigger click right button', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 1,
@@ -32,7 +30,7 @@ test('should add step 2 when trigger click plus button', async () => {
     }
   });
 
-  const iconPlus = wrapper.find('.nut-icon-plus');
+  const iconPlus = wrapper.find('.nut-input-number__right');
   await iconPlus.trigger('click');
 
   expect(wrapper.emitted('overlimit')).toBeFalsy();
@@ -41,7 +39,7 @@ test('should add step 2 when trigger click plus button', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('3');
 });
 
-test('should minis step 2 when trigger click minis button', async () => {
+test('should minis step 2 when trigger click left button', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 3,
@@ -49,7 +47,7 @@ test('should minis step 2 when trigger click minis button', async () => {
     }
   });
 
-  const iconMinus = wrapper.find('.nut-icon-minus');
+  const iconMinus = wrapper.find('.nut-input-number__left');
   await iconMinus.trigger('click');
 
   expect(wrapper.emitted('overlimit')).toBeFalsy();
@@ -67,7 +65,7 @@ test('should render max and min props', async () => {
     }
   });
 
-  const iconPlus = wrapper.find('.nut-icon-plus');
+  const iconPlus = wrapper.find('.nut-input-number__right');
   await iconPlus.trigger('click');
 
   expect(wrapper.emitted('overlimit')).toBeTruthy();
@@ -78,7 +76,7 @@ test('should render max and min props', async () => {
     modelValue: 2
   });
 
-  const iconMinus = wrapper.find('.nut-icon-minus');
+  const iconMinus = wrapper.find('.nut-input-number__left');
   await iconMinus.trigger('click');
   expect(wrapper.emitted('overlimit')).toBeTruthy();
   expect(wrapper.emitted('reduce')).toBeTruthy();
@@ -91,11 +89,11 @@ test('should not trigger click when disabled props to be true', async () => {
     modelValue: 1
   });
 
-  const iconPlus = wrapper.find('.nut-icon-plus');
+  const iconPlus = wrapper.find('.nut-input-number__right');
   await iconPlus.trigger('click');
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('1');
 
-  const iconMinus = wrapper.find('.nut-icon-minus');
+  const iconMinus = wrapper.find('.nut-input-number__left');
   await iconMinus.trigger('click');
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('1');
 });
@@ -108,7 +106,7 @@ test('should not focus input when readonly props to be true', async () => {
     }
   });
 
-  const iconMinus = wrapper.find('.nut-icon-minus');
+  const iconMinus = wrapper.find('.nut-input-number__left');
   await iconMinus.trigger('click');
   await nextTick();
 
@@ -126,7 +124,7 @@ test('should render decimal when step props to be 0.2', async () => {
     }
   });
 
-  const iconPlus = wrapper.find('.nut-icon-plus');
+  const iconPlus = wrapper.find('.nut-input-number__right');
   await iconPlus.trigger('click');
 
   expect((wrapper.emitted('change')![0] as any[])[0]).toEqual('2.2');
@@ -141,10 +139,10 @@ test('should render size when buttonSize and inputWidth props setted', async () 
     }
   });
 
-  const iconPlus = wrapper.find('.nut-icon-plus');
+  const iconPlus = wrapper.find('.nut-input-number__right .nut-icon');
   const input = wrapper.find('input').element as HTMLInputElement;
 
-  expect((iconPlus.element as HTMLElement).style.fontSize).toEqual('30px');
+  expect((iconPlus.element as HTMLElement).style.width).toEqual('30px');
   expect(input.style.width).toEqual('120px');
 });
 
@@ -164,18 +162,20 @@ test('should update input value when inputValue overlimit', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('100');
 });
 
-test('should render icon when iconLeft and iconRight props setted', async () => {
+test('should render icon when leftIcon and rightIcon slots setted', async () => {
   const wrapper = mount(InputNumber, {
-    props: {
-      iconLeft: 'left',
-      iconRight: 'right',
-      fontClassName: 'n-nutui-iconfont',
-      classPrefix: 'n-nut-icon'
+    slots: {
+      leftIcon: h(Left, {
+        color: '#123456'
+      }),
+      rightIcon: h(Right, {
+        color: '#654321'
+      })
     }
   });
 
-  const iconList = wrapper.findAll('.nut-icon');
+  const iconList = wrapper.findAll('.nut-input-number__icon');
   expect(iconList.length).toBe(2);
-  expect(iconList[0].html()).toContain('n-nut-icon-left');
-  expect(iconList[1].html()).toContain('n-nut-icon-right');
+  expect(iconList[0].html()).toContain('color="#123456"');
+  expect(iconList[1].html()).toContain('color="#654321"');
 });
