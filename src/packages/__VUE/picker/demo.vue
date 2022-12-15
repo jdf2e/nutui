@@ -16,6 +16,7 @@
       :title="translate('chooseCity')"
       @change="change"
       @confirm="(options) => confirm('index', options)"
+      :showCancelText="false"
     ></nut-picker>
 
     <h2>{{ translate('defaultSelected') }}</h2>

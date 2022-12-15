@@ -53,6 +53,14 @@ export const componentWeb = {
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    showOkText: {
+      type: Boolean,
+      default: true
+    },
+    showCancelText: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
@@ -159,6 +167,14 @@ export const componentWeapp = {
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    showOkText: {
+      type: Boolean,
+      default: true
+    },
+    showCancelText: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
