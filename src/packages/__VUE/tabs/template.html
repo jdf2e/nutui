@@ -10,7 +10,7 @@
             :key="item.paneKey">
             <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
             <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
-              <nut-icon :color="color" name="joy-smile" />
+              <JoySmile :color="color" />
             </view>
             <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }}
             </view>
@@ -29,7 +29,7 @@
           :key="item.paneKey">
           <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
           <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
-            <nut-icon :color="color" name="joy-smile" />
+            <JoySmile :color="color" />
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }}
           </view>
