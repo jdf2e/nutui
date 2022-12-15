@@ -2,12 +2,12 @@ import { config, DOMWrapper, mount } from '@vue/test-utils';
 import Tabs from '../index.vue';
 import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
-import NutIcon from '../../icon/index.vue';
+import { JoySmile } from '@nutui/icons-vue';
 import NutSticky from '../../sticky/index.vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
+    JoySmile,
     NutSticky
   };
 });
