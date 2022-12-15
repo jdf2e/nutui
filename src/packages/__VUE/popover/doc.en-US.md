@@ -284,6 +284,85 @@ export default {
 :::
 
 
+### custom target 
+
+Popover 提供了 `targetId` 属性，用于匹配目标元素，在目标元素上添加对应的 id 值即可
+
+:::demo
+```html
+<template>
+  <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">custom target</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customTarget:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    const clickCustomHandle = () => {
+      visible.customTarget = !visible.customTarget;
+    };
+
+    return {
+        itemList,
+        visible,
+        clickCustomHandle,
+      };
+    }
+}
+</script>
+
+
+```
+:::
+
+### Custom Color
+
+:::demo
+```html
+<template>
+  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square" >Custom Color</nut-button>
+      </template>
+    </nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customColor:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    return {
+        itemList,
+        visible
+      };
+    }
+}
+</script>
+
+```
+:::
+
 ## API
 ### Props  
 
@@ -304,6 +383,9 @@ export default {
 | close-on-click-overlay `v3.2.8`       | Whether to close when clicking overlay  | boolean  | true  |
 | close-on-click-action `v3.2.8`       | Whether to close when clicking action  | boolean  | true |
 | close-on-click-outside `v3.2.8`       | Whether to close when clicking outside | boolean  | true  |
+| bg-color `v3.3.1`       | Custom color | String  | -  |
+| target-id `v3.3.1`       | Custom target id | String  | -  |
+| arrow-offset `v3.3.1`       | the offset of the arrow | Number  | 0  |
 
 ### List data structure  
 

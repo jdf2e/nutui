@@ -44,6 +44,17 @@ app.use(Price);
 ```
 
 :::
+### Strike Through
+
+:::demo
+
+``` html
+<template>
+    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
+</template>
+```
+
+:::
 
 ### With RMB symbol, no thousands separator
 
@@ -117,3 +128,4 @@ app.use(Price);
 | thousands      | Thousands separation                                       | Boolean          | false  |
 | position       | The symbol appear before or after the price，`before`、`after` | String           | before |
 | size           | Size，`large`、`normal`、`small`                            | String           | large |
+| strike-through`v3.3.1`          | strike-through    | Boolean           | false |
