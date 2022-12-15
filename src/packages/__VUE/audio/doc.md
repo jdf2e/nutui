@@ -168,14 +168,14 @@ export default {
     >
       <div class="nut-audio-operate-group">
         <nut-audio-operate type="back">
-          <PlayDoubleBack width="35px"></PlayDoubleBack>
+          <PlayDoubleBack width="35px" height="35px"></PlayDoubleBack>
         </nut-audio-operate>
         <nut-audio-operate type="play">
-          <PlayStart v-if="!playing" width="35px"></PlayStart>
-          <PlayStop v-else width="35px"></PlayStop>
+          <PlayStart v-if="!playing" width="35px" height="35px"></PlayStart>
+          <PlayStop v-else width="35px" height="35px"></PlayStop>
         </nut-audio-operate>
         <nut-audio-operate type="forward">
-          <PlayDoubleForward width="35px"></PlayDoubleForward>
+          <PlayDoubleForward width="35px" height="35px"></PlayDoubleForward>
         </nut-audio-operate>
       </div>
     </nut-audio>
