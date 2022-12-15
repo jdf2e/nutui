@@ -283,7 +283,7 @@ app.use(SwiperItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <view class="demo-box">
     <nut-swiper :init-page="page" :loop="true" ref="swiper">
@@ -293,17 +293,22 @@ app.use(SwiperItem);
     </nut-swiper>
     <view class="nut-swiper-btns">
       <span class="nut-swiper-btns__left" @click="handlePrev">
-        <nut-icon name='left'></nut-icon>
+        <Left></Left>
       </span>
       <span class="nut-swiper-btns__left" @click="handleNext">
-        <nut-icon name='right'></nut-icon>
+        <Right></Right>
       </span>
     </view>
   </view>
 </template>
 <script lang="ts">
   import { reactive, toRefs, ref, Ref } from 'vue';
+  import { Left, Right } from '@nutui/icons-vue';
   export default {
+    components: { 
+      Left, 
+      Right 
+    },
     setup() {
       const swiper = ref(null) as Ref;
       const state = reactive({

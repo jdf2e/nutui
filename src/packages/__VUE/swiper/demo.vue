@@ -61,10 +61,10 @@
       </nut-swiper>
       <view class="nut-swiper-btns">
         <span class="nut-swiper-btns__left" @click="handlePrev">
-          <nut-icon name="left"></nut-icon>
+          <Left></Left>
         </span>
         <span class="nut-swiper-btns__left" @click="handleNext">
-          <nut-icon name="right"></nut-icon>
+          <Right></Right>
         </span>
       </view>
     </view>
@@ -115,6 +115,7 @@ import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('swiper');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -180,7 +181,6 @@ export default createDemo({
     const handleNext = () => {
       swiper.value.next();
     };
-
     onMounted(() => {
       setTimeout(() => {
         state.list1 = state.list.slice();
@@ -196,7 +196,8 @@ export default createDemo({
       handleNext,
       translate
     };
-  }
+  },
+  components: { Left, Right }
 });
 </script>
 
