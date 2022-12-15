@@ -1,11 +1,10 @@
 import Tag from '../index.vue';
 import { mount, config } from '@vue/test-utils';
-
-import NutIcon from '../../icon/index.vue';
+import { Close } from '@nutui/icons-vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    Close
   };
 });
 
