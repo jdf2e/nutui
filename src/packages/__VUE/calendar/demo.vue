@@ -267,6 +267,7 @@ interface TestCalendarState extends TestCalendarStateVisible {
   date8: string;
 }
 interface TestCalendarStateVisible {
+  isVisible: boolean;
   isVisible1: boolean;
   isVisible2: boolean;
   isVisible3: boolean;
@@ -350,11 +351,11 @@ export default createDemo({
     const setChooseValue8 = (param: string) => {
       state.date8 = param[3];
     };
-    const clickBtn = (param: string) => {
+    const clickBtn = () => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
     };
-    const clickBtn1 = (param: string) => {
+    const clickBtn1 = () => {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
@@ -369,10 +370,10 @@ export default createDemo({
       }
     };
     const renderDate = (date: { date: Day }) => {
-      return date.date.day <= 9 ? '0' + date.date.day : date.date.day;
+      return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
     };
     const renderBottomDate = (date: { date: Day }) => {
-      return date.date ? (date.date.day <= 10 ? '' : date.date.day <= 20 ? translate('mid') : '') : '';
+      return date.date ? (+date.date.day <= 10 ? '' : +date.date.day <= 20 ? translate('mid') : '') : '';
     };
     return {
       ...toRefs(state),

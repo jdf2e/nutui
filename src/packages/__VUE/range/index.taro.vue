@@ -380,9 +380,11 @@ export default create({
       event.stopPropagation();
       event.preventDefault();
     };
-
-    const curValue = (idx?: number) => {
-      const value = typeof idx === 'number' ? (props.modelValue as number[])[idx] : props.modelValue;
+    const curValue = (idx?: number): number => {
+      const value =
+        Array.isArray(props.modelValue) && typeof idx === 'number'
+          ? (props.modelValue as number[])[idx]
+          : Number(props.modelValue);
       return value;
     };
     const refRandomId = Math.random().toString(36).slice(-8);

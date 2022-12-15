@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes">
     <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
