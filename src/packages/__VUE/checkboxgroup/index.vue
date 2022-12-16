@@ -84,7 +84,7 @@ export default create({
       return h(
         'view',
         {
-          class: 'nut-checkboxgroup'
+          class: componentName
         },
         slots.default?.()
       );

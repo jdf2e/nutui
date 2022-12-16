@@ -52,7 +52,7 @@
         </template>
       </swipe-shell>
     </template>
-    <div class="nut-addresslist__bottom" v-if="showBottomButton" @click="addAddress">
+    <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
   </div>
@@ -105,7 +105,7 @@ export default create({
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
     });
     const classes = computed(() => {
-      const prefixCls = 'nut-addresslist';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

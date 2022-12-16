@@ -1,6 +1,6 @@
 <template>
-  <view :class="classes" @click="handleClick">
-    <span v-if="!arrowLeft" class="nut-trendarrow-icon-before nut-trendarrow-rate" :style="calcStyle">{{
+  <view :class="classes">
+    <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
     <slot>
@@ -11,7 +11,7 @@
         :color="calcIconProps.color"
       />
     </slot>
-    <span v-if="arrowLeft" class="nut-trendarrow-icon-after nut-trendarrow-rate" :style="calcStyle">{{
+    <span v-if="arrowLeft" class="nut-trend-arrow-icon-after nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
   </view>
@@ -79,7 +79,7 @@ export default create({
       rateTrend: props.rate > 0 ? true : false
     });
     const classes = computed(() => {
-      const prefixCls = 'nut-trendarrow';
+      const prefixCls = componentName;
       return {
         [prefixCls]: true
       };

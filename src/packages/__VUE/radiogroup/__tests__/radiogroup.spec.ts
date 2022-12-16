@@ -93,8 +93,8 @@ test('radiogroup direction test', () => {
     }
   });
 
-  const items = wrapper.findAll('.nut-radiogroup');
-  expect((items[0] as any).find('.nut-radiogroup--horizontal')).toBeTruthy();
+  const items = wrapper.findAll('.nut-radio-group');
+  expect((items[0] as any).find('.nut-radio-group--horizontal')).toBeTruthy();
 });
 
 test('radio disabled test', async () => {

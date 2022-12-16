@@ -4,26 +4,14 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover
-          v-model:visible="lightTheme"
-          :list="iconItemList"
-          location="bottom-end"
-          @choose="chooseItem"
-          overlay="true"
-        >
+        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover
-          v-model:visible="darkTheme"
-          theme="dark"
-          location="bottom-start"
-          :list="iconItemList"
-          :offset="[0, 12]"
-        >
+        <nut-popover v-model:visible="darkTheme" theme="dark" location="bottom-start" :list="iconItemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
@@ -51,7 +39,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="Customized" location="top" custom-class="customClass">
+    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -59,7 +47,7 @@
       <template #content>
         <div class="self-content">
           <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <nut-icon :name="item.name" size="15"></nut-icon>
+            <component :is="renderIcon(item.name)"></component>
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
         </div>
@@ -69,7 +57,15 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
+    <nut-picker
+      v-model:visible="showPicker"
+      :columns="columns"
+      title=""
+      @change="change"
+      :swipe-duration="500"
+      @confirm="closePicker"
+      @close="closePicker"
+    >
       <template #top>
         <div class="brickBox">
           <div class="brick" id="pickerTarget"></div>
@@ -81,25 +77,37 @@
       v-model:visible="customPositon"
       targetId="pickerTarget"
       :location="curPostion"
-      bgColor="#f00"
       theme="dark"
       :list="positionList"
     >
     </nut-popover>
 
-    <h2>自定义对象</h2>
-    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle;">{{
-      translate('light')
-    }}</nut-button>
-    <nut-popover v-model:visible="customTarget" targetId="popid" :list="iconItemList" location="top-start">
+    <h2>{{ translate('contentTarget') }}</h2>
+    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">
+      {{ translate('contentTarget') }}
+    </nut-button>
+    <nut-popover
+      v-model:visible="customTarget"
+      targetId="popid"
+      :list="iconItemList"
+      location="top-start"
+    ></nut-popover>
+
+    <h2>{{ translate('contentColor') }}</h2>
+
+    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square">{{ translate('contentColor') }}</nut-button>
+      </template>
     </nut-popover>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { reactive, ref, toRefs, h } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -112,7 +120,9 @@ const initTranslate = () =>
       dark: '暗黑风格',
       showIcon: '展示图标',
       disableAction: '禁用选项',
-      content: '自定义内容'
+      content: '自定义内容',
+      contentColor: '自定义颜色',
+      contentTarget: '自定义对象'
     },
     'en-US': {
       title: 'Basic Usage',
@@ -123,12 +133,16 @@ const initTranslate = () =>
       dark: 'dark',
       showIcon: 'show icon',
       disableAction: 'disabled',
-      content: 'custom content'
+      content: 'custom content',
+      contentColor: 'custom color',
+      contentTarget: 'custom target'
     }
   });
 export default createDemo({
+  components: { Service },
   setup() {
     initTranslate();
+
     const state = reactive({
       showIcon: false,
       placement: false,
@@ -143,7 +157,8 @@ export default createDemo({
 
       showPicker: false,
 
-      customTarget: false
+      customTarget: false,
+      customColor: false
     });
     const curPostion = ref('top');
 
@@ -186,15 +201,28 @@ export default createDemo({
     const itemList = reactive([
       {
         name: 'option1',
-        icon: 'my2'
+        icon: () => {
+          return h(My2, {
+            width: '14px',
+            color: 'rgba(250, 44, 25, 1)'
+          });
+        }
       },
       {
         name: 'option2',
-        icon: 'cart2'
+        icon: () => {
+          return h(Cart2, {
+            width: '14px'
+          });
+        }
       },
       {
         name: 'option3',
-        icon: 'location2'
+        icon: () => {
+          return h(Location, {
+            width: '14px'
+          });
+        }
       }
     ]);
 
@@ -214,27 +242,27 @@ export default createDemo({
 
     const selfContent = reactive([
       {
-        name: 'service',
+        name: Service,
         desc: 'option1'
       },
       {
-        name: 'notice',
+        name: Notice,
         desc: 'option2'
       },
       {
-        name: 'location',
+        name: Location,
         desc: 'option3'
       },
       {
-        name: 'category',
+        name: Category,
         desc: 'option4'
       },
       {
-        name: 'scan2',
+        name: Scan2,
         desc: 'option5'
       },
       {
-        name: 'message',
+        name: Message,
         desc: 'option6'
       }
     ]);
@@ -251,15 +279,18 @@ export default createDemo({
     };
 
     const change = ({ selectedValue }) => {
-      console.log('change');
       curPostion.value = selectedValue[0];
       if (state.showPicker) state.customPositon = true;
     };
 
     const clickCustomHandle = () => {
-      console.log('点击', state.customTarget);
       state.customTarget = !state.customTarget;
     };
+
+    const closePicker = () => {
+      state.customPositon = false;
+    };
+
     return {
       iconItemList,
       itemList,
@@ -273,7 +304,9 @@ export default createDemo({
       columns,
       change,
       handlePicker,
-      clickCustomHandle
+      clickCustomHandle,
+      renderIcon,
+      closePicker
     };
   }
 });

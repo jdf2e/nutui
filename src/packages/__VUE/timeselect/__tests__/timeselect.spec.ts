@@ -108,23 +108,23 @@ test('props test', async () => {
   // height test
   expect(popup.element.style.height).toEqual('50%');
   // title test
-  expect(wrapper.find('.nut-timeselect__title__fixed').html()).toContain('标题测试');
+  expect(wrapper.find('.nut-time-select__title__fixed').html()).toContain('标题测试');
 
   // current-key test
-  const leftPannel = wrapper.findAll('.nut-timepannel');
+  const leftPannel = wrapper.findAll('.nut-time-pannel');
   await leftPannel[1].trigger('click');
-  expect(leftPannel[1].find('.nut-timepannel--curr')).toBeTruthy();
+  expect(leftPannel[1].find('.nut-time-pannel--curr')).toBeTruthy();
 
   // current-time test
-  const rightPannel = wrapper.findAll('.nut-timedetail__detail__list__item');
+  const rightPannel = wrapper.findAll('.nut-time-detail__detail__list__item');
   await rightPannel[1].trigger('click');
-  expect(rightPannel[1].find('.nut-timedetail__detail__list__item--curr')).toBeTruthy();
+  expect(rightPannel[1].find('.nut-time-detail__detail__list__item--curr')).toBeTruthy();
 
   // timepannel name test
-  expect(wrapper.find('.nut-timepannel').html()).toContain('2月23日(今天)');
+  expect(wrapper.find('.nut-time-pannel').html()).toContain('2月23日(今天)');
 
   // timedetail times test, 2 月 24 日的取件时间有两个，长度应该为 2
-  expect(wrapper.findAll('.nut-timedetail__detail__list__item').length).toEqual(2);
+  expect(wrapper.findAll('.nut-time-detail__detail__list__item').length).toEqual(2);
 });
 
 test('Events test', async () => {
@@ -207,7 +207,7 @@ test('Events test', async () => {
 
   // event test
   await nextTick();
-  const timepannel = wrapper.find('.nut-timeselect__content__pannel').findAll('.nut-timepannel')[1];
+  const timepannel = wrapper.find('.nut-time-select__content__pannel').findAll('.nut-time-pannel')[1];
   await timepannel.trigger('click');
-  expect(timepannel.classes()).toContain('nut-timepannel--curr');
+  expect(timepannel.classes()).toContain('nut-time-pannel--curr');
 });

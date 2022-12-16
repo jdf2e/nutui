@@ -5,7 +5,7 @@
       class="nut-comment-images__item nut-comment-images__item--video"
       v-for="(itV, index) in videos"
       :key="itV.id"
-      @click="showImages('video', index, index)"
+      @click="showImages('video', index)"
     >
       <img :src="itV.mainUrl" />
       <view class="nut-comment-images__play"></view>
@@ -31,11 +31,21 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, PropType } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment-images');
 
+interface VideosType {
+  id: number | string;
+  mainUrl: string;
+  videoUrl: string;
+}
+interface ImagesType {
+  smallImgUrl: string;
+  bigImgUrl: string;
+  imgUrl: string;
+}
 export default create({
   props: {
     type: {
@@ -43,11 +53,11 @@ export default create({
       default: 'one' // one multi
     },
     videos: {
-      type: Array,
+      type: Array as PropType<VideosType[]>,
       default: () => []
     },
     images: {
-      type: Array,
+      type: Array as PropType<ImagesType[]>,
       default: () => []
     }
   },
@@ -57,7 +67,7 @@ export default create({
   setup(props, { emit }) {
     const isShowImage = ref(false);
     const initIndex = ref(1);
-    const totalImages = ref([]);
+    const totalImages = ref<(VideosType | ImagesType)[]>([]);
 
     watch(
       () => [props.videos, props.images],
@@ -67,7 +77,7 @@ export default create({
             el.type = 'video';
           });
         }
-        totalImages.value = value[0].concat(value[1]);
+        totalImages.value = (value[0] as any).concat(value[1]);
       },
       { deep: true }
     );
@@ -78,7 +88,7 @@ export default create({
           el.type = 'video';
         });
       }
-      totalImages.value = props.videos.concat(props.images);
+      totalImages.value = (props.videos as any).concat(props.images);
     });
 
     const showImages = (type: string, index: string | number) => {
@@ -88,7 +98,7 @@ export default create({
       emit('clickImages', {
         type,
         index: i,
-        value: type == 'img' ? images[i] : videos[i]
+        value: type == 'img' ? images[i as number] : videos[i as number]
       });
     };
 

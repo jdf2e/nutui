@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-addresslist {
+  .nut-address-list {
     &-swipe,
     &-general {
       background-color: $dark-background2;
@@ -23,7 +23,7 @@
     }
   }
 }
-.nut-addresslist {
+.nut-address-list {
   overflow: hidden;
   &:last-child {
     padding-bottom: 84px;
@@ -132,7 +132,7 @@
     background-color: $addresslist-bg;
     box-sizing: border-box;
   }
-  .nut-addresslist__mask-bottom {
+  .nut-address-list__mask-bottom {
     position: fixed;
     top: 0;
     bottom: 0;

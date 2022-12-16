@@ -34,7 +34,14 @@
     </nut-cell>
     <h2>{{ translate('icon') }}</h2>
     <nut-cell>
-      <nut-input-number icon-left="left" icon-right="right" v-model="state.val9" />
+      <nut-input-number v-model="state.val9">
+        <template #leftIcon>
+          <Left />
+        </template>
+        <template #rightIcon>
+          <Right />
+        </template>
+      </nut-input-number>
     </nut-cell>
   </div>
 </template>
@@ -42,6 +49,7 @@
 <script lang="ts">
 import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { Left, Right } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('input-number');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -74,6 +82,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Left, Right },
   props: {},
   setup() {
     initTranslate();

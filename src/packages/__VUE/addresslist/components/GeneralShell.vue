@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-addresslist-general">
+  <div class="nut-address-list-general">
     <item-contents
       :item="item"
       @delIcon="delShellClick"
@@ -19,20 +19,20 @@
         <slot name="contentAddrs"></slot>
       </template>
     </item-contents>
-    <div class="nut-addresslist-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
+    <div class="nut-address-list-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
       <slot name="longpressAll">
-        <div class="nut-addresslist-general__mask-copy" @click="copyCLick">
-          <div class="nut-addresslist-mask-contain"> 复制<br />地址 </div>
+        <div class="nut-address-list-general__mask-copy" @click="copyCLick">
+          <div class="nut-address-list-mask-contain"> 复制<br />地址 </div>
         </div>
-        <div class="nut-addresslist-general__mask-set" @click="setDefault">
-          <div class="nut-addresslist-mask-contain"> 设置<br />默认 </div>
+        <div class="nut-address-list-general__mask-set" @click="setDefault">
+          <div class="nut-address-list-mask-contain"> 设置<br />默认 </div>
         </div>
-        <div class="nut-addresslist-general__mask-del" @click="delClick">
-          <div class="nut-addresslist-mask-contain"> 删除<br />地址 </div>
+        <div class="nut-address-list-general__mask-del" @click="delClick">
+          <div class="nut-address-list-mask-contain"> 删除<br />地址 </div>
         </div>
       </slot>
     </div>
-    <div class="nut-addresslist__mask-bottom" v-if="showMaskRef" @click="hideMaskClick"></div>
+    <div class="nut-address-list__mask-bottom" v-if="showMaskRef" @click="hideMaskClick"></div>
   </div>
 </template>
 <script lang="ts">

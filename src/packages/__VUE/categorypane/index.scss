@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-categorypane {
+  .nut-category-pane {
     &__childTitle {
       color: $white;
     }
@@ -8,7 +8,7 @@
     }
   }
 }
-.nut-categorypane {
+.nut-category-pane {
   &__cateListRight {
     padding-left: 15px;
     background: $category-bg-color;

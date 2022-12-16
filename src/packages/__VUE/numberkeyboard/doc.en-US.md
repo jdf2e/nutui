@@ -26,7 +26,7 @@ For online debugging, please change the browser to mobile mode
 ```html
 <template>
     <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Default Keyboard"></nut-cell>
-    <nut-numberkey-board v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-numberkey-board>
+    <nut-number-keyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-number-keyboard>
 </template>
 <script>
 import { ref } from 'vue';
@@ -65,7 +65,7 @@ export default{
 ```html
 <template>
     <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Keyboard With Sidebar"></nut-cell>
-     <nut-numberkey-board
+     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
       :custom-key="customKey"
@@ -73,7 +73,7 @@ export default{
       @input="input"
       @close="close"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 </template>
 <script>
 import { ref,reactive } from 'vue';
@@ -111,7 +111,7 @@ export default{
 ```html
 <template>
     <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Random Key Order"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
       :randomKeys="true"
@@ -119,7 +119,7 @@ export default{
       @input="input"
       @close="close"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 </template>
 <script>
 import { ref,reactive } from 'vue';
@@ -155,14 +155,14 @@ export default{
 ```html
 <template>
      <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="Show Keyboard With Title"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       title="title"
       v-model:visible="visible"
       :custom-key="customKey"
       @input="input"
       @close="close"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 </template>
 <script>
 import { ref,reactive } from 'vue';
@@ -198,13 +198,13 @@ export default{
 ```html
 <template>
      <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="IdNumber Keyboard"></nut-cell>
-    <nut-numberkey-board
+    <nut-number-keyboard
       v-model:visible="visible"
       :custom-key="customKey"
       @input="input"
       @close="close"
     >
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 </template>
 <script>
 import { ref,reactive } from 'vue';
@@ -248,12 +248,12 @@ export default{
       :showIcon="true"
       title="Bind Value"
     ></nut-cell>
-     <nut-numberkey-board 
+     <nut-number-keyboard 
        v-model:visible="visible" 
        v-model:value="value" 
        maxlength="6" 
        @close="close">
-    </nut-numberkey-board>
+    </nut-number-keyboard>
 </template>
 <script>
 import { ref,reactive } from 'vue';

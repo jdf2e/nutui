@@ -1,7 +1,8 @@
 <template>
   <div :class="classes">
-    <div class="nut-tour-masked" v-if="showTour"></div>
-    <div v-for="(step, i) in steps" :key="i">
+    <div class="nut-tour-masked" v-show="showTour" @click="handleClickMask"></div>
+
+    <div v-for="(step, i) in steps" :key="i" style="height: 0">
       <template v-if="i == active">
         <div
           class="nut-tour-mask"
@@ -17,41 +18,45 @@
           :bgColor="bgColor"
           :theme="theme"
           :close-on-click-outside="false"
+          :offset="step.popoverOffset || [0, 12]"
+          :arrowOffset="step.arrowOffset || 0"
         >
           <template #content>
-            <div class="nut-tour-content" v-if="type == 'step'">
-              <div class="nut-tour-content-top">
-                <div class="nut-tour-content-top-close" @click="close">
-                  <Close size="10" name="close" />
+            <slot>
+              <div class="nut-tour-content" v-if="type == 'step'">
+                <div class="nut-tour-content-top">
+                  <div @click="close">
+                    <Close class="nut-tour-content-top-close" />
+                  </div>
+                </div>
+                <div class="nut-tour-content-inner">
+                  {{ step.content }}
+                </div>
+                <div class="nut-tour-content-bottom">
+                  <div class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</div>
+                  <div class="nut-tour-content-bottom-operate">
+                    <div class="nut-tour-content-bottom-operate-btn" @click="changeStep('prev')" v-if="active != 0">{{
+                      prevStepTxt
+                    }}</div>
+                    <div
+                      class="nut-tour-content-bottom-operate-btn active"
+                      @click="close"
+                      v-if="steps.length - 1 == active"
+                      >{{ completeTxt }}</div
+                    >
+                    <div class="nut-tour-content-bottom-operate-btn active" @click="changeStep('next')" v-else>{{
+                      nextStepTxt
+                    }}</div>
+                  </div>
                 </div>
               </div>
-              <div class="nut-tour-content-inner">
-                {{ step.content }}
-              </div>
-              <div class="nut-tour-content-bottom">
-                <div class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</div>
-                <div class="nut-tour-content-bottom-operate">
-                  <div class="nut-tour-content-bottom-operate-btn" @click="changeStep('prev')" v-if="active != 0">{{
-                    prevStepTxt
-                  }}</div>
-                  <div
-                    class="nut-tour-content-bottom-operate-btn active"
-                    @click="close"
-                    v-if="steps.length - 1 == active"
-                    >{{ completeTxt }}</div
-                  >
-                  <div class="nut-tour-content-bottom-operate-btn active" @click="changeStep('next')" v-else>{{
-                    nextStepTxt
-                  }}</div>
-                </div>
-              </div>
-            </div>
 
-            <div class="nut-tour-content nut-tour-content-tile" v-if="type == 'tile'">
-              <div class="nut-tour-content-inner">
-                {{ step.content }}
+              <div class="nut-tour-content nut-tour-content-tile" v-if="type == 'tile'">
+                <div class="nut-tour-content-inner">
+                  {{ step.content }}
+                </div>
               </div>
-            </div>
+            </slot>
           </template>
         </nut-popover>
       </template>
@@ -59,7 +64,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
@@ -68,7 +73,9 @@ import { Close } from '@nutui/icons-vue';
 interface StepOptions {
   target: Element;
   content: String;
-  location: PopoverLocation;
+  location?: PopoverLocation;
+  popoverOffset?: number[];
+  arrowOffset?: number;
 }
 const { create } = createComponent('tour');
 export default create({
@@ -120,6 +127,18 @@ export default create({
     theme: {
       type: String,
       default: 'light'
+    },
+    maskWidth: {
+      type: [Number, String],
+      default: ''
+    },
+    maskHeight: {
+      type: [Number, String],
+      default: ''
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:visible', 'change', 'close'],
@@ -130,7 +149,9 @@ export default create({
       active: 0
     });
 
-    const maskRect = ref<any>({});
+    const maskRect = ref<{
+      [props: string]: number;
+    }>({});
 
     const classes = computed(() => {
       const prefixCls = 'nut-tour';
@@ -138,13 +159,18 @@ export default create({
     });
 
     const maskStyle = computed(() => {
-      const { offset } = props;
+      const { offset, maskWidth, maskHeight } = props;
       const { width, height, left, top } = maskRect.value;
+
+      const center = [left + width / 2, top + height / 2]; // 中心点 【横，纵】
+      const w: number = Number(maskWidth ? maskWidth : width);
+      const h: number = Number(maskHeight ? maskHeight : height);
+
       const styles = {
-        width: `${width + offset[1] * 2}px`,
-        height: `${height + offset[0] * 2}px`,
-        top: `${top - offset[0]}px`,
-        left: `${left - offset[1]}px`
+        width: `${w + +offset[1] * 2}px`,
+        height: `${h + +offset[0] * 2}px`,
+        top: `${center[1] - h / 2 - +offset[0]}px`,
+        left: `${center[0] - w / 2 - +offset[1]}px`
       };
       return styles;
     });
@@ -174,18 +200,27 @@ export default create({
     const close = () => {
       state.showTour = false;
       state.showPopup = false;
+      emit('close', state.active);
       emit('update:visible', false);
     };
 
+    const handleClickMask = () => {
+      props.closeOnClickOverlay && close();
+    };
+
+    onMounted(() => {
+      state.active = 0;
+      getRootPosition();
+    });
     watch(
       () => props.visible,
       (val) => {
-        state.showTour = val;
-
         if (val) {
-          state.showPopup = true;
           getRootPosition();
         }
+        state.active = 0;
+        state.showTour = val;
+        state.showPopup = val;
       }
     );
 
@@ -194,7 +229,8 @@ export default create({
       classes,
       maskStyle,
       changeStep,
-      close
+      close,
+      handleClickMask
     };
   }
 });

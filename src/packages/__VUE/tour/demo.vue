@@ -2,16 +2,99 @@
   <div class="demo">
     <h2>{{ translate('title') }}</h2>
 
-    <div class="music" @click="showTourHandle"> 新手引导 </div>
+    <nut-cell :title="translate('tryClick')" @click="showTour3 = true">
+      <template v-slot:link>
+        <nut-switch id="target7" />
+      </template>
+    </nut-cell>
 
-    <div>
-      <div class="index-header"
-        ><img
-          src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-          @click="showTour2 = true"
-        /><div class="info"><h1>NutUI</h1><p id="target6">京东风格的轻量级移动端 Vue 组件库</p></div></div
-      >
-    </div>
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour3"
+      :steps="steps3"
+      type="tile"
+      location="bottom-end"
+    ></nut-tour>
+
+    <h2>{{ translate('title1') }}</h2>
+
+    <nut-cell :title="translate('tryClick')" @click="showTourHandle">
+      <template v-slot:link>
+        <nut-switch id="target5" />
+      </template>
+    </nut-cell>
+
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
+      v-model:visible="showTour1"
+      :steps="steps1"
+      location="bottom-end"
+      type="tile"
+      bgColor="#f00"
+      theme="dark"
+      :offset="[0, 0]"
+      maskWidth="50"
+      maskHeight="50"
+    ></nut-tour>
+
+    <h2>{{ translate('title2') }}</h2>
+
+    <nut-cell :title="translate('tryClick')" @click="showTour2 = true">
+      <template v-slot:link>
+        <div class="tour-demo-img">
+          <img
+            id="target6"
+            src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+            alt=""
+          />
+          <img
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/31842/40/20385/1762/63998e3eE594254bb/98ff51da635ead4a.png"
+            alt=""
+          />
+          <img src="https://storage.jd.com/oss-dev/test/3.2.6/Jdweapp.png" alt="" />
+        </div>
+      </template>
+    </nut-cell>
+
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour2"
+      :steps="steps2"
+      type="tile"
+      bgColor="#f00"
+      theme="dark"
+      location="bottom-end"
+      :offset="[8, 8]"
+    ></nut-tour>
+
+    <h2>{{ translate('title3') }}</h2>
+
+    <nut-cell :title="translate('tryClick')" @click="showTour4 = true">
+      <template v-slot:link>
+        <nut-switch id="target8" />
+      </template>
+    </nut-cell>
+
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour4"
+      :steps="steps4"
+      type="tile"
+      theme="dark"
+      location="bottom-end"
+      :offset="[8, 8]"
+      :closeOnClickOverlay="false"
+    >
+      <div class="tour-demo-custom-content">
+        <div>nutui 4.x 即将发布，敬请期待</div>
+        <nut-divider direction="vertical" />
+        <div @click="showTour4 = false">知道了</div>
+      </div>
+    </nut-tour>
+
+    <h2>{{ translate('title4') }}</h2>
+
+    <nut-cell :title="translate('tryClick')" @click="showTour = true"></nut-cell>
 
     <nut-tabbar :bottom="true">
       <nut-tabbar-item
@@ -40,40 +123,14 @@
       ></nut-tabbar-item>
     </nut-tabbar>
 
-    <nut-grid icon-size="18px">
-      <nut-grid-item icon="my2" text="文字"></nut-grid-item>
-      <nut-grid-item icon="star" text="文字"></nut-grid-item>
-      <nut-grid-item icon="dshop" text="文字"></nut-grid-item>
-      <nut-grid-item icon="shop" text="文字" id="target5"></nut-grid-item>
-    </nut-grid>
-
     <nut-tour
       class="nut-custom-tour"
       v-model:visible="showTour"
       :steps="steps"
       location="top-start"
-      :offset="offset"
-    ></nut-tour>
-
-    <nut-tour
-      class="nut-custom-tour"
-      v-model:visible="showTour1"
-      :steps="steps1"
-      location="bottom-end"
-      type="tile"
-      bgColor="#f00"
-      theme="dark"
       :offset="[0, 0]"
-    ></nut-tour>
-
-    <nut-tour
-      class="nut-custom-tour"
-      v-model:visible="showTour2"
-      :steps="steps2"
-      type="tile"
-      bgColor="#f00"
-      theme="dark"
-      location="bottom-start"
+      maskWidth="50"
+      maskHeight="50"
     ></nut-tour>
   </div>
 </template>
@@ -87,25 +144,19 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       title: '基础用法',
-      title1: '选项配置',
-      title2: '自定义内容',
-      title3: '位置自定义',
-      light: '明朗风格',
-      dark: '暗黑风格',
-      showIcon: '展示图标',
-      disableAction: '禁用选项',
-      content: '自定义内容'
+      title1: '自定义样式',
+      title2: '设置偏移量',
+      title3: '自定义内容',
+      title4: '步骤引导',
+      tryClick: '点击试试'
     },
     'en-US': {
       title: 'Basic Usage',
-      title1: 'Option Configuration',
-      title2: 'Custom Content',
-      title3: 'Custom Location',
-      light: 'light',
-      dark: 'dark',
-      showIcon: 'show icon',
-      disableAction: 'disabled',
-      content: 'custom content'
+      title1: 'Custom Style',
+      title2: 'Custom Offset',
+      title3: 'Custom Content',
+      title4: 'Steps',
+      tryClick: 'Try Click'
     }
   });
 export default createDemo({
@@ -116,23 +167,25 @@ export default createDemo({
       showTour: false,
       showTour1: false,
       showTour2: false,
+      showTour3: false,
+      showTour4: false,
       offset: [-3, -8],
       steps: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target1'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target2'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '基于京东APP 10.0 视觉规范',
           target: 'target3',
           location: 'top-end'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持定制主题，内置 700+ 个主题变量',
           target: 'target4',
           location: 'top-end'
         }
@@ -140,15 +193,30 @@ export default createDemo({
 
       steps1: [
         {
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target5'
         }
       ],
 
       steps2: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
-          target: 'target6'
+          content: '支持一套代码同时开发多端小程序+H5',
+          target: 'target6',
+          popoverOffset: [40, 12],
+          arrowOffset: -36
+        }
+      ],
+
+      steps3: [
+        {
+          content: '70+ 高质量组件，覆盖移动端主流场景',
+          target: 'target7'
+        }
+      ],
+
+      steps4: [
+        {
+          target: 'target8'
         }
       ],
 
@@ -157,7 +225,7 @@ export default createDemo({
 
     setTimeout(() => {
       state.showTour = true;
-    }, 1000);
+    }, 100);
 
     const showTourHandle = () => {
       state.showTour1 = true;
@@ -172,17 +240,16 @@ export default createDemo({
 });
 </script>
 <style lang="scss">
-.music {
-  margin-bottom: 30px;
-}
-
 .nut-custom-tour {
   .nut-popover-content {
     width: auto !important;
   }
-  /* .nut-tour-content-inner {
+}
+
+.nut-customword-tour {
+  .nut-tour-content-inner {
     width: max-content;
-  } */
+  }
 }
 
 .index-header {
@@ -209,6 +276,30 @@ export default createDemo({
       font-size: 12px;
       color: rgba(154, 155, 157, 1);
     }
+  }
+}
+
+.nut-customstyle-tour {
+  .nut-tour-mask {
+    border-radius: 50%;
+  }
+}
+
+.tour-demo-img {
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+.tour-demo-custom-content {
+  padding: 8px;
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  .nut-divider {
+    border-color: #fff;
   }
 }
 </style>

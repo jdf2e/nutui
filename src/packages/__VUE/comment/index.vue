@@ -40,13 +40,24 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref, onMounted, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment');
 
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
+
+interface VideosType {
+  id: number | string;
+  mainUrl: string;
+  videoUrl: string;
+}
+interface ImagesType {
+  smallImgUrl: string;
+  bigImgUrl: string;
+  imgUrl: string;
+}
 
 export default create({
   props: {
@@ -66,11 +77,11 @@ export default create({
     },
 
     videos: {
-      type: Array,
+      type: Array as PropType<VideosType[]>,
       default: () => []
     },
     images: {
-      type: Array,
+      type: Array as PropType<ImagesType[]>,
       default: () => []
     },
 
@@ -90,7 +101,7 @@ export default create({
     },
 
     operation: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: ['replay', 'like', 'more']
     }
   },

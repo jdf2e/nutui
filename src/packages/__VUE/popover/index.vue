@@ -1,5 +1,7 @@
 <template>
-  <div class="nut-popover-wrapper" @click="openPopover" ref="popoverRef"><slot name="reference"></slot></div>
+  <div class="nut-popover-wrapper" @click="openPopover" ref="popoverRef" v-if="!targetId"
+    ><slot name="reference"></slot
+  ></div>
   <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
     <nut-popup
       :popClass="`nut-popover-content nut-popover-content--${location}`"
@@ -22,9 +24,8 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <!-- <slot v-if="item.icon">
-            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
-          ></slot> -->
+          <component :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
@@ -32,23 +33,19 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { computed, watch, ref, PropType, CSSProperties, onMounted, h } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
-// import { Icon } from '@nutui/icons-vue';
-import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
-  components: {
-    // Icon
-  },
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
     theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
     location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },
+    arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },
     showArrow: { type: Boolean, default: true },
     iconPrefix: { type: String, default: 'nut-icon' },
@@ -84,11 +81,40 @@ export default create({
 
     const popoverArrowStyle = computed(() => {
       const styles: CSSProperties = {};
-      const direction = upperCaseFirst(props.location.split('-')[0]);
-      if (props.bgColor) {
-        styles[`border${direction}Color`] = props.bgColor;
+      const { bgColor, arrowOffset, location } = props;
+      const direction = location.split('-')[0];
+      const skew = location.split('-')[1];
+      const base = 16;
+
+      if (bgColor) {
+        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
       }
 
+      if (props.arrowOffset != 0) {
+        if (['bottom', 'top'].includes(direction)) {
+          if (!skew) {
+            styles.left = `calc(50% + ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.left = `${base + arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.right = `${base - arrowOffset}px`;
+          }
+        }
+
+        if (['left', 'right'].includes(direction)) {
+          if (!skew) {
+            styles.top = `calc(50% - ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.top = `${base - arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.bottom = `${base + arrowOffset}px`;
+          }
+        }
+      }
       return styles;
     });
 
@@ -111,36 +137,37 @@ export default create({
       const direction = location.split('-')[0];
       const skew = location.split('-')[1];
       let cross = 0;
+      let parallel = 0;
       if (isArray(offset) && offset.length == 2) {
         cross += +offset[1];
+        parallel += +offset[0];
       }
       if (width) {
         if (['bottom', 'top'].includes(direction)) {
-          console.log('高度', conentHeight);
           const h = direction == 'bottom' ? height + cross : -(conentHeight + cross);
           styles.top = `${top + h}px`;
 
           if (!skew) {
-            styles.left = `${-(conentWidth - width) / 2 + left}px`;
+            styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
           }
           if (skew == 'start') {
-            styles.left = `${left}px`;
+            styles.left = `${left + parallel}px`;
           }
           if (skew == 'end') {
-            styles.left = `${rootRect.value.right}px`;
+            styles.left = `${rootRect.value.right + parallel}px`;
           }
         }
         if (['left', 'right'].includes(direction)) {
           const contentW = direction == 'left' ? -(conentWidth + cross) : width + cross;
           styles.left = `${left + contentW}px`;
           if (!skew) {
-            styles.top = `${top - conentHeight / 2 + height / 2 - 4}px`;
+            styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
           }
           if (skew == 'start') {
-            styles.top = `${top}px`;
+            styles.top = `${top + parallel}px`;
           }
           if (skew == 'end') {
-            styles.top = `${top + height}px`;
+            styles.top = `${top + height + parallel}px`;
           }
         }
       }
@@ -170,6 +197,13 @@ export default create({
         };
       }, 0);
     };
+
+    onMounted(() => {
+      setTimeout(() => {
+        getContentWidth();
+      }, 200);
+    });
+
     watch(
       () => props.visible,
       (value) => {
@@ -225,7 +259,8 @@ export default create({
       popoverContentRef,
       getRootPosition,
       customStyle,
-      popoverArrowStyle
+      popoverArrowStyle,
+      renderIcon
     };
   }
 });

@@ -368,7 +368,7 @@ describe('Form', () => {
     expect(formitem2.exists()).toBe(true);
     const formitem3 = wrapper.find('.nut-rate');
     expect(formitem3.exists()).toBe(true);
-    const formitem4 = wrapper.find('.nut-inputnumber');
+    const formitem4 = wrapper.find('.nut-input-number');
     expect(formitem4.exists()).toBe(true);
     const formitem5 = wrapper.find('.nut-range');
     expect(formitem5.exists()).toBe(true);

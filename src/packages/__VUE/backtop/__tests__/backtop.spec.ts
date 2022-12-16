@@ -1,13 +1,11 @@
 import { mount, config } from '@vue/test-utils';
 import Backtop from '../index.vue';
 import { mockScrollTop } from './../../../utils/unit';
-
-import NutIcon from '../../icon/index.vue';
 import { nextTick } from 'vue';
-
+import { Top } from '@nutui/icons-vue';
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    Top
   };
 });
 

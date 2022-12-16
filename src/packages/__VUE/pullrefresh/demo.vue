@@ -138,7 +138,7 @@ export default createDemo({
   padding-bottom: 0 !important;
 }
 
-.nut-tabpane {
+.nut-tab-pane {
   padding: 0;
 }
 .nut-pullrefresh {
