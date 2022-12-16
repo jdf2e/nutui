@@ -135,7 +135,7 @@ export default createDemo({
     };
 
     const changeProgress = (val: number) => {
-      console.log('改变进度条', val, audioDemo.value);
+      console.log('改变进度条', val);
     };
 
     const onCanplay = (e: Event) => {
