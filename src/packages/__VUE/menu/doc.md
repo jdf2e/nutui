@@ -221,8 +221,8 @@ export default {
 
 ```html
 <template>
-  <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+  <nut-menu titleIcon="joy-smile">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
   </nut-menu>
 </template>
@@ -390,7 +390,7 @@ export default {
 | scroll-fixed `v3.1.22`           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
 | title-class `v3.1.22`            | 自定义标题样式类               | String                  | -       |
 | lock-scroll `v3.1.22`            | 背景是否锁定                   | Boolean                 | true    |
-| title-icon `3.2.1`               | 自定义标题图标                 | String                  | -       |
+| title-icon `v3.2.1`               | 自定义标题图标                 | String                  | -       |
 
 
 ### MenuItem Props
