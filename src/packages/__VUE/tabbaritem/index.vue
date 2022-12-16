@@ -118,11 +118,11 @@ export default create({
       index: 0
     });
     const router = useRouter();
-    const relation = (child: ComponentInternalInstance): void => {
+    const relation = (child: ComponentInternalInstance) => {
       if (child.proxy) {
         parent.children.push(child.proxy);
-        const index = computed(() => parent.children.indexOf(child.proxy));
-        state.index = props.name ?? index.value;
+        const index = parent.children.indexOf(child.proxy);
+        state.index = props.name ?? index;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);

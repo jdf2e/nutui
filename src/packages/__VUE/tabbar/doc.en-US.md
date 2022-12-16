@@ -106,13 +106,13 @@ Use icon slot to custom icon.
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="首页">
+    <nut-tabbar-item tab-title="tab">
       <template #icon="props">
           <img :src="props.active ? icon.active : icon.unactive" alt="" />
         </template>
     </nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
@@ -216,11 +216,11 @@ Use icon slot to custom icon.
 
 | Attribute            | Description               | Type   | Default  |
 |-----------------|--------------------|--------|---------|
-| v-model:visible | The index value of the selected label  | number | 0       |
+| v-model:visible | Identifier of current tab | number | 0       |
 | bottom          | Whether to fix the bottom | boolean | false   |
 | size          | icon size | string | '20px'  |
-| unactive-color  | Color of unactive tab item  | string | #7d7e80 |
-| active-color    | Color of active tab item    | string | #1989fa |
+| unactive-color  | Color of unactive tab item  | string | #000 |
+| active-color    | Color of active tab item    | string | #fa2c19  |
 | safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
 | placeholder `3.2.6` | Whether to generate a placeholder element when fixed | boolean | false |
 ### TabbarItem Props

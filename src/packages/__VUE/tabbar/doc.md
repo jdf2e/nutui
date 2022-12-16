@@ -261,12 +261,13 @@ app.use(Icon);
 
 | 字段            | 说明               | 类型   | 默认值  |
 |-----------------|--------------------|--------|---------|
-| v-model:visible | 选中标签的索引值   | number | 0       |
+| v-model:visible | 当前选中标签的名称或索引值   | number｜string | 0       |
 | bottom          | 是否固定在页面底部 | boolean | false   |
 | size          | icon的尺寸/图片的宽高 | string | '20px'  |
-| unactive-color  | icon未激活的颜色   | string | #7d7e80 |
-| active-color    | icon激活的颜色     | string | #1989fa |
+| unactive-color  | icon未激活的颜色   | string | #000  |
+| active-color    | icon激活的颜色     | string | #fa2c19 |
 | safe-area-inset-bottom   | 是否开启iphone系列全面屏底部安全区适配    | boolean | false |
+| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | false |
 ### TabbarItem Props
 
 | 字段      | 说明                                      | 类型   | 默认值 |
@@ -282,7 +283,7 @@ app.use(Icon);
 | to  `小程序不支持`      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string｜object | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | number | --     |
 | dot       | 是否显示图标右上角小红点   | boolean | false    |
-| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | false |
+
 
 
 ### TabbarItem Slots
