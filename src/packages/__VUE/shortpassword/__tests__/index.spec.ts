@@ -1,12 +1,10 @@
 import { config, DOMWrapper, mount } from '@vue/test-utils';
 import ShortPassword from '../index.vue';
 import { nextTick } from 'vue';
-import NutIcon from '../../icon/index.vue';
 import NutPopup from '../../popup/index.vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
     NutPopup
   };
 });
