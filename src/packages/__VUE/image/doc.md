@@ -95,7 +95,7 @@ app.use();
 <template>
   <nut-image width="100" height="100" showLoading>
     <template #loading>
-      <nut-icon name="loading"></nut-icon>
+      <Loading width="16px" height="16px" name="loading"></Loading>
     </template>
   </nut-image>
 </template>
@@ -112,7 +112,9 @@ app.use();
 ```html
 <template>
   <nut-image src="https://x" width="100" height="100" showError>
-    <template #error> 加载失败 </template>
+    <template #error> 
+      <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+    </template>
   </nut-image>
 </template>
 ```
