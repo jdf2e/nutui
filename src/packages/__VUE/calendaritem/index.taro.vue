@@ -77,7 +77,7 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
-import { MonthInfo, Day, DateInfo } from './type';
+import { MonthInfo, Day } from './type';
 import NutScrollView from '../scrollView/index.taro.vue';
 import { isArray } from '@/packages/utils/util';
 const TARO_ENV = Taro.getEnv();
@@ -273,7 +273,7 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean) => {
+    const chooseDay = (day: Day, month: MonthInfo, isFirst = false) => {
       if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
         let days = [...month.curData];
@@ -366,7 +366,7 @@ export default create({
       }
       return Array.from(Array(days), (v, k) => {
         return {
-          day: k + 1,
+          day: String(k + 1),
           type: type,
           year,
           month
@@ -377,7 +377,7 @@ export default create({
     const getPreDaysStatus = (
       days: number,
       type: string,
-      dateInfo: { year: number; month: number },
+      dateInfo: { year: string; month: string },
       preCurrMonthDays: number
     ) => {
       // 新增：自定义周起始日}, preCurrMonthDays: number) => {
@@ -390,7 +390,7 @@ export default create({
       }
       let months = Array.from(Array(preCurrMonthDays), (v, k) => {
         return {
-          day: k + 1,
+          day: String(k + 1),
           type: type,
           year,
           month
@@ -421,7 +421,12 @@ export default create({
         curData: curData,
         title: translate('monthTitle', title.year, title.month),
         monthData: [
-          ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
+          ...(getPreDaysStatus(
+            preMonthDays,
+            'prev',
+            { month: String(preMonth), year: String(preYear) },
+            preCurrMonthDays
+          ) as Day[]),
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
         ],
         cssHeight: 0,
@@ -714,7 +719,7 @@ export default create({
       }
     };
     // 是否有是当前日期
-    const isCurrDay = (dateInfo: DateInfo) => {
+    const isCurrDay = (dateInfo: Day) => {
       const date = `${dateInfo.year}-${dateInfo.month}-${
         Number(dateInfo.day) < 10 ? '0' + dateInfo.day : dateInfo.day
       }`;
