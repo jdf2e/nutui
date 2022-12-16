@@ -286,7 +286,7 @@ export default {
 
 ### custom target 
 
-Popover 提供了 `targetId` 属性，用于匹配目标元素，在目标元素上添加对应的 id 值即可
+Popover provides the 'targetId' attribute to match the target element by adding the corresponding id value to the target element
 
 :::demo
 ```html
