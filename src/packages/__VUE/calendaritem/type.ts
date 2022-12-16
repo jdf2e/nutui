@@ -39,8 +39,10 @@ export interface CalendarTaroState extends CalendarState {
   containerHeight: string;
 }
 export interface Day {
-  day: string | number;
+  day: string;
   type: string;
+  year?: string;
+  month?: string;
 }
 
 export interface MonthInfo {
