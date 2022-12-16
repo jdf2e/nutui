@@ -1,3 +1,18 @@
+## v3.3.1
+
+`2022-12-16`
+
+小程序版本依赖 Taro ^3.5.6
+
+* :zap: feat(imagepreview、infiniteloading、tabs、tabbar): 优化内部逻辑 @nutui-team
+* :zap: feat(picker): 新增 showOkText、showCancelText (#1933) @yangxiaolu1993
+* :bug: fix(price): add new props strike-through (#1934)(#1907) @Drjingfubo
+* :bug: fix(tabs): taro env sticky tips bug #1889 @richard1015
+* :bug: fix(price): taro h5 style problem (#1944)  @Drjingfubo
+* :bug: fix(menu): 修正自定义图标文档错误 、设置class-prefix不生效问题 (#1942) @yangjinjun3
+* :bug: fix: range 组件Taro H5修改 (#1915) @lkjh3214
+
+
 ## v3.3.0
 
 `2022-12-02`
