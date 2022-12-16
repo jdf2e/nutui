@@ -120,7 +120,6 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
 
     return { state };
