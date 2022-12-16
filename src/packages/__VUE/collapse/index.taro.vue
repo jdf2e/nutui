@@ -114,20 +114,20 @@ export default create({
           let doms: any = childrenDom.value;
           Array.from(doms).forEach((item: any, index: number) => {
             if (typeof newval == 'number' || typeof newval == 'string') {
-              if (newval == domsProps[index].props.name) {
-                item.changeOpen(true);
+              if (domsProps[index]) {
+                if (domsProps[index].props) {
+                  item.changeOpen(newval == domsProps[index].props.name ? true : false);
+                } else {
+                  item.changeOpen(newval == item.name ? true : false);
+                }
               } else {
-                item.changeOpen(false);
+                item.changeOpen(newval == item.name ? true : false);
               }
             } else if (Object.values(newval) instanceof Array) {
-              if (
+              const isOpen =
                 newval.indexOf(Number(domsProps[index].props.name)) > -1 ||
-                newval.indexOf(String(domsProps[index].props.name)) > -1
-              ) {
-                item.changeOpen(true);
-              } else {
-                item.changeOpen(false);
-              }
+                newval.indexOf(String(domsProps[index].props.name)) > -1;
+              item.changeOpen(isOpen);
             }
             item.animation();
           });

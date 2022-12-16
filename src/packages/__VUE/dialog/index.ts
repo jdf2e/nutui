@@ -1,5 +1,10 @@
 import Dialog from './index.vue';
-import { render, createVNode, h, VNode, CSSProperties } from 'vue';
+import { h, VNode, CSSProperties } from 'vue';
+import Popup from '../popup/index.vue';
+import Icon from '../icon/index.vue';
+import Button from '../button/index.vue';
+import OverLay from '../overlay/index.vue';
+import { CreateComponent } from '@/packages/utils/create';
 export class DialogOptions {
   title?: string = '';
   content?: string | VNode = '';
@@ -37,51 +42,29 @@ class DialogFunction {
   instance: any;
   constructor(_options: DialogOptions) {
     let options = Object.assign(this.options, _options);
-    let elWarp: HTMLElement = document.body;
-    let teleport = options.teleport as string;
-    if (teleport != 'body') {
-      if (typeof teleport == 'string') {
-        elWarp = document.querySelector(teleport) as HTMLElement;
-      } else {
-        elWarp = options.teleport as HTMLElement;
-      }
-    }
-    const root = document.createElement('view');
-    root.id = 'dialog-' + options.id;
-    const Wrapper = {
-      setup() {
-        options.onUpdate = (val: boolean) => {
-          if (val == false) {
-            elWarp.removeChild(root);
+    const { unmount } = CreateComponent(options, {
+      name: 'dialog',
+      components: [Popup, Icon, Button, OverLay],
+      wrapper: (elWarp: any, root: any) => {
+        return {
+          setup() {
+            options.onUpdate = (val: boolean) => {
+              if (val == false) {
+                unmount();
+              }
+            };
+            if (options?.onOpened) {
+              options?.onOpened();
+            }
+            options.teleport = `#${root.id}`;
+            return () => {
+              return h(Dialog, options);
+            };
           }
         };
-        if (options?.onOpened) {
-          options?.onOpened();
-        }
-        options.teleport = `#${root.id}`;
-        return () => {
-          return h(Dialog, options);
-        };
       }
-    };
-    this.instance = createVNode(Wrapper);
-    elWarp.appendChild(root);
-    render(this.instance, root);
+    });
   }
-
-  close = () => {
-    // if (this.instance) {
-    //   this.instance.component.ctx.close();
-    // }
-  };
-
-  setDefaultOptions = (options: DialogOptions) => {
-    // Object.assign(this.currentOptions, options);
-  };
-
-  resetDefaultOptions = () => {
-    // Dialog.currentOptions = { ...Dialog.defaultOptions };
-  };
 }
 
 const _Dialog = function (options: DialogOptions) {

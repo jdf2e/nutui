@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
+  <view :class="classes" v-show="state.showWrapper" :style="{ zIndex: state.zIndex }">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -12,22 +12,24 @@
       :style="
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
-      :overlayStyle="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      :overlay-style="
+        parent.props.direction === 'down'
+          ? { top: parent.offset.value + 'px' }
+          : { bottom: parent.offset.value + 'px', top: 'auto' }
       "
+      transition="none"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
-      transition="transition-none"
-      overlayClass="nut-menu__overlay"
+      :destroy-on-close="false"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <scroll-view :scroll-y="true" style="height: 100%">
+      <Nut-Scroll-View :scroll-y="true" style="height: 100%">
         <view class="nut-menu-item__content">
           <view
             v-for="(option, index) in options"
@@ -46,6 +48,7 @@
               :name="optionIcon"
               v-bind="$attrs"
               :color="parent.props.activeColor"
+              :class-prefix="classPrefix"
             ></nut-icon>
             <view
               :class="{
@@ -58,16 +61,18 @@
           </view>
           <slot></slot>
         </view>
-      </scroll-view>
+      </Nut-Scroll-View>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed } from 'vue';
+import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
+import NutScrollView from '../scrollView/index.taro.vue';
+let _zIndex = 2000;
 
 export default create({
   props: {
@@ -90,15 +95,21 @@ export default create({
     optionIcon: {
       type: String,
       default: 'Check'
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
     }
   },
   components: {
     [Icon.name]: Icon,
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    NutScrollView
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
     const state = reactive({
+      zIndex: _zIndex,
       showPopup: false,
       transition: true,
       showWrapper: false,
@@ -112,10 +123,15 @@ export default create({
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
 
-        const { link } = parent;
+        const { link, removeLink } = parent;
 
         // @ts-ignore
         link(instance);
+
+        onUnmounted(() => {
+          // @ts-ignore
+          removeLink(instance);
+        });
 
         return {
           parent
@@ -153,6 +169,7 @@ export default create({
 
       if (show) {
         state.showWrapper = true;
+        state.zIndex = ++_zIndex;
       }
     };
 

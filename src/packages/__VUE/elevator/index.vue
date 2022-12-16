@@ -77,7 +77,7 @@ export default create({
       default: 35
     }
   },
-  emits: ['click-item', 'click-index'],
+  emits: ['click-item', 'click-index', 'change'],
   setup(props, context) {
     const listview: Ref<any> = ref(null);
     const state = reactive({
@@ -133,7 +133,7 @@ export default create({
       state.listHeight.push(height);
       for (let i = 0; i < state.listGroup.length; i++) {
         let item = state.listGroup[i];
-        height += item.clientHeight;
+        height += Math.floor(item.clientHeight);
         state.listHeight.push(height);
       }
     };
@@ -224,6 +224,13 @@ export default create({
         }
         if (state.fixedTop === fixedTop) return;
         state.fixedTop = fixedTop;
+      }
+    );
+
+    watch(
+      () => state.currentIndex,
+      (newVal: number) => {
+        context.emit('change', newVal);
       }
     );
 

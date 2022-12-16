@@ -1,6 +1,6 @@
 <template>
   <view>
-    <scroll-view
+    <Nut-Scroll-View
       :scroll-y="true"
       :style="{ height }"
       @scroll="scroll"
@@ -8,7 +8,7 @@
       scroll-with-animation="true"
     >
       <slot name="content"></slot>
-    </scroll-view>
+    </Nut-Scroll-View>
     <view :class="classes" :style="style" @click.stop="click">
       <slot name="icon">
         <nut-icon size="19px" class="nut-backtop-main" name="top"></nut-icon>
@@ -20,8 +20,12 @@
 <script lang="ts">
 import { reactive, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import NutScrollView from '../scrollView/index.taro.vue';
 const { componentName, create } = createComponent('backtop');
 export default create({
+  components: {
+    NutScrollView
+  },
   props: {
     height: {
       type: String,

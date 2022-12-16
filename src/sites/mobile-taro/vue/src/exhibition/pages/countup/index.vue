@@ -114,7 +114,7 @@ export default {
 }
 .show-demo {
   background: #ffffff;
-  padding: 0 20px;
+  padding: 0;
 }
 h2 {
   padding: 0 20px;

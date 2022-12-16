@@ -170,6 +170,24 @@
       </nut-calendar>
     </div>
     <h2>{{ translate('title3') }}</h2>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        :title="translate('single')"
+        :desc="date8 ? `${date8}` : translate('please')"
+        @click="openSwitch('isVisible8')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible8"
+        :default-value="date8"
+        @close="closeSwitch('isVisible8')"
+        @choose="setChooseValue8"
+        :first-day-of-week="2"
+      >
+      </nut-calendar>
+    </div>
+    <h2>{{ translate('title4') }}</h2>
     <div class="test-calendar-wrapper">
       <nut-calendar :poppable="false" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">
       </nut-calendar>
@@ -190,7 +208,8 @@ const initTranslate = () =>
       title: '基础用法',
       title1: '快捷选择',
       title2: '自定义日历',
-      title3: '平铺展示',
+      title3: '自定义周起始日',
+      title4: '平铺展示',
 
       please: '请选择',
       single: '选择单个日期',
@@ -213,7 +232,8 @@ const initTranslate = () =>
       title: 'Basic Usage',
       title1: 'Quick Select',
       title2: 'Custom Calendar',
-      title3: 'Tiled Display',
+      title3: 'Custom First Day Of Week',
+      title4: 'Tiled Display',
 
       please: 'Please Select Date',
       single: 'Select Single Date',
@@ -244,6 +264,7 @@ interface TestCalendarState {
   isVisible5: boolean;
   isVisible6: boolean;
   isVisible7: boolean;
+  isVisible8: boolean;
   date1: string[];
   date2: string;
   date3: string;
@@ -251,6 +272,7 @@ interface TestCalendarState {
   date5: string[];
   date6: string[];
   date7: string[];
+  date8: string;
 }
 export default createDemo({
   props: {},
@@ -268,13 +290,15 @@ export default createDemo({
       date5: ['2021-12-23', '2021-12-26'],
       date6: [],
       date7: [],
+      date8: '',
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
       isVisible4: false,
       isVisible5: false,
       isVisible6: false,
-      isVisible7: false
+      isVisible7: false,
+      isVisible8: false
     });
     const openSwitch = (param: string) => {
       state[`${param}`] = true;
@@ -321,6 +345,9 @@ export default createDemo({
       });
       state.date7 = [...dateArr];
     };
+    const setChooseValue8 = (param: string) => {
+      state.date8 = param[3];
+    };
     const clickBtn = (param: string) => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -351,6 +378,7 @@ export default createDemo({
       setChooseValue4,
       setChooseValue5,
       setChooseValue6,
+      setChooseValue8,
       clickBtn,
       clickBtn1,
       goDate,

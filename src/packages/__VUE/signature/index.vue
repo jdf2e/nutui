@@ -87,7 +87,7 @@ export default create({
       canvas.value.addEventListener(state.events[3], leaveEventHandler, false);
     };
 
-    const moveEventHandler = (event) => {
+    const moveEventHandler = (event: { preventDefault: () => void; touches: any[] }) => {
       event.preventDefault();
 
       let evt = state.isSupportTouch ? event.touches[0] : event;
@@ -100,13 +100,13 @@ export default create({
       state.ctx.stroke();
     };
 
-    const endEventHandler = (event) => {
+    const endEventHandler = (event: { preventDefault: () => void }) => {
       event.preventDefault();
       emit('end');
       canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };
-    const leaveEventHandler = (event) => {
+    const leaveEventHandler = (event: { preventDefault: () => void }) => {
       event.preventDefault();
       canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
@@ -122,7 +122,7 @@ export default create({
       onSave(canvas.value);
     };
 
-    const onSave = (canvas) => {
+    const onSave = (canvas: { toDataURL: (arg0: string, arg1?: number | undefined) => any }) => {
       let dataurl;
       switch (props.type) {
         case 'png':

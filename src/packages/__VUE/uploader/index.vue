@@ -2,41 +2,27 @@
   <view :class="classes">
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
-      <template v-if="maximum - fileList.length">
-        <input
-          class="nut-uploader__input"
-          v-if="capture"
-          type="file"
-          capture="camera"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
-        <input
-          class="nut-uploader__input"
-          v-else
-          type="file"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
-      </template>
+      <component :is="renderInput" @change="onChange" v-if="maximum - fileList.length"></component>
     </view>
 
     <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
       <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
-        <view class="nut-uploader__preview__progress" v-if="item.status == 'ready'">
+        <view class="nut-uploader__preview__progress" v-if="item.status != 'success'">
+          <nut-icon
+            color="#fff"
+            :name="item.status == 'error' ? 'failure' : 'loading'"
+            v-if="item.status != 'ready'"
+          ></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <view class="nut-uploader__preview__progress" v-else-if="item.status != 'success'">
-          <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
-          <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
-        </view>
-        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
+
+        <nut-icon
+          v-if="isDeletable"
+          v-bind="$attrs"
+          @click="onDelete(item, index)"
+          class="close"
+          :name="deleteIcon"
+        ></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -48,8 +34,10 @@
             <nut-icon color="#808080" name="link"></nut-icon>&nbsp;{{ item.name }}
           </view>
         </view>
+
         <view class="tips">{{ item.name }}</view>
       </view>
+
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
         <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
           <nut-icon name="link" />&nbsp;{{ item.name }}
@@ -70,43 +58,25 @@
         </nut-progress>
       </view>
     </view>
+
     <view
       class="nut-uploader__upload"
       :class="[listType]"
       v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
     >
       <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
-      <input
-        class="nut-uploader__input"
-        v-if="capture"
-        type="file"
-        capture="camera"
-        :accept="accept"
-        :multiple="multiple"
-        :name="name"
-        :disabled="disabled"
-        @change="onChange"
-      />
-      <input
-        class="nut-uploader__input"
-        v-else
-        type="file"
-        :accept="accept"
-        :multiple="multiple"
-        :name="name"
-        :disabled="disabled"
-        @change="onChange"
-      />
+
+      <component :is="renderInput" @change="onChange"></component>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, h, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
-import { isPromise } from '@/packages/utils/util';
+import { funInterceptor, Interceptor } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('uploader');
 export default create({
   props: {
@@ -134,6 +104,7 @@ export default create({
     multiple: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
+    deleteIcon: { type: String, default: 'failure' },
     beforeUpload: {
       type: Function,
       default: null
@@ -143,13 +114,12 @@ export default create({
       default: null
     },
     beforeDelete: {
-      type: Function,
+      type: Function as PropType<Interceptor>,
       default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
         return true;
       }
     },
     onChange: { type: Function }
-    // customRequest: { type: Function }
   },
   emits: [
     'start',
@@ -172,6 +142,21 @@ export default create({
         [prefixCls]: true
       };
     });
+
+    const renderInput = () => {
+      let params: any = {
+        class: `nut-uploader__input`,
+        type: 'file',
+        accept: props.accept,
+        multiple: props.multiple,
+        name: props.name,
+        disabled: props.disabled
+      };
+
+      if (props.capture) params.capture = 'camera';
+
+      return h('input', params);
+    };
 
     const clearInput = (el: HTMLInputElement) => {
       el.value = '';
@@ -237,6 +222,7 @@ export default create({
         );
       }
     };
+
     const clearUploadQueue = (index = -1) => {
       if (index > -1) {
         uploadQueue.splice(index, 1);
@@ -313,20 +299,10 @@ export default create({
 
     const onDelete = (file: import('./type').FileItem, index: number) => {
       clearUploadQueue(index);
-      let fn = props.beforeDelete(file, fileList);
-      if (isPromise(fn)) {
-        fn.then((res) => {
-          if (res) {
-            deleted(file, index);
-          }
-        }).catch((error) => {
-          console.log(error, '用户阻止了删除！');
-        });
-      } else if (fn) {
-        deleted(file, index);
-      } else {
-        console.log('用户阻止了删除！');
-      }
+      funInterceptor(props.beforeDelete, {
+        args: [file, fileList],
+        done: () => deleted(file, index)
+      });
     };
 
     const onChange = (event: InputEvent) => {
@@ -337,13 +313,9 @@ export default create({
       let { files } = $el;
 
       if (props.beforeUpload) {
-        props.beforeUpload(files).then((f: Array<File>) => {
-          const _files: File[] = filterFiles(new Array<File>().slice.call(f));
-          readFile(_files);
-        });
+        props.beforeUpload(files).then((f: Array<File>) => changeReadFile(f));
       } else {
-        const _files: File[] = filterFiles(new Array<File>().slice.call(files));
-        readFile(_files);
+        changeReadFile(files);
       }
 
       emit('change', {
@@ -356,6 +328,11 @@ export default create({
       }
     };
 
+    const changeReadFile = (f: any) => {
+      const _files: File[] = filterFiles(new Array<File>().slice.call(f));
+      readFile(_files);
+    };
+
     return {
       onChange,
       onDelete,
@@ -363,7 +340,8 @@ export default create({
       classes,
       fileItemClick,
       clearUploadQueue,
-      submit
+      submit,
+      renderInput
     };
   }
 });

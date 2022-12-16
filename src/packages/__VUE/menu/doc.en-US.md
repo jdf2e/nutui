@@ -220,8 +220,8 @@ export default {
 
 ```html
 <template>
-  <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+  <nut-menu title-icon="joy-smile">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
   </nut-menu>
 </template>
@@ -323,12 +323,12 @@ export default {
 <template>
   <nut-menu>
     <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
-    <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
+    <nut-menu-item disabled v-model="state.value2" :options="state.options2" />
   </nut-menu>
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
 
 export default {
   setup() {
@@ -368,21 +368,8 @@ export default {
       value3: 0
     });
 
-    const item = ref('');
-
-    const onConfirm = () => {
-      item.value.toggle();
-    }
-
-    const handleChange = val => {
-      console.log('val', val);
-    }
-
     return {
-      state,
-      item,
-      onConfirm,
-      handleChange
+      state
     };
   }
 }
@@ -402,7 +389,7 @@ export default {
 | scroll-fixed `v3.1.22`           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
 | title-class `v3.1.22`            | Custome title class                                                 | String                  | -       |
 | lock-scroll `v3.1.22`            | Whether the background is locked                                    | Boolean                 | true    |
-| title-icon `3.2.1`               | Custome title icon                                                  | String                  | -       |
+| title-icon `v3.2.1`               | Custome title icon                                                  | String                  | -       |
 
 ### MenuItem Props
 
@@ -427,3 +414,6 @@ export default {
 | Event  | Description                   | Arguments      |
 |--------|-------------------------------|----------------|
 | change | Emitted select option changed | Selected value |
+| toggle | Toggle menu display status, `true` to show，`false` to hide, no param is negated | show?: boolean |
+| open `v3.2.7` | Emitted when opening menu | - |
+| close `v3.2.7` | Emitted when closing menu | - |

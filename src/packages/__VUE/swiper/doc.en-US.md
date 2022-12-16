@@ -34,7 +34,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -177,7 +177,7 @@ Support dynamic addition / deletion of pictures
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -224,7 +224,7 @@ Support dynamic addition / deletion of pictures
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -266,7 +266,7 @@ Support dynamic addition / deletion of pictures
     right: 0;
     width: 46px;
     height: 22px;
-    background: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.33);
     border-radius: 22px;
     text-align: center;
     color: #fff;
@@ -291,7 +291,7 @@ You can manually switch through `api` (`prev`, `next`)
         <img :src="item" alt="" />
       </nut-swiper-item>
     </nut-swiper>
-    <view class="nut-swiper-btns">
+    <view class="nut-swiper-btns" style="width: 100%;">
       <span class="nut-swiper-btns__left" @click="handlePrev">
         <nut-icon name='left'></nut-icon>
       </span>
@@ -338,7 +338,6 @@ You can manually switch through `api` (`prev`, `next`)
     }
   }
   .nut-swiper-btns{
-    width: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -372,7 +371,7 @@ You can manually switch through `api` (`prev`, `next`)
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -518,8 +517,8 @@ You can manually switch through `api` (`prev`, `next`)
 
 | Attribute                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | Width of rotation card           | Number、String        | window.innerWidth       |
-| height                | Height of rotation card                                                    | String、Number | 0        |
+| width                   | Width of rotation card           | Number、String        | `auto`       |
+| height                | Height of rotation card                                                    | String、Number | `auto`        |
 | direction               | Rotation direction, optional value：`horizontal`,`vertical`     | String | 'horizontal'         |
 | pagination-visible          | Is the paging indicator displayed                                           | Boolean         | false           |
 | pagination-color         | The color selected by the pagination indicator                                              | String  | '#fff'           |
@@ -528,8 +527,8 @@ You can manually switch through `api` (`prev`, `next`)
 | auto-play | Automatic rotation duration, 0 means no automatic rotation                                          | Number、String        | 0        |
 | init-page               | Initialize index value                   | Number、String         | 0    |
 | touchable             | if touchable to slide                                                      | Boolean         | true          |
-| is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
-| is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
+| is-prevent-default                  | Disable default events during sliding                                              | Boolean  | true           |
+| is-stop-propagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
 | is-center| The corresponding `width` and `height` must be passed to determine whether to display in the middle`  | Boolean   | false    |
 
 
@@ -539,6 +538,12 @@ You can manually switch through `api` (`prev`, `next`)
 | Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |
 | change            | Callback after sliding        |  Current index value |
+
+### Slots
+
+| Name | Description       |
+| ------ | ---------- |
+| page  | Custom Pager |
 
 
 

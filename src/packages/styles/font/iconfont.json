@@ -6,6 +6,41 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "257405",
+      "name": "close_fill",
+      "font_class": "mask-close",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
+    },
+    {
+      "icon_id": "24330526",
+      "name": "常用_返回",
+      "font_class": "rect-left",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "24330528",
+      "name": "常用_收起",
+      "font_class": "rect-up",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "24330529",
+      "name": "常用_更多",
+      "font_class": "rect-right",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "24330530",
+      "name": "常用_展开",
+      "font_class": "rect-down",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
       "icon_id": "4175511",
       "name": "下箭头",
       "font_class": "triangle-down",
@@ -417,13 +452,6 @@
       "font_class": "uploader",
       "unicode": "e69b",
       "unicode_decimal": 59035
-    },
-    {
-      "icon_id": "18193248",
-      "name": "mask-close",
-      "font_class": "mask-close",
-      "unicode": "e69a",
-      "unicode_decimal": 59034
     },
     {
       "icon_id": "18193089",

@@ -14,34 +14,28 @@
     <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
         <view class="bottom-box">
-          <template v-if="!slots.loading">
+          <slot name="loading">
             <nut-icon class="bottom-img" v-bind="$attrs" :name="loadIcon"></nut-icon>
             <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
-          </template>
-          <slot name="loading" v-else></slot>
+          </slot>
         </view>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips" v-if="!slots.finished">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
-        <slot name="finished" v-else></slot>
+        <slot name="finished">
+          <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+        </slot>
       </template>
     </view>
   </view>
 </template>
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  CSSProperties,
-  onActivated,
-  onDeactivated,
-  ref
-} from 'vue';
+import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeactivated, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('infiniteloading');
+import { useTouch } from '@/packages/utils/useTouch';
+import requestAniFrame from '@/packages/utils/raf';
+import { getScrollTopRoot } from '@/packages/utils/util';
+
 export default create({
   props: {
     hasMore: {
@@ -92,6 +86,7 @@ export default create({
   emits: ['scroll-change', 'load-more', 'refresh'],
 
   setup(props, { emit, slots }) {
+    const touch: any = useTouch();
     const state = reactive({
       scrollEl: window as Window | HTMLElement | (Node & ParentNode),
       scroller: null as null | HTMLElement,
@@ -113,30 +108,11 @@ export default create({
     });
 
     const getStyle = computed(() => {
-      const style: CSSProperties = {};
       return {
         height: state.distance < 0 ? `0px` : `${state.distance}px`,
-        transition: state.isTouching
-          ? `height 0s cubic-bezier(0.25,0.1,0.25,1)`
-          : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
+        transitionDuration: state.isTouching ? 0 : `0.2s`
       };
     });
-
-    const requestAniFrame = () => {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        function (callback) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    };
-
-    const getWindowScrollTop = () => {
-      return window.pageYOffset !== undefined
-        ? window.pageYOffset
-        : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    };
 
     const calculateTopPosition = (el: HTMLElement): number => {
       return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
@@ -146,8 +122,9 @@ export default create({
       let offsetDistance = 0;
       let resScrollTop = 0;
       let direction = 'down';
-      const windowScrollTop = getWindowScrollTop();
+
       if (props.useWindow) {
+        const windowScrollTop = getScrollTopRoot();
         if (state.scroller) {
           offsetDistance =
             calculateTopPosition(state.scroller) + state.scroller.offsetHeight - windowScrollTop - window.innerHeight;
@@ -178,7 +155,7 @@ export default create({
     };
 
     const handleScroll = () => {
-      requestAniFrame()(() => {
+      requestAniFrame(() => {
         if (!isScrollAtBottom() || !props.hasMore || state.isInfiniting) {
           return false;
         } else {
@@ -198,6 +175,8 @@ export default create({
     };
 
     const touchStart = (event: TouchEvent) => {
+      touch.start(event);
+
       if (state.beforeScrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
         state.y = event.touches[0].pageY;
         state.isTouching = true;
@@ -208,9 +187,11 @@ export default create({
     };
 
     const touchMove = (event: TouchEvent) => {
+      touch.move(event);
+
       state.distance = event.touches[0].pageY - state.y;
 
-      if (state.distance > 0 && state.isTouching) {
+      if ((touch as any).isVertical() && state.distance > 0 && state.isTouching) {
         event.preventDefault();
         if (state.distance >= state.refreshMaxH) state.distance = state.refreshMaxH;
       } else {
@@ -227,6 +208,10 @@ export default create({
           emit('refresh', refreshDone);
         }
       }
+
+      setTimeout(() => {
+        touch.reset();
+      }, 0);
     };
 
     // 滚动监听对象
@@ -234,17 +219,19 @@ export default create({
       return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
     };
 
+    const removeScrollListener = () => {
+      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+    };
+
     onMounted(() => {
       const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode;
       state.scrollEl = props.useWindow ? window : parentElement;
 
       scrollListener();
-
-      console.log(slots);
     });
 
     onUnmounted(() => {
-      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+      removeScrollListener();
     });
 
     const isKeepAlive = ref(false);
@@ -258,7 +245,7 @@ export default create({
 
     onDeactivated(() => {
       isKeepAlive.value = true;
-      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
+      removeScrollListener();
     });
 
     return {

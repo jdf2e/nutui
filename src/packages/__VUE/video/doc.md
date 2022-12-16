@@ -266,3 +266,4 @@ export default {
 | play     | 播放         | --       |
 | pause    | 暂停         | --       |
 | playend  | 播放完成回调 | --       |
+| time `v3.2.6`  | 播放时触发(current为当前播放时间，total为总时间)|  (current:string,total:string)  |

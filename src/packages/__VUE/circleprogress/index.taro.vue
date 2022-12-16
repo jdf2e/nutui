@@ -110,48 +110,17 @@ export default create({
       return {
         background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100'  xmlns='http://www.w3.org/2000/svg'%3E${pa}${path}${path1}%3C/svg%3E")`,
         width: '100%',
-        height: '100%'
+        height: '100%',
+        transition: ' background-image .3s ease 0s,stroke .3s ease 0s'
       };
     });
     const format = (progress: string | number) => Math.min(Math.max(+progress, 0), 100);
-    var lastTime = 0;
-    const requestAnimationFrame = function (callback: Function) {
-      var currTime = new Date().getTime();
-      var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-      lastTime = currTime + timeToCall;
-      var id = setTimeout(function () {
-        callback(currTime + timeToCall, lastTime);
-      }, timeToCall);
-      lastTime = currTime + timeToCall;
-      return id;
-    };
-
-    const cancelAnimationFrame = function (id: any) {
-      clearTimeout(id);
-    };
 
     watch(
       () => props.progress,
       (value, oldvalue) => {
-        let rafId: number | undefined;
-        const startTime = Date.now();
-        const startRate = Number(oldvalue);
-        const endRate = Number(value);
-        const duration = Math.abs(((startRate - endRate) * 1000) / +100);
-        const animate = () => {
-          const now = Date.now();
-          const progress = Math.min((now - startTime) / duration, 1);
-          const rate = progress * (endRate - startRate) + startRate;
-          currentRate.value = Math.min(Math.max(+rate, 0), 100);
-          emit('update:progress', format(parseFloat(rate.toFixed(1))));
-          if (endRate > startRate ? rate < endRate : rate > endRate) {
-            rafId = requestAnimationFrame(animate);
-          }
-        };
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-        }
-        rafId = requestAnimationFrame(animate, 0);
+        currentRate.value = Math.min(Math.max(+value, 0), 100);
+        emit('update:progress', format(parseFloat(Number(value).toFixed(1))));
       }
     );
     return {

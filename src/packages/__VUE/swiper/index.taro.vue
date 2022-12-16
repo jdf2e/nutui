@@ -9,23 +9,11 @@
     @touchcancel="onTouchEnd"
     :catch-move="isPreventDefault"
   >
-    <view
-      :class="{
-        [`${componentName}-inner`]: true,
-        [`${componentName}-vertical`]: isVertical
-      }"
-      :style="state.style"
-    >
+    <view :class="classesInner" :style="state.style">
       <slot></slot>
     </view>
     <slot name="page"></slot>
-    <view
-      :class="{
-        [`${componentName}-pagination`]: true,
-        [`${componentName}-pagination-vertical`]: isVertical
-      }"
-      v-if="paginationVisible && !slots.page"
-    >
+    <view :class="classesPagination" v-if="paginationVisible && !$slots.page">
       <i
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
@@ -52,9 +40,11 @@ import {
   VNode
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useTouch } from './use-touch';
+import { useTouch } from '@/packages/utils/useTouch/index';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import requestAniFrame from '@/packages/utils/raf';
+import { clamp } from '@/packages/utils/util';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 const { create, componentName } = createComponent('swiper');
 export default create({
@@ -68,7 +58,7 @@ export default create({
       default: 0
     },
     direction: {
-      type: [String],
+      type: String,
       default: 'horizontal' //horizontal and vertical
     },
     paginationVisible: {
@@ -106,10 +96,6 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
-    },
-    isCenter: {
-      type: Boolean,
-      default: false
     }
   },
   emits: ['change'],
@@ -143,12 +129,28 @@ export default create({
 
     const isVertical = computed(() => props.direction === 'vertical');
 
+    const classesInner = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [`${prefixCls}-inner`]: true,
+        [`${prefixCls}-vertical`]: isVertical.value
+      };
+    });
+
+    const classesPagination = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [`${prefixCls}-pagination`]: true,
+        [`${prefixCls}-pagination-vertical`]: isVertical.value
+      };
+    });
+
     const delTa = computed(() => {
-      return isVertical.value ? touch.state.deltaY : touch.state.deltaX;
+      return isVertical.value ? touch.deltaY.value : touch.deltaX.value;
     });
 
     const isCorrectDirection = computed(() => {
-      return touch.state.direction === props.direction;
+      return touch.direction.value === props.direction;
     });
 
     const childCount = computed(() => state.children.length);
@@ -169,14 +171,7 @@ export default create({
 
     const getStyle = () => {
       let offset = 0;
-      if (!props.isCenter) {
-        offset = state.offset;
-      } else {
-        let val = isVertical.value
-          ? (state.rect as DOMRect).height - size.value
-          : (state.rect as DOMRect).width - size.value;
-        offset = state.offset + (state.active === childCount.value - 1 ? -val / 2 : val / 2);
-      }
+      offset = state.offset;
       state.style = {
         transitionDuration: `${state.moving ? 0 : props.duration}ms`,
         transform: `translate${isVertical.value ? 'Y' : 'X'}(${offset}px)`,
@@ -187,26 +182,27 @@ export default create({
 
     const relation = (child: ComponentInternalInstance) => {
       let children = [] as VNode[];
+      const childrenVNodeLen = state.childrenVNode.length;
       let slot = slots?.default?.() as VNode[];
       slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children));
       slot.forEach((item: VNode) => {
         children = children.concat(item.children as VNode[]);
       });
-      if (!state.childrenVNode.length) {
+      if (!childrenVNodeLen) {
         state.childrenVNode = children.slice();
         child.proxy && state.children.push(child.proxy);
       } else {
-        if (state.childrenVNode.length > children.length) {
+        if (childrenVNodeLen > children.length) {
           state.children = state.children.filter((item: ComponentPublicInstance) => child.proxy !== item);
-        } else if (state.childrenVNode.length < children.length) {
-          for (let i = 0; i < state.childrenVNode.length; i++) {
+        } else if (childrenVNodeLen < children.length) {
+          for (let i = 0; i < childrenVNodeLen; i++) {
             if ((children[i] as VNode).key !== (state.childrenVNode[i] as VNode).key) {
               child.proxy && state.children.splice(i, 0, child.proxy);
               child.vnode && state.childrenVNode.splice(i, 0, child.vnode);
               break;
             }
           }
-          if (state.childrenVNode.length !== children.length) {
+          if (childrenVNodeLen !== children.length) {
             child.proxy && state.children.push(child.proxy);
             child.vnode && state.childrenVNode.push(child.vnode);
           }
@@ -217,14 +213,6 @@ export default create({
       }
     };
 
-    const range = (num: number, min: number, max: number) => {
-      return Math.min(Math.max(num, min), max);
-    };
-
-    const requestFrame = (fn: FrameRequestCallback) => {
-      requestAnimationFrame.call(null, fn);
-    };
-
     const getOffset = (active: number, offset = 0) => {
       let currentPosition = active * size.value;
       if (!props.loop) {
@@ -233,7 +221,7 @@ export default create({
 
       let targetOffset = offset - currentPosition;
       if (!props.loop) {
-        targetOffset = range(targetOffset, minOffset.value, 0);
+        targetOffset = clamp(targetOffset, minOffset.value, 0);
       }
 
       return targetOffset;
@@ -243,9 +231,9 @@ export default create({
       const { active } = state;
       if (pace) {
         if (props.loop) {
-          return range(active + pace, -1, childCount.value);
+          return clamp(active + pace, -1, childCount.value);
         }
-        return range(active + pace, 0, childCount.value - 1);
+        return clamp(active + pace, 0, childCount.value - 1);
       }
       return active;
     };
@@ -294,34 +282,27 @@ export default create({
       clearTimeout(state.autoplayTimer);
     };
 
-    const prev = () => {
+    const jump = (pace: number) => {
       resettPosition();
       touch.reset();
 
-      requestFrame(() => {
-        requestFrame(() => {
+      requestAniFrame(() => {
+        requestAniFrame(() => {
           state.moving = false;
           move({
-            pace: -1,
+            pace,
             isEmit: true
           });
         });
       });
     };
 
-    const next = () => {
-      resettPosition();
-      touch.reset();
+    const prev = () => {
+      jump(-1);
+    };
 
-      requestFrame(() => {
-        requestFrame(() => {
-          state.moving = false;
-          move({
-            pace: 1,
-            isEmit: true
-          });
-        });
-      });
+    const next = () => {
+      jump(1);
     };
 
     const to = (index: number) => {
@@ -329,19 +310,17 @@ export default create({
 
       touch.reset();
 
-      requestFrame(() => {
-        requestFrame(() => {
-          state.moving = false;
-          let targetIndex;
-          if (props.loop && childCount.value === index) {
-            targetIndex = state.active === 0 ? 0 : index;
-          } else {
-            targetIndex = index % childCount.value;
-          }
-          move({
-            pace: targetIndex - state.active,
-            isEmit: true
-          });
+      requestAniFrame(() => {
+        state.moving = false;
+        let targetIndex;
+        if (props.loop && childCount.value === index) {
+          targetIndex = state.active === 0 ? 0 : index;
+        } else {
+          targetIndex = index % childCount.value;
+        }
+        move({
+          pace: targetIndex - state.active,
+          isEmit: true
         });
       });
     };
@@ -357,6 +336,7 @@ export default create({
     };
 
     const init = async (active: number = +props.initPage) => {
+      if (!container.value) return;
       stopAutoPlay();
       state.rect = await useTaroRect(container, Taro);
       if (state.rect) {
@@ -399,7 +379,7 @@ export default create({
 
       if (isShouldMove && isCorrectDirection.value) {
         let pace = 0;
-        const offset = isVertical.value ? touch.state.offsetY : touch.state.offsetX;
+        const offset = isVertical.value ? touch.offsetY.value : touch.offsetX.value;
         if (props.loop) {
           pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0;
         } else {
@@ -474,10 +454,9 @@ export default create({
       state,
       refRandomId,
       classes,
+      classesPagination,
+      classesInner,
       container,
-      componentName,
-      isVertical,
-      slots,
       activePagination,
       onTouchStart,
       onTouchMove,

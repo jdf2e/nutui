@@ -481,6 +481,7 @@ app.use(Elevator);
 |-------|----------|-------------|
 | click-item | Click content | key: string, item: { id: 0, name: '' } |
 | click-index | Click index | key: string |
+| change | Change index | index: number |   
 
 ### API
 

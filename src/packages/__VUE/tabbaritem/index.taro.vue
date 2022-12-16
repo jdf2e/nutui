@@ -19,7 +19,10 @@
       <template v-if="dot">
         <div class="nut-tabbar-item_icon-box_dot"></div>
       </template>
-      <view v-if="icon">
+      <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+        <slot name="icon" :active="active"></slot>
+      </div>
+      <view v-if="icon && !isHaveSlot('icon')">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
@@ -29,7 +32,7 @@
         ></nut-icon>
       </view>
       <div
-        v-if="!icon && activeImg"
+        v-if="!icon && activeImg && !isHaveSlot('icon')"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
           backgroundImage: `url(${active ? activeImg : img})`,
@@ -38,7 +41,10 @@
         }"
       ></div>
       <view
-        :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
+        :class="[
+          'nut-tabbar-item_icon-box_nav-word',
+          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !isHaveSlot('icon') }
+        ]"
       >
         <view v-if="tabTitle">{{ tabTitle }}</view>
         <slot v-if="!tabTitle"></slot>
@@ -48,7 +54,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { ComponentInternalInstance, computed, getCurrentInstance, inject, onMounted, reactive, watch } from 'vue';
+import { ComponentInternalInstance, computed, getCurrentInstance, inject, reactive, watch } from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
   props: {
@@ -97,7 +103,10 @@ export default create({
     },
     to: [Object, String]
   },
-  setup(props, ctx) {
+  setup(props, { emit, slots }) {
+    const isHaveSlot = (slot: string) => {
+      return slots[slot];
+    };
     const parent: any = inject('parent');
     const state = reactive({
       size: parent.size,
@@ -106,11 +115,11 @@ export default create({
       active: parent.modelValue, // 是否选中
       index: 0
     });
-    const relation = (child: ComponentInternalInstance): void => {
+    const relation = (child: ComponentInternalInstance) => {
       if (child.proxy) {
         parent.children.push(child.proxy);
-        const index = computed(() => parent.children.indexOf(child.proxy));
-        state.index = props.name ?? index.value;
+        const index = parent.children.indexOf(child.proxy);
+        state.index = props.name ?? index;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
@@ -147,6 +156,7 @@ export default create({
     return {
       state,
       active,
+      isHaveSlot,
       change
     };
   }

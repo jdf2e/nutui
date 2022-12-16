@@ -59,7 +59,7 @@
 <script lang="ts">
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { throttle } from '@/packages/utils/throttle.js';
+import { throttle } from '@/packages/utils/throttle';
 const { create, translate } = createComponent('video');
 
 export default create({
@@ -90,7 +90,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['click', 'play', 'pause', 'playend'],
+  emits: ['click', 'play', 'pause', 'playend', 'time'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -143,7 +143,8 @@ export default create({
             (state.videoElm as any).load();
           });
         }
-      }
+      },
+      { immediate: true, deep: true }
     );
 
     watch(
@@ -187,10 +188,7 @@ export default create({
         });
         (state.videoElm as any).addEventListener('ended', playEnded);
 
-        // (state.videoElm as any).addEventListener(
-        //   'timeupdate',
-        //   throttle(getPlayTime, 100, 1)
-        // );
+        (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000));
       }
     };
 
@@ -223,10 +221,7 @@ export default create({
               getLoadTime();
             });
             // 监听播放进度
-            // (state.videoElm as any).addEventListener(
-            //   'timeupdate',
-            //   throttle(getPlayTime, 100, 1)
-            // );
+            (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 1000, 1));
             // 监听结束
             (state.videoElm as any).addEventListener('ended', playEnded);
             emit('play', state.videoElm);
@@ -276,6 +271,7 @@ export default create({
       // 赋值时长
       state.videoSet.totalTime = timeFormat((state.videoElm as any).duration);
       state.videoSet.displayTime = timeFormat((state.videoElm as any).currentTime);
+      emit('time', state.videoSet.displayTime, state.videoSet.totalTime);
     };
 
     const playEnded = () => {

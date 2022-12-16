@@ -13,6 +13,11 @@
     object-fit: contain;
   }
 
+  &-taro-img {
+    width: 100%;
+    height: 100%;
+  }
+
   &-index {
     position: fixed;
     z-index: 2002;
@@ -35,6 +40,13 @@
     z-index: 2002;
     top: 50px;
     right: 15px;
+
+    &-right {
+      right: 10px;
+    }
+    &-left {
+      left: 10px;
+    }
   }
 
   .popup-bg {
@@ -47,11 +59,12 @@
     background-color: transparent;
   }
 }
-.custom-pop {
+.nut-imagepreview-custom-pop {
   height: 100%;
   background: transparent !important;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .nut-imagepreview-swiper .nut-swiper-item {
   display: flex;

@@ -1,13 +1,27 @@
 <template>
-  <view class="nut-tabbar" :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }">
+  <div v-if="bottom && placeholder" class="nut-tabbar__placeholder" :style="{ height: height + 'px' }">
+    <view
+      ref="nutTabbar"
+      class="nut-tabbar"
+      :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }"
+    >
+      <slot></slot>
+    </view>
+  </div>
+  <view
+    v-else
+    class="nut-tabbar"
+    :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }"
+  >
     <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { provide, reactive, watch } from 'vue';
+import { onMounted, provide, reactive, toRefs, ref, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabbar');
+import { useRect } from '@/packages/utils/useRect';
 export default create({
   props: {
     visible: {
@@ -17,10 +31,6 @@ export default create({
     bottom: {
       type: Boolean,
       default: false
-    },
-    type: {
-      type: String,
-      default: 'base'
     },
     size: {
       type: String,
@@ -37,14 +47,21 @@ export default create({
     safeAreaInsetBottom: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['tab-switch', 'update:visible'],
   setup(props, { emit, slots }) {
+    const { bottom, placeholder } = toRefs(props);
+    const height = ref();
     const mdValue = reactive({
       val: props.visible,
       children: []
     });
+    const nutTabbar = ref<HTMLElement>();
     function changeIndex(index: number, active: number | string) {
       emit('update:visible', active);
       parentData.modelValue = active;
@@ -65,9 +82,18 @@ export default create({
         parentData.modelValue = value;
       }
     );
+    onMounted(() => {
+      if (bottom.value && placeholder.value) {
+        nextTick(() => {
+          height.value = useRect(nutTabbar).height;
+        });
+      }
+    });
 
     return {
-      changeIndex
+      changeIndex,
+      nutTabbar,
+      height
     };
   }
 });

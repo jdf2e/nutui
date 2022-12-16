@@ -1,20 +1,23 @@
 <template>
-  <view :class="classes" @click="onClick">
-    <template v-if="$slots.input">
-      <view
-        v-if="label"
-        class="nut-input-label"
-        :class="labelClass"
-        :style="{
-          width: `${labelWidth}px`,
-          textAlign: labelAlign
-        }"
-      >
-        <view class="label-string">
-          {{ label }}
-          {{ colon ? ':' : '' }}
-        </view>
+  <view :class="classes">
+    <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
+      <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
+    </view>
+    <view
+      v-if="label"
+      class="nut-input-label"
+      :class="labelClass"
+      :style="{
+        width: `${labelWidth}px`,
+        textAlign: labelAlign
+      }"
+    >
+      <view class="label-string">
+        {{ label }}
+        {{ colon ? ':' : '' }}
       </view>
+    </view>
+    <template v-if="$slots.input">
       <view class="nut-input-value">
         <view class="nut-input-inner" @click="onClickInput">
           <slot name="input"></slot>
@@ -22,49 +25,14 @@
       </view>
     </template>
     <template v-else>
-      <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-        <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
-      </view>
-      <view
-        v-if="label"
-        class="nut-input-label"
-        :class="labelClass"
-        :style="{
-          width: `${labelWidth}px`,
-          textAlign: labelAlign
-        }"
-      >
-        <view class="label-string">
-          {{ label }}
-          {{ colon ? ':' : '' }}
-        </view>
-      </view>
       <view class="nut-input-value">
         <view class="nut-input-inner">
           <view class="nut-input-box">
-            <textarea
-              v-if="type == 'textarea'"
-              class="input-text"
-              ref="inputRef"
-              :style="stylesTextarea"
-              :maxlength="maxLength"
-              :placeholder="placeholder"
-              :disabled="disabled"
-              :readonly="readonly"
-              :value="modelValue"
-              :formatTrigger="formatTrigger"
-              :autofocus="autofocus"
-              @input="onInput"
-              @focus="onFocus"
-              @blur="onBlur"
-              @click="onClickInput"
-            />
-            <input
-              v-else
+            <component
+              :is="renderInput(type)"
               class="input-text"
               ref="inputRef"
               :style="styles"
-              :type="inputType(type)"
               :maxlength="maxLength"
               :placeholder="placeholder"
               :disabled="disabled"
@@ -72,11 +40,12 @@
               :value="modelValue"
               :formatTrigger="formatTrigger"
               :autofocus="autofocus"
+              :enterkeyhint="confirmType"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
               @click="onClickInput"
-            />
+            ></component>
           </view>
           <view class="nut-input-clear-box">
             <nut-icon
@@ -94,6 +63,7 @@
             <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
+          <slot v-if="$slots.rightExtra" name="rightExtra"></slot>
         </view>
         <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
           <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -113,11 +83,21 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create } = createComponent('input');
+
+export type InputType = InputHTMLAttributes['type'];
+export type InputAlignType = 'left' | 'center' | 'right'; // text-align
+export type InputFormatTrigger = 'onChange' | 'onBlur'; // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
+export type InputRule = {
+  pattern?: RegExp;
+  message?: string;
+  required?: boolean;
+};
+export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 export default create({
   props: {
@@ -126,11 +106,11 @@ export default create({
       default: ''
     },
     type: {
-      type: String as PropType<import('./type').InputType>,
+      type: String as PropType<InputType>,
       default: 'text'
     },
     modelValue: {
-      type: [String, Number],
+      type: String,
       default: ''
     },
     placeholder: {
@@ -150,7 +130,7 @@ export default create({
       default: '80'
     },
     labelAlign: {
-      type: String as PropType<import('./type').InputAlignType>,
+      type: String as PropType<InputAlignType>,
       default: 'left'
     },
     colon: {
@@ -218,7 +198,7 @@ export default create({
       default: true
     },
     formatTrigger: {
-      type: String as PropType<import('./type').InputFormatTrigger>,
+      type: String as PropType<InputFormatTrigger>,
       default: 'onChange'
     },
     formatter: {
@@ -226,7 +206,7 @@ export default create({
       default: null
     },
     rules: {
-      type: Array as PropType<import('./type').InputRule>,
+      type: Array as PropType<InputRule>,
       default: []
     },
     errorMessage: {
@@ -234,7 +214,7 @@ export default create({
       default: ''
     },
     errorMessageAlign: {
-      type: String as PropType<import('./type').InputAlignType>,
+      type: String as PropType<InputAlignType>,
       default: ''
     },
     rows: {
@@ -248,6 +228,10 @@ export default create({
     autofocus: {
       type: Boolean,
       default: false
+    },
+    confirmType: {
+      type: String as PropType<import('./type').ConfirmTextType>,
+      default: 'done'
     }
   },
 
@@ -265,11 +249,15 @@ export default create({
 
   setup(props, { emit, slots }) {
     const active = ref(false);
-
-    const inputRef = ref<HTMLInputElement>();
-    const customValue = ref<() => unknown>();
+    const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
-    // const form = inject('form');
+
+    const renderInput = (type: InputType) => {
+      return h(type == 'textarea' ? 'textarea' : 'input', {
+        style: type == 'textarea' ? stylesTextarea : styles,
+        type: type != 'textarea' && inputType(type)
+      });
+    };
 
     const state = reactive({
       focused: false,
@@ -289,19 +277,19 @@ export default create({
       };
     });
 
-    const styles: any = computed(() => {
+    const styles: ComputedRef = computed(() => {
       return {
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea: any = computed(() => {
+    const stylesTextarea: ComputedRef = computed(() => {
       return {
         textAlign: props.inputAlign,
         height: Number(props.rows) * 24 + 'px'
       };
     });
 
-    const inputType = (type: string) => {
+    const inputType = (type: InputType) => {
       if (type === 'number') {
         return 'text';
       } else if (type === 'digit') {
@@ -310,13 +298,6 @@ export default create({
         return type;
       }
     };
-
-    // const formValue = computed(() => {
-    //   if (customValue.value && slots.input) {
-    //     return customValue.value();
-    //   }
-    //   return props.modelValue;
-    // });
 
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
@@ -327,12 +308,11 @@ export default create({
       updateValue(value);
     };
 
-    const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
+    const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
       if (props.type === 'number') {
-        // console.log('value', value)
         value = formatNumber(value, true, true);
       }
 
@@ -357,10 +337,8 @@ export default create({
       const input = event.target as HTMLInputElement;
       let value = input.value;
       active.value = true;
-      emit('focus', value, event);
-      // if (getProp('readonly')) {
-      //   blur();
-      // }
+      emit('focus', event);
+      emit('update:modelValue', value);
     };
 
     const onBlur = (event: Event) => {
@@ -377,13 +355,13 @@ export default create({
         value = value.slice(0, Number(props.maxLength));
       }
       updateValue(getModelValue(), 'onBlur');
-      emit('blur', value, event);
+      emit('blur', event);
+      emit('update:modelValue', value);
     };
 
     const clear = (event: Event) => {
+      event.stopPropagation();
       if (props.disabled) return;
-      emit('update:modelValue', '', event);
-      emit('change', '', event);
       emit('clear', '', event);
     };
 
@@ -402,6 +380,7 @@ export default create({
     };
 
     const onClickLeftIcon = (event: MouseEvent) => {
+      event.stopPropagation();
       if (props.disabled) {
         return;
       }
@@ -409,32 +388,31 @@ export default create({
     };
 
     const onClickRightIcon = (event: MouseEvent) => {
+      event.stopPropagation();
       if (props.disabled) {
         return;
       }
       emit('click-right-icon', event);
     };
 
-    const onClick = (e: PointerEvent) => {
-      if (props.disabled) {
-        e.stopImmediatePropagation();
-        return;
-      }
-    };
-
     watch(
       () => props.modelValue,
       () => {
-        updateValue(getModelValue());
-        resetValidation();
+        if (!slots.input) {
+          updateValue(getModelValue());
+          resetValidation();
+        }
       }
     );
 
     onMounted(() => {
-      updateValue(getModelValue(), props.formatTrigger);
+      if (!slots.input) {
+        updateValue(getModelValue(), props.formatTrigger);
+      }
     });
 
     return {
+      renderInput,
       inputRef,
       active,
       classes,
@@ -447,8 +425,7 @@ export default create({
       clear,
       onClickInput,
       onClickLeftIcon,
-      onClickRightIcon,
-      onClick
+      onClickRightIcon
     };
   }
 });

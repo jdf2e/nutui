@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <view class="nut-menu__bar" :class="{ opened: opened, 'offset-signal': offsetSignal }" ref="barRef">
+    <view :id="'nut-menu__bar' + refRandomId" class="nut-menu__bar" :class="{ opened: opened }" ref="barRef">
       <template v-for="(item, index) in children" :key="index">
         <view
           class="nut-menu__item"
@@ -27,6 +27,7 @@
 import { reactive, provide, computed, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro, { usePageScroll } from '@tarojs/taro';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('menu');
 export default create({
   props: {
@@ -64,6 +65,7 @@ export default create({
   },
   setup(props) {
     const barRef = ref<HTMLElement>();
+    const refRandomId = Math.random().toString(36).slice(-8);
     const offset = ref(0);
     const isScrollFixed = ref(false);
 
@@ -79,10 +81,25 @@ export default create({
           }
         };
 
+        const removeLink = (child: any) => {
+          if (child.proxy) {
+            let internalIndex = internalChildren.indexOf(child);
+            if (internalIndex > -1) {
+              internalChildren.splice(internalIndex, 1);
+            }
+
+            let publicIndex = publicChildren.indexOf(child.proxy);
+            if (internalIndex > -1) {
+              publicChildren.splice(publicIndex, 1);
+            }
+          }
+        };
+
         provide(
           'menuParent',
           Object.assign(
             {
+              removeLink,
               link,
               children: publicChildren,
               internalChildren
@@ -110,26 +127,17 @@ export default create({
       };
     });
 
-    // updateOffset 操作的标识位
-    // 解决 taro 下初次展开菜单栏闪跳问题 #1541
-    const offsetSignal = ref(false);
-
-    const updateOffset = (item) => {
+    const updateOffset = (children: any) => {
       if (barRef.value) {
-        offsetSignal.value = true;
         setTimeout(() => {
-          Taro.createSelectorQuery()
-            .select('.nut-menu__bar.offset-signal')
-            .boundingClientRect((rect) => {
-              if (props.direction === 'down') {
-                offset.value = rect.bottom;
-              } else {
-                offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
-              }
-              offsetSignal.value = false;
-              item.toggle();
-            })
-            .exec();
+          useTaroRect(barRef, Taro).then((rect: any) => {
+            if (props.direction === 'down') {
+              offset.value = rect.bottom;
+            } else {
+              offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
+            }
+            children.toggle();
+          });
         }, 100);
       }
     };
@@ -181,9 +189,9 @@ export default create({
       toggleItem,
       children,
       opened,
-      offsetSignal,
       classes,
       barRef,
+      refRandomId,
       getClasses
     };
   }

@@ -1,5 +1,5 @@
 <template>
-  <nut-popup v-model:visible="showPopup" :position="position" :overlay="false" :isWrapTeleport="isWrapTeleport">
+  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleportDisable="teleportDisable">
     <div
       :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
@@ -13,7 +13,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, onMounted, watch, ref } from 'vue';
+import { ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 const { create } = createComponent('notify');
@@ -36,11 +36,7 @@ export default create({
       type: String,
       default: 'danger'
     },
-    // showPopup: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    modelVisible: {
+    visible: {
       type: Boolean,
       default: false
     },
@@ -48,7 +44,7 @@ export default create({
       type: String,
       default: 'top'
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: true
     },
@@ -56,64 +52,50 @@ export default create({
     onClick: Function,
     unmount: Function
   },
-
-  setup(props) {
-    let timer: null | number = null;
-    const state = reactive({
-      mounted: false
-    });
-    onMounted(() => {
-      // state.mounted = true;
-    });
-
-    const showPopup = ref(props.modelVisible);
-
+  emits: ['update:visible'],
+  setup(props, { emit }) {
     const clickCover = () => {
       props.onClick && props.onClick();
     };
+
+    // timer
+    let timer: null | number = null;
     const clearTimer = () => {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
+      timer && clearTimeout(timer);
+      timer = null;
     };
+
+    // hide popup
     const hide = () => {
-      state.mounted = false;
-    };
-    const show = () => {
-      clearTimer();
-      if (props.duration) {
-        timer = setTimeout(() => {
-          hide();
-        }, props.duration);
-      }
+      emit('update:visible', false);
     };
 
-    if (props.duration) {
-      show();
-    }
+    // watch show popup
+    const isShowPopup = ref<boolean>(false);
 
-    watch(
-      () => props.duration,
-      (val) => {
-        if (val) {
-          show();
+    const unWatch = watch(
+      () => props.visible,
+      (newVal: boolean) => {
+        isShowPopup.value = props.visible;
+
+        const DURATION: number = props.duration;
+        if (newVal && DURATION) {
+          timer = setTimeout(() => {
+            hide();
+          }, DURATION);
         }
-      }
+      },
+      { immediate: true }
     );
 
-    // watch(
-    //   () => props.visible,
-    //   (val, oldv) => {
-    //     state.mounted = val;
-    //   }
-    // );
     const onAfterLeave = () => {
       clearTimer();
+      unWatch && unWatch();
       props.unmount && props.unmount(props.id);
       props.onClose && props.onClose();
     };
-    return { state, hide, onAfterLeave, clickCover, showPopup };
+
+    return { onAfterLeave, clickCover, isShowPopup };
   }
 });
 </script>

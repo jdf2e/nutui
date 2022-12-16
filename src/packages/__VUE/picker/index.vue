@@ -8,24 +8,23 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
       :round="true"
-      :isWrapTeleport="isWrapTeleport"
+      :teleportDisable="teleportDisable"
       :safeAreaInsetBottom="safeAreaInsetBottom"
       :destroyOnClose="destroyOnClose"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
+        <view class="nut-picker__left" v-if="showCancelText" @click="close">{{
           cancelText || translate('cancel')
         }}</view>
         <view class="nut-picker__title"> {{ title }}</view>
-        <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
+        <view class="nut-picker__right" v-if="showOkText" @click="confirmHandler()">{{
           okText || translate('confirm')
         }}</view>
       </view>
 
       <slot name="top"></slot>
 
-      <view class="nut-picker__column" ref="wrapHeight">
-        <view class="nut-picker__hairline"></view>
+      <view class="nut-picker__column">
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
             :ref="swipeRef"
@@ -33,7 +32,7 @@
             :column="column"
             :readonly="readonly"
             :columnsType="columnsType"
-            :value="defaultValues[columnIndex]"
+            :value="defaultValues && defaultValues[columnIndex]"
             :threeDimensional="threeDimensional"
             :swipeDuration="swipeDuration"
             @change="
@@ -52,7 +51,8 @@
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import popup, { popupProps } from '../popup/index.vue';
+import popup from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 import column from './Column.vue';
 const { componentName, create, translate } = createComponent('picker');
 
@@ -97,15 +97,21 @@ export default create({
       type: Boolean,
       default: false
     },
-    // 是否开启3D效果
     threeDimensional: {
       type: Boolean,
       default: true
     },
-    // 惯性滚动 时长
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    showOkText: {
+      type: Boolean,
+      default: true
+    },
+    showCancelText: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
@@ -116,7 +122,9 @@ export default create({
     });
 
     // 选中项
-    let defaultValues = ref<(number | string)[]>(props.modelValue);
+    let defaultValues = ref<(number | string)[]>(
+      Array.isArray(props.modelValue) && props.modelValue.length > 0 ? props.modelValue : []
+    );
 
     const pickerColumn = ref<any[]>([]);
 
@@ -163,7 +171,11 @@ export default create({
           return state.formattedColumns as PickerOption[][];
         case 'cascade':
           // 级联数据处理
-          return formatCascade(state.formattedColumns as PickerOption[], defaultValues.value);
+
+          return formatCascade(
+            state.formattedColumns as PickerOption[],
+            defaultValues.value ? defaultValues.value : []
+          );
         default:
           return [state.formattedColumns] as PickerOption[][];
       }
@@ -204,6 +216,8 @@ export default create({
 
     const changeHandler = (columnIndex: number, option: PickerOption) => {
       if (option && Object.keys(option).length) {
+        defaultValues.value = defaultValues.value ? defaultValues.value : [];
+
         if (columnsType.value === 'cascade') {
           defaultValues.value[columnIndex] = option.value ? option.value : '';
           let index = columnIndex;
@@ -250,6 +264,8 @@ export default create({
       emit('update:visible', false);
     };
 
+    const isSameValue = (valA: any, valB: any) => JSON.stringify(valA) === JSON.stringify(valB);
+
     onMounted(() => {
       if (props.visible) state.show = props.visible;
     });
@@ -261,8 +277,7 @@ export default create({
     watch(
       () => props.modelValue,
       (newValues) => {
-        const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
-        if (!isSameValue) {
+        if (!isSameValue(newValues, defaultValues.value)) {
           defaultValues.value = newValues;
         }
       },
@@ -272,19 +287,20 @@ export default create({
     watch(
       defaultValues,
       (newValues) => {
-        const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
-        if (!isSameValue) {
+        if (!isSameValue(newValues, props.modelValue)) {
           emit('update:modelValue', newValues);
         }
       },
-      { immediate: true }
+      { deep: true }
     );
 
     watch(
       () => props.visible,
       (val) => {
         state.show = val;
-        if (val) pickerColumn.value = [];
+        if (val) {
+          pickerColumn.value = [];
+        }
       }
     );
 

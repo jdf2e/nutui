@@ -21,6 +21,8 @@ app.use(Icon);
 
 ### Basic Usage
 
+The value of field is bound with `v-model`.
+
 :::demo
 
 ```html
@@ -49,6 +51,8 @@ app.use(Icon);
 :::
 
 ### Custom Type
+
+Use `type` prop to custom different type fields.
 
 :::demo
 
@@ -106,6 +110,8 @@ app.use(Icon);
 :::
 
 ### Readonly And Disabled
+
+Use `readonly` to set the input box to read-only status, and use `disabled` to set the input box to disabled status.
 
 :::demo
 
@@ -172,6 +178,7 @@ The user can enter content in the text box. Configure the icons on both sides of
       const state = reactive({
         showIcon: '',
         required: '',
+        clear:''
       });
       return {
         state
@@ -183,6 +190,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 :::
 ### Error Info
+
+Use `error` or `error-message` to show error info.
 
 :::demo
 
@@ -228,6 +237,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ### Insert Button
 
+Use `button` slot to insert button.
+
 :::demo
 
 ```html
@@ -263,6 +274,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ### Format Value
 
+Use `formatter` prop to format the input value.
+
 :::demo
 
 ```html
@@ -272,6 +285,7 @@ The user can enter content in the text box. Configure the icons on both sides of
     label="Text" 
     placeholder="Format On Change" 
     :formatter="formatter" 
+    format-trigger="onChange"
   />
   <nut-input
     v-model="state.format2"
@@ -303,13 +317,15 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 ### Show Word Limit
 
+After setting the `maxlength` and `show-word-limit` attributes, word count will be displayed at the bottom.
+
 :::demo
 
 ```html
 <template>
   <nut-input
     v-model="state.textarea"
-    label="Message"
+    label="Text"
     type="textarea"
     show-word-limit
     rows="2"
@@ -335,6 +351,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 :::
 
 ### Input Align
+
+Use `label-align` prop to align the label, `input-align` prop to align the input value
 
 :::demo
 
@@ -380,12 +398,14 @@ The user can enter content in the text box. Configure the icons on both sides of
   <nut-input 
     v-model="state.noBorder1" 
     :border="false" 
-    label="No Border" 
+    label="Text" 
+    placeholder="No Border" 
   />
   <nut-input 
     v-model="state.noBorder2" 
     :border="false" 
-    label="No Border" 
+    label="Text" 
+    placeholder="No Border" 
   />
 </template>
 <script lang="ts">
@@ -405,7 +425,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 ```
 
 :::
-### Click Event
+### Event Demonstration
 
 :::demo
 
@@ -413,11 +433,11 @@ The user can enter content in the text box. Configure the icons on both sides of
 <template>
   <nut-input
     v-model="state.event"
-    label="click"
+    label="Text"
     left-icon="dongdong"
     right-icon="ask2"
     clearable
-    placeholder="click"
+    placeholder="Event"
     @update:model-value="change"
     @focus="focus"
     @blur="blur"
@@ -435,29 +455,29 @@ The user can enter content in the text box. Configure the icons on both sides of
       const state = reactive({
         event: ''
       });
-      const change = (value: string | number) => {
+      const change = (value: string) => {
         console.log('change: ', value);
       };
-      const focus = (value: string | number, event: Event) => {
-        console.log('focus:', value, event);
+      const focus = (event: Event) => {
+        console.log('focus:', event);
       };
-      const blur = (value: string | number, event: Event) => {
-        console.log('blur:', value, event);
+      const blur = (event: Event) => {
+        console.log('blur:', event);
       };
-      const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event);
+      const clear = (event: Event) => {
+        console.log('clear:', event);
       };
-      const click = (value: string | number) => {
-        console.log('click:', value);
+      const click = (event: Event) => {
+        console.log('click:', event);
       };
-      const clickInput = (value: string | number) => {
-        console.log('clickInput:', value);
+      const clickInput = (event: Event) => {
+        console.log('clickInput:', event);
       };
-      const clickLeftIcon = (value: string | number) => {
-        console.log('clickLeftIcon:', value);
+      const clickLeftIcon = (event: Event) => {
+        console.log('clickLeftIcon:', event);
       };
-      const clickRightIcon = (value: string | number) => {
-        console.log('clickRightIcon:', value);
+      const clickRightIcon = (event: Event) => {
+        console.log('clickRightIcon:', event);
       };
 
       return {
@@ -498,10 +518,10 @@ The user can enter content in the text box. Configure the icons on both sides of
 | autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
 | max-length   | Max length of value                  | String、Number  | -       |
 | clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clear-icon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
+| clear-icon   | Clear Icon name, [name of icon](#/en-US/component/icon)           | String        | `mask-close`  |
 | clear-size   | Clear Icon `font-size`               | String        | `14`  |
-| left-icon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| right-icon   | Right side Icon name, [name of icon](#/icon) | String        | - |
+| left-icon    | Left side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
+| right-icon   | Right side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
 | left-icon-size    | Left side Icon `font-size`    | String        | `14`  |
 | right-icon-size   | Right side Icon `font-size`   | String        | `14`  |
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
@@ -510,21 +530,22 @@ The user can enter content in the text box. Configure the icons on both sides of
 | error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type   | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
-| adjust-position| Whether to automatically push the page up when the keyboard pops up, only native     | Boolean | `true` |
+| confirm-type `H5(v3.2.8)` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
+| adjust-position`v3.1.21` | Whether to automatically push the page up when the keyboard pops up (`applets only`)     | Boolean | `true` |
+| always-system`v3.2.8` | Whether to force the use of input elements created by system keyboard and Web-view. When true, `confirm-type`, `confirm-hold` may fail (`applets only`)     | Boolean | `false` |
 
 ### Events
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
 | update:model-value | Emitted when input value changed | val  |
-| focus  | Emitted when input is focused     | val  ,event |
-| blur   | Emitted when input is blurred     | val ,event  |
-| clear  | Emitted when the clear icon is clicked   | val ,event  |
-| click  | Emitted when component is clicked	      | val ,event  |
-| click-input      | Emitted when the input is clicked      | val ,event  |
-| click-left-icon  | Emitted when the left icon is clicked      | val ,event  |
-| click-right-icon | Emitted when the right icon is clicked      | val ,event  |
+| focus  | Emitted when input is focused     | event |
+| blur   | Emitted when input is blurred     | event  |
+| clear  | Emitted when the clear icon is clicked   | event  |
+| click  | Emitted when component is clicked	      | event  |
+| click-input      | Emitted when the input is clicked      | event  |
+| click-left-icon  | Emitted when the left icon is clicked      | event  |
+| click-right-icon | Emitted when the right icon is clicked      | event  |
 
 ### Slots
 
@@ -532,6 +553,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 |-------|----------|
 | button | Insert button |
 | input `v3.1.22` | Custom input |
+| rightExtra `v3.2.7` | Customize the rightmost area of the input box |
 
 
 

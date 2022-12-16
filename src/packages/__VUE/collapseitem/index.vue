@@ -150,6 +150,7 @@ export default create({
       if (!wrapperRefEle || !contentRefEle) {
         return;
       }
+
       const offsetHeight = contentRefEle.offsetHeight || 'auto';
       if (offsetHeight) {
         const contentHeight = `${offsetHeight}px`;
@@ -221,14 +222,18 @@ export default create({
       }
     });
 
-    watch(
-      () => ctx?.slots?.default?.(),
-      () => {
-        setTimeout(() => {
-          animation();
-        }, 300);
-      }
-    );
+    // watch(
+    //   () => ctx?.slots?.default?.(),
+    //   (val) => {
+    //     setTimeout(() => {
+    //       animation();
+    //     }, 300);
+    //   },
+    //   {
+    //     deep: true,
+    //     immediate: true
+    //   }
+    // );
 
     const init = () => {
       const { name } = props;
@@ -247,6 +252,19 @@ export default create({
       });
     };
     onMounted(() => {
+      const MutationObserver: any =
+        window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+      var observer = new MutationObserver(() => {
+        animation();
+      });
+      const ele = document.getElementsByClassName('collapse-wrapper')[0];
+      if (ele) {
+        observer.observe(ele, {
+          childList: true,
+          subtree: true
+        });
+      }
+
       init();
       // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {

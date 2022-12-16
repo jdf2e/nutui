@@ -3,9 +3,9 @@
     <h2>基础用法</h2>
     <nut-addresslist
       :data="data"
-      @handelDelIcon="delClick"
-      @handelEditIcon="editClick"
-      @handelItem="itemClick"
+      @delIcon="delClick"
+      @editIcon="editClick"
+      @itemClick="itemClick"
       :showBottomButton="false"
       :dataMapOptions="dataMapOptions"
     >
@@ -13,14 +13,14 @@
     <h2>长按功能</h2>
     <nut-addresslist
       :data="data"
-      longPressEdition
+      longPress
       :showBottomButton="false"
-      @handelDelIcon="delClick"
-      @handelEditIcon="editClick"
-      @handelItem="itemClick"
-      @longPressCopyClick="copyClick"
-      @longPressSetClick="setClick"
-      @longPressDelClick="delClick"
+      @delIcon="delClick"
+      @editIcon="editClick"
+      @itemClick="itemClick"
+      @longCopy="copyClick"
+      @longSet="setClick"
+      @longDel="delClick"
       :dataMapOptions="dataMapOptions"
     >
     </nut-addresslist>
@@ -29,11 +29,11 @@
       :data="data"
       swipeEdition
       showBottomButton
-      @handelDelIcon="delClick"
-      @handelEditIcon="editClick"
-      @handelItem="itemClick"
+      @delIcon="delClick"
+      @editIcon="editClick"
+      @itemClick="itemClick"
       @swipeDelClick="delClick"
-      @addAddressClick="addAddress"
+      @add="addAddress"
       :dataMapOptions="dataMapOptions"
     >
     </nut-addresslist>
@@ -79,9 +79,6 @@ export default {
     const copyClick = () => {
       console.log('复制成功～');
     };
-    const holdDownClick = (event: Event, id: number) => {
-      console.log('长按～');
-    };
     const setClick = () => {
       console.log('点击了设置～');
     };
@@ -90,7 +87,6 @@ export default {
     };
     return {
       itemClick,
-      holdDownClick,
       data,
       delClick,
       editClick,

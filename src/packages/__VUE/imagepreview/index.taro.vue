@@ -1,6 +1,5 @@
 <template>
-  <nut-popup pop-class="custom-pop" v-model:visible="showPop" @click="onClose" style="width: 100%">
-    <!-- @click.stop="closeOnImg" -->
+  <nut-popup pop-class="nut-imagepreview-custom-pop" v-model:visible="showPop" @closed="onClose">
     <view class="nut-imagepreview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
@@ -9,20 +8,20 @@
         :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
-        @change="slideChangeEnd"
-        :init-page="initNo > maxNo ? maxNo - 1 : initNo - 1"
+        @change="setActive"
+        :init-page="initNo"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <!-- <image mode="aspectFit" :src="item.src" class="nut-imagepreview-img" /> -->
-          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" />
+        <nut-swiper-item v-for="(item, index) in images" :key="index" @click="onClose">
+          <image mode="aspectFit" :src="item.src" class="nut-imagepreview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
+          <img :src="item.src" mode="aspectFit" class="nut-imagepreview-img" v-else />
         </nut-swiper-item>
       </nut-swiper>
     </view>
 
-    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length }} </view>
-    <view class="nut-imagepreview-close-icon" @click="handleCloseIcon" :style="styles" v-if="closeable"
+    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
+    <view class="nut-imagepreview-close-icon" @click="onClose" :style="styles" v-if="closeable"
       ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
@@ -30,12 +29,9 @@
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
-import Swiper from '../swiper/index.taro.vue';
-import SwiperItem from '../swiperitem/index.taro.vue';
-import Icon from '../icon/index.taro.vue';
-import { isPromise } from '@/packages/utils/util';
+import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
+import Taro from '@tarojs/taro';
 const { create } = createComponent('imagepreview');
 
 export default create({
@@ -54,7 +50,7 @@ export default create({
     },
     initNo: {
       type: Number,
-      default: 1
+      default: 0
     },
     paginationVisible: {
       type: Boolean,
@@ -84,30 +80,19 @@ export default create({
       type: String,
       default: 'top-right' // top-right  top-left
     },
-    beforeClose: Function,
+    beforeClose: Function as PropType<Interceptor>,
     isLoop: {
       type: Boolean,
       default: true
     }
   },
   emits: ['close', 'change'],
-  components: {
-    [Popup.name]: Popup,
-    // [Video.name]: Video,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
-    [Icon.name]: Icon
-  },
+  components: {},
 
   setup(props, { emit }) {
     const state = reactive({
       showPop: false,
-      active: 1,
-      maxNo: 1,
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-        type: 'video/mp4'
-      },
+      active: 0,
       options: {
         muted: true,
         controls: true
@@ -119,7 +104,10 @@ export default create({
         originScale: 1,
         oriDistance: 1
       },
-      lastTouchEndTime: 0 // 用来辅助监听双击
+      lastTouchEndTime: 0, // 用来辅助监听双击
+
+      ENV: Taro.getEnv(),
+      ENV_TYPE: Taro.ENV_TYPE
     });
 
     const styles = computed(() => {
@@ -132,9 +120,12 @@ export default create({
       return style;
     });
 
-    const slideChangeEnd = function (page: number) {
-      state.active = page + 1;
-      emit('change', state.active);
+    // 设置当前选中第几个
+    const setActive = (active: number) => {
+      if (active !== state.active) {
+        state.active = active;
+        emit('change', state.active);
+      }
     };
 
     const closeOnImg = () => {
@@ -145,35 +136,21 @@ export default create({
     };
 
     const onClose = () => {
-      if (props.beforeClose) {
-        const returnVal = props.beforeClose.apply(null, state.active);
-
-        if (isPromise(returnVal)) {
-          returnVal.then((value) => {
-            if (value) {
-              closeDone();
-            }
-          });
-        } else if (returnVal) {
-          closeDone();
-        }
-      } else {
-        closeDone();
-      }
+      funInterceptor(props.beforeClose, {
+        args: [state.active],
+        done: () => closeDone()
+      });
     };
     // 执行关闭
     const closeDone = () => {
       state.showPop = false;
       state.store.scale = 1;
       scaleNow();
-      state.active = 1;
       emit('close');
     };
 
     // 计算两个点的距离
     const getDistance = (first: { x: number; y: number }, second: { x: number; y: number }) => {
-      // 计算两个点起始时刻的距离和终止时刻的距离，终止时刻距离变大了则放大，变小了则缩小
-      // 放大 k 倍则 scale 也 扩大 k 倍
       return Math.hypot(Math.abs(second.x - first.x), Math.abs(second.y - first.y));
     };
 
@@ -184,8 +161,6 @@ export default create({
     };
 
     const onTouchStart = (event: TouchEvent) => {
-      // console.log('start');
-      // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
       const curTouchTime = new Date().getTime();
       if (curTouchTime - state.lastTouchEndTime < 300) {
         const store = state.store;
@@ -201,13 +176,10 @@ export default create({
       var events = touches[0];
       var events2 = touches[1];
 
-      // event.preventDefault();
-
       const store = state.store;
       store.moveable = true;
 
       if (events2) {
-        // 如果开始两指操作，记录初始时刻两指间的距离
         store.oriDistance = getDistance(
           {
             x: events.pageX,
@@ -219,7 +191,7 @@ export default create({
           }
         );
       }
-      // 取到开始两指操作时的放大（缩小比例），store.scale 存储的是当前的放缩比（相对于标准大小 scale 为 1 的情况的放大缩小比）
+
       store.originScale = store.scale || 1;
     };
 
@@ -262,7 +234,6 @@ export default create({
     };
 
     const onTouchEnd = () => {
-      // console.log('end');
       state.lastTouchEndTime = new Date().getTime();
       const store = state.store;
       store.moveable = false;
@@ -287,22 +258,20 @@ export default create({
       }
     );
 
-    // 点击关闭按钮
-    const handleCloseIcon = () => {
-      onClose();
-    };
+    watch(
+      () => props.initNo,
+      (val) => {
+        if (val != state.active) setActive(val);
+      }
+    );
 
     onMounted(() => {
-      // 初始化页码
-      state.active = props.initNo;
-      state.showPop = props.show;
-      // state.maxNo = props.images.length + props.videos.length;
-      state.maxNo = props.images.length;
+      setActive(props.initNo);
     });
 
     return {
       ...toRefs(state),
-      slideChangeEnd,
+      setActive,
       onClose,
       closeOnImg,
       onTouchStart,
@@ -310,8 +279,7 @@ export default create({
       onTouchEnd,
       getDistance,
       scaleNow,
-      styles,
-      handleCloseIcon
+      styles
     };
   }
 });

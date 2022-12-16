@@ -1,213 +1,260 @@
 <template>
-  <!-- 气泡弹出层  按钮 -->
-  <view style="display: inline-block" :class="customClass" @click.stop="openPopover" ref="reference">
-    <slot name="reference"></slot
-  ></view>
-
-  <nut-popup
-    ref="popoverRef"
-    :pop-class="classes"
-    v-model:visible="showPopup"
-    :overlay="false"
-    @clickOverlay="clickOverlay"
-  >
-    <!-- 气泡弹出层  箭头 -->
-    <view :class="popoverArrow" v-if="showArrow"> </view>
-    <!-- 气泡弹出层  内容 -->
-    <slot name="content"></slot>
-    <view class="popover-menu" :class="popoverContent" ref="popoverMenu">
-      <view
-        v-for="(item, index) in list"
-        :key="index"
-        :class="[item.className, { 'popover-menu-item': true, disabled: item.disabled }]"
-        @click.stop="chooseItem(item, index)"
-      >
-        <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
-        <view class="popover-menu-name">{{ item.name }}</view>
+  <div class="nut-popover-wrapper" @click="openPopover" ref="popoverRef" v-if="!targetId"
+    ><slot name="reference"></slot
+  ></div>
+  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
+    <nut-popup
+      :popClass="`nut-popover-content nut-popover-content--${location}`"
+      :style="customStyle"
+      v-model:visible="showPopup"
+      position=""
+      transition="nut-popover"
+      :overlay="overlay"
+      :duration="duration"
+      :overlayStyle="overlayStyle"
+      :overlayClass="overlayClass"
+      :closeOnClickOverlay="closeOnClickOverlay"
+    >
+      <view ref="popoverContentRef" class="nut-popover-content-group">
+        <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
+        <slot name="content"></slot>
+        <view
+          v-for="(item, index) in list"
+          :key="index"
+          :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
+          @click.stop="chooseItem(item, index)"
+        >
+          <slot v-if="item.icon">
+            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
+          ></slot>
+          <view class="nut-popover-menu-item-name">{{ item.name }}</view>
+        </view>
       </view>
-    </view>
-  </nut-popup>
+    </nut-popup>
+  </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, nextTick, onUnmounted } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('popover');
-import Popup, { popupProps } from '../popup/index.vue';
-import Button from '../button/index.vue';
-import { createPopper } from '@popperjs/core/lib/popper-lite';
-import offsetModifier from '@popperjs/core/lib/modifiers/offset';
-import type { Instance, Placement } from '@popperjs/core';
-
+import { isArray } from '@/packages/utils/util';
+import { useRect, rect } from '@/packages/utils/useRect';
+const { create } = createComponent('popover');
 export default create({
-  inheritAttrs: false,
-  components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
-  },
+  components: {},
   props: {
-    ...popupProps,
-    list: {
-      type: Array,
-      default: []
-    },
-
-    theme: {
-      type: String as PropType<import('./type').PopoverTheme>,
-      default: 'light'
-    },
-
-    location: {
-      type: String as PropType<import('./type').PopoverLocation>,
-      default: 'bottom'
-    },
-    // 位置出现的偏移量
-    offset: {
-      type: Array,
-      default: [0, 12]
-    },
-    customClass: {
-      type: String,
-      default: ''
-    },
-    showArrow: {
-      type: Boolean,
-      default: true
-    }
+    visible: { type: Boolean, default: false },
+    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
+    theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
+    location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
+    offset: { type: Array, default: [0, 12] },
+    arrowOffset: { type: Number, default: 0 },
+    customClass: { type: String, default: '' },
+    showArrow: { type: Boolean, default: true },
+    iconPrefix: { type: String, default: 'nut-icon' },
+    duration: { type: [Number, String], default: 0.3 },
+    overlay: { type: Boolean, default: false },
+    overlayClass: { type: String, default: '' },
+    overlayStyle: { type: Object as PropType<CSSProperties> },
+    closeOnClickOverlay: { type: Boolean, default: true },
+    closeOnClickAction: { type: Boolean, default: true },
+    closeOnClickOutside: { type: Boolean, default: true },
+    targetId: { type: String, default: '' },
+    bgColor: { type: String, default: '' }
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
-    let popper: Instance | null;
-    const reference = ref();
     const popoverRef = ref();
-
+    const popoverContentRef = ref();
     const showPopup = ref(props.visible);
 
-    const { theme, location } = toRefs(props);
+    let rootRect = ref<rect>();
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-
-      return `${prefixCls} ${prefixCls}--${theme.value}`;
-    });
-
-    const popoverContent = computed(() => {
-      const prefixCls = 'popover-content';
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${location.value}`]: location.value
-      };
-    });
+    let conentRootRect = ref<{
+      height: number;
+      width: number;
+    }>();
 
     const popoverArrow = computed(() => {
-      const prefixCls = 'popover-arrow';
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${location.value}`]: location.value
-      };
+      const prefixCls = 'nut-popover-arrow';
+      const loca = props.location;
+      const direction = loca.split('-')[0];
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`;
     });
 
-    const createPopperInstance = () => {
-      if (reference.value && popoverRef.value) {
-        return createPopper(reference.value, popoverRef.value.popupRef, {
-          placement: props.location,
-          modifiers: [
-            {
-              name: 'computeStyles',
-              options: {
-                adaptive: false,
-                gpuAcceleration: false
-              }
-            },
-            Object.assign({}, offsetModifier, {
-              options: {
-                offset: props.offset
-              }
-            })
-          ]
-        });
+    const popoverArrowStyle = computed(() => {
+      const styles: CSSProperties = {};
+      const { bgColor, arrowOffset, location } = props;
+      const direction = location.split('-')[0];
+      const skew = location.split('-')[1];
+      const base = 16;
+
+      if (bgColor) {
+        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
       }
-      return null;
-    };
 
-    const clickOverlay = () => {
-      // console.log('关闭');
-    };
-
-    const uploadLocation = () => {
-      nextTick(() => {
-        if (!showPopup.value) return;
-        if (!popper) {
-          popper = createPopperInstance();
-        } else {
-          popper.setOptions({
-            placement: props.location
-          });
+      if (props.arrowOffset != 0) {
+        if (['bottom', 'top'].includes(direction)) {
+          if (!skew) {
+            styles.left = `calc(50% + ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.left = `${base + arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.right = `${base - arrowOffset}px`;
+          }
         }
-      });
-    };
 
-    const clickAway = (event: Event) => {
-      const element = reference.value;
-      if (element && !element.contains(event.target)) {
-        closePopover();
+        if (['left', 'right'].includes(direction)) {
+          if (!skew) {
+            styles.top = `calc(50% - ${arrowOffset}px)`;
+          }
+          if (skew == 'start') {
+            styles.top = `${base - arrowOffset}px`;
+          }
+          if (skew == 'end') {
+            styles.bottom = `${base + arrowOffset}px`;
+          }
+        }
       }
+      return styles;
+    });
+
+    const upperCaseFirst = (str: string) => {
+      var str = str.toLowerCase();
+      str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1));
+      return str;
     };
-    onMounted(() => {
-      window.addEventListener('click', clickAway, true);
+
+    const getRootPosition = computed(() => {
+      let styles: CSSProperties = {};
+
+      if (!rootRect.value || !conentRootRect.value) return {};
+
+      const conentWidth = conentRootRect.value.width;
+      const conentHeight = conentRootRect.value.height;
+      const { width, height, left, top } = rootRect.value;
+
+      const { location, offset } = props;
+      const direction = location.split('-')[0];
+      const skew = location.split('-')[1];
+      let cross = 0;
+      let parallel = 0;
+      if (isArray(offset) && offset.length == 2) {
+        cross += +offset[1];
+        parallel += +offset[0];
+      }
+      if (width) {
+        if (['bottom', 'top'].includes(direction)) {
+          const h = direction == 'bottom' ? height + cross : -(conentHeight + cross);
+          styles.top = `${top + h}px`;
+
+          if (!skew) {
+            styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
+          }
+          if (skew == 'start') {
+            styles.left = `${left + parallel}px`;
+          }
+          if (skew == 'end') {
+            styles.left = `${rootRect.value.right + parallel}px`;
+          }
+        }
+        if (['left', 'right'].includes(direction)) {
+          const contentW = direction == 'left' ? -(conentWidth + cross) : width + cross;
+          styles.left = `${left + contentW}px`;
+          if (!skew) {
+            styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
+          }
+          if (skew == 'start') {
+            styles.top = `${top + parallel}px`;
+          }
+          if (skew == 'end') {
+            styles.top = `${top + height + parallel}px`;
+          }
+        }
+      }
+
+      return styles;
     });
 
-    onUnmounted(() => {
-      window.removeEventListener('click', clickAway, true);
-    });
+    const customStyle = computed(() => {
+      const styles: CSSProperties = {};
+      if (props.bgColor) {
+        styles.background = props.bgColor;
+      }
 
+      return styles;
+    });
+    // 获取宽度
+    const getContentWidth = () => {
+      let rect = useRect(popoverRef.value);
+      if (props.targetId) {
+        rect = useRect(document.querySelector(`#${props.targetId}`));
+      }
+      rootRect.value = rect;
+      setTimeout(() => {
+        conentRootRect.value = {
+          height: popoverContentRef.value.clientHeight,
+          width: popoverContentRef.value.clientWidth
+        };
+      }, 0);
+    };
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
-        uploadLocation();
+        if (value) {
+          window.addEventListener('touchstart', clickAway, true);
+          getContentWidth();
+        } else {
+          window.removeEventListener('touchstart', clickAway, true);
+        }
       }
     );
-
-    watch(
-      () => props.location,
-      (value) => {
-        uploadLocation();
-      }
-    );
-
     const update = (val: boolean) => {
       emit('update', val);
       emit('update:visible', val);
     };
-
     const openPopover = () => {
       update(!props.visible);
       emit('open');
     };
-
     const closePopover = () => {
-      emit('close');
       emit('update:visible', false);
+      emit('close');
     };
-
     const chooseItem = (item: any, index: number) => {
-      if (item.disabled) {
-        return;
+      !item.disabled && emit('choose', item, index);
+      if (props.closeOnClickAction) {
+        closePopover();
       }
-      emit('choose', item, index);
+    };
+    const clickAway = (event: Event) => {
+      const element = popoverRef.value;
+      const elContent = popoverContentRef.value;
+
+      let el = element && !element.contains(event.target);
+
+      if (props.targetId) {
+        const dom = document.querySelector(`#${props.targetId}`);
+        el = dom && !dom.contains(event.target);
+      }
+      if (el && elContent && !elContent.contains(event.target) && props.closeOnClickOutside) {
+        closePopover();
+      }
     };
 
     return {
-      classes,
       showPopup,
       openPopover,
-      popoverContent,
       popoverArrow,
       closePopover,
       chooseItem,
-      reference,
       popoverRef,
-      clickOverlay
+      popoverContentRef,
+      getRootPosition,
+      customStyle,
+      popoverArrowStyle
     };
   }
 });

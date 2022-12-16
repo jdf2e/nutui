@@ -37,10 +37,10 @@ exports[`vertical scroll 1`] = `
   <!--v-if-->
   <view class=\\"nut-noticebar-vertical\\" style=\\"height: 40px;\\">
     <ul class=\\"horseLamp_list\\">
-      <li class=\\"horseLamp_list_item\\">惊喜红包免费领</li>
-      <li class=\\"horseLamp_list_item\\">爆款准点秒</li>
-      <li class=\\"horseLamp_list_item\\">买超值优惠</li>
-      <li class=\\"horseLamp_list_item\\">赢百万京豆</li>
+      <li class=\\"horseLamp_list_item\\" style=\\"height: 40px;\\">惊喜红包免费领</li>
+      <li class=\\"horseLamp_list_item\\" style=\\"height: 40px;\\">爆款准点秒</li>
+      <li class=\\"horseLamp_list_item\\" style=\\"height: 40px;\\">买超值优惠</li>
+      <li class=\\"horseLamp_list_item\\" style=\\"height: 40px;\\">赢百万京豆</li>
     </ul>
     <view class=\\"go\\">
       <!--v-if-->

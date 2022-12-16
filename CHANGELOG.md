@@ -1,3 +1,126 @@
+## v3.3.1
+
+`2022-12-16`
+
+小程序版本依赖 Taro ^3.5.6
+
+* :zap: feat(imagepreview、infiniteloading、tabs、tabbar): 优化内部逻辑 @nutui-team
+* :zap: feat(picker): 新增 showOkText、showCancelText (#1933) @yangxiaolu1993
+* :bug: fix(price): add new props strike-through (#1934)(#1907) @Drjingfubo
+* :bug: fix(tabs): taro env sticky tips bug #1889 @richard1015
+* :bug: fix(price): taro h5 style problem (#1944)  @Drjingfubo
+* :bug: fix(menu): 修正自定义图标文档错误 、设置class-prefix不生效问题 (#1942) @yangjinjun3
+* :bug: fix: range 组件Taro H5修改 (#1915) @lkjh3214
+
+
+## v3.3.0
+
+`2022-12-02`
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @mikasayw  @thx125
+* :sparkles: chore: npm source set registry.npmmirror.com @richard1015
+* :zap: feat(input): 添加小程序属性always-system (#1863) @mikasayw
+* :zap: feat: 抽离 CreateComponent 函数，用于 函数式组件开发 (#1876) @yangxiaolu1993 
+* :zap: feat: 重构 Popover，去除第三方依赖 (#1873)  @yangxiaolu1993 
+* :zap: feat: Popover 组件 Taro 小程序适配 (#1882)  @yangxiaolu1993 
+* :zap: feat(input): 新增enterkeyhint属性(H5版本支持confirm-type) (#1867) @mikasayw
+* :zap: upd: overlay,popup @szg2008 
+* :bug: fix(popup): update hide animation @szg2008
+* :bug: fix(addresslist): 地址组件优化 (#1877)@ailululu 
+* :bug: fix(popup): 组件修改(#1877)(#1883)  @yangxiaolu1993
+* :bug: fix(Address): 组件体积优化 (#1885)  @yangxiaolu1993
+* :bug: test(countdown,picker,imagepreview,dialog): 组件单元测试修改 (#1886)  @yangxiaolu1993
+* :bug: fix: change mobile jump bug @richard1015
+* :bug: fix(inputNumber): taro h5 style issues #1874 (#1887)@Drjingfubo
+* :bug: upd(form): add try catch ,fix submit method @richard1015
+* :bug: fix(Menu): 修复MenuItem 无法销毁问题 #1788 (#1857) @thx125
+* :bug: fix(elevator): elevator组件elevator__item__${i}渲染出现小数 #1844 @szg2008
+* :bug: fix(menu): 隐藏菜单时，不移除Popup里的内容 (#1891) @yangjinjun3
+* :bug: fix(input): 合并template代码 (#1890) @ailululu 
+* :bug: fix(textarea): 渲染问题处理，collapse 单测修复 (#1892) @Ymm0008  
+* :bug: fix(input): commontent增加类型 (#1893) @ailululu  
+* :bug: fix(menu): 修复弹框跳转问题 (#1894) @yangjinjun3  
+* :bug: fix(Uploader): H5 打包去掉Taro 内容 (#1895) @yangxiaolu1993  
+* :bug: fix(popup): popover 小程序warn解决 @szg2008  
+* :bug: fix(popover): 样式换行问题修改 (#1897)  @yangxiaolu1993 
+* 📖 docs(form): en us submit desc edit @richard1015
+* 📖 docs(steps): 补充icon自定义的文档 @szg2008
+* 📖 docs(Signature): 签名组件文档修改 (#1896) @szg2008
+## v3.2.7
+
+`2022-11-18`
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @gyt95 @Anberm @jwaterwater @mikasayw @thx125 @Yill625
+
+* :sparkles: feat: 京东小程序适配 @nutui-teams
+* :zap: feat(elevator): add change event(#1826) @szg2008
+* :zap: feat: add rectangle arrow icons (#1833) @eiinu
+* :zap: feat(uploader): add delete-icon prop (#1841)  @gyt95
+* :zap: feat(calendar): 添加自定义周起始日配置 (#1827) @thx125
+* :zap: feat(menu): 增加open和close事件 (#1848) @yangjinjun3
+* :zap: feat: upd icon close @richard1015
+* :bug: fix(uploader): taro env 多组件多accept限制bug #1448  @richard1015
+* :bug: fix(sticky): sticky小程序跳动现象修复(#1571) @szg2008
+* :bug: fix(swiper): swiper 加载动态图片时报Cannot read property id of null #1537 @szg2008
+* :bug: fix(form): android site bug #1673 @richard1015
+* :bug: fix(form): input ios 16 bug #1503 @richard1015
+* :bug: fix(collapse): 修复小程序环境下使用手风琴模式无效问题 (#1830) @gyt95
+* :bug: fix(collapse)：折叠面板加载问题处理 #1743 (#1829) @Ymm0008
+* :bug: fix(imagepreview): 动态设置图片导致偏移 (#1836) @Anberm
+* :bug: fix(avatar): 修复在H5环境下运行报错问题 (#1831) @gyt95
+* :bug: fix: 修复 H5 下向上展开样式错误 (#1840) @eiinu
+* :bug: fix(Drag): 修复拖拽表现异常 (#1716) @jwaterwater
+* :bug: fix(card): too much content causes image stretched (#1839) @gyt95
+* :bug: fix(uploader): taro jd env image base64 preview bug @richard1015
+* :bug: fix(skeleton): fix some bugs for skeleton (#1832) @mikasayw
+* :bug: fix(tabbar): add custom Icon slot #1807 (#1852) @Drjingfubo
+* :bug: fix(video): Dynamically change source.src (#1860) @Drjingfubo
+* :bug: fix(popup): 优化挂载逻辑 (#1861) @yangjinjun3
+* :bug: fix(input): 优化了一些问题 (#1858) @ailululu
+* :bug: fix(Signature): 签名组件文档，demo (#1856) @Ymm0008
+* :bug: fix: 修复 imagepreview 动态设置 initNo 显示不正确问题 #1849 && InfiniteLoading 某些情况下会错误触发下拉刷新#1819 (#1853) @yangjinjun3
+* 📖 docs(input): add demo md clear @richard1015
+* 📖 docs: icon link edit @richard1015
+* 📖 docs(popup): modify close icon props description @szg2008
+* 📖 docs: 修改水印导出名称 (#1855) @Yill625
+
+## v3.2.6
+
+`2022-11-04` 
+
+小程序版本依赖 Taro ^3.5.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者  @thx125 @gyt95 @HuziG @mikasayw @motain
+
+* :bug: fix(imagePreview): 解决 imagepreview 视频点击关闭蒙层问题 (#1783)  @yangxiaolu1993  
+* :bug: fix(picker): 解决 Picker 在微信小程序中无法使用的问题 (#1786)  @yangxiaolu1993  
+* :bug: fix(tabbar): add props placeholder #1692 (#1796)  @Drjingfubo
+* :bug: fix(video): add new events time #1055 (#1798)  @Drjingfubo
+* :bug: fix(Signature): 签名组件taro环境适配 (#1797)  @Ymm0008
+* :bug: fix(uploader): taro h5 模式 accept 不生效 #1448 #1445 #1474   @richard1015 
+* :bug: fix(picker): 修改 Picker 组件在 Taro 中v-model 失效问题 (#1801)  @yangxiaolu1993  
+* :bug: fix(noticeBar): NoticeBar修改height之后，垂直轮播会卡顿(#1809) (#1813)    @yangxiaolu1993 
+* :bug: fix(datepicker): 删除Datepicker Demo演示中多余内容 (#1814)     @yangxiaolu1993 
+* :bug: fix(icon): demo 复制功能优化 (#1773)   @eiinu
+* :bug: fix(input): 修复taro中input@update:model-value事件会触发两次 #1632 (#1790)  @ailululu
+* :bug: fix(menu): 修改Menu弹出失效问题 (#1812)   @thx125
+* :bug: fix: scroll-view标签问题修复 (#1817)  @lkjh3214
+* :bug: fix(badge): 修复在自定义徽标内容下设置样式无效的问题 (#1821)  @gyt95
+* :bug: fix(notify): fix notify duration (#1810)  @mikasayw
+* 📖 docs: update vue3 CLI self-test link (#1822)  @gyt95
+* 📖 docs(actionsheet): edit doc (#1794)  @HuziG  
+* 📖 docs(image): taro media image doc 404 fixed (#1795)  @motain 
+* 📖 docs(uploader): capture tips add @richard1015 
+* 📖 docs(menu): 菜单组件文档添加 toggle 事件说明 (#1818)   @yangjinjun3
+
+
 ## v3.2.5
 
 `2022-10-25` 

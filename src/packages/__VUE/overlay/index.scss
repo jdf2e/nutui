@@ -1,6 +1,7 @@
 .overlay-fade-enter-active,
 .overlay-fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition-property: opacity;
+  transition-timing-function: ease;
 }
 
 .overlay-fade-enter-from,

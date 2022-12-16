@@ -1,11 +1,11 @@
 <template>
   <nut-swipe>
-    <div class="nut-swipe-shell">
+    <div class="nut-addresslist-swipe">
       <item-contents
         :item="item"
-        @delIconClick="delShellClick"
-        @editIconClick="editShellClick"
-        @itemClick="itemShellClick"
+        @delIcon="delClick"
+        @editIcon="editClick"
+        @itemClick="itemClick"
         @touchmove="swipemove"
         @touchstart="swipestart"
       >
@@ -28,10 +28,9 @@
   </nut-swipe>
 </template>
 <script lang="ts">
-import { ref, watch, reactive, toRefs, onMounted, useSlots } from 'vue';
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('swipe-shell');
-// import { Swipe } from '@nutui/nutui';
+const { create } = createComponent('addresslist-swipe');
 import ItemContents from './ItemContents.vue';
 
 export default create({
@@ -41,29 +40,28 @@ export default create({
       default: {}
     }
   },
-  emits: ['handleDelIcon', 'handleEditIcon', 'handleItemContent', 'handelSwipeDel'],
+  emits: ['delIcon', 'editIcon', 'itemClick', 'swipeDel'],
   components: {
     ItemContents
   },
 
-  setup(props: any, { emit, slots }) {
-    let loop;
+  setup(props, { emit }) {
     const moveRef = ref(false);
-    const delShellClick = (event, item) => {
-      emit('handleDelIcon', event, props.item);
+    const delClick = (event: Event) => {
+      emit('delIcon', event, props.item);
       event.stopPropagation();
     };
-    const editShellClick = (event, item) => {
-      emit('handleEditIcon', event, props.item);
+    const editClick = (event: Event) => {
+      emit('editIcon', event, props.item);
       event.stopPropagation();
     };
-    const itemShellClick = (event, item) => {
+    const itemClick = (event: Event) => {
       if (moveRef.value) return;
-      emit('handleItemContent', event, props.item);
+      emit('itemClick', event, props.item);
       event.stopPropagation();
     };
-    const swipeDelClick = (event, item) => {
-      emit('handelSwipeDel', event, props.item);
+    const swipeDelClick = (event: Event) => {
+      emit('swipeDel', event, props.item);
       event.stopPropagation();
     };
 
@@ -75,9 +73,9 @@ export default create({
     };
 
     return {
-      delShellClick,
-      editShellClick,
-      itemShellClick,
+      delClick,
+      editClick,
+      itemClick,
       swipeDelClick,
       swipestart,
       swipemove

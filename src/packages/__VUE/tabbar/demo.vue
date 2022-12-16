@@ -48,6 +48,17 @@
       ></nut-tabbar-item>
     </nut-tabbar>
 
+    <h2>{{ translate('customIcon') }}</h2>
+    <nut-tabbar @tab-switch="tabSwitch">
+      <nut-tabbar-item :tab-title="translate('title')">
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>
+    </nut-tabbar>
+
     <h2>{{ translate('customCheck') }}</h2>
     <nut-tabbar v-model:visible="active" size="18px">
       <nut-tabbar-item :tab-title="translate('title')" icon="home"></nut-tabbar-item>
@@ -81,7 +92,7 @@
       <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>
     </nut-tabbar>
     <h2>{{ translate('fixedBottom') }}</h2>
-    <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true">
       <nut-tabbar-item :tab-title="translate('title')" href="" icon="home"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="category"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>
@@ -102,6 +113,7 @@ const initTranslate = () =>
       basic: '基本用法',
       byName: '通过名称匹配',
       customImg: '自定义图片',
+      customIcon: '自定义图标',
       customCheck: '自定义选中',
       showBadge: '徽标提示',
       customColor: '自定义颜色',
@@ -113,6 +125,7 @@ const initTranslate = () =>
       basic: 'Basic Usage',
       byName: 'Match by name',
       customImg: 'Custom Img',
+      customIcon: 'Custom Icon',
       customCheck: 'Custom Check',
       showBadge: 'Show Badge',
       customColor: 'Custom Color',
@@ -130,8 +143,14 @@ export default createDemo({
     function tabSwitch(item: Record<string, unknown>, index: number) {
       console.log(item, index);
     }
+    const icon = {
+      active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
+      unactive:
+        'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
+    };
     return {
       active,
+      icon,
       activeName,
       tabSwitch,
       translate
