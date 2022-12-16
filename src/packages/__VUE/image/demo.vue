@@ -52,7 +52,7 @@
         <nut-col :span="8">
           <nut-image width="100" height="100" showLoading>
             <template #loading>
-              <Loading width="16px" height="16px"></Loading>
+              <Loading width="16px" height="16px" name="loading"></Loading>
             </template>
           </nut-image>
           <div class="text">自定义</div>
@@ -70,7 +70,7 @@
         <nut-col :span="8">
           <nut-image src="https://x" width="100" height="100" showLoading>
             <template #error>
-              <CircleClose width="16px" height="16px"></CircleClose>
+              <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
             </template>
           </nut-image>
           <div class="text">自定义</div>
