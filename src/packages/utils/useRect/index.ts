@@ -14,9 +14,16 @@ function isWindow(val: unknown): val is Window {
   return val === window;
 }
 
-export const useRect = (
-  elementRef: (Element | Window) | Ref<Element | Window | undefined>
-) => {
+export interface rect {
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
+
+export const useRect = (elementRef: (Element | Window) | Ref<Element | Window | undefined>) => {
   const element = unref(elementRef);
 
   if (isWindow(element)) {

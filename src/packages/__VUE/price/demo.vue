@@ -15,6 +15,10 @@
     <nut-cell>
       <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
     </nut-cell>
+    <h2>{{ translate('titleStrike') }}</h2>
+    <nut-cell>
+      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
+    </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
       <nut-price :price="10010.01" size="normal" :need-symbol="true" :thousands="false" />
@@ -44,6 +48,7 @@ const initTranslate = () =>
     'zh-CN': {
       title1: '支持三种尺寸：small、normal、large',
       title2: '不保留小数',
+      titleStrike: '划线价',
       title3: '有人民币符号，无千位分隔',
       title4: '有人民币符号，有千位分隔，保留小数点后三位',
       title5: '调整 symbol 符号位置',
@@ -52,6 +57,7 @@ const initTranslate = () =>
     'en-US': {
       title1: 'Support three sizes：small、normal、large',
       title2: 'No decimals',
+      titleStrike: 'Strike Through',
       title3: 'With RMB symbol, no thousands separator',
       title4: 'With RMB symbol, separated by thousands, keep three decimal places',
       title5: 'Adjust the symbol position',

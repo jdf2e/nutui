@@ -40,8 +40,8 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/collapse/index",
-          "pathName": "exhibition/pages/collapse/index",
+          "name": "exhibition/pages/popover/index",
+          "pathName": "exhibition/pages/popover/index",
           "query": "",
           "launchMode": "default",
           "scene": null
