@@ -220,8 +220,8 @@ export default {
 
 ```html
 <template>
-  <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+  <nut-menu titleIcon="joy-smile">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
   </nut-menu>
 </template>
@@ -389,7 +389,7 @@ export default {
 | scroll-fixed `v3.1.22`           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
 | title-class `v3.1.22`            | Custome title class                                                 | String                  | -       |
 | lock-scroll `v3.1.22`            | Whether the background is locked                                    | Boolean                 | true    |
-| title-icon `3.2.1`               | Custome title icon                                                  | String                  | -       |
+| title-icon `v3.2.1`               | Custome title icon                                                  | String                  | -       |
 
 ### MenuItem Props
 
