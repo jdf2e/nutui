@@ -212,7 +212,7 @@ Icon and letter types can have custom colors and background colors
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
 | max-count     | Max avatars to show   | String ｜ Number | - |
 | max-content  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N` | String | +N |
-| size         | The size of the avatar，eg `large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal  |
+| size         | The size of the avatar，eg `large`、`normal`、`small`   | String ｜ Number | normal  |
 | shape        | The shape of avatar，eg `square`、`round`            | String | round  |
 | max-color    | The colors of Icon and letter types     | String | #666 |
 | max-bgColor  | The background colors of Icon and letter types        | String | #eee   |
