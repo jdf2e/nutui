@@ -39,7 +39,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="Customized" location="top" custom-class="customClass">
+    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -47,7 +47,7 @@
       <template #content>
         <div class="self-content">
           <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <nut-icon :name="item.name" size="15"></nut-icon>
+            <component :is="renderIcon(item.name)"></component>
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
         </div>
@@ -57,7 +57,15 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
+    <nut-picker
+      v-model:visible="showPicker"
+      :columns="columns"
+      title=""
+      @change="change"
+      :swipe-duration="500"
+      @confirm="closePicker"
+      @close="closePicker"
+    >
       <template #top>
         <div class="brickBox">
           <div class="brick" id="pickerTarget"></div>
@@ -95,10 +103,11 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, ref, toRefs, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -130,8 +139,10 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Service },
   setup() {
     initTranslate();
+
     const state = reactive({
       showIcon: false,
       placement: false,
@@ -190,15 +201,15 @@ export default createDemo({
     const itemList = reactive([
       {
         name: 'option1',
-        icon: 'my2'
+        icon: My2
       },
       {
         name: 'option2',
-        icon: 'cart2'
+        icon: Cart2
       },
       {
         name: 'option3',
-        icon: 'location2'
+        icon: Location
       }
     ]);
 
@@ -218,30 +229,34 @@ export default createDemo({
 
     const selfContent = reactive([
       {
-        name: 'service',
+        name: Service,
         desc: 'option1'
       },
       {
-        name: 'notice',
+        name: Notice,
         desc: 'option2'
       },
       {
-        name: 'location',
+        name: Location,
         desc: 'option3'
       },
       {
-        name: 'category',
+        name: Category,
         desc: 'option4'
       },
       {
-        name: 'scan2',
+        name: Scan2,
         desc: 'option5'
       },
       {
-        name: 'message',
+        name: Message,
         desc: 'option6'
       }
     ]);
+
+    const renderIcon = (name: any) => {
+      return h(name);
+    };
 
     const chooseItem = (item: unknown, index: number) => {
       console.log(item, index);
@@ -255,13 +270,16 @@ export default createDemo({
     };
 
     const change = ({ selectedValue }) => {
-      console.log('change');
       curPostion.value = selectedValue[0];
       if (state.showPicker) state.customPositon = true;
     };
 
     const clickCustomHandle = () => {
       state.customTarget = !state.customTarget;
+    };
+
+    const closePicker = () => {
+      state.customPositon = false;
     };
 
     return {
@@ -277,7 +295,9 @@ export default createDemo({
       columns,
       change,
       handlePicker,
-      clickCustomHandle
+      clickCustomHandle,
+      renderIcon,
+      closePicker
     };
   }
 });

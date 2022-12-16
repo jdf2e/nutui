@@ -24,9 +24,8 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <!-- <slot v-if="item.icon">
-            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
-          ></slot> -->
+          <component :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
@@ -34,17 +33,12 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, onMounted } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, onMounted, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
-// import { Icon } from '@nutui/icons-vue';
-import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
-  components: {
-    // Icon
-  },
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
@@ -77,6 +71,10 @@ export default create({
       height: number;
       width: number;
     }>();
+
+    const renderIcon = (name: any) => {
+      return h(name);
+    };
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
@@ -265,7 +263,8 @@ export default create({
       popoverContentRef,
       getRootPosition,
       customStyle,
-      popoverArrowStyle
+      popoverArrowStyle,
+      renderIcon
     };
   }
 });
