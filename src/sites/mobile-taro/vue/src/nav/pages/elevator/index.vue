@@ -2,23 +2,198 @@
   <div class="demo elevator-demo">
     <h2>基本用法</h2>
     <div class="elevator-wrapper">
+      <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+    </div>
+    <h2>自定义索引key</h2>
+    <div class="elevator-wrapper">
       <nut-elevator
-        :index-list="dataList"
-        :is-sticky="true"
-        height="500px"
+        :index-list="dataList2"
+        :height="220"
+        :acceptKey="acceptKey"
         @click-item="clickItem"
         @click-index="clickIndex"
       ></nut-elevator>
+    </div>
+    <h2>索引吸顶</h2>
+    <div class="elevator-wrapper">
+      <nut-elevator
+        :index-list="dataList3"
+        :is-sticky="true"
+        :height="220"
+        @click-item="clickItem"
+        @click-index="clickIndex"
+      ></nut-elevator>
+    </div>
+    <h2>自定义内容</h2>
+    <div class="elevator-wrapper">
+      <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex">
+        <template v-slot:default="slotProps">
+          <Jd width="12px"></Jd>
+          <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
+        </template>
+      </nut-elevator>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+import { computed, reactive, toRefs, defineComponent } from 'vue';
+import { Jd } from '@nutui/icons-vue';
 export default defineComponent({
+  components: {
+    Jd
+  },
   setup() {
     const state = reactive({
+      acceptKey: 'num',
       dataList: [
+        {
+          title: 'A',
+          list: [
+            {
+              name: '安徽',
+              id: 1
+            }
+          ]
+        },
+        {
+          title: 'B',
+          list: [
+            {
+              name: '北京',
+              id: 2
+            }
+          ]
+        },
+        {
+          title: 'G',
+          list: [
+            {
+              name: '广西',
+              id: 5
+            },
+            {
+              name: '广东',
+              id: 6
+            }
+          ]
+        },
+        {
+          title: 'H',
+          list: [
+            {
+              name: '湖南',
+              id: 9
+            },
+            {
+              name: '湖北',
+              id: 10
+            }
+          ]
+        }
+      ],
+      dataList2: [
+        {
+          num: '一',
+          list: [
+            {
+              name: '北京',
+              id: 1
+            },
+            {
+              name: '上海',
+              id: 2
+            },
+            {
+              name: '深圳',
+              id: 3
+            },
+            {
+              name: '广州',
+              id: 4
+            },
+            {
+              name: '杭州',
+              id: 5
+            }
+          ]
+        },
+        {
+          num: '二',
+          list: [
+            {
+              name: '成都',
+              id: 6
+            },
+            {
+              name: '西安',
+              id: 7
+            },
+            {
+              name: '天津',
+              id: 8
+            },
+            {
+              name: '武汉',
+              id: 9
+            },
+            {
+              name: '长沙',
+              id: 10
+            },
+            {
+              name: '重庆',
+              id: 11
+            },
+            {
+              name: '苏州',
+              id: 12
+            },
+            {
+              name: '南京',
+              id: 13
+            }
+          ]
+        },
+        {
+          num: '三',
+          list: [
+            {
+              name: '西宁',
+              id: 14
+            },
+            {
+              name: '兰州',
+              id: 15
+            },
+            {
+              name: '石家庄',
+              id: 16
+            },
+            {
+              name: '秦皇岛',
+              id: 17
+            },
+            {
+              name: '大连',
+              id: 18
+            },
+            {
+              name: '哈尔滨',
+              id: 19
+            },
+            {
+              name: '长春',
+              id: 20
+            },
+            {
+              name: '太原',
+              id: 21
+            }
+          ]
+        }
+      ],
+      dataList3: [
         {
           title: 'A',
           list: [
@@ -134,6 +309,10 @@ export default defineComponent({
       ]
     });
 
+    const temp = computed(() => {
+      return state.dataList;
+    });
+
     const clickItem = (key: string, item: any) => {
       console.log(key, JSON.stringify(item));
     };
@@ -142,7 +321,7 @@ export default defineComponent({
       console.log(key);
     };
 
-    return { ...toRefs(state), clickItem, clickIndex };
+    return { ...toRefs(state), temp, clickItem, clickIndex };
   }
 });
 </script>
