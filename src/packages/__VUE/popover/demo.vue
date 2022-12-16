@@ -201,15 +201,28 @@ export default createDemo({
     const itemList = reactive([
       {
         name: 'option1',
-        icon: My2
+        icon: () => {
+          return h(My2, {
+            width: '14px',
+            color: 'rgba(250, 44, 25, 1)'
+          });
+        }
       },
       {
         name: 'option2',
-        icon: Cart2
+        icon: () => {
+          return h(Cart2, {
+            width: '14px'
+          });
+        }
       },
       {
         name: 'option3',
-        icon: Location
+        icon: () => {
+          return h(Location, {
+            width: '14px'
+          });
+        }
       }
     ]);
 
