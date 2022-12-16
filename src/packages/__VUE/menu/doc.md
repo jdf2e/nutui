@@ -221,7 +221,7 @@ export default {
 
 ```html
 <template>
-  <nut-menu titleIcon="joy-smile">
+  <nut-menu title-icon="joy-smile">
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
   </nut-menu>
