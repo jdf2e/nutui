@@ -25,8 +25,8 @@
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
     </nut-menu>
     <h2>自定义图标</h2>
-    <nut-menu>
-      <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+    <nut-menu titleIcon="joy-smile">
+      <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
     </nut-menu>
     <h2>向上展开</h2>

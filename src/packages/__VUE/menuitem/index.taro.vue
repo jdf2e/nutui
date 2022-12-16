@@ -48,6 +48,7 @@
               :name="optionIcon"
               v-bind="$attrs"
               :color="parent.props.activeColor"
+              :class-prefix="classPrefix"
             ></nut-icon>
             <view
               :class="{
@@ -94,6 +95,10 @@ export default create({
     optionIcon: {
       type: String,
       default: 'Check'
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
     }
   },
   components: {
