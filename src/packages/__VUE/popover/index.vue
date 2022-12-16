@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import { computed, watch, ref, PropType, CSSProperties, onMounted, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
 const { create } = createComponent('popover');
@@ -71,10 +71,6 @@ export default create({
       height: number;
       width: number;
     }>();
-
-    const renderIcon = (name: any) => {
-      return h(name);
-    };
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';

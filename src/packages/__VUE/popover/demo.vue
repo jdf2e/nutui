@@ -104,7 +104,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
@@ -266,10 +266,6 @@ export default createDemo({
         desc: 'option6'
       }
     ]);
-
-    const renderIcon = (name: any) => {
-      return h(name);
-    };
 
     const chooseItem = (item: unknown, index: number) => {
       console.log(item, index);

@@ -1,3 +1,5 @@
 import { createComponent } from './component';
+import { renderIcon } from './renderIcon';
+
 export * from './mountComponent';
-export { createComponent };
+export { createComponent, renderIcon };
