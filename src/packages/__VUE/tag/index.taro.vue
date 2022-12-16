@@ -1,13 +1,21 @@
 <template>
   <view :class="classes" :style="getStyle()" @click="onClick">
     <slot></slot>
-    <Close class="nut-tag--close" v-if="closeable" width="11px" height="11px" @click="onClose"></Close>
+    <IconFont
+      name="close"
+      class="nut-tag--close"
+      v-if="closeable"
+      font-size="12px"
+      width="11px"
+      height="11px"
+      @click="onClose"
+    ></IconFont>
   </view>
 </template>
 
 <script lang="ts">
 import { PropType, CSSProperties, computed, toRefs } from 'vue';
-import { Close } from '@nutui/icons-vue';
+import { IconFont } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('tag');
 export type TagType = 'primary' | 'success' | 'danger' | 'warning';
@@ -38,7 +46,7 @@ export default create({
     }
   },
   components: {
-    Close
+    IconFont
   },
   emits: ['close', 'click'],
   setup(props, { emit }) {
