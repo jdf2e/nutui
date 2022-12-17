@@ -48,19 +48,19 @@
     <nut-row>
       <nut-badge>
         <template #icons>
-          <nut-icon name="Check" color="#ffffff" size="12"></nut-icon>
+          <Check color="#ffffff" width="12px" height="12px"></Check>
         </template>
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
         <template #icons>
-          <nut-icon name="link" color="#ffffff" size="12"></nut-icon>
+          <Link color="#ffffff" width="12px" height="12px"></Link>
         </template>
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
         <template #icons>
-          <nut-icon name="download" color="#ffffff" size="12"></nut-icon>
+          <Download color="#ffffff" width="12px" height="12px"></Download>
         </template>
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>
@@ -92,6 +92,7 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('badge');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Check, Link, Download } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -112,6 +113,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  component: { Check, Download, Link },
   setup() {
     initTranslate();
     return {
