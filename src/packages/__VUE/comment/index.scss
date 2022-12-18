@@ -255,14 +255,12 @@
   &__follow {
     &-title {
       position: relative;
-      // display: flex;
-      // align-items: center;
       font-size: 14px;
       font-weight: bold;
       color: $black;
       padding-left: 8px;
 
-      i {
+      svg {
         position: absolute;
         left: 0;
         top: 13%;
