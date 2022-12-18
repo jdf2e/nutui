@@ -12,12 +12,9 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="nut-address__header-back" @click="switchModule">
-          <nut-icon
-            v-bind="$attrs"
-            :name="backBtnIcon"
-            color="#cccccc"
-            v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
-          ></nut-icon>
+          <slot name="backIcon">
+            <Left v-show="type == 'exist' && privateType == 'custom'"></Left>
+          </slot>
         </view>
 
         <view class="nut-address__header__title">
@@ -29,7 +26,9 @@
         </view>
 
         <view class="nut-address__header-close" @click="handClose('cross')">
-          <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
+          <slot name="closeIcon">
+            <Close color="#cccccc" size="18px"></Close>
+          </slot>
         </view>
       </view>
 
@@ -60,12 +59,9 @@
               @click="nextAreaList(item)"
             >
               <div>
-                <component
-                  :is="renderIcon(selectedIcon)"
-                  v-bind="$attrs"
-                  v-if="selectedRegion[tabIndex]?.id == item.id"
-                ></component>
-                {{ item.name }}
+                <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
+                  <Check class="nut-address-select-icon" width="13px"></Check> </slot
+                >{{ item.name }}
               </div>
             </li>
           </ul>
@@ -90,10 +86,14 @@
               :key="index"
               @click="selectedExist(item)"
             >
-              <component
-                :is="renderIcon(item.selectedAddress ? selectedIcon : defaultIcon)"
-                v-bind="$attrs"
-              ></component>
+              <slot name="unselectedIcon" v-if="!item.selectedAddress">
+                <Location2 class="nut-address-select-icon" width="13px"></Location2>
+              </slot>
+
+              <slot name="icon" v-if="item.selectedAddress">
+                <Check class="nut-address-select-icon" width="13px"></Check>
+              </slot>
+
               <div class="nut-address__exist-item-info">
                 <div class="nut-address__exist-item-info-name" v-if="item.name">{{ item.name }}</div>
                 <div class="nut-address__exist-item-info-phone" v-if="item.phone">{{ item.phone }}</div>
@@ -123,25 +123,11 @@ import { reactive, ref, toRefs, watch, nextTick, computed, Ref, h, PropType } fr
 import { createComponent } from '@/packages/utils/create';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
-import Icon from '../icon/index.vue';
-import Popup from '../popup/index.vue';
-import Elevator from '../elevator/index.vue';
 const { componentName, create, translate } = createComponent('address');
+import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
 
-interface AddressList {
-  id?: string | number;
-  provinceName: string;
-  cityName: string;
-  countyName: string;
-  townName: string;
-  addressDetail: string;
-  selectedAddress: boolean;
-}
 export default create({
-  components: {
-    [Popup.name]: Popup,
-    [Elevator.name]: Elevator
-  },
+  components: { Location, Location2, Check, Close, Left },
   inheritAttrs: false,
   props: {
     ...popupProps,
@@ -189,22 +175,6 @@ export default create({
       type: String,
       default: ''
     },
-    defaultIcon: {
-      type: String,
-      default: 'location2'
-    },
-    selectedIcon: {
-      type: String,
-      default: 'Check'
-    },
-    closeBtnIcon: {
-      type: String,
-      default: 'circle-close'
-    },
-    backBtnIcon: {
-      type: String,
-      default: 'left'
-    },
     height: {
       type: [String, Number],
       default: '200px'
@@ -236,15 +206,6 @@ export default create({
           return props.town;
       }
     });
-
-    const renderIcon = (n: string) => {
-      return h(Icon, {
-        class: `${componentName}-select-icon`,
-        type: 'self',
-        size: '13px',
-        name: n
-      });
-    };
 
     const transformData = (data: RegionData[]) => {
       if (!Array.isArray(data)) throw new TypeError('params muse be array.');
@@ -399,7 +360,6 @@ export default create({
 
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     const handClose = (type = 'self') => {
-      if (!props.closeBtnIcon) return;
       closeWay.value = type == 'cross' ? 'cross' : 'self';
       showPopup.value = false;
     };
@@ -497,8 +457,7 @@ export default create({
       ...toRefs(props),
       translate,
       regionList,
-      transformData,
-      renderIcon
+      transformData
     };
   }
 });
