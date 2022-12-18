@@ -52,7 +52,7 @@
         <nut-col :span="8">
           <nut-image width="100" height="100" showLoading>
             <template #loading>
-              <nut-icon name="loading"></nut-icon>
+              <Loading width="16px" height="16px" name="loading"></Loading>
             </template>
           </nut-image>
           <div class="text">自定义</div>
@@ -69,7 +69,9 @@
         </nut-col>
         <nut-col :span="8">
           <nut-image src="https://x" width="100" height="100" showLoading>
-            <nut-icon name="circle-close"></nut-icon>
+            <template #error>
+              <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+            </template>
           </nut-image>
           <div class="text">自定义</div>
         </nut-col>
@@ -80,6 +82,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { Loading, CircleClose } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('image');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -103,6 +106,10 @@ const initTranslate = () =>
   });
 export default createDemo({
   props: {},
+  components: {
+    Loading,
+    CircleClose
+  },
   setup() {
     initTranslate();
     const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');

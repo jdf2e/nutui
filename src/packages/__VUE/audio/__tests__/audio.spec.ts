@@ -1,6 +1,5 @@
 import { config, mount } from '@vue/test-utils';
 import { nextTick, ref, toRefs, reactive, onMounted } from 'vue';
-import NutIcon from '../../icon/index.vue';
 import NutRange from '../../range/index.vue';
 import Audio from '../index.vue';
 import AudioOperate from '../../audiooperate/index.vue';
@@ -14,7 +13,6 @@ function sleep(delay = 0): Promise<void> {
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
     NutRange,
     AudioOperate,
     NutButton
@@ -40,7 +38,6 @@ test('audio init render', async () => {
   const wrapper = mount({
     components: {
       'nut-audio': Audio,
-      'nut-icon': NutIcon,
       'nut-range': NutRange,
       'nut-audio-operate': AudioOperate,
       'nut-button': NutButton
