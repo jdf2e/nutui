@@ -217,7 +217,7 @@ page {
   --nut-actionsheet-item-border-bottom: none;
   --nut-actionsheet-item-font-size: var(--nut-font-size-2);
   --nut-actionsheet-item-subdesc-font-size: var(--nut-font-size-1);
-  --nut-actionsheet-item-cancel-border-top: 1px solid --nut-actionsheet-light-color;
+  --nut-actionsheet-item-cancel-border-top: 1px solid var(--nut-actionsheet-light-color);
   --nut-actionsheet-item-line-height: 24px;
   --nut-actionsheet-item-font-color: var(--nut-title-color);
 
