@@ -29,8 +29,8 @@
         :class="['nut-audio__icon--box', playing ? 'nut-audio__icon--play' : 'nut-audio__icon--stop']"
         @click="changeStatus"
       >
-        <nut-icon v-if="playing" name="service" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
-        <nut-icon v-if="!playing" name="service"></nut-icon>
+        <Service v-if="playing" class="nut-icon-am-rotate nut-icon-am-infinite"></Service>
+        <Service v-else></Service>
       </div>
     </div>
 
@@ -63,6 +63,7 @@
 import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Range from '../range/index.vue';
+import { Service } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('audio');
 
 export default create({
@@ -106,7 +107,8 @@ export default create({
     }
   },
   components: {
-    [Range.name]: Range
+    [Range.name]: Range,
+    Service
   },
   emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],
 
