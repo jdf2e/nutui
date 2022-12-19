@@ -17,7 +17,7 @@
             :key="index"
             @click="chooseItem(item, index)"
           >
-            <nut-icon v-if="item.loading" name="loading"> </nut-icon>
+            <IconFont v-if="item.loading" name="loading"></IconFont>
             <view v-else> {{ item[optionTag] }}</view>
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
@@ -36,6 +36,7 @@ import type { PropType } from 'vue';
 const { componentName, create } = createComponent('action-sheet');
 import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
+import { IconFont } from '@nutui/icons-vue';
 export interface menuItems {
   disable: boolean;
   loading: boolean;
@@ -46,7 +47,8 @@ export interface menuItems {
 }
 export default create({
   components: {
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    IconFont
   },
   props: {
     ...popupProps,

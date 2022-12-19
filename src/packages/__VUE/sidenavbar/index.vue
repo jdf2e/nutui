@@ -8,7 +8,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, reactive, ref, toRefs, Ref, watch } from 'vue';
+import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('side-navbar');
 export default create({

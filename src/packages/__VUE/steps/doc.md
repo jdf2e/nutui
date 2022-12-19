@@ -27,7 +27,7 @@ app.use(Step);
   <nut-steps :current="current1" @click-step="handleClickStep">
     <nut-step title="步骤一">
       1
-      <template v-slot:title>步骤一</template>
+      <template #title>步骤一</template>
     </nut-step>
     <nut-step title="未开始">2</nut-step>
     <nut-step title="未开始">3</nut-step>
@@ -85,9 +85,15 @@ app.use(Step);
 ```html
 <template>
   <nut-steps current="1">
-    <nut-step title="已完成" icon="service">1</nut-step>
-    <nut-step title="进行中" icon="people">2</nut-step>
-    <nut-step title="未开始" icon="location2">3</nut-step>
+    <nut-step title="已完成">
+      <template #icon><Service /></template>
+    </nut-step>
+    <nut-step title="进行中">
+      <template #icon><People /></template>
+    </nut-step>
+    <nut-step title="未开始">
+      <template #icon><Location2 /></template>
+    </nut-step>
   </nut-steps>
 </template>
 ```
@@ -121,7 +127,7 @@ app.use(Step);
     <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
     <nut-step title="未开始">
       3
-      <template v-slot:content>
+      <template #content>
         <p>收货地址为：</p>
         <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
       </template>
@@ -157,9 +163,6 @@ app.use(Step);
 | ---------------- | ---------------------- | ------------ | ----------- |
 | title            | 流程步骤的标题         | string | `步骤` |
 | content          | 流程步骤的描述性文字(支持 html 结构)       | string | `步骤描述` |
-| icon          | [图标名称](#/zh-CN/component/icon)       | string | null |
-| icon-color          | [图标颜色](#/zh-CN/component/icon)       | string | null |
-| size          | [图标尺寸](#/zh-CN/component/icon)       | string | `12px` |
 
 ### Step Slots
 
@@ -167,3 +170,4 @@ app.use(Step);
 | ---------------- | ---------------------- |
 | title            | 步骤标题         |
 | content          | 步骤内容       |
+| icon             | 步骤图标       |

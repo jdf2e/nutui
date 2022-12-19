@@ -1,8 +1,7 @@
 <template>
   <div class="demo">
-    <h2>{{ translate('title') }}</h2>
-
-    <nut-cell :title="translate('tryClick')" @click="showTour3 = true">
+    <h2>基础用法</h2>
+    <nut-cell title="点击试试" @click="showTour3 = true">
       <template v-slot:link>
         <nut-switch id="target7" />
       </template>
@@ -16,9 +15,9 @@
       location="bottom-end"
     ></nut-tour>
 
-    <h2>{{ translate('title1') }}</h2>
+    <h2>自定义样式</h2>
 
-    <nut-cell :title="translate('tryClick')" @click="showTourHandle">
+    <nut-cell title="点击试试" @click="showTourHandle">
       <template v-slot:link>
         <nut-switch id="target5" />
       </template>
@@ -37,9 +36,9 @@
       maskHeight="50"
     ></nut-tour>
 
-    <h2>{{ translate('title2') }}</h2>
+    <h2>设置偏移量</h2>
 
-    <nut-cell :title="translate('tryClick')" @click="showTour2 = true">
+    <nut-cell title="点击试试" @click="showTour2 = true">
       <template v-slot:link>
         <div class="tour-demo-img">
           <img
@@ -67,9 +66,9 @@
       :offset="[8, 8]"
     ></nut-tour>
 
-    <h2>{{ translate('title3') }}</h2>
+    <h2>自定义内容</h2>
 
-    <nut-cell :title="translate('tryClick')" @click="showTour4 = true">
+    <nut-cell title="点击试试" @click="showTour4 = true">
       <template v-slot:link>
         <nut-switch id="target8" />
       </template>
@@ -83,20 +82,19 @@
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
-      :closeOnClickOverlay="false"
     >
-      <div class="tour-demo-custom-content">
-        <div>nutui 4.x 即将发布，敬请期待</div>
+      <view class="tour-demo-custom-content">
+        <view>nutui 4.x 即将发布，敬请期待</view>
         <nut-divider direction="vertical" />
-        <div @click="showTour4 = false">知道了</div>
-      </div>
+        <view @click="showTour4 = false">知道了</view>
+      </view>
     </nut-tour>
 
-    <h2>{{ translate('title4') }}</h2>
+    <!-- <h2>步骤</h2> -->
 
-    <nut-cell :title="translate('tryClick')" @click="showTour = true"></nut-cell>
+    <!-- <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
-    <nut-tabbar :bottom="true">
+    <nut-tabbar>
       <nut-tabbar-item
         id="target1"
         tab-title="首页"
@@ -121,48 +119,24 @@
         img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
         activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
       ></nut-tabbar-item>
-    </nut-tabbar>
+    </nut-tabbar> -->
 
-    <nut-tour
-      class="nut-custom-tour"
+    <!-- <nut-tour
+      class="nut-customword-tour"
       v-model:visible="showTour"
       :steps="steps"
-      location="top-start"
+      location="bottom-start"
       :offset="[0, 0]"
       maskWidth="50"
       maskHeight="50"
-    ></nut-tour>
+    ></nut-tour> -->
   </div>
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('tour');
-import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '自定义样式',
-      title2: '设置偏移量',
-      title3: '自定义内容',
-      title4: '步骤引导',
-      tryClick: '点击试试'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Custom Style',
-      title2: 'Custom Offset',
-      title3: 'Custom Content',
-      title4: 'Steps',
-      tryClick: 'Try Click'
-    }
-  });
-export default createDemo({
+export default {
   setup() {
-    initTranslate();
-
     const state = reactive({
       showTour: false,
       showTour1: false,
@@ -172,20 +146,20 @@ export default createDemo({
       offset: [-3, -8],
       steps: [
         {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
           target: 'target1'
         },
         {
-          content: '支持一套代码同时开发多端小程序+H5',
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
           target: 'target2'
         },
         {
-          content: '基于京东APP 10.0 视觉规范',
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
           target: 'target3',
           location: 'top-end'
         },
         {
-          content: '支持定制主题，内置 700+ 个主题变量',
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
           target: 'target4',
           location: 'top-end'
         }
@@ -193,14 +167,14 @@ export default createDemo({
 
       steps1: [
         {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
+          content: '邀请有礼，全新改版，奖励多多哦',
           target: 'target5'
         }
       ],
 
       steps2: [
         {
-          content: '支持一套代码同时开发多端小程序+H5',
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -209,7 +183,7 @@ export default createDemo({
 
       steps3: [
         {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
+          content: '邀请有礼，全新改版，奖励多多哦',
           target: 'target7'
         }
       ],
@@ -223,21 +197,20 @@ export default createDemo({
       type: 'normal'
     });
 
-    setTimeout(() => {
-      state.showTour = true;
-    }, 100);
+    // setTimeout(() => {
+    //   state.showTour = true;
+    // }, 1000);
 
     const showTourHandle = () => {
       state.showTour1 = true;
     };
 
     return {
-      translate,
       ...toRefs(state),
       showTourHandle
     };
   }
-});
+};
 </script>
 <style lang="scss">
 .nut-custom-tour {

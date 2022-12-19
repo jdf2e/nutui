@@ -3,7 +3,7 @@ import SideNavBar from '../index.vue';
 import SideNavBarItem from '../../sidenavbaritem/index.vue';
 import SubSideNavBar from '../../subsidenavbar/index.vue';
 import { nextTick } from 'vue';
-import NutIcon from '../../icon/index.vue';
+import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue';
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
@@ -13,7 +13,8 @@ function sleep(delay = 0): Promise<void> {
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    ArrowDown2,
+    ArrowUp2
   };
 });
 

@@ -69,10 +69,13 @@
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"
-      :default-icon="defaultIcon"
-      :selected-icon="selectedIcon"
-      :close-btn-icon="closeBtnIcon"
     >
+      <template #unselectedIcon>
+        <Heart1 style="margin-right: 8px"></Heart1>
+      </template>
+      <template #icon>
+        <HeartFill style="margin-right: 8px" color="#f00"></HeartFill>
+      </template>
       <template #bottom>
         <div class="nut-address-custom-buttom">
           <div class="btn">自定义按钮</div>
@@ -91,7 +94,6 @@
       :city="city"
       :country="country"
       :town="town"
-      :back-btn-icon="backBtnIcon"
       @change="(cal) => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
@@ -106,6 +108,7 @@ import { createComponent } from '@/packages/utils/create';
 import { onMounted, reactive, ref, toRefs } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('address');
+import { HeartFill, Heart1, Close } from '@nutui/icons-vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -165,6 +168,7 @@ interface AddressResult extends AddressList {
 }
 export default createDemo({
   props: {},
+  components: { HeartFill, Heart1, Close },
   setup() {
     initTranslate();
     const address = reactive({

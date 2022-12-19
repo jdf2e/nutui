@@ -310,14 +310,13 @@ app.use(ImagePreview);
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
 | pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
 | content-close   | 点击图片可以退出预览    | Boolean  | false  |
-| show-index`v3.1.22`  | 是否显示页码    | Boolean  | true  |
-| closeable`v3.1.22`  | 是否显示关闭图标    | Boolean  | false  |
-| close-icon`v3.1.22`   | 关闭图片名称或图片链接    | String  | ‘circle-close’  |
-| close-icon-position`v3.1.22`   | 关闭图标位置，可选值：top-left   | String  | ‘top-right’  |  
-| before-close`v3.1.22`  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
-| max-zoom`v3.1.23`  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
-| min-zoom`v3.1.23`  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
-| is-Loop`v3.2.5`  | 是否循环播放   | Boolean  | `true`  | 
+| show-index  | 是否显示页码    | Boolean  | true  |
+| closeable  | 是否显示关闭图标    | Boolean  | false  |
+| close-icon-position   | 关闭图标位置，可选值：top-left   | String  | ‘top-right’  |  
+| before-close  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
+| max-zoom  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
+| min-zoom  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
+| is-Loop  | 是否循环播放   | Boolean  | `true`  | 
 
 
 ### ImageArray 数据结构
@@ -340,5 +339,11 @@ app.use(ImagePreview);
 |字段|说明|回调参数|
 |--|--|--|
 |close|点击遮罩关闭图片预览时触发|无|
-|change`v3.1.22`|切换图片时触发| index:当前图片索引|
+|change|切换图片时触发| index:当前图片索引|
+
+### Slots
+
+|事件名|说明|
+|--|--|
+|closeIcon| 自定义关闭图片|
     

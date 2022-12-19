@@ -1,37 +1,41 @@
 <template>
   <div class="demo">
+    <h2>Svg 按需使用</h2>
+    <nut-cell>
+      <Add color="red" />
+    </nut-cell>
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-icon name="dongdong"></nut-icon>
-      <nut-icon name="JD"></nut-icon>
+      <IconFont name="dongdong"></IconFont>
+      <IconFont name="JD"></IconFont>
     </nut-cell>
     <h2>图片链接</h2>
     <nut-cell>
-      <nut-icon
+      <IconFont
         size="40"
         name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
       >
-      </nut-icon>
+      </IconFont>
     </nut-cell>
     <h2>图标颜色</h2>
     <nut-cell>
-      <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-      <nut-icon name="dongdong" color="#64b578"></nut-icon>
-      <nut-icon name="JD" color="#fa2c19"></nut-icon>
+      <IconFont name="dongdong" color="#fa2c19"></IconFont>
+      <IconFont name="dongdong" color="#64b578"></IconFont>
+      <IconFont name="JD" color="#fa2c19"></IconFont>
     </nut-cell>
 
     <h2>图标大小</h2>
     <nut-cell>
-      <nut-icon name="dongdong"></nut-icon>
-      <nut-icon name="dongdong" size="24"></nut-icon>
-      <nut-icon name="dongdong" size="26"></nut-icon>
+      <IconFont name="dongdong"></IconFont>
+      <IconFont name="dongdong" size="24"></IconFont>
+      <IconFont name="dongdong" size="26"></IconFont>
     </nut-cell>
 
     <nut-cell-group v-for="item in icons.data" :title="item.name" :key="item">
       <nut-cell>
         <ul>
           <li v-for="item in item.icons" :key="item">
-            <nut-icon :name="item"></nut-icon>
+            <IconFont :name="item"></IconFont>
             <span>{{ item }}</span>
           </li>
         </ul>
@@ -42,10 +46,10 @@
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">
-            <nut-icon
+            <IconFont
               :name="it.name"
               :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
-            ></nut-icon>
+            ></IconFont>
             <span>{{ it['animation-name'] }}</span>
           </li>
         </ul>
@@ -55,11 +59,12 @@
 </template>
 
 <script lang="ts">
-import { config } from '@nutui/icons-vue';
+import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
 export default {
   props: {},
+  components: { IconFont, Add },
   setup() {
-    return { icons: [] };
+    return { icons: IconFontConfig };
   }
 };
 </script>

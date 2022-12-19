@@ -35,6 +35,8 @@
   }
 
   &__icon {
+    display: flex;
+    align-items: center;
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;

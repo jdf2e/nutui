@@ -36,9 +36,10 @@
       </nut-swiper>
     </view>
     <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
-    <view :class="iconClasses" @click="onClose" v-if="closeable"
-      ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
-    ></view>
+
+    <view :class="iconClasses" @click="onClose" v-if="closeable">
+      <slot name="close-icon"><CircleClose color="#ffffff"></CircleClose></slot>
+    </view>
   </nut-popup>
 </template>
 <script lang="ts">
@@ -50,10 +51,9 @@ import { isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import ImagePreviewItem from './imagePreviewItem.vue';
-import Popup from '../popup/index.vue';
-import Swiper from '../swiper/index.vue';
 import { ImageInterface, baseProps } from './types';
 const { create } = createComponent('image-preview');
+import { CircleClose } from '@nutui/icons-vue';
 
 export default create({
   props: {
@@ -87,8 +87,7 @@ export default create({
   emits: ['close', 'change'],
   components: {
     ImagePreviewItem: ImagePreviewItem,
-    [Popup.name]: Popup,
-    [Swiper.name]: Swiper
+    CircleClose
   },
 
   setup(props, { emit }) {

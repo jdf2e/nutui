@@ -72,7 +72,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
-import { MonthInfo, Day, DateInfo } from './type';
+import { MonthInfo, Day } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
 
 type StringArr = string[];
@@ -270,7 +270,7 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean) => {
+    const chooseDay = (day: Day, month: MonthInfo, isFirst = false) => {
       if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
         let days = [...month.curData];
@@ -362,7 +362,7 @@ export default create({
       }
       return Array.from(Array(days), (v, k) => {
         return {
-          day: k + 1,
+          day: String(k + 1),
           type: type,
           year,
           month
@@ -380,7 +380,7 @@ export default create({
       }
       let months = Array.from(Array(preCurrMonthDays), (v, k) => {
         return {
-          day: k + 1,
+          day: String(k + 1),
           type: type,
           year,
           month
@@ -668,7 +668,7 @@ export default create({
       }
     };
     // 是否有 当前日期
-    const isCurrDay = (dateInfo: DateInfo) => {
+    const isCurrDay = (dateInfo: Day) => {
       const date = `${dateInfo.year}-${dateInfo.month}-${
         Number(dateInfo.day) < 10 ? '0' + dateInfo.day : dateInfo.day
       }`;
