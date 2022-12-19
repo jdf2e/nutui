@@ -2,7 +2,7 @@ name: Sync to Gitcode
 
 on:
   push:
-    branches: [next]
+    branches: [v4]
 
 jobs:
   deploy-site-sync-gitcode:
