@@ -27,7 +27,6 @@ export const usePicker = (props: any, emit: any) => {
   });
 
   const selectedOptions = computed(() => {
-    console.log(23);
     let optins: PickerOption[] = [];
     (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
       let currOptions = [];
@@ -164,7 +163,6 @@ export const usePicker = (props: any, emit: any) => {
   watch(
     () => props.columns,
     (val) => {
-      console.log('同意');
       if (val.length) state.formattedColumns = val as PickerOption[];
     }
   );

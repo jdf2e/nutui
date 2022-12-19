@@ -47,8 +47,8 @@
           "scene": null
         },
         {
-          "name": "dentry/pages/textarea/index",
-          "pathName": "dentry/pages/textarea/index",
+          "name": "dentry/pages/datepicker/index",
+          "pathName": "dentry/pages/datepicker/index",
           "query": "",
           "launchMode": "default",
           "scene": null

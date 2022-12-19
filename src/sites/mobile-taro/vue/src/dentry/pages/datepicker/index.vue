@@ -1,34 +1,33 @@
 <template>
   <div class="demo">
     <h2>选择年月日</h2>
-    <nut-cell title="显示中文" :desc="desc1" @click="show = true"></nut-cell>
-    <h2>选择月日</h2>
-    <nut-cell title="限制开始结束时间" :desc="desc2" @click="show2 = true"></nut-cell>
-    <h2>选择年月日时分</h2>
-    <nut-cell title="日期时间选择" :desc="desc3" @click="show3 = true"></nut-cell>
-    <h2>选择时分秒</h2>
-    <nut-cell title="时间选择" :desc="desc4" @click="show4 = true"></nut-cell>
-    <h2>格式化选项</h2>
-    <nut-cell title="时间选择" :desc="desc5" @click="show5 = true"></nut-cell>
-    <h2>分钟数递增步长设置</h2>
-    <nut-cell title="时间选择" :desc="desc6" @click="show6 = true"></nut-cell>
-    <h2>过滤选项</h2>
-    <nut-cell title="时间选择" :desc="desc7" @click="show7 = true"></nut-cell>
     <!-- 选择年月日 -->
     <nut-date-picker
       v-model="currentDate"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(0, val);
-        }
-      "
-      v-model:visible="show"
+      @confirm="confirm"
       :threeDimensional="false"
       :is-show-chinese="true"
-      :safeAreaInsetBottom="true"
     ></nut-date-picker>
+
+    <h2>配合 Popup 使用</h2>
+    <nut-cell title="选择日期" :desc="popupDesc" @click="show = true"></nut-cell>
+    <nut-popup position="bottom" v-model:visible="show">
+      <nut-date-picker
+        v-model="currentDate"
+        :min-date="minDate"
+        :max-date="maxDate"
+        @confirm="popupConfirm"
+        @cancel="show = false"
+        :is-show-chinese="true"
+        :threeDimensional="false"
+      >
+        <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button>
+      </nut-date-picker>
+    </nut-popup>
+
+    <h2>选择月日</h2>
     <!-- 选择月日 -->
     <nut-date-picker
       v-model="currentDate2"
@@ -36,13 +35,10 @@
       title="日期选择"
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 7, 1)"
-      @confirm="
-        (val) => {
-          confirm(1, val);
-        }
-      "
-      v-model:visible="show2"
+      @confirm="confirm"
     ></nut-date-picker>
+    <h2>选择年月日时分</h2>
+
     <!-- 选择年月日时分 -->
     <nut-date-picker
       v-model="currentDate3"
@@ -50,13 +46,9 @@
       type="datetime"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(2, val);
-        }
-      "
-      v-model:visible="show3"
+      @confirm="confirm"
     ></nut-date-picker>
+    <h2>选择时分秒</h2>
     <!-- 选择时分秒 -->
     <nut-date-picker
       v-model="currentDate4"
@@ -64,13 +56,9 @@
       type="time"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(3, val);
-        }
-      "
-      v-model:visible="show4"
+      @confirm="confirm"
     ></nut-date-picker>
+    <h2>格式化选项</h2>
     <!-- 格式化选项 -->
     <nut-date-picker
       v-model="currentDate5"
@@ -79,14 +67,9 @@
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 10, 1)"
       :formatter="formatter"
-      @confirm="
-        (val) => {
-          confirm(4, val);
-        }
-      "
-      v-model:visible="show5"
-      ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-date-picker
-    >
+      @confirm="confirm"
+    ></nut-date-picker>
+    <h2>分钟数递增步长设置</h2>
     <!-- 分钟数递增步长设置 -->
     <nut-date-picker
       v-model="currentDate6"
@@ -95,13 +78,10 @@
       :min-date="minDate"
       :max-date="maxDate"
       :minute-step="5"
-      @confirm="
-        (val) => {
-          confirm(5, val);
-        }
-      "
-      v-model:visible="show6"
+      @confirm="confirm"
     ></nut-date-picker>
+    <h2>过滤选项</h2>
+
     <!-- 过滤选项 -->
     <nut-date-picker
       v-model="currentDate7"
@@ -111,13 +91,10 @@
       :max-date="maxDate"
       :filter="filter"
       :formatter="formatter1"
-      @confirm="
-        (val) => {
-          confirm(6, val);
-        }
-      "
-      v-model:visible="show7"
+      @confirm="confirm"
     ></nut-date-picker>
+
+    <nut-toast :msg="msg" v-model:visible="showToast" type="text" />
   </div>
 </template>
 
@@ -127,12 +104,9 @@ export default {
   props: {},
   setup() {
     const show = ref(false);
-    const show2 = ref(false);
-    const show3 = ref(false);
-    const show4 = ref(false);
-    const show5 = ref(false);
-    const show6 = ref(false);
-    const show7 = ref(false);
+    const popupDesc = ref();
+    const msg = ref();
+    const showToast = ref(false);
 
     const CurrentDate = reactive({
       currentDate: new Date(2022, 4, 10, 10, 10),
@@ -143,15 +117,6 @@ export default {
       currentDate6: new Date(2022, 4, 10, 10, 10),
       currentDate7: new Date(2022, 4, 10, 0, 0)
     });
-
-    const desc1 = ref('2022年05月10日');
-    const desc2 = ref('05-10');
-    const desc3 = ref('2022-05-10 10:10');
-    const desc4 = ref('10:10:00');
-    const desc5 = ref('2022年05月10日 10:10');
-    const desc6 = ref('10:10:00');
-    const desc7 = ref('2022年05月10日 00时');
-    const descList = [desc1, desc2, desc3, desc4, desc5, desc6, desc7];
 
     const formatter = (type: string, option) => {
       switch (type) {
@@ -203,60 +168,29 @@ export default {
       return options;
     };
 
-    const confirm = (
-      index: number,
-      { selectedValue, selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }
-    ) => {
-      let date = '';
-      let time = '';
-      switch (index) {
-        case 0:
-        case 6:
-          descList[index].value = selectedOptions.map((option) => option.text).join('');
-          break;
-        case 2:
-          date = selectedValue.slice(0, 3).join('-');
-          time = selectedValue.slice(3).join(':');
-          descList[index].value = date + ' ' + time;
-          break;
-        case 3:
-        case 5:
-          descList[index].value = selectedValue.join(':');
-          break;
-        case 4:
-          date = selectedOptions
-            .slice(1, 3)
-            .map((op) => op.text)
-            .join('');
-          time = selectedOptions
-            .slice(3)
-            .map((op) => op.value)
-            .join(':');
-          descList[index].value = selectedOptions[0].text + '年' + date + ' ' + time;
-          break;
-        default:
-          descList[index].value = selectedValue.join('-');
-      }
+    const confirm = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      showToast.value = true;
+      msg.value = selectedOptions.map((val: any) => val.text).join('-');
+    };
+    const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+      popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
+      show.value = false;
     };
     const alwaysFun = () => {
-      show5.value = false;
-      desc5.value = '永久有效';
+      popupDesc.value = '永远有效';
+      show.value = false;
     };
     return {
       show,
-      show2,
-      show3,
-      show4,
-      show5,
-      show6,
-      show7,
-      desc1,
-      desc2,
-      desc3,
-      desc4,
-      desc5,
-      desc6,
-      desc7,
+      msg,
+      showToast,
+      popupDesc,
       ...toRefs(CurrentDate),
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
@@ -264,7 +198,8 @@ export default {
       formatter,
       formatter1,
       filter,
-      alwaysFun
+      alwaysFun,
+      popupConfirm
     };
   }
 };
