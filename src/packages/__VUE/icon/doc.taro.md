@@ -2,27 +2,27 @@
 
 ### 介绍
 
-独立安装 @nutui/icons-vue 图标组件包。
+独立安装 @nutui/icons-vue-taro 图标组件包。
 
 ### 安装
 
 ```bash
-npm i --save @nutui/icons-vue
+npm i --save @nutui/icons-vue-taro
 ```
 
 ``` javascript
 import { createApp } from 'vue';
-import { IconFont } from '@nutui/icons-vue';
+import { IconFont } from '@nutui/icons-vue-taro';
 
 const app = createApp();
 app.use(IconFont);
 ```
-### Svg 按需加载使用
+### 按需加载使用
 
-按需加载组件使用方式，可选项见 @nutui/icons-vue/dist/types/index.d.ts
+按需加载组件使用方式，可选项见 @nutui/icons-vue-taro/dist/types/index.d.ts
 
 ```js
-import { Add } from '@nutui/icons-vue';
+import { Add } from '@nutui/icons-vue-taro';
 // template
 <Add color='red'>
 ```
@@ -30,7 +30,7 @@ import { Add } from '@nutui/icons-vue';
 ### IconFont 全量使用
 
 ```js
-import { IconFont } from '@nutui/icons-vue';
+import { IconFont } from '@nutui/icons-vue-taro';
 ```
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。

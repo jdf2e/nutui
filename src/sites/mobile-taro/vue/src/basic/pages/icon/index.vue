@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>Svg 按需使用</h2>
+    <h2>按需使用</h2>
     <nut-cell>
       <Add color="red" />
     </nut-cell>
@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
+import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue-taro';
 export default {
   props: {},
   components: { IconFont, Add },
