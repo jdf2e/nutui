@@ -43,17 +43,9 @@ export default create({
     // 当前选中项
     value: [String, Number],
     columnsType: String,
-    itemShow: {
-      type: Boolean,
-      default: false
-    },
     column: {
       type: Array as PropType<PickerOption[]>,
       default: () => []
-    },
-    readonly: {
-      type: Boolean,
-      default: false
     },
     // 是否开启3D效果
     threeDimensional: {
@@ -168,7 +160,7 @@ export default create({
       setMove(move);
     };
 
-    const onTouchEnd = (event: TouchEvent) => {
+    const onTouchEnd = () => {
       state.touchParams.lastY = touch.deltaY.value;
       state.touchParams.lastTime = Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;

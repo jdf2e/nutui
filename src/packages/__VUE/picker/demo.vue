@@ -1,27 +1,24 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-picker
-      :columns="columns"
-      :title="translate('chooseCity')"
-      @confirm="(options) => confirm('index', options)"
-    ></nut-picker>
+    <nut-picker :columns="columns" :title="translate('chooseCity')" @confirm="confirm"></nut-picker>
 
     <h2>{{ translate('popupDesc') }}</h2>
     <nut-cell :title="translate('chooseCity')" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup position="bottom" v-model:visible="show">
-      <nut-picker :columns="columns" :title="translate('chooseCity')" @confirm="popupConfirm" @cancel="show = false">
+      <nut-picker
+        v-model="popupValue"
+        :columns="columns"
+        :title="translate('chooseCity')"
+        @confirm="popupConfirm"
+        @cancel="show = false"
+      >
         <nut-button block type="primary">{{ translate('always') }}</nut-button>
       </nut-picker>
     </nut-popup>
 
     <h2>{{ translate('defaultSelected') }}</h2>
-    <nut-picker
-      v-model="selectedValue"
-      :columns="columns"
-      :title="translate('chooseCity')"
-      @confirm="(options) => confirm('defult', options)"
-    >
+    <nut-picker v-model="selectedValue" :columns="columns" :title="translate('chooseCity')" @confirm="confirm">
     </nut-picker>
 
     <h2>{{ translate('tileDesc') }}</h2>
@@ -30,17 +27,12 @@
       :columns="columns"
       :title="translate('chooseCity')"
       :threeDimensional="false"
-      @confirm="(options) => confirm('tile', options)"
+      @confirm="confirm"
     >
     </nut-picker>
 
     <h2>{{ translate('multipleColumns') }}</h2>
-    <nut-picker
-      v-model="selectedTime"
-      :columns="multipleColumns"
-      :title="translate('chooseTime')"
-      @confirm="(options) => confirm('multiple', options)"
-    >
+    <nut-picker v-model="selectedTime" :columns="multipleColumns" :title="translate('chooseTime')" @confirm="confirm">
     </nut-picker>
 
     <h2>{{ translate('cascade') }}</h2>
@@ -48,7 +40,7 @@
       v-model="selectedCascader"
       :columns="cascaderColumns"
       :title="translate('chooseCity')"
-      @confirm="(options) => confirm('cascader', options)"
+      @confirm="confirm"
     ></nut-picker>
 
     <h2>{{ translate('async') }}</h2>
@@ -56,7 +48,7 @@
       v-model="asyncValue"
       :columns="asyncColumns"
       :title="translate('chooseCity')"
-      @confirm="(options) => confirm('async', options)"
+      @confirm="confirm"
     ></nut-picker>
   </div>
 </template>
@@ -78,6 +70,7 @@ export default createDemo({
     const selectedTime = ref(['Wednesday', 'Afternoon']);
     const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>([]);
+    const popupValue = ref();
     const columns = computed(() => [
       { text: translate('nanJing'), value: 'NanJing' },
       { text: translate('wuXi'), value: 'WuXi' },
@@ -184,10 +177,7 @@ export default createDemo({
       }, 500);
     });
 
-    const confirm = (
-      tag: string,
-      { selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }
-    ) => {
+    const confirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
       Toast.text(selectedOptions.map((val: any) => val.text).join(','));
     };
 
@@ -211,7 +201,8 @@ export default createDemo({
       selectedCascader,
       selectedTileValue,
       popupConfirm,
-      popupDesc
+      popupDesc,
+      popupValue
     };
   }
 });

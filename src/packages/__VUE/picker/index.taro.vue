@@ -1,71 +1,59 @@
 <template>
   <view :class="classes">
-    <nut-popup
-      position="bottom"
-      v-model:visible="show"
-      :teleport="teleport"
-      :lock-scroll="lockScroll"
-      :close-on-click-overlay="closeOnClickOverlay"
-      @close="close"
-      :round="true"
-      :safeAreaInsetBottom="safeAreaInsetBottom"
-      :destroyOnClose="destroyOnClose"
+    <view class="nut-picker__bar" v-if="showToolbar">
+      <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="cancel">{{
+        cancelText || translate('cancel')
+      }}</view>
+      <view class="nut-picker__title"> {{ title }}</view>
+      <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
+        okText || translate('confirm')
+      }}</view>
+    </view>
+    <slot name="top"></slot>
+
+    <!-- Taro 下转换成 微信小程序 -->
+    <picker-view
+      v-if="ENV != ENV_TYPE.WEB"
+      :indicatorStyle="`height:${optionHeight}px`"
+      :value="defaultIndexes"
+      :style="pickerViewStyles"
+      :immediate-change="true"
+      @change="tileChange"
+      @pickstart="handlePickstart"
+      @pickend="handlePickend"
     >
-      <view class="nut-picker__bar">
-        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
-          cancelText || translate('cancel')
-        }}</view>
-        <view class="nut-picker__title"> {{ title }}</view>
-        <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
-          okText || translate('confirm')
-        }}</view>
-      </view>
-      <slot name="top"></slot>
-
-      <!-- Taro 下转换成 微信小程序 -->
-      <picker-view
-        v-if="ENV != ENV_TYPE.WEB"
-        indicator-style="height: 34px;"
-        :value="defaultIndexes"
-        style="width: 100%; height: 252px"
-        :immediate-change="true"
-        @change="tileChange"
-        @pickstart="handlePickstart"
-        @pickend="handlePickend"
-      >
-        <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
-          <view
-            class="nut-picker-roller-item-tarotile"
-            v-for="(item, index) in column"
-            :key="item.value ? item.value : index"
-          >
-            {{ item.text }}
-          </view>
-        </picker-view-column>
-      </picker-view>
-
-      <!-- Taro 下转换成 H5 -->
-      <view class="nut-picker__column" v-if="ENV == ENV_TYPE.WEB">
-        <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
-          <nut-picker-column
-            :ref="swipeRef"
-            :itemShow="show"
-            :column="column"
-            :readonly="readonly"
-            :columnsType="columnsType"
-            :value="defaultValues[columnIndex]"
-            :threeDimensional="false"
-            :swipeDuration="swipeDuration"
-            @change="
-              (option) => {
-                changeHandler(columnIndex, option);
-              }
-            "
-          ></nut-picker-column>
+      <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+        <view
+          class="nut-picker-roller-item-tarotile"
+          v-for="(item, index) in column"
+          :key="item.value ? item.value : index"
+        >
+          {{ item.text }}
         </view>
+      </picker-view-column>
+    </picker-view>
+
+    <!-- Taro 下转换成 H5 -->
+    <view class="nut-picker__column" :style="columnStyle" v-if="ENV == ENV_TYPE.WEB">
+      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+        <nut-picker-column
+          :ref="swipeRef"
+          :column="column"
+          :columnsType="columnsType"
+          :value="defaultValues[columnIndex]"
+          :threeDimensional="false"
+          :swipeDuration="swipeDuration"
+          :visibleOptionNum="visibleOptionNum"
+          :optionHeight="optionHeight"
+          @change="
+            (option) => {
+              changeHandler(columnIndex, option);
+            }
+          "
+        ></nut-picker-column>
       </view>
-      <slot name="default"></slot>
-    </nut-popup>
+    </view>
+    <slot name="default"></slot>
   </view>
 </template>
 <script lang="ts">
