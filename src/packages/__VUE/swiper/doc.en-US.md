@@ -283,7 +283,7 @@ You can manually switch through `api` (`prev`, `next`)
 
 :::demo
 
-```html
+```vue
 <template>
   <view class="demo-box">
     <nut-swiper :init-page="page" :loop="true" ref="swiper">
@@ -293,10 +293,10 @@ You can manually switch through `api` (`prev`, `next`)
     </nut-swiper>
     <view class="nut-swiper-btns">
       <span class="nut-swiper-btns__left" @click="handlePrev">
-        <nut-icon name='left'></nut-icon>
+        <Left></Left>
       </span>
       <span class="nut-swiper-btns__left" @click="handleNext">
-        <nut-icon name='right'></nut-icon>
+        <Right></Right>
       </span>
     </view>
   </view>
@@ -304,6 +304,10 @@ You can manually switch through `api` (`prev`, `next`)
 <script lang="ts">
   import { reactive, toRefs, ref, Ref } from 'vue';
   export default {
+    components: { 
+      Left, 
+      Right 
+    },
     setup() {
       const swiper = ref(null) as Ref;
       const state = reactive({
