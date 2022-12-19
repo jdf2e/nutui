@@ -90,7 +90,7 @@ app.use(Progress);
 import { ref } from 'vue';
 export default {
   setup() {
-    // source file https://github.com/jdf2e/nutui/blob/next/src/packages/__VUE/uploader/uploader.ts#L6
+    // source file https://github.com/jdf2e/nutui/blob/v4/src/packages/__VUE/uploader/uploader.ts#L6
     const beforeXhrUpload = (taroUploadFile: any, options: any) => {
       //taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
       const uploadTask = taroUploadFile({
