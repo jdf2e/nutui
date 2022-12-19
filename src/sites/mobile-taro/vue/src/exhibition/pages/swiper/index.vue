@@ -63,10 +63,10 @@
       </nut-swiper>
       <view class="nut-swiper-btns">
         <span class="nut-swiper-btns__left" @click="handlePrev">
-          <nut-icon name="left"></nut-icon>
+          <Left></Left>
         </span>
         <span class="nut-swiper-btns__left" @click="handleNext">
-          <nut-icon name="right"></nut-icon>
+          <Right></Right>
         </span>
       </view>
     </view>
@@ -114,6 +114,7 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
+import { Left, Right } from '@nutui/icons-vue';
 
 export default {
   props: {},
@@ -166,7 +167,8 @@ export default {
       handlePrev,
       handleNext
     };
-  }
+  },
+  components: { Left, Right }
 };
 </script>
 

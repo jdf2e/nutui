@@ -37,7 +37,7 @@
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
     </a>  
     <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/next" alt="GitHub commits since latest release (by date)">
+    <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
     </a>
     <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
@@ -109,7 +109,7 @@ createApp(App).use(NutUI).mount("#app");
 
 [NutUI 实战快速入门](https://www.bilibili.com/video/BV14r4y1e7LK/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 
-[awesome-nutui](https://github.com/jdf2e/nutui/blob/next/awesome.md)
+[awesome-nutui](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
 
 
 ## 主题

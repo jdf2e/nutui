@@ -68,7 +68,7 @@
     "copydocs": "node ./jd/copymd.js",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
     "attrs": "node ./jd/createAttributes.cjs",
-    "dts": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json"
+    "dts": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types"
   },
   "standard-version": {
     "scripts": {
