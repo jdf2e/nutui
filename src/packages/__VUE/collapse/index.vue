@@ -10,46 +10,16 @@ const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     active: {
-      type: [String, Number, Array]
+      type: [String, Number, Array],
+      default: () => []
     },
     accordion: {
-      type: Boolean
-    },
-    titleIcon: {
-      type: String,
-      default: ''
-    },
-    titleIconSize: {
-      type: String,
-      default: '16px'
-    },
-    titleIconColor: {
-      type: String,
-      default: ''
-    },
-    titleIconPosition: {
-      type: String,
-      default: 'left'
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    iconSize: {
-      type: String,
-      default: '16px'
-    },
-    iconColor: {
-      type: String,
-      default: ''
-    },
-    rotate: {
-      type: [String, Number],
-      default: 180
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:active', 'change'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const collapseDom: any = ref(null);
     const collapseChldren: any = ref([]);
     const classes = computed(() => {
@@ -58,9 +28,10 @@ export default create({
         [prefixCls]: true
       };
     });
+
     watch(
       () => props.active,
-      (newval: any, oldval) => {
+      (newval: number | string | any) => {
         let doms: any = collapseChldren.value;
         Array.from(doms).forEach((item: any) => {
           if (typeof newval == 'number' || typeof newval == 'string') {
