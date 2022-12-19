@@ -17,19 +17,24 @@
           {{ item.text }}
         </view>
         <!-- 平铺 -->
-        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
+        <view
+          class="nut-picker-roller-item-tile"
+          :style="{ height: pxCheck(optionHeight) }"
+          v-if="item && item.text && !threeDimensional"
+        >
           {{ item.text }}
         </view>
       </template>
     </view>
-    <view class="nut-picker-roller-mask"></view>
+    <view class="nut-picker-roller-mask" :style="maskStyles"></view>
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
 import { preventDefault, clamp } from '@/packages/utils/util';
+import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 
@@ -58,6 +63,14 @@ export default create({
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    visibleOptionNum: {
+      type: [Number, String],
+      default: 7
+    },
+    optionHeight: {
+      type: [Number, String],
+      default: 36
     }
   },
 
@@ -65,7 +78,6 @@ export default create({
   setup(props, { emit }) {
     const touch: any = useTouch();
 
-    const wrapper = ref();
     const state = reactive({
       touchParams: {
         startY: 0,
@@ -79,7 +91,6 @@ export default create({
       currIndex: 1,
       transformY: 0,
       scrollDistance: 0,
-      lineSpacing: 36,
       rotation: 20
     });
 
@@ -100,20 +111,30 @@ export default create({
     const touchRollerStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-        transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
+        transform: `rotate3d(1, 0, 0, ${touchDeg.value})`,
+        top: `calc(50% - ${+props.optionHeight / 2}px)`
       };
     });
 
     const touchTileStyle = computed(() => {
+      const { optionHeight } = props;
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-        transform: `translate3d(0, ${state.scrollDistance}px, 0)`
+        transform: `translate3d(0, ${state.scrollDistance}px, 0)`,
+        top: `calc(50% - ${+optionHeight / 2}px)`,
+        height: `${optionHeight}px`
       };
     });
 
     const setRollerStyle = (index: number) => {
       return `transform: rotate3d(1, 0, 0, ${-state.rotation * index}deg) translate3d(0px, 0px, 104px)`;
     };
+
+    const maskStyles = computed(() => {
+      return {
+        backgroundSize: `100% ${((+props.visibleOptionNum - 1) * +props.optionHeight) / 2}px`
+      };
+    });
 
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
@@ -125,7 +146,7 @@ export default create({
           const cos = +transform.split(', ')[5];
           const sin = +transform.split(', ')[6] < 0 ? 180 : 0;
           const endDeg = circle * 360 + (Math.acos(cos) / Math.PI) * 180 + sin;
-          state.scrollDistance = -Math.abs((endDeg / state.rotation - 1) * state.lineSpacing);
+          state.scrollDistance = -Math.abs((endDeg / state.rotation - 1) * +props.optionHeight);
         } else {
           state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
         }
@@ -197,6 +218,7 @@ export default create({
     };
 
     const setMove = (move: number, type?: string, time?: number) => {
+      const { optionHeight } = props;
       let updateMove = move + state.transformY;
 
       if (type === 'end') {
@@ -204,20 +226,20 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
-          updateMove = -(props.column.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * +optionHeight) {
+          updateMove = -(props.column.length - 1) * +optionHeight;
         }
 
-        // 设置滚动距离为lineSpacing的倍数值
-        let endMove = Math.round(updateMove / state.lineSpacing) * state.lineSpacing;
-        let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
+        // 设置滚动距离为 +optionHeight 的倍数值
+        let endMove = Math.round(updateMove / +optionHeight) * +optionHeight;
+        let deg = `${(Math.abs(Math.round(endMove / +optionHeight)) + 1) * state.rotation}deg`;
 
         setTransform(endMove, type, time, deg);
 
-        state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
+        state.currIndex = Math.abs(Math.round(endMove / +optionHeight)) + 1;
       } else {
         let deg = 0;
-        let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
+        let currentDeg = (-updateMove / +optionHeight + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
@@ -227,7 +249,7 @@ export default create({
 
         if (minDeg < deg && deg < maxDeg) {
           setTransform(updateMove, null, undefined, deg + 'deg');
-          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+          state.currIndex = Math.abs(Math.round(updateMove / +optionHeight)) + 1;
         }
       }
     };
@@ -241,7 +263,7 @@ export default create({
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
-      let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
+      let move = index === -1 ? 0 : (index as number) * +props.optionHeight;
       type && setChooseValue();
       setMove(-move);
     };
@@ -284,7 +306,6 @@ export default create({
     return {
       ...toRefs(state),
       ...toRefs(props),
-      wrapper,
       setRollerStyle,
       isHidden,
       roller,
@@ -294,7 +315,9 @@ export default create({
       touchRollerStyle,
       touchTileStyle,
       setMove,
-      stopMomentum
+      stopMomentum,
+      pxCheck,
+      maskStyles
     };
   }
 });

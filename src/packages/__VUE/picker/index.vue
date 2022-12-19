@@ -1,54 +1,42 @@
 <template>
-  <view :class="classes">
-    <nut-popup
-      position="bottom"
-      v-model:visible="show"
-      :teleport="teleport"
-      :lock-scroll="lockScroll"
-      :close-on-click-overlay="closeOnClickOverlay"
-      @close="close"
-      :round="true"
-      :teleportDisable="teleportDisable"
-      :safeAreaInsetBottom="safeAreaInsetBottom"
-      :destroyOnClose="destroyOnClose"
-    >
-      <view class="nut-picker__bar">
-        <view class="nut-picker__left" @click="close">{{ cancelText || translate('cancel') }}</view>
-        <view class="nut-picker__title"> {{ title }}</view>
-        <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
+  <div :class="classes">
+    <view class="nut-picker__bar" v-if="showToolbar">
+      <view class="nut-picker__left" @click="cancel">{{ cancelText || translate('cancel') }}</view>
+      <view class="nut-picker__title"> {{ title }}</view>
+      <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
+    </view>
+
+    <slot name="top"></slot>
+
+    <view class="nut-picker__column" :style="columnStyle">
+      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+        <nut-picker-column
+          :ref="swipeRef"
+          :itemShow="show"
+          :column="column"
+          :readonly="readonly"
+          :columnsType="columnsType"
+          :value="defaultValues && defaultValues[columnIndex]"
+          :threeDimensional="threeDimensional"
+          :swipeDuration="swipeDuration"
+          :visibleOptionNum="visibleOptionNum"
+          :optionHeight="optionHeight"
+          @change="
+            (option) => {
+              changeHandler(columnIndex, option);
+            }
+          "
+        ></nut-picker-column>
       </view>
+    </view>
 
-      <slot name="top"></slot>
-
-      <view class="nut-picker__column">
-        <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
-          <nut-picker-column
-            :ref="swipeRef"
-            :itemShow="show"
-            :column="column"
-            :readonly="readonly"
-            :columnsType="columnsType"
-            :value="defaultValues && defaultValues[columnIndex]"
-            :threeDimensional="threeDimensional"
-            :swipeDuration="swipeDuration"
-            @change="
-              (option) => {
-                changeHandler(columnIndex, option);
-              }
-            "
-          ></nut-picker-column>
-        </view>
-      </view>
-
-      <slot name="default"></slot>
-    </nut-popup>
-  </view>
+    <slot name="default"></slot>
+  </div>
 </template>
 <script lang="ts">
-import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
+import { ref, reactive, watch, computed, toRefs, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import popup from '../popup/index.vue';
-import { popupProps } from '../popup/props';
+
 import column from './Column.vue';
 const { componentName, create, translate } = createComponent('picker');
 
@@ -62,11 +50,9 @@ export interface PickerOption {
 
 export default create({
   components: {
-    [column.name]: column,
-    [popup.name]: popup
+    [column.name]: column
   },
   props: {
-    ...popupProps,
     modelValue: {
       type: Array as PropType<(string | number)[]>,
       default: () => []
@@ -100,9 +86,21 @@ export default create({
     swipeDuration: {
       type: [Number, String],
       default: 1000
+    },
+    showToolbar: {
+      type: Boolean,
+      default: true
+    },
+    visibleOptionNum: {
+      type: [Number, String],
+      default: 7
+    },
+    optionHeight: {
+      type: [Number, String],
+      default: 36
     }
   },
-  emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
+  emits: ['cancel', 'change', 'confirm', 'update:visible', 'update:modelValue'],
   setup(props, { emit }) {
     const state = reactive({
       show: false,
@@ -127,6 +125,13 @@ export default create({
       return {
         [prefixCls]: true
       };
+    });
+
+    const columnStyle = computed(() => {
+      const styles: CSSProperties = {};
+      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
+      styles['--lineHeight'] = `${+props.optionHeight}px`;
+      return styles;
     });
 
     const selectedOptions = computed(() => {
@@ -194,8 +199,8 @@ export default create({
       return formatted;
     };
 
-    const close = () => {
-      emit('close', {
+    const cancel = () => {
+      emit('cancel', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value
       });
@@ -254,14 +259,6 @@ export default create({
 
     const isSameValue = (valA: any, valB: any) => JSON.stringify(valA) === JSON.stringify(valB);
 
-    onMounted(() => {
-      if (props.visible) state.show = props.visible;
-    });
-
-    onBeforeUnmount(() => {
-      if (props.visible) state.show = false;
-    });
-
     watch(
       () => props.modelValue,
       (newValues) => {
@@ -283,16 +280,6 @@ export default create({
     );
 
     watch(
-      () => props.visible,
-      (val) => {
-        state.show = val;
-        if (val) {
-          pickerColumn.value = [];
-        }
-      }
-    );
-
-    watch(
       () => props.columns,
       (val) => {
         if (val.length) state.formattedColumns = val as PickerOption[];
@@ -305,13 +292,14 @@ export default create({
       column,
       columnsType,
       columnsList,
-      close,
+      cancel,
       changeHandler,
       confirmHandler,
       defaultValues,
       translate,
       pickerColumn,
-      swipeRef
+      swipeRef,
+      columnStyle
     };
   }
 });
