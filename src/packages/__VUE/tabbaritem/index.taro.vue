@@ -115,11 +115,11 @@ export default create({
       active: parent.modelValue, // 是否选中
       index: 0
     });
-    const relation = (child: ComponentInternalInstance): void => {
+    const relation = (child: ComponentInternalInstance) => {
       if (child.proxy) {
         parent.children.push(child.proxy);
-        const index = computed(() => parent.children.indexOf(child.proxy));
-        state.index = props.name ?? index.value;
+        const index = parent.children.indexOf(child.proxy);
+        state.index = props.name ?? index;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);

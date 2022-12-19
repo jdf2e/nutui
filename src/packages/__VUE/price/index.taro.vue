@@ -7,9 +7,9 @@
       decode="true"
       v-html="showSymbol"
     ></view>
-    <view :class="`nut-price--${size}`">{{ formatThousands(price) }}</view>
-    <view :class="`nut-price--decimal-${size}`" v-if="decimalDigits != 0">.</view>
-    <view :class="`nut-price--decimal-${size}`">{{ formatDecimal(price) }}</view>
+    <view :class="`nut-price--${size} nut-price--son`">{{ formatThousands(price) }}</view>
+    <view :class="`nut-price--decimal-${size} nut-price--son`" v-if="decimalDigits != 0">.</view>
+    <view :class="`nut-price--decimal-${size} nut-price--son`">{{ formatDecimal(price) }}</view>
     <view
       v-if="needSymbol && position == 'after'"
       class="nut-price--symbol"

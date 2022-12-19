@@ -44,6 +44,7 @@
             v-if="option.value === modelValue"
             :name="optionIcon"
             :color="parent.props.activeColor"
+            :class-prefix="classPrefix"
           ></nut-icon>
           <view
             :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
@@ -84,6 +85,10 @@ export default create({
     optionIcon: {
       type: String,
       default: 'Check'
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
     }
   },
   components: {
