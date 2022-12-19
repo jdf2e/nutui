@@ -1,12 +1,12 @@
 import { mount, config } from '@vue/test-utils';
 import Table from '../index.vue';
 import { nextTick, h } from 'vue';
-import NutIcon from '../../icon/index.vue';
+import { Dongdong } from '@nutui/icons-vue';
 import NutButton from '../../button/index.vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
+    Dongdong,
     NutButton
   };
 });
@@ -97,7 +97,7 @@ const data2 = [
     sex: '女',
     record: '本科',
     render: () => {
-      return h(NutIcon, { name: 'dongdong', size: '14px' });
+      return h(Dongdong, { width: '14px', height: '14px' });
     }
   },
   {
