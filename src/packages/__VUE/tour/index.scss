@@ -35,7 +35,7 @@
       }
       &-operate {
         display: flex;
-        justify-content: flex-end;
+        justify-content: end;
         &-btn {
           display: inline-block;
           border: 1px solid $disable-color;

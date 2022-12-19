@@ -67,7 +67,7 @@ import { Close } from '@nutui/icons-vue';
 
 interface StepOptions {
   target: Element;
-  content: string;
+  content: String;
   location: PopoverLocation;
 }
 const { create } = createComponent('tour');
@@ -110,7 +110,7 @@ export default create({
       default: true
     },
     offset: {
-      type: Array as PropType<number[]>,
+      type: Array as PropType<Number[]>,
       default: [8, 10]
     },
     bgColor: {
