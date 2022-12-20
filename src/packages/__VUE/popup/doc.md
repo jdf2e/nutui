@@ -247,4 +247,3 @@ app.use(Overlay)
 | ------ | ---------- |
 | default  | 自定义内嵌内容 |
 | closeIcon  | 关闭按钮的自定义图标 |
-
