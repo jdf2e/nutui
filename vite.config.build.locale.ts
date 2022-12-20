@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import config from './package.json';
 import vue from '@vitejs/plugin-vue';
-import dts from 'vite-plugin-dts';
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
@@ -22,16 +21,7 @@ fs.outputFile(path.resolve(__dirname, './dist/packages/locale/index.scss'), ' ',
 fs.outputFile(path.resolve(__dirname, './dist/packages/locale/lang/index.scss'), ' ', 'utf8', (error) => {});
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    dts({
-      insertTypesEntry: true,
-      copyDtsFiles: true,
-      cleanVueFileName: true,
-      outputDir: path.resolve(__dirname, './dist/packages/'),
-      include: path.resolve(__dirname, './src/packages/locale')
-    })
-  ],
+  plugins: [vue()],
   build: {
     minify: true,
     lib: {

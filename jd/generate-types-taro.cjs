@@ -47,6 +47,17 @@ const getCompName = (name) => {
   return packageName ? packageName.name : ''
 }
 
+const getLocale = () => {
+  const source = path.join(sourceDir, 'locale');
+  const to = path.resolve(__dirname, './../dist/packages/locale');
+  fs.cp(source, to, { recursive: true }, (err) => {
+    if(err) {
+      console.error(err);
+      return;
+    }
+  })
+}
+
 fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
   if(err) {
     console.error(err);
@@ -54,7 +65,7 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
   }
 
   const oldName = path.join(toDir, 'nutui.taro.vue.build.d.ts');
-  const newName = path.join(toDir, 'nutui.d.ts');
+  const newName = path.join(toDir, 'index.d.ts');
 
   fs.rename(oldName, newName, (err) => {
     if(err) {
@@ -81,5 +92,8 @@ declare module 'vue' {
       fs.writeFileSync(item, changeContent);
     }
   });
+
+  //国际化处理
+  getLocale();
 
 });
