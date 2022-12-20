@@ -8,11 +8,7 @@
     
 ```javascript
 import { createApp } from 'vue';
-
-// vue
 import { Searchbar } from '@nutui/nutui';
-// taro
-import { Searchbar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Searchbar);
@@ -232,8 +228,6 @@ export default {
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | clear-icon `v3.2.2`         | 自定义清除按钮图标 | String | "circle-close"     |
 | background      | 输入框外部背景 | String |   '#fff'   |
-| input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
-| confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
 | focus-style `v3.2.2` | 聚焦时搜索框样式 | Object | - |

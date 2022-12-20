@@ -9,10 +9,7 @@ Add animation effects to child elements
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Animate } from '@nutui/nutui';
-// taro
-import { Animate } from '@nutui/nutui-taro';
 
 const app = createApp(Animate);
 app.use(Animate);

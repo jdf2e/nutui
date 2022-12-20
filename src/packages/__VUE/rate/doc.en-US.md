@@ -8,10 +8,7 @@ Use for quick rating actions, or to showcase reviews.
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Rate,Icon } from '@nutui/nutui';
-//taro
-import { Rate,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Rate);

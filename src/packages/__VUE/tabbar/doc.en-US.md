@@ -7,10 +7,7 @@ Bottom navigation bar
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Tabbar,TabbarItem,Icon } from '@nutui/nutui';
-//taro
-import { Tabbar,TabbarItem,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tabbar);
@@ -234,7 +231,7 @@ Use icon slot to custom icon.
 | img      | ImgUrl of unactive tab item | String | --     |
 | active-img      | ImgUrl of active tab item（Only one icon and img can be selected in the same item） | string | --     |
 | href      | Jump links for tabs                          | string | --     |
-| to  `applet not supported`      | 	Target route of the link, same as to of vue-router | string｜object | --     |
+| to    | 	Target route of the link, same as to of vue-router | string｜object | --     |
 | num       | Numbered corner label in the upper right corner of the tab    | number | --     |
 | dot       | Whether to show red dot   | boolean | false    |
 

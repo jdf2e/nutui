@@ -9,10 +9,7 @@ Place the content in multiple folded panels, and click the panel title to expand
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Collapse,CollapseItem } from '@nutui/nutui';
-// taro
-import { Collapse,CollapseItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Collapse);

@@ -8,10 +8,7 @@ The pop-up layer container is used to display pop-up windows, information prompt
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Popup,Overlay, Icon } from '@nutui/nutui';
-//taro
-import { Popup,Overlay, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popup)
@@ -223,8 +220,8 @@ Specify the mount node through `teleport`
 | close-icon             | [icon name](#/en-US/component/icon) or image url          | string         | `"close"`     |
 | destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed   | boolean        | `true`        |
 | round                  | Show fillet                                                | boolean        | `false`       |
-| teleport               | Specify the mount node (`not supported by miniProgram')   | string         | `"body"`      |
-| teleport-disable `v3.2.7`              | Whether the node is allowed to be mounted(`not supported by miniProgram')        | boolean         | `false`      |
+| teleport               | Specify the mount node   | string         | `"body"`      |
+| teleport-disable `v3.2.7`              | Whether the node is allowed to be mounted       | boolean         | `false`      |
 | safe-area-inset-bottom `v3.1.19`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Events

@@ -8,10 +8,7 @@ It is used for the rotation display of words and phrases, which is suitable for 
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Barrage } from '@nutui/nutui';
-//taro
-import { Barrage } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Barrage);

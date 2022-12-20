@@ -9,10 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { TrendArrow } from '@nutui/nutui';
-// taro
-import { TrendArrow } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TrendArrow);

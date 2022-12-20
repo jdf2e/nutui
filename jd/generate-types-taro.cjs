@@ -80,16 +80,19 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
     const inputs = content.match(regex);
     
     if(inputs && inputs.length) {
-      let name = item.substring(0, item.lastIndexOf('/'))
-      name = name.substring(name.lastIndexOf('/') + 1)
-      let remain = `
+      let name = item.substring(0, item.lastIndexOf('/'));
+      name = name.substring(name.lastIndexOf('/') + 1);
+      const componentName = getCompName(name);
+      if(componentName) {
+        let remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${getCompName(name)}: typeof _default;
+      Nut${componentName}: typeof _default;
   }
 }`;
-      let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
-      fs.writeFileSync(item, changeContent);
+        let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
+        fs.writeFileSync(item, changeContent);
+      }
     }
   });
 

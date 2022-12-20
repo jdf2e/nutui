@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Tabs, TabPane } from '@nutui/nutui';
-// taro
-import { Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tabs);
@@ -348,8 +345,8 @@ export default {
 | title-gutter         | 标签间隙                                                                                          | number,string | 0          |
 | size`v3.1.13`        | 标签栏字体尺寸大小 可选值  large normal small                                                     | string        | normal     |
 | auto-height`v3.1.21` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean       | false      |
-| sticky`v3.2.3` `小程序不支持` | 是否使用粘性布局 | boolean       | false      |
-| top`v3.2.3` `小程序不支持` | 粘性布局下的吸顶距离 | number       | 0      |
+| sticky`v3.2.3` | 是否使用粘性布局 | boolean       | false      |
+| top`v3.2.3` | 粘性布局下的吸顶距离 | number       | 0      |
 
 ### Tabs Slots
 

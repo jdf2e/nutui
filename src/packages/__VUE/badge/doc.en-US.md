@@ -9,10 +9,7 @@ A red dot, number or text appearing in the upper right corner of the icon or tex
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Badge } from '@nutui/nutui';
-// taro
-import { Badge } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Badge);

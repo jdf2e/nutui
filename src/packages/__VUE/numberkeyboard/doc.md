@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { NumberKeyboard,Popup } from '@nutui/nutui';
-//taro
-import { NumberKeyboard,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(NumberKeyboard);
@@ -296,7 +293,7 @@ export default{
 | v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
 | confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
-| teleport    | 指定挂载节点(`小程序不支持`)   | String         | `"body"`      |
+| teleport    | 指定挂载节点  | String         | `"body"`      |
 | pop-class    | 自定义弹框类名     | String         | -             |
 
 

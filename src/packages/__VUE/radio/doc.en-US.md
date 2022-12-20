@@ -8,10 +8,7 @@ Used to make a single selection in a set of alternatives
 
 ``` ts
 import { createApp } from 'vue';
-//vue
 import { Radio,RadioGroup,Icon } from '@nutui/nutui';
-//taro
-import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Radio);

@@ -9,10 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Skeleton } from '@nutui/nutui';
-// taro
-import { Skeleton } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Skeleton);

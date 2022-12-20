@@ -8,7 +8,6 @@ Signature component based on canvas.
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Signature} from '@nutui/nutui';
 
 const app = createApp();

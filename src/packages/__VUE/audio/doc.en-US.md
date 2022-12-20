@@ -9,7 +9,6 @@ Audio Playing
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Audio} from '@nutui/nutui';
 
 const app = createApp();

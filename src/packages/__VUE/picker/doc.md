@@ -9,10 +9,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Picker } from '@nutui/nutui';
-// taro
-import { Picker } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);

@@ -9,10 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Badge } from '@nutui/nutui';
-// taro
-import { Badge } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Badge);

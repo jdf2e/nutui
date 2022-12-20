@@ -8,10 +8,7 @@ The multiple selection button is used to select.
 
 ``` ts
 import { createApp } from 'vue';
-// vue
 import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
-// taro
-import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Checkbox);

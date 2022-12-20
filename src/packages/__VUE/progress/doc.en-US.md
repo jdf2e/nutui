@@ -8,10 +8,7 @@ Used to show the current progress of the operation.
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Progress,Icon } from '@nutui/nutui';
-//taro
-import { Progress,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Progress);

@@ -8,10 +8,7 @@ Buttons are used to trigger an action, such as submitting a form.
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Button } from '@nutui/nutui';
-// taro
-import { Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Button);

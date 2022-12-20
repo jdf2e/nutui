@@ -9,10 +9,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Skeleton } from '@nutui/nutui';
-// taro
-import { Skeleton } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Skeleton);

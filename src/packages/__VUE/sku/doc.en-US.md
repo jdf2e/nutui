@@ -8,10 +8,7 @@ Load on demand Load the Popup、InputNumber、Price dependent component
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Sku, Popup, InputNumber, Price } from '@nutui/nutui';
-//taro
-import { Sku, Popup, InputNumber, Price } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Sku);

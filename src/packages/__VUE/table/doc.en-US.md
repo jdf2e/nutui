@@ -8,10 +8,7 @@ Used to display the basic table
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Table } from '@nutui/nutui';
-// taro
-import { Table } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Table);
