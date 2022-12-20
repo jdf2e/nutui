@@ -9,14 +9,13 @@
 ```javascript
 import { createApp } from 'vue';
 //vue
-import { Popup,Overlay, Icon } from '@nutui/nutui';
+import { Popup,Overlay } from '@nutui/nutui';
 //taro
-import { Popup,Overlay, Icon } from '@nutui/nutui-taro';
+import { Popup,Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popup)
 app.use(Overlay)
-app.use(Icon)
 ```
 
 
@@ -85,7 +84,7 @@ app.use(Icon)
 
 ### 图标
 
-通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 来自定义显示图标，详情可参照[图标](#/zh-CN/component/icon)
+通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`closeIcon` 来自定义显示图标
 
 :::demo
 
@@ -96,11 +95,17 @@ app.use(Icon)
   <nut-cell title="图标位置" is-link @click="showIconPosition = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="自定义图标" is-link @click="showCloseIcon = true" ></nut-cell>
-  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon"></nut-popup>
+  <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
+    <template #closeIcon>
+      <Heart></Heart>
+    </template>
+  </nut-popup>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Heart } from '@nutui/icons-vue';
   export default {
+    components: { Heart },
     props: {},
     setup() {
       const state = reactive({
@@ -218,7 +223,6 @@ app.use(Icon)
 | pop-class              | 自定义弹框类名                                              | string         | -             |
 | closeable              | 是否显示关闭按钮                                            | boolean        | `false`        |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | string         | `"top-right"` |
-| close-icon             | [图标名称](#/zh-CN/component/icon) 或图片链接                                                  | string         | `"close"`     |
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                          | boolean        | `true`        |
 | round                  | 是否显示圆角                                                |boolean        | `false`       |
 | teleport               | 指定挂载节点(`小程序不支持`)                                                | string         | `"body"`      |
@@ -242,3 +246,5 @@ app.use(Icon)
 | 名称 | 说明       |
 | ------ | ---------- |
 | default  | 自定义内嵌内容 |
+| closeIcon  | 关闭按钮的自定义图标 |
+

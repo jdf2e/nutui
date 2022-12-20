@@ -30,10 +30,13 @@
       position="bottom"
       closeable
       close-icon-position="top-left"
-      close-icon="heart"
       :style="{ height: '20%' }"
       v-model:visible="showCloseIcon"
-    ></nut-popup>
+    >
+      <template #closeIcon>
+        <Heart></Heart>
+      </template>
+    </nut-popup>
     <h2>{{ translate('circle') }}</h2>
     <nut-cell :title="translate('circle')" is-link @click="showRound = true"></nut-cell>
     <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
@@ -54,6 +57,7 @@ import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Heart } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -92,6 +96,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Heart },
   props: {},
   setup() {
     initTranslate();

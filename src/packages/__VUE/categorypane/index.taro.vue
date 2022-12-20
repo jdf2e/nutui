@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: sueRimn
- * @Date: 2022-12-20 09:18:16
- * @LastEditors: sueRimn
- * @LastEditTime: 2022-12-20 10:25:05
--->
 <template>
   <div class="nut-category-pane">
     <div v-if="type == 'classify'" class="nut-category-pane__cateListRight">
