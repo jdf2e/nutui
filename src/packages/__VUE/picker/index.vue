@@ -20,7 +20,7 @@
           :visibleOptionNum="visibleOptionNum"
           :optionHeight="optionHeight"
           @change="
-            (option) => {
+            (option:PickerOption) => {
               changeHandler(columnIndex, option);
             }
           "
@@ -38,6 +38,7 @@ import { usePicker } from './usePicker';
 import column from './Column.vue';
 import baseProps from './baseProps';
 const { componentName, create, translate } = createComponent('picker');
+import { PickerOption } from './types';
 
 export default create({
   components: {

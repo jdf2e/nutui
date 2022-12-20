@@ -14,7 +14,7 @@
           inactive-color="#cccccc"
           active-color="#fa2c19"
         >
-          <template #button>
+          <template v-slot:button>
             <div class="nut-audio__button--custom"></div>
           </template>
         </nut-range>
@@ -112,7 +112,7 @@ export default create({
   },
   emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],
 
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const audioRef = ref(null);
 
     const audioData = reactive({
@@ -277,7 +277,8 @@ export default create({
       audioEnd,
       onTimeupdate,
       handleMute,
-      onCanplay
+      onCanplay,
+      slots
     };
   }
 });

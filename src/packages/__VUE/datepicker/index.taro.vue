@@ -133,7 +133,7 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = props[`${type}Date`];
+      const boundary = type == 'min' ? props.minDate : props.maxDate;
       const year = boundary.getFullYear();
       let month = 1;
       let date = 1;

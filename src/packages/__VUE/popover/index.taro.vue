@@ -85,7 +85,7 @@ export default create({
   components: {},
   props: {
     visible: { type: Boolean, default: false },
-    list: { type: Array, default: [] },
+    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
     theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
     location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },
@@ -131,7 +131,7 @@ export default create({
       const base = 16;
 
       if (bgColor) {
-        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
+        styles[`border${upperCaseFirst(direction)}Color` as any] = bgColor;
       }
 
       if (props.arrowOffset != 0) {

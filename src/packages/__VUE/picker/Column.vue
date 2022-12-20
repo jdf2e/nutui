@@ -134,7 +134,7 @@ export default create({
         let dom = roller.value as any;
         const { transform } = window.getComputedStyle(dom);
         if (props.threeDimensional) {
-          const circle = Math.floor(parseFloat(touchDeg.value) / 360);
+          const circle = Math.floor(touchDeg.value / 360);
           const cos = +transform.split(', ')[5];
           const sin = +transform.split(', ')[6] < 0 ? 180 : 0;
           const endDeg = circle * 360 + (Math.acos(cos) / Math.PI) * 180 + sin;

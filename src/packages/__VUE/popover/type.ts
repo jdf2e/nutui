@@ -1,3 +1,5 @@
+import { Component } from 'vue';
+
 export type PopoverTheme = 'light' | 'dark';
 
 export type PopoverLocation =
@@ -16,7 +18,7 @@ export type PopoverLocation =
 
 export type PopoverList = {
   name: string;
-  icon?: string;
+  icon?: Component;
   disabled?: boolean;
   className?: any;
   [key: PropertyKey]: any;

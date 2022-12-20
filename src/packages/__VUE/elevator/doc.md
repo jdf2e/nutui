@@ -377,18 +377,22 @@ app.use(Elevator);
 
 :::demo
 
-``` html
+```vue
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
       <template v-slot:default="slotProps">
-        <nut-icon name='JD' size="12"></nut-icon>
+        <Jd width="12px"></Jd>
         <span :style="{marginLeft: '15px'}">{{ slotProps.item.name }}</span>
       </template>
   </nut-elevator>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Jd } from '@nutui/icons-vue'
   export default {
+    components: {
+      Jd,
+    },
     setup() {
       const state = reactive({
         acceptKey: 'num',
