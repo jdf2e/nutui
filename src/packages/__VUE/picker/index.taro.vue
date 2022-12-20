@@ -62,6 +62,7 @@ import { componentWeb, componentWeapp } from './common';
 import Taro from '@tarojs/taro';
 const { create } = createComponent('picker');
 import { Component } from 'vue';
+import { PickerOption } from './types';
 
 const component: Component = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
 
