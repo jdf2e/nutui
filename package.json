@@ -65,13 +65,13 @@
     "test": "jest",
     "release": "standard-version -a",
     "codeformat": "prettier --write .",
-    "copydocs": "node ./jd/copymd.js",
+    "copydocs": "node ./jd/copymd.cjs",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
     "attrs": "node ./jd/createAttributes.cjs",
     "dts": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types",
     "dts:taro": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && npm run generate:types:taro",
-    "copy:h5": "node ./jd/copyh5.js",
-    "copy:taro": "node ./jd/copytaro.js"
+    "copy:h5": "node ./jd/copyh5.cjs",
+    "copy:taro": "node ./jd/copytaro.cjs"
   },
   "standard-version": {
     "scripts": {
