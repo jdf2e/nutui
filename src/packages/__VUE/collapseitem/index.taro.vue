@@ -3,38 +3,25 @@
     <view :class="['nut-collapse-item__title', { 'nut-collapse-item__title--disabled': disabled }]" @click="toggleOpen">
       <view class="nut-collapse-item__title-main">
         <view class="nut-collapse-item__title-main-value">
-          <nut-icon
-            v-if="titleIcon"
-            :name="titleIcon"
-            v-bind="$attrs"
-            :size="titleIconSize"
-            :color="titleIconColor"
-            :class="[
-              'nut-collapse-item__title-main-icon',
-              titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
-            ]"
-          ></nut-icon>
           <template v-if="$slots.mTitle">
             <slot name="mTitle"></slot>
           </template>
           <template v-else>
             <view v-html="title" class="nut-collapse-item__title-mtitle"></view>
           </template>
+          <view class="nut-collapse-item__title-label" v-if="label">{{ label }}</view>
         </view>
       </view>
-      <view v-if="$slots.sTitle" class="nut-collapse-item__title-sub">
-        <slot name="sTitle"></slot>
+      <view v-if="$slots.value" class="nut-collapse-item__title-sub">
+        <slot name="value"></slot>
       </view>
-      <view v-else v-html="subTitle" class="nut-collapse-item__title-sub"></view>
-      <nut-icon
-        v-if="icon"
-        :name="icon"
-        v-bind="$attrs"
-        :size="iconSize"
-        :color="iconColor"
+      <view v-else v-html="value" class="nut-collapse-item__title-sub"></view>
+      <view
         :class="['nut-collapse-item__title-icon', { 'nut-collapse-item__title-icon--expanded': openExpanded }]"
-        :style="iconStyle"
-      ></nut-icon>
+        :style="{ transform: 'rotate(' + (openExpanded ? rotate : 0) + 'deg)' }"
+      >
+        <component :is="renderIcon(icon)"></component>
+      </view>
     </view>
     <view v-if="$slots.extraRender" class="nut-collapse__item-extraWrapper">
       <div class="nut-collapse__item-extraWrapper__extraRender">
@@ -66,16 +53,24 @@ import {
   ComponentInternalInstance
 } from 'vue';
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, renderIcon } from '@/packages/utils/create';
+import { DownArrow } from '@nutui/icons-vue-taro';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({
   props: {
+    collapseRef: {
+      type: Object
+    },
     title: {
       type: String,
       default: ''
     },
-    subTitle: {
+    value: {
+      type: String,
+      default: ''
+    },
+    label: {
       type: String,
       default: ''
     },
@@ -88,8 +83,17 @@ export default create({
       default: -1,
       required: true
     },
-    collapseRef: {
-      type: Object
+    border: {
+      type: Boolean,
+      default: true
+    },
+    icon: {
+      type: Object,
+      default: () => DownArrow
+    },
+    rotate: {
+      type: [String, Number],
+      default: 180
     }
   },
   setup(props, ctx: any) {
@@ -110,26 +114,7 @@ export default create({
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
     const proxyData = reactive({
-      icon: parent.props.icon,
-      iconSize: parent.props.iconSize,
-      iconColor: parent.props.iconColor,
-      openExpanded: false,
-      // classDirection: 'right',
-      iconStyle: {
-        transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
-      }
-    });
-
-    const titleIconStyle = reactive({
-      titleIcon: parent.props.titleIcon,
-      titleIconSize: parent.props.titleIconSize,
-      titleIconColor: parent.props.titleIconColor,
-      titleIconPosition: parent.props.titleIconPosition
-      // titleIconWH: {
-      //   width: '13px',
-      //   height: '13px'
-      // }
+      openExpanded: false
     });
 
     // 获取 Dom 元素
@@ -152,11 +137,6 @@ export default create({
 
     // 手风琴模式
     const animation = () => {
-      if (parent.props.icon && !proxyData.openExpanded) {
-        proxyData.iconStyle['transform'] = 'rotate(0deg)';
-      } else {
-        proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
-      }
       nextTick(() => {
         // const query = Taro.createSelectorQuery();
         // @ts-ignore
@@ -176,20 +156,15 @@ export default create({
     };
     const open = () => {
       proxyData.openExpanded = !proxyData.openExpanded;
-      let time = contentRef.value.childNodes?.length || 1;
+      // let time = contentRef.value.childNodes?.length || 1;
       setTimeout(() => {
         animation();
-      }, 500 * time);
-      // timer.value = setInterval(() => {
-      // animation();
-      // }, 600);
+      }, 700);
+      // }, 500 * time);
     };
 
     const defaultOpen = () => {
       open();
-      if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
-      }
     };
 
     const currentName = computed(() => props.name);
@@ -288,10 +263,10 @@ export default create({
     });
 
     return {
+      renderIcon,
       classes,
       ...toRefs(proxyData),
       ...toRefs(parent.props),
-      ...toRefs(titleIconStyle),
       conHeight,
       wrapperRef,
       contentRef,

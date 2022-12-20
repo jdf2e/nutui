@@ -114,7 +114,7 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
-import { Left, Right } from '@nutui/icons-vue';
+import { Left, Right } from '@nutui/icons-vue-taro';
 
 export default {
   props: {},

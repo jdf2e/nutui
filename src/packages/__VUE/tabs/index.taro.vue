@@ -17,7 +17,7 @@
         >
           <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
           <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
-            <IconFont name="joy-smile" :color="color" />
+            <JoySmile :color="color" />
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
         </view>
@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { IconFont } from '@nutui/icons-vue';
+import { JoySmile } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
@@ -46,7 +46,7 @@ export type TabsSize = 'large' | 'normal' | 'small';
 const { create } = createComponent('tabs');
 export default create({
   components: {
-    IconFont
+    JoySmile
   },
   props: {
     modelValue: {

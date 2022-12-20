@@ -3,34 +3,25 @@
     <view :class="['nut-collapse-item__title', { 'nut-collapse-item__title--disabled': disabled }]" @click="toggleOpen">
       <view class="nut-collapse-item__title-main">
         <view class="nut-collapse-item__title-main-value">
-          <nut-icon
-            v-if="titleIcon"
-            :name="titleIcon"
-            v-bind="$attrs"
-            :size="titleIconSize"
-            :color="titleIconColor"
-            :class="[titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
-          ></nut-icon>
           <slot v-if="$slots.mTitle" name="mTitle"></slot>
           <template v-else>
             <view v-html="title" class="nut-collapse-item__title-mtitle"></view>
           </template>
+          <view class="nut-collapse-item__title-label" v-if="label">{{ label }}</view>
         </view>
       </view>
-      <view v-if="$slots.sTitle" class="nut-collapse-item__title-sub">
-        <slot name="sTitle"></slot>
+      <view v-if="$slots.value" class="nut-collapse-item__title-sub">
+        <slot name="value"></slot>
       </view>
-      <view v-else v-html="subTitle" class="nut-collapse-item__title-sub"></view>
-      <nut-icon
-        v-if="icon"
-        :name="icon"
-        v-bind="$attrs"
-        :size="iconSize"
-        :color="iconColor"
+      <view v-else v-html="value" class="nut-collapse-item__title-sub"></view>
+      <view
         :class="['nut-collapse-item__title-icon', { 'nut-collapse-item__title-icon--expanded': openExpanded }]"
-        :style="iconStyle"
-      ></nut-icon>
+        :style="{ transform: 'rotate(' + (openExpanded ? rotate : 0) + 'deg)' }"
+      >
+        <component :is="renderIcon(icon)"></component>
+      </view>
     </view>
+
     <view v-if="$slots.extraRender" class="nut-collapse__item-extraWrapper">
       <div class="nut-collapse__item-extraWrapper__extraRender">
         <slot name="extraRender"></slot>
@@ -56,16 +47,24 @@ import {
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { DownArrow } from '@nutui/icons-vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({
   props: {
+    collapseRef: {
+      type: Object
+    },
     title: {
       type: String,
       default: ''
     },
-    subTitle: {
+    value: {
+      type: String,
+      default: ''
+    },
+    label: {
       type: String,
       default: ''
     },
@@ -78,17 +77,28 @@ export default create({
       default: -1,
       required: true
     },
-    collapseRef: {
-      type: Object
+    border: {
+      type: Boolean,
+      default: true
+    },
+    icon: {
+      type: Object,
+      default: () => DownArrow
+    },
+    rotate: {
+      type: [String, Number],
+      default: 180
     }
   },
+  // components: { DownArrow },
   setup(props, ctx: any) {
     const collapse: any = inject('collapseParent');
     const parent: any = reactive(collapse);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true
+        [prefixCls]: true,
+        [prefixCls + '__border']: props.border
       };
     });
 
@@ -99,26 +109,7 @@ export default create({
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
     const proxyData = reactive({
-      icon: parent.props.icon,
-      iconSize: parent.props.iconSize,
-      iconColor: parent.props.iconColor,
-      openExpanded: false,
-      // classDirection: 'right',
-      iconStyle: {
-        transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
-      }
-    });
-
-    const titleIconStyle = reactive({
-      titleIcon: parent.props.titleIcon,
-      titleIconSize: parent.props.titleIconSize,
-      titleIconColor: parent.props.titleIconColor,
-      titleIconPosition: parent.props.titleIconPosition
-      // titleIconWH: {
-      //   width: '13px',
-      //   height: '13px'
-      // }
+      openExpanded: false
     });
 
     // 获取 Dom 元素
@@ -149,11 +140,6 @@ export default create({
         const contentHeight = `${offsetHeight}px`;
         wrapperRefEle.style.willChange = 'height';
         wrapperRefEle.style.height = !proxyData.openExpanded ? 0 : contentHeight;
-        if (parent.props.icon && !proxyData.openExpanded) {
-          proxyData.iconStyle['transform'] = 'rotate(0deg)';
-        } else {
-          proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
-        }
       }
       if (!proxyData.openExpanded) {
         onTransitionEnd();
@@ -167,9 +153,6 @@ export default create({
 
     const defaultOpen = () => {
       open();
-      if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
-      }
     };
 
     const currentName = computed(() => props.name);
@@ -234,7 +217,6 @@ export default create({
           subtree: true
         });
       }
-
       init();
     });
     const emptyContent = computed(() => {
@@ -249,8 +231,7 @@ export default create({
       classes,
       emptyContent,
       ...toRefs(proxyData),
-      ...toRefs(parent.props),
-      ...toRefs(titleIconStyle),
+      renderIcon,
       wrapperRef,
       contentRef,
       open,

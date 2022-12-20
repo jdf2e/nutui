@@ -163,7 +163,7 @@ app.use(CellGroup);
 
 ```html
 <template>
-  <nut-cell title="姓名" icon="my" desc="张三"></nut-cell>
+  <nut-cell title="姓名" desc="张三"></nut-cell>
 </template>
 ```
 
