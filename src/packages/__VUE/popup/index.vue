@@ -1,19 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: sueRimn
- * @Date: 2022-12-20 09:18:16
- * @LastEditors: sueRimn
- * @LastEditTime: 2022-12-20 10:22:59
--->
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: sueRimn
- * @Date: 2022-12-20 09:18:16
- * @LastEditors: sueRimn
- * @LastEditTime: 2022-12-20 09:56:09
--->
 <template>
   <Teleport :to="teleport" :disabled="!teleportDisable">
     <nut-overlay
