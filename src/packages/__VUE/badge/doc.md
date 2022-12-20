@@ -124,24 +124,28 @@ app.use(Badge);
   <div class="demo">
     <nut-badge>
       <template #icons>
-        <nut-icon name="Check" color="#ffffff" size="12"></nut-icon>
+        <Check color="#ffffff" width="12px" height="12px"></Check>
       </template>
       <nut-avatar icon="my" shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
       <template #icons>
-        <nut-icon name="link" color="#ffffff" size="12"></nut-icon>
+        <Link color="#ffffff" width="12px" height="12px"></Link>
       </template>
       <nut-avatar icon="my" shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
       <template #icons>
-        <nut-icon name="download" color="#ffffff" size="12"></nut-icon>
+       <Download color="#ffffff" width="12px" height="12px"></Download>
       </template>
       <nut-avatar icon="my" shape="square"></nut-avatar>
     </nut-badge>
   </div>
 </template>
+
+<script setup>
+import { Check, Link, Download } from '@nutui/icons-vue';
+</script>
 
 <style lang="scss" scoped>
 .demo{
