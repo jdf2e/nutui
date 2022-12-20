@@ -12,8 +12,9 @@
       @click="handleClick"
       v-if="direction == 'across'"
     >
-      <view class="nut-noticebar__page-lefticon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
-        <slot name="left-icon"><nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon></slot>
+      <view class="nut-noticebar__page-lefticon" v-if="iconShow">
+        <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
+        <component :is="renderIcon(leftIcon)" v-else></component>
       </view>
       <view ref="wrap" :class="`nut-noticebar__page-wrap wrap${id}`">
         <view
@@ -27,9 +28,8 @@
         </view>
       </view>
       <view v-if="closeMode || rightIcon" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
-        <slot name="right-icon">
-          <nut-icon v-bind="$attrs" :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon
-        ></slot>
+        <slot name="right-icon" v-if="$slots['right-icon']"> </slot>
+        <CircleClose v-else />
       </view>
     </view>
 
@@ -64,7 +64,8 @@
           <slot name="rightIcon"></slot>
         </template>
         <template v-else-if="closeMode">
-          <nut-icon type="cross" :color="color" size="11px"></nut-icon>
+          <CircleClose :color="color" size="11px" />
+          <!-- <nut-icon type="cross" :color="color" size="11px"></nut-icon> -->
         </template>
       </view>
     </view>
@@ -72,7 +73,8 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeactivated, ref, watch, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { Notice, CircleClose } from '@nutui/icons-vue-taro';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
@@ -130,8 +132,8 @@ export default create({
       type: Boolean,
       default: false
     },
-    leftIcon: { type: String, default: '' },
-    rightIcon: { type: String, default: '' },
+    leftIcon: { type: Object || String, default: () => Notice },
+    rightIcon: { type: Object || String, default: '' },
     color: {
       type: String,
       default: '#F9911B'
@@ -157,7 +159,9 @@ export default create({
     ScrollItem: function (props) {
       props.item.props.style = props.style;
       return h(props.item);
-    }
+    },
+    Notice,
+    CircleClose
   },
   emits: ['click', 'close'],
 
@@ -425,7 +429,8 @@ export default create({
       handleClickIcon,
       slots,
       pxCheck,
-      wrapContentClass
+      wrapContentClass,
+      renderIcon
     };
   }
 });

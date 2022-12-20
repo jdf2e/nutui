@@ -78,9 +78,14 @@ Scrolling is automatically enabled when the content length of the notification b
   </nut-noticebar>
 
   <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :scrollable="false"
     >
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">Jingdong</a>
     </nut-noticebar>
 </template>

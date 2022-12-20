@@ -11,11 +11,15 @@
     <h2>{{ translate('mode') }}</h2>
     <nut-noticebar :closeMode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar :closeMode="true" right-icon="circle-close" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :closeMode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-    >
+    <nut-noticebar>
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">{{ translate('jd') }}</a>
     </nut-noticebar>
 
