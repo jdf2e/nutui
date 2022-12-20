@@ -149,9 +149,12 @@ export default create({
       active: 0
     });
 
-    const maskRect = ref<{
-      [props: string]: number;
-    }>({});
+    const maskRect = ref<
+      | DOMRect
+      | {
+          [props: string]: number;
+        }
+    >({});
 
     const classes = computed(() => {
       const prefixCls = 'nut-tour';

@@ -1,5 +1,5 @@
 import Dialog from './index.vue';
-import { h, VNode, CSSProperties } from 'vue';
+import { h, VNode, CSSProperties, Component } from 'vue';
 import Popup from '../popup/index.vue';
 import Icon from '../icon/index.vue';
 import Button from '../button/index.vue';
@@ -58,7 +58,7 @@ class DialogFunction {
             }
             options.teleport = `#${root.id}`;
             return () => {
-              return h(Dialog, options);
+              return h(Dialog as Component, options);
             };
           }
         };
