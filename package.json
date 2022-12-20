@@ -49,7 +49,7 @@
     "build:site": "npm run checked && vite build",
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/4x/",
-    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
+    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run dts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
     "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
@@ -68,7 +68,7 @@
     "copydocs": "node ./jd/copymd.js",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
     "attrs": "node ./jd/createAttributes.cjs",
-    "dts": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types"
+    "dts": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json"
   },
   "standard-version": {
     "scripts": {

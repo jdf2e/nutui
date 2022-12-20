@@ -1,5 +1,4 @@
 const config = require('../src/config.json');
-const pck = require('./../package.json');
 const path = require('path');
 const fs = require('fs');
 
@@ -11,6 +10,16 @@ const basePath = path.join(toDir, '__VUE');
 
 const fileList = [];
 
+let packages = [];
+
+const preContent = `
+declare type Install<T> = T & {
+  install(app: import('vue').App): void;
+};\n`;
+const start = 'declare const _default:';
+const end = ';\nexport default _default;\n';
+const regex = new RegExp(`${start}([\\s\\S]*?)${end}`);
+
 const getCompList = (basePath) => {
   const files = fs.readdirSync(basePath);
   files.forEach((filename) => {
@@ -19,13 +28,23 @@ const getCompList = (basePath) => {
     const stats = fs.statSync(filedir);
     const isFile = stats.isFile();//是文件  
     const isDir = stats.isDirectory();//是文件夹  
-    if(isFile){  
+    if(isFile){
       fileList.push(filedir);
-    }  
+    }
     if(isDir){
       getCompList(filedir);//递归，如果是文件夹，就继续遍历该文件夹下面的文件  
     }
   });
+}
+
+const getCompName = (name) => {
+  if(!packages.length) {
+    config.nav.forEach((item, index) => {
+      packages = packages.concat(item.packages);
+    });
+  }
+  const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
+  return packageName ? packageName.name : ''
 }
 
 fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
@@ -45,8 +64,21 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
 
   getCompList(basePath);
 
-  // fileList.forEach((item) => {
-  //   // 获取文件中的内容
-
-  // });
+  fileList.forEach((item, index) => {
+    const content = fs.readFileSync(item).toLocaleString();
+    const inputs = content.match(regex);
+    
+    if(inputs && inputs.length) {
+      let name = item.substring(0, item.lastIndexOf('/'))
+      name = name.substring(name.lastIndexOf('/') + 1)
+      let remain = `
+declare module 'vue' {
+  interface GlobalComponents {
+      Nut${getCompName(name)}: typeof _default;
+  }
+}`;
+      let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
+      fs.writeFileSync(item, changeContent);
+    }
+  });
 });
