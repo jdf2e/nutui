@@ -1,4 +1,4 @@
-#  CountUp Digital scrolling
+#  Countup Digital scrolling
 
 ### Intro
 
@@ -10,12 +10,12 @@ Digital scrolling component, which is used to display the dynamic effect of digi
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { CountUp } from '@nutui/nutui';
+import { Countup } from '@nutui/nutui';
 // taro
-import { CountUp } from '@nutui/nutui-taro';
+import { Countup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(CountUp);
+app.use(Countup);
 ```
 
 

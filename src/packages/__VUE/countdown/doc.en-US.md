@@ -1,4 +1,4 @@
-#  CountDown 倒计时
+#  Countdown 倒计时
 
 ### 介绍
 Used to display the countdown value in real time, and precision supports milliseconds.
@@ -8,12 +8,12 @@ Used to display the countdown value in real time, and precision supports millise
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { CountDown } from '@nutui/nutui';
+import { Countdown } from '@nutui/nutui';
 // taro
-import { CountDown } from '@nutui/nutui-taro';
+import { Countdown } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(CountDown);
+app.use(Countdown);
 ```
 
 ### Basic Usage
@@ -267,7 +267,7 @@ Paused and restarted the countdown with the paused attribute
 ```html
 <template>
   <nut-cell>
-      <nut-countdown time="20000" ref="CountDown" :autoStart="false" format="ss:SS"/>
+      <nut-countdown time="20000" ref="Countdown" :autoStart="false" format="ss:SS"/>
   </nut-cell>
   <nut-grid :column-num="3">
     <nut-grid-item><nut-button type="primary" @click="start">Start</nut-button></nut-grid-item>
@@ -279,15 +279,15 @@ Paused and restarted the countdown with the paused attribute
   import { ref,reactive,toRefs } from 'vue';
   export default {
     setup(props) {
-      const CountDown = ref(null);
+      const Countdown = ref(null);
       const start = () => {
-        CountDown.value.start();
+        Countdown.value.start();
       };
       const pause = () => {
-        CountDown.value.pause();
+        Countdown.value.pause();
       };
       const reset = () => {
-        CountDown.value.reset();
+        Countdown.value.reset();
       };
       return {
           toggle,

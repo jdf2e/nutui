@@ -1,19 +1,18 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    v-model:visible="show"
     :okText="okText"
     :cancelText="cancelText"
-    @close="closeHandler"
+    @cancel="closeHandler"
     :columns="columns"
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
-    :teleportDisable="teleportDisable"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
-    :safeAreaInsetBottom="safeAreaInsetBottom"
-    :destroyOnClose="destroyOnClose"
+    :showToolbar="showToolbar"
+    :visibleOptionNum="visibleOptionNum"
+    :optionHeight="optionHeight"
   >
     <template #top>
       <slot name="top"></slot>
@@ -25,11 +24,10 @@
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import Picker from '../picker/index.vue';
-import { popupProps } from '../popup/props';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
-const { componentName, create, translate } = createComponent('datepicker');
+const { componentName, create, translate } = createComponent('date-picker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -51,7 +49,6 @@ export default create({
     [Picker.name]: Picker
   },
   props: {
-    ...popupProps,
     modelValue: null,
     title: {
       type: String,
@@ -101,13 +98,24 @@ export default create({
       type: [Number, String],
       default: 1000
     },
-    filter: Function as PropType<import('./type').Filter>
+    filter: Function as PropType<import('./type').Filter>,
+    showToolbar: {
+      type: Boolean,
+      default: true
+    },
+    visibleOptionNum: {
+      type: [Number, String],
+      default: 7
+    },
+    optionHeight: {
+      type: [Number, String],
+      default: 36
+    }
   },
-  emits: ['click', 'update:visible', 'change', 'confirm', 'update:modelValue'],
+  emits: ['click', 'cancel', 'change', 'confirm', 'update:modelValue'],
 
   setup(props, { emit }) {
     const state = reactive({
-      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -327,14 +335,14 @@ export default create({
       return 0;
     };
 
-    const closeHandler = () => {
-      emit('update:visible', false);
+    const closeHandler = (val: any) => {
+      emit('cancel', val);
     };
 
-    const confirm = (val: Event) => {
-      emit('update:visible', false);
+    const confirm = (val: any) => {
       emit('confirm', val);
     };
+
     onBeforeMount(() => {
       state.currentDate = formatValue(props.modelValue);
     });
@@ -364,13 +372,6 @@ export default create({
       () => props.title,
       (val) => {
         state.title = val;
-      }
-    );
-
-    watch(
-      () => props.visible,
-      (val) => {
-        state.show = val;
       }
     );
 

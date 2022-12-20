@@ -24,14 +24,14 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -43,9 +43,9 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid :column-num="3">
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -57,9 +57,9 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid :column-num="3" square>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -71,14 +71,14 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid :gutter="10">
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -90,10 +90,10 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid reverse>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -105,10 +105,10 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid direction="horizontal">
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -119,10 +119,12 @@ app.use(GridItem);
 :::demo
 ```html
 <template>
-  <nut-grid :column-num="3" icon-color="#fa2c19">
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" icon-color="#478EF2" icon-size="40" text="text"></nut-grid-item>
-    <nut-grid-item icon="dongdong" text="text"></nut-grid-item>
+  <nut-grid :column-num="3">
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
+    <nut-grid-item text="text">
+      <Dongdong height="40px" width="40px" color="#478EF2" />
+    </nut-grid-item>
+    <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -134,8 +136,12 @@ app.use(GridItem);
 ```html
 <template>
   <nut-grid :column-num="2">
-    <nut-grid-item icon="home" text="Vue Router" to="/"></nut-grid-item>
-    <nut-grid-item icon="search" text="URL" url="https://jd.com"></nut-grid-item>
+    <nut-grid-item text="Vue Router" to="/">
+      <Home />
+    </nut-grid-item>
+    <nut-grid-item text="URL" url="https://jd.com">
+      <Search />
+    </nut-grid-item>
   </nut-grid>
 </template>
 ```
@@ -162,11 +168,9 @@ app.use(GridItem);
 
 ### Grid Props
 
-| 参数          | 说明                                      | 类型                    | 默认值      |
-|---------------|------------------------------------------|------------------------|------------|
+| Attribute | Description | Type | 默认值 |
+|-|-|-|-|
 | column-num    | Column Num                                     | number \| string         | `4`        |
-| icon-size     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| icon-color    | Icon color                                  | string                 | -          |
 | border        | Whether to show border                               | boolean                | `true`     |
 | gutter        | Gutter,The default unit is `px`               | number \| string        | `0`        |
 | center        | Whether to center content                      | boolean                | `true`      |
@@ -177,22 +181,18 @@ app.use(GridItem);
 
 ### GridItem Props
 
-| 参数                  | 说明                                                                                     | 类型               | 默认值      |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
-| text                 | text                                                                                     | string             | -          |
-| icon                 | Icon name or URL                                                            | string             | -          |
-| icon-size            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
-| icon-color           | Icon color              | string            | -           |
-| url `not supported by miniProgram`   | Link URL             | string            | -           |
-| to `not supported by miniProgram` | 	Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object| -    |
-| replace `not supported by miniProgram` | If true, the navigation will not leave a history record       | boolean           | `false`     |
+| Attribute | Description | Type | Default |
+|-|-|-|-|
+| text | text | string | - |
+| url `not supported by miniProgram` | Link URL | string | - |
+| to `not supported by miniProgram` | Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object| - |
+| replace `not supported by miniProgram` | If true, the navigation will not leave a history record | boolean | `false` |
 
 ### GridItem Slots
 
 | Name                   | Description                 |
 |-----------------------|----------------------|
 | default               | Custom content         |
-| icon                  | Custom icon            |
 | text                  | Custom text            |
 
 ### GridItem Events

@@ -9,10 +9,11 @@
         <view :class="['nut-comment-bottom__cpx-item', `nut-comment-bottom__cpx-item--${name}`]" @click="operate(name)">
           <template v-if="name != 'more'">
             <span>{{ info[name] }}</span>
-            <nut-icon :name="name == 'like' ? 'fabulous' : 'comment'"></nut-icon>
+            <Fabulous v-if="name == 'like'"></Fabulous>
+            <Comment v-else></Comment>
           </template>
           <template v-if="name == 'more'">
-            <nut-icon name="more-x"></nut-icon>
+            <MoreX></MoreX>
             <view class="nut-comment-bottom__cpx-item-popover" v-if="showPopver" @click="operate('popover')">{{
               translate('complaintsText')
             }}</view>
@@ -23,10 +24,10 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
-
+import { ref, watch, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment-bottom');
+import { Fabulous, Comment, MoreX } from '@nutui/icons-vue';
 
 export default create({
   props: {
@@ -40,13 +41,12 @@ export default create({
     },
 
     operation: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: ['replay', 'like', 'more']
     }
   },
-  components: {},
+  components: { Fabulous, Comment, MoreX },
   emits: ['clickOperate', 'handleClick'],
-
   setup(props, { emit }) {
     const showPopver = ref(false);
 

@@ -28,23 +28,23 @@
     </nut-cell>
 
     <!-- demo 基础用法 -->
-    <nut-actionsheet
+    <nut-action-sheet
       :safe-area-inset-bottom="true"
       v-model:visible="state.isVisible1"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- demo(带取消按钮） -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible2"
       cancel-txt="取消"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- 展示描述信息 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible3"
       title="标题"
       :description="state.desc"
@@ -52,19 +52,19 @@
       @choose="chooseItemThree"
       cancel-txt="取消"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     <!-- demo 选项状态-->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible4"
       cancel-txt="取消"
       :menu-items="menuItemsThree"
       @choose="chooseItemFour"
       :choose-tag-value="state.chooseTagValue"
-    ></nut-actionsheet>
+    ></nut-action-sheet>
     <!-- 自定义面板-->
-    <nut-actionsheet v-model:visible="state.isVisible5" title="标题">
+    <nut-action-sheet v-model:visible="state.isVisible5" title="标题">
       <div class="custom-content">自定义内容</div>
-    </nut-actionsheet>
+    </nut-action-sheet>
   </div>
 </template>
 

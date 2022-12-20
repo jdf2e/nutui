@@ -1,11 +1,13 @@
 import { config, mount } from '@vue/test-utils';
 import { h, nextTick } from 'vue';
-import Image from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-
+import ImagePage from '../index.vue';
+import { Loading, CircleClose, Image, ImageError } from '@nutui/icons-vue';
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    Loading,
+    CircleClose,
+    Image,
+    ImageError
   };
 });
 
@@ -13,8 +15,8 @@ afterAll(() => {
   config.global.components = {};
 });
 
-test('image render', async () => {
-  const wrapper = mount(Image, {
+test('ImagePage render', async () => {
+  const wrapper = mount(ImagePage, {
     props: {
       src: '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg',
       width: '100',
@@ -26,8 +28,8 @@ test('image render', async () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('image load error', async () => {
-  const wrapper = mount(Image, {
+test('ImagePage load error', async () => {
+  const wrapper = mount(ImagePage, {
     props: {
       src: 'https://x',
       width: '100',
@@ -40,8 +42,8 @@ test('image load error', async () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('image loading', async () => {
-  const wrapper = mount(Image, {
+test('ImagePage loading', async () => {
+  const wrapper = mount(ImagePage, {
     props: {
       src: '',
       width: '100',
@@ -54,8 +56,8 @@ test('image loading', async () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('image render Round', async () => {
-  const wrapper = mount(Image, {
+test('ImagePage render Round', async () => {
+  const wrapper = mount(ImagePage, {
     props: {
       src: '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg',
       width: '100',

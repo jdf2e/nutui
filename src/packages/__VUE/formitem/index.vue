@@ -26,6 +26,7 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Cell from '../cell/index.vue';
 const { componentName, create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
@@ -73,7 +74,9 @@ export default create({
       default: ''
     }
   },
-  components: {},
+  components: {
+    [Cell.name]: Cell
+  },
   emits: [''],
 
   setup(props, { emit, slots }) {

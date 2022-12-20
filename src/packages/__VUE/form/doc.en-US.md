@@ -239,17 +239,17 @@ setup(){
         <nut-checkbox v-model="formData2.checkbox">checkbox</nut-checkbox>
     </nut-form-item>
     <nut-form-item label="radio">
-        <nut-radiogroup direction="horizontal" v-model="formData2.radio">
+        <nut-radio-group direction="horizontal" v-model="formData2.radio">
             <nut-radio label="1">Option 1</nut-radio>
             <nut-radio disabled label="2">Option 2</nut-radio>
             <nut-radio label="3">Option 3</nut-radio>
-        </nut-radiogroup>
+        </nut-radio-group>
     </nut-form-item>
     <nut-form-item label="Rate">
         <nut-rate v-model="formData2.rate" />
     </nut-form-item>
     <nut-form-item label="Inputnumber">
-        <nut-inputnumber v-model="formData2.number" />
+        <nut-input-number v-model="formData2.number" />
     </nut-form-item>
     <nut-form-item label="Range">
         <nut-range hidden-tag v-model="formData2.range"></nut-range>

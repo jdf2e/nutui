@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
-    <div class="nut-circleprogress__text">
+    <div class="nut-circle-progress__text">
       <slot></slot>
       <span v-if="!slotDefault">{{ progress }}%</span>
     </div>
@@ -11,7 +11,7 @@
 <script lang="ts">
 import { computed, ref, watch, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('circleprogress');
+const { componentName, create } = createComponent('circle-progress');
 interface Item {
   key?: string;
   value?: string;

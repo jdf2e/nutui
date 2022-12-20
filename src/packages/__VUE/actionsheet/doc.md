@@ -35,12 +35,12 @@ app.use(Overlay);
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo 基础用法 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -94,13 +94,13 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo 展示取消按钮 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       cancel-txt="取消"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -153,14 +153,14 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo 展示描述信息 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       cancel-txt="取消"
       description="这是一段展示信息"
       :menu-items="menuItems"
       @choose="chooseItem"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -217,14 +217,14 @@ export default {
       <div v-html="state.val"></div>
     </nut-cell>
      <!-- demo 选项状态 -->
-    <nut-actionsheet
+    <nut-action-sheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
       choose-tag-value="着色选项"
       @choose="chooseItem"
        cancel-txt="取消"
     >
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>
@@ -278,9 +278,9 @@ export default {
     >
       <span><label>自定义内容</label></span>
     </nut-cell>
-     <nut-actionsheet v-model:visible="state.isVisible" title="标题">
+     <nut-action-sheet v-model:visible="state.isVisible" title="标题">
       <div class="custom-content">自定义内容</div>
-    </nut-actionsheet>
+    </nut-action-sheet>
     </div>
 </template>
 <script>

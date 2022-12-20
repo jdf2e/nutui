@@ -46,13 +46,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 24px;
-    margin-bottom: 17px;
+    height: 68px;
     padding: 0 20px;
     text-align: center;
     font-weight: bold;
     color: #333;
-    line-height: 20px;
     &__title {
       display: block;
       color: $address-header-title-color;
@@ -147,6 +145,8 @@
             font-weight: bold;
           }
           > div {
+            display: flex;
+            align-items: center;
             margin: 10px 0;
           }
         }

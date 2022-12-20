@@ -103,4 +103,4 @@ export const component = (components: any) => {
       };
     }
   };
-}
+};

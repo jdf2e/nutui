@@ -173,5 +173,5 @@ export const component = (components: any) => {
       };
       return { validate, reset, submit, formErrorTip };
     }
-  }
+  };
 };

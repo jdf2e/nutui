@@ -406,7 +406,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBar",
+          "name": "SideNavbar",
           "type": "component",
           "cName": "侧边栏导航",
           "desc": "垂直展示的导航栏，用于内容选择和切换",
@@ -418,7 +418,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SideNavBarItem",
+          "name": "SideNavbarItem",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",
@@ -431,7 +431,7 @@
         },
         {
           "version": "3.1.15",
-          "name": "SubSideNavBar",
+          "name": "SubSideNavbar",
           "type": "component",
           "cName": "侧边栏导航子组件",
           "desc": "",
@@ -462,7 +462,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "SearchBar",
+          "name": "Searchbar",
           "type": "component",
           "cName": "搜索栏",
           "desc": "搜索栏",
@@ -722,7 +722,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "BackTop",
+          "name": "Backtop",
           "taro": true,
           "tarodoc": true,
           "sort": "1",
@@ -924,7 +924,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "NoticeBar",
+          "name": "Noticebar",
           "type": "component",
           "cName": "公告栏",
           "desc": "用于循环播放展示一组消息通知",
@@ -1037,7 +1037,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "CountUp",
+          "name": "Countup",
           "taro": true,
           "sort": 12,
           "cName": "数字滚动",
@@ -1048,7 +1048,7 @@
           "styleDeps": []
         },
         {
-          "name": "CountDown",
+          "name": "Countdown",
           "type": "component",
           "cName": "倒计时",
           "desc": "倒计时",
@@ -1192,6 +1192,17 @@
           "type": "component",
           "author": "liukun",
           "styleDeps": []
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tour",
+          "cType": "展示组件",
+          "cName": "引导",
+          "desc": "漫游式引导组件",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },

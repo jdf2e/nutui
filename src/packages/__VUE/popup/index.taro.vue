@@ -30,7 +30,9 @@ import { createComponent } from '@/packages/utils/create';
 import { component } from './common';
 import OverLay from '../overlay/index.taro.vue';
 const { componentName, create } = createComponent('popup');
-export default create(component(componentName, {
-  [OverLay.name]: OverLay
-}));
+export default create(
+  component(componentName, {
+    [OverLay.name]: OverLay
+  })
+);
 </script>

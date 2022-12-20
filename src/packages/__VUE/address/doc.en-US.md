@@ -2,7 +2,7 @@
 
 ### Intro
 
-Load on demand Load the  Icon、Popup、Elevator dependent component
+Load on demand Load the Popup、Elevator dependent component
 
 ### Install
 
@@ -327,22 +327,27 @@ If you want to select a province, you need to set the region ID in the order of 
       @close="close"
       :is-show-custom-address="false"
       @selected="selected3"
-      :default-icon="defaultIcon"
-      :selected-icon="selectedIcon"
-      :close-btn-icon="closeBtnIcon"
-  ></nut-address>
+  >
+    <template #unselectedIcon>
+      <Heart1 style="margin-right:8px"></Heart1>
+    </template>
+    <template #icon>
+      <HeartFill style="margin-right:8px" color="#f00"></HeartFill>
+    </template>
+    <template #bottom>
+        <div class="nut-address-custom-buttom">
+          <div class="btn">自定义按钮</div>
+        </div>
+    </template>
+  </nut-address>
 </template>
 <script>
   import { ref,reactive,toRefs } from 'vue';
+  import { HeartFill, Heart1} from '@nutui/icons-vue';
   export default {
+    components:{HeartFill, Heart1 },
     setup() {
         const showPopupCustomImg = ref(false);
-        const icon = reactive({
-          selectedIcon: 'heart-fill',
-          defaultIcon: 'heart1',
-          closeBtnIcon: 'close',
-          backBtnIcon: 'left'
-        });
         const existAddress = ref([
           {
             id: 1,
@@ -418,7 +423,6 @@ If you want to select a province, you need to set the region ID in the order of 
       :city="city"
       :country="country"
       :town="town"
-      :back-btn-icon="backBtnIcon"
       @close="close"
       @selected="selected"
       custom-and-exist-title="Choose Other Address"
@@ -528,60 +532,60 @@ If you want to select a province, you need to set the region ID in the order of 
 # API
 
 | Attribute            | Description               | Type   | Default  |
-|----- | ----- | ----- | ----- 
-| v-model:visible | Whether to open address | String | ''
-| type | Choose type: exist/custom/custom2  | String | 'custom'
-| province | Province data| Array | []
-| city | City data | Array | []
-| country | Country data | Array | []
-| town | Town dta | Array | []
-| height | Popup height | String、Number | '200px'
-| exist-address | Exist address list data | Array | []
-| default-icon | Exist address default icon | String | ''
-| selected-icon | Exist address selected icon | String | ''
-| close-btn-icon | Custom close button icon | string | -
-| back-btn-icon | Custom back button icon | String | -
-| is-show-custom-address | Whether to change custom address | Boolean | true
-| custom-address-title  | Custom address title | String | 'Select Region'
-| exist-address-title|  Exist address title | String | 'Delivery To'
-| custom-and-exist-title| Custom address and existing address switch button copywriting | String | 'Choose Another Address'
-| columns-placeholder | Columns placeholder text | String|Array | 'Select'
-| lock-scroll   | Whether the background is locked   | Boolean        | `true`       
+|----- | ----- | ----- | ----- |
+| v-model:visible | Whether to open address | String | ''|
+| type | Choose type: exist/custom/custom2  | String | 'custom'|
+| province | Province data| Array | []|
+| city | City data | Array | []|
+| country | Country data | Array | []|
+| town | Town dta | Array | []|
+| height | Popup height | String、Number | '200px'|
+| exist-address | Exist address list data | Array | []|
+| is-show-custom-address | Whether to change custom address | Boolean | true|
+| custom-address-title  | Custom address title | String | 'Select Region'|
+| exist-address-title|  Exist address title | String | 'Delivery To'|
+| custom-and-exist-title| Custom address and existing address switch button copywriting | String | 'Choose Another Address'|
+| columns-placeholder | Columns placeholder text | String|Array | 'Select'|
+| lock-scroll   | Whether the background is locked   | Boolean        | `true`       |
 
 
 ## Event
 | Attribute            | Description               | Arguments   |
-|----- | ----- | ----- 
-| change |  Emitted when to selected custom address |  reference onChange
-| selected |  Emitted when to selected exist address  | reference selected
-| close |  Emitted when to close  | reference close
-| close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'}
-| switch-module | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'}
+|----- | ----- | ----- |
+| change |  Emitted when to selected custom address |  reference onChange |
+| selected |  Emitted when to selected exist address  | reference selected |
+| close |  Emitted when to close  | reference close |
+| close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'} |
+| switch-module | Click to select another address or custom address to select the upper left corner of the return button  triggered | {type:'exist'/'custom'/'custom2'} |
 
 
 ## change 
 | Attribute            | Description               | Options   |
-|----- | ----- | ----- 
-| custom | The administrative region currently clicked  |  province / city / country / town
-| next | The next level of the administrative region currently clicked | province / city / country / town
-| value | The value of the currently clicked administrative region | {}
+|----- | ----- | ----- |
+| custom | The administrative region currently clicked  |  province / city / country / town|
+| next | The next level of the administrative region currently clicked | province / city / country / town|
+| value | The value of the currently clicked administrative region | {}|
 
 ## selected 
 | Attribute            | Description               | Options   |
-|----- | ----- | ----- 
-| First Option（prevExistAdd） |  Select the previously selected address |  {}
-| Second Option（nowExistAdd） |  Currently selected address |  {}
-| Third Option（arr） |  After selecting the existing address list |  {}
+|----- | ----- | ----- |
+| First Option（prevExistAdd） |  Select the previously selected address |  {}|
+| Second Option（nowExistAdd） |  Currently selected address |  {}|
+| Third Option（arr） |  After selecting the existing address list |  {}|
 
 ## close 
 | Attribute            | Description               | Options   |
-|----- | ----- | ----- 
-| type | Selected Type  |  exist/custom/custom2
-| data | Selected Data | {} 
+|----- | ----- | ----- |
+| type | Selected Type  |  exist/custom/custom2|
+| data | Selected Data | {} |
 
 
 ## Slot
 | Attribute | Description | 
 |----- | ----- |  
-| bottom `3.1.23` | Bottom slot |  
+| bottom | Bottom slot |  
+| icon | Selected icon slot |  
+| unselectedIcon | Unselected icon slot |  
+| closeIcon | Close icon slot |  
+| backIcon | Change icon slot |  
     

@@ -1,4 +1,4 @@
-.nut-fixednav {
+.nut-fixed-nav {
   position: fixed;
   z-index: $fixednav-index;
   display: inline-block;
@@ -9,7 +9,7 @@
     .nut-icon {
       transform: rotate(180deg);
     }
-    .nut-fixednav__list {
+    .nut-fixed-nav__list {
       transform: translateX(0%) !important;
     }
     &.left {
@@ -119,7 +119,7 @@
     right: auto;
     left: 0;
 
-    .nut-fixednav__btn {
+    .nut-fixed-nav__btn {
       flex-direction: row-reverse;
       right: auto;
       left: 0;
@@ -128,7 +128,7 @@
         transform: rotate(180deg);
       }
     }
-    .nut-fixednav__list {
+    .nut-fixed-nav__list {
       transform: translateX(-100%);
       right: auto;
       border-radius: 0px 25px 25px 0px;

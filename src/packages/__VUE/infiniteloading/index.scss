@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-infiniteloading {
+  .nut-infinite-loading {
     .nut-infinite__bottom {
       color: $dark-color;
 
@@ -10,7 +10,7 @@
   }
 }
 
-.nut-infiniteloading {
+.nut-infinite-loading {
   display: block;
   width: 100%;
 
@@ -24,10 +24,13 @@
     text-align: center;
 
     .nut-infinite__bottom-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       &__img {
         margin-right: 5px;
-        width: 28px;
-        height: 24px;
+        width: 15px;
+        height: 15px;
       }
       &__text {
         font-size: 12px;

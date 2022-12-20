@@ -8,7 +8,7 @@
       <template v-if="isInfiniting">
         <view class="nut-infinite__bottom-box">
           <slot name="loading">
-            <nut-icon v-if="loadIcon" class="nut-infinite__bottom-box__img" v-bind="$attrs" :name="loadIcon"></nut-icon>
+            <slot name="loadIcon"><Loading class="nut-icon-loading nut-infinite__bottom-box__img"></Loading></slot>
             <view class="nut-infinite__bottom-box__text">{{ loadTxt || translate('loading') }}</view>
           </slot>
         </view>
@@ -35,10 +35,11 @@ import {
   nextTick
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('infiniteloading');
+const { componentName, create, translate } = createComponent('infinite-loading');
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
+import { Loading } from '@nutui/icons-vue';
 
 export default create({
   props: {
@@ -53,10 +54,6 @@ export default create({
     threshold: {
       type: Number,
       default: 200
-    },
-    loadIcon: {
-      type: String,
-      default: ''
     },
     loadTxt: {
       type: String,
@@ -80,7 +77,9 @@ export default create({
     }
   },
   emits: ['scroll-change', 'load-more', 'update:modelValue'],
-
+  components: {
+    Loading
+  },
   setup(props, { emit, slots }) {
     const scroller = ref<HTMLElement>();
     const scrollParent = useScrollParent(scroller);

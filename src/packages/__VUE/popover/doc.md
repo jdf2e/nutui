@@ -87,6 +87,7 @@ export default {
 
 <script>
 import { reactive, ref } from 'vue';
+import { Location,Cart2, My2 } from '@nutui/icons-vue';
 export default {
   setup() {
     const visible = ref({
@@ -96,14 +97,21 @@ export default {
 
     const itemList = reactive([
       {
-        name: '选项一',
-        icon: 'my2'
-      },{
-        name: '选项二',
-        icon: 'cart2'
-      },{
-        name: '选项三',
-        icon: 'location2'
+        name: 'option1',
+        icon: ()=>{
+          return h(My2,{
+            width:'14px',
+            color:'rgba(250, 44, 25, 1)'
+          })
+        }
+      },
+      {
+        name: 'option2',
+        icon: Cart2
+      },
+      {
+        name: 'option3',
+        icon: Location
       }
     ]);
 
@@ -159,6 +167,7 @@ export default {
 
 <script>
 import { reactive, ref } from 'vue';
+import { Service,Notice,Location,Category,Scan2,Message,Cart2, My2 } from '@nutui/icons-vue';
 export default {
   setup() {
     const visible = ref({
@@ -166,28 +175,28 @@ export default {
     });
     const selfContent = reactive([
       {
-        name: 'service',
-        desc: '选项一'
+        name: Service,
+        desc: 'option1'
       },
       {
-        name: 'notice',
-        desc: '选项二'
+        name: Notice,
+        desc: 'option2'
       },
       {
-        name: 'location',
-        desc: '选项三'
+        name: Location,
+        desc: 'option3'
       },
       {
-        name: 'category',
-        desc: '选项四'
+        name: Category,
+        desc: 'option4'
       },
       {
-        name: 'scan2',
-        desc: '选项五'
+        name: Scan2,
+        desc: 'option5'
       },
       {
-        name: 'message',
-        desc: '选项六'
+        name: Message,
+        desc: 'option6'
       }
     ]);
 
@@ -233,9 +242,6 @@ top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-```
-自 `v3.1.21` 起新增
-```
 top-start     # 顶部左侧位置
 top-end       # 顶部右侧位置 
 left-start    # 左侧上方位置
@@ -282,6 +288,86 @@ export default {
 ```
 :::
 
+### 自定义目标元素
+
+Popover 提供了 `targetId` 属性，用于匹配目标元素，在目标元素上添加对应的 id 值即可
+
+:::demo
+```html
+<template>
+  <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">自定义目标元素</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customTarget:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    const clickCustomHandle = () => {
+      visible.customTarget = !visible.customTarget;
+    };
+
+    return {
+        itemList,
+        visible,
+        clickCustomHandle,
+      };
+    }
+}
+</script>
+
+
+```
+:::
+
+### 自定义颜色
+
+Popopver 提供了 2 种主题色，同样可以通过 `bgColor` 属性改变背景色
+
+:::demo
+```html
+<template>
+  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square" >自定义颜色</nut-button>
+      </template>
+    </nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customColor:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    return {
+        itemList,
+        visible
+      };
+    }
+}
+</script>
+
+```
+:::
 
 ## API
 ### Props  
@@ -292,17 +378,20 @@ export default {
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
 | location       | 弹出位置  | string   | `bottom`  |
-| offset `v3.1.21`       | 出现位置的偏移量  | [number, number]   | [0, 12]  |
-| show-arrow `v3.1.21`       | 是否显示小箭头  | boolean  | true  |
-| custom-class `v3.1.21`       | 自定义 class 值  | string  | ''  |
-| duration `v3.1.21`       | 动画时长  |  [number, number]  | 0.3  |
-| iconPrefix `v3.1.21`       | 图标自定义类值,等同于 Icon 组件的[ class-prefix 属性](https://nutui.jd.com/#/zh-CN/component/icon)  | string  | 'nut-icon''  |
-| overlay `v3.2.8`       | 是否显示遮罩层  | Boolean  | false  |
-| overlay-class `v3.2.8`       | 自定义遮罩层类名 | string  | ''  |
-| overlay-style `v3.2.8`       | 自定义遮罩层样式  | string  | ''  |
-| close-on-click-overlay `v3.2.8`       | 是否在点击遮罩层后关闭菜单  | boolean  | true  |
-| close-on-click-action `v3.2.8`       | 是否在点击选项后关闭  | boolean  | true |
-| close-on-click-outside `v3.2.8`       | 是否在点击外部元素后关闭菜单 | boolean  | true  |
+| offset        | 出现位置的偏移量  | [number, number]   | [0, 12]  |
+| show-arrow        | 是否显示小箭头  | boolean  | true  |
+| custom-class        | 自定义 class 值  | string  | ''  |
+| duration        | 动画时长  |  [number, number]  | 0.3  |
+| iconPrefix        | 图标自定义类值,等同于 Icon 组件的[ class-prefix 属性](https://nutui.jd.com/#/zh-CN/component/icon)  | string  | 'nut-icon''  |
+| overlay        | 是否显示遮罩层  | Boolean  | false  |
+| overlay-class        | 自定义遮罩层类名 | string  | ''  |
+| overlay-style        | 自定义遮罩层样式  | string  | ''  |
+| close-on-click-overlay        | 是否在点击遮罩层后关闭菜单  | boolean  | true  |
+| close-on-click-action        | 是否在点击选项后关闭  | boolean  | true |
+| close-on-click-outside        | 是否在点击外部元素后关闭菜单 | boolean  | true  |
+| bg-color        | 自定义背景色 | String  | -  |
+| target-id        | 自定义目标元素 id | String  | -  |
+| arrow-offset        | 小箭头的偏移量 | Number  | 0  |
 
 ### List 数据结构  
 
@@ -311,9 +400,9 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | 键名            | 说明                 | 类型      | 默认值  |
 |----------------|----------------------|----------|--------|
 | name           | 选项文字               | string   | -      |
-| icon           | nut-icon 图标名称      | string   | -      |
+| icon           | @nutui/icons-vue 图标       | string   | -      |
 | disabled       | 是否为禁用状态          | boolean  | false  | 
-| className `v3.1.21`      | 为对应选项添加额外的类名          | string/Array/object  | -  | 
+| className       | 为对应选项添加额外的类名          | string/Array/object  | -  | 
 
 
 ### Slots

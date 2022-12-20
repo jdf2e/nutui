@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" :style="style" @click.stop="click">
     <slot>
-      <nut-icon size="19px" class="nut-backtop-main" name="top"></nut-icon>
+      <Top width="19px" height="19px" class="nut-backtop-main"></Top>
     </slot>
   </div>
 </template>
@@ -10,7 +10,11 @@
 import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
+import { Top } from '@nutui/icons-vue';
 export default create({
+  components: {
+    Top
+  },
   props: {
     bottom: {
       type: Number,

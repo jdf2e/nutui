@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       @delIcon="delClick"
       @editIcon="editClick"
@@ -9,9 +9,9 @@
       :showBottomButton="false"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
     <h2>{{ translate('title1') }}</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       long-Press
       :showBottomButton="false"
@@ -23,9 +23,9 @@
       @longDel="delClick"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
     <h2>{{ translate('title1') }}</h2>
-    <nut-addresslist
+    <nut-address-list
       :data="data"
       swipeEdition
       showBottomButton
@@ -36,14 +36,14 @@
       @add="addAddress"
       :dataMapOptions="dataMapOptions"
     >
-    </nut-addresslist>
+    </nut-address-list>
   </div>
 </template>
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { reactive, ref } from 'vue';
-const { createDemo, translate } = createComponent('addresslist');
+const { createDemo, translate } = createComponent('address-list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({

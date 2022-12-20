@@ -78,6 +78,7 @@ import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
+import { isArray } from '@/packages/utils/util';
 const { componentName, create } = createComponent('range');
 
 export default create({
@@ -374,8 +375,11 @@ export default create({
       dragStatus.value = '';
     };
 
-    const curValue = (idx?: number) => {
-      const value = typeof idx === 'number' ? (props.modelValue as number[])[idx] : props.modelValue;
+    const curValue = (idx?: number): number => {
+      const value =
+        isArray(props.modelValue) && typeof idx === 'number'
+          ? (props.modelValue as number[])[idx]
+          : Number(props.modelValue);
       return value;
     };
 

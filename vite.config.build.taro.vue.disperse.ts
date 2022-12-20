@@ -88,7 +88,7 @@ declare module 'vue' {
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale', '@tarojs/components'],
+      external: ['vue', 'vue-router', '@tarojs/taro', '@/packages/locale', '@tarojs/components', '@nutui/icons-vue'],
       input,
       output: {
         banner,

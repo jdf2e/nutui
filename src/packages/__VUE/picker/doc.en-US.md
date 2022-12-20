@@ -9,14 +9,12 @@ The picker component is usually used with Popup Component.
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { Picker, Popup, Overlay } from '@nutui/nutui';
+import { Picker } from '@nutui/nutui';
 // taro
-import { Picker, Popup, Overlay } from '@nutui/nutui-taro';
+import { Picker } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);
-app.use(Popup);
-app.use(Overlay);
 ```
 
 ### Basic Usage
@@ -25,22 +23,13 @@ app.use(Overlay);
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="columns"
-    title="Choose City"
-    @change="change"
-    @confirm="confirm"
-  >
-  </nut-picker>
+  <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
+  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
       const columns = ref([
         { text: 'NanJing', value: 'NanJing' },
         { text: 'WuXi', value: 'WuXi' },
@@ -52,18 +41,62 @@ app.use(Overlay);
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
-      const change = ({ selectedValue,selectedOptions }) => {
-        console.log(selectedValue);
-      };
 
-      return {show,desc,columns,change, confirm};
+      return {columns, confirm};
     }
   };
 </script>
 ```
+:::
 
+### With Popup 
+
+The Picker is usually filled in as an auxiliary form, which can be paired with a Popup.
+
+:::demo
+```html
+<template>
+  <nut-cell title="Choose city" :desc="popupDesc" @click="show = true"></nut-cell>
+    <nut-popup position="bottom"  v-model:visible="show">
+      <nut-picker
+        :columns="columns"
+        title="Choose city"
+        @confirm="popupConfirm"
+        @cancel="show=false"
+      >
+      <nut-button block type="primary">Always</nut-button>
+      </nut-picker>
+    </nut-popup>
+</template>
+<script>
+  import { ref } from 'vue';
+  import { Toast } from '@nutui/nutui';
+  export default {
+    setup(props) {
+      const show = ref(false)
+      const popupDesc = ref()
+      const columns = ref([
+        { text: 'NanJing', value: 'NanJing' },
+        { text: 'WuXi', value: 'WuXi' },
+        { text: 'ZangZu', value: 'ZangZu' },
+        { text: 'BeiJing', value: 'BeiJing' },
+        { text: 'LianYunGang', value: 'LianYunGang' },
+        { text: 'ZheJiang', value: 'ZheJiang' },
+        { text: 'JiangSu', value: 'JiangSu' }
+      ]);
+    
+      const popupConfirm = ( { selectedValue,selectedOptions })=>{
+        popupDesc.value = selectedOptions.map((val: any) => val.text).join(',')
+        show.value = false
+      }
+
+      return {columns, confirm};
+    }
+  };
+</script>
+```
 :::
 
 ### Default Index
@@ -74,10 +107,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
   <nut-picker
     v-model="selectedValue"
-    v-model:visible="show"
     :columns="columns"
     title="Choose City"
     @confirm="confirm"
@@ -88,8 +119,6 @@ The default selection is implemented by setting `modelValue`, which is an array 
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
       const selectedValue = ref(['ZheJiang']);
       const columns = ref([
         { text: 'NanJing', value: 'NanJing' },
@@ -101,11 +130,11 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
     
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+       const confirm = ( { selectedValue,selectedOptions })=>{
+        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
-      return {show,desc,columns,selectedValue, confirm};
+      return {columns,selectedValue, confirm};
     }
   };
 </script>
@@ -119,10 +148,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
   <nut-picker
     v-model="selectedValue"
-    v-model:visible="show"
     :columns="columns"
     title="Choose City"
     :threeDimensional="false"
@@ -134,8 +161,6 @@ The default selection is implemented by setting `modelValue`, which is an array 
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
       const selectedValue = ref(['ZheJiang']);
       const columns = ref([
         { text: 'NanJing', value: 'NanJing' },
@@ -147,11 +172,11 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
     
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+       const confirm = ( { selectedValue,selectedOptions })=>{
+        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
-      return {show,desc,columns,selectedValue, confirm};
+      return {columns,selectedValue, confirm};
     }
   };
 </script>
@@ -165,9 +190,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
     <nut-picker
-      v-model:visible="show"
+      v-model="selectedTime"
       :columns="multipleColumns"
       title="Choose City"
       @confirm="confirm"
@@ -179,8 +203,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
+       const selectedTime = ref(['Wednesday','Afternoon']);
       const multipleColumns = ref([
         // 第一列
         [
@@ -199,13 +222,13 @@ The default selection is implemented by setting `modelValue`, which is an array 
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
       const change = ({ selectedValue,selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {multipleColumns,change, confirm, selectedTime};
     }
   };
 </script>
@@ -221,22 +244,17 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
-    v-model:visible="show"
     v-model="selectedCascader"
     :columns="cascaderColumns"
     title="Choose City"
     @confirm="confirm"
-    @change="change"
   ></nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
       const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
       const cascaderColumns = ref([
         {
@@ -285,14 +303,12 @@ Use the children field of the Columns attribute to cascade options
         }
       ]);
     
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+       const confirm = ( { selectedValue,selectedOptions })=>{
+         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
-      const change = ({ selectedValue,selectedOptions }) => {
-        console.log(selectedValue);
-      };
+     
 
-      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
+      return {selectedCascader,cascaderColumns, confirm};
     }
   };
 </script>
@@ -306,10 +322,8 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model="asyncValue"
-    v-model:visible="show"
     :columns="asyncColumns"
     title="Choose City"
     @confirm="confirm"
@@ -319,8 +333,6 @@ Use the children field of the Columns attribute to cascade options
   import { ref, onMounted } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('');
       const asyncColumns = ref([]);
       const asyncValue = ref<string[]>([]);
 
@@ -342,10 +354,10 @@ Use the children field of the Columns attribute to cascade options
       });
       
       const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
+         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
-      return {show,desc,asyncColumns,asyncValue, confirm};
+      return {asyncColumns,asyncValue, confirm};
     }
   };
 </script>
@@ -353,69 +365,6 @@ Use the children field of the Columns attribute to cascade options
 
 :::
 
-### Slots
-
-Slots are arranged at the bottom and top respectively for custom Settings
-
-:::demo
-
-```html
-<template>
-  <nut-cell title="Valid Time" :desc="desc" @click="()=>{show=true}"></nut-cell>
-  <nut-picker
-    v-model:visible="show"
-    :columns="asyncColumns"
-    title="Choose Date"
-    @confirm="confirm"
-  >
-   <nut-button block  @click="alwaysFun">Always</nut-button>
-  </nut-picker>
-</template>
-<script>
-  import { ref, onMounted } from 'vue';
-  export default {
-    setup(props) {
-      const show = ref(false);
-      const desc = ref('');
-      const effectColumns = ref([]);
-
-      onMounted(() => {
-        // 用于模拟接口请求
-        setTimeout(() => {
-          effectColumns.value = [
-            { text: '2022-01', value: 'January' },
-            { text: '2022-02', value: 'February' },
-            { text: '2022-03', value: 'March' },
-            { text: '2022-04', value: 'April' },
-            { text: '2022-05', value: 'May' },
-            { text: '2022-06', value: 'June' },
-            { text: '2022-07', value: 'July' },
-            { text: '2022-08', value: 'August' },
-            { text: '2022-09', value: 'September' },
-            { text: '2022-10', value: 'October' },
-            { text: '2022-11', value: 'November' },
-            { text: '2022-12', value: 'December' }
-          ];
-
-        }, 500);
-      });
-      
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        desc.value = selectedValue.join(',');
-      }
-
-      const alwaysFun = () => {
-        showEffect.value = false;
-        desc.effect = 'Always';
-      };
-
-      return {show,desc,alwaysFun,effectColumns, confirm};
-    }
-  };
-</script>
-```
-
-:::
 
 ## API
 
@@ -432,6 +381,9 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
 | swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
 | safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| visible-option-num          | Count of visible columns       | number \| string | 7               |
+| option-height         | Option height             | number \| string | 36     |
+| show-toolbar         | Whether to show toolbar             | Boolean | true    |
 
 ### Data Structure of Columns
 
@@ -447,7 +399,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
 | confirm  | Emitted when click confirm button. | { selectedValue, selectedOptions } |
-| close  | Emitted when click close button. | { selectedValue, selectedOptions } |
+| cancel  | Emitted when click close button. | { selectedValue, selectedOptions } |
 | change  | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
 
 ### Slots

@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-timeselect {
+  .nut-time-select {
     background-color: $dark-background2;
     &__title {
       background-color: $dark-background2;
@@ -16,7 +16,7 @@
     }
   }
 }
-.nut-timeselect {
+.nut-time-select {
   width: 100%;
   height: 100%;
   position: relative;

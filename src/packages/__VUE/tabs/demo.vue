@@ -2,65 +2,65 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <nut-tabs v-model="state.tab1value">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title1') }}</h2>
     <nut-tabs v-model="state.tab11value" type="smile">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title2') }}</h2>
     <nut-tabs v-model="state.tab2value">
-      <nut-tabpane title="Tab 1" pane-key="0"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title9') }}</h2>
     <nut-tabs v-model="state.tab2value" :auto-height="true">
-      <nut-tabpane title="Tab 1" pane-key="0">
+      <nut-tab-pane title="Tab 1" pane-key="0">
         <p>Tab 1</p>
         <p>Tab 1</p>
         <p>Tab 1</p>
         <p>Tab 1</p>
-      </nut-tabpane>
-      <nut-tabpane title="Tab 2" pane-key="1"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+      </nut-tab-pane>
+      <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title3') }}</h2>
     <nut-tabs v-model="state.tab3value">
-      <nut-tabpane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+      <nut-tab-pane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
 
     <h2>{{ translate('title4') }}</h2>
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
-      <nut-tabpane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
-      <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title6') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-      <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
     <nut-tabs v-model="state.tab8value" size="large">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <nut-tabs v-model="state.tab8value" size="normal">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <nut-tabs v-model="state.tab8value" size="small">
-      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
-      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
-      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title8') }}</h2>
     <nut-tabs v-model="state.tab7value">
@@ -77,9 +77,9 @@
           <span class="nut-tabs__titles-item__line"></span>
         </div>
       </template>
-      <nut-tabpane v-for="item in state.list6" :pane-key="item.paneKey">
+      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey">
         {{ item.title }}
-      </nut-tabpane>
+      </nut-tab-pane>
     </nut-tabs>
   </div>
 </template>

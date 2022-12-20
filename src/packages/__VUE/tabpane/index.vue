@@ -1,12 +1,12 @@
 <template>
-  <view class="nut-tabpane" :class="{ inactive: paneKey != activeKey && autoHeight }">
+  <view class="nut-tab-pane" :class="{ inactive: paneKey != activeKey && autoHeight }">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
 import { inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('tabpane');
+const { create } = createComponent('tab-pane');
 
 export default create({
   props: {

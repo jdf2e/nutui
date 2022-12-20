@@ -2,7 +2,7 @@
   <view :class="classes">
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
-      <template v-if="maximum - fileList.length">
+      <template v-if="Number(maximum) - fileList.length">
         <nut-button class="nut-uploader__input" @click="chooseImage" />
       </template>
     </view>
@@ -61,9 +61,11 @@
     <view
       class="nut-uploader__upload"
       :class="[listType]"
-      v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
+      v-if="listType == 'picture' && !$slots.default && Number(maximum) - fileList.length"
     >
-      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <slot name="upload-icon">
+        <Photograph color="#808080" />
+      </slot>
       <nut-button class="nut-uploader__input" @click="chooseImage" />
     </view>
   </view>
@@ -80,10 +82,12 @@ import Button from '../button/index.taro.vue';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
 import { isPromise } from '@/packages/utils/util';
+import { Photograph } from '@nutui/icons-vue-taro';
 export default create({
   components: {
     [Progress.name]: Progress,
-    [Button.name]: Button
+    [Button.name]: Button,
+    Photograph
   },
   props: {
     name: { type: String, default: 'file' },
@@ -112,7 +116,7 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
-    uploadIconSize: { type: [String, Number], default: '' },
+    // uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     multiple: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },

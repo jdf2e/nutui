@@ -1,6 +1,6 @@
 import { computed, PropType, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, translate } = createComponent('fixednav');
+const { componentName, translate } = createComponent('fixed-nav');
 export const component = (components: any) => {
   return {
     components,
@@ -71,4 +71,4 @@ export const component = (components: any) => {
       return { classes, updateValue, selected, translate, current };
     }
   };
-}
+};

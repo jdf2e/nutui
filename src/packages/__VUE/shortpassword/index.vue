@@ -36,7 +36,7 @@
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
         <view class="nut-shortpsd-forget" v-if="tips || translate('tips')">
-          <nut-icon class="icon" size="11px" name="tips"></nut-icon>
+          <tips class="icon" width="11px" height="11px"></tips>
           <view @click="onTips">{{ tips || translate('tips') }}</view>
         </view>
       </view>
@@ -51,10 +51,12 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
-const { create, translate } = createComponent('shortpassword');
+import { Tips } from '@nutui/icons-vue';
+const { create, translate } = createComponent('short-password');
 export default create({
   components: {
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    Tips
   },
   props: {
     title: {

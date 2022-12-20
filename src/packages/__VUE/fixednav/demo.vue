@@ -1,13 +1,13 @@
 <template>
   <div class="demo">
-    <nut-fixednav
+    <nut-fixed-nav
       :active-text="translate('basic')"
       :position="{ top: '70px' }"
       v-model:visible="visible"
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
+    <nut-fixed-nav
       type="left"
       :position="{ top: '140px' }"
       v-model:visible="visible1"
@@ -16,32 +16,32 @@
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
+    <nut-fixed-nav
       :position="{ top: '210px' }"
       :overlay="false"
       v-model:visible="visible2"
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
+    <nut-fixed-nav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
       <template v-slot:list>
-        <ul class="nut-fixednav__list">
-          <li class="nut-fixednav__list-item">1</li>
-          <li class="nut-fixednav__list-item">2</li>
-          <li class="nut-fixednav__list-item">3</li>
-          <li class="nut-fixednav__list-item">4</li>
-          <li class="nut-fixednav__list-item">5</li>
+        <ul class="nut-fixed-nav__list">
+          <li class="nut-fixed-nav__list-item">1</li>
+          <li class="nut-fixed-nav__list-item">2</li>
+          <li class="nut-fixed-nav__list-item">3</li>
+          <li class="nut-fixed-nav__list-item">4</li>
+          <li class="nut-fixed-nav__list-item">5</li>
         </ul>
       </template>
       <template v-slot:btn>
-        <nut-icon name="retweet" color="#fff"> </nut-icon>
+        <Retweet color="#fff" />
         <span class="text">{{ myActive ? translate('cus1') : translate('cus2') }}</span>
       </template>
-    </nut-fixednav>
+    </nut-fixed-nav>
 
     <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 -->
     <nut-drag direction="y" :style="{ right: '0px', bottom: '240px' }">
-      <nut-fixednav
+      <nut-fixed-nav
         :un-active-text="translate('drag')"
         v-model:visible="visible3"
         :nav-list="navList"
@@ -56,6 +56,7 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Retweet } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -85,6 +86,9 @@ const initTranslate = () =>
   });
 export default createDemo({
   props: {},
+  components: {
+    Retweet
+  },
   setup() {
     initTranslate();
     const visible = ref(false);

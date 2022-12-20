@@ -11,17 +11,17 @@
     @click-close-icon="close"
   >
     <view :class="classes">
-      <view class="nut-timeselect__title">
-        <view class="nut-timeselect__title__fixed">
+      <view class="nut-time-select__title">
+        <view class="nut-time-select__title__fixed">
           <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
           <slot name="title" v-else></slot>
         </view>
       </view>
-      <view class="nut-timeselect__content">
-        <view class="nut-timeselect__content__pannel">
+      <view class="nut-time-select__content">
+        <view class="nut-time-select__content__pannel">
           <slot name="pannel"></slot>
         </view>
-        <view class="nut-timeselect__content__detail">
+        <view class="nut-time-select__content__detail">
           <slot name="detail"></slot>
         </view>
       </view>
@@ -31,7 +31,7 @@
 <script lang="ts">
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('timeselect');
+const { componentName, create, translate } = createComponent('time-select');
 export default create({
   props: {
     visible: {

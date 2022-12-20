@@ -1,14 +1,12 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
 import Steps from '../index.vue';
 import Step from './../../step/index.vue';
 import Button from './../../button/index.vue';
-import NutIcon from '../../icon/index.vue';
+import { Service, People, Location2 } from '@nutui/icons-vue';
 import { nextTick, toRefs, reactive } from 'vue';
 
 beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
+  config.global.components = { Service, People, Location2 };
 });
 
 afterAll(() => {
@@ -37,8 +35,7 @@ test('should first step checked when props current is to be 1', async () => {
         <nut-step title="步骤二">2</nut-step>
         <nut-step title="步骤三">3</nut-step>
       </nut-steps>
-    `,
-    setup() {}
+    `
   });
 
   await nextTick();
@@ -57,17 +54,26 @@ test('should render dot class when props progressDot is to be true', async () =>
   expect(wrapper.classes()).toContain('nut-steps-dot');
 });
 
-test('step props', async () => {
+test('step props and icon slots', async () => {
   const wrapper = mount({
     components: {
       'nut-steps': Steps,
-      'nut-step': Step
+      'nut-step': Step,
+      Service,
+      People,
+      Location2
     },
     template: `
       <nut-steps>
-        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出" icon="service" iconColor="blue" size="14px">1</nut-step>
-        <nut-step title="进行中" content="您的订单正在配送途中" icon="people" iconColor="blue" size="14px">2</nut-step>
-        <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦" icon="location2" iconColor="blue" size="14px">3</nut-step>
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">
+          <template #icon><Service color="blue" width="14px" height="14px"/></template>
+        </nut-step>
+        <nut-step title="进行中" content="您的订单正在配送途中">
+          <template #icon><People color="blue" width="14px" height="14px"/></template>
+        </nut-step>
+        <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">
+          <template #icon><Location2 color="blue" width="14px" height="14px"/></template>
+        </nut-step>
       </nut-steps>
     `
   });
@@ -82,10 +88,12 @@ test('step props', async () => {
 
   expect(stepItemContent.element.innerHTML).toEqual('<span>您的订单正在配送途中</span>');
 
-  const stepItemIcon = wrapper.findAll('.nutui-iconfont')[2];
-  expect(stepItemIcon.classes()).toContain('nut-icon-location2');
-  expect((stepItemIcon.element as HTMLElement).style.color).toEqual('blue');
-  expect((stepItemIcon.element as HTMLElement).style.width).toEqual('14px');
+  const stepItemIcons = wrapper.findAll('.nut-icon');
+  const icon = stepItemIcons[0];
+  expect(stepItemIcons.length).toEqual(3);
+  expect((icon.element as HTMLElement).tagName).toEqual('svg');
+  expect((icon.element as HTMLElement).getAttribute('color')).toEqual('blue');
+  expect((icon.element as HTMLElement).style.width).toEqual('14px');
 });
 
 test('should props current changes when trigger click', async () => {
@@ -171,7 +179,7 @@ test('render step slot', async () => {
         <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"><template v-slot:title>步骤一</template></nut-step>
         <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
         <nut-step title="未开始">
-          <template v-slot:content>
+          <template #content>
             <p>收货地址为：</p>
             <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
           </template>

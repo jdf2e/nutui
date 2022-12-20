@@ -9,14 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { InputNumber,Icon } from '@nutui/nutui';
+import { InputNumber } from '@nutui/nutui';
 // taro
-import { InputNumber,Icon } from '@nutui/nutui-taro';
+import { InputNumber } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(InputNumber);
-app.use(Icon);
-
 ```
 
 
@@ -28,7 +26,7 @@ app.use(Icon);
 
 ``` html
 <template>
-  <nut-inputnumber v-model="value" />
+  <nut-input-number v-model="value" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -52,7 +50,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="5" />
+  <nut-input-number v-model="value" step="5" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -76,7 +74,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" min="10" max="20" />
+  <nut-input-number v-model="value" min="10" max="20" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -100,7 +98,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" disabled />
+  <nut-input-number v-model="value" disabled />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -124,7 +122,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" readonly />
+  <nut-input-number v-model="value" readonly />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -148,7 +146,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="0.1" decimal-places="1" />
+  <nut-input-number v-model="value" step="0.1" decimal-places="1" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -171,7 +169,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber :model-value="value" @change="onChange" />
+  <nut-input-number :model-value="value" @change="onChange" />
 </template>
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
@@ -202,7 +200,7 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber v-model="value"  button-size="30" input-width="50" />
+  <nut-input-number v-model="value"  button-size="30" input-width="50" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -223,7 +221,14 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+  <nut-input-number v-model="value">
+    <template #leftIcon>
+      <Left />
+    </template>
+    <template #rightIcon>
+      <Right />
+    </template>
+  </nut-input-number>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -254,10 +259,13 @@ app.use(Icon);
 | decimal-places | 设置保留的小数位           | String、Number | `0`        |
 | disabled       | 禁用所有功能               | Boolean        | false      |
 | readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
-| icon-left `v3.2.2`  | 左侧操作符图标名，同 Icon 组件 name 属性 | String  | `minus` |
-| icon-right `v3.2.2` | 右侧操作符图标名，同 Icon 组件 name 属性 | String  | `plus`  |
-| font-class-name `v3.2.2` | 自定义icon 字体基础类名 | String   | `nutui-iconfont` |
-| class-prefix `v3.2.2` | 自定义icon 类名前缀，用于使用自定义图标 | String   | `nut-icon`  |
+
+### Slots
+
+| 名称 | 说明 |
+|-|-|
+| leftIcon | 自定义左侧按钮 |
+| rightIcon | 自定义右侧按钮 |
 
 ### Events
 

@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-subsidenavbar {
+  .nut-sub-side-navbar {
     background-color: $dark-background2;
     &__title {
       background-color: $dark-background3;
@@ -10,7 +10,7 @@
     }
   }
 }
-.nut-subsidenavbar {
+.nut-sub-side-navbar {
   display: grid;
   float: left;
   width: 100%;

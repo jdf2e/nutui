@@ -26,8 +26,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-    <nut-trendarrow :show-text-color="false" :rate="1"/>
-    <nut-trendarrow :show-text-color="false" :rate="-0.2535"/>
+    <nut-trend-arrow :show-text-color="false" :rate="1"/>
+    <nut-trend-arrow :show-text-color="false" :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -41,8 +41,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow :rate="10.2365"/>
-      <nut-trendarrow :rate="-0.2535"/>
+      <nut-trend-arrow :rate="10.2365"/>
+      <nut-trend-arrow :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -55,8 +55,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow :digits="0" :rate="10.2365"/>
-      <nut-trendarrow :digits="0" :rate="-0.2535"/>
+      <nut-trend-arrow :digits="0" :rate="10.2365"/>
+      <nut-trend-arrow :digits="0" :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -69,8 +69,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow arrowLeft :rate="0.2535"/>
-      <nut-trendarrow arrowLeft :rate="-0.2535"/>
+      <nut-trend-arrow arrowLeft :rate="0.2535"/>
+      <nut-trend-arrow arrowLeft :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -83,8 +83,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow showSign :rate="1"/>
-      <nut-trendarrow showSign :rate="-0.2535"/>
+      <nut-trend-arrow showSign :rate="1"/>
+      <nut-trend-arrow showSign :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -97,8 +97,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow showSign :rate="0"/>
-      <nut-trendarrow showSign showZero :rate="0"/>
+      <nut-trend-arrow showSign :rate="0"/>
+      <nut-trend-arrow showSign showZero :rate="0"/>
   </nut-cell>
 </template>
 ```
@@ -111,9 +111,9 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trendarrow :rate="10.2365" rise-color="rgb(73,143,242)"/>
-      <nut-trendarrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)"/>
-      <nut-trendarrow
+      <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)"/>
+      <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)"/>
+      <nut-trend-arrow
         :show-text-color="false"
         showSign
         :rate="-0.2535"

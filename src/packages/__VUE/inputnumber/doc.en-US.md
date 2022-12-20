@@ -9,14 +9,12 @@ Control the number increase or decrease by clicking the button.
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { InputNumber,Icon } from '@nutui/nutui';
+import { InputNumber } from '@nutui/nutui';
 // taro
-import { InputNumber,Icon } from '@nutui/nutui-taro';
+import { InputNumber } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(InputNumber);
-app.use(Icon);
-
 ```
 
 
@@ -28,7 +26,7 @@ Initialize a default value
 
 ``` html
 <template>
-  <nut-inputnumber v-model="value" />
+  <nut-input-number v-model="value" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -52,7 +50,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="5" />
+  <nut-input-number v-model="value" step="5" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -76,7 +74,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" min="10" max="20" />
+  <nut-input-number v-model="value" min="10" max="20" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -100,7 +98,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" disabled />
+  <nut-input-number v-model="value" disabled />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -124,7 +122,7 @@ Set step `step` 5
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" readonly />
+  <nut-input-number v-model="value" readonly />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -148,7 +146,7 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 
 ```html
 <template>
-  <nut-inputnumber v-model="value" step="0.1" decimal-places="1" />
+  <nut-input-number v-model="value" step="0.1" decimal-places="1" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -171,7 +169,7 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber :model-value="value" @change="onChange" />
+  <nut-input-number :model-value="value" @change="onChange" />
 </template>
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
@@ -202,7 +200,7 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber v-model="value"  button-size="30" input-width="50" />
+  <nut-input-number v-model="value"  button-size="30" input-width="50" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -223,7 +221,14 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+  <nut-input-number v-model="value">
+    <template #leftIcon>
+      <Left />
+    </template>
+    <template #rightIcon>
+      <Right />
+    </template>
+  </nut-input-number>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -254,10 +259,13 @@ Asynchronous modification through `change` event and `model-value`
 | decimal-places | Set reserved decimal places           | String、Number | `0`        |
 | disabled       | Disable all features               | Boolean        | false      |
 | readonly       | Read only status disables input box operation behavior | Boolean        | false      |
-| icon-left`v3.2.2`  | Left icon name             | String         | `minus`     |
-| icon-right`v3.2.2` | Right icon name             | String         | `plus`      |
-| font-class-name `v3.2.2` | Custom icon font base class name | String   | `nutui-iconfont` |
-| class-prefix `v3.2.2` | Custom icon class name prefix for using custom icons | String   | `nut-icon`  |
+
+### Slots
+
+| Name | Description |
+|-|-|
+| leftIcon | Custom left icon |
+| rightIcon | Custom right icon |
 
 ### Events
 

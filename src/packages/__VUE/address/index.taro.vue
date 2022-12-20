@@ -126,23 +126,14 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, computed } from 'vue';
+import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
 import { popupProps } from '../popup/props';
-import { RegionData, CustomRegionData } from './type';
+import { RegionData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 
-interface AddressList {
-  id?: string | number;
-  provinceName: string;
-  cityName: string;
-  countyName: string;
-  townName: string;
-  addressDetail: string;
-  selectedAddress: boolean;
-}
 export default create({
   components: {
     [Popup.name]: Popup,
@@ -168,19 +159,19 @@ export default create({
       default: ''
     },
     province: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     },
     city: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 市
     country: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 县
     town: {
-      type: Array,
+      type: Array as PropType<RegionData[]>,
       default: () => []
     }, // 镇
     isShowCustomAddress: {
@@ -188,7 +179,7 @@ export default create({
       default: true
     }, // 是否显示‘选择其他地区’按钮 type=‘exist’ 生效
     existAddress: {
-      type: Array,
+      type: Array as PropType<existRegionData[]>,
       default: () => []
     }, // 现存地址列表
     existAddressTitle: {
@@ -288,7 +279,7 @@ export default create({
         if (index <= -1) {
           newData.push({
             title: item.title,
-            list: [].concat(item)
+            list: ([] as any).concat(item)
           });
         } else {
           newData[index].list.push(item);
@@ -317,7 +308,7 @@ export default create({
           return;
         }
         for (let index = 0; index < num; index++) {
-          let arr: [] = [];
+          let arr: RegionData[] = [];
           switch (index) {
             case 0:
               arr = props.province;
@@ -360,7 +351,7 @@ export default create({
     };
 
     // 切换下一级列表
-    const nextAreaList = (item: RegionData | string) => {
+    const nextAreaList = (item: RegionData) => {
       const tab = tabIndex.value;
 
       const callBackParams: {
@@ -396,11 +387,11 @@ export default create({
     };
 
     // 选择现有地址
-    const selectedExist = (item: RegionData) => {
-      const copyExistAdd = props.existAddress as AddressList[];
+    const selectedExist = (item: existRegionData) => {
+      const copyExistAdd = props.existAddress;
       let prevExistAdd = {};
 
-      copyExistAdd.forEach((list: AddressList) => {
+      copyExistAdd.forEach((list: existRegionData) => {
         if (list && list.selectedAddress) prevExistAdd = list;
         list.selectedAddress = false;
       });
@@ -466,7 +457,7 @@ export default create({
       emit('switch-module', { type: privateType.value });
     };
 
-    const handleElevatorItem = (key: string, item: RegionData | string) => {
+    const handleElevatorItem = (key: string, item: RegionData) => {
       nextAreaList(item);
     };
 

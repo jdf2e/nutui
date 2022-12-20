@@ -8,11 +8,10 @@
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading,Icon } from '@nutui/nutui';
+  import { InfiniteLoading } from '@nutui/nutui';
 
   const app = createApp();
   app.use(InfiniteLoading);
-  app.use(Icon);
 
 ```
 
@@ -22,13 +21,13 @@
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
       v-model="infinityValue"
       :has-more="hasMore"
       @load-more="loadMore"
   >
       <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>
@@ -61,7 +60,7 @@
 
 ```html
 <template>
-  <nut-infiniteloading
+  <nut-infinite-loading
     v-model="infinityValue2"
     load-txt="Loading..."
     load-more-txt="没有啦~"
@@ -69,7 +68,7 @@
     @load-more="loadMore"
   >
     <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-  </nut-infiniteloading>
+  </nut-infinite-loading>
 </template>
 
 <script>
@@ -110,7 +109,6 @@
 | threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | Number | `200`               |
 | use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
 | load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| load-icon        | 上拉加载[图标名称](#/zh-CN/component/icon)                       | String | ''             |
 | load-txt        | 上拉加载提示文案                         | String | `加载中...`                |
 
 ### Events
@@ -124,5 +122,7 @@
 
 | 名称 | 说明           | 
 |--------|----------------|
+| default  | 自定义加载内容 |
 | loading  | 自定义底部加载中提示 |
+| loadingIcon  | 自定义底部加载中图标 |
 | finished  | 自定义加载完成后的提示文案 |

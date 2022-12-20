@@ -22,7 +22,7 @@ app.use(CircleProgress);
 ```html
 <template>
     <nut-cell>
-     <nut-circleprogress :progress="20"> </nut-circleprogress>
+     <nut-circle-progress :progress="20"> </nut-circle-progress>
    </nut-cell>
 </template>
 ```
@@ -33,7 +33,7 @@ app.use(CircleProgress);
 ```html
 <template>
     <nut-cell>
-     <nut-circleprogress :progress="50" strokeWidth="10"> </nut-circleprogress>
+     <nut-circle-progress :progress="50" strokeWidth="10"> </nut-circle-progress>
    </nut-cell>
 </template>
 ```
@@ -45,8 +45,8 @@ app.use(CircleProgress);
 ```html
 <template>
     <nut-cell>
-    <nut-circleprogress :progress="50" color="red" />
-      <nut-circleprogress :progress="100" :color="gradientColor" />
+    <nut-circle-progress :progress="50" color="red" />
+      <nut-circle-progress :progress="100" :color="gradientColor" />
    </nut-cell>
 </template>
 <script>
@@ -71,7 +71,7 @@ export default{
 ```html
 <template>
     <nut-cell>
-     <nut-circleprogress :progress="50" radius="60"></nut-circleprogress>
+     <nut-circle-progress :progress="50" radius="60"></nut-circle-progress>
     </nut-cell>
 </template>
 ```
@@ -84,7 +84,7 @@ export default{
 ```html
 <template>
     <nut-cell>
-     <nut-circleprogress :progress="50" radius="60">content</nut-circleprogress>
+     <nut-circle-progress :progress="50" radius="60">content</nut-circle-progress>
     </nut-cell>
 </template>
 ```
@@ -95,7 +95,7 @@ export default{
 ```html
 <template>
   <div>
-     <nut-circleprogress :progress="percent"></nut-circleprogress>
+     <nut-circle-progress :progress="percent"></nut-circle-progress>
   </div>
   <div>
     <nut-button type="primary" @click="setReduceVal">reduce</nut-button>

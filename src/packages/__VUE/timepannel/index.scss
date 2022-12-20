@@ -1,5 +1,5 @@
 .nut-theme-dark {
-  .nut-timepannel {
+  .nut-time-pannel {
     background-color: $dark-background3;
     color: $dark-color-gray;
     &--curr {
@@ -8,7 +8,7 @@
     }
   }
 }
-.nut-timepannel {
+.nut-time-pannel {
   display: flex;
   width: $timeselect-timepannel-width;
   height: $timeselect-timepannel-height;

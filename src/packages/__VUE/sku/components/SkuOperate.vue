@@ -16,7 +16,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted } from 'vue';
+import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-operate');
 
@@ -24,7 +24,7 @@ export default create({
   props: {
     // 底部按钮配置  confirm cart  buy
     btnOptions: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: () => ['confirm']
     },
 

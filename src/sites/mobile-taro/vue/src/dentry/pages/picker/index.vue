@@ -1,121 +1,39 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell
-      title="请选择城市"
-      :desc="index"
-      @click="
-        () => {
-          show = true;
-        }
-      "
-    ></nut-cell>
-
     <nut-picker
-      v-model:visible="show"
       :columns="columns"
       title="城市选择"
       :safeAreaInsetBottom="true"
       @change="change"
-      @confirm="(options) => confirm('index', options)"
+      @confirm="confirm"
     ></nut-picker>
+
+    <h2>搭配 Popup 使用</h2>
+    <nut-cell title="城市选择" :desc="popupDesc" @click="show = true"></nut-cell>
+    <nut-popup position="bottom" v-model:visible="show" :safeAreaInsetBottom="true">
+      <nut-picker :columns="columns" title="城市选择" @confirm="popupConfirm" @cancel="show = false">
+        <nut-button block type="primary" style="margin-bottom: 20px">永远有效</nut-button>
+      </nut-picker>
+    </nut-popup>
 
     <h2>默认选中项</h2>
-    <nut-cell
-      title="请选择城市"
-      :desc="defult"
-      @click="
-        () => {
-          showDefult = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model="selectedValue"
-      v-model:visible="showDefult"
-      :columns="columns"
-      title="城市选择"
-      @confirm="(options) => confirm('defult', options)"
-    >
-    </nut-picker>
+    <nut-picker v-model="selectedValue" :columns="columns" title="城市选择" @confirm="confirm"> </nut-picker>
 
     <h2>多列样式</h2>
-    <nut-cell
-      title="请选择时间"
-      :desc="multiple"
-      @click="
-        () => {
-          showMultiple = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model="selectedTime"
-      v-model:visible="showMultiple"
-      :columns="multipleColumns"
-      title="城市选择"
-      @confirm="(options) => confirm('multiple', options)"
-    >
-    </nut-picker>
+    <nut-picker v-model="selectedTime" :columns="multipleColumns" title="城市选择" @confirm="confirm"> </nut-picker>
 
     <h2>多级联动</h2>
-    <nut-cell
-      title="请选择地址"
-      :desc="cascader"
-      @click="
-        () => {
-          showCascader = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model="selectedCascader"
-      v-model:visible="showCascader"
-      :columns="cascaderColumns"
-      title="城市选择"
-      @confirm="(options) => confirm('cascader', options)"
-    ></nut-picker>
+    <nut-picker v-model="selectedCascader" :columns="cascaderColumns" title="城市选择" @confirm="confirm"></nut-picker>
 
     <h2>异步获取</h2>
-    <nut-cell
-      title="请选择地址"
-      :desc="async"
-      @click="
-        () => {
-          showAsync = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model="asyncValue"
-      v-model:visible="showAsync"
-      :columns="asyncColumns"
-      title="城市选择"
-      @confirm="(options) => confirm('async', options)"
-    ></nut-picker>
+    <nut-picker v-model="asyncValue" :columns="asyncColumns" title="城市选择" @confirm="confirm"></nut-picker>
 
-    <h2>自定义按钮</h2>
-    <nut-cell
-      title="请选择有效日期"
-      :desc="effect"
-      @click="
-        () => {
-          showEffect = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model:visible="showEffect"
-      :columns="effectColumns"
-      title="日期选择"
-      @confirm="(options) => confirm('effect', options)"
-    >
-      <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
-    >
+    <nut-toast :msg="msg" v-model:visible="showToast" type="text" />
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted, ref, toRefs } from 'vue';
+import { onMounted, ref } from 'vue';
 import { PickerOption } from '../../../../../../../packages/__VUE/picker/types';
 export default {
   props: {},
@@ -123,8 +41,10 @@ export default {
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
     const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
-    const asyncValue = ref<string[]>([]);
-    const columsNum = ref([]);
+    const asyncValue = ref<string[]>();
+    const msg = ref();
+    const showToast = ref(false);
+
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
       { text: '无锡市', value: 'WuXi' },
@@ -227,51 +147,9 @@ export default {
     const asyncColumns = ref<PickerOption[]>([]);
 
     const show = ref(false);
-    const showDefult = ref(false);
-    const showMultiple = ref(false);
-    const showCascader = ref(false);
-    const showAsync = ref(false);
-    const showEffect = ref(false);
-    const showPort = ref(false);
-    const showTitle = ref(false);
-
-    const desc = reactive({
-      index: '',
-      defult: '',
-      multiple: '',
-      cascader: '',
-      async: '',
-      effect: '',
-      title: ''
-    });
-
-    const open = (index: number) => {
-      switch (index) {
-        case 0:
-          show.value = true;
-          break;
-        case 1:
-          showDefult.value = true;
-          break;
-        case 2:
-          showMultiple.value = true;
-          break;
-        case 3:
-          showCascader.value = true;
-          break;
-        case 4:
-          showAsync.value = true;
-          break;
-        default:
-          showCascader.value = true;
-      }
-    };
+    const popupDesc = ref();
 
     onMounted(() => {
-      for (let i = 1; i < 60; i++) {
-        columsNum.value.push({ text: i, value: i });
-      }
-
       setTimeout(() => {
         asyncColumns.value = [
           { text: '南京市', value: 'NanJing' },
@@ -284,49 +162,23 @@ export default {
         ];
 
         asyncValue.value = ['ZangZu'];
-      }, 500);
+      }, 1000);
     });
 
-    const confirm = (tag: string, { selectedValue }: { selectedValue: string[] }) => {
-      (desc as any)[tag] = selectedValue.join(',');
+    const confirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+      showToast.value = true;
+      msg.value = selectedOptions.map((val: any) => val.text).join(',');
     };
+
     const change = ({ selectedValue }: { selectedValue: string[] }) => {
       console.log(selectedValue);
     };
 
-    const portChange = (chooseDate: any) => {
-      const { columnIndex, selectedOptions, selectedValue } = chooseDate;
-      console.log(chooseDate);
-      if (columnIndex == 0) {
-        //  if(portColumns.value[0].children.length == 0){
-
-        //  }
-        console.log('选择后更新');
-        portColumns.value[0].children = ([] as any).concat([
-          {
-            text: '杭州',
-            value: 'HangZhou',
-            children: [
-              { text: '西湖区', value: 'XiHu' },
-              { text: '余杭区', value: 'YuHang' }
-            ]
-          },
-          {
-            text: '温州',
-            value: 'WenZhou',
-            children: [
-              { text: '鹿城区', value: 'LuCheng' },
-              { text: '瓯海区', value: 'OuHai' }
-            ]
-          }
-        ]);
-      }
+    const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+      popupDesc.value = selectedOptions.map((val: any) => val.text).join(',');
+      show.value = false;
     };
 
-    const alwaysFun = () => {
-      showEffect.value = false;
-      desc.effect = '永远有效';
-    };
     return {
       selectedValue,
       selectedTime,
@@ -334,25 +186,17 @@ export default {
       asyncValue,
       columns,
       show,
-      showDefult,
-      showAsync,
-      ...toRefs(desc),
-      showMultiple,
-      showCascader,
-      open,
       multipleColumns,
       cascaderColumns,
       confirm,
       change,
       asyncColumns,
       effectColumns,
-      showEffect,
-      alwaysFun,
-      columsNum,
-      showPort,
-      showTitle,
+      showToast,
       portColumns,
-      portChange
+      popupConfirm,
+      popupDesc,
+      msg
     };
   }
 };

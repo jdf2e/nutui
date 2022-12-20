@@ -1,14 +1,14 @@
 <template>
-  <view :class="classes" :style="{ height: pxCheck(buttonSize) }">
-    <nut-icon
-      :name="iconLeft"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
-      :size="buttonSize"
-      v-bind="$attrs"
+  <view :class="classes">
+    <view
+      class="nut-input-number__icon nut-input-number__left"
+      :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       @click="reduce"
     >
-    </nut-icon>
+      <slot name="leftIcon">
+        <Minus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+      </slot>
+    </view>
     <input
       type="number"
       :min="min"
@@ -21,23 +21,25 @@
       @blur="blur"
       @focus="focus"
     />
-    <nut-icon
-      :name="iconRight"
-      class="nut-inputnumber__icon"
-      :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
-      :size="buttonSize"
-      v-bind="$attrs"
+    <view
+      class="nut-input-number__icon nut-input-number__right"
+      :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
       @click="add"
     >
-    </nut-icon>
+      <slot name="rightIcon">
+        <Plus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+      </slot>
+    </view>
   </view>
 </template>
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('inputnumber');
+import { Minus, Plus } from '@nutui/icons-vue';
+const { componentName, create } = createComponent('input-number');
 export default create({
+  components: { Minus, Plus },
   props: {
     modelValue: {
       type: [Number, String],
@@ -45,11 +47,11 @@ export default create({
     },
     inputWidth: {
       type: [Number, String],
-      default: ''
+      default: '40px'
     },
     buttonSize: {
       type: [Number, String],
-      default: ''
+      default: '20px'
     },
     min: {
       type: [Number, String],
@@ -74,14 +76,6 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
-    },
-    iconLeft: {
-      type: String,
-      default: 'minus'
-    },
-    iconRight: {
-      type: String,
-      default: 'plus'
     }
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],

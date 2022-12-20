@@ -1,4 +1,4 @@
-# BackTop
+# Backtop
 
 ### Intro
 
@@ -9,11 +9,10 @@ Provides a quick return to the top function for long pages.
 ```javascript
 
 import { createApp } from 'vue';
-import { BackTop,Icon } from '@nutui/nutui';
+import { Backtop } from '@nutui/nutui';
 
 const app = createApp();
-app.use(BackTop);
-app.use(Icon);
+app.use(Backtop);
 
 ```
 

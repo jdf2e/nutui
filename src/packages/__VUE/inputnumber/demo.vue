@@ -2,39 +2,46 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val1" />
+      <nut-input-number v-model="state.val1" />
     </nut-cell>
     <h2>{{ translate('step') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val2" step="5" />
+      <nut-input-number v-model="state.val2" step="5" />
     </nut-cell>
     <h2>{{ translate('limit') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val3" @overlimit="overlimit" min="10" max="20" />
+      <nut-input-number v-model="state.val3" @overlimit="overlimit" min="10" max="20" />
     </nut-cell>
     <h2>{{ translate('disable') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val4" disabled />
+      <nut-input-number v-model="state.val4" disabled />
     </nut-cell>
     <h2>{{ translate('readonly') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val5" readonly />
+      <nut-input-number v-model="state.val5" readonly />
     </nut-cell>
     <h2>{{ translate('decimal') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val6" step="0.1" decimal-places="1" readonly />
+      <nut-input-number v-model="state.val6" step="0.1" decimal-places="1" readonly />
     </nut-cell>
     <h2>{{ translate('async') }}</h2>
     <nut-cell>
-      <nut-inputnumber :model-value="state.val8" @change="onChange" />
+      <nut-input-number :model-value="state.val8" @change="onChange" />
     </nut-cell>
     <h2>{{ translate('size') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val7" button-size="30" input-width="50" />
+      <nut-input-number v-model="state.val7" button-size="30" input-width="50" />
     </nut-cell>
     <h2>{{ translate('icon') }}</h2>
     <nut-cell>
-      <nut-inputnumber icon-left="left" icon-right="right" v-model="state.val9" />
+      <nut-input-number v-model="state.val9">
+        <template #leftIcon>
+          <Left />
+        </template>
+        <template #rightIcon>
+          <Right />
+        </template>
+      </nut-input-number>
     </nut-cell>
   </div>
 </template>
@@ -42,7 +49,8 @@
 <script lang="ts">
 import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('inputnumber');
+import { Left, Right } from '@nutui/icons-vue';
+const { createDemo, translate } = createComponent('input-number');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -74,6 +82,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Left, Right },
   props: {},
   setup() {
     initTranslate();

@@ -78,7 +78,6 @@ export default create({
     const rootContain = ref(null);
     const symbolContain = ref(null);
     let contantCopy = ref(props.content);
-    let container: any = null;
     let maxHeight = 0; // 超出的最大高度
     let lineHeight = 0; // 当行的最大高度
     let originHeight = 0; // 原始高度

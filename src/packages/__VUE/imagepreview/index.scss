@@ -1,4 +1,4 @@
-.nut-imagepreview {
+.nut-image-preview {
   height: 100%;
   width: 100%;
   &-swiper {
@@ -59,20 +59,20 @@
     background-color: transparent;
   }
 }
-.nut-imagepreview-custom-pop {
+.nut-image-preview-custom-pop {
   height: 100%;
   background: transparent !important;
   display: flex;
   align-items: center;
   width: 100%;
 }
-.nut-imagepreview-swiper .nut-swiper-item {
+.nut-image-preview-swiper .nut-swiper-item {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 
-  .nut-imagepreview-box {
+  .nut-image-preview-box {
     width: 100%;
   }
 

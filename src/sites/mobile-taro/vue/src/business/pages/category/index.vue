@@ -2,17 +2,17 @@
   <div class="demo full">
     <h2>经典分类模式</h2>
     <nut-category :category="category" @change="change">
-      <nut-categorypane :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane>
+      <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
     </nut-category>
 
     <h2>只显示文字</h2>
     <nut-category :category="category" @change="changeText">
-      <nut-categorypane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane
+      <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
     ></nut-category>
 
     <h2>自定义</h2>
     <nut-category
-      ><nut-categorypane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-categorypane
+      ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
     ></nut-category>
   </div>
 </template>

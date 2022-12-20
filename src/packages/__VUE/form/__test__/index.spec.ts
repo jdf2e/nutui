@@ -274,7 +274,7 @@ describe('Form', () => {
         <nut-rate v-model="formData2.rate" />
       </nut-form-item>
       <nut-form-item label="步进器">
-        <nut-inputnumber v-model="formData2.number" />
+        <nut-input-number v-model="formData2.number" />
       </nut-form-item>
       <nut-form-item label="滑块">
         <nut-range hidden-tag v-model="formData2.range"></nut-range>
@@ -368,7 +368,7 @@ describe('Form', () => {
     expect(formitem2.exists()).toBe(true);
     const formitem3 = wrapper.find('.nut-rate');
     expect(formitem3.exists()).toBe(true);
-    const formitem4 = wrapper.find('.nut-inputnumber');
+    const formitem4 = wrapper.find('.nut-input-number');
     expect(formitem4.exists()).toBe(true);
     const formitem5 = wrapper.find('.nut-range');
     expect(formitem5.exists()).toBe(true);

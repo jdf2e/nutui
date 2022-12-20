@@ -1,17 +1,17 @@
 <template>
-  <div class="demo">
+  <div class="demo nut-infiniteloading-demo">
     <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
-      <nut-tabpane :title="translate('basic')">
+      <nut-tab-pane :title="translate('basic')">
         <ul class="infiniteUl">
-          <nut-infiniteloading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
+          <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
             <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-          </nut-infiniteloading>
+          </nut-infinite-loading>
         </ul>
-      </nut-tabpane>
+      </nut-tab-pane>
 
-      <nut-tabpane :title="translate('customTxt')">
+      <nut-tab-pane :title="translate('customTxt')">
         <ul class="infiniteUl">
-          <nut-infiniteloading
+          <nut-infinite-loading
             v-model="infinityValue2"
             load-txt="Loading..."
             :load-more-txt="translate('none')"
@@ -19,9 +19,9 @@
             @load-more="customLoadMore"
           >
             <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
-          </nut-infiniteloading>
+          </nut-infinite-loading>
         </ul>
-      </nut-tabpane>
+      </nut-tab-pane>
     </nut-tabs>
   </div>
 </template>
@@ -29,7 +29,7 @@
 <script lang="ts">
 import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('infiniteloading');
+const { createDemo, translate } = createComponent('infinite-loading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -145,39 +145,45 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.demo {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-.nut-theme-dark {
-  .infiniteLi {
-    color: $dark-color;
+<style lang="scss">
+.nut-infiniteloading-demo {
+  .nut-theme-dark {
+    .infiniteLi {
+      color: $dark-color;
+    }
   }
-}
 
-.nut-tabpane {
-  padding: 0 !important;
-  padding-left: 16px !important;
-}
-.infiniteUl {
-  width: 100%;
-  height: calc(100vh - 120px);
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.infiniteLi {
-  font-size: 14px;
-  color: #333;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
+  .nut-tabs__titles {
+    background: #fff !important;
+    box-shadow: 0px 4px 10px 0px rgb(0 0 0 / 7%);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    z-index: 99;
+  }
 
-.loading {
-  display: block;
-  width: 100%;
-  text-align: center;
+  .nut-tab-pane {
+    padding: 0 !important;
+    padding-left: 16px !important;
+  }
+  .infiniteUl {
+    width: 100%;
+    height: calc(100vh - 120px);
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .infiniteLi {
+    font-size: 14px;
+    color: #333;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .loading {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

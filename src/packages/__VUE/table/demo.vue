@@ -31,7 +31,7 @@ import { createComponent } from '@/packages/utils/create';
 import { TableColumnProps } from './types';
 import { Toast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';
-import Icon from '@/packages/__VUE/icon/index.vue';
+import { Dongdong } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('table');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -94,7 +94,7 @@ const initTranslate = () =>
 export default createDemo({
   components: {
     Button,
-    Icon
+    Dongdong
   },
   props: {},
   setup(props, { emit, slot }) {
@@ -274,7 +274,7 @@ export default createDemo({
           sex: translate('woman'),
           record: translate('undergraduate'),
           render: () => {
-            return h(Icon, { name: 'dongdong', size: '14px' });
+            return h(Dongdong, { width: '14px', height: '14px' });
           }
         },
         {

@@ -24,14 +24,14 @@ app.use(Popup);
 ```html
 <template>
 <nut-cell title="基础用法" is-link @click="state.visible = true;"></nut-cell>
- <nut-shortpassword
+ <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       @change="methods.onChange"
       @close="methods.close"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -68,7 +68,7 @@ export default{
 ```html
 <template>
 <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
- <nut-shortpassword
+ <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       :no-button="false"
@@ -77,7 +77,7 @@ export default{
       @close="methods.close"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -122,7 +122,7 @@ export default{
 ```html
 <template>
 <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
- <nut-shortpassword
+ <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       :length="state.length"
@@ -130,7 +130,7 @@ export default{
       @close="methods.close"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -173,7 +173,7 @@ export default{
 ```html
 <template>
 <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
- <nut-shortpassword
+ <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       @change="methods.onChange"
@@ -181,7 +181,7 @@ export default{
       @tips="methods.onTips"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -221,7 +221,7 @@ export default{
 ```html
 <template>
 <nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
- <nut-shortpassword
+ <nut-short-password
       v-model="state.value"
       v-model:visible="state.visible"
       :error-msg="state.errorMsg"
@@ -230,7 +230,7 @@ export default{
       @tips="methods.onTips"
       @cancel="methods.cancel"
     >
-    </nut-shortpassword>
+    </nut-short-password>
 </template>
 <script>
 import { reactive } from 'vue';
