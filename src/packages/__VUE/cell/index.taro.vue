@@ -5,7 +5,7 @@ import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('cell');
-import { Right } from '@nutui/icons-vue';
+import { Right } from '@nutui/icons-vue-taro';
 export default create({
   components: { Right },
   props: {

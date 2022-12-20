@@ -14,39 +14,8 @@ export default create({
       type: [String, Number, Array]
     },
     accordion: {
-      type: Boolean
-    },
-    titleIcon: {
-      type: String,
-      default: ''
-    },
-    titleIconSize: {
-      type: String,
-      default: '16px'
-    },
-    titleIconColor: {
-      type: String,
-      default: ''
-    },
-    titleIconPosition: {
-      type: String,
-      default: 'left'
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    iconSize: {
-      type: String,
-      default: '16px'
-    },
-    iconColor: {
-      type: String,
-      default: ''
-    },
-    rotate: {
-      type: [String, Number],
-      default: 180
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:active', 'change'],

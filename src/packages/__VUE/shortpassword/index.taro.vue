@@ -43,7 +43,7 @@
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
         <view class="nut-shortpsd-forget" @click="onTips" v-if="tips || translate('tips')">
-          <tips class="icon" height="11px" width="11px"></tips>
+          <tips class="icon" size="11px"></tips>
           <view>{{ tips || translate('tips') }}</view>
         </view>
       </view>
@@ -58,7 +58,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
-import { Tips } from '@nutui/icons-vue';
+import { Tips } from '@nutui/icons-vue-taro';
 const { create, translate } = createComponent('short-password');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({

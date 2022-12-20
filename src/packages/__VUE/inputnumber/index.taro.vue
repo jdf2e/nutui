@@ -41,7 +41,7 @@
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { Minus, Plus } from '@nutui/icons-vue';
+import { Minus, Plus } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('input-number');
 export default create({
   components: { Minus, Plus },

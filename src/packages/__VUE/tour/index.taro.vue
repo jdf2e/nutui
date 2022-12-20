@@ -68,7 +68,7 @@ import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted }
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import { Close } from '@nutui/icons-vue';
+import { Close } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 
 interface StepOptions {
