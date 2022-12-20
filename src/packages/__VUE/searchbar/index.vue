@@ -36,7 +36,10 @@
           v-if="clearable"
           v-show="String(modelValue).length > 0"
         >
-          <nut-icon :name="clearIcon" size="12" color="#555"></nut-icon>
+          <template v-if="$slots.clearIcon">
+            <slot name="clearIcon"></slot>
+          </template>
+          <component :is="renderIcon(clearIcon)" v-else></component>
         </view>
       </view>
       <view
@@ -55,7 +58,8 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, renderIcon } from '@/packages/utils/create';
+import { CircleClose } from '@nutui/icons-vue';
 const { create, translate } = createComponent('searchbar');
 // interface Events {
 //   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
@@ -88,8 +92,8 @@ export default create({
       default: true
     },
     clearIcon: {
-      type: String,
-      default: 'circle-close'
+      type: Object,
+      default: () => CircleClose
     },
     background: {
       type: String,
@@ -134,10 +138,11 @@ export default create({
     'click-right-icon'
   ],
 
-  setup(props, { emit }) {
+  setup(props, { slots, emit }) {
     const state = reactive({
       active: false
     });
+    console.log(slots);
 
     const searchbarStyle = computed(() => {
       return {
@@ -220,6 +225,7 @@ export default create({
     });
 
     return {
+      renderIcon,
       inputsearch,
       ...toRefs(state),
       valueChange,
