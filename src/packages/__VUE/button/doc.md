@@ -131,11 +131,13 @@ app.use(Button);
 
 ### 自定义图标
 
-参照 `Icon` 组件说明中的自定义图标，其中 `icon-font-class-name` 对应 Icon 组件的 `font-class-name`，`icon-class-prefix` 对应 Icon 组件的 `class-prefix`。
-
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon-font-class-name="iconfont" icon-class-prefix="icon" icon="close"></nut-button>
+  <nut-button shape="square" plain type="primary">
+    <template #icon>
+      <Close />
+    </template>
+  </nut-button>
 </template>
 ```
 
