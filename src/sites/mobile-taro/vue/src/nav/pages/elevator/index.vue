@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { computed, reactive, toRefs, defineComponent } from 'vue';
-import { Jd } from '@nutui/icons-vue';
+import { Jd } from '@nutui/icons-vue-taro';
 export default defineComponent({
   components: {
     Jd
