@@ -46,7 +46,7 @@
           :visibleOptionNum="visibleOptionNum"
           :optionHeight="optionHeight"
           @change="
-            (option) => {
+            (option:PickerOption) => {
               changeHandler(columnIndex, option);
             }
           "
@@ -61,8 +61,9 @@ import { createComponent } from '@/packages/utils/create';
 import { componentWeb, componentWeapp } from './common';
 import Taro from '@tarojs/taro';
 const { create } = createComponent('picker');
+import { Component } from 'vue';
 
-const component: any = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
+const component: Component = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
 
 export default create(component);
 </script>
