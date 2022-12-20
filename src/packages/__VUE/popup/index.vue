@@ -1,3 +1,19 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2022-12-20 09:18:16
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2022-12-20 10:22:59
+-->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2022-12-20 09:18:16
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2022-12-20 09:56:09
+-->
 <template>
   <Teleport :to="teleport" :disabled="!teleportDisable">
     <nut-overlay
@@ -19,7 +35,9 @@
           class="nut-popup__close-icon"
           :class="'nut-popup__close-icon--' + closeIconPosition"
         >
-          <nut-icon v-bind="$attrs" :name="closeIcon" size="12px" />
+          <slot name="closeIcon">
+            <Close height="12px"></Close>
+          </slot>
         </view>
       </view>
     </Transition>
@@ -29,10 +47,12 @@
 import { createComponent } from '@/packages/utils/create';
 import { component } from './common';
 import OverLay from '../overlay/index.vue';
+import { Close } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('popup');
 export default create(
   component(componentName, {
-    [OverLay.name]: OverLay
+    [OverLay.name]: OverLay,
+    Close
   })
 );
 </script>
