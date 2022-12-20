@@ -53,7 +53,11 @@
     </nut-cell-group>
 
     <h2>展示图标</h2>
-    <nut-cell title="姓名" icon="my" desc="张三" isLink> </nut-cell>
+    <nut-cell title="姓名" icon="my" desc="张三" isLink>
+      <template v-slot:icon>
+        <My />
+      </template>
+    </nut-cell>
     <h2>只展示 desc ，可通过 desc-text-align 调整内容位置</h2>
     <nut-cell desc-text-align="left" desc="张三"></nut-cell>
     <h2>垂直居中</h2>
@@ -63,7 +67,9 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import { My } from '@nutui/icons-vue-taro';
 export default {
+  components: { My },
   setup() {
     const testClick = (event: Event) => {
       // console.log('点击事件');

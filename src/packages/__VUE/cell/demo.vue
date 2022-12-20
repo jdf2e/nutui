@@ -55,7 +55,11 @@
     </nut-cell-group>
 
     <h2>{{ translate('displayIcon') }}</h2>
-    <nut-cell :title="translate('name')" :desc="translate('desc')" isLink> </nut-cell>
+    <nut-cell :title="translate('name')" :desc="translate('desc')" isLink>
+      <template v-slot:icon>
+        <My />
+      </template>
+    </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell desc-text-align="left" :desc="translate('desc')"></nut-cell>
 
@@ -69,6 +73,7 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -121,6 +126,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { My },
   setup() {
     initTranslate();
     const testClick = (event: Event) => {

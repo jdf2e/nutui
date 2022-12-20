@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, CSSProperties, toRefs, PropType } from 'vue';
+import { ref, onMounted, reactive, watch, computed, CSSProperties, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('picker');
 import { usePicker } from './usePicker';
@@ -16,7 +16,10 @@ export const componentWeb = {
     const { changeHandler, confirm, defaultValues, columnsList, selectedOptions, columnsType, classes, cancel } =
       usePicker(props, emit);
 
-    const state = reactive({
+    const state = reactive<{
+      ENV: TaroGeneral.ENV_TYPE;
+      ENV_TYPE: Taro.TARO_ENV_TYPE;
+    }>({
       ENV: Taro.getEnv(),
       ENV_TYPE: Taro.ENV_TYPE
     });

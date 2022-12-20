@@ -24,7 +24,7 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <component :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+          <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
 
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
@@ -87,7 +87,7 @@ export default create({
       const base = 16;
 
       if (bgColor) {
-        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
+        styles[`border${upperCaseFirst(direction)}Color` as any] = bgColor;
       }
 
       if (props.arrowOffset != 0) {
@@ -187,7 +187,7 @@ export default create({
     const getContentWidth = () => {
       let rect = useRect(popoverRef.value);
       if (props.targetId) {
-        rect = useRect(document.querySelector(`#${props.targetId}`));
+        rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
       }
       rootRect.value = rect;
       setTimeout(() => {
@@ -241,7 +241,7 @@ export default create({
       let el = element && !element.contains(event.target);
 
       if (props.targetId) {
-        const dom = document.querySelector(`#${props.targetId}`);
+        const dom: any = document.querySelector(`#${props.targetId}`);
         el = dom && !dom.contains(event.target);
       }
       if (el && elContent && !elContent.contains(event.target) && props.closeOnClickOutside) {

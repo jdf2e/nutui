@@ -28,7 +28,7 @@
     <div class="elevator-wrapper">
       <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex">
         <template v-slot:default="slotProps">
-          <nut-icon name="JD" size="12"></nut-icon>
+          <Jd width="12px"></Jd>
           <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
         </template>
       </nut-elevator>
@@ -41,6 +41,7 @@ import { computed, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('elevator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Jd } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -137,6 +138,9 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: {
+    Jd
+  },
   setup() {
     initTranslate();
     const state = reactive({

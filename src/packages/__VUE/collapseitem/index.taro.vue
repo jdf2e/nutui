@@ -20,7 +20,7 @@
         :class="['nut-collapse-item__title-icon', { 'nut-collapse-item__title-icon--expanded': openExpanded }]"
         :style="{ transform: 'rotate(' + (openExpanded ? rotate : 0) + 'deg)' }"
       >
-        <component :is="renderIcon(icon)"></component>
+        <component v-if="icon" :is="renderIcon(icon)"></component>
       </view>
     </view>
     <view v-if="$slots.extraRender" class="nut-collapse__item-extraWrapper">

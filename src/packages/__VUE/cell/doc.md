@@ -163,8 +163,21 @@ app.use(CellGroup);
 
 ```html
 <template>
-  <nut-cell title="姓名" desc="张三"></nut-cell>
+  <nut-cell title="姓名" desc="张三">
+    <template v-slot:icon>
+        <My />
+      </template>
+  </nut-cell>
 </template>
+<script lang="ts">
+import { My } from '@nutui/icons-vue';
+export default {
+  components: { My },
+  setup() {
+    return { My };
+  }
+};
+</script>
 ```
 
 :::
