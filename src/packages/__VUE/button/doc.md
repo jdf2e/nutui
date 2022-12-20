@@ -198,10 +198,14 @@ app.use(Button);
 | plain    | 是否为朴素按钮                                               | Boolean | `false`   |
 | disabled | 是否禁用按钮                                                 | Boolean | `false`   |
 | block    | 是否为块级元素                                               | Boolean | `false`   |
-| icon     | 按钮图标，同 Icon 组件 name 属性                             | String  | -         |
-| icon-font-class-name`v3.1.17` | 自定义 icon 字体基础类名                         | String | `nutui-iconfont` |
-| icon-class-prefix `v3.1.17`   | 自定义 icon 类名前缀，用于使用自定义图标           | String | `nut-icon`       |
 | loading  | 按钮 loading 状态                                            | Boolean | `false`   |
+
+### Slots
+
+| 名称 | 说明 |
+|-|-|
+| default | 按钮内容 |
+| icon | 按钮图标 |
 
 ### Events
 

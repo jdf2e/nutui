@@ -199,9 +199,6 @@ The color of the button can be customized through the color property.
 | plain    | Whether to be plain button     | Boolean | `false`   |
 | disabled | Whether to disable button         | Boolean | `false`   |
 | block    | Whether to set display block      | Boolean | `false`   |
-| icon     | Left Icon                     | String  | -         |
-| icon-font-class-name`v3.1.17` | Custom icon font base class name    | String | `nutui-iconfont` |
-| icon-class-prefix `v3.1.17`   | Custom icon class name prefix for using custom icons           | String | `nut-icon`       |
 | loading  | Whether to show loading status     | Boolean | `false`   |
 
 ### Events
