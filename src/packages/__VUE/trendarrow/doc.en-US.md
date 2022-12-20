@@ -36,8 +36,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow :rate="10.2365"/>
-      <nut-trend-arrow :rate="-0.2535"/>
+    <nut-trend-arrow :rate="10.2365"/>
+    <nut-trend-arrow :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -50,8 +50,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow :digits="0" :rate="10.2365"/>
-      <nut-trend-arrow :digits="0" :rate="-0.2535"/>
+    <nut-trend-arrow :digits="0" :rate="10.2365"/>
+    <nut-trend-arrow :digits="0" :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -64,8 +64,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow arrowLeft :rate="0.2535"/>
-      <nut-trend-arrow arrowLeft :rate="-0.2535"/>
+    <nut-trend-arrow arrowLeft :rate="0.2535"/>
+    <nut-trend-arrow arrowLeft :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -78,8 +78,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow showSign :rate="1"/>
-      <nut-trend-arrow showSign :rate="-0.2535"/>
+    <nut-trend-arrow showSign :rate="1"/>
+    <nut-trend-arrow showSign :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -92,8 +92,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow showSign :rate="0"/>
-      <nut-trend-arrow showSign showZero :rate="0"/>
+    <nut-trend-arrow showSign :rate="0"/>
+    <nut-trend-arrow showSign showZero :rate="0"/>
   </nut-cell>
 </template>
 ```
@@ -106,21 +106,39 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-      <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)"/>
-      <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)"/>
-      <nut-trend-arrow
-        :show-text-color="false"
-        showSign
-        :rate="-0.2535"
-        text-color="rgb(39,197,48)"
-        drop-color="rgb(255, 190, 13)"
-      />
+    <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)"/>
+    <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)"/>
+    <nut-trend-arrow
+      :show-text-color="false"
+      showSign
+      :rate="-0.2535"
+      text-color="rgb(39,197,48)"
+      drop-color="rgb(255, 190, 13)"
+    />
   </nut-cell>
 </template>
 ```
 
 :::
 
+### Custom icon
+
+::: demo
+
+```html
+<template>
+  <nut-cell>
+    <nut-trend-arrow :rate="10.2365">
+      <template #upIcon><Success color="blue" width="18" height="18" /></template>
+    </nut-trend-arrow>
+    <nut-trend-arrow :rate="-10.2365">
+      <template #downIcon><Failure color="red" /></template>
+    </nut-trend-arrow>
+  </nut-cell>
+</template>
+```
+
+:::
 ## API
 
 ### Props
@@ -136,12 +154,10 @@ app.use(TrendArrow);
 | text-color        | text color               | String | '#333333'               |
 | rise-color         | up arrow color               | String | '#fa2c19'               |
 | drop-color         | down arrow color               | String | ‘#64b578’               |
-| icon-size         | arrow size               | String | '12px'               |
-| up-icon-name         | custom up arrow icon               | String | 'triangle-up'               |
-| down-icon-name         | custom down arrow icon               | String | 'triangle-down'               |
 
 ### Slots
 
 | Name    | Description         |
 |---------|--------------|
-| default | 	The default slot is used to customize the icon |
+| upIcon | custom up icon |
+| downIcon | custom down icon |

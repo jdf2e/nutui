@@ -858,5 +858,6 @@ $invoice-padding: var(--nut-invoice-padding) !default;
 // TrendArrow
 $trendarrow-font-size: var(--nut-trendarrow-font-size) !default;
 $trendarrow-before-icon-margin: var(--nut-trendarrow-before-icon-margin) !default;
+$trendarrow-icon-width: var(--nut-trendarrow-icon-width) !default;
 
 @import './mixins/index';
