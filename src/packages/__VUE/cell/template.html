@@ -1,6 +1,6 @@
 <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
-        <view class="nut-cell__icon" v-if="icon || $slots.icon">
+        <view class="nut-cell__icon" v-if="$slots.icon">
             <slot name="icon"></slot>
         </view>
         <view class="nut-cell__title" v-if="title || subTitle || $slots.title">
