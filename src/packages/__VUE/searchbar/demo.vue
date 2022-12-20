@@ -10,7 +10,7 @@
     <h2>{{ translate('basic3') }}</h2>
     <nut-searchbar v-model="searchValue2" @click-left-icon="clickLeftIcon">
       <template v-slot:leftin>
-        <nut-icon size="14" name="search2"></nut-icon>
+        <Search2 />
       </template>
     </nut-searchbar>
 
@@ -28,21 +28,25 @@
     </nut-searchbar>
 
     <h2>{{ translate('basic7') }}</h2>
-    <nut-searchbar v-model="searchValue6" :clear-icon="icon"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue6">
+      <template v-slot:clearIcon>
+        <img :src="icon" style="width: 10px; height: 10px" />
+      </template>
+    </nut-searchbar>
 
     <h2>{{ translate('basic6') }}</h2>
     <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
       <template v-slot:leftout>
-        <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+        <Left @click="clickLeft" />
       </template>
       <template v-slot:leftin>
-        <nut-icon size="14" name="search2"></nut-icon>
+        <Search2 />
       </template>
       <template v-slot:rightin>
-        <nut-icon size="20" name="photograph"></nut-icon>
+        <Photograph />
       </template>
       <template v-slot:rightout>
-        <nut-icon size="20" name="message"></nut-icon>
+        <Message />
       </template>
     </nut-searchbar>
   </div>
@@ -52,6 +56,7 @@
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
+import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -82,6 +87,7 @@ const initTranslate = () =>
   });
 export default createDemo({
   props: {},
+  components: { Search2, Left, Photograph, Message },
   setup() {
     const icon =
       'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
