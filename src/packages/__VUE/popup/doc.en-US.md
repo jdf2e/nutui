@@ -248,4 +248,4 @@ Specify the mount node through `teleport`
 | Name | Description       |
 | ------ | ---------- |
 | default  | Customize Embedded Content |
-| closeIcon  | 关闭按钮的自定义图标 |
+| closeIcon  | Custom icon for close button |
