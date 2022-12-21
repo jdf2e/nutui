@@ -9,10 +9,7 @@ For quick layout
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Layout,Row,Col } from '@nutui/nutui';
-// taro
-import { Layout,Row,Col } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Layout);

@@ -1,92 +1,135 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-row type="flex">
-      <nut-col :span="8">
-        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
-          <template #reference>
-            <nut-button type="primary" shape="square">明朗风格</nut-button>
-          </template>
-        </nut-popover>
-      </nut-col>
-      <nut-col :span="8">
-        <nut-popover v-model:visible="darkTheme" theme="dark" :list="iconItemList">
-          <template #reference>
-            <nut-button type="primary" shape="square">暗黑风格</nut-button>
-          </template>
-        </nut-popover>
-      </nut-col>
-    </nut-row>
+    <nut-cell title="点击试试" @click="showTour3 = true">
+      <template v-slot:link>
+        <nut-switch id="target7" />
+      </template>
+    </nut-cell>
 
-    <h2>选项配置</h2>
-    <nut-row type="flex">
-      <nut-col :span="8">
-        <nut-popover v-model:visible="showIcon" theme="dark" :list="itemList">
-          <template #reference>
-            <nut-button type="primary" shape="square">展示图标</nut-button>
-          </template>
-        </nut-popover>
-      </nut-col>
-      <nut-col :span="8">
-        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="bottom-end">
-          <template #reference>
-            <nut-button type="primary" shape="square">禁用选项</nut-button>
-          </template>
-        </nut-popover>
-      </nut-col>
-    </nut-row>
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour3"
+      :steps="steps3"
+      type="tile"
+      location="bottom-end"
+    ></nut-tour>
+
+    <h2>自定义样式</h2>
+
+    <nut-cell title="点击试试" @click="showTourHandle">
+      <template v-slot:link>
+        <nut-switch id="target5" />
+      </template>
+    </nut-cell>
+
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
+      v-model:visible="showTour1"
+      :steps="steps1"
+      location="bottom-end"
+      type="tile"
+      bgColor="#f00"
+      theme="dark"
+      :offset="[0, 0]"
+      maskWidth="50"
+      maskHeight="50"
+    ></nut-tour>
+
+    <h2>设置偏移量</h2>
+
+    <nut-cell title="点击试试" @click="showTour2 = true">
+      <template v-slot:link>
+        <div class="tour-demo-img">
+          <img
+            id="target6"
+            src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+            alt=""
+          />
+          <img
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/31842/40/20385/1762/63998e3eE594254bb/98ff51da635ead4a.png"
+            alt=""
+          />
+          <img src="https://storage.jd.com/oss-dev/test/3.2.6/Jdweapp.png" alt="" />
+        </div>
+      </template>
+    </nut-cell>
+
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour2"
+      :steps="steps2"
+      type="tile"
+      bgColor="#f00"
+      theme="dark"
+      location="bottom-end"
+      :offset="[8, 8]"
+    ></nut-tour>
 
     <h2>自定义内容</h2>
-    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
-      <template #reference>
-        <nut-button type="primary" shape="square">自定义内容</nut-button>
-      </template>
 
-      <template #content>
-        <div class="self-content">
-          <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <nut-icon :name="item.name" size="15"></nut-icon>
-            <div class="self-content-desc">{{ item.desc }}</div>
-          </div>
-        </div>
+    <nut-cell title="点击试试" @click="showTour4 = true">
+      <template v-slot:link>
+        <nut-switch id="target8" />
       </template>
-    </nut-popover>
+    </nut-cell>
 
-    <h2>位置自定义</h2>
-    <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-picker v-model:visible="showPicker" :columns="columns" title="" @change="change" :swipe-duration="500">
-      <template #top>
-        <div class="brickBox">
-          <div class="brick" id="pickerTarget"></div>
-        </div>
-      </template>
-    </nut-picker>
-
-    <nut-popover
-      v-model:visible="customPositon"
-      targetId="pickerTarget"
-      :location="curPostion"
+    <nut-tour
+      class="nut-custom-tour nut-customword-tour"
+      v-model:visible="showTour4"
+      :steps="steps4"
+      type="tile"
       theme="dark"
-      :list="positionList"
+      location="bottom-end"
+      :offset="[8, 8]"
     >
-    </nut-popover>
+      <view class="tour-demo-custom-content">
+        <view>nutui 4.x 即将发布，敬请期待</view>
+        <nut-divider direction="vertical" />
+        <view @click="showTour4 = false">知道了</view>
+      </view>
+    </nut-tour>
 
-    <h2>自定义对象</h2>
-    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle"> 自定义对象 </nut-button>
-    <nut-popover
-      v-model:visible="customTarget"
-      targetId="popid"
-      :list="iconItemList"
-      location="top-start"
-    ></nut-popover>
+    <!-- <h2>步骤</h2> -->
 
-    <h2>自定义颜色</h2>
+    <!-- <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
-    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
-      <template #reference>
-        <nut-button type="primary" shape="square">自定义颜色</nut-button>
-      </template>
-    </nut-popover>
+    <nut-tabbar>
+      <nut-tabbar-item
+        id="target1"
+        tab-title="首页"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png"
+      ></nut-tabbar-item>
+      <nut-tabbar-item
+        id="target2"
+        tab-title="首页"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/202062/32/25149/5246/62e7c353E5a51db17/b82b940e6eb22ec3.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/162634/35/26732/5502/62e747a8E5330f029/3ea00a0c140beb38.png"
+      ></nut-tabbar-item>
+      <nut-tabbar-item
+        id="target3"
+        tab-title="首页"
+        img="https://img12.360buyimg.com/imagetools/jfs/t1/60552/28/20576/5585/62e7c2ddE2e0b48a7/70eefb366b85f3e4.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/138362/15/28011/5802/62e747a4E4139ef2f/9a79a1c0f6a273b4.png"
+      ></nut-tabbar-item>
+      <nut-tabbar-item
+        id="target4"
+        tab-title="首页"
+        img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
+        activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
+      ></nut-tabbar-item>
+    </nut-tabbar> -->
+
+    <!-- <nut-tour
+      class="nut-customword-tour"
+      v-model:visible="showTour"
+      :steps="steps"
+      location="bottom-start"
+      :offset="[0, 0]"
+      maskWidth="50"
+      maskHeight="50"
+    ></nut-tour> -->
   </div>
 </template>
 <script lang="ts">
@@ -95,210 +138,141 @@ import { reactive, ref, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      showIcon: false,
-      placement: false,
-      darkTheme: false,
-      lightTheme: false,
-      Customized: false,
-      disableAction: false,
-      topLocation: false, //向上弹出
-      rightLocation: false, //向右弹出
-      leftLocation: false, //向左弹出
-      customPositon: false,
+      showTour: false,
+      showTour1: false,
+      showTour2: false,
+      showTour3: false,
+      showTour4: false,
+      offset: [-3, -8],
+      steps: [
+        {
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          target: 'target1'
+        },
+        {
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          target: 'target2'
+        },
+        {
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          target: 'target3',
+          location: 'top-end'
+        },
+        {
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          target: 'target4',
+          location: 'top-end'
+        }
+      ],
 
-      showPicker: false,
-      customTarget: false,
-      customColor: false
+      steps1: [
+        {
+          content: '邀请有礼，全新改版，奖励多多哦',
+          target: 'target5'
+        }
+      ],
+
+      steps2: [
+        {
+          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          target: 'target6',
+          popoverOffset: [40, 12],
+          arrowOffset: -36
+        }
+      ],
+
+      steps3: [
+        {
+          content: '邀请有礼，全新改版，奖励多多哦',
+          target: 'target7'
+        }
+      ],
+
+      steps4: [
+        {
+          target: 'target8'
+        }
+      ],
+
+      type: 'normal'
     });
-    const curPostion = ref('top');
 
-    const columns = ref([
-      { text: 'top', value: 'top' },
-      { text: 'top-start', value: 'top-start' },
-      { text: 'top-end', value: 'top-end' },
-      { text: 'right', value: 'right' },
-      { text: 'right-start', value: 'right-start' },
-      { text: 'right-end', value: 'right-end' },
-      { text: 'bottom', value: 'bottom' },
-      { text: 'bottom-start', value: 'bottom-start' },
-      { text: 'bottom-end', value: 'bottom-end' },
-      { text: 'left', value: 'left' },
-      { text: 'left-start', value: 'left-start' },
-      { text: 'left-end', value: 'left-end' }
-    ]);
+    // setTimeout(() => {
+    //   state.showTour = true;
+    // }, 1000);
 
-    const iconItemList = reactive([
-      {
-        name: 'option1'
-      },
-      {
-        name: 'option2'
-      },
-      {
-        name: 'option3'
-      }
-    ]);
-
-    const positionList = reactive([
-      {
-        name: 'option1'
-      },
-      {
-        name: 'option2'
-      }
-    ]);
-
-    const itemList = reactive([
-      {
-        name: 'option1',
-        icon: 'my2'
-      },
-      {
-        name: 'option2',
-        icon: 'cart2'
-      },
-      {
-        name: 'option3',
-        icon: 'location2'
-      }
-    ]);
-
-    const itemListDisabled = reactive([
-      {
-        name: 'option1',
-        disabled: true
-      },
-      {
-        name: 'option2',
-        disabled: true
-      },
-      {
-        name: 'option3'
-      }
-    ]);
-
-    const selfContent = reactive([
-      {
-        name: 'service',
-        desc: 'option1'
-      },
-      {
-        name: 'notice',
-        desc: 'option2'
-      },
-      {
-        name: 'location',
-        desc: 'option3'
-      },
-      {
-        name: 'category',
-        desc: 'option4'
-      },
-      {
-        name: 'scan2',
-        desc: 'option5'
-      },
-      {
-        name: 'message',
-        desc: 'option6'
-      }
-    ]);
-
-    const chooseItem = (item: unknown, index: number) => {
-      console.log(item, index);
-    };
-
-    const handlePicker = () => {
-      state.showPicker = true;
-      setTimeout(() => {
-        state.customPositon = true;
-      }, 500);
-    };
-
-    const change = ({ selectedValue }) => {
-      curPostion.value = selectedValue[0];
-      if (state.showPicker) state.customPositon = true;
-    };
-
-    const clickCustomHandle = () => {
-      state.customTarget = !state.customTarget;
+    const showTourHandle = () => {
+      state.showTour1 = true;
     };
 
     return {
-      iconItemList,
-      itemList,
       ...toRefs(state),
-      itemListDisabled,
-      selfContent,
-      chooseItem,
-      curPostion,
-      positionList,
-      columns,
-      change,
-      handlePicker,
-      clickCustomHandle
+      showTourHandle
     };
   }
 };
 </script>
 <style lang="scss">
-.demo > h2 {
-  padding: 0;
-}
-.brickBox {
-  margin: 80px 0;
-  display: flex;
-  justify-content: center;
-  .brick {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
-    border-radius: 10px;
-  }
-}
-
-.radiogroup {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  padding: 10px 6px;
-
-  > .nut-radio {
-    width: 110px;
-
-    > .nut-radio__button {
-      padding: 5px 12px;
-      border: 1px solid #f6f7f9;
-    }
-  }
-}
-
-.nut-popover-content {
-  width: 120px;
-}
-
-.customClass {
+.nut-custom-tour {
   .nut-popover-content {
-    width: auto;
+    width: auto !important;
   }
-  .self-content {
-    width: 195px;
+}
+
+.nut-customword-tour {
+  .nut-tour-content-inner {
+    width: max-content;
+  }
+}
+
+.index-header {
+  display: flex;
+  align-items: center;
+  height: 117px;
+  > img {
+    width: 67px;
+    height: 67px;
+    margin-right: 18px;
+    flex-shrink: 0;
+  }
+  .info {
     display: flex;
-    flex-wrap: wrap;
-    &-item {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    flex-direction: column;
+    h1 {
+      margin: 0;
+      height: 48px;
+      font-size: 34px;
+      color: rgba(51, 51, 51, 1);
     }
-    &-desc {
-      margin-top: 5px;
-      width: 60px;
-      font-size: 10px;
-      text-align: center;
+    p {
+      height: 18px;
+      font-size: 12px;
+      color: rgba(154, 155, 157, 1);
     }
+  }
+}
+
+.nut-customstyle-tour {
+  .nut-tour-mask {
+    border-radius: 50%;
+  }
+}
+
+.tour-demo-img {
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+.tour-demo-custom-content {
+  padding: 8px;
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  .nut-divider {
+    border-color: #fff;
   }
 }
 </style>

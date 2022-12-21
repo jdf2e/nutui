@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, ref } from 'vue';
-import { Retweet } from '@nutui/icons-vue';
+import { Retweet } from '@nutui/icons-vue-taro';
 export default {
   props: {},
   components: { Retweet },

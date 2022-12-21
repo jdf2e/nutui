@@ -8,10 +8,7 @@ In normal list show and pull-up loading, we usually use the [InfiniteLoading](#/
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { List } from '@nutui/nutui';
-// taro
-import { List } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use();

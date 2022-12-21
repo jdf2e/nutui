@@ -78,7 +78,7 @@ import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
-import { isArray } from '@vue/shared';
+import { isArray } from '@/packages/utils/util';
 const { componentName, create } = createComponent('range');
 
 export default create({

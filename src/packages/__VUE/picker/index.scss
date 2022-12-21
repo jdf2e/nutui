@@ -19,7 +19,6 @@
         linear-gradient(0deg, rgba(27, 27, 27, 0.9), rgba(27, 27, 27, 0.4));
       background-repeat: no-repeat;
       background-position: top, bottom;
-      background-size: 100% 108px;
       z-index: 1;
     }
 
@@ -32,10 +31,13 @@
   }
 }
 .nut-picker {
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
   // 标题
   &__bar {
     display: flex;
-    height: 56px;
+    height: 46px;
     align-items: center;
     justify-content: space-between;
   }
@@ -66,17 +68,18 @@
   &__column {
     display: flex;
     position: relative;
-    height: 252px;
 
     &::before {
       content: '';
       position: absolute;
-      top: 108px;
-      height: 34px;
+      top: 50%;
+      height: var(--lineHeight);
       width: 100%;
       border: $picker-item-active-line-border;
       border-left: 0;
       border-right: 0;
+      transform: scale(0.9);
+      transform: translateY(-50%);
     }
   }
   &__columnitem {
@@ -97,18 +100,12 @@
   &__wrapper {
     display: block;
   }
-  &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 35px;
-  }
 
   &__list {
     position: relative;
     display: block;
     width: 100%;
-    height: 252px;
+    height: 100%;
     overflow: hidden;
     text-align: center;
     -webkit-overflow-scrolling: touch;
@@ -117,11 +114,12 @@
   &-roller {
     display: block;
     position: absolute;
-    top: 108px;
+    top: 50%;
     width: 100%;
-    height: $picker-item-height;
+    height: var(--lineHeight);
     z-index: 1;
     transform-style: preserve-3d;
+    transform: translateY(-50%);
 
     &-item {
       display: block;
@@ -146,10 +144,10 @@
     }
 
     &-item-tile {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      height: $picker-item-height;
-      line-height: $picker-item-height;
       color: $picker-item-text-color;
       font-size: $picker-item-text-font-size;
 
@@ -182,35 +180,6 @@
       linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
     background-repeat: no-repeat;
     background-position: top, bottom;
-    background-size: 100% 108px;
     z-index: 1;
-  }
-
-  &-content {
-    display: block;
-    position: absolute;
-    top: 108px;
-    width: 100%;
-    height: $picker-item-height;
-    color: $picker-item-active-text-color;
-    z-index: 2;
-    overflow: hidden;
-    border-left: 0;
-    border-right: 0;
-  }
-  &-list-panel {
-    display: block;
-    transform-style: preserve-3d;
-  }
-  &-item {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: $picker-item-height;
-    line-height: $picker-item-height;
-    text-align: center;
-    font-size: 16px;
-    color: $picker-columns-item-color;
   }
 }

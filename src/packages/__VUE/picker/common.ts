@@ -1,67 +1,25 @@
-import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
+import { ref, onMounted, reactive, watch, computed, CSSProperties, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('picker');
+const { translate } = createComponent('picker');
 import { usePicker } from './usePicker';
-import { popupProps } from '../popup/props';
 import column from './Column.vue';
-import Taro from '@tarojs/taro';
-
-export interface PickerOption {
-  text: string | number;
-  value: string | number;
-  disabled?: string;
-  children?: PickerOption[];
-  className?: string | number;
-}
+import Taro, { nextTick } from '@tarojs/taro';
+import baseProps from './baseProps';
 
 export const componentWeb = {
   components: {
     [column.name]: column
   },
-  props: {
-    ...popupProps,
-    modelValue: {
-      type: Array as PropType<(string | number)[]>,
-      default: () => []
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    cancelText: {
-      type: String,
-      default: ''
-    },
-    okText: {
-      type: String,
-      default: ''
-    },
-    columns: {
-      type: Array as PropType<(PickerOption | PickerOption[])[]>,
-      default: () => {
-        return [];
-      }
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    threeDimensional: {
-      type: Boolean,
-      default: true
-    },
-    swipeDuration: {
-      type: [Number, String],
-      default: 1000
-    }
-  },
-  emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
+  props: baseProps,
+  emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, selectedOptions, columnsType, classes, close } =
+    const { changeHandler, confirm, defaultValues, columnsList, selectedOptions, columnsType, classes, cancel } =
       usePicker(props, emit);
 
-    const state = reactive({
-      show: false,
+    const state = reactive<{
+      ENV: TaroGeneral.ENV_TYPE;
+      ENV_TYPE: Taro.TARO_ENV_TYPE;
+    }>({
       ENV: Taro.getEnv(),
       ENV_TYPE: Taro.ENV_TYPE
     });
@@ -83,23 +41,12 @@ export const componentWeb = {
       confirm();
     };
 
-    onMounted(() => {
-      if (props.visible) state.show = props.visible;
+    const columnStyle = computed(() => {
+      const styles: CSSProperties = {};
+      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
+      styles['--lineHeight'] = `${+props.optionHeight}px`;
+      return styles;
     });
-
-    onBeforeUnmount(() => {
-      if (props.visible) state.show = false;
-    });
-
-    watch(
-      () => props.visible,
-      (val) => {
-        state.show = val;
-        if (val) {
-          pickerColumn.value = [];
-        }
-      }
-    );
 
     return {
       classes,
@@ -107,13 +54,14 @@ export const componentWeb = {
       column,
       columnsType,
       columnsList,
-      close,
+      cancel,
       changeHandler,
       confirmHandler,
       defaultValues,
       pickerColumn,
       swipeRef,
-      translate
+      translate,
+      columnStyle
     };
   }
 };
@@ -122,58 +70,13 @@ export const componentWeapp = {
   components: {
     [column.name]: column
   },
-  props: {
-    ...popupProps,
-    modelValue: {
-      type: Array as PropType<(string | number)[]>,
-      default: []
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    cancelText: {
-      type: String,
-      default: ''
-    },
-    okText: {
-      type: String,
-      default: ''
-    },
-    columns: {
-      type: Array,
-      default: () => {
-        return [];
-      }
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    // 是否开启3D效果
-    threeDimensional: {
-      type: Boolean,
-      default: true
-    },
-    // 惯性滚动 时长
-    swipeDuration: {
-      type: [Number, String],
-      default: 1000
-    }
-  },
-  emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
+  props: baseProps,
+  emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const {
-      changeHandler,
-      confirm,
-      defaultValues,
-      columnsList,
-      selectedOptions,
-      isSameValue,
-      columnsType,
-      classes,
-      close
-    } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, isSameValue, columnsType, classes, cancel } = usePicker(
+      props,
+      emit
+    );
     const state = reactive({
       show: false,
       picking: false,
@@ -183,6 +86,13 @@ export const componentWeapp = {
 
     // 选中项的位置  taro
     let defaultIndexes = ref<number[]>([]);
+
+    const pickerViewStyles = computed(() => {
+      const styles: CSSProperties = {};
+      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
+      styles['--lineHeight'] = `${+props.optionHeight}px`;
+      return styles;
+    });
 
     const defaultValuesConvert = () => {
       let defaultIndexs: number[] = [];
@@ -214,27 +124,20 @@ export const componentWeapp = {
         if (prevDefaultValue[index] != col) changeIndex = index;
       });
 
-      if (state.show) {
-        defaultIndexes.value = data.detail.value;
-        // 选择的是哪个 option
-        changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
-      }
+      defaultIndexes.value = data.detail.value;
+      // 选择的是哪个 option
+      changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
     };
 
     // 确定
     const confirmHandler = () => {
       if (state.picking) {
         setTimeout(() => {
-          confirmHandlerAwit();
+          confirm();
         }, 0);
       } else {
-        confirmHandlerAwit();
+        confirm();
       }
-    };
-
-    const confirmHandlerAwit = () => {
-      confirm();
-      state.show = false;
     };
 
     // 开始滚动
@@ -247,34 +150,21 @@ export const componentWeapp = {
     };
 
     onMounted(() => {
-      if (props.visible) {
+      if (defaultValues.value.length > 0) {
         defaultIndexes.value = defaultValuesConvert();
-        state.show = props.visible;
       }
-    });
-
-    onBeforeUnmount(() => {
-      if (props.visible) state.show = false;
     });
 
     watch(
       () => props.modelValue,
       (newValues) => {
         if (!isSameValue(newValues, defaultValues.value)) {
-          defaultIndexes.value = defaultValuesConvert();
+          setTimeout(() => {
+            defaultIndexes.value = defaultValuesConvert();
+          }, 100);
         }
       },
       { deep: true }
-    );
-
-    watch(
-      () => props.visible,
-      (val) => {
-        state.show = val;
-        if (val) {
-          defaultIndexes.value = defaultValuesConvert();
-        }
-      }
     );
 
     return {
@@ -283,7 +173,7 @@ export const componentWeapp = {
       column,
       columnsType,
       columnsList,
-      close,
+      cancel,
       changeHandler,
       confirmHandler,
       defaultValues,
@@ -291,7 +181,8 @@ export const componentWeapp = {
       tileChange,
       handlePickstart,
       translate,
-      handlePickend
+      handlePickend,
+      pickerViewStyles
     };
   }
 };

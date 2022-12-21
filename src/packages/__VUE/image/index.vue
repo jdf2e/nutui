@@ -3,12 +3,11 @@
     <img class="nut-img" :src="src" :alt="alt" @load="load" @error="error" :style="styles" />
 
     <view class="nut-img-loading" v-if="loading">
-      <nut-icon name="image" v-if="!slotLoding"></nut-icon>
+      <Image v-if="!slotLoding" width="16px" height="20px" name="image"></Image>
       <slot name="loading"></slot>
     </view>
-
     <view class="nut-img-error" v-if="isError && !loading">
-      <nut-icon name="image-error" v-if="!slotError"></nut-icon>
+      <ImageError v-if="!slotError" width="16px" height="20px" name="imageError"></ImageError>
       <slot name="error"></slot>
     </view>
   </view>
@@ -17,6 +16,7 @@
 import { reactive, toRefs, computed, PropType, useSlots, watch, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '../../utils/pxCheck';
+import { Image, ImageError } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('image');
 export default create({
   props: {
@@ -54,6 +54,10 @@ export default create({
       type: Boolean,
       default: true
     }
+  },
+  components: {
+    Image,
+    ImageError
   },
   emits: ['click', 'load', 'error'],
 

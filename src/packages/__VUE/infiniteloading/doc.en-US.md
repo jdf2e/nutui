@@ -8,11 +8,10 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading,Icon } from '@nutui/nutui';
+  import { InfiniteLoading } from '@nutui/nutui';
 
   const app = createApp();
   app.use(InfiniteLoading);
-  app.use(Icon);
 ```
 
 ### Basic Usage
@@ -108,7 +107,6 @@ Scrolling to the bottom of the list automatically loads more data.
 | threshold        | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold   | Number  | `200`            |
 | use-capture      | Whether to use capture mode                                                                                        | Boolean | `false`          |
 | load-more-txt    | "No more" text                                                                                                     | String  | 'Oops, this is the bottom'|
-| load-icon        | Pull on loading[图标名称](#/zh-CN/component/icon)                                                                                    | String | ''    |
 | load-txt         | Pull on loading text                                                                                                | String  | `Loading...`      |
 
 ### Events
@@ -122,5 +120,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 | Attribute | Description  | 
 |--------|----------------|
+| default  | Custom content |
 | loading  | Loading text |
+| loadingIcon  | Custom loading icon |
 | finished  | Finished text |

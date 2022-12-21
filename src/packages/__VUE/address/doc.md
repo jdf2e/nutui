@@ -2,16 +2,13 @@
 
 ### 介绍
 
-请加载对应依赖组件 Icon Popup Elevator
+请加载对应依赖组件 Popup Elevator
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Address, Popup, Elevator } from '@nutui/nutui';
-//taro
-import { Address, Popup, Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);
@@ -77,7 +74,6 @@ app.use(Elevator);
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
         };
 
@@ -150,7 +146,6 @@ app.use(Elevator);
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
           value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
         };
@@ -222,7 +217,6 @@ app.use(Elevator);
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
         };
 
@@ -328,10 +322,13 @@ app.use(Elevator);
       @close="close"
       :is-show-custom-address="false"
       @selected="selected3"
-      :default-icon="defaultIcon"
-      :selected-icon="selectedIcon"
-      :close-btn-icon="closeBtnIcon"
   >
+    <template #unselectedIcon>
+      <Heart1 style="margin-right:8px"></Heart1>
+    </template>
+    <template #icon>
+      <HeartFill style="margin-right:8px" color="#f00"></HeartFill>
+    </template>
     <template #bottom>
         <div class="nut-address-custom-buttom">
           <div class="btn">自定义按钮</div>
@@ -341,15 +338,11 @@ app.use(Elevator);
 </template>
 <script>
   import { ref,reactive,toRefs } from 'vue';
+  import { HeartFill, Heart1} from '@nutui/icons-vue';
   export default {
+    components:{HeartFill, Heart1 },
     setup() {
         const showPopupCustomImg = ref(false);
-        const icon = reactive({
-          selectedIcon: 'heart-fill',
-          defaultIcon: 'heart1',
-          closeBtnIcon: 'close',
-          backBtnIcon: 'left'
-        });
         const existAddress = ref([
           {
             id: 1,
@@ -406,7 +399,7 @@ app.use(Elevator);
           console.log(nowExistAdd);
         };
 
-        return { showPopupCustomImg, existAddress, text, showCustomImg, close, selected, ...toRefs(icon) };
+        return { showPopupCustomImg, existAddress, text, showCustomImg, close, selected };
     }
   }
 </script>
@@ -444,7 +437,6 @@ app.use(Elevator);
       :city="city"
       :country="country"
       :town="town"
-      :back-btn-icon="backBtnIcon"
       @close="close"
       @selected="selected"
       custom-and-exist-title="选择其他地址"
@@ -554,27 +546,22 @@ app.use(Elevator);
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| v-model:visible | 是否打开地址选择 | String | ''
-| type | 地址选择类型 exist/custom/custom2  | String | 'custom'
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px'
-| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
-| default-icon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | ''
-| selected-icon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | ''
-| close-btn-icon | 自定义关闭弹框按钮图标 | string | -
-| back-btn-icon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | String | -
-| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
-| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区'
-| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
-| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
-| columns-placeholder | 列提示文字 | String|Array | '请选择'
-| lock-scroll  | 背景是否锁定      | Boolean        | `true`       
-
+| 字段 | 说明 | 类型 | 默认值 |
+|----- | ----- | ----- | ----- |
+| v-model:visible | 是否打开地址选择 | String | '' |
+| type | 地址选择类型 exist/custom/custom2  | String | 'custom' |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px' |
+| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
+| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true |
+| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区' |
+| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至' |
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址' |
+| columns-placeholder | 列提示文字 | String|Array | '请选择' |
+| lock-scroll  | 背景是否锁定      | Boolean        | `true`  |
 
   * provinceName 省的名字
   * cityName 市的名字
@@ -584,36 +571,40 @@ app.use(Elevator);
   * selectedAddress 字段用于判断当前地址列表的选中项。
 
 ### Events
-| 字段 | 说明 | 回调参数 
-|----- | ----- | ----- 
-| change | 自定义选择地址时，选择地区时触发 |  参考 onChange
-| selected | 选择已有地址列表时触发 | 参考 selected
-| close | 地址选择弹框关闭时触发 | 参考 close
-| close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
-| switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'}
+| 字段 | 说明 | 回调参数  |
+|----- | ----- | ----- |
+| change | 自定义选择地址时，选择地区时触发 |  参考 onChange |
+| selected | 选择已有地址列表时触发 | 参考 selected |
+| close | 地址选择弹框关闭时触发 | 参考 close |
+| close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
+| switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
 
 
 ### change 回调参数
-| 参数 | 说明 | 可能值 
-|----- | ----- | ----- 
-| custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡)
-| next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡)
-| value | 当前点击的行政区域的值（返回传入的值） | {}
+| 参数 | 说明 | 可选值 |
+|----- | ----- | ----- |
+| custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡) |
+| next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡) |
+| value | 当前点击的行政区域的值（返回传入的值） | {} |
 
 ### selected 回调参数
-| 参数 | 说明 | 可能值 
-|----- | ----- | ----- 
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  {}
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  {}
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {}
+| 参数 | 说明 | 可能值 |
+|----- | ----- | ----- |
+| 第一个参数（prevExistAdd） |  选择前选中的地址 |  {} |
+| 第二个参数（nowExistAdd） |  当前选中的地址 |  {} |
+| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {} |
 
 ### close 回调参数
-| 参数 | 说明 | 可能值 
-|----- | ----- | ----- 
-| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
+| 参数 | 说明 | 可能值 |
+|----- | ----- | ----- |
+| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
+| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {}  |
 
 ### Slots
 | 字段 | 说明 | 
 |----- | ----- |  
-| bottom `3.1.23` | 可自定义底部 |  
+| bottom | 可自定义底部 |  
+| icon | 自定义选中项的图标 |  
+| unselectedIcon | 未选中地址时的图标 |  
+| closeIcon | 关闭弹层的图标 |  
+| backIcon | 自定义地址与已有地址切换时返回的图标 |  

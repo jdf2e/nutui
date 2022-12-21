@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-collapse v-model:active="active1" icon="down-arrow" @change="change">
+    <nut-collapse v-model:active="active1" @change="change">
       <nut-collapse-item :name="1">
         <template v-slot:mTitle>
           {{ translate('title1') }}
@@ -13,17 +13,17 @@
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title3')" :name="3" disabled> </nut-collapse-item>
     </nut-collapse>
-    <h2>{{ translate('basic2') }}</h2>
+    <!-- <h2>{{ translate('basic2') }}</h2>
     <nut-collapse v-model:active="active4" :accordion="true" @change="change">
       <nut-collapse-item :title="translate('title1')" :name="1">
         {{ translate('desc3') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2"> {{ translate('desc4') }} </nut-collapse-item>
-    </nut-collapse>
+    </nut-collapse> -->
     <h2>{{ translate('basic3') }}</h2>
-    <nut-collapse v-model:active="active2" :accordion="true" icon="down-arrow">
+    <nut-collapse v-model:active="active2" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1"> {{ translate('desc5') }} </nut-collapse-item>
-      <nut-collapse-item :title="translate('title2')" :name="2" :sub-title="translate('subtitle')">
+      <nut-collapse-item :title="translate('title2')" :name="2" :value="translate('subtitle')">
         {{ translate('desc6') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title3')" :name="3">
@@ -31,32 +31,26 @@
       </nut-collapse-item>
     </nut-collapse>
     <h2>{{ translate('basic4') }}</h2>
-    <nut-collapse v-model:active="active3" :accordion="true" icon="arrow-right2" rotate="90">
-      <nut-collapse-item :title="translate('title1')" :name="1">
-        <template v-slot:sTitle> {{ translate('title4') }} </template>
+    <nut-collapse v-model:active="active3" :accordion="true">
+      <nut-collapse-item :title="translate('title1')" :name="1" :icon="Notice">
+        <template v-slot:value> {{ translate('title4') }} </template>
         {{ translate('desc8') }}
       </nut-collapse-item>
-      <nut-collapse-item :title="translate('title2')" :name="2" :sub-title="translate('title6')">
+      <nut-collapse-item :title="translate('title2')" :name="2" :value="translate('title6')" :icon="Follow">
         {{ translate('desc9') }}
       </nut-collapse-item>
     </nut-collapse>
-    <h2>{{ translate('basic5') }}</h2>
-    <nut-collapse
-      v-model:active="active5"
-      title-icon="issue"
-      title-icon-color="red"
-      title-icon-size="20px"
-      title-icon-position="right"
-      icon="down-arrow"
-      :accordion="true"
-    >
-      <nut-collapse-item :title="translate('title1')" :name="1"> {{ translate('desc10') }} </nut-collapse-item>
+    <!-- <h2>{{ translate('basic5') }}</h2>
+    <nut-collapse v-model:active="active5" :accordion="true">
+      <nut-collapse-item :title="translate('title1')" :name="1" :icon="Comment">
+        {{ translate('desc10') }}
+      </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2" :sub-title="translate('title6')">
         {{ translate('desc11') }}
       </nut-collapse-item>
-    </nut-collapse>
+    </nut-collapse> -->
     <h2>{{ translate('basic6') }}</h2>
-    <nut-collapse v-model:active="active6" icon="down-arrow" :accordion="true">
+    <nut-collapse v-model:active="active6" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1">
         <template v-slot:extraRender>{{ translate('title5') }}</template>
         {{ translate('desc1') }}
@@ -68,7 +62,8 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, reactive, ref, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
+import { Notice, Follow } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('collapse');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -147,6 +142,8 @@ export default createDemo({
       console.log(`点击了name是${name}的面板`);
     };
     return {
+      Notice,
+      Follow,
       translate,
       change,
       ...toRefs(data)

@@ -8,16 +8,11 @@
     
 ```javascript
 import { createApp } from 'vue';
-// vue
-import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui';
-// taro
-import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui-taro';
+import { DatePicker, Picker } from '@nutui/nutui';
 
 const app = createApp();
 app.use(DatePicker);
 app.use(Picker);
-app.use(Popup);
-app.use(Overlay);
 ```
     
 ### 选择年月日
@@ -25,10 +20,8 @@ app.use(Overlay);
 
 ```html
 <template>
-  <nut-cell title="显示中文" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
-      v-model:visible="show"
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
@@ -41,21 +34,71 @@ app.use(Overlay);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('2022年05月10日');
       const minDate = new Date(2020, 0, 1),
       const maxDate = new Date(2025, 10, 1),
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
-        desc.value = selectedOptions.map((option) => option.text).join('');
+        Toast.text(selectedOptions.map((val: any) => val.text).join(''));
       }
       return {
         currentDate,
-        show,
-        desc,
         minDate,
         maxDate,
         confirm
+      };
+    }
+  };
+</script>
+
+```
+:::
+
+### 搭配 Popup 使用
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="选择日期" :desc="popupDesc" @click="show = true"></nut-cell>
+  <nut-popup position="bottom" v-model:visible="show">
+    <nut-date-picker
+      v-model="currentDate"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="popupConfirm"
+      :is-show-chinese="true"
+      :threeDimensional="false"
+    >
+      <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button>
+    </nut-date-picker>
+  </nut-popup>
+</template>
+
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+       const show = ref(false);
+      const popupDesc = ref();
+      const minDate = new Date(2020, 0, 1);
+      const maxDate = new Date(2025, 10, 1);
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const popupConfirm = ({ selectedValue, selectedOptions })=>{
+        popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
+        show.value = false;
+      }
+      const alwaysFun = ()=>{
+        popupDesc.value = '永远有效'
+        show.value = false;
+      }
+      return {
+        show,
+        popupDesc,
+        currentDate,
+        minDate,
+        maxDate,
+        alwaysFun,
+        popupConfirm
       };
     }
   };
@@ -71,7 +114,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```html
 <template>
-  <nut-cell title="限制开始结束时间" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       type="month-day"
@@ -79,7 +121,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 7, 1)"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker> 
 </template>
 
@@ -87,15 +128,11 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('05-10');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join('-');
+        Toast.text(selectedOptions.map((val: any) => val.text).join('-'));
       }
       return {
-        show,
-        desc,
         currentDate,
         confirm
       };
@@ -112,7 +149,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ```html
 <template>
-  <nut-cell title="日期时间选择" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="日期时间选择"
@@ -120,24 +156,18 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show" 
   ></nut-date-picker> 
 </template>
 <script>
   import { ref } from 'vue';
   export default {
-    setup(props) {
-      const show = ref(false);
-      const desc = ref('2022-05-10 10:10');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedValue.slice(0, 3).join('-');
         time = selectedValue.slice(3).join(':');
-        desc.value = date + ' ' + time;
+        Toast.text(date + ' ' + time) ;
       }
       return {
-        show,
-        desc,
         currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
@@ -153,7 +183,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="时间选择"
@@ -161,22 +190,17 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join(':');
+        Toast.text(selectedValue.join(':'));
       }
       return {
-        show,
-        desc,
         currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
@@ -195,7 +219,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="时间选择"
@@ -204,20 +227,17 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :max-date="new Date(2022, 10, 1)"
       :formatter="formatter"
       @confirm="confirm"
-      v-model:visible="show"
-  ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-date-picker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
         time = selectedOptions.slice(3).map((op) => op.value).join(':');
-        desc.value = selectedOptions[0].text + '年' + date + ' ' + time;
+        Toast.text(selectedOptions[0].text + '年' + date + ' ' + time);
       }
       const formatter = (type: string, option) => {
         switch (type) {
@@ -241,17 +261,10 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
         }
         return option;
       };
-      const alwaysFun = () => {
-        show.value = false;
-        desc.value = '永久有效';
-      };
       return {
-        show,
-        desc,
         currentDate,
         confirm,
         formatter,
-        alwaysFun
       };
     }
   };
@@ -264,7 +277,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       type="time"
@@ -272,22 +284,18 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join(':');
+        Toast.text(selectedValue.join(':')) ;
       }
       return {
-        show,
-        desc,
+        currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
         confirm
@@ -305,7 +313,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```html
 <template>
-  <nut-cell title="日期选择" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="时间选择"
@@ -315,15 +322,12 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :filter="filter"
       :formatter="formatter"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('2022年05月10日 00时');
       const currentDate = new Date(2022, 4, 10, 0, 0);
       const formatter = (type: string, option) => {
         switch (type) {
@@ -352,11 +356,10 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
         return options;
       };
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        descList[index].value = selectedOptions.map((option) => option.text).join('');
+        Toast.text(selectedOptions.map((option) => option.text).join(''));
       }
       return {
-        show,
-        desc,
+        currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
         confirm,
@@ -376,27 +379,28 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | 参数            | 说明                                              | 类型    | 默认值   |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | 初始值                                            | Date    | `null`   |
-| v-model:visible | 是否可见                                          | Boolean | `false`  |
 | type            | 时间类型，可选值 date time year-month month-day datehour | String  | `'date'` |
 | minute-step     | 分钟步进值                                        | Number  | `1`      |
 | is-show-chinese | 每列是否展示中文                                  | Boolean | `false`  |
 | min-date        | 开始日期                                          | Date    | `十年前` |
 | max-date        | 结束日期                                          | Date    | `十年后` |
-| formatter `v3.1.18`  | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter  `v3.1.18`  | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
+| formatter   | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
+| filter    | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
 | title           | 设置标题                                          | String  | `null`   |
 | ok-text           | 确定按钮文案                                          | String  | 确定   |
 | cancel-text           | 取消按钮文案                                          | String  | 取消   |
-| three-dimensional `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
-| swipe-duration `v3.2.2`          | 惯性滚动时长               | Number、String  | 1000    |
-| safe-area-inset-bottom `v3.2.4`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	Boolean	|`false`     |
+| three-dimensional           | 是否开启3D效果               | Boolean  | true   |
+| swipe-duration     | 惯性滚动时长               | Number、String  | 1000    |
+| visible-option-num          |可见的选项个数              | number \| string | 7               |
+| option-height         | 选项高度             | number \| string | 36     |
+| show-toolbar         | 是否显示顶部导航             | Boolean | true    |
 
 ### Events
     
 | 事件名  | 说明               | 回调参数     |
 |---------|--------------------|--------------|
 | confirm | 点击确定按钮时触发 | 	{ selectedValue, selectedOptions } |
-| close   | 关闭时触发         | 	{ selectedValue, selectedOptions } |
+| cancel   | 点击取消按钮时触发         | 	{ selectedValue, selectedOptions } |
 | change   | 选项改变时触发         | { columnIndex, selectedValue, selectedOptions } |
 
 ### Slots

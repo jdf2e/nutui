@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Countdown } from '@nutui/nutui';
-// taro
-import { Countdown } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Countdown);

@@ -24,9 +24,8 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <!-- <slot v-if="item.icon">
-            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
-          ></slot> -->
+          <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
@@ -34,17 +33,12 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { computed, watch, ref, PropType, CSSProperties, onMounted, h } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
-// import { Icon } from '@nutui/icons-vue';
-import Popup from '../popup/index.vue';
 const { create } = createComponent('popover');
 export default create({
-  components: {
-    // Icon
-  },
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
@@ -93,7 +87,7 @@ export default create({
       const base = 16;
 
       if (bgColor) {
-        styles[`border${upperCaseFirst(direction)}Color`] = bgColor;
+        styles[`border${upperCaseFirst(direction)}Color` as any] = bgColor;
       }
 
       if (props.arrowOffset != 0) {
@@ -193,7 +187,7 @@ export default create({
     const getContentWidth = () => {
       let rect = useRect(popoverRef.value);
       if (props.targetId) {
-        rect = useRect(document.querySelector(`#${props.targetId}`));
+        rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
       }
       rootRect.value = rect;
       setTimeout(() => {
@@ -203,6 +197,13 @@ export default create({
         };
       }, 0);
     };
+
+    onMounted(() => {
+      setTimeout(() => {
+        getContentWidth();
+      }, 200);
+    });
+
     watch(
       () => props.visible,
       (value) => {
@@ -240,7 +241,7 @@ export default create({
       let el = element && !element.contains(event.target);
 
       if (props.targetId) {
-        const dom = document.querySelector(`#${props.targetId}`);
+        const dom: any = document.querySelector(`#${props.targetId}`);
         el = dom && !dom.contains(event.target);
       }
       if (el && elContent && !elContent.contains(event.target) && props.closeOnClickOutside) {
@@ -258,7 +259,8 @@ export default create({
       popoverContentRef,
       getRootPosition,
       customStyle,
-      popoverArrowStyle
+      popoverArrowStyle,
+      renderIcon
     };
   }
 });

@@ -9,14 +9,10 @@ Used to display the comment list
 ```javascript
 
 import { createApp } from 'vue';
-// vue
-import { Comment,Icon,Rate } from '@nutui/nutui';
-// taro
-import { Comment,Icon,Rate } from '@nutui/nutui-taro';
+import { Comment,Rate } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Comment);
-app.use(Icon);
 app.use(Rate);
 
 ```
@@ -47,11 +43,12 @@ By default, images of reviews for individual items are displayed in a single sli
 </template>
 <script>
 import { reactive, ref,onMounted } from 'vue';
+import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
     const labels = () => {
-      return '<nut-icon name="dongdong" color="#fa2c19"></nut-icon>';
+      return '<Dongdong/>';
     };
     onMounted(()=>{
       fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
@@ -184,8 +181,8 @@ export default {
 
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
-| headerType         | Header type      | String | default               |
-| imagesRows         | Comment picture shows type of lines    | String | one               |
+| header-type         | Header type      | String | default               |
+| images-rows         | Comment picture shows type of lines    | String | one               |
 | ellipsis        | Ellipsis number       | [String,Number] | 2               |
 | videos         | Videos data | Array | []              |
 | images | Images data    | Array | [] |

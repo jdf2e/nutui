@@ -1,11 +1,13 @@
 import { computed, PropType, reactive, toRefs, watch } from 'vue';
 import RenderColumn from './renderColumn';
+import { DownArrow } from '@nutui/icons-vue';
 import { TableColumnProps } from './types';
 
 export const component = (componentName: string, translate: Function) => {
   return {
     components: {
-      RenderColumn
+      RenderColumn,
+      DownArrow
     },
     props: {
       bordered: {

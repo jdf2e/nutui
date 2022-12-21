@@ -1,19 +1,18 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :visible="show"
     :okText="okText"
     :cancelText="cancelText"
-    @close="closeHandler"
+    @cancel="closeHandler"
     :columns="columns"
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
-    :teleportDisable="teleportDisable"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
-    :safeAreaInsetBottom="safeAreaInsetBottom"
-    :destroyOnClose="destroyOnClose"
+    :showToolbar="showToolbar"
+    :visibleOptionNum="visibleOptionNum"
+    :optionHeight="optionHeight"
   >
     <template #top>
       <slot name="top"></slot>
@@ -25,7 +24,6 @@
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import nutPicker from '../picker/index.taro.vue';
-import { popupProps } from '../popup/props';
 import { createComponent } from '@/packages/utils/create';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
 const { componentName, create } = createComponent('date-picker');
@@ -50,7 +48,6 @@ export default create({
     nutPicker
   },
   props: {
-    ...popupProps,
     modelValue: null,
     title: {
       type: String,
@@ -100,13 +97,24 @@ export default create({
       type: [Number, String],
       default: 1000
     },
-    filter: Function as PropType<import('./type').Filter>
+    filter: Function as PropType<import('./type').Filter>,
+    showToolbar: {
+      type: Boolean,
+      default: true
+    },
+    visibleOptionNum: {
+      type: [Number, String],
+      default: 7
+    },
+    optionHeight: {
+      type: [Number, String],
+      default: 36
+    }
   },
-  emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
+  emits: ['click', 'cancel', 'change', 'confirm', 'update:moduleValue'],
 
   setup(props, { emit }) {
     const state = reactive({
-      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -125,7 +133,7 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = props[`${type}Date`];
+      const boundary = type == 'min' ? props.minDate : props.maxDate;
       const year = boundary.getFullYear();
       let month = 1;
       let date = 1;
@@ -314,17 +322,15 @@ export default create({
       return 0;
     };
 
-    const closeHandler = () => {
-      emit('update:visible', false);
+    const closeHandler = (val: any) => {
+      emit('cancel', val);
     };
 
-    const confirm = (val: Event) => {
-      emit('update:visible', false);
+    const confirm = (val: any) => {
       emit('confirm', val);
     };
 
     onBeforeMount(() => {
-      console.log('平铺展示');
       state.currentDate = formatValue(props.modelValue);
     });
 
@@ -339,13 +345,6 @@ export default create({
       () => props.title,
       (val) => {
         state.title = val;
-      }
-    );
-
-    watch(
-      () => props.visible,
-      (val) => {
-        state.show = val;
       }
     );
 

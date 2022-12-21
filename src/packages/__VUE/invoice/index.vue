@@ -32,7 +32,7 @@
       </nut-form-item>
     </nut-form>
     <div v-if="submit" class="nut-invoice__submit">
-      <nut-button type="primary" block @click="submit">提交审批</nut-button>
+      <nut-button type="primary" block @click="submitFun">提交审批</nut-button>
     </div>
   </view>
 </template>
@@ -93,7 +93,7 @@ export default create({
       list.value = props.data;
     };
 
-    const submit = () => {
+    const submitFun = () => {
       formRef.value.validate().then(({ valid, errors }: any) => {
         emit('onSubmit', valid, errors);
       });
@@ -110,7 +110,7 @@ export default create({
       classes,
       formRef,
       list,
-      submit
+      submitFun
     };
   }
 });

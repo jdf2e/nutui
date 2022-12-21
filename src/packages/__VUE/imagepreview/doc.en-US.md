@@ -8,10 +8,7 @@ Support full screen preview videos and images, support functional call.
 
 ```javascript
 import { createApp, reactive, toRefs } from 'vue';
-//vue
 import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
-//taro
-import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ImagePreview);
@@ -314,14 +311,13 @@ app.use(ImagePreview);
 | pagination-visible | Whether to show pagination    | Boolean | false |
 | pagination-color   | Pagination color    | String  | '#fff'  |
 | content-close   | Click image to exit preview    | Boolean  | false  |
-| show-index`v3.1.22`   | Whether to show index    | Boolean  | true  |
-| closeable`v3.1.22`   | Whether to show close icon    | Boolean  | false  |
-| close-icon`v3.1.22`   | Close icon name    | String  | ‘circle-close’  |
-| close-icon-position`v3.1.22`   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
-| before-close`v3.1.22`  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
-| max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
-| min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
-| is-Loop`v3.2.5`  | Whether to loop   | Boolean  | `true`  | 
+| show-index   | Whether to show index    | Boolean  | true  |
+| closeable   | Whether to show close icon    | Boolean  | false  |
+| close-icon-position   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
+| before-close  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
+| max-zoom  | Max zoom`Taro isn't supported`   | Number  | 3  | 
+| min-zoom  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
+| is-Loop  | Whether to loop   | Boolean  | `true`  | 
 
 ### Data Structure of ImageArray 
 
@@ -341,5 +337,11 @@ app.use(ImagePreview);
 |Event|Description|Arguments|
 |--|--|--|
 |close|Emitted when closing ImagePreview|-|
-|change`v3.1.22`|Emitted when current image changed|无|
+|change|Emitted when current image changed|无|
+
+### Slots
+
+|Event|Description|
+|--|--|
+|closeIcon| Custom close icon|
     

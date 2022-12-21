@@ -52,6 +52,7 @@ $line-height-base: var(--nut-line-height-base) !default;
 // button
 $button-border-radius: var(--nut-button-border-radius) !default;
 $button-border-width: var(--nut-button-border-width) !default;
+$button-icon-width: var(--nut-button-icon-width) !default;
 $button-default-bg-color: var(--nut-button-default-bg-color) !default;
 $button-default-border-color: var(--nut-button-default-border-color) !default;
 $button-default-color: var(--nut-button-default-color) !default;
@@ -201,7 +202,7 @@ $actionsheet-light-color: var(--nut-actionsheet-light-color) !default;
 $actionsheet-item-border-bottom: var(--nut-actionsheet-item-border-bottom) !default;
 $actionsheet-item-font-size: var(--nut-actionsheet-item-font-size) !default;
 $actionsheet-item-subdesc-font-size: var(--nut-actionsheet-item-subdesc-font-size) !default;
-$actionsheet-item-cancel-border-top: var(--nut-actionsheet-item-cancel-border-topwhite) !default;
+$actionsheet-item-cancel-border-top: var(--nut-actionsheet-item-cancel-border-top) !default;
 $actionsheet-item-line-height: var(--nut-actionsheet-item-line-height) !default;
 $actionsheet-item-font-color: var(--nut-actionsheet-item-font-color) !default;
 
@@ -857,5 +858,6 @@ $invoice-padding: var(--nut-invoice-padding) !default;
 // TrendArrow
 $trendarrow-font-size: var(--nut-trendarrow-font-size) !default;
 $trendarrow-before-icon-margin: var(--nut-trendarrow-before-icon-margin) !default;
+$trendarrow-icon-width: var(--nut-trendarrow-icon-width) !default;
 
 @import './mixins/index';

@@ -9,10 +9,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Countup } from '@nutui/nutui';
-// taro
-import { Countup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Countup);

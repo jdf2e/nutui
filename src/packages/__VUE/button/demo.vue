@@ -38,10 +38,18 @@
     </div>
     <h2>{{ translate('title5') }}</h2>
     <div class="demo-button-row2">
-      <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-      <nut-button shape="square" type="primary" icon="star">{{ translate('star') }}</nut-button>
+      <nut-button shape="square" plain type="primary">
+        <template #icon>
+          <StarFill />
+        </template>
+      </nut-button>
+      <nut-button shape="square" type="primary">
+        <template #icon>
+          <Star />
+        </template>
+        {{ translate('star') }}
+      </nut-button>
     </div>
-
     <h2>{{ translate('title7') }}</h2>
     <div class="demo-button-row2">
       <nut-button size="large" type="primary" style="margin-bottom: 10px">{{ translate('large') }}</nut-button>
@@ -67,6 +75,7 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('button');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { StarFill, Star } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -136,6 +145,7 @@ const initTranslate = () =>
   });
 
 export default createDemo({
+  components: { StarFill, Star },
   props: {},
   setup(props) {
     initTranslate();

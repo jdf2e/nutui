@@ -49,8 +49,8 @@
     "build:site": "npm run checked && vite build",
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/4x/",
-    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
+    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts && npm run attrs",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts:taro && npm run attrs",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -65,10 +65,13 @@
     "test": "jest",
     "release": "standard-version -a",
     "codeformat": "prettier --write .",
-    "copydocs": "node ./jd/copymd.js",
+    "copydocs": "node ./jd/copymd.cjs",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
     "attrs": "node ./jd/createAttributes.cjs",
-    "dts": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json"
+    "dts": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types",
+    "dts:taro": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && npm run generate:types:taro",
+    "copy:h5": "node ./jd/copyh5.cjs",
+    "copy:taro": "node ./jd/copytaro.cjs"
   },
   "standard-version": {
     "scripts": {
@@ -76,7 +79,8 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue": "0.0.8",
+    "@nutui/icons-vue": "0.0.15",
+    "@nutui/icons-vue-taro": "0.0.2",
     "@tarojs/components": "3.5.6",
     "consola": "2.15.3",
     "sass": "^1.50.0",

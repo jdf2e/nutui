@@ -24,7 +24,7 @@
           v-if="type == 'multi' && totalImages.length > 9 && videos.length + index > 7"
         >
           <span>共 {{ totalImages.length }} 张</span>
-          <nut-icon name="right" size="12"></nut-icon>
+          <Right style="width: 12px"></Right>
         </view>
       </view>
     </template>
@@ -35,6 +35,7 @@ import { ref, watch, onMounted, PropType } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment-images');
+import { Right } from '@nutui/icons-vue';
 
 interface VideosType {
   id: number | string;
@@ -61,7 +62,7 @@ export default create({
       default: () => []
     }
   },
-  components: {},
+  components: { Right },
   emits: ['click', 'clickImages'],
 
   setup(props, { emit }) {

@@ -1,47 +1,31 @@
 <template>
   <div class="demo">
-    <nut-cell-group :title="translate('basic')">
-      <nut-cell :title="translate('showChinese')" :desc="desc1" @click="show = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('mmdd')">
-      <nut-cell :title="translate('setStartEnd')" :desc="desc2" @click="show2 = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('showAll')">
-      <nut-cell :title="translate('chooseDate')" :desc="desc3" @click="show3 = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('time')">
-      <nut-cell :title="translate('chooseTime')" :desc="desc4" @click="show4 = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('format')">
-      <nut-cell :title="translate('chooseTime')" :desc="desc5" @click="show5 = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('stepMins')">
-      <nut-cell :title="translate('chooseTime')" :desc="desc6" @click="show6 = true"></nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group :title="translate('filter')">
-      <nut-cell :title="translate('chooseTime')" :desc="desc7" @click="show7 = true"></nut-cell>
-    </nut-cell-group>
-
+    <h2>{{ translate('basic') }}</h2>
     <!-- 选择年月日 -->
     <nut-date-picker
       v-model="currentDate"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(0, val);
-        }
-      "
-      v-model:visible="show"
+      @confirm="confirm"
       :is-show-chinese="true"
       :threeDimensional="false"
     ></nut-date-picker>
+
+    <h2>{{ translate('popupDesc') }}</h2>
+    <nut-cell :title="translate('basic')" :desc="popupDesc" @click="show = true"></nut-cell>
+    <nut-popup position="bottom" v-model:visible="show">
+      <nut-date-picker
+        v-model="currentDate"
+        :min-date="minDate"
+        :max-date="maxDate"
+        @confirm="popupConfirm"
+        :is-show-chinese="true"
+        :threeDimensional="false"
+      >
+        <nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button>
+      </nut-date-picker>
+    </nut-popup>
+    <h2>{{ translate('mmdd') }}</h2>
     <!-- 选择月日 -->
     <nut-date-picker
       v-model="currentDate2"
@@ -49,13 +33,10 @@
       :title="translate('basic')"
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 7, 1)"
-      @confirm="
-        (val) => {
-          confirm(1, val);
-        }
-      "
-      v-model:visible="show2"
+      @confirm="confirm5"
     ></nut-date-picker>
+    <h2>{{ translate('showAll') }}</h2>
+
     <!-- 选择年月日时分 -->
     <nut-date-picker
       v-model="currentDate3"
@@ -63,13 +44,10 @@
       type="datetime"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(2, val);
-        }
-      "
-      v-model:visible="show3"
+      @confirm="confirm2"
     ></nut-date-picker>
+    <h2>{{ translate('time') }}</h2>
+
     <!-- 选择时分秒 -->
     <nut-date-picker
       v-model="currentDate4"
@@ -77,13 +55,10 @@
       type="time"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="
-        (val) => {
-          confirm(3, val);
-        }
-      "
-      v-model:visible="show4"
+      @confirm="confirm3"
     ></nut-date-picker>
+    <h2>{{ translate('format') }}</h2>
+
     <!-- 格式化选项 -->
     <nut-date-picker
       v-model="currentDate5"
@@ -92,14 +67,10 @@
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 10, 1)"
       :formatter="formatter"
-      @confirm="
-        (val) => {
-          confirm(4, val);
-        }
-      "
-      v-model:visible="show5"
-      ><nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button></nut-date-picker
-    >
+      @confirm="confirm4"
+    ></nut-date-picker>
+    <h2>{{ translate('stepMins') }}</h2>
+
     <!-- 分钟数递增步长设置 -->
     <nut-date-picker
       v-model="currentDate6"
@@ -108,13 +79,9 @@
       :min-date="minDate"
       :max-date="maxDate"
       :minute-step="5"
-      @confirm="
-        (val) => {
-          confirm(5, val);
-        }
-      "
-      v-model:visible="show6"
+      @confirm="confirm3"
     ></nut-date-picker>
+    <h2>{{ translate('filter') }}</h2>
     <!-- 过滤选项 -->
     <nut-date-picker
       v-model="currentDate7"
@@ -124,12 +91,7 @@
       :max-date="maxDate"
       :filter="filter"
       :formatter="formatter1"
-      @confirm="
-        (val) => {
-          confirm(6, val);
-        }
-      "
-      v-model:visible="show7"
+      @confirm="confirm"
     ></nut-date-picker>
   </div>
 </template>
@@ -139,6 +101,7 @@ import { toRefs, watch, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('date-picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Toast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -159,7 +122,8 @@ const initTranslate = () =>
       day: '日',
       hour: '时',
       min: '分',
-      seconds: '秒'
+      seconds: '秒',
+      popupDesc: '搭配 Popup 使用'
     },
     'en-US': {
       basic: 'Choose Date',
@@ -179,7 +143,8 @@ const initTranslate = () =>
       day: 'Day',
       hour: 'Hour',
       min: 'Minute',
-      seconds: 'Second'
+      seconds: 'Second',
+      popupDesc: 'With Popup'
     }
   });
 export default createDemo({
@@ -187,12 +152,7 @@ export default createDemo({
   setup() {
     initTranslate();
     const show = ref(false);
-    const show2 = ref(false);
-    const show3 = ref(false);
-    const show4 = ref(false);
-    const show5 = ref(false);
-    const show6 = ref(false);
-    const show7 = ref(false);
+    const popupDesc = ref();
 
     const CurrentDate = reactive({
       currentDate: new Date(2022, 4, 10, 10, 10),
@@ -203,15 +163,6 @@ export default createDemo({
       currentDate6: new Date(2022, 4, 10, 10, 10),
       currentDate7: new Date(2022, 4, 10, 0, 0)
     });
-
-    const desc1 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')}`);
-    const desc2 = ref('05-10');
-    const desc3 = ref('2022-05-10 10:10');
-    const desc4 = ref('10:10:00');
-    const desc5 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')} 10:10`);
-    const desc6 = ref('10:10:00');
-    const desc7 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')} 00${translate('hour')}`);
-    const descList = [desc1, desc2, desc3, desc4, desc5, desc6, desc7];
 
     const formatter = (type: string, option) => {
       switch (type) {
@@ -263,62 +214,78 @@ export default createDemo({
       return options;
     };
 
-    const confirm = (
-      index: number,
-      { selectedValue, selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }
-    ) => {
-      let date = '';
-      let time = '';
-      console.log({ selectedValue, selectedOptions });
-      switch (index) {
-        case 0:
-        case 6:
-          descList[index].value = selectedOptions.map((option) => option.text).join(' ');
-          break;
-        case 2:
-          date = selectedValue.slice(0, 3).join('-');
-          time = selectedValue.slice(3).join(':');
-          descList[index].value = date + ' ' + time;
-          break;
-        case 3:
-        case 5:
-          descList[index].value = selectedValue.join(':');
-          break;
-        case 4:
-          date = selectedOptions
-            .slice(1, 3)
-            .map((op) => op.text)
-            .join('');
-          time = selectedOptions
-            .slice(3)
-            .map((op) => op.value)
-            .join(':');
-          descList[index].value = selectedOptions[0].text + translate('year') + date + ' ' + time;
-          break;
-        default:
-          descList[index].value = selectedValue.join('-');
-      }
+    const confirm = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      Toast.text(selectedOptions.map((val: any) => val.text).join(''));
+    };
+
+    const confirm2 = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      const date = selectedValue.slice(0, 3).join('-');
+      const time = selectedValue.slice(3).join(':');
+      Toast.text(date + ' ' + time);
+    };
+
+    const confirm3 = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      Toast.text(selectedValue.join(':'));
+    };
+
+    const confirm4 = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      const date = selectedOptions
+        .slice(1, 3)
+        .map((op: any) => op.text)
+        .join('');
+      const time = selectedOptions
+        .slice(3)
+        .map((op: any) => op.value)
+        .join(':');
+      Toast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
+    };
+
+    const confirm5 = ({
+      selectedValue,
+      selectedOptions
+    }: {
+      selectedValue: (string | number)[];
+      selectedOptions: any;
+    }) => {
+      Toast.text(selectedValue.join('-'));
+    };
+
+    const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+      popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
+      show.value = false;
     };
 
     const alwaysFun = () => {
-      show5.value = false;
-      desc5.value = translate('forever');
+      popupDesc.value = '永远有效';
+      show.value = false;
     };
     return {
       show,
-      show2,
-      show3,
-      show4,
-      show5,
-      show6,
-      show7,
-      desc1,
-      desc2,
-      desc3,
-      desc4,
-      desc5,
-      desc6,
-      desc7,
+      popupDesc,
       ...toRefs(CurrentDate),
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
@@ -327,7 +294,12 @@ export default createDemo({
       formatter1,
       filter,
       alwaysFun,
-      translate
+      translate,
+      popupConfirm,
+      confirm2,
+      confirm3,
+      confirm4,
+      confirm5
     };
   }
 });

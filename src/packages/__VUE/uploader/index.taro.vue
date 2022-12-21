@@ -82,7 +82,7 @@ import Button from '../button/index.taro.vue';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
 import { isPromise } from '@/packages/utils/util';
-import { Photograph } from '@nutui/icons-vue';
+import { Photograph } from '@nutui/icons-vue-taro';
 export default create({
   components: {
     [Progress.name]: Progress,

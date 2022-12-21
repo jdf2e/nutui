@@ -1,30 +1,102 @@
 const config = require('../src/config.json');
-const package = require('../package.json');
 const path = require('path');
-const fs = require('fs-extra');
-let importStr = `import Locale from '../packages/locale';\n`;
-const packages = [];
-config.nav.map((item) => {
-  item.packages.forEach((element) => {
-    let { name, type } = element;
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}${type === 'methods' ? '' : '/index.vue'}';\n`;
+const fs = require('fs');
 
-    packages.push(name);
+const sourceDir = path.resolve(__dirname, './../tsc/type/src/packages'); // 拷贝的源文件夹
+
+const toDir = path.resolve(__dirname, './../dist/types'); // ./../dist
+
+const basePath = path.join(toDir, '__VUE');
+
+const fileList = [];
+
+let packages = [];
+
+const preContent = `
+declare type Install<T> = T & {
+  install(app: import('vue').App): void;
+};\n`;
+const start = 'declare const _default:';
+const end = ';\nexport default _default;\n';
+const regex = new RegExp(`${start}([\\s\\S]*?)${end}`);
+
+const getCompList = (basePath) => {
+  const files = fs.readdirSync(basePath);
+  files.forEach((filename) => {
+    const filedir = path.join(basePath, filename);  
+    //根据文件路径获取文件信息，返回一个fs.Stats对象
+    const stats = fs.statSync(filedir);
+    const isFile = stats.isFile();//是文件  
+    const isDir = stats.isDirectory();//是文件夹  
+    if(isFile){
+      fileList.push(filedir);
+    }
+    if(isDir){
+      getCompList(filedir);//递归，如果是文件夹，就继续遍历该文件夹下面的文件  
+    }
   });
-});
-let installFunction = `
-export { Locale,${packages.join(',')} };`;
-let fileStr = importStr + installFunction;
-fs.outputFileSync(path.resolve(__dirname, '../dist/types/nutui.d.ts'), fileStr, 'utf8');
-fs.outputFileSync(
-  path.resolve(__dirname, '../dist/types/index.d.ts'),
-  `declare namespace _default {
-  export { install };
-  export { version };
 }
-export function install(app: any): void;
-export const version: '${package.version}';
-export default _default;
-export * from './nutui';`,
-  'utf8'
-);
+
+const getCompName = (name) => {
+  if(!packages.length) {
+    config.nav.forEach((item, index) => {
+      packages = packages.concat(item.packages);
+    });
+  }
+  const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
+  return packageName ? packageName.name : ''
+}
+
+const getLocale = () => {
+  const source = path.join(sourceDir, 'locale');
+  const to = path.resolve(__dirname, './../dist/packages/locale');
+  fs.cp(source, to, { recursive: true }, (err) => {
+    if(err) {
+      console.error(err);
+      return;
+    }
+  })
+}
+
+fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
+  if(err) {
+    console.error(err);
+    return;
+  }
+
+  const oldName = path.join(toDir, 'nutui.vue.build.d.ts');
+  const newName = path.join(toDir, 'index.d.ts');
+
+  fs.rename(oldName, newName, (err) => {
+    if(err) {
+      console.error(err);
+    }
+  })
+
+  getCompList(basePath);
+
+  fileList.forEach((item, index) => {
+    const content = fs.readFileSync(item).toLocaleString();
+    const inputs = content.match(regex);
+    
+    if(inputs && inputs.length) {
+      let name = item.substring(0, item.lastIndexOf('/'));
+      name = name.substring(name.lastIndexOf('/') + 1);
+      const componentName = getCompName(name);
+      if(componentName) {
+        let remain = `
+declare module 'vue' {
+  interface GlobalComponents {
+      Nut${componentName}: typeof _default;
+  }
+}`;
+        let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
+        fs.writeFileSync(item, changeContent);
+      }
+      
+    }
+  });
+
+  //国际化处理
+  getLocale();
+});

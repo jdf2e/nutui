@@ -8,10 +8,7 @@ Enter or edit text in the text box, and limit the number of entries is supported
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Textarea } from '@nutui/nutui';
-//taro
-import { Textarea } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Textarea);

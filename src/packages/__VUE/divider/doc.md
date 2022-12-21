@@ -7,10 +7,7 @@
 ### 安装
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Divider } from '@nutui/nutui';
-// taro
-import { Divider } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Divider);

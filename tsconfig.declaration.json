@@ -5,7 +5,14 @@
     "declarationDir": "./tsc/type",
     "emitDeclarationOnly": true
   },
-  "include": ["src/**/*.d.ts","src/packages/__VUE/button/index.vue", "src/packages/__VUE/button/index.taro.vue", "src/packages/__VUE/button/*.ts"],
+  "include": [
+    "src/**/*.d.ts",
+    "src/packages/__VUE/**/index.vue",
+    "src/packages/__VUE/**/*.ts",
+    "src/packages/nutui.vue.build.ts",
+    "src/packages/locale",
+    "src/packages/utils",
+  ],
   "exclude": [
     "node_modules",
     "**/test/**/*",

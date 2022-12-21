@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Input } from '@nutui/nutui';
-// taro
-import { Input } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
@@ -391,9 +388,7 @@ app.use(Input);
 | error         | 是否标红                                | Boolean | `false`  |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type `H5(v3.2.8)` | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
-| adjust-position`v3.1.21` | 键盘弹起时，是否自动上推页面（`仅支持小程序`）     | Boolean | `true` |
-| always-system`v3.2.8` | 是否强制使用系统键盘和 Web-view 创建的 input 元素。为 true 时，`confirm-type`、`confirm-hold` 可能失效（`仅支持小程序`）     | Boolean | `false` |
+| confirm-type `v3.2.8` | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 
 ### Events
 

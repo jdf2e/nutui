@@ -3,13 +3,11 @@
     <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
-    <slot>
-      <nut-icon
-        v-if="Number(rate) !== 0"
-        :size="calcIconProps.size"
-        :name="calcIconProps.name"
-        :color="calcIconProps.color"
-      />
+    <slot name="upIcon" v-if="Number(rate) !== 0 && rateTrend">
+      <TriangleUp :color="riseColor" />
+    </slot>
+    <slot name="downIcon" v-if="Number(rate) !== 0 && !rateTrend">
+      <TriangleDown :color="dropColor" />
     </slot>
     <span v-if="arrowLeft" class="nut-trend-arrow-icon-after nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
@@ -20,9 +18,11 @@
 import { reactive, toRefs, computed } from 'vue';
 import { myFixed } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
+import { TriangleUp, TriangleDown } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('trend-arrow');
 
 export default create({
+  components: { TriangleUp, TriangleDown },
   props: {
     rate: {
       type: Number,
@@ -59,21 +59,8 @@ export default create({
     dropColor: {
       type: String,
       default: '#64b578'
-    },
-    iconSize: {
-      type: String,
-      default: '12px'
-    },
-    upIconName: {
-      type: String,
-      default: 'triangle-up'
-    },
-    downIconName: {
-      type: String,
-      default: 'triangle-down'
     }
   },
-
   setup(props) {
     const state = reactive({
       rateTrend: props.rate > 0 ? true : false
@@ -105,17 +92,7 @@ export default create({
       };
       return style;
     });
-    const calcIconProps = computed(() => {
-      const { dropColor, riseColor, iconSize, upIconName, downIconName } = props;
-
-      let iconProps = {
-        name: state.rateTrend ? upIconName : downIconName,
-        color: state.rateTrend ? riseColor : dropColor,
-        size: iconSize
-      };
-      return iconProps;
-    });
-    return { ...toRefs(state), classes, calcRate, calcStyle, calcIconProps };
+    return { ...toRefs(state), classes, calcRate, calcStyle };
   }
 });
 </script>

@@ -8,15 +8,10 @@ Control the number increase or decrease by clicking the button.
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
-import { InputNumber,Icon } from '@nutui/nutui';
-// taro
-import { InputNumber,Icon } from '@nutui/nutui-taro';
+import { InputNumber } from '@nutui/nutui';
 
 const app = createApp();
 app.use(InputNumber);
-app.use(Icon);
-
 ```
 
 
@@ -223,7 +218,14 @@ Asynchronous modification through `change` event and `model-value`
 
 ```html
 <template>
-  <nut-input-number icon-left="left" icon-right="right" v-model="value" />
+  <nut-input-number v-model="value">
+    <template #leftIcon>
+      <Left />
+    </template>
+    <template #rightIcon>
+      <Right />
+    </template>
+  </nut-input-number>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -254,10 +256,13 @@ Asynchronous modification through `change` event and `model-value`
 | decimal-places | Set reserved decimal places           | String、Number | `0`        |
 | disabled       | Disable all features               | Boolean        | false      |
 | readonly       | Read only status disables input box operation behavior | Boolean        | false      |
-| icon-left`v3.2.2`  | Left icon name             | String         | `minus`     |
-| icon-right`v3.2.2` | Right icon name             | String         | `plus`      |
-| font-class-name `v3.2.2` | Custom icon font base class name | String   | `nutui-iconfont` |
-| class-prefix `v3.2.2` | Custom icon class name prefix for using custom icons | String   | `nut-icon`  |
+
+### Slots
+
+| Name | Description |
+|-|-|
+| leftIcon | Custom left icon |
+| rightIcon | Custom right icon |
 
 ### Events
 

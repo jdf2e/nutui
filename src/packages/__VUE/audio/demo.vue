@@ -22,7 +22,7 @@
       ref="audioDemo"
     >
       <div class="nut-voice">
-        <div><nut-icon name="voice"></nut-icon></div>
+        <div><Voice></Voice></div>
         <div>{{ duration }}"</div>
       </div>
     </nut-audio>
@@ -59,11 +59,16 @@
       @changeProgress="changeProgress"
     >
       <div class="nut-audio-operate-group">
-        <nut-audio-operate type="back"><nut-icon name="play-double-back" size="35"></nut-icon></nut-audio-operate>
-        <nut-audio-operate type="play"
-          ><nut-icon :name="!playing ? 'play-start' : 'play-stop'" size="35"></nut-icon
-        ></nut-audio-operate>
-        <nut-audio-operate type="forward"><nut-icon name="play-double-forward" size="35"></nut-icon></nut-audio-operate>
+        <nut-audio-operate type="back">
+          <PlayDoubleBack width="35px" height="35px"></PlayDoubleBack>
+        </nut-audio-operate>
+        <nut-audio-operate type="play">
+          <PlayStart v-if="!playing" width="35px" height="35px"></PlayStart>
+          <PlayStop v-else width="35px" height="35px"></PlayStop>
+        </nut-audio-operate>
+        <nut-audio-operate type="forward">
+          <PlayDoubleForward width="35px" height="35px"></PlayDoubleForward>
+        </nut-audio-operate>
       </div>
     </nut-audio>
   </div>
@@ -74,7 +79,7 @@ import { reactive, toRefs, ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-
+import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop, Voice } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -93,11 +98,20 @@ const initTranslate = () =>
 
 export default createDemo({
   props: {},
+  components: {
+    Voice,
+    PlayDoubleBack,
+    PlayDoubleForward,
+    PlayStart,
+    PlayStop
+  },
   setup() {
     initTranslate();
-    const audioDemo = ref(null);
+    const audioDemo = ref({
+      second: 0
+    });
     const playing = ref(false);
-    const duration = ref(0);
+    const duration = ref<string>('');
     const data = reactive({
       muted: false,
       autoplay: false
@@ -107,11 +121,11 @@ export default createDemo({
       console.log('倒退');
     };
 
-    const forward = (progress) => {
+    const forward = (progress: number) => {
       console.log('快进', '当前时间' + progress);
     };
 
-    const changeStatus = (status) => {
+    const changeStatus = (status: boolean) => {
       console.log('当前播放状态', status);
       playing.value = status;
     };
@@ -120,12 +134,13 @@ export default createDemo({
       console.log('播放结束');
     };
 
-    const changeProgress = (val) => {
+    const changeProgress = (val: number) => {
       console.log('改变进度条', val);
     };
 
     const onCanplay = (e: Event) => {
       duration.value = audioDemo.value.second.toFixed();
+      console.log(e, duration.value);
     };
 
     onMounted(() => {
@@ -171,6 +186,11 @@ export default createDemo({
     padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.6);
     border-radius: 18px;
+  }
+
+  :deep(svg.nut-icon-am-rotate) {
+    --animate-duration: 1s !important;
+    --animate-delay: 0s;
   }
 }
 </style>

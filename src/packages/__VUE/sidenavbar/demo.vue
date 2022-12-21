@@ -186,7 +186,4 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.demo {
-}
-</style>
+<style lang="scss" scoped></style>

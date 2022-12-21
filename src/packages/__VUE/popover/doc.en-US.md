@@ -9,10 +9,7 @@ Click or hover over the element to pop up the bubble card overlay.
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Popover, Popup } from '@nutui/nutui';
-// taro
-import { Popover, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 
@@ -97,13 +94,27 @@ export default {
     const itemList = reactive([
       {
         name: 'option1',
-        icon: 'my2'
+        icon: ()=>{
+          return h(My2,{
+            width:'14px',
+            color:'rgba(250, 44, 25, 1)'
+          })
+        }
       },{
         name: 'option2',
-        icon: 'cart2'
-      },{
+        icon:  ()=>{
+          return h(Cart2,{
+            width:'14px'
+          })
+        }
+      },
+      {
         name: 'option3',
-        icon: 'location2'
+        icon: ()=>{
+          return h(Location,{
+            width:'14px'
+          })
+        }
       }
     ]);
 
@@ -166,27 +177,27 @@ export default {
     });
     const selfContent = reactive([
       {
-        name: 'service',
+        name: Service,
         desc: 'option1'
       },
       {
-        name: 'notice',
+        name: Notice,
         desc: 'option2'
       },
       {
-        name: 'location',
+        name: Location,
         desc: 'option3'
       },
       {
-        name: 'category',
+        name: Category,
         desc: 'option4'
       },
       {
-        name: 'scan2',
+        name: Scan2,
         desc: 'option5'
       },
       {
-        name: 'message',
+        name: Message,
         desc: 'option6'
       }
     ]);
@@ -234,9 +245,6 @@ top           # Top middle
 left          # Left middle 
 right         # Right middle 
 bottom        # Bottom middle 
-```
-New since `v3.1.21`
-```
 top-start     # Top left
 top-end       # Top right 
 left-start    # Left top
@@ -284,6 +292,85 @@ export default {
 :::
 
 
+### custom target 
+
+Popover provides the 'targetId' attribute to match the target element by adding the corresponding id value to the target element
+
+:::demo
+```html
+<template>
+  <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">custom target</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customTarget:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    const clickCustomHandle = () => {
+      visible.customTarget = !visible.customTarget;
+    };
+
+    return {
+        itemList,
+        visible,
+        clickCustomHandle,
+      };
+    }
+}
+</script>
+
+
+```
+:::
+
+### Custom Color
+
+:::demo
+```html
+<template>
+  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square" >Custom Color</nut-button>
+      </template>
+    </nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customColor:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    return {
+        itemList,
+        visible
+      };
+    }
+}
+</script>
+
+```
+:::
+
 ## API
 ### Props  
 
@@ -293,17 +380,20 @@ export default {
 | visible      | whether to show                 | boolean  | false     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset `v3.1.21`       | the offset of the occurrence position  | [number, number]   | [0, 12]  |
-| show-arrow `v3.1.21`       | whether to show small arrows  | boolean  | true  |
-| custom-class `v3.1.21`       | custom class   | string  | ''  |
-| duration `v3.1.21`       | Transition duration  |  [number, number]  | 0.3  |
-| iconPrefix `v3.1.21`       | Icon className prefix | string  | 'nut-icon''  |
-| overlay `v3.2.8`       | Whether to show overlay  | Boolean  | false  |
-| overlay-class `v3.2.8`       | Custom overlay class | string  | ''  |
-| overlay-style `v3.2.8`       | Custom overlay style  | string  | ''  |
-| close-on-click-overlay `v3.2.8`       | Whether to close when clicking overlay  | boolean  | true  |
-| close-on-click-action `v3.2.8`       | Whether to close when clicking action  | boolean  | true |
-| close-on-click-outside `v3.2.8`       | Whether to close when clicking outside | boolean  | true  |
+| offset        | the offset of the occurrence position  | [number, number]   | [0, 12]  |
+| show-arrow        | whether to show small arrows  | boolean  | true  |
+| custom-class        | custom class   | string  | ''  |
+| duration        | Transition duration  |  [number, number]  | 0.3  |
+| iconPrefix        | Icon className prefix | string  | 'nut-icon''  |
+| overlay        | Whether to show overlay  | Boolean  | false  |
+| overlay-class        | Custom overlay class | string  | ''  |
+| overlay-style        | Custom overlay style  | string  | ''  |
+| close-on-click-overlay        | Whether to close when clicking overlay  | boolean  | true  |
+| close-on-click-action        | Whether to close when clicking action  | boolean  | true |
+| close-on-click-outside        | Whether to close when clicking outside | boolean  | true  |
+| bg-color        | Custom color | String  | -  |
+| target-id        | Custom target id | String  | -  |
+| arrow-offset        | the offset of the arrow | Number  | 0  |
 
 ### List data structure  
 
@@ -312,9 +402,9 @@ The List property is an array of objects, each object in the array is configured
 | Key            | Description                 | Type      | Default  |
 |----------------|----------------------|----------|--------|
 | name           | option text               | string   | -      |
-| icon           | `nut-icon` name      | string   | -      |
+| icon           | @nutui/icons-vue name      | string   | -      |
 | disabled       | whether to disable          | boolean  | false  | 
-| className `v3.1.21`      | Add extra class names for corresponding options          | string/Array/object  | -  | 
+| className       | Add extra class names for corresponding options          | string/Array/object  | -  | 
 
 
 ### Slots

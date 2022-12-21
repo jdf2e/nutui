@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui';
-// taro
-import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(SideNavbar);

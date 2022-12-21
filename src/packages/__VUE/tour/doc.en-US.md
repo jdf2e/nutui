@@ -1,63 +1,56 @@
-# Popover
+# Tour
 
 ### Intro
 
-Click or hover over the element to pop up the bubble card overlay.
+A bubble component used to guide the user through the product's capabilities. This component has been available since version 4.0.
 
 ### Install
 
 ```javascript
 
 import { createApp } from 'vue';
-// vue
-import { Popover, Popup } from '@nutui/nutui';
-// taro
-import { Popover, Popup } from '@nutui/nutui-taro';
+import { Tour, Popover, Popup } from '@nutui/nutui';
 
 const app = createApp();
 
 app.use(Popup);
 app.use(Popover);
+app.use(Tour);
 
 ```
 
 
 ### Basic Usage
 
-Popover supports both light and dark styles. The default is light style. Set the theme property to `dark` to switch to dark style.
+At each step, set the id of the target element, and the Tour component looks up the set id value
 
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Light</nut-button>
+  <nut-cell title="try click" @click="showTour3 = true">
+    <template v-slot:link>
+      <nut-switch id="target7" />
     </template>
-  </nut-popover>
-
-  <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Dark</nut-button>
-    </template>
-  </nut-popover>
+  </nut-cell>
+  <nut-tour
+    v-model:visible="showTour3"
+    :steps="steps3"
+    type="tile"
+    location="bottom-end"
+  ></nut-tour>
 </template>
 <script>
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref({
-      darkTheme: false,
-      lightTheme: false,
+    const state = reactive({
+      showTour3: false,
+      steps3: [{
+          content: '70+ 高质量组件，覆盖移动端主流场景',
+          target: 'target7'
+        }]
     });
-    const iconItemList = reactive([
-      { name: 'option1' },
-      { name: 'option2' },
-      { name: 'option3' }
-    ]);
-    return {
-        visible,
-        iconItemList,
-      };
+    return {...toRefs(state)};
     }
 }
 </script>
@@ -65,65 +58,99 @@ export default {
 ```
 :::
 
-### Option Configuration
+### Custom Style
 
-In the list array, an option can be disabled via the `disabled` field.
+Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size, bubble shell layer background color
 
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Show Icon</nut-button>
+  <nut-cell title="try click" @click="showTour1 = true">
+    <template v-slot:link>
+      <nut-switch id="target5" />
     </template>
-  </nut-popover>
+  </nut-cell>
 
-  <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
-    <template #reference>
-      <nut-button type="primary" shape="square">Disabled</nut-button>
-    </template>
-  </nut-popover>
+  <nut-tour
+    class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
+    v-model:visible="showTour1"
+    :steps="steps1"
+    location="bottom-end"
+    type="tile"
+    bgColor="#f00"
+    theme="dark"
+    :offset="[0, 0]"
+    maskWidth="50"
+    maskHeight="50"
+  ></nut-tour>
 </template>
 
 <script>
 import { reactive, ref } from 'vue';
 export default {
-  setup() {
-    const visible = ref({
-      showIcon: false,
-      disableAction: false,
+   setup() {
+    const state = reactive({
+      showTour1: false,
+      steps1: [{
+          content: '70+ 高质量组件，覆盖移动端主流场景',
+          target: 'target5'
+        }]
     });
+    return {...toRefs(state)};
+    }
+}
+</script>
 
-    const itemList = reactive([
-      {
-        name: 'option1',
-        icon: 'my2'
-      },{
-        name: 'option2',
-        icon: 'cart2'
-      },{
-        name: 'option3',
-        icon: 'location2'
-      }
-    ]);
+```
+:::
 
-    const itemListDisabled = reactive([
-      {
-        name: 'option1',
-        disabled: true
-      },{
-        name: 'option2',
-        disabled: true
-      },{
-        name: 'option3'
-      }
-    ]);
 
-    return {
-        itemList,
-        visible,
-        itemListDisabled,
-      };
+### Custom Offset
+
+'offset' sets the distance of the hollow mask relative to the target element, 'popoverOffset' sets the offset of the bubble layer
+
+:::demo
+```html
+<template>
+  <nut-cell title="try click" @click="showTour2 = true">
+    <template v-slot:link>
+      <div class="tour-demo-img">
+        <img
+          id="target6"
+          src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+        />
+      </div>
+    </template>
+  </nut-cell>
+
+  <nut-tour
+    v-model:visible="showTour2"
+    :steps="steps2"
+    type="tile"
+    bgColor="#f00"
+    theme="dark"
+    location="bottom-end"
+    :offset="[8, 8]"
+  ></nut-tour>
+</template>
+
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      showTour2: false,
+      steps2: [
+        {
+          content: '70+ 高质量组件，覆盖移动端主流场景',
+          target: 'target6',
+          popoverOffset: [40, 12],
+          arrowOffset: -36
+        }
+      ]
+    });
+    return {...toRefs(state)};
     }
 }
 </script>
@@ -131,152 +158,105 @@ export default {
 
 ```
 :::
-
 
 ### Custom Content
 
-Customize the content in the slot named content.
+Can customize the bubble layer through the slot slot
 
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.Customized">
-    <template #reference>
-      <nut-button type="primary" shape="square">custom content</nut-button>
+  <nut-cell title="try click" @click="showTour4 = true">
+    <template v-slot:link>
+      <nut-switch id="target8" />
     </template>
+  </nut-cell>
 
-    <template #content>
-      <div class="self-content">
-        <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <nut-icon :name="item.name" size="15"></nut-icon>
-        <div class="self-content-desc">{{ item.desc }}</div>
-        </div>
-      </div>
-    </template>
-  </nut-popover>
-</template>
-
-
-<script>
-import { reactive, ref } from 'vue';
-export default {
-  setup() {
-    const visible = ref({
-      Customized: false,
-    });
-    const selfContent = reactive([
-      {
-        name: 'service',
-        desc: 'option1'
-      },
-      {
-        name: 'notice',
-        desc: 'option2'
-      },
-      {
-        name: 'location',
-        desc: 'option3'
-      },
-      {
-        name: 'category',
-        desc: 'option4'
-      },
-      {
-        name: 'scan2',
-        desc: 'option5'
-      },
-      {
-        name: 'message',
-        desc: 'option6'
-      }
-    ]);
-
-    return {
-      visible,
-      selfContent,
-    };
-  }
-}
-</script>
-
-<style lang="scss">
-.self-content {
-  width: 195px;
-  display: flex;
-  flex-wrap: wrap;
-  &-item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  &-desc {
-    margin-top: 5px;
-    width: 60px;
-    font-size: 10px;
-    text-align: center;
-  }
-}
-</style>
-
-
-```
-:::
-
-### Placement
-
-Use the location property to control where the bubble pops up. optional value
-
-```
-top           # Top middle 
-left          # Left middle 
-right         # Right middle 
-bottom        # Bottom middle 
-```
-New since `v3.1.21`
-```
-top-start     # Top left
-top-end       # Top right 
-left-start    # Left top
-left-end      # Left bottom
-right-start   # Right top
-right-end     # Right bottom
-bottom-start  # Bottom left
-bottom-end    # Bottom right
-```
-
-
-:::demo
-```html
-<template>
-  <nut-popover v-model:visible="visible" location="top" theme="dark" :list="iconItemList">
-    <template #reference>
-      <div class="brick"></div>
-    </template>
-  </nut-popover>
+  <nut-tour
+    v-model:visible="showTour4"
+    :steps="steps4"
+    type="tile"
+    theme="dark"
+    location="bottom-end"
+    :offset="[8, 8]"
+    :closeOnClickOverlay="false"
+  >
+    <div class="tour-demo-custom-content">
+      <div>nutui 4.x 即将发布，敬请期待</div>
+      <nut-divider direction="vertical" />
+      <div @click="showTour4 = false">知道了</div>
+    </div>
+  </nut-tour>
 </template>
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref(false);
-
-    const iconItemList = reactive([
+    const state = reactive({
+      showTour4: false,
+      steps4: [
         {
-          name: 'option1'
+          target: 'target8'
+        }
+      ]
+    });
+    return {...toRefs(state)};
+  }
+};
+</script>
+
+```
+:::
+
+### Steps
+
+
+:::demo
+```html
+<template>
+  <nut-cell title="try click" @click="showTour = true"></nut-cell>
+
+  <nut-tour
+    class="nut-custom-tour"
+    v-model:visible="showTour"
+    :steps="steps"
+    location="top-start"
+    :offset="[0, 0]"
+    maskWidth="50"
+    maskHeight="50"
+  ></nut-tour>
+</template>
+
+<script lang="ts">
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      showTour: false,
+      steps: [
+        {
+          content: '70+ 高质量组件，覆盖移动端主流场景',
+          target: 'target1'
         },
         {
-          name: 'option2'
-        }]);
-
-      return {
-        iconItemList,
-        visible,
-      };
-    }
+          content: '支持一套代码同时开发多端小程序+H5',
+          target: 'target2'
+        },
+        {
+          content: '基于京东APP 10.0 视觉规范',
+          target: 'target3',
+          location: 'top-end'
+        },
+        {
+          content: '支持定制主题，内置 700+ 个主题变量',
+          target: 'target4',
+          location: 'top-end'
+        }
+      ],
+    });
+    return {...toRefs(state)};
+  }
 };
 </script>
 
@@ -289,45 +269,43 @@ export default {
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
-| list          | list of options                          | List[]   | []        |
-| visible      | whether to show                 | boolean  | false     |
-| theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
-| location       | pop-up location  | string   | `bottom`  |
-| offset `v3.1.21`       | the offset of the occurrence position  | [number, number]   | [0, 12]  |
-| show-arrow `v3.1.21`       | whether to show small arrows  | boolean  | true  |
-| custom-class `v3.1.21`       | custom class   | string  | ''  |
-| duration `v3.1.21`       | Transition duration  |  [number, number]  | 0.3  |
-| iconPrefix `v3.1.21`       | Icon className prefix | string  | 'nut-icon''  |
-| overlay `v3.2.8`       | Whether to show overlay  | Boolean  | false  |
-| overlay-class `v3.2.8`       | Custom overlay class | string  | ''  |
-| overlay-style `v3.2.8`       | Custom overlay style  | string  | ''  |
-| close-on-click-overlay `v3.2.8`       | Whether to close when clicking overlay  | boolean  | true  |
-| close-on-click-action `v3.2.8`       | Whether to close when clicking action  | boolean  | true |
-| close-on-click-outside `v3.2.8`       | Whether to close when clicking outside | boolean  | true  |
+| visible      | Whether to display the boot eject layer                 | boolean  | false     |
+| type          | Tour type            | string   | `step`   |
+| steps       | Boot Step Content  | StepOptions[]   | []  |
+| offset       | The offset of the hollow mask relative to the target element  | [number, number]   | [8, 10]  |
+| current      | When the type is' step ', the number of steps is displayed by default  | number  | 0  |
+| custom-class  | Custom class  | string  | ''  |
+| location      | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)  |  String  | 'bottom'  |
+| next-step-Txt       | Next step text | string   | 'next'  |
+| prev-step-Txt        | Prev step text  | string   | 'prev'  |
+| complete-txt       | Complete text  | string   | 'complete'  |
+| mask       | Whether to display cutout mask  | Boolean  | true |
+| bg-color       | Custom background color  | Boolean  | '' |
+| theme   | Theme style, can be set to dark light,[theme](https://nutui.jd.com/#/zh-CN/component/popover)  | String  | 'light' |
+| mask-width       | Width of hollow mask  | Number、String  | '' |
+| mask-height       | Hollow mask height  | Number、String  | '' |
+| close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
 
-### List data structure  
+### StepOptions  
 
-The List property is an array of objects, each object in the array is configured with a column, and the object can contain the following values:
-
-| Key            | Description                 | Type      | Default  |
+| Attribute | Description | Type | Default |
 |----------------|----------------------|----------|--------|
-| name           | option text               | string   | -      |
-| icon           | `nut-icon` name      | string   | -      |
-| disabled       | whether to disable          | boolean  | false  | 
-| className `v3.1.21`      | Add extra class names for corresponding options          | string/Array/object  | -  | 
+| target           | target dom               | Element   | -      |
+| content           | popover content     | String   | ''     |
+| location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | String  | 'bottom'  |
+| popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | [0, 12]  | 
+| arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | 0  | 
 
 
 ### Slots
 
 | Name   | Description           |
 |---------|--------------|
-| content | Customize Bubble Component Menu Content |
-| reference | The content of the element that triggers the Popover to display |
+| default | Custom popover content |
 
 ### Events
 
-| Event     | Description    | 
+| Name   | Description           |
 |---------|--------------|
-| choose | Triggered when an option is clicked |
-| open   | Triggered when the menu is opened |
-| close  | Fired when the menu is closed |
+| change | Emit when step change |
+| close   | Emit when popover close |

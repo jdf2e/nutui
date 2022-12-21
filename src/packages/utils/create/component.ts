@@ -9,6 +9,7 @@ import {
 } from 'vue';
 import locale from '@/packages/locale';
 import { getPropByPath, isFunction } from '../util';
+
 export function createComponent(name: string) {
   const componentName = 'nut-' + name;
   return {

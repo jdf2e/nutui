@@ -1,11 +1,7 @@
-import { ref, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-interface PickerOption {
-  text: string | number;
-  value: string | number;
-  disabled?: string;
-  children?: PickerOption[];
-  className?: string | number;
-}
+import { ref, reactive, watch, computed, toRefs, PropType } from 'vue';
+import { createComponent } from '@/packages/utils/create';
+const { componentName } = createComponent('picker');
+import { PickerOption } from './types';
 
 export const usePicker = (props: any, emit: any) => {
   const state = reactive({
@@ -13,9 +9,7 @@ export const usePicker = (props: any, emit: any) => {
   });
 
   // 选中项
-  let defaultValues = ref<(number | string)[]>(
-    Array.isArray(props.modelValue) && props.modelValue.length > 0 ? props.modelValue : []
-  );
+  let defaultValues = ref<(number | string)[]>([]);
 
   const pickerColumn = ref<any[]>([]);
 
@@ -26,7 +20,7 @@ export const usePicker = (props: any, emit: any) => {
   };
 
   const classes = computed(() => {
-    const prefixCls = 'nut-picker';
+    const prefixCls = componentName;
     return {
       [prefixCls]: true
     };
@@ -42,6 +36,7 @@ export const usePicker = (props: any, emit: any) => {
 
     return optins;
   });
+
   // 当前类型
   const columnsType = computed(() => {
     const firstColumn: PickerOption | PickerOption[] = state.formattedColumns[0];
@@ -93,12 +88,11 @@ export const usePicker = (props: any, emit: any) => {
     return formatted;
   };
 
-  const close = () => {
-    emit('close', {
+  const cancel = () => {
+    emit('cancel', {
       selectedValue: defaultValues.value,
       selectedOptions: selectedOptions.value
     });
-    emit('update:visible', false);
   };
 
   const changeHandler = (columnIndex: number, option: PickerOption) => {
@@ -135,7 +129,6 @@ export const usePicker = (props: any, emit: any) => {
     if (defaultValues.value && !defaultValues.value.length) {
       columnsList.value.forEach((columns) => {
         defaultValues.value.push(columns[0].value);
-        selectedOptions.value.push(columns[0]);
       });
     }
 
@@ -143,7 +136,6 @@ export const usePicker = (props: any, emit: any) => {
       selectedValue: defaultValues.value,
       selectedOptions: selectedOptions.value
     });
-    emit('update:visible', false);
   };
 
   const isSameValue = (valA: any, valB: any) => JSON.stringify(valA) === JSON.stringify(valB);
@@ -155,7 +147,7 @@ export const usePicker = (props: any, emit: any) => {
         defaultValues.value = newValues;
       }
     },
-    { deep: true }
+    { deep: true, immediate: true }
   );
 
   watch(
@@ -180,7 +172,7 @@ export const usePicker = (props: any, emit: any) => {
     ...toRefs(state),
     columnsType,
     columnsList,
-    close,
+    cancel,
     changeHandler,
     confirm,
     defaultValues,

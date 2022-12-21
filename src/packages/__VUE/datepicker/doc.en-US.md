@@ -8,16 +8,11 @@ Used to select time, support date and time dimensions, usually used with the Pop
     
 ```javascript
 import { createApp } from 'vue';
-// vue
-import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui';
-// taro
-import { DatePicker, Picker, Popup, Overlay } from '@nutui/nutui-taro';
+import { DatePicker, Picker } from '@nutui/nutui';
 
 const app = createApp();
 app.use(DatePicker);
 app.use(Picker);
-app.use(Popup);
-app.use(Overlay);
 ```
     
 ### Choose Date
@@ -25,10 +20,8 @@ app.use(Overlay);
 
 ```html
 <template>
-  <nut-cell title="Show Chinese" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
-      v-model:visible="show"
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
@@ -41,21 +34,71 @@ app.use(Overlay);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('2022-05-10');
       const minDate = new Date(2020, 0, 1),
       const maxDate = new Date(2025, 10, 1),
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
-        desc.value = selectedOptions.map((option) => option.text).join('');
+        Toast.text(selectedOptions.map((val: any) => val.text).join(''));
       }
       return {
         currentDate,
-        show,
-        desc,
         minDate,
         maxDate,
         confirm
+      };
+    }
+  };
+</script>
+
+```
+:::
+
+### With popup
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="选择日期" :desc="popupDesc" @click="show = true"></nut-cell>
+  <nut-popup position="bottom" v-model:visible="show">
+    <nut-date-picker
+      v-model="currentDate"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="popupConfirm"
+      :is-show-chinese="true"
+      :threeDimensional="false"
+    >
+      <nut-button block type="primary" @click="alwaysFun">Always</nut-button>
+    </nut-date-picker>
+  </nut-popup>
+</template>
+
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+       const show = ref(false);
+      const popupDesc = ref();
+      const minDate = new Date(2020, 0, 1);
+      const maxDate = new Date(2025, 10, 1);
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const popupConfirm = ({ selectedValue, selectedOptions })=>{
+        popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
+        show.value = false;
+      }
+      const alwaysFun = ()=>{
+        popupDesc.value = 'Always'
+        show.value = false;
+      }
+      return {
+        show,
+        popupDesc,
+        currentDate,
+        minDate,
+        maxDate,
+        alwaysFun,
+        popupConfirm
       };
     }
   };
@@ -69,7 +112,6 @@ app.use(Overlay);
 :::demo
 ```html
 <template>
-  <nut-cell title="Limit the start and end time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       type="month-day"
@@ -77,7 +119,6 @@ app.use(Overlay);
       :min-date="new Date(2022, 0, 1)"
       :max-date="new Date(2022, 7, 1)"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker> 
 </template>
 
@@ -85,15 +126,11 @@ app.use(Overlay);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('05-10');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join('-');
+        Toast.text(selectedOptions.map((val: any) => val.text).join('-'));
       }
       return {
-        show,
-        desc,
         currentDate,
         confirm
       };
@@ -108,7 +145,6 @@ app.use(Overlay);
 
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
@@ -116,24 +152,18 @@ app.use(Overlay);
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show" 
   ></nut-date-picker> 
 </template>
 <script>
   import { ref } from 'vue';
   export default {
-    setup(props) {
-      const show = ref(false);
-      const desc = ref('2022-05-10 10:10');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedValue.slice(0, 3).join('-');
         time = selectedValue.slice(3).join(':');
-        desc.value = date + ' ' + time;
+        Toast.text(date + ' ' + time) ;
       }
       return {
-        show,
-        desc,
         currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
@@ -149,7 +179,6 @@ app.use(Overlay);
 :::demo
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
@@ -157,22 +186,17 @@ app.use(Overlay);
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join(':');
+        Toast.text(selectedValue.join(':'));
       }
       return {
-        show,
-        desc,
         currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
@@ -188,7 +212,6 @@ app.use(Overlay);
 :::demo
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
@@ -197,20 +220,17 @@ app.use(Overlay);
       :max-date="new Date(2022, 10, 1)"
       :formatter="formatter"
       @confirm="confirm"
-      v-model:visible="show"
-  ><nut-button block type="primary" @click="alwaysFun">Forever</nut-button></nut-date-picker>
+  ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
         time = selectedOptions.slice(3).map((op) => op.value).join(':');
-        desc.value = selectedOptions[0].text + 'Year' + date + ' ' + time;
+        Toast.text(selectedOptions[0].text + 'Year' + date + ' ' + time);
       }
       const formatter = (type: string, option) => {
         switch (type) {
@@ -234,17 +254,11 @@ app.use(Overlay);
         }
         return option;
       };
-      const alwaysFun = () => {
-        show.value = false;
-        desc.value = 'Forever';
-      };
+     
       return {
-        show,
-        desc,
         currentDate,
         confirm,
-        formatter,
-        alwaysFun
+        formatter
       };
     }
   };
@@ -257,7 +271,6 @@ app.use(Overlay);
 :::demo
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       type="time"
@@ -265,22 +278,18 @@ app.use(Overlay);
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('10:10:00');
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        desc.value = selectedValue.join(':');
+        Toast.text(selectedValue.join(':')) ;
       }
       return {
-        show,
-        desc,
+        currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
         confirm
@@ -296,7 +305,6 @@ app.use(Overlay);
 :::demo
 ```html
 <template>
-  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
   <nut-date-picker
       v-model="currentDate"
       title="Choose Time"
@@ -306,15 +314,12 @@ app.use(Overlay);
       :filter="filter"
       :formatter="formatter"
       @confirm="confirm"
-      v-model:visible="show"
   ></nut-date-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const show = ref(false);
-      const desc = ref('2022-05-10 00');
       const currentDate = new Date(2022, 4, 10, 0, 0);
       const formatter = (type: string, option) => {
         switch (type) {
@@ -343,11 +348,10 @@ app.use(Overlay);
         return options;
       };
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        descList[index].value = selectedOptions.map((option) => option.text).join('');
+         Toast.text(selectedOptions.map((option) => option.text).join(''));
       }
       return {
-        show,
-        desc,
+        currentDate,
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2025, 10, 1),
         confirm,
@@ -367,27 +371,28 @@ app.use(Overlay);
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | Default Date                                            | Date    | `null`   |
-| v-model:visible | Is Show                    | Boolean | `false`  |
 | type            | Can be set to date time year-month month-day datehour | String  | `'date'` |
 | minute-step     | Option minute step                                        | Number  | `1`      |
 | is-show-chinese | Show Chinese                                  | Boolean | `false`  |
 | min-date        | Start date                                         | Date    | `Ten years ago on January 1` |
 | max-date        | End date                                          | Date    | `Ten years later on December 31` |
-| formatter `v3.1.18`  | Option text formatter                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter  `v3.1.18`  | Option filter                                         | (type: string, option: PickerOption) => PickerOption[]    |  |
+| formatter   | Option text formatter                                          | (type: string, option: PickerOption) => PickerOption    |  |
+| filter   | Option filter                                         | (type: string, option: PickerOption) => PickerOption[]    |  |
 | title           | Title                                          | String  | `null`   |
 | ok-text           | Text of confirm button                                      | String  | confirm   |
 | cancel-text           | Text of cancel button                                          | String  | cancel   |
-| three-dimensional  `v3.1.23`          | Turn on 3D effects               | Boolean  | true   |
-| swipe-duration `v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
-| safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| three-dimensional          | Turn on 3D effects               | Boolean  | true   |
+| swipe-duration           | Duration of the momentum animation        | Number、String  | 1000   |
+| visible-option-num          | Count of visible columns       | number \| string | 7               |
+| option-height         | Option height             | number \| string | 36     |
+| show-toolbar         | Whether to show toolbar             | Boolean | true    |
 
 ### Events
 
 | Event | Description           | Arguments     |
 |---------|--------------------|--------------|
 | confirm | Emitted when click confirm button. | 	{ selectedValue, selectedOptions } |
-| close   | Emitted when click close button.       | 	{ selectedValue, selectedOptions } |
+| cancel   | Emitted when click cancel button.       | 	{ selectedValue, selectedOptions } |
 | change   |  Emitted when current option changed.       | { columnIndex, selectedValue, selectedOptions } |
 
 ### Slots

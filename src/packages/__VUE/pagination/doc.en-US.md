@@ -7,10 +7,7 @@ When the amount of data is too much, use pagination to separate the data.
 ### Install
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Pagination,Icon } from '@nutui/nutui';
-//taro
-import { Pagination,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Pagination);

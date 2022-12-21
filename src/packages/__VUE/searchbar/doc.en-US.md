@@ -8,16 +8,10 @@ Search bar
     
 ```javascript
 import { createApp } from 'vue';
-
-// vue
-import { Searchbar, Icon } from '@nutui/nutui';
-// taro
-import { Searchbar, Icon } from '@nutui/nutui-taro';
+import { Searchbar } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Searchbar);
-app.use(Icon);
-
 ```    
     
 ### Basic Usage
@@ -74,28 +68,29 @@ app.use(Icon);
 
 ### Display search Icon
 :::demo
-```html
+````html
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
   </nut-searchbar>
 </template>
 <script lang="ts">
-  import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+import { toRefs, reactive } from 'vue';
+import { Search2 } from '@nutui/icons-vue';
+export default {
+  components: { Search2 },
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
-  };
+    return {
+      ...toRefs(state),
+    };
+  }
+};
 </script>
 ```
 :::
@@ -106,7 +101,7 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:rightout>
-      搜索
+      Search
     </template>
   </nut-searchbar>
 </template>
@@ -131,7 +126,7 @@ app.use(Icon);
 :::demo
 ```html
 <template>
-  <nut-searchbar v-model="searchValue4" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
+  <nut-searchbar v-model="searchValue" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
@@ -149,29 +144,63 @@ app.use(Icon);
 </script>
 ```
 :::
+
+### Custom Clear Button icon
+
+:::demo
+```html
+<template>
+  <nut-searchbar v-model="searchValue">
+    <template v-slot:clearIcon>
+      <img :src="icon" style="width: 10px; height: 10px" />
+    </template>
+  </nut-searchbar>
+</template>
+<script lang="ts">
+  import { toRefs, reactive } from 'vue';
+  export default {
+    setup() {
+      const icon = 
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
+      const state = reactive({
+        searchValue: ""
+      });
+
+      return {
+        ...toRefs(state),
+        icon
+      };
+    }
+  };
+</script>
+```
+:::
+
+
 ### Show all icons
 :::demo
 ```html
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      <Left @click="clickLeft" />
     </template>
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
     <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
+      <Photograph />
     </template>
     <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
+      <Message />
     </template>
   </nut-searchbar> 
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
   export default {
+    components: { Search2, Left, Photograph, Message },
     setup() {
       const state = reactive({
         searchValue: ""
@@ -198,7 +227,6 @@ app.use(Icon);
 |placeholder | input box default dark grain | string | 'please enter'|
 |clear | whether to display the clear button | Boolean | true|
 |background | input box external background | string | '#fff'|
-|confirm-type | the text of the button at the bottom right corner of the keyboard (` only applet supported ') takes effect only when' type='text ''. The optional values `send`: send, `search`: search, `next`: next, `go`: go, `done`: finish | string | `done`|
 |input-background | internal background of input box | string | '#f7f7f7'|
 |autofocus `v3.1.21` | Auto focus | boolean | false |
 |disabled `v3.1.21`| disable input box | Boolean | false|

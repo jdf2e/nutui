@@ -122,6 +122,7 @@
 
       .nut-popover-item-img {
         vertical-align: top;
+        margin-right: 3px;
       }
 
       .nut-popover-menu-item-name {
@@ -251,4 +252,10 @@
 
 .nut-popover-wrapper {
   display: inline-block;
+}
+
+// Taro
+.nut-popover-content-copy {
+  position: absolute;
+  top: 99999px;
 }

@@ -9,10 +9,7 @@ Used to display a group of message notifications in a continuons loop.
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Noticebar } from '@nutui/nutui';
-// taro
-import { Noticebar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Noticebar);

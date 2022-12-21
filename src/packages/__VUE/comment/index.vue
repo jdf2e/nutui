@@ -19,13 +19,11 @@
     <comment-images :images="images" :videos="videos" :type="imagesRows" @clickImages="clickImages"></comment-images>
 
     <view class="nut-comment__follow" v-if="follow && follow.days > 0" @click="handleClick">
-      <view class="nut-comment__follow-title"
-        ><nut-icon size="14" name="joy-smile" />{{ translate('additionalReview', follow.days) }}</view
-      >
+      <view class="nut-comment__follow-title">{{ translate('additionalReview', follow.days) }}</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
       <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
-        >{{ translate('additionalImages', follow.images.length) }} <nut-icon size="12" name="right"
-      /></view>
+        >{{ translate('additionalImages', follow.images.length) }} <Right width="12px"></Right
+      ></view>
     </view>
 
     <comment-bottom
@@ -43,6 +41,7 @@
 import { ref, onMounted, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment');
+import { JoySmile, Right } from '@nutui/icons-vue';
 
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
@@ -108,7 +107,9 @@ export default create({
   components: {
     CommentHeader,
     CommentImages,
-    CommentBottom
+    CommentBottom,
+    Right,
+    JoySmile
   },
   emits: ['click', 'clickImages', 'clickOperate'],
 

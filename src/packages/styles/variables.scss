@@ -53,6 +53,7 @@ $line-height-base: 1.5 !default;
 // button
 $button-border-radius: 25px !default;
 $button-border-width: 1px !default;
+$button-icon-width: 16px !default;
 $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
 $button-default-color: rgba(102, 102, 102, 1) !default;
@@ -173,7 +174,7 @@ $picker-item-height: 36px !default;
 $picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
-$picker-item-active-line-border: 1px solid #d8d8d8 !default;
+$picker-item-active-line-border: 1px solid #eae7e7 !default;
 $picker-columns-item-color: $title-color !default;
 
 //input
@@ -905,5 +906,6 @@ $invoice-padding: 10px 10px 20px !default;
 // TrendArrow
 $trendarrow-font-size: 14px !default;
 $trendarrow-before-icon-margin: 4px !default;
+$trendarrow-icon-width: 12px !default;
 
 @import './mixins/index';

@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Table } from '@nutui/nutui';
-// taro
-import { Table } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Table);
@@ -376,7 +373,8 @@ app.use(Table);
 </template>
 <script lang="ts">
   import { reactive, toRefs, h } from 'vue';
-  import { Button, Icon } from '@nutui/nutui';
+  import { Button } from '@nutui/nutui';
+   import { Dongdong } from '@nutui/icons-vue';
   export default {
     setup() {
       const state = reactive({
@@ -423,7 +421,7 @@ app.use(Table);
             sex: '女',
             record: '本科',
             render: () => {
-              return h(Icon, { name: 'dongdong', size: '14px' });
+              return h(Dongdong, {  width: '14px',height:'14px '});
             }
           },
           {

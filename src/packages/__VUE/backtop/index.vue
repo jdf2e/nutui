@@ -10,6 +10,7 @@
 import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
+import requestAniFrame, { cancelRaf } from '@/packages/utils/raf';
 import { Top } from '@nutui/icons-vue';
 export default create({
   components: {
@@ -88,13 +89,13 @@ export default create({
     }
 
     function scrollAnimation() {
-      let cid = requestAniFrame()(function fn() {
+      let cid = requestAniFrame(function fn() {
         var t = props.duration - Math.max(0, state.startTime - +new Date() + props.duration);
         var y = (t * -state.scrollTop) / props.duration + state.scrollTop;
         scroll(y);
-        cid = requestAniFrame()(fn);
+        cid = requestAniFrame(fn);
         if (t == props.duration || y == 0) {
-          window.cancelAnimationFrame(cid);
+          cancelRaf(cid);
         }
       });
     }
@@ -109,20 +110,6 @@ export default create({
       state.scrollEl.removeEventListener('resize', scrollListener, false);
     }
 
-    function initCancelAniFrame() {
-      window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
-    }
-
-    function requestAniFrame() {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        function (callback) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    }
-
     function click(e: MouseEvent) {
       state.startTime = +new Date();
       props.isAnimation && props.duration > 0 ? scrollAnimation() : scroll();
@@ -135,7 +122,6 @@ export default create({
       }
 
       addEventListener();
-      initCancelAniFrame();
     }
 
     onMounted(() => {

@@ -33,22 +33,22 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/ellipsis/index",
-          "pathName": "exhibition/pages/ellipsis/index",
+          "name": "exhibition/pages/popover/index",
+          "pathName": "exhibition/pages/popover/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "exhibition/pages/collapse/index",
-          "pathName": "exhibition/pages/collapse/index",
+          "name": "exhibition/pages/tour/index",
+          "pathName": "exhibition/pages/tour/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "dentry/pages/textarea/index",
-          "pathName": "dentry/pages/textarea/index",
+          "name": "dentry/pages/datepicker/index",
+          "pathName": "dentry/pages/datepicker/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -63,6 +63,6 @@
       ]
     }
   },
-  "projectname": "vue",
+  "projectname": "vue4.x",
   "libVersion": "2.27.1"
 }

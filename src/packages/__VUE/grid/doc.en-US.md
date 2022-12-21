@@ -8,10 +8,7 @@ Used to separate into equal-width blocks for page navigation.
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Grid, GridItem } from '@nutui/nutui';
-// taro
-import { Grid, GridItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Grid);
