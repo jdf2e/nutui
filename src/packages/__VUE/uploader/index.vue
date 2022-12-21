@@ -8,21 +8,17 @@
     <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
       <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
         <view class="nut-uploader__preview__progress" v-if="item.status != 'success'">
-          <nut-icon
-            color="#fff"
-            :name="item.status == 'error' ? 'failure' : 'loading'"
-            v-if="item.status != 'ready'"
-          ></nut-icon>
+          <template v-if="item.status != 'ready'">
+            <Failure color="#fff" v-if="item.status == 'error'" />
+            <Loading name="loading" color="#fff" v-else />
+          </template>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
 
-        <nut-icon
-          v-if="isDeletable"
-          v-bind="$attrs"
-          @click="onDelete(item, index)"
-          class="close"
-          :name="deleteIcon"
-        ></nut-icon>
+        <view class="close" v-if="isDeletable" @click="onDelete(item, index)">
+          <slot name="delete-icon"> <Failure /></slot>
+        </view>
+
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -31,7 +27,7 @@
         />
         <view v-else class="nut-uploader__preview-img__file">
           <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
-            <nut-icon color="#808080" name="link"></nut-icon>&nbsp;{{ item.name }}
+            <Link color="#808080" />&nbsp;{{ item.name }}
           </view>
         </view>
 
@@ -40,14 +36,10 @@
 
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
         <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
-          <nut-icon name="link" />&nbsp;{{ item.name }}
+          <Link />&nbsp;{{ item.name }}
         </view>
-        <nut-icon
-          class="nut-uploader__preview-img__file__del"
-          @click="onDelete(item, index)"
-          color="#808080"
-          name="del"
-        />
+        <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
+
         <nut-progress
           size="small"
           :percentage="item.percentage"
@@ -79,12 +71,16 @@ import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.vue';
-import { Photograph } from '@nutui/icons-vue';
+import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 const { componentName, create, translate } = createComponent('uploader');
 export default create({
   components: {
     [Progress.name]: Progress,
-    Photograph
+    Photograph,
+    Failure,
+    Loading,
+    Del,
+    Link
   },
   props: {
     name: { type: String, default: 'file' },
@@ -104,14 +100,11 @@ export default create({
     accept: { type: String, default: '*' },
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
-    uploadIcon: { type: String, default: 'photograph' },
-    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
     multiple: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
-    deleteIcon: { type: String, default: 'failure' },
     beforeUpload: {
       type: Function,
       default: null

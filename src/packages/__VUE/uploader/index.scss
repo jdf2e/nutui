@@ -85,6 +85,8 @@
         -webkit-line-clamp: 1;
         padding: 2px;
         height: 24px;
+        display: flex;
+        align-items: center;
       }
 
       .nut-uploader__preview-img__file__del {
