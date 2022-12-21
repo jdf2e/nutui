@@ -8,10 +8,7 @@ Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { NumberKeyboard,Popup } from '@nutui/nutui';
-//taro
-import { NumberKeyboard,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(NumberKeyboard);
@@ -296,7 +293,7 @@ export default{
 | overlay | Whether to show the mask  | Boolean| true |
 | maxlength  | Value maxlength，Use with v-model | Number ｜ String| 6 |
 | confirm-text  | Custom done button text,Such as "pay", "next", "submit" | String | done |
-| teleport    | Specify the mount node `(not supported by miniProgram)`  | String         | `"body"`      |
+| teleport    | Specify the mount node  | String         | `"body"`      |
 | pop-class    | Custom bullet box classname     | String         | -             |
 
 

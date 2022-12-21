@@ -9,10 +9,7 @@ Create a mask layer, which is usually used to prevent users from doing other ope
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Overlay } from '@nutui/nutui';
-// taro
-import { Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Overlay);

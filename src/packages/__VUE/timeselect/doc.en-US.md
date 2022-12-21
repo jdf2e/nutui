@@ -8,10 +8,7 @@ For delivery time selection
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui';
-// taro
-import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TimeSelect);

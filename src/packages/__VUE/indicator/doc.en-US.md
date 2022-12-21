@@ -8,10 +8,7 @@ Displays the progress of a task or process, which is often used to open a proces
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Indicator } from '@nutui/nutui'
-// taro
-import { Indicator } from '@nutui/nutui-taro'
 
 const app = createApp();
 

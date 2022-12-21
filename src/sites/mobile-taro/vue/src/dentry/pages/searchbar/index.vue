@@ -9,7 +9,7 @@
     <h2>显示搜索 icon</h2>
     <nut-searchbar v-model="searchValue2">
       <template v-slot:leftin>
-        <nut-icon size="14" name="search2"></nut-icon>
+        <Search2 />
       </template>
     </nut-searchbar>
 
@@ -27,21 +27,25 @@
     </nut-searchbar>
 
     <h2>自定义清除按钮 icon</h2>
-    <nut-searchbar v-model="searchValue6" :clear-icon="icon"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue6">
+      <template v-slot:clearIcon>
+        <img :src="icon" style="width: 10px; height: 10px" />
+      </template>
+    </nut-searchbar>
 
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">
       <template v-slot:leftout>
-        <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+        <Left @click="clickLeft" />
       </template>
       <template v-slot:leftin>
-        <nut-icon size="14" name="search2"></nut-icon>
+        <Search2 />
       </template>
       <template v-slot:rightin>
-        <nut-icon size="20" name="photograph"></nut-icon>
+        <Photograph />
       </template>
       <template v-slot:rightout>
-        <nut-icon size="20" name="message"></nut-icon>
+        <Message />
       </template>
     </nut-searchbar>
   </div>
@@ -49,8 +53,12 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
+import { Search2, Left, Photograph, Message } from '@nutui/icons-vue-taro';
+
 export default {
   props: {},
+  components: { Search2, Left, Photograph, Message },
+
   setup() {
     const icon =
       'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';

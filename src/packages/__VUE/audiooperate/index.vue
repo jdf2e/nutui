@@ -43,7 +43,14 @@ export default create({
 
   setup(props, { emit }) {
     const audio: any = inject('audioParent');
-    const parent: any = reactive(audio);
+    const parent: {
+      children: [];
+      audioData: any;
+      handleMute: ((payload: MouseEvent) => void) | undefined;
+      forward: ((payload: MouseEvent) => void) | undefined;
+      fastBack: ((payload: MouseEvent) => void) | undefined;
+      changeStatus: ((payload: MouseEvent) => void) | undefined;
+    } = reactive(audio);
     const customSlot = ref(useSlots().default);
 
     return { ...toRefs(props), ...toRefs(parent), customSlot, translate };

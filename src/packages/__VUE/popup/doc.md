@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Popup,Overlay } from '@nutui/nutui';
-//taro
-import { Popup,Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popup)
@@ -225,8 +222,8 @@ app.use(Overlay)
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | string         | `"top-right"` |
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                          | boolean        | `true`        |
 | round                  | 是否显示圆角                                                |boolean        | `false`       |
-| teleport               | 指定挂载节点(`小程序不支持`)                                                | string         | `"body"`      |
-| teleport-disable `v3.2.7`              | 是否允许挂载节点(`小程序不支持`)                  | boolean         | `false`      |
+| teleport               | 指定挂载节点                                               | string         | `"body"`      |
+| teleport-disable `v3.2.7`              | 是否允许挂载节点                 | boolean         | `false`      |
 | safe-area-inset-bottom `v3.1.19`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
 
 ### Events

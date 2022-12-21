@@ -9,10 +9,7 @@ Provide navigation function, often used at the top of the page.
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Navbar, Tabs, TabPane } from '@nutui/nutui';
-// taro
-import { Navbar, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);

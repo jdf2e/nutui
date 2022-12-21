@@ -9,10 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-// vue
-import { Navbar ,Tabs, TabPane } from '@nutui/nutui';
-// taro
-import { Navbar ,Tabs, TabPane } from '@nutui/nutui-taro';
+import { Navbar, Tabs, TabPane } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Navbar);

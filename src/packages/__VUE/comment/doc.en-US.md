@@ -9,10 +9,7 @@ Used to display the comment list
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Comment,Rate } from '@nutui/nutui';
-// taro
-import { Comment,Rate } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Comment);
@@ -184,8 +181,8 @@ export default {
 
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
-| headerType         | Header type      | String | default               |
-| imagesRows         | Comment picture shows type of lines    | String | one               |
+| header-type         | Header type      | String | default               |
+| images-rows         | Comment picture shows type of lines    | String | one               |
 | ellipsis        | Ellipsis number       | [String,Number] | 2               |
 | videos         | Videos data | Array | []              |
 | images | Images data    | Array | [] |

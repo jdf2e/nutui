@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp, reactive, toRefs } from 'vue';
-//vue
 import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
-//taro
-import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ImagePreview);

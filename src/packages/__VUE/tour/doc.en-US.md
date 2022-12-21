@@ -9,10 +9,7 @@ A bubble component used to guide the user through the product's capabilities. Th
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Tour, Popover, Popup } from '@nutui/nutui';
-// taro
-import { Tour, Popover, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 

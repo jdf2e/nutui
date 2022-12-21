@@ -8,15 +8,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-
-// vue
-import { Searchbar, Icon } from '@nutui/nutui';
-// taro
-import { Searchbar, Icon } from '@nutui/nutui-taro';
+import { Searchbar } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Searchbar);
-app.use(Icon);
 
 ```    
     
@@ -78,24 +73,25 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
   </nut-searchbar>
 </template>
 <script lang="ts">
-  import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+import { toRefs, reactive } from 'vue';
+import { Search2 } from '@nutui/icons-vue';
+export default {
+  components: { Search2 },
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
-  };
+    return {
+      ...toRefs(state),
+    };
+  }
+};
 </script>
 ```
 :::
@@ -154,7 +150,11 @@ app.use(Icon);
 :::demo
 ```html
 <template>
-  <nut-searchbar v-model="searchValue" :clear-icon="icon"> </nut-searchbar>
+  <nut-searchbar v-model="searchValue">
+    <template v-slot:clearIcon>
+      <img :src="icon" style="width: 10px; height: 10px" />
+    </template>
+  </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
@@ -182,23 +182,24 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      <Left @click="clickLeft" />
     </template>
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
     <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
+      <Photograph />
     </template>
     <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
+      <Message />
     </template>
   </nut-searchbar> 
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
   export default {
+    components: { Search2, Left, Photograph, Message },
     setup() {
       const state = reactive({
         searchValue: ""
@@ -227,8 +228,6 @@ app.use(Icon);
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | clear-icon `v3.2.2`         | 自定义清除按钮图标 | String | "circle-close"     |
 | background      | 输入框外部背景 | String |   '#fff'   |
-| input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
-| confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
 | focus-style `v3.2.2` | 聚焦时搜索框样式 | Object | - |

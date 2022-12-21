@@ -47,6 +47,17 @@ const getCompName = (name) => {
   return packageName ? packageName.name : ''
 }
 
+const getLocale = () => {
+  const source = path.join(sourceDir, 'locale');
+  const to = path.resolve(__dirname, './../dist/packages/locale');
+  fs.cp(source, to, { recursive: true }, (err) => {
+    if(err) {
+      console.error(err);
+      return;
+    }
+  })
+}
+
 fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
   if(err) {
     console.error(err);
@@ -54,7 +65,7 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
   }
 
   const oldName = path.join(toDir, 'nutui.taro.vue.build.d.ts');
-  const newName = path.join(toDir, 'nutui.d.ts');
+  const newName = path.join(toDir, 'index.d.ts');
 
   fs.rename(oldName, newName, (err) => {
     if(err) {
@@ -69,17 +80,23 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
     const inputs = content.match(regex);
     
     if(inputs && inputs.length) {
-      let name = item.substring(0, item.lastIndexOf('/'))
-      name = name.substring(name.lastIndexOf('/') + 1)
-      let remain = `
+      let name = item.substring(0, item.lastIndexOf('/'));
+      name = name.substring(name.lastIndexOf('/') + 1);
+      const componentName = getCompName(name);
+      if(componentName) {
+        let remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${getCompName(name)}: typeof _default;
+      Nut${componentName}: typeof _default;
   }
 }`;
-      let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
-      fs.writeFileSync(item, changeContent);
+        let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`)
+        fs.writeFileSync(item, changeContent);
+      }
     }
   });
+
+  //国际化处理
+  getLocale();
 
 });

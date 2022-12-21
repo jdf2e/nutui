@@ -8,10 +8,7 @@ Load on demand Load the Popup、Elevator dependent component
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Address, Popup, Elevator } from '@nutui/nutui';
-//taro
-import { Address, Popup, Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);

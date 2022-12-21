@@ -9,10 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { ConfigProvider } from '@nutui/nutui';
-// taro
-import { ConfigProvider } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ConfigProvider);
@@ -98,26 +95,3 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 |-------|--------------------------------------------------|--------|--------|
 | theme | 主题风格，设置为 `dark` 来开启深色模式，全局生效 | String | -      |
 | tag   | 根节点对应的 HTML 标签名                         | String | div    |
-
-
-### 暗黑模式适配进度
-
-目前，只有以下组件支持了暗黑模式，其他组件还在持续完善中，请关注后续的发布 欢迎 PR 共建：
-
-- Button  
-- Cell  
-- Icon  
-- Overlay  
-- Popup  
-- Layout  
-- Sticky  
-- Divider  
-- Grid  
-- Navbar  
-- FixedNav  
-- Menu  
-- Tabbar  
-- Elevator  
-- Pagination  
-- Tabs  
-- Form...

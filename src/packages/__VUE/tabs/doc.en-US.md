@@ -8,10 +8,7 @@ It is often used for the storage and display of large blocks of content in the l
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Tabs, TabPane } from '@nutui/nutui';
-// taro
-import { Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tabs);
@@ -348,8 +345,8 @@ export default {
 | title-gutter         | Label gap                                                                                                                          | number,string | 0          |
 | size`v3.1.13`        | Tab bar font size optional value  `large` `normal` `small`                                                                         | string        | normal     |
 | auto-height`v3.1.21` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean       | false      |
-| sticky`v3.2.3` `applet not supported` | Whether to use sticky mode| boolean       | false      |
-| top`v3.2.3` `applet not supported` | Sticky offset top | number       | 0      |
+| sticky`v3.2.3` | Whether to use sticky mode| boolean       | false      |
+| top`v3.2.3` | Sticky offset top | number       | 0      |
 
 ### Tabs Slots
 

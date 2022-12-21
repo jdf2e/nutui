@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Calendar,Popup } from '@nutui/nutui';
-// taro
-import { Calendar,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Calendar);

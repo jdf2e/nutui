@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Rate,Icon } from '@nutui/nutui';
-//taro
-import { Rate,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Rate);
@@ -213,7 +210,7 @@ export default {
 | readonly                           | 是否只读                                  | Boolean | false            |
 | disabled                           | 是否禁用                                  | Boolean | false            |
 | spacing                            | 间距                                      | Number  | 20               |
-| touchable`v3.1.22` `小程序暂不支持` | 是否可以通过滑动手势选择评分              | Boolean | true             |
+| touchable`v3.1.22` | 是否可以通过滑动手势选择评分              | Boolean | true             |
 
 ### Events
 | 字段   | 说明                       | 回调参数 |

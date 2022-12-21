@@ -9,7 +9,9 @@
     "src/**/*.d.ts",
     "src/packages/__VUE/**/index.vue",
     "src/packages/__VUE/**/*.ts",
-    "src/packages/nutui.vue.build.ts"
+    "src/packages/nutui.vue.build.ts",
+    "src/packages/locale",
+    "src/packages/utils",
   ],
   "exclude": [
     "node_modules",

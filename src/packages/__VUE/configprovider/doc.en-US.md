@@ -9,10 +9,7 @@ It is used to globally configure nutui components and provides dark mode.
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { ConfigProvider } from '@nutui/nutui';
-// taro
-import { ConfigProvider } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ConfigProvider);
@@ -64,26 +61,3 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
 |-----------|----------------------------------------------------------------------|--------|---------|
 | theme     | Theme style, set to `dark` to enable dark mode, take effect globally | String | -       |
 | tag       | HTML Tag of root element                                             | String | div     |
-
-
-## Dark mode adaptation progress
-
-At present, only the following components support dark mode, other components are still being improved, please pay attention to the follow-up release:
-
-- Button  
-- Cell  
-- Icon  
-- Overlay  
-- Popup  
-- Layout  
-- Sticky  
-- Divider  
-- Grid  
-- Navbar  
-- FixedNav  
-- Menu  
-- Tabbar  
-- Elevator  
-- Pagination  
-- Tabs  
-- Form...

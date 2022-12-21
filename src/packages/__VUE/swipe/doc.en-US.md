@@ -8,10 +8,7 @@ Used for cell components that can slide left and right to display operation butt
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Swipe,Cell,Button } from '@nutui/nutui';
-//taro
-import { Swipe,Cell,Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swipe);

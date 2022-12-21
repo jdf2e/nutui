@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./tsc/type",
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/packages/__VUE/**/index.taro.vue",
+    "src/packages/__VUE/**/*.ts",
+    "src/packages/nutui.taro.vue.build.ts",
+    "src/packages/locale",
+    "src/packages/utils",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/test/**/*",
+    "**/demo/**/*",
+    "src/packages/__VUE/**/__tests__/",
+    "src/packages/__VUE/**/__test__/"
+  ]
+}

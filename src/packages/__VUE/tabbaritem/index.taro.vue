@@ -5,7 +5,7 @@
     :style="{
       color: active ? state.activeColor : state.unactiveColor
     }"
-    @click="change(state.index)"
+    @click="change()"
   >
     <view class="nut-tabbar-item_icon-box">
       <template v-if="!dot">
@@ -78,7 +78,7 @@ export default create({
     },
     num: {
       // 页签右上角的数字角标
-      type: String,
+      type: [String, Number],
       default: ''
     },
     activeImg: {
