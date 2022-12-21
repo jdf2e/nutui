@@ -8,12 +8,10 @@ Used to show the current progress of the operation.
 
 ``` javascript
 import { createApp } from 'vue';
-import { Progress,Icon } from '@nutui/nutui';
+import { Progress } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Progress);
-app.use(Icon);
-
 ```
 
 
@@ -76,11 +74,12 @@ app.use(Icon);
 <template>
      <nut-cell>
         <nut-progress percentage="60" :text-inside="true">
-          <nut-icon
+          <img
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            width="30"
+            height="30"
             style="display: block"
-            size="30"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          ></nut-icon>
+          />
         </nut-progress>
       </nut-cell>
 </template>
@@ -126,9 +125,11 @@ app.use(Icon);
           stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           stroke-width="15"
           status="icon"
-          icon-name="issue"
-          icon-color="red"
-        />
+        >
+          <template #iconName>
+            <Issue color="red" width="15px" height="15px"></Issue>
+          </template>
+        </nut-progress>
       </nut-cell>
     </div>
 </template>
@@ -149,5 +150,8 @@ app.use(Icon);
 | text-color | Progress bar text color setting | String | #333
 | text-background | Progress bar text background color setting | String | Same progress bar color
 | status | The current state of the progress bar,active(show animation)/icon(show icon) | String | text
-| icon-name | Icon Name | String | checked
-| icon-color | Icon Color | String | #439422
+
+### Slots
+| Name  | Description     | 
+|-------|----------|
+| iconName | Right icon content |
