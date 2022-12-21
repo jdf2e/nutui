@@ -52,7 +52,6 @@ page {
   // button
   --nut-button-border-radius: 25px;
   --nut-button-border-width: 1px;
-  --nut-button-icon-width: 16px;
   --nut-button-default-bg-color: var(--nut-white);
   --nut-button-default-border-color: rgba(204, 204, 204, 1);
   --nut-button-default-color: rgba(102, 102, 102, 1);
@@ -151,12 +150,6 @@ page {
   --nut-divider-vertical-top: 2px;
   --nut-divider-vertical-border-left: rgba(0, 0, 0, 0.06);
   --nut-divider-vertical-margin: 0 8px;
-
-  // icon
-
-  --nut-icon-height: 20px;
-  --nut-icon-width: 20px;
-  --nut-icon-line-height: 20px;
 
   // uploader
 
@@ -916,5 +909,4 @@ page {
   // TrendArrow
   --nut-trendarrow-font-size: 14px;
   --nut-trendarrow-before-icon-margin: 4px;
-  --nut-trendarrow-icon-width: 12px;
 }

@@ -52,7 +52,6 @@ $line-height-base: var(--nut-line-height-base) !default;
 // button
 $button-border-radius: var(--nut-button-border-radius) !default;
 $button-border-width: var(--nut-button-border-width) !default;
-$button-icon-width: var(--nut-button-icon-width) !default;
 $button-default-bg-color: var(--nut-button-default-bg-color) !default;
 $button-default-border-color: var(--nut-button-default-border-color) !default;
 $button-default-color: var(--nut-button-default-color) !default;
@@ -135,12 +134,6 @@ $divider-vertical-height: var(--nut-divider-vertical-height) !default;
 $divider-vertical-top: var(--nut-divider-vertical-top) !default;
 $divider-vertical-border-left: var(--nut-divider-vertical-border-left) !default;
 $divider-vertical-margin: var(--nut-divider-vertical-margin) !default;
-
-// icon
-
-$icon-height: var(--nut-icon-height) !default;
-$icon-width: var(--nut-icon-width) !default;
-$icon-line-height: var(--nut-icon-line-height) !default;
 
 // uploader
 
@@ -858,6 +851,4 @@ $invoice-padding: var(--nut-invoice-padding) !default;
 // TrendArrow
 $trendarrow-font-size: var(--nut-trendarrow-font-size) !default;
 $trendarrow-before-icon-margin: var(--nut-trendarrow-before-icon-margin) !default;
-$trendarrow-icon-width: var(--nut-trendarrow-icon-width) !default;
-
 @import './mixins/index';
