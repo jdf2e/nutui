@@ -13,7 +13,14 @@
     <nut-input :placeholder="translate('disabled')" v-model="state.disabled" disabled />
     <h2>{{ translate('title3') }}</h2>
     <nut-input v-model="state.clear" :placeholder="translate('clear')" clearable clearSize="14" />
-    <nut-input v-model="state.clear" :placeholder="translate('clear')" clearable clearSize="14">
+    <nut-input
+      v-model="state.clear2"
+      :placeholder="translate('clear2')"
+      clearable
+      clearSize="14"
+      show-word-limit
+      max-length="50"
+    >
       <template #clear>
         <Close width="12" height="12" @click="clearValue"></Close>
       </template>
@@ -21,7 +28,7 @@
     <h2>{{ translate('title4') }}</h2>
     <nut-form :model-value="state">
       <nut-form-item :label="translate('text')" label-align="center">
-        <nut-input v-model="state.val1" :placeholder="translate('textPlaceholder')" :border="false" />
+        <nut-input v-model="state.val2" :placeholder="translate('textPlaceholder')" :border="false" />
       </nut-form-item>
     </nut-form>
     <h2>{{ translate('title6') }}</h2>
@@ -36,9 +43,8 @@
     <nut-input
       v-model="state.textarea"
       :placeholder="translate('message')"
-      type="textarea"
+      type="text"
       show-word-limit
-      rows="2"
       max-length="50"
     />
 
@@ -54,8 +60,6 @@
     <nut-input
       v-model="state.event"
       :placeholder="translate('event')"
-      left-icon="dongdong"
-      right-icon="ask2"
       clearable
       @update:model-value="change"
       @focus="focus"
@@ -80,7 +84,7 @@ const initTranslate = () =>
       basic: '基本用法',
       title1: '自定义类型',
       title2: '禁用和只读',
-      title3: '显示图标',
+      title3: '显示清除图标',
       title4: '配合表单使用',
       title5: '插入按钮',
       title6: '格式化输入内容',
@@ -98,6 +102,7 @@ const initTranslate = () =>
       disabled: '输入框已禁用',
       icon: '显示图标',
       clear: '显示清除图标',
+      clear2: '自定义清除图标',
       required: '必填项',
       error: '输入内容标红',
       code: '短信验证码',
@@ -116,7 +121,7 @@ const initTranslate = () =>
       basic: 'Basic Usage',
       title1: 'Custom Type',
       title2: 'Readonly And Disabled',
-      title3: 'Show Icon',
+      title3: 'Show Clear Icon',
       title4: 'Use Form',
       title5: 'Insert Button',
       title6: 'Format Value',
@@ -134,6 +139,7 @@ const initTranslate = () =>
       disabled: 'Disabled',
       icon: 'Show Icon',
       clear: 'Show Clear Icon',
+      clear2: 'Custom Clear Icon',
       required: 'Required',
       error: 'Error',
       code: 'Code',
@@ -157,6 +163,7 @@ export default createDemo({
     initTranslate();
     const state = reactive({
       val1: '',
+      val2: '',
       text: '',
       password: '',
       number: '',
@@ -177,6 +184,7 @@ export default createDemo({
       noBorder1: '',
       noBorder2: '',
       clear: '',
+      clear2: '',
       event: ''
     });
     setTimeout(function () {
@@ -201,8 +209,7 @@ export default createDemo({
       console.log('clickInput:', event);
     };
     const clearValue = () => {
-      console.log('first');
-      state.clear = '';
+      state.clear2 = '';
     };
     const formatter = (value: string) => value.replace(/\d/g, '');
     return {

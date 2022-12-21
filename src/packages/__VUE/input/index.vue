@@ -21,16 +21,16 @@
             @blur="onBlur"
             @click="onClickInput"
           ></component>
+          <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
+            <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+            >/{{ maxLength }}
+          </view>
         </view>
         <view class="nut-input-clear-box" v-if="clearable && !readonly" v-show="active && modelValue.length > 0">
           <slot name="clear">
             <MaskClose class="nut-input-clear" v-bind="$attrs" :size="clearSize" @click="clear"> </MaskClose>
           </slot>
         </view>
-      </view>
-      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-        <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-        >/{{ maxLength }}
       </view>
     </view>
   </view>
@@ -99,10 +99,6 @@ export default create({
       type: Boolean,
       default: false
     },
-    clearIcon: {
-      type: String,
-      default: 'mask-close'
-    },
     clearSize: {
       type: [String, Number],
       default: '14'
@@ -154,8 +150,8 @@ export default create({
     const getModelValue = () => String(props.modelValue ?? '');
 
     const renderInput = (type: InputType) => {
-      return h(type == 'textarea' ? 'textarea' : 'input', {
-        style: type == 'textarea' ? stylesTextarea : styles,
+      return h('input', {
+        style: styles,
         type: type != 'textarea' && inputType(type)
       });
     };
@@ -181,12 +177,6 @@ export default create({
     const styles: ComputedRef = computed(() => {
       return {
         textAlign: props.inputAlign
-      };
-    });
-    const stylesTextarea: ComputedRef = computed(() => {
-      return {
-        textAlign: props.inputAlign,
-        height: Number(props.rows) * 24 + 'px'
       };
     });
 
@@ -304,7 +294,6 @@ export default create({
       active,
       classes,
       styles,
-      stylesTextarea,
       inputType,
       onInput,
       onFocus,

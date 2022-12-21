@@ -144,13 +144,30 @@ app.use(Input);
     clearable
     clearSize="14" 
   />
+  <nut-input
+      v-model="state.clear2"
+      :placeholder="translate('clear2')"
+      clearable
+      clearSize="14"
+      show-word-limit
+      max-length="50"
+    >
+      <template #clear>
+        <Close width="12" height="12" @click="clearValue"></Close>
+      </template>
+    </nut-input>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
+  import { Close } from 
   export default {
+    components:{
+      Close
+    },
     setup() {
       const state = reactive({
-        clear:''
+        clear:'',
+        clear2:''
       });
       return {
         state
@@ -244,8 +261,8 @@ app.use(Input);
 ```html
 <template>
   <nut-input
-    v-model="state.textarea"
-    type="textarea"
+    v-model="state.text"
+    type="text"
     show-word-limit
     rows="2"
     max-length="50"
@@ -257,7 +274,7 @@ app.use(Input);
   export default {
     setup() {
       const state = reactive({
-        textarea: ''
+        text: ''
       });
       return {
         state
@@ -314,8 +331,6 @@ app.use(Input);
 <template>
   <nut-input
     v-model="state.event"
-    left-icon="dongdong"
-    right-icon="ask2"
     clearable
     placeholder="事件演示"
     @update:model-value="change"
@@ -373,7 +388,7 @@ app.use(Input);
 | 参数         | 说明                                   | 类型           | 默认值  |
 |--------------|----------------------------------------|----------------|---------|
 | v-model      | 输入值，双向绑定                       | String         | -       |
-| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`     | String         | `text`  |
+| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`     | String         | `text`  |
 | placeholder  | 输入框为空时占位符                      | String         | -       |
 | input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
 | border       | 是否显示下边框                         | Boolean        | `true` |
@@ -382,7 +397,6 @@ app.use(Input);
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | max-length      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clear-icon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon)   | String        | `mask-close`  |
 | clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error         | 是否标红                                | Boolean | `false`  |
@@ -400,7 +414,10 @@ app.use(Input);
 | clear  | 点击清除按钮时触发   | event  |
 | click  | 点击组件时触发      | event  |
 | click-input      | 点击输入区域时触发      | event  |
-
+### Slots
+| 名称  | 说明     | 
+|-------|----------|
+| clear | 自定义输入框尾部清除按钮 |
 
 
 

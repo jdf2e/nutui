@@ -22,23 +22,16 @@
             @click="onClickInput"
           ></component>
           <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
+          <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
+            <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+            >/{{ maxLength }}
+          </view>
         </view>
-        <view class="nut-input-clear-box">
-          <IconFont
-            class="nut-input-clear"
-            v-if="clearable && !readonly"
-            v-show="active && modelValue.length > 0"
-            :name="clearIcon"
-            v-bind="$attrs"
-            :size="clearSize"
-            @click="clear"
-          >
-          </IconFont>
+        <view class="nut-input-clear-box" v-if="clearable && !readonly" v-show="active && modelValue.length > 0">
+          <slot name="clear">
+            <MaskClose class="nut-input-clear" v-bind="$attrs" :size="clearSize" @click="clear"> </MaskClose>
+          </slot>
         </view>
-      </view>
-      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-        <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-        >/{{ maxLength }}
       </view>
     </view>
   </view>
@@ -47,7 +40,7 @@
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
-import { IconFont } from '@nutui/icons-vue';
+import { MaskClose } from '@nutui/icons-vue-taro';
 
 const { componentName, create } = createComponent('input');
 
@@ -78,10 +71,6 @@ export default create({
     placeholder: {
       type: String,
       default: ''
-    },
-    colon: {
-      type: Boolean,
-      default: false
     },
     inputAlign: {
       type: String,
@@ -114,10 +103,6 @@ export default create({
     clearable: {
       type: Boolean,
       default: false
-    },
-    clearIcon: {
-      type: String,
-      default: 'mask-close'
     },
     clearSize: {
       type: [String, Number],
@@ -164,7 +149,7 @@ export default create({
       default: false
     }
   },
-  components: { IconFont },
+  components: { MaskClose },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
 
   setup(props, { emit, slots }) {
@@ -174,8 +159,8 @@ export default create({
     const getModelValue = () => String(props.modelValue ?? '');
 
     const renderInput = (type: InputType) => {
-      return h(type == 'textarea' ? 'textarea' : 'input', {
-        style: type == 'textarea' ? stylesTextarea : styles,
+      return h('input', {
+        style: styles,
         type: type != 'textarea' && inputType(type)
       });
     };
@@ -203,12 +188,6 @@ export default create({
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea: ComputedRef = computed(() => {
-      return {
-        textAlign: props.inputAlign,
-        height: Number(props.rows) * 24 + 'px'
-      };
-    });
 
     const inputType = (type: InputType) => {
       if (type === 'number') {
@@ -230,6 +209,7 @@ export default create({
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
+      console.log('updateValue');
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
@@ -238,7 +218,9 @@ export default create({
       }
 
       if (props.formatter && trigger === props.formatTrigger) {
+        console.log('value', value);
         value = props.formatter(value);
+        console.log('2222', value);
       }
 
       if (inputRef?.value !== value) {
@@ -327,7 +309,6 @@ export default create({
       active,
       classes,
       styles,
-      stylesTextarea,
       inputType,
       onInput,
       onFocus,

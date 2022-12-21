@@ -15,11 +15,22 @@
 
     <h2>显示清除图标</h2>
     <nut-input v-model="state.clear" clearable clearSize="14" placeholder="显示清除图标" />
-
+    <nut-input
+      v-model="state.clear2"
+      placeholder="自定义清除图标"
+      clearable
+      clearSize="14"
+      show-word-limit
+      max-length="50"
+    >
+      <template #clear>
+        <Close width="12" height="12" @click="clearValue"></Close>
+      </template>
+    </nut-input>
     <h2>配合表单使用</h2>
     <nut-form :model-value="state">
-      <nut-form-item label-align="center">
-        <nut-input v-model="state.val1" placeholder="请输入文本" :border="false" />
+      <nut-form-item label-align="center" label="文本">
+        <nut-input v-model="state.val2" placeholder="请输入文本" :border="false" />
       </nut-form-item>
     </nut-form>
 
@@ -35,7 +46,7 @@
     <h2>显示字数统计</h2>
     <nut-input
       v-model="state.textarea"
-      type="textarea"
+      type="text"
       show-word-limit
       rows="2"
       maxLength="50"
@@ -51,8 +62,6 @@
     <nut-input
       v-model="state.event"
       placeholder="点击"
-      left-icon="dongdong"
-      right-icon="ask2"
       clearable
       :adjust-position="state.adjustPosition"
       @update:model-value="change"
@@ -67,11 +76,15 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-
+import { Close } from '@nutui/icons-vue-taro';
 export default {
+  components: {
+    Close
+  },
   setup() {
     const state = reactive({
       val1: '',
+      val2: '',
       text: '',
       password: '',
       number: '',
@@ -91,6 +104,7 @@ export default {
       align2: '',
       event: '',
       clear: '',
+      clear2: '',
       adjustPosition: false
     });
     setTimeout(function () {
@@ -115,7 +129,9 @@ export default {
       console.log('clickInput:', value);
     };
     const formatter = (value: string) => value.replace(/\d/g, '');
-
+    const clearValue = () => {
+      state.clear2 = '';
+    };
     return {
       state,
       change,
@@ -124,7 +140,8 @@ export default {
       focus,
       click,
       clickInput,
-      formatter
+      formatter,
+      clearValue
     };
   }
 };
