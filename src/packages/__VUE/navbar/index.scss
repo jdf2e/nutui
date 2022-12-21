@@ -75,6 +75,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    align-items: center;
     .title {
       min-width: $navbar-title-width;
       font-size: $navbar-title-font;
@@ -89,6 +90,9 @@
       .icon {
         margin: $navbar-title-icon-margin;
       }
+    }
+    .icon {
+      font-size: 0;
     }
     .nut-icon {
       display: inline;

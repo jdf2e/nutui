@@ -10,13 +10,12 @@ Provide navigation function, often used at the top of the page.
 
 import { createApp } from 'vue';
 // vue
-import { Navbar,Icon,Tabs, TabPane } from '@nutui/nutui';
+import { Navbar, Tabs, TabPane } from '@nutui/nutui';
 // taro
-import { Navbar,Icon,Tabs, TabPane } from '@nutui/nutui-taro';
+import { Navbar, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);
-app.use(Icon);
 app.use(Tabs);
 app.use(TabPane);
 ```
@@ -31,7 +30,7 @@ app.use(TabPane);
       <div>Back</div>
     </template>
     <template #right>
-      <nut-icon class="right" name="share-n"></nut-icon>
+      <ShareN width="16px"></ShareN>
     </template>
   </nut-navbar>
 
@@ -50,18 +49,23 @@ app.use(TabPane);
     @on-click-icon="icon"
     @on-click-right="rightClick"
     title="Cart"
-    titIcon="cart2"
+    :titIcon="true"
     desc="Edit"
   >
+    <template #titIcon>
+      <Cart2 width="16px"></Cart2>
+    </template>
     <template #right>
-      <nut-icon class="right" name="more-x"></nut-icon>
+      <MoreX class="right" width="16px"></MoreX>
     </template>
   </nut-navbar>
 </template>
 
 <script lang="ts">
   import { ref } from 'vue';
+  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue';
   export default {
+  components: { ShareN, Cart2, MoreX },
   setup() {
     const methods = {
       back() {
@@ -104,14 +108,16 @@ app.use(TabPane);
     </template>
 
     <template #right>
-      <nut-icon class="right" name="more-x"></nut-icon>
+      <MoreX class="right" width="16px"></MoreX>
     </template>
   </nut-navbar>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
+import { MoreX } from '@nutui/icons-vue';
 export default {
+  components: { MoreX },
   setup() {
     const tab1value = ref(0);
     const methods = {
@@ -153,18 +159,20 @@ export default {
       </nut-tabs>
     </template>
     <template #icons>
-      <nut-icon class="icon" name="share"></nut-icon>
-    </template>
+        <nut-icon class="icon" name="share"></nut-icon>
+      </template>
 
     <template #right>
-      <nut-icon class="right" name="horizontal-n"></nut-icon>
+      <HorizontalN class="right" width="16px"></HorizontalN>
     </template>
   </nut-navbar>
 </template>
 
 <script lang="ts">
   import { ref } from 'vue';
+  import { HorizontalN } from '@nutui/icons-vue';
   export default {
+    components: { HorizontalN },
     setup() {
     const tab2value = ref(0);
     const methods = {
@@ -194,7 +202,7 @@ export default {
 | left-text `v3.1.21` | Left Text                                     | String  | -       |
 | desc                | Desc                                          | String  | -       |
 | left-show           | Whether to show the left arrow                | Boolean | false   |
-| tit-icon            | Insert icon in title                          | String  | -       | 
+| tit-icon            | Whether to show icon in title                 | Boolean  | false     | 
 | border `v3.1.21`    | Whether to show bottom border                     | Boolean  | false  |
 | fixed               | Is it pinned to the top                       | Boolean | false    |
 | placeholder `v3.1.21` | Whether to generate a placeholder element when fixed   | Boolean  | false   |
@@ -212,6 +220,8 @@ export default {
 ### Slots
 | Name  | Description     | 
 |-------|----------|
-| left | 自定义左侧内容 |
-| right | 自定义右侧内容 |
-| content |  自定义导航栏中间内容 |
+| left | Customize left content |
+| right | Customize the content on the right |
+| content |  Customize the middle content of the navigation bar |
+| leftShow  | Custom icon of left arrow  |
+| titIcon  | Custom icon in header |
