@@ -29,6 +29,7 @@ The value of field is bound with `v-model`.
 <template>
   <nut-input 
     v-model="state.text" 
+    label="Text" 
     placeholder="Text" 
   />
 </template>
@@ -58,23 +59,33 @@ Use `type` prop to custom different type fields.
 ```html
 <template>
   <nut-input 
+    label="Text" 
     placeholder="Text" 
     v-model="state.text" 
   />
   <nut-input 
+    label="Password" 
     placeholder="Password" 
     v-model="state.password" 
     type="password" 
   />
   <nut-input 
+    label="Number" 
     placeholder="Number" 
     v-model="state.number" 
     type="number" 
   />
   <nut-input 
+    label="Digit" 
     placeholder="Digit" 
     v-model="state.digit" 
     type="digit" 
+  />
+  <nut-input 
+    label="Tel" 
+    placeholder="Tel" 
+    v-model="state.tel" 
+    type="tel" 
   />
 </template>
 <script lang="ts">
@@ -86,6 +97,7 @@ Use `type` prop to custom different type fields.
         password: '',
         number: '',
         digit: '',
+        tel: ''
       });
       return {
         state
@@ -106,11 +118,13 @@ Use `readonly` to set the input box to read-only status, and use `disabled` to s
 ```html
 <template>
   <nut-input 
+    label="Text" 
     placeholder="Readonly" 
     v-model="state.readonly" 
     readonly 
   />
   <nut-input 
+    label="Text" 
     placeholder="Disabled" 
     v-model="state.disabled" 
     disabled 
@@ -134,16 +148,24 @@ Use `readonly` to set the input box to read-only status, and use `disabled` to s
 
 :::
 
-### Show Clear Icon
+### Show Icon
 
-Display the clear icon during the input process by setting `clearable`.
+The user can enter content in the text box. Configure the icons on both sides of the input box through `left-icon` and `right-icon`, and display the clear icon during the input process by setting `clearable`. Need to reference the `Icon` component
 
 :::demo
 
 ```html
 <template>
   <nut-input 
+    v-model="state.showIcon" 
+    label="Text" 
+    placeholder="Show Icon" 
+    left-icon="dongdong" 
+    right-icon="ask2" 
+  />
+  <nut-input 
     v-model="state.clear" 
+    label="Text" 
     placeholder="Show Clear Icon" 
     clearable
     clearSize="14" 
@@ -154,6 +176,8 @@ Display the clear icon during the input process by setting `clearable`.
   export default {
     setup() {
       const state = reactive({
+        showIcon: '',
+        required: '',
         clear:''
       });
       return {
@@ -167,24 +191,39 @@ Display the clear icon during the input process by setting `clearable`.
 :::
 ### Error Info
 
-Use in combination with `nut-form` and `nut-form-item`
+Use `error` or `error-message` to show error info.
 
 :::demo
 
 ```html
 <template>
-  <nut-form :model-value="state">
-    <nut-form-item label="文本" label-align="center">
-      <nut-input v-model="state.val1" placeholder="请输入文本" :border="false" />
-    </nut-form-item>
-  </nut-form>
+  <nut-input 
+    v-model="state.required" 
+    label="Text" 
+    placeholder="Required" 
+    required 
+  />
+  <nut-input 
+    v-model="state.error1" 
+    label="Text" 
+    placeholder="Error" 
+    error 
+  />
+  <nut-input 
+    v-model="state.error2" 
+    label="Text" 
+    placeholder="Error Message" 
+    error-message="Error Message" 
+  />
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        val1: '',
+        required: '',
+        error1: '',
+        error2: '',
       });
       return {
         state
@@ -196,6 +235,42 @@ Use in combination with `nut-form` and `nut-form-item`
 
 :::
 
+### Insert Button
+
+Use `button` slot to insert button.
+
+:::demo
+
+```html
+<template>
+  <nut-input 
+    v-model="state.buttonVal" 
+    label="Code"
+    placeholder="Please enter code"
+    clearable 
+    center 
+  >
+    <template #button>
+      <nut-button size="small" type="primary">Send</nut-button>
+    </template>
+  </nut-input>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        buttonVal: ''
+      });
+      return {
+        state
+      };
+    }
+  }
+</script>
+```
+
+:::
 
 ### Format Value
 
@@ -275,6 +350,44 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 
 :::
 
+### Input Align
+
+Use `label-align` prop to align the label, `input-align` prop to align the input value
+
+:::demo
+
+```html
+<template>
+  <nut-input 
+    v-model="state.align1" 
+    label="Text" 
+    label-align="right" 
+    placeholder="Label Align" 
+  />
+  <nut-input 
+    v-model="state.align2" 
+    label="Text" 
+    input-align="right" 
+    placeholder="Input Align"
+   />
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        align1: '',
+        align2: ''
+      });
+      return {
+        state
+      };
+    }
+  }
+</script>
+```
+
+:::
 
 ### No Border
 
@@ -331,6 +444,8 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
     @clear="clear"
     @click="click"
     @click-input="clickInput"
+    @click-left-icon="clickLeftIcon"
+    @click-right-icon="clickRightIcon"
   />
 </template>
 <script lang="ts">
@@ -358,6 +473,12 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
       const clickInput = (event: Event) => {
         console.log('clickInput:', event);
       };
+      const clickLeftIcon = (event: Event) => {
+        console.log('clickLeftIcon:', event);
+      };
+      const clickRightIcon = (event: Event) => {
+        console.log('clickRightIcon:', event);
+      };
 
       return {
         state,
@@ -367,6 +488,8 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
         focus,
         click,
         clickInput,
+        clickLeftIcon,
+        clickRightIcon
       };
     }
   }
@@ -382,7 +505,12 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | v-model      | Input value, two-way binding           | String         | -       |
 | type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
 | placeholder  | Placeholder when the input box is empty  | String         | -       |
+| label        | Left text                                | String         | -       |
+| label-class  | Left text extra class name               | String | -  |
+| label-width  | Label width, default unit is `px`        | String、Number | `80`    |
+| label-align  | Label align,  eg `left`、`center`、`right` | String | `left` |
 | input-align  | Input align, eg `left`、`center`、`right` | String | `left` |
+| colon        | Whether to display colon after label     | Boolean        | `false` |
 | required     | Whether to show required mark            | Boolean        | `false` |
 | border       | Whether to show inner borde         | Boolean        | `true` |
 | disabled     | Whether to disable field            | Boolean        | `false` |
@@ -392,8 +520,14 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | clearable    | Whether to be clearable              | Boolean        | `false`  |
 | clear-icon   | Clear Icon name, [name of icon](#/en-US/component/icon)           | String        | `mask-close`  |
 | clear-size   | Clear Icon `font-size`               | String        | `14`  |
+| left-icon    | Left side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
+| right-icon   | Right side Icon name, [name of icon](#/en-US/component/icon) | String        | - |
+| left-icon-size    | Left side Icon `font-size`    | String        | `14`  |
+| right-icon-size   | Right side Icon `font-size`   | String        | `14`  |
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
 | error         | Whether to mark the input content in red   | Boolean | `false`  |
+| error-message | Error message            | String、Number | - |
+| error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
 | confirm-type `H5(v3.2.8)` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
@@ -410,6 +544,16 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | clear  | Emitted when the clear icon is clicked   | event  |
 | click  | Emitted when component is clicked	      | event  |
 | click-input      | Emitted when the input is clicked      | event  |
+| click-left-icon  | Emitted when the left icon is clicked      | event  |
+| click-right-icon | Emitted when the right icon is clicked      | event  |
+
+### Slots
+
+| Name  | Description     | 
+|-------|----------|
+| button | Insert button |
+| input `v3.1.22` | Custom input |
+| rightExtra `v3.2.7` | Customize the rightmost area of the input box |
 
 
 

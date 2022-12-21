@@ -9,18 +9,19 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Input } from '@nutui/nutui';
+import { Input,Icon } from '@nutui/nutui';
 // taro
-import { Input } from '@nutui/nutui-taro';
+import { Input,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
+app.use(Icon);
 
 ```
 
 ### 基础用法
 
-可以通过 `v-model` 双向绑定输入框的值，通过 `placeholder` 设置占位提示文字。
+可以通过 `v-model` 双向绑定输入框的值，通过 `label` 设置输入框左侧文本，通过 `placeholder` 设置占位提示文字。
 
 :::demo
 
@@ -28,6 +29,7 @@ app.use(Input);
 <template>
   <nut-input 
     v-model="state.text" 
+    label="文本" 
     placeholder="请输入文本" 
   />
 </template>
@@ -57,23 +59,33 @@ app.use(Input);
 ```html
 <template>
   <nut-input 
+    label="文本" 
     placeholder="请输入文本" 
     v-model="state.text" 
   />
   <nut-input 
+    label="密码" 
     placeholder="请输入密码" 
     v-model="state.password" 
     type="password" 
   />
   <nut-input 
+    label="数字" 
     placeholder="请输入数字" 
     v-model="state.number" 
     type="number" 
   />
   <nut-input 
+    label="整数" 
     placeholder="请输入整数" 
     v-model="state.digit" 
     type="digit" 
+  />
+  <nut-input 
+    label="手机号" 
+    placeholder="请输入手机号" 
+    v-model="state.tel" 
+    type="tel" 
   />
 </template>
 <script lang="ts">
@@ -85,6 +97,7 @@ app.use(Input);
         password: '',
         number: '',
         digit: '',
+        tel: ''
       });
       return {
         state
@@ -105,11 +118,13 @@ app.use(Input);
 ```html
 <template>
   <nut-input 
+    label="文本" 
     placeholder="输入框只读" 
     v-model="state.readonly" 
     readonly 
   />
   <nut-input 
+    label="文本" 
     placeholder="输入框已禁用" 
     v-model="state.disabled" 
     disabled 
@@ -133,16 +148,24 @@ app.use(Input);
 
 :::
 
-### 显示清除图标
+### 显示图标
 
-通过设置 `clearable` 在输入过程中展示清除图标。
+通过 `left-icon` 和 `right-icon` 配置输入框两侧的图标，通过设置 `clearable` 在输入过程中展示清除图标。需要引用 `Icon` 组件
 
 :::demo
 
 ```html
 <template>
   <nut-input 
+    v-model="state.showIcon" 
+    label="文本" 
+    placeholder="显示图标" 
+    left-icon="dongdong" 
+    right-icon="ask2" 
+  />
+  <nut-input 
     v-model="state.clear" 
+    label="文本" 
     placeholder="显示清除图标" 
     clearable
     clearSize="14" 
@@ -153,6 +176,8 @@ app.use(Input);
   export default {
     setup() {
       const state = reactive({
+        showIcon: '',
+        required: '',
         clear:''
       });
       return {
@@ -165,26 +190,41 @@ app.use(Input);
 
 :::
 
-### 配合表单使用
+### 错误提示
 
-结合nut-form与nut-form-item使用
+设置 `required` 属性表示这是一个必填项，可以配合 `error` 或 `error-message` 属性显示对应的错误提示。
 
 :::demo
 
 ```html
 <template>
-  <nut-form :model-value="state">
-    <nut-form-item label="文本" label-align="center">
-      <nut-input v-model="state.val1" placeholder="请输入文本" :border="false" />
-    </nut-form-item>
-  </nut-form>
+  <nut-input 
+    v-model="state.required" 
+    label="文本" 
+    placeholder="必填项" 
+    required 
+  />
+  <nut-input 
+    v-model="state.error1" 
+    label="文本" 
+    placeholder="输入内容标红" 
+    error 
+  />
+  <nut-input 
+    v-model="state.error2" 
+    label="文本" 
+    placeholder="底部错误提示文案" 
+    error-message="底部错误提示文案" 
+  />
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        val1: '',
+        required: '',
+        error1: '',
+        error2: '',
       });
       return {
         state
@@ -196,6 +236,42 @@ app.use(Input);
 
 :::
 
+### 插入按钮
+
+通过 `button` 插槽可以在输入框尾部插入按钮。
+
+:::demo
+
+```html
+<template>
+  <nut-input 
+    v-model="state.buttonVal" 
+    label="短信验证码"
+    placeholder="请输入短信验证码"
+    clearable 
+    center 
+  >
+    <template #button>
+      <nut-button size="small" type="primary">发送验证码</nut-button>
+    </template>
+  </nut-input>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        buttonVal: ''
+      });
+      return {
+        state
+      };
+    }
+  }
+</script>
+```
+
+:::
 
 ### 格式化输入内容
 
@@ -207,12 +283,14 @@ app.use(Input);
 <template>
   <nut-input 
     v-model="state.format1" 
+    label="文本" 
     placeholder="在输入时执行格式化" 
     :formatter="formatter" 
     format-trigger="onChange"
   />
   <nut-input
     v-model="state.format2"
+    label="文本"
     placeholder="在失焦时执行格式化"
     :formatter="formatter"
     format-trigger="onBlur"
@@ -248,6 +326,7 @@ app.use(Input);
 <template>
   <nut-input
     v-model="state.textarea"
+    label="文本"
     type="textarea"
     show-word-limit
     rows="2"
@@ -272,6 +351,44 @@ app.use(Input);
 
 :::
 
+### 对齐方式
+
+通过 `input-align` 属性可以设置输入框内容的对齐方式，可选值为 `left`、`center` 和 `right`。
+
+:::demo
+
+```html
+<template>
+  <nut-input 
+    v-model="state.align1" 
+    label="文本" 
+    label-align="right" 
+    placeholder="文本内容对齐" 
+  />
+  <nut-input 
+    v-model="state.align2" 
+    label="文本" 
+    input-align="right" 
+    placeholder="输入框内容对齐"
+   />
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        align1: '',
+        align2: ''
+      });
+      return {
+        state
+      };
+    }
+  }
+</script>
+```
+
+:::
 
 ### 无边框
 
@@ -284,11 +401,13 @@ app.use(Input);
   <nut-input 
     v-model="state.noBorder1" 
     :border="false" 
+    label="文本" 
     placeholder="输入框无边框" 
   />
   <nut-input 
     v-model="state.noBorder2" 
     :border="false" 
+    label="文本" 
     placeholder="输入框无边框" 
   />
 </template>
@@ -317,6 +436,7 @@ app.use(Input);
 <template>
   <nut-input
     v-model="state.event"
+    label="文本"
     left-icon="dongdong"
     right-icon="ask2"
     clearable
@@ -327,6 +447,8 @@ app.use(Input);
     @clear="clear"
     @click="click"
     @click-input="clickInput"
+    @click-left-icon="clickLeftIcon"
+    @click-right-icon="clickRightIcon"
   />
 </template>
 <script lang="ts">
@@ -354,6 +476,12 @@ app.use(Input);
       const clickInput = (event: Event) => {
         console.log('clickInput:', event);
       };
+      const clickLeftIcon = (event: Event) => {
+        console.log('clickLeftIcon:', event);
+      };
+      const clickRightIcon = (event: Event) => {
+        console.log('clickRightIcon:', event);
+      };
 
       return {
         state,
@@ -363,6 +491,8 @@ app.use(Input);
         focus,
         click,
         clickInput,
+        clickLeftIcon,
+        clickRightIcon
       };
     }
   }
@@ -378,7 +508,13 @@ app.use(Input);
 | v-model      | 输入值，双向绑定                       | String         | -       |
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`     | String         | `text`  |
 | placeholder  | 输入框为空时占位符                      | String         | -       |
+| label        | 左侧文本                              | String         | -       |
+| label-class  | 左侧文本额外类名                        | String | -  |
+| label-width  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
+| label-align  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
 | input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
+| colon        | 是否在 label 后面添加冒号               | Boolean        | `false` |
+| required     | 左侧*号是否展示                        | Boolean        | `false` |
 | border       | 是否显示下边框                         | Boolean        | `true` |
 | disabled     | 是否禁用                              | Boolean        | `false` |
 | readonly     | 是否只读                              | Boolean        | `false` |
@@ -387,8 +523,14 @@ app.use(Input);
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
 | clear-icon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon)   | String        | `mask-close`  |
 | clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
+| left-icon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon) | String        | - |
+| right-icon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/zh-CN/component/icon) | String        | - |
+| left-icon-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| right-icon-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error         | 是否标红                                | Boolean | `false`  |
+| error-message | 底部错误提示文案，为空时不展示            | String、Number | - |
+| error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
 | confirm-type `H5(v3.2.8)` | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
@@ -405,7 +547,15 @@ app.use(Input);
 | clear  | 点击清除按钮时触发   | event  |
 | click  | 点击组件时触发      | event  |
 | click-input      | 点击输入区域时触发      | event  |
+| click-left-icon  | 点击左侧图标时触发      | event  |
+| click-right-icon | 点击右侧图标时触发      | event  |
 
+### Slots
+| 名称  | 说明     | 
+|-------|----------|
+| button | 自定义输入框尾部按钮 |
+| input `v3.1.22` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+| rightExtra `v3.2.7` | 自定义输入框最右侧的区域 |
 
 
 

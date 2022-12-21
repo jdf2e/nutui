@@ -80,6 +80,10 @@ textarea {
     left: 0;
     z-index: 2;
   }
+  &-error-message {
+    color: $input-required-color;
+    font-size: 12px;
+  }
   &-word-limit {
     display: flex;
     justify-content: flex-end;
@@ -140,7 +144,6 @@ textarea {
     -webkit-text-fill-color: $input-required-color;
   }
 }
-
 .nut-form-item {
   .nut-input {
     padding: 0px;

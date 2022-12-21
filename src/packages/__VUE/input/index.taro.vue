@@ -1,92 +1,53 @@
 <template>
   <view :class="classes">
-    <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-      <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
-    </view>
-    <view
-      v-if="label"
-      class="nut-input__label"
-      :class="labelClass"
-      :style="{
-        width: `${labelWidth}px`,
-        textAlign: labelAlign
-      }"
-    >
-      <view class="nut-input__label-string">
-        {{ label }}
-        {{ colon ? ':' : '' }}
+    <view class="nut-input-value">
+      <view class="nut-input-inner">
+        <view class="nut-input-box">
+          <component
+            :is="renderInput(type)"
+            class="input-text"
+            ref="inputRef"
+            :style="styles"
+            :maxlength="maxLength"
+            :placeholder="placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            :value="modelValue"
+            :formatTrigger="formatTrigger"
+            :autofocus="autofocus"
+            :enterkeyhint="confirmType"
+            @input="onInput"
+            @focus="onFocus"
+            @blur="onBlur"
+            @click="onClickInput"
+          ></component>
+          <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
+        </view>
+        <view class="nut-input-clear-box">
+          <IconFont
+            class="nut-input-clear"
+            v-if="clearable && !readonly"
+            v-show="active && modelValue.length > 0"
+            :name="clearIcon"
+            v-bind="$attrs"
+            :size="clearSize"
+            @click="clear"
+          >
+          </IconFont>
+        </view>
+      </view>
+      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
+        <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+        >/{{ maxLength }}
       </view>
     </view>
-    <template v-if="$slots.input">
-      <view class="nut-input-value">
-        <view class="nut-input-inner" @click="onClickInput">
-          <slot name="input"></slot>
-        </view>
-      </view>
-    </template>
-    <template v-else>
-      <view class="nut-input-value">
-        <view class="nut-input-inner">
-          <view class="nut-input-box">
-            <component
-              :is="renderInput(type)"
-              class="input-text"
-              ref="inputRef"
-              :style="styles"
-              :maxlength="maxLength"
-              :placeholder="placeholder"
-              :disabled="disabled"
-              :readonly="readonly"
-              :value="modelValue"
-              :formatTrigger="formatTrigger"
-              :autofocus="autofocus"
-              :enterkeyhint="confirmType"
-              @input="onInput"
-              @focus="onFocus"
-              @blur="onBlur"
-              @click="onClickInput"
-            ></component>
-            <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
-          </view>
-          <view class="nut-input-clear-box">
-            <nut-icon
-              class="nut-input-clear"
-              v-if="clearable && !readonly"
-              v-show="active && modelValue.length > 0"
-              :name="clearIcon"
-              v-bind="$attrs"
-              :size="clearSize"
-              @click="clear"
-            >
-            </nut-icon>
-          </view>
-          <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-            <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
-          </view>
-          <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
-          <slot v-if="$slots.rightExtra" name="rightExtra"></slot>
-        </view>
-        <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-          <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-          >/{{ maxLength }}
-        </view>
-        <view
-          v-if="errorMessage"
-          class="nut-input-error-message"
-          :style="{
-            textAlign: errorMessageAlign
-          }"
-        >
-          {{ errorMessage }}
-        </view>
-      </view>
-    </template>
   </view>
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
+import { IconFont } from '@nutui/icons-vue';
 
 const { componentName, create } = createComponent('input');
 
@@ -117,22 +78,6 @@ export default create({
     placeholder: {
       type: String,
       default: ''
-    },
-    label: {
-      type: String,
-      default: ''
-    },
-    labelClass: {
-      type: String,
-      default: ''
-    },
-    labelWidth: {
-      type: [String, Number],
-      default: '80'
-    },
-    labelAlign: {
-      type: String as PropType<InputAlignType>,
-      default: 'left'
     },
     colon: {
       type: Boolean,
@@ -166,22 +111,6 @@ export default create({
       type: [String, Number],
       default: '9999'
     },
-    leftIconSize: {
-      type: [String, Number],
-      default: ''
-    },
-    leftIcon: {
-      type: String,
-      default: ''
-    },
-    rightIcon: {
-      type: String,
-      default: ''
-    },
-    rightIconSize: {
-      type: [String, Number],
-      default: ''
-    },
     clearable: {
       type: Boolean,
       default: false
@@ -210,14 +139,6 @@ export default create({
       type: Array as PropType<InputRule>,
       default: []
     },
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-    errorMessageAlign: {
-      type: String as PropType<InputAlignType>,
-      default: ''
-    },
     rows: {
       type: [String, Number],
       default: null
@@ -243,18 +164,8 @@ export default create({
       default: false
     }
   },
-
-  emits: [
-    'update:modelValue',
-    'change',
-    'blur',
-    'focus',
-    'clear',
-    'keypress',
-    'click-input',
-    'click-left-icon',
-    'click-right-icon'
-  ],
+  components: { IconFont },
+  emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -372,6 +283,8 @@ export default create({
     const clear = (event: Event) => {
       event.stopPropagation();
       if (props.disabled) return;
+      emit('update:modelValue', '', event);
+      emit('change', '', event);
       emit('clear', '', event);
     };
 
@@ -387,22 +300,6 @@ export default create({
         return;
       }
       emit('click-input', event);
-    };
-
-    const onClickLeftIcon = (event: MouseEvent) => {
-      event.stopPropagation();
-      if (props.disabled) {
-        return;
-      }
-      emit('click-left-icon', event);
-    };
-
-    const onClickRightIcon = (event: MouseEvent) => {
-      event.stopPropagation();
-      if (props.disabled) {
-        return;
-      }
-      emit('click-right-icon', event);
     };
 
     watch(
@@ -436,9 +333,7 @@ export default create({
       onFocus,
       onBlur,
       clear,
-      onClickInput,
-      onClickLeftIcon,
-      onClickRightIcon
+      onClickInput
     };
   }
 });
