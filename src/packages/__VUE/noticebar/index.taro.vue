@@ -65,7 +65,6 @@
         </template>
         <template v-else-if="closeMode">
           <CircleClose :color="color" size="11px" />
-          <!-- <nut-icon type="cross" :color="color" size="11px"></nut-icon> -->
         </template>
       </view>
     </view>

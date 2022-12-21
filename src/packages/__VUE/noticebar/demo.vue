@@ -9,9 +9,9 @@
     <nut-noticebar :text="translate('text')" :scrollable="false"></nut-noticebar>
 
     <h2>{{ translate('mode') }}</h2>
-    <nut-noticebar :closeMode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar :closeMode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
     <nut-noticebar>
       <template v-slot:left-icon>
@@ -34,7 +34,7 @@
         :speed="10"
         :standTime="1000"
         @click="go"
-        :closeMode="true"
+        :close-mode="true"
       ></nut-noticebar>
     </div>
 

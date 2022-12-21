@@ -11,8 +11,6 @@ Used to display a group of message notifications in a continuons loop.
 import { createApp } from 'vue';
 // vue
 import { Noticebar } from '@nutui/nutui';
-// taro
-import { Noticebar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Noticebar);
@@ -64,12 +62,12 @@ Scrolling is automatically enabled when the content length of the notification b
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
     Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
   </nut-noticebar>
  
   <nut-noticebar
-      :closeMode="true"
+      :close-mode="true"
       right-icon="circle-close"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -124,7 +122,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
       :speed='10' 
       :standTime='1000' 
       @click='go' 
-      :closeMode="true" 
+      :close-mode="true" 
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`">
   </nut-noticebar>

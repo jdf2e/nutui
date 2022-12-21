@@ -66,12 +66,12 @@ app.use(Noticebar);
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
     NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
  
   <nut-noticebar
-      :closeMode="true"
+      :close-mode="true"
       right-icon="circle-close"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -131,7 +131,7 @@ app.use(Noticebar);
       :speed='10' 
       :standTime='1000' 
       @click='go' 
-      :closeMode="true" 
+      :close-mode="true" 
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`">
   </nut-noticebar>
