@@ -8,12 +8,13 @@ Used to upload local pictures or files to the server.
 
 ``` javascript
 import { createApp } from 'vue';
-import { Uploader,Icon,Progress } from '@nutui/nutui';
+import { Uploader,Icon,Progress,Button } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Uploader);
 app.use(Icon);
 app.use(Progress);
+app.use(Button);
 
 ```
 
