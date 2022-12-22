@@ -26,10 +26,10 @@
       @on-click-icon="icon"
       @on-click-right="rightClick"
       title="购物车"
-      :titIcon="true"
+      :titleIcon="true"
       desc="编辑"
     >
-      <template #titIcon>
+      <template #titleIcon>
         <Cart2 width="16px"></Cart2>
       </template>
       <template #right>

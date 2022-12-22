@@ -46,10 +46,10 @@ app.use(TabPane);
     @on-click-icon="icon"
     @on-click-right="rightClick"
     title="Cart"
-    :titIcon="true"
+    :titleIcon="true"
     desc="Edit"
   >
-    <template #titIcon>
+    <template #titleIcon>
       <Cart2 width="16px"></Cart2>
     </template>
     <template #right>
@@ -221,4 +221,4 @@ export default {
 | right | Customize the content on the right |
 | content |  Customize the middle content of the navigation bar |
 | leftShow  | Custom icon of left arrow  |
-| titIcon  | Custom icon in header |
+| titleIcon  | Custom icon in header |

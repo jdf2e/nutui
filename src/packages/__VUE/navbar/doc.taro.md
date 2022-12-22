@@ -46,7 +46,7 @@ app.use(TabPane);
     @on-click-icon="icon"
     @on-click-right="rightClick"
     title="购物车"
-    titIcon="cart2"
+    titleIcon="cart2"
     desc="编辑"
   >
     <template #right>

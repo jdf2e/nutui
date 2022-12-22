@@ -10,8 +10,8 @@
       </view>
       <view class="nut-navbar__title">
         <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-        <view v-if="titIcon" class="icon" @click="handleCenterIcon">
-          <slot name="titIcon" @click="handleCenterIcon"></slot>
+        <view v-if="titleIcon" class="icon" @click="handleCenterIcon">
+          <slot name="titleIcon" @click="handleCenterIcon"></slot>
         </view>
         <slot name="content"></slot>
       </view>
@@ -31,8 +31,8 @@
     </view>
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <view v-if="titIcon" class="icon" @click="handleCenterIcon">
-        <slot name="titIcon" @click="handleCenterIcon"></slot>
+      <view v-if="titleIcon" class="icon" @click="handleCenterIcon">
+        <slot name="titleIcon" @click="handleCenterIcon"></slot>
       </view>
       <slot name="content"></slot>
     </view>
@@ -53,7 +53,7 @@ export default create({
   props: {
     leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon
     title: { type: String, default: '' }, //中间  文字标题
-    titIcon: { type: Boolean, default: false }, //中间
+    titleIcon: { type: Boolean, default: false }, //中间
     leftText: { type: String, default: '' }, //左侧文字
     desc: { type: String, default: '' }, //右侧   按钮文字
     fixed: {

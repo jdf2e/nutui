@@ -25,10 +25,10 @@
       @on-click-icon="icon"
       @on-click-right="rightClick"
       :title="translate('navTitle3')"
-      :titIcon="true"
+      :titleIcon="true"
       :desc="translate('desc2')"
     >
-      <template #titIcon>
+      <template #titleIcon>
         <Cart2 width="16px"></Cart2>
       </template>
       <template #right>

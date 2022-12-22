@@ -46,10 +46,10 @@ app.use(TabPane);
     @on-click-icon="icon"
     @on-click-right="rightClick"
     title="购物车"
-    :titIcon="true"
+    :titleIcon="true"
     desc="编辑"
   >
-    <template #titIcon>
+    <template #titleIcon>
       <Cart2 width="16px"></Cart2>
     </template>
     <template #right>
@@ -219,4 +219,4 @@ export default {
 | right | 自定义右侧内容 |  |
 | content |  自定义导航栏中间内容 |  |
 | leftShow  | 左侧箭头自定义图标 |
-| titIcon  | 标题中自定义图标 |
+| titleIcon  | 标题中自定义图标 |
