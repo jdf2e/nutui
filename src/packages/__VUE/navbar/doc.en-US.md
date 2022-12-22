@@ -155,9 +155,6 @@ export default {
         <nut-tab-pane title="Title3"> </nut-tab-pane>
       </nut-tabs>
     </template>
-    <template #icons>
-        <nut-icon class="icon" name="share"></nut-icon>
-      </template>
 
     <template #right>
       <HorizontalN class="right" width="16px"></HorizontalN>
