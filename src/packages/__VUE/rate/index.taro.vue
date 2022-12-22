@@ -1,7 +1,7 @@
 <template src="./template.html"></template>
 <script lang="ts">
 import { StarN } from '@nutui/icons-vue-taro';
-import { computed, Ref, ref } from 'vue';
+import { computed, h, Ref, ref } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';

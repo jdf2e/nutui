@@ -44,7 +44,7 @@ export default {
       val8: 3
     });
     const onChange = (val) => {
-      proxy.$toast.text(val);
+      // proxy.$toast.text(val);
     };
     return {
       state,

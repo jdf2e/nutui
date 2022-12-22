@@ -1,6 +1,6 @@
 <template src="./template.html"></template>
 <script lang="ts">
-import { computed, Ref, ref } from 'vue';
+import { computed, h, Ref, ref } from 'vue';
 import { StarN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -19,7 +19,7 @@ export default create({
     icon: {
       type: Object,
       default: () => {
-        return StarN;
+        return h(StarN, { width: 18, height: 18 });
       }
     },
     activeColor: {
