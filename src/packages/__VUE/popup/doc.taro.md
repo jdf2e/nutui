@@ -218,7 +218,7 @@ app.use(Overlay)
 | close-icon             | [图标名称](#/zh-CN/component/icon) 或图片链接                                                  | string         | `"close"`     |
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                          | boolean        | `true`        |
 | round                  | 是否显示圆角                                                |boolean        | `false`       |
-| safe-area-inset-bottom `v3.1.19`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
+| safe-area-inset-bottom	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
 
 ### Events
 

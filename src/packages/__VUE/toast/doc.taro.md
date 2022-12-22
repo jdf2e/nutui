@@ -77,7 +77,7 @@ export default {
 | text-align-center      | 多行文案是否居中                                                        | Boolean      | true                          |
 | bg-color               | 背景颜色（透明度）                                                      | String       | "rgba(0, 0, 0, 0.8)"          |
 | custom-class           | 自定义类名                                                              | String       | ""                            |
-| icon                   | 自定义图标，**对应icon组件，支持图片链接**                              | String       | ""                            |
+| icon                   | 自定义图标，**直接传入Component 或者 h函数**                            | Component    | -                             |
 | size                   | 文案尺寸，**small**/**base**/**large**三选一                            | String       | "base"                        |
 | cover                  | 是否显示遮罩层，loading类型默认显示                                     | Boolean      | loading类型true/其他类型false |
 | cover-color            | 遮罩层颜色，默认透明                                                    | String       | "rgba(0,0,0,0)"               |

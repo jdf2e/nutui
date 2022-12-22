@@ -1,4 +1,4 @@
-const package = require('../package.json');
+const packageConfig = require('../package.json');
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
@@ -17,6 +17,7 @@ config.nav.map((item) => {
     packages.push(name);
   });
 });
+let importCssVar = `import '../packages/styles/css-variables.scss';\n`;
 let installFunction = `function install(app: any) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {
@@ -29,7 +30,7 @@ let installFunction = `function install(app: any) {
 }`;
 let fileStrBuild = `${importStr}
 ${installFunction}
-const version = '${package.version}';
+const version = '${packageConfig.version}';
 export { install, version, Locale };
 export default { install, version, Locale};`;
 
@@ -38,9 +39,10 @@ fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.build.ts')
 });
 let fileStrDev = `${importStr}
 ${installFunction}
+${importCssVar}
 ${importScssStr}
 export { install, Locale, ${packages.join(',')}  };
-export default { install, version:'${package.version}', Locale};`;
+export default { install, version:'${packageConfig.version}', Locale};`;
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.ts'), fileStrDev, 'utf8', (error) => {
   // logger.success(`${package_config_path} 文件写入成功`);
 });

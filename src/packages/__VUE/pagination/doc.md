@@ -117,10 +117,10 @@ export default {
 <template>
   <nut-pagination v-model="currentPage3" :total-items="500"  @change="pageChange"  :show-page-size="5">
       <template #prev-text>
-          <nut-icon name="left" size="10px" />
+        <Left width="10px" height="10px" />
       </template>
       <template #next-text>
-          <nut-icon name="right" size="10px" />
+        <Right width="10px" height="10px" />
       </template>
       <template #page="{ item }">
           {{ item.number == 3 ? 'hot' : item.text }}
@@ -128,8 +128,10 @@ export default {
   </nut-pagination>
 </template>
 <script lang="ts">
+import { Left, Right } from '@nutui/icons-vue';
 import { ref, reactive, toRefs } from 'vue';
 export default {
+  components: { Left, Right },
   setup() {
     const state = reactive({
       currentPage3: 1,

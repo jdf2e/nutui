@@ -17,7 +17,7 @@
         }"
       >
         <view v-if="hasIcon" :class="toastIconWrapperClass">
-          <nut-icon :size="iconSize" v-bind="$attrs" color="#ffffff" :name="icon"></nut-icon>
+          <component :is="renderIcon(icon)" color="#ffffff"></component>
         </view>
         <div v-if="title" class="nut-toast-title">
           {{ title }}
@@ -28,14 +28,11 @@
   </Transition>
 </template>
 <script lang="ts">
-import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { reactive, computed, watch, onMounted, PropType, Component } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('toast');
-import Icon from '../icon/index.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  components: {},
   props: {
     id: String,
     msg: String,
@@ -57,11 +54,10 @@ export default create({
       type: [String, Number],
       default: 'base'
     },
-    iconSize: {
-      type: String,
-      default: '20'
+    icon: {
+      type: Object as PropType<Component>,
+      default: () => {}
     },
-    icon: String,
     textAlignCenter: {
       type: Boolean,
       default: true
@@ -173,7 +169,8 @@ export default create({
       hasIcon,
       toastBodyClass,
       toastIconWrapperClass,
-      onAfterLeave
+      onAfterLeave,
+      renderIcon
     };
   }
 });

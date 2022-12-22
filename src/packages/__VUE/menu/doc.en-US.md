@@ -383,11 +383,11 @@ export default {
 | Attribute                        | Description                                                         | Type                    | Default |
 |----------------------------------|---------------------------------------------------------------------|-------------------------|---------|
 | active-color                     | Active color of title and option                                    | String                  | #F2270C |
-| close-on-click-overlay `v3.1.21` | Whether to close when overlay is clicked                            | Boolean                 | true    |
-| scroll-fixed `v3.1.22`           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
-| title-class `v3.1.22`            | Custome title class                                                 | String                  | -       |
-| lock-scroll `v3.1.22`            | Whether the background is locked                                    | Boolean                 | true    |
-| title-icon `3.2.1`               | Custome title icon                                                  | String                  | -       |
+| close-on-click-overlay | Whether to close when overlay is clicked                            | Boolean                 | true    |
+| scroll-fixed           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
+| title-class            | Custome title class                                                 | String                  | -       |
+| lock-scroll            | Whether the background is locked                                    | Boolean                 | true    |
+| title-icon               | Custome title icon                                                  | String                  | -       |
 
 ### MenuItem Props
 
@@ -398,12 +398,12 @@ export default {
 | disabled  | Whether to disable dropdown item     | Boolean | false          |
 | cols      | Display how many options in one line | Number  | 1              |
 
-| option-icon `v3.1.22`         | Custome option icon                  | String  | 'Check'        |
-| direction `v3.1.22`           | Expand direction, can be set to up   | String  | 'down'         |
-| active-title-class `v3.2.0`   | Active custome title class           | String  | -              |
-| inactive-title-class `v3.2.0` | Inactive custome title class         | String  | -              |
-| font-class-name`v3.2.1` | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
-| class-prefix`v3.2.1`    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
+| option-icon         | Custome option icon                  | String  | 'Check'        |
+| direction           | Expand direction, can be set to up   | String  | 'down'         |
+| active-title-class   | Active custome title class           | String  | -              |
+| inactive-title-class | Inactive custome title class         | String  | -              |
+| font-class-name | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
+| class-prefix    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
 
 
 
@@ -413,5 +413,5 @@ export default {
 |--------|-------------------------------|----------------|
 | change | Emitted select option changed | Selected value |
 | toggle | Toggle menu display status, `true` to show，`false` to hide, no param is negated | show?: boolean |
-| open `v3.2.7` | Emitted when opening menu | - |
-| close `v3.2.7` | Emitted when closing menu | - |
+| open  | Emitted when opening menu | - |
+| close | Emitted when closing menu | - |

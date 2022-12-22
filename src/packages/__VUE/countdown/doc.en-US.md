@@ -307,13 +307,13 @@ Paused and restarted the countdown with the paused attribute
 | v-model | Current Time | Object | {}
 | start-time | Start Time | String, Number | Date.now()
 | end-time | End Time | String, Number | Date.now()
-| format `v3.1.20` |  Format Time | String | HH:mm:ss
-| millisecond `v3.1.20` |  Whether to enable millisecond render | Boolean | false
-| auto-start `v3.1.20` |  Whether to auto start count down | Boolean | true
-| time `v3.1.20` | Total time, unit milliseconds | String，Number | 0
+| format |  Format Time | String | HH:mm:ss
+| millisecond |  Whether to enable millisecond render | Boolean | false
+| auto-start |  Whether to auto start count down | Boolean | true
+| time | Total time, unit milliseconds | String，Number | 0
 | paused | Paused | Boolean | false
-| show-days | Show Text Day `v3.1.20(Abandon)` | Boolean | false
-| show-plain-text | Show Text `v3.1.20(Abandon)` | Boolean | false
+| show-days | Show Text Day | Boolean | false
+| show-plain-text | Show Text | Boolean | false
 
 ### Format
 

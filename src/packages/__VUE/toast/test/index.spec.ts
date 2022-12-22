@@ -70,16 +70,4 @@ describe('component toast', () => {
     let toast: any = wrapper.find('.custom');
     expect(toast.exists()).toBe(true);
   });
-  test('should change icon size when using icon-size prop', async () => {
-    const wrapper = mount(Toast, {
-      props: {
-        icon: 'success',
-        iconSize: '30'
-      }
-    });
-
-    await sleep();
-    let icon: any = wrapper.find('.nut-icon');
-    expect(icon.element.style.fontSize).toEqual('30px');
-  });
 });

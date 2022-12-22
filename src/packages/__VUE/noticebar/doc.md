@@ -63,12 +63,12 @@ app.use(Noticebar);
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
     NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
  
   <nut-noticebar
-      :closeMode="true"
+      :close-mode="true"
       right-icon="circle-close"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -87,9 +87,14 @@ app.use(Noticebar);
 ```html
 <template>
     <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :scrollable="false"
     >
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
 </template>
@@ -123,7 +128,7 @@ app.use(Noticebar);
       :speed='10' 
       :standTime='1000' 
       @click='go' 
-      :closeMode="true" 
+      :close-mode="true" 
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`">
   </nut-noticebar>
@@ -226,7 +231,7 @@ app.use(Noticebar);
 | delay      | 延时多少秒                                                 | String/Number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
 | speed      | 滚动速率 (px/s)                                            | Number        | 50     |
-| wrapable `v3.1.18`  | 是否开启文本换行                                           | Boolean       | false    |
+| wrapable  | 是否开启文本换行                                           | Boolean       | false    |
 
 ### Props（direction=vertical）
 

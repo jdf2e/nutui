@@ -257,34 +257,33 @@ toast.hide();
 
 ## API
 ### Methods
-| Methods                    | Description              | Attribute          | Return value     |
-| ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
-| Toast.text                | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
-| Toast.success             | Show success toast     | message｜ options| toast instance |
-| Toast.fail                | Show fail toast   | message｜ options| toast instance|
-| Toast.warn                | Show warn toast    | message｜ options | toast instance |
-| Toast.hide                | Close toast     | clearAll: boolean   | void       |
-| Toast.loading             | Show loading toast      | message｜ options | toast instance |
+| Methods       | Description        | Attribute         | Return value                                  |
+|---------------|--------------------|-------------------|-----------------------------------------------|
+| Toast.text    | Show text toast    | message｜ options | toast instance(message support incoming HTML) |
+| Toast.success | Show success toast | message｜ options | toast instance                                |
+| Toast.fail    | Show fail toast    | message｜ options | toast instance                                |
+| Toast.warn    | Show warn toast    | message｜ options | toast instance                                |
+| Toast.hide    | Close toast        | clearAll: boolean | void                                          |
+| Toast.loading | Show loading toast | message｜ options | toast instance                                |
 
 ### ToastOptions
 
-| 字段                | 说明                                                                          | 类型          | 默认值                        |
-| ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |
-| id                  | Identifier, share one instance at the same time, default to multiple instances| String/Number | -            |
-| duration            | Toast duration(ms), won't disappear if value is 0      | Number        | 2000                          |
-| title            | title     | String        |           -             |
-| center  | Whether to display in the middle of the page (display at the bottom when false) | Boolean| true                          |
-| bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String| 30px       |
-| text-align-center     | Whether the multi-line copy is centered           | Boolean       | true                          |
-| bgColor             | background color (transparency) | String        | rgba(0, 0, 0, 0.8)      |
-| custom-class         |   Custom Class          | String        |          -                   |
-| icon                | Custom Icon        | String        |         -                   |
-| icon-size    | Custom iconSize      | String        | 20                           |
-| size        | Text Size **small**/**base**/**large**          | String        | base      |
-| cover      | Whether to show the mask layer     | Boolean       | false |
-| cover-color   | Cover Color   | String        | rgba(0,0,0,0)             |
-| loading-rotate  | Whether the loading icon is rotated, only valid for the loading type  | Boolean | true                          |
-| close             | Callback function after close                   | function      | null                          |
-| close-on-click-overlay | 	Whether to close when overlay is clicked                  | Boolean       | false                         |
-| custom-class          | Custom Class                      | String       |               -          |
+| 字段                   | 说明                                                                                               | 类型          | 默认值             |
+|------------------------|----------------------------------------------------------------------------------------------------|---------------|--------------------|
+| id                     | Identifier, share one instance at the same time, default to multiple instances                     | String/Number | -                  |
+| duration               | Toast duration(ms), won't disappear if value is 0                                                  | Number        | 2000               |
+| title                  | title                                                                                              | String        | -                  |
+| center                 | Whether to display in the middle of the page (display at the bottom when false)                    | Boolean       | true               |
+| bottom                 | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String        | 30px               |
+| text-align-center      | Whether the multi-line copy is centered                                                            | Boolean       | true               |
+| bgColor                | background color (transparency)                                                                    | String        | rgba(0, 0, 0, 0.8) |
+| custom-class           | Custom Class                                                                                       | String        | -                  |
+| icon                   | Custom Icon                                                                                        | Component     | -                  |
+| size                   | Text Size **small**/**base**/**large**                                                             | String        | base               |
+| cover                  | Whether to show the mask layer                                                                     | Boolean       | false              |
+| cover-color            | Cover Color                                                                                        | String        | rgba(0,0,0,0)      |
+| loading-rotate         | Whether the loading icon is rotated, only valid for the loading type                               | Boolean       | true               |
+| close                  | Callback function after close                                                                      | function      | null               |
+| close-on-click-overlay | Whether to close when overlay is clicked                                                           | Boolean       | false              |
+| custom-class           | Custom Class                                                                                       | String        | -                  |
 
