@@ -35,11 +35,12 @@
     <div>
       <nut-cell>
         <nut-progress percentage="60" :text-inside="true">
-          <nut-icon
+          <img
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            width="30"
+            height="30"
             style="display: block"
-            size="30"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          ></nut-icon>
+          />
         </nut-progress>
       </nut-cell>
     </div>
@@ -73,9 +74,11 @@
           stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           stroke-width="15"
           status="icon"
-          icon-name="issue"
-          icon-color="red"
-        />
+        >
+          <template #iconName>
+            <Issue color="red" width="15px" height="15px"></Issue>
+          </template>
+        </nut-progress>
       </nut-cell>
     </div>
     <h2>{{ translate('dynamicChange') }}</h2>
@@ -96,6 +99,7 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Issue } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -126,6 +130,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Issue },
   props: {},
   setup() {
     initTranslate();

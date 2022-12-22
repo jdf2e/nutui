@@ -8,11 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Progress,Icon } from '@nutui/nutui-taro';
+import { Progress } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Progress);
-app.use(Icon);
 
 ```
 
@@ -76,11 +75,12 @@ app.use(Icon);
 <template>
      <nut-cell>
         <nut-progress percentage="60" :text-inside="true">
-          <nut-icon
+          <img
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            width="30"
+            height="30"
             style="display: block"
-            size="30"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          ></nut-icon>
+          />
         </nut-progress>
       </nut-cell>
 </template>
@@ -126,9 +126,11 @@ app.use(Icon);
           stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           stroke-width="15"
           status="icon"
-          icon-name="issue"
-          icon-color="red"
-        />
+        >
+          <template #iconName>
+            <Issue color="red" width="15px" height="15px"></Issue>
+          </template>
+        </nut-progress>
       </nut-cell>
     </div>
 </template>
@@ -149,5 +151,8 @@ app.use(Icon);
 | text-color | 进度条文字颜色设置 | String | #333
 | text-background | 进度条文字背景颜色设置 | String | 同进度条颜色
 | status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | String | text
-| icon-name | icon名称 | String | checked
-| icon-color | icon颜色 | String | #439422
+
+### Slots
+| 名称  | 说明     | 回调参数    |
+|-------|----------|-------------|
+| iconName | 右侧icon内容 |  |

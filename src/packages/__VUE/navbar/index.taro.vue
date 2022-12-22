@@ -2,13 +2,17 @@
   <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
     <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
-        <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
+        <slot name="leftShow" v-if="leftShow">
+          <Left height="12px" color="#979797"></Left>
+        </slot>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
         <slot name="left"></slot>
       </view>
       <view class="nut-navbar__title">
         <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-        <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+        <view v-if="titleIcon" class="icon" @click="handleCenterIcon">
+          <slot name="titleIcon" @click="handleCenterIcon"></slot>
+        </view>
         <slot name="content"></slot>
       </view>
       <view class="nut-navbar__right" @click="handleRight">
@@ -19,13 +23,17 @@
   </view>
   <view v-else :class="classes" :style="styles">
     <view class="nut-navbar__left" @click="handleLeft">
-      <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
+      <slot name="leftShow" v-if="leftShow">
+        <Left height="12px" color="#979797"></Left>
+      </slot>
       <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
       <slot name="left"></slot>
     </view>
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <nut-icon v-if="titIcon" class="icon" :name="titIcon" v-bind="$attrs" @click="handleCenterIcon"></nut-icon>
+      <view v-if="titleIcon" class="icon" @click="handleCenterIcon">
+        <slot name="titleIcon" @click="handleCenterIcon"></slot>
+      </view>
       <slot name="content"></slot>
     </view>
     <view class="nut-navbar__right" @click="handleRight">
@@ -41,11 +49,13 @@ import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('navbar');
+import { Left } from '@nutui/icons-vue-taro';
 export default create({
+  components: { Left },
   props: {
     leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon
     title: { type: String, default: '' }, //中间  文字标题
-    titIcon: { type: String, default: '' }, //中间  标题icon
+    titleIcon: { type: Boolean, default: false }, //中间  标题icon
     leftText: { type: String, default: '' }, //左侧文字
     desc: { type: String, default: '' }, //右侧   按钮文字
     fixed: {

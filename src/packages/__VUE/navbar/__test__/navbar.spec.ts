@@ -1,14 +1,6 @@
 import { mount, config } from '@vue/test-utils';
 import NavBar from '../index.vue';
 
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-
 afterAll(() => {
   config.global.components = {};
 });
