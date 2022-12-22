@@ -62,7 +62,6 @@
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Range from '../range/index.vue';
 import { Service } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('audio');
 
@@ -107,7 +106,6 @@ export default create({
     }
   },
   components: {
-    [Range.name]: Range,
     Service
   },
   emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],

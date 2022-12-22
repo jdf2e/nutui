@@ -8,10 +8,7 @@
 
 ``` ts
 import { createApp } from 'vue';
-// vue
 import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
-// taro
-import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Checkbox);

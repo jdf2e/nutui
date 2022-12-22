@@ -9,7 +9,6 @@ Use for quick rating actions, or to showcase reviews.
 ``` javascript
 import { createApp } from 'vue';
 import { Rate } from '@nutui/nutui';
-
 const app = createApp();
 app.use(Rate);
 ```

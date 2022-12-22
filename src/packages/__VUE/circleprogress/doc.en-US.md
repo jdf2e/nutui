@@ -8,10 +8,7 @@ Circular progress bar component,
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { CircleProgress } from '@nutui/nutui';
-//taro
-import { CircleProgress } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(CircleProgress);

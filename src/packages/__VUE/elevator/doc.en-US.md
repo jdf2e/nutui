@@ -8,10 +8,7 @@ It is used to quickly locate the list and display the index
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Elevator } from '@nutui/nutui';
-// taro
-import { Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Elevator);

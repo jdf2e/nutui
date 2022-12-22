@@ -8,10 +8,7 @@ The user can enter content in the text box.
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Input,Icon } from '@nutui/nutui';
-// taro
-import { Input,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
@@ -530,9 +527,7 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
 | error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type `H5(v3.2.8)` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
-| adjust-position`v3.1.21` | Whether to automatically push the page up when the keyboard pops up (`applets only`)     | Boolean | `true` |
-| always-system`v3.2.8` | Whether to force the use of input elements created by system keyboard and Web-view. When true, `confirm-type`, `confirm-hold` may fail (`applets only`)     | Boolean | `false` |
+| confirm-type `v3.2.8` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
 
 ### Events
 

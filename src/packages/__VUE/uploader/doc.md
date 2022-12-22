@@ -8,12 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Uploader,Icon,Progress } from '@nutui/nutui';
+import { Uploader } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Uploader);
-app.use(Icon);
-app.use(Progress);
 
 ```
 
@@ -363,34 +361,32 @@ export default {
 ## API
 ### Props
 
-| 字段                      | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| auto-upload               | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                                                                                             | Boolean                           | true             |
-| name                      | `input` 标签 `name` 的名称，发到后台的文件参数名                                                                                                                                       | String                            | "file"           |
-| url                       | 上传服务器的接口地址                                                                                                                                                                   | String                            | -                |
-| v-model:file-list         | 默认已经上传的文件列表                                                                                                                                                                 | FileItem[]                        | []               |
-| is-preview                | 是否上传成功后展示预览图                                                                                                                                                               | Boolean                           | true             |
-| is-deletable              | 是否展示删除按钮                                                                                                                                                                       | Boolean                           | true             |
-| method                    | 上传请求的 http method                                                                                                                                                                 | String                            | "post"           |
-| list-type                 | 上传列表的内建样式，支持两种基本样式 picture、list                                                                                                                                     | String                            | "picture"        |
-| capture                   | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头                                                                     | String                            | false            |
-| maximize                  | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
-| maximum                   | 文件上传数量限制                                                                                                                                                                       | Number丨String                    | 1                |
-| clear-input               | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件                                                                                                                          | Boolean                           | true             |
-| accept                    | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *                |
-| headers                   | 设置上传的请求头部                                                                                                                                                                     | Object                            | {}               |
-| data                      | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}               |
-| upload-icon               | 上传区域[图标名称](#/zh-CN/component/icon)或图片链接                                                                                                                                                   | String                            | "photograph"     |
-| upload-icon-size          | 上传区域[图标尺寸](#/zh-CN/component/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                 | String or Number                  | -                |
-| xhr-state                 | 接口响应的成功状态（status）值                                                                                                                                                         | Number                            | 200              |
-| with-credentials          | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                           | false            |
-| multiple                  | 是否支持文件多选                                                                                                                                                                       | Boolean                           | false            |
-| disabled                  | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
-| timeout                   | 超时时间，单位为毫秒                                                                                                                                                                   | Number丨String                    | 1000 * 30        |
-| before-upload             | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
-| before-xhr-upload`v3.2.1` | 执行 XHR 上传时，自定义方式                                                                                                                                                            | Function(xhr，option)             | null             |
+| 字段                      | 说明                                                                                                                                                                                   | 类型                                       | 默认值           |
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|------------------|
+| auto-upload               | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                                                                                             | Boolean                                    | true             |
+| name                      | `input` 标签 `name` 的名称，发到后台的文件参数名                                                                                                                                       | String                                     | "file"           |
+| url                       | 上传服务器的接口地址                                                                                                                                                                   | String                                     | -                |
+| v-model:file-list         | 默认已经上传的文件列表                                                                                                                                                                 | FileItem[]                                 | []               |
+| is-preview                | 是否上传成功后展示预览图                                                                                                                                                               | Boolean                                    | true             |
+| is-deletable              | 是否展示删除按钮                                                                                                                                                                       | Boolean                                    | true             |
+| method                    | 上传请求的 http method                                                                                                                                                                 | String                                     | "post"           |
+| list-type                 | 上传列表的内建样式，支持两种基本样式 picture、list                                                                                                                                     | String                                     | "picture"        |
+| capture                   | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头                                                                     | String                                     | false            |
+| maximize                  | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                             | Number.MAX_VALUE |
+| maximum                   | 文件上传数量限制                                                                                                                                                                       | Number丨String                             | 1                |
+| clear-input               | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件                                                                                                                          | Boolean                                    | true             |
+| accept                    | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                                     | *                |
+| headers                   | 设置上传的请求头部                                                                                                                                                                     | Object                                     | {}               |
+| data                      | 附加上传的信息 formData                                                                                                                                                                | Object                                     | {}               |
+| upload-icon               | 上传区域[图标名称](#/zh-CN/component/icon)或图片链接                                                                                                                                   | String                                     | "photograph"     |
+| xhr-state                 | 接口响应的成功状态（status）值                                                                                                                                                         | Number                                     | 200              |
+| with-credentials          | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                                    | false            |
+| multiple                  | 是否支持文件多选                                                                                                                                                                       | Boolean                                    | false            |
+| disabled                  | 是否禁用文件上传                                                                                                                                                                       | Boolean                                    | false            |
+| timeout                   | 超时时间，单位为毫秒                                                                                                                                                                   | Number丨String                             | 1000 * 30        |
+| before-upload             | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                                   | null             |
+| before-xhr-upload`v3.2.1` | 执行 XHR 上传时，自定义方式                                                                                                                                                            | Function(xhr，option)                      | null             |
 | before-delete             | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file,fileList): boolean 丨Promise | -                |
-| delete-icon               | 自定义删除按钮，可传入[图标名称](/#/zh-CN/component/icon)或图片链接                                                                                                                                                   | String                            | "photograph"     |
 
 > 注意：accept、capture 和 multiple 为浏览器 input 标签的原生属性，移动端各种机型对这些属性的支持程度有所差异，因此在不同机型和 WebView 下可能出现一些兼容性问题。
 
@@ -417,6 +413,15 @@ export default {
 | change          | 上传文件改变时的状态   | {fileList,event}               |
 | delete          | 文件删除事件           | {files,fileList,index}         |
 | file-item-click | 文件上传成功后点击触发 | {fileItem}                     |
+
+### Uploader Slots
+
+| 名称               | 说明                         |
+|--------------------|------------------------------|
+| default            | 默认插槽自定义内容           |
+| upload-icon`4.0.0` | 自定义上传按钮中间`icon`区域 |
+| delete-icon`4.0.0` | 自定义右上角删除按钮区域     |
+
 
 ### Methods
 

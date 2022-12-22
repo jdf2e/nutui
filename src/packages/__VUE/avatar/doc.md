@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Avatar, Icon } from '@nutui/nutui';
-// taro
-import { Avatar, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Avatar);
@@ -215,7 +212,7 @@ Icon 和字符型可以自定义颜色及背景色
 | size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal |
 | shape        | 头像的形状，可选值为：`square`、`round`        | String | round  |
 | max-color    | Icon、字符类型头像的颜色                   | String | #666 |
-| max-bgColor  | Icon、字符类型头像的背景色                    | String | #eee   |
+| max-bg-color  | Icon、字符类型头像的背景色                    | String | #eee   |
 | span         | 头像之间的间距               | String | -8   |
 | zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | String | left     |
 ### Avatar Events
@@ -223,4 +220,4 @@ Icon 和字符型可以自定义颜色及背景色
 | 字段             | 说明         | 回调参数 |
 | ---------------- | ------------ | -------- |
 | active-avatar | 点击头像触发事件    | event    |
-| onError       | 图片加载失败的事件   | event    |
+| on-error       | 图片加载失败的事件   | event    |

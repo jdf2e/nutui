@@ -7,10 +7,7 @@ Short password input box, which can be used to enter passwords, SMS verification
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { ShortPassword,Popup } from '@nutui/nutui';
-//taro
-import { ShortPassword,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ShortPassword);

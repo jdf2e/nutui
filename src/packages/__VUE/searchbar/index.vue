@@ -142,6 +142,7 @@ export default create({
     const state = reactive({
       active: false
     });
+    console.log(slots);
 
     const searchbarStyle = computed(() => {
       return {

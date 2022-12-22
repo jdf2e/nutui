@@ -226,7 +226,6 @@ export default {
 |placeholder | input box default dark grain | string | 'please enter'|
 |clear | whether to display the clear button | Boolean | true|
 |background | input box external background | string | '#fff'|
-|confirm-type | the text of the button at the bottom right corner of the keyboard (` only applet supported ') takes effect only when' type='text ''. The optional values `send`: send, `search`: search, `next`: next, `go`: go, `done`: finish | string | `done`|
 |input-background | internal background of input box | string | '#f7f7f7'|
 |autofocus `v3.1.21` | Auto focus | boolean | false |
 |disabled `v3.1.21`| disable input box | Boolean | false|

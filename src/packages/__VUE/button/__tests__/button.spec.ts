@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import Button from '../index.vue';
 import { nextTick } from 'vue';
+import { StarFill } from '@nutui/icons-vue';
 test('emit click event', () => {
   const wrapper = mount(Button);
 
@@ -43,13 +44,14 @@ test('should not emit click event when loading', () => {
   wrapper.trigger('click');
   expect(wrapper.emitted('click')).toBeFalsy();
 });
-test('should change icon class prefix when using icon-class-prefix prop', () => {
+test('should find nut-icon class of an svg tag when using icon slot', () => {
   const wrapper = mount(Button, {
-    props: {
-      icon: 'star-fill',
-      iconClassPrefix: 'my-icon'
+    slots: {
+      icon: StarFill
     }
   });
 
-  expect(wrapper.html()).toMatchSnapshot();
+  const nutIcons = wrapper.findAll('svg');
+  expect(nutIcons.length).toEqual(1);
+  expect(nutIcons[0].element.classList).toContain('nut-icon');
 });

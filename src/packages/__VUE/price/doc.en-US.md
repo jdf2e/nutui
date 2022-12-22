@@ -8,10 +8,7 @@ It is used to apply different styles to the parts before and after the decimal p
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Price } from '@nutui/nutui';
-//taro
-import { Price } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Price);

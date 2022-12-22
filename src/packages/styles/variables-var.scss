@@ -135,12 +135,6 @@ $divider-vertical-top: var(--nut-divider-vertical-top) !default;
 $divider-vertical-border-left: var(--nut-divider-vertical-border-left) !default;
 $divider-vertical-margin: var(--nut-divider-vertical-margin) !default;
 
-// icon
-
-$icon-height: var(--nut-icon-height) !default;
-$icon-width: var(--nut-icon-width) !default;
-$icon-line-height: var(--nut-icon-line-height) !default;
-
 // uploader
 
 $uploader-picture-width: var(--nut-uploader-picture-width) !default;
@@ -525,7 +519,7 @@ $popover-menu-name-line-height: var(--nut-popover-menu-name-line-height) !defaul
 //progress
 $progress-inner-background-color: var(--nut-progress-inner-background-color) !default;
 $progress-insidetext-background: var(--nut-progress-insidetext-background) !default;
-$progress-outer-background-color: var(--nut-progress-insidetext-backgroundr) !default;
+$progress-outer-background-color: var(--nut-progress-outer-background-color) !default;
 $progress-outer-border-radius: var(--nut-progress-insidetext-border-radius) !default;
 $progress-insidetext-border-radius: var(--nut-progress-insidetext-border-radius) !default;
 $progress-insidetext-padding: var(--nut-progress-insidetext-padding) !default;
@@ -857,5 +851,4 @@ $invoice-padding: var(--nut-invoice-padding) !default;
 // TrendArrow
 $trendarrow-font-size: var(--nut-trendarrow-font-size) !default;
 $trendarrow-before-icon-margin: var(--nut-trendarrow-before-icon-margin) !default;
-
 @import './mixins/index';

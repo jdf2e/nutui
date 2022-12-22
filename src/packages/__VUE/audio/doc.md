@@ -9,11 +9,11 @@
 
 ```javascript
 import { createApp } from 'vue';
-// vue
-import { Audio} from '@nutui/nutui';
+import { Audio, Range } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Audio);
+app.use(Range);
 ```
 
 ### 基础用法

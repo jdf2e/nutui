@@ -8,7 +8,6 @@
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { Signature} from '@nutui/nutui-taro';
 
 const app = createApp();

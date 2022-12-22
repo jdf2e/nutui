@@ -7,11 +7,7 @@ Occupation reminder when empty.
 ### Install
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Empty } from '@nutui/nutui';
-
-// taro
-import { Empty } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Empty);

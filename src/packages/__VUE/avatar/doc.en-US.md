@@ -8,10 +8,7 @@ Avatars can be used to represent people or objects. It supports images, Icons, o
 
 ```javascript
 import { createApp } from 'vue';
-// vue
 import { Avatar, Icon } from '@nutui/nutui';
-// taro
-import { Avatar, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Avatar);
@@ -215,7 +212,7 @@ Icon and letter types can have custom colors and background colors
 | size         | The size of the avatar，eg `large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal  |
 | shape        | The shape of avatar，eg `square`、`round`            | String | round  |
 | max-color    | The colors of Icon and letter types     | String | #666 |
-| max-bgColor  | The background colors of Icon and letter types        | String | #eee   |
+| max-bg-color  | The background colors of Icon and letter types        | String | #eee   |
 | span         | Distance between avatars            | String | -8   |
 | zIndex       | Hierarchy direction between avatar group，eg `left`、`right`  | String | left     |
 
@@ -224,4 +221,4 @@ Icon and letter types can have custom colors and background colors
 | Event         | Description                   | Arguments |
 | ------------- | ----------------------------- | --------- |
 | active-avatar | Emitted when cell is clicked  |  event    |
-| onError       | Handler when img load error   |  event    |
+| on-error       | Handler when img load error   |  event    |

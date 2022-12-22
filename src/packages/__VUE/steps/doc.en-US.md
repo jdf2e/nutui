@@ -8,10 +8,7 @@ Split and display the steps of a process, guide users to complete tasks accordin
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Steps, Step } from '@nutui/nutui';
-//taro
-import { Steps, Step  } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Steps);

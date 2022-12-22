@@ -8,10 +8,7 @@ Used to turn options on or off.
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Switch } from '@nutui/nutui';
-//taro
-import { Switch } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Switch);

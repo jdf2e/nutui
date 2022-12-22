@@ -9,10 +9,7 @@ Labels for tagging and classification.
 ```javascript
 
 import { createApp } from 'vue';
-// vue
 import { Tag } from '@nutui/nutui';
-// taro
-import { Tag } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tag);

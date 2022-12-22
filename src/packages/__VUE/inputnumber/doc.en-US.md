@@ -8,10 +8,7 @@ Control the number increase or decrease by clicking the button.
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
 import { InputNumber } from '@nutui/nutui';
-// taro
-import { InputNumber } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(InputNumber);

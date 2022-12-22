@@ -44,10 +44,11 @@
     </nut-cell>
     <view class="title">{{ translate('title7') }}</view>
     <nut-cell>
-      <nut-trend-arrow :rate="10.2365" :up-icon-name="'success'" />
-      <nut-trend-arrow :rate="-10.2365" :down-icon-name="'failure'" />
       <nut-trend-arrow :rate="10.2365">
-        <nut-icon name="heart-fill" color="#fa2c19" size="12px"></nut-icon>
+        <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      </nut-trend-arrow>
+      <nut-trend-arrow :rate="-10.2365">
+        <template #downIcon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
   </div>
@@ -56,6 +57,7 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('trend-arrow');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Success, Failure } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -80,6 +82,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Success, Failure },
   props: {},
   setup() {
     initTranslate();

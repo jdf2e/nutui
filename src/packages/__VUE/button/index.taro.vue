@@ -1,15 +1,9 @@
 <template>
   <button :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
-      <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
-      <nut-icon
-        v-if="icon && !loading"
-        :name="icon"
-        v-bind="$attrs"
-        :class-prefix="iconClassPrefix"
-        :font-class-name="iconFontClassName"
-      ></nut-icon>
-      <view :class="{ 'nut-button__text': icon || loading }" v-if="$slots.default">
+      <Loading class="nut-icon-loading" v-if="loading" />
+      <slot name="icon" v-if="$slots.icon && !loading"></slot>
+      <view :class="{ 'nut-button__text': $slots.icon || loading }" v-if="$slots.default">
         <slot></slot>
       </view>
     </view>
@@ -19,12 +13,10 @@
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { Loading } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('button');
-import Icon from '../icon/index.taro.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  components: { Loading },
   props: {
     color: String,
     shape: {

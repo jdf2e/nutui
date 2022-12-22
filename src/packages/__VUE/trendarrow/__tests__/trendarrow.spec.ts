@@ -1,11 +1,11 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
 import Trendarrow from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-import { nextTick, toRefs, reactive } from 'vue';
+import { Failure } from '@nutui/icons-vue';
+import { h } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    Failure
   };
 });
 
@@ -126,17 +126,21 @@ test('should render triangle color when dropColor used', async () => {
   const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('(73, 143, 242)');
 });
-test('should render triangle size when set iconsize', async () => {
+test('should render SVG icon when use downIcon slots', async () => {
   const wrapper = mount(Trendarrow, {
     props: {
-      rate: -10,
-      iconSize: '14px'
+      rate: -10
+    },
+    slots: {
+      downIcon: h(Failure, {
+        color: 'blue',
+        width: '18',
+        height: '18'
+      })
     }
   });
-  await nextTick();
-  await nextTick();
-  expect(wrapper.html()).toMatchSnapshot();
-
-  const span = wrapper.find<HTMLElement>('.nut-icon');
-  expect(span.element.style.fontSize).toContain('14px');
+  const icon = wrapper.find('.nut-icon');
+  expect(icon.element.tagName).toEqual('svg');
+  expect(icon.element.getAttribute('color')).toEqual('blue');
+  expect(icon.html()).toContain('width: 18px');
 });
