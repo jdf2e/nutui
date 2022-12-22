@@ -1,10 +1,7 @@
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch } from 'vue';
-
-export const component = (componentName: string, nutIcon: object) => {
+import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component } from 'vue';
+export const component = (componentName: string, components: Record<string, Component>): any => {
   return {
-    components: {
-      nutIcon
-    },
+    components: components,
     props: {
       modelValue: {
         type: Boolean,
@@ -21,18 +18,6 @@ export const component = (componentName: string, nutIcon: object) => {
       iconSize: {
         type: [String, Number],
         default: ''
-      },
-      iconName: {
-        type: String,
-        default: 'check-normal'
-      },
-      iconActiveName: {
-        type: String,
-        default: 'checked'
-      },
-      iconIndeterminateName: {
-        type: String,
-        default: 'check-disabled'
       },
       label: {
         type: String,
@@ -104,9 +89,18 @@ export const component = (componentName: string, nutIcon: object) => {
       );
 
       const renderIcon = () => {
-        const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName, iconIndeterminateName } = props;
-        return h(nutIcon, {
-          name: !pValue.value ? iconName : state.partialSelect ? iconIndeterminateName : iconActiveName,
+        const { iconSize, iconClassPrefix, iconFontClassName } = props;
+        const iconNodeMap = {
+          CheckNormal: slots.icon ? slots.icon : components.CheckNormal,
+          Checked: slots.checkedIcon ? slots.checkedIcon : components.Checked,
+          CheckDisabled: slots.indeterminate ? slots.indeterminate : components.CheckDisabled
+        };
+        const iconNode = !pValue.value
+          ? iconNodeMap.CheckNormal
+          : state.partialSelect
+          ? iconNodeMap.CheckDisabled
+          : iconNodeMap.Checked;
+        return h(iconNode, {
           size: iconSize,
           class: color.value,
           classPrefix: iconClassPrefix,
@@ -133,9 +127,9 @@ export const component = (componentName: string, nutIcon: object) => {
         }
         emitChange(!checked.value, slots.default?.()[0].children as string);
         if (hasParent.value) {
-          let value = parent.value.value;
-          let max = parent.max.value;
-          let { label } = props;
+          const value = parent.value.value;
+          const max = parent.max.value;
+          const { label } = props;
           const index = value.indexOf(label);
           if (index > -1) {
             value.splice(index, 1);

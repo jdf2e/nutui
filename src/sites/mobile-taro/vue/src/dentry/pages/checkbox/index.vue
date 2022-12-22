@@ -35,7 +35,11 @@
     </nut-cell-group>
     <nut-cell-group title="自定义图标">
       <nut-cell>
-        <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+        <nut-checkbox v-model="checkbox7"
+          >自定义图标
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="点击触发change事件">
@@ -110,7 +114,11 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, Ref } from 'vue';
+import { Checklist } from '@nutui/icons-vue-taro';
 export default {
+  components: {
+    Checklist
+  },
   setup(props, context) {
     const group = ref(null) as Ref;
     const group2 = ref(null) as Ref;

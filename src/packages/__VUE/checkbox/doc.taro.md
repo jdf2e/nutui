@@ -8,12 +8,12 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
-
+import { Checkbox,CheckboxGroup } from '@nutui/nutui-taro';
+import { Checklist } from '@nutui/icons-vue';
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Icon);
+app.use(Checklist);
 ```
 
 ### 基础用法
@@ -131,13 +131,17 @@ app.use(Icon);
 
 ### 自定义图标
 
-这里建议同时设置 `icon-name` 和 `icon-active-name` 属性
+通过slot自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+  <nut-checkbox v-model="checkbox7" >
+    自定义图标
+    <template #icon> <Checklist /> </template>
+    <template #checkedIcon> <Checklist color="red" /> </template>
+  </nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -386,6 +390,13 @@ app.use(Icon);
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
+
+### Checkbox Slots
+| 名称 | 说明 |
+|-|-|
+| icon | 未选中时的图标 |
+| checkedIcon | 选中时的图标 |
+| indeterminate | 半选时的图标 |
 ### CheckboxGroup Props
 
 | 字段 | 说明 | 类型 | 默认值

@@ -41,9 +41,11 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('icon')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">{{
-          translate('icon')
-        }}</nut-checkbox>
+        <nut-checkbox v-model="checkbox7">
+          {{ translate('icon') }}
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('change')">
@@ -136,6 +138,7 @@ import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('checkbox');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -184,6 +187,9 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: {
+    Checklist
+  },
   setup(props, context) {
     initTranslate();
     const group = ref(null) as Ref;
