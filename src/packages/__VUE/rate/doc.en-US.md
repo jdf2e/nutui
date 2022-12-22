@@ -8,11 +8,9 @@ Use for quick rating actions, or to showcase reviews.
 
 ``` javascript
 import { createApp } from 'vue';
-import { Rate,Icon } from '@nutui/nutui';
-
+import { Rate } from '@nutui/nutui';
 const app = createApp();
 app.use(Rate);
-app.use(Icon);
 ```
 
 ### Basic Usage
@@ -58,14 +56,16 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+    <nut-rate :icon="HeartFill" v-model="value" />
 </template>
 <script lang="ts">
 import { ref } from 'vue';
+import { HeartFill } from '@nutui/icons-vue';
 export default {
+    components: { HeartFill },
     setup() {
         const value = ref(3);
-        return { value }
+        return { value, HeartFill }
     }
 }
 </script>
@@ -78,25 +78,6 @@ export default {
 ```html
 <template>
     <nut-rate :count="6" v-model="value" />
-</template>
-<script lang="ts">
-import { ref } from 'vue';
-export default {
-    setup() {
-        const value = ref(3);
-        return { value }
-    }
-}
-</script>
-```
-:::
-
-### Custom color
-
-:::demo
-```html
-<template>
-    <nut-rate active-color="#FFC800" v-model="value" />
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -170,25 +151,6 @@ export default {
 ```
 :::
 
-### Custom size 35px
-
-:::demo
-```html
-<template>
-    <nut-rate v-model="value" icon-size="35" />
-</template>
-<script lang="ts">
-import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
-export default {
-    setup() {
-        const value = ref(3);
-        return { value }
-    }
-}
-</script>
-```
-:::
 
 
 ## API
@@ -198,13 +160,8 @@ export default {
 |--------------------|----------------------------------------------------------------------------------|---------|------------------|
 | v-model            | The current number of stars, you can use v-model to bind data in both directions | Number  | -                |
 | count              | Total number of stars                                                            | Number  | 5                |
-| icon-size          | Star size                                                                        | Number  | 18               |
 | active-color       | Icon selection color                                                             | String  | #fa200c          |
 | void-color         | Icon unselected color                                                            | String  | #ccc             |
-| unchecked-icon     | Use icon (unchecked)[icon name](#/en-US/component/icon)                                          | String  | star-n           |
-| checked-icon       | Use icon (checked)[icon name](#/en-US/component/icon)                                            | String  | star-fill-n      |
-| font-class-name    | Custom icon font base class name                                                 | String  | `nutui-iconfont` |
-| class-prefix       | Custom icon class name prefix for using custom icons                             | String  | `nut-icon`       |
 | allow-half         | half star                                                                        | Boolean | false            |
 | readonly           | read-only                                                                        | Boolean | false            |
 | disabled           | whether to disable                                                               | Boolean | false            |
