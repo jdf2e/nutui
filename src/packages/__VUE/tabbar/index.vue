@@ -1,5 +1,5 @@
 <template>
-  <div v-if="bottom && placeholder" class="nut-tabbar__placeholder" :style="{ height: height + 'px' }">
+  <div :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height: height + 'px' }">
     <view
       ref="nutTabbar"
       class="nut-tabbar"
@@ -8,13 +8,6 @@
       <slot></slot>
     </view>
   </div>
-  <view
-    v-else
-    class="nut-tabbar"
-    :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }"
-  >
-    <slot></slot>
-  </view>
 </template>
 
 <script lang="ts">
@@ -23,7 +16,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabbar');
 export default create({
   props: {
-    visible: {
+    modelValue: {
       type: [Number, String],
       default: 0
     },
@@ -34,10 +27,6 @@ export default create({
     type: {
       type: String,
       default: 'base'
-    },
-    size: {
-      type: String,
-      default: '20px'
     },
     unactiveColor: {
       type: String,
@@ -56,23 +45,22 @@ export default create({
       default: false
     }
   },
-  emits: ['tab-switch', 'update:visible'],
+  emits: ['tab-switch', 'update:modelValue'],
   setup(props, { emit, slots }) {
     const { bottom, placeholder } = toRefs(props);
     const height = ref();
     const mdValue = reactive({
-      val: props.visible,
+      val: props.modelValue,
       children: []
     });
     const nutTabbar = ref<HTMLElement | null>(null);
     function changeIndex(index: number, active: number | string) {
-      emit('update:visible', active);
+      emit('update:modelValue', active);
       parentData.modelValue = active;
       emit('tab-switch', parentData.children[index], active);
     }
     let parentData = reactive({
       children: mdValue.children,
-      size: props.size,
       modelValue: mdValue.val,
       unactiveColor: props.unactiveColor,
       activeColor: props.activeColor,
@@ -80,7 +68,7 @@ export default create({
     });
     provide('parent', parentData);
     watch(
-      () => props.visible,
+      () => props.modelValue,
       (value) => {
         parentData.modelValue = value;
       }

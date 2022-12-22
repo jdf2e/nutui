@@ -22,16 +22,38 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 :::demo
 ```html
 <template>
-<nut-tabbar @tab-switch="tabSwitch">
-  <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
-</nut-tabbar>
+  <nut-tabbar @tab-switch="tabSwitch">
+     <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <Category></Category>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <Find></Find>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <Cart></Cart>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <My></My>
+        </template>
+      </nut-tabbar-item>
+  </nut-tabbar>
 </template>
 <script>
+  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
   export default{
+    components: {Home,Category,Find,Cart, My },
     setup() {
       function tabSwitch(item, index) {
         console.log(item, index);
@@ -41,59 +63,10 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
       };
     },
   }
-  
 </script>
 ```
 :::
 
-
-### Custom Img
-:::demo
-```html
-<template>
-<nut-tabbar @tab-switch="tabSwitch">
-      <nut-tabbar-item
-        tab-title="tab"
-        img="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="tab"
-        img="http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="tab"
-        img="http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="tab"
-        img="http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg"
-        activeImg="http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="tab"
-        img="http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg"
-      ></nut-tabbar-item>
-    </nut-tabbar>
-</template>
-<script>
-  export default{
-    setup() {
-      function tabSwitch(item, index) {
-        console.log(item, index);
-      }
-      return {
-        tabSwitch,
-      };
-    },
-  }
-  
-</script>
-```
-:::
 
 ### Custom Icon
 Use icon slot to custom icon.
@@ -102,13 +75,21 @@ Use icon slot to custom icon.
 ```html
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="首页">
+    <nut-tabbar-item tab-title="tab">
       <template #icon="props">
           <img :src="props.active ? icon.active : icon.unactive" alt="" />
         </template>
     </nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab">
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+        </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab">
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+        </template>
+    </nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script>
@@ -122,7 +103,7 @@ Use icon slot to custom icon.
         unactive:'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png',
       };
       return {
-        icon，
+        icon,
         tabSwitch,
       };
     },
@@ -135,28 +116,90 @@ Use icon slot to custom icon.
 :::demo
 ```html
 <template>
-<nut-tabbar v-model:visible="active" size="18px">
-      <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
-    </nut-tabbar>
+  <nut-tabbar v-model="active">
+    <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+  </nut-tabbar>
 </template>
+<script>
+ import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
+ export default{
+    components: {Home,Category,Find,Cart, My },
+    setup() {
+      const active = ref(2);
+      const List=[
+      {
+        title:'tab',
+        icon: h(Home),
+        name:'home'
+      },
+      {
+        title:'tab',
+        icon: h(Category),
+        name:'category'
+      },
+      {
+        title:'tab',
+        icon: h(Find),
+        name:'find',
+        
+      },
+      {
+        title:'tab',
+        icon: h(Cart),
+        name:'cart'
+      },
+      {
+        title:'tab',
+        icon: h(My),
+        name:'my'
+      }
+    ]
+      function tabSwitch(item, index) {
+        console.log(item, index);
+      }
+      return {
+        tabSwitch,
+        List,
+        active,
+      };
+    },
+  }
+</script>
 ```
 :::
 ### Show Badge
 :::demo
 ```html
 <template>
-  <nut-tabbar>
-    <nut-tabbar-item tab-title="tab" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category" :dot="true"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="cart" num="110"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
-  </nut-tabbar>
+<nut-tabbar>
+      <nut-tabbar-item tab-title="tab" :value="11">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab" :dot="true">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab" :value="110">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+    </nut-tabbar>
 </template>
+<script>
+  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
+  export default{
+    components: {Home,Category,Find,Cart, My }
+  }
+</script>
 ```
 :::
 ### Custom Color
@@ -165,14 +208,49 @@ Use icon slot to custom icon.
 :::demo
 ```html
 <template>
- <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-      <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="cart"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
+    <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
+      <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
     </nut-tabbar>
 </template>
+<script>
+ import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
+ export default{
+    components: {Home,Category,Find,Cart, My },
+    setup() {
+      const List=[
+      {
+        title:'tab',
+        icon: h(Home),
+        name:'home'
+      },
+      {
+        title:'tab',
+        icon: h(Category),
+        name:'category'
+      },
+      {
+        title:'tab',
+        icon: h(Find),
+        name:'find',
+        
+      },
+      {
+        title:'tab',
+        icon: h(Cart),
+        name:'cart'
+      },
+      {
+        title:'tab',
+        icon: h(My),
+        name:'my'
+      }
+    ]
+      return {
+        List,
+      };
+    },
+  }
+</script>
 ```
 :::
 
@@ -183,11 +261,29 @@ Use icon slot to custom icon.
 ```html
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="tab" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab" :value="11">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab" :dot="true">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
+      <nut-tabbar-item tab-title="tab" :value="110">
+        <template #icon>
+          <Home></Home>
+        </template>
+      </nut-tabbar-item>
   </nut-tabbar>
 </template>
+<script>
+ import { Home } from '@nutui/icons-vue';
+ export default{
+    components: {Home},
+  }
+</script>
 ```
 :::
 ### Fixed Bottom
@@ -196,14 +292,44 @@ Use icon slot to custom icon.
 :::demo
 ```html
 <template>
-  <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
-    <nut-tabbar-item tab-title="tab" href="" icon="home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" href="https://m.jd.com" icon="cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" href="######" icon="my"></nut-tabbar-item>
-  </nut-tabbar>
+    <nut-tabbar bottom safe-area-inset-bottom placeholder>
+      <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+    </nut-tabbar>
 </template>
+<script>
+ import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
+ export default{
+    components: {Home,Category,Find,Cart, My },
+    setup() {
+      const List=[
+      {
+        title:'tab',
+        icon: h(Home),
+      },
+      {
+        title:'tab',
+        icon: h(Category),
+      },
+      {
+        title:'tab',
+        icon: h(Find),
+        
+      },
+      {
+        title:'tab',
+        icon: h(Cart),
+      },
+      {
+        title:'tab',
+        icon: h(My),
+      }
+    ]
+      return {
+        List,
+      };
+    },
+  }
+</script>
 ```
 :::
 ## API
@@ -214,11 +340,10 @@ Use icon slot to custom icon.
 |-----------------|--------------------|--------|---------|
 | v-model:visible | The index value of the selected label  | number | 0       |
 | bottom          | Whether to fix the bottom | boolean | false   |
-| size          | icon size | string | '20px'  |
 | unactive-color  | Color of unactive tab item  | string | #7d7e80 |
 | active-color    | Color of active tab item    | string | #1989fa |
 | safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
-| placeholder `3.2.6` | Whether to generate a placeholder element when fixed | boolean | false |
+| placeholder| Whether to generate a placeholder element when fixed | boolean | false |
 ### TabbarItem Props
 
 | Attribute      | Description                                      | Type   | Default |
@@ -226,14 +351,8 @@ Use icon slot to custom icon.
 | tab-title | title                              | string | --     |
 | name | Identifier                              | string | 	Item index     |
 | icon      | icon name   | string | --     |
-| font-class-name |Custom icon font base class name    | string           | `nutui-iconfont` |
-| class-prefix | Custom icon class name prefix for using custom icons     | string           | `nut-icon` |
-| img      | ImgUrl of unactive tab item | String | --     |
-| active-img      | ImgUrl of active tab item（Only one icon and img can be selected in the same item） | string | --     |
 | href      | Jump links for tabs                          | string | --     |
 | to    | 	Target route of the link, same as to of vue-router | string｜object | --     |
-| num       | Numbered corner label in the upper right corner of the tab    | number | --     |
-| dot       | Whether to show red dot   | boolean | false    |
 
 
 ### TabbarItem Slots

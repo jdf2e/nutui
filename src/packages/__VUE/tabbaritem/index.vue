@@ -7,57 +7,46 @@
     }"
     @click="change()"
   >
-    <view class="nut-tabbar-item_icon-box">
-      <template v-if="!dot">
-        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
-          {{ num }}
+    <nut-badge v-bind="$attrs">
+      <view class="nut-tabbar-item_icon-box">
+        <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+          <slot name="icon" :active="active"></slot>
+        </div>
+        <view v-if="icon && !isHaveSlot('icon')">
+          <component :is="renderIcon(icon)" class="nut-popover-item-img"></component>
         </view>
-        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num >= 100">{{
-          '99+'
-        }}</view>
-      </template>
-      <template v-if="dot">
-        <div class="nut-tabbar-item_icon-box_dot"></div>
-      </template>
-      <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
-        <slot name="icon" :active="active"></slot>
-      </div>
-      <view v-if="icon && !isHaveSlot('icon')">
-        <nut-icon
-          class="nut-tabbar-item_icon-box_icon"
-          :size="state.size"
-          :name="icon"
-          :font-class-name="fontClassName"
-          :class-prefix="classPrefix"
-        ></nut-icon>
+
+        <view
+          :class="[
+            'nut-tabbar-item_icon-box_nav-word',
+            { 'nut-tabbar-item_icon-box_big-word': !icon && !isHaveSlot('icon') }
+          ]"
+        >
+          <slot>
+            <view v-if="tabTitle">{{ tabTitle }}</view>
+          </slot>
+        </view>
       </view>
-      <div
-        v-if="!icon && activeImg && !isHaveSlot('icon')"
-        class="nut-tabbar-item_icon-box_icon"
-        :style="{
-          backgroundImage: `url(${active ? activeImg : img})`,
-          width: state.size,
-          height: state.size
-        }"
-      ></div>
-      <view
-        :class="[
-          'nut-tabbar-item_icon-box_nav-word',
-          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !isHaveSlot('icon') }
-        ]"
-      >
-        <view v-if="tabTitle">{{ tabTitle }}</view>
-        <slot v-if="!tabTitle"></slot>
-      </view>
-    </view>
+    </nut-badge>
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
-import { ComponentInternalInstance, computed, getCurrentInstance, inject, onMounted, reactive, watch } from 'vue';
+import Badge from '../badge/index.vue';
+import {
+  Component,
+  ComponentInternalInstance,
+  computed,
+  getCurrentInstance,
+  inject,
+  reactive,
+  watch,
+  PropType
+} from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
+  components: { [Badge.name]: Badge },
   props: {
     tabTitle: {
       // 标签页的标题
@@ -69,38 +58,12 @@ export default create({
     },
     icon: {
       // 标签页显示的icon
-      type: String,
-      default: ''
+      type: Object as PropType<Component>
     },
     href: {
       // 标签页的跳转链接
       type: String,
       default: ''
-    },
-    num: {
-      // 页签右上角的数字角标
-      type: [String, Number],
-      default: ''
-    },
-    activeImg: {
-      type: String,
-      default: ''
-    },
-    img: {
-      type: String,
-      default: ''
-    },
-    classPrefix: {
-      type: String,
-      default: 'nut-icon'
-    },
-    dot: {
-      type: Boolean,
-      default: false
-    },
-    fontClassName: {
-      type: String,
-      default: 'nutui-iconfont'
     },
     to: [Object, String]
   },
@@ -110,7 +73,6 @@ export default create({
     };
     const parent: any = inject('parent');
     const state = reactive({
-      size: parent.size,
       unactiveColor: parent.unactiveColor, // 未选中的颜色
       activeColor: parent.activeColor, // 选中的颜色
       active: parent.modelValue, // 是否选中
@@ -120,8 +82,8 @@ export default create({
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
         parent.children.push(child.proxy);
-        const index = computed(() => parent.children.indexOf(child.proxy));
-        state.index = props.name ?? index.value;
+        const index = parent.children.indexOf(child.proxy);
+        state.index = props.name ?? index;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
@@ -167,6 +129,7 @@ export default create({
     return {
       state,
       active,
+      renderIcon,
       isHaveSlot,
       change
     };
