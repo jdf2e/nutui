@@ -9,10 +9,10 @@
     <h2>{{ translate('customButton') }}</h2>
     <nut-pagination v-model="currentPage3" :total-items="500" :show-page-size="5" @change="pageChange">
       <template #prev-text>
-        <nut-icon name="left" size="10px" />
+        <Left width="10px" height="10px" />
       </template>
       <template #next-text>
-        <nut-icon name="right" size="10px" />
+        <Right width="10px" height="10px" />
       </template>
       <template #page="{ item }">
         {{ item.number == 3 ? 'hot' : item.text }}
@@ -26,6 +26,7 @@ import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -42,6 +43,7 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: { Left, Right },
   setup() {
     initTranslate();
     const state = reactive({

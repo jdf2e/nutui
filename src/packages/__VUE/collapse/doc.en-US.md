@@ -208,7 +208,7 @@ export default {
 |------|------|
 |Slot: mTitle | Content slot on the left side of the title bar|
 |Slot: value | Right content slot of the title bar|
-|Slot: extraRender `v3.1.20 ` | Set fixed content under the title (no folding)|
+|Slot: extraRender | Set fixed content under the title (no folding)|
 
 
 

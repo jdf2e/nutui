@@ -9,10 +9,10 @@
     <h2>自定义按钮</h2>
     <nut-pagination v-model="currentPage3" :total-items="500" :show-page-size="5" @change="pageChange">
       <template #prev-text>
-        <nut-icon name="left" size="10px" />
+        <Left width="10px" height="10px" />
       </template>
       <template #next-text>
-        <nut-icon name="right" size="10px" />
+        <Right width="10px" height="10px" />
       </template>
       <template #page="{ item }">
         {{ item.number == 3 ? 'hot' : item.text }}
@@ -22,8 +22,10 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, defineComponent } from 'vue';
+import { Left, Right } from '@nutui/icons-vue-taro';
+import { reactive, toRefs, defineComponent } from 'vue';
 export default defineComponent({
+  components: { Left, Right },
   setup() {
     const state = reactive({
       currentPage: 1,

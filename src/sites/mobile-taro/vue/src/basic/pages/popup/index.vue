@@ -30,10 +30,13 @@
       position="bottom"
       closeable
       close-icon-position="top-left"
-      close-icon="heart"
       :style="{ height: '20%' }"
       v-model:visible="showCloseIcon"
-    ></nut-popup>
+    >
+      <template #closeIcon>
+        <Heart></Heart>
+      </template>
+    </nut-popup>
     <h2>圆角弹框</h2>
     <nut-cell title="圆角弹框" is-link @click="showRound = true"></nut-cell>
     <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
@@ -48,7 +51,9 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import { Heart } from '@nutui/icons-vue-taro';
 export default {
+  components: { Heart },
   props: {},
   setup() {
     const state = reactive({

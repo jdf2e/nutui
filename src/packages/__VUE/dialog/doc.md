@@ -226,17 +226,17 @@ export default {
 | cancelAutoClose       | 取消按钮是否默认关闭弹窗                                      | Boolean                  | true                 |
 | textAlign             | 文字对齐方向，可选值同css的text-align                         | String                   | "center"             |
 | closeOnPopstate       | 是否在页面回退时自动关闭                                      | Boolean                  | false                |
-| customClass`v3.1.22`  | 自定义class                                                   | String                   |                      |
-| overlayClass`v3.1.22` | 自定义遮罩类名                                                | String                   | -                    |
-| overlayStyle`v3.1.22` | 自定义遮罩样式                                                | CSSProperties            | -                    |
-| popClass  `v3.1.22`   | 自定义popup弹框类名                                           | String                   | -                    |
-| popStyle  `v3.1.22`   | 自定义popup弹框样式                                           | CSSProperties            | -                    |
+| customClass  | 自定义class                                                   | String                   |                      |
+| overlayClass | 自定义遮罩类名                                                | String                   | -                    |
+| overlayStyle | 自定义遮罩样式                                                | CSSProperties            | -                    |
+| popClass   | 自定义popup弹框类名                                           | String                   | -                    |
+| popStyle   | 自定义popup弹框样式                                           | CSSProperties            | -                    |
 | onUpdate              | 更新                                                          | Boolean                  | false                |
 | onOk                  | 确定按钮回调                                                  | Function                 | -                    |
 | onCancel              | 取消按钮回调                                                  | Function                 | -                    |
-| onOpened`v3.1.22`     | 打开弹框后回调                                                | Function                 | -                    |
+| onOpened     | 打开弹框后回调                                                | Function                 | -                    |
 | onClosed              | 关闭弹框后回调                                                | Function                 | -                    |
-| beforeClose`v3.1.22`  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -                    |
+| beforeClose  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -                    |
 
 
 ### Props
@@ -257,12 +257,12 @@ export default {
 | close-on-popstate      | 是否在页面回退时自动关闭                                      | Boolean                  | false      |
 | lock-scroll            | 背景是否锁定                                                  | Boolean                  | false      |
 | footer-direction       | 使用横纵方向 可选值 horizontal、vertical                      | string                   | horizontal |
-| overlay-class`v3.1.22` | 自定义遮罩类名                                                | String                   | -          |
-| overlay-style`v3.1.22` | 自定义遮罩样式                                                | CSSProperties            | -          |
-| pop-class  `v3.1.22`   | 自定义popup弹框类名                                           | String                   | -          |
-| pop-style  `v3.1.22`   | 自定义popup弹框样式                                           | CSSProperties            | -          |
-| custom-class`v3.1.22`  | 自定义class                                                   | String                   | -          |
-| before-close`v3.1.22`  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
+| overlay-class | 自定义遮罩类名                                                | String                   | -          |
+| overlay-style | 自定义遮罩样式                                                | CSSProperties            | -          |
+| pop-class    | 自定义popup弹框类名                                           | String                   | -          |
+| pop-style   | 自定义popup弹框样式                                           | CSSProperties            | -          |
+| custom-class  | 自定义class                                                   | String                   | -          |
+| before-close  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
 
 ### Events
 

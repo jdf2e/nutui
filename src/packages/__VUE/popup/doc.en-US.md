@@ -8,12 +8,11 @@ The pop-up layer container is used to display pop-up windows, information prompt
 
 ```javascript
 import { createApp } from 'vue';
-import { Popup,Overlay, Icon } from '@nutui/nutui';
+import { Popup,Overlay } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Popup)
 app.use(Overlay)
-app.use(Icon)
 ```
 
 ### Basic Usage
@@ -81,7 +80,7 @@ Control the pop-up position by setting the value of `position`
 
 ### Icon
 
-The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `close-icon` defines the display icon. For details, refer to [Icon](#/en-US/component/icon)
+The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `closeIcon` defines the display icon.
 
 :::demo
 
@@ -92,11 +91,17 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
   <nut-cell title="icon position" is-link @click="showIconPosition = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="custom icon" is-link @click="showCloseIcon = true" ></nut-cell>
-  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon"></nut-popup>
+  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
+    <template #closeIcon>
+      <Heart></Heart>
+    </template>
+  </nut-popup>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Heart } from '@nutui/icons-vue';
   export default {
+    components: { Heart },
     props: {},
     setup() {
       const state = reactive({
@@ -217,12 +222,11 @@ Specify the mount node through `teleport`
 | pop-class              | Custom bullet box classname                                              | string         | -             |
 | closeable              | Show close button                                           | boolean        | `false`        |
 | close-icon-position    | Close button position（top-left,top-right,bottom-left,bottom-right） | string         | `"top-right"` |
-| close-icon             | [icon name](#/en-US/component/icon) or image url          | string         | `"close"`     |
 | destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed   | boolean        | `true`        |
 | round                  | Show fillet                                                | boolean        | `false`       |
 | teleport               | Specify the mount node   | string         | `"body"`      |
-| teleport-disable `v3.2.7`              | Whether the node is allowed to be mounted       | boolean         | `false`      |
-| safe-area-inset-bottom `v3.1.19`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| teleport-disable              | Whether the node is allowed to be mounted       | boolean         | `false`      |
+| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Events
 
@@ -241,3 +245,4 @@ Specify the mount node through `teleport`
 | Name | Description       |
 | ------ | ---------- |
 | default  | Customize Embedded Content |
+| closeIcon  | Custom icon for close button |
