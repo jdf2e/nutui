@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should render correct close icon when using close-icon prop 1`] = `
-"<view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-  <!---->
-</view>"
-`;
