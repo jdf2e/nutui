@@ -199,7 +199,7 @@ export default {
 | left-text `v3.1.21` | Left Text                                     | String  | -       |
 | desc                | Desc                                          | String  | -       |
 | left-show           | Whether to show the left arrow                | Boolean | false   |
-| tit-icon            | Whether to show icon in title                 | Boolean  | false     | 
+| title-icon            | Whether to show icon in title                 | Boolean  | false     | 
 | border `v3.1.21`    | Whether to show bottom border                     | Boolean  | false  |
 | fixed               | Is it pinned to the top                       | Boolean | false    |
 | placeholder `v3.1.21` | Whether to generate a placeholder element when fixed   | Boolean  | false   |
