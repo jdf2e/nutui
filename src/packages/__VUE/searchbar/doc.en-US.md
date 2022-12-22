@@ -8,12 +8,7 @@ Search bar
     
 ```javascript
 import { createApp } from 'vue';
-
-// vue
 import { Searchbar } from '@nutui/nutui';
-// taro
-import { Searchbar } from '@nutui/nutui-taro';
-
 const app = createApp();
 app.use(Searchbar);
 ```    

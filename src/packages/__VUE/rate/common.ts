@@ -1,5 +1,8 @@
 import { computed, Ref, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import Taro from '@tarojs/taro';
+import { StarN } from '@nutui/icons-vue';
+import { StarN as StarNTaro } from '@nutui/icons-vue-taro';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
 const { componentName } = createComponent('rate');
@@ -14,9 +17,11 @@ const useComponent = (touchable: Boolean = true) => {
         type: [String, Number],
         default: 0
       },
-      iconSize: {
-        type: [String, Number],
-        default: 18
+      icon: {
+        type: Object,
+        default: () => {
+          return Taro.getEnv() === 'WEB' ? StarN : StarNTaro;
+        }
       },
       activeColor: {
         type: String,
@@ -25,14 +30,6 @@ const useComponent = (touchable: Boolean = true) => {
       voidColor: {
         type: String,
         default: ''
-      },
-      uncheckedIcon: {
-        type: String,
-        default: 'star-n'
-      },
-      checkedIcon: {
-        type: String,
-        default: 'star-fill-n'
       },
       readonly: {
         type: Boolean,
@@ -53,18 +50,11 @@ const useComponent = (touchable: Boolean = true) => {
       spacing: {
         type: [String, Number],
         default: 14
-      },
-      classPrefix: {
-        type: String,
-        default: 'nut-icon'
-      },
-      fontClassName: {
-        type: String,
-        default: 'nutui-iconfont'
       }
     },
+    components: { StarN },
     emits: ['update:modelValue', 'change'],
-    setup(props: any, { emit }: any) {
+    setup(props: any, { emit, slots }: any) {
       const rateRefs = ref<HTMLElement[]>([]);
       const classes = computed(() => {
         const prefixCls = componentName;
@@ -127,7 +117,9 @@ const useComponent = (touchable: Boolean = true) => {
         onClick,
         pxCheck,
         rateRefs,
-        refRandomId
+        refRandomId,
+        renderIcon,
+        slots
       };
     }
   };
