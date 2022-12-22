@@ -9,13 +9,14 @@ The menu list that pops down downwards.
 ``` javascript
 import { createApp } from 'vue';
 import { Menu, MenuItem,Overlay, Popup } from '@nutui/nutui';
-
+import { TriangleDown, Checked } from '@nutui/icons-vue';
 const app = createApp();
 app.use(Menu);
 app.use(MenuItem);
 app.use(Overlay);
 app.use(Popup);
-
+app.use(TriangleDown);
+app.use(Checked);
 ```
 
 ### Basic Usage
@@ -219,8 +220,15 @@ export default {
 ```html
 <template>
   <nut-menu>
-    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+    <template #icon>
+      <TriangleDown />
+    </template>
+    <nut-menu-item v-model="state.value1" :options="options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2">
+      <template #icon>
+        <Checked></Checked>
+      </template>
+    </nut-menu-item>
   </nut-menu>
 </template>
 
@@ -387,8 +395,10 @@ export default {
 | scroll-fixed           | Whether to fixed when window is scrolled, fixed position can be set | Boolean、String、Number | false   |
 | title-class            | Custome title class                                                 | String                  | -       |
 | lock-scroll            | Whether the background is locked                                    | Boolean                 | true    |
-| title-icon               | Custome title icon                                                  | String                  | -       |
-
+### Menu Slots
+| Name | Description |
+|-|-|
+| icon | Custom title icon |
 ### MenuItem Props
 
 | Attribute | Description                          | Type    | Default        |
@@ -398,7 +408,6 @@ export default {
 | disabled  | Whether to disable dropdown item     | Boolean | false          |
 | cols      | Display how many options in one line | Number  | 1              |
 
-| option-icon         | Custome option icon                  | String  | 'Check'        |
 | direction           | Expand direction, can be set to up   | String  | 'down'         |
 | active-title-class   | Active custome title class           | String  | -              |
 | inactive-title-class | Inactive custome title class         | String  | -              |
@@ -406,7 +415,10 @@ export default {
 | class-prefix    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
 
 
-
+### MenuItem Slots
+| Name | Description |
+|-|-|
+| icon | Custom option icon |
 ### MenuItem Events
 
 | Event  | Description                   | Arguments      |

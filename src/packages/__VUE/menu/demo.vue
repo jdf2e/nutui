@@ -27,10 +27,14 @@
     <h2>{{ translate('customIcons') }}</h2>
     <nut-menu>
       <template #icon>
-        <JoySmile />
+        <TriangleDown />
       </template>
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" optionIcon="checklist" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2">
+        <template #icon>
+          <Checked></Checked>
+        </template>
+      </nut-menu-item>
     </nut-menu>
     <h2>{{ translate('expandDirection') }}</h2>
     <nut-menu direction="up">
@@ -50,7 +54,7 @@ import { reactive, ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('menu');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { JoySmile } from '@nutui/icons-vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -126,7 +130,8 @@ const initTranslate = () =>
   });
 export default createDemo({
   components: {
-    JoySmile
+    TriangleDown,
+    Checked
   },
   props: {},
   setup() {
