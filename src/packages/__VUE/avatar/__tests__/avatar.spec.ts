@@ -1,11 +1,8 @@
 import { config, mount } from '@vue/test-utils';
 import Avatar from '../index.vue';
-import NutIcon from '../../icon/index.vue';
 
 beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
+  config.global.components = {};
 });
 
 afterAll(() => {
@@ -56,46 +53,46 @@ test('color props', async () => {
   expect(avatar.element.style.color).toBe('rgb(153, 153, 153)');
 });
 
-test('icon props', () => {
-  const wrapper = mount(Avatar, {
-    props: {
-      icon: 'my'
-    }
-  });
-  const icon: any = wrapper.find('.nut-icon');
-  expect(icon.classes()).toContain('nut-icon-my');
-});
+// test('icon props', () => {
+//   const wrapper = mount(Avatar, {
+//     props: {
+//       icon: 'my'
+//     }
+//   });
+//   const icon: any = wrapper.find('.nut-icon');
+//   expect(icon.classes()).toContain('nut-icon-my');
+// });
 
-test('url props', () => {
-  const wrapper = mount(Avatar, {
-    props: {
-      url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
-    }
-  });
-  const img: any = wrapper.find('img');
-  expect(img.attributes().src).toBe(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
-  );
-});
+// test('url props', () => {
+//   const wrapper = mount(Avatar, {
+//     props: {
+//       url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
+//     }
+//   });
+//   const img: any = wrapper.find('img');
+//   expect(img.attributes().src).toBe(
+//     'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
+//   );
+// });
 
-test('alt props', () => {
-  const wrapper = mount(Avatar, {
-    props: {
-      url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png',
-      alt: '我是alt'
-    }
-  });
-  const img: any = wrapper.find('img');
-  expect(img.attributes().alt).toBe('我是alt');
-});
+// test('alt props', () => {
+//   const wrapper = mount(Avatar, {
+//     props: {
+//       url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png',
+//       alt: '我是alt'
+//     }
+//   });
+//   const img: any = wrapper.find('img');
+//   expect(img.attributes().alt).toBe('我是alt');
+// });
 
 // 点击事件
-test('should emit active-avatarror event', () => {
-  const wrapper = mount(Avatar);
-  const avatar: any = wrapper.find('.nut-avatar');
-  avatar.trigger('click');
-  expect(wrapper.emitted('click')).toHaveLength(1);
-});
+// test('should emit active-avatarror event', () => {
+//   const wrapper = mount(Avatar);
+//   const avatar: any = wrapper.find('.nut-avatar');
+//   avatar.trigger('click');
+//   expect(wrapper.emitted('click')).toHaveLength(1);
+// });
 
 // test('should emit onError event', () => {
 //   const wrapper = mount(Avatar, {

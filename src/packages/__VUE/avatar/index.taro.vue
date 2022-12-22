@@ -7,25 +7,15 @@
     v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
     <template v-if="!avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount">
-      <template v-if="url">
-        <img :src="url" :alt="alt" @error="onError" />
-      </template>
-      <template v-else-if="icon">
-        <nut-icon v-bind="$attrs" class="nut-avatar__icon" :name="iconStyles"></nut-icon>
-      </template>
-      <view class="nut-avatar__text" v-if="isShowText">
+      <view>
         <slot></slot>
       </view>
     </template>
     <!-- 折叠头像 -->
-    <template v-if="showMax">
-      <view class="nut-avatar__text">
-        {{
-          avatarGroup?.props?.maxContent
-            ? avatarGroup?.props?.maxContent
-            : `+ ${maxIndex - avatarGroup?.props?.maxCount}`
-        }}
-      </view>
+    <template v-if="showMax && avatarGroup?.props?.maxCount">
+      {{
+        avatarGroup?.props?.maxContent ? avatarGroup?.props?.maxContent : `+ ${maxIndex - avatarGroup?.props?.maxCount}`
+      }}
     </template>
   </view>
 </template>
@@ -50,23 +40,10 @@ export default create({
     color: {
       type: String,
       default: '#666'
-    },
-    url: {
-      type: String,
-      default: ''
-    },
-    alt: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
     }
   },
-  emits: ['active-avatar', 'onError'],
-  setup(props, { emit, slots }) {
-    const { size, shape, bgColor, color, icon } = toRefs(props);
+  setup(props) {
+    const { size, shape, bgColor, color } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];
     const avatarGroup: any = inject('avatarGroup', null);
     const avatarRef = ref(null) as Ref;
@@ -113,14 +90,6 @@ export default create({
       };
     });
 
-    const iconStyles = computed(() => {
-      return icon?.value ? icon.value : '';
-    });
-
-    const isShowText = computed(() => {
-      return slots.default;
-    });
-
     const avatarLength = (children: any) => {
       state.maxIndex = children.length;
       for (let i = 0; i < children.length; i++) {
@@ -135,22 +104,11 @@ export default create({
       }
     };
 
-    const activeAvatar = (event: MouseEvent) => {
-      emit('active-avatar', event);
-    };
-
-    const onError = () => {
-      emit('onError');
-    };
-
     return {
       classes,
       styles,
-      iconStyles,
       isShowText,
       maxStyles,
-      activeAvatar,
-      onError,
       avatarGroup,
       visible,
       avatarRef,
