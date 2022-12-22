@@ -66,7 +66,7 @@
     <div class="interstroll-list">
       <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
         <template v-slot:rightIcon>
-          <nut-icon name="fabulous" color="#f0250f"> </nut-icon>
+          <Fabulous />
         </template>
       </nut-noticebar>
     </div>
@@ -75,6 +75,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
+import { Fabulous } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('noticebar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -113,6 +114,7 @@ const initTranslate = () =>
 
 export default createDemo({
   props: {},
+  components: { Fabulous },
   setup() {
     initTranslate();
     const state = reactive({
@@ -133,7 +135,8 @@ export default createDemo({
       ...toRefs(state),
       hello,
       go,
-      translate
+      translate,
+      Fabulous
     };
   }
 });

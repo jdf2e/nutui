@@ -74,14 +74,15 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
   </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2 } from '@nutui/icons-vue';
   export default {
+    components: { Search2 },
     setup() {
       const state = reactive({
         searchValue: ""
@@ -89,6 +90,7 @@ app.use(Icon);
 
       return {
         ...toRefs(state),
+        Search2
       };
     }
   };
@@ -178,23 +180,24 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      <Left @click="clickLeft" />
     </template>
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
     <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
+      <Photograph />
     </template>
     <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
+      <Message />
     </template>
   </nut-searchbar> 
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
   export default {
+    components: { Search2, Left, Photograph, Message },
     setup() {
       const state = reactive({
         searchValue: ""
