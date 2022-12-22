@@ -225,8 +225,8 @@ Specify the mount node through `teleport`
 | destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed   | boolean        | `true`        |
 | round                  | Show fillet                                                | boolean        | `false`       |
 | teleport               | Specify the mount node   | string         | `"body"`      |
-| teleport-disable `v3.2.7`              | Whether the node is allowed to be mounted       | boolean         | `false`      |
-| safe-area-inset-bottom `v3.1.19`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| teleport-disable              | Whether the node is allowed to be mounted       | boolean         | `false`      |
+| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Events
 

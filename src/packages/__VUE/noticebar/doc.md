@@ -231,7 +231,7 @@ app.use(Noticebar);
 | delay      | 延时多少秒                                                 | String/Number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
 | speed      | 滚动速率 (px/s)                                            | Number        | 50     |
-| wrapable `v3.1.18`  | 是否开启文本换行                                           | Boolean       | false    |
+| wrapable  | 是否开启文本换行                                           | Boolean       | false    |
 
 ### Props（direction=vertical）
 

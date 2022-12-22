@@ -219,7 +219,7 @@ export default {
 | Attribute | Description | Type   | Default |
 |--------------|----------------------------------|--------|------------------|
 | v-model | Currently entered value | number / string | ''|
-|label `v3.1.21`| left text of search box | string | ''|
+|label| left text of search box | string | ''|
 |shape | search box shape. The optional value is round | string | square|
 |max-length | maximum input length | [number, string] | '9999'|
 |input-type | input box type | string | 'text'|
@@ -227,10 +227,10 @@ export default {
 |clear | whether to display the clear button | Boolean | true|
 |background | input box external background | string | '#fff'|
 |input-background | internal background of input box | string | '#f7f7f7'|
-|autofocus `v3.1.21` | Auto focus | boolean | false |
-|disabled `v3.1.21`| disable input box | Boolean | false|
-|readonly `v3.1.21`| input box read only | Boolean | false|
-|input-align `v3.1.21`| alignment, optional ` center ` ` right ` | string | left |
+|autofocus | Auto focus | boolean | false |
+|disabled| disable input box | Boolean | false|
+|readonly| input box read only | Boolean | false|
+|input-align| alignment, optional ` center ` ` right ` | string | left |
 
 
 ### Events
@@ -243,9 +243,9 @@ export default {
 |blur | Triggered when out of focus | val, event|
 |clear | Triggered when clicking empty | val|
 |search | Triggered when the Enter key is pressed | val, event|
-| click-input `v3.1.21`| Triggered when the input field is clicked| event |
-| click-left-icon `v3.1.21`| Triggered when the icon on the left is clicked| val, event |
-| click-right-icon `v3.1.21`| Triggered when the icon on the right is clicked| val, event |
+| click-input| Triggered when the input field is clicked| event |
+| click-left-icon| Triggered when the icon on the left is clicked| val, event |
+| click-right-icon| Triggered when the icon on the right is clicked| val, event |
 
 
 ### Slots

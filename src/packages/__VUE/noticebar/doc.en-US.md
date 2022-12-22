@@ -229,7 +229,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | delay      | Delay time                                         | String/Number | 1       |
 | scrollable | Whether to scroll content                          | Boolean       | true    |
 | speed      | Scrolling speed (px/s)                             | Number         | 50      |
-| wrapable`v3.1.18` | Whether to enable text wrap                        | Boolean       | false    |
+| wrapable | Whether to enable text wrap                        | Boolean       | false    |
 
 ### Props（direction=vertical）
 

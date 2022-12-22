@@ -206,7 +206,7 @@ export default {
 |------|------|
 | slot:mTitle | 标题栏左侧内容插槽 | 
 | slot:value | 标题栏右侧内容插槽 | 
-| slot:extraRender `v3.1.20`| 设置标题下固定内容（不折叠） |
+| slot:extraRender | 设置标题下固定内容（不折叠） |
 
 ### Events
 
