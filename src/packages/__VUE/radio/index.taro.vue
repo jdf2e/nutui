@@ -1,10 +1,14 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
-import nutIcon from '../icon/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
+import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
 
 export default create({
+  components: {
+    CheckNormal,
+    CheckChecked
+  },
   props: {
     disabled: {
       type: Boolean,
@@ -59,9 +63,13 @@ export default create({
     });
 
     const renderIcon = () => {
-      const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName } = props;
-      return h(nutIcon, {
-        name: isCurValue.value ? iconActiveName : iconName,
+      const { iconSize, iconClassPrefix, iconFontClassName } = props;
+      const iconNodeMap = {
+        CheckNormal: slots.icon ? slots.icon : CheckNormal,
+        Checked: slots.checkedIcon ? slots.checkedIcon : CheckChecked
+      };
+      const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
+      return h(iconNode, {
         size: iconSize,
         class: color.value,
         classPrefix: iconClassPrefix,

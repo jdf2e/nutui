@@ -57,8 +57,16 @@
     <nut-cell-group title="Radio自定义图标">
       <nut-cell>
         <nut-radio-group v-model="radioVal5">
-          <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-          <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+          <nut-radio label="1">
+            自定义图标
+            <template #icon> <Checklist /> </template>
+            <template #checkedIcon> <Checklist color="red" /> </template>
+          </nut-radio>
+          <nut-radio label="2">
+            自定义图标
+            <template #icon> <Checklist /> </template>
+            <template #checkedIcon> <Checklist color="red" /> </template>
+          </nut-radio>
         </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
@@ -76,8 +84,12 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import { Checklist } from '@nutui/icons-vue-taro';
 export default {
   props: {},
+  components: {
+    Checklist
+  },
   setup() {
     const data = reactive({
       radioVal: 1,

@@ -8,12 +8,12 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Radio,RadioGroup,Icon } from '@nutui/nutui';
-
+import { Radio,RadioGroup } from '@nutui/nutui';
+import { Checklist } from '@nutui/icons-vue';
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
-app.use(Icon);
+app.use(Checklist);
 ```
 ### 基础用法
 
@@ -135,7 +135,7 @@ app.use(Icon);
 
 ### 自定义图标
 
-建议 `icon-name` `icon-active-name` 一起修改
+通过slot自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
 
 :::demo
 
@@ -144,8 +144,16 @@ app.use(Icon);
   <nut-cell-group title="Radio自定义图标">
     <nut-cell>
       <nut-radio-group v-model="radioVal">
-        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+        <nut-radio label="1">
+          自定义图标
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-radio>
+        <nut-radio label="2">
+          自定义图标
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-radio>
       </nut-radio-group>
     </nut-cell>
   </nut-cell-group>
@@ -204,13 +212,16 @@ app.use(Icon);
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
 | icon-size        | [图标尺寸](#/zh-CN/component/icon)                                           | String、Number          | `18`              |
-| icon-name        | [图标名称](#/zh-CN/component/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
-| icon-active-name | [图标名称](#/zh-CN/component/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
 | icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label            | 单选框标识                                                   | String、Number、Boolean | -                 |
 | shape            | 形状，可选值为 button、round                                 | String                  | round             |
 
+### Radio Slots
+| 名称 | 说明 |
+|-|-|
+| icon | 未选中时的图标 |
+| checkedIcon | 选中时的图标 |
 ### RadioGroup Props
 
 | 字段          | 说明                                          | 类型                    | 默认值     |
