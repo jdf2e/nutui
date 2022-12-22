@@ -1,5 +1,5 @@
 import { computed, Ref, ref } from 'vue';
-import { StarN } from '@nutui/icons-vue';
+import { StarN } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -138,4 +138,4 @@ const useComponent = (touchable: Boolean = true) => {
 //     }
 //     return v;
 // };
-export const component = useComponent();
+export const taroComponent = useComponent(false);

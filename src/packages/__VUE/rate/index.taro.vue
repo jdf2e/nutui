@@ -2,6 +2,6 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('rate');
-import { taroComponent } from './common';
+import { taroComponent } from './common.taro';
 export default create(taroComponent);
 </script>
