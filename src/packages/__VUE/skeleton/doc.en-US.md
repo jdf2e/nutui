@@ -90,7 +90,7 @@ app.use(Skeleton);
 ```html
 <template>
   <div class="content">
-    <nut-switch v-model="checked" size="15px" />
+    <nut-switch v-model="checked" />
     <nut-skeleton width="250px" height="15px" title animated avatar row="3" :loading="!checked">
       <div class="container">
         <nut-avatar size="50">

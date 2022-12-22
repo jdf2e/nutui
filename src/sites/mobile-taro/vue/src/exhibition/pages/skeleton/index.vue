@@ -21,7 +21,7 @@
 
     <h2>显示子组件</h2>
     <view class="content">
-      <nut-switch v-model="checked" size="15px" />
+      <nut-switch v-model="checked" />
       <nut-skeleton width="250px" height="15px" title animated avatar row="3" :loading="!checked">
         <view class="container">
           <nut-avatar size="50">

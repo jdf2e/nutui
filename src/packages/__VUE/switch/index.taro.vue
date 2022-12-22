@@ -1,7 +1,9 @@
 <template>
   <view :class="classes" @click="onClick" :style="style">
     <view class="nut-switch-button">
-      <nut-icon v-if="loading" v-bind="$attrs" :name="name" :size="size" :color="color"></nut-icon>
+      <slot name="icon" v-if="loading">
+        <Loading1 />
+      </slot>
       <template v-if="activeText">
         <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>
         <view class="nut-switch-label close" v-show="!modelValue">{{ inactiveText }}</view>
@@ -13,9 +15,11 @@
 <script lang="ts">
 import { computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { Loading1 } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('switch');
 
 export default create({
+  components: { Loading1 },
   props: {
     modelValue: {
       type: [String, Number, Boolean],
@@ -52,18 +56,6 @@ export default create({
     loading: {
       type: Boolean,
       default: false
-    },
-    name: {
-      type: String,
-      default: 'loading1'
-    },
-    size: {
-      type: [String, Number],
-      default: '12px'
-    },
-    color: {
-      type: String,
-      default: ''
     }
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
