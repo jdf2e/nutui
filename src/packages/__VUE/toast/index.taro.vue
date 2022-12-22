@@ -21,7 +21,7 @@
           }"
         >
           <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-            <nut-icon size="20" color="#ffffff" v-bind="$attrs" :name="iconName"></nut-icon>
+            <component :is="renderIcon(iconName)" color="#ffffff"></component>
           </view>
           <div v-if="title" class="nut-toast-title">
             {{ title }}
@@ -33,14 +33,12 @@
   </Transition>
 </template>
 <script lang="ts">
-import { computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { Component, computed, PropType, watch } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('toast');
-import Icon from '../icon/index.taro.vue';
+import { Failure, Loading, Success, Tips } from '@nutui/icons-vue-taro';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  components: {},
   props: {
     id: String,
     msg: String,
@@ -65,7 +63,10 @@ export default create({
       type: [String, Number],
       default: 'base'
     },
-    icon: String,
+    icon: {
+      type: Object as PropType<Component>,
+      default: () => {}
+    },
     textAlignCenter: {
       type: Boolean,
       default: true
@@ -150,11 +151,11 @@ export default create({
         return props.icon;
       } else {
         return {
-          success: 'success',
-          fail: 'failure',
-          warn: 'tips',
-          loading: 'loading'
-        }[props.type];
+          success: Success,
+          fail: Failure,
+          warn: Tips,
+          loading: Loading
+        }[props.type] as any;
       }
     });
     const toastBodyClass = computed(() => {
@@ -181,7 +182,8 @@ export default create({
       hasIcon,
       iconName,
       toastBodyClass,
-      onAfterLeave
+      onAfterLeave,
+      renderIcon
     };
   }
 });
