@@ -10,14 +10,7 @@
 npm i --save @nutui/icons-vue
 ```
 
-``` javascript
-import { createApp } from 'vue';
-import { IconFont } from '@nutui/icons-vue';
-
-const app = createApp();
-app.use(IconFont);
-```
-### Svg 按需加载使用
+### fan Svg 按需加载使用
 
 按需加载组件使用方式，可选项见 @nutui/icons-vue/dist/types/index.d.ts
 
