@@ -201,7 +201,7 @@ app.use(Noticebar);
 
 <script>
   import { ref } from 'vue';
-  import { Fabulous } from '@nutui/icons-vue';
+  import { Fabulous } from '@nutui/icons-vue-taro';
   export default {
     components: { Fabulous },
     setup(props) {
