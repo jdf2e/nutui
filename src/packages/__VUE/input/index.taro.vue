@@ -20,6 +20,8 @@
             @focus="onFocus"
             @blur="onBlur"
             @click="onClickInput"
+            :adjust-position="adjustPosition"
+            :always-system="alwaysSystem"
           ></component>
           <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
