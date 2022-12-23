@@ -24,7 +24,7 @@
       max-length="50"
     >
       <template #clear>
-        <Close width="12" height="12" @click="clearValue"></Close>
+        <Close width="12" height="12" size="12" @click="clearValue"></Close>
       </template>
     </nut-input>
     <h2>配合表单使用</h2>

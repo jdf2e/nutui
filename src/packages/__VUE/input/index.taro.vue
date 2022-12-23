@@ -211,7 +211,6 @@ export default create({
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
-      console.log('updateValue');
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
@@ -220,9 +219,7 @@ export default create({
       }
 
       if (props.formatter && trigger === props.formatTrigger) {
-        console.log('value', value);
         value = props.formatter(value);
-        console.log('2222', value);
       }
 
       if (inputRef?.value !== value) {
