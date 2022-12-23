@@ -70,6 +70,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { Close } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
+import Popover from '../popover/index.taro.vue';
 
 interface StepOptions {
   target: Element;
@@ -81,6 +82,7 @@ interface StepOptions {
 const { create } = createComponent('tour');
 export default create({
   components: {
+    [Popover.name]: Popover,
     Close
   },
   props: {

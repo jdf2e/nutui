@@ -550,3 +550,16 @@ You can manually switch through `api` (`prev`, `next`)
 | prev            | Switch to previous page         | - |
 | next            | Switch to next page         | - |
 | to            | Switch to the specified rotation         | index:number |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-swiper-pagination-item-width| _8px_  | -  |
+| --nut-swiper-pagination-item-height| _3px_  | -  |
+| --nut-swiper-pagination-item-margin-right| _7px_  | -  |
+| --nut-swiper-pagination-item-border-radius| _2px_  | -  |

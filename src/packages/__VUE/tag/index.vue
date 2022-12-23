@@ -9,6 +9,7 @@
 import { PropType, CSSProperties, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Close } from '@nutui/icons-vue';
+import { TagType } from './type';
 const { componentName, create } = createComponent('tag');
 
 export default create({
@@ -16,7 +17,7 @@ export default create({
     color: { type: String, default: '' },
     textColor: { type: String, default: '' },
     type: {
-      type: String as PropType<import('./type').TagType>,
+      type: String as PropType<TagType>,
       default: 'default'
     },
     plain: {

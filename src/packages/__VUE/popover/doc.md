@@ -421,3 +421,21 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | choose | 点击选项时触发 |
 | open   | 打开菜单时触发 |
 | close  | 关闭菜单时触发 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-popover-white-background-color| _rgba(255, 255, 255, 1)_  | -  |
+|  --nut-popover-dark-background-color| _rgba(75, 76, 77, 1)_  | -  |
+|  --nut-popover-border-bottom-color| _rgba(229, 229, 229, 1)_  | -  |
+|  --nut-popover-primary-text-color| _rgba(51, 51, 51, 1)_  | -  |
+|  --nut-popover-disable-color| _rgba(154, 155, 157, 1)_  | -  |
+|  --nut-popover-menu-item-padding| _8px 0_  | -  |
+|  --nut-popover-menu-item-margin| _0 8px_  | -  |
+|  --nut-popover-menu-name-line-height| _normal_  | -  |

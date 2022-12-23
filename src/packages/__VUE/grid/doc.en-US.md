@@ -198,3 +198,19 @@ app.use(GridItem);
 | Event                 | Description           | Arguments               |
 |-----------------------|-----------------------|-----------------------|
 | click                 | Emitted when component is clicked          | event: Event          |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-grid-border-color| _#f5f6f7_ | -  |
+| --nut-grid-item-content-padding| _16px 8px_ | -  |
+| --nut-grid-item-content-bg-color| _var(--nut-white)_ | -  |
+| --nut-grid-item-text-margin| _8px_ | -  |
+| --nut-grid-item-text-color| _var(--nut-title-color2)_ | -  |
+| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ | -  |

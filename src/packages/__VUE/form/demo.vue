@@ -26,7 +26,7 @@
         required
         :rules="[{ required: true, message: translate('nameTip') }]"
       >
-        <input
+        <nut-input
           class="nut-input-text"
           v-model="dynamicForm.state.name"
           :placeholder="translate('nameTip')"
@@ -75,7 +75,7 @@
         required
         :rules="[{ required: true, message: translate('nameTip') }]"
       >
-        <input
+        <nut-input
           class="nut-input-text"
           @blur="customBlurValidate('name')"
           v-model="formData.name"

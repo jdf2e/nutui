@@ -634,3 +634,17 @@ app.use(Table);
 | Event | Description             | Arguments                   |
 | ------ | ---------------- | -------------------------- |
 | sorter | Click the sort button to trigger | item: Data of the currently clicked header |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-table-border-color| _#ececec_  | -  |
+| --nut-table-cols-padding| _10px_  | -  |
+| --nut-table-tr-even-bg-color| _#f3f3f3_  | -  |
+| --nut-table-tr-odd-bg-color| _var(--nut-white)_  | -  |

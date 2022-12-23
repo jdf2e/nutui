@@ -70,16 +70,20 @@ const { componentName, create } = createComponent('popover');
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { rect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';
+import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 import Taro from '@tarojs/taro';
+import Popup from '../popup/index.taro.vue';
 
 export default create({
   inheritAttrs: false,
-  components: {},
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     visible: { type: Boolean, default: false },
-    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
-    theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
-    location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
+    list: { type: Array as PropType<PopoverList[]>, default: [] },
+    theme: { type: String as PropType<PopoverTheme>, default: 'light' },
+    location: { type: String as PropType<PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },
     arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },

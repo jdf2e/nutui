@@ -78,3 +78,19 @@ app.use(Indicator);
 | block | 是否启用块级布局     | Boolean | false |
 | align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| String | left |
 | fill-zero     | 单数前面是否补0                      | Boolean | true        |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-indicator-color|  _var(--nut-primary-color)_ | -  |
+| --nut-indicator-dot-color|  _var(--nut-disable-color)_ | -  |
+| --nut-indicator-white|  _var(--nut-white)_ | -  |
+| --nut-indicator-size|  _18px_ | -  |
+| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ | -  |
+| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ | -  |
+| --nut-indicator-number-font-size|  _10px_ | -  |
