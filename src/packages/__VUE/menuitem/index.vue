@@ -63,12 +63,13 @@ import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted }
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Popup from '../popup/index.vue';
+import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
 export default create({
   props: {
     title: String,
     options: {
-      type: Array as PropType<import('./type').MenuItemOption[]>,
+      type: Array as PropType<MenuItemOption[]>,
       default: []
     },
     disabled: {
@@ -167,7 +168,7 @@ export default create({
       return match ? match.text : '';
     };
 
-    const onClick = (option: import('./type').MenuItemOption) => {
+    const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
       state.isShowPlaceholderElement = false;
 

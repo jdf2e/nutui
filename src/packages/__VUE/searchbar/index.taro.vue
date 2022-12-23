@@ -53,6 +53,7 @@
 import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
+import { TextAlign } from './type';
 const { create, translate } = createComponent('searchbar');
 export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
@@ -203,7 +204,7 @@ export default create({
 
     const styleSearchbar = computed(() => {
       const style: CSSProperties = {
-        textAlign: props.inputAlign as import('./type').TextAlign
+        textAlign: props.inputAlign as TextAlign
       };
       return style;
     });

@@ -72,6 +72,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
 import NutScrollView from '../scrollView/index.taro.vue';
+import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
 
 let _zIndex = 2000;
@@ -80,7 +81,7 @@ export default create({
   props: {
     title: String,
     options: {
-      type: Array as PropType<import('./type').MenuItemOption[]>,
+      type: Array as PropType<MenuItemOption[]>,
       default: []
     },
     disabled: {
@@ -181,7 +182,7 @@ export default create({
       return match ? match.text : '';
     };
 
-    const onClick = (option: import('./type').MenuItemOption) => {
+    const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
       state.isShowPlaceholderElement = false;
 
