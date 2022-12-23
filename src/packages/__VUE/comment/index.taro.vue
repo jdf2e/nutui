@@ -19,9 +19,7 @@
     <comment-images :images="images" :videos="videos" :type="imagesRows" @clickImages="clickImages"></comment-images>
 
     <view class="nut-comment__follow" v-if="follow && follow.days > 0" @click="handleClick">
-      <view class="nut-comment__follow-title"
-        >购买{{ follow.days }}天后追评</view
-      >
+      <view class="nut-comment__follow-title">购买{{ follow.days }}天后追评</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
       <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
         >{{ follow.images.length }} 张追评图片 <Right width="12px"></Right

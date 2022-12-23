@@ -12,8 +12,8 @@
       </div>
       <div class="nut-address-list-item__info-handle">
         <slot name="contentIcon">
-          <nut-icon name="del" class="nut-address-list-item__info-handle-del" @click="delClick"></nut-icon>
-          <nut-icon name="edit" class="nut-address-list-item__info-handle-edit" @click="editClick"></nut-icon>
+          <Del name="del" class="nut-address-list-item__info-handle-del" @click="delClick"></Del>
+          <Edit name="edit" class="nut-address-list-item__info-handle-edit" @click="editClick"></Edit>
         </slot>
       </div>
     </div>
@@ -28,8 +28,9 @@
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('addresslist-item');
 const { translate } = createComponent('addresslist');
-
+import { Del, Edit } from '@nutui/icons-vue';
 export default create({
+  components: { Del, Edit },
   props: {
     item: {
       type: Object,
