@@ -21,7 +21,7 @@
           :offset="step.popoverOffset || [0, 12]"
           :arrowOffset="step.arrowOffset || 0"
         >
-          <template #content>
+          <template v-slot:content>
             <slot>
               <view class="nut-tour-content" v-if="type == 'step'">
                 <view class="nut-tour-content-top">
