@@ -586,3 +586,23 @@ If you want to select a province, you need to set the region ID in the order of 
 | closeIcon | Close icon slot |  
 | backIcon | Change icon slot |  
     
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| -    |
+|  --nut-address-icon-color| _var(--nut-primary-color)_     | -    |
+|  --nut-address-header-title-font-size   | _18px_          | -    |
+|  --nut-address-header-title-color| _#262626_    | -    |
+|  --nut-address-region-tab-font-size| _13px_  | -    |
+|  --nut-address-region-tab-color| _#1d1e1e_  | -    |
+|  --nut-address-region-tab-active-item-font-weight| _bold_    | -    |
+|  --nut-address-region-tab-line-border-radius| _0_   | -    |
+|  --nut-address-region-tab-line-opacity| _1_   | -    |
+|  --nut-address-region-item-color| _#333_    | -    |
+|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | -    |
+|  --nut-address-item-margin-right| _9px_  | -    |

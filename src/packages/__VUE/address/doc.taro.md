@@ -608,3 +608,23 @@ app.use(Elevator);
 | unselectedIcon | 未选中地址时的图标 |  
 | closeIcon | 关闭弹层的图标 |  
 | backIcon | 自定义地址与已有地址切换时返回的图标 |  
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| -    |
+|  --nut-address-icon-color| _var(--nut-primary-color)_     | -    |
+|  --nut-address-header-title-font-size   | _18px_          | -    |
+|  --nut-address-header-title-color| _#262626_    | -    |
+|  --nut-address-region-tab-font-size| _13px_  | -    |
+|  --nut-address-region-tab-color| _#1d1e1e_  | -    |
+|  --nut-address-region-tab-active-item-font-weight| _bold_    | -    |
+|  --nut-address-region-tab-line-border-radius| _0_   | -    |
+|  --nut-address-region-tab-line-opacity| _1_   | -    |
+|  --nut-address-region-item-color| _#333_    | -    |
+|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | -    |
+|  --nut-address-item-margin-right| _9px_  | -    |

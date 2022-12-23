@@ -440,3 +440,23 @@ export default {
 |------------|-------------------------------------------|--------------------|
 | change     | Triggered when the selected value changes | (value, pathNodes) |
 | path-change | Triggered when the selected item changes  | (pathNodes)        |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-cascader-font-size| _var(--nut-font-size-2)_  | -  |
+| --nut-cascader-line-height| _22px_  | -  |
+| --nut-cascader-tabs-item-padding| _0 10px_  | -  |
+| --nut-cascader-bar-padding| _24px 20px 17px_  | -  |
+| --nut-cascader-bar-font-size| _var(--nut-font-size-4)_  | -  |
+| --nut-cascader-bar-line-height| _20px_  | -  |
+| --nut-cascader-bar-color| _var(--nut-title-color)_  | -  |
+| --nut-cascader-item-padding| _10px 20px_  | -  |
+| --nut-cascader-item-color| _var(--nut-title-color)_  | -  |
+| --nut-cascader-item-font-size| _var(--nut-font-size-2)_  | -  |
+| --nut-cascader-item-active-color| _var(--nut-primary-color)_  | -  |

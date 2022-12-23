@@ -171,3 +171,19 @@ app.use(Price);
 | origin | 	价格后方自定义内容 |
 | shop-tag | 	店铺介绍自定义 |
 | footer | 	右下角内容自定义 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-card-font-size-0| _var(--nut-font-size-0)_  | - |
+| --nut-card-font-size-1| _var(--nut-font-size-1)_  | - |
+| --nut-card-font-size-2| _var(--nut-font-size-2)_  | - |
+| --nut-card-font-size-3| _var(--nut-font-size-3)_  | - |
+| --nut-card-left-border-radius| _0_  | - |
+| --nut-card-left-background-color| _inherit_  | - |

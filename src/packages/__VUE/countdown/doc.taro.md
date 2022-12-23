@@ -345,3 +345,15 @@ app.use(Countdown);
 | start | 开始倒计时 | 
 | pause | 暂停倒计时 | 
 | reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | 
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-countdown-display| _flex_ | -  |
+| --nut-countdown-color| _inherit_ | -  |
+| --nut-countdown-font-size| _initial_ | -  |
