@@ -8,12 +8,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Searchbar, Icon } from '@nutui/nutui-taro';
+import { Searchbar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Searchbar);
-app.use(Icon);
-
 ```    
     
 ### 基础用法

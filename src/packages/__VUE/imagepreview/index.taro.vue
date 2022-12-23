@@ -22,7 +22,8 @@
 
     <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
     <view class="nut-image-preview-close-icon" @click="onClose" :style="styles" v-if="closeable"
-      ><CircleClose color="#ffffff"></CircleClose></view>
+      ><CircleClose color="#ffffff"></CircleClose
+    ></view>
   </nut-popup>
 </template>
 <script lang="ts">
