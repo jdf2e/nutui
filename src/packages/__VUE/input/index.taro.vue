@@ -286,20 +286,16 @@ export default create({
     watch(
       () => props.modelValue,
       () => {
-        if (!slots.input) {
-          updateValue(getModelValue());
-          resetValidation();
-        }
+        updateValue(getModelValue());
+        resetValidation();
       }
     );
 
     onMounted(() => {
-      if (!slots.input) {
-        if (props.autofocus) {
-          inputRef.value.focus();
-        }
-        updateValue(getModelValue(), props.formatTrigger);
+      if (props.autofocus) {
+        inputRef.value.focus();
       }
+      updateValue(getModelValue(), props.formatTrigger);
     });
 
     return {
