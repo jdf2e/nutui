@@ -119,8 +119,17 @@ Set the button shape through the `shape` property, support circle and square but
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-  <nut-button shape="square" type="primary" icon="star">Star</nut-button>
+  <nut-button shape="square" plain type="primary">
+    <template #icon>
+      <StarFill />
+    </template>
+  </nut-button>
+  <nut-button shape="square" type="primary">
+    <template #icon>
+      <Star />
+    </template>
+    Star
+  </nut-button>
 </template>
 ```
 
