@@ -2,7 +2,6 @@
   <view
     :style="!showMax ? styles : maxStyles"
     :class="classes"
-    @click="activeAvatar"
     ref="avatarRef"
     v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
@@ -107,7 +106,6 @@ export default create({
     return {
       classes,
       styles,
-      isShowText,
       maxStyles,
       avatarGroup,
       visible,
