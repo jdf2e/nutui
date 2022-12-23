@@ -31,7 +31,7 @@ let installFunction = `function install(app: any) {
 let fileStrBuild = `${importStr}
 ${installFunction}
 const version = '${packageConfig.version}';
-export { install, version, Locale };
+export { install, version, Locale, ${packages.join(',')} };
 export default { install, version, Locale};`;
 
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.build.ts'), fileStrBuild, 'utf8', (error) => {

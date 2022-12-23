@@ -14,6 +14,7 @@
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue-taro';
+// import { ButtonShape, ButtonType, ButtonSize } from './type';
 const { componentName, create } = createComponent('button');
 export default create({
   components: { Loading },

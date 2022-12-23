@@ -12,7 +12,7 @@
       @click="handleClick"
       v-if="direction == 'across'"
     >
-      <view class="nut-noticebar__page-lefticon" v-if="iconShow">
+      <view class="nut-noticebar__page-lefticon">
         <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
         <component :is="renderIcon(leftIcon)" v-else></component>
       </view>
@@ -216,14 +216,6 @@ export default create({
       };
     });
 
-    const iconShow = computed(() => {
-      if (props.leftIcon == 'close') {
-        return false;
-      } else {
-        return true;
-      }
-    });
-
     const barStyle = computed(() => {
       let style: {
         [props: string]: any;
@@ -244,13 +236,6 @@ export default create({
         animationDuration: state.duration + 's',
         transform: `translateX(${state.firstRound ? 0 : state.wrapWidth + 'px'})`
       };
-    });
-    const iconBg = computed(() => {
-      let iconBg = '';
-      if (props.leftIcon) {
-        iconBg = props.leftIcon;
-      }
-      return iconBg;
     });
     const horseLampStyle = computed(() => {
       let styles = {};
@@ -410,10 +395,8 @@ export default create({
       ...toRefs(state),
       isEllipsis,
       classes,
-      iconShow,
       barStyle,
       contentStyle,
-      iconBg,
       horseLampStyle,
       wrap,
       content,
