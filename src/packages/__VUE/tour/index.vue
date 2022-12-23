@@ -64,7 +64,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted, Component } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
@@ -81,7 +81,7 @@ interface StepOptions {
 const { create } = createComponent('tour');
 export default create({
   components: {
-    [Popover.name]: Popover,
+    [Popover.name]: Popover as Component,
     Close
   },
   props: {
