@@ -119,8 +119,17 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-  <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+  <nut-button shape="square" plain type="primary">
+    <template #icon>
+      <StarFill />
+    </template>
+  </nut-button>
+  <nut-button shape="square" type="primary">
+    <template #icon>
+      <Star />
+    </template>
+    收藏
+  </nut-button>
 </template>
 ```
 
