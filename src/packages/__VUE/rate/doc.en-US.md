@@ -173,3 +173,14 @@ export default {
 | Event  | Description                                                | Arguments |
 |--------|------------------------------------------------------------|-----------|
 | change | An event that fires whenever the current score is modified | val       |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-rate-icon-color|  _var(--nut-primary-color)_  | -  |
+| --nut-rate-icon-void-color|  _var(--nut-disable-color)_  | -  |

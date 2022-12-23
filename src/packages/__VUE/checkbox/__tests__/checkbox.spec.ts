@@ -83,56 +83,8 @@ test('checkbox icon-size test', () => {
   });
 
   const items = wrapper.findAll('.nut-checkbox');
-  expect((items[0].findAll('i') as any)[0].element.style.fontSize).toEqual('25px');
-  expect((items[1].findAll('i') as any)[0].element.style.fontSize).toEqual('10px');
-});
-
-test('checkbox icon-name test', () => {
-  const wrapper = mount({
-    components: {
-      'nut-checkbox': Checkbox
-    },
-    template: `
-      <template>
-        <nut-checkbox v-model="checkbox5"  icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
-        <nut-checkbox v-model="checkbox6">auxiliary</nut-checkbox>
-      </template>
-    `,
-    setup() {
-      const state = reactive({
-        checkbox5: true,
-        checkbox6: true
-      });
-      return { ...toRefs(state) };
-    }
-  });
-
-  const items = wrapper.findAll('.nut-checkbox');
-  expect((items[0].findAll('i') as any)[0].classes()).toContain('nut-icon-checklist');
-});
-
-test('checkbox label test', () => {
-  const wrapper = mount({
-    components: {
-      'nut-checkbox': Checkbox
-    },
-    template: `
-      <template>
-        <nut-checkbox v-model="checkbox5" label="testlabel"></nut-checkbox>
-        <nut-checkbox v-model="checkbox6">auxiliary</nut-checkbox>
-      </template>
-    `,
-    setup() {
-      const state = reactive({
-        checkbox5: true,
-        checkbox6: true
-      });
-      return { ...toRefs(state) };
-    }
-  });
-
-  const items = wrapper.findAll('.nut-checkbox');
-  expect((items[0].findAll('i') as any)[0].find('testlabel')).toBeTruthy();
+  expect((items[0].findAll('svg') as any)[0].element.style.width).toEqual('25px');
+  expect((items[1].findAll('svg') as any)[0].element.style.height).toEqual('10px');
 });
 
 test('should emit "update:modelValue" event when checkbox is clicked', async () => {

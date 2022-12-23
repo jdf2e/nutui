@@ -401,6 +401,19 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 |-------|----------|
 | clear | Customize the end of the input box to clear the button |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-input-border-bottom| _#eaf0fb_  | - |
+| --nut-input-disabled-color| _#c8c9cc_  | - |
+| --nut-input-required-color| _var(--nut-required-color)_  | - |
+| --nut-input-font-size| _var(--nut-font-size-2)_  | - |
+
 
 
 

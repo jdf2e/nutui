@@ -184,4 +184,24 @@ app.use(Switch);
 | 事件名 | 说明           | 回调参数                      |
 |--------|----------------|-------------------------------|
 | change | 切换开关时触发 | (value: boolean,event: Event) |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-switch-close-bg-color|  _#ebebeb_ | - |
+| --nut-switch-close--nut-cline-bg-color|  _#f0f0f0_ | - |
+| --nut-switch-width|  _36px_ | - |
+| --nut-switch-height|  _21px_ | - |
+| --nut-switch-line-height|  _21px_ | - |
+| --nut-switch-border-radius|  _21px_ | - |
+| --nut-switch-inside-width|  _13px_ | - |
+| --nut-switch-inside-height|  _13px_ | - |
+| --nut-switch-inside-open-transform|  _translateX(146%)_ | - |
+| --nut-switch-inside-close-transform|  _translateX(30%)_ | - |
     

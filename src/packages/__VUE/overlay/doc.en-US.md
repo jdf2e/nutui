@@ -257,3 +257,15 @@ Set `close on click override` to control whether the click mask is closed. If it
 | ------ | ---------- |
 | default  | Embedded Mask Content Customization |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-overlay-bg-color        | _rgba(0, 0, 0, 0.7)_        | -    |
+

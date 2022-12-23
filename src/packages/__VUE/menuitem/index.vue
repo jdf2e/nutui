@@ -38,13 +38,15 @@
           :style="{ 'flex-basis': 100 / cols + '%' }"
           @click="onClick(option)"
         >
-          <nut-icon
-            v-bind="$attrs"
-            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+          <span
+            class="nut-menu-item__span"
             v-if="option.value === modelValue"
-            :name="optionIcon"
-            :color="parent.props.activeColor"
-          ></nut-icon>
+            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+          >
+            <slot name="icon">
+              <Check v-bind="$attrs" :color="parent.props.activeColor"></Check>
+            </slot>
+          </span>
           <view
             :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
             :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
@@ -60,9 +62,8 @@
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
-import Icon from '../icon/index.vue';
 import Popup from '../popup/index.vue';
-
+import { Check } from '@nutui/icons-vue';
 export default create({
   props: {
     title: String,
@@ -87,8 +88,8 @@ export default create({
     }
   },
   components: {
-    [Icon.name]: Icon,
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    Check
   },
   emits: ['update:modelValue', 'change', 'open', 'close'],
   setup(props, { emit, slots }) {

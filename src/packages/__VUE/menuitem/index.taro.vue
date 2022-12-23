@@ -39,16 +39,18 @@
             :style="{ 'flex-basis': 100 / cols + '%' }"
             @click="onClick(option)"
           >
-            <nut-icon
+            <span
+              class="nut-menu-item__span"
+              v-if="option.value === modelValue"
               :class="{
                 activeTitleClass: option.value === modelValue,
                 inactiveTitleClass: option.value !== modelValue
               }"
-              v-if="option.value === modelValue"
-              :name="optionIcon"
-              v-bind="$attrs"
-              :color="parent.props.activeColor"
-            ></nut-icon>
+            >
+              <slot name="icon">
+                <Check v-bind="$attrs" :color="parent.props.activeColor"></Check>
+              </slot>
+            </span>
             <view
               :class="{
                 activeTitleClass: option.value === modelValue,
@@ -68,9 +70,10 @@
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
-import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import NutScrollView from '../scrollView/index.taro.vue';
+import { Check } from '@nutui/icons-vue-taro';
+
 let _zIndex = 2000;
 
 export default create({
@@ -97,7 +100,7 @@ export default create({
     }
   },
   components: {
-    [Icon.name]: Icon,
+    Check,
     [Popup.name]: Popup,
     NutScrollView
   },

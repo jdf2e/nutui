@@ -122,4 +122,23 @@ app.use(Divider);
 | 名称 | 说明           | 
 |--------|----------------|
 | default  | 内容 | 
-    
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-divider-margin | _16px 0_ | -  |
+| --nut-divider-text-font-size | _var(--nut-font-size-2)_ | -  |
+| --nut-divider-text-color | _#909ca4_ | -  |
+| --nut-divider-line-height | _2px_ | -  |
+| --nut-divider-before-margin-right | _16px_ | -  |
+| --nut-divider-after-margin-left | _16px_ | -  |
+| --nut-divider-vertical-height | _12px_ | -  |
+| --nut-divider-vertical-top | _2px_ | -  |
+| --nut-divider-vertical-border-left | _rgba(0, 0, 0, 0.06)_ | -  |
+| --nut-divider-vertical-margin | _0 8px_ | -  |

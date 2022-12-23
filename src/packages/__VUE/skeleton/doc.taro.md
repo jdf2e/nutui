@@ -178,3 +178,15 @@ export default {
 |---------|---------------|
 | default | 骨架屏显示内容  |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-skeleton-content-avatar-background-color| _#efefef_  | -  |
+| --nut-skeleton-content-line-background-color| _#efefef_  | -  |
+| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | -  |
+

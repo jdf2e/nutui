@@ -98,3 +98,13 @@ app.use(Ellipsis);
 |--------|----------------|--------------|
 | click  | Emitted when the content is clicked | -- |
 | change  | Emitted when expand or collapse is clicked | -- |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-ellipsis-expand-collapse-color       | _#3460fa_        | -    |

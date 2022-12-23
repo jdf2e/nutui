@@ -219,3 +219,18 @@ export default{
 | complete | Input complete callback         | value    |
 | focus | 	Emitted when input is focused	         | -    |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-shortpassword-background-color| _rgba(245, 245, 245, 1)_  | -  |
+| --nut-shortpassword-border-color| _#ddd_  | -  |
+| --nut-shortpassword-error| _var(--nut-primary-color)_  | -  |
+| --nut-shortpassword-forget| _rgba(128, 128, 128, 1)_  | -  |
+

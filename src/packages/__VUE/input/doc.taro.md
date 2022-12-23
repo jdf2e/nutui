@@ -406,6 +406,19 @@ app.use(Input);
 |-------|----------|
 | clear | 自定义输入框尾部清除按钮 |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-input-border-bottom| _#eaf0fb_  | - |
+| --nut-input-disabled-color| _#c8c9cc_  | - |
+| --nut-input-required-color| _var(--nut-required-color)_  | - |
+| --nut-input-font-size| _var(--nut-font-size-2)_  | - |
+
 
 
 

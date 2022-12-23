@@ -20,6 +20,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
+import Video from '../video/index.vue';
 const { create } = createComponent('image-preview-item');
 
 export default create({
@@ -43,7 +44,9 @@ export default create({
     }
   },
   emits: ['close', 'scale'],
-  components: {},
+  components: {
+    [Video.name]: Video
+  },
 
   setup(props, { emit }) {
     const state = reactive({

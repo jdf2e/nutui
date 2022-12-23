@@ -231,3 +231,17 @@ export default{
 | complete | 输入完成的回调         | 当前输入框值value    |
 | focus | 输入框聚焦时触发	         | -    |
 
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-shortpassword-background-color| _rgba(245, 245, 245, 1)_  | -  |
+| --nut-shortpassword-border-color| _#ddd_  | -  |
+| --nut-shortpassword-error| _var(--nut-primary-color)_  | -  |
+| --nut-shortpassword-forget| _rgba(128, 128, 128, 1)_  | -  |
+
