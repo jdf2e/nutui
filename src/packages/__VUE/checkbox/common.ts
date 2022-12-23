@@ -89,7 +89,7 @@ export const component = (componentName: string, components: Record<string, Comp
       );
 
       const renderIcon = () => {
-        const { iconSize, iconClassPrefix, iconFontClassName } = props;
+        const { iconSize } = props;
         const iconNodeMap = {
           CheckNormal: slots.icon ? slots.icon : components.CheckNormal,
           Checked: slots.checkedIcon ? slots.checkedIcon : components.Checked,
@@ -102,9 +102,7 @@ export const component = (componentName: string, components: Record<string, Comp
           : iconNodeMap.Checked;
         return h(iconNode, {
           size: iconSize,
-          class: color.value,
-          classPrefix: iconClassPrefix,
-          fontClassName: iconFontClassName
+          class: color.value
         });
       };
 

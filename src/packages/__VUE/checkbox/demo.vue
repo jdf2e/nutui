@@ -120,14 +120,14 @@
           ><nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox></nut-cell
         >
         <nut-cell
-          ><nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox></nut-cell
-        >
+          ><nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
+        </nut-cell>
         <nut-cell
-          ><nut-checkbox label="3">{{ translate('combine') }}</nut-checkbox></nut-cell
-        >
+          ><nut-checkbox label="3">{{ translate('combine') }}</nut-checkbox>
+        </nut-cell>
         <nut-cell
-          ><nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox></nut-cell
-        >
+          ><nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
+        </nut-cell>
       </nut-checkbox-group>
     </nut-cell-group>
   </div>

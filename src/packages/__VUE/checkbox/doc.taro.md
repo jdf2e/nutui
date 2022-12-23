@@ -386,8 +386,6 @@ app.use(Checklist);
 | icon-name | [图标名称](#/zh-CN/component/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
 | icon-active-name | [图标名称](#/zh-CN/component/icon)，选中后(建议和`icon-name`一起修改) | String | `'checked'`
 | icon-indeterminate-name | [图标名称](#/zh-CN/component/icon)，半选状态 | String | `'check-disabled'`
-| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
 

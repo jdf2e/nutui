@@ -378,8 +378,6 @@ When the value changes, the `change` event will be triggered
 | disabled | Disable selection | Boolean | `false` 
 | text-position | The position of the text, optional value：`left`,`right` | String | `right` 
 | icon-size | [Icon Size](#/en-US/icon) | String、Number | `18` 
-| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` 
-| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` 
 | label | Text content of the check box | String | - 
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
 
