@@ -58,6 +58,7 @@ export default create({
       return h(iconNode, {
         width: size,
         height: size,
+        size: size,
         class: color.value
       });
     };

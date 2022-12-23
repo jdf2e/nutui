@@ -25,14 +25,6 @@ export const component = (componentName: string, components: Record<string, Comp
         type: String,
         default: ''
       },
-      iconClassPrefix: {
-        type: String,
-        default: 'nut-icon'
-      },
-      iconFontClassName: {
-        type: String,
-        default: 'nutui-iconfont'
-      },
       indeterminate: {
         type: Boolean,
         default: false
@@ -106,6 +98,7 @@ export const component = (componentName: string, components: Record<string, Comp
         return h(iconNode, {
           width: size,
           height: size,
+          size: size,
           class: color.value
         });
       };
