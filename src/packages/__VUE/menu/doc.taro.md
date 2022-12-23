@@ -412,8 +412,6 @@ export default {
 | direction          | 菜单展开方向，可选值为up                | String  | 'down'           |
 | active-title-class   | 选项选中时自定义标题样式类              | String  | -                |
 | inactive-title-class | 选项非选中时自定义标题样式类            | String  | -                |
-| font-class-name       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
-| class-prefix          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
 ### MenuItem Slots
 | 名称 | 说明 |
 |-|-|

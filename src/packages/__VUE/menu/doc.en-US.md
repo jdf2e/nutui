@@ -411,8 +411,6 @@ export default {
 | direction           | Expand direction, can be set to up   | String  | 'down'         |
 | active-title-class   | Active custome title class           | String  | -              |
 | inactive-title-class | Inactive custome title class         | String  | -              |
-| font-class-name | Custom icon font base class name                                                                         | String           | `nutui-iconfont` |
-| class-prefix    | Custom icon class name prefix for using custom icons                                                     | String           | `nut-icon`       |
 
 
 ### MenuItem Slots
