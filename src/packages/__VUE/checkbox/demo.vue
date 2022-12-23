@@ -2,14 +2,14 @@
   <div class="demo">
     <nut-cell-group :title="translate('basic')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" :label="translate('checkbox')" @change="changeBox1">{{
-          translate('checkbox')
-        }}</nut-checkbox>
+        <nut-checkbox v-model="checkbox1" :label="translate('checkbox')" @change="changeBox1">
+          {{ translate('checkbox') }}
+        </nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">{{
-          translate('checkbox')
-        }}</nut-checkbox>
+        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">
+          {{ translate('checkbox') }}
+        </nut-checkbox>
       </nut-cell>
       <nut-cell>
         <div class="demo-check">{{ translate('selected') }}</div>
@@ -18,9 +18,9 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('semi')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox9" :indeterminate="true" :label="translate('checkbox')">{{
-          translate('checkbox')
-        }}</nut-checkbox>
+        <nut-checkbox v-model="checkbox9" :indeterminate="true" :label="translate('checkbox')">
+          {{ translate('checkbox') }}
+        </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('disable')">
@@ -80,18 +80,18 @@
     <nut-cell-group :title="translate('selectGroup')">
       <nut-cell>
         <nut-checkbox-group v-model="checkboxgroup3" ref="group" @change="changeBox4">
-          <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{
-            item.value
-          }}</nut-checkbox>
+          <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">
+            {{ item.value }}
+          </nut-checkbox>
         </nut-checkbox-group>
       </nut-cell>
       <nut-cell>
-        <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">{{
-          translate('selectAll')
-        }}</nut-button>
-        <nut-button type="info" @click="toggleAll(false)" style="margin: 0 20px 0 0">{{
-          translate('cancel')
-        }}</nut-button>
+        <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">
+          {{ translate('selectAll') }}
+        </nut-button>
+        <nut-button type="info" @click="toggleAll(false)" style="margin: 0 20px 0 0">
+          {{ translate('cancel') }}
+        </nut-button>
         <nut-button type="warning" @click="toggleReverse()">{{ translate('selectReverse') }}</nut-button>
       </nut-cell>
     </nut-cell-group>
@@ -116,9 +116,9 @@
         }}</nut-checkbox>
       </nut-cell>
       <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
-        <nut-cell
-          ><nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox></nut-cell
-        >
+        <nut-cell>
+          <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+        </nut-cell>
         <nut-cell
           ><nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
         </nut-cell>
