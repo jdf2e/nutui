@@ -23,7 +23,7 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import nutPicker from '../picker/index.taro.vue';
+import Picker from '../picker/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
 const { componentName, create } = createComponent('date-picker');
@@ -45,7 +45,7 @@ const zhCNType: {
 };
 export default create({
   components: {
-    nutPicker
+    [Picker.name]: Picker
   },
   props: {
     modelValue: null,
