@@ -72,7 +72,7 @@
           :key="item.paneKey"
           v-for="item in state.list6"
         >
-          <nut-icon v-if="item.icon" :name="item.icon" />
+          <Dongdong />
           <span class="nut-tabs__titles-item__text">{{ item.title }}</span>
           <span class="nut-tabs__titles-item__line"></span>
         </div>
@@ -88,7 +88,7 @@
 import { reactive, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('tabs');
-
+import { Dongdong } from '@nutui/icons-vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -121,6 +121,7 @@ const initTranslate = () =>
   });
 export default createDemo({
   props: {},
+  components: { Dongdong },
   setup() {
     initTranslate();
     const state = reactive({

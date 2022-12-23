@@ -72,7 +72,7 @@
           :key="item.paneKey"
           v-for="item in state.list6"
         >
-          <nut-icon v-if="item.icon" :name="item.icon" />
+          <Dongdong />
           <span class="nut-tabs__titles-item__text">{{ item.title }}</span>
           <span class="nut-tabs__titles-item__line"></span>
         </div>
@@ -85,9 +85,11 @@
 </template>
 
 <script lang="ts">
+import { Dongdong } from '@nutui/icons-vue-taro';
 import { reactive } from 'vue';
 export default {
   props: {},
+  components: { Dongdong },
   setup() {
     const state = reactive({
       tab1value: '0',
@@ -120,9 +122,7 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
-
     return { state };
   }
 };
