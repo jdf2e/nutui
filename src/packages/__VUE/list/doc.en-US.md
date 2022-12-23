@@ -110,3 +110,13 @@ body {
 |--------|----------------|--------------|
 | scroll(Will be abandoned), `scroll-bottom` replaced  | Triggered when scrolling to the bottom | - |
 | scroll-bottom   | Triggered when scrolling to the bottom | - |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-list-item-margin       | _0 0 10px 0_        | -    |

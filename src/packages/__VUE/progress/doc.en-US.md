@@ -155,3 +155,34 @@ app.use(Progress);
 | Name  | Description     | 
 |-------|----------|
 | iconName | Right icon content |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
+|  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  | -  |
+|  --nut-progress-outer-background-color| _#f3f3f3_  | -  |
+|  --nut-progress-outer-border-radius| _12px_  | -  |
+|  --nut-progress-insidetext-border-radius| _5px_  | -  |
+|  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  | -  |
+|  --nut-progress-insidetext-top| _-42%_  | -  |
+|  --nut-progress-small-height| _5px_  | -  |
+|  --nut-progress-small-text-font-size| _7px_  | -  |
+|  --nut-progress-small-text-line-height| _10px_  | -  |
+|  --nut-progress-small-text-padding| _2px 4px_  | -  |
+|  --nut-progress-small-text-top| _-100%_  | -  |
+|  --nut-progress-base-height| _10px_  | -  |
+|  --nut-progress-base-text-font-size| _9px_  | -  |
+|  --nut-progress-base-text-line-height| _13px_  | -  |
+|  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
+|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  | -  |
+|  --nut-progress-large-height| _15px_  | -  |
+|  --nut-progress-large-text-font-size| _13px_  | -  |
+|  --nut-progress-large-text-line-height| _18px_  | -  |
+|  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
+|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  | -  |

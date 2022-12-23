@@ -78,3 +78,19 @@ app.use(Indicator);
 | block | Enable block level layout     | Boolean | false |
 | align | Alignment, which takes effect only when `block` is true. optional value 'left', 'right', 'center'| String | left |
 | fill-zero     | Whether to add 0 before singular number                      | Boolean | true        |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-indicator-color|  _var(--nut-primary-color)_ | -  |
+| --nut-indicator-dot-color|  _var(--nut-disable-color)_ | -  |
+| --nut-indicator-white|  _var(--nut-white)_ | -  |
+| --nut-indicator-size|  _18px_ | -  |
+| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ | -  |
+| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ | -  |
+| --nut-indicator-number-font-size|  _10px_ | -  |

@@ -254,3 +254,23 @@ app.use(Noticebar);
 | ----- | ---------------- | ------------ |
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ | -  |
+| --nut-noticebar-color| _#d9500b_ | -  |
+| --nut-noticebar-font-size| _14px_ | -  |
+| --nut-noticebar-height| _40px_ | -  |
+| --nut-noticebar-line-height| _24px_ | -  |
+| --nut-noticebar-left-icon-width| _16px_ | -  |
+| --nut-noticebar-right-icon-width| _16px_ | -  |
+| --nut-noticebar-box-padding| _0 16px_ | -  |
+| --nut-noticebar-wrapable-padding| _16px_ | -  |
+| --nut-noticebar-lefticon-margin| _0px 10px_ | -  |
+| --nut-noticebar-righticon-margin| _0px 10px_ | -  |

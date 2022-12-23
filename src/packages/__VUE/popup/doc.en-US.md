@@ -246,3 +246,14 @@ Specify the mount node through `teleport`
 | ------ | ---------- |
 | default  | Customize Embedded Content |
 | closeIcon  | Custom icon for close button |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-popup-close-icon-margin| _16px_  | -  |
+| --nut-popup-border-radius| _20px_  | -  |

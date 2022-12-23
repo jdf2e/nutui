@@ -75,4 +75,20 @@ app.use(Empty);
 | default  | 		Custom bottom content | 
 | image  | 	Custom image | 
 | description  | 	Custom description | 
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-empty-padding| _32px 0_ | -  |
+| --nut-empty-image-size| _170px_ | -  |
+| --nut-empty-description-margin-top| _4px_ | -  |
+| --nut-empty-description-color| _#666666_ | -  |
+| --nut-empty-description-font-size| _14px_ | -  |
+| --nut-empty-description-line-height| _20px_ | -  |
+| --nut-empty-description-padding| _0 40px_ | -  |
     

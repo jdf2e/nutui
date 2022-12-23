@@ -403,3 +403,28 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 | submit   | Method of submitting form for verification                                                                        | -                           | -      |
 | reset             | Clear verification results                                                                                        | -                           | -            |
 | validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |
+
+
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-form-item-error-line-color| _var(--nut-required-color)_ | -  |
+| --nut-form-item-required-color| _var(--nut-required-color)_ | -  |
+| --nut-form-item-error-message-color| _var(--nut-required-color)_ | -  |
+| --nut-form-item-label-font-size| _14px_ | -  |
+| --nut-form-item-label-width| _90px_ | -  |
+| --nut-form-item-label-margin-right| _10px_ | -  |
+| --nut-form-item-label-text-align| _left_ | -  |
+| --nut-form-item-required-margin-right| _4px_ | -  |
+| --nut-form-item-body-font-size| _14px_ | -  |
+| --nut-form-item-body-slots-text-align| _left_ | -  |
+| --nut-form-item-body-input-text-align| _left_ | -  |
+| --nut-form-item-tip-font-size| _10px_ | -  |
+| --nut-form-item-tip-text-align| _left_ | -  |

@@ -409,3 +409,19 @@ export default {
 | ------ | -------------- |
 | button | 自定义滑动按钮 |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-range-tip-font-color| _#333333_  |  -  |
+|  --nut-range-bg-color| _var(--nut-active-color)_  |  -  |
+|  --nut-range-bg-color-tick| _#fa958c_  |  -  |
+|  --nut-range-bar-bg-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  |  -  |
+|  --nut-range-bar-btn-bg-color| _var(--nut-white)_  |  -  |
+|  --nut-range-bar-btn-width| _24px_  |  -  |
+|  --nut-range-bar-btn-height| _24px_  |  -  |
+|  --nut-range-bar-btn-border| _1px solid var(--nut-primary-color)_  |  -  |

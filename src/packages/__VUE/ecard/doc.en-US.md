@@ -98,3 +98,14 @@ app.use(InputNumber);
 | change  | Trigger event when Ecard is clicker | value |
 | input-change  | Triggered when the value changes |value |
 | change-step  | Triggered when the steps value changes | value，modelValue |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-ecard-bg-color                    | _#f0f2f5_        | -    |
+

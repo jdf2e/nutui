@@ -565,3 +565,38 @@ sku : [{
   }
 ];
 ```
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-sku-item-border|  _1px solid var(--nut-primary-color)_  | -  |
+| --nut-sku-item-disable-line|  _line-through_  | -  |
+| --nut-sku-opetate-bg-default|  _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_  | -  |
+| --nut-sku-item-active-bg|  _var(--nut-active-color)_  | -  |
+| --nut-sku-opetate-bg-buy|  _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_  | -  |
+| --nut-sku-spec-height|  _30px_  | -  |
+| --nut-sku-spec-line-height|  _var(--nut-sku-spec-height)_  | -  |
+| --nut-sku-spec-font-size|  _11px_  | -  |
+| --nut-sku-spec-background|  _rgba(242, 242, 242, 1)_  | -  |
+| --nut-sku-spec-color|  _var(--nut-black)_  | -  |
+| --nut-sku-spec-margin-right|  _12px_  | -  |
+| --nut-sku-spec-padding|  _0 18px_  | -  |
+| --nut-sku-spec-title-font-weight|  _bold_  | -  |
+| --nut-sku-spec-title-font-size|  _13px_  | -  |
+| --nut-sku-spec-title-color|  _var(--nut-black)_  | -  |
+| --nut-sku-spec-title-margin-bottom|  _18px_  | -  |
+| --nut-sku-operate-btn-height|  _54px_  | -  |
+| --nut-sku-operate-btn-border-top|  _0_  | -  |
+| --nut-sku-operate-btn-item-height|  _40px_  | -  |
+| --nut-sku-operate-btn-item-line-height|  _var(--nut-sku-operate-btn-item-height)_  | -  |
+| --nut-sku-operate-btn-item-font-size|  _15px_  | -  |
+| --nut-sku-operate-btn-item-font-weight|  _normal_  | -  |
+| --nut-sku-product-img-width|  _100px_  | -  |
+| --nut-sku-product-img-height|  _var(--nut-sku-product-img-width)_  | -  |
+| --nut-sku-product-img-border-radius|  _0_  | -  |
+

@@ -224,3 +224,26 @@ It is suggested to modify `icon-name` and `icon-active-name`
 | Event   | Description         | Arguments                                           |
 |--------|--------------|----------------------------------------------------|
 | change | Triggered when the value changes | Currently selected item value（label）【There is a value after setting `label`, which is empty by default】 |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-radio-label-font-color|  _#1d1e1e_  | -  |
+|  --nut-radio-label-font-active-color|  _var(--nut-primary-color)_  | -  |
+|  --nut-radio-label-disable-color|  _#999_  | -  |
+|  --nut-radio-icon-disable-color|  _#d6d6d6_  | -  |
+|  --nut-radio-label-button-border-color|  _var(--nut-primary-color)_  | -  |
+|  --nut-radio-label-button-background|  _var(--nut-active-color)_  | -  |
+|  --nut-radio-label-margin-left|  _15px_  | -  |
+|  --nut-radio-button-border-radius|  _15px_  | -  |
+|  --nut-radio-label-font-size|  _14px_  | -  |
+|  --nut-radio-button-font-size|  _12px_  | -  |
+|  --nut-radio-button-padding|  _5px 18px_  | -  |
+|  --nut-radio-icon-font-size|  _18px_  | -  |
+|  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  | -  |

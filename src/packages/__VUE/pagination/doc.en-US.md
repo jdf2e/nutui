@@ -184,3 +184,21 @@ export default {
 | prev-text | Custom prev text | -    |
 | next-text | Custom next text | -    |
 | page      | Custom pagination item           | -    |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-pagination-color| _var(--nut-primary-color)_  | -  |
+|  --nut-pagination-font-size| _var(--nut-font-size-2)_  | -  |
+|  --nut-pagination-item-border-color| _#e4e7eb_  | -  |
+|  --nut-pagination-active-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
+|  --nut-pagination-disable-color| _rgba(116, 116, 116, 0.31)_  | -  |
+|  --nut-pagination-disable-background-color| _#f7f8fa_  | -  |
+|  --nut-pagination-item-border-width| _1px_  | -  |
+|  --nut-pagination-item-border-radius| _2px_  | -  |
+|  --nut-pagination-prev-next-padding| _0 11px_  | -  |
