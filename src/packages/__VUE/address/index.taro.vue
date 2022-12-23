@@ -315,8 +315,6 @@ export default create({
 
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     const handClose = (type = 'self') => {
-      if (!props.closeBtnIcon) return;
-
       closeWay.value = type == 'cross' ? 'cross' : 'self';
 
       showPopup.value = false;
