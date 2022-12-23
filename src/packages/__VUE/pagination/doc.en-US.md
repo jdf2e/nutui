@@ -7,11 +7,10 @@ When the amount of data is too much, use pagination to separate the data.
 ### Install
 ```javascript
 import { createApp } from 'vue';
-import { Pagination,Icon } from '@nutui/nutui';
+import { Pagination } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Pagination);
-app.use(Icon);
 ```    
     
 ### Basic Usage
@@ -117,10 +116,10 @@ Custom pagination button content with pre-text slot、next-text slot and so on.
 <template>
   <nut-pagination v-model="currentPage3" :total-items="500"  @change="pageChange"  :show-page-size="5">
       <template #prev-text>
-          <nut-icon name="left" size="10px" />
+        <Left width="10px" height="10px" />
       </template>
       <template #next-text>
-          <nut-icon name="right" size="10px" />
+        <Right width="10px" height="10px" />
       </template>
       <template #page="{ item }">
           {{ item.number == 3 ? 'hot' : item.text }}
@@ -128,8 +127,10 @@ Custom pagination button content with pre-text slot、next-text slot and so on.
   </nut-pagination>
 </template>
 <script lang="ts">
+import { Left, Right } from '@nutui/icons-vue-taro';
 import { ref, reactive, toRefs } from 'vue';
 export default {
+  components: { Left, Right },
   setup() {
     const state = reactive({
       currentPage3: 1,

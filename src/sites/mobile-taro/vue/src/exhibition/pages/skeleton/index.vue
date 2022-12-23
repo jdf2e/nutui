@@ -21,13 +21,14 @@
 
     <h2>显示子组件</h2>
     <view class="content">
-      <nut-switch v-model="checked" size="15px" />
+      <nut-switch v-model="checked" />
       <nut-skeleton width="250px" height="15px" title animated avatar row="3" :loading="!checked">
         <view class="container">
-          <nut-avatar
-            size="50"
-            icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-          />
+          <nut-avatar size="50">
+            <img
+              src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+            />
+          </nut-avatar>
           <view class="right-content">
             <view class="title">NutUI</view>
             <view class="desc"

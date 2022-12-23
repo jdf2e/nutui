@@ -9,11 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Navbar,Icon,Tabs, TabPane } from '@nutui/nutui-taro';
+import { Navbar, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);
-app.use(Icon);
 app.use(Tabs);
 app.use(TabPane);
 ```
@@ -47,7 +46,7 @@ app.use(TabPane);
     @on-click-icon="icon"
     @on-click-right="rightClick"
     title="购物车"
-    titIcon="cart2"
+    titleIcon="cart2"
     desc="编辑"
   >
     <template #right>
@@ -188,15 +187,15 @@ export default {
 | 字段            | 说明                                                    | 类型    | 默认值  |
 |-----------------|--------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                 | String  | -       |
-| left-text `v3.1.21`       | 左侧文案                                                 | String  | -       |
+| left-text       | 左侧文案                                                 | String  | -       |
 | desc            | 右侧描述                                                 | String  | -       |
 | left-show       | 是否展示左侧箭头                                          | Boolean | false   |
-| tit-icon        | 标题中插入icon                                           | String  | -       |
-| border `v3.1.21`          | 是否显示下边框                                            | Boolean  | false  |
+| title-icon        | 标题中插入icon                                           | String  | -       |
+| border          | 是否显示下边框                                            | Boolean  | false  |
 | fixed           | 是否固定到顶部                                            | Boolean  | false    |
-| placeholder `v3.1.21`     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | Boolean  | false   |
+| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | Boolean  | false   |
 | safe-area-inset-top   | 是否开启顶部安全区适配                                | Boolean  | false   |
-| z-index `v3.1.21` | 导航栏 z-index                                            | Number ｜ String  | -       |
+| z-index | 导航栏 z-index                                            | Number ｜ String  | -       |
 
 
 ### Events

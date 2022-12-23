@@ -56,7 +56,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading color="red" />
+  <nut-switch v-model="checked" loading />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -166,9 +166,6 @@ app.use(Switch);
 | v-model        | 开关状态         | Boolean ｜ String ｜ Number | `false`               |
 | disable        | 禁用状态         | Boolean | `false`               |
 | loading        | 加载状态         | Boolean | `false`               |
-| name        | [图标名称](#/zh-CN/component/icon)         | String | `loading`               |
-| color        | [图标颜色](#/zh-CN/component/icon)，仅在`loading`状态下生效          | String | -               |
-| size        | [图标尺寸](#/zh-CN/component/icon)，仅在`loading`状态下生效          | String ｜ Number | `12px`               |
 | active-color   | 打开时的背景颜色 | String  | `#fa2c19`    |
 | inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
 | active-text    | 打开时文字描述   | String  | -                     |
@@ -176,6 +173,11 @@ app.use(Switch);
 | active-value  | 打开时组件的值   | Boolean ｜ String ｜ Number  | `true`  |
 | inactive-value  | 关闭组件的值   | Boolean ｜ String ｜ Number  | `false`  |
 
+### Slots
+
+|名称|描述|
+|-|-|
+|icon|loading 状态图标|
 
 ### Events
 

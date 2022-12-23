@@ -257,34 +257,33 @@ toast.hide();
 
 ## API
 ### 方法
-| 方法名                    | 说明                                                                    | 参数            | 返回值     |
-| ------------------------- | ----------------------------------------------------------------------- | --------------- | ---------- |
-| Toast.text                | 展示文字提示                                                            |  message｜ options | toast 实例(message支持传入HTML) |
-| Toast.success             | 展示成功提示                                                            | message｜ options| toast 实例 |
-| Toast.fail                | 展示失败提示                                                            | message｜ options| toast 实例 |
-| Toast.warn                | 展示警告提示                                                            | message｜ options | toast 实例 |
-| Toast.hide                | 关闭提示                                                                | 默认关闭所有实例，可传id关闭指定实例   | void       |
-| Toast.loading             | 展示加载提示                                                            | message｜ options | toast 实例 |
+| 方法名        | 说明         | 参数                                 | 返回值                          |
+|---------------|--------------|--------------------------------------|---------------------------------|
+| Toast.text    | 展示文字提示 | message｜ options                    | toast 实例(message支持传入HTML) |
+| Toast.success | 展示成功提示 | message｜ options                    | toast 实例                      |
+| Toast.fail    | 展示失败提示 | message｜ options                    | toast 实例                      |
+| Toast.warn    | 展示警告提示 | message｜ options                    | toast 实例                      |
+| Toast.hide    | 关闭提示     | 默认关闭所有实例，可传id关闭指定实例 | void                            |
+| Toast.loading | 展示加载提示 | message｜ options                    | toast 实例                      |
 
 ### ToastOptions 数据结构
 
-| 字段                | 说明                                                                          | 类型          | 默认值                        |
-| ------------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------- |
-| id                  | 标识符，相同时共用一个实例，默认为多个实例 | String/Number | -                       |
-| duration            | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2000                          |
-| title            | 标题     | String        |           -             |
-| center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
-| bottom              | 距页面底部的距离（像素或者百分比），option.center为false时生效                          | String       | 30px                    |
-| text-align-center     | 多行文案是否居中                                                              | Boolean       | true                          |
-| bg-color             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
-| custom-class         | 自定义类名                                                                    | String        |          -                   |
-| icon                | 自定义图标，**支持图片链接或base64格式**                                        | String        |         -                   |
-| icon-size                | 自定义图标尺寸                                      | String        | 20                           |
-| size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | base                      |
-| cover               | 是否显示遮罩层                                          | Boolean       | false |
-| cover-color          | 遮罩层颜色，默认透明                                                          | String        | rgba(0,0,0,0)             |
-| loading-rotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
-| close             | 关闭时触发的事件                                                              | function      | null                          |
-| close-on-click-overlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
-| custom-class          | 提示框class                                                        | String       |               -          |
+| 字段                   | 说明                                                           | 类型          | 默认值             |
+|------------------------|----------------------------------------------------------------|---------------|--------------------|
+| id                     | 标识符，相同时共用一个实例，默认为多个实例                     | String/Number | -                  |
+| duration               | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失              | Number        | 2000               |
+| title                  | 标题                                                           | String        | -                  |
+| center                 | 是否展示在页面中部（为false时展示在底部）                      | Boolean       | true               |
+| bottom                 | 距页面底部的距离（像素或者百分比），option.center为false时生效 | String        | 30px               |
+| text-align-center      | 多行文案是否居中                                               | Boolean       | true               |
+| bg-color               | 背景颜色（透明度）                                             | String        | rgba(0, 0, 0, 0.8) |
+| custom-class           | 自定义类名                                                     | String        | -                  |
+| icon                   | 自定义图标，**直接传入Component 或者 h函数**                   | Component     | -                  |
+| size                   | 文案尺寸，**small**/**base**/**large**三选一                   | String        | base               |
+| cover                  | 是否显示遮罩层                                                 | Boolean       | false              |
+| cover-color            | 遮罩层颜色，默认透明                                           | String        | rgba(0,0,0,0)      |
+| loading-rotate         | loading图标是否旋转，仅对loading类型生效                       | Boolean       | true               |
+| close                  | 关闭时触发的事件                                               | function      | null               |
+| close-on-click-overlay | 是否在点击遮罩层后关闭提示                                     | Boolean       | false              |
+| custom-class           | 提示框class                                                    | String        | -                  |
 

@@ -284,16 +284,15 @@ export default{
 
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
-| v-model:visible | 是否显示键盘 | Boolean | false | 
+| v-model:visible | 是否显示键盘 | Boolean | false |
+| v-model | 当前输入值		 | String | - | 
 | title | 键盘标题 | String | - |
 | type | 键盘模式  | String | `default`：默认样式<br>`rightColumn`：带右侧栏 |
 | random-keys | 随机数  | Boolean | false |
 | custom-key | 自定义键盘额外的键  | String [] | 数组形式最多支持添加2个,超出默认取前2项 |
 | overlay | 是否显示遮罩  | Boolean| true |
-| v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
 | confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
-| teleport    | 指定挂载节点  | String         | `"body"`      |
 | pop-class    | 自定义弹框类名     | String         | -             |
 
 
@@ -303,5 +302,6 @@ export default{
 |----- | ----- | -----
 | input  | 点击按键时触发                 | 按键内容 |
 | delete | 点击删除键时触发               | -             |
-| close  | 点击关闭按钮或非键盘区域时触发  | -             |
+| close  | 点击关闭按钮时触发  | -             |
+| blur  | 	点击关闭按钮或非键盘区域时触发  | -             |
 

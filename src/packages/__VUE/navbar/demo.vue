@@ -6,7 +6,7 @@
         <div>{{ translate('back') }}</div>
       </template>
       <template #right>
-        <nut-icon class="right" name="share-n"></nut-icon>
+        <ShareN width="16px"></ShareN>
       </template>
     </nut-navbar>
 
@@ -25,11 +25,14 @@
       @on-click-icon="icon"
       @on-click-right="rightClick"
       :title="translate('navTitle3')"
-      titIcon="cart2"
+      :titleIcon="true"
       :desc="translate('desc2')"
     >
+      <template #titleIcon>
+        <Cart2 width="16px"></Cart2>
+      </template>
       <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
+        <MoreX class="right" width="16px"></MoreX>
       </template>
     </nut-navbar>
 
@@ -43,7 +46,7 @@
       </template>
 
       <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
+        <MoreX class="right" width="16px"></MoreX>
       </template>
     </nut-navbar>
 
@@ -56,12 +59,8 @@
           <nut-tab-pane :title="translate('tab3')"> </nut-tab-pane>
         </nut-tabs>
       </template>
-      <template #icons>
-        <nut-icon class="icon" name="share"></nut-icon>
-      </template>
-
       <template #right>
-        <nut-icon class="right" name="horizontal-n"></nut-icon>
+        <HorizontalN class="right" width="16px"></HorizontalN>
       </template>
     </nut-navbar>
   </div>
@@ -72,6 +71,7 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('navbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -104,7 +104,8 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
-  setup({}) {
+  components: { ShareN, Cart2, MoreX, HorizontalN },
+  setup() {
     initTranslate();
     const tab1value = ref(0);
     const tab2value = ref(0);

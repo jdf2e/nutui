@@ -1,55 +1,33 @@
 <template>
-  <view>
+  <view class="nut-short-password">
     <nut-popup
       :style="{
-        padding: '32px 24px 28px 24px',
+        padding: '30px 24px 20px 24px',
         borderRadius: '12px',
-        textAlign: 'center'
+        textAlign: 'center',
+        top: '45%'
       }"
       v-model:visible="show"
       :closeable="true"
-      @click-close-icon="closeIcon"
+      @click-close-icon="close"
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
     >
-      <view class="nut-shortpsd-title">{{ title || translate('title') }}</view>
-      <view class="nut-shortpsd-subtitle">{{ desc || translate('desc') }}</view>
-      <input
-        v-if="isWx && visible"
-        class="nut-input-real-taro"
-        :id="'nut-input-real-taro-' + randRef"
-        type="number"
-        :maxlength="length"
-        v-model="realInput"
-        @input="changeValue"
-      />
-      <view class="nut-input-w">
-        <input
-          v-if="!isWx"
-          ref="realpwd"
-          class="nut-input-real"
-          type="number"
-          maxlength="6"
-          v-model="realInput"
-          @input="changeValue"
-        />
-        <view class="nut-input-site"></view>
-        <view class="nut-shortpsd-fake-taro" @click="focus">
-          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
-            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
+      <view class="nut-short-password-title">{{ title || translate('title') }}</view>
+      <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>
+      <view class="nut-short-password-wrapper">
+        <view class="nut-short-password__list" @touchstart="focus">
+          <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" :key="index">
+            <view class="nut-short-password__item-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </view>
-      <view class="nut-shortpsd-message">
-        <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" @click="onTips" v-if="tips || translate('tips')">
+      <view class="nut-short-password__message">
+        <view class="nut-short-password--error">{{ errorMsg }}</view>
+        <view class="nut-short-password--forget" @click="onTips" v-if="tips || translate('tips')">
           <tips class="icon" size="11px"></tips>
           <view>{{ tips || translate('tips') }}</view>
         </view>
-      </view>
-      <view v-if="!noButton" class="nut-shortpsd-footer">
-        <view class="nut-shortpsd-cancle" @click="close">{{ translate('cancel') }}</view>
-        <view class="nut-shortpsd-sure" @click="sureClick">{{ translate('confirm') }}</view>
       </view>
     </nut-popup>
   </view>
@@ -91,10 +69,6 @@ export default create({
       type: String,
       default: ''
     },
-    noButton: {
-      type: Boolean,
-      default: true
-    },
     closeOnClickOverlay: {
       type: Boolean,
       default: true
@@ -104,74 +78,31 @@ export default create({
       default: 6
     }
   },
-  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
-    const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
-    const refRandomId = Math.random().toString(36).slice(-8);
-    const randRef = ref(refRandomId);
-    const isWx = ref(false); // 判断是否为微信端
-    // 方法
-    function sureClick() {
-      emit('ok', realInput.value);
-    }
-    function focus() {
-      let dom: any = '';
-      // console.log(123);
-
-      if (isWx.value) {
-        setTimeout(() => {
-          if (!document.getElementById('nut-input-real-taro-' + randRef.value)) return;
-          dom = document.getElementById('nut-input-real-taro-' + randRef.value) as any;
-          if (!dom) return;
-          dom.focus();
-        }, 150);
-      } else {
-        dom = document.getElementsByClassName('nut-input-real')[0] as any;
-        let h = dom.children[0];
-        h.focus();
-      }
+    function focus(event: any) {
+      event.stopPropagation();
+      emit('focus');
     }
     watch(
       () => props.visible,
       (value) => {
         show.value = value;
-        if (value) {
-          randRef.value = Math.random().toString(36).slice(-8);
-          if (Taro.getEnv() === 'WEB') {
-            isWx.value = false;
-          } else {
-            isWx.value = true;
-          }
-        }
       }
     );
     watch(
       () => props.modelValue,
       (value) => {
         realInput.value = value;
+        if (String(value).length === comLen.value) {
+          emit('complete', value);
+        }
       }
     );
-    function changeValue(e: Event) {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
-      if (val.length > comLen.value) {
-        val = val.slice(0, comLen.value);
-        realInput.value = val;
-      }
-      if (String(realInput.value).length === comLen.value) {
-        emit('complete', val);
-      }
-      emit('change', val);
-      emit('update:modelValue', val);
-    }
     function close() {
-      emit('update:visible', false);
-      emit('cancel');
-    }
-    function closeIcon() {
       emit('update:visible', false);
       emit('close');
     }
@@ -183,27 +114,15 @@ export default create({
     }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
-      if (Taro.getEnv() === 'WEB') {
-        isWx.value = false;
-      } else {
-        isWx.value = true;
-      }
     });
     return {
       comLen,
-      sureClick,
       realInput,
-      realpwd,
       range,
-      changeValue,
       close,
       onTips,
       focus,
       show,
-      closeIcon,
-      isWx,
-      refRandomId,
-      randRef,
       translate
     };
   }

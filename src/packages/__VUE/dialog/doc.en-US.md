@@ -225,17 +225,17 @@ export default {
 | cancelAutoClose       | Click Cancel to close the popup                                                | Boolean                  | true                 |
 | textAlign             | Text alignment direction, the optional value is the same as css text-align     | String                   | "center"             |
 | closeOnPopstate       | Whether to close when popstate                                                 | Boolean                  | false                |
-| customClass`v3.1.22`  | Custom dialog class                                                            | String                   |                      |
-| overlayClass`v3.1.22` | Custom mask classname                                                          | String                   | -                    |
-| overlayStyle`v3.1.22` | Custom mask styles                                                             | CSSProperties            | -                    |
-| popClass  `v3.1.22`   | Custom popup classname                                                         | String                   | -                    |
-| popStyle  `v3.1.22`   | Custom popup styles                                                            | CSSProperties            | -                    |
+| customClass  | Custom dialog class                                                            | String                   |                      |
+| overlayClass | Custom mask classname                                                          | String                   | -                    |
+| overlayStyle | Custom mask styles                                                             | CSSProperties            | -                    |
+| popClass   | Custom popup classname                                                         | String                   | -                    |
+| popStyle   | Custom popup styles                                                            | CSSProperties            | -                    |
 | onUpdate              | Update                                                                         | Boolean                  | false                |
 | onOk                  | Emitted when the confirm button is clicked                                     | Function                 | -                    |
 | onCancel              | Emitted when the cancel button is clicked                                      | Function                 | -                    |
-| onOpened`v3.1.22`     | Emitted when Dialog is opened                                                  | Function                 | -                    |
+| onOpened     | Emitted when Dialog is opened                                                  | Function                 | -                    |
 | onClosed              | Emitted when Dialog is closed                                                  | Function                 | -                    |
-| beforeClose`v3.1.22`  | Callback function before close support return `promise`                        | Function(action: string) | -                    |
+| beforeClose  | Callback function before close support return `promise`                        | Function(action: string) | -                    |
 
 
 ### Props
@@ -256,12 +256,12 @@ export default {
 | close-on-popstate      | Whether to close when popstate                                                                            | Boolean                  | false      |
 | lock-scroll            | Whether to lock background scroll                                                                         | Boolean                  | false      |
 | footer-direction       | The bottom button uses the horizontal and vertical directions. Optional values ​​are horizontal and vertical. | string                   | horizontal |
-| overlay-class`v3.1.22` | Custom mask classname                                                                                     | String                   | -          |
-| overlay-style`v3.1.22` | Custom mask styles                                                                                        | CSSProperties            | -          |
-| pop-class  `v3.1.22`   | Custom popup classname                                                                                    | String                   | -          |
-| pop-style  `v3.1.22`   | Custom popup styles                                                                                       | CSSProperties            | -          |
-| custom-class`v3.1.22`  | Custom dialog class                                                                                       | String                   | -          |
-| before-close`v3.1.22`  | Callback function before close support return `promise`                                                   | Function(action: string) | -          |
+| overlay-class | Custom mask classname                                                                                     | String                   | -          |
+| overlay-style | Custom mask styles                                                                                        | CSSProperties            | -          |
+| pop-class   | Custom popup classname                                                                                    | String                   | -          |
+| pop-style   | Custom popup styles                                                                                       | CSSProperties            | -          |
+| custom-class  | Custom dialog class                                                                                       | String                   | -          |
+| before-close  | Callback function before close support return `promise`                                                   | Function(action: string) | -          |
 
 ### Events
 
@@ -270,7 +270,7 @@ export default {
 | ok              | Emitted when the confirm button is clicked | Function | -       |
 | cancel          | Emitted when the cancel button is clicked  | Function | -       |
 | closed          | Emitted when Dialog is closed              | Function | -       |
-| opened`v3.1.22` | Emitted when Dialog is Opened              | Function | -       |
+| opened | Emitted when Dialog is Opened              | Function | -       |
 
 
 ### Slots

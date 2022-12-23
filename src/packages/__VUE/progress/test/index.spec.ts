@@ -1,13 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import NutIcon from '../../icon/index.vue';
 import Progress from '../index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
 
 afterAll(() => {
   config.global.components = {};

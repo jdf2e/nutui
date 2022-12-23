@@ -1,6 +1,7 @@
 import { createVNode, render, h } from 'vue';
 import Toast from './index.vue';
 import { CreateComponent } from '@/packages/utils/create';
+import { Failure, Loading, Success, Tips } from '@nutui/icons-vue';
 const defaultOptions = {
   msg: '',
   id: '',
@@ -98,19 +99,19 @@ export const ToastFunction = {
   },
   success(msg: string, opts = {}) {
     errorMsg(msg);
-    return mountToast({ icon: 'success', ...opts, msg, type: 'success' });
+    return mountToast({ icon: Success, ...opts, msg, type: 'success' });
   },
   fail(msg: string, opts = {}) {
     errorMsg(msg);
-    return mountToast({ icon: 'failure', ...opts, msg, type: 'fail' });
+    return mountToast({ icon: Failure, ...opts, msg, type: 'fail' });
   },
   warn(msg: string, opts = {}) {
     errorMsg(msg);
-    return mountToast({ icon: 'tips', ...opts, msg, type: 'warn' });
+    return mountToast({ icon: Tips, ...opts, msg, type: 'warn' });
   },
   loading(msg: string, opts = {}) {
     return mountToast({
-      icon: 'loading',
+      icon: Loading,
       ...opts,
       msg,
       type: 'loading'

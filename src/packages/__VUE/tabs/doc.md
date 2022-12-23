@@ -159,7 +159,6 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
     return { state };
   }
@@ -288,7 +287,7 @@ export default {
   <template v-slot:titles>
     <div class="nut-tabs__titles-item" @click="state.tab7value=item.paneKey"
       :class="{active:state.tab7value==item.paneKey}" :key="item.paneKey" v-for="item in state.list6">
-      <nut-icon v-if="item.icon" :name="item.icon" />
+      <Dongdong />
       <span class="nut-tabs__titles-item__text">{{item.title}}</span>
       <span class="nut-tabs__titles-item__line"></span>
     </div>
@@ -300,20 +299,20 @@ export default {
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
+import { Dongdong } from '@nutui/icons-vue';
 export default {
+  components: { Dongdong },
   setup() {
     const state = reactive({
       tab7value: 'c1',
        list6: [
         {
           title: '自定义 1',
-          paneKey: 'c1',
-          icon: 'dongdong'
+          paneKey: 'c1'
         },
         {
           title: '自定义 2',
-          paneKey: 'c2',
-          icon: 'JD'
+          paneKey: 'c2'
         },
         {
           title: '自定义 3',
@@ -343,10 +342,10 @@ export default {
 | ellipsis             | 是否省略过长的标题文字                                                                            | boolean       | true       |
 | animated-time        | 切换动画时长,单位 ms 0 代表无动画                                                                 | number,string | 300        |
 | title-gutter         | 标签间隙                                                                                          | number,string | 0          |
-| size`v3.1.13`        | 标签栏字体尺寸大小 可选值  large normal small                                                     | string        | normal     |
-| auto-height`v3.1.21` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean       | false      |
-| sticky`v3.2.3` | 是否使用粘性布局 | boolean       | false      |
-| top`v3.2.3` | 粘性布局下的吸顶距离 | number       | 0      |
+| size       | 标签栏字体尺寸大小 可选值  large normal small                                                     | string        | normal     |
+| auto-height | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean       | false      |
+| sticky | 是否使用粘性布局 | boolean       | false      |
+| top | 粘性布局下的吸顶距离 | number       | 0      |
 
 ### Tabs Slots
 

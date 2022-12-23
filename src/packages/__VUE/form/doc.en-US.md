@@ -346,7 +346,7 @@ setup(){
 | Attribute   | Description                                              | Type   | Default |
 |-------------|----------------------------------------------------------|--------|---------|
 | model-value | Form data object (required when using form verification) | object |         |
-| rules`v3.2.3` | Unified configuration FormItem attr rules  | { prop: FormItemRule[] } |  {}      |
+| rules | Unified configuration FormItem attr rules  | { prop: FormItemRule[] } |  {}      |
 
 ### Form Events
 
@@ -384,7 +384,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 | Name            | Description         |
 |-----------------|---------------------|
 | default         | Default slot        |
-| label `v3.1.22` | Custom `label` slot |
+| label | Custom `label` slot |
 
 
 ``` html
@@ -400,6 +400,6 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 | Name              | Description                                                                                                       | Arguments                   | Return value |
 |-------------------|-------------------------------------------------------------------------------------------------------------------|-----------------------------|--------------|
-| submit`v3.2.8`            | Method of submitting form for verification                                                                        | -                           | -      |
+| submit   | Method of submitting form for verification                                                                        | -                           | -      |
 | reset             | Clear verification results                                                                                        | -                           | -            |
-| validate`v3.1.13` | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |
+| validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |

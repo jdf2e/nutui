@@ -95,7 +95,7 @@ body {
 |--------------|----------------------------------|--------|------------------|
 | height         | The height of the list item               | Number | `50`                |
 | list-data         | List data               | any[] | `[]`                |
-| container-height `v3.1.19`        | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
+| container-height       | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
 
 ### Slots
 
@@ -109,4 +109,4 @@ body {
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
 | scroll(Will be abandoned), `scroll-bottom` replaced  | Triggered when scrolling to the bottom | - |
-| scroll-bottom `v3.1.21`   | Triggered when scrolling to the bottom | - |
+| scroll-bottom   | Triggered when scrolling to the bottom | - |

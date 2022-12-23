@@ -26,21 +26,18 @@
       >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
     </nut-noticebar>
     <p />
-    <nut-noticebar
-      :closeMode="true"
-      right-icon="circle-close"
-      @click="hello"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
+    <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
       >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
     </nut-noticebar>
 
     <h2>通告栏模式--链接模式</h2>
-    <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-    >
+    <nut-noticebar :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
 
@@ -121,7 +118,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 export default {
   props: {},

@@ -159,7 +159,6 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
     return { state };
   }
@@ -288,7 +287,7 @@ export default {
   <template v-slot:titles>
     <div class="nut-tabs__titles-item" @click="state.tab7value=item.paneKey"
       :class="{active:state.tab7value==item.paneKey}" :key="item.paneKey" v-for="item in state.list6">
-      <nut-icon v-if="item.icon" :name="item.icon" />
+      <Dongdong />
       <span class="nut-tabs__titles-item__text">{{item.title}}</span>
       <span class="nut-tabs__titles-item__line"></span>
     </div>
@@ -300,20 +299,20 @@ export default {
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
+import { Dongdong } from '@nutui/icons-vue';
 export default {
+  components: { Dongdong },
   setup() {
     const state = reactive({
       tab7value: 'c1',
        list6: [
         {
           title: 'custom 1',
-          paneKey: 'c1',
-          icon: 'dongdong'
+          paneKey: 'c1'
         },
         {
           title: 'custom 2',
-          paneKey: 'c2',
-          icon: 'JD'
+          paneKey: 'c2'
         },
         {
           title: 'custom 3',
@@ -343,10 +342,10 @@ export default {
 | ellipsis             | Whether to omit too long title text                                                                                                | boolean       | true       |
 | animated-time        | Switch animation duration, unit ms 0 means no animation                                                                            | number,string | 300        |
 | title-gutter         | Label gap                                                                                                                          | number,string | 0          |
-| size`v3.1.13`        | Tab bar font size optional value  `large` `normal` `small`                                                                         | string        | normal     |
-| auto-height`v3.1.21` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean       | false      |
-| sticky`v3.2.3` | Whether to use sticky mode| boolean       | false      |
-| top`v3.2.3` | Sticky offset top | number       | 0      |
+| size        | Tab bar font size optional value  `large` `normal` `small`                                                                         | string        | normal     |
+| auto-height | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean       | false      |
+| sticky | Whether to use sticky mode| boolean       | false      |
+| top | Sticky offset top | number       | 0      |
 
 ### Tabs Slots
 

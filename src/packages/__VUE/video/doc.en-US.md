@@ -265,4 +265,4 @@ export default {
 | play    | play event                   | -         |
 | pause   | pause event                  | -         |
 | playend | Playback completion callback | -         |
-| time `v3.2.6`  | Triggered when playing(current is the current playback time，total is the total time)|(current:string,total:string)  |
+| time  | Triggered when playing(current is the current playback time，total is the total time)|(current:string,total:string)  |

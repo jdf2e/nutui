@@ -402,7 +402,7 @@ app.use(Input);
 | error         | 是否标红                                | Boolean | `false`  |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type `v3.2.8` | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
+| confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 
 ### Events
 

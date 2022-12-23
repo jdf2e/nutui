@@ -61,12 +61,12 @@ Scrolling is automatically enabled when the content length of the notification b
 
 ```html
 <template>
-  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+  <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
     Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
   </nut-noticebar>
  
   <nut-noticebar
-      :closeMode="true"
+      :close-mode="true"
       right-icon="circle-close"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -75,9 +75,14 @@ Scrolling is automatically enabled when the content length of the notification b
   </nut-noticebar>
 
   <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :scrollable="false"
     >
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">Jingdong</a>
     </nut-noticebar>
 </template>
@@ -116,7 +121,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
       :speed='10' 
       :standTime='1000' 
       @click='go' 
-      :closeMode="true" 
+      :close-mode="true" 
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`">
   </nut-noticebar>
@@ -224,7 +229,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | delay      | Delay time                                         | String/Number | 1       |
 | scrollable | Whether to scroll content                          | Boolean       | true    |
 | speed      | Scrolling speed (px/s)                             | Number         | 50      |
-| wrapable`v3.1.18` | Whether to enable text wrap                        | Boolean       | false    |
+| wrapable | Whether to enable text wrap                        | Boolean       | false    |
 
 ### Props（direction=vertical）
 

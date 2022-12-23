@@ -65,9 +65,9 @@ exports[`Cascader change tab 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -138,9 +138,9 @@ exports[`Cascader change tab 2`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -211,9 +211,9 @@ exports[`Cascader change tab 3`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -248,9 +248,9 @@ exports[`Cascader modelValue 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -321,9 +321,9 @@ exports[`Cascader modelValue 2`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -364,9 +364,9 @@ exports[`Cascader modelValue 3`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -407,9 +407,9 @@ exports[`Cascader modelValue 4`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -437,9 +437,9 @@ exports[`Cascader modelValue with lazy 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -514,9 +514,9 @@ exports[`Cascader modelValue with lazy 2`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -587,9 +587,9 @@ exports[`Cascader options 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -639,9 +639,9 @@ exports[`Cascader options with convertConfig 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -712,9 +712,9 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -768,9 +768,9 @@ exports[`Cascader select 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -841,9 +841,9 @@ exports[`Cascader select 2`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -914,9 +914,9 @@ exports[`Cascader select 3`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -957,9 +957,9 @@ exports[`Cascader select 4`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -981,9 +981,9 @@ exports[`Cascader select with lazy 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1020,9 +1020,9 @@ exports[`Cascader select with lazy 2`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1076,9 +1076,9 @@ exports[`Cascader select with lazy 3`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1149,9 +1149,9 @@ exports[`Cascader select with lazy 4`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1222,9 +1222,9 @@ exports[`Cascader select with lazy 5`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1261,9 +1261,9 @@ exports[`Cascader select with lazy 6`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1317,9 +1317,9 @@ exports[`Cascader select with lazy 7`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"
@@ -1360,9 +1360,9 @@ exports[`Cascader visible 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\">
-        <!---->
-      </view>
+      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
     </view>
   </transition-stub>
 </teleport-stub>"

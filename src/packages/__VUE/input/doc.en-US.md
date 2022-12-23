@@ -383,7 +383,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | error         | Whether to mark the input content in red   | Boolean | `false`  |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type `v3.2.8` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
+| confirm-type | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
 
 ### Events
 
