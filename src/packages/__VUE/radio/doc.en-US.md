@@ -9,11 +9,11 @@ Used to make a single selection in a set of alternatives
 ``` ts
 import { createApp } from 'vue';
 import { Radio,RadioGroup,Icon } from '@nutui/nutui';
-
+import { Checklist } from '@nutui/icons-vue'
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
-app.use(Icon);
+app.use(Checklist);
 ```
 ### Basic Usage
 
@@ -135,7 +135,7 @@ Bind the **label** of the current option through **v-model**. And it must be use
 
 ### Custom icon
 
-It is suggested to modify `icon-name` and `icon-active-name`
+Customize the icon through the slot, it is recommended to set the `icon` and `checkedIcon` two slots at the same time
 
 :::demo
 
@@ -144,8 +144,16 @@ It is suggested to modify `icon-name` and `icon-active-name`
   <nut-cell-group title="Radio Custom icon">
     <nut-cell>
       <nut-radio-group v-model="radioVal">
-        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-radio>
-        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-radio>
+        <nut-radio label="1">
+          Custom icon
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-radio>
+        <nut-radio label="2">
+          Custom icon
+          <template #icon> <Checklist /> </template>
+          <template #checkedIcon> <Checklist color="red" /> </template>
+        </nut-radio>
       </nut-radio-group>
     </nut-cell>
   </nut-cell-group>
@@ -204,13 +212,13 @@ It is suggested to modify `icon-name` and `icon-active-name`
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | Disable selection                                           | Boolean                 | `false`           |
 | icon-size        | [Icon Size](#/en-US/icon)                                           | String、Number          | `18`              |
-| icon-name        | [Icon Name](#en-US//icon)，Before selection (it is suggested to modify it together with `icon-active-name`) | String                  | `'check-normal'`  |
-| icon-active-name | [Icon Name](#en-US//icon)，After selection (it is suggested to modify it together with `icon-name`)       | String                  | `'check-checked'` |
-| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
 | label            | Radio box ID                                                  | String、Number、Boolean | -                 |
 | shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
-
+### Radio Slots
+| Name | Description |
+|-|-|
+| icon | Icon when not selected |
+| checkedIcon | Icon when selected |
 ### RadioGroup Props
 
 | Attribute          | Description                                          | Type                    | Default     |
