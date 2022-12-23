@@ -79,10 +79,13 @@ import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useRect, rect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';
 import Taro from '@tarojs/taro';
+import Popup from '../popup/index.taro.vue';
 
 export default create({
   inheritAttrs: false,
-  components: {},
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     visible: { type: Boolean, default: false },
     list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
