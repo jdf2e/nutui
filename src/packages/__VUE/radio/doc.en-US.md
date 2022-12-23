@@ -212,8 +212,6 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | Disable selection                                           | Boolean                 | `false`           |
 | icon-size        | [Icon Size](#/en-US/icon)                                           | String、Number          | `18`              |
-| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
 | label            | Radio box ID                                                  | String、Number、Boolean | -                 |
 | shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
 ### Radio Slots

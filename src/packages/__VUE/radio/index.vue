@@ -3,6 +3,7 @@ import { computed, h, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
+import { pxCheck } from '@/packages/utils/pxCheck';
 
 export default create({
   components: {
@@ -33,14 +34,6 @@ export default create({
     iconSize: {
       type: [String, Number],
       default: ''
-    },
-    iconClassPrefix: {
-      type: String,
-      default: 'nut-icon'
-    },
-    iconFontClassName: {
-      type: String,
-      default: 'nutui-iconfont'
     }
   },
   setup(props, { emit, slots }) {
@@ -63,17 +56,17 @@ export default create({
     });
 
     const renderIcon = () => {
-      const { iconSize, iconClassPrefix, iconFontClassName } = props;
+      const { iconSize } = props;
       const iconNodeMap = {
         CheckNormal: slots.icon ? slots.icon : CheckNormal,
         Checked: slots.checkedIcon ? slots.checkedIcon : CheckChecked
       };
       const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
+      const size = pxCheck(iconSize);
       return h(iconNode, {
-        size: iconSize,
-        class: color.value,
-        classPrefix: iconClassPrefix,
-        fontClassName: iconFontClassName
+        width: size,
+        height: size,
+        class: color.value
       });
     };
 

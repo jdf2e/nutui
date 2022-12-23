@@ -212,8 +212,6 @@ app.use(Checklist);
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
 | icon-size        | [图标尺寸](#/zh-CN/component/icon)                                           | String、Number          | `18`              |
-| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label            | 单选框标识                                                   | String、Number、Boolean | -                 |
 | shape            | 形状，可选值为 button、round                                 | String                  | round             |
 ### Radio Slots
