@@ -7,13 +7,11 @@
 ### 安装
 
 ```javascript
-  import { createApp } from 'vue';
-  import { PullRefresh,Icon } from '@nutui/nutui';
+import { createApp } from 'vue';
+import { PullRefresh } from '@nutui/nutui';
 
-  const app = createApp();
-  app.use(PullRefresh);
-  app.use(Icon);
-
+const app = createApp();
+app.use(PullRefresh);
 ```
 
 ### 基础用法
