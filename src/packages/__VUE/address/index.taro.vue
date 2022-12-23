@@ -130,7 +130,15 @@ const { create, componentName, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 
 export default create({
-  components: { Location, Location2, Check, Close, Left },
+  components: {
+    [Popup.name]: Popup,
+    [Elevator.name]: Elevator,
+    Location,
+    Location2,
+    Check,
+    Close,
+    Left
+  },
   inheritAttrs: false,
   props: {
     ...popupProps,
