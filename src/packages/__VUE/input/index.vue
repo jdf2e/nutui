@@ -132,7 +132,7 @@ export default create({
       default: false
     },
     confirmType: {
-      type: String as PropType<import('./type').ConfirmTextType>,
+      type: String as PropType<ConfirmTextType>,
       default: 'done'
     },
     error: {

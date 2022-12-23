@@ -163,3 +163,15 @@ app.use(TrendArrow);
 |---------|--------------|
 | upIcon | 自定义向上箭头图标，默认使用 `TriangleUp` |
 | downIcon | 自定义向下箭头图标，默认使用 `TriangleDown` |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-trendarrow-font-size| _14px_  | -  |
+| --nut-trendarrow-before-icon-margin| _4px_  | -  |
+| --nut-trendarrow-icon-width| _12px_  | -  |

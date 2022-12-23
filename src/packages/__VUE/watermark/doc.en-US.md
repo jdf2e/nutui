@@ -120,3 +120,13 @@ app.use(Watermark);
 | gap-y        | Vertical spacing between watermarks                                   | `number`           | `48`                 |
 | full-page    | Overwrite entire page                                     | `boolean`          | `true`               |
 | font-family  | Watermark text font family                  | `boolean`          | `true`               |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-watermark-z-index        | _ 2000_        | -    |

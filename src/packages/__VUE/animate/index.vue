@@ -8,15 +8,16 @@
 <script lang="ts">
 import { reactive, toRefs, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { AnimateType, AnimateAction } from './type';
 const { componentName, create } = createComponent('animate');
 export default create({
   props: {
     type: {
-      type: String as PropType<import('./type').AnimateType>,
+      type: String as PropType<AnimateType>,
       default: ''
     },
     action: {
-      type: String as PropType<import('./type').AnimateAction>,
+      type: String as PropType<AnimateAction>,
       default: 'initial'
     },
     loop: {

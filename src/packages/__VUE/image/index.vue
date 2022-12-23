@@ -16,17 +16,18 @@
 import { reactive, toRefs, computed, PropType, useSlots, watch, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '../../utils/pxCheck';
+import { ImageFit, ImagePosition } from './type';
 import { Image, ImageError } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('image');
 export default create({
   props: {
     src: String,
     fit: {
-      type: String as PropType<import('./type').ImageFit>,
+      type: String as PropType<ImageFit>,
       default: 'fill'
     },
     position: {
-      type: String as PropType<import('./type').ImagePosition>,
+      type: String as PropType<ImagePosition>,
       default: 'center'
     },
     alt: {

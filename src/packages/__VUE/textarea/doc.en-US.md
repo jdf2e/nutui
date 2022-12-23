@@ -91,6 +91,20 @@ export default {
 | focus  | Triggered when focusing     | event       |
 | blur   | Triggered when out of focus     | {value,event} |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-textarea-font| _var(--nut-font-size-2)_  | -  |
+| --nut-textarea-height| _100px_  | -  |
+| --nut-textarea-limit-color| _var(--nut-text-color)_  | -  |
+| --nut-textarea-text-color| _var(--nut-title-color)_  | -  |
+| --nut-textarea-disabled-color| _var(--nut-disable-color)_  | -  |
+
 
 
 

@@ -367,5 +367,23 @@ Use icon slot to custom icon.
 |------------|--------------------|--------------------|
 | tab-switch | 	Emitted when changing active tab | item,index |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-tabbar-active-color| _var(--nut-primary-color)_ | -  |
+| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ | -  |
+| --nut-tabbar-border-top| _1px solid #eee_ | -  |
+| --nut-tabbar-border-bottom| _1px solid #eee_ | -  |
+| --nut-tabbar-box-shadow| _none_ | -  |
+| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ | -  |
+| --nut-tabbar-item-text-line-height| _initial_ | -  |
+| --nut-tabbar-height| _50px_ | -  |
+| --nut-tabbar-word-margin-top| _auto_ | -  |
+
 
 

@@ -287,3 +287,19 @@ toast.hide();
 | close-on-click-overlay | 是否在点击遮罩层后关闭提示                                     | Boolean       | false              |
 | custom-class           | 提示框class                                                    | String        | -                  |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-toast-title-font-size| _16px_  | -  |
+| --nut-toast-text-font-size| _14px_  | -  |
+| --nut-toast-font-color| _var(--nut-white)_  | -  |
+| --nut-toast-inner-padding| _24px 30px_  | -  |
+| --nut-toast-inner-bg-color| _rgba(0, 0, 0, 0.8)_  | -  |
+| --nut-toast-inner-border-radius| _12px_  | -  |
+| --nut-toast-cover-bg-color| _rgba(0, 0, 0, 0)_  | -  |
+
