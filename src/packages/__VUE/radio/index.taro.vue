@@ -23,14 +23,6 @@ export default create({
       type: [String, Number, Boolean],
       default: ''
     },
-    iconName: {
-      type: String,
-      default: 'check-normal'
-    },
-    iconActiveName: {
-      type: String,
-      default: 'check-checked'
-    },
     iconSize: {
       type: [String, Number],
       default: ''

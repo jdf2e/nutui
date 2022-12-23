@@ -150,64 +150,8 @@ test('radio icon-size test', async () => {
   });
 
   const items: any = wrapper.findAll('.nut-radio');
-  expect((items[0].findAll('i') as any)[0].element.style.fontSize).toEqual('25px');
-  expect((items[1].findAll('i') as any)[0].element.style.fontSize).toEqual('12px');
-});
-
-test('radio icon-name test', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-radio-group': RadioGroup,
-      'nut-radio': Radio
-    },
-    template: `
-      <template>
-        <nut-radio-group v-model="radioVal" direction="horizontal">
-          <nut-radio label="1" icon-size="25" icon-name="checklist" icon-active-name="checklist"></nut-radio>
-          <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radio-group>
-      </template>
-    `,
-    setup() {
-      const state = reactive({
-        radioVal: ''
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  });
-
-  const items = wrapper.findAll('.nut-radio');
-  expect((items[0].findAll('i') as any)[0].classes()).toContain('nut-icon-checklist');
-});
-
-test('radio label test', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-radio-group': RadioGroup,
-      'nut-radio': Radio
-    },
-    template: `
-      <template>
-        <nut-radio-group v-model="radioVal" direction="horizontal">
-          <nut-radio icon-size="25" label="testlabel"></nut-radio>
-          <nut-radio label="2" icon-size="12"></nut-radio>
-        </nut-radio-group>
-      </template>
-    `,
-    setup() {
-      const state = reactive({
-        radioVal: ''
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  });
-
-  const items = wrapper.findAll('.nut-radio');
-  expect((items[0].findAll('i') as any)[0].find('testlabel')).toBeTruthy();
+  expect((items[0].findAll('svg') as any)[0].element.style.width).toEqual('25px');
+  expect((items[1].findAll('svg') as any)[0].element.style.height).toEqual('12px');
 });
 
 test('radio shape test', async () => {
