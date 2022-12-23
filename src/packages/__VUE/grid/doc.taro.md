@@ -151,10 +151,11 @@ app.use(GridItem);
 <template>
   <nut-grid :border="false">
     <nut-grid-item v-for="i in 4" :key="i">
-      <nut-avatar
-        size="large"
-        icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
+      <nut-avatar size="large">
+        <img
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+        />
+      </nut-avatar>
     </nut-grid-item>
   </nut-grid>
 </template>
@@ -195,3 +196,19 @@ app.use(GridItem);
 | 事件名                 | 说明                   | 回调参数               |
 |-----------------------|-----------------------|-----------------------|
 | click                 | 点击格子时触发          | event: Event          |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-grid-border-color| _#f5f6f7_ | -  |
+| --nut-grid-item-content-padding| _16px 8px_ | -  |
+| --nut-grid-item-content-bg-color| _var(--nut-white)_ | -  |
+| --nut-grid-item-text-margin| _8px_ | -  |
+| --nut-grid-item-text-color| _var(--nut-title-color2)_ | -  |
+| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ | -  |

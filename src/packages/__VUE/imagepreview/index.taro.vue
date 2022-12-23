@@ -22,7 +22,7 @@
 
     <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
     <view class="nut-image-preview-close-icon" @click="onClose" :style="styles" v-if="closeable"
-      ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
+      ><CircleClose color="#ffffff"></CircleClose
     ></view>
   </nut-popup>
 </template>
@@ -35,6 +35,7 @@ import Popup from '../popup/index.taro.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
 import Taro from '@tarojs/taro';
+import { CircleClose } from '@nutui/icons-vue-taro';
 const { create } = createComponent('image-preview');
 
 export default create({
@@ -93,7 +94,8 @@ export default create({
   components: {
     [Popup.name]: Popup,
     [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem
+    [SwiperItem.name]: SwiperItem,
+    CircleClose
   },
 
   setup(props, { emit }) {

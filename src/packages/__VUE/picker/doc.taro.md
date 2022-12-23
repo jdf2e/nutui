@@ -399,3 +399,26 @@ columns 属性可以通过二维数组的形式配置多列选择。
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-picker-cancel-color| _#808080_  | -  |
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | -  |
+| --nut-picker-bar-cancel-font-size| _14px_  | -  |
+| --nut-picker-bar-ok-font-size| _14px_  | -  |
+| --nut-picker-bar-button-padding| _0 15px_  | -  |
+| --nut-picker-bar-title-font-size| _16px_  | -  |
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | -  |
+| --nut-picker-bar-title-font-weight| _normal_  | -  |
+| --nut-picker-item-height| _36px_  | -  |
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | -  |
+| --nut-picker-item-active-text-color| _inherit_  | -  |
+| --nut-picker-item-text-font-size| _14px_  | -  |
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | -  |
+| --nut-picker-columns-item-color| _var(--nut-title-color)_  | -  |

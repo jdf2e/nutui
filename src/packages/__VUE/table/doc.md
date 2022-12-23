@@ -634,3 +634,16 @@ app.use(Table);
 | 事件名 | 说明             | 回调参数                   |
 | ------ | ---------------- | -------------------------- |
 | sorter | 点击排序按钮触发 | item: 当前点击的表头的数据 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-table-border-color| _#ececec_  | -  |
+| --nut-table-cols-padding| _10px_  | -  |
+| --nut-table-tr-even-bg-color| _#f3f3f3_  | -  |
+| --nut-table-tr-odd-bg-color| _var(--nut-white)_  | -  |

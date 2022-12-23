@@ -34,7 +34,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, Tabs } from './types';
-import { Loading, Checklist } from '@nutui/icons-vue';
+import { Loading, Checklist } from '@nutui/icons-vue-taro';
 import Tree from './tree';
 
 export default create({

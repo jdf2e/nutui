@@ -224,3 +224,12 @@ app.use(Backtop);
 | Name    | Description         |
 |---------|--------------|
 | default | 	The default slot is used to customize the content |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-backtop-border-color       | _#e0e0e0_        | -    |

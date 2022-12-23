@@ -17,7 +17,7 @@ export interface CalendarState {
   propEndDate: string;
   currentIndex: number;
   unLoadPrev: boolean;
-  touchParams: import('./type').TouchParam;
+  touchParams: TouchParam;
   transformY: number;
   translateY: number;
   scrollDistance: number;

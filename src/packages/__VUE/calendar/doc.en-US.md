@@ -640,3 +640,30 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 | Name | Description             | Arguments          |
 |--------|------------------|---------------|
 | scrollToDate   | Scroll to the month of the specified date | string:'2021-12-30' |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-calendar-primary-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-choose-color| _var(--nut-active-color)_   | - |
+| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-base-color| _#333333_   | - |
+| --nut-calendar-disable-color| _#d1d0d0_   | - |
+| --nut-calendar-base-font| _var(--nut-font-size-3)_   | - |
+| --nut-calendar-title-font| _var(--nut-font-size-4)_   | - |
+| --nut-calendar-title-font-weight| _500_   | - |
+| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   | - |
+| --nut-calendar-text-font| _var(--nut-font-size-1)_   | - |
+| --nut-calendar-day-font| _16px_   | - |
+| --nut-calendar-day-active-border-radius| _0px_   | - |
+| --nut-calendar-day-width| _14.28%_   | - |
+| --nut-calendar-day-height| _64px_   | - |
+| --nut-calendar-day-font-weight| _500_   | - |
+| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-month-title-font-size| _inherit_   | - |
+

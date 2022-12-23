@@ -230,3 +230,23 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 |---------|--------------|
 | default | 	徽标包裹的子元素 |
 | icons | 	徽标自定义 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-badge-background-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ | -    |
+| --nut-badge-color| _#fff_ | -    |
+| --nut-badge-font-size| _var(--nut-font-size-1)_ | -    |
+| --nut-badge-border-radius| _14px_ | -    |
+| --nut-badge-padding| _0 5px_ | -    |
+| --nut-badge-content-transform| _translate(50%, -50%)_ | -    |
+| --nut-badge-z-index| _1_ | -    |
+| --nut-badge-dot-width| _7px_ | -    |
+| --nut-badge-dot-height| _7px_ | -    |
+| --nut-badge-dot-border-radius| _7px_ | -    |
+| --nut-badge-dot-padding| _0px_ | -    |

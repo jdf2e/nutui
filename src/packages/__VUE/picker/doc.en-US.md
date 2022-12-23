@@ -405,3 +405,26 @@ Use the children field of the Columns attribute to cascade options
 |--------|----------------|
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-picker-cancel-color| _#808080_  | -  |
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | -  |
+| --nut-picker-bar-cancel-font-size| _14px_  | -  |
+| --nut-picker-bar-ok-font-size| _14px_  | -  |
+| --nut-picker-bar-button-padding| _0 15px_  | -  |
+| --nut-picker-bar-title-font-size| _16px_  | -  |
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | -  |
+| --nut-picker-bar-title-font-weight| _normal_  | -  |
+| --nut-picker-item-height| _36px_  | -  |
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | -  |
+| --nut-picker-item-active-text-color| _inherit_  | -  |
+| --nut-picker-item-text-font-size| _14px_  | -  |
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | -  |
+| --nut-picker-columns-item-color| _var(--nut-title-color)_  | -  |

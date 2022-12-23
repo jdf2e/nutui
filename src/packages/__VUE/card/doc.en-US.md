@@ -173,3 +173,18 @@ app.use(Price);
 | origin | 	Custom content behind the price |
 | shop-tag | 	Custom shop introduction |
 | footer | 	Customize bottom right content |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-card-font-size-0| _var(--nut-font-size-0)_  | - |
+| --nut-card-font-size-1| _var(--nut-font-size-1)_  | - |
+| --nut-card-font-size-2| _var(--nut-font-size-2)_  | - |
+| --nut-card-font-size-3| _var(--nut-font-size-3)_  | - |
+| --nut-card-left-border-radius| _0_  | - |
+| --nut-card-left-background-color| _inherit_  | - |

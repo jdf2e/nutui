@@ -50,12 +50,20 @@
         class="switch-demo1"
       />
     </nut-cell>
+
+    <h2>{{ translate('title8') }}</h2>
+    <nut-cell>
+      <nut-switch v-model="checked" @change="change" loading>
+        <template #icon><Loading /></template>
+      </nut-switch>
+    </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { Loading } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('switch');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -69,6 +77,7 @@ const initTranslate = () =>
       title5: '异步控制',
       title6: '自定义颜色',
       title7: '支持文字',
+      title8: '自定义加载图标',
       text1: '开',
       text2: '关'
     },
@@ -81,11 +90,13 @@ const initTranslate = () =>
       title5: 'Async Control',
       title6: 'Custom Color',
       title7: 'Support Text',
+      title8: 'Custom loading icon',
       text1: 'Open',
       text2: 'Closed'
     }
   });
 export default createDemo({
+  components: { Loading },
   setup() {
     initTranslate();
     let { proxy } = getCurrentInstance() as any;

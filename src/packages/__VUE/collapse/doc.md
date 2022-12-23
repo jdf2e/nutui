@@ -213,3 +213,24 @@ export default {
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
 | change | 切换面板时触发 | 类型与 v-model 绑定的值一致 |
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-collapse-item-padding| _13px 36px 13px 26px_ | -  |
+| --nut-collapse-item-color| _#666666_ | -  |
+| --nut-collapse-item-disabled-color| _#c8c9cc_ | -  |
+| --nut-collapse-item-icon-color| _#666666_ | -  |
+| --nut-collapse-item-font-size| _var(--nut-font-size-2)_ | -  |
+| --nut-collapse-item-line-height| _24px_ | -  |
+| --nut-collapse-item-sub-title-color| _#666666_ | -  |
+| --nut-collapse-wrapper-content-padding| _12px 26px_ | -  |
+| --nut-collapse-wrapper-empty-content-padding| _0 26px_ | -  |
+| --nut-collapse-wrapper-content-color| _#666666_ | -  |
+| --nut-collapse-wrapper-content-font-size| _var(--nut-font-size-2)_ | -  |
+| --nut-collapse-wrapper-content-line-height| _1.5_ | -  |
+| --nut-collapse-wrapper-content-background-color| _var(--nut-white)_ | -  |

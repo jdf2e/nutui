@@ -75,4 +75,20 @@ app.use(Empty);
 | default  | 	自定义底部内容 | 
 | image  | 自定义图片 | 
 | description  | 自定义描述文字 | 
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-empty-padding| _32px 0_ | -  |
+| --nut-empty-image-size| _170px_ | -  |
+| --nut-empty-description-margin-top| _4px_ | -  |
+| --nut-empty-description-color| _#666666_ | -  |
+| --nut-empty-description-font-size| _14px_ | -  |
+| --nut-empty-description-line-height| _20px_ | -  |
+| --nut-empty-description-padding| _0 40px_ | -  |
     

@@ -366,4 +366,39 @@ app.use(Overlay);
 |-------|----------|-------------|
 | select | 点击时间的回调 | time: string |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- | 
+| --nut-timeselect-title-font-size| _var(--nut-font-size-2)_ | -  |
+| --nut-timeselect-title-color| _var(--nut-title-color)_ | - |
+| --nut-timeselect-title-width| _100%_ | - |
+| --nut-timeselect-title-height| _50px_ | - |
+| --nut-timeselect-title-line-height| _50px_ | - |
+| --nut-timeselect-pannel-bg-color| _#f6f7f9_ | - |
+| --nut-timeselect-timepannel-text-color| _var(--nut-title-color2)_ | - |
+| --nut-timeselect-timepannel-font-size| _var(--nut-font-size-2)_ | - |
+| --nut-timeselect-timepannel-cur-bg-color| _var(--nut-white)_ | - |
+| --nut-timeselect-timepannel-cur-text-color| _#333333_ | - |
+| --nut-timeselect-timepannel-width| _140px_ | - |
+| --nut-timeselect-timepannel-height| _40px_ | - |
+| --nut-timeselect-timepannel-padding| _15px_ | - |
+| --nut-timeselect-timedetail-padding| _0 5px 50px 13px_ | - |
+| --nut-timeselect-timedetail-item-width| _100px_ | - |
+| --nut-timeselect-timedetail-item-height| _50px_ | - |
+| --nut-timeselect-timedetail-item-line-height| _50px_ | - |
+| --nut-timeselect-timedetail-item-bg-color| _#f6f7f9_ | - |
+| --nut-timeselect-timedetail-item-border-radius| _5px_ | - |
+| --nut-timeselect-timedetail-item-text-color| _#333333_ | - |
+| --nut-timeselect-timedetail-item-text-font-size| _var(--nut-font-size-2)_ | - |
+| --nut-timeselect-timedetail-item-cur-bg-color| _var(--nut-active-color)_ | - |
+| --nut-timeselect-timedetail-item-cur-border| _var(--nut-primary-color)_ | - |
+| --nut-timeselect-timedetail-item-cur-text-color| _var(--nut-primary-color)_ | - |
+| --nut-timeselect-timedetail-time-text-color| _#999_ | - |
+| --nut-timeselect-timedetail-time-font-size| _var(--nut-font-size-1)_ | - |
+
 

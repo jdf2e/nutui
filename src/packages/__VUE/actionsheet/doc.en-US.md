@@ -336,3 +336,19 @@ export default {
 | choose | Triggered after selection       | item, index |
 | cancel | Triggered when cancel copy is clicked | -                              |
 | close | Triggered when the mask layer is clicked | event: Event                              |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component]()。
+
+| Name                                    | Default Value                     | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
+| --nut-actionsheet-item-border-bottom     | _none_                     | -    |
+|  --nut-actionsheet-item-font-size        | _var(--nut-font-size-2)_   | -    |
+|  --nut-actionsheet-item-subdesc-font-size| _var(--nut-font-size-1)_   | -    |
+|  --nut-actionsheet-item-cancel-border-top| _1px solid var(--nut-actionsheet-light-color)_ | -    |
+|  --nut-actionsheet-item-line-height      | _24px_                     | -    |
+|   --nut-actionsheet-item-font-color       | _var(--nut-title-color)_   | -    |

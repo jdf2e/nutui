@@ -13,7 +13,7 @@ afterAll(() => {
 });
 
 test('base', () => {
-  const wrapper = mount(Input, { props: { modelValue: 3 } });
+  const wrapper = mount(Input, { props: { modelValue: '3' } });
   const input = wrapper.find('input');
   expect(input.exists()).toBe(true);
   expect(input.element.value).toBe('3');
@@ -102,45 +102,6 @@ test('should format input value when type is digit', () => {
   // expect((wrapper.emitted('change') as any)[1][0]).toEqual('11');
 });
 
-test('should no label', () => {
-  const wrapper = mount(Input, {
-    props: {}
-  });
-  const label = wrapper.find('.label-string');
-  expect(label.exists()).toBe(false);
-});
-
-test('should label', () => {
-  const wrapper = mount(Input, {
-    props: {
-      label: '文本'
-    }
-  });
-  const label = wrapper.find('.label-string');
-  expect(label.text()).toBe('文本');
-});
-
-test('should label-class', () => {
-  const wrapper = mount(Input, {
-    props: {
-      label: '文本',
-      labelClass: 'test-class'
-    }
-  });
-  const label = wrapper.find('.nut-input__label');
-  expect(label.classes()).toContain('test-class');
-});
-
-test('should colon', () => {
-  const wrapper = mount(Input, {
-    props: {
-      label: 'test',
-      colon: true
-    }
-  });
-  expect(wrapper.find('.nut-input__label').html()).toMatchSnapshot();
-});
-
 test('should require', () => {
   const wrapper = mount(Input, {
     props: {
@@ -148,7 +109,7 @@ test('should require', () => {
     }
   });
   const input = wrapper.find('.nut-input');
-  expect(input.classes()).toContain('nut-input-required');
+  expect(input.classes()).toContain('nut-input--required');
 });
 
 test('should disabled', () => {
@@ -191,17 +152,6 @@ test('should render word limit correctly when modelValue is null', () => {
     }
   });
   expect(wrapper.html()).toMatchSnapshot();
-});
-
-test('should labelAlign', () => {
-  const wrapper = mount(Input, {
-    props: {
-      label: '文本',
-      labelAlign: 'right'
-    }
-  });
-  const input: any = wrapper.find('.nut-input__label');
-  expect(input.element.style.textAlign).toEqual('right');
 });
 
 test('should inputAlign', () => {

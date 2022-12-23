@@ -159,7 +159,6 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
     return { state };
   }
@@ -288,7 +287,7 @@ export default {
   <template v-slot:titles>
     <div class="nut-tabs__titles-item" @click="state.tab7value=item.paneKey"
       :class="{active:state.tab7value==item.paneKey}" :key="item.paneKey" v-for="item in state.list6">
-      <nut-icon v-if="item.icon" :name="item.icon" />
+      <Dongdong />
       <span class="nut-tabs__titles-item__text">{{item.title}}</span>
       <span class="nut-tabs__titles-item__line"></span>
     </div>
@@ -300,20 +299,20 @@ export default {
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
+import { Dongdong } from '@nutui/icons-vue';
 export default {
+  components: { Dongdong },
   setup() {
     const state = reactive({
       tab7value: 'c1',
        list6: [
         {
           title: 'custom 1',
-          paneKey: 'c1',
-          icon: 'dongdong'
+          paneKey: 'c1'
         },
         {
           title: 'custom 2',
-          paneKey: 'c2',
-          icon: 'JD'
+          paneKey: 'c2'
         },
         {
           title: 'custom 3',
@@ -376,4 +375,31 @@ export default {
 |--------|---------------------------------------------|--------------------------|
 | click  | Triggered when the label is clicked         | {title,paneKey,disabled} |
 | change | Fired when the currently active tab changes | {title,paneKey,disabled} |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-tabs-tab-smile-color| _var(--nut-primary-color)_  |  -  |
+| --nut-tabs-titles-border-radius| _0_  |  -  |
+| --nut-tabs-titles-item-large-font-size| _var(--nut-font-size-3)_  |  -  |
+| --nut-tabs-titles-item-font-size| _var(--nut-font-size-2)_  |  -  |
+| --nut-tabs-titles-item-small-font-size| _var(--nut-font-size-1)_  |  -  |
+| --nut-tabs-titles-item-color| _var(--nut-title-color)_  |  -  |
+| --nut-tabs-titles-item-active-color| _var(--nut-title-color)_  |  -  |
+| --nut-tabs-titles-background-color| _var(--nut-help-color)_  |  -  |
+| --nut-tabs-horizontal-tab-line-color| _linear-gradient(90deg,var(--nut-primary-color) 0%,var(--nut-active-color) 100%)_  |  -  |
+| --nut-tabs-horizontal-titles-height| _46px_  |  -  |
+| --nut-tabs-horizontal-titles-item-min-width| _50px_  |  -  |
+| --nut-tabs-horizontal-titles-item-active-line-width| _40px_  |  -  |
+| --nut-tabs-vertical-tab-line-color| _linear-gradient(180deg,var(--nut-primary-color) 0%,var(--nut-active-color) 100%)_  |  -  |
+| --nut-tabs-vertical-titles-item-height| _40px_  |  -  |
+| --nut-tabs-vertical-titles-item-active-line-height| _14px_  |  -  |
+| --nut-tabs-vertical-titles-width| _100px_  |  -  |
+| --nut-tabs-titles-item-line-border-radius| _0_  |  -  |
+| --nut-tabs-titles-item-line-opacity| _1_  |  -  |
 

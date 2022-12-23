@@ -90,13 +90,14 @@ app.use(Skeleton);
 ```html
 <template>
   <div class="content">
-    <nut-switch v-model="checked" size="15px" />
+    <nut-switch v-model="checked" />
     <nut-skeleton width="250px" height="15px" title animated avatar row="3" :loading="!checked">
       <div class="container">
-        <nut-avatar
-          size="50"
-          icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-        />
+        <nut-avatar size="50">
+          <img
+            src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+          />
+        </nut-avatar>
       <div class="right-content">
         <div class="title">NutUI</div>
         <div class="desc"
@@ -175,3 +176,14 @@ export default {
 |---------|---------------|
 | default | Skeleton screen display content  |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-skeleton-content-avatar-background-color| _#efefef_  | -  |
+| --nut-skeleton-content-line-background-color| _#efefef_  | -  |
+| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | -  |

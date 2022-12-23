@@ -7,11 +7,10 @@
 ### 安装
 ```javascript
 import { createApp } from 'vue';
-import { Pagination,Icon } from '@nutui/nutui-taro';
+import { Pagination } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Pagination);
-app.use(Icon);
 ```    
     
 ### 基础用法
@@ -117,10 +116,10 @@ export default {
 <template>
   <nut-pagination v-model="currentPage3" :total-items="500"  @change="pageChange"  :show-page-size="5">
       <template #prev-text>
-          <nut-icon name="left" size="10px" />
+        <Left width="10px" height="10px" />
       </template>
       <template #next-text>
-          <nut-icon name="right" size="10px" />
+        <Right width="10px" height="10px" />
       </template>
       <template #page="{ item }">
           {{ item.number == 3 ? 'hot' : item.text }}
@@ -128,8 +127,10 @@ export default {
   </nut-pagination>
 </template>
 <script lang="ts">
+import { Left, Right } from '@nutui/icons-vue-taro';
 import { ref, reactive, toRefs } from 'vue';
 export default {
+  components: { Left, Right },
   setup() {
     const state = reactive({
       currentPage3: 1,
@@ -183,3 +184,21 @@ export default {
 | prev-text | 自定义上一页按钮内容 | -    |
 | next-text | 自定义下一页按钮内容 | -    |
 | page      | 自定义页码           | -    |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-pagination-color| _var(--nut-primary-color)_  | -  |
+|  --nut-pagination-font-size| _var(--nut-font-size-2)_  | -  |
+|  --nut-pagination-item-border-color| _#e4e7eb_  | -  |
+|  --nut-pagination-active-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
+|  --nut-pagination-disable-color| _rgba(116, 116, 116, 0.31)_  | -  |
+|  --nut-pagination-disable-background-color| _#f7f8fa_  | -  |
+|  --nut-pagination-item-border-width| _1px_  | -  |
+|  --nut-pagination-item-border-radius| _2px_  | -  |
+|  --nut-pagination-prev-next-padding| _0 11px_  | -  |

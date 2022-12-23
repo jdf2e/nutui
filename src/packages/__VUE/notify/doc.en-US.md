@@ -178,4 +178,23 @@ export default {
 |--------|--------------------------------|-----------|
 | click  | Emitted when notify is clicked | -         |
 | closed | Emitted when notify is closed  | -         |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-notify-text-color| _var(--nut-white)_  | -  |
+|  --nut-notify-padding| _12px 0_  | -  |
+|  --nut-notify-font-size| _14px_  | -  |
+|  --nut-notify-height| _44px_  | -  |
+|  --nut-notify-line-height| _auto_  | -  |
+|  --nut-notify-base-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
+|  --nut-notify-primary-background-color| _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_  | -  |
+|  --nut-notify-success-background-color| _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_  | -  |
+|  --nut-notify-danger-background-color| _rgba(250, 50, 25, 1)_  | -  |
+|  --nut-notify-warning-background-color| _linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)_  | -  |
     

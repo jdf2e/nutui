@@ -34,14 +34,7 @@
           ]"
           @click.stop="chooseItem(item, index)"
         >
-          <slot v-if="item.icon">
-            <nut-icon
-              v-bind="$attrs"
-              class="nut-popover-item-img"
-              :classPrefix="iconPrefix"
-              :name="item.icon"
-            ></nut-icon
-          ></slot>
+          <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
@@ -49,7 +42,8 @@
 
     <view class="nut-popover-content-bg" v-if="showPopup" @touchmove="clickAway" @click="clickAway"></view>
   </view>
-
+  <!-- 用于计算大小 -->
+  <!-- TODO -->
   <div :class="`nut-popover-content nut-popover-content-copy`">
     <view ref="popoverContentRefCopy" :id="'popoverContentRefCopy' + refRandomId" class="nut-popover-content-group">
       <slot name="content"></slot>
@@ -63,31 +57,33 @@
           'nut-popover-menu-taroitem'
         ]"
       >
-        <slot v-if="item.icon">
-          <nut-icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></nut-icon
-        ></slot>
+        <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
         <view class="nut-popover-menu-item-name">{{ item.name }}</view>
       </view>
     </view>
   </div>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
+import { createComponent, renderIcon } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import { useRect, rect } from '@/packages/utils/useRect';
+import { rect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';
+import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 import Taro from '@tarojs/taro';
+import Popup from '../popup/index.taro.vue';
 
 export default create({
   inheritAttrs: false,
-  components: {},
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     visible: { type: Boolean, default: false },
-    list: { type: Array as PropType<import('./type').PopoverList[]>, default: [] },
-    theme: { type: String as PropType<import('./type').PopoverTheme>, default: 'light' },
-    location: { type: String as PropType<import('./type').PopoverLocation>, default: 'bottom' },
+    list: { type: Array as PropType<PopoverList[]>, default: [] },
+    theme: { type: String as PropType<PopoverTheme>, default: 'light' },
+    location: { type: String as PropType<PopoverLocation>, default: 'bottom' },
     offset: { type: Array, default: [0, 12] },
     arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },
@@ -307,7 +303,8 @@ export default create({
       clickAway,
       popoverArrowStyle,
       customStyle,
-      getRootPosition
+      getRootPosition,
+      renderIcon
     };
   }
 });

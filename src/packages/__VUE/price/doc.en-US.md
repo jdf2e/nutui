@@ -114,3 +114,21 @@ app.use(Price);
 | thousands      | Thousands separation                                       | Boolean          | false  |
 | position       | The symbol appear before or after the price，`before`、`after` | String           | before |
 | size           | Size，`large`、`normal`、`small`                            | String           | large |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-price-symbol-big-size| _18px_  | -  |
+| --nut-price-big-size| _24px_  | -  |
+| --nut-price-decimal-big-size| _18px_  | -  |
+| --nut-price-symbol-medium-size| _14px_  | -  |
+| --nut-price-medium-size| _16px_  | -  |
+| --nut-price-decimal-medium-size| _14px_  | -  |
+| --nut-price-symbol-small-size| _10px_  | -  |
+| --nut-price-small-size| _12px_  | -  |
+| --nut-price-decimal-small-size| _10px_  | -  |

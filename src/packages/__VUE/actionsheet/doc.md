@@ -340,3 +340,19 @@ export default {
 | choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
 | cancel | 点击取消文案时触发 | 无                                |
 | close | 点击遮罩层时触发 | event: Event                              |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
+| --nut-actionsheet-item-border-bottom     | _none_                     | -    |
+|  --nut-actionsheet-item-font-size        | _var(--nut-font-size-2)_   | -    |
+|  --nut-actionsheet-item-subdesc-font-size| _var(--nut-font-size-1)_   | -    |
+|  --nut-actionsheet-item-cancel-border-top| _1px solid var(--nut-actionsheet-light-color)_ | -    |
+|  --nut-actionsheet-item-line-height      | _24px_                     | -    |
+|   --nut-actionsheet-item-font-color       | _var(--nut-title-color)_   | -    |

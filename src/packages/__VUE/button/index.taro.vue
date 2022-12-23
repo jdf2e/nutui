@@ -14,13 +14,14 @@
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue-taro';
+import { ButtonShape, ButtonType, ButtonSize } from './type';
 const { componentName, create } = createComponent('button');
 export default create({
   components: { Loading },
   props: {
     color: String,
     shape: {
-      type: String as PropType<import('./type').ButtonShape>,
+      type: String as PropType<ButtonShape>,
       default: 'round'
     },
     plain: {
@@ -36,11 +37,11 @@ export default create({
       default: false
     },
     type: {
-      type: String as PropType<import('./type').ButtonType>,
+      type: String as PropType<ButtonType>,
       default: 'default'
     },
     size: {
-      type: String as PropType<import('./type').ButtonSize>,
+      type: String as PropType<ButtonSize>,
       default: 'normal'
     },
     block: {

@@ -74,14 +74,15 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
   </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2 } from '@nutui/icons-vue-taro';
   export default {
+    components: { Search2 },
     setup() {
       const state = reactive({
         searchValue: ""
@@ -178,23 +179,24 @@ app.use(Icon);
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      <Left @click="clickLeft" />
     </template>
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <Search2 />
     </template>
     <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
+      <Photograph />
     </template>
     <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
+      <Message />
     </template>
   </nut-searchbar> 
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue-taro';
   export default {
+    components: { Search2, Left, Photograph, Message },
     setup() {
       const state = reactive({
         searchValue: ""
@@ -254,3 +256,25 @@ app.use(Icon);
 | leftout     | 输入框外 左icon |
 | rightin     | 输入框内 右icon |
 | rightout    | 输入框外 右icon |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-searchbar-background| _var(--nut-white)_  | -  |
+| --nut-searchbar-right-out-color| _var(--nut-black)_  | -  |
+| --nut-searchbar-padding| _9px 16px_  | -  |
+| --nut-searchbar-width| _100%_  | -  |
+| --nut-searchbar-input-background| _#f7f7f7_  | -  |
+| --nut-searchbar-input-padding| _0 0 0 13px_  | -  |
+| --nut-searchbar-input-height| _32px_  | -  |
+| --nut-searchbar-input-width| _100%_  | -  |
+| --nut-searchbar-input-border-radius| _16px_  | -  |
+| --nut-searchbar-input-box-shadow| _0 0 8px 0 rgba(0, 0, 0, 0.04)_  | -  |
+| --nut-searchbar-input-bar-color| _inherit_  | -  |
+| --nut-searchbar-input-bar-placeholder-color| _inherit_  | -  |

@@ -151,10 +151,11 @@ app.use(GridItem);
 <template>
   <nut-grid :border="false">
     <nut-grid-item v-for="i in 4" :key="i">
-      <nut-avatar
-        size="large"
-        icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
+      <nut-avatar size="large">
+        <img
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+        />
+      </nut-avatar>
     </nut-grid-item>
   </nut-grid>
 </template>
@@ -197,3 +198,19 @@ app.use(GridItem);
 | Event                 | Description           | Arguments               |
 |-----------------------|-----------------------|-----------------------|
 | click                 | Emitted when component is clicked          | event: Event          |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-grid-border-color| _#f5f6f7_ | -  |
+| --nut-grid-item-content-padding| _16px 8px_ | -  |
+| --nut-grid-item-content-bg-color| _var(--nut-white)_ | -  |
+| --nut-grid-item-text-margin| _8px_ | -  |
+| --nut-grid-item-text-color| _var(--nut-title-color2)_ | -  |
+| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ | -  |

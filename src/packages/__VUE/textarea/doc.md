@@ -91,6 +91,20 @@ export default {
 | focus  | 聚焦时触发     | event       |
 | blur   | 失焦时触发     | {value,event} |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-textarea-font| _var(--nut-font-size-2)_  | -  |
+| --nut-textarea-height| _100px_  | -  |
+| --nut-textarea-limit-color| _var(--nut-text-color)_  | -  |
+| --nut-textarea-text-color| _var(--nut-title-color)_  | -  |
+| --nut-textarea-disabled-color| _var(--nut-disable-color)_  | -  |
+
 
 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="doc-content-issue">
     <a class="issue-item" href="https://github.com/jdf2e/nutui/issues" target="_blank">
-      <nut-icon name="uploader"></nut-icon>
+      <Uploader name="uploader"></Uploader>
       Issue
     </a>
     <a
@@ -9,7 +9,7 @@
       :href="'https://github.com/jdf2e/nutui/issues?q=is:issue+is:open+' + component"
       target="_blank"
     >
-      <nut-icon name="issue"></nut-icon>
+      <Issue name="issue"></Issue>
       Open
     </a>
     <a
@@ -17,7 +17,7 @@
       :href="'https://github.com/jdf2e/nutui/issues?q=is:issue+is:closed+' + component"
       target="_blank"
     >
-      <nut-icon name="checklist"></nut-icon>
+      <Checklist name="checklist"></Checklist>
       Closed
     </a>
   </div>
@@ -26,8 +26,10 @@
 import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
 import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import { RefData } from '@/sites/assets/util/ref';
+import { Checklist, Issue, Uploader } from '@nutui/icons-vue';
 export default defineComponent({
   name: 'doc-issue',
+  components: { Checklist, Issue, Uploader },
   setup() {
     const route = useRoute();
 

@@ -56,7 +56,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading color="red" />
+  <nut-switch v-model="checked" loading />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -166,9 +166,6 @@ app.use(Switch);
 | v-model        | Status of Switch       | Boolean ｜ String ｜ Number | `false`  |
 | disable        | Disable status         | Boolean | `false`               |
 | loading        | Loading status         | Boolean | `false`               |
-| name           | [Name of icon](#/en-US/component/icon) | String | `loading`               |
-| color          | [Color of icon](#/en-US/component/icon)，only takes effect in `loading` state | String | -     |
-| size           | [Size of icon](#/en-US/component/icon)，only takes effect in `loading` state  | String ｜ Number | `12px`   |
 | active-color   | Background color when active | String  | `#fa2c19`    |
 | inactive-color | Background color when inactive | String  | `#ebebeb` | 
 | active-text    | Word description when active   | String  | -         |
@@ -176,10 +173,35 @@ app.use(Switch);
 | active-value   | Value when active   | Boolean ｜ String ｜ Number  | `true`  |
 | inactive-value | Value when inactive   | Boolean ｜ String ｜ Number  | `false`  |
 
+### Slots
+
+|Name|Description|
+|-|-|
+|icon| loading icon slot |
 
 ### Events
 
 | Event | Description    | Arguments                 |
 |--------|----------------|-------------------------------|
 | change | Emitted when check status changed | (value: boolean,event: Event) |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-switch-close-bg-color|  _#ebebeb_ | - |
+| --nut-switch-close--nut-cline-bg-color|  _#f0f0f0_ | - |
+| --nut-switch-width|  _36px_ | - |
+| --nut-switch-height|  _21px_ | - |
+| --nut-switch-line-height|  _21px_ | - |
+| --nut-switch-border-radius|  _21px_ | - |
+| --nut-switch-inside-width|  _13px_ | - |
+| --nut-switch-inside-height|  _13px_ | - |
+| --nut-switch-inside-open-transform|  _translateX(146%)_ | - |
+| --nut-switch-inside-close-transform|  _translateX(30%)_ | - |
     

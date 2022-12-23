@@ -99,46 +99,42 @@ export default {
         </ul>
     </template>
 <template v-slot:btn>
-    <nut-icon name="retweet" color="#fff">
-    </nut-icon>
+    <Retweet color="#fff" />
     <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
 </template>
 </nut-fixed-nav>
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-export default {
- setup() {
-    const myActive = ref(false);
-    const navList = reactive([
-      {
-        id: 1,
-        text: '首页',
-        icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
-      },
-      {
-        id: 2,
-        text: '分类',
-        icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
-      },
-      {
-        id: 3,
-        text: '购物车',
-        num: 2,
-        icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
-      },
-      {
-        id: 4,
-        text: '我的',
-        icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
-      }
-    ]);
-    return {
-      myActive,
-      navList
-    };
- }
-}
+import { Retweet } from '@nutui/icons-vue-taro';
+const myActive = ref(false);
+const navList = reactive([
+  {
+    id: 1,
+    text: '首页',
+    icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
+  },
+  {
+    id: 2,
+    text: '分类',
+    icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
+  },
+  {
+    id: 3,
+    text: '购物车',
+    num: 2,
+    icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
+  },
+  {
+    id: 4,
+    text: '我的',
+    icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
+  }
+]);
+return {
+  myActive,
+  navList
+};
 </script>
 ```
 :::
@@ -170,5 +166,20 @@ export default {
 |------|--------------------|
 | btn  | 自定义按钮         |
 | list | 自定义展开列表内容 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-fixednav-bg-color| _var(--nut-white)_  | -  |
+| --nut-fixednav-font-color| _var(--nut-black)_  | -  |
+| --nut-fixednav-index| _201_  | -  |
+| --nut-fixednav-btn-bg| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  | -  |
+| --nut-fixednav-item-active-color| _var(--nut-primary-color)_  | -  |
 
     

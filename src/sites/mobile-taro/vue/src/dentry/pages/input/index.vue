@@ -1,40 +1,43 @@
 <template>
   <div class="demo full">
     <h2>基础用法</h2>
-    <nut-input placeholder="文本" v-model="state.val1" label="文本" />
+    <nut-input placeholder="文本" v-model="state.val1" />
 
     <h2>自定义类型</h2>
-    <nut-input label="文本" v-model="state.text" placeholder="文本" />
-    <nut-input label="密码" v-model="state.password" type="password" placeholder="密码" />
-    <nut-input label="数字" v-model="state.number" type="number" placeholder="数字" />
-    <nut-input label="整数" v-model="state.digit" type="digit" placeholder="整数" />
-    <nut-input label="手机号" v-model="state.tel" type="tel" placeholder="手机号" />
+    <nut-input v-model="state.text" placeholder="文本" />
+    <nut-input v-model="state.password" type="password" placeholder="密码" />
+    <nut-input v-model="state.number" type="number" placeholder="数字" />
+    <nut-input v-model="state.digit" type="digit" placeholder="整数" />
 
     <h2>禁用和只读</h2>
-    <nut-input v-model="state.readonly" readonly label="文本" placeholder="只读" />
-    <nut-input v-model="state.disabled" disabled label="文本" placeholder="禁用" />
+    <nut-input v-model="state.readonly" readonly placeholder="只读" />
+    <nut-input v-model="state.disabled" disabled placeholder="禁用" />
 
-    <h2>显示图标</h2>
-    <nut-input v-model="state.showIcon" label="文本" left-icon="dongdong" right-icon="ask2" placeholder="显示图标" />
-    <nut-input v-model="state.clear" label="文本" clearable clearSize="14" placeholder="显示清除图标" />
-
-    <h2>错误提示</h2>
-    <nut-input v-model="state.required" label="文本" required placeholder="必填项" />
-    <nut-input v-model="state.error1" label="文本" error placeholder="输入内容标红" />
-    <nut-input v-model="state.error2" label="文本" error-message="底部错误提示文案" placeholder="底部错误提示文案" />
-
-    <h2>插入按钮</h2>
-    <nut-input v-model="state.buttonVal" clearable center label="短信验证码" placeholder="请输入短信验证码">
-      <template #button>
-        <nut-button size="small" type="primary"> 发送验证码 </nut-button>
+    <h2>显示清除图标</h2>
+    <nut-input v-model="state.clear" clearable clearSize="14" placeholder="显示清除图标" />
+    <nut-input
+      v-model="state.clear2"
+      placeholder="自定义清除图标"
+      clearable
+      clearSize="14"
+      show-word-limit
+      max-length="50"
+    >
+      <template #clear>
+        <Close width="12" height="12" size="12" @click="clearValue"></Close>
       </template>
     </nut-input>
+    <h2>配合表单使用</h2>
+    <nut-form :model-value="state">
+      <nut-form-item label-align="center" label="文本">
+        <nut-input v-model="state.val2" placeholder="请输入文本" :border="false" />
+      </nut-form-item>
+    </nut-form>
 
     <h2>格式化输入内容</h2>
-    <nut-input v-model="state.format1" label="文本" :formatter="formatter" placeholder="在输入时执行格式化" />
+    <nut-input v-model="state.format1" :formatter="formatter" placeholder="在输入时执行格式化" />
     <nut-input
       v-model="state.format2"
-      label="文本"
       :formatter="formatter"
       format-trigger="onBlur"
       placeholder="在失焦时执行格式化"
@@ -43,8 +46,7 @@
     <h2>显示字数统计</h2>
     <nut-input
       v-model="state.textarea"
-      label="留言"
-      type="textarea"
+      type="text"
       show-word-limit
       rows="2"
       maxLength="50"
@@ -52,21 +54,14 @@
       :adjust-position="state.adjustPosition"
     />
 
-    <h2>对齐方式</h2>
-    <nut-input v-model="state.align1" label="文本" label-align="right" placeholder="文本内容对齐" />
-    <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
-
     <h2>无边框</h2>
-    <nut-input v-model="state.disabled" :border="false" label="无边框" placeholder="无边框" />
-    <nut-input v-model="state.showIcon" :border="false" label="无边框" placeholder="无边框" />
+    <nut-input v-model="state.disabled" :border="false" placeholder="无边框" />
+    <nut-input v-model="state.showIcon" :border="false" placeholder="无边框" />
 
     <h2>点击事件</h2>
     <nut-input
       v-model="state.event"
-      label="event"
       placeholder="点击"
-      left-icon="dongdong"
-      right-icon="ask2"
       clearable
       :adjust-position="state.adjustPosition"
       @update:model-value="change"
@@ -75,19 +70,21 @@
       @clear="clear"
       @click="click"
       @click-input="clickInput"
-      @click-left-icon="clickLeftIcon"
-      @click-right-icon="clickRightIcon"
     />
   </div>
 </template>
 
 <script lang="ts">
 import { reactive } from 'vue';
-
+import { Close } from '@nutui/icons-vue-taro';
 export default {
+  components: {
+    Close
+  },
   setup() {
     const state = reactive({
       val1: '',
+      val2: '',
       text: '',
       password: '',
       number: '',
@@ -106,6 +103,8 @@ export default {
       align1: '',
       align2: '',
       event: '',
+      clear: '',
+      clear2: '',
       adjustPosition: false
     });
     setTimeout(function () {
@@ -129,14 +128,10 @@ export default {
     const clickInput = (value: string | number) => {
       console.log('clickInput:', value);
     };
-    const clickLeftIcon = (value: string | number) => {
-      console.log('clickLeftIcon:', value);
-    };
-    const clickRightIcon = (value: string | number) => {
-      console.log('clickRightIcon:', value);
-    };
     const formatter = (value: string) => value.replace(/\d/g, '');
-
+    const clearValue = () => {
+      state.clear2 = '';
+    };
     return {
       state,
       change,
@@ -145,9 +140,8 @@ export default {
       focus,
       click,
       clickInput,
-      clickLeftIcon,
-      clickRightIcon,
-      formatter
+      formatter,
+      clearValue
     };
   }
 };

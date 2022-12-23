@@ -182,4 +182,27 @@ app.use(SideNavbarItem);
 |-------|----------|-------------|
 | click | 导航点击 | - |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  | -  |
+| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  | -  |
+| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  | -  |
+| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  | -  |
+| --nut-sidenavbar-sub-title-radius| _0_  | -  |
+| --nut-sidenavbar-sub-title-border| _0_  | -  |
+| --nut-sidenavbar-sub-title-width| _100%_  | -  |
+| --nut-sidenavbar-sub-title-height| _40px_  | -  |
+| --nut-sidenavbar-sub-title-text-line-height| _40px_  | -  |
+| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  | -  |
+| --nut-sidenavbar-item-title-color| _#333_  | -  |
+| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  | -  |
+| --nut-sidenavbar-item-height| _40px_  | -  |
+| --nut-sidenavbar-item-line-height| _40px_  | -  |
+| --nut-sidenavbar-item-font-size| _16px_  | -  |
 

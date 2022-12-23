@@ -1,69 +1,79 @@
 <template>
   <div class="demo">
-    <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
-      :no-button="state.noButton"
-      :length="state.length"
-      :error-msg="state.errorMsg"
-      @change="methods.onChange"
-      @complete="methods.onComplete"
-      @ok="methods.onOk"
-      @tips="methods.onTips"
-      @close="methods.close"
-      @cancel="methods.cancel"
-    >
+    <nut-cell :title="translate('basic')" is-link @click="state.visible1 = true"></nut-cell>
+
+    <nut-short-password v-model="state.value1" v-model:visible="state.visible1" @focus="state.showKeyboard1 = true">
     </nut-short-password>
-    <nut-cell
-      :title="translate('basic')"
-      is-link
-      @click="
-        state.visible = true;
-        state.noButton = true;
-        state.length = 6;
-        state.errorMsg = '';
-      "
-    ></nut-cell>
-    <nut-cell
-      :title="translate('showButtonGroup')"
-      is-link
-      @click="
-        state.visible = true;
-        state.noButton = false;
-        state.length = 6;
-        state.errorMsg = '';
-      "
-    ></nut-cell>
+    <nut-number-keyboard
+      v-model="state.value1"
+      v-model:visible="state.showKeyboard1"
+      @blur="state.showKeyboard1 = false"
+    >
+    </nut-number-keyboard>
+
     <nut-cell
       :title="translate('customPasswordLength')"
       is-link
       @click="
-        state.visible = true;
-        state.noButton = true;
+        state.visible2 = true;
         state.length = 4;
-        state.errorMsg = '';
       "
     ></nut-cell>
-    <nut-cell
-      :title="translate('forgetPassword')"
-      is-link
-      @click="
-        state.visible = true;
-        state.length = 6;
-        state.errorMsg = '';
-        state.noButton = true;
-      "
-    ></nut-cell>
+    <nut-short-password
+      v-model="state.value2"
+      v-model:visible="state.visible2"
+      @focus="state.showKeyboard2 = true"
+      :length="state.length"
+      @complete="methods.complete"
+    >
+    </nut-short-password>
+    <nut-number-keyboard
+      v-model="state.value2"
+      v-model:visible="state.showKeyboard2"
+      @blur="state.showKeyboard2 = false"
+    >
+    </nut-number-keyboard>
+
+    <nut-cell :title="translate('forgetPassword')" is-link @click="state.visible3 = true"> </nut-cell>
+
+    <nut-short-password
+      v-model="state.value3"
+      v-model:visible="state.visible3"
+      @focus="state.showKeyboard3 = true"
+      @complete="methods.complete"
+      @tips="methods.onTips"
+    >
+    </nut-short-password>
+    <nut-number-keyboard
+      v-model="state.value3"
+      v-model:visible="state.showKeyboard3"
+      @blur="state.showKeyboard3 = false"
+    >
+    </nut-number-keyboard>
+
     <nut-cell
       :title="translate('errorMessage')"
       is-link
       @click="
-        state.visible = true;
-        state.length = 6;
-        state.noButton = true;
+        state.visible4 = true;
         state.errorMsg = translate('customErrorMsg');
       "
     ></nut-cell>
+    <nut-short-password
+      v-model="state.value4"
+      v-model:visible="state.visible4"
+      @focus="state.showKeyboard4 = true"
+      :error-msg="state.errorMsg"
+      @complete="methods.complete"
+      @tips="methods.onTips"
+    >
+    </nut-short-password>
+    <nut-number-keyboard
+      v-model="state.value4"
+      v-model:visible="state.showKeyboard4"
+      @blur="state.showKeyboard4 = false"
+    >
+    </nut-number-keyboard>
   </div>
 </template>
 
@@ -103,21 +113,25 @@ export default createDemo({
     let { proxy } = getCurrentInstance() as any;
 
     const state = reactive({
-      visible: false,
-      noButton: true,
-      value: '',
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      showKeyboard1: false,
+      showKeyboard2: false,
+      showKeyboard3: false,
+      showKeyboard4: false,
+      value1: '',
+      value2: '',
+      value3: '',
+      value4: '',
       errorMsg: '',
       length: 6
     });
     const methods = {
-      onChange(val: string) {
-        val && proxy.$toast.text(val);
+      complete(value: string) {
+        proxy.$toast.text(value);
       },
-      onOk(val: string) {
-        val && proxy.$toast.text(val);
-        state.visible = false;
-      },
-      onComplete() {},
       onTips() {
         proxy.$toast.text(translate('onTips'));
       },

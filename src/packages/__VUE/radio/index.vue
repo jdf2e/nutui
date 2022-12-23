@@ -1,10 +1,15 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import nutIcon from '../icon/index.vue';
 const { componentName, create } = createComponent('radio');
+import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
+import { pxCheck } from '@/packages/utils/pxCheck';
 
 export default create({
+  components: {
+    CheckNormal,
+    CheckChecked
+  },
   props: {
     disabled: {
       type: Boolean,
@@ -18,25 +23,9 @@ export default create({
       type: [String, Number, Boolean],
       default: ''
     },
-    iconName: {
-      type: String,
-      default: 'check-normal'
-    },
-    iconActiveName: {
-      type: String,
-      default: 'check-checked'
-    },
     iconSize: {
       type: [String, Number],
       default: ''
-    },
-    iconClassPrefix: {
-      type: String,
-      default: 'nut-icon'
-    },
-    iconFontClassName: {
-      type: String,
-      default: 'nutui-iconfont'
     }
   },
   setup(props, { emit, slots }) {
@@ -59,13 +48,18 @@ export default create({
     });
 
     const renderIcon = () => {
-      const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName } = props;
-      return h(nutIcon, {
-        name: isCurValue.value ? iconActiveName : iconName,
-        size: iconSize,
-        class: color.value,
-        classPrefix: iconClassPrefix,
-        fontClassName: iconFontClassName
+      const { iconSize } = props;
+      const iconNodeMap = {
+        CheckNormal: slots.icon ? slots.icon : CheckNormal,
+        Checked: slots.checkedIcon ? slots.checkedIcon : CheckChecked
+      };
+      const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
+      const size = pxCheck(iconSize);
+      return h(iconNode, {
+        width: size,
+        height: size,
+        size: size,
+        class: color.value
       });
     };
 
