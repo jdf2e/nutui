@@ -9,7 +9,7 @@
 ``` ts
 import { createApp } from 'vue';
 import { Checkbox,CheckboxGroup } from '@nutui/nutui-taro';
-import { Checklist } from '@nutui/icons-vue';
+import { Checklist } from '@nutui/icons-vue-taro';
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
