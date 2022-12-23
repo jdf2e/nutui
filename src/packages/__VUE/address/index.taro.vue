@@ -127,7 +127,7 @@ import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
-import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
+import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 
 export default create({
   components: { Location, Location2, Check, Close, Left },
