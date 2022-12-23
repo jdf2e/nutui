@@ -7,11 +7,10 @@ Short password input box, which can be used to enter passwords, SMS verification
 
 ``` javascript
 import { createApp } from 'vue';
-import { ShortPassword,Popup } from '@nutui/nutui';
+import { ShortPassword } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ShortPassword);
-app.use(Popup);
 
 ```
 
@@ -20,15 +19,18 @@ app.use(Popup);
 :::demo
 ```html
 <template>
-<nut-cell title="Basic Usage" is-link @click="state.visible = true;"></nut-cell>
- <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
-      @change="methods.onChange"
-      @close="methods.close"
-      @cancel="methods.cancel"
-    >
+<nut-cell title="Basic Usage" is-link @click="state.visible1 = true;"></nut-cell>
+   <nut-short-password 
+      v-model="state.value1" 
+      v-model:visible="state.visible1" 
+      @focus="state.showKeyboard1 = true">
     </nut-short-password>
+    <nut-number-keyboard
+      v-model="state.value1" 
+      v-model:visible="state.showKeyboard1"
+      @blur="state.showKeyboard1 = false"
+      >
+    </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -36,98 +38,38 @@ import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const state = reactive({
-      visible: false,
-      value: '',
+      visible1: false,
+      showKeyboard1: false,
+      value1: '',
     });
-    const methods = {
-      onChange(val) {
-        val && Toast.text(val);
-      },
-      close() {
-        Toast.text('Click the icon to close the popup');
-      },
-      cancel() {
-        Toast.text('Click the overlay to close the popup');
-      }
-    };
     return {
       state,
-      methods
     };
   }
   }
 </script>
 ```
 :::
-
-### Show Button Group
-:::demo
-```html
-<template>
-<nut-cell title="Show Button Group" is-link @click="state.visible = true;"></nut-cell>
- <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
-      :no-button="false"
-      @change="methods.onChange"
-      @ok="methods.onOk"
-      @close="methods.close"
-      @cancel="methods.cancel"
-    >
-    </nut-short-password>
-</template>
-<script>
-import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
-export default{
-  setup() {
-    const state = reactive({
-      visible: false,
-      noButton: true,
-      value: '',
-      errorMsg: '',
-      length: 6
-    });
-    const methods = {
-      onChange(val) {
-        val && Toast.text(val);
-      },
-      onOk(val) {
-        val && Toast.text(val);
-        state.visible = false;
-      },
-       close() {
-        Toast.text('Click the icon to close the popup');
-      },
-      cancel() {
-        Toast.text('Click the overlay to close the popup');
-      }
-    };
-    return {
-      state,
-      methods
-    };
-  }
-  }
-</script>
-```
-:::
-
 ### Custom Password Length
 
 :::demo
 ```html
 <template>
-<nut-cell title="Custom Password Length" is-link @click="state.visible = true;"></nut-cell>
- <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
+<nut-cell title="Custom Password Length" is-link @click="state.visible2 = true;"></nut-cell>
+    <nut-short-password 
+      v-model="state.value2" 
+      v-model:visible="state.visible2" 
+      @focus="state.showKeyboard2 = true"
       :length="state.length"
-      @change="methods.onChange"
-      @close="methods.close"
-      @cancel="methods.cancel"
-    >
+      @complete="methods.complete"
+      >
     </nut-short-password>
+    <nut-number-keyboard 
+      v-model="state.value2"
+      v-model:visible="state.showKeyboard2" 
+      @blur="state.showKeyboard2 = false"
+      >
+    </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -135,24 +77,15 @@ import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const state = reactive({
-      visible: false,
-      value: '',
+      visible2: false,
+      showKeyboard2: false,
+      value2: '',
       length: 4
     });
     const methods = {
-      onChange(val) {
-        val && Toast.text(val);
+      complete(value: string) {
+        proxy.$toast.text(value);
       },
-      onOk(val) {
-        val && Toast.text(val);
-        state.visible = false;
-      },
-       close() {
-        Toast.text('Click the icon to close the popup');
-      },
-      cancel() {
-        Toast.text('Click the overlay to close the popup');
-      }
     };
     return {
       state,
@@ -169,16 +102,21 @@ export default{
 :::demo
 ```html
 <template>
-<nut-cell title="Forget password" is-link @click="state.visible = true;"></nut-cell>
- <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
-      @change="methods.onChange"
-      @close="methods.close"
+<nut-cell title="Forget password" is-link @click="state.visible3 = true;"></nut-cell>
+   <nut-short-password 
+      v-model="state.value3" 
+      v-model:visible="state.visible3" 
+      @focus="state.showKeyboard3 = true"
+      @complete="methods.complete"
       @tips="methods.onTips"
-      @cancel="methods.cancel"
-    >
+      >
     </nut-short-password>
+    <nut-number-keyboard 
+      v-model="state.value3"
+      v-model:visible="state.showKeyboard3" 
+      @blur="state.showKeyboard3 = false"
+      >
+    </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -186,22 +124,17 @@ import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const state = reactive({
-      visible: false,
-      value: '',
+      visible3: false,
+      showKeyboard3:false,
+      value3: '',
     });
     const methods = {
-      onChange(val) {
-        val && Toast.text(val);
+      complete(value: string) {
+        proxy.$toast.text(value);
       },
       onTips() {
         Toast.text('Execute forgotten password logic');
       },
-      close() {
-        Toast.text('Click the icon to close the popup');
-      },
-      cancel() {
-        Toast.text('Click the overlay to close the popup');
-      }
     };
     return {
       state,
@@ -217,17 +150,22 @@ export default{
 :::demo
 ```html
 <template>
-<nut-cell title="Error Message" is-link @click="state.visible = true;"></nut-cell>
- <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
+<nut-cell title="Error Message" is-link @click="state.visible4 = true;"></nut-cell>
+     <nut-short-password 
+      v-model="state.value4" 
+      v-model:visible="state.visible4" 
+      @focus="state.showKeyboard4 = true"
       :error-msg="state.errorMsg"
-      @change="methods.onChange"
-      @close="methods.close"
+      @complete="methods.complete"
       @tips="methods.onTips"
-      @cancel="methods.cancel"
-    >
+      >
     </nut-short-password>
+    <nut-number-keyboard 
+      v-model="state.value4"
+      v-model:visible="state.showKeyboard4" 
+      @blur="state.showKeyboard4 = false"
+      >
+    </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -235,23 +173,18 @@ import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const state = reactive({
-      visible: false,
-      value: '',
+      visible4: false,
+      showKeyboard4: false,
+      value4: '',
       errorMsg: 'Please enter correct password',
     });
     const methods = {
-      onChange(val) {
-        val && Toast.text(val);
+      complete(value: string) {
+        proxy.$toast.text(value);
       },
       onTips() {
         Toast.text('Execute forgotten password logic');
       },
-      close() {
-        Toast.text('Click the icon to close the popup');
-      },
-      cancel() {
-        Toast.text('Click the overlay to close the popup');
-      }
     };
     return {
       state,
@@ -274,7 +207,6 @@ export default{
 | desc                   | description          | String         | Verify |
 | tips                   | Bottom right prompt              | String         | Forget password                     |
 | close-on-click-overlay | Click to close the mask    | Boolean        | true                         |
-| no-button              | whether to hide the bottom button    | Boolean        | true                         |
 | length                 | ShortPassword lenght The value is 4~6| String、Number | 6                            |
 | error-msg              | Error message        | String         | ''                           |
 
@@ -283,9 +215,7 @@ export default{
 
 | Event | Description                  | Arguments    |
 |----------|------------------------|----------|
-| change   | Trigger event when password is entered     |  value    |
-| ok       | Trigger event when true is clicked     | value    |
-| cancel   | Trigger an event when the popup layer is clicked or canceled     | -    |
 | close    | Trigger an event when the close icon is clicked | -    |
 | complete | Input complete callback         | value    |
+| focus | 	Emitted when input is focused	         | -    |
 

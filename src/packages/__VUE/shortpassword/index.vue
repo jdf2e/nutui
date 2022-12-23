@@ -2,47 +2,33 @@
   <view>
     <nut-popup
       :style="{
-        padding: '32px 24px 28px 24px',
+        padding: '30px 24px 20px 24px',
         borderRadius: '12px',
-        textAlign: 'center'
+        textAlign: 'center',
+        top: '45%'
       }"
       v-model:visible="show"
       :closeable="true"
-      @click-close-icon="closeIcon"
+      @click-close-icon="close"
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
-      :teleportDisable="teleportDisable"
+      :teleportDisable="false"
     >
-      <view class="nut-shortpsd-title">{{ title || translate('title') }}</view>
-      <view class="nut-shortpsd-subtitle">{{ desc || translate('desc') }}</view>
-
-      <div class="nut-input-normalw">
-        <input
-          ref="realpwd"
-          class="nut-input-real"
-          type="number"
-          maxlength="6"
-          :style="systemStyle()"
-          v-model="realInput"
-          @input="changeValue"
-        />
-        <div class="nut-input-site"></div>
-        <view class="nut-shortpsd-fake" @click="focus">
-          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
-            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
+      <view class="nut-short-password-title">{{ title || translate('title') }}</view>
+      <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>
+      <div class="nut-short-password-wrapper">
+        <view class="nut-short-password__list" @touchstart="focus">
+          <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+            <view class="nut-short-password__item-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </div>
-      <view class="nut-shortpsd-message">
-        <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" v-if="tips || translate('tips')">
+      <view class="nut-short-password__message">
+        <view class="nut-short-password--error">{{ errorMsg }}</view>
+        <view class="nut-short-password--forget" v-if="tips || translate('tips')">
           <tips class="icon" width="11px" height="11px"></tips>
           <view @click="onTips">{{ tips || translate('tips') }}</view>
         </view>
-      </view>
-      <view v-if="!noButton" class="nut-shortpsd-footer">
-        <view class="nut-shortpsd-cancle" @click="close">{{ translate('cancel') }}</view>
-        <view class="nut-shortpsd-sure" @click="sureClick">{{ translate('confirm') }}</view>
       </view>
     </nut-popup>
   </view>
@@ -83,10 +69,6 @@ export default create({
       type: String,
       default: ''
     },
-    noButton: {
-      type: Boolean,
-      default: true
-    },
     closeOnClickOverlay: {
       type: Boolean,
       default: true
@@ -94,24 +76,17 @@ export default create({
     length: {
       type: [String, Number], //4～6
       default: 6
-    },
-    teleportDisable: {
-      type: Boolean,
-      default: true
     }
   },
-  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
-    const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
     // 方法
-    function sureClick() {
-      emit('ok', realInput.value);
-    }
-    function focus() {
-      realpwd.value.focus();
+    function focus(event: any) {
+      event.stopPropagation();
+      emit('focus');
     }
     watch(
       () => props.visible,
@@ -123,31 +98,12 @@ export default create({
       () => props.modelValue,
       (value) => {
         realInput.value = value;
-        emit('update:modelValue', value);
-      },
-      {
-        deep: true,
-        immediate: true
+        if (String(value).length === comLen.value) {
+          emit('complete', value);
+        }
       }
     );
-    function changeValue(e: Event) {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
-      if (val.length > comLen.value) {
-        val = val.slice(0, comLen.value);
-        realInput.value = val;
-      }
-      if (String(realInput.value).length === comLen.value) {
-        emit('complete', val);
-      }
-      emit('change', val);
-      emit('update:modelValue', val);
-    }
     function close() {
-      emit('update:visible', false);
-      emit('cancel');
-    }
-    function closeIcon() {
       emit('update:visible', false);
       emit('close');
     }
@@ -157,35 +113,14 @@ export default create({
     function onTips() {
       emit('tips');
     }
-    function systemStyle() {
-      let u = navigator.userAgent;
-      let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-      let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-      if (isIOS) {
-        return {
-          paddingRight: '1200px'
-        };
-      }
-      if (isAndroid) {
-        return {
-          opacity: 0,
-          zindex: 10
-        };
-      }
-    }
     return {
       comLen,
-      sureClick,
       realInput,
-      realpwd,
       focus,
       range,
-      changeValue,
       close,
       onTips,
       show,
-      systemStyle,
-      closeIcon,
       translate
     };
   }

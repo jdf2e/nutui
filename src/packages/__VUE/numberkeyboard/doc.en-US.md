@@ -285,7 +285,7 @@ export default{
 | Attribute | Description | Type | Default |
 |----- | ----- | ----- | ----- |
 | v-model:visible | Whether to show keyboard | Boolean | false | 
-| v-model:value | 	Current value		 | String | - |
+| v-model | 	Current value		 | String | - |
 | title | Keyboard title | String | - |
 | type | Keyboard type  can be set to `rightColumn`   | String | `default` |
 | random-keys | Whether to shuffle the order of keys  | Boolean | false |
@@ -304,4 +304,5 @@ export default{
 | input  | Emitted when a key is pressed                 | key: string |
 | delete | 	Emitted when the delete key is pressed               | -             |
 | close  | Emitted when the close button or non-keyboard area is clicked is clicked  | -             |
+| blur  | 	Emitted when the close button is clicked or the keyboard is blurred  | -             |
 
