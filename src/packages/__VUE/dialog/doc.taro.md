@@ -158,3 +158,16 @@ export default {
 | header  | 自定义标题区域     |
 | default | 自定义内容         |
 | footer  | 自定义底部按钮区域 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-dialog-width| _296px_  | -  |
+| --nut-dialog-header-font-weight| _normal_  | -  |
+| --nut-dialog-header-color| _rgba(38, 38, 38, 1)_  | -  |
+| --nut-dialog-footer-justify-content| _space-around_  | -  |

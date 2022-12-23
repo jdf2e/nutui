@@ -240,3 +240,15 @@ const info = [{
   "like":1, // Number of likes for this comment
 }]
 ```
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ | -  |
+| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ | -  |
+| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ | -  |
+| --nut-comment-shop-color| _var(--nut-primary-color)_ | -  |

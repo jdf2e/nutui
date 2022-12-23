@@ -1,9 +1,14 @@
 <template>
   <div class="demo">
-    <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" :title="translate('basic')"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(1)" :showIcon="true" :title="translate('basic')"></nut-cell>
+    <nut-number-keyboard v-model:visible="visible1" @blur="onBlur(1)" @input="input" @delete="onDelete">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" :title="translate('sidebar')"></nut-cell>
+    <nut-cell
+      :isLink="true"
+      @touchstart.stop="showKeyBoard(2)"
+      :showIcon="true"
+      :title="translate('sidebar')"
+    ></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible2"
@@ -11,9 +16,15 @@
       :confirm-text="translate('confirmText')"
       @input="input"
       @close="close(2)"
+      @blur="onBlur(2)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" :title="translate('randomKeyOrder')"></nut-cell>
+    <nut-cell
+      :isLink="true"
+      @touchstart.stop="showKeyBoard(3)"
+      :showIcon="true"
+      :title="translate('randomKeyOrder')"
+    ></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible3"
@@ -21,36 +32,55 @@
       :custom-key="customKey1"
       @input="input"
       @close="close(3)"
+      @blur="onBlur(3)"
     >
     </nut-number-keyboard>
 
-    <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" :title="translate('withTitle')"></nut-cell>
+    <nut-cell
+      :isLink="true"
+      @touchstart.stop="showKeyBoard(4)"
+      :showIcon="true"
+      :title="translate('withTitle')"
+    ></nut-cell>
     <nut-number-keyboard
       :title="translate('title')"
       v-model:visible="visible4"
       :custom-key="customKey2"
       @input="input"
       @close="close(4)"
+      @blur="onBlur(4)"
     >
     </nut-number-keyboard>
 
     <nut-cell
       :isLink="true"
-      @click="showKeyBoard(6)"
+      @touchstart.stop="showKeyBoard(6)"
       :showIcon="true"
       :title="translate('idNumberKeyboard')"
     ></nut-cell>
-    <nut-number-keyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    <nut-number-keyboard
+      v-model:visible="visible6"
+      :custom-key="customKey3"
+      @input="input"
+      @blur="onBlur(6)"
+      @close="close(6)"
+    >
     </nut-number-keyboard>
     <nut-cell
       :isLink="true"
       desc-text-align="left"
-      @click="showKeyBoard(5)"
+      @touchstart.stop="showKeyBoard(5)"
       :desc="value"
       :showIcon="true"
       :title="translate('bindValue')"
     ></nut-cell>
-    <nut-number-keyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
+    <nut-number-keyboard
+      v-model:visible="visible5"
+      v-model:value="value"
+      maxlength="6"
+      @blur="onBlur(5)"
+      @close="close(5)"
+    >
     </nut-number-keyboard>
   </div>
 </template>
@@ -109,6 +139,9 @@ export default createDemo({
       proxy.$toast.text('删除');
     }
     function close(index: number) {
+      console.log('关闭');
+    }
+    function onBlur(index: number) {
       visibleArr[index - 1].value = false;
     }
 
@@ -127,6 +160,7 @@ export default createDemo({
       visible5,
       visible6,
       value,
+      onBlur,
       translate
     };
   }

@@ -209,3 +209,20 @@ Icon 和字符型可以自定义颜色及背景色
 |名称|描述|
 |--|--|
 |default|默认插槽，可放置图片、图标、文本等元素|
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
+| --nut-avatar-square |  _5px_  |-  |
+| --nut-avatar-large-width |  _60px_  |-  |
+| --nut-avatar-large-height |  _60px_  |-  |
+| --nut-avatar-small-width |  _32px_  |-  |
+| --nut-avatar-small-height |  _32px_  |-  |
+| --nut-avatar-normal-width |  _40px_  |-  |
+| --nut-avatar-normal-height |  _40px_  |-  |

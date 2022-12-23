@@ -30,7 +30,7 @@
       display: inline-block;
     }
 
-    .van-number-keyboard__close {
+    .nut-number-keyboard__close {
       position: absolute;
       display: block;
       right: 0;
@@ -79,10 +79,6 @@
       }
     }
   }
-}
-
-.nut-number-keyboard-overlay {
-  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .nut-key__wrapper {
