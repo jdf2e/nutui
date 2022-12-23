@@ -341,7 +341,7 @@
           "exportEmptyTaro": true,
           "desc": "标签栏子组件",
           "author": "Drjingfubo",
-          "styleDeps": []
+          "styleDeps": ["Badge"]
         },
         {
           "version": "3.0.0",
@@ -1202,7 +1202,8 @@
           "show": true,
           "tarodoc": false,
           "type": "component",
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "styleDeps": ["Popover"]
         }
       ]
     },
@@ -1364,7 +1365,7 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu",
-          "styleDeps": []
+          "styleDeps": ["Rate"]
         },
         {
           "version": "3.0.0",

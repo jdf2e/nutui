@@ -72,7 +72,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
-import { MonthInfo, Day } from './type';
+import { MonthInfo, Day, CalendarState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
 
 type StringArr = string[];
@@ -170,7 +170,7 @@ export default create({
       return slots.bottomInfo;
     });
 
-    const state: import('./type').CalendarState = reactive({
+    const state: CalendarState = reactive({
       yearMonthTitle: '',
       defaultRange: [],
       currDate: '',

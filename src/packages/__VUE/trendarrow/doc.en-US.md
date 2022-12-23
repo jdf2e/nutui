@@ -161,3 +161,15 @@ app.use(TrendArrow);
 |---------|--------------|
 | upIcon | custom up icon |
 | downIcon | custom down icon |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-trendarrow-font-size| _14px_  | -  |
+| --nut-trendarrow-before-icon-margin| _4px_  | -  |
+| --nut-trendarrow-icon-width| _12px_  | -  |

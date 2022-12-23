@@ -146,3 +146,16 @@ export default {
 |----- | ----- |
 | default | Custom Content| 
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-circleprogress-primary-color| _var(--nut-primary-color)_ | -  |
+| --nut-circleprogress-path-color| _#e5e9f2_ | -  |
+| --nut-circleprogress-text-color| _#000000_ | -  |
+| --nut-circleprogress-text-size| _var(--nut-font-size-3)_ | -  |
+

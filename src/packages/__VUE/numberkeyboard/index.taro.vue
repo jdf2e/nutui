@@ -1,12 +1,5 @@
 <template>
-  <nut-popup
-    v-model:visible="show"
-    position="bottom"
-    :popClass="popClass"
-    :overlay="overlay"
-    @click-overlay="closeBoard()"
-    overlay-class="nut-number-keyboard-overlay"
-  >
+  <nut-popup v-model:visible="show" position="bottom" :popClass="popClass" :overlay="false">
     <div class="nut-number-keyboard" ref="root">
       <div class="nut-number-keyboard__header" v-if="title">
         <h3 class="nut-number-keyboard__title">{{ title }}</h3>
@@ -108,7 +101,7 @@ export default create({
       type: Array,
       default: () => []
     },
-    value: {
+    modelValue: {
       type: String,
       default: ''
     },
@@ -129,7 +122,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['input', 'delete', 'close', 'update:value'],
+  emits: ['input', 'delete', 'close', 'update:modelValue', 'update:visible'],
   setup(props, { emit }) {
     const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
@@ -205,8 +198,8 @@ export default create({
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
         emit('input', item.id);
-        if (props.value.length < props.maxlength) {
-          emit('update:value', props.value + item.id);
+        if (props.modelValue.length < props.maxlength) {
+          emit('update:modelValue', props.modelValue + item.id);
         }
       }
       if (item.type == 'lock') {
@@ -214,7 +207,7 @@ export default create({
       }
       if (item.type == 'delete') {
         emit('delete');
-        emit('update:value', props.value.slice(0, props.value.length - 1));
+        emit('update:modelValue', props.modelValue.slice(0, props.modelValue.length - 1));
       }
     }
     function onTouchMove(event: TouchEvent) {
@@ -226,6 +219,7 @@ export default create({
 
     function closeBoard() {
       emit('close');
+      emit('update:visible', false);
     }
     return {
       clickKeyIndex,

@@ -1,111 +1,108 @@
 <template>
   <div class="demo">
+    <nut-cell title="基础用法" is-link @click="state.visible1 = true"></nut-cell>
     <nut-short-password
-      v-model="state.value"
-      v-model:visible="state.visible"
-      :no-button="state.noButton"
-      :length="state.length"
-      :error-msg="state.errorMsg"
-      @change="methods.onChange"
-      @complete="methods.onComplete"
-      @ok="methods.onOk"
-      @tips="methods.onTips"
-      @close="methods.close"
-      @cancel="methods.cancel"
+      v-model="state.value1"
+      v-model:visible="state.visible1"
+      @focus="state.showKeyboard1 = !state.showKeyboard1"
+      @close="state.showKeyboard1 = false"
     >
     </nut-short-password>
-    <nut-cell
-      title="基础用法"
-      is-link
-      @click="
-        state.visible = true;
-        state.noButton = true;
-        state.length = 6;
-        state.errorMsg = '';
-      "
-    ></nut-cell>
-    <nut-cell
-      title="显示按钮组"
-      is-link
-      @click="
-        state.visible = true;
-        state.noButton = false;
-        state.length = 6;
-        state.errorMsg = '';
-      "
-    ></nut-cell>
+    <nut-number-keyboard v-model="state.value1" v-model:visible="state.showKeyboard1"> </nut-number-keyboard>
+
     <nut-cell
       title="自定义密码长度4"
       is-link
       @click="
-        state.visible = true;
-        state.noButton = true;
+        state.visible2 = true;
         state.length = 4;
-        state.errorMsg = '';
       "
     ></nut-cell>
+    <nut-short-password
+      v-model="state.value2"
+      v-model:visible="state.visible2"
+      :length="state.length"
+      @focus="state.showKeyboard2 = !state.showKeyboard2"
+      @close="state.showKeyboard2 = false"
+      @complete="methods.complete"
+    >
+    </nut-short-password>
+    <nut-number-keyboard v-model="state.value2" v-model:visible="state.showKeyboard2" maxlength="4">
+    </nut-number-keyboard>
     <nut-cell
       title="忘记密码提示语事件回调"
       is-link
       @click="
-        state.visible = true;
+        state.visible3 = true;
         state.length = 6;
         state.errorMsg = '';
-        state.noButton = true;
       "
     ></nut-cell>
+    <nut-short-password
+      v-model="state.value3"
+      v-model:visible="state.visible3"
+      @focus="state.showKeyboard3 = !state.showKeyboard3"
+      @close="state.showKeyboard3 = false"
+      @tips="methods.onTips"
+    >
+    </nut-short-password>
+    <nut-number-keyboard v-model="state.value3" v-model:visible="state.showKeyboard3"> </nut-number-keyboard>
+
     <nut-cell
       title="错误提示语"
       is-link
       @click="
-        state.visible = true;
+        state.visible4 = true;
         state.length = 6;
-        state.noButton = true;
         state.errorMsg = '请输入正确密码';
       "
     ></nut-cell>
     <nut-toast msg="忘记密码" v-model:visible="state.show" type="text" :cover="state.cover" />
+    <nut-short-password
+      v-model="state.value4"
+      v-model:visible="state.visible4"
+      :error-msg="state.errorMsg"
+      @focus="state.showKeyboard4 = !state.showKeyboard4"
+      @close="state.showKeyboard4 = false"
+      @tips="methods.onTips"
+    >
+    </nut-short-password>
+    <nut-number-keyboard v-model="state.value4" v-model:visible="state.showKeyboard4"> </nut-number-keyboard>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, getCurrentInstance } from 'vue';
+import { reactive } from 'vue';
 export default {
   setup() {
-    // let { proxy } = getCurrentInstance() as any;
-
     const state = reactive({
-      visible: false,
-      noButton: true,
-      value: '',
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      showKeyboard1: false,
+      showKeyboard2: false,
+      showKeyboard3: false,
+      showKeyboard4: false,
+      value1: '',
+      value2: '',
+      value3: '',
+      value4: '',
       errorMsg: '',
       length: 6,
       show: false,
       cover: false
     });
     const methods = {
-      onChange(val: string) {
-        console.log(val);
-
-        // val && proxy.$toast.text(val);
+      complete(value) {
+        console.log(value);
       },
-      onOk(val: string) {
-        // val && proxy.$toast.text(val);
-        state.visible = false;
-      },
-
-      onComplete() {},
       onTips() {
         state.show = true;
         state.cover = false;
-        // proxy.$toast.text('执行忘记密码逻辑');
       },
-      close() {
-        // proxy.$toast.text('点击icon关闭弹窗');
-      },
-      cancel() {
-        // proxy.$toast.text('点击取消按钮关闭弹窗');
-      }
+      close() {},
+      cancel() {}
     };
 
     return {

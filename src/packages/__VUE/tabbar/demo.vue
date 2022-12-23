@@ -44,12 +44,10 @@
         </template>
       </nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')">
-        <template #icon="props">
-          <img :src="props.active ? icon.active : icon.unactive" alt="" /> </template
+        <template #icon="props"> <img :src="props.active ? icon.active : icon.unactive" alt="" /> </template
       ></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')">
-        <template #icon="props">
-          <img :src="props.active ? icon.active : icon.unactive" alt="" /> </template
+        <template #icon="props"> <img :src="props.active ? icon.active : icon.unactive" alt="" /> </template
       ></nut-tabbar-item>
     </nut-tabbar>
 

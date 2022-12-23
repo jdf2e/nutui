@@ -431,3 +431,15 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 |------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
 | submit           | Manual upload mode, perform upload operation                                                | -         | -            |
 | clearUploadQueue | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-uploader-picture-width| _100px_  | -  |
+| --nut-uploader-picture-height| _100px_  | -  |
+| --nut-uploader-background| _#f7f8fa_  | -  |

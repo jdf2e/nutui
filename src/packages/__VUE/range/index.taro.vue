@@ -81,6 +81,7 @@ import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { SliderValue } from './type';
 const { componentName, create } = createComponent('range');
 
 export default create({
@@ -122,7 +123,7 @@ export default create({
       default: 1
     },
     modelValue: {
-      type: [Number, Array] as PropType<import('./type').SliderValue>,
+      type: [Number, Array] as PropType<SliderValue>,
       default: 0
     }
   },
@@ -131,8 +132,8 @@ export default create({
 
   setup(props, { emit }) {
     const buttonIndex = ref(0);
-    let startValue: import('./type').SliderValue;
-    let currentValue: import('./type').SliderValue;
+    let startValue: SliderValue;
+    let currentValue: SliderValue;
 
     const root = ref<HTMLElement>();
     const dragStatus = ref<'start' | 'draging' | ''>();
@@ -264,7 +265,7 @@ export default create({
       return Math.round(value / +step) * +step;
     };
 
-    const isSameValue = (newValue: import('./type').SliderValue, oldValue: import('./type').SliderValue) =>
+    const isSameValue = (newValue: SliderValue, oldValue: SliderValue) =>
       JSON.stringify(newValue) === JSON.stringify(oldValue);
 
     const handleOverlap = (value: number[]) => {
@@ -274,7 +275,7 @@ export default create({
       return value;
     };
 
-    const updateValue = (value: import('./type').SliderValue, end?: boolean) => {
+    const updateValue = (value: SliderValue, end?: boolean) => {
       if (isRange(value)) {
         value = handleOverlap(value).map(format);
       } else {

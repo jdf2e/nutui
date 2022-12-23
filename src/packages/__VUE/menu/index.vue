@@ -10,12 +10,12 @@
         >
           <view class="nut-menu__title" :class="getClasses(item.state.showPopup)">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
-            <nut-icon
-              v-bind="$attrs"
-              :name="titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
-              size="10"
-              class="nut-menu__title-icon"
-            ></nut-icon>
+            <span class="nut-menu__title-icon">
+              <slot name="icon">
+                <ArrowUp2 v-if="direction === 'up'" />
+                <ArrowDown2 v-else />
+              </slot>
+            </span>
           </view>
         </view>
       </template>
@@ -28,7 +28,12 @@ import { reactive, provide, computed, ref, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
+import { ArrowUp2, ArrowDown2 } from '@nutui/icons-vue';
 export default create({
+  components: {
+    ArrowUp2,
+    ArrowDown2
+  },
   props: {
     activeColor: {
       type: String,

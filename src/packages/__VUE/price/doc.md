@@ -114,3 +114,22 @@ app.use(Price);
 | thousands      | 是否按照千分号形式显示                    | Boolean          | false  |
 | position       | 符号显示在价格前或者后，`before`、`after`  | String           | before |
 | size           | 价格尺寸，`large`、`normal`、`small`     | String           | large |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-price-symbol-big-size| _18px_  | -  |
+| --nut-price-big-size| _24px_  | -  |
+| --nut-price-decimal-big-size| _18px_  | -  |
+| --nut-price-symbol-medium-size| _14px_  | -  |
+| --nut-price-medium-size| _16px_  | -  |
+| --nut-price-decimal-medium-size| _14px_  | -  |
+| --nut-price-symbol-small-size| _10px_  | -  |
+| --nut-price-small-size| _12px_  | -  |
+| --nut-price-decimal-small-size| _10px_  | -  |

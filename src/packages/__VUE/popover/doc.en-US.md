@@ -159,8 +159,8 @@ Customize the content in the slot named content.
     <template #content>
       <div class="self-content">
         <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <nut-icon :name="item.name" size="15"></nut-icon>
-        <div class="self-content-desc">{{ item.desc }}</div>
+          <component :is="renderIcon(item.name)"></component>
+          <div class="self-content-desc">{{ item.desc }}</div>
         </div>
       </div>
     </template>
@@ -201,10 +201,16 @@ export default {
         desc: 'option6'
       }
     ]);
+    const renderIcon = (icon: Component, props?: any) => {
+      if (icon) return h(icon, props);
+      return '';
+    };
+
 
     return {
       visible,
       selfContent,
+      renderIcon
     };
   }
 }
@@ -421,3 +427,21 @@ The List property is an array of objects, each object in the array is configured
 | choose | Triggered when an option is clicked |
 | open   | Triggered when the menu is opened |
 | close  | Fired when the menu is closed |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-popover-white-background-color| _rgba(255, 255, 255, 1)_  | -  |
+|  --nut-popover-dark-background-color| _rgba(75, 76, 77, 1)_  | -  |
+|  --nut-popover-border-bottom-color| _rgba(229, 229, 229, 1)_  | -  |
+|  --nut-popover-primary-text-color| _rgba(51, 51, 51, 1)_  | -  |
+|  --nut-popover-disable-color| _rgba(154, 155, 157, 1)_  | -  |
+|  --nut-popover-menu-item-padding| _8px 0_  | -  |
+|  --nut-popover-menu-item-margin| _0 8px_  | -  |
+|  --nut-popover-menu-name-line-height| _normal_  | -  |

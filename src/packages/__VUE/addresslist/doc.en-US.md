@@ -8,11 +8,10 @@ It is mainly used to display and operate the address list. Dependent components:
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList, Icon, Swipe, Button } from "@nutui/nutui";
+import { AddressList, Swipe, Button } from "@nutui/nutui";
 
 const app = createApp();
 app.use(AddressList);
-app.use(Icon);
 app.use(Swipe);
 app.use(Button);
 ```
@@ -292,3 +291,24 @@ const dataMapOptions = {
   addressName: "testaddressName",
 };
 ```
+
+## Theming
+
+### CSS Variables
+
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-addresslist-bg |  _#fff_   |-  |
+| --nut-addresslist-border |  _#f0f0f0_   |-  |
+| --nut-addresslist-font-color |  _#333333_   |-  |
+| --nut-addresslist-font-size |  _16px_   |-  |
+| --nut-addresslist-mask-bg |  _rgba(0, 0, 0, 0.4)_   |-  |
+| --nut-addresslist-addr-font-color |  _#666666_   |-  |
+| --nut-addresslist-addr-font-size |  _12px_   |-  |
+| --nut-addresslist-set-bg |  _#f5a623_   |-  |
+| --nut-addresslist-del-bg |  _#e1251b_   |-  |
+| --nut-addresslist-contnts-contact-default |  _var(--nut-primary-color)_   |-  |
+| --nut-addresslist-contnts-contact-color |  _var(--nut-white)_   |-  |

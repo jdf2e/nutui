@@ -8,12 +8,12 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
-
+import { Checkbox,CheckboxGroup } from '@nutui/nutui';
+import { Checklist } from '@nutui/icons-vue';
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Icon);
+app.use(Checklist);
 ```
 
 ### 基础用法
@@ -131,13 +131,17 @@ app.use(Icon);
 
 ### 自定义图标
 
-这里建议同时设置 `icon-name` 和 `icon-active-name` 属性
+通过slot自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+  <nut-checkbox v-model="checkbox7" >
+    自定义图标
+    <template #icon> <Checklist /> </template>
+    <template #checkedIcon> <Checklist color="red" /> </template>
+  </nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -379,13 +383,14 @@ app.use(Icon);
 | disabled | 是否禁用选择 | Boolean | `false`
 | text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
 | icon-size | [图标尺寸](#/zh-CN/component/icon) | String、Number | `18`
-| icon-name | [图标名称](#/zh-CN/component/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
-| icon-active-name | [图标名称](#/zh-CN/component/icon)，选中后(建议和`icon-name`一起修改) | String | `'checked'`
-| icon-indeterminate-name | [图标名称](#/zh-CN/component/icon)，半选状态 | String | `'check-disabled'`
-| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
+### Checkbox Slots
+| 名称 | 说明 |
+|-|-|
+| icon | 未选中时的图标 |
+| checkedIcon | 选中时的图标 |
+| indeterminate | 半选时的图标 |
 ### CheckboxGroup Props
 
 | 字段 | 说明 | 类型 | 默认值
@@ -415,3 +420,19 @@ app.use(Icon);
 |----- | ----- | ----- 
 | toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选
 | toggleReverse | 反选 | -
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-checkbox-label-color| _#1d1e1e_ | -  |
+| --nut-checkbox-label-disable-color| _#999_ | -  |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
+| --nut-checkbox-label-margin-left| _15px_ | -  |
+| --nut-checkbox-label-font-size| _14px_ | -  |
+| --nut-checkbox-icon-font-size| _18px_ | -  |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |

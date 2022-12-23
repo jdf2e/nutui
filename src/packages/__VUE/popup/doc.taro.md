@@ -237,3 +237,15 @@ app.use(Overlay)
 | 名称 | 说明       |
 | ------ | ---------- |
 | default  | 自定义内嵌内容 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-popup-close-icon-margin| _16px_  | -  |
+| --nut-popup-border-radius| _20px_  | -  |

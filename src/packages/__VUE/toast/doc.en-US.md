@@ -287,3 +287,19 @@ toast.hide();
 | close-on-click-overlay | Whether to close when overlay is clicked                                                           | Boolean       | false              |
 | custom-class           | Custom Class                                                                                       | String        | -                  |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-toast-title-font-size| _16px_  | -  |
+| --nut-toast-text-font-size| _14px_  | -  |
+| --nut-toast-font-color| _var(--nut-white)_  | -  |
+| --nut-toast-inner-padding| _24px 30px_  | -  |
+| --nut-toast-inner-bg-color| _rgba(0, 0, 0, 0.8)_  | -  |
+| --nut-toast-inner-border-radius| _12px_  | -  |
+| --nut-toast-cover-bg-color| _rgba(0, 0, 0, 0)_  | -  |
+

@@ -7,7 +7,7 @@
 }
 
 .nut-menu-item {
-  &.active {
+  .active {
     font-weight: $menu-active-item-font-weight;
     color: $menu-item-active-text-color !important;
   }
@@ -30,7 +30,9 @@
     display: flex;
     align-items: center;
 
-    i {
+    .nut-menu-item__span {
+      display: flex;
+      align-items: center;
       margin-right: $menu-item-option-i-margin-right;
     }
   }

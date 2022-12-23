@@ -26,8 +26,15 @@
     </nut-menu>
     <h2>自定义图标</h2>
     <nut-menu>
-      <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+      <template #icon>
+        <TriangleDown />
+      </template>
+      <nut-menu-item v-model="state.value1" :options="state.options1" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2">
+        <template #icon>
+          <Checked></Checked>
+        </template>
+      </nut-menu-item>
     </nut-menu>
     <h2>向上展开</h2>
     <nut-menu direction="up">
@@ -44,7 +51,12 @@
 
 <script>
 import { ref, reactive, toRefs } from 'vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
 export default {
+  components: {
+    TriangleDown,
+    Checked
+  },
   props: {},
   setup() {
     const state = reactive({

@@ -2,12 +2,11 @@
   <div :class="classes" ref="scroller" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <div class="nut-pullrefresh-container" :style="getStyle">
       <div class="nut-pullrefresh-container-topbox" :style="getHeightStyle">
-        <nut-icon
-          class="nut-pullrefresh-container-topbox-icon"
-          v-bind="$attrs"
-          v-if="status == 'loading' && loadingIcon && !slots.loading"
-          :name="loadingIcon"
-        ></nut-icon>
+        <Loading
+          class="nut-icon-loading nut-pullrefresh-container-topbox-icon"
+          v-if="status == 'loading' && !slots.loading"
+        ></Loading>
+
         <div class="nut-pullrefresh-container-topbox-text">{{ getPullStatus }}</div>
 
         <slot v-if="status == 'pulling'" name="pulling"></slot>
@@ -27,6 +26,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useScrollParent } from '@/packages/utils/useScrollParent';
+import { Loading } from '@nutui/icons-vue';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
 
@@ -36,10 +36,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    loadingIcon: {
-      type: String,
-      default: 'loading'
-    },
+
     pullingTxt: {
       type: String,
       default: translate('pulling')
@@ -73,6 +70,7 @@ export default create({
     }
   },
   emits: ['change', 'refresh', 'update:modelValue'],
+  components: { Loading },
 
   setup(props, { emit, slots }) {
     const touch: any = useTouch();

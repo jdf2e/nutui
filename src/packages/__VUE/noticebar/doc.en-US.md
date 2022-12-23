@@ -258,3 +258,23 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | ---------- | --------------------------------------- | ------------ |
 | click      | Emitted when Noticebar is clicked       | event: Event |
 | close      | Emitted when Noticebar is closed        | event: Event |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ | -  |
+| --nut-noticebar-color| _#d9500b_ | -  |
+| --nut-noticebar-font-size| _14px_ | -  |
+| --nut-noticebar-height| _40px_ | -  |
+| --nut-noticebar-line-height| _24px_ | -  |
+| --nut-noticebar-left-icon-width| _16px_ | -  |
+| --nut-noticebar-right-icon-width| _16px_ | -  |
+| --nut-noticebar-box-padding| _0 16px_ | -  |
+| --nut-noticebar-wrapable-padding| _16px_ | -  |
+| --nut-noticebar-lefticon-margin| _0px 10px_ | -  |
+| --nut-noticebar-righticon-margin| _0px 10px_ | -  |

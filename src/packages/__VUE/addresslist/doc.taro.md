@@ -8,11 +8,10 @@
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList, Icon, Swipe, Button } from "@nutui/nutui";
+import { AddressList, Swipe, Button } from "@nutui/nutui";
 
 const app = createApp();
 app.use(AddressList);
-app.use(Icon);
 app.use(Swipe);
 app.use(Button);
 ```
@@ -296,3 +295,24 @@ const dataMapOptions = {
   addressName: "testaddressName",
 };
 ```
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-addresslist-bg |  _#fff_   |-  |
+| --nut-addresslist-border |  _#f0f0f0_   |-  |
+| --nut-addresslist-font-color |  _#333333_   |-  |
+| --nut-addresslist-font-size |  _16px_   |-  |
+| --nut-addresslist-mask-bg |  _rgba(0, 0, 0, 0.4)_   |-  |
+| --nut-addresslist-addr-font-color |  _#666666_   |-  |
+| --nut-addresslist-addr-font-size |  _12px_   |-  |
+| --nut-addresslist-set-bg |  _#f5a623_   |-  |
+| --nut-addresslist-del-bg |  _#e1251b_   |-  |
+| --nut-addresslist-contnts-contact-default |  _var(--nut-primary-color)_   |-  |
+| --nut-addresslist-contnts-contact-color |  _var(--nut-white)_   |-  |
+

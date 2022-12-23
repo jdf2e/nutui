@@ -124,3 +124,13 @@ Scrolling to the bottom of the list automatically loads more data.
 | loading  | Loading text |
 | loadingIcon  | Custom loading icon |
 | finished  | Finished text |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | -    |

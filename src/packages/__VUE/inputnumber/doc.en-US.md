@@ -274,3 +274,28 @@ Asynchronous modification through `change` event and `model-value`
 | change    | Triggered when the value changes           | value:  number , event : Event |
 | blur      | Triggered when the input box blur   | event: Event                   |
 | focus     | Triggered when the input box focus   | event: Event                   |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-inputnumber-icon-color| _var(--nut-title-color)_ | -  |
+| --nut-inputnumber-icon-void-color| _var(--nut-disable-color)_ | -  |
+| --nut-inputnumber-icon-size| _20px_ | -  |
+| --nut-inputnumber-input-font-size| _12px_ | -  |
+| --nut-inputnumber-input-font-color| _var(--nut-title-color)_ | -  |
+| --nut-inputnumber-input-background-color| _var(--nut-help-color)_ | -  |
+| --nut-inputnumber-input-border-radius| _4px_ | -  |
+| --nut-inputnumber-input-width| _40px_ | -  |
+| --nut-inputnumber-input-margin| _0 6px_ | -  |
+| --nut-inputnumber-input-border| _0_ | -  |
+| --nut-inputnumber-border| _0_ | -  |
+| --nut-inputnumber-border-radius| _0_ | -  |
+| --nut-inputnumber-height| _auto_ | -  |
+| --nut-inputnumber-line-height| _normal_ | -  |
+| --nut-inputnumber-border-box| _content-box_ | -  |
+| --nut-inputnumber-display| _flex_ | -  |

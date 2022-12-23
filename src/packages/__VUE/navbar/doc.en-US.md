@@ -155,9 +155,6 @@ export default {
         <nut-tab-pane title="Title3"> </nut-tab-pane>
       </nut-tabs>
     </template>
-    <template #icons>
-        <nut-icon class="icon" name="share"></nut-icon>
-      </template>
 
     <template #right>
       <HorizontalN class="right" width="16px"></HorizontalN>
@@ -222,3 +219,24 @@ export default {
 | content |  Customize the middle content of the navigation bar |
 | leftShow  | Custom icon of left arrow  |
 | titleIcon  | Custom icon in header |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-navbar-height| _44px_ | -  |
+| --nut-navbar-margin-bottom| _20px_ | -  |
+| --nut-navbar-padding| _0 16px_ | -  |
+| --nut-navbar-background| _var(--nut-white)_ | -  |
+| --nut-navbar-box-shadow| _0px 1px 7px 0px rgba(237, 238, 241, 1)_ | -  |
+| --nut-navbar-color| _var(--nut-title-color2)_ | -  |
+| --nut-navbar-title-base-font| _var(--nut-font-size-2)_ | -  |
+| --nut-navbar-title-font| _var(--nut-font-size-2)_ | -  |
+| --nut-navbar-title-font-weight| _0_ | -  |
+| --nut-navbar-title-font-color| _var(--nut-navbar-color)_ | -  |
+| --nut-navbar-title-width| _100px_ | -  |
+| --nut-navbar-title-icon-margin| _0 0 0 13px_ | -  |

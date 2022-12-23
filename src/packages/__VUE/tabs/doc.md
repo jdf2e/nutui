@@ -376,3 +376,30 @@ export default {
 | click  | 点击标签时触发           | {title,paneKey,disabled} |
 | change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-tabs-tab-smile-color| _var(--nut-primary-color)_  |  -  |
+| --nut-tabs-titles-border-radius| _0_  |  -  |
+| --nut-tabs-titles-item-large-font-size| _var(--nut-font-size-3)_  |  -  |
+| --nut-tabs-titles-item-font-size| _var(--nut-font-size-2)_  |  -  |
+| --nut-tabs-titles-item-small-font-size| _var(--nut-font-size-1)_  |  -  |
+| --nut-tabs-titles-item-color| _var(--nut-title-color)_  |  -  |
+| --nut-tabs-titles-item-active-color| _var(--nut-title-color)_  |  -  |
+| --nut-tabs-titles-background-color| _var(--nut-help-color)_  |  -  |
+| --nut-tabs-horizontal-tab-line-color| _linear-gradient(90deg,var(--nut-primary-color) 0%,var(--nut-active-color) 100%)_  |  -  |
+| --nut-tabs-horizontal-titles-height| _46px_  |  -  |
+| --nut-tabs-horizontal-titles-item-min-width| _50px_  |  -  |
+| --nut-tabs-horizontal-titles-item-active-line-width| _40px_  |  -  |
+| --nut-tabs-vertical-tab-line-color| _linear-gradient(180deg,var(--nut-primary-color) 0%,var(--nut-active-color) 100%)_  |  -  |
+| --nut-tabs-vertical-titles-item-height| _40px_  |  -  |
+| --nut-tabs-vertical-titles-item-active-line-height| _14px_  |  -  |
+| --nut-tabs-vertical-titles-width| _100px_  |  -  |
+| --nut-tabs-titles-item-line-border-radius| _0_  |  -  |
+| --nut-tabs-titles-item-line-opacity| _1_  |  -  |
+
