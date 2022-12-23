@@ -110,7 +110,7 @@
         :color="`#D9500B`"
       >
         <template v-slot:rightIcon>
-          <nut-icon name="fabulous" color="#f0250f"> </nut-icon>
+          <Fabulous />
         </template>
       </nut-noticebar>
     </div>
@@ -119,9 +119,10 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import { Fabulous } from '@nutui/icons-vue-taro';
 
 export default {
-  props: {},
+  components: { Fabulous },
   setup() {
     const state = reactive({
       horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
