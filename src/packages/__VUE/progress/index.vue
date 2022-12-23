@@ -39,7 +39,9 @@
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
       </template>
       <template v-else-if="status == 'icon'">
-        <nut-icon v-bind="$attrs" size="16px" :name="iconName" :color="iconColor"></nut-icon>
+        <slot name="iconName">
+          <Checked width="15px" height="15px" color="#439422"></Checked>
+        </slot>
       </template>
     </div>
   </div>
@@ -49,7 +51,9 @@
 import { computed, onMounted, useSlots, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
+import { Checked } from '@nutui/icons-vue';
 export default create({
+  components: { Checked },
   props: {
     percentage: {
       type: [Number, String],
@@ -87,14 +91,6 @@ export default create({
     textBackground: {
       type: String,
       default: ''
-    },
-    iconName: {
-      type: String,
-      default: 'checked'
-    },
-    iconColor: {
-      type: String,
-      default: '#439422'
     },
     isShowPercentage: {
       type: Boolean,

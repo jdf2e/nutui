@@ -383,11 +383,11 @@ export default {
 | 参数                             | 说明                           | 类型                    | 默认值  |
 |----------------------------------|--------------------------------|-------------------------|---------|
 | active-color                     | 选项的选中态图标颜色           | String                  | #F2270C |
-| close-on-click-overlay `v3.1.21` | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| scroll-fixed `v3.1.22`           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
-| title-class `v3.1.22`            | 自定义标题样式类               | String                  | -       |
-| lock-scroll `v3.1.22`            | 背景是否锁定                   | Boolean                 | true    |
-| title-icon `3.2.1`               | 自定义标题图标                 | String                  | -       |
+| close-on-click-overlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
+| scroll-fixed           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
+| title-class            | 自定义标题样式类               | String                  | -       |
+| lock-scroll            | 背景是否锁定                   | Boolean                 | true    |
+| title-icon              | 自定义标题图标                 | String                  | -       |
 
 
 ### MenuItem Props
@@ -398,12 +398,12 @@ export default {
 | options                       | 选项数组                                | Array   | -                |
 | disabled                      | 是否禁用菜单                            | Boolean | false            |
 | cols                          | 可以设置一行展示多少列 options          | Number  | 1                |
-| option-icon `v3.1.22`         | 自定义选项图标                          | String  | 'Check'          |
-| direction  `v3.1.22`          | 菜单展开方向，可选值为up                | String  | 'down'           |
-| active-title-class `v3.2.0`   | 选项选中时自定义标题样式类              | String  | -                |
-| inactive-title-class `v3.2.0` | 选项非选中时自定义标题样式类            | String  | -                |
-| font-class-name`v3.2.1`       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
-| class-prefix`v3.2.1`          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
+| option-icon         | 自定义选项图标                          | String  | 'Check'          |
+| direction          | 菜单展开方向，可选值为up                | String  | 'down'           |
+| active-title-class   | 选项选中时自定义标题样式类              | String  | -                |
+| inactive-title-class | 选项非选中时自定义标题样式类            | String  | -                |
+| font-class-name       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
+| class-prefix          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
 
 ### MenuItem Events
 
@@ -411,5 +411,5 @@ export default {
 |--------|----------------------|--------------|
 | change | 选择 option 之后触发 | 选择的 value |
 | toggle | 切换菜单展示状态，传 `true` 为显示，`false` 为隐藏，不传参为取反 | show?: boolean |
-| open `v3.2.7` | 打开菜单栏时触发 | - |
-| close `v3.2.7` | 关闭菜单栏时触发 | - |
+| open | 打开菜单栏时触发 | - |
+| close | 关闭菜单栏时触发 | - |

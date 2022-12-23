@@ -6,27 +6,16 @@
   position: relative;
   flex: 0 0 auto; // 防止被压缩
   text-align: center;
-  > img {
+  img {
     width: 100%;
     height: 100%;
   }
-  .nut-avatar__icon {
+  .nut-icon {
     background-size: 100% 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  .nut-icon__img {
-    width: 100%;
-    height: 100%;
-  }
-  .nut-avatar__text {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
   }
 }
 .nut-avatar-large {

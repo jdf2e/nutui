@@ -35,11 +35,12 @@
     <div>
       <nut-cell>
         <nut-progress percentage="60" :text-inside="true">
-          <nut-icon
-            style="display: block"
-            size="30"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          ></nut-icon>
+          <img
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            width="30"
+            height="30"
+            style="display: block; width: 30px; height: 30px"
+          />
         </nut-progress>
       </nut-cell>
     </div>
@@ -65,17 +66,19 @@
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong" />
+        <nut-progress percentage="50" status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress
           percentage="100"
           stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           stroke-width="15"
-          status="success"
-          icon-name="issue"
-          icon-color="red"
-        />
+          status="icon"
+        >
+          <template #iconName>
+            <Issue color="red" width="15px" height="15px"></Issue>
+          </template>
+        </nut-progress>
       </nut-cell>
     </div>
     <h2>设置百分比</h2>
@@ -93,7 +96,9 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import { Issue } from '@nutui/icons-vue-taro';
 export default {
+  components: { Issue },
   props: {},
   setup() {
     const val = ref(0);

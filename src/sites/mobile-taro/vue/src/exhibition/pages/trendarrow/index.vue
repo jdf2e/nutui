@@ -44,17 +44,20 @@
     </nut-cell>
     <view class="title">自定义图标</view>
     <nut-cell>
-      <nut-trend-arrow :rate="10.2365" :up-icon-name="'success'" />
-      <nut-trend-arrow :rate="-10.2365" :down-icon-name="'failure'" />
       <nut-trend-arrow :rate="10.2365">
-        <nut-icon name="heart-fill" color="#fa2c19" size="12px"></nut-icon>
+        <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      </nut-trend-arrow>
+      <nut-trend-arrow :rate="-10.2365">
+        <template #downIcon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Success, Failure } from '@nutui/icons-vue-taro';
 export default defineComponent({
+  components: { Success, Failure },
   props: {},
   setup() {
     return {};

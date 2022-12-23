@@ -375,9 +375,9 @@ Use the children field of the Columns attribute to cascade options
 | title                  | Toolbar title                   | String  | -      |
 | cancel-text            | Text of cancel button               | String  | cancel   |
 | ok-text                | Text of confirm button               | String  | confirm   |
-| three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
-| swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
-| safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| three-dimensional          | Turn on 3D effects      | Boolean  | true   |
+| swipe-duration          | Duration of the momentum animation        | Number、String  | 1000   |
+| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 | visible-option-num          | Count of visible columns       | number \| string | 7               |
 | option-height         | Option height             | number \| string | 36     |
 | show-toolbar         | Whether to show toolbar             | Boolean | true    |

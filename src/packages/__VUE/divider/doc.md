@@ -115,7 +115,7 @@ app.use(Divider);
 | dashed         | 是否使用虚线               | Boolean | false                |
 | hairline        | 是否使用 0.5px 线                         | Boolean | true                |
 | content-position        | 内容位置，可选值为left right                         | String | center                |
-| direction `v3.1.21`         | 水平还是垂直类型               | String | 'horizontal'                |
+| direction        | 水平还是垂直类型               | String | 'horizontal'                |
 
 ### Slots
 

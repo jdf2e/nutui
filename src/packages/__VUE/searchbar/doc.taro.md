@@ -218,21 +218,21 @@ app.use(Icon);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | v-model	         | 当前输入的值   | Number / String | ''      |
-| label `v3.1.21`| 搜索框左侧文本 | String | '' |
+| label| 搜索框左侧文本 | String | '' |
 | shape | 搜索框形状，可选值为 round | String | square |
 | max-length         | 最大输入长度   | [Number,String] | '9999'      |
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
-| clear-icon `v3.2.2`         | 自定义清除按钮图标 | String | "circle-close"     |
+| clear-icon         | 自定义清除按钮图标 | String | "circle-close"     |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | confirm-type   | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
-| autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
-| focus-style `v3.2.2` | 聚焦时搜索框样式 | Object | - |
-| disabled `v3.1.21` | 是否禁用输入框 | boolean | false |
-| readonly `v3.1.21`| 输入框只读 | boolean | false |
-| input-align `v3.1.21`| 对齐方式，可选`center` `right` | string | `left` |
+| autofocus | 是否自动聚焦 | boolean | false |
+| focus-style | 聚焦时搜索框样式 | Object | - |
+| disabled | 是否禁用输入框 | boolean | false |
+| readonly | 输入框只读 | boolean | false |
+| input-align | 对齐方式，可选`center` `right` | string | `left` |
 
 
 
@@ -245,9 +245,9 @@ app.use(Icon);
 | blur  | 失焦时触发 | val, event |
 | clear  | 点击清空时触发 | val |
 | search  | 按下 ENTER 键时触发 | val, event |
-| click-input `v3.1.21`|	点击输入区域时触发	 |	event |
-| click-left-icon `v3.1.21`|	点击左侧图标时触发 |	val, event |
-| click-right-icon `v3.1.21`|	点击右侧图标时触发 |	val, event |
+| click-input |	点击输入区域时触发	 |	event |
+| click-left-icon |	点击左侧图标时触发 |	val, event |
+| click-right-icon |	点击右侧图标时触发 |	val, event |
 
 ### Slots
 

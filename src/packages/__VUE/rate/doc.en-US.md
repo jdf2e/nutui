@@ -166,7 +166,7 @@ export default {
 | readonly           | read-only                                                                        | Boolean | false            |
 | disabled           | whether to disable                                                               | Boolean | false            |
 | spacing            | spacing                                                                          | Number  | 20               |
-| touchable`v3.1.22` | Whether to allow select rate by touch gesture                                    | Boolean | true             |
+| touchable | Whether to allow select rate by touch gesture                                    | Boolean | true             |
 
 
 ### Events

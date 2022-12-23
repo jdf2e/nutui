@@ -527,7 +527,7 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
 | error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
 | format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type `v3.2.8` | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
+| confirm-type | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
 
 ### Events
 
@@ -547,8 +547,8 @@ Use `label-align` prop to align the label, `input-align` prop to align the input
 | Name  | Description     | 
 |-------|----------|
 | button | Insert button |
-| input `v3.1.22` | Custom input |
-| rightExtra `v3.2.7` | Customize the rightmost area of the input box |
+| input | Custom input |
+| rightExtra | Customize the rightmost area of the input box |
 
 
 

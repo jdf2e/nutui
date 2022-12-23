@@ -56,7 +56,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading color="red" />
+  <nut-switch v-model="checked" loading />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -166,9 +166,6 @@ app.use(Switch);
 | v-model        | Status of Switch       | Boolean ｜ String ｜ Number | `false`  |
 | disable        | Disable status         | Boolean | `false`               |
 | loading        | Loading status         | Boolean | `false`               |
-| name           | [Name of icon](#/en-US/component/icon) | String | `loading`               |
-| color          | [Color of icon](#/en-US/component/icon)，only takes effect in `loading` state | String | -     |
-| size           | [Size of icon](#/en-US/component/icon)，only takes effect in `loading` state  | String ｜ Number | `12px`   |
 | active-color   | Background color when active | String  | `#fa2c19`    |
 | inactive-color | Background color when inactive | String  | `#ebebeb` | 
 | active-text    | Word description when active   | String  | -         |
@@ -176,6 +173,11 @@ app.use(Switch);
 | active-value   | Value when active   | Boolean ｜ String ｜ Number  | `true`  |
 | inactive-value | Value when inactive   | Boolean ｜ String ｜ Number  | `false`  |
 
+### Slots
+
+|Name|Description|
+|-|-|
+|icon| loading icon slot |
 
 ### Events
 

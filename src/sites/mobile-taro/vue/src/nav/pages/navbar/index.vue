@@ -7,7 +7,7 @@
         <div>返回</div>
       </template>
       <template #right>
-        <nut-icon class="right" name="share-n"></nut-icon>
+        <ShareN width="16px"></ShareN>
       </template>
     </nut-navbar>
 
@@ -26,11 +26,14 @@
       @on-click-icon="icon"
       @on-click-right="rightClick"
       title="购物车"
-      titIcon="cart2"
+      :titleIcon="true"
       desc="编辑"
     >
+      <template #titleIcon>
+        <Cart2 width="16px"></Cart2>
+      </template>
       <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
+        <MoreX class="right" width="16px"></MoreX>
       </template>
     </nut-navbar>
 
@@ -44,7 +47,7 @@
       </template>
 
       <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
+        <MoreX class="right" width="16px"></MoreX>
       </template>
     </nut-navbar>
 
@@ -63,7 +66,7 @@
       </template>
 
       <template #right>
-        <nut-icon class="right" name="horizontal-n"></nut-icon>
+        <HorizontalN class="right" width="16px"></HorizontalN>
       </template>
     </nut-navbar>
   </div>
@@ -71,7 +74,9 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
+import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue-taro';
 export default defineComponent({
+  components: { ShareN, Cart2, MoreX, HorizontalN },
   setup({}) {
     const tab1value = ref(0);
     const tab2value = ref(0);
