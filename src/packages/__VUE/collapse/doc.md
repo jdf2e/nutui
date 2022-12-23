@@ -126,6 +126,10 @@ export default {
 import { reactive, ref, toRefs } from 'vue';
 import { Notice, Follow } from '@nutui/icons-vue';
 export default {
+  components: {
+    Notice,
+    Follow
+  },
   setup() {
     const activeName = ref(1);
     const title = reactive({
@@ -135,8 +139,6 @@ export default {
     return {
       activeName,
       ...toRefs(title),
-      Notice,
-      Follow
     };
   }
 }

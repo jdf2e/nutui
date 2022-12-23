@@ -90,7 +90,6 @@ app.use(Icon);
 
       return {
         ...toRefs(state),
-        Search2
       };
     }
   };

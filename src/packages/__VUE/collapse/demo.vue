@@ -124,6 +124,10 @@ const initTranslate = () =>
     }
   });
 export default createDemo({
+  components: {
+    Notice,
+    Follow
+  },
   setup(props, context) {
     initTranslate();
     const data = reactive({
@@ -142,8 +146,6 @@ export default createDemo({
       console.log(`点击了name是${name}的面板`);
     };
     return {
-      Notice,
-      Follow,
       translate,
       change,
       ...toRefs(data)
