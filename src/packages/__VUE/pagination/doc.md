@@ -7,11 +7,10 @@
 ### 安装
 ```javascript
 import { createApp } from 'vue';
-import { Pagination,Icon } from '@nutui/nutui';
+import { Pagination } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Pagination);
-app.use(Icon);
 ```    
     
 ### 基础用法

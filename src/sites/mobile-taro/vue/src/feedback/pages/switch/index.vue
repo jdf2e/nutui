@@ -12,7 +12,7 @@
 
     <h2>加载状态</h2>
     <nut-cell>
-      <nut-switch v-model="checked" loading color="red" />
+      <nut-switch v-model="checked" loading />
     </nut-cell>
 
     <h2>change事件</h2>
@@ -34,12 +34,19 @@
     <nut-cell>
       <nut-switch v-model="checked" @change="switchChange" active-text="开" inactive-text="关" />
     </nut-cell>
+
+    <h2>自定义加载图标</h2>
+    <nut-cell>
+      <nut-switch v-model="checked" @change="switchChange"><Loading /></nut-switch>
+    </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
+import { Loading } from '@nutui/icons-vue-taro';
 export default {
+  components: { Loading },
   setup() {
     let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);

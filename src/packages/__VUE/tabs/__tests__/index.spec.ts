@@ -4,11 +4,13 @@ import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
 import { JoySmile } from '@nutui/icons-vue';
 import NutSticky from '../../sticky/index.vue';
+import { Dongdong } from '@nutui/icons-vue';
 
 beforeAll(() => {
   config.global.components = {
     JoySmile,
-    NutSticky
+    NutSticky,
+    Dongdong
   };
 });
 
@@ -75,7 +77,8 @@ test('base Tabs Slots', async () => {
   const wrapper = mount({
     components: {
       'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
+      'nut-tab-pane': TabPane,
+      Dongdong
     },
     template: `
     <nut-tabs v-model="state.tab7value">
@@ -87,7 +90,7 @@ test('base Tabs Slots', async () => {
           :key="item.paneKey"
           v-for="item in state.list6"
         >
-          <nut-icon v-if="item.icon" :name="item.icon" />
+          <Dongdong />
           <span class="nut-tabs__titles-item__text">{{ item.title }}</span>
           <span class="nut-tabs__titles-item__line"></span>
         </div>

@@ -16,7 +16,7 @@
               <router-link :to="_package.name.toLowerCase()"
                 >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
               </router-link>
-              <nut-icon size="14px" color="#979797" name="right"></nut-icon>
+              <Right color="#979797" name="right"></Right>
             </li>
           </template>
         </ul>
@@ -29,8 +29,10 @@
 import { defineComponent, reactive } from 'vue';
 import { nav } from '@/config.json';
 import { isJDT } from '@/sites/assets/util';
+import { Right } from '@nutui/icons-vue';
 export default defineComponent({
   name: 'doc',
+  components: { Right },
   setup() {
     let baseInfo = {
       logo: 'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png',

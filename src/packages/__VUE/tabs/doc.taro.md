@@ -159,7 +159,6 @@ export default {
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
     return { state };
   }
@@ -288,7 +287,7 @@ export default {
   <template v-slot:titles>
     <div class="nut-tabs__titles-item" @click="state.tab7value=item.paneKey"
       :class="{active:state.tab7value==item.paneKey}" :key="item.paneKey" v-for="item in state.list6">
-      <nut-icon v-if="item.icon" :name="item.icon" />
+      <Dongdong />
       <span class="nut-tabs__titles-item__text">{{item.title}}</span>
       <span class="nut-tabs__titles-item__line"></span>
     </div>
@@ -300,20 +299,20 @@ export default {
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
+import { Dongdong } from '@nutui/icons-vue-taro';
 export default {
+  components: { Dongdong },
   setup() {
     const state = reactive({
       tab7value: 'c1',
        list6: [
         {
           title: '自定义 1',
-          paneKey: 'c1',
-          icon: 'dongdong'
+          paneKey: 'c1'
         },
         {
           title: '自定义 2',
-          paneKey: 'c2',
-          icon: 'JD'
+          paneKey: 'c2'
         },
         {
           title: '自定义 3',
