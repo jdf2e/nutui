@@ -8,12 +8,12 @@ The multiple selection button is used to select.
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
-
+import { Checkbox,CheckboxGroup } from '@nutui/nutui';
+import { Checklist } from '@nutui/icons-vue';
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Icon);
+app.use(Checklist);
 ```
 
 ### Basic Usage
@@ -130,14 +130,17 @@ app.use(Icon);
 :::
 
 ### Custom icon
-
-It is recommended to set the `icon-name` and `icon-active-name` attributes at the same time
+Customize the icon through the slot, it is recommended to set the `icon` and `checkedIcon` two slots at the same time
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-checkbox>
+  <nut-checkbox v-model="checkbox7" >
+    Custom icon
+    <template #icon> <Checklist /> </template>
+    <template #checkedIcon> <Checklist color="red" /> </template>
+  </nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -375,15 +378,15 @@ When the value changes, the `change` event will be triggered
 | disabled | Disable selection | Boolean | `false` 
 | text-position | The position of the text, optional value：`left`,`right` | String | `right` 
 | icon-size | [Icon Size](#/en-US/icon) | String、Number | `18` 
-| icon-name | [Icon Name](#/en-US/icon)，Before selection (it is suggested to modify it together with `icon-active-name`) | String | `'check-normal'` 
-| icon-active-name | [Icon Name](#/en-US/icon)，After selection (it is suggested to modify it together with `icon-name`) | String | `'checked'`
-| icon-indeterminate-name | [Icon Name](#/en-US/icon)，Semi selected state | String | `'check-disabled'` 
-| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` 
-| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` 
 | label | Text content of the check box | String | - 
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
 
-
+### Checkbox Slots
+| Name | Description |
+|-|-|
+| icon | Icon when not selected |
+| checkedIcon | Icon when selected |
+| indeterminate | Icon when half selected |
 ### CheckboxGroup Props
 
 | Attribute | Description | Type   | Default 

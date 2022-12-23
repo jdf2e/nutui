@@ -13,7 +13,7 @@ config.nav.forEach((item) => {
   });
 });
 styleMap.forEach((value) => {
-  if (value.chilren?.length !== 0) {
+  if (value.children && value.children.length > 0) {
     value.children.forEach((item, index) => {
       value.children[index] = styleMap.get(item);
     });
