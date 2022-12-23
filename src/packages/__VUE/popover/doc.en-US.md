@@ -427,3 +427,21 @@ The List property is an array of objects, each object in the array is configured
 | choose | Triggered when an option is clicked |
 | open   | Triggered when the menu is opened |
 | close  | Fired when the menu is closed |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-popover-white-background-color| _rgba(255, 255, 255, 1)_  | -  |
+|  --nut-popover-dark-background-color| _rgba(75, 76, 77, 1)_  | -  |
+|  --nut-popover-border-bottom-color| _rgba(229, 229, 229, 1)_  | -  |
+|  --nut-popover-primary-text-color| _rgba(51, 51, 51, 1)_  | -  |
+|  --nut-popover-disable-color| _rgba(154, 155, 157, 1)_  | -  |
+|  --nut-popover-menu-item-padding| _8px 0_  | -  |
+|  --nut-popover-menu-item-margin| _0 8px_  | -  |
+|  --nut-popover-menu-name-line-height| _normal_  | -  |

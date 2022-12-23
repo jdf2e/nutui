@@ -162,4 +162,18 @@ const navList = reactive([
 | btn  | slot custom button                |
 | list | slot custom expanded list content |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-fixednav-bg-color| _var(--nut-white)_  | -  |
+| --nut-fixednav-font-color| _var(--nut-black)_  | -  |
+| --nut-fixednav-index| _201_  | -  |
+| --nut-fixednav-btn-bg| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  | -  |
+| --nut-fixednav-item-active-color| _var(--nut-primary-color)_  | -  |
+
     

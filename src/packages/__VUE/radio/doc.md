@@ -233,3 +233,25 @@ app.use(Checklist);
 | 字段   | 说明         | 回调参数                                           |
 |--------|--------------|----------------------------------------------------|
 | change | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-radio-label-font-color|  _#1d1e1e_  | -  |
+|  --nut-radio-label-font-active-color|  _var(--nut-primary-color)_  | -  |
+|  --nut-radio-label-disable-color|  _#999_  | -  |
+|  --nut-radio-icon-disable-color|  _#d6d6d6_  | -  |
+|  --nut-radio-label-button-border-color|  _var(--nut-primary-color)_  | -  |
+|  --nut-radio-label-button-background|  _var(--nut-active-color)_  | -  |
+|  --nut-radio-label-margin-left|  _15px_  | -  |
+|  --nut-radio-button-border-radius|  _15px_  | -  |
+|  --nut-radio-label-font-size|  _14px_  | -  |
+|  --nut-radio-button-font-size|  _12px_  | -  |
+|  --nut-radio-button-padding|  _5px 18px_  | -  |
+|  --nut-radio-icon-font-size|  _18px_  | -  |
+|  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  | -  |

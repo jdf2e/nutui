@@ -118,4 +118,23 @@ export default {
 |--------|--------------|----------|
 | click  | 点击事件回调 | 无       |
 | closed | 关闭事件回调 | 无       |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-notify-text-color| _var(--nut-white)_  | -  |
+|  --nut-notify-padding| _12px 0_  | -  |
+|  --nut-notify-font-size| _14px_  | -  |
+|  --nut-notify-height| _44px_  | -  |
+|  --nut-notify-line-height| _auto_  | -  |
+|  --nut-notify-base-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
+|  --nut-notify-primary-background-color| _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_  | -  |
+|  --nut-notify-success-background-color| _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_  | -  |
+|  --nut-notify-danger-background-color| _rgba(250, 50, 25, 1)_  | -  |
+|  --nut-notify-warning-background-color| _linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)_  | -  |
     

@@ -176,3 +176,14 @@ export default {
 |---------|---------------|
 | default | Skeleton screen display content  |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-skeleton-content-avatar-background-color| _#efefef_  | -  |
+| --nut-skeleton-content-line-background-color| _#efefef_  | -  |
+| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | -  |

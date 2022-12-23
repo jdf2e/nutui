@@ -407,3 +407,20 @@ export default {
 | ------ | -------------- |
 | button | custom slide button |
 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+|  --nut-range-tip-font-color| _#333333_  |  -  |
+|  --nut-range-bg-color| _var(--nut-active-color)_  |  -  |
+|  --nut-range-bg-color-tick| _#fa958c_  |  -  |
+|  --nut-range-bar-bg-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  |  -  |
+|  --nut-range-bar-btn-bg-color| _var(--nut-white)_  |  -  |
+|  --nut-range-bar-btn-width| _24px_  |  -  |
+|  --nut-range-bar-btn-height| _24px_  |  -  |
+|  --nut-range-bar-btn-border| _1px solid var(--nut-primary-color)_  |  -  |
+

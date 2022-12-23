@@ -164,3 +164,14 @@ The optional attributes are as follows:
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
 | on-submit| Method of submitting form for verification  | Promise  |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-invoice-padding       | _ 10px 10px 20px_        | -    |

@@ -35,10 +35,10 @@
 import { reactive, toRefs } from 'vue';
 import config from '../../../../../../config.json';
 import Taro from '@tarojs/taro';
-import { Right } from '@nutui/icons-vue-taro'
+import { Right } from '@nutui/icons-vue-taro';
 export default {
   name: 'NutUI',
-  components:{ Right },
+  components: { Right },
   onShareAppMessage() {
     return {
       title: '',
