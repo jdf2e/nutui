@@ -69,7 +69,6 @@ import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 import { Close } from '@nutui/icons-vue';
-import Popover from '../popover/index.vue';
 
 interface StepOptions {
   target: Element;
@@ -81,7 +80,6 @@ interface StepOptions {
 const { create } = createComponent('tour');
 export default create({
   components: {
-    [Popover.name]: Popover,
     Close
   },
   props: {
