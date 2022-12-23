@@ -25,6 +25,7 @@ import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import Picker from '../picker/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
+import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
 const { componentName, create } = createComponent('date-picker');
 
@@ -84,7 +85,7 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<import('./type').Formatter>,
+      type: Function as PropType<Formatter>,
       default: null
     },
     // 是否开启3D效果
@@ -97,7 +98,7 @@ export default create({
       type: [Number, String],
       default: 1000
     },
-    filter: Function as PropType<import('./type').Filter>,
+    filter: Function as PropType<Filter>,
     showToolbar: {
       type: Boolean,
       default: true

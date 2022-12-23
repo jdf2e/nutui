@@ -67,13 +67,12 @@
 import { computed, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
-import { FileItem } from './type';
+import { FileItem, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.taro.vue';
 import Button from '../button/index.taro.vue';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
-import { isPromise } from '@/packages/utils/util';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 export default create({
   components: {
@@ -89,11 +88,11 @@ export default create({
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
     sizeType: {
-      type: Array as PropType<import('./type').SizeType[]>,
+      type: Array as PropType<SizeType[]>,
       default: () => ['original', 'compressed']
     },
     sourceType: {
-      type: Array as PropType<import('./type').SourceType[]>,
+      type: Array as PropType<SourceType[]>,
       default: () => ['album', 'camera']
     },
     timeout: { type: [Number, String], default: 1000 * 30 },
@@ -125,7 +124,7 @@ export default create({
     },
     beforeDelete: {
       type: Function as PropType<Interceptor>,
-      default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
+      default: (file: FileItem, files: FileItem[]) => {
         return true;
       }
     },
@@ -143,7 +142,7 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList = reactive(props.fileList) as Array<import('./type').FileItem>;
+    const fileList = reactive(props.fileList) as Array<FileItem>;
     let uploadQueue: Promise<UploaderTaro>[] = [];
 
     const classes = computed(() => {
@@ -182,11 +181,11 @@ export default create({
       });
     };
 
-    const fileItemClick = (fileItem: import('./type').FileItem) => {
+    const fileItemClick = (fileItem: FileItem) => {
       emit('file-item-click', { fileItem });
     };
 
-    const executeUpload = (fileItem: import('./type').FileItem, index: number) => {
+    const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
@@ -314,7 +313,7 @@ export default create({
       return files;
     };
 
-    const deleted = (file: import('./type').FileItem, index: number) => {
+    const deleted = (file: FileItem, index: number) => {
       fileList.splice(index, 1);
       emit('delete', {
         file,
@@ -323,7 +322,7 @@ export default create({
       });
     };
 
-    const onDelete = (file: import('./type').FileItem, index: number) => {
+    const onDelete = (file: FileItem, index: number) => {
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList],

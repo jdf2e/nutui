@@ -41,7 +41,7 @@ textarea {
 
   .input-text,
   &__text--readonly {
-    width: 90%;
+    width: 100%;
     padding: 0;
     // padding-right: 35px;
     line-height: inherit;
@@ -51,6 +51,7 @@ textarea {
     text-decoration: none;
     background: transparent;
     resize: none;
+    flex: 1;
   }
 
   &__label {
@@ -71,6 +72,7 @@ textarea {
   &-box {
     position: relative;
     width: 100%;
+    display: flex;
   }
   &-disabled-mask {
     position: absolute;
@@ -80,16 +82,14 @@ textarea {
     left: 0;
     z-index: 2;
   }
-  &-error-message {
-    color: $input-required-color;
-    font-size: 12px;
-  }
   &-word-limit {
     display: flex;
     justify-content: flex-end;
-    margin-top: 4px;
     color: #808080;
     font-size: 12px;
+    padding: 0 10px;
+    // margin-top: -50%;
+    // line-height: var(--van-field-word-limit-line-height);
   }
   &-left-icon,
   &-right-icon {
@@ -137,9 +137,17 @@ textarea {
       -webkit-text-fill-color: $input-disabled-color;
     }
   }
-  &-error,
-  &-error::placeholder {
+  &--error,
+  &--error::placeholder {
     color: $input-required-color;
     -webkit-text-fill-color: $input-required-color;
+  }
+}
+
+.nut-form-item {
+  .nut-input {
+    padding: 0px;
+    margin: 0px;
+    line-height: var(--nut-cell-line-height);
   }
 }

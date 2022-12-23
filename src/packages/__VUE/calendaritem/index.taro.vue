@@ -77,7 +77,7 @@ import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
-import { MonthInfo, Day } from './type';
+import { MonthInfo, Day, CalendarTaroState } from './type';
 import NutScrollView from '../scrollView/index.taro.vue';
 import { isArray } from '@/packages/utils/util';
 const TARO_ENV = Taro.getEnv();
@@ -170,7 +170,7 @@ export default create({
       return slots.bottomInfo;
     });
     // state
-    const state: import('./type').CalendarTaroState = reactive({
+    const state: CalendarTaroState = reactive({
       yearMonthTitle: '',
       defaultRange: [0, 1],
       compConthsDatas: [],

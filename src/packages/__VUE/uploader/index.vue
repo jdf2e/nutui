@@ -115,7 +115,7 @@ export default create({
     },
     beforeDelete: {
       type: Function as PropType<Interceptor>,
-      default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
+      default: (file: FileItem, files: FileItem[]) => {
         return true;
       }
     },
@@ -133,7 +133,7 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList: import('./type').FileItem[] = reactive(props.fileList) as Array<import('./type').FileItem>;
+    const fileList: FileItem[] = reactive(props.fileList) as Array<FileItem>;
     let uploadQueue: Promise<Uploader>[] = [];
 
     const classes = computed(() => {
@@ -162,11 +162,11 @@ export default create({
       el.value = '';
     };
 
-    const fileItemClick = (fileItem: import('./type').FileItem) => {
+    const fileItemClick = (fileItem: FileItem) => {
       emit('file-item-click', { fileItem });
     };
 
-    const executeUpload = (fileItem: import('./type').FileItem, index: number) => {
+    const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
       uploadOption.formData = fileItem.formData;
@@ -288,7 +288,7 @@ export default create({
       return files;
     };
 
-    const deleted = (file: import('./type').FileItem, index: number) => {
+    const deleted = (file: FileItem, index: number) => {
       fileList.splice(index, 1);
       emit('delete', {
         file,
@@ -297,7 +297,7 @@ export default create({
       });
     };
 
-    const onDelete = (file: import('./type').FileItem, index: number) => {
+    const onDelete = (file: FileItem, index: number) => {
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList],
