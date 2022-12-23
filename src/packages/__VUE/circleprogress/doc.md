@@ -146,3 +146,16 @@ export default {
 |----- | ----- |
 | default | 自定义文字内容| 
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-circleprogress-primary-color| _var(--nut-primary-color)_ | -  |
+| --nut-circleprogress-path-color| _#e5e9f2_ | -  |
+| --nut-circleprogress-text-color| _#000000_ | -  |
+| --nut-circleprogress-text-size| _var(--nut-font-size-3)_ | -  |
+

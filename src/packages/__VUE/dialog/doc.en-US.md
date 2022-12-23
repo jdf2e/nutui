@@ -280,3 +280,16 @@ export default {
 | header  | Custom title   |
 | default | Custom default |
 | footer  | Custom footer  |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-dialog-width| _296px_  | -  |
+| --nut-dialog-header-font-weight| _normal_  | -  |
+| --nut-dialog-header-color| _rgba(38, 38, 38, 1)_  | -  |
+| --nut-dialog-footer-justify-content| _space-around_  | -  |

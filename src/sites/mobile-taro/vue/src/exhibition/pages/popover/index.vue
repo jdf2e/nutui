@@ -45,7 +45,7 @@
       <template #content>
         <div class="self-content">
           <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <nut-icon :name="item.name" size="15"></nut-icon>
+            <component :is="renderIcon(item.name)"></component>
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
         </div>
@@ -90,7 +90,9 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, ref, toRefs, h } from 'vue';
+import { renderIcon } from '../../../../../../../packages/utils/create';
+import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
 
 export default {
   setup() {
@@ -151,15 +153,28 @@ export default {
     const itemList = reactive([
       {
         name: 'option1',
-        icon: 'my2'
+        icon: () => {
+          return h(My2, {
+            width: '14px',
+            color: 'rgba(250, 44, 25, 1)'
+          });
+        }
       },
       {
         name: 'option2',
-        icon: 'cart2'
+        icon: () => {
+          return h(Cart2, {
+            width: '14px'
+          });
+        }
       },
       {
         name: 'option3',
-        icon: 'location2'
+        icon: () => {
+          return h(Location, {
+            width: '14px'
+          });
+        }
       }
     ]);
 
@@ -179,27 +194,27 @@ export default {
 
     const selfContent = reactive([
       {
-        name: 'service',
+        name: Service,
         desc: 'option1'
       },
       {
-        name: 'notice',
+        name: Notice,
         desc: 'option2'
       },
       {
-        name: 'location',
+        name: Location,
         desc: 'option3'
       },
       {
-        name: 'category',
+        name: Category,
         desc: 'option4'
       },
       {
-        name: 'scan2',
+        name: Scan2,
         desc: 'option5'
       },
       {
-        name: 'message',
+        name: Message,
         desc: 'option6'
       }
     ]);
@@ -236,7 +251,8 @@ export default {
       columns,
       change,
       handlePicker,
-      clickCustomHandle
+      clickCustomHandle,
+      renderIcon
     };
   }
 };

@@ -412,3 +412,19 @@ When the value changes, the `change` event will be triggered
 |----- | ----- | ----- 
 | toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection
 | toggleReverse | Reverse selection | -
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-checkbox-label-color| _#1d1e1e_ | -  |
+| --nut-checkbox-label-disable-color| _#999_ | -  |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
+| --nut-checkbox-label-margin-left| _15px_ | -  |
+| --nut-checkbox-label-font-size| _14px_ | -  |
+| --nut-checkbox-icon-font-size| _18px_ | -  |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |

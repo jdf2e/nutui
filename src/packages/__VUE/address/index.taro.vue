@@ -10,12 +10,9 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="nut-address__header-back" @click="switchModule">
-          <nut-icon
-            v-bind="$attrs"
-            :name="backBtnIcon"
-            color="#cccccc"
-            v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
-          ></nut-icon>
+          <slot name="backIcon">
+            <Left v-show="type == 'exist' && privateType == 'custom'"></Left>
+          </slot>
         </view>
 
         <view class="nut-address__header__title">
@@ -27,7 +24,9 @@
         </view>
 
         <view class="nut-address__header-close" @click="handClose('cross')">
-          <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
+          <slot name="closeIcon">
+            <Close color="#cccccc" size="18px"></Close>
+          </slot>
         </view>
       </view>
 
@@ -58,14 +57,8 @@
               @click="nextAreaList(item)"
             >
               <div>
-                <nut-icon
-                  class="region-item-icon"
-                  type="self"
-                  v-bind="$attrs"
-                  :name="selectedIcon"
-                  size="13px"
-                  v-if="selectedRegion[tabIndex]?.id == item.id"
-                ></nut-icon
+                <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
+                  <Check class="nut-address-select-icon" width="13px"></Check> </slot
                 >{{ item.name }}
               </div>
             </li>
@@ -92,13 +85,14 @@
               :key="index"
               @click="selectedExist(item)"
             >
-              <nut-icon
-                class="exist-item-icon"
-                type="self"
-                v-bind="$attrs"
-                :name="item.selectedAddress ? selectedIcon : defaultIcon"
-                size="13px"
-              ></nut-icon>
+              <slot name="unselectedIcon" v-if="!item.selectedAddress">
+                <Location2 class="nut-address-select-icon" width="13px"></Location2>
+              </slot>
+
+              <slot name="icon" v-if="item.selectedAddress">
+                <Check class="nut-address-select-icon" width="13px"></Check>
+              </slot>
+
               <div class="nut-address__exist-item-info">
                 <div class="nut-address__exist-item-info-top" v-if="item.name && item.phone">
                   <div class="nut-address__exist-item-info-name">{{ item.name }}</div>
@@ -133,11 +127,17 @@ import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
+import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 
 export default create({
   components: {
     [Popup.name]: Popup,
-    [Elevator.name]: Elevator
+    [Elevator.name]: Elevator,
+    Location,
+    Location2,
+    Check,
+    Close,
+    Left
   },
   inheritAttrs: false,
   props: {
@@ -190,26 +190,6 @@ export default create({
       type: String,
       default: ''
     },
-    defaultIcon: {
-      // 地址选择列表前 - 默认的图标
-      type: String,
-      default: 'location2'
-    },
-    selectedIcon: {
-      // 地址选择列表前 - 选中的图标
-      type: String,
-      default: 'Check'
-    },
-    closeBtnIcon: {
-      // 关闭弹框按钮 icon
-      type: String,
-      default: 'circle-close'
-    },
-    backBtnIcon: {
-      // 选择其他地址左上角返回 icon
-      type: String,
-      default: 'left'
-    },
     height: {
       type: [String, Number],
       default: '200px'
@@ -239,9 +219,6 @@ export default create({
     const privateType = ref(props.type);
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
-    const tabNameDefault = ref(['']);
-
-    const isCustom2 = computed(() => props.type === 'custom2');
 
     const regionList = computed(() => {
       switch (tabIndex.value) {

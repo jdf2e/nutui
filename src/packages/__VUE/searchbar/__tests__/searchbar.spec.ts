@@ -1,14 +1,6 @@
 import { mount, config } from '@vue/test-utils';
 import Searchbar from '../index.vue';
 
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-
 afterAll(() => {
   config.global.components = {};
 });
@@ -139,41 +131,4 @@ test('clear event test', async () => {
   // 修改update:modelValue
   expect((wrapper.emitted('update:modelValue') as any)[1][0]).toEqual('');
   expect(clear.exists()).toBe(true);
-});
-
-test('slot test', () => {
-  const wrapper = mount(Searchbar, {
-    props: { modelValue: '' },
-    slots: {
-      default: () => {
-        `
-          <template v-slot:leftout>
-            <nut-icon size="20" name="left"></nut-icon>
-          </template>
-          <template v-slot:leftin>
-            <nut-icon size="14" name="search2"></nut-icon>
-          </template>
-          <template v-slot:rightin>
-            <nut-icon size="20" name="photograph"></nut-icon>
-          </template>
-          <template v-slot:rightout>
-            <nut-icon size="20" name="message"></nut-icon>
-          </template>
-        `;
-      }
-    }
-  });
-
-  expect(wrapper.html()).toMatchSnapshot();
-});
-
-test('custom clear icon', () => {
-  const wrapper = mount(Searchbar, {
-    props: {
-      clearIcon: 'close',
-      modelValue: 'test'
-    }
-  });
-  const input = wrapper.find('.nut-searchbar__input-clear i');
-  expect(input.classes()).toContain('nut-icon-close');
 });

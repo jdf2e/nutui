@@ -415,3 +415,19 @@ app.use(Icon);
 |----- | ----- | ----- 
 | toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选
 | toggleReverse | 反选 | -
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-checkbox-label-color| _#1d1e1e_ | -  |
+| --nut-checkbox-label-disable-color| _#999_ | -  |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
+| --nut-checkbox-label-margin-left| _15px_ | -  |
+| --nut-checkbox-label-font-size| _14px_ | -  |
+| --nut-checkbox-icon-font-size| _18px_ | -  |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |

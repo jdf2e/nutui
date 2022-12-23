@@ -230,3 +230,23 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 |---------|--------------|
 | default | Default slot |
 | icons | 	Icon slot |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-badge-background-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ | -    |
+| --nut-badge-color| _#fff_ | -    |
+| --nut-badge-font-size| _var(--nut-font-size-1)_ | -    |
+| --nut-badge-border-radius| _14px_ | -    |
+| --nut-badge-padding| _0 5px_ | -    |
+| --nut-badge-content-transform| _translate(50%, -50%)_ | -    |
+| --nut-badge-z-index| _1_ | -    |
+| --nut-badge-dot-width| _7px_ | -    |
+| --nut-badge-dot-height| _7px_ | -    |
+| --nut-badge-dot-border-radius| _7px_ | -    |
+| --nut-badge-dot-padding| _0px_ | -    |

@@ -440,3 +440,23 @@ export default {
 | ---------- | ---------------- | ------------------ |
 | change     | 选中值改变时触发 | (value, pathNodes) |
 | path-change | 选中项改变时触发 | (pathNodes)        |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-cascader-font-size| _var(--nut-font-size-2)_  | -  |
+| --nut-cascader-line-height| _22px_  | -  |
+| --nut-cascader-tabs-item-padding| _0 10px_  | -  |
+| --nut-cascader-bar-padding| _24px 20px 17px_  | -  |
+| --nut-cascader-bar-font-size| _var(--nut-font-size-4)_  | -  |
+| --nut-cascader-bar-line-height| _20px_  | -  |
+| --nut-cascader-bar-color| _var(--nut-title-color)_  | -  |
+| --nut-cascader-item-padding| _10px 20px_  | -  |
+| --nut-cascader-item-color| _var(--nut-title-color)_  | -  |
+| --nut-cascader-item-font-size| _var(--nut-font-size-2)_  | -  |
+| --nut-cascader-item-active-color| _var(--nut-primary-color)_  | -  |

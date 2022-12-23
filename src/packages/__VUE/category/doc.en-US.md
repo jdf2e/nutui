@@ -217,3 +217,19 @@ export default {
 | Name    | Description       |
 | ------- | ---------- |
 | default | Custom content |
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-category-bg-color|  _rgba(255, 255, 255, 1)_  | - |
+| --nut-category-list-left-bg-color|  _rgba(246, 247, 249, 1)_  | - |
+| --nut-category-list-item-color|  _var(--nut-title-color)_  | - |
+| --nut-category-list-item-checked-color|  _rgba(255, 255, 255, 1)_  | - |
+| --nut-category-list-item-checked-img-bg-color|  _var(--nut-primary-color)_  | - |
+| --nut-category-pane-gray-color|  _#666_  | - |
+| --nut-category-pane-border-color|  _rgb(153, 153, 153)_  | - |
+| --nut-category-pane-title-color|  _rgba(51, 51, 51, 1)_  | - |

@@ -210,3 +210,20 @@ Icon and letter types can have custom colors and background colors
 | Name         | Description                   |
 | ------------- | ----------------------------- |
 | default | default slot for img, icon or text  |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
+| --nut-avatar-square |  _5px_  |-  |
+| --nut-avatar-large-width |  _60px_  |-  |
+| --nut-avatar-large-height |  _60px_  |-  |
+| --nut-avatar-small-width |  _32px_  |-  |
+| --nut-avatar-small-height |  _32px_  |-  |
+| --nut-avatar-normal-width |  _40px_  |-  |
+| --nut-avatar-normal-height |  _40px_  |-  |

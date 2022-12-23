@@ -633,3 +633,29 @@ export default {
 | 方法名 | 说明             | 参数          |
 |--------|------------------|---------------|
 | scrollToDate   | 滚动到指定日期所在月 | string:'2021-12-30' |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-calendar-primary-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-choose-color| _var(--nut-active-color)_   | - |
+| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-base-color| _#333333_   | - |
+| --nut-calendar-disable-color| _#d1d0d0_   | - |
+| --nut-calendar-base-font| _var(--nut-font-size-3)_   | - |
+| --nut-calendar-title-font| _var(--nut-font-size-4)_   | - |
+| --nut-calendar-title-font-weight| _500_   | - |
+| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   | - |
+| --nut-calendar-text-font| _var(--nut-font-size-1)_   | - |
+| --nut-calendar-day-font| _16px_   | - |
+| --nut-calendar-day-active-border-radius| _0px_   | - |
+| --nut-calendar-day-width| _14.28%_   | - |
+| --nut-calendar-day-height| _64px_   | - |
+| --nut-calendar-day-font-weight| _500_   | - |
+| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   | - |
+| --nut-calendar-month-title-font-size| _inherit_   | - |

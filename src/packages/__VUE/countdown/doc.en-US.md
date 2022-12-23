@@ -342,3 +342,14 @@ Paused and restarted the countdown with the paused attribute
 | start | Count Down Start | 
 | pause | Count Down Pause | 
 | reset | Count Down Reset | 
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name | Default Value | Description |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-countdown-display| _flex_ | -  |
+| --nut-countdown-color| _inherit_ | -  |
+| --nut-countdown-font-size| _initial_ | -  |

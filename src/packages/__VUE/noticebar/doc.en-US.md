@@ -197,14 +197,16 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 <template>
     <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <template v-slot:rightIcon>
-        <nut-icon name="fabulous" color="#f0250f"></nut-icon>
+        <Fabulous />
       </template>
     </nut-noticebar>
 </template>
 
 <script>
   import { ref } from 'vue';
+  import { Fabulous } from '@nutui/icons-vue';
   export default {
+    components: { Fabulous },
     setup(props) {
       const horseLamp1 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
       return { horseLamp1 };

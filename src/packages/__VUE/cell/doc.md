@@ -254,3 +254,37 @@ export default {
 |-------|-----------------------|
 | title | 自定义`title`标题区域 |
 | desc  | 自定义`desc`描述区域  |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-cell-color| _var(--nut-title-color2)_   | -  |
+| --nut-cell-title-font| _var(--nut-font-size-2)_   | -  |
+| --nut-cell-title-desc-font| _var(--nut-font-size-1)_   | -  |
+| --nut-cell-desc-font| _var(--nut-font-size-2)_   | -  |
+| --nut-cell-desc-color| _var(--nut-disable-color)_   | -  |
+| --nut-cell-border-radius| _6px_   | -  |
+| --nut-cell-padding| _13px 16px_   | -  |
+| --nut-cell-line-height| _20px_   | -  |
+| --nut-cell-after-right| _16px_   | -  |
+| --nut-cell-after-border-bottom| _1px solid #f5f6f7_   | -  |
+| --nut-cell-default-icon-margin| _0 4px 0 0px_   | -  |
+| --nut-cell-large-title-font| _var(--nut-font-size-large)_   | -  |
+| --nut-cell-large-title-desc-font| _var(--nut-font-size-base)_   | -  |
+| --nut-cell-large-padding| _15px 16px_   | -  |
+| --nut-cell-background| _var(--nut-white)_   | -  |
+| --nut-cell-group-title-padding| _0 10px_   | -  |
+| --nut-cell-group-title-color| _#909ca4_   | -  |
+| --nut-cell-group-title-font-size| _var(--nut-font-size-2)_   | -  |
+| --nut-cell-group-title-line-height| _20px_   | -  |
+| --nut-cell-group-desc-padding| _0 10px_   | -  |
+| --nut-cell-group-desc-color| _#909ca4_   | -  |
+| --nut-cell-group-desc-font-size| _var(--nut-font-size-1)_   | -  |
+| --nut-cell-group-desc-line-height| _16px_   | -  |
+| --nut-cell-group-background-color| _var(--nut-white)_   | -  |
