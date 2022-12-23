@@ -427,5 +427,23 @@ app.use(TabbarItem);
 |------------|--------------------|--------------------|
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-tabbar-active-color| _var(--nut-primary-color)_ | -  |
+| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ | -  |
+| --nut-tabbar-border-top| _1px solid #eee_ | -  |
+| --nut-tabbar-border-bottom| _1px solid #eee_ | -  |
+| --nut-tabbar-box-shadow| _none_ | -  |
+| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ | -  |
+| --nut-tabbar-item-text-line-height| _initial_ | -  |
+| --nut-tabbar-height| _50px_ | -  |
+| --nut-tabbar-word-margin-top| _auto_ | -  |
+
 
 

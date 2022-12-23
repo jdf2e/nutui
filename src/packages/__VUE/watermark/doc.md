@@ -126,4 +126,14 @@ app.use(Watermark);
 | full-page    | 是否覆盖整个页面                                     | `boolean`          | `true`               |
 | font-family  | 水印文字字体                                     | `boolean`          | `true`               |
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+
+| 名称                                    | 默认值                     | 描述 |
+| --------------------------------------- | -------------------------- | ---- |
+| --nut-watermark-z-index        | _ 2000_        | -    |
+
 
