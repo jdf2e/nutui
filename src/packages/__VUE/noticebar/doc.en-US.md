@@ -208,7 +208,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
   export default {
     components: { Fabulous },
     setup(props) {
-      const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+      const horseLamp1 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
       return { horseLamp1 };
     }
   }

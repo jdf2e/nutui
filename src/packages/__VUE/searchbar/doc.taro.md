@@ -80,7 +80,7 @@ app.use(Icon);
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Search2 } from '@nutui/icons-vue';
+  import { Search2 } from '@nutui/icons-vue-taro';
   export default {
     components: { Search2 },
     setup() {
@@ -194,7 +194,7 @@ app.use(Icon);
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
+  import { Search2, Left, Photograph, Message } from '@nutui/icons-vue-taro';
   export default {
     components: { Search2, Left, Photograph, Message },
     setup() {
