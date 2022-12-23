@@ -6,7 +6,6 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
-        :labels="labels"
         @click="handleclick"
         @clickImages="clickImages"
         :operation="['replay']"
@@ -69,9 +68,6 @@ export default defineComponent({
   props: {},
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<nut-icon name="dongdong" color="#fa2c19"></nut-icon>';
-    };
 
     const handleclick = (info: any) => {
       console.log('进行跳转', info);
@@ -97,7 +93,6 @@ export default defineComponent({
 
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };

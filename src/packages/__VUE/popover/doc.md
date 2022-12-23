@@ -153,8 +153,8 @@ export default {
     <template #content>
       <div class="self-content">
         <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <nut-icon :name="item.name" size="15"></nut-icon>
-        <div class="self-content-desc">{{ item.desc }}</div>
+          <component :is="renderIcon(item.name)"></component>
+          <div class="self-content-desc">{{ item.desc }}</div>
         </div>
       </div>
     </template>
@@ -163,7 +163,7 @@ export default {
 
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, ref,Component } from 'vue';
 import { Service,Notice,Location,Category,Scan2,Message,Cart2, My2 } from '@nutui/icons-vue';
 export default {
   setup() {
@@ -196,10 +196,15 @@ export default {
         desc: 'option6'
       }
     ]);
+    const renderIcon = (icon: Component, props?: any) => {
+      if (icon) return h(icon, props);
+      return '';
+    };
 
     return {
       visible,
       selfContent,
+      renderIcon
     };
   }
 }
