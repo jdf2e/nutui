@@ -1,4 +1,6 @@
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component } from 'vue';
+import { pxCheck } from '@/packages/utils/pxCheck';
+
 export const component = (componentName: string, components: Record<string, Component>): any => {
   return {
     components: components,
@@ -100,8 +102,10 @@ export const component = (componentName: string, components: Record<string, Comp
           : state.partialSelect
           ? iconNodeMap.CheckDisabled
           : iconNodeMap.Checked;
+        const size = pxCheck(iconSize);
         return h(iconNode, {
-          size: iconSize,
+          width: size,
+          height: size,
           class: color.value
         });
       };
