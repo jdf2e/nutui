@@ -3,16 +3,21 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-form>
       <nut-form-item :label="translate('name')">
-        <input class="nut-input-text" :placeholder="translate('nameTip')" type="text" />
+        <nut-input v-model="basicData.name" class="nut-input-text" :placeholder="translate('nameTip')" type="text" />
       </nut-form-item>
       <nut-form-item :label="translate('age')">
-        <input class="nut-input-text" :placeholder="translate('ageTip')" type="text" />
+        <nut-input v-model="basicData.age" class="nut-input-text" :placeholder="translate('ageTip')" type="text" />
       </nut-form-item>
       <nut-form-item :label="translate('tel')">
-        <input class="nut-input-text" :placeholder="translate('telTip')" type="text" />
+        <nut-input v-model="basicData.tel" class="nut-input-text" :placeholder="translate('telTip')" type="text" />
       </nut-form-item>
       <nut-form-item :label="translate('address')">
-        <input class="nut-input-text" :placeholder="translate('addressTip')" type="text" />
+        <nut-input
+          v-model="basicData.address"
+          class="nut-input-text"
+          :placeholder="translate('addressTip')"
+          type="text"
+        />
       </nut-form-item>
       <nut-form-item :label="translate('remarks')">
         <nut-textarea :placeholder="translate('remarksTip')" type="text" />
@@ -41,7 +46,7 @@
         :key="item.key"
         v-for="(item, index) in dynamicForm.state.tels"
       >
-        <input class="nut-input-text" v-model="item.value" :placeholder="translate('telTip') + index" type="text" />
+        <nut-input class="nut-input-text" v-model="item.value" :placeholder="translate('telTip') + index" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add"
@@ -94,7 +99,7 @@
           { regex: /^(\d{1,2}|1\d{2}|200)$/, message: translate('ageTip3') }
         ]"
       >
-        <input class="nut-input-text" v-model="formData.age" :placeholder="translate('ageTip1')" type="text" />
+        <nut-input class="nut-input-text" v-model="formData.age" :placeholder="translate('ageTip1')" type="text" />
       </nut-form-item>
       <nut-form-item
         :label="translate('tel')"
@@ -105,7 +110,7 @@
           { validator: asyncValidator, message: translate('telTip2') }
         ]"
       >
-        <input class="nut-input-text" v-model="formData.tel" :placeholder="translate('telTip1')" type="text" />
+        <nut-input class="nut-input-text" v-model="formData.tel" :placeholder="translate('telTip1')" type="text" />
       </nut-form-item>
       <nut-form-item
         :label="translate('address')"
@@ -113,7 +118,12 @@
         required
         :rules="[{ required: true, message: translate('addressTip') }]"
       >
-        <input class="nut-input-text" v-model="formData.address" :placeholder="translate('addressTip')" type="text" />
+        <nut-input
+          class="nut-input-text"
+          v-model="formData.address"
+          :placeholder="translate('addressTip')"
+          type="text"
+        />
       </nut-form-item>
       <nut-cell>
         <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">
@@ -157,7 +167,7 @@
         </nut-uploader>
       </nut-form-item>
       <nut-form-item :label="translate('address')">
-        <input
+        <nut-input
           class="nut-input-text"
           v-model="formData2.address"
           @click="addressModule.methods.show"
@@ -273,6 +283,12 @@ export default createDemo({
   setup() {
     initTranslate();
     const formData = reactive({
+      name: '',
+      age: '',
+      tel: '',
+      address: ''
+    });
+    const basicData = reactive({
       name: '',
       age: '',
       tel: '',
@@ -440,6 +456,7 @@ export default createDemo({
       addressModule,
       dynamicForm,
       dynamicRefForm,
+      basicData,
       translate
     };
   }
