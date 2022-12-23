@@ -48,7 +48,7 @@
               }"
             >
               <slot name="icon">
-                <Check v-bind="$attrs" :class-prefix="classPrefix" :color="parent.props.activeColor"></Check>
+                <Check v-bind="$attrs" :color="parent.props.activeColor"></Check>
               </slot>
             </span>
             <view
@@ -97,10 +97,6 @@ export default create({
     optionIcon: {
       type: String,
       default: 'Check'
-    },
-    classPrefix: {
-      type: String,
-      default: 'nut-icon'
     }
   },
   components: {
