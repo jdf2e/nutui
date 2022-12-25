@@ -24,7 +24,7 @@
           <template #content>
             <slot>
               <div class="nut-tour-content" v-if="type == 'step'">
-                <div class="nut-tour-content-top">
+                <div class="nut-tour-content-top" v-if="showTitleBar">
                   <div @click="close">
                     <Close class="nut-tour-content-top-close" />
                   </div>
@@ -35,18 +35,29 @@
                 <div class="nut-tour-content-bottom">
                   <div class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</div>
                   <div class="nut-tour-content-bottom-operate">
-                    <div class="nut-tour-content-bottom-operate-btn" @click="changeStep('prev')" v-if="active != 0">{{
-                      prevStepTxt
-                    }}</div>
+                    <slot name="prevStep">
+                      <div
+                        class="nut-tour-content-bottom-operate-btn"
+                        @click="changeStep('prev')"
+                        v-if="active != 0 && showPrevStep"
+                        >{{ prevStepTxt }}</div
+                      >
+                    </slot>
+
                     <div
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="close"
                       v-if="steps.length - 1 == active"
                       >{{ completeTxt }}</div
                     >
-                    <div class="nut-tour-content-bottom-operate-btn active" @click="changeStep('next')" v-else>{{
-                      nextStepTxt
-                    }}</div>
+                    <slot name="nextStep">
+                      <div
+                        class="nut-tour-content-bottom-operate-btn active"
+                        @click="changeStep('next')"
+                        v-if="steps.length - 1 != active"
+                        >{{ nextStepTxt }}</div
+                      >
+                    </slot>
                   </div>
                 </div>
               </div>
@@ -141,6 +152,14 @@ export default create({
     closeOnClickOverlay: {
       type: Boolean,
       default: true
+    },
+    showPrevStep: {
+      type: Boolean,
+      default: true
+    },
+    showTitleBar: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:visible', 'change', 'close'],
@@ -162,6 +181,14 @@ export default create({
       const prefixCls = 'nut-tour';
       return `${prefixCls}`;
     });
+
+    // const maskClasses = computed(() => {
+    //   const prefixCls = 'nut-tour';
+    //   return {
+    //     [`${prefixCls}-mask`]:true,
+    //     [`${prefixCls}-mask-none`]:
+    //   }
+    // });
 
     const maskStyle = computed(() => {
       const { offset, maskWidth, maskHeight } = props;
