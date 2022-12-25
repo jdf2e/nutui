@@ -46,7 +46,7 @@ import { Right } from '@nutui/icons-vue-taro';
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
-import { Rate } from '@/packages/nutui.vue';
+import Rate from '../rate/index.taro.vue';
 
 interface VideosType {
   id: number | string;
