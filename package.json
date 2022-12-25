@@ -83,7 +83,6 @@
     "@nutui/icons-vue": "0.0.16",
     "@nutui/icons-vue-taro": "0.0.2",
     "@tarojs/components": "3.5.6",
-    "consola": "2.15.3",
     "sass": "^1.50.0",
     "vscode": "^1.1.37",
     "vue-router": "^4.0.12"
@@ -128,7 +127,6 @@
     "ts-jest": "^26.5.5",
     "typescript": "^4.9.3",
     "vite": "^3.2.4",
-    "vite-plugin-dts": "^1.7.1",
     "vite-plugin-md": "^0.20.4",
     "vue": "^3.2.24",
     "vue-jest": "^5.0.0-alpha.7",
