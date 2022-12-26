@@ -2,7 +2,7 @@
 
 ### 介绍
 
-独立安装 @nutui/icons-vue 图标组件包。
+独立安装 @nutui/icons-vue 图标组件包。提供两种使用方式（Svg 按需使用、IconFont 全量使用）。
 
 ### 安装
 
@@ -10,7 +10,7 @@
 npm i --save @nutui/icons-vue
 ```
 
-### fan Svg 按需加载使用
+### 方式一： Svg 按需使用
 
 按需加载组件使用方式，可选项见 @nutui/icons-vue/dist/types/index.d.ts
 
@@ -20,10 +20,36 @@ import { Add } from '@nutui/icons-vue';
 <Add color='red'>
 ```
 
-### IconFont 全量使用
+<icon-demo />
+
+```
+其中组件库内部使用 Svg 为
+Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
+```
+
+### Props
+
+| 参数   | 说明                             | 类型             | 默认值 |
+|--------|----------------------------------|------------------|--------|
+| name   | 图标名称或图片链接               | String           | -      |
+| color  | 图标颜色                         | String           | -      |
+| width  | 图标大小，如 `20px` `2em` `2rem` | String or Number | -      |
+| height | 图标大小，如 `20px` `2em` `2rem` | String or Number | -      |
+
+### Events
+
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| click  | 点击图标时触发 | event: Event |
+
+### 方式二： IconFont 全量使用
 
 ```js
+import { createApp } from 'vue';
 import { IconFont } from '@nutui/icons-vue';
+
+const app = createApp();
+app.use(IconFont);
 ```
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
@@ -31,9 +57,9 @@ import { IconFont } from '@nutui/icons-vue';
 :::demo
 ```html
 <template>
-  <nut-icon name="dongdong"></nut-icon>
-  <nut-icon name="JD"></nut-icon>
-  <nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+  <IconFont name="dongdong"></IconFont>
+  <IconFont name="JD"></IconFont>
+  <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></IconFont>
 </template>
 ```
 :::
@@ -45,9 +71,9 @@ import { IconFont } from '@nutui/icons-vue';
 :::demo
 ```html
 <template>
-  <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-  <nut-icon name="dongdong" color="#64b578"></nut-icon>
-  <nut-icon name="JD" color="#fa2c19"></nut-icon>
+  <IconFont name="dongdong" color="#fa2c19"></IconFont>
+  <IconFont name="dongdong" color="#64b578"></IconFont>
+  <IconFont name="JD" color="#fa2c19"></IconFont>
 </template>
 ```
 :::
@@ -59,9 +85,9 @@ import { IconFont } from '@nutui/icons-vue';
 :::demo
 ```html
 <template>
-  <nut-icon name="dongdong"></nut-icon>
-  <nut-icon name="dongdong" size="24"></nut-icon>
-  <nut-icon name="dongdong" size="16"></nut-icon>
+  <IconFont name="dongdong"></IconFont>
+  <IconFont name="dongdong" size="24"></IconFont>
+  <IconFont name="dongdong" size="16"></IconFont>
 </template>
 ```
 :::
@@ -72,13 +98,13 @@ import { IconFont } from '@nutui/icons-vue';
 :::demo
 ```html
 <template>
-  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
-  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
+  <IconFont name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></IconFont>
+  <IconFont name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></IconFont>
+  <IconFont name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></IconFont>
+  <IconFont name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></IconFont>
+  <IconFont name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></IconFont>
+  <IconFont name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></IconFont>
+  <IconFont name="message" class="nut-icon-am-shake nut-icon-am-infinite"></IconFont>
 </template>
 
 <style>
@@ -127,7 +153,7 @@ import './assets/font/iconfont.css';
   class-prefix 指定默认 icon
   name 值根据 iconfont.css 中值对应填写 
 -->
-<nut-icon font-class-name="iconfont" class-prefix="icon" name="close" />
+<IconFont font-class-name="iconfont" class-prefix="icon" name="close" />
 ```
 
 
@@ -155,24 +181,24 @@ import './assets/font/iconfont.css';
   font-class-name 指定类名为默认 my-icon
   class-prefix 指定默认 my-icon
 -->
-<nut-icon font-class-name="my-icon" class-prefix="my-icon" name="extra" />
+<IconFont font-class-name="my-icon" class-prefix="my-icon" name="extra" />
 
 ```
 
 自定义 iconfont [Demo示例](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15) 
 
-## API
+## IconFont API
 
 ### Props
 
-| 参数            | 说明                                    | 类型             | 默认值           |
-|-----------------|-----------------------------------------|------------------|------------------|
-| name            | 图标名称或图片链接                      | String           | -                |
-| color           | 图标颜色                                | String           | -                |
-| size            | 图标大小，如 `20px` `2em` `2rem`        | String or Number | -                |
-| font-class-name | 自定义 icon 字体基础类名                | String           | `nutui-iconfont` |
+| 参数            | 说明                                     | 类型             | 默认值           |
+|-----------------|------------------------------------------|------------------|------------------|
+| name            | 图标名称或图片链接                       | String           | -                |
+| color           | 图标颜色                                 | String           | -                |
+| size            | 图标大小，如 `20px` `2em` `2rem`         | String or Number | -                |
+| font-class-name | 自定义 icon 字体基础类名                 | String           | `nutui-iconfont` |
 | class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | String           | `nut-icon`       |
-| tag             | HTML 标签                               | String           | `i`              |
+| tag             | HTML 标签                                | String           | `i`              |
 
 ### Events
 

@@ -45,13 +45,23 @@ styleMap.forEach((value, key) => {
   deps = deps.filter((component) => {
     return component !== key;
   });
-  const output = `require('./index.scss');\n${deps
+  const outputJs = `require('./index.scss');\n${deps
     .map((component) => {
       return `require('../${component.toLowerCase()}/index.scss');\n`;
     })
     .join('')}`;
+  const outputMjs = `import './index.scss';\n${deps
+    .map((component) => {
+      return `import '../${component.toLowerCase()}/index.scss';\n`;
+    })
+    .join('')}`;
   tasks.push(
-    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/index.js`), output, 'utf8', () => {
+    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/index.js`), outputJs, 'utf8', () => {
+      // console.log('')
+    })
+  );
+  tasks.push(
+    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/index.mjs`), outputMjs, 'utf8', () => {
       // console.log('')
     })
   );
