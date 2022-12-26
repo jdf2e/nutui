@@ -13,7 +13,7 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   alias: {
-    // '@vue': path.resolve(__dirname, '../../../../../node_modules/@vue'),
+    '@vue': path.resolve(__dirname, '../../../../../node_modules/@vue'),
     '@/packages': path.resolve(__dirname, '../../../../../src/packages')
   },
   sass: {
@@ -50,6 +50,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    chunkDirectory: 'chunk',
     postcss: {
       autoprefixer: {
         enable: true,
