@@ -119,8 +119,17 @@ app.use(Button);
 
 ```html
 <template>
-  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-  <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+  <nut-button shape="square" plain type="primary">
+    <template #icon>
+      <StarFill />
+    </template>
+  </nut-button>
+  <nut-button shape="square" type="primary">
+    <template #icon>
+      <Star />
+    </template>
+    收藏
+  </nut-button>
 </template>
 ```
 
@@ -248,35 +257,18 @@ app.use(Button);
 | --nut-button-disabled-opacity| _0.68_  | - |
 | --nut-button-primary-color| _var(--nut-white)_  | - |
 | --nut-button-primary-border-color| _var(--nut-primary-color)_  | - |
-| --nut-button-primary-background-color| _linear-gradient(
-    135deg,
-    var(--nut-primary-color) 0%,
-    var(--nut-primary-color-end) 100%
-  )_  | - |
+| --nut-button-primary-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | - |
 | --nut-button-info-color| _var(--nut-white)_  | - |
 | --nut-button-info-border-color| _rgba(73, 106, 242, 1)_  | - |
 | --nut-button-info-background-color| _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_  | - |
 | --nut-button-success-color| _var(--nut-white)_  | - |
 | --nut-button-success-border-color| _rgba(38, 191, 38, 1)_  | - |
-| --nut-button-success-background-color| _linear-gradient(
-    135deg,
-    rgba(38, 191, 38, 1) 0%,
-    rgba(39, 197, 48, 1) 45%,
-    rgba(40, 207, 63, 1) 83%,
-    rgba(41, 212, 70, 1) 100%
-  )_  | - |
-
+| --nut-button-success-background-color| _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_  | - |
 | --nut-button-danger-color| _var(--nut-white)_  | - |
 | --nut-button-danger-border-color| _rgba(250, 44, 25, 1)_  | - |
 | --nut-button-danger-background-color| _rgba(250, 44, 25, 1)_  | - |
 | --nut-button-warning-color| _var(--nut-white)_  | - |
 | --nut-button-warning-border-color| _rgba(255, 158, 13, 1)_  | - |
-| --nut-button-warning-background-color| _linear-gradient(
-    135deg,
-    rgba(255, 158, 13, 1) 0%,
-    rgba(255, 167, 13, 1) 45%,
-    rgba(255, 182, 13, 1) 83%,
-    rgba(255, 190, 13, 1) 100%
-  )_  | - |
+| --nut-button-warning-background-color| _linear-gradient(135deg,rgba(255, 158, 13, 1) 0%,rgba(255, 167, 13, 1) 45%,rgba(255, 182, 13, 1) 83%,rgba(255, 190, 13, 1) 100%)_  | - |
 | --nut-button-plain-background-color| _var(--nut-white)_  | - |
 | --nut-button-small-round-border-radius| _var(--nut-button-border-radius)_  | - |

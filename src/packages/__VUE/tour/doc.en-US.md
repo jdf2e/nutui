@@ -9,12 +9,10 @@ A bubble component used to guide the user through the product's capabilities. Th
 ```javascript
 
 import { createApp } from 'vue';
-import { Tour, Popover, Popup } from '@nutui/nutui';
+import { Tour } from '@nutui/nutui';
 
 const app = createApp();
 
-app.use(Popup);
-app.use(Popover);
 app.use(Tour);
 
 ```
@@ -285,6 +283,8 @@ export default {
 | mask-width       | Width of hollow mask  | Number、String  | '' |
 | mask-height       | Hollow mask height  | Number、String  | '' |
 | close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
+| show-prev-step       | Whether to show prev button  | boolean  | true |
+| show-title-bar       | Whether to show title bar  |  boolean  | false |
 
 ### StepOptions  
 
@@ -302,6 +302,8 @@ export default {
 | Name   | Description           |
 |---------|--------------|
 | default | Custom popover content |
+| prevStep | Custom prev strep content|
+| nextStep |  Custom prev strep content |
 
 ### Events
 

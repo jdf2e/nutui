@@ -7,12 +7,11 @@ Used to provide interactive operations for pull-down refresh.
 ### Install
 
 ```javascript
-  import { createApp } from 'vue';
-  import { PullRefresh,Icon } from '@nutui/nutui';
+import { createApp } from 'vue';
+import { PullRefresh } from '@nutui/nutui';
 
-  const app = createApp();
-  app.use(PullRefresh);
-  app.use(Icon);
+const app = createApp();
+app.use(PullRefresh);
 
 ```
 

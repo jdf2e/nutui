@@ -1,73 +1,82 @@
 <template>
   <view :class="classes">
-    <view class="nut-tour-masked" v-show="showTour" @click="handleClickMask"></view>
+    <view class="nut-tour-masked" v-if="showTour" @click="handleClickMask"></view>
 
     <view v-for="(step, i) in steps" :key="i" style="height: 0">
-      <template v-if="i == active">
-        <view
-          class="nut-tour-mask"
-          :class="[mask ? '' : 'nut-tour-mask-none']"
-          :style="maskStyle"
-          v-if="showTour"
-          id="nut-tour-popid"
-        ></view>
-        <nut-popover
-          v-model:visible="showPopup"
-          :location="step.location || location"
-          targetId="nut-tour-popid"
-          :bgColor="bgColor"
-          :theme="theme"
-          :close-on-click-outside="false"
-          :offset="step.popoverOffset || [0, 12]"
-          :arrowOffset="step.arrowOffset || 0"
-        >
-          <template #content>
-            <slot>
-              <view class="nut-tour-content" v-if="type == 'step'">
-                <view class="nut-tour-content-top">
-                  <view @click="close">
-                    <Close class="nut-tour-content-top-close" />
-                  </view>
+      <view
+        class="nut-tour-mask"
+        :class="[mask ? (showPopup[i] ? '' : 'nut-tour-mask-hidden') : 'nut-tour-mask-none']"
+        :style="maskStyles[i]"
+        :id="`nut-tour-popid${i}${refRandomId}`"
+      ></view>
+      <nut-popover
+        v-model:visible="showPopup[i]"
+        :location="step.location || location"
+        :targetId="`nut-tour-popid${i}${refRandomId}`"
+        :bgColor="bgColor"
+        :theme="theme"
+        :close-on-click-outside="false"
+        :offset="step.popoverOffset || [0, 12]"
+        :arrowOffset="step.arrowOffset || 0"
+        :duration="0.2"
+      >
+        <template v-slot:content>
+          <slot>
+            <view class="nut-tour-content" v-if="type == 'step'">
+              <view class="nut-tour-content-top" v-if="showTitleBar">
+                <view @click="close">
+                  <Close class="nut-tour-content-top-close" />
                 </view>
-                <view class="nut-tour-content-inner">
-                  {{ step.content }}
-                </view>
-                <view class="nut-tour-content-bottom">
-                  <view class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</view>
-                  <view class="nut-tour-content-bottom-operate">
-                    <view class="nut-tour-content-bottom-operate-btn" @click="changeStep('prev')" v-if="active != 0">{{
-                      prevStepTxt
-                    }}</view>
+              </view>
+              <view class="nut-tour-content-inner">
+                {{ step.content }}
+              </view>
+              <view class="nut-tour-content-bottom">
+                <view class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</view>
+                <view class="nut-tour-content-bottom-operate">
+                  <slot name="prevStep">
+                    <view
+                      class="nut-tour-content-bottom-operate-btn"
+                      @click="changeStep('prev')"
+                      v-if="active != 0 && showPrevStep"
+                      >{{ prevStepTxt }}</view
+                    >
+                  </slot>
+                  <view
+                    class="nut-tour-content-bottom-operate-btn active"
+                    @click="close"
+                    v-if="steps.length - 1 == active"
+                    >{{ completeTxt }}</view
+                  >
+
+                  <slot name="nextStep">
                     <view
                       class="nut-tour-content-bottom-operate-btn active"
-                      @click="close"
-                      v-if="steps.length - 1 == active"
-                      >{{ completeTxt }}</view
+                      @click="changeStep('next')"
+                      v-if="steps.length - 1 != active"
+                      >{{ nextStepTxt }}</view
                     >
-                    <view class="nut-tour-content-bottom-operate-btn active" @click="changeStep('next')" v-else>{{
-                      nextStepTxt
-                    }}</view>
-                  </view>
+                  </slot>
                 </view>
               </view>
+            </view>
 
-              <view class="nut-tour-content nut-tour-content-tile" v-if="type == 'tile'">
-                <view class="nut-tour-content-inner">
-                  {{ step.content }}
-                </view>
+            <view class="nut-tour-content nut-tour-content-tile" v-if="type == 'tile'">
+              <view class="nut-tour-content-inner">
+                {{ step.content }}
               </view>
-            </slot>
-          </template>
-        </nut-popover>
-      </template>
+            </view>
+          </slot>
+        </template>
+      </nut-popover>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component, CSSProperties } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
-import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
 import { Close } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Popover from '../popover/index.taro.vue';
@@ -82,7 +91,7 @@ interface StepOptions {
 const { create } = createComponent('tour');
 export default create({
   components: {
-    [Popover.name]: Popover,
+    [Popover.name]: Popover as Component,
     Close
   },
   props: {
@@ -142,28 +151,39 @@ export default create({
     closeOnClickOverlay: {
       type: Boolean,
       default: true
+    },
+    showPrevStep: {
+      type: Boolean,
+      default: true
+    },
+    showTitleBar: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:visible', 'change', 'close'],
   setup(props, { emit }) {
     const state = reactive({
       showTour: props.visible,
-      showPopup: false,
       active: 0
     });
 
-    const maskRect = ref<{
-      [props: string]: number;
-    }>({});
+    const showPopup = ref([false]);
+
+    let maskRect: rectTaro[] = [];
+
+    let maskStyles = ref<any[]>([]);
 
     const classes = computed(() => {
       const prefixCls = 'nut-tour';
       return `${prefixCls}`;
     });
 
-    const maskStyle = computed(() => {
+    const maskStyle = (index: number) => {
       const { offset, maskWidth, maskHeight } = props;
-      const { width, height, left, top } = maskRect.value;
+
+      if (!maskRect[index]) return {};
+      const { width, height, left, top } = maskRect[index];
 
       const center = [left + width / 2, top + height / 2]; // 中心点 【横，纵】
       const w: number = Number(maskWidth ? maskWidth : width);
@@ -175,33 +195,39 @@ export default create({
         top: `${center[1] - h / 2 - +offset[0]}px`,
         left: `${center[0] - w / 2 - +offset[1]}px`
       };
-      return styles;
-    });
+      maskStyles.value[index] = styles;
+    };
 
     const changeStep = (type: string) => {
-      if (type == 'next') {
-        state.active = state.active + 1;
-      } else {
-        state.active = state.active - 1;
-      }
+      const current = state.active;
+      let next = current;
 
-      state.showPopup = false;
-      nextTick(() => {
-        state.showPopup = true;
-        getRootPosition();
-      });
+      if (type == 'next') {
+        next = current + 1;
+      } else {
+        next = current - 1;
+      }
+      showPopup.value[current] = false;
+
+      setTimeout(() => {
+        showPopup.value[next] = true;
+        state.active = next;
+      }, 300);
 
       emit('change', state.active);
     };
 
-    const getRootPosition = async () => {
-      const rect = await useTaroRect(props.steps[state.active].target, Taro);
-      maskRect.value = rect;
+    const getRootPosition = () => {
+      props.steps.forEach(async (item, i) => {
+        const rect = await useTaroRect(item.target, Taro);
+        maskRect[i] = rect;
+        maskStyle(i);
+      });
     };
 
     const close = () => {
       state.showTour = false;
-      state.showPopup = false;
+      showPopup.value[state.active] = false;
       emit('close', state.active);
       emit('update:visible', false);
     };
@@ -213,7 +239,7 @@ export default create({
     onMounted(() => {
       setTimeout(() => {
         getRootPosition();
-      }, 200);
+      }, 500);
     });
 
     watch(
@@ -223,19 +249,23 @@ export default create({
           state.active = 0;
           getRootPosition();
         }
-
         state.showTour = val;
-        state.showPopup = val;
+        showPopup.value[state.active] = val;
       }
     );
+
+    const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
       ...toRefs(state),
       classes,
       maskStyle,
       changeStep,
+      showPopup,
       close,
-      handleClickMask
+      handleClickMask,
+      maskStyles,
+      refRandomId
     };
   }
 });

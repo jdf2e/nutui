@@ -8,14 +8,13 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Overlay } from '@nutui/nutui';
 
 const app = createApp();
 app.use(TimeSelect);
 app.use(TimePannel);
 app.use(TimeDetail);
 app.use(Popup);
-app.use(Icon);
 app.use(Overlay);
 ```
 
@@ -373,7 +372,8 @@ app.use(Overlay);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
 | 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |  --nut-timeselect-title-font-size: var(--nut-font-size-2);
+| --------------------------------------- | -------------------------- | ---- | 
+| --nut-timeselect-title-font-size| _var(--nut-font-size-2)_ | -  |
 | --nut-timeselect-title-color| _var(--nut-title-color)_ | - |
 | --nut-timeselect-title-width| _100%_ | - |
 | --nut-timeselect-title-height| _50px_ | - |

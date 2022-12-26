@@ -255,6 +255,7 @@ app.use(Noticebar);
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |
 
+
 ## 主题定制
 
 ### 样式变量
@@ -274,3 +275,4 @@ app.use(Noticebar);
 | --nut-noticebar-wrapable-padding| _16px_ | -  |
 | --nut-noticebar-lefticon-margin| _0px 10px_ | -  |
 | --nut-noticebar-righticon-margin| _0px 10px_ | -  |
+

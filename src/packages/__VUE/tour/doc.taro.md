@@ -9,12 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Tour, Popover, Popup } from '@nutui/nutui-taro';
+import { Tour } from '@nutui/nutui-taro';
 
 const app = createApp();
 
-app.use(Popup);
-app.use(Popover);
 app.use(Tour);
 
 ```
@@ -286,6 +284,8 @@ export default {
 | mask-width       | 镂空遮罩层宽度  | Number、String  | '' |
 | mask-height       | 镂空遮罩层高度  | Number、String  | '' |
 | close-on-click-overlay      | 是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
+| show-prev-step       | 是否展示上一步按钮  | boolean  | true |
+| show-title-bar       | 是否展示标题栏  |  boolean  | false |
 
 ### StepOptions  
 
@@ -303,6 +303,8 @@ export default {
 | 名称    | 说明         |
 |---------|--------------|
 | default | 自定义气泡层内容 |
+|prevStep | 自定义上一步内容|
+|nextStep | 自定义下一步内容 |
 
 ### Events
 

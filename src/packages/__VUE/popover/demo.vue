@@ -57,21 +57,22 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-picker
-      v-model:visible="showPicker"
-      :columns="columns"
-      title=""
-      @change="change"
-      :swipe-duration="500"
-      @confirm="closePicker"
-      @close="closePicker"
-    >
-      <template #top>
-        <div class="brickBox">
-          <div class="brick" id="pickerTarget"></div>
-        </div>
-      </template>
-    </nut-picker>
+    <nut-popup position="bottom" v-model:visible="showPicker">
+      <nut-picker
+        :columns="columns"
+        title=""
+        @change="change"
+        :swipe-duration="500"
+        @confirm="closePicker"
+        @close="closePicker"
+      >
+        <template #top>
+          <div class="brickBox">
+            <div class="brick" id="pickerTarget"></div>
+          </div>
+        </template>
+      </nut-picker>
+    </nut-popup>
 
     <nut-popover
       v-model:visible="customPositon"
@@ -289,6 +290,7 @@ export default createDemo({
 
     const closePicker = () => {
       state.customPositon = false;
+      state.showPicker = false;
     };
 
     return {

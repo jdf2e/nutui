@@ -12,6 +12,16 @@ import { Ref, unref } from 'vue';
 function isWindow(val: unknown): val is Window {
   return val === window;
 }
+
+export interface rectTaro {
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
+
 export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, Taro: any): any => {
   let element = unref(elementRef);
 

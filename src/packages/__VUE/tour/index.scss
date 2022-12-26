@@ -9,6 +9,10 @@
     &-none {
       box-shadow: none;
     }
+
+    &-hidden {
+      opacity: 0;
+    }
   }
 
   &-content {

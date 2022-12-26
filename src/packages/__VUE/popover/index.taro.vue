@@ -7,7 +7,7 @@
     :id="'popoverRef' + refRandomId"
     ><slot name="reference"></slot
   ></view>
-  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
+  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="popoverstyles" ref="popoverbox">
     <nut-popup
       :popClass="`nut-popover-content nut-popover-content--${location}`"
       :style="customStyle"
@@ -46,6 +46,7 @@
   <!-- TODO -->
   <div :class="`nut-popover-content nut-popover-content-copy`">
     <view ref="popoverContentRefCopy" :id="'popoverContentRefCopy' + refRandomId" class="nut-popover-content-group">
+      <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
       <slot name="content"></slot>
       <view
         v-for="(item, index) in list"
@@ -66,9 +67,8 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-const { componentName, create } = createComponent('popover');
-import { useTaroRect } from '@/packages/utils/useTaroRect';
-import { rect } from '@/packages/utils/useRect';
+const { create } = createComponent('popover');
+import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
 import { isArray } from '@/packages/utils/util';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 import Taro from '@tarojs/taro';
@@ -89,7 +89,7 @@ export default create({
     customClass: { type: String, default: '' },
     showArrow: { type: Boolean, default: true },
     iconPrefix: { type: String, default: 'nut-icon' },
-    duration: { type: [Number, String], default: 0.3 },
+    duration: { type: [Number, String], default: 0.2 },
     overlay: { type: Boolean, default: false },
     overlayClass: { type: String, default: '' },
     overlayStyle: { type: Object as PropType<CSSProperties> },
@@ -104,14 +104,16 @@ export default create({
     const popoverRef = ref();
     const popoverContentRef = ref();
     const popoverContentRefCopy = ref();
+    const popoverbox = ref();
     const showPopup = ref(props.visible);
+    const popoverstyles = ref<any>({});
 
-    let rootRect = ref<rect>();
+    let rootRect = ref<rectTaro>();
 
-    let conentRootRect = ref<{
+    let conentRootRect: {
       height: number;
       width: number;
-    }>();
+    };
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
@@ -164,14 +166,11 @@ export default create({
       return str;
     };
 
-    const getRootPosition = computed(() => {
-      let styles: CSSProperties = {};
+    const getRootPosition = () => {
+      if (!rootRect.value || !conentRootRect) return {};
 
-      if (!rootRect.value || !conentRootRect.value) return {};
-
-      const conentWidth = conentRootRect.value.width;
-      const conentHeight = conentRootRect.value.height;
-
+      const conentWidth = conentRootRect.width;
+      const conentHeight = conentRootRect.height;
       const { width, height, left, top } = rootRect.value;
 
       const { location, offset } = props;
@@ -183,39 +182,37 @@ export default create({
         cross += +offset[1];
         parallel += +offset[0];
       }
+
       if (width) {
         if (['bottom', 'top'].includes(direction)) {
           const h = direction == 'bottom' ? height + cross : -(conentHeight + cross);
 
-          styles.top = `${top + h}px`;
-
+          popoverstyles.value.top = `${top + h}px`;
           if (!skew) {
-            styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
+            popoverstyles.value.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
           }
           if (skew == 'start') {
-            styles.left = `${left + parallel}px`;
+            popoverstyles.value.left = `${left + parallel}px`;
           }
           if (skew == 'end') {
-            styles.left = `${rootRect.value.right + parallel}px`;
+            popoverstyles.value.left = `${rootRect.value.right + parallel}px`;
           }
         }
         if (['left', 'right'].includes(direction)) {
           const contentW = direction == 'left' ? -(conentWidth + cross) : width + cross;
-          styles.left = `${left + contentW}px`;
+          popoverstyles.value.left = `${left + contentW}px`;
           if (!skew) {
-            styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
+            popoverstyles.value.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
           }
           if (skew == 'start') {
-            styles.top = `${top + parallel}px`;
+            popoverstyles.value.top = `${top + parallel}px`;
           }
           if (skew == 'end') {
-            styles.top = `${top + height + parallel}px`;
+            popoverstyles.value.top = `${top + height + parallel}px`;
           }
         }
       }
-
-      return styles;
-    });
+    };
 
     const customStyle = computed(() => {
       const styles: CSSProperties = {};
@@ -234,15 +231,21 @@ export default create({
         rect = await useTaroRect(popoverRef, Taro);
       }
       rootRect.value = rect;
+
+      getRootPosition();
     };
 
     const getPopoverContentW = async (type: number = 1) => {
       const el = type == 1 ? popoverContentRef : popoverContentRefCopy;
+
       let rectContent = await useTaroRect(el, Taro);
-      conentRootRect.value = {
+
+      conentRootRect = {
         height: rectContent.height,
         width: rectContent.width
       };
+
+      getRootPosition();
     };
     watch(
       () => props.visible,
@@ -257,6 +260,13 @@ export default create({
             getPopoverContentW();
           }, 300);
         }
+      }
+    );
+
+    watch(
+      () => props.location,
+      (value) => {
+        getRootPosition();
       }
     );
     const update = (val: boolean) => {
@@ -285,7 +295,7 @@ export default create({
       setTimeout(() => {
         getContentWidth();
         getPopoverContentW(0);
-      }, 200);
+      }, 600);
     });
 
     const refRandomId = Math.random().toString(36).slice(-8);
@@ -304,7 +314,9 @@ export default create({
       popoverArrowStyle,
       customStyle,
       getRootPosition,
-      renderIcon
+      renderIcon,
+      popoverbox,
+      popoverstyles
     };
   }
 });

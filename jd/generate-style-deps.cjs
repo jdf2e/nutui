@@ -4,14 +4,33 @@ const fs = require('fs-extra');
 
 // 获取依赖关系
 const styleMap = new Map();
+const tasks = [];
+let outputFileEntry = ``;
+// import Locale from './packages/locale';\n
 config.nav.forEach((item) => {
   item.packages.forEach((element) => {
     styleMap.set(element.name, {
       name: element.name,
       children: element.styleDeps
     });
+    // gen entry
+    const outputMjs = `import ${element.name} from '../_es/${element.name}.js';\nexport { ${element.name} };`;
+    tasks.push(
+      fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
+        // console.log('')
+      })
+    );
+
+    outputFileEntry += `export * from "./packages/${element.name}/index.mjs";\n`;
   });
 });
+
+tasks.push(
+  fs.outputFile(path.resolve(__dirname, `../dist/nutui.es.js`), outputFileEntry, 'utf8', () => {
+    // console.log('')
+  })
+);
+
 styleMap.forEach((value) => {
   if (value.children && value.children.length > 0) {
     value.children.forEach((item, index) => {
@@ -38,20 +57,32 @@ const getAllDeps = (styleObj, key) => {
   }
 };
 
-const tasks = [];
+
 styleMap.forEach((value, key) => {
   const name = key.toLowerCase();
   let deps = getAllDeps(value, key);
   deps = deps.filter((component) => {
     return component !== key;
   });
-  const output = `require('./index.scss');\n${deps
+  // gen style
+  const outputStyleCJs = `require('./index.scss');\n${deps
     .map((component) => {
       return `require('../${component.toLowerCase()}/index.scss');\n`;
     })
     .join('')}`;
+  const outputStyleMjs = `import './index.scss';\n${deps
+    .map((component) => {
+      return `import '../${component.toLowerCase()}/index.scss';\n`;
+    })
+    .join('')}`;
+
   tasks.push(
-    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/index.js`), output, 'utf8', () => {
+    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.cjs`), outputStyleCJs, 'utf8', () => {
+      // console.log('')
+    })
+  );
+  tasks.push(
+    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')
     })
   );
