@@ -49,6 +49,10 @@ export const component = (componentName: string, nutIcon: object) => {
       indeterminate: {
         type: Boolean,
         default: false
+      },
+      shape: {
+        type: String,
+        default: 'round' // button
       }
     },
     emits: ['change', 'update:modelValue'],
@@ -124,6 +128,18 @@ export const component = (componentName: string, nutIcon: object) => {
         );
       };
 
+      const renderButton = () => {
+        return h(
+          'view',
+          {
+            class: `${componentName}__button ${pValue.value && `${componentName}__button--active`} ${
+              pDisabled.value ? `${componentName}__button--disabled` : ''
+            }`
+          },
+          slots.default?.()
+        );
+      };
+
       const handleClick = (e: MouseEvent | TouchEvent) => {
         if (pDisabled.value) return;
         if (checked.value && state.partialSelect) {
@@ -133,9 +149,9 @@ export const component = (componentName: string, nutIcon: object) => {
         }
         emitChange(!checked.value, slots.default?.()[0].children as string);
         if (hasParent.value) {
-          let value = parent.value.value;
-          let max = parent.max.value;
-          let { label } = props;
+          const value = parent.value.value;
+          const max = parent.max.value;
+          const { label } = props;
           const index = value.indexOf(label);
           if (index > -1) {
             value.splice(index, 1);
@@ -161,10 +177,12 @@ export const component = (componentName: string, nutIcon: object) => {
         return h(
           'view',
           {
-            class: `${componentName} ${props.textPosition === 'left' ? `${componentName}--reverse` : ''}`,
+            class: `${componentName} ${componentName}--${props.shape} ${
+              props.textPosition === 'left' ? `${componentName}--reverse` : ''
+            }`,
             onClick: handleClick
           },
-          [renderIcon(), renderLabel()]
+          [props.shape == 'button' ? renderButton() : [renderIcon(), renderLabel()]]
         );
       };
     }

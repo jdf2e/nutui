@@ -6,6 +6,14 @@
         color: $checkbox-label-disable-color;
       }
     }
+    &__button {
+      background: $dark-background;
+      color: $dark-color;
+      &--disabled {
+        color: $checkbox-label-disable-color;
+        border: 1px solid $checkbox-label-disable-color;
+      }
+    }
   }
 }
 .nut-checkbox {
@@ -16,6 +24,26 @@
     .nut-checkbox__label {
       margin-right: $checkbox-label-margin-left;
       margin-left: 0;
+    }
+  }
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    padding: $checkbox-button-padding;
+    font-size: $checkbox-button-font-size;
+    background: $checkbox-label-button-bg-color;
+    border-radius: $checkbox-button-border-radius;
+    color: $checkbox-label-color;
+    box-sizing: border-box;
+    border: 1px solid $checkbox-label-button-border-color;
+    &--active {
+      background: $checkbox-label-button-bg-active-color;
+      color: $checkbox-label-font-active-color;
+      border: 1px solid $checkbox-label-button-border-active-color;
+    }
+    &--disabled {
+      color: $checkbox-label-disable-color;
+      border: none;
     }
   }
   &__label {

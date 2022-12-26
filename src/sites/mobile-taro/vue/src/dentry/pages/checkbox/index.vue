@@ -50,6 +50,8 @@
           <nut-checkbox label="2">组合复选框</nut-checkbox>
           <nut-checkbox label="3">组合复选框</nut-checkbox>
           <nut-checkbox label="4">组合复选框</nut-checkbox>
+          <nut-checkbox label="5" shape="button">组合复选框</nut-checkbox>
+          <nut-checkbox label="6" shape="button">组合复选框</nut-checkbox>
         </nut-checkboxgroup>
       </nut-cell>
       <nut-cell>
