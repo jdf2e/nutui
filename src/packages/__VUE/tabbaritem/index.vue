@@ -80,7 +80,7 @@ export default create({
     },
     num: {
       // 页签右上角的数字角标
-      type: Number,
+      type: [Number, String],
       default: ''
     },
     activeImg: {
