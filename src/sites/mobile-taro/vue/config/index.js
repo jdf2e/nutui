@@ -17,10 +17,7 @@ const config = {
     '@/packages': path.resolve(__dirname, '../../../../../src/packages')
   },
   sass: {
-    resource: [
-      path.resolve(__dirname, '../../../../', 'packages/styles/variables-var.scss')
-      // path.resolve(__dirname, '../../../../', 'packages/styles/css-variables.scss'),
-    ]
+    resource: [path.resolve(__dirname, '../../../../', 'packages/styles/variables.scss')]
   },
   defineConstants: {},
   copy: {
