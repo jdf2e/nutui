@@ -90,7 +90,14 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
+    "@tarojs/cli": "3.5.6",
+    "@tarojs/mini-runner": "3.5.6",
+    "@tarojs/plugin-platform-weapp": "3.5.6",
+    "@tarojs/runtime": "3.5.6",
     "@tarojs/taro": "3.5.6",
+    "@tarojs/plugin-framework-vue3": "3.5.6",
+    "@tarojs/plugin-html": "3.5.6",
+    "@tarojs/webpack5-runner": "3.5.6",
     "@types/jest": "^26.0.22",
     "@types/node": "^17.0.16",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
@@ -130,7 +137,10 @@
     "vite-plugin-md": "^0.21.5",
     "vue": "^3.2.24",
     "vue-jest": "^5.0.0-alpha.7",
-    "vue-tsc": "^1.0.9"
+    "vue-tsc": "^1.0.9",
+    "babel-preset-taro": "3.5.6",
+    "eslint-config-taro": "3.5.6",
+    "webpack": "^5.69.0"
   },
   "eslintConfig": {
     "root": true,
