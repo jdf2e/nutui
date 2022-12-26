@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于全局配置 NutUI 组件，提供暗黑模式。
+用于全局配置 NutUI 组件，提供暗黑模式，动态主题。
 
 ### 安装
 
@@ -53,7 +53,90 @@ app.use(ConfigProvider);
 
 :::
 
-### 动态主题
+### 主题定制
+
+NutUI组件可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
+来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
+
+>如果需要使用CSS变量的能力来做主题定制的话，需要加上theme-default的scss文件引入。修改 vite 或者 webpack 配置文件中 sass-loader 的配置;
+
+#### vite 演示
+
+``` javascript
+// https://vitejs.dev/config/
+export default defineConfig({
+  //...
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
+  }
+})
+```
+
+#### webpack 配置方法
+
+``` javascript
+{
+    test: /\.(sa|sc)ss$/,
+    use: [
+        {
+            loader: 'sass-loader',
+            options: {
+                // 注意：在 sass-loader 不同版本，这个选项名是 是不一样的，具体可参考 sass-loader对应的版本文档
+                data: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+            }
+        }
+    ]
+}
+```
+
+#### vue/cli 3 以上版本修改 **vue.config.js** 进行配置
+
+``` javascript
+module.exports = {
+    css: {
+        loaderOptions: {
+            // 给 sass-loader 传递选项
+            scss: {
+                // @/ 是 src/ 的别名
+                // 注意：在 sass-loader v7 中，这个选项名是 "data"
+                prependData: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+            }
+        },
+    }
+}
+```
+
+
+
+#### 示例
+
+这些变量的默认值被定义在 `:root` 节点上，HTML 里的所有子节点都可以访问到这些变量：
+
+```css
+:root {
+    --nut-primary-color: #fa2c19;
+    --nut-primary-color-end: #fa6419;
+    --nut-help-color: #f5f5f5;
+    --nut-active-color: rgba(250, 44, 25, 0.15);
+}
+```
+
+#### 通过 CSS 覆盖
+
+你可以直接在代码中覆盖这些 CSS 变量，Button 组件的样式会随之发生改变：
+
+```css
+/* 添加这段样式后，Primary Button 会变成绿色 */
+:root {
+  --nut-button-primary-background-color: green;
+}
+```
+
+#### 通过 ConfigProvider 覆盖
 ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme-vars 属性来配置一些主题变量
 :::demo
 
@@ -61,7 +144,7 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 <template>
     <nut-config-provider :theme-vars="themeVars">
       <nut-form>
-        <nut-form-item :label="动态主题">
+        <nut-form-item :label="滑块">
           <nut-range hidden-tag v-model="range"></nut-range>
         </nut-form-item>
       </nut-form>
@@ -72,11 +155,11 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
   export default {
     setup() {
       const range = ref(30);
-       const themeVars = {
-      rangeBgColor: 'rgba(25,137,250,0.15)',
-      rangeBarBgColor: '#0289fa',
-      rangeBarBtnBorder: '1px solid #0289fa'
-    };
+      const themeVars = {
+        rangeBgColor: 'rgba(25,137,250,0.15)',
+        rangeBarBgColor: '#0289fa',
+        rangeBarBtnBorder: '1px solid #0289fa'
+      };
 
       return { range, themeVars };
     }
@@ -87,6 +170,69 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 :::
 
 
+### 主题变量
+#### 基础变量
+
+NutUI 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
+
+#### 修改变量
+
+由于 CSS 变量继承机制的原因，两者的修改方式有一定差异：
+
+- 基础变量只能通过 `:root 选择器` 修改，不能通过 `ConfigProvider 组件` 修改。
+- 组件变量可以通过 `:root 选择器` 和 `ConfigProvider 组件` 修改。
+
+#### 变量列表
+
+下面是所有的基础变量：
+```less
+  --nut-primary-color: #fa2c19;
+  --nut-primary-color-end: #fa6419;
+  // 辅助色
+  --nut-help-color: #f5f5f5;
+  --nut-active-color: rgba(250, 44, 25, 0.15);
+  // 标题常规文字
+  --nut-title-color: #1a1a1a;
+  // 副标题
+  --nut-title-color2: #666666;
+  // 次内容
+  --nut-text-color: #808080;
+  // 特殊禁用色
+  --nut-disable-color: #cccccc;
+  --nut-white: #fff;
+  --nut-black: #000;
+  --nut-required-color: #fa2c19;
+  // 暗黑模式下颜色
+  --nut-dark-background: #131313;
+  --nut-dark-background2: #1b1b1b;
+  --nut-nut-dark-background3: #141414;
+  --nut-nut-dark-background4: #323233;
+  --nut-dark-background5: #646566;
+  --nut-dark-background6: #380e08;
+  --nut-dark-background7: #707070;
+  --nut-dark-color: var(--nut-white);
+  --nut-dark-color2: #f2270c;
+  --nut-dark-color3: rgba(232, 230, 227, 0.8);
+  --nut-dark-color-gray: var(--nut-text-color);
+  --nut-dark-calendar-choose-color: rgba(227, 227, 227, 0.2);
+  // 字体
+  --nut-font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif;
+
+  // Font
+  --nut-font-size-0: 10px;
+  --nut-font-size-1: 12px;
+  --nut-font-size-2: 14px;
+  --nut-font-size-3: 16px;
+  --nut-font-size-4: 18px;
+  --nut-font-weight-bold: 400;
+  --nut-font-size-small: var(--nut-font-size-1);
+  --nut-font-size-base: var(--nut-font-size-2);
+  --nut-font-size-large: var(--nut-font-size-3);
+  --nut-line-height-base: 1.5;
+
+```
+
+
 ## API
 
 ### Props
@@ -94,4 +240,5 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 | 参数  | 说明                                             | 类型   | 默认值 |
 |-------|--------------------------------------------------|--------|--------|
 | theme | 主题风格，设置为 `dark` 来开启深色模式，全局生效 | String | -      |
+| theme-vars | 自定义主题变量，局部生效 | Object | -      |
 | tag   | 根节点对应的 HTML 标签名                         | String | div    |
