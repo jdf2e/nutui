@@ -13,7 +13,7 @@ import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('list');
 const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     height: {
       type: [Number],

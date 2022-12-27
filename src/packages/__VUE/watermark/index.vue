@@ -13,7 +13,7 @@
 import { reactive, toRefs, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('watermark');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     name: {
       type: String,

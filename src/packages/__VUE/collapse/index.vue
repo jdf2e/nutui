@@ -7,7 +7,7 @@
 import { computed, getCurrentInstance, onMounted, provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     active: {
       type: [String, Number, Array],

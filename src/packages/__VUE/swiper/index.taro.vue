@@ -57,7 +57,7 @@ import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 const { create, componentName } = createComponent('swiper');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     width: {
       type: [Number, String],

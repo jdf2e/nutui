@@ -6,7 +6,7 @@ import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create, componentName } = createComponent('rate');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     count: {
       type: [String, Number],

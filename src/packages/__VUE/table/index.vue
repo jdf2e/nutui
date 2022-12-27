@@ -54,5 +54,5 @@
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('table');
 import { component } from './common';
-export default create(component(componentName, translate));
+export default /* @__PURE__ */ create(component(componentName, translate));
 </script>

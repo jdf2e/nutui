@@ -14,7 +14,7 @@
 import { onMounted, provide, reactive, toRefs, ref, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabbar');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: [Number, String],

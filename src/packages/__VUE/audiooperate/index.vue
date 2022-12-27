@@ -28,7 +28,7 @@ import { createComponent } from '@/packages/utils/create';
 import Button from '../button/index.vue';
 const { componentName, create, translate } = createComponent('audio-operate');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     // 展示的形式   back 倒退   play 开始 or 暂停  forward 快进 mute 静音
     type: {

@@ -3,7 +3,7 @@ import { reactive, computed, h, onMounted, onUnmounted, ref, Ref, unref, PropTyp
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('sticky');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     position: {
       type: String,

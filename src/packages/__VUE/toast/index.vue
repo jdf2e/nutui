@@ -31,7 +31,7 @@
 import { reactive, computed, watch, onMounted, PropType, Component } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('toast');
-export default create({
+export default /* @__PURE__ */ create({
   components: {},
   props: {
     id: String,

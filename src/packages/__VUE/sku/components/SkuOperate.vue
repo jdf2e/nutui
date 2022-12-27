@@ -20,7 +20,7 @@ import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-operate');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     // 底部按钮配置  confirm cart  buy
     btnOptions: {

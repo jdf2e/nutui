@@ -27,7 +27,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('swipe');
 
 export type SwipePosition = 'left' | 'right' | '';
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     name: {
       type: String,

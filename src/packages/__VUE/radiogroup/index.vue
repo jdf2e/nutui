@@ -3,7 +3,7 @@ import { h, provide, computed, readonly, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio-group');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: [Number, String, Boolean],

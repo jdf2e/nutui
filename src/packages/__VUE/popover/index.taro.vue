@@ -74,7 +74,7 @@ import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 import Taro from '@tarojs/taro';
 import Popup from '../popup/index.taro.vue';
 
-export default create({
+export default /* @__PURE__ */ create({
   inheritAttrs: false,
   components: {
     [Popup.name]: Popup

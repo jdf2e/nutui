@@ -53,7 +53,7 @@ import { createComponent } from '@/packages/utils/create';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 import { Checked } from '@nutui/icons-vue-taro';
 const { create } = createComponent('progress');
-export default create({
+export default /* @__PURE__ */ create({
   components: { Checked },
   props: {
     percentage: {

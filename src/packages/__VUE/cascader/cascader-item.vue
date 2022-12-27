@@ -37,7 +37,7 @@ import { CascaderPane, CascaderOption, CascaderValue, convertConfig, Tabs } from
 import { Loading, Checklist } from '@nutui/icons-vue';
 import Tree from './tree';
 
-export default create({
+export default /* @__PURE__ */ create({
   components: { Loading, Checklist },
   props: {
     visible: Boolean,

@@ -33,7 +33,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('addresslist-swipe');
 import ItemContents from './ItemContents.vue';
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     item: {
       type: Object,

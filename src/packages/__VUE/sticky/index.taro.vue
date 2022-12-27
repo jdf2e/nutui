@@ -2,7 +2,7 @@
 import { computed, h, ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sticky');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     top: {
       type: [Number, String],

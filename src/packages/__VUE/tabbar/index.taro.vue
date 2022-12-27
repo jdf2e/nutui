@@ -15,7 +15,7 @@ import { onMounted, provide, reactive, ref, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { create } = createComponent('tabbar');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: [Number, String],

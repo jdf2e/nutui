@@ -51,7 +51,7 @@ import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
 import Button from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
-export default create({
+export default /* @__PURE__ */ create({
   inheritAttrs: false,
   components: {
     [Popup.name]: Popup,

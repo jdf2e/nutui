@@ -7,7 +7,7 @@
 import { reactive, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('image');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     name: {
       type: String,

@@ -8,7 +8,7 @@ import { provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('row');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     type: {
       type: String,

@@ -23,7 +23,7 @@ import { createComponent } from '@/packages/utils/create';
 import NutScrollView from '../scrollView/index.taro.vue';
 const { componentName, create } = createComponent('backtop');
 import { Top } from '@nutui/icons-vue-taro';
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     NutScrollView,
     Top

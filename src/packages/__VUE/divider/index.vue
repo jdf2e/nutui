@@ -9,7 +9,7 @@ import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('divider');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     contentPosition: {
       type: String,

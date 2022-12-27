@@ -54,7 +54,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useTouch } from './use-touch';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     width: {
       type: [Number, String],

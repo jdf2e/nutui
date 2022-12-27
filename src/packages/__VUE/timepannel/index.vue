@@ -6,7 +6,7 @@
 import { reactive, toRefs, inject, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('time-pannel');
-export default create({
+export default /* @__PURE__ */ create({
   name: 'timepannel',
   props: {
     name: {

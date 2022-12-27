@@ -8,7 +8,7 @@ import { computed, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('col');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     span: {
       type: [String, Number],

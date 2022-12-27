@@ -28,7 +28,7 @@ interface SkuInfo {
   disable: boolean;
   [props: string]: any;
 }
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     sku: {
       type: Array,

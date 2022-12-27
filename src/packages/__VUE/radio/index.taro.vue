@@ -5,7 +5,7 @@ const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     CheckNormal,
     CheckChecked

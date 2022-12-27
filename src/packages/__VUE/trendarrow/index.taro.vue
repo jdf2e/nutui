@@ -21,7 +21,7 @@ import { createComponent } from '@/packages/utils/create';
 import { TriangleUp, TriangleDown } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('trend-arrow');
 
-export default create({
+export default /* @__PURE__ */ create({
   components: { TriangleUp, TriangleDown },
   props: {
     rate: {

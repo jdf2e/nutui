@@ -66,5 +66,5 @@ import { PickerOption } from './types';
 
 const component: Component = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
 
-export default create(component);
+export default /* @__PURE__ */ create(component);
 </script>

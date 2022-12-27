@@ -33,7 +33,7 @@ import { component } from './common';
 import OverLay from '../overlay/index.vue';
 import { Close } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('popup');
-export default create(
+export default /* @__PURE__ */ create(
   component(componentName, {
     [OverLay.name]: OverLay,
     Close

@@ -23,7 +23,7 @@ import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
 const { componentName, create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     attract: {
       type: Boolean,

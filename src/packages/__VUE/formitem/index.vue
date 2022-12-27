@@ -28,7 +28,7 @@ import { computed, inject, provide, PropType, ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Cell from '../cell/index.vue';
 const { componentName, create } = createComponent('form-item');
-export default create({
+export default /* @__PURE__ */ create({
   inheritAttrs: false,
   props: {
     prop: {

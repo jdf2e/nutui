@@ -137,7 +137,7 @@ interface IData {
   typeMachine: string;
 }
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     initNum: {
       type: Number,

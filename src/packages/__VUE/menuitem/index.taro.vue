@@ -77,7 +77,7 @@ import { Check } from '@nutui/icons-vue-taro';
 
 let _zIndex = 2000;
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     title: String,
     options: {

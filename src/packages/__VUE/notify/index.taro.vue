@@ -19,7 +19,7 @@ import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 const { componentName, create } = createComponent('notify');
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup
   },

@@ -30,7 +30,7 @@ import { createComponent } from '@/packages/utils/create';
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('textarea');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: String,

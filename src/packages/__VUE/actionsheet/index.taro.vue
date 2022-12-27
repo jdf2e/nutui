@@ -45,7 +45,7 @@ export interface menuItems {
   subname: string;
   [x: string]: string | boolean;
 }
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup,
     Loading

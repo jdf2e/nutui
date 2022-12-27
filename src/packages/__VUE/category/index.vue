@@ -26,7 +26,7 @@ export type CategoryType = {
   [key: string]: any;
 };
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     //分类模式
     type: {

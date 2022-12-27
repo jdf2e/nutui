@@ -72,7 +72,7 @@ import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
 const { componentName, create, translate } = createComponent('sku');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     ...popupProps,
 

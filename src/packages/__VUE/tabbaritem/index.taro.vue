@@ -43,7 +43,7 @@ import {
   watch
 } from 'vue';
 const { create } = createComponent('tabbar-item');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     tabTitle: {
       // 标签页的标题
