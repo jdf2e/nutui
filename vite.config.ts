@@ -55,6 +55,7 @@ export default defineConfig({
       // default options passed to markdown-it
       // see: https://markdown-it.github.io/markdown-it/
       markdownItOptions: {
+        typographer: false,
         highlight: function (str, lang) {
           if (lang && hljs.getLanguage(lang)) {
             try {
