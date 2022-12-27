@@ -1,10 +1,9 @@
-import { defineConfig, PluginOption } from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import MarkdownIt from 'markdown-it-container';
 import path from 'path';
 import config from './package.json';
-import { visualizer } from 'rollup-plugin-visualizer';
 import hljs from 'highlight.js';
 import autoprefixer from 'autoprefixer';
 import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
@@ -85,10 +84,6 @@ export default defineConfig({
         });
       }
     })
-    // legacy({
-    //   targets: ['defaults', 'not IE 11']
-    // })
-    // ,[visualizer() as PluginOption]
   ],
   build: {
     target: 'es2015',
