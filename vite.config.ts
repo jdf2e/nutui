@@ -90,7 +90,7 @@ export default defineConfig({
     target: 'es2015',
     outDir: './dist/4x/',
     // assetsDir: config.version,
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     cssTarget: ['chrome61'],
     rollupOptions: {
       input: {
