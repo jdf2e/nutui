@@ -15,10 +15,6 @@ let input = {
 ['zh-CN', 'zh-TW', 'en-US', 'id-ID'].map((file) => {
   input[file] = `./src/packages/locale/lang/${file}`;
 });
-import fs from 'fs-extra';
-// 构建index.scss 兼容插件市场按需加载插件
-fs.outputFile(path.resolve(__dirname, './dist/packages/locale/index.scss'), ' ', 'utf8', (error) => {});
-fs.outputFile(path.resolve(__dirname, './dist/packages/locale/lang/index.scss'), ' ', 'utf8', (error) => {});
 
 export default defineConfig({
   plugins: [vue()],

@@ -36,7 +36,7 @@ export default defineConfig({
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/packages/styles/variables-var.scss";@import "@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
       }
     },
     postcss: {

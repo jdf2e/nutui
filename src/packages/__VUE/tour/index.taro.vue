@@ -73,7 +73,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted, Component, CSSProperties } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component, CSSProperties } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
@@ -172,7 +172,7 @@ export default create({
 
     let maskRect: rectTaro[] = [];
 
-    let maskStyles = ref<CSSProperties[]>([]);
+    let maskStyles = ref<any[]>([]);
 
     const classes = computed(() => {
       const prefixCls = 'nut-tour';

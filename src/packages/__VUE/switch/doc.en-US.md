@@ -195,7 +195,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value | Description |
 | --------------------------------------- | -------------------------- | ---- |
 | --nut-switch-close-bg-color|  _#ebebeb_ | - |
-| --nut-switch-close--nut-cline-bg-color|  _#f0f0f0_ | - |
+| --nut-switch-close-cline-bg-color|  _#f0f0f0_ | - |
 | --nut-switch-width|  _36px_ | - |
 | --nut-switch-height|  _21px_ | - |
 | --nut-switch-line-height|  _21px_ | - |

@@ -17,7 +17,7 @@ config.nav.map((item) => {
     packages.push(name);
   });
 });
-let importCssVar = `import '../packages/styles/css-variables.scss';\n`;
+let importCssVar = `import '../packages/styles/theme-deafult.scss';\n`;
 let installFunction = `function install(app: any) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {

@@ -61,7 +61,7 @@ export default defineConfig({
       entry: 'src/packages/nutui.taro.vue.build.ts',
       name: 'nutui',
       fileName: 'nutui',
-      formats: ['es', 'umd']
+      formats: ['umd']
     }
   }
 });

@@ -67,7 +67,7 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-const { componentName, create } = createComponent('popover');
+const { create } = createComponent('popover');
 import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
 import { isArray } from '@/packages/utils/util';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
@@ -106,7 +106,7 @@ export default create({
     const popoverContentRefCopy = ref();
     const popoverbox = ref();
     const showPopup = ref(props.visible);
-    const popoverstyles = ref<CSSProperties>({});
+    const popoverstyles = ref<any>({});
 
     let rootRect = ref<rectTaro>();
 

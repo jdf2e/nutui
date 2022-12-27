@@ -283,7 +283,7 @@ page {
 
   //switch
   --nut-switch-close-bg-color: #ebebeb;
-  --nut-switch-close--nut-cline-bg-color: #f0f0f0;
+  --nut-switch-close-cline-bg-color: #f0f0f0;
   --nut-switch-width: 36px;
   --nut-switch-height: 21px;
   --nut-switch-line-height: 21px;
@@ -632,7 +632,7 @@ page {
   --nut-indicator-white: var(--nut-white);
   --nut-indicator-size: 18px;
   --nut-indicator-dot-size: calc(var(--nut-indicator-size) / 3);
-  --nut-indicator-border-size: calc(var(--nut-indicator-size)+ 2);
+  --nut-indicator-border-size: calc(var(--nut-indicator-size) + 2px);
   --nut-indicator-number-font-size: 10px;
 
   // menu
