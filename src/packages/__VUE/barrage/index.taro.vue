@@ -94,8 +94,6 @@ export default create({
     onMounted(() => {
       if (slotDefault) {
         const list = document.getElementsByClassName('slotBody' + classTime)[0].getElementsByClassName('dmitem');
-        console.log(list);
-
         let childrens = list?.[0]?.children || [];
         danmuList.value = childrens;
       }
@@ -141,28 +139,7 @@ export default create({
 
     const runStep = () => {
       danmuList.value.forEach((item: any, index: number) => {
-        // let el = danmuList.value[index];
-        if (typeof danmuList.value[index] == 'object') {
-          // danmuListSlots.value.push(item);
-          // let l = slotDefault ? String(danmuList.value.length) : '';
-          // let s = l + danmuListSlots.value.indexOf(item);
-          getNode(index);
-        } else {
-          // if (el?.classList.contains('dmitem')) {
-          //   el.classList.remove('dmitem');
-          // }
-          // if (el?.classList.contains('dmitem' + index)) {
-          //   el.classList.remove('dmitem' + index);
-          // }
-          // if (slotDefault && el) {
-          //   if (el?.classList.contains('move')) {
-          //     el.classList.remove('move');
-          //   }
-          //   el.classList.add('.move');
-          // }
-          // el.classList.add('.dmitem .dmitem' + index);
-          getNode(index);
-        }
+        getNode(index);
       });
     };
     const distance = ref('0');
