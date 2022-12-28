@@ -119,12 +119,6 @@ The ConfigProvider component provides the ability to override CSS variables. You
 
 CSS variables in NutUI are divided into **basic variable** and **component variable**. Component variables inherit the base variable, so after modifying the base variable, it will affect all related components.
 
-### modify variable
-
-Due to the CSS variable inheritance mechanism, the modification methods of the two are somewhat different:
-
-- Base variables can only be modified by the `:root selector`, not by the `ConfigProvider component`.
-- Component variables can be modified via `:root selector` and `ConfigProvider component`.
 
 ### variable list
 

@@ -200,12 +200,12 @@ export default createDemo({
         }
       }
     });
-
-    const themeVars = {
+    let color = reactive({
       rangeBgColor: 'rgba(25,137,250,0.15)',
       rangeBarBgColor: '#0289fa',
       rangeBarBtnBorder: '1px solid #0289fa'
-    };
+    });
+    const themeVars = color;
     return {
       formData2,
       addressModule,

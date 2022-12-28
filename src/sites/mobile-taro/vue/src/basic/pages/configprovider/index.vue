@@ -58,6 +58,14 @@
         </nut-form-item>
       </nut-form>
     </nut-config-provider>
+    <h2>动态主题</h2>
+    <nut-config-provider :theme-vars="themeVars">
+      <nut-form>
+        <nut-form-item label="滑块">
+          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+        </nut-form-item>
+      </nut-form>
+    </nut-config-provider>
   </div>
 </template>
 <script lang="ts">
@@ -134,12 +142,19 @@ export default {
         }
       }
     });
+    let color = reactive({
+      rangeBgColor: 'rgba(25,137,250,0.15)',
+      rangeBarBgColor: 'green',
+      rangeBarBtnBorder: '1px solid #0289fa'
+    });
+    const themeVars = color;
 
     return {
       formData2,
       addressModule,
       switchChecked,
       switchChange,
+      themeVars,
       theme
     };
   }
