@@ -135,18 +135,6 @@ Set the button shape through the `shape` property, support circle and square but
 
 :::
 
-### Custom Icon
-
-```html
-<template>
-  <nut-button shape="square" plain type="primary">
-    <template #icon>
-      <Close />
-    </template>
-  </nut-button>
-</template>
-```
-
 ### Size
 
 Support `large`, `normal`, `small`, `mini` four sizes, the default is `normal`.
