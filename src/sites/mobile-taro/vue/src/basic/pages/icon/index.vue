@@ -44,8 +44,8 @@
 
     <nut-cell-group v-for="item in icons.style" :title="item.name" :key="item">
       <nut-cell>
-        <ul>
-          <li v-for="it in item.icons" :key="it">
+        <ul class="icon-ul">
+          <li v-for="it in item.icons" :key="it" class="icon-li">
             <IconFont
               :name="it.name"
               :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
@@ -75,10 +75,10 @@ export default {
     margin-right: 10px;
   }
 }
-ul {
+.icon-ul {
   display: flex;
   flex-wrap: wrap;
-  li {
+  .icon-li {
     flex: 0 0 25%;
     max-width: 25%;
     display: flex;

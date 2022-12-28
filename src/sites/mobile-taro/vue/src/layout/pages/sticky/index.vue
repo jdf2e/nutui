@@ -21,6 +21,9 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+.sticky-demo {
+  overflow: auto !important;
+}
 .sticky-container {
   width: 100%;
   height: 300px;
