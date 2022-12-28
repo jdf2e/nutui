@@ -62,7 +62,7 @@ import NutScrollView from '../scrollView/index.taro.vue';
 
 import Taro from '@tarojs/taro';
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     NutScrollView
   },

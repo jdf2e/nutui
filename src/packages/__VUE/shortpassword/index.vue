@@ -39,7 +39,7 @@ import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';
 const { create, translate } = createComponent('short-password');
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup,
     Tips

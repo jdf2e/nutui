@@ -19,7 +19,7 @@
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('badge');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     value: {
       type: [String, Number]

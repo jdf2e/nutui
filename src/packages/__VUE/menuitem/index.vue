@@ -65,7 +65,7 @@ const { componentName, create } = createComponent('menu-item');
 import Popup from '../popup/index.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     title: String,
     options: {

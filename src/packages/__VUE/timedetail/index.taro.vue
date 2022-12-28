@@ -13,7 +13,7 @@
 import { reactive, toRefs, inject, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('time-detail');
-export default create({
+export default /* @__PURE__ */ create({
   name: 'timedetail',
   props: {
     times: {

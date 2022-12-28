@@ -10,9 +10,8 @@
 <script lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-// import { createIntersectionObserver, IntersectionObserver } from '@tarojs/taro';
 const { componentName, create } = createComponent('side-navbar');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     offset: {
       type: [String, Number],
@@ -24,7 +23,6 @@ export default create({
     const list = ref(null) as Ref;
     const state = reactive({
       count: 1
-      // observer: null as IntersectionObserver | null
     });
 
     const classes = computed(() => {
@@ -37,9 +35,11 @@ export default create({
     const setPaddingLeft = (nodeList: any, level: number = 1) => {
       for (let i = 0; i < nodeList.length; i++) {
         let item = nodeList[i];
-        item.children[0].style.paddingLeft = props.offset * level + 'px';
-        if (!item.className.includes('nut-side-navbar-item')) {
-          setPaddingLeft(Array.from(item.children[1].children), ++state.count);
+        if (item.children) {
+          item.children[0].style.paddingLeft = props.offset * level + 'px';
+          if (!item.className.includes('nut-side-navbar-item')) {
+            setPaddingLeft(Array.from(item.children[1].children), ++state.count);
+          }
         }
       }
       state.count--;
@@ -59,16 +59,6 @@ export default create({
 
     onMounted(() => {
       handleSlots();
-      // state.observer = createIntersectionObserver(proxy, {
-      //   thresholds: [1],
-      //   initialRatio: 1,
-      //   observeAll: true
-      // });
-
-      // state.observer.observe(list.value, () => {
-      //   state.count = 1;
-      //   handleSlots();
-      // });
     });
 
     return {

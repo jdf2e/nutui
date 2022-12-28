@@ -66,7 +66,7 @@ const { create, translate } = createComponent('searchbar');
 //   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
 //   params: (string | number | Event)[];
 // }
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: [String, Number],

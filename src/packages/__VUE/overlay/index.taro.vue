@@ -10,7 +10,7 @@ import { CSSProperties, PropType, computed, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('overlay');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     visible: {
       type: Boolean,

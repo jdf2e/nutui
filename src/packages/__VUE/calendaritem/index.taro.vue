@@ -82,7 +82,7 @@ import NutScrollView from '../scrollView/index.taro.vue';
 import { isArray } from '@/packages/utils/util';
 const TARO_ENV = Taro.getEnv();
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     NutScrollView
   },

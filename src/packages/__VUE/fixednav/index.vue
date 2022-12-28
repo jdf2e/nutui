@@ -5,7 +5,7 @@ import { component } from './common';
 import OverLay from '../overlay/index.vue';
 const { create } = createComponent('fixed-nav');
 import { Left } from '@nutui/icons-vue';
-export default create(
+export default /* @__PURE__ */ create(
   component({
     [OverLay.name]: OverLay,
     Left

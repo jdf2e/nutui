@@ -29,7 +29,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
 import { ArrowUp2, ArrowDown2 } from '@nutui/icons-vue';
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     ArrowUp2,
     ArrowDown2

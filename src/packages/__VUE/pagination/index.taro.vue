@@ -38,7 +38,7 @@ import { toRefs, watchEffect, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('pagination');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: Number,

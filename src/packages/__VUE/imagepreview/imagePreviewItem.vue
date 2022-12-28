@@ -23,7 +23,7 @@ import { baseProps } from './types';
 import Video from '../video/index.vue';
 const { create } = createComponent('image-preview-item');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     ...baseProps,
     image: {

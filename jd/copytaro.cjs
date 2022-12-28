@@ -59,7 +59,8 @@ const copy = async () => {
     docsConfig.version = fromPkgConfig.version;
     docsConfig.nav = fromConfig.nav;
     docsConfig.docs = fromConfig.docs;
-    docsConfig.demoUrl = 'https://nutui.jd.com/3x/demo.html#';
+    // docsConfig.demoUrl = 'https://nutui.jd.com/3x/demo.html#';
+    docsConfig.demoUrl = 'https://nutui-docs-test1.local-pf.jd.com/vue_taro/demo/demo.html#/pages/index/index';
     fse
       .writeJson(nutuiDocsConfigPath, docsConfig, {
         spaces: 2

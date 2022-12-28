@@ -58,60 +58,6 @@ app.use(ConfigProvider);
 NutUI组件可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
 来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
 
->如果需要使用CSS变量的能力来做主题定制的话，需要加上theme-default的scss文件引入。修改 vite 或者 webpack 配置文件中 sass-loader 的配置;
-
-#### vite 演示
-
-``` javascript
-// https://vitejs.dev/config/
-export default defineConfig({
-  //...
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`
-      }
-    }
-  }
-})
-```
-
-#### webpack 配置方法
-
-``` javascript
-{
-    test: /\.(sa|sc)ss$/,
-    use: [
-        {
-            loader: 'sass-loader',
-            options: {
-                // 注意：在 sass-loader 不同版本，这个选项名是 是不一样的，具体可参考 sass-loader对应的版本文档
-                data: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
-            }
-        }
-    ]
-}
-```
-
-#### vue/cli 3 以上版本修改 **vue.config.js** 进行配置
-
-``` javascript
-module.exports = {
-    css: {
-        loaderOptions: {
-            // 给 sass-loader 传递选项
-            scss: {
-                // @/ 是 src/ 的别名
-                // 注意：在 sass-loader v7 中，这个选项名是 "data"
-                prependData: `@import "@nutui/nutui/dist/styles/theme-deafult.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
-            }
-        },
-    }
-}
-```
-
-
-
 #### 示例
 
 这些变量的默认值被定义在 `:root` 节点上，HTML 里的所有子节点都可以访问到这些变量：

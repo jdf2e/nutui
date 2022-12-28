@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.0.0-beta.2",
+  "version": "4.0.0-beta.3",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.cjs",
   "module": "dist/nutui.es.js",
@@ -16,6 +16,7 @@
     "nutui",
     "nutui2",
     "nutui3",
+    "nutui4",
     "vue",
     "vue3",
     "webpack",

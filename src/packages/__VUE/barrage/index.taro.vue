@@ -20,7 +20,7 @@ import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('barrage');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     danmu: {
       type: Array,

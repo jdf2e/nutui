@@ -1,5 +1,6 @@
 .nut-sticky {
   &--stickyed {
+    display: flex;
     position: sticky;
   }
   &--fixed {

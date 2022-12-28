@@ -1,5 +1,12 @@
 <template>
-  <nut-popup v-model:visible="show" position="bottom" :popClass="popClass" :overlay="false">
+  <nut-popup
+    v-model:visible="show"
+    position="bottom"
+    :popClass="popClass"
+    :overlay="overlay"
+    @click-overlay="closeBoard()"
+    overlay-class="nut-number-keyboard-overlay"
+  >
     <div class="nut-number-keyboard" ref="root">
       <div class="nut-number-keyboard__header" v-if="title">
         <h3 class="nut-number-keyboard__title">{{ title }}</h3>
@@ -76,7 +83,7 @@ export interface keys {
   id: number | string;
   type: string;
 }
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup
   },
@@ -115,7 +122,7 @@ export default create({
     },
     overlay: {
       type: Boolean,
-      default: true
+      default: false
     },
     popClass: {
       type: String,

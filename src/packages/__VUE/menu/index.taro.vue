@@ -31,7 +31,7 @@ import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('menu');
 import { ArrowUp2, ArrowDown2 } from '@nutui/icons-vue-taro';
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     ArrowUp2,
     ArrowDown2

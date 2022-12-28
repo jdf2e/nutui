@@ -15,7 +15,7 @@ import { getTimeStamp } from './util';
 import { padZero } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('countdown');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: Object,

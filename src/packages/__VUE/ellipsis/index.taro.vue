@@ -40,7 +40,7 @@ type EllipsisedValue = {
   tailing?: string;
 };
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     content: {
       type: String,

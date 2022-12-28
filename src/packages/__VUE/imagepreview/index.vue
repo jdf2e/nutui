@@ -58,7 +58,7 @@ import Popup from '../popup/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     ...baseProps,
     images: { type: Array as PropType<ImageInterface[]>, default: () => [] },

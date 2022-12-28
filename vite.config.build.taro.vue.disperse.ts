@@ -68,7 +68,7 @@ export default defineConfig({
       output: {
         banner,
         paths: {
-          '@/packages/locale': '../locale/lang'
+          '@/packages/locale': '../locale/lang/index.js'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js',

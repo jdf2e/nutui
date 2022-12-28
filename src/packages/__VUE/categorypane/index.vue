@@ -60,7 +60,7 @@ export type CustomType = {
   [key: string]: any;
 };
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     //分类模式
     type: {

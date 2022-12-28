@@ -40,7 +40,7 @@ import { useRect, rect } from '@/packages/utils/useRect';
 import Popup from '../popup/index.vue';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 const { create } = createComponent('popover');
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup
   },

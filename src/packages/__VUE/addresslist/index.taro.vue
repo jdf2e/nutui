@@ -65,7 +65,7 @@ import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.taro.vue';
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     data: {
       type: Array,

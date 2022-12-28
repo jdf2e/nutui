@@ -82,7 +82,7 @@ interface Dateprop {
   month: string;
 }
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     type: {
       type: String,

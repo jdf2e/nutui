@@ -11,7 +11,7 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 import { IStyle } from './type';
 const { create, componentName } = createComponent('swiper-item');
 
-export default create({
+export default /* @__PURE__ */ create({
   setup(props, { slots }) {
     const parent = inject('parent') as any;
     parent['relation'](getCurrentInstance());

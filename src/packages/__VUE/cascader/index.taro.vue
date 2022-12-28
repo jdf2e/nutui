@@ -55,7 +55,7 @@ const { create } = createComponent('cascader');
 import CascaderItem from './cascader-item.taro.vue';
 import Popup from '../popup/index.taro.vue';
 
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [CascaderItem.name]: CascaderItem,
     [Popup.name]: Popup

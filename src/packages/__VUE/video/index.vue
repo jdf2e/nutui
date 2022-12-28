@@ -62,7 +62,7 @@ import { createComponent } from '@/packages/utils/create';
 import { throttle } from '@/packages/utils/throttle';
 const { create, translate } = createComponent('video');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     source: {
       type: Object,

@@ -15,7 +15,7 @@ import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from '
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
 const { componentName, create } = createComponent('drag');
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     attract: {
       type: Boolean,

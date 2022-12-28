@@ -21,7 +21,7 @@ import { TypeOfFun } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-stepper');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     // 购买数量最大值
     stepperMax: {

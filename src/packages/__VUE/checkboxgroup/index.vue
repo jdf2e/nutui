@@ -4,7 +4,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('checkbox-group');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     modelValue: {
       type: Array,

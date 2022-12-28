@@ -22,7 +22,7 @@ import { ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku-header');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     goods: {
       type: Object,

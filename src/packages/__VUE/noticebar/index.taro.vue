@@ -94,7 +94,7 @@ interface stateProps {
   id: number;
 }
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     // 滚动方向  across 横向 vertical 纵向
     direction: {

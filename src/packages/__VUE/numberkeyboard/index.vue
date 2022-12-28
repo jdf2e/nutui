@@ -78,7 +78,7 @@ export interface keys {
   id: number | string;
   type: string;
 }
-export default create({
+export default /* @__PURE__ */ create({
   components: {
     [Popup.name]: Popup
   },

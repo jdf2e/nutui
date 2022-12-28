@@ -12,7 +12,7 @@ import { Close } from '@nutui/icons-vue';
 import { TagType } from './type';
 const { componentName, create } = createComponent('tag');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     color: { type: String, default: '' },
     textColor: { type: String, default: '' },

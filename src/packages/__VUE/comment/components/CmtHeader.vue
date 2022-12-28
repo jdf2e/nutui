@@ -37,7 +37,7 @@ import { ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment-header');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     type: {
       type: String,

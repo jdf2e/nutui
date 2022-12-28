@@ -12,7 +12,7 @@ import { computed, onMounted, onUnmounted, onDeactivated, ref, watch, nextTick, 
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('barrage');
 
-export default create({
+export default /* @__PURE__ */ create({
   name: 'barrage',
   props: {
     danmu: {

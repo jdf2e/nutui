@@ -16,7 +16,7 @@ import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue-taro';
 import { ButtonShape, ButtonType, ButtonSize } from './type';
 const { componentName, create } = createComponent('button');
-export default create({
+export default /* @__PURE__ */ create({
   components: { Loading },
   props: {
     color: String,

@@ -16,7 +16,7 @@ interface Item {
   key?: string;
   value?: string;
 }
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     progress: {
       type: [Number, String],

@@ -53,7 +53,7 @@ import Popup from '../popup/index.vue';
 import Button from '../button/index.vue';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
 import { isPromise } from '@/packages/utils/util';
-export default create({
+export default /* @__PURE__ */ create({
   inheritAttrs: false,
   components: {
     [Popup.name]: Popup,

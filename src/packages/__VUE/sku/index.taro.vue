@@ -71,7 +71,7 @@ import Popup from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku');
 
-export default create({
+export default /* @__PURE__ */ create({
   props: {
     visible: {
       type: Boolean,
