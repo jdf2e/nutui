@@ -7,7 +7,6 @@ import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
-import Icon from '../icon/index.vue';
 import Overlay from '../overlay/index.vue';
 
 export class ImagePreviewOptions {
@@ -40,7 +39,7 @@ class ImagePreviewFunction {
     const options = Object.assign(this.options, _options);
     const { instance, unmount } = CreateComponent(options, {
       name: 'imagepreview',
-      components: [Popup, Video, Swiper, SwiperItem, Icon, Overlay],
+      components: [Popup, Video, Swiper, SwiperItem, Overlay],
       wrapper: () => {
         return {
           setup() {

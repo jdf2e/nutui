@@ -130,6 +130,7 @@
           "show": true,
           "desc": "图标",
           "author": "richard1015",
+          "exclude": true,
           "styleDeps": []
         },
         {

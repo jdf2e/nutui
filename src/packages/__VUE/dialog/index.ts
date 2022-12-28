@@ -1,7 +1,6 @@
 import Dialog from './index.vue';
 import { h, VNode, CSSProperties, Component } from 'vue';
 import Popup from '../popup/index.vue';
-import Icon from '../icon/index.vue';
 import Button from '../button/index.vue';
 import Overlay from '../overlay/index.vue';
 import { CreateComponent } from '@/packages/utils/create';
@@ -44,7 +43,7 @@ class DialogFunction {
     let options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
-      components: [Popup, Icon, Button, Overlay],
+      components: [Popup, Button, Overlay],
       wrapper: (elWarp: any, root: any) => {
         return {
           setup() {

@@ -8,10 +8,12 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, type } = element;
+    let { name, type, exclude } = element;
     importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${type === 'methods' ? '' : '.vue'}';\n`;
     importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
-    packages.push(name);
+    if (exclude != true) {
+      packages.push(name);
+    }
   });
 });
 let importCssVar = `import '../packages/styles/theme-deafult.scss';\n`;
