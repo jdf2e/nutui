@@ -79,6 +79,7 @@ export default create({
         danmuList.value = dmList;
       }
       setTimeout(() => {
+        dmBody.value?.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
         run();
       }, 300);
     });
@@ -116,27 +117,20 @@ export default create({
     const run = () => {
       clearInterval(timer);
       timer = 0;
-      timer = setInterval(() => {
+      timer = setTimeout(() => {
         play();
         run();
       }, props.frequency);
     };
-    const distance = ref('0');
+    // const distance = ref('0');
     const play = () => {
       if (!props.loop && index.value >= danmuList.value.length) {
         return;
       }
       const _index = props.loop ? index.value % danmuList.value.length : index.value;
       let el = document.createElement(`view`);
-
       if (slotDefault && typeof danmuList.value[_index] == 'object') {
         el = danmuList.value[_index];
-        if (el?.classList?.contains('dmitem')) {
-          el.classList.remove('dmitem');
-        }
-        if (el?.classList?.contains('move')) {
-          el.classList.remove('move');
-        }
         el?.classList?.add('dmitem');
       } else {
         el.innerHTML = danmuList.value[_index] as string;
@@ -158,12 +152,19 @@ export default create({
           const width = el.offsetWidth;
           el.style.width = width + 20 + 'px';
         }
+
         // el.style.left = "-"+(_index % rows.value) + 'px';
-        el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
-        distance.value = '-' + (speeds / 1000) * 150 + '%';
+        // el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
+        // document.documentElement.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
+        // distance.value = '-' + (speeds / 1000) * 150 + '%';
         el.dataset.index = `${_index}`;
         if (slotDefault) {
           index.value++;
+          el.addEventListener('animationend', () => {
+            if (el?.classList?.contains('move')) {
+              el.classList.remove('move');
+            }
+          });
         } else {
           el.addEventListener('animationend', () => {
             dmContainer.value.removeChild(el);
@@ -172,26 +173,7 @@ export default create({
         }
       });
     };
-    return { classTime, classes, danmuList, dmBody, dmContainer, add, distance };
+    return { classTime, classes, danmuList, dmBody, dmContainer, add };
   }
 });
 </script>
-
-<style lang="scss">
-@keyframes moving {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-@-webkit-keyframes moving {
-  from {
-    -webkit-transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-</style>
