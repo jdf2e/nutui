@@ -7,6 +7,8 @@
       :z-index="zIndex"
       :lock-scroll="lockScroll"
       :duration="duration"
+      :overlay-class="overlayClass"
+      :overlay-style="overlayStyle"
       @click="onClickOverlay"
       v-bind="$attrs"
     />
