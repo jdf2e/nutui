@@ -8,7 +8,8 @@
   "type": "module",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
-    "dist/packages/_es/*"
+    "dist/packages/_es/*",
+    "dist/packages/**/style*"
   ],
   "vetur": {
     "tags": "dist/smartips/tags.json",
