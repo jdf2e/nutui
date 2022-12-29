@@ -8,12 +8,10 @@
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList, Swipe, Button } from "@nutui/nutui";
+import { AddressList } from "@nutui/nutui";
 
 const app = createApp();
 app.use(AddressList);
-app.use(Swipe);
-app.use(Button);
 ```
 
 

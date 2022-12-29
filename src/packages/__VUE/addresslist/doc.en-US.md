@@ -8,12 +8,10 @@ It is mainly used to display and operate the address list. Dependent components:
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList, Swipe, Button } from "@nutui/nutui";
+import { AddressList } from "@nutui/nutui";
 
 const app = createApp();
 app.use(AddressList);
-app.use(Swipe);
-app.use(Button);
 ```
 
 ### Basic Usage
