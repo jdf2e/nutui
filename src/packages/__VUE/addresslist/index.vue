@@ -66,7 +66,7 @@ import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.vue';
 import Swipe from '../swipe/index.vue';
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     data: {
       type: Array,

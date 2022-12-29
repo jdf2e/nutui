@@ -73,7 +73,7 @@ import InputNumber from '../inputnumber/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     visible: {
       type: Boolean,

@@ -4,5 +4,5 @@ const { create, componentName } = createComponent('checkbox');
 import { component } from './common';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue';
 
-export default /* @__PURE__ */ create(component(componentName, { CheckNormal, Checked, CheckDisabled }));
+export default create(component(componentName, { CheckNormal, Checked, CheckDisabled }));
 </script>

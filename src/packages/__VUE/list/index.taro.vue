@@ -22,7 +22,7 @@ import NutScrollView from '../scrollView/index.taro.vue';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('list');
 const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     NutScrollView
   },

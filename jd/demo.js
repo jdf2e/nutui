@@ -9,7 +9,7 @@ var demoModel = function (nameLc) {
 import { reactive, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('${nameLc}');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     name: {
       type: String,

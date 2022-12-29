@@ -47,7 +47,7 @@ interface ImagesType {
   bigImgUrl: string;
   imgUrl: string;
 }
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     type: {
       type: String,

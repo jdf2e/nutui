@@ -40,7 +40,7 @@ import baseProps from './baseProps';
 const { componentName, create, translate } = createComponent('picker');
 import { PickerOption } from './types';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [column.name]: column
   },

@@ -28,7 +28,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     name: {
       type: String,

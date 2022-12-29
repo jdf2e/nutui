@@ -22,7 +22,7 @@
 import { toRefs, onMounted, computed, inject, reactive, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     size: {
       type: String,

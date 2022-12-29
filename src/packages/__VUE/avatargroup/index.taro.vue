@@ -7,7 +7,7 @@
 import { toRefs, onMounted, computed, provide, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar-group');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     maxContent: {
       type: String,

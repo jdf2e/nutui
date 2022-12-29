@@ -45,7 +45,7 @@ const zhCNType: {
   minute: translate('minute'),
   seconds: translate('seconds')
 };
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Picker.name]: Picker
   },

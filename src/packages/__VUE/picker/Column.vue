@@ -38,7 +38,7 @@ import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     // 当前选中项
     value: [String, Number],

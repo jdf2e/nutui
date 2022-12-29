@@ -2,7 +2,7 @@
 import { createComponent } from '@/packages/utils/create';
 import { h, PropType } from 'vue';
 const { componentName, create } = createComponent('config-provider');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     theme: { type: String, default: '' },
     themeVars: { type: Object, default: () => {} },

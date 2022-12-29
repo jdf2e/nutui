@@ -73,7 +73,7 @@ import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 const { componentName, create, translate } = createComponent('uploader');
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Progress.name]: Progress,
     Photograph,

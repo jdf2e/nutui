@@ -39,7 +39,7 @@ import Tabs from '../tabs/index.vue';
 import TabPane from '../tabpane/index.vue';
 import Tree from './tree';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     Loading,
     Checklist,

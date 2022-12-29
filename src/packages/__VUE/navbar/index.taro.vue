@@ -50,7 +50,7 @@ import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('navbar');
 import { Left } from '@nutui/icons-vue-taro';
-export default /* @__PURE__ */ create({
+export default create({
   components: { Left },
   props: {
     leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon

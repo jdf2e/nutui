@@ -41,7 +41,7 @@ import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { Loading } from '@nutui/icons-vue';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     modelValue: {
       type: Boolean,

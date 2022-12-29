@@ -21,7 +21,7 @@ import { createComponent } from '@/packages/utils/create';
 import { TriangleUp, TriangleDown } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('trend-arrow');
 
-export default /* @__PURE__ */ create({
+export default create({
   components: { TriangleUp, TriangleDown },
   props: {
     rate: {
