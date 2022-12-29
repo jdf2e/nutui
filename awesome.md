@@ -12,6 +12,7 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 ## 文章教程
 
 - [移动端组件库如何和 Taro 结合](https://jelly.jd.com/article/618341fd4a534d01c422bc98)
+- [京东风NutUI组件库实践，10分钟搭建购物小程序界面](https://pixso.cn/designskills/nutui/)
 
 
 

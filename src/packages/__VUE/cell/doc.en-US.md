@@ -6,7 +6,6 @@ The cell is a single display item in the list.
 
 ### Install
 
-Register component globally via `app.use`, refer to [Component Registration](#/en-US/xinyunewlink) for more registration ways.
 
 ```javascript
 import { createApp } from 'vue';

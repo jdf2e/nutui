@@ -164,7 +164,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nut-theme-dark {
   .steps-wrapper {
     background-color: #1b1b1b;

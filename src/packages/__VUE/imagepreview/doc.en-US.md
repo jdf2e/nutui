@@ -7,12 +7,8 @@ Support full screen preview videos and images, support functional call.
 ### Install
 
 ```javascript
-import { createApp, reactive, toRefs } from 'vue';
-import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
-
-const app = createApp();
-app.use(ImagePreview);
-
+import { createApp } from 'vue';
+import { ImagePreview } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ImagePreview);

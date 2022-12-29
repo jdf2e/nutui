@@ -6,10 +6,6 @@ const sourceDir = path.resolve(__dirname, './../tsc/type/src/packages'); // 拷�
 
 const toDir = path.resolve(__dirname, './../dist/types'); // ./../dist
 
-if(fs.existsSync(toDir)) {
-  fs.rmdirSync(toDir); //先删除文件夹
-}
-
 const basePath = path.join(toDir, '__VUE');
 
 const fileList = [];

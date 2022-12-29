@@ -6,7 +6,6 @@
 
 ### 安装
 
-通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/xinyunewlink)。
 
 ```javascript
 import { createApp } from 'vue';

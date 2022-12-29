@@ -2,19 +2,16 @@
 
 ### 介绍
 
-主要用于进行地址列表的展示以及操作。依赖组件：Icon、Swipe、Button。
+主要用于进行地址列表的展示以及操作。
 
 ### 安装
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList, Icon, Swipe, Button } from "@nutui/nutui";
+import { AddressList } from "@nutui/nutui";
 
 const app = createApp();
 app.use(AddressList);
-app.use(Icon);
-app.use(Swipe);
-app.use(Button);
 ```
 
 

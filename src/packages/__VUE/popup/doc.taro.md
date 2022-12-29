@@ -8,11 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Popup,Overlay } from '@nutui/nutui-taro';
+import { Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popup)
-app.use(Overlay)
 
 ```
 

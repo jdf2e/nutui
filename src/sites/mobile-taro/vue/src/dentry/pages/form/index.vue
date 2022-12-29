@@ -3,16 +3,16 @@
     <h2>基本用法</h2>
     <nut-form>
       <nut-form-item label="姓名">
-        <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+        <nut-input v-model="basicData.name" class="nut-input-text" placeholder="请输入姓名" type="text" />
       </nut-form-item>
       <nut-form-item label="年龄">
-        <input class="nut-input-text" placeholder="请输入年龄" type="text" />
+        <nut-input v-model="basicData.age" class="nut-input-text" placeholder="请输入年龄" type="text" />
       </nut-form-item>
       <nut-form-item label="联系电话">
-        <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+        <nut-input v-model="basicData.tel" class="nut-input-text" placeholder="请输入联系电话" type="text" />
       </nut-form-item>
       <nut-form-item label="地址">
-        <input class="nut-input-text" placeholder="请输入地址" type="text" />
+        <nut-input v-model="basicData.address" class="nut-input-text" placeholder="请输入地址" type="text" />
       </nut-form-item>
       <nut-form-item label="备注">
         <nut-textarea placeholder="请输入备注" type="text" />
@@ -21,7 +21,7 @@
     <h2>动态表单</h2>
     <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
       <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-        <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+        <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
       </nut-form-item>
       <nut-form-item
         :label="'联系方式' + index"
@@ -31,7 +31,7 @@
         :key="item.key"
         v-for="(item, index) in dynamicForm.state.tels"
       >
-        <input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式' + index" type="text" />
+        <nut-input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式' + index" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
@@ -56,7 +56,7 @@
       ref="ruleForm"
     >
       <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-        <input
+        <nut-input
           class="nut-input-text"
           @blur="customBlurValidate('name')"
           v-model="formData.name"
@@ -75,7 +75,7 @@
           { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
         ]"
       >
-        <input
+        <nut-input
           class="nut-input-text"
           v-model="formData.age"
           placeholder="请输入年龄，必须数字且0-200区间"
@@ -91,7 +91,7 @@
           { validator: asyncValidator, message: '电话格式不正确' }
         ]"
       >
-        <input
+        <nut-input
           class="nut-input-text"
           v-model="formData.tel"
           placeholder="请输入联系电话，异步校验电话格式"
@@ -99,7 +99,7 @@
         />
       </nut-form-item>
       <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-        <input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
+        <nut-input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">提交</nut-button>
@@ -141,7 +141,7 @@
         </nut-uploader>
       </nut-form-item>
       <nut-form-item label="地址">
-        <input
+        <nut-input
           class="nut-input-text"
           v-model="formData2.address"
           @click="addressModule.methods.show"
@@ -176,7 +176,12 @@ export default {
       tel: '',
       address: ''
     });
-
+    const basicData = reactive({
+      name: '',
+      age: '',
+      tel: '',
+      address: ''
+    });
     const dynamicRefForm = ref<any>(null);
     const dynamicForm = {
       state: reactive({
@@ -336,6 +341,7 @@ export default {
       formData2,
       addressModule,
       dynamicForm,
+      basicData,
       dynamicRefForm
     };
   }

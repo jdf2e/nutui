@@ -2,20 +2,18 @@
 
 ### 介绍
 
-用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型，需要与 Cell 组件搭配使用。
+用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型。
 
 ### 安装
 
     
 ``` javascript
 import { createApp } from 'vue';
-import { Form,FormItem,Cell,CellGroup  } from '@nutui/nutui-taro';
+import { Form, FormItem  } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Form);
 app.use(FormItem);
-app.use(Cell);
-app.use(CellGroup);
 ```
 
 
@@ -27,22 +25,37 @@ app.use(CellGroup);
 <template>
   <nut-form>
       <nut-form-item label="姓名">
-          <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+          <nut-input v-model="basicData.name"  class="nut-input-text" placeholder="请输入姓名" type="text" />
       </nut-form-item>
       <nut-form-item label="年龄">
-          <input class="nut-input-text" placeholder="请输入年龄" type="text" />
+          <nut-input v-model="basicData.age"  class="nut-input-text" placeholder="请输入年龄" type="text" />
       </nut-form-item>
       <nut-form-item label="联系电话">
-          <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+          <nut-input v-model="basicData.tel"  class="nut-input-text" placeholder="请输入联系电话" type="text" />
       </nut-form-item>
-      <nut-form-item label="地址">
-          <input class="nut-input-text" placeholder="请输入地址" type="text" />
+      <nut-form-item v-model="basicData.address"  label="地址">
+          <nut-input class="nut-input-text" placeholder="请输入地址" type="text" />
       </nut-form-item>
       <nut-form-item label="备注">
           <nut-textarea  placeholder="请输入备注" type="text" />
       </nut-form-item>
   </nut-form>
 </template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup(){
+    const basicData = reactive({
+      name: '',
+      age: '',
+      tel: '',
+      address: ''
+    });
+    return {basicData}
+  }
+}
+<script/>  
 ```
 :::
 
@@ -55,12 +68,12 @@ app.use(CellGroup);
 <template>
   <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
     <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+      <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
     </nut-form-item>
     <nut-form-item :label="'联系方式'+index" :prop="'tels.' + index + '.value'" required
       :rules="[{ required: true, message: '请填写联系方式'+index }]" :key="item.key"
       v-for="(item,index) in dynamicForm.state.tels">
-      <input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
+      <nut-input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
     </nut-form-item>
     <nut-cell>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
@@ -134,7 +147,7 @@ export default {
             validator: nameLengthValidator
           }]}" ref="ruleForm">
   <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-    <input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
+    <nut-input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
       placeholder="请输入姓名，blur 事件校验" type="text" />
   </nut-form-item>
   <nut-form-item label="年龄" prop="age" required :rules="[
@@ -143,16 +156,16 @@ export default {
       { validator: customRulePropValidator, message: '必须输入数字', reg: /^\d+$/ },
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
     ]">
-    <input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
   </nut-form-item>
   <nut-form-item label="联系电话" prop="tel" required :rules="[
       { required: true, message: '请填写联系电话' },
       { validator: asyncValidator, message: '电话格式不正确' }
     ]">
-    <input class="nut-input-text" v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
   </nut-form-item>
   <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-    <input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
   </nut-form-item>
   <nut-cell>
     <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">提交</nut-button>
@@ -256,7 +269,7 @@ setup(){
         </nut-uploader>
     </nut-form-item>
     <nut-form-item label="地址">
-        <input class="nut-input-text" v-model="formData2.address" @click="addressModule.methods.show" readonly
+        <nut-input class="nut-input-text" v-model="formData2.address" @click="addressModule.methods.show" readonly
             placeholder="请选择地址" type="text" />
         <!-- nut-address -->
         <nut-address v-model:visible="addressModule.state.show" :province="addressModule.state.province"

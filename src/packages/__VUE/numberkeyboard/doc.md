@@ -8,11 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { NumberKeyboard,Popup } from '@nutui/nutui';
+import { NumberKeyboard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(NumberKeyboard);
-app.use(Popup);
 
 ```
 
@@ -247,7 +246,7 @@ export default{
     ></nut-cell>
      <nut-number-keyboard 
        v-model:visible="visible" 
-       v-model:value="value" 
+       v-model="value" 
        maxlength="6" 
        @close="close">
     </nut-number-keyboard>
@@ -290,7 +289,6 @@ export default{
 | type | 键盘模式  | String | `default`：默认样式<br>`rightColumn`：带右侧栏 |
 | random-keys | 随机数  | Boolean | false |
 | custom-key | 自定义键盘额外的键  | String [] | 数组形式最多支持添加2个,超出默认取前2项 |
-| overlay | 是否显示遮罩  | Boolean| true |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
 | confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
 | pop-class    | 自定义弹框类名     | String         | -             |

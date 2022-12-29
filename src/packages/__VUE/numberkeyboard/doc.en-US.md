@@ -8,11 +8,10 @@ Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
 ``` javascript
 import { createApp } from 'vue';
-import { NumberKeyboard,Popup } from '@nutui/nutui';
+import { NumberKeyboard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(NumberKeyboard);
-app.use(Popup);
 
 ```
 
@@ -290,7 +289,6 @@ export default{
 | type | Keyboard type  can be set to `rightColumn`   | String | `default` |
 | random-keys | Whether to shuffle the order of keys  | Boolean | false |
 | custom-key | Content of bottom left key  | String [] | Array form supports adding up to two |
-| overlay | Whether to show the mask  | Boolean| true |
 | maxlength  | Value maxlength，Use with v-model | Number ｜ String| 6 |
 | confirm-text  | Custom done button text,Such as "pay", "next", "submit" | String | done |
 | teleport    | Specify the mount node  | String         | `"body"`      |

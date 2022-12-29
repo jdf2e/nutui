@@ -9,12 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Comment,Rate } from '@nutui/nutui-taro';
+import { Comment } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Comment);
-app.use(Rate);
-
 ```
 
 ### 评论图片单行展示

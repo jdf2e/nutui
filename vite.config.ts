@@ -1,10 +1,9 @@
-import { defineConfig, PluginOption } from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import MarkdownIt from 'markdown-it-container';
 import path from 'path';
 import config from './package.json';
-import { visualizer } from 'rollup-plugin-visualizer';
 import hljs from 'highlight.js';
 import autoprefixer from 'autoprefixer';
 import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
@@ -36,7 +35,7 @@ export default defineConfig({
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/packages/styles/variables-var.scss";@import "@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
       }
     },
     postcss: {
@@ -55,6 +54,7 @@ export default defineConfig({
       // default options passed to markdown-it
       // see: https://markdown-it.github.io/markdown-it/
       markdownItOptions: {
+        typographer: false,
         highlight: function (str, lang) {
           if (lang && hljs.getLanguage(lang)) {
             try {
@@ -85,16 +85,12 @@ export default defineConfig({
         });
       }
     })
-    // legacy({
-    //   targets: ['defaults', 'not IE 11']
-    // })
-    // ,[visualizer() as PluginOption]
   ],
   build: {
     target: 'es2015',
     outDir: './dist/4x/',
     // assetsDir: config.version,
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     cssTarget: ['chrome61'],
     rollupOptions: {
       input: {

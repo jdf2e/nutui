@@ -92,7 +92,7 @@
 
     <!-- <h2>步骤</h2> -->
 
-    <!-- <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
+    <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
     <nut-tabbar>
       <nut-tabbar-item
@@ -119,9 +119,9 @@
         img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
         activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
       ></nut-tabbar-item>
-    </nut-tabbar> -->
+    </nut-tabbar>
 
-    <!-- <nut-tour
+    <nut-tour
       class="nut-customword-tour"
       v-model:visible="showTour"
       :steps="steps"
@@ -129,11 +129,12 @@
       :offset="[0, 0]"
       maskWidth="50"
       maskHeight="50"
-    ></nut-tour> -->
+      :showTitleBar="false"
+    ></nut-tour>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 export default {
   setup() {
@@ -146,20 +147,20 @@ export default {
       offset: [-3, -8],
       steps: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target1'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target2'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '基于京东APP 10.0 视觉规范',
           target: 'target3',
           location: 'top-end'
         },
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持定制主题，内置 700+ 个主题变量',
           target: 'target4',
           location: 'top-end'
         }
@@ -167,14 +168,14 @@ export default {
 
       steps1: [
         {
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target5'
         }
       ],
 
       steps2: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -183,7 +184,7 @@ export default {
 
       steps3: [
         {
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target7'
         }
       ],

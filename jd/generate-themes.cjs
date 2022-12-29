@@ -13,9 +13,11 @@ config.nav.map((item) => {
           path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
         )
         .then((success) => {
-          sassFileStr += `@import '../../packages/${folderName}/index.scss';\n`;
+          if (element.exclude != true) {
+            sassFileStr += `@import '../../packages/${folderName}/index.scss';\n`;
+          }
         })
-        .catch((error) => {})
+        .catch((error) => { })
     );
   });
 });
@@ -24,8 +26,8 @@ tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resol
 
 Promise.all(tasks).then((res) => {
   let themes = [
-    { file: 'default.scss', sourcePath: `@import '../variables.scss';` },
-    { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';` },
+    { file: 'default.scss', sourcePath: `@import '../variables.scss';\n @import '../theme-deafult.scss';` },
+    { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';\n @import '../theme-jdt.scss'; ` },
     { file: 'jdb.scss', sourcePath: `@import '../variables-jdb.scss';` },
     { file: 'jddkh.scss', sourcePath: `@import '../variables-jddkh.scss';` }
   ];

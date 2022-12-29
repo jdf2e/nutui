@@ -8,15 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Menu, MenuItem,Overlay, Popup } from '@nutui/nutui';
-import { TriangleDown, Checked } from '@nutui/icons-vue';
+import { Menu, MenuItem } from '@nutui/nutui';
 const app = createApp();
 app.use(Menu);
 app.use(MenuItem);
-app.use(Overlay);
-app.use(Popup);
-app.use(TriangleDown);
-app.use(Checked);
 ```
 
 

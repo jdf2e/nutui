@@ -8,11 +8,10 @@ The pop-up layer container is used to display pop-up windows, information prompt
 
 ```javascript
 import { createApp } from 'vue';
-import { Popup,Overlay } from '@nutui/nutui';
+import { Popup } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Popup)
-app.use(Overlay)
 ```
 
 ### Basic Usage

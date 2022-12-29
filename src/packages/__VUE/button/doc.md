@@ -135,18 +135,6 @@ app.use(Button);
 
 :::
 
-### 自定义图标
-
-```html
-<template>
-  <nut-button shape="square" plain type="primary">
-    <template #icon>
-      <Close />
-    </template>
-  </nut-button>
-</template>
-```
-
 ### 按钮尺寸
 
 支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。

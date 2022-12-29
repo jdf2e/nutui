@@ -2,20 +2,18 @@
 
 ### Intro
 
-It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types. It needs to be used with cell components.
+It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types.
 
 ### Install
 
     
 ``` javascript
 import { createApp } from 'vue';
-import { Form,FormItem,Cell,CellGroup } from '@nutui/nutui';
+import { Form, FormItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Form);
 app.use(FormItem);
-app.use(Cell);
-app.use(CellGroup);
 ```
 
 
@@ -27,22 +25,37 @@ app.use(CellGroup);
 <template>
   <nut-form>
       <nut-form-item label="Name">
-          <input class="nut-input-text" placeholder="Please enter your name" type="text" />
+          <nut-input  v-model="basicData.name" class="nut-input-text" placeholder="Please enter your name" type="text" />
       </nut-form-item>
       <nut-form-item label="Age">
-          <input class="nut-input-text" placeholder="Please enter age" type="text" />
+          <nut-input v-model="basicData.age" class="nut-input-text" placeholder="Please enter age" type="text" />
       </nut-form-item>
       <nut-form-item label="Tel">
-          <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+          <nut-input v-model="basicData.tel" class="nut-input-text" placeholder="请输入联系电话" type="text" />
       </nut-form-item>
       <nut-form-item label="Address">
-          <input class="nut-input-text" placeholder="Please enter address" type="text" />
+          <nut-input v-model="basicData.address" class="nut-input-text" placeholder="Please enter address" type="text" />
       </nut-form-item>
       <nut-form-item label="备注">
           <nut-textarea  placeholder="请输入备注" type="text" />
       </nut-form-item>
   </nut-form>
 </template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup(){
+    const basicData = reactive({
+      name: '',
+      age: '',
+      tel: '',
+      address: ''
+    });
+    return {basicData}
+  }
+}
+<script/>  
 ```
 :::
 
@@ -55,12 +68,12 @@ app.use(CellGroup);
 <template>
   <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
     <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
-      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="Please enter your name" type="text" />
+      <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="Please enter your name" type="text" />
     </nut-form-item>
     <nut-form-item :label="'Tel'+index" :prop="'tels.' + index + '.value'" required
       :rules="[{ required: true, message: 'Please enter tel'+index }]" :key="item.key"
       v-for="(item,index) in dynamicForm.state.tels">
-      <input class="nut-input-text" v-model="item.value" :placeholder="'Please enter tel'+index" type="text" />
+      <nut-input class="nut-input-text" v-model="item.value" :placeholder="'Please enter tel'+index" type="text" />
     </nut-form-item>
     <nut-cell>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">Add</nut-button>
@@ -134,7 +147,7 @@ export default {
             validator: nameLengthValidator
           }]}" ref="ruleForm">
   <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
-    <input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
+    <nut-input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
       placeholder="Please enter , blur event validate" type="text" />
   </nut-form-item>
   <nut-form-item label="Age" prop="age" required :rules="[
@@ -143,16 +156,16 @@ export default {
       { validator: customRulePropValidator, message: 'You must enter a number', reg: /^\d+$/ },
       { regex: /^(\d{1,2}|1\d{2}|200)$/, message: 'The range 0-200 must be entered' }
     ]">
-    <input class="nut-input-text" v-model="formData.age" placeholder="Please enter the age, which must be numeric and in the range of 0-200" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.age" placeholder="Please enter the age, which must be numeric and in the range of 0-200" type="text" />
   </nut-form-item>
   <nut-form-item label="Tel" prop="tel" required :rules="[
       { required: true, message: 'Please enter tel' },
       { validator: asyncValidator, message: 'Tel format is incorrect' }
     ]">
-    <input class="nut-input-text" v-model="formData.tel" placeholder="Async check tel format" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.tel" placeholder="Async check tel format" type="text" />
   </nut-form-item>
   <nut-form-item label="Address" prop="address" required :rules="[{ required: true, message: 'Please enter address' }]">
-    <input class="nut-input-text" v-model="formData.address" placeholder="Please enter address" type="text" />
+    <nut-input class="nut-input-text" v-model="formData.address" placeholder="Please enter address" type="text" />
   </nut-form-item>
   <nut-cell>
     <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">Submit</nut-button>
@@ -256,7 +269,7 @@ setup(){
         </nut-uploader>
     </nut-form-item>
     <nut-form-item label="Address">
-        <input class="nut-input-text" v-model="formData2.address" @click="addressModule.methods.show" readonly
+        <nut-input class="nut-input-text" v-model="formData2.address" @click="addressModule.methods.show" readonly
             placeholder="Please select an address" type="text" />
         <!-- nut-address -->
         <nut-address v-model:visible="addressModule.state.show" :province="addressModule.state.province"

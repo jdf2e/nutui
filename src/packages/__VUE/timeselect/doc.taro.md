@@ -8,15 +8,12 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
+import { TimeSelect, TimePannel, TimeDetail } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TimeSelect);
 app.use(TimePannel);
 app.use(TimeDetail);
-app.use(Popup);
-app.use(Icon);
-app.use(Overlay);
 ```
 
 ### 基础用法
