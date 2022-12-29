@@ -2,7 +2,7 @@
 
 ### 介绍
 
-按需加载请加载对应依赖组件：Popup、InputNumber、Price
+
 
 ### 安装
 

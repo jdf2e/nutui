@@ -2,7 +2,7 @@
 
 ### Intro
 
-It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types. It needs to be used with cell components.
+It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types.
 
 ### Install
 
