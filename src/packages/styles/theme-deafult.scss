@@ -2,9 +2,10 @@
 page {
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
+  --nut-primary-color-active: rgba(250, 44, 25, 0.15);
   // 辅助色
   --nut-help-color: #f5f5f5;
-  --nut-active-color: rgba(250, 44, 25, 0.15);
+
   // 标题常规文字
   --nut-title-color: #1a1a1a;
   // 副标题
@@ -301,7 +302,7 @@ page {
 
   // calendar
   --nut-calendar-primary-color: var(--nut-primary-color);
-  --nut-calendar-choose-color: var(--nut-active-color);
+  --nut-calendar-choose-color: var(--nut-primary-color-active);
   --nut-calendar-choose-font-color: var(--nut-primary-color);
   --nut-calendar-base-color: #333333;
   --nut-calendar-disable-color: #d1d0d0;
@@ -367,7 +368,7 @@ page {
 
   //range
   --nut-range-tip-font-color: #333333;
-  --nut-range-bg-color: var(--nut-active-color);
+  --nut-range-bg-color: var(--nut-primary-color-active);
   --nut-range-bg-color-tick: #fa958c;
   --nut-range-bar-bg-color: linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%);
   --nut-range-bar-btn-bg-color: var(--nut-white);
@@ -382,7 +383,11 @@ page {
   --nut-swiper-pagination-item-border-radius: 2px;
 
   //address
-  --nut-address-region-tab-line: linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%);
+  --nut-address-region-tab-line: linear-gradient(
+    90deg,
+    var(--nut-primary-color) 0%,
+    var(--nut-primary-color-active) 100%
+  );
   --nut-address-icon-color: var(--nut-primary-color);
   --nut-address-header-title-font-size: 18px;
   --nut-address-header-title-color: #262626;
@@ -445,7 +450,7 @@ page {
   --nut-radio-label-disable-color: #999;
   --nut-radio-icon-disable-color: #d6d6d6;
   --nut-radio-label-button-border-color: var(--nut-primary-color);
-  --nut-radio-label-button-background: var(--nut-active-color);
+  --nut-radio-label-button-background: var(--nut-primary-color-active);
   --nut-radio-label-margin-left: 15px;
   --nut-radio-button-border-radius: 15px;
   --nut-radio-label-font-size: 14px;
@@ -500,7 +505,7 @@ page {
   --nut-timeselect-timedetail-item-border-radius: 5px;
   --nut-timeselect-timedetail-item-text-color: #333333;
   --nut-timeselect-timedetail-item-text-font-size: var(--nut-font-size-2);
-  --nut-timeselect-timedetail-item-cur-bg-color: var(--nut-active-color);
+  --nut-timeselect-timedetail-item-cur-bg-color: var(--nut-primary-color-active);
   --nut-timeselect-timedetail-item-cur-border: var(--nut-primary-color);
   --nut-timeselect-timedetail-item-cur-text-color: var(--nut-primary-color);
   --nut-timeselect-timedetail-time-text-color: #999;
@@ -604,7 +609,7 @@ page {
   --nut-tabs-horizontal-tab-line-color: linear-gradient(
     90deg,
     var(--nut-primary-color) 0%,
-    var(--nut-active-color) 100%
+    var(--nut-primary-color-active) 100%
   );
   --nut-tabs-horizontal-titles-height: 46px;
   --nut-tabs-horizontal-titles-item-min-width: 50px;
@@ -612,7 +617,7 @@ page {
   --nut-tabs-vertical-tab-line-color: linear-gradient(
     180deg,
     var(--nut-primary-color) 0%,
-    var(--nut-active-color) 100%
+    var(--nut-primary-color-active) 100%
   );
   --nut-tabs-vertical-titles-item-height: 40px;
   --nut-tabs-vertical-titles-item-active-line-height: 14px;
@@ -729,7 +734,7 @@ page {
   --nut-sku-item-border: 1px solid var(--nut-primary-color);
   --nut-sku-item-disable-line: line-through;
   --nut-sku-opetate-bg-default: linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%);
-  --nut-sku-item-active-bg: var(--nut-active-color);
+  --nut-sku-item-active-bg: var(--nut-primary-color-active);
   --nut-sku-opetate-bg-buy: linear-gradient(
     135deg,
     rgba(255, 186, 13, 1) 0%,

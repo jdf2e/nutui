@@ -98,11 +98,17 @@ The ConfigProvider component provides the ability to override CSS variables. You
   export default {
     setup() {
       const range = ref(30);
-      const themeVars = {
-        rangeBgColor: 'rgba(25,137,250,0.15)',
-        rangeBarBgColor: '#0289fa',
-        rangeBarBtnBorder: '1px solid #0289fa'
+     const themeVars = {
+          primaryColor:'green',
+          primaryColorEnd:'green',
+          activeColor:'rgba(0,128,0,0.15)'
       };
+      // Of course, you can also choose to use component variables to replace. If both basic variables and component variables are set, the component variables will overwrite the basic variables
+      //  const themeVars = {
+      //   rangeBgColor: 'rgba(25,137,250,0.15)',
+      //   rangeBarBgColor: '#0289fa',
+      //   rangeBarBtnBorder: '1px solid #0289fa'
+      // };
 
       return { range, themeVars };
     }
@@ -126,6 +132,7 @@ Here are all the base variables:
 ```scss
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
+  --nut-primary-color-active: rgba(250, 44, 25, 0.15);
   --nut-help-color: #f5f5f5;
   --nut-active-color: rgba(250, 44, 25, 0.15);
   --nut-title-color: #1a1a1a;

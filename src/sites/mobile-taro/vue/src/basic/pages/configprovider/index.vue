@@ -143,9 +143,9 @@ export default {
       }
     });
     let color = reactive({
-      rangeBgColor: 'rgba(25,137,250,0.15)',
-      rangeBarBgColor: 'green',
-      rangeBarBtnBorder: '1px solid #0289fa'
+      primaryColor: 'green',
+      primaryColorEnd: 'green',
+      primaryColorActive: 'rgba(0,128,0,0.15)'
     });
     const themeVars = color;
 

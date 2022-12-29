@@ -1,7 +1,6 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { h, PropType } from 'vue';
-import { baseCSS } from './base';
 const { componentName, create } = createComponent('config-provider');
 export default /* @__PURE__ */ create({
   props: {
@@ -20,19 +19,6 @@ export default /* @__PURE__ */ create({
       Object.keys(themeVars).forEach((key) => {
         cssVars[`--nut-${kebabCase(key)}`] = themeVars[key];
       });
-      const base: Record<string, string> = {};
-      baseCSS.map((item: string, index) => {
-        Object.keys(cssVars).forEach((key) => {
-          if (key == item) {
-            base[key] = cssVars[key];
-          }
-        });
-      });
-      if (Object.keys(base).length != 0) {
-        Object.entries(base).forEach(([key, value]) => {
-          document.documentElement.style.setProperty(key, value);
-        });
-      }
       return cssVars;
     };
     return () => {
