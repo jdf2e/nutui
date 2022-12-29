@@ -242,7 +242,7 @@ Set `close on click override` to control whether the click mask is closed. If it
 | ---------------------- | ---------------- | -------------- | ------ |
 | v-model:visible        | Control the display/hide of masks | boolean        | `false`  |
 | z-index                | Custom Mask Level         | string, number | `2000`   |
-| duration               | Display/hide animation duration, in seconds | string, string | `0.3`    |
+| duration               | Display/hide animation duration, in seconds | string, number | `0.3`    |
 | overlay-class          | Custom mask class name   | string         | -      |
 | overlay-style          | Custom Mask Style   | CSSProperties  | -      |
 | lock-scroll            | Whether the background is locked when the mask is displayed     | boolean        | `false`  |
