@@ -2,20 +2,18 @@
 
 ### Intro
 
-It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types. It needs to be used with cell components.
+It is used for data entry and verification. It supports input box, radio box, check box, file upload and other types.
 
 ### Install
 
     
 ``` javascript
 import { createApp } from 'vue';
-import { Form,FormItem,Cell,CellGroup } from '@nutui/nutui';
+import { Form, FormItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Form);
 app.use(FormItem);
-app.use(Cell);
-app.use(CellGroup);
 ```
 
 

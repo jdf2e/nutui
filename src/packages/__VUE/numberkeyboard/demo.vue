@@ -74,13 +74,7 @@
       :showIcon="true"
       :title="translate('bindValue')"
     ></nut-cell>
-    <nut-number-keyboard
-      v-model:visible="visible5"
-      v-model:value="value"
-      maxlength="6"
-      @blur="onBlur(5)"
-      @close="close(5)"
-    >
+    <nut-number-keyboard v-model:visible="visible5" v-model="value" maxlength="6" @blur="onBlur(5)" @close="close(5)">
     </nut-number-keyboard>
   </div>
 </template>

@@ -8,16 +8,17 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name } = element;
+    let { name,exclude } = element;
     const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
     importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
       fs.existsSync(filePath) ? '.taro' : ''
     }.vue';\n`;
     importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
-    packages.push(name);
+    if (exclude != true) {
+      packages.push(name);
+    }
   });
 });
-let importCssVar = `import '../packages/styles/theme-deafult.scss';\n`;
 let installFunction = `function install(app: any) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {
@@ -39,7 +40,6 @@ fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.build.ts')
 });
 let fileStrDev = `${importStr}
 ${installFunction}
-${importCssVar}
 ${importScssStr}
 export { install, Locale, ${packages.join(',')}  };
 export default { install, version:'${packageConfig.version}', Locale};`;

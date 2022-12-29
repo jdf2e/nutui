@@ -131,7 +131,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .demo {
   padding-left: 0 !important;
   padding-right: 0 !important;

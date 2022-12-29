@@ -9,13 +9,10 @@ Click or hover over the element to pop up the bubble card overlay.
 ```javascript
 
 import { createApp } from 'vue';
-import { Popover, Popup } from '@nutui/nutui';
+import { Popover } from '@nutui/nutui';
 
 const app = createApp();
-
 app.use(Popup);
-app.use(Popover);
-
 ```
 
 

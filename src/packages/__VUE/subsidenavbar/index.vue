@@ -7,7 +7,12 @@
         <ArrowUp2 v-else></ArrowUp2>
       </span>
     </view>
-    <view class="nut-sub-side-navbar__list" :class="!direction ? 'nutFadeIn' : 'nutFadeOut'" :style="style">
+    <view
+      class="nut-sub-side-navbar__list"
+      :class="!direction ? 'nutFadeIn' : 'nutFadeOut'"
+      :style="style"
+      v-show="!direction"
+    >
       <slot></slot>
     </view>
   </view>

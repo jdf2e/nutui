@@ -9,12 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Ecard, InputNumber } from '@nutui/nutui';
+import { Ecard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Ecard);
-app.use(InputNumber);
-
 ```
 
 ### 基础用法

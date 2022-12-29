@@ -65,6 +65,7 @@ import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.vue';
+import Swipe from '../swipe/index.vue';
 export default create({
   props: {
     data: {
@@ -91,7 +92,8 @@ export default create({
   components: {
     SwipeShell,
     GeneralShell,
-    [Button.name]: Button
+    [Button.name]: Button,
+    [Swipe.name]: Swipe
   },
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 

@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^10.0.0
   '@commitlint/config-conventional': ^10.0.0
-  '@nutui/icons-vue': 0.0.16
-  '@nutui/icons-vue-taro': 0.0.2
+  '@nutui/icons-vue': 0.0.19
+  '@nutui/icons-vue-taro': 0.0.3
   '@tarojs/cli': 3.5.6
   '@tarojs/components': 3.5.6
   '@tarojs/mini-runner': 3.5.6
@@ -62,8 +62,8 @@ specifiers:
   webpack: ^5.69.0
 
 dependencies:
-  '@nutui/icons-vue': 0.0.16
-  '@nutui/icons-vue-taro': 0.0.2
+  '@nutui/icons-vue': 0.0.19
+  '@nutui/icons-vue-taro': 0.0.3
   '@tarojs/components': 3.5.6_vue@3.2.45
   sass: 1.56.1
   vscode: 1.1.37
@@ -3433,14 +3433,14 @@ packages:
       rimraf: 3.0.2
     dev: true
 
-  /@nutui/icons-vue-taro/0.0.2:
-    resolution: {integrity: sha512-YYbbE9x6ff2hwh16A5bg7QDvGEegjQVjNC8gbPuixoPiZVbkOVVasufOGRpdSRmAEu2pNb0QOnoI7LzliNXfzw==}
+  /@nutui/icons-vue-taro/0.0.3:
+    resolution: {integrity: sha512-roJp7jHNnehYKk+KC+M3E/y+H2EtQL87a2IGOfe0A2Y3i/mXdRwdFqihpOUftUPbKUXZA372lQB13LNYa+e7uQ==}
     dependencies:
       vue: 3.2.45
     dev: false
 
-  /@nutui/icons-vue/0.0.16:
-    resolution: {integrity: sha512-/dbOURasQ3R/fnTM+RNvynmji1W/AyfrO1tnQD6Nbk0F7BkIHtfPRfe/NXxo1bvwIZ090NklxGyAfN4nwKnJYw==}
+  /@nutui/icons-vue/0.0.19:
+    resolution: {integrity: sha512-X6tzTWIiB/LpSwVI86NFBBlEFfGnhLwfB38I8sj6zwFtwNm8Mv/wMq+6rJbJ6frnwFIjLw54OXqYKmMrvDVQHg==}
     dependencies:
       vue: 3.2.45
     dev: false

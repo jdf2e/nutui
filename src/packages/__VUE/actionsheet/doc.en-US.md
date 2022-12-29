@@ -7,12 +7,10 @@ Action menu panel that pops up from the bottom.
 
 ``` javascript
 import { createApp } from 'vue';
-import { ActionSheet, Popup, Overlay } from '@nutui/nutui';
+import { ActionSheet } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ActionSheet);
-app.use(Popup);
-app.use(Overlay);
 ```
 
 ### Basic Usage

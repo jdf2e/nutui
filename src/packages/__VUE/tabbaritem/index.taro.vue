@@ -82,36 +82,22 @@ export default create({
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    const active = computed(() => state.index === state.active);
+    const active = computed(() => state.index === parent.modelValue);
     function change() {
       let key = props.name ?? state.index;
-      let index = null;
+      let indexValue = null;
       if (props.name) {
-        index = parent.children.findIndex((item: { name: string | number }) => {
+        indexValue = parent.children.findIndex((item: { name: string | number }) => {
           return item.name == key;
         });
       }
-      parent.changeIndex(index ?? key, state.index);
-    }
-
-    const choosed = computed(() => {
-      if (parent) {
-        return parent.modelValue;
-      }
-      return null;
-    });
-    watch(choosed, (value, oldValue) => {
-      state.active = value;
-      let index = value;
-      if (props.name) {
-        index = parent.children.findIndex((item: { name: string | number }) => {
-          return item.name == value;
-        });
-      }
+      parent.changeIndex(indexValue ?? key, state.index);
+      let index = indexValue ?? key;
       if (parent.children[index]?.href) {
         window.location.href = parent.children[index].href;
+        return;
       }
-    });
+    }
     return {
       state,
       active,

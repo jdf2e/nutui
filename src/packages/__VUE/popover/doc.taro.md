@@ -9,13 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Popover, Popup } from '@nutui/nutui-taro';
+import { Popover } from '@nutui/nutui-taro';
 
 const app = createApp();
-
 app.use(Popup);
-app.use(Popover);
-
 ```
 
 

@@ -1,11 +1,12 @@
 <template>
   <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
+    <nut-number-keyboard overlay v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" title="带右侧栏键盘"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
+      overlay
       v-model:visible="visible2"
       :custom-key="customKey1"
       @input="input"
@@ -15,6 +16,7 @@
     <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" title="随机数键盘"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
+      overlay
       v-model:visible="visible3"
       :randomKeys="true"
       :custom-key="customKey1"
@@ -26,6 +28,7 @@
     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
     <nut-number-keyboard
       title="默认键盘"
+      overlay
       v-model:visible="visible4"
       :custom-key="customKey2"
       @input="input"
@@ -33,20 +36,16 @@
     >
     </nut-number-keyboard>
     <nut-cell :isLink="true" @click="showKeyBoard(6)" :showIcon="true" title="身份证键盘"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    <nut-number-keyboard overlay v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
     </nut-number-keyboard>
-    <div class="boardValue" @click="showKeyBoard(5)">
-      <div class="value">
-        <nut-input v-model="value" readonly label="双向绑定：" />
-      </div>
-    </div>
-    <nut-number-keyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
+    <nut-cell :isLink="true" :desc="value" @click="showKeyBoard(5)" :showIcon="true" title="双向绑定"></nut-cell>
+    <nut-number-keyboard overlay v-model:visible="visible5" v-model="value" maxlength="6" @close="close(5)">
     </nut-number-keyboard>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, getCurrentInstance, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 export default {
   props: {},
   setup() {
@@ -61,7 +60,9 @@ export default {
     const customKey2 = reactive(['.', 'x']);
     const customKey3 = reactive(['X']);
     const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
-    function input(number: any) {}
+    function input(number: any) {
+      console.log(number);
+    }
     function showKeyBoard(index: number) {
       visibleArr[index - 1].value = true;
     }

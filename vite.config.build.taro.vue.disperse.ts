@@ -15,10 +15,12 @@ let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name } = element;
+    let { name, exclude } = element;
     // if (name.toLowerCase().indexOf('calendar') != -1) {
-    const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-    input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    if (exclude != true) {
+      const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    }
     // }
   });
 });
@@ -68,7 +70,7 @@ export default defineConfig({
       output: {
         banner,
         paths: {
-          '@/packages/locale': '../locale/lang'
+          '@/packages/locale': '../locale/lang/index.js'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js',
