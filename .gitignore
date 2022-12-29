@@ -16,7 +16,7 @@ src/packages/vscode-extension/*.vsix
 src/packages/vscode-extension/yarn.lock
 /.nyc_output
 /coverage
-/tsc/test
+/tsc
 /site_docs
 /src/sites/mobile-taro/vue/src/app.config.ts
 
