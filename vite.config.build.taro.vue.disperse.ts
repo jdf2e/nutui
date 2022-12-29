@@ -6,7 +6,7 @@ import config from './package.json';
 import configPkg from './src/config.json';
 
 const banner = `/*!
-* ${config.name} v${config.version} ${new Date()}
+* @nutui/nutui-taro v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;
