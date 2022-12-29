@@ -44,7 +44,7 @@ export class Title {
 }
 export type TabsSize = 'large' | 'normal' | 'small';
 const { create } = createComponent('tabs');
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     JoySmile
   },

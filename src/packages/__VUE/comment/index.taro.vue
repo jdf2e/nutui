@@ -59,7 +59,7 @@ interface ImagesType {
   imgUrl: string;
 }
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     headerType: {
       type: String,

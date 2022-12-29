@@ -2,7 +2,7 @@
 
 ### Intro
 
-Load on demand Load the Popup、InputNumber、Price dependent component
+
 
 ### Install
 

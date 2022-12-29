@@ -74,7 +74,7 @@ import Price from '../price/index.vue';
 import InputNumber from '../inputnumber/index.vue';
 const { componentName, create, translate } = createComponent('sku');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     ...popupProps,
 

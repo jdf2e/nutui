@@ -92,7 +92,7 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro from '@tarojs/taro';
 import { CalendarRef } from '../calendaritem/type';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [CalendarItem.name]: CalendarItem,
     [Popup.name]: Popup

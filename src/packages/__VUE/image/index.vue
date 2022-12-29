@@ -19,7 +19,7 @@ import { pxCheck } from '../../utils/pxCheck';
 import { ImageFit, ImagePosition } from './type';
 import { Image, ImageError } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('image');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     src: String,
     fit: {

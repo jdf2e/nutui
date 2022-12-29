@@ -29,7 +29,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('addresslist-item');
 const { translate } = createComponent('addresslist');
 import { Del, Edit } from '@nutui/icons-vue';
-export default /* @__PURE__ */ create({
+export default create({
   components: { Del, Edit },
   props: {
     item: {

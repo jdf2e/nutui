@@ -74,7 +74,7 @@ export type TabsSize = 'large' | 'normal' | 'small';
 import Sticky from '../sticky/index.vue';
 const { create } = createComponent('tabs');
 import { JoySmile } from '@nutui/icons-vue';
-export default /* @__PURE__ */ create({
+export default create({
   components: { [Sticky.name]: Sticky, JoySmile },
   props: {
     modelValue: {

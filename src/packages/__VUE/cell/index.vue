@@ -7,7 +7,7 @@ import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Right } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('cell');
-export default /* @__PURE__ */ create({
+export default create({
   components: { Right },
   props: {
     title: { type: String, default: '' },

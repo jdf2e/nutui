@@ -10,7 +10,7 @@ import { reactive, toRefs, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { AnimateType, AnimateAction } from './type';
 const { componentName, create } = createComponent('animate');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     type: {
       type: String as PropType<AnimateType>,

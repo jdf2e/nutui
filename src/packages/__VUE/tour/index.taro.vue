@@ -89,7 +89,7 @@ interface StepOptions {
   arrowOffset?: number;
 }
 const { create } = createComponent('tour');
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Popover.name]: Popover as Component,
     Close

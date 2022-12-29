@@ -40,7 +40,7 @@ import type { PropType } from 'vue';
 export interface dataList {
   price: string | number;
 }
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [InputNumber.name]: InputNumber
   },

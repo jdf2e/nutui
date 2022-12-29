@@ -2,7 +2,7 @@
 
 ### Intro
 
-It is mainly used to display and operate the address list. Dependent components: Icon, Swipe, Button.
+It is mainly used to display and operate the address list.
 
 ### Install
 

@@ -48,7 +48,7 @@ import { onMounted, computed, toRefs, ref, nextTick, ComputedRef, Ref } from 'vu
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 import { Left } from '@nutui/icons-vue';
-export default /* @__PURE__ */ create({
+export default create({
   components: { Left },
   props: {
     leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon

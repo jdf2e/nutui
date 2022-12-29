@@ -128,7 +128,7 @@ import Elevator from '../elevator/index.vue';
 const { componentName, create, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     Location,
     Location2,

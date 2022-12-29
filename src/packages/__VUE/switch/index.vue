@@ -18,7 +18,7 @@ import { createComponent } from '@/packages/utils/create';
 import { Loading1 } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('switch');
 
-export default /* @__PURE__ */ create({
+export default create({
   components: { Loading1 },
   props: {
     modelValue: {

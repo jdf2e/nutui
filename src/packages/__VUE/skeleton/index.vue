@@ -20,7 +20,7 @@ import { createComponent } from '@/packages/utils/create';
 import { component } from './common';
 import Avatar from '../avatar/index.vue';
 const { create } = createComponent('skeleton');
-export default /* @__PURE__ */ create(
+export default create(
   component({
     [Avatar.name]: Avatar
   })

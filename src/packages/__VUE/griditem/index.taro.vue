@@ -18,7 +18,7 @@ import { useInject } from '@/packages/utils/useRelation/useInject';
 import { GRID_KEY, GridProps } from '../grid/common';
 const { create, componentName } = createComponent('grid-item');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     text: {
       type: String

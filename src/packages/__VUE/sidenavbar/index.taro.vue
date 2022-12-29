@@ -11,7 +11,7 @@
 import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('side-navbar');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     offset: {
       type: [String, Number],

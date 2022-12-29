@@ -33,7 +33,7 @@ import { component } from './common';
 import OverLay from '../overlay/index.taro.vue';
 import { Close } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('popup');
-export default /* @__PURE__ */ create(
+export default create(
   component(componentName, {
     [OverLay.name]: OverLay,
     Close

@@ -51,7 +51,7 @@ import { DownArrow } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     collapseRef: {
       type: Object

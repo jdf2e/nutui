@@ -43,7 +43,7 @@ import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Minus, Plus } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('input-number');
-export default /* @__PURE__ */ create({
+export default create({
   components: { Minus, Plus },
   props: {
     modelValue: {

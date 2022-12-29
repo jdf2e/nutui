@@ -38,7 +38,7 @@ import Taro from '@tarojs/taro';
 import { CircleClose } from '@nutui/icons-vue-taro';
 const { create } = createComponent('image-preview');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     show: {
       type: Boolean,

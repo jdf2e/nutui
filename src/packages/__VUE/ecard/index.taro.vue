@@ -38,7 +38,7 @@ const { componentName, create, translate } = createComponent('ecard');
 export interface dataList {
   price: string | number;
 }
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [InputNumber.name]: InputNumber
   },
