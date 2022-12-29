@@ -4,6 +4,7 @@ node_modules
 /libs
 /jd/upload.js
 yarn.lock
+pnpm-lock.yaml
 package-lock.json
 /cache
 /src/nutui.ts
