@@ -9,12 +9,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog,Popup,Overlay } from '@nutui/nutui-taro';
+import { Dialog } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Dialog);
-app.use(Popup);
-app.use(Overlay);
 
 ```
 

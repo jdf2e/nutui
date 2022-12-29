@@ -7,12 +7,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { ActionSheet, Popup, Overlay } from '@nutui/nutui-taro';
+import { ActionSheet } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ActionSheet);
-app.use(Popup);
-app.use(Overlay);
 ```
 
 ### 基础用法

@@ -8,13 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Address, Popup, Elevator } from '@nutui/nutui-taro';
+import { Address } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);
-app.use(Popup);
-app.use(Elevator);
-
 ```
 
 

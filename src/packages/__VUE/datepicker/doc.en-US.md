@@ -8,11 +8,10 @@ Used to select time, support date and time dimensions, usually used with the Pop
     
 ```javascript
 import { createApp } from 'vue';
-import { DatePicker, Picker } from '@nutui/nutui';
+import { DatePicker } from '@nutui/nutui';
 
 const app = createApp();
 app.use(DatePicker);
-app.use(Picker);
 ```
     
 ### Choose Date

@@ -8,14 +8,12 @@ For delivery time selection
 
 ``` javascript
 import { createApp } from 'vue';
-import { TimeSelect, TimePannel, TimeDetail, Popup, Overlay } from '@nutui/nutui';
+import { TimeSelect, TimePannel, TimeDetail } from '@nutui/nutui';
 
 const app = createApp();
 app.use(TimeSelect);
 app.use(TimePannel);
 app.use(TimeDetail);
-app.use(Popup);
-app.use(Overlay);
 ```
 
 ### Basic Usage

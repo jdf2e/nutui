@@ -8,11 +8,10 @@ Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
 ``` javascript
 import { createApp } from 'vue';
-import { NumberKeyboard,Popup } from '@nutui/nutui';
+import { NumberKeyboard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(NumberKeyboard);
-app.use(Popup);
 
 ```
 

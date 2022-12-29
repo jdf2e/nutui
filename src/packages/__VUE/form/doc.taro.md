@@ -9,13 +9,11 @@
     
 ``` javascript
 import { createApp } from 'vue';
-import { Form,FormItem,Cell,CellGroup  } from '@nutui/nutui-taro';
+import { Form, FormItem  } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Form);
 app.use(FormItem);
-app.use(Cell);
-app.use(CellGroup);
 ```
 
 

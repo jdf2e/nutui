@@ -33,12 +33,19 @@ import { watch, ref, Ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
-import { CascaderPane, CascaderOption, CascaderValue, convertConfig, Tabs } from './types';
+import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue';
+import Tabs from '../tabs/index.vue';
+import TabPane from '../tabpane/index.vue';
 import Tree from './tree';
 
 export default /* @__PURE__ */ create({
-  components: { Loading, Checklist },
+  components: {
+    Loading,
+    Checklist,
+    [Tabs.name]: Tabs,
+    [TabPane.name]: TabPane
+  },
   props: {
     visible: Boolean,
     modelValue: Array,
@@ -269,7 +276,7 @@ export default /* @__PURE__ */ create({
           methods.handleNode(node, silent);
         }
       },
-      handleTabClick(tab: Tabs) {
+      handleTabClick(tab: CascaderTabs) {
         currentProcessNode = null;
         tabsCursor.value = Number(tab.paneKey);
       },

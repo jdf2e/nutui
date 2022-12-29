@@ -7,8 +7,8 @@
 ### 安装
 
 ```javascript
-import { createApp, reactive, toRefs } from 'vue';
-import { ImagePreview, Overlay, Popup, Swiper, SwiperItem } from '@nutui/nutui';
+import { createApp } from 'vue';
+import { ImagePreview } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ImagePreview);

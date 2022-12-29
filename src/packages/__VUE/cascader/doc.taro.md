@@ -8,12 +8,10 @@
 
 ```js
 import { createApp } from 'vue';
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
+import { Cascader } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Cascader);
-app.use(Tabs);
-app.use(TabPane);
 ```
 
 ### 基础用法
