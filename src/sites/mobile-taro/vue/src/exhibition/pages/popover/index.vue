@@ -45,7 +45,8 @@
       <template #content>
         <div class="self-content">
           <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <component :is="renderIcon(item.name)"></component>
+            <!-- <component :is="renderIcon(item.name)"></component> -->
+            <Service />
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
         </div>
@@ -56,7 +57,14 @@
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
 
     <nut-popup position="bottom" v-model:visible="showPicker">
-      <nut-picker :columns="columns" title="" @change="change" :swipe-duration="500" @confirm="closePicker">
+      <nut-picker
+        :columns="columns"
+        title=""
+        @change="change"
+        :swipe-duration="500"
+        @confirm="closePicker"
+        @close="closePicker"
+      >
         <template #top>
           <div class="brickBox">
             <div class="brick" id="pickerTarget"></div>
@@ -98,6 +106,9 @@ import { renderIcon } from '../../../../../../../packages/utils/create';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
 
 export default {
+  components: {
+    Service
+  },
   setup() {
     const state = reactive({
       showIcon: false,
