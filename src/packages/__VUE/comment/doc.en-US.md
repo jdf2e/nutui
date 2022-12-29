@@ -9,12 +9,10 @@ Used to display the comment list
 ```javascript
 
 import { createApp } from 'vue';
-import { Comment,Rate } from '@nutui/nutui';
+import { Comment } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Comment);
-app.use(Rate);
-
 ```
 
 ### Single Line Image

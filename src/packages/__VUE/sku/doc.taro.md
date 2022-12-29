@@ -8,14 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Sku, Popup, InputNumber, Price } from '@nutui/nutui-taro';
+import { Sku } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Sku);
-app.use(Popup);
-app.use(InputNumber);
-app.use(Price);
-
 ```
 
 ### 基础用法

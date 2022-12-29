@@ -9,13 +9,10 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { Card ,Tag,Price} from '@nutui/nutui-taro';
+import { Card } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Card);
-app.use(Tag);
-app.use(Price);
-
 ```
 
 

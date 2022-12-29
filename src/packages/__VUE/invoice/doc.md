@@ -8,14 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Invoice,Form,FormItem,Button } from '@nutui/nutui';
+import { Invoice } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Invoice);
-app.use(Form);
-app.use(FormItem);
-app.use(Button);
-
 ```
 
 
