@@ -3,7 +3,7 @@ import path from 'path';
 import config from './package.json';
 import vue from '@vitejs/plugin-vue';
 const banner = `/*!
-* ${config.name} v${config.version} ${new Date()}
+* v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;

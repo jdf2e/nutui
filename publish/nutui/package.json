@@ -36,7 +36,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "scripts": { },
+  "scripts": {
+    "publish:beta": "npm publish --tag=beta"
+  },
   "standard-version": {
     "scripts": {
       "postchangelog": "node ./jd/updateChangelog.js"
