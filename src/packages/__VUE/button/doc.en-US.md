@@ -131,6 +131,12 @@ Set the button shape through the `shape` property, support circle and square but
     Star
   </nut-button>
 </template>
+<script lang="ts">
+  import { StarFill, Star } from '@nutui/icons-vue';
+  export default {
+    components: { StarFill, Star }
+  }
+</script>
 ```
 
 :::

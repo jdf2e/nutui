@@ -16,7 +16,7 @@ app.use(Cell);
 app.use(CellGroup);
 ```
 
-### 基础用法
+### 基本用法
 
 :::demo
 
@@ -29,12 +29,11 @@ app.use(CellGroup);
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const switchChecked = ref(true);
       const testClick = (event) => {
-        Toast.text('点击事件');
+        console.log('Click Test');
       };
       return { testClick, switchChecked };
     }
@@ -57,7 +56,7 @@ app.use(CellGroup);
 
 :::
 
-### 直接使用插槽
+### 直接使用插槽（slot）
 
 :::demo
 
@@ -73,7 +72,7 @@ app.use(CellGroup);
 
 
 
-### 直接使用插槽(slot title)
+### 直接使用插槽（slot title）
 
 :::demo
 

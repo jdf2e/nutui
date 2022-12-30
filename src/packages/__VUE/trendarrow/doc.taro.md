@@ -138,6 +138,12 @@ app.use(TrendArrow);
     </nut-trend-arrow>
   </nut-cell>
 </template>
+<script lang="ts">
+  import { Success, Failure } from '@nutui/icons-vue-taro';
+  export default {
+    components: { Success, Failure },
+  };
+</script>
 ```
 
 :::

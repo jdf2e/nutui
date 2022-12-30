@@ -73,10 +73,6 @@ export default create({
       type: Boolean,
       default: false
     },
-    closeIcon: {
-      type: String,
-      default: 'circle-close'
-    },
     closeIconPosition: {
       type: String,
       default: 'top-right' // top-right  top-left
@@ -141,6 +137,7 @@ export default create({
     const init = () => {
       if (swipeRef.value) {
         const rect = useRect(swipeRef.value);
+        console.log('show');
         state.rootHeight = rect.height;
         state.rootWidth = rect.width;
       }
@@ -149,6 +146,7 @@ export default create({
     watch(
       () => props.show,
       (val) => {
+        console.log('展示', val);
         state.showPop = val;
         init();
       }

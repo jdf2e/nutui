@@ -47,7 +47,7 @@
       <template #content>
         <div class="self-content">
           <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-            <component :is="renderIcon(item.name)"></component>
+            <Service></Service>
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
         </div>

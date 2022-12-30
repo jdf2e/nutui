@@ -38,7 +38,7 @@ class ImagePreviewFunction {
   constructor(_options: ImagePreviewOptions) {
     const options = Object.assign(this.options, _options);
     const { instance, unmount } = CreateComponent(options, {
-      name: 'imagepreview',
+      name: 'image-preview',
       components: [Popup, Video, Swiper, SwiperItem, Overlay],
       wrapper: () => {
         return {

@@ -44,7 +44,7 @@
   </view>
   <!-- 用于计算大小 -->
   <!-- TODO -->
-  <div :class="`nut-popover-content nut-popover-content-copy`">
+  <view :class="`nut-popover-content nut-popover-content-copy`">
     <view ref="popoverContentRefCopy" :id="'popoverContentRefCopy' + refRandomId" class="nut-popover-content-group">
       <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
       <slot name="content"></slot>
@@ -62,13 +62,14 @@
         <view class="nut-popover-menu-item-name">{{ item.name }}</view>
       </view>
     </view>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('popover');
 import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
+import { useRect, rect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 import Taro from '@tarojs/taro';
@@ -226,9 +227,19 @@ export default create({
     const getContentWidth = async () => {
       let rect;
       if (props.targetId) {
-        rect = await useTaroRect(props.targetId, Taro);
+        if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+          rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
+        } else {
+          rect = await useTaroRect(props.targetId, Taro);
+        }
       } else {
         rect = await useTaroRect(popoverRef, Taro);
+      }
+
+      if (!(rootRect.value && rect.top == rootRect.value.top && rect.width == rootRect.value.width)) {
+        setTimeout(() => {
+          getContentWidth();
+        }, 100);
       }
       rootRect.value = rect;
 
@@ -252,9 +263,7 @@ export default create({
       (value) => {
         showPopup.value = value;
         if (value) {
-          setTimeout(() => {
-            getContentWidth();
-          }, 100);
+          getContentWidth();
 
           setTimeout(() => {
             getPopoverContentW();
@@ -321,24 +330,3 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
-.self-content {
-  width: 195px;
-  display: flex;
-  flex-wrap: wrap;
-  &-item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  &-desc {
-    margin-top: 5px;
-    width: 60px;
-    font-size: 10px;
-    text-align: center;
-  }
-}
-</style>

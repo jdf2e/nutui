@@ -3,6 +3,7 @@ node_modules
 /dist
 /libs
 /jd/upload.js
+/publish/**/dist/
 yarn.lock
 package-lock.json
 /cache

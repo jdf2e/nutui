@@ -86,29 +86,6 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2>水平居中展示</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="page4" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
-        <nut-swiper-item v-for="item in list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
-    <h2>垂直居中展示</h2>
-    <view class="demo-box vertical-center">
-      <nut-swiper
-        :init-page="page4"
-        :loop="false"
-        direction="vertical"
-        height="220"
-        :is-center="true"
-        style="height: 300px"
-      >
-        <nut-swiper-item v-for="item in list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
   </div>
 </template>
 

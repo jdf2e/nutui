@@ -225,6 +225,8 @@ Specify the mount node through `teleport`
 | round                  | Show fillet                                                | boolean        | `false`       |
 | teleport               | Specify the mount node   | string         | `"body"`      |
 | teleport-disable              | Whether the node is allowed to be mounted       | boolean         | `false`      |
+| overlay-class          | Custom mask class name   | string         | -      |
+| overlay-style          | Custom Mask Style   | CSSProperties  | -      |
 | safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Events
