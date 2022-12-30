@@ -9,7 +9,7 @@ const defaultOptions = {
   background: undefined,
   duration: 3000,
   className: '',
-  // onClosed: null,
+  onClose: Function,
   // onClick: null,
   // onOpened: null,
   // textTimer: null,
@@ -84,6 +84,7 @@ const mountNotify = (opts: TDOptions) => {
       opts.teleport = `#notify-${opts.id}`;
       onMounted(() => {
         setTimeout(() => {
+          opts.onClose && opts.onClose();
           document.body.removeChild(root);
         }, opts.duration);
       });

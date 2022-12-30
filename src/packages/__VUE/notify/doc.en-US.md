@@ -163,12 +163,13 @@ export default {
     
 | Attribute  | Description                                              | Type          | Default  |
 |------------|----------------------------------------------------------|---------------|----------|
-| type       | Display Type（primary,success ,danger,warning）      | String        | 'danger' |
+| type       | The information type of the prompt, the optional values are `primary` `success` `danger` `warning`      | String        | `danger` |
 | message    | Display copy, support line feed through \n              | Boolean       | false    |
 | duration   | Display duration (ms),value is 0 ,notify not disappear | Number        | 3000     |
 | color      | Font Color                                               | String        | -        |
 | background | Background color                                         | String        | -        |
 | class-name | Custom class name                                        | String/Number | 1        |
+| position | custom position, optional values are `top` `bottom` `left` `right` `center` | String | `top` |
 
 > Component call is supported after version 'v3.1.20'.
 

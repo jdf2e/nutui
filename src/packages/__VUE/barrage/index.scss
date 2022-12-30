@@ -6,7 +6,7 @@
   height: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: #f7f8fa;
+  --move-distance: '300%';
   &__item {
     width: 100px;
     display: block;
@@ -24,6 +24,22 @@
       animation-name: moving;
       animation-timing-function: linear;
       animation-play-state: running;
+    }
+    @keyframes moving {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(var(--move-distance));
+      }
+    }
+    @-webkit-keyframes moving {
+      from {
+        -webkit-transform: translateX(100%);
+      }
+      to {
+        transform: translateX(var(--move-distance));
+      }
     }
   }
 }

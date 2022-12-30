@@ -32,7 +32,7 @@ export default create({
     },
     speeds: {
       type: Number,
-      default: 800
+      default: 2000
     },
     rows: {
       type: Number,
@@ -74,8 +74,6 @@ export default create({
         const list = document
           .getElementsByClassName('nut-barrage__slotBody' + classTime)[0]
           .getElementsByClassName('nut-barrage__item');
-        console.log(list);
-
         let childrens = list?.[0]?.children || [];
         danmuList.value = childrens;
       }
@@ -121,20 +119,16 @@ export default create({
 
     const runStep = () => {
       danmuList.value.forEach((item: any, index: number) => {
-        if (typeof danmuList.value[index] == 'object') {
-          getNode(index);
-        } else {
-          getNode(index);
-        }
+        getNode(index);
       });
     };
-    const distance = ref('0');
+    // const distance = ref('0');
     let styleList: any[] = reactive([]);
     const styleInfo = (index: number, nodeTop: string, width: number) => {
       let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
       let list = styleList;
       let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;
-      distance.value = '-' + (speeds / 1000) * 200 + '%';
+      // distance.value = '-' + (speeds / 1000) * 200 + '%';
 
       let obj = {
         top: nodeTop,
@@ -152,26 +146,7 @@ export default create({
       }
     };
 
-    return { classTime, classes, danmuList, add, styleList, distance, danmuListSlots };
+    return { classTime, classes, danmuList, add, styleList, danmuListSlots };
   }
 });
 </script>
-
-<style lang="scss">
-@keyframes moving {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-@-webkit-keyframes moving {
-  from {
-    -webkit-transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-</style>
