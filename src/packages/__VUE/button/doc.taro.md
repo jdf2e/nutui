@@ -131,6 +131,12 @@ app.use(Button);
     收藏
   </nut-button>
 </template>
+<script lang="ts">
+  import { StarFill, Star } from '@nutui/icons-vue-taro';
+  export default {
+    components: { StarFill, Star }
+  }
+</script>
 ```
 
 ### 按钮尺寸

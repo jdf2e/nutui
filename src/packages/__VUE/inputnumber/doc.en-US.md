@@ -28,7 +28,6 @@ Initialize a default value
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -52,7 +51,6 @@ Set step `step` 5
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -76,7 +74,6 @@ Set step `step` 5
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(10);
       return { value };
@@ -100,7 +97,6 @@ Set step `step` 5
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -124,7 +120,6 @@ Set step `step` 5
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -148,7 +143,6 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -171,7 +165,6 @@ Asynchronous modification through `change` event and `model-value`
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
   export default {
-    props: {},
     setup() {
       let { proxy } = getCurrentInstance();
       const state = reactive({
@@ -202,7 +195,6 @@ Asynchronous modification through `change` event and `model-value`
 <script lang="ts">
   import { ref } from 'vue';
   export default {
-    props: {},
     setup() {
       const value = ref(1);
       return { value };
@@ -229,8 +221,9 @@ Asynchronous modification through `change` event and `model-value`
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import { Left, Right } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Left, Right },
     setup() {
       const value = ref(1);
       return { value };
