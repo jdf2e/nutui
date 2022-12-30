@@ -219,8 +219,8 @@ export default {
     <template #icon>
       <TriangleDown />
     </template>
-    <nut-menu-item v-model="state.value1" :options="options1" />
-    <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2">
       <template #icon>
         <Checked></Checked>
       </template>
@@ -230,6 +230,7 @@ export default {
 
 <script>
 import { reactive, ref } from 'vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue';
 
 export default {
   setup() {
