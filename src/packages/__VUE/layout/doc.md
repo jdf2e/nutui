@@ -18,6 +18,9 @@ app.use(Col);
 
 
 ### 基础用法
+
+Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列所占的宽度百分比。 offset 属性可以设置列的偏移宽度，计算方式与 span 相同。
+
 :::demo
 ```html
 <template>
