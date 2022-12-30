@@ -105,12 +105,13 @@ export default {
     
 | 字段       | 说明                                                  | 类型    | 默认值   |
 |------------|-------------------------------------------------------|---------|----------|
-| type       | 提示的信息类型（primary，success  ，danger，warning） | String  | 'danger' |
-| message    | 展示文案，支持通过\n换行                              | Boolean | false    |
-| duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | String  | 3000     |
-| color      | 字体颜色                                              | String  | 空       |
-| background | 背景颜色                                              | String  | 空       |
-| class-name | 自定义类名                                            | String  |          |
+| type       | 提示的信息类型，可选值为`primary` `success` `danger` `warning` | String        | `danger` |
+| message    | 展示文案，支持通过\n换行                              | Boolean       | false    |
+| duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | Number        | 3000     |
+| color      | 字体颜色                                              | String        | 空       |
+| background | 背景颜色                                              | String        | 空       |
+| class-name | 自定义类名                                            | String/Number | 1        |
+| position | 自定义位置，可选值为 `top` `bottom` `left` `right` `center`              | String | `top`        |
 
 ### Events
 
