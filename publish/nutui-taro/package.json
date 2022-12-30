@@ -52,7 +52,6 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue": "0.0.19",
     "@nutui/icons-vue-taro": "0.0.3",
     "@tarojs/components": "3.5.6",
     "sass": "^1.50.0",

@@ -54,7 +54,7 @@
     <h2>{{ translate('title8') }}</h2>
     <nut-cell>
       <nut-switch v-model="checked" @change="change" loading>
-        <template #icon><Loading /></template>
+        <template #icon><Loading name="loading" /></template>
       </nut-switch>
     </nut-cell>
   </div>

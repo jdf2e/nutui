@@ -37,7 +37,7 @@
 
     <h2>自定义加载图标</h2>
     <nut-cell>
-      <nut-switch v-model="checked" @change="switchChange"><Loading /></nut-switch>
+      <nut-switch v-model="checked" @change="switchChange"><Loading name="loading" /></nut-switch>
     </nut-cell>
   </div>
 </template>
