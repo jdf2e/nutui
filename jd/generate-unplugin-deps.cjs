@@ -25,7 +25,7 @@ export { ${element.name} };`;
         })
       );
 
-      outputFileEntry += `export * from "./packages/${element.name}/index.mjs";\n`;
+      outputFileEntry += `export * from "./packages/${element.name.toLowerCase()}/index.mjs";\n`;
     }
   });
 });
