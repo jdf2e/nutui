@@ -76,10 +76,6 @@ export default create({
       type: Boolean,
       default: false
     },
-    closeIcon: {
-      type: String,
-      default: 'circle-close'
-    },
     closeIconPosition: {
       type: String,
       default: 'top-right' // top-right  top-left
