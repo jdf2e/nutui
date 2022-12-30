@@ -1,12 +1,6 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import config from './package.json';
 import vue from '@vitejs/plugin-vue';
-const banner = `/*!
-* v${config.version} ${new Date()}
-* (c) 2022 @jdf2e.
-* Released under the MIT License.
-*/`;
 
 let input = {
   index: `./src/packages/locale/index`
@@ -31,7 +25,6 @@ export default defineConfig({
       external: ['vue'],
       input,
       output: {
-        banner,
         dir: path.resolve(__dirname, './dist/packages/locale/lang'),
         entryFileNames: '[name].js',
         plugins: []

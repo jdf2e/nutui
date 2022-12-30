@@ -1,14 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
-import config from './package.json';
 import configPkg from './src/config.json';
-
-const banner = `/*!
-* @nutui/nutui v${config.version} ${new Date()}
-* (c) 2022 @jdf2e.
-* Released under the MIT License.
-*/`;
 
 let input = {};
 
@@ -39,7 +32,6 @@ export default defineConfig({
       external: ['vue', 'vue-router', '@/packages/locale', '@nutui/icons-vue'],
       input,
       output: {
-        banner,
         paths: {
           '@/packages/locale': '../locale/lang'
         },

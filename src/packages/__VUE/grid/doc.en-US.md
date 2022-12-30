@@ -31,6 +31,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -45,6 +51,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -59,6 +71,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -78,6 +96,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -93,6 +117,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -108,6 +138,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -124,6 +160,12 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Dongdong } from '@nutui/icons-vue';
+  export default {
+    components: { Dongdong },
+  };
+</script>
 ```
 :::
 
@@ -141,6 +183,12 @@ app.use(GridItem);
     </nut-grid-item>
   </nut-grid>
 </template>
+<script lang="ts">
+  import { Home, Search } from '@nutui/icons-vue';
+  export default {
+    components: { Home, Search },
+  };
+</script>
 ```
 :::
 
