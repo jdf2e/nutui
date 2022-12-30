@@ -54,7 +54,7 @@ export default create({
     },
     speeds: {
       type: Number,
-      default: 800
+      default: 2000
     },
     rows: {
       type: Number,
@@ -94,8 +94,6 @@ export default create({
     onMounted(() => {
       if (slotDefault) {
         const list = document.getElementsByClassName('slotBody' + classTime)[0].getElementsByClassName('dmitem');
-        console.log(list);
-
         let childrens = list?.[0]?.children || [];
         danmuList.value = childrens;
       }
@@ -141,38 +139,17 @@ export default create({
 
     const runStep = () => {
       danmuList.value.forEach((item: any, index: number) => {
-        // let el = danmuList.value[index];
-        if (typeof danmuList.value[index] == 'object') {
-          // danmuListSlots.value.push(item);
-          // let l = slotDefault ? String(danmuList.value.length) : '';
-          // let s = l + danmuListSlots.value.indexOf(item);
-          getNode(index);
-        } else {
-          // if (el?.classList.contains('dmitem')) {
-          //   el.classList.remove('dmitem');
-          // }
-          // if (el?.classList.contains('dmitem' + index)) {
-          //   el.classList.remove('dmitem' + index);
-          // }
-          // if (slotDefault && el) {
-          //   if (el?.classList.contains('move')) {
-          //     el.classList.remove('move');
-          //   }
-          //   el.classList.add('.move');
-          // }
-          // el.classList.add('.dmitem .dmitem' + index);
-          getNode(index);
-        }
+        getNode(index);
       });
     };
-    const distance = ref('0');
+    // const distance = ref('0');
     let styleList: any[] = reactive([]);
     const styleInfo = (index: number, nodeTop: string, width: number) => {
       // let n = Math.floor(Math.random() * (10 - 5)) + 5;
       let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
       let list = styleList;
       let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;
-      distance.value = '-' + (speeds / 1000) * 200 + '%';
+      // distance.value = '-' + (speeds / 1000) * 200 + '%';
 
       let obj = {
         top: nodeTop,
@@ -190,26 +167,7 @@ export default create({
       }
     };
 
-    return { classTime, classes, danmuList, add, styleList, distance, danmuListSlots };
+    return { classTime, classes, danmuList, add, styleList, danmuListSlots };
   }
 });
 </script>
-
-<style lang="scss">
-@keyframes moving {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-@-webkit-keyframes moving {
-  from {
-    -webkit-transform: translateX(100%);
-  }
-  to {
-    transform: translateX(v-bind('distance'));
-  }
-}
-</style>
