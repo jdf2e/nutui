@@ -54,7 +54,7 @@ const { create } = createComponent('cascader');
 import CascaderItem from './cascader-item.vue';
 import Popup from '../popup/index.vue';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [CascaderItem.name]: CascaderItem,
     [Popup.name]: Popup

@@ -6,7 +6,6 @@
 
 ### 安装
 
-通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/xinyunewlink)。
 
 ```javascript
 import { createApp } from 'vue';
@@ -17,7 +16,7 @@ app.use(Cell);
 app.use(CellGroup);
 ```
 
-### 基础用法
+### 基本用法
 
 :::demo
 
@@ -34,7 +33,7 @@ app.use(CellGroup);
     setup() {
       const switchChecked = ref(true);
       const testClick = (event) => {
-        console.log('click')
+        console.log('Click Test');
       };
       return { testClick, switchChecked };
     }
@@ -57,7 +56,7 @@ app.use(CellGroup);
 
 :::
 
-### 直接使用插槽
+### 直接使用插槽（slot）
 
 :::demo
 
@@ -73,7 +72,7 @@ app.use(CellGroup);
 
 
 
-### 直接使用插槽(slot title)
+### 直接使用插槽（slot title）
 
 :::demo
 
@@ -156,7 +155,7 @@ app.use(CellGroup);
 
 :::
 
-### 单元格展示图标
+### 展示图标
 
 :::demo
 

@@ -93,6 +93,12 @@ app.use(Step);
     </nut-step>
   </nut-steps>
 </template>
+<script lang="ts">
+  import { Service, People, Location2 } from '@nutui/icons-vue-taro';
+  export default {
+    components: { Service, People, Location2 }
+  }
+</script>
 ```
 
 :::

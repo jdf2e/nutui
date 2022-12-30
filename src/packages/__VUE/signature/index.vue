@@ -15,7 +15,7 @@ import { createComponent } from '@/packages/utils/create';
 import Button from '../button/index.vue';
 const { componentName, create, translate } = createComponent('signature');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     customClass: {
       type: String,

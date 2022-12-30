@@ -9,7 +9,7 @@
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('side-navbar-item');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     title: {
       type: String,

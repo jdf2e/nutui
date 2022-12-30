@@ -130,6 +130,7 @@
           "show": true,
           "desc": "图标",
           "author": "richard1015",
+          "exclude": true,
           "styleDeps": []
         },
         {
@@ -1343,7 +1344,7 @@
           "show": true,
           "author": "yushuang24",
           "taro": true,
-          "styleDeps": ["Button"]
+          "styleDeps": ["Button", "Swipe"]
         },
         {
           "version": "3.0.0",

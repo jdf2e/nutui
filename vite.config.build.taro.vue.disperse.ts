@@ -2,23 +2,18 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import fs from 'fs-extra';
-import config from './package.json';
 import configPkg from './src/config.json';
-
-const banner = `/*!
-* ${config.name} v${config.version} ${new Date()}
-* (c) 2022 @jdf2e.
-* Released under the MIT License.
-*/`;
 
 let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name } = element;
+    let { name, exclude } = element;
     // if (name.toLowerCase().indexOf('calendar') != -1) {
-    const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-    input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    if (exclude != true) {
+      const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+    }
     // }
   });
 });
@@ -66,7 +61,6 @@ export default defineConfig({
       ],
       input,
       output: {
-        banner,
         paths: {
           '@/packages/locale': '../locale/lang/index.js'
         },

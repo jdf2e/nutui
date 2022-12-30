@@ -200,12 +200,15 @@ export default createDemo({
         }
       }
     });
-
-    const themeVars = {
-      rangeBgColor: 'rgba(25,137,250,0.15)',
-      rangeBarBgColor: '#0289fa',
-      rangeBarBtnBorder: '1px solid #0289fa'
-    };
+    let color = reactive({
+      primaryColor: 'green',
+      primaryColorEnd: 'green',
+      primaryColorActive: 'rgba(0,128,0,0.15)'
+      // rangeBgColor: 'rgba(25,137,250,0.15)',
+      // rangeBarBgColor: '#0289fa',
+      // rangeBarBtnBorder: '1px solid #0289fa'
+    });
+    const themeVars = color;
     return {
       formData2,
       addressModule,

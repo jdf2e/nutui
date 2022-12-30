@@ -45,7 +45,7 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     height: {
       type: [Number, String],

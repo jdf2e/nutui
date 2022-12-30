@@ -22,7 +22,7 @@ import { computed, onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('sub-side-navbar');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     title: {
       type: String,

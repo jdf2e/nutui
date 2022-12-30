@@ -8,11 +8,10 @@
     
 ``` javascript
 import { createApp } from 'vue';
-import { FixedNav,Overlay } from '@nutui/nutui';
+import { FixedNav } from '@nutui/nutui';
 
 const app = createApp();
 app.use(FixedNav);
-app.use(Overlay);
 
 ```
 

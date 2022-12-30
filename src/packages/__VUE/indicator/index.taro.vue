@@ -16,7 +16,7 @@ import { createComponent } from '@/packages/utils/create';
 import { padZero } from '@/packages/utils/util';
 const { componentName, create } = createComponent('indicator');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     size: {
       type: Number,

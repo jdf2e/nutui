@@ -65,7 +65,8 @@ import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.taro.vue';
-export default /* @__PURE__ */ create({
+import Swipe from '../swipe/index.taro.vue';
+export default create({
   props: {
     data: {
       type: Array,
@@ -91,7 +92,8 @@ export default /* @__PURE__ */ create({
   components: {
     SwipeShell,
     GeneralShell,
-    [Button.name]: Button
+    [Button.name]: Button,
+    [Swipe.name]: Swipe
   },
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 

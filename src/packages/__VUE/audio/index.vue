@@ -66,7 +66,7 @@ import { Service } from '@nutui/icons-vue';
 import Range from '../range/index.vue';
 const { componentName, create } = createComponent('audio');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     url: {
       type: String,

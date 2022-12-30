@@ -11,7 +11,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useLockScroll } from '@/packages/utils/useLockScroll';
 const { componentName, create } = createComponent('overlay');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     visible: {
       type: Boolean,

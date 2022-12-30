@@ -31,7 +31,7 @@ import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentIntern
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('step');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     title: {
       type: String,

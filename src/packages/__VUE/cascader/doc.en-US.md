@@ -8,12 +8,10 @@ The cascader component is used for the selection of multi-level data. The typica
 
 ```js
 import { createApp } from 'vue';
-import { Cascader, Tabs, TabPane } from '@nutui/nutui';
+import { Cascader } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cascader);
-app.use(Tabs);
-app.use(TabPane);
 ```
 
 ### Basic Usage

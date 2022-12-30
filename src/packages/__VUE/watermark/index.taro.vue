@@ -15,7 +15,7 @@ import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 
 const { componentName, create } = createComponent('watermark');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     name: {
       type: String,

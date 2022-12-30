@@ -42,7 +42,7 @@ const defaultStatus: statusOptions = {
   network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png'
 };
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     image: {
       type: String,

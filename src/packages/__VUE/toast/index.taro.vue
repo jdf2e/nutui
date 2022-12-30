@@ -37,7 +37,7 @@ import { Component, computed, PropType, watch } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('toast');
 import { Failure, Loading, Success, Tips } from '@nutui/icons-vue-taro';
-export default /* @__PURE__ */ create({
+export default create({
   components: {},
   props: {
     id: String,

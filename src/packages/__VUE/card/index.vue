@@ -39,7 +39,7 @@ import { createComponent } from '@/packages/utils/create';
 import Price from '../price/index.vue';
 import Tag from '../tag/index.vue';
 const { create } = createComponent('card');
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Price.name]: Price,
     [Tag.name]: Tag

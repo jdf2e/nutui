@@ -12,7 +12,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('tag');
 export type TagType = 'primary' | 'success' | 'danger' | 'warning';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     color: { type: String, default: '' },
     textColor: { type: String, default: '' },

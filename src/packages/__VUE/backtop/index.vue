@@ -12,7 +12,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
 import requestAniFrame, { cancelRaf } from '@/packages/utils/raf';
 import { Top } from '@nutui/icons-vue';
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     Top
   },

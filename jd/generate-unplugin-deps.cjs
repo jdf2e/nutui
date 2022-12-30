@@ -14,14 +14,19 @@ config.nav.forEach((item) => {
       children: element.styleDeps
     });
     // gen entry
-    const outputMjs = `import ${element.name} from '../_es/${element.name}.js';\nexport { ${element.name} };`;
-    tasks.push(
-      fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
-        // console.log('')
-      })
-    );
+    if (element.exclude != true) {
+      const outputMjs = `import _${element.name} from '../_es/${element.name}.js';
+const treeshaking = (t) => t;
+const ${element.name} = treeshaking(_${element.name});
+export { ${element.name} };`;
+      tasks.push(
+        fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
+          // console.log('')
+        })
+      );
 
-    outputFileEntry += `export * from "./packages/${element.name}/index.mjs";\n`;
+      outputFileEntry += `export * from "./packages/${element.name.toLowerCase()}/index.mjs";\n`;
+    }
   });
 });
 

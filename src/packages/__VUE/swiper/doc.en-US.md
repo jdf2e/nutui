@@ -531,7 +531,6 @@ You can manually switch through `api` (`prev`, `next`)
 | touchable             | if touchable to slide                                                      | Boolean         | true          |
 | is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
 | is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
-| is-center| The corresponding `width` and `height` must be passed to determine whether to display in the middle`  | Boolean   | false    |
 
 
 

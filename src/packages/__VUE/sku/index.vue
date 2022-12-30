@@ -70,9 +70,11 @@ import SkuOperate from './components/SkuOperate.vue';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
+import Price from '../price/index.vue';
+import InputNumber from '../inputnumber/index.vue';
 const { componentName, create, translate } = createComponent('sku');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     ...popupProps,
 
@@ -157,7 +159,9 @@ export default /* @__PURE__ */ create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    [Price.name]: Price,
+    [InputNumber.name]: InputNumber
   },
 
   setup(props: any, { emit, slots }) {

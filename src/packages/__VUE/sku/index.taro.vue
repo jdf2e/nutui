@@ -68,10 +68,12 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import Popup from '../popup/index.taro.vue';
+import Price from '../price/index.taro.vue';
+import InputNumber from '../inputnumber/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     visible: {
       type: Boolean,
@@ -183,7 +185,9 @@ export default /* @__PURE__ */ create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    [Price.name]: Price,
+    [InputNumber.name]: InputNumber
   },
 
   setup(props: any, { emit, slots }) {

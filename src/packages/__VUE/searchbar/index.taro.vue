@@ -57,7 +57,7 @@ import { TextAlign } from './type';
 const { create, translate } = createComponent('searchbar');
 export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     modelValue: {
       type: [String, Number],

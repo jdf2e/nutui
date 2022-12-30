@@ -8,7 +8,7 @@ import { inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tab-pane');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     title: {
       type: [String, Number],

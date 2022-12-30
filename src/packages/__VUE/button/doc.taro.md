@@ -131,18 +131,12 @@ app.use(Button);
     收藏
   </nut-button>
 </template>
-```
-
-:::
-
-### 自定义图标
-
-参照 `Icon` 组件说明中的自定义图标，其中 `icon-font-class-name` 对应 Icon 组件的 `font-class-name`，`icon-class-prefix` 对应 Icon 组件的 `class-prefix`。
-
-```html
-<template>
-  <nut-button shape="square" plain type="primary" icon-font-class-name="iconfont" icon-class-prefix="icon" icon="close"></nut-button>
-</template>
+<script lang="ts">
+  import { StarFill, Star } from '@nutui/icons-vue-taro';
+  export default {
+    components: { StarFill, Star }
+  }
+</script>
 ```
 
 ### 按钮尺寸

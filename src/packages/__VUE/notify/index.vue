@@ -18,7 +18,7 @@ import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 const { create } = createComponent('notify');
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Popup.name]: Popup
   },

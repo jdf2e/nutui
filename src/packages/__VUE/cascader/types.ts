@@ -8,7 +8,7 @@ export type CascaderConfig = {
   text?: string;
   children?: string;
 };
-export type Tabs = {
+export type CascaderTabs = {
   title: string;
   paneKey: string;
   disabled: boolean;

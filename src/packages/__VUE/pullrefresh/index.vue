@@ -30,7 +30,7 @@ import { Loading } from '@nutui/icons-vue';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     modelValue: {
       type: Boolean,

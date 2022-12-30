@@ -56,7 +56,7 @@ export type InputRule = {
 };
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     ref: {
       type: String,

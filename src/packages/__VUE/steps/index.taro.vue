@@ -3,7 +3,7 @@ import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('steps');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     direction: {
       type: String,

@@ -9,12 +9,10 @@ Virtual e-card selection
 ```javascript
 
 import { createApp } from 'vue';
-import { Ecard, InputNumber } from '@nutui/nutui';
+import { Ecard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Ecard);
-app.use(InputNumber);
-
 ```
 
 ### Basic

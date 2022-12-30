@@ -129,7 +129,7 @@ import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Popup.name]: Popup,
     [Elevator.name]: Elevator,

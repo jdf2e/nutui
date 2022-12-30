@@ -45,7 +45,7 @@ import {
   PropType
 } from 'vue';
 const { create } = createComponent('tabbar-item');
-export default /* @__PURE__ */ create({
+export default create({
   components: { [Badge.name]: Badge },
   props: {
     tabTitle: {

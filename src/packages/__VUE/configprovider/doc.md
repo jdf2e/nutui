@@ -102,10 +102,16 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
     setup() {
       const range = ref(30);
       const themeVars = {
-        rangeBgColor: 'rgba(25,137,250,0.15)',
-        rangeBarBgColor: '#0289fa',
-        rangeBarBtnBorder: '1px solid #0289fa'
+          primaryColor:'green',
+          primaryColorEnd:'green',
+          activeColor:'rgba(0,128,0,0.15)'
       };
+      // 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
+      //  const themeVars = {
+      //   rangeBgColor: 'rgba(25,137,250,0.15)',
+      //   rangeBarBgColor: '#0289fa',
+      //   rangeBarBtnBorder: '1px solid #0289fa'
+      // };
 
       return { range, themeVars };
     }
@@ -121,22 +127,16 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 
 NutUI 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
 
-#### 修改变量
-
-由于 CSS 变量继承机制的原因，两者的修改方式有一定差异：
-
-- 基础变量只能通过 `:root 选择器` 修改，不能通过 `ConfigProvider 组件` 修改。
-- 组件变量可以通过 `:root 选择器` 和 `ConfigProvider 组件` 修改。
-
 #### 变量列表
 
 下面是所有的基础变量：
 ```less
+  // 主色调
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
+  --nut-primary-color-active: rgba(250, 44, 25, 0.15);
   // 辅助色
   --nut-help-color: #f5f5f5;
-  --nut-active-color: rgba(250, 44, 25, 0.15);
   // 标题常规文字
   --nut-title-color: #1a1a1a;
   // 副标题

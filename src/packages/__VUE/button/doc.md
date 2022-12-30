@@ -131,21 +131,15 @@ app.use(Button);
     收藏
   </nut-button>
 </template>
+<script lang="ts">
+  import { StarFill, Star } from '@nutui/icons-vue';
+  export default {
+    components: { StarFill, Star }
+  }
+</script>
 ```
 
 :::
-
-### 自定义图标
-
-```html
-<template>
-  <nut-button shape="square" plain type="primary">
-    <template #icon>
-      <Close />
-    </template>
-  </nut-button>
-</template>
-```
 
 ### 按钮尺寸
 

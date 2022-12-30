@@ -8,11 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { NumberKeyboard,Popup } from '@nutui/nutui-taro';
+import { NumberKeyboard } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(NumberKeyboard);
-app.use(Popup);
 
 ```
 

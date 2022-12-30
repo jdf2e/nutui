@@ -533,7 +533,6 @@ app.use(SwiperItem);
 | touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
 | is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
 | is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
-| is-center               | 是否居中展示，必须传对应的`width` 和 `height`                    | Boolean         | false    |
 
 
 

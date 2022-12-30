@@ -8,7 +8,7 @@ import { onMounted, provide, ref, watch, getCurrentInstance, computed } from 'vu
 import { createComponent } from '@/packages/utils/create';
 import { nextTick } from '@tarojs/taro';
 const { create, componentName } = createComponent('collapse');
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     active: {
       type: [String, Number, Array]

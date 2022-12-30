@@ -45,7 +45,7 @@ import Radio from '../radio/index.taro.vue';
 import RadioGroup from '../radiogroup/index.vue';
 import Button from '../button/index.taro.vue';
 const { componentName, create } = createComponent('invoice');
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [Form.name]: Form,
     [FormItem.name]: FormItem,

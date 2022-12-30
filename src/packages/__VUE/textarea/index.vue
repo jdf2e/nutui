@@ -24,7 +24,7 @@ import { createComponent } from '@/packages/utils/create';
 
 const { componentName, create, translate } = createComponent('textarea');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     modelValue: {
       type: String,

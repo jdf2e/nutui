@@ -29,7 +29,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment-bottom');
 import { Fabulous, Comment, MoreX } from '@nutui/icons-vue';
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     type: {
       type: String,

@@ -2,19 +2,16 @@
 
 ### Intro
 
-Load on demand Load the Popup、Elevator dependent component
+
 
 ### Install
 
 ``` javascript
 import { createApp } from 'vue';
-import { Address, Popup, Elevator } from '@nutui/nutui';
+import { Address } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Address);
-app.use(Popup);
-app.use(Elevator);
-
 ```
 
 ### Choose Custom Address

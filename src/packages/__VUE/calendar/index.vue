@@ -95,7 +95,7 @@ import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
-export default /* @__PURE__ */ create({
+export default create({
   components: {
     [CalendarItem.name]: CalendarItem,
     [Popup.name]: Popup

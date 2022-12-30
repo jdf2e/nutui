@@ -82,7 +82,7 @@ import { isArray } from '@/packages/utils/util';
 import { SliderValue } from './type';
 const { componentName, create } = createComponent('range');
 
-export default /* @__PURE__ */ create({
+export default create({
   props: {
     range: {
       type: Boolean,

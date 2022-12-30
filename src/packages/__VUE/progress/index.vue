@@ -52,7 +52,7 @@ import { computed, onMounted, useSlots, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
 import { Checked } from '@nutui/icons-vue';
-export default /* @__PURE__ */ create({
+export default create({
   components: { Checked },
   props: {
     percentage: {
