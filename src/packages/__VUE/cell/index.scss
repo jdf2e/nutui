@@ -72,7 +72,8 @@
   &__icon {
     display: flex;
     flex-direction: row;
-    margin-right: $cell-default-icon-margin;
+    margin: $cell-default-icon-margin;
+    align-items: center;
   }
 
   &__title {
@@ -94,5 +95,6 @@
   }
   &__link {
     color: #979797;
+    align-self: center;
   }
 }

@@ -29,12 +29,11 @@ app.use(CellGroup);
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const switchChecked = ref(true);
       const testClick = (event) => {
-        Toast.text('点击事件');
+        console.log('点击事件');
       };
       return { testClick, switchChecked };
     }
