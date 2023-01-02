@@ -1,4 +1,5 @@
 const config = require('../src/config.json');
+const packageConfig = require('../package.json');
 const path = require('path');
 const fs = require('fs-extra');
 
@@ -6,6 +7,7 @@ const fs = require('fs-extra');
 const styleMap = new Map();
 const tasks = [];
 let outputFileEntry = ``;
+let components = [];
 // import Locale from './packages/locale';\n
 config.nav.forEach((item) => {
   item.packages.forEach((element) => {
@@ -24,11 +26,33 @@ export { ${element.name} };`;
           // console.log('')
         })
       );
-
-      outputFileEntry += `export * from "./packages/${element.name.toLowerCase()}/index.mjs";\n`;
+      let folderName = element.name.toLowerCase();
+      outputFileEntry += `export * from "./packages/${folderName}/index.mjs";\n`;
+      components.push(element.name);
     }
   });
 });
+outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name}/index.mjs";`).join('\n');
+outputFileEntry += `function install(app) {
+  const packages = [${components.join(',')}];
+  packages.forEach((item) => {
+      if (item.install) {
+          app.use(item);
+      } else if (item.name) {
+          app.component(item.name, item);
+      }
+  });
+}
+const version = '${packageConfig.version}';
+var stdin_default = {
+  install,
+  version
+};
+export {
+  stdin_default as default,
+  install,
+  version
+};`;
 
 tasks.push(
   fs.outputFile(path.resolve(__dirname, `../dist/nutui.es.js`), outputFileEntry, 'utf8', () => {
