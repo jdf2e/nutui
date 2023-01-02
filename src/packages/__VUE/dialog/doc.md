@@ -36,7 +36,8 @@ app.use(Dialog);
 </template>
 <script lang="ts">
 import { ref,createVNode } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
 export default {
     setup() {
         const onCancel = () => {
@@ -46,7 +47,7 @@ export default {
           console.log('event ok');
         };
         const baseClick = (): void => {
-          Dialog({
+          showDialog({
             title: '基础弹框',
             content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
             onCancel,
@@ -54,7 +55,7 @@ export default {
           });
         };
         const transparentClick = (): void => {
-          Dialog({
+          showDialog({
             overlayStyle: { background: 'rgba(0,0,0,0)' },
             title: '透明弹框',
             content: 'Content',
@@ -63,7 +64,7 @@ export default {
           });
         };
         const htmlClick = (): void => {
-          Dialog({
+          showDialog({
             title: "支持富文本 html",
             content:
               "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
@@ -72,7 +73,7 @@ export default {
           });
         };
         const beforeCloseClick = (): void => {
-          Dialog({
+          showDialog({
             title: '异步关闭',
             content: '点击确认后，1秒后关闭',
             onCancel,
@@ -87,14 +88,14 @@ export default {
           });
         };
         const noTitleClick = () => {
-          Dialog({
+          showDialog({
             content: '无标题弹框',
             onCancel,
             onOk
           });
         };
         const tipsClick = () => {
-          Dialog({
+          showDialog({
             title: '温馨提示',
             content: '支持函数调用和组件调用两种方式。',
             noCancelBtn: true,
@@ -103,7 +104,7 @@ export default {
           });
         };
         const verticalClick = () => {
-          Dialog({
+          showDialog({
             title: '温馨提示',
             content: '支持底部按钮纵向排列。',
             footerDirection: 'vertical',
@@ -133,11 +134,11 @@ export default {
 ```
 
 ``` javascript
-Dialog({
+showDialog({
   teleport: '#app',
   ...
 });
-Dialog({
+showDialog({
   teleport: '.demo',
   ...
 });
@@ -147,7 +148,8 @@ Dialog({
 
 ```javascript
 import { ref } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
 import { getCurrentInstance } from 'vue';
 
 export default {

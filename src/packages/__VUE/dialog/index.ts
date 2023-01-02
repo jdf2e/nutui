@@ -20,12 +20,12 @@ export class DialogOptions {
   footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 
   // function
-  onUpdate?: (value: boolean) => void;
+  onUpdate?: (value: boolean) => any | void;
   onOk?: () => void;
   onCancel?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
-  beforeClose?: () => void;
+  beforeClose?: (action: string) => any;
 
   visible?: boolean = true;
   noFooter?: boolean = false;

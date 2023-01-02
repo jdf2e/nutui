@@ -23,7 +23,7 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('toast');
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { onUnmounted } from 'vue';
 const initTranslate = () =>
@@ -57,28 +57,28 @@ export default createDemo({
   setup() {
     initTranslate();
     const textToast = (msg: string) => {
-      Toast.text(msg);
+      showToast.text(msg);
     };
     const titleToast = (msg: string) => {
-      Toast.text(msg, {
+      showToast.text(msg, {
         title: translate('toastTitle')
       });
     };
     const successToast = (msg: string) => {
-      Toast.success(msg);
+      showToast.success(msg);
     };
     const errorToast = (msg: string) => {
-      Toast.fail(msg);
+      showToast.fail(msg);
     };
     const warningToast = (msg: string) => {
-      Toast.warn(msg);
+      showToast.warn(msg);
     };
     const loadingToast = (msg: string) => {
-      Toast.loading(msg);
+      showToast.loading(msg);
     };
     let t: any;
     const NoToast = (msg: string) => {
-      t = Toast.text(msg, {
+      t = showToast.text(msg, {
         duration: 0
       });
     };
@@ -88,14 +88,14 @@ export default createDemo({
     });
 
     const BottomToast = (msg: string) => {
-      Toast.text(msg, {
+      showToast.text(msg, {
         id: 'taset11',
         center: false,
         bottom: '10%'
       });
     };
     const NoLoading = (msg: string) => {
-      Toast.loading(msg, {
+      showToast.loading(msg, {
         cover: true
       });
     };

@@ -252,7 +252,8 @@ app.use(ImagePreview);
 </template>
 
 <script lang="ts">
-  import { ImagePreview } from '@nutui/nutui';
+  import { showImagePreview } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/imagepreview/style';
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
@@ -278,11 +279,11 @@ app.use(ImagePreview);
         };
 
         const fnShow = () => {
-        ImagePreview({
-            show: true,
-            images: resData.imgData,
-            onClose
-        })
+            showImagePreview({
+                show: true,
+                images: resData.imgData,
+                onClose
+            })
         };
         
         return {
