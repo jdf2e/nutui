@@ -42,7 +42,8 @@ export { ${element.name} };`;
   });
 });
 outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name}/index.mjs";`).join('\n');
-outputFileEntry += `function install(app) {
+outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
+function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {
       if (item.install) {
@@ -55,12 +56,14 @@ outputFileEntry += `function install(app) {
 const version = '${packageConfig.version}';
 var stdin_default = {
   install,
-  version
+  version,
+  Locale
 };
 export {
   stdin_default as default,
   install,
-  version
+  version,
+  Locale
 };`;
 
 tasks.push(
