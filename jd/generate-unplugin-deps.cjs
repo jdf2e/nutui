@@ -17,10 +17,19 @@ config.nav.forEach((item) => {
     });
     // gen entry
     if (element.exclude != true) {
-      const outputMjs = `import _${element.name} from '../_es/${element.name}.js';
+      let outputMjs = '';
+      if (element.type == 'methods') {
+        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
+import { show${element.name} } from '../_es/${element.name}.js';
+const treeshaking = (t) => t;
+const ${element.name} = treeshaking(_${element.name});
+export { ${element.name}, show${element.name} };`;
+      } else {
+        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
 const treeshaking = (t) => t;
 const ${element.name} = treeshaking(_${element.name});
 export { ${element.name} };`;
+      }
       tasks.push(
         fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
           // console.log('')

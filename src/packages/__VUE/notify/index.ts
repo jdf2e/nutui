@@ -1,5 +1,4 @@
-import { createVNode, render, h, onMounted, VNode, ComponentInternalInstance, Component } from 'vue';
-import { App } from 'vue';
+import { createVNode, render, h, onMounted, VNode, ComponentInternalInstance } from 'vue';
 import Notify from './index.vue';
 const defaultOptions = {
   type: 'base',
@@ -10,9 +9,6 @@ const defaultOptions = {
   duration: 3000,
   className: '',
   onClose: Function,
-  // onClick: null,
-  // onOpened: null,
-  // textTimer: null,
   teleport: '',
   unmount: new Function()
 };
@@ -75,12 +71,6 @@ const mountNotify = (opts: TDOptions) => {
   root.id = 'notify-' + opts.id;
   const Wrapper = {
     setup() {
-      // opts.onUpdate = (val: boolean) => {
-      //   console.log(val);
-      //   if (val == false) {
-      //     document.body.removeChild(root);
-      //   }
-      // };
       opts.teleport = `#notify-${opts.id}`;
       onMounted(() => {
         setTimeout(() => {
@@ -96,16 +86,6 @@ const mountNotify = (opts: TDOptions) => {
   const instance: VNode = createVNode(Wrapper);
   document.body.appendChild(root);
   render(instance, root);
-  // const container = document.createElement('view');
-  // container.id = opts.id;
-  // const instance: any = createVNode(Notify, opts);
-  // render(instance, container);
-  // console.log(container);
-  // teleport.appendChild(container);
-  // setTimeout(() => {
-  //   instance.visible = true;
-  // }, 0);
-  // return instance.component.ctx;
 };
 
 const errorMsg = (msg: string) => {
@@ -115,7 +95,7 @@ const errorMsg = (msg: string) => {
   }
 };
 
-export const NotifyFunction = {
+const showNotify = {
   text(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg });
@@ -141,9 +121,9 @@ export const NotifyFunction = {
   },
   install(app: any): void {
     app.use(Notify);
-    app.config.globalProperties.$notify = NotifyFunction;
+    app.config.globalProperties.$notify = showNotify;
   }
 };
 
-export default NotifyFunction;
-export { Notify };
+export { showNotify };
+export default Notify;
