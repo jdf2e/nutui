@@ -50,6 +50,7 @@
 import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Left, Right } from '@nutui/icons-vue';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('input-number');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -86,7 +87,6 @@ export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    let { proxy } = getCurrentInstance();
 
     const state = reactive({
       val1: 1,
@@ -102,15 +102,15 @@ export default createDemo({
     });
 
     const onChange = (value: number) => {
-      proxy.$toast.loading(translate('content1'));
+      showToast.loading(translate('content1'));
       setTimeout(() => {
         state.val8 = value;
-        proxy.$toast.hide();
+        showToast.hide();
       }, 2000);
     };
 
     const overlimit = () => {
-      proxy.$toast.warn(translate('content2'));
+      showToast.warn(translate('content2'));
     };
 
     return {

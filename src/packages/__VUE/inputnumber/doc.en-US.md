@@ -164,6 +164,8 @@ Asynchronous modification through `change` event and `model-value`
 </template>
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       let { proxy } = getCurrentInstance();
@@ -171,10 +173,10 @@ Asynchronous modification through `change` event and `model-value`
         value: 1
       });
       const onChange = (value: number) => {
-        proxy.$toast.loading('Asynchronous presentation changes in 2 seconds');
+        showToast.loading('Asynchronous presentation changes in 2 seconds');
         setTimeout(() => {
           state.value = value;
-          proxy.$toast.hide();
+          showToast.hide();
         }, 2000);
       };
       return { ...toRefs(state), onChange };
