@@ -180,7 +180,8 @@ Here are all the base variables:
 
 ### Props
 
-| Attribute | Description                                                          | Type   | Default |
-|-----------|----------------------------------------------------------------------|--------|---------|
-| theme     | Theme style, set to `dark` to enable dark mode, take effect globally | String | -       |
-| tag       | HTML Tag of root element                                             | String | div     |
+| Attribute  | Description                                                          | Type   | Default |
+|------------|----------------------------------------------------------------------|--------|---------|
+| theme      | Theme style, set to `dark` to enable dark mode, take effect globally | string | -       |
+| theme-vars | Customized theme variable, partially effective                       | object | -       |
+| tag        | HTML Tag of root element                                             | string | div     |
