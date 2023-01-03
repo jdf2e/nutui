@@ -64,6 +64,7 @@
 import { ref, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('switch');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -99,7 +100,6 @@ export default createDemo({
   components: { Loading },
   setup() {
     initTranslate();
-    let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
     const checkedAsync = ref(true);
     const loadingAsync = ref(false);
@@ -107,11 +107,11 @@ export default createDemo({
     // const checkedStr = ref('开');
 
     const change = (value: boolean, event: Event) => {
-      proxy.$toast.text(`value：${value}`);
+      showToast.text(`value：${value}`);
     };
 
     const changeAsync = (value: boolean, event: Event) => {
-      proxy.$toast.text(`after 2 second： ${value}`);
+      showToast.text(`after 2 second： ${value}`);
       loadingAsync.value = true;
       setTimeout(() => {
         checkedAsync.value = value;

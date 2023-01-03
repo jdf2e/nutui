@@ -238,7 +238,8 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs, ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
@@ -256,7 +257,7 @@ When the value changes, the `change` event will be triggered
 
       const group = ref(null);
       const changeBox4 = (label: any[]) => {
-        Toast.text(`${label.length === state.checkboxsource.length ? 'Select all' : 'Cancel select all'}`);
+        showToast.text(`${label.length === state.checkboxsource.length ? 'Select all' : 'Cancel select all'}`);
       };
 
       const toggleAll = (f: boolean) => {
@@ -264,7 +265,7 @@ When the value changes, the `change` event will be triggered
       };
 
       const toggleReverse = () => {
-        Toast.text(`reverse selection`);
+        showToast.text(`reverse selection`);
         group.value.toggleReverse();
       };
 
@@ -299,7 +300,6 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     props: {},
     setup() {
@@ -335,7 +335,7 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
   export default {
     props: {},
     setup() {

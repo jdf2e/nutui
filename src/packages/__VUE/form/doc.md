@@ -43,7 +43,6 @@ app.use(FormItem);
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup(){
     const basicData = reactive({
@@ -85,7 +84,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup(){
     const dynamicRefForm = ref<any>(null);
@@ -104,7 +104,7 @@ export default {
             if (valid) {
               console.log('success', dynamicForm);
             } else {
-              Toast.warn(errors[0].message);
+              showToast.warn(errors[0].message);
               console.log('error submit!!', errors);
             }
           });
@@ -175,7 +175,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
 setup(){
     const formData = reactive({
@@ -220,9 +221,9 @@ setup(){
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
-        Toast.loading('模拟异步验证中...');
+        showToast.loading('模拟异步验证中...');
         setTimeout(() => {
-          Toast.hide();
+          showToast.hide();
           resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
         }, 1000);
       });
