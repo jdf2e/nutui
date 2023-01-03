@@ -763,12 +763,12 @@ export default create({
       Taro.getSystemInfo({
         success(res) {
           let scale = 2;
-          let screenWidth = res.screenWidth;
           let toFixed = 3;
           if (TARO_ENV === Taro.ENV_TYPE.WEB) {
             toFixed = 5;
           }
-          scale = Number((screenWidth / 750).toFixed(toFixed));
+          let fontSize = document.documentElement.style.fontSize;
+          scale = Number((Number.parseInt(fontSize) / 40).toFixed(toFixed));
           scalePx.value = scale;
           initData();
         }

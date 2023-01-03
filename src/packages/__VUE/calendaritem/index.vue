@@ -554,7 +554,6 @@ export default create({
           }
         });
       }
-
       setDefaultRange(monthsNum, current);
       state.currentIndex = current;
       state.yearMonthTitle = state.monthsData[state.currentIndex].title;
