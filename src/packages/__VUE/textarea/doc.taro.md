@@ -71,25 +71,25 @@ export default {
 
 | 参数        | 说明                                             | 类型           | 默认值         |
 |-------------|--------------------------------------------------|----------------|----------------|
-| v-model     | 输入值，支持双向绑定                             | String         | -              |
-| placeholder | 设置占位提示文字                                 | String         | `'请输入内容'` |
-| max-length  | 限制最长输入字符                                 | String、Number | -              |
-| rows | textarea的高度，优先级高于autosize属性  `仅支持 H5`                                 | String、Number | `2`            |
-| limit-show  | textarea是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
-| autosize | 是否自适应内容高度，也可传入对象, 如 { maxHeight: 200, minHeight: 100 }，单位为px | Boolean 、{maxHeight?: number; minHeight?: number}       | `false`        |
-| text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |
-| readonly    | 只读属性                                         | Boolean        | `false`        |
-| disabled    | 禁用属性                                         | Boolean        | `false`        |
-| autofocus   | 自动获取焦点                                     | Boolean        | `false`        |
+| v-model     | 输入值，支持双向绑定                             | string         | `-`|
+| placeholder | 设置占位提示文字                                 | string         | `请输入内容` |
+| max-length  | 限制最长输入字符                                 | string \| number | `-`              |
+| rows | textarea的高度，优先级高于autosize属性 `仅支持 H5`         | string \| number | `2`            |
+| limit-show  | textarea是否展示输入字符。须配合`max-length`使用 | boolean        | `false`        |
+| autosize | 是否自适应内容高度，也可传入对象, <br/> 如 `{ maxHeight: 200, minHeight: 100 }`，单位为`px` | boolean \| {maxHeight?: number; minHeight?: number}       | `false`        |
+| text-align  | 文本位置,可选值`left`,`center`,`right`           | string         | `left`         |
+| readonly    | 只读属性                                         | boolean        | `false`        |
+| disabled    | 禁用属性                                         | boolean        | `false`        |
+| autofocus   | 自动获取焦点                                     | boolean        | `false`        |
 
 
 ### Events
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| change | 输入框值改变时触发 | value       |
-| focus  | 聚焦时触发     | event       |
-| blur   | 失焦时触发     | {value,event} |
+| change | 输入框值改变时触发 | `value`       |
+| focus  | 聚焦时触发     | `event`       |
+| blur   | 失焦时触发     | `value,event` |
 
 ## 主题定制
 
@@ -97,13 +97,13 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-textarea-font| _var(--nut-font-size-2)_  | -  |
-| --nut-textarea-height| _100px_  | -  |
-| --nut-textarea-limit-color| _var(--nut-text-color)_  | -  |
-| --nut-textarea-text-color| _var(--nut-title-color)_  | -  |
-| --nut-textarea-disabled-color| _var(--nut-disable-color)_  | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-textarea-font| _var(--nut-font-size-2)_  |
+| --nut-textarea-height| _100px_  |
+| --nut-textarea-limit-color| _var(--nut-text-color)_  |
+| --nut-textarea-text-color| _var(--nut-title-color)_  |
+| --nut-textarea-disabled-color| _var(--nut-disable-color)_  |
 
 
 

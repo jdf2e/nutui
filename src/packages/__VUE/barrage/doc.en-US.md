@@ -25,7 +25,7 @@ app.use(Barrage);
 <template>
   <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
   <div class="test">
-    <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
+    <button @click="addDanmu" class="add nut-button--primary">add randomly</button>
   </div>
 </template>
 <script>
@@ -35,10 +35,10 @@ export default {
   setup() {
     const inputVal = ref('');
     const danmu = ref(null);
-    let list = ref(['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']);
+    let list = ref(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff']);
     function addDanmu() {
       let n = Math.random();
-      danmu.value.add('随机——' + String(n).substr(2, 10));
+      danmu.value.add('randomly——' + String(n).substr(2, 10));
     }
     return {
       inputVal,
@@ -77,17 +77,17 @@ export default {
 
 ### Props
 
-| Attribute | Description | Type   | Default |
-|--------------|----------------------------------|--------|------------------|
-| danmu         | Barrage list data               | Array | []              |
-| frequency        | The time interval between the occurrence of each barrage in the visual area    | Number | 500               |
-| speeds         | Rolling time of each barrage | Number |  2000               |
-| rows  | The number of bullet screen lines is displayed in several lines    | Number | 1 |
-| top  | Vertical distance of barrage    | Number | 10 |
-| loop  | Loop play     | Boolean | true |
+| Parameter | Description | Type | Default |
+|--------------|---------------------------------- |-------|------------------|
+| danmu | Danmaku list data | Array | `[]` |
+| frequency | the time interval of each barrage in the visible area | number | `500` |
+| speeds | scrolling time of each barrage | number | `2000` |
+| rows | Number of bullet chatting lines, displayed in several lines | number | `1` |
+| top | vertical distance of the barrage | number | `10` |
+| loop | Whether to play in a loop | boolean | `true` |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Event Name | Description | Callback Parameters |
 |--------|----------------|--------------|
-| add  | Add data | - |
+| add | add data | `-` |

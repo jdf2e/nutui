@@ -87,9 +87,9 @@ export default {
 
 | Event | Description                  | Arguments   |
 |--------|----------------|-------------|
-| change | Triggered when the value of the input box changes | value       |
-| focus  | Triggered when focusing     | event       |
-| blur   | Triggered when out of focus     | {value,event} |
+| change | Triggered when the value of the input box changes | `value`       |
+| focus  | Triggered when focusing     | `event`       |
+| blur   | Triggered when out of focus     | `value,event` |
 
 ## Theming
 
@@ -97,13 +97,13 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-textarea-font| _var(--nut-font-size-2)_  | -  |
-| --nut-textarea-height| _100px_  | -  |
-| --nut-textarea-limit-color| _var(--nut-text-color)_  | -  |
-| --nut-textarea-text-color| _var(--nut-title-color)_  | -  |
-| --nut-textarea-disabled-color| _var(--nut-disable-color)_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-textarea-font| _var(--nut-font-size-2)_  |
+| --nut-textarea-height| _100px_  |
+| --nut-textarea-limit-color| _var(--nut-text-color)_  |
+| --nut-textarea-text-color| _var(--nut-title-color)_  |
+| --nut-textarea-disabled-color| _var(--nut-disable-color)_  |
 
 
 
