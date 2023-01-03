@@ -110,7 +110,7 @@ export default {
 | duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | Number        | 3000     |
 | color      | 字体颜色                                              | String        | 空       |
 | background | 背景颜色                                              | String        | 空       |
-| class-name | 自定义类名                                            | String/Number | 1        |
+| class-name | 自定义类名                                            | string \| number | 1        |
 | position | 自定义位置，可选值为 `top` `bottom` `left` `right` `center`              | String | `top`        |
 
 ### Events
