@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+let target = process.argv[2];
+if (!target) {
+  console.error('缺少 nutui or nutui-taro 参数！');
+  return;
+}
 const config = require('../src/config.json');
 const packageConfig = require('../package.json');
 const path = require('path');
@@ -18,7 +24,7 @@ config.nav.forEach((item) => {
     // gen entry
     if (element.exclude != true) {
       let outputMjs = '';
-      if (element.type == 'methods') {
+      if (element.type == 'methods' && target == 'nutui') {
         outputMjs = `import _${element.name} from '../_es/${element.name}.js';
 import { show${element.name} } from '../_es/${element.name}.js';
 const treeshaking = (t) => t;
@@ -41,8 +47,8 @@ export { ${element.name} };`;
     }
   });
 });
-outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name}/index.mjs";`).join('\n');
-outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
+outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`).join('\n');
+outputFileEntry += `\nimport { Locale } from "./packages/locale/lang/index.js";
 function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {
