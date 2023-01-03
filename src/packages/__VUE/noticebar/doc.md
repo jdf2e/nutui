@@ -223,28 +223,28 @@ app.use(Noticebar);
 
 | 字段       | 说明                                                       | 类型          | 默认值 |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | String        | across     |
-| text       | 提示的信息                                                 | String        | 空     |
-| close-mode  | 是否启用关闭模式                                           | Boolean       | false  |
-| left-icon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String        | 空     |
-| right-icon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | String        | 空     |
-| color      | 导航栏的文字颜色                                           | String        | 空     |
-| background | 导航栏的背景颜色                                           | String        | 空     |
-| delay      | 延时多少秒                                                 | String/Number | 1      |
-| scrollable | 是否可以滚动                                               | Boolean       | true   |
-| speed      | 滚动速率 (px/s)                                            | Number        | 50     |
-| wrapable  | 是否开启文本换行                                           | Boolean       | false    |
+| direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
+| text       | 提示的信息                                                 | string        | -     |
+| close-mode  | 是否启用关闭模式                                           | boolean       | `false`  |
+| left-icon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
+| right-icon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | string        | -     |
+| color      | 导航栏的文字颜色                                           | string        | -     |
+| background | 导航栏的背景颜色                                           | string        | -     |
+| delay      | 延时多少秒                                                 | string \| number | `1`      |
+| scrollable | 是否可以滚动                                               | boolean       | `true`   |
+| speed      | 滚动速率 (px/s)                                            | number        | `50`     |
+| wrapable  | 是否开启文本换行                                           | boolean       | `false`    |
 
 ### Props（direction=vertical）
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| list         | 纵向滚动数据列表               | Array | []               |
-| speed        | 滚动的速度                         | Number | 50               |
-| stand-time         | 停留时间(毫秒) | Number | 1000                |
-| complex-am | 稍复杂的动画，耗能会高     | Boolean | false |
-| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
-| close-mode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
+| list         | 纵向滚动数据列表               | array | `[]`               |
+| speed        | 滚动的速度                         | number | `50`               |
+| stand-time         | 停留时间(毫秒) | number | `1000`                |
+| complex-am | 稍复杂的动画，耗能会高     | boolean | `false` |
+| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
+| close-mode  | 是否启用右侧关闭图标，可以通过 `slot[name=rightIcon]` 自定义图标                                   | boolean      | `false`  |
 
 ### Slots
 
@@ -266,16 +266,16 @@ app.use(Noticebar);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ | -  |
-| --nut-noticebar-color| _#d9500b_ | -  |
-| --nut-noticebar-font-size| _14px_ | -  |
-| --nut-noticebar-height| _40px_ | -  |
-| --nut-noticebar-line-height| _24px_ | -  |
-| --nut-noticebar-left-icon-width| _16px_ | -  |
-| --nut-noticebar-right-icon-width| _16px_ | -  |
-| --nut-noticebar-box-padding| _0 16px_ | -  |
-| --nut-noticebar-wrapable-padding| _16px_ | -  |
-| --nut-noticebar-lefticon-margin| _0px 10px_ | -  |
-| --nut-noticebar-righticon-margin| _0px 10px_ | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ |
+| --nut-noticebar-color| _#d9500b_ |
+| --nut-noticebar-font-size| _14px_ |
+| --nut-noticebar-height| _40px_ |
+| --nut-noticebar-line-height| _24px_ |
+| --nut-noticebar-left-icon-width| _16px_ |
+| --nut-noticebar-right-icon-width| _16px_ |
+| --nut-noticebar-box-padding| _0 16px_ |
+| --nut-noticebar-wrapable-padding| _16px_ |
+| --nut-noticebar-lefticon-margin| _0px 10px_ |
+| --nut-noticebar-righticon-margin| _0px 10px_ |
