@@ -77,6 +77,7 @@ export const popupProps = {
     default: ''
   },
   overlayStyle: {
-    type: Object as PropType<CSSProperties>
+    type: Object as PropType<CSSProperties>,
+    default: {}
   }
 };

@@ -15,7 +15,7 @@
       <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('useTemplate')">
-      <nut-cell is-Link @click="showNotify">{{ translate('useTemplate') }}</nut-cell>
+      <nut-cell is-Link @click="onClick">{{ translate('useTemplate') }}</nut-cell>
       <nut-notify v-model:visible="show" :duration="2000">
         <span>Content</span>
       </nut-notify>
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { Notify } from '../../nutui.vue';
+import { showNotify } from '../../nutui.vue';
 import { ref } from 'vue';
 const { createDemo, translate } = createComponent('notify');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -62,7 +62,7 @@ export default createDemo({
   setup() {
     initTranslate();
     const baseNotify = (msg: string) => {
-      Notify.text(msg, {
+      showNotify.text(msg, {
         onClose: () => {
           console.log('close');
         },
@@ -72,28 +72,28 @@ export default createDemo({
       });
     };
     const primaryNotify = (msg: string) => {
-      Notify.primary(msg, { duration: 1000 });
+      showNotify.primary(msg, { duration: 1000 });
     };
     const successNotify = (msg: string) => {
-      Notify.success(msg);
+      showNotify.success(msg);
     };
     const errorNotify = (msg: string) => {
-      Notify.danger(msg);
+      showNotify.danger(msg);
     };
     const warningNotify = (msg: string) => {
-      Notify.warn(msg);
+      showNotify.warn(msg);
     };
     const cusBgNotify = (msg: string) => {
-      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+      showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
     };
     const timeNotify = (msg: string) => {
-      Notify.text(msg, { duration: 1000 });
+      showNotify.text(msg, { duration: 1000 });
     };
     const positionNotify = (msg: string) => {
-      Notify.text(msg, { position: 'bottom' });
+      showNotify.text(msg, { position: 'bottom' });
     };
     const show = ref(false);
-    const showNotify = () => {
+    const onClick = () => {
       show.value = true;
     };
     return {
@@ -106,7 +106,7 @@ export default createDemo({
       timeNotify,
       positionNotify,
       show,
-      showNotify,
+      onClick,
       translate
     };
   }

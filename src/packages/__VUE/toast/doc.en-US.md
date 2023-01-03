@@ -40,11 +40,12 @@ export default {
   <nut-cell title="Text" is-link @click="textToast('text message~')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.text(msg);
+    const textToast = (msg) => {
+      showToast.text(msg);
     };
     return {
       textToast,
@@ -62,11 +63,12 @@ export default {
   <nut-cell title="Toast Title" is-link @click="textToast('title message~')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.text(msg, {
+    const textToast = (msg) => {
+      showToast.text(msg, {
         title: 'title'
       });
     };
@@ -86,11 +88,12 @@ export default {
   <nut-cell title="Toast Success" is-link @click="textToast('Success')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-       Toast.success(msg);
+    const textToast = (msg) => {
+      showToast.success(msg);
     };
     return {
       textToast,
@@ -109,11 +112,12 @@ export default {
   <nut-cell title="Toast Fail" is-link @click="textToast('Fail')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.fail(msg);
+    const textToast = (msg) => {
+      showToast.fail(msg);
     };
     return {
       textToast,
@@ -132,11 +136,12 @@ export default {
   <nut-cell title="Toast Warn" is-link @click="textToast('Warn')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.warn(msg);
+    const textToast = (msg) => {
+      showToast.warn(msg);
     };
     return {
       textToast,
@@ -155,11 +160,12 @@ export default {
   <nut-cell title="Toast Loading" is-link @click="textToast('Loading')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.loading(msg);
+    const textToast = (msg) => {
+      showToast.loading(msg);
     };
     return {
       textToast,
@@ -178,11 +184,12 @@ export default {
   <nut-cell title="Toast Not Disappear" is-link @click="textToast('Toast Not Disappear')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-     Toast.text(msg, {
+    const textToast = (msg) => {
+      showToast.text(msg, {
         duration: 0
       });
     };
@@ -202,11 +209,12 @@ export default {
   <nut-cell title="Custom Bottom Height" is-link @click="textToast('Custom Bottom Height')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-      Toast.text(msg, {
+    const textToast = (msg) => {
+      showToast.text(msg, {
         center: false,
         bottom: '10%'
       });
@@ -227,11 +235,12 @@ export default {
   <nut-cell title="Loading with transparent cover" is-link @click="textToast('Loading')"></nut-cell>
 </template>
 <script>
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
-     const textToast = (msg) => {
-       Toast.loading(msg, {
+    const textToast = (msg) => {
+      showToast.loading(msg, {
         cover: true
       });
     };
@@ -247,10 +256,11 @@ export default {
 
 ###  Support import and use in JS modules
 ``` javascript
-import { Toast } from "@nutui/nutui";
-Toast.text('use in js module');
+import { showToast } from "@nutui/nutui";
+import '@nutui/nutui/dist/packages/toast/style';
+showToast.text('use in js module');
 // Return the instance, you can manually call the hide method in the instance to close the prompt
-const toast = Toast.loading('use in js module');
+const toast = showToast.loading('use in js module');
 toast.hide();
 ```
 
@@ -259,12 +269,12 @@ toast.hide();
 ### Methods
 | Methods       | Description        | Attribute         | Return value                                  |
 |---------------|--------------------|-------------------|-----------------------------------------------|
-| Toast.text    | Show text toast    | message｜ options | toast instance(message support incoming HTML) |
-| Toast.success | Show success toast | message｜ options | toast instance                                |
-| Toast.fail    | Show fail toast    | message｜ options | toast instance                                |
-| Toast.warn    | Show warn toast    | message｜ options | toast instance                                |
-| Toast.hide    | Close toast        | clearAll: boolean | void                                          |
-| Toast.loading | Show loading toast | message｜ options | toast instance                                |
+| showToast.text    | Show text toast    | message｜ options | toast instance(message support incoming HTML) |
+| showToast.success | Show success toast | message｜ options | toast instance                                |
+| showToast.fail    | Show fail toast    | message｜ options | toast instance                                |
+| showToast.warn    | Show warn toast    | message｜ options | toast instance                                |
+| showToast.hide    | Close toast        | clearAll: boolean | void                                          |
+| showToast.loading | Show loading toast | message｜ options | toast instance                                |
 
 ### ToastOptions
 

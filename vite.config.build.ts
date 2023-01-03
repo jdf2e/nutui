@@ -25,7 +25,7 @@ export default defineConfig({
   },
   plugins: [vue()],
   build: {
-    minify: false,
+    minify: true,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['vue', 'vue-router', '@nutui/icons-vue'],
