@@ -185,20 +185,20 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 当前展开面板的 name | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | - |
-| accordion | 是否开启手风琴模式 | _boolean_ | `false` |
+| v-model | 当前展开面板的 `name` | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | `-` |
+| accordion | 是否开启手风琴模式 | boolean | `false` |
 
 ### CollapseItem Props
 | 参数 | 说明 | 类型 | 默认值 | 
 |------|------|------|------|
-| name | 唯一标识符，必填 | string \ number | -1 |
-| title | 标题栏左侧内容，支持插槽传入（props传入的优先级更高） | string | - |
-| value | 标题栏右侧内容，支持插槽传入（props传入的优先级更高） | string | - |
-| icon | 标题栏左侧图标组件，等同于 nutui-icon 组件 | - | - |
-| label | 标题栏描述信息 | _number \| string_ | - |
-| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |
-| disabled | 标题栏是否禁用 | _boolean_ | false |
-| border | 是否显示边框 | _boolean_ | `true` |
+| name | 唯一标识符，必填 | string \| number | `-1` |
+| title | 标题栏左侧内容，支持插槽传入（`props` 传入的优先级更高） | string |`-` |
+| value | 标题栏右侧内容，支持插槽传入（`props` 传入的优先级更高） | string | `-` |
+| icon | 标题栏左侧图标组件，等同于 `nutui-icon` 组件 | - | `-` |
+| label | 标题栏描述信息 | number \| string | `-` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \| number | `180` |
+| disabled | 标题栏是否禁用 | boolean | `false` |
+| border | 是否显示边框 | boolean | `true` |
 
 ### CollapseItem Slots
 
@@ -216,22 +216,22 @@ export default {
 
 ## Theming
 
-### CSS Variables
+### 样式变量
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-collapse-item-padding| _13px 36px 13px 26px_ | -  |
-| --nut-collapse-item-color| _#666666_ | -  |
-| --nut-collapse-item-disabled-color| _#c8c9cc_ | -  |
-| --nut-collapse-item-icon-color| _#666666_ | -  |
-| --nut-collapse-item-font-size| _var(--nut-font-size-2)_ | -  |
-| --nut-collapse-item-line-height| _24px_ | -  |
-| --nut-collapse-item-sub-title-color| _#666666_ | -  |
-| --nut-collapse-wrapper-content-padding| _12px 26px_ | -  |
-| --nut-collapse-wrapper-empty-content-padding| _0 26px_ | -  |
-| --nut-collapse-wrapper-content-color| _#666666_ | -  |
-| --nut-collapse-wrapper-content-font-size| _var(--nut-font-size-2)_ | -  |
-| --nut-collapse-wrapper-content-line-height| _1.5_ | -  |
-| --nut-collapse-wrapper-content-background-color| _var(--nut-white)_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-collapse-item-padding| _13px 36px 13px 26px_ |
+| --nut-collapse-item-color| _#666666_ |
+| --nut-collapse-item-disabled-color| _#c8c9cc_ |
+| --nut-collapse-item-icon-color| _#666666_ |
+| --nut-collapse-item-font-size| _var(--nut-font-size-2)_ |
+| --nut-collapse-item-line-height| _24px_ |
+| --nut-collapse-item-sub-title-color| _#666666_ |
+| --nut-collapse-wrapper-content-padding| _12px 26px_ |
+| --nut-collapse-wrapper-empty-content-padding| _0 26px_ |
+| --nut-collapse-wrapper-content-color| _#666666_ |
+| --nut-collapse-wrapper-content-font-size| _var(--nut-font-size-2)_ |
+| --nut-collapse-wrapper-content-line-height| _1.5_ |
+| --nut-collapse-wrapper-content-background-color| _var(--nut-white)_ |

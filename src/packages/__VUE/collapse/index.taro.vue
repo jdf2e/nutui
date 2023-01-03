@@ -10,7 +10,7 @@ import { nextTick } from '@tarojs/taro';
 const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
-    active: {
+    modelValue: {
       type: [String, Number, Array]
     },
     accordion: {
@@ -18,7 +18,7 @@ export default create({
       default: false
     }
   },
-  emits: ['update:active', 'change'],
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
     const classes = computed(() => {
@@ -29,12 +29,12 @@ export default create({
     });
 
     const changeVal = (val: string | number | Array<string | number>) => {
-      emit('update:active', val);
+      emit('update:modelValue', val);
       emit('change', val);
     };
 
     const changeValAry = (name: string) => {
-      const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
+      const activeItem: any = props.modelValue instanceof Object ? Object.values(props.modelValue) : props.modelValue;
       let index = -1;
 
       activeItem.forEach((item: string | number, idx: number) => {
@@ -47,14 +47,14 @@ export default create({
     };
 
     const isExpanded = (name: string | number | Array<string | number>) => {
-      const { accordion, active } = props;
+      const { accordion, modelValue } = props;
       if (accordion) {
-        return typeof active === 'number' || typeof active === 'string' ? active == name : false;
+        return typeof modelValue === 'number' || typeof modelValue === 'string' ? modelValue == name : false;
       }
     };
 
     const activeIndex = () => {
-      const activeCollapse: any = props.active;
+      const activeCollapse: any = props.modelValue;
       const childrenList: any = slots.default?.();
       let act: any = [];
       childrenList.forEach((item: any, index: number) => {
@@ -78,19 +78,15 @@ export default create({
     });
 
     watch(
-      () => props.active,
-      (newval: any, oldval) => {
+      () => props.modelValue,
+      (newval: any) => {
         nextTick(() => {
           let domsProps: any = slots?.default?.();
           let doms: any = childrenDom.value;
           Array.from(doms).forEach((item: any, index: number) => {
             if (typeof newval == 'number' || typeof newval == 'string') {
-              if (domsProps[index]) {
-                if (domsProps[index].props) {
-                  item.changeOpen(newval == domsProps[index].props.name ? true : false);
-                } else {
-                  item.changeOpen(newval == item.name ? true : false);
-                }
+              if (domsProps[index] && domsProps[index].props) {
+                item.changeOpen(newval == domsProps[index].props.name ? true : false);
               } else {
                 item.changeOpen(newval == item.name ? true : false);
               }
