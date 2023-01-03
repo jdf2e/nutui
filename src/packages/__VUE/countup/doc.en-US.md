@@ -140,36 +140,33 @@ export default {
 ## API
 ### Props
 
-| Attribute | Description | Type   | Default |
-|----- | ----- | ----- | ----- 
-| init-num | Initial number | Number | 0
-| end-num | End number | Number | 0
-| speed | Interval number. At present, only basic usage is supported | Number | 1
-| to-fixed | Keep several decimal places | Number | The incoming number shall prevail
-| start-flag | Identification that triggers digital scrolling | Boolean | true
-| during | Scroll one run time | Number | 1000
-| num-width | Digital width, often used to customize seamless scrolling | Number | 20
-| num-height | Digital height, commonly used to customize seamless scrolling (lottery function is required) | Number | 20
-| scrolling | For digital scrolling display | Boolean | false
-| custom | Digital scrolling for custom pictures | Boolean | false
-| custom-change-num | Number to change (for custom pictures, initnum \ endnum is invalid here) | Number | 1
-| custom-bg-img | Custom picture (it is recommended to use sprite chart, and Sprite chart must be used when using lottery function) | - | -
-| custom-spac-num | There may be a gap between the numbers in the picture | Number | 0
-| type | "Machine" must be passed when using the lottery function | string | ''
-| machine-prize-num | The number of prizes and the total number of prizes must be passed on | number | 4
-| machine-num | Lucky draw, that is, rolling a few, must be passed | number | 3
-| machine-prize-level | Winning icon, the position of the icon in sprite chart | number | 0
-| machine-turn-more | Number of rolling turns | number | 0
+| Field | Description | Type | Default
+|----- | ----- | ----- | -----
+| init-num | initial number | number | `0`
+| end-num | end number | number | `0`
+| speed | interval number, currently only supports basic usage | number | `1`
+| to-fixed | retain the number of decimal places | number | `subject to the number passed in`
+| start-flag | flag to trigger number scrolling | boolean | `true`
+| during | rolling time to run | number | `1000`
+| num-width | Number width, often used to customize seamless scrolling | number | `20`
+| num-height | Number height, often used to customize seamless scrolling (required for lottery function) | number | `20`
+| scrolling | used for numeric scrolling display | boolean | `false`
+| custom | for custom image scrolling | boolean | `false`
+| custom-change-num | The number to change (for custom pictures, initNum and endNum are invalid here) | number | `1`
+| custom-bg-img | Custom image (it is recommended to use Sprite image, and Sprite image must be used to use the lottery function) | - | `-`
+| custom-spac-num | There may be space between numbers in the image | number | `0`
+| type | "machine" must be passed when using the lottery function | string | `''`
+| machine-prize-num | Number of prizes, how many prizes in total, must be passed | number | `4`
+| machine-num | lottery position, that is, how many times to roll, must pass | number | `3`
+| machine-prize-level | The winning icon, the position of the icon in the sprite image | number | `0`
+| machine-turn-more | number of turns | number | `0`
 
-> Note: the lottery function needs to be calculated in combination with the icon position, so the height num height of a single icon in sprite chart needs to be input; The winning prize is located according to the number of prize digits in sprite chart, from 1 to n；
-
-
-
+> Note: The lottery function needs to be calculated in conjunction with the position of the icon, so the height num-height of a single icon in the sprite image needs to be passed in; the winning prize is positioned according to the number of prizes in the sprite image, from 1 to N;
 
 
 ### Events
 
-| Event | Description   | Arguments   |
+| field | description | callback parameter
 |----- | ----- | -----
-| scroll-end | Callback function after scrolling | - 
+| scroll-end | callback function after scrolling ends | `-`
     
