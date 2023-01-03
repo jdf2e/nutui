@@ -2,7 +2,7 @@
 
 ### 介绍
 
-独立安装 @nutui/icons-vue 图标组件包。提供两种使用方式（Svg 按需使用、IconFont 全量使用）。
+独立安装 [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) 图标组件包。提供两种使用方式（Svg 按需使用、IconFont 全量使用）。
 
 ### 安装
 
@@ -17,7 +17,7 @@ npm i --save @nutui/icons-vue
 ```js
 import { Add } from '@nutui/icons-vue';
 // template
-<Add color='red'>
+<Add color='red' />
 ```
 
 <icon-demo />
@@ -31,10 +31,10 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 
 | 参数   | 说明                             | 类型             | 默认值 |
 |--------|----------------------------------|------------------|--------|
-| name   | 图标名称或图片链接               | String           | -      |
-| color  | 图标颜色                         | String           | -      |
-| width  | 图标大小，如 `20px` `2em` `2rem` | String or Number | -      |
-| height | 图标大小，如 `20px` `2em` `2rem` | String or Number | -      |
+| name   | 图标名称或图片链接               | string           | -      |
+| color  | 图标颜色                         | string           | -      |
+| width  | 图标大小，如 `20px` `2em` `2rem` | string \| object | -      |
+| height | 图标大小，如 `20px` `2em` `2rem` | string \| object | -      |
 
 ### Events
 
@@ -193,12 +193,12 @@ import './assets/font/iconfont.css';
 
 | 参数            | 说明                                     | 类型             | 默认值           |
 |-----------------|------------------------------------------|------------------|------------------|
-| name            | 图标名称或图片链接                       | String           | -                |
-| color           | 图标颜色                                 | String           | -                |
-| size            | 图标大小，如 `20px` `2em` `2rem`         | String or Number | -                |
-| font-class-name | 自定义 icon 字体基础类名                 | String           | `nutui-iconfont` |
-| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | String           | `nut-icon`       |
-| tag             | HTML 标签                                | String           | `i`              |
+| name            | 图标名称或图片链接                       | string           | -                |
+| color           | 图标颜色                                 | string           | -                |
+| size            | 图标大小，如 `20px` `2em` `2rem`         | string \| object | -                |
+| font-class-name | 自定义 icon 字体基础类名                 | string           | `nutui-iconfont` |
+| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | string           | `nut-icon`       |
+| tag             | HTML 标签                                | string           | `i`              |
 
 ### Events
 
