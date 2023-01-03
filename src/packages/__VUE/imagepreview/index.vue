@@ -56,7 +56,6 @@ const { create } = createComponent('image-preview');
 import { CircleClose } from '@nutui/icons-vue';
 import Popup from '../popup/index.vue';
 import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
 
 export default create({
   props: {
@@ -88,8 +87,7 @@ export default create({
     ImagePreviewItem: ImagePreviewItem,
     CircleClose,
     [Popup.name]: Popup,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem
+    [Swiper.name]: Swiper
   },
 
   setup(props, { emit }) {
