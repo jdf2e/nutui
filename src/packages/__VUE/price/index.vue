@@ -55,7 +55,7 @@ export default create({
     },
     size: {
       type: String,
-      default: 'large'
+      default: 'normal'
     }
   },
 

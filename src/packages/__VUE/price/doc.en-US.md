@@ -16,91 +16,75 @@ app.use(Price);
 ```
 
 
-### Support three sizes：small、normal、large
+### Price size
+
+Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
-    <nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
-    <nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+    <nut-price :price="0" size="small" :need-symbol="false" />
+    <nut-price :price="0" size="normal" :need-symbol="false" />
+    <nut-price :price="0" size="large" :need-symbol="false" />
 </template>
 ```
 
 :::
 
-### No decimals
+### Decimals places
+
+`decimal-digits` can set the number of decimal places, and 2 decimal places are displayed by default.
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="8888" :decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888" :decimal-digits="0" />
 </template>
 ```
 
 :::
 
-### With RMB symbol, no thousands separator
+### Currency symbol
+
+`symbol` can set the currency symbol, the default is `¥`.
 
 :::demo
 
 ``` html
 
 <template>
-    <nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
+    <nut-price :price="10010.01" symbol="¥" />
 </template>
 ```
 :::
-### With RMB symbol, separated by thousands, keep three decimal places
+### Currency symbol position
+
+`position` can adjust the currency symbol position.
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="15213.1221" :decimal-digits="3" :need-symbol="true" :thousands="true" />
-</template>
-```
-
-:::
-
-### Adjust the symbol position
-
-:::demo
-
-``` html
-<template>
-    <nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888.01" position="after" symbol="元" />
 </template>
 ```
 
 :::
-### Asynchronous random changes
+
+### Thousands separator
+
+`thousands` can be displayed as thousands.
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="price" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+    <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
 </template>
-
-
-<script lang="ts">
-    import { ref } from 'vue';
-    export default {
-        setup() {
-            const price = ref(0);
-            setInterval(() => {
-                price.value = Math.random()*10000000;
-            }, 1000);
-            return {
-                price
-            };
-        }
-    }
-</script>
 ```
+
 :::
 ## API
 ### Props
@@ -113,7 +97,7 @@ app.use(Price);
 | decimal-digits | Decimal digits                                             | Number | 2      |
 | thousands      | Thousands separation                                       | Boolean          | false  |
 | position       | The symbol appear before or after the price，`before`、`after` | String           | before |
-| size           | Size，`large`、`normal`、`small`                            | String           | large |
+| size           | Size，`small`、`normal`、`large`                | String           | large |
 
 ## Theming
 
