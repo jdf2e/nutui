@@ -221,28 +221,27 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 
 | Attribute  | Description                                        | Type          | Default |
 | ---------- | ---------------------------------------------------| ------------- | ------- |
-| direction  | Rolling direction                                  | String        | across  |
-| text       | Notice text content                                | String        |  -      |
-| close-mode  | Whether to enable the off mode                     | Boolean       | false   |
-| left-icon   | Left Icon                                          | String        | -       |
-| right-icon  | Right Icon                                         | String        | -       |
-| color      | Text Color                                         | String        | -       |
-| background | Background                                         | String        | -       |
-| delay      | Delay time                                         | string \| number | 1       |
-| scrollable | Whether to scroll content                          | Boolean       | true    |
-| speed      | Scrolling speed (px/s)                             | Number         | 50      |
-| wrapable | Whether to enable text wrap                        | Boolean       | false    |
+| direction  | Rolling direction                                  | string        | `across`  |
+| text       | Notice text content                                | string        |  -      |
+| close-mode  | Whether to enable the off mode                     | boolean       | `false`   |
+| left-icon   | Left Icon                                          | string        | -       |
+| color      | Text Color                                         | string        | -       |
+| background | Background                                         | string        | -       |
+| delay      | Delay time                                         | string \| number | `1`       |
+| scrollable | Whether to scroll content                          | boolean       | `true`    |
+| speed      | Scrolling speed (px/s)                             | number         | `50`     |
+| wrapable | Whether to enable text wrap                        | boolean       | `false`    |
 
 ### Props（direction=vertical）
 
 | Attribute    | Description                             | Type     | Default          |
 |--------------|-----------------------------------------|----------|------------------|
-| list         | List                                    | Array    | []               |
-| speed        | Scrolling speed                         | Number   | 50               |
-| stand-time    | Show time(millisecond)                  | Number   | 1000             |
-| complex-am    | Complex animation                       | Boolean  | false            |
-| height       | height                                  | Number   | 40               |
-| close-mode    | Whether to enable the off mode          | Boolean  | false            |
+| list         | List                                    | array    | `[]`               |
+| speed        | Scrolling speed                         | number   | `50`               |
+| stand-time    | Show time(millisecond)                  | number   | `1000`             |
+| complex-am    | Complex animation                       | boolean  | `false`            |
+| height       | height                                  | number   | `40`               |
+| close-mode    | Whether to enable the off mode          | boolean  | `false`            |
 
 ### Slots
 
@@ -265,16 +264,16 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ | -  |
-| --nut-noticebar-color| _#d9500b_ | -  |
-| --nut-noticebar-font-size| _14px_ | -  |
-| --nut-noticebar-height| _40px_ | -  |
-| --nut-noticebar-line-height| _24px_ | -  |
-| --nut-noticebar-left-icon-width| _16px_ | -  |
-| --nut-noticebar-right-icon-width| _16px_ | -  |
-| --nut-noticebar-box-padding| _0 16px_ | -  |
-| --nut-noticebar-wrapable-padding| _16px_ | -  |
-| --nut-noticebar-lefticon-margin| _0px 10px_ | -  |
-| --nut-noticebar-righticon-margin| _0px 10px_ | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-noticebar-background| _rgba(251, 248, 220, 1)_ |
+| --nut-noticebar-color| _#d9500b_ |
+| --nut-noticebar-font-size| _14px_ |
+| --nut-noticebar-height| _40px_ |
+| --nut-noticebar-line-height| _24px_ |
+| --nut-noticebar-left-icon-width| _16px_ |
+| --nut-noticebar-right-icon-width| _16px_ |
+| --nut-noticebar-box-padding| _0 16px_ |
+| --nut-noticebar-wrapable-padding| _16px_ |
+| --nut-noticebar-lefticon-margin| _0px 10px_ |
+| --nut-noticebar-righticon-margin| _0px 10px_ |

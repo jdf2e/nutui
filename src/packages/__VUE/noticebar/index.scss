@@ -23,7 +23,7 @@
     height: auto;
     padding: $noticebar-wrapable-padding;
     .nut-noticebar__page-wrap {
-      height: auto;
+      height: auto !important;
       .nut-noticebar__page-wrap-content {
         position: relative;
         white-space: normal;
@@ -61,6 +61,7 @@
     position: absolute;
     white-space: nowrap;
     &.nut-ellipsis {
+      display: inline-block;
       max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
