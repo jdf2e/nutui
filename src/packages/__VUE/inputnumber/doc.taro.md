@@ -166,15 +166,13 @@ app.use(InputNumber);
   import { reactive, getCurrentInstance, toRefs } from 'vue';
   export default {
     setup() {
-      let { proxy } = getCurrentInstance();
       const state = reactive({
         value: 1
       });
       const onChange = (value: number) => {
-        proxy.$toast.loading('异步演示 2 秒后更改');
+        console.log('异步演示 2 秒后更改');
         setTimeout(() => {
-          state.value = value;
-          proxy.$toast.hide();
+          state.val8 = value;
         }, 2000);
       };
       return { ...toRefs(state), onChange };
