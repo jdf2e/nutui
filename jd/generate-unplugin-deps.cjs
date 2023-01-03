@@ -106,16 +106,18 @@ styleMap.forEach((value, key) => {
     return component !== key;
   });
   // gen style
-  const outputStyleCJs = `require('./index.scss');\n${deps
+  const outputStyleCJs = `${deps
     .map((component) => {
       return `require('../${component.toLowerCase()}/index.scss');\n`;
     })
-    .join('')}`;
-  const outputStyleMjs = `import './index.scss';\n${deps
+    .reverse()
+    .join('')}require('./index.scss');\n`;
+  const outputStyleMjs = `${deps
     .map((component) => {
       return `import '../${component.toLowerCase()}/index.scss';\n`;
     })
-    .join('')}`;
+    .reverse()
+    .join('')}import './index.scss';\n`;
 
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.cjs`), outputStyleCJs, 'utf8', () => {
