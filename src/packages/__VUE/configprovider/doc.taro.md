@@ -102,9 +102,8 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
     setup() {
       const range = ref(30);
      const themeVars = {
-          primaryColor:'green',
-          primaryColorEnd:'green',
-          activeColor:'rgba(0,128,0,0.15)'
+          primaryColor:'#008000',
+          primaryColorEnd:'#008000',
       };
       // 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量
       //  const themeVars = {
@@ -127,13 +126,28 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 
 NutUI 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
 
+#### 修改变量
+- 基础变量中的主色调需要您使用十六进制色值来进行覆盖，请勿使用类似于`red`,`green`来进行覆盖
+- 基础变量和组件变量都能通过 `page`和 `ConfigProvider 组件`，推荐您使用`ConfigProvider 组件`来修改主色调，因为部分组件的变量激活色使用的是`rgba`属性，使用`page`修改主色调会有部分组件变量不生效：
+```less
+// 如果您仍旧选择使用 page 来进行修改主色调，您还需要修改以下8个组件变量色
+
+--nut-calendar-choose-color: rgba(primaryColor,0.09);
+--nut-range-bg-color: rgba(primaryColor,0.5);
+--nut-address-region-tab-line: linear-gradient(90deg, primaryColor 0%, rgba(primaryColor,0.15) 100%)  ; 
+--nut-radio-label-button-background: rgba(primaryColor,0.05);
+--nut-timeselect-timedetail-item-cur-bg-color: rgba(primaryColor,0.15);
+--nut-tabs-horizontal-tab-line-color: rgba(primaryColor,0.15);
+--nut-tabs-vertical-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor,0.15) 100%);
+--nut-sku-item-active-bg: rgba(primaryColor,0.15);
+```
+
 #### 变量列表
 
 下面是所有的基础变量：
 ```less
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
-  --nut-primary-color-active: rgba(250, 44, 25, 0.15);
   // 辅助色
   --nut-help-color: #f5f5f5;
   // 标题常规文字
