@@ -106,7 +106,7 @@ export default create({
     [Popup.name]: Popup,
     NutScrollView
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'change', 'open', 'close'],
   setup(props, { emit, slots }) {
     const state = reactive({
       zIndex: _zIndex,
@@ -169,6 +169,7 @@ export default create({
 
       if (show) {
         state.showWrapper = true;
+        emit('open');
         state.zIndex = ++_zIndex;
       }
     };
@@ -194,12 +195,14 @@ export default create({
     };
 
     const handleClose = () => {
+      emit('close');
       state.showWrapper = false;
       state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {
       state.showPopup = false;
+      emit('close');
     };
 
     return {
