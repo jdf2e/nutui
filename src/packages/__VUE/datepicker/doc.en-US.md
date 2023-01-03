@@ -384,22 +384,22 @@ app.use(DatePicker);
     
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
-| v-model         | Default Date                                            | Date    | `null`   |
-| type            | Can be set to date time year-month month-day datehour | String  | `'date'` |
-| minute-step     | Option minute step                                        | Number  | `1`      |
-| is-show-chinese | Show Chinese                                  | Boolean | `false`  |
-| min-date        | Start date                                         | Date    | `Ten years ago on January 1` |
-| max-date        | End date                                          | Date    | `Ten years later on December 31` |
+| v-model         | Default Date                                            | date    | `null`   |
+| type            | Can be set to date time year-month month-day datehour | string  | `'date'` |
+| minute-step     | Option minute step                                        | number  | `1`      |
+| is-show-chinese | Show Chinese                                  | boolean | `false`  |
+| min-date        | Start date                                         | date    | `Ten years ago on January 1` |
+| max-date        | End date                                          | date    | `Ten years later on December 31` |
 | formatter   | Option text formatter                                          | (type: string, option: PickerOption) => PickerOption    |  |
 | filter   | Option filter                                         | (type: string, option: PickerOption) => PickerOption[]    |  |
-| title           | Title                                          | String  | `null`   |
-| ok-text           | Text of confirm button                                      | String  | confirm   |
-| cancel-text           | Text of cancel button                                          | String  | cancel   |
-| three-dimensional          | Turn on 3D effects               | Boolean  | true   |
-| swipe-duration           | Duration of the momentum animation        | Number、String  | 1000   |
-| visible-option-num          | Count of visible columns       | number \| string | 7               |
-| option-height         | Option height             | number \| string | 36     |
-| show-toolbar         | Whether to show toolbar             | Boolean | true    |
+| title           | Title                                          | string  | `null`   |
+| ok-text           | Text of confirm button                                      | string  | `confirm`   |
+| cancel-text           | Text of cancel button                                          | string  | `cancel`   |
+| three-dimensional          | Turn on 3D effects               | boolean  | `true`   |
+| swipe-duration           | Duration of the momentum animation        | number \| string  | `1000`  |
+| visible-option-num          | Count of visible columns       | number \| string | `7`               |
+| option-height         | Option height             | number \| string | `36`     |
+| show-toolbar         | Whether to show toolbar             | boolean | `true`    |
 
 ### Events
 

@@ -43,7 +43,7 @@ app.use(Countdown);
 
 ### 自定义格式
 
-通过设置 format 属性可实现不同的倒计时展示文本
+通过设置 `format` 属性可实现不同的倒计时展示文本
 
 :::demo
 ```html
@@ -152,7 +152,7 @@ app.use(Countdown);
 
 ### 控制开始和暂停倒计时
 
-通过 paused 属性实现倒计时的暂停和重启
+通过 `paused` 属性实现倒计时的暂停和重启
 
 :::demo
 ```html
@@ -261,7 +261,7 @@ app.use(Countdown);
 
 ### 手动控制
 
-通过 ref 获取到组件实例后，可以调用 start、pause、reset 方法。在使用手动控制时，通过 time 属性实现倒计时总时长，单位为毫秒。startTime、endTime 属性失效
+通过 `ref` 获取到组件实例后，可以调用 `start`、`pause`、`reset` 方法。在使用手动控制时，通过 `time` 属性实现倒计时总时长，单位为毫秒。`startTime`、`endTime` 属性失效
 
 :::demo
 ```html
@@ -305,16 +305,16 @@ app.use(Countdown);
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
-| ----- | ----- | ----- | -----
-| v-model | 当前时间，自定义展示内容时生效 | Object | {}
-| start-time | 开始时间 | String, Number | Date.now()
-| end-time | 结束时间 | String, Number | Date.now()
-| format |  时间格式 | String | HH:mm:ss
-| millisecond |  是否开启毫秒级渲染 | Boolean | false
-| auto-start |  是否自动开始倒计时 | Boolean | true
-| time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | String，Number | 0
-| paused | 是否暂停 | Boolean | false
+| 字段 | 说明 | 类型 | 默认值 |
+| ----- | ----- | ----- | ----- |
+| v-model | 当前时间，自定义展示内容时生效 | object | `{}` |
+| start-time | 开始时间 | string \| number | `Date.now()` |
+| end-time | 结束时间 | string \| number | `Date.now()` |
+| format |  时间格式 | string | `HH:mm:ss` |
+| millisecond |  是否开启毫秒级渲染 | boolean | `false` |
+| auto-start |  是否自动开始倒计时 | boolean | `true` |
+| time  | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | string \| number | `0`|
+| paused | 是否暂停 | boolean | `false` |
 
 ### format 格式
 
@@ -352,8 +352,8 @@ app.use(Countdown);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-countdown-display| _flex_ | -  |
-| --nut-countdown-color| _inherit_ | -  |
-| --nut-countdown-font-size| _initial_ | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-countdown-display| _flex_ | 
+| --nut-countdown-color| _inherit_ | 
+| --nut-countdown-font-size| _initial_ | 
