@@ -191,6 +191,8 @@ You can configure the maximum value and minimum value of the digital input box a
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
 setup() {
     const customStepper = ref(false);
@@ -221,9 +223,9 @@ setup() {
     // inputNumber 极限值
     const overLimit = (val: any) => {
       if (val.action == 'reduce') {
-        Toast.text(`至少买${val.value}件哦`);
+        showToast.text(`至少买${val.value}件哦`);
       } else {
-        Toast.text(`最多买${val.value}件哦`);
+        showToast.text(`最多买${val.value}件哦`);
       }
     };
     // 切换规格类目

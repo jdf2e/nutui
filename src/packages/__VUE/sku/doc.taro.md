@@ -220,9 +220,9 @@ setup() {
     // inputNumber 极限值
     const overLimit = (val: any) => {
       if (val.action == 'reduce') {
-        Toast.text(`至少买${val.value}件哦`);
+        console.log(`至少买${val.value}件哦`);
       } else {
-        Toast.text(`最多买${val.value}件哦`);
+        console.log(`最多买${val.value}件哦`);
       }
     };
     // 切换规格类目

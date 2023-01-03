@@ -407,7 +407,7 @@ app.use(Table);
                 Button,
                 {
                   onClick: () => {
-                    (Toast as any).text('hello');
+                    showToast.text('hello');
                   },
                   size: 'small',
                   type: 'primary'
@@ -541,7 +541,8 @@ app.use(Table);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup() {
       const state = reactive({
@@ -591,7 +592,7 @@ app.use(Table);
       });
 
       const handleSorter = (item: TableColumnProps) => {
-        (Toast as any).text(`${JSON.stringify(item)}`);
+        showToast.text(`${JSON.stringify(item)}`);
       };
 
       return {

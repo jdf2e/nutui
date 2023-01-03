@@ -39,7 +39,7 @@ import { createComponent } from '@/packages/utils/create';
 
 const { createDemo, translate } = createComponent('pullrefresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -116,7 +116,7 @@ export default createDemo({
         refresh.value = false;
         refresh2.value = false;
 
-        Toast.text('刷新成功！');
+        showToast.text('刷新成功！');
       }, 3000);
     };
 
