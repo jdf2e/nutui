@@ -332,7 +332,7 @@ $backtop-border-color: var(--nut-backtop-border-color, #e0e0e0) !default;
 
 // calendar
 $calendar-primary-color: var(--nut-calendar-primary-color, $primary-color) !default;
-$calendar-choose-color: var(--nut-calendar-choose-color, rgba(#fa2c19, 0.09)) !default;
+$calendar-choose-color: var(--nut-calendar-choose-color, $primary-color) !default;
 $calendar-choose-font-color: var(--nut-calendar-choose-font-color, $primary-color) !default;
 $calendar-base-color: var(--nut-calendar-base-color, #333333) !default;
 $calendar-disable-color: var(--nut-calendar-disable-color, #d1d0d0) !default;
@@ -406,7 +406,7 @@ $infiniteloading-bottom-color: var(--nut-infiniteloading-bottom-color, #c8c8c8) 
 
 //range
 $range-tip-font-color: var(--nut-range-tip-font-color, #333333) !default;
-$range-bg-color: var(--nut-range-bg-color, rgba(#fa2c19, 0.5)) !default;
+$range-bg-color: var(--nut-range-bg-color, $primary-color) !default;
 $range-bg-color-tick: var(--nut-range-bg-color-tick, #fa958c) !default;
 $range-bar-bg-color: var(
   --nut-range-bar-bg-color,
@@ -490,7 +490,7 @@ $radio-label-font-active-color: var(--nut-radio-label-font-active-color, $primar
 $radio-label-disable-color: var(--nut-radio-label-disable-color, #999) !default;
 $radio-icon-disable-color: var(--nut-radio-icon-disable-color, #d6d6d6) !default;
 $radio-label-button-border-color: var(--nut-radio-label-button-border-color, $primary-color) !default;
-$radio-label-button-background: var(--nut-radio-label-button-background, rgba(#fa2c19, 0.05)) !default;
+$radio-label-button-background: var(--nut-radio-label-button-background, $primary-color) !default;
 $radio-label-margin-left: var(--nut-radio-label-margin-left, 15px) !default;
 $radio-button-border-radius: var(--nut-radio-button-border-radius, 15px) !default;
 $radio-label-font-size: var(--nut-radio-label-font-size, 14px) !default;
@@ -548,10 +548,7 @@ $timeselect-timedetail-item-bg-color: var(--nut-timeselect-timedetail-item-bg-co
 $timeselect-timedetail-item-border-radius: var(--nut-timeselect-timedetail-item-border-radius, 5px) !default;
 $timeselect-timedetail-item-text-color: var(--nut-timeselect-timedetail-item-text-color, #333333) !default;
 $timeselect-timedetail-item-text-font-size: var(--nut-timeselect-timedetail-item-text-font-size, $font-size-2) !default;
-$timeselect-timedetail-item-cur-bg-color: var(
-  --nut-timeselect-timedetail-item-cur-bg-color,
-  rgba(#fa2c19, 0.15)
-) !default;
+$timeselect-timedetail-item-cur-bg-color: var(--nut-timeselect-timedetail-item-cur-bg-color, $primary-color) !default;
 $timeselect-timedetail-item-cur-border: var(--nut-timeselect-timedetail-item-cur-border, $primary-color) !default;
 $timeselect-timedetail-item-cur-text-color: var(
   --nut-timeselect-timedetail-item-cur-text-color,
@@ -790,7 +787,7 @@ $sku-opetate-bg-default: var(
   --nut-sku-opetate-bg-default,
   linear-gradient(90deg, $primary-color, $primary-color-end 100%)
 ) !default;
-$sku-item-active-bg: var(--nut-sku-item-active-bg, rgba(#fa2c19, 0.15)) !default;
+$sku-item-active-bg: var(--nut-sku-item-active-bg, $primary-color) !default;
 $sku-opetate-bg-buy: var(
   --nut-sku-opetate-bg-buy,
   linear-gradient(135deg, rgba(255, 186, 13, 1) 0%, rgba(255, 195, 13, 1) 69%, rgba(255, 207, 13, 1) 100%)
