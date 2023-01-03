@@ -20,12 +20,12 @@ export class DialogOptions {
   footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 
   // function
-  onUpdate?: Function = (value: boolean) => {};
-  onOk?: Function = () => {};
-  onCancel?: Function = () => {};
-  onOpened?: Function = () => {};
-  onClosed?: Function = () => {};
-  beforeClose?: Function;
+  onUpdate?: (value: boolean) => any | void;
+  onOk?: () => void;
+  onCancel?: () => void;
+  onOpened?: () => void;
+  onClosed?: () => void;
+  beforeClose?: (action: string) => any;
 
   visible?: boolean = true;
   noFooter?: boolean = false;
@@ -40,7 +40,7 @@ class DialogFunction {
   options: DialogOptions = new DialogOptions();
   instance: any;
   constructor(_options: DialogOptions) {
-    let options = Object.assign(this.options, _options);
+    const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
       components: [Popup, Button, Overlay],
@@ -66,12 +66,12 @@ class DialogFunction {
   }
 }
 
-const _Dialog = function (options: DialogOptions) {
+const showDialog = function (options: DialogOptions) {
   return new DialogFunction(options);
 };
-_Dialog.install = (app: any) => {
+showDialog.install = (app: any) => {
   app.use(Dialog);
-  app.config.globalProperties.$dialog = _Dialog;
+  app.config.globalProperties.$dialog = showDialog;
 };
-export { Dialog };
-export default _Dialog;
+export { showDialog };
+export default Dialog;
