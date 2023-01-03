@@ -106,9 +106,23 @@
           border: 1px solid rgba(242, 242, 242, 1);
 
           &.active {
-            background: $sku-item-active-bg;
+            background: transparent;
             border: $sku-item-border;
             color: $primary-color;
+            position: relative;
+            &::after {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 15px;
+              background-color: $sku-item-active-bg;
+              opacity: 0.15;
+              content: '';
+            }
           }
           &.disable {
             color: $text-color;
