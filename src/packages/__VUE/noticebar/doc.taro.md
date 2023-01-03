@@ -225,7 +225,7 @@ app.use(Noticebar);
 | right-icon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | String        | 空     |
 | color      | 导航栏的文字颜色                                           | String        | 空     |
 | background | 导航栏的背景颜色                                           | String        | 空     |
-| delay      | 延时多少秒                                                 | String/Number | 1      |
+| delay      | 延时多少秒                                                 | string \| number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
 | speed      | 滚动速率 (px/s)                                            | Number        | 50     |
 | wrapable  | 是否开启文本换行                                           | Boolean       | false    |
