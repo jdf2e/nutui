@@ -55,16 +55,16 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom"  v-model:visible="show">
-      <nut-picker
-        :columns="columns"
-        title="请选择城市"
-        @confirm="popupConfirm"
-        @cancel="show=false"
-      >
+  <nut-popup position="bottom"  v-model:visible="show">
+    <nut-picker
+      :columns="columns"
+      title="请选择城市"
+      @confirm="popupConfirm"
+      @cancel="show=false"
+    >
       <nut-button block type="primary">永远有效</nut-button>
-      </nut-picker>
-    </nut-popup>
+    </nut-picker>
+  </nut-popup>
 </template>
 <script>
   import { ref } from 'vue';
@@ -98,7 +98,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 ### 默认选中项
 
-通过设置 modelValue 实现默认选中项，modelValue 是一个包含每项配置 value 值的数组。
+通过设置 `modelValue` 实现默认选中项，`modelValue` 是一个包含每项配置 value 值的数组。
 
 :::demo
 ```html
@@ -181,7 +181,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 ### 多列展示
 
-columns 属性可以通过二维数组的形式配置多列选择。
+`columns` 属性可以通过二维数组的形式配置多列选择。
 
 :::demo
 ```html
@@ -233,7 +233,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 ### 多级联动
 
-使用 columns 属性的 children 字段可以实现选项级联的效果。
+使用 `columns` 属性的 `children` 字段可以实现选项级联的效果。
 
 :::demo
 ```html
@@ -311,7 +311,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 ### 异步获取
 
-在实际开发中，大部分情况 Columns 属性的数据是通过异步方式获取的。
+在实际开发中，大部分情况 `Columns` 属性的数据是通过异步方式获取的。
 
 :::demo
 ```html
@@ -364,26 +364,26 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model:value         | 默认选中项               | Array | []              |
-| columns         | 对象数组，配置每一列显示的数据               | Array | -                |
-| title                  | 设置标题                   | String  | -      |
-| cancel-text            | 取消按钮文案               | String  | 取消   |
-| ok-text                | 确定按钮文案               | String  | 确定   |
-| three-dimensional          | 是否开启3D效果               | Boolean  | true   |
-| swipe-duration         | 惯性滚动时长        | Number、String  | 1000   |
-| safe-area-inset-bottom 	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	Boolean	|`false`     |
-| visible-option-num          |可见的选项个数              | number \| string | 7               |
-| option-height         | 选项高度             | number \| string | 36     |
-| show-toolbar         | 是否显示顶部导航             | Boolean | true    |
+| v-model:value         | 默认选中项               | array | `[]`              |
+| columns         | 对象数组，配置每一列显示的数据               | array | -                |
+| title                  | 设置标题                   | string  | -      |
+| cancel-text            | 取消按钮文案               | string  | `取消`   |
+| ok-text                | 确定按钮文案               | string  | `确定`   |
+| three-dimensional          | 是否开启3D效果               | boolean  | `true`   |
+| swipe-duration         | 惯性滚动时长        | number \| string  | `1000`   |
+| safe-area-inset-bottom 	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
+| visible-option-num          |可见的选项个数              | number \| string | `7`               |
+| option-height         | 选项高度             | number \| string | `36`     |
+| show-toolbar         | 是否显示顶部导航             | boolean | `true`    |
 
 ### Columns 数据结构
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | String|Number |               |
-| value          | 选项对应的值，且唯一               | String|Number |            |
-| children         | 用于级联选项               | Array | -                |
-| className                  | 添加额外的类名                   | String  |      |
+| text        | 选项的文字内容               | string \| number |   -            |
+| value          | 选项对应的值，且唯一               | string \| number |     -       |
+| children         | 用于级联选项               | array | -                |
+| className                  | 添加额外的类名                   | string  | -    |
 
 ### Events
 
@@ -406,19 +406,19 @@ columns 属性可以通过二维数组的形式配置多列选择。
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-picker-cancel-color| _#808080_  | -  |
-| --nut-picker-ok-color| _var(--nut-primary-color)_  | -  |
-| --nut-picker-bar-cancel-font-size| _14px_  | -  |
-| --nut-picker-bar-ok-font-size| _14px_  | -  |
-| --nut-picker-bar-button-padding| _0 15px_  | -  |
-| --nut-picker-bar-title-font-size| _16px_  | -  |
-| --nut-picker-bar-title-color| _var(--nut-title-color)_  | -  |
-| --nut-picker-bar-title-font-weight| _normal_  | -  |
-| --nut-picker-item-height| _36px_  | -  |
-| --nut-picker-item-text-color| _var(--nut-title-color)_  | -  |
-| --nut-picker-item-active-text-color| _inherit_  | -  |
-| --nut-picker-item-text-font-size| _14px_  | -  |
-| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | -  |
-| --nut-picker-columns-item-color| _var(--nut-title-color)_  | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-picker-cancel-color| _#808080_  | 
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | 
+| --nut-picker-bar-cancel-font-size| _14px_  | 
+| --nut-picker-bar-ok-font-size| _14px_  | 
+| --nut-picker-bar-button-padding| _0 15px_  | 
+| --nut-picker-bar-title-font-size| _16px_  | 
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
+| --nut-picker-bar-title-font-weight| _normal_  | 
+| --nut-picker-item-height| _36px_  | 
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | 
+| --nut-picker-item-active-text-color| _inherit_  | 
+| --nut-picker-item-text-font-size| _14px_  | 
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
+| --nut-picker-columns-item-color| _var(--nut-title-color)_  | 

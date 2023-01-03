@@ -369,27 +369,27 @@ Use the children field of the Columns attribute to cascade options
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| v-model:value         | Default Index               | Array | []              |
-| v-model:visible          | Is Show               | Boolean | -                |
-| columns         | Columns data              | Array | -                |
-| title                  | Toolbar title                   | String  | -      |
-| cancel-text            | Text of cancel button               | String  | cancel   |
-| ok-text                | Text of confirm button               | String  | confirm   |
-| three-dimensional          | Turn on 3D effects      | Boolean  | true   |
-| swipe-duration          | Duration of the momentum animation        | Number、String  | 1000   |
-| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
-| visible-option-num          | Count of visible columns       | number \| string | 7               |
-| option-height         | Option height             | number \| string | 36     |
-| show-toolbar         | Whether to show toolbar             | Boolean | true    |
+| v-model:value         | Default Index               | array | `[]`              |
+| v-model:visible          | Is Show               | boolean | -                |
+| columns         | Columns data              | array | -                |
+| title                  | Toolbar title                   | string  | -      |
+| cancel-text            | Text of cancel button               | string  | `cancel`   |
+| ok-text                | Text of confirm button               | string  | `confirm`   |
+| three-dimensional          | Turn on 3D effects      | boolean  | `true`   |
+| swipe-duration          | Duration of the momentum animation        | number \| string  | `1000`   |
+| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	boolean	|`false`     |
+| visible-option-num          | Count of visible columns       | number \| string | `7`              |
+| option-height         | Option height             | number \| string | `36`     |
+| show-toolbar         | Whether to show toolbar             | boolean | `true`    |
 
 ### Data Structure of Columns
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| text        | Text of column              | String|Number |               |
-| value          | Value of column               | String|Number |            |
-| children         | Cascader Option              | Array | -                |
-| className                  | Extra CalssName                   | String  |      |
+| text        | Text of column              | string \| number | -             |
+| value          | Value of column               | string \| number |   -        |
+| children         | Cascader Option              | array | -                |
+| className                  | Extra CalssName                   | string  |  -    |
 
 ### Events
 
@@ -412,19 +412,19 @@ Use the children field of the Columns attribute to cascade options
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-picker-cancel-color| _#808080_  | -  |
-| --nut-picker-ok-color| _var(--nut-primary-color)_  | -  |
-| --nut-picker-bar-cancel-font-size| _14px_  | -  |
-| --nut-picker-bar-ok-font-size| _14px_  | -  |
-| --nut-picker-bar-button-padding| _0 15px_  | -  |
-| --nut-picker-bar-title-font-size| _16px_  | -  |
-| --nut-picker-bar-title-color| _var(--nut-title-color)_  | -  |
-| --nut-picker-bar-title-font-weight| _normal_  | -  |
-| --nut-picker-item-height| _36px_  | -  |
-| --nut-picker-item-text-color| _var(--nut-title-color)_  | -  |
-| --nut-picker-item-active-text-color| _inherit_  | -  |
-| --nut-picker-item-text-font-size| _14px_  | -  |
-| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | -  |
-| --nut-picker-columns-item-color| _var(--nut-title-color)_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- | 
+| --nut-picker-cancel-color| _#808080_  | 
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | 
+| --nut-picker-bar-cancel-font-size| _14px_  | 
+| --nut-picker-bar-ok-font-size| _14px_  | 
+| --nut-picker-bar-button-padding| _0 15px_  | 
+| --nut-picker-bar-title-font-size| _16px_  | 
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
+| --nut-picker-bar-title-font-weight| _normal_  | 
+| --nut-picker-item-height| _36px_  | 
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | 
+| --nut-picker-item-active-text-color| _inherit_  | 
+| --nut-picker-item-text-font-size| _14px_  | 
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
+| --nut-picker-columns-item-color| _var(--nut-title-color)_  | 
