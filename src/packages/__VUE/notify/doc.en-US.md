@@ -51,12 +51,12 @@ export default {
 :::demo
 ```html
 <template>
-   <nut-cell-group title="Notify Type">
-      <nut-cell is-Link @click="primaryNotify('Primary Notify')">Primary Notify</nut-cell>
-      <nut-cell is-Link @click="successNotify('Success Notify')">Success Notify</nut-cell>
-      <nut-cell is-Link @click="errorNotify('Error Notify')">Error Notify</nut-cell>
-      <nut-cell is-Link @click="warningNotify('Warning Notify')">Warning Notify</nut-cell>
-    </nut-cell-group>
+  <nut-cell-group title="Notify Type">
+    <nut-cell is-Link @click="primaryNotify('Primary Notify')">Primary Notify</nut-cell>
+    <nut-cell is-Link @click="successNotify('Success Notify')">Success Notify</nut-cell>
+    <nut-cell is-Link @click="errorNotify('Error Notify')">Error Notify</nut-cell>
+    <nut-cell is-Link @click="warningNotify('Warning Notify')">Warning Notify</nut-cell>
+  </nut-cell-group>
 </template>
 <script lang="ts">
 import { ref } from 'vue';

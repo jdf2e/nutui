@@ -14,25 +14,6 @@ const app = createApp();
 app.use(Toast);
 ```
 
-
-### Global Usage
-:::demo
-``` html
-<template>
-</template>
-<script>
-import { getCurrentInstance } from 'vue';
-export default {
-  setup() {
-   const { proxy } = getCurrentInstance();
-    proxy.$toast.text('global usage');
-    return {};
-  }
-}
-</script>
-```
-:::
-
 ### Text
 :::demo
 ```html

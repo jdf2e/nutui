@@ -201,9 +201,8 @@ export default createDemo({
       }
     });
     let color = reactive({
-      primaryColor: 'green',
-      primaryColorEnd: 'green',
-      primaryColorActive: 'rgba(0,128,0,0.15)'
+      primaryColor: '#008000',
+      primaryColorEnd: '#008000'
       // rangeBgColor: 'rgba(25,137,250,0.15)',
       // rangeBarBgColor: '#0289fa',
       // rangeBarBtnBorder: '1px solid #0289fa'

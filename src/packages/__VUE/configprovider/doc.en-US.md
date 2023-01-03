@@ -132,7 +132,6 @@ Here are all the base variables:
 ```scss
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
-  --nut-primary-color-active: rgba(250, 44, 25, 0.15);
   --nut-help-color: #f5f5f5;
   --nut-active-color: rgba(250, 44, 25, 0.15);
   --nut-title-color: #1a1a1a;

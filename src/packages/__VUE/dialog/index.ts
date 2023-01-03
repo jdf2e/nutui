@@ -71,7 +71,6 @@ const showDialog = function (options: DialogOptions) {
 };
 showDialog.install = (app: any) => {
   app.use(Dialog);
-  app.config.globalProperties.$dialog = showDialog;
 };
 export { showDialog };
 export default Dialog;

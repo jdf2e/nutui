@@ -7,11 +7,11 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { ShortPassword } from '@nutui/nutui';
+import { ShortPassword, NumberKeyboard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ShortPassword);
-
+app.use(NumberKeyboard);
 ```
 
 
@@ -19,22 +19,21 @@ app.use(ShortPassword);
 :::demo
 ```html
 <template>
-<nut-cell title="基础用法" is-link @click="state.visible1 = true;"></nut-cell>
-   <nut-short-password 
-      v-model="state.value1" 
-      v-model:visible="state.visible1" 
-      @focus="state.showKeyboard1 = true">
-    </nut-short-password>
-    <nut-number-keyboard
-      v-model="state.value1" 
-      v-model:visible="state.showKeyboard1"
-      @blur="state.showKeyboard1 = false"
-      >
-    </nut-number-keyboard>
+  <nut-cell title="基础用法" is-link @click="state.visible1 = true;"></nut-cell>
+  <nut-short-password 
+    v-model="state.value1" 
+    v-model:visible="state.visible1" 
+    @focus="state.showKeyboard1 = true">
+  </nut-short-password>
+  <nut-number-keyboard
+    v-model="state.value1" 
+    v-model:visible="state.showKeyboard1"
+    @blur="state.showKeyboard1 = false"
+    >
+  </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const state = reactive({
@@ -56,25 +55,26 @@ export default{
 :::demo
 ```html
 <template>
-<nut-cell title="自定义密码长度4" is-link @click="state.visible2 = true;"></nut-cell>
-    <nut-short-password 
-      v-model="state.value2" 
-      v-model:visible="state.visible2" 
-      @focus="state.showKeyboard2 = true"
-      :length="state.length"
-      @complete="methods.complete"
-      >
-    </nut-short-password>
-    <nut-number-keyboard 
-      v-model="state.value2"
-      v-model:visible="state.showKeyboard2" 
-      @blur="state.showKeyboard2 = false"
-      >
-    </nut-number-keyboard>
+  <nut-cell title="自定义密码长度4" is-link @click="state.visible2 = true;"></nut-cell>
+  <nut-short-password 
+    v-model="state.value2" 
+    v-model:visible="state.visible2" 
+    @focus="state.showKeyboard2 = true"
+    :length="state.length"
+    @complete="methods.complete"
+    >
+  </nut-short-password>
+  <nut-number-keyboard 
+    v-model="state.value2"
+    v-model:visible="state.showKeyboard2" 
+    @blur="state.showKeyboard2 = false"
+    >
+  </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const state = reactive({
@@ -85,7 +85,7 @@ export default{
     });
     const methods = {
       complete(value: string) {
-        proxy.$toast.text(value);
+        showToast.text(value);
       },
     };
     return {
@@ -103,25 +103,26 @@ export default{
 :::demo
 ```html
 <template>
-<nut-cell title="忘记密码提示语" is-link @click="state.visible3 = true;"></nut-cell>
-   <nut-short-password 
-      v-model="state.value3" 
-      v-model:visible="state.visible3" 
-      @focus="state.showKeyboard3 = true"
-      @complete="methods.complete"
-      @tips="methods.onTips"
-      >
-    </nut-short-password>
-    <nut-number-keyboard 
-      v-model="state.value3"
-      v-model:visible="state.showKeyboard3" 
-      @blur="state.showKeyboard3 = false"
-      >
-    </nut-number-keyboard>
+  <nut-cell title="忘记密码提示语" is-link @click="state.visible3 = true;"></nut-cell>
+  <nut-short-password 
+    v-model="state.value3" 
+    v-model:visible="state.visible3" 
+    @focus="state.showKeyboard3 = true"
+    @complete="methods.complete"
+    @tips="methods.onTips"
+    >
+  </nut-short-password>
+  <nut-number-keyboard 
+    v-model="state.value3"
+    v-model:visible="state.showKeyboard3" 
+    @blur="state.showKeyboard3 = false"
+    >
+  </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const state = reactive({
@@ -131,10 +132,10 @@ export default{
     });
     const methods = {
       complete(value: string) {
-        proxy.$toast.text(value);
+        showToast.text(value);
       },
       onTips() {
-        Toast.text('执行忘记密码逻辑');
+        showToast.text('执行忘记密码逻辑');
       },
     };
     return {
@@ -151,26 +152,27 @@ export default{
 :::demo
 ```html
 <template>
-<nut-cell title="错误提示语" is-link @click="state.visible4 = true;"></nut-cell>
-     <nut-short-password 
-      v-model="state.value4" 
-      v-model:visible="state.visible4" 
-      @focus="state.showKeyboard4 = true"
-      :error-msg="state.errorMsg"
-      @complete="methods.complete"
-      @tips="methods.onTips"
-      >
-    </nut-short-password>
-    <nut-number-keyboard 
-      v-model="state.value4"
-      v-model:visible="state.showKeyboard4" 
-      @blur="state.showKeyboard4 = false"
-      >
-    </nut-number-keyboard>
+  <nut-cell title="错误提示语" is-link @click="state.visible4 = true;"></nut-cell>
+  <nut-short-password 
+    v-model="state.value4" 
+    v-model:visible="state.visible4" 
+    @focus="state.showKeyboard4 = true"
+    :error-msg="state.errorMsg"
+    @complete="methods.complete"
+    @tips="methods.onTips"
+  >
+  </nut-short-password>
+  <nut-number-keyboard 
+    v-model="state.value4"
+    v-model:visible="state.showKeyboard4" 
+    @blur="state.showKeyboard4 = false"
+  >
+  </nut-number-keyboard>
 </template>
 <script>
 import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const state = reactive({
@@ -181,10 +183,10 @@ export default{
     });
     const methods = {
       complete(value: string) {
-        proxy.$toast.text(value);
+        showToast.text(value);
       },
       onTips() {
-        Toast.text('执行忘记密码逻辑');
+        showToast.text('执行忘记密码逻辑');
       },
     };
     return {

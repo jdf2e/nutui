@@ -77,13 +77,12 @@ app.use(Switch);
   <nut-switch v-model="checked" @change="change" />
 </template>
 <script lang="ts">
-  import { ref, getCurrentInstance } from 'vue';
+  import { ref } from 'vue';
   export default {
     setup() {
-      let { proxy } = getCurrentInstance() as any;
       const checked = ref(true);
       const change = (value: boolean, event: Event) => {
-        proxy.$toast.text(`触发了change事件，开关状态：${value}`);
+        console.log(`触发了change事件，开关状态：${value}`);
       };
       return {
         checked,
@@ -101,13 +100,12 @@ app.use(Switch);
   <nut-switch :model-value="checkedAsync" @change="changeAsync" />
 </template>
 <script lang="ts">
-  import { ref, getCurrentInstance } from 'vue';
+  import { ref } from 'vue';
   export default {
     setup() {
-      let { proxy } = getCurrentInstance() as any;
       const checkedAsync = ref(true);
       const changeAsync = (value: boolean, event: Event) => {
-        proxy.$toast.text(`2秒后异步触发 ${value}`);
+        console.log(`2秒后异步触发 ${value}`);
         setTimeout(() => {
           checkedAsync.value = value;
         }, 2000);

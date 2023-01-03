@@ -26,7 +26,8 @@ For online debugging, please change the browser to mobile mode
 </template>
 <script>
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const visible = ref(false);
@@ -34,10 +35,10 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`enter：${number}`);
+      showToast.text(`enter：${number}`);
     }
     function onDelete() {
-      Toast.text('delete');
+      showToast.text('delete');
     }
     function close() {
       visible.value = false;
@@ -73,7 +74,8 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const visible = ref(false);
@@ -82,7 +84,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`enter${number}`);
+      showToast.text(`enter${number}`);
     }
     function close() {
       visible.value = false;
@@ -119,7 +121,8 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const visible = ref(false);
@@ -128,7 +131,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`enter：${number}`);
+      showToast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -162,7 +165,8 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const visible = ref(false);
@@ -171,7 +175,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`enter：${number}`);
+      showToast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -204,7 +208,8 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default{
   setup() {
     const visible = ref(false);
@@ -213,7 +218,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`enter：${number}`);
+      showToast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -253,7 +258,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);

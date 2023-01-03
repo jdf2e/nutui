@@ -124,7 +124,6 @@ const showNotify = {
   },
   install(app: any): void {
     app.use(Notify);
-    app.config.globalProperties.$notify = showNotify;
   }
 };
 
