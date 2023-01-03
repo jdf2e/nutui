@@ -141,34 +141,31 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| init-num | 初始数字 | Number | 0
-| end-num | 结束数字 | Number | 0
-| speed | 间隔数字，目前仅支持基本用法 | Number | 1
-| to-fixed | 保留小数点后几位 | Number | 以传入的数字为准
-| start-flag | 触发数字滚动的标识 | Boolean | true
-| during | 滚动一次运行时间 | Number | 1000
-| num-width | 数字宽度，常用于自定义无缝滚动 | Number | 20
-| num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | Number | 20
-| scrolling | 用于数字滚动展示 | Boolean | false
-| custom | 用于自定义图片数字滚动 | Boolean | false
-| custom-change-num | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
-| custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | -
-| custom-spac-num | 图片中数字之间可能会存在间距 | Number | 0
-| type | 使用抽奖功能必传“machine” | string | ''
-| machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
-| machine-num | 抽奖位，即滚动几个，必传 | number | 3
-| machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0
-| machine-turn-more | 滚动圈数 | number | 0
+| init-num | 初始数字 | number | `0`
+| end-num | 结束数字 | number | `0`
+| speed | 间隔数字，目前仅支持基本用法 | number | `1`
+| to-fixed | 保留小数点后几位 | number | `以传入的数字为准`
+| start-flag | 触发数字滚动的标识 | boolean | `true`
+| during | 滚动一次运行时间 | number | `1000`
+| num-width | 数字宽度，常用于自定义无缝滚动 | number | `20`
+| num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | number | `20`
+| scrolling | 用于数字滚动展示 | boolean | `false`
+| custom | 用于自定义图片数字滚动 | boolean | `false`
+| custom-change-num | 要变化的数字（用于自定义图片，initNum、endNum在此无效） | number | `1`
+| custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | `-`
+| custom-spac-num | 图片中数字之间可能会存在间距 | number | `0`
+| type | 使用抽奖功能必传"machine" | string | `''`
+| machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | `4`
+| machine-num | 抽奖位，即滚动几个，必传 | number | `3`
+| machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | `0`
+| machine-turn-more | 滚动圈数 | number | `0`
 
 > 说明：抽奖功能需要结合图标位置计算，故需传入雪碧图中单个图标的高度 num-height；中奖奖品根据雪碧图中的奖品位数来定位，从 1 到 N；
-
-
-
 
 
 ### Events
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----
-| scroll-end | 滚动结束后回调函数 | - 
+| scroll-end | 滚动结束后回调函数 | `-`
     

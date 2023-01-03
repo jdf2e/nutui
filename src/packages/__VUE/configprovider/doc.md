@@ -128,18 +128,13 @@ NutUI 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 
 - 基础变量中的主色调需要您使用十六进制色值来进行覆盖，请勿使用类似于`red`,`green`来进行覆盖
 
-- 基础变量和组件变量都能通过 `:root 选择器`和 `ConfigProvider 组件`，推荐您使用`ConfigProvider 组件`来修改主色调，因为部分组件的变量激活色使用的是`rgba`属性，使用`:root 选择器`修改主色调会有部分组件变量不生效：
+- 基础变量和组件变量都能通过 `:root 选择器`和 `ConfigProvider 组件`，推荐您使用`ConfigProvider 组件`来修改主色调，因为部分组件的变量激活色的渐变色使用的是`rgba`，使用`:root 选择器`修改主色调会有部分组件变量不生效：
 ```less
-// 如果您仍旧选择使用:root 选择器来进行修改主色调，您还需要修改以下8个组件变量色
+// 如果您仍旧选择使用:root 选择器来进行修改主色调，您还需要修改以下3个组件变量色  primaryColor为设置的主色调
 
---nut-calendar-choose-color: rgba(primaryColor,0.09);
---nut-range-bg-color: rgba(primaryColor,0.5);
 --nut-address-region-tab-line: linear-gradient(90deg, primaryColor 0%, rgba(primaryColor,0.15) 100%)  ; 
---nut-radio-label-button-background: rgba(primaryColor,0.05);
---nut-timeselect-timedetail-item-cur-bg-color: rgba(primaryColor,0.15);
---nut-tabs-horizontal-tab-line-color: rgba(primaryColor,0.15);
+--nut-tabs-horizontal-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor,0.15) 100%);
 --nut-tabs-vertical-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor,0.15) 100%);
---nut-sku-item-active-bg: rgba(primaryColor,0.15);
 ```
 
 #### 变量列表
