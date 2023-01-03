@@ -90,13 +90,13 @@ app.use(Price);
 
 | 字段           | 说明                                    | 类型    | 默认值 |
 |----------------|-----------------------------------------|---------|--------|
-| price          | 价格数量                                | Number ｜ String | 0      |
-| need-symbol    | 是否需要加上 symbol 符号                 | Boolean          | true   |
-| symbol         | 符号类型                                | String           | &yen;  |
-| decimal-digits | 小数位位数                              | Number  | 2     |
-| thousands      | 是否按照千分号形式显示                    | Boolean          | false  |
-| position       | 符号显示在价格前或者后，`before`、`after`  | String           | `before` |
-| size           | 价格尺寸，`small`、`normal`、`large`     | String           | `large` |
+| price          | 价格数量                                | number ｜ string | 0      |
+| need-symbol    | 是否需要加上 symbol 符号                 | boolean          | true   |
+| symbol         | 符号类型                                | string           | &yen;  |
+| decimal-digits | 小数位位数                              | number  | 2     |
+| thousands      | 是否按照千分号形式显示                    | boolean          | false  |
+| position       | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
+| size           | 价格尺寸，`small`、`normal`、`large`     | string           | `large` |
 
 
 ## 主题定制
@@ -105,14 +105,14 @@ app.use(Price);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-price-symbol-big-size| _18px_  | -  |
-| --nut-price-big-size| _24px_  | -  |
-| --nut-price-decimal-big-size| _18px_  | -  |
-| --nut-price-symbol-medium-size| _14px_  | -  |
-| --nut-price-medium-size| _16px_  | -  |
-| --nut-price-decimal-medium-size| _14px_  | -  |
-| --nut-price-symbol-small-size| _10px_  | -  |
-| --nut-price-small-size| _12px_  | -  |
-| --nut-price-decimal-small-size| _10px_  | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-price-symbol-big-size| _18px_  | 
+| --nut-price-big-size| _24px_  | 
+| --nut-price-decimal-big-size| _18px_  | 
+| --nut-price-symbol-medium-size| _14px_  | 
+| --nut-price-medium-size| _16px_  | 
+| --nut-price-decimal-medium-size| _14px_  | 
+| --nut-price-symbol-small-size| _10px_  | 
+| --nut-price-small-size| _12px_  | 
+| --nut-price-decimal-small-size| _10px_  | 

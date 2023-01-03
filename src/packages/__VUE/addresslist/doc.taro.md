@@ -241,9 +241,9 @@ export default {
 | 参数               | 说明             | 类型    | 默认值 |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | 地址数组         | Array   | -      |
-| long-press | 长按功能         | Boolean | false  |
-| swipe-edition      | 右滑功能         | Boolean | false  |
-| show-bottom-button | 是否展示底部按钮 | Boolean | true   |
+| long-press | 长按功能         | boolean | false  |
+| swipe-edition      | 右滑功能         | boolean | false  |
+| show-bottom-button | 是否展示底部按钮 | boolean | true   |
 
 ### Events
 
@@ -300,17 +300,17 @@ const dataMapOptions = {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-addresslist-bg |  _#fff_   |-  |
-| --nut-addresslist-border |  _#f0f0f0_   |-  |
-| --nut-addresslist-font-color |  _#333333_   |-  |
-| --nut-addresslist-font-size |  _16px_   |-  |
-| --nut-addresslist-mask-bg |  _rgba(0, 0, 0, 0.4)_   |-  |
-| --nut-addresslist-addr-font-color |  _#666666_   |-  |
-| --nut-addresslist-addr-font-size |  _12px_   |-  |
-| --nut-addresslist-set-bg |  _#f5a623_   |-  |
-| --nut-addresslist-del-bg |  _#e1251b_   |-  |
-| --nut-addresslist-contnts-contact-default |  _var(--nut-primary-color)_   |-  |
-| --nut-addresslist-contnts-contact-color |  _var(--nut-white)_   |-  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- |
+| --nut-addresslist-bg |  _#fff_   |
+| --nut-addresslist-border |  _#f0f0f0_   |
+| --nut-addresslist-font-color |  _#333333_   |
+| --nut-addresslist-font-size |  _16px_   |
+| --nut-addresslist-mask-bg |  _rgba(0, 0, 0, 0.4)_   |
+| --nut-addresslist-addr-font-color |  _#666666_   |
+| --nut-addresslist-addr-font-size |  _12px_   |
+| --nut-addresslist-set-bg |  _#f5a623_   |
+| --nut-addresslist-del-bg |  _#e1251b_   |
+| --nut-addresslist-contnts-contact-default |  _var(--nut-primary-color)_   |
+| --nut-addresslist-contnts-contact-color |  _var(--nut-white)_   |
 

@@ -367,23 +367,23 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 
 | Attribute   | Description               | Type       | Default  |
 |--------------|----------------------------------------|----------------|---------|
-| v-model      | Input value, two-way binding           | String         | -       |
-| type         | Input type, support all native types and `number` `digit` type    | String         | `text`  |
-| placeholder  | Placeholder when the input box is empty  | String         | -       |
-| input-align  | Input align, eg `left`、`center`、`right` | String | `left` |
-| required     | Whether to show required mark            | Boolean        | `false` |
-| border       | Whether to show inner borde         | Boolean        | `true` |
-| disabled     | Whether to disable field            | Boolean        | `false` |
-| readonly     | Whether to be readonly              | Boolean        | `false` |
-| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| max-length   | Max length of value                  | String、Number  | -       |
-| clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clear-size   | Clear Icon `font-size`               | String        | `14`  |
-| show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
-| error         | Whether to mark the input content in red   | Boolean | `false`  |
+| v-model      | Input value, two-way binding           | string         | -       |
+| type         | Input type, support all native types and `number` `digit` type    | string         | `text`  |
+| placeholder  | Placeholder when the input box is empty  | string         | -       |
+| input-align  | Input align, eg `left`、`center`、`right` | string | `left` |
+| required     | Whether to show required mark            | boolean        | `false` |
+| border       | Whether to show inner borde         | boolean        | `true` |
+| disabled     | Whether to disable field            | boolean        | `false` |
+| readonly     | Whether to be readonly              | boolean        | `false` |
+| autofocus    | Whether to auto focus, unsupported in iOS     | boolean        | `false` |
+| max-length   | Max length of value                  | string ｜ number | - |
+| clearable    | Whether to be clearable              | boolean        | `false`  |
+| clear-size   | Clear Icon `font-size`               | string        | `14`  |
+| show-word-limit | Whether to show word limit, need to set the `max-length` prop | boolean | `false`  |
+| error         | Whether to mark the input content in red   | boolean | `false`  |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
-| format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
-| confirm-type | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
+| format-trigger | When to format value, eg `onChange`、`onBlur` | string | - |
+| confirm-type | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | string |   `done`   |
 
 ### Events
 
@@ -407,12 +407,12 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-input-border-bottom| _#eaf0fb_  | - |
-| --nut-input-disabled-color| _#c8c9cc_  | - |
-| --nut-input-required-color| _var(--nut-required-color)_  | - |
-| --nut-input-font-size| _var(--nut-font-size-2)_  | - |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-input-border-bottom| _#eaf0fb_  | 
+| --nut-input-disabled-color| _#c8c9cc_  | 
+| --nut-input-required-color| _var(--nut-required-color)_  | 
+| --nut-input-font-size| _var(--nut-font-size-2)_  | 
 
 
 

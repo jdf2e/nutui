@@ -224,23 +224,23 @@ Icon 和字符型可以自定义颜色及背景色
 
 | 字段     | 说明                                                        | 类型   | 默认值 |
 | -------- | --------------------------------------------------------- | ------ | ------ |
-| size     | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字   | String ｜ Number | normal |
-| shape    | 头像的形状，可选值为：`square`、`round `                      | String | round  |
-| color    | 字体颜色                                     | String | #666   |
-| bg-color | 背景色                                    | String | #eee   |
+| size     | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字   | string ｜ number | normal |
+| shape    | 头像的形状，可选值为：`square`、`round `                      | string | round  |
+| color    | 字体颜色                                     | string | #666   |
+| bg-color | 背景色                                    | string | #eee   |
 
 ### AvatarGroup Props
 
 | 字段     | 说明                                                             | 类型   | 默认值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| max-count    | 显示的最大头像个数   | String ｜ Number | - |
-| max-content  | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | String | +N |
-| size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal |
-| shape        | 头像的形状，可选值为：`square`、`round`        | String | round  |
-| max-color    | 头像折叠元素的字体颜色                   | String | #666 |
-| max-bg-color  | 头像折叠元素的背景色                    | String | #eee   |
-| span         | 头像之间的间距               | String | -8   |
-| zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | String | left     |
+| max-count    | 显示的最大头像个数   | string ｜ number | - |
+| max-content  | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | string | +N |
+| size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | string ｜ number | normal |
+| shape        | 头像的形状，可选值为：`square`、`round`        | string | round  |
+| max-color    | 头像折叠元素的字体颜色                   | string | #666 |
+| max-bg-color  | 头像折叠元素的背景色                    | string | #eee   |
+| span         | 头像之间的间距               | string | -8   |
+| zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | string | left     |
 ### Avatar Slots
 
 |名称|描述|
@@ -253,13 +253,13 @@ Icon 和字符型可以自定义颜色及背景色
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
-| --nut-avatar-square |  _5px_  |-  |
-| --nut-avatar-large-width |  _60px_  |-  |
-| --nut-avatar-large-height |  _60px_  |-  |
-| --nut-avatar-small-width |  _32px_  |-  |
-| --nut-avatar-small-height |  _32px_  |-  |
-| --nut-avatar-normal-width |  _40px_  |-  |
-| --nut-avatar-normal-height |  _40px_  |-  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | 
+| --nut-avatar-square |  _5px_  |
+| --nut-avatar-large-width |  _60px_  |
+| --nut-avatar-large-height |  _60px_  |
+| --nut-avatar-small-width |  _32px_  |
+| --nut-avatar-small-height |  _32px_  |
+| --nut-avatar-normal-width |  _40px_  |
+| --nut-avatar-normal-height |  _40px_  |

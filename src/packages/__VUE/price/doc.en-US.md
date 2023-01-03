@@ -91,13 +91,13 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 | Attribute      | Description                                                | Type            | Default |
 |----------------|------------------------------------------------------------|------------------|--------|
-| price          | Price                                                      | Number ｜ String | 0       |
-| need-symbol    | Add symbol                                                 | Boolean          | true   |
-| symbol         | Symbol type                                                | String           | &yen;  |
-| decimal-digits | Decimal digits                                             | Number | 2      |
-| thousands      | Thousands separation                                       | Boolean          | false  |
-| position       | The symbol appear before or after the price，`before`、`after` | String           | before |
-| size           | Size，`small`、`normal`、`large`                | String           | large |
+| price          | Price                                                      | number ｜ string | 0       |
+| need-symbol    | Add symbol                                                 | boolean          | true   |
+| symbol         | Symbol type                                                | string           | &yen;  |
+| decimal-digits | Decimal digits                                             | number | 2      |
+| thousands      | Thousands separation                                       | boolean          | false  |
+| position       | The symbol appear before or after the price，`before`、`after` | string           | before |
+| size           | Size，`small`、`normal`、`large`                | string           | large |
 
 ## Theming
 
@@ -105,14 +105,14 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-price-symbol-big-size| _18px_  | -  |
-| --nut-price-big-size| _24px_  | -  |
-| --nut-price-decimal-big-size| _18px_  | -  |
-| --nut-price-symbol-medium-size| _14px_  | -  |
-| --nut-price-medium-size| _16px_  | -  |
-| --nut-price-decimal-medium-size| _14px_  | -  |
-| --nut-price-symbol-small-size| _10px_  | -  |
-| --nut-price-small-size| _12px_  | -  |
-| --nut-price-decimal-small-size| _10px_  | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-price-symbol-big-size| _18px_  |
+| --nut-price-big-size| _24px_  |
+| --nut-price-decimal-big-size| _18px_  |
+| --nut-price-symbol-medium-size| _14px_  |
+| --nut-price-medium-size| _16px_  |
+| --nut-price-decimal-medium-size| _14px_  |
+| --nut-price-symbol-small-size| _10px_  |
+| --nut-price-small-size| _12px_  |
+| --nut-price-decimal-small-size| _10px_  |
