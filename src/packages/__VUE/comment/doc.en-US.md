@@ -179,14 +179,14 @@ export default {
 
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
-| header-type         | Header type      | String | default               |
-| images-rows         | Comment picture shows type of lines    | String | one               |
-| ellipsis        | Ellipsis number       | [String,Number] | 2               |
-| videos         | Videos data | Array | []              |
-| images | Images data    | Array | [] |
-| info     | Comment data                      | Object | {}             |
-| follow     | Additional review data                      | Object | {}             |
-| operation | Bottom button   | Array | ["replay", "like", "more"] |
+| header-type         | Header type      | string | `default`               |
+| images-rows         | Comment picture shows type of lines    | string | `one`               |
+| ellipsis        | Ellipsis number       | string \| number | `2`               |
+| videos         | Videos data | array | `[]`              |
+| images | Images data    | array | `[]` |
+| info     | Comment data                      | object | `{}`             |
+| follow     | Additional review data                      | object | `{}`             |
+| operation | Bottom button   | array | `["replay", "like", "more"]` |
 
 ### Events
 
@@ -244,9 +244,9 @@ const info = [{
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ | -  |
-| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ | -  |
-| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ | -  |
-| --nut-comment-shop-color| _var(--nut-primary-color)_ | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ |
+| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ |
+| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ |
+| --nut-comment-shop-color| _var(--nut-primary-color)_ |
