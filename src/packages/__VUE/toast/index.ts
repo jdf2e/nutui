@@ -1,4 +1,4 @@
-import { createVNode, render, h } from 'vue';
+import { createVNode, render } from 'vue';
 import Toast from './index.vue';
 import { CreateComponent } from '@/packages/utils/create';
 import { Failure, Loading, Success, Tips } from '@nutui/icons-vue';
@@ -57,7 +57,7 @@ const updateToast = (opts: any) => {
     }
     const instance: any = createVNode(Toast, opts);
     render(instance, container);
-    return ToastFunction;
+    return showToast;
   }
 };
 
@@ -82,7 +82,7 @@ const mountToast = (opts: any) => {
     wrapper: Toast
   });
 
-  return ToastFunction;
+  return showToast;
 };
 
 const errorMsg = (msg: string) => {
@@ -92,7 +92,7 @@ const errorMsg = (msg: string) => {
   }
 };
 
-export const ToastFunction = {
+const showToast = {
   text(msg: string, opts = {}) {
     errorMsg(msg);
     return mountToast({ ...opts, type: 'text', msg });
@@ -122,9 +122,9 @@ export const ToastFunction = {
   },
   install(app: any): void {
     app.use(Toast);
-    app.config.globalProperties.$toast = ToastFunction;
+    app.config.globalProperties.$toast = showToast;
   }
 };
 
-export { Toast };
-export default ToastFunction;
+export { showToast };
+export default Toast;

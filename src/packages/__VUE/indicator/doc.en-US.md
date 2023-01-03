@@ -11,9 +11,7 @@ import { createApp } from 'vue';
 import { Indicator } from '@nutui/nutui'
 
 const app = createApp();
-
 app.use(Indicator);
-
 ```
 
 ### Basic Usage
@@ -42,15 +40,15 @@ app.use(Indicator);
 :::demo
 ```html
 <template>
-    <nut-cell>
-      <nut-indicator :block="true" algin="center" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
-    <nut-cell>
-      <nut-indicator :block="true" align="left" :size="6" :current="1">step1</nut-indicator>
-    </nut-cell>
-    <nut-cell>
-      <nut-indicator :block="true" align="right" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" algin="center" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" align="left" :size="6" :current="1">step1</nut-indicator>
+  </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" align="right" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
 </template>
 ```
 :::
@@ -59,9 +57,9 @@ app.use(Indicator);
 :::demo
 ```html
 <template>
-    <nut-cell>
-      <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
+  <nut-cell>
+    <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
 </template>
 ```
 :::
@@ -73,11 +71,11 @@ app.use(Indicator);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| current  | Current step               | Number | 1              |
-| size       | Step length                         | Number | 3               |
-| block | Enable block level layout     | Boolean | false |
-| align | Alignment, which takes effect only when `block` is true. optional value 'left', 'right', 'center'| String | left |
-| fill-zero     | Whether to add 0 before singular number                      | Boolean | true        |
+| current  | Current step               | number | `1`              |
+| size       | Step length                         | number | `3`               |
+| block | Enable block level layout     | boolean | `false` |
+| align | Alignment, which takes effect only when `block` is `true`. optional value `left`, `right`, `center`| string | `left` |
+| fill-zero     | Whether to add 0 before singular number                      | boolean | `true`        |
 
 ## Theming
 
@@ -85,12 +83,12 @@ app.use(Indicator);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-indicator-color|  _var(--nut-primary-color)_ | -  |
-| --nut-indicator-dot-color|  _var(--nut-disable-color)_ | -  |
-| --nut-indicator-white|  _var(--nut-white)_ | -  |
-| --nut-indicator-size|  _18px_ | -  |
-| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ | -  |
-| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ | -  |
-| --nut-indicator-number-font-size|  _10px_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-indicator-color|  _var(--nut-primary-color)_ |
+| --nut-indicator-dot-color|  _var(--nut-disable-color)_ |
+| --nut-indicator-white|  _var(--nut-white)_ |
+| --nut-indicator-size|  _18px_ |
+| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ |
+| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ |
+| --nut-indicator-number-font-size|  _10px_ |

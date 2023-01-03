@@ -36,7 +36,8 @@ app.use(Dialog);
 </template>
 <script lang="ts">
 import { ref,createVNode } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
 export default {
     setup() {
         const onCancel = () => {
@@ -46,7 +47,7 @@ export default {
           console.log('event ok');
         };
         const baseClick = (): void => {
-          Dialog({
+          showDialog({
             title: 'Basic spring frame',
             content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
             onCancel,
@@ -54,7 +55,7 @@ export default {
           });
         };
         const transparentClick = (): void => {
-          Dialog({
+          showDialog({
             overlayStyle: { background: 'rgba(0,0,0,0)' },
             title: 'Transparent Dialog',
             content: 'Content',
@@ -63,7 +64,7 @@ export default {
           });
         };
         const htmlClick = (): void => {
-          Dialog({
+          showDialog({
             title: "Use html",
             content:
               "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
@@ -72,7 +73,7 @@ export default {
           });
         };
         const beforeCloseClick = (): void => {
-          Dialog({
+          showDialog({
             title: 'Before Close',
             content: 'Click confirm to close it in 1 second',
             onCancel,
@@ -87,14 +88,14 @@ export default {
           });
         };
         const noTitleClick = () => {
-          Dialog({
+          showDialog({
             content: 'Content',
             onCancel,
             onOk
           });
         };
         const tipsClick = () => {
-          Dialog({
+          showDialog({
             title: 'Title',
             content: 'Function call and component call are supported.',
             noCancelBtn: true,
@@ -103,7 +104,7 @@ export default {
           });
         };
         const verticalClick = () => {
-          Dialog({
+          showDialog({
             title: 'Title',
             content: 'Support vertical arrangement of bottom buttons.',
             footerDirection: 'vertical',
@@ -133,11 +134,11 @@ export default {
 ```
 
 ``` javascript
-Dialog({
+showDialog({
   teleport: '#app',
   ...
 });
-Dialog({
+showDialog({
   teleport: '.demo',
   ...
 });
@@ -147,7 +148,8 @@ Dialog({
 
 ```javascript
 import { ref } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
 import { getCurrentInstance } from 'vue';
 
 export default {
@@ -211,7 +213,7 @@ export default {
 | Attribute             | Description                                                                    | Type                     | Default              |
 |-----------------------|--------------------------------------------------------------------------------|--------------------------|----------------------|
 | title                 | Title                                                                          | String                   | -                    |
-| id                    | Identifier, share one instance at the same time, default to multiple instances | String or Number         | new Date().getTime() |
+| id                    | Identifier, share one instance at the same time, default to multiple instances | string \| object         | new Date().getTime() |
 | content               | Content, support HTML                                                          | String                   | -                    |
 | teleport              | Specifies a target element where Dialog will be mounted                        | String                   | "body"               |
 | closeOnClickOverlay   | Whether to close when overlay is clicked                                       | Boolean                  | false                |

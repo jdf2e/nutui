@@ -20,6 +20,9 @@ app.use(Col);
 
 
 ### Basic Usage
+
+The Layout component provides a 24-column grid, by adding the span attribute on Col to set the percentage of the width of the column. The offset attribute can set the offset width of the column, and the calculation method is the same as span.
+
 :::demo
 ```html
 <template>

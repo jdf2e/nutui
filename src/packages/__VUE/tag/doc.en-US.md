@@ -13,7 +13,6 @@ import { Tag } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Tag);
-
 ```
 
 ### Basic Usage
@@ -44,7 +43,6 @@ app.use(Tag);
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
 :::
 
@@ -77,7 +75,6 @@ app.use(Tag);
   </nut-cell-group>
 </template>
 
-
 <script lang="ts">
 import { ref } from 'vue';
 
@@ -95,9 +92,6 @@ export default {
   }
 };
 </script>
-
-
-
 ```
 :::
 
@@ -125,7 +119,6 @@ export default {
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
 :::
 
@@ -135,13 +128,13 @@ export default {
 
 | Attribute | Description | Type | Default |
 |------------|--------------------------------------------------|---------|-----------|
-| type       | Label type，can be set `primary` `success` `danger` `warning` | String  | `default` |
-| color      | Label color                                         | String  | -         |
-| text-color | Text color, which takes precedence over the color attribute| String  | `white`   |
-| plain      | Whether it is plain | Boolean | `false`   |
-| round      | Whether it is round                                   | Boolean | `false`   |
-| mark       | Whether it is mark                                   | Boolean | `false`   |
-| closeable  | Whether it is a closeable tag       | Boolean | `false`   |
+| type       | Label type，can be set `primary` `success` `danger` `warning` | string  | `default` |
+| color      | Label color                                         | string  | `-`         |
+| text-color | Text color, which takes precedence over the `color` attribute| string  | `white`   |
+| plain      | Whether it is plain | boolean | `false`   |
+| round      | Whether it is round                                   | boolean | `false`   |
+| mark       | Whether it is mark                                   | boolean | `false`   |
+| closeable  | Whether it is a closeable tag       | boolean | `false`   |
 
 
 ### Slots
@@ -163,18 +156,18 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-tag-font-size| _12px_ | -  |
-| --nut-tag-default-border-radius| _4px_ | -  |
-| --nut-tag-round-border-radius| _8px_ | -  |
-| --nut-tag-default-background-color| _#000000_ | -  |
-| --nut-tag-primary-background-color| _#3460fa_ | -  |
-| --nut-tag-success-background-color| _#4fc08d_ | -  |
-| --nut-tag-danger-background-color| _linear-gradient(135deg,rgba(242, 20, 12, 1) 0%,rgba(232, 34, 14, 1) 70%,rgba(242, 77, 12, 1) 100%)_ | -  |
-| --nut-tag-danger-background-color-plain| _#df3526_ | -  |
-| --nut-tag-warning-background-color| _#f3812e_ | -  |
-| --nut-tag-default-color| _#ffffff_ | -  |
-| --nut-tag-border-width| _1px_ | -  |
-| --nut-tag-plain-background-color| _#fff_ | -  |
-| --nut-tag-height| _auto_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-tag-font-size| _12px_ |
+| --nut-tag-default-border-radius| _4px_ |
+| --nut-tag-round-border-radius| _8px_ |
+| --nut-tag-default-background-color| _#000000_ |
+| --nut-tag-primary-background-color| _#3460fa_ |
+| --nut-tag-success-background-color| _#4fc08d_ |
+| --nut-tag-danger-background-color| _linear-gradient(135deg,rgba(242, 20, 12, 1) 0%,rgba(232, 34, 14, 1) 70%,rgba(242, 77, 12, 1) 100%)_ |
+| --nut-tag-danger-background-color-plain| _#df3526_ |
+| --nut-tag-warning-background-color| _#f3812e_ |
+| --nut-tag-default-color| _#ffffff_ |
+| --nut-tag-border-width| _1px_ |
+| --nut-tag-plain-background-color| _#fff_ |
+| --nut-tag-height| _auto_ |

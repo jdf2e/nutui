@@ -2,7 +2,7 @@
 
 ### Intro
 
-Install the @nutui/icons-vue package independently. Two usage modes are provided (Svg on-demand usage and IconFont full usage).
+Install the [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) package independently. Two usage modes are provided (Svg on-demand usage and IconFont full usage).
 
 ### Install
 
@@ -16,7 +16,7 @@ Use mode of on-demand loading components, see @nutui/icons-vue/dist/types/index.
 ```js
 import { Add } from '@nutui/icons-vue';
 // template
-<Add color='red'>
+<Add color='red' />
 ```
 
 <icon-demo />
@@ -29,10 +29,10 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 
 | Attribute | Description                        | Type             | Default |
 |-----------|------------------------------------|------------------|---------|
-| name      | Icon name or URL                   | String           | -       |
-| color     | Icon color                         | String           | -       |
-| width     | Icon size , eg `20px` `2em` `2rem` | String or Number | -       |
-| height    | Icon size , eg `20px` `2em` `2rem` | String or Number | -       |
+| name      | Icon name or URL                   | string           | -       |
+| color     | Icon color                         | string           | -       |
+| width     | Icon size , eg `20px` `2em` `2rem` | string \| object | -       |
+| height    | Icon size , eg `20px` `2em` `2rem` | string \| object | -       |
 
 ### Events
 
@@ -191,12 +191,12 @@ custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/
 
 | Attribute       | Description                                          | Type             | Default          |
 |-----------------|------------------------------------------------------|------------------|------------------|
-| name            | Icon name or URL                                     | String           | -                |
-| color           | Icon color                                           | String           | -                |
-| size            | Icon size , eg `20px` `2em` `2rem`                   | String or Number | -                |
-| font-class-name | Custom icon font base class name                     | String           | `nutui-iconfont` |
-| class-prefix    | Custom icon class name prefix for using custom icons | String           | `nut-icon`       |
-| tag             | HTML Tag of root element                             | String           | `i`              |
+| name            | Icon name or URL                                     | string           | -                |
+| color           | Icon color                                           | string           | -                |
+| size            | Icon size , eg `20px` `2em` `2rem`                   | string \| object | -                |
+| font-class-name | Custom icon font base class name                     | string           | `nutui-iconfont` |
+| class-prefix    | Custom icon class name prefix for using custom icons | string           | `nut-icon`       |
+| tag             | HTML Tag of root element                             | string           | `i`              |
 
 ### Events
 
