@@ -26,7 +26,7 @@
           ><slot>{{ text }}</slot>
         </view>
       </view>
-      <view v-if="closeMode || rightIcon" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
+      <view v-if="closeMode || $slots['right-icon']" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
         <slot name="right-icon" v-if="$slots['right-icon']"> </slot>
         <CircleClose v-else />
       </view>
@@ -59,12 +59,9 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <template v-if="slots.rightIcon">
-          <slot name="rightIcon"></slot>
-        </template>
-        <template v-else-if="closeMode">
-          <CircleClose :color="color" size="11px" />
-        </template>
+        <slot name="rightIcon">
+          <CircleClose v-if="closeMode" :color="color" size="11px" />
+        </slot>
       </view>
     </view>
   </view>
@@ -141,7 +138,6 @@ export default create({
       default: false
     },
     leftIcon: { type: Object || String, default: () => Notice },
-    rightIcon: { type: Object || String, default: '' },
     color: {
       type: String,
       default: ''

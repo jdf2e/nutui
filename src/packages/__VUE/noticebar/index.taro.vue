@@ -27,9 +27,8 @@
           <slot>{{ text }}</slot>
         </view>
       </view>
-      <view v-if="closeMode || rightIcon" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
-        <slot name="right-icon" v-if="$slots['right-icon']"> </slot>
-        <CircleClose v-else />
+      <view v-if="closeMode || $slots['right-icon']" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
+        <slot name="right-icon"> <CircleClose /> </slot>
       </view>
     </view>
 
@@ -60,12 +59,9 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <template v-if="slots.rightIcon">
-          <slot name="rightIcon"></slot>
-        </template>
-        <template v-else-if="closeMode">
-          <CircleClose :color="color" size="11px" />
-        </template>
+        <slot name="rightIcon">
+          <CircleClose v-if="closeMode" :color="color" size="11px" />
+        </slot>
       </view>
     </view>
   </view>
@@ -132,7 +128,6 @@ export default create({
       default: false
     },
     leftIcon: { type: Object || String, default: () => Notice },
-    rightIcon: { type: Object || String, default: '' },
     color: {
       type: String,
       default: '#F9911B'
@@ -204,7 +199,8 @@ export default create({
       return {
         'nut-noticebar__page-wrap-content': true,
         'nut-ellipsis': isEllipsis.value,
-        [`content${state.id}`]: true
+        [`content${state.id}`]: true,
+        [state.animationClass]: true
       };
     });
 
@@ -268,6 +264,7 @@ export default create({
         if (!wrap.value || !content.value) {
           return;
         }
+
         let wrapWidth = 0;
         let offsetWidth = 0;
 
@@ -283,7 +280,7 @@ export default create({
             if (rect.width > 0) offsetWidth = rect.width;
 
             state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
-
+            console.log(11, state.isCanScroll);
             if (state.isCanScroll) {
               state.wrapWidth = wrapWidth;
               state.offsetWidth = offsetWidth;
@@ -309,6 +306,7 @@ export default create({
     };
 
     const onAnimationEnd = () => {
+      console.log('运动');
       state.firstRound = false;
 
       setTimeout(() => {

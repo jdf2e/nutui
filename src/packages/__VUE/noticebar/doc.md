@@ -227,7 +227,6 @@ app.use(Noticebar);
 | text       | 提示的信息                                                 | string        | -     |
 | close-mode  | 是否启用关闭模式                                           | boolean       | `false`  |
 | left-icon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
-| right-icon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | string        | -     |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |

@@ -225,7 +225,6 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | text       | Notice text content                                | string        |  -      |
 | close-mode  | Whether to enable the off mode                     | boolean       | `false`   |
 | left-icon   | Left Icon                                          | string        | -       |
-| right-icon  | Right Icon                                         | string        | -       |
 | color      | Text Color                                         | string        | -       |
 | background | Background                                         | string        | -       |
 | delay      | Delay time                                         | string \| number | `1`       |
