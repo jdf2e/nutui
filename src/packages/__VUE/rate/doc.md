@@ -157,17 +157,17 @@ export default {
 ## API
 ### Props
 
-| 字段                               | 说明                                      | 类型    | 默认值           |
-|------------------------------------|-------------------------------------------|---------|------------------|
-| v-model                            | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -                |
-| count                              | star 总数                                 | Number  | 5                |
-| active-color                       | 图标选中颜色                              | String  | #fa200c          |
-| void-color                         | 图标未选中颜色                            | String  | #ccc             |
-| allow-half                         | 是否半星                                  | Boolean | false            |
-| readonly                           | 是否只读                                  | Boolean | false            |
-| disabled                           | 是否禁用                                  | Boolean | false            |
-| spacing                            | 间距                                      | Number  | 20               |
-| touchable | 是否可以通过滑动手势选择评分              | Boolean | true             |
+| 字段         | 说明                                      | 类型    | 默认值  |
+|--------------|-------------------------------------------|---------|---------|
+| v-model      | 当前 star 数，可使用 v-model 双向绑定数据 | number  | -       |
+| count        | star 总数                                 | number  | 5       |
+| active-color | 图标选中颜色                              | string  | #fa200c |
+| void-color   | 图标未选中颜色                            | string  | #ccc    |
+| allow-half   | 是否半星                                  | boolean | false   |
+| readonly     | 是否只读                                  | boolean | false   |
+| disabled     | 是否禁用                                  | boolean | false   |
+| spacing      | 间距                                      | number  | 20      |
+| touchable    | 是否可以通过滑动手势选择评分              | boolean | true    |
 
 ### Events
 | 字段   | 说明                       | 回调参数 |
@@ -180,7 +180,7 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-rate-icon-color|  _var(--nut-primary-color)_  | -  |
-| --nut-rate-icon-void-color|  _var(--nut-disable-color)_  | -  |
+| 名称                       | 默认值                     |
+|----------------------------|----------------------------|
+| --nut-rate-icon-color      | _var(--nut-primary-color)_ |
+| --nut-rate-icon-void-color | _var(--nut-disable-color)_ |

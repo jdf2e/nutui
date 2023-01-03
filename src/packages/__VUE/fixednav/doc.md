@@ -138,14 +138,14 @@ const navList = reactive([
 ### Props
 | 字段                | 说明                       | 类型    | 默认值                       |
 |:--------------------|:---------------------------|:--------|:-----------------------------|
-| visible             | 是否打开                   | Boolean | false                        |
-| nav-list            | 悬浮列表内容数据           | Array   | []                           |
-| active-color`3.2.1` | 选中按钮文案颜色           | String  | #fa2c19 默认集成主题色       |
-| active-text         | 收起列表按钮文案           | String  | 收起导航                     |
-| un-active-text      | 展开列表按钮文案           | String  | 快速导航                     |
-| type                | 导航方向,可选值 left right | String  | right                        |
-| overlay             | 展开时是否显示遮罩         | Boolean | true                         |
-| position            | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
+| visible             | 是否打开                   | boolean | false                        |
+| nav-list            | 悬浮列表内容数据           | array   | []                           |
+| active-color`3.2.1` | 选中按钮文案颜色           | string  | #fa2c19 默认集成主题色       |
+| active-text         | 收起列表按钮文案           | string  | 收起导航                     |
+| un-active-text      | 展开列表按钮文案           | string  | 快速导航                     |
+| type                | 导航方向,可选值 left right | string  | right                        |
+| overlay             | 展开时是否显示遮罩         | boolean | true                         |
+| position            | fixed 垂直位置             | object  | {top: 'auto',bottom: 'auto'} |
 
 
 ### Events
@@ -168,12 +168,12 @@ const navList = reactive([
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-fixednav-bg-color| _var(--nut-white)_  | -  |
-| --nut-fixednav-font-color| _var(--nut-black)_  | -  |
-| --nut-fixednav-index| _201_  | -  |
-| --nut-fixednav-btn-bg| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  | -  |
-| --nut-fixednav-item-active-color| _var(--nut-primary-color)_  | -  |
+| 名称                             | 默认值                                                                                    |
+|----------------------------------|-------------------------------------------------------------------------------------------|
+| --nut-fixednav-bg-color          | _var(--nut-white)_                                                                        |
+| --nut-fixednav-font-color        | _var(--nut-black)_                                                                        |
+| --nut-fixednav-index             | _201_                                                                                     |
+| --nut-fixednav-btn-bg            | _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ |
+| --nut-fixednav-item-active-color | _var(--nut-primary-color)_                                                                |
 
     
