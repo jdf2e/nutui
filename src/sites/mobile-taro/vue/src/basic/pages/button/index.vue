@@ -35,8 +35,17 @@
     </div>
     <h2>图标按钮</h2>
     <div class="demo-button-row2">
-      <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
-      <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+      <nut-button shape="square" plain type="primary">
+        <template #icon>
+          <StarFill />
+        </template>
+      </nut-button>
+      <nut-button shape="square" type="primary">
+        <template #icon>
+          <Star />
+        </template>
+        收藏
+      </nut-button>
     </div>
 
     <h2>按钮尺寸</h2>
@@ -61,8 +70,13 @@
 
 <script>
 import { ref } from 'vue';
+import { StarFill, Star } from '@nutui/icons-vue-taro';
 export default {
   props: {},
+  components: {
+    StarFill,
+    Star
+  },
   setup(props) {
     let isLoading = ref(false);
     const changeLoading = () => {
