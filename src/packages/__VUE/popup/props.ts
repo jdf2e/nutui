@@ -71,5 +71,13 @@ export const popupProps = {
   safeAreaInsetBottom: {
     type: Boolean,
     default: false
+  },
+  overlayClass: {
+    type: String,
+    default: ''
+  },
+  overlayStyle: {
+    type: Object as PropType<CSSProperties>,
+    default: {}
   }
 };
