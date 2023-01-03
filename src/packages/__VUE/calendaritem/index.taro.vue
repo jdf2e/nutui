@@ -277,7 +277,7 @@ export default create({
       if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
         let days = [...month.curData];
-        days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
+        days[2] = Utils.getNumTwoBit(Number(day.day));
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
@@ -763,12 +763,12 @@ export default create({
       Taro.getSystemInfo({
         success(res) {
           let scale = 2;
-          let screenWidth = res.screenWidth;
           let toFixed = 3;
           if (TARO_ENV === Taro.ENV_TYPE.WEB) {
             toFixed = 5;
           }
-          scale = Number((screenWidth / 750).toFixed(toFixed));
+          let fontSize = document.documentElement.style.fontSize;
+          scale = Number((Number.parseInt(fontSize) / 40).toFixed(toFixed));
           scalePx.value = scale;
           initData();
         }

@@ -191,9 +191,9 @@ app.use(Button);
 
 | 参数     | 说明                                                         | 类型    | 默认值    |
 | -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` | string  | `default` |
-| size     | 尺寸，可选值为 `large` `small` `mini`                        | string  | `normal`  |
-| shape    | 形状，可选值为 `square`                                      | string  | `round`   |
+| type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` `default` | string  | `default` |
+| size     | 尺寸，可选值为 `large` `small` `mini` `normal`                       | string  | `normal`  |
+| shape    | 形状，可选值为 `square` `round`                                      | string  | `round`   |
 | color    | 按钮颜色，支持传入 linear-gradient 渐变色                    | string  | -         |
 | plain    | 是否为朴素按钮                                               | boolean | `false`   |
 | disabled | 是否禁用按钮                                                 | boolean | `false`   |
@@ -205,7 +205,7 @@ app.use(Button);
 
 | 事件名 | 说明           | 回调参数          |
 | ------ | -------------- | ----------------- |
-| click  | 点击按钮时触发 | event: MouseEvent |
+| click  | 点击按钮时触发 | `event: MouseEvent` |
 
 ## 主题定制
 
