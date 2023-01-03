@@ -237,9 +237,9 @@ export default create({
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
-      nextTick(() => {
+      setTimeout(() => {
         scrollIntoView();
-      });
+      }, 500);
     };
     const onStickyScroll = (params: { top: number; fixed: boolean }) => {
       stickyFixed = params.fixed;
