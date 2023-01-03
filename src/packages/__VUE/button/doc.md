@@ -193,14 +193,14 @@ app.use(Button);
 
 | 参数     | 说明                                                         | 类型    | 默认值    |
 | -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String  | `default` |
-| size     | 尺寸，可选值为 `large` `small` `mini`                        | String  | `normal`  |
-| shape    | 形状，可选值为 `square`                                      | String  | `round`   |
-| color    | 按钮颜色，支持传入 linear-gradient 渐变色                    | String  | -         |
-| plain    | 是否为朴素按钮                                               | Boolean | `false`   |
-| disabled | 是否禁用按钮                                                 | Boolean | `false`   |
-| block    | 是否为块级元素                                               | Boolean | `false`   |
-| loading  | 按钮 loading 状态                                            | Boolean | `false`   |
+| type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` | string  | `default` |
+| size     | 尺寸，可选值为 `large` `small` `mini`                        | string  | `normal`  |
+| shape    | 形状，可选值为 `square`                                      | string  | `round`   |
+| color    | 按钮颜色，支持传入 linear-gradient 渐变色                    | string  | -         |
+| plain    | 是否为朴素按钮                                               | boolean | `false`   |
+| disabled | 是否禁用按钮                                                 | boolean | `false`   |
+| block    | 是否为块级元素                                               | boolean | `false`   |
+| loading  | 按钮 loading 状态                                            | boolean | `false`   |
 
 ### Slots
 
@@ -223,46 +223,46 @@ app.use(Button);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-button-border-radius| _25px_  | - |
-| --nut-button-border-width| _1px_  | - |
-| --nut-button-icon-width| _16px_  | - |
-| --nut-button-default-bg-color| _var(--nut-white)_  | - |
-| --nut-button-default-border-color| _rgba(204, 204, 204, 1)_  | - |
-| --nut-button-default-color| _rgba(102, 102, 102, 1)_  | - |
-| --nut-button-default-padding| _0 18px_  | - |
-| --nut-button-mini-padding| _0 12px_  | - |
-| --nut-button-small-padding| _0 12px_  | - |
-| --nut-button-small-height| _28px_  | - |
-| --nut-button-mini-height| _24px_  | - |
-| --nut-button-default-height| _38px_  | - |
-| --nut-button-large-height| _48px_  | - |
-| --nut-button-large-line-height| _46px_  | - |
-| --nut-button-small-line-height| _26px_  | - |
-| --nut-button-block-height| _48px_  | - |
-| --nut-button-default-line-height| _36px_  | - |
-| --nut-button-block-line-height| _46px_  | - |
-| --nut-button-default-font-size| _var(--nut-font-size-2)_  | - |
-| --nut-button-large-font-size| _var(--nut-button-default-font-size)_  | - |
-| --nut-button-small-font-size| _var(--nut-font-size-1)_  | - |
-| --nut-button-mini-font-size| _var(--nut-font-size-1)_  | - |
-| --nut-button-mini-line-height| _1.2_  | - |
-| --nut-button-disabled-opacity| _0.68_  | - |
-| --nut-button-primary-color| _var(--nut-white)_  | - |
-| --nut-button-primary-border-color| _var(--nut-primary-color)_  | - |
-| --nut-button-primary-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | - |
-| --nut-button-info-color| _var(--nut-white)_  | - |
-| --nut-button-info-border-color| _rgba(73, 106, 242, 1)_  | - |
-| --nut-button-info-background-color| _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_  | - |
-| --nut-button-success-color| _var(--nut-white)_  | - |
-| --nut-button-success-border-color| _rgba(38, 191, 38, 1)_  | - |
-| --nut-button-success-background-color| _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_  | - |
-| --nut-button-danger-color| _var(--nut-white)_  | - |
-| --nut-button-danger-border-color| _rgba(250, 44, 25, 1)_  | - |
-| --nut-button-danger-background-color| _rgba(250, 44, 25, 1)_  | - |
-| --nut-button-warning-color| _var(--nut-white)_  | - |
-| --nut-button-warning-border-color| _rgba(255, 158, 13, 1)_  | - |
-| --nut-button-warning-background-color| _linear-gradient(135deg,rgba(255, 158, 13, 1) 0%,rgba(255, 167, 13, 1) 45%,rgba(255, 182, 13, 1) 83%,rgba(255, 190, 13, 1) 100%)_  | - |
-| --nut-button-plain-background-color| _var(--nut-white)_  | - |
-| --nut-button-small-round-border-radius| _var(--nut-button-border-radius)_  | - |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-button-border-radius| _25px_  |
+| --nut-button-border-width| _1px_  |
+| --nut-button-icon-width| _16px_  |
+| --nut-button-default-bg-color| _var(--nut-white)_  |
+| --nut-button-default-border-color| _rgba(204, 204, 204, 1)_  |
+| --nut-button-default-color| _rgba(102, 102, 102, 1)_  |
+| --nut-button-default-padding| _0 18px_  |
+| --nut-button-mini-padding| _0 12px_  |
+| --nut-button-small-padding| _0 12px_  |
+| --nut-button-small-height| _28px_  |
+| --nut-button-mini-height| _24px_  |
+| --nut-button-default-height| _38px_  |
+| --nut-button-large-height| _48px_  |
+| --nut-button-large-line-height| _46px_  |
+| --nut-button-small-line-height| _26px_  |
+| --nut-button-block-height| _48px_  |
+| --nut-button-default-line-height| _36px_  |
+| --nut-button-block-line-height| _46px_  |
+| --nut-button-default-font-size| _var(--nut-font-size-2)_  |
+| --nut-button-large-font-size| _var(--nut-button-default-font-size)_  |
+| --nut-button-small-font-size| _var(--nut-font-size-1)_  |
+| --nut-button-mini-font-size| _var(--nut-font-size-1)_  |
+| --nut-button-mini-line-height| _1.2_  |
+| --nut-button-disabled-opacity| _0.68_  |
+| --nut-button-primary-color| _var(--nut-white)_  |
+| --nut-button-primary-border-color| _var(--nut-primary-color)_  |
+| --nut-button-primary-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
+| --nut-button-info-color| _var(--nut-white)_  |
+| --nut-button-info-border-color| _rgba(73, 106, 242, 1)_  |
+| --nut-button-info-background-color| _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_  |
+| --nut-button-success-color| _var(--nut-white)_  |
+| --nut-button-success-border-color| _rgba(38, 191, 38, 1)_  |
+| --nut-button-success-background-color| _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_  |
+| --nut-button-danger-color| _var(--nut-white)_  |
+| --nut-button-danger-border-color| _rgba(250, 44, 25, 1)_  |
+| --nut-button-danger-background-color| _rgba(250, 44, 25, 1)_  |
+| --nut-button-warning-color| _var(--nut-white)_  |
+| --nut-button-warning-border-color| _rgba(255, 158, 13, 1)_  |
+| --nut-button-warning-background-color| _linear-gradient(135deg,rgba(255, 158, 13, 1) 0%,rgba(255, 167, 13, 1) 45%,rgba(255, 182, 13, 1) 83%,rgba(255, 190, 13, 1) 100%)_  |
+| --nut-button-plain-background-color| _var(--nut-white)_  |
+| --nut-button-small-round-border-radius| _var(--nut-button-border-radius)_  |
