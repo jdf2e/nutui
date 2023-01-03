@@ -589,11 +589,11 @@ export default {
 | 字段              | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | 是否可见                                          | boolean         | `false`           |
-| type              | 类型，日期单择'one'，区间选择'range',日期多选'multiple'    | string          | '`one`'           |
+| type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`    | string       | '`one`'           |
 | poppable          | 是否弹窗状态展示                                  | boolean         | `true`            |
 | is-auto-back-fill | 自动回填                                          | boolean         | `false`           |
 | title             | 显示标题                                          | string          | `日期选择`      |
-| default-value     | 默认值，单个日期选择 string，其他为 Array  | string 、 array | `null`            |
+| default-value     | 默认值，单个日期选择 `string`，其他为 `string[]`  | string \| string[] | `null`            |
 | start-date        | 开始日期         | string          | `今天`            |
 | end-date          | 结束日期              | string          | `距离今天 365 天` |
 | show-today          | 是否展示今天标记               | boolean          | `true` |
@@ -607,11 +607,11 @@ export default {
 
 ### Events
 
-| 事件名 | 说明                         | 回调参数                     |
-|--------|------------------------------|------------------------------|
-| choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
-| close  | 关闭时触发                   | -                            |
-| select  | 点击/选择后触发              |  Day:object                          |
+| 事件名   | 说明                          | 回调参数                                           |
+|-------- |------------------------------|---------------------------------------------------|
+| choose  | 选择之后或是点击确认按钮触发,日期数组（包含年月日和星期）  | `(string \| string[])[]`        |
+| close   | 关闭时触发                                         | -                             |
+| select  | 点击/选择后触发                                     |  `(string \| string[])[]`       |
 
 
 
@@ -629,9 +629,9 @@ export default {
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Calendar 实例并调用实例方法。
 
 
-| 方法名 | 说明             | 参数          |
-|--------|------------------|---------------|
-| scrollToDate   | 滚动到指定日期所在月 | string:'2021-12-30' |
+| 方法名          | 说明               | 参数          |
+|----------------|-------------------|---------------|
+| scrollToDate   | 滚动到指定日期所在月,如：'2021-12-30' | `string` |
 
 ## 主题定制
 

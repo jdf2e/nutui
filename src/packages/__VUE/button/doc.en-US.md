@@ -194,9 +194,9 @@ The color of the button can be customized through the color property.
 
 | Attribute     | Description                                                         | Type    | Default    |
 | -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | Can be set to  `primary` `info` `warning` `danger` `success` | string  | `default` |
-| size     | 	Can be set to `large` `small` `mini`                        | string  | `normal`  |
-| shape    | Can be set to `square`                                      | string  | `round`   |
+| type     | Can be set to  `primary` `info` `warning` `danger` `success` `default` | string  | `default` |
+| size     | 	Can be set to `large` `small` `mini` `normal`                      | string  | `normal`  |
+| shape    | Can be set to `square` `round`                                          | string  | `round`   |
 | color    | Button color, support incoming linear-gradient gradient color                    | string  | -         |
 | plain    | Whether to be plain button     | boolean | `false`   |
 | disabled | Whether to disable button         | boolean | `false`   |
@@ -207,7 +207,7 @@ The color of the button can be customized through the color property.
 
 | Event | Description           | Arguments          |
 | ------ | -------------- | ----------------- |
-| click  | Emitted when component is clicked | event: MouseEvent |
+| click  | Emitted when component is clicked | `event: MouseEvent` |
 
 ## Theming
 

@@ -596,11 +596,11 @@ export default {
 | Attribute              | Description                                  | Type            | Default  |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | whether to show                  | boolean         | `false`           |
-| type              | Calendar type ：'one' 'range' 'multiple'    | string          | `one`           |
+| type              | Calendar type ：`one` `range` `multiple`    | string          | `one`           |
 | poppable          | Whether to display the pop-up window                                  | boolean         | `true`            |
 | is-auto-back-fill | Automatic backfill                                          | boolean         | `false`           |
 | title             | whether to show title                                          | string          | `Calendar`      |
-| default-value     | Default value, select single date : `string`，other: `array` | string 、 array | `null`            |
+| default-value     | Default value, select single date : `string`，other: `string[]` | string \| string[] | `null`            |
 | start-date        | The start date            | string          | `Today`            |
 | end-date          | The end date            | string          | `365 days from today` |
 | show-today          | Whether to show today's mark               | boolean          | `true` |
@@ -616,9 +616,9 @@ export default {
 
 | Event | Description                         | Arguments                     |
 |--------|------------------------------|------------------------------|
-| choose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
+| choose | Triggered after selection or by clicking the confirm button,Array of dates (including year, month, day and week) | `(string \| string[])[]` |
 | close  | Triggered when closed                   | -                            |
-| select  | Triggered after click/select             |  Day:object                          |
+| select  | Triggered after click/select             |  `(string \| string[])[]`                          |
 
 
 
@@ -638,8 +638,7 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 
 | Name | Description             | Arguments          |
 |--------|------------------|---------------|
-| scrollToDate   | Scroll to the month of the specified date | string:'2021-12-30' |
-
+| scrollToDate   | Scroll to the month of the specified date:'2021-12-30' | `string` |
 ## Theming
 
 ### CSS Variables

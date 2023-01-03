@@ -397,7 +397,7 @@ export default {
 
 | Event             | Description                     | Arguments        |
 | ------------------ | ------------------------ | --------------- |
-| change             | Triggered when the progress changes and the drag is over | value: progress |
+| change             | Triggered when the progress changes and the drag is over | `value: number \| number[]` |
 | drag-start         | Triggered when dragging starts           | -               |
 | drag-end           | Triggered when the drag is over           | -               |
 
