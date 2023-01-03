@@ -18,7 +18,7 @@ app.use();
 
 ### 基础用法
 
-基础用法与原生 img 标签一致，可以设置 src、width、height、alt 等原生属性。
+基础用法与原生 `img` 标签一致，可以设置 `src`、`width`、`height`、`alt` 等原生属性。
 
 :::demo
 
@@ -32,7 +32,7 @@ app.use();
 
 ### 填充模式
 
-通过 fit 属性可以设置图片填充模式，等同于原生的 object-fit 属性，可选值见下方表格。
+通过 `fit` 属性可以设置图片填充模式，等同于原生的 `object-fit` 属性，可选值见下方表格。
 
 :::demo
 
@@ -50,7 +50,7 @@ app.use();
 
 ### 图片位置
 
-通过 position 属性可以设置图片位置，结合 fit 属性使用，等同于原生的 object-position 属性。
+通过 `position` 属性可以设置图片位置，结合 `fit` 属性使用，等同于原生的 `object-position` 属性。
 
 :::demo
 
@@ -69,7 +69,7 @@ app.use();
 
 ### 圆形图片
 
-通过 round 属性可以设置图片变圆，注意当图片宽高不相等且 fit 为 contain 或 scale-down 时，将无法填充一个完整的圆形。
+通过 `round` 属性可以设置图片变圆，注意当图片宽高不相等且 `fit` 为 `contain` 或 `scale-down` 时，将无法填充一个完整的圆形。
 
 :::demo
 
@@ -87,7 +87,7 @@ app.use();
 
 ### 加载中图片
 
-`Image` 组件提供了默认的加载中提示，支持通过 `loading` 插槽自定义内容。
+Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自定义内容。
 
 :::demo
 
@@ -105,7 +105,7 @@ app.use();
 
 ### 加载失败
 
-`Image` 组件提供了默认的加载失败提示，支持通过 `error` 插槽自定义内容。
+Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽自定义内容。
 
 :::demo
 
@@ -127,16 +127,16 @@ app.use();
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| src         | 图片链接               | String | -                |
-| fit         | 图片填充模式，等同于原生的 object-fit 属性     | ImageFit | 'fill'                |
-| position    | 图片位置，等同于原生的 object-position 属性  | ImagePosition | 'center'              |
-| alt         | 替代文本               | String | -                |
-| width         | 宽度，默认单位`px`               | String | -                |
-| height         | 高度，默认单位`px`               | String | -                |
-| round         | 是否显示为圆角               | Boolean | false              |
-| radius         | 圆角大小               | String \| Numer | -                |
-| show-error         | 是否展示图片加载失败| Boolean | false              |
-| show-loading         | 是否展示加载中图片               | Boolean | true              |
+| src         | 图片链接               | string | -                |
+| fit         | 图片填充模式，等同于原生的 `object-fit` 属性     | ImageFit | `fill`                |
+| position    | 图片位置，等同于原生的 `object-position` 属性  | ImagePosition | `center`             |
+| alt         | 替代文本               | string | -                |
+| width         | 宽度，默认单位`px`               | string | -                |
+| height         | 高度，默认单位`px`               | string | -                |
+| round         | 是否显示为圆角               | boolean | `false`              |
+| radius         | 圆角大小               | string \| number | -                |
+| show-error         | 是否展示图片加载失败| boolean | `false`              |
+| show-loading         | 是否展示加载中图片               | boolean | `true`              |
 
 ### ImageFit 图片填充模式
 
@@ -146,7 +146,7 @@ app.use();
 | cover         | 保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边     |
 | fill    | 拉伸图片，使图片填满元素  |
 | none    | 保持图片原有尺寸  |
-| scale-down    | 取 none 或 contain 中较小的一个  |
+| scale-down    | 取 `none` 或 `contain` 中较小的一个  |
 
 ### ImagePosition 图片位置
 
