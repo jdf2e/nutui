@@ -295,38 +295,38 @@ app.use(ImagePreview);
 :::
 ## API
 ### Props
-
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| show | 是否展示预览图片 | boolean | false
-| videos | 预览的视频数组（视频自动放到图片之前） | VideoArray[] | []
-| images | 预览图片数组 | ImageArray[] | []
-| autoplay | 自动轮播时长，0表示不会自动轮播 | number\|string  | 3000  |
-| init-no | 初始页码 | number | 1
-| pagination-visible | 分页指示器是否展示    | boolean | false |
-| pagination-color   | 分页指示器选中的颜色    | string  | '#fff'  |
-| content-close   | 点击图片可以退出预览    | boolean  | false  |
-| show-index  | 是否显示页码    | boolean  | true  |
-| closeable  | 是否显示关闭图标    | boolean  | false  |
-| close-icon-position   | 关闭图标位置，可选值：top-left   | string  | ‘top-right’  |  
+ 
+| 字段 | 说明 | 类型 | 默认值 | 
+|----- | ----- | ----- | ----- |
+| show | 是否展示预览图片 | boolean | `false` |
+| videos | 预览的视频数组（视频自动放到图片之前） | VideoArray[] | `[]` |
+| images | 预览图片数组 | ImageArray[] | `[]` |
+| autoplay | 自动轮播时长，0表示不会自动轮播 | number \| string  |`3000`  |
+| init-no | 初始页码 | number | `1` |
+| pagination-visible | 分页指示器是否展示    | boolean | `false` |
+| pagination-color   | 分页指示器选中的颜色    | string  | `#fff`  |
+| content-close   | 点击图片可以退出预览    | boolean  | `false`  |
+| show-index  | 是否显示页码    | boolean  | `true`  |
+| closeable  | 是否显示关闭图标    | boolean  | `false`  |
+| close-icon-position   | 关闭图标位置，可选值：top-left   | string  | `top-right`  |  
 | before-close  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
-| max-zoom  | 手势缩放时，最大缩放比例  | number  | 3  | 
-| min-zoom  | 手势缩放时，最小缩放比例   | number  | 1/3  | 
-| is-Loop  | 是否循环播放   | boolean  | `true`  | 
+| max-zoom  | 手势缩放时，最大缩放比例  | number  | `3`  | 
+| min-zoom  | 手势缩放时，最小缩放比例   | number  | `1/3`  | 
+| is-loop  | 是否循环播放   | boolean  | `true`  | 
 
 
 ### ImageArray 数据结构
 
 | 键名 | 说明 | 类型 | 
 |----- | ----- | ----- | 
-| src | 预览图片链接 | String | 
+| src | 预览图片链接 | `string` | 
 
 ### VideoArray 数据结构
 
 | 键名 | 说明 | 类型 | 
 |----- | ----- | ----- | 
-| source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | Object | 
-| options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | Object | 
+| source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | `object` | 
+| options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | `object` | 
 
 
 
