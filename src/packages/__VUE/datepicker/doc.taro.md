@@ -24,7 +24,6 @@ app.use(DatePicker);
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
-      :three-dimensional="false"
       @confirm="confirm"
   ></nut-date-picker> 
 </template>
@@ -66,7 +65,6 @@ app.use(DatePicker);
       :max-date="maxDate"
       @confirm="popupConfirm"
       :is-show-chinese="true"
-      :threeDimensional="false"
     >
       <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button>
     </nut-date-picker>
@@ -108,7 +106,7 @@ app.use(DatePicker);
 
 ### 选择月日
 
-DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type 设置为 year-month 即可选择年份和月份，设置为 month-day 即可选择月份和日期。
+DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `type` 设置为 year-month 即可选择年份和月份，设置为 month-day 即可选择月份和日期。
 
 :::demo
 ```html
@@ -142,7 +140,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::
 ### 选择年月日时分
 
-将 type 设置为 datetime 即可选择完整的时间。
+将 `type` 设置为 datetime 即可选择完整的时间。
 
 :::demo
 
@@ -213,7 +211,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ### 格式化选项
 
-通过传入 formatter 函数，可以对选项文字进行格式化处理。 isShowChinese 属性同样是也为选项后面添加文案，但 formatter 函数的优先级高于 isShowChinese 属性。
+通过传入 `formatter` 函数，可以对选项文字进行格式化处理。 `isShowChinese` 属性同样是也为选项后面添加文案，但 `formatter` 函数的优先级高于 `isShowChinese` 属性。
 
 :::demo
 ```html
@@ -307,7 +305,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ### 过滤选项
 
-通过 filter 函数可以对选项数组进行过滤，实现自定义时间间隔。 
+通过 `filter` 函数可以对选项数组进行过滤，实现自定义时间间隔。 
 
 :::demo
 ```html
@@ -377,22 +375,21 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
     
 | 参数            | 说明                                              | 类型    | 默认值   |
 |-----------------|---------------------------------------------------|---------|----------|
-| v-model         | 初始值                                            | Date    | `null`   |
-| type            | 时间类型，可选值 date time year-month month-day datehour | String  | `'date'` |
-| minute-step     | 分钟步进值                                        | Number  | `1`      |
-| is-show-chinese | 每列是否展示中文                                  | Boolean | `false`  |
-| min-date        | 开始日期                                          | Date    | `十年前` |
-| max-date        | 结束日期                                          | Date    | `十年后` |
+| v-model         | 初始值                                            | date    | `null`   |
+| type            | 时间类型，可选值 date time year-month month-day datehour | string  | `'date'` |
+| minute-step     | 分钟步进值                                        | number  | `1`      |
+| is-show-chinese | 每列是否展示中文                                  | boolean | `false`  |
+| min-date        | 开始日期                                          | date    | `十年前` |
+| max-date        | 结束日期                                          | date    | `十年后` |
 | formatter   | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
 | filter    | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| title           | 设置标题                                          | String  | `null`   |
-| ok-text           | 确定按钮文案                                          | String  | 确定   |
-| cancel-text           | 取消按钮文案                                          | String  | 取消   |
-| three-dimensional           | 是否开启3D效果               | Boolean  | true   |
-| swipe-duration     | 惯性滚动时长               | Number、String  | 1000    |
-| visible-option-num          |可见的选项个数              | number \| string | 7               |
-| option-height         | 选项高度             | number \| string | 36     |
-| show-toolbar         | 是否显示顶部导航             | Boolean | true    |
+| title           | 设置标题                                          | string  | `null`   |
+| ok-text           | 确定按钮文案                                          | string  | `确定`   |
+| cancel-text           | 取消按钮文案                                          | string  | `取消`   |
+| swipe-duration     | 惯性滚动时长               | number \| string  | `1000`    |
+| visible-option-num          |可见的选项个数              | number \| string | `7`               |
+| option-height         | 选项高度             | number \| string | `36`     |
+| show-toolbar         | 是否显示顶部导航             | boolean | `true`    |
 
 ### Events
     
