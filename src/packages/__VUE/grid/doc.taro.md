@@ -252,11 +252,11 @@ app.use(GridItem);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-grid-border-color| _#f5f6f7_ | -  |
-| --nut-grid-item-content-padding| _16px 8px_ | -  |
-| --nut-grid-item-content-bg-color| _var(--nut-white)_ | -  |
-| --nut-grid-item-text-margin| _8px_ | -  |
-| --nut-grid-item-text-color| _var(--nut-title-color2)_ | -  |
-| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-grid-border-color| _#f5f6f7_ |
+| --nut-grid-item-content-padding| _16px 8px_ |
+| --nut-grid-item-content-bg-color| _var(--nut-white)_ |
+| --nut-grid-item-text-margin| _8px_ |
+| --nut-grid-item-text-color| _var(--nut-title-color2)_ |
+| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ |

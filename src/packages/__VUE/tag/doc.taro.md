@@ -13,7 +13,6 @@ import { Tag } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tag);
-
 ```
 
 
@@ -45,7 +44,6 @@ app.use(Tag);
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
 :::
 
@@ -78,7 +76,6 @@ app.use(Tag);
   </nut-cell-group>
 </template>
 
-
 <script lang="ts">
 import { ref } from 'vue';
 
@@ -96,9 +93,6 @@ export default {
   }
 };
 </script>
-
-
-
 ```
 :::
 
@@ -126,7 +120,6 @@ export default {
     </nut-cell>
   </nut-cell-group>
 </template>
-
 ```
 :::
 
@@ -136,13 +129,13 @@ export default {
 
 | 字段       | 说明                                             | 类型    | 默认值    |
 |------------|--------------------------------------------------|---------|-----------|
-| type       | 标签类型，可选值为primary success danger warning | String  | `default` |
-| color      | 标签颜色                                         | String  | -         |
-| text-color | 文本颜色，优先级高于color属性                    | String  | `white`   |
-| plain      | 是否为空心样式                                   | Boolean | `false`   |
-| round      | 是否为圆角样式                                   | Boolean | `false`   |
-| mark       | 是否为标记样式                                   | Boolean | `false`   |
-| closeable  | 是否为可关闭标签                                 | Boolean | `false`   |
+| type       | 标签类型，可选值为 `primary`、`success`、`danger`、`warning` | string  | `default` |
+| color      | 标签颜色                                         | string  | `- `        |
+| text-color | 文本颜色，优先级高于 `color` 属性                    | string  | `white`   |
+| plain      | 是否为空心样式                                   | boolean | `false`   |
+| round      | 是否为圆角样式                                   | boolean | `false`   |
+| mark       | 是否为标记样式                                   | boolean | `false`   |
+| closeable  | 是否为可关闭标签                                 | boolean | `false`   |
 
 
 ### Slots
@@ -164,18 +157,18 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-tag-font-size| _12px_ | -  |
-| --nut-tag-default-border-radius| _4px_ | -  |
-| --nut-tag-round-border-radius| _8px_ | -  |
-| --nut-tag-default-background-color| _#000000_ | -  |
-| --nut-tag-primary-background-color| _#3460fa_ | -  |
-| --nut-tag-success-background-color| _#4fc08d_ | -  |
-| --nut-tag-danger-background-color| _linear-gradient(135deg,rgba(242, 20, 12, 1) 0%,rgba(232, 34, 14, 1) 70%,rgba(242, 77, 12, 1) 100%)_ | -  |
-| --nut-tag-danger-background-color-plain| _#df3526_ | -  |
-| --nut-tag-warning-background-color| _#f3812e_ | -  |
-| --nut-tag-default-color| _#ffffff_ | -  |
-| --nut-tag-border-width| _1px_ | -  |
-| --nut-tag-plain-background-color| _#fff_ | -  |
-| --nut-tag-height| _auto_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-tag-font-size| _12px_ |
+| --nut-tag-default-border-radius| _4px_ |
+| --nut-tag-round-border-radius| _8px_ |
+| --nut-tag-default-background-color| _#000000_ |
+| --nut-tag-primary-background-color| _#3460fa_ |
+| --nut-tag-success-background-color| _#4fc08d_ |
+| --nut-tag-danger-background-color| _linear-gradient(135deg,rgba(242, 20, 12, 1) 0%,rgba(232, 34, 14, 1) 70%,rgba(242, 77, 12, 1) 100%)_ |
+| --nut-tag-danger-background-color-plain| _#df3526_ |
+| --nut-tag-warning-background-color| _#f3812e_ |
+| --nut-tag-default-color| _#ffffff_ |
+| --nut-tag-border-width| _1px_ |
+| --nut-tag-plain-background-color| _#fff_ |
+| --nut-tag-height| _auto_ |

@@ -213,7 +213,7 @@ export default {
 | Attribute             | Description                                                                    | Type                     | Default              |
 |-----------------------|--------------------------------------------------------------------------------|--------------------------|----------------------|
 | title                 | Title                                                                          | String                   | -                    |
-| id                    | Identifier, share one instance at the same time, default to multiple instances | String or Number         | new Date().getTime() |
+| id                    | Identifier, share one instance at the same time, default to multiple instances | string \| object         | new Date().getTime() |
 | content               | Content, support HTML                                                          | String                   | -                    |
 | teleport              | Specifies a target element where Dialog will be mounted                        | String                   | "body"               |
 | closeOnClickOverlay   | Whether to close when overlay is clicked                                       | Boolean                  | false                |
