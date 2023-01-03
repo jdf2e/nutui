@@ -29,7 +29,7 @@
 import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { TableColumnProps } from './types';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';
 import { Dongdong } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('table');
@@ -260,7 +260,7 @@ export default createDemo({
               Button,
               {
                 onClick: () => {
-                  (Toast as any).text('hello');
+                  (showToast as any).text('hello');
                 },
                 size: 'small',
                 type: 'primary'
@@ -327,7 +327,7 @@ export default createDemo({
     });
 
     const handleSorter = (item: TableColumnProps) => {
-      (Toast as any).text(`${JSON.stringify(item)}`);
+      (showToast as any).text(`${JSON.stringify(item)}`);
     };
 
     onMounted(() => {

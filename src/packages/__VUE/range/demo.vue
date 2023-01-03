@@ -85,7 +85,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('range');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
@@ -148,7 +148,7 @@ export default createDemo({
       }
     });
 
-    const onChange = (value: number) => Toast.text('value：' + value);
+    const onChange = (value: number) => showToast.text('value：' + value);
     return {
       ...toRefs(state),
       onChange,

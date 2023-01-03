@@ -138,7 +138,7 @@ const navList = reactive([
 | Attribute           | Description                                         | Type    | Default                      |
 |:--------------------|:----------------------------------------------------|:--------|:-----------------------------|
 | visible             | visible is                                          | boolean | false                        |
-| nav-list            | Suspended list content data                         | array   | []                           |
+| nav-list            | Suspended list content data                         | Array   | []                           |
 | active-color`3.2.1` | list active button color                            | string  | #fa2c19 Inherit theme color  |
 | active-text         | Stow list button copy                               | string  | Close Nav                    |
 | un-active-text      | Expand list button copy                             | string  | Open Nav                     |

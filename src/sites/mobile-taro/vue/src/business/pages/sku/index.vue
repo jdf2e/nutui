@@ -207,6 +207,8 @@ export default defineComponent({
         data.skuData = Sku;
         data.goodsInfo = Goods;
         data.imagePathMap = imagePathMap;
+
+        console.log(Goods);
       }, 500);
     };
     const selectSku = (s: any) => {

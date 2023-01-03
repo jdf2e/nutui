@@ -133,9 +133,9 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, onMounted, Ref } from 'vue';
+import { reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('checkbox');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Checklist } from '@nutui/icons-vue';
@@ -229,7 +229,7 @@ export default createDemo({
     };
 
     const changeBox3 = (state: boolean, label: string) => {
-      Toast.text(`${state ? translate('select') : translate('cancel')} ${label}`);
+      showToast.text(`${state ? translate('select') : translate('cancel')} ${label}`);
     };
 
     const changeBox4 = (label: any[]) => {
@@ -253,12 +253,12 @@ export default createDemo({
     };
 
     const toggleAll = (f: boolean) => {
-      Toast.text(`${f ? translate('selectAll') : translate('cancel')}`);
+      showToast.text(`${f ? translate('selectAll') : translate('cancel')}`);
       group.value.toggleAll(f);
     };
 
     const toggleReverse = () => {
-      Toast.text(`反选`);
+      showToast.text(`反选`);
       group.value.toggleReverse();
     };
 

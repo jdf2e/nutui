@@ -164,6 +164,8 @@ app.use(InputNumber);
 </template>
 <script lang="ts">
   import { reactive, getCurrentInstance, toRefs } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       let { proxy } = getCurrentInstance();
@@ -171,10 +173,10 @@ app.use(InputNumber);
         value: 1
       });
       const onChange = (value: number) => {
-        proxy.$toast.loading('异步演示 2 秒后更改');
+        showToast.loading('异步演示 2 秒后更改');
         setTimeout(() => {
           state.value = value;
-          proxy.$toast.hide();
+          showToast.hide();
         }, 2000);
       };
       return { ...toRefs(state), onChange };

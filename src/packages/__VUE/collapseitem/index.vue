@@ -159,7 +159,7 @@ export default create({
     const toggleOpen = () => {
       if (parent.props.accordion) {
         nextTick(() => {
-          if (currentName.value == parent.props.active) {
+          if (currentName.value == parent.props.modelValue) {
             open();
           } else {
             parent.changeVal(currentName.value);
@@ -190,7 +190,7 @@ export default create({
 
     const init = () => {
       const { name } = props;
-      const active = parent && parent.props.active;
+      const active = parent && parent.props.modelValue;
       nextTick(() => {
         if (typeof active == 'number' || typeof active == 'string') {
           if (name == active) {

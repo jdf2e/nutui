@@ -45,7 +45,6 @@ app.use(Searchbar);
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const state = reactive({
@@ -53,7 +52,7 @@ app.use(Searchbar);
       });
 
       const search = function () {
-        Toast.text('搜索触发');
+        console.log('搜索触发');
       };
 
       return {
@@ -214,22 +213,22 @@ app.use(Searchbar);
     
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model	         | 当前输入的值   | Number / String | ''      |
-| label| 搜索框左侧文本 | String | '' |
-| shape | 搜索框形状，可选值为 round | String | square |
-| max-length         | 最大输入长度   | [Number,String] | '9999'      |
-| input-type    | 输入框类型   | String | 'text'      |
-| placeholder        | 输入框默认暗纹  | String | '请输入'   |
-| clearable          | 是否展示清除按钮 | Boolean | true     |
-| clear-icon         | 自定义清除按钮图标 | String | "circle-close"     |
-| background      | 输入框外部背景 | String |   '#fff'   |
-| input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
-| confirm-type   | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
-| autofocus | 是否自动聚焦 | boolean | false |
-| focus-style | 聚焦时搜索框样式 | Object | - |
-| disabled | 是否禁用输入框 | boolean | false |
-| readonly | 输入框只读 | boolean | false |
-| input-align | 对齐方式，可选`center` `right` | string | `left` |
+| v-model	         | 当前输入的值   | number /| string | `''`      |
+| label| 搜索框左侧文本 | string | `''` |
+| shape | 搜索框形状，可选值为 `square` `round` | string | `square` |
+| max-length         | 最大输入长度   | number /| string | `9999`      |
+| input-type    | 输入框类型   | string | `text`      |
+| placeholder        | 输入框默认暗纹  | string | `请输入`   |
+| clearable          | 是否展示清除按钮 | boolean | `true`     |
+| clear-icon         | 自定义清除按钮图标（默认使用 `@nutui/nutui-icons`）| Object | `CircleClose`    |
+| background      | 输入框外部背景 | string |   `#fff`   |
+| input-background   | 输入框内部背景 | string |   `#f7f7f7`   |
+| confirm-type   | 键盘右下角按钮的文字，仅在`type='text'`时生效，可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string |   `done`   |
+| autofocus | 是否自动聚焦 | boolean | `false` |
+| focus-style | 聚焦时搜索框样式 | Object | `-` |
+| disabled | 是否禁用输入框 | boolean | `false` |
+| readonly | 输入框只读 | boolean | `false` |
+| input-align | 对齐方式，可选 `left` `center` `right` | string | `left` |
 
 
 
@@ -237,14 +236,14 @@ app.use(Searchbar);
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| change  | 输入内容时触发 | val, event |
-| focus  | 聚焦时触发 | val, event |
-| blur  | 失焦时触发 | val, event |
-| clear  | 点击清空时触发 | val |
-| search  | 按下 ENTER 键时触发 | val, event |
-| click-input |	点击输入区域时触发	 |	event |
-| click-left-icon |	点击左侧图标时触发 |	val, event |
-| click-right-icon |	点击右侧图标时触发 |	val, event |
+| change  | 输入内容时触发 | `val, event` |
+| focus  | 聚焦时触发 | `val, event` |
+| blur  | 失焦时触发 | `val, event` |
+| clear  | 点击清空时触发 | `val` |
+| search  | 按下 ENTER 键时触发 | `val, event` |
+| click-input |	点击输入区域时触发	 |	`event` |
+| click-left-icon |	点击左侧图标时触发 |	`val, event` |
+| click-right-icon |	点击右侧图标时触发 |	`val, event` |
 
 ### Slots
 
@@ -262,17 +261,17 @@ app.use(Searchbar);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-searchbar-background| _var(--nut-white)_  | -  |
-| --nut-searchbar-right-out-color| _var(--nut-black)_  | -  |
-| --nut-searchbar-padding| _9px 16px_  | -  |
-| --nut-searchbar-width| _100%_  | -  |
-| --nut-searchbar-input-background| _#f7f7f7_  | -  |
-| --nut-searchbar-input-padding| _0 0 0 13px_  | -  |
-| --nut-searchbar-input-height| _32px_  | -  |
-| --nut-searchbar-input-width| _100%_  | -  |
-| --nut-searchbar-input-border-radius| _16px_  | -  |
-| --nut-searchbar-input-box-shadow| _0 0 8px 0 rgba(0, 0, 0, 0.04)_  | -  |
-| --nut-searchbar-input-bar-color| _inherit_  | -  |
-| --nut-searchbar-input-bar-placeholder-color| _inherit_  | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- |
+| --nut-searchbar-background| _var(--nut-white)_  |
+| --nut-searchbar-right-out-color| _var(--nut-black)_  |
+| --nut-searchbar-padding| _9px 16px_  |
+| --nut-searchbar-width| _100%_  |
+| --nut-searchbar-input-background| _#f7f7f7_  |
+| --nut-searchbar-input-padding| _0 0 0 13px_  |
+| --nut-searchbar-input-height| _32px_  |
+| --nut-searchbar-input-width| _100%_  |
+| --nut-searchbar-input-border-radius| _16px_  |
+| --nut-searchbar-input-box-shadow| _0 0 8px 0 rgba(0, 0, 0, 0.04)_  |
+| --nut-searchbar-input-bar-color| _inherit_  |
+| --nut-searchbar-input-bar-placeholder-color| _inherit_  |

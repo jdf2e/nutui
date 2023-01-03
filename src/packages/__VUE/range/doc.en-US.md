@@ -26,11 +26,12 @@ app.use(Range);
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup() {
       const value = ref(40);
-      const onChange = (value) => Toast.text('value：' + value);
+      const onChange = (value) => showToast.text('value：' + value);
       return {
         value,
         onChange,
@@ -53,11 +54,12 @@ app.use(Range);
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref([20, 80]);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -78,11 +80,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(0);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -103,11 +106,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(20);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -128,11 +132,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(30);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -153,11 +158,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -179,11 +185,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(50);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -210,11 +217,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -251,11 +259,12 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value = ref(60);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -291,12 +300,13 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value10 = ref(20);
     const value11 = ref([20,80]);
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,
@@ -347,7 +357,8 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
     const value12 = ref(20);
@@ -360,7 +371,7 @@ export default {
       80: 80,
       100: 100
     });
-    const onChange = (value) => Toast.text('value：' + value);
+    const onChange = (value) => showToast.text('value：' + value);
     return {
       value,
       onChange,

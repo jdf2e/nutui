@@ -151,7 +151,7 @@ Different countdown display text can be realized by setting the `format` attribu
 
 ### Manual Control
 
-Paused and restarted the countdown with the paused attribute
+Paused and restarted the countdown with the `paused` attribute
 
 :::demo
 ```html
@@ -302,18 +302,18 @@ Paused and restarted the countdown with the paused attribute
 
 ### Props
 
-| Attribute | Description | Type | Default
-| ----- | ----- | ----- | -----
-| v-model | Current Time | Object | {}
-| start-time | Start Time | String, Number | Date.now()
-| end-time | End Time | String, Number | Date.now()
-| format |  Format Time | String | HH:mm:ss
-| millisecond |  Whether to enable millisecond render | Boolean | false
-| auto-start |  Whether to auto start count down | Boolean | true
-| time | Total time, unit milliseconds | String，Number | 0
-| paused | Paused | Boolean | false
-| show-days | Show Text Day | Boolean | false
-| show-plain-text | Show Text | Boolean | false
+| Attribute | Description | Type | Default |
+| ----- | ----- | ----- | ----- |  
+| v-model | Current Time | object | `{}` |
+| start-time | Start Time | string \| number | `Date.now()` |
+| end-time | End Time | string \| number | `Date.now()` |
+| format |  Format Time | string | `HH:mm:ss` |
+| millisecond |  Whether to enable millisecond render | boolean | `false` |
+| auto-start |  Whether to auto start count down | boolean | `true` |
+| time | Total time, unit milliseconds | string \| number | `0` |
+| paused | Paused | boolean | `false` |
+| show-days | Show Text Day | boolean | `false` |
+| show-plain-text | Show Text | boolean | `false` |
 
 ### Format
 
@@ -348,8 +348,8 @@ Paused and restarted the countdown with the paused attribute
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-countdown-display| _flex_ | -  |
-| --nut-countdown-color| _inherit_ | -  |
-| --nut-countdown-font-size| _initial_ | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-countdown-display| _flex_ | 
+| --nut-countdown-color| _inherit_ | 
+| --nut-countdown-font-size| _initial_ | 

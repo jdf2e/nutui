@@ -59,7 +59,6 @@ class ImagePreviewFunction {
 const showImagePreview = (options: ImagePreviewOptions): ImagePreviewFunction => new ImagePreviewFunction(options);
 showImagePreview.install = (app: any) => {
   app.use(ImagePreview);
-  app.config.globalProperties.$imagepreview = showImagePreview;
 };
 
 export { showImagePreview };

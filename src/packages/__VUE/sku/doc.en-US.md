@@ -191,6 +191,8 @@ You can configure the maximum value and minimum value of the digital input box a
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
 setup() {
     const customStepper = ref(false);
@@ -221,9 +223,9 @@ setup() {
     // inputNumber 极限值
     const overLimit = (val: any) => {
       if (val.action == 'reduce') {
-        Toast.text(`至少买${val.value}件哦`);
+        showToast.text(`至少买${val.value}件哦`);
       } else {
-        Toast.text(`最多买${val.value}件哦`);
+        showToast.text(`最多买${val.value}件哦`);
       }
     };
     // 切换规格类目
@@ -419,18 +421,18 @@ setup() {
 
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
-| v-model:visible         | Whether to open popup               | boolean |  false              |
-| sku         | Sku data | Array | []               |
-| goods |  Product Info    | Object | - |
-| stepper-max         | Stepper max  | [String, Number] | 99999               |
-| stepper-min         | Stepper min  | [String, Number] | 1               |
-| btn-options        |   Bottom button      | Array | ['confirm']           |
-| btn-extra-text | Add text above button | String | -            |
-| stepper-title         | Stepper left text | String | 'Buy Num'                |
-| stepper-extra-text        |   The text between the stepper and the headline       | [Function, false] | false              |
-| buy-text |  Buy button text    | String | Buy It Now |
-| add-cart-text          |        	Add cart button text                 | String | Add  To cart             |
-| confirm-text          |           Confirm button text              | String | Confirm    |
+| v-model:visible         | Whether to open popup               | boolean |  `false`             |
+| sku         | Sku data | array | `[]`               |
+| goods |  Product Info    | object | - |
+| stepper-max         | Stepper max  | string \| number | `99999`               |
+| stepper-min         | Stepper min  | string \| number | `1`               |
+| btn-options        |   Bottom button      | array | `['confirm']`           |
+| btn-extra-text | Add text above button | string | -            |
+| stepper-title         | Stepper left text | string | `Buy Num`                |
+| stepper-extra-text        |   The text between the stepper and the headline       | function \| false  | `false`              |
+| buy-text |  Buy button text    | string | `Buy It Now` |
+| add-cart-text          |        	Add cart button text                 | string | `Add  To cart`             |
+| confirm-text          |           Confirm button text              | string | `Confirm`   |
 
 ### Events
 
@@ -475,7 +477,7 @@ goods:{
 
 ### sku Data Structure
 
-Each array index represents a specification category。Where,list represents the category value under the specification category。Each category value object includes：name、id、active、disable
+Each array index represents a specification category。Where,`list` represents the category value under the specification category。Each category value object includes：`name`、`id`、`active`、`disable`
 
 ```javascript
 sku : [{
@@ -568,31 +570,31 @@ sku : [{
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-sku-item-border|  _1px solid var(--nut-primary-color)_  | -  |
-| --nut-sku-item-disable-line|  _line-through_  | -  |
-| --nut-sku-opetate-bg-default|  _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_  | -  |
-| --nut-sku-item-active-bg|  _var(--nut-active-color)_  | -  |
-| --nut-sku-opetate-bg-buy|  _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_  | -  |
-| --nut-sku-spec-height|  _30px_  | -  |
-| --nut-sku-spec-line-height|  _var(--nut-sku-spec-height)_  | -  |
-| --nut-sku-spec-font-size|  _11px_  | -  |
-| --nut-sku-spec-background|  _rgba(242, 242, 242, 1)_  | -  |
-| --nut-sku-spec-color|  _var(--nut-black)_  | -  |
-| --nut-sku-spec-margin-right|  _12px_  | -  |
-| --nut-sku-spec-padding|  _0 18px_  | -  |
-| --nut-sku-spec-title-font-weight|  _bold_  | -  |
-| --nut-sku-spec-title-font-size|  _13px_  | -  |
-| --nut-sku-spec-title-color|  _var(--nut-black)_  | -  |
-| --nut-sku-spec-title-margin-bottom|  _18px_  | -  |
-| --nut-sku-operate-btn-height|  _54px_  | -  |
-| --nut-sku-operate-btn-border-top|  _0_  | -  |
-| --nut-sku-operate-btn-item-height|  _40px_  | -  |
-| --nut-sku-operate-btn-item-line-height|  _var(--nut-sku-operate-btn-item-height)_  | -  |
-| --nut-sku-operate-btn-item-font-size|  _15px_  | -  |
-| --nut-sku-operate-btn-item-font-weight|  _normal_  | -  |
-| --nut-sku-product-img-width|  _100px_  | -  |
-| --nut-sku-product-img-height|  _var(--nut-sku-product-img-width)_  | -  |
-| --nut-sku-product-img-border-radius|  _0_  | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-sku-item-border|  _1px solid var(--nut-primary-color)_  |
+| --nut-sku-item-disable-line|  _line-through_  |
+| --nut-sku-opetate-bg-default|  _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_  |
+| --nut-sku-item-active-bg|  _var(--nut-active-color)_  |
+| --nut-sku-opetate-bg-buy|  _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_  |
+| --nut-sku-spec-height|  _30px_  |
+| --nut-sku-spec-line-height|  _var(--nut-sku-spec-height)_  |
+| --nut-sku-spec-font-size|  _11px_  |
+| --nut-sku-spec-background|  _rgba(242, 242, 242, 1)_  |
+| --nut-sku-spec-color|  _var(--nut-black)_  |
+| --nut-sku-spec-margin-right|  _12px_  |
+| --nut-sku-spec-padding|  _0 18px_  |
+| --nut-sku-spec-title-font-weight|  _bold_  |
+| --nut-sku-spec-title-font-size|  _13px_  |
+| --nut-sku-spec-title-color|  _var(--nut-black)_  |
+| --nut-sku-spec-title-margin-bottom|  _18px_  |
+| --nut-sku-operate-btn-height|  _54px_  |
+| --nut-sku-operate-btn-border-top|  _0_  |
+| --nut-sku-operate-btn-item-height|  _40px_  |
+| --nut-sku-operate-btn-item-line-height|  _var(--nut-sku-operate-btn-item-height)_  |
+| --nut-sku-operate-btn-item-font-size|  _15px_  |
+| --nut-sku-operate-btn-item-font-weight|  _normal_  |
+| --nut-sku-product-img-width|  _100px_  |
+| --nut-sku-product-img-height|  _var(--nut-sku-product-img-width)_  |
+| --nut-sku-product-img-border-radius|  _0_  |
 
