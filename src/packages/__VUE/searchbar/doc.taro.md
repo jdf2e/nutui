@@ -45,7 +45,6 @@ app.use(Searchbar);
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const state = reactive({
@@ -53,7 +52,7 @@ app.use(Searchbar);
       });
 
       const search = function () {
-        Toast.text('搜索触发');
+        console.log('搜索触发');
       };
 
       return {

@@ -156,12 +156,11 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
     setup() {
         const value = ref(3);
         const onChange = (val)=>{
-            Toast.text(val);
+            console.log(val);
         }
     return { value,onChange }
     }
@@ -179,7 +178,6 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
     setup() {
         const value = ref(3);

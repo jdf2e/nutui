@@ -68,7 +68,6 @@ app.use(PullRefresh);
 
 <script>
   import { ref,reactive,onMounted,toRefs} from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       const refresh2 = ref(false);
