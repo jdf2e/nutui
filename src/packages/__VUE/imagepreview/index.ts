@@ -10,24 +10,24 @@ import SwiperItem from '../swiperitem/index.vue';
 import Overlay from '../overlay/index.vue';
 
 export class ImagePreviewOptions {
-  show: Boolean = false;
+  show = false;
   images: ImageInterface[] = [];
   videos?: [] = [];
-  contentClose?: Boolean = true;
-  initNo?: Number = 0;
-  paginationVisible?: Boolean = false;
-  paginationColor?: String = '';
-  autoplay?: Number | String = 0;
-  isWrapTeleport?: Boolean = false;
+  contentClose?: boolean = true;
+  initNo?: number = 0;
+  paginationVisible?: boolean = false;
+  paginationColor?: string = '';
+  autoplay?: number | string = 0;
+  isWrapTeleport?: boolean = false;
   showIndex?: boolean = true;
   closeable?: boolean = false;
   closeIcon?: string = 'circle-close';
-  closeIconPosition?: String = 'top-right';
+  closeIconPosition?: string = 'top-right';
   beforeClose?: Interceptor;
   maxZoom?: number = 3;
   minZoom?: number = 1 / 3;
   isLoop?: boolean = true;
-  onClose?: Function = () => {};
+  onClose?(): void;
   onChange?(index: number): void;
   teleport?: string | HTMLElement = 'body';
 }
@@ -37,7 +37,7 @@ class ImagePreviewFunction {
 
   constructor(_options: ImagePreviewOptions) {
     const options = Object.assign(this.options, _options);
-    const { instance, unmount } = CreateComponent(options, {
+    const { unmount } = CreateComponent(options, {
       name: 'image-preview',
       components: [Popup, Video, Swiper, SwiperItem, Overlay],
       wrapper: () => {
@@ -56,11 +56,11 @@ class ImagePreviewFunction {
   }
 }
 
-const _ImagePreview = (options: ImagePreviewOptions): ImagePreviewFunction => new ImagePreviewFunction(options);
-_ImagePreview.install = (app: any) => {
+const showImagePreview = (options: ImagePreviewOptions): ImagePreviewFunction => new ImagePreviewFunction(options);
+showImagePreview.install = (app: any) => {
   app.use(ImagePreview);
-  app.config.globalProperties.$imagepreview = _ImagePreview;
+  app.config.globalProperties.$imagepreview = showImagePreview;
 };
 
-export { ImagePreview };
-export default _ImagePreview;
+export { showImagePreview };
+export default ImagePreview;

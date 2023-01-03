@@ -23,11 +23,12 @@ app.use(Notify);
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Notify } from '@nutui/nutui';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
 export default {
   setup() {
     const baseNotify = (msg: string) => {
-      Notify.text(msg, {
+      showNotify.text(msg, {
         onClose: () => {
           console.log('close');
         },
@@ -59,20 +60,21 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Notify } from '@nutui/nutui';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
 export default {
   setup() {
     const primaryNotify = (msg: string) => {
-      Notify.primary(msg);
+      showNotify.primary(msg);
     };
     const successNotify = (msg: string) => {
-      Notify.success(msg);
+      showNotify.success(msg);
     };
     const errorNotify = (msg: string) => {
-      Notify.danger(msg);
+      showNotify.danger(msg);
     };
     const warningNotify = (msg: string) => {
-      Notify.warn(msg);
+      showNotify.warn(msg);
     };
     return {
       primaryNotify,
@@ -101,17 +103,18 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Notify } from '@nutui/nutui';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
 export default {
   setup() {
     const cusBgNotify = (msg: string) => {
-      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+      showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
     };
     const timeNotify = (msg: string) => {
-      Notify.text(msg, { duration: 10000 });
+      showNotify.text(msg, { duration: 10000 });
     };
     const positionNotify = (msg: string) => {
-      Notify.text(msg, { position: 'bottom' });
+      showNotify.text(msg, { position: 'bottom' });
     };
     return {
       cusBgNotify,
@@ -131,7 +134,7 @@ export default {
 ```html
 <template>
   <nut-cell-group title="Template use">
-    <nut-cell is-Link @click="showNotify">Template use</nut-cell>
+    <nut-cell is-Link @click="onClick">Template use</nut-cell>
     <nut-notify v-model:visible="show" :duration="2000">
       <span>Content</span>
     </nut-notify>
@@ -139,16 +142,17 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Notify } from '@nutui/nutui';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
 export default {
   setup() {
     const show = ref(false);
-    const showNotify = () => {
+    const onClick = () => {
       show.value = true;
     };
     return {
       show,
-      showNotify
+      onClick
     };
   }
 }

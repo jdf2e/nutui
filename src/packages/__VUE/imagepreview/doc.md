@@ -250,7 +250,8 @@ app.use(ImagePreview);
 </template>
 
 <script lang="ts">
-  import { ImagePreview } from '@nutui/nutui';
+  import { showImagePreview } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/imagepreview/style';
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
@@ -271,11 +272,16 @@ app.use(ImagePreview);
             ]
         });
 
+        const onClose = () => {
+            console.log('imagepreview closed');
+        };
+
         const fnShow = () => {
-        ImagePreview({
-            show: true,
-            images: resData.imgData
-        })
+            showImagePreview({
+                show: true,
+                images: resData.imgData,
+                onClose
+            })
         };
         
         return {
@@ -298,7 +304,7 @@ app.use(ImagePreview);
 | autoplay | 自动轮播时长，0表示不会自动轮播 | number\|string  | 3000  |
 | init-no | 初始页码 | number | 1
 | pagination-visible | 分页指示器是否展示    | boolean | false |
-| pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
+| pagination-color   | 分页指示器选中的颜色    | string  | '#fff'  |
 | content-close   | 点击图片可以退出预览    | boolean  | false  |
 | show-index  | 是否显示页码    | boolean  | true  |
 | closeable  | 是否显示关闭图标    | boolean  | false  |
