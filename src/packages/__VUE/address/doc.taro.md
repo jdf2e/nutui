@@ -84,7 +84,7 @@ app.use(Address);
 
 ### 选择省市区
 
-如果想选中某个省市区，需要在 model-value 中按照 province、city、country、town 的顺序配置想要展示的地区 id 值，并且保证有能查询到对应的省市区数据即可。
+如果想选中某个省市区，需要在 `model-value` 中按照 `province`、`city`、`country`、`town` 的顺序配置想要展示的地区 id 值，并且保证有能查询到对应的省市区数据即可。
 
 :::demo
 ```html
@@ -545,20 +545,20 @@ app.use(Address);
 
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
-| v-model:visible | 是否打开地址选择 | String | '' |
-| type | 地址选择类型 exist/custom/custom2  | String | 'custom' |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px' |
-| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
-| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true |
-| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区' |
-| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至' |
-| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址' |
-| columns-placeholder | 列提示文字 | String|Array | '请选择' |
-| lock-scroll  | 背景是否锁定      | Boolean        | `true`  |
+| v-model:visible | 是否打开地址选择 | string | `''` |
+| type | 地址选择类型 exist/custom/custom2  | string | `custom` |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
+| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | array | `[]` |
+| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | boolean | `true` |
+| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
+| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| string | `配送至` |
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | `选择其他地址` |
+| columns-placeholder | 列提示文字 | string \| array | `请选择` |
+| lock-scroll  | 背景是否锁定      | boolean        | `true`  |
 
   * provinceName 省的名字
   * cityName 市的名字
@@ -570,9 +570,9 @@ app.use(Address);
 ### Events
 | 字段 | 说明 | 回调参数  |
 |----- | ----- | ----- |
-| change | 自定义选择地址时，选择地区时触发 |  参考 onChange |
-| selected | 选择已有地址列表时触发 | 参考 selected |
-| close | 地址选择弹框关闭时触发 | 参考 close |
+| change | 自定义选择地址时，选择地区时触发 |  参考 `onChange` |
+| selected | 选择已有地址列表时触发 | 参考 `selected` |
+| close | 地址选择弹框关闭时触发 | 参考 `close` |
 | close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
 | switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
 
@@ -587,15 +587,15 @@ app.use(Address);
 ### selected 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  {} |
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  {} |
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {} |
+| 第一个参数（prevExistAdd） |  选择前选中的地址 |  `{}` |
+| 第二个参数（nowExistAdd） |  当前选中的地址 |  `{}` |
+| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  `{}` |
 
 ### close 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
 | type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {}  |
+| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | `{}`  |
 
 ### Slots
 | 字段 | 说明 | 
@@ -611,17 +611,17 @@ app.use(Address);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| -    |
-|  --nut-address-icon-color| _var(--nut-primary-color)_     | -    |
-|  --nut-address-header-title-font-size   | _18px_          | -    |
-|  --nut-address-header-title-color| _#262626_    | -    |
-|  --nut-address-region-tab-font-size| _13px_  | -    |
-|  --nut-address-region-tab-color| _#1d1e1e_  | -    |
-|  --nut-address-region-tab-active-item-font-weight| _bold_    | -    |
-|  --nut-address-region-tab-line-border-radius| _0_   | -    |
-|  --nut-address-region-tab-line-opacity| _1_   | -    |
-|  --nut-address-region-item-color| _#333_    | -    |
-|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | -    |
-|  --nut-address-item-margin-right| _9px_  | -    |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| 
+|  --nut-address-icon-color| _var(--nut-primary-color)_     | 
+|  --nut-address-header-title-font-size   | _18px_          | 
+|  --nut-address-header-title-color| _#262626_    | 
+|  --nut-address-region-tab-font-size| _13px_  | 
+|  --nut-address-region-tab-color| _#1d1e1e_  | 
+|  --nut-address-region-tab-active-item-font-weight| _bold_    | 
+|  --nut-address-region-tab-line-border-radius| _0_   | 
+|  --nut-address-region-tab-line-opacity| _1_   | 
+|  --nut-address-region-item-color| _#333_    | 
+|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | 
+|  --nut-address-item-margin-right| _9px_  | 

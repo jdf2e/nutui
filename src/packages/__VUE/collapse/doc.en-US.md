@@ -184,22 +184,22 @@ export default {
 ## API
 ### Collapse Props
 
-|Field | Description | Type | Default
+| Field | Description | Type | Default
 |----- | ----- | ----- | -----
-|V-model | name of the current expansion panel | accordion mode: string | number<br>Non accordion mode: (string | number) [] | -|
-|Accordion | Enable accordion mode |_boolean_ | `false` |
+| v-model | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-` |
+| accordion | Whether to enable accordion mode | boolean | `false` |
 
 ### CollapseItem Props
-
-|Parameter | Description | Type | Default|
+| Parameter | Description | Type | Default |
 |------|------|------|------|
-|Name | Unique identifier, required | string number | - 1|
-|Title | The content on the left side of the title bar supports slot incoming (the incoming priority of props is higher) | string | -|
-|Value | The content on the right side of the title bar supports slot incoming (the incoming priority of props is higher) | string | -|
-|Label | Title bar description information |_number \| string_ | - |
-|Rotate | Click the rotation angle of folding and unfolding to take effect in custom icon mode | string number | 180|
-|Disabled | Disable the title bar |_boolean_ | false |
-|Border | Display border |_boolean_ | `true` |
+| name | unique identifier, required | string \| number | `-1` |
+| title | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string |`-` |
+| value | The content on the right side of the title bar, support slot input (`props` input has a higher priority) | string | `-` |
+| icon | The icon component on the left side of the title bar, equivalent to the `nutui-icon` component | - | `-` |
+| label | title bar description | number \| string | `-` |
+| rotate | Click the rotation angle of folding and unfolding, effective in the custom icon mode | string \| number | `180` |
+| disabled | whether the title bar is disabled | boolean | `false` |
+| border | Whether to display borders | boolean | `true` |
 
 
 ### CollapseItem Slots
@@ -224,18 +224,18 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-collapse-item-padding| _13px 36px 13px 26px_ | -  |
-| --nut-collapse-item-color| _#666666_ | -  |
-| --nut-collapse-item-disabled-color| _#c8c9cc_ | -  |
-| --nut-collapse-item-icon-color| _#666666_ | -  |
-| --nut-collapse-item-font-size| _var(--nut-font-size-2)_ | -  |
-| --nut-collapse-item-line-height| _24px_ | -  |
-| --nut-collapse-item-sub-title-color| _#666666_ | -  |
-| --nut-collapse-wrapper-content-padding| _12px 26px_ | -  |
-| --nut-collapse-wrapper-empty-content-padding| _0 26px_ | -  |
-| --nut-collapse-wrapper-content-color| _#666666_ | -  |
-| --nut-collapse-wrapper-content-font-size| _var(--nut-font-size-2)_ | -  |
-| --nut-collapse-wrapper-content-line-height| _1.5_ | -  |
-| --nut-collapse-wrapper-content-background-color| _var(--nut-white)_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- | 
+| --nut-collapse-item-padding| _13px 36px 13px 26px_ |
+| --nut-collapse-item-color| _#666666_ |
+| --nut-collapse-item-disabled-color| _#c8c9cc_ |
+| --nut-collapse-item-icon-color| _#666666_ |
+| --nut-collapse-item-font-size| _var(--nut-font-size-2)_ |
+| --nut-collapse-item-line-height| _24px_ |
+| --nut-collapse-item-sub-title-color| _#666666_ |
+| --nut-collapse-wrapper-content-padding| _12px 26px_ |
+| --nut-collapse-wrapper-empty-content-padding| _0 26px_ |
+| --nut-collapse-wrapper-content-color| _#666666_ |
+| --nut-collapse-wrapper-content-font-size| _var(--nut-font-size-2)_ |
+| --nut-collapse-wrapper-content-line-height| _1.5_ |
+| --nut-collapse-wrapper-content-background-color| _var(--nut-white)_ |

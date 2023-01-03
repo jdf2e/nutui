@@ -69,7 +69,6 @@ The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'comp
 
 <script>
   import { ref,reactive,onMounted,toRefs} from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       const refresh2 = ref(false);

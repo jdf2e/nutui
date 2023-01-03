@@ -137,12 +137,13 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
     setup() {
         const value = ref(3);
         const onChange = (val)=>{
-            Toast.text(val);
+            showToast.text(val);
         }
     return { value,onChange }
     }

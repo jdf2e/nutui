@@ -24,7 +24,8 @@ app.use(Picker);
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const columns = ref([
@@ -38,7 +39,7 @@ app.use(Picker);
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {columns, confirm};
@@ -69,7 +70,8 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const show = ref(false)
@@ -114,6 +116,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -128,7 +132,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
       ]);
     
        const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {columns,selectedValue, confirm};
@@ -156,6 +160,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -170,7 +176,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
       ]);
     
        const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {columns,selectedValue, confirm};
@@ -198,6 +204,8 @@ The default selection is implemented by setting `modelValue`, which is an array 
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
        const selectedTime = ref(['Wednesday','Afternoon']);
@@ -219,7 +227,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
       const change = ({ selectedValue,selectedOptions }) => {
         console.log(selectedValue);
@@ -250,6 +258,8 @@ Use the children field of the Columns attribute to cascade options
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
@@ -301,7 +311,7 @@ Use the children field of the Columns attribute to cascade options
       ]);
     
        const confirm = ( { selectedValue,selectedOptions })=>{
-         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
      
 
@@ -328,6 +338,8 @@ Use the children field of the Columns attribute to cascade options
 </template>
 <script>
   import { ref, onMounted } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup(props) {
       const asyncColumns = ref([]);
@@ -351,7 +363,7 @@ Use the children field of the Columns attribute to cascade options
       });
       
       const confirm = ( { selectedValue,selectedOptions })=>{
-         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {asyncColumns,asyncValue, confirm};

@@ -27,11 +27,10 @@ app.use(Range);
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const value = ref(40);
-      const onChange = (value) => Toast.text('当前值：' + value);
+      const onChange = (value) => console.log('当前值：' + value);
       return {
         value,
         onChange,
@@ -54,11 +53,10 @@ app.use(Range);
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref([20, 80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -79,11 +77,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(0);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -104,11 +101,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(20);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -129,11 +125,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(30);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -154,11 +149,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -180,11 +174,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(50);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -211,11 +204,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -253,11 +245,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(60);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -294,12 +285,11 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value10 = ref(20);
     const value11 = ref([20,80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -349,7 +339,6 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value12 = ref(20);
@@ -362,7 +351,7 @@ export default {
       80: 80,
       100: 100
     });
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,

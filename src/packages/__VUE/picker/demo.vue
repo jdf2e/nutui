@@ -59,7 +59,7 @@ import { PickerOption } from './types';
 const { createDemo, translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 
 useTranslate(Internation);
 export default createDemo({
@@ -178,7 +178,7 @@ export default createDemo({
     });
 
     const confirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
-      Toast.text(selectedOptions.map((val: any) => val.text).join(','));
+      showToast.text(selectedOptions.map((val: any) => val.text).join(','));
     };
 
     const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {

@@ -9,7 +9,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
-    active: {
+    modelValue: {
       type: [String, Number, Array],
       default: () => []
     },
@@ -18,7 +18,7 @@ export default create({
       default: false
     }
   },
-  emits: ['update:active', 'change'],
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const collapseDom: any = ref(null);
     const collapseChldren: any = ref([]);
@@ -30,7 +30,7 @@ export default create({
     });
 
     watch(
-      () => props.active,
+      () => props.modelValue,
       (newval: number | string | any) => {
         let doms: any = collapseChldren.value;
         Array.from(doms).forEach((item: any) => {
@@ -50,12 +50,12 @@ export default create({
     });
 
     const changeVal = (val: string | number | Array<string | number>) => {
-      emit('update:active', val);
+      emit('update:modelValue', val);
       emit('change', val);
     };
 
     const changeValAry = (name: string) => {
-      const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
+      const activeItem: any = props.modelValue instanceof Object ? Object.values(props.modelValue) : props.modelValue;
       let index = -1;
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
@@ -67,9 +67,9 @@ export default create({
     };
 
     const isExpanded = (name: string | number | Array<string | number>) => {
-      const { accordion, active } = props;
+      const { accordion, modelValue } = props;
       if (accordion) {
-        return typeof active === 'number' || typeof active === 'string' ? active == name : false;
+        return typeof modelValue === 'number' || typeof modelValue === 'string' ? modelValue == name : false;
       }
     };
 

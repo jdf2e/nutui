@@ -28,15 +28,17 @@ app.use(Invoice);
   </nut-invoice>
 </template>
 <script lang="ts">
-import { ref,reactive } from 'vue';
+import { ref, reactive } from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup(){
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
-        Toast.loading('模拟异步验证中...');
+        showToast.loading('模拟异步验证中...');
         setTimeout(() => {
-          Toast.hide();
+          showToast.hide();
           resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
         }, 1000);
       });

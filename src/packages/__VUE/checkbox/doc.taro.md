@@ -239,7 +239,6 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs, ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     props: {},
     setup() {
@@ -257,7 +256,7 @@ app.use(Checklist);
 
       const group = ref(null);
       const changeBox4 = (label: any[]) => {
-        Toast.text(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`);
+        console.log(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`);
       };
 
       const toggleAll = (f: boolean) => {
@@ -265,7 +264,7 @@ app.use(Checklist);
       };
 
       const toggleReverse = () => {
-        Toast.text(`反选`);
+        console.log(`反选`);
         group.value.toggleReverse();
       };
 
@@ -300,7 +299,6 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     props: {},
     setup() {
@@ -337,7 +335,6 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     props: {},
     setup() {

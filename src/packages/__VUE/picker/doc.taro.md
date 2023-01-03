@@ -23,7 +23,6 @@ app.use(Picker);
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       const columns = ref([
@@ -37,7 +36,7 @@ app.use(Picker);
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {columns, confirm};
@@ -68,7 +67,6 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </template>
 <script>
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       const show = ref(false)
@@ -127,7 +125,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {columns,selectedValue, confirm};
@@ -169,7 +167,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return { columns,selectedValue, confirm};
@@ -218,7 +216,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+        console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
       const change = ({ selectedValue,selectedOptions }) => {
         console.log(selectedValue);
@@ -298,7 +296,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+         console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
      
 
@@ -347,7 +345,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       });
       
       const confirm = ( { selectedValue,selectedOptions })=>{
-         Toast.text(selectedOptions.map((val: any) => val.text).join(','))
+         console.log(selectedOptions.map((val: any) => val.text).join(','))
       }
 
       return {asyncColumns,asyncValue, confirm};

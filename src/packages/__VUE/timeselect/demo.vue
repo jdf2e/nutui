@@ -73,8 +73,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('time-select');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -101,7 +102,6 @@ const initTranslate = () =>
 export default createDemo({
   setup() {
     initTranslate();
-    const { proxy } = getCurrentInstance() as any;
     const state = reactive({
       visible1: false,
       currentKey1: 0,
@@ -155,7 +155,7 @@ export default createDemo({
     };
 
     const handleSelected1 = (obj: any) => {
-      proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
+      showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
     const handleChange2 = (pannelKey: number) => {
@@ -184,7 +184,7 @@ export default createDemo({
     };
 
     const handleSelected2 = (obj: any) => {
-      proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
+      showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
     const handleClick3 = () => {

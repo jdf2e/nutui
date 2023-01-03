@@ -82,7 +82,7 @@ const initTranslate = () =>
   });
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('icon');
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
 export default createDemo({
   props: {},
@@ -98,7 +98,7 @@ export default createDemo({
       input.select();
       if (document.execCommand('copy')) {
         document.execCommand('copy');
-        Toast.text(`${translate('copyToast')}: <br/>${displayText}`);
+        showToast.text(`${translate('copyToast')}: <br/>${displayText}`);
       }
       document.body.removeChild(input);
     };

@@ -179,14 +179,14 @@ export default {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| header-type         | 头部样式展示类型，可选： default，complex      | String | default               |
-| images-rows         | 评论图片展示行数，可选： one，multi     | String | one               |
-| ellipsis        | 设置评论内容省略行数       | [String,Number] | 2               |
-| videos         | 视频信息 | Array | []              |
-| images | 图片信息    | Array | [] |
-| info     | 评论详情                      | Object | {}             |
-| follow     | 追评内容                      | Object | {}             |
-| operation | 配置底部按钮   | Array | ["replay", "like", "more"] |
+| header-type         | 头部样式展示类型，可选： default，complex      | string | `default`               |
+| images-rows         | 评论图片展示行数，可选： one，multi     | string | `one`               |
+| ellipsis        | 设置评论内容省略行数       | string \| number | `2`               |
+| videos         | 视频信息 | array | `[]`             |
+| images | 图片信息    | array | `[]` |
+| info     | 评论详情                      | object | `{}`             |
+| follow     | 追评内容                      | object | `{}`             |
+| operation | 配置底部按钮   | array | `["replay", "like", "more"]` |
 
 ### Events
 
@@ -249,9 +249,9 @@ const info = [{
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ | -  |
-| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ | -  |
-| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ | -  |
-| --nut-comment-shop-color| _var(--nut-primary-color)_ | -  |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ |
+| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ |
+| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ |
+| --nut-comment-shop-color| _var(--nut-primary-color)_ |

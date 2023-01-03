@@ -29,7 +29,7 @@ import { HeartFill, StarFillN } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('rate');
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -71,7 +71,7 @@ export default createDemo({
       val8: 3
     });
     const onChange = (val: string) => {
-      Toast.text(val);
+      showToast.text(val);
     };
     return {
       state,

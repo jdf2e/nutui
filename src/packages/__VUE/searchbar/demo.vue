@@ -55,7 +55,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -103,11 +103,11 @@ export default createDemo({
     });
 
     const search = function () {
-      Toast.text('搜索触发');
+      showToast.text('搜索触发');
     };
 
     const clickLeft = function () {
-      Toast.text('点击回退按钮');
+      showToast.text('点击回退按钮');
     };
     const clickLeftIcon = function (a: string, b: Event) {
       console.log(a, b);

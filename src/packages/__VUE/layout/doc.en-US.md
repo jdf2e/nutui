@@ -232,29 +232,29 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 
 ### Row Props
 
-| Attribute | Description | Type   | Default
-|----- | ----- | ----- | ----- 
-| type | The optional value is flex | String | -
-| gutter | Spacing between column elements（ in PX ） | String、Number | -
-| justify | Flex spindle alignment, optional values are start end center space-around space-between space-evenly | String | start
-| align | Flex cross axis alignment, optional values are flex-start center flex-end | String | flex-start
-| flex-wrap | Whether flex breaks a line. The optional values are nowrap wrap reverse | String | nowrap
+| Field | Description | Type | Default
+|----- | ----- | ----- | -----
+| type | layout method, optional value is `flex` | string | `-`
+| gutter | spacing between column elements (in `px`) | string \| number | `-`
+| justify | Flex main axis alignment, optional values are `start` `end` `center` `space-around` `space-between` `space-evenly` | string | `start`
+| align | Flex cross axis alignment, optional values are `flex-start` `center` `flex-end` | string | `flex-start`
+| flex-wrap | Whether flex wraps, optional values are `nowrap` `wrap` `reverse` | string | `nowrap`
 
 ### Col Props
 
-| Attribute | Description | Type   | Default
-|----- | ----- | ----- | ----- 
-| span | Column element width（There are 24 copies in total. For example, if you set 3 in a row, the span value is 8） | String、Number | 24
-| offset | Column element offset distance | String、Number | 0
+| Field | Description | Type | Default
+|----- | ----- | ----- | -----
+| span | column element width (divided into 24 parts in total, for example, if there are 3 in a row, then the span value is 8) | string \| number | `24`
+| offset | column element offset distance | string \| number | `0`
 
 ### Row Events
 
-| Attribute | Description | callback
-|----- | ----- | ----- 
-| click | Triggered when clicked | event: MouseEvent
+| field | description | callback parameter
+|----- | ----- | -----
+| click | Triggered when clicked | `event: MouseEvent`
 
 ### Col Events
 
-| Attribute | Description | Callback Arguments
-|----- | ----- | ----- 
-| click | Triggered when clicked | event: MouseEvent
+| field | description | callback parameter
+|----- | ----- | -----
+| click | Triggered when clicked | `event: MouseEvent`
