@@ -17,7 +17,7 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-    <nut-empty description="no data"></nut-empty>
+  <nut-empty description="no data"></nut-empty>
 </template>
 ```
 :::
@@ -26,9 +26,9 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-    <nut-empty image="empty" description="no content"></nut-empty>
-    <nut-empty image="error" description="error"></nut-empty>
-    <nut-empty image="network" description="no network"></nut-empty>
+  <nut-empty image="empty" description="no content"></nut-empty>
+  <nut-empty image="error" description="error"></nut-empty>
+  <nut-empty image="network" description="no network"></nut-empty>
 </template>
 ```
 :::
@@ -36,11 +36,11 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-    <nut-empty description="Description">
-        <template #image>
-            <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
-        </template>
-    </nut-empty>
+  <nut-empty description="Description">
+    <template #image>
+      <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
+    </template>
+  </nut-empty>
 </template>
 ```
 :::
@@ -49,11 +49,11 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-    <nut-empty image="error" description="Failed to load">
-        <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">Retry</nut-button>
-        </div>
-    </nut-empty>
+  <nut-empty image="error" description="Failed to load">
+    <div style="margin-top: 10px">
+      <nut-button icon="refresh" type="primary">Retry</nut-button>
+    </div>
+  </nut-empty>
 </template>
 ```
 :::
@@ -64,9 +64,9 @@ app.use(Empty);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 	Image type, can be set to error network search or image URL              | String | empty        |
-| image-size        | Image size                      | Number \| String | -       |
-| description         | Description | String | No Data                |
+| image         | 	Image type, can be set to `empty`, `error`, `network` or image URL              | string | `empty`        |
+| image-size        | Image size                      | number \| string | `-`       |
+| description         | Description | string | `-`                |
 
 ### Slots
 
@@ -82,13 +82,13 @@ app.use(Empty);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-empty-padding| _32px 0_ | -  |
-| --nut-empty-image-size| _170px_ | -  |
-| --nut-empty-description-margin-top| _4px_ | -  |
-| --nut-empty-description-color| _#666666_ | -  |
-| --nut-empty-description-font-size| _14px_ | -  |
-| --nut-empty-description-line-height| _20px_ | -  |
-| --nut-empty-description-padding| _0 40px_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-empty-padding| _32px 0_ |
+| --nut-empty-image-size| _170px_ |
+| --nut-empty-description-margin-top| _4px_ |
+| --nut-empty-description-color| _#666666_ |
+| --nut-empty-description-font-size| _14px_ |
+| --nut-empty-description-line-height| _20px_ |
+| --nut-empty-description-padding| _0 40px_ |
     

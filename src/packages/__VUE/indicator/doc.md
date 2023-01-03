@@ -11,9 +11,7 @@ import { createApp } from 'vue';
 import { Indicator } from '@nutui/nutui'
 
 const app = createApp();
-
 app.use(Indicator);
-
 ```
 
 ### 基础用法
@@ -42,15 +40,15 @@ app.use(Indicator);
 :::demo
 ```html
 <template>
-    <nut-cell>
-      <nut-indicator :block="true" algin="center" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
-    <nut-cell>
-      <nut-indicator :block="true" align="left" :size="6" :current="1">step1</nut-indicator>
-    </nut-cell>
-    <nut-cell>
-      <nut-indicator :block="true" align="right" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" algin="center" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" align="left" :size="6" :current="1">step1</nut-indicator>
+  </nut-cell>
+  <nut-cell>
+    <nut-indicator :block="true" align="right" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
 </template>
 ```
 :::
@@ -59,9 +57,9 @@ app.use(Indicator);
 :::demo
 ```html
 <template>
-    <nut-cell>
-      <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
-    </nut-cell>
+  <nut-cell>
+    <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
+  </nut-cell>
 </template>
 ```
 :::
@@ -73,11 +71,11 @@ app.use(Indicator);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 当前步骤               | Number | 1              |
-| size       | 步骤长度                         | Number | 3               |
-| block | 是否启用块级布局     | Boolean | false |
-| align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| String | left |
-| fill-zero     | 单数前面是否补0                      | Boolean | true        |
+| current  | 当前步骤               | number | `1`              |
+| size       | 步骤长度                         | number | `3`               |
+| block | 是否启用块级布局     | boolean | false |
+| align | 对齐方式，仅在 `block` 为 `true` 时生效, 可选值 `left`, `right`, `center` | string | `left` |
+| fill-zero     | 单数前面是否补 0                      | boolean | `true`        |
 
 ## 主题定制
 
@@ -85,12 +83,12 @@ app.use(Indicator);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-indicator-color|  _var(--nut-primary-color)_ | -  |
-| --nut-indicator-dot-color|  _var(--nut-disable-color)_ | -  |
-| --nut-indicator-white|  _var(--nut-white)_ | -  |
-| --nut-indicator-size|  _18px_ | -  |
-| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ | -  |
-| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ | -  |
-| --nut-indicator-number-font-size|  _10px_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-indicator-color|  _var(--nut-primary-color)_ |
+| --nut-indicator-dot-color|  _var(--nut-disable-color)_ |
+| --nut-indicator-white|  _var(--nut-white)_ |
+| --nut-indicator-size|  _18px_ |
+| --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ |
+| --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ |
+| --nut-indicator-number-font-size|  _10px_ |

@@ -27,6 +27,7 @@
     <nut-noticebar :text="translate('text')" wrapable></nut-noticebar>
 
     <h2>{{ translate('vertical') }}</h2>
+
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
@@ -155,10 +156,10 @@ export default createDemo({
 .demo {
   padding-bottom: 30px !important;
 
-  // .interstroll-list {
-  //   padding: 0 10px;
-  //   background: rgba(251, 248, 220, 1);
-  //   color: #d9500b;
-  // }
+  .interstroll-list {
+    padding: 0 10px;
+    background: rgba(251, 248, 220, 1);
+    color: #d9500b;
+  }
 }
 </style>

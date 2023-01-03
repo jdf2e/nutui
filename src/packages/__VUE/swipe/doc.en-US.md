@@ -150,18 +150,18 @@ export default {
 ## API
 ### Props
 
-| Attribute                   | Description               | Type    | Default |
-|-----------------------------|---------------------------|---------|---------|
-| name                        | identifies                | String  | -       |
-| disabled                    | Whether to disabled swipe | String  | false   |
-| touch-move-prevent-default  | Whether to stop touchmove event preventdefault       | boolean | false   |
-| touch-move-stop-propagation | Whether to stop touchmove event propagation      | boolean | false   |
+| Attribute                   | Description                                    | Type    | Default |
+|-----------------------------|------------------------------------------------|---------|---------|
+| name                        | identifies                                     | string  | -       |
+| disabled                    | Whether to disabled swipe                      | string  | false   |
+| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | false   |
+| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | false   |
 ### Events
 
-| Event | Description                  | Arguments              |
-|-------|------------------------------|------------------------|
-| open  | Emitted when Swipe is opened | {type:'left or right'} |
-| close | Emitted when Swipe is closed | {type:'left or right'} |
+| Event | Description                  | Arguments                  |
+|-------|------------------------------|----------------------------|
+| open  | Emitted when Swipe is opened | { type:'left' \| 'right' } |
+| close | Emitted when Swipe is closed | { type:'left' \| 'right' } |
     
 
 ### Slots
@@ -175,7 +175,7 @@ export default {
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
-| Name  | Description | Arguments     |
-|-------|-------------|---------------|
-| open  | open swipe  | left or right |
-| close | close swipe |               |
+| Name  | Description | Arguments         |
+|-------|-------------|-------------------|
+| open  | open swipe  | 'left' \| 'right' |
+| close | close swipe |                   |

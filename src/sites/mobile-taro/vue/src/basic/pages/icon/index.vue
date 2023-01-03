@@ -74,25 +74,30 @@ export default {
   > .nutui-iconfont {
     margin-right: 10px;
   }
-}
-.icon-ul {
-  display: flex;
-  flex-wrap: wrap;
-  .icon-li {
-    flex: 0 0 25%;
-    max-width: 25%;
+  .icon-ul,
+  .h5-ul,
+  ul {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    .icon-li,
+    .h5-li,
+    li {
+      flex: 0 0 25%;
+      max-width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    span {
-      height: 40px;
-      font-size: 12px;
-      text-align: center;
-    }
-    .nutui-iconfont {
-      margin: 16px 0 16px;
+      span {
+        height: 40px;
+        font-size: 12px;
+        text-align: center;
+      }
+      .nutui-iconfont {
+        margin: 16px 0 16px;
+      }
     }
   }
 }

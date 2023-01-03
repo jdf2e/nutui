@@ -24,7 +24,7 @@ app.use(IconFont);
 ```js
 import { Add } from '@nutui/icons-vue-taro';
 // template
-<Add color='red'>
+<Add color='red' />
 ```
 
 ### 方式二：全量使用
@@ -172,14 +172,14 @@ import './assets/font/iconfont.css';
 
 ### Props
 
-| 参数            | 说明                                    | 类型             | 默认值           |
-|-----------------|-----------------------------------------|------------------|------------------|
-| name            | 图标名称或图片链接                      | String           | -                |
-| color           | 图标颜色                                | String           | -                |
-| size            | 图标大小，如 `20px` `2em` `2rem`        | String or Number | -                |
-| font-class-name | 自定义 icon 字体基础类名                | String           | `nutui-iconfont` |
-| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | String           | `nut-icon`       |
-| tag             | HTML 标签                               | String           | `i`              |
+| 参数            | 说明                                     | 类型             | 默认值           |
+|-----------------|------------------------------------------|------------------|------------------|
+| name            | 图标名称或图片链接                       | string           | -                |
+| color           | 图标颜色                                 | string           | -                |
+| size            | 图标大小，如 `20px` `2em` `2rem`         | string \| object | -                |
+| font-class-name | 自定义 icon 字体基础类名                 | string           | `nutui-iconfont` |
+| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | string           | `nut-icon`       |
+| tag             | HTML 标签                                | string           | `i`              |
 
 ### Events
 
