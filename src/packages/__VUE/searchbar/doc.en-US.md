@@ -215,39 +215,41 @@ export default {
 ```
 :::
 ## API
+
 ### Props
 
-| Attribute | Description | Type   | Default |
-|--------------|----------------------------------|--------|------------------|
-| v-model | Currently entered value | number / string | ''|
-|label| left text of search box | string | ''|
-|shape | search box shape. The optional value is round | string | square|
-|max-length | maximum input length | [number, string] | '9999'|
-|input-type | input box type | string | 'text'|
-|placeholder | input box default dark grain | string | 'please enter'|
-|clear | whether to display the clear button | Boolean | true|
-|background | input box external background | string | '#fff'|
-|input-background | internal background of input box | string | '#f7f7f7'|
-|autofocus | Auto focus | boolean | false |
-|disabled| disable input box | Boolean | false|
-|readonly| input box read only | Boolean | false|
-|input-align| alignment, optional ` center ` ` right ` | string | left |
+| Parameter | Description | Type | Default |
+|--------------|---------------------------------- |-------|------------------|
+| v-model | current input value | number /| string | `''` |
+| label| left text of search box | string | `''` |
+| shape | search box shape, optional value is `square` `round` | string | `square` |
+| max-length | maximum input length | number \| string | `9999` |
+| input-type | input box type | string | `text` |
+| placeholder | The default dark pattern of the input box | string | `Please enter` |
+| clearable | whether to show clear button | boolean | `true` |
+| clear-icon | custom clear button icon (default use `@nutui/nutui-icons`) | Object | `CircleClose` |
+| background | external background of the input box | string | `#fff` |
+| input-background | background of input box | string | `#f7f7f7` |
+| autofocus | Whether to automatically focus | boolean | `false` |
+| focus-style | search box style when focused | Object | `-` |
+| disabled | Whether to disable the input box | boolean | `false` |
+| readonly| input field is read only | boolean | `false` |
+| input-align| alignment, optional `left` `center` `right` | string | `left` |
+
 
 
 ### Events
 
-
-| Event | Description                  | Arguments   |
+| Event Name | Description | Callback Parameters |
 |--------|----------------|--------------|
-|change | Triggered when content is entered | val, event |
-|focus | Triggered when focusing | val, event|
-|blur | Triggered when out of focus | val, event|
-|clear | Triggered when clicking empty | val|
-|search | Triggered when the Enter key is pressed | val, event|
-| click-input| Triggered when the input field is clicked| event |
-| click-left-icon| Triggered when the icon on the left is clicked| val, event |
-| click-right-icon| Triggered when the icon on the right is clicked| val, event |
-
+| change | fires when something is entered | `val, event` |
+| focus | fires on focus | `val, event` |
+| blur | Triggered when out of focus | `val, event` |
+| clear | Triggered when click clear | `val` |
+| search | fires when the ENTER key is pressed | `val, event` |
+| click-input| Fired when the input field is clicked | `event` |
+| click-left-icon| Fires when the left icon is clicked | `val, event` |
+| click-right-icon| Fires when the right icon is clicked | `val, event` |
 
 ### Slots
 
@@ -264,17 +266,17 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-searchbar-background| _var(--nut-white)_  | -  |
-| --nut-searchbar-right-out-color| _var(--nut-black)_  | -  |
-| --nut-searchbar-padding| _9px 16px_  | -  |
-| --nut-searchbar-width| _100%_  | -  |
-| --nut-searchbar-input-background| _#f7f7f7_  | -  |
-| --nut-searchbar-input-padding| _0 0 0 13px_  | -  |
-| --nut-searchbar-input-height| _32px_  | -  |
-| --nut-searchbar-input-width| _100%_  | -  |
-| --nut-searchbar-input-border-radius| _16px_  | -  |
-| --nut-searchbar-input-box-shadow| _0 0 8px 0 rgba(0, 0, 0, 0.04)_  | -  |
-| --nut-searchbar-input-bar-color| _inherit_  | -  |
-| --nut-searchbar-input-bar-placeholder-color| _inherit_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-searchbar-background| _var(--nut-white)_  |
+| --nut-searchbar-right-out-color| _var(--nut-black)_  |
+| --nut-searchbar-padding| _9px 16px_  |
+| --nut-searchbar-width| _100%_  |
+| --nut-searchbar-input-background| _#f7f7f7_  |
+| --nut-searchbar-input-padding| _0 0 0 13px_  |
+| --nut-searchbar-input-height| _32px_  |
+| --nut-searchbar-input-width| _100%_  |
+| --nut-searchbar-input-border-radius| _16px_  |
+| --nut-searchbar-input-box-shadow| _0 0 8px 0 rgba(0, 0, 0, 0.04)_  |
+| --nut-searchbar-input-bar-color| _inherit_  |
+| --nut-searchbar-input-bar-placeholder-color| _inherit_  |
