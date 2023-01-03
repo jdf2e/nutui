@@ -22,7 +22,7 @@
       ref="audioDemo"
     >
       <div class="nut-voice">
-        <div><Voice></Voice></div>
+        <Voice></Voice>
         <div>{{ duration }}"</div>
       </div>
     </nut-audio>
@@ -181,6 +181,7 @@ export default createDemo({
   .nut-voice {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100px;
     height: 20px;
     padding: 8px;

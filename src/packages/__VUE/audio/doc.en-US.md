@@ -240,12 +240,12 @@ export default {
 
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
-| url         | Audio Url               | String | ''              |
-| muted        | Whether to be muted                         | Boolean | false             |
-| autoplay         | Whether to autoplay | Boolean | false               |
-| loop | Whether to loop playback    | Boolean | false |
-| preload          | Whether to  proload audio                      | String | 'auto'              |
-| type         |  Show type| String | 'progress'              |
+| url         | Audio Url               | string | `''`              |
+| muted        | Whether to be muted                         | boolean | `false`             |
+| autoplay         | Whether to autoplay | boolean | `false`               |
+| loop | Whether to loop playback    | boolean | `false` |
+| preload          | Whether to  proload audio                      | string | `auto`              |
+| type         |  Show type| String | `progress`              |
 
 
 ### Events

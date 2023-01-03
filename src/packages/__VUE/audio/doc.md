@@ -112,7 +112,6 @@ export default {
 ### 进度条展示
 
 :::demo
-
 ```html
 <template>
     <nut-audio
@@ -150,7 +149,6 @@ export default {
 ### 自定义操作按钮
 
 :::demo
-
 ```vue
 <template>
     <nut-audio
@@ -240,12 +238,12 @@ export default {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| url         | 语音播放的连接               | String | ''              |
-| muted        | 是否静音                         | Boolean | false             |
-| autoplay         | 是否自动播放 | Boolean | false               |
-| loop | 是否循环播放     | Boolean | false |
-| preload          | 是否预加载语音                        | String | 'auto'              |
-| type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | String | 'progress'              |
+| url         | 语音播放的连接               | string | `''`              |
+| muted        | 是否静音                         | boolean | `false`             |
+| autoplay         | 是否自动播放 | boolean | `false`               |
+| loop | 是否循环播放     | boolean | `false` |
+| preload          | 是否预加载语音                        | string | `auto`              |
+| type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | `progress`              |
 
 
 ### Events
