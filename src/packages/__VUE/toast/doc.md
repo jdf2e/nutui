@@ -14,25 +14,6 @@ const app = createApp();
 app.use(Toast);
 ```
 
-
-### 全局使用方式
-:::demo
-``` html
-<template>
-</template>
-<script>
-import { getCurrentInstance } from 'vue';
-export default {
-  setup() {
-   const { proxy } = getCurrentInstance();
-    proxy.$toast.text('全局使用方式');
-    return {};
-  }
-}
-</script>
-```
-:::
-
 ### 文字提示
 :::demo
 ```html

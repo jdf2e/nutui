@@ -15,7 +15,6 @@ import { Dialog } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Dialog);
-
 ```
 
 
@@ -39,89 +38,89 @@ import { ref,createVNode } from 'vue';
 import { showDialog } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/dialog/style';
 export default {
-    setup() {
-        const onCancel = () => {
-          console.log('event cancel');
-        };
-        const onOk = () => {
-          console.log('event ok');
-        };
-        const baseClick = (): void => {
-          showDialog({
-            title: '基础弹框',
-            content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
-            onCancel,
-            onOk
+  setup() {
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const onOk = () => {
+      console.log('event ok');
+    };
+    const baseClick = (): void => {
+      showDialog({
+        title: '基础弹框',
+        content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
+        onCancel,
+        onOk
+      });
+    };
+    const transparentClick = (): void => {
+      showDialog({
+        overlayStyle: { background: 'rgba(0,0,0,0)' },
+        title: '透明弹框',
+        content: 'Content',
+        onCancel,
+        onOk
+      });
+    };
+    const htmlClick = (): void => {
+      showDialog({
+        title: "支持富文本 html",
+        content:
+          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+        onCancel,
+        onOk
+      });
+    };
+    const beforeCloseClick = (): void => {
+      showDialog({
+        title: '异步关闭',
+        content: '点击确认后，1秒后关闭',
+        onCancel,
+        onOk,
+        beforeClose: (action: string) => {
+          return new Promise((r) => {
+            setTimeout(() => {
+              r(action == 'ok');
+            }, 1000);
           });
-        };
-        const transparentClick = (): void => {
-          showDialog({
-            overlayStyle: { background: 'rgba(0,0,0,0)' },
-            title: '透明弹框',
-            content: 'Content',
-            onCancel,
-            onOk
-          });
-        };
-        const htmlClick = (): void => {
-          showDialog({
-            title: "支持富文本 html",
-            content:
-              "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-            onCancel,
-            onOk
-          });
-        };
-        const beforeCloseClick = (): void => {
-          showDialog({
-            title: '异步关闭',
-            content: '点击确认后，1秒后关闭',
-            onCancel,
-            onOk,
-            beforeClose: (action: string) => {
-              return new Promise((r) => {
-                setTimeout(() => {
-                  r(action == 'ok');
-                }, 1000);
-              });
-            }
-          });
-        };
-        const noTitleClick = () => {
-          showDialog({
-            content: '无标题弹框',
-            onCancel,
-            onOk
-          });
-        };
-        const tipsClick = () => {
-          showDialog({
-            title: '温馨提示',
-            content: '支持函数调用和组件调用两种方式。',
-            noCancelBtn: true,
-            onCancel,
-            onOk
-          });
-        };
-        const verticalClick = () => {
-          showDialog({
-            title: '温馨提示',
-            content: '支持底部按钮纵向排列。',
-            footerDirection: 'vertical',
-            onCancel,
-            onOk
-          });
-        };
-        return {
-          baseClick,
-          transparentClick,
-          htmlClick,
-          beforeCloseClick,
-          noTitleClick,
-          tipsClick,
-          verticalClick
-        };
-    }
+        }
+      });
+    };
+    const noTitleClick = () => {
+      showDialog({
+        content: '无标题弹框',
+        onCancel,
+        onOk
+      });
+    };
+    const tipsClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持函数调用和组件调用两种方式。',
+        noCancelBtn: true,
+        onCancel,
+        onOk
+      });
+    };
+    const verticalClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持底部按钮纵向排列。',
+        footerDirection: 'vertical',
+        onCancel,
+        onOk
+      });
+    };
+    return {
+      baseClick,
+      transparentClick,
+      htmlClick,
+      beforeCloseClick,
+      noTitleClick,
+      tipsClick,
+      verticalClick
+    };
+  }
 }
 </script>
 ```
@@ -144,28 +143,7 @@ showDialog({
 });
 ```
 
-### 函数调用 proxy.&dialog(...)
-
-```javascript
-import { ref } from 'vue';
-import { showDialog } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/dialog/style';
-import { getCurrentInstance } from 'vue';
-
-export default {
-  setup() {
-    const { proxy } = getCurrentInstance();
-    proxy.$dialog({
-      title: '基础弹框',
-      content: '支持函数调用和组件调用两种方式。'
-    });
-  }
-}
-```
-
-
 ### 标签式组件使用
-
 
 :::demo
 ```html

@@ -122,7 +122,6 @@ const showToast = {
   },
   install(app: any): void {
     app.use(Toast);
-    app.config.globalProperties.$toast = showToast;
   }
 };
 
