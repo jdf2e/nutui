@@ -55,7 +55,6 @@ export default {
     }
 }
 </script>
-
 ```
 :::
 
@@ -135,8 +134,6 @@ export default {
     }
 }
 </script>
-
-
 ```
 :::
 
@@ -163,7 +160,6 @@ Customize the content in the slot named content.
     </template>
   </nut-popover>
 </template>
-
 
 <script>
 import { reactive, ref } from 'vue';
@@ -234,8 +230,6 @@ export default {
   }
 }
 </style>
-
-
 ```
 :::
 
@@ -290,7 +284,6 @@ export default {
     }
 };
 </script>
-
 ```
 :::
 
@@ -332,8 +325,6 @@ export default {
     }
 }
 </script>
-
-
 ```
 :::
 
@@ -370,7 +361,6 @@ export default {
     }
 }
 </script>
-
 ```
 :::
 
@@ -379,24 +369,24 @@ export default {
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
-| list          | list of options                          | List[]   | []        |
-| visible      | whether to show                 | boolean  | false     |
+| list          | list of options                          | List[]   | `[]`        |
+| visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset        | the offset of the occurrence position  | [number, number]   | [0, 12]  |
-| show-arrow        | whether to show small arrows  | boolean  | true  |
-| custom-class        | custom class   | string  | ''  |
-| duration        | Transition duration  |  [number, number]  | 0.3  |
-| iconPrefix        | Icon className prefix | string  | 'nut-icon''  |
-| overlay        | Whether to show overlay  | Boolean  | false  |
-| overlay-class        | Custom overlay class | string  | ''  |
-| overlay-style        | Custom overlay style  | string  | ''  |
-| close-on-click-overlay        | Whether to close when clicking overlay  | boolean  | true  |
-| close-on-click-action        | Whether to close when clicking action  | boolean  | true |
-| close-on-click-outside        | Whether to close when clicking outside | boolean  | true  |
-| bg-color        | Custom color | String  | -  |
-| target-id        | Custom target id | String  | -  |
-| arrow-offset        | the offset of the arrow | Number  | 0  |
+| offset        | the offset of the occurrence position  | [number, number]   | `[0, 12]`  |
+| show-arrow        | whether to show small arrows  | boolean  | `true`  |
+| custom-class        | custom class   | string  | `''`  |
+| duration        | Transition duration  |  [number, number]  | `0.3`  |
+| iconPrefix        | Icon className prefix | string  | `nut-icon`  |
+| overlay        | Whether to show overlay  | boolean  | `false`  |
+| overlay-class        | Custom overlay class | string  | `''`  |
+| overlay-style        | Custom overlay style  | string  | `''`  |
+| close-on-click-overlay        | Whether to close when clicking overlay  | boolean  | `true`  |
+| close-on-click-action        | Whether to close when clicking action  | boolean  | `true` |
+| close-on-click-outside        | Whether to close when clicking outside | boolean  | `true`  |
+| bg-color        | Custom color | string  | `-`  |
+| target-id        | Custom target id | string  | `-`  |
+| arrow-offset        | the offset of the arrow | number  | `0`  |
 
 ### List data structure  
 
@@ -404,10 +394,10 @@ The List property is an array of objects, each object in the array is configured
 
 | Key            | Description                 | Type      | Default  |
 |----------------|----------------------|----------|--------|
-| name           | option text               | string   | -      |
-| icon           | @nutui/icons-vue name      | string   | -      |
-| disabled       | whether to disable          | boolean  | false  | 
-| className       | Add extra class names for corresponding options          | string/Array/object  | -  | 
+| name           | option text               | string   | `-`      |
+| icon           | @nutui/icons-vue name      | string   | `-`      |
+| disabled       | whether to disable          | boolean  | `false`  | 
+| className       | Add extra class names for corresponding options          | string \| Array \| object  | `-`  | 
 
 
 ### Slots
@@ -432,13 +422,13 @@ The List property is an array of objects, each object in the array is configured
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-popover-white-background-color| _rgba(255, 255, 255, 1)_  | -  |
-|  --nut-popover-dark-background-color| _rgba(75, 76, 77, 1)_  | -  |
-|  --nut-popover-border-bottom-color| _rgba(229, 229, 229, 1)_  | -  |
-|  --nut-popover-primary-text-color| _rgba(51, 51, 51, 1)_  | -  |
-|  --nut-popover-disable-color| _rgba(154, 155, 157, 1)_  | -  |
-|  --nut-popover-menu-item-padding| _8px 0_  | -  |
-|  --nut-popover-menu-item-margin| _0 8px_  | -  |
-|  --nut-popover-menu-name-line-height| _normal_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+|  --nut-popover-white-background-color| _rgba(255, 255, 255, 1)_  |
+|  --nut-popover-dark-background-color| _rgba(75, 76, 77, 1)_  |
+|  --nut-popover-border-bottom-color| _rgba(229, 229, 229, 1)_  |
+|  --nut-popover-primary-text-color| _rgba(51, 51, 51, 1)_  |
+|  --nut-popover-disable-color| _rgba(154, 155, 157, 1)_  |
+|  --nut-popover-menu-item-padding| _8px 0_  |
+|  --nut-popover-menu-item-margin| _0 8px_  |
+|  --nut-popover-menu-name-line-height| _normal_  |

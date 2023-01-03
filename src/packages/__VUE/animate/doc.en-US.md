@@ -13,7 +13,6 @@ import { Animate } from '@nutui/nutui';
 
 const app = createApp(Animate);
 app.use(Animate);
-
 ```
 
 ### Clicking to trigger
@@ -25,27 +24,16 @@ app.use(Animate);
   <nut-animate type='slide-right' action='click'>
     <nut-button type='primary'>From right to left</nut-button>
   </nut-animate>
-
   <nut-animate type='slide-left' action='click'>
     <nut-button type='primary'>From left to right</nut-button>
   </nut-animate>
-  
   <nut-animate type='slide-top' action='click'>
     <nut-button type='primary'>From top to bottom</nut-button>
   </nut-animate>
-
   <nut-animate type='slide-bottom' action='click'>
     <nut-button type='primary'>From bottom to top</nut-button>
   </nut-animate>
- 
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
-</script>
 ```
 
 :::
@@ -61,38 +49,25 @@ app.use(Animate);
   <nut-animate type='shake' :loop='true'>
     <nut-button type='primary'>shake-shake</nut-button>
   </nut-animate>
-
   <nut-animate type='ripple' :loop='true'>
     <nut-button type='primary'>ripple-ripple</nut-button>
   </nut-animate>
-  
   <nut-animate type='breath' :loop='true'>
     <nut-button type='primary'>breath-breath</nut-button>
   </nut-animate>
-
   <nut-animate type='twinkle' :loop='true'>
     <nut-button type='primary'>twinkle-twinkle</nut-button>
   </nut-animate>
-  
   <nut-animate type='flicker' :loop='true'>
     <nut-button type='primary'>flicker-flicker</nut-button>
   </nut-animate>
-
   <nut-animate type='jump' :loop='true'>
     <nut-button type='primary'>jump-jump</nut-button>
   </nut-animate>
-
   <nut-animate type='float' :loop='true'>
     <nut-button type='primary'>float-float</nut-button>
   </nut-animate>
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
-</script>
 ```
 
 :::
@@ -104,9 +79,9 @@ app.use(Animate);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| type         | For animation type, see the description of type value below               | String | -                |
-| action         | Triggering method,'initial'-- initialization execution; ' Click'-- Click to execute              | String | 默认'initial'             |
-| loop         | Whether to execute circularly. True： loop execution; False： execute once              | Boolean | false               |
+| type         | For animation type, see the description of type value below               | string | `-`                |
+| action         | Triggering method,`initial`- initialization execution; `click`- click to execute              | string | `initial`             |
+| loop         | Whether to execute circularly. `true`- loop execution; `false`- execute once              | boolean | `false`               |
 
 ### Events
 
