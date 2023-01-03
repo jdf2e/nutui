@@ -43,7 +43,6 @@ app.use(FormItem);
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup(){
     const basicData = reactive({
@@ -85,7 +84,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup(){
     const dynamicRefForm = ref<any>(null);
@@ -104,7 +104,7 @@ export default {
             if (valid) {
               console.log('success', dynamicForm);
             } else {
-              Toast.warn(errors[0].message);
+              showToast.warn(errors[0].message);
               console.log('error submit!!', errors);
             }
           });
@@ -175,7 +175,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
 setup(){
     const formData = reactive({
@@ -220,9 +221,9 @@ setup(){
     // Promise async validator
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
-        Toast.loading('Simulating asynchronous verification');
+        showToast.loading('Simulating asynchronous verification');
         setTimeout(() => {
-          Toast.hide();
+          showToast.hide();
           resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
         }, 1000);
       });
@@ -356,10 +357,10 @@ setup(){
 ## API
 ### Form Props
 
-| Attribute   | Description                                              | Type   | Default |
-|-------------|----------------------------------------------------------|--------|---------|
-| model-value | Form data object (required when using form verification) | object |         |
-| rules | Unified configuration FormItem attr rules  | { prop: FormItemRule[] } |  {}      |
+| Attribute   | Description                                              | Type                     | Default |
+|-------------|----------------------------------------------------------|--------------------------|---------|
+| model-value | Form data object (required when using form verification) | object                   |         |
+| rules       | Unified configuration FormItem attr rules                | { prop: FormItemRule[] } | {}      |
 
 ### Form Events
 
@@ -376,7 +377,7 @@ setup(){
 | rules               | Define validation rules                                                                     | FormItemRule []  | []      |
 | label-width         | The width of the form item label. The default unit is `px`                                  | number \| string | `90px`  |
 | label-align         | Form item label alignment. The optional values are `center` `right`                         | string           | `left`  |
-| body-align          | Default Solt box alignment. The optional values are `center` `right`                               | string           | `left`  |
+| body-align          | Default Solt box alignment. The optional values are `center` `right`                        | string           | `left`  |
 | error-message-align | Error prompt text alignment. The optional values are `center` and `right`                   | string           | `left`  |
 | show-error-line     | Whether to mark the input box in red when the verification fails                            | boolean          | `true`  |
 | show-error-message  | Whether to display the error prompt under the input box when the verification fails         | boolean          | `true`  |
@@ -385,19 +386,19 @@ setup(){
 
 Use the `rules` attribute of FormItem to define verification rules. The optional attributes are as follows:
 
-| Attribute | Default                            | Type                                    |
-|-----------|------------------------------------|-----------------------------------------|
-| required  | Is it a required field             | boolean                                 |
-| message   | Error prompt copy                  | string                                  |
+| Attribute | Default                            | Type                                                              |
+|-----------|------------------------------------|-------------------------------------------------------------------|
+| required  | Is it a required field             | boolean                                                           |
+| message   | Error prompt copy                  | string                                                            |
 | validator | Verification by function           | (value:string,rule?:FormItemRule) => boolean \| string \| Promise |
-| regex     | Verification by regular expression | RegExp                                  |
+| regex     | Verification by regular expression | RegExp                                                            |
 
 ### FormItem Slots
 
-| Name            | Description         |
-|-----------------|---------------------|
-| default         | Default slot        |
-| label | Custom `label` slot |
+| Name    | Description         |
+|---------|---------------------|
+| default | Default slot        |
+| label   | Custom `label` slot |
 
 
 ``` html
@@ -411,10 +412,10 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Form instance and call instance methods.
 
-| Name              | Description                                                                                                       | Arguments                   | Return value |
-|-------------------|-------------------------------------------------------------------------------------------------------------------|-----------------------------|--------------|
-| submit   | Method of submitting form for verification                                                                        | -                           | -      |
-| reset             | Clear verification results                                                                                        | -                           | -            |
+| Name     | Description                                                                                                       | Arguments                   | Return value |
+|----------|-------------------------------------------------------------------------------------------------------------------|-----------------------------|--------------|
+| submit   | Method of submitting form for verification                                                                        | -                           | -            |
+| reset    | Clear verification results                                                                                        | -                           | -            |
 | validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | -            |
 
 
@@ -426,18 +427,18 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-form-item-error-line-color| _var(--nut-required-color)_ | -  |
-| --nut-form-item-required-color| _var(--nut-required-color)_ | -  |
-| --nut-form-item-error-message-color| _var(--nut-required-color)_ | -  |
-| --nut-form-item-label-font-size| _14px_ | -  |
-| --nut-form-item-label-width| _90px_ | -  |
-| --nut-form-item-label-margin-right| _10px_ | -  |
-| --nut-form-item-label-text-align| _left_ | -  |
-| --nut-form-item-required-margin-right| _4px_ | -  |
-| --nut-form-item-body-font-size| _14px_ | -  |
-| --nut-form-item-body-slots-text-align| _left_ | -  |
-| --nut-form-item-body-input-text-align| _left_ | -  |
-| --nut-form-item-tip-font-size| _10px_ | -  |
-| --nut-form-item-tip-text-align| _left_ | -  |
+| Name                                  | Default Value               |
+|---------------------------------------|-----------------------------|
+| --nut-form-item-error-line-color      | _var(--nut-required-color)_ |
+| --nut-form-item-required-color        | _var(--nut-required-color)_ |
+| --nut-form-item-error-message-color   | _var(--nut-required-color)_ |
+| --nut-form-item-label-font-size       | _14px_                      |
+| --nut-form-item-label-width           | _90px_                      |
+| --nut-form-item-label-margin-right    | _10px_                      |
+| --nut-form-item-label-text-align      | _left_                      |
+| --nut-form-item-required-margin-right | _4px_                       |
+| --nut-form-item-body-font-size        | _14px_                      |
+| --nut-form-item-body-slots-text-align | _left_                      |
+| --nut-form-item-body-input-text-align | _left_                      |
+| --nut-form-item-tip-font-size         | _10px_                      |
+| --nut-form-item-tip-text-align        | _left_                      |

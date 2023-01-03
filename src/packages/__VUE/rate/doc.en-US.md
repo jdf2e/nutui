@@ -137,12 +137,13 @@ export default {
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
     setup() {
         const value = ref(3);
         const onChange = (val)=>{
-            Toast.text(val);
+            showToast.text(val);
         }
     return { value,onChange }
     }
@@ -156,17 +157,17 @@ export default {
 ## API
 ### Props
 
-| Attribute          | Description                                                                      | Type    | Default          |
-|--------------------|----------------------------------------------------------------------------------|---------|------------------|
-| v-model            | The current number of stars, you can use v-model to bind data in both directions | Number  | -                |
-| count              | Total number of stars                                                            | Number  | 5                |
-| active-color       | Icon selection color                                                             | String  | #fa200c          |
-| void-color         | Icon unselected color                                                            | String  | #ccc             |
-| allow-half         | half star                                                                        | Boolean | false            |
-| readonly           | read-only                                                                        | Boolean | false            |
-| disabled           | whether to disable                                                               | Boolean | false            |
-| spacing            | spacing                                                                          | Number  | 20               |
-| touchable | Whether to allow select rate by touch gesture                                    | Boolean | true             |
+| Attribute    | Description                                                                      | Type    | Default |
+|--------------|----------------------------------------------------------------------------------|---------|---------|
+| v-model      | The current number of stars, you can use v-model to bind data in both directions | number  | -       |
+| count        | Total number of stars                                                            | number  | 5       |
+| active-color | Icon selection color                                                             | string  | #fa200c |
+| void-color   | Icon unselected color                                                            | string  | #ccc    |
+| allow-half   | half star                                                                        | boolean | false   |
+| readonly     | read-only                                                                        | boolean | false   |
+| disabled     | whether to disable                                                               | boolean | false   |
+| spacing      | spacing                                                                          | number  | 20      |
+| touchable    | Whether to allow select rate by touch gesture                                    | boolean | true    |
 
 
 ### Events
@@ -180,7 +181,7 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-rate-icon-color|  _var(--nut-primary-color)_  | -  |
-| --nut-rate-icon-void-color|  _var(--nut-disable-color)_  | -  |
+| Name                       | Default Value              |
+|----------------------------|----------------------------|
+| --nut-rate-icon-color      | _var(--nut-primary-color)_ |
+| --nut-rate-icon-void-color | _var(--nut-disable-color)_ |

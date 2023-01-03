@@ -82,6 +82,7 @@
 <script lang="ts">
 import { ref, getCurrentInstance, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('number-keyboard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -111,7 +112,6 @@ export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    let { proxy } = getCurrentInstance() as any;
     const visible1 = ref(false);
     const visible2 = ref(false);
     const visible3 = ref(false);
@@ -124,13 +124,13 @@ export default createDemo({
     const customKey3 = reactive(['X']);
     const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
     function input(number: any) {
-      proxy.$toast.text(`输入：${number}`);
+      showToast.text(`输入：${number}`);
     }
     function showKeyBoard(index: number) {
       visibleArr[index - 1].value = true;
     }
     function onDelete() {
-      proxy.$toast.text('删除');
+      showToast.text('删除');
     }
     function close(index: number) {
       console.log('关闭');

@@ -25,6 +25,8 @@ https://nutui.jd.com/#/zh-CN/guide/contributing
 - [ ] NutUI 2.0
 - [ ] NutUI 3.0 H5
 - [ ] NutUI 3.0 小程序
+- [ ] NutUI 4.0 H5
+- [ ] NutUI 4.0 小程序
 
 **这个 PR 是否已自测:**
 

@@ -97,11 +97,11 @@
 </template>
 
 <script lang="ts">
-import { toRefs, watch, ref, reactive } from 'vue';
+import { toRefs, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('date-picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -221,7 +221,7 @@ export default createDemo({
       selectedValue: (string | number)[];
       selectedOptions: any;
     }) => {
-      Toast.text(selectedOptions.map((val: any) => val.text).join(''));
+      showToast.text(selectedOptions.map((val: any) => val.text).join(''));
     };
 
     const confirm2 = ({
@@ -233,7 +233,7 @@ export default createDemo({
     }) => {
       const date = selectedValue.slice(0, 3).join('-');
       const time = selectedValue.slice(3).join(':');
-      Toast.text(date + ' ' + time);
+      showToast.text(date + ' ' + time);
     };
 
     const confirm3 = ({
@@ -243,7 +243,7 @@ export default createDemo({
       selectedValue: (string | number)[];
       selectedOptions: any;
     }) => {
-      Toast.text(selectedValue.join(':'));
+      showToast.text(selectedValue.join(':'));
     };
 
     const confirm4 = ({
@@ -261,7 +261,7 @@ export default createDemo({
         .slice(3)
         .map((op: any) => op.value)
         .join(':');
-      Toast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
+      showToast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
     };
 
     const confirm5 = ({
@@ -271,7 +271,7 @@ export default createDemo({
       selectedValue: (string | number)[];
       selectedOptions: any;
     }) => {
-      Toast.text(selectedValue.join('-'));
+      showToast.text(selectedValue.join('-'));
     };
 
     const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {

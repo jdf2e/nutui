@@ -73,7 +73,6 @@
 
 <script>
   import { ref,reactive,onMounted,toRefs} from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       let cycle = 0;
@@ -104,12 +103,12 @@
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model         | 是否触发滚动加载               | Boolean | `false`                |
-| has-more         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | Number | `200`               |
-| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| load-txt        | 上拉加载提示文案                         | String | `加载中...`                |
+| v-model         | 是否触发滚动加载               | boolean | `false`                |
+| has-more         | 是否还有更多数据               | boolean | `true`                |
+| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | number | `200`               |
+| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | boolean | `false`            |
+| load-more-txt          | “没有更多数”据展示文案                        | string | `'哎呀，这里是底部了啦'`            |
+| load-txt        | 上拉加载提示文案                         | string | `加载中...`                |
 
 ### Events
 
@@ -134,6 +133,6 @@
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | -    |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | 

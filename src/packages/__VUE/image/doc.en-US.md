@@ -51,7 +51,7 @@ The `fit` attribute is used to set the image filling mode, which is equivalent t
 
 ### Object Position
 
-The position property can be used to set the position of the picture, which is equivalent to the original Object-position property when combined with the FIT property.
+The position property can be used to set the position of the picture, which is equivalent to the original `Object-position` property when combined with the FIT property.
 
 :::demo
 
@@ -88,7 +88,7 @@ The round attribute allows you to set the image to be round. Note that if the im
 
 ### Loading
 
-The Image component provides a default loading prompt and supports custom content through the loading slot.
+The Image component provides a default `loading` prompt and supports custom content through the loading slot.
 
 :::demo
 
@@ -106,7 +106,7 @@ The Image component provides a default loading prompt and supports custom conten
 
 ### Error
 
-The Image component provides a default loading failure warning and supports custom content through the error slot.
+The Image component provides a default loading failure warning and supports custom content through the `error` slot.
 
 :::demo
 
@@ -128,16 +128,16 @@ The Image component provides a default loading failure warning and supports cust
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| src         | Src               | String | -                |
-| fit         | Fit mode, same as object-fit     | ImageFit | 'fill'                |
-| position    | Position, same as object-position  | ImagePosition | 'center'              |
-| alt         | Alt               | String | -                |
-| width         | Width，Default unit px             | String | -                |
-| height         | Height，Default unit px              | String | -                |
-| round         | Whether to be round               | Boolean | false              |
-| radius         | Border Raduis               | String \| Numer | -                |
-| show-error         | Whether to show error placeholder | Boolean | false              |
-| show-loading         | Whether to show loading placeholder | Boolean | true              |
+| src         | Src               | string | -                |
+| fit         | Fit mode, same as object-fit     | ImageFit | `fill`                |
+| position    | Position, same as object-position  | ImagePosition | `center`              |
+| alt         | Alt               | string | -                |
+| width         | Width，Default unit px             | string | -                |
+| height         | Height，Default unit px              | string | -                |
+| round         | Whether to be round               | boolean | `false`              |
+| radius         | Border Raduis               | string \| number | -                |
+| show-error         | Whether to show error placeholder | boolean | `false`              |
+| show-loading         | Whether to show loading placeholder | boolean | `true`              |
 
 ### ImageFit 
 
@@ -171,5 +171,5 @@ The Image component provides a default loading failure warning and supports cust
 |--------|----------------|--------------|
 | click  | Emitted when image is clicked | event: Event |
 | load  | Emitted when image loaded | - |
-| error  | Emitted when image load failed | event: Event |
+| error  | Emitted when image load failed | - |
 

@@ -26,7 +26,6 @@ app.use(NumberKeyboard);
 </template>
 <script>
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);
@@ -34,10 +33,10 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      console.log(`输入：${number}`);
     }
     function onDelete() {
-      Toast.text('删除');
+      console.log('删除');
     }
     function close() {
       visible.value = false;
@@ -73,7 +72,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);
@@ -82,7 +80,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      console.log(`输入：${number}`);
     }
     function close() {
       visible.value = false;
@@ -119,7 +117,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);
@@ -128,7 +125,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      console.log(`输入：${number}`);
     }
     function close() {
       visible.value = false;
@@ -162,7 +159,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);
@@ -171,7 +167,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      console.log(`输入：${number}`);
     }
     function close() {
       visible.value = false;
@@ -204,7 +200,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);
@@ -213,7 +208,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      console.log(`输入：${number}`);
     }
     function close() {
       visible.value = false;
@@ -253,7 +248,6 @@ export default{
 </template>
 <script>
 import { ref,reactive } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default{
   setup() {
     const visible = ref(false);

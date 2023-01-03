@@ -15,11 +15,10 @@ import { Dialog } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Dialog);
-
 ```
 
 
-### 函数调用（小程序模式暂不支持）
+### 函数调用
 
 :::demo
 ```html
@@ -39,89 +38,89 @@ import { ref,createVNode } from 'vue';
 import { showDialog } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/dialog/style';
 export default {
-    setup() {
-        const onCancel = () => {
-          console.log('event cancel');
-        };
-        const onOk = () => {
-          console.log('event ok');
-        };
-        const baseClick = (): void => {
-          showDialog({
-            title: '基础弹框',
-            content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
-            onCancel,
-            onOk
+  setup() {
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const onOk = () => {
+      console.log('event ok');
+    };
+    const baseClick = (): void => {
+      showDialog({
+        title: '基础弹框',
+        content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
+        onCancel,
+        onOk
+      });
+    };
+    const transparentClick = (): void => {
+      showDialog({
+        overlayStyle: { background: 'rgba(0,0,0,0)' },
+        title: '透明弹框',
+        content: 'Content',
+        onCancel,
+        onOk
+      });
+    };
+    const htmlClick = (): void => {
+      showDialog({
+        title: "支持富文本 html",
+        content:
+          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+        onCancel,
+        onOk
+      });
+    };
+    const beforeCloseClick = (): void => {
+      showDialog({
+        title: '异步关闭',
+        content: '点击确认后，1秒后关闭',
+        onCancel,
+        onOk,
+        beforeClose: (action: string) => {
+          return new Promise((r) => {
+            setTimeout(() => {
+              r(action == 'ok');
+            }, 1000);
           });
-        };
-        const transparentClick = (): void => {
-          showDialog({
-            overlayStyle: { background: 'rgba(0,0,0,0)' },
-            title: '透明弹框',
-            content: 'Content',
-            onCancel,
-            onOk
-          });
-        };
-        const htmlClick = (): void => {
-          showDialog({
-            title: "支持富文本 html",
-            content:
-              "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-            onCancel,
-            onOk
-          });
-        };
-        const beforeCloseClick = (): void => {
-          showDialog({
-            title: '异步关闭',
-            content: '点击确认后，1秒后关闭',
-            onCancel,
-            onOk,
-            beforeClose: (action: string) => {
-              return new Promise((r) => {
-                setTimeout(() => {
-                  r(action == 'ok');
-                }, 1000);
-              });
-            }
-          });
-        };
-        const noTitleClick = () => {
-          showDialog({
-            content: '无标题弹框',
-            onCancel,
-            onOk
-          });
-        };
-        const tipsClick = () => {
-          showDialog({
-            title: '温馨提示',
-            content: '支持函数调用和组件调用两种方式。',
-            noCancelBtn: true,
-            onCancel,
-            onOk
-          });
-        };
-        const verticalClick = () => {
-          showDialog({
-            title: '温馨提示',
-            content: '支持底部按钮纵向排列。',
-            footerDirection: 'vertical',
-            onCancel,
-            onOk
-          });
-        };
-        return {
-          baseClick,
-          transparentClick,
-          htmlClick,
-          beforeCloseClick,
-          noTitleClick,
-          tipsClick,
-          verticalClick
-        };
-    }
+        }
+      });
+    };
+    const noTitleClick = () => {
+      showDialog({
+        content: '无标题弹框',
+        onCancel,
+        onOk
+      });
+    };
+    const tipsClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持函数调用和组件调用两种方式。',
+        noCancelBtn: true,
+        onCancel,
+        onOk
+      });
+    };
+    const verticalClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持底部按钮纵向排列。',
+        footerDirection: 'vertical',
+        onCancel,
+        onOk
+      });
+    };
+    return {
+      baseClick,
+      transparentClick,
+      htmlClick,
+      beforeCloseClick,
+      noTitleClick,
+      tipsClick,
+      verticalClick
+    };
+  }
 }
 </script>
 ```
@@ -144,28 +143,7 @@ showDialog({
 });
 ```
 
-### 函数调用 proxy.&dialog(...)
-
-```javascript
-import { ref } from 'vue';
-import { showDialog } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/dialog/style';
-import { getCurrentInstance } from 'vue';
-
-export default {
-  setup() {
-    const { proxy } = getCurrentInstance();
-    proxy.$dialog({
-      title: '基础弹框',
-      content: '支持函数调用和组件调用两种方式。'
-    });
-  }
-}
-```
-
-
 ### 标签式组件使用
-
 
 :::demo
 ```html
@@ -211,58 +189,58 @@ export default {
 
 ## API
 ### DialogOptions
-| 字段                  | 说明                                                          | 类型                     | 默认值               |
-|-----------------------|---------------------------------------------------------------|--------------------------|----------------------|
-| title                 | 标题                                                          | String                   | -                    |
-| id                    | 标识符，相同时共用一个实例，默认为多个实例                    | String/Number            | new Date().getTime() |
-| content               | 内容，支持HTML和组件                                          | String/VNode             | -                    |
-| teleport              | 指定挂载节点                                                  | String                   | "body"               |
-| closeOnClickOverlay   | 点击蒙层是否关闭对话框                                        | Boolean                  | false                |
-| noFooter              | 是否隐藏底部按钮栏                                            | Boolean                  | false                |
-| noOkBtn               | 是否隐藏确定按钮                                              | Boolean                  | false                |
-| noCancelBtn           | 是否隐藏取消按钮                                              | Boolean                  | false                |
-| cancelText            | 取消按钮文案                                                  | String                   | ”取消“               |
-| okText                | 确定按钮文案                                                  | String                   | ”确定“               |
-| cancelAutoClose       | 取消按钮是否默认关闭弹窗                                      | Boolean                  | true                 |
-| textAlign             | 文字对齐方向，可选值同css的text-align                         | String                   | "center"             |
-| closeOnPopstate       | 是否在页面回退时自动关闭                                      | Boolean                  | false                |
-| customClass  | 自定义class                                                   | String                   |                      |
-| overlayClass | 自定义遮罩类名                                                | String                   | -                    |
-| overlayStyle | 自定义遮罩样式                                                | CSSProperties            | -                    |
-| popClass   | 自定义popup弹框类名                                           | String                   | -                    |
-| popStyle   | 自定义popup弹框样式                                           | CSSProperties            | -                    |
-| onUpdate              | 更新                                                          | Boolean                  | false                |
-| onOk                  | 确定按钮回调                                                  | Function                 | -                    |
-| onCancel              | 取消按钮回调                                                  | Function                 | -                    |
-| onOpened     | 打开弹框后回调                                                | Function                 | -                    |
-| onClosed              | 关闭弹框后回调                                                | Function                 | -                    |
-| beforeClose  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -                    |
+| 字段                | 说明                                                          | 类型                     | 默认值               |
+|---------------------|---------------------------------------------------------------|--------------------------|----------------------|
+| title               | 标题                                                          | string                   | -                    |
+| id                  | 标识符，相同时共用一个实例，默认为多个实例                    | string \| number         | new Date().getTime() |
+| content             | 内容，支持HTML和组件                                          | string \| VNode          | -                    |
+| teleport            | 指定挂载节点                                                  | string                   | "body"               |
+| closeOnClickOverlay | 点击蒙层是否关闭对话框                                        | boolean                  | false                |
+| noFooter            | 是否隐藏底部按钮栏                                            | boolean                  | false                |
+| noOkBtn             | 是否隐藏确定按钮                                              | boolean                  | false                |
+| noCancelBtn         | 是否隐藏取消按钮                                              | boolean                  | false                |
+| cancelText          | 取消按钮文案                                                  | string                   | ”取消“               |
+| okText              | 确定按钮文案                                                  | string                   | ”确定“               |
+| cancelAutoClose     | 取消按钮是否默认关闭弹窗                                      | boolean                  | true                 |
+| textAlign           | 文字对齐方向，可选值同css的text-align                         | string                   | "center"             |
+| closeOnPopstate     | 是否在页面回退时自动关闭                                      | boolean                  | false                |
+| customClass         | 自定义class                                                   | string                   |                      |
+| overlayClass        | 自定义遮罩类名                                                | string                   | -                    |
+| overlayStyle        | 自定义遮罩样式                                                | CSSProperties            | -                    |
+| popClass            | 自定义popup弹框类名                                           | string                   | -                    |
+| popStyle            | 自定义popup弹框样式                                           | CSSProperties            | -                    |
+| onUpdate            | 更新                                                          | boolean                  | false                |
+| onOk                | 确定按钮回调                                                  | Function                 | -                    |
+| onCancel            | 取消按钮回调                                                  | Function                 | -                    |
+| onOpened            | 打开弹框后回调                                                | Function                 | -                    |
+| onClosed            | 关闭弹框后回调                                                | Function                 | -                    |
+| beforeClose         | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -                    |
 
 
 ### Props
 
 | 字段                   | 说明                                                          | 类型                     | 默认值     |
 |------------------------|---------------------------------------------------------------|--------------------------|------------|
-| title                  | 标题                                                          | String                   | -          |
-| content                | 内容，支持HTML和组件                                          | String/VNode             | -          |
-| teleport               | 指定挂载节点                                                  | String                   | "body"     |
-| close-on-click-overlay | 点击蒙层是否关闭对话框                                        | Boolean                  | false      |
-| no-footer              | 是否隐藏底部按钮栏                                            | Boolean                  | false      |
-| no-ok-btn              | 是否隐藏确定按钮                                              | Boolean                  | false      |
-| no-cancel-btn          | 是否隐藏取消按钮                                              | Boolean                  | false      |
-| cancel-text            | 取消按钮文案                                                  | String                   | ”取消“     |
-| ok-text                | 确定按钮文案                                                  | String                   | ”确 定“    |
-| cancel-auto-close      | 取消按钮是否默认关闭弹窗                                      | Boolean                  | true       |
-| text-align             | 文字对齐方向，可选值同css的text-align                         | String                   | "center"   |
-| close-on-popstate      | 是否在页面回退时自动关闭                                      | Boolean                  | false      |
-| lock-scroll            | 背景是否锁定                                                  | Boolean                  | false      |
-| footer-direction       | 使用横纵方向 可选值 horizontal、vertical                      | string                   | horizontal |
-| overlay-class | 自定义遮罩类名                                                | String                   | -          |
-| overlay-style | 自定义遮罩样式                                                | CSSProperties            | -          |
-| pop-class    | 自定义popup弹框类名                                           | String                   | -          |
-| pop-style   | 自定义popup弹框样式                                           | CSSProperties            | -          |
-| custom-class  | 自定义class                                                   | String                   | -          |
-| before-close  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
+| title                  | 标题                                                          | string                   | -          |
+| content                | 内容，支持 HTML 和组件                                        | string \| VNode          |            |
+| teleport               | 指定挂载节点                                                  | string                   | "body"     |
+| close-on-click-overlay | 点击蒙层是否关闭对话框                                        | boolean                  | false      |
+| no-footer              | 是否隐藏底部按钮栏                                            | boolean                  | false      |
+| no-ok-btn              | 是否隐藏确定按钮                                              | boolean                  | false      |
+| no-cancel-btn          | 是否隐藏取消按钮                                              | boolean                  | false      |
+| cancel-text            | 取消按钮文案                                                  | string                   | ”取消“     |
+| ok-text                | 确定按钮文案                                                  | string                   | ”确 定“    |
+| cancel-auto-close      | 取消按钮是否默认关闭弹窗                                      | boolean                  | true       |
+| text-align             | 文字对齐方向，可选值同 css 的 text-align                      | string                   | "center"   |
+| close-on-popstate      | 是否在页面回退时自动关闭                                      | boolean                  | false      |
+| lock-scroll            | 背景是否锁定                                                  | boolean                  | false      |
+| footer-direction       | 使用横纵方向 可选值 `horizontal`、`vertical`                  | string                   | horizontal |
+| overlay-class          | 自定义遮罩类名                                                | string                   | -          |
+| overlay-style          | 自定义遮罩样式                                                | CSSProperties            | -          |
+| pop-class              | 自定义popup弹框类名                                           | string                   | -          |
+| pop-style              | 自定义popup弹框样式                                           | CSSProperties            | -          |
+| custom-class           | 自定义class                                                   | string                   | -          |
+| before-close           | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | -          |
 
 ### Events
 
@@ -288,9 +266,9 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-dialog-width| _296px_  | -  |
-| --nut-dialog-header-font-weight| _normal_  | -  |
-| --nut-dialog-header-color| _rgba(38, 38, 38, 1)_  | -  |
-| --nut-dialog-footer-justify-content| _space-around_  | -  |
+| 名称                                | 默认值                |
+|-------------------------------------|-----------------------|
+| --nut-dialog-width                  | _296px_               |
+| --nut-dialog-header-font-weight     | _normal_              |
+| --nut-dialog-header-color           | _rgba(38, 38, 38, 1)_ |
+| --nut-dialog-footer-justify-content | _space-around_        |

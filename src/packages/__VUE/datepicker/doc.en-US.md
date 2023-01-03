@@ -31,13 +31,15 @@ app.use(DatePicker);
 
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
-      const minDate = new Date(2020, 0, 1),
-      const maxDate = new Date(2025, 10, 1),
+      const minDate = new Date(2020, 0, 1);
+      const maxDate = new Date(2025, 10, 1);
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join(''));
+        showToast.text(selectedOptions.map((val: any) => val.text).join(''));
       }
       return {
         currentDate,
@@ -123,11 +125,13 @@ app.use(DatePicker);
 
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        Toast.text(selectedOptions.map((val: any) => val.text).join('-'));
+        showToast.text(selectedOptions.map((val: any) => val.text).join('-'));
       }
       return {
         currentDate,
@@ -155,12 +159,15 @@ app.use(DatePicker);
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
+    setup() {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedValue.slice(0, 3).join('-');
         time = selectedValue.slice(3).join(':');
-        Toast.text(date + ' ' + time) ;
+        showToast.text(date + ' ' + time) ;
       }
       return {
         currentDate,
@@ -189,11 +196,13 @@ app.use(DatePicker);
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        Toast.text(selectedValue.join(':'));
+        showToast.text(selectedValue.join(':'));
       }
       return {
         currentDate,
@@ -223,13 +232,15 @@ app.use(DatePicker);
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
         time = selectedOptions.slice(3).map((op) => op.value).join(':');
-        Toast.text(selectedOptions[0].text + 'Year' + date + ' ' + time);
+        showToast.text(selectedOptions[0].text + 'Year' + date + ' ' + time);
       }
       const formatter = (type: string, option) => {
         switch (type) {
@@ -281,11 +292,13 @@ app.use(DatePicker);
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        Toast.text(selectedValue.join(':')) ;
+        showToast.text(selectedValue.join(':')) ;
       }
       return {
         currentDate,
@@ -317,6 +330,8 @@ app.use(DatePicker);
 </template>
 <script>
   import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 0, 0);
@@ -347,7 +362,7 @@ app.use(DatePicker);
         return options;
       };
       const confirm = ( { selectedValue, selectedOptions } )=>{
-         Toast.text(selectedOptions.map((option) => option.text).join(''));
+         showToast.text(selectedOptions.map((option) => option.text).join(''));
       }
       return {
         currentDate,
@@ -369,22 +384,22 @@ app.use(DatePicker);
     
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
-| v-model         | Default Date                                            | Date    | `null`   |
-| type            | Can be set to date time year-month month-day datehour | String  | `'date'` |
-| minute-step     | Option minute step                                        | Number  | `1`      |
-| is-show-chinese | Show Chinese                                  | Boolean | `false`  |
-| min-date        | Start date                                         | Date    | `Ten years ago on January 1` |
-| max-date        | End date                                          | Date    | `Ten years later on December 31` |
+| v-model         | Default Date                                            | date    | `null`   |
+| type            | Can be set to date time year-month month-day datehour | string  | `'date'` |
+| minute-step     | Option minute step                                        | number  | `1`      |
+| is-show-chinese | Show Chinese                                  | boolean | `false`  |
+| min-date        | Start date                                         | date    | `Ten years ago on January 1` |
+| max-date        | End date                                          | date    | `Ten years later on December 31` |
 | formatter   | Option text formatter                                          | (type: string, option: PickerOption) => PickerOption    |  |
 | filter   | Option filter                                         | (type: string, option: PickerOption) => PickerOption[]    |  |
-| title           | Title                                          | String  | `null`   |
-| ok-text           | Text of confirm button                                      | String  | confirm   |
-| cancel-text           | Text of cancel button                                          | String  | cancel   |
-| three-dimensional          | Turn on 3D effects               | Boolean  | true   |
-| swipe-duration           | Duration of the momentum animation        | Number、String  | 1000   |
-| visible-option-num          | Count of visible columns       | number \| string | 7               |
-| option-height         | Option height             | number \| string | 36     |
-| show-toolbar         | Whether to show toolbar             | Boolean | true    |
+| title           | Title                                          | string  | `null`   |
+| ok-text           | Text of confirm button                                      | string  | `confirm`   |
+| cancel-text           | Text of cancel button                                          | string  | `cancel`   |
+| three-dimensional          | Turn on 3D effects               | boolean  | `true`   |
+| swipe-duration           | Duration of the momentum animation        | number \| string  | `1000`  |
+| visible-option-num          | Count of visible columns       | number \| string | `7`               |
+| option-height         | Option height             | number \| string | `36`     |
+| show-toolbar         | Whether to show toolbar             | boolean | `true`    |
 
 ### Events
 

@@ -72,7 +72,6 @@ Scrolling to the bottom of the list automatically loads more data.
 
 <script>
   import { ref,reactive,onMounted,toRefs} from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup(props) {
       let cycle = 0;
@@ -102,12 +101,12 @@ Scrolling to the bottom of the list automatically loads more data.
 
 | Attribute        | Description                                                                                                        | Type    | Default          |
 |------------------|--------------------------------------------------------------------------------------------------------------------|---------|------------------|
-| v-model          | Loading status                                                                                                     | Boolean | `false`           |
-| has-more         | Has more data                                                                                                      | Boolean | `true`           |
-| threshold        | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold   | Number  | `200`            |
-| use-capture      | Whether to use capture mode                                                                                        | Boolean | `false`          |
-| load-more-txt    | "No more" text                                                                                                     | String  | 'Oops, this is the bottom'|
-| load-txt         | Pull on loading text                                                                                                | String  | `Loading...`      |
+| v-model          | Loading status                                                                                                     | boolean | `false`           |
+| has-more         | Has more data                                                                                                      | boolean | `true`           |
+| threshold        | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold   | number  | `200`            |
+| use-capture      | Whether to use capture mode                                                                                        | boolean | `false`          |
+| load-more-txt    | "No more" text                                                                                                     | string  | `Oops, this is the bottom`|
+| load-txt         | Pull on loading text                                                                                                | string  | `Loading...`      |
 
 ### Events
 
@@ -131,6 +130,6 @@ Scrolling to the bottom of the list automatically loads more data.
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | -    |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | 

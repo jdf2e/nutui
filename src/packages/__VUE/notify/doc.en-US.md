@@ -51,12 +51,12 @@ export default {
 :::demo
 ```html
 <template>
-   <nut-cell-group title="Notify Type">
-      <nut-cell is-Link @click="primaryNotify('Primary Notify')">Primary Notify</nut-cell>
-      <nut-cell is-Link @click="successNotify('Success Notify')">Success Notify</nut-cell>
-      <nut-cell is-Link @click="errorNotify('Error Notify')">Error Notify</nut-cell>
-      <nut-cell is-Link @click="warningNotify('Warning Notify')">Warning Notify</nut-cell>
-    </nut-cell-group>
+  <nut-cell-group title="Notify Type">
+    <nut-cell is-Link @click="primaryNotify('Primary Notify')">Primary Notify</nut-cell>
+    <nut-cell is-Link @click="successNotify('Success Notify')">Success Notify</nut-cell>
+    <nut-cell is-Link @click="errorNotify('Error Notify')">Error Notify</nut-cell>
+    <nut-cell is-Link @click="warningNotify('Warning Notify')">Warning Notify</nut-cell>
+  </nut-cell-group>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -172,7 +172,7 @@ export default {
 | duration   | Display duration (ms),value is 0 ,notify not disappear | Number        | 3000     |
 | color      | Font Color                                               | String        | -        |
 | background | Background color                                         | String        | -        |
-| class-name | Custom class name                                        | String/Number | 1        |
+| class-name | Custom class name                                        | string \| number | 1        |
 | position | custom position, optional values are `top` `bottom` `left` `right` `center` | String | `top` |
 
 > Component call is supported after version 'v3.1.20'.

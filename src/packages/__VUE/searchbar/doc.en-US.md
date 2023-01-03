@@ -44,7 +44,8 @@ app.use(Searchbar);
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
-  import { Toast } from '@nutui/nutui';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style'; 
   export default {
     setup() {
       const state = reactive({
@@ -52,7 +53,7 @@ app.use(Searchbar);
       });
 
       const search = function () {
-        Toast.text('Search trigger');
+        showToast.text('Search trigger');
       };
 
       return {

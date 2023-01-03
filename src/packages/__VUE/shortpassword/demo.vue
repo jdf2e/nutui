@@ -78,8 +78,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, getCurrentInstance } from 'vue';
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('short-password');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -110,7 +111,6 @@ const initTranslate = () =>
 export default createDemo({
   setup() {
     initTranslate();
-    let { proxy } = getCurrentInstance() as any;
 
     const state = reactive({
       visible1: false,
@@ -130,16 +130,16 @@ export default createDemo({
     });
     const methods = {
       complete(value: string) {
-        proxy.$toast.text(value);
+        showToast.text(value);
       },
       onTips() {
-        proxy.$toast.text(translate('onTips'));
+        showToast.text(translate('onTips'));
       },
       close() {
-        proxy.$toast.text(translate('close'));
+        showToast.text(translate('close'));
       },
       cancel() {
-        proxy.$toast.text(translate('cancelTips'));
+        showToast.text(translate('cancelTips'));
       }
     };
 

@@ -210,13 +210,13 @@ app.use(Backtop);
 
 | 字段            | 说明                 | 类型    | 默认值  |
 |-----------------|------------------------------------------|---------|---------|
-| el-id           | 获取监听元素的父级元素         | String | -       |
-| bottom         | 距离页面底部距离    | Number  | `20`       |
-| right        | 距离页面右侧距离      | Number |  `10`  |
-| distance     | 页面垂直滚动多高后出现   | Number  | `200`      |
-| z-index         | 设置组件页面层级   | Number  | `10`       |  
-| is-animation         | 是否有动画,和duration参数互斥   | Boolean  | `true`       |  
-| duration         | 设置动画持续时间   | Number  | `1000`       |                                          
+| el-id           | 获取监听元素的父级元素         | string | -       |
+| bottom         | 距离页面底部距离    | number  | `20`       |
+| right        | 距离页面右侧距离      | number |  `10`  |
+| distance     | 页面垂直滚动多高后出现   | number  | `200`      |
+| z-index         | 设置组件页面层级   | number  | `10`       |  
+| is-animation         | 是否有动画,和duration参数互斥   | boolean  | `true`       |  
+| duration         | 设置动画持续时间   | number  | `1000`       |                                          
 
 ### Events
 | 名称  | 说明     | 回调参数    |
@@ -235,6 +235,6 @@ app.use(Backtop);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-backtop-border-color       | _#e0e0e0_        | -    |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-backtop-border-color       | _#e0e0e0_        | 

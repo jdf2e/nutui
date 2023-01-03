@@ -32,6 +32,8 @@ app.use(AddressList);
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -56,13 +58,13 @@ export default {
       addressName:'testaddressName'
     });
     const itemClick = ()=>{
-      Toast.text('Click To Address');
+      showToast.text('Click To Address');
     }
     const delClick = ()=>{
-      Toast.text('Click To Delete');
+      showToast.text('Click To Delete');
     }
     const editClick = ()=>{
-      Toast.text('Click To Edit');
+      showToast.text('Click To Edit');
     }
     return {
       itemClick,
@@ -102,6 +104,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -126,22 +130,22 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('Click To Address');
+        showToast.text('Click To Address');
       }
       const delClick = ()=>{
-        Toast.text('Click To Delete');
+        showToast.text('Click To Delete');
       }
       const editClick = ()=>{
-        Toast.text('Click To Edit');
+        showToast.text('Click To Edit');
       }
       const copyClick = ()=>{
-        Toast.text('Click To Copy');
+        showToast.text('Click To Copy');
       }
       const setClick = ()=>{
-        Toast.text('Click On Settings');
+        showToast.text('Click On Settings');
       }
       const addAddress = ()=>{
-        Toast.text('Click To Add');
+        showToast.text('Click To Add');
       }
       return {
         itemClick,
@@ -179,6 +183,8 @@ export default {
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -203,16 +209,16 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('Click To Address');
+        showToast.text('Click To Address');
       }
       const editClick = ()=>{
-        Toast.text('Click To Edit');
+        showToast.text('Click To Edit');
       }
       const delClick = ()=>{
-        Toast.text('Click To Delete');
+        showToast.text('Click To Delete');
       }
       const addAddress = ()=>{
-        Toast.text('Click To Add');
+        showToast.text('Click To Add');
       }
       return {
         itemClick,

@@ -27,11 +27,10 @@ app.use(Range);
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { Toast } from '@nutui/nutui';
   export default {
     setup() {
       const value = ref(40);
-      const onChange = (value) => Toast.text('当前值：' + value);
+      const onChange = (value) => console.log('当前值：' + value);
       return {
         value,
         onChange,
@@ -54,11 +53,10 @@ app.use(Range);
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref([20, 80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -79,11 +77,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(0);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -104,11 +101,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(20);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -129,11 +125,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(30);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -154,11 +149,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -180,11 +174,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(50);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -211,11 +204,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -253,11 +245,10 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(60);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -294,12 +285,11 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value10 = ref(20);
     const value11 = ref([20,80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -349,7 +339,6 @@ export default {
 
 <script lang="ts">
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value12 = ref(20);
@@ -362,7 +351,7 @@ export default {
       80: 80,
       100: 100
     });
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => console.log('当前值：' + value);
     return {
       value,
       onChange,
@@ -380,19 +369,19 @@ export default {
   
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 当前进度百分比 | Number、Number[] | `0` |
-| range | 是否开启双滑块模式 | Boolean | `false` |
-| max | 最大值 | Number、String | `100` |
-| min | 最小值 | Number、String | `0` |
-| step | 步长 | Number、String | `1` |
-| disabled | 是否禁用滑块 | Boolean | `false` |
-| vertical | 是否竖向展示 | Boolean | `false` |
-| hidden-range | 是否隐藏范围值 | Boolean | `false` |
-| hidden-tag | 是否隐藏标签 | Boolean | `false` |
-| active-color | 进度条激活态颜色 | String | `rgba(250, 44, 25, 1)` |
-| inactive-color | 进度条非激活态颜色 | String | `rgba(255, 163, 154, 1)` |
-| button-color | 按钮颜色 | String | `rgba(250, 44, 25, 1)` |
-| marks | 刻度标示 | Object{key:number} | {} |
+| v-model | 当前进度百分比 | number、number[] | `0` |
+| range | 是否开启双滑块模式 | boolean | `false` |
+| max | 最大值 | number、string | `100` |
+| min | 最小值 | number、string | `0` |
+| step | 步长 | number、string | `1` |
+| disabled | 是否禁用滑块 | boolean | `false` |
+| vertical | 是否竖向展示 | boolean | `false` |
+| hidden-range | 是否隐藏范围值 | boolean | `false` |
+| hidden-tag | 是否隐藏标签 | boolean | `false` |
+| active-color | 进度条激活态颜色 | string | `rgba(250, 44, 25, 1)` |
+| inactive-color | 进度条非激活态颜色 | string | `rgba(255, 163, 154, 1)` |
+| button-color | 按钮颜色 | string | `rgba(250, 44, 25, 1)` |
+| marks | 刻度标示 | object{key:number} | `{}` |
 
   
 ### Events
@@ -415,13 +404,13 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-range-tip-font-color| _#333333_  |  -  |
-|  --nut-range-bg-color| _var(--nut-active-color)_  |  -  |
-|  --nut-range-bg-color-tick| _#fa958c_  |  -  |
-|  --nut-range-bar-bg-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  |  -  |
-|  --nut-range-bar-btn-bg-color| _var(--nut-white)_  |  -  |
-|  --nut-range-bar-btn-width| _24px_  |  -  |
-|  --nut-range-bar-btn-height| _24px_  |  -  |
-|  --nut-range-bar-btn-border| _1px solid var(--nut-primary-color)_  |  -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+|  --nut-range-tip-font-color| _#333333_  |
+|  --nut-range-bg-color| _var(--nut-active-color)_  |
+|  --nut-range-bg-color-tick| _#fa958c_  |
+|  --nut-range-bar-bg-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  |
+|  --nut-range-bar-btn-bg-color| _var(--nut-white)_  |
+|  --nut-range-bar-btn-width| _24px_  |
+|  --nut-range-bar-btn-height| _24px_  |
+|  --nut-range-bar-btn-border| _1px solid var(--nut-primary-color)_  |

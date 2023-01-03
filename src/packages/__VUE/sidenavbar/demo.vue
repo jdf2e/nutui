@@ -81,7 +81,7 @@
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('side-navbar');
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -171,7 +171,7 @@ export default createDemo({
     };
 
     const handleClick4 = (msg: string) => {
-      Toast.text(msg);
+      showToast.text(msg);
     };
 
     return {

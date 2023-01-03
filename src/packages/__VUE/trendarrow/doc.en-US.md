@@ -151,15 +151,15 @@ app.use(TrendArrow);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| rate         | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0    | Number | -                |
-| digits         | decimal precision               | Number | 2               |
-| show-sign         | Whether to display plus and minus signs               | Boolean | false               |
-| show-zero         |whether to show 0               | Boolean | false               |
-| arrow-left        | whether to show an arrow to the left of the number     | Boolean | false               |
-| sync-text-color   | Whether the text color is in sync with the arrow               | Boolean | true   |
-| text-color        | text color               | String | '#333333'               |
-| rise-color         | up arrow color               | String | '#fa2c19'               |
-| drop-color         | down arrow color               | String | ‘#64b578’               |
+| rate         | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0    | number | -                |
+| digits         | decimal precision               | number | `2`               |
+| show-sign         | Whether to display plus and minus signs               | boolean | `false`               |
+| show-zero         |whether to show 0               | boolean | `false`               |
+| arrow-left        | whether to show an arrow to the left of the number     | boolean | `false`               |
+| sync-text-color   | Whether the text color is in sync with the arrow               | boolean | `true`   |
+| text-color        | text color               | string | `#333333`               |
+| rise-color         | up arrow color               | string | `#fa2c19`            |
+| drop-color         | down arrow color               | string | `#64b578`           |
 
 ### Slots
 
@@ -174,8 +174,8 @@ app.use(TrendArrow);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-trendarrow-font-size| _14px_  | -  |
-| --nut-trendarrow-before-icon-margin| _4px_  | -  |
-| --nut-trendarrow-icon-width| _12px_  | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-trendarrow-font-size| _14px_   |
+| --nut-trendarrow-before-icon-margin| _4px_   |
+| --nut-trendarrow-icon-width| _12px_   |

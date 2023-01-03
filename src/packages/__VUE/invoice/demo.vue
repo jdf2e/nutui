@@ -10,7 +10,7 @@ import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('invoice');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -39,9 +39,9 @@ export default createDemo({
     // Promise 异步校验
     const asyncValidator = (val: string) => {
       return new Promise((resolve) => {
-        Toast.loading('模拟异步验证中...');
+        showToast.loading('模拟异步验证中...');
         setTimeout(() => {
-          Toast.hide();
+          showToast.hide();
           resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
         }, 1000);
       });

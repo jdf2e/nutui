@@ -110,7 +110,7 @@ import { reactive, ref, toRefs, onMounted } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Toast } from '@/packages/nutui.vue';
+import { showToast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('sku');
 
 const initTranslate = () =>
@@ -264,9 +264,9 @@ export default createDemo({
     // stepper 极限值
     const overLimit = (val: any) => {
       if (val.action == 'reduce') {
-        Toast.text(`至少买${val.value}件哦`);
+        showToast.text(`至少买${val.value}件哦`);
       } else {
-        Toast.text(`最多买${val.value}件哦`);
+        showToast.text(`最多买${val.value}件哦`);
       }
     };
 

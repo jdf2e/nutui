@@ -36,11 +36,10 @@ app.use(TimeDetail);
   </nut-time-select>
 </template>
 <script lang="ts">
-  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+  import { reactive, toRefs, onMounted } from 'vue';
   export default {
     props: {},
     setup() {
-      const { proxy } = getCurrentInstance() as any;
       const state = reactive({
         visible1: false,
         currentKey1: 0,
@@ -80,7 +79,7 @@ app.use(TimeDetail);
       };
 
       const handleSelected1 = (obj: any) => {
-        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+        console.log(`您选择了：${JSON.stringify(obj)}`);
       };
 
       onMounted(() => {
@@ -124,11 +123,10 @@ app.use(TimeDetail);
   </nut-time-select>
 </template>
 <script lang="ts">
-  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+  import { reactive, toRefs, onMounted } from 'vue';
   export default {
     props: {},
     setup() {
-      const { proxy } = getCurrentInstance() as any;
       const state = reactive({
         visible2: false,
         currentKey2: 0,
@@ -171,7 +169,7 @@ app.use(TimeDetail);
       };
 
       const handleSelected2 = (obj: any) => {
-        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+        console.log(`您选择了：${JSON.stringify(obj)}`);
       };
 
       onMounted(() => {
@@ -221,11 +219,10 @@ app.use(TimeDetail);
   </nut-time-select>
 </template>
 <script lang="ts">
-  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+  import { reactive, toRefs, onMounted } from 'vue';
   export default {
     props: {},
     setup() {
-      const { proxy } = getCurrentInstance() as any;
       const state = reactive({
         visible2: false,
         currentKey2: 0,
@@ -268,7 +265,7 @@ app.use(TimeDetail);
       };
 
       const handleSelected2 = (obj: any) => {
-        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+        console.log(`您选择了：${JSON.stringify(obj)}`);
       };
 
       onMounted(() => {

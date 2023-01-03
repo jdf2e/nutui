@@ -527,20 +527,20 @@ If you want to select a province, you need to set the region ID in the order of 
 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | ----- |
-| v-model:visible | Whether to open address | String | ''|
-| type | Choose type: exist/custom/custom2  | String | 'custom'|
-| province | Province data| Array | []|
-| city | City data | Array | []|
-| country | Country data | Array | []|
-| town | Town dta | Array | []|
-| height | Popup height | String、Number | '200px'|
-| exist-address | Exist address list data | Array | []|
-| is-show-custom-address | Whether to change custom address | Boolean | true|
-| custom-address-title  | Custom address title | String | 'Select Region'|
-| exist-address-title|  Exist address title | String | 'Delivery To'|
-| custom-and-exist-title| Custom address and existing address switch button copywriting | String | 'Choose Another Address'|
-| columns-placeholder | Columns placeholder text | String|Array | 'Select'|
-| lock-scroll   | Whether the background is locked   | Boolean        | `true`       |
+| v-model:visible | Whether to open address | string | `''`|
+| type | Choose type: exist/custom/custom2  | string | `custom`|
+| province | Province data| array | `[]`|
+| city | City data | array | `[]`|
+| country | Country data | array | `[]`|
+| town | Town dta | array | `[]`|
+| height | Popup height | string \| number | `200px`|
+| exist-address | Exist address list data | array | `[]`|
+| is-show-custom-address | Whether to change custom address | boolean | `true`|
+| custom-address-title  | Custom address title | string | `Select Region`|
+| exist-address-title|  Exist address title | string | `Delivery To`|
+| custom-and-exist-title| Custom address and existing address switch button copywriting | string | `Choose Another Address`|
+| columns-placeholder | Columns placeholder text | string \| array | `Select`|
+| lock-scroll   | Whether the background is locked   | boolean        | `true`       |
 
 
 ## Event
@@ -563,15 +563,15 @@ If you want to select a province, you need to set the region ID in the order of 
 ## selected 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| First Option（prevExistAdd） |  Select the previously selected address |  {}|
-| Second Option（nowExistAdd） |  Currently selected address |  {}|
-| Third Option（arr） |  After selecting the existing address list |  {}|
+| First Option（prevExistAdd） |  Select the previously selected address |  `{}`|
+| Second Option（nowExistAdd） |  Currently selected address |  `{}`|
+| Third Option（arr） |  After selecting the existing address list |  `{}`|
 
 ## close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
 | type | Selected Type  |  exist/custom/custom2|
-| data | Selected Data | {} |
+| data | Selected Data | `{}` |
 
 
 ## Slot
@@ -589,17 +589,17 @@ If you want to select a province, you need to set the region ID in the order of 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| -    |
-|  --nut-address-icon-color| _var(--nut-primary-color)_     | -    |
-|  --nut-address-header-title-font-size   | _18px_          | -    |
-|  --nut-address-header-title-color| _#262626_    | -    |
-|  --nut-address-region-tab-font-size| _13px_  | -    |
-|  --nut-address-region-tab-color| _#1d1e1e_  | -    |
-|  --nut-address-region-tab-active-item-font-weight| _bold_    | -    |
-|  --nut-address-region-tab-line-border-radius| _0_   | -    |
-|  --nut-address-region-tab-line-opacity| _1_   | -    |
-|  --nut-address-region-item-color| _#333_    | -    |
-|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | -    |
-|  --nut-address-item-margin-right| _9px_  | -    |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- |
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| 
+|  --nut-address-icon-color| _var(--nut-primary-color)_     | 
+|  --nut-address-header-title-font-size   | _18px_          | 
+|  --nut-address-header-title-color| _#262626_    | 
+|  --nut-address-region-tab-font-size| _13px_  | 
+|  --nut-address-region-tab-color| _#1d1e1e_  | 
+|  --nut-address-region-tab-active-item-font-weight| _bold_    | 
+|  --nut-address-region-tab-line-border-radius| _0_   | 
+|  --nut-address-region-tab-line-opacity| _1_   | 
+|  --nut-address-region-item-color| _#333_    | 
+|  --nut-address-region-item-font-size| _var(--nut-font-size-1)_   | 
+|  --nut-address-item-margin-right| _9px_  | 

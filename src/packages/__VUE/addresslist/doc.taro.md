@@ -57,13 +57,13 @@ export default {
       addressName:'testaddressName'
     });
     const itemClick = ()=>{
-      Toast.text('Click To Address');
+      console.log('Click To Address');
     }
     const delClick = ()=>{
-      Toast.text('Click To Delete');
+      console.log('Click To Delete');
     }
     const editClick = ()=>{
-      Toast.text('Click To Edit');
+      console.log('Click To Edit');
     }
     return {
       itemClick,
@@ -128,22 +128,22 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('Click To Address');
+        console.log('Click To Address');
       }
       const delClick = ()=>{
-        Toast.text('Click To Delete');
+        console.log('Click To Delete');
       }
       const editClick = ()=>{
-        Toast.text('Click To Edit');
+        console.log('Click To Edit');
       }
       const copyClick = ()=>{
-        Toast.text('Click To Copy');
+        console.log('Click To Copy');
       }
       const setClick = ()=>{
-        Toast.text('Click On Settings');
+        console.log('Click On Settings');
       }
       const addAddress = ()=>{
-        Toast.text('Click To Add');
+        console.log('Click To Add');
       }
       return {
         itemClick,
@@ -206,16 +206,16 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('Click To Address');
+        console.log('Click To Address');
       }
       const editClick = ()=>{
-        Toast.text('Click To Edit');
+        console.log('Click To Edit');
       }
       const delClick = ()=>{
-        Toast.text('Click To Delete');
+        console.log('Click To Delete');
       }
       const addAddress = ()=>{
-        Toast.text('Click To Add');
+        console.log('Click To Add');
       }
       return {
         itemClick,
