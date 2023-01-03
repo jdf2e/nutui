@@ -361,34 +361,32 @@ export default {
 ## API
 ### Props
 
-| Attribute                 | Description                                                                                                                                      | Type                                       | Default          |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|------------------|
-| auto-upload               | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                | Boolean                                    | true             |
-| name                      | The name of the `input` tag `name`, the file parameter name sent to the background                                                               | String                                     | "file"           |
-| url                       | The interface address of the upload server                                                                                                       | String                                     | -                |
-| v-model:file-list         | List of uploaded files by default                                                                                                                | FileItem[]                                 | []               |
-| is-preview                | Whether to display the preview image after the upload is successful                                                                              | Boolean                                    | true             |
-| is-deletable              | Whether to display the delete button                                                                                                             | Boolean                                    | true             |
-| method                    | The http method of upload request                                                                                                                | String                                     | "post"           |
-| list-type                 | Built-in stylesheets, support for three types: `picture`、`list`                                                                                 | String                                     | "picture"        |
-| capture                   | Capture, can be set to [camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，turn on the camera directly | String                                     | false            |
-| maximize                  | You can set the maximum upload file size (bytes)                                                                                                 | Number丨String                             | Number.MAX_VALUE |
-| maximum                   | File upload limit                                                                                                                                | Number丨String                             | 1                |
-| clear-input               | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file                                    | Boolean                                    | true             |
-| accept                    | File types that can be accepted. See [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)       | String                                     | *                |
-| headers                   | Set request headers                                                                                                                              | Object                                     | {}               |
-| data                      | Uploading extra params or function which can return uploading extra params                                                                       | Object                                     | {}               |
-| upload-icon               | Upload area [icon name](#/en-US/component/icon) or image link                                                                                    | String                                     | "photograph"     |
-| upload-icon-size          | Upload area [icon size] (#/en-US/component/icon) size, such as `20px` `2em` `2rem`                                                               | string \| object                           | -                |
-| xhr-state                 | The success status (status) value of the interface response                                                                                      | Number                                     | 200              |
-| with-credentials          | The ajax upload with cookie sent                                                                                                                 | Boolean                                    | false            |
-| multiple                  | Whether to support multiple file selection                                                                                                       | Boolean                                    | false            |
-| disabled                  | Whether to disable file upload                                                                                                                   | Boolean                                    | false            |
-| timeout                   | timeout, in milliseconds                                                                                                                         | Number丨String                             | 1000 * 30        |
-| before-upload             | Hook before reading the file, return false to stop reading the file, can return Promise                                                          | Function                                   | null             |
+| Attribute         | Description                                                                                                                                      | Type                                       | Default          |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|------------------|
+| auto-upload       | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                | boolean                                    | true             |
+| name              | The name of the `input` tag `name`, the file parameter name sent to the background                                                               | string                                     | "file"           |
+| url               | The interface address of the upload server                                                                                                       | string                                     | -                |
+| v-model:file-list | List of uploaded files by default                                                                                                                | FileItem[]                                 | []               |
+| is-preview        | Whether to display the preview image after the upload is successful                                                                              | boolean                                    | true             |
+| is-deletable      | Whether to display the delete button                                                                                                             | boolean                                    | true             |
+| method            | The http method of upload request                                                                                                                | string                                     | "post"           |
+| list-type         | Built-in stylesheets, support for three types: `picture`、`list`                                                                                 | string                                     | "picture"        |
+| capture           | Capture, can be set to [camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，turn on the camera directly | string                                     | false            |
+| maximize          | You can set the maximum upload file size (bytes)                                                                                                 | number \| string                           | Number.MAX_VALUE |
+| maximum           | File upload limit                                                                                                                                | number \| string                           | 1                |
+| clear-input       | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file                                    | boolean                                    | true             |
+| accept            | File types that can be accepted. See [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)       | string                                     | *                |
+| headers           | Set request headers                                                                                                                              | object                                     | {}               |
+| data              | Uploading extra params or function which can return uploading extra params                                                                       | object                                     | {}               |
+| upload-icon-size  | Upload area [icon size] (#/en-US/component/icon) size, such as `20px` `2em` `2rem`                                                               | string \| object                           | -                |
+| xhr-state         | The success status (status) value of the interface response                                                                                      | number                                     | 200              |
+| with-credentials  | The ajax upload with cookie sent                                                                                                                 | boolean                                    | false            |
+| multiple          | Whether to support multiple file selection                                                                                                       | boolean                                    | false            |
+| disabled          | Whether to disable file upload                                                                                                                   | boolean                                    | false            |
+| timeout           | timeout, in milliseconds                                                                                                                         | number \| string                           | 1000 * 30        |
+| before-upload     | Hook before reading the file, return false to stop reading the file, can return Promise                                                          | Function                                   | null             |
 | before-xhr-upload | Customize the method when uploading XHR                                                                                                          | Function(xhr，option)                      | null             |
-| before-delete             | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file,fileList): boolean 丨Promise | -                |
-| delete-icon               | Customize the delete button by passing in [icon name](/#/en-US/component/icon) or an image link                                                  | String                                     | "photograph"     |
+| before-delete     | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file,fileList): boolean 丨Promise | -                |
 
 
 ### FileItem
@@ -417,11 +415,11 @@ export default {
 
 ### Uploader Slots
 
-| Name               | Description                          |
-|--------------------|--------------------------------------|
-| default            | Default slot                         |
-| upload-icon`4.0.0` | Custom Uploader Button Center `icon` |
-| delete-icon`4.0.0` | Custom Right Delete Button           |
+| Name        | Description                          |
+|-------------|--------------------------------------|
+| default     | Default slot                         |
+| upload-icon | Custom Uploader Button Center `icon` |
+| delete-icon | Custom Right Delete Button           |
 
 ### Methods
 
@@ -438,8 +436,8 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-uploader-picture-width| _100px_  | -  |
-| --nut-uploader-picture-height| _100px_  | -  |
-| --nut-uploader-background| _#f7f8fa_  | -  |
+| Name                          | Default Value |
+|-------------------------------|---------------|
+| --nut-uploader-picture-width  | _100px_       |
+| --nut-uploader-picture-height | _100px_       |
+| --nut-uploader-background     | _#f7f8fa_     |

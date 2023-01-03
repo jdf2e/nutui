@@ -416,27 +416,27 @@ export default {
 
 ### Props
 
-| 参数          | 说明                                                  | 类型     | 默认值 |
-| ------------- | ----------------------------------------------------- | -------- | ------ |
-| v-model       | 选中值，双向绑定                                      | Array    | -      |
-| options       | 级联数据                                              | Array    | -      |
-| lazy          | 是否开启动态加载                                      | Boolean  | -      |
-| lazy-load      | 动态加载回调，开启动态加载时生效                      | Function | -      |
-| value-key      | 自定义`options`结构中`value`的字段                    | String   | -      |
-| text-key       | 自定义`options`结构中`text`的字段                     | String   | -      |
-| children-key   | 自定义`options`结构中`children`的字段                 | String   | -      |
-| convert-config | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
-| title | 标题 | String   | ''      |
-| close-icon-position | 取消按钮位置，继承 Popup 组件 | String   | "top-right"      |
-| close-icon | 自定义关闭按钮，继承 Popup 组件 | String   | "close"     |
-| closeable | 是否显示关闭按钮，继承 Popup 组件 | Boolean   | true     |
-| poppable | 是否需要弹层展示（设置为false后，title失效） | Boolean   | true     |
+| 参数                | 说明                                                  | 类型     | 默认值      |
+|---------------------|-------------------------------------------------------|----------|-------------|
+| v-model             | 选中值，双向绑定                                      | Array    | -           |
+| options             | 级联数据                                              | Array    | -           |
+| lazy                | 是否开启动态加载                                      | boolean  | -           |
+| lazy-load           | 动态加载回调，开启动态加载时生效                      | Function | -           |
+| value-key           | 自定义`options`结构中`value`的字段                    | string   | -           |
+| text-key            | 自定义`options`结构中`text`的字段                     | string   | -           |
+| children-key        | 自定义`options`结构中`children`的字段                 | string   | -           |
+| convert-config      | 当options为可转换为树形结构的扁平结构时，配置转换规则 | object   | -           |
+| title               | 标题                                                  | string   | ''          |
+| close-icon-position | 取消按钮位置，继承 Popup 组件                         | string   | "top-right" |
+| close-icon          | 自定义关闭按钮，继承 Popup 组件                       | string   | "close"     |
+| closeable           | 是否显示关闭按钮，继承 Popup 组件                     | boolean  | true        |
+| poppable            | 是否需要弹层展示（设置为false后，title失效）          | boolean  | true        |
 
 ### Events
 
-| 事件名     | 说明             | 回调参数           |
-| ---------- | ---------------- | ------------------ |
-| change     | 选中值改变时触发 | (value, pathNodes) |
+| 事件名      | 说明             | 回调参数           |
+|-------------|------------------|--------------------|
+| change      | 选中值改变时触发 | (value, pathNodes) |
 | path-change | 选中项改变时触发 | (pathNodes)        |
 
 ## 主题定制
@@ -445,16 +445,16 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-cascader-font-size| _var(--nut-font-size-2)_  | -  |
-| --nut-cascader-line-height| _22px_  | -  |
-| --nut-cascader-tabs-item-padding| _0 10px_  | -  |
-| --nut-cascader-bar-padding| _24px 20px 17px_  | -  |
-| --nut-cascader-bar-font-size| _var(--nut-font-size-4)_  | -  |
-| --nut-cascader-bar-line-height| _20px_  | -  |
-| --nut-cascader-bar-color| _var(--nut-title-color)_  | -  |
-| --nut-cascader-item-padding| _10px 20px_  | -  |
-| --nut-cascader-item-color| _var(--nut-title-color)_  | -  |
-| --nut-cascader-item-font-size| _var(--nut-font-size-2)_  | -  |
-| --nut-cascader-item-active-color| _var(--nut-primary-color)_  | -  |
+| 名称                             | 默认值                     |
+|----------------------------------|----------------------------|
+| --nut-cascader-font-size         | _var(--nut-font-size-2)_   |
+| --nut-cascader-line-height       | _22px_                     |
+| --nut-cascader-tabs-item-padding | _0 10px_                   |
+| --nut-cascader-bar-padding       | _24px 20px 17px_           |
+| --nut-cascader-bar-font-size     | _var(--nut-font-size-4)_   |
+| --nut-cascader-bar-line-height   | _20px_                     |
+| --nut-cascader-bar-color         | _var(--nut-title-color)_   |
+| --nut-cascader-item-padding      | _10px 20px_                |
+| --nut-cascader-item-color        | _var(--nut-title-color)_   |
+| --nut-cascader-item-font-size    | _var(--nut-font-size-2)_   |
+| --nut-cascader-item-active-color | _var(--nut-primary-color)_ |
