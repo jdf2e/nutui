@@ -595,22 +595,22 @@ export default {
 
 | Attribute              | Description                                  | Type            | Default  |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
-| v-model:visible   | whether to show                  | Boolean         | false           |
-| type              | Calendar type ：'one' 'range' 'multiple'    | String          | 'one'           |
-| poppable          | Whether to display the pop-up window                                  | Boolean         | true            |
-| is-auto-back-fill | Automatic backfill                                          | Boolean         | false           |
-| title             | whether to show title                                          | String          | ‘Calendar’      |
-| default-value     | Default value, select single date : `String`，other: `Array` | String 、 Array | null            |
-| start-date        | The start date            | String          | Today            |
-| end-date          | The end date            | String          | 365 days from today |
-| show-today          | Whether to show today's mark               | Boolean          | true |
-| start-text         | Range selection, start part of the text              | String          | Start |
-| end-text         | Range selection, end part of the text            | String          | End |
-| confirm-text          | Bottom confirm button text               | String          | ’Confirm‘ |
-| show-title          | Whether to show the calendar title               | Boolean          | true |
-| show-sub-title          | Whether to display the date title              | Boolean          | true |
-| to-date-animation          | Whether to use scroll animation              | Boolean          | true |
-| first-day-of-week          | Set the start day of week              | 0-6          | 0 |
+| v-model:visible   | whether to show                  | boolean         | `false`           |
+| type              | Calendar type ：'one' 'range' 'multiple'    | string          | `one`           |
+| poppable          | Whether to display the pop-up window                                  | boolean         | `true`            |
+| is-auto-back-fill | Automatic backfill                                          | boolean         | `false`           |
+| title             | whether to show title                                          | string          | `Calendar`      |
+| default-value     | Default value, select single date : `string`，other: `array` | string 、 array | `null`            |
+| start-date        | The start date            | string          | `Today`            |
+| end-date          | The end date            | string          | `365 days from today` |
+| show-today          | Whether to show today's mark               | boolean          | `true` |
+| start-text         | Range selection, start part of the text              | string          | `Start` |
+| end-text         | Range selection, end part of the text            | string          | `End` |
+| confirm-text          | Bottom confirm button text               | string          | `Confirm` |
+| show-title          | Whether to show the calendar title               | boolean          | `true` |
+| show-sub-title          | Whether to display the date title              | boolean          | `true` |
+| to-date-animation          | Whether to use scroll animation              | boolean          | `true` |
+| first-day-of-week          | Set the start day of week              | 0-6          | `0` |
 
 ### Events
 
@@ -646,23 +646,23 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-calendar-primary-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-choose-color| _var(--nut-active-color)_   | - |
-| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-base-color| _#333333_   | - |
-| --nut-calendar-disable-color| _#d1d0d0_   | - |
-| --nut-calendar-base-font| _var(--nut-font-size-3)_   | - |
-| --nut-calendar-title-font| _var(--nut-font-size-4)_   | - |
-| --nut-calendar-title-font-weight| _500_   | - |
-| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   | - |
-| --nut-calendar-text-font| _var(--nut-font-size-1)_   | - |
-| --nut-calendar-day-font| _16px_   | - |
-| --nut-calendar-day-active-border-radius| _0px_   | - |
-| --nut-calendar-day-width| _14.28%_   | - |
-| --nut-calendar-day-height| _64px_   | - |
-| --nut-calendar-day-font-weight| _500_   | - |
-| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-month-title-font-size| _inherit_   | - |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-calendar-primary-color| _var(--nut-primary-color)_   |
+| --nut-calendar-choose-color| _var(--nut-active-color)_   |
+| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   |
+| --nut-calendar-base-color| _#333333_   |
+| --nut-calendar-disable-color| _#d1d0d0_   |
+| --nut-calendar-base-font| _var(--nut-font-size-3)_   |
+| --nut-calendar-title-font| _var(--nut-font-size-4)_   |
+| --nut-calendar-title-font-weight| _500_   |
+| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   |
+| --nut-calendar-text-font| _var(--nut-font-size-1)_   |
+| --nut-calendar-day-font| _16px_   |
+| --nut-calendar-day-active-border-radius| _0px_   |
+| --nut-calendar-day-width| _14.28%_   |
+| --nut-calendar-day-height| _64px_   |
+| --nut-calendar-day-font-weight| _500_   |
+| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
+| --nut-calendar-month-title-font-size| _inherit_   |
 

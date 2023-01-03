@@ -206,13 +206,13 @@ app.use(Backtop);
 
 | Attribute            | Description                 | Type    | Default  |
 |-----------------|------------------------------------------|---------|---------|
-| el-id           | Get the parent element of the listening element         | String | -       |
-| bottom         | Distance from bottom of page    | Number  | `20`       |
-| right        | Distance from the right side of the page      | Number |  `10`  |
-| distance     | How high to scroll the page vertically   | Number  | `200`      |
-| z-index         | Set the component z-index   | Number  | `10`       |  
-| is-animation         | Whether there is animation, mutually exclusive with the duration parameter   | Boolean  | `true`       |  
-| duration         | Set animation duration   | Number  | `1000`       |                                          
+| el-id           | Get the parent element of the listening element         | string | -       |
+| bottom         | Distance from bottom of page    | number  | `20`       |
+| right        | Distance from the right side of the page      | number |  `10`  |
+| distance     | How high to scroll the page vertically   | number  | `200`      |
+| z-index         | Set the component z-index   | number  | `10`       |  
+| is-animation         | Whether there is animation, mutually exclusive with the duration parameter   | boolean  | `true`       |  
+| duration         | Set animation duration   | number  | `1000`       |                                          
 
 ### Events
 | Event  | Description     | Arguments    |
@@ -230,6 +230,6 @@ app.use(Backtop);
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-backtop-border-color       | _#e0e0e0_        | -    |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-backtop-border-color       | _#e0e0e0_        | 

@@ -588,22 +588,22 @@ export default {
 
 | 字段              | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
-| v-model:visible   | 是否可见                                          | Boolean         | false           |
-| type              | 类型，日期单择'one'，区间选择'range',日期多选'multiple'    | String          | 'one'           |
-| poppable          | 是否弹窗状态展示                                  | Boolean         | true            |
-| is-auto-back-fill | 自动回填                                          | Boolean         | false           |
-| title             | 显示标题                                          | String          | ‘日期选择’      |
-| default-value     | 默认值，单个日期选择 String，其他为 Array  | String 、 Array | null            |
-| start-date        | 开始日期         | String          | 今天            |
-| end-date          | 结束日期              | String          | 距离今天 365 天 |
-| show-today          | 是否展示今天标记               | Boolean          | true |
-| start-text         | 范围选择，开始信息文案               | String          | ’开始‘ |
-| end-text         | 范围选择，结束信息文案               | String          | ‘结束’ |
-| confirm-text          | 底部确认按钮文案               | String          | ’确认‘ |
-| show-title          | 是否在展示日历标题               | Boolean          | true |
-| show-sub-title          | 是否展示日期标题              | Boolean          | true |
-| to-date-animation          | 是否启动滚动动画              | Boolean          | true |
-| first-day-of-week          | 设置周起始日              | 0-6          | 0 |
+| v-model:visible   | 是否可见                                          | boolean         | `false`           |
+| type              | 类型，日期单择'one'，区间选择'range',日期多选'multiple'    | string          | `one`          |
+| poppable          | 是否弹窗状态展示                                  | boolean         | `true`            |
+| is-auto-back-fill | 自动回填                                          | boolean         | `false`           |
+| title             | 显示标题                                          | string          | `日期选择`      |
+| default-value     | 默认值，单个日期选择 string，其他为 Array  | string 、 Array | `null`            |
+| start-date        | 开始日期         | string          | 今天            |
+| end-date          | 结束日期              | string          | 距离今天 365 天 |
+| show-today          | 是否展示今天标记               | boolean          | `true` |
+| start-text         | 范围选择，开始信息文案               | string          | `开始` |
+| end-text         | 范围选择，结束信息文案               | string          | `结束` |
+| confirm-text          | 底部确认按钮文案               | string          | `确认` |
+| show-title          | 是否在展示日历标题               | boolean          | `true` |
+| show-sub-title          | 是否展示日期标题              | boolean          | `true` |
+| to-date-animation          | 是否启动滚动动画              | boolean          | `true` |
+| first-day-of-week          | 设置周起始日              | 0-6          | `0` |
 
 ### Events
 
@@ -640,23 +640,23 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-calendar-primary-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-choose-color| _var(--nut-active-color)_   | - |
-| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-base-color| _#333333_   | - |
-| --nut-calendar-disable-color| _#d1d0d0_   | - |
-| --nut-calendar-base-font| _var(--nut-font-size-3)_   | - |
-| --nut-calendar-title-font| _var(--nut-font-size-4)_   | - |
-| --nut-calendar-title-font-weight| _500_   | - |
-| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   | - |
-| --nut-calendar-text-font| _var(--nut-font-size-1)_   | - |
-| --nut-calendar-day-font| _16px_   | - |
-| --nut-calendar-day-active-border-radius| _0px_   | - |
-| --nut-calendar-day-width| _14.28%_   | - |
-| --nut-calendar-day-height| _64px_   | - |
-| --nut-calendar-day-font-weight| _500_   | - |
-| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   | - |
-| --nut-calendar-month-title-font-size| _inherit_   | - |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-calendar-primary-color| _var(--nut-primary-color)_   |
+| --nut-calendar-choose-color| _var(--nut-active-color)_   |
+| --nut-calendar-choose-font-color| _var(--nut-primary-color)_   |
+| --nut-calendar-base-color| _#333333_   |
+| --nut-calendar-disable-color| _#d1d0d0_   |
+| --nut-calendar-base-font| _var(--nut-font-size-3)_   |
+| --nut-calendar-title-font| _var(--nut-font-size-4)_   |
+| --nut-calendar-title-font-weight| _500_   |
+| --nut-calendar-sub-title-font| _var(--nut-font-size-2)_   |
+| --nut-calendar-text-font| _var(--nut-font-size-1)_   |
+| --nut-calendar-day-font| _16px_   |
+| --nut-calendar-day-active-border-radius| _0px_   |
+| --nut-calendar-day-width| _14.28%_   |
+| --nut-calendar-day-height| _64px_   |
+| --nut-calendar-day-font-weight| _500_   |
+| --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
+| --nut-calendar-month-title-font-size| _inherit_   |
 

@@ -51,6 +51,7 @@ export default defineComponent({
     background: #fff;
     > img {
       width: 100%;
+      max-height: 100%;
     }
     .mark1 {
       width: 100%;

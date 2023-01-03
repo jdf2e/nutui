@@ -15,7 +15,7 @@
         },
         {
           "name": "exhibition/pages/popover/index",
-          "pathName": "exhibition/pages/popover/index",
+          "pathName": "exhibition/pages/noticebar/index",
           "query": "",
           "launchMode": "default",
           "scene": null
