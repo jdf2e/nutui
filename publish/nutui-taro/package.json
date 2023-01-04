@@ -11,10 +11,6 @@
     "dist/packages/_es/*",
     "dist/packages/**/style*"
   ],
-  "vetur": {
-    "tags": "dist/smartips/tags.json",
-    "attributes": "dist/smartips/attributes.json"
-  },
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
     "nutui",
