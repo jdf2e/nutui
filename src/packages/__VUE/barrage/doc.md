@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ### 基础用法
 
-`Icon` 的 `name` 属性支持传入图标名称或图片链接。
 :::demo
 
 ```html
