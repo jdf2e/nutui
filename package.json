@@ -7,10 +7,6 @@
   "style": "dist/style.css",
   "type": "module",
   "typings": "dist/types/index.d.ts",
-  "vetur": {
-    "tags": "dist/smartips/tags.json",
-    "attributes": "dist/smartips/attributes.json"
-  },
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
     "nutui",
@@ -51,7 +47,7 @@
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/4x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts && npm run attrs && node jd/generate-unplugin-deps.cjs nutui && node jd/copy-dist.cjs nutui",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts:taro && npm run attrs&& node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts:taro && npm run attrs:taro && node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -68,6 +64,7 @@
     "codeformat": "prettier --write .",
     "copydocs": "node ./jd/copymd.cjs",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
+    "attrs:taro": "node ./jd/createAttributes.cjs taro",
     "attrs": "node ./jd/createAttributes.cjs",
     "dts": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types",
     "dts:taro": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && npm run generate:types:taro",
