@@ -62,7 +62,7 @@ export default defineConfig({
       input,
       output: {
         paths: {
-          '@/packages/locale': '../locale/lang/index.js'
+          '@/packages/locale': '../locale/lang'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js',

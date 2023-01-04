@@ -48,7 +48,7 @@ export { ${element.name} };`;
   });
 });
 outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`).join('\n');
-outputFileEntry += `\nimport { Locale } from "./packages/locale/lang/index.js";
+outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
 function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {

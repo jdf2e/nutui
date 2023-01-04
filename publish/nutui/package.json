@@ -5,11 +5,11 @@
   "main": "dist/nutui.umd.cjs",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
-  "type": "module",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
-    "dist/packages/_es/*",
-    "dist/packages/**/style*"
+    "dist/packages/**/*",
+    "dist/styles/**",
+    "dist/style.css"
   ],
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
