@@ -191,3 +191,11 @@
     box-sizing: border-box;
   }
 }
+.tabs-scrollview {
+  white-space: nowrap;
+}
+.nut-tabs__titles-item .taro {
+  display: inline-block !important;
+  height: 46px;
+  line-height: 46px;
+}
