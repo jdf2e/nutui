@@ -206,7 +206,7 @@ export default {
 
 |Slot name | Description|
 |------|------|
-|Slot: mTitle | Content slot on the left side of the title bar|
+|Slot: title | Content slot on the left side of the title bar|
 |Slot: value | Right content slot of the title bar|
 |Slot: extraRender | Set fixed content under the title (no folding)|
 

@@ -7,98 +7,151 @@
 ### 安装
 ``` javascript
 import { createApp } from 'vue';
-import { Notify } from '@nutui/nutui-taro';
+import { Notify } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Notify);
 ```    
-### 使用示例
-
-``` html 
-<nut-cell-group :title="baseState.state.desc">
-  <nut-cell is-Link @click="baseState.methods.cellClick">基础用法</nut-cell>
-  <nut-notify @click="onClick" @closed="onClosed" v-model:visible="baseState.state.show"
-    :msg="baseState.state.desc" />
-</nut-cell-group>
-
-<nut-cell-group title="通知类型">
-  <nut-notify @click="onClick" @closed="onClosed" :type="notifyState.state.type"
-    v-model:visible="notifyState.state.show" :msg="notifyState.state.desc" />
-  <nut-cell is-Link @click="notifyState.methods.cellClick('primary','主要通知')">主要通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('success','成功通知')">成功通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('danger','危险通知')">危险通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('warning','警告通知')">警告通知</nut-cell>
-</nut-cell-group>
-
-<nut-cell-group title="自定义样式">
-  <nut-notify @click="onClick" @closed="onClosed" color='#ad0000' background='#ffe1e1'
-    :type="customState.state.type" v-model:visible="customState.state.show" :msg="customState.state.desc"
-    :duration="customState.state.duration" />
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义背景色和字体颜色')"> 自定义背景色和字体颜色
-  </nut-cell>
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义时长5s',5000)"> 自定义时长5s
-  </nut-cell>
-</nut-cell-group>
-```
-``` javascript
-import { reactive } from 'vue';
+### 基础用法
+:::demo
+```html
+<template>
+  <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
 export default {
   setup() {
-    const onClosed = () => console.log('closed');
-    const onClick = () => console.log('click');
-
-    const baseState = {
-      state: reactive({
-        show: false,
-        desc: '基础用法'
-      }),
-      methods: {
-        cellClick() {
-          baseState.state.show = true;
+    const baseNotify = (msg: string) => {
+      showNotify.text(msg, {
+        onClose: () => {
+          console.log('close');
+        },
+        onClick: () => {
+          console.log('click');
         }
-      }
-    };
-
-    const notifyState = {
-      state: reactive({
-        show: false,
-        desc: '',
-        type: 'primary'
-      }),
-      methods: {
-        cellClick(type: string, desc: string) {
-          notifyState.state.show = true;
-          notifyState.state.type = type;
-          notifyState.state.desc = desc;
-        }
-      }
-    };
-    const customState = {
-      state: reactive({
-        show: false,
-        desc: '',
-        type: 'primary',
-        duration: 3000
-      }),
-      methods: {
-        cellClick(type: string, desc: string, duration: number) {
-          customState.state.show = true;
-          customState.state.type = type;
-          customState.state.desc = desc;
-          customState.state.duration = duration;
-        }
-      }
+      });
     };
     return {
-      baseState,
-      notifyState,
-      customState,
-      onClosed,
+      baseNotify
+    }
+  }
+}
+</script>
+```
+:::
+### 通知类型
+:::demo
+```html
+<template>
+   <nut-cell-group title="通知类型">
+      <nut-cell is-Link @click="primaryNotify('主要通知')">主要通知</nut-cell>
+      <nut-cell is-Link @click="successNotify('成功通知')">成功通知</nut-cell>
+      <nut-cell is-Link @click="errorNotify('危险通知')">危险通知</nut-cell>
+      <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
+    </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+export default {
+  setup() {
+    const primaryNotify = (msg: string) => {
+      showNotify.primary(msg);
+    };
+    const successNotify = (msg: string) => {
+      showNotify.success(msg);
+    };
+    const errorNotify = (msg: string) => {
+      showNotify.danger(msg);
+    };
+    const warningNotify = (msg: string) => {
+      showNotify.warn(msg);
+    };
+    return {
+      primaryNotify,
+      successNotify,
+      errorNotify,
+      warningNotify,
+    }
+  }
+}
+</script>
+```
+:::
+### 自定义
+:::demo
+```html
+<template>
+  <nut-cell-group title="自定义背景色和字体颜色">
+    <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">自定义背景色和字体颜色</nut-cell>
+  </nut-cell-group>
+  <nut-cell-group title="自定义时长">
+    <nut-cell is-Link @click="timeNotify('自定义时长')">自定义时长</nut-cell>
+  </nut-cell-group>
+  <nut-cell-group title="自定义位置">
+    <nut-cell is-Link @click="positionNotify('自定义位置')">自定义位置</nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+export default {
+  setup() {
+    const cusBgNotify = (msg: string) => {
+      showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+    };
+    const timeNotify = (msg: string) => {
+      showNotify.text(msg, { duration: 10000 });
+    };
+    const positionNotify = (msg: string) => {
+      showNotify.text(msg, { position: 'bottom' });
+    };
+    return {
+      cusBgNotify,
+      timeNotify,
+      positionNotify
+    };
+  }
+}
+</script>
+```
+:::
+
+### 组件调用
+:::demo
+```html
+<template>
+  <nut-cell-group title="组件调用">
+    <nut-cell is-Link @click="onClick">组件调用</nut-cell>
+    <nut-notify v-model:visible="show" :duration="2000">
+      <span>Content</span>
+    </nut-notify>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+export default {
+  setup() {
+    const show = ref(false);
+    const onClick = () => {
+      show.value = true;
+    };
+    return {
+      show,
       onClick
     };
   }
-};
-``` 
+}
+</script>
+```
+:::
 
 
 ### Props
