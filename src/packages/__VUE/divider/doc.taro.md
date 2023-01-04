@@ -113,7 +113,7 @@ app.use(Divider);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | dashed         | 是否使用虚线               | boolean | `false`                |
-| hairline        | 是否使用 0.5px 线                         | boolean | `true`                |
+| hairline        | 是否使用 `0.5px` 线                         | boolean | `true`                |
 | content-position        | 内容位置，可选值为 `left`、`right`                         | string | `center`                |
 | direction         | 水平还是垂直类型               | string | `horizontal`                |
 
@@ -130,15 +130,15 @@ app.use(Divider);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-divider-margin | _16px 0_ | -  |
-| --nut-divider-text-font-size | _var(--nut-font-size-2)_ | -  |
-| --nut-divider-text-color | _#909ca4_ | -  |
-| --nut-divider-line-height | _2px_ | -  |
-| --nut-divider-before-margin-right | _16px_ | -  |
-| --nut-divider-after-margin-left | _16px_ | -  |
-| --nut-divider-vertical-height | _12px_ | -  |
-| --nut-divider-vertical-top | _2px_ | -  |
-| --nut-divider-vertical-border-left | _rgba(0, 0, 0, 0.06)_ | -  |
-| --nut-divider-vertical-margin | _0 8px_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-divider-margin | _16px 0_ |
+| --nut-divider-text-font-size | _var(--nut-font-size-2)_ |
+| --nut-divider-text-color | _#909ca4_ |
+| --nut-divider-line-height | _2px_ |
+| --nut-divider-before-margin-right | _16px_ |
+| --nut-divider-after-margin-left | _16px_ |
+| --nut-divider-vertical-height | _12px_ |
+| --nut-divider-vertical-top | _2px_ |
+| --nut-divider-vertical-border-left | _rgba(0, 0, 0, 0.06)_ |
+| --nut-divider-vertical-margin | _0 8px_ |

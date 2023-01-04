@@ -172,14 +172,14 @@ export default {
 | Attribute    | Description                                                                      | Type    | Default |
 |--------------|----------------------------------------------------------------------------------|---------|---------|
 | v-model      | The current number of stars, you can use v-model to bind data in both directions | number  | -       |
-| count        | Total number of stars                                                            | number  | 5       |
-| active-color | Icon selection color                                                             | string  | #fa200c |
-| void-color   | Icon unselected color                                                            | string  | #ccc    |
-| allow-half   | half star                                                                        | boolean | false   |
-| readonly     | read-only                                                                        | boolean | false   |
-| disabled     | whether to disable                                                               | boolean | false   |
-| spacing      | spacing                                                                          | number  | 20      |
-| touchable    | Whether to allow select rate by touch gesture                                    | boolean | true    |
+| count        | Total number of stars                                                            | number  | `5`       |
+| active-color | Icon selection color                                                             | string  | `#fa200c` |
+| void-color   | Icon unselected color                                                            | string  | `#ccc`    |
+| allow-half   | half star                                                                        | boolean | `false`   |
+| readonly     | read-only                                                                        | boolean | `false`   |
+| disabled     | whether to disable                                                               | boolean | `false`   |
+| spacing      | spacing                                                                          | number  | `20`      |
+| touchable    | Whether to allow select rate by touch gesture                                    | boolean | `true`    |
 
 
 ### Events

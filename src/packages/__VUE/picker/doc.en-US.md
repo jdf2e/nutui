@@ -381,9 +381,9 @@ Use the children field of the Columns attribute to cascade options
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| v-model:value         | Default Index               | array | `[]`              |
+| v-model:value         | Default Index               | Array | `[]`              |
 | v-model:visible          | Is Show               | boolean | -                |
-| columns         | Columns data              | array | -                |
+| columns         | Columns data              | Array | -                |
 | title                  | Toolbar title                   | string  | -      |
 | cancel-text            | Text of cancel button               | string  | `cancel`   |
 | ok-text                | Text of confirm button               | string  | `confirm`   |
@@ -396,11 +396,11 @@ Use the children field of the Columns attribute to cascade options
 
 ### Data Structure of Columns
 
-| Attribute         | Description                             | Type   | Default           |
+| Key         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | text        | Text of column              | string \| number | -             |
 | value          | Value of column               | string \| number |   -        |
-| children         | Cascader Option              | array | -                |
+| children         | Cascader Option              | Array | -                |
 | className                  | Extra CalssName                   | string  |  -    |
 
 ### Events
@@ -413,7 +413,7 @@ Use the children field of the Columns attribute to cascade options
 
 ### Slots
 
-| Event | Description           |
+| Name | Description           |
 |--------|----------------|
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |

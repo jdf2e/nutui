@@ -166,7 +166,7 @@ app.use(Switch);
 
 | Attribute           | Description      | Type    | Default        |
 |----------------|------------------|---------|-----------------------|
-| v-model        | Status of Switch       | boolean ｜ string ｜ number | `false`  |
+| v-model        | Status of Switch       | boolean \| string \| number| `false`  |
 | disable        | Disable status         | boolean | `false`               |
 | loading        | Loading status         | boolean | `false`               |
 | active-color   | Background color when active | string  | `#fa2c19`    |

@@ -64,7 +64,7 @@ app.use(Empty);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 	Image type, can be set to `empty`, `error`, `network` or image URL              | string | `empty`        |
+| image         | 	Image type, can be set to `empty`, `error`, `network` or image `URL`              | string | `empty`        |
 | image-size        | Image size                      | number \| string | `-`       |
 | description         | Description | string | `-`                |
 

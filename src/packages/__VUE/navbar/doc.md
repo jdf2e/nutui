@@ -190,34 +190,34 @@ export default {
 ## API
 ### Props
 
-| 字段            | 说明                                                    | 类型    | 默认值  |
+| 参数            | 说明                                                    | 类型    | 默认值  |
 |-----------------|--------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                 | string  | -       |
 | left-text       | 左侧文案                                                 | string  | -       |
 | desc            | 右侧描述                                                 | string  | -       |
-| left-show       | 是否展示左侧箭头                                          | boolean | false   |
-| title-icon        | 标题中是否展示icon                                        | boolean  | false      |
-| border          | 是否显示下边框                                            | boolean  | false  |
-| fixed           | 是否固定到顶部                                            | boolean  | false    |
-| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | boolean  | false   |
-| safe-area-inset-top   | 是否开启顶部安全区适配                                | boolean  | false   |
-| z-index | 导航栏 z-index                                            | number ｜ string  | -       |
+| left-show       | 是否展示左侧箭头                                          | boolean | `false`   |
+| title-icon        | 标题中是否展示 `icon`                                        | boolean  | `false`      |
+| border          | 是否显示下边框                                            | boolean  | `false`  |
+| fixed           | 是否固定到顶部                                            | boolean  | `false`    |
+| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | boolean  | `false`   |
+| safe-area-inset-top   | 是否开启顶部安全区适配                                | boolean  | `false`   |
+| z-index | 导航栏 `z-index `                                           | number ｜ string  | -       |
 
 
 ### Events
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | on-click-title | 点击页面标题事件 | event:Event |
-| on-click-icon | 点击页面标题icon事件 | event:Event |
+| on-click-icon | 点击页面标题 `icon` 事件 | event:Event |
 | on-click-right | 点击右侧按钮事件 | event:Event |
 | on-click-back | 点击左侧图标事件 | event:Event |
 
 ### Slots
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| left | 自定义左侧内容 |  |
-| right | 自定义右侧内容 |  |
-| content |  自定义导航栏中间内容 |  |
+| 名称  | 说明     |
+|-------|----------|
+| left | 自定义左侧内容 |
+| right | 自定义右侧内容 |
+| content |  自定义导航栏中间内容 |
 | leftShow  | 左侧箭头自定义图标 |
 | titleIcon  | 标题中自定义图标 |
 

@@ -267,24 +267,24 @@ export default {
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
-| visible      | Whether to display the boot eject layer                 | boolean  | false     |
+| visible      | Whether to display the boot eject layer                 | boolean  | `false`     |
 | type          | Tour type            | string   | `step`   |
-| steps       | Boot Step Content  | StepOptions[]   | []  |
-| offset       | The offset of the hollow mask relative to the target element  | [number, number]   | [8, 10]  |
-| current      | When the type is' step ', the number of steps is displayed by default  | number  | 0  |
+| steps       | Boot Step Content  | StepOptions[]   | `[]`  |
+| offset       | The offset of the hollow mask relative to the target element  | [number, number]   | `[8, 10]`  |
+| current      | When the type is' step ', the number of steps is displayed by default  | number  | `0`  |
 | custom-class  | Custom class  | string  | ''  |
-| location      | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)  |  String  | 'bottom'  |
-| next-step-Txt       | Next step text | string   | 'next'  |
-| prev-step-Txt        | Prev step text  | string   | 'prev'  |
-| complete-txt       | Complete text  | string   | 'complete'  |
-| mask       | Whether to display cutout mask  | Boolean  | true |
-| bg-color       | Custom background color  | Boolean  | '' |
-| theme   | Theme style, can be set to dark light,[theme](https://nutui.jd.com/#/zh-CN/component/popover)  | String  | 'light' |
-| mask-width       | Width of hollow mask  | Number、String  | '' |
-| mask-height       | Hollow mask height  | Number、String  | '' |
-| close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
-| show-prev-step       | Whether to show prev button  | boolean  | true |
-| show-title-bar       | Whether to show title bar  |  boolean  | false |
+| location      | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)  |  string  | `'bottom'`  |
+| next-step-Txt       | Next step text | string   | `'next'`  |
+| prev-step-Txt        | Prev step text  | string   | `'prev' ` |
+| complete-txt       | Complete text  | string   | `'complete'`  |
+| mask       | Whether to display cutout mask  | boolean  | `true` |
+| bg-color       | Custom background color  | boolean  | '' |
+| theme   | Theme style, can be set to dark light,[theme](https://nutui.jd.com/#/zh-CN/component/popover)  | string  | `'light'` |
+| mask-width       | Width of hollow mask  | number \| string  | '' |
+| mask-height       | Hollow mask height  | number \| string  | '' |
+| close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | boolean  | `true` |
+| show-prev-step       | Whether to show prev button  | boolean  | `true` |
+| show-title-bar       | Whether to show title bar  |  boolean  | `false` |
 
 ### StepOptions  
 
@@ -292,9 +292,9 @@ export default {
 |----------------|----------------------|----------|--------|
 | target           | target dom               | Element   | -      |
 | content           | popover content     | String   | ''     |
-| location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | String  | 'bottom'  |
-| popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | [0, 12]  | 
-| arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | 0  | 
+| location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | string  | `'bottom'`  |
+| popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | `[0, 12]`  | 
+| arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | `0`  | 
 
 
 ### Slots
@@ -307,7 +307,7 @@ export default {
 
 ### Events
 
-| Name   | Description           |
+| Event   | Description           |
 |---------|--------------|
 | change | Emit when step change |
 | close   | Emit when popover close |

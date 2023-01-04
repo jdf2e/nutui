@@ -335,7 +335,7 @@ Paused and restarted the countdown with the `paused` attribute
 | on-paused | Emitted when count down paused | Residual Timestamp
 | on-restart | Emitted when count down restart | Residual Timestamp
 
-### Ref
+### Methods
 
 | Name | Description |
 | ----- | ----- | 

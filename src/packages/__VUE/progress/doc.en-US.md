@@ -140,49 +140,49 @@ app.use(Progress);
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | percentage | Number | 0
-| is-show-percentage | Whether to display the percent sign | Boolean | true
-| stroke-color |Stroke color | String | #f30
-| stroke-width |Stroke width | String | ''
-| size | Progress bar and text size, small/base/large | String | -
-| show-text | Whether to show text | Boolean | true
-| text-inside | Progress bar text display position(false:outside，true:Inside) | Boolean | false
-| text-color | Progress bar text color setting | String | #333
-| text-background | Progress bar text background color setting | String | Same progress bar color
-| status | The current state of the progress bar,active(show animation)/icon(show icon) | String | text
+| percentage | percentage | number | `0`
+| is-show-percentage | Whether to display the percent sign | boolean | `true`
+| stroke-color |Stroke color | string | `#f30`
+| stroke-width |Stroke width | string | `''`
+| size | Progress bar and text size, small/base/large | string | -
+| show-text | Whether to show text | boolean | `true`
+| text-inside | Progress bar text display position(false:outside，true:Inside) | boolean | `false`
+| text-color | Progress bar text color setting | string | `#333`
+| text-background | Progress bar text background color setting | string | `Same progress bar color`
+| status | The current state of the progress bar,active(show animation)/icon(show icon) | string | `text`
 
 ### Slots
 | Name  | Description     | 
 |-------|----------|
 | iconName | Right icon content |
 
-## 主题定制
+## Theming
 
-### 样式变量
+### CSS Variables
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
-|  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  | -  |
-|  --nut-progress-outer-background-color| _#f3f3f3_  | -  |
-|  --nut-progress-outer-border-radius| _12px_  | -  |
-|  --nut-progress-insidetext-border-radius| _5px_  | -  |
-|  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  | -  |
-|  --nut-progress-insidetext-top| _-42%_  | -  |
-|  --nut-progress-small-height| _5px_  | -  |
-|  --nut-progress-small-text-font-size| _7px_  | -  |
-|  --nut-progress-small-text-line-height| _10px_  | -  |
-|  --nut-progress-small-text-padding| _2px 4px_  | -  |
-|  --nut-progress-small-text-top| _-100%_  | -  |
-|  --nut-progress-base-height| _10px_  | -  |
-|  --nut-progress-base-text-font-size| _9px_  | -  |
-|  --nut-progress-base-text-line-height| _13px_  | -  |
-|  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
-|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  | -  |
-|  --nut-progress-large-height| _15px_  | -  |
-|  --nut-progress-large-text-font-size| _13px_  | -  |
-|  --nut-progress-large-text-line-height| _18px_  | -  |
-|  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
-|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+|  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
+|  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  |
+|  --nut-progress-outer-background-color| _#f3f3f3_  |
+|  --nut-progress-outer-border-radius| _12px_  |
+|  --nut-progress-insidetext-border-radius| _5px_  |
+|  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  |
+|  --nut-progress-insidetext-top| _-42%_  |
+|  --nut-progress-small-height| _5px_  |
+|  --nut-progress-small-text-font-size| _7px_  |
+|  --nut-progress-small-text-line-height| _10px_  |
+|  --nut-progress-small-text-padding| _2px 4px_  |
+|  --nut-progress-small-text-top| _-100%_  |
+|  --nut-progress-base-height| _10px_  |
+|  --nut-progress-base-text-font-size| _9px_  |
+|  --nut-progress-base-text-line-height| _13px_  |
+|  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  |
+|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  |
+|  --nut-progress-large-height| _15px_  |
+|  --nut-progress-large-text-font-size| _13px_  |
+|  --nut-progress-large-text-line-height| _18px_  |
+|  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  |
+|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  |

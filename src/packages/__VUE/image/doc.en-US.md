@@ -132,8 +132,8 @@ The Image component provides a default loading failure warning and supports cust
 | fit         | Fit mode, same as object-fit     | ImageFit | `fill`                |
 | position    | Position, same as object-position  | ImagePosition | `center`              |
 | alt         | Alt               | string | -                |
-| width         | Width，Default unit px             | string | -                |
-| height         | Height，Default unit px              | string | -                |
+| width         | Width，Default unit `px`             | string | -                |
+| height         | Height，Default unit `px`              | string | -                |
 | round         | Whether to be round               | boolean | `false`              |
 | radius         | Border Raduis               | string \| number | -                |
 | show-error         | Whether to show error placeholder | boolean | `false`              |
@@ -160,7 +160,7 @@ The Image component provides a default loading failure warning and supports cust
 | left   | Align Left  |
 
 ### Slots
-| Attribute         | Description                             |
+| Name         | Description                             |
 |--------------|----------------------------------|
 | loading      | Custom loading placeholder     |
 | error    | Custom error placeholder  |

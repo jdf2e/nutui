@@ -586,7 +586,7 @@ export default {
 
 ### Props
 
-| 字段              | 说明                                              | 类型            | 默认值          |
+| 参数              | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | 是否可见                                          | boolean         | `false`           |
 | type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`    | string       | '`one`'           |
@@ -626,7 +626,7 @@ export default {
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Calendar 实例并调用实例方法。
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Calendar` 实例并调用实例方法。
 
 
 | 方法名 | 说明             | 参数          |

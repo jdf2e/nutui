@@ -131,18 +131,18 @@ export default {
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
-| progress | 百分比 | Number,String | 必传项，无默认值
-| stroke-width | 圆弧的宽度 | Number,String | 5
-| radius | 半径 | Number,String | 50
-| color | 圆环进度条颜色 | String , Object | '#fa2c19'
-| path-color | 圆环轨道颜色| String | '#d9d9d9'
-| stroke-linecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
-| clockwise| 是否顺时针展示| Boolean | true
+| progress | 百分比 | number \| string | 必传项，无默认值
+| stroke-width | 圆弧的宽度 | number \| string | `5`
+| radius | 半径 | number \| string | `50`
+| color | 圆环进度条颜色 | object \| string | `'#fa2c19'`
+| path-color | 圆环轨道颜色| string | '#d9d9d9'
+| stroke-linecap | 圆环进度条端点形状可选值为 `square` `butt`| string | `'round'`
+| clockwise| 是否顺时针展示| boolean | `true`
 ### Slots
 
-| 字段 | 说明 | 
+| 名称 | 说明 | 
 |----- | ----- |
 | default | 自定义文字内容| 
 

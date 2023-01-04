@@ -151,20 +151,20 @@ app.use(Card);
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
-| img-url   | Left thumb image URL                                 | String  | -         |
-| title     | Title                   | String  | -    |
-| price | Price                         | String  | -      |
-| vip-price     | vip-price                                | String | -    |
-| shop-desc  | shop-desc                                | String | -    |
-| delivery     | delivery | String  | -      |
-| shop-name   | shop-name | String  | -      |
-| is-need-price  | Whether price display is required| Boolean  | true   |
+| img-url   | Left thumb image `URL`                                 | string  | -         |
+| title     | Title                   | string  | -    |
+| price | Price                         | string  | -      |
+| vip-price     | vip-price                                | string | -    |
+| shop-desc  | shop-desc                                | string | -    |
+| delivery     | delivery | string  | -      |
+| shop-name   | shop-name | string  | -      |
+| is-need-price  | Whether price display is required| Boolean  | `true`   |
 
 ### Events
 
 | Event             | Description                     | Arguments        |
 |----------|----------|----------|
-| click    | click event | event: MouseEvent    |
+| click    | click event | `event: MouseEvent`    |
 
 
 ### Slots
@@ -183,11 +183,11 @@ app.use(Card);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-card-font-size-0| _var(--nut-font-size-0)_  | - |
-| --nut-card-font-size-1| _var(--nut-font-size-1)_  | - |
-| --nut-card-font-size-2| _var(--nut-font-size-2)_  | - |
-| --nut-card-font-size-3| _var(--nut-font-size-3)_  | - |
-| --nut-card-left-border-radius| _0_  | - |
-| --nut-card-left-background-color| _inherit_  | - |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-card-font-size-0| _var(--nut-font-size-0)_  |
+| --nut-card-font-size-1| _var(--nut-font-size-1)_  |
+| --nut-card-font-size-2| _var(--nut-font-size-2)_  |
+| --nut-card-font-size-3| _var(--nut-font-size-3)_  |
+| --nut-card-left-border-radius| _0_  |
+| --nut-card-left-background-color| _inherit_  |

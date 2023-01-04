@@ -154,9 +154,9 @@ export default {
 | 参数                        | 说明                 | 类型    | 默认值 |
 |-----------------------------|----------------------|---------|--------|
 | name                        | 唯一标识             | string  | -      |
-| disabled                    | 是否禁用滑动         | string  | false  |
-| touch-move-prevent-default  | 是否阻止滑动事件行为 | boolean | false  |
-| touch-move-stop-propagation | 是否阻止滑动事件冒泡 | boolean | false  |
+| disabled                    | 是否禁用滑动         | string  | `false`  |
+| touch-move-prevent-default  | 是否阻止滑动事件行为 | boolean | `false`  |
+| touch-move-stop-propagation | 是否阻止滑动事件冒泡 | boolean | `false`  |
 ### Events
 
 | 事件名 | 说明       | 回调参数                   |
@@ -172,8 +172,8 @@ export default {
 | default | 自定义内容   |
 | right   | 右侧滑动内容 |
 
-### 方法
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Swipe 实例并调用实例方法。
+### Methods
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Swipe` 实例并调用实例方法。
 
 | 方法名 | 说明             | 参数              |
 |--------|------------------|-------------------|

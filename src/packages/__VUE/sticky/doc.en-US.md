@@ -124,11 +124,11 @@ app.use(Sticky);
 
 | Attribute    | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| position         | Adsorption position（`top`、`bottom`）               | String | `top`                |
-| top         | Ceiling distance               | Number | `0`                |
-| bottom        | Suction distance               | Number | `0`                |
+| position         | Adsorption position（`top`、`bottom`）               | string | `top`                |
+| top         | Ceiling distance               | number | `0`                |
+| bottom        | Suction distance               | number | `0`                |
 | container         | The 'HTML' node of the container        | Element | -                |
-| z-index         | Level of adsorption               | Number | `2000`               |
+| z-index         | Level of adsorption               | number | `2000`               |
 
 ### Events
 

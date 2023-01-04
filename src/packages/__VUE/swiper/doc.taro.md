@@ -521,18 +521,18 @@ app.use(SwiperItem);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
-| height                | 轮播卡片的高度                                                    | String、Number | 0        |
-| direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
-| pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
-| pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |
-| loop           | 是否循环轮播                                                | Boolean        | true       |
-| duration                | 动画时长（单位是ms）                                                | Number、String        | 500        |
-| auto-play | 自动轮播时长，0表示不会自动轮播                                          | Number、String        | 0        |
-| init-page               | 初始化索引值                   | Number、String         | 0    |
-| touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
+| width                   | 轮播卡片的宽度           | number \| string        | window.innerWidth       |
+| height                | 轮播卡片的高度                                                    | number \| string | `0`        |
+| direction               | 轮播方向,可选值`horizontal`,`vertical`     | string | `'horizontal'`         |
+| pagination-visible          | 分页指示器是否展示                                              | boolean         | `false`           |
+| pagination-color         | 分页指示器选中的颜色                                              | string  | `'#fff'`           |
+| loop           | 是否循环轮播                                                | boolean        | `true`       |
+| duration                | 动画时长（单位是ms）                                                | number \| string        | `500`        |
+| auto-play | 自动轮播时长，0表示不会自动轮播                                          | number \| string        | `0`        |
+| init-page               | 初始化索引值                   | number \| string         | `0`    |
+| touchable             | 是否可触摸滑动                                                      | boolean         | `true`          |
+| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | boolean  | `true`           |
+| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | boolean         | `true`    |
 
 
 
@@ -544,7 +544,7 @@ app.use(SwiperItem);
 
 
 
-### Swipe 方法
+### Methods
 
 | 事件名           | 说明                   | 参数     |
 | ---------------- | ---------------------- | ------------ |
@@ -558,9 +558,9 @@ app.use(SwiperItem);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-swiper-pagination-item-width| _8px_  | -  |
-| --nut-swiper-pagination-item-height| _3px_  | -  |
-| --nut-swiper-pagination-item-margin-right| _7px_  | -  |
-| --nut-swiper-pagination-item-border-radius| _2px_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-swiper-pagination-item-width| _8px_  |
+| --nut-swiper-pagination-item-height| _3px_  |
+| --nut-swiper-pagination-item-margin-right| _7px_  |
+| --nut-swiper-pagination-item-border-radius| _2px_  |

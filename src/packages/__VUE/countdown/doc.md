@@ -305,7 +305,7 @@ app.use(Countdown);
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 | ----- | ----- | ----- | ----- |
 | v-model | 当前时间，自定义展示内容时生效 | object | `{}` |
 | start-time | 开始时间 | string \| number | `Date.now()` |
@@ -313,7 +313,7 @@ app.use(Countdown);
 | format |  时间格式 | string | `HH:mm:ss` |
 | millisecond |  是否开启毫秒级渲染 | boolean | `false` |
 | auto-start |  是否自动开始倒计时 | boolean | `true` |
-| time  | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | string \| number | `0`|
+| time  | 倒计时显示时间，单位是毫秒。`autoStart` 为 `false` 时生效 | string \| number | `0`|
 | paused | 是否暂停 | boolean | `false` |
 
 ### format 格式
@@ -330,21 +330,21 @@ app.use(Countdown);
 
 ### Events
 
-| 字段 | 说明 | 回调参数
+| 事件名 | 说明 | 回调参数
 | ----- | ----- | ----- 
 | on-end | 倒计时结束时 | 剩余时间戳
 | on-paused | 暂停时 | 剩余时间戳
 | on-restart | 暂停时 | 剩余时间戳
 
-### 方法
+### Methods
 
-通过 ref 可以获取到 Countdown 实例并调用实例方法。
+通过 `ref` 可以获取到 `Countdown` 实例并调用实例方法。
 
-| 方法明 | 说明 |
+| 方法名 | 说明 |
 | ----- | ----- | 
 | start | 开始倒计时 | 
 | pause | 暂停倒计时 | 
-| reset | 重设倒计时，若 `auto-start`为 true，重设后会自动开始倒计时 |
+| reset | 重设倒计时，若 `auto-start`为 `true`，重设后会自动开始倒计时 |
 
 ## 主题定制
 

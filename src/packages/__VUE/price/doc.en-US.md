@@ -91,13 +91,13 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 | Attribute      | Description                                                | Type            | Default |
 |----------------|------------------------------------------------------------|------------------|--------|
-| price          | Price                                                      | number ｜ string | 0       |
-| need-symbol    | Add symbol                                                 | boolean          | true   |
-| symbol         | Symbol type                                                | string           | &yen;  |
-| decimal-digits | Decimal digits                                             | number | 2      |
-| thousands      | Thousands separation                                       | boolean          | false  |
-| position       | The symbol appear before or after the price，`before`、`after` | string           | before |
-| size           | Size，`small`、`normal`、`large`                | string           | large |
+| price          | Price                                                      | number \| string | `0`       |
+| need-symbol    | Add symbol                                                 | boolean          | `true`   |
+| symbol         | Symbol type                                                | string           | `&yen;`  |
+| decimal-digits | Decimal digits                                             | number | `2`      |
+| thousands      | Thousands separation                                       | boolean          | `false`  |
+| position       | The symbol appear before or after the price，`before`、`after` | string           | `before` |
+| size           | Size，`small`、`normal`、`large`                | string           | `large` |
 
 ## Theming
 

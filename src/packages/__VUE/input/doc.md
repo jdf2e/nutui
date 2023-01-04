@@ -394,9 +394,9 @@ app.use(Input);
 | border       | 是否显示下边框                         | boolean        | `true` |
 | disabled     | 是否禁用                              | boolean        | `false` |
 | readonly     | 是否只读                              | boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | boolean        | `false` |
+| autofocus    | 是否自动获得焦点，`iOS` 系统不支持该属性     | boolean        | `false` |
 | max-length   | 限制最长输入字符                       | string ｜ number | - |
-| clearable    | 展示清除 Icon                         | boolean        | `false`  |
+| clearable    | 展示清除 `Icon`                         | boolean        | `false`  |
 | clear-size   | 清除图标的 `font-size` 大小           | string        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
 | error         | 是否标红                                | boolean | `false`  |
@@ -406,7 +406,7 @@ app.use(Input);
 
 ### Events
 
-| 名称   | 说明           | 回调参数    |
+| 事件名   | 说明           | 回调参数    |
 |--------|----------------|-------------|
 | update:model-value | 输入框内容变化时触发 | val  |
 | focus  | 输入框聚焦时触发     | event |

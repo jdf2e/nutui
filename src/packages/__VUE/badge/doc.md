@@ -212,15 +212,15 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ## API
 ### Props  
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| 参数    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | value   | 显示的内容                                 | string  | `-`         |
-| max     | value 为数值时，最大值                     | number  | `10000`   |
-| z-index | 徽标的 z-index 值                          | number  | `10`      |
+| max     | `value` 为数值时，最大值                     | number  | `10000`   |
+| z-index | 徽标的 `z-index` 值                          | number  | `10`      |
 | dot     | 是否为小点                                 | boolean | `false`   |
 | hidden  | 是否隐藏                                   | boolean | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5px 等 | number  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5px 等 | number  | `0`       |
+| top     | 上下偏移量，支持单位设置，可设置为：`5px` 等 | number  | `0`       |
+| right   | 左右偏移量，支持单位设置，可设置为：`5px` 等 | number  | `0`       |
 | color   | 徽标背景颜色                               | string  | `#fa2c19` |
 
 ### Slots

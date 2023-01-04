@@ -64,8 +64,8 @@ app.use(Empty);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 图片类型，可选值为 `empty`、`error`、`network`，支持传入图片 URL               | string | `empty`        |
-| image-size        | 图片大小，number 类型单位为 px                         | number \| string | `-`       |
+| image         | 图片类型，可选值为 `empty`、`error`、`network`，支持传入图片 `URL`               | string | `empty`        |
+| image-size        | 图片大小，单位为 `px`                         | number \| string | `-`       |
 | description         | 图片下方的描述文字 | string | `-`                |
 
 ### Slots
