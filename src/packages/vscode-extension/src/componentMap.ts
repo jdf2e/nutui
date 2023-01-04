@@ -29,6 +29,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/avatar',
     props: ["size=''"]
   },
+  'avatar-group': {
+    site: '',
+    props: ['']
+  },
   backtop: {
     site: '/zh-CN/component/backtop',
     props: ["el-id=''"]
@@ -49,6 +53,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/calendar',
     props: ["v-model:visible=''"]
   },
+  'calendar-item': {
+    site: '',
+    props: ['']
+  },
   card: {
     site: '/zh-CN/component/card',
     props: ["img-url=''"]
@@ -61,21 +69,41 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/category',
     props: ["type=''"]
   },
+  'category-pane': {
+    site: '',
+    props: ['']
+  },
   cell: {
     site: '/zh-CN/component/cell',
     props: ["title=''"]
+  },
+  'cell-group': {
+    site: '',
+    props: ['']
   },
   checkbox: {
     site: '/zh-CN/component/checkbox',
     props: ["v-model=''"]
   },
+  'checkbox-group': {
+    site: '',
+    props: ['']
+  },
   'circle-progress': {
     site: '/zh-CN/component/circleprogress',
     props: ["progress=''"]
   },
+  col: {
+    site: '',
+    props: ['']
+  },
   collapse: {
     site: '/zh-CN/component/collapse',
     props: ["v-model=''"]
+  },
+  'collapse-item': {
+    site: '',
+    props: ['']
   },
   comment: {
     site: '/zh-CN/component/comment',
@@ -133,9 +161,17 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/form',
     props: ["model-value=''"]
   },
+  'form-item': {
+    site: '',
+    props: ['']
+  },
   grid: {
     site: '/zh-CN/component/grid',
     props: ["column-num=''"]
+  },
+  'grid-item': {
+    site: '',
+    props: ['']
   },
   icon: {
     site: '/zh-CN/component/icon',
@@ -180,6 +216,10 @@ export const componentMap: Record<string, ComponentDesc> = {
   menu: {
     site: '/zh-CN/component/menu',
     props: ["active-color=''"]
+  },
+  'menu-item': {
+    site: '',
+    props: ['']
   },
   navbar: {
     site: '/zh-CN/component/navbar',
@@ -233,6 +273,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/radio',
     props: ["disabled=''"]
   },
+  'radio-group': {
+    site: '',
+    props: ['']
+  },
   range: {
     site: '/zh-CN/component/range',
     props: ["v-model=''"]
@@ -240,6 +284,14 @@ export const componentMap: Record<string, ComponentDesc> = {
   rate: {
     site: '/zh-CN/component/rate',
     props: ["v-model=''"]
+  },
+  row: {
+    site: '',
+    props: ['']
+  },
+  '': {
+    site: '',
+    props: ['']
   },
   searchbar: {
     site: '/zh-CN/component/searchbar',
@@ -253,6 +305,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/sidenavbar',
     props: ["offset=''"]
   },
+  'side-navbar-item': {
+    site: '',
+    props: ['']
+  },
   signature: {
     site: '/zh-CN/component/signature',
     props: ["custom-class=''"]
@@ -265,6 +321,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/sku',
     props: ["v-model:visible=''"]
   },
+  step: {
+    site: '',
+    props: ['']
+  },
   steps: {
     site: '/zh-CN/component/steps',
     props: ["direction=''"]
@@ -272,6 +332,10 @@ export const componentMap: Record<string, ComponentDesc> = {
   sticky: {
     site: '/zh-CN/component/sticky',
     props: ["position=''"]
+  },
+  'sub-side-navbar': {
+    site: '',
+    props: ['']
   },
   swipe: {
     site: '/zh-CN/component/swipe',
@@ -293,9 +357,17 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/tabbar',
     props: ["v-model=''"]
   },
+  'tabbar-item': {
+    site: '',
+    props: ['']
+  },
   table: {
     site: '/zh-CN/component/table',
     props: ["bordered=''"]
+  },
+  'tab-pane': {
+    site: '',
+    props: ['']
   },
   tabs: {
     site: '/zh-CN/component/tabs',
