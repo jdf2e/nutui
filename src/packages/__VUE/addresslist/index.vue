@@ -1,57 +1,35 @@
 <template>
   <div :class="classes">
-    <template v-if="!swipeEdition">
-      <general-shell
-        v-for="(item, index) of dataArray"
-        :key="index"
-        :item="item"
-        :longPress="longPress"
-        @delIcon="clickDelIcon"
-        @editIcon="clickEditIcon"
-        @itemClick="clickContentItem"
-        @swipeDel="clickSwipeDel"
-        @longCopy="clickLongCopy"
-        @longSet="clickLongSet"
-        @longDel="clickLongDel"
-      >
-        <template v-slot:contentInfo v-if="longPress">
-          <slot name="iteminfos"></slot>
-        </template>
-        <template v-slot:contentIcons v-if="longPress">
-          <slot name="itemicon"></slot>
-        </template>
-        <template v-slot:contentAddrs v-if="longPress">
-          <slot name="itemaddr"></slot>
-        </template>
-        <template v-slot:longpressAll v-if="longPress">
-          <slot name="longpressbtns"></slot>
-        </template>
-      </general-shell>
-    </template>
-    <template v-if="swipeEdition">
-      <swipe-shell
-        v-for="(item, index) of dataArray"
-        :key="index"
-        :item="item"
-        @delIcon="clickDelIcon"
-        @editIcon="clickEditIcon"
-        @itemClick="clickContentItem"
-        @swipeDel="clickSwipeDel"
-      >
-        <template v-slot:contentInfo>
-          <slot name="iteminfos"></slot>
-        </template>
-        <template v-slot:contentIcons>
-          <slot name="itemicon"></slot>
-        </template>
-        <template v-slot:contentAddrs>
-          <slot name="itemaddr"></slot>
-        </template>
-        <template v-slot:swiperightbtn>
-          <slot name="swiperight"></slot>
-        </template>
-      </swipe-shell>
-    </template>
+    <general-shell
+      v-for="(item, index) of dataArray"
+      :key="index"
+      :item="item"
+      :longPress="longPress"
+      :swipeEdition="swipeEdition"
+      @delIcon="clickDelIcon"
+      @editIcon="clickEditIcon"
+      @itemClick="clickContentItem"
+      @swipeDel="clickSwipeDel"
+      @longCopy="clickLongCopy"
+      @longSet="clickLongSet"
+      @longDel="clickLongDel"
+    >
+      <template v-slot:contentInfo>
+        <slot name="iteminfos"></slot>
+      </template>
+      <template v-slot:contentIcons>
+        <slot name="itemicon"></slot>
+      </template>
+      <template v-slot:contentAddrs>
+        <slot name="itemaddr"></slot>
+      </template>
+      <template v-slot:longpressAll v-if="longPress">
+        <slot name="longpressbtns"></slot>
+      </template>
+      <template v-slot:swiperightbtn v-if="swipeEdition">
+        <slot name="swiperight"></slot>
+      </template>
+    </general-shell>
     <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
@@ -61,7 +39,6 @@
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('address-list');
-import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.vue';
@@ -90,7 +67,6 @@ export default create({
     }
   },
   components: {
-    SwipeShell,
     GeneralShell,
     [Button.name]: Button,
     [Swipe.name]: Swipe
