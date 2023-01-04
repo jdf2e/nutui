@@ -19,12 +19,10 @@ app.use(ActionSheet);
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>基础用法</label></span>
       <div v-html="state.val"></div>
@@ -36,7 +34,6 @@ app.use(ActionSheet);
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -79,7 +76,7 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
+
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -96,7 +93,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -138,7 +134,7 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
+ 
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -156,7 +152,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -201,7 +196,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -220,7 +214,6 @@ export default {
        cancel-txt="取消"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -264,12 +257,10 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>自定义内容</label></span>
     </nut-cell>
@@ -333,7 +324,7 @@ export default {
 
 ### Events
 
-| 字段   | 说明               | 回调参数                          |
+| 事件名   | 说明               | 回调参数                          |
 |--------|--------------------|-----------------------------------|
 | choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
 | cancel | 点击取消文案时触发 | 无                                |
