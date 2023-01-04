@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.0.0-beta.10",
+  "version": "4.0.0-beta.11",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.cjs",
   "module": "dist/nutui.es.js",
@@ -81,12 +81,12 @@
     "@nutui/icons-vue-taro": "0.0.3",
     "@tarojs/components": "3.5.6",
     "sass": "^1.50.0",
-    "vscode": "^1.1.37",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
+    "vscode": "^1.1.37",
     "@tarojs/cli": "3.5.6",
     "@tarojs/mini-runner": "3.5.6",
     "@tarojs/plugin-framework-vue3": "3.5.6",
