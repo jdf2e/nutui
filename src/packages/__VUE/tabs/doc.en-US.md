@@ -173,10 +173,12 @@ export default {
 
 ### A large number of scrolling operations
 
+In the `taro` environment, when multiple `tabs` are included in the same page, `name` needs to be set as a unique identifier to enable the automatic scrolling function of the title bar.
+
 :::demo
 ```html
 <template>
-<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
+<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
   <nut-tabpane v-for="item in state.list4" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tabpane>
@@ -350,6 +352,10 @@ export default {
 | auto-height`v3.1.21` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean       | false      |
 | sticky`v3.2.3` `applet not supported` | Whether to use sticky mode| boolean       | false      |
 | top`v3.2.3` `applet not supported` | Sticky offset top | number       | 0      |
+| name        | In the `taro` environment, when multiple `tabs` are included in the same page, `name` needs to be set as a unique identifier to enable the automatic scrolling function of the title bar.                              | string | ''        |
+
+
+
 
 ### Tabs Slots
 
