@@ -15,7 +15,6 @@ app.use(ActionSheet);
 
 ### 基础用法
 
-默认
 :::demo
 ``` html
 <template>

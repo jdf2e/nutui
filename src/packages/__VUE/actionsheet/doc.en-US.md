@@ -22,7 +22,6 @@ app.use(ActionSheet);
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>Basic Usage</label></span>
       <div v-html="state.val"></div>
@@ -198,7 +197,6 @@ export default {
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>Option Status</label></span>
       <div v-html="state.val"></div>
