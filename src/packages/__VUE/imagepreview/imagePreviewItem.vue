@@ -21,6 +21,7 @@ import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
 import Video from '../video/index.vue';
+import SwiperItem from '../swiperitem/index.vue';
 const { create } = createComponent('image-preview-item');
 
 export default create({
@@ -45,7 +46,8 @@ export default create({
   },
   emits: ['close', 'scale'],
   components: {
-    [Video.name]: Video
+    [Video.name]: Video,
+    [SwiperItem.name]: SwiperItem
   },
 
   setup(props, { emit }) {

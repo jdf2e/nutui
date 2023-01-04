@@ -3,7 +3,7 @@
     <h2>{{ translate('basic1') }}</h2>
     <nut-collapse v-model="active1" @change="change">
       <nut-collapse-item :name="1">
-        <template v-slot:mTitle>
+        <template v-slot:title>
           {{ translate('title1') }}
         </template>
         {{ translate('desc1') }}

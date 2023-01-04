@@ -175,6 +175,7 @@ export default createDemo({
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
+  font-size: 12px;
   &.flex-content-light {
     background: #ffc7c4;
   }

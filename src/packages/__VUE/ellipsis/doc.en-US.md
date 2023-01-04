@@ -84,13 +84,13 @@ app.use(Ellipsis);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| content         | Content               | String | -                |
-| direction         | Direction                | 'start' | 'end' | 'middle' | 'end'               |
-| rows         | Rows               | Number | 1              |
-| expand-text         | Expand text               | String | ''              |
-| collapse-text         | Collapse text               | String | ''               |
-| symbol         | Symbol     | String | '...'       |
-| line-height         | the row height of the container     | String、Number | 20       |
+| content         | Content               | string | -                |
+| direction         | Direction                | 'start' \| 'end' \| 'middle' | `end`               |
+| rows         | Rows               | number | `1`              |
+| expand-text         | Expand text               | string | `''`             |
+| collapse-text         | Collapse text               | string | `''`               |
+| symbol         | Symbol     | string | `...`       |
+| line-height         | the row height of the container     | string \| number | `20`       |
 
 ### Events
 
@@ -105,6 +105,6 @@ app.use(Ellipsis);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-ellipsis-expand-collapse-color       | _#3460fa_        | -    |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+|  --nut-ellipsis-expand-collapse-color       | _#3460fa_        | 

@@ -65,7 +65,7 @@
       line-height: 44px;
     }
     .nut-calendar__header-slot {
-      height: 24px;
+      min-height: 24px;
     }
     .nut-calendar__header-subtitle {
       padding: 7px 0;
@@ -196,13 +196,22 @@
             }
           }
 
-          &-disabled {
+          &--disabled {
             color: $calendar-disable-color !important;
           }
 
           &--choose {
-            background-color: $calendar-choose-color;
             color: $calendar-choose-font-color;
+            &::after {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              background-color: $calendar-choose-color;
+              opacity: 0.09;
+              content: '';
+            }
           }
 
           .nut-calendar__day-value {

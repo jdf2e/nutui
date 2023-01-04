@@ -158,16 +158,16 @@ export default {
 
 | Attribute | Description | Type   | Default |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | Whether to display skeleton screen                                    | Boolean | `true`    | 
-| width       | Width per row                                        | String  | `default` |
-| height      | Height of each row                                        | String  | `100px`   |
-| animated    | Whether to turn on skeleton screen animation            | Boolean  | `false`  |
-| avatar      | Show avatar                      | Boolean | `false`   |
-| avatar-shape      | Avatar shape: square / round                       | String | `round`   |
-| avatar-size       | Avatar size                                   | String | `50px`    |
-| round  |         Is the title / paragraph rounded                       | Boolean | `false`  |
-| row    | Set the number of paragraph lines                                           | String | `1`       |
-| title  |           Show paragraph titles                              | Boolean | `true`   |
+| loading    | Whether to display skeleton screen                                    | boolean | `true`    | 
+| width       | Width per row                                        | string  | `default` |
+| height      | Height of each row                                        | string  | `100px`   |
+| animated    | Whether to turn on skeleton screen animation            | boolean  | `false`  |
+| avatar      | Show avatar                      | boolean | `false`   |
+| avatar-shape      | Avatar shape: square / round                       | string | `round`   |
+| avatar-size       | Avatar size                                   | string | `50px`    |
+| round  |         Is the title / paragraph rounded                       | boolean | `false`  |
+| row    | Set the number of paragraph lines                                           | string | `1`       |
+| title  |           Show paragraph titles                              | boolean | `true`   |
 
 
 ### Slots
