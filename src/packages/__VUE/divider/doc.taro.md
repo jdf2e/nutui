@@ -112,10 +112,10 @@ app.use(Divider);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| dashed         | 是否使用虚线               | Boolean | false                |
-| hairline        | 是否使用 0.5px 线                         | Boolean | true                |
-| content-position        | 内容位置，可选值为left right                         | String | center                |
-| direction         | 水平还是垂直类型               | String | 'horizontal'                |
+| dashed         | 是否使用虚线               | boolean | `false`                |
+| hairline        | 是否使用 0.5px 线                         | boolean | `true`                |
+| content-position        | 内容位置，可选值为 `left`、`right`                         | string | `center`                |
+| direction         | 水平还是垂直类型               | string | `horizontal`                |
 
 ### Slots
 
