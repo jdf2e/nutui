@@ -79,7 +79,7 @@ export default {
 ```
 :::
 
-### 抽奖
+### 抽奖（模拟滚动抽奖）
 :::demo
 
 ```html
@@ -149,7 +149,7 @@ export default {
 | during | 滚动一次运行时间 | number | `1000`
 | num-width | 数字宽度，常用于自定义无缝滚动 | number | `20`
 | num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | number | `20`
-| scrolling | 用于数字滚动展示 | boolean | `false`
+| scrolling | 用于数字滚动展示（taro 环境不支持） | boolean | `false`
 | custom | 用于自定义图片数字滚动 | boolean | `false`
 | custom-change-num | 要变化的数字（用于自定义图片，initNum、endNum在此无效） | number | `1`
 | custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | `-`

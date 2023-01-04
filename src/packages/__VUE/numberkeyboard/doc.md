@@ -16,7 +16,7 @@ app.use(NumberKeyboard);
 ```
 
 
-### 基础用法 默认键盘
+### 默认键盘
 在线调试请将浏览器变为手机模式
 :::demo
 ```html
@@ -236,7 +236,7 @@ export default{
 ```
 :::
 
-### 双向绑定：
+### 双向绑定
 
 :::demo
 ```html

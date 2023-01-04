@@ -25,18 +25,8 @@ app.use(Countup);
     <nut-countup :init-num='1000.00' :end-num='0.00' :speed='50' :to-fixed='2'></nut-countup>
 </template>
 ```
-
 :::
-### 数字滚动
-:::demo
 
-```html
-<template>
-    <nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
-</template>
-```
-
-:::
 
 ### 自定义数字图片展示
 :::demo
@@ -150,7 +140,6 @@ export default {
 | during | 滚动一次运行时间 | number | `1000`
 | num-width | 数字宽度，常用于自定义无缝滚动 | number | `20`
 | num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | number | `20`
-| scrolling | 用于数字滚动展示 | boolean | `false`
 | custom | 用于自定义图片数字滚动 | boolean | `false`
 | custom-change-num | 要变化的数字（用于自定义图片，initNum、endNum在此无效） | number | `1`
 | custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | `-`
