@@ -224,23 +224,23 @@ Icon and letter types can have custom colors and background colors
 
 | Attribute | Description                                                        | Type   | Default |
 | -------- | ------------------------------------------------------------------- | ------ | ------ |
-| size     | The size of the avatar，eg `large`、`normal`、`small`，and numbers   | String ｜ Number | normal |
-| shape    | shape of avatar，eg `square`、`round `    | String | round  |
-| color    | color of text        | String | #666   |
-| bg-color | background color      | String | #eee   |
+| size     | The size of the avatar，eg `large`、`normal`、`small`，and numbers   | string ｜ number | normal |
+| shape    | shape of avatar，eg `square`、`round `    | string | round  |
+| color    | color of text        | string | #666   |
+| bg-color | background color      | string | #eee   |
 
 ### AvatarGroup Props
 
 | Attribute     | Description                               | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| max-count     | Max avatars to show   | String ｜ Number | - |
-| max-content  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N` | String | +N |
-| size         | The size of the avatar，eg `large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal  |
-| shape        | The shape of avatar，eg `square`、`round`            | String | round  |
-| max-color    | color of text     | String | #666 |
-| max-bg-color  | background color        | String | #eee   |
-| span         | Distance between avatars            | String | -8   |
-| zIndex       | Hierarchy direction between avatar group，eg `left`、`right`  | String | left     |
+| max-count     | Max avatars to show   | string ｜ number | - |
+| max-content  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N` | string | +N |
+| size         | The size of the avatar，eg `large`、`normal`、`small`，支持直接输入数字   | string ｜ number | normal  |
+| shape        | The shape of avatar，eg `square`、`round`            | string | round  |
+| max-color    | color of text     | string | #666 |
+| max-bg-color  | background color        | string | #eee   |
+| span         | Distance between avatars            | string | -8   |
+| zIndex       | Hierarchy direction between avatar group，eg `left`、`right`  | string | left     |
 
 ### Avatar Slots
 
@@ -254,13 +254,13 @@ Icon and letter types can have custom colors and background colors
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
-| --nut-avatar-square |  _5px_  |-  |
-| --nut-avatar-large-width |  _60px_  |-  |
-| --nut-avatar-large-height |  _60px_  |-  |
-| --nut-avatar-small-width |  _32px_  |-  |
-| --nut-avatar-small-height |  _32px_  |-  |
-| --nut-avatar-normal-width |  _40px_  |-  |
-| --nut-avatar-normal-height |  _40px_  |-  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- | 
+| --nut-actionsheet-light-color           | _#f6f6f6_                  | 
+| --nut-avatar-square |  _5px_  |
+| --nut-avatar-large-width |  _60px_  |
+| --nut-avatar-large-height |  _60px_  |
+| --nut-avatar-small-width |  _32px_  |
+| --nut-avatar-small-height |  _32px_  |
+| --nut-avatar-normal-width |  _40px_  |
+| --nut-avatar-normal-height |  _40px_  |

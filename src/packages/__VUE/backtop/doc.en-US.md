@@ -217,7 +217,7 @@ app.use(Backtop);
 ### Events
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|
-| click | Emitted when component is clicked | event: MouseEvent |
+| click | Emitted when component is clicked | `event: MouseEvent` |
 
 ### Slots
 
