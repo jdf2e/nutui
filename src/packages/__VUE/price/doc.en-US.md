@@ -67,7 +67,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 ``` html
 <template>
-    <nut-price :price="8888.01" position="after" symbol="元" />
+    <nut-price :price="8888.01" position="after" symbol="RMB" />
 </template>
 ```
 

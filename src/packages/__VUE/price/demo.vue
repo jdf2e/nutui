@@ -21,7 +21,7 @@
     </nut-cell>
     <h2>{{ translate('title4') }}</h2>
     <nut-cell>
-      <nut-price :price="8888.01" position="after" symbol="元" />
+      <nut-price :price="8888.01" position="after" :symbol="translate('symbol')" />
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell>
@@ -41,14 +41,16 @@ const initTranslate = () =>
       title2: '不保留小数',
       title3: '货币符号',
       title4: '货币符号位置',
-      title5: '千位分隔'
+      title5: '千位分隔',
+      symbol: '元'
     },
     'en-US': {
       title1: 'Support three sizes：small、normal、large',
       title2: 'No decimals',
       title3: 'Currency symbol',
       title4: 'Currency symbol position',
-      title5: 'Separated by thousands'
+      title5: 'Separated by thousands',
+      symbol: 'RMB'
     }
   });
 export default createDemo({
