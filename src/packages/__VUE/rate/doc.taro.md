@@ -14,13 +14,14 @@ const app = createApp();
 app.use(Rate);
 ```
 
-
 ### 基础用法
 
 :::demo
 ```html
 <template>
-    <nut-rate v-model="value" />
+    <nut-cell class="cell">
+        <nut-rate v-model="value" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -39,7 +40,9 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate allow-half v-model="value"></nut-rate>
+    <nut-cell class="cell">
+        <nut-rate allow-half v-model="value"></nut-rate>
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -58,14 +61,18 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+    <nut-cell class="cell">
+        <nut-rate :icon="HeartFill" v-model="value" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
+import { HeartFill } from '@nutui/icons-vue-taro';
 export default {
+    components: { HeartFill },
     setup() {
         const value = ref(3);
-        return { value }
+        return { value, HeartFill }
     }
 }
 </script>
@@ -77,7 +84,9 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate :count="6" v-model="value" />
+    <nut-cell class="cell">
+        <nut-rate :count="6" v-model="value" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -91,12 +100,12 @@ export default {
 ```
 :::
 
-### 自定义颜色
-
 :::demo
 ```html
 <template>
-    <nut-rate active-color="#FFC800" v-model="value" />
+    <nut-cell class="cell">
+        <nut-rate disabled v-model="value" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -115,7 +124,9 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate disabled v-model="value" />
+    <nut-cell class="cell">
+        <nut-rate disabled v-model="value" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -129,12 +140,14 @@ export default {
 ```
 :::
 
-### 只读
+### 只读状态
 
 :::demo
 ```html
 <template>
-    <nut-rate v-model="value" readonly />
+    <nut-cell class="cell">
+        <nut-rate v-model="value" readonly />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -152,7 +165,9 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate v-model="value" @change="onChange" />
+    <nut-cell class="cell">
+        <nut-rate v-model="value" @change="onChange" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -163,25 +178,6 @@ export default {
             console.log(val);
         }
     return { value,onChange }
-    }
-}
-</script>
-```
-:::
-
-### 自定义尺寸
-
-:::demo
-```html
-<template>
-    <nut-rate v-model="value" icon-size="35" />
-</template>
-<script lang="ts">
-import { ref } from 'vue';
-export default {
-    setup() {
-        const value = ref(3);
-        return { value }
     }
 }
 </script>
