@@ -13,6 +13,8 @@ let copyfile = [
 ]
 const path = require('path');
 const fs = require('fs-extra');
+// 清空 dist 
+fs.emptyDirSync(path.resolve(__dirname, `../publish/${target}/dist`));
 copyfile.forEach((filename) => {
   fs.copy(path.resolve(__dirname, `../${filename}`), path.resolve(__dirname, `../publish/${target}/${filename}`)).then(res => {
     console.log(`publish/${target}/${filename} 写入成功`);

@@ -387,22 +387,22 @@ app.use(Input);
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 |--------------|----------------------------------------|----------------|---------|
-| v-model      | 输入值，双向绑定                       | String         | -       |
-| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`     | String         | `text`  |
-| placeholder  | 输入框为空时占位符                      | String         | -       |
-| input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
-| border       | 是否显示下边框                         | Boolean        | `true` |
-| disabled     | 是否禁用                              | Boolean        | `false` |
-| readonly     | 是否只读                              | Boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
-| max-length      | 限制最长输入字符                       | String、Number  | -       |
-| clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
-| error         | 是否标红                                | Boolean | `false`  |
+| v-model      | 输入值，双向绑定                       | string         | -       |
+| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`     | string         | `text`  |
+| placeholder  | 输入框为空时占位符                      | string         | -       |
+| input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | string | `left` |
+| border       | 是否显示下边框                         | boolean        | `true` |
+| disabled     | 是否禁用                              | boolean        | `false` |
+| readonly     | 是否只读                              | boolean        | `false` |
+| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | boolean        | `false` |
+| max-length   | 限制最长输入字符                       | string ｜ number | - |
+| clearable    | 展示清除 Icon                         | boolean        | `false`  |
+| clear-size   | 清除图标的 `font-size` 大小           | string        | `14`  |
+| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
+| error         | 是否标红                                | boolean | `false`  |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
+| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | - |
+| confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string |   `done`   |
 
 ### Events
 
@@ -425,12 +425,12 @@ app.use(Input);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-input-border-bottom| _#eaf0fb_  | - |
-| --nut-input-disabled-color| _#c8c9cc_  | - |
-| --nut-input-required-color| _var(--nut-required-color)_  | - |
-| --nut-input-font-size| _var(--nut-font-size-2)_  | - |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- | 
+| --nut-input-border-bottom| _#eaf0fb_  | 
+| --nut-input-disabled-color| _#c8c9cc_  | 
+| --nut-input-required-color| _var(--nut-required-color)_  | 
+| --nut-input-font-size| _var(--nut-font-size-2)_  | 
 
 
 
