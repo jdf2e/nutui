@@ -235,7 +235,7 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 | Field | Description | Type | Default
 |----- | ----- | ----- | -----
 | type | layout method, optional value is `flex` | string | `-`
-| gutter | spacing between column elements (in `px`) | string \| number | `-`
+| gutter | spacing between column elements (`px`) | string \| number | `-`
 | justify | Flex main axis alignment, optional values are `start` `end` `center` `space-around` `space-between` `space-evenly` | string | `start`
 | align | Flex cross axis alignment, optional values are `flex-start` `center` `flex-end` | string | `flex-start`
 | flex-wrap | Whether flex wraps, optional values are `nowrap` `wrap` `reverse` | string | `nowrap`
