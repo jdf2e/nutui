@@ -209,7 +209,7 @@ export default {
 ### Events
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| click | 按钮点击时触发事件 | event: MouseEvent |
+| click | 按钮点击时触发事件 | `event: MouseEvent` |
 
 ### Slots
 

@@ -161,15 +161,15 @@ app.use(Switch);
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | Boolean ｜ String ｜ Number | `false`               |
-| disable        | 禁用状态         | Boolean | `false`               |
-| loading        | 加载状态         | Boolean | `false`               |
-| active-color   | 打开时的背景颜色 | String  | `#fa2c19`    |
-| inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
-| active-text    | 打开时文字描述   | String  | -                     |
-| inactive-text  | 关闭时文字描述   | String  | -                     |
-| active-value  | 打开时组件的值   | Boolean ｜ String ｜ Number  | `true`  |
-| inactive-value  | 关闭组件的值   | Boolean ｜ String ｜ Number  | `false`  |
+| v-model        | 开关状态         | boolean ｜ string ｜number | `false`               |
+| disable        | 禁用状态         | boolean | `false`               |
+| loading        | 加载状态         | boolean | `false`               |
+| active-color   | 打开时的背景颜色 | string  | `#fa2c19`    |
+| inactive-color | 关闭时的背景颜色 | string  | `#ebebeb` |
+| active-text    | 打开时文字描述   | string  | -                     |
+| inactive-text  | 关闭时文字描述   | string  | -                     |
+| active-value  | 打开时组件的值   | boolean ｜ string ｜number  | `true`  |
+| inactive-value  | 关闭组件的值   | boolean ｜ string ｜number  | `false`  |
 
 ### Slots
 
@@ -190,16 +190,16 @@ app.use(Switch);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-switch-close-bg-color|  _#ebebeb_ | - |
-| --nut-switch-close-cline-bg-color|  _#f0f0f0_ | - |
-| --nut-switch-width|  _36px_ | - |
-| --nut-switch-height|  _21px_ | - |
-| --nut-switch-line-height|  _21px_ | - |
-| --nut-switch-border-radius|  _21px_ | - |
-| --nut-switch-inside-width|  _13px_ | - |
-| --nut-switch-inside-height|  _13px_ | - |
-| --nut-switch-inside-open-transform|  _translateX(146%)_ | - |
-| --nut-switch-inside-close-transform|  _translateX(30%)_ | - |
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- |
+| --nut-switch-close-bg-color|  _#ebebeb_ |
+| --nut-switch-close-cline-bg-color|  _#f0f0f0_ | 
+| --nut-switch-width|  _36px_ | 
+| --nut-switch-height|  _21px_ | 
+| --nut-switch-line-height|  _21px_ | 
+| --nut-switch-border-radius|  _21px_ | 
+| --nut-switch-inside-width|  _13px_ | 
+| --nut-switch-inside-height|  _13px_ | 
+| --nut-switch-inside-open-transform|  _translateX(146%)_ | 
+| --nut-switch-inside-close-transform|  _translateX(30%)_ | 
     
