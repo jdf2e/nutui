@@ -59,33 +59,40 @@ app.use(Card);
 :::demo
 ```html
 <template>
-<nut-card
-:img-url="state.imgUrl"
-:title="state.title"
-:price="state.price"
-:vipPrice="state.vipPrice"
-:shopDesc="state.shopDesc"
-:delivery="state.delivery"
-:shopName="state.shopName"
->
-  <template #prolist>
-    <div class="search_prolist_attr">
-      <span class="word">活鲜</span>
-      <span class="word">礼盒</span>
-      <span class="word">国产</span>
-    </div>
-  </template>
-  <template #tag>
-    <img
-        class="tag" 
+<template>
+  <nut-card
+    :img-url="state.imgUrl"
+    :title="state.title"
+    :price="state.price"
+    :vipPrice="state.vipPrice"
+    :shopDesc="state.shopDesc"
+    :delivery="state.delivery"
+    :shopName="state.shopName"
+  >
+    <template #prolist>
+      <div class="search_prolist_attr">
+        <span class="word">活鲜</span>
+        <span class="word">礼盒</span>
+        <span class="word">国产</span>
+      </div>
+    </template>
+    <template #price>
+      <span>询价</span>
+    </template>
+    <template #origin>
+      <img
+        class="tag"
         src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
         alt=""
-    />
-  </template>
+      />
+    </template>
+    <template #shop-tag>
+      <div>自定义店铺介绍</div>
+    </template>
     <template #footer>
       <div class="customize">自定义</div>
     </template>
-</nut-card>
+  </nut-card>
 </template>
 <script>
   import { reactive } from 'vue';
@@ -112,18 +119,17 @@ app.use(Card);
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
- 
 }
 .search_prolist_attr > span{
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
 }
 .tag {
   display: inline-block;

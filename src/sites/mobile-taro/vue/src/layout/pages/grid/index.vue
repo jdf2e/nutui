@@ -81,3 +81,9 @@
     </nut-grid>
   </div>
 </template>
+<script lang="ts">
+import { Dongdong } from '@nutui/icons-vue-taro';
+export default {
+  components: { Dongdong }
+};
+</script>
