@@ -112,24 +112,12 @@ styleMap.forEach((value, key) => {
     return component !== key;
   });
   // gen style
-  const outputStyleCJs = `${deps
-    .map((component) => {
-      return `require('../${component.toLowerCase()}/index.scss');\n`;
-    })
-    .reverse()
-    .join('')}require('./index.scss');\n`;
   const outputStyleMjs = `${deps
     .map((component) => {
       return `import '../${component.toLowerCase()}/index.scss';\n`;
     })
     .reverse()
     .join('')}import './index.scss';\n`;
-
-  tasks.push(
-    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.cjs`), outputStyleCJs, 'utf8', () => {
-      // console.log('')
-    })
-  );
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')
