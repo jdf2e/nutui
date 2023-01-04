@@ -48,7 +48,7 @@ export { ${element.name} };`;
   });
 });
 outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`).join('\n');
-outputFileEntry += `\nimport { Locale } from "./packages/locale/lang/index.js";
+outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
 function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {
@@ -112,24 +112,12 @@ styleMap.forEach((value, key) => {
     return component !== key;
   });
   // gen style
-  const outputStyleCJs = `${deps
-    .map((component) => {
-      return `require('../${component.toLowerCase()}/index.scss');\n`;
-    })
-    .reverse()
-    .join('')}require('./index.scss');\n`;
   const outputStyleMjs = `${deps
     .map((component) => {
       return `import '../${component.toLowerCase()}/index.scss';\n`;
     })
     .reverse()
     .join('')}import './index.scss';\n`;
-
-  tasks.push(
-    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.cjs`), outputStyleCJs, 'utf8', () => {
-      // console.log('')
-    })
-  );
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')

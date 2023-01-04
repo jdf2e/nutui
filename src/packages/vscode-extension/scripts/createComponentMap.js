@@ -23,7 +23,7 @@ const getCompName = (name) => {
     });
   }
   const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
-  return packageName.name;
+  return packageName ? packageName.name : '';
 };
 
 const getSubSources = (sources) => {
@@ -41,13 +41,19 @@ const genaratorComponentMap = () => {
 
   for (let componentDir of componentDirs) {
     let stat = fs.lstatSync(`${basePath}/${componentDir}`);
+    let compoName = kebabCase(getCompName(componentDir));
     if (stat.isDirectory()) {
       const absolutePath = path.join(`${basePath}/${componentDir}`, 'doc.md');
-      if (!fs.existsSync(absolutePath)) continue;
+      if (!fs.existsSync(absolutePath)) {
+        componentMap[compoName] = {
+          site: ``,
+          props: ['']
+        };
+        continue;
+      }
       const data = fs.readFileSync(absolutePath, 'utf8');
       let sources = MarkdownIt.parse(data, {});
       sources = getSubSources(sources);
-      let compoName = kebabCase(getCompName(componentDir));
       componentMap[compoName] = {
         site: `/zh-CN/component/${componentDir}`,
         props: sources.filter((source) => source.type === 'inline').length
