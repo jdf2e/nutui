@@ -204,7 +204,7 @@ export default {
 
 | 插槽名 | 说明 | 
 |------|------|
-| slot:mTitle | 标题栏左侧内容插槽 | 
+| slot:title | 标题栏左侧内容插槽 | 
 | slot:value | 标题栏右侧内容插槽 | 
 | slot:extraRender | 设置标题下固定内容（不折叠） |
 

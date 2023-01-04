@@ -3,7 +3,7 @@
     <view :class="['nut-collapse-item__title', { 'nut-collapse-item__title--disabled': disabled }]" @click="toggleOpen">
       <view class="nut-collapse-item__title-main">
         <view class="nut-collapse-item__title-main-value">
-          <slot v-if="$slots.mTitle" name="mTitle"></slot>
+          <slot v-if="$slots.title" name="title"></slot>
           <template v-else>
             <view v-html="title" class="nut-collapse-item__title-mtitle"></view>
           </template>

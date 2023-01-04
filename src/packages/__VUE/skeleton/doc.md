@@ -160,16 +160,16 @@ export default {
 
 | 字段       | 说明                                             | 类型    | 默认值    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `true`    | 
-| width       | 每行宽度                                        | String  | `default` |
-| height      | 每行高度                                        | String  | `100px`   |
-| animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
-| avatar      | 是否显示头像                                     | Boolean | `false`   |
-| avatar-shape      | 头像形状：正方形/圆形                        | String | `round`   |
-| avatar-size       | 头像大小                                   | String | `50px`    |
-| round  | 标题/段落是否采用圆角风格                                | Boolean | `false`  |
-| row    | 设置段落行数                                           | String | `1`       |
-| title  | 是否显示段落标题                                        | Boolean | `true`   |
+| loading    | 是否显示骨架屏                                    | boolean | `true`    | 
+| width       | 每行宽度                                        | string  | `default` |
+| height      | 每行高度                                        | string  | `100px`   |
+| animated    | 是否开启骨架屏动画                                | boolean  | `false`  |
+| avatar      | 是否显示头像                                     | boolean | `false`   |
+| avatar-shape      | 头像形状：正方形/圆形                        | string | `round`   |
+| avatar-size       | 头像大小                                   | string | `50px`    |
+| round  | 标题/段落是否采用圆角风格                                | boolean | `false`  |
+| row    | 设置段落行数                                           | string | `1`       |
+| title  | 是否显示段落标题                                        | boolean | `true`   |
 
 
 ### Slots
@@ -184,8 +184,8 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-skeleton-content-avatar-background-color| _#efefef_  | -  |
-| --nut-skeleton-content-line-background-color| _#efefef_  | -  |
-| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-skeleton-content-avatar-background-color| _#efefef_  |
+| --nut-skeleton-content-line-background-color| _#efefef_  |
+| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  |
