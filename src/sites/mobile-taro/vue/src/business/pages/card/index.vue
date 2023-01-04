@@ -1,6 +1,6 @@
 <template>
   <view class="demo">
-    <h2>默认用法</h2>
+    <h2>基础用法</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"

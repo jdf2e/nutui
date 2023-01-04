@@ -112,10 +112,10 @@ User can custom divider style with style attribute.
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| dashed         | 	Whether to use dashed border             | Boolean | false                |
-| hairline        | Whether to use hairline                         | Boolean | true                |
-| content-position        | Content position, can be set to left or right                       | String | center                |
-| direction         | The direction of divider             | String | 'horizontal'                |
+| dashed         | 	Whether to use dashed border             | boolean | `false`                |
+| hairline        | Whether to use hairline                         | boolean | `true`                |
+| content-position        | Content position, can be set to `left` or `right`                       | string | `center`                |
+| direction         | The direction of divider             | string | `horizontal`                |
 
 ### Slots
 

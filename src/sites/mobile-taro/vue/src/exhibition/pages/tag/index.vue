@@ -46,7 +46,7 @@
       >
     </nut-cell-group>
 
-    <nut-cell-group title="自定义">
+    <nut-cell-group title="颜色自定义">
       <nut-cell title="背景颜色">
         <template v-slot:link>
           <nut-tag color="#FA685D">标签</nut-tag>

@@ -387,11 +387,11 @@ export default {
 
 | 参数                             | 说明                           | 类型                    | 默认值  |
 |----------------------------------|--------------------------------|-------------------------|---------|
-| active-color                     | 选项的选中态图标颜色           | String                  | #F2270C |
-| close-on-click-overlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| scroll-fixed           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
-| title-class           | 自定义标题样式类               | String                  | -       |
-| lock-scroll           | 背景是否锁定                   | Boolean                 | true    |
+| active-color                     | 选项的选中态图标颜色           | string                  | `#F2270C` |
+| close-on-click-overlay | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
+| scroll-fixed           | 滚动后是否固定，可设置固定位置 | boolean \| string \| number | `false`   |
+| title-class           | 自定义标题样式类               | string                  | -       |
+| lock-scroll           | 背景是否锁定                   | boolean                 | `true`    |
 
 ### Menu Slots
 | 名称 | 说明 |
@@ -401,13 +401,13 @@ export default {
 
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | 菜单项标题                              | String  | 当前选中项文字   |
+| title                         | 菜单项标题                              | string  | `当前选中项文字`   |
 | options                       | 选项数组                                | Array   | -                |
-| disabled                      | 是否禁用菜单                            | Boolean | false            |
-| cols                          | 可以设置一行展示多少列 options          | Number  | 1                |
-| direction          | 菜单展开方向，可选值为up                | String  | 'down'           |
-| active-title-class   | 选项选中时自定义标题样式类              | String  | -                |
-| inactive-title-class | 选项非选中时自定义标题样式类            | String  | -                |
+| disabled                      | 是否禁用菜单                            | boolean | `false`            |
+| cols                          | 可以设置一行展示多少列 options          | number  | 1                |
+| direction          | 菜单展开方向，可选值为up                | string  | `down`           |
+| active-title-class   | 选项选中时自定义标题样式类              | string  | -                |
+| inactive-title-class | 选项非选中时自定义标题样式类            | string  | -                |
 ### MenuItem Slots
 | 名称 | 说明 |
 |-|-|

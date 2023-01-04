@@ -60,33 +60,40 @@ app.use(Card);
 :::demo
 ```html
 <template>
-<nut-card
-:img-url="state.imgUrl"
-:title="state.title"
-:price="state.price"
-:vipPrice="state.vipPrice"
-:shopDesc="state.shopDesc"
-:delivery="state.delivery"
-:shopName="state.shopName"
->
-  <template #prolist>
-    <div class="search_prolist_attr">
-      <span class="word">word</span>
-      <span class="word">word</span>
-      <span class="word">word</span>
-    </div>
-  </template>
-  <template #tag>
-    <img
-        class="tag" 
+  <nut-card
+    :img-url="state.imgUrl"
+    :title="state.title"
+    :price="state.price"
+    :vipPrice="state.vipPrice"
+    :shopDesc="state.shopDesc"
+    :delivery="state.delivery"
+    :shopName="state.shopName"
+  >
+    <template #prolist>
+      <div class="search_prolist_attr">
+        <span class="word">word</span>
+        <span class="word">word</span>
+        <span class="word">word</span>
+      </div>
+    </template>
+    <template #price>
+      <span>price</span>
+    </template>
+    <template #origin>
+      <img
+        class="tag"
         src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
         alt=""
-    />
-  </template>
-    <template #footer>
-      <div class="customize">cuttom</div>
+      />
     </template>
-</nut-card>
+    <template #shop-tag>
+      <div>shop</div>
+    </template>
+    <template #footer>
+      <div class="customize">footer</div>
+    </template>
+  </nut-card>
+</template>
 </template>
 <script>
   import { reactive } from 'vue';
@@ -113,18 +120,17 @@ app.use(Card);
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
- 
 }
 .search_prolist_attr > span{
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
 }
 .tag {
   display: inline-block;
