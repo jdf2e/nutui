@@ -35,7 +35,7 @@ const create = async () => {
     `
 const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
 export default {
-  pages: ['pages/index/index'],
+  pages: ['pages/index/index', 'pages/index/layout'],
   subPackages,
   window: {
     backgroundTextStyle: 'light',
