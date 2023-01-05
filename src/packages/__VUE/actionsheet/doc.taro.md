@@ -15,11 +15,9 @@ app.use(ActionSheet);
 
 ### 基础用法
 
-默认
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -36,7 +34,6 @@ app.use(ActionSheet);
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -79,7 +76,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -96,7 +92,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -138,7 +133,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -156,7 +150,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -201,12 +194,10 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>选项状态</label></span>
       <div v-html="state.val"></div>
@@ -220,7 +211,6 @@ export default {
        cancel-txt="取消"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -258,25 +248,21 @@ export default {
 :::
 
 
-
 ### 自定义内容
 
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>自定义内容</label></span>
     </nut-cell>
      <nut-action-sheet v-model:visible="state.isVisible" title="标题">
       <div class="custom-content">自定义内容</div>
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
