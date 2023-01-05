@@ -2,7 +2,7 @@
   <view
     :class="classes"
     ref="myDrag"
-    :id="'drag-' + refRandomId"
+    :id="'myDrag' + refRandomId"
     class="myDrag"
     @touchstart="touchStart($event)"
     @touchmove.prevent="touchMove($event)"
@@ -21,6 +21,7 @@
 import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
@@ -81,18 +82,12 @@ export default create({
       };
     });
     const domElem = Taro.getSystemInfoSync();
-    function getInfo() {
-      const query = Taro.createSelectorQuery();
-      query
-        .select('#drag-' + refRandomId)
-        .boundingClientRect((rec: any) => {
-          state.elWidth = rec.width;
-          state.elHeight = rec.height;
-          state.initTop = rec.top;
-          state.initLeft = rec.left;
-        })
-        .exec();
-      // console.log(domElem.windowWidth);
+    async function getInfo() {
+      const rec = await useTaroRect(myDrag, Taro);
+      state.elWidth = rec.width;
+      state.elHeight = rec.height;
+      state.initTop = rec.top;
+      state.initLeft = rec.left;
 
       state.screenWidth = domElem.screenWidth;
       state.screenHeight = domElem.screenHeight;
