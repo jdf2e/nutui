@@ -48,6 +48,38 @@ app.use(Step);
 ```
 :::
 
+### 基本用法（点状）
+
+:::demo
+
+```html
+<template>
+  <nut-steps :current="current2" progress-dot>
+    <nut-step></nut-step>
+    <nut-step></nut-step>
+    <nut-step></nut-step>
+  </nut-steps>
+  <div class="steps-button">
+    <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
+  </div>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        current2: 1,
+      });
+      const handleClickStep = (index: number) => {
+        console.log(index)
+      };
+      return { ...toRefs(state), handleClickStep };
+    }
+  };
+</script>
+```
+:::
+
 ### 标题和描述信息
 
 :::demo

@@ -84,7 +84,7 @@ app.use(Switch);
     setup() {
       const checked = ref(true);
       const change = (value: boolean, event: Event) => {
-        showToast.text(`触发了change事件，开关状态：${value}`);
+        showToast.text(`value：${value}`);
       };
       return {
         checked,
@@ -150,6 +150,27 @@ app.use(Switch);
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
+```
+:::
+
+### 自定义加载图标
+:::demo
+``` html
+<template>
+  <nut-switch v-model="checked" loading>
+    <template #icon><Loading name="loading" /></template>
+  </nut-switch>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { Loading } from '@nutui/icons-vue';
   export default {
     setup() {
       const checked = ref(true);

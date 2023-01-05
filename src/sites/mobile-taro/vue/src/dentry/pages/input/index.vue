@@ -58,10 +58,10 @@
     <nut-input v-model="state.disabled" :border="false" placeholder="无边框" />
     <nut-input v-model="state.showIcon" :border="false" placeholder="无边框" />
 
-    <h2>点击事件</h2>
+    <h2>事件演示</h2>
     <nut-input
       v-model="state.event"
-      placeholder="点击"
+      placeholder="事件演示"
       clearable
       :adjust-position="state.adjustPosition"
       @update:model-value="change"

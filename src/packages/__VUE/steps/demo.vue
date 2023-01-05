@@ -61,7 +61,7 @@
         <nut-step :content="translate('content3')" :title="translate('start')">3</nut-step>
       </nut-steps>
     </div>
-    <h2>{{ translate('verstep') }}</h2>
+    <h2>{{ translate('verstepDot') }}</h2>
     <div class="steps-wrapper" style="height: 350px; padding: 15px 40px">
       <nut-steps current="2" direction="vertical" progress-dot>
         <nut-step :content="translate('content1')" :title="translate('complete')">1</nut-step>
@@ -105,7 +105,8 @@ const initTranslate = () =>
       content3: '收货地址为：北京市经济技术开发区科创十一街18号院京东大厦',
       content4: '收货地址为',
       content5: '北京市经济技术开发区科创十一街18号院京东大厦',
-      verstep: '竖向步骤条'
+      verstep: '竖向步骤条',
+      verstepDot: '点状步骤和垂直方向'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -126,7 +127,8 @@ const initTranslate = () =>
         'The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
       content4: 'The receiving address is',
       content5: 'Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
-      verstep: 'Vertical step bar'
+      verstep: 'Vertical step bar',
+      verstepDot: 'Point steps and vertical orientation'
     }
   });
 export default createDemo({
