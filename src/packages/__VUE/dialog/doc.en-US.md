@@ -126,23 +126,6 @@ export default {
 ```
 ::: 
 
-### Teleport use, mount to the specified element node
-
-``` html
-<nut-dialog teleport="#app" ... />
-```
-
-``` javascript
-showDialog({
-  teleport: '#app',
-  ...
-});
-showDialog({
-  teleport: '.demo',
-  ...
-});
-```
-
 ### Template use
 
 :::demo
@@ -186,6 +169,26 @@ export default {
 </script>
 ```
 :::
+
+
+### Teleport use, mount to the specified element node
+
+``` html
+<nut-dialog teleport="#app" ... />
+```
+
+``` javascript
+showDialog({
+  teleport: '#app',
+  ...
+});
+showDialog({
+  teleport: '.demo',
+  ...
+});
+```
+
+
 ## API
 ### DialogOptions
 | Attribute           | Description                                                                    | Type                     | Default              |
