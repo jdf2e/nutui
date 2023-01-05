@@ -172,20 +172,40 @@ export default {
 
 ### teleport 使用，挂载到指定节点
 
+:::demo
 ``` html
-<nut-dialog teleport="#app" ... />
+<template>
+  <nut-cell-group title="Teleport 使用，挂载到指定节点">
+    <nut-cell title="body element node" @click="teleportClick('body')"></nut-cell>
+    <nut-cell title="#app element node" @click="teleportClick('#app')"></nut-cell>
+    <nut-cell title="demo class element node" @click="teleportClick('.demo')"></nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
+export default {
+  setup() {
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const teleportClick = (teleport: string) => {
+      showDialog({
+        teleport,
+        title: 'teleport to ' + teleport,
+        content: '打开开发者工具看一下 Elements Tab',
+        noCancelBtn: true,
+        onCancel
+      });
+    };
+    return {
+      teleportClick
+    }
+  }
+}
+</script>
 ```
-
-``` javascript
-showDialog({
-  teleport: '#app',
-  ...
-});
-showDialog({
-  teleport: '.demo',
-  ...
-});
-```
+:::
 ## API
 ### DialogOptions
 | 参数                | 说明                                                          | 类型                     | 默认值               |
