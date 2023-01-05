@@ -140,7 +140,7 @@ export default {
 ## API
 ### Props
 
-| Field | Description | Type | Default
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
 | init-num | initial number | number | `0`
 | end-num | end number | number | `0`
@@ -166,7 +166,7 @@ export default {
 
 ### Events
 
-| field | description | callback parameter
+| Event | description | callback parameter
 |----- | ----- | -----
 | scroll-end | callback function after scrolling ends | `-`
     

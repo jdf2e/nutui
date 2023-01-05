@@ -183,7 +183,7 @@ export default {
 ## API
 ### Collapse Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model | 当前展开面板的 `name` | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | `-` |
 | accordion | 是否开启手风琴模式 | boolean | `false` |
@@ -202,23 +202,23 @@ export default {
 
 ### CollapseItem Slots
 
-| 插槽名 | 说明 | 
+| 名称 | 说明 | 
 |------|------|
-| slot:title | 标题栏左侧内容插槽 | 
-| slot:value | 标题栏右侧内容插槽 | 
-| slot:extraRender | 设置标题下固定内容（不折叠） |
+| title | 标题栏左侧内容插槽 | 
+| value | 标题栏右侧内容插槽 | 
+| extraRender | 设置标题下固定内容（不折叠） |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
-| change | 切换面板时触发 | 类型与 v-model 绑定的值一致 |
+| change | 切换面板时触发 | 类型与 `v-model` 绑定的值一致 |
 
 ## Theming
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

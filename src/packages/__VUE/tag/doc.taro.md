@@ -127,7 +127,7 @@ export default {
 ## API
 ### Props 
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| 参数       | 说明                                             | 类型    | 默认值    |
 |------------|--------------------------------------------------|---------|-----------|
 | type       | 标签类型，可选值为 `primary`、`success`、`danger`、`warning` | string  | `default` |
 | color      | 标签颜色                                         | string  | `- `        |
@@ -146,7 +146,7 @@ export default {
 
 ### Events
 
-| 事件名称 | 说明     | 回调参数 |
+| 事件名 | 说明     | 回调参数 |
 |----------|----------|----------|
 | click    | 点击事件 | event    |
 | close    | 关闭事件 | event    |
@@ -155,7 +155,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |

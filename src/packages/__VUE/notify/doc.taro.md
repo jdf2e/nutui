@@ -120,7 +120,7 @@ export default {
 
 ### Props
     
-| 字段       | 说明                                                  | 类型    | 默认值   |
+| 参数       | 说明                                                  | 类型    | 默认值   |
 |------------|-------------------------------------------------------|---------|----------|
 | type       | 提示的信息类型，可选值为`primary` `success` `danger` `warning` | string        | `danger` |
 | message    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
@@ -141,7 +141,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

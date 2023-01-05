@@ -393,7 +393,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 | 参数            | 说明                                              | 类型    | 默认值   |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | 初始值                                            | date    | `null`   |
-| type            | 时间类型，可选值 date time year-month month-day datehour | string  | `'date'` |
+| type            | 时间类型，可选值 `date` `time` `year-month` `month-day` `datehour` | string  | `'date'` |
 | minute-step     | 分钟步进值                                        | number  | `1`      |
 | is-show-chinese | 每列是否展示中文                                  | boolean | `false`  |
 | min-date        | 开始日期                                          | date    | `十年前` |
@@ -413,13 +413,13 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
     
 | 事件名  | 说明               | 回调参数     |
 |---------|--------------------|--------------|
-| confirm | 点击确定按钮时触发 | 	{ selectedValue, selectedOptions } |
-| cancel   | 点击取消按钮时触发         | 	{ selectedValue, selectedOptions } |
-| change   | 选项改变时触发         | { columnIndex, selectedValue, selectedOptions } |
+| confirm | 点击确定按钮时触发 | 	`{ selectedValue, selectedOptions }` |
+| cancel   | 点击取消按钮时触发         | 	`{ selectedValue, selectedOptions }` |
+| change   | 选项改变时触发         | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |

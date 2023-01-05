@@ -241,9 +241,9 @@ export default {
 | 参数               | 说明             | 类型    | 默认值 |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | 地址数组         | Array   | -      |
-| long-press | 长按功能         | boolean | false  |
-| swipe-edition      | 右滑功能         | boolean | false  |
-| show-bottom-button | 是否展示底部按钮 | boolean | true   |
+| long-press | 长按功能         | boolean | `false`  |
+| swipe-edition      | 右滑功能         | boolean | `false`  |
+| show-bottom-button | 是否展示底部按钮 | boolean | `true`   |
 
 ### Events
 
@@ -262,7 +262,7 @@ export default {
 
 `AddressList` 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换
 
-| 插槽名        | 说明                             | 说明           |
+| 名称          | 说明                             | 说明           |
 | ------------- | -------------------------------- | -------------- |
 | iteminfos     | 地址列表项姓名/联系方式/默认一行 | 公共           |
 | itemicon      | 地址列表项图标                   | 公共           |
@@ -298,7 +298,7 @@ const dataMapOptions = {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

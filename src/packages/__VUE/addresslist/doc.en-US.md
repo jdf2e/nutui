@@ -243,9 +243,9 @@ export default {
 | Attribute          | Description       | Type   | Default |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | Address array         | Array   | -      |
-| long-press | Long Press Function   | boolean | false  |
-| swipe-edition      | Swipe right           | boolean | false  |
-| show-bottom-button | Whether to show the bottom button | boolean | true   |
+| long-press | Long Press Function   | boolean | `false`  |
+| swipe-edition      | Swipe right           | boolean | `false`  |
+| show-bottom-button | Whether to show the bottom button | boolean | `true`   |
 
 ### Events
 
@@ -301,7 +301,7 @@ const dataMapOptions = {
 ### CSS Variables
 
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

@@ -236,12 +236,12 @@ app.use(Overlay);
 | 参数                   | 说明             | 类型           | 默认值 |
 | ---------------------- | ---------------- | -------------- | ------ |
 | v-model:visible        | 控制遮罩的显示/隐藏 | boolean        | `false`  |
-| z-index                | 自定义遮罩层级         | string, number | `2000`   |
-| duration               | 显示/隐藏的动画时长，单位秒 | string, number | `0.3`    |
+| z-index                | 自定义遮罩层级         | string \| number | `2000`   |
+| duration               | 显示/隐藏的动画时长，单位秒 | string \| number | `0.3`    |
 | overlay-class          | 自定义遮罩类名   | string         | -      |
 | overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
 | lock-scroll            | 遮罩显示时的背景是否锁定     | boolean        | `false`  |
-| close-on-click-overlay | 点击遮罩时是否关闭，如果设置 `false`,那么 `click`事件将失效 | boolean        | `true`   |
+| close-on-click-overlay | 点击遮罩时是否关闭，如果设置 `false`,那么 `click`事件将失效 | boolean    | `true`   |
 
 ### Events
 
@@ -259,8 +259,8 @@ app.use(Overlay);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-overlay-bg-color        | _rgba(0, 0, 0, 0.7)_        | -    |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-overlay-bg-color        | _rgba(0, 0, 0, 0.7)_        |

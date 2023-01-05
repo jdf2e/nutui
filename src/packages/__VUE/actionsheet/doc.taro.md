@@ -15,15 +15,13 @@ app.use(ActionSheet);
 
 ### 基础用法
 
-默认
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
-      @click="switchActionSheet('isVisible')"
+      @click="switchActionSheet('isVisible1')"
      
     >
       <span><label>基础用法</label></span>
@@ -31,22 +29,21 @@ app.use(ActionSheet);
     </nut-cell>
      <!-- demo 基础用法 -->
     <nut-action-sheet
-      v-model:visible="state.isVisible"
-      :menu-items="menuItems"
+      v-model:visible="state.isVisible1"
+      :menu-items="menuItemsOne"
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
 export default {
   setup() {
   const state = reactive({
-      isVisible: false,
+      isVisible1: false,
       val: '',
     });
-     const menuItems = [
+     const menuItemsOne = [
       {
         name: '选项一'
       },
@@ -58,7 +55,7 @@ export default {
       }
     ];
     const switchActionSheet = ( param ) => {
-      state.isVisible = !state.isVisible;
+      state.isVisible1 = !state.isVisible1;
     };
       const chooseItem = (itemParams) => {
       state.val = itemParams.name;
@@ -66,7 +63,7 @@ export default {
     return {
       state,
       switchActionSheet,
-      menuItems,
+      menuItemsOne,
       chooseItem,
     };
   }
@@ -79,7 +76,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -96,7 +92,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -138,7 +133,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -156,7 +150,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -201,12 +194,10 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>选项状态</label></span>
       <div v-html="state.val"></div>
@@ -220,7 +211,6 @@ export default {
        cancel-txt="取消"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -258,25 +248,21 @@ export default {
 :::
 
 
-
 ### 自定义内容
 
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>自定义内容</label></span>
     </nut-cell>
      <nut-action-sheet v-model:visible="state.isVisible" title="标题">
       <div class="custom-content">自定义内容</div>
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -308,36 +294,36 @@ export default {
 ## API
 ### Props
 
-| 字段             | 说明                                   | 类型    | 默认值    |
+| 参数             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| v-model:visible       | 是否展示动作面板                             | Boolean | false|
-| menu-items       | 列表项                                 | Array   | [ ]       |
-| option-tag       | 设置列表项标题展示使用参数                 | String  | 'name'    |
-| option-sub-tag   | 设置列表项二级标题展示使用参数             | String  | 'subname' |
-| choose-tag-value | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| color            | 选中项颜色，当 choose-tag-value == option-tag的值 生效  | String  | '#ee0a24' |
-| title            | 设置列表项标题                         | String  | ''        |
-| description      | 设置列表项副标题/描述                  | String  | ''        |
-| cancel-txt       | 取消文案                               | String  | '取消'   |
-| close-abled      | 遮罩层是否可关闭                       | Boolean | true      |
+| v-model:visible       | 是否展示动作面板     | boolean | `false` |
+| menu-items       | 列表项                                 | MenuItems[]   | `[ ] `      |
+| option-tag       | 设置列表项标题展示使用参数                 | string  | `'name'`    |
+| option-sub-tag   | 设置列表项二级标题展示使用参数             | string  | `'subname'` |
+| choose-tag-value | 设置选中项的值，和 `'option-tag'` 的值对应 | string  | ''        |
+| color            | 选中项颜色，当 `choose-tag-value == option-tag` 的值 生效  | string  | `'#ee0a24'` |
+| title            | 设置列表项标题                         | string  | `''`        |
+| description      | 设置列表项副标题/描述                  | string  | `''`        |
+| cancel-txt       | 取消文案                               | string  | `'取消'`   |
+| close-abled      | 遮罩层是否可关闭                       | boolean | `true`      |
 
 ### MenuItems 数据结构
 
-| 字段   | 说明               | 类型                          |
+| 键名   | 说明               | 类型                          |
 |--------|--------------------|-----------------------------------|
-| name | 标题      | String    |
-| subname | 二级标题 | String          |
-| color | 选项字体颜色（选中项颜色层级>选项字体颜色） | String          |
-| loading | 是否为loading状态 | Boolean          |
-| disable | 是否为禁用状态 | Boolean       |
+| name | 标题      | string    |
+| subname | 二级标题 | string          |
+| color | 选项字体颜色（选中项颜色层级>选项字体颜色） | string          |
+| loading | 是否为 `loading` 状态 | boolean          |
+| disable | 是否为禁用状态 | boolean       |
 
 ### Events
 
-| 字段   | 说明               | 回调参数                          |
+| 事件名   | 说明               | 回调参数                          |
 |--------|--------------------|-----------------------------------|
-| choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
-| cancel | 点击取消文案时触发 | 无                                |
-| close | 点击遮罩层时触发 | event: Event                              |
+| choose | 选择之后触发       | 选中列表项 `item`, 选中的索引值 `index` |
+| cancel | 点击取消文案时触发 | -                               |
+| close | 点击遮罩层时触发 | event: Event                           |
 
 
 ## 主题定制
@@ -346,12 +332,12 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-actionsheet-light-color           | _#f6f6f6_                  | -    |
-| --nut-actionsheet-item-border-bottom     | _none_                     | -    |
-|  --nut-actionsheet-item-font-size        | _var(--nut-font-size-2)_   | -    |
-|  --nut-actionsheet-item-subdesc-font-size| _var(--nut-font-size-1)_   | -    |
-|  --nut-actionsheet-item-cancel-border-top| _1px solid var(--nut-actionsheet-light-color)_ | -    |
-|  --nut-actionsheet-item-line-height      | _24px_                     | -    |
-|   --nut-actionsheet-item-font-color       | _var(--nut-title-color)_   | -    |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-actionsheet-light-color           | _#f6f6f6_                  |
+| --nut-actionsheet-item-border-bottom     | _none_                     |
+|  --nut-actionsheet-item-font-size        | _var(--nut-font-size-2)_   |
+|  --nut-actionsheet-item-subdesc-font-size| _var(--nut-font-size-1)_   |
+|  --nut-actionsheet-item-cancel-border-top| _1px solid var(--nut-actionsheet-light-color)_ |
+|  --nut-actionsheet-item-line-height      | _24px_                     |
+|   --nut-actionsheet-item-font-color       | _var(--nut-title-color)_   |

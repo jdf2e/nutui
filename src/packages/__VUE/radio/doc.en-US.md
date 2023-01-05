@@ -210,10 +210,10 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 | Attribute             | Description                                                         | Type                    | Default            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | Disable selection                                           | Boolean                 | `false`           |
-| icon-size        | [Icon Size](#/en-US/icon)                                           | String、Number          | `18`              |
-| label            | Radio box ID                                                  | String、Number、Boolean | -                 |
-| shape            | Shape, optional values are `button`、`round`                                | String                  | round             |
+| disabled         | Disable selection                                           | boolean                 | `false`           |
+| icon-size        | [Icon Size](#/en-US/icon)                                           | string \| number           | `18`              |
+| label            | Radio box ID                                                  | string \| number \| boolean | -                 |
+| shape            | Shape, optional values are `button`、`round`                                | string                  | `round`             |
 ### Radio Slots
 | Name | Description |
 |-|-|
@@ -223,9 +223,9 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 | Attribute          | Description                                          | Type                    | Default     |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| v-model       | The identifier of the currently selected item is selected when it is consistent with the `label` value | String、Number、Boolean | -          |
-| text-position | The position of the text, optional value：`left`,`right`        | String                  | `right`    |
-| direction     | Use horizontal and vertical optional values `horizontal`、`vertical`      | String                  | `vertical` |
+| v-model       | The identifier of the currently selected item is selected when it is consistent with the `label` value | string \| number \| boolean | -          |
+| text-position | The position of the text, optional value：`left`,`right`        | string                  | `right`    |
+| direction     | Use horizontal and vertical optional values `horizontal`、`vertical`      | string                  | `vertical` |
 
 ### RadioGroup Events
 
@@ -238,20 +238,20 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-radio-label-font-color|  _#1d1e1e_  | -  |
-|  --nut-radio-label-font-active-color|  _var(--nut-primary-color)_  | -  |
-|  --nut-radio-label-disable-color|  _#999_  | -  |
-|  --nut-radio-icon-disable-color|  _#d6d6d6_  | -  |
-|  --nut-radio-label-button-border-color|  _var(--nut-primary-color)_  | -  |
-|  --nut-radio-label-button-background|  _var(--nut-active-color)_  | -  |
-|  --nut-radio-label-margin-left|  _15px_  | -  |
-|  --nut-radio-button-border-radius|  _15px_  | -  |
-|  --nut-radio-label-font-size|  _14px_  | -  |
-|  --nut-radio-button-font-size|  _12px_  | -  |
-|  --nut-radio-button-padding|  _5px 18px_  | -  |
-|  --nut-radio-icon-font-size|  _18px_  | -  |
-|  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+|  --nut-radio-label-font-color|  _#1d1e1e_  |
+|  --nut-radio-label-font-active-color|  _var(--nut-primary-color)_  |
+|  --nut-radio-label-disable-color|  _#999_  |
+|  --nut-radio-icon-disable-color|  _#d6d6d6_  |
+|  --nut-radio-label-button-border-color|  _var(--nut-primary-color)_  |
+|  --nut-radio-label-button-background|  _var(--nut-active-color)_  |
+|  --nut-radio-label-margin-left|  _15px_  |
+|  --nut-radio-button-border-radius|  _15px_  |
+|  --nut-radio-label-font-size|  _14px_  |
+|  --nut-radio-button-font-size|  _12px_  |
+|  --nut-radio-button-padding|  _5px 18px_  |
+|  --nut-radio-icon-font-size|  _18px_  |
+|  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  |

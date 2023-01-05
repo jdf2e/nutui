@@ -209,55 +209,55 @@ export default {
 
 ### CellGroup Props
 
-| 字段  | 说明     | 类型   | 默认值 |
+| 参数  | 说明     | 类型   | 默认值 |
 |-------|----------|--------|--------|
 | title | 分组标题 | string | -      |
 | desc  | 分组描述 | string | -      |
 
 ### Cell Props
 
-| 字段            | 说明                                                                                           | 类型             | 默认值 |
+| 参数            | 说明                                                                                           | 类型             | 默认值 |
 |-----------------|------------------------------------------------------------------------------------------------|------------------|--------|
 | title           | 标题名称                                                                                       | string           | -      |
 | sub-title       | 左侧副标题                                                                                     | string           | -      |
 | desc            | 右侧描述                                                                                       | string           | -      |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | string           | right  |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | boolean          | false  |
-| round-radius    | 圆角半径                                                                                       | number           | 6px    |
+| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | string           | `right`  |
+| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | boolean          | `false`  |
+| round-radius    | 圆角半径                                                                                       | number           | `6px`    |
 | url             | 点击后跳转的链接地址                                                                           | string           | -      |
-| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -      |
-| replace         | 是否在跳转时替换当前页面历史                                                                   | boolean          | false  |
-| center          | 是否使内容垂直居中                                                                             | boolean          | false  |
+| to              | 点击后跳转的目标路由对象，同 `vue-router` 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -      |
+| replace         | 是否在跳转时替换当前页面历史                                                                   | boolean          | `false`  |
+| center          | 是否使内容垂直居中                                                                             | boolean          | `false`  |
 | size            | 单元格大小，可选值为 `large`                                                                   | string           | -      |
 
 ### Cell Events
 
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| click | 点击事件 | event:Event |
+| click | 点击事件 | `event:Event` |
 
 ### Cell Slots
 
 | 名称    | 说明                  |
 |---------|-----------------------|
-| icon    | 自定义左侧`icon`区域  |
+| icon    | 自定义左侧 `icon` 区域  |
 | default | 自定义内容            |
-| link    | 自定义右侧`link`区域  |
-| title   | 自定义`title`标题区域 |
+| link    | 自定义右侧 `link` 区域  |
+| title   | 自定义 `title` 标题区域 |
 
 ### CellGroup Slots
 
 | 名称  | 说明                  |
 |-------|-----------------------|
-| title | 自定义`title`标题区域 |
-| desc  | 自定义`desc`描述区域  |
+| title | 自定义 `title` 标题区域 |
+| desc  | 自定义 `desc` 描述区域  |
 
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                               | 默认值                       |
 |------------------------------------|------------------------------|

@@ -133,15 +133,15 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| v-model        | Loading status               | Boolean | `false`                |
+| v-model        | Loading status               | boolean | `false`                |
 | pull-distance         | The distance to trigger the pull refresh | number \| string | `50`               |
 | head-height | Height of head     | number \| string | `50`  |
-| loading-icon         | Loading icon      | String | `loading`            |
-| pulling-txt         | Text to show when pulling                       | String | `Pull to refresh...`            |
-| loosing-txt         | Text to show when loosing                       | String | `Loose to refresh...`            |
-| loading-txt        | Text to show when loading                         | String | `Loading...`                |
-| complete-txt        | Text to show when complete                       | String | ''           |
-| duration       | Animation duration                         | Number | 0.3                |
+| loading-icon         | Loading icon      | string | `loading`            |
+| pulling-txt         | Text to show when pulling                       | string | `Pull to refresh...`            |
+| loosing-txt         | Text to show when loosing                       | string | `Loose to refresh...`            |
+| loading-txt        | Text to show when loading                         | string | `Loading...`                |
+| complete-txt        | Text to show when complete                       | string | `''  `         |
+| duration       | Animation duration                         | number | `0.3`                |
 
 ### Events
 
@@ -152,7 +152,7 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 
 ### Slots
 
-| Attribute | Description           | 
+| Name | Description           | 
 |--------|----------------|
 | pulling  | Content of head when at pulling |
 | loosing  | Content of head when at loosing |

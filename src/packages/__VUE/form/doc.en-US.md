@@ -360,7 +360,7 @@ setup(){
 | Attribute   | Description                                              | Type                     | Default |
 |-------------|----------------------------------------------------------|--------------------------|---------|
 | model-value | Form data object (required when using form verification) | object                   |         |
-| rules       | Unified configuration FormItem attr rules                | { prop: FormItemRule[] } | {}      |
+| rules       | Unified configuration FormItem attr rules                | { prop: FormItemRule[] } | `{}`      |
 
 ### Form Events
 
@@ -425,7 +425,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                                  | Default Value               |
 |---------------------------------------|-----------------------------|

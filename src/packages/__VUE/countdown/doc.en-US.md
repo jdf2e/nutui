@@ -335,7 +335,7 @@ Paused and restarted the countdown with the `paused` attribute
 | on-paused | Emitted when count down paused | Residual Timestamp
 | on-restart | Emitted when count down restart | Residual Timestamp
 
-### Ref
+### Methods
 
 | Name | Description |
 | ----- | ----- | 
@@ -346,7 +346,7 @@ Paused and restarted the countdown with the `paused` attribute
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

@@ -528,27 +528,27 @@ If you want to select a province, you need to set the region ID in the order of 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | ----- |
 | v-model:visible | Whether to open address | string | `''`|
-| type | Choose type: exist/custom/custom2  | string | `custom`|
-| province | Province data| array | `[]`|
-| city | City data | array | `[]`|
-| country | Country data | array | `[]`|
-| town | Town dta | array | `[]`|
+| type | Choose type: `exist/custom/custom2`  | string | `custom`|
+| province | Province data| Array | `[]`|
+| city | City data | Array | `[]`|
+| country | Country data | Array | `[]`|
+| town | Town dta | Array | `[]`|
 | height | Popup height | string \| number | `200px`|
-| exist-address | Exist address list data | array | `[]`|
+| exist-address | Exist address list data | Array | `[]`|
 | is-show-custom-address | Whether to change custom address | boolean | `true`|
 | custom-address-title  | Custom address title | string | `Select Region`|
 | exist-address-title|  Exist address title | string | `Delivery To`|
 | custom-and-exist-title| Custom address and existing address switch button copywriting | string | `Choose Another Address`|
-| columns-placeholder | Columns placeholder text | string \| array | `Select`|
+| columns-placeholder | Columns placeholder text | string \| Array | `Select`|
 | lock-scroll   | Whether the background is locked   | boolean        | `true`       |
 
 
 ## Event
-| Attribute            | Description               | Arguments   |
+| Event            | Description               | Arguments   |
 |----- | ----- | ----- |
-| change |  Emitted when to selected custom address |  reference onChange |
-| selected |  Emitted when to selected exist address  | reference selected |
-| close |  Emitted when to close  | reference close |
+| change |  Emitted when to selected custom address |  reference `onChange` |
+| selected |  Emitted when to selected exist address  | reference `selected` |
+| close |  Emitted when to close  | reference `close` |
 | close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'} |
 | switch-module | Click to select another address or custom address to select the upper left corner of the return button  triggered | {type:'exist'/'custom'/'custom2'} |
 
@@ -556,9 +556,9 @@ If you want to select a province, you need to set the region ID in the order of 
 ## change 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| custom | The administrative region currently clicked  |  province / city / country / town|
-| next | The next level of the administrative region currently clicked | province / city / country / town|
-| value | The value of the currently clicked administrative region | {}|
+| custom | The administrative region currently clicked  |  `province / city / country / town` |
+| next | The next level of the administrative region currently clicked | `province / city / country / town`|
+| value | The value of the currently clicked administrative region | `{}`|
 
 ## selected 
 | Attribute            | Description               | Options   |
@@ -570,12 +570,12 @@ If you want to select a province, you need to set the region ID in the order of 
 ## close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| type | Selected Type  |  exist/custom/custom2|
+| type | Selected Type  |  `exist/custom/custom2`|
 | data | Selected Data | `{}` |
 
 
 ## Slot
-| Attribute | Description | 
+| Name | Description | 
 |----- | ----- |  
 | bottom | Bottom slot |  
 | icon | Selected icon slot |  
@@ -587,7 +587,7 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- |

@@ -131,8 +131,8 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 | fit         | 图片填充模式，等同于原生的 `object-fit` 属性     | ImageFit | `fill`                |
 | position    | 图片位置，等同于原生的 `object-position` 属性  | ImagePosition | `center`             |
 | alt         | 替代文本               | string | -                |
-| width         | 宽度，默认单位`px`               | string | -                |
-| height         | 高度，默认单位`px`               | string | -                |
+| width         | 宽度，默认单位 `px`               | string | -                |
+| height         | 高度，默认单位 `px`               | string | -                |
 | round         | 是否显示为圆角               | boolean | `false`              |
 | radius         | 圆角大小               | string \| number | -                |
 | show-error         | 是否展示图片加载失败| boolean | `false`              |
@@ -160,7 +160,7 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 
 
 ### Slots
-| 参数         | 说明                             |
+| 名称         | 说明                             |
 |--------------|----------------------------------|
 | loading      | 自定义加载中的提示内容     |
 | error    | 自定义记载失败的提示内容  |

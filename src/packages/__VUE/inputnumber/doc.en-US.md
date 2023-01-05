@@ -242,15 +242,15 @@ Asynchronous modification through `change` event and `model-value`
 
 | Attribute           | Description                       | Type           | Default     |
 |----------------|----------------------------|----------------|------------|
-| v-model        | Initial value                    | String、Number | -          |
-| input-width    | Input box width                 | String         | `40px`     |
-| button-size    | Operators +, - Dimensions             | String         | `20px`     |
-| min            | Minimum limit                 | String、Number | `1`        |
-| max            | Maximum limit                 | String、Number | `9999` |
-| step           | step                       | String、Number | `1`        |
-| decimal-places | Set reserved decimal places           | String、Number | `0`        |
-| disabled       | Disable all features               | Boolean        | false      |
-| readonly       | Read only status disables input box operation behavior | Boolean        | false      |
+| v-model        | Initial value                    | string \| number | -          |
+| input-width    | Input box width                 | string         | `40px`     |
+| button-size    | Operators +, - Dimensions             | string         | `20px`     |
+| min            | Minimum limit                 | string \| number | `1`        |
+| max            | Maximum limit                 | string \| number | `9999` |
+| step           | step                       | string \| number | `1`        |
+| decimal-places | Set reserved decimal places           | string \| number | `0`        |
+| disabled       | Disable all features               | boolean        | `false`      |
+| readonly       | Read only status disables input box operation behavior | boolean        | `false`      |
 
 ### Slots
 
@@ -274,23 +274,23 @@ Asynchronous modification through `change` event and `model-value`
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-inputnumber-icon-color| _var(--nut-title-color)_ | -  |
-| --nut-inputnumber-icon-void-color| _var(--nut-disable-color)_ | -  |
-| --nut-inputnumber-icon-size| _20px_ | -  |
-| --nut-inputnumber-input-font-size| _12px_ | -  |
-| --nut-inputnumber-input-font-color| _var(--nut-title-color)_ | -  |
-| --nut-inputnumber-input-background-color| _var(--nut-help-color)_ | -  |
-| --nut-inputnumber-input-border-radius| _4px_ | -  |
-| --nut-inputnumber-input-width| _40px_ | -  |
-| --nut-inputnumber-input-margin| _0 6px_ | -  |
-| --nut-inputnumber-input-border| _0_ | -  |
-| --nut-inputnumber-border| _0_ | -  |
-| --nut-inputnumber-border-radius| _0_ | -  |
-| --nut-inputnumber-height| _auto_ | -  |
-| --nut-inputnumber-line-height| _normal_ | -  |
-| --nut-inputnumber-border-box| _content-box_ | -  |
-| --nut-inputnumber-display| _flex_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-inputnumber-icon-color| _var(--nut-title-color)_ |
+| --nut-inputnumber-icon-void-color| _var(--nut-disable-color)_ |
+| --nut-inputnumber-icon-size| _20px_ |
+| --nut-inputnumber-input-font-size| _12px_ |
+| --nut-inputnumber-input-font-color| _var(--nut-title-color)_ |
+| --nut-inputnumber-input-background-color| _var(--nut-help-color)_ |
+| --nut-inputnumber-input-border-radius| _4px_ |
+| --nut-inputnumber-input-width| _40px_ |
+| --nut-inputnumber-input-margin| _0 6px_ |
+| --nut-inputnumber-input-border| _0_ |
+| --nut-inputnumber-border| _0_ |
+| --nut-inputnumber-border-radius| _0_ |
+| --nut-inputnumber-height| _auto_ |
+| --nut-inputnumber-line-height| _normal_ |
+| --nut-inputnumber-border-box| _content-box_ |
+| --nut-inputnumber-display| _flex_ |

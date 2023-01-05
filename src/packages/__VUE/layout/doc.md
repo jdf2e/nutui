@@ -231,8 +231,8 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
 | type | 布局方式，可选值为 `flex` | string | `-`
 | gutter | 列元素之间的间距（单位为`px`） | string \| number | `-`
 | justify | Flex 主轴对齐方式，可选值为 `start` `end` `center` `space-around` `space-between` `space-evenly` | string | `start`
-| align | Flex 交叉轴对齐方式，可选值为 `flex-start` `center` `flex-end` | string | `flex-start`
-| flex-wrap | Flex 是否换行，可选值为 `nowrap` `wrap` `reverse` | string | `nowrap`
+| align | `Flex` 交叉轴对齐方式，可选值为 `flex-start` `center` `flex-end` | string | `flex-start`
+| flex-wrap | `Flex` 是否换行，可选值为 `nowrap` `wrap` `reverse` | string | `nowrap`
 
 ### Col Props
 
@@ -249,6 +249,6 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
 
 ### Col Events
 
-| 名称 | 说明 | 回调参数
+| 事件名 | 说明 | 回调参数
 |----- | ----- | ----- 
 | click | 点击时触发 | `event: MouseEvent`

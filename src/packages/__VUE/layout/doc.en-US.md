@@ -249,12 +249,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 
 ### Row Events
 
-| event | description | callback parameter
+| Event | Description | callback parameter
 |----- | ----- | -----
 | click | Triggered when clicked | `event: MouseEvent`
 
 ### Col Events
 
-| name | description | callback parameter
+| Event | Description | callback parameter
 |----- | ----- | -----
 | click | Triggered when clicked | `event: MouseEvent`

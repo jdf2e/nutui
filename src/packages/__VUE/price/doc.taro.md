@@ -83,25 +83,26 @@ app.use(Price);
     <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
 </template>
 ```
+:::
 
 ## API
 ### Props
 
-| 字段           | 说明                                    | 类型    | 默认值 |
+| 参数           | 说明                                    | 类型    | 默认值 |
 |----------------|-----------------------------------------|---------|--------|
-| price          | 价格数量                                | number ｜ string | 0      |
-| need-symbol    | 是否需要加上 symbol 符号                 | boolean          | true   |
-| symbol         | 符号类型                                | string           | &yen;  |
-| decimal-digits | 小数位位数                              | number  | 2     |
-| thousands      | 是否按照千分号形式显示                    | boolean          | false  |
-| position       | 符号显示在价格前或者后，`before`、`after`  | string           | before |
-| size           | 价格尺寸，`small`、`normal`、`large`     | string           | large |
+| price          | 价格数量                                | number \| string | `0`      |
+| need-symbol    | 是否需要加上 symbol 符号                 | boolean          | `true`   |
+| symbol         | 符号类型                                | string           | `&yen;`  |
+| decimal-digits | 小数位位数                              | number  | `2`     |
+| thousands      | 是否按照千分号形式显示                    | boolean          | `false`  |
+| position       | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
+| size           | 价格尺寸，`small`、`normal`、`large`     | string           | `large` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

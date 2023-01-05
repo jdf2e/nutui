@@ -3,7 +3,7 @@
 	"private": true,
 	"displayName": "nutui-vscode-extension",
 	"description": "nutui extension for vscode",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"icon": "src/nutui.png",
 	"engines": {
 		"vscode": "^1.66.0"

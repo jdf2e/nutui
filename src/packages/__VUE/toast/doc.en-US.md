@@ -262,27 +262,27 @@ toast.hide();
 | 字段                   | 说明                                                                                               | 类型             | 默认值             |
 |------------------------|----------------------------------------------------------------------------------------------------|------------------|--------------------|
 | id                     | Identifier, share one instance at the same time, default to multiple instances                     | string \| number | -                  |
-| duration               | Toast duration(ms), won't disappear if value is 0                                                  | number           | 2000               |
+| duration               | Toast duration(ms), won't disappear if value is 0                                                  | number           | `2000`               |
 | title                  | title                                                                                              | string           | -                  |
-| center                 | Whether to display in the middle of the page (display at the bottom when false)                    | boolean          | true               |
-| bottom                 | The distance from the bottom of the page (px or %), which takes effect when option.center is false | string           | 30px               |
-| text-align-center      | Whether the multi-line copy is centered                                                            | boolean          | true               |
-| bgColor                | background color (transparency)                                                                    | string           | rgba(0, 0, 0, 0.8) |
+| center                 | Whether to display in the middle of the page (display at the bottom when false)                    | boolean          | `true`               |
+| bottom                 | The distance from the bottom of the page (px or %), which takes effect when option.center is false | string           | `30px`               |
+| text-align-center      | Whether the multi-line copy is centered                                                            | boolean          | `true`               |
+| bgColor                | background color (transparency)                                                                    | string           | `rgba(0, 0, 0, 0.8)` |
 | custom-class           | Custom Class                                                                                       | string           | -                  |
 | icon                   | Custom Icon                                                                                        | Component        | -                  |
-| size                   | Text Size **small**/**base**/**large**                                                             | string           | base               |
-| cover                  | Whether to show the mask layer                                                                     | boolean          | false              |
-| cover-color            | Cover Color                                                                                        | string           | rgba(0,0,0,0)      |
-| loading-rotate         | Whether the loading icon is rotated, only valid for the loading type                               | boolean          | true               |
-| close                  | Callback function after close                                                                      | function         | null               |
-| close-on-click-overlay | Whether to close when overlay is clicked                                                           | boolean          | false              |
+| size                   | Text Size **small**/**base**/**large**                                                             | string           | `base`               |
+| cover                  | Whether to show the mask layer                                                                     | boolean          | `false`              |
+| cover-color            | Cover Color                                                                                        | string           | `rgba(0,0,0,0)`      |
+| loading-rotate         | Whether the loading icon is rotated, only valid for the loading type                               | boolean          | `true`               |
+| close                  | Callback function after close                                                                      | function         | `null`               |
+| close-on-click-overlay | Whether to close when overlay is clicked                                                           | boolean          | `false`              |
 | custom-class           | Custom Class                                                                                       | string           | -                  |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                            | Default Value        |
 |---------------------------------|----------------------|

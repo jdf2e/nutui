@@ -161,7 +161,7 @@ app.use(Switch);
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | boolean ｜ string ｜number | `false`               |
+| v-model        | 开关状态         | boolean \| string \| number | `false`               |
 | disable        | 禁用状态         | boolean | `false`               |
 | loading        | 加载状态         | boolean | `false`               |
 | active-color   | 打开时的背景颜色 | string  | `#fa2c19`    |
@@ -188,7 +188,7 @@ app.use(Switch);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

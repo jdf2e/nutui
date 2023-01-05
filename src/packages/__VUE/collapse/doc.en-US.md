@@ -184,13 +184,13 @@ export default {
 ## API
 ### Collapse Props
 
-| Field | Description | Type | Default
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
 | v-model | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-` |
 | accordion | Whether to enable accordion mode | boolean | `false` |
 
 ### CollapseItem Props
-| Parameter | Description | Type | Default |
+| Attribute | Description | Type | Default |
 |------|------|------|------|
 | name | unique identifier, required | string \| number | `-1` |
 | title | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string |`-` |
@@ -204,25 +204,25 @@ export default {
 
 ### CollapseItem Slots
 
-|Slot name | Description|
+|Name | Description|
 |------|------|
-|Slot: title | Content slot on the left side of the title bar|
-|Slot: value | Right content slot of the title bar|
-|Slot: extraRender | Set fixed content under the title (no folding)|
+|title | Content slot on the left side of the title bar|
+|alue | Right content slot of the title bar|
+|extraRender | Set fixed content under the title (no folding)|
 
 
 
 ### Events
 
-|Event name | Description | Callback parameter|
+|Event | Description | Callback parameter|
 |------|------|------|
-|Change | Triggered when switching panels | The type is consistent with the value bound to the v-model|
+|change | Triggered when switching panels | The type is consistent with the value bound to the v-model|
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- | 

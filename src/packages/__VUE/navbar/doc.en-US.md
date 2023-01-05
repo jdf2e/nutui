@@ -195,12 +195,12 @@ export default {
 | title               | Title                                         | string  | -       |
 | left-text | Left Text                                     | string  | -       |
 | desc                | Desc                                          | string  | -       |
-| left-show           | Whether to show the left arrow                | boolean | false   |
-| title-icon            | Whether to show icon in title                 | boolean  | false     | 
-| border   | Whether to show bottom border                     | boolean  | false  |
-| fixed               | Is it pinned to the top                       | boolean | false    |
-| placeholder | Whether to generate a placeholder element when fixed   | boolean  | false   |
-| safe-area-inset-top | Whether to enable top safety zone adaptation  | boolean | false    |
+| left-show           | Whether to show the left arrow                | boolean | `false`   |
+| title-icon            | Whether to show icon in title                 | boolean  | `false`     | 
+| border   | Whether to show bottom border                     | boolean  | `false`  |
+| fixed               | Is it pinned to the top                       | boolean | `false`    |
+| placeholder | Whether to generate a placeholder element when fixed   | boolean  | `false`   |
+| safe-area-inset-top | Whether to enable top safety zone adaptation  | boolean | `false`    |
 | z-index | Z-index                                            | number ｜ string  | -       |
 
 ### Events
@@ -224,7 +224,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

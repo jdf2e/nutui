@@ -85,7 +85,7 @@ export default {
 
 ### Events
 
-| 名称   | 说明           | 回调参数    |
+| 事件名   | 说明           | 回调参数    |
 |--------|----------------|-------------|
 | change | 输入框值改变时触发 | `value`       |
 | focus  | 聚焦时触发     | `event`       |
@@ -95,7 +95,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

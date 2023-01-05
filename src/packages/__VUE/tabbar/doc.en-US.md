@@ -338,21 +338,21 @@ Use icon slot to custom icon.
 
 | Attribute            | Description               | Type   | Default  |
 |-----------------|--------------------|--------|---------|
-| v-model:visible | The index value of the selected label  | number | 0       |
-| bottom          | Whether to fix the bottom | boolean | false   |
-| unactive-color  | Color of unactive tab item  | string | #7d7e80 |
-| active-color    | Color of active tab item    | string | #1989fa |
-| safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
-| placeholder| Whether to generate a placeholder element when fixed | boolean | false |
+| v-model:visible | The index value of the selected label  | number | `0`       |
+| bottom          | Whether to fix the bottom | boolean | `false`   |
+| unactive-color  | Color of unactive tab item  | string | `#7d7e80` |
+| active-color    | Color of active tab item    | string | `#1989fa` |
+| safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | `false` |
+| placeholder| Whether to generate a placeholder element when fixed | boolean | `false` |
 ### TabbarItem Props
 
 | Attribute      | Description                                      | Type   | Default |
 |-----------|-------------------------------------------|--------|--------|
 | tab-title | title                              | string | --     |
-| name | Identifier                              | string | 	Item index     |
+| name | Identifier                              | string | 	`Item index`     |
 | icon      | icon name   | string | --     |
 | href      | Jump links for tabs                          | string | --     |
-| to    | 	Target route of the link, same as to of vue-router | string｜object | --     |
+| to    | 	Target route of the link, same as to of vue-router | string \| object | --     |
 
 
 ### TabbarItem Slots
@@ -371,19 +371,19 @@ Use icon slot to custom icon.
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-tabbar-active-color| _var(--nut-primary-color)_ | -  |
-| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ | -  |
-| --nut-tabbar-border-top| _1px solid #eee_ | -  |
-| --nut-tabbar-border-bottom| _1px solid #eee_ | -  |
-| --nut-tabbar-box-shadow| _none_ | -  |
-| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ | -  |
-| --nut-tabbar-item-text-line-height| _initial_ | -  |
-| --nut-tabbar-height| _50px_ | -  |
-| --nut-tabbar-word-margin-top| _auto_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-tabbar-active-color| _var(--nut-primary-color)_ |
+| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ |
+| --nut-tabbar-border-top| _1px solid #eee_ |
+| --nut-tabbar-border-bottom| _1px solid #eee_ |
+| --nut-tabbar-box-shadow| _none_ |
+| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ |
+| --nut-tabbar-item-text-line-height| _initial_ |
+| --nut-tabbar-height| _50px_ |
+| --nut-tabbar-word-margin-top| _auto_ |
 
 
 

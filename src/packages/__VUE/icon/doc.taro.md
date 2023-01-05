@@ -177,9 +177,9 @@ import './assets/font/iconfont.css';
 | name            | 图标名称或图片链接                       | string           | -                |
 | color           | 图标颜色                                 | string           | -                |
 | size            | 图标大小，如 `20px` `2em` `2rem`         | string \| object | -                |
-| font-class-name | 自定义 icon 字体基础类名                 | string           | `nutui-iconfont` |
-| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | string           | `nut-icon`       |
-| tag             | HTML 标签                                | string           | `i`              |
+| font-class-name | 自定义 `icon` 字体基础类名                 | string           | `nutui-iconfont` |
+| class-prefix    | 自定义 `icon` 类名前缀，用于使用自定义图标 | string           | `nut-icon`       |
+| tag             | 小程序标签                                | string           | `view`              |
 
 ### Events
 

@@ -422,11 +422,11 @@ setup() {
 | Attribute            | Description               | Type   | Default  |
 |--------------|----------------------------------|--------|------------------|
 | v-model:visible         | Whether to open popup               | boolean |  `false`             |
-| sku         | Sku data | array | `[]`               |
+| sku         | Sku data | Array | `[]`               |
 | goods |  Product Info    | object | - |
 | stepper-max         | Stepper max  | string \| number | `99999`               |
 | stepper-min         | Stepper min  | string \| number | `1`               |
-| btn-options        |   Bottom button      | array | `['confirm']`           |
+| btn-options        |   Bottom button      | Array | `['confirm']`           |
 | btn-extra-text | Add text above button | string | -            |
 | stepper-title         | Stepper left text | string | `Buy Num`                |
 | stepper-extra-text        |   The text between the stepper and the headline       | function \| false  | `false`              |
@@ -453,7 +453,7 @@ setup() {
 
 The default partition is divided into several areas, which are defined as slots that can be replaced as required。
 
-| 事件名 | 说明           | 
+| Event | Description           | 
 |--------|----------------|
 | sku-header  | Custom header | 
 | sku-header-price  | Custom header price area| 
@@ -568,7 +568,7 @@ sku : [{
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

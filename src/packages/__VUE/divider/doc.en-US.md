@@ -92,15 +92,13 @@ User can custom divider style with style attribute.
 
 ``` html
 <template>
-  <nut-cell>
-    <div :style="{fontSize: '14px'}">
-      Text
-      <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">Link</a>
-      <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">Link</a>
-    </div>
-  </nut-cell>
+  <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
+    Text
+    <nut-divider direction="vertical" />
+    <a href="#" :style="{ color: '#1989fa' }">Link</a>
+    <nut-divider direction="vertical" />
+    <a href="#" :style="{ color: '#1989fa' }">Link</a>
+  </div>
 </template>
 ```
 
@@ -128,17 +126,17 @@ User can custom divider style with style attribute.
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-divider-margin | _16px 0_ | -  |
-| --nut-divider-text-font-size | _var(--nut-font-size-2)_ | -  |
-| --nut-divider-text-color | _#909ca4_ | -  |
-| --nut-divider-line-height | _2px_ | -  |
-| --nut-divider-before-margin-right | _16px_ | -  |
-| --nut-divider-after-margin-left | _16px_ | -  |
-| --nut-divider-vertical-height | _12px_ | -  |
-| --nut-divider-vertical-top | _2px_ | -  |
-| --nut-divider-vertical-border-left | _rgba(0, 0, 0, 0.06)_ | -  |
-| --nut-divider-vertical-margin | _0 8px_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-divider-margin | _16px 0_ |
+| --nut-divider-text-font-size | _var(--nut-font-size-2)_ |
+| --nut-divider-text-color | _#909ca4_ |
+| --nut-divider-line-height | _2px_ |
+| --nut-divider-before-margin-right | _16px_ |
+| --nut-divider-after-margin-left | _16px_ |
+| --nut-divider-vertical-height | _12px_ |
+| --nut-divider-vertical-top | _2px_ |
+| --nut-divider-vertical-border-left | _rgba(0, 0, 0, 0.06)_ |
+| --nut-divider-vertical-margin | _0 8px_ |

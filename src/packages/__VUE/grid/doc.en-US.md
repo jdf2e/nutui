@@ -230,9 +230,9 @@ app.use(GridItem);
 | Attribute | Description | Type | Default |
 |-|-|-|-|
 | text | text | string | - |
-| url `not supported by miniProgram` | Link URL | string | - |
-| to `not supported by miniProgram` | Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object| - |
-| replace `not supported by miniProgram` | If true, the navigation will not leave a history record | boolean | `false` |
+| url | Link URL | string | - |
+| to | Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object| - |
+| replace  | If true, the navigation will not leave a history record | boolean | `false` |
 
 ### GridItem Slots
 
@@ -252,7 +252,7 @@ app.use(GridItem);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

@@ -110,7 +110,7 @@ const subPackages = [
 ];
 
 export default {
-  pages: ['pages/index/index', 'pages/index/layout'],
+  pages: ['pages/index/index'],
   subPackages,
   window: {
     backgroundTextStyle: 'light',

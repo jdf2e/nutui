@@ -203,8 +203,8 @@ app.use(Popup)
 | 参数                   | 说明                                                        | 类型           | 默认值        |
 |------------------------|-------------------------------------------------------------|----------------|---------------|
 | v-model:visible        | 控制当前组件显示/隐藏                                            | boolean        | `false`       |
-| z-index                | 遮罩层级                                                    | string、number | `2000`        |
-| duration               | 组件显示/隐藏的动画时长，单位秒                                            | string、number | `0.3`         |
+| z-index                | 遮罩层级                                                    | string \| number | `2000`        |
+| duration               | 组件显示/隐藏的动画时长，单位秒                                            | string \| number | `0.3`         |
 | lock-scroll            | 背景是否锁定                                                | boolean        | `true`       |
 | overlay                | 是否显示遮罩                                                | boolean        | `true`        |
 | close-on-click-overlay | 是否点击遮罩关闭                                            | boolean        | `true`        |
@@ -244,9 +244,9 @@ app.use(Popup)
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-popup-close-icon-margin| _16px_  | -  |
-| --nut-popup-border-radius| _20px_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-popup-close-icon-margin| _16px_  |
+| --nut-popup-border-radius| _20px_  |
