@@ -17,7 +17,7 @@
         <ul>
           <template v-for="_package in reorder(_nav.packages)" :key="_package">
             <li v-if="_package.show && _package.exportEmpty !== false">
-              <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
+              <a @click="navigateTo(_package.name, _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
                 {{ _package.cName }}
@@ -65,7 +65,8 @@ export default {
 
     const navigateTo = (name, enName) => {
       Taro.navigateTo({
-        url: `/${enName}/pages/${name}/index`
+        // url: `/${enName}/pages/${name}/index`
+        url: `/pages/index/layout?e=${enName}&n=${name}`
       });
     };
 
@@ -81,7 +82,7 @@ export default {
 .index {
   height: 100%;
   width: 100%;
-  padding-top: 30px;
+  // padding-top: 30px;
 
   &-header {
     display: flex;

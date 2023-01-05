@@ -243,9 +243,9 @@ export default {
 | Attribute          | Description       | Type   | Default |
 | ------------------ | ---------------- | ------- | ------ |
 | data               | Address array         | Array   | -      |
-| long-press | Long Press Function   | boolean | false  |
-| swipe-edition      | Swipe right           | boolean | false  |
-| show-bottom-button | Whether to show the bottom button | boolean | true   |
+| long-press | Long Press Function   | boolean | `false`  |
+| swipe-edition      | Swipe right           | boolean | `false`  |
+| show-bottom-button | Whether to show the bottom button | boolean | `true`   |
 
 ### Events
 

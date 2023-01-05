@@ -226,29 +226,29 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
 
 ### Row Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | type | 布局方式，可选值为 `flex` | string | `-`
 | gutter | 列元素之间的间距（单位为`px`） | string \| number | `-`
 | justify | Flex 主轴对齐方式，可选值为 `start` `end` `center` `space-around` `space-between` `space-evenly` | string | `start`
-| align | Flex 交叉轴对齐方式，可选值为 `flex-start` `center` `flex-end` | string | `flex-start`
-| flex-wrap | Flex 是否换行，可选值为 `nowrap` `wrap` `reverse` | string | `nowrap`
+| align | `Flex` 交叉轴对齐方式，可选值为 `flex-start` `center` `flex-end` | string | `flex-start`
+| flex-wrap | `Flex` 是否换行，可选值为 `nowrap` `wrap` `reverse` | string | `nowrap`
 
 ### Col Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | span | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | string \| number | `24`
 | offset | 列元素偏移距离 | string \| number | `0`
 
 ### Row Events
 
-| 字段 | 说明 | 回调参数
+| 事件名 | 说明 | 回调参数
 |----- | ----- | ----- 
 | click | 点击时触发 | `event: MouseEvent`
 
 ### Col Events
 
-| 字段 | 说明 | 回调参数
+| 事件名 | 说明 | 回调参数
 |----- | ----- | ----- 
 | click | 点击时触发 | `event: MouseEvent`

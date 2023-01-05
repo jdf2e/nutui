@@ -221,12 +221,12 @@ app.use(Noticebar);
 ## API
 ### Props
 
-| 字段       | 说明                                                       | 类型          | 默认值 |
+| 参数       | 说明                                                       | 类型          | 默认值 |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
+| direction       | 滚动的方向，可选 `across`、`vertical`                         | string        | `across`     |
 | text       | 提示的信息                                                 | string        | -     |
 | close-mode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| left-icon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
+| left-icon   | `close` 为没有左边 `icon`,其他为自定义的图片链接，没有为默认图片 | string        | -     |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
@@ -242,19 +242,19 @@ app.use(Noticebar);
 | speed        | 滚动的速度                         | number | `50`               |
 | stand-time         | 停留时间(毫秒) | number | `1000`                |
 | complex-am | 稍复杂的动画，耗能会高     | boolean | `false` |
-| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
+| height          | 每一个滚动列的高度(px)，注意：在使用 `slot` 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
 | close-mode  | 是否启用右侧关闭图标，可以通过 `slot[name=rightIcon]` 自定义图标                                   | boolean      | `false`  |
 
 ### Slots
 
-| 参数         | 说明                             | 
+| 名称         | 说明                             | 
 |--------------|----------------------------------|
 | default         | 通知文本的内容               | 
 | right-icon        | 自定义右侧图标    | 
 | left-icon        | 自定义左侧图标    | 
 ### Events
 
-| 字段  | 说明             | 回调参数     |
+| 事件名  | 说明             | 回调参数     |
 | ----- | ---------------- | ------------ |
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |

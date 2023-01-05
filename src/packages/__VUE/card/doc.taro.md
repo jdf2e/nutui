@@ -59,33 +59,40 @@ app.use(Card);
 :::demo
 ```html
 <template>
-<nut-card
-:img-url="state.imgUrl"
-:title="state.title"
-:price="state.price"
-:vipPrice="state.vipPrice"
-:shopDesc="state.shopDesc"
-:delivery="state.delivery"
-:shopName="state.shopName"
->
-  <template #prolist>
-    <div class="search_prolist_attr">
-      <span class="word">活鲜</span>
-      <span class="word">礼盒</span>
-      <span class="word">国产</span>
-    </div>
-  </template>
-  <template #tag>
-    <img
-        class="tag" 
+<template>
+  <nut-card
+    :img-url="state.imgUrl"
+    :title="state.title"
+    :price="state.price"
+    :vipPrice="state.vipPrice"
+    :shopDesc="state.shopDesc"
+    :delivery="state.delivery"
+    :shopName="state.shopName"
+  >
+    <template #prolist>
+      <div class="search_prolist_attr">
+        <span class="word">活鲜</span>
+        <span class="word">礼盒</span>
+        <span class="word">国产</span>
+      </div>
+    </template>
+    <template #price>
+      <span>询价</span>
+    </template>
+    <template #origin>
+      <img
+        class="tag"
         src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
         alt=""
-    />
-  </template>
+      />
+    </template>
+    <template #shop-tag>
+      <div>自定义店铺介绍</div>
+    </template>
     <template #footer>
       <div class="customize">自定义</div>
     </template>
-</nut-card>
+  </nut-card>
 </template>
 <script>
   import { reactive } from 'vue';
@@ -112,18 +119,17 @@ app.use(Card);
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
- 
 }
 .search_prolist_attr > span{
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
 }
 .tag {
   display: inline-block;
@@ -142,22 +148,22 @@ app.use(Card);
 ## API
 ### Props
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| 参数    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| img-url   | 左侧图片Url                                 | String  | -         |
-| title     | 标题                   | String  | -    |
-| price | 商品价格                         | String  | -      |
-| vip-price     | 会员价格                               | String | -    |
-| shop-desc  | 店铺介绍                                  | String | -    |
-| delivery     | 配送方式 | String  | -      |
-| shop-name   | 店铺名称| String  | -      |
-| is-need-price  | 是否需要价格展示| Boolean  | true   |
+| img-url   | 左侧图片 `Url`                                 | string  | -         |
+| title     | 标题                   | string  | -    |
+| price | 商品价格                         | string  | -      |
+| vip-price     | 会员价格                               | string | -    |
+| shop-desc  | 店铺介绍                                  | string | -    |
+| delivery     | 配送方式 | string  | -      |
+| shop-name   | 店铺名称| string  | -      |
+| is-need-price  | 是否需要价格展示| boolean  | `true`   |
 
 ### Events
 
-| 事件名称 | 说明     | 回调参数 |
+| 事件名 | 说明     | 回调参数 |
 |----------|----------|----------|
-| click    | 点击事件 | event: MouseEvent    |
+| click    | 点击事件 | `event: MouseEvent`    |
 
 ### Slots
 
@@ -176,11 +182,11 @@ app.use(Card);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-card-font-size-0| _var(--nut-font-size-0)_  | - |
-| --nut-card-font-size-1| _var(--nut-font-size-1)_  | - |
-| --nut-card-font-size-2| _var(--nut-font-size-2)_  | - |
-| --nut-card-font-size-3| _var(--nut-font-size-3)_  | - |
-| --nut-card-left-border-radius| _0_  | - |
-| --nut-card-left-background-color| _inherit_  | - |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-card-font-size-0| _var(--nut-font-size-0)_  |
+| --nut-card-font-size-1| _var(--nut-font-size-1)_  |
+| --nut-card-font-size-2| _var(--nut-font-size-2)_  |
+| --nut-card-font-size-3| _var(--nut-font-size-3)_  |
+| --nut-card-left-border-radius| _0_  |
+| --nut-card-left-background-color| _inherit_  |

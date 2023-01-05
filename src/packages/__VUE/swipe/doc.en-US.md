@@ -153,9 +153,9 @@ export default {
 | Attribute                   | Description                                    | Type    | Default |
 |-----------------------------|------------------------------------------------|---------|---------|
 | name                        | identifies                                     | string  | -       |
-| disabled                    | Whether to disabled swipe                      | string  | false   |
-| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | false   |
-| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | false   |
+| disabled                    | Whether to disabled swipe                      | string  | `false`   |
+| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | `false`   |
+| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | `false`   |
 ### Events
 
 | Event | Description                  | Arguments                  |

@@ -117,7 +117,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ### Slots
 
-| Attribute | Description  | 
+| Name | Description  | 
 |--------|----------------|
 | default  | Custom content |
 | loading  | Loading text |

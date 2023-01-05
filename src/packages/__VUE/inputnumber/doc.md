@@ -242,15 +242,15 @@ app.use(InputNumber);
 
 | 参数           | 说明                       | 类型           | 默认值     |
 |----------------|----------------------------|----------------|------------|
-| v-model        | 初始值                     | String、Number | -          |
-| input-width    | 输入框宽度                 | String         | `40px`     |
-| button-size    | 操作符+、-尺寸             | String         | `20px`     |
-| min            | 最小值限制                 | String、Number | `1`        |
-| max            | 最大值限制                 | String、Number | `9999` |
-| step           | 步长                       | String、Number | `1`        |
-| decimal-places | 设置保留的小数位           | String、Number | `0`        |
-| disabled       | 禁用所有功能               | Boolean        | false      |
-| readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
+| v-model        | 初始值                     | string \| number | -          |
+| input-width    | 输入框宽度                 | string         | `40px`     |
+| button-size    | 操作符+、-尺寸             | string         | `20px`     |
+| min            | 最小值限制                 | string \| number | `1`        |
+| max            | 最大值限制                 | string \| number | `9999` |
+| step           | 步长                       | string \| number | `1`        |
+| decimal-places | 设置保留的小数位           | string \| number | `0`        |
+| disabled       | 禁用所有功能               | boolean        | `false`      |
+| readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
 
 ### Slots
 
@@ -263,12 +263,12 @@ app.use(InputNumber);
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| add       | 点击增加按钮时触发     | event: Event                   |
-| reduce    | 点击减少按钮时触发     | event: Event                   |
-| overlimit | 点击不可用的按钮时触发 | event: Event,type:string (reduce or add)                    |
-| change    | 值改变时触发           | value:  number , event : Event |
-| blur      | 输入框失去焦点时触发   | event: Event                   |
-| focus     | 输入框获得焦点时触发   | event: Event                   |
+| add       | 点击增加按钮时触发     | (event: Event)                   |
+| reduce    | 点击减少按钮时触发     | (event: Event)                   |
+| overlimit | 点击不可用的按钮时触发 | (event: Event,type:string (reduce or add) )                   |
+| change    | 值改变时触发           | (value: number , event : Event) |
+| blur      | 输入框失去焦点时触发   | (event: Event)                   |
+| focus     | 输入框获得焦点时触发   | (event: Event )                  |
 
 ## 主题定制
 
@@ -276,21 +276,21 @@ app.use(InputNumber);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-inputnumber-icon-color| _var(--nut-title-color)_ | -  |
-| --nut-inputnumber-icon-void-color| _var(--nut-disable-color)_ | -  |
-| --nut-inputnumber-icon-size| _20px_ | -  |
-| --nut-inputnumber-input-font-size| _12px_ | -  |
-| --nut-inputnumber-input-font-color| _var(--nut-title-color)_ | -  |
-| --nut-inputnumber-input-background-color| _var(--nut-help-color)_ | -  |
-| --nut-inputnumber-input-border-radius| _4px_ | -  |
-| --nut-inputnumber-input-width| _40px_ | -  |
-| --nut-inputnumber-input-margin| _0 6px_ | -  |
-| --nut-inputnumber-input-border| _0_ | -  |
-| --nut-inputnumber-border| _0_ | -  |
-| --nut-inputnumber-border-radius| _0_ | -  |
-| --nut-inputnumber-height| _auto_ | -  |
-| --nut-inputnumber-line-height| _normal_ | -  |
-| --nut-inputnumber-border-box| _content-box_ | -  |
-| --nut-inputnumber-display| _flex_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-inputnumber-icon-color| _var(--nut-title-color)_ |
+| --nut-inputnumber-icon-void-color| _var(--nut-disable-color)_ |
+| --nut-inputnumber-icon-size| _20px_ |
+| --nut-inputnumber-input-font-size| _12px_ |
+| --nut-inputnumber-input-font-color| _var(--nut-title-color)_ |
+| --nut-inputnumber-input-background-color| _var(--nut-help-color)_ |
+| --nut-inputnumber-input-border-radius| _4px_ |
+| --nut-inputnumber-input-width| _40px_ |
+| --nut-inputnumber-input-margin| _0 6px_ |
+| --nut-inputnumber-input-border| _0_ |
+| --nut-inputnumber-border| _0_ |
+| --nut-inputnumber-border-radius| _0_ |
+| --nut-inputnumber-height| _auto_ |
+| --nut-inputnumber-line-height| _normal_ |
+| --nut-inputnumber-border-box| _content-box_ |
+| --nut-inputnumber-display| _flex_ |

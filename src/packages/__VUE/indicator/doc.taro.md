@@ -71,9 +71,9 @@ app.use(Indicator);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 当前步骤               | number | 1              |
-| size       | 步骤长度                         | number | 3               |
-| block | 是否启用块级布局     | boolean | false |
+| current  | 当前步骤               | number | `1`              |
+| size       | 步骤长度                         | number | `3`               |
+| block | 是否启用块级布局     | boolean | `false` |
 | align | 对齐方式，仅在 `block` 为 `true` 时生效, 可选值 `left`, `right`, `center`| string | `left` |
 | fill-zero     | 单数前面是否补 0                      | boolean | `true`        |
 

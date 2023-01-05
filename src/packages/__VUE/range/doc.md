@@ -391,11 +391,11 @@ export default {
   
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 当前进度百分比 | number、number[] | `0` |
+| v-model | 当前进度百分比 | number \| number[] | `0` |
 | range | 是否开启双滑块模式 | boolean | `false` |
-| max | 最大值 | number、string | `100` |
-| min | 最小值 | number、string | `0` |
-| step | 步长 | number、string | `1` |
+| max | 最大值 | number \| string | `100` |
+| min | 最小值 | number \| string | `0` |
+| step | 步长 | number \| string | `1` |
 | disabled | 是否禁用滑块 | boolean | `false` |
 | vertical | 是否竖向展示 | boolean | `false` |
 | hidden-range | 是否隐藏范围值 | boolean | `false` |

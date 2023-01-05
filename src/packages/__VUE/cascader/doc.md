@@ -422,22 +422,22 @@ export default {
 | options             | 级联数据                                              | Array    | -           |
 | lazy                | 是否开启动态加载                                      | boolean  | -           |
 | lazy-load           | 动态加载回调，开启动态加载时生效                      | Function | -           |
-| value-key           | 自定义`options`结构中`value`的字段                    | string   | -           |
-| text-key            | 自定义`options`结构中`text`的字段                     | string   | -           |
-| children-key        | 自定义`options`结构中`children`的字段                 | string   | -           |
-| convert-config      | 当options为可转换为树形结构的扁平结构时，配置转换规则 | object   | -           |
-| title               | 标题                                                  | string   | ''          |
-| close-icon-position | 取消按钮位置，继承 Popup 组件                         | string   | "top-right" |
-| close-icon          | 自定义关闭按钮，继承 Popup 组件                       | string   | "close"     |
-| closeable           | 是否显示关闭按钮，继承 Popup 组件                     | boolean  | true        |
-| poppable            | 是否需要弹层展示（设置为false后，title失效）          | boolean  | true        |
+| value-key           | 自定义 `options` 结构中 `value` 的字段                    | string   | -           |
+| text-key            | 自定义 `options` 结构中 `text` 的字段                     | string   | -           |
+| children-key        | 自定义 `options` 结构中 `children` 的字段                 | string   | -           |
+| convert-config      | 当 `options` 为可转换为树形结构的扁平结构时，配置转换规则 | object   | -           |
+| title               | 标题                                                  | string   | `''`          |
+| close-icon-position | 取消按钮位置，继承 `Popup` 组件                         | string   | `"top-right"` |
+| close-icon          | 自定义关闭按钮，继承 `Popup` 组件                       | string   | `"close"`     |
+| closeable           | 是否显示关闭按钮，继承 `Popup` 组件                     | boolean  | `true`        |
+| poppable            | 是否需要弹层展示（设置为 `false` 后，`title` 失效）          | boolean  | `true`        |
 
 ### Events
 
 | 事件名      | 说明             | 回调参数           |
 |-------------|------------------|--------------------|
-| change      | 选中值改变时触发 | (value, pathNodes) |
-| path-change | 选中项改变时触发 | (pathNodes)        |
+| change      | 选中值改变时触发 | `(value, pathNodes)` |
+| path-change | 选中项改变时触发 | `(pathNodes)`        |
 
 ## 主题定制
 

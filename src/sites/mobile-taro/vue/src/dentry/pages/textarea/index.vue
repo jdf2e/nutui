@@ -6,12 +6,9 @@
     <nut-textarea v-model="value2" limit-show max-length="20" />
     <h2>高度自定义，拉伸</h2>
     <nut-textarea v-model="value3" autosize />
-    <h2>只读状态</h2>
+    <h2>只读、禁用</h2>
     <nut-textarea readonly model-value="textarea只读状态" />
-    <h2>禁用</h2>
     <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
-    <h2>自动获取焦点</h2>
-    <nut-textarea autofocus v-model="value4" />
   </div>
 </template>
 

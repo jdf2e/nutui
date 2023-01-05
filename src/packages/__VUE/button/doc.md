@@ -196,11 +196,11 @@ app.use(Button);
 | type     | 类型，可选值为 `primary` `info` `warning` `danger` `success` `default` | string  | `default` |
 | size     | 尺寸，可选值为 `large` `small` `mini` `normal`                         | string  | `normal`  |
 | shape    | 形状，可选值为 `square` `round`                                        | string  | `round`   |
-| color    | 按钮颜色，支持传入 linear-gradient 渐变色                                | string  | -         |
+| color    | 按钮颜色，支持传入 `linear-gradient` 渐变色                                | string  | -         |
 | plain    | 是否为朴素按钮                                                         | boolean | `false`   |
 | disabled | 是否禁用按钮                                                 | boolean | `false`   |
 | block    | 是否为块级元素                                               | boolean | `false`   |
-| loading  | 按钮 loading 状态                                            | boolean | `false`   |
+| loading  | 按钮 `loading` 状态                                            | boolean | `false`   |
 
 ### Slots
 

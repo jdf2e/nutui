@@ -60,33 +60,40 @@ app.use(Card);
 :::demo
 ```html
 <template>
-<nut-card
-:img-url="state.imgUrl"
-:title="state.title"
-:price="state.price"
-:vipPrice="state.vipPrice"
-:shopDesc="state.shopDesc"
-:delivery="state.delivery"
-:shopName="state.shopName"
->
-  <template #prolist>
-    <div class="search_prolist_attr">
-      <span class="word">word</span>
-      <span class="word">word</span>
-      <span class="word">word</span>
-    </div>
-  </template>
-  <template #tag>
-    <img
-        class="tag" 
+  <nut-card
+    :img-url="state.imgUrl"
+    :title="state.title"
+    :price="state.price"
+    :vipPrice="state.vipPrice"
+    :shopDesc="state.shopDesc"
+    :delivery="state.delivery"
+    :shopName="state.shopName"
+  >
+    <template #prolist>
+      <div class="search_prolist_attr">
+        <span class="word">word</span>
+        <span class="word">word</span>
+        <span class="word">word</span>
+      </div>
+    </template>
+    <template #price>
+      <span>price</span>
+    </template>
+    <template #origin>
+      <img
+        class="tag"
         src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
         alt=""
-    />
-  </template>
-    <template #footer>
-      <div class="customize">cuttom</div>
+      />
     </template>
-</nut-card>
+    <template #shop-tag>
+      <div>shop</div>
+    </template>
+    <template #footer>
+      <div class="customize">footer</div>
+    </template>
+  </nut-card>
+</template>
 </template>
 <script>
   import { reactive } from 'vue';
@@ -113,18 +120,17 @@ app.use(Card);
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
- 
 }
 .search_prolist_attr > span{
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
 }
 .tag {
   display: inline-block;
@@ -145,20 +151,20 @@ app.use(Card);
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
-| img-url   | Left thumb image URL                                 | String  | -         |
-| title     | Title                   | String  | -    |
-| price | Price                         | String  | -      |
-| vip-price     | vip-price                                | String | -    |
-| shop-desc  | shop-desc                                | String | -    |
-| delivery     | delivery | String  | -      |
-| shop-name   | shop-name | String  | -      |
-| is-need-price  | Whether price display is required| Boolean  | true   |
+| img-url   | Left thumb image `URL`                                 | string  | -         |
+| title     | Title                   | string  | -    |
+| price | Price                         | string  | -      |
+| vip-price     | vip-price                                | string | -    |
+| shop-desc  | shop-desc                                | string | -    |
+| delivery     | delivery | string  | -      |
+| shop-name   | shop-name | string  | -      |
+| is-need-price  | Whether price display is required| Boolean  | `true`   |
 
 ### Events
 
 | Event             | Description                     | Arguments        |
 |----------|----------|----------|
-| click    | click event | event: MouseEvent    |
+| click    | click event | `event: MouseEvent`    |
 
 
 ### Slots
@@ -177,11 +183,11 @@ app.use(Card);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-card-font-size-0| _var(--nut-font-size-0)_  | - |
-| --nut-card-font-size-1| _var(--nut-font-size-1)_  | - |
-| --nut-card-font-size-2| _var(--nut-font-size-2)_  | - |
-| --nut-card-font-size-3| _var(--nut-font-size-3)_  | - |
-| --nut-card-left-border-radius| _0_  | - |
-| --nut-card-left-background-color| _inherit_  | - |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-card-font-size-0| _var(--nut-font-size-0)_  |
+| --nut-card-font-size-1| _var(--nut-font-size-1)_  |
+| --nut-card-font-size-2| _var(--nut-font-size-2)_  |
+| --nut-card-font-size-3| _var(--nut-font-size-3)_  |
+| --nut-card-left-border-radius| _0_  |
+| --nut-card-left-background-color| _inherit_  |

@@ -125,11 +125,11 @@ app.use(Sticky);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| position         | 吸附位置（`top`、`bottom`）               | String | `top`                |
-| top         | 吸顶距离               | Number | `0`                |
-| bottom         | 吸底距离               | Number | `0`                |
+| position         | 吸附位置（`top`、`bottom`）               | string | `top`                |
+| top         | 吸顶距离               | number | `0`                |
+| bottom         | 吸底距离               | number | `0`                |
 | container         | 容器的 `HTML` 节点               | Element | -                |
-| z-index         | 吸附时的层级               | Number | `2000`               |
+| z-index         | 吸附时的层级               | number | `2000`               |
 
 ### Events
 

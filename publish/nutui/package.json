@@ -1,15 +1,15 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.0.0-beta.11",
+  "version": "4.0.0-beta.13",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.cjs",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
-  "type": "module",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
-    "dist/packages/_es/*",
-    "dist/packages/**/style*"
+    "dist/packages/**/*",
+    "dist/styles/**",
+    "dist/style.css"
   ],
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
@@ -36,8 +36,7 @@
     "publish:beta": "npm publish --tag=beta"
   },
   "dependencies": {
-    "@nutui/icons-vue": "0.0.19",
-    "sass": "^1.50.0"
+    "@nutui/icons-vue": "^0.0.20"
   },
   "devDependencies": {},
   "repository": {

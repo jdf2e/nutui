@@ -360,7 +360,7 @@ setup(){
 | Attribute   | Description                                              | Type                     | Default |
 |-------------|----------------------------------------------------------|--------------------------|---------|
 | model-value | Form data object (required when using form verification) | object                   |         |
-| rules       | Unified configuration FormItem attr rules                | { prop: FormItemRule[] } | {}      |
+| rules       | Unified configuration FormItem attr rules                | { prop: FormItemRule[] } | `{}`      |
 
 ### Form Events
 

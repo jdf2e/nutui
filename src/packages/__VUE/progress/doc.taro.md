@@ -139,51 +139,51 @@ app.use(Progress);
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
-| percentage | 百分比 | Number | 0
-| is-show-percentage | 是否需要展示百分号 | Boolean | true
-| stroke-color | 进度条背景色 | String | #f30
-| stroke-width | 进度条宽度 | String | ''
-| size | 进度条及文字尺寸，可选值small/base/large | String | -
-| show-text | 是否显示进度条文字内容 | Boolean | true
-| text-inside | 进度条文字显示位置(false:外显，true:内显) | Boolean | false
-| text-color | 进度条文字颜色设置 | String | #333
-| text-background | 进度条文字背景颜色设置 | String | 同进度条颜色
-| status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | String | text
+| percentage | 百分比 | number | `0`
+| is-show-percentage | 是否需要展示百分号 | boolean | `true`
+| stroke-color | 进度条背景色 | string | `#f30`
+| stroke-width | 进度条宽度 | string | `''`
+| size | 进度条及文字尺寸，可选值small/base/large | string | -
+| show-text | 是否显示进度条文字内容 | boolean | `true`
+| text-inside | 进度条文字显示位置(false:外显，true:内显) | boolean | `false`
+| text-color | 进度条文字颜色设置 | string | `#333`
+| text-background | 进度条文字背景颜色设置 | string | `同进度条颜色`
+| status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | string | `text`
 
 ### Slots
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | iconName | 右侧icon内容 |  |
 
-## Theming
+## 主题定制
 
-### CSS Variables
+### 样式变量
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
-|  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  | -  |
-|  --nut-progress-outer-background-color| _#f3f3f3_  | -  |
-|  --nut-progress-outer-border-radius| _12px_  | -  |
-|  --nut-progress-insidetext-border-radius| _5px_  | -  |
-|  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  | -  |
-|  --nut-progress-insidetext-top| _-42%_  | -  |
-|  --nut-progress-small-height| _5px_  | -  |
-|  --nut-progress-small-text-font-size| _7px_  | -  |
-|  --nut-progress-small-text-line-height| _10px_  | -  |
-|  --nut-progress-small-text-padding| _2px 4px_  | -  |
-|  --nut-progress-small-text-top| _-100%_  | -  |
-|  --nut-progress-base-height| _10px_  | -  |
-|  --nut-progress-base-text-font-size| _9px_  | -  |
-|  --nut-progress-base-text-line-height| _13px_  | -  |
-|  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
-|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  | -  |
-|  --nut-progress-large-height| _15px_  | -  |
-|  --nut-progress-large-text-font-size| _13px_  | -  |
-|  --nut-progress-large-text-line-height| _18px_  | -  |
-|  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  | -  |
-|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+|  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
+|  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  |
+|  --nut-progress-outer-background-color| _#f3f3f3_  |
+|  --nut-progress-outer-border-radius| _12px_  |
+|  --nut-progress-insidetext-border-radius| _5px_  |
+|  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  |
+|  --nut-progress-insidetext-top| _-42%_  |
+|  --nut-progress-small-height| _5px_  |
+|  --nut-progress-small-text-font-size| _7px_  |
+|  --nut-progress-small-text-line-height| _10px_  |
+|  --nut-progress-small-text-padding| _2px 4px_  |
+|  --nut-progress-small-text-top| _-100%_  |
+|  --nut-progress-base-height| _10px_  |
+|  --nut-progress-base-text-font-size| _9px_  |
+|  --nut-progress-base-text-line-height| _13px_  |
+|  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  |
+|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  |
+|  --nut-progress-large-height| _15px_  |
+|  --nut-progress-large-text-font-size| _13px_  |
+|  --nut-progress-large-text-line-height| _18px_  |
+|  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  |
+|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  |

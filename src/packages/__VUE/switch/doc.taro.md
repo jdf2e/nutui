@@ -161,7 +161,7 @@ app.use(Switch);
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | boolean ｜ string ｜number | `false`               |
+| v-model        | 开关状态         | boolean \| string \| number | `false`               |
 | disable        | 禁用状态         | boolean | `false`               |
 | loading        | 加载状态         | boolean | `false`               |
 | active-color   | 打开时的背景颜色 | string  | `#fa2c19`    |

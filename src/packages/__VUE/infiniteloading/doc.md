@@ -105,9 +105,9 @@
 |--------------|----------------------------------|--------|------------------|
 | v-model         | 是否触发滚动加载               | boolean | `false`                |
 | has-more         | 是否还有更多数据               | boolean | `true`                |
-| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | number | `200`               |
-| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | boolean | `false`            |
-| load-more-txt          | “没有更多数”据展示文案                        | string | `'哎呀，这里是底部了啦'`            |
+| threshold         | 滚动条与底部距离小于 `threshold` 时触发 `loadMore` 事件 | number | `200`               |
+| use-capture          | 是否使用捕获模式 `true` 捕获 `false` 冒泡                        | boolean | `false`            |
+| load-more-txt          | “没有更多数据” 展示文案                        | string | `'哎呀，这里是底部了啦'`            |
 | load-txt        | 上拉加载提示文案                         | string | `加载中...`                |
 
 ### Events

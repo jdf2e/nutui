@@ -421,11 +421,11 @@ setup() {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | v-model:visible         | 是否显示商品规格弹框               | boolean |  `false`              |
-| sku         | 商品 sku 数据 | array | `[]`               |
+| sku         | 商品 sku 数据 | Array | `[]`               |
 | goods |  商品信息    | object | - |
 | stepper-max         | 设置 inputNumber 最大值  | string \| number | `99999`               |
 | stepper-min         | 设置 inputNumber 最小值  | string \| number | `1`               |
-| btn-options        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | array | `['confirm']`           |
+| btn-options        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | `['confirm']`           |
 | btn-extra-text | 按钮上部添加文案，默认为空，有值时显示 | string | -            |
 | stepper-title         | 数量选择组件左侧文案 | string | `购买数量`                |
 | stepper-extra-text        |   inputNumber 与标题之间的文案       | function \| false | `false`              |
@@ -452,7 +452,7 @@ setup() {
 
 Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换。
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | sku-header  | 商品信息展示区，包含商品图片、价格、编号 | 
 | sku-header-price  | 商品信息展示区，价格区域展示| 

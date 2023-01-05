@@ -208,8 +208,8 @@ Specify the mount node through `teleport`
 | Attribute                   | Description                                                        | Type           | Default        |
 |------------------------|-------------------------------------------------------------|----------------|---------------|
 | v-model:visible        | Control the display/hide of the current component                  | boolean        | `false`       |
-| z-index                | Mask level                                                    | string、number | `2000`        |
-| duration               | Animation duration of component display/hide, in seconds          | string、number | `0.3`         |
+| z-index                | Mask level                                                    | string \| number | `2000`        |
+| duration               | Animation duration of component display/hide, in seconds          | string \| number | `0.3`         |
 | overlay-class          | Custom mask classname                                              | string         | -             |
 | overlay-style          | Custom mask style                                             | CSSProperties  | -             |
 | lock-scroll            | Whether the background is locked                                                | boolean        | `true`       |
@@ -254,7 +254,7 @@ Specify the mount node through `teleport`
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-popup-close-icon-margin| _16px_  | -  |
-| --nut-popup-border-radius| _20px_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-popup-close-icon-margin| _16px_  |
+| --nut-popup-border-radius| _20px_  |

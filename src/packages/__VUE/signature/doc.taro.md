@@ -14,7 +14,40 @@ const app = createApp();
 app.use(Signature);
 
 ```
-    
+
+### 基础用法
+
+:::demo
+
+```html
+<template>
+  <nut-signature  
+    @confirm="confirm" 
+    @clear="clear"
+  ></nut-signature>
+  <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
+</template>
+<script>
+export default {
+    props: {},
+    setup() {
+        const confirm = (canvas, data) => {
+            let img = document.createElement('img');
+            img.src = data;
+            document.querySelector('.demo').appendChild(img);
+        };
+        const clear = () => {
+            let img = document.querySelector('.demo img'); 
+            if (img) {
+                img.remove();
+            }
+        }
+        return { confirm, clear };
+    }
+}
+</script>
+```
+:::
     
  
 ### 修改颜色和签字粗细
@@ -75,7 +108,7 @@ export default {
 
 ### Events
 
-| 字段 | 说明 | 回调参数 
+| 事件名 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | start | 签名开始回调函数（指某次笔画的开始） | `-`
 | signing | 正在签名的回调函数（指某次笔画进行中） | `event`

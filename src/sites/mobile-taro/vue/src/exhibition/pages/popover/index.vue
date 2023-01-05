@@ -82,7 +82,7 @@
     >
     </nut-popover>
 
-    <h2>自定义对象</h2>
+    <h2>自定义目标元素</h2>
     <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle"> 自定义对象 </nut-button>
     <nut-popover
       v-model:visible="customTarget"

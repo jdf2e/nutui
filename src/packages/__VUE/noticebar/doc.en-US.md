@@ -245,7 +245,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 
 ### Slots
 
-| Attribute         | Description                      |
+| Name         | Description                      |
 |-------------------|----------------------------------|
 | default           | Notice text content              |
 | right-icon        | Custom right icon                |

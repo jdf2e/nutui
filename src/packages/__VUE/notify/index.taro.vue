@@ -1,23 +1,22 @@
 <template>
-  <Transition name="nut-fade" @after-leave="onAfterLeave">
-    <view
-      :class="[`popup-${position}`, 'nut-notify', `nut-notify--${type}`, className]"
+  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleportDisable="teleportDisable">
+    <div
+      :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
-      v-show="visible"
-      @click="onClick"
+      @click="clickCover"
     >
       <template v-if="$slots.default">
         <slot></slot>
       </template>
       <template v-else>{{ msg }}</template>
-    </view>
-  </Transition>
+    </div>
+  </nut-popup>
 </template>
 <script lang="ts">
-import { watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
-const { componentName, create } = createComponent('notify');
+import { ref, watch } from 'vue';
+import { createComponent } from '../../utils/create';
+import Popup from '../popup/index.vue';
+const { create } = createComponent('notify');
 
 export default create({
   components: {
@@ -44,51 +43,59 @@ export default create({
     position: {
       type: String,
       default: 'top'
-    }
+    },
+    teleportDisable: {
+      type: Boolean,
+      default: true
+    },
+    onClose: Function,
+    onClick: Function,
+    unmount: Function
   },
-  emits: ['update:visible', 'closed', 'click'],
+  emits: ['update:visible'],
   setup(props, { emit }) {
-    let timer: null | number = null;
+    const clickCover = () => {
+      props.onClick && props.onClick();
+    };
 
-    const onClick = () => {
-      emit('click');
-    };
+    // timer
+    let timer: null | number = null;
     const clearTimer = () => {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
+      timer && clearTimeout(timer);
+      timer = null;
     };
+
+    // hide popup
     const hide = () => {
       emit('update:visible', false);
-      emit('closed');
     };
 
-    watch(
+    // watch show popup
+    const isShowPopup = ref<boolean>(false);
+
+    const unWatch = watch(
       () => props.visible,
-      (value: boolean) => {
-        if (value) {
-          show();
+      (newVal: boolean) => {
+        isShowPopup.value = props.visible;
+
+        const DURATION: number = props.duration;
+        if (newVal && DURATION) {
+          timer = setTimeout(() => {
+            hide();
+          }, DURATION);
         }
-      }
+      },
+      { immediate: true }
     );
 
-    const show = () => {
+    const onAfterLeave = () => {
       clearTimer();
-      if (props.duration) {
-        timer = setTimeout(() => {
-          hide();
-        }, props.duration);
-      }
+      unWatch && unWatch();
+      props.unmount && props.unmount(props.id);
+      props.onClose && props.onClose();
     };
 
-    const onAfterLeave = () => {
-      if (props.visible) {
-        clearTimer();
-        hide();
-      }
-    };
-    return { hide, onAfterLeave, onClick };
+    return { onAfterLeave, clickCover, isShowPopup };
   }
 });
 </script>

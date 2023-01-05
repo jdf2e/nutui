@@ -18,7 +18,6 @@ app.use(Barrage);
 
 ### 基础用法
 
-`Icon` 的 `name` 属性支持传入图标名称或图片链接。
 :::demo
 
 ```html
@@ -49,25 +48,6 @@ export default {
   }
 };
 </script>
-```
-
-:::
-
-### slot 用法
-
-> 使用插槽需要将滚动内容放在html标签内，小程序环境暂不支持
-
-:::demo
-
-```html
-<template>
-  <nut-barrage>
-    <span>aaa</span>
-    <span>bbb</span>
-    <span>ccc</span>
-    <span>ddd</span>
-  </nut-barrage>
-</template>
 ```
 
 :::
