@@ -16,7 +16,6 @@
   user-select: none;
   touch-action: manipulation;
   vertical-align: bottom;
-
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 
@@ -172,5 +171,68 @@
 
   &--square {
     border-radius: 0;
+  }
+}
+.nut-button--default:not([disabled]):active {
+  color: $button-default-color;
+  background: $button-default-bg-color;
+  border: $button-border-width solid $button-default-border-color;
+}
+.nut-button--primary:not([disabled]):active {
+  color: $button-primary-color;
+  background: $button-primary-background-color;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--info:not([disabled]):active {
+  color: $button-info-color;
+  background: $button-info-background-color;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--success:not([disabled]):active {
+  color: $button-success-color;
+  background: $button-success-background-color;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--danger:not([disabled]):active {
+  color: $button-danger-color;
+  background: $button-danger-background-color;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--warning:not([disabled]):active {
+  color: $button-warning-color;
+  background: $button-warning-background-color;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--plain:not([disabled]):active {
+  background: $button-plain-background-color;
+
+  .nut-button--primary {
+    color: $button-primary-border-color;
+    border-color: $button-primary-border-color;
+  }
+
+  .nut-button--info {
+    color: $button-info-border-color;
+    border-color: $button-info-border-color;
+  }
+
+  .nut-button--success {
+    color: $button-success-border-color;
+    border-color: $button-success-border-color;
+  }
+
+  .nut-button--danger {
+    color: $button-danger-border-color;
+    border-color: $button-danger-border-color;
+  }
+
+  .nut-button--warning {
+    color: $button-warning-border-color;
+    border-color: $button-warning-border-color;
   }
 }
