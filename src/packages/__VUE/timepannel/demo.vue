@@ -3,7 +3,7 @@
     <h2>基本用法</h2>
     <nut-cell @click="handleClick1">
       <span><label>时间配送</label></span>
-      <div class="selected-option"> {{ val1 }} </div>
+      <div> {{ val1 }} </div>
     </nut-cell>
     <div class="timeselect-wrapper">
       <nut-time-select :visible="visible1"></nut-time-select>
