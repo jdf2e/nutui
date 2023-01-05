@@ -18,12 +18,10 @@ app.use(ActionSheet);
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>Basic Usage</label></span>
       <div v-html="state.val"></div>
@@ -35,7 +33,6 @@ app.use(ActionSheet);
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -78,7 +75,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -95,7 +91,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -137,7 +132,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -155,7 +149,6 @@ export default {
       @choose="chooseItem"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -200,12 +193,10 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible')"
-     
     >
       <span><label>Option Status</label></span>
       <div v-html="state.val"></div>
@@ -219,7 +210,6 @@ export default {
        cancel-txt="cancel"
     >
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
@@ -261,7 +251,6 @@ export default {
 :::demo
 ``` html
 <template>
-  <div>
   <nut-cell
       :show-icon="true"
       :isLink="true"
@@ -273,7 +262,6 @@ export default {
      <nut-action-sheet v-model:visible="state.isVisible" title="title">
       <div class="custom-content">Custom Content</div>
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';

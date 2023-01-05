@@ -29,9 +29,7 @@ export default defineComponent({
   setup() {
     //返回demo页
     const navigateTo = () => {
-      Taro.navigateTo({
-        url: `pages/index/index`
-      });
+      Taro.navigateBack();
     };
 
     return { navigateTo };

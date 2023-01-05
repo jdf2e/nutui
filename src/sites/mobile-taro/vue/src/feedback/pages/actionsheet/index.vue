@@ -3,28 +3,28 @@
     <h2>基本用法</h2>
     <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
       <span><label>基础用法</label></span>
-      <div class="selected-option" v-html="state.val1"></div>
+      <div v-html="state.val1"></div>
     </nut-cell>
     <nut-cell :showIcon="true" :isLink="true" @click="switchActionSheet('isVisible2')">
       <span><label>展示取消按钮</label></span>
-      <div class="selected-option" v-html="state.val2"></div>
+      <div v-html="state.val2"></div>
     </nut-cell>
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
       <span><label>展示描述信息</label></span>
-      <div class="selected-option" v-html="state.val3"></div>
+      <div v-html="state.val3"></div>
     </nut-cell>
     <h2>选项状态</h2>
 
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
       <span><label>选项状态</label></span>
-      <div class="selected-option" v-html="state.val4"></div>
+      <div v-html="state.val4"></div>
     </nut-cell>
 
     <h2>自定义</h2>
 
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
       <span><label>自定义内容</label></span>
-      <div class="selected-option"></div>
+      <div></div>
     </nut-cell>
 
     <!-- demo 基础用法 -->

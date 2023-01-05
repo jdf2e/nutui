@@ -65,8 +65,7 @@ export default {
 
     const navigateTo = (name, enName) => {
       Taro.navigateTo({
-        // url: `/${enName}/pages/${name}/index`
-        url: `/pages/index/layout?enName=${enName}&name=${name}`
+        url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
     };
 
