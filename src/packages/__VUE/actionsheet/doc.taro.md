@@ -23,7 +23,7 @@ app.use(ActionSheet);
   <nut-cell
       :show-icon="true"
       :isLink="true"
-      @click="switchActionSheet('isVisible')"
+      @click="switchActionSheet('isVisible1')"
      
     >
       <span><label>基础用法</label></span>
@@ -31,8 +31,8 @@ app.use(ActionSheet);
     </nut-cell>
      <!-- demo 基础用法 -->
     <nut-action-sheet
-      v-model:visible="state.isVisible"
-      :menu-items="menuItems"
+      v-model:visible="state.isVisible1"
+      :menu-items="menuItemsOne"
       @choose="chooseItem"
     >
     </nut-action-sheet>
@@ -43,10 +43,10 @@ import { reactive } from 'vue';
 export default {
   setup() {
   const state = reactive({
-      isVisible: false,
+      isVisible1: false,
       val: '',
     });
-     const menuItems = [
+     const menuItemsOne = [
       {
         name: '选项一'
       },
@@ -58,7 +58,7 @@ export default {
       }
     ];
     const switchActionSheet = ( param ) => {
-      state.isVisible = !state.isVisible;
+      state.isVisible1 = !state.isVisible1;
     };
       const chooseItem = (itemParams) => {
       state.val = itemParams.name;
@@ -66,7 +66,7 @@ export default {
     return {
       state,
       switchActionSheet,
-      menuItems,
+      menuItemsOne,
       chooseItem,
     };
   }

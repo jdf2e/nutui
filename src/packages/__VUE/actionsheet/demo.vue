@@ -5,19 +5,19 @@
       <span
         ><label>{{ translate('basic') }}</label></span
       >
-      <div class="selected-option" v-html="state.val1"></div>
+      <div v-html="state.val1"></div>
     </nut-cell>
     <nut-cell :showIcon="true" :isLink="true" @click="switchActionSheet('isVisible2')">
       <span
         ><label>{{ translate('showCancelButton') }}</label></span
       >
-      <div class="selected-option" v-html="state.val2"></div>
+      <div v-html="state.val2"></div>
     </nut-cell>
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
       <span
         ><label>{{ translate('showDescription') }}</label></span
       >
-      <div class="selected-option" v-html="state.val3"></div>
+      <div v-html="state.val3"></div>
     </nut-cell>
     <h2>{{ translate('optionStatus') }}</h2>
 
@@ -25,7 +25,7 @@
       <span
         ><label>{{ translate('optionStatus') }}</label></span
       >
-      <div class="selected-option" v-html="state.val4"></div>
+      <div v-html="state.val4"></div>
     </nut-cell>
 
     <h2>{{ translate('customContent') }}</h2>
@@ -34,7 +34,7 @@
       <span
         ><label>{{ translate('customContent') }}</label></span
       >
-      <div class="selected-option"></div>
+      <div></div>
     </nut-cell>
 
     <!-- demo 基础用法 -->
