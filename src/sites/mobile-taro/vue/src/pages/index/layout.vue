@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { getCurrentInstance } from '@tarojs/taro';
-import { ref, computed } from 'vue';
+import { ref, computed, Ref } from 'vue';
 import Header from '../../components/header.vue';
 export default {
   name: 'NutUI',
@@ -15,14 +15,14 @@ export default {
     Header
   },
   setup() {
-    let compName = ref('');
+    let compName = ref('') as Ref;
 
     let $instance = getCurrentInstance();
 
-    compName.value = $instance.router?.params.name;
+    compName.value = $instance.router?.params.n;
 
     const src = computed(() => {
-      return `/#/${$instance.router?.params.enName}/pages/${$instance.router?.params.name}/index`;
+      return `/#/${$instance.router?.params.e}/pages/${$instance.router?.params.n}/index`;
     });
 
     return {
