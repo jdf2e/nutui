@@ -18,7 +18,7 @@ app.use(Dialog);
 ```
 
 
-### 函数调用
+### 函数式调用
 
 :::demo
 ```html
@@ -126,30 +126,13 @@ export default {
 ```
 ::: 
 
-### teleport 使用，挂载到指定节点
-
-``` html
-<nut-dialog teleport="#app" ... />
-```
-
-``` javascript
-showDialog({
-  teleport: '#app',
-  ...
-});
-showDialog({
-  teleport: '.demo',
-  ...
-});
-```
-
-### 标签式组件使用
+### 标签式使用
 
 :::demo
 ```html
 <template>
   <nut-cell-group title="标签式使用">
-    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+    <nut-cell title="标签式使用" @click="componentClick"></nut-cell>
     <nut-dialog
       teleport="#app"
       title="组件调用"
@@ -187,6 +170,22 @@ export default {
 ```
 :::
 
+### teleport 使用，挂载到指定节点
+
+``` html
+<nut-dialog teleport="#app" ... />
+```
+
+``` javascript
+showDialog({
+  teleport: '#app',
+  ...
+});
+showDialog({
+  teleport: '.demo',
+  ...
+});
+```
 ## API
 ### DialogOptions
 | 参数                | 说明                                                          | 类型                     | 默认值               |
