@@ -218,10 +218,10 @@ app.use(Noticebar);
 
 | 字段       | 说明                                                       | 类型          | 默认值 |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
+| direction       | 滚动的方向，可选 `across`、`vertical `                        | string        | `across`     |
 | text       | 提示的信息                                                 | string        | -     |
 | close-mode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| left-icon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
+| left-icon   | `close` 为没有左边 `icon` ,其他为自定义的图片链接，没有为默认图片 | string        | -     |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
@@ -242,14 +242,14 @@ app.use(Noticebar);
 
 ### Slots
 
-| 参数         | 说明                             | 
+| 名称         | 说明                             | 
 |--------------|----------------------------------|
 | default         | 通知文本的内容               | 
 | right-icon        | 自定义右侧图标    | 
 | left-icon        | 自定义左侧图标    | 
 ### Events
 
-| 字段  | 说明             | 回调参数     |
+| 事件名  | 说明             | 回调参数     |
 | ----- | ---------------- | ------------ |
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |

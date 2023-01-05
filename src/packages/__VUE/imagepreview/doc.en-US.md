@@ -326,8 +326,8 @@ app.use(ImagePreview);
 
 | Key | Description | Type | 
 |----- | ----- | ----- | 
-| source | Video url and type settings | `object` | 
-| options | Control video playback properties| `object` | 
+| source | Video url and type settings | object | 
+| options | Control video playback properties| object | 
     
 ### Events
 
@@ -338,7 +338,7 @@ app.use(ImagePreview);
 
 ### Slots
 
-|Event|Description|
+|Name|Description|
 |--|--|
 |closeIcon| Custom close icon|
     

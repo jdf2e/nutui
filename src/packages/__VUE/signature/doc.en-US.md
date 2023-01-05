@@ -115,7 +115,7 @@ export default {
 ## API
     
 ### Props
- | parameter | description | type | default
+ | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
 | custom-class | custom `class` | string | `-`
 | line-width | line width | number | `3`
@@ -125,7 +125,7 @@ export default {
 
 ### Events
 
-| field | description | callback parameter
+| Event | Description | Arguments
 |----- | ----- | -----
 | start | Signature start callback function (refers to the start of a certain stroke) | `-`
 | signing | The callback function that is signing (referring to a certain stroke in progress) | `event`

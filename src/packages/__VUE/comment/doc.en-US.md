@@ -182,25 +182,25 @@ export default {
 | header-type         | Header type      | string | `default`               |
 | images-rows         | Comment picture shows type of lines    | string | `one`               |
 | ellipsis        | Ellipsis number       | string \| number | `2`               |
-| videos         | Videos data | array | `[]`              |
-| images | Images data    | array | `[]` |
+| videos         | Videos data | Array | `[]`              |
+| images | Images data    | Array | `[]` |
 | info     | Comment data                      | object | `{}`             |
 | follow     | Additional review data                      | object | `{}`             |
-| operation | Bottom button   | array | `["replay", "like", "more"]` |
+| operation | Bottom button   | Array | `["replay", "like", "more"]` |
 
 ### Events
 
-| Attribute            | Description               | Arguments   |
+| Event            | Description               | Arguments   |
 |--------|----------------|--------------|
-| click-operate  | Emitted when to click bottom button | type |
-| click  | Emitted when to click comment | type |
-| click-images | Emitted when to click images or videos | {type,index,value}|
+| click-operate  | Emitted when to click bottom button | `type` |
+| click  | Emitted when to click comment | `type` |
+| click-images | Emitted when to click images or videos | `{type,index,value}` |
 
 ### Slots
 
 Slots are defined in some areas and can be replaced as required
 
-| Attribute            | Description               |
+| Name            | Description               |
 |--------|----------------|
 | comment-labels  | Comment user label | 
 | comment-shop-reply  | At the bottom of the comment is the display of the merchant's response | 

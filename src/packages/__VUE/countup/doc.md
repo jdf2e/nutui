@@ -79,7 +79,7 @@ export default {
 ```
 :::
 
-### 抽奖
+### 抽奖（模拟滚动抽奖）
 :::demo
 
 ```html
@@ -139,7 +139,7 @@ export default {
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | init-num | 初始数字 | number | `0`
 | end-num | 结束数字 | number | `0`
@@ -151,10 +151,10 @@ export default {
 | num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | number | `20`
 | scrolling | 用于数字滚动展示 | boolean | `false`
 | custom | 用于自定义图片数字滚动 | boolean | `false`
-| custom-change-num | 要变化的数字（用于自定义图片，initNum、endNum在此无效） | number | `1`
+| custom-change-num | 要变化的数字（用于自定义图片，`initNum`、`endNum` 在此无效） | number | `1`
 | custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | `-`
 | custom-spac-num | 图片中数字之间可能会存在间距 | number | `0`
-| type | 使用抽奖功能必传"machine" | string | `''`
+| type | 使用抽奖功能必传 `"machine"` | string | `''`
 | machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | `4`
 | machine-num | 抽奖位，即滚动几个，必传 | number | `3`
 | machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | `0`
@@ -165,7 +165,7 @@ export default {
 
 ### Events
 
-| 字段 | 说明 | 回调参数
+| 事件名 | 说明 | 回调参数
 |----- | ----- | -----
 | scroll-end | 滚动结束后回调函数 | `-`
     

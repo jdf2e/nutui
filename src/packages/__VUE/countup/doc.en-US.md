@@ -80,7 +80,7 @@ export default {
 ```
 :::
 
-### luck draw
+### luck draw(simulated rolling draw)
 :::demo
 
 ```html
@@ -140,7 +140,7 @@ export default {
 ## API
 ### Props
 
-| Field | Description | Type | Default
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
 | init-num | initial number | number | `0`
 | end-num | end number | number | `0`
@@ -150,7 +150,7 @@ export default {
 | during | rolling time to run | number | `1000`
 | num-width | Number width, often used to customize seamless scrolling | number | `20`
 | num-height | Number height, often used to customize seamless scrolling (required for lottery function) | number | `20`
-| scrolling | used for numeric scrolling display | boolean | `false`
+| scrolling | used for numeric scrolling display(taro environment does not support) | boolean | `false`
 | custom | for custom image scrolling | boolean | `false`
 | custom-change-num | The number to change (for custom pictures, initNum and endNum are invalid here) | number | `1`
 | custom-bg-img | Custom image (it is recommended to use Sprite image, and Sprite image must be used to use the lottery function) | - | `-`
@@ -166,7 +166,7 @@ export default {
 
 ### Events
 
-| field | description | callback parameter
+| Event | description | callback parameter
 |----- | ----- | -----
 | scroll-end | callback function after scrolling ends | `-`
     

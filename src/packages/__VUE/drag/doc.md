@@ -91,8 +91,8 @@ app.use(Drag);
 ## API
 ### Props
 
-| 字段      | 说明                                              | 类型           | 默认值                              |
+| 参数      | 说明                                              | 类型           | 默认值                              |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
-| attract   | 是否开启自动吸边                                  | Boolean        | false                                |
-| direction | 拖拽元素的拖拽方向限制，**x**/**y**/**all**三选一 | String         | 'all'                               |
-| boundary  | 拖拽元素的拖拽边界                                | Object         | {top: 0,left: 0,right: 0,bottom: 0} |
+| attract   | 是否开启自动吸边                                  | boolean        | `false`                                |
+| direction | 拖拽元素的拖拽方向限制，**x**/**y**/**all**三选一 | string         | `'all'`                               |
+| boundary  | 拖拽元素的拖拽边界                                | object         | `{top: 0,left: 0,right: 0,bottom: 0}` |

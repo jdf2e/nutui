@@ -360,23 +360,23 @@ setup(){
 | 参数        | 说明                                 | 类型                     | 默认值 |
 |-------------|--------------------------------------|--------------------------|--------|
 | model-value | 表单数据对象(使用表单校验时，_必填_) | object                   |        |
-| rules       | 统一配置每个 FormItem 的 rules       | { prop: FormItemRule[] } | {}     |
+| rules       | 统一配置每个 `FormItem` 的 `rules`       | { prop: FormItemRule[] } | `{}`     |
 
 ### Form Events
 
 | 事件名   | 说明                       | 回调参数                                                   |
 |----------|----------------------------|------------------------------------------------------------|
-| validate | 任一表单项被校验失败后触发 | 被校验的表单项 prop 值，校验是否通过，错误消息（如果存在） |
+| validate | 任一表单项被校验失败后触发 | 被校验的表单项 `prop` 值，校验是否通过，错误消息（如果存在） |
 
 ### FormItem Props
 
 | 参数                | 说明                                                             | 类型             | 默认值  |
 |---------------------|------------------------------------------------------------------|------------------|---------|
 | required            | 是否显示必填字段的标签旁边的红色星号                             | boolean          | `false` |
-| prop                | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
+| prop                | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
 | rules               | 定义校验规则                                                     | FormItemRule []  | []      |
-| label-width         | 表单项 label 宽度，默认单位为`px`                                | number \| string | `90px`  |
-| label-align         | 表单项 label 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
+| label-width         | 表单项 `label` 宽度，默认单位为`px`                                | number \| string | `90px`  |
+| label-align         | 表单项 `label` 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
 | body-align          | 右侧插槽对齐方式，可选值为 `center` `right`                      | string           | `left`  |
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
 | show-error-line     | 是否在校验不通过时标红输入框                                     | boolean          | `true`  |
@@ -384,7 +384,7 @@ setup(){
 
 ### FormItemRule 数据结构
 
-使用 FormItem 的`rules`属性可以定义校验规则，可选属性如下:
+使用 `FormItem` 的 `rules` 属性可以定义校验规则，可选属性如下:
 
 | 键名      | 说明                   | 类型                                                                |
 |-----------|------------------------|---------------------------------------------------------------------|
@@ -398,7 +398,7 @@ setup(){
 | 名称    | 说明              |
 |---------|-------------------|
 | default | 自定义内容        |
-| label   | 自定义`label`区域 |
+| label   | 自定义 `label` 区域 |
 
 
 ``` html
@@ -410,13 +410,13 @@ setup(){
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Form 实例并调用实例方法
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 `Form` 实例并调用实例方法
 
 | 方法名   | 说明                                                               | 参数                                      | 返回值 |
 |----------|--------------------------------------------------------------------|-------------------------------------------|--------|
 | submit   | 提交表单进行校验的方法                                             | -                                         | -      |
 | reset    | 清空校验结果                                                       | -                                         | -      |
-| validate | 用户主动触发校验，用于用户自定义场景时触发，例如 blur、change 事件 | 同 FormItem prop 值,不传值会校验全部 Rule | -      |
+| validate | 用户主动触发校验，用于用户自定义场景时触发，例如 `blur`、`change` 事件 | 同 `FormItem prop` 值,不传值会校验全部 `Rule` | -      |
 
 
 ## 主题定制

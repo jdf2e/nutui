@@ -188,8 +188,8 @@ export default {
 
 | 参数     | 说明                             | 类型   | 默认值   |
 | -------- | -------------------------------- | ------ | -------- |
-| type     | 分类模式：`classify`，`text`，`custom` | string | classify |
-| category | 左侧导航栏数据列表               | Array  | []       |
+| type     | 分类模式：`classify`，`text`，`custom` | string | `classify` |
+| category | 左侧导航栏数据列表               | Array  | `[]`       |
 
 ### Category Events
 
@@ -203,8 +203,8 @@ export default {
 
 | 参数            | 说明                 | 类型  | 默认值 |
 | --------------- | -------------------- | ----- | ------ |
-| category-child  | 右侧展示当前分类数据 | Array | []     |
-| custom-category | 自定义分类数据       | Array | []     |
+| category-child  | 右侧展示当前分类数据 | Array | `[]`     |
+| custom-category | 自定义分类数据       | Array | `[]`     |
 
 ### CategoryPane Events
 

@@ -385,7 +385,7 @@ app.use(DatePicker);
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | Default Date                                            | date    | `null`   |
-| type            | Can be set to date time year-month month-day datehour | string  | `'date'` |
+| type            | Can be set to `date` `time` `year-month` `month-day` `datehour` | string  | `'date'` |
 | minute-step     | Option minute step                                        | number  | `1`      |
 | is-show-chinese | Show Chinese                                  | boolean | `false`  |
 | min-date        | Start date                                         | date    | `Ten years ago on January 1` |
@@ -405,13 +405,13 @@ app.use(DatePicker);
 
 | Event | Description           | Arguments     |
 |---------|--------------------|--------------|
-| confirm | Emitted when click confirm button. | 	{ selectedValue, selectedOptions } |
-| cancel   | Emitted when click cancel button.       | 	{ selectedValue, selectedOptions } |
-| change   |  Emitted when current option changed.       | { columnIndex, selectedValue, selectedOptions } |
+| confirm | Emitted when click confirm button. | 	`{ selectedValue, selectedOptions }` |
+| cancel   | Emitted when click cancel button.       | 	`{ selectedValue, selectedOptions }` |
+| change   |  Emitted when current option changed.       | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
-| Event | Description           |
+| Name | Description           |
 |--------|----------------|
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |

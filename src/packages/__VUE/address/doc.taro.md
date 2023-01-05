@@ -543,32 +543,32 @@ app.use(Address);
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
 | v-model:visible | 是否打开地址选择 | string | `''` |
-| type | 地址选择类型 exist/custom/custom2  | string | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
-| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | array | `[]` |
-| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | boolean | `true` |
-| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
-| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| string | `配送至` |
-| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | `选择其他地址` |
-| columns-placeholder | 列提示文字 | string \| array | `请选择` |
+| type | 地址选择类型 `exist/custom/custom2`  | string | `custom` |
+| province | 省，每个省的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| city | 市，每个市的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| country | 县，每个县的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| town | 乡/镇，每个乡/镇的对象中,必须有 `name` 字段,如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| height | 弹层中内容容器的高度，仅在 `type="custom2"` 时有效 | string \| number | `200px` |
+| exist-address | 已存在地址列表，每个地址对象中，必传值 `provinceName`、`cityName`、`countyName`、`townName`、`addressDetail`、`selectedAddress`（字段解释见下） | Array | `[]` |
+| is-show-custom-address | 是否可以切换自定义地址选择，`type=‘exist’` 时生效 | boolean | `true` |
+| custom-address-title  | 自定义地址选择文案，`type='custom'` 时生效 | string | `请选择所在地区` |
+| exist-address-title| 已有地址文案 ，`type=‘exist’` 时生效| string | `配送至` |
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，`type=‘exist’` 时生效| string | `选择其他地址` |
+| columns-placeholder | 列提示文字 | string \| Array | `请选择` |
 | lock-scroll  | 背景是否锁定      | boolean        | `true`  |
 
-  * provinceName 省的名字
-  * cityName 市的名字
-  * countyName 县的名字
-  * townName 乡/镇的名字
-  * addressDetail 具体地址
-  * selectedAddress 字段用于判断当前地址列表的选中项。
+  * `provinceName` 省的名字
+  * `cityName` 市的名字
+  * `countyName` 县的名字
+  * `townName` 乡/镇的名字
+  * `addressDetail` 具体地址
+  * `selectedAddress` 字段用于判断当前地址列表的选中项。
 
 ### Events
-| 字段 | 说明 | 回调参数  |
+| 事件名 | 说明 | 回调参数  |
 |----- | ----- | ----- |
 | change | 自定义选择地址时，选择地区时触发 |  参考 `onChange` |
 | selected | 选择已有地址列表时触发 | 参考 `selected` |
@@ -580,31 +580,32 @@ app.use(Address);
 ### change 回调参数
 | 参数 | 说明 | 可选值 |
 |----- | ----- | ----- |
-| custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡) |
-| next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡) |
-| value | 当前点击的行政区域的值（返回传入的值） | {} |
+| custom | 当前点击的行政区域  |  `province(省) / city(市) / country(县) / town(乡)` |
+| next | 当前点击的行政区域的下一级 | `province(省) / city(市) / country(县) / town(乡)` |
+| value | 当前点击的行政区域的值（返回传入的值） | `{}` |
 
 ### selected 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  `{}` |
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  `{}` |
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  `{}` |
+| 第一个参数`（prevExistAdd）` |  选择前选中的地址 |  `{}` |
+| 第二个参数`（nowExistAdd）` |  当前选中的地址 |  `{}` |
+| 第三个参数`（arr）` |  选择完之后的已有地址列表（`selectedAddress` 值发生改变） |  `{}` |
 
 ### close 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | `{}`  |
+| type | 地址选择类型 `exist/custom/custom2`  |  `exist/custom/custom2` |
+| data | 选择地址的值,`custom` 时，`addressStr` 为选择的地址组合 | `{}`  |
 
 ### Slots
-| 字段 | 说明 | 
+| 名称 | 说明 | 
 |----- | ----- |  
 | bottom | 可自定义底部 |  
 | icon | 自定义选中项的图标 |  
 | unselectedIcon | 未选中地址时的图标 |  
 | closeIcon | 关闭弹层的图标 |  
-| backIcon | 自定义地址与已有地址切换时返回的图标 |  
+| backIcon | 自定义地址与已有地址切换时返回的图标 | 
+
 ## 主题定制
 
 ### 样式变量

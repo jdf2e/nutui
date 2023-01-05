@@ -1,6 +1,6 @@
 <template>
   <div class="demo full">
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <nut-form>
       <nut-form-item label="姓名">
         <nut-input v-model="basicData.name" class="nut-input-text" placeholder="请输入姓名" type="text" />

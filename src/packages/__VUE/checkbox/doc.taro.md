@@ -374,18 +374,14 @@ app.use(Checklist);
 
 ### Checkbox Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 是否处于选中状态 | Boolean | `false`
-| disabled | 是否禁用选择 | Boolean | `false`
-| text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
-| icon-size | [图标尺寸](#/zh-CN/component/icon) | String、Number | `18`
-| icon-name | [图标名称](#/zh-CN/component/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
-| icon-active-name | [图标名称](#/zh-CN/component/icon)，选中后(建议和`icon-name`一起修改) | String | `'checked'`
-| icon-indeterminate-name | [图标名称](#/zh-CN/component/icon)，半选状态 | String | `'check-disabled'`
-| label | 复选框的文本内容 | String | -
-| indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
-
+| v-model | 是否处于选中状态 | boolean | `false`
+| disabled | 是否禁用选择 | boolean | `false`
+| text-position | 文本所在的位置，可选值：`left`,`right` | string | `right`
+| icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18`
+| label | 复选框的文本内容 | string | -
+| indeterminate | 当前是否支持半选状态，一般用在全选操作中        | boolean                  | `false` |
 ### Checkbox Slots
 | 名称 | 说明 |
 |-|-|
@@ -394,28 +390,28 @@ app.use(Checklist);
 | indeterminate | 半选时的图标 |
 ### CheckboxGroup Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model | 当前选中项的标识符，和 `label` 相对应  | Array | -
-| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
-| max | 限制选择的数量，不能和`全选/取消/反选`一起使用, `0`表示没有限制 | Number | `0`
+| disabled | 是否禁用选择,将用于其下的全部复选框 | boolean | `false`
+| max | 限制选择的数量，不能和`全选/取消/反选`一起使用, `0`表示没有限制 | number | `0`
 
 
 
 ### Checkbox Events
 
-| 字段 | 说明 | 回调参数 
+| 事件名 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| change | 值变化时触发 | (state, label), `state` 代表当前状态，`label` 表示当前选中的值
 
 ### CheckboxGroup Events
 
-| 字段 | 说明 | 回调参数 
+| 事件名 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| change | 值变化时触发 | `label`,`label` 返回一个数组，表示当前选中项的集合
 
 
-### CheckboxGroup 方法
+### CheckboxGroup Methods
 
 | 方法名 | 说明 | 参数 
 |----- | ----- | ----- 

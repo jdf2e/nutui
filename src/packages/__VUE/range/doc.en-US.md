@@ -389,11 +389,11 @@ export default {
   
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| v-model | current progress percentage | number、number[] | `0` |
+| v-model | current progress percentage | number \| number[] | `0` |
 | range | Whether to enable dual slider mode | boolean | `false` |
-| max | maximum  | number、string | `100` |
-| min | minimum  | number、string | `0` |
-| step | step size | number、string | `1` |
+| max | maximum  | number \| string | `100` |
+| min | minimum  | number \| string | `0` |
+| step | step size | number \| string | `1` |
 | disabled | Whether to disable the slider | boolean | `false` |
 | vertical | Whether to display vertically | boolean | `false` |
 | hidden-range | whether to hide range values | boolean | `false` |

@@ -1,6 +1,9 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
+    <nut-signature @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
+    <p class="demo-tips demo1">Tips: 点击确认按钮,下方显示签名图片</p>
+    <h2>修改颜色和签字粗细</h2>
     <nut-signature
       :lineWidth="lineWidth"
       :strokeStyle="strokeStyle"

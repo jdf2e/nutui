@@ -137,24 +137,24 @@ const navList = reactive([
 ### Props
 | Attribute           | Description                                         | Type    | Default                      |
 |:--------------------|:----------------------------------------------------|:--------|:-----------------------------|
-| visible             | visible is                                          | boolean | false                        |
-| nav-list            | Suspended list content data                         | Array   | []                           |
-| active-color`3.2.1` | list active button color                            | string  | #fa2c19 Inherit theme color  |
-| active-text         | Stow list button copy                               | string  | Close Nav                    |
-| un-active-text      | Expand list button copy                             | string  | Open Nav                     |
-| type                | Navigation direction, optional value `left` `right` | string  | right                        |
-| overlay             | Whether to display the mask when expanding          | boolean | true                         |
-| position            | `fixed` Vertical position                           | object  | {top: 'auto',bottom: 'auto'} |
+| visible             | visible is                                          | boolean | `false`                        |
+| nav-list            | Suspended list content data                         | Array   | `[]`                           |
+| active-color | list active button color                            | string  | `#fa2c19 Inherit theme color`  |
+| active-text         | Stow list button copy                               | string  | `Close Nav`                    |
+| un-active-text      | Expand list button copy                             | string  | `Open Nav `                    |
+| type                | Navigation direction, optional value `left` `right` | string  | `right`                        |
+| overlay             | Whether to display the mask when expanding          | boolean | `true`                         |
+| position            | `fixed` Vertical position                           | object  | `{top: 'auto',bottom: 'auto'}` |
 
 
 ### Events
 
 | Event    | Description               | Arguments                |
 |----------|---------------------------|--------------------------|
-| selected | Triggered after selection | {item:item,$event:Event} |
+| selected | Triggered after selection | `{item:item,$event:Event}`|
 
 
-### Slotss
+### Slots
 
 | Name | Description                       |
 |------|-----------------------------------|

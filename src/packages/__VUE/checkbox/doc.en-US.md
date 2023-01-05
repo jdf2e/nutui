@@ -374,12 +374,12 @@ When the value changes, the `change` event will be triggered
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
-| v-model | If selected | Boolean | `false` 
-| disabled | Disable selection | Boolean | `false` 
-| text-position | The position of the text, optional value：`left`,`right` | String | `right` 
-| icon-size | [Icon Size](#/en-US/icon) | String、Number | `18` 
-| label | Text content of the check box | String | - 
-| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
+| v-model | If selected | boolean | `false` 
+| disabled | Disable selection | boolean | `false` 
+| text-position | The position of the text, optional value：`left`,`right` | string | `right` 
+| icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` 
+| label | Text content of the check box | string | - 
+| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | boolean                  | `false` |
 
 ### Checkbox Slots
 | Name | Description |
@@ -392,8 +392,8 @@ When the value changes, the `change` event will be triggered
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
 | v-model | Identifier of the currently selected item, corresponding to `label`  | Array | - 
-| disabled | Whether to disable the selection, which will be used for all check boxes under it | Boolean | `false` 
-| max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | Number | `0`
+| disabled | Whether to disable the selection, which will be used for all check boxes under it | boolean | `false` 
+| max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | number | `0`
 
 
 
@@ -422,12 +422,12 @@ When the value changes, the `change` event will be triggered
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-checkbox-label-color| _#1d1e1e_ | -  |
-| --nut-checkbox-label-disable-color| _#999_ | -  |
-| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
-| --nut-checkbox-label-margin-left| _15px_ | -  |
-| --nut-checkbox-label-font-size| _14px_ | -  |
-| --nut-checkbox-icon-font-size| _18px_ | -  |
-| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-checkbox-label-color| _#1d1e1e_ |
+| --nut-checkbox-label-disable-color| _#999_ |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ |
+| --nut-checkbox-label-margin-left| _15px_ |
+| --nut-checkbox-label-font-size| _14px_ |
+| --nut-checkbox-icon-font-size| _18px_ |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |

@@ -216,7 +216,7 @@ app.use(GridItem);
 |---------------|------------------------------------------|------------------------|------------|
 | column-num    | 列数                                     | number \| string         | `4`        |
 | border        | 是否显示边框                               | boolean                | `true`     |
-| gutter        | 格子之间的间距，默认单位为`px`               | number \| string        | `0`        |
+| gutter        | 格子之间的间距，默认单位为 `px`               | number \| string        | `0`        |
 | center        | 是否将格子内容居中显示                      | boolean                | `true`      |
 | square        | 是否将格子固定为正方形                      | boolean                | `false`     |
 | reverse       | 内容翻转                                  | boolean                | `false`     |
@@ -228,9 +228,9 @@ app.use(GridItem);
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | 文字                                                                                     | string             | -          |
-| url `小程序不支持`     | 点击后跳转的链接地址                                                                        | string            | -           |
-| to `小程序不支持`      | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object  | -           |
-| replace `小程序不支持` | 是否在跳转时替换当前页面历史                                                                 | boolean           | `false`     |
+| url     | 点击后跳转的链接地址                                                                        | string            | -           |
+| to      | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object  | -           |
+| replace | 是否在跳转时替换当前页面历史                                                                 | boolean           | `false`     |
 
 ### GridItem Slots
 
