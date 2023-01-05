@@ -14,7 +14,7 @@
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
         <view
-          class="nut-tabs__titles-item"
+          class="nut-tabs__titles-item taro"
           :style="titleStyle"
           @click="tabChange(item, index)"
           :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
@@ -329,13 +329,3 @@ export default create({
   }
 });
 </script>
-<style lang="less">
-.tabs-scrollview {
-  white-space: nowrap;
-}
-.nut-tabs__titles-item {
-  display: inline-block !important;
-  height: 46px;
-  line-height: 46px;
-}
-</style>

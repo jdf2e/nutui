@@ -83,12 +83,12 @@ npm i @nutui/nutui@2
 
 ```bash
 // Vue3 H5 项目
-npm i @nutui/nutui
+npm i @nutui/nutui@3
 ```
 
 ```bash
 // Vue3 小程序项目
-npm i @nutui/nutui-taro
+npm i @nutui/nutui-taro@3
 ```
 
 ## 示例

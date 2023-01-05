@@ -16,32 +16,24 @@ config.nav.forEach((item) => {
       children: element.styleDeps
     });
     // gen entry
-    if (element.exclude != true) {
-      let outputMjs = '';
-      if (element.type == 'methods') {
-        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
-import { show${element.name} } from '../_es/${element.name}.js';
-const treeshaking = (t) => t;
-const ${element.name} = treeshaking(_${element.name});
-export { ${element.name}, show${element.name} };`;
-      } else {
-        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
+    let outputMjs = `import _${element.name} from '../_es/${element.name}.js';
 const treeshaking = (t) => t;
 const ${element.name} = treeshaking(_${element.name});
 export { ${element.name} };`;
-      }
-      tasks.push(
-        fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
-          // console.log('')
-        })
-      );
-      let folderName = element.name.toLowerCase();
-      outputFileEntry += `export * from "./packages/${folderName}/index.mjs";\n`;
-      components.push(element.name);
-    }
+
+    tasks.push(
+      fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
+        // console.log('')
+      })
+    );
+    let folderName = element.name.toLowerCase();
+    outputFileEntry += `export * from "./packages/${folderName}/index.mjs";\n`;
+    components.push(element.name);
   });
 });
-outputFileEntry += components.map((name) => `import { ${name} } from "./packages/${name}/index.mjs";`).join('\n');
+outputFileEntry += components
+  .map((name) => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`)
+  .join('\n');
 outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
 function install(app) {
   const packages = [${components.join(',')}];
@@ -71,31 +63,5 @@ tasks.push(
     // console.log('')
   })
 );
-
-styleMap.forEach((value) => {
-  if (value.children && value.children.length > 0) {
-    value.children.forEach((item, index) => {
-      value.children[index] = styleMap.get(item);
-    });
-  }
-});
-
-const getAllDeps = (styleObj, key) => {
-  const value = styleObj;
-  if (value.children?.length === 0) {
-    return [value.name];
-  } else {
-    let deps = [];
-    value.children?.forEach((item) => {
-      if (key === item.name) {
-        console.error('generate-style-deps: 存在循环引用', key);
-        return [];
-      }
-      deps = deps.concat(getAllDeps(item, key));
-    });
-    deps.unshift(value.name);
-    return [...new Set(deps)];
-  }
-};
 
 Promise.all(tasks);

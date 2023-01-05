@@ -1,3 +1,23 @@
+## v3.3.2
+
+`2022-1-4`
+
+小程序版本依赖 Taro ^3.5.6
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @gyt95  @zy-hub @HuziG
+
+
+* :zap: chore: vite工具按需加载功能修复（测试 Button 组件减少193kb） @richard1015
+* :zap: feat(tabs): 支持点击时自动居中功能 @gyt95
+* :zap: feat(menu): taro 环境新增 open、close方法 (#1985) @yangjinjun3
+* :zap: feat(popup): popup增加自定义遮罩层类名及样式 (#1962) @zy-hub
+* :bug: fix(price): add new props strike-through (#1934)(#1907) @Drjingfubo
+* :bug: fix(tabbar): router jump problem (#1993) @Drjingfubo
+* :bug: fix(barrage): 小程序不展示问题处理 (#1987) @Ymm0008
+* 📖 docs(uploader): 组件的文档补充 (#1949) @HuziG
+
+
 ## v3.3.1
 
 `2022-12-16`
