@@ -207,31 +207,31 @@
   background: $button-warning-background-color;
   border: $button-border-width solid transparent;
 }
-
 .nut-button--plain:not([disabled]):active {
   background: $button-plain-background-color;
-
-  .nut-button--primary {
+}
+.nut-button--plain {
+  &.nut-button--primary:not([disabled]):active {
     color: $button-primary-border-color;
     border-color: $button-primary-border-color;
   }
 
-  .nut-button--info {
+  &.nut-button--info:not([disabled]):active {
     color: $button-info-border-color;
     border-color: $button-info-border-color;
   }
 
-  .nut-button--success {
+  &.nut-button--success:not([disabled]):active {
     color: $button-success-border-color;
     border-color: $button-success-border-color;
   }
 
-  .nut-button--danger {
+  &.nut-button--danger:not([disabled]):active {
     color: $button-danger-border-color;
     border-color: $button-danger-border-color;
   }
 
-  .nut-button--warning {
+  &.nut-button--warning:not([disabled]):active {
     color: $button-warning-border-color;
     border-color: $button-warning-border-color;
   }
