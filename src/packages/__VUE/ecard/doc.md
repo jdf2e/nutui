@@ -47,7 +47,7 @@ app.use(Ecard);
           price:40
         },
       ])
-    const money = ref(0);
+    const money = ref(10);
     const inputChange = (val) => {
       money.value = val;
     };

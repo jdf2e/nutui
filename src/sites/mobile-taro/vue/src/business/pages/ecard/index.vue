@@ -4,11 +4,11 @@
     <h2>基础用法</h2>
     <nut-cell>
       <nut-ecard
+        v-model="money"
         @inputChange="inputChange"
         @change="change"
         @changeStep="changeStep"
         :data-list="dataList"
-        v-model="money"
       ></nut-ecard>
     </nut-cell>
   </div>
