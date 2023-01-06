@@ -1,13 +1,15 @@
 <template>
   <div class="demo">
     <h2>基础使用</h2>
-    <nut-config-provider :theme="theme">
+    <nut-config-provider :theme="theme" font-class-name="iconfont" class-prefix="icon">
       <nut-cell title="切换暗黑">
         <template v-slot:link>
           <nut-switch v-model="switchChecked" @change="switchChange" />
         </template>
       </nut-cell>
-      <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+      <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"> </nut-cell>
+      <nut-icon name="dongdong" class-prefix="icon">1</nut-icon>
+      <nut-icon font-class-name="nutui-iconfont" class-prefix="nut-icon" name="dongdong"></nut-icon>
 
       <nut-form>
         <nut-form-item label="开关">
