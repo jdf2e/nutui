@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
@@ -52,13 +53,18 @@
 <script>
 import { ref, reactive, toRefs } from 'vue';
 import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   components: {
     TriangleDown,
-    Checked
+    Checked,
+    Header
   },
   props: {},
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       options1: [
         { text: '全部商品', value: 0 },
@@ -109,7 +115,8 @@ export default {
       state,
       item,
       onConfirm,
-      handleChange
+      handleChange,
+      env
     };
   }
 };

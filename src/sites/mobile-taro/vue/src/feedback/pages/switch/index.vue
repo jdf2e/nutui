@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-switch v-model="checked" />
@@ -44,10 +45,13 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { Loading } from '@nutui/icons-vue-taro';
 export default {
-  components: { Loading },
+  components: { Loading, Header },
   setup() {
+    const env = Taro.getEnv();
     let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
     const checkedAsync = ref(true);
@@ -70,7 +74,8 @@ export default {
       checkedAsync,
       loadingAsync,
       change,
-      changeAsync
+      changeAsync,
+      env
     };
   }
 };

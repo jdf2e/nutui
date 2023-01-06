@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell title="展示弹出层" is-link @click="showBasic = true"></nut-cell>
     <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="showBasic" :z-index="100"
@@ -52,10 +53,14 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { Heart } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { Heart },
+  components: { Heart, Header },
   props: {},
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       showBasic: false,
       showTop: false,
@@ -70,7 +75,7 @@ export default {
       showPop1: false,
       showPop2: false
     });
-    return { ...toRefs(state) };
+    return { ...toRefs(state), env };
   }
 };
 </script>

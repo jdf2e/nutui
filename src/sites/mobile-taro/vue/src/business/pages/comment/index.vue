@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>评论图片单行展示</h2>
     <nut-cell>
       <nut-comment
@@ -64,9 +65,11 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
 import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     let cmt = ref({});
 
     const handleclick = (info: any) => {
@@ -96,7 +99,8 @@ export default defineComponent({
     return {
       cmt,
       handleclick,
-      clickImages
+      clickImages,
+      env
     };
   }
 });

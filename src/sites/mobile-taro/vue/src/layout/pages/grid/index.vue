@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-grid>
       <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
@@ -83,7 +84,16 @@
 </template>
 <script lang="ts">
 import { Dongdong } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { Dongdong }
+  components: { Dongdong, Header },
+  setup(props) {
+    const env = Taro.getEnv();
+
+    return {
+      env
+    };
+  }
 };
 </script>

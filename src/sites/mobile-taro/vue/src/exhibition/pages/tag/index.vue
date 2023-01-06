@@ -1,5 +1,6 @@
 <template>
-  <view class="demo">
+  <view class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group title="基础用法">
       <nut-cell title="primary 类型">
         <template v-slot:link>
@@ -68,9 +69,15 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const show = ref(true);
     const close = () => {
       show.value = false;
@@ -78,7 +85,8 @@ export default {
 
     return {
       close,
-      show
+      show,
+      env
     };
   }
 };

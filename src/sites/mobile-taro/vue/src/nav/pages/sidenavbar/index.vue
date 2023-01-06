@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基本用法</h2>
     <nut-cell @click="handleClick1">
       <span><label>右侧</label></span>
@@ -66,8 +67,15 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       show1: false,
       show2: false,
@@ -97,7 +105,8 @@ export default defineComponent({
       handleClick1,
       handleClick2,
       handleClick3,
-      handleClick4
+      handleClick4,
+      env
     };
   }
 });

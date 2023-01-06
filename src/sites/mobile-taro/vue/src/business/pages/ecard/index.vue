@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-ecard
@@ -14,9 +15,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const dataList = reactive([
       {
         price: 10
@@ -47,7 +51,8 @@ export default defineComponent({
       inputChange,
       change,
       money,
-      changeStep
+      changeStep,
+      env
     };
   }
 });

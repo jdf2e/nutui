@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group title="基本用法 small normal large">
       <nut-cell>
         <nut-price :price="0" size="small" :need-symbol="true" :thousands="true" />
@@ -36,15 +37,22 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const price = ref(0);
     setInterval(() => {
       price.value = Math.random() * 10000000;
       // console.log('price.value1', price.value)
     }, 1000);
     return {
-      price
+      price,
+      env
     };
   }
 };

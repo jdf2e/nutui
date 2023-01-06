@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full bg-w">
+  <div class="demo full bg-w" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-divider />
     <h2>展示文本</h2>
@@ -23,10 +24,18 @@
 </template>
 
 <script lang="ts">
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
+
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
-    return {};
+    const env = Taro.getEnv();
+
+    return { env };
   }
 };
 </script>
