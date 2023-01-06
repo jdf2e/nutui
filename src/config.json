@@ -15,6 +15,12 @@
         "show": true
       },
       {
+        "name": "official-theme",
+        "cName": "官方主题",
+        "eName": "Official Theme",
+        "show": true
+      },
+      {
         "name": "theme",
         "cName": "定制主题",
         "eName": "Customize Theme",

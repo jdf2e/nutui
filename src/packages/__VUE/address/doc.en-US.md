@@ -587,7 +587,7 @@ If you want to select a province, you need to set the region ID in the order of 
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- |
