@@ -9,7 +9,6 @@
       class="nut-tabs__titles tabs-scrollview"
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
-      @scroll="handleScroll"
     >
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
@@ -173,7 +172,7 @@ export default create({
           .select(selector)
           .boundingClientRect()
           .exec((rect = []) => {
-            console.log(rect);
+            // console.log(rect);
             resolve(rect[0]);
           });
       });
@@ -310,9 +309,6 @@ export default create({
       }
     };
 
-    const handleScroll = (e: any) => {
-      console.log(e);
-    };
     return {
       titles,
       contentStyle,
@@ -323,7 +319,6 @@ export default create({
       scrollLeft,
       scrollWithAnimation,
       onStickyScroll,
-      handleScroll,
       ...methods
     };
   }
