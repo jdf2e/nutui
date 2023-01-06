@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group title="基本用法">
       <nut-cell>
         <nut-radio-group v-model="radioVal">
@@ -54,7 +55,7 @@
         </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="Radio自定义图标">
+    <nut-cell-group title="自定义图标">
       <nut-cell>
         <nut-radio-group v-model="radioVal5">
           <nut-radio label="1">
@@ -85,12 +86,17 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { Checklist } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
   components: {
-    Checklist
+    Checklist,
+    Header
   },
   setup() {
+    const env = Taro.getEnv();
+
     const data = reactive({
       radioVal: 1,
       radioVal2: 2,
@@ -104,7 +110,8 @@ export default {
     };
     return {
       ...toRefs(data),
-      handleChange
+      handleChange,
+      env
     };
   }
 };

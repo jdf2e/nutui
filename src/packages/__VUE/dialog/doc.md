@@ -18,7 +18,7 @@ app.use(Dialog);
 ```
 
 
-### 函数调用
+### 函数式调用
 
 :::demo
 ```html
@@ -126,30 +126,13 @@ export default {
 ```
 ::: 
 
-### teleport 使用，挂载到指定节点
-
-``` html
-<nut-dialog teleport="#app" ... />
-```
-
-``` javascript
-showDialog({
-  teleport: '#app',
-  ...
-});
-showDialog({
-  teleport: '.demo',
-  ...
-});
-```
-
-### 标签式组件使用
+### 标签式使用
 
 :::demo
 ```html
 <template>
   <nut-cell-group title="标签式使用">
-    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+    <nut-cell title="标签式使用" @click="componentClick"></nut-cell>
     <nut-dialog
       teleport="#app"
       title="组件调用"
@@ -187,6 +170,42 @@ export default {
 ```
 :::
 
+### teleport 使用，挂载到指定节点
+
+:::demo
+``` html
+<template>
+  <nut-cell-group title="Teleport 使用，挂载到指定节点">
+    <nut-cell title="body element node" @click="teleportClick('body')"></nut-cell>
+    <nut-cell title="#app element node" @click="teleportClick('#app')"></nut-cell>
+    <nut-cell title="demo class element node" @click="teleportClick('.demo')"></nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
+export default {
+  setup() {
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const teleportClick = (teleport: string) => {
+      showDialog({
+        teleport,
+        title: 'teleport to ' + teleport,
+        content: '打开开发者工具看一下 Elements Tab',
+        noCancelBtn: true,
+        onCancel
+      });
+    };
+    return {
+      teleportClick
+    }
+  }
+}
+</script>
+```
+:::
 ## API
 ### DialogOptions
 | 参数                | 说明                                                          | 类型                     | 默认值               |
@@ -264,7 +283,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                | 默认值                |
 |-------------------------------------|-----------------------|

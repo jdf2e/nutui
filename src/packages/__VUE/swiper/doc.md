@@ -274,6 +274,70 @@ app.use(SwiperItem);
 
 :::
 
+### 自定义指示器(异步3s)
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="true" @change="change" auto-play="2000">
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </nut-swiper-item>
+      <template v-slot:page>
+        <div class="page"> {{ current1 }}/4 </div>
+      </template>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0,
+        current1: 1
+      });
+      const change = (index: number) => {
+        state.current1 = index + 1;
+      };
+      return { ...toRefs(state), change };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .page {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 46px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.33);
+    border-radius: 22px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+  }
+</style>
+```
+
+:::
+
 ### 手动切换
 
 可通过 `API`(`prev`,`next`)进行手动切换
@@ -556,7 +620,7 @@ app.use(SwiperItem);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |

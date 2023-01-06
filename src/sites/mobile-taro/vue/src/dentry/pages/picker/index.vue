@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-picker
       :columns="columns"
@@ -34,10 +35,17 @@
 </template>
 <script lang="ts">
 import { onMounted, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { PickerOption } from '../../../../../../../packages/__VUE/picker/types';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
     const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
@@ -196,7 +204,8 @@ export default {
       portColumns,
       popupConfirm,
       popupDesc,
-      msg
+      msg,
+      env
     };
   }
 };

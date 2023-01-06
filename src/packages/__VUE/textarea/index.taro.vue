@@ -181,8 +181,10 @@ export default create({
       query.exec((res: any) => {
         if (res[0] && textareaRef.value) {
           let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid);
-          textareaHeight.value = _item[0]['height'] || 20;
-          copyTxtStyle.value.width = _item[0]['width'] + 'px';
+          if (_item[0]) {
+            textareaHeight.value = _item[0]['height'] || 20;
+            copyTxtStyle.value.width = _item[0]['width'] + 'px';
+          }
           nextTick(getContentHeight);
         }
       });

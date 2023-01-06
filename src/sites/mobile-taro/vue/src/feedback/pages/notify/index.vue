@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo full dragDe" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group :title="baseState.state.desc">
       <nut-cell is-Link @click="baseState.methods.cellClick">{{ baseState.state.desc }}</nut-cell>
       <nut-notify
@@ -52,8 +53,14 @@
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const onClosed = () => console.log('closed');
     const onClick = () => console.log('click');
 
@@ -113,7 +120,8 @@ export default {
       onClosed,
       onClick,
       show,
-      showNotify
+      showNotify,
+      env
     };
   }
 };

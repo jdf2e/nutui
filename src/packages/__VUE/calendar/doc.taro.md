@@ -32,8 +32,8 @@ app.use(Calendar);
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :start-date="`2022-01-11`"
+    :end-date="`2022-11-30`"
   >
   </nut-calendar>
 </template>
@@ -295,16 +295,18 @@ export default {
   >
   </nut-cell>
   <nut-calendar
+    ref="calendarRef"
     v-model:visible="isVisible"
     :default-value="date"
     type="range"
-    :start-date="`2021-12-22`"
-    :end-date="`2022-12-31`"
+    :start-date="null"
+    :end-date="null"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
     <template v-slot:btn>
       <div class="wrapper">
+        <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
       </div>
@@ -316,13 +318,14 @@ export default {
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, ref } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      date: ['2021-12-23', '2021-12-26'],
+      date: [],
       isVisible: false
     });
+    const calendarRef = ref(null);
     const getNumTwoBit = function(n: number): string {
       n = Number(n);
       return (n > 9 ? '' : '0') + n;
@@ -375,7 +378,7 @@ export default {
     };
     const clickBtn = (param: string) => {
       let date = [date2Str(new Date()), getDay(6)];
-      state.date5 = date;
+      state.date = date;
     };
     const clickBtn1 = (param: string) => {
       let date = new Date();
@@ -384,7 +387,12 @@ export default {
       month = month < 10 ? '0' + month : month + '';
       let yearMonth = `${year}-${month}`;
       let currMonthDays = getMonthDays(year + '', month + '');
-      state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
+      state.date = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
+    };
+    const goDate = () => {
+      if (calendarRef.value) {
+        calendarRef.value.scrollToDate(date2Str(new Date()));
+      }
     };
     return {
       ...toRefs(state),
@@ -392,7 +400,9 @@ export default {
       openSwitch,
       closeSwitch,
       clickBtn,
-      clickBtn1
+      clickBtn1,
+      calendarRef,
+      goDate
     };
   }
 }
@@ -491,9 +501,8 @@ export default {
   <nut-cell
     :showIcon="true"
     title="自定义周起始日"
-    :desc="date ? `${date} ${dateWeek}` : '请选择'"
+    :desc="date ? `${date}` : '请选择'"
     @click="openSwitch('isVisible')"
-    :first-day-of-week="2"
   >
   </nut-cell>
   <nut-calendar
@@ -501,8 +510,7 @@ export default {
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :first-day-of-week="2"
   >
   </nut-calendar>
 </template>
@@ -513,7 +521,6 @@ export default {
     const state = reactive({
       isVisible: false,
       date: '',
-      dateWeek: ''
     });
     const openSwitch = param => {
       state[`${param}`] = true;
@@ -523,7 +530,6 @@ export default {
     };
     const setChooseValue = param => {
       state.date = param[3];
-      state.dateWeek = param[4];
     };
     return {
       ...toRefs(state),
@@ -548,6 +554,8 @@ export default {
         :default-value="date"
         :is-auto-back-fill="true"
         @choose="setChooseValue"
+        :start-date="`2020-02-01`"
+        :end-date="`2020-12-30`"
     >
     </nut-calendar>
   </div>
@@ -557,7 +565,7 @@ import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      date: '2022-07-08'
+      date: '2020-07-08'
     });
     const setChooseValue = param => {
       state.date = param[3];
@@ -637,7 +645,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

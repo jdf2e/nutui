@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-row type="flex">
       <nut-col :span="8">
@@ -102,14 +103,18 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, h } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { renderIcon } from '../../../../../../../packages/utils/create';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
 
 export default {
   components: {
-    Service
+    Service,
+    Header
   },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       showIcon: false,
       placement: false,
@@ -272,7 +277,8 @@ export default {
       handlePicker,
       clickCustomHandle,
       renderIcon,
-      closePicker
+      closePicker,
+      env
     };
   }
 };

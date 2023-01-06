@@ -6,9 +6,7 @@
     v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
     <template v-if="!avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount">
-      <view>
-        <slot></slot>
-      </view>
+      <slot></slot>
     </template>
     <!-- 折叠头像 -->
     <template v-if="showMax && avatarGroup?.props?.maxCount">

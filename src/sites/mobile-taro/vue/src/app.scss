@@ -9,6 +9,10 @@ page,
     overflow-y: auto;
     padding: 0 17px 17px 17px;
 
+    &.web {
+      padding-top: 57px !important;
+    }
+
     &.full {
       padding: 0 0 0 0;
       h2 {

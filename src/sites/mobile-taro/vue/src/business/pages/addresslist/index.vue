@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-address-list
       :data="data"
@@ -42,10 +43,13 @@
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const data = ref([
       {
         testid: 3,
@@ -93,7 +97,8 @@ export default {
       copyClick,
       setClick,
       addAddress,
-      dataMapOptions
+      dataMapOptions,
+      env
     };
   }
 };
