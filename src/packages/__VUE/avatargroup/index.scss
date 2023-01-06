@@ -2,7 +2,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  display: inline-block;
+  display: flex;
   position: relative;
   flex: 0 0 auto; // 防止被压缩
   .nut-avatar {
