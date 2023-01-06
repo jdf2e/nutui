@@ -19,7 +19,7 @@ app.use(Sku);
 :::demo
 ```html
 <template>
-  <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+  <nut-cell :title="`基础用法`" desc="" @click="base = true"></nut-cell>
   <nut-sku
     v-model:visible="base"
     :sku="sku"

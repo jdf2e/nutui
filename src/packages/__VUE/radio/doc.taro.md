@@ -23,7 +23,7 @@ app.use(Checklist);
 
 ```html
 <template>
-  <nut-cell-group title="基本用法">
+  <nut-cell-group title="基础用法">
     <nut-cell>
       <nut-radio-group v-model="radioVal">
         <nut-radio label="1">选项1</nut-radio>
