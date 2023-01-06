@@ -8,15 +8,18 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name,exclude } = element;
-    const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
-      fs.existsSync(filePath) ? '.taro' : ''
-    }.vue';\n`;
-    importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
-    if (exclude != true) {
-      packages.push(name);
+    let { name,exclude, taro } = element;
+    if(taro == true) {
+      const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
+        fs.existsSync(filePath) ? '.taro' : ''
+      }.vue';\n`;
+      importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
+      if (exclude != true) {
+        packages.push(name);
+      }
     }
+    
   });
 });
 let installFunction = `function install(app: any) {

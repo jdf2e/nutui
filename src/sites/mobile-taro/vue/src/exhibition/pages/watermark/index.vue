@@ -1,5 +1,6 @@
 <template>
-  <div class="demo watermark-demo">
+  <div class="demo watermark-demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell class="wrap">
       <nut-button @click="showTextMark">文字水印</nut-button>
@@ -23,9 +24,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
     const imgSrc = ref(
       'http://img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
@@ -37,7 +41,7 @@ export default defineComponent({
     const showImageMark = () => {
       flag.value = true;
     };
-    return { src, imgSrc, showTextMark, showImageMark, flag };
+    return { src, imgSrc, showTextMark, showImageMark, flag, env };
   }
 });
 </script>

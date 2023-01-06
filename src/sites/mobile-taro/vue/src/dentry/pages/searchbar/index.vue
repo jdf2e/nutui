@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-searchbar v-model="searchValue" :focus-style="{ border: '1px solid red' }"> </nut-searchbar>
 
@@ -53,13 +54,17 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue-taro';
 
 export default {
   props: {},
-  components: { Search2, Left, Photograph, Message },
+  components: { Search2, Left, Photograph, Message, Header },
 
   setup() {
+    const env = Taro.getEnv();
+
     const icon =
       'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
 
@@ -86,7 +91,8 @@ export default {
       icon,
       clickLeft,
       search,
-      ...toRefs(state)
+      ...toRefs(state),
+      env
     };
   }
 };

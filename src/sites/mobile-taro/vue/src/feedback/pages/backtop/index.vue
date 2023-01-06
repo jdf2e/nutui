@@ -1,5 +1,6 @@
 <template>
-  <view class="demo">
+  <view class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-backtop @click="click">
       <template v-slot:content>
         <div class="text-data">我是测试数据1</div>
@@ -32,14 +33,21 @@
 </template>
 
 <script>
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const click = () => {
       console.log('click');
     };
 
     return {
-      click
+      click,
+      env
     };
   }
 };

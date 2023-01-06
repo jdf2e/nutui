@@ -1,5 +1,6 @@
 <template>
-  <div class="demo list-demo">
+  <div class="demo list-demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
@@ -14,9 +15,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       count: new Array(100).fill(0)
     });
@@ -31,7 +35,7 @@ export default defineComponent({
       state.count = state.count.map((item: number, index: number) => index + 1);
     });
 
-    return { ...toRefs(state), handleScroll };
+    return { ...toRefs(state), handleScroll, env };
   }
 });
 </script>

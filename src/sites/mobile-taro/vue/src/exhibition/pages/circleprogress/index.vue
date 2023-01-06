@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div class="demo__piece">
       <nut-circle-progress :progress="20"> </nut-circle-progress>
@@ -35,8 +36,14 @@
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const gradientColor = {
       '0%': '#FF5E5E',
       '100%': '#FFA062'
@@ -59,7 +66,8 @@ export default {
       setAddVal,
       setReduceVal,
       percent,
-      gradientColor
+      gradientColor,
+      env
     };
   }
 };

@@ -238,7 +238,7 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

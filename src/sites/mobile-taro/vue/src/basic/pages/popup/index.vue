@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell title="展示弹出层" is-link @click="showBasic = true"></nut-cell>
     <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="showBasic" :z-index="100"
@@ -40,6 +41,9 @@
     <h2>圆角弹框</h2>
     <nut-cell title="圆角弹框" is-link @click="showRound = true"></nut-cell>
     <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
+    <h2>指定挂载节点</h2>
+    <nut-cell title="指定挂载节点" is-link @click="showTeleport = true"></nut-cell>
+    <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport">app</nut-popup>
     <h2>多层堆叠</h2>
     <nut-cell title="多层堆叠" is-link @click="showPop1 = true"></nut-cell>
     <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
@@ -52,10 +56,14 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { Heart } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { Heart },
+  components: { Heart, Header },
   props: {},
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       showBasic: false,
       showTop: false,
@@ -68,9 +76,10 @@ export default {
       showRound: false,
       showCombination: false,
       showPop1: false,
-      showPop2: false
+      showPop2: false,
+      showTeleport: false
     });
-    return { ...toRefs(state) };
+    return { ...toRefs(state), env };
   }
 };
 </script>

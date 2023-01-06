@@ -1,5 +1,6 @@
 <template>
-  <div class="demo sticky-demo">
+  <div class="demo sticky-demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-sticky top="0" :parent-height="1200">
@@ -10,12 +11,20 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
+
 export default defineComponent({
   props: {},
+  components: {
+    Header
+  },
   setup() {
     const container = ref(null);
+    const env = Taro.getEnv();
     return {
-      container
+      container,
+      env
     };
   }
 });

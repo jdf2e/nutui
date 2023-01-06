@@ -48,6 +48,38 @@ app.use(Step);
 ```
 :::
 
+### Basic Usage(Dot)
+
+:::demo
+
+```html
+<template>
+  <nut-steps :current="current2" progress-dot>
+    <nut-step></nut-step>
+    <nut-step></nut-step>
+    <nut-step></nut-step>
+  </nut-steps>
+  <div class="steps-button">
+    <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
+  </div>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        current2: 1,
+      });
+      const handleClickStep = (index: number) => {
+        console.log(index)
+      };
+      return { ...toRefs(state), handleClickStep };
+    }
+  };
+</script>
+```
+:::
+
 ### Title and description information
 
 :::demo
@@ -178,7 +210,7 @@ app.use(Step);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-image-preview :show="showPreview1" :images="imgData" @close="hideFn(1)" :isLoop="false" />
     <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn(1)"></nut-cell>
@@ -29,9 +30,12 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const resData = reactive({
       showPreview1: false,
       showPreview2: false,
@@ -97,7 +101,8 @@ export default {
     return {
       ...toRefs(resData),
       showFn,
-      hideFn
+      hideFn,
+      env
       // fnShow
     };
   }

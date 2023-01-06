@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>点击触发</h2>
 
     <div class="ani-demo-div">
@@ -73,10 +74,14 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
-    return {};
+    const env = Taro.getEnv();
+
+    return { env };
   }
 });
 </script>

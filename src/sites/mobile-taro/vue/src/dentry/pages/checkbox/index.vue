@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group title="基本用法-左右">
       <nut-cell>
         <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
@@ -115,11 +116,16 @@
 <script lang="ts">
 import { reactive, ref, toRefs, Ref } from 'vue';
 import { Checklist } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   components: {
-    Checklist
+    Checklist,
+    Header
   },
   setup(props, context) {
+    const env = Taro.getEnv();
+
     const group = ref(null) as Ref;
     const group2 = ref(null) as Ref;
     const data = reactive({
@@ -201,7 +207,8 @@ export default {
       toggleReverse,
       group,
       group2,
-      ...toRefs(data)
+      ...toRefs(data),
+      env
     };
   }
 };

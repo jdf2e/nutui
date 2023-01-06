@@ -47,7 +47,7 @@ app.use(Ecard);
           price:40
         },
       ])
-    const money = ref(0);
+    const money = ref(10);
     const inputChange = (val) => {
       money.value = val;
     };
@@ -101,7 +101,7 @@ app.use(Ecard);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

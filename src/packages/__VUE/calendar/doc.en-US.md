@@ -32,8 +32,8 @@ app.use(Calendar);
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :start-date="`2022-01-11`"
+    :end-date="`2022-11-30`"
   >
   </nut-calendar>
 </template>
@@ -500,9 +500,8 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Custom First Day Of Week"
-    :desc="date ? `${date} ${dateWeek}` : 'Please Select Date'"
+    :desc="date ? `${date}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
-    :first-day-of-week="2"
   >
   </nut-cell>
   <nut-calendar
@@ -510,8 +509,7 @@ export default {
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :first-day-of-week="2"
   >
   </nut-calendar>
 </template>
@@ -522,7 +520,6 @@ export default {
     const state = reactive({
       isVisible: false,
       date: '',
-      dateWeek: ''
     });
     const openSwitch = param => {
       state[`${param}`] = true;
@@ -532,7 +529,6 @@ export default {
     };
     const setChooseValue = param => {
       state.date = param[3];
-      state.dateWeek = param[4];
     };
     return {
       ...toRefs(state),
@@ -552,10 +548,12 @@ export default {
 <template>
   <div class="test-calendar-wrapper" >
     <nut-calendar
-        :poppable="false"
-        :default-value="date"
-        :is-auto-back-fill="true"
-        @choose="setChooseValue"
+      :poppable="false"
+      :default-value="date"
+      :is-auto-back-fill="true"
+      @choose="setChooseValue"
+      :start-date="`2020-02-01`"
+      :end-date="`2020-12-30`"
     >
     </nut-calendar>
   </div>
@@ -565,7 +563,7 @@ import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      date: '2022-07-08'
+      date: '2020-07-08'
     });
     const setChooseValue = param => {
       state.date = param[3];
@@ -643,7 +641,7 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

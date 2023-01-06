@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-input placeholder="文本" v-model="state.val1" />
 
@@ -58,10 +59,10 @@
     <nut-input v-model="state.disabled" :border="false" placeholder="无边框" />
     <nut-input v-model="state.showIcon" :border="false" placeholder="无边框" />
 
-    <h2>点击事件</h2>
+    <h2>事件演示</h2>
     <nut-input
       v-model="state.event"
-      placeholder="点击"
+      placeholder="事件演示"
       clearable
       :adjust-position="state.adjustPosition"
       @update:model-value="change"
@@ -77,11 +78,16 @@
 <script lang="ts">
 import { reactive } from 'vue';
 import { Close } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   components: {
-    Close
+    Close,
+    Header
   },
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       val1: '',
       val2: '',
@@ -141,7 +147,8 @@ export default {
       click,
       clickInput,
       formatter,
-      clearValue
+      clearValue,
+      env
     };
   }
 };
