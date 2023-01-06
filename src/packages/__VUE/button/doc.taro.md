@@ -198,8 +198,14 @@ app.use(Button);
 | plain    | 是否为朴素按钮                                               | boolean | `false`   |
 | disabled | 是否禁用按钮                                                 | boolean | `false`   |
 | block    | 是否为块级元素                                               | boolean | `false`   |
-| icon     | 按钮图标，同 `Icon` 组件 `name` 属性                             | string  | -         |
 | loading  | 按钮 `loading` 状态                                            | boolean | `false`   |
+
+### Slots
+
+| 名称 | 说明 |
+|-|-|
+| default | 按钮内容 |
+| icon | 按钮图标 |
 
 ### Events
 
@@ -211,7 +217,7 @@ app.use(Button);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

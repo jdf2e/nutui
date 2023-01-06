@@ -15,20 +15,31 @@
         <nut-button type="primary" @click="handleStep('current1')">下一步</nut-button>
       </div>
     </div>
+    <h2>基本用法（点状）</h2>
+    <div class="steps-wrapper">
+      <nut-steps :current="current2" progress-dot>
+        <nut-step></nut-step>
+        <nut-step></nut-step>
+        <nut-step></nut-step>
+      </nut-steps>
+      <div class="steps-button">
+        <nut-button size="mini" type="primary" @click="handleStep('current2')">下一步</nut-button>
+      </div>
+    </div>
     <h2>标题和描述信息</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current2">
+      <nut-steps :current="current3">
         <nut-step title="步骤一" content="步骤描述">1</nut-step>
         <nut-step title="步骤二" content="步骤描述"></nut-step>
         <nut-step title="步骤三" content="步骤描述"></nut-step>
       </nut-steps>
       <div class="steps-button" style="margin-top: 10px">
-        <nut-button type="primary" @click="handleStep('current2')">下一步</nut-button>
+        <nut-button type="primary" @click="handleStep('current3')">下一步</nut-button>
       </div>
     </div>
     <h2>自定义图标</h2>
     <div class="steps-wrapper">
-      <nut-steps current="1">
+      <nut-steps current="4">
         <nut-step title="已完成" icon="service">1</nut-step>
         <nut-step title="进行中" icon="people">2</nut-step>
         <nut-step title="未开始" icon="location2">3</nut-step>
@@ -42,7 +53,7 @@
         <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
       </nut-steps>
     </div>
-    <h2>竖向步骤条</h2>
+    <h2>点状步骤和垂直方向</h2>
     <div class="steps-wrapper" style="height: 300px; padding: 15px 40px">
       <nut-steps direction="vertical" progress-dot current="2">
         <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>

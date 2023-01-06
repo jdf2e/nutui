@@ -11,7 +11,7 @@
       <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
     ></nut-category>
 
-    <h2>自定义</h2>
+    <h2>自定义分类</h2>
     <nut-category
       ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
     ></nut-category>

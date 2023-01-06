@@ -160,6 +160,27 @@ app.use(Switch);
 ```
 :::
 
+### Custom loading icon
+:::demo
+``` html
+<template>
+  <nut-switch v-model="checked" loading>
+    <template #icon><Loading name="loading" /></template>
+  </nut-switch>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { Loading } from '@nutui/icons-vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
+```
+:::
+
 ## API
 
 ### Props
@@ -193,7 +214,7 @@ app.use(Switch);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

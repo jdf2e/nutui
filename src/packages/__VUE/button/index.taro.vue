@@ -47,18 +47,6 @@ export default create({
     block: {
       type: Boolean,
       default: false
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    iconClassPrefix: {
-      type: String,
-      default: 'nut-icon'
-    },
-    iconFontClassName: {
-      type: String,
-      default: 'nutui-iconfont'
     }
   },
   emits: ['click'],
