@@ -54,7 +54,7 @@
         </nut-radio-group>
       </nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="Radio自定义图标">
+    <nut-cell-group title="自定义图标">
       <nut-cell>
         <nut-radio-group v-model="radioVal5">
           <nut-radio label="1">
