@@ -271,6 +271,9 @@ export default {
 .div {
   width: 150px;
 }
+.cell {
+  padding: 40px 18px;
+}
 </style>
 <template>
   <nut-cell class="vertical_div">
@@ -310,6 +313,9 @@ export default {
 }
 .div {
   width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
