@@ -285,13 +285,17 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+  
+}
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
-  <nut-cell class="vertical_div">
+  <nut-cell class="vertical_div cell">
     <div class="div">
       <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
     </div>
@@ -311,7 +315,8 @@ export default {
     const value11 = ref([20,80]);
     const onChange = (value) => showToast.text('当前值：' + value);
     return {
-      value,
+      value10,
+      value11,
       onChange,
     };
   },
@@ -326,9 +331,12 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+} 
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
@@ -339,7 +347,7 @@ export default {
     <nut-cell class="cell">
       <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
     </nut-cell>
-    <nut-cell class="vertical_div">
+    <nut-cell class="vertical_div cell">
       <div class="div">
         <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
       </div>
@@ -358,13 +366,17 @@ export default {
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref,reactive,toRefs } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
-    const value12 = ref(20);
-    const value13 = ref([20,80]);
+    const state = reactive({
+      value12: 60,
+      value13: [20, 80],
+      value14: 60,
+      value15: [20, 80],
+    })
     const marks=ref({
       0: 0,
       20: 20,
@@ -375,7 +387,8 @@ export default {
     });
     const onChange = (value) => showToast.text('当前值：' + value);
     return {
-      value,
+      ...toRefs(state),
+      marks,
       onChange,
     };
   },
