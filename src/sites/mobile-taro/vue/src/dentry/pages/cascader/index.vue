@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
 
     <nut-cell title="选择地址" :desc="demo1.value.toString() || '请选择地址'" @click="demo1.visible = true"> </nut-cell>
@@ -69,10 +70,16 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     // 基础用法
     const demo1 = reactive({
       visible: false,
@@ -255,7 +262,8 @@ export default {
       demo3,
       demo4,
       demo5,
-      events
+      events,
+      env
     };
   }
 };

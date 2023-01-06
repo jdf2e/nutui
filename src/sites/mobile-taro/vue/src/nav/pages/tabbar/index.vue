@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-tabbar @tab-switch="tabSwitch">
       <nut-tabbar-item tab-title="首页">
@@ -102,10 +103,14 @@
 <script lang="ts">
 import { ref, h } from 'vue';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { Home, Category, Find, Cart, My },
+  components: { Home, Category, Find, Cart, My, Header },
   props: {},
   setup() {
+    const env = Taro.getEnv();
+
     const active = ref(2);
     const activeName = ref('category');
     function tabSwitch(item: object, index: number) {
@@ -155,7 +160,8 @@ export default {
       Find,
       Cart,
       Category,
-      tabSwitch
+      tabSwitch,
+      env
     };
   }
 };

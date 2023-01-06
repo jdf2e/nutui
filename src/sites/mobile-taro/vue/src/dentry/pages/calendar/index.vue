@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div>
       <nut-cell
@@ -171,6 +172,8 @@
 
 <script lang="ts">
 import { reactive, toRefs, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import Utils from '../../../../../../../packages/utils/date';
 
 interface TestCalendarState {
@@ -193,7 +196,12 @@ interface TestCalendarState {
 }
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const calendarRef = ref(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
@@ -292,7 +300,8 @@ export default {
       setChooseValue7,
       goDate,
       calendarRef,
-      select
+      select,
+      env
     };
   }
 };

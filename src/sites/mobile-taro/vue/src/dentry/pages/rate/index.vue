@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基本用法</h2>
     <nut-cell class="cell">
       <nut-rate v-model="state.val" />
@@ -27,11 +28,14 @@
 
 <script>
 import { reactive, getCurrentInstance } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { HeartFill, StarFillN } from '@nutui/icons-vue-taro';
 
 export default {
-  components: { HeartFill, StarFillN },
+  components: { HeartFill, StarFillN, Header },
   setup() {
+    const env = Taro.getEnv();
     let { proxy } = getCurrentInstance();
 
     const state = reactive({
@@ -52,7 +56,8 @@ export default {
       state,
       onChange,
       HeartFill,
-      StarFillN
+      StarFillN,
+      env
     };
   }
 };

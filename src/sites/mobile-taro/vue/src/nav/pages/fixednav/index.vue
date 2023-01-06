@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-fixed-nav
       active-text="基础用法"
       :position="{ top: '70px' }"
@@ -45,10 +46,15 @@
 <script lang="ts">
 import { onMounted, reactive, ref } from 'vue';
 import { Retweet } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
+
 export default {
   props: {},
-  components: { Retweet },
+  components: { Retweet, Header },
   setup() {
+    const env = Taro.getEnv();
+
     const visible = ref(false);
     const visible1 = ref(false);
     const visible2 = ref(false);
@@ -94,7 +100,8 @@ export default {
       visible3,
       myActive,
       navList,
-      selected
+      selected,
+      env
     };
   }
 };

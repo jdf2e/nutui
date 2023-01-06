@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基本用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
     <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
@@ -68,14 +69,17 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { My } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { My },
+  components: { My, Header },
   setup() {
     const testClick = (event: Event) => {
       // console.log('点击事件');
     };
+    const env = Taro.getEnv();
     const switchChecked = ref(true);
-    return { testClick, switchChecked };
+    return { testClick, switchChecked, env };
   }
 };
 </script>

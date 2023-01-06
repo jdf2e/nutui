@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>默认用法</h2>
     <nut-invoice :data="data" :formValue="formValue" @onSubmit="submit"></nut-invoice>
   </div>
@@ -7,9 +8,15 @@
 
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const formValue = reactive({
       type: '企业',
       name: '',
@@ -99,7 +106,8 @@ export default {
       data,
       formValue,
       submit,
-      asyncValidator
+      asyncValidator,
+      env
     };
   }
 };

@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-signature @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
     <p class="demo-tips demo1">Tips: 点击确认按钮,下方显示签名图片</p>
@@ -19,9 +20,12 @@
 
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const demoSignUrl = ref('');
     const state = reactive({
       lineWidth: 4,
@@ -45,7 +49,7 @@ export default {
     const end = () => {
       console.log('签名结束');
     };
-    return { ...state, confirm, clear, start, signing, end, demoSignUrl };
+    return { ...state, confirm, clear, start, signing, end, demoSignUrl, env };
   }
 };
 </script>

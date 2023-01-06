@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>按钮类型</h2>
     <div class="demo-button-row">
       <nut-button type="primary">主要按钮</nut-button>
@@ -71,13 +72,17 @@
 <script>
 import { ref } from 'vue';
 import { StarFill, Star } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
   components: {
     StarFill,
-    Star
+    Star,
+    Header
   },
   setup(props) {
+    const env = Taro.getEnv();
     let isLoading = ref(false);
     const changeLoading = () => {
       isLoading.value = true;
@@ -88,7 +93,8 @@ export default {
 
     return {
       isLoading,
-      changeLoading
+      changeLoading,
+      env
     };
   }
 };

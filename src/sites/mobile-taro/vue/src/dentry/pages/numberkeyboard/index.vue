@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
     <nut-number-keyboard overlay v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-number-keyboard>
@@ -46,9 +47,16 @@
 
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const visible1 = ref(false);
     const visible2 = ref(false);
     const visible3 = ref(false);
@@ -85,7 +93,8 @@ export default {
       visible4,
       visible5,
       visible6,
-      value
+      value,
+      env
     };
   }
 };

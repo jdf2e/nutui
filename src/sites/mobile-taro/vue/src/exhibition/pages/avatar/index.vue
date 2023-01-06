@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>支持三种尺寸：small、normal、large</h2>
     <nut-cell>
       <nut-avatar size="large">
@@ -94,15 +95,18 @@
 </template>
 <script lang="ts">
 import { My } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { My },
+  components: { My, Header },
   props: {},
   setup() {
+    const env = Taro.getEnv();
     const handleClick = () => {
       console.log('触发点击头像');
     };
 
-    return { handleClick };
+    return { handleClick, env };
   }
 };
 </script>

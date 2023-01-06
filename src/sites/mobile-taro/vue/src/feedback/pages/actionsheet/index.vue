@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基本用法</h2>
     <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
       <span><label>基础用法</label></span>
@@ -70,6 +71,8 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 interface Item {
   name: string;
   subname?: string;
@@ -79,7 +82,11 @@ interface Item {
 }
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       isVisible1: false,
       isVisible2: false,
@@ -158,7 +165,8 @@ export default {
       chooseItemTwo,
       chooseItemThree,
       chooseItemFour,
-      switchActionSheet
+      switchActionSheet,
+      env
     };
   }
 };
