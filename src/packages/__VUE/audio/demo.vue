@@ -83,7 +83,7 @@ import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop, Voice } from '@
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       voicePlay: '语音播放',
       progress: '进度条展示',
       customControl: '自定义操作按钮'

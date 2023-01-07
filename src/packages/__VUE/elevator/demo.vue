@@ -45,7 +45,7 @@ import { Jd } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定义索引key',
       sticky: '索引吸顶',
       customContent: '自定义内容',

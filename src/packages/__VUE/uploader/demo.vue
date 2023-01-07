@@ -54,7 +54,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       uploadfile: '上传文件',
       title1: '上传状态',
       title2: '基础用法-上传列表展示',

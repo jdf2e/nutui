@@ -93,7 +93,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Dongdong, Home, Search } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
-    'zh-CN': {
+    'zh-CN': {基础用法
       basic: '基本用法',
       text: '文字',
       columnNum: '自定义列数',

@@ -30,7 +30,7 @@ import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       simpleMode: '简单模式',
       showEllipses: '显示省略号',
       customButton: '自定义按钮'

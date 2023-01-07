@@ -36,7 +36,7 @@ import { showImagePreview } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       withInitNo: '设置初始页码',
       showPreview: '展示图片预览',
       withPagination: '设置轮播指示器及颜色',

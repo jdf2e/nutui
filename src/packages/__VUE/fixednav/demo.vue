@@ -60,7 +60,7 @@ import { Retweet } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       left1: '左侧收起',
       left2: '左侧展开',
       cus1: '关',

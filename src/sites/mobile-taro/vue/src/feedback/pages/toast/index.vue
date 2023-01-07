@@ -1,7 +1,7 @@
 <template>
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <nut-toast
       :msg="page.state.msg"
       v-model:visible="page.state.show"

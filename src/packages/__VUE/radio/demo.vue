@@ -91,7 +91,7 @@ import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       option1: '选项1',
       option2: '选项2',
       option3: '选项3',

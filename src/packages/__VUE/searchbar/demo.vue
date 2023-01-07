@@ -62,7 +62,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic1: '基本用法',
+      basic1: '基础用法',
       basic2: '搜索事件监听',
       basic3: '显示搜索 icon',
       basic4: '右侧添加搜索文字',

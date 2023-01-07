@@ -1,7 +1,7 @@
 <template>
   <div class="demo elevator-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <div class="elevator-wrapper">
       <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
     </div>

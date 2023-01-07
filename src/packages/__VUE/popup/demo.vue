@@ -61,7 +61,7 @@ import { Heart } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       cell1: '展示弹出层',
       text: '正文',
       position: '弹出位置',

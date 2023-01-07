@@ -42,7 +42,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Top } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
-    'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
+    'zh-CN': { title: '基础用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
     'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
   });
 export default createDemo({
