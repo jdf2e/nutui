@@ -26,7 +26,7 @@
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
         </view>
-        <view v-if="canShowTag" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
+        <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
       </template>
     </Nut-Scroll-View>
     <view class="nut-tabs__content" :style="contentStyle">
@@ -188,7 +188,7 @@ export default create({
     };
     const navRectRef = ref();
     const titleRectRef = ref<RectItem[]>([]);
-    const canShowTag = ref(false);
+    const canShowLabel = ref(false);
     const scrollIntoView = () => {
       if (props.name) {
         raf(() => {
@@ -202,9 +202,9 @@ export default create({
             if (navRectRef.value) {
               const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
               if (titlesTotalWidth > navRectRef.value.width) {
-                canShowTag.value = true;
+                canShowLabel.value = true;
               } else {
-                canShowTag.value = false;
+                canShowLabel.value = false;
               }
             }
 
@@ -332,7 +332,7 @@ export default create({
       scrollLeft,
       scrollWithAnimation,
       onStickyScroll,
-      canShowTag,
+      canShowLabel,
       ...methods
     };
   }
