@@ -3,11 +3,11 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-address-list
       :data="data"
-      @delIcon="delClick"
-      @editIcon="editClick"
-      @itemClick="itemClick"
+      @del-icon="delClick"
+      @edit-icon="editClick"
+      @click-item="clickItem"
       :showBottomButton="false"
-      :dataMapOptions="dataMapOptions"
+      :data-options="dataOptions"
     >
     </nut-address-list>
     <h2>{{ translate('title1') }}</h2>
@@ -15,13 +15,13 @@
       :data="data"
       long-Press
       :showBottomButton="false"
-      @delIcon="delClick"
-      @editIcon="editClick"
-      @itemClick="itemClick"
-      @longCopy="copyClick"
-      @longSet="setClick"
-      @longDel="delClick"
-      :dataMapOptions="dataMapOptions"
+      @del-icon="delClick"
+      @edit-icon="editClick"
+      @click-item="clickItem"
+      @long-copy="copyClick"
+      @long-set="setClick"
+      @long-del="delClickLong"
+      :data-options="dataOptions"
     >
     </nut-address-list>
     <h2>{{ translate('title2') }}</h2>
@@ -29,12 +29,12 @@
       :data="data"
       swipeEdition
       showBottomButton
-      @delIcon="delClick"
-      @editIcon="editClick"
-      @itemClick="itemClick"
-      @swipeDel="delClick"
+      @del-icon="delClick"
+      @edit-icon="editClick"
+      @click-item="clickItem"
+      @swipe-del="delClickSwipe"
       @add="addAddress"
-      :dataMapOptions="dataMapOptions"
+      :data-options="dataOptions"
     >
     </nut-address-list>
   </div>
@@ -78,13 +78,13 @@ export default createDemo({
         fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
       }
     ]);
-    const dataMapOptions = reactive({
+    const dataOptions = reactive({
       id: 'testid',
       addressDetail: 'testaddressDetail',
       addressName: 'testaddressName'
     });
 
-    const itemClick = () => {
+    const clickItem = () => {
       console.log('Click To Address');
     };
     const delClick = () => {
@@ -99,18 +99,26 @@ export default createDemo({
     const setClick = () => {
       console.log('Click On Settings');
     };
+    const delClickLong = () => {
+      console.log('Click On DelClickLong');
+    };
+    const delClickSwipe = () => {
+      console.log('Click On DelClickSwipe');
+    };
     const addAddress = () => {
       console.log('Click To Add');
     };
     return {
-      itemClick,
+      clickItem,
       data,
       delClick,
       editClick,
       copyClick,
       setClick,
+      delClickLong,
+      delClickSwipe,
       addAddress,
-      dataMapOptions,
+      dataOptions,
       translate
     };
   }

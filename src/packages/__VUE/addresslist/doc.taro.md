@@ -23,11 +23,11 @@ app.use(AddressList);
 <template>
   <nut-address-list
     :data="data"
-    @delIcon="delClick"
-    @editIcon="editClick"
-    @itemClick="itemClick"
+    @del-icon="delClick"
+    @edit-icon="editClick"
+    @click-item="clickItem"
     :show-bottom-button="false"
-    :dataMapOptions="dataMapOptions"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
@@ -51,12 +51,12 @@ export default {
         fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
       },
     ]);
-    const dataMapOptions = reactive({
+    const dataOptions = reactive({
       id: 'testid',
       addressDetail:'testaddressDetail',
       addressName:'testaddressName'
     });
-    const itemClick = ()=>{
+    const clickItem = ()=>{
       console.log('Click To Address');
     }
     const delClick = ()=>{
@@ -66,15 +66,13 @@ export default {
       console.log('Click To Edit');
     }
     return {
-      itemClick,
-      holdDownClick,
+      clickItem,
       data,
       delClick,
       editClick,
       copyClick,
       setClick,
-      addAddress,
-      dataMapOptions
+      dataOptions
     };
   }
 };
@@ -92,13 +90,13 @@ export default {
     :data="data"
     long-press
     :show-bottom-button="false"
-    @DelIcon="delClick"
-    @EditIcon="editClick"
-    @Item="itemClick"
-    @longPressCopyClick="copyClick"
-    @longPressSetClick="setClick"
-    @longPressDelClick="delClick"
-    :dataMapOptions="dataMapOptions"
+    @del-icon="delClick"
+    @edit-icon="editClick"
+    @click-item="clickItem"
+    @long-copy="copyClick"
+    @long-set="setClick"
+    @long-del="delClickLong"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
@@ -122,12 +120,12 @@ export default {
           fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
         },
       ]);
-      const dataMapOptions = reactive({
+      const dataOptions = reactive({
         id: 'testid',
         addressDetail:'testaddressDetail',
         addressName:'testaddressName'
       });
-      const itemClick = ()=>{
+      const clickItem = ()=>{
         console.log('Click To Address');
       }
       const delClick = ()=>{
@@ -142,19 +140,18 @@ export default {
       const setClick = ()=>{
         console.log('Click On Settings');
       }
-      const addAddress = ()=>{
+      const delClickLong = ()=>{
         console.log('Click To Add');
       }
       return {
-        itemClick,
-        holdDownClick,
         data,
+        clickItem,
         delClick,
         editClick,
         copyClick,
         setClick,
-        addAddress,
-        dataMapOptions
+        delClickLong,
+        dataOptions
       };
     }
   };
@@ -171,12 +168,12 @@ export default {
     :data="data"
     swipe-edition
     show-bottom-button
-    @Item="itemClick"
-    @EditIcon="editClick"
-    @DelIcon="delClick"
-    @swipeDelClick="delClick"
+    @edit-icon="editClick"
+    @del-icon="delClick"
+    @click-item="clickItem"
+    @swipe-del="delClickSwipe"
     @add="addAddress"
-    :dataMapOptions="dataMapOptions"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
@@ -200,12 +197,12 @@ export default {
           fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
         },
       ]);
-      const dataMapOptions = reactive({
+      const dataOptions = reactive({
         id: 'testid',
         addressDetail:'testaddressDetail',
         addressName:'testaddressName'
       });
-      const itemClick = ()=>{
+      const clickItem = ()=>{
         console.log('Click To Address');
       }
       const editClick = ()=>{
@@ -214,19 +211,21 @@ export default {
       const delClick = ()=>{
         console.log('Click To Delete');
       }
+      const delClickSwipe = () => {
+        console.log('Click On DelClickSwipe');
+      };
       const addAddress = ()=>{
         console.log('Click To Add');
       }
       return {
-        itemClick,
-        holdDownClick,
         data,
+        clickItem,
         delClick,
         editClick,
-        copyClick,
         setClick,
+        delClickSwipe,
         addAddress,
-        dataMapOptions
+        dataOptions
       };
     }
   };
@@ -244,6 +243,7 @@ export default {
 | long-press | 长按功能         | boolean | `false`  |
 | swipe-edition      | 右滑功能         | boolean | `false`  |
 | show-bottom-button | 是否展示底部按钮 | boolean | `true`   |
+| data-options | 自定义 `key` 值时，设置映射关系 | Object | -   |
 
 ### Events
 
@@ -270,7 +270,7 @@ export default {
 | swiperight    | 地址列表项右滑区域               | 滑动功能下使用 |
 | longpressbtns | 地址列表项长按遮罩内容           | 长按功能下使用 |
 
-### data 数组中每一项 与 dataMapOptions 对象的参数磨平
+### data 数组中每一项 与 dataOptions 对象的参数磨平
 
 下面是 `data` 数组中每一项 基础数据结构
 
@@ -284,10 +284,10 @@ const dataInfo = {
 };
 ```
 
-组件内优先获取基础数据结构中定义的字段，若想自定义 `key` 值，可以通过 `dataMapOptions` 设置映射关系
+组件内优先获取基础数据结构中定义的字段，若想自定义 `key` 值，可以通过 `dataOptions` 设置映射关系
 
 ```javascript
-const dataMapOptions = {
+const dataOptions = {
   id: "testid",
   addressDetail: "testaddressDetail",
   addressName: "testaddressName",

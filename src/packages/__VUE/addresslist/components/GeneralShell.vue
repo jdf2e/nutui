@@ -68,7 +68,7 @@ export default create({
       default: false
     }
   },
-  emits: ['delIcon', 'editIcon', 'itemClick', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
+  emits: ['delIcon', 'editIcon', 'clickItem', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
   components: {
     ItemContents
   },
@@ -83,8 +83,8 @@ export default create({
         onEditIcon(event: Event) {
           editClick(event);
         },
-        onItemClick(event: Event) {
-          itemClick(event);
+        onClickItem(event: Event) {
+          clickItem(event);
         }
       });
     };
@@ -100,9 +100,9 @@ export default create({
       emit('editIcon', event, props.item);
       event.stopPropagation();
     };
-    const itemClick = (event: Event) => {
+    const clickItem = (event: Event) => {
       if (moveRef.value) return;
-      emit('itemClick', event, props.item);
+      emit('clickItem', event, props.item);
       event.stopPropagation();
     };
     const delLongClick = (event: Event) => {
@@ -161,7 +161,7 @@ export default create({
     return {
       renderCompontent,
       showMaskRef,
-      itemClick,
+      clickItem,
       editClick,
       delClick,
       delLongClick,
