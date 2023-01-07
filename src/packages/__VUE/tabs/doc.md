@@ -173,7 +173,7 @@ export default {
 
 ### 数量多,滚动操作
 
-在`taro`环境下，当同一页面中包含多个`tabs`时，需要设置`name`作为唯一标识符来开启标题栏自动滚动功能。
+在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。
 
 :::demo
 ```html
@@ -352,7 +352,7 @@ export default {
 | auto-height`v3.1.21` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean       | false      |
 | sticky`v3.2.3` `小程序不支持` | 是否使用粘性布局 | boolean       | false      |
 | top`v3.2.3` `小程序不支持` | 粘性布局下的吸顶距离 | number       | 0      |
-| name        | 在`taro`环境下，当同一页面中包含多个`tabs`时，需要设置`name`作为唯一标识符来开启标题栏自动滚动功能。                              | string | ''        |
+| name        | 在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。                              | string | ''        |
 
 ### Tabs Slots
 
