@@ -70,7 +70,7 @@ import { Dongdong } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       single: '评论图片单行展示',
       multiRow: '评论图片多行展示',
       additionalReview: '追评展示'

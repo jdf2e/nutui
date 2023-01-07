@@ -78,7 +78,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customProduct: '自定义商品标签',
       customPro1: '活鲜',
       customPro2: '礼盒',

@@ -49,7 +49,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       style: '遮罩样式',
       duration: '设置动画时间',
       lockscroll: '锁定背景滚动',

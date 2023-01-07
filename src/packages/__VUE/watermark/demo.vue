@@ -29,7 +29,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title2: '局部用法',
       btn1: '文字水印',
       btn2: '图片水印'

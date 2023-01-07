@@ -88,7 +88,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       fill: '填充模式',
       position: '图片位置',
       circle: '圆形图片',

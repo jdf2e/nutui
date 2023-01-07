@@ -86,7 +86,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       showCancelButton: '展示取消按钮',
       showDescription: '展示描述信息',
       optionStatus: '选项状态',

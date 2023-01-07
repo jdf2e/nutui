@@ -1,7 +1,7 @@
 <template>
   <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <nut-cell-group title="基本用法">
+    <nut-cell-group title="基础用法">
       <nut-cell>
         <nut-radio-group v-model="radioVal">
           <nut-radio label="1">选项1</nut-radio>

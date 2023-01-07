@@ -29,7 +29,7 @@ import { onUnmounted } from 'vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       toastText: '文字提示',
       toastTitle: '标题展示',
       toastSuccess: '成功提示',

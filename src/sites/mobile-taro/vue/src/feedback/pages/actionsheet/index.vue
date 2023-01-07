@@ -1,7 +1,7 @@
 <template>
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
       <span><label>基础用法</label></span>
       <div v-html="state.val1"></div>

@@ -20,7 +20,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '修改颜色和签字粗细',
       tips: 'Tips: 点击确认按钮,下方显示签名图片'
     },
