@@ -9,7 +9,6 @@
       class="nut-tabs__titles tabs-scrollview"
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
-      @scroll="handleScroll"
     >
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
@@ -27,6 +26,7 @@
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
         </view>
+        <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
       </template>
     </Nut-Scroll-View>
     <view class="nut-tabs__content" :style="contentStyle">
@@ -43,6 +43,7 @@ import NutScrollView from '../scrollView/index.taro.vue';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
 import raf from '@/packages/utils/raf';
 import Taro from '@tarojs/taro';
+import type { RectItem } from './types';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -166,14 +167,13 @@ export default create({
 
     const titleRef = ref([]) as Ref<HTMLElement[]>;
     const scrollLeft = ref(0);
-    const scrollWithAnimation = ref(true);
+    const scrollWithAnimation = ref(false);
     const getRect = (selector: string) => {
       return new Promise((resolve) => {
         Taro.createSelectorQuery()
           .select(selector)
           .boundingClientRect()
           .exec((rect = []) => {
-            console.log(rect);
             resolve(rect[0]);
           });
       });
@@ -186,24 +186,36 @@ export default create({
           .exec((rect = []) => resolve(rect[0]));
       });
     };
-    const inited = ref(false);
     const navRectRef = ref();
-    const titleRectRef = ref([]);
+    const titleRectRef = ref<RectItem[]>([]);
+    const canShowLabel = ref(false);
     const scrollIntoView = () => {
+      if (!props.name) return;
+
       raf(() => {
         Promise.all([
           getRect(`#nut-tabs__titles_${props.name}`),
           getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
-        ]).then(([navRect, titleRects]) => {
-          if (!inited.value) {
-            navRectRef.value = navRect;
-            titleRectRef.value = titleRects;
-            inited.value = true;
+        ]).then(([navRect, titleRects]: any) => {
+          navRectRef.value = navRect;
+          titleRectRef.value = titleRects;
+
+          if (navRectRef.value) {
+            const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
+            if (titlesTotalWidth > navRectRef.value.width) {
+              canShowLabel.value = true;
+            } else {
+              canShowLabel.value = false;
+            }
           }
 
-          const titleRect = titleRectRef.value[currentIndex.value];
+          const titleRect: RectItem = titleRectRef.value[currentIndex.value];
 
-          let to = titleRect.left - (navRectRef.value.width - titleRect.width) / 2;
+          const left = titleRects
+            .slice(0, currentIndex.value)
+            .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
+
+          const to = left - (navRectRef.value.width - titleRect.width) / 2;
 
           nextTick(() => {
             scrollWithAnimation.value = true;
@@ -310,9 +322,6 @@ export default create({
       }
     };
 
-    const handleScroll = (e: any) => {
-      console.log(e);
-    };
     return {
       titles,
       contentStyle,
@@ -323,7 +332,7 @@ export default create({
       scrollLeft,
       scrollWithAnimation,
       onStickyScroll,
-      handleScroll,
+      canShowLabel,
       ...methods
     };
   }
