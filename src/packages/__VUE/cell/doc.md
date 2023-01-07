@@ -16,7 +16,7 @@ app.use(Cell);
 app.use(CellGroup);
 ```
 
-### 基本用法
+### 基础用法
 
 :::demo
 

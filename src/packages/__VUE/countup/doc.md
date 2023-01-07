@@ -143,7 +143,7 @@ export default {
 |----- | ----- | ----- | ----- 
 | init-num | 初始数字 | number | `0`
 | end-num | 结束数字 | number | `0`
-| speed | 间隔数字，目前仅支持基本用法 | number | `1`
+| speed | 间隔数字，目前仅支持基础用法 | number | `1`
 | to-fixed | 保留小数点后几位 | number | `以传入的数字为准`
 | start-flag | 触发数字滚动的标识 | boolean | `true`
 | during | 滚动一次运行时间 | number | `1000`
