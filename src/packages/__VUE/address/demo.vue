@@ -286,7 +286,6 @@ export default createDemo({
       }
     };
     const close1 = (val: CalResult) => {
-      console.log(val);
       text.one = val.data.addressStr;
     };
 
