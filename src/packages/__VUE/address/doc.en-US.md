@@ -70,7 +70,6 @@ app.use(Address);
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
         };
 
