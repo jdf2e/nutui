@@ -178,4 +178,3 @@ The component provides the following CSS variables, which can be used to customi
 | --------------------------------------- | -------------------------- | 
 | --nut-trendarrow-font-size| _14px_   |
 | --nut-trendarrow-before-icon-margin| _4px_   |
-| --nut-trendarrow-icon-width| _12px_   |
