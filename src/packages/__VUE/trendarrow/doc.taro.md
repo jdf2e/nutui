@@ -180,4 +180,3 @@ app.use(TrendArrow);
 | --------------------------------------- | -------------------------- | 
 | --nut-trendarrow-font-size| _14px_   |
 | --nut-trendarrow-before-icon-margin| _4px_   |
-| --nut-trendarrow-icon-width| _12px_   |
