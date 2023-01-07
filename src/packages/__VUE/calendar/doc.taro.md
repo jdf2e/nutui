@@ -74,7 +74,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="选择日期区间"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -238,7 +238,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="选择日期范围"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -290,7 +290,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="自定义按钮"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>

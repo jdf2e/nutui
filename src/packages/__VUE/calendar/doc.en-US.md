@@ -74,7 +74,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -239,7 +239,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -291,7 +291,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Custom Button"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -457,7 +457,7 @@ export default {
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
     <template v-slot:bottomInfo="date">
-      <span class="info" style="fontSize:12px;lineHeight:14px">{{
+      <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
     </template>
