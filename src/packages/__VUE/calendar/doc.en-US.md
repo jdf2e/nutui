@@ -657,8 +657,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-calendar-text-font| _var(--nut-font-size-1)_   |
 | --nut-calendar-day-font| _16px_   |
 | --nut-calendar-day-active-border-radius| _0px_   |
-| --nut-calendar-day-width| _14.28%_   |
-| --nut-calendar-day-height| _64px_   |
 | --nut-calendar-day-font-weight| _500_   |
 | --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-month-title-font-size| _inherit_   |
