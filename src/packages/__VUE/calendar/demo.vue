@@ -163,7 +163,7 @@
           <span>{{ renderDate(date) }}</span>
         </template>
         <template v-slot:bottomInfo="date">
-          <span class="info">{{ renderBottomDate(date) }}</span>
+          <span class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -379,9 +379,6 @@ export default createDemo({
     const renderDate = (date: { date: Day }) => {
       return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
     };
-    const renderBottomDate = (date: { date: Day }) => {
-      return date.date ? (+date.date.day <= 10 ? '' : +date.date.day <= 20 ? translate('mid') : '') : '';
-    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -401,8 +398,7 @@ export default createDemo({
       calendarRef,
       select,
       translate,
-      renderDate,
-      renderBottomDate
+      renderDate
     };
   }
 });

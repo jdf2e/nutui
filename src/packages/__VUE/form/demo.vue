@@ -200,7 +200,7 @@ import { FormItemRuleWithoutValidator } from '../formitem/types';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '动态表单',
       title2: '表单校验',
       title3: '表单类型',

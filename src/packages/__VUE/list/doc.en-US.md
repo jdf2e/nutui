@@ -12,7 +12,6 @@ import { List } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### Basic Usage
@@ -76,8 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
+    height: 100%;
     background-color: #f4a8b6;
     border-radius: 10px;
   }

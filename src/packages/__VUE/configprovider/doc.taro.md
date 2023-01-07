@@ -45,7 +45,7 @@ app.use(ConfigProvider);
         theme.value = v ? 'dark' : '';
       };
 
-      return { translate, switchChecked, switchChange, theme };
+      return { switchChecked, switchChange, theme };
     }
   };
 </script>
@@ -60,10 +60,10 @@ app.use(ConfigProvider);
 
 #### 示例
 
-这些变量的默认值被定义在 `page` 节点上：
+这些变量的默认值被定义在 `page` 节点上，如果要转 `H5`，默认值被定义在 `:root` 节点上
 
 ```css
-page {
+page, :root {
     --nut-primary-color: #fa2c19;
     --nut-primary-color-end: #fa6419;
 }
@@ -75,7 +75,7 @@ page {
 
 ```css
 /* 添加这段样式后，Primary Button 会变成绿色 */
-:root {
+page, :root {
   --nut-button-primary-background-color: green;
 }
 ```

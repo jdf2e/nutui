@@ -35,7 +35,7 @@ import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '半星',
       title2: '自定义 icon',
       title3: '自定义数量',

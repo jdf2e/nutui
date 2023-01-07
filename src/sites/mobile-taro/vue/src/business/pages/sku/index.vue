@@ -1,8 +1,8 @@
 <template>
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
-    <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+    <h2>基础用法</h2>
+    <nut-cell :title="`基础用法`" desc="" @click="base = true"></nut-cell>
 
     <h2>不可售</h2>
     <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>

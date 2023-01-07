@@ -12,13 +12,13 @@ import { createApp } from 'vue';
 import { Popover } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Popup);
+app.use(Popover);
 ```
 
 
 ### Basic Usage
 
-Popover supports both light and dark styles. The default is light style. Set the theme property to `dark` to switch to dark style.
+Popover supports both light and dark styles. The default is light style. Set the `theme` property to `dark` to switch to dark style.
 
 :::demo
 ```html

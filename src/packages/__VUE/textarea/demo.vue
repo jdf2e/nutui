@@ -23,7 +23,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '显示字数统计',
       title1: '高度自定义，拉伸',
       title2: '只读',

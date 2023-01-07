@@ -1,7 +1,7 @@
 <template>
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <nut-cell-group title="基本用法-左右">
+    <nut-cell-group title="基础用法-左右">
       <nut-cell>
         <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
       </nut-cell>

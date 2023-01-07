@@ -1,7 +1,7 @@
 <template>
   <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <nut-collapse v-model="active1" @change="change">
       <nut-collapse-item :title="title1" :name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府

@@ -94,7 +94,7 @@ import { Dongdong, Home, Search } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       text: '文字',
       columnNum: '自定义列数',
       square: '正方形格子',

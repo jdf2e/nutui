@@ -77,7 +77,7 @@ import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       desc: '描述文字',
       desc1: '使用 nut-cell-group 支持 title desc slots',
       title: '我是标题',

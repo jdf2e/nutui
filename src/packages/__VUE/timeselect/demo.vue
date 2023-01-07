@@ -81,7 +81,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       deliveryTime: '请选择配送时间',
       changeTitle: '更改标题',
       time1: '2月23日(今天)',
