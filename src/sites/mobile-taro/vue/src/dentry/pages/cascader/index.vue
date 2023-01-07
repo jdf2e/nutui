@@ -186,7 +186,7 @@ export default {
               { value: value3, text: value3, leaf: level >= 6 }
             ]);
           }
-        }, 2000);
+        }, 3000);
       }
     });
 

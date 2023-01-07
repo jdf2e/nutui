@@ -48,7 +48,6 @@ export default {
     // 基础用法
     const state = reactive({
       visible: false,
-      // value: ['湖南'],
       value: [],
       options: [
         {
@@ -428,7 +427,6 @@ export default {
 | convert-config      | 当 `options` 为可转换为树形结构的扁平结构时，配置转换规则 | object   | -           |
 | title               | 标题                                                  | string   | `''`          |
 | close-icon-position | 取消按钮位置，继承 `Popup` 组件                         | string   | `"top-right"` |
-| close-icon          | 自定义关闭按钮，继承 `Popup` 组件                       | string   | `"close"`     |
 | closeable           | 是否显示关闭按钮，继承 `Popup` 组件                     | boolean  | `true`        |
 | poppable            | 是否需要弹层展示（设置为 `false` 后，`title` 失效）          | boolean  | `true`        |
 
