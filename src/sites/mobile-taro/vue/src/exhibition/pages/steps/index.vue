@@ -1,7 +1,7 @@
 <template>
   <div class="demo padding" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
-    <h2>基本用法</h2>
+    <h2>基础用法</h2>
     <div class="steps-wrapper">
       <nut-steps :current="current1">
         <nut-step title="步骤一">
@@ -15,7 +15,7 @@
         <nut-button type="primary" @click="handleStep('current1')">下一步</nut-button>
       </div>
     </div>
-    <h2>基本用法（点状）</h2>
+    <h2>基础用法（点状）</h2>
     <div class="steps-wrapper">
       <nut-steps :current="current2" progress-dot>
         <nut-step></nut-step>

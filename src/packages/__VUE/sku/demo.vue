@@ -116,7 +116,7 @@ const { createDemo, translate } = createComponent('sku');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       noSell: '不可售',
       customStepper: '自定义计步器',
       slots: '自定义插槽'

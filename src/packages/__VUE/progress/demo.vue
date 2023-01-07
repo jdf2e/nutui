@@ -103,7 +103,7 @@ import { Issue } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customStyle: '线形进度条-设置颜色高度',
       noShowPercentage: '百分比不显示',
       showPercentage: '百分比外显',

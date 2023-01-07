@@ -40,7 +40,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customWidth: '自定义宽度',
       Gradient: '渐变色',
       customSize: '自定义尺寸',

@@ -85,7 +85,7 @@ app.use(Ellipsis);
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | content         | Content               | string | -                |
-| direction         | Direction                | 'start' \| 'end' \| 'middle' | `end`               |
+| direction         | Direction, `start` \| `end` \| `middle`                | string | `end`               |
 | rows         | Rows               | number | `1`              |
 | expand-text         | Expand text               | string | `''`             |
 | collapse-text         | Collapse text               | string | `''`               |
@@ -96,8 +96,8 @@ app.use(Ellipsis);
 
 | Event  | Description     | Arguments    |
 |--------|----------------|--------------|
-| click  | Emitted when the content is clicked | -- |
-| change  | Emitted when expand or collapse is clicked | -- |
+| click  | Emitted when the content is clicked | - |
+| change  | Emitted when expand or collapse is clicked | `expand` or `collapse` |
 
 ## Theming
 

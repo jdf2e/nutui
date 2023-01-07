@@ -74,7 +74,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="选择日期区间"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -172,7 +172,7 @@ export default {
       ...toRefs(state),
       openSwitch,
       closeSwitch,
-      setChooseValue,
+      setChooseValue7,
       select,
     };
   }  
@@ -238,7 +238,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="选择日期范围"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -268,8 +268,8 @@ export default {
     const closeSwitch = param => {
       state[`${param}`] = false;
     };
-     const setChooseValue = param => {
-      state.date= param[3];
+    const setChooseValue = param => {
+      state.date = [...[param[0][3], param[1][3]]];
     };
     return {
       ...toRefs(state),
@@ -290,7 +290,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="自定义按钮"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -661,8 +661,6 @@ export default {
 | --nut-calendar-text-font| _var(--nut-font-size-1)_   |
 | --nut-calendar-day-font| _16px_   |
 | --nut-calendar-day-active-border-radius| _0px_   |
-| --nut-calendar-day-width| _14.28%_   |
-| --nut-calendar-day-height| _64px_   |
 | --nut-calendar-day-font-weight| _500_   |
 | --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-month-title-font-size| _inherit_   |

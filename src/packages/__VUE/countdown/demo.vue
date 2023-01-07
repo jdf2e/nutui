@@ -83,7 +83,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       format: '自定义格式',
       millisecond: '毫秒级渲染',
       serverTime: '以服务端的时间为准',

@@ -164,7 +164,7 @@ app.use(Card);
 
 | Event             | Description                     | Arguments        |
 |----------|----------|----------|
-| click    | click event | `event: MouseEvent`    |
+| click    | click event | event: MouseEvent    |
 
 
 ### Slots

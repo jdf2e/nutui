@@ -1,6 +1,6 @@
 export const Internation = {
   'zh-CN': {
-    basic: '基本用法',
+    basic: '基础用法',
     chooseCity: '请选择城市',
     defaultSelected: '默认选中项',
     tileDesc: '平铺展示',

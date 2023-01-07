@@ -88,8 +88,8 @@ const { createDemo, translate } = createComponent('steps');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
-      basicDot: '基本用法（点状）',
+      basic: '基础用法',
+      basicDot: '基础用法（点状）',
       step1: '步骤一',
       step2: '步骤二',
       step3: '步骤三',

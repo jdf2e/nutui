@@ -96,10 +96,16 @@ The Image component provides a default `loading` prompt and supports custom cont
 <template>
   <nut-image width="100" height="100" showLoading>
     <template #loading>
-      <Loading width="16px" height="16px" name="loading"></Loading>
+      <Loading width="16px" height="16px" name="loading" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { Loading } from '@nutui/icons-vue';
+export default {
+  components: { Loading }
+}
+</script>
 ```
 
 :::
@@ -114,10 +120,16 @@ The Image component provides a default loading failure warning and supports cust
 <template>
   <nut-image src="https://x" width="100" height="100" showLoading>
     <template #error>
-      <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+      <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { CircleClose } from '@nutui/icons-vue';
+export default {
+  components: { CircleClose }
+}
+</script>
 ```
 
 :::

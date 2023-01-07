@@ -64,7 +64,7 @@ import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: 'IconFont 基本用法',
+      basic: 'IconFont 基础用法',
       svg: 'Svg 按需使用',
       imageLink: '图片链接',
       iconColor: '图标颜色',

@@ -34,7 +34,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '吸顶距离',
       title2: '指定容器',
       title3: '吸底距离',

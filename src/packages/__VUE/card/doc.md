@@ -161,7 +161,7 @@ app.use(Card);
 
 | 事件名 | 说明     | 回调参数 |
 |----------|----------|----------|
-| click    | 点击事件 | `event: MouseEvent `   |
+| click    | 点击事件 | event: MouseEvent   |
 
 ### Slots
 

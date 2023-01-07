@@ -61,7 +61,7 @@ import { Success, Failure } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '改变文字颜色',
       title2: '指定小数位',
       title3: '箭头在前面',
