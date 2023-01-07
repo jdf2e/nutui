@@ -232,7 +232,7 @@ app.use(Countdown);
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .countdown-part-box {
   display: flex;
   align-items: center;
