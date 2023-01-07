@@ -86,7 +86,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
         show.value = false
       }
 
-      return {columns, confirm};
+      return {show,popupDesc,columns, confirm,popupConfirm};
     }
   };
 </script>
@@ -369,7 +369,6 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | ok-text                | 确定按钮文案               | string  | `确定`   |
 | three-dimensional          | 是否开启3D效果               | boolean  | `true`   |
 | swipe-duration         | 惯性滚动时长        | number \| string  | `1000`   |
-| safe-area-inset-bottom 	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
 | visible-option-num          |可见的选项个数              | number \| string |`7`               |
 | option-height         | 选项高度             | number \| string | `36`     |
 | show-toolbar         | 是否显示顶部导航             | boolean | `true`   |
@@ -387,9 +386,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | { selectedValue, selectedOptions } |
-| cancel  | 点击取消按钮时触发 | { selectedValue, selectedOptions } |
-| change  | 选项发生改变时触发 | { columnIndex, selectedValue, selectedOptions } |
+| confirm  | 点击确定按钮时触发 | `{ selectedValue, selectedOptions }` |
+| cancel  | 点击取消按钮时触发 | `{ selectedValue, selectedOptions }` |
+| change  | 选项发生改变时触发 | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
@@ -416,7 +415,5 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | --nut-picker-bar-title-font-weight| _normal_  | 
 | --nut-picker-item-height| _36px_  | 
 | --nut-picker-item-text-color| _var(--nut-title-color)_  | 
-| --nut-picker-item-active-text-color| _inherit_  | 
 | --nut-picker-item-text-font-size| _14px_  | 
 | --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
-| --nut-picker-columns-item-color| _var(--nut-title-color)_  | 

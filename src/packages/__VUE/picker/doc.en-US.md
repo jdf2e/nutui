@@ -91,7 +91,7 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
         show.value = false
       }
 
-      return {columns, confirm};
+      return {show,popupDesc,columns, confirm,popupConfirm};
     }
   };
 </script>
@@ -389,7 +389,6 @@ Use the children field of the Columns attribute to cascade options
 | ok-text                | Text of confirm button               | string  | `confirm`   |
 | three-dimensional          | Turn on 3D effects      | boolean  | `true`   |
 | swipe-duration          | Duration of the momentum animation        | number \| string  | `1000`   |
-| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	boolean	|`false`     |
 | visible-option-num          | Count of visible columns       | number \| string | `7`              |
 | option-height         | Option height             | number \| string | `36`     |
 | show-toolbar         | Whether to show toolbar             | boolean | `true`    |
@@ -407,9 +406,9 @@ Use the children field of the Columns attribute to cascade options
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| confirm  | Emitted when click confirm button. | { selectedValue, selectedOptions } |
-| cancel  | Emitted when click close button. | { selectedValue, selectedOptions } |
-| change  | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
+| confirm  | Emitted when click confirm button. | `{ selectedValue, selectedOptions }` |
+| cancel  | Emitted when click close button. | `{ selectedValue, selectedOptions }` |
+| change  | Emitted when current option changed. | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
@@ -435,8 +434,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
 | --nut-picker-bar-title-font-weight| _normal_  | 
 | --nut-picker-item-height| _36px_  | 
-| --nut-picker-item-text-color| _var(--nut-title-color)_  | 
-| --nut-picker-item-active-text-color| _inherit_  | 
+| --nut-picker-item-text-color| _var(--nut-title-color)_  |  
 | --nut-picker-item-text-font-size| _14px_  | 
 | --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
-| --nut-picker-columns-item-color| _var(--nut-title-color)_  | 

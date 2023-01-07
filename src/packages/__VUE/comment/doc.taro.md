@@ -26,7 +26,6 @@ app.use(Comment);
     :images="cmt.images"
     :videos="cmt.videos"
     :info="cmt.info"
-    :labels="labels"
     @click="handleclick"
     @clickImages="clickImages"
     :operation="['replay']"
@@ -39,15 +38,12 @@ app.use(Comment);
     </template>
 </nut-comment>
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<Dongdong/>';
-    };
     onMounted(()=>{
       fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
         .then((response) => response.json())
@@ -64,13 +60,12 @@ export default {
     }
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -107,7 +102,7 @@ export default {
 </nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -129,7 +124,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -148,7 +143,7 @@ export default {
 ></nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -170,7 +165,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ## API
