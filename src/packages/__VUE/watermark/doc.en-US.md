@@ -131,4 +131,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 
-| --nut-watermark-z-index        | _ 2000_        | 
+| --nut-watermark-z-index        | _2000_        | 
