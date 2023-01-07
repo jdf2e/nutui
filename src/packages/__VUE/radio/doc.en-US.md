@@ -160,8 +160,12 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
     props: {},
+    components: {
+      Checklist
+    },
     setup() {
       const radioVal = ref('1');
       return { radioVal };
@@ -253,5 +257,4 @@ The component provides the following CSS variables, which can be used to customi
 |  --nut-radio-label-font-size|  _14px_  |
 |  --nut-radio-button-font-size|  _12px_  |
 |  --nut-radio-button-padding|  _5px 18px_  |
-|  --nut-radio-icon-font-size|  _18px_  |
 |  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  |
