@@ -14,7 +14,7 @@ const app = createApp();
 app.use(Table);
 ```
 
-### 基础使用
+### 基础用法
 
 :::demo
 
