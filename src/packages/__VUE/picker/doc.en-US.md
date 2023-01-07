@@ -22,7 +22,7 @@ app.use(Picker);
 <template>
   <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -68,7 +68,7 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
       </nut-picker>
     </nut-popup>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -114,7 +114,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -158,7 +158,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -202,7 +202,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
     >
     </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -256,7 +256,7 @@ Use the children field of the Columns attribute to cascade options
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -336,7 +336,7 @@ Use the children field of the Columns attribute to cascade options
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref, onMounted } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 

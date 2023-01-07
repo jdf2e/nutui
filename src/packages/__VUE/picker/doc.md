@@ -21,7 +21,7 @@ app.use(Picker);
 <template>
   <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -67,7 +67,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     </nut-picker>
   </nut-popup>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -113,7 +113,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -157,7 +157,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -201,7 +201,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     >
     </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -253,7 +253,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
@@ -333,7 +333,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref, onMounted } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style'; 
