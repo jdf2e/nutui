@@ -54,7 +54,7 @@ export default {
     return {basicData}
   }
 }
-<script/>  
+</script>  
 ```
 :::
 
@@ -128,7 +128,7 @@ export default {
     };
   }
 }
-</script>
+</>
 ```
 
 :::
