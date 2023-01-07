@@ -43,7 +43,7 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
         theme.value = v ? 'dark' : '';
       };
 
-      return { translate, switchChecked, switchChange, theme };
+      return { switchChecked, switchChange, theme };
     }
   };
 </script>
