@@ -269,8 +269,8 @@ export default {
     const closeSwitch = param => {
       state[`${param}`] = false;
     };
-     const setChooseValue = param => {
-      state.date= param[3];
+    const setChooseValue = param => {
+      state.date = [...[param[0][3], param[1][3]]];
     };
     return {
       ...toRefs(state),
