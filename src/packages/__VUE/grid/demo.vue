@@ -12,6 +12,7 @@
       <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
     </nut-grid>
 
+    <h2>{{ translate('columnNum') }}</h2>
     <nut-grid :column-num="3">
       <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
       <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
