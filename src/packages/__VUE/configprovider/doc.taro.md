@@ -45,7 +45,7 @@ app.use(ConfigProvider);
         theme.value = v ? 'dark' : '';
       };
 
-      return { translate, switchChecked, switchChange, theme };
+      return { switchChecked, switchChange, theme };
     }
   };
 </script>
