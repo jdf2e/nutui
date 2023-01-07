@@ -13,7 +13,7 @@
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
         <view
-          class="nut-tabs__titles-item"
+          class="nut-tabs__titles-item taro"
           :style="titleStyle"
           @click="tabChange(item, index)"
           :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
@@ -190,40 +190,40 @@ export default create({
     const titleRectRef = ref<RectItem[]>([]);
     const canShowLabel = ref(false);
     const scrollIntoView = () => {
-      if (props.name) {
-        raf(() => {
-          Promise.all([
-            getRect(`#nut-tabs__titles_${props.name}`),
-            getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
-          ]).then(([navRect, titleRects]: any) => {
-            navRectRef.value = navRect;
-            titleRectRef.value = titleRects;
+      if (!props.name) return;
 
-            if (navRectRef.value) {
-              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
-              if (titlesTotalWidth > navRectRef.value.width) {
-                canShowLabel.value = true;
-              } else {
-                canShowLabel.value = false;
-              }
+      raf(() => {
+        Promise.all([
+          getRect(`#nut-tabs__titles_${props.name}`),
+          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+        ]).then(([navRect, titleRects]: any) => {
+          navRectRef.value = navRect;
+          titleRectRef.value = titleRects;
+
+          if (navRectRef.value) {
+            const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
+            if (titlesTotalWidth > navRectRef.value.width) {
+              canShowLabel.value = true;
+            } else {
+              canShowLabel.value = false;
             }
+          }
 
-            const titleRect: RectItem = titleRectRef.value[currentIndex.value];
+          const titleRect: RectItem = titleRectRef.value[currentIndex.value];
 
-            const left = titleRects
-              .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
+          const left = titleRects
+            .slice(0, currentIndex.value)
+            .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
 
-            const to = left - (navRectRef.value.width - titleRect.width) / 2;
+          const to = left - (navRectRef.value.width - titleRect.width) / 2;
 
-            nextTick(() => {
-              scrollWithAnimation.value = true;
-            });
-
-            scrollLeftTo(to);
+          nextTick(() => {
+            scrollWithAnimation.value = true;
           });
+
+          scrollLeftTo(to);
         });
-      }
+      });
     };
 
     const scrollLeftTo = (to: number) => {
@@ -338,16 +338,3 @@ export default create({
   }
 });
 </script>
-<style lang="less">
-.tabs-scrollview {
-  white-space: nowrap;
-}
-.nut-tabs__titles-item {
-  height: 46px;
-  line-height: 46px;
-  &.nut-tabs__titles-placeholder {
-    width: auto;
-    min-width: 10px !important;
-  }
-}
-</style>
