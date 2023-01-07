@@ -23,8 +23,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-    <nut-trend-arrow :show-text-color="false" :rate="1"/>
-    <nut-trend-arrow :show-text-color="false" :rate="-0.2535"/>
+    <nut-trend-arrow :sync-text-color="false" :rate="1"/>
+    <nut-trend-arrow :sync-text-color="false" :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
