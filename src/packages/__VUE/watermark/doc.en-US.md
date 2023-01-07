@@ -23,18 +23,19 @@ app.use(Watermark);
   <nut-cell class="wrap">
     <nut-button @click="showTextMark">Text Watermark</nut-button>
     <nut-button @click="showImageMark">Image Watermark</nut-button>
-    <nut-watermark v-if="!flag" class="mark1" z-index="1" content="nut-ui-water-mark"></nut-watermark>
+    <nut-watermark v-if="!flag" class="mark1" :z-index="1" content="nut-ui-water-mark"></nut-watermark>
     <nut-watermark
       v-if="flag"
       class="mark1"
       :image-width="60"
       :image-height="23"
-      z-index="1"
+      :z-index="1"
       :image="imgSrc"
     ></nut-watermark>
   </nut-cell>
 </template>
 <script lang="ts">
+  import { ref } from "vue";
   export default {
     setup() {
       const imgSrc = ref('//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png');
@@ -45,7 +46,7 @@ app.use(Watermark);
       const showImageMark = () => {
         flag.value = true;
       };
-      return { translate, imgSrc, showTextMark, showImageMark, flag };
+      return { imgSrc, showTextMark, showImageMark, flag };
     }
   };
 </script>
@@ -81,6 +82,7 @@ app.use(Watermark);
   </nut-cell>
 </template>
 <script lang="ts">
+  import { ref } from "vue";
   export default {
     setup() {
      const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
