@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-button type="primary" @click="show = true">显示遮罩层</nut-button>
@@ -43,9 +44,16 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       show: false,
       show2: false,
@@ -58,7 +66,8 @@ export default {
       }
     });
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      env
     };
   }
 };

@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-table :columns="columns1" :data="data1"></nut-table>
     <h2>是否显示边框，文字对齐</h2>
@@ -27,16 +28,20 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, onUnmounted, h, defineComponent } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
 import Button from './../../../../../../../packages/__VUE/button/index.taro.vue';
 import Icon from './../../../../../../../packages/__VUE/icon/index.taro.vue';
 export default defineComponent({
   components: {
     Button,
-    Icon
+    Icon,
+    Header
   },
   props: {},
   setup(props, { emit, slot }) {
+    const env = Taro.getEnv();
     const state = reactive({
       bordered1: false,
       striped: true,
@@ -246,7 +251,8 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      handleSorter
+      handleSorter,
+      env
     };
   }
 });

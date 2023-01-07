@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div class="show">
       <nut-empty description="无数据"></nut-empty>
@@ -42,12 +43,16 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const tabValue = ref(0);
     return {
-      tabValue
+      tabValue,
+      env
     };
   }
 };

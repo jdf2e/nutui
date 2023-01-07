@@ -12,19 +12,14 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import Taro from '@tarojs/taro';
 import { Left } from '@nutui/icons-vue';
+import config from '../../../../../config.json';
 export default defineComponent({
   name: 'header',
   components: {
     Left
-  },
-  props: {
-    compName: {
-      type: String,
-      default: ''
-    }
   },
   setup() {
     //返回demo页
@@ -32,7 +27,19 @@ export default defineComponent({
       Taro.navigateBack();
     };
 
-    return { navigateTo };
+    const compName = computed(() => {
+      let allComps: any = [];
+      let hashCompName = location.hash.split('pages/')[1].replace('/index', '');
+      config.nav.map((item) => {
+        allComps = [...allComps, ...item.packages];
+      });
+
+      let targetComp = allComps.filter((item: any) => hashCompName === item.name.toLowerCase());
+
+      return targetComp[0].name;
+    });
+
+    return { navigateTo, compName };
   }
 });
 </script>
@@ -41,6 +48,7 @@ export default defineComponent({
 .applets-demo-header {
   position: fixed;
   z-index: 10;
+  top: 0;
   left: 0;
   right: 0;
   height: 57px;

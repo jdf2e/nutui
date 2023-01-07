@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>选择自定义地址</h2>
     <nut-cell title="选择地址" :desc="one" is-link @click="showAddress"></nut-cell>
 
@@ -97,6 +98,8 @@
 
 <script lang="ts">
 import { reactive, ref, toRefs, defineComponent } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 interface CalBack {
   next: string;
   value: string;
@@ -128,8 +131,9 @@ interface AddressResult extends AddressList {
   town: RegionData[];
 }
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const address = reactive({
       province: [
         { id: 1, name: '北京', title: 'B' },
@@ -335,7 +339,8 @@ export default defineComponent({
       ...toRefs(icon),
       ...toRefs(text),
       ...toRefs(showPopup),
-      ...toRefs(address)
+      ...toRefs(address),
+      env
     };
   }
 });

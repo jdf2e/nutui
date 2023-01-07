@@ -242,7 +242,7 @@ setup() {
 | is-preview        | 是否上传成功后展示预览图                                                                                         | boolean                           | `true`                      |
 | is-deletable      | 是否展示删除按钮                                                                                                 | boolean                           | `true`                      |
 | method            | 上传请求的 http method                                                                                           | string                            | `post`                    |
-| list-type         | 上传列表的内建样式，支持两种基本样式 `picture`、`list`                                                               | string                            | `picture`                 |
+| list-type         | 上传列表的内建样式，支持两种基础样式 `picture`、`list`                                                               | string                            | `picture`                 |
 | source-type       | [选择图片的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)           | string                            | `['album','camera']`        |
 | maximize          | 可以设定最大上传文件的大小（字节）                                                                               | number \| string                  | `9`                         |
 | maximum           | 文件上传数量限制                                                                                                 | number \| string                  | `1`                         |

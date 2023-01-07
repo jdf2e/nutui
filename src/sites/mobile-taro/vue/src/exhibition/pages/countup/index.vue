@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div class="show-demo">
       <nut-countup :init-num="0" :end-num="200"></nut-countup>
@@ -44,9 +45,12 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { reactive, toRefs, onMounted } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const data = reactive({
       customNumber: 618,
       bgImage:
@@ -96,7 +100,8 @@ export default {
       scrollAniEnd,
       startRole,
       startRole2,
-      countupMachine
+      countupMachine,
+      env
     };
   }
 };

@@ -95,14 +95,14 @@ page {
     </nut-config-provider>
 </template>
 <script lang="ts">
-  import { ref } from 'vue';
+  import { ref, reactive } from 'vue';
   export default {
     setup() {
       const range = ref(30);
-      const themeVars = {
+      const themeVars = reactive({
           primaryColor:'#008000',
           primaryColorEnd:'#008000',
-      };
+      });
       // 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
       //  const themeVars = {
       //   rangeBgColor: 'rgba(25,137,250,0.15)',

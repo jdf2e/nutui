@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div>
       <nut-cell
@@ -85,8 +86,8 @@
       <nut-cell
         :show-icon="true"
         title="选择日期范围"
-        @click="openSwitch('isVisible4')"
         :desc="date4 ? `${date4[0]}至${date4[1]}` : '请选择'"
+        @click="openSwitch('isVisible4')"
       >
       </nut-cell>
       <nut-calendar
@@ -115,8 +116,8 @@
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
-        :start-date="`2021-12-22`"
-        :end-date="`2022-12-31`"
+        :start-date="null"
+        :end-date="null"
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
@@ -161,9 +162,34 @@
         </template>
       </nut-calendar>
     </div>
+    <h2>自定义周起始日</h2>
+    <div>
+      <nut-cell
+        :showIcon="true"
+        title="自定义周起始日"
+        :desc="date8 ? `${date8}` : '请选择'"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date8"
+        @close="closeSwitch('isVisible8')"
+        @choose="setChooseValue8"
+        :first-day-of-week="2"
+      >
+      </nut-calendar>
+    </div>
     <h2>平铺展示</h2>
     <div class="test-calendar-wrapper">
-      <nut-calendar :poppable="false" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">
+      <nut-calendar
+        :poppable="false"
+        :default-value="date2"
+        :is-auto-back-fill="true"
+        @choose="setChooseValue2"
+        :start-date="`2020-02-01`"
+        :end-date="`2020-12-30`"
+      >
       </nut-calendar>
     </div>
   </div>
@@ -171,6 +197,8 @@
 
 <script lang="ts">
 import { reactive, toRefs, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import Utils from '../../../../../../../packages/utils/date';
 
 interface TestCalendarState {
@@ -183,6 +211,8 @@ interface TestCalendarState {
   isVisible4: boolean;
   isVisible5: boolean;
   isVisible6: boolean;
+  isVisible7: boolean;
+  isVisible8: boolean;
   date1: string[];
   date2: string;
   date3: string;
@@ -190,10 +220,16 @@ interface TestCalendarState {
   date5: string[];
   date6: string[];
   date7: string[];
+  date8: string;
 }
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const calendarRef = ref(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
@@ -203,16 +239,18 @@ export default {
       date2: '2020-07-08',
       date3: '',
       date4: ['2022-02-23', '2022-04-26'],
-      date5: ['2021-12-23', '2021-12-26'],
+      date5: [],
       date6: [],
       date7: [],
+      date8: '',
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
       isVisible4: false,
       isVisible5: false,
       isVisible6: false,
-      isVisible7: false
+      isVisible7: false,
+      isVisible8: false
     });
     const openSwitch = (param: string) => {
       state[`${param}`] = true;
@@ -258,6 +296,9 @@ export default {
       console.log('changevalue 7 ', chooseData, dateArr);
       state.date7 = [...dateArr];
     };
+    const setChooseValue8 = (param: string) => {
+      state.date8 = param[3];
+    };
     const clickBtn = (param: string) => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -273,7 +314,7 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate('2022-04-01');
+        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
       }
     };
     return {
@@ -290,9 +331,11 @@ export default {
       clickBtn,
       clickBtn1,
       setChooseValue7,
+      setChooseValue8,
       goDate,
       calendarRef,
-      select
+      select,
+      env
     };
   }
 };

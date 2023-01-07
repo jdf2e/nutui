@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-swipe>
       <nut-cell round-radius="0" desc="左滑删除" />
@@ -56,9 +57,14 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const refSwipe = ref<HTMLElement>();
     const checked = ref(false);
     const number = ref(0);
@@ -76,7 +82,7 @@ export default {
     const close = () => {
       checked.value = false;
     };
-    return { checked, number, changSwitch, refSwipe, open, close };
+    return { checked, number, changSwitch, refSwipe, open, close, env };
   }
 };
 </script>
