@@ -26,6 +26,7 @@
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
         </view>
+        <view v-if="canShowTag" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
       </template>
     </Nut-Scroll-View>
     <view class="nut-tabs__content" :style="contentStyle">
@@ -42,6 +43,7 @@ import NutScrollView from '../scrollView/index.taro.vue';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
 import raf from '@/packages/utils/raf';
 import Taro from '@tarojs/taro';
+import type { RectItem } from './types';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -165,14 +167,13 @@ export default create({
 
     const titleRef = ref([]) as Ref<HTMLElement[]>;
     const scrollLeft = ref(0);
-    const scrollWithAnimation = ref(true);
+    const scrollWithAnimation = ref(false);
     const getRect = (selector: string) => {
       return new Promise((resolve) => {
         Taro.createSelectorQuery()
           .select(selector)
           .boundingClientRect()
           .exec((rect = []) => {
-            // console.log(rect);
             resolve(rect[0]);
           });
       });
@@ -185,32 +186,44 @@ export default create({
           .exec((rect = []) => resolve(rect[0]));
       });
     };
-    const inited = ref(false);
     const navRectRef = ref();
-    const titleRectRef = ref([]);
+    const titleRectRef = ref<RectItem[]>([]);
+    const canShowTag = ref(false);
     const scrollIntoView = () => {
-      raf(() => {
-        Promise.all([
-          getRect(`#nut-tabs__titles_${props.name}`),
-          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
-        ]).then(([navRect, titleRects]) => {
-          if (!inited.value) {
+      if (props.name) {
+        raf(() => {
+          Promise.all([
+            getRect(`#nut-tabs__titles_${props.name}`),
+            getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+          ]).then(([navRect, titleRects]: any) => {
             navRectRef.value = navRect;
             titleRectRef.value = titleRects;
-            inited.value = true;
-          }
 
-          const titleRect = titleRectRef.value[currentIndex.value];
+            if (navRectRef.value) {
+              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
+              if (titlesTotalWidth > navRectRef.value.width) {
+                canShowTag.value = true;
+              } else {
+                canShowTag.value = false;
+              }
+            }
 
-          let to = titleRect.left - (navRectRef.value.width - titleRect.width) / 2;
+            const titleRect: RectItem = titleRectRef.value[currentIndex.value];
 
-          nextTick(() => {
-            scrollWithAnimation.value = true;
+            const left = titleRects
+              .slice(0, currentIndex.value)
+              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
+
+            const to = left - (navRectRef.value.width - titleRect.width) / 2;
+
+            nextTick(() => {
+              scrollWithAnimation.value = true;
+            });
+
+            scrollLeftTo(to);
           });
-
-          scrollLeftTo(to);
         });
-      });
+      }
     };
 
     const scrollLeftTo = (to: number) => {
@@ -319,6 +332,7 @@ export default create({
       scrollLeft,
       scrollWithAnimation,
       onStickyScroll,
+      canShowTag,
       ...methods
     };
   }
@@ -329,8 +343,11 @@ export default create({
   white-space: nowrap;
 }
 .nut-tabs__titles-item {
-  display: inline-block !important;
   height: 46px;
   line-height: 46px;
+  &.nut-tabs__titles-placeholder {
+    width: auto;
+    min-width: 10px !important;
+  }
 }
 </style>
