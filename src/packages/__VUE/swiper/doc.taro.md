@@ -364,7 +364,7 @@ app.use(SwiperItem);
 </template>
 <script lang="ts">
   import { reactive, toRefs, ref, Ref } from 'vue';
-  import { Left, Right } from '@nutui/icons-vue';
+  import { Left, Right } from '@nutui/icons-vue-taro';
   export default {
     components: { 
       Left, 

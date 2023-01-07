@@ -290,7 +290,6 @@ app.use(Countdown);
         Countdown.value.reset();
       };
       return {
-          toggle,
           onpaused,
           onrestart,
         ...toRefs(state)

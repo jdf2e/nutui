@@ -335,7 +335,7 @@ app.use(Address);
 </template>
 <script>
   import { ref,reactive,toRefs } from 'vue';
-  import { HeartFill, Heart1} from '@nutui/icons-vue';
+  import { HeartFill, Heart1} from '@nutui/icons-vue-taro';
   export default {
     components:{HeartFill, Heart1 },
     setup() {

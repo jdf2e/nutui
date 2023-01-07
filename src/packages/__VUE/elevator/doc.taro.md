@@ -385,7 +385,7 @@ app.use(Elevator);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { Jd } from '@nutui/icons-vue'
+  import { Jd } from '@nutui/icons-vue-taro'
   export default {
     components: {
       Jd,

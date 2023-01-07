@@ -79,8 +79,8 @@ export default {
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
-import { Location,Cart2, My2 } from '@nutui/icons-vue';
+import { reactive, ref, h } from 'vue';
+import { Location,Cart2, My2 } from '@nutui/icons-vue-taro';
 export default {
   setup() {
     const visible = ref({
@@ -156,8 +156,8 @@ export default {
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
-import { Service,Notice,Location,Category,Scan2,Message,Cart2, My2 } from '@nutui/icons-vue';
+import { reactive, ref, h } from 'vue';
+import { Service,Notice,Location,Category,Scan2,Message,Cart2, My2 } from '@nutui/icons-vue-taro';
 export default {
   setup() {
     const visible = ref({
@@ -389,7 +389,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | 键名            | 说明                 | 类型      | 默认值  |
 |----------------|----------------------|----------|--------|
 | name           | 选项文字               | string   | `-`      |
-| icon           | @nutui/icons-vue 图标       | string   | `-`      |
+| icon           | `@nutui/icons-vue-taro` 图标       | string   | `-`      |
 | disabled       | 是否为禁用状态          | boolean  | `false`  | 
 | className       | 为对应选项添加额外的类名          | string \| Array \| object  | `-`  | 
 

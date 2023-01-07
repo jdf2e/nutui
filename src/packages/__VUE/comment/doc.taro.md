@@ -41,7 +41,7 @@ app.use(Comment);
 </template>
 <script>
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
+import { Dongdong } from '@nutui/icons-vue-taro';
 export default {
   setup() {
     let cmt = ref({});

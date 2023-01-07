@@ -124,7 +124,7 @@ export default {
 </template>
 <script>
 import { reactive, ref, toRefs } from 'vue';
-import { Notice, Follow } from '@nutui/icons-vue';
+import { Notice, Follow } from '@nutui/icons-vue-taro';
 export default {
   setup() {
     const activeName = ref(1);

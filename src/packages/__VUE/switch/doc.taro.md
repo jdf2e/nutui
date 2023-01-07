@@ -165,7 +165,7 @@ app.use(Switch);
 </template>
 <script lang="ts">
   import { ref } from 'vue';
-  import { Loading } from '@nutui/icons-vue';
+  import { Loading } from '@nutui/icons-vue-taro';
   export default {
     setup() {
       const checked = ref(true);
