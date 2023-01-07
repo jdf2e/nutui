@@ -172,7 +172,7 @@ export default {
       ...toRefs(state),
       openSwitch,
       closeSwitch,
-      setChooseValue,
+      setChooseValue7,
       select,
     };
   }  
