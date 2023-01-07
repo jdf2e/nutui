@@ -186,7 +186,7 @@ $input-font-size: var(--nut-input-font-size, $font-size-2) !default;
 // textarea
 
 $textarea-font: var(--nut-textarea-font, $font-size-2) !default;
-$textarea-height: var(--nut-textarea-height, 100px) !default;
+// $textarea-height: var(--nut-textarea-height, 100px) !default;
 $textarea-limit-color: var(--nut-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nut-textarea-text-color, $title-color) !default;
 $textarea-disabled-color: var(--nut-textarea-disabled-color, $disable-color) !default;
