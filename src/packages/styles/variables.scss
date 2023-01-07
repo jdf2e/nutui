@@ -205,7 +205,7 @@ $input-font-size: var(--nut-input-font-size, $font-size-2) !default;
 // textarea
 
 $textarea-font: var(--nut-textarea-font, $font-size-2) !default;
-$textarea-height: var(--nut-textarea-height, 100px) !default;
+// $textarea-height: var(--nut-textarea-height, 100px) !default;
 $textarea-limit-color: var(--nut-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nut-textarea-text-color, $title-color) !default;
 $textarea-disabled-color: var(--nut-textarea-disabled-color, $disable-color) !default;
@@ -343,8 +343,6 @@ $calendar-sub-title-font: var(--nut-calendar-sub-title-font, $font-size-2) !defa
 $calendar-text-font: var(--nut-calendar-text-font, $font-size-1) !default;
 $calendar-day-font: var(--nut-calendar-day-font, 16px) !default;
 $calendar-day-active-border-radius: var(--nut-calendar-day-active-border-radius, 0px) !default;
-$calendar-day-width: var(--nut-calendar-day-width, 14.28%) !default;
-$calendar-day-height: var(--nut-calendar-day-height, 64px) !default;
 $calendar-day-font-weight: var(--nut-calendar-day-font-weight, 500) !default;
 $calendar-day67-font-color: var(--nut-calendar-day67-font-color, $primary-color) !default;
 $calendar-month-title-font-size: var(--nut-calendar-month-title-font-size, inherit) !default;

@@ -145,8 +145,8 @@
         }
         .nut-calendar__day {
           float: left;
-          width: $calendar-day-width;
-          height: $calendar-day-height;
+          width: 14.28%;
+          height: 64px;
           font-weight: $calendar-day-font-weight;
           display: flex;
           align-items: center;

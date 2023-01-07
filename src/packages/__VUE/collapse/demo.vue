@@ -70,7 +70,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic1: '基本用法',
+      basic1: '基础用法',
       basic2: '无icon样式',
       basic3: '手风琴',
       basic4: '自定义折叠图标',

@@ -32,7 +32,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       t1: '通知类型',
       t2: '自定义',
       t3: '自定义时长',

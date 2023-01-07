@@ -96,7 +96,7 @@ import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       asyc: '异步加载(3s)',
       dynamicDel: '动态加载',
       size: '自定义大小',

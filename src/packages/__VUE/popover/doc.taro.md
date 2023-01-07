@@ -12,13 +12,13 @@ import { createApp } from 'vue';
 import { Popover } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Popup);
+app.use(Popover);
 ```
 
 
 ### 基础用法
 
-Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme 属性设置为 dark 可切换为暗黑风格。
+Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 `theme` 属性设置为 `dark` 可切换为暗黑风格。
 
 :::demo
 ```html

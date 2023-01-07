@@ -130,7 +130,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定义属性名称',
       title2: '动态加载',
       title3: '部分数据动态加载',

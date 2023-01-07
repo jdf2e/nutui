@@ -74,7 +74,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -172,7 +172,7 @@ export default {
       ...toRefs(state),
       openSwitch,
       closeSwitch,
-      setChooseValue,
+      setChooseValue7,
       select,
     };
   }  
@@ -239,7 +239,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -269,8 +269,8 @@ export default {
     const closeSwitch = param => {
       state[`${param}`] = false;
     };
-     const setChooseValue = param => {
-      state.date= param[3];
+    const setChooseValue = param => {
+      state.date = [...[param[0][3], param[1][3]]];
     };
     return {
       ...toRefs(state),
@@ -291,7 +291,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Custom Button"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -457,7 +457,7 @@ export default {
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
     <template v-slot:bottomInfo="date">
-      <span class="info" style="fontSize:12px;lineHeight:14px">{{
+      <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
     </template>
@@ -657,8 +657,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-calendar-text-font| _var(--nut-font-size-1)_   |
 | --nut-calendar-day-font| _16px_   |
 | --nut-calendar-day-active-border-radius| _0px_   |
-| --nut-calendar-day-width| _14.28%_   |
-| --nut-calendar-day-height| _64px_   |
 | --nut-calendar-day-font-weight| _500_   |
 | --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-month-title-font-size| _inherit_   |

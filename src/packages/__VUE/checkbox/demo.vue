@@ -142,7 +142,7 @@ import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法-左右',
+      basic: '基础用法-左右',
       semi: '半选状态',
       disable: '禁用状态',
       size: '自定义尺寸',

@@ -344,7 +344,7 @@ export default create({
           : 0;
       return num;
     };
-    // 基本用法
+    // 基础用法
     const countChange = () => {
       let { endNum, initNum, speed, toFixed } = props;
       let countTimer = setInterval(() => {

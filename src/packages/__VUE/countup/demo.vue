@@ -55,7 +55,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '数字滚动',
       title1: '自定义滚动图片展示',
       title2: '抽奖（模拟滚动抽奖）',

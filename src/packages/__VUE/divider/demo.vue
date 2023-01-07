@@ -31,7 +31,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       withText: '展示文本',
       contentPosition: '内容位置',
       dashed: '虚线',

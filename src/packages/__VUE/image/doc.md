@@ -13,7 +13,6 @@ import { Image } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### 基础用法
@@ -95,10 +94,16 @@ Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自
 <template>
   <nut-image width="100" height="100" showLoading>
     <template #loading>
-      <Loading width="16px" height="16px" name="loading"></Loading>
+      <Loading width="16px" height="16px" name="loading" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { Loading } from '@nutui/icons-vue';
+export default {
+  components: { Loading }
+}
+</script>
 ```
 
 :::
@@ -113,10 +118,16 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 <template>
   <nut-image src="https://x" width="100" height="100" showError>
     <template #error> 
-      <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+      <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { CircleClose } from '@nutui/icons-vue';
+export default {
+  components: { CircleClose }
+}
+</script>
 ```
 
 :::

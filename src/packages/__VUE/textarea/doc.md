@@ -71,13 +71,13 @@ export default {
 
 | 参数        | 说明                                             | 类型           | 默认值         |
 |-------------|--------------------------------------------------|----------------|----------------|
-| v-model | input value, supports two-way binding | string | `-`|
+| v-model | input value, supports two-way binding | string | -|
 | placeholder | Set placeholder prompt text | string | `Please enter content` |
-| max-length | limit the longest input characters | string \| number | `-` |
+| max-length | limit the longest input characters | string \| number | - |
 | rows | height of textarea, priority is higher than autosize attribute `only supports H5` | string \| number | `2` |
 | limit-show | Whether textarea displays input characters. Must be used with `max-length` | boolean | `false` |
 | autosize | whether to adapt to the height of the content, or to pass in an object, such as `{ maxHeight: 200, minHeight: 100 }`, the unit is `px` | boolean \| {maxHeight?: number; minHeight?: number} | `false` |
-| text-align | text position, optional values `left`, `center`, `right` | string | `left` |
+| text-align | text position, optional values `left`, `center`, `right` | string | - |
 | readonly | read-only property | boolean | `false` |
 | disabled | disabled attribute | boolean | `false` |
 | autofocus | get focus automatically | boolean | `false` |
@@ -100,7 +100,6 @@ export default {
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- | 
 | --nut-textarea-font| _var(--nut-font-size-2)_  |
-| --nut-textarea-height| _100px_  |
 | --nut-textarea-limit-color| _var(--nut-text-color)_  |
 | --nut-textarea-text-color| _var(--nut-title-color)_  |
 | --nut-textarea-disabled-color| _var(--nut-disable-color)_  |

@@ -90,4 +90,4 @@ export default {
 
 | Event Name | Description | Callback Parameters |
 |--------|----------------|--------------|
-| add | add data | `-` |
+| add | add data | - |

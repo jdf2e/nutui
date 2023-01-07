@@ -15,7 +15,7 @@ import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法'
+      basic: '基础用法'
     },
     'en-US': {
       basic: 'Basic Usage'

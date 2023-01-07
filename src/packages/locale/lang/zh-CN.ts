@@ -23,7 +23,7 @@ class Lang extends BaseLang {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     end: '结束',
     start: '开始',
-    title: '日历选择',
+    title: '日期选择',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天'
   };
