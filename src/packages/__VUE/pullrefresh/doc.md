@@ -46,7 +46,7 @@ app.use(PullRefresh);
 :::
 ### 自定义文案
 
-下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，复杂样式可以通过 slot 插槽实现。
+下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
@@ -56,7 +56,6 @@ app.use(PullRefresh);
     v-model="refresh2"
     loosingTxt="松开吧"
     loadingTxt="玩命加载中..."
-    completeTxt="好啦"
     @refresh="refreshFun"
   >
     <template #pullingTxt>
@@ -139,7 +138,6 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 | pulling-txt         | 下拉过程提示文案                       | string | `下拉刷新`            |
 | loosing-txt         | 释放过程提示文案                       | string | `释放刷新`            |
 | loading-txt        | 加载过程提示文案                         | string | `加载中...`                |
-| complete-txt        | 刷新成功提示文案                       | string | `''`           |
 | duration       | 动画加载时长                         | number | `0.3 `               |
 
 ### Events

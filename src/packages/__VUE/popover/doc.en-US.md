@@ -23,17 +23,22 @@ Popover supports both light and dark styles. The default is light style. Set the
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Light</nut-button>
-    </template>
-  </nut-popover>
-
-  <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Dark</nut-button>
-    </template>
-  </nut-popover>
+  <nut-row type="flex">
+    <nut-col :span="8" style='margin-left:20px'>
+      <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
+        <template #reference>
+          <nut-button type="primary" shape="square">Light</nut-button>
+        </template>
+      </nut-popover>
+    </nut-col>
+    <nut-col :span="8" style='margin-left:20px'>
+      <nut-popover v-model:visible="visible.darkTheme" theme="dark" location="bottom-start" :list="iconItemList">
+        <template #reference>
+          <nut-button type="primary" shape="square">Dark</nut-button>
+        </template>
+      </nut-popover>
+    </nut-col>
+  </nut-row>
 </template>
 <script>
 import { reactive, ref } from 'vue';
@@ -55,6 +60,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  .nut-popover-content {
+    width: 120px;
+  }
+</style>
 ```
 :::
 
@@ -65,21 +76,27 @@ In the list array, an option can be disabled via the `disabled` field.
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">Show Icon</nut-button>
-    </template>
-  </nut-popover>
-
-  <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
-    <template #reference>
-      <nut-button type="primary" shape="square">Disabled</nut-button>
-    </template>
-  </nut-popover>
+  <nut-row type="flex">
+     <nut-col :span="8" style='margin-left:20px'>
+        <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
+          <template #reference>
+            <nut-button type="primary" shape="square">Show Icon</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+      <nut-col :span="8" style='margin-left:20px'>
+        <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled" location="right">
+          <template #reference>
+            <nut-button type="primary" shape="square">Disabled</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+    </nut-row>
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, ref,h } from 'vue';
+import { Location,Cart2, My2 } from '@nutui/icons-vue';
 export default {
   setup() {
     const visible = ref({
@@ -96,21 +113,14 @@ export default {
             color:'rgba(250, 44, 25, 1)'
           })
         }
-      },{
+      },
+      {
         name: 'option2',
-        icon:  ()=>{
-          return h(Cart2,{
-            width:'14px'
-          })
-        }
+        icon: Cart2
       },
       {
         name: 'option3',
-        icon: ()=>{
-          return h(Location,{
-            width:'14px'
-          })
-        }
+        icon: Location
       }
     ]);
 
@@ -134,6 +144,15 @@ export default {
     }
 }
 </script>
+
+<style>
+.nut-popover-content {
+    width: 120px;
+}
+.nut-icon{
+  width:14px
+}
+</style>
 ```
 :::
 
@@ -145,89 +164,88 @@ Customize the content in the slot named content.
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.Customized">
-    <template #reference>
-      <nut-button type="primary" shape="square">custom content</nut-button>
-    </template>
+  <nut-popover v-model:visible="visible.customized" location="top-start" custom-class="customClass">
+     <template #reference>
+       <nut-button type="primary" shape="square">custom content</nut-button>
+     </template>
 
-    <template #content>
-      <div class="self-content">
-        <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
-          <component :is="renderIcon(item.name)"></component>
-          <div class="self-content-desc">{{ item.desc }}</div>
-        </div>
-      </div>
-    </template>
-  </nut-popover>
+     <template #content>
+       <div class="self-content">
+         <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
+           <Service></Service>
+           <div class="self-content-desc">{{ item.desc }}</div>
+         </div>
+       </div>
+     </template>
+   </nut-popover>
 </template>
 
 <script>
 import { reactive, ref } from 'vue';
+import { Service } from '@nutui/icons-vue';
 export default {
-  setup() {
-    const visible = ref({
-      Customized: false,
-    });
-    const selfContent = reactive([
-      {
-        name: Service,
-        desc: 'option1'
-      },
-      {
-        name: Notice,
-        desc: 'option2'
-      },
-      {
-        name: Location,
-        desc: 'option3'
-      },
-      {
-        name: Category,
-        desc: 'option4'
-      },
-      {
-        name: Scan2,
-        desc: 'option5'
-      },
-      {
-        name: Message,
-        desc: 'option6'
-      }
-    ]);
-    const renderIcon = (icon: Component, props?: any) => {
-      if (icon) return h(icon, props);
-      return '';
-    };
+  components: { Service },
+ setup() {
+   const visible = ref({
+     customized: false,
+   });
+   const selfContent = reactive([
+     {
+       name: Service,
+       desc: 'option1'
+     },
+     {
+       name: Notice,
+       desc: 'option2'
+     },
+     {
+       name: Location,
+       desc: 'option3'
+     },
+     {
+       name: Category,
+       desc: 'option4'
+     },
+     {
+       name: Scan2,
+       desc: 'option5'
+     },
+     {
+       name: Message,
+       desc: 'option6'
+     }
+   ]);
 
-
-    return {
-      visible,
-      selfContent,
-      renderIcon
-    };
-  }
+   return {
+     visible,
+     selfContent
+   };
+ }
 }
 </script>
 
 <style lang="scss">
+#app{
+  padding-top: 200px;
+}
 .self-content {
-  width: 195px;
-  display: flex;
-  flex-wrap: wrap;
-  &-item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  &-desc {
-    margin-top: 5px;
-    width: 60px;
-    font-size: 10px;
-    text-align: center;
-  }
+ width: 195px;
+ display: flex;
+ flex-wrap: wrap;
+ &-item {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+ }
+ &-desc {
+   margin-top: 5px;
+   width: 60px;
+   font-size: 10px;
+   text-align: center;
+ }
 }
 </style>
 ```
@@ -296,14 +314,14 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 ```html
 <template>
   <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">custom target</nut-button>
-    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+    <nut-popover v-model:visible="visible.customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
 </template>
 
 <script>
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref({
+    const visible = reactive({
       customTarget:false
     });
 
@@ -325,6 +343,14 @@ export default {
     }
 }
 </script>
+<style>
+#app{
+  margin-top:300px
+}
+.nut-popover-content {
+  width: 120px;
+}
+</style>
 ```
 :::
 
@@ -333,7 +359,7 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+  <nut-popover v-model:visible="visible.customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
       <template #reference>
         <nut-button type="primary" shape="square" >Custom Color</nut-button>
       </template>
@@ -344,7 +370,7 @@ export default {
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref({
+    const visible = reactive({
       customColor:false
     });
 
@@ -360,7 +386,16 @@ export default {
       };
     }
 }
+
 </script>
+<style>
+#app{
+  margin-top:300px
+}
+.nut-popover-content {
+  width: 120px;
+}
+</style>
 ```
 :::
 
@@ -376,8 +411,7 @@ export default {
 | offset        | the offset of the occurrence position  | [number, number]   | `[0, 12]`  |
 | show-arrow        | whether to show small arrows  | boolean  | `true`  |
 | custom-class        | custom class   | string  | `''`  |
-| duration        | Transition duration  |  [number, number]  | `0.3`  |
-| iconPrefix        | Icon className prefix | string  | `nut-icon`  |
+| duration        | Transition duration，Unit second  |  [number, string]  | `0.3`  |
 | overlay        | Whether to show overlay  | boolean  | `false`  |
 | overlay-class        | Custom overlay class | string  | `''`  |
 | overlay-style        | Custom overlay style  | string  | `''`  |

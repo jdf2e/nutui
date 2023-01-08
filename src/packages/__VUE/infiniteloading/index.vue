@@ -63,14 +63,6 @@ export default create({
       type: String,
       default: ''
     },
-    useWindow: {
-      type: Boolean,
-      default: true
-    },
-    containerId: {
-      type: String,
-      default: ''
-    },
     useCapture: {
       type: Boolean,
       default: false

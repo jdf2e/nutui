@@ -19,6 +19,7 @@
 import { ref, onMounted } from 'vue';
 import { TypeOfFun } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
+import InputNumber from '../../inputnumber/index.vue';
 const { componentName, create } = createComponent('sku-stepper');
 
 export default create({
@@ -47,6 +48,10 @@ export default create({
     }
   },
   emits: ['click', 'changeSku', 'changeStepper', 'clickBtnOptions', 'overLimit', 'reduce', 'add'],
+
+  components: {
+    [InputNumber.name]: InputNumber
+  },
 
   setup(props: any, { emit }) {
     const goodsCount = ref(props.stepperMin);

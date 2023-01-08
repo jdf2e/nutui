@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { ref, watch, onMounted } from 'vue';
-
+import Price from '../../price/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku-header');
 
@@ -30,7 +30,9 @@ export default create({
     }
   },
   emits: [],
-
+  components: {
+    [Price.name]: Price
+  },
   setup(props: any, { emit, slots }) {
     const getSlots = (name: string) => slots[name];
 
