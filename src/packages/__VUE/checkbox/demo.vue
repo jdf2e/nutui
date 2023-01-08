@@ -7,13 +7,9 @@
         </nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">
+        <nut-checkbox v-model="checkbox2" text-position="left" @change="checkbox2">
           {{ translate('checkbox') }}
         </nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <div class="demo-check">{{ translate('selected') }}</div>
-        <div>{{ checkbox1 }}</div>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('semi')">
@@ -69,7 +65,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('disableGroup')">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup1" disabled>
+        <nut-checkbox-group v-model="checkboxgroup2" disabled>
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>

@@ -168,7 +168,6 @@ Asynchronous modification through `change` event and `model-value`
   import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
-      let { proxy } = getCurrentInstance();
       const state = reactive({
         value: 1
       });
@@ -263,12 +262,12 @@ Asynchronous modification through `change` event and `model-value`
 
 | Event     | Description                                     | Arguments                                |
 |-----------|-------------------------------------------------|------------------------------------------|
-| add       | Triggered when the Add button is clicked        | event: Event                             |
-| reduce    | Triggered when the decrease button is clicked   | event: Event                             |
-| overlimit | Triggered when an unavailable button is clicked | event: Event,type:string (reduce or add) |
-| change    | Triggered when the value changes                | value:  number , event : Event           |
-| blur      | Triggered when the input box blur               | event: Event                             |
-| focus     | Triggered when the input box focus              | event: Event                             |
+| add       | Triggered when the Add button is clicked        | `event: Event `                            |
+| reduce    | Triggered when the decrease button is clicked   | `event: Event`                             |
+| overlimit | Triggered when an unavailable button is clicked | `event: Event,type:string (reduce or add)` |
+| change    | Triggered when the value changes                | `value:  number , event : Event `          |
+| blur      | Triggered when the input box blur               | `event: Event`                             |
+| focus     | Triggered when the input box focus              | `event: Event `                            |
 
 ## Theming
 
@@ -280,12 +279,10 @@ The component provides the following CSS variables, which can be used to customi
 |------------------------------------------|----------------------------|
 | --nut-inputnumber-icon-color             | _var(--nut-title-color)_   |
 | --nut-inputnumber-icon-void-color        | _var(--nut-disable-color)_ |
-| --nut-inputnumber-icon-size              | _20px_                     |
 | --nut-inputnumber-input-font-size        | _12px_                     |
 | --nut-inputnumber-input-font-color       | _var(--nut-title-color)_   |
 | --nut-inputnumber-input-background-color | _var(--nut-help-color)_    |
 | --nut-inputnumber-input-border-radius    | _4px_                      |
-| --nut-inputnumber-input-width            | _40px_                     |
 | --nut-inputnumber-input-margin           | _0 6px_                    |
 | --nut-inputnumber-input-border           | _0_                        |
 | --nut-inputnumber-border                 | _0_                        |

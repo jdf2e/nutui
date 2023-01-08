@@ -412,6 +412,7 @@ $steps-wait-icon-color: $white !default;
 $steps-wait-head-color: #909ca4 !default;
 $steps-wait-head-border-color: #909ca4 !default;
 $steps-wait-content-color: #909ca4 !default;
+$steps-wait-icon-text-color: #ffffff !default;
 
 $steps-finish-head-color: $primary-color !default;
 $steps-finish-head-border-color: $primary-color !default;
@@ -503,8 +504,6 @@ $timeselect-timedetail-item-text-font-size: $font-size-2 !default;
 $timeselect-timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
 $timeselect-timedetail-item-cur-border: $primary-color !default;
 $timeselect-timedetail-item-cur-text-color: $primary-color !default;
-$timeselect-timedetail-time-text-color: #999 !default;
-$timeselect-timedetail-time-font-size: $font-size-1 !default;
 
 //tag
 $tag-font-size: $font-size-0 !default;

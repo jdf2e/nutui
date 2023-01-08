@@ -20,10 +20,6 @@ export default create({
       default: () => {
         return [];
       }
-    },
-    detailKey: {
-      type: [Number, String],
-      default: 0
     }
   },
   emits: ['select'],

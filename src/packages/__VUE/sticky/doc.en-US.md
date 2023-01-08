@@ -22,16 +22,16 @@ app.use(Sticky);
 
 ```html
 <template>
-  <nut-cell>
-    <nut-sticky top="57">
-      <nut-button type="primary">Ceiling button</nut-button>
-    </nut-sticky>
-  </nut-cell>
+    <div class="demo">
+        <nut-sticky top="57">
+            <nut-button type="primary">Ceiling button</nut-button>
+        </nut-sticky>
+    </div>
 </template>
 <style lang="scss">
-#app{
-  height: auto !important;
-}
+    .demo {
+        height: 200vh !important;
+    }
 </style>
 ```
 
@@ -43,16 +43,16 @@ app.use(Sticky);
 
 ```html
 <template>
-  <nut-cell>
-    <nut-sticky top="120">
-      <nut-button type="primary">Ceiling distance 120px</nut-button>
-    </nut-sticky>
-  </nut-cell>
+    <div class="demo">
+        <nut-sticky top="120">
+            <nut-button type="primary">Ceiling button distance 120px</nut-button>
+        </nut-sticky>
+    </div>
 </template>
 <style lang="scss">
-#app{
-  height: auto !important;
-}
+  .demo {
+      height: 200vh !important;
+  }
 </style>
 ```
 
@@ -64,10 +64,12 @@ app.use(Sticky);
 
 ```html
 <template>
-  <div class="sticky-container" ref="container">
-    <nut-sticky top="100" :container="container" z-index="1">
-      <nut-button type="info">Specify container</nut-button>
-    </nut-sticky>
+  <div class="demo">
+      <div class="sticky-container" ref="container">
+      <nut-sticky top="20" :container="container" z-index="1">
+          <nut-button type="info">Specify Container</nut-button>
+      </nut-sticky>
+      </div>
   </div>
 </template>
 <script lang="ts">
@@ -81,16 +83,14 @@ app.use(Sticky);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+.demo{
+  height: 200vh !important;
+}
 .sticky-container{
   width: 100%;
   height: 300px;
-  background-color: #fff;
-}
-</style>
-<style lang="scss">
-#app{
-  height: auto !important;
+  background-color: rgb(98, 161, 167);
 }
 </style>
 ```
@@ -103,15 +103,20 @@ app.use(Sticky);
 
 ```html
 <template>
-  <nut-cell>
-    <nut-sticky bottom="100" position="bottom">
-      <nut-button type="primary">Suction distance 100px</nut-button>
-    </nut-sticky>
-  </nut-cell>
+  <div class="demo">
+        <div class="container"></div>
+        <nut-sticky bottom="100" position="bottom">
+            <nut-button type="primary">Suction distance 100px</nut-button>
+        </nut-sticky>
+    </div>
 </template>
 <style lang="scss">
-#app{
-  height: auto !important;
+.demo{
+    height: 200vh !important;
+}
+.container{
+    height: 800px;
+    width: 100%;
 }
 </style>
 ```

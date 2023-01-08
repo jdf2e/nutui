@@ -170,14 +170,15 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { showToast } from '@/packages/nutui.vue';
   export default {
     props: {},
     setup() {
       const state = reactive({
         checkbox: false,
       });
-      const changeBox3= (checked: boolean, label: string) => {
-        console.log('Change event trigger' + checked, label);
+      const changeBox3= (state: boolean, label: string) => {
+        showToast.text(`${state ? 'selected' : 'cancel'} ${label}`);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -194,6 +195,40 @@ When the value changes, the `change` event will be triggered
 ```html
 <template>
   <nut-checkbox-group v-model="checkboxgroup1">
+    <nut-checkbox label="1">Combined check box</nut-checkbox>
+    <nut-checkbox label="2">Combined check box</nut-checkbox>
+    <nut-checkbox label="3">Combined check box</nut-checkbox>
+    <nut-checkbox label="4">Combined check box</nut-checkbox>
+  </nut-checkbox-group>
+  <nut-cell>
+    <div class="demo-check">Currently selected value</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+```
+
+:::
+
+### checkboxGroup disabled
+
+:::demo
+
+```html
+<template>
+  <nut-checkbox-group v-model="checkboxgroup1" disabled>
     <nut-checkbox label="1">Combined check box</nut-checkbox>
     <nut-checkbox label="2">Combined check box</nut-checkbox>
     <nut-checkbox label="3">Combined check box</nut-checkbox>

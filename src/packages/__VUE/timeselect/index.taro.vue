@@ -65,7 +65,7 @@ export default create({
     },
     lockScroll: {
       type: [Boolean],
-      default: false
+      default: true
     }
   },
   emits: ['update:visible', 'select'],
