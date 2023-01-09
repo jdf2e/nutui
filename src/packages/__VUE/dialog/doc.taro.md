@@ -128,7 +128,7 @@ export default {
 | cancel-auto-close      | 取消按钮是否默认关闭弹窗                                      | boolean                  | `true`       |
 | text-align             | 文字对齐方向，可选值同 `css` 的 `text-align `                     | string                   | `"center"`   |
 | close-on-popstate      | 是否在页面回退时自动关闭                                      | boolean                  | `false`      |
-| lock-scroll            | 背景是否锁定                                                  | boolean                  | `false`      |
+| lock-scroll            | 背景是否锁定                                                  | boolean                  | `true`      |
 | footer-direction       | 使用横纵方向 可选值 `horizontal`、`vertical`                  | string                   | `horizontal` |
 | overlay-class          | 自定义遮罩类名                                                | string                   | -          |
 | overlay-style          | 自定义遮罩样式                                                | CSSProperties            | -          |

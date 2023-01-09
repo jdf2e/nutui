@@ -171,14 +171,15 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { showToast } from '@/packages/nutui.vue';
   export default {
     props: {},
     setup() {
       const state = reactive({
         checkbox: false,
       });
-      const changeBox3= (checked: boolean, label: string) => {
-        console.log('change事件触发' + checked, label);
+      const changeBox3= (state: boolean, label: string) => {
+        showToast.text(`${state ? '选中' : '取消'} ${label}`);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -195,6 +196,40 @@ app.use(Checklist);
 ```html
 <template>
   <nut-checkbox-group v-model="checkboxgroup1">
+    <nut-checkbox label="1">组合复选框</nut-checkbox>
+    <nut-checkbox label="2">组合复选框</nut-checkbox>
+    <nut-checkbox label="3">组合复选框</nut-checkbox>
+    <nut-checkbox label="4">组合复选框</nut-checkbox>
+  </nut-checkbox-group>
+  <nut-cell>
+    <div class="demo-check">当前选中值</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+```
+
+:::
+
+### checkboxGroup禁用
+
+:::demo
+
+```html
+<template>
+  <nut-checkbox-group v-model="checkboxgroup1" disabled>
     <nut-checkbox label="1">组合复选框</nut-checkbox>
     <nut-checkbox label="2">组合复选框</nut-checkbox>
     <nut-checkbox label="3">组合复选框</nut-checkbox>

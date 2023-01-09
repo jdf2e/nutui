@@ -37,7 +37,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -67,7 +67,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -100,7 +100,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -140,10 +140,10 @@ app.use(Badge);
 </template>
 
 <script setup>
-import { Check, Link, Download } from '@nutui/icons-vue';
+import { Check, Link, Download } from '@nutui/icons-vue-taro';
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -173,7 +173,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
    </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -197,7 +197,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }

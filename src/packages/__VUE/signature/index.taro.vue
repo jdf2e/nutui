@@ -4,8 +4,8 @@
       <canvas
         ref="spcanvas"
         class="spcanvas"
-        id="spcanvas"
-        canvasId="spcanvas"
+        :id="canvasSetId"
+        :canvasId="canvasSetId"
         type="2d"
         disable-scroll="true"
         @touchstart="startEventHandler"
@@ -62,6 +62,7 @@ export default create({
       };
     });
     const spcanvas: any = ref<HTMLElement | null>(null);
+    const canvasSetId: any = 'spcanvas' + new Date().getTime();
 
     const state = reactive({
       canvas: null,
@@ -80,16 +81,18 @@ export default create({
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
     };
-
+    const isDraw = ref(false);
     const moveEventHandler = (event: TouchEvent) => {
       event.preventDefault();
       if (!state.ctx) {
         return false;
       }
       let evt = event.changedTouches[0];
+      isDraw.value = true;
       emit('signing', evt);
-      let mouseX = evt.clientX;
-      let mouseY = evt.clientY;
+      // @ts-ignore
+      let mouseX = evt.x || evt.clientX;
+      let mouseY = evt.y || evt.clientY;
 
       if (Taro.getEnv() === 'WEB') {
         let coverPos = spcanvas.value.getBoundingClientRect();
@@ -116,6 +119,7 @@ export default create({
       state.ctx.closePath();
 
       emit('clear');
+      isDraw.value = false;
     };
 
     const confirm = () => {
@@ -127,7 +131,7 @@ export default create({
         return;
       }
       Taro.createSelectorQuery()
-        .select('#spcanvas')
+        .select('#' + canvasSetId)
         .fields({
           node: true,
           size: true
@@ -135,10 +139,12 @@ export default create({
         .exec(async (res) => {
           Taro.canvasToTempFilePath({
             canvas: res[0].node,
-            canvasId: 'spcanvas',
+            canvasId: canvasSetId,
             fileType: props.type as any,
             success: function (result) {
-              emit('confirm', state.canvas, result.tempFilePath);
+              const _canvas = !isDraw.value ? '请绘制签名' : state.canvas;
+              const _filePath = !isDraw.value ? '' : result.tempFilePath;
+              emit('confirm', _canvas, _filePath);
             },
             fail: function (result) {
               emit('confirm', result);
@@ -152,7 +158,7 @@ export default create({
         setTimeout(() => {
           if (Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD') {
             Taro.createSelectorQuery()
-              .select('#spcanvas')
+              .select('#' + canvasSetId)
               .fields(
                 {
                   node: true,
@@ -161,38 +167,16 @@ export default create({
                 function (res) {
                   const canvas = res.node;
                   canvasSetting(canvas, res.width, res.height);
-                  // const dpr = Taro.getSystemInfoSync().pixelRatio;
-                  // const ctx = canvas.getContext('2d');
-                  // canvas.width = res.width * dpr;
-                  // canvas.height = res.height * dpr;
-                  // state.canvas = canvas;
-                  // ctx.scale(dpr, dpr);
-                  // state.ctx = ctx;
-                  // state.canvasWidth = res.width * dpr;
-                  // state.canvasHeight = res.height * dpr;
                 }
               )
               .exec();
           } else {
-            const canvasDom: HTMLElement | null = document.getElementById('spcanvas');
+            const canvasDom: HTMLElement | null = document.getElementById(canvasSetId);
             let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement;
             if (canvasDom?.tagName !== 'CANVAS') {
               canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
             }
             canvasSetting(canvas, canvasDom?.offsetWidth as number, canvasDom?.offsetHeight as number);
-
-            //   const ctx: any = canvas.getContext('2d');
-            //   const dpr = Taro.getSystemInfoSync().pixelRatio;
-            //   const _w = (canvasDom?.offsetWidth as number) * dpr;
-            //   const _h = (canvasDom?.offsetHeight as number) * dpr;
-
-            //   canvas.width = _w;
-            //   canvas.height = _h;
-            //   state.canvas = canvas;
-            //   ctx?.scale(dpr, dpr);
-            //   state.ctx = ctx;
-            //   state.canvasWidth = _w;
-            //   state.canvasHeight = _h;
           }
         }, 1000);
       });
@@ -211,6 +195,7 @@ export default create({
     };
     return {
       taroEnv: Taro.getEnv(),
+      canvasSetId,
       spcanvas,
       confirm,
       clear,

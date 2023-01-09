@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
+      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll" :container-height="100">
         <template v-slot="{ item }">
           <div class="list-item">
             {{ item }}

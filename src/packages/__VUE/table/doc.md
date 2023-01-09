@@ -374,7 +374,7 @@ app.use(Table);
 <script lang="ts">
   import { reactive, toRefs, h } from 'vue';
   import { Button } from '@nutui/nutui';
-   import { Dongdong } from '@nutui/icons-vue';
+  import { Dongdong } from '@nutui/icons-vue';
   export default {
     setup() {
       const state = reactive({

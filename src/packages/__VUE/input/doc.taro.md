@@ -165,7 +165,7 @@ app.use(Input);
 
 ### 配合表单使用
 
-结合nut-form与nut-form-item使用
+结合 `nut-form` 与 `nut-form-item` 使用
 
 :::demo
 
@@ -388,18 +388,18 @@ app.use(Input);
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | - |
 | confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string |   `done`   |
 | adjust-position | 键盘弹起时，是否自动上推页面     | boolean | `true` |
-| always-system | 是否强制使用系统键盘和 Web-view 创建的 input 元素。为 true 时，`confirm-type`、`confirm-hold` 可能失效    | boolean | `false` |
+| always-system | 是否强制使用系统键盘和 `Web-view` 创建的 `input` 元素。为 `true` 时，`confirm-type`、`confirm-hold` 可能失效    | boolean | `false` |
 
 ### Events
 
 | 事件名   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| update:model-value | 输入框内容变化时触发 | val  |
-| focus  | 输入框聚焦时触发     | event |
-| blur   | 输入框失焦时触发     | event  |
-| clear  | 点击清除按钮时触发   | event  |
-| click  | 点击组件时触发      | event  |
-| click-input      | 点击输入区域时触发      | event  |
+| update:model-value | 输入框内容变化时触发 | `val`  |
+| focus  | 输入框聚焦时触发     | `event` |
+| blur   | 输入框失焦时触发     | `event`  |
+| clear  | 点击清除按钮时触发   | `event`  |
+| click  | 点击组件时触发      | `event`  |
+| click-input      | 点击输入区域时触发      | `event`  |
 
 ### Slots
 | 名称  | 说明     | 

@@ -230,7 +230,7 @@ export default {
 
 <script>
 import { reactive, ref } from 'vue';
-import { TriangleDown, Checked } from '@nutui/icons-vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
 
 export default {
   setup() {

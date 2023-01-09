@@ -344,7 +344,7 @@ app.use(SwiperItem);
 
 :::demo
 
-```vue
+```html
 <template>
   <view class="demo-box">
     <nut-swiper :init-page="page" :loop="true" ref="swiper">
@@ -484,101 +484,6 @@ app.use(SwiperItem);
 :::
 
 
-### 水平居中展示
-
-`is-center` 代表可居中，同时必须传 `width`
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
-### 垂直居中展示
-
-`is-center` 代表可居中，同时必须传 `height`
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
-
 ## API
 
 ### Props
@@ -595,8 +500,8 @@ app.use(SwiperItem);
 | auto-play | 自动轮播时长，0表示不会自动轮播                                          | number \| string        | `0`        |
 | init-page               | 初始化索引值                   | number \| string         | `0`    |
 | touchable             | 是否可触摸滑动                                                      | boolean         | `true`          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | boolean  | `true`           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | boolean         | `true`    |
+| is-prevent-default                  | 滑动过程中是否禁用默认事件                                              | boolean  | `true`           |
+| is-stop-propagation               | 滑动过程中是否禁止冒泡                    | boolean         | `true`    |
 
 
 
@@ -604,7 +509,12 @@ app.use(SwiperItem);
 
 | 事件名           | 说明                   | 回调参数     |
 | ---------------- | ---------------------- | ------------ |
-| change            | 滑动之后的回调         | 当前索引值index |
+| change            | 滑动之后的回调         | `当前索引值 index` |
+
+### Slots
+| 名称    | 说明         |
+|---------|--------------|
+| page    | 自定义指示器 |
 
 
 
@@ -614,7 +524,7 @@ app.use(SwiperItem);
 | ---------------- | ---------------------- | ------------ |
 | prev            | 切换到上一页         | - |
 | next            | 切换到下一页         | - |
-| to            | 切换到指定轮播         | index:number |
+| to            | 切换到指定轮播         | `index:number` |
 
 ## 主题定制
 

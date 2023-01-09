@@ -27,7 +27,7 @@ export default create({
     },
     lockScroll: {
       type: Boolean,
-      default: false
+      default: true
     },
     overlayClass: {
       type: String,

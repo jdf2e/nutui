@@ -158,13 +158,13 @@ export default createDemo({
         state.navs = [
           {
             id: 16,
-            name: 'asyc abc16',
-            arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+            name: '异步加载1',
+            arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
           },
           {
             id: 17,
-            name: 'asyc abc17',
-            arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+            name: '异步加载2',
+            arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
           }
         ];
       }, 2000);
