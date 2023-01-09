@@ -77,8 +77,3 @@ export default createDemo({
   background-color: #fff;
 }
 </style>
-<style lang="scss">
-#app {
-  height: auto !important;
-}
-</style>

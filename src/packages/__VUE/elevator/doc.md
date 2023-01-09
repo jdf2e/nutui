@@ -27,7 +27,6 @@ app.use(Elevator);
   export default {
     setup() {
       const state = reactive({
-        acceptKey: 'num',
         dataList: [
           {
             title: 'A',
@@ -392,7 +391,6 @@ app.use(Elevator);
     },
     setup() {
       const state = reactive({
-        acceptKey: 'num',
         dataList: [
           {
             title: 'A',
