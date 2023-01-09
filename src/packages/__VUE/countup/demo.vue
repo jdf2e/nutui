@@ -1,16 +1,16 @@
 <template>
   <div class="demo">
-    <h2>{{ translate('basic') }}</h2>
+    <!-- <h2>{{ translate('basic') }}</h2>
     <div class="show-demo">
       <nut-countup :init-num="0" :end-num="200"></nut-countup>
       <nut-countup :init-num="150.0" :end-num="0.0" :speed="6.18" :to-fixed="2"></nut-countup>
       <nut-countup :init-num="500.0" :end-num="0.0" :speed="50" :to-fixed="2"></nut-countup>
-    </div>
+    </div> -->
     <h2>{{ translate('title') }}</h2>
     <div class="show-demo">
       <nut-countup :scrolling="true" :init-num="18.618" :during="600"></nut-countup>
     </div>
-    <h2>{{ translate('title1') }}</h2>
+    <!-- <h2>{{ translate('title1') }}</h2>
     <div class="show-demo">
       <nut-countup
         :custom-change-num="customNumber"
@@ -42,7 +42,7 @@
         <nut-button type="danger" @click="startRole" :disabled="startFlag">{{ translate('btn1') }}</nut-button>
         <nut-button type="danger" @click="startRole2" :disabled="startFlag">{{ translate('btn2') }}</nut-button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -59,7 +59,7 @@ const initTranslate = () =>
       title: '数字滚动',
       title1: '自定义滚动图片展示',
       title2: '抽奖（模拟滚动抽奖）',
-      btn1: '抽奖',
+      btn1: '中奖',
       btn2: '不中奖'
     },
     'en-US': {
@@ -67,7 +67,7 @@ const initTranslate = () =>
       title: 'Digital scrolling',
       title1: 'Custom scrolling picture display',
       title2: 'Lottery (simulated rolling lottery)',
-      btn1: 'luck draw',
+      btn1: 'win the lottery',
       btn2: 'Not winning'
     }
   });
