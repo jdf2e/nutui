@@ -70,14 +70,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        right: 0;
-        width: 16px;
-        height: 16px;
-        margin-top: -8px;
-        margin-right: 10px;
+        margin-right: 13px;
         & .nut-searchbar__nut-icon-mask-close {
           color: rgb(204, 204, 204);
           &:hover {
@@ -85,6 +78,9 @@
             color: rgb(104, 104, 104);
           }
         }
+      }
+      .nut-searchbar__input-bar_clear {
+        padding-right: 10px;
       }
     }
 
