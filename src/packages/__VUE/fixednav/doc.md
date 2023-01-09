@@ -12,7 +12,6 @@ import { FixedNav } from '@nutui/nutui';
 
 const app = createApp();
 app.use(FixedNav);
-
 ```
 
 

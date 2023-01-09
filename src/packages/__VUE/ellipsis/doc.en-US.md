@@ -13,7 +13,6 @@ import { Ellipsis } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Ellipsis);
-
 ```
 
 ### Leading

@@ -12,7 +12,6 @@ import { Price } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Price);
-
 ```
 
 ### 价格大小

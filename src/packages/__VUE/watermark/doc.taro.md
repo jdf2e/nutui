@@ -13,7 +13,6 @@ import { Watermark } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Watermark);
-
 ```
 
 ### 基础用法

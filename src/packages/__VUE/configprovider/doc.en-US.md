@@ -11,7 +11,6 @@ import { ConfigProvider } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ConfigProvider);
-
 ```
 
 ### dark mode

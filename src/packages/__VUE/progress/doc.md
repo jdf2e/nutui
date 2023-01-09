@@ -12,7 +12,6 @@ import { Progress } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Progress);
-
 ```
 
 

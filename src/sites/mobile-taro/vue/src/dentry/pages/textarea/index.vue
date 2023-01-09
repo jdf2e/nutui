@@ -8,8 +8,8 @@
     <h2>高度自定义，拉伸</h2>
     <nut-textarea v-model="value3" autosize />
     <h2>只读、禁用</h2>
-    <nut-textarea readonly model-value="textarea只读状态" />
-    <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+    <nut-textarea readonly model-value="textarea 只读状态" />
+    <nut-textarea disabled model-value="textarea 禁用状态" />
   </div>
 </template>
 
@@ -41,4 +41,15 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.nut-textarea__textarea__readonly {
+  background-color: #f9f9f9;
+}
+.nut-textarea--disabled {
+  textarea {
+    padding: 5px 10px;
+    height: 30px;
+    background-color: #f9f9f9;
+  }
+}
+</style>

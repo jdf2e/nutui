@@ -40,7 +40,6 @@ app.use(Comment);
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
@@ -226,7 +225,7 @@ const videos = [{
 用于存放评论相关的信息。
 
 ```javascript
-const info = [{
+const info = {
   "content": "",  // 评论详情
   "nickName": "", // 评论人的姓名
   "score": 5, // 评论星星数
@@ -235,8 +234,21 @@ const info = [{
   "size": "", // 评论人购买的商品规格
   "replay":23, // 此评论的回复数
   "like":1, // 此评论的点赞数
-}]
+}
 ```
+
+### follow 对象
+
+用于存放追评相关的信息。
+
+```javascript
+const follow = {
+  "days": 0, // 购买多少天后进行追评
+  "content": "", // 追评内容
+  "images": [] // 追评图片
+}
+```
+
 ## 主题定制
 
 ### 样式变量

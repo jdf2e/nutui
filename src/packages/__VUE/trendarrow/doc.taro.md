@@ -13,7 +13,6 @@ import { TrendArrow } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TrendArrow);
-
 ```
 
 ### 基础用法

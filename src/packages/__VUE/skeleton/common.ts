@@ -13,7 +13,7 @@ export const component = (components: any) => {
       //每行高度
       height: {
         type: String,
-        default: '100px'
+        default: '15px'
       },
       //是否显示动画
       animated: {

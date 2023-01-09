@@ -12,7 +12,6 @@ import { PullRefresh } from '@nutui/nutui';
 
 const app = createApp();
 app.use(PullRefresh);
-
 ```
 
 ### Basic Usage

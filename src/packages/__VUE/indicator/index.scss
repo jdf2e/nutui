@@ -38,11 +38,11 @@
     text-align: center;
     font-size: $indicator-number-font-size;
     line-height: $indicator-size;
-    color: $indicator-white;
+    color: $indicator-color;
     vertical-align: middle;
-    border: 1px solid $indicator-white;
+    border: 1px solid $indicator-color;
     border-radius: 50%;
-    background-color: $indicator-color;
-    box-shadow: 0 0 1px 1px $indicator-color;
+    background-color: $indicator-bg-color;
+    box-shadow: 0 0 1px 1px $indicator-bg-color;
   }
 }

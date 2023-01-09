@@ -13,7 +13,6 @@ import { Image } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### Basic Usage
