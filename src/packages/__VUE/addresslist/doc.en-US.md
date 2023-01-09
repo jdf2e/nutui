@@ -22,9 +22,9 @@ app.use(AddressList);
 <template>
   <nut-address-list
     :data="data"
+    @click-item="clickItem"
     @del-icon="delClick"
     @edit-icon="editClick"
-    @click-item="clickItem"
     :show-bottom-button="false"
     :data-options="dataOptions"
   >
@@ -65,12 +65,10 @@ export default {
       console.log('Click To Edit');
     }
     return {
-      clickItem,
       data,
+      clickItem,
       delClick,
       editClick,
-      copyClick,
-      setClick,
       dataOptions
     };
   }

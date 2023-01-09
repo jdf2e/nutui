@@ -13,15 +13,9 @@
     </component>
     <div class="nut-address-list-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
       <slot name="longpressAll">
-        <div class="nut-address-list-general__mask-copy" @click="copyCLick">
-          <div class="nut-address-list-mask-contain"> 复制<br />地址 </div>
-        </div>
-        <div class="nut-address-list-general__mask-set" @click="setDefault">
-          <div class="nut-address-list-mask-contain"> 设置<br />默认 </div>
-        </div>
-        <div class="nut-address-list-general__mask-del" @click="delLongClick">
-          <div class="nut-address-list-mask-contain"> 删除<br />地址 </div>
-        </div>
+        <div class="nut-address-list-general__mask-copy" @click="copyCLick"> 复制地址 </div>
+        <div class="nut-address-list-general__mask-set" @click="setDefault"> 设置默认 </div>
+        <div class="nut-address-list-general__mask-del" @click="delLongClick"> 删除地址 </div>
       </slot>
     </div>
     <div class="nut-address-list__mask-bottom" v-if="showMaskRef" @click="hideMaskClick"></div>

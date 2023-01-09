@@ -3,10 +3,10 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-address-list
       :data="data"
+      @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
-      @click-item="clickItem"
-      :showBottomButton="false"
+      :show-bottom-button="false"
       :data-options="dataOptions"
     >
     </nut-address-list>
@@ -14,10 +14,10 @@
     <nut-address-list
       :data="data"
       long-Press
-      :showBottomButton="false"
+      :show-bottom-button="false"
+      @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
-      @click-item="clickItem"
       @long-copy="copyClick"
       @long-set="setClick"
       @long-del="delClickLong"
@@ -28,10 +28,10 @@
     <nut-address-list
       :data="data"
       swipeEdition
-      showBottomButton
+      show-bottom-button
+      @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
-      @click-item="clickItem"
       @swipe-del="delClickSwipe"
       @add="addAddress"
       :data-options="dataOptions"
@@ -109,8 +109,8 @@ export default createDemo({
       console.log('Click To Add');
     };
     return {
-      clickItem,
       data,
+      clickItem,
       delClick,
       editClick,
       copyClick,
