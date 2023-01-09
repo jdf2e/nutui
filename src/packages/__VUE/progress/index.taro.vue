@@ -2,7 +2,6 @@
   <div class="nut-progress">
     <div
       class="nut-progress-outer"
-      :id="'nut-progress-outer-taro-' + randRef"
       :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
@@ -106,11 +105,12 @@ export default create({
     const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');
     const insideText = ref();
-    const refRandomId = Math.random().toString(36).slice(-8);
-    const randRef = ref(refRandomId);
+    const percentage = computed(() => {
+      return props.percentage >= 100 ? 100 : props.percentage;
+    });
     const bgStyle = computed(() => {
       return {
-        width: props.percentage + '%',
+        width: percentage.value + '%',
         background: props.strokeColor || ''
       };
     });
@@ -125,10 +125,10 @@ export default create({
     });
     return {
       height,
+      percentage,
       bgStyle,
       textStyle,
       insideText,
-      randRef,
       slotDefault
     };
   }

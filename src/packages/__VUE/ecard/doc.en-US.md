@@ -23,14 +23,14 @@ app.use(Ecard);
 <template>
   <nut-ecard
     v-model="money"
-    @inputChange="inputChange"
+    @input-change="inputChange"
     @change="change"
-    @changeStep="changeStep"
+    @change-step="changeStep"
     :data-list="dataList"
   ></nut-ecard>
 </template>
 <script>
-  import { reactive, toRefs } from 'vue';
+  import {ref, reactive, toRefs } from 'vue';
   export default {
     setup() {
       const dataList=reactive([
@@ -81,7 +81,7 @@ app.use(Ecard);
 | modelValue        | Price                | number | `0`            |
 | choose-text         | Main Title               | string |  `Select`   |
 | other-value-text        | Other Text   | string |         `Other Value`        |
-| data-list         | Ecard List| Array |        `[]`        |
+| data-list         | Ecard List| Array |        `DataList[]`        |
 | card-amount-min| Other Min Value     | number | `1`|
 | card-amount-max        | Other Max Value                      | number | `9999`            |
 | card-buy-min        | Choose Min Value                      | number | `9999`            |
@@ -96,6 +96,11 @@ app.use(Ecard);
 | change  | Trigger event when Ecard is clicker | `value` |
 | input-change  | Triggered when the value changes |`value` |
 | change-step  | Triggered when the steps value changes | `value，modelValue` |
+
+### Data Structure of DataList 
+| key	 | Description           | Description     |
+|--------|----------------|--------------|
+| price  | price | string |
 
 ## Theming
 

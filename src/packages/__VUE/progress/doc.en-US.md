@@ -162,7 +162,7 @@ app.use(Progress);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| 名称                                    | 默认值                     |
+| Name                                    | Deault Value                     |
 | --------------------------------------- | -------------------------- |
 |  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
 |  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  |
@@ -170,19 +170,15 @@ The component provides the following CSS variables, which can be used to customi
 |  --nut-progress-outer-border-radius| _12px_  |
 |  --nut-progress-insidetext-border-radius| _5px_  |
 |  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  |
-|  --nut-progress-insidetext-top| _-42%_  |
 |  --nut-progress-small-height| _5px_  |
 |  --nut-progress-small-text-font-size| _7px_  |
 |  --nut-progress-small-text-line-height| _10px_  |
 |  --nut-progress-small-text-padding| _2px 4px_  |
-|  --nut-progress-small-text-top| _-100%_  |
 |  --nut-progress-base-height| _10px_  |
 |  --nut-progress-base-text-font-size| _9px_  |
 |  --nut-progress-base-text-line-height| _13px_  |
 |  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  |
 |  --nut-progress-large-height| _15px_  |
 |  --nut-progress-large-text-font-size| _13px_  |
 |  --nut-progress-large-text-line-height| _18px_  |
 |  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  |
