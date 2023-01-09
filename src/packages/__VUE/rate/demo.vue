@@ -9,10 +9,13 @@
     <nut-cell class="cell"><nut-rate allow-half v-model="state.val1"></nut-rate></nut-cell>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-cell class="cell"><nut-rate :icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate :custom-icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
 
     <h2>{{ translate('title3') }}</h2>
-    <nut-cell class="cell"><nut-rate :count="6" v-model="state.val3"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate count="10" v-model="state.val3"></nut-rate></nut-cell>
+
+    <h2>{{ translate('title4') }}</h2>
+    <nut-cell class="cell"><nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate></nut-cell>
 
     <h2>{{ translate('title5') }}</h2>
     <nut-cell class="cell"><nut-rate disabled v-model="state.val5"></nut-rate></nut-cell>
@@ -22,6 +25,9 @@
 
     <h2>{{ translate('title7') }}</h2>
     <nut-cell class="cell"><nut-rate v-model="state.val7" @change="onChange"></nut-rate></nut-cell>
+
+    <h2>{{ translate('title8') }}</h2>
+    <nut-cell class="cell"><nut-rate v-model="state.val8" size="35"></nut-rate></nut-cell>
   </div>
 </template>
 

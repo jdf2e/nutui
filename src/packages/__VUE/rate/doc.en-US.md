@@ -41,7 +41,7 @@ export default {
 <template>
      <nut-cell class="cell">
          <nut-rate allow-half v-model="value"></nut-rate>
-     </<nut-cell>
+     <nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -61,7 +61,7 @@ export default {
 ```html
 <template>
      <nut-cell class="cell">
-         <nut-rate :icon="HeartFill" v-model="value" />
+         <nut-rate :custom-icon="HeartFill" v-model="value" />
      </nut-cell>
 </template>
 <script lang="ts">
@@ -84,7 +84,7 @@ export default {
 ```html
 <template>
      <nut-cell class="cell">
-         <nut-rate :count="6" v-model="value" />
+         <nut-rate count="10" v-model="value" />
      </nut-cell>
 </template>
 <script lang="ts">
@@ -166,20 +166,44 @@ export default {
 ```
 :::
 
+### Custom Size 35px
+
+:::demo
+```html
+<template>
+    <nut-cell class="cell">
+        <nut-rate v-model="value" size="35" />
+    </nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
+</script>
+```
+:::
+
+
 ## API
 ### Props
 
-| Attribute    | Description                                                                      | Type    | Default |
-|--------------|----------------------------------------------------------------------------------|---------|---------|
-| v-model      | The current number of stars, you can use v-model to bind data in both directions | number  | -       |
-| count        | Total number of stars                                                            | number  | `5`       |
-| active-color | Icon selection color                                                             | string  | `#fa200c` |
-| void-color   | Icon unselected color                                                            | string  | `#ccc`    |
-| allow-half   | half star                                                                        | boolean | `false`   |
-| readonly     | read-only                                                                        | boolean | `false`   |
-| disabled     | whether to disable                                                               | boolean | `false`   |
-| spacing      | spacing                                                                          | number  | `20`      |
-| touchable    | Whether to allow select rate by touch gesture                                    | boolean | `true`    |
+| Attribute    | Description                                                                                     | Type             | Default     |
+|--------------|-------------------------------------------------------------------------------------------------|------------------|-------------|
+| v-model      | The current number of stars, you can use v-model to bind data in both directions                | number \| string | -           |
+| count        | Total number \| string of stars                                                                 | number \| string | `5`         |
+| active-color | Icon selection color                                                                            | string           | `#fa200c`   |
+| void-color   | Icon unselected color                                                                           | string           | `#ccc`      |
+| allow-half   | half star                                                                                       | boolean          | `false`     |
+| readonly     | read-only                                                                                       | boolean          | `false`     |
+| disabled     | whether to disable                                                                              | boolean          | `false`     |
+| spacing      | spacing                                                                                         | number \| string | `20`        |
+| touchable    | Whether to allow select rate by touch gesture                                                   | boolean          | `true`      |
+| size         | `Icon` custom size , eg `20px` `2em` `2rem`                                                     | number \| string | -           |
+| custom-icon  | custom `Icon`, set [VNode](https://vuejs.org/guide/extras/render-function.html#creating-vnodes) | VNode \| h       | `StarFillN` |
 
 
 ### Events
