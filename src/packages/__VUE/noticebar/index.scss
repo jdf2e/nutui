@@ -37,6 +37,8 @@
     padding-right: 40px;
   }
   .nut-noticebar__page-lefticon {
+    display: flex;
+    align-items: center;
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
     margin: $noticebar-lefticon-margin;
