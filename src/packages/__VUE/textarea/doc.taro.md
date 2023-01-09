@@ -50,7 +50,7 @@ export default {
 
 ```html
 <template>
-  <nut-textarea v-model="value" rows="10" autosize />
+  <nut-textarea v-model="value" autosize />
 </template>
 ```
 :::
@@ -60,8 +60,8 @@ export default {
 
 ```html
 <template>
-  <nut-textarea readonly model-value="textarea只读状态" />
-  <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+  <nut-textarea readonly model-value="textarea 只读状态" />
+  <nut-textarea disabled model-value="textarea 禁用状态" />
 </template>
 ```
 :::

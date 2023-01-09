@@ -14,7 +14,6 @@
   background: $white;
   font-size: $textarea-font;
   padding: 10px 25px;
-
   &--disabled {
     .nut-textarea__textarea,
     .nut-textarea____limit {
@@ -45,6 +44,12 @@
     border: none;
     resize: none;
     line-height: 20px;
+    .taro-textarea {
+      font-size: 14px;
+    }
+  }
+  &__textarea__readonly {
+    padding: 5px 10px;
   }
   &__ali {
     line-height: 17px;
@@ -53,5 +58,6 @@
     position: absolute;
     top: -999999px;
     left: -999999px;
+    font-size: 14px;
   }
 }
