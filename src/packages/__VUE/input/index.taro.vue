@@ -8,7 +8,7 @@
             class="input-text"
             ref="inputRef"
             :style="styles"
-            :maxlength="maxLength"
+            :maxlength="maxLength ? maxLength : -1"
             :placeholder="placeholder"
             :disabled="disabled"
             :readonly="readonly"
@@ -20,6 +20,9 @@
             @focus="onFocus"
             @blur="onBlur"
             @click="onClickInput"
+            @change="endComposing"
+            @compositionend="endComposing"
+            @compositionstart="startComposing"
             :adjust-position="adjustPosition"
             :always-system="alwaysSystem"
           ></component>
@@ -31,19 +34,28 @@
         </view>
         <view class="nut-input-clear-box" v-if="clearable && !readonly" v-show="active && modelValue.length > 0">
           <slot name="clear">
-            <MaskClose class="nut-input-clear" v-bind="$attrs" :size="clearSize" @click="clear"> </MaskClose>
+            <MaskClose
+              class="nut-input-clear"
+              v-bind="$attrs"
+              :size="clearSize"
+              :width="clearSize"
+              :height="clearSize"
+              @click="clear"
+            >
+            </MaskClose>
           </slot>
         </view>
       </view>
     </view>
   </view>
 </template>
+<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 import { MaskClose } from '@nutui/icons-vue-taro';
-
+import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('input');
 
 export type InputType = InputHTMLAttributes['type'];
@@ -55,13 +67,12 @@ export type InputRule = {
   required?: boolean;
 };
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
+export interface InputTarget extends HTMLInputElement {
+  composing?: boolean;
+}
 
 export default create({
   props: {
-    ref: {
-      type: String,
-      default: ''
-    },
     type: {
       type: String as PropType<InputType>,
       default: 'text'
@@ -77,10 +88,6 @@ export default create({
     inputAlign: {
       type: String,
       default: 'left'
-    },
-    center: {
-      type: Boolean,
-      default: false
     },
     required: {
       type: Boolean,
@@ -100,7 +107,7 @@ export default create({
     },
     maxLength: {
       type: [String, Number],
-      default: '9999'
+      default: ''
     },
     clearable: {
       type: Boolean,
@@ -120,14 +127,6 @@ export default create({
     },
     formatter: {
       type: Function as PropType<(value: string) => string>,
-      default: null
-    },
-    rules: {
-      type: Array as PropType<InputRule>,
-      default: []
-    },
-    rows: {
-      type: [String, Number],
       default: null
     },
     showWordLimit: {
@@ -152,7 +151,7 @@ export default create({
     }
   },
   components: { MaskClose },
-  emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -177,7 +176,6 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        center: props.center,
         [`${prefixCls}--disabled`]: props.disabled,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
@@ -202,6 +200,15 @@ export default create({
     };
 
     const onInput = (event: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if (!(event.target as InputTarget)!.composing) {
+          _onInput(event);
+        }
+      } else {
+        _onInput(event);
+      }
+    };
+    const _onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
       if (props.maxLength && value.length > Number(props.maxLength)) {
@@ -228,7 +235,7 @@ export default create({
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
-        emit('change', value);
+        // emit('change', value);
       }
     };
 
@@ -265,7 +272,7 @@ export default create({
       event.stopPropagation();
       if (props.disabled) return;
       emit('update:modelValue', '', event);
-      emit('change', '', event);
+      // emit('change', '', event);
       emit('clear', '', event);
     };
 
@@ -282,7 +289,20 @@ export default create({
       }
       emit('click-input', event);
     };
+    const startComposing = ({ target }: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        (target as InputTarget)!.composing = true;
+      }
+    };
 
+    const endComposing = ({ target }: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if ((target as InputTarget)!.composing) {
+          (target as InputTarget)!.composing = false;
+          (target as InputTarget)!.dispatchEvent(new Event('input'));
+        }
+      }
+    };
     watch(
       () => props.modelValue,
       () => {
@@ -309,6 +329,8 @@ export default create({
       onFocus,
       onBlur,
       clear,
+      startComposing,
+      endComposing,
       onClickInput
     };
   }
