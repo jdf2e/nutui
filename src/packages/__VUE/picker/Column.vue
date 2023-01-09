@@ -145,6 +145,8 @@ export default create({
         }
       }
 
+      preventDefault(event, true);
+
       state.touchParams.startY = touch.deltaY.value;
       state.touchParams.startTime = Date.now();
       state.transformY = state.scrollDistance;
