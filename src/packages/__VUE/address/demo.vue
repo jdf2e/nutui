@@ -42,7 +42,6 @@
       height="270px"
       @change="(cal) => onChange(cal, 'normal2')"
       @close="close5"
-      :columns-placeholder="placeholder"
     ></nut-address>
 
     <h2>{{ translate('existAddress') }}</h2>
@@ -52,7 +51,6 @@
       v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
-      @change="(cal) => onChange(cal, 'exist')"
       @close="close2"
       :is-show-custom-address="false"
       @selected="selected"
@@ -65,7 +63,6 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @change="(cal) => onChange(cal, 'customImg')"
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"

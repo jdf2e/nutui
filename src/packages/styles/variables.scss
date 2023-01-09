@@ -191,10 +191,8 @@ $picker-bar-title-color: var(--nut-picker-bar-title-color, $title-color) !defaul
 $picker-bar-title-font-weight: var(--nut-picker-bar-title-font-weight, normal) !default;
 $picker-item-height: var(--nut-picker-item-height, 36px) !default;
 $picker-item-text-color: var(--nut-picker-item-text-color, $title-color) !default;
-$picker-item-active-text-color: var(--nut-picker-item-active-text-color, inherit) !default;
 $picker-item-text-font-size: var(--nut-picker-item-text-font-size, 14px) !default;
 $picker-item-active-line-border: var(--nut-picker-item-active-line-border, 1px solid #eae7e7) !default;
-$picker-columns-item-color: var(--nut-picker-columns-item-color, $title-color) !default;
 
 //input
 $input-border-bottom: var(--nut-input-border-bottom, #eaf0fb) !default;

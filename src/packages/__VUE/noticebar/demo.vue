@@ -9,9 +9,9 @@
     <nut-noticebar :text="translate('text')" :scrollable="false"></nut-noticebar>
 
     <h2>{{ translate('mode') }}</h2>
-    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="closeFun">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="closeFun">{{ translate('text') }} </nut-noticebar>
     <p />
     <nut-noticebar>
       <template v-slot:left-icon>
@@ -125,7 +125,7 @@ export default createDemo({
       text: translate('text')
     });
 
-    const hello = () => {
+    const closeFun = () => {
       console.log('hello world');
     };
     const go = (item: any) => {
@@ -134,7 +134,7 @@ export default createDemo({
 
     return {
       ...toRefs(state),
-      hello,
+      closeFun,
       go,
       translate,
       Fabulous

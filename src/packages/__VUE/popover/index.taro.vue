@@ -89,7 +89,6 @@ export default create({
     arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },
     showArrow: { type: Boolean, default: true },
-    iconPrefix: { type: String, default: 'nut-icon' },
     duration: { type: [Number, String], default: 0.2 },
     overlay: { type: Boolean, default: false },
     overlayClass: { type: String, default: '' },

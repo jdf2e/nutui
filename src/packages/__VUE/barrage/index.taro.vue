@@ -28,11 +28,11 @@ export default create({
     },
     frequency: {
       type: Number,
-      default: 200
+      default: 500
     },
     speeds: {
       type: Number,
-      default: 2000
+      default: 5000
     },
     rows: {
       type: Number,
@@ -78,14 +78,6 @@ export default create({
         danmuList.value = childrens;
       }
       runStep();
-    });
-
-    onUnmounted(() => {
-      danmuList.value = [];
-    });
-
-    onDeactivated(() => {
-      danmuList.value = [];
     });
 
     watch(

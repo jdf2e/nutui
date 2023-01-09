@@ -19,7 +19,7 @@
 import { ref, onMounted } from 'vue';
 import { TypeOfFun } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
-import InputNumber from '../../inputnumber/index.vue';
+import InputNumber from '../../inputnumber/index.taro.vue';
 const { componentName, create } = createComponent('sku-stepper');
 
 export default create({

@@ -286,12 +286,7 @@ Paused and restarted the countdown with the `paused` attribute
       const reset = () => {
         Countdown.value.reset();
       };
-      return {
-          toggle,
-          onpaused,
-          onrestart,
-        ...toRefs(state)
-      };
+      return {Countdown,start,pause,reset};
     }
   }
 </script>
