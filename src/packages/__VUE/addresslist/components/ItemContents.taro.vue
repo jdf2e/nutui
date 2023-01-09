@@ -28,7 +28,7 @@
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-item');
 const { translate } = createComponent('address-list');
-import { Del, Edit } from '@nutui/icons-vue';
+import { Del, Edit } from '@nutui/icons-vue-taro';
 export default create({
   components: { Del, Edit },
   props: {
