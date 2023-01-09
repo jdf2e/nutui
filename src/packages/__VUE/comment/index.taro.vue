@@ -13,7 +13,7 @@
       class="nut-comment__main"
       :style="`-webkit-line-clamp:${conEllipsis}`"
       @click="handleClick"
-      v-html="info.content.replace(/\n/g, '<br>')"
+      v-html="info.content"
     ></view>
 
     <comment-images :images="images" :videos="videos" :type="imagesRows" @clickImages="clickImages"></comment-images>

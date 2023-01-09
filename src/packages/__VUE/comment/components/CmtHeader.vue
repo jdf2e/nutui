@@ -47,7 +47,11 @@ export default create({
     },
     info: {
       type: Object,
-      default: () => ({})
+      default: () => {}
+    },
+    labels: {
+      type: Function,
+      default: () => ''
     }
   },
   emits: ['handleClick'],
