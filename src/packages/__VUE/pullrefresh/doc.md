@@ -46,7 +46,7 @@ app.use(PullRefresh);
 :::
 ### 自定义文案
 
-下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
+下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' `，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
@@ -154,5 +154,4 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 | pulling  | 下拉过程的顶部内容 |
 | loosing  | 释放过程中顶部内容 |
 | loading  | 加载过程中顶部内容 |
-| complete  | 加载完成顶部内容 |
 | default  | 自定义内容 |

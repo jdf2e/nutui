@@ -47,7 +47,7 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 :::
 ### Custom Tips
 
-The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete'`，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
+The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
 
 :::demo
 
@@ -155,5 +155,4 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 | pulling  | Content of head when at pulling |
 | loosing  | Content of head when at loosing |
 | loading  | Content of head when at loading |
-| complete  | Content of head when at complete |
 | default  | 	Default slot |
