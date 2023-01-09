@@ -92,6 +92,7 @@ export default create({
       emit('signing', evt);
       // @ts-ignore
       let mouseX = evt.x || evt.clientX;
+      // @ts-ignore
       let mouseY = evt.y || evt.clientY;
 
       if (Taro.getEnv() === 'WEB') {
