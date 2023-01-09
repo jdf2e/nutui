@@ -169,29 +169,6 @@ app.use(GridItem);
 ```
 :::
 
-### 页面导航
-
-:::demo
-```html
-<template>
-  <nut-grid :column-num="2">
-    <nut-grid-item text="路由跳转" to="/">
-      <Home />
-    </nut-grid-item>
-    <nut-grid-item text="链接跳转" url="https://jd.com">
-      <Search />
-    </nut-grid-item>
-  </nut-grid>
-</template>
-<script lang="ts">
-  import { Home, Search } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Search },
-  };
-</script>
-```
-:::
-
 ### 自定义内容
 
 :::demo

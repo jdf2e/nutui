@@ -26,10 +26,29 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-  <nut-empty image="empty" description="no content"></nut-empty>
-  <nut-empty image="error" description="error"></nut-empty>
-  <nut-empty image="network" description="no network"></nut-empty>
+  <nut-tabs v-model="tabValue">
+    <nut-tab-pane title="empty">
+      <nut-empty image="empty" description="no cotent"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="error">
+      <nut-empty image="error" description="error"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="no network">
+      <nut-empty image="network" description="network"></nut-empty>
+    </nut-tab-pane>
+  </nut-tabs>
 </template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    const tabValue = ref(0);
+    return {
+      tabValue
+    }
+  }
+}
+</script>
 ```
 :::
 ### Custom Image

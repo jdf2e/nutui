@@ -24,7 +24,7 @@ export interface rectTaro {
 
 export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, Taro: any): any => {
   let element = unref(elementRef);
-
+  console.log(Taro.getEnv());
   return new Promise((resolve) => {
     if (Taro.getEnv() === 'WEB') {
       if (element && element.$el) {
@@ -58,6 +58,7 @@ export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element |
     } else {
       const query = Taro.createSelectorQuery();
       let el = (element as any).id ? (element as any).id : (element as any);
+
       query.select(`#${el}`) && query.select(`#${el}`).boundingClientRect();
       query.exec(function (res: any) {
         resolve(res[0]);

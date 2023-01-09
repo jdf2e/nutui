@@ -230,7 +230,7 @@ app.use(GridItem);
 | Attribute | Description | Type | Default |
 |-|-|-|-|
 | text | text | string | - |
-| url | Link URL | string | - |
+| url | Link URL | string | `''` |
 | to | Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object| - |
 | replace  | If true, the navigation will not leave a history record | boolean | `false` |
 
