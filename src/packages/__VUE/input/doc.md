@@ -181,7 +181,7 @@ app.use(Input);
 
 ### 配合表单使用
 
-结合nut-form与nut-form-item使用
+结合 `nut-form` 与 `nut-form-item` 使用
 
 :::demo
 
@@ -408,12 +408,12 @@ app.use(Input);
 
 | 事件名   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| update:model-value | 输入框内容变化时触发 | val  |
-| focus  | 输入框聚焦时触发     | event |
-| blur   | 输入框失焦时触发     | event  |
-| clear  | 点击清除按钮时触发   | event  |
-| click  | 点击组件时触发      | event  |
-| click-input      | 点击输入区域时触发      | event  |
+| update:model-value | 输入框内容变化时触发 | `val`  |
+| focus  | 输入框聚焦时触发     | `event` |
+| blur   | 输入框失焦时触发     | `event`  |
+| clear  | 点击清除按钮时触发   | `event`  |
+| click  | 点击组件时触发      | `event`  |
+| click-input      | 点击输入区域时触发      | `event`  |
 ### Slots
 | 名称  | 说明     | 
 |-------|----------|

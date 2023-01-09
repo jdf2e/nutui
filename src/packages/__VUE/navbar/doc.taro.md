@@ -60,7 +60,7 @@ app.use(TabPane);
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue';
+  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue-taro';
   export default {
   components: { ShareN, Cart2, MoreX },
   setup() {
@@ -112,7 +112,7 @@ app.use(TabPane);
 
 <script lang="ts">
 import { ref } from 'vue';
-import { MoreX } from '@nutui/icons-vue';
+import { MoreX } from '@nutui/icons-vue-taro';
 export default {
   components: { MoreX },
   setup() {
@@ -164,7 +164,7 @@ export default {
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { HorizontalN } from '@nutui/icons-vue';
+  import { HorizontalN } from '@nutui/icons-vue-taro';
   export default {
     components: { HorizontalN },
     setup() {

@@ -171,10 +171,8 @@ $picker-bar-title-color: $title-color !default;
 $picker-bar-title-font-weight: normal !default;
 $picker-item-height: 36px !default;
 $picker-item-text-color: $title-color !default;
-$picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
 $picker-item-active-line-border: 1px solid #d8d8d8 !default;
-$picker-columns-item-color: $title-color !default;
 
 //input
 $input-border-bottom: #eaf0fb !default;
@@ -412,6 +410,7 @@ $steps-wait-icon-color: $white !default;
 $steps-wait-head-color: #909ca4 !default;
 $steps-wait-head-border-color: #909ca4 !default;
 $steps-wait-content-color: #909ca4 !default;
+$steps-wait-icon-text-color: #ffffff !default;
 
 $steps-finish-head-color: $primary-color !default;
 $steps-finish-head-border-color: $primary-color !default;
@@ -503,8 +502,6 @@ $timeselect-timedetail-item-text-font-size: $font-size-2 !default;
 $timeselect-timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
 $timeselect-timedetail-item-cur-border: $primary-color !default;
 $timeselect-timedetail-item-cur-text-color: $primary-color !default;
-$timeselect-timedetail-time-text-color: #999 !default;
-$timeselect-timedetail-time-font-size: $font-size-1 !default;
 
 //tag
 $tag-font-size: $font-size-0 !default;

@@ -242,7 +242,7 @@ Set `close on click override` to control whether the click mask is closed. If it
 | duration               | Display/hide animation duration, in seconds | string \| number | `0.3`    |
 | overlay-class          | Custom mask class name   | string         | -      |
 | overlay-style          | Custom Mask Style   | CSSProperties  | -      |
-| lock-scroll            | Whether the background is locked when the mask is displayed     | boolean        | `false`  |
+| lock-scroll            | Whether the background is locked when the mask is displayed     | boolean        | `true`  |
 | close-on-click-overlay | Whether to close the mask when clicking. If you set `false`, the `click` event will become invalid | boolean        | `true`   |
 
 ### Events

@@ -50,8 +50,10 @@
 <script lang="ts">
 import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('addresslist-general');
+const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.vue';
+import Button from '../../button/index.vue';
+import Swipe from '../../swipe/index.vue';
 
 export default create({
   props: {
@@ -70,7 +72,9 @@ export default create({
   },
   emits: ['delIcon', 'editIcon', 'clickItem', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
   components: {
-    ItemContents
+    ItemContents,
+    [Button.name]: Button,
+    [Swipe.name]: Swipe
   },
 
   setup(props, { emit }) {

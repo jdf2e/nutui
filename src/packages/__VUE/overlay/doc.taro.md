@@ -240,7 +240,7 @@ app.use(Overlay);
 | duration               | 显示/隐藏的动画时长，单位秒 | string \| number | `0.3`    |
 | overlay-class          | 自定义遮罩类名   | string         | -      |
 | overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 遮罩显示时的背景是否锁定     | boolean        | `false`  |
+| lock-scroll            | 遮罩显示时的背景是否锁定     | boolean        | `true`  |
 | close-on-click-overlay | 点击遮罩时是否关闭，如果设置 `false`,那么 `click`事件将失效 | boolean    | `true`   |
 
 ### Events

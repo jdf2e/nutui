@@ -28,10 +28,9 @@ app.use(Step);
     </nut-step>
     <nut-step title="未开始">2</nut-step>
     <nut-step title="未开始">3</nut-step>
-    <nut-step title="未开始">4</nut-step>
   </nut-steps>
 </template>
-<script>
+<script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
@@ -63,7 +62,7 @@ app.use(Step);
     <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
   </div>
 </template>
-<script>
+<script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
@@ -92,7 +91,7 @@ app.use(Step);
     <nut-step title="未开始" content="步骤描述">3</nut-step>
   </nut-steps>
 </template>
-<script>
+<script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
@@ -175,7 +174,6 @@ app.use(Step);
 
 
 
-
 ## API
 
 ### Steps Props
@@ -226,6 +224,7 @@ app.use(Step);
 | --nut-steps-base-content-font-size| _14px_ |
 | --nut-steps-base-content-color| _#666_ |
 | --nut-steps-wait-icon-bg-color| _#959fb1_ |
+| --nut-steps-wait-icon-text-color| _var(--nut-white)_ |
 | --nut-steps-wait-icon-color| _var(--nut-white)_ |
 | --nut-steps-wait-head-color| _#909ca4_ |
 | --nut-steps-wait-head-border-color| _#909ca4_ |

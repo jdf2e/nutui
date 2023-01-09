@@ -18,6 +18,8 @@ app.use(SideNavbarItem);
 
 ### Basic Usage
 
+The left and right display can be controlled by setting `'position'`
+
 :::demo
 
 ``` html
@@ -66,7 +68,6 @@ app.use(SideNavbarItem);
 :::
 
 ### Nesting (up to three layers recommended)
-> The miniProgram does not support asynchronous loading temporarily
 
 :::demo
 
@@ -118,13 +119,13 @@ app.use(SideNavbarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
-              arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+              name: 'async1',
+              arr: [{ pid: 16, id: 17, name: 'async-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
-              arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+              name: 'async2',
+              arr: [{ pid: 17, id: 18, name: 'async-id18' }]
             }
           ];
         }, 2000);

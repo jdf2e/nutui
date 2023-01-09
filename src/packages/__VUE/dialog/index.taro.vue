@@ -5,6 +5,8 @@
     :close-on-click-overlay="closeOnClickOverlay"
     :lock-scroll="lockScroll"
     :pop-class="popClass"
+    :overlay-class="overlayClass"
+    :overlay-style="overlayStyle"
     :style="popStyle"
     round
     @click-overlay="closed"

@@ -324,11 +324,12 @@ app.use(TimeDetail);
 | title                 | Bomb layer title                                                    | string  | `Pickup Time`
 | current-key                 | Unique identification                                                    | string \| number  | `0`
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
-| lock-scroll            | Whether the background is locked                         | boolean        | `false`       |
+| lock-scroll            | Whether the background is locked                         | boolean        | `true`       |
+| teleport-disable              | Whether the node is allowed to be mounted       | boolean         | `false`      |
 
 ### Slots
 
-| Attribute                   | Description                                                             |
+| Name                   | Description                                                             |
 |------------------------|----------------------------------------------------------------|
 | title                 | Change Title                                                    |
 | pannel                 | List for left                                                    |
@@ -352,19 +353,19 @@ app.use(TimeDetail);
 
 | Event | Description                  | Arguments   |
 |-------|----------|-------------|
-| select | Callback after closing mask | key: string | number, list: [] |
+| select | Callback after closing mask | `key: string \| number, list: []` |
 
 ### TimePannel Event
 
 | Event | Description                  | Arguments   |
 |-------|----------|-------------|
-| change | Click the callback of the content | pannelKey: string ｜ number |
+| change | Click the callback of the content | `pannelKey: string ｜ number` |
 
 ### TimeDetail Event
 
 | Event | Description                  | Arguments   |
 |-------|----------|-------------|
-| select | Callback of click time | time: string |
+| select | Callback of click time | `time: string` |
 
 ## Theming
 
@@ -398,7 +399,5 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-timeselect-timedetail-item-cur-bg-color| _var(--nut-active-color)_ |
 | --nut-timeselect-timedetail-item-cur-border| _var(--nut-primary-color)_ |
 | --nut-timeselect-timedetail-item-cur-text-color| _var(--nut-primary-color)_ |
-| --nut-timeselect-timedetail-time-text-color| _#999_ |
-| --nut-timeselect-timedetail-time-font-size| _var(--nut-font-size-1)_ |
 
 

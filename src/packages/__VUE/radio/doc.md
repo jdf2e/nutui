@@ -135,7 +135,7 @@ app.use(Checklist);
 
 ### 自定义图标
 
-通过slot自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
+通过 `slot` 自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
 
 :::demo
 
@@ -160,8 +160,12 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
     props: {},
+    components: {
+      Checklist
+    },
     setup() {
       const radioVal = ref('1');
       return { radioVal };
@@ -213,7 +217,7 @@ app.use(Checklist);
 | disabled         | 是否禁用选择                                                 | boolean                 | `false`           |
 | icon-size        | [图标尺寸](#/zh-CN/component/icon)                                           | string \| number          | `18`              |
 | label            | 单选框标识                                                   | string \| number \| boolean | -                 |
-| shape            | 形状，可选值为 button、round                                 | string                  | `round`             |
+| shape            | 形状，可选值为 `button`、`round`                                 | string                  | `round`             |
 
 ### Radio Slots
 | 名称 | 说明 |
@@ -253,5 +257,4 @@ app.use(Checklist);
 |  --nut-radio-label-font-size|  _14px_  |
 |  --nut-radio-button-font-size|  _12px_  |
 |  --nut-radio-button-padding|  _5px 18px_  |
-|  --nut-radio-icon-font-size|  _18px_  |
 |  --nut-radio-icon-disable-color2|  _var(--nut-help-color)_  |

@@ -98,6 +98,11 @@
           @include text-ellipsis();
           max-width: 80px;
         }
+
+        image {
+          max-width: 50px;
+          height: 16px;
+        }
       }
 
       &-score {

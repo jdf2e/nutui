@@ -6,11 +6,7 @@
         <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">复选框</nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <div class="demo-check">当前选中值</div>
-        <div>{{ checkbox1 }}</div>
+        <nut-checkbox v-model="checkbox2" text-position="left" @change="changeBox2">复选框</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="半选状态">
@@ -64,7 +60,7 @@
     </nut-cell-group>
     <nut-cell-group title="checkboxGroup禁用">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup1" disabled>
+        <nut-checkbox-group v-model="checkboxgroup2" disabled>
           <nut-checkbox label="1">组合复选框</nut-checkbox>
           <nut-checkbox label="2">组合复选框</nut-checkbox>
           <nut-checkbox label="3">组合复选框</nut-checkbox>

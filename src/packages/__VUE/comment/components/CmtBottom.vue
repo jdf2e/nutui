@@ -37,7 +37,7 @@ export default create({
     },
     info: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
 
     operation: {

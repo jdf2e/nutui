@@ -8,7 +8,7 @@ Signature component based on canvas.
 
 ``` javascript
 import { createApp } from 'vue';
-import { Signature} from '@nutui/nutui';
+import { Signature } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Signature);
@@ -130,5 +130,5 @@ export default {
 | start | Signature start callback function (refers to the start of a certain stroke) | `-`
 | signing | The callback function that is signing (referring to a certain stroke in progress) | `event`
 | end | Signature end callback function (referring to the end of a certain stroke) | `-`
-| confirm | Click the confirm button to trigger the event callback function | `canvas and signature image display data URI`
+| confirm | Click the confirm button to trigger the event callback function | `canvas and signature image display data URI，<br>If not drawn, returns a tooltip and an empty data URI`
 | clear | Click the re-sign button to trigger the event callback function | `-`

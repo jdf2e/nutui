@@ -42,7 +42,6 @@ const { componentName, create, translate } = createComponent('address-list');
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.vue';
-import Swipe from '../swipe/index.vue';
 export default create({
   props: {
     data: {
@@ -68,8 +67,7 @@ export default create({
   },
   components: {
     GeneralShell,
-    [Button.name]: Button,
-    [Swipe.name]: Swipe
+    [Button.name]: Button
   },
   emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 

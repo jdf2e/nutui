@@ -324,11 +324,12 @@ app.use(TimeDetail);
 | title                 | 弹层标题                                                    | string  | `取件时间`
 | current-key                 | 唯一标识                                                    | string \| number  | `0`
 | current-time                 | 当前选择的时间，数组元素包含:key: string; list: string[]      | Array  | `[]`
-| lock-scroll            | 背景是否锁定                                                | boolean        | `false`       |
+| lock-scroll            | 背景是否锁定                                                | boolean        | `true`       |
+| teleport-disable              | 是否允许挂载节点                 | boolean         | `false`      |
 
 ### Slots
 
-| 字段                   | 说明                                                             |
+| 名称                   | 说明                                                             |
 |------------------------|----------------------------------------------------------------|
 | title                 | 更改标题                                                    |
 | pannel                 | 左侧列表                                                    |
@@ -352,19 +353,19 @@ app.use(TimeDetail);
 
 | 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| select | 关闭遮罩之后的回调 | key: string | number, list: [] |
+| select | 关闭遮罩之后的回调 | `key: string \| number, list: []` |
 
 ### TimePannel Event
 
 | 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| change | 点击内容的回调 | pannelKey: string ｜ number |
+| change | 点击内容的回调 | `pannelKey: string \| number` |
 
 ### TimeDetail Event
 
 | 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| select | 点击时间的回调 | time: string |
+| select | 点击时间的回调 | `time: string` |
 
 ## 主题定制
 
@@ -398,7 +399,5 @@ app.use(TimeDetail);
 | --nut-timeselect-timedetail-item-cur-bg-color| _var(--nut-active-color)_ |
 | --nut-timeselect-timedetail-item-cur-border| _var(--nut-primary-color)_ |
 | --nut-timeselect-timedetail-item-cur-text-color| _var(--nut-primary-color)_ |
-| --nut-timeselect-timedetail-time-text-color| _#999_ |
-| --nut-timeselect-timedetail-time-font-size| _var(--nut-font-size-1)_ |
 
 
