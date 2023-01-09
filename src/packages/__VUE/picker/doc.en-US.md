@@ -382,8 +382,7 @@ Use the children field of the Columns attribute to cascade options
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | v-model:value         | Default Index               | Array | `[]`              |
-| v-model:visible          | Is Show               | boolean | -                |
-| columns         | Columns data              | Array | -                |
+| columns         | Columns data              | PickerOption[] \| PickerOption[][] | -                |
 | title                  | Toolbar title                   | string  | -      |
 | cancel-text            | Text of cancel button               | string  | `cancel`   |
 | ok-text                | Text of confirm button               | string  | `confirm`   |
@@ -393,14 +392,6 @@ Use the children field of the Columns attribute to cascade options
 | option-height         | Option height             | number \| string | `36`     |
 | show-toolbar         | Whether to show toolbar             | boolean | `true`    |
 
-### Data Structure of Columns
-
-| Key         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| text        | Text of column              | string \| number | -             |
-| value          | Value of column               | string \| number |   -        |
-| children         | Cascader Option              | Array | -                |
-| className                  | Extra CalssName                   | string  |  -    |
 
 ### Events
 
@@ -416,6 +407,15 @@ Use the children field of the Columns attribute to cascade options
 |--------|----------------|
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |
+
+### Data Structure of PickerOption
+
+| Key         | Description                             | Type   | Default           |
+|--------------|----------------------------------|--------|------------------|
+| text        | Text of column              | string \| number | -             |
+| value          | Value of column               | string \| number |   -        |
+| children         | Cascader Option              | Array | -                |
+| className                  | Extra CalssName                   | string  |  -    |
 
 ## Theming
 

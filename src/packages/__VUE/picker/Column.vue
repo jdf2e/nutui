@@ -89,7 +89,7 @@ export default create({
     const roller = ref(null);
 
     const moving = ref(false);
-    const touchDeg = ref(0);
+    const touchDeg = ref<string | number>(0);
     const touchTime = ref(0);
 
     const DEFAULT_DURATION = 200;
@@ -134,15 +134,18 @@ export default create({
         let dom = roller.value as any;
         const { transform } = window.getComputedStyle(dom);
         if (props.threeDimensional) {
-          const circle = Math.floor(touchDeg.value / 360);
+          const circle = Math.floor(parseInt(touchDeg.value as string) / 360);
           const cos = +transform.split(', ')[5];
           const sin = +transform.split(', ')[6] < 0 ? 180 : 0;
           const endDeg = circle * 360 + (Math.acos(cos) / Math.PI) * 180 + sin;
+
           state.scrollDistance = -Math.abs((endDeg / state.rotation - 1) * +props.optionHeight);
         } else {
           state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
         }
       }
+
+      preventDefault(event, true);
 
       state.touchParams.startY = touch.deltaY.value;
       state.touchParams.startTime = Date.now();
