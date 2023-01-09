@@ -12,9 +12,7 @@ import { createApp } from 'vue';
 import { Tour } from '@nutui/nutui';
 
 const app = createApp();
-
 app.use(Tour);
-
 ```
 
 

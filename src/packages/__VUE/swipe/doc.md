@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Swipe,Cell,Button } from '@nutui/nutui';
+import { Swipe, Cell, Button } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Swipe);

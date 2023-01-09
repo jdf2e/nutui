@@ -12,7 +12,6 @@ import { Calendar } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Calendar);
-
 ```
 
 

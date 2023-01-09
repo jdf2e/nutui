@@ -148,7 +148,11 @@ app.use(Searchbar);
 :::demo
 ```html
 <template>
-  <nut-searchbar v-model="searchValue" :clear-icon="icon"> </nut-searchbar>
+  <nut-searchbar v-model="searchValue">
+    <template v-slot:clearIcon>
+      <img :src="icon" style="width: 10px; height: 10px" />
+    </template>
+  </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
@@ -159,7 +163,6 @@ app.use(Searchbar);
       const state = reactive({
         searchValue: ""
       });
-
       return {
         ...toRefs(state),
         icon

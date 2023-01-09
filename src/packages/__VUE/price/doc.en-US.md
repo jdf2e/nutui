@@ -12,7 +12,6 @@ import { Price } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Price);
-
 ```
 
 

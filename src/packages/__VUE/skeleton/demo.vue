@@ -9,7 +9,7 @@
     <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="100px" row="3"> </nut-skeleton>
+    <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="60px" row="3"> </nut-skeleton>
 
     <h2>{{ translate('title2') }}</h2>
     <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>

@@ -14,7 +14,6 @@ import { Sticky } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Sticky);
-
 ```
 
 ### 基础用法

@@ -7,12 +7,11 @@
 ### 安装
 
 ```javascript
-  import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+import { createApp } from 'vue';
+import { InfiniteLoading } from '@nutui/nutui';
 
-  const app = createApp();
-  app.use(InfiniteLoading);
-
+const app = createApp();
+app.use(InfiniteLoading);
 ```
 
 ### 基础用法
