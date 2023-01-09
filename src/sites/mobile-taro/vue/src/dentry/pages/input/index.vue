@@ -65,13 +65,10 @@
       placeholder="事件演示"
       clearable
       :adjust-position="state.adjustPosition"
-      @update:model-value="change"
-      @focus="focus"
-      @blur="blur"
       @clear="clear"
-      @click="click"
       @click-input="clickInput"
     />
+    <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
   </div>
 </template>
 
@@ -111,28 +108,24 @@ export default {
       event: '',
       clear: '',
       clear2: '',
-      adjustPosition: false
+      adjustPosition: false,
+      show: false,
+      msg: ''
     });
     setTimeout(function () {
       // state.val1 = '异步数据';
     }, 2000);
-    const change = (value: string | number) => {
-      console.log('change: ', value);
-    };
-    const focus = (value: string | number, event: Event) => {
-      console.log('focus:', value, event);
-    };
-    const blur = (value: string | number, event: Event) => {
-      console.log('blur:', value, event);
-    };
     const clear = (value: string | number, event: Event) => {
       console.log('clear:', value, event);
+      showToast('clear');
     };
-    const click = (value: string | number) => {
-      console.log('click:', value);
+    const showToast = (msg: string) => {
+      state.show = true;
+      state.msg = msg;
     };
     const clickInput = (value: string | number) => {
       console.log('clickInput:', value);
+      showToast('clickInput');
     };
     const formatter = (value: string) => value.replace(/\d/g, '');
     const clearValue = () => {
@@ -140,11 +133,7 @@ export default {
     };
     return {
       state,
-      change,
-      blur,
       clear,
-      focus,
-      click,
       clickInput,
       formatter,
       clearValue,
