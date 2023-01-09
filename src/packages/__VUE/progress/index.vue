@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
+    <div class="nut-progress-text" v-if="showText && !textInside">
       <template v-if="status == 'active' || status == ''">
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
       </template>
