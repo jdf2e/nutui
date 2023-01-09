@@ -27,7 +27,7 @@
 import { ref, watch, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment-bottom');
-import { Fabulous, Comment, MoreX } from '@nutui/icons-vue';
+import { Fabulous, Comment, MoreX } from '@nutui/icons-vue-taro';
 
 export default create({
   props: {
