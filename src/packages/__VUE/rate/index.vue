@@ -1,7 +1,7 @@
 <template src="./template.html"></template>
 <script lang="ts">
 import { computed, h, Ref, ref } from 'vue';
-import { StarN } from '@nutui/icons-vue';
+import { StarFillN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -16,11 +16,15 @@ export default create({
       type: [String, Number],
       default: 0
     },
-    icon: {
+    customIcon: {
       type: Object,
       default: () => {
-        return h(StarN, { width: 18, height: 18 });
+        return StarFillN;
       }
+    },
+    size: {
+      type: [String, Number],
+      default: undefined
     },
     activeColor: {
       type: String,
@@ -51,7 +55,7 @@ export default create({
       default: 14
     }
   },
-  components: { StarN },
+  components: { StarFillN },
   emits: ['update:modelValue', 'change'],
   setup(props: any, { emit, slots }: any) {
     const rateRefs = ref<HTMLElement[]>([]);
@@ -95,11 +99,11 @@ export default create({
     const touch = useTouch();
     const touchMethods = {
       onTouchStart(event: Event) {
-        if (!props.touchable) return;
+        if (!props.touchable || props.readonly) return;
         touch.start(event);
       },
       onTouchMove(event: Event) {
-        if (!props.touchable || !true) return;
+        if (!props.touchable) return;
         touch.move(event);
         if (touch.isHorizontal()) {
           if (rateRefs.value) {

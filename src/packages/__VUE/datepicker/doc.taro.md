@@ -30,13 +30,17 @@ app.use(DatePicker);
 
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const minDate = new Date(2020, 0, 1);
       const maxDate = new Date(2025, 10, 1);
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
-        console.log(selectedOptions.map((val: any) => val.text).join(''));
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(''),
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -123,11 +127,15 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        console.log(selectedOptions.map((val: any) => val.text).join('-'));
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join('-'),
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -157,13 +165,17 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup() {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
         date = selectedValue.slice(0, 3).join('-');
         time = selectedValue.slice(3).join(':');
-        console.log(date + ' ' + time) ;
+        Taro.showToast({
+          title:date + ' ' + time,
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -192,11 +204,15 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        console.log(selectedValue.join(':'));
+         Taro.showToast({
+          title:selectedValue.join(':'),
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -229,13 +245,17 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
-        time = selectedOptions.slice(3).map((op) => op.value).join(':');
-        console.log(selectedOptions[0].text + '年' + date + ' ' + time);
+        const date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
+        const time = selectedOptions.slice(3).map((op) => op.value).join(':');
+        Taro.showToast({
+          title:selectedOptions[0].text + '年' + date + ' ' + time,
+          icon:'none'
+        });
       }
       const formatter = (type: string, option) => {
         switch (type) {
@@ -286,11 +306,15 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        console.log(selectedValue.join(':')) ;
+        Taro.showToast({
+          title:selectedValue.join(':'),
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -324,6 +348,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 </template>
 <script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 0, 0);
@@ -354,7 +379,10 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
         return options;
       };
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        console.log(selectedOptions.map((option) => option.text).join(''));
+        Taro.showToast({
+          title:selectedOptions.map((option) => option.text).join(''),
+          icon:'none'
+        });
       }
       return {
         currentDate,
@@ -406,6 +434,15 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+### PickerOption 数据结构
+
+| 键名         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| text        | 选项的文字内容               | string \| number |   -            |
+| value          | 选项对应的值，且唯一               | string \| number |     -       |
+| children         | 用于级联选项               | Array | -                |
+| className                  | 添加额外的类名                   | string  | -    |
 
 ## 主题定制
 

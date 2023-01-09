@@ -36,7 +36,7 @@
     "publish:beta": "npm publish --tag=beta"
   },
   "dependencies": {
-    "@nutui/icons-vue": "^0.0.23",
+    "@nutui/icons-vue": "^0.0.24",
     "sass": "^1.50.0"
   },
   "devDependencies": {},

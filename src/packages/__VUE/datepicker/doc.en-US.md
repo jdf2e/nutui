@@ -238,8 +238,8 @@ app.use(DatePicker);
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
-        time = selectedOptions.slice(3).map((op) => op.value).join(':');
+        const date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
+        const time = selectedOptions.slice(3).map((op) => op.value).join(':');
         showToast.text(selectedOptions[0].text + 'Year' + date + ' ' + time);
       }
       const formatter = (type: string, option) => {
@@ -416,6 +416,15 @@ app.use(DatePicker);
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |
 
+
+### Data Structure of PickerOption
+
+| Key         | Description                             | Type   | Default           |
+|--------------|----------------------------------|--------|------------------|
+| text        | Text of column              | string \| number | -             |
+| value          | Value of column               | string \| number |   -        |
+| children         | Cascader Option              | Array | -                |
+| className                  | Extra CalssName                   | string  |  -    |
 
 ## Theming
 

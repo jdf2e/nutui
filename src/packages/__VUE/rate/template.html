@@ -1,36 +1,20 @@
 <view :class="classes" @touchstart="onTouchStart" @touchmove="onTouchMove">
-    <view
-      class="nut-rate-item"
-      v-for="n in Number(count)"
-      :key="n"
-      ref="rateRefs"
-      :id="'rateRefs-' + refRandomId + n"
-      :style="{ marginRight: pxCheck(spacing) }"
-    >
+  <view class="nut-rate-item" v-for="n in Number(count)" :key="n" ref="rateRefs" :id="'rateRefs-' + refRandomId + n"
+    :style="{ marginRight: pxCheck(spacing) }">
     <view>
       <component
-        :is="renderIcon(icon)"
-        class="nut-rate-item__icon"
-        :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
-        :color="n <= modelValue ? activeColor : voidColor"
-        @click="onClick(1, n)"
-      ></component>
+        :is="renderIcon(customIcon,{width:size,height:size,size,color:n <= modelValue ? activeColor : voidColor})"
+        class="nut-rate-item__icon" :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
+        @click="onClick(1, n)"></component>
     </view>
-      <view class="nut-rate-item__icon--half" v-if="allowHalf && Number(modelValue) + 1 > n">
-        <component
-          :is="renderIcon(icon)"
-          class="nut-rate-item__icon"
-          :color="n <= Number(modelValue) + 1 ? activeColor : voidColor"
-          @click="onClick(2, n)"
-        ></component>
-      </view>
-      <view class="nut-rate-item__icon--half" v-else-if="allowHalf && Number(modelValue) + 1 < n">
-        <component
-          :is="renderIcon(icon)"
-          class="nut-rate-item__icon nut-rate-item__icon--disabled"
-          :color="voidColor"
-          @click="onClick(2, n)"
-        ></component>
-      </view>
+    <view class="nut-rate-item__icon--half" v-if="allowHalf && Number(modelValue) + 1 > n">
+      <component
+        :is="renderIcon(customIcon,{width:size,height:size,size,color:n <= Number(modelValue) + 1 ? activeColor : voidColor})"
+        class="nut-rate-item__icon" @click="onClick(2, n)"></component>
+    </view>
+    <view class="nut-rate-item__icon--half" v-else-if="allowHalf && Number(modelValue) + 1 < n">
+      <component :is="renderIcon(customIcon,{width:size,height:size,size,color:voidColor})"
+        class="nut-rate-item__icon nut-rate-item__icon--disabled" @click="onClick(2, n)"></component>
     </view>
   </view>
+</view>

@@ -1,10 +1,9 @@
 <template src="./template.html"></template>
 <script lang="ts">
-import { StarN } from '@nutui/icons-vue-taro';
-import { computed, h, Ref, ref } from 'vue';
+import { StarFillN } from '@nutui/icons-vue-taro';
+import { computed, ref } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { useTouch } from '@/packages/utils/useTouch';
 const { create, componentName } = createComponent('rate');
 export default create({
   props: {
@@ -16,11 +15,15 @@ export default create({
       type: [String, Number],
       default: 0
     },
-    icon: {
+    customIcon: {
       type: Object,
       default: () => {
-        return StarN;
+        return StarFillN;
       }
+    },
+    size: {
+      type: [String, Number],
+      default: undefined
     },
     activeColor: {
       type: String,
@@ -42,16 +45,12 @@ export default create({
       type: Boolean,
       default: false
     },
-    touchable: {
-      type: Boolean,
-      default: true
-    },
     spacing: {
       type: [String, Number],
       default: 14
     }
   },
-  components: { StarN },
+  components: { StarFillN },
   emits: ['update:modelValue', 'change'],
   setup(props: any, { emit, slots }: any) {
     const rateRefs = ref<HTMLElement[]>([]);
@@ -77,42 +76,9 @@ export default create({
       }
       updateVal(value);
     };
-    const getScoreByPosition = (x: number, rateRefs: Ref<HTMLElement[]>, allowHalf: boolean) => {
-      let v = 0;
-      for (let index = rateRefs.value.length - 1; index >= 0; index--) {
-        const item = rateRefs.value[index];
-        if (x > item.offsetLeft) {
-          if (allowHalf) {
-            v = index + (x > item.offsetLeft + item.clientWidth / 2 ? 1 : 0.5);
-          } else {
-            v = index + 1;
-          }
-          break;
-        }
-      }
-      return v;
-    };
-    const touch = useTouch();
-    const touchMethods = {
-      onTouchStart(event: Event) {
-        if (!props.touchable) return;
-        touch.start(event);
-      },
-      onTouchMove(event: Event) {
-        if (!props.touchable || !false) return;
-        touch.move(event);
-        if (touch.isHorizontal()) {
-          if (rateRefs.value) {
-            event.preventDefault();
-            updateVal(getScoreByPosition(touch.moveX.value, rateRefs, props.allowHalf));
-          }
-        }
-      }
-    };
     const refRandomId = Math.random().toString(36).slice(-8);
     return {
       classes,
-      ...touchMethods,
       onClick,
       pxCheck,
       rateRefs,

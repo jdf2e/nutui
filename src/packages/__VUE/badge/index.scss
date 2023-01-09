@@ -10,10 +10,10 @@
   position: relative;
   display: inline-block;
   .nut-badge__icon {
+    line-height: normal;
+    transform: $badge-content-transform;
     position: absolute;
     background: $badge-background-color;
-    top: -20%;
-    right: -20%;
     padding: $badge-padding;
     text-align: center;
     border-radius: $badge-border-radius;
