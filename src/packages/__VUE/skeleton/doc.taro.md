@@ -13,7 +13,6 @@ import { Skeleton } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Skeleton);
-
 ```
 
 

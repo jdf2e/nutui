@@ -9,6 +9,7 @@
 ``` javascript
 import { createApp } from 'vue';
 import { Menu, MenuItem } from '@nutui/nutui-taro';
+
 const app = createApp();
 app.use(Menu);
 app.use(MenuItem);

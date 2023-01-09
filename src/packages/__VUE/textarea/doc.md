@@ -12,7 +12,6 @@ import { Textarea } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Textarea);
-
 ```
 
 ### 基础用法

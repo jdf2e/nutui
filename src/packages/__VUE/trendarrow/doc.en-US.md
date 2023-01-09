@@ -11,7 +11,6 @@ import { TrendArrow } from '@nutui/nutui';
 
 const app = createApp();
 app.use(TrendArrow);
-
 ```
 
 ### Basic Usage

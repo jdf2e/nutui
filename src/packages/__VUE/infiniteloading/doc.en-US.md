@@ -7,11 +7,11 @@ Scrolling to the bottom of the list automatically loads more data.
 ### Install
 
 ```javascript
-  import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+import { createApp } from 'vue';
+import { InfiniteLoading } from '@nutui/nutui';
 
-  const app = createApp();
-  app.use(InfiniteLoading);
+const app = createApp();
+app.use(InfiniteLoading);
 ```
 
 ### Basic Usage

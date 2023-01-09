@@ -15,7 +15,6 @@ import { Noticebar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Noticebar);
-
 ```
 
 
