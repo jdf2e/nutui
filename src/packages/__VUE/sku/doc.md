@@ -2,7 +2,7 @@
 
 ### 介绍
 
-
+常用于进行商品选择
 
 ### 安装
 
@@ -89,6 +89,7 @@ export default {
     :btnExtraText="btnExtraText"
     @changeStepper="changeStepper"
     @selectSku="selectSku"
+    :btnOptions="['buy', 'cart']"
   >
     <template #sku-operate>
       <div class="sku-operate-box">
@@ -177,7 +178,6 @@ setup() {
     v-model:visible="customStepper"
     :sku="sku"
     :goods="goods"
-    :showSaleLimit="true"
     :stepperMax="7"
     :stepperMin="2"
     :stepperExtraText="stepperExtraText"

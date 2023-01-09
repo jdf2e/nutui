@@ -47,7 +47,7 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 :::
 ### Custom Tips
 
-The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete'`，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，Complex styles can be implemented through slots。
+The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete'`，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
 
 :::demo
 
@@ -57,7 +57,6 @@ The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'comp
     v-model="refresh2"
     loosingTxt="松开吧"
     loadingTxt="玩命加载中..."
-    completeTxt="好啦"
     @refresh="refreshFun"
   >
     <template #pullingTxt>
@@ -140,7 +139,6 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 | pulling-txt         | Text to show when pulling                       | string | `Pull to refresh...`            |
 | loosing-txt         | Text to show when loosing                       | string | `Loose to refresh...`            |
 | loading-txt        | Text to show when loading                         | string | `Loading...`                |
-| complete-txt        | Text to show when complete                       | string | `''  `         |
 | duration       | Animation duration                         | number | `0.3`                |
 
 ### Events

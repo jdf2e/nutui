@@ -50,10 +50,10 @@ export default create({
       default: translate('loading')
     },
 
-    completeTxt: {
-      type: String,
-      default: ''
-    },
+    // completeTxt: {
+    //   type: String,
+    //   default: ''
+    // },
     headHeight: {
       type: [String, Number],
       default: 50

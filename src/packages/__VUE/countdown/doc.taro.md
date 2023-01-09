@@ -289,14 +289,12 @@ app.use(Countdown);
       const reset = () => {
         Countdown.value.reset();
       };
-      return {
-          onpaused,
-          onrestart,
-        ...toRefs(state)
-      };
+      return {Countdown,start,pause,reset};
     }
   }
 </script>
+
+
 
 ```
 :::

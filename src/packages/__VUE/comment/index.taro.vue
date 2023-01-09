@@ -34,7 +34,7 @@
       @handleClick="handleClick"
     ></comment-bottom>
 
-    <slot name="cmt-shop-reply"></slot>
+    <slot name="comment-shop-reply"></slot>
   </view>
 </template>
 <script lang="ts">
