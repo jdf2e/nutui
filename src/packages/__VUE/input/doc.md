@@ -12,7 +12,6 @@ import { Input } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Input);
-
 ```
 
 ### 基础用法

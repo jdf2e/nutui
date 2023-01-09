@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Layout,Row,Col } from '@nutui/nutui';
+import { Layout, Row, Col } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Layout);

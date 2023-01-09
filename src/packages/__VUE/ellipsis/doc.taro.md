@@ -13,7 +13,6 @@ import { Ellipsis } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Ellipsis);
-
 ```
 
 ### 头部省略

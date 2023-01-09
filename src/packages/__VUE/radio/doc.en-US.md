@@ -8,12 +8,11 @@ Used to make a single selection in a set of alternatives
 
 ``` ts
 import { createApp } from 'vue';
-import { Radio,RadioGroup,Icon } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue'
+import { Radio, RadioGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
-app.use(Checklist);
 ```
 ### Basic Usage
 
@@ -162,7 +161,6 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
   import { ref } from 'vue';
   import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
     components: {
       Checklist
     },

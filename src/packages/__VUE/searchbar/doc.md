@@ -9,9 +9,9 @@
 ```javascript
 import { createApp } from 'vue';
 import { Searchbar } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Searchbar);
-
 ```    
     
 ### 基础用法

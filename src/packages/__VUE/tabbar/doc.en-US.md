@@ -7,12 +7,11 @@ Bottom navigation bar
 
 ``` javascript
 import { createApp } from 'vue';
-import { Tabbar,TabbarItem,Icon } from '@nutui/nutui';
+import { Tabbar, TabbarItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Tabbar);
 app.use(TabbarItem);
-
 ```
 
 

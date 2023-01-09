@@ -13,7 +13,6 @@ import { ConfigProvider } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ConfigProvider);
-
 ```
 
 ### 深色模式
