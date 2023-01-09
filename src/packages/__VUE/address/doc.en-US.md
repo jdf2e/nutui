@@ -2,8 +2,7 @@
 
 ### Intro
 
-
-
+Used for level four address selection
 ### Install
 
 ``` javascript
@@ -162,14 +161,16 @@ If you want to select a province, you need to set the region ID in the order of 
 <template>
   <nut-cell title="Choose Address" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
   <nut-address
+      v-model="value"
       v-model:visible="showPopup"
+      type="custom2"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
       @change="onChange"
       @close="close"
-      custom-address-title="Choose Address"
+      height="270px"
   ></nut-address>
 </template>
 <script>
@@ -177,6 +178,7 @@ If you want to select a province, you need to set the region ID in the order of 
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province: [
             { id: 1, name: '北京', title: 'B' },
@@ -214,11 +216,11 @@ If you want to select a province, you need to set the region ID in the order of 
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
+          value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
         };
 
-        return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
+        return { showPopup, text, showAddress, onChange, close, value, ...toRefs(address) };
     }
   }
 </script>
@@ -421,6 +423,7 @@ If you want to select a province, you need to set the region ID in the order of 
       custom-and-exist-title="Choose Other Address"
       @switch-module="switchModule"
       @close-mask="closeMask"
+      @change='onChange'
   ></nut-address>
 </template>
 <script>
@@ -512,11 +515,18 @@ If you want to select a province, you need to set the region ID in the order of 
           }
         };
 
+        const onChange = (cal) => {
+          const name = address[cal.next]
+          if (name.length < 1) {
+            showPopupOther.value = false;
+          }
+        };
+
         const closeMask = val => {
           console.log('关闭弹层', val);
         };
 
-        return { showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
+        return { onChange, showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
     }
   }
   </script>
@@ -526,7 +536,8 @@ If you want to select a province, you need to set the region ID in the order of 
 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | ----- |
-| v-model:visible | Whether to open address | string | `''`|
+| v-model:visible | Whether to open address | boolean | `false` |
+| v-model:value | Default value | Array | `[]` |
 | type | Choose type: `exist/custom/custom2`  | string | `custom`|
 | province | Province data| Array | `[]`|
 | city | City data | Array | `[]`|

@@ -78,7 +78,6 @@ export const component = (components: any) => {
       };
 
       const getStyle = (): import('vue').CSSProperties => {
-        const style: import('vue').CSSProperties = {};
         if (avatarSize.value) {
           return {
             width: avatarSize.value,
@@ -90,10 +89,6 @@ export const component = (components: any) => {
           height: '50px'
         };
       };
-
-      onMounted(() => {
-        // console.log('row', props.row);
-      });
 
       return {
         avatarShape,

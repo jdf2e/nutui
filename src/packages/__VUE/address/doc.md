@@ -2,6 +2,8 @@
 
 ### 介绍
 
+用于进行四级地址选择
+
 ### 安装
 
 ``` javascript
@@ -106,6 +108,7 @@ app.use(Address);
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province:[
             { id: 1, name: '北京' },
@@ -160,14 +163,16 @@ app.use(Address);
 <template>
   <nut-cell title="选择地址" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
   <nut-address
+      v-model="value"
       v-model:visible="showPopup"
+      type="custom2"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
       @change="onChange"
       @close="close"
-      custom-address-title="请选择所在地区"
+      height="270px"
   ></nut-address>
 </template>
 <script>
@@ -175,6 +180,7 @@ app.use(Address);
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province: [
             { id: 1, name: '北京', title: 'B' },
@@ -213,9 +219,10 @@ app.use(Address);
         };
         const close = val => {
           text.value = val.data.addressStr;
+          value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
         };
 
-        return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
+        return { showPopup, text, showAddress, onChange, close,value, ...toRefs(address) };
     }
   }
 </script>
@@ -437,6 +444,7 @@ app.use(Address);
       custom-and-exist-title="选择其他地址"
       @switch-module="switchModule"
       @close-mask="closeMask"
+      @change='onChange'
   ></nut-address>
 </template>
 <script>
@@ -527,12 +535,18 @@ app.use(Address);
             console.log('点击了自定义地址左上角的返回按钮');
           }
         };
+        const onChange = (cal) => {
+          const name = address[cal.next]
+          if (name.length < 1) {
+            showPopupOther.value = false;
+          }
+        };
 
         const closeMask = val => {
           console.log('关闭弹层', val);
         };
 
-        return { showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
+        return { onChange, showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
     }
   }
   </script>
@@ -543,7 +557,8 @@ app.use(Address);
 
 | 参数 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
-| v-model:visible | 是否打开地址选择 | string | `''` |
+| v-model:visible | 是否打开地址选择 | boolean | `false` |
+| v-model:value | 设置默认选中值 | Array | `[]` |
 | type | 地址选择类型 `exist/custom/custom2`  | string | `custom` |
 | province | 省，每个省的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
 | city | 市，每个市的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |

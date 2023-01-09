@@ -2,7 +2,7 @@
 
 ### Intro
 
-
+Often used for commodity selection
 
 ### Install
 
@@ -90,6 +90,7 @@ export default {
     :btnExtraText="btnExtraText"
     @changeStepper="changeStepper"
     @selectSku="selectSku"
+    :btnOptions="['buy', 'cart']"
   >
     <template #sku-operate>
       <div class="sku-operate-box">
@@ -178,7 +179,6 @@ You can configure the maximum value and minimum value of the digital input box a
     v-model:visible="customStepper"
     :sku="sku"
     :goods="goods"
-    :showSaleLimit="true"
     :stepperMax="7"
     :stepperMin="2"
     :stepperExtraText="stepperExtraText"

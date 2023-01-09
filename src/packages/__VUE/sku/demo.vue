@@ -29,7 +29,6 @@
       @changeStepper="changeStepper"
       :btnOptions="['buy', 'cart']"
       @selectSku="selectSku"
-      @close="close"
     >
       <template #sku-operate>
         <div class="sku-operate-box">
@@ -61,7 +60,6 @@
       :btnOptions="['buy', 'cart']"
       @selectSku="selectSku"
       @clickBtnOperate="clickBtnOperate"
-      @close="close()"
     >
       <template #sku-header-price>
         <div>

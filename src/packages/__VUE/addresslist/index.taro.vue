@@ -39,10 +39,9 @@
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('address-list');
-import GeneralShell from './components/GeneralShell.vue';
+import GeneralShell from './components/GeneralShell.taro.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.taro.vue';
-import Swipe from '../swipe/index.taro.vue';
 export default create({
   props: {
     data: {
@@ -68,8 +67,7 @@ export default create({
   },
   components: {
     GeneralShell,
-    [Button.name]: Button,
-    [Swipe.name]: Swipe
+    [Button.name]: Button
   },
   emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 

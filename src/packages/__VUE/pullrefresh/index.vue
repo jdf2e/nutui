@@ -12,7 +12,7 @@
         <slot v-if="status == 'pulling'" name="pulling"></slot>
         <slot v-if="status == 'loosing'" name="loosing"></slot>
         <slot v-if="status == 'loading'" name="loading"></slot>
-        <slot v-if="status == 'complete'" name="complete"></slot>
+        <!-- <slot v-if="status == 'complete'" name="complete"></slot> -->
       </div>
       <slot></slot>
     </div>
@@ -50,10 +50,10 @@ export default create({
       default: translate('loading')
     },
 
-    completeTxt: {
-      type: String,
-      default: ''
-    },
+    // completeTxt: {
+    //   type: String,
+    //   default: ''
+    // },
     headHeight: {
       type: [String, Number],
       default: 50
@@ -102,8 +102,8 @@ export default create({
           return !slots.loosing ? props.loosingTxt : '';
         case 'loading':
           return !slots.loading ? props.loadingTxt : '';
-        case 'complete':
-          return !slots.complete ? props.completeTxt : '';
+        // case 'complete':
+        //   return !slots.complete ? props.completeTxt : '';
         default:
           break;
       }

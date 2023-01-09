@@ -71,8 +71,6 @@ app.use(Skeleton);
     <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
   </div>
 </template>
-```
-```css
 <style>
 .pic-compose {
   display: flex;
@@ -125,7 +123,6 @@ export default {
 <style lang="scss">
 .content {
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {
@@ -168,8 +165,8 @@ export default {
 | avatar-shape      | 头像形状：正方形/圆形                        | string | `round`   |
 | avatar-size       | 头像大小                                   | string | `50px`    |
 | round  | 标题/段落是否采用圆角风格                                | boolean | `false`  |
-| row    | 设置段落行数                                           | string | `1`       |
-| title  | 是否显示段落标题                                        | boolean | `true`   |
+| title  | 是否显示段落标题（第一行显示）                                       | boolean | `true`   |
+| row    | 设置段落行数（title 下方展示）                                         | string | `1`       |
 
 
 ### Slots

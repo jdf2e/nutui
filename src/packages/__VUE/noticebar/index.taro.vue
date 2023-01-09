@@ -32,7 +32,11 @@
       </view>
     </view>
 
-    <view class="nut-noticebar__vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
+    <view
+      class="nut-noticebar__vertical"
+      v-if="scrollList.length > 0 && direction == 'vertical' && showNoticebar"
+      :style="barStyle"
+    >
       <template v-if="slots.default">
         <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <ScrollItem
@@ -357,6 +361,9 @@ export default create({
     };
 
     const handleClickIcon = () => {
+      if (props.closeMode) {
+        state.showNoticebar = !props.closeMode;
+      }
       emit('close', state.scrollList[0]);
     };
 

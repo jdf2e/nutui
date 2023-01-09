@@ -51,9 +51,9 @@
 import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-general');
-import ItemContents from './ItemContents.vue';
-import Button from '../../button/index.vue';
-import Swipe from '../../swipe/index.vue';
+import ItemContents from './ItemContents.taro.vue';
+import Button from '../../button/index.taro.vue';
+import Swipe from '../../swipe/index.taro.vue';
 
 export default create({
   props: {

@@ -2,13 +2,13 @@
 
 ### 介绍
     
-基于Canvas的签名组件。默认竖屏模式使用，如使用横屏模式，请开发者自行设置旋转角度或者宽高。
+基于 Canvas 的签名组件。默认竖屏模式使用，如使用横屏模式，请开发者自行设置旋转角度或者宽高。
     
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-import { Signature} from '@nutui/nutui';
+import { Signature } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Signature);
@@ -99,7 +99,7 @@ export default {
 | line-width | 线条的宽度 | number | `3`
 | stroke-style | 绘图笔触颜色 | string | `#000`
 | type | 图片格式 | string | `png`
-| un-support-tpl | 不支持Canvas情况下的展示文案 | string | `对不起，当前浏览器不支持Canvas，无法使用本控件！`
+| un-support-tpl | 不支持 Canvas 情况下的展示文案 | string | `对不起，当前浏览器不支持Canvas，无法使用本控件！`
 
 ### Events
 

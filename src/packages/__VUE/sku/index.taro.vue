@@ -63,13 +63,11 @@
 </template>
 <script lang="ts">
 import { ref, watch, PropType } from 'vue';
-import SkuHeader from './components/SkuHeaderTaro.vue';
+import SkuHeader from './components/SkuHeader.taro.vue';
 import SkuSelect from './components/SkuSelect.vue';
-import SkuStepper from './components/SkuStepper.vue';
+import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import Popup from '../popup/index.taro.vue';
-import Price from '../price/index.taro.vue';
-import InputNumber from '../inputnumber/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku');
 
@@ -185,9 +183,7 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup,
-    [Price.name]: Price,
-    [InputNumber.name]: InputNumber
+    [Popup.name]: Popup
   },
 
   setup(props: any, { emit, slots }) {

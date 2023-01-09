@@ -123,7 +123,6 @@ export default {
 <style lang="scss">
 .content {
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {
@@ -166,8 +165,8 @@ export default {
 | avatar-shape      | Avatar shape: square / round                       | string | `round`   |
 | avatar-size       | Avatar size                                   | string | `50px`    |
 | round  |         Is the title / paragraph rounded                       | boolean | `false`  |
-| row    | Set the number of paragraph lines                                           | string | `1`       |
-| title  |           Show paragraph titles                              | boolean | `true`   |
+| title  |           Show paragraph titles  (first line displayed)                            | boolean | `true`   |
+| row    | Set the number of paragraph lines (shown below the title)                                          | string | `1`       |
 
 
 ### Slots
@@ -182,8 +181,8 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-skeleton-content-avatar-background-color| _#efefef_  | -  |
-| --nut-skeleton-content-line-background-color| _#efefef_  | -  |
-| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | -  |
+| Name | Default Value | 
+| --------------------------------------- | -------------------------- | 
+| --nut-skeleton-content-avatar-background-color| _#efefef_  | 
+| --nut-skeleton-content-line-background-color| _#efefef_  | 
+| --nut-skeleton-animation-background-color| _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_  | 

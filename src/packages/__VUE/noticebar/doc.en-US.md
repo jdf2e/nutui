@@ -135,7 +135,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
       const go = (item) => {
         console.log(item)
       }
-      return { horseLamp1 };
+      return { horseLamp1,go };
     }
   }
 </script>
@@ -171,7 +171,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 
 ```html
 <template>
-    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
     </nut-noticebar>
 </template>
@@ -230,7 +230,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | delay      | Delay time                                         | string \| number | `1`       |
 | scrollable | Whether to scroll content                          | boolean       | `true`    |
 | speed      | Scrolling speed (px/s)                             | number         | `50`     |
-| wrapable | Whether to enable text wrap                        | boolean       | `false`    |
+| wrapable | Whether to enable text wrap,`scrollable` set `false`                        | boolean       | `false`    |
 
 ### Props（direction=vertical）
 

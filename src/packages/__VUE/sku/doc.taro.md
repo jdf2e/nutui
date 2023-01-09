@@ -2,7 +2,7 @@
 
 ### 介绍
 
-
+常用于进行商品选择
 
 ### 安装
 
@@ -31,6 +31,7 @@ app.use(Sku);
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import Taro from '@tarojs/taro'
 export default {
   setup() {
       const base = ref(false);
@@ -40,14 +41,15 @@ export default {
       });
 
       onMounted(() => {
-        fetch('https://storage.360buyimg.com/nutui/3x/data.js')
-          .then((response) => response.json())
-          .then((res) => {
-            const { Sku, Goods, imagePathMap } = res;
-            data.sku = Sku;
-            data.goods = Goods;
-          }) //执行结果是 resolve就调用then方法
-          .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            console.log(res.data)
+            const { Sku, Goods, imagePathMap } = res.data;
+              data.sku = Sku;
+              data.goods = Goods;
+          }
+        })
       });
       // 切换规格类目
       const selectSku = (ss: string) => {
@@ -89,6 +91,7 @@ export default {
     :btnExtraText="btnExtraText"
     @changeStepper="changeStepper"
     @selectSku="selectSku"
+    :btnOptions="['buy', 'cart']"
   >
     <template #sku-operate>
       <div class="sku-operate-box">
@@ -100,6 +103,7 @@ export default {
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import Taro from '@tarojs/taro'
 export default {
 setup() {
     const notSell = ref(false);
@@ -111,14 +115,15 @@ setup() {
     const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
 
     onMounted(() => {
-        fetch('https://storage.360buyimg.com/nutui/3x/data.js')
-          .then((response) => response.json())
-          .then((res) => {
-            const { Sku, Goods, imagePathMap } = res;
-            data.sku = Sku;
-            data.goods = Goods;
-          }) //执行结果是 resolve就调用then方法
-          .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            console.log(res.data)
+            const { Sku, Goods, imagePathMap } = res.data;
+              data.sku = Sku;
+              data.goods = Goods;
+          }
+        })
     });
 
     // inputNumber 更改
@@ -177,7 +182,6 @@ setup() {
     v-model:visible="customStepper"
     :sku="sku"
     :goods="goods"
-    :showSaleLimit="true"
     :stepperMax="7"
     :stepperMin="2"
     :stepperExtraText="stepperExtraText"
@@ -190,6 +194,7 @@ setup() {
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import Taro from '@tarojs/taro'
 export default {
 setup() {
     const customStepper = ref(false);
@@ -199,14 +204,15 @@ setup() {
     });
 
     onMounted(() => {
-        fetch('https://storage.360buyimg.com/nutui/3x/data.js')
-          .then((response) => response.json())
-          .then((res) => {
-            const { Sku, Goods, imagePathMap } = res;
-            data.sku = Sku;
-            data.goods = Goods;
-          }) //执行结果是 resolve就调用then方法
-          .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            console.log(res.data)
+            const { Sku, Goods, imagePathMap } = res.data;
+              data.sku = Sku;
+              data.goods = Goods;
+          }
+        })
     });
 
     const stepperExtraText = () => {
@@ -303,6 +309,7 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
 </template>
 <script lang="ts">
 import { ref,reactive,onMounted,toRefs} from 'vue';
+import Taro from '@tarojs/taro'
 export default {
 setup() {
     const customBySlot = ref(false);
@@ -353,14 +360,15 @@ setup() {
     ]);
 
     onMounted(() => {
-        fetch('https://storage.360buyimg.com/nutui/3x/data.js')
-          .then((response) => response.json())
-          .then((res) => {
-            const { Sku, Goods, imagePathMap } = res;
-            data.sku = Sku;
-            data.goods = Goods;
-          }) //执行结果是 resolve就调用then方法
-          .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            console.log(res.data)
+            const { Sku, Goods, imagePathMap } = res.data;
+              data.sku = Sku;
+              data.goods = Goods;
+          }
+        })
     });
 
     // 切换规格类目
