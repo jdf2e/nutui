@@ -200,7 +200,7 @@ Slots are defined in some areas and can be replaced as required
 | comment-labels  | Comment user label | 
 | comment-shop-reply  | At the bottom of the comment is the display of the merchant's response | 
 
-### images Data
+### images data
 
 ```javascript
 const images = [{
@@ -210,7 +210,7 @@ const images = [{
 }]
 ```
 
-### videos Data
+### videos data
 
 ```javascript
 const videos = [{
@@ -219,10 +219,10 @@ const videos = [{
 }]
 ```
 
-### info Data
+### info data
 
 ```javascript
-const info = [{
+const info = {
   "content": "",  // Comment on the details
   "nickName": "", // The name of the reviewer
   "score": 5, // Number of comment stars
@@ -231,8 +231,19 @@ const info = [{
   "size": "", // Comment good size
   "replay":23, // Number of replies to this comment
   "like":1, // Number of likes for this comment
-}]
+}
 ```
+
+### follow data
+
+用于存放追评相关的信息。
+
+```javascript
+const follow = {
+  "days": 0, // Review how many days after purchase
+  "content": "", // Review content
+  "images": [] // Review images
+}
 ## Theming
 
 ### CSS Variables

@@ -47,7 +47,7 @@
       </nut-comment>
     </nut-cell>
 
-    <h2>{{ translate('additionalReview') }}</h2>
+    <h2>{{ translate('additionalReviewd') }}</h2>
     <nut-cell>
       <nut-comment
         imagesRows="multi"
@@ -72,7 +72,7 @@ const initTranslate = () =>
       basic: '基础用法',
       single: '评论图片单行展示',
       multiRow: '评论图片多行展示',
-      additionalReview: '追评展示'
+      additionalReviewd: '追评展示'
     },
     'en-US': {
       basic: 'Basic Usage',
