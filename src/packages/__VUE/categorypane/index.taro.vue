@@ -4,7 +4,7 @@
       <div v-for="(item, index) in categoryChild" :key="index">
         <div class="nut-category-pane__childTitle">{{ item?.catName }}</div>
 
-        <div v-if="item.catType == 1" class="nut-category-pane__childItemList">
+        <div v-if="item?.catType == 1" class="nut-category-pane__childItemList">
           <div
             v-for="(sku, key) in item.childCateList"
             class="nut-category-pane__childItem"
@@ -23,7 +23,7 @@
       <div v-for="(item, index) in categoryChild" :key="index">
         <div class="nut-category-pane__childTitle">{{ item?.catName }}</div>
 
-        <div v-if="item.catType == 1" class="nut-category-pane__childItemList">
+        <div v-if="item?.catType == 1" class="nut-category-pane__childItemList">
           <div
             v-for="(sku, key) in item.childCateList"
             class="nut-category-pane__childItem"
