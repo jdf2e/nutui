@@ -4,6 +4,9 @@
     <nut-cell>
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
+    <div class="test">
+      <nut-button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</nut-button>
+    </div>
     <h2>{{ translate('slotTitle') }}</h2>
     <nut-cell>
       <nut-barrage>
@@ -13,9 +16,6 @@
         <span>ddd</span>
       </nut-barrage>
     </nut-cell>
-    <div class="test">
-      <button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</button>
-    </div>
   </div>
 </template>
 

@@ -25,6 +25,10 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    .nut-icon {
+      width: 20px;
+      height: 20px;
+    }
 
     &_tips {
       position: absolute;

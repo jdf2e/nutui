@@ -87,7 +87,6 @@ export default createDemo({
 .content {
   margin-bottom: 20px;
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {

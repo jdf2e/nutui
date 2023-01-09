@@ -27,12 +27,6 @@
         "show": true
       },
       {
-        "name": "version",
-        "cName": "4.0版本说明",
-        "eName": "Version Instruction",
-        "show": true
-      },
-      {
         "name": "migrate-from-v3",
         "cName": "从 v3 升级到 v4",
         "eName": "migrate-from-v3",

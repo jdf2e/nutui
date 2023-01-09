@@ -123,7 +123,6 @@ export default {
 <style lang="scss">
 .content {
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {
@@ -166,8 +165,8 @@ export default {
 | avatar-shape      | Avatar shape: square / round                       | string | `round`   |
 | avatar-size       | Avatar size                                   | string | `50px`    |
 | round  |         Is the title / paragraph rounded                       | boolean | `false`  |
-| row    | Set the number of paragraph lines                                           | string | `1`       |
-| title  |           Show paragraph titles                              | boolean | `true`   |
+| title  |           Show paragraph titles  (first line displayed)                            | boolean | `true`   |
+| row    | Set the number of paragraph lines (shown below the title)                                          | string | `1`       |
 
 
 ### Slots
