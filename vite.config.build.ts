@@ -35,7 +35,8 @@ export default defineConfig({
           vue: 'Vue'
         },
         exports: 'named',
-        plugins: []
+        plugins: [],
+        entryFileNames: `nutui.umd.js`
       }
     },
     lib: {
