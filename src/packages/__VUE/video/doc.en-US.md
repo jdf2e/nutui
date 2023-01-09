@@ -247,16 +247,26 @@ export default {
 
 | Attribute           | Description                                                                        | Type    | Default  |
 |---------------------|------------------------------------------------------------------------------------|---------|----------|
-| source              | Video url and type settings                                                        | object  | -        |
-| options             | Control video playback properties                                                  | object  | `required` |
-| options.autoplay    | Auto play                                                                          | boolean | `false`    |
-| options.poster      | Poster settings                                                                    | string  | -        |
-| options.loop        | Poster loop                                                                        | boolean | `false`    |
-| options.controls    | Show operation control                                                             | boolean | `true`     |
-| options.muted       | Mute                                                                               | boolean | `false`    |
-| options.volume      | Volume control                                                                     | number  | `0.5`      |
-| options.disabled    | Disable operation (e.g. background image of circular playback, prohibit operation) | boolean | `false`    |
-| options.playsinline | Whether to set as inline playback element (solve Android compatibility problem)    | boolean | `false`    |
+| source              | Video url and type settings                                                        | VideoSource  | {}        |
+| options             | Control video playback properties                                                  | VideoOptions  | {} |
+
+
+### VideoSource 数据结构
+| 键名                | 说明                                       | 类型    | 
+| ------------------- | ------------------------------------------ | ------- | 
+| src    | Video Src                              | boolean | 
+| type      | Video Type                          | string  | 
+### VideoOptions 数据结构
+| key           | Description   | Type    | Default  |
+| ------------------- | ------------------------------------------ | ------- | 
+| autoplay    | Auto play  | boolean | `false`    |
+| poster      | Poster settings   | string  | -        |
+| loop        | Poster loop      | boolean | `false`    |
+| controls    | Show operation control  | boolean | `true`     |
+| muted       | Mute       | boolean | `false`    |
+| volume      | Volume control   | number  | `0.5`      |
+| disabled    | Disable operation (e.g. background image of circular playback, prohibit operation) | boolean | `false`    |
+| playsinline | Whether to set as inline playback element (solve Android compatibility problem)    | boolean | `false`    |
 
 ### Events
 
