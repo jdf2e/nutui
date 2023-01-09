@@ -23,14 +23,14 @@ app.use(Ecard);
 <template>
   <nut-ecard
     v-model="money"
-    @inputChange="inputChange"
+    @input-change="inputChange"
     @change="change"
-    @changeStep="changeStep"
+    @change-step="changeStep"
     :data-list="dataList"
   ></nut-ecard>
 </template>
 <script>
-  import { reactive, toRefs } from 'vue';
+  import {ref, reactive, toRefs } from 'vue';
   export default {
     setup() {
       const dataList=reactive([
@@ -81,7 +81,7 @@ app.use(Ecard);
 | modelValue        | 购买电子卡所需价钱                    | number | `0`            |
 | choose-text         | 选择面值文案               | string |   `请选择电子卡面值`              |
 | other-value-text        | 其他面值文案   | string |         `其他面值`        |
-| data-list         | 电子卡面值列表| Array |        `[]`        |
+| data-list         | 电子卡面值列表| Array |        `DataList[]`        |
 | card-amount-min| 其它面值最小值     | number | `1` |
 | card-amount-max        | 其他面值最大值                      | number | `9999`            |
 | card-buy-min        | 购买数量最小值                      | number | `9999`            |
@@ -97,6 +97,10 @@ app.use(Ecard);
 | input-change  | 更改 `input` 框触发事件 | 输入的数据 |
 | change-step  | 更改数量时触发 | 当前数量，当前选中的卡面值 |
 
+### DataList 数据结构
+| 键名	 | 说明           | 类型     |
+|--------|----------------|--------------|
+| price  | 每张电子卡价格 | string |
 ## 主题定制
 
 ### 样式变量

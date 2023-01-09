@@ -26,8 +26,8 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('addresslist-item');
-const { translate } = createComponent('addresslist');
+const { create } = createComponent('address-list-item');
+const { translate } = createComponent('address-list');
 import { Del, Edit } from '@nutui/icons-vue';
 export default create({
   components: { Del, Edit },

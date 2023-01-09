@@ -26,7 +26,6 @@ app.use(Comment);
     :images="cmt.images"
     :videos="cmt.videos"
     :info="cmt.info"
-    :labels="labels"
     @click="handleclick"
     @clickImages="clickImages"
     :operation="['replay']"
@@ -39,22 +38,19 @@ app.use(Comment);
     </template>
 </nut-comment>
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
+import Taro from '@tarojs/taro'
 export default {
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<Dongdong/>';
-    };
     onMounted(()=>{
-      fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-        .then((response) => response.json())
-        .then((res) => {
-          cmt.value = res.Comment;
-        }) 
-        .catch((err) => console.log('Oh, error', err)); 
+        Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            cmt.value = res.data.Comment;
+          }
+        })
     })
     const handleclick = (info: any) => {
       console.log('进行跳转', info);
@@ -64,13 +60,12 @@ export default {
     }
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -107,18 +102,19 @@ export default {
 </nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
+import Taro from '@tarojs/taro'
 export default {
   setup() {
     let cmt = ref({});
     onMounted(()=>{
-      fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-        .then((response) => response.json())
-        .then((res) => {
-          cmt.value = res.Comment;
-        }) 
-        .catch((err) => console.log('Oh, error', err)); 
+      Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            cmt.value = res.data.Comment;
+          }
+        })
     })
     const clickImages = (imgs)=>{
       console.log('进行图片展示',imgs)
@@ -129,7 +125,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -148,18 +144,19 @@ export default {
 ></nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
+import Taro from '@tarojs/taro'
 export default {
   setup() {
     let cmt = ref({});
     onMounted(()=>{
-      fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-        .then((response) => response.json())
-        .then((res) => {
-          cmt.value = res.Comment;
-        }) 
-        .catch((err) => console.log('Oh, error', err)); 
+      Taro.request({
+          url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json', //仅为示例，并非真实的接口地址
+          success: function (res) {
+            cmt.value = res.data.Comment;
+          }
+        })
     })
     const clickImages = (imgs)=>{
       console.log('进行图片展示',imgs)
@@ -170,7 +167,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ## API

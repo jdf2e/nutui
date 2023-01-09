@@ -74,7 +74,7 @@ export default create({
     const handleScrollEvent = () => {
       const scrollTop = list.value?.scrollTop as number;
       state.start = Math.floor(scrollTop / props.height);
-      if (end.value > state.list.length) {
+      if (end.value >= state.list.length) {
         emit('scroll-bottom');
       }
       state.startOffset = scrollTop - (scrollTop % props.height);

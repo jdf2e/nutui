@@ -2,7 +2,7 @@
 
 ### Intro
 
-
+Often used for commodity selection
 
 ### Install
 
@@ -90,6 +90,7 @@ export default {
     :btnExtraText="btnExtraText"
     @changeStepper="changeStepper"
     @selectSku="selectSku"
+    :btnOptions="['buy', 'cart']"
   >
     <template #sku-operate>
       <div class="sku-operate-box">
@@ -178,7 +179,6 @@ You can configure the maximum value and minimum value of the digital input box a
     v-model:visible="customStepper"
     :sku="sku"
     :goods="goods"
-    :showSaleLimit="true"
     :stepperMax="7"
     :stepperMin="2"
     :stepperExtraText="stepperExtraText"
@@ -426,10 +426,10 @@ setup() {
 | goods |  Product Info    | object | - |
 | stepper-max         | Stepper max  | string \| number | `99999`               |
 | stepper-min         | Stepper min  | string \| number | `1`               |
-| btn-options        |   Bottom button      | Array | `['confirm']`           |
+| btn-options        |   Bottom button      | Array | `[confirm]`           |
 | btn-extra-text | Add text above button | string | -            |
 | stepper-title         | Stepper left text | string | `Buy Num`                |
-| stepper-extra-text        |   The text between the stepper and the headline       | function \| false  | `false`              |
+| stepper-extra-text        |   The text between the stepper and the headline       | Function \| boolean  | `false`              |
 | buy-text |  Buy button text    | string | `Buy It Now` |
 | add-cart-text          |        	Add cart button text                 | string | `Add  To cart`             |
 | confirm-text          |           Confirm button text              | string | `Confirm`   |

@@ -13,7 +13,13 @@
     <h2>搭配 Popup 使用</h2>
     <nut-cell title="城市选择" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup position="bottom" v-model:visible="show" :safeAreaInsetBottom="true">
-      <nut-picker :columns="columns" title="城市选择" @confirm="popupConfirm" @cancel="show = false">
+      <nut-picker
+        v-model="popupValue"
+        :columns="columns"
+        title="城市选择"
+        @confirm="popupConfirm"
+        @cancel="show = false"
+      >
         <nut-button block type="primary" style="margin-bottom: 20px">永远有效</nut-button>
       </nut-picker>
     </nut-popup>
@@ -52,6 +58,7 @@ export default {
     const asyncValue = ref<string[]>();
     const msg = ref();
     const showToast = ref(false);
+    const popupValue = ref();
 
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
@@ -205,7 +212,8 @@ export default {
       popupConfirm,
       popupDesc,
       msg,
-      env
+      env,
+      popupValue
     };
   }
 };

@@ -4,6 +4,7 @@
     position: sticky;
   }
   &--fixed {
+    display: flex;
     position: fixed;
   }
 }

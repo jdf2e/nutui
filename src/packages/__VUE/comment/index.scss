@@ -91,12 +91,17 @@
       &-complex {
         display: flex;
         align-items: center;
-        font-weight: bold;
+        color: $comment-header-user-name-color;
 
         &-name {
           margin-right: 10px;
           @include text-ellipsis();
           max-width: 80px;
+        }
+
+        image {
+          max-width: 50px;
+          height: 16px;
         }
       }
 

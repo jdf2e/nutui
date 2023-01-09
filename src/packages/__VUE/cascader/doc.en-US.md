@@ -428,7 +428,6 @@ export default {
 | convert-config      | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | object   | -           |
 | title               | Title                                                                                                        | string   | `''`          |
 | close-icon-position | Cancel the button position and inherit the popup component                                                   | string   | `"top-right"` |
-| close-icon          | Customize the close button and inherit the popup component                                                   | string   | `"close"`     |
 | closeable           | Whether to display the close button and inherit the popup component                                          | boolean  | `true`        |
 | poppable            | Whether to display the popup（After setting to false, the title is invalid）                                 | boolean  | `true`        |
 

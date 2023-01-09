@@ -81,7 +81,6 @@
     color: $radio-label-font-active-color;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
-    font-size: $radio-icon-font-size;
   }
   &__icon--unchecked {
     color: $radio-icon-disable-color;

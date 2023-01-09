@@ -71,9 +71,6 @@
       color: $steps-finish-head-color;
       border-color: $steps-finish-head-border-color;
     }
-    .nut-step-icon.is-text {
-      background-color: $steps-finish-icon-text-color;
-    }
     .nut-step-icon.is-icon {
       background-color: $steps-finish-icon-text-color;
     }
@@ -89,9 +86,6 @@
       color: $steps-process-head-color;
       border-color: $steps-process-head-border-color;
     }
-    .nut-step-icon.is-text {
-      background-color: $steps-process-icon-text-color;
-    }
     .nut-step-icon.is-icon {
       background-color: $steps-process-icon-text-color;
     }
@@ -104,11 +98,9 @@
       color: $steps-wait-head-color;
       border-color: $steps-wait-head-border-color;
     }
-    .nut-step-icon.is-text {
-      background-color: $steps-wait-icon-bg-color;
-    }
     .nut-step-icon.is-icon {
       background-color: $steps-wait-icon-bg-color;
+      color: $steps-wait-icon-text-color;
       .nut-icon {
         color: $steps-wait-icon-color;
       }

@@ -132,7 +132,7 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .nut-cell {
   align-items: flex-end;
   border-radius: 0;

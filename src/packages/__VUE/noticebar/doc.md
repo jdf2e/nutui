@@ -142,7 +142,7 @@ app.use(Noticebar);
       const go = (item) => {
         console.log(item)
       }
-      return { horseLamp1 };
+      return { horseLamp1 , go};
     }
   }
 </script>
@@ -175,7 +175,7 @@ app.use(Noticebar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
     </nut-noticebar>
 </template>
@@ -232,13 +232,13 @@ app.use(Noticebar);
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
 | scrollable | 是否可以滚动                                               | boolean       | `true`   |
 | speed      | 滚动速率 (px/s)                                            | number        | `50`     |
-| wrapable  | 是否开启文本换行                                           | boolean       | `false`    |
+| wrapable  | 是否开启文本换行，`scrollable` 会设置为 `false`                                          | boolean       | `false`    |
 
 ### Props（direction=vertical）
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| list         | 纵向滚动数据列表               | array | `[]`               |
+| list         | 纵向滚动数据列表               | Array | `[]`               |
 | speed        | 滚动的速度                         | number | `50`               |
 | stand-time         | 停留时间(毫秒) | number | `1000`                |
 | complex-am | 稍复杂的动画，耗能会高     | boolean | `false` |

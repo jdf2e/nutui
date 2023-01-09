@@ -47,17 +47,7 @@ app.use(Progress);
 </template>
 ```
 :::
-### 设置百分比外显
 
-:::demo
-```html
-<template>
-  <nut-cell>
-     <nut-progress percentage="30" />
-  </nut-cell>
-</template>
-```
-:::
 
 ### 设置百分比内显
 :::demo
@@ -77,9 +67,7 @@ app.use(Progress);
         <nut-progress percentage="60" :text-inside="true">
           <img
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-            width="30"
-            height="30"
-            style="display: block"
+            style="display: block; width: 30px; height: 30px"
           />
         </nut-progress>
       </nut-cell>
@@ -87,7 +75,7 @@ app.use(Progress);
 ```
 :::
 
-### 自定义尺寸
+### 设置自定义尺寸
 
 内置 **small**，**base**，**large** 三种规格供使用。
 :::demo
@@ -163,7 +151,7 @@ app.use(Progress);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| Name | Default Value |
+| 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |
 |  --nut-progress-inner-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
 |  --nut-progress-insidetext-background| _var(--nut-progress-inner-background-color)_  |
@@ -171,19 +159,15 @@ app.use(Progress);
 |  --nut-progress-outer-border-radius| _12px_  |
 |  --nut-progress-insidetext-border-radius| _5px_  |
 |  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  |
-|  --nut-progress-insidetext-top| _-42%_  |
 |  --nut-progress-small-height| _5px_  |
 |  --nut-progress-small-text-font-size| _7px_  |
 |  --nut-progress-small-text-line-height| _10px_  |
 |  --nut-progress-small-text-padding| _2px 4px_  |
-|  --nut-progress-small-text-top| _-100%_  |
 |  --nut-progress-base-height| _10px_  |
 |  --nut-progress-base-text-font-size| _9px_  |
 |  --nut-progress-base-text-line-height| _13px_  |
 |  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  |
 |  --nut-progress-large-height| _15px_  |
 |  --nut-progress-large-text-font-size| _13px_  |
 |  --nut-progress-large-text-line-height| _18px_  |
 |  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  |

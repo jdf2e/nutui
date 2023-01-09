@@ -8,12 +8,11 @@ The multiple selection button is used to select.
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### Basic Usage
@@ -144,8 +143,9 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,
@@ -170,14 +170,16 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
       const state = reactive({
         checkbox: false,
       });
-      const changeBox3= (checked: boolean, label: string) => {
-        console.log('Change event trigger' + checked, label);
+      const changeBox3= (state: boolean, label: string) => {
+        showToast.text(`${state ? 'selected' : 'cancel'} ${label}`);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -194,6 +196,40 @@ When the value changes, the `change` event will be triggered
 ```html
 <template>
   <nut-checkbox-group v-model="checkboxgroup1">
+    <nut-checkbox label="1">Combined check box</nut-checkbox>
+    <nut-checkbox label="2">Combined check box</nut-checkbox>
+    <nut-checkbox label="3">Combined check box</nut-checkbox>
+    <nut-checkbox label="4">Combined check box</nut-checkbox>
+  </nut-checkbox-group>
+  <nut-cell>
+    <div class="demo-check">Currently selected value</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+```
+
+:::
+
+### checkboxGroup disabled
+
+:::demo
+
+```html
+<template>
+  <nut-checkbox-group v-model="checkboxgroup1" disabled>
     <nut-checkbox label="1">Combined check box</nut-checkbox>
     <nut-checkbox label="2">Combined check box</nut-checkbox>
     <nut-checkbox label="3">Combined check box</nut-checkbox>
@@ -336,6 +372,7 @@ When the value changes, the `change` event will be triggered
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {

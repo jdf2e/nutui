@@ -80,6 +80,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 80px;
     &-desc {
       font-size: $cell-title-desc-font;
     }
@@ -87,6 +88,7 @@
   &__value {
     display: inline-block;
     text-align: right;
+    flex: 1;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
     &--alone {

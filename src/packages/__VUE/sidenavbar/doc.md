@@ -18,6 +18,8 @@ app.use(SideNavbarItem);
 
 ### 基础用法
 
+可以通过设置 `position` 来控制左右展示
+
 :::demo
 
 ``` html
@@ -66,7 +68,6 @@ app.use(SideNavbarItem);
 :::
 
 ### 嵌套（建议最多三层）
-> 小程序暂不支持异步加载
 
 :::demo
 
@@ -118,13 +119,13 @@ app.use(SideNavbarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
-              arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+              name: '异步加载1',
+              arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
-              arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+              name: '异步加载2',
+              arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
             }
           ];
         }, 2000);

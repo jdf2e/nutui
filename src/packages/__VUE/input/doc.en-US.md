@@ -392,12 +392,12 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| update:model-value | Emitted when input value changed | val  |
-| focus  | Emitted when input is focused     | event |
-| blur   | Emitted when input is blurred     | event  |
-| clear  | Emitted when the clear icon is clicked   | event  |
-| click  | Emitted when component is clicked	      | event  |
-| click-input      | Emitted when the input is clicked      | event  |
+| update:model-value | Emitted when input value changed | `val`  |
+| focus  | Emitted when input is focused     | `event` |
+| blur   | Emitted when input is blurred     | `event`  |
+| clear  | Emitted when the clear icon is clicked   | `event`  |
+| click  | Emitted when component is clicked	      | `event`  |
+| click-input      | Emitted when the input is clicked      | `event`  |
 
 ### Slots
 | Name  | Description     | 

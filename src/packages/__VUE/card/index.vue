@@ -34,7 +34,6 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Price from '../price/index.vue';
 import Tag from '../tag/index.vue';
@@ -47,32 +46,25 @@ export default create({
 
   props: {
     imgUrl: {
-      type: String,
-      default: ''
+      type: String
     },
     title: {
-      type: String,
-      default: ''
+      type: String
     },
     price: {
-      type: String,
-      default: ''
+      type: String
     },
     vipPrice: {
-      type: String,
-      default: ''
+      type: String
     },
     shopDesc: {
-      type: String,
-      default: ''
+      type: String
     },
     delivery: {
-      type: String,
-      default: ''
+      type: String
     },
     shopName: {
-      type: String,
-      default: ''
+      type: String
     },
     isNeedPrice: {
       type: Boolean,

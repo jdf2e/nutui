@@ -10,7 +10,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour3"
+      v-model="showTour3"
       :steps="steps3"
       type="tile"
       location="bottom-end"
@@ -26,7 +26,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-      v-model:visible="showTour1"
+      v-model="showTour1"
       :steps="steps1"
       location="bottom-end"
       type="tile"
@@ -58,7 +58,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour2"
+      v-model="showTour2"
       :steps="steps2"
       type="tile"
       bgColor="#f00"
@@ -77,7 +77,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour4"
+      v-model="showTour4"
       :steps="steps4"
       type="tile"
       theme="dark"
@@ -105,19 +105,19 @@
       ></nut-tabbar-item>
       <nut-tabbar-item
         id="target2"
-        tab-title="首页"
+        tab-title="分类"
         img="https://img13.360buyimg.com/imagetools/jfs/t1/202062/32/25149/5246/62e7c353E5a51db17/b82b940e6eb22ec3.png"
         activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/162634/35/26732/5502/62e747a8E5330f029/3ea00a0c140beb38.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         id="target3"
-        tab-title="首页"
+        tab-title="购物车"
         img="https://img12.360buyimg.com/imagetools/jfs/t1/60552/28/20576/5585/62e7c2ddE2e0b48a7/70eefb366b85f3e4.png"
         activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/138362/15/28011/5802/62e747a4E4139ef2f/9a79a1c0f6a273b4.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         id="target4"
-        tab-title="首页"
+        tab-title="我的"
         img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
         activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
       ></nut-tabbar-item>
@@ -125,7 +125,7 @@
 
     <nut-tour
       class="nut-custom-tour"
-      v-model:visible="showTour"
+      v-model="showTour"
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"

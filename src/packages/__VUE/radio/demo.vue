@@ -121,11 +121,11 @@ export default createDemo({
   setup() {
     initTranslate();
     const data = reactive({
-      radioVal: 1,
-      radioVal2: 2,
-      radioVal3: 1,
-      radioVal4: 1,
-      radioVal5: 1,
+      radioVal: '1',
+      radioVal2: '2',
+      radioVal3: '1',
+      radioVal4: '1',
+      radioVal5: '1',
       radioVal6: '1'
     });
     const handleChange = (value: any) => {

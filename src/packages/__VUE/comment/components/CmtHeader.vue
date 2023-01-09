@@ -13,7 +13,7 @@
           </view>
 
           <view class="nut-comment-header__user-score">
-            <nut-rate v-model="info.score" icon-size="10" spacing="5" readonly @change="handleClick" />
+            <nut-rate v-model="info.score" icon-size="10" spacing="5" readonly :disabled="true" @change="handleClick" />
           </view>
         </view>
 
@@ -25,19 +25,21 @@
       <view class="nut-comment-header__time" v-if="info.time">{{ info.time }}</view>
     </view>
     <view :class="[`nut-comment-header__${type}-score`]" v-if="type == 'complex'">
-      <nut-rate v-model="info.score" icon-size="12" spacing="3" readonly />
+      <nut-rate v-model="info.score" icon-size="12" spacing="3" readonly :disabled="true" />
       <i :class="[`nut-comment-header__${type}-score-i`]"></i>
       <view :class="[`nut-comment-header__${type}-score-size`]">{{ info.size }}</view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
-
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment-header');
+import Rate from '../../rate/index.vue';
 
 export default create({
+  components: {
+    [Rate.name]: Rate
+  },
   props: {
     type: {
       type: String,

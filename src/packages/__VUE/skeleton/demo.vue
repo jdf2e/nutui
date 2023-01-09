@@ -3,7 +3,6 @@
     <h2>{{ translate('basic') }}</h2>
 
     <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
-    <nut-skeleton width="250px" height="15px"> </nut-skeleton>
 
     <h2>{{ translate('title') }}</h2>
 
@@ -88,7 +87,6 @@ export default createDemo({
 .content {
   margin-bottom: 20px;
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {
