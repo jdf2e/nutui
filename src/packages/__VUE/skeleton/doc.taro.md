@@ -13,7 +13,6 @@ import { Skeleton } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Skeleton);
-
 ```
 
 
@@ -45,7 +44,7 @@ app.use(Skeleton);
 :::demo
 ```html
 <template>
-  <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="100px" row="3"> </nut-skeleton>
+  <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="60px" row="3"> </nut-skeleton>
 </template>
 ```
 :::

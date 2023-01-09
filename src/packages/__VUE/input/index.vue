@@ -20,6 +20,9 @@
             @focus="onFocus"
             @blur="onBlur"
             @click="onClickInput"
+            @change="endComposing"
+            @compositionend="endComposing"
+            @compositionstart="startComposing"
           ></component>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
             <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -28,13 +31,22 @@
         </view>
         <view class="nut-input-clear-box" v-if="clearable && !readonly" v-show="active && modelValue.length > 0">
           <slot name="clear">
-            <MaskClose class="nut-input-clear" v-bind="$attrs" :size="clearSize" @click="clear"> </MaskClose>
+            <MaskClose
+              class="nut-input-clear"
+              v-bind="$attrs"
+              :size="clearSize"
+              :width="clearSize"
+              :height="clearSize"
+              @click="clear"
+            >
+            </MaskClose>
           </slot>
         </view>
       </view>
     </view>
   </view>
 </template>
+<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
@@ -52,13 +64,11 @@ export type InputRule = {
   required?: boolean;
 };
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
-
+export interface InputTarget extends HTMLInputElement {
+  composing: boolean;
+}
 export default create({
   props: {
-    ref: {
-      type: String,
-      default: ''
-    },
     type: {
       type: String as PropType<InputType>,
       default: 'text'
@@ -75,10 +85,6 @@ export default create({
       type: String,
       default: 'left'
     },
-    center: {
-      type: Boolean,
-      default: false
-    },
     required: {
       type: Boolean,
       default: false
@@ -93,7 +99,7 @@ export default create({
     },
     maxLength: {
       type: [String, Number],
-      default: '9999'
+      default: ''
     },
     clearable: {
       type: Boolean,
@@ -115,14 +121,6 @@ export default create({
       type: Function as PropType<(value: string) => string>,
       default: null
     },
-    rules: {
-      type: Array as PropType<InputRule>,
-      default: []
-    },
-    rows: {
-      type: [String, Number],
-      default: null
-    },
     showWordLimit: {
       type: Boolean,
       default: false
@@ -142,7 +140,7 @@ export default create({
   },
   components: { MaskClose },
 
-  emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -166,7 +164,6 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        center: props.center,
         [`${prefixCls}--disabled`]: props.disabled,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
@@ -191,12 +188,14 @@ export default create({
     };
 
     const onInput = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
-      if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+      if (!(event.target as InputTarget)!.composing) {
+        const input = event.target as HTMLInputElement;
+        let value = input.value;
+        if (props.maxLength && value.length > Number(props.maxLength)) {
+          value = value.slice(0, Number(props.maxLength));
+        }
+        updateValue(value);
       }
-      updateValue(value);
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
@@ -217,7 +216,7 @@ export default create({
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
-        emit('change', value);
+        // emit('change', value);
       }
     };
 
@@ -254,7 +253,7 @@ export default create({
       event.stopPropagation();
       if (props.disabled) return;
       emit('update:modelValue', '', event);
-      emit('change', '', event);
+      // emit('change', '', event);
       emit('clear', '', event);
     };
 
@@ -271,7 +270,16 @@ export default create({
       }
       emit('click-input', event);
     };
+    const startComposing = ({ target }: Event) => {
+      (target as InputTarget)!.composing = true;
+    };
 
+    const endComposing = ({ target }: Event) => {
+      if ((target as InputTarget)!.composing) {
+        (target as InputTarget)!.composing = false;
+        (target as InputTarget)!.dispatchEvent(new Event('input'));
+      }
+    };
     watch(
       () => props.modelValue,
       () => {
@@ -295,6 +303,8 @@ export default create({
       onFocus,
       onBlur,
       clear,
+      startComposing,
+      endComposing,
       onClickInput
     };
   }

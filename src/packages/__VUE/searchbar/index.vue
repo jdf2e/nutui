@@ -16,7 +16,7 @@
         <form action="#" @submit.prevent="handleSubmit">
           <input
             ref="inputsearch"
-            class="nut-searchbar__input-bar"
+            :class="['nut-searchbar__input-bar', clearable && 'nut-searchbar__input-bar_clear']"
             :type="inputType"
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"

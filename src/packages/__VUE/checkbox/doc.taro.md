@@ -8,12 +8,11 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui-taro';
-import { Checklist } from '@nutui/icons-vue-taro';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-taro';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### 基础用法
@@ -145,8 +144,9 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue-taro';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,

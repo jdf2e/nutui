@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <view v-if="readonly" class="nut-textarea__textarea">
+    <view v-if="readonly" class="nut-textarea__textarea nut-textarea__textarea__readonly">
       {{ modelValue }}
     </view>
     <textarea
@@ -86,10 +86,17 @@ export default create({
     });
 
     const styles: any = computed(() => {
-      return {
-        textAlign: props.textAlign,
-        height: props.autosize ? heightSet.value : 'null'
+      const styleObj: { textAlign: string; height?: string } = {
+        textAlign: props.textAlign
       };
+      if (props.autosize) {
+        styleObj['height'] = heightSet.value;
+      }
+      return styleObj;
+      // return {
+      //   textAlign: props.textAlign,
+      //   height: props.autosize ? heightSet.value : 'null'
+      // };
     });
 
     const copyTxtStyle: any = ref({
@@ -152,14 +159,21 @@ export default create({
       () => props.modelValue,
       () => {
         if (props.autosize) {
-          copyHeight();
+          setTimeout(() => {
+            copyHeight();
+          }, 100);
         }
       }
     );
+    // const listenInput = () => {
+    // window.addEventListener('compositionend', function () {
+    //   copyHeight();
+    // });
+    // };
 
     const copyHeight = () => {
       const query = Taro.createSelectorQuery();
-      query.select('.cpoyText').boundingClientRect();
+      query.select('.nut-textarea__cpoyText').boundingClientRect();
       query.exec((res) => {
         if (res[0]) {
           if (props.modelValue == '') {
@@ -167,9 +181,7 @@ export default create({
           } else {
             textareaHeight.value = res[0]['height'] || 20;
           }
-          setTimeout(() => {
-            getContentHeight();
-          }, 400);
+          nextTick(getContentHeight);
         }
       });
     };
@@ -202,9 +214,10 @@ export default create({
     const env = Taro.getEnv();
     onMounted(() => {
       if (props.autosize) {
+        // listenInput();
         Taro.nextTick(() => {
           setTimeout(() => {
-            if (Taro.getEnv() === 'ALIPAY') {
+            if (Taro.getEnv() === 'ALIPAY' || Taro.getEnv() === 'WEB') {
               getRefWidth();
               copyHeight();
             } else {

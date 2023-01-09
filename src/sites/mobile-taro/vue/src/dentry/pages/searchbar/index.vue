@@ -30,7 +30,7 @@
     <h2>自定义清除按钮 icon</h2>
     <nut-searchbar v-model="searchValue6">
       <template v-slot:clearIcon>
-        <img :src="icon" style="width: 10px; height: 10px" />
+        <img :src="icon" style="width: 20px; height: 20px" />
       </template>
     </nut-searchbar>
 

@@ -12,7 +12,6 @@ import { Input } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Input);
-
 ```
 
 ### 基础用法
@@ -145,21 +144,21 @@ app.use(Input);
     clearSize="14" 
   />
   <nut-input
-      v-model="state.clear2"
-      :placeholder="translate('clear2')"
-      clearable
-      clearSize="14"
-      show-word-limit
-      max-length="50"
-    >
-      <template #clear>
-        <Close width="12" height="12" @click="clearValue"></Close>
-      </template>
-    </nut-input>
+    v-model="state.clear2"
+    placeholder="自定义清除图标"
+    clearable
+    clearSize="14"
+    show-word-limit
+    max-length="50"
+  >
+    <template #clear>
+      <Close width="12" height="12" @click="clearValue"></Close>
+    </template>
+  </nut-input>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
-  import { Close } from 
+  import { Close } from "@nutui/icons-vue"
   export default {
     components:{
       Close
@@ -169,8 +168,11 @@ app.use(Input);
         clear:'',
         clear2:''
       });
+      const clearValue = () => {
+        state.clear2 = '';
+      };
       return {
-        state
+        state, clearValue
       };
     }
   }
@@ -333,47 +335,30 @@ app.use(Input);
     v-model="state.event"
     clearable
     placeholder="事件演示"
-    @update:model-value="change"
-    @focus="focus"
-    @blur="blur"
     @clear="clear"
-    @click="click"
     @click-input="clickInput"
   />
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
+  import { showToast } from '@nutui/nutui';
   export default {
     setup() {
       const state = reactive({
         event: ''
       });
-      const change = (value: string) => {
-        console.log('change: ', value);
-      };
-      const focus = (event: Event) => {
-        console.log('focus:', event);
-      };
-      const blur = (event: Event) => {
-        console.log('blur:', event);
-      };
       const clear = (event: Event) => {
+        showToast.text('clear');
         console.log('clear:', event);
       };
-      const click = (event: Event) => {
-        console.log('click:', event);
-      };
       const clickInput = (event: Event) => {
+        showToast.text('clickInput');
         console.log('clickInput:', event);
       };
 
       return {
         state,
-        change,
-        blur,
         clear,
-        focus,
-        click,
         clickInput,
       };
     }
@@ -401,7 +386,7 @@ app.use(Input);
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
 | error         | 是否标红                                | boolean | `false`  |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | - |
+| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | `onChange` |
 | confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string |   `done`   |
 
 ### Events

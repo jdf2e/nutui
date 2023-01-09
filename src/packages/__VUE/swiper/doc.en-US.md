@@ -8,7 +8,7 @@ Often used in a group of pictures or card rotation.
 
 ```javascript
 import { createApp } from 'vue';
-import { Swiper,SwiperItem } from '@nutui/nutui';
+import { Swiper, SwiperItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Swiper);

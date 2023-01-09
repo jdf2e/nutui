@@ -9,9 +9,9 @@
 ```javascript
 import { createApp } from 'vue';
 import { Searchbar } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Searchbar);
-
 ```    
     
 ### 基础用法
@@ -219,7 +219,7 @@ export default {
     
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model	         | 当前输入的值   | number /| string | `''`     |
+| v-model	         | 当前输入的值   | number \| string | `''`     |
 | label| 搜索框左侧文本 | string | `''` |
 | shape | 搜索框形状，可选值为 `square` `round` | string | `square` |
 | max-length         | 最大输入长度   | number \| string | `9999`      |

@@ -12,7 +12,6 @@ import { Textarea } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Textarea);
-
 ```
 
 ### Basic usage
@@ -50,7 +49,7 @@ export default {
 
 ```html
 <template>
-  <nut-textarea v-model="value" rows="10" autosize />
+  <nut-textarea v-model="value" rows="1" autosize />
 </template>
 ```
 :::
@@ -61,7 +60,7 @@ export default {
 ```html
 <template>
   <nut-textarea readonly model-value="Textarea read only status" />
-  <nut-textarea disabled model-value="Textarea disabled" limit-show max-length="20" />
+  <nut-textarea disabled model-value="Textarea disabled" />
 </template>
 ```
 :::

@@ -12,7 +12,6 @@ import { Signature } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Signature);
-
 ```
     
 
