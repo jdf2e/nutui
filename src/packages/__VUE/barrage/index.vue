@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUnmounted, onDeactivated, ref, watch, nextTick, useSlots } from 'vue';
+import { computed, onMounted, onUnmounted, onDeactivated, ref, watch, nextTick, useSlots, onActivated } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('barrage');
 
@@ -40,8 +40,6 @@ export default create({
       default: true
     }
   },
-  emits: ['click'],
-
   setup(props, { slots }) {
     const classTime = new Date().getTime();
     const slotDefault = !!useSlots().default;
@@ -65,6 +63,15 @@ export default create({
     const danmuCWidth = ref(0);
 
     onMounted(() => {
+      init();
+    });
+
+    onUnmounted(() => {
+      danmuList.value = [];
+      clearTime();
+    });
+
+    const init = () => {
       danmuCWidth.value = dmBody.value.offsetWidth;
       if (slotDefault) {
         const list = document.getElementsByClassName('slotBody' + classTime);
@@ -82,19 +89,12 @@ export default create({
         dmBody.value?.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
         run();
       }, 300);
-    });
+    };
 
-    onUnmounted(() => {
-      danmuList.value = [];
-      clearInterval(timer);
+    const clearTime = () => {
+      clearTimeout(timer);
       timer = 0;
-    });
-
-    onDeactivated(() => {
-      danmuList.value = [];
-      clearInterval(timer);
-      timer = 0;
-    });
+    };
 
     watch(
       () => props.danmu,
@@ -115,8 +115,7 @@ export default create({
     };
 
     const run = () => {
-      clearInterval(timer);
-      timer = 0;
+      clearTime();
       timer = setTimeout(() => {
         play();
         run();
@@ -138,7 +137,6 @@ export default create({
         el.classList.add('nut-barrage__item');
         dmContainer.value.appendChild(el);
       }
-
       // let el = document.createElement(`div`);
       // el.innerHTML = danmuList.value[_index] as string;
       // el.classList.add('nut-barrage__item');
@@ -157,19 +155,14 @@ export default create({
         // el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
         // distance.value = '-' + (speeds / 1000) * 150 + '%';
         el.dataset.index = `${_index}`;
-        if (slotDefault) {
-          index.value++;
-          el.addEventListener('animationend', () => {
-            if (el?.classList?.contains('move')) {
-              el.classList.remove('move');
-            }
-          });
-        } else {
-          el.addEventListener('animationend', () => {
+        el.addEventListener('animationend', () => {
+          if (slotDefault) {
+            el?.classList?.contains('move') && el.classList.remove('move');
+          } else {
             dmContainer.value.removeChild(el);
-          });
-          index.value++;
-        }
+          }
+        });
+        index.value++;
       });
     };
     return { classTime, classes, danmuList, dmBody, dmContainer, add };
