@@ -2,12 +2,12 @@
   <div class="demo">
     <nut-tabs v-model="tabsValue" animatedTime="0">
       <nut-tab-pane :title="translate('basic')">
-        <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+        <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
           <div class="pull-block">{{ translate('content') }}</div>
-        </nut-pullrefresh>
+        </nut-pull-refresh>
       </nut-tab-pane>
       <nut-tab-pane :title="translate('customTxt')">
-        <nut-pullrefresh
+        <nut-pull-refresh
           v-model="refresh2"
           :loosingTxt="translate('loose')"
           :loadingTxt="translate('load')"
@@ -18,15 +18,15 @@
             <div>{{ translate('pull') }}</div>
           </template>
           <div class="pull-block">{{ translate('content') }}</div>
-        </nut-pullrefresh>
+        </nut-pull-refresh>
       </nut-tab-pane>
       <nut-tab-pane :title="translate('listenerTxt')">
         <div class="parentpage">
-          <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+          <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
             <div class="pull-letter" v-for="item in refreshList2">
               <div>{{ item }}</div>
             </div>
-          </nut-pullrefresh>
+          </nut-pull-refresh>
         </div>
       </nut-tab-pane>
     </nut-tabs>
@@ -37,7 +37,7 @@
 import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 
-const { createDemo, translate } = createComponent('pullrefresh');
+const { createDemo, translate } = createComponent('pull-refresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
 
@@ -59,8 +59,8 @@ const initTranslate = () =>
       pullRefresh: 'Pull to refresh',
       customTxt: 'Custom Tips',
       listenerTxt: 'Customize the listener',
-      content: 'Try it down',
-      loose: 'Let go',
+      content: 'Try to pull down!',
+      loose: 'Relax',
       load: 'Desperate loading...',
       ok: 'Ok!',
       pull: 'Pull'
@@ -141,7 +141,7 @@ export default createDemo({
 .nut-tab-pane {
   padding: 0;
 }
-.nut-pullrefresh {
+.nut-pull-refresh {
   height: calc(100vh - 107px);
 }
 .pull-block {
