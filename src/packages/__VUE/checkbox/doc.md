@@ -8,12 +8,11 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### 基础用法
@@ -145,8 +144,9 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,
@@ -171,7 +171,8 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { showToast } from '@/packages/nutui.vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
@@ -373,6 +374,7 @@ app.use(Checklist);
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
