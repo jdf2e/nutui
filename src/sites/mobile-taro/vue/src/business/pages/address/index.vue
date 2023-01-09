@@ -66,7 +66,6 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @change="(cal) => onChange(cal, 'customImg')"
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"

@@ -87,9 +87,14 @@ app.use(Noticebar);
 ```html
 <template>
     <nut-noticebar
-      left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :scrollable="false"
     >
+      <template v-slot:left-icon>
+        <img
+          src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+          style="width: 20px; height: 20px"
+        />
+      </template>
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
 </template>
@@ -137,7 +142,7 @@ app.use(Noticebar);
       const go = (item) => {
         console.log(item)
       }
-      return { horseLamp1 };
+      return { horseLamp1,go };
     }
   }
 </script>
@@ -170,7 +175,7 @@ app.use(Noticebar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
     </nut-noticebar>
 </template>
@@ -227,7 +232,7 @@ app.use(Noticebar);
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
 | scrollable | 是否可以滚动                                               | boolean       | `true`   |
 | speed      | 滚动速率 (px/s)                                            | number        | `50`     |
-| wrapable  | 是否开启文本换行                                           | boolean       | `false`    |
+| wrapable  | 是否开启文本换行,`scrollable` 会设置为 `false`                       | boolean       | `false`    |
 
 ### Props（direction=vertical）
 

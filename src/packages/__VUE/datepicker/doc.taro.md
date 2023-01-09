@@ -28,7 +28,7 @@ app.use(DatePicker);
   ></nut-date-picker> 
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -71,7 +71,7 @@ app.use(DatePicker);
   </nut-popup>
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -121,7 +121,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
   ></nut-date-picker> 
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -155,7 +155,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker> 
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup() {
@@ -190,7 +190,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -227,7 +227,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -284,7 +284,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -322,7 +322,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -406,3 +406,24 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-picker-cancel-color| _#808080_  | 
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | 
+| --nut-picker-bar-cancel-font-size| _14px_  | 
+| --nut-picker-bar-ok-font-size| _14px_  | 
+| --nut-picker-bar-button-padding| _0 15px_  | 
+| --nut-picker-bar-title-font-size| _16px_  | 
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
+| --nut-picker-bar-title-font-weight| _normal_  | 
+| --nut-picker-item-height| _36px_  | 
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | 
+| --nut-picker-item-text-font-size| _14px_  | 
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
