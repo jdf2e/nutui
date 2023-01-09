@@ -139,7 +139,7 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 | pulling-txt         | Text to show when pulling                       | string | `Pull to refresh...`            |
 | loosing-txt         | Text to show when loosing                       | string | `Loose to refresh...`            |
 | loading-txt        | Text to show when loading                         | string | `Loading...`                |
-| duration       | Animation duration                         | number | `0.3`                |
+| duration       | Pull down animation duration                         | number | `0.3`                |
 
 ### Events
 

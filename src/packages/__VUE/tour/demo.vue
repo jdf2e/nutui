@@ -10,7 +10,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour3"
+      v-model="showTour3"
       :steps="steps3"
       type="tile"
       location="bottom-end"
@@ -26,7 +26,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-      v-model:visible="showTour1"
+      v-model="showTour1"
       :steps="steps1"
       location="bottom-end"
       type="tile"
@@ -58,7 +58,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour2"
+      v-model="showTour2"
       :steps="steps2"
       type="tile"
       bgColor="#f00"
@@ -77,7 +77,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour4"
+      v-model="showTour4"
       :steps="steps4"
       type="tile"
       theme="dark"
@@ -125,7 +125,7 @@
 
     <nut-tour
       class="nut-custom-tour"
-      v-model:visible="showTour"
+      v-model="showTour"
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"

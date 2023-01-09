@@ -91,7 +91,7 @@
       &-complex {
         display: flex;
         align-items: center;
-        font-weight: bold;
+        color: $comment-header-user-name-color;
 
         &-name {
           margin-right: 10px;
