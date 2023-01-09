@@ -81,8 +81,8 @@ export default {
 |--------------|---------------------------------- |-------|------------------|
 | danmu | Danmaku list data | Array | `[]` |
 | frequency | the time interval of each barrage in the visible area | number | `500` |
-| speeds | scrolling time of each barrage | number | `2000` |
-| rows | Number of bullet chatting lines, displayed in several lines | number | `1` |
+| speeds | scrolling time of each barrage | number | `5000` |
+| rows | Number of bullet chatting lines, displayed in several lines | number | `3` |
 | top | vertical distance of the barrage | number | `10` |
 | loop | Whether to play in a loop | boolean | `true` |
 
@@ -90,4 +90,4 @@ export default {
 
 | Event Name | Description | Callback Parameters |
 |--------|----------------|--------------|
-| add | add data | - |
+| add | add data(used via ref instance) | - |
