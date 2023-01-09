@@ -1,13 +1,13 @@
 <template>
   <div :class="classes" ref="scroller" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
-    <div class="nut-pullrefresh-container" :style="getStyle">
-      <div class="nut-pullrefresh-container-topbox" :style="getHeightStyle">
+    <div class="nut-pull-refresh-container" :style="getStyle">
+      <div class="nut-pull-refresh-container-topbox" :style="getHeightStyle">
         <Loading
-          class="nut-icon-loading nut-pullrefresh-container-topbox-icon"
+          class="nut-icon-loading nut-pull-refresh-container-topbox-icon"
           v-if="status == 'loading' && !slots.loading"
         ></Loading>
 
-        <div class="nut-pullrefresh-container-topbox-text">{{ getPullStatus }}</div>
+        <div class="nut-pull-refresh-container-topbox-text">{{ getPullStatus }}</div>
 
         <slot v-if="status == 'pulling'" name="pulling"></slot>
         <slot v-if="status == 'loosing'" name="loosing"></slot>
@@ -21,7 +21,7 @@
 <script lang="ts">
 import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('pullrefresh');
+const { componentName, create, translate } = createComponent('pull-refresh');
 import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';

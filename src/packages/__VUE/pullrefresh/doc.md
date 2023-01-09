@@ -22,9 +22,9 @@ app.use(PullRefresh);
 
 ```html
 <template>
-  <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+  <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
     <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -52,7 +52,7 @@ app.use(PullRefresh);
 
 ```html
 <template>
-  <nut-pullrefresh
+  <nut-pull-refresh
     v-model="refresh2"
     loosingTxt="松开吧"
     loadingTxt="玩命加载中..."
@@ -62,7 +62,7 @@ app.use(PullRefresh);
       <div>用力拉</div>
     </template>
     <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -91,11 +91,11 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 ```html
 <template>
   <div class="parentpage">
-    <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+    <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
       <div class="pull-letter" v-for="item in refreshList2">
         <div>{{item}}</div>
       </div>
-    </nut-pullrefresh>
+    </nut-pull-refresh>
   </div>
 </template>
 

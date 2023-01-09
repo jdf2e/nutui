@@ -23,9 +23,9 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 
 ```html
 <template>
-  <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
-    <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
+    <div class="pull-block">Try to pull down!</div>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -53,17 +53,17 @@ The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，res
 
 ```html
 <template>
-  <nut-pullrefresh
+  <nut-pull-refresh
     v-model="refresh2"
-    loosingTxt="松开吧"
-    loadingTxt="玩命加载中..."
+    loosingTxt="Relax"
+    loadingTxt="Desperate loading..."
     @refresh="refreshFun"
   >
     <template #pullingTxt>
-      <div>用力拉</div>
+      <div>Pull</div>
     </template>
-    <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+    <div class="pull-block">Try to pull down!</div>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -92,11 +92,11 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 ```html
 <template>
   <div class="parentpage">
-    <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+    <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
       <div class="pull-letter" v-for="item in refreshList2">
         <div>{{item}}</div>
       </div>
-    </nut-pullrefresh>
+    </nut-pull-refresh>
   </div>
 </template>
 
