@@ -4,13 +4,13 @@
     <nut-cell class="wrap">
       <nut-button @click="showTextMark">{{ translate('btn1') }}</nut-button>
       <nut-button @click="showImageMark">{{ translate('btn2') }}</nut-button>
-      <nut-watermark v-if="!flag" class="mark1" z-index="1" content="nut-ui-water-mark"></nut-watermark>
+      <nut-watermark v-if="!flag" class="mark1" :z-index="1" content="nut-ui-water-mark"></nut-watermark>
       <nut-watermark
         v-if="flag"
         class="mark1"
         :image-width="60"
         :image-height="23"
-        z-index="1"
+        :z-index="1"
         :image="imgSrc"
       ></nut-watermark>
     </nut-cell>
