@@ -41,9 +41,7 @@
 import { ref, onMounted, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment');
-import { JoySmile, Right } from '@nutui/icons-vue';
-import Rate from '../rate/index.vue';
-
+import { Right } from '@nutui/icons-vue';
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
@@ -87,12 +85,12 @@ export default create({
 
     info: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
 
     follow: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
 
     labels: {
@@ -106,12 +104,10 @@ export default create({
     }
   },
   components: {
-    [Rate.name]: Rate,
     CommentHeader,
     CommentImages,
     CommentBottom,
-    Right,
-    JoySmile
+    Right
   },
   emits: ['click', 'clickImages', 'clickOperate'],
 
