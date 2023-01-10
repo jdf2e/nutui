@@ -3,12 +3,12 @@
     <Header v-if="env === 'WEB'" />
     <h2>经典分类模式</h2>
     <nut-category :category="category" @change="change">
-      <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
+      <nut-category-pane :categoryChild="categoryChild1" @onChange="onChange"> </nut-category-pane>
     </nut-category>
 
     <h2>只显示文字</h2>
     <nut-category :category="category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
+      <nut-category-pane type="text" :categoryChild="categoryChild2" @onChange="onChange"> </nut-category-pane
     ></nut-category>
 
     <h2>自定义分类</h2>
@@ -30,24 +30,26 @@ export default {
     const env = Taro.getEnv();
     const data = reactive({
       category: [{}],
-      categoryChild: [{}],
-      customCategory: [{}]
+      categoryChild1: [{}],
+      customCategory: [{}],
+      categoryChild2: [{}]
     });
 
     onMounted(() => {
       setTimeout(() => {
         data.category = categoryInfo.category;
-        data.categoryChild = categoryChild;
+        data.categoryChild1 = categoryChild;
         data.customCategory = customCategory;
+        data.categoryChild2 = categoryChild;
       }, 500);
     });
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild1 = [].concat(data.category[index]?.children as any);
     };
 
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild2 = [].concat(data.category[index]?.children as any);
     };
 
     const changeCustom = () => {

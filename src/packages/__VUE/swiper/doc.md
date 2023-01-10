@@ -31,7 +31,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -89,7 +89,7 @@ app.use(SwiperItem);
         setTimeout(() => {
           state.list = [
             'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
             'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
             'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
           ];
@@ -134,7 +134,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
@@ -174,7 +174,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -221,7 +221,7 @@ app.use(SwiperItem);
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -285,7 +285,7 @@ app.use(SwiperItem);
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -376,7 +376,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ],
@@ -438,7 +438,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />

@@ -39,7 +39,7 @@
     cursor: pointer !important;
     opacity: 0;
     &:disabled {
-      cursor: not-allowed;
+      cursor: not-allowed !important;
     }
   }
 

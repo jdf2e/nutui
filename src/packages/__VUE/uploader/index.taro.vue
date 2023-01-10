@@ -177,7 +177,10 @@ export default create({
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType: props.sizeType,
         sourceType: props.sourceType,
-        success: onChange
+        success: onChange,
+        fail: (res: any) => {
+          emit('failure', res);
+        }
       });
     };
 
