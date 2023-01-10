@@ -31,12 +31,12 @@ import { reactive, toRefs, onMounted, onUnmounted, h, defineComponent } from 'vu
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
-import Button from './../../../../../../../packages/__VUE/button/index.taro.vue';
-import Icon from './../../../../../../../packages/__VUE/icon/index.taro.vue';
+import Button from '@nutui/nutui-taro';
+import { Dongdong } from '@nutui/icons-vue-taro';
 export default defineComponent({
   components: {
     Button,
-    Icon,
+    Dongdong,
     Header
   },
   props: {},
@@ -193,7 +193,7 @@ export default defineComponent({
           sex: '女',
           record: '本科',
           render: () => {
-            return h(Icon, { name: 'dongdong', size: '14px' });
+            return h(Dongdong, { size: '14px' });
           }
         },
         {

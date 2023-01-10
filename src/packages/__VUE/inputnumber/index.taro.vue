@@ -6,7 +6,7 @@
       @click="reduce"
     >
       <slot name="leftIcon">
-        <Minus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+        <Minus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
     <view v-if="readonly" class="nut-input-number__text--readonly">
@@ -18,7 +18,7 @@
       type="number"
       :min="min"
       :max="max"
-      :style="{ width: pxCheck(inputWidth) }"
+      :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
@@ -32,7 +32,7 @@
       @click="add"
     >
       <slot name="rightIcon">
-        <Plus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+        <Plus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
   </view>
