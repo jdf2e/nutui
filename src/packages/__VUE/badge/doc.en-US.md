@@ -242,6 +242,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-badge-color| _#fff_ |
 | --nut-badge-font-size| _var(--nut-font-size-1)_ |
 | --nut-badge-border-radius| _14px_ |
+| --nut-badge-icon-padding| _4px_ |
 | --nut-badge-padding| _0 5px_ |
 | --nut-badge-content-transform| _translate(50%, -50%)_ |
 | --nut-badge-z-index| _1_ |
