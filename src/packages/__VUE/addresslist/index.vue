@@ -8,7 +8,7 @@
       :swipeEdition="swipeEdition"
       @delIcon="clickDelIcon"
       @editIcon="clickEditIcon"
-      @itemClick="clickContentItem"
+      @clickItem="clickContentItem"
       @swipeDel="clickSwipeDel"
       @longCopy="clickLongCopy"
       @longSet="clickLongSet"
@@ -60,7 +60,7 @@ export default create({
       type: Boolean,
       default: true
     },
-    dataMapOptions: {
+    dataOptions: {
       type: Object,
       default: {}
     }
@@ -69,7 +69,7 @@ export default create({
     GeneralShell,
     [Button.name]: Button
   },
-  emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
+  emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
     const dataArray = ref([]) as any;
@@ -88,9 +88,9 @@ export default create({
     });
     //磨平参数差异
     const trowelData = () => {
-      if (Object.keys(props.dataMapOptions).length > 0) {
+      if (Object.keys(props.dataOptions).length > 0) {
         dataArray.value = props.data.map((item) => {
-          return floatData(dataInfo, item, props.dataMapOptions);
+          return floatData(dataInfo, item, props.dataOptions);
         });
       }
     };
@@ -110,7 +110,7 @@ export default create({
       event.stopPropagation();
     };
     const clickContentItem = (event: Event, item: unknown) => {
-      emit('itemClick', event, item);
+      emit('clickItem', event, item);
       event.stopPropagation();
     };
     const clickLongCopy = (event: Event, item: unknown) => {

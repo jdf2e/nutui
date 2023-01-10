@@ -2,11 +2,11 @@
   <div class="demo">
     <h2>{{ translate('title1') }}</h2>
     <nut-category :category="category" @change="change">
-      <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
+      <nut-category-pane :categoryChild="categoryChild1" @onChange="onChange"> </nut-category-pane>
     </nut-category>
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
+      <nut-category-pane type="text" :categoryChild="categoryChild2" @onChange="onChange"> </nut-category-pane
     ></nut-category>
 
     <h2>{{ translate('title3') }}</h2>
@@ -39,10 +39,12 @@ export default createDemo({
   setup() {
     initTranslate();
     const data = reactive({
-      categoryInfo: {},
+      categoryInfo1: {},
       category: [{}],
-      categoryChild: [{}],
-      customCategory: [{}]
+      categoryChild1: [{}],
+      customCategory: [{}],
+      categoryInfo2: {},
+      categoryChild2: [{}]
     });
 
     onMounted(() => {
@@ -56,20 +58,22 @@ export default createDemo({
         .then((response) => response.json())
         .then((res) => {
           const { categoryInfo, categoryChild, customCategory } = res;
-          data.categoryInfo = categoryInfo;
+          data.categoryInfo1 = categoryInfo;
           data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
+          data.categoryChild1 = categoryChild;
           data.customCategory = customCategory;
+          data.categoryInfo2 = categoryInfo;
+          data.categoryChild2 = categoryChild;
         })
         .catch((err) => console.log('Oh, error', err));
     };
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(data?.categoryInfo?.category[index + 1]?.children as any);
+      data.categoryChild1 = [].concat(data?.categoryInfo1?.category[index]?.children as any);
     };
 
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild2 = [].concat(data.categoryInfo2.category[index].children as any);
     };
 
     const changeCustom = (v: any) => {

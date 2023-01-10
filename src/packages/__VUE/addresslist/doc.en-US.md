@@ -22,18 +22,16 @@ app.use(AddressList);
 <template>
   <nut-address-list
     :data="data"
-    @delIcon="delClick"
-    @editIcon="editClick"
-    @itemClick="itemClick"
+    @click-item="clickItem"
+    @del-icon="delClick"
+    @edit-icon="editClick"
     :show-bottom-button="false"
-    :dataMapOptions="dataMapOptions"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -52,29 +50,26 @@ export default {
         fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
       },
     ]);
-    const dataMapOptions = reactive({
+    const dataOptions = reactive({
       id: 'testid',
       addressDetail:'testaddressDetail',
       addressName:'testaddressName'
     });
-    const itemClick = ()=>{
-      showToast.text('Click To Address');
+    const clickItem = ()=>{
+      console.log('Click To Address');
     }
     const delClick = ()=>{
-      showToast.text('Click To Delete');
+      console.log('Click To Delete');
     }
     const editClick = ()=>{
-      showToast.text('Click To Edit');
+      console.log('Click To Edit');
     }
     return {
-      itemClick,
       data,
+      clickItem,
       delClick,
       editClick,
-      copyClick,
-      setClick,
-      addAddress,
-      dataMapOptions
+      dataOptions
     };
   }
 };
@@ -92,20 +87,18 @@ export default {
     :data="data"
     long-press
     :show-bottom-button="false"
-    @DelIcon="delClick"
-    @EditIcon="editClick"
-    @Item="itemClick"
-    @longPressCopyClick="copyClick"
-    @longPressSetClick="setClick"
-    @longPressDelClick="delClick"
-    :dataMapOptions="dataMapOptions"
+    @del-icon="delClick"
+    @edit-icon="editClick"
+    @click-item="clickItem"
+    @long-copy="copyClick"
+    @long-set="setClick"
+    @long-del="delClickLong"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -124,38 +117,38 @@ export default {
           fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
         },
       ]);
-      const dataMapOptions = reactive({
+      const dataOptions = reactive({
         id: 'testid',
         addressDetail:'testaddressDetail',
         addressName:'testaddressName'
       });
-      const itemClick = ()=>{
-        showToast.text('Click To Address');
+      const clickItem = ()=>{
+        console.log('Click To Address');
       }
       const delClick = ()=>{
-        showToast.text('Click To Delete');
+        console.log('Click To Delete');
       }
       const editClick = ()=>{
-        showToast.text('Click To Edit');
+        console.log('Click To Edit');
       }
       const copyClick = ()=>{
-        showToast.text('Click To Copy');
+        console.log('Click To Copy');
       }
       const setClick = ()=>{
-        showToast.text('Click On Settings');
+        console.log('Click On Settings');
       }
-      const addAddress = ()=>{
-        showToast.text('Click To Add');
+      const delClickLong = ()=>{
+        console.log('Click To Add');
       }
       return {
-        itemClick,
         data,
+        clickItem,
         delClick,
         editClick,
         copyClick,
         setClick,
-        addAddress,
-        dataMapOptions
+        delClickLong,
+        dataOptions
       };
     }
   };
@@ -172,19 +165,17 @@ export default {
     :data="data"
     swipe-edition
     show-bottom-button
-    @Item="itemClick"
-    @EditIcon="editClick"
-    @DelIcon="delClick"
-    @swipeDelClick="delClick"
+    @edit-icon="editClick"
+    @del-icon="delClick"
+    @click-item="clickItem"
+    @swipe-del="delClickSwipe"
     @add="addAddress"
-    :dataMapOptions="dataMapOptions"
+    :data-options="dataOptions"
   >
   </nut-address-list>
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
 export default {
   setup() {
     const data = ref([
@@ -203,32 +194,35 @@ export default {
           fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
         },
       ]);
-      const dataMapOptions = reactive({
+      const dataOptions = reactive({
         id: 'testid',
         addressDetail:'testaddressDetail',
         addressName:'testaddressName'
       });
-      const itemClick = ()=>{
-        showToast.text('Click To Address');
+      const clickItem = ()=>{
+        console.log('Click To Address');
       }
       const editClick = ()=>{
-        showToast.text('Click To Edit');
+        console.log('Click To Edit');
       }
       const delClick = ()=>{
-        showToast.text('Click To Delete');
+        console.log('Click To Delete');
       }
+      const delClickSwipe = () => {
+        console.log('Click On DelClickSwipe');
+      };
       const addAddress = ()=>{
-        showToast.text('Click To Add');
+        console.log('Click To Add');
       }
       return {
-        itemClick,
         data,
+        clickItem,
         delClick,
         editClick,
-        copyClick,
         setClick,
+        delClickSwipe,
         addAddress,
-        dataMapOptions
+        dataOptions
       };
     }
   };
@@ -246,6 +240,7 @@ export default {
 | long-press | Long Press Function   | boolean | `false`  |
 | swipe-edition      | Swipe right           | boolean | `false`  |
 | show-bottom-button | Whether to show the bottom button | boolean | `true`   |
+| data-options | When customizing the `key` value, set the mapping relationship
 
 ### Events
 
@@ -272,7 +267,7 @@ The `AddressList` component is divided into several areas by default, and these 
 | swiperight    | Address list item right swipe area              | Use with swipe |
 | longpressbtns | Address list item long press to mask content    | Use with long press |
 
-### Each item in the data array is smoothed with the parameters of the dataMapOptions object
+### Each item in the data array is smoothed with the parameters of the dataOptions object
 
 Below is the underlying data structure for each item in the `data` array
 
@@ -286,10 +281,10 @@ const dataInfo = {
 };
 ```
 
-In the component, the fields defined in the basic data structure are preferentially obtained. If you want to customize the `key` value, you can set the mapping relationship through `dataMapOptions`
+In the component, the fields defined in the basic data structure are preferentially obtained. If you want to customize the `key` value, you can set the mapping relationship through `dataOptions`
 
 ```javascript
-const dataMapOptions = {
+const dataOptions = {
   id: "testid",
   addressDetail: "testaddressDetail",
   addressName: "testaddressName",

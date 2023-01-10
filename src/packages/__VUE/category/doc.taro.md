@@ -17,6 +17,10 @@ app.use(CategoryPane);
 
 ### 经典分类模式
 
+data 数据格式可参考
+[categoryData.js](https//storage.360buyimg.com/nutui/3x/categoryData.js)。
+
+
 :::demo
 
 ```html
@@ -28,35 +32,23 @@ app.use(CategoryPane);
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
     const data = reactive({
-      categoryInfo: {},
       category: [{}],
       categoryChild: [{}]
     });
 
     onMounted(() => {
-      setTimeout(() => {
-        getData();
-      }, 500);
+      data.category = categoryInfo.category;
+      data.categoryChild = categoryChild;
+      data.customCategory = customCategory;
     });
 
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { categoryInfo, categoryChild } = res;
-          data.categoryInfo = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
-
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
     };
     const onChange =()=>{
         console.log("当前分类数据");
@@ -88,36 +80,22 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
     const data = reactive({
-      categoryInfo: {},
       category: [{}],
       categoryChild: [{}]
     });
 
     onMounted(() => {
-      setTimeout(() => {
-        getData();
-      }, 500);
+      category: [{}],
+      categoryChild: [{}]
     });
 
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          console.log('res', res)
-          const { categoryInfo, categoryChild } = res;
-          data.categoryInfo = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
-
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
     };
 
     const onChange =()=>{
@@ -150,6 +128,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
@@ -161,15 +140,6 @@ export default {
          getData();
       }, 500);
     });
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { customCategory } = res;
-          data.customCategory = customCategory;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
     const changeCustom = () => {
       console.log('点击分类数据')
     };
