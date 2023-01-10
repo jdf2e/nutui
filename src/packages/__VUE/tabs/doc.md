@@ -169,10 +169,12 @@ export default {
 
 ### 数量多,滚动操作
 
+在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。
+
 :::demo
 ```html
 <template>
-<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
+<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
   <nut-tab-pane v-for="item in state.list4" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tab-pane>
@@ -346,6 +348,7 @@ export default {
 | auto-height   | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean          | `false`      |
 | sticky        | 是否使用粘性布局                                                                                   | boolean          | `false`      |
 | top           | 粘性布局下的吸顶距离                                                                               | number           | `0`          |
+| name        | 在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。                              | string | ''        |
 
 ### Tabs Slots
 

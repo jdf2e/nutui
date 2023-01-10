@@ -1,14 +1,19 @@
 <template>
   <view class="nut-tabs" :class="[direction]" ref="container" id="container">
-    <view
-      class="nut-tabs__titles"
+    <Nut-Scroll-View
+      :scroll-x="true"
+      :scroll-with-animation="scrollWithAnimation"
+      :scroll-left="scrollLeft"
+      :enable-flex="true"
+      :id="`nut-tabs__titles_${name}`"
+      class="nut-tabs__titles tabs-scrollview"
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
         <view
-          class="nut-tabs__titles-item"
+          class="nut-tabs__titles-item taro"
           :style="titleStyle"
           @click="tabChange(item, index)"
           :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
@@ -21,8 +26,9 @@
           </view>
           <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
         </view>
+        <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
       </template>
-    </view>
+    </Nut-Scroll-View>
     <view class="nut-tabs__content" :style="contentStyle">
       <slot name="default"></slot>
     </view>
@@ -33,8 +39,11 @@ import { createComponent } from '@/packages/utils/create';
 import { JoySmile } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
-import { useRect } from '@/packages/utils/useRect';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
+import NutScrollView from '../scrollView/index.taro.vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
+import raf from '@/packages/utils/raf';
+import Taro from '@tarojs/taro';
+import type { RectItem } from './types';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -46,7 +55,8 @@ export type TabsSize = 'large' | 'normal' | 'small';
 const { create } = createComponent('tabs');
 export default create({
   components: {
-    JoySmile
+    JoySmile,
+    NutScrollView
   },
   props: {
     modelValue: {
@@ -100,13 +110,16 @@ export default create({
     top: {
       type: Number,
       default: 0
+    },
+    name: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
     const container = ref(null);
-    let stickyFixed: boolean;
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
@@ -150,6 +163,84 @@ export default create({
         currentIndex.value = index;
       }
     };
+
+    const titleRef = ref([]) as Ref<HTMLElement[]>;
+    const scrollLeft = ref(0);
+    const scrollWithAnimation = ref(false);
+    const getRect = (selector: string) => {
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .select(selector)
+          .boundingClientRect()
+          .exec((rect = []) => {
+            resolve(rect[0]);
+          });
+      });
+    };
+    const getAllRect = (selector: string) => {
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .selectAll(selector)
+          .boundingClientRect()
+          .exec((rect = []) => resolve(rect[0]));
+      });
+    };
+    const navRectRef = ref();
+    const titleRectRef = ref<RectItem[]>([]);
+    const canShowLabel = ref(false);
+    const scrollIntoView = () => {
+      if (!props.name) return;
+
+      raf(() => {
+        Promise.all([
+          getRect(`#nut-tabs__titles_${props.name}`),
+          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+        ]).then(([navRect, titleRects]: any) => {
+          navRectRef.value = navRect;
+          titleRectRef.value = titleRects;
+
+          if (navRectRef.value) {
+            const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
+            if (titlesTotalWidth > navRectRef.value.width) {
+              canShowLabel.value = true;
+            } else {
+              canShowLabel.value = false;
+            }
+          }
+
+          const titleRect: RectItem = titleRectRef.value[currentIndex.value];
+
+          const left = titleRects
+            .slice(0, currentIndex.value)
+            .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
+
+          const to = left - (navRectRef.value.width - titleRect.width) / 2;
+
+          nextTick(() => {
+            scrollWithAnimation.value = true;
+          });
+
+          scrollLeftTo(to);
+        });
+      });
+    };
+
+    const scrollLeftTo = (to: number) => {
+      let count = 0;
+      const from = scrollLeft.value;
+
+      const frames = 1;
+
+      function animate() {
+        scrollLeft.value += (to - from) / frames;
+
+        if (++count < frames) {
+          raf(animate);
+        }
+      }
+
+      animate();
+    };
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
       vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
@@ -157,6 +248,9 @@ export default create({
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
+      setTimeout(() => {
+        scrollIntoView();
+      }, 500);
     };
 
     watch(
@@ -165,13 +259,11 @@ export default create({
         init(vnodes);
       }
     );
-    const getScrollTopRoot = () => {
-      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    };
     watch(
       () => props.modelValue,
       (value: string | number) => {
         findTabsIndex(value);
+        scrollIntoView();
       }
     );
     onMounted(init);
@@ -211,6 +303,9 @@ export default create({
         currentIndex.value = index;
         emit('update:modelValue', item.paneKey);
         emit('change', item);
+      },
+      setTabItemRef: (el: HTMLElement, index: number) => {
+        titleRef.value[index] = el;
       }
     };
     return {
@@ -220,6 +315,9 @@ export default create({
       titleStyle,
       tabsActiveStyle,
       container,
+      scrollLeft,
+      scrollWithAnimation,
+      canShowLabel,
       ...methods
     };
   }

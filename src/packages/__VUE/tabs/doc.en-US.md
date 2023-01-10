@@ -169,6 +169,8 @@ export default {
 
 ### A large number of scrolling operations
 
+In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar.
+
 :::demo
 ```html
 <template>
@@ -346,6 +348,7 @@ export default {
 | auto-height   | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | `false`      |
 | sticky        | Whether to use sticky mode                                                                                                          | boolean          | `false`      |
 | top           | Sticky offset top                                                                                                                   | number           | `0`          |
+| name        | In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar.                              | string | ''        |
 
 ### Tabs Slots
 

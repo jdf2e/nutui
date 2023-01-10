@@ -6,6 +6,7 @@
           class="nut-tabs__titles"
           :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
           :style="tabsNavStyle"
+          ref="navRef"
         >
           <slot v-if="$slots.titles" name="titles"></slot>
           <template v-else>
@@ -32,6 +33,7 @@
         class="nut-tabs__titles"
         :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
+        ref="navRef"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
         <template v-else>
@@ -42,6 +44,7 @@
             :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
             v-for="(item, index) in titles"
             :key="item.paneKey"
+            :ref="(e) => setTabItemRef(e as HTMLElement, index)"
           >
             <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
             <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
@@ -62,7 +65,8 @@ import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
+import raf from '@/packages/utils/raf';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -178,6 +182,36 @@ export default create({
         currentIndex.value = index;
       }
     };
+
+    const navRef = ref<HTMLElement>();
+    const titleRef = ref([]) as Ref<HTMLElement[]>;
+    const scrollIntoView = (immediate?: boolean) => {
+      const nav = navRef.value;
+      const _titles = titleRef.value;
+      if (!nav || !_titles || !_titles[currentIndex.value]) {
+        return;
+      }
+      const title = _titles[currentIndex.value];
+      const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
+      scrollLeftTo(nav, to, immediate ? 0 : 0.3);
+    };
+
+    const scrollLeftTo = (nav: any, to: number, duration: number) => {
+      let count = 0;
+      const from = nav.scrollLeft;
+
+      const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
+
+      function animate() {
+        nav.scrollLeft += (to - from) / frames;
+
+        if (++count < frames) {
+          raf(animate);
+        }
+      }
+
+      animate();
+    };
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
       vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
@@ -185,6 +219,9 @@ export default create({
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
+      nextTick(() => {
+        scrollIntoView();
+      });
     };
     const onStickyScroll = (params: { top: number; fixed: boolean }) => {
       stickyFixed = params.fixed;
@@ -203,6 +240,7 @@ export default create({
       () => props.modelValue,
       (value: string | number) => {
         findTabsIndex(value);
+        scrollIntoView();
         if (stickyFixed) {
           let top = useRect(container.value!).top + getScrollTopRoot();
           let value = Math.ceil(top - props.top);
@@ -250,9 +288,13 @@ export default create({
         currentIndex.value = index;
         emit('update:modelValue', item.paneKey);
         emit('change', item);
+      },
+      setTabItemRef: (el: HTMLElement, index: number) => {
+        titleRef.value[index] = el;
       }
     };
     return {
+      navRef,
       titles,
       contentStyle,
       tabsNavStyle,
