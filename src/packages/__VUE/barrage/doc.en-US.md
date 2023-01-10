@@ -33,7 +33,7 @@ export default {
   props: {},
   setup() {
     const inputVal = ref('');
-    const danmu = ref(null);
+    const danmu = ref();
     let list = ref(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff']);
     function addDanmu() {
       let n = Math.random();
