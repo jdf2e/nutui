@@ -68,7 +68,7 @@ export default {
         url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
 
-      parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
+      // parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
     };
 
     return {
