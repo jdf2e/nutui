@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <Nut-Scroll-View
-      class="nut-elevator__list scrollview"
+      class="nut-elevator__list nut-elevator__list--mini"
       :scroll-top="scrollTop"
       :scroll-y="true"
       :scroll-with-animation="true"
@@ -10,6 +10,11 @@
       :style="{ height: isNaN(+height) ? height : `${height}px` }"
       @scroll="listViewScroll"
     >
+      <view :style="fixedStyle" class="nut-elevator__list__fixed__wrapper" v-show="scrollY > 0">
+        <view class="nut-elevator__list__fixed nut-elevator__list__fixed--mini" v-if="isSticky">
+          <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
+        </view>
+      </view>
       <view
         :class="['nut-elevator__list__item', `elevator__item__${index}`]"
         v-for="(item, index) in indexList"
@@ -29,9 +34,6 @@
           <span v-html="subitem.name" v-if="!$slots.default"></span>
           <slot :item="subitem" v-else></slot>
         </view>
-      </view>
-      <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
-        <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
     </Nut-Scroll-View>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
@@ -113,9 +115,7 @@ export default create({
       scrollTop: 0,
       currentData: {} as ElevatorData,
       currentKey: '',
-      scrollY: 0,
-      diff: -1,
-      fixedTop: 0
+      scrollY: 0
     });
 
     const classes = computed(() => {
@@ -125,14 +125,14 @@ export default create({
       };
     });
 
-    const fixedStyle = computed(() => {
-      return {
-        transform: `translate3d(0, ${state.scrollY + state.fixedTop}px, 0)`
-      };
-    });
-
     const clientHeight = computed(() => {
       return listview.value.clientHeight;
+    });
+
+    const fixedStyle = computed(() => {
+      return {
+        height: `${state.listHeight[state.listGroup.length - 1]}px`
+      };
     });
 
     const getData = (el: HTMLElement): string | void => {
@@ -215,12 +215,12 @@ export default create({
         let height2 = listHeight[i + 1];
         if (state.scrollY >= height1 && state.scrollY < height2) {
           state.currentIndex = i;
-          state.diff = height2 - state.scrollY;
           return;
         }
       }
 
       state.currentIndex = listHeight.length - 2;
+      state.scrollTop = state.listHeight[state.currentIndex];
     };
 
     useExpose({
@@ -235,19 +235,6 @@ export default create({
     );
 
     watch(
-      () => state.diff,
-      (newVal: number) => {
-        const listHeight = state.listHeight;
-        let fixedTop = newVal > 0 && newVal < props.titleHeight ? newVal - props.titleHeight : 0;
-        if (state.scrollY + clientHeight.value === listHeight[listHeight.length - 1]) {
-          if (fixedTop !== 0) fixedTop = 0;
-        }
-        if (state.fixedTop === fixedTop) return;
-        state.fixedTop = fixedTop;
-      }
-    );
-
-    watch(
       () => state.currentIndex,
       (newVal: number) => {
         context.emit('change', newVal);
@@ -257,8 +244,8 @@ export default create({
     return {
       classes,
       ...toRefs(state),
-      fixedStyle,
       clientHeight,
+      fixedStyle,
       setListGroup,
       listview,
       touchStart,
