@@ -16,7 +16,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <template v-for="_package in reorder(_nav.packages)" :key="_package">
-            <li v-if="_package.show && _package.exportEmpty !== false">
+            <li v-if="_package.show && _package.taro && _package.exportEmpty !== false">
               <a @click="navigateTo(_package.name, _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
@@ -67,6 +67,8 @@ export default {
       Taro.navigateTo({
         url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
+
+      parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
     };
 
     return {
