@@ -130,7 +130,7 @@ app.use(TrendArrow);
 <template>
   <nut-cell>
     <nut-trend-arrow :rate="10.2365">
-      <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      <template #upIcon><Success color="blue" size="18px" /></template>
     </nut-trend-arrow>
     <nut-trend-arrow :rate="-10.2365">
       <template #downIcon><Failure color="red" /></template>
