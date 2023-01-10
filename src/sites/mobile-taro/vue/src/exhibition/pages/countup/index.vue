@@ -35,7 +35,7 @@
       >
       </nut-countup>
       <div class="btnBtn">
-        <nut-button type="danger" @click="startRole" :disabled="startFlag">抽奖</nut-button>
+        <nut-button type="danger" @click="startRole" :disabled="startFlag">中奖</nut-button>
         <nut-button type="danger" @click="startRole2" :disabled="startFlag">不中奖</nut-button>
       </div>
     </div>

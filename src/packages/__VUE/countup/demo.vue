@@ -59,7 +59,7 @@ const initTranslate = () =>
       title: '数字滚动',
       title1: '自定义滚动图片展示',
       title2: '抽奖（模拟滚动抽奖）',
-      btn1: '抽奖',
+      btn1: '中奖',
       btn2: '不中奖'
     },
     'en-US': {
@@ -67,7 +67,7 @@ const initTranslate = () =>
       title: 'Digital scrolling',
       title1: 'Custom scrolling picture display',
       title2: 'Lottery (simulated rolling lottery)',
-      btn1: 'luck draw',
+      btn1: 'win the lottery',
       btn2: 'Not winning'
     }
   });

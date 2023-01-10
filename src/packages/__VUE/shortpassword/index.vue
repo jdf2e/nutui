@@ -17,7 +17,7 @@
       <view class="nut-short-password-title">{{ title || translate('title') }}</view>
       <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>
       <div class="nut-short-password-wrapper">
-        <view class="nut-short-password__list" @touchstart="focus">
+        <view class="nut-short-password__list" @touchstart="onTouchStart">
           <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
             <view class="nut-short-password__item-icon" v-if="String(realInput).length > index"></view>
           </view>
@@ -84,10 +84,10 @@ export default create({
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
     // 方法
-    function focus(event: any) {
+    const onTouchStart = (event: TouchEvent) => {
       event.stopPropagation();
       emit('focus');
-    }
+    };
     watch(
       () => props.visible,
       (value) => {
@@ -103,20 +103,20 @@ export default create({
         }
       }
     );
-    function close() {
+    const close = () => {
       emit('update:visible', false);
       emit('close');
-    }
-    function range(val: number) {
+    };
+    const range = (val: number) => {
       return Math.min(Math.max(4, val), 6);
-    }
-    function onTips() {
+    };
+    const onTips = () => {
       emit('tips');
-    }
+    };
     return {
       comLen,
       realInput,
-      focus,
+      onTouchStart,
       range,
       close,
       onTips,

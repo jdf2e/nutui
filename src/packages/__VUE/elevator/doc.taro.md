@@ -27,7 +27,6 @@ app.use(Elevator);
   export default {
     setup() {
       const state = reactive({
-        acceptKey: 'num',
         dataList: [
           {
             title: 'A',
@@ -374,7 +373,7 @@ app.use(Elevator);
 
 :::demo
 
-```vue
+```html
 <template>
   <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
       <template v-slot:default="slotProps">
@@ -392,7 +391,6 @@ app.use(Elevator);
     },
     setup() {
       const state = reactive({
-        acceptKey: 'num',
         dataList: [
           {
             title: 'A',
