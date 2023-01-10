@@ -22,7 +22,7 @@
       <view class="nut-comment__follow-title">购买{{ follow.days }}天后追评</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
       <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
-        >{{ follow.images.length }} 张追评图片 <Right width="12px"></Right
+        >{{ follow.images.length }} 张追评图片 <Right size="12px"></Right
       ></view>
     </view>
 
@@ -42,9 +42,9 @@ import { ref, onMounted, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment');
 import { Right } from '@nutui/icons-vue-taro';
-import CommentHeader from './components/CmtHeader.vue';
-import CommentImages from './components/CmtImages.vue';
-import CommentBottom from './components/CmtBottom.vue';
+import CommentHeader from './components/CmtHeader.taro.vue';
+import CommentImages from './components/CmtImages.taro.vue';
+import CommentBottom from './components/CmtBottom.taro.vue';
 
 interface VideosType {
   id: number | string;
