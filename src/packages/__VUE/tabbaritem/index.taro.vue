@@ -42,8 +42,12 @@ import {
   reactive,
   watch
 } from 'vue';
+import Badge from '../badge/index.taro.vue';
 const { create } = createComponent('tabbar-item');
 export default create({
+  components: {
+    [Badge.name]: Badge
+  },
   props: {
     tabTitle: {
       // 标签页的标题
