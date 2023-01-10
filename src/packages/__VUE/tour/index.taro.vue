@@ -222,7 +222,8 @@ export default create({
       props.steps.forEach(async (item, i) => {
         let rect;
         if (Taro.getEnv() === 'WEB') {
-          rect = await useRect(document.querySelector(`#${item.target}`));
+          const el = document.querySelector(`#${item.target}`) as Element;
+          rect = await useRect(el);
         } else {
           rect = await useTaroRect(item.target, Taro);
         }
