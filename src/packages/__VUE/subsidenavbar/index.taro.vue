@@ -3,8 +3,8 @@
     <view class="nut-sub-side-navbar__title" @click.stop="handleClick">
       <span class="nut-sub-side-navbar__title__text">{{ title }}</span>
       <span class="nut-sub-side-navbar__title__icon">
-        <ArrowDown2 v-if="!direction"></ArrowDown2>
-        <ArrowUp2 v-else></ArrowUp2>
+        <ArrowDown2 v-if="!direction" size="12px"></ArrowDown2>
+        <ArrowUp2 v-else size="12px"></ArrowUp2>
       </span>
     </view>
     <view

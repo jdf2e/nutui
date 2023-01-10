@@ -70,7 +70,7 @@ export default {
 
 | 参数        | 说明                                             | 类型           | 默认值         |
 |-------------|--------------------------------------------------|----------------|----------------|
-| v-model     | 输入值，支持双向绑定                             | string         | `-`              |
+| v-model     | 输入值，支持双向绑定                             | string         | -              |
 | placeholder | 设置占位提示文字                                 | string         | `'请输入内容'` |
 | max-length  | 限制最长输入字符                                 | string \| number | -              |
 | rows | textarea的高度，优先级高于autosize属性  `仅支持 H5`       | string \| number | `2`            |

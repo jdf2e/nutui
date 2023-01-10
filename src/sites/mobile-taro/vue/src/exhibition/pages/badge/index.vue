@@ -49,19 +49,19 @@
     <nut-row>
       <nut-badge>
         <template #icons>
-          <Check color="#ffffff" width="12px" height="12px"></Check>
+          <Check color="#ffffff" size="12px"></Check>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
         <template #icons>
-          <Link color="#ffffff" width="12px" height="12px"></Link>
+          <Link color="#ffffff" size="12px"></Link>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
         <template #icons>
-          <Download color="#ffffff" width="12px" height="12px"></Download>
+          <Download color="#ffffff" size="12px"></Download>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>

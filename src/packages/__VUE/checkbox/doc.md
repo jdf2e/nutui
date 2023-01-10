@@ -455,7 +455,7 @@ app.use(CheckboxGroup);
 
 | 方法名 | 说明 | 参数 
 |----- | ----- | ----- 
-| toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选
+| toggleAll | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选
 | toggleReverse | 反选 | -
 
 ## 主题定制

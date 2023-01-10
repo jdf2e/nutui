@@ -168,7 +168,7 @@ export default {
 | num-width | 数字宽度，常用于自定义无缝滚动 | number | `20`
 | num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | number | `20`
 | custom-change-num | 要变化的数字（用于自定义图片，`initNum`、`endNum` 在此无效） | number | `1`
-| custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | `-`
+| custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | string | -
 | custom-spac-num | 图片中数字之间可能会存在间距 | number | `0`
 | type | 抽奖功能传 machine，可选值为 `machine` `' '` | string | `''`
 | machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | `0`
@@ -183,5 +183,5 @@ export default {
 
 | 事件名 | 说明 | 回调参数
 |----- | ----- | -----
-| scroll-end | 滚动结束后回调函数 | `-`
+| scroll-end | 滚动结束后回调函数 | -
     

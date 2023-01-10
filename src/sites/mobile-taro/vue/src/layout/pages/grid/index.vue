@@ -59,7 +59,7 @@
     <nut-grid :column-num="3">
       <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
       <nut-grid-item text="文字">
-        <Dongdong width="40px" height="40px" color="#478EF2" />
+        <Dongdong size="40px" color="#478EF2" />
       </nut-grid-item>
       <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
     </nut-grid>

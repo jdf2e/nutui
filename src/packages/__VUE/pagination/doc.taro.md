@@ -116,10 +116,10 @@ export default {
 <template>
   <nut-pagination v-model="currentPage3" :total-items="500"  @change="pageChange"  :show-page-size="5">
       <template #prev-text>
-        <Left width="10px" height="10px" />
+        <Left size="10px" />
       </template>
       <template #next-text>
-        <Right width="10px" height="10px" />
+        <Right size="10px" />
       </template>
       <template #page="{ item }">
           {{ item.number == 3 ? 'hot' : item.text }}

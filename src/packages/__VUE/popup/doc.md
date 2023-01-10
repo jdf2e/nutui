@@ -153,7 +153,7 @@ app.use(Popup)
 ```html
 <template>
   <nut-cell title="指定挂载节点" is-link @click="showTeleport = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport" >app</nut-popup>
+  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport" >app</nut-popup>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';

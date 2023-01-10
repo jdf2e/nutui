@@ -1,14 +1,9 @@
 <template>
   <div class="demo">
-    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(1)" :showIcon="true" :title="translate('basic')"></nut-cell>
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(1)" :title="translate('basic')"></nut-cell>
     <nut-number-keyboard v-model:visible="visible1" @blur="onBlur(1)" @input="input" @delete="onDelete">
     </nut-number-keyboard>
-    <nut-cell
-      :isLink="true"
-      @touchstart.stop="showKeyBoard(2)"
-      :showIcon="true"
-      :title="translate('sidebar')"
-    ></nut-cell>
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(2)" :title="translate('sidebar')"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible2"
@@ -19,12 +14,7 @@
       @blur="onBlur(2)"
     >
     </nut-number-keyboard>
-    <nut-cell
-      :isLink="true"
-      @touchstart.stop="showKeyBoard(3)"
-      :showIcon="true"
-      :title="translate('randomKeyOrder')"
-    ></nut-cell>
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(3)" :title="translate('randomKeyOrder')"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible3"
@@ -36,12 +26,7 @@
     >
     </nut-number-keyboard>
 
-    <nut-cell
-      :isLink="true"
-      @touchstart.stop="showKeyBoard(4)"
-      :showIcon="true"
-      :title="translate('withTitle')"
-    ></nut-cell>
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(4)" :title="translate('withTitle')"></nut-cell>
     <nut-number-keyboard
       :title="translate('title')"
       v-model:visible="visible4"
@@ -52,12 +37,7 @@
     >
     </nut-number-keyboard>
 
-    <nut-cell
-      :isLink="true"
-      @touchstart.stop="showKeyBoard(6)"
-      :showIcon="true"
-      :title="translate('idNumberKeyboard')"
-    ></nut-cell>
+    <nut-cell :isLink="true" @touchstart.stop="showKeyBoard(6)" :title="translate('idNumberKeyboard')"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible6"
       :custom-key="customKey3"
@@ -71,7 +51,6 @@
       desc-text-align="left"
       @touchstart.stop="showKeyBoard(5)"
       :desc="value"
-      :showIcon="true"
       :title="translate('bindValue')"
     ></nut-cell>
     <nut-number-keyboard v-model:visible="visible5" v-model="value" maxlength="6" @blur="onBlur(5)" @close="close(5)">

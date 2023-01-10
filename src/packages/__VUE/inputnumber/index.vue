@@ -13,7 +13,7 @@
       type="number"
       :min="min"
       :max="max"
-      :style="{ width: pxCheck(inputWidth) }"
+      :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"

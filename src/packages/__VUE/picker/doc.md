@@ -58,6 +58,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   <nut-cell title="请选择城市" :desc="popupDesc" @click="show = true"></nut-cell>
   <nut-popup position="bottom"  v-model:visible="show">
     <nut-picker
+      v-model="popupValue"
       :columns="columns"
       title="请选择城市"
       @confirm="popupConfirm"
@@ -75,6 +76,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     setup(props) {
       const show = ref(false)
       const popupDesc = ref()
+      const popupValue = ref();
       const columns = ref([
         { text: '南京市', value: 'NanJing' },
         { text: '无锡市', value: 'WuXi' },
@@ -90,7 +92,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
         show.value = false
       }
 
-      return {show,popupDesc,columns, confirm,popupConfirm};
+      return {popupValue,show,popupDesc,columns, confirm,popupConfirm};
     }
   };
 </script>

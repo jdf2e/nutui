@@ -34,12 +34,7 @@
           :stepperTitle="stepperTitle || translate('buyNumber')"
           :stepperMax="stepperMax"
           :stepperMin="stepperMin"
-          :purchased="purchased"
-          :showSaleLimit="showSaleLimit"
-          :showSaleLowest="showSaleLowest"
-          :saleLowestText="saleLowestText"
-          :saleLimitText="saleLimitText"
-          :purchasedText="purchasedText"
+          :stepperExtraText="stepperExtraText"
           @add="add"
           @reduce="reduce"
           @changeStepper="changeStepper"
@@ -49,15 +44,18 @@
         <slot name="sku-stepper-bottom"></slot>
       </view>
 
-      <slot name="sku-operate"></slot>
       <sku-operate
-        v-if="!getSlots('sku-operate')"
+        :btnExtraText="btnExtraText"
         :btnOptions="btnOptions"
         :buyText="buyText || translate('buyNow')"
         :addCartText="addCartText || translate('addToCart')"
         :confirmText="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
-      ></sku-operate>
+      >
+        <template #operate-btn v-if="getSlots('sku-operate')">
+          <slot name="sku-operate"></slot>
+        </template>
+      </sku-operate>
     </view>
   </nut-popup>
 </template>
@@ -88,12 +86,6 @@ export default create({
       default: {}
     },
 
-    // 是否显示限购文案
-    showSaleLimit: {
-      type: Boolean,
-      default: false
-    },
-
     // stepper 最大值
     stepperMax: {
       type: [Number, String],
@@ -104,17 +96,6 @@ export default create({
     stepperMin: {
       type: [Number, String],
       default: 1
-    },
-    // 已购数量
-    purchased: {
-      type: [Number, String],
-      default: 0
-    },
-
-    // 是否显示起购文案
-    showSaleLowest: {
-      type: Boolean,
-      default: false
     },
 
     // 底部按钮配置  confirm cart  buy
@@ -129,22 +110,15 @@ export default create({
       default: ''
     },
 
-    // 起购文案提示
-    saleLowestText: {
+    // stepper 前面文案
+    stepperExtraText: {
       type: [Function, Boolean],
       default: false
     },
 
-    // 限购文案提示
-    saleLimitText: {
-      type: [Function, Boolean],
-      default: false
-    },
-
-    // 已购文案提示
-    purchasedText: {
-      type: [Function, Boolean],
-      default: false
+    btnExtraText: {
+      type: String,
+      default: ''
     },
 
     // 立即购买文案
