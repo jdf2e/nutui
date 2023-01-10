@@ -13,7 +13,7 @@
 
     <h2>加载状态</h2>
     <nut-cell>
-      <nut-switch v-model="checked3" loading />
+      <nut-switch v-model="checked3" loading activeColor="red" />
     </nut-cell>
 
     <h2>change事件</h2>
