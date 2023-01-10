@@ -394,28 +394,28 @@ export default {
 
 ### FileItem
 
-| Attribute  | Description                                                 | Default                           |
-|------------|-------------------------------------------------------------|-----------------------------------|
-| status     | File status value, optional 'ready,uploading,success,error' | `"ready" `                        |
-| uid        | Unique ID of the file                                       | `new Date().getTime().toString()` |
-| name       | File name                                                   | -                                 |
-| url        | File path                                                   | -                                 |
-| type       | File type                                                   | `"image/jpeg" `                   |
-| formData   | Upload the required data                                    | `new FormData()`                  |
-| percentage | Upload percentage                                           | `0`                               |
+| Attribute  | Description                                                        | Default                           |
+|------------|--------------------------------------------------------------------|-----------------------------------|
+| status     | File status value, optional  `ready`,`uploading`,`success`,`error` | `ready`                           |
+| uid        | Unique ID of the file                                              | `new Date().getTime().toString()` |
+| name       | File name                                                          | -                                 |
+| url        | File path                                                          | -                                 |
+| type       | File type                                                          | `"image/jpeg" `                   |
+| formData   | Upload the required data                                           | `new FormData()`                  |
+| percentage | Upload percentage                                                  | `0`                               |
 
 ### Events
 
-| Event           | Description                                              | Arguments                      |
-|-----------------|----------------------------------------------------------|--------------------------------|
-| start           | File upload starts                                       | options                        |
-| progress        | The progress of the file upload                          | {event,option,percentage}      |
-| oversize        | Triggered when the file size exceeds the limit           | files                          |
-| success         | Uploaded successfully                                    | {responseText,option,fileItem} |
-| failure         | Upload failed                                            | {responseText,option,fileItem} |
-| change          | The state when the uploaded file changes                 | {fileList,event}               |
-| delete          | File delete event                                        | {files,fileList,index}         |
-| file-item-click | Click to trigger after the file is uploaded successfully | {fileItem}                     |
+| Event           | Description                                              | Arguments                        |
+|-----------------|----------------------------------------------------------|----------------------------------|
+| start           | File upload starts                                       | `options`                        |
+| progress        | The progress of the file upload                          | `{event,option,percentage}`      |
+| oversize        | Triggered when the file size exceeds the limit           | `files`                          |
+| success         | Uploaded successfully                                    | `{responseText,option,fileItem}` |
+| failure         | Upload failed                                            | `{responseText,option,fileItem}` |
+| change          | The state when the uploaded file changes                 | `{fileList,event}`               |
+| delete          | File delete event                                        | `{files,fileList,index}`         |
+| file-item-click | Click to trigger after the file is uploaded successfully | `{fileItem}`                     |
 
 ### Uploader Slots
 
