@@ -419,6 +419,7 @@ export default {
 | 参数                | 说明                                                  | 类型     | 默认值      |
 |---------------------|-------------------------------------------------------|----------|-------------|
 | v-model             | 选中值，双向绑定                                      | Array    | -           |
+| v-model:visible             | 显示选择层                                      | boolean    | `false`           |
 | options             | 级联数据                                              | Array    | -           |
 | lazy                | 是否开启动态加载                                      | boolean  | -           |
 | lazy-load           | 动态加载回调，开启动态加载时生效                      | Function | -           |
@@ -429,7 +430,7 @@ export default {
 | title               | 标题                                                  | string   | `''`          |
 | close-icon-position | 取消按钮位置，继承 `Popup` 组件                         | string   | `"top-right"` |
 | closeable           | 是否显示关闭按钮，继承 `Popup` 组件                     | boolean  | `true`        |
-| poppable            | 是否需要弹层展示（设置为 `false` 后，title` 失效）          | boolean  | `true`        |
+| poppable            | 是否需要弹层展示（设置为 `false` 后，`title` 失效）          | boolean  | `true`        |
 
 ### Events
 
