@@ -59,11 +59,6 @@ app.use(Uploader);
 <nut-uploader :url="uploadUrl" :source-type="['camera']" ></nut-uploader>
 ```
 
-### 上传状态
-```html
-<nut-uploader :url="uploadUrl" @delete="onDelete"></nut-uploader>
-```
-
 ### 限制上传数量5个
 
 ``` html
@@ -233,16 +228,16 @@ setup() {
 ## API
 ### Props
 
-| 参数              | 说明                                                                                                             | 类型                              | 默认值                    |
-|-------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|
+| 参数              | 说明                                                                                                             | 类型                              | 默认值                      |
+|-------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------|-----------------------------|
 | auto-upload       | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                       | boolean                           | `true`                      |
-| name              | 发到后台的文件参数名                                                                                             | string                            | `file`                    |
+| name              | 发到后台的文件参数名                                                                                             | string                            | `file`                      |
 | url               | 上传服务器的接口地址                                                                                             | string                            | `-`                         |
 | v-model:file-list | 默认已经上传的文件列表                                                                                           | FileItem[]                        | `[]`                        |
 | is-preview        | 是否上传成功后展示预览图                                                                                         | boolean                           | `true`                      |
 | is-deletable      | 是否展示删除按钮                                                                                                 | boolean                           | `true`                      |
-| method            | 上传请求的 http method                                                                                           | string                            | `post`                    |
-| list-type         | 上传列表的内建样式，支持两种基础样式 `picture`、`list`                                                               | string                            | `picture`                 |
+| method            | 上传请求的 http method                                                                                           | string                            | `post`                      |
+| list-type         | 上传列表的内建样式，支持两种基础样式 `picture`、`list`                                                           | string                            | `picture`                   |
 | source-type       | [选择图片的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)           | string                            | `['album','camera']`        |
 | maximize          | 可以设定最大上传文件的大小（字节）                                                                               | number \| string                  | `9`                         |
 | maximum           | 文件上传数量限制                                                                                                 | number \| string                  | `1`                         |
@@ -253,23 +248,24 @@ setup() {
 | disabled          | 是否禁用文件上传                                                                                                 | boolean                           | `false`                     |
 | multiple          | 是否支持文件多选                                                                                                 | boolean                           | `true`                      |
 | timeout           | 超时时间，单位为毫秒                                                                                             | number \| string                  | `1000 * 30`                 |
-| before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                            | Function                          | `null`                     |
+| before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                            | Function                          | `null`                      |
 | before-xhr-upload | 执行 Taro.uploadFile 上传时，自定义方式                                                                          | Function(Taro.uploadFile，option) | `null`                      |
 
 
 ### FileItem
 
-| 名称     | 说明                                            | 默认值                          |
-|----------|-------------------------------------------------|---------------------------------|
-| status   | 文件状态值，可选'ready,uploading,success,error' | `ready`                         |
-| uid      | 文件的唯一标识                                  | `new Date().getTime().toString()` |
-| name     | 文件名称                                        | `""`                              |
-| url      | 文件路径                                        | `""`                              |
-| formData | 上传所需的data                                  | `{}`                              |
+| 名称       | 说明                                            | 默认值                            |
+|------------|-------------------------------------------------|-----------------------------------|
+| status     | 文件状态值，可选'ready,uploading,success,error' | `ready`                           |
+| uid        | 文件的唯一标识                                  | `new Date().getTime().toString()` |
+| name       | 文件名称                                        | -                                 |
+| url        | 文件路径                                        | -                                 |
+| formData   | 上传所需的data                                  | `{}`                              |
+| percentage | 上传百分比                                      | `0`                               |
 
 ### Events
 
-| 事件名            | 说明                   | 回调参数                  |
+| 事件名          | 说明                   | 回调参数                  |
 |-----------------|------------------------|---------------------------|
 | start           | 文件上传开始           | options                   |
 | progress        | 文件上传的进度         | {event,option,percentage} |
@@ -296,8 +292,8 @@ setup() {
 
 | 方法名           | 说明                                                       | 参数  | 返回值 |
 |------------------|------------------------------------------------------------|-------|--------|
-| submit           | 手动上传模式，执行上传操作                                 | -     | `-`      |
-| clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | `-`      |
+| submit           | 手动上传模式，执行上传操作                                 | -     | `-`    |
+| clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | `-`    |
 
 ## 主题定制
 
