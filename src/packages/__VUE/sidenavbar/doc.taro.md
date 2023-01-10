@@ -115,7 +115,7 @@ app.use(SideNavbarItem);
       };
 
       const handleClick4 = (msg: string) => {
-        
+        console.log(msg)
       }
 
       return {

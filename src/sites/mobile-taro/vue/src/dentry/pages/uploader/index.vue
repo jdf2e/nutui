@@ -7,7 +7,7 @@
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple @delete="onDelete">
     </nut-uploader>
     <h2>基础用法-上传列表展示</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
+    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList1" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">上传文件</nut-button>
     </nut-uploader>
     <h2>自定义上传样式</h2>
@@ -91,6 +91,29 @@ export default {
         type: 'image'
       }
     ]);
+    const defaultFileList1 = reactive([
+      {
+        name: '文件1.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'success',
+        message: '上传成功',
+        type: 'image'
+      },
+      {
+        name: '文件2.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'error',
+        message: '上传失败',
+        type: 'image'
+      },
+      {
+        name: '文件3.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'uploading',
+        message: '上传中...',
+        type: 'image'
+      }
+    ]);
     const onOversize = (files: File[]) => {
       console.log('oversize 触发 文件大小不能超过 50kb', files);
     };
@@ -149,6 +172,7 @@ export default {
       progressPercentage,
       uploadUrl,
       defaultFileList,
+      defaultFileList1,
       formData,
       uploadRef,
       submitUpload,
