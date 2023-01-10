@@ -32,7 +32,7 @@ app.use(Ecard);
   </nut-cell>
 </template>
 <script>
-  import {ref, reactive, toRefs } from 'vue';
+  import {ref, reactive } from 'vue';
   export default {
     setup() {
       const dataList=reactive([
