@@ -14,16 +14,22 @@
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :autofocus="autofocus"
+      @change="endComposing"
+      @compositionend="endComposing"
+      @compositionstart="startComposing"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
   </view>
 </template>
+<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { watch, ref, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 
 const { componentName, create, translate } = createComponent('textarea');
-
+export interface InputTarget extends HTMLInputElement {
+  composing: boolean;
+}
 export default create({
   props: {
     modelValue: {
@@ -132,8 +138,16 @@ export default create({
     };
 
     const change = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      emitChange(input.value, event);
+      if (!(event.target as InputTarget)!.composing) {
+        const input = event.target as HTMLInputElement;
+        let value = input.value;
+        if (props.maxLength && value.length > Number(props.maxLength)) {
+          value = value.slice(0, Number(props.maxLength));
+        }
+        emitChange(input.value, event);
+      }
+      // const input = event.target as HTMLInputElement;
+      // emitChange(input.value, event);
     };
 
     const focus = (event: Event) => {
@@ -153,6 +167,17 @@ export default create({
       emit('blur', { value, event });
     };
 
+    const startComposing = ({ target }: Event) => {
+      (target as InputTarget)!.composing = true;
+    };
+
+    const endComposing = ({ target }: Event) => {
+      if ((target as InputTarget)!.composing) {
+        (target as InputTarget)!.composing = false;
+        (target as InputTarget)!.dispatchEvent(new Event('input'));
+      }
+    };
+
     return {
       textareaRef,
       classes,
@@ -160,7 +185,9 @@ export default create({
       change,
       focus,
       blur,
-      translate
+      translate,
+      startComposing,
+      endComposing
     };
   }
 });

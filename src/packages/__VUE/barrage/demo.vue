@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
+      <!-- <nut-barrage ref="danmu" :danmu="list"></nut-barrage> -->
     </nut-cell>
     <div class="test">
       <nut-button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</nut-button>

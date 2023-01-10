@@ -27,16 +27,6 @@ app.use(Countup);
 ```
 
 :::
-### 数字滚动
-:::demo
-
-```html
-<template>
-    <nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
-</template>
-```
-
-:::
 
 ### 自定义数字图片展示
 :::demo

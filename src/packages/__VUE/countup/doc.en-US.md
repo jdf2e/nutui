@@ -27,18 +27,6 @@ app.use(Countup);
 </template>
 ```
 
-:::
-### Digital scrolling
-:::demo
-
-```html
-<template>
-    <nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
-</template>
-```
-
-:::
-
 ### Custom scrolling picture display
 :::demo
 
@@ -176,7 +164,6 @@ export default {
 | during | rolling time to run | number | `1000`
 | num-width | Number width, often used to customize seamless scrolling | number | `20`
 | num-height | Number height, often used to customize seamless scrolling (required for lottery function) | number | `20`
-| scrolling | numeric scrolling mode (H5 only) | boolean | `false`
 | custom-change-num | The number to change (for custom pictures, initNum and endNum are invalid here) | number | `1`
 | custom-bg-img | Custom image (it is recommended to use Sprite image, and Sprite image must be used to use the lottery function) | string | `-`
 | custom-spac-num | There may be space between numbers in the image | number | `0`

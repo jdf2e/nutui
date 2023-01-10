@@ -19,17 +19,23 @@
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
+      @change="endComposing"
+      @compositionend="endComposing"
+      @compositionstart="startComposing"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
     <view class="nut-textarea__cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
   </view>
 </template>
+<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('textarea');
-
+export interface InputTarget extends HTMLInputElement {
+  composing?: boolean;
+}
 export default create({
   props: {
     modelValue: {
@@ -113,8 +119,24 @@ export default create({
     };
 
     const change = (event: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if (!composing.value) {
+          // console.log((event.target as InputTarget)!.composing);
+          _onInput(event);
+        }
+      } else {
+        _onInput(event);
+      }
+      // const input = event.target as HTMLInputElement;
+      // emitChange(input.value, event);
+    };
+    const _onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
-      emitChange(input.value, event);
+      let value = input.value;
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
+      emitChange(value, event);
     };
 
     const focus = (event: Event) => {
@@ -227,6 +249,23 @@ export default create({
         });
       }
     });
+    const composing = ref(false);
+    const startComposing = (event: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        composing.value = true;
+        // (event.target as InputTarget)!.composing = true;
+      }
+    };
+
+    const endComposing = ({ target }: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if (composing.value) {
+          composing.value = false;
+          // (target as InputTarget)!.composing = false;
+          (target as InputTarget).dispatchEvent(new Event('input'));
+        }
+      }
+    };
 
     return {
       env,
@@ -237,7 +276,9 @@ export default create({
       focus,
       blur,
       translate,
-      copyTxtStyle
+      copyTxtStyle,
+      startComposing,
+      endComposing
     };
   }
 });
