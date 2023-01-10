@@ -24,8 +24,8 @@ export default defineComponent({
   setup() {
     //返回demo页
     const navigateTo = () => {
-      Taro.navigateBack({
-        delta: 1
+      Taro.navigateTo({
+        url: '/pages/index/index'
       });
     };
 
