@@ -135,6 +135,49 @@ app.use(Progress);
 </template>
 ```
 :::
+
+### Dynamic Change
+:::demo
+```html
+<template>
+   <div>
+    <nut-cell>
+      <nut-progress :percentage="val" />
+    </nut-cell>
+    <nut-cell>
+      <nut-button type="default" @click="setReduceVal">reduce</nut-button>
+      <nut-button type="primary" @click="setAddVal">add</nut-button>
+    </nut-cell>
+    </div>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default{
+    setup() {
+    const val = ref(0);
+    const setAddVal = () => {
+      if (val.value >= 100) {
+        return false;
+      }
+      val.value += 10;
+    };
+    const setReduceVal = () => {
+      if (val.value <= 0) {
+        return false;
+      }
+      val.value -= 10;
+    };
+    return {
+      val,
+      setAddVal,
+      setReduceVal,
+    };
+  }
+
+  }
+</script>
+```
+:::
 ## API
 ### Props
 
@@ -149,7 +192,7 @@ app.use(Progress);
 | text-inside | Progress bar text display position(false:outside，true:Inside) | boolean | `false`
 | text-color | Progress bar text color setting | string | `#333`
 | text-background | Progress bar text background color setting | string | `Same progress bar color`
-| status | The current state of the progress bar,active(show animation)/icon(show icon) | string | `text`
+| status | The current state of the progress bar，`active(display animation effect)` `icon(display icon label)`| string | `text`
 
 ### Slots
 | Name  | Description     | 

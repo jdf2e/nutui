@@ -2,7 +2,7 @@
   <view :class="classes" @click="onClick" :style="style">
     <view class="nut-switch-button">
       <slot name="icon" v-if="loading">
-        <Loading1 name="loading" />
+        <Loading1 name="loading1" :color="activeColor" />
       </slot>
       <template v-if="activeText">
         <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>

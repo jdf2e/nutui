@@ -172,6 +172,7 @@ app.use(Address);
       @change="onChange"
       @close="close"
       custom-address-title="请选择所在地区"
+      height="270px"
   ></nut-address>
 </template>
 <script>
@@ -443,7 +444,7 @@ app.use(Address);
       custom-and-exist-title="选择其他地址"
       @switch-module="switchModule"
       @close-mask="closeMask"
-       @change='onChange'
+      @change='onChange'
   ></nut-address>
 </template>
 <script>

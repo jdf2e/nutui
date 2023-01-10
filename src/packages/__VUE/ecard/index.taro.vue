@@ -17,6 +17,7 @@
             type="text"
             v-model="inputValue"
             @input="change"
+            class="nut-ecard-input"
             :placeholder="placeholder || translate('placeholder')"
           />
           {{ suffix }}

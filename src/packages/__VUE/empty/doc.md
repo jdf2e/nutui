@@ -22,7 +22,7 @@ app.use(Empty);
 ```
 :::
 
-### 图片类型，内置 3 个
+### 图片类型
 :::demo
 ```html
 <template>

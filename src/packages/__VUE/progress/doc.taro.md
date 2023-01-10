@@ -121,6 +121,55 @@ app.use(Progress);
       </nut-cell>
     </div>
 </template>
+<script lang="ts">
+  import {Issue } from '@nutui/icons-vue-taro';
+  export default{
+    components: {Issue},
+  }
+</script>
+```
+:::
+
+### 动态改变
+:::demo
+```html
+<template>
+   <div>
+    <nut-cell>
+      <nut-progress :percentage="val" />
+    </nut-cell>
+    <nut-cell>
+      <nut-button type="default" @click="setReduceVal">减少</nut-button>
+      <nut-button type="primary" @click="setAddVal">增加</nut-button>
+    </nut-cell>
+    </div>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default{
+    setup() {
+    const val = ref(0);
+    const setAddVal = () => {
+      if (val.value >= 100) {
+        return false;
+      }
+      val.value += 10;
+    };
+    const setReduceVal = () => {
+      if (val.value <= 0) {
+        return false;
+      }
+      val.value -= 10;
+    };
+    return {
+      val,
+      setAddVal,
+      setReduceVal,
+    };
+  }
+
+  }
+</script>
 ```
 :::
 ## API
@@ -137,7 +186,7 @@ app.use(Progress);
 | text-inside | 进度条文字显示位置(false:外显，true:内显) | boolean | `false`
 | text-color | 进度条文字颜色设置 | string | `#333`
 | text-background | 进度条文字背景颜色设置 | string | `同进度条颜色`
-| status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | string | `text`
+| status | 进度条当前状态，`active(展示动画效果)` `icon(展示icon标签)` | string | `text`
 
 ### Slots
 | 名称  | 说明     | 回调参数    |
