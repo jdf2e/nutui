@@ -28,7 +28,7 @@ textarea {
   width: 100%;
   padding: 10px 25px;
   display: flex;
-  line-height: 24px;
+  line-height: 20px;
   background: $white;
   font-size: $input-font-size;
   box-sizing: border-box;
@@ -53,7 +53,11 @@ textarea {
     resize: none;
     flex: 1;
   }
-
+  .input-text {
+    font-size: $input-font-size;
+    height: auto;
+    min-height: auto;
+  }
   &__label {
     width: 80px;
     overflow: hidden;

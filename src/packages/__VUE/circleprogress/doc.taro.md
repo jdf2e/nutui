@@ -12,7 +12,6 @@ import { CircleProgress } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(CircleProgress);
-
 ```
 ### 基础用法
 :::demo

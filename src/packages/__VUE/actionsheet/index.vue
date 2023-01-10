@@ -1,12 +1,5 @@
 <template>
-  <nut-popup
-    :visible="visible"
-    :isWrapTeleport="isWrapTeleport"
-    position="bottom"
-    round
-    @click-overlay="close"
-    :closeOnClickOverlay="closeAbled"
-  >
+  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :closeOnClickOverlay="closeAbled">
     <view :class="classes">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
@@ -90,10 +83,6 @@ export default create({
     menuItems: {
       type: Array as PropType<menuItems[]>,
       default: () => []
-    },
-    isWrapTeleport: {
-      type: Boolean,
-      default: true
     },
     closeAbled: {
       type: Boolean,

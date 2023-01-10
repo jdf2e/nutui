@@ -377,7 +377,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | v-model:value         | 默认选中项               | Array | `[]`              |
-| columns         | 对象数组，配置每一列显示的数据               | Array | -                |
+| columns         | 对象数组，配置每一列显示的数据               | PickerOption[] \| PickerOption[][] | -                |
 | title                  | 设置标题                   | string  | -      |
 | cancel-text            | 取消按钮文案               | string  | `取消`   |
 | ok-text                | 确定按钮文案               | string  | `确定`   |
@@ -387,14 +387,6 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | option-height         | 选项高度             | number \| string | `36`     |
 | show-toolbar         | 是否显示顶部导航             | boolean | `true`    |
 
-### Columns 数据结构
-
-| 键名         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | string \| number |   -            |
-| value          | 选项对应的值，且唯一               | string \| number |     -       |
-| children         | 用于级联选项               | Array | -                |
-| className                  | 添加额外的类名                   | string  | -    |
 
 ### Events
 
@@ -410,6 +402,15 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+### PickerOption 数据结构
+
+| 键名         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| text        | 选项的文字内容               | string \| number |   -            |
+| value          | 选项对应的值，且唯一               | string \| number |     -       |
+| children         | 用于级联选项               | Array | -                |
+| className                  | 添加额外的类名                   | string  | -    |
 
 ## 主题定制
 

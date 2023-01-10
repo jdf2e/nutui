@@ -579,7 +579,7 @@ $badge-color: var(--nut-badge-color, #fff) !default;
 $badge-font-size: var(--nut-badge-font-size, $font-size-1) !default;
 $badge-border-radius: var(--nut-badge-border-radius, 14px) !default;
 $badge-padding: var(--nut-badge-padding, 0 5px) !default;
-$badge-content-transform: var(--nut-badge-content-transform, translateY(-50%) translateX(100%)) !default;
+$badge-content-transform: var(--nut-badge-content-transform, translate(50%, -50%)) !default;
 $badge-z-index: var(--nut-badge-z-index, 1) !default;
 $badge-dot-width: var(--nut-badge-dot-width, 7px) !default;
 $badge-dot-height: var(--nut-badge-dot-height, 7px) !default;
@@ -673,9 +673,9 @@ $tabs-titles-item-line-border-radius: var(--nut-tabs-titles-item-line-border-rad
 $tabs-titles-item-line-opacity: var(--nut-tabs-titles-item-line-opacity, 1) !default;
 
 // indicator
-$indicator-color: var(--nut-indicator-color, $primary-color) !default;
+$indicator-bg-color: var(--nut-indicator-bg-color, $primary-color) !default;
 $indicator-dot-color: var(--nut-indicator-dot-color, $disable-color) !default;
-$indicator-white: var(--nut-indicator-white, $white) !default;
+$indicator-color: var(--nut-indicator-color, $white) !default;
 $indicator-size: var(--nut-indicator-size, 18px) !default;
 $indicator-dot-size: var(--nut-indicator-dot-size, calc($indicator-size / 3)) !default;
 $indicator-border-size: var(--nut-indicator-border-size, $indicator-size + 2) !default;

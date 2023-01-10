@@ -12,7 +12,6 @@ import { Barrage } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Barrage);
-
 ```
 
 

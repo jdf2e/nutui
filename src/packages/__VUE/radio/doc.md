@@ -8,12 +8,11 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Radio,RadioGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Radio, RadioGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Radio);
 app.use(RadioGroup);
-app.use(Checklist);
 ```
 ### 基础用法
 
@@ -162,7 +161,6 @@ app.use(Checklist);
   import { ref } from 'vue';
   import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
     components: {
       Checklist
     },

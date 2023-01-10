@@ -71,7 +71,7 @@ export default{
     >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -119,7 +119,7 @@ export default{
     >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -169,7 +169,7 @@ export default{
   >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -219,7 +219,7 @@ export default{
 | 事件名 | 说明                   | 回调参数 |
 |----------|------------------------|----------|
 | close    | 点击关闭图标时触发事件 | -    |
-| complete | 输入完成的回调         | 当前输入框值value    |
+| complete | 输入完成的回调         | `value:string`    |
 | focus | 输入框聚焦时触发	         | -    |
 
 

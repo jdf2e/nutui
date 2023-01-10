@@ -12,7 +12,6 @@ import { NumberKeyboard } from '@nutui/nutui';
 
 const app = createApp();
 app.use(NumberKeyboard);
-
 ```
 
 

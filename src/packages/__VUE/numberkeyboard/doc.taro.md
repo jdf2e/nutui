@@ -12,7 +12,6 @@ import { NumberKeyboard } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(NumberKeyboard);
-
 ```
 
 
@@ -21,7 +20,7 @@ app.use(NumberKeyboard);
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="默认键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="默认键盘"></nut-cell>
     <nut-number-keyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-number-keyboard>
 </template>
 <script>
@@ -59,7 +58,7 @@ export default{
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="带右侧栏键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="带右侧栏键盘"></nut-cell>
      <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
@@ -104,7 +103,7 @@ export default{
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="随机数键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="随机数键盘"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
@@ -147,7 +146,7 @@ export default{
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)" title="带标题栏键盘"></nut-cell>
     <nut-number-keyboard
       title="默认键盘"
       v-model:visible="visible"
@@ -189,7 +188,7 @@ export default{
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="身份证键盘"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)"  title="身份证键盘"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible"
       :custom-key="customKey"
@@ -236,7 +235,6 @@ export default{
       desc-text-align="left"
       @click="showKeyBoard"
       :desc="value"
-      :showIcon="true"
       title="双向绑定："
     ></nut-cell>
      <nut-number-keyboard 

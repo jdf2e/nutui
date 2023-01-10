@@ -43,7 +43,7 @@
         <div>{{ translate('customShop') }}</div>
       </template>
       <template #price>
-        <span>询价</span>
+        <span>{{ translate('question') }}</span>
       </template>
       <template #origin>
         <img
@@ -89,7 +89,8 @@ const initTranslate = () =>
       customContent: '自定义',
       desc: '自营',
       delivery: '厂商配送',
-      shopName: '阳澄湖大闸蟹自营店>'
+      shopName: '阳澄湖大闸蟹自营店>',
+      question: '询价'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -103,7 +104,8 @@ const initTranslate = () =>
       customContent: 'custom',
       desc: 'desc',
       delivery: 'delivery',
-      shopName: 'shopName>'
+      shopName: 'shopName>',
+      question: 'inquiry'
     }
   });
 export default createDemo({

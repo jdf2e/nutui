@@ -8,12 +8,11 @@ The multiple selection button is used to select.
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### Basic Usage
@@ -144,8 +143,9 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,
@@ -170,7 +170,8 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
-  import { showToast } from '@/packages/nutui.vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
@@ -371,6 +372,7 @@ When the value changes, the `change` event will be triggered
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {

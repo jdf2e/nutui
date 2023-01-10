@@ -12,7 +12,6 @@ import { Progress } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Progress);
-
 ```
 
 
@@ -26,13 +25,13 @@ app.use(Progress);
 </template>
 ```
 :::
-### 设置高度和颜色
+### 设置颜色高度
 
 :::demo
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
+    <nut-progress percentage="30" stroke-color="rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
    </nut-cell>
 </template>
 ```
@@ -43,17 +42,6 @@ app.use(Progress);
 <template>
   <nut-cell>
      <nut-progress percentage="50" :show-text="false" stroke-height="24" />
-  </nut-cell>
-</template>
-```
-:::
-### 设置百分比外显
-
-:::demo
-```html
-<template>
-  <nut-cell>
-     <nut-progress percentage="30" />
   </nut-cell>
 </template>
 ```
@@ -118,7 +106,7 @@ app.use(Progress);
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
+        <nut-progress percentage="50"  status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress
@@ -134,6 +122,12 @@ app.use(Progress);
       </nut-cell>
     </div>
 </template>
+<script lang="ts">
+  import {Issue } from '@nutui/icons-vue';
+  export default{
+    components: {Issue},
+  }
+</script>
 ```
 :::
 ## API
@@ -171,19 +165,15 @@ app.use(Progress);
 |  --nut-progress-outer-border-radius| _12px_  |
 |  --nut-progress-insidetext-border-radius| _5px_  |
 |  --nut-progress-insidetext-padding| _3px 5px 3px 6px_  |
-|  --nut-progress-insidetext-top| _-42%_  |
 |  --nut-progress-small-height| _5px_  |
 |  --nut-progress-small-text-font-size| _7px_  |
 |  --nut-progress-small-text-line-height| _10px_  |
 |  --nut-progress-small-text-padding| _2px 4px_  |
-|  --nut-progress-small-text-top| _-100%_  |
 |  --nut-progress-base-height| _10px_  |
 |  --nut-progress-base-text-font-size| _9px_  |
 |  --nut-progress-base-text-line-height| _13px_  |
 |  --nut-progress-base-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-base-text-top| _var(--nut-progress-insidetext-top)_  |
 |  --nut-progress-large-height| _15px_  |
 |  --nut-progress-large-text-font-size| _13px_  |
 |  --nut-progress-large-text-line-height| _18px_  |
 |  --nut-progress-large-text-padding| _var(--nut-progress-insidetext-padding)_  |
-|  --nut-progress-large-text-top| _var(--nut-progress-insidetext-top)_  |

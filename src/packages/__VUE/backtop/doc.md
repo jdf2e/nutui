@@ -13,7 +13,6 @@ import { Backtop } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Backtop);
-
 ```
 
 ### 基础用法

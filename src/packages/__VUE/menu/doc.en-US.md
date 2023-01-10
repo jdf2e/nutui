@@ -9,6 +9,7 @@ The menu list that pops down downwards.
 ``` javascript
 import { createApp } from 'vue';
 import { Menu, MenuItem } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Menu);
 app.use(MenuItem);
