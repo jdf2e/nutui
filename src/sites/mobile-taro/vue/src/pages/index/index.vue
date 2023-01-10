@@ -68,7 +68,7 @@ export default {
         url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
 
-      if (Taro.getEnv() === 'WEB') {
+      if (Taro.getEnv() === 'WEB' && location.href.includes('nutui.jd.com')) {
         parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
       }
     };
