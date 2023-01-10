@@ -178,7 +178,7 @@ export default {
 | num-height | Number height, often used to customize seamless scrolling (required for lottery function) | number | `20`
 | scrolling | numeric scrolling mode (H5 only) | boolean | `false`
 | custom-change-num | The number to change (for custom pictures, initNum and endNum are invalid here) | number | `1`
-| custom-bg-img | Custom image (it is recommended to use Sprite image, and Sprite image must be used to use the lottery function) | string | `-`
+| custom-bg-img | Custom image (it is recommended to use Sprite image, and Sprite image must be used to use the lottery function) | string | -
 | custom-spac-num | There may be space between numbers in the image | number | `0`
 | type | lottery function pass machine, the optional value is `machine` `' '` | string | `''`
 | machine-prize-num | Number of prizes, how many prizes in total, must be passed | number | `0`
@@ -193,5 +193,5 @@ export default {
 
 | Event | description | callback parameter
 |----- | ----- | -----
-| scroll-end | callback function after scrolling ends | `-`
+| scroll-end | callback function after scrolling ends | -
     
