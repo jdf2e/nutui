@@ -233,6 +233,10 @@ import { reactive, ref } from 'vue';
 import { TriangleDown, Checked } from '@nutui/icons-vue';
 
 export default {
+  components: {
+    TriangleDown,
+    Checked
+  },
   setup() {
     const state = reactive({
       options1: [
