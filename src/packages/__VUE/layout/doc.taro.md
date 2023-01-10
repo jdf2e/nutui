@@ -8,10 +8,9 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Layout, Row, Col } from '@nutui/nutui-taro';
+import { Row, Col } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Layout);
 app.use(Row);
 app.use(Col);
 ```

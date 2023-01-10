@@ -149,7 +149,7 @@ app.use(Progress);
 | text-inside | Progress bar text display position(false:outside，true:Inside) | boolean | `false`
 | text-color | Progress bar text color setting | string | `#333`
 | text-background | Progress bar text background color setting | string | `Same progress bar color`
-| status | The current state of the progress bar,active(show animation)/icon(show icon) | string | `text`
+| status | The current state of the progress bar，`active(display animation effect)` `icon(display icon label)`| string | `text`
 
 ### Slots
 | Name  | Description     | 
