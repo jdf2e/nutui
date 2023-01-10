@@ -1,6 +1,6 @@
 <template>
   <view class="nut-sku-operate" v-if="btnOptions.length > 0">
-    <view class="nut-sku-operate-desc" v-if="btnExtraText" v-html="btnExtraText"></view>
+    <view class="nut-sku-operate-desc" v-if="btnExtraText">{{ btnExtraText }}</view>
 
     <slot name="operate-btn"></slot>
 
