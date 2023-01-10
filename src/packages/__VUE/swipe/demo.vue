@@ -2,14 +2,14 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <nut-swipe>
-      <nut-cell round-radius="0" :desc="translate('leftDel')" />
+      <nut-cell round-radius="0" :title="translate('leftDel')" />
       <template #right>
         <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
       </template>
     </nut-swipe>
     <h2>{{ translate('disable') }}</h2>
     <nut-swipe disabled>
-      <nut-cell round-radius="0" :desc="translate('disable')" />
+      <nut-cell round-radius="0" :title="translate('disable')" />
       <template #right>
         <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
       </template>
@@ -19,7 +19,7 @@
       <template #left>
         <nut-button shape="square" style="height: 100%" type="success">{{ translate('select') }}</nut-button>
       </template>
-      <nut-cell round-radius="0" :desc="translate('swipeLRDesc')" />
+      <nut-cell round-radius="0" :title="translate('swipeLRDesc')" />
       <template #right>
         <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
         <nut-button shape="square" style="height: 100%" type="info">{{ translate('collect') }}</nut-button>
@@ -115,10 +115,9 @@ export default createDemo({
     };
     const open = (obj: any) => {
       console.log(obj);
-      checked.value = true;
     };
-    const close = () => {
-      checked.value = false;
+    const close = (obj: any) => {
+      console.log(obj);
     };
     return { checked, number, changSwitch, refSwipe, open, close, translate };
   }

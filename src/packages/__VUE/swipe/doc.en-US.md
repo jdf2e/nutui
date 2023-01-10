@@ -22,7 +22,7 @@ app.use(Button);
 ```html
 <template>
 <nut-swipe>
-    <nut-cell round-radius="0" desc="Swipe left to delete" />
+    <nut-cell round-radius="0" title="Swipe left to delete" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
     </template>
@@ -39,7 +39,7 @@ app.use(Button);
 ```html
 <template>
 <nut-swipe disabled>
-    <nut-cell round-radius="0" desc="Disable swipe" />
+    <nut-cell round-radius="0" title="Disable swipe" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
     </template>
@@ -58,7 +58,7 @@ app.use(Button);
     <template #left>
         <nut-button shape="square" style="height:100%" type="success">Select</nut-button>
     </template>
-    <nut-cell round-radius="0" desc="You can swipe left and right" />
+    <nut-cell round-radius="0" title="You can swipe left and right" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
         <nut-button shape="square" style="height:100%" type="info">Collect</nut-button>
@@ -99,12 +99,11 @@ export default {
                 refSwipe.value?.close();
             }
         };
-         const open = (obj: any) => {
+        const open = (obj: any) => {
             console.log(obj);
-            checked.value = true;
         };
-        const close = () => {
-            checked.value = false;
+        const close = (obj: any) => {
+            console.log(obj);
         };
         return { checked, changSwitch, refSwipe, open, close };
     }
@@ -153,15 +152,15 @@ export default {
 | Attribute                   | Description                                    | Type    | Default |
 |-----------------------------|------------------------------------------------|---------|---------|
 | name                        | identifies                                     | string  | -       |
-| disabled                    | Whether to disabled swipe                      | string  | `false`   |
-| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | `false`   |
-| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | `false`   |
+| disabled                    | Whether to disabled swipe                      | string  | `false` |
+| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | `false` |
+| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | `false` |
 ### Events
 
-| Event | Description                  | Arguments                  |
-|-------|------------------------------|----------------------------|
-| open  | Emitted when Swipe is opened | { type:'left' \| 'right' } |
-| close | Emitted when Swipe is closed | { type:'left' \| 'right' } |
+| Event | Description                  | Arguments           |
+|-------|------------------------------|---------------------|
+| open  | Emitted when Swipe is opened | `{ name,position }` |
+| close | Emitted when Swipe is closed | `{ name,position }` |
     
 
 ### Slots
@@ -175,7 +174,7 @@ export default {
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
-| Name  | Description | Arguments         |
-|-------|-------------|-------------------|
-| open  | open swipe  | 'left' \| 'right' |
-| close | close swipe |                   |
+| Name  | Description | Arguments           |
+|-------|-------------|---------------------|
+| open  | open swipe  | `{ name,position }` |
+| close | close swipe | `{ name,position }` |
