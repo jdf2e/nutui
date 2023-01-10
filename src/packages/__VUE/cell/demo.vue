@@ -31,7 +31,7 @@
 
     <nut-cell-group :title="translate('title5')" :desc="translate('desc1')">
       <nut-cell :title="translate('link')" is-link></nut-cell>
-      <nut-cell :title="translate('urlJump')" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
+      <nut-cell :title="translate('urlJump')" desc="https://m.jd.com" is-link url="https://m.jd.com"></nut-cell>
       <nut-cell :title="translate('routerJump')" to="/"></nut-cell>
     </nut-cell-group>
 
@@ -98,7 +98,7 @@ const initTranslate = () =>
       content: '自定义内容',
       customRight: '自定义右侧箭头区域',
       customLeftIcon: '自定义左侧 Icon 区域',
-      displayIcon: '展示图标'
+      displayIcon: '单元格展示图标'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -122,7 +122,7 @@ const initTranslate = () =>
       content: 'Content',
       customRight: 'Customize the right arrow area',
       customLeftIcon: 'Customize the left Icon area',
-      displayIcon: 'Display Icon'
+      displayIcon: 'cell display icon'
     }
   });
 export default createDemo({
