@@ -59,6 +59,7 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
   <nut-cell title="Choose city" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup position="bottom"  v-model:visible="show">
       <nut-picker
+        v-model="popupValue"
         :columns="columns"
         title="Choose city"
         @confirm="popupConfirm"
@@ -76,6 +77,7 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
     setup(props) {
       const show = ref(false)
       const popupDesc = ref()
+      const popupValue = ref();
       const columns = ref([
         { text: 'NanJing', value: 'NanJing' },
         { text: 'WuXi', value: 'WuXi' },
@@ -91,7 +93,7 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
         show.value = false
       }
 
-      return {show,popupDesc,columns, confirm,popupConfirm};
+      return {popupValue,show,popupDesc,columns, confirm,popupConfirm};
     }
   };
 </script>
