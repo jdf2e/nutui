@@ -68,7 +68,7 @@ app.use(ImagePreview);
 ```html
 <template>
     <nut-image-preview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
-    <nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn"></nut-cell>
+    <nut-cell isLink title="设置初始页码" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
