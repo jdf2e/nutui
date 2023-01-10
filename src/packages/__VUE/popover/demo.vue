@@ -123,7 +123,7 @@ const initTranslate = () =>
       disableAction: '禁用选项',
       content: '自定义内容',
       contentColor: '自定义颜色',
-      contentTarget: '自定义对象'
+      contentTarget: '自定义目标元素'
     },
     'en-US': {
       title: 'Basic Usage',
