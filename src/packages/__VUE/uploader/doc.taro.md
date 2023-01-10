@@ -230,7 +230,7 @@ setup() {
 
 | 参数              | 说明                                                                                                             | 类型                              | 默认值                      |
 |-------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------|-----------------------------|
-| auto-upload       | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                       | boolean                           | `true`                      |
+| auto-upload       | 是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传                                       | boolean                           | `true`                      |
 | name              | 发到后台的文件参数名                                                                                             | string                            | `file`                      |
 | url               | 上传服务器的接口地址                                                                                             | string                            | `-`                         |
 | v-model:file-list | 默认已经上传的文件列表                                                                                           | FileItem[]                        | `[]`                        |
@@ -254,27 +254,27 @@ setup() {
 
 ### FileItem
 
-| 名称       | 说明                                            | 默认值                            |
-|------------|-------------------------------------------------|-----------------------------------|
-| status     | 文件状态值，可选'ready,uploading,success,error' | `ready`                           |
-| uid        | 文件的唯一标识                                  | `new Date().getTime().toString()` |
-| name       | 文件名称                                        | -                                 |
-| url        | 文件路径                                        | -                                 |
-| formData   | 上传所需的data                                  | `{}`                              |
-| percentage | 上传百分比                                      | `0`                               |
+| 名称       | 说明                                                  | 默认值                            |
+|------------|-------------------------------------------------------|-----------------------------------|
+| status     | 文件状态值，可选`ready`,`uploading`,`success`,`error` | `ready`                           |
+| uid        | 文件的唯一标识                                        | `new Date().getTime().toString()` |
+| name       | 文件名称                                              | -                                 |
+| url        | 文件路径                                              | -                                 |
+| formData   | 上传所需的data                                        | `{}`                              |
+| percentage | 上传百分比                                            | `0`                               |
 
 ### Events
 
-| 事件名          | 说明                   | 回调参数                  |
-|-----------------|------------------------|---------------------------|
-| start           | 文件上传开始           | options                   |
-| progress        | 文件上传的进度         | {event,option,percentage} |
-| oversize        | 文件大小超过限制时触发 | files                     |
-| success         | 上传成功               | {data,option,fileItem}    |
-| failure         | 上传失败               | {data,option,fileItem}    |
-| change          | 上传文件改变时的状态   | {fileList,event}          |
-| delete          | 文件删除事件           | {files,fileList,index}    |
-| file-item-click | 文件上传成功后点击触发 | {fileItem}                |
+| 事件名          | 说明                   | 回调参数                    |
+|-----------------|------------------------|-----------------------------|
+| start           | 文件上传开始           | `options`                   |
+| progress        | 文件上传的进度         | `{event,option,percentage}` |
+| oversize        | 文件大小超过限制时触发 | `files`                     |
+| success         | 上传成功               | `{data,option,fileItem}`    |
+| failure         | 上传失败               | `{data,option,fileItem}`    |
+| change          | 上传文件改变时的状态   | `{fileList,event}`          |
+| delete          | 文件删除事件           | `{files,fileList,index}`    |
+| file-item-click | 文件上传成功后点击触发 | `{fileItem}`                |
 
 ### Uploader Slots
 

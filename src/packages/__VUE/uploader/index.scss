@@ -38,7 +38,8 @@
     overflow: hidden;
     cursor: pointer !important;
     opacity: 0;
-    &:disabled {
+    &:disabled,
+    &.disabled {
       cursor: not-allowed !important;
     }
   }
