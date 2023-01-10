@@ -112,10 +112,9 @@ styleMap.forEach((value, key) => {
     return component !== key;
   });
   // gen style
-  const outputStyleMjs = `${deps
+  const outputStyleMjs = `import '../../styles/reset.css';\n${deps
     .map((component) => {
-      return `import '../${component.toLowerCase()}/index.scss';
-import '../../styles/reset.css';\n`;
+      return `import '../${component.toLowerCase()}/index.scss';\n`;
     })
     .reverse()
     .join('')}import './index.scss';\n`;
