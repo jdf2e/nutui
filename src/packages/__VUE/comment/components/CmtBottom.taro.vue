@@ -1,7 +1,7 @@
 <template>
   <view class="nut-comment-bottom">
     <view @click="handleClick" class="nut-comment-bottom__lable">
-      <span v-if="type != 'complex'">{{ info.size }}</span></view
+      <span v-if="type != 'complex'" style="display: inline">{{ info.size }}</span></view
     >
 
     <view class="nut-comment-bottom__cpx">

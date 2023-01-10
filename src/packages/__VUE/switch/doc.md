@@ -55,7 +55,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading />
+  <nut-switch v-model="checked" loading active-color="red" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';

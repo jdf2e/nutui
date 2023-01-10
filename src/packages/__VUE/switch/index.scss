@@ -8,6 +8,13 @@
   background-repeat: no-repeat;
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
+
+  .nut-icon-loading1 {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+  }
+
   &.nut-switch-close {
     background-color: $switch-close-bg-color;
   }
