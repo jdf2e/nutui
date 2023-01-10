@@ -27,7 +27,7 @@
         />
         <view v-else class="nut-uploader__preview-img__file">
           <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
-            <Link color="#808080" />&nbsp;{{ item.name }}
+            <view class="file__name_tips">{{ item.name }}</view>
           </view>
         </view>
 
@@ -36,9 +36,10 @@
 
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
         <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
-          <Link />&nbsp;{{ item.name }}
+          <Link class="nut-uploader__preview-img__file__link" />
+          <view class="file__name_tips">{{ item.name }}</view>
+          <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
         </view>
-        <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
 
         <nut-progress
           size="small"

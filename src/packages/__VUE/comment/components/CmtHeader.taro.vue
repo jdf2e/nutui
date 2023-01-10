@@ -13,7 +13,7 @@
           </view>
 
           <view class="nut-comment-header__user-score">
-            <nut-rate v-model="info.score" size="15" spacing="5" readonly :disabled="true" @change="handleClick" />
+            <nut-rate v-model="info.score" size="12" spacing="5" readonly :disabled="true" @change="handleClick" />
           </view>
         </view>
 
@@ -25,7 +25,7 @@
       <view class="nut-comment-header__time" v-if="info.time">{{ info.time }}</view>
     </view>
     <view :class="[`nut-comment-header__${type}-score`]" v-if="type == 'complex'">
-      <nut-rate v-model="info.score" size="15" spacing="3" readonly :disabled="true" />
+      <nut-rate v-model="info.score" size="12" spacing="3" readonly :disabled="true" />
       <i :class="[`nut-comment-header__${type}-score-i`]"></i>
       <view :class="[`nut-comment-header__${type}-score-size`]">{{ info.size }}</view>
     </view>

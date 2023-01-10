@@ -177,7 +177,7 @@ app.use(Card);
 ```
 :::
 
-### 自定义右下角内容
+### Customize bottom right content
 :::demo
 ```html
 <template>
