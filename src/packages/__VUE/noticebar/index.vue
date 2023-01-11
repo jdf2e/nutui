@@ -13,8 +13,9 @@
       v-if="direction == 'across'"
     >
       <view class="nut-noticebar__page-lefticon">
-        <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
-        <component :is="renderIcon(leftIcon)" v-else></component>
+        <slot name="left-icon">
+          <Notice size="16px" v-if="leftIcon"></Notice>
+        </slot>
       </view>
       <view ref="wrap" class="nut-noticebar__page-wrap">
         <view
@@ -85,7 +86,7 @@ import {
   Slots
 } from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('noticebar');
 import { pxCheck } from '@/packages/utils/pxCheck';
 
@@ -141,7 +142,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    leftIcon: { type: Object || String, default: () => Notice },
+    leftIcon: { type: Boolean, default: true },
     color: {
       type: String,
       default: ''
@@ -410,8 +411,7 @@ export default create({
       handleClickIcon,
       slots,
       pxCheck,
-      wrapContentClass,
-      renderIcon
+      wrapContentClass
     };
   }
 });

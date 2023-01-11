@@ -223,7 +223,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | direction  | Rolling direction                                  | string        | `across`  |
 | text       | Notice text content                                | string        |  -      |
 | close-mode  | Whether to enable the off mode                     | boolean       | `false`   |
-| left-icon   | Left Icon                                          | string        | -       |
+| left-icon   | Show left Icon | boolean, Scroll direction 'across' takes effect        | `true`    |
 | color      | Text Color                                         | string        | -       |
 | background | Background                                         | string        | -       |
 | delay      | Delay time                                         | string \| number | `1`       |
@@ -248,7 +248,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 |-------------------|----------------------------------|
 | default           | Notice text content              |
 | right-icon        | Custom right icon                |
-| left-icon         | Custom left icon                 |
+| left-icon         | Custom left icon, Scroll direction 'across' takes effect                |
 
 ### Events
 
@@ -268,10 +268,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-noticebar-background| _rgba(251, 248, 220, 1)_ |
 | --nut-noticebar-color| _#d9500b_ |
 | --nut-noticebar-font-size| _14px_ |
-| --nut-noticebar-height| _40px_ |
-| --nut-noticebar-line-height| _24px_ |
-| --nut-noticebar-left-icon-width| _16px_ |
-| --nut-noticebar-right-icon-width| _16px_ |
+| --nut-noticebar-across-height| _40px_ |
+| --nut-noticebar-across-line-height| _24px_ |
 | --nut-noticebar-box-padding| _0 16px_ |
 | --nut-noticebar-wrapable-padding| _16px_ |
 | --nut-noticebar-lefticon-margin| _0px 10px_ |

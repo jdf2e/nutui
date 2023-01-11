@@ -225,7 +225,7 @@ app.use(Noticebar);
 | direction       | 滚动的方向，可选 `across`、`vertical`                         | string        | `across`     |
 | text       | 提示的信息                                                 | string        | -     |
 | close-mode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| left-icon   | `close` 为没有左边 `icon`,其他为自定义的图片链接，没有为默认图片 | string        | -     |
+| left-icon   | 是否展示左侧图标, 滚动方向为 `across` 生效 | boolean        | `true`    |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
@@ -250,7 +250,7 @@ app.use(Noticebar);
 |--------------|----------------------------------|
 | default         | 通知文本的内容               | 
 | right-icon        | 自定义右侧图标    | 
-| left-icon        | 自定义左侧图标    | 
+| left-icon        | 自定义左侧图标, 滚动方向为 `across` 生效    | 
 ### Events
 
 | 事件名  | 说明             | 回调参数     |
@@ -269,10 +269,8 @@ app.use(Noticebar);
 | --nut-noticebar-background| _rgba(251, 248, 220, 1)_ |
 | --nut-noticebar-color| _#d9500b_ |
 | --nut-noticebar-font-size| _14px_ |
-| --nut-noticebar-height| _40px_ |
-| --nut-noticebar-line-height| _24px_ |
-| --nut-noticebar-left-icon-width| _16px_ |
-| --nut-noticebar-right-icon-width| _16px_ |
+| --nut-noticebar-across-height| _40px_ |
+| --nut-noticebar-across-line-height| _24px_ |
 | --nut-noticebar-box-padding| _0 16px_ |
 | --nut-noticebar-wrapable-padding| _16px_ |
 | --nut-noticebar-lefticon-margin| _0px 10px_ |
