@@ -14,20 +14,20 @@
       @longSet="clickLongSet"
       @longDel="clickLongDel"
     >
-      <template v-slot:contentInfo>
-        <slot name="iteminfos"></slot>
+      <template #content-info>
+        <slot name="item-infos"></slot>
       </template>
-      <template v-slot:contentIcons>
-        <slot name="itemicon"></slot>
+      <template #content-icons>
+        <slot name="item-icon"></slot>
       </template>
-      <template v-slot:contentAddrs>
-        <slot name="itemaddr"></slot>
+      <template #content-addrs>
+        <slot name="item-addr"></slot>
       </template>
-      <template v-slot:longpressAll v-if="longPress">
-        <slot name="longpressbtns"></slot>
+      <template #longpress-all v-if="longPress">
+        <slot name="longpress-btns"></slot>
       </template>
-      <template v-slot:swiperightbtn v-if="swipeEdition">
-        <slot name="swiperight"></slot>
+      <template #swipe-right-btn v-if="swipeEdition">
+        <slot name="swipe-right"></slot>
       </template>
     </general-shell>
     <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
