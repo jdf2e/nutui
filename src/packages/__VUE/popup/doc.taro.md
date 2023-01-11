@@ -139,33 +139,6 @@ app.use(Popup)
 
 :::
 
-### 指定挂载节点
-
-通过 `teleport` 来指定挂载节点
-
-:::demo
-
-```html
-<template>
-  <nut-cell title="指定挂载节点" is-link @click="showTeleport = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport" >app</nut-popup>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showTeleport: false,
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-```
-
-:::
-
 ### 多层堆叠
 
 :::demo

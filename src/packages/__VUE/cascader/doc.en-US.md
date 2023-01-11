@@ -419,6 +419,7 @@ export default {
 | Attribute           | Description                                                                                                  | Type     | Default     |
 |---------------------|--------------------------------------------------------------------------------------------------------------|----------|-------------|
 | v-model             | Selected value, bidirectional binding                                                                        | Array    | -           |
+| v-model:visible             | selected layer                                      | boolean    | `false`           |
 | options             | Cascade data                                                                                                 | Array    | -           |
 | lazy                | Whether to enable dynamic loading                                                                            | boolean  | -           |
 | lazy-load           | Dynamic loading callback, which takes effect when dynamic loading is enabled                                 | Function | -           |
