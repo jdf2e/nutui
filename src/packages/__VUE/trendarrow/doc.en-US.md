@@ -5,7 +5,6 @@
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 import { TrendArrow } from '@nutui/nutui';
 
@@ -128,10 +127,10 @@ app.use(TrendArrow);
 <template>
   <nut-cell>
     <nut-trend-arrow :rate="10.2365">
-      <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      <template #up-icon><Success color="blue" width="18" height="18" /></template>
     </nut-trend-arrow>
     <nut-trend-arrow :rate="-10.2365">
-      <template #downIcon><Failure color="red" /></template>
+      <template #down-icon><Failure color="red" /></template>
     </nut-trend-arrow>
   </nut-cell>
 </template>
@@ -164,8 +163,8 @@ app.use(TrendArrow);
 
 | Name    | Description         |
 |---------|--------------|
-| upIcon | custom up icon |
-| downIcon | custom down icon |
+| up-icon | custom up icon |
+| down-icon | custom down icon |
 
 ## Theming
 
