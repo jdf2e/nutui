@@ -145,7 +145,7 @@ export default create({
       if (titles.value.length == 0) {
         console.error('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
       } else if (index == -1) {
-        console.error('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
+        // console.error('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
       } else {
         currentIndex.value = index;
       }

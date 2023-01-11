@@ -31,7 +31,7 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 <script>
-  import { Home,Category,Find,Cart,My} from ' @nutui/icons-vue-taro';
+  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue-taro';
   export default{
     components: {Home,Category,Find,Cart, My },
     setup() {
@@ -62,7 +62,8 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
-  import { Home,Category,Find,Cart,My} from ' @nutui/icons-vue-taro';
+   import{ ref,h } from 'vue';
+  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue-taro';
   export default{
     components: {Home,Category,Find,Cart, My },
     setup() {
@@ -165,6 +166,7 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 <script>
+  import{ ref,h } from 'vue'
  import { Home,Category,Find,Cart,My} from ' @nutui/icons-vue-taro';
  export default{
     components: {Home,Category,Find,Cart, My },
@@ -254,6 +256,7 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
+ import{ h } from 'vue'
  import { Home,Category,Find,Cart,My} from ' @nutui/icons-vue-taro';
  export default{
     components: {Home,Category,Find,Cart, My },
@@ -334,6 +337,7 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
+ import{ h } from 'vue'
  import { Home,Category,Find,Cart,My} from ' @nutui/icons-vue-taro';
  export default{
     components: {Home,Category,Find,Cart, My },

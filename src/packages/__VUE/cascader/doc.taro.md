@@ -20,36 +20,24 @@ app.use(Cascader);
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="选择地址">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="请选择地址"
-      type="text"
-    />
+    <nut-cell title="选择地址" :desc="demo1.value.toString() || '请选择地址'" @click="demo1.visible = true"> </nut-cell>
     <nut-cascader
       title="地址选择"
-      v-model:visible="state.visible"
-      v-model="state.value"
+      v-model:visible="demo1.visible"
+      v-model="demo1.value"
       @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
+      @pathChange="events.pathChange"
+      :options="demo1.options"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
     // 基础用法
-    const state = reactive({
+    const demo1 = reactive({
       visible: false,
-      // value: ['湖南'],
-      value: [],
+      value: ['湖南'],
       options: [
         {
           value: '浙江',
@@ -105,7 +93,7 @@ export default {
     };
 
     return {
-      state,
+      demo1,
       events
     }
   }
@@ -120,36 +108,25 @@ export default {
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="选择地址">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="请选择地址"
-      type="text"
-    />
+  <nut-cell title="选择地址" :desc="demo2.value.toString() || '请选择地址'" @click="demo2.visible = true"> </nut-cell>
     <nut-cascader
       title="地址选择"
-      v-model:visible="state.visible"
-      v-model="state.value"
-      text-key="text"
+      v-model:visible="demo2.visible"
+      v-model="demo2.value"
+      labelKey="text"
       @change="events.change"
-      @path-change="events.pathChange"
-      value-key="text"
-      children-key="items"
-      :options="state.options"
+      @pathChange="events.pathChange"
+      valueKey="text"
+      childrenKey="items"
+      :options="demo2.options"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
     // 自定义属性名称
-    const state = reactive({
+    const demo2 = reactive({
       visible: false,
       value: ['福建', '福州', '台江区'],
       options: [
@@ -187,7 +164,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo2, events };
   }
 }
 </script>
@@ -200,33 +177,22 @@ export default {
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="选择地址">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="请选择地址"
-      type="text"
-    />
+    <nut-cell title="选择地址" :desc="demo3.value.toString() || '请选择地址'" @click="demo3.visible = true"> </nut-cell>
     <nut-cascader
       title="地址选择"
-      v-model:visible="state.visible"
-      v-model="state.value"
+      v-model:visible="demo3.visible"
+      v-model="demo3.value"
       @change="events.change"
-      @path-change="events.pathChange"
+      @pathChange="events.pathChange"
       lazy
-      :lazy-load="state.lazyLoad"
+      :lazyLoad="demo3.lazyLoad"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo3 = reactive({
       visible: false,
       value: ['A0', 'A12', 'A23', 'A32'],
       lazyLoad(node: any, resolve: (children: any) => void) {
@@ -250,7 +216,7 @@ export default {
               { value: value3, text: value3, leaf: level >= 6 }
             ]);
           }
-        }, 300);
+        }, 3000);
       }
     });
     const events = {
@@ -262,7 +228,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo3, events };
   }
 }
 </script>
@@ -274,34 +240,23 @@ export default {
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="选择地址">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="请选择地址"
-      type="text"
-    />
-    <nut-cascader
-      title="地址选择"
-      v-model:visible="state.visible"
-      v-model="state.value"
-      @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
-      lazy
-      :lazy-load="state.lazyLoad"
-    ></nut-cascader>
-  </nut-form-item>
- </nut-form>
+  <nut-cell title="选择地址" :desc="demo4.value.toString() || '请选择地址'" @click="demo4.visible = true"> </nut-cell>
+  <nut-cascader
+    title="地址选择"
+    v-model:visible="demo4.visible"
+    v-model="demo4.value"
+    @change="events.change"
+    @pathChange="events.pathChange"
+    :options="demo4.options"
+    lazy
+    :lazyLoad="demo4.lazyLoad"
+  ></nut-cascader>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo4 = reactive({
       visible: false,
       value: [],
       options: [
@@ -338,7 +293,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo4, events };
   }
 }
 </script>
@@ -353,33 +308,22 @@ export default {
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="选择地址" @click="state.visible = true">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="请选择地址"
-      type="text"
-    />
+    <nut-cell title="选择地址" :desc="demo5.value.toString() || '请选择地址'" @click="demo5.visible = true"> </nut-cell>
     <nut-cascader
       title="地址选择"
-      v-model:visible="state.visible"
-      v-model="state.value"
+      v-model:visible="demo5.visible"
+      v-model="demo5.value"
       @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
-      :convertConfig="state.convertConfig"
+      @pathChange="events.pathChange"
+      :options="demo5.options"
+      :convertConfig="demo5.convertConfig"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo5 = reactive({
       visible: false,
       value: ['广东省', '广州市'],
       convertConfig: {
@@ -405,7 +349,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo5, events };
   }
 }
 </script>
