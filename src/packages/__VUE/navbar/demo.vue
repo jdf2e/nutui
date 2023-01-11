@@ -28,7 +28,7 @@
       :titleIcon="true"
       :desc="translate('desc2')"
     >
-      <template #titleIcon>
+      <template #title-icon>
         <Cart2 width="16px"></Cart2>
       </template>
       <template #right>

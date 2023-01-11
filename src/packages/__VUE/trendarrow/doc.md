@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { TrendArrow } from '@nutui/nutui';
 
@@ -130,10 +129,10 @@ app.use(TrendArrow);
 <template>
   <nut-cell>
     <nut-trend-arrow :rate="10.2365">
-      <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      <template #up-icon><Success color="blue" width="18" height="18" /></template>
     </nut-trend-arrow>
     <nut-trend-arrow :rate="-10.2365">
-      <template #downIcon><Failure color="red" /></template>
+      <template #down-icon><Failure color="red" /></template>
     </nut-trend-arrow>
   </nut-cell>
 </template>
@@ -166,8 +165,8 @@ app.use(TrendArrow);
 
 | 名称    | 说明         |
 |---------|--------------|
-| upIcon | 自定义向上箭头图标，默认使用 `TriangleUp` |
-| downIcon | 自定义向下箭头图标，默认使用 `TriangleDown` |
+| up-icon | 自定义向上箭头图标，默认使用 `TriangleUp` |
+| down-icon | 自定义向下箭头图标，默认使用 `TriangleDown` |
 
 ## 主题定制
 

@@ -80,7 +80,7 @@ app.use(Popup)
 
 ### 图标
 
-通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`closeIcon` 来自定义显示图标
+通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 来自定义显示图标
 
 :::demo
 
@@ -92,7 +92,7 @@ app.use(Popup)
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="自定义图标" is-link @click="showCloseIcon = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
-    <template #closeIcon>
+    <template #close-icon>
       <Heart></Heart>
     </template>
   </nut-popup>
@@ -244,7 +244,7 @@ app.use(Popup)
 | 名称 | 说明       |
 | ------ | ---------- |
 | default  | 自定义内嵌内容 |
-| closeIcon  | 关闭按钮的自定义图标 |
+| close-icon  | 关闭按钮的自定义图标 |
 
 
 ## 主题定制

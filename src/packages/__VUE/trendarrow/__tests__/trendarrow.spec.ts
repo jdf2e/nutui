@@ -126,13 +126,13 @@ test('should render triangle color when dropColor used', async () => {
   const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
   expect(span.element.style.color).toContain('(73, 143, 242)');
 });
-test('should render SVG icon when use downIcon slots', async () => {
+test('should render SVG icon when use down-icon slots', async () => {
   const wrapper = mount(Trendarrow, {
     props: {
       rate: -10
     },
     slots: {
-      downIcon: h(Failure, {
+      'down-icon': h(Failure, {
         color: 'blue',
         width: '18',
         height: '18'
