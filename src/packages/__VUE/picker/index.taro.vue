@@ -17,7 +17,6 @@
       :indicatorStyle="`height:${optionHeight}px`"
       :value="defaultIndexes"
       :style="pickerViewStyles"
-      :immediate-change="true"
       @change="tileChange"
       @pickstart="handlePickstart"
       @pickend="handlePickend"
