@@ -38,6 +38,11 @@
     display: flex;
     align-items: center;
     color: $inputnumber-icon-color;
+    .nut-icon {
+      width: $inputnumber-icon-size;
+      height: $inputnumber-icon-size;
+      font-size: $inputnumber-icon-size;
+    }
     cursor: pointer;
     &--disabled {
       color: $inputnumber-icon-void-color;
@@ -53,6 +58,7 @@
   input,
   &__text--readonly,
   &__text--input {
+    width: $inputnumber-input-width;
     height: 100%;
     text-align: center;
     display: flex;
