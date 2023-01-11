@@ -32,7 +32,7 @@ app.use(Comment);
   >
     <template #comment-labels>
       <img
-        class="nut-comment-header__labels--item"
+        style="height:15px;width:50px"
         src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
       />
     </template>
@@ -40,7 +40,7 @@ app.use(Comment);
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -104,7 +104,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -146,7 +146,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -250,6 +250,7 @@ const follow = {
   "content": "", // 追评内容
   "images": [] // 追评图片
 }
+```
 
 ## 主题定制
 

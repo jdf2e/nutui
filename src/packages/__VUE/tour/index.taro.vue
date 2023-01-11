@@ -25,7 +25,7 @@
             <view class="nut-tour-content" v-if="type == 'step'">
               <view class="nut-tour-content-top" v-if="showTitleBar">
                 <view @click="close">
-                  <Close class="nut-tour-content-top-close" />
+                  <Close class="nut-tour-content-top-close" size="10px" />
                 </view>
               </view>
               <view class="nut-tour-content-inner">

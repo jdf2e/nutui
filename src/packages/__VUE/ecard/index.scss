@@ -1,33 +1,36 @@
 .nut-theme-dark {
   .nut-ecard {
     color: $dark-color3;
+
     ::placeholder {
       color: rgb(29, 31, 32);
     }
+
     .nut-ecard__list__item {
       background: $dark-background5;
+
       &.active {
         background: $dark-background6;
         outline: 1px solid $dark-color2;
         color: $dark-color2;
       }
     }
+
     .nut-ecard__list__input {
       color: $dark-color3;
       background: $dark-background7;
+
       &.active {
         background: $dark-background7;
+
         > view > input {
           background: $dark-background7;
         }
       }
+
       .nut-ecard__list__input--con > input {
         background-color: transparent;
         color: $dark-color3;
-      }
-      .nut-ecard-input {
-        outline: none;
-        border: none;
       }
     }
   }
@@ -82,10 +85,21 @@
         flex: 1;
         display: flex;
         justify-content: flex-end;
-        > input {
+
+        input {
           caret-color: $primary-color; //光标颜色
           text-align: right;
-          background: $ecard-bg-color;
+          background: transparent;
+          margin-right: 10px;
+          outline: 0 none;
+          border: 0;
+          text-decoration: none;
+        }
+
+        .nut-ecard-input {
+          caret-color: $primary-color; //光标颜色
+          text-align: right;
+          background: transparent;
           margin-right: 10px;
           outline: 0 none;
           border: 0;

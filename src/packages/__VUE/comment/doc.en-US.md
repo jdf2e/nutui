@@ -40,7 +40,6 @@ By default, images of reviews for individual items are displayed in a single sli
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
@@ -244,6 +243,8 @@ const follow = {
   "content": "", // Review content
   "images": [] // Review images
 }
+```
+
 ## Theming
 
 ### CSS Variables

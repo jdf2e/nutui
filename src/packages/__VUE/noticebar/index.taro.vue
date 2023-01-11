@@ -13,8 +13,9 @@
       v-if="direction == 'across'"
     >
       <view class="nut-noticebar__page-lefticon">
-        <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
-        <component :is="renderIcon(leftIcon)" v-else></component>
+        <slot name="left-icon">
+          <Notice v-if="leftIcon" size="16px"></Notice>
+        </slot>
       </view>
       <view ref="wrap" :class="`nut-noticebar__page-wrap wrap${id}`">
         <view
@@ -131,7 +132,10 @@ export default create({
       type: Boolean,
       default: false
     },
-    leftIcon: { type: Object || String, default: () => Notice },
+    leftIcon: {
+      type: Boolean,
+      default: true
+    },
     color: {
       type: String,
       default: '#F9911B'

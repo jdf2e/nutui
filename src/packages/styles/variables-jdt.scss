@@ -472,10 +472,8 @@ $fixednav-item-active-color: var(--nut-fixednav-item-active-color, $primary-colo
 $noticebar-background: var(--nut-noticebar-background, #f2f8ff) !default;
 $noticebar-color: var(--nut-noticebar-color, #2c68ff) !default;
 $noticebar-font-size: var(--nut-noticebar-font-size, 14px) !default;
-$noticebar-height: var(--nut-noticebar-height, 40px) !default;
-$noticebar-line-height: var(--nut-noticebar-line-height, 24px) !default;
-$noticebar-left-icon-width: var(--nut-noticebar-left-icon-width, 16px) !default;
-$noticebar-right-icon-width: var(--nut-noticebar-right-icon-width, 16px) !default;
+$noticebar-across-height: var(--nut-noticebar-across-height, 40px) !default;
+$noticebar-across-line-height: var(--nut-noticebar-across-line-height, 24px) !default;
 $noticebar-box-padding: var(--nut-noticebar-box-padding, 0 16px) !default;
 $noticebar-wrapable-padding: var(--nut-noticebar-wrapable-padding, 16px) !default;
 $noticebar-lefticon-margin: var(--nut-noticebar-lefticon-margin, 0px 10px) !default;

@@ -59,7 +59,7 @@
       <slot name="upload-icon">
         <Photograph color="#808080" />
       </slot>
-      <nut-button class="nut-uploader__input" @click="chooseImage" />
+      <nut-button class="nut-uploader__input" :class="{ disabled }" @click="chooseImage" />
     </view>
   </view>
 </template>
