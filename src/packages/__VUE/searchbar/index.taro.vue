@@ -33,8 +33,8 @@
           v-if="clearable"
           v-show="String(modelValue).length > 0"
         >
-          <template v-if="$slots.clearIcon">
-            <slot name="clearIcon"></slot>
+          <template v-if="$slots['clear-icon']">
+            <slot name="clear-icon"></slot>
           </template>
           <component :is="renderIcon(clearIcon)" v-else></component>
         </view>

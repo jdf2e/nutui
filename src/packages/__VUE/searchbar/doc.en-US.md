@@ -152,7 +152,7 @@ export default {
 ```html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:clearIcon>
+    <template v-slot:clear-icon>
       <img :src="icon" style="width: 10px; height: 10px" />
     </template>
   </nut-searchbar>
