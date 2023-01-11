@@ -2,128 +2,96 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
 
-    <nut-form>
-      <nut-form-item :label="translate('addressTip')">
-        <input
-          class="nut-input-text"
-          @click="demo1.visible = true"
-          :value="demo1.value"
-          readonly
-          :placeholder="translate('addressTip1')"
-          type="text"
-        />
-        <nut-cascader
-          :title="translate('addressTip')"
-          v-model:visible="demo1.visible"
-          v-model="demo1.value"
-          @change="events.change"
-          @path-change="events.pathChange"
-          :options="demo1.options"
-          close-icon="heart"
-          close-icon-position="top-left"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell
+      :title="translate('addressTip')"
+      :desc="demo1.value.toString() || translate('addressTip1')"
+      @click="demo1.visible = true"
+    >
+    </nut-cell>
+    <nut-cascader
+      :title="translate('addressTip')"
+      v-model:visible="demo1.visible"
+      v-model="demo1.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo1.options"
+    ></nut-cascader>
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-form>
-      <nut-form-item :label="translate('addressTip')">
-        <input
-          class="nut-input-text"
-          @click="demo2.visible = true"
-          :value="demo2.value"
-          readonly
-          :placeholder="translate('addressTip1')"
-          type="text"
-        />
-        <nut-cascader
-          :title="translate('addressTip')"
-          v-model:visible="demo2.visible"
-          v-model="demo2.value"
-          text-key="text"
-          @change="events.change"
-          @path-change="events.pathChange"
-          value-key="text"
-          children-key="items"
-          :options="demo2.options"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell
+      :title="translate('addressTip')"
+      :desc="demo2.value.toString() || translate('addressTip1')"
+      @click="demo2.visible = true"
+    >
+    </nut-cell>
+    <nut-cascader
+      :title="translate('addressTip')"
+      v-model:visible="demo2.visible"
+      v-model="demo2.value"
+      labelKey="text"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      valueKey="text"
+      childrenKey="items"
+      :options="demo2.options"
+    ></nut-cascader>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-form>
-      <nut-form-item :label="translate('addressTip')">
-        <input
-          class="nut-input-text"
-          @click="demo3.visible = true"
-          :value="demo3.value"
-          readonly
-          :placeholder="translate('addressTip1')"
-          type="text"
-        />
-        <nut-cascader
-          :title="translate('addressTip')"
-          v-model:visible="demo3.visible"
-          v-model="demo3.value"
-          @change="events.change"
-          @path-change="events.pathChange"
-          lazy
-          :lazy-load="demo3.lazyLoad"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell
+      :title="translate('addressTip')"
+      :desc="demo3.value.toString() || translate('addressTip1')"
+      @click="demo3.visible = true"
+    >
+    </nut-cell>
+    <nut-cascader
+      :title="translate('addressTip')"
+      v-model:visible="demo3.visible"
+      v-model="demo3.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      lazy
+      :lazyLoad="demo3.lazyLoad"
+    ></nut-cascader>
 
     <h2>{{ translate('title3') }}</h2>
-    <nut-form>
-      <nut-form-item :label="translate('addressTip')">
-        <input
-          class="nut-input-text"
-          @click="demo4.visible = true"
-          :value="demo4.value"
-          readonly
-          :placeholder="translate('addressTip1')"
-          type="text"
-        />
-        <nut-cascader
-          :title="translate('addressTip')"
-          v-model:visible="demo4.visible"
-          v-model="demo4.value"
-          @change="events.change"
-          @path-change="events.pathChange"
-          :options="demo4.options"
-          lazy
-          :lazy-load="demo4.lazyLoad"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell
+      :title="translate('addressTip')"
+      :desc="demo4.value.toString() || translate('addressTip1')"
+      @click="demo4.visible = true"
+    >
+    </nut-cell>
+    <nut-cascader
+      :title="translate('addressTip')"
+      v-model:visible="demo4.visible"
+      v-model="demo4.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo4.options"
+      lazy
+      :lazyLoad="demo4.lazyLoad"
+    ></nut-cascader>
 
     <h2>{{ translate('title4') }}</h2>
-    <nut-form>
-      <nut-form-item :label="translate('addressTip')">
-        <input
-          class="nut-input-text"
-          @click="demo5.visible = true"
-          :value="demo5.value"
-          readonly
-          :placeholder="translate('addressTip1')"
-          type="text"
-        />
-        <nut-cascader
-          :title="translate('addressTip')"
-          v-model:visible="demo5.visible"
-          v-model="demo5.value"
-          @change="events.change"
-          @path-change="events.pathChange"
-          :options="demo5.options"
-          :convertConfig="demo5.convertConfig"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell
+      :title="translate('addressTip')"
+      :desc="demo5.value.toString() || translate('addressTip1')"
+      @click="demo5.visible = true"
+    >
+    </nut-cell>
+    <nut-cascader
+      :title="translate('addressTip')"
+      v-model:visible="demo5.visible"
+      v-model="demo5.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo5.options"
+      :convertConfig="demo5.convertConfig"
+    ></nut-cascader>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, watch } from 'vue';
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('cascader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

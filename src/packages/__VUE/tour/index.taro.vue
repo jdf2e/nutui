@@ -83,12 +83,13 @@ import Taro from '@tarojs/taro';
 import Popover from '../popover/index.taro.vue';
 
 interface StepOptions {
-  target: Element;
-  content: String;
-  location?: PopoverLocation;
+  target: Element | string;
+  content: string;
+  location?: string;
   popoverOffset?: number[];
   arrowOffset?: number;
 }
+
 const { create } = createComponent('tour');
 export default create({
   components: {
