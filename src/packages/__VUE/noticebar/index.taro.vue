@@ -215,10 +215,10 @@ export default create({
     const barStyle = computed(() => {
       let style: {
         [props: string]: any;
-      } = {
-        color: props.color,
-        background: props.background
-      };
+      } = {};
+
+      props.color && (style.color = props.color);
+      props.background && (style.background = props.background);
 
       if (props.direction == 'vertical') {
         style.height = `${props.height}px`;
