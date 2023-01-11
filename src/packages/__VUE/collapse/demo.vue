@@ -52,7 +52,7 @@
     <h2>{{ translate('basic6') }}</h2>
     <nut-collapse v-model="active6" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1">
-        <template v-slot:extraRender>{{ translate('title5') }}</template>
+        <template v-slot:extra>{{ translate('title5') }}</template>
         {{ translate('desc1') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2">
