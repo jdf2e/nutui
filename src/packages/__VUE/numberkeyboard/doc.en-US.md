@@ -20,7 +20,7 @@ For online debugging, please change the browser to mobile mode
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Default Keyboard"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="Default Keyboard"></nut-cell>
     <nut-number-keyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-number-keyboard>
 </template>
 <script>
@@ -60,7 +60,7 @@ export default{
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Keyboard With Sidebar"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="Keyboard With Sidebar"></nut-cell>
      <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
@@ -107,7 +107,7 @@ export default{
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Random Key Order"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard"  title="Random Key Order"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       v-model:visible="visible"
@@ -152,7 +152,7 @@ export default{
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="Show Keyboard With Title"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)"  title="Show Keyboard With Title"></nut-cell>
     <nut-number-keyboard
       title="title"
       v-model:visible="visible"
@@ -196,7 +196,7 @@ export default{
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="IdNumber Keyboard"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)"  title="IdNumber Keyboard"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible"
       :custom-key="customKey"
@@ -245,7 +245,6 @@ export default{
       desc-text-align="left"
       @click="showKeyBoard"
       :desc="value"
-      :showIcon="true"
       title="Bind Value"
     ></nut-cell>
      <nut-number-keyboard 

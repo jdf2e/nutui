@@ -29,16 +29,17 @@
         />
         <view v-else class="nut-uploader__preview-img__file">
           <view class="nut-uploader__preview-img__file__name" @click="fileItemClick(item)">
-            <Link color="#808080" />&nbsp;{{ item.name }}
+            <view class="file__name_tips">{{ item.name }}</view>
           </view>
         </view>
         <view class="tips">{{ item.name }}</view>
       </view>
       <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
         <view class="nut-uploader__preview-img__file__name" @click="fileItemClick(item)" :class="[item.status]">
-          <Link />&nbsp;{{ item.name }}
+          <Link class="nut-uploader__preview-img__file__link" />
+          <view class="file__name_tips">{{ item.name }}</view>
+          <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
         </view>
-        <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
 
         <nut-progress
           size="small"
@@ -58,7 +59,7 @@
       <slot name="upload-icon">
         <Photograph color="#808080" />
       </slot>
-      <nut-button class="nut-uploader__input" @click="chooseImage" />
+      <nut-button class="nut-uploader__input" :class="{ disabled }" @click="chooseImage" />
     </view>
   </view>
 </template>
@@ -177,7 +178,10 @@ export default create({
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType: props.sizeType,
         sourceType: props.sourceType,
-        success: onChange
+        success: onChange,
+        fail: (res: any) => {
+          emit('failure', res);
+        }
       });
     };
 

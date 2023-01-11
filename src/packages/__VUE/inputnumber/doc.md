@@ -242,8 +242,8 @@ app.use(InputNumber);
 | 参数           | 说明                       | 类型             | 默认值  |
 |----------------|----------------------------|------------------|---------|
 | v-model        | 初始值                     | string \| number | -       |
-| input-width    | 输入框宽度                 | string           | `40px`  |
-| button-size    | 操作符+、-尺寸             | string           | `20px`  |
+| input-width    | 输入框宽度                 | string           | ``  |
+| button-size    | 操作符+、-尺寸             | string           | ``  |
 | min            | 最小值限制                 | string \| number | `1`     |
 | max            | 最大值限制                 | string \| number | `9999`  |
 | step           | 步长                       | string \| number | `1`     |
@@ -255,8 +255,8 @@ app.use(InputNumber);
 
 | 名称      | 说明           |
 |-----------|----------------|
-| leftIcon  | 自定义左侧按钮 |
-| rightIcon | 自定义右侧按钮 |
+| left-icon  | 自定义左侧按钮 |
+| right-icon | 自定义右侧按钮 |
 
 ### Events
 
@@ -279,6 +279,8 @@ app.use(InputNumber);
 |------------------------------------------|----------------------------|
 | --nut-inputnumber-icon-color             | _var(--nut-title-color)_   |
 | --nut-inputnumber-icon-void-color        | _var(--nut-disable-color)_ |
+| --nut-inputnumber-icon-size                | _20px_                     |
+| --nut-inputnumber-input-width                | _40px_                     |
 | --nut-inputnumber-input-font-size        | _12px_                     |
 | --nut-inputnumber-input-font-color       | _var(--nut-title-color)_   |
 | --nut-inputnumber-input-background-color | _var(--nut-help-color)_    |
@@ -291,3 +293,4 @@ app.use(InputNumber);
 | --nut-inputnumber-line-height            | _normal_                   |
 | --nut-inputnumber-border-box             | _content-box_              |
 | --nut-inputnumber-display                | _flex_                     |
+

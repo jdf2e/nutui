@@ -10,10 +10,10 @@
     <h2>自定义按钮</h2>
     <nut-pagination v-model="currentPage3" :total-items="500" :show-page-size="5" @change="pageChange">
       <template #prev-text>
-        <Left width="10px" height="10px" />
+        <Left size="10px" />
       </template>
       <template #next-text>
-        <Right width="10px" height="10px" />
+        <Right size="10px" />
       </template>
       <template #page="{ item }">
         {{ item.number == 3 ? 'hot' : item.text }}

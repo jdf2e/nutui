@@ -25,7 +25,7 @@
             <view class="nut-tour-content" v-if="type == 'step'">
               <view class="nut-tour-content-top" v-if="showTitleBar">
                 <view @click="close">
-                  <Close class="nut-tour-content-top-close" />
+                  <Close class="nut-tour-content-top-close" size="10px" />
                 </view>
               </view>
               <view class="nut-tour-content-inner">
@@ -222,7 +222,8 @@ export default create({
       props.steps.forEach(async (item, i) => {
         let rect;
         if (Taro.getEnv() === 'WEB') {
-          rect = await useRect(document.querySelector(`#${item.target}`));
+          const el = document.querySelector(`#${item.target}`) as Element;
+          rect = await useRect(el);
         } else {
           rect = await useTaroRect(item.target, Taro);
         }

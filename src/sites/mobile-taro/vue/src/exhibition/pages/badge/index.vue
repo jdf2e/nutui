@@ -48,20 +48,20 @@
     <h2>自定义徽标内容</h2>
     <nut-row>
       <nut-badge>
-        <template #icons>
-          <Check color="#ffffff" width="12px" height="12px"></Check>
+        <template #icon>
+          <Check color="#ffffff" size="12px"></Check>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
-        <template #icons>
-          <Link color="#ffffff" width="12px" height="12px"></Link>
+        <template #icon>
+          <Link color="#ffffff" size="12px"></Link>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
-        <template #icons>
-          <Download color="#ffffff" width="12px" height="12px"></Download>
+        <template #icon>
+          <Download color="#ffffff" size="12px"></Download>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>

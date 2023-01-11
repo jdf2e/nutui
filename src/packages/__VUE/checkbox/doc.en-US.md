@@ -450,7 +450,7 @@ When the value changes, the `change` event will be triggered
 
 | methodName | Description | Arguments 
 |----- | ----- | ----- 
-| toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection
+| toggleAll | Select all / cancel | `true`,to select all，`false`,cancel the selection
 | toggleReverse | Reverse selection | -
 
 ## Theming

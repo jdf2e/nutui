@@ -164,9 +164,9 @@ Customize the content in the slot named content.
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.customized" location="top-start" custom-class="customClass">
+  <nut-popover v-model:visible="visible.customized" location="bottom-start" custom-class="customClass">
      <template #reference>
-       <nut-button type="primary" shape="square">custom content</nut-button>
+       <nut-button type="primary" shape="square">Custom Content</nut-button>
      </template>
 
      <template #content>
@@ -191,27 +191,21 @@ export default {
    });
    const selfContent = reactive([
      {
-       name: Service,
        desc: 'option1'
      },
      {
-       name: Notice,
        desc: 'option2'
      },
      {
-       name: Location,
        desc: 'option3'
      },
      {
-       name: Category,
        desc: 'option4'
      },
      {
-       name: Scan2,
        desc: 'option5'
      },
      {
-       name: Message,
        desc: 'option6'
      }
    ]);
@@ -274,34 +268,113 @@ bottom-end    # Bottom right
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible" location="top" theme="dark" :list="iconItemList">
-    <template #reference>
-      <div class="brick"></div>
-    </template>
-  </nut-popover>
+  <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
+  <nut-popup position="bottom" v-model:visible="showPicker">
+      <nut-picker
+        :columns="columns"
+        title=""
+        @change="change"
+        :swipe-duration="500"
+        @confirm="closePicker"
+        @close="closePicker"
+      >
+        <template #top>
+          <div class="brickBox">
+            <div class="brick" id="pickerTarget"></div>
+          </div>
+        </template>
+      </nut-picker>
+    </nut-popup>
+
+    <nut-popover
+      v-model:visible="customPositon"
+      targetId="pickerTarget"
+      :location="curPostion"
+      theme="dark"
+      :list="positionList"
+    >
+    </nut-popover>
 </template>
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref(false);
+    const showPicker = ref(false);
+    const customPositon = ref(false);
+    const curPostion = ref('top');
+    const positionList = reactive([
+      {
+        name: 'option1'
+      },
+      {
+        name: 'option2'
+      }
+    ]);
+    const closePicker = () => {
+      customPositon.value = false;
+      showPicker.value = false;
+    };
 
-    const iconItemList = reactive([
-        {
-          name: 'option1'
-        },
-        {
-          name: 'option2'
-        }]);
+    const change = ({ selectedValue }) => {
+      curPostion.value = selectedValue[0];
+      if (showPicker.value) customPositon.value = true;
+    };
+
+    const handlePicker = () => {
+      showPicker.value= true;
+      setTimeout(() => {
+        customPositon.value = true;
+      }, 0);
+    };
+
+     const columns = ref([
+      { text: 'top', value: 'top' },
+      { text: 'top-start', value: 'top-start' },
+      { text: 'top-end', value: 'top-end' },
+      { text: 'right', value: 'right' },
+      { text: 'right-start', value: 'right-start' },
+      { text: 'right-end', value: 'right-end' },
+      { text: 'bottom', value: 'bottom' },
+      { text: 'bottom-start', value: 'bottom-start' },
+      { text: 'bottom-end', value: 'bottom-end' },
+      { text: 'left', value: 'left' },
+      { text: 'left-start', value: 'left-start' },
+      { text: 'left-end', value: 'left-end' }
+    ]);
 
       return {
-        iconItemList,
-        visible,
+        positionList,
+        showPicker,
+        customPositon,
+        curPostion,
+        closePicker,
+        change,
+        handlePicker,
+        columns
       };
     }
 };
 </script>
+
+<style lang="scss">
+
+.nut-popover-content {
+    width: 120px;
+}
+
+.brickBox {
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  .brick {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+    border-radius: 10px;
+  }
+}
+</style>
 ```
 :::
 
@@ -408,10 +481,10 @@ export default {
 | visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset        | the offset of the occurrence position  | [number, number]   | `[0, 12]`  |
+| offset        | the offset of the occurrence position  | [number,number]   | `[0, 12]`  |
 | show-arrow        | whether to show small arrows  | boolean  | `true`  |
 | custom-class        | custom class   | string  | `''`  |
-| duration        | Transition duration，Unit second  |  [number, string]  | `0.3`  |
+| duration        | Transition duration，Unit second  |  number \| string  | `0.3`  |
 | overlay        | Whether to show overlay  | boolean  | `false`  |
 | overlay-class        | Custom overlay class | string  | `''`  |
 | overlay-style        | Custom overlay style  | string  | `''`  |
@@ -429,7 +502,7 @@ The List property is an array of objects, each object in the array is configured
 | Key            | Description                 | Type      | Default  |
 |----------------|----------------------|----------|--------|
 | name           | option text               | string   | `-`      |
-| icon           | @nutui/icons-vue name      | string   | `-`      |
+| icon           | @nutui/icons-vue name      | VNode   | `-`      |
 | disabled       | whether to disable          | boolean  | `false`  | 
 | className       | Add extra class names for corresponding options          | string \| Array \| object  | `-`  | 
 

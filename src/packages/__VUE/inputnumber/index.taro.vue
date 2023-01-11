@@ -5,8 +5,8 @@
       :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       @click="reduce"
     >
-      <slot name="leftIcon">
-        <Minus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+      <slot name="left-icon">
+        <Minus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
     <view v-if="readonly" class="nut-input-number__text--readonly">
@@ -18,7 +18,7 @@
       type="number"
       :min="min"
       :max="max"
-      :style="{ width: pxCheck(inputWidth) }"
+      :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
@@ -31,8 +31,8 @@
       :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
       @click="add"
     >
-      <slot name="rightIcon">
-        <Plus :width="pxCheck(buttonSize)" :height="pxCheck(buttonSize)" />
+      <slot name="right-icon">
+        <Plus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
   </view>
@@ -52,11 +52,11 @@ export default create({
     },
     inputWidth: {
       type: [Number, String],
-      default: '40px'
+      default: ''
     },
     buttonSize: {
       type: [Number, String],
-      default: '20px'
+      default: ''
     },
     min: {
       type: [Number, String],

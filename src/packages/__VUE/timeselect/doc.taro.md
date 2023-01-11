@@ -285,7 +285,7 @@ app.use(TimeDetail);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .timeselect-title {
   height: 50px;
   p {

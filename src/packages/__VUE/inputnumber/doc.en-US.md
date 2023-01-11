@@ -242,8 +242,8 @@ Asynchronous modification through `change` event and `model-value`
 | Attribute      | Description                                            | Type             | Default |
 |----------------|--------------------------------------------------------|------------------|---------|
 | v-model        | Initial value                                          | string \| number | -       |
-| input-width    | Input box width                                        | string           | `40px`  |
-| button-size    | Operators +, - Dimensions                              | string           | `20px`  |
+| input-width    | Input box width                                        | string           | ``  |
+| button-size    | Operators +, - Dimensions                              | string           | ``  |
 | min            | Minimum limit                                          | string \| number | `1`     |
 | max            | Maximum limit                                          | string \| number | `9999`  |
 | step           | step                                                   | string \| number | `1`     |
@@ -255,8 +255,8 @@ Asynchronous modification through `change` event and `model-value`
 
 | Name      | Description       |
 |-----------|-------------------|
-| leftIcon  | Custom left icon  |
-| rightIcon | Custom right icon |
+| left-icon  | Custom left icon  |
+| right-icon | Custom right icon |
 
 ### Events
 
@@ -279,6 +279,8 @@ The component provides the following CSS variables, which can be used to customi
 |------------------------------------------|----------------------------|
 | --nut-inputnumber-icon-color             | _var(--nut-title-color)_   |
 | --nut-inputnumber-icon-void-color        | _var(--nut-disable-color)_ |
+| --nut-inputnumber-icon-size                | _20px_                     |
+| --nut-inputnumber-input-width                | _40px_                     |
 | --nut-inputnumber-input-font-size        | _12px_                     |
 | --nut-inputnumber-input-font-color       | _var(--nut-title-color)_   |
 | --nut-inputnumber-input-background-color | _var(--nut-help-color)_    |

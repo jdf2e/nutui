@@ -6,7 +6,7 @@
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" @delete="onDelete" maximum="3" multiple>
     </nut-uploader>
     <h2>{{ translate('title2') }}</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
+    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList1" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">{{ translate('uploadfile') }}</nut-button>
     </nut-uploader>
     <h2>{{ translate('title3') }}</h2>
@@ -51,6 +51,7 @@ import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('uploader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { showToast } from '../toast/index';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -59,7 +60,7 @@ const initTranslate = () =>
       title1: '上传状态',
       title2: '基础用法-上传列表展示',
       title3: '自定义上传样式',
-      title4: '自定义上传使用默认进度条',
+      title4: '自定义上传配合使用默认进度条',
       title5: '直接调起摄像头（移动端生效）',
       title6: '限制上传数量5个',
       title7: '限制上传大小（每个文件最大不超过 50kb）',
@@ -122,6 +123,29 @@ export default createDemo({
         type: 'image'
       }
     ]);
+    const defaultFileList1 = reactive([
+      {
+        name: 'file 1.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'success',
+        message: translate('success'),
+        type: 'image'
+      },
+      {
+        name: 'file 2.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'error',
+        message: translate('error'),
+        type: 'image'
+      },
+      {
+        name: 'file 3.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'uploading',
+        message: translate('uploading'),
+        type: 'image'
+      }
+    ]);
     const fileToDataURL = (file: Blob): Promise<any> => {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -140,14 +164,14 @@ export default createDemo({
       return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
     };
     const onOversize = (files: File[]) => {
-      console.log('oversize 触发 文件大小不能超过 50kb', files);
+      showToast.text('oversize 触发 文件大小不能超过 50kb');
     };
     const onDelete = (obj: any) => {
-      console.log('delete 事件触发', obj);
+      showToast.text('delete 事件触发');
     };
     const onProgress = ({ event, options, percentage }: any) => {
       progressPercentage.value = percentage;
-      console.log('progress 事件触发', percentage);
+      showToast.text('progress 事件触发' + percentage);
     };
     const beforeUpload = async (file: File[]) => {
       let fileName = file[0].name;
@@ -188,6 +212,7 @@ export default createDemo({
       progressPercentage,
       uploadUrl,
       defaultFileList,
+      defaultFileList1,
       formData,
       uploadRef,
       submitUpload,
