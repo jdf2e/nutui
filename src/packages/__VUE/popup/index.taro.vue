@@ -21,7 +21,7 @@
           class="nut-popup__close-icon"
           :class="'nut-popup__close-icon--' + closeIconPosition"
         >
-          <slot name="closeIcon">
+          <slot name="close-icon">
             <Close height="12px"></Close>
           </slot>
         </view>
