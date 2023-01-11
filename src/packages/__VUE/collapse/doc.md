@@ -146,14 +146,14 @@ export default {
 
 ### 设置固定内容（不折叠）
 
-通过 slot:extraRender 设置内容
+通过 slot:extra 设置内容
 :::demo
 
 ```html
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extraRender>固定内容</template>
+      <template v-slot:extra>固定内容</template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -206,7 +206,7 @@ export default {
 |------|------|
 | title | 标题栏左侧内容插槽 | 
 | value | 标题栏右侧内容插槽 | 
-| extraRender | 设置标题下固定内容（不折叠） |
+| extra | 设置标题下固定内容（不折叠） |
 
 ### Events
 

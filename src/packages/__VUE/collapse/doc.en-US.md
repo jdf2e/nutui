@@ -147,7 +147,7 @@ export default {
 
 ### Set fixed content (do not collapse)
 
-Set content through slot: extrarender
+Set content through slot: extra
 
 :::demo
 
@@ -155,7 +155,7 @@ Set content through slot: extrarender
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extraRender>fixed content</template>
+      <template v-slot:extra>fixed content</template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -208,7 +208,7 @@ export default {
 |------|------|
 |title | Content slot on the left side of the title bar|
 |alue | Right content slot of the title bar|
-|extraRender | Set fixed content under the title (no folding)|
+|extra | Set fixed content under the title (no folding)|
 
 
 
