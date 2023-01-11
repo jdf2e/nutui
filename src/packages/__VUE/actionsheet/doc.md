@@ -266,7 +266,6 @@ export default {
      <nut-action-sheet v-model:visible="state.isVisible" title="标题">
       <div class="custom-content">自定义内容</div>
     </nut-action-sheet>
-    </div>
 </template>
 <script>
 import { reactive } from 'vue';
