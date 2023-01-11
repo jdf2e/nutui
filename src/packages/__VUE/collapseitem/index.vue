@@ -22,9 +22,9 @@
       </view>
     </view>
 
-    <view v-if="$slots.extraRender" class="nut-collapse__item-extraWrapper">
+    <view v-if="$slots.extra" class="nut-collapse__item-extraWrapper">
       <div class="nut-collapse__item-extraWrapper__extraRender">
-        <slot name="extraRender"></slot>
+        <slot name="extra"></slot>
       </div>
     </view>
     <view class="nut-collapse__item-wrapper" ref="wrapperRef">

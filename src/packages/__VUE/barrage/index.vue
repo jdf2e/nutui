@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUnmounted, onDeactivated, ref, watch, nextTick, useSlots, onActivated } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('barrage');
 
@@ -40,7 +40,7 @@ export default create({
       default: true
     }
   },
-  setup(props, { slots }) {
+  setup(props) {
     const classTime = new Date().getTime();
     const slotDefault = !!useSlots().default;
 
@@ -64,6 +64,17 @@ export default create({
 
     onMounted(() => {
       init();
+      if (slotDefault) {
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'hidden') {
+            clearTime();
+            index.value = 0;
+            eleSlot('hidden');
+          } else if (document.visibilityState === 'visible') {
+            init();
+          }
+        });
+      }
     });
 
     onUnmounted(() => {
@@ -74,21 +85,32 @@ export default create({
     const init = () => {
       danmuCWidth.value = dmBody.value.offsetWidth;
       if (slotDefault) {
-        const list = document.getElementsByClassName('slotBody' + classTime);
-        let childrens = list?.[0]?.children || [];
-        const dmList: any[] = [];
-        if (childrens) {
-          Array.from(childrens).forEach((item: any) => {
-            item.style.opacity = '0';
-            dmList.push(item);
-          });
-        }
-        danmuList.value = dmList;
+        eleSlot('init');
       }
       setTimeout(() => {
         dmBody.value?.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
         run();
       }, 300);
+    };
+
+    const eleSlot = (flag?: string) => {
+      const list = document.getElementsByClassName('slotBody' + classTime);
+      let childrens = list?.[0]?.children || [];
+      const dmList: any[] = [];
+      if (childrens) {
+        Array.from(childrens).forEach((item: any) => {
+          if (flag == 'init') {
+            item.style.opacity = '0';
+            dmList.push(item);
+          } else {
+            item.classList = '';
+            item.style = {};
+          }
+        });
+      }
+      if (flag == 'init') {
+        danmuList.value = dmList;
+      }
     };
 
     const clearTime = () => {
@@ -118,10 +140,8 @@ export default create({
       clearTime();
       timer = setTimeout(() => {
         play();
-        run();
       }, props.frequency);
     };
-    // const distance = ref('0');
     const play = () => {
       if (!props.loop && index.value >= danmuList.value.length) {
         return;
@@ -151,18 +171,26 @@ export default create({
           const width = el.offsetWidth;
           el.style.width = width + 20 + 'px';
         }
-        // el.style.left = "-"+(_index % rows.value) + 'px';
+        // el.style.left = '-' + (_index % rows.value) + 'px';
         // el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
         // distance.value = '-' + (speeds / 1000) * 150 + '%';
-        el.dataset.index = `${_index}`;
+        // el.dataset.index = `${_index}`;
+
         el.addEventListener('animationend', () => {
           if (slotDefault) {
-            el?.classList?.contains('move') && el.classList.remove('move');
+            el.classList.remove('move');
           } else {
             dmContainer.value.removeChild(el);
           }
         });
         index.value++;
+        if (index.value >= danmuList.value.length) {
+          index.value = 0;
+        }
+        el.removeEventListener('animationend', () => {
+          // 回调
+        });
+        run();
       });
     };
     return { classTime, classes, danmuList, dmBody, dmContainer, add };
