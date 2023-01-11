@@ -42,14 +42,11 @@ app.use(Noticebar);
 
 ```html
 <template>
-  <nut-noticebar text="华为畅享9新品即将上市" :scrollable="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"></nut-noticebar>
+  <nut-noticebar text="华为畅享9新品即将上市" :scrollable="true" ></nut-noticebar>
 
   <nut-noticebar
       text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
-      :scrollable="false"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-    ></nut-noticebar>
+      :scrollable="false"></nut-noticebar>
 </template>
 
 ```
@@ -66,12 +63,7 @@ app.use(Noticebar);
     NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
  
-  <nut-noticebar
-      :close-mode="true"
-      right-icon="circle-close"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-      >
+  <nut-noticebar :close-mode="true">
       NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
 </template>
@@ -110,8 +102,6 @@ app.use(Noticebar);
   <nut-noticebar
       text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       wrapable
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
     ></nut-noticebar>
 </template>
 ```
@@ -127,9 +117,7 @@ app.use(Noticebar);
       :speed='10' 
       :standTime='1000' 
       @click='go' 
-      :close-mode="true" 
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`">
+      :close-mode="true" >
   </nut-noticebar>
 </template>
 
@@ -154,7 +142,7 @@ app.use(Noticebar);
 :::demo
 ```html
 <template>
-  <nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"></nut-noticebar>
+  <nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true'></nut-noticebar>
 </template>
 
 <script>
@@ -174,7 +162,7 @@ app.use(Noticebar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]">
       <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
     </nut-noticebar>
 </template>
@@ -196,8 +184,8 @@ app.use(Noticebar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
-      <template v-slot:rightIcon>
+    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' >
+      <template #right-icon>
         <Fabulous />
       </template>
     </nut-noticebar>
@@ -242,7 +230,7 @@ app.use(Noticebar);
 | stand-time         | 停留时间(毫秒) | number | `1000`                |
 | complex-am | 稍复杂的动画，耗能会高     | boolean | `false` |
 | height          | 每一个滚动列的高度(px)，注意：在使用 `slot` 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
-| close-mode  | 是否启用右侧关闭图标，可以通过 `slot[name=rightIcon]` 自定义图标                                   | boolean      | `false`  |
+| close-mode  | 是否启用右侧关闭图标，可以通过 `slot[name=right-icon]` 自定义图标                                   | boolean      | `false`  |
 
 ### Slots
 

@@ -64,7 +64,7 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <slot name="rightIcon">
+        <slot name="right-icon">
           <CircleClose v-if="closeMode" :color="color" size="11px" />
         </slot>
       </view>
