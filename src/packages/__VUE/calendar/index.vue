@@ -34,17 +34,17 @@
       :to-date-animation="toDateAnimation"
       :first-day-of-week="firstDayOfWeek"
     >
-      <template v-slot:btn v-if="showTopBtn">
+      <template #btn v-if="showTopBtn">
         <slot name="btn"> </slot>
       </template>
-      <template v-slot:day="date" v-if="dayInfo">
+      <template #day="date" v-if="dayInfo">
         <slot name="day" :date="date.date"> </slot>
       </template>
-      <template v-slot:topInfo="date" v-if="topInfo">
-        <slot name="topInfo" :date="date.date"> </slot>
+      <template #top-info="date" v-if="topInfo">
+        <slot name="top-info" :date="date.date"> </slot>
       </template>
-      <template v-slot:bottomInfo="date" v-if="bottomInfo">
-        <slot name="bottomInfo" :date="date.date"> </slot>
+      <template #bottom-info="date" v-if="bottomInfo">
+        <slot name="bottom-info" :date="date.date"> </slot>
       </template>
     </nut-calendar-item>
   </nut-popup>
@@ -71,17 +71,17 @@
     :first-day-of-week="firstDayOfWeek"
     ref="calendarRef"
   >
-    <template v-slot:btn v-if="showTopBtn">
+    <template #btn v-if="showTopBtn">
       <slot name="btn"> </slot>
     </template>
-    <template v-slot:day="date" v-if="dayInfo">
+    <template #day="date" v-if="dayInfo">
       <slot name="day" :date="date.date"> </slot>
     </template>
-    <template v-slot:topInfo="date" v-if="topInfo">
-      <slot name="topInfo" :date="date.date"> </slot>
+    <template #top-info="date" v-if="topInfo">
+      <slot name="top-info" :date="date.date"> </slot>
     </template>
-    <template v-slot:bottomInfo="date" v-if="bottomInfo">
-      <slot name="bottomInfo" :date="date.date"> </slot>
+    <template #bottom-info="date" v-if="bottomInfo">
+      <slot name="bottom-info" :date="date.date"> </slot>
     </template>
   </nut-calendar-item>
 </template>
@@ -172,13 +172,14 @@ export default create({
       return slots.btn;
     });
     const topInfo = computed(() => {
-      return slots.topInfo;
+      return slots['top-info'];
     });
     const dayInfo = computed(() => {
       return slots.day;
     });
     const bottomInfo = computed(() => {
-      return slots.bottomInfo;
+      console.log(slots);
+      return slots['bottom-info'];
     });
     // element refs
     const calendarRef = ref<null | CalendarRef>(null);

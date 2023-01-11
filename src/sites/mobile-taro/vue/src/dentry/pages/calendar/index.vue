@@ -119,14 +119,14 @@
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
-        <template v-slot:btn>
+        <template #btn>
           <view class="wrapper">
             <view class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></view>
             <view class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></view>
             <view class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></view>
           </view>
         </template>
-        <template v-slot:day="date">
+        <template #day="date">
           <span>{{ date.date.day }}</span>
         </template>
       </nut-calendar>
@@ -145,17 +145,17 @@
         type="range"
         @close="closeSwitch('isVisible6')"
         @choose="setChooseValue6"
-        :start-date="`2022-02-01`"
-        :end-date="`2022-3-30`"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-12-31`"
         confirm-text="submit"
         start-text="入店"
         end-text="离店"
         title="日期选择"
       >
-        <template v-slot:day="date">
+        <template #day="date">
           <view>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</view>
         </template>
-        <template v-slot:bottomInfo="date">
+        <template #bottom-info="date">
           <view class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</view>
         </template>
       </nut-calendar>

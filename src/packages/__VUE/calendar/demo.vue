@@ -160,7 +160,7 @@
         <template v-slot:day="date">
           <span>{{ renderDate(date) }}</span>
         </template>
-        <template v-slot:bottomInfo="date">
+        <template #bottom-info="date">
           <span class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span>
         </template>
       </nut-calendar>

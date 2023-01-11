@@ -301,14 +301,14 @@ export default {
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
-    <template v-slot:btn>
+    <template #btn>
       <div class="wrapper">
         <div class="d_div"> <span class="d_btn" @click="goDate">Go Date</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn">Last Seven Days</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn1">This Month</span></div>
       </div>
     </template>
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day }}</span>
     </template>
   </nut-calendar>
@@ -451,10 +451,10 @@ export default {
     end-text="Leave"
     title="Select Date"
   >
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
-    <template v-slot:bottomInfo="date">
+    <template #bottom-info="date">
       <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
@@ -624,8 +624,8 @@ export default {
 |---------|--------------|
 | btn | 	Below the custom calendar header, you can add custom actions |
 | day | 	Date information |
-| topInfo | 	Date top information |
-| bottomInfo | 	Date bottom information |
+| top-info | 	Date top information |
+| bottom-info | 	Date bottom information |
 
 ### Methods
 
