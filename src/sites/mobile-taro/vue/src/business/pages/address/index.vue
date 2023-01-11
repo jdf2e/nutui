@@ -73,7 +73,7 @@
       :selected-icon="selectedIcon"
       :close-btn-icon="closeBtnIcon"
     >
-      <template #unselectedIcon>
+      <template #unselected-icon>
         <Heart1 style="margin-right: 8px"></Heart1>
       </template>
       <template #icon>

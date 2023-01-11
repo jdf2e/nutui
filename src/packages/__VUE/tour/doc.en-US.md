@@ -340,8 +340,8 @@ export default {
 | Name   | Description           |
 |---------|--------------|
 | default | Custom popover content |
-| prevStep | Custom prev strep content|
-| nextStep |  Custom prev strep content |
+| prev-step | Custom prev strep content|
+| next-step |  Custom prev strep content |
 
 ### Events
 

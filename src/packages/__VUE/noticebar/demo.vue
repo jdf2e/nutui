@@ -66,7 +66,7 @@
     <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
-        <template v-slot:rightIcon>
+        <template #right-icon>
           <Fabulous />
         </template>
       </nut-noticebar>

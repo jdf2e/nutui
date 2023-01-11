@@ -255,7 +255,7 @@ export default {
   ></nut-tour>
 </template>
 
-<script lang="ts">
+<script>
 import { reactive, toRefs } from 'vue';
 export default {
   setup() {
@@ -339,8 +339,8 @@ export default {
 | 名称    | 说明         |
 |---------|--------------|
 | default | 自定义气泡层内容|
-|prevStep | 自定义上一步内容|
-|nextStep | 自定义下一步内容 |
+|prev-step | 自定义上一步内容|
+|next-step | 自定义下一步内容 |
 
 ### Events
 

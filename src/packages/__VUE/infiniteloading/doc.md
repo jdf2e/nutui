@@ -182,7 +182,7 @@ app.use(InfiniteLoading);
 |--------|----------------|
 | default  | 自定义加载内容 |
 | loading  | 自定义底部加载中提示 |
-| loadingIcon  | 自定义底部加载中图标 |
+| loading-icon  | 自定义底部加载中图标 |
 | finished  | 自定义加载完成后的提示文案 |
 
 
