@@ -760,7 +760,6 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
-          "taro": true,
           "tarodoc": true,
           "type": "component",
           "cName": "滚动加载",
@@ -828,7 +827,6 @@
         {
           "version": "3.0.0",
           "name": "Audio",
-          "taro": true,
           "tarodoc": true,
           "type": "component",
           "cName": "音频播放器",
