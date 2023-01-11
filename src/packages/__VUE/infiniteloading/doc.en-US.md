@@ -181,7 +181,7 @@ app.use(InfiniteLoading);
 |--------|----------------|
 | default  | Custom content |
 | loading  | Loading text |
-| loadingIcon  | Custom loading icon |
+| loading-icon  | Custom loading icon |
 | finished  | Finished text |
 
 ## Theming

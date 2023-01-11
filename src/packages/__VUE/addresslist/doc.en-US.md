@@ -261,11 +261,11 @@ The `AddressList` component is divided into several areas by default, and these 
 
 | Name          | Description                                     | Illustrate  |
 | ------------- | ----------------------------------------------- | ----------- |
-| iteminfos     | Address list item name/contact/default one line | public      |
+| item-infos     | Address list item name/contact/default one line | public      |
 | itemicon      | address list item icon                          | public      |
 | itemaddr      | Address list item detailed address              | public      |
-| swiperight    | Address list item right swipe area              | Use with swipe |
-| longpressbtns | Address list item long press to mask content    | Use with long press |
+| swipe-right    | Address list item right swipe area              | Use with swipe |
+| longpress-btns | Address list item long press to mask content    | Use with long press |
 
 ### Each item in the data array is smoothed with the parameters of the dataOptions object
 
