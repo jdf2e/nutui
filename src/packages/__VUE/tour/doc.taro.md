@@ -42,7 +42,7 @@ export default {
     const state = reactive({
       showTour3: false,
       steps3: [{
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target7'
         }]
     });
@@ -50,6 +50,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -88,7 +94,7 @@ export default {
     const state = reactive({
       showTour1: false,
       steps1: [{
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target5'
         }]
     });
@@ -96,6 +102,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -140,7 +152,7 @@ export default {
       showTour2: false,
       steps2: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -152,7 +164,11 @@ export default {
 }
 </script>
 
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -225,25 +241,24 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
+    <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
-    <nut-tabbar>
-      <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
-      <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
-      <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
-      <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
-    </nut-tabbar>
+      <nut-tabbar :bottom="true">
+        <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
+        <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
+        <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
+        <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
+      </nut-tabbar>
 
-    <nut-tour
-      class="nut-customword-tour"
-      v-model="showTour"
-      :steps="steps"
-      location="top-start"
-      :offset="[0, 0]"
-      maskWidth="50"
-      maskHeight="50"
-      :showTitleBar="false"
-    ></nut-tour>
+      <nut-tour
+        class="nut-customword-tour"
+        v-model="showTour"
+        :steps="steps"
+        location="top-start"
+        :offset="[0, 0]"
+        maskWidth="60"
+        maskHeight="50"
+      ></nut-tour>
 </template>
 
 <script lang="ts">
@@ -281,6 +296,13 @@ export default {
 page{
   padding-top: 200px;
 }
+.nut-tour-content{
+  display: block;
+  width: 200px;
+}
+.nut-tabbar-item_icon-box_nav-word{
+  font-size: 14px;
+}
 </style>
 ```
 :::
@@ -297,15 +319,15 @@ page{
 | offset       | 镂空遮罩相对于目标元素的偏移量  | [number, number]   | `[8, 10]`  |
 | current      | 类型为 `step` 时，默认展示第几步  | number  | `0`  |
 | custom-class       | 自定义 class 值  | string  | ''  |
-| location      | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)  |  String  | `'bottom'`  |
+| location      | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)  |  string  | `'bottom'`  |
 | next-step-Txt       | 下一步按钮文案  | string   | `'下一步'`  |
 | prev-step-Txt        | 上一步按钮文案  | string   | `'上一步'`  |
 | complete-txt       | 完成按钮文案  | string   | `'完成'`  |
-| mask       | 是否显示镂空遮罩  | Boolean  | `true` |
-| bg-color       | 自定义背景色  | Boolean  | '' |
-| theme       | 气泡遮罩层主题,同 Popopver 的[theme 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | String  | `'light'` |
-| mask-width       | 镂空遮罩层宽度  | Number、String  | '' |
-| mask-height       | 镂空遮罩层高度  | Number、String  | '' |
+| mask       | 是否显示镂空遮罩  | boolean  | `true` |
+| bg-color       | 自定义背景色  | boolean  | '' |
+| theme       | 气泡遮罩层主题,同 Popopver 的[theme 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | string  | `'light'` |
+| mask-width       | 镂空遮罩层宽度  | number \|string  | '' |
+| mask-height       | 镂空遮罩层高度  | number \|string  | '' |
 | close-on-click-overlay      | 是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | `true` |
 | show-prev-step       | 是否展示上一步按钮  | boolean  | `true` |
 | show-title-bar       | 是否展示标题栏  |  boolean  | `false` |
@@ -315,9 +337,9 @@ page{
 | 键名            | 说明                 | 类型      | 默认值  |
 |----------------|----------------------|----------|--------|
 | target           | 目标对象               | Element   | -      |
-| content           | 气泡层内容     | String   | ''     |
-| location       | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | String  | `'bottom'`  |
-| popover-offset      | 气泡层偏移量，同 Popopver 的[offset 属性](https://nutui.jd.com/#/zh-CN/component/popover)             | string/Array/object  | -  | 
+| content           | 气泡层内容     | string   | ''     |
+| location       | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | string  | `'bottom'`  |
+| popover-offset      | 气泡层偏移量，同 Popopver 的[offset 属性](https://nutui.jd.com/#/zh-CN/component/popover)             | [number, number]   | `[0, 12]` | 
 | arrow-offset      | 小箭头的偏移量，同 Popopver 的[arrowOffset 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | `0`  | 
 
 

@@ -109,7 +109,7 @@
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="50"
+      maskWidth="60"
       maskHeight="50"
     ></nut-tour>
   </div>
@@ -281,5 +281,8 @@ export default createDemo({
   .nut-divider {
     border-color: #fff;
   }
+}
+.nut-tabbar-item_icon-box_nav-word {
+  font-size: 14px;
 }
 </style>

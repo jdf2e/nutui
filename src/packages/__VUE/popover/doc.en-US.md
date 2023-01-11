@@ -164,9 +164,9 @@ Customize the content in the slot named content.
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.customized" location="top-start" custom-class="customClass">
+  <nut-popover v-model:visible="visible.customized" location="bottom-start" custom-class="customClass">
      <template #reference>
-       <nut-button type="primary" shape="square">自定义内容</nut-button>
+       <nut-button type="primary" shape="square">Custom Content</nut-button>
      </template>
 
      <template #content>
@@ -481,7 +481,7 @@ export default {
 | visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset        | the offset of the occurrence position  | number \| string   | `[0, 12]`  |
+| offset        | the offset of the occurrence position  | [number,number]   | `[0, 12]`  |
 | show-arrow        | whether to show small arrows  | boolean  | `true`  |
 | custom-class        | custom class   | string  | `''`  |
 | duration        | Transition duration，Unit second  |  number \| string  | `0.3`  |
