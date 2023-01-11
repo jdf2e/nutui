@@ -1,18 +1,18 @@
 <template>
   <div class="nut-address-list-general" v-if="!swipeEdition">
     <component :is="renderCompontent()" @touchstart="holddownstart" @touchend="holddownend" @touchmove="holddownmove">
-      <template v-slot:contentTop>
-        <slot name="contentInfo"></slot>
+      <template #content-top>
+        <slot name="content-info"></slot>
       </template>
-      <template v-slot:contentIcon>
-        <slot name="contentIcons"></slot>
+      <template #content-icon>
+        <slot name="content-icons"></slot>
       </template>
-      <template v-slot:contentAddr>
-        <slot name="contentAddrs"></slot>
+      <template #content-addr>
+        <slot name="content-addrs"></slot>
       </template>
     </component>
     <div class="nut-address-list-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
-      <slot name="longpressAll">
+      <slot name="longpress-all">
         <div class="nut-address-list-general__mask-copy" @click="copyCLick"> 复制地址 </div>
         <div class="nut-address-list-general__mask-set" @click="setDefault"> 设置默认 </div>
         <div class="nut-address-list-general__mask-del" @click="delLongClick"> 删除地址 </div>
@@ -23,19 +23,19 @@
   <nut-swipe v-else>
     <div class="nut-address-list-swipe">
       <component :is="renderCompontent()" @touchmove="swipemove" @touchstart="swipestart">
-        <template v-slot:contentTop>
-          <slot name="contentInfo"></slot>
+        <template #content-top>
+          <slot name="content-info"></slot>
         </template>
-        <template v-slot:contentIcon>
-          <slot name="contentIcons"></slot>
+        <template #content-icon>
+          <slot name="content-icons"></slot>
         </template>
-        <template v-slot:contentAddr>
-          <slot name="contentAddrs"></slot>
+        <template #content-addr>
+          <slot name="content-addrs"></slot>
         </template>
       </component>
     </div>
     <template #right>
-      <slot name="swiperightbtn">
+      <slot name="swipe-right-btn">
         <nut-button shape="square" style="height: 100%" type="danger" @click="swipeDelClick">删除</nut-button>
       </slot>
     </template>
