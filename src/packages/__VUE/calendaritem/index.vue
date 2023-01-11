@@ -34,10 +34,10 @@
                       </slot>
                     </view>
                     <view class="nut-calendar__day-tips nut-calendar__day-tips--top" v-if="topInfo">
-                      <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot>
+                      <slot name="top-info" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
                     <view class="nut-calendar__day-tips nut-calendar__day-tips--bottom" v-if="bottomInfo">
-                      <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
+                      <slot name="bottom-info" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
                     <view class="nut-calendar__day-tips--curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
                       {{ translate('today') }}</view
@@ -164,10 +164,10 @@ export default create({
       return slots.btn;
     });
     const topInfo = computed(() => {
-      return slots.topInfo;
+      return slots['top-info'];
     });
     const bottomInfo = computed(() => {
-      return slots.bottomInfo;
+      return slots['bottom-info'];
     });
 
     const state: CalendarState = reactive({

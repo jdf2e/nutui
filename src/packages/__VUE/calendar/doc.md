@@ -298,12 +298,10 @@ export default {
     v-model:visible="isVisible"
     :default-value="date"
     type="range"
-    :start-date="null"
-    :end-date="null"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
-    <template v-slot:btn>
+    <template #btn>
       <div class="wrapper">
         <div class="d_div">
           <span class="d_btn" @click="goDate">去某个时间</span>
@@ -316,7 +314,7 @@ export default {
         </div>
       </div>
     </template>
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day }}</span>
     </template>
   </nut-calendar>
@@ -381,11 +379,11 @@ export default {
      const setChooseValue = param => {
       state.date= param[3];
     };
-    const clickBtn = (param: string) => {
+    const clickBtn = () => {
       let date = [date2Str(new Date()), getDay(6)];
       state.date = date;
     };
-    const clickBtn1 = (param: string) => {
+    const clickBtn1 = () => {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
@@ -396,7 +394,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(date2Str(date1));
       }
     };
     return {
@@ -416,6 +416,7 @@ export default {
 .wrapper {
   display: flex;
   padding: 0 40px;
+  justify-content: center;
 }
 .d_div {
   margin: 0px 5px;
@@ -426,7 +427,6 @@ export default {
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
-    height: 16px;
   }
 }
 
@@ -458,10 +458,10 @@ export default {
     end-text="离店"
     title="日期选择"
   >
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
-    <template v-slot:bottomInfo="date">
+    <template #bottom-info="date">
       <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
@@ -634,8 +634,8 @@ export default {
 |---------|--------------|
 | btn | 	自定义日历标题下部，可用以添加自定义操作 |
 | day | 	日期信息 |
-| topInfo | 	日期顶部信息 |
-| bottomInfo | 	日期底部信息 |
+| top-info | 	日期顶部信息 |
+| bottom-info | 	日期底部信息 |
 
 ### Methods
 
