@@ -26,9 +26,9 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 
 ```html
 <template>
-<nut-collapse v-model:active="activeNames">
+<nut-collapse v-model="activeNames">
   <nut-collapse-item :name="1">
-    <template v-slot:mTitle>
+    <template v-slot:title>
       {{title1}}
     </template>
     Nutui is a lightweight Vue component library with JD style
@@ -56,7 +56,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ### accordion
@@ -66,7 +66,7 @@ You can set accordion mode through 'accordion', and expand up to one panel. At t
 :::demo
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :value="subTitle">
       Build scenes based on JD design language system
     </nut-collapse-item>
@@ -96,7 +96,7 @@ export default {
     };
   }
 }
-</script>
+</>
 ```
 
 :::
@@ -109,11 +109,11 @@ Set custom icons through icon and rotate to set the rotation angle of icons
 ```html
 <template>
   <nut-collapse
-    v-model:active="activeName"
+    v-model="activeName"
     :accordion="true"
   >
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:sTitle>
+      <template v-slot:value>
         text test
       </template>
       NUTUI3. 0 rethink its internal consistency and composability
@@ -153,7 +153,7 @@ Set content through slot: extrarender
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
       <template v-slot:extraRender>fixed content</template>
       Nutui is a lightweight Vue component library with JD style

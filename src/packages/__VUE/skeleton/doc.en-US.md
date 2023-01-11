@@ -158,7 +158,7 @@ export default {
 |------------|-------------------------------------------------|---------|----------|
 | loading    | Whether to display skeleton screen                                    | boolean | `true`    | 
 | width       | Width per row                                        | string  | `default` |
-| height      | Height of each row                                        | string  | `100px`   |
+| height      | Height of each row                                        | string  | `15px`   |
 | animated    | Whether to turn on skeleton screen animation            | boolean  | `false`  |
 | avatar      | Show avatar                      | boolean | `false`   |
 | avatar-shape      | Avatar shape: square / round                       | string | `round`   |

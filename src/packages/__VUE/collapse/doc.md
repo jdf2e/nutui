@@ -23,9 +23,9 @@ app.use(CollapseItem);
 
 ```html
 <template>
-<nut-collapse v-model:active="activeNames">
+<nut-collapse v-model="activeNames">
   <nut-collapse-item :name="1">
-    <template v-slot:mTitle>
+    <template v-slot:title>
       {{title1}}
     </template>
     NutUI是一套拥有京东风格的轻量级的 Vue 组件库
@@ -53,7 +53,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -65,7 +65,7 @@ export default {
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :value="subTitle">
       基于京东设计语言体系，构建场景
     </nut-collapse-item>
@@ -108,11 +108,11 @@ export default {
 ```html
 <template>
   <nut-collapse
-    v-model:active="activeName"
+    v-model="activeName"
     :accordion="true"
   >
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:sTitle>
+      <template v-slot:value>
         文本测试
       </template>
       NUTUI3.0重新思考其内在的一致性和可组合性
@@ -151,7 +151,7 @@ export default {
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
       <template v-slot:extraRender>固定内容</template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
