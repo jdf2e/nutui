@@ -68,7 +68,7 @@ app.use(ImagePreview);
 ```html
 <template>
     <nut-image-preview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
-    <nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn"></nut-cell>
+    <nut-cell isLink title="设置初始页码" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -296,7 +296,7 @@ app.use(ImagePreview);
 ## API
 ### Props
  
-| 字段 | 说明 | 类型 | 默认值 | 
+| 参数 | 说明 | 类型 | 默认值 | 
 |----- | ----- | ----- | ----- |
 | show | 是否展示预览图片 | boolean | `false` |
 | videos | 预览的视频数组（视频自动放到图片之前） | VideoArray[] | `[]` |
@@ -308,8 +308,8 @@ app.use(ImagePreview);
 | content-close   | 点击图片可以退出预览    | boolean  | `false`  |
 | show-index  | 是否显示页码    | boolean  | `true`  |
 | closeable  | 是否显示关闭图标    | boolean  | `false`  |
-| close-icon-position   | 关闭图标位置，可选值：top-left   | string  | `top-right`  |  
-| before-close  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
+| close-icon-position   | 关闭图标位置，可选值：`top-left`   | string  | `top-right`  |  
+| before-close  | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise`   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 | max-zoom  | 手势缩放时，最大缩放比例  | number  | `3`  | 
 | min-zoom  | 手势缩放时，最小缩放比例   | number  | `1/3`  | 
 | is-loop  | 是否循环播放   | boolean  | `true`  | 
@@ -319,27 +319,27 @@ app.use(ImagePreview);
 
 | 键名 | 说明 | 类型 | 
 |----- | ----- | ----- | 
-| src | 预览图片链接 | `string` | 
+| src | 预览图片链接 | string | 
 
 ### VideoArray 数据结构
 
 | 键名 | 说明 | 类型 | 
 |----- | ----- | ----- | 
-| source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | `object` | 
-| options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | `object` | 
+| source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | object | 
+| options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | object | 
 
 
 
 ### Events
 
-|字段|说明|回调参数|
+|事件名|说明|回调参数|
 |--|--|--|
 |close|点击遮罩关闭图片预览时触发|无|
 |change|切换图片时触发| index:当前图片索引|
 
 ### Slots
 
-|事件名|说明|
+|名称|说明|
 |--|--|
 |closeIcon| 自定义关闭图片|
     

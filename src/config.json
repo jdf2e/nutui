@@ -15,21 +15,21 @@
         "show": true
       },
       {
-        "name": "starttaro",
-        "cName": "小程序开发",
-        "eName": "WeChat",
+        "name": "official-theme",
+        "cName": "官方主题",
+        "eName": "Official Theme",
         "show": true
       },
       {
         "name": "theme",
-        "cName": "主题定制",
+        "cName": "定制主题",
         "eName": "Customize Theme",
         "show": true
       },
       {
-        "name": "theme-variable",
-        "cName": "动态主题",
-        "eName": "Variable Theme",
+        "name": "migrate-from-v3",
+        "cName": "从 v3 升级到 v4",
+        "eName": "Migrate-from-v3",
         "show": true
       },
       {
@@ -51,30 +51,13 @@
         "path": "#/contributing",
         "show": true
       },
-      {
-        "name": "migrate-from-v3",
-        "cName": "从 v3 升级到 v4",
-        "eName": "migrate-from-v3",
-        "show": true
-      },
+      
       {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "eName": "Changelog",
         "show": true,
         "isLink": true
-      },
-      {
-        "name": "resource",
-        "cName": "资源",
-        "eName": "Resources",
-        "show": true
-      },
-      {
-        "name": "notice",
-        "cName": "常见问题",
-        "eName": "FAQ",
-        "show": true
       }
     ]
   },
@@ -164,6 +147,7 @@
           "cName": "全局配置",
           "desc": "用于配置NutUI组件全局",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "richard1015",
@@ -233,6 +217,7 @@
           "type": "component",
           "desc": "当组件在屏幕范围内时，会按照正常的布局排列，当组件滚出屏幕范围时，始终会固定在距离屏幕固定的距离处",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "author": "szg2008",
           "styleDeps": []
@@ -775,7 +760,6 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
-          "taro": true,
           "tarodoc": true,
           "type": "component",
           "cName": "滚动加载",
@@ -843,7 +827,6 @@
         {
           "version": "3.0.0",
           "name": "Audio",
-          "taro": true,
           "tarodoc": true,
           "type": "component",
           "cName": "音频播放器",
@@ -906,6 +889,7 @@
           "cName": "虚拟列表",
           "desc": "可在成千上万条数据渲染时只渲染用户最大可见条数，提升页面渲染性能",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "szg2008",
@@ -1043,6 +1027,7 @@
           "type": "methods",
           "cName": "图片预览",
           "desc": "图片预览",
+          "taro": true,
           "sort": 4,
           "show": true,
           "author": "zongyue3",
@@ -1177,6 +1162,7 @@
           "cName": "文本省略",
           "desc": "文本省略",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu3",
@@ -1189,6 +1175,7 @@
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "liukun",
@@ -1201,6 +1188,7 @@
           "cName": "趋势箭头",
           "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "liukun",
@@ -1213,6 +1201,7 @@
           "cName": "引导",
           "desc": "漫游式引导组件",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu",
@@ -1330,6 +1319,7 @@
           "cName": "虚拟电子卡",
           "desc": "虚拟电子卡选择",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu",
@@ -1375,6 +1365,7 @@
           "cName": "商品评论",
           "desc": "商品评论",
           "show": true,
+          "taro": true,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu",

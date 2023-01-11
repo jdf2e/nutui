@@ -1,6 +1,7 @@
 <template>
-  <view class="demo">
-    <h2>默认用法</h2>
+  <view class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
@@ -87,9 +88,15 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       imgUrl:
         '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
@@ -101,7 +108,8 @@ export default {
       shopName: '阳澄湖大闸蟹自营店>'
     });
     return {
-      state
+      state,
+      env
     };
   }
 };

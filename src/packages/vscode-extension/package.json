@@ -3,7 +3,7 @@
 	"private": true,
 	"displayName": "nutui-vscode-extension",
 	"description": "nutui extension for vscode",
-	"version": "0.0.2",
+	"version": "1.0.1",
 	"icon": "src/nutui.png",
 	"engines": {
 		"vscode": "^1.66.0"
@@ -11,7 +11,7 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/jdf2e/nutui.git",
-    "directory": "src/packages/vscode-extension"
+		"directory": "src/packages/vscode-extension"
 	},
 	"categories": [
 		"Other"
@@ -36,7 +36,7 @@
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",
-		"@types/node": "14.x",
+		"@types/node": "^14.x",
 		"@types/vscode": "^1.65.0",
 		"@typescript-eslint/eslint-plugin": "^5.9.1",
 		"@typescript-eslint/parser": "^5.9.1",
@@ -48,7 +48,8 @@
 		"ts-loader": "^9.2.6",
 		"typescript": "^4.5.4",
 		"webpack": "^5.66.0",
-		"webpack-cli": "^4.9.1"
+		"webpack-cli": "^4.9.1",
+		"vscode": "^1.1.37"
 	},
 	"dependencies": {
 		"vsce": "^2.7.0"

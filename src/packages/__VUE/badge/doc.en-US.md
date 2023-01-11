@@ -119,19 +119,19 @@ app.use(Badge);
 <template>
   <div class="demo">
     <nut-badge>
-      <template #icons>
+      <template #icon>
         <Check color="#ffffff" width="12px" height="12px"></Check>
       </template>
       <nut-avatar shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
-      <template #icons>
+      <template #icon>
         <Link color="#ffffff" width="12px" height="12px"></Link>
       </template>
       <nut-avatar shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
-      <template #icons>
+      <template #icon>
         <Download color="#ffffff" width="12px" height="12px"></Download>
       </template>
       <nut-avatar shape="square"></nut-avatar>
@@ -228,13 +228,13 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 | Name   | Description           |
 |---------|--------------|
 | default | Default slot |
-| icons | 	Icon slot |
+| icon | 	Icon slot |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |
@@ -242,6 +242,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-badge-color| _#fff_ |
 | --nut-badge-font-size| _var(--nut-font-size-1)_ |
 | --nut-badge-border-radius| _14px_ |
+| --nut-badge-icon-padding| _4px_ |
 | --nut-badge-padding| _0 5px_ |
 | --nut-badge-content-transform| _translate(50%, -50%)_ |
 | --nut-badge-z-index| _1_ |

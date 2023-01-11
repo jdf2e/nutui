@@ -12,7 +12,6 @@ import { List } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### Basic Usage
@@ -76,8 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
+    height: 100%;
     background-color: #f4a8b6;
     border-radius: 10px;
   }
@@ -93,30 +91,29 @@ body {
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| height         | The height of the list item               | Number | `50`                |
+| height         | The height of the list item               | number | `50`                |
 | list-data         | List data               | any[] | `[]`                |
-| container-height       | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
+| container-height       | Container height(The maximum value cannot exceed the viewable area)              | number | `Visual area height`                |
 
 ### Slots
 
-| Attribute         | Description                             | Type   |
+| Name         | Description                             | Type   |
 |--------------|----------------------------------|--------|
-| item         | List item data               | Object |
-| index         | Indexes               | Number |
+| item         | List item data               | object |
+| index         | Indexes               | number |
 
 ### Events
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| scroll(Will be abandoned), `scroll-bottom` replaced  | Triggered when scrolling to the bottom | - |
 | scroll-bottom   | Triggered when scrolling to the bottom | - |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-list-item-margin       | _0 0 10px 0_        | -    |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-list-item-margin       | _0 0 10px 0_        |

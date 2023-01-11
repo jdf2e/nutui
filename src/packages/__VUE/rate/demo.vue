@@ -1,25 +1,33 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-rate v-model="state.val" />
+    <nut-cell class="cell">
+      <nut-rate v-model="state.val" />
+    </nut-cell>
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-rate allow-half v-model="state.val1"></nut-rate>
+    <nut-cell class="cell"><nut-rate allow-half v-model="state.val1"></nut-rate></nut-cell>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-rate :icon="HeartFill" v-model="state.val2"></nut-rate>
+    <nut-cell class="cell"><nut-rate :custom-icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
 
     <h2>{{ translate('title3') }}</h2>
-    <nut-rate :count="6" v-model="state.val3"></nut-rate>
+    <nut-cell class="cell"><nut-rate count="10" v-model="state.val3"></nut-rate></nut-cell>
+
+    <h2>{{ translate('title4') }}</h2>
+    <nut-cell class="cell"><nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate></nut-cell>
 
     <h2>{{ translate('title5') }}</h2>
-    <nut-rate disabled v-model="state.val5"></nut-rate>
+    <nut-cell class="cell"><nut-rate disabled v-model="state.val5"></nut-rate></nut-cell>
 
     <h2>{{ translate('title6') }}</h2>
-    <nut-rate v-model="state.val6" readonly></nut-rate>
+    <nut-cell class="cell"><nut-rate v-model="state.val6" readonly></nut-rate></nut-cell>
 
     <h2>{{ translate('title7') }}</h2>
-    <nut-rate v-model="state.val7" @change="onChange"></nut-rate>
+    <nut-cell class="cell"><nut-rate v-model="state.val7" @change="onChange"></nut-rate></nut-cell>
+
+    <h2>{{ translate('title8') }}</h2>
+    <nut-cell class="cell"><nut-rate v-model="state.val8" size="35"></nut-rate></nut-cell>
   </div>
 </template>
 
@@ -33,7 +41,7 @@ import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '半星',
       title2: '自定义 icon',
       title3: '自定义数量',

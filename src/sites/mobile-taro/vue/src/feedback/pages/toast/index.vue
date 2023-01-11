@@ -1,6 +1,7 @@
 <template>
-  <div class="demo">
-    <h2>基本用法</h2>
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <nut-toast
       :msg="page.state.msg"
       v-model:visible="page.state.show"
@@ -36,8 +37,14 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const page = {
       state: reactive({
         msg: 'toast',
@@ -70,7 +77,8 @@ export default {
       }
     };
     return {
-      page
+      page,
+      env
     };
   }
 };

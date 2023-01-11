@@ -11,7 +11,7 @@
         <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
             ref="inputsearch"
-            class="nut-searchbar__input-bar"
+            :class="['nut-searchbar__input-bar', clearable && 'nut-searchbar__input-bar_clear']"
             :type="inputType"
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"
@@ -33,8 +33,8 @@
           v-if="clearable"
           v-show="String(modelValue).length > 0"
         >
-          <template v-if="$slots.clearIcon">
-            <slot name="clearIcon"></slot>
+          <template v-if="$slots['clear-icon']">
+            <slot name="clear-icon"></slot>
           </template>
           <component :is="renderIcon(clearIcon)" v-else></component>
         </view>

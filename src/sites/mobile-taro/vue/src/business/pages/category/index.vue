@@ -1,16 +1,17 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>经典分类模式</h2>
     <nut-category :category="category" @change="change">
-      <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
+      <nut-category-pane :categoryChild="categoryChild1" @onChange="onChange"> </nut-category-pane>
     </nut-category>
 
     <h2>只显示文字</h2>
     <nut-category :category="category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
+      <nut-category-pane type="text" :categoryChild="categoryChild2" @onChange="onChange"> </nut-category-pane
     ></nut-category>
 
-    <h2>自定义</h2>
+    <h2>自定义分类</h2>
     <nut-category
       ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
     ></nut-category>
@@ -20,30 +21,35 @@
 <script lang="ts">
 import { categoryInfo, categoryChild, customCategory } from './data';
 import { reactive, toRefs, onMounted } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const data = reactive({
       category: [{}],
-      categoryChild: [{}],
-      customCategory: [{}]
+      categoryChild1: [{}],
+      customCategory: [{}],
+      categoryChild2: [{}]
     });
 
     onMounted(() => {
       setTimeout(() => {
         data.category = categoryInfo.category;
-        data.categoryChild = categoryChild;
+        data.categoryChild1 = categoryChild;
         data.customCategory = customCategory;
+        data.categoryChild2 = categoryChild;
       }, 500);
     });
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild1 = [].concat(data.category[index]?.children as any);
     };
 
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild2 = [].concat(data.category[index]?.children as any);
     };
 
     const changeCustom = () => {
@@ -59,7 +65,8 @@ export default {
       onChange,
       changeText,
       changeCustom,
-      ...toRefs(data)
+      ...toRefs(data),
+      env
     };
   }
 };

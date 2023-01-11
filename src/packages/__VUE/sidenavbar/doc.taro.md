@@ -18,6 +18,8 @@ app.use(SideNavbarItem);
 
 ### 基础用法
 
+可以通过设置 `position` 来控制左右展示
+
 :::demo
 
 ``` html
@@ -66,7 +68,6 @@ app.use(SideNavbarItem);
 :::
 
 ### 嵌套（建议最多三层）
-> 小程序暂不支持异步加载
 
 :::demo
 
@@ -95,9 +96,6 @@ app.use(SideNavbarItem);
         <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
         <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
       </nut-sub-side-navbar>
-      <nut-sub-side-navbar v-for="item in navs" :key="item.id" :title="item.name" :ikey="item.id">
-        <nut-side-navbar-item v-for="citem in item.arr" :key="citem.id" :title="citem.name"></nut-side-navbar-item>
-      </nut-sub-side-navbar>
     </nut-side-navbar>
   </nut-popup>
 </template>
@@ -114,24 +112,10 @@ app.use(SideNavbarItem);
 
       const handleClick3 = () => {
         state.show3 = true;
-        setTimeout(() => {
-          state.navs = [
-            {
-              id: 16,
-              name: 'asyc abc16',
-              arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
-            },
-            {
-              id: 17,
-              name: 'asyc abc17',
-              arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
-            }
-          ];
-        }, 2000);
       };
 
       const handleClick4 = (msg: string) => {
-        
+        console.log(msg)
       }
 
       return {
@@ -147,38 +131,37 @@ app.use(SideNavbarItem);
 :::
 
 ## API
-
 ### SideNavbar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | 导航缩进宽度                                                    | Number、String  | `15`
+| offset                 | 导航缩进宽度                                                    | number \| string  | `15`
 
 ### SubSideNavbar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | ``
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
-| open                 | 导航是否默认展开                                                    | Boolean  | `true`
+| title                 | 导航标题                                                    | string  | ``
+| ikey                 | 导航唯一标识                                                    | number \| string  | ``
+| open                 | 导航是否默认展开                                                    | boolean  | `true`
 
 ### SideNavbarItem Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | `15`
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
+| title                 | 导航标题                                                    | string  | `15`
+| ikey                 | 导航唯一标识                                                    | number \| string  | ``
 
 
 ### SubSideNavbar Events
 
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | title-click | 导航点击 | - |
 
 ### SideNavbarItem Events
 
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | click | 导航点击 | - |
 
@@ -186,7 +169,7 @@ app.use(SideNavbarItem);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 描述 |
 | --------------------------------------- | -------------------------- | ---- |

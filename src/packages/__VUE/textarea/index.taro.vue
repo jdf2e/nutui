@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <view v-if="readonly" class="nut-textarea__textarea">
+    <view v-if="readonly" class="nut-textarea__textarea nut-textarea__textarea__readonly">
       {{ modelValue }}
     </view>
     <textarea
@@ -19,17 +19,23 @@
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
+      @change="endComposing"
+      @compositionend="endComposing"
+      @compositionstart="startComposing"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
     <view class="nut-textarea__cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
   </view>
 </template>
+<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('textarea');
-
+export interface InputTarget extends HTMLInputElement {
+  composing?: boolean;
+}
 export default create({
   props: {
     modelValue: {
@@ -86,10 +92,17 @@ export default create({
     });
 
     const styles: any = computed(() => {
-      return {
-        textAlign: props.textAlign,
-        height: props.autosize ? heightSet.value : 'null'
+      const styleObj: { textAlign: string; height?: string } = {
+        textAlign: props.textAlign
       };
+      if (props.autosize) {
+        styleObj['height'] = heightSet.value;
+      }
+      return styleObj;
+      // return {
+      //   textAlign: props.textAlign,
+      //   height: props.autosize ? heightSet.value : 'null'
+      // };
     });
 
     const copyTxtStyle: any = ref({
@@ -106,8 +119,24 @@ export default create({
     };
 
     const change = (event: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if (!composing.value) {
+          // console.log((event.target as InputTarget)!.composing);
+          _onInput(event);
+        }
+      } else {
+        _onInput(event);
+      }
+      // const input = event.target as HTMLInputElement;
+      // emitChange(input.value, event);
+    };
+    const _onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
-      emitChange(input.value, event);
+      let value = input.value;
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
+      emitChange(value, event);
     };
 
     const focus = (event: Event) => {
@@ -152,14 +181,21 @@ export default create({
       () => props.modelValue,
       () => {
         if (props.autosize) {
-          copyHeight();
+          setTimeout(() => {
+            copyHeight();
+          }, 100);
         }
       }
     );
+    // const listenInput = () => {
+    // window.addEventListener('compositionend', function () {
+    //   copyHeight();
+    // });
+    // };
 
     const copyHeight = () => {
       const query = Taro.createSelectorQuery();
-      query.select('.cpoyText').boundingClientRect();
+      query.select('.nut-textarea__cpoyText').boundingClientRect();
       query.exec((res) => {
         if (res[0]) {
           if (props.modelValue == '') {
@@ -167,9 +203,7 @@ export default create({
           } else {
             textareaHeight.value = res[0]['height'] || 20;
           }
-          setTimeout(() => {
-            getContentHeight();
-          }, 400);
+          nextTick(getContentHeight);
         }
       });
     };
@@ -181,8 +215,10 @@ export default create({
       query.exec((res: any) => {
         if (res[0] && textareaRef.value) {
           let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid);
-          textareaHeight.value = _item[0]['height'] || 20;
-          copyTxtStyle.value.width = _item[0]['width'] + 'px';
+          if (_item[0]) {
+            textareaHeight.value = _item[0]['height'] || 20;
+            copyTxtStyle.value.width = _item[0]['width'] + 'px';
+          }
           nextTick(getContentHeight);
         }
       });
@@ -200,9 +236,10 @@ export default create({
     const env = Taro.getEnv();
     onMounted(() => {
       if (props.autosize) {
+        // listenInput();
         Taro.nextTick(() => {
           setTimeout(() => {
-            if (Taro.getEnv() === 'ALIPAY') {
+            if (Taro.getEnv() === 'ALIPAY' || Taro.getEnv() === 'WEB') {
               getRefWidth();
               copyHeight();
             } else {
@@ -212,6 +249,23 @@ export default create({
         });
       }
     });
+    const composing = ref(false);
+    const startComposing = (event: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        composing.value = true;
+        // (event.target as InputTarget)!.composing = true;
+      }
+    };
+
+    const endComposing = ({ target }: Event) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        if (composing.value) {
+          composing.value = false;
+          // (target as InputTarget)!.composing = false;
+          (target as InputTarget).dispatchEvent(new Event('input'));
+        }
+      }
+    };
 
     return {
       env,
@@ -222,7 +276,9 @@ export default create({
       focus,
       blur,
       translate,
-      copyTxtStyle
+      copyTxtStyle,
+      startComposing,
+      endComposing
     };
   }
 });

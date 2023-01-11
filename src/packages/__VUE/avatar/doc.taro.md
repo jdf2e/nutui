@@ -23,13 +23,13 @@ app.use(Avatar);
 ```html
 <template>
   <nut-avatar size="large">
-    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
   </nut-avatar>
   <nut-avatar size="normal">
-    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
   </nut-avatar>
   <nut-avatar size="small">
-    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
   </nut-avatar>
 </template>
 ```
@@ -222,25 +222,25 @@ Icon 和字符型可以自定义颜色及背景色
 ## API
 ### Avatar Props
 
-| 字段     | 说明                                                        | 类型   | 默认值 |
+| 参数     | 说明                                                        | 类型   | 默认值 |
 | -------- | --------------------------------------------------------- | ------ | ------ |
-| size     | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字   | string ｜ number | normal |
-| shape    | 头像的形状，可选值为：`square`、`round `                      | string | round  |
-| color    | 字体颜色                                     | string | #666   |
-| bg-color | 背景色                                    | string | #eee   |
+| size     | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字   | string \| number | `normal` |
+| shape    | 头像的形状，可选值为：`square`、`round `                      | string | `round`  |
+| color    | 字体颜色                                     | string | `#666`   |
+| bg-color | 背景色                                    | string | `#eee`   |
 
 ### AvatarGroup Props
 
-| 字段     | 说明                                                             | 类型   | 默认值 |
+| 参数     | 说明                                                             | 类型   | 默认值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| max-count    | 显示的最大头像个数   | string ｜ number | - |
-| max-content  | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | string | +N |
-| size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | string ｜ number | normal |
-| shape        | 头像的形状，可选值为：`square`、`round`        | string | round  |
-| max-color    | 头像折叠元素的字体颜色                   | string | #666 |
-| max-bg-color  | 头像折叠元素的背景色                    | string | #eee   |
-| span         | 头像之间的间距               | string | -8   |
-| zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | string | left     |
+| max-count    | 显示的最大头像个数   | string \| number | - |
+| max-content  | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | string | `+N` |
+| size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | string \| number | `normal` |
+| shape        | 头像的形状，可选值为：`square`、`round`        | string | `round`  |
+| max-color    | 头像折叠元素的字体颜色                   | string | `#666` |
+| max-bg-color  | 头像折叠元素的背景色                    | string | `#eee`   |
+| span         | 头像之间的间距               | string | `-8`   |
+| zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | string | `left`     |
 ### Avatar Slots
 
 |名称|描述|

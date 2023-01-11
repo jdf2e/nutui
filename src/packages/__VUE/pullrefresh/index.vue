@@ -1,18 +1,18 @@
 <template>
   <div :class="classes" ref="scroller" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
-    <div class="nut-pullrefresh-container" :style="getStyle">
-      <div class="nut-pullrefresh-container-topbox" :style="getHeightStyle">
+    <div class="nut-pull-refresh-container" :style="getStyle">
+      <div class="nut-pull-refresh-container-topbox" :style="getHeightStyle">
         <Loading
-          class="nut-icon-loading nut-pullrefresh-container-topbox-icon"
+          class="nut-icon-loading nut-pull-refresh-container-topbox-icon"
           v-if="status == 'loading' && !slots.loading"
         ></Loading>
 
-        <div class="nut-pullrefresh-container-topbox-text">{{ getPullStatus }}</div>
+        <div class="nut-pull-refresh-container-topbox-text">{{ getPullStatus }}</div>
 
         <slot v-if="status == 'pulling'" name="pulling"></slot>
         <slot v-if="status == 'loosing'" name="loosing"></slot>
         <slot v-if="status == 'loading'" name="loading"></slot>
-        <slot v-if="status == 'complete'" name="complete"></slot>
+        <!-- <slot v-if="status == 'complete'" name="complete"></slot> -->
       </div>
       <slot></slot>
     </div>
@@ -21,7 +21,7 @@
 <script lang="ts">
 import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('pullrefresh');
+const { componentName, create, translate } = createComponent('pull-refresh');
 import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -50,10 +50,10 @@ export default create({
       default: translate('loading')
     },
 
-    completeTxt: {
-      type: String,
-      default: ''
-    },
+    // completeTxt: {
+    //   type: String,
+    //   default: ''
+    // },
     headHeight: {
       type: [String, Number],
       default: 50
@@ -102,8 +102,8 @@ export default create({
           return !slots.loosing ? props.loosingTxt : '';
         case 'loading':
           return !slots.loading ? props.loadingTxt : '';
-        case 'complete':
-          return !slots.complete ? props.completeTxt : '';
+        // case 'complete':
+        //   return !slots.complete ? props.completeTxt : '';
         default:
           break;
       }

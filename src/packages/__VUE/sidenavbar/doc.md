@@ -18,6 +18,8 @@ app.use(SideNavbarItem);
 
 ### 基础用法
 
+可以通过设置 `position` 来控制左右展示
+
 :::demo
 
 ``` html
@@ -66,7 +68,6 @@ app.use(SideNavbarItem);
 :::
 
 ### 嵌套（建议最多三层）
-> 小程序暂不支持异步加载
 
 :::demo
 
@@ -118,13 +119,13 @@ app.use(SideNavbarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
-              arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+              name: '异步加载1',
+              arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
-              arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+              name: '异步加载2',
+              arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
             }
           ];
         }, 2000);
@@ -150,35 +151,35 @@ app.use(SideNavbarItem);
 
 ### SideNavbar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | 导航缩进宽度                                                    | Number、String  | `15`
+| offset                 | 导航缩进宽度                                                    | number \| string  | `15`
 
 ### SubSideNavbar Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | ``
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
-| open                 | 导航是否默认展开                                                    | Boolean  | `true`
+| title                 | 导航标题                                                    | string  | ``
+| ikey                 | 导航唯一标识                                                    | number \| string  | ``
+| open                 | 导航是否默认展开                                                    | boolean  | `true`
 
 ### SideNavbarItem Props
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 参数                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | 导航标题                                                    | String  | `15`
-| ikey                 | 导航唯一标识                                                    | String、Number  | ``
+| title                 | 导航标题                                                    | string  | `15`
+| ikey                 | 导航唯一标识                                                    | number \| string  | ``
 
 
 ### SubSideNavbar Events
 
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | title-click | 导航点击 | - |
 
 ### SideNavbarItem Events
 
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | click | 导航点击 | - |
 
@@ -186,23 +187,23 @@ app.use(SideNavbarItem);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  | -  |
-| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  | -  |
-| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  | -  |
-| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  | -  |
-| --nut-sidenavbar-sub-title-radius| _0_  | -  |
-| --nut-sidenavbar-sub-title-border| _0_  | -  |
-| --nut-sidenavbar-sub-title-width| _100%_  | -  |
-| --nut-sidenavbar-sub-title-height| _40px_  | -  |
-| --nut-sidenavbar-sub-title-text-line-height| _40px_  | -  |
-| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  | -  |
-| --nut-sidenavbar-item-title-color| _#333_  | -  |
-| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  | -  |
-| --nut-sidenavbar-item-height| _40px_  | -  |
-| --nut-sidenavbar-item-line-height| _40px_  | -  |
-| --nut-sidenavbar-item-font-size| _16px_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  |
+| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  |
+| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  |
+| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  |
+| --nut-sidenavbar-sub-title-radius| _0_  |
+| --nut-sidenavbar-sub-title-border| _0_  |
+| --nut-sidenavbar-sub-title-width| _100%_  |
+| --nut-sidenavbar-sub-title-height| _40px_  |
+| --nut-sidenavbar-sub-title-text-line-height| _40px_  |
+| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  |
+| --nut-sidenavbar-item-title-color| _#333_  |
+| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  |
+| --nut-sidenavbar-item-height| _40px_  |
+| --nut-sidenavbar-item-line-height| _40px_  |
+| --nut-sidenavbar-item-font-size| _16px_  |
 

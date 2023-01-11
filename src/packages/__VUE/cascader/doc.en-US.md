@@ -20,95 +20,83 @@ Pass in the `options` list.
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="Select address">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="Please select an address"
-      type="text"
-    />
-    <nut-cascader
-      title="Select address"
-      v-model:visible="state.visible"
-      v-model="state.value"
-      @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
-    ></nut-cascader>
-  </nut-form-item>
- </nut-form>
+  <nut-cell title="select address" :desc="demo1.value.toString() || 'please select address'" @click="demo1.visible = true"> </nut-cell>
+  <nut-cascader
+    title="select address"
+    v-model:visible="demo1.visible"
+    v-model="demo1.value"
+    @change="events.change"
+    @pathChange="events.pathChange"
+    :options="demo1.options"
+  ></nut-cascader>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
-  setup() {
-    // 基础用法
-    const state = reactive({
-      visible: false,
-      // value: ['湖南'],
-      value: [],
-      options: [
-        {
-          value: '浙江',
-          text: '浙江',
-          children: [
-            {
-              value: '杭州',
-              text: '杭州',
-              disabled: true,
-              children: [
-                { value: '西湖区', text: '西湖区' },
-                { value: '余杭区', text: '余杭区' }
-              ]
-            },
-            {
-              value: '温州',
-              text: '温州',
-              children: [
-                { value: '鹿城区', text: '鹿城区' },
-                { value: '瓯海区', text: '瓯海区' }
-              ]
-            }
-          ]
-        },
-        {
-          value: '湖南',
-          text: '湖南',
-          disabled: true
-        },
-        {
-          value: '福建',
-          text: '福建',
-          children: [
-            {
-              value: '福州',
-              text: '福州',
-              children: [
-                { value: '鼓楼区', text: '鼓楼区' },
-                { value: '台江区', text: '台江区' }
-              ]
-            }
-          ]
-        }
-      ]
-    });
-    const events = {
-      change(...args: any) {
-        console.log('change', ...args);
+setup() {
+  // 基础用法
+  const demo1 = reactive({
+    visible: false,
+    value: ['湖南'],
+    options: [
+      {
+        value: '浙江',
+        text: '浙江',
+        children: [
+          {
+            value: '杭州',
+            text: '杭州',
+            disabled: true,
+            children: [
+              { value: '西湖区', text: '西湖区' },
+              { value: '余杭区', text: '余杭区' }
+            ]
+          },
+          {
+            value: '温州',
+            text: '温州',
+            children: [
+              { value: '鹿城区', text: '鹿城区' },
+              { value: '瓯海区', text: '瓯海区' }
+            ]
+          }
+        ]
       },
-      pathChange(...args: any) {
-        console.log('pathChange', ...args);
+      {
+        value: '湖南',
+        text: '湖南',
+        disabled: true
+      },
+      {
+        value: '福建',
+        text: '福建',
+        children: [
+          {
+            value: '福州',
+            text: '福州',
+            children: [
+              { value: '鼓楼区', text: '鼓楼区' },
+              { value: '台江区', text: '台江区' }
+            ]
+          }
+        ]
       }
-    };
-
-    return {
-      state,
-      events
+    ]
+  });
+  const events = {
+    change(...args: any) {
+      console.log('change', ...args);
+    },
+    pathChange(...args: any) {
+      console.log('pathChange', ...args);
     }
+  };
+
+  return {
+    demo1,
+    events
   }
+}
 }
 </script>
 ```
@@ -120,36 +108,25 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="Select address">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="Please select an address"
-      type="text"
-    />
+    <nut-cell title="select address" :desc="demo2.value.toString() || 'please select address'" @click="demo2.visible = true"> </nut-cell>
     <nut-cascader
-      title="Select address"
-      v-model:visible="state.visible"
-      v-model="state.value"
-      text-key="text"
+      title="select address"
+      v-model:visible="demo2.visible"
+      v-model="demo2.value"
+      labelKey="text"
       @change="events.change"
-      @path-change="events.pathChange"
-      value-key="text"
-      children-key="items"
-      :options="state.options"
+      @pathChange="events.pathChange"
+      valueKey="text"
+      childrenKey="items"
+      :options="demo2.options"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
     // 自定义属性名称
-    const state = reactive({
+    const demo2 = reactive({
       visible: false,
       value: ['福建', '福州', '台江区'],
       options: [
@@ -187,7 +164,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo2, events };
   }
 }
 </script>
@@ -200,33 +177,22 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="Select address">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="Please select an address"
-      type="text"
-    />
+    <nut-cell title="select address" :desc="demo3.value.toString() || 'please select address'" @click="demo3.visible = true"> </nut-cell>
     <nut-cascader
-      title="Select address"
-      v-model:visible="state.visible"
-      v-model="state.value"
+      title="select address"
+      v-model:visible="demo3.visible"
+      v-model="demo3.value"
       @change="events.change"
-      @path-change="events.pathChange"
+      @pathChange="events.pathChange"
       lazy
-      :lazy-load="state.lazyLoad"
+      :lazyLoad="demo3.lazyLoad"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo3 = reactive({
       visible: false,
       value: ['A0', 'A12', 'A23', 'A32'],
       lazyLoad(node: any, resolve: (children: any) => void) {
@@ -250,7 +216,7 @@ export default {
               { value: value3, text: value3, leaf: level >= 6 }
             ]);
           }
-        }, 300);
+        }, 3000);
       }
     });
     const events = {
@@ -262,7 +228,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo3, events };
   }
 }
 </script>
@@ -274,34 +240,23 @@ export default {
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="Select address">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="Please select an address"
-      type="text"
-    />
-    <nut-cascader
-      title="Select address"
-      v-model:visible="state.visible"
-      v-model="state.value"
-      @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
-      lazy
-      :lazy-load="state.lazyLoad"
-    ></nut-cascader>
-  </nut-form-item>
- </nut-form>
+  <nut-cell title="select address" :desc="demo4.value.toString() || 'please select address'" @click="demo4.visible = true"> </nut-cell>
+  <nut-cascader
+    title="select address"
+    v-model:visible="demo4.visible"
+    v-model="demo4.value"
+    @change="events.change"
+    @pathChange="events.pathChange"
+    :options="demo4.options"
+    lazy
+    :lazyLoad="demo4.lazyLoad"
+  ></nut-cascader>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo4 = reactive({
       visible: false,
       value: [],
       options: [
@@ -338,7 +293,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo4, events };
   }
 }
 </script>
@@ -353,33 +308,22 @@ If your data is a flat structure that can be converted into a tree structure, yo
 :::demo
 ```html
 <template>
- <nut-form>
-  <nut-form-item label="Select address" @click="state.visible = true">
-    <input
-      class="nut-input-text"
-      @click="state.visible = true"
-      :value="state.value"
-      readonly
-      placeholder="Please select an address"
-      type="text"
-    />
+    <nut-cell title="select address" :desc="demo5.value.toString() || 'please select address'" @click="demo5.visible = true"> </nut-cell>
     <nut-cascader
-      title="Select address"
-      v-model:visible="state.visible"
-      v-model="state.value"
+      title="select address"
+      v-model:visible="demo5.visible"
+      v-model="demo5.value"
       @change="events.change"
-      @path-change="events.pathChange"
-      :options="state.options"
-      :convertConfig="state.convertConfig"
+      @pathChange="events.pathChange"
+      :options="demo5.options"
+      :convertConfig="demo5.convertConfig"
     ></nut-cascader>
-  </nut-form-item>
- </nut-form>
 </template>
 <script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
-    const state = reactive({
+    const demo5 = reactive({
       visible: false,
       value: ['广东省', '广州市'],
       convertConfig: {
@@ -405,7 +349,7 @@ export default {
       },
     };
 
-    return { state, events };
+    return { demo5, events };
   }
 }
 </script>
@@ -419,6 +363,7 @@ export default {
 | Attribute           | Description                                                                                                  | Type     | Default     |
 |---------------------|--------------------------------------------------------------------------------------------------------------|----------|-------------|
 | v-model             | Selected value, bidirectional binding                                                                        | Array    | -           |
+| v-model:visible             | selected layer                                      | boolean    | `false`           |
 | options             | Cascade data                                                                                                 | Array    | -           |
 | lazy                | Whether to enable dynamic loading                                                                            | boolean  | -           |
 | lazy-load           | Dynamic loading callback, which takes effect when dynamic loading is enabled                                 | Function | -           |
@@ -426,24 +371,23 @@ export default {
 | text-key            | Customize the fields of `text` in the `options` structure                                                    | string   | -           |
 | children-key        | Customize the fields of `children` in the `options` structure                                                | string   | -           |
 | convert-config      | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | object   | -           |
-| title               | Title                                                                                                        | string   | ''          |
-| close-icon-position | Cancel the button position and inherit the popup component                                                   | string   | "top-right" |
-| close-icon          | Customize the close button and inherit the popup component                                                   | string   | "close"     |
-| closeable           | Whether to display the close button and inherit the popup component                                          | boolean  | true        |
-| poppable            | Whether to display the popup（After setting to false, the title is invalid）                                 | boolean  | true        |
+| title               | Title                                                                                                        | string   | `''`          |
+| close-icon-position | Cancel the button position and inherit the popup component                                                   | string   | `"top-right"` |
+| closeable           | Whether to display the close button and inherit the popup component                                          | boolean  | `true`        |
+| poppable            | Whether to display the popup（After setting to false, the title is invalid）                                 | boolean  | `true`        |
 
 ### Events
 
 | Event       | Description                               | Arguments          |
 |-------------|-------------------------------------------|--------------------|
-| change      | Triggered when the selected value changes | (value, pathNodes) |
-| path-change | Triggered when the selected item changes  | (pathNodes)        |
+| change      | Triggered when the selected value changes | `(value, pathNodes)` |
+| path-change | Triggered when the selected item changes  | `(pathNodes) `       |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                             | Default Value              |
 |----------------------------------|----------------------------|

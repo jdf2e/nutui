@@ -13,8 +13,9 @@
       v-if="direction == 'across'"
     >
       <view class="nut-noticebar__page-lefticon">
-        <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
-        <component :is="renderIcon(leftIcon)" v-else></component>
+        <slot name="left-icon">
+          <Notice size="16px" v-if="leftIcon"></Notice>
+        </slot>
       </view>
       <view ref="wrap" class="nut-noticebar__page-wrap">
         <view
@@ -32,7 +33,11 @@
       </view>
     </view>
 
-    <view class="nut-noticebar__vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
+    <view
+      class="nut-noticebar__vertical"
+      v-if="scrollList.length > 0 && direction == 'vertical' && showNoticebar"
+      :style="barStyle"
+    >
       <template v-if="slots.default">
         <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <ScrollItem
@@ -59,7 +64,7 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <slot name="rightIcon">
+        <slot name="right-icon">
           <CircleClose v-if="closeMode" :color="color" size="11px" />
         </slot>
       </view>
@@ -81,7 +86,7 @@ import {
   Slots
 } from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('noticebar');
 import { pxCheck } from '@/packages/utils/pxCheck';
 
@@ -137,7 +142,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    leftIcon: { type: Object || String, default: () => Notice },
+    leftIcon: { type: Boolean, default: true },
     color: {
       type: String,
       default: ''
@@ -352,6 +357,9 @@ export default create({
     };
 
     const handleClickIcon = () => {
+      if (props.closeMode) {
+        state.showNoticebar = !props.closeMode;
+      }
       emit('close', state.scrollList[0]);
     };
 
@@ -403,8 +411,7 @@ export default create({
       handleClickIcon,
       slots,
       pxCheck,
-      wrapContentClass,
-      renderIcon
+      wrapContentClass
     };
   }
 });

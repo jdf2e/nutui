@@ -7,13 +7,11 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { TrendArrow } from '@nutui/nutui';
 
 const app = createApp();
 app.use(TrendArrow);
-
 ```
 
 ### 基础用法
@@ -23,8 +21,8 @@ app.use(TrendArrow);
 ```html
 <template>
   <nut-cell>
-    <nut-trend-arrow :show-text-color="false" :rate="1"/>
-    <nut-trend-arrow :show-text-color="false" :rate="-0.2535"/>
+    <nut-trend-arrow :sync-text-color="false" :rate="1"/>
+    <nut-trend-arrow :sync-text-color="false" :rate="-0.2535"/>
   </nut-cell>
 </template>
 ```
@@ -131,10 +129,10 @@ app.use(TrendArrow);
 <template>
   <nut-cell>
     <nut-trend-arrow :rate="10.2365">
-      <template #upIcon><Success color="blue" width="18" height="18" /></template>
+      <template #up-icon><Success color="blue" width="18" height="18" /></template>
     </nut-trend-arrow>
     <nut-trend-arrow :rate="-10.2365">
-      <template #downIcon><Failure color="red" /></template>
+      <template #down-icon><Failure color="red" /></template>
     </nut-trend-arrow>
   </nut-cell>
 </template>
@@ -167,17 +165,16 @@ app.use(TrendArrow);
 
 | 名称    | 说明         |
 |---------|--------------|
-| upIcon | 自定义向上箭头图标，默认使用 `TriangleUp` |
-| downIcon | 自定义向下箭头图标，默认使用 `TriangleDown` |
+| up-icon | 自定义向上箭头图标，默认使用 `TriangleUp` |
+| down-icon | 自定义向下箭头图标，默认使用 `TriangleDown` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 
 | --nut-trendarrow-font-size| _14px_  |
 | --nut-trendarrow-before-icon-margin| _4px_  |
-| --nut-trendarrow-icon-width| _12px_  | 

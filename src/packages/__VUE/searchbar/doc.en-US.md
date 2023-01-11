@@ -9,6 +9,7 @@ Search bar
 ```javascript
 import { createApp } from 'vue';
 import { Searchbar } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Searchbar);
 ```    
@@ -151,7 +152,7 @@ export default {
 ```html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:clearIcon>
+    <template v-slot:clear-icon>
       <img :src="icon" style="width: 10px; height: 10px" />
     </template>
   </nut-searchbar>
@@ -264,7 +265,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

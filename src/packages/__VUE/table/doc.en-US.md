@@ -612,22 +612,22 @@ app.use(Table);
 
 | Attribute     | Description             | Type               | Default  |
 | -------- | ---------------- | ------------------ | ------- |
-| bordered | Show border     | Boolean            | `true`  |
+| bordered | Show border     | boolean            | `true`  |
 | columns  | Header data         | TableColumnProps[] | `[]`    |
-| data     | Table data         | Object[]           | `[]`    |
+| data     | Table data         | object[]           | `[]`    |
 | summary  | Show profile    | Function           | -       |
-| striped  | Whether the stripes alternate light and dark | Boolean            | `false` |
+| striped  | Whether the stripes alternate light and dark | boolean            | `false` |
 
 ### TableColumnProps
 
 | Attribute   | Description                                                                                                                                                     | Type                      | Default |
 | ------ | ------------------------------------------------------------------ | ------------------------- | ------ |
-| key    | Unique identification of the column                                          | String                    | ``     |
-| title  | Header title                                                                                                                                                 | String                    | ``     |
-| stylehead  | Header style                                                                                                                                                 | String                    | ``     |
-| stylecolumn  | Column style                                                                                                                                                 | String                    | ``     |
-| align  | Alignment of columns, optional values`left`,`center`,`right`                                                                                                              | String                    | `left` |
-| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | Boolean、Function、String | -      |
+| key    | Unique identification of the column                                          | string                    | ``     |
+| title  | Header title                                                                                                                                                 | string                    | ``     |
+| stylehead  | Header style                                                                                                                                                 | string                    | ``     |
+| stylecolumn  | Column style                                                                                                                                                 | string                    | ``     |
+| align  | Alignment of columns, optional values`left`,`center`,`right`                                                                                                              | string                    | `left` |
+| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | boolean \| Function \| string | -      |
 | render | Custom render column data, high priority                                                                                                                               | Function(record)          | -      |
 
 ### Events
@@ -641,7 +641,7 @@ app.use(Table);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | Description |
 | --------------------------------------- | -------------------------- | ---- |

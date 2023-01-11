@@ -8,7 +8,7 @@ Often used in a group of pictures or card rotation.
 
 ```javascript
 import { createApp } from 'vue';
-import { Swiper,SwiperItem } from '@nutui/nutui';
+import { Swiper, SwiperItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Swiper);
@@ -31,7 +31,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -174,7 +174,7 @@ Support dynamic addition / deletion of pictures
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -221,7 +221,7 @@ Support dynamic addition / deletion of pictures
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -274,13 +274,77 @@ Support dynamic addition / deletion of pictures
 
 :::
 
+### 自定义指示器(异步3s)
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="true" @change="change" auto-play="2000">
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </nut-swiper-item>
+      <template v-slot:page>
+        <div class="page"> {{ current1 }}/4 </div>
+      </template>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0,
+        current1: 1
+      });
+      const change = (index: number) => {
+        state.current1 = index + 1;
+      };
+      return { ...toRefs(state), change };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .page {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 46px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.33);
+    border-radius: 22px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+  }
+</style>
+```
+
+:::
+
 ### Manual switching
 
 You can manually switch through `api` (`prev`, `next`)
 
 :::demo
 
-```vue
+```html
 <template>
   <view class="demo-box">
     <nut-swiper :init-page="page" :loop="true" ref="swiper">
@@ -373,7 +437,7 @@ You can manually switch through `api` (`prev`, `next`)
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -418,100 +482,6 @@ You can manually switch through `api` (`prev`, `next`)
 
 :::
 
-### Horizontal center display
-
-`is-center` means that it can be centered and must be passed to `width` at the same time
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
-### Vertically centered display
-
-`is-center` means that it can be centered and must be passed to `height` at the same time
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
 
 ## API
 
@@ -519,18 +489,18 @@ You can manually switch through `api` (`prev`, `next`)
 
 | Attribute                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | Width of rotation card           | Number、String        | window.innerWidth       |
-| height                | Height of rotation card                                                    | String、Number | 0        |
-| direction               | Rotation direction, optional value：`horizontal`,`vertical`     | String | 'horizontal'         |
-| pagination-visible          | Is the paging indicator displayed                                           | Boolean         | false           |
-| pagination-color         | The color selected by the pagination indicator                                              | String  | '#fff'           |
-| loop           | Whether to rotate                                             | Boolean        | true       |
-| duration                | Animation duration（Unit ms）                            | Number、String        | 500        |
-| auto-play | Automatic rotation duration, 0 means no automatic rotation                                          | Number、String        | 0        |
-| init-page               | Initialize index value                   | Number、String         | 0    |
-| touchable             | if touchable to slide                                                      | Boolean         | true          |
-| is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
-| is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
+| width                   | Width of rotation card           | number \| string        | `window.innerWidth `      |
+| height                | Height of rotation card                                                    | number \| string | `0`        |
+| direction               | Rotation direction, optional value：`horizontal`,`vertical`     | string | `'horizontal'`         |
+| pagination-visible          | Is the paging indicator displayed                                           | boolean         | `false`           |
+| pagination-color         | The color selected by the pagination indicator                                              | string  | `'#fff'`           |
+| loop           | Whether to rotate                                             | boolean        | `true`       |
+| duration                | Animation duration（Unit ms）                            | number \| string        | `500`        |
+| auto-play | Automatic rotation duration, 0 means no automatic rotation                                          | number \| string        | `0`        |
+| init-page               | Initialize index value                   | number \| string         | `0`    |
+| touchable             | if touchable to slide                                                      | boolean         | `true`          |
+| is-prevent-default                  | Disable default events during sliding                                              | boolean  | `true`           |
+| is-stop-propagation               | Is bubbling prohibited during sliding                    | boolean         | `true`    |
 
 
 
@@ -540,25 +510,30 @@ You can manually switch through `api` (`prev`, `next`)
 | ---------------- | ---------------------- | ------------ |
 | change            | Callback after sliding        |  Current index value |
 
+### Slots
+| Name    | Description         |
+|---------|--------------|
+| page    | Custom Indicator |
 
 
-### Swipe Methods
+
+### Methods
 
 | Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |
 | prev            | Switch to previous page         | - |
 | next            | Switch to next page         | - |
-| to            | Switch to the specified rotation         | index:number |
+| to            | Switch to the specified rotation         | `index:number` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-swiper-pagination-item-width| _8px_  | -  |
-| --nut-swiper-pagination-item-height| _3px_  | -  |
-| --nut-swiper-pagination-item-margin-right| _7px_  | -  |
-| --nut-swiper-pagination-item-border-radius| _2px_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-swiper-pagination-item-width| _8px_  |
+| --nut-swiper-pagination-item-height| _3px_  |
+| --nut-swiper-pagination-item-margin-right| _7px_  |
+| --nut-swiper-pagination-item-border-radius| _2px_  |

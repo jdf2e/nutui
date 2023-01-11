@@ -12,7 +12,6 @@ import { Calendar } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Calendar);
-
 ```
 
 
@@ -32,8 +31,8 @@ app.use(Calendar);
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :start-date="`2022-01-11`"
+    :end-date="`2022-11-30`"
   >
   </nut-calendar>
 </template>
@@ -74,7 +73,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -172,7 +171,7 @@ export default {
       ...toRefs(state),
       openSwitch,
       closeSwitch,
-      setChooseValue,
+      setChooseValue7,
       select,
     };
   }  
@@ -239,7 +238,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Select Date Range"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -269,8 +268,8 @@ export default {
     const closeSwitch = param => {
       state[`${param}`] = false;
     };
-     const setChooseValue = param => {
-      state.date= param[3];
+    const setChooseValue = param => {
+      state.date = [...[param[0][3], param[1][3]]];
     };
     return {
       ...toRefs(state),
@@ -291,7 +290,7 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Custom Button"
-    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -457,7 +456,7 @@ export default {
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
     <template v-slot:bottomInfo="date">
-      <span class="info" style="fontSize:12px;lineHeight:14px">{{
+      <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
     </template>
@@ -500,9 +499,8 @@ export default {
   <nut-cell
     :showIcon="true"
     title="Custom First Day Of Week"
-    :desc="date ? `${date} ${dateWeek}` : 'Please Select Date'"
+    :desc="date ? `${date}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
-    :first-day-of-week="2"
   >
   </nut-cell>
   <nut-calendar
@@ -510,8 +508,7 @@ export default {
     :default-value="date"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
-    :start-date="`2019-10-11`"
-    :end-date="`2022-11-11`"
+    :first-day-of-week="2"
   >
   </nut-calendar>
 </template>
@@ -522,7 +519,6 @@ export default {
     const state = reactive({
       isVisible: false,
       date: '',
-      dateWeek: ''
     });
     const openSwitch = param => {
       state[`${param}`] = true;
@@ -532,7 +528,6 @@ export default {
     };
     const setChooseValue = param => {
       state.date = param[3];
-      state.dateWeek = param[4];
     };
     return {
       ...toRefs(state),
@@ -552,10 +547,12 @@ export default {
 <template>
   <div class="test-calendar-wrapper" >
     <nut-calendar
-        :poppable="false"
-        :default-value="date"
-        :is-auto-back-fill="true"
-        @choose="setChooseValue"
+      :poppable="false"
+      :default-value="date"
+      :is-auto-back-fill="true"
+      @choose="setChooseValue"
+      :start-date="`2020-02-01`"
+      :end-date="`2020-12-30`"
     >
     </nut-calendar>
   </div>
@@ -565,7 +562,7 @@ import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      date: '2022-07-08'
+      date: '2020-07-08'
     });
     const setChooseValue = param => {
       state.date = param[3];
@@ -643,7 +640,7 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 
@@ -659,8 +656,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-calendar-text-font| _var(--nut-font-size-1)_   |
 | --nut-calendar-day-font| _16px_   |
 | --nut-calendar-day-active-border-radius| _0px_   |
-| --nut-calendar-day-width| _14.28%_   |
-| --nut-calendar-day-height| _64px_   |
 | --nut-calendar-day-font-weight| _500_   |
 | --nut-calendar-day67-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-month-title-font-size| _inherit_   |

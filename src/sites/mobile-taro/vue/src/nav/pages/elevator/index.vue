@@ -1,6 +1,7 @@
 <template>
-  <div class="demo elevator-demo">
-    <h2>基本用法</h2>
+  <div class="demo elevator-demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <div class="elevator-wrapper">
       <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
     </div>
@@ -39,11 +40,16 @@
 <script lang="ts">
 import { computed, reactive, toRefs, defineComponent } from 'vue';
 import { Jd } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
   components: {
-    Jd
+    Jd,
+    Header
   },
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       acceptKey: 'num',
       dataList: [
@@ -321,7 +327,7 @@ export default defineComponent({
       console.log(key);
     };
 
-    return { ...toRefs(state), temp, clickItem, clickIndex };
+    return { ...toRefs(state), temp, clickItem, clickIndex, env };
   }
 });
 </script>

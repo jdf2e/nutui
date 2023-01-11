@@ -12,7 +12,6 @@ import { PullRefresh } from '@nutui/nutui';
 
 const app = createApp();
 app.use(PullRefresh);
-
 ```
 
 ### Basic Usage
@@ -23,9 +22,9 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 
 ```html
 <template>
-  <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
-    <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
+    <div class="pull-block">Try to pull down!</div>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -47,24 +46,23 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 :::
 ### Custom Tips
 
-The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete'`，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，Complex styles can be implemented through slots。
+The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
 
 :::demo
 
 ```html
 <template>
-  <nut-pullrefresh
+  <nut-pull-refresh
     v-model="refresh2"
-    loosingTxt="松开吧"
-    loadingTxt="玩命加载中..."
-    completeTxt="好啦"
+    loosingTxt="Relax"
+    loadingTxt="Desperate loading..."
     @refresh="refreshFun"
   >
     <template #pullingTxt>
-      <div>用力拉</div>
+      <div>Pull</div>
     </template>
-    <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+    <div class="pull-block">Try to pull down!</div>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -93,11 +91,11 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 ```html
 <template>
   <div class="parentpage">
-    <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+    <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
       <div class="pull-letter" v-for="item in refreshList2">
         <div>{{item}}</div>
       </div>
-    </nut-pullrefresh>
+    </nut-pull-refresh>
   </div>
 </template>
 
@@ -133,15 +131,14 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| v-model        | Loading status               | Boolean | `false`                |
+| v-model        | Loading status               | boolean | `false`                |
 | pull-distance         | The distance to trigger the pull refresh | number \| string | `50`               |
 | head-height | Height of head     | number \| string | `50`  |
-| loading-icon         | Loading icon      | String | `loading`            |
-| pulling-txt         | Text to show when pulling                       | String | `Pull to refresh...`            |
-| loosing-txt         | Text to show when loosing                       | String | `Loose to refresh...`            |
-| loading-txt        | Text to show when loading                         | String | `Loading...`                |
-| complete-txt        | Text to show when complete                       | String | ''           |
-| duration       | Animation duration                         | Number | 0.3                |
+| loading-icon         | Loading icon      | string | `loading`            |
+| pulling-txt         | Text to show when pulling                       | string | `Pull to refresh...`            |
+| loosing-txt         | Text to show when loosing                       | string | `Loose to refresh...`            |
+| loading-txt        | Text to show when loading                         | string | `Loading...`                |
+| duration       | Pull down animation duration                         | number | `0.3`                |
 
 ### Events
 
@@ -152,10 +149,9 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 
 ### Slots
 
-| Attribute | Description           | 
+| Name | Description           | 
 |--------|----------------|
 | pulling  | Content of head when at pulling |
 | loosing  | Content of head when at loosing |
 | loading  | Content of head when at loading |
-| complete  | Content of head when at complete |
 | default  | 	Default slot |

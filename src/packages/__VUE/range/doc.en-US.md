@@ -282,9 +282,12 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+}
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
@@ -308,8 +311,9 @@ export default {
     const value11 = ref([20,80]);
     const onChange = (value) => showToast.text('value：' + value);
     return {
-      value,
-      onChange,
+      value10,
+      value11,
+      onChange
     };
   },
 };
@@ -324,9 +328,12 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+} 
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
@@ -356,13 +363,17 @@ export default {
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref,reactive,toRefs } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
-    const value12 = ref(20);
-    const value13 = ref([20,80]);
+    const state = reactive({
+      value12: 60,
+      value13: [20, 80],
+      value14: 60,
+      value15: [20, 80],
+    })
     const marks=ref({
       0: 0,
       20: 20,
@@ -371,9 +382,10 @@ export default {
       80: 80,
       100: 100
     });
-    const onChange = (value) => showToast.text('value：' + value);
+    const onChange = (value) => showToast.text('当前值：' + value);
     return {
-      value,
+      ...toRefs(state),
+      marks,
       onChange,
     };
   },
@@ -389,11 +401,11 @@ export default {
   
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| v-model | current progress percentage | number、number[] | `0` |
+| v-model | current progress percentage | number \| number[] | `0` |
 | range | Whether to enable dual slider mode | boolean | `false` |
-| max | maximum  | number、string | `100` |
-| min | minimum  | number、string | `0` |
-| step | step size | number、string | `1` |
+| max | maximum  | number \| string | `100` |
+| min | minimum  | number \| string | `0` |
+| step | step size | number \| string | `1` |
 | disabled | Whether to disable the slider | boolean | `false` |
 | vertical | Whether to display vertically | boolean | `false` |
 | hidden-range | whether to hide range values | boolean | `false` |
@@ -422,7 +434,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

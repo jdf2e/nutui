@@ -26,7 +26,6 @@ app.use(Comment);
     :images="cmt.images"
     :videos="cmt.videos"
     :info="cmt.info"
-    :labels="labels"
     @click="handleclick"
     @clickImages="clickImages"
     :operation="['replay']"
@@ -39,15 +38,11 @@ app.use(Comment);
     </template>
 </nut-comment>
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<Dongdong/>';
-    };
     onMounted(()=>{
       fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
         .then((response) => response.json())
@@ -64,13 +59,12 @@ export default {
     }
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -107,7 +101,7 @@ export default {
 </nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -129,7 +123,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -148,7 +142,7 @@ export default {
 ></nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -170,7 +164,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ## API
@@ -179,28 +173,28 @@ export default {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| header-type         | 头部样式展示类型，可选： default，complex      | string | `default`               |
-| images-rows         | 评论图片展示行数，可选： one，multi     | string | `one`               |
+| header-type         | 头部样式展示类型，可选： `default`，`complex`      | string | `default`               |
+| images-rows         | 评论图片展示行数，可选： `one`，`multi`     | string | `one`               |
 | ellipsis        | 设置评论内容省略行数       | string \| number | `2`               |
-| videos         | 视频信息 | array | `[]`             |
-| images | 图片信息    | array | `[]` |
+| videos         | 视频信息 | Array | `[]`             |
+| images | 图片信息    | Array | `[]` |
 | info     | 评论详情                      | object | `{}`             |
 | follow     | 追评内容                      | object | `{}`             |
-| operation | 配置底部按钮   | array | `["replay", "like", "more"]` |
+| operation | 配置底部按钮   | Array | `["replay", "like", "more"]` |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| click-operate  | 点击底部操作按钮回调函数 | type |
-| click  | 点击评论内容回调函数 | type |
-| click-images | 点击图片或视频触发 | {type,index,value}|
+| click-operate  | 点击底部操作按钮回调函数 | `type` |
+| click  | 点击评论内容回调函数 | `type` |
+| click-images | 点击图片或视频触发 | `{type,index,value}`|
 
 ### Slots
 
-Comment 组件在某些区域定义了插槽，可以按照需求进行替换。
+`Comment` 组件在某些区域定义了插槽，可以按照需求进行替换。
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | comment-labels  | 评论用户的标签 | 
 | comment-shop-reply  | 评论最底部，用于展示商家回复| 
@@ -231,7 +225,7 @@ const videos = [{
 用于存放评论相关的信息。
 
 ```javascript
-const info = [{
+const info = {
   "content": "",  // 评论详情
   "nickName": "", // 评论人的姓名
   "score": 5, // 评论星星数
@@ -240,13 +234,26 @@ const info = [{
   "size": "", // 评论人购买的商品规格
   "replay":23, // 此评论的回复数
   "like":1, // 此评论的点赞数
-}]
+}
 ```
+
+### follow 对象
+
+用于存放追评相关的信息。
+
+```javascript
+const follow = {
+  "days": 0, // 购买多少天后进行追评
+  "content": "", // 追评内容
+  "images": [] // 追评图片
+}
+```
+
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

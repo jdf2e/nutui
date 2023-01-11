@@ -396,34 +396,34 @@ app.use(TabbarItem);
 
 ### Tabbar Props
 
-| 字段            | 说明               | 类型   | 默认值  |
+| 参数            | 说明               | 类型   | 默认值  |
 |-----------------|--------------------|--------|---------|
-| v-model | 选中标签的索引值或者名称   | Number | 0       |
-| bottom          | 是否固定在页面底部 | Boolean | false   |
-| unactive-color  | icon未激活的颜色   | String | #7d7e80 |
-| active-color    | icon激活的颜色     | String | #1989fa |
-| safe-area-inset-bottom   | 是否开启iphone系列全面屏底部安全区适配    | Boolean | false |
-| placeholder `3.2.6` | 固定在底部时，是否在标签位置生成一个等高的占位元素 | Boolean | false |
+| v-model | 选中标签的索引值或者名称   | number | `0`       |
+| bottom          | 是否固定在页面底部 | boolean | `false`   |
+| unactive-color  | icon未激活的颜色   | string | `#7d7e80` |
+| active-color    | icon激活的颜色     | string | `#1989fa` |
+| safe-area-inset-bottom   | 是否开启iphone系列全面屏底部安全区适配    | boolean | `false` |
+| placeholder | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | `false` |
 ### TabbarItem Props
 
-| 字段      | 说明                                      | 类型   | 默认值 |
+| 参数      | 说明                                      | 类型   | 默认值 |
 |-----------|-------------------------------------------|--------|--------|
-| tab-title | 标签页的标题                              | String | --    |
-| name| 标签名称，作为匹配的标识符                             | String | 当前标签的索引值   |
+| tab-title | 标签页的标题                              | string | --    |
+| name| 标签名称，作为匹配的标识符                             | string | `当前标签的索引值`   |
 | icon      | 标签页显示的[图标](#/zh-CN/component/icon)  | Component | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`    | String | --     |
-| to      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String｜Object | --  |
+| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`    | string | --     |
+| to      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | --  |
 
 
 ### TabbarItem Slots
 
-| 事件名称   | 说明               | 参数           |
+| 事件名   | 说明               | 参数           |
 |------------|--------------------|--------------------|
 | icon | 自定义图标	 | active: boolean |
 
 ### Tabbar Events
 
-| 事件名称   | 说明               | 回调参数           |
+| 事件名   | 说明               | 回调参数           |
 |------------|--------------------|--------------------|
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
 
@@ -431,19 +431,19 @@ app.use(TabbarItem);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-tabbar-active-color| _var(--nut-primary-color)_ | -  |
-| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ | -  |
-| --nut-tabbar-border-top| _1px solid #eee_ | -  |
-| --nut-tabbar-border-bottom| _1px solid #eee_ | -  |
-| --nut-tabbar-box-shadow| _none_ | -  |
-| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ | -  |
-| --nut-tabbar-item-text-line-height| _initial_ | -  |
-| --nut-tabbar-height| _50px_ | -  |
-| --nut-tabbar-word-margin-top| _auto_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-tabbar-active-color| _var(--nut-primary-color)_ |
+| --nut-tabbar-unactive-color| _var(--nut-primary-color)_ |
+| --nut-tabbar-border-top| _1px solid #eee_ |
+| --nut-tabbar-border-bottom| _1px solid #eee_ |
+| --nut-tabbar-box-shadow| _none_ |
+| --nut-tabbar-item-text-font-size| _var(--nut-font-size-0)_ |
+| --nut-tabbar-item-text-line-height| _initial_ |
+| --nut-tabbar-height| _50px_ |
+| --nut-tabbar-word-margin-top| _auto_ |
 
 
 

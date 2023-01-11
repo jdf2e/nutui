@@ -5,7 +5,7 @@
     <h2>{{ translate('title') }}</h2>
     <nut-textarea v-model="value2" limit-show max-length="20" />
     <h2>{{ translate('title1') }}</h2>
-    <nut-textarea v-model="value3" :rows="1" autosize />
+    <nut-textarea v-model="value3" autosize />
     <h2>{{ translate('title2') }}</h2>
     <nut-textarea readonly :model-value="translate('desc1')" />
     <h2>{{ translate('title3') }}</h2>
@@ -23,7 +23,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '显示字数统计',
       title1: '高度自定义，拉伸',
       title2: '只读',

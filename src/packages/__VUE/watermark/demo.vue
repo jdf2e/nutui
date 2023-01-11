@@ -4,13 +4,13 @@
     <nut-cell class="wrap">
       <nut-button @click="showTextMark">{{ translate('btn1') }}</nut-button>
       <nut-button @click="showImageMark">{{ translate('btn2') }}</nut-button>
-      <nut-watermark v-if="!flag" class="mark1" z-index="1" content="nut-ui-water-mark"></nut-watermark>
+      <nut-watermark v-if="!flag" class="mark1" :z-index="1" content="nut-ui-water-mark"></nut-watermark>
       <nut-watermark
         v-if="flag"
         class="mark1"
         :image-width="60"
         :image-height="23"
-        z-index="1"
+        :z-index="1"
         :image="imgSrc"
       ></nut-watermark>
     </nut-cell>
@@ -29,7 +29,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title2: '局部用法',
       btn1: '文字水印',
       btn2: '图片水印'

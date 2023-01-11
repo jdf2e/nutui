@@ -13,7 +13,7 @@ export const component = (components: any) => {
       //每行高度
       height: {
         type: String,
-        default: '100px'
+        default: '15px'
       },
       //是否显示动画
       animated: {
@@ -78,7 +78,6 @@ export const component = (components: any) => {
       };
 
       const getStyle = (): import('vue').CSSProperties => {
-        const style: import('vue').CSSProperties = {};
         if (avatarSize.value) {
           return {
             width: avatarSize.value,
@@ -90,10 +89,6 @@ export const component = (components: any) => {
           height: '50px'
         };
       };
-
-      onMounted(() => {
-        // console.log('row', props.row);
-      });
 
       return {
         avatarShape,

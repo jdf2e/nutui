@@ -9,7 +9,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Collapse,CollapseItem } from '@nutui/nutui';
+import { Collapse, CollapseItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Collapse);
@@ -23,9 +23,9 @@ app.use(CollapseItem);
 
 ```html
 <template>
-<nut-collapse v-model:active="activeNames">
+<nut-collapse v-model="activeNames">
   <nut-collapse-item :name="1">
-    <template v-slot:mTitle>
+    <template v-slot:title>
       {{title1}}
     </template>
     NutUI是一套拥有京东风格的轻量级的 Vue 组件库
@@ -53,7 +53,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -65,7 +65,7 @@ export default {
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :value="subTitle">
       基于京东设计语言体系，构建场景
     </nut-collapse-item>
@@ -108,11 +108,11 @@ export default {
 ```html
 <template>
   <nut-collapse
-    v-model:active="activeName"
+    v-model="activeName"
     :accordion="true"
   >
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:sTitle>
+      <template v-slot:value>
         文本测试
       </template>
       NUTUI3.0重新思考其内在的一致性和可组合性
@@ -146,14 +146,14 @@ export default {
 
 ### 设置固定内容（不折叠）
 
-通过 slot:extraRender 设置内容
+通过 slot:extra 设置内容
 :::demo
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extraRender>固定内容</template>
+      <template v-slot:extra>固定内容</template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -183,7 +183,7 @@ export default {
 ## API
 ### Collapse Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model | 当前展开面板的 `name` | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | `-` |
 | accordion | 是否开启手风琴模式 | boolean | `false` |
@@ -202,22 +202,22 @@ export default {
 
 ### CollapseItem Slots
 
-| 插槽名 | 说明 | 
+| 名称 | 说明 | 
 |------|------|
-| slot:mTitle | 标题栏左侧内容插槽 | 
-| slot:value | 标题栏右侧内容插槽 | 
-| slot:extraRender | 设置标题下固定内容（不折叠） |
+| title | 标题栏左侧内容插槽 | 
+| value | 标题栏右侧内容插槽 | 
+| extra | 设置标题下固定内容（不折叠） |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
-| change | 切换面板时触发 | 打开状态的面板`name`值 |
+| change | 切换面板时触发 | 打开状态的面板 `name` 值 |
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

@@ -201,9 +201,9 @@ export default create({
       (value) => {
         show.value = value;
         if (value) {
-          window.addEventListener('touchstart', clickAway, true);
+          window.addEventListener('touchstart', clickAway, false);
         } else {
-          window.removeEventListener('touchstart', clickAway, true);
+          window.removeEventListener('touchstart', clickAway, false);
         }
       }
     );

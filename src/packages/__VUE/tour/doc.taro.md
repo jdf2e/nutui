@@ -12,9 +12,7 @@ import { createApp } from 'vue';
 import { Tour } from '@nutui/nutui-taro';
 
 const app = createApp();
-
 app.use(Tour);
-
 ```
 
 
@@ -31,20 +29,20 @@ app.use(Tour);
     </template>
   </nut-cell>
   <nut-tour
-    v-model:visible="showTour3"
+    v-model="showTour3"
     :steps="steps3"
     type="tile"
     location="bottom-end"
   ></nut-tour>
 </template>
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
       showTour3: false,
       steps3: [{
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target7'
         }]
     });
@@ -52,6 +50,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -71,7 +75,7 @@ export default {
 
   <nut-tour
     class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-    v-model:visible="showTour1"
+    v-model="showTour1"
     :steps="steps1"
     location="bottom-end"
     type="tile"
@@ -84,13 +88,13 @@ export default {
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
    setup() {
     const state = reactive({
       showTour1: false,
       steps1: [{
-          content: '邀请有礼，全新改版，奖励多多哦',
+          content: '70+ 高质量组件，覆盖移动端主流场景',
           target: 'target5'
         }]
     });
@@ -98,6 +102,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -112,8 +122,9 @@ export default {
 <template>
   <nut-cell title="点击试试" @click="showTour2 = true">
     <template v-slot:link>
-      <div class="tour-demo-img">
+      <div class="tour-demo-img" v-for='i in [1,2,3]'>
         <img
+             style="width:20px;height:20px;margin-right:10px"
           id="target6"
           src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
         />
@@ -122,7 +133,7 @@ export default {
   </nut-cell>
 
   <nut-tour
-    v-model:visible="showTour2"
+    v-model="showTour2"
     :steps="steps2"
     type="tile"
     bgColor="#f00"
@@ -134,14 +145,14 @@ export default {
 
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
       showTour2: false,
       steps2: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -153,7 +164,11 @@ export default {
 }
 </script>
 
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -171,7 +186,7 @@ export default {
   </nut-cell>
 
   <nut-tour
-    v-model:visible="showTour4"
+    v-model="showTour4"
     :steps="steps4"
     type="tile"
     theme="dark"
@@ -188,7 +203,7 @@ export default {
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
@@ -203,6 +218,18 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.tour-demo-custom-content {
+  padding: 8px;
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  .nut-divider {
+    border-color: #fff;
+  }
+}
+</style>
 
 ```
 :::
@@ -214,21 +241,28 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
+    <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
-  <nut-tour
-    class="nut-custom-tour"
-    v-model:visible="showTour"
-    :steps="steps"
-    location="top-start"
-    :offset="[0, 0]"
-    maskWidth="50"
-    maskHeight="50"
-  ></nut-tour>
+      <nut-tabbar :bottom="true">
+        <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
+        <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
+        <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
+        <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
+      </nut-tabbar>
+
+      <nut-tour
+        class="nut-customword-tour"
+        v-model="showTour"
+        :steps="steps"
+        location="top-start"
+        :offset="[0, 0]"
+        maskWidth="60"
+        maskHeight="50"
+      ></nut-tour>
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
@@ -258,7 +292,18 @@ export default {
   }
 };
 </script>
-
+<style>
+page{
+  padding-top: 200px;
+}
+.nut-tour-content{
+  display: block;
+  width: 200px;
+}
+.nut-tabbar-item_icon-box_nav-word{
+  font-size: 14px;
+}
+</style>
 ```
 :::
 
@@ -266,36 +311,36 @@ export default {
 ## API
 ### Props  
 
-| 字段            | 说明                            | 类型     | 默认值      |
+| 参数            | 说明                            | 类型     | 默认值      |
 |----------------|---------------------------------|---------|------------|
-| visible      | 是否展示引导弹出层                 | boolean  | false     |
+| v-model      | 是否展示引导弹出层                 | boolean  | `false`     |
 | type          | 引导类型            | string   | `step`   |
-| steps       | 引导步骤内容  | StepOptions[]   | []  |
-| offset       | 镂空遮罩相对于目标元素的偏移量  | [number, number]   | [8, 10]  |
-| current      | 类型为 `step` 时，默认展示第几步  | number  | 0  |
+| steps       | 引导步骤内容  | StepOptions[]   | `[]`  |
+| offset       | 镂空遮罩相对于目标元素的偏移量  | [number, number]   | `[8, 10]`  |
+| current      | 类型为 `step` 时，默认展示第几步  | number  | `0`  |
 | custom-class       | 自定义 class 值  | string  | ''  |
-| location      | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)  |  String  | 'bottom'  |
-| next-step-Txt       | 下一步按钮文案  | string   | '下一步'  |
-| prev-step-Txt        | 上一步按钮文案  | string   | '上一步'  |
-| complete-txt       | 完成按钮文案  | string   | '完成'  |
-| mask       | 是否显示镂空遮罩  | Boolean  | true |
-| bg-color       | 自定义背景色  | Boolean  | '' |
-| theme       | 气泡遮罩层主题,同 Popopver 的[theme 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | String  | 'light' |
-| mask-width       | 镂空遮罩层宽度  | Number、String  | '' |
-| mask-height       | 镂空遮罩层高度  | Number、String  | '' |
-| close-on-click-overlay      | 是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
-| show-prev-step       | 是否展示上一步按钮  | boolean  | true |
-| show-title-bar       | 是否展示标题栏  |  boolean  | false |
+| location      | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)  |  string  | `'bottom'`  |
+| next-step-Txt       | 下一步按钮文案  | string   | `'下一步'`  |
+| prev-step-Txt        | 上一步按钮文案  | string   | `'上一步'`  |
+| complete-txt       | 完成按钮文案  | string   | `'完成'`  |
+| mask       | 是否显示镂空遮罩  | boolean  | `true` |
+| bg-color       | 自定义背景色  | boolean  | '' |
+| theme       | 气泡遮罩层主题,同 Popopver 的[theme 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | string  | `'light'` |
+| mask-width       | 镂空遮罩层宽度  | number \|string  | '' |
+| mask-height       | 镂空遮罩层高度  | number \|string  | '' |
+| close-on-click-overlay      | 是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | `true` |
+| show-prev-step       | 是否展示上一步按钮  | boolean  | `true` |
+| show-title-bar       | 是否展示标题栏  |  boolean  | `false` |
 
 ### StepOptions  
 
 | 键名            | 说明                 | 类型      | 默认值  |
 |----------------|----------------------|----------|--------|
 | target           | 目标对象               | Element   | -      |
-| content           | 气泡层内容     | String   | ''     |
-| location       | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | String  | 'bottom'  |
-| popover-offset      | 气泡层偏移量，同 Popopver 的[offset 属性](https://nutui.jd.com/#/zh-CN/component/popover)             | string/Array/object  | -  | 
-| arrow-offset      | 小箭头的偏移量，同 Popopver 的[arrowOffset 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | 0  | 
+| content           | 气泡层内容     | string   | ''     |
+| location       | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | string  | `'bottom'`  |
+| popover-offset      | 气泡层偏移量，同 Popopver 的[offset 属性](https://nutui.jd.com/#/zh-CN/component/popover)             | [number, number]   | `[0, 12]` | 
+| arrow-offset      | 小箭头的偏移量，同 Popopver 的[arrowOffset 属性](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | `0`  | 
 
 
 ### Slots
@@ -303,12 +348,12 @@ export default {
 | 名称    | 说明         |
 |---------|--------------|
 | default | 自定义气泡层内容 |
-|prevStep | 自定义上一步内容|
-|nextStep | 自定义下一步内容 |
+|prev-step | 自定义上一步内容|
+|next-step | 自定义下一步内容 |
 
 ### Events
 
-| 名称    | 说明         |
+| 事件名    | 说明         |
 |---------|--------------|
 | change | 切换步骤时触发 |
 | close   | 气泡层关闭时触发 |

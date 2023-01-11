@@ -344,7 +344,7 @@ export default create({
           : 0;
       return num;
     };
-    // 基本用法
+    // 基础用法
     const countChange = () => {
       let { endNum, initNum, speed, toFixed } = props;
       let countTimer = setInterval(() => {
@@ -518,12 +518,7 @@ export default create({
           timeOut && clearTimeout(timeOut);
           el.style.transition = 'none';
           el.style.top = '0';
-          // 前面数字的滚动，用于递增
-          if (turningNum == 10) {
-            if (el.previousSibling) {
-              runStep(el.previousSibling as HTMLElement);
-            }
-          }
+          reset(el, turningNum);
         }, 0.975 * props.during);
       } else {
         // el.style.top = `-${(10-turningNum)*100}%`;
@@ -533,6 +528,16 @@ export default create({
       if (el.style.top == '-100%' && data.sortFlag == 'reduce') {
         runStep(el.previousSibling as HTMLElement);
       }
+    };
+    const reset = (el: { style: { top: string }; previousSibling: HTMLElement }, turningNum: number) => {
+      setTimeout(() => {
+        // 前面数字的滚动，用于递增
+        if (turningNum == 10) {
+          if (el.previousSibling) {
+            runStep(el.previousSibling as HTMLElement);
+          }
+        }
+      }, 200);
     };
     // 自定义图片
     const imgNumberScroll = () => {

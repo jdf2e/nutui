@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell title="点击试试" @click="showTour3 = true">
       <template v-slot:link>
@@ -9,7 +10,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour3"
+      v-model="showTour3"
       :steps="steps3"
       type="tile"
       location="bottom-end"
@@ -25,7 +26,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-      v-model:visible="showTour1"
+      v-model="showTour1"
       :steps="steps1"
       location="bottom-end"
       type="tile"
@@ -57,7 +58,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour2"
+      v-model="showTour2"
       :steps="steps2"
       type="tile"
       bgColor="#f00"
@@ -76,7 +77,7 @@
 
     <nut-tour
       class="nut-custom-tour nut-customword-tour"
-      v-model:visible="showTour4"
+      v-model="showTour4"
       :steps="steps4"
       type="tile"
       theme="dark"
@@ -90,54 +91,39 @@
       </view>
     </nut-tour>
 
-    <!-- <h2>步骤</h2> -->
+    <h2>步骤引导</h2>
 
     <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
 
     <nut-tabbar>
-      <nut-tabbar-item
-        id="target1"
-        tab-title="首页"
-        img="https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png"
-        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        id="target2"
-        tab-title="首页"
-        img="https://img13.360buyimg.com/imagetools/jfs/t1/202062/32/25149/5246/62e7c353E5a51db17/b82b940e6eb22ec3.png"
-        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/162634/35/26732/5502/62e747a8E5330f029/3ea00a0c140beb38.png"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        id="target3"
-        tab-title="首页"
-        img="https://img12.360buyimg.com/imagetools/jfs/t1/60552/28/20576/5585/62e7c2ddE2e0b48a7/70eefb366b85f3e4.png"
-        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/138362/15/28011/5802/62e747a4E4139ef2f/9a79a1c0f6a273b4.png"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        id="target4"
-        tab-title="首页"
-        img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
-        activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
-      ></nut-tabbar-item>
+      <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
+      <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
+      <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
+      <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
     </nut-tabbar>
 
     <nut-tour
       class="nut-customword-tour"
-      v-model:visible="showTour"
+      v-model="showTour"
       :steps="steps"
-      location="bottom-start"
+      location="top-start"
       :offset="[0, 0]"
-      maskWidth="50"
+      maskWidth="60"
       maskHeight="50"
-      :showTitleBar="false"
     ></nut-tour>
   </div>
 </template>
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       showTour: false,
       showTour1: false,
@@ -151,7 +137,7 @@ export default {
           target: 'target1'
         },
         {
-          content: '支持一套代码同时开发多端小程序+H5',
+          content: '支持一套代码同时开发多端小程序',
           target: 'target2'
         },
         {
@@ -208,7 +194,8 @@ export default {
 
     return {
       ...toRefs(state),
-      showTourHandle
+      showTourHandle,
+      env
     };
   }
 };

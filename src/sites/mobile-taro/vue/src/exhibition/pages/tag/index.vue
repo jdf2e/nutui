@@ -1,5 +1,6 @@
 <template>
-  <view class="demo">
+  <view class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <nut-cell-group title="基础用法">
       <nut-cell title="primary 类型">
         <template v-slot:link>
@@ -46,7 +47,7 @@
       >
     </nut-cell-group>
 
-    <nut-cell-group title="自定义">
+    <nut-cell-group title="颜色自定义">
       <nut-cell title="背景颜色">
         <template v-slot:link>
           <nut-tag color="#FA685D">标签</nut-tag>
@@ -68,9 +69,15 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const show = ref(true);
     const close = () => {
       show.value = false;
@@ -78,7 +85,8 @@ export default {
 
     return {
       close,
-      show
+      show,
+      env
     };
   }
 };

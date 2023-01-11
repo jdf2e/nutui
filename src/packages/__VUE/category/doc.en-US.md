@@ -188,8 +188,8 @@ export default {
 
 | Attribute     | Description                 | Type   | Default   |
 | -------- | -------------------------------- | ------ | -------- |
-| type     | Classification mode: `classify`, `text`, `custom` | string | classify |
-| category | Left navigation bar data list               | Array  | []       |
+| type     | Classification mode: `classify`, `text`, `custom` | string | `classify` |
+| category | Left navigation bar data list               | Array  | `[]`       |
 
 ### Category Events
 
@@ -203,8 +203,8 @@ export default {
 
 | Attribute       | Description                 | Type  | Default |
 | --------------- | -------------------- | ----- | ------ |
-| category-child  | The current classification data is displayed on the right | Array | []     |
-| custom-category | Custom categorical data       | Array | []     |
+| category-child  | The current classification data is displayed on the right | Array | `[]`     |
+| custom-category | Custom categorical data       | Array | `[]`     |
 
 ### CategoryPane Events
 
@@ -221,7 +221,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

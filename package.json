@@ -1,16 +1,12 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.0.0-beta.10",
+  "version": "4.0.0-beta.24",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
-  "main": "dist/nutui.umd.cjs",
+  "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
   "type": "module",
   "typings": "dist/types/index.d.ts",
-  "vetur": {
-    "tags": "dist/smartips/tags.json",
-    "attributes": "dist/smartips/attributes.json"
-  },
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
     "nutui",
@@ -51,7 +47,7 @@
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/4x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts && npm run attrs && node jd/generate-unplugin-deps.cjs nutui && node jd/copy-dist.cjs nutui",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts:taro && npm run attrs&& node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run dts:taro && npm run attrs:taro && node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -59,8 +55,8 @@
     "publish": "npm publish",
     "generate:file": "node jd/generate-nutui.cjs",
     "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.cjs",
-    "generate:types": "rm -rf ./dist/types && node jd/generate-types.cjs",
-    "generate:types:taro": "rm -rf ./dist/types && node jd/generate-types-taro.cjs",
+    "generate:types": "rimraf ./dist/types && node jd/generate-types.cjs",
+    "generate:types:taro": "rimraf ./dist/types && node jd/generate-types-taro.cjs",
     "generate:themes": "node jd/generate-themes.cjs",
     "prepare": "husky install",
     "test": "jest",
@@ -68,9 +64,10 @@
     "codeformat": "prettier --write .",
     "copydocs": "node ./jd/copymd.cjs",
     "createTaroConfig": "node ./jd/generate-taro-route.cjs",
+    "attrs:taro": "node ./jd/createAttributes.cjs taro",
     "attrs": "node ./jd/createAttributes.cjs",
-    "dts": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types",
-    "dts:taro": "rm -rf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && npm run generate:types:taro",
+    "dts": "rimraf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && npm run generate:types",
+    "dts:taro": "rimraf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && npm run generate:types:taro",
     "copy:h5": "node ./jd/copyh5.cjs",
     "copy:taro": "node ./jd/copytaro.cjs"
   },
@@ -80,11 +77,10 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue": "0.0.19",
-    "@nutui/icons-vue-taro": "0.0.3",
+    "@nutui/icons-vue": "^0.0.24",
+    "@nutui/icons-vue-taro": "^0.0.8",
     "@tarojs/components": "3.5.6",
     "sass": "^1.50.0",
-    "vscode": "^1.1.37",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
@@ -129,6 +125,7 @@
     "markdown-it-container": "^3.0.0",
     "prettier": "^2.0.0",
     "remark-codesandbox": "^0.10.1",
+    "rimraf": "^3.0.2",
     "rollup-plugin-visualizer": "^5.8.3",
     "standard-version": "^9.3.0",
     "swiper": "6.5.1",
@@ -137,6 +134,7 @@
     "typescript": "^4.9.3",
     "vite": "^4.0.0",
     "vite-plugin-md": "^0.21.5",
+    "vscode": "^1.1.37",
     "vue": "^3.2.24",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-tsc": "^1.0.9",

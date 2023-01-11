@@ -3,7 +3,7 @@
     <h2>{{ translate('basic1') }}</h2>
     <nut-collapse v-model="active1" @change="change">
       <nut-collapse-item :name="1">
-        <template v-slot:mTitle>
+        <template v-slot:title>
           {{ translate('title1') }}
         </template>
         {{ translate('desc1') }}
@@ -52,7 +52,7 @@
     <h2>{{ translate('basic6') }}</h2>
     <nut-collapse v-model="active6" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1">
-        <template v-slot:extraRender>{{ translate('title5') }}</template>
+        <template v-slot:extra>{{ translate('title5') }}</template>
         {{ translate('desc1') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2">
@@ -70,7 +70,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic1: '基本用法',
+      basic1: '基础用法',
       basic2: '无icon样式',
       basic3: '手风琴',
       basic4: '自定义折叠图标',

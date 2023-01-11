@@ -8,12 +8,11 @@
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### 基础用法
@@ -145,8 +144,9 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,
@@ -171,14 +171,16 @@ app.use(Checklist);
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
       const state = reactive({
         checkbox: false,
       });
-      const changeBox3= (checked: boolean, label: string) => {
-        console.log('change事件触发' + checked, label);
+      const changeBox3= (state: boolean, label: string) => {
+        showToast.text(`${state ? '选中' : '取消'} ${label}`);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -195,6 +197,40 @@ app.use(Checklist);
 ```html
 <template>
   <nut-checkbox-group v-model="checkboxgroup1">
+    <nut-checkbox label="1">组合复选框</nut-checkbox>
+    <nut-checkbox label="2">组合复选框</nut-checkbox>
+    <nut-checkbox label="3">组合复选框</nut-checkbox>
+    <nut-checkbox label="4">组合复选框</nut-checkbox>
+  </nut-checkbox-group>
+  <nut-cell>
+    <div class="demo-check">当前选中值</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+```
+
+:::
+
+### checkboxGroup禁用
+
+:::demo
+
+```html
+<template>
+  <nut-checkbox-group v-model="checkboxgroup1" disabled>
     <nut-checkbox label="1">组合复选框</nut-checkbox>
     <nut-checkbox label="2">组合复选框</nut-checkbox>
     <nut-checkbox label="3">组合复选框</nut-checkbox>
@@ -338,6 +374,7 @@ app.use(Checklist);
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
@@ -377,14 +414,14 @@ app.use(Checklist);
 
 ### Checkbox Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 是否处于选中状态 | Boolean | `false`
-| disabled | 是否禁用选择 | Boolean | `false`
-| text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
-| icon-size | [图标尺寸](#/zh-CN/component/icon) | String、Number | `18`
-| label | 复选框的文本内容 | String | -
-| indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
+| v-model | 是否处于选中状态 | boolean | `false`
+| disabled | 是否禁用选择 | boolean | `false`
+| text-position | 文本所在的位置，可选值：`left`,`right` | string | `right`
+| icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18`
+| label | 复选框的文本内容 | string | -
+| indeterminate | 当前是否支持半选状态，一般用在全选操作中        | boolean                  | `false` |
 ### Checkbox Slots
 | 名称 | 说明 |
 |-|-|
@@ -393,46 +430,46 @@ app.use(Checklist);
 | indeterminate | 半选时的图标 |
 ### CheckboxGroup Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 参数 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model | 当前选中项的标识符，和 `label` 相对应  | Array | -
-| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
-| max | 限制选择的数量，不能和`全选/取消/反选`一起使用, `0`表示没有限制 | Number | `0`
+| disabled | 是否禁用选择,将用于其下的全部复选框 | boolean | `false`
+| max | 限制选择的数量，不能和`全选/取消/反选`一起使用, `0`表示没有限制 | number | `0`
 
 
 
 ### Checkbox Events
 
-| 字段 | 说明 | 回调参数 
+| 事件名 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| change | 值变化时触发 | (state, label), `state` 代表当前状态，`label` 表示当前选中的值
 
 ### CheckboxGroup Events
 
-| 字段 | 说明 | 回调参数 
+| 事件名 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| change | 值变化时触发 | `label`,`label` 返回一个数组，表示当前选中项的集合
 
 
-### CheckboxGroup 方法
+### CheckboxGroup Methods
 
 | 方法名 | 说明 | 参数 
 |----- | ----- | ----- 
-| toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选
+| toggleAll | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选
 | toggleReverse | 反选 | -
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-checkbox-label-color| _#1d1e1e_ | -  |
-| --nut-checkbox-label-disable-color| _#999_ | -  |
-| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
-| --nut-checkbox-label-margin-left| _15px_ | -  |
-| --nut-checkbox-label-font-size| _14px_ | -  |
-| --nut-checkbox-icon-font-size| _18px_ | -  |
-| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-checkbox-label-color| _#1d1e1e_ |
+| --nut-checkbox-label-disable-color| _#999_ |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ |
+| --nut-checkbox-label-margin-left| _15px_ |
+| --nut-checkbox-label-font-size| _14px_ |
+| --nut-checkbox-icon-font-size| _18px_ |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |

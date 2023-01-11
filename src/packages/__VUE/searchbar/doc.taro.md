@@ -148,7 +148,11 @@ app.use(Searchbar);
 :::demo
 ```html
 <template>
-  <nut-searchbar v-model="searchValue" :clear-icon="icon"> </nut-searchbar>
+  <nut-searchbar v-model="searchValue">
+    <template v-slot:clear-icon>
+      <img :src="icon" style="width: 10px; height: 10px" />
+    </template>
+  </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
@@ -159,7 +163,6 @@ app.use(Searchbar);
       const state = reactive({
         searchValue: ""
       });
-
       return {
         ...toRefs(state),
         icon
@@ -259,7 +262,7 @@ app.use(Searchbar);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

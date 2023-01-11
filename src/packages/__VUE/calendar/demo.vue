@@ -123,14 +123,14 @@
         <template v-slot:btn>
           <div class="wrapper">
             <div class="d_div">
-              <span class="d_btn" @click="goDate">{{ translate('goDate') }}</span></div
-            >
+              <span class="d_btn" @click="goDate">{{ translate('goDate') }}</span>
+            </div>
             <div class="d_div">
-              <span class="d_btn" @click="clickBtn">{{ translate('seven') }}</span></div
-            >
+              <span class="d_btn" @click="clickBtn">{{ translate('seven') }}</span>
+            </div>
             <div class="d_div">
-              <span class="d_btn" @click="clickBtn1">{{ translate('current') }}</span></div
-            >
+              <span class="d_btn" @click="clickBtn1">{{ translate('current') }}</span>
+            </div>
           </div>
         </template>
         <template v-slot:day="date">
@@ -163,7 +163,7 @@
           <span>{{ renderDate(date) }}</span>
         </template>
         <template v-slot:bottomInfo="date">
-          <span class="info">{{ renderBottomDate(date) }}</span>
+          <span class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -187,7 +187,14 @@
     </div>
     <h2>{{ translate('title4') }}</h2>
     <div class="test-calendar-wrapper">
-      <nut-calendar :poppable="false" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">
+      <nut-calendar
+        :poppable="false"
+        :default-value="date2"
+        :is-auto-back-fill="true"
+        @choose="setChooseValue2"
+        :start-date="`2020-02-01`"
+        :end-date="`2020-12-30`"
+      >
       </nut-calendar>
     </div>
   </div>
@@ -366,14 +373,11 @@ export default createDemo({
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate('2022-04-01');
+        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
       }
     };
     const renderDate = (date: { date: Day }) => {
       return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
-    };
-    const renderBottomDate = (date: { date: Day }) => {
-      return date.date ? (+date.date.day <= 10 ? '' : +date.date.day <= 20 ? translate('mid') : '') : '';
     };
     return {
       ...toRefs(state),
@@ -394,8 +398,7 @@ export default createDemo({
       calendarRef,
       select,
       translate,
-      renderDate,
-      renderBottomDate
+      renderDate
     };
   }
 });

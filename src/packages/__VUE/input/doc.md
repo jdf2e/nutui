@@ -12,7 +12,6 @@ import { Input } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Input);
-
 ```
 
 ### 基础用法
@@ -145,21 +144,21 @@ app.use(Input);
     clearSize="14" 
   />
   <nut-input
-      v-model="state.clear2"
-      :placeholder="translate('clear2')"
-      clearable
-      clearSize="14"
-      show-word-limit
-      max-length="50"
-    >
-      <template #clear>
-        <Close width="12" height="12" @click="clearValue"></Close>
-      </template>
-    </nut-input>
+    v-model="state.clear2"
+    placeholder="自定义清除图标"
+    clearable
+    clearSize="14"
+    show-word-limit
+    max-length="50"
+  >
+    <template #clear>
+      <Close width="12" height="12" @click="clearValue"></Close>
+    </template>
+  </nut-input>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
-  import { Close } from 
+  import { Close } from "@nutui/icons-vue"
   export default {
     components:{
       Close
@@ -169,8 +168,11 @@ app.use(Input);
         clear:'',
         clear2:''
       });
+      const clearValue = () => {
+        state.clear2 = '';
+      };
       return {
-        state
+        state, clearValue
       };
     }
   }
@@ -181,7 +183,7 @@ app.use(Input);
 
 ### 配合表单使用
 
-结合nut-form与nut-form-item使用
+结合 `nut-form` 与 `nut-form-item` 使用
 
 :::demo
 
@@ -333,47 +335,30 @@ app.use(Input);
     v-model="state.event"
     clearable
     placeholder="事件演示"
-    @update:model-value="change"
-    @focus="focus"
-    @blur="blur"
     @clear="clear"
-    @click="click"
     @click-input="clickInput"
   />
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
+  import { showToast } from '@nutui/nutui';
   export default {
     setup() {
       const state = reactive({
         event: ''
       });
-      const change = (value: string) => {
-        console.log('change: ', value);
-      };
-      const focus = (event: Event) => {
-        console.log('focus:', event);
-      };
-      const blur = (event: Event) => {
-        console.log('blur:', event);
-      };
       const clear = (event: Event) => {
+        showToast.text('clear');
         console.log('clear:', event);
       };
-      const click = (event: Event) => {
-        console.log('click:', event);
-      };
       const clickInput = (event: Event) => {
+        showToast.text('clickInput');
         console.log('clickInput:', event);
       };
 
       return {
         state,
-        change,
-        blur,
         clear,
-        focus,
-        click,
         clickInput,
       };
     }
@@ -394,26 +379,26 @@ app.use(Input);
 | border       | 是否显示下边框                         | boolean        | `true` |
 | disabled     | 是否禁用                              | boolean        | `false` |
 | readonly     | 是否只读                              | boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | boolean        | `false` |
+| autofocus    | 是否自动获得焦点，`iOS` 系统不支持该属性     | boolean        | `false` |
 | max-length   | 限制最长输入字符                       | string ｜ number | - |
-| clearable    | 展示清除 Icon                         | boolean        | `false`  |
+| clearable    | 展示清除 `Icon`                         | boolean        | `false`  |
 | clear-size   | 清除图标的 `font-size` 大小           | string        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
 | error         | 是否标红                                | boolean | `false`  |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | - |
+| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | `onChange` |
 | confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string |   `done`   |
 
 ### Events
 
-| 名称   | 说明           | 回调参数    |
+| 事件名   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| update:model-value | 输入框内容变化时触发 | val  |
-| focus  | 输入框聚焦时触发     | event |
-| blur   | 输入框失焦时触发     | event  |
-| clear  | 点击清除按钮时触发   | event  |
-| click  | 点击组件时触发      | event  |
-| click-input      | 点击输入区域时触发      | event  |
+| update:model-value | 输入框内容变化时触发 | `val`  |
+| focus  | 输入框聚焦时触发     | `event` |
+| blur   | 输入框失焦时触发     | `event`  |
+| clear  | 点击清除按钮时触发   | `event`  |
+| click  | 点击组件时触发      | `event`  |
+| click-input      | 点击输入区域时触发      | `event`  |
 ### Slots
 | 名称  | 说明     | 
 |-------|----------|
@@ -423,7 +408,7 @@ app.use(Input);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- | 

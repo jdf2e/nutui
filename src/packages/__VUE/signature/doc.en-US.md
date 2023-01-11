@@ -8,11 +8,10 @@ Signature component based on canvas.
 
 ``` javascript
 import { createApp } from 'vue';
-import { Signature} from '@nutui/nutui';
+import { Signature } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Signature);
-
 ```
     
 
@@ -115,21 +114,20 @@ export default {
 ## API
     
 ### Props
-    
-| Attribute | Description | Type   | Default 
-|----- | ----- | ----- | ----- 
-| custom-class | Custom class | String | -
-| line-width | Width of line | Number | 3
-| stroke-style | Drawing stroke color | String | '#000'
-| type | Picture format | String | 'png'
-| un-support-tpl | Display copy without canvas | String | 'sorry, the current browser doesn't support canvas, so we can't use this control! '
+ | Attribute | Description | Type | Default
+|----- | ----- | ----- | -----
+| custom-class | custom `class` | string | `-`
+| line-width | line width | number | `3`
+| stroke-style | drawing stroke color | string | `#000`
+| type | image format | string | `png`
+| un-support-tpl | Display copy when Canvas is not supported | string | `Sorry, the current browser does not support Canvas, so this control cannot be used! `
 
 ### Events
 
-| Event | Description   | Arguments   |
-|----- | ----- | ----- 
-|start | signature start callback function (refers to the beginning of a stroke) | none
-|signing| the callback function being signed (refers to a stroke in progress) | event
-|end| signature end callback function (refers to the end of a stroke) | none
-| confirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature image
-| clear | Click the re sign button to trigger the event callback function | -
+| Event | Description | Arguments
+|----- | ----- | -----
+| start | Signature start callback function (refers to the start of a certain stroke) | `-`
+| signing | The callback function that is signing (referring to a certain stroke in progress) | `event`
+| end | Signature end callback function (referring to the end of a certain stroke) | `-`
+| confirm | Click the confirm button to trigger the event callback function | `canvas and signature image display data URI，<br>If not drawn, returns a tooltip and an empty data URI`
+| clear | Click the re-sign button to trigger the event callback function | `-`

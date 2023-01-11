@@ -285,13 +285,17 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+  
+}
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
-  <nut-cell class="vertical_div">
+  <nut-cell class="vertical_div cell">
     <div class="div">
       <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
     </div>
@@ -311,7 +315,8 @@ export default {
     const value11 = ref([20,80]);
     const onChange = (value) => showToast.text('当前值：' + value);
     return {
-      value,
+      value10,
+      value11,
       onChange,
     };
   },
@@ -326,9 +331,12 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  .div {
-    width: 150px;
-  }
+} 
+.div {
+  width: 150px;
+}
+.cell {
+  padding: 40px 18px;
 }
 </style>
 <template>
@@ -339,7 +347,7 @@ export default {
     <nut-cell class="cell">
       <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
     </nut-cell>
-    <nut-cell class="vertical_div">
+    <nut-cell class="vertical_div cell">
       <div class="div">
         <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
       </div>
@@ -358,13 +366,17 @@ export default {
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref,reactive,toRefs } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style'; 
 export default {
   setup() {
-    const value12 = ref(20);
-    const value13 = ref([20,80]);
+    const state = reactive({
+      value12: 60,
+      value13: [20, 80],
+      value14: 60,
+      value15: [20, 80],
+    })
     const marks=ref({
       0: 0,
       20: 20,
@@ -375,7 +387,8 @@ export default {
     });
     const onChange = (value) => showToast.text('当前值：' + value);
     return {
-      value,
+      ...toRefs(state),
+      marks,
       onChange,
     };
   },
@@ -391,11 +404,11 @@ export default {
   
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 当前进度百分比 | number、number[] | `0` |
+| v-model | 当前进度百分比 | number \| number[] | `0` |
 | range | 是否开启双滑块模式 | boolean | `false` |
-| max | 最大值 | number、string | `100` |
-| min | 最小值 | number、string | `0` |
-| step | 步长 | number、string | `1` |
+| max | 最大值 | number \| string | `100` |
+| min | 最小值 | number \| string | `0` |
+| step | 步长 | number \| string | `1` |
 | disabled | 是否禁用滑块 | boolean | `false` |
 | vertical | 是否竖向展示 | boolean | `false` |
 | hidden-range | 是否隐藏范围值 | boolean | `false` |
@@ -425,7 +438,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

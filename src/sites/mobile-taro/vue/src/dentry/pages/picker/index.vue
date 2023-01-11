@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-picker
       :columns="columns"
@@ -12,7 +13,13 @@
     <h2>搭配 Popup 使用</h2>
     <nut-cell title="城市选择" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup position="bottom" v-model:visible="show" :safeAreaInsetBottom="true">
-      <nut-picker :columns="columns" title="城市选择" @confirm="popupConfirm" @cancel="show = false">
+      <nut-picker
+        v-model="popupValue"
+        :columns="columns"
+        title="城市选择"
+        @confirm="popupConfirm"
+        @cancel="show = false"
+      >
         <nut-button block type="primary" style="margin-bottom: 20px">永远有效</nut-button>
       </nut-picker>
     </nut-popup>
@@ -34,16 +41,24 @@
 </template>
 <script lang="ts">
 import { onMounted, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { PickerOption } from '../../../../../../../packages/__VUE/picker/types';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
     const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>();
     const msg = ref();
     const showToast = ref(false);
+    const popupValue = ref();
 
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
@@ -196,7 +211,9 @@ export default {
       portColumns,
       popupConfirm,
       popupDesc,
-      msg
+      msg,
+      env,
+      popupValue
     };
   }
 };

@@ -12,7 +12,6 @@ import { FixedNav } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(FixedNav);
-
 ```
 
 
@@ -140,23 +139,23 @@ return {
 
 ## API
 ### Props
-| 字段           | 说明                       | 类型    | 默认值                       |
+| 参数           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| visible        | 是否打开                   | boolean | false                        |
-| nav-list       | 悬浮列表内容数据           | Array   | []                           |
-| active-color   | 选中按钮文案颜色           | string  | #fa2c19 默认集成主题色       |
-| active-text    | 收起列表按钮文案           | string  | 收起导航                     |
-| un-active-text | 展开列表按钮文案           | string  | 快速导航                     |
-| type           | 导航方向,可选值 left right | string  | right                        |
-| overlay        | 展开时是否显示遮罩         | boolean | true                         |
-| position       | fixed 垂直位置             | object  | {top: 'auto',bottom: 'auto'} |
+| visible        | 是否打开                   | boolean | `false`                        |
+| nav-list       | 悬浮列表内容数据           | Array   | `[]`                           |
+| active-color   | 选中按钮文案颜色           | string  | `#fa2c19 默认集成主题色`       |
+| active-text    | 收起列表按钮文案           | string  | `收起导航`                     |
+| un-active-text | 展开列表按钮文案           | string  | `快速导航`                     |
+| type           | 导航方向,可选值 `left` `right` | string  | `right`                        |
+| overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
+| position       | fixed 垂直位置             | object  | `{top: 'auto',bottom: 'auto'}` |
 
 
 ### Events
 
-| 字段     | 说明         | 回调参数                 |
+| 事件名     | 说明         | 回调参数                 |
 |----------|--------------|--------------------------|
-| selected | 选择之后触发 | {item:item,$event:Event} |
+| selected | 选择之后触发 | `{item:item,$event:Event}` |
 
 
 ### Slots
@@ -171,7 +170,7 @@ return {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                             | 默认值                                                                                    |
 |----------------------------------|-------------------------------------------------------------------------------------------|

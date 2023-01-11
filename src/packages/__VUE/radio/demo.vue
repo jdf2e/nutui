@@ -91,7 +91,7 @@ import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       option1: '选项1',
       option2: '选项2',
       option3: '选项3',
@@ -121,11 +121,11 @@ export default createDemo({
   setup() {
     initTranslate();
     const data = reactive({
-      radioVal: 1,
-      radioVal2: 2,
-      radioVal3: 1,
-      radioVal4: 1,
-      radioVal5: 1,
+      radioVal: '1',
+      radioVal2: '2',
+      radioVal3: '1',
+      radioVal4: '1',
+      radioVal5: '1',
       radioVal6: '1'
     });
     const handleChange = (value: any) => {

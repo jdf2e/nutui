@@ -1,57 +1,35 @@
 <template>
   <div :class="classes">
-    <template v-if="!swipeEdition">
-      <general-shell
-        v-for="(item, index) of dataArray"
-        :key="index"
-        :item="item"
-        :longPress="longPress"
-        @delIcon="clickDelIcon"
-        @editIcon="clickEditIcon"
-        @itemClick="clickContentItem"
-        @swipeDel="clickSwipeDel"
-        @longCopy="clickLongCopy"
-        @longSet="clickLongSet"
-        @longDel="clickLongDel"
-      >
-        <template v-slot:contentInfo v-if="longPress">
-          <slot name="iteminfos"></slot>
-        </template>
-        <template v-slot:contentIcons v-if="longPress">
-          <slot name="itemicon"></slot>
-        </template>
-        <template v-slot:contentAddrs v-if="longPress">
-          <slot name="itemaddr"></slot>
-        </template>
-        <template v-slot:longpressAll v-if="longPress">
-          <slot name="longpressbtns"></slot>
-        </template>
-      </general-shell>
-    </template>
-    <template v-if="swipeEdition">
-      <swipe-shell
-        v-for="(item, index) of dataArray"
-        :key="index"
-        :item="item"
-        @delIcon="clickDelIcon"
-        @editIcon="clickEditIcon"
-        @itemClick="clickContentItem"
-        @swipeDel="clickSwipeDel"
-      >
-        <template v-slot:contentInfo>
-          <slot name="iteminfos"></slot>
-        </template>
-        <template v-slot:contentIcons>
-          <slot name="itemicon"></slot>
-        </template>
-        <template v-slot:contentAddrs>
-          <slot name="itemaddr"></slot>
-        </template>
-        <template v-slot:swiperightbtn>
-          <slot name="swiperight"></slot>
-        </template>
-      </swipe-shell>
-    </template>
+    <general-shell
+      v-for="(item, index) of dataArray"
+      :key="index"
+      :item="item"
+      :longPress="longPress"
+      :swipeEdition="swipeEdition"
+      @delIcon="clickDelIcon"
+      @editIcon="clickEditIcon"
+      @clickItem="clickContentItem"
+      @swipeDel="clickSwipeDel"
+      @longCopy="clickLongCopy"
+      @longSet="clickLongSet"
+      @longDel="clickLongDel"
+    >
+      <template #content-info>
+        <slot name="item-infos"></slot>
+      </template>
+      <template #content-icons>
+        <slot name="item-icon"></slot>
+      </template>
+      <template #content-addrs>
+        <slot name="item-addr"></slot>
+      </template>
+      <template #longpress-all v-if="longPress">
+        <slot name="longpress-btns"></slot>
+      </template>
+      <template #swipe-right-btn v-if="swipeEdition">
+        <slot name="swipe-right"></slot>
+      </template>
+    </general-shell>
     <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
@@ -61,11 +39,9 @@
 import { reactive, onMounted, ref, watch, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('address-list');
-import SwipeShell from './components/SwipeShell.vue';
-import GeneralShell from './components/GeneralShell.vue';
+import GeneralShell from './components/GeneralShell.taro.vue';
 import { floatData } from '@/packages/utils/util';
 import Button from '../button/index.taro.vue';
-import Swipe from '../swipe/index.taro.vue';
 export default create({
   props: {
     data: {
@@ -84,18 +60,16 @@ export default create({
       type: Boolean,
       default: true
     },
-    dataMapOptions: {
+    dataOptions: {
       type: Object,
       default: {}
     }
   },
   components: {
-    SwipeShell,
     GeneralShell,
-    [Button.name]: Button,
-    [Swipe.name]: Swipe
+    [Button.name]: Button
   },
-  emits: ['delIcon', 'editIcon', 'itemClick', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
+  emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
     const dataArray = ref([]) as any;
@@ -114,9 +88,9 @@ export default create({
     });
     //磨平参数差异
     const trowelData = () => {
-      if (Object.keys(props.dataMapOptions).length > 0) {
+      if (Object.keys(props.dataOptions).length > 0) {
         dataArray.value = props.data.map((item) => {
-          return floatData(dataInfo, item, props.dataMapOptions);
+          return floatData(dataInfo, item, props.dataOptions);
         });
       }
     };
@@ -136,7 +110,7 @@ export default create({
       event.stopPropagation();
     };
     const clickContentItem = (event: Event, item: unknown) => {
-      emit('itemClick', event, item);
+      emit('clickItem', event, item);
       event.stopPropagation();
     };
     const clickLongCopy = (event: Event, item: unknown) => {

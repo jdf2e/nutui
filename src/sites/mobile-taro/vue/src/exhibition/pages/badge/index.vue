@@ -1,6 +1,7 @@
 <template>
-  <view class="demo">
-    <h2>默认用法</h2>
+  <view class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <nut-row>
       <nut-badge :value="8">
         <nut-avatar shape="square"></nut-avatar>
@@ -47,20 +48,20 @@
     <h2>自定义徽标内容</h2>
     <nut-row>
       <nut-badge>
-        <template #icons>
-          <Check color="#ffffff" width="12px" height="12px"></Check>
+        <template #icon>
+          <Check color="#ffffff" size="12px"></Check>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
-        <template #icons>
-          <Link color="#ffffff" width="12px" height="12px"></Link>
+        <template #icon>
+          <Link color="#ffffff" size="12px"></Link>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
       <nut-badge>
-        <template #icons>
-          <Download color="#ffffff" width="12px" height="12px"></Download>
+        <template #icon>
+          <Download color="#ffffff" size="12px"></Download>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
@@ -89,6 +90,10 @@
 </template>
 <script lang="ts" setup>
 import { Check, Link, Download } from '@nutui/icons-vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
+
+const env = Taro.getEnv();
 </script>
 
 <style lang="scss">

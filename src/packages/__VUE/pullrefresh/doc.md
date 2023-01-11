@@ -22,9 +22,9 @@ app.use(PullRefresh);
 
 ```html
 <template>
-  <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+  <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
     <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -46,24 +46,23 @@ app.use(PullRefresh);
 :::
 ### 自定义文案
 
-下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，复杂样式可以通过 slot 插槽实现。
+下拉刷新有4个状态：`'loading' | 'loosing' | 'pulling' `，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
 ```html
 <template>
-  <nut-pullrefresh
+  <nut-pull-refresh
     v-model="refresh2"
     loosingTxt="松开吧"
     loadingTxt="玩命加载中..."
-    completeTxt="好啦"
     @refresh="refreshFun"
   >
     <template #pullingTxt>
       <div>用力拉</div>
     </template>
     <div class="pull-block">向下拉试试吧！</div>
-  </nut-pullrefresh>
+  </nut-pull-refresh>
 </template>
 
 <script>
@@ -92,11 +91,11 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 ```html
 <template>
   <div class="parentpage">
-    <nut-pullrefresh v-model="refresh" @refresh="refreshFun">
+    <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
       <div class="pull-letter" v-for="item in refreshList2">
         <div>{{item}}</div>
       </div>
-    </nut-pullrefresh>
+    </nut-pull-refresh>
   </div>
 </template>
 
@@ -132,15 +131,14 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model        | 是否触发下拉刷新               | Boolean | `false`                |
+| v-model        | 是否触发下拉刷新               | boolean | `false`                |
 | pull-distance         | 触发下拉刷新的距离 | number \| string | `50`               |
 | head-height | 顶部内容高度     | number \| string | `50`  |
-| loading-icon         | 加载中状态时，loading 图标。为空表示去掉        | String | `loading`            |
-| pulling-txt         | 下拉过程提示文案                       | String | `下拉刷新`            |
-| loosing-txt         | 释放过程提示文案                       | String | `释放刷新`            |
-| loading-txt        | 加载过程提示文案                         | String | `加载中...`                |
-| complete-txt        | 刷新成功提示文案                       | String | ''           |
-| duration       | 动画加载时长                         | Number | 0.3                |
+| loading-icon         | 加载中状态时，`loading` 图标。为空表示去掉        | string | `loading`            |
+| pulling-txt         | 下拉过程提示文案                       | string | `下拉刷新`            |
+| loosing-txt         | 释放过程提示文案                       | string | `释放刷新`            |
+| loading-txt        | 加载过程提示文案                         | string | `加载中...`                |
+| duration       | 下拉动画加载时长                         | number | `0.3 `               |
 
 ### Events
 
@@ -156,5 +154,4 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 | pulling  | 下拉过程的顶部内容 |
 | loosing  | 释放过程中顶部内容 |
 | loading  | 加载过程中顶部内容 |
-| complete  | 加载完成顶部内容 |
 | default  | 自定义内容 |

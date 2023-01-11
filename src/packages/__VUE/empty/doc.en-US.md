@@ -26,10 +26,29 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-  <nut-empty image="empty" description="no content"></nut-empty>
-  <nut-empty image="error" description="error"></nut-empty>
-  <nut-empty image="network" description="no network"></nut-empty>
+  <nut-tabs v-model="tabValue">
+    <nut-tab-pane title="empty">
+      <nut-empty image="empty" description="no cotent"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="error">
+      <nut-empty image="error" description="error"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="no network">
+      <nut-empty image="network" description="network"></nut-empty>
+    </nut-tab-pane>
+  </nut-tabs>
 </template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    const tabValue = ref(0);
+    return {
+      tabValue
+    }
+  }
+}
+</script>
 ```
 :::
 ### Custom Image
@@ -64,7 +83,7 @@ app.use(Empty);
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 	Image type, can be set to `empty`, `error`, `network` or image URL              | string | `empty`        |
+| image         | 	Image type, can be set to `empty`, `error`, `network` or image `URL`              | string | `empty`        |
 | image-size        | Image size                      | number \| string | `-`       |
 | description         | Description | string | `-`                |
 
@@ -80,7 +99,7 @@ app.use(Empty);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |

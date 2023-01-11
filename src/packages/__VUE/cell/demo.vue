@@ -31,7 +31,7 @@
 
     <nut-cell-group :title="translate('title5')" :desc="translate('desc1')">
       <nut-cell :title="translate('link')" is-link></nut-cell>
-      <nut-cell :title="translate('urlJump')" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
+      <nut-cell :title="translate('urlJump')" desc="https://m.jd.com" is-link url="https://m.jd.com"></nut-cell>
       <nut-cell :title="translate('routerJump')" to="/"></nut-cell>
     </nut-cell-group>
 
@@ -47,7 +47,7 @@
       <nut-cell :title="translate('image')">
         <template v-slot:icon>
           <img
-            class="nut-icon"
+            style="width: 20px; height: 20px"
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
           />
         </template>
@@ -77,7 +77,7 @@ import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       desc: '描述文字',
       desc1: '使用 nut-cell-group 支持 title desc slots',
       title: '我是标题',
@@ -98,7 +98,7 @@ const initTranslate = () =>
       content: '自定义内容',
       customRight: '自定义右侧箭头区域',
       customLeftIcon: '自定义左侧 Icon 区域',
-      displayIcon: '展示图标'
+      displayIcon: '单元格展示图标'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -122,7 +122,7 @@ const initTranslate = () =>
       content: 'Content',
       customRight: 'Customize the right arrow area',
       customLeftIcon: 'Customize the left Icon area',
-      displayIcon: 'Display Icon'
+      displayIcon: 'cell display icon'
     }
   });
 export default createDemo({

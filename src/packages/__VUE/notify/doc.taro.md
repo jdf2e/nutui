@@ -12,35 +12,16 @@ import { Notify } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Notify);
 ```    
-### 使用示例
-
-``` html 
-<nut-cell-group :title="baseState.state.desc">
-  <nut-cell is-Link @click="baseState.methods.cellClick">基础用法</nut-cell>
-  <nut-notify @click="onClick" @closed="onClosed" v-model:visible="baseState.state.show"
-    :msg="baseState.state.desc" />
-</nut-cell-group>
-
-<nut-cell-group title="通知类型">
-  <nut-notify @click="onClick" @closed="onClosed" :type="notifyState.state.type"
-    v-model:visible="notifyState.state.show" :msg="notifyState.state.desc" />
-  <nut-cell is-Link @click="notifyState.methods.cellClick('primary','主要通知')">主要通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('success','成功通知')">成功通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('danger','危险通知')">危险通知</nut-cell>
-  <nut-cell is-Link @click="notifyState.methods.cellClick('warning','警告通知')">警告通知</nut-cell>
-</nut-cell-group>
-
-<nut-cell-group title="自定义样式">
-  <nut-notify @click="onClick" @closed="onClosed" color='#ad0000' background='#ffe1e1'
-    :type="customState.state.type" v-model:visible="customState.state.show" :msg="customState.state.desc"
-    :duration="customState.state.duration" />
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义背景色和字体颜色')"> 自定义背景色和字体颜色
-  </nut-cell>
-  <nut-cell is-Link @click="customState.methods.cellClick('primary','自定义时长5s',5000)"> 自定义时长5s
-  </nut-cell>
-</nut-cell-group>
-```
-``` javascript
+### 基础用法
+:::demo
+```html
+<template>
+  <nut-cell-group :title="baseState.state.desc">
+    <nut-cell is-Link @click="baseState.methods.cellClick">基础用法</nut-cell>
+    <nut-notify @click="onClick" @closed="onClosed" v-model:visible="baseState.state.show" :msg="baseState.state.desc" />
+  </nut-cell-group>
+</template>
+<script lang="ts">
 import { reactive } from 'vue';
 export default {
   setup() {
@@ -58,6 +39,42 @@ export default {
         }
       }
     };
+    return {
+      baseState,
+      onClosed,
+      onClick
+    };
+  }
+};
+</script>
+```
+:::
+
+
+### 通知类型
+:::demo
+```html
+<template>
+  <nut-cell-group title="通知类型">
+    <nut-notify
+      @click="onClick"
+      @closed="onClosed"
+      :type="notifyState.state.type"
+      v-model:visible="notifyState.state.show"
+      :msg="notifyState.state.desc"
+    />
+    <nut-cell is-Link @click="notifyState.methods.cellClick('primary','主要通知')">主要通知</nut-cell>
+    <nut-cell is-Link @click="notifyState.methods.cellClick('success','成功通知')">成功通知</nut-cell>
+    <nut-cell is-Link @click="notifyState.methods.cellClick('danger','危险通知')">危险通知</nut-cell>
+    <nut-cell is-Link @click="notifyState.methods.cellClick('warning','警告通知')">警告通知</nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { reactive } from 'vue';
+export default {
+  setup() {
+    const onClosed = () => console.log('closed');
+    const onClick = () => console.log('click');
 
     const notifyState = {
       state: reactive({
@@ -90,7 +107,6 @@ export default {
       }
     };
     return {
-      baseState,
       notifyState,
       customState,
       onClosed,
@@ -98,12 +114,13 @@ export default {
     };
   }
 };
-``` 
-
+</script>
+```
+:::
 
 ### Props
     
-| 字段       | 说明                                                  | 类型    | 默认值   |
+| 参数       | 说明                                                  | 类型    | 默认值   |
 |------------|-------------------------------------------------------|---------|----------|
 | type       | 提示的信息类型，可选值为`primary` `success` `danger` `warning` | string        | `danger` |
 | message    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
@@ -124,7 +141,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |

@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
 
     <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
@@ -29,7 +30,7 @@
       :titleIcon="true"
       desc="编辑"
     >
-      <template #titleIcon>
+      <template #title-icon>
         <Cart2 width="16px"></Cart2>
       </template>
       <template #right>
@@ -72,9 +73,13 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
 import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
-  components: { ShareN, Cart2, MoreX, HorizontalN },
+  components: { ShareN, Cart2, MoreX, HorizontalN, Header },
   setup({}) {
+    const env = Taro.getEnv();
+
     const tab1value = ref(0);
     const tab2value = ref(0);
     const methods = {
@@ -102,7 +107,8 @@ export default defineComponent({
     return {
       tab1value,
       tab2value,
-      ...methods
+      ...methods,
+      env
     };
   }
 });

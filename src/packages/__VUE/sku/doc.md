@@ -2,7 +2,7 @@
 
 ### 介绍
 
-
+常用于进行商品选择
 
 ### 安装
 
@@ -19,7 +19,7 @@ app.use(Sku);
 :::demo
 ```html
 <template>
-  <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+  <nut-cell :title="`基础用法`" desc="" @click="base = true"></nut-cell>
   <nut-sku
     v-model:visible="base"
     :sku="sku"
@@ -89,6 +89,7 @@ export default {
     :btnExtraText="btnExtraText"
     @changeStepper="changeStepper"
     @selectSku="selectSku"
+    :btnOptions="['buy', 'cart']"
   >
     <template #sku-operate>
       <div class="sku-operate-box">
@@ -177,7 +178,6 @@ setup() {
     v-model:visible="customStepper"
     :sku="sku"
     :goods="goods"
-    :showSaleLimit="true"
     :stepperMax="7"
     :stepperMin="2"
     :stepperExtraText="stepperExtraText"
@@ -421,14 +421,14 @@ setup() {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | v-model:visible         | 是否显示商品规格弹框               | boolean |  `false`              |
-| sku         | 商品 sku 数据 | array | `[]`               |
+| sku         | 商品 sku 数据 | Array | `[]`               |
 | goods |  商品信息    | object | - |
 | stepper-max         | 设置 inputNumber 最大值  | string \| number | `99999`               |
 | stepper-min         | 设置 inputNumber 最小值  | string \| number | `1`               |
-| btn-options        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | array | `['confirm']`           |
+| btn-options        |           底部按钮设置。[`confirm`, `buy`, `cart` ] 分别对应确定、立即购买、加入购物车              | Array | `[confirm]`           |
 | btn-extra-text | 按钮上部添加文案，默认为空，有值时显示 | string | -            |
 | stepper-title         | 数量选择组件左侧文案 | string | `购买数量`                |
-| stepper-extra-text        |   inputNumber 与标题之间的文案       | function \| false | `false`              |
+| stepper-extra-text        |   InputNumber 与标题之间的文案       | Function \| boolean | `false`              |
 | buy-text |  立即购买按钮文案    | string | `立即购买` |
 | add-cart-text          |        加入购物车按钮文案                 | string | `加入购物车 `            |
 | confirm-text          |           确定按钮文案              | string | `确定`             |
@@ -438,9 +438,9 @@ setup() {
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | select-sku  | 切换规格类目时触发 | {sku,skuIndex,parentSku,parentIndex} |
-| add  | inputNumber 点击增加按钮时触发 | value |
-| reduce  | inputNumber 点击减少按钮时触发 | value |
-| overLimit  | inputNumber 点击不可用的按钮时触发 | value |
+| add  | InputNumber 点击增加按钮时触发 | value |
+| reduce  | InputNumber 点击减少按钮时触发 | value |
+| overLimit  | InputNumber 点击不可用的按钮时触发 | value |
 | change-stepper  | 购买变化时触发 | value |
 | click-btn-operate  | 点击底部按钮时触发 | {type:'confirm',value:'inputNumber value'} |
 | click-close-icon  | 点击左上角关闭 icon 时触发 | - |
@@ -452,13 +452,13 @@ setup() {
 
 Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换。
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | sku-header  | 商品信息展示区，包含商品图片、价格、编号 | 
 | sku-header-price  | 商品信息展示区，价格区域展示| 
 | sku-header-extra  | 商品信息展示区，编号区域展示 | 
-| sku-select-top | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | 
-| sku-select | sku 展示区 | 
+| sku-select-top | Sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | 
+| sku-select | Sku 展示区 | 
 | sku-stepper  | 数量选择区 | 
 | sku-stepper-bottom  | 数量选择区下方区域 | 
 | sku-operate | 底部按钮操作区域 |
@@ -568,7 +568,7 @@ sku : [{
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

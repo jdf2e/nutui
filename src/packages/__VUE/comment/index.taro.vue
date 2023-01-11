@@ -13,7 +13,7 @@
       class="nut-comment__main"
       :style="`-webkit-line-clamp:${conEllipsis}`"
       @click="handleClick"
-      v-html="info.content.replace(/\n/g, '<br>')"
+      v-html="info.content"
     ></view>
 
     <comment-images :images="images" :videos="videos" :type="imagesRows" @clickImages="clickImages"></comment-images>
@@ -22,7 +22,7 @@
       <view class="nut-comment__follow-title">购买{{ follow.days }}天后追评</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
       <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
-        >{{ follow.images.length }} 张追评图片 <Right width="12px"></Right
+        >{{ follow.images.length }} 张追评图片 <Right size="12px"></Right
       ></view>
     </view>
 
@@ -34,7 +34,7 @@
       @handleClick="handleClick"
     ></comment-bottom>
 
-    <slot name="cmt-shop-reply"></slot>
+    <slot name="comment-shop-reply"></slot>
   </view>
 </template>
 <script lang="ts">
@@ -42,11 +42,9 @@ import { ref, onMounted, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('comment');
 import { Right } from '@nutui/icons-vue-taro';
-
-import CommentHeader from './components/CmtHeader.vue';
-import CommentImages from './components/CmtImages.vue';
-import CommentBottom from './components/CmtBottom.vue';
-import Rate from '../rate/index.taro.vue';
+import CommentHeader from './components/CmtHeader.taro.vue';
+import CommentImages from './components/CmtImages.taro.vue';
+import CommentBottom from './components/CmtBottom.taro.vue';
 
 interface VideosType {
   id: number | string;
@@ -87,12 +85,12 @@ export default create({
 
     info: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
 
     follow: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
 
     labels: {
@@ -106,7 +104,6 @@ export default create({
     }
   },
   components: {
-    [Rate.name]: Rate,
     CommentHeader,
     CommentImages,
     CommentBottom,

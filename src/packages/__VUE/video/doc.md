@@ -246,24 +246,33 @@ export default {
 
 ### Props
 
-| 字段                | 说明                                       | 类型    | 默认值   |
+| 参数                | 说明                                       | 类型    | 默认值   |
 | ------------------- | ------------------------------------------ | ------- | -------- |
-| source             | 视频地址和类型设置                         | Object   | -        |
-| options             | 控制视频播放属性                           | Object  | required |
-| options.autoplay    | 是否自动播放                               | Boolean | false    |
-| options.poster      | 海报设置                                   | String  | -        |
-| options.loop        | 是否循环播放                               | Boolean | false    |
-| options.controls    | 是否展示操作栏                             | Boolean | true     |
-| options.muted       | 是否静音                                   | Boolean | false    |
-| options.volume      | 音量控制                                   | Number  | 0.5      |
-| options.disabled    | 禁用操作（如循环播放的背景图，禁止操作）   | Boolean | false    |
-| options.playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | Boolean | false    |
+| source             | 视频地址和类型设置                         | VideoSource   | {} |
+| options             | 控制视频播放属性                           | VideoOptions  | {} |
+
+### VideoSource 数据结构
+| 键名                | 说明                                       | 类型    | 
+| ------------------- | ------------------------------------------ | ------- | 
+| src    | 视频链接                              | boolean | 
+| type      | 视频类型                                   | string  | 
+### VideoOptions 数据结构
+| 键名                | 说明                                       | 类型    | 默认值   |
+| ------------------- | ------------------------------------------ | ------- | -------- |
+| autoplay    | 是否自动播放                               | boolean | `false`    |
+| poster      | 海报设置                                   | string  | -        |
+| loop        | 是否循环播放                               | boolean | `false`    |
+| controls    | 是否展示操作栏                             | boolean | `true`     |
+| muted       | 是否静音                                   | boolean | `false`    |
+| volume      | 音量控制                                   | number  | `0.5`      |
+| disabled    | 禁用操作（如循环播放的背景图，禁止操作）   | boolean | `false`    |
+| playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | boolean | `false`    |
 
 ### Events
 
-| 事件名称 | 说明         | 回调参数 |
+| 事件名 | 说明         | 回调参数 |
 | -------- | ------------ | -------- |
-| play     | 播放         | --       |
-| pause    | 暂停         | --       |
-| playend  | 播放完成回调 | --       |
+| play     | 播放         | videoElm      |
+| pause    | 暂停         | videoElm       |
+| playend  | 播放完成回调 | videoElm       |
 | time  | 播放时触发(current为当前播放时间，total为总时间)|  (current:string,total:string)  |

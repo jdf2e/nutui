@@ -8,12 +8,11 @@ The multiple selection button is used to select.
 
 ``` ts
 import { createApp } from 'vue';
-import { Checkbox,CheckboxGroup } from '@nutui/nutui';
-import { Checklist } from '@nutui/icons-vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Checkbox);
 app.use(CheckboxGroup);
-app.use(Checklist);
 ```
 
 ### Basic Usage
@@ -144,8 +143,9 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Checklist } from '@nutui/icons-vue';
   export default {
-    props: {},
+    components: { Checklist },
     setup() {
       const state = reactive({
         checkbox7: true,
@@ -170,14 +170,16 @@ When the value changes, the `change` event will be triggered
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
       const state = reactive({
         checkbox: false,
       });
-      const changeBox3= (checked: boolean, label: string) => {
-        console.log('Change event trigger' + checked, label);
+      const changeBox3= (state: boolean, label: string) => {
+        showToast.text(`${state ? 'selected' : 'cancel'} ${label}`);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -194,6 +196,40 @@ When the value changes, the `change` event will be triggered
 ```html
 <template>
   <nut-checkbox-group v-model="checkboxgroup1">
+    <nut-checkbox label="1">Combined check box</nut-checkbox>
+    <nut-checkbox label="2">Combined check box</nut-checkbox>
+    <nut-checkbox label="3">Combined check box</nut-checkbox>
+    <nut-checkbox label="4">Combined check box</nut-checkbox>
+  </nut-checkbox-group>
+  <nut-cell>
+    <div class="demo-check">Currently selected value</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+```
+
+:::
+
+### checkboxGroup disabled
+
+:::demo
+
+```html
+<template>
+  <nut-checkbox-group v-model="checkboxgroup1" disabled>
     <nut-checkbox label="1">Combined check box</nut-checkbox>
     <nut-checkbox label="2">Combined check box</nut-checkbox>
     <nut-checkbox label="3">Combined check box</nut-checkbox>
@@ -336,6 +372,7 @@ When the value changes, the `change` event will be triggered
 <script lang="ts">
   import { reactive, toRefs,ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     props: {},
     setup() {
@@ -374,12 +411,12 @@ When the value changes, the `change` event will be triggered
 
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
-| v-model | If selected | Boolean | `false` 
-| disabled | Disable selection | Boolean | `false` 
-| text-position | The position of the text, optional value：`left`,`right` | String | `right` 
-| icon-size | [Icon Size](#/en-US/icon) | String、Number | `18` 
-| label | Text content of the check box | String | - 
-| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
+| v-model | If selected | boolean | `false` 
+| disabled | Disable selection | boolean | `false` 
+| text-position | The position of the text, optional value：`left`,`right` | string | `right` 
+| icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` 
+| label | Text content of the check box | string | - 
+| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | boolean                  | `false` |
 
 ### Checkbox Slots
 | Name | Description |
@@ -392,8 +429,8 @@ When the value changes, the `change` event will be triggered
 | Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
 | v-model | Identifier of the currently selected item, corresponding to `label`  | Array | - 
-| disabled | Whether to disable the selection, which will be used for all check boxes under it | Boolean | `false` 
-| max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | Number | `0`
+| disabled | Whether to disable the selection, which will be used for all check boxes under it | boolean | `false` 
+| max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | number | `0`
 
 
 
@@ -413,21 +450,21 @@ When the value changes, the `change` event will be triggered
 
 | methodName | Description | Arguments 
 |----- | ----- | ----- 
-| toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection
+| toggleAll | Select all / cancel | `true`,to select all，`false`,cancel the selection
 | toggleReverse | Reverse selection | -
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-checkbox-label-color| _#1d1e1e_ | -  |
-| --nut-checkbox-label-disable-color| _#999_ | -  |
-| --nut-checkbox-icon-disable-color| _#d6d6d6_ | -  |
-| --nut-checkbox-label-margin-left| _15px_ | -  |
-| --nut-checkbox-label-font-size| _14px_ | -  |
-| --nut-checkbox-icon-font-size| _18px_ | -  |
-| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-checkbox-label-color| _#1d1e1e_ |
+| --nut-checkbox-label-disable-color| _#999_ |
+| --nut-checkbox-icon-disable-color| _#d6d6d6_ |
+| --nut-checkbox-label-margin-left| _15px_ |
+| --nut-checkbox-label-font-size| _14px_ |
+| --nut-checkbox-icon-font-size| _18px_ |
+| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |

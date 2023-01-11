@@ -2,8 +2,7 @@
 
 ### Intro
 
-
-
+Used for level four address selection
 ### Install
 
 ``` javascript
@@ -70,7 +69,6 @@ app.use(Address);
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
         };
 
@@ -163,14 +161,16 @@ If you want to select a province, you need to set the region ID in the order of 
 <template>
   <nut-cell title="Choose Address" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
   <nut-address
+      v-model="value"
       v-model:visible="showPopup"
+      type="custom2"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
       @change="onChange"
       @close="close"
-      custom-address-title="Choose Address"
+      height="270px"
   ></nut-address>
 </template>
 <script>
@@ -178,6 +178,7 @@ If you want to select a province, you need to set the region ID in the order of 
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province: [
             { id: 1, name: '北京', title: 'B' },
@@ -215,11 +216,11 @@ If you want to select a province, you need to set the region ID in the order of 
           }
         };
         const close = val => {
-          console.log(val);
           text.value = val.data.addressStr;
+          value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
         };
 
-        return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
+        return { showPopup, text, showAddress, onChange, close, value, ...toRefs(address) };
     }
   }
 </script>
@@ -322,7 +323,7 @@ If you want to select a province, you need to set the region ID in the order of 
       :is-show-custom-address="false"
       @selected="selected3"
   >
-    <template #unselectedIcon>
+    <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
     </template>
     <template #icon>
@@ -422,6 +423,7 @@ If you want to select a province, you need to set the region ID in the order of 
       custom-and-exist-title="Choose Other Address"
       @switch-module="switchModule"
       @close-mask="closeMask"
+      @change='onChange'
   ></nut-address>
 </template>
 <script>
@@ -513,11 +515,18 @@ If you want to select a province, you need to set the region ID in the order of 
           }
         };
 
+        const onChange = (cal) => {
+          const name = address[cal.next]
+          if (name.length < 1) {
+            showPopupOther.value = false;
+          }
+        };
+
         const closeMask = val => {
           console.log('关闭弹层', val);
         };
 
-        return { showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
+        return { onChange, showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
     }
   }
   </script>
@@ -527,28 +536,29 @@ If you want to select a province, you need to set the region ID in the order of 
 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | ----- |
-| v-model:visible | Whether to open address | string | `''`|
-| type | Choose type: exist/custom/custom2  | string | `custom`|
-| province | Province data| array | `[]`|
-| city | City data | array | `[]`|
-| country | Country data | array | `[]`|
-| town | Town dta | array | `[]`|
+| v-model:visible | Whether to open address | boolean | `false` |
+| v-model:value | Default value | Array | `[]` |
+| type | Choose type: `exist/custom/custom2`  | string | `custom`|
+| province | Province data| Array | `[]`|
+| city | City data | Array | `[]`|
+| country | Country data | Array | `[]`|
+| town | Town dta | Array | `[]`|
 | height | Popup height | string \| number | `200px`|
-| exist-address | Exist address list data | array | `[]`|
+| exist-address | Exist address list data | Array | `[]`|
 | is-show-custom-address | Whether to change custom address | boolean | `true`|
 | custom-address-title  | Custom address title | string | `Select Region`|
 | exist-address-title|  Exist address title | string | `Delivery To`|
 | custom-and-exist-title| Custom address and existing address switch button copywriting | string | `Choose Another Address`|
-| columns-placeholder | Columns placeholder text | string \| array | `Select`|
+| columns-placeholder | Columns placeholder text | string \| Array | `Select`|
 | lock-scroll   | Whether the background is locked   | boolean        | `true`       |
 
 
 ## Event
-| Attribute            | Description               | Arguments   |
+| Event            | Description               | Arguments   |
 |----- | ----- | ----- |
-| change |  Emitted when to selected custom address |  reference onChange |
-| selected |  Emitted when to selected exist address  | reference selected |
-| close |  Emitted when to close  | reference close |
+| change |  Emitted when to selected custom address |  reference `onChange` |
+| selected |  Emitted when to selected exist address  | reference `selected` |
+| close |  Emitted when to close  | reference `close` |
 | close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'} |
 | switch-module | Click to select another address or custom address to select the upper left corner of the return button  triggered | {type:'exist'/'custom'/'custom2'} |
 
@@ -556,9 +566,9 @@ If you want to select a province, you need to set the region ID in the order of 
 ## change 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| custom | The administrative region currently clicked  |  province / city / country / town|
-| next | The next level of the administrative region currently clicked | province / city / country / town|
-| value | The value of the currently clicked administrative region | {}|
+| custom | The administrative region currently clicked  |  `province / city / country / town` |
+| next | The next level of the administrative region currently clicked | `province / city / country / town`|
+| value | The value of the currently clicked administrative region | `{}`|
 
 ## selected 
 | Attribute            | Description               | Options   |
@@ -570,24 +580,24 @@ If you want to select a province, you need to set the region ID in the order of 
 ## close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| type | Selected Type  |  exist/custom/custom2|
+| type | Selected Type  |  `exist/custom/custom2`|
 | data | Selected Data | `{}` |
 
 
 ## Slot
-| Attribute | Description | 
+| Name | Description | 
 |----- | ----- |  
 | bottom | Bottom slot |  
 | icon | Selected icon slot |  
-| unselectedIcon | Unselected icon slot |  
-| closeIcon | Close icon slot |  
-| backIcon | Change icon slot |  
+| unselected-icon | Unselected icon slot |  
+| close-icon | Close icon slot |  
+| back-icon | Change icon slot |  
     
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- |

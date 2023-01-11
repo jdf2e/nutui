@@ -13,7 +13,7 @@
 .nut-noticebar__page {
   display: flex;
   padding: $noticebar-box-padding;
-  height: $noticebar-height;
+  height: $noticebar-across-height;
   font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
@@ -37,8 +37,8 @@
     padding-right: 40px;
   }
   .nut-noticebar__page-lefticon {
-    height: $noticebar-left-icon-width;
-    min-width: $noticebar-left-icon-width;
+    display: flex;
+    align-items: center;
     margin: $noticebar-lefticon-margin;
     background-size: 100% 100%;
   }
@@ -46,14 +46,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $noticebar-right-icon-width;
     margin: $noticebar-righticon-margin;
   }
   .nut-noticebar__page-wrap {
     display: flex;
     flex: 1;
-    height: $noticebar-line-height;
-    line-height: $noticebar-line-height;
+    height: $noticebar-across-line-height;
+    line-height: $noticebar-across-line-height;
     overflow: hidden;
     position: relative;
   }
@@ -94,7 +93,7 @@
 // 垂直方向的滚动
 @keyframes nut-notice-bar-play-vertical {
   to {
-    transform: translateY($noticebar-height);
+    transform: translateY($noticebar-across-height);
   }
 }
 
@@ -103,10 +102,12 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: $noticebar-height;
+  height: $noticebar-across-height;
   font-size: $noticebar-font-size;
   overflow: hidden;
   padding: $noticebar-box-padding;
+  background: $noticebar-background;
+  color: $noticebar-color;
 
   .nut-noticebar__vertical-list {
     margin: 0;
@@ -116,11 +117,12 @@
     .nut-noticebar__vertical-item {
       display: flex;
       align-items: center;
-      height: $noticebar-height;
+      height: $noticebar-across-height;
     }
   }
 
   .go {
+    margin: $noticebar-righticon-margin;
     align-self: center;
     display: flex;
   }

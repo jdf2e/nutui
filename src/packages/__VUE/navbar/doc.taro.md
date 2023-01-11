@@ -1,4 +1,4 @@
-# NavBar 头部导航
+# Navbar 头部导航
 
 ### 介绍 
 
@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Navbar, Tabs, TabPane } from '@nutui/nutui-taro';
 
@@ -49,7 +48,7 @@ app.use(TabPane);
     :titleIcon="true"
     desc="编辑"
   >
-    <template #titleIcon>
+    <template #title-icon>
       <Cart2 width="16px"></Cart2>
     </template>
     <template #right>
@@ -60,7 +59,7 @@ app.use(TabPane);
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue';
+  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue-taro';
   export default {
   components: { ShareN, Cart2, MoreX },
   setup() {
@@ -112,7 +111,7 @@ app.use(TabPane);
 
 <script lang="ts">
 import { ref } from 'vue';
-import { MoreX } from '@nutui/icons-vue';
+import { MoreX } from '@nutui/icons-vue-taro';
 export default {
   components: { MoreX },
   setup() {
@@ -164,7 +163,7 @@ export default {
 
 <script lang="ts">
   import { ref } from 'vue';
-  import { HorizontalN } from '@nutui/icons-vue';
+  import { HorizontalN } from '@nutui/icons-vue-taro';
   export default {
     components: { HorizontalN },
     setup() {
@@ -190,22 +189,22 @@ export default {
 ## API
 ### Props
 
-| 字段            | 说明                                                    | 类型    | 默认值  |
+| 参数            | 说明                                                    | 类型    | 默认值  |
 |-----------------|--------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                 | string  | -       |
 | left-text       | 左侧文案                                                 | string  | -       |
 | desc            | 右侧描述                                                 | string  | -       |
-| left-show       | 是否展示左侧箭头                                          | boolean | false   |
-| title-icon        | 标题中是否展示icon                                        | boolean  | false      |
-| border          | 是否显示下边框                                            | boolean  | false  |
-| fixed           | 是否固定到顶部                                            | boolean  | false    |
-| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | boolean  | false   |
-| safe-area-inset-top   | 是否开启顶部安全区适配                                | boolean  | false   |
-| z-index | 导航栏 z-index                                            | number ｜ string  | -       |
+| left-show       | 是否展示左侧箭头                                          | boolean | `false`   |
+| title-icon        | 标题中是否展示 `icon`                                        | boolean  | `false`      |
+| border          | 是否显示下边框                                            | boolean  | `false`  |
+| fixed           | 是否固定到顶部                                            | boolean  | `false`    |
+| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | boolean  | `false`   |
+| safe-area-inset-top   | 是否开启顶部安全区适配                                | boolean  | `false`   |
+| z-index | 导航栏 `z-index`                                            | number ｜ string  | -       |
 
 
 ### Events
-| 名称  | 说明     | 回调参数    |
+| 事件名  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | on-click-title | 点击页面标题事件 | event:Event |
 | on-click-icon | 点击页面标题icon事件 | event:Event |
@@ -213,19 +212,19 @@ export default {
 | on-click-back | 点击左侧图标事件 | event:Event |
 
 ### Slots
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| left | 自定义左侧内容 |  |
-| right | 自定义右侧内容 |  |
-| content |  自定义导航栏中间内容 |  |
-| leftShow  | 左侧箭头自定义图标 |
-| titleIcon  | 标题中自定义图标 |
+| 名称  | 说明     |
+|-------|----------|
+| left | 自定义左侧内容 |
+| right | 自定义右侧内容 |
+| content |  自定义导航栏中间内容 |
+| left-show  | 左侧箭头自定义图标 |
+| title-icon  | 标题中自定义图标 |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- | 

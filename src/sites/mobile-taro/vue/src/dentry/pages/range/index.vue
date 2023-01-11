@@ -1,5 +1,6 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell class="cell">
       <nut-range v-model="value1" @change="onChange"></nut-range>
@@ -83,9 +84,16 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const state = reactive({
       value1: 40,
       value2: [20, 80],
@@ -114,7 +122,8 @@ export default {
     const onChange = (value: number) => console.log('当前值：' + value);
     return {
       ...toRefs(state),
-      onChange
+      onChange,
+      env
     };
   }
 };

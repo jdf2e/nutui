@@ -9,7 +9,7 @@ Place the content in multiple folded panels, and click the panel title to expand
 
 ``` javascript
 import { createApp } from 'vue';
-import { Collapse,CollapseItem } from '@nutui/nutui';
+import { Collapse, CollapseItem } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Collapse);
@@ -26,9 +26,9 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 
 ```html
 <template>
-<nut-collapse v-model:active="activeNames">
+<nut-collapse v-model="activeNames">
   <nut-collapse-item :name="1">
-    <template v-slot:mTitle>
+    <template v-slot:title>
       {{title1}}
     </template>
     Nutui is a lightweight Vue component library with JD style
@@ -56,7 +56,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ### accordion
@@ -66,7 +66,7 @@ You can set accordion mode through 'accordion', and expand up to one panel. At t
 :::demo
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :value="subTitle">
       Build scenes based on JD design language system
     </nut-collapse-item>
@@ -96,7 +96,7 @@ export default {
     };
   }
 }
-</script>
+</>
 ```
 
 :::
@@ -109,11 +109,11 @@ Set custom icons through icon and rotate to set the rotation angle of icons
 ```html
 <template>
   <nut-collapse
-    v-model:active="activeName"
+    v-model="activeName"
     :accordion="true"
   >
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:sTitle>
+      <template v-slot:value>
         text test
       </template>
       NUTUI3. 0 rethink its internal consistency and composability
@@ -147,15 +147,15 @@ export default {
 
 ### Set fixed content (do not collapse)
 
-Set content through slot: extrarender
+Set content through slot: extra
 
 :::demo
 
 ```html
 <template>
-  <nut-collapse v-model:active="activeName" :accordion="true">
+  <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extraRender>fixed content</template>
+      <template v-slot:extra>fixed content</template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -184,13 +184,13 @@ export default {
 ## API
 ### Collapse Props
 
-| Field | Description | Type | Default
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
 | v-model | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-` |
 | accordion | Whether to enable accordion mode | boolean | `false` |
 
 ### CollapseItem Props
-| Parameter | Description | Type | Default |
+| Attribute | Description | Type | Default |
 |------|------|------|------|
 | name | unique identifier, required | string \| number | `-1` |
 | title | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string |`-` |
@@ -204,25 +204,25 @@ export default {
 
 ### CollapseItem Slots
 
-|Slot name | Description|
+|Name | Description|
 |------|------|
-|Slot: mTitle | Content slot on the left side of the title bar|
-|Slot: value | Right content slot of the title bar|
-|Slot: extraRender | Set fixed content under the title (no folding)|
+|title | Content slot on the left side of the title bar|
+|alue | Right content slot of the title bar|
+|extra | Set fixed content under the title (no folding)|
 
 
 
 ### Events
 
-|Event name | Description | Callback parameter|
+|Event | Description | Callback parameter|
 |------|------|------|
-|Change | Triggered when switching panels | The type is consistent with the value bound to the v-model|
+|change | Triggered when switching panels | The type is consistent with the value bound to the v-model|
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- | 

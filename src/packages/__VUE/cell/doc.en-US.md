@@ -141,7 +141,7 @@ app.use(CellGroup);
     <nut-cell title="Image">
       <template v-slot:icon>
         <img
-          class="nut-icon"
+          style="width:20px;height: 20px;"
           src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
         />
       </template>
@@ -219,20 +219,20 @@ You can center the left and right contents of the cell vertically through the 'c
 | title           | Title                                                                                                    | string           | -       |
 | sub-title       | Subtitle                                                                                                 | string           | -       |
 | desc            | Description                                                                                              | string           | -       |
-| desc-text-align | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | string           | right   |
-| is-link         | Whether to show the right arrow and turn on click feedback                                               | boolean          | false   |
-| round-radius    | Corner radius                                                                                            | number           | 6px     |
+| desc-text-align | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | string           | `right`   |
+| is-link         | Whether to show the right arrow and turn on click feedback                                               | boolean          | `false`   |
+| round-radius    | Corner radius                                                                                            | number           | `6px`     |
 | url             | Link URL                                                                                                 | string           | -       |
 | to              | Target route of the link, same as to of vue-router                                                       | string \| object | -       |
-| replace         | If true, the navigation will not leave a history record                                                  | boolean          | false   |
-| center          | Whether to center content vertically                                                                     | boolean          | false   |
-| size            | Size, can be set to `large`                                                                              | string           | ''      |
+| replace         | If true, the navigation will not leave a history record                                                  | boolean          | `false`   |
+| center          | Whether to center content vertically                                                                     | boolean          | `false`   |
+| size            | Size, can be set to `large`                                                                              | string           | `''`      |
 
 ### Cell Events
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| click | Emitted when cell is clicked | event:Event |
+| click | Emitted when cell is clicked | `event:Event` |
 
 ### Cell Slots
 
@@ -240,21 +240,21 @@ You can center the left and right contents of the cell vertically through the 'c
 |---------|--------------------|
 | icon    | Custom Left `icon` |
 | default | Default slot       |
-| link    | Custom Right`link` |
-| title   | Custom`title`slot  |
+| link    | Custom Right `link` |
+| title   | Custom `title` slot  |
 
 ### CellGroup Slots
 
 | Name  | Description       |
 |-------|-------------------|
-| title | Custom`title`slot |
-| desc  | Custom`desc`slot  |
+| title | Custom `title` slot |
+| desc  | Custom `desc` slot  |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                               | Default Value                |
 |------------------------------------|------------------------------|

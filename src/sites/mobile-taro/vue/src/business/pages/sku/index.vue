@@ -1,7 +1,8 @@
 <template>
-  <div class="demo">
-    <h2>基本用法</h2>
-    <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
+    <nut-cell :title="`基础用法`" desc="" @click="base = true"></nut-cell>
 
     <h2>不可售</h2>
     <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>
@@ -108,6 +109,8 @@
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted, defineComponent } from 'vue';
 import { Sku, Goods, imagePathMap } from './data';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 interface Skus {
   id: number;
@@ -137,8 +140,9 @@ interface Data {
 }
 
 export default defineComponent({
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const popup = reactive({
       base: false,
       notSell: false,
@@ -271,7 +275,8 @@ export default defineComponent({
       btnExtraText,
       overLimit,
       ...toRefs(popup),
-      ...toRefs(data)
+      ...toRefs(data),
+      env
     };
   }
 });

@@ -13,8 +13,9 @@
       v-if="direction == 'across'"
     >
       <view class="nut-noticebar__page-lefticon">
-        <slot name="left-icon" v-if="$slots['left-icon']"> </slot>
-        <component :is="renderIcon(leftIcon)" v-else></component>
+        <slot name="left-icon">
+          <Notice v-if="leftIcon" size="16px"></Notice>
+        </slot>
       </view>
       <view ref="wrap" :class="`nut-noticebar__page-wrap wrap${id}`">
         <view
@@ -32,7 +33,11 @@
       </view>
     </view>
 
-    <view class="nut-noticebar__vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
+    <view
+      class="nut-noticebar__vertical"
+      v-if="scrollList.length > 0 && direction == 'vertical' && showNoticebar"
+      :style="barStyle"
+    >
       <template v-if="slots.default">
         <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <ScrollItem
@@ -59,7 +64,7 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <slot name="rightIcon">
+        <slot name="right-icon">
           <CircleClose v-if="closeMode" :color="color" size="11px" />
         </slot>
       </view>
@@ -127,10 +132,13 @@ export default create({
       type: Boolean,
       default: false
     },
-    leftIcon: { type: Object || String, default: () => Notice },
+    leftIcon: {
+      type: Boolean,
+      default: true
+    },
     color: {
       type: String,
-      default: '#F9911B'
+      default: ''
     },
     background: {
       type: String,
@@ -207,10 +215,10 @@ export default create({
     const barStyle = computed(() => {
       let style: {
         [props: string]: any;
-      } = {
-        color: props.color,
-        background: props.background
-      };
+      } = {};
+
+      props.color && (style.color = props.color);
+      props.background && (style.background = props.background);
 
       if (props.direction == 'vertical') {
         style.height = `${props.height}px`;
@@ -357,6 +365,9 @@ export default create({
     };
 
     const handleClickIcon = () => {
+      if (props.closeMode) {
+        state.showNoticebar = !props.closeMode;
+      }
       emit('close', state.scrollList[0]);
     };
 

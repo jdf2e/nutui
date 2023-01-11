@@ -18,6 +18,8 @@ app.use(SideNavbarItem);
 
 ### Basic Usage
 
+The left and right display can be controlled by setting `'position'`
+
 :::demo
 
 ``` html
@@ -66,7 +68,6 @@ app.use(SideNavbarItem);
 :::
 
 ### Nesting (up to three layers recommended)
-> The miniProgram does not support asynchronous loading temporarily
 
 :::demo
 
@@ -118,13 +119,13 @@ app.use(SideNavbarItem);
           state.navs = [
             {
               id: 16,
-              name: 'asyc abc16',
-              arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+              name: 'async1',
+              arr: [{ pid: 16, id: 17, name: 'async-id17' }]
             },
             {
               id: 17,
-              name: 'asyc abc17',
-              arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+              name: 'async2',
+              arr: [{ pid: 17, id: 18, name: 'async-id18' }]
             }
           ];
         }, 2000);
@@ -152,22 +153,22 @@ app.use(SideNavbarItem);
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | Navigation indent width                                                    | Number、String  | `15`
+| offset                 | Navigation indent width                                                    | number \| string  | `15`
 
 ### SubSideNavbar Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | String  | ``
-| ikey                 | Navigation unique identifier                                                    | String、Number  | ``
-| open                 | Whether navigation is expanded by default                                                    | Boolean  | `true`
+| title                 | Navigation title                                                    | string  | ``
+| ikey                 | Navigation unique identifier                                                    | number \| string  | ``
+| open                 | Whether navigation is expanded by default                                                    | boolean  | `true`
 
 ### SideNavbarItem Props
 
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | String  | `15`
-| ikey                 | Navigation unique identifier                                                    | String、Number  | ``
+| title                 | Navigation title                                                    | string  | `15`
+| ikey                 | Navigation unique identifier                                                    | number \| string  | ``
 
 
 ### SubSideNavbar Events
@@ -186,24 +187,24 @@ app.use(SideNavbarItem);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  | -  |
-| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  | -  |
-| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  | -  |
-| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  | -  |
-| --nut-sidenavbar-sub-title-radius| _0_  | -  |
-| --nut-sidenavbar-sub-title-border| _0_  | -  |
-| --nut-sidenavbar-sub-title-width| _100%_  | -  |
-| --nut-sidenavbar-sub-title-height| _40px_  | -  |
-| --nut-sidenavbar-sub-title-text-line-height| _40px_  | -  |
-| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  | -  |
-| --nut-sidenavbar-item-title-color| _#333_  | -  |
-| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  | -  |
-| --nut-sidenavbar-item-height| _40px_  | -  |
-| --nut-sidenavbar-item-line-height| _40px_  | -  |
-| --nut-sidenavbar-item-font-size| _16px_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  |
+| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  |
+| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  |
+| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  |
+| --nut-sidenavbar-sub-title-radius| _0_  |
+| --nut-sidenavbar-sub-title-border| _0_  |
+| --nut-sidenavbar-sub-title-width| _100%_  |
+| --nut-sidenavbar-sub-title-height| _40px_  |
+| --nut-sidenavbar-sub-title-text-line-height| _40px_  |
+| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  |
+| --nut-sidenavbar-item-title-color| _#333_  |
+| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  |
+| --nut-sidenavbar-item-height| _40px_  |
+| --nut-sidenavbar-item-line-height| _40px_  |
+| --nut-sidenavbar-item-font-size| _16px_  |
 
 

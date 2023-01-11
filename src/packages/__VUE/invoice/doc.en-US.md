@@ -138,9 +138,9 @@ export default {
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| data | Invoice data | array | []
+| data | Invoice data | Array | `[]`
 | formValue | Form data object (required when using form verification) | object | -
-| submit | Whether to show the submit button | boolean | true
+| submit | Whether to show the submit button | boolean | `true`
 
 ### Data Structure of Data
 
@@ -153,9 +153,9 @@ The optional attributes are as follows:
 | label  | Label         | string                                 |
 | placeholder   | Input placeholder           | string                                  |
 | radio-label   | Radio label           | string                                  |
-| form-item-prop | The v-model field of the form field is required | string | -
-| rules | Check rules，[Refer to FormItem Rule data structure](#/form) | array | []
-| required | Is it a required field | Boolean | `false`
+| form-item-prop | The v-model field of the form field is required | string |
+| rules | Check rules，[Refer to FormItem Rule data structure](#/en-US/form) | Array |
+| required | Is it a required field | boolean |
 
 ### Events
 
@@ -168,8 +168,8 @@ The optional attributes are as follows:
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-invoice-padding       | _ 10px 10px 20px_        | -    |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-invoice-padding       | _ 10px 10px 20px_        |

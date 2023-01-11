@@ -35,7 +35,7 @@
                 <div class="nut-tour-content-bottom">
                   <div class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</div>
                   <div class="nut-tour-content-bottom-operate">
-                    <slot name="prevStep">
+                    <slot name="prev-step">
                       <div
                         class="nut-tour-content-bottom-operate-btn"
                         @click="changeStep('prev')"
@@ -50,7 +50,7 @@
                       v-if="steps.length - 1 == active"
                       >{{ completeTxt }}</div
                     >
-                    <slot name="nextStep">
+                    <slot name="next-step">
                       <div
                         class="nut-tour-content-bottom-operate-btn active"
                         @click="changeStep('next')"
@@ -83,9 +83,9 @@ import { Close } from '@nutui/icons-vue';
 import Popover from '../popover/index.vue';
 
 interface StepOptions {
-  target: Element;
-  content: String;
-  location?: PopoverLocation;
+  target: Element | string;
+  content: string;
+  location?: string;
   popoverOffset?: number[];
   arrowOffset?: number;
 }
@@ -96,7 +96,7 @@ export default create({
     Close
   },
   props: {
-    visible: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: false },
     type: {
       type: String,
       default: 'step' // tile
@@ -162,10 +162,10 @@ export default create({
       default: true
     }
   },
-  emits: ['update:visible', 'change', 'close'],
+  emits: ['update:modelValue', 'change', 'close'],
   setup(props, { emit }) {
     const state = reactive({
-      showTour: props.visible,
+      showTour: props.modelValue,
       showPopup: false,
       active: 0
     });
@@ -233,7 +233,7 @@ export default create({
       state.showTour = false;
       state.showPopup = false;
       emit('close', state.active);
-      emit('update:visible', false);
+      emit('update:modelValue', false);
     };
 
     const handleClickMask = () => {
@@ -245,7 +245,7 @@ export default create({
       getRootPosition();
     });
     watch(
-      () => props.visible,
+      () => props.modelValue,
       (val) => {
         if (val) {
           getRootPosition();

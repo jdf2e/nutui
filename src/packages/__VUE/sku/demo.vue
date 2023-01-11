@@ -29,7 +29,6 @@
       @changeStepper="changeStepper"
       :btnOptions="['buy', 'cart']"
       @selectSku="selectSku"
-      @close="close"
     >
       <template #sku-operate>
         <div class="sku-operate-box">
@@ -61,7 +60,6 @@
       :btnOptions="['buy', 'cart']"
       @selectSku="selectSku"
       @clickBtnOperate="clickBtnOperate"
-      @close="close()"
     >
       <template #sku-header-price>
         <div>
@@ -116,7 +114,7 @@ const { createDemo, translate } = createComponent('sku');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       noSell: '不可售',
       customStepper: '自定义计步器',
       slots: '自定义插槽'

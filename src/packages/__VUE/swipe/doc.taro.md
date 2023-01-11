@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Swipe,Cell,Button } from '@nutui/nutui-taro';
+import { Swipe, Cell, Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swipe);
@@ -23,7 +23,7 @@ app.use(Button);
 ```html
 <template>
 <nut-swipe>
-    <nut-cell round-radius="0" desc="左滑删除" />
+    <nut-cell round-radius="0" title="左滑删除" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
     </template>
@@ -40,7 +40,7 @@ app.use(Button);
 ```html
 <template>
 <nut-swipe disabled>
-    <nut-cell round-radius="0" desc="禁止滑动" />
+    <nut-cell round-radius="0" title="禁止滑动" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
     </template>
@@ -59,7 +59,7 @@ app.use(Button);
     <template #left>
         <nut-button shape="square" style="height:100%" type="success">选择</nut-button>
     </template>
-    <nut-cell round-radius="0" desc="左滑右滑都可以哦" />
+    <nut-cell round-radius="0" title="左滑右滑都可以哦" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
         <nut-button shape="square" style="height:100%" type="info">收藏</nut-button>
@@ -100,12 +100,11 @@ export default {
                 refSwipe.value?.close();
             }
         };
-         const open = (obj: any) => {
+        const open = (obj: any) => {
             console.log(obj);
-            checked.value = true;
         };
-        const close = () => {
-            checked.value = false;
+        const close = (obj: any) => {
+            console.log(obj);
         };
         return { checked, changSwitch, refSwipe, open, close };
     }
@@ -151,18 +150,18 @@ export default {
 ## API
 ### Props
 
-| 参数                        | 说明                 | 类型    | 默认值 |
-|-----------------------------|----------------------|---------|--------|
-| name                        | 唯一标识             | string  | -      |
-| disabled                    | 是否禁用滑动         | string  | false  |
-| touch-move-prevent-default  | 是否阻止滑动事件行为 | boolean | false  |
-| touch-move-stop-propagation | 是否阻止滑动事件冒泡 | boolean | false  |
+| 参数                        | 说明                 | 类型    | 默认值  |
+|-----------------------------|----------------------|---------|---------|
+| name                        | 唯一标识             | string  | -       |
+| disabled                    | 是否禁用滑动         | string  | `false` |
+| touch-move-prevent-default  | 是否阻止滑动事件行为 | boolean | `false` |
+| touch-move-stop-propagation | 是否阻止滑动事件冒泡 | boolean | `false` |
 ### Events
 
-| 事件名 | 说明       | 回调参数                   |
-|--------|------------|----------------------------|
-| open   | 打开时触发 | { type:'left' \| 'right' } |
-| close  | 关闭时触发 | { type:'left' \| 'right' } |
+| 事件名 | 说明       | 回调参数            |
+|--------|------------|---------------------|
+| open   | 打开时触发 | `{ name,position }` |
+| close  | 关闭时触发 | `{ name,position }` |
     
 
 ### Slots
@@ -172,10 +171,10 @@ export default {
 | default | 自定义内容   |
 | right   | 右侧滑动内容 |
 
-### 方法
+### Methods
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Swipe 实例并调用实例方法。
 
-| 方法名 | 说明             | 参数              |
-|--------|------------------|-------------------|
-| open   | 打开单元格侧边栏 | 'left' \| 'right' |
-| close  | 收起单元格侧边栏 |                   |
+| 方法名 | 说明             | 参数                |
+|--------|------------------|---------------------|
+| open   | 打开单元格侧边栏 | `{ name,position }` |
+| close  | 收起单元格侧边栏 | `{ name,position }` |

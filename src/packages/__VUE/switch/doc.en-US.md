@@ -1,10 +1,10 @@
-#  Switch 开关
+#  Switch
 
-### 介绍
+### Intro
 
 Used to turn options on or off.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -15,7 +15,7 @@ app.use(Switch);
 ```
 
 
-### 基础用法
+### Basic Usage
 :::demo
 ``` html
 <template>
@@ -33,7 +33,7 @@ app.use(Switch);
 ```
 :::
 
-### 禁用状态
+### Disable State
 :::demo
 ``` html
 <template>
@@ -51,11 +51,11 @@ app.use(Switch);
 ```
 :::
 
-### 加载状态
+### Loading State
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading />
+  <nut-switch v-model="checked" loading active-color />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -69,7 +69,7 @@ app.use(Switch);
 ```
 :::
 
-### change事件
+### Change event
 :::demo
 ``` html
 <template>
@@ -95,7 +95,7 @@ app.use(Switch);
 </script>
 ```
 :::
-### 异步控制
+### Change Async
 :::demo
 ``` html
 <template>
@@ -125,7 +125,7 @@ app.use(Switch);
 </script>
 ```
 :::
-### 自定义颜色
+### Custom Color
 :::demo
 ``` html
 <template>
@@ -142,7 +142,7 @@ app.use(Switch);
 </script>
 ```
 :::
-### 支持文字
+### Use Text
 :::demo
 ``` html
 <template>
@@ -160,32 +160,53 @@ app.use(Switch);
 ```
 :::
 
+### Custom loading icon
+:::demo
+``` html
+<template>
+  <nut-switch v-model="checked" loading>
+    <template #icon><Loading name="loading" /></template>
+  </nut-switch>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { Loading } from '@nutui/icons-vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
+```
+:::
+
 ## API
 
 ### Props
 
-| Attribute           | Description      | Type    | Default        |
-|----------------|------------------|---------|-----------------------|
-| v-model        | Status of Switch       | boolean ｜ string ｜ number | `false`  |
-| disable        | Disable status         | boolean | `false`               |
-| loading        | Loading status         | boolean | `false`               |
-| active-color   | Background color when active | string  | `#fa2c19`    |
-| inactive-color | Background color when inactive | string  | `#ebebeb` | 
-| active-text    | Word description when active   | string  | -         |
-| inactive-text  | Word description when inactive   | string  | -        |
-| active-value   | Value when active   | boolean ｜ string ｜ number  | `true`  |
-| inactive-value | Value when inactive   | boolean ｜ string ｜ number  | `false`  |
+| Attribute      | Description                    | Type                        | Default   |
+|----------------|--------------------------------|-----------------------------|-----------|
+| v-model        | Status of Switch               | boolean \| string \| number | `false`   |
+| disable        | Disable status                 | boolean                     | `false`   |
+| loading        | Loading status                 | boolean                     | `false`   |
+| active-color   | Background color when active   | string                      | `#fa2c19` |
+| inactive-color | Background color when inactive | string                      | `#ebebeb` |
+| active-text    | Word description when active   | string                      | -         |
+| inactive-text  | Word description when inactive | string                      | -         |
+| active-value   | Value when active              | boolean ｜ string ｜ number | `true`    |
+| inactive-value | Value when inactive            | boolean ｜ string ｜ number | `false`   |
 
 ### Slots
 
-|Name|Description|
-|-|-|
-|icon| loading icon slot |
+| Name | Description       |
+|------|-------------------|
+| icon | loading icon slot |
 
 ### Events
 
-| Event | Description    | Arguments                 |
-|--------|----------------|-------------------------------|
+| Event  | Description                       | Arguments                     |
+|--------|-----------------------------------|-------------------------------|
 | change | Emitted when check status changed | (value: boolean,event: Event) |
 
 
@@ -193,18 +214,18 @@ app.use(Switch);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | 
-| --------------------------------------- | -------------------------- | 
-| --nut-switch-close-bg-color|  _#ebebeb_ |
-| --nut-switch-close-cline-bg-color|  _#f0f0f0_ |
-| --nut-switch-width|  _36px_ |
-| --nut-switch-height|  _21px_ |
-| --nut-switch-line-height|  _21px_ |
-| --nut-switch-border-radius|  _21px_ |
-| --nut-switch-inside-width|  _13px_ |
-| --nut-switch-inside-height|  _13px_ |
-| --nut-switch-inside-open-transform|  _translateX(146%)_ |
-| --nut-switch-inside-close-transform|  _translateX(30%)_ |
+| Name                                | Default Value      |
+|-------------------------------------|--------------------|
+| --nut-switch-close-bg-color         | _#ebebeb_          |
+| --nut-switch-close-cline-bg-color   | _#f0f0f0_          |
+| --nut-switch-width                  | _36px_             |
+| --nut-switch-height                 | _21px_             |
+| --nut-switch-line-height            | _21px_             |
+| --nut-switch-border-radius          | _21px_             |
+| --nut-switch-inside-width           | _13px_             |
+| --nut-switch-inside-height          | _13px_             |
+| --nut-switch-inside-open-transform  | _translateX(146%)_ |
+| --nut-switch-inside-close-transform | _translateX(30%)_  |
     

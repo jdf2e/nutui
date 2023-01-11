@@ -81,13 +81,13 @@ app.use(Indicator);
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
 | --------------------------------------- | -------------------------- |
-| --nut-indicator-color|  _var(--nut-primary-color)_ |
+| --nut-indicator-bg-color|  _var(--nut-primary-color)_ |
 | --nut-indicator-dot-color|  _var(--nut-disable-color)_ |
-| --nut-indicator-white|  _var(--nut-white)_ |
+| --nut-indicator-color|  _var(--nut-white)_ |
 | --nut-indicator-size|  _18px_ |
 | --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ |
 | --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ |

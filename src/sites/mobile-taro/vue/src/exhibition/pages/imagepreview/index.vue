@@ -1,12 +1,13 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-image-preview :show="showPreview1" :images="imgData" @close="hideFn(1)" :isLoop="false" />
     <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn(1)"></nut-cell>
 
     <h2>设置初始页码</h2>
     <nut-image-preview :show="showPreview2" :images="imgData" :content-close="true" :init-no="3" @close="hideFn(2)" />
-    <nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn(2)"></nut-cell>
+    <nut-cell isLink title="设置初始页码" :showIcon="true" @click="showFn(2)"></nut-cell>
 
     <h2>设置轮播指示器及颜色</h2>
     <nut-image-preview
@@ -16,7 +17,7 @@
       pagination-color="red"
       @close="hideFn(3)"
     />
-    <nut-cell isLink title="设置轮播指示器及颜色的图片预览" :showIcon="true" @click="showFn(3)"></nut-cell>
+    <nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn(3)"></nut-cell>
 
     <!-- <h2>视频、图片预览</h2>
     <nut-image-preview :show="showPreview4" :videos="videoData" :images="imgData" @close="hideFn(4)" />
@@ -29,9 +30,12 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const resData = reactive({
       showPreview1: false,
       showPreview2: false,
@@ -97,7 +101,8 @@ export default {
     return {
       ...toRefs(resData),
       showFn,
-      hideFn
+      hideFn,
+      env
       // fnShow
     };
   }

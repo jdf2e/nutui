@@ -22,8 +22,7 @@ const provideHover = (document: vscode.TextDocument, position: vscode.Position, 
         const { site } = componentMap[item];
 
         return new vscode.MarkdownString(
-          `[NutUI -> $(references) 请查看 ${bigCamelize(item)} 组件官方文档](${DOC}${site})\n`,
-          true
+          `[NutUI -> $(references) 请查看 ${bigCamelize(item)} 组件官方文档](${DOC}${site})\n`
         );
       });
 
@@ -42,7 +41,7 @@ const provideCompletionItems = () => {
   return completionItems;
 };
 
-const resolveCompletionItem = (item: vscode.CompletionItem) => {
+const resolveCompletionItem = (item: vscode.CompletionItem): any => {
   const name = kebabCase(<string>item.label).slice(4);
   const descriptor: ComponentDesc = componentMap[name];
 

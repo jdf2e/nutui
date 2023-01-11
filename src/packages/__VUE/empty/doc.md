@@ -22,14 +22,33 @@ app.use(Empty);
 ```
 :::
 
-### 图片类型，内置 3 个
+### 图片类型
 :::demo
 ```html
 <template>
-  <nut-empty image="empty" description="无内容"></nut-empty>
-  <nut-empty image="error" description="加载失败/错误"></nut-empty>
-  <nut-empty image="network" description="无网络"></nut-empty>
+  <nut-tabs v-model="tabValue">
+    <nut-tab-pane title="无内容">
+      <nut-empty image="empty" description="无内容"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="加载失败/错误">
+      <nut-empty image="error" description="加载失败/错误"></nut-empty>
+    </nut-tab-pane>
+    <nut-tab-pane title="无网络">
+      <nut-empty image="network" description="无网络"></nut-empty>
+    </nut-tab-pane>
+  </nut-tabs>
 </template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    const tabValue = ref(0);
+    return {
+      tabValue
+    }
+  }
+}
+</script>
 ```
 :::
 ### 自定义图片
@@ -64,8 +83,8 @@ app.use(Empty);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 图片类型，可选值为 `empty`、`error`、`network`，支持传入图片 URL               | string | `empty`        |
-| image-size        | 图片大小，number 类型单位为 px                         | number \| string | `-`       |
+| image         | 图片类型，可选值为 `empty`、`error`、`network`，支持传入图片 `URL`               | string | `empty`        |
+| image-size        | 图片大小，单位为 `px`                         | number \| string | `-`       |
 | description         | 图片下方的描述文字 | string | `-`                |
 
 ### Slots
@@ -81,7 +100,7 @@ app.use(Empty);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |

@@ -9,6 +9,7 @@ Use for quick rating actions, or to showcase reviews.
 ``` javascript
 import { createApp } from 'vue';
 import { Rate } from '@nutui/nutui';
+
 const app = createApp();
 app.use(Rate);
 ```
@@ -18,34 +19,38 @@ app.use(Rate);
 :::demo
 ```html
 <template>
-    <nut-rate v-model="value" />
+     <nut-cell class="cell">
+       <nut-rate v-model="state.val" />
+     </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 export default {
-    setup() {
-        const value = ref(3);
-        return { value }
-    }
+     setup() {
+         const value = ref(3);
+         return { value }
+     }
 }
 </script>
 ```
 :::
 
-### Half Star
+### half star
 
 :::demo
 ```html
 <template>
-    <nut-rate allow-half v-model="value"></nut-rate>
+     <nut-cell class="cell">
+         <nut-rate allow-half v-model="value"></nut-rate>
+     <nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 export default {
-    setup() {
-        const value = ref(3.5);
-        return { value }
-    }
+     setup() {
+         const value = ref(3.5);
+         return { value }
+     }
 }
 </script>
 ```
@@ -56,55 +61,61 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate :icon="HeartFill" v-model="value" />
+     <nut-cell class="cell">
+         <nut-rate :custom-icon="HeartFill" v-model="value" />
+     </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 import { HeartFill } from '@nutui/icons-vue';
 export default {
-    components: { HeartFill },
-    setup() {
-        const value = ref(3);
-        return { value, HeartFill }
-    }
+     components: { HeartFill },
+     setup() {
+         const value = ref(3);
+         return { value, HeartFill }
+     }
 }
 </script>
 ```
 :::
 
-### Custom quantity
+### Custom Quantity
 
 :::demo
 ```html
 <template>
-    <nut-rate :count="6" v-model="value" />
+     <nut-cell class="cell">
+         <nut-rate count="10" v-model="value" />
+     </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 export default {
-    setup() {
-        const value = ref(3);
-        return { value }
-    }
+     setup() {
+         const value = ref(3);
+         return { value }
+     }
 }
 </script>
 ```
 :::
 
-### disabled state
+### Disabled state
 
 :::demo
 ```html
 <template>
-    <nut-rate disabled v-model="value" />
+     <nut-cell class="cell">
+         <nut-rate disabled v-model="value" />
+     </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 export default {
-    setup() {
-        const value = ref(3);
-        return { value }
-    }
+     setup() {
+         const value = ref(3);
+         return { value }
+     }
 }
 </script>
 ```
@@ -115,7 +126,55 @@ export default {
 :::demo
 ```html
 <template>
-    <nut-rate v-model="value" readonly />
+     <nut-cell class="cell">
+         <nut-rate v-model="value" readonly />
+     </nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+     setup() {
+         const value = ref(3);
+         return { value }
+     }
+}
+</script>
+```
+:::
+### Binding events
+
+:::demo
+```html
+<template>
+     <nut-cell class="cell">
+         <nut-rate v-model="value" @change="onChange" />
+     </nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+export default {
+     setup() {
+         const value = ref(3);
+         const onChange = (val) => {
+             showToast. text(val);
+         }
+     return { value, onChange }
+     }
+}
+</script>
+```
+:::
+
+### Custom Size 35px
+
+:::demo
+```html
+<template>
+    <nut-cell class="cell">
+        <nut-rate v-model="value" size="35" />
+    </nut-cell>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
@@ -128,46 +187,24 @@ export default {
 </script>
 ```
 :::
-### bind event
-
-:::demo
-```html
-<template>
-    <nut-rate v-model="value" @change="onChange" />
-</template>
-<script lang="ts">
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style'; 
-export default {
-    setup() {
-        const value = ref(3);
-        const onChange = (val)=>{
-            showToast.text(val);
-        }
-    return { value,onChange }
-    }
-}
-</script>
-```
-:::
-
 
 
 ## API
 ### Props
 
-| Attribute    | Description                                                                      | Type    | Default |
-|--------------|----------------------------------------------------------------------------------|---------|---------|
-| v-model      | The current number of stars, you can use v-model to bind data in both directions | number  | -       |
-| count        | Total number of stars                                                            | number  | 5       |
-| active-color | Icon selection color                                                             | string  | #fa200c |
-| void-color   | Icon unselected color                                                            | string  | #ccc    |
-| allow-half   | half star                                                                        | boolean | false   |
-| readonly     | read-only                                                                        | boolean | false   |
-| disabled     | whether to disable                                                               | boolean | false   |
-| spacing      | spacing                                                                          | number  | 20      |
-| touchable    | Whether to allow select rate by touch gesture                                    | boolean | true    |
+| Attribute    | Description                                                                                     | Type             | Default     |
+|--------------|-------------------------------------------------------------------------------------------------|------------------|-------------|
+| v-model      | The current number of stars, you can use v-model to bind data in both directions                | number \| string | -           |
+| count        | Total number \| string of stars                                                                 | number \| string | `5`         |
+| active-color | Icon selection color                                                                            | string           | `#fa200c`   |
+| void-color   | Icon unselected color                                                                           | string           | `#ccc`      |
+| allow-half   | half star                                                                                       | boolean          | `false`     |
+| readonly     | read-only                                                                                       | boolean          | `false`     |
+| disabled     | whether to disable                                                                              | boolean          | `false`     |
+| spacing      | spacing                                                                                         | number \| string | `20`        |
+| touchable    | Whether to allow select rate by touch gesture                                                   | boolean          | `true`      |
+| size         | `Icon` custom size , eg `20px` `2em` `2rem`                                                     | number \| string | -           |
+| custom-icon  | custom `Icon`, set [VNode](https://vuejs.org/guide/extras/render-function.html#creating-vnodes) | VNode \| h       | `StarFillN` |
 
 
 ### Events
@@ -179,7 +216,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                       | Default Value              |
 |----------------------------|----------------------------|

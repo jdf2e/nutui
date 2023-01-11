@@ -3,14 +3,13 @@
     <h2>{{ translate('basic') }}</h2>
 
     <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
-    <nut-skeleton width="250px" height="15px"> </nut-skeleton>
 
     <h2>{{ translate('title') }}</h2>
 
     <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="100px" row="3"> </nut-skeleton>
+    <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="60px" row="3"> </nut-skeleton>
 
     <h2>{{ translate('title2') }}</h2>
     <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
@@ -52,7 +51,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '传入多行',
       title1: '显示头像',
       title2: '标题段落圆角风格',
@@ -88,7 +87,6 @@ export default createDemo({
 .content {
   margin-bottom: 20px;
   .nut-switch {
-    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {

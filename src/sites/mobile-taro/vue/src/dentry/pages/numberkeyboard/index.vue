@@ -1,9 +1,10 @@
 <template>
-  <div class="demo">
-    <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <nut-cell :isLink="true" @click="showKeyBoard(1)" title="默认键盘"></nut-cell>
     <nut-number-keyboard overlay v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" title="带右侧栏键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(2)" title="带右侧栏键盘"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       overlay
@@ -13,7 +14,7 @@
       @close="close(2)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" title="随机数键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(3)" title="随机数键盘"></nut-cell>
     <nut-number-keyboard
       type="rightColumn"
       overlay
@@ -25,7 +26,7 @@
     >
     </nut-number-keyboard>
 
-    <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(4)" title="带标题栏键盘"></nut-cell>
     <nut-number-keyboard
       title="默认键盘"
       overlay
@@ -35,10 +36,10 @@
       @close="close(4)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(6)" :showIcon="true" title="身份证键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(6)" title="身份证键盘"></nut-cell>
     <nut-number-keyboard overlay v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" :desc="value" @click="showKeyBoard(5)" :showIcon="true" title="双向绑定"></nut-cell>
+    <nut-cell :isLink="true" :desc="value" @click="showKeyBoard(5)" title="双向绑定"></nut-cell>
     <nut-number-keyboard overlay v-model:visible="visible5" v-model="value" maxlength="6" @close="close(5)">
     </nut-number-keyboard>
   </div>
@@ -46,9 +47,16 @@
 
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const visible1 = ref(false);
     const visible2 = ref(false);
     const visible3 = ref(false);
@@ -85,7 +93,8 @@ export default {
       visible4,
       visible5,
       visible6,
-      value
+      value,
+      env
     };
   }
 };

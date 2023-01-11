@@ -12,7 +12,6 @@ import { Price } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Price);
-
 ```
 
 
@@ -67,7 +66,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 ``` html
 <template>
-    <nut-price :price="8888.01" position="after" symbol="元" />
+    <nut-price :price="8888.01" position="after" symbol="RMB" />
 </template>
 ```
 
@@ -91,19 +90,19 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 | Attribute      | Description                                                | Type            | Default |
 |----------------|------------------------------------------------------------|------------------|--------|
-| price          | Price                                                      | number ｜ string | 0       |
-| need-symbol    | Add symbol                                                 | boolean          | true   |
-| symbol         | Symbol type                                                | string           | &yen;  |
-| decimal-digits | Decimal digits                                             | number | 2      |
-| thousands      | Thousands separation                                       | boolean          | false  |
-| position       | The symbol appear before or after the price，`before`、`after` | string           | before |
-| size           | Size，`small`、`normal`、`large`                | string           | large |
+| price          | Price                                                      | number \| string | `0`       |
+| need-symbol    | Add symbol                                                 | boolean          | `true`   |
+| symbol         | Symbol type                                                | string           | `&yen;`  |
+| decimal-digits | Decimal digits                                             | number | `2`      |
+| thousands      | Thousands separation                                       | boolean          | `false`  |
+| position       | The symbol appear before or after the price，`before`、`after` | string           | `before` |
+| size           | Size，`small`、`normal`、`large`                | string           | `large` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

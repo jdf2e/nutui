@@ -1,14 +1,11 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div class="show-demo">
       <nut-countup :init-num="0" :end-num="200"></nut-countup>
       <nut-countup :init-num="150.0" :end-num="0.0" :speed="6.18" :to-fixed="2"></nut-countup>
       <nut-countup :init-num="500.0" :end-num="0.0" :speed="17" :to-fixed="2"></nut-countup>
-    </div>
-    <h2>数字滚动</h2>
-    <div class="show-demo">
-      <nut-countup :scrolling="true" :init-num="18.618" :during="600"></nut-countup>
     </div>
     <h2>自定义滚动图片展示</h2>
     <div class="show-demo">
@@ -38,7 +35,7 @@
       >
       </nut-countup>
       <div class="btnBtn">
-        <nut-button type="danger" @click="startRole" :disabled="startFlag">抽奖</nut-button>
+        <nut-button type="danger" @click="startRole" :disabled="startFlag">中奖</nut-button>
         <nut-button type="danger" @click="startRole2" :disabled="startFlag">不中奖</nut-button>
       </div>
     </div>
@@ -48,9 +45,12 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { reactive, toRefs, onMounted } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const data = reactive({
       customNumber: 618,
       bgImage:
@@ -100,7 +100,8 @@ export default {
       scrollAniEnd,
       startRole,
       startRole2,
-      countupMachine
+      countupMachine,
+      env
     };
   }
 };

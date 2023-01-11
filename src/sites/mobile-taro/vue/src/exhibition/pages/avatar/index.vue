@@ -1,20 +1,21 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>支持三种尺寸：small、normal、large</h2>
     <nut-cell>
       <nut-avatar size="large">
         <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         />
       </nut-avatar>
       <nut-avatar size="normal">
         <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         />
       </nut-avatar>
       <nut-avatar size="small">
         <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         />
       </nut-avatar>
     </nut-cell>
@@ -27,7 +28,7 @@
     <nut-cell>
       <nut-avatar>
         <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         />
       </nut-avatar>
       <nut-avatar><My /></nut-avatar>
@@ -94,15 +95,18 @@
 </template>
 <script lang="ts">
 import { My } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  components: { My },
+  components: { My, Header },
   props: {},
   setup() {
+    const env = Taro.getEnv();
     const handleClick = () => {
       console.log('触发点击头像');
     };
 
-    return { handleClick };
+    return { handleClick, env };
   }
 };
 </script>

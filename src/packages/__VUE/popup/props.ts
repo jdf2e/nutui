@@ -14,7 +14,7 @@ export const popupProps = {
   },
   lockScroll: {
     type: Boolean,
-    default: false
+    default: true
   },
   closeOnClickOverlay: {
     type: Boolean,

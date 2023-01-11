@@ -81,13 +81,13 @@ app.use(Indicator);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |
-| --nut-indicator-color|  _var(--nut-primary-color)_ |
+| --nut-indicator-bg-color|  _var(--nut-primary-color)_ |
 | --nut-indicator-dot-color|  _var(--nut-disable-color)_ |
-| --nut-indicator-white|  _var(--nut-white)_ |
+| --nut-indicator-color|  _var(--nut-white)_ |
 | --nut-indicator-size|  _18px_ |
 | --nut-indicator-dot-size|  _calc(var(--nut-indicator-size) / 3)_ |
 | --nut-indicator-border-size|  _calc(var(--nut-indicator-size)+ 2)_ |

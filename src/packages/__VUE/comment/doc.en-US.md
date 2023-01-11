@@ -26,7 +26,6 @@ By default, images of reviews for individual items are displayed in a single sli
     :images="cmt.images"
     :videos="cmt.videos"
     :info="cmt.info"
-    :labels="labels"
     @click="handleclick"
     @clickImages="clickImages"
     :operation="['replay']"
@@ -39,15 +38,11 @@ By default, images of reviews for individual items are displayed in a single sli
     </template>
 </nut-comment>
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
 export default {
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<Dongdong/>';
-    };
     onMounted(()=>{
       fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
         .then((response) => response.json())
@@ -64,13 +59,12 @@ export default {
     }
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -107,7 +101,7 @@ The value of `headerType` allows you to set the image to be displayed in multipl
 </nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -129,7 +123,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 
@@ -148,7 +142,7 @@ export default {
 ></nut-comment>
 
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
 export default {
   setup() {
@@ -170,7 +164,7 @@ export default {
     };
   }
 }
-
+</script>
 ```
 :::
 ## API
@@ -182,30 +176,30 @@ export default {
 | header-type         | Header type      | string | `default`               |
 | images-rows         | Comment picture shows type of lines    | string | `one`               |
 | ellipsis        | Ellipsis number       | string \| number | `2`               |
-| videos         | Videos data | array | `[]`              |
-| images | Images data    | array | `[]` |
+| videos         | Videos data | Array | `[]`              |
+| images | Images data    | Array | `[]` |
 | info     | Comment data                      | object | `{}`             |
 | follow     | Additional review data                      | object | `{}`             |
-| operation | Bottom button   | array | `["replay", "like", "more"]` |
+| operation | Bottom button   | Array | `["replay", "like", "more"]` |
 
 ### Events
 
-| Attribute            | Description               | Arguments   |
+| Event            | Description               | Arguments   |
 |--------|----------------|--------------|
-| click-operate  | Emitted when to click bottom button | type |
-| click  | Emitted when to click comment | type |
-| click-images | Emitted when to click images or videos | {type,index,value}|
+| click-operate  | Emitted when to click bottom button | `type` |
+| click  | Emitted when to click comment | `type` |
+| click-images | Emitted when to click images or videos | `{type,index,value}` |
 
 ### Slots
 
 Slots are defined in some areas and can be replaced as required
 
-| Attribute            | Description               |
+| Name            | Description               |
 |--------|----------------|
 | comment-labels  | Comment user label | 
 | comment-shop-reply  | At the bottom of the comment is the display of the merchant's response | 
 
-### images Data
+### images data
 
 ```javascript
 const images = [{
@@ -215,7 +209,7 @@ const images = [{
 }]
 ```
 
-### videos Data
+### videos data
 
 ```javascript
 const videos = [{
@@ -224,10 +218,10 @@ const videos = [{
 }]
 ```
 
-### info Data
+### info data
 
 ```javascript
-const info = [{
+const info = {
   "content": "",  // Comment on the details
   "nickName": "", // The name of the reviewer
   "score": 5, // Number of comment stars
@@ -236,13 +230,26 @@ const info = [{
   "size": "", // Comment good size
   "replay":23, // Number of replies to this comment
   "like":1, // Number of likes for this comment
-}]
+}
 ```
+
+### follow data
+
+用于存放追评相关的信息。
+
+```javascript
+const follow = {
+  "days": 0, // Review how many days after purchase
+  "content": "", // Review content
+  "images": [] // Review images
+}
+```
+
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

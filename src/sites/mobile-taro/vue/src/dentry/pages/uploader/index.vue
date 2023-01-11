@@ -1,12 +1,13 @@
 <template>
-  <div class="demo bg-w">
+  <div class="demo bg-w" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple @delete="onDelete">
     </nut-uploader>
     <h2>基础用法-上传列表展示</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
+    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList1" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">上传文件</nut-button>
     </nut-uploader>
     <h2>自定义上传样式</h2>
@@ -54,14 +55,43 @@
 
 <script lang="ts">
 import { ref, reactive } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
     const progressPercentage = ref<string | number>(0);
     const formData = {
       custom: 'test'
     };
     const defaultFileList = reactive([
+      {
+        name: '文件1.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'success',
+        message: '上传成功',
+        type: 'image'
+      },
+      {
+        name: '文件2.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'error',
+        message: '上传失败',
+        type: 'image'
+      },
+      {
+        name: '文件3.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'uploading',
+        message: '上传中...',
+        type: 'image'
+      }
+    ]);
+    const defaultFileList1 = reactive([
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -142,11 +172,13 @@ export default {
       progressPercentage,
       uploadUrl,
       defaultFileList,
+      defaultFileList1,
       formData,
       uploadRef,
       submitUpload,
       clearUpload,
-      beforeXhrUpload
+      beforeXhrUpload,
+      env
     };
   }
 };

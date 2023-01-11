@@ -15,12 +15,12 @@
       -webkit-transition: all 0.4s;
       transition: all 0.4s;
       // position: relative;
-      .nut-progress-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #fff;
-      }
+    }
+    .nut-progress-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
     }
     .nut-active {
       &:before {
@@ -85,6 +85,8 @@
     font-size: 13px;
     line-height: 1;
     min-width: 35px;
+    display: flex;
+    align-items: center;
   }
   .nut-progress-insidetext {
     padding: $progress-insidetext-padding;

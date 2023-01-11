@@ -6,7 +6,9 @@
   position: relative;
   flex: 0 0 auto; // 防止被压缩
   text-align: center;
+  vertical-align: top;
   img {
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -35,7 +37,7 @@
 }
 .nut-avatar-round {
   border-radius: 50%;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .nut-avatar-square {
   border-radius: $avatar-square;

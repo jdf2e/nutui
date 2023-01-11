@@ -10,16 +10,20 @@
   position: relative;
   display: inline-block;
   .nut-badge__icon {
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    transform: $badge-content-transform;
     position: absolute;
     background: $badge-background-color;
-    top: -20%;
-    right: -20%;
-    padding: $badge-padding;
+    padding: $badge-icon-padding;
     text-align: center;
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
   }
   .nut-badge__content {
+    display: flex;
+    align-items: center;
     transform: $badge-content-transform;
     &--sup {
       position: absolute;

@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+    <div id="test"></div>
     <h2>{{ translate('basic') }}</h2>
     <nut-cell :title="translate('cell1')" is-link @click="showBasic = true"></nut-cell>
     <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="showBasic" :z-index="100">{{
@@ -33,7 +34,7 @@
       :style="{ height: '20%' }"
       v-model:visible="showCloseIcon"
     >
-      <template #closeIcon>
+      <template #close-icon>
         <Heart></Heart>
       </template>
     </nut-popup>
@@ -42,7 +43,9 @@
     <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
     <h2>{{ translate('teleport') }}</h2>
     <nut-cell :title="translate('teleport')" is-link @click="showTeleport = true"></nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport">app</nut-popup>
+    <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport"
+      >app</nut-popup
+    >
     <h2>{{ translate('muti') }}</h2>
     <nut-cell :title="translate('muti')" is-link @click="showPop1 = true"></nut-cell>
     <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
@@ -61,7 +64,7 @@ import { Heart } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       cell1: '展示弹出层',
       text: '正文',
       position: '弹出位置',

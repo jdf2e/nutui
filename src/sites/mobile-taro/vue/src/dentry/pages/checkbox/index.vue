@@ -1,15 +1,12 @@
 <template>
-  <div class="demo">
-    <nut-cell-group title="基本用法-左右">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <nut-cell-group title="基础用法-左右">
       <nut-cell>
         <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">复选框</nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <div class="demo-check">当前选中值</div>
-        <div>{{ checkbox1 }}</div>
+        <nut-checkbox v-model="checkbox2" text-position="left" @change="changeBox2">复选框</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="半选状态">
@@ -63,7 +60,7 @@
     </nut-cell-group>
     <nut-cell-group title="checkboxGroup禁用">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup1" disabled>
+        <nut-checkbox-group v-model="checkboxgroup2" disabled>
           <nut-checkbox label="1">组合复选框</nut-checkbox>
           <nut-checkbox label="2">组合复选框</nut-checkbox>
           <nut-checkbox label="3">组合复选框</nut-checkbox>
@@ -115,11 +112,16 @@
 <script lang="ts">
 import { reactive, ref, toRefs, Ref } from 'vue';
 import { Checklist } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
   components: {
-    Checklist
+    Checklist,
+    Header
   },
   setup(props, context) {
+    const env = Taro.getEnv();
+
     const group = ref(null) as Ref;
     const group2 = ref(null) as Ref;
     const data = reactive({
@@ -201,7 +203,8 @@ export default {
       toggleReverse,
       group,
       group2,
-      ...toRefs(data)
+      ...toRefs(data),
+      env
     };
   }
 };

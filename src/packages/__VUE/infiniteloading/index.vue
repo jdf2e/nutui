@@ -8,7 +8,7 @@
       <template v-if="isInfiniting">
         <view class="nut-infinite__bottom-box">
           <slot name="loading">
-            <slot name="loadIcon"><Loading class="nut-icon-loading nut-infinite__bottom-box__img"></Loading></slot>
+            <slot name="loading-icon"><Loading class="nut-icon-loading nut-infinite__bottom-box__img"></Loading></slot>
             <view class="nut-infinite__bottom-box__text">{{ loadTxt || translate('loading') }}</view>
           </slot>
         </view>
@@ -60,14 +60,6 @@ export default create({
       default: ''
     },
     loadMoreTxt: {
-      type: String,
-      default: ''
-    },
-    useWindow: {
-      type: Boolean,
-      default: true
-    },
-    containerId: {
       type: String,
       default: ''
     },

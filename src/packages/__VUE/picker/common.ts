@@ -106,10 +106,12 @@ export const componentWeapp = {
           }
         });
       } else {
-        columnsList.value.forEach((item) => {
-          defaultIndexs.push(0);
-          defaultValues.value.push(item[0].value);
-        });
+        if (columnsList && columnsList.value.length > 0) {
+          columnsList.value.forEach((item) => {
+            defaultIndexs.push(0);
+            item.length > 0 && defaultValues.value.push(item[0].value);
+          });
+        }
       }
 
       return defaultIndexs;
@@ -124,9 +126,11 @@ export const componentWeapp = {
         if (prevDefaultValue[index] != col) changeIndex = index;
       });
 
-      defaultIndexes.value = data.detail.value;
       // 选择的是哪个 option
       changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
+      console.log('设置默认值');
+
+      defaultIndexes.value = defaultValuesConvert();
     };
 
     // 确定

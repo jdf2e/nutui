@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Swiper,SwiperItem } from '@nutui/nutui-taro';
+import { Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swiper);
@@ -31,7 +31,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -89,7 +89,7 @@ app.use(SwiperItem);
         setTimeout(() => {
           state.list = [
             'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
             'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
             'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
           ];
@@ -134,7 +134,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
@@ -174,7 +174,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -221,7 +221,7 @@ app.use(SwiperItem);
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
       </nut-swiper-item>
       <nut-swiper-item>
         <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -274,13 +274,77 @@ app.use(SwiperItem);
 
 :::
 
+### 自定义指示器(异步3s)
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="true" @change="change" auto-play="2000">
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </nut-swiper-item>
+      <nut-swiper-item>
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </nut-swiper-item>
+      <template v-slot:page>
+        <div class="page"> {{ current1 }}/4 </div>
+      </template>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0,
+        current1: 1
+      });
+      const change = (index: number) => {
+        state.current1 = index + 1;
+      };
+      return { ...toRefs(state), change };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .page {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 46px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.33);
+    border-radius: 22px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+  }
+</style>
+```
+
+:::
+
 ### 手动切换
 
 可通过 `API`(`prev`,`next`)进行手动切换
 
 :::demo
 
-```vue
+```html
 <template>
   <view class="demo-box">
     <nut-swiper :init-page="page" :loop="true" ref="swiper">
@@ -300,7 +364,7 @@ app.use(SwiperItem);
 </template>
 <script lang="ts">
   import { reactive, toRefs, ref, Ref } from 'vue';
-  import { Left, Right } from '@nutui/icons-vue';
+  import { Left, Right } from '@nutui/icons-vue-taro';
   export default {
     components: { 
       Left, 
@@ -312,7 +376,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ],
@@ -374,7 +438,7 @@ app.use(SwiperItem);
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
     </nut-swiper-item>
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
@@ -420,100 +484,6 @@ app.use(SwiperItem);
 :::
 
 
-### 水平居中展示
-
-`is-center` 代表可居中，同时必须传 `width`
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
-### 垂直居中展示
-
-`is-center` 代表可居中，同时必须传 `height`
-
-:::demo
-
-```html
-<template>
-  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-    </nut-swiper-item>
-    <nut-swiper-item>
-      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-    </nut-swiper-item>
-  </nut-swiper>
-</template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        page: 0
-      });
-      return { ...toRefs(state) };
-    }
-  };
-</script>
-<style lang="scss" scoped>
-  .nut-swiper-item {
-    line-height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
-```
-
-:::
-
 
 ## API
 
@@ -521,18 +491,18 @@ app.use(SwiperItem);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
-| height                | 轮播卡片的高度                                                    | String、Number | 0        |
-| direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
-| pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
-| pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |
-| loop           | 是否循环轮播                                                | Boolean        | true       |
-| duration                | 动画时长（单位是ms）                                                | Number、String        | 500        |
-| auto-play | 自动轮播时长，0表示不会自动轮播                                          | Number、String        | 0        |
-| init-page               | 初始化索引值                   | Number、String         | 0    |
-| touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
+| width                   | 轮播卡片的宽度           | number \| string        | window.innerWidth       |
+| height                | 轮播卡片的高度                                                    | number \| string | `0`        |
+| direction               | 轮播方向,可选值`horizontal`,`vertical`     | string | `'horizontal'`         |
+| pagination-visible          | 分页指示器是否展示                                              | boolean         | `false`           |
+| pagination-color         | 分页指示器选中的颜色                                              | string  | `'#fff'`           |
+| loop           | 是否循环轮播                                                | boolean        | `true`       |
+| duration                | 动画时长（单位是ms）                                                | number \| string        | `500`        |
+| auto-play | 自动轮播时长，0表示不会自动轮播                                          | number \| string        | `0`        |
+| init-page               | 初始化索引值                   | number \| string         | `0`    |
+| touchable             | 是否可触摸滑动                                                      | boolean         | `true`          |
+| is-prevent-default                  | 滑动过程中是否禁用默认事件                                              | boolean  | `true`           |
+| is-stop-propagation               | 滑动过程中是否禁止冒泡                    | boolean         | `true`    |
 
 
 
@@ -540,11 +510,16 @@ app.use(SwiperItem);
 
 | 事件名           | 说明                   | 回调参数     |
 | ---------------- | ---------------------- | ------------ |
-| change            | 滑动之后的回调         | 当前索引值index |
+| change            | 滑动之后的回调         | `当前索引值 index` |
+
+### Slots
+| 名称    | 说明         |
+|---------|--------------|
+| page    | 自定义指示器 |
 
 
 
-### Swipe 方法
+### Methods
 
 | 事件名           | 说明                   | 参数     |
 | ---------------- | ---------------------- | ------------ |
@@ -556,11 +531,11 @@ app.use(SwiperItem);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-swiper-pagination-item-width| _8px_  | -  |
-| --nut-swiper-pagination-item-height| _3px_  | -  |
-| --nut-swiper-pagination-item-margin-right| _7px_  | -  |
-| --nut-swiper-pagination-item-border-radius| _2px_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-swiper-pagination-item-width| _8px_  |
+| --nut-swiper-pagination-item-height| _3px_  |
+| --nut-swiper-pagination-item-margin-right| _7px_  |
+| --nut-swiper-pagination-item-border-radius| _2px_  |

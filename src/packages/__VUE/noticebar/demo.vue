@@ -9,9 +9,9 @@
     <nut-noticebar :text="translate('text')" :scrollable="false"></nut-noticebar>
 
     <h2>{{ translate('mode') }}</h2>
-    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="closeFun">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar :close-mode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
+    <nut-noticebar :close-mode="true" @click="closeFun">{{ translate('text') }} </nut-noticebar>
     <p />
     <nut-noticebar>
       <template v-slot:left-icon>
@@ -66,7 +66,7 @@
     <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
-        <template v-slot:rightIcon>
+        <template #right-icon>
           <Fabulous />
         </template>
       </nut-noticebar>
@@ -125,7 +125,7 @@ export default createDemo({
       text: translate('text')
     });
 
-    const hello = () => {
+    const closeFun = () => {
       console.log('hello world');
     };
     const go = (item: any) => {
@@ -134,7 +134,7 @@ export default createDemo({
 
     return {
       ...toRefs(state),
-      hello,
+      closeFun,
       go,
       translate,
       Fabulous
@@ -157,7 +157,6 @@ export default createDemo({
   padding-bottom: 30px !important;
 
   .interstroll-list {
-    padding: 0 10px;
     background: rgba(251, 248, 220, 1);
     color: #d9500b;
   }

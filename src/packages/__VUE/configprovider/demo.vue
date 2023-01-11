@@ -76,7 +76,7 @@ import { reactive, ref } from 'vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       custom: '定制主题',
       title1: '切换暗黑',
       title2: '我是标题',

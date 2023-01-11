@@ -6,7 +6,6 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
-        :labels="labels"
         @click="handleclick"
         @clickImages="clickImages"
         :operation="['replay']"
@@ -48,7 +47,7 @@
       </nut-comment>
     </nut-cell>
 
-    <h2>{{ translate('additionalReview') }}</h2>
+    <h2>{{ translate('additionalReviewd') }}</h2>
     <nut-cell>
       <nut-comment
         imagesRows="multi"
@@ -70,10 +69,10 @@ import { Dongdong } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       single: '评论图片单行展示',
       multiRow: '评论图片多行展示',
-      additionalReview: '追评展示'
+      additionalReviewd: '追评展示'
     },
     'en-US': {
       basic: 'Basic Usage',

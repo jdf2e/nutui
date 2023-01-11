@@ -16,8 +16,8 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <template v-for="_package in reorder(_nav.packages)" :key="_package">
-            <li v-if="_package.show && _package.exportEmpty !== false">
-              <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
+            <li v-if="_package.show && _package.taro && _package.exportEmpty !== false">
+              <a @click="navigateTo(_package.name, _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
                 {{ _package.cName }}
@@ -65,8 +65,12 @@ export default {
 
     const navigateTo = (name, enName) => {
       Taro.navigateTo({
-        url: `/${enName}/pages/${name}/index`
+        url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
+
+      if (Taro.getEnv() === 'WEB' && parent.location.href.includes('zh-CN')) {
+        parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
+      }
     };
 
     return {
@@ -81,7 +85,7 @@ export default {
 .index {
   height: 100%;
   width: 100%;
-  padding-top: 30px;
+  // padding-top: 30px;
 
   &-header {
     display: flex;

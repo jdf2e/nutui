@@ -1,20 +1,24 @@
 <template>
-  <div class="demo">
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
+      <nut-button @click="addDanmu" class="add nut-button--primary">随机添加</nut-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default {
-  props: {},
+  components: { Header },
   setup() {
+    const env = Taro.getEnv();
     const inputVal = ref<any>('');
     const danmu = ref<any>(null);
     let list = ref(['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结']);
@@ -26,7 +30,8 @@ export default {
       inputVal,
       danmu,
       list,
-      addDanmu
+      addDanmu,
+      env
     };
   }
 };
@@ -37,5 +42,8 @@ export default {
 .nut-barrage {
   padding: 20px 0;
   height: 150px;
+}
+.nut-button {
+  width: 100%;
 }
 </style>

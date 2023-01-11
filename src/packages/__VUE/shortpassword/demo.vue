@@ -86,7 +86,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       showButtonGroup: '显示按钮组',
       customPasswordLength: '自定义密码长度',
       forgetPassword: '忘记密码',

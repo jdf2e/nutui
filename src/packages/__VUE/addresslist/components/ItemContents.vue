@@ -2,7 +2,7 @@
   <div class="nut-address-list-item" @click="contentsClick">
     <div class="nut-address-list-item__info">
       <div class="nut-address-list-item__info-contact">
-        <slot name="contentTop">
+        <slot name="content-top">
           <div class="nut-address-list-item__info-contact-name">{{ item.addressName }}</div>
           <div class="nut-address-list-item__info-contact-tel">{{ item.phone }}</div>
           <div class="nut-address-list-item__info-contact-default" v-if="item.defaultAddress">{{
@@ -11,14 +11,14 @@
         </slot>
       </div>
       <div class="nut-address-list-item__info-handle">
-        <slot name="contentIcon">
+        <slot name="content-icon">
           <Del name="del" class="nut-address-list-item__info-handle-del" @click="delClick"></Del>
           <Edit name="edit" class="nut-address-list-item__info-handle-edit" @click="editClick"></Edit>
         </slot>
       </div>
     </div>
     <div class="nut-address-list-item__addr">
-      <slot name="contentAddr">
+      <slot name="content-addr">
         {{ item.fullAddress }}
       </slot>
     </div>
@@ -26,8 +26,8 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('addresslist-item');
-const { translate } = createComponent('addresslist');
+const { create } = createComponent('address-list-item');
+const { translate } = createComponent('address-list');
 import { Del, Edit } from '@nutui/icons-vue';
 export default create({
   components: { Del, Edit },
@@ -37,7 +37,7 @@ export default create({
       default: {}
     }
   },
-  emits: ['delIcon', 'editIcon', 'itemClick'],
+  emits: ['delIcon', 'editIcon', 'clickItem'],
 
   setup(props, { emit }) {
     const delClick = (event: Event) => {
@@ -49,7 +49,7 @@ export default create({
       event.stopPropagation();
     };
     const contentsClick = (event: Event) => {
-      emit('itemClick', event, props.item);
+      emit('clickItem', event, props.item);
       event.stopPropagation();
     };
 

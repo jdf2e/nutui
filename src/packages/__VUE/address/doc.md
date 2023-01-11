@@ -2,6 +2,8 @@
 
 ### 介绍
 
+用于进行四级地址选择
+
 ### 安装
 
 ``` javascript
@@ -56,7 +58,7 @@ app.use(Address);
           town:[]
         })
 
-        const text = ref('请选择地址')
+        const text = ref('选择地址')
 
         const showAddress = () => {
           showPopup.value = !showPopup.value;
@@ -106,6 +108,7 @@ app.use(Address);
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province:[
             { id: 1, name: '北京' },
@@ -160,14 +163,16 @@ app.use(Address);
 <template>
   <nut-cell title="选择地址" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
   <nut-address
+      v-model="value"
       v-model:visible="showPopup"
+      type="custom2"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
       @change="onChange"
       @close="close"
-      custom-address-title="请选择所在地区"
+      height="270px"
   ></nut-address>
 </template>
 <script>
@@ -175,6 +180,7 @@ app.use(Address);
   export default {
     setup() {
         const showPopup = ref(false);
+        const value = ref([1, 7, 3]);
         const address = reactive({
           province: [
             { id: 1, name: '北京', title: 'B' },
@@ -213,9 +219,10 @@ app.use(Address);
         };
         const close = val => {
           text.value = val.data.addressStr;
+          value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
         };
 
-        return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
+        return { showPopup, text, showAddress, onChange, close,value, ...toRefs(address) };
     }
   }
 </script>
@@ -279,7 +286,7 @@ app.use(Address);
           }
         ]);
 
-        const text = ref('请选择地址')
+        const text = ref('选择地址')
 
         const showAddressExist = () => {
           showPopupExist.value = true;
@@ -313,12 +320,12 @@ app.use(Address);
   <nut-address
       v-model:visible="showPopupCustomImg"
       type="exist"
-      :existAddress="existAddress"
+      :exist-address="existAddress"
       @close="close"
       :is-show-custom-address="false"
       @selected="selected3"
   >
-    <template #unselectedIcon>
+    <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
     </template>
     <template #icon>
@@ -374,7 +381,7 @@ app.use(Address);
           }
         ]);
 
-        const text = ref('请选择地址')
+        const text = ref('选择地址')
 
         const showCustomImg = () => {
           showPopupCustomImg.value = true;
@@ -437,6 +444,7 @@ app.use(Address);
       custom-and-exist-title="选择其他地址"
       @switch-module="switchModule"
       @close-mask="closeMask"
+      @change='onChange'
   ></nut-address>
 </template>
 <script>
@@ -500,7 +508,7 @@ app.use(Address);
           }
         ]);
         const backBtnIcon = ref('left')
-        const text = ref('请选择地址')
+        const text = ref('选择地址')
 
         const showAddressOther = () => {
           showPopupOther.value = true;
@@ -527,12 +535,18 @@ app.use(Address);
             console.log('点击了自定义地址左上角的返回按钮');
           }
         };
+        const onChange = (cal) => {
+          const name = address[cal.next]
+          if (name.length < 1) {
+            showPopupOther.value = false;
+          }
+        };
 
         const closeMask = val => {
           console.log('关闭弹层', val);
         };
 
-        return { showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
+        return { onChange, showPopupOther, text, existAddress,showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
     }
   }
   </script>
@@ -541,32 +555,33 @@ app.use(Address);
 ## API
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
-| v-model:visible | 是否打开地址选择 | string | `''` |
-| type | 地址选择类型 exist/custom/custom2  | string | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | array | `[]` |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
-| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | array | `[]` |
-| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | boolean | `true` |
-| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
-| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| string | `配送至` |
-| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | `选择其他地址` |
-| columns-placeholder | 列提示文字 | string \| array | `请选择` |
+| v-model:visible | 是否打开地址选择 | boolean | `false` |
+| v-model:value | 设置默认选中值 | Array | `[]` |
+| type | 地址选择类型 `exist/custom/custom2`  | string | `custom` |
+| province | 省，每个省的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| city | 市，每个市的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| country | 县，每个县的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| town | 乡/镇，每个乡/镇的对象中,必须有 `name` 字段,如果类型选择 `custom2`，必须指定 `title` 字段为首字母 | Array | `[]` |
+| height | 弹层中内容容器的高度，仅在 `type="custom2"` 时有效 | string \| number | `200px` |
+| exist-address | 已存在地址列表，每个地址对象中，必传值 `provinceName`、`cityName`、`countyName`、`townName`、`addressDetail`、`selectedAddress`（字段解释见下） | Array | `[]` |
+| is-show-custom-address | 是否可以切换自定义地址选择，`type=‘exist’` 时生效 | boolean | `true` |
+| custom-address-title  | 自定义地址选择文案，`type='custom'` 时生效 | string | `请选择所在地区` |
+| exist-address-title| 已有地址文案 ，`type=‘exist’` 时生效| string | `配送至` |
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，`type=‘exist’` 时生效| string | `选择其他地址` |
+| columns-placeholder | 列提示文字 | string \| Array | `请选择` |
 | lock-scroll  | 背景是否锁定      | boolean        | `true`  |
 
-  * provinceName 省的名字
-  * cityName 市的名字
-  * countyName 县的名字
-  * townName 乡/镇的名字
-  * addressDetail 具体地址
-  * selectedAddress 字段用于判断当前地址列表的选中项。
+  * `provinceName` 省的名字
+  * `cityName` 市的名字
+  * `countyName` 县的名字
+  * `townName` 乡/镇的名字
+  * `addressDetail` 具体地址
+  * `selectedAddress` 字段用于判断当前地址列表的选中项。
 
 ### Events
-| 字段 | 说明 | 回调参数  |
+| 事件名 | 说明 | 回调参数  |
 |----- | ----- | ----- |
 | change | 自定义选择地址时，选择地区时触发 |  参考 `onChange` |
 | selected | 选择已有地址列表时触发 | 参考 `selected` |
@@ -578,38 +593,38 @@ app.use(Address);
 ### change 回调参数
 | 参数 | 说明 | 可选值 |
 |----- | ----- | ----- |
-| custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡) |
-| next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡) |
-| value | 当前点击的行政区域的值（返回传入的值） | {} |
+| custom | 当前点击的行政区域  |  `province(省) / city(市) / country(县) / town(乡)` |
+| next | 当前点击的行政区域的下一级 | `province(省) / city(市) / country(县) / town(乡)` |
+| value | 当前点击的行政区域的值（返回传入的值） | `{}` |
 
 ### selected 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  `{}` |
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  `{}` |
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  `{}` |
+| 第一个参数`（prevExistAdd）` |  选择前选中的地址 |  `{}` |
+| 第二个参数`（nowExistAdd）` |  当前选中的地址 |  `{}` |
+| 第三个参数`（arr）` |  选择完之后的已有地址列表（`selectedAddress` 值发生改变） |  `{}` |
 
 ### close 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | `{}`  |
+| type | 地址选择类型 `exist/custom/custom2`  |  `exist/custom/custom2` |
+| data | 选择地址的值,`custom` 时，`addressStr` 为选择的地址组合 | `{}`  |
 
 ### Slots
-| 字段 | 说明 | 
+| 名称 | 说明 | 
 |----- | ----- |  
 | bottom | 可自定义底部 |  
 | icon | 自定义选中项的图标 |  
-| unselectedIcon | 未选中地址时的图标 |  
-| closeIcon | 关闭弹层的图标 |  
-| backIcon | 自定义地址与已有地址切换时返回的图标 | 
+| unselected-icon | 未选中地址时的图标 |  
+| close-icon | 关闭弹层的图标 |  
+| back-icon | 自定义地址与已有地址切换时返回的图标 | 
 
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

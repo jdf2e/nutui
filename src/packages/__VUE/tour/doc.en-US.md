@@ -12,9 +12,7 @@ import { createApp } from 'vue';
 import { Tour } from '@nutui/nutui';
 
 const app = createApp();
-
 app.use(Tour);
-
 ```
 
 
@@ -31,14 +29,14 @@ At each step, set the id of the target element, and the Tour component looks up 
     </template>
   </nut-cell>
   <nut-tour
-    v-model:visible="showTour3"
+    v-model="showTour3"
     :steps="steps3"
     type="tile"
     location="bottom-end"
   ></nut-tour>
 </template>
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
@@ -52,7 +50,11 @@ export default {
     }
 }
 </script>
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -71,7 +73,7 @@ Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size,
 
   <nut-tour
     class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-    v-model:visible="showTour1"
+    v-model="showTour1"
     :steps="steps1"
     location="bottom-end"
     type="tile"
@@ -84,7 +86,7 @@ Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size,
 </template>
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
    setup() {
     const state = reactive({
@@ -98,7 +100,11 @@ export default {
     }
 }
 </script>
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -110,10 +116,11 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-cell title="try click" @click="showTour2 = true">
+  <nut-cell title="点击试试" @click="showTour2 = true">
     <template v-slot:link>
-      <div class="tour-demo-img">
+      <div class="tour-demo-img" v-for='i in [1,2,3]'>
         <img
+             style="width:20px;margin-right:10px"
           id="target6"
           src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
         />
@@ -122,7 +129,7 @@ export default {
   </nut-cell>
 
   <nut-tour
-    v-model:visible="showTour2"
+    v-model="showTour2"
     :steps="steps2"
     type="tile"
     bgColor="#f00"
@@ -134,14 +141,14 @@ export default {
 
 
 <script>
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
       showTour2: false,
       steps2: [
         {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -153,6 +160,11 @@ export default {
 }
 </script>
 
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -164,14 +176,14 @@ Can customize the bubble layer through the slot slot
 :::demo
 ```html
 <template>
-  <nut-cell title="try click" @click="showTour4 = true">
+  <nut-cell title="点击试试" @click="showTour4 = true">
     <template v-slot:link>
       <nut-switch id="target8" />
     </template>
   </nut-cell>
 
   <nut-tour
-    v-model:visible="showTour4"
+    v-model="showTour4"
     :steps="steps4"
     type="tile"
     theme="dark"
@@ -188,7 +200,7 @@ Can customize the bubble layer through the slot slot
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
@@ -204,6 +216,19 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.tour-demo-custom-content {
+  padding: 8px;
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  .nut-divider {
+    border-color: #fff;
+  }
+}
+</style>
+
 ```
 :::
 
@@ -213,21 +238,26 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-cell title="try click" @click="showTour = true"></nut-cell>
-
+  <nut-tabbar :bottom="true">
+    <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
+    <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
+    <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
+    <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
+  </nut-tabbar>
+  <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
   <nut-tour
     class="nut-custom-tour"
-    v-model:visible="showTour"
+    v-model="showTour"
     :steps="steps"
     location="top-start"
     :offset="[0, 0]"
-    maskWidth="50"
+    maskWidth="60"
     maskHeight="50"
   ></nut-tour>
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
@@ -258,6 +288,14 @@ export default {
 };
 </script>
 
+<style>
+  #app{
+    padding-top:200px
+  }
+  .nut-tabbar-item_icon-box_nav-word{
+  font-size: 14px;
+}
+</style>
 ```
 :::
 
@@ -267,34 +305,34 @@ export default {
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
-| visible      | Whether to display the boot eject layer                 | boolean  | false     |
+| v-model      | Whether to display the boot eject layer                 | boolean  | `false`     |
 | type          | Tour type            | string   | `step`   |
-| steps       | Boot Step Content  | StepOptions[]   | []  |
-| offset       | The offset of the hollow mask relative to the target element  | [number, number]   | [8, 10]  |
-| current      | When the type is' step ', the number of steps is displayed by default  | number  | 0  |
+| steps       | Boot Step Content  | StepOptions[]   | `[]`  |
+| offset       | The offset of the hollow mask relative to the target element  | [number, number]   | `[8, 10]`  |
+| current      | When the type is' step ', the number of steps is displayed by default  | number  | `0`  |
 | custom-class  | Custom class  | string  | ''  |
-| location      | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)  |  String  | 'bottom'  |
-| next-step-Txt       | Next step text | string   | 'next'  |
-| prev-step-Txt        | Prev step text  | string   | 'prev'  |
-| complete-txt       | Complete text  | string   | 'complete'  |
-| mask       | Whether to display cutout mask  | Boolean  | true |
-| bg-color       | Custom background color  | Boolean  | '' |
-| theme   | Theme style, can be set to dark light,[theme](https://nutui.jd.com/#/zh-CN/component/popover)  | String  | 'light' |
-| mask-width       | Width of hollow mask  | Number、String  | '' |
-| mask-height       | Hollow mask height  | Number、String  | '' |
-| close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | Boolean  | true |
-| show-prev-step       | Whether to show prev button  | boolean  | true |
-| show-title-bar       | Whether to show title bar  |  boolean  | false |
+| location      | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)  |  string  | `'bottom'`  |
+| next-step-Txt       | Next step text | string   | `'next'`  |
+| prev-step-Txt        | Prev step text  | string   | `'prev' ` |
+| complete-txt       | Complete text  | string   | `'complete'`  |
+| mask       | Whether to display cutout mask  | boolean  | `true` |
+| bg-color       | Custom background color  | boolean  | '' |
+| theme   | Theme style, can be set to dark light,[theme](https://nutui.jd.com/#/zh-CN/component/popover)  | string  | `'light'` |
+| mask-width       | Width of hollow mask  | number \| string  | '' |
+| mask-height       | Hollow mask height  | number \| string  | '' |
+| close-on-click-overlay      | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/#/zh-CN/component/popover)  | boolean  | `true` |
+| show-prev-step       | Whether to show prev button  | boolean  | `true` |
+| show-title-bar       | Whether to show title bar  |  boolean  | `false` |
 
 ### StepOptions  
 
 | Attribute | Description | Type | Default |
 |----------------|----------------------|----------|--------|
 | target           | target dom               | Element   | -      |
-| content           | popover content     | String   | ''     |
-| location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | String  | 'bottom'  |
-| popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | [0, 12]  | 
-| arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | 0  | 
+| content           | popover content     | string   | ''     |
+| location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | string  | `'bottom'`  |
+| popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | `[0, 12]`  | 
+| arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | `0`  | 
 
 
 ### Slots
@@ -302,12 +340,12 @@ export default {
 | Name   | Description           |
 |---------|--------------|
 | default | Custom popover content |
-| prevStep | Custom prev strep content|
-| nextStep |  Custom prev strep content |
+| prev-step | Custom prev strep content|
+| next-step |  Custom prev strep content |
 
 ### Events
 
-| Name   | Description           |
+| Event   | Description           |
 |---------|--------------|
 | change | Emit when step change |
 | close   | Emit when popover close |

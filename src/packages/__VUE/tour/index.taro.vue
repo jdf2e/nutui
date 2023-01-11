@@ -25,7 +25,7 @@
             <view class="nut-tour-content" v-if="type == 'step'">
               <view class="nut-tour-content-top" v-if="showTitleBar">
                 <view @click="close">
-                  <Close class="nut-tour-content-top-close" />
+                  <Close class="nut-tour-content-top-close" size="10px" />
                 </view>
               </view>
               <view class="nut-tour-content-inner">
@@ -34,7 +34,7 @@
               <view class="nut-tour-content-bottom">
                 <view class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</view>
                 <view class="nut-tour-content-bottom-operate">
-                  <slot name="prevStep">
+                  <slot name="prev-step">
                     <view
                       class="nut-tour-content-bottom-operate-btn"
                       @click="changeStep('prev')"
@@ -49,7 +49,7 @@
                     >{{ completeTxt }}</view
                   >
 
-                  <slot name="nextStep">
+                  <slot name="next-step">
                     <view
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="changeStep('next')"
@@ -77,6 +77,7 @@ import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component,
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
+import { useRect } from '@/packages/utils/useRect';
 import { Close } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Popover from '../popover/index.taro.vue';
@@ -95,7 +96,7 @@ export default create({
     Close
   },
   props: {
-    visible: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: false },
     type: {
       type: String,
       default: 'step' // tile
@@ -161,10 +162,10 @@ export default create({
       default: true
     }
   },
-  emits: ['update:visible', 'change', 'close'],
+  emits: ['update:modelValue', 'change', 'close'],
   setup(props, { emit }) {
     const state = reactive({
-      showTour: props.visible,
+      showTour: props.modelValue,
       active: 0
     });
 
@@ -219,7 +220,15 @@ export default create({
 
     const getRootPosition = () => {
       props.steps.forEach(async (item, i) => {
-        const rect = await useTaroRect(item.target, Taro);
+        let rect;
+        if (Taro.getEnv() === 'WEB') {
+          const el = document.querySelector(`#${item.target}`) as Element;
+          rect = await useRect(el);
+        } else {
+          rect = await useTaroRect(item.target, Taro);
+        }
+
+        console.log('获取taro', rect);
         maskRect[i] = rect;
         maskStyle(i);
       });
@@ -229,7 +238,7 @@ export default create({
       state.showTour = false;
       showPopup.value[state.active] = false;
       emit('close', state.active);
-      emit('update:visible', false);
+      emit('update:modelValue', false);
     };
 
     const handleClickMask = () => {
@@ -243,7 +252,7 @@ export default create({
     });
 
     watch(
-      () => props.visible,
+      () => props.modelValue,
       (val) => {
         if (val) {
           state.active = 0;

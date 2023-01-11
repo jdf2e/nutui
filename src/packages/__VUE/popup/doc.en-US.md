@@ -79,7 +79,7 @@ Control the pop-up position by setting the value of `position`
 
 ### Icon
 
-The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `closeIcon` defines the display icon.
+The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `close-icon` defines the display icon.
 
 :::demo
 
@@ -91,7 +91,7 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="custom icon" is-link @click="showCloseIcon = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
-    <template #closeIcon>
+    <template #close-icon>
       <Heart></Heart>
     </template>
   </nut-popup>
@@ -152,7 +152,7 @@ Specify the mount node through `teleport`
 ```html
 <template>
   <nut-cell title="Specify mount node" is-link @click="showTeleport = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport" >app</nut-popup>
+  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport" >app</nut-popup>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -208,8 +208,8 @@ Specify the mount node through `teleport`
 | Attribute                   | Description                                                        | Type           | Default        |
 |------------------------|-------------------------------------------------------------|----------------|---------------|
 | v-model:visible        | Control the display/hide of the current component                  | boolean        | `false`       |
-| z-index                | Mask level                                                    | string、number | `2000`        |
-| duration               | Animation duration of component display/hide, in seconds          | string、number | `0.3`         |
+| z-index                | Mask level                                                    | string \| number | `2000`        |
+| duration               | Animation duration of component display/hide, in seconds          | string \| number | `0.3`         |
 | overlay-class          | Custom mask classname                                              | string         | -             |
 | overlay-style          | Custom mask style                                             | CSSProperties  | -             |
 | lock-scroll            | Whether the background is locked                                                | boolean        | `true`       |
@@ -246,15 +246,15 @@ Specify the mount node through `teleport`
 | Name | Description       |
 | ------ | ---------- |
 | default  | Customize Embedded Content |
-| closeIcon  | Custom icon for close button |
+| close-icon  | Custom icon for close button |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-popup-close-icon-margin| _16px_  | -  |
-| --nut-popup-border-radius| _20px_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+| --nut-popup-close-icon-margin| _16px_  |
+| --nut-popup-border-radius| _20px_  |

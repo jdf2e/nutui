@@ -29,7 +29,7 @@ app.use(DatePicker);
   ></nut-date-picker> 
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -75,7 +75,7 @@ app.use(DatePicker);
   </nut-popup>
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
@@ -125,7 +125,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
   ></nut-date-picker> 
 </template>
 
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -161,8 +161,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker> 
 </template>
-<script>
-  import { ref } from 'vue';
+<script lang="ts">
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
   export default {
@@ -198,7 +197,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -237,7 +236,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -245,8 +244,8 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
     setup(props) {
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ( { selectedValue, selectedOptions } )=>{
-        date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
-        time = selectedOptions.slice(3).map((op) => op.value).join(':');
+        const date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
+        const time = selectedOptions.slice(3).map((op) => op.value).join(':');
         showToast.text(selectedOptions[0].text + '年' + date + ' ' + time);
       }
       const formatter = (type: string, option) => {
@@ -296,7 +295,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -336,7 +335,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
       @confirm="confirm"
   ></nut-date-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
@@ -393,7 +392,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 | 参数            | 说明                                              | 类型    | 默认值   |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | 初始值                                            | date    | `null`   |
-| type            | 时间类型，可选值 date time year-month month-day datehour | string  | `'date'` |
+| type            | 时间类型，可选值 `date` `time` `year-month` `month-day` `datehour` | string  | `'date'` |
 | minute-step     | 分钟步进值                                        | number  | `1`      |
 | is-show-chinese | 每列是否展示中文                                  | boolean | `false`  |
 | min-date        | 开始日期                                          | date    | `十年前` |
@@ -409,17 +408,48 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 | option-height         | 选项高度             | number \| string | `36`     |
 | show-toolbar         | 是否显示顶部导航             | boolean | `true`    |
 
+
 ### Events
     
 | 事件名  | 说明               | 回调参数     |
 |---------|--------------------|--------------|
-| confirm | 点击确定按钮时触发 | 	{ selectedValue, selectedOptions } |
-| cancel   | 点击取消按钮时触发         | 	{ selectedValue, selectedOptions } |
-| change   | 选项改变时触发         | { columnIndex, selectedValue, selectedOptions } |
+| confirm | 点击确定按钮时触发 | 	`{ selectedValue, selectedOptions }` |
+| cancel   | 点击取消按钮时触发         | 	`{ selectedValue, selectedOptions }` |
+| change   | 选项改变时触发         | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+### PickerOption 数据结构
+
+| 键名         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| text        | 选项的文字内容               | string \| number |   -            |
+| value          | 选项对应的值，且唯一               | string \| number |     -       |
+| children         | 用于级联选项               | Array | -                |
+| className                  | 添加额外的类名                   | string  | -    |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称                                    | 默认值                     | 
+| --------------------------------------- | -------------------------- | 
+| --nut-picker-cancel-color| _#808080_  | 
+| --nut-picker-ok-color| _var(--nut-primary-color)_  | 
+| --nut-picker-bar-cancel-font-size| _14px_  | 
+| --nut-picker-bar-ok-font-size| _14px_  | 
+| --nut-picker-bar-button-padding| _0 15px_  | 
+| --nut-picker-bar-title-font-size| _16px_  | 
+| --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
+| --nut-picker-bar-title-font-weight| _normal_  | 
+| --nut-picker-item-height| _36px_  | 
+| --nut-picker-item-text-color| _var(--nut-title-color)_  | 
+| --nut-picker-item-text-font-size| _14px_  | 
+| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 

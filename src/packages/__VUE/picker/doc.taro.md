@@ -21,8 +21,9 @@ app.use(Picker);
 <template>
   <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const columns = ref([
@@ -36,7 +37,10 @@ app.use(Picker);
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        console.log(selectedOptions.map((val: any) => val.text).join(','))
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
 
       return {columns, confirm};
@@ -56,6 +60,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   <nut-cell title="请选择城市" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup position="bottom"  v-model:visible="show">
       <nut-picker
+        v-model="popupValue"
         :columns="columns"
         title="请选择城市"
         @confirm="popupConfirm"
@@ -65,12 +70,13 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       </nut-picker>
     </nut-popup>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false)
       const popupDesc = ref()
+      const popupValue = ref();
       const columns = ref([
         { text: '南京市', value: 'NanJing' },
         { text: '无锡市', value: 'WuXi' },
@@ -86,7 +92,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
         show.value = false
       }
 
-      return {columns, confirm};
+      return {show,popupDesc,columns, confirm,popupConfirm,popupValue};
     }
   };
 </script>
@@ -109,8 +115,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -125,7 +132,10 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        console.log(selectedOptions.map((val: any) => val.text).join(','))
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
 
       return {columns,selectedValue, confirm};
@@ -151,8 +161,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
   >
   </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -167,7 +178,10 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        console.log(selectedOptions.map((val: any) => val.text).join(','))
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
 
       return { columns,selectedValue, confirm};
@@ -193,8 +207,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     >
     </nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const selectedTime = ref(['Wednesday','Afternoon']);
@@ -216,10 +231,14 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-        console.log(selectedOptions.map((val: any) => val.text).join(','))
+        Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
       const change = ({ selectedValue,selectedOptions }) => {
         console.log(selectedValue);
+
       };
 
       return {multipleColumns,change, confirm, selectedTime};
@@ -243,8 +262,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
@@ -296,7 +316,10 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       ]);
     
       const confirm = ( { selectedValue,selectedOptions })=>{
-         console.log(selectedOptions.map((val: any) => val.text).join(','))
+         Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
      
 
@@ -321,8 +344,9 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref, onMounted } from 'vue';
+  import Taro from '@tarojs/taro'
   export default {
     setup(props) {
       const asyncColumns = ref([]);
@@ -345,7 +369,10 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
       });
       
       const confirm = ( { selectedValue,selectedOptions })=>{
-         console.log(selectedOptions.map((val: any) => val.text).join(','))
+         Taro.showToast({
+          title:selectedOptions.map((val: any) => val.text).join(','),
+          icon:'none'
+        });
       }
 
       return {asyncColumns,asyncValue, confirm};
@@ -362,47 +389,48 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| v-model:value         | 默认选中项               | array | `[]`              |
-| columns         | 对象数组，配置每一列显示的数据               | array | -                |
+| v-model:value         | 默认选中项               | Array | `[]`              |
+| columns         | 对象数组，配置每一列显示的数据               | PickerOption[] \| PickerOption[][] | -                |
 | title                  | 设置标题                   | string  | -      |
 | cancel-text            | 取消按钮文案               | string  | `取消`  |
 | ok-text                | 确定按钮文案               | string  | `确定`   |
 | three-dimensional          | 是否开启3D效果               | boolean  | `true`   |
 | swipe-duration         | 惯性滚动时长        | number \| string  | `1000`   |
-| safe-area-inset-bottom 	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
 | visible-option-num          |可见的选项个数              | number \| string |`7`               |
 | option-height         | 选项高度             | number \| string | `36`     |
 | show-toolbar         | 是否显示顶部导航             | boolean | `true`   |
 
-### Columns 数据结构
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | string \| number |    -           |
-| value          | 选项对应的值，且唯一               | string \| number |     -       |
-| children         | 用于级联选项               | array | -                |
-| className                  | 添加额外的类名                   | string  |  -    |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | { selectedValue, selectedOptions } |
-| cancel  | 点击取消按钮时触发 | { selectedValue, selectedOptions } |
-| change  | 选项发生改变时触发 | { columnIndex, selectedValue, selectedOptions } |
+| confirm  | 点击确定按钮时触发 | `{ selectedValue, selectedOptions }` |
+| cancel  | 点击取消按钮时触发 | `{ selectedValue, selectedOptions }` |
+| change  | 选项发生改变时触发 | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | default  | 自定义滑动数据底部区域 |
 | top  | 自定义滑动数据顶部区域 |
+
+### PickerOption 数据结构
+
+| 键名         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| text        | 选项的文字内容               | string \| number |    -           |
+| value          | 选项对应的值，且唯一               | string \| number |     -       |
+| children         | 用于级联选项               | Array | -                |
+| className                  | 添加额外的类名                   | string  |  -    |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- |
@@ -416,7 +444,5 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | --nut-picker-bar-title-font-weight| _normal_  | 
 | --nut-picker-item-height| _36px_  | 
 | --nut-picker-item-text-color| _var(--nut-title-color)_  | 
-| --nut-picker-item-active-text-color| _inherit_  | 
 | --nut-picker-item-text-font-size| _14px_  | 
 | --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
-| --nut-picker-columns-item-color| _var(--nut-title-color)_  | 

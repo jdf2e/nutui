@@ -37,7 +37,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -67,7 +67,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -100,7 +100,7 @@ app.use(Badge);
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -119,20 +119,20 @@ app.use(Badge);
 <template>
   <div class="demo">
     <nut-badge>
-      <template #icons>
-        <Check color="#ffffff" width="12px" height="12px"></Check>
+      <template #icon>
+        <Check color="#ffffff" size="12px"></Check>
       </template>
       <nut-avatar shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
-      <template #icons>
-        <Link color="#ffffff" width="12px" height="12px"></Link>
+      <template #icon>
+        <Link color="#ffffff" size="12px"></Link>
       </template>
       <nut-avatar shape="square"></nut-avatar>
     </nut-badge>
     <nut-badge>
-      <template #icons>
-       <Download color="#ffffff" width="12px" height="12px"></Download>
+      <template #icon>
+       <Download color="#ffffff" size="12px"></Download>
       </template>
       <nut-avatar shape="square"></nut-avatar>
     </nut-badge>
@@ -140,10 +140,10 @@ app.use(Badge);
 </template>
 
 <script setup>
-import { Check, Link, Download } from '@nutui/icons-vue';
+import { Check, Link, Download } from '@nutui/icons-vue-taro';
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -173,7 +173,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
    </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -197,7 +197,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo{
   padding: 30px 17px 0 17px;
 }
@@ -212,15 +212,15 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ## API
 ### Props  
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| 参数    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | value   | 显示的内容                                 | string  | `-`         |
-| max     | value 为数值时，最大值                     | number  | `10000`   |
-| z-index | 徽标的 z-index 值                          | number  | `10`      |
+| max     | `value` 为数值时，最大值                     | number  | `10000`   |
+| z-index | 徽标的 `z-index` 值                          | number  | `10`      |
 | dot     | 是否为小点                                 | boolean | `false`   |
 | hidden  | 是否隐藏                                   | boolean | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5px 等 | number  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5px 等 | number  | `0`       |
+| top     | 上下偏移量，支持单位设置，可设置为：`5px` 等 | number  | `0`       |
+| right   | 左右偏移量，支持单位设置，可设置为：`5px` 等 | number  | `0`       |
 | color   | 徽标背景颜色                               | string  | `#fa2c19` |
 
 ### Slots
@@ -228,13 +228,13 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 | 名称    | 说明         |
 |---------|--------------|
 | default | 	徽标包裹的子元素 |
-| icons | 	徽标自定义 |
+| icon | 	徽标自定义 |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     |
 | --------------------------------------- | -------------------------- |
@@ -242,6 +242,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 | --nut-badge-color| _#fff_ |
 | --nut-badge-font-size| _var(--nut-font-size-1)_ |
 | --nut-badge-border-radius| _14px_ |
+| --nut-badge-icon-padding| _4px_ |
 | --nut-badge-padding| _0 5px_ |
 | --nut-badge-content-transform| _translate(50%, -50%)_ |
 | --nut-badge-z-index| _1_ |

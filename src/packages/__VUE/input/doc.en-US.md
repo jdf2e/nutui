@@ -12,7 +12,6 @@ import { Input } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Input);
-
 ```
 
 ### Basic Usage
@@ -144,16 +143,36 @@ Display the clear icon during the input process by setting `clearable`.
     clearable
     clearSize="14" 
   />
+  <nut-input
+    v-model="state.clear2"
+    placeholder="Custom Clear Icon"
+    clearable
+    clearSize="14"
+    show-word-limit
+    max-length="50"
+  >
+    <template #clear>
+      <Close width="12" height="12" @click="clearValue"></Close>
+    </template>
+  </nut-input>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
+  import { Close } from "@nutui/icons-vue"
   export default {
+    components:{
+      Close
+    },
     setup() {
       const state = reactive({
-        clear:''
+        clear:'',
+        clear2:''
       });
+      const clearValue = () => {
+        state.clear2 = '';
+      };
       return {
-        state
+        state, clearValue
       };
     }
   }
@@ -313,47 +332,30 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
     v-model="state.event"
     clearable
     placeholder="Event"
-    @update:model-value="change"
-    @focus="focus"
-    @blur="blur"
     @clear="clear"
-    @click="click"
     @click-input="clickInput"
   />
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
+  import { showToast } from '@nutui/nutui';
   export default {
     setup() {
       const state = reactive({
         event: ''
       });
-      const change = (value: string) => {
-        console.log('change: ', value);
-      };
-      const focus = (event: Event) => {
-        console.log('focus:', event);
-      };
-      const blur = (event: Event) => {
-        console.log('blur:', event);
-      };
       const clear = (event: Event) => {
+        showToast.text('clear');
         console.log('clear:', event);
       };
-      const click = (event: Event) => {
-        console.log('click:', event);
-      };
       const clickInput = (event: Event) => {
+        showToast.text('clickInput');
         console.log('clickInput:', event);
       };
 
       return {
         state,
-        change,
-        blur,
         clear,
-        focus,
-        click,
         clickInput,
       };
     }
@@ -382,19 +384,19 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | boolean | `false`  |
 | error         | Whether to mark the input content in red   | boolean | `false`  |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
-| format-trigger | When to format value, eg `onChange`、`onBlur` | string | - |
+| format-trigger | When to format value, eg `onChange`、`onBlur` | string | `onChange` |
 | confirm-type | The text of the button in the lower right corner of the keyboard, only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | string |   `done`   |
 
 ### Events
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| update:model-value | Emitted when input value changed | val  |
-| focus  | Emitted when input is focused     | event |
-| blur   | Emitted when input is blurred     | event  |
-| clear  | Emitted when the clear icon is clicked   | event  |
-| click  | Emitted when component is clicked	      | event  |
-| click-input      | Emitted when the input is clicked      | event  |
+| update:model-value | Emitted when input value changed | `val`  |
+| focus  | Emitted when input is focused     | `event` |
+| blur   | Emitted when input is blurred     | `event`  |
+| clear  | Emitted when the clear icon is clicked   | `event`  |
+| click  | Emitted when component is clicked	      | `event`  |
+| click-input      | Emitted when the input is clicked      | `event`  |
 
 ### Slots
 | Name  | Description     | 
@@ -405,7 +407,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

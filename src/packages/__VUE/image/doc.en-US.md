@@ -13,7 +13,6 @@ import { Image } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### Basic Usage
@@ -96,10 +95,16 @@ The Image component provides a default `loading` prompt and supports custom cont
 <template>
   <nut-image width="100" height="100" showLoading>
     <template #loading>
-      <Loading width="16px" height="16px" name="loading"></Loading>
+      <Loading width="16px" height="16px" name="loading" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { Loading } from '@nutui/icons-vue';
+export default {
+  components: { Loading }
+}
+</script>
 ```
 
 :::
@@ -114,10 +119,16 @@ The Image component provides a default loading failure warning and supports cust
 <template>
   <nut-image src="https://x" width="100" height="100" showLoading>
     <template #error>
-      <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+      <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { CircleClose } from '@nutui/icons-vue';
+export default {
+  components: { CircleClose }
+}
+</script>
 ```
 
 :::
@@ -132,8 +143,8 @@ The Image component provides a default loading failure warning and supports cust
 | fit         | Fit mode, same as object-fit     | ImageFit | `fill`                |
 | position    | Position, same as object-position  | ImagePosition | `center`              |
 | alt         | Alt               | string | -                |
-| width         | Width，Default unit px             | string | -                |
-| height         | Height，Default unit px              | string | -                |
+| width         | Width，Default unit `px`             | string | -                |
+| height         | Height，Default unit `px`              | string | -                |
 | round         | Whether to be round               | boolean | `false`              |
 | radius         | Border Raduis               | string \| number | -                |
 | show-error         | Whether to show error placeholder | boolean | `false`              |
@@ -160,7 +171,7 @@ The Image component provides a default loading failure warning and supports cust
 | left   | Align Left  |
 
 ### Slots
-| Attribute         | Description                             |
+| Name         | Description                             |
 |--------------|----------------------------------|
 | loading      | Custom loading placeholder     |
 | error    | Custom error placeholder  |

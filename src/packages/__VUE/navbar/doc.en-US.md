@@ -1,4 +1,4 @@
-# NavBar
+# Navbar
 
 ### Intro
 
@@ -7,7 +7,6 @@ Provide navigation function, often used at the top of the page.
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Navbar, Tabs, TabPane } from '@nutui/nutui';
 
@@ -49,7 +48,7 @@ app.use(TabPane);
     :titleIcon="true"
     desc="Edit"
   >
-    <template #titleIcon>
+    <template #title-icon>
       <Cart2 width="16px"></Cart2>
     </template>
     <template #right>
@@ -195,12 +194,12 @@ export default {
 | title               | Title                                         | string  | -       |
 | left-text | Left Text                                     | string  | -       |
 | desc                | Desc                                          | string  | -       |
-| left-show           | Whether to show the left arrow                | boolean | false   |
-| title-icon            | Whether to show icon in title                 | boolean  | false     | 
-| border   | Whether to show bottom border                     | boolean  | false  |
-| fixed               | Is it pinned to the top                       | boolean | false    |
-| placeholder | Whether to generate a placeholder element when fixed   | boolean  | false   |
-| safe-area-inset-top | Whether to enable top safety zone adaptation  | boolean | false    |
+| left-show           | Whether to show the left arrow                | boolean | `false`   |
+| title-icon            | Whether to show icon in title                 | boolean  | `false`     | 
+| border   | Whether to show bottom border                     | boolean  | `false`  |
+| fixed               | Is it pinned to the top                       | boolean | `false`    |
+| placeholder | Whether to generate a placeholder element when fixed   | boolean  | `false`   |
+| safe-area-inset-top | Whether to enable top safety zone adaptation  | boolean | `false`    |
 | z-index | Z-index                                            | number ｜ string  | -       |
 
 ### Events
@@ -217,14 +216,14 @@ export default {
 | left | Customize left content |
 | right | Customize the content on the right |
 | content |  Customize the middle content of the navigation bar |
-| leftShow  | Custom icon of left arrow  |
-| titleIcon  | Custom icon in header |
+| left-show  | Custom icon of left arrow  |
+| title-icon  | Custom icon in header |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 

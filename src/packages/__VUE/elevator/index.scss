@@ -57,6 +57,12 @@
         }
       }
     }
+    .nut-elevator__list__fixed__wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
     &__fixed {
       width: 100%;
       position: absolute;
@@ -71,6 +77,14 @@
       background-color: $elevator-list-fixed-bg-color;
       box-sizing: border-box;
       box-shadow: $elevator-list-fixed-box-shadow;
+      z-index: 1;
+      &--mini {
+        position: sticky;
+        top: -1px;
+      }
+    }
+    &--mini {
+      position: static;
     }
   }
   &__code--current {

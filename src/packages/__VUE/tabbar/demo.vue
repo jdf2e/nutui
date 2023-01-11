@@ -118,7 +118,7 @@ import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       byName: '通过名称匹配',
       customIcon: '自定义图标',
       customCheck: '自定义选中',

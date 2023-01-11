@@ -17,6 +17,10 @@ app.use(CategoryPane);
 
 ### 经典分类模式
 
+data 数据格式可参考
+[categoryData.js](https//storage.360buyimg.com/nutui/3x/categoryData.js)。
+
+
 :::demo
 
 ```html
@@ -28,35 +32,23 @@ app.use(CategoryPane);
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
     const data = reactive({
-      categoryInfo: {},
       category: [{}],
       categoryChild: [{}]
     });
 
     onMounted(() => {
-      setTimeout(() => {
-        getData();
-      }, 500);
+      data.category = categoryInfo.category;
+      data.categoryChild = categoryChild;
+      data.customCategory = customCategory;
     });
 
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { categoryInfo, categoryChild } = res;
-          data.categoryInfo = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
-
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
     };
     const onChange =()=>{
         console.log("当前分类数据");
@@ -88,36 +80,22 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
     const data = reactive({
-      categoryInfo: {},
       category: [{}],
       categoryChild: [{}]
     });
 
     onMounted(() => {
-      setTimeout(() => {
-        getData();
-      }, 500);
+      category: [{}],
+      categoryChild: [{}]
     });
 
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          console.log('res', res)
-          const { categoryInfo, categoryChild } = res;
-          data.categoryInfo = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
-
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
     };
 
     const onChange =()=>{
@@ -150,6 +128,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data';
 
 export default {
   setup() {
@@ -161,15 +140,6 @@ export default {
          getData();
       }, 500);
     });
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { customCategory } = res;
-          data.customCategory = customCategory;
-        })
-        .catch((err) => console.log('Oh, error', err)); 
-    };
     const changeCustom = () => {
       console.log('点击分类数据')
     };
@@ -188,8 +158,8 @@ export default {
 
 | 参数     | 说明                             | 类型   | 默认值   |
 | -------- | -------------------------------- | ------ | -------- |
-| type     | 分类模式：`classify`，`text`，`custom` | string | classify |
-| category | 左侧导航栏数据列表               | Array  | []       |
+| type     | 分类模式：`classify`，`text`，`custom` | string | `classify` |
+| category | 左侧导航栏数据列表               | Array  | `[]`       |
 
 ### Category Events
 
@@ -203,8 +173,8 @@ export default {
 
 | 参数            | 说明                 | 类型  | 默认值 |
 | --------------- | -------------------- | ----- | ------ |
-| category-child  | 右侧展示当前分类数据 | Array | []     |
-| custom-category | 自定义分类数据       | Array | []     |
+| category-child  | 右侧展示当前分类数据 | Array | `[]`     |
+| custom-category | 自定义分类数据       | Array | `[]`     |
 
 ### CategoryPane Events
 
@@ -221,7 +191,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

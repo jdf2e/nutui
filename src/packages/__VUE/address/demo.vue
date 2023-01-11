@@ -42,7 +42,6 @@
       height="270px"
       @change="(cal) => onChange(cal, 'normal2')"
       @close="close5"
-      :columns-placeholder="placeholder"
     ></nut-address>
 
     <h2>{{ translate('existAddress') }}</h2>
@@ -52,7 +51,6 @@
       v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
-      @change="(cal) => onChange(cal, 'exist')"
       @close="close2"
       :is-show-custom-address="false"
       @selected="selected"
@@ -65,12 +63,11 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @change="(cal) => onChange(cal, 'customImg')"
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"
     >
-      <template #unselectedIcon>
+      <template #unselected-icon>
         <Heart1 style="margin-right: 8px"></Heart1>
       </template>
       <template #icon>
@@ -113,7 +110,7 @@ import { HeartFill, Heart1, Close } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '选择地址',
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
@@ -286,7 +283,6 @@ export default createDemo({
       }
     };
     const close1 = (val: CalResult) => {
-      console.log(val);
       text.one = val.data.addressStr;
     };
 

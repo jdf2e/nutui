@@ -13,7 +13,6 @@ import { Image } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### 基础用法
@@ -95,10 +94,16 @@ Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自
 <template>
   <nut-image width="100" height="100" showLoading>
     <template #loading>
-      <Loading width="16px" height="16px" name="loading"></Loading>
+      <Loading width="16px" height="16px" name="loading" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { Loading } from '@nutui/icons-vue';
+export default {
+  components: { Loading }
+}
+</script>
 ```
 
 :::
@@ -113,10 +118,16 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 <template>
   <nut-image src="https://x" width="100" height="100" showError>
     <template #error> 
-      <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
+      <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
   </nut-image>
 </template>
+<script lang="ts">
+import { CircleClose } from '@nutui/icons-vue';
+export default {
+  components: { CircleClose }
+}
+</script>
 ```
 
 :::
@@ -131,8 +142,8 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 | fit         | 图片填充模式，等同于原生的 `object-fit` 属性     | ImageFit | `fill`                |
 | position    | 图片位置，等同于原生的 `object-position` 属性  | ImagePosition | `center`             |
 | alt         | 替代文本               | string | -                |
-| width         | 宽度，默认单位`px`               | string | -                |
-| height         | 高度，默认单位`px`               | string | -                |
+| width         | 宽度，默认单位 `px`               | string | -                |
+| height         | 高度，默认单位 `px`               | string | -                |
 | round         | 是否显示为圆角               | boolean | `false`              |
 | radius         | 圆角大小               | string \| number | -                |
 | show-error         | 是否展示图片加载失败| boolean | `false`              |
@@ -160,7 +171,7 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 
 
 ### Slots
-| 参数         | 说明                             |
+| 名称         | 说明                             |
 |--------------|----------------------------------|
 | loading      | 自定义加载中的提示内容     |
 | error    | 自定义记载失败的提示内容  |

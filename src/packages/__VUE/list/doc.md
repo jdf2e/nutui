@@ -12,7 +12,6 @@ import { List } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
-
 ```
 
 ### 基础用法
@@ -76,8 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
+    height: 100%;
     background-color: #f4a8b6;
     border-radius: 10px;
   }
@@ -93,22 +91,21 @@ body {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| height         | 列表项的高度               | Number | `50`                |
+| height         | 列表项的高度               | number | `50`                |
 | list-data         | 列表数据               | any[] | `[]`                |
-| container-height        | 容器高度(最大值不能超过可视区)              | Number | `可视区高度`                |
+| container-height        | 容器高度(最大值不能超过可视区)              | number | `可视区高度`                |
 
 ### Slots
 
-| 参数         | 说明                             | 类型   |
+| 名称         | 说明                             | 类型   |
 |--------------|----------------------------------|--------|
-| item         | 列表项数据               | Object |
-| index         | 索引               | Number |
+| item         | 列表项数据               | object |
+| index         | 索引               | number |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| scroll(将被废弃), `scroll-bottom` 代替 | 滚动到底部时触发 | - |
 | scroll-bottom   | 滚动到底部时触发 | - |
 
 
@@ -116,8 +113,8 @@ body {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-list-item-margin       | _0 0 10px 0_        | -    |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-list-item-margin       | _0 0 10px 0_        |

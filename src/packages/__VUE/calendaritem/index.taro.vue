@@ -766,9 +766,12 @@ export default create({
           let toFixed = 3;
           if (TARO_ENV === Taro.ENV_TYPE.WEB) {
             toFixed = 5;
+            let fontSize = document.documentElement.style.fontSize;
+            scale = Number((Number.parseInt(fontSize) / 40).toFixed(toFixed));
+          } else {
+            let screenWidth = res.screenWidth;
+            scale = Number((screenWidth / 750).toFixed(toFixed));
           }
-          let fontSize = document.documentElement.style.fontSize;
-          scale = Number((Number.parseInt(fontSize) / 40).toFixed(toFixed));
           scalePx.value = scale;
           initData();
         }

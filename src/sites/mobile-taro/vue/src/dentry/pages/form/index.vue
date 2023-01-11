@@ -1,6 +1,7 @@
 <template>
-  <div class="demo full">
-    <h2>基本用法</h2>
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <nut-form>
       <nut-form-item label="姓名">
         <nut-input v-model="basicData.name" class="nut-input-text" placeholder="请输入姓名" type="text" />
@@ -166,10 +167,17 @@
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 import { FormItemRuleWithoutValidator } from '@/packages/__VUE/formitem/types';
 export default {
   props: {},
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
+
     const formData = reactive({
       name: '',
       age: '',
@@ -342,7 +350,8 @@ export default {
       addressModule,
       dynamicForm,
       basicData,
-      dynamicRefForm
+      dynamicRefForm,
+      env
     };
   }
 };

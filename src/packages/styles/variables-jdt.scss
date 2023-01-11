@@ -172,10 +172,8 @@ $picker-bar-title-color: var(--nut-picker-bar-title-color, #323233) !default;
 $picker-bar-title-font-weight: var(--nut-picker-bar-title-font-weight, 600) !default;
 $picker-item-height: var(--nut-picker-item-height, 36px) !default;
 $picker-item-text-color: var(--nut-picker-item-text-color, $title-color) !default;
-$picker-item-active-text-color: var(--nut-picker-item-active-text-color, $primary-color) !default;
 $picker-item-text-font-size: var(--nut-picker-item-text-font-size, 14px) !default;
 $picker-item-active-line-border: var(--nut-picker-item-active-line-border, 1px solid rgba(0, 0, 0, 0.06)) !default;
-$picker-columns-item-color: var(--nut-picker-columns-item-color, $title-color) !default;
 
 //input
 $input-border-bottom: var(--nut-input-border-bottom, #eaf0fb) !default;
@@ -186,7 +184,7 @@ $input-font-size: var(--nut-input-font-size, $font-size-2) !default;
 // textarea
 
 $textarea-font: var(--nut-textarea-font, $font-size-2) !default;
-$textarea-height: var(--nut-textarea-height, 100px) !default;
+// $textarea-height: var(--nut-textarea-height, 100px) !default;
 $textarea-limit-color: var(--nut-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nut-textarea-text-color, $title-color) !default;
 $textarea-disabled-color: var(--nut-textarea-disabled-color, $disable-color) !default;
@@ -320,8 +318,6 @@ $calendar-sub-title-font: var(--nut-calendar-sub-title-font, $font-size-2) !defa
 $calendar-text-font: var(--nut-calendar-text-font, $font-size-1) !default;
 $calendar-day-font: var(--nut-calendar-day-font, 16px) !default;
 $calendar-day-active-border-radius: var(--nut-calendar-day-active-border-radius, 4px) !default;
-$calendar-day-width: var(--nut-calendar-day-width, 14.28%) !default;
-$calendar-day-height: var(--nut-calendar-day-height, 64px) !default;
 $calendar-day-font-weight: var(--nut-calendar-day-font-weight, normal) !default;
 $calendar-day67-font-color: var(--nut-calendar-day67-font-color, $primary-color) !default;
 $calendar-month-title-font-size: var(--nut-calendar-month-title-font-size, inherit) !default;
@@ -419,6 +415,7 @@ $steps-wait-icon-color: var(--nut-steps-wait-icon-color, $white) !default;
 $steps-wait-head-color: var(--nut-steps-wait-head-color, #909ca4) !default;
 $steps-wait-head-border-color: var(--nut-steps-wait-head-border-color, #909ca4) !default;
 $steps-wait-content-color: var(--nut-steps-wait-content-color, #909ca4) !default;
+$steps-wait-icon-text-color: var(--nut-steps-wait-icon-text-color, #ffffff) !default;
 
 $steps-finish-head-color: var(--nut-steps-finish-head-color, $primary-color) !default;
 $steps-finish-head-border-color: var(--nut-steps-finish-head-border-color, $primary-color) !default;
@@ -475,10 +472,8 @@ $fixednav-item-active-color: var(--nut-fixednav-item-active-color, $primary-colo
 $noticebar-background: var(--nut-noticebar-background, #f2f8ff) !default;
 $noticebar-color: var(--nut-noticebar-color, #2c68ff) !default;
 $noticebar-font-size: var(--nut-noticebar-font-size, 14px) !default;
-$noticebar-height: var(--nut-noticebar-height, 40px) !default;
-$noticebar-line-height: var(--nut-noticebar-line-height, 24px) !default;
-$noticebar-left-icon-width: var(--nut-noticebar-left-icon-width, 16px) !default;
-$noticebar-right-icon-width: var(--nut-noticebar-right-icon-width, 16px) !default;
+$noticebar-across-height: var(--nut-noticebar-across-height, 40px) !default;
+$noticebar-across-line-height: var(--nut-noticebar-across-line-height, 24px) !default;
 $noticebar-box-padding: var(--nut-noticebar-box-padding, 0 16px) !default;
 $noticebar-wrapable-padding: var(--nut-noticebar-wrapable-padding, 16px) !default;
 $noticebar-lefticon-margin: var(--nut-noticebar-lefticon-margin, 0px 10px) !default;
@@ -519,8 +514,6 @@ $timeselect-timedetail-item-cur-text-color: var(
   --nut-timeselect-timedetail-item-cur-text-color,
   $primary-color
 ) !default;
-$timeselect-timedetail-time-text-color: var(--nut-timeselect-timedetail-time-text-color, #999) !default;
-$timeselect-timedetail-time-font-size: var(--nut-timeselect-timedetail-time-font-size, $font-size-1) !default;
 
 //tag
 $tag-font-size: var(--nut-tag-font-size, 12px) !default;
@@ -548,8 +541,9 @@ $badge-background-color: var(
 $badge-color: var(--nut-badge-color, #fff) !default;
 $badge-font-size: var(--nut-badge-font-size, $font-size-1) !default;
 $badge-border-radius: var(--nut-badge-border-radius, 14px) !default;
+$badge-icon-padding: var(--nut-badge-icon-padding, 4px) !default;
 $badge-padding: var(--nut-badge-padding, 0 5px) !default;
-$badge-content-transform: var(--nut-badge-content-transform, translateY(-50%) translateX(100%)) !default;
+$badge-content-transform: var(--nut-badge-content-transform, translate(50%, -50%)) !default;
 $badge-z-index: var(--nut-badge-z-index, 1) !default;
 $badge-dot-width: var(--nut-badge-dot-width, 7px) !default;
 $badge-dot-height: var(--nut-badge-dot-height, 7px) !default;
@@ -631,9 +625,9 @@ $tabs-titles-item-line-border-radius: var(--nut-tabs-titles-item-line-border-rad
 $tabs-titles-item-line-opacity: var(--nut-tabs-titles-item-line-opacity, 1) !default;
 
 // indicator
-$indicator-color: var(--nut-indicator-color, $primary-color) !default;
+$indicator-bg-color: var(--nut-indicator-bg-color, $primary-color) !default;
 $indicator-dot-color: var(--nut-indicator-dot-color, $disable-color) !default;
-$indicator-white: var(--nut-indicator-white, $white) !default;
+$indicator-color: var(--nut-indicator-color, $white) !default;
 $indicator-size: var(--nut-indicator-size, 18px) !default;
 $indicator-dot-size: var(--nut-indicator-dot-size, calc($indicator-size / 3)) !default;
 $indicator-border-size: var(--nut-indicator-border-size, $indicator-size + 2) !default;

@@ -1,5 +1,6 @@
 <template>
-  <div class="demo full">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
     <h2>默认用法</h2>
     <nut-noticebar
       text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
@@ -120,10 +121,13 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { Fabulous } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 
 export default {
-  components: { Fabulous },
+  components: { Fabulous, Header },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
       horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
@@ -141,7 +145,8 @@ export default {
     return {
       ...toRefs(state),
       hello,
-      go
+      go,
+      env
     };
   }
 };

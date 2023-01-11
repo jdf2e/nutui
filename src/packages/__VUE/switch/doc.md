@@ -55,7 +55,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" loading />
+  <nut-switch v-model="checked" loading active-color="red" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -84,7 +84,7 @@ app.use(Switch);
     setup() {
       const checked = ref(true);
       const change = (value: boolean, event: Event) => {
-        showToast.text(`触发了change事件，开关状态：${value}`);
+        showToast.text(`value：${value}`);
       };
       return {
         checked,
@@ -160,13 +160,34 @@ app.use(Switch);
 ```
 :::
 
+### 自定义加载图标
+:::demo
+``` html
+<template>
+  <nut-switch v-model="checked" loading>
+    <template #icon><Loading name="loading" /></template>
+  </nut-switch>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { Loading } from '@nutui/icons-vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
+```
+:::
+
 ## API
 
 ### Props
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | boolean ｜ string ｜ number | `false`               |
+| v-model        | 开关状态         | boolean \| string \| number | `false`               |
 | disable        | 禁用状态         | boolean | `false`               |
 | loading        | 加载状态         | boolean | `false`               |
 | active-color   | 打开时的背景颜色 | string  | `#fa2c19`    |
@@ -192,7 +213,7 @@ app.use(Switch);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 

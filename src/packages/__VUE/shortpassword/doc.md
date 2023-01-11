@@ -71,7 +71,7 @@ export default{
     >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -119,7 +119,7 @@ export default{
     >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -169,7 +169,7 @@ export default{
   >
   </nut-number-keyboard>
 </template>
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
@@ -202,24 +202,24 @@ export default{
 ### Props
 
 
-| 字段                   | 说明                | 类型           | 默认值                       |
+| 参数                   | 说明                | 类型           | 默认值                       |
 |------------------------|---------------------|----------------|------------------------------|
-| v-model                | 密码初始值          | String         |                              |
-| v-model:visible        | 是否展示短密码框    | Boolean        | false                        |
-| title                  | 标题                | String         | 请输入密码                   |
-| desc                   | 密码框描述          | String         | 您使用了虚拟资产，请进行验证 |
-| tips                   | 提示语              | String         | 忘记密码                     |
-| close-on-click-overlay | 是否点击遮罩关闭    | Boolean        | true                         |
-| length                 | 密码长度，取值为4~6 | String、Number | 6                            |
-| error-msg              | 错误信息提示        | String         | ''                           |
+| v-model                | 密码初始值          | string         |                              |
+| v-model:visible        | 是否展示短密码框    | boolean        | `false`                        |
+| title                  | 标题                | string         | `请输入密码`                   |
+| desc                   | 密码框描述          | string         | `您使用了虚拟资产，请进行验证` |
+| tips                   | 提示语              | string         | `忘记密码`                     |
+| close-on-click-overlay | 是否点击遮罩关闭    | boolean        | `true`                         |
+| length                 | 密码长度，取值为4~6 | string \| number | `6`                            |
+| error-msg              | 错误信息提示        | string         | `''`                           |
 
 
 ### Events
 
-| 事件名称 | 说明                   | 回调参数 |
+| 事件名 | 说明                   | 回调参数 |
 |----------|------------------------|----------|
 | close    | 点击关闭图标时触发事件 | -    |
-| complete | 输入完成的回调         | 当前输入框值value    |
+| complete | 输入完成的回调         | `value:string`    |
 | focus | 输入框聚焦时触发	         | -    |
 
 
@@ -227,11 +227,11 @@ export default{
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
-| --nut-shortpassword-background-color| _rgba(245, 245, 245, 1)_  | -  |
-| --nut-shortpassword-border-color| _#ddd_  | -  |
-| --nut-shortpassword-error| _var(--nut-primary-color)_  | -  |
-| --nut-shortpassword-forget| _rgba(128, 128, 128, 1)_  | -  |
+| 名称                                    | 默认值                     |
+| --------------------------------------- | -------------------------- |
+| --nut-shortpassword-background-color| _rgba(245, 245, 245, 1)_  |
+| --nut-shortpassword-border-color| _#ddd_  |
+| --nut-shortpassword-error| _var(--nut-primary-color)_  |
+| --nut-shortpassword-forget| _rgba(128, 128, 128, 1)_  |

@@ -161,15 +161,15 @@ export default {
     
 | Attribute           | Description                     | Type          | Default            |
 |----------------|--------------------------|---------------|-------------------|
-| v-model        | Current page number                 | Number        | 1                 |
-| mode           | Mode, can be set to simple or multi | String        | multi             |
-| prev-text      | Previous text           | String        | Previous            |
-| next-text      | Next text           | String        | Next            |
-| page-count     | The total number of pages                   | String,Number | '' |
-| total-items    | Total items                 | String,Number | 0                 |
-| items-per-page | Item number per page               | String,Number | 10                |
-| show-page-size | Count of page size to show           | String,Number | 5                 |
-| force-ellipses | Whether to show ellipses           | Boolean       | false             |
+| v-model        | Current page number                 | number        | `1`                 |
+| mode           | Mode, can be set to simple or multi | string        | `multi`             |
+| prev-text      | Previous text           | string        | `Previous`            |
+| next-text      | Next text           | string        | `Next`            |
+| page-count     | The total number of pages                   | string \| number | `''` |
+| total-items    | Total items                 | string \| number | `0`                 |
+| items-per-page | Item number per page               | string \| number | `10`                |
+| show-page-size | Count of page size to show           | string \| number | `5`                 |
+| force-ellipses | Whether to show ellipses           | boolean       | `false`             |
     
 ### Events
     
@@ -189,16 +189,16 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --------------------------------------- | -------------------------- | ---- |
-|  --nut-pagination-color| _var(--nut-primary-color)_  | -  |
-|  --nut-pagination-font-size| _var(--nut-font-size-2)_  | -  |
-|  --nut-pagination-item-border-color| _#e4e7eb_  | -  |
-|  --nut-pagination-active-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  | -  |
-|  --nut-pagination-disable-color| _rgba(116, 116, 116, 0.31)_  | -  |
-|  --nut-pagination-disable-background-color| _#f7f8fa_  | -  |
-|  --nut-pagination-item-border-width| _1px_  | -  |
-|  --nut-pagination-item-border-radius| _2px_  | -  |
-|  --nut-pagination-prev-next-padding| _0 11px_  | -  |
+| Name | Default Value |
+| --------------------------------------- | -------------------------- |
+|  --nut-pagination-color| _var(--nut-primary-color)_  |
+|  --nut-pagination-font-size| _var(--nut-font-size-2)_  |
+|  --nut-pagination-item-border-color| _#e4e7eb_  |
+|  --nut-pagination-active-background-color| _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_  |
+|  --nut-pagination-disable-color| _rgba(116, 116, 116, 0.31)_  |
+|  --nut-pagination-disable-background-color| _#f7f8fa_  |
+|  --nut-pagination-item-border-width| _1px_  |
+|  --nut-pagination-item-border-radius| _2px_  |
+|  --nut-pagination-prev-next-padding| _0 11px_  |

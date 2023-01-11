@@ -61,11 +61,7 @@
       v-model="state.event"
       :placeholder="translate('event')"
       clearable
-      @update:model-value="change"
-      @focus="focus"
-      @blur="blur"
       @clear="clear"
-      @click="click"
       @click-input="clickInput"
     />
   </div>
@@ -74,14 +70,14 @@
 <script lang="ts">
 import { reactive } from 'vue';
 import { Close } from '@nutui/icons-vue';
-
+import { showToast } from '@/packages/nutui.vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('input');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定义类型',
       title2: '禁用和只读',
       title3: '显示清除图标',
@@ -190,22 +186,12 @@ export default createDemo({
     setTimeout(function () {
       // state.val1 = '异步数据';
     }, 2000);
-    const change = (value: string) => {
-      console.log('change: ', value);
-    };
-    const focus = (event: Event) => {
-      console.log('focus:', event);
-    };
-    const blur = (event: Event) => {
-      console.log('blur:', event);
-    };
     const clear = (event: Event) => {
+      showToast.text('clear');
       console.log('clear:', event);
     };
-    const click = (event: Event) => {
-      console.log('click:', event);
-    };
     const clickInput = (event: Event) => {
+      showToast.text('clickInput');
       console.log('clickInput:', event);
     };
     const clearValue = () => {
@@ -214,11 +200,7 @@ export default createDemo({
     const formatter = (value: string) => value.replace(/\d/g, '');
     return {
       state,
-      change,
-      blur,
       clear,
-      focus,
-      click,
       clickInput,
       formatter,
       translate,

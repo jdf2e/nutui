@@ -1,45 +1,53 @@
 <template>
-  <div class="nut-address-list-general">
-    <item-contents
-      :item="item"
-      @delIcon="delShellClick"
-      @editIcon="editShellClick"
-      @itemClick="itemShellClick"
-      @touchstart="holddownstart"
-      @touchend="holddownend"
-      @touchmove="holddownmove"
-    >
-      <template v-slot:contentTop>
-        <slot name="contentInfo"></slot>
+  <div class="nut-address-list-general" v-if="!swipeEdition">
+    <component :is="renderCompontent()" @touchstart="holddownstart" @touchend="holddownend" @touchmove="holddownmove">
+      <template #content-top>
+        <slot name="content-info"></slot>
       </template>
-      <template v-slot:contentIcon>
-        <slot name="contentIcons"></slot>
+      <template #content-icon>
+        <slot name="content-icons"></slot>
       </template>
-      <template v-slot:contentAddr>
-        <slot name="contentAddrs"></slot>
+      <template #content-addr>
+        <slot name="content-addrs"></slot>
       </template>
-    </item-contents>
+    </component>
     <div class="nut-address-list-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
-      <slot name="longpressAll">
-        <div class="nut-address-list-general__mask-copy" @click="copyCLick">
-          <div class="nut-address-list-mask-contain"> 复制<br />地址 </div>
-        </div>
-        <div class="nut-address-list-general__mask-set" @click="setDefault">
-          <div class="nut-address-list-mask-contain"> 设置<br />默认 </div>
-        </div>
-        <div class="nut-address-list-general__mask-del" @click="delClick">
-          <div class="nut-address-list-mask-contain"> 删除<br />地址 </div>
-        </div>
+      <slot name="longpress-all">
+        <div class="nut-address-list-general__mask-copy" @click="copyCLick"> 复制地址 </div>
+        <div class="nut-address-list-general__mask-set" @click="setDefault"> 设置默认 </div>
+        <div class="nut-address-list-general__mask-del" @click="delLongClick"> 删除地址 </div>
       </slot>
     </div>
     <div class="nut-address-list__mask-bottom" v-if="showMaskRef" @click="hideMaskClick"></div>
   </div>
+  <nut-swipe v-else>
+    <div class="nut-address-list-swipe">
+      <component :is="renderCompontent()" @touchmove="swipemove" @touchstart="swipestart">
+        <template #content-top>
+          <slot name="content-info"></slot>
+        </template>
+        <template #content-icon>
+          <slot name="content-icons"></slot>
+        </template>
+        <template #content-addr>
+          <slot name="content-addrs"></slot>
+        </template>
+      </component>
+    </div>
+    <template #right>
+      <slot name="swipe-right-btn">
+        <nut-button shape="square" style="height: 100%" type="danger" @click="swipeDelClick">删除</nut-button>
+      </slot>
+    </template>
+  </nut-swipe>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('addresslist-general');
+const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.vue';
+import Button from '../../button/index.vue';
+import Swipe from '../../swipe/index.vue';
 
 export default create({
   props: {
@@ -50,27 +58,53 @@ export default create({
     longPress: {
       type: Boolean,
       default: false
+    },
+    swipeEdition: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ['delIcon', 'editIcon', 'itemClick', 'longDown', 'longCopy', 'longSet', 'longDel'],
+  emits: ['delIcon', 'editIcon', 'clickItem', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
   components: {
-    ItemContents
+    ItemContents,
+    [Button.name]: Button,
+    [Swipe.name]: Swipe
   },
 
   setup(props, { emit }) {
+    const renderCompontent = () => {
+      return h(ItemContents, {
+        item: props.item,
+        onDelIcon(event: Event) {
+          delClick(event);
+        },
+        onEditIcon(event: Event) {
+          editClick(event);
+        },
+        onClickItem(event: Event) {
+          clickItem(event);
+        }
+      });
+    };
     let loop: any = null;
+    const moveRef = ref(false);
     const showMaskRef = ref(false);
 
-    const delShellClick = (event: Event) => {
+    const delClick = (event: Event) => {
       emit('delIcon', event, props.item);
       event.stopPropagation();
     };
-    const editShellClick = (event: Event) => {
+    const editClick = (event: Event) => {
       emit('editIcon', event, props.item);
       event.stopPropagation();
     };
-    const itemShellClick = (event: Event) => {
-      emit('itemClick', event, props.item);
+    const clickItem = (event: Event) => {
+      if (moveRef.value) return;
+      emit('clickItem', event, props.item);
+      event.stopPropagation();
+    };
+    const delLongClick = (event: Event) => {
+      emit('longDel', event, props.item);
       event.stopPropagation();
     };
     const holdingFunc = (event: Event) => {
@@ -103,10 +137,6 @@ export default create({
       emit('longSet', event, props.item);
       event.stopPropagation();
     };
-    const delClick = (event: Event) => {
-      emit('longDel', event, props.item);
-      event.stopPropagation();
-    };
     const maskClick = (event: Event) => {
       if (loop != 0) {
         // 排除长按时触发点击的情况
@@ -115,20 +145,34 @@ export default create({
       event.stopPropagation();
       event.preventDefault();
     };
+    const swipeDelClick = (event: Event) => {
+      emit('swipeDel', event, props.item);
+      event.stopPropagation();
+    };
+    const swipestart = () => {
+      moveRef.value = false;
+    };
+    const swipemove = () => {
+      moveRef.value = true;
+    };
 
     return {
-      delShellClick,
-      editShellClick,
-      itemShellClick,
+      renderCompontent,
+      showMaskRef,
+      clickItem,
+      editClick,
+      delClick,
+      delLongClick,
       holddownstart,
       holddownmove,
       holddownend,
-      showMaskRef,
-      delClick,
       copyCLick,
       hideMaskClick,
       setDefault,
-      maskClick
+      maskClick,
+      swipeDelClick,
+      swipestart,
+      swipemove
     };
   }
 });

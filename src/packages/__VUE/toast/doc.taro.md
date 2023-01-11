@@ -69,22 +69,22 @@ export default {
 
 | 字段                   | 说明                                                                    | 类型            | 默认值                        |
 |------------------------|-------------------------------------------------------------------------|-----------------|-------------------------------|
-| msg                    | 消息文本内容,支持传入HTML                                               | string \| VNode | ""                            |
-| duration               | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading类型默认为0） | number          | 2000                          |
-| title                  | 标题                                                                    | string          | ''                            |
-| center                 | 是否展示在页面中部（为false时展示在底部）                               | boolean         | true                          |
-| bottom                 | 距页面底部的距离（像素或者百分比），option.center为false时生效          | string          | "30px"                        |
-| text-align-center      | 多行文案是否居中                                                        | boolean         | true                          |
+| msg                    | 消息文本内容,支持传入HTML                                               | string \| VNode | `""`                            |
+| duration               | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading类型默认为0） | number          | `2000`                          |
+| title                  | 标题                                                                    | string          | `''`                            |
+| center                 | 是否展示在页面中部（为false时展示在底部）                               | boolean         | `true`                          |
+| bottom                 | 距页面底部的距离（像素或者百分比），option.center为false时生效          | string          | `"30px" `                       |
+| text-align-center      | 多行文案是否居中                                                        | boolean         | `true`                          |
 | bg-color               | 背景颜色（透明度）                                                      | string          | "rgba(0, 0, 0, 0.8)"          |
 | custom-class           | 自定义类名                                                              | string          | ""                            |
 | icon                   | 自定义图标，**直接传入Component 或者 h函数**                            | Component       | -                             |
-| size                   | 文案尺寸，**small**/**base**/**large**三选一                            | string          | "base"                        |
-| cover                  | 是否显示遮罩层，loading类型默认显示                                     | boolean         | loading类型true/其他类型false |
+| size                   | 文案尺寸，**small**/**base**/**large**三选一                            | string          | `"base"`                        |
+| cover                  | 是否显示遮罩层，loading类型默认显示                                     | boolean         | loading类型true/`其他类型false` |
 | cover-color            | 遮罩层颜色，默认透明                                                    | string          | "rgba(0,0,0,0)"               |
-| loading-rotate         | loading图标是否旋转，仅对loading类型生效                                | boolean         | true                          |
-| on-close               | 关闭时触发的事件                                                        | function        | null                          |
-| close-on-click-overlay | 是否在点击遮罩层后关闭提示                                              | boolean         | false                         |
-| toast-style            | 提示框style                                                             | object          | {}                            |
+| loading-rotate         | loading图标是否旋转，仅对loading类型生效                                | boolean         | `true`                          |
+| on-close               | 关闭时触发的事件                                                        | function        | `null`                          |
+| close-on-click-overlay | 是否在点击遮罩层后关闭提示                                              | boolean         | `false`                         |
+| toast-style            | 提示框style                                                             | object          | `{}`                            |
 | toast-class            | 提示框class                                                             | string          | ""                            |
 | type                   | 弹框类型 可选值（text、success、fail、warn、loading）                   | string          | ""                            |
 
@@ -92,7 +92,7 @@ export default {
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                            | 默认值               |
 |---------------------------------|----------------------|

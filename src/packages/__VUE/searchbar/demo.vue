@@ -29,8 +29,8 @@
 
     <h2>{{ translate('basic7') }}</h2>
     <nut-searchbar v-model="searchValue6">
-      <template v-slot:clearIcon>
-        <img :src="icon" style="width: 10px; height: 10px" />
+      <template v-slot:clear-icon>
+        <img :src="icon" style="width: 20px; height: 20px" />
       </template>
     </nut-searchbar>
 
@@ -62,7 +62,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      basic1: '基本用法',
+      basic1: '基础用法',
       basic2: '搜索事件监听',
       basic3: '显示搜索 icon',
       basic4: '右侧添加搜索文字',

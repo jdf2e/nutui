@@ -333,19 +333,19 @@ export default {
 
 | Attribute     | Description                                                                                                                         | Type             | Default    |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------|------------------|------------|
-| v-model       | Index of active tab                                                                                                                 | number \| string | 0          |
-| color         | Label selection color                                                                                                               | string           | #1a1a1a    |
-| background    | Tab bar background color                                                                                                            | string           | #f5f5f5    |
-| direction     | Use landscape orientation optional value `horizontal`、`vertical`                                                                   | string           | horizontal |
-| type          | Check the bottom display style optional value `line`、`smile`                                                                       | string           | line       |
-| title-scroll  | Is the tab bar scrollable                                                                                                           | boolean          | false      |
-| ellipsis      | Whether to omit too long title text                                                                                                 | boolean          | true       |
-| animated-time | Switch animation duration, unit ms 0 means no animation                                                                             | number \| string | 300        |
-| title-gutter  | Label gap                                                                                                                           | number \| string | 0          |
-| size          | Tab bar font size optional value  `large` `normal` `small`                                                                          | string           | normal     |
-| auto-height   | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | false      |
-| sticky        | Whether to use sticky mode                                                                                                          | boolean          | false      |
-| top           | Sticky offset top                                                                                                                   | number           | 0          |
+| v-model       | Index of active tab                                                                                                                 | number \| string | `0`          |
+| color         | Label selection color                                                                                                               | string           | `#1a1a1a`    |
+| background    | Tab bar background color                                                                                                            | string           | `#f5f5f5`    |
+| direction     | Use landscape orientation optional value `horizontal`、`vertical`                                                                   | string           | `horizontal` |
+| type          | Check the bottom display style optional value `line`、`smile`                                                                       | string           | `line`       |
+| title-scroll  | Is the tab bar scrollable                                                                                                           | boolean          | `false`      |
+| ellipsis      | Whether to omit too long title text                                                                                                 | boolean          | `true`       |
+| animated-time | Switch animation duration, unit ms 0 means no `animation`                                                                             | number \| string | `300`        |
+| title-gutter  | Label gap                                                                                                                           | number \| string | `0`          |
+| size          | Tab bar font size optional value  `large` `normal` `small`                                                                          | string           | `normal`     |
+| auto-height   | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | `false`      |
+| sticky        | Whether to use sticky mode                                                                                                          | boolean          | `false`      |
+| top           | Sticky offset top                                                                                                                   | number           | `0`          |
 
 ### Tabs Slots
 
@@ -380,7 +380,7 @@ export default {
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                                                | Default Value                                                                      |
 |-----------------------------------------------------|------------------------------------------------------------------------------------|

@@ -124,7 +124,15 @@ export default create({
     const confirm = () => {
       onSave(canvas.value);
     };
-
+    const isCanvasBlank = (canvas: any) => {
+      if (!canvas) {
+        return true;
+      }
+      var blank: any = document.createElement('canvas');
+      blank.width = canvas.width;
+      blank.height = canvas.height;
+      return canvas?.toDataURL() == blank.toDataURL();
+    };
     const onSave = (canvas: { toDataURL: (arg0: string, arg1?: number | undefined) => any }) => {
       let dataurl;
       switch (props.type) {
@@ -135,8 +143,11 @@ export default create({
           dataurl = canvas.toDataURL('image/jpeg', 0.8);
           break;
       }
+      const _canvas = isCanvasBlank(canvas) ? '请绘制签名' : canvas;
+      const _filePath = isCanvasBlank(canvas) ? '' : dataurl;
       clear();
-      emit('confirm', canvas, dataurl);
+      // emit('confirm', canvas, dataurl);
+      emit('confirm', _canvas, _filePath);
     };
 
     onMounted(() => {

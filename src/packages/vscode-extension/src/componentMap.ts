@@ -1,7 +1,7 @@
 import { ComponentDesc } from './componentDesc';
 
 export const componentMap: Record<string, ComponentDesc> = {
-  actionsheet: {
+  'action-sheet': {
     site: '/zh-CN/component/actionsheet',
     props: ["v-model:visible=''"]
   },
@@ -9,7 +9,7 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/address',
     props: ["v-model:visible=''"]
   },
-  addresslist: {
+  'address-list': {
     site: '/zh-CN/component/addresslist',
     props: ["data=''"]
   },
@@ -21,13 +21,17 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/audio',
     props: ["url=''"]
   },
-  audiooperate: {
+  'audio-operate': {
     site: '/zh-CN/component/audiooperate',
     props: ["type=''"]
   },
   avatar: {
     site: '/zh-CN/component/avatar',
     props: ["size=''"]
+  },
+  'avatar-group': {
+    site: '',
+    props: ['']
   },
   backtop: {
     site: '/zh-CN/component/backtop',
@@ -49,6 +53,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/calendar',
     props: ["v-model:visible=''"]
   },
+  'calendar-item': {
+    site: '',
+    props: ['']
+  },
   card: {
     site: '/zh-CN/component/card',
     props: ["img-url=''"]
@@ -61,27 +69,47 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/category',
     props: ["type=''"]
   },
+  'category-pane': {
+    site: '',
+    props: ['']
+  },
   cell: {
     site: '/zh-CN/component/cell',
     props: ["title=''"]
+  },
+  'cell-group': {
+    site: '',
+    props: ['']
   },
   checkbox: {
     site: '/zh-CN/component/checkbox',
     props: ["v-model=''"]
   },
-  circleprogress: {
+  'checkbox-group': {
+    site: '',
+    props: ['']
+  },
+  'circle-progress': {
     site: '/zh-CN/component/circleprogress',
     props: ["progress=''"]
+  },
+  col: {
+    site: '',
+    props: ['']
   },
   collapse: {
     site: '/zh-CN/component/collapse',
     props: ["v-model=''"]
   },
+  'collapse-item': {
+    site: '',
+    props: ['']
+  },
   comment: {
     site: '/zh-CN/component/comment',
-    props: ["headerType=''"]
+    props: ["header-type=''"]
   },
-  configprovider: {
+  'config-provider': {
     site: '/zh-CN/component/configprovider',
     props: ["theme=''"]
   },
@@ -93,7 +121,7 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/countup',
     props: ["init-num=''"]
   },
-  datepicker: {
+  'date-picker': {
     site: '/zh-CN/component/datepicker',
     props: ["v-model=''"]
   },
@@ -125,7 +153,7 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/empty',
     props: ["image=''"]
   },
-  fixednav: {
+  'fixed-nav': {
     site: '/zh-CN/component/fixednav',
     props: ["visible=''"]
   },
@@ -133,9 +161,17 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/form',
     props: ["model-value=''"]
   },
+  'form-item': {
+    site: '',
+    props: ['']
+  },
   grid: {
     site: '/zh-CN/component/grid',
     props: ["column-num=''"]
+  },
+  'grid-item': {
+    site: '',
+    props: ['']
   },
   icon: {
     site: '/zh-CN/component/icon',
@@ -145,7 +181,7 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/image',
     props: ["src=''"]
   },
-  imagepreview: {
+  'image-preview': {
     site: '/zh-CN/component/imagepreview',
     props: ["show=''"]
   },
@@ -153,15 +189,15 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/indicator',
     props: ["current=''"]
   },
-  infiniteloading: {
+  'infinite-loading': {
     site: '/zh-CN/component/infiniteloading',
-    props: ["has-more=''"]
+    props: ["v-model=''"]
   },
   input: {
     site: '/zh-CN/component/input',
     props: ["v-model=''"]
   },
-  inputnumber: {
+  'input-number': {
     site: '/zh-CN/component/inputnumber',
     props: ["v-model=''"]
   },
@@ -181,6 +217,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/menu',
     props: ["active-color=''"]
   },
+  'menu-item': {
+    site: '',
+    props: ['']
+  },
   navbar: {
     site: '/zh-CN/component/navbar',
     props: ["title=''"]
@@ -193,12 +233,8 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/notify',
     props: ["type=''"]
   },
-  numberkeyboard: {
+  'number-keyboard': {
     site: '/zh-CN/component/numberkeyboard',
-    props: ["v-model:visible=''"]
-  },
-  oldpicker: {
-    site: '/zh-CN/component/oldpicker',
     props: ["v-model:visible=''"]
   },
   overlay: {
@@ -229,13 +265,17 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/progress',
     props: ["percentage=''"]
   },
-  pullrefresh: {
+  'pull-refresh': {
     site: '/zh-CN/component/pullrefresh',
-    props: ["useWindow=''"]
+    props: ["v-model=''"]
   },
   radio: {
     site: '/zh-CN/component/radio',
     props: ["disabled=''"]
+  },
+  'radio-group': {
+    site: '',
+    props: ['']
   },
   range: {
     site: '/zh-CN/component/range',
@@ -245,17 +285,29 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/rate',
     props: ["v-model=''"]
   },
+  row: {
+    site: '',
+    props: ['']
+  },
+  '': {
+    site: '',
+    props: ['']
+  },
   searchbar: {
     site: '/zh-CN/component/searchbar',
     props: ["v-model=''"]
   },
-  shortpassword: {
+  'short-password': {
     site: '/zh-CN/component/shortpassword',
     props: ["v-model=''"]
   },
-  sidenavbar: {
+  'side-navbar': {
     site: '/zh-CN/component/sidenavbar',
     props: ["offset=''"]
+  },
+  'side-navbar-item': {
+    site: '',
+    props: ['']
   },
   signature: {
     site: '/zh-CN/component/signature',
@@ -269,6 +321,10 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/sku',
     props: ["v-model:visible=''"]
   },
+  step: {
+    site: '',
+    props: ['']
+  },
   steps: {
     site: '/zh-CN/component/steps',
     props: ["direction=''"]
@@ -276,6 +332,10 @@ export const componentMap: Record<string, ComponentDesc> = {
   sticky: {
     site: '/zh-CN/component/sticky',
     props: ["position=''"]
+  },
+  'sub-side-navbar': {
+    site: '',
+    props: ['']
   },
   swipe: {
     site: '/zh-CN/component/swipe',
@@ -285,7 +345,7 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/swiper',
     props: ["width=''"]
   },
-  swiperitem: {
+  'swiper-item': {
     site: '/zh-CN/component/swiperitem',
     props: ['']
   },
@@ -295,11 +355,19 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   tabbar: {
     site: '/zh-CN/component/tabbar',
-    props: ["v-model:visible=''"]
+    props: ["v-model=''"]
+  },
+  'tabbar-item': {
+    site: '',
+    props: ['']
   },
   table: {
     site: '/zh-CN/component/table',
     props: ["bordered=''"]
+  },
+  'tab-pane': {
+    site: '',
+    props: ['']
   },
   tabs: {
     site: '/zh-CN/component/tabs',
@@ -309,31 +377,31 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/tag',
     props: ["type=''"]
   },
-  temp: {
-    site: '/zh-CN/component/temp',
-    props: ["name=''"]
-  },
   textarea: {
     site: '/zh-CN/component/textarea',
     props: ["v-model=''"]
   },
-  timedetail: {
+  'time-detail': {
     site: '/zh-CN/component/timedetail',
     props: ["height=''"]
   },
-  timepannel: {
+  'time-pannel': {
     site: '/zh-CN/component/timepannel',
     props: ["height=''"]
   },
-  timeselect: {
+  'time-select': {
     site: '/zh-CN/component/timeselect',
     props: ["visible=''"]
   },
   toast: {
     site: '/zh-CN/component/toast',
-    props: ["Toast.text=''"]
+    props: ["showToast.text=''"]
   },
-  trendarrow: {
+  tour: {
+    site: '/zh-CN/component/tour',
+    props: ["visible=''"]
+  },
+  'trend-arrow': {
     site: '/zh-CN/component/trendarrow',
     props: ["rate=''"]
   },

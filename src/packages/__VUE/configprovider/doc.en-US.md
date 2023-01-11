@@ -11,7 +11,6 @@ import { ConfigProvider } from '@nutui/nutui';
 
 const app = createApp();
 app.use(ConfigProvider);
-
 ```
 
 ### dark mode
@@ -43,7 +42,7 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
         theme.value = v ? 'dark' : '';
       };
 
-      return { translate, switchChecked, switchChange, theme };
+      return { switchChecked, switchChange, theme };
     }
   };
 </script>
@@ -94,15 +93,15 @@ The ConfigProvider component provides the ability to override CSS variables. You
     </nut-config-provider>
 </template>
 <script lang="ts">
-  import { ref } from 'vue';
+  import { ref, reactive } from 'vue';
   export default {
     setup() {
       const range = ref(30);
-     const themeVars = {
+     const themeVars = reactive({
           primaryColor:'green',
           primaryColorEnd:'green',
           activeColor:'rgba(0,128,0,0.15)'
-      };
+      });
       // Of course, you can also choose to use component variables to replace. If both basic variables and component variables are set, the component variables will overwrite the basic variables
       //  const themeVars = {
       //   rangeBgColor: 'rgba(25,137,250,0.15)',
@@ -182,5 +181,5 @@ Here are all the base variables:
 | Attribute  | Description                                                          | Type   | Default |
 |------------|----------------------------------------------------------------------|--------|---------|
 | theme      | Theme style, set to `dark` to enable dark mode, take effect globally | string | -       |
-| theme-vars | Customized theme variable, partially effective                       | object | -       |
-| tag        | HTML Tag of root element                                             | string | div     |
+| theme-vars | Customized theme variable                     | object | -       |
+| tag        | HTML Tag of root element                                             | string | `div`     |

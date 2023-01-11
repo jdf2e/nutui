@@ -1,6 +1,7 @@
 <template>
-  <div class="demo">
-    <h2>基本用法</h2>
+  <div class="demo" :class="{ web: env === 'WEB' }">
+    <Header v-if="env === 'WEB'" />
+    <h2>基础用法</h2>
     <nut-cell @click="handleClick1">
       <span><label>请选择配送时间</label></span>
     </nut-cell>
@@ -69,8 +70,14 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, defineComponent } from 'vue';
+import Taro from '@tarojs/taro';
+import Header from '../../../components/header.vue';
 export default defineComponent({
+  components: {
+    Header
+  },
   setup() {
+    const env = Taro.getEnv();
     const state = reactive({
       visible1: false,
       currentKey1: 0,
@@ -195,7 +202,8 @@ export default defineComponent({
       handleSelected2,
       selectTime2,
       handleClick2,
-      handleClick3
+      handleClick3,
+      env
     };
   }
 });
