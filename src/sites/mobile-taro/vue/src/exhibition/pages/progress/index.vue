@@ -70,7 +70,7 @@
           stroke-width="15"
           status="icon"
         >
-          <template #iconName>
+          <template #icon-name>
             <Issue color="red" width="15px" height="15px"></Issue>
           </template>
         </nut-progress>
