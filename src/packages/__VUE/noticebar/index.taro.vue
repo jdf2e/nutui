@@ -138,7 +138,7 @@ export default create({
     },
     color: {
       type: String,
-      default: '#F9911B'
+      default: ''
     },
     background: {
       type: String,

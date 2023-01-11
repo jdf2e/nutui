@@ -46,10 +46,10 @@
     <view class="title">自定义图标</view>
     <nut-cell>
       <nut-trend-arrow :rate="10.2365">
-        <template #upIcon><Success color="blue" size="18px" /></template>
+        <template #up-icon><Success color="blue" size="18px" /></template>
       </nut-trend-arrow>
       <nut-trend-arrow :rate="-10.2365">
-        <template #downIcon><Failure color="red" /></template>
+        <template #down-icon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
   </div>

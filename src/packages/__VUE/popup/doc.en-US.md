@@ -79,7 +79,7 @@ Control the pop-up position by setting the value of `position`
 
 ### Icon
 
-The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `closeIcon` defines the display icon.
+The `closeable` controls whether the icon can be closed. The `close-icon-position` sets the position of the icon. The `close-icon` defines the display icon.
 
 :::demo
 
@@ -91,7 +91,7 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="custom icon" is-link @click="showCloseIcon = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
-    <template #closeIcon>
+    <template #close-icon>
       <Heart></Heart>
     </template>
   </nut-popup>
@@ -246,7 +246,7 @@ Specify the mount node through `teleport`
 | Name | Description       |
 | ------ | ---------- |
 | default  | Customize Embedded Content |
-| closeIcon  | Custom icon for close button |
+| close-icon  | Custom icon for close button |
 
 ## Theming
 

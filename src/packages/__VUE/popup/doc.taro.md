@@ -12,7 +12,6 @@ import { Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popup)
-
 ```
 
 
@@ -92,11 +91,17 @@ app.use(Popup)
   <nut-cell title="图标位置" is-link @click="showIconPosition = true" ></nut-cell>
   <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
   <nut-cell title="自定义图标" is-link @click="showCloseIcon = true" ></nut-cell>
-  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon"></nut-popup>
+  <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
+    <template #close-icon>
+      <Heart></Heart>
+    </template>
+  </nut-popup>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
+  import { Heart } from '@nutui/icons-vue-taro';
   export default {
+    components: { Heart },
     props: {},
     setup() {
       const state = reactive({
@@ -211,7 +216,7 @@ app.use(Popup)
 | 名称 | 说明       |
 | ------ | ---------- |
 | default  | 自定义内嵌内容 |
-
+| close-icon  | 关闭按钮的自定义图标 |
 
 ## 主题定制
 
