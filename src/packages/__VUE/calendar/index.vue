@@ -178,7 +178,6 @@ export default create({
       return slots.day;
     });
     const bottomInfo = computed(() => {
-      console.log(slots);
       return slots['bottom-info'];
     });
     // element refs
