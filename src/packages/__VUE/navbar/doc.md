@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Navbar, Tabs, TabPane } from '@nutui/nutui';
 
@@ -49,7 +48,7 @@ app.use(TabPane);
     :titleIcon="true"
     desc="编辑"
   >
-    <template #titleIcon>
+    <template #title-icon>
       <Cart2 width="16px"></Cart2>
     </template>
     <template #right>
@@ -218,8 +217,8 @@ export default {
 | left | 自定义左侧内容 |
 | right | 自定义右侧内容 |
 | content |  自定义导航栏中间内容 |
-| leftShow  | 左侧箭头自定义图标 |
-| titleIcon  | 标题中自定义图标 |
+| left-show  | 左侧箭头自定义图标 |
+| title-icon  | 标题中自定义图标 |
 
 ## 主题定制
 
