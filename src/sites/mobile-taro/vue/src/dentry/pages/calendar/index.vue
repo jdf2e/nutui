@@ -116,14 +116,12 @@
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
-        :start-date="null"
-        :end-date="null"
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
         <template v-slot:btn>
           <view class="wrapper">
-            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
+            <view class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></view>
             <view class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></view>
             <view class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></view>
           </view>
@@ -230,7 +228,7 @@ export default {
   setup() {
     const env = Taro.getEnv();
 
-    const calendarRef = ref(null);
+    const calendarRef = ref<any>(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
       date: '2022-02-01',
@@ -299,11 +297,11 @@ export default {
     const setChooseValue8 = (param: string) => {
       state.date8 = param[3];
     };
-    const clickBtn = (param: string) => {
+    const clickBtn = () => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
     };
-    const clickBtn1 = (param: string) => {
+    const clickBtn1 = () => {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
@@ -314,7 +312,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(Utils.date2Str(date1));
       }
     };
     return {
@@ -351,6 +351,7 @@ export default {
 .wrapper {
   display: flex;
   padding: 0 40px;
+  justify-content: center;
 }
 .d_div {
   margin: 0px 5px;

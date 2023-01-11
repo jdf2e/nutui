@@ -390,7 +390,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(date2Str(date1));
       }
     };
     return {
@@ -421,7 +423,6 @@ export default {
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
-    height: 16px;
   }
 }
 

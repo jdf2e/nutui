@@ -115,8 +115,6 @@
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
-        :start-date="`2021-12-22`"
-        :end-date="`2022-12-31`"
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
@@ -373,7 +371,9 @@ export default createDemo({
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(Utils.date2Str(date1));
       }
     };
     const renderDate = (date: { date: Day }) => {
@@ -414,6 +414,7 @@ export default createDemo({
 .wrapper {
   display: flex;
   padding: 0 40px;
+  justify-content: center;
 }
 .d_div {
   margin: 0px 5px;

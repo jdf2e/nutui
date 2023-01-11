@@ -298,8 +298,6 @@ export default {
     v-model:visible="isVisible"
     :default-value="date"
     type="range"
-    :start-date="null"
-    :end-date="null"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
@@ -381,11 +379,11 @@ export default {
      const setChooseValue = param => {
       state.date= param[3];
     };
-    const clickBtn = (param: string) => {
+    const clickBtn = () => {
       let date = [date2Str(new Date()), getDay(6)];
       state.date = date;
     };
-    const clickBtn1 = (param: string) => {
+    const clickBtn1 = () => {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
@@ -396,7 +394,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(Utils.date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(date2Str(date1));
       }
     };
     return {
@@ -416,6 +416,7 @@ export default {
 .wrapper {
   display: flex;
   padding: 0 40px;
+  justify-content: center;
 }
 .d_div {
   margin: 0px 5px;
@@ -426,7 +427,6 @@ export default {
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
-    height: 16px;
   }
 }
 
