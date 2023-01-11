@@ -5,7 +5,7 @@
       :class="{ 'nut-input-number__icon--disabled': !reduceAllow() }"
       @click="reduce"
     >
-      <slot name="leftIcon">
+      <slot name="left-icon">
         <Minus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
@@ -31,7 +31,7 @@
       :class="{ 'nut-input-number__icon--disabled': !addAllow() }"
       @click="add"
     >
-      <slot name="rightIcon">
+      <slot name="right-icon">
         <Plus :size="pxCheck(buttonSize)" />
       </slot>
     </view>
@@ -52,11 +52,11 @@ export default create({
     },
     inputWidth: {
       type: [Number, String],
-      default: '40px'
+      default: ''
     },
     buttonSize: {
       type: [Number, String],
-      default: '20px'
+      default: ''
     },
     min: {
       type: [Number, String],
