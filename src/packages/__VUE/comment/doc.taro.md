@@ -32,7 +32,7 @@ app.use(Comment);
   >
     <template #comment-labels>
       <img
-        class="nut-comment-header__labels--item"
+        style="height:15px;width:50px"
         src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
       />
     </template>

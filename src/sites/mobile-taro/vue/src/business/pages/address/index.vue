@@ -72,7 +72,19 @@
       :default-icon="defaultIcon"
       :selected-icon="selectedIcon"
       :close-btn-icon="closeBtnIcon"
-    ></nut-address>
+    >
+      <template #unselectedIcon>
+        <Heart1 style="margin-right: 8px"></Heart1>
+      </template>
+      <template #icon>
+        <HeartFill style="margin-right: 8px" color="#f00"></HeartFill>
+      </template>
+      <template #bottom>
+        <div class="nut-address-custom-buttom">
+          <div class="btn">自定义按钮</div>
+        </div>
+      </template>
+    </nut-address>
 
     <h2>自定义地址与已有地址切换</h2>
     <nut-cell title="选择地址" :desc="four" is-link @click="showAddressOther"></nut-cell>
@@ -99,6 +111,7 @@
 import { reactive, ref, toRefs, defineComponent } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
+import { HeartFill, Heart1, Close } from '@nutui/icons-vue-taro';
 interface CalBack {
   next: string;
   value: string;
@@ -130,7 +143,7 @@ interface AddressResult extends AddressList {
   town: RegionData[];
 }
 export default defineComponent({
-  components: { Header },
+  components: { Header, HeartFill, Heart1, Close },
   setup() {
     const env = Taro.getEnv();
     const address = reactive({
@@ -352,6 +365,24 @@ export default defineComponent({
 
     .nut-cell__value {
       margin-right: 8px;
+    }
+  }
+
+  .nut-address-custom-buttom {
+    width: 100%;
+    height: 54px;
+    padding: 6px 0px 0;
+    border-top: 1px solid #f2f2f2;
+    .btn {
+      width: 90%;
+      height: 42px;
+      line-height: 42px;
+      margin: auto;
+      text-align: center;
+      background: $button-primary-background-color;
+      border-radius: 21px;
+      font-size: 15px;
+      color: $white;
     }
   }
 }

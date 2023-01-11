@@ -157,7 +157,6 @@ export default createDemo({
   padding-bottom: 30px !important;
 
   .interstroll-list {
-    padding: 0 10px;
     background: rgba(251, 248, 220, 1);
     color: #d9500b;
   }
