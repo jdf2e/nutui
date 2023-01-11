@@ -164,7 +164,7 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.customized" location="top-start" custom-class="customClass">
+  <nut-popover v-model:visible="visible.customized" location="bottom-start" custom-class="customClass">
      <template #reference>
        <nut-button type="primary" shape="square">自定义内容</nut-button>
      </template>
@@ -481,7 +481,7 @@ export default {
 | visible      | 是否展示气泡弹出层                 | boolean  | `false`     |
 | theme          | 主题风格，可选值为 `dark`            | string   | `light`   |
 | location       | 弹出位置  | string   | `bottom`  |
-| offset        | 出现位置的偏移量  | number \| string   | `[0, 12]`  |
+| offset        | 出现位置的偏移量  | [number,number]   | `[0, 12]`  |
 | show-arrow        | 是否显示小箭头  | boolean  | `true`  |
 | custom-class        | 自定义 class 值  | string  | `''`  |
 | duration        | 动画时长，单位秒  |  number \| string  | `0.3`  |

@@ -108,9 +108,8 @@
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="50"
+      maskWidth="60"
       maskHeight="50"
-      :showTitleBar="false"
     ></nut-tour>
   </div>
 </template>

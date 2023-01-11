@@ -50,7 +50,11 @@ export default {
     }
 }
 </script>
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -96,7 +100,11 @@ export default {
     }
 }
 </script>
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 ```
 :::
 
@@ -140,7 +148,7 @@ export default {
       showTour2: false,
       steps2: [
         {
-          content: '这里换成关注和粉丝啦，听歌时长点击头像可见',
+          content: '支持一套代码同时开发多端小程序+H5',
           target: 'target6',
           popoverOffset: [40, 12],
           arrowOffset: -36
@@ -152,7 +160,11 @@ export default {
 }
 </script>
 
-
+<style>
+  .nut-tour-content-inner{
+    white-space: nowrap
+  }
+</style>
 
 ```
 :::
@@ -239,7 +251,7 @@ export default {
     :steps="steps"
     location="top-start"
     :offset="[0, 0]"
-    maskWidth="50"
+    maskWidth="60"
     maskHeight="50"
   ></nut-tour>
 </template>
@@ -276,6 +288,14 @@ export default {
 };
 </script>
 
+<style>
+  #app{
+    padding-top:200px
+  }
+  .nut-tabbar-item_icon-box_nav-word{
+  font-size: 14px;
+}
+</style>
 ```
 :::
 
@@ -309,7 +329,7 @@ export default {
 | Attribute | Description | Type | Default |
 |----------------|----------------------|----------|--------|
 | target           | target dom               | Element   | -      |
-| content           | popover content     | String   | ''     |
+| content           | popover content     | string   | ''     |
 | location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover)           | string  | `'bottom'`  |
 | popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)     | [number, number]   | `[0, 12]`  | 
 | arrow-offset      | Offset of arrow [arrowOffset](https://nutui.jd.com/#/zh-CN/component/popover)           | number  | `0`  | 

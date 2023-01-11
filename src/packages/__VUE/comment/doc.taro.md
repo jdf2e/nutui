@@ -40,7 +40,7 @@ app.use(Comment);
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -104,7 +104,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -146,7 +146,7 @@ export default {
 </template>
 <script lang="ts">
 import { reactive, ref,onMounted } from 'vue';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 export default {
   setup() {
     let cmt = ref({});
@@ -250,6 +250,7 @@ const follow = {
   "content": "", // 追评内容
   "images": [] // 追评图片
 }
+```
 
 ## 主题定制
 

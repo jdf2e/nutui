@@ -16,10 +16,12 @@
   }
 
   &-content {
+    display: block;
     padding: 10px 12px;
     min-width: 200px;
 
     &-top {
+      display: block;
       text-align: right;
 
       &-close {
@@ -30,6 +32,7 @@
 
     &-inner {
       margin: 10px 0px;
+      font-size: 14px;
     }
 
     &-bottom {
