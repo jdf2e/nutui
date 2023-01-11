@@ -197,7 +197,7 @@ app.use(Progress);
 ### Slots
 | Name  | Description     | 
 |-------|----------|
-| iconName | Right icon content |
+| icon-name | Right icon content |
 
 ## Theming
 
