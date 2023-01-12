@@ -51,14 +51,19 @@
     .nut-searchbar__input-inner {
       display: flex;
       position: relative;
-      width: 100%;
+      // width: 100%;
+      flex: 1;
+      align-items: center;
+      overflow: hidden;
       > taro-form-core {
         width: 100%;
       }
       form {
-        display: flex;
-        align-items: center;
-        width: 100%;
+        // display: flex;
+        // align-items: center;
+        // width: 100%;
+        flex: 1;
+        overflow: hidden;
       }
       input {
         width: 100%;
@@ -66,21 +71,32 @@
         min-width: 214px;
         padding-left: 4px;
       }
-      .nut-searchbar__input-clear {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 13px;
-        & .nut-searchbar__nut-icon-mask-close {
-          color: rgb(204, 204, 204);
-          &:hover {
-            cursor: pointer;
-            color: rgb(104, 104, 104);
-          }
+    }
+
+    .nut-searchbar__input-inner-icon {
+      display: flex;
+      align-items: center;
+      position: relative;
+      // overflow: hidden;
+      padding: 0 7px;
+    }
+    .nut-searchbar__input-clear {
+      position: relative;
+      z-index: 10;
+      padding: 0 5px;
+      & .nut-searchbar__nut-icon-mask-close {
+        color: rgb(204, 204, 204);
+        &:hover {
+          cursor: pointer;
+          color: rgb(104, 104, 104);
         }
       }
-      .nut-searchbar__input-bar_clear {
-        padding-right: 10px;
+    }
+    .nut-searchbar__input-inner-icon-absolute {
+      .nut-searchbar__input-clear {
+        position: absolute;
+        z-index: 10;
+        left: -20px;
       }
     }
 
@@ -90,8 +106,8 @@
       height: 14px;
     }
 
-    .nut-searchbar__iptright-sarch-icon {
-      margin-right: 12px;
+    .nut-searchbar__iptright-search-icon {
+      margin-left: 5px;
     }
 
     .nut-searchbar__input-bar {
@@ -105,6 +121,13 @@
       border-radius: 16px;
       outline: none;
       font-size: 14px;
+    }
+
+    .nut-searchbar__input-inner-absolute {
+      .nut-searchbar__input-bar {
+        box-sizing: border-box;
+        padding-right: 20px;
+      }
     }
   }
 
