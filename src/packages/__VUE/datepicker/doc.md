@@ -43,8 +43,8 @@ app.use(OverLay);
     setup(props) {
       const show = ref(false);
       const desc = ref('2022年05月10日');
-      const minDate = new Date(2020, 0, 1),
-      const maxDate = new Date(2025, 10, 1),
+      const minDate = new Date(2020, 0, 1);
+      const maxDate = new Date(2025, 10, 1);
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
         desc.value = selectedOptions.map((option) => option.text).join('');
