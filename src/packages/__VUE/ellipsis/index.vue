@@ -77,9 +77,6 @@ export default create({
       () => props.content,
       (newV, oldVal) => {
         if (newV != oldVal) {
-          if (container) {
-            document.body.appendChild(container);
-          }
           createContainer();
         }
       }
