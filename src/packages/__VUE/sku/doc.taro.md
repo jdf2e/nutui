@@ -580,7 +580,7 @@ sku : [{
 | --nut-sku-item-border|  _1px solid var(--nut-primary-color)_  |
 | --nut-sku-item-disable-line|  _line-through_  |
 | --nut-sku-opetate-bg-default|  _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_  |
-| --nut-sku-item-active-bg|  _var(--nut-active-color)_  |
+| --nut-sku-item-active-bg|  _var(--nut-primary-color)_  |
 | --nut-sku-opetate-bg-buy|  _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_  |
 | --nut-sku-spec-height|  _30px_  |
 | --nut-sku-spec-line-height|  _var(--nut-sku-spec-height)_  |

@@ -249,7 +249,7 @@ The component provides the following CSS variables, which can be used to customi
 |  --nut-radio-label-disable-color|  _#999_  |
 |  --nut-radio-icon-disable-color|  _#d6d6d6_  |
 |  --nut-radio-label-button-border-color|  _var(--nut-primary-color)_  |
-|  --nut-radio-label-button-background|  _var(--nut-active-color)_  |
+|  --nut-radio-label-button-background|  _var(--nut-primary-color)_  |
 |  --nut-radio-label-margin-left|  _15px_  |
 |  --nut-radio-button-border-radius|  _15px_  |
 |  --nut-radio-label-font-size|  _14px_  |

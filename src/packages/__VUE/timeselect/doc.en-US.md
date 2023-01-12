@@ -396,7 +396,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-timeselect-timedetail-item-border-radius| _5px_ |
 | --nut-timeselect-timedetail-item-text-color| _#333333_ |
 | --nut-timeselect-timedetail-item-text-font-size| _var(--nut-font-size-2)_ |
-| --nut-timeselect-timedetail-item-cur-bg-color| _var(--nut-active-color)_ |
+| --nut-timeselect-timedetail-item-cur-bg-color| _var(--nut-primary-color)_ |
 | --nut-timeselect-timedetail-item-cur-border| _var(--nut-primary-color)_ |
 | --nut-timeselect-timedetail-item-cur-text-color| _var(--nut-primary-color)_ |
 
