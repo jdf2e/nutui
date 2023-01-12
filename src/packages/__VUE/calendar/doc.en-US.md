@@ -298,19 +298,17 @@ export default {
     v-model:visible="isVisible"
     :default-value="date"
     type="range"
-    :start-date="`2021-12-22`"
-    :end-date="`2022-12-31`"
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
-    <template v-slot:btn>
+    <template #btn>
       <div class="wrapper">
         <div class="d_div"> <span class="d_btn" @click="goDate">Go Date</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn">Last Seven Days</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn1">This Month</span></div>
       </div>
     </template>
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day }}</span>
     </template>
   </nut-calendar>
@@ -375,11 +373,11 @@ export default {
      const setChooseValue = param => {
       state.date= param[3];
     };
-    const clickBtn = (param: string) => {
+    const clickBtn = () => {
       let date = [date2Str(new Date()), getDay(6)];
       state.date5 = date;
     };
-    const clickBtn1 = (param: string) => {
+    const clickBtn1 = () => {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
@@ -390,7 +388,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate('2022-04-01');
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(date2Str(date1));
       }
     };
     return {
@@ -420,7 +420,6 @@ export default {
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
-    height: 16px;
   }
 }
 
@@ -452,10 +451,10 @@ export default {
     end-text="Leave"
     title="Select Date"
   >
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
-    <template v-slot:bottomInfo="date">
+    <template #bottom-info="date">
       <span class="info" >{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
@@ -625,8 +624,8 @@ export default {
 |---------|--------------|
 | btn | 	Below the custom calendar header, you can add custom actions |
 | day | 	Date information |
-| topInfo | 	Date top information |
-| bottomInfo | 	Date bottom information |
+| top-info | 	Date top information |
+| bottom-info | 	Date bottom information |
 
 ### Methods
 

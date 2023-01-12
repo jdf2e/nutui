@@ -98,7 +98,8 @@ test('should render slot correctly', async () => {
       day: (date) => {
         return `custom${date.date.day}`;
       },
-      bottomInfo: (date) => `${date.date ? (date.date.day <= 10 ? '上旬' : date.date.day <= 20 ? '中旬' : '下旬') : ''}`
+      'bottom-info': (date) =>
+        `${date.date ? (date.date.day <= 10 ? '上旬' : date.date.day <= 20 ? '中旬' : '下旬') : ''}`
     }
   });
   await nextTick();
