@@ -644,7 +644,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- | 
 | --nut-calendar-primary-color| _var(--nut-primary-color)_   |
-| --nut-calendar-choose-color| _var(--nut-active-color)_   |
+| --nut-calendar-choose-color| _var(--nut-primary-color)_   |
 | --nut-calendar-choose-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-base-color| _#333333_   |
 | --nut-calendar-disable-color| _#d1d0d0_   |

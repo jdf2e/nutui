@@ -182,7 +182,7 @@ export default {
 <template>
   <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
-      <Left @click="clickLeft" />
+      <Left />
     </template>
     <template v-slot:leftin>
       <Search2 />

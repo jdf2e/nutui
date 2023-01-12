@@ -7,8 +7,8 @@
       <view v-if="$slots.leftin" class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon">
         <slot name="leftin"></slot>
       </view>
-      <view class="nut-searchbar__input-inner">
-        <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
+      <view :class="['nut-searchbar__input-inner', $slots.rightin && 'nut-searchbar__input-inner-absolute']">
+        <form class="nut-searchbar__input-form" action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
             ref="inputsearch"
             :class="['nut-searchbar__input-bar', clearable && 'nut-searchbar__input-bar_clear']"
@@ -27,9 +27,11 @@
             :style="styleSearchbar"
           />
         </form>
+      </view>
+      <view :class="['nut-searchbar__input-inner-icon', $slots.rightin && 'nut-searchbar__input-inner-icon-absolute']">
         <view
           @click="handleClear"
-          class="nut-searchbar__input-clear"
+          class="nut-searchbar__search-icon nut-searchbar__input-clear"
           v-if="clearable"
           v-show="String(modelValue).length > 0"
         >
@@ -38,9 +40,9 @@
           </template>
           <component :is="renderIcon(clearIcon)" v-else></component>
         </view>
-      </view>
-      <view v-if="$slots.rightin" class="nut-searchbar__search-icon nut-searchbar__iptright-sarch-icon">
-        <slot name="rightin"></slot>
+        <view v-if="$slots.rightin" class="nut-searchbar__search-icon nut-searchbar__iptright-search-icon">
+          <slot name="rightin"></slot>
+        </view>
       </view>
     </view>
     <view v-if="$slots.rightout" class="nut-searchbar__search-icon nut-searchbar__right-search-icon">
@@ -51,6 +53,7 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
+import Taro from '@tarojs/taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
 import { TextAlign } from './type';
