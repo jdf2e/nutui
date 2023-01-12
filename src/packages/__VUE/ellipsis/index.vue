@@ -125,6 +125,7 @@ export default create({
     const calcEllipse = () => {
       if (container.offsetHeight <= maxHeight) {
         state.exceeded = false;
+        document.body.removeChild(container);
       } else {
         state.exceeded = true;
         const end = props.content.length;
