@@ -10,7 +10,7 @@ import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/4x/',
+  base: '/h5/vue/4x/',
   server: {
     port: 2023,
     host: '0.0.0.0',
@@ -88,7 +88,7 @@ export default defineConfig({
   ],
   build: {
     target: 'es2015',
-    outDir: './dist/4x/',
+    outDir: './dist/h5/vue/4x/',
     // assetsDir: config.version,
     cssCodeSplit: false,
     cssTarget: ['chrome61'],
