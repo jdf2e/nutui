@@ -303,14 +303,14 @@ export default {
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
   >
-    <template v-slot:btn>
+    <template #btn>
       <div class="wrapper">
         <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
         <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
       </div>
     </template>
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day }}</span>
     </template>
   </nut-calendar>
@@ -390,7 +390,9 @@ export default {
     };
     const goDate = () => {
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate(date2Str(new Date()));
+        var date1 = new Date();
+        date1.setDate(date1.getDate() + 30);
+        calendarRef.value.scrollToDate(date2Str(date1));
       }
     };
     return {
@@ -421,7 +423,6 @@ export default {
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
-    height: 16px;
   }
 }
 
@@ -453,11 +454,11 @@ export default {
     end-text="离店"
     title="日期选择"
   >
-    <template v-slot:day="date">
+    <template #day="date">
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
-    <template v-slot:bottomInfo="date">
-      <span class="info" style="fontSize:12px;lineHeight:14px">{{
+    <template #bottom-info="date">
+      <span class="info">{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
     </template>
@@ -628,8 +629,8 @@ export default {
 |---------|--------------|
 | btn | 	自定义日历标题下部，可用以添加自定义操作 |
 | day | 	日期信息 |
-| topInfo | 	日期顶部信息 |
-| bottomInfo | 	日期底部信息 |
+| top-info | 	日期顶部信息 |
+| bottom-info | 	日期底部信息 |
 
 ### Methods
 
@@ -649,7 +650,7 @@ export default {
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 
 | --nut-calendar-primary-color| _var(--nut-primary-color)_   |
-| --nut-calendar-choose-color| _var(--nut-active-color)_   |
+| --nut-calendar-choose-color| _var(--nut-primary-color)_   |
 | --nut-calendar-choose-font-color| _var(--nut-primary-color)_   |
 | --nut-calendar-base-color| _#333333_   |
 | --nut-calendar-disable-color| _#d1d0d0_   |
