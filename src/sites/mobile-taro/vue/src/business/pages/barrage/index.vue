@@ -2,7 +2,7 @@
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-cell>
+    <nut-cell class="danmu-box">
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nut-cell,
+.danmu-box,
 .nut-barrage {
   padding: 20px 0;
   height: 150px;

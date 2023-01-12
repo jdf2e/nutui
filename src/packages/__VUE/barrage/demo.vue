@@ -1,14 +1,14 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-cell>
+    <nut-cell class="danmu-box">
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
       <nut-button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</nut-button>
     </div>
     <h2>{{ translate('slotTitle') }}</h2>
-    <nut-cell>
+    <nut-cell class="danmu-box">
       <nut-barrage>
         <span>aaa</span>
         <span>bbb</span>
@@ -60,7 +60,7 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
-.nut-cell,
+.danmu-box,
 .nut-barrage {
   padding: 20px 0;
   height: 150px;
