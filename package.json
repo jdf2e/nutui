@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -48,8 +48,8 @@
     "build:site": "npm run checked && vite build",
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
-    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
+    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs && node jd/generate-entry-es.js && node jd/copy-dist.js nutui",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs && node jd/copy-dist.js nutui-taro",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
