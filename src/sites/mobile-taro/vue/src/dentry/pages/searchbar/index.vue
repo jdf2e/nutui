@@ -37,7 +37,7 @@
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">
       <template v-slot:leftout>
-        <Left @click="clickLeft" />
+        <Left />
       </template>
       <template v-slot:leftin>
         <Search2 />
