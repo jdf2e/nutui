@@ -45,10 +45,10 @@
     <view class="title">{{ translate('title7') }}</view>
     <nut-cell>
       <nut-trend-arrow :rate="10.2365">
-        <template #upIcon><Success color="blue" width="18" height="18" /></template>
+        <template #up-icon><Success color="blue" width="18" height="18" /></template>
       </nut-trend-arrow>
       <nut-trend-arrow :rate="-10.2365">
-        <template #downIcon><Failure color="red" /></template>
+        <template #down-icon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
   </div>

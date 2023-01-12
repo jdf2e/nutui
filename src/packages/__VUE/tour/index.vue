@@ -35,7 +35,7 @@
                 <div class="nut-tour-content-bottom">
                   <div class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</div>
                   <div class="nut-tour-content-bottom-operate">
-                    <slot name="prevStep">
+                    <slot name="prev-step">
                       <div
                         class="nut-tour-content-bottom-operate-btn"
                         @click="changeStep('prev')"
@@ -50,7 +50,7 @@
                       v-if="steps.length - 1 == active"
                       >{{ completeTxt }}</div
                     >
-                    <slot name="nextStep">
+                    <slot name="next-step">
                       <div
                         class="nut-tour-content-bottom-operate-btn active"
                         @click="changeStep('next')"

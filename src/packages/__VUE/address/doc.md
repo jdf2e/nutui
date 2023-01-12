@@ -325,7 +325,7 @@ app.use(Address);
       :is-show-custom-address="false"
       @selected="selected3"
   >
-    <template #unselectedIcon>
+    <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
     </template>
     <template #icon>
@@ -615,9 +615,9 @@ app.use(Address);
 |----- | ----- |  
 | bottom | 可自定义底部 |  
 | icon | 自定义选中项的图标 |  
-| unselectedIcon | 未选中地址时的图标 |  
-| closeIcon | 关闭弹层的图标 |  
-| backIcon | 自定义地址与已有地址切换时返回的图标 | 
+| unselected-icon | 未选中地址时的图标 |  
+| close-icon | 关闭弹层的图标 |  
+| back-icon | 自定义地址与已有地址切换时返回的图标 | 
 
 
 ## 主题定制
@@ -628,7 +628,7 @@ app.use(Address);
 
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 
-|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| 
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_| 
 |  --nut-address-icon-color| _var(--nut-primary-color)_     | 
 |  --nut-address-header-title-font-size   | _18px_          | 
 |  --nut-address-header-title-color| _#262626_    | 

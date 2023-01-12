@@ -12,7 +12,7 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="nut-address__header-back" @click="switchModule">
-          <slot name="backIcon">
+          <slot name="back-icon">
             <Left v-show="type == 'exist' && privateType == 'custom'"></Left>
           </slot>
         </view>
@@ -26,7 +26,7 @@
         </view>
 
         <view class="nut-address__header-close" @click="handClose('cross')">
-          <slot name="closeIcon">
+          <slot name="close-icon">
             <Close color="#cccccc" size="18px"></Close>
           </slot>
         </view>
@@ -86,7 +86,7 @@
               :key="index"
               @click="selectedExist(item)"
             >
-              <slot name="unselectedIcon" v-if="!item.selectedAddress">
+              <slot name="unselected-icon" v-if="!item.selectedAddress">
                 <Location2 class="nut-address-select-icon" width="13px"></Location2>
               </slot>
 

@@ -34,7 +34,7 @@
               <view class="nut-tour-content-bottom">
                 <view class="nut-tour-content-bottom-init">{{ active + 1 }}/{{ steps.length }}</view>
                 <view class="nut-tour-content-bottom-operate">
-                  <slot name="prevStep">
+                  <slot name="prev-step">
                     <view
                       class="nut-tour-content-bottom-operate-btn"
                       @click="changeStep('prev')"
@@ -49,7 +49,7 @@
                     >{{ completeTxt }}</view
                   >
 
-                  <slot name="nextStep">
+                  <slot name="next-step">
                     <view
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="changeStep('next')"
@@ -83,12 +83,13 @@ import Taro from '@tarojs/taro';
 import Popover from '../popover/index.taro.vue';
 
 interface StepOptions {
-  target: Element;
-  content: String;
-  location?: PopoverLocation;
+  target: Element | string;
+  content: string;
+  location?: string;
   popoverOffset?: number[];
   arrowOffset?: number;
 }
+
 const { create } = createComponent('tour');
 export default create({
   components: {

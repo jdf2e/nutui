@@ -38,7 +38,7 @@
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
       </template>
       <template v-else-if="status == 'icon'">
-        <slot name="iconName">
+        <slot name="icon-name">
           <Checked width="15px" height="15px" color="#439422"></Checked>
         </slot>
       </template>

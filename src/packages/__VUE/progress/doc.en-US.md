@@ -126,7 +126,7 @@ app.use(Progress);
           stroke-width="15"
           status="icon"
         >
-          <template #iconName>
+          <template #icon-name>
             <Issue color="red" width="15px" height="15px"></Issue>
           </template>
         </nut-progress>
@@ -197,7 +197,7 @@ app.use(Progress);
 ### Slots
 | Name  | Description     | 
 |-------|----------|
-| iconName | Right icon content |
+| icon-name | Right icon content |
 
 ## Theming
 

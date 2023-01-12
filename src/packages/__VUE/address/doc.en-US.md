@@ -323,7 +323,7 @@ If you want to select a province, you need to set the region ID in the order of 
       :is-show-custom-address="false"
       @selected="selected3"
   >
-    <template #unselectedIcon>
+    <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
     </template>
     <template #icon>
@@ -589,9 +589,9 @@ If you want to select a province, you need to set the region ID in the order of 
 |----- | ----- |  
 | bottom | Bottom slot |  
 | icon | Selected icon slot |  
-| unselectedIcon | Unselected icon slot |  
-| closeIcon | Close icon slot |  
-| backIcon | Change icon slot |  
+| unselected-icon | Unselected icon slot |  
+| close-icon | Close icon slot |  
+| back-icon | Change icon slot |  
     
 ## Theming
 
@@ -601,7 +601,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- |
-|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| 
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_| 
 |  --nut-address-icon-color| _var(--nut-primary-color)_     | 
 |  --nut-address-header-title-font-size   | _18px_          | 
 |  --nut-address-header-title-color| _#262626_    | 

@@ -76,6 +76,7 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
+  import { h, ref } from 'vue';
   import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
   export default{
     components: {Home,Category,Find,Cart, My },
@@ -177,6 +178,7 @@ app.use(TabbarItem);
   </nut-tabbar>
 </template>
 <script>
+  import { h, ref } from 'vue';
  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
  export default{
     components: {Home,Category,Find,Cart, My },
@@ -272,6 +274,7 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
+  import { h, ref } from 'vue';
  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
  export default{
     components: {Home,Category,Find,Cart, My },
@@ -356,6 +359,7 @@ app.use(TabbarItem);
     </nut-tabbar>
 </template>
 <script>
+  import { h } from 'vue';
  import { Home,Category,Find,Cart,My} from '@nutui/icons-vue';
  export default{
     components: {Home,Category,Find,Cart, My },

@@ -216,7 +216,7 @@ export default {
               { value: value3, text: value3, leaf: level >= 6 }
             ]);
           }
-        }, 3000);
+        }, 2000);
       }
     });
     const events = {
@@ -373,7 +373,7 @@ export default {
 | convert-config      | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | object   | -           |
 | title               | Title                                                                                                        | string   | `''`          |
 | close-icon-position | Cancel the button position and inherit the popup component                                                   | string   | `"top-right"` |
-| closeable           | Whether to display the close button and inherit the popup component                                          | boolean  | `true`        |
+| closeable           | Whether to display the close button and inherit the popup component                                          | boolean  | `false`        |
 | poppable            | Whether to display the popup（After setting to false, the title is invalid）                                 | boolean  | `true`        |
 
 ### Events

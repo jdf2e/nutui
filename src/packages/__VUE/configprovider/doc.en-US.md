@@ -63,7 +63,6 @@ Default values ​​for these variables are defined on the `:root` node, and al
     --nut-primary-color: #fa2c19;
     --nut-primary-color-end: #fa6419;
     --nut-help-color: #f5f5f5;
-    --nut-active-color: rgba(250, 44, 25, 0.15);
 }
 ```
 
@@ -132,7 +131,6 @@ Here are all the base variables:
   --nut-primary-color: #fa2c19;
   --nut-primary-color-end: #fa6419;
   --nut-help-color: #f5f5f5;
-  --nut-active-color: rgba(250, 44, 25, 0.15);
   --nut-title-color: #1a1a1a;
   --nut-title-color2: #666666;
   --nut-text-color: #808080;

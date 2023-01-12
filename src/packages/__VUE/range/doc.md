@@ -443,7 +443,7 @@ export default {
 | 名称                                    | 默认值                     | 
 | --------------------------------------- | -------------------------- | 
 |  --nut-range-tip-font-color| _#333333_  | 
-|  --nut-range-bg-color| _var(--nut-active-color)_  | 
+|  --nut-range-bg-color| _var(--nut-primary-color)_  | 
 |  --nut-range-bg-color-tick| _#fa958c_  | 
 |  --nut-range-bar-bg-color| _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_  | 
 |  --nut-range-bar-btn-bg-color| _var(--nut-white)_  | 

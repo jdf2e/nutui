@@ -34,7 +34,7 @@
       :style="{ height: '20%' }"
       v-model:visible="showCloseIcon"
     >
-      <template #closeIcon>
+      <template #close-icon>
         <Heart></Heart>
       </template>
     </nut-popup>

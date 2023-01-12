@@ -114,7 +114,7 @@ app.use(Progress);
           stroke-width="15"
           status="icon"
         >
-          <template #iconName>
+          <template #icon-name>
             <Issue color="red" width="15px" height="15px"></Issue>
           </template>
         </nut-progress>
@@ -191,7 +191,7 @@ app.use(Progress);
 ### Slots
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| iconName | 右侧icon内容 |  |
+| icon-name | 右侧icon内容 |  |
 
 ## 主题定制
 

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-taro",
-  "version": "4.0.0-beta.24",
+  "version": "4.0.0-beta.26",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -49,7 +49,7 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue-taro": "^0.0.8",
+    "@nutui/icons-vue-taro": "^0.0.9",
     "sass": "^1.50.0"
   },
   "devDependencies": {},
