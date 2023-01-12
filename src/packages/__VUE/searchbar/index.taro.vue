@@ -8,7 +8,7 @@
         <slot name="leftin"></slot>
       </view>
       <view :class="['nut-searchbar__input-inner', $slots.rightin && 'nut-searchbar__input-inner-absolute']">
-        <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
+        <form class="nut-searchbar__input-form" action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
             ref="inputsearch"
             :class="['nut-searchbar__input-bar', clearable && 'nut-searchbar__input-bar_clear']"
