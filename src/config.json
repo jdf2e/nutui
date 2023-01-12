@@ -774,7 +774,7 @@
         {
           "version": "3.0.0",
           "name": "PullRefresh",
-          "taro": true,
+          "taro": false,
           "tarodoc": true,
           "type": "component",
           "cName": "下拉刷新",
