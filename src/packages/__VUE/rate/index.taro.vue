@@ -47,7 +47,7 @@ export default create({
     },
     spacing: {
       type: [String, Number],
-      default: 14
+      default: undefined
     }
   },
   components: { StarFillN },
