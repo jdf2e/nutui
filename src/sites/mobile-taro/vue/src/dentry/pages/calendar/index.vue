@@ -342,6 +342,11 @@ export default {
 </script>
 
 <style lang="scss">
+.demo {
+  .nut-cell__value {
+    flex: initial;
+  }
+}
 .test-calendar-wrapper {
   display: flex;
   width: 100%;
