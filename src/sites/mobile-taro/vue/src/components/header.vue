@@ -1,7 +1,7 @@
 <template>
   <div class="applets-demo-header">
     <div class="back" @click="navigateTo">
-      <Home />
+      <Left />
     </div>
     <div class="applets-icon">
       <img
@@ -14,19 +14,17 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import Taro from '@tarojs/taro';
-import { Home } from '@nutui/icons-vue';
+import { Left } from '@nutui/icons-vue-taro';
 import config from '../../../../../config.json';
 export default defineComponent({
   name: 'header',
   components: {
-    Home
+    Left
   },
   setup() {
     //返回demo页
     const navigateTo = () => {
-      Taro.navigateTo({
-        url: '/pages/index/index'
-      });
+      Taro.navigateBack();
     };
 
     const compName = computed(() => {

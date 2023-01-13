@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
+  <div class="demo full category-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>经典分类模式</h2>
     <nut-category :category="category" @change="change">
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo {
+.category-demo {
   padding-left: 0 !important;
   padding-right: 0px !important;
 }

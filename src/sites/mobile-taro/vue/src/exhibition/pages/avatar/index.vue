@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
+  <div class="demo full avatar-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>支持三种尺寸：small、normal、large</h2>
     <nut-cell>
@@ -111,14 +111,16 @@ export default {
 };
 </script>
 <style lang="scss">
-.nut-cell {
-  align-items: flex-end;
-  border-radius: 0;
-  & > view {
-    margin-right: 30px;
+.avatar-demo {
+  .nut-cell {
+    align-items: flex-end;
+    border-radius: 0;
+    & > view {
+      margin-right: 30px;
+    }
   }
-}
-.demo-avatar {
-  color: #fff;
+  .demo-avatar {
+    color: #fff;
+  }
 }
 </style>
