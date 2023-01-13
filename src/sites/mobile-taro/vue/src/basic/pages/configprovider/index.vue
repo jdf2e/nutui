@@ -150,9 +150,8 @@ export default {
       }
     });
     let color = reactive({
-      primaryColor: 'green',
-      primaryColorEnd: 'green',
-      primaryColorActive: 'rgba(0,128,0,0.15)'
+      primaryColor: '#008000',
+      primaryColorEnd: '#008000'
     });
     const themeVars = color;
 

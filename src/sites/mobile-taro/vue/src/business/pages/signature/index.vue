@@ -76,10 +76,6 @@ export default {
 #app .demo {
   height: auto;
 }
-.nut-cell {
-  padding: 20px 0;
-  height: 120px;
-}
 .test {
   .nut-input {
     width: 80%;
