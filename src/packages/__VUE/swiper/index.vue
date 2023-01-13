@@ -93,10 +93,6 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
-    },
-    isCenter: {
-      type: Boolean,
-      default: false
     }
   },
   emits: ['change'],

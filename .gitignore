@@ -18,6 +18,7 @@ src/packages/vscode-extension/yarn.lock
 /coverage
 /tsc
 /site_docs
+/publish/**/dist/
 /src/sites/mobile-taro/vue/src/app.config.ts
 
 # local env files

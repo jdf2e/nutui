@@ -35,7 +35,7 @@
     </nut-tabs>
 
     <h2>数量多,滚动操作</h2>
-    <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
+    <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
       <nut-tabpane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
     <h2>左右布局</h2>

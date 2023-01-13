@@ -83,12 +83,12 @@ npm i @nutui/nutui@2
 
 ```bash
 // Vue3 H5
-npm i @nutui/nutui
+npm i @nutui/nutui@3
 ```
 
 ```bash
 // Vue3 Mini Programs
-npm i @nutui/nutui-taro
+npm i @nutui/nutui-taro@3
 ```
 
 ## Usage

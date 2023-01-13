@@ -1,0 +1,53 @@
+{
+  "name": "@nutui/nutui-taro",
+  "version": "3.3.2",
+  "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
+  "main": "dist/nutui.umd.cjs",
+  "module": "dist/nutui.es.js",
+  "style": "dist/style.css",
+  "typings": "dist/types/index.d.ts",
+  "vetur": {
+    "tags": "dist/smartips/tags.json",
+    "attributes": "dist/smartips/attributes.json"
+  },
+  "web-types": "dist/smartips/web-types.json",
+  "keywords": [
+    "nutui",
+    "nutui2",
+    "nutui3",
+    "nutui4",
+    "vue",
+    "vue3",
+    "webpack",
+    "vue component",
+    "vue3 component",
+    "vite",
+    "jdc",
+    "jdcfe"
+  ],
+  "author": "jdcfe",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "publish:beta": "npm publish --tag=beta",
+    "publish-release": "npm publish --tag=latest-v3"
+  },
+  "dependencies": {
+    "@tarojs/components": "3.5.6",
+    "sass": "^1.50.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git"
+  }
+}

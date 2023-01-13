@@ -223,6 +223,8 @@ app.use(Icon)
 | round                  | 是否显示圆角                                                |boolean        | `false`       |
 | teleport               | 指定挂载节点(`小程序不支持`)                                                | string         | `"body"`      |
 | teleport-disable `v3.2.7`              | 是否允许挂载节点(`小程序不支持`)                  | boolean         | `false`      |
+| overlay-class `v3.2.8`       | 自定义遮罩层类名 | string  | ''  |
+| overlay-style `v3.2.8`       | 自定义遮罩层样式  | string  | ''  |
 | safe-area-inset-bottom `v3.1.19`	| 是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 |	boolean	|`false`     |
 
 ### Events
