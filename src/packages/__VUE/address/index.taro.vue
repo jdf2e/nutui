@@ -11,7 +11,7 @@
       <view class="nut-address__header">
         <view class="nut-address__header-back" @click="switchModule">
           <slot name="back-icon">
-            <Left v-show="type == 'exist' && privateType == 'custom'"></Left>
+            <Left v-show="type == 'exist' && privateType == 'custom'" size="14px"></Left>
           </slot>
         </view>
 
@@ -25,7 +25,7 @@
 
         <view class="nut-address__header-close" @click="handClose('cross')">
           <slot name="close-icon">
-            <Close color="#cccccc" size="18px"></Close>
+            <Close color="#cccccc" size="14px"></Close>
           </slot>
         </view>
       </view>
