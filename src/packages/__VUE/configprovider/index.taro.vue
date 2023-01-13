@@ -42,18 +42,15 @@ export default create({
       const primaryColor = props?.themeVars?.primaryColor;
       // 为了处理一些组件的rgba透明颜色
       if (primaryColor) {
-        cssVars[`--nut-calendar-choose-color`] = `rgba(${colorRgb(primaryColor)},0.09)`;
-        cssVars[`--nut-range-bg-color`] = `rgba(${colorRgb(primaryColor)},0.5)`;
         cssVars[`--nut-address-region-tab-line`] = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${colorRgb(
           primaryColor
-        )},0.15) 100%)   `;
-        cssVars[`--nut-radio-label-button-background`] = `rgba(${colorRgb(primaryColor)},0.05)`;
-        cssVars[`--nut-timeselect-timedetail-item-cur-bg-color`] = `rgba(${colorRgb(primaryColor)},0.15)`;
-        cssVars[`--nut-tabs-horizontal-tab-line-color`] = `rgba(${colorRgb(primaryColor)},0.15)`;
+        )},0.15) 100%) `;
+        cssVars[`--nut-tabs-horizontal-tab-line-color`] = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${colorRgb(
+          primaryColor
+        )},0.15)100%)`;
         cssVars[`--nut-tabs-vertical-tab-line-color`] = `linear-gradient(180deg, ${primaryColor} 0%, rgba(${colorRgb(
           primaryColor
-        )},0.15) 100%)   `;
-        cssVars[`--nut-sku-item-active-bg`] = `rgba(${colorRgb(primaryColor)},0.15)`;
+        )},0.15) 100%) `;
       }
       Object.keys(themeVars).forEach((key) => {
         cssVars[`--nut-${kebabCase(key)}`] = themeVars[key];
