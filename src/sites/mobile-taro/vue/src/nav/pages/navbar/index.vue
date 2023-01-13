@@ -84,17 +84,17 @@ export default defineComponent({
     const tab2value = ref(0);
     const methods = {
       back() {
-        alert('header头部， 点击返回');
+        console.log('header头部， 点击返回');
       },
       title() {
-        alert('header头部， 点击title');
+        console.log('header头部， 点击title');
       },
       icon() {
-        alert('icon');
+        console.log('icon');
       },
 
       rightClick() {
-        alert('右侧点击事件');
+        console.log('右侧点击事件');
       },
       changeTab(tab: any) {
         tab1value.value = tab.paneKey as number;

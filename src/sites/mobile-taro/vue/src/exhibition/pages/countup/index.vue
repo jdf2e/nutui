@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo countup-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div class="show-demo">
@@ -109,7 +109,7 @@ export default {
 
 <style></style>
 <style lang="scss">
-#app .demo {
+#app .countup-demo {
   padding: 57px 0 0 0;
 }
 .show-demo {
