@@ -14,8 +14,8 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html', path.join(process.cwd(), '/plugin-mv/index.js')],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../../src/packages'),
-    '@weapp': path.resolve(__dirname, '../../../src/sites/weapp-project')
+    '@vue': path.resolve(__dirname, '../../../../node_modules/@vue'),
+    '@/packages': path.resolve(__dirname, '../../../../src/packages')
   },
   sass: {
     resource: path.resolve(__dirname, '../../../', 'packages/styles/variables.scss')

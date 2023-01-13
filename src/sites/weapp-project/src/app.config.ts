@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  components: ['components/nutIcon/index', 'components/button/index', 'components/article/index'],
+  components: ['components/nutIcon/index', 'components/button/index'],
   pages: ['pages/index/index'],
   window: {
     backgroundTextStyle: 'light',

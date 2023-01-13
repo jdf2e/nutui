@@ -1,8 +1,6 @@
 {
   "usingComponents": {
     "nut-button": "../../nutui/components/button/index",
-    "nut-icon":"../../nutui/components/nutIcon/index",
-    "nut-overlay":"../../nutui/components/overlay/index",
-    "nut-popup":"../../nutui/components/popup/index"
+    "nut-icon":"../../nutui/components/nutIcon/index"
   }
 }

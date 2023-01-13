@@ -1,8 +1,8 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
-      <Article msg="eee">dafd</Article>
-
+      <!-- <Article>dafd</Article> -->
+      <Avatar size="small"></Avatar>
       <view :class="{ text: icon || loading }">
         <native-slot />
       </view>
@@ -12,7 +12,8 @@
 
 <script lang="ts" setup>
 import { CSSProperties, computed, toRefs, defineProps, reactive } from 'vue';
-import * as Article from '../article/index.vue';
+// import Article from '../article/index.vue';
+import Avatar from '@/packages/__VUE/avatar/index.taro.vue';
 // import { pxCheck } from '@/packages/utils/pxCheck';
 const props = defineProps({
   color: String,
@@ -66,7 +67,7 @@ const { type, size, shape, disabled, loading, color, plain, block } = toRefs(pro
 // })
 
 const handleClick = () => {
-  // console.log(pxCheck(19))
+  console.log(Avatar);
   if (!loading.value && !disabled.value) {
   }
 };

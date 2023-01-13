@@ -7,7 +7,7 @@
 
   <!-- <nut-overlay props='{{overlayProps}}' bind:close='bindClose'></nut-overlay> -->
   <!-- <carticle props='{{articleProps}}'>2222</carticle> -->
-  <nut-popup props='{{popupProps}}'>正文</nut-popup>
+  <!-- <nut-popup props='{{popupProps}}'>正文</nut-popup> -->
   <view>
       <h2>按钮类型</h2>
     <view class="demo-button-row">
