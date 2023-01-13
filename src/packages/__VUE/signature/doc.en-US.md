@@ -27,46 +27,28 @@ app.use(Signature);
     @confirm="confirm" 
     @clear="clear"
   ></nut-signature>
-  <p class="demo-tips demo">Tips: click the confirm button, and the signature image is displayed below</p>
+  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
 </template>
 <script>
 export default {
     props: {},
     setup() {
-        const confirm = (canvas, data) => {
-            let img = document.createElement('img');
-            img.src = data;
-            document.querySelector('.demo').appendChild(img);
-        };
-        const clear = () => {
-            let img = document.querySelector('.demo img'); 
-            if (img) {
-                img.remove();
-            }
+      const demoSignUrl = ref('');
+      const confirm = (canvas, data) => {
+        if (data === '') {
+          console.log(canvas);
+          return false;
         }
-        return { confirm, clear };
+        demoSignUrl.value = data;
+        console.log('The map`s address', canvas, data);
+      };
+      const clear = () => {
+        demoSignUrl.value = '';
+        console.log('clear event');
+      }
+      return { confirm, clear, demoSignUrl };
     }
 }
-</script>
-<script>
-import { reactive } from 'vue';
-export default {
-  props: {},
-  setup() {
-    const confirm = (canvas, data) => {
-        let img = document.createElement('img');
-        img.src = data;
-        document.querySelector('.demo').appendChild(img);
-    };
-    const clear = () => {
-        let img = document.querySelector('.demo img'); 
-        if (img) {
-            img.remove();
-        }
-    }
-    return { confirm, clear };
-  }
-};
 </script>
 ```
 :::
@@ -82,7 +64,7 @@ export default {
     @confirm="confirm" 
     @clear="clear"
   ></nut-signature>
-  <p class="demo-tips demo">Tips: click the confirm button, and the signature image is displayed below</p>
+  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
 </template>
 <script>
 import { reactive } from 'vue';
@@ -93,18 +75,20 @@ export default {
       lineWidth: 4,
       strokeStyle: 'green'
     });
+    const demoSignUrl = ref('');
     const confirm = (canvas, data) => {
-        let img = document.createElement('img');
-        img.src = data;
-        document.querySelector('.demo').appendChild(img);
+      if (data === '') {
+        console.log(canvas);
+        return false;
+      }
+      demoSignUrl.value = data;
+      console.log('The map`s address', canvas, data);
     };
     const clear = () => {
-        let img = document.querySelector('.demo img'); 
-        if (img) {
-            img.remove();
-        }
+      demoSignUrl.value = '';
+      console.log('clear event');
     }
-    return { ...state, confirm, clear };
+    return { ...state, demoSignUrl, confirm, clear };
   }
 };
 </script>
