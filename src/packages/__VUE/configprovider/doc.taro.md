@@ -87,7 +87,7 @@ page, :root {
 <template>
     <nut-config-provider :theme-vars="themeVars">
       <nut-form>
-        <nut-form-item :label="滑块">
+        <nut-form-item label="滑块">
           <nut-range hidden-tag v-model="range"></nut-range>
         </nut-form-item>
       </nut-form>

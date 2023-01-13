@@ -12,7 +12,7 @@
     <h2>手风琴</h2>
     <nut-collapse v-model="active2" :accordion="true">
       <nut-collapse-item :title="title1" :name="1">
-        <template v-slot:sTitle> 文本测试 </template>
+        <template v-slot:value> 文本测试 </template>
         华为终端操作系统EMUI 11发布，9月11日正式开启
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2" :value="subTitle">
@@ -30,7 +30,7 @@
     <h2>设置固定内容（不折叠部分）</h2>
     <nut-collapse v-model="active6" :accordion="true">
       <nut-collapse-item :title="title1" :name="1">
-        <template v-slot:extraRender>固定内容</template>
+        <template v-slot:extra>固定内容</template>
         NutUI是一套拥有京东风格的轻量级的 Vue 组件库
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2">

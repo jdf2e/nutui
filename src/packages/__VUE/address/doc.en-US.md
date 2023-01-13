@@ -601,7 +601,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value | 
 | --------------------------------------- | -------------------------- |
-|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, var(--nut-active-color) 100%)_| 
+|  --nut-address-region-tab-line| _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_| 
 |  --nut-address-icon-color| _var(--nut-primary-color)_     | 
 |  --nut-address-header-title-font-size   | _18px_          | 
 |  --nut-address-header-title-color| _#262626_    | 

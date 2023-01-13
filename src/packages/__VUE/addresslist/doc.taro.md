@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from "vue";
-import { AddressList } from "@nutui/nutui";
+import { AddressList } from "@nutui/nutui-taro";
 
 const app = createApp();
 app.use(AddressList);
