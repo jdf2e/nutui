@@ -31,7 +31,6 @@
         indicator-style="height: 34px;"
         :value="defaultIndexes"
         style="width: 100%; height: 252px"
-        :immediate-change="true"
         @change="tileChange"
         @pickstart="handlePickstart"
         @pickend="handlePickend"
