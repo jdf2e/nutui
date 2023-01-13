@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo barrage-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell class="danmu-box">
@@ -38,12 +38,14 @@ export default {
 </script>
 
 <style lang="scss">
-.danmu-box,
-.nut-barrage {
-  padding: 20px 0;
-  height: 150px;
-}
-.nut-button {
-  width: 100%;
+.barrage-demo {
+  .danmu-box,
+  .nut-barrage {
+    padding: 20px 0;
+    height: 150px;
+  }
+  .nut-button {
+    width: 100%;
+  }
 }
 </style>

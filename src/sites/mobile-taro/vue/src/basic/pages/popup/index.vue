@@ -41,9 +41,6 @@
     <h2>圆角弹框</h2>
     <nut-cell title="圆角弹框" is-link @click="showRound = true"></nut-cell>
     <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
-    <h2>指定挂载节点</h2>
-    <nut-cell title="指定挂载节点" is-link @click="showTeleport = true"></nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="showTeleport">app</nut-popup>
     <h2>多层堆叠</h2>
     <nut-cell title="多层堆叠" is-link @click="showPop1 = true"></nut-cell>
     <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo range-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell class="cell">
@@ -130,8 +130,10 @@ export default {
 </script>
 
 <style lang="scss">
-.cell {
-  padding: 40px 18px;
+.range-demo {
+  .cell {
+    padding: 40px 18px;
+  }
 }
 .custom-button {
   width: 26px;
