@@ -1,5 +1,5 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
+  <view class="demo badge-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-row>
@@ -97,7 +97,9 @@ const env = Taro.getEnv();
 </script>
 
 <style lang="scss">
-.nut-badge {
-  margin-right: 40px;
+.badge-demo {
+  .nut-badge {
+    margin-right: 40px;
+  }
 }
 </style>
