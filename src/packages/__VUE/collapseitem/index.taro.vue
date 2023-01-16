@@ -179,13 +179,13 @@ export default create({
     };
     const open = () => {
       proxyData.openExpanded = !proxyData.openExpanded;
-      let time = contentRef.value.childNodes?.length || 1;
-      setTimeout(() => {
-        animation();
-      }, 500 * time);
-      // timer.value = setInterval(() => {
-      // animation();
-      // }, 600);
+      // let time = contentRef.value.childNodes?.length || 1;
+      setTimeout(
+        () => {
+          animation();
+        },
+        init.value ? 500 : 0
+      );
     };
 
     const defaultOpen = () => {
@@ -242,7 +242,9 @@ export default create({
         if (tm && tm.length > 0) {
           let h = tm[0]['height'];
           item1.conHeight = h;
-          // resetHeight(h);
+          setTimeout(() => {
+            init.value && handleOpen();
+          }, 500);
         }
       });
     };
@@ -252,7 +254,9 @@ export default create({
         let ary: any = Array.from(item1.$el.children);
         let h = ary[1].children[0]['offsetHeight'];
         item1.conHeight = h;
-        // resetHeight(h);
+        setTimeout(() => {
+          init.value && handleOpen();
+        }, 500);
       });
     };
     // const prevHeight = ref(0);
@@ -282,7 +286,7 @@ export default create({
         }
       });
     };
-    onMounted(() => {
+    const handleOpen = () => {
       const { name } = props;
       const active = parent && parent.props.active;
       if (typeof active == 'number' || typeof active == 'string') {
@@ -295,6 +299,10 @@ export default create({
           defaultOpen();
         }
       }
+      init.value = false;
+    };
+    const init = ref(true);
+    onMounted(() => {
       // 获取 DOM 元素
       if (Taro.getEnv() === 'WEB') {
         getRefHeight();
