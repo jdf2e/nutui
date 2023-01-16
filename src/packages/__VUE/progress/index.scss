@@ -85,6 +85,8 @@
     font-size: 13px;
     line-height: 1;
     min-width: 35px;
+    display: flex;
+    align-items: center;
   }
   .nut-progress-insidetext {
     padding: $progress-insidetext-padding;
