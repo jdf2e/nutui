@@ -235,6 +235,8 @@ export const componentWeapp = {
         // 选择的是哪个 option
         changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
       }
+
+      defaultIndexes.value = defaultValuesConvert();
     };
 
     // 确定
