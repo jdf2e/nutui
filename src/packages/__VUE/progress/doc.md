@@ -36,7 +36,7 @@ app.use(Icon);
 ```html
 <template>
   <nut-cell>
-    <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
+    <nut-progress percentage="30" stroke-color="rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
    </nut-cell>
 </template>
 ```
@@ -121,7 +121,7 @@ app.use(Icon);
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
+        <nut-progress percentage="50" status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress

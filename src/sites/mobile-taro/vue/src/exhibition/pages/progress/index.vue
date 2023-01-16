@@ -10,7 +10,7 @@
     <h2>线形进度条-设置颜色高度</h2>
     <div>
       <nut-cell>
-        <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
+        <nut-progress percentage="30" stroke-color="rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
       </nut-cell>
     </div>
     <h2>线形进度条-百分比不显示</h2>
