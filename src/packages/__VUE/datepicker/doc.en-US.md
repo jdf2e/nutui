@@ -43,8 +43,8 @@ app.use(OverLay);
     setup(props) {
       const show = ref(false);
       const desc = ref('2022-05-10');
-      const minDate = new Date(2020, 0, 1),
-      const maxDate = new Date(2025, 10, 1),
+      const minDate = new Date(2020, 0, 1);
+      const maxDate = new Date(2025, 10, 1);
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
         desc.value = selectedOptions.map((option) => option.text).join('');
@@ -379,7 +379,7 @@ app.use(OverLay);
 | ok-text           | Text of confirm button                                      | String  | confirm   |
 | cancel-text           | Text of cancel button                                          | String  | cancel   |
 | three-dimensional  `v3.1.23`          | Turn on 3D effects               | Boolean  | true   |
-| swipe-duration `v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
+| swipe-duration `v3.2.2`          | Duration of the momentum animation        | Number \| String  | 1000   |
 | safe-area-inset-bottom `v3.2.4`	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
 
 ### Events
