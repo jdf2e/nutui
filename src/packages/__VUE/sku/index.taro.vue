@@ -63,7 +63,7 @@
 </template>
 <script lang="ts">
 import { ref, watch, onMounted } from 'vue';
-import SkuHeader from './components/SkuHeader.vue';
+import SkuHeader from './components/SkuHeaderTaro.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
