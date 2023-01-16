@@ -24,24 +24,26 @@ app.use(Signature);
     @confirm="confirm" 
     @clear="clear"
   ></nut-signature>
-  <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
+  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
 </template>
 <script>
 export default {
     props: {},
     setup() {
-        const confirm = (canvas, data) => {
-            let img = document.createElement('img');
-            img.src = data;
-            document.querySelector('.demo').appendChild(img);
-        };
-        const clear = () => {
-            let img = document.querySelector('.demo img'); 
-            if (img) {
-                img.remove();
-            }
+      const demoSignUrl = ref('');
+      const confirm = (canvas, data) => {
+        if (data === '') {
+          console.log(canvas);
+          return false;
         }
-        return { confirm, clear };
+        demoSignUrl.value = data;
+        console.log('图片地址', canvas, data);
+      };
+      const clear = () => {
+        demoSignUrl.value = '';
+        console.log('清除事件');
+      }
+      return { confirm, clear, demoSignUrl };
     }
 }
 </script>
@@ -52,44 +54,40 @@ export default {
 ### 修改颜色和签字粗细
 
 ```html
-<div class="demo">
-  <nut-signature
-    :lineWidth="lineWidth"
+<template>
+  <nut-signature  
+    :lineWidth="lineWidth" 
     :strokeStyle="strokeStyle"
-    @confirm="confirm"
+    @confirm="confirm" 
     @clear="clear"
   ></nut-signature>
-</div>
+  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
+</template>
 <script>
+import { reactive } from 'vue';
 export default {
+  props: {},
   setup() {
     const state = reactive({
       lineWidth: 4,
-      strokeStyle: 'green',
-      testimg: ''
+      strokeStyle: 'green'
     });
+    const demoSignUrl = ref('');
+    const confirm = (canvas, data) => {
+      if (data === '') {
+        console.log(canvas);
+        return false;
+      }
+      demoSignUrl.value = data;
+      console.log('图片地址', canvas, data);
+    };
     const clear = () => {
+      demoSignUrl.value = '';
       console.log('清除事件');
-    };
-    const confirm = (data: any) => {
-      console.log('图片地址', data);
-      Taro.saveImageToPhotosAlbum({
-        filePath: `${data}`,
-        success(res) {
-          Taro.showToast({
-            title: '保存成功'
-          });
-        },
-        fail(err) {
-          Taro.showToast({
-            title: '保存失败'
-          });
-        }
-      });
-    };
-    return { ...state, confirm, clear };
+    }
+    return { ...state, demoSignUrl, confirm, clear };
   }
-}
+};
 </script>
 ```
     

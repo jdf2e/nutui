@@ -329,22 +329,6 @@ export default createDemo({
   }
 }
 
-.radiogroup {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  padding: 10px 6px;
-
-  > .nut-radio {
-    width: 110px;
-
-    > .nut-radio__button {
-      padding: 5px 12px;
-      border: 1px solid #f6f7f9;
-    }
-  }
-}
-
 .demo {
   .nut-popover-content {
     width: 120px;

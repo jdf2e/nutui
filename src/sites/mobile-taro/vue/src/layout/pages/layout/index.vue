@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
+  <div class="demo full layout-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础布局</h2>
     <div class="box-item">
@@ -141,7 +141,7 @@ export default {
   margin-bottom: 20px;
   padding: 20px 0;
 }
-.demo .nut-row {
+.layout-demo .nut-row {
   overflow: hidden;
   &:not(:last-child) .nut-col {
     margin-bottom: 15px;

@@ -101,6 +101,27 @@ export default {
 ```
 :::
 
+### 自定义颜色
+
+:::demo
+```html
+<template>
+    <nut-cell class="cell">
+        <nut-rate v-model="value" active-color="#FFC800"/>
+    </nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
+</script>
+```
+:::
+
 ### 禁用状态
 
 :::demo

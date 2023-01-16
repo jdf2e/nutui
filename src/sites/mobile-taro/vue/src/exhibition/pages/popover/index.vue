@@ -4,14 +4,20 @@
     <h2>基础用法</h2>
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
+        <nut-popover
+          v-model:visible="lightTheme"
+          :list="iconItemList"
+          location="bottom-start"
+          @choose="chooseItem"
+          custom-class="popover-demo-custom"
+        >
           <template #reference>
             <nut-button type="primary" shape="square">明朗风格</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="darkTheme" theme="dark" :list="iconItemList">
+        <nut-popover v-model:visible="darkTheme" theme="dark" :list="iconItemList" custom-class="popover-demo-custom">
           <template #reference>
             <nut-button type="primary" shape="square">暗黑风格</nut-button>
           </template>
@@ -22,14 +28,19 @@
     <h2>选项配置</h2>
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="showIcon" theme="dark" :list="itemList">
+        <nut-popover v-model:visible="showIcon" theme="dark" :list="itemList" custom-class="popover-demo-custom">
           <template #reference>
             <nut-button type="primary" shape="square">展示图标</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="right-start">
+        <nut-popover
+          v-model:visible="disableAction"
+          :list="itemListDisabled"
+          location="right-start"
+          custom-class="popover-demo-custom"
+        >
           <template #reference>
             <nut-button type="primary" shape="square">禁用选项</nut-button>
           </template>
@@ -57,7 +68,7 @@
     <h2>位置自定义</h2>
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
 
-    <nut-popup position="bottom" v-model:visible="showPicker">
+    <nut-popup position="bottom" v-model:visible="showPicker" custom-class="popover-demo-custom">
       <nut-picker
         :columns="columns"
         title=""
@@ -80,6 +91,7 @@
       :location="curPostion"
       theme="dark"
       :list="positionList"
+      custom-class="popover-demo-custom"
     >
     </nut-popover>
 
@@ -90,11 +102,19 @@
       targetId="popid"
       :list="iconItemList"
       location="top-start"
+      custom-class="popover-demo-custom"
     ></nut-popover>
 
     <h2>自定义颜色</h2>
 
-    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
+    <nut-popover
+      v-model:visible="customColor"
+      :list="iconItemList"
+      location="right-start"
+      bgColor="#f00"
+      theme="dark"
+      custom-class="popover-demo-custom"
+    >
       <template #reference>
         <nut-button type="primary" shape="square">自定义颜色</nut-button>
       </template>
@@ -299,24 +319,10 @@ export default {
   }
 }
 
-.radiogroup {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  padding: 10px 6px;
-
-  > .nut-radio {
-    width: 110px;
-
-    > .nut-radio__button {
-      padding: 5px 12px;
-      border: 1px solid #f6f7f9;
-    }
+.popover-demo-custom {
+  .nut-popover-content {
+    width: 120px;
   }
-}
-
-.nut-popover-content {
-  width: 120px;
 }
 
 .customClass {
