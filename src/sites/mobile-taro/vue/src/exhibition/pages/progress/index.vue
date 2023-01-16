@@ -10,7 +10,7 @@
     <h2>线形进度条-设置颜色高度</h2>
     <div>
       <nut-cell>
-        <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
+        <nut-progress percentage="30" stroke-color="rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
       </nut-cell>
     </div>
     <h2>线形进度条-百分比不显示</h2>
@@ -65,14 +65,14 @@
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong" />
+        <nut-progress percentage="50" status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress
           percentage="100"
           stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           stroke-width="15"
-          status="success"
+          status="icon"
           icon-name="issue"
           icon-color="red"
         />
