@@ -98,7 +98,7 @@ app.use(Price);
 | decimal-digits | 小数位位数                              | number  | `2`     |
 | thousands      | 是否按照千分号形式显示                    | boolean          | `false`  |
 | position       | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
-| size           | 价格尺寸，`small`、`normal`、`large`     | string           | `large` |
+| size           | 价格尺寸，`small`、`normal`、`large`     | string           | `normal` |
 
 
 ## 主题定制
