@@ -37,8 +37,10 @@
     "publish:beta": "npm publish --tag=beta",
     "publish:latest": "npm publish"
   },
+  "peerDependencies":{
+    "@nutui/icons-vue": "^0.0.25"
+  },
   "dependencies": {
-    "@nutui/icons-vue": "^0.0.24",
     "sass": "^1.50.0"
   },
   "devDependencies": {},
