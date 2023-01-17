@@ -106,7 +106,7 @@ const useComponent = (touchable: Boolean = true) => {
       const touch = useTouch();
       const touchMethods = {
         onTouchStart(event: Event) {
-          if (!props.touchable) return;
+          if (!props.touchable || props.readonly) return;
           touch.start(event);
         },
         onTouchMove(event: Event) {
