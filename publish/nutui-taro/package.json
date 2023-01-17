@@ -44,13 +44,10 @@
     "publish:beta": "npm publish --tag=beta",
     "publish:latest": "npm publish"
   },
-  "standard-version": {
-    "scripts": {
-      "postchangelog": "node ./jd/updateChangelog.js"
-    }
+  "peerDependencies":{
+    "@nutui/icons-vue-taro": "^0.0.9"
   },
   "dependencies": {
-    "@nutui/icons-vue-taro": "^0.0.9",
     "sass": "^1.50.0"
   },
   "devDependencies": {},

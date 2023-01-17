@@ -155,7 +155,7 @@ export default create({
     };
 
     const textareaRef = ref<any>(null);
-    const textareaHeight = ref();
+    const textareaHeight = ref(20);
     const heightSet = ref('auto');
     const getContentHeight = () => {
       heightSet.value = 'auto';
@@ -216,7 +216,9 @@ export default create({
         if (res[0] && textareaRef.value) {
           let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid);
           if (_item[0]) {
-            textareaHeight.value = _item[0]['height'] || 20;
+            if (Taro.getEnv() !== Taro.ENV_TYPE.WEAPP) {
+              textareaHeight.value = _item[0]['height'] || 20;
+            }
             copyTxtStyle.value.width = _item[0]['width'] + 'px';
           }
           nextTick(getContentHeight);
