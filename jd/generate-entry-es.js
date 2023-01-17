@@ -16,7 +16,7 @@ config.nav.forEach((item) => {
       children: element.styleDeps
     });
     // gen entry
-    let outputMjs = `import _${element.name} from '../_es/${element.name}.js';
+    let outputMjs = `import '../../styles/reset.css';\nimport _${element.name} from '../_es/${element.name}.js';
 const treeshaking = (t) => t;
 const ${element.name} = treeshaking(_${element.name});
 export { ${element.name} };`;
