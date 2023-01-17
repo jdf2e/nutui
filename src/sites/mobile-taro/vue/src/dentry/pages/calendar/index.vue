@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo calendar_demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <div>
@@ -342,6 +342,11 @@ export default {
 </script>
 
 <style lang="scss">
+.calendar_demo {
+  .nut-cell__value {
+    flex: initial;
+  }
+}
 .test-calendar-wrapper {
   display: flex;
   width: 100%;

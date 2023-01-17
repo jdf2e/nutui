@@ -119,6 +119,11 @@ export default {
   }  
 };
 </script>
+<style lang="scss">
+.nut-cell__value {
+  flex: initial;
+}
+</style>
 ```
 :::
 
@@ -279,6 +284,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.nut-cell__value {
+  flex: initial;
+}
+</style>
 ```
 :::
 
@@ -408,7 +418,10 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
+.nut-cell__value {
+  flex: initial;
+}
 .wrapper {
   display: flex;
   padding: 0 40px;
@@ -490,7 +503,11 @@ export default {
   }
 }
 </script>
-
+<style lang="scss">
+.nut-cell__value {
+  flex: initial;
+}
+</style>
 ```
 :::
 
@@ -577,7 +594,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .test-calendar-wrapper {
   display: flex;
   width: 100%;
