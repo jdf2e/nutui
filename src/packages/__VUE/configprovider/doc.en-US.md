@@ -181,3 +181,5 @@ Here are all the base variables:
 | theme      | Theme style, set to `dark` to enable dark mode, take effect globally | string | -       |
 | theme-vars | Customized theme variable                     | object | -       |
 | tag        | HTML Tag of root element                                             | string | `div`     |
+| font-class-name | Custom icon font base class name                                     | String | `nutui-iconfont` |
+| class-prefix    | Custom icon class name prefix for using custom icons                 | String | `nut-icon`       |

@@ -197,3 +197,5 @@ app.use(ConfigProvider);
 | theme      | 主题风格，设置为 `dark` 来开启深色模式，全局生效 | string | -      |
 | theme-vars | 自定义主题变量                        | object | -      |
 | tag        | 根节点对应的 HTML 标签名                         | string | `div`    |
+| font-class-name | 自定义 icon 字体基础类名                           | String | `nutui-iconfont` |
+| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标              | String | `nut-icon`       |
