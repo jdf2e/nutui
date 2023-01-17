@@ -28,24 +28,48 @@
       <view class="nut-input-value">
         <view class="nut-input-inner">
           <view class="nut-input-box">
-            <component
-              :is="renderInput(type)"
+            <textarea
+              v-if="type == 'textarea'"
               class="input-text"
               ref="inputRef"
-              :style="styles"
+              :style="stylesTextarea"
               :maxlength="maxLength"
               :placeholder="placeholder"
+              placeholder-class="nut-placeholder"
               :disabled="disabled"
               :readonly="readonly"
               :value="modelValue"
               :formatTrigger="formatTrigger"
+              :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+            <input
+              v-else
+              class="input-text"
+              ref="inputRef"
+              :style="styles"
+              :type="inputType(type)"
+              :maxlength="maxLength"
+              :placeholder="placeholder"
+              placeholder-class="nut-placeholder"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :confirm-type="confirmType"
+              :adjust-position="adjustPosition"
+              :always-system="alwaysSystem"
               :autofocus="autofocus"
               :enterkeyhint="confirmType"
               @input="onInput"
               @focus="onFocus"
               @blur="onBlur"
               @click="onClickInput"
-            ></component>
+            />
             <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
           </view>
           <view class="nut-input-clear-box">
@@ -84,7 +108,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
@@ -262,13 +286,6 @@ export default create({
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
 
-    const renderInput = (type: InputType) => {
-      return h(type == 'textarea' ? 'textarea' : 'input', {
-        style: type == 'textarea' ? stylesTextarea : styles,
-        type: type != 'textarea' && inputType(type)
-      });
-    };
-
     const state = reactive({
       focused: false,
       validateFailed: false, // 校验失败
@@ -425,7 +442,6 @@ export default create({
     });
 
     return {
-      renderInput,
       inputRef,
       active,
       classes,
