@@ -291,8 +291,8 @@ app.use(Icon);
 | 事件名称   | 说明               | 参数           |
 |------------|--------------------|--------------------|
 | icon | 自定义图标	 | active: boolean |
+| defalut | 自定义tabbar title内容	 | |
 
-| defalut | 自定义tabbar title内容	 |  |
 ### Tabbar Events
 
 | 事件名称   | 说明               | 回调参数           |

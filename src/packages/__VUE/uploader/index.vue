@@ -43,6 +43,7 @@
           <nut-icon name="link" />&nbsp;{{ item.name }}
         </view>
         <nut-icon
+          v-if="isDeletable"
           class="nut-uploader__preview-img__file__del"
           @click="onDelete(item, index)"
           color="#808080"
