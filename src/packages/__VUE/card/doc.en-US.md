@@ -220,6 +220,8 @@ app.use(Card);
   font-size: 12px;
 }
 </style>
+```
+:::
 
 ## API
 ### Props  
