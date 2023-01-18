@@ -1,0 +1,6 @@
+<wxs src="./index.wxs" module="computed" />
+ 
+ <view class='{{computed.classes({border,gutter})}}' style="{{computed.baseStyle({gutter})}}">
+    <slot></slot>
+ </view>
+ 

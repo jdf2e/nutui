@@ -1,0 +1,15 @@
+<wxs src="./index.wxs" module="computed" />
+
+<view class="nut-cell-group">
+    
+    <view wx:if="{{title}}" class="nut-cell-group__title">{{ title }}</view>
+    <slot wx:else name="title"></slot>
+
+    
+    <view wx:if="{{desc}}" class="nut-cell-group__desc">{{ desc }}</view>
+    <slot wx:else name="desc"></slot>
+
+    <view class="nut-cell-group__warp">
+      <slot></slot>
+    </view>
+</view>

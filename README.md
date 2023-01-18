@@ -1,176 +1,131 @@
+# miniprogram-custom-component
 
-<p align="center">
-    <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
-</p>
+小程序自定义组件开发模板：
 
-<p align="center">京东风格的轻量级移动端 Vue2、Vue3 组件库</p>
+* 支持使用 less 语法编写 wxss 文件
+* 使用 webpack 构建 js
+* 支持自定义组件单元测试
+* 支持 eslint
+* 支持多入口构建
 
-<p align="center">（支持一套代码生成 H5 和小程序）</p>
+## 使用
 
-<p align="center">
-    <a href="http://makeapullrequest.com">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
-  </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-    </a>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
-    <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
-    </a>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
-    <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
-    </a>
-    <a href="https://travis-ci.org/jdf2e/nutui">
-    <img src="https://img.shields.io/travis/jdf2e/nutui.svg?style=flat-square">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/next" alt="GitHub commits since latest release (by date)">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
-  </a>
-</p>
+* 使用[命令行工具](https://github.com/wechat-miniprogram/miniprogram-cli)进行初始化
+* 直接从 github 上 clone 下来
 
-<p align="center">
-  <a href="https://nutui.jd.com/jdl/#/index" target="_blank">京东物流视觉（Vue2）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/jdt/#/" target="_blank">京东科技视觉（Vue3）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城视觉（Vue3）</a>
-  &nbsp;
-  <a href="https://nutui.jd.com/theme/#/base" target="_blank">组件级UI定制</a>
-</p>
+## 开发
 
-> Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
----
+1. 安装依赖：
 
+```
+npm install
+```
 
-##  特性
+2. 执行命令：
 
-* 🚀 70+ 高质量组件，覆盖移动端主流场景
-* 💪 支持一套代码同时开发多端小程序+H5
-* 📖 基于京东APP 10.0 视觉规范
-* 🍭 支持按需引用
-* 📖 详尽的文档和示例
-* 💪 支持 TypeScript
-* 💪 支持服务端渲染（测试阶段）
-* 🍭 支持定制主题，内置 700+ 个主题变量
-* 🌍 国际化支持
-* 🍭 单元测试覆盖率超过 80%，保障稳定性
-* 📖 提供 Sketch 设计资源
+```
+npm run dev
+```
 
-## 示例 H5 & 小程序
+默认会在包根目录下生成 miniprogram\_dev 目录，src 中的源代码会被构建并生成到 miniprogram\_dev/components 目录下。如果需要监听文件变化动态构建，则可以执行命令：
 
-<p>
-  <!--
-   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" /> -->
-   <img src="https://img14.360buyimg.com/imagetools/jfs/t1/82310/37/20242/66386/62b57bb6Ebcad837d/a57b1fcdcc61dcc7.png" height="250" alt="NutUI" />
-</p>
+```
+npm run watch
+```
 
-## 版本说明
+> ps: 如果 minirpogram\_dev 目录下已存在小程序 demo，执行`npm run dev`则不会再将 tools 下的 demo 拷贝到此目录下。而执行`npm run watch`则会监听 tools 目录下的 demo 变动并进行拷贝。
 
-> @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果想要兼容低版本 ios 10 以下，请使用 @nutui/nutui@2
+3. 生成的 miniprogram\_dev 目录是一个小程序项目目录，以此目录作为小程序项目目录在开发者工具中打开即可查看自定义组件被使用的效果。
 
-| 版本 | 支持的框架 | 视觉规范 | 支持的应用类型 | 兼容
-| --- | --- | --- | --- | --- |
-| @nutui/nutui  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
-| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5&小程序，可[开发多端](https://nutui.jd.com/#/starttaro) | 现代浏览器及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
-| @nutui/nutui@2  | Vue 2x | 京东 APP 7.0 规范 | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
-| @nutui/nutui-jdl  | Vue 2x | [京东物流视觉规范](https://nutui.jd.com/jdl/#/design) | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
+4. 进阶：
 
+* 如果有额外的构建需求，可自行修改 tools 目录中的构建脚本。
+* 内置支持 webpack、less 语法、sourcemap 等功能，默认关闭。如若需要可以自行修改 tools/config.js 配置文件中相关配置。
+* 内置支持多入口构建，如若需要可自行调整 tools/config.js 配置文件的 entry 字段。
+* 默认开启 eslint，可自行调整规则或在 tools/config.js 中注释掉 eslint-loader 行来关闭此功能。
 
-## 构建版本
+## 发布
 
-> AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。
+> ps: 发布前得确保已经执行构建，小程序 npm 包只有构建出来的目录是真正被使用到的。
 
-* es **nutui.es.js**
+1. 如果还没有 npm 帐号，可以到[ npm 官网](https://www.npmjs.com/)注册一个 npm 帐号。
+2. 在本地登录 npm 帐号，在本地执行：
 
-* umd **nutui.umd.js**
+```
+npm adduser
+```
 
+或者
 
-## 使用案例
+```
+npm login
+```
 
-NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使用 NutUI 开发多端应用。
-<p>
-<img src="http://storage.360buyimg.com/jdc-article/nutuiDemo/user-cases.jpg" alt="NutUI" />
-</p>
-<p><a href="https://nutui.jd.com/#/case">查看等多的案例，请点击</a></p>
-<p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a></p>
+3. 在已完成编写的 npm 包根目录下执行：
 
-## 链接
+```
+npm publish
+```
 
-<ul>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/discussions">
-            Discussions  (用👍投票)
-        </a>
-    </li>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">
-            Feature Requests (用👍投票)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/labels/bug%203.0">
-            Bugs (用👍投票)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion">
-            Question  (用👍投票)
-        </a>
-    </li>
-</ul>
+到此，npm 包就成功发布到 npm 平台了。
 
-## 开发交流
+> PS：一些开发者在开发过程中可能修改过 npm 的源，所以当进行登录或发布时需要注意要将源切回 npm 的源。
 
-| 版本 | 微信群 |内部咚咚群 |
-| --- | --- |--- |
-| [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://nutui.jd.com/3x/3.1.17/vx-codeys.png" width="100" /> 关注后回复「NutUI」 | 82957939
-| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI」 | 1022545110 |
-| [NutUI React](https://github.com/jdf2e/nutui-react/issues) | 回复「NutUI」 | 1022619199
+## 目录结构
 
+以下为推荐使用的目录结构，如果有必要开发者也可以自行做一些调整:
 
-## 贡献者们
+```
+|--miniprogram_dev // 开发环境构建目录
+|--miniprogram_dist // 生产环境构建目录
+|--src // 源码
+|   |--components // 通用自定义组件
+|   |--images // 图片资源
+|   |
+|   |--xxx.js/xxx.wxml/xxx.json/xxx.wxss // 暴露的 js 模块/自定义组件入口文件
+|
+|--test // 测试用例
+|--tools // 构建相关代码
+|   |--demo // demo 小程序目录，开发环境下会被拷贝生成到 miniprogram_dev 目录中
+|   |--config.js // 构建相关配置文件
+|
+|--gulpfile.js
+```
 
-感谢以下小伙伴们为 NutUI 发展做出的贡献：
+> PS：对外暴露的 js 模块/自定义组件请放在 src 目录下，不宜放置在过深的目录。另外新增的暴露模块需要在 tools/config.js 的 entry 字段中补充，不然不会进行构建。
 
-<a href="https://github.com/jdf2e/nutui/graphs/contributors">
-  <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
-</a>
+## 测试
 
-## 参与共建
+* 执行测试用例：
 
-非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [贡献指南](https://nutui.jd.com/#/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
+```
+npm run test
+```
 
-感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
+* 执行测试用例并进入 node inspect 调试：
 
-## 开发计划
+```
+npm run test-debug
+```
 
-[Milestones](https://github.com/jdf2e/nutui/projects)
+* 检测覆盖率：
 
-## 更新日志
+```
+npm run coverage
+```
 
-本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui/releases)。
+测试用例放在 test 目录下，使用 **miniprogram-simulate** 工具集进行测试，[点击此处查看](https://github.com/wechat-miniprogram/miniprogram-simulate/blob/master/README.md)使用方法。在测试中可能需要变更或调整工具集中的一些方法，可在 test/utils 下自行实现。
 
-## 开源协议
+## 其他命令
 
-本项目基于 **MIT** 协议
+* 清空 miniprogram_dist 目录：
 
+```
+npm run clean
+```
 
-## github stargazers 
+* 清空 miniprogam_dev 目录：
 
-![stargazers](https://starchart.cc/jdf2e/nutui.svg)
-
+```
+npm run clean-dev
+```

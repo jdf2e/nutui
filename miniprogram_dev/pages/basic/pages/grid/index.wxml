@@ -1,0 +1,64 @@
+<view class="demo">
+    <h2>基础用法</h2>
+    <nut-grid>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>自定义列数</h2>
+    <nut-grid column-num="3">
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>正方形格子</h2>
+    <nut-grid column-num="3" square>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>格子间距</h2>
+    <nut-grid gutter="10">
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>内容翻转</h2>
+    <nut-grid reverse>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>内容横向</h2>
+    <nut-grid direction="horizontal">
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+
+    <h2>图标颜色/大小</h2>
+    <nut-grid column-num="3" icon-color="#fa2c19">
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" icon-color="#478EF2" icon-size="40" text="文字"></nut-grid-item>
+      <nut-grid-item icon="dongdong" text="文字"></nut-grid-item>
+    </nut-grid>
+    
+</view>
+

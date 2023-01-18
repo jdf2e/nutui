@@ -1,0 +1,7 @@
+<wxs src="./index.wxs" module="computed" />
+
+<Transition name="overlay-fade">
+    <view :class="classes" @touchmove.stop="touchmove" @click="onClick" :style="style" v-show="visible">
+      <slot></slot>
+    </view>
+</Transition>

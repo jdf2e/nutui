@@ -1,0 +1,27 @@
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+function Classes(data) {
+  var prefixCls = 'nut-grid'
+  var defaultClassesObj = [prefixCls]
+
+  if(data.border && !data.gutter) defaultClassesObj.push(prefixCls+'--border')
+
+  return defaultClassesObj.join(' ');
+}
+
+
+function baseStyle(data){
+
+  var styled = {};
+
+  if(data.gutter) styled.paddingLeft = pxCheck(data.gutter)
+
+  return style([styled])
+}
+
+
+module.exports = {
+  classes: Classes,
+  baseStyle:baseStyle
+};

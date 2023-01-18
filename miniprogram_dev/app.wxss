@@ -1,0 +1,34 @@
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.demo {
+  height: 100%;
+  background: #f7f8fa;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 34rpx 34rpx 34rpx;
+}
+
+.demo .full {
+  padding: 0 0 0 0;
+}
+
+.demo h2 {
+  display: block;
+  margin-top: 60rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: rgba(144, 156, 164, 1);
+  padding: 0 10rpx;
+  font-weight: normal;
+}
+
+.nut-cell {
+  margin: 20rpx 0;
+}
+
+.nut-cell-group__warp .nut-cell {
+  margin: 0;
+}

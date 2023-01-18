@@ -1,0 +1,9 @@
+.nut-grid {
+  position: relative;
+  overflow: hidden;
+  border: 0 solid #f5f6f7;
+}
+.nut-grid--border {
+  border-top-width: 1px;
+  border-left-width: 1px;
+}

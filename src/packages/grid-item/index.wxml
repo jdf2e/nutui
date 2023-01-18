@@ -1,0 +1,20 @@
+<wxs src="./index.wxs" module="computed" />
+
+<view class="nut-grid-item" style="{{computed.baseStyle(parent)}}" bindtap="handleClick">
+    <view class="{{computed.contentClass(parent)}}">
+        
+         <slot></slot>
+        <nut-icon
+          wx:if="{{icon}}"
+          name="{{icon}}"
+          size="{{iconSize || parent.iconSize}}"
+          color="{{iconColor || parent.iconColor}}"
+        ></nut-icon>
+        <slot name="icon" wx:else></slot>
+        
+
+        <view class="nut-grid-item__text" wx:if='{{text}}'>{{ text }}</view>
+        <slot name="text" wx:else></slot>
+        
+    </view>
+  </view>

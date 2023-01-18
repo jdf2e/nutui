@@ -1,0 +1,7 @@
+<wxs src="./avatar.wxs" module="computed" />
+
+<view style="background-color:{{bgColor}}" class="nut-avatar avatar-{{size}} avatar-{{shape}}" bind:tap="activeAvatar">
+  <image class="icon" src="{{bgIcon}}" ></image>
+  <!--不使用icon组件，1:icon组件没有扩展维护；2:修改该图片不方便-->
+  <view class="text"><slot></slot></view>
+</view>

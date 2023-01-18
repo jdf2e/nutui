@@ -1,0 +1,51 @@
+<view class="demo">
+    <h2>基本用法</h2>
+    <nut-cell title="我是标题" desc="描述文字"></nut-cell>
+    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <nut-cell title="点击测试"></nut-cell>
+    <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
+
+     <h2>尺寸设置 large</h2>
+    <nut-cell size="large" title="我是标题" desc="描述文字"></nut-cell>
+    <nut-cell size="large" title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+
+    <h2>直接使用插槽(slot)</h2>
+
+    <nut-cell useLabelSlot>
+      <view>自定义内容</view>
+    </nut-cell>
+
+    <h2>直接使用插槽(slot title)</h2>
+    <nut-cell desc="描述文字" useLabelSlot>
+      <block slot="title">
+        <span>Title <b style="color: red">2</b></span>
+      </block>
+    </nut-cell>
+
+    <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
+      <nut-cell title="Switch" >
+        <!-- <block slot="link">111</block> -->
+        <span slot="link">234</span>
+      </nut-cell>
+    </nut-cell-group>
+
+    <nut-cell-group title="自定义左侧 Icon 区域">
+      <nut-cell title="图片">
+          <image
+            slot="icon"
+            style='height:20px;width:20px'
+            	mode='aspectFit'
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+          />
+      </nut-cell>
+    </nut-cell-group>
+
+    <h2>展示图标</h2>
+    <nut-cell title="姓名" icon="my" desc="张三" isLink> </nut-cell>
+    <h2>只展示 desc ，可通过 desc-text-align 调整内容位置</h2>
+    <nut-cell desc-text-align="left" desc="张三"></nut-cell>
+    <h2>垂直居中</h2>
+    <nut-cell center title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    
+</view>
+

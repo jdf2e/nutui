@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "target": "esnext",
     "module": "esnext",
+    "target": "es2015",
+    "lib": ["es2015", "es2017", "dom"],
+    "noImplicitAny": false,
     "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": false,
-    "declaration": false,
-    "removeComments": true,
-    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata":true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "lib": ["esnext", "dom"],
-    "outDir": "./tsc/test",
-    "types": ["vite/client", "jest"],
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["./node_modules", "src/sites/mobile-taro", "src/packages/vscode-extension"]
+  "files": [
+    "node_modules/miniprogram-api-typings/index.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

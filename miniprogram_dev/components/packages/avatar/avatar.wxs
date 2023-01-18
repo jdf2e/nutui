@@ -1,0 +1,15 @@
+function styles(bgImage, bgColor) {
+    return {
+        backgroundImage: bgImage ?'': null,
+        backgroundColor: ''
+    };
+}
+
+// function iconStyles(bgIcon) {
+//     return bgIcon ? { backgroundImage: `url(${bgIcon})` } : null;
+// }
+
+module.exports = {
+    styles: styles,
+    // iconStyles: iconStyles,
+};

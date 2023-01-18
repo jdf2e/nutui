@@ -1,0 +1,85 @@
+.index {
+  height: 100%;
+  width: 100%;
+  padding-top: 60rpx;
+}
+
+.index-header {
+  display: flex;
+  align-items: center;
+  padding: 0 68rpx;
+  height: 234rpx;
+}
+
+.index-header > image {
+  width: 134rpx;
+  height: 134rpx;
+  margin-right: 36rpx;
+  flex-shrink: 0;
+}
+
+.index-header .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.index-header .info h1 {
+  height: 96rpx;
+  line-height: 96rpx;
+  font-size: 68rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.index-header .info p {
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 24rpx;
+  color: #9a9b9d;
+}
+
+.index-components {
+  background: #f7f8fa;
+  border-radius: 60rpx 60rpx 0 0;
+  overflow: hidden;
+  padding: 60rpx 50rpx;
+}
+
+.index-components > ol {
+  margin-bottom: 34rpx;
+}
+
+.index-components > ol > li {
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #909ca4;
+  margin-bottom: 20rpx;
+}
+
+.index-components > ol > ul li {
+  display: flex;
+  align-items: center;
+  padding: 0 48rpx;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: white;
+  border-radius: 44rpx;
+  box-shadow: 0rpx 1rpx 8rpx 0rpx rgba(102, 102, 102, 0.06);
+  margin-bottom: 26rpx;
+  box-sizing: border-box;
+}
+
+.index-components > ol > ul li a {
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: block;
+  color: #333333;
+}
+
+.index-components ol,
+.index-components li {
+  list-style: none;
+}

@@ -1,0 +1,23 @@
+<view class="demo">
+    <h2>基础用法</h2>
+    <nut-divider />
+    <h2>展示文本</h2>
+    <nut-divider useSlot>文本</nut-divider>
+    <h2>内容位置</h2>
+    <nut-divider contentPosition="left">文本</nut-divider>
+    <nut-divider content-position="right">文本</nut-divider>
+    <h2>虚线</h2>
+    <nut-divider dashed useSlot>文本</nut-divider>
+    <h2>自定义样式</h2>
+    <nut-divider useSlot style="color: #1989fa" border-color="#1989fa">文本</nut-divider>
+    <h2>垂直分割线</h2>
+    <view style="font-size: 28rpx; margin-left:10rpx; color: #909ca4 ">
+      文本
+      <nut-divider direction="vertical" />
+      <a href="#" style="color: #1989fa">链接</a>
+      <nut-divider direction="vertical" />
+      <a href="#" style=" color: #1989fa">链接</a>
+    </view>
+    
+</view>
+

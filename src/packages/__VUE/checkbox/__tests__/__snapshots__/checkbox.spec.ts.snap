@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`basic usage 1`] = `
-"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon\\" src=\\"\\"></i>
-  <view class=\\"nut-checkbox__label \\"></view>
-</view>"
-`;

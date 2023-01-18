@@ -1,0 +1,16 @@
+{
+  "component": true,
+  "usingComponents": {
+    "nut-button": "./packages/button/index",
+    "nut-cell": "./packages/cell/cell",
+    "nut-avatar": "./packages/avatar/avatar",
+    "nut-icon":"./packages/icon/icon",
+    "nut-cell-group":"./packages/cellgroup/index",
+    "nut-divider":"./packages/divider/index",
+    "nut-grid":"./packages/grid/index",
+    "nut-grid-item":"./packages/grid-item/index"
+  },
+  "componentGenerics": {
+    "genericsTest": true
+  }
+}

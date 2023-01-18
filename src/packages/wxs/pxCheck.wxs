@@ -1,0 +1,9 @@
+var REGEXP = getRegExp('^-?\d+(\.\d+)?$');
+
+function pxCheck(value) {
+    return REGEXP.test('' + value) ? value + 'px' : value;
+};
+
+
+// module.exports = pxCheck;
+module.exports = pxCheck;

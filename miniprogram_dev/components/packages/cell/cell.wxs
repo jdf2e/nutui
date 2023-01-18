@@ -1,0 +1,37 @@
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+function classes (data){
+    var prefixCls = 'nut-cell';
+
+    var classes = [prefixCls]
+
+    if(data.isLink || data.to){
+        classes.push(prefixCls+'--clickable')
+    }
+
+    if(data.center){
+        classes.push(prefixCls+'--center')
+    }
+
+    if(data.size == 'large'){
+        classes.push(prefixCls+'--large')
+    }
+      return classes.join(' ');;
+}
+
+function classAlone (data){
+    return  (!data.title && !data.subTitle) ?'nut-cell__value--alone':''
+}
+
+function baseStyle(data){
+    return style([{
+        borderRadius: pxCheck(data.roundRadius)
+    }])
+}
+
+module.exports = {
+    classes: classes,
+    baseStyle:baseStyle,
+    classAlone:classAlone
+};

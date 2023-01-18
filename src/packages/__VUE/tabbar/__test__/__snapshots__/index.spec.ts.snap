@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should render fixed element when using bottom prop 1`] = `"<view class=\\"nut-tabbar nut-tabbar-bottom nut-tabbar-safebottom\\"></view>"`;

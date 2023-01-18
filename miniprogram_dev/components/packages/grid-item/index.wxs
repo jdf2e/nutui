@@ -1,0 +1,43 @@
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+function baseStyle(data){
+
+  var styled = {
+    width: 100 / data.columnNum+'%'
+  };
+
+  if (data.square) {
+    styled.paddingTop = 100 / data.columnNum+'%';
+  } else if (data.gutter) {
+    styled.paddingRight = pxCheck(data.gutter);
+    if (data.index >= data.columnNum) {
+      styled.marginTop = pxCheck(data.gutter);
+    }
+  }
+
+  return style([styled])
+}
+
+function contentClass(parent) {
+  var prefixCls = 'nut-grid-item__content'
+  var defaultClassesObj = [prefixCls]
+
+  if(parent.border) defaultClassesObj.push(prefixCls+'--border')
+  if(parent.border && parent.gutter) defaultClassesObj.push(prefixCls+'--surround')
+  if(parent.center) defaultClassesObj.push(prefixCls+'--center')
+  if(parent.square) defaultClassesObj.push(prefixCls+'--square')
+  if(parent.reverse) defaultClassesObj.push(prefixCls+'--reverse')
+  if(!!parent.direction) defaultClassesObj.push(prefixCls+'--'+parent.direction)
+  if(parent.clickable) defaultClassesObj.push(prefixCls+'--clickable')
+
+
+  return defaultClassesObj.join(' ');
+}
+
+
+
+module.exports = {
+  contentClass:contentClass,
+  baseStyle:baseStyle
+};

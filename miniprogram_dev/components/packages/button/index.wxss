@@ -1,0 +1,150 @@
+.nut-button {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  flex-shrink: 0;
+  height: 76rpx;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  appearance: none;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: bottom;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.nut-button .text {
+  margin-left: 5px;
+}
+.nut-button::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border: inherit;
+  border-color: #000;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  content: " ";
+}
+.nut-button::after {
+  border: none;
+}
+.nut-button:active::before {
+  opacity: 0.1;
+}
+.nut-button__warp {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nut-button--loading::before, .nut-button--disabled::before {
+  display: none;
+}
+.nut-button--default {
+  color: rgb(102, 102, 102);
+  background: #fff;
+  border: 2rpx solid rgb(204, 204, 204);
+}
+.nut-button--primary {
+  color: #fff;
+  background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+  border: 2rpx solid transparent;
+}
+.nut-button--info {
+  color: #fff;
+  background: linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%);
+  border: 2rpx solid transparent;
+}
+.nut-button--success {
+  color: #fff;
+  background: linear-gradient(135deg, rgb(38, 191, 38) 0%, rgb(39, 197, 48) 45%, rgb(40, 207, 63) 83%, rgb(41, 212, 70) 100%);
+  border: 2rpx solid transparent;
+}
+.nut-button--danger {
+  color: #fff;
+  background: rgb(250, 44, 25);
+  border: 2rpx solid transparent;
+}
+.nut-button--warning {
+  color: #fff;
+  background: linear-gradient(135deg, rgb(255, 158, 13) 0%, rgb(255, 167, 13) 45%, rgb(255, 182, 13) 83%, rgb(255, 190, 13) 100%);
+  border: 2rpx solid transparent;
+}
+.nut-button--plain {
+  background: #fff;
+}
+.nut-button--plain.nut-button--primary {
+  color: #fa2c19;
+  border-color: #fa2c19;
+}
+.nut-button--plain.nut-button--info {
+  color: rgb(73, 106, 242);
+  border-color: rgb(73, 106, 242);
+}
+.nut-button--plain.nut-button--success {
+  color: rgb(38, 191, 38);
+  border-color: rgb(38, 191, 38);
+}
+.nut-button--plain.nut-button--danger {
+  color: rgb(250, 44, 25);
+  border-color: rgb(250, 44, 25);
+}
+.nut-button--plain.nut-button--warning {
+  color: rgb(255, 158, 13);
+  border-color: rgb(255, 158, 13);
+}
+.nut-button--large {
+  width: 100%;
+  height: 96rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+}
+.nut-button--normal {
+  padding: 0 36rpx;
+  font-size: 28rpx;
+}
+.nut-button--small {
+  height: 56rpx;
+  line-height: 52rpx;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+}
+.nut-button--small.nut-button--round {
+  border-radius: 50rpx;
+}
+.nut-button--mini {
+  height: 48rpx;
+  line-height: 1.2;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+}
+.nut-button--block {
+  display: block;
+  width: 100%;
+}
+.nut-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+.nut-button--loading {
+  cursor: default;
+  opacity: 0.9;
+}
+.nut-button--round {
+  border-radius: 50rpx;
+}
+.nut-button--square {
+  border-radius: 0;
+}

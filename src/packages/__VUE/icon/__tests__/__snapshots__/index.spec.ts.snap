@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should render icon dongdong 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-dongdong\\" src=\\"\\"></i>"`;
-
-exports[`should render icon dongdong color 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-dongdong\\" style=\\"color: red;\\" src=\\"\\"></i>"`;
-
-exports[`should render icon dongdong size 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-dongdong\\" style=\\"font-size: 24px; width: 24px; height: 24px;\\" src=\\"\\"></i>"`;
-
-exports[`should render icon image type 1`] = `"<img class=\\"nut-icon__img\\" src=\\"https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png\\">"`;

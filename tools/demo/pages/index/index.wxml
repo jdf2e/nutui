@@ -1,0 +1,26 @@
+<view class="index">
+    <view class="index-header">
+      <image
+        src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+        alt=""
+        srcset=""
+      />
+      <view class="info">
+        <h1>NutUI</h1>
+        <p>京东风格的轻量级小程序组件库</p>
+      </view>
+    </view>
+    <view class="index-components">
+      <ol wx:for="{{nav}}"  wx:for-item="_nav">
+        <li>{{ _nav.name }}</li>
+        <ul>
+            <li bindtap="go" data-path="{{_package.name}}" wx:for="{{_nav.packages}}" wx:for-item="_package">
+              <a>
+                {{ _package.name }} {{ _package.cName }}
+              </a>
+              <nut-icon size="14px" color="#979797" name="right"></nut-icon>
+            </li>
+        </ul>
+      </ol>
+    </view>
+  </view>

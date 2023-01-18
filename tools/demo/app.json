@@ -1,0 +1,26 @@
+
+{
+  "pages":[
+    "pages/index/index",
+    "pages/basic/pages/icon/index",
+    "pages/basic/pages/cell/index",
+    "pages/basic/pages/button/index",
+    "pages/basic/pages/divider/index",
+    "pages/basic/pages/grid/index"
+  ],
+  "usingComponents": {
+    "nut-icon":"./components/packages/icon/icon",
+    "nut-cell":"./components/packages/cell/cell",
+    "nut-cell-group":"./components/packages/cellgroup/index",
+    "nut-button":"./components/packages/button/index",
+    "nut-divider":"./components/packages/divider/index",
+    "nut-grid":"./components/packages/grid/index",
+    "nut-grid-item":"./components/packages/grid-item/index"
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

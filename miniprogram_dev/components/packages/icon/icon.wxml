@@ -1,0 +1,5 @@
+
+<wxs src="./icon.wxs" module="computed" />
+
+    <image wx:if="{{computed.isImage(name)}}" class="{{computed.classes({name,fontClassName,classPrefix})}}" style="{{computed.styled({color,size})}}" mode="aspectFit"  src="{{name}}"></image>
+    <i wx:else  class="{{computed.classes({name,fontClassName,classPrefix})}}" style="{{computed.styled({color,size})}}"></i>

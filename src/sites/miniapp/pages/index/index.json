@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "nut-button": "../../nutui/components/button/index",
-    "nut-icon":"../../nutui/components/nutIcon/index"
-  }
-}

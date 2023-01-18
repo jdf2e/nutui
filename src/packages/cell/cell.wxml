@@ -1,0 +1,35 @@
+<wxs src="./cell.wxs" module="computed" />
+
+<view class="{{computed.classes({isLink,to,center,size})}}" style="{{computed.baseStyle({roundRadius})}}" bindtap="handleClick">
+        <!-- icon -->
+        <view class="nut-cell__icon" wx:if="{{icon}}">
+            <nut-icon class="icon" name="{{icon}}"></nut-icon>
+        </view>
+        <view class="nut-cell__icon" wx:else>
+            <slot name="icon"></slot>
+        </view>
+
+         <!-- 默认 slot -->
+        <slot></slot>
+        
+        <!-- title -->
+        <view class="nut-cell__title" wx:if="{{title || subTitle }}">
+            <view class="title" wx:if="{{title}}">{{ title }}</view>
+            <view wx:if="{{subTitle}}" class="nut-cell__title-desc">{{ subTitle }}</view>
+        </view>
+        <view class="nut-cell__title" wx:if="{{useLabelSlot}}">
+            <slot name="title"></slot>
+            <view wx:if="{{subTitle}}" class="nut-cell__title-desc">{{ subTitle }}</view>
+        </view>
+
+
+        <view wx:if="{{desc}}"
+            class="nut-cell__value {{ computed.classAlone({title,subTitle})}}"
+            style="text-align:{{ descTextAlign }}">{{ desc }}</view>
+        
+        <!-- link -->
+        <nut-icon wx:if="{{isLink || to}}" class="nut-cell__link"  name="{{rightIcon}}"></nut-icon>
+        <slot name="link" ></slot>
+
+       
+</view>

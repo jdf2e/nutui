@@ -1,0 +1,25 @@
+
+function Classes(data) {
+  console.log(data)
+  var prefixCls = 'nut-divider'
+  var defaultClassesObj = [prefixCls]
+
+  if (data.direction === 'horizontal') {
+    if (data.useSlot) defaultClassesObj.push(prefixCls + '-center')
+    if (data.contentPosition === 'left') defaultClassesObj.push(prefixCls + '-left')
+    if (data.contentPosition === 'right') defaultClassesObj.push(prefixCls + '-right')
+    if (data.dashed) defaultClassesObj.push(prefixCls + '-dashed')
+    if (data.hairline) defaultClassesObj.push(prefixCls + '-hairline')
+
+   
+  } else {
+    if (data.direction === 'vertical') defaultClassesObj.push(prefixCls + '-vertical')
+  }
+
+  return defaultClassesObj.join(' ');
+}
+
+
+module.exports = {
+  classes: Classes
+};
