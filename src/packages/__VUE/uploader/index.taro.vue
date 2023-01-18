@@ -43,6 +43,7 @@
           <nut-icon name="link" />&nbsp;{{ item.name }}
         </view>
         <nut-icon
+          v-if="isDeletable"
           class="nut-uploader__preview-img__file__del"
           @click="onDelete(item, index)"
           color="#808080"
@@ -70,14 +71,14 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, PropType, reactive } from 'vue';
+import { computed, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
-import { isPromise } from '@/packages/utils/util';
+
 export default create({
   props: {
     name: { type: String, default: 'file' },

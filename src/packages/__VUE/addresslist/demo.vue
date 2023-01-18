@@ -24,7 +24,7 @@
       :dataMapOptions="dataMapOptions"
     >
     </nut-addresslist>
-    <h2>{{ translate('title1') }}</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-addresslist
       :data="data"
       swipeEdition

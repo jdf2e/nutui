@@ -1,3 +1,28 @@
+## v3.3.3
+
+`2022-1-18`
+
+小程序版本依赖 Taro ^3.5.6
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @gyt95  @thx125 @rocwong-cn
+
+
+* :zap: feat(config-provider): 支持统一自定义 icon 、font-class-name、class-prefix (#2016) @thx125
+* :bug: fix(numberkeyboard): type edit (#2067) @Drjingfubo
+* :bug: fix(progress): component optimization (#2060) @Drjingfubo
+* :bug: fix(tabs): the automatic scrolling fails while updating title bar data @gyt95
+* :bug: fix(comment、ellipsis、noticebar、picker、sku): v4 bug 同步修复 @yangxiaolu1993
+* :bug: fix(input、price、addresslist): v4 bug 同步修复 & v3 taro环境input使用bug @ailululu 
+* :bug: fix(uploader): is-deletable在列表模式下不生效 (#2062) @rocwong-cn
+* :bug: fix(collapse、signature): collapse 渲染卡顿问题、signature 组件增加空值返回 (#2061) @Ymm0008
+* :bug: fix: cdn minify bug 3.3.3 @richard1015
+* :bug: fix: 国际化 treeshaking 修复 @richard1015
+* :bug: fix(cell): desc-text-align bug @richard1015
+* :bug: fix(rate): readonly state disable touch  @richard1015
+* :bug: fix(barrage): slot 模式优化 (#2066) @Ymm0008
+* 📖 docs(tabbar): fix format (#2018) @gyt95
+
 ## v3.3.2
 
 `2022-1-4`

@@ -81,5 +81,5 @@ export default {
 | start `v3.2.0`| 签名开始回调函数（指某次笔画的开始） | 无
 | signing `v3.2.0`| 正在签名的回调函数（指某次笔画进行中） | event
 | end `v3.2.0`| 签名结束回调函数（指某次笔画的结束）| 无
-| confirm | 点击确认按钮触发事件回调函数 | data URI
+| confirm | 点击确认按钮触发事件回调函数 | canvas和签名图片展示的 data URI，<br>如未绘制，则返回提示信息和空 data URI
 | clear | 点击重签按钮触发事件回调函数 | 无
