@@ -129,6 +129,7 @@ export default create({
     // 执行关闭
     const closeDone = () => {
       state.showPop = false;
+
       emit('close');
     };
 
@@ -144,9 +145,12 @@ export default create({
     watch(
       () => props.show,
       (val) => {
-        console.log('展示', val);
         state.showPop = val;
-        init();
+
+        if (val) {
+          setActive(props.initNo);
+          init();
+        }
       }
     );
 
