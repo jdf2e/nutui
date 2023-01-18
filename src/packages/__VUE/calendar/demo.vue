@@ -405,6 +405,11 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
+.demo {
+  ::v-deep(.nut-cell__value) {
+    flex: initial;
+  }
+}
 .test-calendar-wrapper {
   display: flex;
   width: 100%;

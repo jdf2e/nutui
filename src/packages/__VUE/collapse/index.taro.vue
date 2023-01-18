@@ -34,9 +34,8 @@ export default create({
     };
 
     const changeValAry = (name: string) => {
-      const activeItem: any = props.modelValue instanceof Object ? Object.values(props.modelValue) : props.modelValue;
+      const activeItem: any = props.modelValue;
       let index = -1;
-
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
           index = idx;
@@ -84,6 +83,8 @@ export default create({
           let domsProps: any = slots?.default?.();
           let doms: any = childrenDom.value;
           Array.from(doms).forEach((item: any, index: number) => {
+            console.log(index);
+
             if (typeof newval == 'number' || typeof newval == 'string') {
               if (domsProps[index] && domsProps[index].props) {
                 item.changeOpen(newval == domsProps[index].props.name ? true : false);

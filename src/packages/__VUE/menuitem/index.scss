@@ -45,13 +45,13 @@
 
 .nut-menu-item-placeholder-element {
   position: fixed;
-  top: -$menu-bar-line-height;
+  top: $menu-bar-line-height;
   left: 0;
   right: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
 
   &.up {
-    bottom: -$menu-bar-line-height;
+    bottom: $menu-bar-line-height;
   }
 }
