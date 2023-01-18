@@ -36,7 +36,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
-    "@nutui/nutui-taro": "^3.2.5",
+    "@nutui/nutui-taro": "^4.0.0",
     "@tarojs/components": "3.5.6",
     "@tarojs/mini-runner": "3.5.6",
     "@tarojs/plugin-platform-weapp": "3.5.6",
