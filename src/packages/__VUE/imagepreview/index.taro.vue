@@ -259,7 +259,10 @@ export default create({
       () => props.show,
       (val) => {
         state.showPop = val;
-        init();
+        if (val) {
+          setActive(props.initNo);
+          init();
+        }
       }
     );
 
@@ -271,6 +274,7 @@ export default create({
     );
 
     onMounted(() => {
+      console.log(111);
       setActive(props.initNo);
     });
 
