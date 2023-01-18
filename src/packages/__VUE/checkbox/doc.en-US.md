@@ -385,7 +385,7 @@ When the value changes, the `change` event will be triggered
 | icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` 
 | label | Text content of the check box | String | - 
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | Boolean                  | `false` |
-| shape `v3.3.2` | Shape, optional values：`button`、`round` | String | `round` |
+| shape `v3.3.4` | Shape, optional values：`button`、`round` | String | `round` |
 
 
 ### CheckboxGroup Props

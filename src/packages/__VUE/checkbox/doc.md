@@ -389,7 +389,7 @@ app.use(Icon);
 | icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | Boolean                  | `false` |
-| shape `v3.3.2` | 形状，可选值：`button`、`round` | String | `round` |
+| shape `v3.3.4` | 形状，可选值：`button`、`round` | String | `round` |
 ### CheckboxGroup Props
 
 | 字段 | 说明 | 类型 | 默认值
