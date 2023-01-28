@@ -107,6 +107,14 @@
         <nut-cell><nut-checkbox label="4">组合复选框</nut-checkbox></nut-cell>
       </nut-checkbox-group>
     </nut-cell-group>
+    <nut-cell-group title="按钮形状">
+      <nut-cell>
+        <nut-checkbox-group v-model="checkboxgroup6">
+          <nut-checkbox label="1" shape="button">按钮形状</nut-checkbox>
+          <nut-checkbox label="2" shape="button">按钮形状</nut-checkbox>
+        </nut-checkbox-group>
+      </nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 <script lang="ts">
@@ -140,6 +148,7 @@ export default {
       checkboxgroup3: ['2'],
       checkboxgroup4: ['2'],
       checkboxgroup5: [],
+      checkboxgroup6: [],
       checkboxsource: [
         { label: '1', value: '组合复选框' },
         { label: '2', value: '组合复选框' },
