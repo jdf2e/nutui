@@ -3,7 +3,7 @@
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
-      class="placeholder-element"
+      class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
       :style="placeholderElementStyle"
     >

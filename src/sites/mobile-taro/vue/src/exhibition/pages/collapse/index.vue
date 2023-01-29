@@ -66,12 +66,6 @@ export default {
     const change = (name: string) => {
       console.log(`点击了name是${name}的面板`);
     };
-    // const content = ref("");
-    // onMounted(() => {
-    //   setTimeout(() => {
-    //     content.value = "京东到家：教师节期间 创意花束销量增长53倍";
-    //   }, 500);
-    // })
     return {
       change,
       ...toRefs(data),

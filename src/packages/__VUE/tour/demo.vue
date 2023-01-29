@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo tour-demo">
     <h2>{{ translate('title') }}</h2>
 
     <nut-cell :title="translate('tryClick')" @click="showTour3 = true">
@@ -282,7 +282,9 @@ export default createDemo({
     border-color: #fff;
   }
 }
-.nut-tabbar-item_icon-box_nav-word {
-  font-size: 14px;
+.tour-demo {
+  .nut-tabbar-item_icon-box_nav-word {
+    font-size: 14px;
+  }
 }
 </style>

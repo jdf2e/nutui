@@ -753,7 +753,7 @@ $sku-spec-title-margin-bottom: var(--nut-sku-spec-title-margin-bottom, 18px) !de
 $sku-operate-btn-height: var(--nut-sku-operate-btn-height, 54px) !default;
 $sku-operate-btn-border-top: var(--nut-sku-operate-btn-border-top, 0) !default;
 $sku-operate-btn-item-height: var(--nut-sku-operate-btn-item-height, 40px) !default;
-$sku-operate-btn-item-line-height: var(--nut-sku-operate-btn-item-line-height, $sku-operate-btn-it) em-height;
+$sku-operate-btn-item-line-height: var(--nut-sku-operate-btn-item-line-height, $sku-operate-btn-item-height) !default;
 $sku-operate-btn-item-font-size: var(--nut-sku-operate-btn-item-font-size, 15px) !default;
 $sku-operate-btn-item-font-weight: var(--nut-sku-operate-btn-item-font-weight, normal) !default;
 $sku-product-img-width: var(--nut-sku-product-img-width, 100px) !default;

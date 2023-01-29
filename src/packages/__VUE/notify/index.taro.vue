@@ -1,5 +1,5 @@
 <template>
-  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleportDisable="teleportDisable">
+  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false">
     <div
       :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
@@ -13,7 +13,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, onUnmounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 const { create } = createComponent('notify');
@@ -44,10 +44,6 @@ export default create({
       type: String,
       default: 'top'
     },
-    teleportDisable: {
-      type: Boolean,
-      default: true
-    },
     onClose: Function,
     onClick: Function,
     unmount: Function
@@ -73,11 +69,10 @@ export default create({
     // watch show popup
     const isShowPopup = ref<boolean>(false);
 
-    const unWatch = watch(
+    watch(
       () => props.visible,
       (newVal: boolean) => {
         isShowPopup.value = props.visible;
-
         const DURATION: number = props.duration;
         if (newVal && DURATION) {
           timer = setTimeout(() => {
@@ -88,14 +83,11 @@ export default create({
       { immediate: true }
     );
 
-    const onAfterLeave = () => {
+    onUnmounted(() => {
       clearTimer();
-      unWatch && unWatch();
-      props.unmount && props.unmount(props.id);
-      props.onClose && props.onClose();
-    };
+    });
 
-    return { onAfterLeave, clickCover, isShowPopup };
+    return { clickCover, isShowPopup };
   }
 });
 </script>

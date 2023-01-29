@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo addresslist-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-address-list
@@ -113,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo {
+.addresslist-demo {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }

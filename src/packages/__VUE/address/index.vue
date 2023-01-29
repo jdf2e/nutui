@@ -13,7 +13,7 @@
       <view class="nut-address__header">
         <view class="nut-address__header-back" @click="switchModule">
           <slot name="back-icon">
-            <Left v-show="type == 'exist' && privateType == 'custom'"></Left>
+            <Left v-show="type == 'exist' && privateType == 'custom'" size="14px"></Left>
           </slot>
         </view>
 
@@ -27,7 +27,7 @@
 
         <view class="nut-address__header-close" @click="handClose('cross')">
           <slot name="close-icon">
-            <Close color="#cccccc" size="18px"></Close>
+            <Close color="#cccccc" size="14px"></Close>
           </slot>
         </view>
       </view>
@@ -60,7 +60,7 @@
             >
               <div>
                 <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
-                  <Check class="nut-address-select-icon" width="13px"></Check> </slot
+                  <Check class="nut-address-select-icon" size="13px"></Check> </slot
                 >{{ item.name }}
               </div>
             </li>
@@ -87,11 +87,11 @@
               @click="selectedExist(item)"
             >
               <slot name="unselected-icon" v-if="!item.selectedAddress">
-                <Location2 class="nut-address-select-icon" width="13px"></Location2>
+                <Location2 class="nut-address-select-icon" size="13px"></Location2>
               </slot>
 
               <slot name="icon" v-if="item.selectedAddress">
-                <Check class="nut-address-select-icon" width="13px"></Check>
+                <Check class="nut-address-select-icon" size="13px"></Check>
               </slot>
 
               <div class="nut-address__exist-item-info">

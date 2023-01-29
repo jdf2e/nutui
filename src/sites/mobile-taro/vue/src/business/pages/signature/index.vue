@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
+  <div class="demo signature-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-signature @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app .demo {
+#app .signature-demo {
   height: auto;
 }
 .test {

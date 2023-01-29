@@ -67,10 +67,6 @@ export default {
       Taro.navigateTo({
         url: `/${enName}/pages/${name.toLowerCase()}/index`
       });
-
-      if (Taro.getEnv() === 'WEB' && parent.location.href.includes('zh-CN')) {
-        parent.location.href = `${parent.location.origin}/vue_taro/index.html#/zh-CN/component/${name.toLowerCase()}`;
-      }
     };
 
     return {
