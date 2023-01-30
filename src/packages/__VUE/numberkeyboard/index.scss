@@ -44,7 +44,7 @@
 
   .number-board-body {
     display: flex;
-    padding: 6px 0 0 6px;
+    padding: $numberkeyboard-body-padding;
 
     .number-board {
       display: flex;

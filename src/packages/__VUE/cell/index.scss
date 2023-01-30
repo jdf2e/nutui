@@ -26,8 +26,29 @@
   &--large {
     font-size: $cell-large-title-font;
     padding: $cell-large-padding;
+    line-height: $cell-large-line-height;
     .nut-cell__title-desc {
       font-size: $cell-large-title-desc-font;
+      line-height: $cell-large-title-desc-line-height;
+    }
+
+    .nut-cell__icon {
+      margin: $cell-default-large-icon-margin;
+
+      .nut-icon {
+        width: $cell-default-large-icon-size;
+        height: $cell-default-large-icon-size;
+        line-height: $cell-default-large-icon-size;
+      }
+
+      .nutui-iconfont {
+        font-size: $cell-default-large-icon-font-size;
+      }
+    }
+
+    .nut-cell__link.nut-icon {
+      height: $cell-large-icon-link-height;
+      line-height: $cell-large-icon-link-height;
     }
   }
 
@@ -72,7 +93,17 @@
   &__icon {
     display: flex;
     flex-direction: row;
-    margin-right: $cell-default-icon-margin;
+    margin: $cell-default-icon-margin;
+
+    .nut-icon {
+      width: $cell-default-icon-size;
+      height: $cell-default-icon-size;
+      line-height: $cell-default-icon-size;
+    }
+
+    .nutui-iconfont {
+      font-size: $cell-default-icon-font-size;
+    }
   }
 
   &__title {
@@ -80,7 +111,9 @@
     flex-direction: column;
     flex: 1;
     &-desc {
+      line-height: $cell-title-desc-line-height;
       font-size: $cell-title-desc-font;
+      color: $cell-title-desc-color;
     }
   }
   &__value {
@@ -92,7 +125,13 @@
       color: $cell-color;
     }
   }
-  &__link {
-    color: #979797;
+  &__link.nut-icon {
+    color: $cell-icon-link-color;
+    margin: $cell-icon-link-margin;
+    width: $cell-icon-link-width;
+    min-width: 1em;
+    height: $cell-icon-link-height;
+    line-height: $cell-icon-link-height;
+    font-size: $cell-icon-link-font-size;
   }
 }

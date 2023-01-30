@@ -26,9 +26,9 @@ textarea {
 .nut-input {
   position: relative;
   width: 100%;
-  padding: 10px 25px;
+  padding: $input-padding;
   display: flex;
-  line-height: 24px;
+  line-height: $input-line-height;
   background: $white;
   font-size: $input-font-size;
   box-sizing: border-box;

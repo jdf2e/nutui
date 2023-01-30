@@ -20,7 +20,7 @@
     display: flex;
     position: absolute;
     left: 50%;
-    bottom: 12px;
+    bottom: $swiper-pagination-item-position;
     transform: translateX(-50%);
     i {
       width: $swiper-pagination-item-width;
@@ -34,7 +34,7 @@
   }
   &-pagination-vertical {
     top: 50%;
-    left: 12px;
+    left: $swiper-pagination-item-position;
     bottom: auto;
     flex-direction: column;
     -webkit-box-orient: vertical;

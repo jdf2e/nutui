@@ -53,7 +53,7 @@
   .nut-actionsheet-item {
     display: block;
     //   height: 24px;
-    padding: 10px;
+    padding: $actionsheet-item-padding;
     line-height: $actionsheet-item-line-height;
     font-size: $actionsheet-item-font-size;
     color: $actionsheet-item-font-color;
@@ -64,19 +64,19 @@
   }
 
   .desc {
-    font-size: $actionsheet-item-font-size;
-    color: #999;
+    font-size: $actionsheet-item-desc-font-size;
+    color: $actionsheet-item-desc-font-color;
     cursor: default;
   }
 
   .subdesc {
     display: block;
     font-size: $actionsheet-item-subdesc-font-size;
-    color: #999;
+    color: $actionsheet-item-subdesc-font-color;
   }
 
   .nut-actionsheet-item-disabled {
-    color: #e1e1e1 !important;
+    color: $actionsheet-item-disabled-font-color !important;
     cursor: not-allowed;
   }
   .nut-actionsheet-item-loading {

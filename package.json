@@ -41,6 +41,7 @@
     "checked": "npm run generate:file && tsc",
     "checked:taro:vue": "npm run generate:file:taro:vue",
     "dev": "npm run checked && vite --open --force",
+    "dev:jdt": "npm run checked && vite --open --force --config vite.config.jdt.ts",
     "dev:taro:weapp": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
     "dev:taro:alipay": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:alipay",
     "dev:taro:jd": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:jd",
