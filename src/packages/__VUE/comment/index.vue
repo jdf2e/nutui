@@ -1,7 +1,7 @@
 <template>
   <view :class="classes" v-if="info && Object.keys(info)">
     <!-- 根据展示信息的多少，分为3种展示风格：simple，base，complex -->
-    <comment-header :type="headerType" :info="info" :labels="labels" @handleClick="handleClick">
+    <comment-header :type="headerType" :info="info" @handleClick="handleClick">
       <template #labels>
         <slot name="comment-labels"></slot>
       </template>
@@ -82,11 +82,6 @@ export default create({
     follow: {
       type: Object,
       default: () => {}
-    },
-
-    labels: {
-      type: Function,
-      default: () => ''
     },
 
     operation: {

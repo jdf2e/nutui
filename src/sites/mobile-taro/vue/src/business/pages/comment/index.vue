@@ -6,7 +6,6 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
-        :labels="labels"
         @click="handleclick"
         @clickImages="clickImages"
         :operation="['replay']"
@@ -42,7 +41,7 @@
 
         <template #comment-shop-reply>
           <div class="nut-comment-shop">
-            <span>京东美妆国际：</span
+            <span style="display: inline">京东美妆国际：</span
             >尊敬的客户您好，非常抱歉给您带来不愉快的购物体验，关于过敏，什么成分都不存在个别性和普遍性。
           </div>
         </template>
@@ -69,10 +68,6 @@ export default defineComponent({
   props: {},
   setup() {
     let cmt = ref({});
-    const labels = () => {
-      return '<nut-icon name="dongdong" color="#fa2c19"></nut-icon>';
-    };
-
     const handleclick = (info: any) => {
       console.log('进行跳转', info);
     };
@@ -97,7 +92,6 @@ export default defineComponent({
 
     return {
       cmt,
-      labels,
       handleclick,
       clickImages
     };

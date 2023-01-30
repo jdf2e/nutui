@@ -119,6 +119,7 @@
   &__value {
     display: inline-block;
     text-align: right;
+    flex: 1;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
     &--alone {

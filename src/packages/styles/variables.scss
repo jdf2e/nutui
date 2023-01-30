@@ -482,6 +482,14 @@ $checkbox-label-margin-left: 15px !default;
 $checkbox-label-font-size: 14px !default;
 $checkbox-icon-font-size: 18px !default;
 $checkbox-icon-disable-color2: $help-color !default;
+$checkbox-button-padding: 5px 18px !default;
+$checkbox-button-font-size: 12px !default;
+$checkbox-button-border-radius: 15px !default;
+$checkbox-label-button-bg-color: #f6f7f9 !default;
+$checkbox-label-button-border-color: #f6f7f9 !default;
+$checkbox-label-button-bg-active-color: rgba($primary-color, 0.05) !default;
+$checkbox-label-button-border-active-color: $primary-color !default;
+$checkbox-label-font-active-color: $primary-color !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;

@@ -6,6 +6,7 @@
           class="nut-tabs__titles"
           :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
           :style="tabsNavStyle"
+          ref="navRef"
         >
           <slot v-if="$slots.titles" name="titles"></slot>
           <template v-else>
@@ -32,6 +33,7 @@
         class="nut-tabs__titles"
         :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
+        ref="navRef"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
         <template v-else>
@@ -42,6 +44,7 @@
             :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
             v-for="(item, index) in titles"
             :key="item.paneKey"
+            :ref="(e) => setTabItemRef(e as HTMLElement, index)"
           >
             <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
             <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">

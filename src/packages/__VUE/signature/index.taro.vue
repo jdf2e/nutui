@@ -78,12 +78,13 @@ export default create({
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
     };
-
+    const isDraw = ref(false);
     const moveEventHandler = (event: { preventDefault: () => void; changedTouches: any[] }) => {
       event.preventDefault();
       if (!state.ctx) {
         return false;
       }
+      isDraw.value = true;
       let evt = event.changedTouches[0];
       emit('signing', evt);
       let mouseX = evt.x || evt.clientX;
@@ -114,6 +115,7 @@ export default create({
       state.ctx.closePath();
 
       emit('clear');
+      isDraw.value = false;
     };
 
     const confirm = () => {
@@ -136,7 +138,10 @@ export default create({
             canvasId: 'spcanvas',
             fileType: props.type,
             success: function (result) {
-              emit('confirm', state.canvas, result.tempFilePath);
+              const _canvas = !isDraw.value ? '请绘制签名' : state.canvas;
+              const _filePath = !isDraw.value ? '' : result.tempFilePath;
+              emit('confirm', _canvas, _filePath);
+              // emit('confirm', state.canvas, result.tempFilePath);
             },
             fail: function (result) {
               emit('confirm', result);

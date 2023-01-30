@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
+    <div class="nut-progress-text" v-if="showText && !textInside">
       <template v-if="status == 'active' || status == ''">
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
       </template>
@@ -106,9 +106,12 @@ export default create({
     const height = ref(props.strokeWidth + 'px');
     const progressOuter = ref();
     const insideText = ref();
+    const percentage = computed(() => {
+      return props.percentage >= 100 ? 100 : props.percentage;
+    });
     const bgStyle = computed(() => {
       return {
-        width: props.percentage + '%',
+        width: percentage.value + '%',
         background: props.strokeColor || ''
       };
     });
@@ -122,6 +125,7 @@ export default create({
       height,
       bgStyle,
       textStyle,
+      percentage,
       progressOuter,
       insideText,
       slotDefault

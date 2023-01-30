@@ -1,6 +1,7 @@
 <template>
   <view class="nut-sku-header">
-    <img :src="goods.imagePath" />
+    <img class="nut-sku-header-img" :src="goods.imagePath" />
+
     <view class="nut-sku-header-right">
       <template v-if="getSlots('sku-header-price')">
         <slot name="sku-header-price"></slot>
@@ -17,8 +18,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
-
+import { reactive, toRefs, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('sku-header');
 
