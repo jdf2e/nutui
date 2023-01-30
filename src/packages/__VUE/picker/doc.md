@@ -166,15 +166,15 @@ columns 属性可以通过二维数组的形式配置多列选择。
 ```html
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
-    <nut-picker
-      v-model="selectedTime"
-      v-model:visible="show"
-      :columns="multipleColumns"
-      title="城市选择"
-      @confirm="confirm"
-      @change="change"
-    >
-    </nut-picker>
+  <nut-picker
+    v-model="selectedTime"
+    v-model:visible="show"
+    :columns="multipleColumns"
+    title="城市选择"
+    @confirm="confirm"
+    @change="change"
+  >
+  </nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -207,10 +207,11 @@ columns 属性可以通过二维数组的形式配置多列选择。
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm, selectedTime};
+      return {show,desc,change, confirm, selectedTime,multipleColumns};
     }
   };
 </script>
+
 ```
 :::
 
@@ -315,7 +316,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
     @confirm="confirm"
   ></nut-picker>
 </template>
-<script>
+<script lang="ts">
   import { ref, onMounted } from 'vue';
   export default {
     setup(props) {
@@ -362,7 +363,7 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
   <nut-cell title="请选择截止时间" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model:visible="show"
-    :columns="asyncColumns"
+    :columns="effectColumns"
     title="日期选择"
     @confirm="confirm"
   >
