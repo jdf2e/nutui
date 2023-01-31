@@ -71,4 +71,5 @@ export interface MonthInfo {
 }
 export interface CalendarRef extends HTMLElement {
   scrollToDate: (date: string) => void;
+  initPosition: () => void;
 }
