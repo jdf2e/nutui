@@ -623,9 +623,8 @@ export default create({
       let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
 
       state.containerHeight = `${containerHeight}px`;
-      state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
+      initPosition();
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
-
       if (months?.value) {
         viewHeight.value = months.value.clientHeight;
       }
@@ -691,8 +690,12 @@ export default create({
         }
       });
     };
+    const initPosition = () => {
+      state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
+    };
     useExpose({
-      scrollToDate
+      scrollToDate,
+      initPosition
     });
     const setDefaultRange = (monthsNum: number, current: number) => {
       let rangeArr: any[] = [];

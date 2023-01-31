@@ -632,7 +632,7 @@ export default create({
         if (months?.value && monthsPanel?.value && viewArea?.value) {
           viewHeight.value = months.value.clientHeight;
           monthsPanel.value.style.height = `${containerHeight}px`;
-          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+          initPosition();
         }
       });
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
@@ -671,8 +671,14 @@ export default create({
         }
       });
     };
+    const initPosition = () => {
+      if (months?.value) {
+        months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
+    };
     useExpose({
-      scrollToDate
+      scrollToDate,
+      initPosition
     });
     // 设置当前可见月份
     const setDefaultRange = (monthsNum: number, current: number) => {
