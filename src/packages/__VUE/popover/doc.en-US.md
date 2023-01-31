@@ -284,6 +284,85 @@ export default {
 :::
 
 
+### custom target 
+
+Popover provides the 'targetId' attribute to match the target element by adding the corresponding id value to the target element
+
+:::demo
+```html
+<template>
+  <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">custom target</nut-button>
+    <nut-popover v-model:visible="customTarget" targetId="popid" :list="itemList" location="top-start"></nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customTarget:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    const clickCustomHandle = () => {
+      visible.customTarget = !visible.customTarget;
+    };
+
+    return {
+        itemList,
+        visible,
+        clickCustomHandle,
+      };
+    }
+}
+</script>
+
+
+```
+:::
+
+### Custom Color
+
+:::demo
+```html
+<template>
+  <nut-popover v-model:visible="customColor" :list="itemList" location="right-start" bgColor="#f00" theme="dark">
+      <template #reference>
+        <nut-button type="primary" shape="square" >Custom Color</nut-button>
+      </template>
+    </nut-popover>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const visible = ref({
+      customColor:false
+    });
+
+    const itemList = reactive([
+      {name: 'option1'},
+      {name: 'option2'},
+      {name: 'option3'}
+    ]);
+
+    return {
+        itemList,
+        visible
+      };
+    }
+}
+</script>
+
+```
+:::
+
 ## API
 ### Props  
 
@@ -296,6 +375,17 @@ export default {
 | offset `v3.1.21`       | the offset of the occurrence position  | [number, number]   | [0, 12]  |
 | show-arrow `v3.1.21`       | whether to show small arrows  | boolean  | true  |
 | custom-class `v3.1.21`       | custom class   | string  | ''  |
+| duration `v3.1.21`       | Transition duration  |  [number, number]  | 0.3  |
+| iconPrefix `v3.1.21`       | Icon className prefix | string  | 'nut-icon''  |
+| overlay `v3.2.8`       | Whether to show overlay  | Boolean  | false  |
+| overlay-class `v3.2.8`       | Custom overlay class | string  | ''  |
+| overlay-style `v3.2.8`       | Custom overlay style  | string  | ''  |
+| close-on-click-overlay `v3.2.8`       | Whether to close when clicking overlay  | boolean  | true  |
+| close-on-click-action `v3.2.8`       | Whether to close when clicking action  | boolean  | true |
+| close-on-click-outside `v3.2.8`       | Whether to close when clicking outside | boolean  | true  |
+| bg-color `v3.3.1`       | Custom color | String  | -  |
+| target-id `v3.3.1`       | Custom target id | String  | -  |
+| arrow-offset `v3.3.1`       | the offset of the arrow | Number  | 0  |
 
 ### List data structure  
 

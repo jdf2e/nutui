@@ -72,6 +72,10 @@
       display: block;
       background-size: 100% 100%;
       background-position: center center;
+      img {
+        width: 20px;
+        height: 20px;
+      }
     }
     &_nav-word {
       font-size: $tabbar-item-text-font-size;

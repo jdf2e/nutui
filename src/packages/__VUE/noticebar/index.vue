@@ -56,12 +56,9 @@
       </template>
 
       <view class="go" @click="!slots.rightIcon && handleClickIcon()">
-        <template v-if="slots.rightIcon">
-          <slot name="rightIcon"></slot>
-        </template>
-        <template v-else-if="closeMode">
-          <nut-icon type="cross" :color="color" size="11px"></nut-icon>
-        </template>
+        <slot name="right-icon">
+          <nut-icon v-bind="$attrs" name="close" v-if="closeMode" :color="color" size="11px"></nut-icon>
+        </slot>
       </view>
     </view>
   </view>

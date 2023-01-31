@@ -440,6 +440,14 @@ $checkbox-label-margin-left: 15px !default;
 $checkbox-label-font-size: 14px !default;
 $checkbox-icon-font-size: 18px !default;
 $checkbox-icon-disable-color2: $help-color !default;
+$checkbox-button-padding: 5px 18px !default;
+$checkbox-button-font-size: 12px !default;
+$checkbox-button-border-radius: 15px !default;
+$checkbox-label-button-bg-color: #f6f7f9 !default;
+$checkbox-label-button-border-color: #f6f7f9 !default;
+$checkbox-label-button-bg-active-color: rgba($primary-color, 0.05) !default;
+$checkbox-label-button-border-active-color: $primary-color !default;
+$checkbox-label-font-active-color: $primary-color !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -542,6 +550,15 @@ $badge-dot-border-radius: 7px !default;
 $badge-dot-padding: 0px !default;
 
 //popover
+// $popover-white-background-color: rgba(255, 255, 255, 1) !default;
+// $popover-dark-background-color: rgba(75, 76, 77, 1) !default;
+// $popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
+// $popover-primary-text-color: rgba(51, 51, 51, 1) !default;
+// $popover-disable-color: rgba(154, 155, 157, 1) !default;
+// $popover-menu-item-padding: 8px 0 !default;
+// $popover-menu-item-margin: 0 8px !default;
+// $popover-menu-name-line-height: normal !default;
+
 $popover-white-background-color: rgba(255, 255, 255, 1) !default;
 $popover-dark-background-color: rgba(75, 76, 77, 1) !default;
 $popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
@@ -702,7 +719,14 @@ $form-item-tip-font-size: 10px !default;
 $form-item-tip-text-align: left !default;
 
 // skeleton
-$skeleton-content-line-title-background-color: #efefef !default;
+$skeleton-content-avatar-background-color: #efefef !default;
+$skeleton-content-line-background-color: #efefef !default;
+$skeleton-animation-background-color: linear-gradient(
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, 0.5) 50%,
+  hsla(0, 0%, 100%, 0) 80%
+) !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color !default;

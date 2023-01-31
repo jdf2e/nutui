@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`delete-icon prop 1`] = `
+"<view class=\\"nut-uploader\\">
+  <!--v-if-->
+  <view class=\\"nut-uploader__upload picture\\"><i class=\\"nutui-iconfont nut-icon nut-icon-photograph\\" style=\\"color: rgb(128, 128, 128);\\" src=\\"\\"></i><input class=\\"nut-uploader__input\\" type=\\"file\\" accept=\\"*\\" name=\\"file\\"></view>
+</view>"
+`;
+
 exports[`render preview image 1`] = `
 "<view class=\\"nut-uploader\\" modelvalue=\\"[object Object],[object Object],[object Object]\\">
   <!--v-if-->

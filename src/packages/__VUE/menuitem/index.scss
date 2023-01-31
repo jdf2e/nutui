@@ -36,23 +36,9 @@
   }
 }
 
-.menu-item__pop-container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-}
-
 .nut-menu__pop {
   transition: all 0 ease 0;
   transform: none;
-  position: absolute !important;
-}
-
-.nut-menu__overlay {
-  position: absolute !important;
 }
 
 .placeholder-element {

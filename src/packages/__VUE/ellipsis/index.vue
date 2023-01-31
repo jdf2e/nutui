@@ -1,10 +1,10 @@
 <template>
   <view :class="classes" @click="handleClick" ref="root">
     <view v-if="!exceeded">{{ content }}</view>
-    <view v-if="exceeded && !expanded">
-      {{ ellipsis.leading }}
-      <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span>
-      {{ ellipsis.tailing }}
+    <view v-if="exceeded && !expanded"
+      >{{ ellipsis.leading
+      }}<span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</span
+      >{{ ellipsis.tailing }}
     </view>
     <view v-if="exceeded && expanded">
       {{ content }}
@@ -77,9 +77,6 @@ export default create({
       () => props.content,
       (newV, oldVal) => {
         if (newV != oldVal) {
-          if (container) {
-            document.body.appendChild(container);
-          }
           createContainer();
         }
       }
@@ -125,6 +122,7 @@ export default create({
     const calcEllipse = () => {
       if (container.offsetHeight <= maxHeight) {
         state.exceeded = false;
+        document.body.removeChild(container);
       } else {
         state.exceeded = true;
         const end = props.content.length;

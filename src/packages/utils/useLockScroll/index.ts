@@ -1,3 +1,4 @@
+import { body } from '@/packages/utils/util';
 let count = 0;
 
 const CLSNAME = 'nut-overflow-hidden';
@@ -5,15 +6,19 @@ const CLSNAME = 'nut-overflow-hidden';
 export const useLockScroll = (isLock: () => boolean) => {
   const lock = () => {
     if (isLock()) {
-      !count && document.body.classList.add(CLSNAME);
-      count++;
+      try {
+        !count && body.classList.add(CLSNAME);
+        count++;
+      } catch (error) {}
     }
   };
 
   const unlock = () => {
     if (isLock() && count) {
-      count--;
-      !count && document.body.classList.remove(CLSNAME);
+      try {
+        count--;
+        !count && body.classList.remove(CLSNAME);
+      } catch (error) {}
     }
   };
 

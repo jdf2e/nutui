@@ -290,10 +290,10 @@ Paused and restarted the countdown with the paused attribute
         CountDown.value.reset();
       };
       return {
-          toggle,
-          onpaused,
-          onrestart,
-        ...toRefs(state)
+          start,
+          pause,
+          reset,
+          CountDown
       };
     }
   }

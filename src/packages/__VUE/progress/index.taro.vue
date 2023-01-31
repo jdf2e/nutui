@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
+    <div class="nut-progress-text" v-if="showText && !textInside">
       <template v-if="status == 'text' || status == 'active'">
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
       </template>
@@ -49,7 +49,6 @@
 import { computed, onMounted, useSlots, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-import { log } from 'lzutf8';
 const { create } = createComponent('progress');
 export default create({
   props: {
@@ -109,9 +108,12 @@ export default create({
     const insideText = ref();
     const refRandomId = Math.random().toString(36).slice(-8);
     const randRef = ref(refRandomId);
+    const percentage = computed(() => {
+      return props.percentage >= 100 ? 100 : props.percentage;
+    });
     const bgStyle = computed(() => {
       return {
-        width: props.percentage + '%',
+        width: percentage.value + '%',
         background: props.strokeColor || ''
       };
     });
@@ -128,6 +130,7 @@ export default create({
       height,
       bgStyle,
       textStyle,
+      percentage,
       insideText,
       randRef,
       slotDefault

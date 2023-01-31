@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should colon 1`] = `
+"<view class=\\"nut-input-label\\" style=\\"width: 80px; text-align: left;\\">
+  <view class=\\"label-string\\">test :</view>
+</view>"
+`;
+
+exports[`should render word limit correctly 1`] = `"<view class=\\"nut-input-word-limit\\"><span class=\\"nut-input-word-num\\">3</span>/9999</view>"`;
+
+exports[`should render word limit correctly when modelValue is null 1`] = `
+"<view class=\\"nut-input nut-input-border\\" maxlength=\\"3\\">
+  <!--v-if-->
+  <!--v-if-->
+  <view class=\\"nut-input-value\\">
+    <view class=\\"nut-input-inner\\">
+      <view class=\\"nut-input-box\\"><input class=\\"input-text\\" style=\\"text-align: left;\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"\\" formattrigger=\\"onChange\\" enterkeyhint=\\"done\\"></view>
+      <view class=\\"nut-input-clear-box\\">
+        <!--v-if-->
+      </view>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </view>
+    <view class=\\"nut-input-word-limit\\"><span class=\\"nut-input-word-num\\">0</span>/9999</view>
+    <!--v-if-->
+  </view>
+</view>"
+`;

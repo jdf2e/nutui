@@ -12,15 +12,17 @@
         <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
           {{ num }}
         </view>
-        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
+        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num >= 100">{{
           '99+'
         }}</view>
       </template>
       <template v-if="dot">
         <div class="nut-tabbar-item_icon-box_dot"></div>
       </template>
-
-      <view v-if="icon">
+      <div class="nut-tabbar-item_icon-box_icon" v-if="$slots.icon">
+        <slot name="icon" :active="active"></slot>
+      </div>
+      <view v-else-if="icon">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
@@ -30,7 +32,7 @@
         ></nut-icon>
       </view>
       <div
-        v-if="!icon && activeImg"
+        v-else-if="activeImg"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
           backgroundImage: `url(${active ? activeImg : img})`,
@@ -39,10 +41,14 @@
         }"
       ></div>
       <view
-        :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
+        :class="[
+          'nut-tabbar-item_icon-box_nav-word',
+          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg && !$slots.icon }
+        ]"
       >
-        <view v-if="tabTitle">{{ tabTitle }}</view>
-        <slot v-if="!tabTitle"></slot>
+        <slot>
+          <view v-if="tabTitle">{{ tabTitle }}</view>
+        </slot>
       </view>
     </view>
   </div>
@@ -74,7 +80,7 @@ export default create({
     },
     num: {
       // 页签右上角的数字角标
-      type: String,
+      type: [Number, String],
       default: ''
     },
     activeImg: {
@@ -99,50 +105,38 @@ export default create({
     },
     to: [Object, String]
   },
-  setup(props, ctx) {
+  setup(props, { emit, slots }) {
+    const isHaveSlot = (slot: string) => {
+      return slots[slot];
+    };
     const parent: any = inject('parent');
     const state = reactive({
       size: parent.size,
       unactiveColor: parent.unactiveColor, // 未选中的颜色
       activeColor: parent.activeColor, // 选中的颜色
-      active: parent.modelValue, // 是否选中
       index: 0
     });
     const router = useRouter();
-    const relation = (child: ComponentInternalInstance): void => {
+    const relation = (child: ComponentInternalInstance) => {
       if (child.proxy) {
         parent.children.push(child.proxy);
-        const index = computed(() => parent.children.indexOf(child.proxy));
-        state.index = props.name ?? index.value;
+        const index = parent.children.indexOf(child.proxy);
+        state.index = props.name ?? index;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    const active = computed(() => state.index === state.active);
+    const active = computed(() => state.index === parent.modelValue);
 
     function change() {
       let key = props.name ?? state.index;
-      let index = null;
+      let indexValue = null;
       if (props.name) {
-        index = parent.children.findIndex((item: { name: string | number }) => {
+        indexValue = parent.children.findIndex((item: { name: string | number }) => {
           return item.name == key;
         });
       }
-      parent.changeIndex(index ?? key, state.index);
-    }
-    const choosed = computed(() => {
-      if (parent) {
-        return parent.modelValue;
-      }
-      return null;
-    });
-    watch(choosed, (value, oldValue) => {
-      state.active = value;
-      let index = value;
-      if (props.name) {
-        index = parent.children.findIndex((item: { name: string | number }) => {
-          return item.name == value;
-        });
-      }
+      parent.changeIndex(indexValue ?? key, state.index);
+      let index = indexValue ?? key;
       if (parent.children[index]?.href) {
         window.location.href = parent.children[index].href;
         return;
@@ -155,10 +149,11 @@ export default create({
           location.replace(to);
         }
       }
-    });
+    }
     return {
       state,
       active,
+      isHaveSlot,
       change
     };
   }

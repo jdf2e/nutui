@@ -15,6 +15,7 @@ import { Tabbar,TabbarItem,Icon } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Tabbar);
 app.use(TabbarItem);
+app.use(Icon);
 
 ```
 
@@ -94,6 +95,42 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
     },
   }
   
+</script>
+```
+:::
+
+### Custom Icon
+Use icon slot to custom icon.
+
+:::demo
+```html
+<template>
+  <nut-tabbar @tab-switch="tabSwitch">
+    <nut-tabbar-item tab-title="tab">
+      <template #icon="props">
+          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+        </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
+  </nut-tabbar>
+</template>
+<script>
+  export default{
+    setup() {
+      function tabSwitch(item, index) {
+        console.log(item, index);
+      }
+      const icon = {
+        active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
+        unactive:'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png',
+      };
+      return {
+        icon,
+        tabSwitch,
+      };
+    },
+  }
 </script>
 ```
 :::
@@ -179,11 +216,11 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 
 | Attribute            | Description               | Type   | Default  |
 |-----------------|--------------------|--------|---------|
-| v-model:visible | The index value of the selected label  | number | 0       |
+| v-model:visible | Identifier of current tab | number | 0       |
 | bottom          | Whether to fix the bottom | boolean | false   |
 | size          | icon size | string | '20px'  |
-| unactive-color  | Color of unactive tab item  | string | #7d7e80 |
-| active-color    | Color of active tab item    | string | #1989fa |
+| unactive-color  | Color of unactive tab item  | string | #000 |
+| active-color    | Color of active tab item    | string | #fa2c19  |
 | safe-area-inset-bottom   | Whether to enable bottom safe area adaptation    | boolean | false |
 | placeholder `3.2.6` | Whether to generate a placeholder element when fixed | boolean | false |
 ### TabbarItem Props
@@ -202,6 +239,13 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 | num       | Numbered corner label in the upper right corner of the tab    | number | --     |
 | dot       | Whether to show red dot   | boolean | false    |
 
+
+### TabbarItem Slots
+
+| Name   | Description               | SlotProps           |
+|------------|--------------------|--------------------|
+| icon | Custom Icon	 | active: boolean |
+| defalut | Custom tabbar title	 |  |
 
 ### Tabbar Events
 

@@ -19,62 +19,85 @@ app.use(Price);
 ```
 
 
-### 基础用法 small normal large
+### 价格大小
+
+支持 small、normal、large 三种尺寸，默认为 large。
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
-    <nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
-    <nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+    <nut-price :price="0" size="small" :need-symbol="false" />
+    <nut-price :price="0" size="normal" :need-symbol="false" />
+    <nut-price :price="0" size="large" :need-symbol="false" />
 </template>
 ```
 
 :::
 
-### 不保留小数
+### 小数点位数
+
+`decimal-digits` 可设置小数点位数，默认展示2位小数。
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888" :decimal-digits="0" />
 </template>
 ```
 
 :::
 
-### 有人民币符号，无千位分隔
 
-:::demo
-
-``` html
-
-<template>
-    <nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
-</template>
-```
-:::
-### 带人民币符号，有千位分隔，保留小数点后三位
+### 划线价
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="15213.1221" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
 </template>
 ```
 
 :::
 
-### 调整 symbol 符号位置
+### 货币符号
+
+`symbol` 可设置货币符号，默认为 `¥`。
+
+:::demo
+
+``` html
+
+<template>
+    <nut-price :price="10010.01" symbol="¥" />
+</template>
+```
+:::
+### 货币符号位置
+
+`position` 可以调整货币符号位置。
 
 :::demo
 
 ``` html
 <template>
-    <nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+    <nut-price :price="8888.01" position="after" symbol="元" />
+</template>
+```
+
+:::
+
+### 千位分隔
+
+`thousands` 可以按照千分号形式显示。
+
+:::demo
+
+``` html
+<template>
+    <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
 </template>
 ```
 
@@ -116,4 +139,5 @@ app.use(Price);
 | decimal-digits | 小数位位数                              | Number ｜ String  | 2     |
 | thousands      | 是否按照千分号形式显示                    | Boolean          | false  |
 | position       | 符号显示在价格前或者后，`before`、`after`  | String           | before |
-| size           | 价格尺寸，`large`、`normal`、`small`     | String           | large |
+| size           | 价格尺寸，`small`、`normal`、`large`     | String           | large |
+| strike-through`v3.3.1`          | 是否展示划线价    | Boolean           | false |

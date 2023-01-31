@@ -1,5 +1,5 @@
 <template>
-  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :isWrapTeleport="isWrapTeleport">
+  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleportDisable="teleportDisable">
     <div
       :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
@@ -44,7 +44,7 @@ export default create({
       type: String,
       default: 'top'
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: true
     },

@@ -2,30 +2,34 @@
   <div class="demo">
     <nut-cell-group :title="translate('title1')">
       <nut-cell>
-        <nut-price :price="0" size="small" :need-symbol="true" :thousands="true" />
+        <nut-price :price="0" size="small" :need-symbol="false" />
       </nut-cell>
       <nut-cell>
-        <nut-price :price="0" size="normal" :need-symbol="true" :thousands="true" />
+        <nut-price :price="0" size="normal" :need-symbol="false" />
       </nut-cell>
       <nut-cell>
-        <nut-price :price="0" size="large" :need-symbol="true" :thousands="true" />
+        <nut-price :price="0" size="large" :need-symbol="false" />
       </nut-cell>
     </nut-cell-group>
     <h2>{{ translate('title2') }}</h2>
     <nut-cell>
-      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+      <nut-price :price="8888" :decimal-digits="0" />
+    </nut-cell>
+    <h2>{{ translate('titleStrike') }}</h2>
+    <nut-cell>
+      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
     </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
-      <nut-price :price="10010.01" size="normal" :need-symbol="true" :thousands="false" />
+      <nut-price :price="10010.01" symbol="¥" />
     </nut-cell>
     <h2>{{ translate('title4') }}</h2>
     <nut-cell>
-      <nut-price :price="15213.1221" size="normal" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+      <nut-price :price="8888.01" position="after" symbol="元" />
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell>
-      <nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+      <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
     </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell>
@@ -44,17 +48,19 @@ const initTranslate = () =>
     'zh-CN': {
       title1: '支持三种尺寸：small、normal、large',
       title2: '不保留小数',
-      title3: '有人民币符号，无千位分隔',
-      title4: '有人民币符号，有千位分隔，保留小数点后三位',
-      title5: '调整 symbol 符号位置',
+      titleStrike: '划线价',
+      title3: '货币符号',
+      title4: '货币符号位置',
+      title5: '千位分隔',
       title6: '异步随机变更'
     },
     'en-US': {
       title1: 'Support three sizes：small、normal、large',
       title2: 'No decimals',
-      title3: 'With RMB symbol, no thousands separator',
-      title4: 'With RMB symbol, separated by thousands, keep three decimal places',
-      title5: 'Adjust the symbol position',
+      titleStrike: 'Strike Through',
+      title3: 'Currency symbol',
+      title4: 'Currency symbol position',
+      title5: 'Separated by thousands',
       title6: 'Asynchronous random changes'
     }
   });

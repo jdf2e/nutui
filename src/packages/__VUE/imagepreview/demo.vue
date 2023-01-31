@@ -116,12 +116,13 @@ export default createDemo({
       ImagePreview({
         show: true,
         images: resData.imgData,
-        onClose
+        onClose: () => onClose()
       });
     };
 
     const hideFn = (i: number) => {
       (resData as any)['showPreview' + i] = false;
+      console.log('guansebi');
     };
 
     return {

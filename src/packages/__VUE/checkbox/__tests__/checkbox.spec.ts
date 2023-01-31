@@ -145,3 +145,22 @@ test('should emit "update:modelValue" event when checkbox is clicked', async () 
   wrapper.trigger('click');
   expect(wrapper.emitted('update:modelValue')![1]).toEqual([false]);
 });
+
+test('checkbox shape test', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-checkbox': Checkbox
+    },
+    template: `
+      <template>
+        <nut-checkbox shape="button"></nut-checkbox>
+        <nut-checkbox></nut-checkbox>
+      </template>
+    `
+  });
+
+  const items = wrapper.findAll('.nut-checkbox');
+
+  expect((items[0] as any).find('.nut-checkbox__button').exists()).toBeTruthy();
+  expect((items[1] as any).find('.nut-checkbox__button').exists()).toBeFalsy();
+});

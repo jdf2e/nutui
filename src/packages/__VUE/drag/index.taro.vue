@@ -2,6 +2,7 @@
   <view
     :class="classes"
     ref="myDrag"
+    :id="'myDrag' + refRandomId"
     class="myDrag"
     @touchstart="touchStart($event)"
     @touchmove.prevent="touchMove($event)"
@@ -20,6 +21,7 @@
 import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
@@ -46,6 +48,8 @@ export default create({
   },
   setup(props, { emit }) {
     const myDrag = ref();
+    const refRandomId = Math.random().toString(36).slice(-8);
+
     const state: any = reactive({
       keepAlive: false,
       elWidth: 0,
@@ -55,6 +59,7 @@ export default create({
       startTop: 0,
       startLeft: 0,
       initTop: 0,
+      initLeft: 0,
       nx: 0,
       ny: 0,
       xPum: 0,
@@ -77,17 +82,12 @@ export default create({
       };
     });
     const domElem = Taro.getSystemInfoSync();
-    function getInfo() {
-      const query = Taro.createSelectorQuery();
-      query
-        .select('.myDrag')
-        .boundingClientRect((rec: any) => {
-          state.elWidth = rec.width;
-          state.elHeight = rec.height;
-          state.initTop = rec.top;
-        })
-        .exec();
-      // console.log(domElem.windowWidth);
+    async function getInfo() {
+      const rec = await useTaroRect(myDrag, Taro);
+      state.elWidth = rec.width;
+      state.elHeight = rec.height;
+      state.initTop = rec.top;
+      state.initLeft = rec.left;
 
       state.screenWidth = domElem.screenWidth;
       state.screenHeight = domElem.screenHeight;
@@ -136,15 +136,16 @@ export default create({
         state.yPum = state.startTop + state.ny;
 
         const rightLocation = state.screenWidth - state.elWidth - state.boundary.right;
-        if (Math.abs(state.xPum) > rightLocation) {
-          state.xPum = rightLocation;
-        } else if (state.xPum <= state.boundary.left) {
-          state.xPum = state.boundary.left;
+        if (Math.abs(state.xPum + state.initLeft) > rightLocation) {
+          state.xPum = rightLocation - state.initLeft;
+        } else if (state.xPum + state.initLeft <= state.boundary.left) {
+          state.xPum = state.boundary.left - state.initLeft;
         }
-        if (state.yPum < state.boundary.top) {
-          state.yPum = state.boundary.top;
-        } else if (state.yPum > state.screenHeight - state.elHeight - state.boundary.bottom) {
-          state.yPum = state.screenHeight - state.elHeight - state.boundary.bottom;
+
+        if (state.yPum + state.initTop < state.boundary.top) {
+          state.yPum = state.boundary.top - state.initTop;
+        } else if (state.yPum + state.initTop > state.screenHeight - state.elHeight - state.boundary.bottom) {
+          state.yPum = state.screenHeight - state.elHeight - state.boundary.bottom - state.initTop;
         }
 
         if (props.direction != 'y') {
@@ -235,7 +236,8 @@ export default create({
       touchStart,
       touchMove,
       touchEnd,
-      state
+      state,
+      refRandomId
     };
   }
 });

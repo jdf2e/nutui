@@ -7,6 +7,7 @@ import Popup from '../../popup/index.vue';
 import Icon from '../../icon/index.vue';
 import Tabs from '../../tabs/index.vue';
 import TabPane from '../../tabpane/index.vue';
+import Sticky from '../../sticky/index.vue';
 
 const mountCascader = (options = {}) =>
   mount(Cascader, {
@@ -16,7 +17,8 @@ const mountCascader = (options = {}) =>
         [Popup.name]: Popup,
         [Icon.name]: Icon,
         [TabPane.name]: TabPane,
-        [Tabs.name]: Tabs
+        [Tabs.name]: Tabs,
+        [Sticky.name]: Sticky
       },
       stubs: {
         teleport: true

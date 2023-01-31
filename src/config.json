@@ -640,17 +640,6 @@
           "taro": true,
           "exportEmpty": true,
           "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "OldPicker",
-          "cName": "选择器",
-          "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
-          "show": false,
-          "tarodoc": false,
-          "exportEmpty": true,
-          "type": "component",
-          "author": "yangxiaolu"
         }
       ]
     },
@@ -719,14 +708,16 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
-          "taro": true,
+          "taro": false,
           "tarodoc": true,
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据",
           "sort": 15,
           "show": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "exportEmpty": false,
+          "exportEmptyTaro": false
         },
         {
           "version": "3.0.0",
@@ -739,16 +730,6 @@
           "sort": 4,
           "show": true,
           "author": "wangyue217"
-        },
-        {
-          "version": "3.0.0",
-          "name": "PullRefresh",
-          "type": "component",
-          "cName": "下拉刷新",
-          "desc": "下拉刷新",
-          "sort": 16,
-          "show": false,
-          "author": "yangxiaolu3"
         },
         {
           "version": "3.0.0",

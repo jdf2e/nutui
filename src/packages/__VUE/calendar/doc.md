@@ -487,6 +487,61 @@ export default {
 
 ```
 :::
+
+### 自定义周起始日
+:::demo
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="自定义周起始日"
+    :desc="date ? `${date} ${dateWeek}` : '请选择'"
+    @click="openSwitch('isVisible')"
+    :first-day-of-week="2"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2019-10-11`"
+    :end-date="`2022-11-11`"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      isVisible: false,
+      date: '',
+      dateWeek: ''
+    });
+    const openSwitch = param => {
+      state[`${param}`] = true;
+    };
+    const closeSwitch = param => {
+      state[`${param}`] = false;
+    };
+    const setChooseValue = param => {
+      state.date = param[3];
+      state.dateWeek = param[4];
+    };
+    return {
+      ...toRefs(state),
+      openSwitch,
+      closeSwitch,
+      setChooseValue
+    };
+  }
+};
+</script>
+```
+
+:::
+
 ### 平铺展示
 :::demo
 ```html
@@ -552,6 +607,7 @@ export default {
 | show-title          | 是否在展示日历标题               | Boolean          | true |
 | show-sub-title          | 是否展示日期标题              | Boolean          | true |
 | to-date-animation          | 是否启动滚动动画              | Boolean          | true |
+| first-day-of-week          | 设置周起始日              | 0-6          | 0 |
 
 ### Events
 

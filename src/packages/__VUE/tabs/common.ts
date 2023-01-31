@@ -1,7 +1,8 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { TypeOfFun } from '@/packages/utils/util';
+import { TypeOfFun, getScrollTopRoot } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
+import raf from '@/packages/utils/raf';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -115,6 +116,36 @@ export const component = {
         currentIndex.value = index;
       }
     };
+
+    const navRef = ref<HTMLElement>();
+    const titleRef = ref([]) as Ref<HTMLElement[]>;
+    const scrollIntoView = (immediate?: boolean) => {
+      const nav = navRef.value;
+      const _titles = titleRef.value;
+      if (!nav || !_titles || !_titles[currentIndex.value]) {
+        return;
+      }
+      const title = _titles[currentIndex.value];
+      const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
+      scrollLeftTo(nav, to, immediate ? 0 : 0.3);
+    };
+
+    const scrollLeftTo = (nav: any, to: number, duration: number) => {
+      let count = 0;
+      const from = nav.scrollLeft;
+
+      const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
+
+      function animate() {
+        nav.scrollLeft += (to - from) / frames;
+
+        if (++count < frames) {
+          raf(animate);
+        }
+      }
+
+      animate();
+    };
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
       vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
@@ -122,6 +153,9 @@ export const component = {
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
+      nextTick(() => {
+        scrollIntoView();
+      });
     };
     const onStickyScroll = (params: { top: number; fixed: boolean }) => {
       stickyFixed = params.fixed;
@@ -133,13 +167,12 @@ export const component = {
         init(vnodes);
       }
     );
-    const getScrollTopRoot = () => {
-      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    };
+
     watch(
       () => props.modelValue,
       (value: string | number) => {
         findTabsIndex(value);
+        scrollIntoView();
         if (stickyFixed) {
           let top = useRect(container.value!).top + getScrollTopRoot();
           let value = Math.ceil(top - props.top);
@@ -187,9 +220,13 @@ export const component = {
         currentIndex.value = index;
         emit('update:modelValue', item.paneKey);
         emit('change', item);
+      },
+      setTabItemRef: (el: HTMLElement, index: number) => {
+        titleRef.value[index] = el;
       }
     };
     return {
+      navRef,
       titles,
       contentStyle,
       tabsNavStyle,

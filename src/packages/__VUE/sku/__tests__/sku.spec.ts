@@ -24,7 +24,7 @@ test('sku init render', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }
@@ -37,7 +37,7 @@ test('sku select event', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }
@@ -53,7 +53,7 @@ test('do not sell', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       sku: SkuData,
       goods: Goods,
       btnExtraText: '抱歉，此商品在所选区域暂无存货'
@@ -68,7 +68,7 @@ test('button event', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      isWrapTeleport: false,
+      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }

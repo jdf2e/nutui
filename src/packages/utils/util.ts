@@ -1,3 +1,5 @@
+export * from './interceptor';
+
 // 变量类型判断
 export const TypeOfFun = (value: any) => {
   if (null === value) {
@@ -59,6 +61,12 @@ export const isPromise = <T = any>(val: unknown): val is Promise<T> => {
   return isObject(val) && isFunction(val.then) && isFunction(val.catch);
 };
 
+export const win = window;
+
+export const docu = document;
+
+export const body = docu.body;
+
 export const getPropByPath = (obj: any, keyPath: string) => {
   try {
     return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
@@ -112,3 +120,27 @@ export function myFixed(num: any, digit: number = 2) {
   num = parseFloat(num);
   return (Math.round((num + Number.EPSILON) * Math.pow(10, digit)) / Math.pow(10, digit)).toFixed(digit);
 }
+
+export function preventDefault(event: Event, isStopPropagation?: boolean) {
+  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+    event.preventDefault();
+  }
+
+  if (isStopPropagation) {
+    event.stopPropagation();
+  }
+}
+
+export const padZero = (num: number | string, length = 2): string => {
+  num += '';
+  while ((num as string).length < length) {
+    num = '0' + num;
+  }
+  return num.toString();
+};
+
+export const clamp = (num: number, min: number, max: number): number => Math.min(Math.max(num, min), max);
+
+export const getScrollTopRoot = (): number => {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+};

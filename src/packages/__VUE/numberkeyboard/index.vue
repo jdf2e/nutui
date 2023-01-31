@@ -6,7 +6,7 @@
     :popClass="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
-    :isWrapTeleport="isWrapTeleport"
+    :teleportDisable="teleportDisable"
     overlay-class="nut-numberkeyboard-overlay"
   >
     <div class="nut-numberkeyboard" ref="root">
@@ -55,7 +55,7 @@
             <div
               :class="['key', { active: clickKeyIndex == 'delete' }]"
               @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
-              @touchmove="(event) => onTouchMove({ id: 'delete', type: 'delete' }, event)"
+              @touchmove="(event) => onTouchMove(event)"
               @touchend="onTouchEnd"
             >
               <img
@@ -78,6 +78,10 @@
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('numberkeyboard');
+export interface keys {
+  id: number | string;
+  type: string;
+}
 export default create({
   props: {
     confirmText: {
@@ -116,7 +120,7 @@ export default create({
       type: Boolean,
       default: true
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: true
     },
@@ -131,7 +135,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    const clickKeyIndex: Ref<string | undefined> = ref(undefined);
+    const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
@@ -151,7 +155,7 @@ export default create({
     }
 
     function getBasicKeys() {
-      const keys: Array<unknown> = [];
+      const keys: keys[] = [];
       for (let i = 1; i <= 9; i++) {
         keys.push({ id: i, type: 'number' });
       }
@@ -200,7 +204,7 @@ export default create({
       }
     );
 
-    function onTouchstart(item: { id: string; type: string }, event: TouchEvent) {
+    function onTouchstart(item: { id: string | number; type: string }, event: TouchEvent) {
       event.stopPropagation();
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {

@@ -11,7 +11,7 @@
       @click-close-icon="closeIcon"
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
-      :isWrapTeleport="isWrapTeleport"
+      :teleportDisable="teleportDisable"
     >
       <view class="nut-shortpsd-title">{{ title || translate('title') }}</view>
       <view class="nut-shortpsd-subtitle">{{ desc || translate('desc') }}</view>
@@ -89,7 +89,7 @@ export default create({
       type: [String, Number], //4～6
       default: 6
     },
-    isWrapTeleport: {
+    teleportDisable: {
       type: Boolean,
       default: true
     }

@@ -25,6 +25,8 @@
     justify-content: center;
     width: 100%;
     overflow: hidden;
+    transition-property: height;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     .top-box {
       width: 100%;
       display: flex;

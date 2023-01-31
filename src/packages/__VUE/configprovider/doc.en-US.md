@@ -60,10 +60,12 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
 
 ### Props
 
-| Attribute | Description                                                          | Type   | Default |
-|-----------|----------------------------------------------------------------------|--------|---------|
-| theme     | Theme style, set to `dark` to enable dark mode, take effect globally | String | -       |
-| tag       | HTML Tag of root element                                             | String | div     |
+| Attribute       | Description                                                          | Type   | Default          |
+|-----------------|----------------------------------------------------------------------|--------|------------------|
+| theme           | Theme style, set to `dark` to enable dark mode, take effect globally | String | -                |
+| tag             | HTML Tag of root element                                             | String | div              |
+| font-class-name | Custom icon font base class name                                     | String | `nutui-iconfont` |
+| class-prefix    | Custom icon class name prefix for using custom icons                 | String | `nut-icon`       |
 
 
 ## Dark mode adaptation progress

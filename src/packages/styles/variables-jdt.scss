@@ -416,6 +416,14 @@ $checkbox-label-margin-left: 8px !default;
 $checkbox-label-font-size: 16px !default;
 $checkbox-icon-font-size: 20px !default;
 $checkbox-icon-disable-color2: $help-color !default;
+$checkbox-button-padding: 5px 18px !default;
+$checkbox-button-font-size: 12px !default;
+$checkbox-button-border-radius: 15px !default;
+$checkbox-label-button-bg-color: #f6f7f9 !default;
+$checkbox-label-button-border-color: #f6f7f9 !default;
+$checkbox-label-button-bg-active-color: rgba($primary-color, 0.05) !default;
+$checkbox-label-button-border-active-color: $primary-color !default;
+$checkbox-label-font-active-color: $primary-color !default;
 
 //radio
 $radio-label-font-color: rgba(0, 0, 0, 0.85) !default;
@@ -678,7 +686,14 @@ $form-item-tip-font-size: 12px !default;
 $form-item-tip-text-align: right !default;
 
 // skeleton
-$skeleton-content-line-title-background-color: #efefef !default;
+$skeleton-content-avatar-background-color: #efefef !default;
+$skeleton-content-line-background-color: #efefef !default;
+$skeleton-animation-background-color: linear-gradient(
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, 0.5) 50%,
+  hsla(0, 0%, 100%, 0) 80%
+) !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color !default;

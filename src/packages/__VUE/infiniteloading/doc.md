@@ -8,10 +8,12 @@
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading, Icon } from '@nutui/nutui';
 
   const app = createApp();
   app.use(InfiniteLoading);
+  app.use(Icon);
+  
 ```
 
 ### 基础用法
@@ -252,9 +254,9 @@
 | container-id          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
 | load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
 | is-open-refresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pull-icon        | 下拉刷新[图标名称](#/icon)                        | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
+| pull-icon        | 下拉刷新[图标名称](#/zh-CN/component/icon)                        | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
 | pull-txt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| load-icon        | 上拉加载[图标名称](#/icon)                       | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
+| load-icon        | 上拉加载[图标名称](#/zh-CN/component/icon)                       | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
 | load-txt        | 上拉加载提示文案                         | String | `加载中...`                |
 
 ### Events
@@ -269,5 +271,6 @@
 
 | 名称 | 说明           | 
 |--------|----------------|
+| default  | 自定义滚动列表 |
 | loading  | 自定义底部记载中提示 |
 | finished  | 自定义加载完成后的提示文案 |
