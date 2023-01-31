@@ -120,12 +120,14 @@ app.use(TabbarItem);
   <nut-tabbar @tab-switch="tabSwitch">
     <nut-tabbar-item tab-title="标签">
       <template #icon="props">
-          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+          <img v-if="props.active" :src="icon.active" />
+          <img v-else :src="icon.unactive" />
         </template>
     </nut-tabbar-item>
     <nut-tabbar-item tab-title="标签">
         <template #icon="props">
-          <img :src="props.active ? icon.active : icon.unactive" alt="" />
+          <img v-if="props.active" :src="icon.active" />
+          <img v-else :src="icon.unactive" />
         </template>
     </nut-tabbar-item>
     <nut-tabbar-item tab-title="标签">
@@ -235,7 +237,7 @@ app.use(TabbarItem);
 <script>
   import { Home,Category,Find,Cart,My} from '@nutui/icons-vue-taro';
   export default{
-    components: {Home,Category,Find,Cart, My }
+    components: {Home,Category,Find,Cart, My },
     setup(){
       return{
         Home,Category,Find,Cart, My

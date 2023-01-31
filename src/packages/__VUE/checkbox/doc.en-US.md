@@ -417,6 +417,7 @@ When the value changes, the `change` event will be triggered
 | icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` 
 | label | Text content of the check box | string | - 
 | indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | boolean                  | `false` |
+| shape | Shape, optional values：`button`、`round` | String | `round` |
 
 ### Checkbox Slots
 | Name | Description |
@@ -468,3 +469,11 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-checkbox-label-font-size| _14px_ |
 | --nut-checkbox-icon-font-size| _18px_ |
 | --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |
+| --nut-checkbox-button-padding|  _5px 18px_  |
+| --nut-checkbox-button-font-size|  _12px_  |
+| --nut-checkbox-button-border-radius|  _15px_  |
+| --nut-checkbox-button-border-color|  _#f6f7f9_  |
+| --nut-checkbox-button-background|  _#f6f7f9_  |
+| --nut-checkbox-button-font-color-active|  _var(--nut-primary-color)_  |
+| --nut-checkbox-button-border-color-active|  _var(--nut-primary-color)_  |
+| --nut-checkbox-button-background-active|  _var(--nut-primary-color)_  |
