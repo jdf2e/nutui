@@ -624,8 +624,14 @@ export default create({
         }
       });
     };
+    const initPosition = () => {
+      if (months?.value) {
+        months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
+    };
     useExpose({
-      scrollToDate
+      scrollToDate,
+      initPosition
     });
     // 设置当前可见月份
     const setDefaultRange = (monthsNum: number, current: number) => {

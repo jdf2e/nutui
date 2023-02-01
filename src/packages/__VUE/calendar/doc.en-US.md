@@ -652,6 +652,7 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 | Name | Description             | Arguments          |
 |--------|------------------|---------------|
 | scrollToDate   | Scroll to the month of the specified date:'2021-12-30' | `string` |
+| initPosition `v4.0.1`   | Initialize scroll position |  |
 ## Theming
 
 ### CSS Variables

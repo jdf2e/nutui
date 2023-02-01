@@ -671,8 +671,12 @@ export default create({
         }
       });
     };
+    const initPosition = () => {
+      state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
+    };
     useExpose({
-      scrollToDate
+      scrollToDate,
+      initPosition
     });
     const setDefaultRange = (monthsNum: number, current: number) => {
       let rangeArr: number[] = [];
