@@ -61,7 +61,7 @@
           <slot name="rightIcon"></slot>
         </template>
         <template v-else-if="closeMode">
-          <nut-icon type="cross" :color="color" size="11px"></nut-icon>
+          <nut-icon v-bind="$attrs" name="close" v-if="closeMode" :color="color" size="11px"></nut-icon>
         </template>
       </view>
     </view>

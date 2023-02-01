@@ -1,6 +1,6 @@
 <template>
   <view class="nut-sku-header">
-    <img :src="goods.imagePath" />
+    <img class="nut-sku-header-img" :src="goods.imagePath" />
 
     <view class="nut-sku-header-right">
       <template v-if="getSlots('sku-header-price')">

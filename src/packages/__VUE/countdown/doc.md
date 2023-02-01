@@ -293,10 +293,10 @@ app.use(CountDown);
         CountDown.value.reset();
       };
       return {
-          toggle,
-          onpaused,
-          onrestart,
-        ...toRefs(state)
+          start,
+          pause,
+          reset,
+          CountDown
       };
     }
   }
