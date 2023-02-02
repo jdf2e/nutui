@@ -126,6 +126,14 @@
         </nut-cell>
       </nut-checkbox-group>
     </nut-cell-group>
+    <nut-cell-group :title="translate('useShape')">
+      <nut-cell>
+        <nut-checkbox-group v-model="checkboxgroup6">
+          <nut-checkbox label="1" shape="button">{{ translate('useShape') }}</nut-checkbox>
+          <nut-checkbox label="2" shape="button">{{ translate('useShape') }}</nut-checkbox>
+        </nut-checkbox-group>
+      </nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 <script lang="ts">
@@ -157,7 +165,8 @@ const initTranslate = () =>
       checkbox: '复选框',
       selectedDisable: '选中时禁用状态',
       unselectDisable: '未选时禁用状态',
-      useGroupInte: '全选/半选/取消'
+      useGroupInte: '全选/半选/取消',
+      useShape: '按钮形状'
     },
     'en-US': {
       basic: 'Basic usage - left and right',
@@ -179,7 +188,8 @@ const initTranslate = () =>
       checkbox: 'check box',
       selectedDisable: 'Disabled when selected',
       unselectDisable: 'Disabled when not selected',
-      useGroupInte: 'Select all / half / cancel'
+      useGroupInte: 'Select all / half / cancel',
+      useShape: 'Button shape'
     }
   });
 export default createDemo({
@@ -206,6 +216,7 @@ export default createDemo({
       checkboxgroup3: ['2'],
       checkboxgroup4: ['2'],
       checkboxgroup5: [],
+      checkboxgroup6: [],
       checkboxsource: [
         { label: '1', value: translate('combine') },
         { label: '2', value: translate('combine') },
@@ -237,6 +248,7 @@ export default createDemo({
     };
 
     const changeBox6 = (label: string[]) => {
+      console.log(11);
       if (label.length === 4) {
         data.indeterminate = false;
         data.checkbox10 = true;

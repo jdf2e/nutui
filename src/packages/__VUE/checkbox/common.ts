@@ -28,6 +28,10 @@ export const component = (componentName: string, components: Record<string, Comp
       indeterminate: {
         type: Boolean,
         default: false
+      },
+      shape: {
+        type: String,
+        default: 'round' // button
       }
     },
     emits: ['change', 'update:modelValue'],
@@ -113,6 +117,18 @@ export const component = (componentName: string, components: Record<string, Comp
         );
       };
 
+      const renderButton = () => {
+        return h(
+          'view',
+          {
+            class: `${componentName}__button ${pValue.value && `${componentName}__button--active`} ${
+              pDisabled.value ? `${componentName}__button--disabled` : ''
+            }`
+          },
+          slots.default?.()
+        );
+      };
+
       const handleClick = (e: MouseEvent | TouchEvent) => {
         if (pDisabled.value) return;
         if (checked.value && state.partialSelect) {
@@ -150,10 +166,13 @@ export const component = (componentName: string, components: Record<string, Comp
         return h(
           'view',
           {
-            class: `${componentName} ${props.textPosition === 'left' ? `${componentName}--reverse` : ''}`,
+            class: `${componentName} ${componentName}--${props.shape} ${
+              props.textPosition === 'left' ? `${componentName}--reverse` : ''
+            }`,
+
             onClick: handleClick
           },
-          [renderIcon(), renderLabel()]
+          [props.shape == 'button' ? renderButton() : [renderIcon(), renderLabel()]]
         );
       };
     }

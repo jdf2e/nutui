@@ -422,6 +422,8 @@ app.use(CheckboxGroup);
 | icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18`
 | label | 复选框的文本内容 | string | -
 | indeterminate | 当前是否支持半选状态，一般用在全选操作中        | boolean                  | `false` |
+| shape | 形状，可选值：`button`、`round` | String | `round` |
+
 ### Checkbox Slots
 | 名称 | 说明 |
 |-|-|
@@ -473,3 +475,11 @@ app.use(CheckboxGroup);
 | --nut-checkbox-label-font-size| _14px_ |
 | --nut-checkbox-icon-font-size| _18px_ |
 | --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |
+| --nut-checkbox-button-padding|  _5px 18px_  |
+| --nut-checkbox-button-font-size|  _12px_  |
+| --nut-checkbox-button-border-radius|  _15px_  |
+| --nut-checkbox-button-border-color|  _#f6f7f9_  |
+| --nut-checkbox-button-background|  _#f6f7f9_  |
+| --nut-checkbox-button-font-color-active|  _var(--nut-primary-color)_  |
+| --nut-checkbox-button-border-color-active|  _var(--nut-primary-color)_  |
+| --nut-checkbox-button-background-active|  _var(--nut-primary-color)_  |

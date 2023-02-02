@@ -504,7 +504,15 @@ $checkbox-icon-disable-color: #d6d6d6 !default;
 $checkbox-label-margin-left: 15px !default;
 $checkbox-label-font-size: 14px !default;
 $checkbox-icon-font-size: 18px !default;
-$checkbox-icon-disable-color2: $help-color !default;
+$checkbox-icon-disable-color2: var(--nut-checkbox-icon-disable-color2, $help-color) !default;
+$checkbox-button-padding: var(--nut-checkbox-button-padding, 5px 18px) !default;
+$checkbox-button-font-size: var(--nut-checkbox-button-font-size, 12px) !default;
+$checkbox-button-border-radius: var(--nut-checkbox-button-border-radius, 15px) !default;
+$checkbox-button-border-color: var(--nut-checkbox-button-border-color, #f6f7f9) !default;
+$checkbox-button-background: var(--nut-checkbox-button-background, #f6f7f9) !default;
+$checkbox-button-font-color-active: var(--nut-checkbox-button-font-color-active, $primary-color) !default;
+$checkbox-button-border-color-active: var(--nut-checkbox-button-border-color-active, $primary-color) !default;
+$checkbox-button-background-active: var(--nut-checkbox-button-background-active, $primary-color) !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
