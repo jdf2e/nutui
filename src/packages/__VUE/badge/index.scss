@@ -41,5 +41,8 @@
       border-radius: $badge-dot-border-radius;
       padding: $badge-dot-padding;
     }
+    &--bubble {
+      border-bottom-left-radius: 0;
+    }
   }
 }
