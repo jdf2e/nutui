@@ -218,6 +218,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 | max     | When value is a numeric value, the maximum value                     | number  | `10000`   |
 | z-index | badge z-index                          | number  | `10`      |
 | dot     | whether to dot                                 | boolean | `false`   |
+| bubble(`>v4.0.0`)  | whether to bubble                               | Boolean | `false`   |
 | hidden  | whether to hide                                   | boolean | `false`   |
 | top     | Up and down offset, support unit setting, for example: 5px | number  | `0`       |
 | right   | Left and right offset, support unit setting, for example: 5px | number  | `0`       |
