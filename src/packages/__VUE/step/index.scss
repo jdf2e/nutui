@@ -114,12 +114,16 @@
         color: $steps-wait-icon-color;
       }
     }
+    .nut-step-title {
+      color: $steps-wait-title-color;
+    }
     .nut-step-content {
       color: $steps-wait-content-color;
     }
   }
 }
 .nut-steps-horizontal {
+  padding: $steps-horizontal-padding;
   &.nut-steps-dot {
     .nut-step-head {
       margin-top: 7px;
@@ -172,6 +176,7 @@
   }
 }
 .nut-steps-vertical {
+  padding: $steps-vertical-padding;
   .nut-step {
     display: flex;
     height: 33.34%;
@@ -181,11 +186,11 @@
     display: inline-block;
     width: 1px;
     height: 100%;
-    background: #909ca4;
+    background: $steps-base-line-color;
   }
   .nut-step-main {
     display: inline-block;
-    padding-left: 6%;
+    padding: $steps-vertical-main-padding;
     text-align: left;
   }
   &.nut-steps-dot {

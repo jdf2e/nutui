@@ -50,10 +50,16 @@
           />
         </template>
       </nut-cell>
+      <nut-cell title="图片" sub-title="副标题描述">
+        <template v-slot:icon>
+          <div style="height: 40px; width: 40px; border-radius: 50%; background: #e5e5e5"></div>
+        </template>
+      </nut-cell>
     </nut-cell-group>
 
     <h2>展示图标</h2>
     <nut-cell title="姓名" icon="my" desc="张三" isLink> </nut-cell>
+    <nut-cell title="姓名" icon="my" desc="张三" isLink size="large"> </nut-cell>
     <h2>只展示 desc ，可通过 desc-text-align 调整内容位置</h2>
     <nut-cell desc-text-align="left" desc="张三"></nut-cell>
     <h2>垂直居中</h2>

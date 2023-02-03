@@ -120,8 +120,8 @@ export default create({
       openExpanded: false,
       // classDirection: 'right',
       iconStyle: {
-        transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
+        transform: 'translateY(-50%) rotate(0deg)'
+        // marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
       }
     });
 
@@ -157,9 +157,9 @@ export default create({
     // 手风琴模式
     const animation = () => {
       if (parent.props.icon && !proxyData.openExpanded) {
-        proxyData.iconStyle['transform'] = 'rotate(0deg)';
+        proxyData.iconStyle['transform'] = 'translateY(-50%) rotate(0deg)';
       } else {
-        proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
+        proxyData.iconStyle['transform'] = 'translateY(-50%) rotate(' + parent.props.rotate + 'deg)';
       }
       nextTick(() => {
         // const query = Taro.createSelectorQuery();
@@ -191,7 +191,7 @@ export default create({
     const defaultOpen = () => {
       open();
       if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
+        proxyData['iconStyle']['transform'] = 'translateY(-50%) rotate(' + parent.props.rotate + 'deg)';
       }
     };
 

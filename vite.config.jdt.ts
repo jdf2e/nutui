@@ -92,6 +92,7 @@ export default defineConfig({
     outDir: './dist/jdt/',
     // assetsDir: config.version,
     cssCodeSplit: true,
+    cssTarget: ['chrome61'],
     rollupOptions: {
       input: {
         // doc: resolve(__dirname, 'index.html'),
