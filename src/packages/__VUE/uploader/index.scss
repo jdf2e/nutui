@@ -117,6 +117,10 @@
       position: relative;
       width: $uploader-picture-width;
       height: $uploader-picture-height;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
       .close {
         position: absolute;
         right: 0;
@@ -141,8 +145,9 @@
         @include oneline-ellipsis();
       }
       &__c {
-        height: 100%;
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 6px;
       }
       &__file {
         height: 100%;

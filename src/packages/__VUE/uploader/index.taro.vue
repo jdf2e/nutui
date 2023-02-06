@@ -23,6 +23,7 @@
 
         <img
           class="nut-uploader__preview-img__c"
+          mode="aspectFit"
           @click="fileItemClick(item)"
           v-if="item.type?.includes('image') && item.url"
           :src="item.url"
