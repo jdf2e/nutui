@@ -35,7 +35,7 @@ let fileStrBuild = `${importStr}
 ${installFunction}
 const version = '${packageConfig.version}';
 export { install, version, Locale, ${packages.join(',')}, ${methods.join(',')}};
-export default { install, version, Locale};`;
+export default { install, version};`;
 
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fileStrBuild, 'utf8', (error) => {
   // logger.success(`${package_config_path} 文件写入成功`);
@@ -46,7 +46,7 @@ ${installFunction}
 ${importScssStr}
 export const testComponents = { ${packages.join(',')}};
 export { install, Locale, ${packages.join(',')}, ${methods.join(',')}  };
-export default { install, version:'${packageConfig.version}', Locale};`;
+export default { install, version:'${packageConfig.version}'};`;
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8', (error) => {
   // logger.success(`${package_config_path} 文件写入成功`);
 });
