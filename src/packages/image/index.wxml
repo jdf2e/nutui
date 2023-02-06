@@ -1,0 +1,19 @@
+<wxs src="./index.wxs" module="computed" />
+
+<!-- <view class="{{computed.classes({type,size,shape,plain,block,disabled,loading})}}" style="{{computed.styled({color,plain})}}"  bindtap="handleClick">
+    <view class="nut-button__warp">
+      <nut-icon class="nut-icon-loading" style="line-height:initial" name="loading" wx:if="{{loading}}"></nut-icon>
+      <nut-icon
+        wx:if="{{icon && !loading}}"
+        name="{{icon}}"
+        class-prefix="{{iconClassPrefix}}"
+        font-class-name="{{iconFontClassName}}"
+        style="line-height:initial"
+      ></nut-icon>
+      <view class="{{ (icon || loading)?'text':'' }}">
+        <slot></slot>
+      </view>
+    </view>
+</view> -->
+
+<view>111</view>

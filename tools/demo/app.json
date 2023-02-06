@@ -6,7 +6,9 @@
     "pages/basic/pages/cell/index",
     "pages/basic/pages/button/index",
     "pages/basic/pages/divider/index",
-    "pages/basic/pages/grid/index"
+    "pages/basic/pages/grid/index",
+    "pages/basic/pages/overlay/index",
+    "pages/basic/pages/transition/index"
   ],
   "usingComponents": {
     "nut-icon":"./components/packages/icon/icon",
@@ -15,7 +17,9 @@
     "nut-button":"./components/packages/button/index",
     "nut-divider":"./components/packages/divider/index",
     "nut-grid":"./components/packages/grid/index",
-    "nut-grid-item":"./components/packages/grid-item/index"
+    "nut-grid-item":"./components/packages/grid-item/index",
+    "nut-overlay":"./components/packages/overlay/index",
+    "nut-transition":"./components/packages/transition/index"
   },
   "window":{
     "backgroundTextStyle":"light",

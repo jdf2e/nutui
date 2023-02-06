@@ -60,6 +60,28 @@ module.exports = [
           "desc": "宫格",
           "author": ""
         },
+        {
+          "version": "3.0.0",
+          "name": "Overlay",
+          "taro": true,
+          "sort": 3,
+          "cName": "遮罩层",
+          "type": "component",
+          "show": true,
+          "desc": "遮罩层",
+          "author": ""
+        },
+        {
+          "version": "3.0.0",
+          "name": "Transition",
+          "taro": true,
+          "sort": 3,
+          "cName": "动画",
+          "type": "component",
+          "show": true,
+          "desc": "动画",
+          "author": ""
+        },
       ]
     }
   ]

@@ -1,0 +1,16 @@
+.demo-button-row {
+    margin-bottom: 20px;
+}
+
+.demo-button-row2 {
+    margin-bottom: 10px;
+}
+
+.demo-button-row3{
+    margin-bottom: 10px;
+    display:block
+}
+.nut-button {
+    margin-right: 15px;
+
+}

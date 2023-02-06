@@ -1,0 +1,62 @@
+/* eslint-disable */
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+
+
+function Classes(data) {
+
+    var prefixCls = 'nut-button'
+
+    var classes = [prefixCls]
+
+    if (data.type) {
+        classes.push(prefixCls + '--' + data.type)
+    }
+    if (data.size) {
+        classes.push(prefixCls + '--' + data.size)
+    }
+
+    if (data.shape) {
+        classes.push(prefixCls + '--' + data.shape)
+    }
+    if (data.plain) {
+        classes.push(prefixCls + '--plain')
+    }
+    if (data.block) {
+        classes.push(prefixCls + '--block')
+    }
+    if (data.disabled) {
+        classes.push(prefixCls + '--disabled')
+    }
+    if (data.loading) {
+        classes.push(prefixCls + '--loading')
+    }
+
+    return classes.join(' ');
+}
+
+function Styled(data) {
+
+    var styley = {};
+      if (data.color) {
+        console.log(data)
+        if (data.plain) {
+            styley.color = data.color;
+            styley.background = '#fff';
+          if (data.color.indexOf('gradient') == -1) {
+            styley.borderColor = data.color;
+          }
+        } else {
+            styley.color = '#fff';
+            styley.background = data.color;
+        }
+      }
+
+    return style([styley]);
+}
+
+module.exports = {
+    classes: Classes,
+    styled: Styled
+};

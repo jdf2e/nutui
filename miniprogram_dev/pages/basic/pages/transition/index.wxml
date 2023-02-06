@@ -1,0 +1,28 @@
+<view class="demo">
+    <h2>基础用法</h2>
+    
+    <nut-cell title="Fade" bindtap="onClickFade"></nut-cell>
+    <nut-cell title="Fade Up" bindtap="onClickFadeUp"></nut-cell>
+    <nut-cell title="Fade Down" bindtap="onClickFadeDown"></nut-cell>
+    <nut-cell title="Fade Left" bindtap="onClickFadeLeft"></nut-cell>
+    <nut-cell title="Fade Right" bindtap="onClickFadeRight"></nut-cell>
+    <nut-cell title="Side Up" bindtap="onClickSlideUp"></nut-cell>
+    <nut-cell title="Side Down" bindtap="onClickSlideDown"></nut-cell>
+    <nut-cell title="Side Left" bindtap="onClickSlideLeft"></nut-cell>
+    <nut-cell title="Side Right" bindtap="onClickSlideRight"></nut-cell>
+    <nut-cell title="Custom" bindtap="onClickCustom"></nut-cell>
+
+
+    <nut-transition show='{{ amishow }}' name="{{ name }}"></nut-transition>
+
+    <nut-transition
+        show="{{ showCustom }}"
+        name=""
+        duration="{{ { enter: 300, leave: 1000 } }}"
+        custom-class="block"
+        enter-class="nut-enter-class"
+        enter-active-class="nut-enter-active-class"
+        leave-active-class="nut-leave-active-class"
+        leave-to-class="nut-leave-to-class"
+    />
+</view>

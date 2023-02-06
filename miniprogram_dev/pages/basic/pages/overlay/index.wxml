@@ -1,0 +1,8 @@
+<view class="demo">
+    <h2>基础用法</h2>
+    <nut-cell>
+      <nut-button type="primary" >显示遮罩层</nut-button>
+      <nut-overlay></nut-overlay>
+    </nut-cell>
+    
+</view>

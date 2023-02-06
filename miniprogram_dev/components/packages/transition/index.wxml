@@ -1,0 +1,7 @@
+<wxs src="./index.wxs" module="computed" />
+<view 
+    wx:if='{{ inited }}' 
+    class="nut-transition block {{ classes }}"
+    style="{{ computed.styled({ currentDuration, display, customStyle }) }}">
+    <slot />
+</view>

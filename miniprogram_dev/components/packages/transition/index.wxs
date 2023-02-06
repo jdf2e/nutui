@@ -1,0 +1,20 @@
+/* eslint-disable */
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+
+function Styled(data) {
+
+    return style([
+        {
+          '-webkit-transition-duration': data.currentDuration + 'ms',
+          'transition-duration': data.currentDuration + 'ms',
+        },
+        data.display ? null : 'display: none',
+        data.customStyle,
+      ]);
+}
+
+module.exports = {
+    styled: Styled
+};

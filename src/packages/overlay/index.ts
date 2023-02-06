@@ -2,7 +2,7 @@ import { NutComponent } from './../../common/component.ts'
 
 NutComponent({
   props: {
-    visible: {
+    show: {
       type: Boolean,
       default: false
     },
@@ -30,10 +30,6 @@ NutComponent({
   },
 
   methods: {
-    handleClick() {
-      if (!this.props.loading && !this.props.disabled) {
-        this.$emit('click', event);
-      }
-    },
+    
   },
 });

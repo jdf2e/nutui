@@ -82,34 +82,64 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 11:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(12);
+var _ = __webpack_require__(3);
 
 Component({});
 
 /***/ }),
 
-/***/ 12:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = {
-  getFlag: function getFlag() {
-    return true;
+exports.__esModule = true;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.getSystemInfoSync = getSystemInfoSync;
+exports.requestAnimationFrame = requestAnimationFrame;
+exports.isObj = isObj;
+function getSystemInfoSync() {
+  var systemInfo = null;
+  if (systemInfo == null) {
+    systemInfo = wx.getSystemInfoSync();
   }
-};
+
+  return systemInfo;
+}
+
+// 模拟 浏览器 requestAnimationFrame
+function requestAnimationFrame(cb) {
+  var systemInfo = getSystemInfoSync();
+
+  if (systemInfo.platform === 'devtools') {
+    return setTimeout(function () {
+      cb();
+    }, 1000 / 30);
+  }
+
+  return wx.createSelectorQuery().selectViewport().boundingClientRect().exec(function () {
+    cb();
+  });
+}
+
+function isObj(x) {
+  var type = typeof x === 'undefined' ? 'undefined' : _typeof(x);
+  return x !== null && (type === 'object' || type === 'function');
+}
 
 /***/ })
 
