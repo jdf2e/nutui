@@ -1,3 +1,9 @@
+## 2.3.13
+
+`2023-2-6`
+
+* :sparkles: feat(uploader): add props capture 直接调起摄像头  @richard1015
+
 ## 2.3.10
 
 `2022-6-13`
