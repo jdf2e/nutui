@@ -214,6 +214,7 @@ test(event) {
 | name | input name的名称 | String | ""
 | url | 上传服务器的接口地址 | String | -
 | multiple | 是否支持多选 | Boolean | false
+| capture  | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头 | Boolean  | false  |
 | isPreview | 是否需要预览 | Boolean | false
 | clearInput | 是否需要清空input内容，设为true支持重复选择上传同一个文件 | Boolean | false
 | maxSize | 可以设定最大上传文件的大小（字节） | Number | 5242880

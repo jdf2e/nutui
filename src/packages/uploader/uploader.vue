@@ -2,13 +2,14 @@
   <div class="nut-uploader">
     <slot></slot>
     <input
-      v-if="multiple"
+      v-if="capture"
       type="file"
       :name="name"
       @click="preventMoreClick"
       @change="upload($event)"
       class="uploader"
-      multiple
+      :multiple="multiple"
+      capture
       :disabled="newdisabled"
       :accept="acceptType"
     />
@@ -19,6 +20,7 @@
       @click="preventMoreClick"
       @change="upload($event)"
       class="uploader"
+      :multiple="multiple"
       :disabled="newdisabled"
       :accept="acceptType"
     />
@@ -42,6 +44,10 @@ export default {
     multiple: {
       type: Boolean,
       default: false
+    },
+    capture: {
+      type: Boolean, 
+      default: false 
     },
     disabled: {
       type: Boolean,
