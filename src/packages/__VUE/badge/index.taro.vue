@@ -8,7 +8,7 @@
       v-show="!hidden && (content || dot)"
       v-text="content"
       class="nut-badge__content nut-badge__content--sup"
-      :class="{ 'nut-badge__content--dot': dot }"
+      :class="{ 'nut-badge__content--dot': dot, 'nut-badge__content--bubble': !dot && bubble }"
       :style="stl"
     >
     </view>
@@ -29,6 +29,10 @@ export default create({
       default: 10000
     },
     dot: {
+      type: Boolean,
+      default: false
+    },
+    bubble: {
       type: Boolean,
       default: false
     },

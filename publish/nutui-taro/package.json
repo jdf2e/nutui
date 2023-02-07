@@ -7,10 +7,9 @@
   "style": "dist/style.css",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
-    "dist/packages/**/*",
-    "dist/packages/locale/lang/*",
-    "dist/styles/**",
-    "dist/style.css"
+    "dist/packages/**/style.mjs",
+    "*.scss",
+    "*.css"
   ],
   "web-types": "dist/smartips/web-types.json",
   "keywords": [
