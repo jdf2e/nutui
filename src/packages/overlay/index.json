@@ -1,4 +1,6 @@
 {
     "component": true,
-    "usingComponents": {}
+    "usingComponents": {
+      "nut-transition": "../transition/index"
+    }
   }

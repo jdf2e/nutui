@@ -47,8 +47,8 @@ NutComponent({
 
   methods: {
     handleClick() {
-      if (!this.props.loading && !this.props.disabled) {
-        this.$emit('click', event);
+      if (!this.data.loading && !this.data.disabled) {
+        this.$emit('click');
       }
     },
   },

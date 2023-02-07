@@ -1,11 +1,11 @@
 <!-- <wxs src="./index.wxs" module="computed" /> -->
 
-<!-- <Transition name="overlay-fade"> -->
-    <!-- <view :class="classes" @touchmove.stop="touchmove" @click="onClick" :style="style" v-show="visible">
-      <slot></slot>
-    </view> -->
-<!-- </Transition> -->
-
-
-
-<view ></view>
+<nut-transition 
+  name="fade" 
+  show='{{ show }}' 
+  custom-class="nut-overlay custom-class" 
+  custom-style='z-index:{{zIndex}};{{overlayStyle}}'   
+  bind:tap='onClick'
+  duration='{{duration}}'> 
+    <slot></slot>
+</nut-transition>

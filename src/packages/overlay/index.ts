@@ -4,32 +4,22 @@ NutComponent({
   props: {
     show: {
       type: Boolean,
-      default: false
+      value: false
     },
     zIndex: {
       type: [Number, String],
-      default: 2000
+      value: 2000
     },
     duration: {
       type: [Number, String],
-      default: 0.3
+      value: 300
     },
-    overlayClass: {
-      type: String,
-      default: ''
-    },
-    lockScroll: {
-      type: Boolean,
-      default: false
-    },
-    overlayStyle: Object,
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true
-    }
+    overlayStyle: String,
   },
 
   methods: {
-    
+    onClick(){
+      this.$emit('click');
+    }
   },
 });

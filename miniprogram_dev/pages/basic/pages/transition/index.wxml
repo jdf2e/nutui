@@ -13,7 +13,7 @@
     <nut-cell title="Custom" bindtap="onClickCustom"></nut-cell>
 
 
-    <nut-transition show='{{ amishow }}' name="{{ name }}"></nut-transition>
+    <nut-transition show='{{ amishow }}' name="{{ name }}" custom-class="block"></nut-transition>
 
     <nut-transition
         show="{{ showCustom }}"

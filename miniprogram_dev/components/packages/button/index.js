@@ -221,8 +221,8 @@ var _component = __webpack_require__(0);
     },
     methods: {
         handleClick: function handleClick() {
-            if (!this.props.loading && !this.props.disabled) {
-                this.$emit('click', event);
+            if (!this.data.loading && !this.data.disabled) {
+                this.$emit('click');
             }
         }
     }

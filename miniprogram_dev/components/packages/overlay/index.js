@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -168,7 +168,7 @@ var basic = exports.basic = Behavior({
 
 /***/ }),
 
-/***/ 12:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -180,31 +180,23 @@ var _component = __webpack_require__(0);
     props: {
         show: {
             type: Boolean,
-            default: false
+            value: false
         },
         zIndex: {
             type: [Number, String],
-            default: 2000
+            value: 2000
         },
         duration: {
             type: [Number, String],
-            default: 0.3
+            value: 300
         },
-        overlayClass: {
-            type: String,
-            default: ''
-        },
-        lockScroll: {
-            type: Boolean,
-            default: false
-        },
-        overlayStyle: Object,
-        closeOnClickOverlay: {
-            type: Boolean,
-            default: true
-        }
+        overlayStyle: String
     },
-    methods: {}
+    methods: {
+        onClick: function onClick() {
+            this.$emit('click');
+        }
+    }
 });
 
 /***/ })
