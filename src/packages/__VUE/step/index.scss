@@ -54,11 +54,13 @@
   &-title {
     display: block;
     margin-bottom: $steps-base-title-margin-bottom;
+    line-height: $steps-base-title-line-height;
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
   }
   &-content {
     display: block;
+    line-height: $steps-base-content-line-height;
     font-size: $steps-base-content-font-size;
     color: $steps-base-content-color;
   }
@@ -192,6 +194,16 @@
     display: inline-block;
     padding: $steps-vertical-main-padding;
     text-align: left;
+  }
+  .nut-step-title {
+    line-height: $steps-vertical-title-line-height;
+    font-size: $steps-vertical-title-font-size;
+  }
+  .nut-step-icon {
+    width: $steps-vertical-icon-width;
+    height: $steps-vertical-icon-height;
+    line-height: $steps-vertical-icon-line-height;
+    font-size: $steps-vertical-icon-font-size;
   }
   &.nut-steps-dot {
     .nut-step-head {
