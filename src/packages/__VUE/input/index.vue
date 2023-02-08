@@ -233,7 +233,7 @@ export default create({
       let value = input.value;
       active.value = true;
       emit('focus', event);
-      emit('update:modelValue', value);
+      // emit('update:modelValue', value);
     };
 
     const onBlur = (event: Event) => {
@@ -251,7 +251,7 @@ export default create({
       }
       updateValue(getModelValue(), 'onBlur');
       emit('blur', event);
-      emit('update:modelValue', value);
+      // emit('update:modelValue', value);
     };
 
     const clear = (event: Event) => {

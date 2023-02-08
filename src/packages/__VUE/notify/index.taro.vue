@@ -15,7 +15,7 @@
 <script lang="ts">
 import { ref, watch, onUnmounted } from 'vue';
 import { createComponent } from '../../utils/create';
-import Popup from '../popup/index.vue';
+import Popup from '../popup/index.taro.vue';
 const { create } = createComponent('notify');
 
 export default create({

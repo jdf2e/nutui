@@ -48,8 +48,8 @@ export { ${element.name} };`;
   });
 });
 outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`).join('\n');
-outputFileEntry += `\nimport { Locale } from "./packages/locale/lang";
-function install(app) {
+outputFileEntry += `\nexport { Locale } from "./packages/locale/lang";
+export function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {
       if (item.install) {
@@ -59,17 +59,10 @@ function install(app) {
       }
   });
 }
-const version = '${packageConfig.version}';
-var stdin_default = {
+export const version = '${packageConfig.version}';
+export default {
   install,
-  version,
-  Locale
-};
-export {
-  stdin_default as default,
-  install,
-  version,
-  Locale
+  version
 };`;
 
 tasks.push(

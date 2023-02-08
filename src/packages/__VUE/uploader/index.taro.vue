@@ -23,6 +23,7 @@
 
         <img
           class="nut-uploader__preview-img__c"
+          mode="aspectFit"
           @click="fileItemClick(item)"
           v-if="item.type?.includes('image') && item.url"
           :src="item.url"
@@ -38,7 +39,12 @@
         <view class="nut-uploader__preview-img__file__name" @click="fileItemClick(item)" :class="[item.status]">
           <Link class="nut-uploader__preview-img__file__link" />
           <view class="file__name_tips">{{ item.name }}</view>
-          <Del color="#808080" class="nut-uploader__preview-img__file__del" @click="onDelete(item, index)"></Del>
+          <Del
+            v-if="isDeletable"
+            color="#808080"
+            class="nut-uploader__preview-img__file__del"
+            @click="onDelete(item, index)"
+          ></Del>
         </view>
 
         <nut-progress
