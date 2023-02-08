@@ -25,8 +25,18 @@
     />
     <nut-input :label="translate('tel')" :placeholder="translate('telPlaceholder')" v-model="state.tel" type="tel" />
     <h2>{{ translate('title2') }}</h2>
-    <nut-input :label="translate('text')" :placeholder="translate('readonly')" v-model="state.readonly" readonly />
-    <nut-input :label="translate('text')" :placeholder="translate('disabled')" v-model="state.disabled" disabled />
+    <nut-input
+      :label="translate('text')"
+      :placeholder="translate('readonly')"
+      :modelValue="translate('readonly')"
+      readonly
+    />
+    <nut-input
+      :label="translate('text')"
+      :placeholder="translate('disabled')"
+      :modelValue="translate('disabled')"
+      disabled
+    />
 
     <h2>{{ translate('title3') }}</h2>
     <nut-input

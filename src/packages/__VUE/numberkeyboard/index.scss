@@ -57,7 +57,7 @@
       flex: 1;
       flex-basis: 33%;
       box-sizing: border-box;
-      padding: 0 6px 6px 0;
+      padding: $numberkeyboard-wrapper-padding;
 
       .key {
         display: flex;
@@ -69,6 +69,7 @@
         background-color: $numberkeyboard-key-background-color;
         color: $numberkeyboard-key-font-size-color;
         border-radius: $numberkeyboard-key-border-radius;
+        box-shadow: $numberkeyboard-key-box-shadow;
         cursor: pointer;
       }
 
