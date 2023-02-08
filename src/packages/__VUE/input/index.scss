@@ -77,6 +77,7 @@ textarea {
     position: relative;
     width: 100%;
     display: flex;
+    flex: 1;
   }
   &-disabled-mask {
     position: absolute;
@@ -95,17 +96,16 @@ textarea {
     // margin-top: -50%;
     // line-height: var(--van-field-word-limit-line-height);
   }
-  &-left-icon,
-  &-right-icon {
+  &-left-box,
+  &-right-box {
     display: flex;
     align-items: center;
     font-size: 0;
   }
-  &-clear,
-  &-right-icon {
+  &-right-box {
     margin-left: 4px;
   }
-  &-left-icon {
+  &-left-box {
     margin-right: 4px;
   }
   &-clear-box {
@@ -119,9 +119,7 @@ textarea {
     height: 16px;
     color: #c8c9cc;
     cursor: pointer;
-  }
-  .nut-button {
-    margin-left: 10px;
+    margin: 0 4px;
   }
   &--required {
     &::before {

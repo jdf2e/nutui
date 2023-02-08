@@ -8,10 +8,11 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Input } from '@nutui/nutui';
+import { Input,Button } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Input);
+app.use(Button);
 ```
 
 ### 基础用法
@@ -367,6 +368,42 @@ app.use(Input);
 ```
 
 :::
+
+### 插槽演示
+
+:::demo
+
+```html
+<template>
+  <nut-input
+    v-model="state.slotValue"
+    placeholder="插槽演示"
+    clearable
+  >
+    <template #left> <Ask></Ask> </template>
+    <template #right> <nut-button type='primary' size="small">获取验证码</nut-button> </template>
+  </nut-input>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  import { Ask } from '@nutui/icons-vue';
+
+  export default {
+    components:{
+      Ask
+    },
+    setup() {
+      const state = reactive({
+        slotValue: ''
+      });
+      return {
+        state,
+      };
+    }
+  }
+</script>
+```
+:::
 ## API
 ### Props
 
@@ -403,6 +440,8 @@ app.use(Input);
 | 名称  | 说明     | 
 |-------|----------|
 | clear | 自定义输入框尾部清除按钮 |
+| left `4.0.1` | 自定义输入框左侧插槽内容 |
+| right `4.0.1`| 自定义输入框右侧插槽内容 |
 
 ## 主题定制
 
