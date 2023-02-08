@@ -39,7 +39,7 @@ function getNutResolved(name: string, options: NutUIResolverOptions): ComponentR
  *
  * @link https://github.com/jdf2e/nutui
  */
-export function NutUIResolver(options: NutUIResolverOptions = {}): ComponentResolver {
+export default function NutUIResolver(options: NutUIResolverOptions = {}): ComponentResolver {
   return {
     type: 'component',
     resolve: (name) => {
