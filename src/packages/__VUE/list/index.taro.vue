@@ -29,7 +29,7 @@ export default create({
   props: {
     height: {
       type: [Number],
-      default: 0
+      default: 50
     },
     listData: {
       type: Array,
