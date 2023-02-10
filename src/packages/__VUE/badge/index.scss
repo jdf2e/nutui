@@ -24,6 +24,8 @@
     background: $badge-background-color;
     padding: $badge-padding;
     text-align: center;
+    line-height: $badge-line-height;
+    border: $badge-border;
     border-radius: $badge-border-radius;
     font-size: $badge-font-size;
     font-weight: normal;
@@ -37,5 +39,9 @@
     height: $badge-dot-height;
     border-radius: $badge-dot-border-radius;
     padding: $badge-dot-padding;
+  }
+
+  .is-bubble {
+    border-bottom-left-radius: 0;
   }
 }

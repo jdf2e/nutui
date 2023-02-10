@@ -26,9 +26,9 @@ textarea {
 .nut-input {
   position: relative;
   width: 100%;
-  padding: 10px 25px;
+  padding: $input-padding;
   display: flex;
-  line-height: 24px;
+  line-height: $input-line-height;
   background: $white;
   font-size: $input-font-size;
   box-sizing: border-box;
@@ -37,6 +37,10 @@ textarea {
   }
   &.nut-input-border {
     border-bottom: 1px solid $input-border-bottom;
+  }
+
+  .input-text::placeholder {
+    color: $input-placeholder-color;
   }
 
   .input-text,
@@ -58,6 +62,7 @@ textarea {
     overflow: hidden;
     margin-right: 6px;
     text-align: left;
+    color: $input-label-color;
     .label-string {
       // overflow: hidden;
       // white-space: nowrap;
@@ -141,6 +146,11 @@ textarea {
       cursor: not-allowed;
       opacity: 1;
       -webkit-text-fill-color: $input-disabled-color;
+    }
+  }
+  &-readonly {
+    input {
+      color: $input-readonly-color;
     }
   }
   &-error,

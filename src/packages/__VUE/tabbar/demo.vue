@@ -9,6 +9,15 @@
       <nut-tabbar-item :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="my"></nut-tabbar-item>
     </nut-tabbar>
+    <p></p>
+    <nut-tabbar @tab-switch="tabSwitch" size="24">
+      <nut-tabbar-item :tab-title="translate('title')" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="find"></nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
+      <nut-tabbar-item :tab-title="translate('title')" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
+
     <h2>{{ translate('byName') }}</h2>
 
     <nut-tabbar @tab-switch="tabSwitch" v-model:visible="activeName">

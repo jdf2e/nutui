@@ -2,6 +2,8 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <nut-noticebar :text="translate('text')"></nut-noticebar>
+    <p />
+    <nut-noticebar left-icon="close" :text="translate('text')"></nut-noticebar>
 
     <h2>{{ translate('scrollable') }}</h2>
     <nut-noticebar :text="translate('textShort')" :scrollable="true"> </nut-noticebar>

@@ -29,7 +29,7 @@ export default create({
   props: {
     height: {
       type: [Number],
-      default: 0
+      default: 50
     },
     listData: {
       type: Array,
@@ -84,7 +84,7 @@ export default create({
     });
 
     const handleScrollEvent = async (e: any) => {
-      const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop;
+      const scrollTop = Math.max(e.detail ? e.detail.scrollTop : e.target.scrollTop, 0.1);
       state.start = Math.floor(scrollTop / props.height);
       if (end.value > state.list.length) {
         emit('scroll');

@@ -37,7 +37,7 @@
   &-inner {
     display: inline-block;
     font-size: $toast-text-font-size;
-    min-width: 40%;
+    min-width: $toast-min-width;
     max-width: 65%;
     text-align: center;
     padding: $toast-inner-padding;
@@ -47,13 +47,19 @@
     color: $toast-font-color;
   }
   &-text {
+    display: block;
     font-size: $toast-text-font-size;
+    line-height: $toast-text-line-height;
     &:empty {
       margin-bottom: -8px;
     }
   }
   &-title {
     font-size: $toast-title-font-size;
+    line-height: $toast-title-line-height;
+    & + .nut-toast-text {
+      margin-top: $toast-title-margin-bottom;
+    }
     &:empty {
       margin-bottom: -8px;
     }
