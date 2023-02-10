@@ -322,7 +322,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ```
 
 :::
-### Event Demonstration
+### Event Demo
 
 :::demo
 
@@ -364,6 +364,42 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ```
 
 :::
+
+### Slots Demo
+
+:::demo
+
+```html
+<template>
+  <nut-input
+    v-model="state.slotValue"
+    placeholder="Slots Demo"
+    clearable
+  >
+    <template #left> <Ask></Ask> </template>
+    <template #right> <nut-button type='primary' size="small">Verification Code</nut-button> </template>
+  </nut-input>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  import { Ask } from '@nutui/icons-vue';
+
+  export default {
+    components:{
+      Ask
+    },
+    setup() {
+      const state = reactive({
+        slotValue: ''
+      });
+      return {
+        state,
+      };
+    }
+  }
+</script>
+```
+:::
 ## API
 ### Props
 
@@ -402,7 +438,8 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | Name  | Description     | 
 |-------|----------|
 | clear | Customize the end of the input box to clear the button |
-
+| left `4.0.1` | Customize the slot content on the left side of the input box |
+| right `4.0.1`| Customize the slot content on the right side of the input box |
 ## Theming
 
 ### CSS Variables

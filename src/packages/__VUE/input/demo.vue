@@ -64,12 +64,19 @@
       @clear="clear"
       @click-input="clickInput"
     />
+    <h2>{{ translate('title11') }}</h2>
+    <nut-input v-model="state.slotsValue" clearable :placeholder="translate('slots')">
+      <template #left> <Ask></Ask> </template>
+      <template #right>
+        <nut-button type="primary" size="small">{{ translate('slotText') }}</nut-button>
+      </template>
+    </nut-input>
   </div>
 </template>
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { Close } from '@nutui/icons-vue';
+import { Close, Ask } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('input');
@@ -88,6 +95,7 @@ const initTranslate = () =>
       title8: '对齐方式',
       title9: '无边框',
       title10: '事件演示',
+      title11: '插槽演示',
       text: '文本',
       textPlaceholder: '请输入文本',
       passwordPlaceholder: '请输入密码',
@@ -107,6 +115,8 @@ const initTranslate = () =>
       message: '请输入留言',
       noBorder: '输入框无边框',
       event: '事件演示',
+      slots: '插槽演示',
+      slotText: '获取验证码',
       placeholder1: '在输入时执行格式化',
       placeholder2: '在失焦时执行格式化',
       placeholder3: '请输入留言',
@@ -124,7 +134,8 @@ const initTranslate = () =>
       title7: 'Show Word Limit',
       title8: 'Input Align',
       title9: 'No Border',
-      title10: 'Event Demonstration',
+      title10: 'Event Demo',
+      title11: 'Slots',
       text: 'Text',
       textPlaceholder: 'Text',
       passwordPlaceholder: 'Password',
@@ -144,6 +155,8 @@ const initTranslate = () =>
       message: 'Message',
       noBorder: 'No Border',
       event: 'Event',
+      slots: 'Slots',
+      slotText: 'Verification Code',
       placeholder1: 'Format On Change',
       placeholder2: 'Format On Blur',
       placeholder3: 'Message',
@@ -153,7 +166,8 @@ const initTranslate = () =>
   });
 export default createDemo({
   components: {
-    Close
+    Close,
+    Ask
   },
   setup() {
     initTranslate();
@@ -181,7 +195,8 @@ export default createDemo({
       noBorder2: '',
       clear: '',
       clear2: '',
-      event: ''
+      event: '',
+      slotsValue: ''
     });
     setTimeout(function () {
       // state.val1 = '异步数据';
