@@ -69,17 +69,25 @@
       @click-input="clickInput"
     />
     <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
+    <h2>插槽演示</h2>
+    <nut-input v-model="state.slotsValue" placeholder="插槽演示" clearable :adjust-position="state.adjustPosition">
+      <template #left> <Ask></Ask> </template>
+      <template #right>
+        <nut-button type="primary" size="small">获取验证码</nut-button>
+      </template>
+    </nut-input>
   </div>
 </template>
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { Close } from '@nutui/icons-vue-taro';
+import { Close, Ask } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 export default {
   components: {
     Close,
+    Ask,
     Header
   },
   setup() {
@@ -106,6 +114,7 @@ export default {
       align1: '',
       align2: '',
       event: '',
+      slotsValue: '',
       clear: '',
       clear2: '',
       adjustPosition: false,

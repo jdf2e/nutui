@@ -58,6 +58,17 @@ const getLocale = () => {
   })
 }
 
+const getResolver = () => {
+  const source = path.join(sourceDir, 'resolver');
+  const to = path.resolve(__dirname, './../dist/resolver');
+  fs.cp(source, to, { recursive: true }, (err) => {
+    if(err) {
+      console.error(err);
+      return;
+    }
+  })
+}
+
 fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
   if(err) {
     console.error(err);
@@ -99,4 +110,7 @@ declare module 'vue' {
 
   //国际化处理
   getLocale();
+
+  // resolver 类型文件
+  getResolver();
 });

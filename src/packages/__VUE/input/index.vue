@@ -2,6 +2,9 @@
   <view :class="classes">
     <view class="nut-input-value">
       <view class="nut-input-inner">
+        <view class="nut-input-left-box">
+          <slot name="left"></slot>
+        </view>
         <view class="nut-input-box">
           <component
             :is="renderInput(type)"
@@ -42,11 +45,13 @@
             </MaskClose>
           </slot>
         </view>
+        <view class="nut-input-right-box">
+          <slot name="right"> </slot>
+        </view>
       </view>
     </view>
   </view>
 </template>
-<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
