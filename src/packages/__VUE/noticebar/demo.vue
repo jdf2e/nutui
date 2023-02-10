@@ -55,7 +55,7 @@
         <div
           class="custom-item"
           :data-index="index"
-          v-for="(item, index) in horseLamp3"
+          v-for="(item, index) in data1"
           style="height: 50px; line-height: 50px"
           :key="index"
           >{{ item }}</div
@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs } from 'vue';
+import { onMounted, reactive, toRefs, ref } from 'vue';
 import { Fabulous } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('noticebar');
@@ -125,6 +125,8 @@ export default createDemo({
       text: translate('text')
     });
 
+    const data1 = ref(['Noticebar 公告栏1', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+
     const closeFun = () => {
       console.log('hello world');
     };
@@ -132,12 +134,17 @@ export default createDemo({
       console.log(item);
     };
 
+    setTimeout(() => {
+      data1.value = ['Noticebar 11111', 'Cascader 2222择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
+    }, 2000);
+
     return {
       ...toRefs(state),
       closeFun,
       go,
       translate,
-      Fabulous
+      Fabulous,
+      data1
     };
   }
 });
