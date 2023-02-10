@@ -125,7 +125,7 @@ export default createDemo({
       text: translate('text')
     });
 
-    const data1 = ref(['Noticebar 公告栏1', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+    const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
 
     const closeFun = () => {
       console.log('hello world');
@@ -135,7 +135,7 @@ export default createDemo({
     };
 
     setTimeout(() => {
-      data1.value = ['Noticebar 11111', 'Cascader 2222择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
+      data1.value = ['公告栏 Noticebar', '级联选择 Cascader', '日期选择器 DatePicker', '复选按钮 CheckBox'];
     }, 2000);
 
     return {
