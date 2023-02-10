@@ -92,7 +92,7 @@
         <div
           class="custom-item"
           :data-index="index"
-          v-for="(item, index) in horseLamp3"
+          v-for="(item, index) in data1"
           style="height: 50px; line-height: 50px"
           :key="index"
           >{{ item }}</div
@@ -119,7 +119,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, ref } from 'vue';
 import { Fabulous } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
@@ -135,6 +135,12 @@ export default {
       text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
     });
 
+    const data1 = ref(['Noticebar 公告栏1', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+
+    setTimeout(() => {
+      data1.value = ['Noticebar 11111', 'Cascader 2222择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
+    }, 2000);
+
     const hello = () => {
       console.log('hello world');
     };
@@ -146,7 +152,8 @@ export default {
       ...toRefs(state),
       hello,
       go,
-      env
+      env,
+      data1
     };
   }
 };

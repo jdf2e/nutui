@@ -40,12 +40,17 @@
     >
       <template v-if="slots.default">
         <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
-          <ScrollItem
-            v-for="(item, index) in scrollList"
-            :key="index"
-            :style="{ height: height + 'px', 'line-height': height + 'px' }"
-            :item="item"
-          ></ScrollItem>
+          <div class="showNotica">
+            <ScrollItem
+              v-for="(item, index) in scrollList"
+              :key="index"
+              :style="{ height: height + 'px', 'line-height': height + 'px' }"
+              :item="item"
+            ></ScrollItem>
+          </div>
+        </view>
+        <view class="nut-noticebar-custom-item">
+          <slot></slot>
         </view>
       </template>
 
@@ -104,6 +109,7 @@ interface StateProps {
   timer: null;
   keepAlive: boolean;
   isCanScroll: null | boolean;
+  showNotica: boolean;
 }
 export default create({
   props: {
@@ -191,7 +197,8 @@ export default create({
       distance: 0,
       timer: null,
       keepAlive: false,
-      isCanScroll: null
+      isCanScroll: null,
+      showNotica: true
     });
 
     const classes = computed(() => {
@@ -283,7 +290,7 @@ export default create({
         const offsetWidth = content.value.getBoundingClientRect().width;
 
         state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
-        console.log(111, state.isCanScroll);
+
         if (state.isCanScroll) {
           state.wrapWidth = wrapWidth;
           state.offsetWidth = offsetWidth;
@@ -366,7 +373,8 @@ export default create({
     onMounted(() => {
       if (props.direction == 'vertical') {
         if (slots.default) {
-          state.scrollList = [].concat(slots.default()[0].children as any);
+          updateSlotChild();
+          watchSlots();
         } else {
           state.scrollList = [].concat(props.list as any);
         }
@@ -378,6 +386,30 @@ export default create({
         initScrollWrap(props.text);
       }
     });
+
+    const updateSlotChild = () => {
+      if (slots.default) state.scrollList = [].concat(slots.default()[0].children as any);
+    };
+
+    const watchSlots = () => {
+      setTimeout(() => {
+        var observer = new MutationObserver((slots) => {
+          state.showNotica = false;
+          setTimeout(() => {
+            state.showNotica = true;
+          });
+          updateSlotChild();
+        });
+        const ele = document.getElementsByClassName('nut-noticebar-custom-item')[0];
+
+        if (ele) {
+          observer.observe(ele, {
+            childList: true,
+            subtree: true
+          });
+        }
+      }, 100);
+    };
 
     onActivated(() => {
       if (state.keepAlive) {

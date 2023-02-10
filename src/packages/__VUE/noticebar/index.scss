@@ -121,6 +121,10 @@
     }
   }
 
+  .nut-noticebar-custom-item {
+    position: absolute;
+    top: 999999px;
+  }
   .go {
     margin: $noticebar-righticon-margin;
     align-self: center;
