@@ -112,7 +112,7 @@ export default create({
       moving: false,
       offset: 0,
       touchTime: 0,
-      autoplayTimer: 0 as number | undefined,
+      autoplayTimer: null as NodeJS.Timeout | undefined | null,
       children: [] as ComponentPublicInstance[],
       childrenVNode: [] as VNode[],
       style: {}
@@ -279,7 +279,9 @@ export default create({
     };
 
     const stopAutoPlay = () => {
-      clearTimeout(state.autoplayTimer);
+      if (state.autoplayTimer) {
+        clearTimeout(state.autoplayTimer);
+      }
     };
 
     const jump = (pace: number) => {

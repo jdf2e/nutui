@@ -153,7 +153,7 @@ export default create({
     let startMoveY: number;
     let startScale: number;
     let startDistance: number;
-    let doubleTapTimer: number | null;
+    let doubleTapTimer: NodeJS.Timeout | null;
     let touchStartTime: number;
     let fingerNum: number;
 

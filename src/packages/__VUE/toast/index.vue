@@ -91,7 +91,7 @@ export default create({
   },
   emits: ['close'],
   setup(props: any, { emit }) {
-    let timer: number | null | undefined;
+    let timer: NodeJS.Timeout | null | undefined;
     const state = reactive({
       mounted: false
     });
