@@ -16,7 +16,7 @@
   align-items: center;
 
   &__icon--unactive {
-    color: $black;
+    color: $tabbar-unactive-color;
   }
 
   &_icon-box {
@@ -32,8 +32,9 @@
       border: 1px solid $white;
       border-radius: 7px;
       text-align: center;
-      top: -2px;
-      right: -7px;
+      top: $tabbar-tips-nums-top;
+      right: $tabbar-tips-nums-right;
+      left: $tabbar-tips-nums-left;
       box-shadow: 0 0 0 1px $white;
       font-size: $font-size-1;
       color: $white;
@@ -52,7 +53,7 @@
       color: #fff;
       top: 0;
       right: 0;
-      transform: translate(50%, -50%);
+      transform: $tabbar-tips-dot-transform;
     }
 
     &_num {

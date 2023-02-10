@@ -1,4 +1,13 @@
 const path = require('path');
+// npm run dev:taro:weapp [jdt|jddkh|jdt]
+const themeMap = {
+  jdb: 'variables-jdb.scss',
+  jddkh: 'variables-jddkh.scss',
+  jdt: 'variables-jdt.scss'
+};
+const lastArg = process.argv[process.argv.length - 1];
+const theme = themeMap[lastArg] || 'variables.scss';
+
 const config = {
   projectName: '@nutui/nutui-taro-mobile',
   date: '2021-5-29',
@@ -17,7 +26,7 @@ const config = {
     '@/packages': path.resolve(__dirname, '../../../../../src/packages')
   },
   sass: {
-    resource: path.resolve(__dirname, '../../../../', 'packages/styles/variables.scss')
+    resource: path.resolve(__dirname, '../../../../', 'packages/styles', theme)
   },
   defineConstants: {},
   copy: {

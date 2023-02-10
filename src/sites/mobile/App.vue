@@ -59,7 +59,10 @@ export default defineComponent({
       }
     };
 
-    useThemeEditor();
+    // 本地调试时通过preprocessorOptions注入
+    if (!import.meta.env.DEV) {
+      useThemeEditor();
+    }
 
     //返回demo页
     const goBack = () => {

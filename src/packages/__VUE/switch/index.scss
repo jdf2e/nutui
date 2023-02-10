@@ -26,10 +26,10 @@
       color: $white;
       font-size: $font-size-1;
       &.open {
-        transform: translateX(-16px);
+        transform: $switch-label-open-transform;
       }
       &.close {
-        transform: translateX(16px);
+        transform: $switch-label-close-transform;
       }
     }
   }

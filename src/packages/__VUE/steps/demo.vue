@@ -167,6 +167,7 @@ export default createDemo({
   }
 }
 .steps-wrapper {
+  box-sizing: border-box;
   width: 100%;
   padding: 15px 0;
   background-color: #fff;

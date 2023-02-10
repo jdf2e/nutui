@@ -11,6 +11,9 @@
       <nut-badge value="NEW">
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>
+      <nut-badge value="NEW" bubble>
+        <nut-avatar icon="my" shape="square"></nut-avatar>
+      </nut-badge>
       <nut-badge dot>
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>

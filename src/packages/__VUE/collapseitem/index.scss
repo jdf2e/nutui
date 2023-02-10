@@ -73,7 +73,7 @@
     .subTitle {
       position: absolute;
       top: 50%;
-      right: 60px;
+      right: $collapse-item-sub-title-right;
       margin-top: -12px;
       color: $collapse-item-sub-title-color;
     }
