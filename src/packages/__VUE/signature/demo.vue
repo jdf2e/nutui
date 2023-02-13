@@ -7,7 +7,13 @@
     </div>
     <h2>{{ translate('title') }}</h2>
     <div>
-      <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @end="end"></nut-signature>
+      <nut-signature
+        @confirm="confirm2"
+        @clear="clear2"
+        :lineWidth="lineWidth"
+        :strokeStyle="strokeStyle"
+        @end="end"
+      ></nut-signature>
       <image :src="demoSignUrl2" class="demoSignUrl" v-if="demoSignUrl2" />
     </div>
   </div>

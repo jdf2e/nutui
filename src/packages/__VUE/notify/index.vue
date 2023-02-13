@@ -59,7 +59,7 @@ export default create({
     };
 
     // timer
-    let timer: null | number = null;
+    let timer: null | NodeJS.Timeout = null;
     const clearTimer = () => {
       timer && clearTimeout(timer);
       timer = null;

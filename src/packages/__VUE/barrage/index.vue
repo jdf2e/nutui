@@ -54,7 +54,7 @@ export default create({
     let dmBody = ref<HTMLDivElement>(document.createElement('div'));
     let dmContainer = ref<HTMLDivElement>(document.createElement('div'));
 
-    let timer = 0;
+    let timer: NodeJS.Timeout | null | undefined = null;
     const danmuList: any = ref(props.danmu);
     const rows = ref<number>(props.rows);
     const top = ref<number>(props.top);
@@ -114,8 +114,10 @@ export default create({
     };
 
     const clearTime = () => {
-      clearTimeout(timer);
-      timer = 0;
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
     };
 
     watch(
