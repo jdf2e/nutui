@@ -168,7 +168,8 @@ export default {
 | Attribute  | Description                                              | Type          | Default  |
 |------------|----------------------------------------------------------|---------------|----------|
 | type       | The information type of the prompt, the optional values are `primary` `success` `danger` `warning`      | string        | `danger` |
-| message    | Display copy, support line feed through \n              | boolean       | `false`    |
+| visible    | Display or not                                           | boolean | `false` |
+| msg    | Display content, support line feed through `\n`                              | string       | `''`    |
 | duration   | Display duration (ms),value is 0 ,notify not disappear | number        | `3000`     |
 | color      | Font Color                                               | string        | `-`        |
 | background | Background color                                         | string        | `-`        |
