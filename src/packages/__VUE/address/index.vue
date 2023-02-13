@@ -51,7 +51,7 @@
         </view>
 
         <view class="nut-address__detail" v-if="privateType == 'custom'">
-          <ul class="nut-address__detail-list">
+          <ul class="nut-address__detail-list" ref="scrollDom">
             <li
               v-for="(item, index) in regionList"
               :key="index"
@@ -202,7 +202,10 @@ export default create({
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
+    const prevTabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
+    const scrollDom = ref<null | HTMLElement>(null);
+    const scrollDis = ref([0, 0, 0, 0]);
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
@@ -297,6 +300,8 @@ export default create({
     };
 
     const lineAnimation = () => {
+      scrollTo();
+
       nextTick(() => {
         const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
         if (name) {
@@ -308,7 +313,7 @@ export default create({
 
     const nextAreaList = (item: RegionData) => {
       const tab = tabIndex.value;
-
+      prevTabIndex.value = tabIndex.value;
       const callBackParams: {
         next?: string;
         value?: RegionData;
@@ -338,10 +343,26 @@ export default create({
     };
 
     const changeRegionTab = (item: RegionData, index: number) => {
+      prevTabIndex.value = tabIndex.value;
       if (getTabName(item, index)) {
         tabIndex.value = index;
         lineAnimation();
       }
+    };
+
+    const scrollTo = () => {
+      const dom = scrollDom.value;
+      const prev = prevTabIndex.value;
+      const cur = scrollDis.value[tabIndex.value];
+
+      dom?.scrollTop && (scrollDis.value[prev] = dom?.scrollTop);
+
+      nextTick(() => {
+        dom?.scrollTo({
+          top: cur,
+          behavior: 'auto'
+        });
+      });
     };
 
     const selectedExist = (item: existRegionData) => {
@@ -467,7 +488,8 @@ export default create({
       ...toRefs(props),
       translate,
       regionList,
-      transformData
+      transformData,
+      scrollDom
     };
   }
 });

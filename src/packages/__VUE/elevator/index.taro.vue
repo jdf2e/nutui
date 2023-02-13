@@ -130,6 +130,7 @@ export default create({
     });
 
     const fixedStyle = computed(() => {
+      console.log(11, state.listHeight, state.listGroup);
       return {
         height: `${state.listHeight[state.listGroup.length - 1]}px`
       };

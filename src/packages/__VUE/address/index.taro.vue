@@ -49,20 +49,22 @@
         </view>
 
         <view class="nut-address__detail" v-if="privateType == 'custom'">
-          <ul class="nut-address__detail-list">
-            <li
-              v-for="(item, index) in regionList"
-              :key="index"
-              :class="['nut-address__detail-item', selectedRegion[tabIndex]?.id == item.id ? 'active' : '']"
-              @click="nextAreaList(item)"
-            >
-              <div>
-                <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
-                  <Check class="nut-address-select-icon" width="13px"></Check> </slot
-                >{{ item.name }}
+          <div class="nut-address__detail-list">
+            <NutScrollView :scroll-y="true" :style="{ height: '100%' }" :scroll-top="scrollTop" @scroll="scrollChange">
+              <div
+                v-for="(item, index) in regionList"
+                :key="index"
+                :class="['nut-address__detail-item', selectedRegion[tabIndex]?.id == item.id ? 'active' : '']"
+                @click="nextAreaList(item)"
+              >
+                <div>
+                  <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
+                    <Check class="nut-address-select-icon" width="13px"></Check> </slot
+                  >{{ item.name }}
+                </div>
               </div>
-            </li>
-          </ul>
+            </NutScrollView>
+          </div>
         </view>
 
         <view class="nut-address__elevator-group" v-else>
@@ -124,6 +126,7 @@ import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
 import { popupProps } from '../popup/props';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
+import NutScrollView from '../scrollView/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
@@ -137,7 +140,8 @@ export default create({
     Location2,
     Check,
     Close,
-    Left
+    Left,
+    NutScrollView
   },
   inheritAttrs: false,
   props: {
@@ -192,7 +196,7 @@ export default create({
     },
     height: {
       type: [String, Number],
-      default: '200px'
+      default: '200'
     },
     columnsPlaceholder: {
       type: [String, Array],
@@ -218,7 +222,10 @@ export default create({
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
+    const prevTabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
+    const scrollDis = ref([0, 0, 0, 0]);
+    const scrollTop = ref(0);
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
@@ -301,6 +308,7 @@ export default create({
           }
           selectedRegion.value[index] = arr.filter((item: RegionData) => item.id == defaultValue[index])[0];
         }
+        scrollTo();
       }
     };
 
@@ -328,7 +336,7 @@ export default create({
     // 切换下一级列表
     const nextAreaList = (item: RegionData) => {
       const tab = tabIndex.value;
-
+      prevTabIndex.value = tabIndex.value;
       const callBackParams: {
         next?: string;
         value?: RegionData;
@@ -349,6 +357,8 @@ export default create({
         callBackParams.value = item;
 
         emit('change', callBackParams);
+
+        scrollTo();
       } else {
         handClose();
         emit('update:modelValue');
@@ -356,9 +366,22 @@ export default create({
     };
     //切换地区Tab
     const changeRegionTab = (item: RegionData, index: number) => {
+      prevTabIndex.value = tabIndex.value;
       if (getTabName(item, index)) {
         tabIndex.value = index;
+        scrollTo();
       }
+    };
+
+    const scrollChange = (e: any) => {
+      scrollDis.value[tabIndex.value] = e.detail.scrollTop;
+    };
+
+    const scrollTo = () => {
+      setTimeout(() => {
+        console.log(scrollDis.value, tabIndex.value);
+        scrollTop.value = scrollDis.value[tabIndex.value];
+      });
     };
 
     // 选择现有地址
@@ -383,6 +406,7 @@ export default create({
     const initAddress = () => {
       selectedRegion.value = [];
       tabIndex.value = 0;
+      scrollTo();
     };
 
     // 关闭
@@ -475,7 +499,9 @@ export default create({
       ...toRefs(props),
       ...toRefs(tabItemRef),
       translate,
-      transformData
+      transformData,
+      scrollTop,
+      scrollChange
     };
   }
 });
