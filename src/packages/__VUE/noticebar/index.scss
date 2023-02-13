@@ -110,14 +110,20 @@
   color: $noticebar-color;
 
   .nut-noticebar__vertical-list {
+    width: 100%;
     margin: 0;
     padding: 0;
     display: block;
     flex: 1;
+    overflow: hidden;
     .nut-noticebar__vertical-item {
-      display: flex;
-      align-items: center;
+      // display: flex;
+      // align-items: center;
       height: $noticebar-across-height;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 
