@@ -8,7 +8,8 @@
     "pages/basic/pages/divider/index",
     "pages/basic/pages/grid/index",
     "pages/basic/pages/overlay/index",
-    "pages/basic/pages/transition/index"
+    "pages/basic/pages/transition/index",
+    "pages/basic/pages/popup/index"
   ],
   "usingComponents": {
     "nut-icon":"./components/packages/icon/icon",
@@ -19,7 +20,8 @@
     "nut-grid":"./components/packages/grid/index",
     "nut-grid-item":"./components/packages/grid-item/index",
     "nut-overlay":"./components/packages/overlay/index",
-    "nut-transition":"./components/packages/transition/index"
+    "nut-transition":"./components/packages/transition/index",
+    "nut-popup":"./components/packages/popup/index"
   },
   "window":{
     "backgroundTextStyle":"light",

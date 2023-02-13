@@ -82,6 +82,17 @@ module.exports = [
           "desc": "动画",
           "author": ""
         },
+        {
+          "version": "3.0.0",
+          "name": "Popup",
+          "taro": true,
+          "sort": 3,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "desc": "弹出层",
+          "author": ""
+        },
       ]
     }
   ]

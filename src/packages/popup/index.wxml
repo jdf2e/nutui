@@ -1,0 +1,28 @@
+<wxs src="./index.wxs" module="computed" />
+
+<nut-overlay
+  show="{{ overlay && show }}"
+  zIndex="{{zIndex}}"
+  duration="{{duration}}"
+  />
+
+<nut-transition 
+  name="fade" 
+  show='{{ show }}' 
+  custom-class="nut-overlay custom-class" 
+  custom-style='z-index:{{zIndex}};{{overlayStyle}}'   
+  bind:tap='onClick'
+  duration='{{duration}}'> 
+    <view wx:if="{{show}}" class="{{computed.classes({position,popClass,round})}}" style="z-index:{{zIndex}};transitionDuration:{{duration}}s;{{popStyle}}" >
+        
+        <slot></slot>
+        <view
+          wx:if="{{show}}"
+          bindtap="onClickCloseIcon"
+          class="nut-popup__close-icon"
+        >
+          <!-- <nut-icon name='close'></nut-icon> -->
+        </view>
+      </view>
+
+</nut-transition>

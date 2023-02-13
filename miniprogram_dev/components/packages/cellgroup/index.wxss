@@ -3,25 +3,25 @@
 }
 .nut-cell-group__title {
   display: inherit;
-  padding: 0 20rpx;
+  padding: 0 10px;
   color: #909ca4;
-  font-size: 28rpx;
-  line-height: 40rpx;
+  font-size: 14px;
+  line-height: 20px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
 .nut-cell-group__desc {
   display: inherit;
-  padding: 0 20rpx;
+  padding: 0 10px;
   color: #909ca4;
-  font-size: 24rpx;
-  line-height: 32rpx;
+  font-size: 12px;
+  line-height: 16px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .nut-cell-group__warp {
   display: inherit;
-  border-radius: 12rpx;
+  border-radius: 6px;
   overflow: hidden;
   background-color: #fff;
   margin: 10px 0;

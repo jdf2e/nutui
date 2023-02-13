@@ -82,25 +82,136 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 16:
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _basic = __webpack_require__(1);
+
+function mapKeys(source, target, map) {
+    Object.keys(map).forEach(function (key) {
+        if (source[key]) {
+            target[map[key]] = source[key];
+        }
+    });
+}
+function NutComponent(NutOptions) {
+    var options = {};
+    mapKeys(NutOptions, options, {
+        data: 'data',
+        props: 'properties',
+        mixins: 'behaviors',
+        methods: 'methods',
+        beforeCreate: 'created',
+        created: 'attached',
+        mounted: 'ready',
+        destroyed: 'detached',
+        classes: 'externalClasses',
+        observers: 'observers'
+    });
+    // add default externalClasses
+    options.externalClasses = options.externalClasses || [];
+    options.externalClasses.push('custom-class');
+    // add default behaviors
+    options.behaviors = options.behaviors || [];
+    options.behaviors.push(_basic.basic);
+    // add relations
+    var relation = NutOptions.relation;
+
+    if (relation) {
+        options.relations = relation.relations;
+        options.behaviors.push(relation.mixin);
+    }
+    // map field to form-field behavior
+    if (NutOptions.field) {
+        options.behaviors.push('wx://form-field');
+    }
+    // add default options
+    options.options = {
+        multipleSlots: true,
+        addGlobalClass: true
+    };
+    console.log(options);
+    Component(options);
+}
+module.exports = { NutComponent: NutComponent };
+
+/***/ }),
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 exports.__esModule = true;
-exports.default = {
-    printf: function printf() {
-        return 'miniprogram-custom-component api demo';
+var basic = exports.basic = Behavior({
+    methods: {
+        $emit: function $emit(name, detail, options) {
+            this.triggerEvent(name, detail, options);
+        },
+        set: function set(data) {
+            this.setData(data);
+            return new Promise(function (resolve) {
+                return wx.nextTick(resolve);
+            });
+        }
     }
-};
+});
+
+/***/ }),
+
+/***/ 14:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _component = __webpack_require__(0);
+
+(0, _component.NutComponent)({
+    props: {
+        show: {
+            type: Boolean,
+            value: false
+        },
+        zIndex: {
+            type: [Number, String],
+            value: 2000
+        },
+        duration: {
+            type: [Number, String],
+            value: 300
+        },
+        popStyle: String,
+        popClass: {
+            type: String,
+            value: ''
+        },
+        round: {
+            type: Boolean,
+            value: false
+        },
+        overlay: {
+            type: Boolean,
+            value: true
+        }
+    },
+    methods: {
+        onClick: function onClick() {
+            this.$emit('click');
+        }
+    }
+});
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=lib.js.map
+//# sourceMappingURL=index.js.map

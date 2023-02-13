@@ -1,0 +1,36 @@
+<view class="demo">
+    <h2>基础用法</h2>
+
+    <nut-cell title="展示弹出层"  bindtap='onClickShow'></nut-cell>
+    <nut-popup pop-style="padding:'50px 30px'" show='{{ show }}' bind:click="onClickHide">正文</nut-popup>
+
+
+    <!-- <nut-cell>
+      <nut-button type="primary" bindtap='onClickShow' >显示遮罩层</nut-button>
+    </nut-cell>
+
+    <nut-overlay show='{{ show }}' bind:click="onClickHide"></nut-overlay> -->
+
+    <h2>遮罩样式</h2>
+     <nut-cell>
+      <nut-button type="primary" bindtap='onClicStyleShow'  >遮罩样式</nut-button>
+    </nut-cell>
+    <nut-overlay show='{{ styleShow }}' bind:click="onClicStyleHide" overlay-style="background: rgba(0, 0, 0, .2)"></nut-overlay>
+
+    <h2>设置动画时间</h2>
+     <nut-cell>
+      <nut-button type="primary" bindtap='onClickTimeShow'  >设置动画时间</nut-button>
+    </nut-cell>
+    <nut-overlay show='{{ timeShow }}' bind:click="onClickTimeHide" duration='1000'></nut-overlay>
+
+    <h2>嵌套内容</h2>
+    <nut-cell>
+      <nut-button type="primary" bindtap='onClickContentShow' >嵌入内容</nut-button>
+    </nut-cell>
+
+    <nut-overlay show='{{ contentShow }}' bind:click="onClickContentHide" custom-class='deno'>
+       <view class='block'></view>
+    </nut-overlay>
+
+  
+</view>

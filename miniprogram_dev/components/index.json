@@ -10,7 +10,8 @@
     "nut-grid":"./packages/grid/index",
     "nut-grid-item":"./packages/grid-item/index",
     "nut-overlay":"./packages/overlay/index",
-    "nut-transition":"./packages/transition/index"
+    "nut-transition":"./packages/transition/index",
+    "nut-popup":"./packages/popup/index"
   },
   "componentGenerics": {
     "genericsTest": true

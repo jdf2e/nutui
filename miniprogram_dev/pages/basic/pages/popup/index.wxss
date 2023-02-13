@@ -1,0 +1,27 @@
+.demo-button-row {
+    margin-bottom: 20px;
+}
+
+.demo-button-row2 {
+    margin-bottom: 10px;
+}
+
+.demo-button-row3{
+    margin-bottom: 10px;
+    display:block
+}
+.nut-button {
+    margin-right: 15px;
+
+}
+
+
+.block {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    background-color: #1989fa;
+}

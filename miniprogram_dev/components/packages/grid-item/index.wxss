@@ -13,17 +13,17 @@
 }
 .nut-grid-item__text {
   color: #666666;
-  font-size: 24rpx;
+  font-size: 12px;
   line-height: 1.5;
   word-break: break-all;
-  margin: 16rpx 0 0 0;
+  margin: 8px 0 0 0;
 }
 .nut-grid-item__content {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   height: 100%;
-  padding: 32rpx 16rpx;
+  padding: 16px 8px;
   background: #fff;
   border: 0 solid #f5f6f7;
 }
@@ -49,19 +49,19 @@
   flex-direction: column-reverse;
 }
 .nut-grid-item__content--reverse .nut-grid-item__text {
-  margin: 0 0 16rpx;
+  margin: 0 0 8px;
 }
 .nut-grid-item__content--horizontal {
   flex-direction: row;
 }
 .nut-grid-item__content--horizontal .nut-grid-item__text {
-  margin: 0 0 0 16rpx;
+  margin: 0 0 0 8px;
 }
 .nut-grid-item__content--horizontal.nut-grid-item__content--reverse {
   flex-direction: row-reverse;
 }
 .nut-grid-item__content--horizontal.nut-grid-item__content--reverse .nut-grid-item__text {
-  margin: 0 16rpx 0 0;
+  margin: 0 8px 0 0;
 }
 .nut-grid-item__content--clickable {
   cursor: pointer;

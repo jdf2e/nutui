@@ -524,9 +524,9 @@
 .nut-icon {
   display: inline-block;
   position: relative;
-  width: 40rpx;
-  height: 40rpx;
-  line-height: 40rpx;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
   text-align: right;
   --animate-duration: 1s;
   --animate-delay: 0s;
@@ -538,8 +538,8 @@
   transform: translate(-50%, -50%);
 }
 .nut-icon__img {
-  width: 40rpx;
-  height: 40rpx;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 .nut-icon-loading, .nut-icon-loading1 {

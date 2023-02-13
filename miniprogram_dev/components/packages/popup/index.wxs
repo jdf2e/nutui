@@ -1,0 +1,37 @@
+/* eslint-disable */
+var pxCheck = require('../wxs/pxCheck.wxs');
+var style = require('../wxs/style.wxs');
+
+
+
+function Classes(data) {
+
+    var prefixCls = 'nut-popup'
+
+    var classes = [prefixCls,prefixCls + '--' + data.position,data.popClass]
+
+    if (data.round) {
+        classes.push('round')
+    }
+
+    if (data.position === 'bottom') {
+        classes.push(prefixCls + '--' + data.position + '--safebottom')
+    }
+
+
+    return classes.join(' ');
+}
+
+function Styled(data) {
+
+    var styley = {};
+    styley.zIndex = data.zIndex;
+    styley.transitionDuration = data.duration+'s';
+
+    return style([styley]);
+}
+
+module.exports = {
+    classes: Classes,
+    styled: Styled
+};

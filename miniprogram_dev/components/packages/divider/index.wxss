@@ -1,23 +1,23 @@
 .nut-divider {
   display: flex;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 14px;
   color: #909ca4;
-  margin: 32rpx 0;
+  margin: 16px 0;
 }
 .nut-divider::before, .nut-divider::after {
   content: "";
-  border: 4rpx solid currentColor;
-  border-width: 4rpx 0 0;
+  border: 2px solid currentColor;
+  border-width: 2px 0 0;
   border-color: inherit;
-  height: 4rpx;
+  height: 2px;
   flex: 1;
 }
 .nut-divider.nut-divider-center::before, .nut-divider.nut-divider-left::before, .nut-divider.nut-divider-right::before {
-  margin-right: 32rpx;
+  margin-right: 16px;
 }
 .nut-divider.nut-divider-center::after, .nut-divider.nut-divider-left::after, .nut-divider.nut-divider-right::after {
-  margin-left: 32rpx;
+  margin-left: 16px;
 }
 .nut-divider.nut-divider-left::before {
   max-width: 10%;
@@ -33,9 +33,9 @@
 }
 .nut-divider.nut-divider-vertical {
   position: relative;
-  top: 4rpx;
+  top: 2px;
   display: inline-block;
-  height: 24rpx;
+  height: 12px;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
-  margin: 0 16rpx;
+  margin: 0 8px;
 }

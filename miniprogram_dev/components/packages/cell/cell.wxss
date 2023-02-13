@@ -8,12 +8,12 @@
   position: relative;
   display: flex;
   width: 100%;
-  line-height: 40rpx;
-  padding: 26rpx 32rpx;
+  line-height: 20px;
+  padding: 13px 16px;
   background: #fff;
-  border-radius: 12rpx;
+  border-radius: 6px;
   box-shadow: 0px 1px 7px 0px rgb(237, 238, 241);
-  font-size: 28rpx;
+  font-size: 14px;
   color: #666666;
   box-sizing: border-box;
 }
@@ -21,11 +21,11 @@
   align-items: center;
 }
 .nut-cell--large {
-  font-size: 32rpx;
-  padding: 30rpx 32rpx;
+  font-size: 16px;
+  padding: 15px 16px;
 }
 .nut-cell--large .nut-cell__title-desc {
-  font-size: 28rpx;
+  font-size: 14px;
 }
 .nut-cell:last-child::after {
   border: 0 !important;
@@ -35,7 +35,7 @@
   box-sizing: border-box;
   content: " ";
   pointer-events: none;
-  right: 32rpx;
+  right: 16px;
   bottom: 0;
   left: 16px;
   transform: scaleY(0.5);
@@ -63,7 +63,7 @@
 .nut-cell__icon {
   display: flex;
   flex-direction: row;
-  margin-right: 0 8rpx 0 0rpx;
+  margin-right: 0 4px 0 0px;
 }
 .nut-cell__title {
   display: flex;
@@ -71,12 +71,12 @@
   flex: 1;
 }
 .nut-cell__title-desc {
-  font-size: 24rpx;
+  font-size: 12px;
 }
 .nut-cell__value {
   display: inline-block;
   text-align: right;
-  font-size: 28rpx;
+  font-size: 14px;
   color: #cccccc;
 }
 .nut-cell__value--alone {
