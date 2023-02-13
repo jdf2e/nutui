@@ -3,7 +3,7 @@
     <Header v-if="env === 'WEB'" />
     <h2>默认用法</h2>
     <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
     ></nut-noticebar>
 
     <h2>滚动播放</h2>
@@ -16,7 +16,7 @@
     </nut-noticebar>
     <p />
     <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       :scrollable="false"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -24,11 +24,13 @@
 
     <h2>通告栏模式--关闭模式</h2>
     <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
-      >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+      >NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
+      H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
     </nut-noticebar>
     <p />
     <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
-      >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+      >NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
+      H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
     </nut-noticebar>
 
     <h2>通告栏模式--链接模式</h2>
@@ -44,7 +46,7 @@
 
     <h2>多行展示</h2>
     <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       wrapable
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -110,8 +112,11 @@
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
       >
-        <template v-slot:rightIcon>
-          <Fabulous />
+        <template v-slot:right-icon>
+          <img
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            style="width: 20px; height: 20px"
+          />
         </template>
       </nut-noticebar>
     </div>
@@ -129,13 +134,28 @@ export default {
   setup() {
     const env = Taro.getEnv();
     const state = reactive({
-      horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      horseLamp3: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
+      horseLamp1: [
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+        '爆款准点秒',
+        '买超值优惠',
+        '赢百万京豆'
+      ],
+      horseLamp2: [
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+        '爆款准点秒',
+        '买超值优惠',
+        '赢百万京豆'
+      ],
+      horseLamp3: [
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+        '爆款准点秒',
+        '买超值优惠',
+        '赢百万京豆'
+      ],
+      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
     });
 
-    const data1 = ref(['Noticebar 公告栏1', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+    const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
 
     setTimeout(() => {
       data1.value = ['公告栏 Noticebar', '级联选择 Cascader', '日期选择器 DatePicker', '复选按钮 CheckBox'];
@@ -162,5 +182,12 @@ export default {
 <style lang="scss">
 .demo {
   padding-bottom: 30px !important;
+
+  .custom-item {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 </style>

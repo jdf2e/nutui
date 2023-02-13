@@ -60,7 +60,7 @@
             class="nut-noticebar__vertical-item"
             v-for="(item, index) in scrollList"
             :key="index"
-            :style="{ height: pxCheck(height) }"
+            :style="{ height: pxCheck(height), lineHeight: pxCheck(height) }"
             @click="go(item)"
           >
             {{ item }}

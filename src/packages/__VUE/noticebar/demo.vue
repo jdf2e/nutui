@@ -41,13 +41,7 @@
 
     <h2>{{ translate('complexAm') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar
-        direction="vertical"
-        :list="horseLamp2"
-        :speed="10"
-        :standTime="2000"
-        :complexAm="true"
-      ></nut-noticebar>
+      <nut-noticebar direction="vertical" :list="data1" :speed="10" :standTime="2000" :complexAm="true"></nut-noticebar>
     </div>
     <h2>{{ translate('customAm') }}</h2>
     <div class="interstroll-list">
@@ -94,7 +88,12 @@ const initTranslate = () =>
       customRightIcon: '纵向--自定义右侧图标',
       text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
       textShort: 'NutUI 是移动端组件库',
-      horseLamp: ['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'],
+      horseLamp: [
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+        'Cascader 级联选择',
+        'DatePicker 日期选择器',
+        'CheckBox 复选按钮'
+      ],
       jd: '京东商城'
     },
     'en-US': {
@@ -135,7 +134,12 @@ export default createDemo({
     };
 
     setTimeout(() => {
-      data1.value = ['公告栏 Noticebar', '级联选择 Cascader', '日期选择器 DatePicker', '复选按钮 CheckBox'];
+      data1.value = [
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+        '级联选择 Cascader',
+        '日期选择器 DatePicker',
+        '复选按钮 CheckBox'
+      ];
     }, 2000);
 
     return {
@@ -166,6 +170,13 @@ export default createDemo({
   .interstroll-list {
     background: rgba(251, 248, 220, 1);
     color: #d9500b;
+  }
+
+  .custom-item {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 </style>

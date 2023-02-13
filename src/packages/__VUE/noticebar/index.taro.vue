@@ -61,7 +61,7 @@
             class="nut-noticebar__vertical-item"
             v-for="(item, index) in scrollList"
             :key="index"
-            :style="{ height: pxCheck(height) }"
+            :style="{ height: pxCheck(height), lineHeight: pxCheck(height) }"
             @click="go(item)"
           >
             {{ item }}
@@ -69,7 +69,7 @@
         </ul>
       </template>
 
-      <view class="go" @click="!slots.rightIcon && handleClickIcon()">
+      <view class="go" @click="handleClickIcon()">
         <slot name="right-icon">
           <CircleClose v-if="closeMode" :color="color" size="11px" />
         </slot>
