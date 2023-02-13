@@ -282,7 +282,7 @@ export default create({
     const methods = {
       tabChange: (item: Title, index: number) => {
         emit('click', item);
-        if (item.disabled) {
+        if (item.disabled || currentIndex.value == index) {
           return;
         }
         currentIndex.value = index;
