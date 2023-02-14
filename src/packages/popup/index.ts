@@ -27,11 +27,18 @@ NutComponent({
       type: Boolean,
       value: true
     },
+    position: {
+      type: String,
+      value: 'center'
+    },
+    overlayStyle: String,
   },
 
   methods: {
-    onClick(){
-      this.$emit('click');
+    onClickOverlay(){
+      console.log('点击')
+
+      this.$emit('clickOverlay')
     }
   },
 });

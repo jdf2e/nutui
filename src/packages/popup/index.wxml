@@ -4,6 +4,8 @@
   show="{{ overlay && show }}"
   zIndex="{{zIndex}}"
   duration="{{duration}}"
+  overlay-style="{{overlayStyle}}"
+  bind:click="onClickOverlay"
   />
 
 <nut-transition 

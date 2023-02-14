@@ -1,6 +1,6 @@
 <wxs src="./index.wxs" module="computed" />
 
-<view class="{{computed.classes({direction,contentPosition,dashed,hairline,useSlot})}}" style="border-color:{{borderColor}}" wx:if="{{direction === 'horizontal'}}">
+<view class="{{computed.classes({direction,contentPosition,dashed,hairline})}}" style="border-color:{{borderColor}}" wx:if="{{direction === 'horizontal'}}">
     <slot></slot>
 </view>
 <view class="{{computed.classes({direction,contentPosition,dashed,hairline})}}" wx:else></view>

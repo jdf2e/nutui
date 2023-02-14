@@ -53,13 +53,11 @@ function NutComponent<
     options.behaviors.push('wx://form-field');
   }
 
-  // add default options
+  // 添加默认 选项
   options.options = {
     multipleSlots: true,
     addGlobalClass: true,
   };
-
-   console.log(options)
 
   Component(options);
 }

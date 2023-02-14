@@ -8,7 +8,7 @@ function Classes(data) {
 
     var prefixCls = 'nut-popup'
 
-    var classes = [prefixCls,prefixCls + '--' + data.position,data.popClass]
+    var classes = [prefixCls,prefixCls + '--' + data.position, data.popClass]
 
     if (data.round) {
         classes.push('round')

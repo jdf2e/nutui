@@ -21,10 +21,6 @@ NutComponent({
     borderColor: {
       type: String,
       value: 'initial'
-    },
-    useSlot: {
-      type: Boolean,
-      value: false
     }
   },
 

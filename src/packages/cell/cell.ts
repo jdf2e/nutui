@@ -25,8 +25,8 @@ NutComponent({
     return {};
   },
   methods: {
-    clickCell() {
-      this.$emit('click-cell');
+    handleClick() {
+      this.$emit('click');
     },
     
   }

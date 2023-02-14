@@ -133,12 +133,11 @@ function NutComponent(NutOptions) {
     if (NutOptions.field) {
         options.behaviors.push('wx://form-field');
     }
-    // add default options
+    // 添加默认 选项
     options.options = {
         multipleSlots: true,
         addGlobalClass: true
     };
-    console.log(options);
     Component(options);
 }
 module.exports = { NutComponent: NutComponent };
@@ -197,10 +196,6 @@ var _component = __webpack_require__(0);
         borderColor: {
             type: String,
             value: 'initial'
-        },
-        useSlot: {
-            type: Boolean,
-            value: false
         }
     },
     methods: {}
