@@ -1,8 +1,8 @@
 @font-face {
   font-family: "nutui-iconfont"; /* Project id 2166874 */
-  src: url('iconfont.woff2?t=1668762221765') format('woff2'),
-       url('iconfont.woff?t=1668762221765') format('woff'),
-       url('iconfont.ttf?t=1668762221765') format('truetype');
+  src: url('https://storage.360buyimg.com/nutui/3x/static/iconfont.woff2?t=1668762221765') format('woff2'),
+       url('https://storage.360buyimg.com/nutui/3x/static/iconfont.woff?t=1668762221765') format('woff'),
+       url('https://storage.360buyimg.com/nutui/3x/static/iconfont.ttf?t=1668762221765') format('truetype');
 }
 
 .nutui-iconfont {

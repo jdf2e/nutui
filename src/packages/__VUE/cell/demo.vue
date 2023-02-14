@@ -52,10 +52,16 @@
           />
         </template>
       </nut-cell>
+      <nut-cell :title="translate('image')" :sub-title="translate('title1')">
+        <template v-slot:icon>
+          <div style="height: 40px; width: 40px; border-radius: 50%; background: #e5e5e5"></div>
+        </template>
+      </nut-cell>
     </nut-cell-group>
 
     <h2>{{ translate('displayIcon') }}</h2>
     <nut-cell :title="translate('name')" icon="my" :desc="translate('desc')" isLink> </nut-cell>
+    <nut-cell :title="translate('name')" icon="my" :desc="translate('desc')" isLink size="large"> </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell desc-text-align="left" :desc="translate('desc')"></nut-cell>
 

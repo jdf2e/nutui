@@ -218,6 +218,7 @@ app.use(Badge);
 | max     | When value is a numeric value, the maximum value                     | Number  | `10000`   |
 | z-index | badge z-index                          | Number  | `10`      |
 | dot     | whether to dot                                 | Boolean | `false`   |
+| bubble  | whether to bubble                                 | Boolean | `false`   |
 | hidden  | whether to hide                                   | Boolean | `false`   |
 | top     | Up and down offset, support unit setting, for example: 5px | Number  | `0`       |
 | right   | Left and right offset, support unit setting, for example: 5px | Number  | `0`       |

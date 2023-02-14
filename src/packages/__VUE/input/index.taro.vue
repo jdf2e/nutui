@@ -297,6 +297,7 @@ export default create({
       return {
         [prefixCls]: true,
         center: props.center,
+        [`${prefixCls}-readonly`]: props.readonly,
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-required`]: props.required,
         [`${prefixCls}-error`]: props.error,

@@ -1,3 +1,20 @@
+## v3.3.4
+
+`2023-02-10`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @dongj0316 @mikasayw
+
+* :zap: feat(checkbox): add checkbox new props of shape (#1978) @mikasayw
+* :zap: feat: theme perf (#2096) @dongj0316
+* :bug: fix(calendar): 新增初始化位置方法(#2083) @lkjh3214
+* :bug: fix: demo图标修改 @yangxiaolu1993
+* :bug: fix(list): list 虚拟列表未设置height，滚动加载有问题 #2088 @szg2008
+* :bug: fix(list): 虚拟列表在ios手机上，滚动条滚动到顶部会出现白屏。 #2031 @szg2008
+* :bug: fix(dialog): dialog warning #1905 @szg2008
+* :bug: fix: 签名组件交互优化 @Ymm0008
+* 📖 docs: 组件文档完善 (#2070)  @yangxiaolu1993
+
 ## v3.3.3
 
 `2022-1-18`

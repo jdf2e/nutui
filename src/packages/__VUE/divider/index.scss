@@ -8,7 +8,7 @@
   &::before,
   &::after {
     content: '';
-    border: $divider-line-height solid currentColor;
+    border: $divider-line-height solid $divider-border-color;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;
     flex: 1;

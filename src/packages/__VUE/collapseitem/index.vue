@@ -112,8 +112,8 @@ export default create({
       openExpanded: false,
       // classDirection: 'right',
       iconStyle: {
-        transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
+        transform: 'translateY(-50%) rotate(0deg)'
+        // marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
       }
     });
 
@@ -157,9 +157,9 @@ export default create({
         wrapperRefEle.style.willChange = 'height';
         wrapperRefEle.style.height = !proxyData.openExpanded ? 0 : contentHeight;
         if (parent.props.icon && !proxyData.openExpanded) {
-          proxyData.iconStyle['transform'] = 'rotate(0deg)';
+          proxyData.iconStyle['transform'] = 'translateY(-50%) rotate(0deg)';
         } else {
-          proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
+          proxyData.iconStyle['transform'] = 'translateY(-50%) rotate(' + parent.props.rotate + 'deg)';
         }
       }
       if (!proxyData.openExpanded) {
@@ -175,7 +175,7 @@ export default create({
     const defaultOpen = () => {
       open();
       if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
+        proxyData['iconStyle']['transform'] = 'translateY(-50%) rotate(' + parent.props.rotate + 'deg)';
       }
     };
 
