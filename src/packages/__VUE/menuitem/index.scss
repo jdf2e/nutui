@@ -39,8 +39,8 @@
 }
 
 .nut-menu__pop {
-  transition: all 0 ease 0;
-  transform: none;
+  transition: height linear 3s;
+  // transform: none;
 }
 
 .nut-menu-item-placeholder-element {
