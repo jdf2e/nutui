@@ -17,6 +17,9 @@ app.use(CategoryPane);
 
 ### 经典分类模式
 
+data 数据格式可参考
+[categoryData.js](https://storage.360buyimg.com/nutui/3x/categoryData.js)。
+
 :::demo
 
 ```html

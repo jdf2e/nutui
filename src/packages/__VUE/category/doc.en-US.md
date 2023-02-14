@@ -17,6 +17,9 @@ app.use(CategoryPane);
 
 ### Classic Classification Mod
 
+data defination
+[categoryData.js](https://storage.360buyimg.com/nutui/3x/categoryData.js)。
+
 :::demo
 
 ```html
