@@ -25,7 +25,12 @@
           @click.stop="chooseItem(item, index)"
         >
           <slot v-if="item.icon">
-            <Icon v-bind="$attrs" class="nut-popover-item-img" :classPrefix="iconPrefix" :name="item.icon"></Icon
+            <nut-icon
+              v-bind="$attrs"
+              class="nut-popover-item-img"
+              :classPrefix="iconPrefix"
+              :name="item.icon"
+            ></nut-icon
           ></slot>
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
