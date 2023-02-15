@@ -282,7 +282,7 @@ export default {
   }
 }
  </script>
- <style lang="scss" scoped>
+ <style lang="scss">
 .custom-content {
   padding: 10px 10px 160px;
 }

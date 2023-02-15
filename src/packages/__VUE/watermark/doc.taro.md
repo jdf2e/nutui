@@ -51,7 +51,7 @@ app.use(Watermark);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .wrap {
     width: 100%;
     height: 240px;
@@ -92,7 +92,7 @@ app.use(Watermark);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .wrap {
     width: 100%;
     height: 240px;

@@ -38,7 +38,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-pagination {
     margin-left:20px;
   }
@@ -70,7 +70,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-pagination {
     margin-left:20px;
   }
@@ -102,7 +102,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-pagination {
     margin-left:20px;
   }
@@ -146,7 +146,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-pagination {
     margin-left:20px;
   }
