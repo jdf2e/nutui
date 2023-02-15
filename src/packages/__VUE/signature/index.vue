@@ -146,7 +146,6 @@ export default create({
       const _canvas = isCanvasBlank(canvas) ? '请绘制签名' : canvas;
       const _filePath = isCanvasBlank(canvas) ? '' : dataurl;
       emit('confirm', _canvas, _filePath);
-      clear();
     };
 
     onMounted(() => {
