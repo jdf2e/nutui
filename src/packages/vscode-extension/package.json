@@ -3,7 +3,7 @@
 	"private": true,
 	"displayName": "nutui-vscode-extension",
 	"description": "nutui extension for vscode",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"icon": "src/nutui.png",
 	"engines": {
 		"vscode": "^1.66.0"
@@ -18,10 +18,12 @@
 	],
 	"publisher": "nutui",
 	"activationEvents": [
-		"onLanguage:vue",
-		"onLanguage:javascript",
-		"onLanguage:typescript"
-	],
+    "onLanguage:vue",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": []
@@ -37,7 +39,7 @@
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",
 		"@types/node": "^14.x",
-		"@types/vscode": "^1.65.0",
+		"@types/vscode": "^1.66.0",
 		"@typescript-eslint/eslint-plugin": "^5.9.1",
 		"@typescript-eslint/parser": "^5.9.1",
 		"@vscode/test-electron": "^2.0.3",
@@ -49,9 +51,6 @@
 		"typescript": "^4.5.4",
 		"webpack": "^5.66.0",
 		"webpack-cli": "^4.9.1",
-		"vscode": "^1.1.37"
-	},
-	"dependencies": {
-		"vsce": "^2.7.0"
+		"@vscode/vsce": "^2.7.0"
 	}
 }
