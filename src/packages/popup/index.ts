@@ -32,6 +32,21 @@ NutComponent({
       value: 'center'
     },
     overlayStyle: String,
+
+    closeable: {
+      type: Boolean,
+      value: false
+    },
+    closeIconPosition: {
+      type: String,
+      value: 'top-right'
+    },
+    closeIcon: {
+      type: String,
+      value: 'close'
+    },
+
+    // lockScroll:{}
   },
 
   methods: {
@@ -39,6 +54,10 @@ NutComponent({
       console.log('点击')
 
       this.$emit('clickOverlay')
+    },
+
+    onClickCloseIcon(){
+      this.$emit('clickCloseIcon')
     }
   },
 });

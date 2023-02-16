@@ -23,7 +23,7 @@ NutComponent({
       square:false,
       border:true,
       reverse:false,
-      direction:'horizontal',
+      direction:'vertical',
       clickable:false
     },
     iconProps:{
@@ -34,7 +34,6 @@ NutComponent({
 
   methods: {
     updateParent:function(){
-      console.log('更新地址',this.parent.data)
       const that = this
       this.setData({
         parent:that.parent.data

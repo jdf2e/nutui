@@ -280,7 +280,7 @@ var _relation = __webpack_require__(2);
             square: false,
             border: true,
             reverse: false,
-            direction: 'horizontal',
+            direction: 'vertical',
             clickable: false
         },
         iconProps: {
@@ -289,7 +289,6 @@ var _relation = __webpack_require__(2);
     },
     methods: {
         updateParent: function updateParent() {
-            console.log('更新地址', this.parent.data);
             var that = this;
             this.setData({
                 parent: that.parent.data

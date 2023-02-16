@@ -2,21 +2,29 @@
     <h2>基础用法</h2>
 
     <nut-cell title="展示弹出层"  bind:click='onClickShow'></nut-cell>
-    <nut-popup pop-style="padding:30px 50px" show='{{ show }}' bind:clickOverlay="onClickOverlay">正文</nut-popup>
+    <nut-popup pop-style="padding:30px 50px" show='{{ show }}' bind:clickOverlay="onClickOverlay"><view>正文</view></nut-popup>
+    
 
     <h2>弹出位置</h2>
-     <nut-cell title="顶部弹出"  bind:click='onClickPositionShow'></nut-cell>
-     <nut-cell title="底部弹出"  bind:click='onClickShow'></nut-cell>
-     <nut-cell title="左侧弹出"  bind:click='onClickShow'></nut-cell>
-     <nut-cell title="右侧弹出"  bind:click='onClickShow'></nut-cell>
-     <nut-popup position="top" pop-style="height:20%" show='{{ positionShow }}' bind:clickOverlay="onClickPositionHide"></nut-popup>
+
+    <nut-grid>
+      <nut-grid-item icon="rect-up" text="顶部弹出" data-position='top'  bindtap='onClickPositionShow'></nut-grid-item>
+      <nut-grid-item icon="rect-down" text="底部弹出" data-position='bottom'  bindtap='onClickPositionShow'></nut-grid-item>
+      <nut-grid-item icon="rect-left" text="左侧弹出" data-position='left'  bindtap='onClickPositionLRShow'></nut-grid-item>
+      <nut-grid-item icon="rect-right" text="右侧弹出" data-position='right'  bindtap='onClickPositionLRShow'></nut-grid-item>
+    </nut-grid>
+    <nut-popup position="{{ position }}" pop-style="height:20%" show='{{ positionShow }}' bind:clickOverlay="onClickPositionHide"></nut-popup>
+    <nut-popup position="{{ positionLR }}" pop-style="height:100%;width:20%" show='{{ positionLRShow }}' bind:clickOverlay="onClickPositionHide"></nut-popup>
 
      <h2>关闭图标</h2>
-     <nut-cell title="关闭图标"  bind:click='onClickShow'></nut-cell>
-     <nut-cell title="自定义图标"  bind:click='onClickShow'></nut-cell>
-     <nut-cell title="图标位置"  bind:click='onClickShow'></nut-cell>
+     <nut-cell title="关闭图标"  bind:click='onClickIconShow'></nut-cell>
+     <nut-cell title="自定义图标"  bind:click='onClickCustomIconShow'></nut-cell>
+     <nut-cell title="图标位置" data-position="top-left"  bind:click='onClickIconShow'></nut-cell>
+     <nut-popup position="bottom" round="true" closeable="true" closeIconPosition='{{closeIconPosition}}' pop-style="height:20%" show='{{ iconPopopShow }}' bind:clickOverlay="onClickIconHide" bind:clickCloseIcon='onClickIconHide'></nut-popup>
+      <nut-popup position="bottom" round="true" closeable="true" closeIcon="heart-fill-n"  pop-style="height:20%" show='{{ customIconPopopShow }}' bind:clickOverlay="onClickCustomIconHide" bind:clickCloseIcon='onClickCustomIconHide'></nut-popup>
 
-     <h2>圆角弹框</h2>
-    <nut-cell title="圆角弹框"  bind:click='onClickShow'></nut-cell>
-  
+    <h2>圆角弹框</h2>
+    <nut-cell title="圆角弹框"  bind:click='onClickRoundShow'></nut-cell>
+    <nut-popup position="bottom" round="true" pop-style="height:20%" show='{{ roundPopopShow }}' bind:clickOverlay="onClickRoundHide"></nut-popup>
+
 </view>

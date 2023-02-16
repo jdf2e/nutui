@@ -8,7 +8,7 @@ function Classes(data) {
 
     var prefixCls = 'nut-popup'
 
-    var classes = [prefixCls,prefixCls + '--' + data.position,data.popClass]
+    var classes = [prefixCls,prefixCls + '--' + data.position, data.popClass]
 
     if (data.round) {
         classes.push('round')
@@ -31,7 +31,16 @@ function Styled(data) {
     return style([styley]);
 }
 
+function AnimationName(data){
+    console.log(data)
+    if( data.position == 'center') return 'fade'
+    if( data.position == 'top') return 'fade-down'
+    if( data.position == 'bottom') return 'fade-up'
+
+    return 'fade-'+data.position
+}
 module.exports = {
     classes: Classes,
-    styled: Styled
+    styled: Styled,
+    animationName:AnimationName
 };

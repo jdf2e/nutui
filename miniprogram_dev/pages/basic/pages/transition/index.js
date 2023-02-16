@@ -9,7 +9,6 @@ Component({
 
     methods: {
         onClickFade() {
-            console.log('点击')
         this.trigger('fade');
         },
     
@@ -48,9 +47,9 @@ Component({
         onClickCustom() {
             this.setData({ showCustom: true });
 
-            setTimeout(()=>{
-                this.setData({  showCustom: false });
-            }, 1000)
+            // setTimeout(()=>{
+            //     this.setData({  showCustom: false });
+            // }, 1000)
         },
 
         trigger(name){

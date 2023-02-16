@@ -206,12 +206,27 @@ var _component = __webpack_require__(0);
             type: String,
             value: 'center'
         },
-        overlayStyle: String
+        overlayStyle: String,
+        closeable: {
+            type: Boolean,
+            value: false
+        },
+        closeIconPosition: {
+            type: String,
+            value: 'top-right'
+        },
+        closeIcon: {
+            type: String,
+            value: 'close'
+        }
     },
     methods: {
         onClickOverlay: function onClickOverlay() {
             console.log('点击');
             this.$emit('clickOverlay');
+        },
+        onClickCloseIcon: function onClickCloseIcon() {
+            this.$emit('clickCloseIcon');
         }
     }
 });
