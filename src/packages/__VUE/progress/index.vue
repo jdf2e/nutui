@@ -26,7 +26,8 @@
             position: `absolute`,
             top: `50%`,
             left: `${percentage}%`,
-            transform: `translate(-${+percentage}%,-50%)`
+            transform: `translate(-${+percentage}%,-50%)`,
+            transition: 'all 0.4s'
           }"
           v-if="showText && textInside && slotDefault"
         >
