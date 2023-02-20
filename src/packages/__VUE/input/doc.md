@@ -132,7 +132,7 @@ app.use(Button);
 
 ### 显示清除图标
 
-通过设置 `clearable` 在输入过程中展示清除图标。
+通过设置 `clearable` 在输入过程中展示清除图标。清除按钮，在失去焦点后将隐藏,可通过 `showClearIcon` 设置失去焦点后继续展示清除按钮。
 
 :::demo
 
@@ -151,6 +151,7 @@ app.use(Button);
     clearSize="14"
     show-word-limit
     max-length="50"
+    :showClearIcon="true"
   >
     <template #clear>
       <Close width="12" height="12" @click="clearValue"></Close>
@@ -419,6 +420,7 @@ app.use(Button);
 | autofocus    | 是否自动获得焦点，`iOS` 系统不支持该属性     | boolean        | `false` |
 | max-length   | 限制最长输入字符                       | string ｜ number | - |
 | clearable    | 展示清除 `Icon`                         | boolean        | `false`  |
+| showClearIcon `4.0.2` | 是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效 | boolean        | `false`  |
 | clear-size   | 清除图标的 `font-size` 大小           | string        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
 | error         | 是否标红                                | boolean | `false`  |

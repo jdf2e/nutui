@@ -110,9 +110,11 @@ textarea {
   }
   &-clear-box {
     height: 100%;
-    .nut-input-clear {
-      vertical-align: -2px;
-    }
+    display: flex;
+    align-items: center;
+    // .nut-input-clear {
+    //   vertical-align: -2px;
+    // }
   }
   &-clear {
     width: 16px;

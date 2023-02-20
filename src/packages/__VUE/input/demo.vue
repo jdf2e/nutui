@@ -20,6 +20,7 @@
       clearSize="14"
       show-word-limit
       max-length="50"
+      :showClearIcon="true"
     >
       <template #clear>
         <Close width="12" height="12" @click="clearValue"></Close>
