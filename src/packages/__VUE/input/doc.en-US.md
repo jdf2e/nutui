@@ -131,7 +131,7 @@ Use `readonly` to set the input box to read-only status, and use `disabled` to s
 
 ### Show Clear Icon
 
-Display the clear icon during the input process by setting `clearable`.
+Display the clear icon during input by setting 'clearable'. The clear button will be hidden after losing focus. You can set the clear button to continue to display after losing focus through 'showClearIcon'.
 
 :::demo
 
@@ -150,6 +150,7 @@ Display the clear icon during the input process by setting `clearable`.
     clearSize="14"
     show-word-limit
     max-length="50"
+    :showClearIcon="true"
   >
     <template #clear>
       <Close width="12" height="12" @click="clearValue"></Close>
@@ -416,6 +417,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | autofocus    | Whether to auto focus, unsupported in iOS     | boolean        | `false` |
 | max-length   | Max length of value                  | string ｜ number | - |
 | clearable    | Whether to be clearable              | boolean        | `false`  |
+| showClearIcon `4.0.2` | Whether to continue to display the clear button after losing focus, which will take effect when 'clearable' is set | boolean        | `false`  |
 | clear-size   | Clear Icon `font-size`               | string        | `14`  |
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | boolean | `false`  |
 | error         | Whether to mark the input content in red   | boolean | `false`  |

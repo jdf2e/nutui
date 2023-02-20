@@ -35,7 +35,11 @@
             >/{{ maxLength }}
           </view>
         </view>
-        <view class="nut-input-clear-box" v-if="clearable && !readonly" v-show="active && modelValue.length > 0">
+        <view
+          class="nut-input-clear-box"
+          v-if="clearable && !readonly"
+          v-show="(active || showClearIcon) && modelValue.length > 0"
+        >
           <slot name="clear">
             <MaskClose
               class="nut-input-clear"
@@ -151,6 +155,10 @@ export default create({
       default: true
     },
     alwaysSystem: {
+      type: Boolean,
+      default: false
+    },
+    showClearIcon: {
       type: Boolean,
       default: false
     }
