@@ -40,12 +40,18 @@
     >
       <template v-if="slots.default">
         <view class="nut-noticebar__vertical-list" :style="horseLampStyle">
-          <ScrollItem
-            v-for="(item, index) in scrollList"
-            v-bind:key="index"
-            :style="{ height: height + 'px', 'line-height': height + 'px' }"
-            :item="item"
-          ></ScrollItem>
+          <view class="showNotica">
+            <ScrollItem
+              v-for="(item, index) in scrollList"
+              v-bind:key="index"
+              :style="{ height: height + 'px', 'line-height': height + 'px' }"
+              :item="item"
+            ></ScrollItem>
+          </view>
+        </view>
+
+        <view class="nut-noticebar-custom-item">
+          <slot></slot>
         </view>
       </template>
 
@@ -55,7 +61,7 @@
             class="nut-noticebar__vertical-item"
             v-for="(item, index) in scrollList"
             :key="index"
-            :style="{ height: pxCheck(height) }"
+            :style="{ height: pxCheck(height), lineHeight: pxCheck(height) }"
             @click="go(item)"
           >
             {{ item }}
@@ -63,7 +69,7 @@
         </ul>
       </template>
 
-      <view class="go" @click="!slots.rightIcon && handleClickIcon()">
+      <view class="go" @click="handleClickIcon()">
         <slot name="right-icon">
           <CircleClose v-if="closeMode" :color="color" size="11px" />
         </slot>
@@ -92,6 +98,7 @@ interface stateProps {
   timer: null;
   keepAlive: boolean;
   isCanScroll: null | boolean;
+  showNotica: boolean;
   id: number;
 }
 
@@ -185,6 +192,7 @@ export default create({
       timer: null,
       keepAlive: false,
       isCanScroll: null,
+      showNotica: true,
       id: Math.round(Math.random() * 100000)
     });
 
@@ -314,7 +322,6 @@ export default create({
     };
 
     const onAnimationEnd = () => {
-      console.log('运动');
       state.firstRound = false;
 
       setTimeout(() => {
@@ -374,7 +381,9 @@ export default create({
     onMounted(() => {
       if (props.direction == 'vertical') {
         if (slots.default) {
-          state.scrollList = [].concat(slots.default()[0].children as any);
+          // state.scrollList = [].concat(slots.default()[0].children as any);
+          updateSlotChild();
+          watchSlots();
         } else {
           state.scrollList = [].concat(props.list as any);
         }
@@ -386,6 +395,30 @@ export default create({
         initScrollWrap(props.text);
       }
     });
+
+    const updateSlotChild = () => {
+      if (slots.default) state.scrollList = [].concat(slots.default()[0].children as any);
+    };
+
+    const watchSlots = () => {
+      setTimeout(() => {
+        var observer = new MutationObserver((slots) => {
+          state.showNotica = false;
+          setTimeout(() => {
+            state.showNotica = true;
+          });
+          updateSlotChild();
+        });
+        const ele = document.getElementsByClassName('nut-noticebar-custom-item')[0];
+
+        if (ele) {
+          observer.observe(ele, {
+            childList: true,
+            subtree: true
+          });
+        }
+      }, 100);
+    };
 
     onActivated(() => {
       if (state.keepAlive) {

@@ -157,7 +157,7 @@ app.use(Overlay);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
   display: flex;
   height: 100%;
@@ -207,7 +207,7 @@ app.use(Overlay);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
   display: flex;
   height: 100%;

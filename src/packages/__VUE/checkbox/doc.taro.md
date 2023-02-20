@@ -37,7 +37,7 @@ app.use(CheckboxGroup);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-checkbox {
     display: flex;
     margin-right: 20px;

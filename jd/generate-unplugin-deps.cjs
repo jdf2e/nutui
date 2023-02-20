@@ -52,11 +52,11 @@ outputFileEntry += `\nexport { Locale } from "./packages/locale/lang";
 export function install(app) {
   const packages = [${components.join(',')}];
   packages.forEach((item) => {
-      if (item.install) {
-          app.use(item);
-      } else if (item.name) {
-          app.component(item.name, item);
-      }
+    if (item.install) {
+      app.use(item);
+    } else if (item.name) {
+      app.component(item.name, item);
+    }
   });
 }
 export const version = '${packageConfig.version}';

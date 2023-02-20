@@ -18,8 +18,7 @@ app.use(CategoryPane);
 ### 经典分类模式
 
 data 数据格式可参考
-[categoryData.js](https//storage.360buyimg.com/nutui/3x/categoryData.js)。
-
+[categoryData.js](https://storage.360buyimg.com/nutui/3x/categoryData.js)。
 
 :::demo
 
@@ -48,7 +47,7 @@ export default {
     });
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
+      data.categoryChild = [].concat(data.category.category[index].children as any);
     };
     const onChange =()=>{
         console.log("当前分类数据");
@@ -95,7 +94,7 @@ export default {
     });
 
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index].children as any);
+      data.categoryChild = [].concat(data.category.category[index].children as any);
     };
 
     const onChange =()=>{

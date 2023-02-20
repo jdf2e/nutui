@@ -3,11 +3,12 @@ import { kebabCase, bigCamelize } from './utils';
 import { componentMap } from './componentMap';
 import { ComponentDesc } from './componentDesc';
 
-const DOC = 'https://nutui.jd.com/#';
+const H5DOC = 'https://nutui.jd.com/h5/vue/4x/#';
+const TaroDOC = 'https://nutui.jd.com/taro/vue/4x/#';
 
 const LINK_REG = /(?<=<nut-)([\w-]+)/g;
 const BIG_LINK_REG = /(?<=<Nut-)([\w-])+/g;
-const files = ['vue', 'typescript', 'javascript', 'react'];
+const files = ['vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
 
 const provideHover = (document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) => {
   const line = document.lineAt(position);
@@ -22,7 +23,7 @@ const provideHover = (document: vscode.TextDocument, position: vscode.Position, 
         const { site } = componentMap[item];
 
         return new vscode.MarkdownString(
-          `[NutUI -> $(references) 请查看 ${bigCamelize(item)} 组件官方文档](${DOC}${site})\n`
+          `NutUI -> ${bigCamelize(item)} 组件文档 [[H5]](${H5DOC}${site}) [[小程序]](${TaroDOC}${site})\n`
         );
       });
 

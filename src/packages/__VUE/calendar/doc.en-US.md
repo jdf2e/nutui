@@ -184,7 +184,69 @@ export default {
 </script>
 ```
 :::
+### Select Week
+When set to week selection, the start and end dates of the week will be determined according to `first-day-of-week`. For example, when `first-day-of-week` is 0, the start date of a week is Sunday. In other cases, the start date of the week is Monday.
+:::demo
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="Select Week"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    type="week"
+    :start-date="`2019-12-22`"
+    :end-date="`2021-01-08`"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    @select="select"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      date: ['2019-12-23', '2019-12-26'],
+      isVisible: false
+    });
+    const openSwitch = param => {
+      state[`${param}`] = true;
+    };
+    const closeSwitch = param => {
+      state[`${param}`] = false;
+    };
+    const setChooseValue= param => {
+      let { weekDate } = param;
+      state.date = [weekDate[0].date[3], weekDate[1].date[3]];
 
+    };
+    const select = (param: string) => {
+      console.log(param);
+    };
+    return {
+      ...toRefs(state),
+      openSwitch,
+      closeSwitch,
+      setChooseValue,
+      select,
+    };
+  }  
+};
+</script>
+<style lang="scss">
+.nut-cell__value {
+  flex: initial;
+}
+</style>
+```
+:::
 ### Quick Select Single Date
 :::demo
 ```html
@@ -609,7 +671,7 @@ export default {
 | Attribute              | Description                                  | Type            | Default  |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | whether to show                  | boolean         | `false`           |
-| type              | Calendar type ：`one` `range` `multiple`    | string          | `one`           |
+| type              | Calendar type ：`one` `range` `multiple` `week(V4.0.1)`     | string          | `one`           |
 | poppable          | Whether to display the pop-up window                                  | boolean         | `true`            |
 | is-auto-back-fill | Automatic backfill                                          | boolean         | `false`           |
 | title             | whether to show title                                          | string          | `Calendar`      |

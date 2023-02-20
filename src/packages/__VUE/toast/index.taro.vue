@@ -105,7 +105,7 @@ export default create({
   },
   emits: ['update:visible', 'closed'],
   setup(props, { emit }) {
-    let timer: number | null | undefined;
+    let timer: NodeJS.Timeout | null | undefined;
     const clearTimer = () => {
       if (timer) {
         clearTimeout(timer);

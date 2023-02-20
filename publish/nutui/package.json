@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.0.1-beta.2",
+  "version": "4.0.1",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -37,10 +37,11 @@
     "publish:latest": "npm publish"
   },
   "peerDependencies": {
-    "@nutui/icons-vue": "^0.0.25"
+    "unplugin-vue-components": "^0.23.0"
   },
   "dependencies": {
-    "sass": "^1.50.0"
+    "sass": "^1.50.0",
+    "@nutui/icons-vue": "^0.0.25"
   },
   "devDependencies": {},
   "repository": {

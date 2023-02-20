@@ -60,7 +60,27 @@
       >
       </nut-calendar>
     </div>
-
+    <div>
+      <nut-cell
+        :show-icon="true"
+        :title="translate('week')"
+        :desc="date9 ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
+        @click="openSwitch('isVisible9')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible9"
+        :default-value="date9"
+        type="week"
+        :start-date="`2019-12-22`"
+        :end-date="`2021-01-08`"
+        @close="closeSwitch('isVisible9')"
+        @choose="setChooseValue9"
+        @select="select"
+        :first-day-of-week="1"
+      >
+      </nut-calendar>
+    </div>
     <h2>{{ translate('title1') }}</h2>
     <div>
       <nut-cell
@@ -219,6 +239,7 @@ const initTranslate = () =>
       single: '选择单个日期',
       range: '选择日期区间',
       multiple: '选择多个日期',
+      week: '选择周',
 
       conjunction: '至',
       custom_btn: '自定义按钮',
@@ -243,6 +264,7 @@ const initTranslate = () =>
       single: 'Select Single Date',
       range: 'Select Date Range',
       multiple: 'Select Multiple Date',
+      week: 'Select Week',
 
       conjunction: '-',
       custom_btn: 'Custom Button',
@@ -270,6 +292,7 @@ interface TestCalendarState extends TestCalendarStateVisible {
   date6: string[];
   date7: string[];
   date8: string;
+  date9: string[];
 }
 interface TestCalendarStateVisible {
   isVisible: boolean;
@@ -281,6 +304,7 @@ interface TestCalendarStateVisible {
   isVisible6: boolean;
   isVisible7: boolean;
   isVisible8: boolean;
+  isVisible9: boolean;
 }
 export default createDemo({
   props: {},
@@ -299,6 +323,7 @@ export default createDemo({
       date6: [],
       date7: [],
       date8: '',
+      date9: ['2020-01-23', '2020-01-26'],
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
@@ -306,7 +331,8 @@ export default createDemo({
       isVisible5: false,
       isVisible6: false,
       isVisible7: false,
-      isVisible8: false
+      isVisible8: false,
+      isVisible9: false
     });
     const openSwitch = (param: keyof TestCalendarStateVisible) => {
       state[`${param}`] = true;
@@ -356,6 +382,10 @@ export default createDemo({
     const setChooseValue8 = (param: string) => {
       state.date8 = param[3];
     };
+    const setChooseValue9 = (param: any) => {
+      let { weekDate } = param;
+      state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
+    };
     const clickBtn = () => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -392,6 +422,7 @@ export default createDemo({
       setChooseValue5,
       setChooseValue6,
       setChooseValue8,
+      setChooseValue9,
       clickBtn,
       clickBtn1,
       goDate,

@@ -233,7 +233,7 @@ export default create({
       if (day.type == 'curr') {
         if (
           Utils.isEqual(state.currDate as string, currDate) ||
-          (type == 'range' && (isStart(currDate) || isEnd(currDate))) ||
+          ((type == 'range' || type == 'week') && (isStart(currDate) || isEnd(currDate))) ||
           (type == 'multiple' && isMultiple(currDate))
         ) {
           return `${state.dayPrefix}--active`;
@@ -243,7 +243,7 @@ export default create({
         ) {
           return `${state.dayPrefix}--disabled`;
         } else if (
-          type == 'range' &&
+          (type == 'range' || type == 'week') &&
           Array.isArray(state.currDate) &&
           Object.values(state.currDate).length == 2 &&
           Utils.compareDate(state.currDate[0], currDate) &&
@@ -261,8 +261,13 @@ export default create({
     const confirm = () => {
       const { type } = props;
       if ((type == 'range' && state.chooseData.length == 2) || type != 'range') {
-        let chooseData = state.chooseData.slice(0);
-        emit('choose', chooseData);
+        let selectData: any = state.chooseData.slice(0);
+        if (type == 'week') {
+          selectData = {
+            weekDate: [handleWeekDate(state.chooseData[0] as string[]), handleWeekDate(state.chooseData[1] as string[])]
+          };
+        }
+        emit('choose', selectData);
         if (props.poppable) {
           emit('update');
         }
@@ -274,6 +279,7 @@ export default create({
       if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
         let days = [...month.curData];
+        let [y, m] = month.curData;
         days[2] = Utils.getNumTwoBit(Number(day.day));
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
@@ -311,7 +317,6 @@ export default create({
               Array.isArray(state.currDate) && state.currDate.unshift(days[3]);
             }
           }
-
           if (state.chooseData.length == 2 || !state.chooseData.length) {
             state.chooseData = [[...days]];
           } else {
@@ -321,20 +326,47 @@ export default create({
               state.chooseData = [[...days], ...state.chooseData];
             }
           }
+        } else if (type == 'week') {
+          let weekArr = Utils.getWeekDate(y, m, day.day, props.firstDayOfWeek);
+          if (state.propStartDate && Utils.compareDate(weekArr[0], state.propStartDate)) {
+            weekArr.splice(0, 1, state.propStartDate);
+          }
+          if (state.propEndDate && Utils.compareDate(state.propEndDate, weekArr[1])) {
+            weekArr.splice(1, 1, state.propEndDate);
+          }
+          state.currDate = weekArr;
+          state.chooseData = [Utils.formatResultDate(weekArr[0]), Utils.formatResultDate(weekArr[1])];
         } else {
           state.currDate = days[3];
           state.chooseData = [...days];
         }
         if (!isFirst) {
+          let selectData: any = state.chooseData;
+          if (type == 'week') {
+            selectData = {
+              weekDate: [
+                handleWeekDate(state.chooseData[0] as string[]),
+                handleWeekDate(state.chooseData[1] as string[])
+              ]
+            };
+          }
           // 点击日期 触发
-          emit('select', state.chooseData);
+          emit('select', selectData);
           if (props.isAutoBackFill || !props.poppable) {
             confirm();
           }
         }
       }
     };
-
+    const handleWeekDate = (weekDate: string[]) => {
+      let [y, m, d] = weekDate;
+      let obj = {
+        date: weekDate,
+        monthWeekNum: Utils.getMonthWeek(y, m, d, props.firstDayOfWeek),
+        yearWeekNum: Utils.getYearWeek(y, m, d, props.firstDayOfWeek)
+      };
+      return obj;
+    };
     // 获取当前月数据
     const getCurrData = (type: string) => {
       const monthData = type == 'prev' ? state.monthsData[0] : state.monthsData[state.monthsData.length - 1];
@@ -529,6 +561,19 @@ export default create({
           state.currDate = [...defaultArr];
           state.defaultData = [...splitDate(defaultArr[0])];
         }
+      } else if (props.type == 'week' && Array.isArray(state.currDate)) {
+        if (state.currDate.length > 0) {
+          let [y, m, d] = splitDate(state.currDate[0]);
+          let weekArr = Utils.getWeekDate(y, m, d, props.firstDayOfWeek);
+          state.currDate = weekArr;
+          if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
+            state.currDate.splice(0, 1, propStartDate);
+          }
+          if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+            state.currDate.splice(1, 1, propEndDate);
+          }
+          state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
+        }
       } else {
         if (state.currDate) {
           if (propStartDate && Utils.compareDate(state.currDate as string, propStartDate)) {
@@ -547,7 +592,7 @@ export default create({
           if (item.title == translate('monthTitle', state.defaultData[0], state.defaultData[1])) {
             current = index;
           }
-          if (props.type == 'range') {
+          if (props.type == 'range' || props.type == 'week') {
             if (item.title == translate('monthTitle', state.defaultData[3], state.defaultData[4])) {
               lastCurrent = index;
             }
@@ -562,6 +607,8 @@ export default create({
         if (props.type == 'range') {
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
           chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
+        } else if (props.type == 'week') {
+          chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
         } else if (props.type == 'multiple') {
           [...state.currDate].forEach((item: string) => {
             let dateArr = splitDate(item);
@@ -651,7 +698,11 @@ export default create({
     };
     // 区间选择&&当前月&&选中态
     const isActive = (day: Day, month: MonthInfo) => {
-      return props.type == 'range' && day.type == 'curr' && getClass(day, month) == 'nut-calendar__day--active';
+      return (
+        (props.type == 'range' || props.type == 'week') &&
+        day.type == 'curr' &&
+        getClass(day, month) == 'nut-calendar__day--active'
+      );
     };
 
     // 是否有开始提示

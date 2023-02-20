@@ -52,7 +52,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -99,7 +99,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -148,7 +148,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -195,7 +195,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -249,7 +249,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -313,7 +313,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {
@@ -392,7 +392,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .demo-box{
     position: relative;
   }
@@ -459,7 +459,7 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .nut-swiper-item {
     line-height: 150px;
     img {

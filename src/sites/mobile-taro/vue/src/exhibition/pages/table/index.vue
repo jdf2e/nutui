@@ -31,11 +31,9 @@ import { reactive, toRefs, onMounted, onUnmounted, h, defineComponent } from 'vu
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
-import { Button } from '@nutui/nutui-taro';
 import { Dongdong } from '@nutui/icons-vue-taro';
 export default defineComponent({
   components: {
-    Button,
     Dongdong,
     Header
   },

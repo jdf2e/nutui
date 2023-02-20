@@ -159,11 +159,12 @@ export default {
     
 | 参数        | 说明                                                  | 类型          | 默认值   |
 |------------|-------------------------------------------------------|---------------|----------|
-| type       | 提示的信息类型，可选值为`primary` `success` `danger` `warning` | string        | `danger` |
-| message    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
+| type       | 提示的信息类型，可选值为`primary`、`success`、`danger`、`warning` | string        | `danger` |
+| visible    | 显示与否                                           | boolean | `false` |
+| msg    | 展示文案，支持通过`\n`换行                              | string       | `''`    |
 | duration   | 展示时长(ms)，值为 0 时，`notify` 不会消失              | number        | `3000`     |
 | color      | 字体颜色                                              | string        | `''`     |
-| background | 背景颜色                                              | string        | `''`       |
+| background | 背景样式                                              | string        | `''`       |
 | class-name | 自定义类名                                            | string \| number | `1`        |
 | position | 自定义位置，可选值为 `top` `bottom` `left` `right` `center`              | string | `top`        |
 

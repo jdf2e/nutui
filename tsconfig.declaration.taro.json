@@ -12,6 +12,7 @@
     "src/packages/nutui.taro.vue.build.ts",
     "src/packages/locale",
     "src/packages/utils",
+    "src/packages/resolver",
   ],
   "exclude": [
     "node_modules",

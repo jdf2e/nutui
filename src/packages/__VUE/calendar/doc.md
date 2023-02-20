@@ -184,6 +184,70 @@ export default {
 </script>
 ```
 :::
+
+### 选择周
+当设置为周选择时，会根据`first-day-of-week` 判断周的起始与结束日期。如`first-day-of-week`为0时，一周的起始日期为星期日。其他情况时，一周的起始日期为星期一。
+:::demo
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="选择周"
+    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    type="week"
+    :start-date="`2019-12-22`"
+    :end-date="`2021-01-08`"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    @select="select"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      date: ['2019-12-23', '2019-12-26'],
+      isVisible: false
+    });
+    const openSwitch = param => {
+      state[`${param}`] = true;
+    };
+    const closeSwitch = param => {
+      state[`${param}`] = false;
+    };
+    const setChooseValue= param => {
+      let { weekDate } = param;
+      state.date = [weekDate[0].date[3], weekDate[1].date[3]];
+
+    };
+    const select = (param: string) => {
+      console.log(param);
+    };
+    return {
+      ...toRefs(state),
+      openSwitch,
+      closeSwitch,
+      setChooseValue,
+      select,
+    };
+  }  
+};
+</script>
+<style lang="scss">
+.nut-cell__value {
+  flex: initial;
+}
+</style>
+```
+:::
 ### 快捷选择-单选
 :::demo
 ```html
@@ -624,7 +688,7 @@ export default {
 | 参数              | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | 是否可见                                          | boolean         | `false`           |
-| type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`    | string       | '`one`'           |
+| type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`,周选择`week`(`v4.0.1`)     | string       | '`one`'           |
 | poppable          | 是否弹窗状态展示                                  | boolean         | `true`            |
 | is-auto-back-fill | 自动回填                                          | boolean         | `false`           |
 | title             | 显示标题                                          | string          | `日期选择`      |

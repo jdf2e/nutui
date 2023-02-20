@@ -36,8 +36,7 @@ export default defineComponent({
       // demo转换index
       const { origin, hash, pathname } = window.top.location;
       if (!isMobile && pathname.includes('demo')) {
-        window.top.location.href = `${origin}/4x/index.html${hash}`;
-        window.location.href = `${origin}/4x/demo.html${hash}`;
+        window.location.href = `${origin}/h5/vue/4x/index.html#/zh-CN/${hash.slice(2)}`;
       }
       // 接收数据
       window.addEventListener('message', handledemoFromParent);

@@ -10,7 +10,15 @@
     </div>
     <nut-popup
       :style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down'
+          ? {
+              top: parent.offset.value + 'px',
+              height: state.showPopup ? contentHeight : 0
+            }
+          : {
+              bottom: parent.offset.value + 'px',
+              height: state.showPopup ? contentHeight : 0
+            }
       "
       :overlay-style="
         parent.props.direction === 'down'
@@ -29,7 +37,7 @@
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <Nut-Scroll-View :scroll-y="true" style="height: 100%">
+      <Nut-Scroll-View :scroll-y="true">
         <view class="nut-menu-item__content">
           <view
             v-for="(option, index) in options"
@@ -67,13 +75,14 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
+import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted, ref, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
 import NutScrollView from '../scrollView/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
 
 let _zIndex = 2000;
 
@@ -156,8 +165,22 @@ export default create({
         return { ...heightStyle, top: 'auto' };
       }
     });
-
+    const contentHeight = ref('auto');
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
+      if (show) {
+        nextTick(() => {
+          setTimeout(() => {
+            const query = Taro.createSelectorQuery();
+            query.selectAll('.nut-menu-item__content').boundingClientRect();
+            query.exec((res: any[]) => {
+              const data = res[0];
+              const _height = data.filter((item: { height: number }) => item.height > 0);
+              contentHeight.value = _height[0]['height'] + 'px';
+            });
+          }, 500);
+        });
+      }
+
       if (show === state.showPopup) {
         return;
       }
@@ -210,7 +233,8 @@ export default create({
       toggle,
       onClick,
       handleClose,
-      handleClickOutside
+      handleClickOutside,
+      contentHeight
     };
   }
 });

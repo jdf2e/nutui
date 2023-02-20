@@ -61,7 +61,27 @@
       >
       </nut-calendar>
     </div>
-
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="周选择"
+        :desc="date9 ? `${date9[0]}${'至'}${date9[1]}` : '请选择'"
+        @click="openSwitch('isVisible9')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible9"
+        :default-value="date9"
+        type="week"
+        :start-date="`2019-12-22`"
+        :end-date="`2021-01-08`"
+        @close="closeSwitch('isVisible9')"
+        @choose="setChooseValue9"
+        @select="select"
+        :first-day-of-week="1"
+      >
+      </nut-calendar>
+    </div>
     <h2>快捷选择</h2>
     <div>
       <nut-cell
@@ -76,8 +96,6 @@
         @close="closeSwitch('isVisible3')"
         @choose="setChooseValue3"
         :default-value="date3"
-        :start-date="null"
-        :end-date="null"
         :is-auto-back-fill="true"
       >
       </nut-calendar>
@@ -211,6 +229,7 @@ interface TestCalendarState {
   isVisible6: boolean;
   isVisible7: boolean;
   isVisible8: boolean;
+  isVisible9: boolean;
   date1: string[];
   date2: string;
   date3: string;
@@ -219,6 +238,7 @@ interface TestCalendarState {
   date6: string[];
   date7: string[];
   date8: string;
+  date9: string[];
 }
 export default {
   props: {},
@@ -241,6 +261,7 @@ export default {
       date6: [],
       date7: [],
       date8: '',
+      date9: ['2020-01-23', '2020-01-26'],
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
@@ -248,7 +269,8 @@ export default {
       isVisible5: false,
       isVisible6: false,
       isVisible7: false,
-      isVisible8: false
+      isVisible8: false,
+      isVisible9: false
     });
     const openSwitch = (param: string) => {
       state[`${param}`] = true;
@@ -297,6 +319,10 @@ export default {
     const setChooseValue8 = (param: string) => {
       state.date8 = param[3];
     };
+    const setChooseValue9 = (param: any) => {
+      let { weekDate } = param;
+      state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
+    };
     const clickBtn = () => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -332,6 +358,7 @@ export default {
       clickBtn1,
       setChooseValue7,
       setChooseValue8,
+      setChooseValue9,
       goDate,
       calendarRef,
       select,
