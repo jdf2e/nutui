@@ -35,10 +35,10 @@
     <h2>{{ translate('icon') }}</h2>
     <nut-cell>
       <nut-input-number v-model="state.val9">
-        <template #leftIcon>
+        <template #left-icon>
           <Left />
         </template>
-        <template #rightIcon>
+        <template #right-icon>
           <Right />
         </template>
       </nut-input-number>

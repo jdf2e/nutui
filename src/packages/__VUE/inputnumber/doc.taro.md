@@ -209,10 +209,10 @@ app.use(InputNumber);
 ```html
 <template>
   <nut-input-number v-model="value">
-    <template #leftIcon>
+    <template #left-icon>
       <Left />
     </template>
-    <template #rightIcon>
+    <template #right-icon>
       <Right />
     </template>
   </nut-input-number>
