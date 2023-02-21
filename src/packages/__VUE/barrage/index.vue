@@ -145,9 +145,6 @@ export default create({
       }, props.frequency);
     };
     const play = () => {
-      if (!props.loop && index.value >= danmuList.value.length) {
-        return;
-      }
       const _index = props.loop ? index.value % danmuList.value.length : index.value;
       let el = document.createElement(`view`);
 
@@ -185,6 +182,9 @@ export default create({
             dmContainer.value.removeChild(el);
           }
         });
+        if (!props.loop && index.value >= danmuList.value.length - 1) {
+          return;
+        }
         index.value++;
         if (index.value >= danmuList.value.length) {
           index.value = 0;
