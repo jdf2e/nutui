@@ -255,3 +255,4 @@ app.use(NoticeBar);
 | ----- | ---------------- | ------------ |
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |
+| across-end | 横向滚动结束时触发 | event: Event |

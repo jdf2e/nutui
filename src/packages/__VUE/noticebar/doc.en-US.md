@@ -254,3 +254,4 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | ---------- | --------------------------------------- | ------------ |
 | click      | Emitted when NoticeBar is clicked       | event: Event |
 | close      | Emitted when NoticeBar is closed        | event: Event |
+| across-end | Emitted when across scrolling ends      | event: Event |
