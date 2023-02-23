@@ -17,7 +17,7 @@
             :readonly="readonly"
             :value="modelValue"
             :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
+            :autofocus="autofocus ? true : undefined"
             :enterkeyhint="confirmType"
             @input="onInput"
             @focus="onFocus"
