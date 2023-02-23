@@ -58,6 +58,11 @@ app.use(Uploader);
 ``` html
 <nut-uploader :url="uploadUrl" :source-type="['camera']" ></nut-uploader>
 ```
+### 使用前摄像头拍摄3s视频并上传(仅支持微信小程序)
+    
+``` html
+<nut-uploader max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
+```
 
 ### 限制上传数量5个
 
@@ -228,28 +233,30 @@ setup() {
 ## API
 ### Props
 
-| 参数              | 说明                                                                                                             | 类型                              | 默认值                      |
-|-------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------|-----------------------------|
-| auto-upload       | 是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传                                       | boolean                           | `true`                      |
-| name              | 发到后台的文件参数名                                                                                             | string                            | `file`                      |
-| url               | 上传服务器的接口地址                                                                                             | string                            | `-`                         |
-| v-model:file-list | 默认已经上传的文件列表                                                                                           | FileItem[]                        | `[]`                        |
-| is-preview        | 是否上传成功后展示预览图                                                                                         | boolean                           | `true`                      |
-| is-deletable      | 是否展示删除按钮                                                                                                 | boolean                           | `true`                      |
-| method            | 上传请求的 http method                                                                                           | string                            | `post`                      |
-| list-type         | 上传列表的内建样式，支持两种基础样式 `picture`、`list`                                                           | string                            | `picture`                   |
-| source-type       | [选择图片的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)           | string                            | `['album','camera']`        |
-| maximize          | 可以设定最大上传文件的大小（字节）                                                                               | number \| string                  | `9`                         |
-| maximum           | 文件上传数量限制                                                                                                 | number \| string                  | `1`                         |
-| size-type         | 是否压缩所选文件[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html) | string                            | `['original','compressed']` |
-| headers           | 设置上传的请求头部                                                                                               | object                            | `{}`                        |
-| data              | 附加上传的信息 formData                                                                                          | object                            | `{}`                        |
-| xhr-state         | 接口响应的成功状态（status）值                                                                                   | number                            | `200`                       |
-| disabled          | 是否禁用文件上传                                                                                                 | boolean                           | `false`                     |
-| multiple          | 是否支持文件多选                                                                                                 | boolean                           | `true`                      |
-| timeout           | 超时时间，单位为毫秒                                                                                             | number \| string                  | `1000 * 30`                 |
-| before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                            | Function                          | `null`                      |
-| before-xhr-upload | 执行 Taro.uploadFile 上传时，自定义方式                                                                          | Function(Taro.uploadFile，option) | `null`                      |
+| 参数                      | 说明                                                                                                     | 类型                              | 默认值                      |
+|---------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------|-----------------------------|
+| auto-upload               | 是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传                             | Boolean                           | `true`                      |
+| name                      | 发到后台的文件参数名                                                                                     | String                            | `file`                      |
+| url                       | 上传服务器的接口地址                                                                                     | String                            | `-`                         |
+| v-model:file-list         | 默认已经上传的文件列表                                                                                   | FileItem[]                        | `[]`                        |
+| is-preview                | 是否上传成功后展示预览图                                                                                 | Boolean                           | `true`                      |
+| is-deletable              | 是否展示删除按钮                                                                                         | Boolean                           | `true`                      |
+| method                    | 上传请求的 http method                                                                                   | String                            | `post`                      |
+| list-type                 | 上传列表的内建样式，支持两种基础样式 `picture`、`list`                                                   | String                            | `picture`                   |
+| maximize                  | 可以设定最大上传文件的大小（字节）                                                                       | Number \| String                  | `Number.MAX_VALUE`          |
+| maximum                   | 最多可以选择的文件个数，微信基础库2.25.0前，最多可支持9个文件，2.25.0及以后最多可支持20个文件            | Number \| String                  | `1`                         |
+| source-type               | [选择文件的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)   | Array                             | `['album','camera']`        |
+| camera`仅支持WEAPP`       | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头                                               | String                            | `back`                      |
+| size-type                 | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array                             | `['original','compressed']` |
+| media-type`仅支持WEAPP`   | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)     | Array                             | `['image', 'video', 'mix']`        |
+| max-duration`仅支持WEAPP` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。                                    | Number                            | 10                          |
+| headers                   | 设置上传的请求头部                                                                                       | object                            | `{}`                        |
+| data                      | 附加上传的信息 formData                                                                                  | object                            | `{}`                        |
+| xhr-state                 | 接口响应的成功状态（status）值                                                                           | Number                            | `200`                       |
+| disabled                  | 是否禁用文件上传                                                                                         | Boolean                           | `false`                     |
+| multiple                  | 是否支持文件多选                                                                                         | Boolean                           | `true`                      |
+| timeout                   | 超时时间，单位为毫秒                                                                                     | Number \| String                  | `1000 * 30`                 |
+| before-xhr-upload         | 执行 `Taro.uploadFile` 上传时，自定义方式                                                                | Function(Taro.uploadFile，option) | `null`                      |
 
 
 ### FileItem

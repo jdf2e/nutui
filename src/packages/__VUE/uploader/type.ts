@@ -1,7 +1,8 @@
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('uploader');
 export type SizeType = 'original' | 'compressed';
-export type SourceType = 'album' | 'camera' | 'user' | 'environment';
+export type SourceType = 'album' | 'camera';
+export type MediaType = 'image' | 'video' | 'mix';
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
 export class FileItem {
   status: FileItemStatus = 'ready';

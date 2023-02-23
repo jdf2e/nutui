@@ -28,11 +28,12 @@
     <!-- 
       album 从相册选图
       camera 使用相机
-      user 使用前置摄像头(仅H5纯浏览器使用)
       environment 使用后置摄像头(仅H5纯浏览器)
       -->
     <h2>直接调起摄像头 camera </h2>
     <nut-uploader :source-type="['camera']"></nut-uploader>
+    <h2>使用前摄像头拍摄3s视频并上传(仅支持微信小程序)</h2>
+    <nut-uploader max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
