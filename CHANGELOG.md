@@ -1,3 +1,35 @@
+## v4.0.2
+
+`2023-02-24`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+
+* :zap: feat(list): 优化虚拟列表，支持不固定高度 #1658 #1382 @szg2008
+* :zap: feat(uploader): 微信小程序支持上传视频文件、录制时长等功能 #2119 @richard1015
+* :zap: feat(address): 地址组件新增功能 #2101 (#2113) @yangxiaolu1993
+* :zap: feat(noticebar): 公告栏组件添加省略号功能 (#2114)  @yangxiaolu1993
+* :zap: feat: input 新增 blur 后清除按钮是否展示字段  @lkjh3214
+* :bug: fix(tabs): change event emit bug #1884 @richard1015
+* :bug: fix(shortpassword): theme-dark style optimization @Drjingfubo
+* :bug: fix(form): modify validation rules @Drjingfubo
+* :bug: fix(upload): repair type error @Drjingfubo
+* :bug: fix(components): remove console @Drjingfubo
+* :bug: fix(menu): 修复 menu 收起无动画效果 @Ymm0008
+* :bug: fix(signature): signature优化 @Ymm0008
+* :bug: fix(barrage): loop模式优化 @Ymm0008
+* :bug: fix(input): 修复特殊场景下无法输入的问题 #2123 @eiinu
+* 📖 docs(notify): update props table @eiinu 
+* 📖 docs(category): fix link of categoryData.js @eiinu 
+* 📖 docs: remove scoped in doc.taro.md@eiinu 
+* 📖 docs(category): update demo code @eiinu 
+* 📖 docs(swiper): taro docs del scoped style @eiinu 
+* 📖 docs(inputnumber): modify slot name @Drjingfubo 
+
+
+
+
+
+
 ## v4.0.1
 
 `2023-02-10`
