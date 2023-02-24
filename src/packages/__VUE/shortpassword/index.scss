@@ -2,13 +2,29 @@
   .nut-short-password-title {
     color: $dark-color;
   }
+
   .nut-short-password-wrapper {
     .nut-short-password__list {
       border: none;
       background: $dark-background3;
+
       .nut-short-password__item {
+        position: relative;
         .nut-short-password__item-icon {
           background: $dark-color;
+        }
+
+        &::after {
+          position: absolute;
+          box-sizing: border-box;
+          content: ' ';
+          pointer-events: none;
+          top: -50%;
+          right: -50%;
+          bottom: -50%;
+          left: -50%;
+          outline: 1px solid #3a3a3c;
+          transform: scale(0.5);
         }
       }
     }
