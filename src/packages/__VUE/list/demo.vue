@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo demo-list">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
       <nut-list :listData="count" @scroll-bottom="handleScroll">
@@ -49,7 +49,7 @@ export default createDemo({
 });
 </script>
 <style lang="scss">
-.demo {
+.demo-list {
   .nut-cell {
     height: 100%;
   }
