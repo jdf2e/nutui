@@ -189,7 +189,7 @@ export default create({
           /** 最多可以选择的文件个数 */
           count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
           /** 文件类型 */
-          mediaType: props.mediaType,
+          mediaType: props.mediaType as any,
           /** 图片和视频选择的来源 */
           sourceType: props.sourceType,
           /** 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 30s 之间 */
