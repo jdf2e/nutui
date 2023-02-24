@@ -98,7 +98,7 @@ export const component = {
         const { required, regex, message } = ruleWithoutValidator;
         const errorMsg = { prop, message };
         if (required) {
-          if (!value) {
+          if (!value && value !== 0) {
             return _Promise(errorMsg);
           }
         }
