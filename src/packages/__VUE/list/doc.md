@@ -28,9 +28,9 @@ app.use();
     <h2>基础用法</h2>
     <nut-cell>
       <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item }">
+        <template v-slot="{ item, index }">
           <div class="list-item">
-            {{ item }}
+            {{ index }}
           </div>
         </template>
       </nut-list>
@@ -70,11 +70,10 @@ body {
   height: 100%;
 }
 .demo {
-  height: 100%;
   .nut-cell {
     height: 100%;
   }
-  .list-item {
+  .nut-list-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,20 +95,23 @@ body {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| height         | 列表项的高度               | Number | `50`                |
+| height         | 列表项的高度/预估高度，支持不固定高度               | Number | `80`                |
 | list-data         | 列表数据               | any[] | `[]`                |
 | container-height `v3.1.19`        | 容器高度(最大值不能超过可视区)              | Number | `可视区高度`                |
+| buffer-size `v3.3.5`        | 数据缓冲区长度              | Number | `5`                |
+| margin `v3.3.5`        | 列表之间的间隙，和自定义样式保持一致         | Number | `10`                |
 
 ### Slots
 
 | 参数         | 说明                             | 类型   |
 |--------------|----------------------------------|--------|
 | item         | 列表项数据               | Object |
-| index         | 索引               | Number |
+| index         | 列表索引               | Number |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| scroll(将被废弃), `scroll-bottom` 代替 | 滚动到底部时触发 | - |
 | scroll-bottom `v3.1.21`   | 滚动到底部时触发 | - |
+| scroll-up `v3.3.5`   | 向上滚动 | - |
+| scroll-down `v3.3.5`   | 向下滚动 | - |

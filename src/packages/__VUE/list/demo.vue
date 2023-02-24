@@ -2,10 +2,10 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item }">
+      <nut-list :listData="count" @scroll-bottom="handleScroll">
+        <template v-slot="{ item, index }">
           <div class="list-item">
-            {{ item }}
+            {{ index }}
           </div>
         </template>
       </nut-list>
@@ -48,18 +48,18 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .demo {
   .nut-cell {
     height: 100%;
   }
-  .list-item {
+  .nut-list-item {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
     margin-bottom: 10px;
+    height: 50px;
     background-color: #f4a8b6;
     border-radius: 10px;
   }
