@@ -12,6 +12,7 @@ import { List } from '@nutui/nutui';
 
 const app = createApp();
 app.use();
+
 ```
 
 ### Basic Usage
@@ -23,10 +24,10 @@ app.use();
   <div class="demo">
     <h2>Basic Usage</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item }">
+      <nut-list :listData="count" @scroll-bottom="handleScroll">
+        <template v-slot="{ item. index }">
           <div class="list-item">
-            {{ item }}
+            {{ index }}
           </div>
         </template>
       </nut-list>
@@ -66,16 +67,16 @@ body {
   height: 100%;
 }
 .demo {
-  height: 100%;
   .nut-cell {
     height: 100%;
   }
-  .list-item {
+  .nut-list-item {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    margin-bottom: 10px;
+    height: 50px;
     background-color: #f4a8b6;
     border-radius: 10px;
   }
@@ -91,29 +92,23 @@ body {
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| height         | The height of the list item               | number | `50`                |
+| height         | The height/estimated height of the list item, supports unfixed height    | Number | `80`                |
 | list-data         | List data               | any[] | `[]`                |
-| container-height       | Container height(The maximum value cannot exceed the viewable area)              | number | `Visual area height`                |
+| container-height        | Container height(The maximum value cannot exceed the viewable area)              | Number | `Visual area height`                |
+| buffer-size         | data buffer length              | Number | `5`                |
+| margin        | The gap between the lists is consistent with the custom style         | Number | `10`                |
 
 ### Slots
 
-| Name         | Description                             | Type   |
+| Attribute         | Description                             | Type   |
 |--------------|----------------------------------|--------|
-| item         | List item data               | object |
-| index         | Indexes               | number |
+| item         | List item data               | Object |
+| index         | Indexes               | Number |
 
 ### Events
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
 | scroll-bottom   | Triggered when scrolling to the bottom | - |
-
-## Theming
-
-### CSS Variables
-
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
-
-| Name | Default Value |
-| --------------------------------------- | -------------------------- |
-| --nut-list-item-margin       | _0 0 10px 0_        |
+| scroll-up   | scroll up | - |
+| scroll-down  | scroll down | - |

@@ -12,6 +12,7 @@ import { List } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use();
+
 ```
 
 ### 基础用法
@@ -24,9 +25,9 @@ app.use();
     <h2>基础用法</h2>
     <nut-cell>
       <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item }">
+        <template v-slot="{ item, index }">
           <div class="list-item">
-            {{ item }}
+            {{ index }}
           </div>
         </template>
       </nut-list>
@@ -66,16 +67,16 @@ body {
   height: 100%;
 }
 .demo {
-  height: 100%;
   .nut-cell {
     height: 100%;
   }
-  .list-item {
+  .nut-list-item {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 50px;
+    margin-bottom: 10px;
     background-color: #f4a8b6;
     border-radius: 10px;
   }
@@ -91,29 +92,23 @@ body {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| height         | 列表项的高度               | number | `50`                |
+| height         | 列表项的高度/预估高度，支持不固定高度               | Number | `80`                |
 | list-data         | 列表数据               | any[] | `[]`                |
-| container-height        | 容器高度(最大值不能超过可视区)              | number | `可视区高度`                |
+| container-height        | 容器高度(最大值不能超过可视区)              | Number | `可视区高度`                |
+| buffer-size        | 数据缓冲区长度              | Number | `5`                |
+| margin        | 列表之间的间隙，和自定义样式保持一致         | Number | `10`                |
 
 ### Slots
 
-| 名称         | 说明                             | 类型   |
+| 参数         | 说明                             | 类型   |
 |--------------|----------------------------------|--------|
-| item         | 列表项数据               | object |
-| index         | 索引               | number |
+| item         | 列表项数据               | Object |
+| index         | 列表索引               | Number |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | scroll-bottom   | 滚动到底部时触发 | - |
-
-## 主题定制
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
-
-| 名称                                    | 默认值                     |
-| --------------------------------------- | -------------------------- |
-| --nut-list-item-margin       | _0 0 10px 0_        |
+| scroll-up   | 向上滚动 | - |
+| scroll-down   | 向下滚动 | - |
