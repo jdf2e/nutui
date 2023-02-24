@@ -152,7 +152,7 @@ export default create({
       return h(props.item);
     }
   },
-  emits: ['click', 'close'],
+  emits: ['click', 'close', 'across-end'],
 
   setup(props, { emit, slots }) {
     // console.log('componentName', componentName);
@@ -308,9 +308,9 @@ export default create({
       emit('close', event);
     };
 
-    const onAnimationEnd = () => {
+    const onAnimationEnd = (event: Event) => {
       state.firstRound = false;
-
+      emit('across-end', event);
       setTimeout(() => {
         state.duration = (state.offsetWidth + state.wrapWidth) / props.speed;
         state.animationClass = 'play-infinite';
