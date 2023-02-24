@@ -228,8 +228,6 @@ export default create({
         } else {
           rect = await useTaroRect(item.target, Taro);
         }
-
-        console.log('获取taro', rect);
         maskRect[i] = rect;
         maskStyle(i);
       });

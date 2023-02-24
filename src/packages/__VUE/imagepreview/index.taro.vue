@@ -274,7 +274,6 @@ export default create({
     );
 
     onMounted(() => {
-      console.log(111);
       setActive(props.initNo);
     });
 

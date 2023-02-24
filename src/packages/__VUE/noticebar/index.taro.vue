@@ -296,7 +296,6 @@ export default create({
             if (rect.width > 0) offsetWidth = rect.width;
 
             state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
-            console.log(11, state.isCanScroll);
             if (state.isCanScroll) {
               state.wrapWidth = wrapWidth;
               state.offsetWidth = offsetWidth;

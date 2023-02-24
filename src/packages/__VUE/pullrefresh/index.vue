@@ -207,7 +207,6 @@ export default create({
     watch(
       () => props.modelValue,
       (val) => {
-        console.log('监听', val);
         if (val) {
           setPullStatus(+props.headHeight, true);
           nextTick(() => emit('refresh'));

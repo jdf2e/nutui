@@ -379,7 +379,6 @@ export default create({
 
     const scrollTo = () => {
       setTimeout(() => {
-        console.log(scrollDis.value, tabIndex.value);
         scrollTop.value = scrollDis.value[tabIndex.value];
       });
     };

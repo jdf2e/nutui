@@ -107,7 +107,6 @@ export default create({
           query.select('.navBarHtml').boundingClientRect();
           query.exec((res) => {
             navHeight.value = res[0].height;
-            // console.log('navHeight', navHeight.value)
           });
         }, 500);
       }

@@ -178,8 +178,6 @@ export default create({
         if (value == false) {
           close();
         }
-
-        console.log(props.goods);
       }
     );
 

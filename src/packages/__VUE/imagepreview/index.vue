@@ -136,7 +136,6 @@ export default create({
     const init = () => {
       if (swipeRef.value) {
         const rect = useRect(swipeRef.value);
-        console.log('show');
         state.rootHeight = rect.height;
         state.rootWidth = rect.width;
       }

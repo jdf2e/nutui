@@ -83,8 +83,6 @@ export default create({
           let domsProps: any = slots?.default?.();
           let doms: any = childrenDom.value;
           Array.from(doms).forEach((item: any, index: number) => {
-            console.log(index);
-
             if (typeof newval == 'number' || typeof newval == 'string') {
               if (domsProps[index] && domsProps[index].props) {
                 item.changeOpen(newval == domsProps[index].props.name ? true : false);

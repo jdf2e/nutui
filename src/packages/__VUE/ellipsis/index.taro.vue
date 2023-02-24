@@ -135,7 +135,6 @@ export default create({
               computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom', 'fontSize']
             },
             (res) => {
-              console.log(res);
               lineHeight = pxToNumber(res.lineHeight === 'normal' ? props.lineHeight : res.lineHeight);
               maxHeight = Math.floor(
                 lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)

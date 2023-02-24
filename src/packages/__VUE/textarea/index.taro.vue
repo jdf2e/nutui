@@ -121,7 +121,6 @@ export default create({
     const change = (event: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (!composing.value) {
-          // console.log((event.target as InputTarget)!.composing);
           _onInput(event);
         }
       } else {
