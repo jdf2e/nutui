@@ -44,6 +44,17 @@ app.use(Price);
 
 :::
 
+### 划线价
+
+:::demo
+
+``` html
+<template>
+    <nut-price :price="8888" decimal-digits="0" size="normal" need-symbol thousands strike-through />
+</template>
+```
+:::
+
 ### 货币符号
 
 `symbol` 可设置货币符号，默认为 `¥`。
@@ -96,6 +107,7 @@ app.use(Price);
 | thousands      | 是否按照千分号形式显示                    | boolean          | `false`  |
 | position       | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
 | size           | 价格尺寸，`small`、`normal`、`large`     | string           | `normal` |
+| strike-through`v4.0.3`          | 是否展示划线价    | Boolean           | false |
 
 ## 主题定制
 

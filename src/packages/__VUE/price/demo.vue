@@ -15,6 +15,10 @@
     <nut-cell>
       <nut-price :price="8888" :decimal-digits="0" />
     </nut-cell>
+    <h2>{{ translate('titleStrike') }}</h2>
+    <nut-cell>
+      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
+    </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
       <nut-price :price="10010.01" symbol="¥" />
@@ -41,6 +45,7 @@ const initTranslate = () =>
       title2: '不保留小数',
       title3: '货币符号',
       title4: '货币符号位置',
+      titleStrike: '划线价',
       title5: '千位分隔',
       symbol: '元'
     },
@@ -49,6 +54,7 @@ const initTranslate = () =>
       title2: 'No decimals',
       title3: 'Currency symbol',
       title4: 'Currency symbol position',
+      titleStrike: 'Strike Through',
       title5: 'Separated by thousands',
       symbol: 'RMB'
     }

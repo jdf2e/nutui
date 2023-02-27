@@ -44,6 +44,17 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 ```
 
 :::
+### Strike Through
+
+:::demo
+
+``` html
+<template>
+    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
+</template>
+```
+
+:::
 
 ### Currency symbol
 
@@ -97,9 +108,9 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 | thousands      | Thousands separation                                       | boolean          | `false`  |
 | position       | The symbol appear before or after the price，`before`、`after` | string           | `before` |
 | size           | Size，`small`、`normal`、`large`                | string           | `normal` |
+| strike-through`v4.0.3`          | strike-through    | Boolean           | false |
 
 ## Theming
-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).

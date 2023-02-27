@@ -16,6 +16,10 @@
     <nut-cell>
       <nut-price :price="8888" :decimal-digits="0" />
     </nut-cell>
+    <h2>划线价</h2>
+    <nut-cell>
+      <nut-price :price="8888" decimal-digits="0" size="normal" need-symbol thousands strike-through />
+    </nut-cell>
     <h2>货币符号</h2>
     <nut-cell>
       <nut-price :price="10010.01" symbol="¥" />
