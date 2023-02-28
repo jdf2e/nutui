@@ -7,7 +7,7 @@
   right	右侧与视图窗口左上角的距离	number
   bottom	底部与视图窗口左上角的距离	number
  */
-
+import Taro from '@tarojs/taro';
 import { Ref, unref } from 'vue';
 function isWindow(val: unknown): val is Window {
   return val === window;
@@ -22,9 +22,8 @@ export interface rectTaro {
   height: number;
 }
 
-export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, Taro: any): any => {
+export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, taro: any): any => {
   let element = unref(elementRef);
-  console.log(Taro.getEnv());
   return new Promise((resolve) => {
     if (Taro.getEnv() === 'WEB') {
       if (element && element.$el) {
