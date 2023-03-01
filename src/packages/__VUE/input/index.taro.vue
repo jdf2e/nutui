@@ -11,7 +11,7 @@
             class="input-text"
             ref="inputRef"
             :style="styles"
-            :maxlength="maxLength ? maxLength : -1"
+            :maxlength="maxLength ? maxLength : undefined"
             :placeholder="placeholder"
             :disabled="disabled"
             :readonly="readonly"
