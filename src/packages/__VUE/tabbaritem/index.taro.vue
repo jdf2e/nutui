@@ -1,5 +1,5 @@
 <template>
-  <div
+  <view
     class="nut-tabbar-item"
     :class="{ 'nut-tabbar-item__icon--unactive': !active }"
     :style="{
@@ -9,9 +9,9 @@
   >
     <nut-badge v-bind="$attrs">
       <view class="nut-tabbar-item_icon-box">
-        <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+        <view class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
           <slot name="icon" :active="active"></slot>
-        </div>
+        </view>
         <view v-if="icon && !isHaveSlot('icon')">
           <component :is="renderIcon(icon)" class="nut-popover-item-img"></component>
         </view>
@@ -28,7 +28,7 @@
         </view>
       </view>
     </nut-badge>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';
