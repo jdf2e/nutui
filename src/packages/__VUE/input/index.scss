@@ -55,8 +55,8 @@ textarea {
   }
   .input-text {
     font-size: $input-font-size;
-    height: auto;
-    min-height: auto;
+    // height: auto;
+    // min-height: auto;
   }
   &__label {
     width: 80px;
