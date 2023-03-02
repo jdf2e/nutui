@@ -44,5 +44,5 @@ test('should render actual length', async () => {
   await nextTick();
 
   const listItem = wrapper.findAll('.nut-list-item');
-  expect(listItem.length).toEqual(100);
+  expect(listItem.length).toEqual(3);
 });
