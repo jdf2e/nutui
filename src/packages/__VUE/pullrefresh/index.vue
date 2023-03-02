@@ -209,7 +209,6 @@ export default create({
       (val) => {
         if (val) {
           setPullStatus(+props.headHeight, true);
-          nextTick(() => emit('refresh'));
         } else {
           setPullStatus(0);
         }
