@@ -174,7 +174,7 @@ export default {
 :::demo
 ```html
 <template>
-<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
+<nut-tabs v-model="state.tab1value" title-scroll title-gutter="10" name="tab1value">
   <nut-tab-pane v-for="item in state.list4" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tab-pane>

@@ -174,7 +174,7 @@ In the `taro` environment, `name` must be set to enable the automatic scrolling 
 :::demo
 ```html
 <template>
-<nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
+<nut-tabs v-model="state.tab1value" title-scroll title-gutter="10">
   <nut-tab-pane v-for="item in state.list4" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tab-pane>
