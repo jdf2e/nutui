@@ -241,13 +241,13 @@ app.use(Overlay);
 | overlay-class          | 自定义遮罩类名   | string         | -      |
 | overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
 | lock-scroll            | 遮罩显示时的背景是否锁定     | boolean        | `true`  |
-| close-on-click-overlay | 点击遮罩时是否关闭，如果设置 `false`,那么 `click`事件将失效 | boolean  | `true`   |
+| close-on-click-overlay | 点击遮罩时是否关闭 | boolean  | `true`   |
 
 ### Events
 
 | 事件名 | 说明       | 回调参数     |
 | ------ | ---------- | ------------ |
-| click  | 点击时触发，仅当 `close-on-click-overlay` 为 `true` 时生效   | event: MouseEvent |
+| click  | 点击时触发   | event: MouseEvent |
 
 ### Slots
 
