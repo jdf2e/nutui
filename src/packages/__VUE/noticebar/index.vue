@@ -179,7 +179,7 @@ export default create({
     Notice,
     CircleClose
   },
-  emits: ['click', 'close'],
+  emits: ['click', 'close', 'across-end'],
 
   setup(props, { emit, slots }) {
     const wrap = ref<null | HTMLElement>(null);
@@ -313,9 +313,9 @@ export default create({
       emit('close', event);
     };
 
-    const onAnimationEnd = () => {
+    const onAnimationEnd = (event: Event) => {
       state.firstRound = false;
-
+      emit('across-end', event);
       setTimeout(() => {
         state.duration = (state.offsetWidth + state.wrapWidth) / props.speed;
         state.animationClass = 'play-infinite';
