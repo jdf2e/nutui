@@ -5,8 +5,8 @@ const { componentName, create } = createComponent('config-provider');
 export default create({
   props: {
     theme: { type: String, default: '' },
-    themeVars: { type: Object, default: () => {} },
-    tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'view' }
+    themeVars: { type: Object, default: {} },
+    tag: { type: String, default: 'view' }
   },
   setup(props: any, { slots }: any) {
     const kebabCase = (str: string): string => {

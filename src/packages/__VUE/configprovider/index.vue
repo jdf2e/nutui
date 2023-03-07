@@ -5,7 +5,7 @@ const { componentName, create } = createComponent('config-provider');
 export default create({
   props: {
     theme: { type: String, default: '' },
-    themeVars: { type: Object, default: () => {} },
+    themeVars: { type: Object, default: {} },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' }
   },
   setup(props: any, { slots }: any) {
