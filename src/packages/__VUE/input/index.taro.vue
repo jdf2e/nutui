@@ -8,6 +8,7 @@
         <view class="nut-input-box">
           <component
             :is="renderInput(type)"
+            v-bind="$attrs"
             class="input-text"
             ref="inputRef"
             :style="styles"
@@ -41,14 +42,7 @@
           v-show="(active || showClearIcon) && modelValue.length > 0"
         >
           <slot name="clear">
-            <MaskClose
-              class="nut-input-clear"
-              v-bind="$attrs"
-              :size="clearSize"
-              :width="clearSize"
-              :height="clearSize"
-              @click="clear"
-            >
+            <MaskClose class="nut-input-clear" :size="clearSize" :width="clearSize" :height="clearSize" @click="clear">
             </MaskClose>
           </slot>
         </view>
@@ -81,6 +75,7 @@ export interface InputTarget extends HTMLInputElement {
 }
 
 export default create({
+  inheritAttrs: false,
   props: {
     type: {
       type: String as PropType<InputType>,
