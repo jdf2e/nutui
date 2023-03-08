@@ -205,15 +205,13 @@ export default create({
     const inputType = (type: InputType) => {
       if (type === 'number') {
         return {
-          type: Taro.getEnv() === Taro.ENV_TYPE.WEB ? 'number' : 'digit',
-          inputmode: 'decimal'
+          type: 'text'
         };
       }
 
       if (type === 'digit') {
         return {
-          type: Taro.getEnv() === Taro.ENV_TYPE.WEB ? 'tel' : 'number',
-          inputmode: 'numeric'
+          type: 'tel'
         };
       }
 
@@ -250,10 +248,9 @@ export default create({
         value = props.formatter(value);
       }
 
-      if (inputRef?.value !== value) {
-        inputRef.value = value;
+      if (inputRef?.value.value !== value) {
+        inputRef.value.value = value;
       }
-
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
         // emit('change', value);

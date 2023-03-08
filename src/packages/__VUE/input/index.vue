@@ -193,15 +193,13 @@ export default create({
     const inputType = (type: InputType) => {
       if (type === 'number') {
         return {
-          type: 'text',
-          inputmode: 'decimal'
+          type: 'text'
         };
       }
 
       if (type === 'digit') {
         return {
-          type: 'tel',
-          inputmode: 'numeric'
+          type: 'tel'
         };
       }
 
