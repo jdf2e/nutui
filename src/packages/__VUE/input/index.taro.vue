@@ -175,7 +175,7 @@ export default create({
     const renderInput = (type: InputType) => {
       return h('input', {
         style: styles,
-        type: type != 'textarea' && inputType(type)
+        ...inputType(type)
       });
     };
 
@@ -204,12 +204,20 @@ export default create({
 
     const inputType = (type: InputType) => {
       if (type === 'number') {
-        return 'text';
-      } else if (type === 'digit') {
-        return 'tel';
-      } else {
-        return type;
+        return {
+          type: Taro.getEnv() === Taro.ENV_TYPE.WEB ? 'number' : 'digit',
+          inputmode: 'decimal'
+        };
       }
+
+      if (type === 'digit') {
+        return {
+          type: Taro.getEnv() === Taro.ENV_TYPE.WEB ? 'tel' : 'number',
+          inputmode: 'numeric'
+        };
+      }
+
+      return { type };
     };
 
     const onInput = (event: Event) => {
