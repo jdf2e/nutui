@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-      <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
+      <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
     </view>
     <view
       v-if="label"
@@ -31,6 +31,7 @@
             <textarea
               v-if="type == 'textarea'"
               class="input-text"
+              v-bind="$attrs"
               ref="inputRef"
               :style="stylesTextarea"
               :maxlength="maxLength"
@@ -50,6 +51,7 @@
             <input
               v-else
               class="input-text"
+              v-bind="$attrs"
               ref="inputRef"
               :style="styles"
               :type="inputType(type)"
@@ -78,14 +80,13 @@
               v-if="clearable && !readonly"
               v-show="active && modelValue.length > 0"
               :name="clearIcon"
-              v-bind="$attrs"
               :size="clearSize"
               @click="clear"
             >
             </nut-icon>
           </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-            <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
+            <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
           <slot v-if="$slots.rightExtra" name="rightExtra"></slot>
@@ -125,6 +126,7 @@ export type InputRule = {
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 export default create({
+  inheritAttrs: false,
   props: {
     ref: {
       type: String,
