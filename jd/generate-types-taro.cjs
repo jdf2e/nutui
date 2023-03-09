@@ -67,6 +67,14 @@ const getResolver = () => {
       return;
     }
   })
+  const pkgJsonSource = path.resolve(__dirname, './../src/packages/resolver/package.json');
+  const pkgJsonTo = path.resolve(__dirname, './../dist/resolver/package.json');
+  fs.cp(pkgJsonSource, pkgJsonTo, (err) => {
+    if(err) {
+      console.error(err);
+      return;
+    }
+  })
 }
 
 fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
