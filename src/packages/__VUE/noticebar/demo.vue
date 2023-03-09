@@ -65,11 +65,19 @@
         </template>
       </nut-noticebar>
     </div>
+
+    <h2>{{ translate('scrollEvent') }}</h2>
+    <div class="interstroll-list">
+      <nut-noticebar
+        :text="`${translate('text')} - ${translate('scrollCount')}：[${acrossCount}]`"
+        @across-end="onAcrossEnd"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs, ref } from 'vue';
+import { reactive, toRefs, ref } from 'vue';
 import { Fabulous } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('noticebar');
@@ -88,13 +96,10 @@ const initTranslate = () =>
       customRightIcon: '纵向--自定义右侧图标',
       text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
       textShort: 'NutUI 是移动端组件库',
-      horseLamp: [
-        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮'
-      ],
-      jd: '京东商城'
+      horseLamp: ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'],
+      jd: '京东商城',
+      scrollCount: '滚动次数',
+      scrollEvent: '横向 - 滚动结束事件'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -107,8 +112,10 @@ const initTranslate = () =>
       customRightIcon: 'Vertical Scroll Custom Right Icon',
       text: 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.',
       textShort: 'Nutui is a mobile terminal component library.',
-      horseLamp: ['Noticebar', 'Cascader', 'DatePicker', 'CheckBox'],
-      jd: 'Jingdong'
+      horseLamp: ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'],
+      jd: 'Jingdong',
+      scrollCount: 'scroll count',
+      scrollEvent: 'across - scrolling end event'
     }
   });
 
@@ -121,7 +128,8 @@ export default createDemo({
       horseLamp1: translate('horseLamp'),
       horseLamp2: translate('horseLamp'),
       horseLamp3: translate('horseLamp'),
-      text: translate('text')
+      text: translate('text'),
+      acrossCount: 0
     });
 
     const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
@@ -142,13 +150,19 @@ export default createDemo({
       ];
     }, 2000);
 
+    const onAcrossEnd = () => {
+      state.acrossCount++;
+      console.log('动画结束');
+    };
+
     return {
       ...toRefs(state),
       closeFun,
       go,
-      translate,
       Fabulous,
-      data1
+      data1,
+      onAcrossEnd,
+      translate
     };
   }
 });
@@ -164,6 +178,7 @@ export default createDemo({
     color: $dark-color;
   }
 }
+
 .demo {
   padding-bottom: 30px !important;
 

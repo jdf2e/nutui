@@ -78,8 +78,8 @@ export const component = (componentName: string, components: any) => {
       };
 
       const onClickOverlay = (e: Event) => {
+        emit('click-overlay', e);
         if (props.closeOnClickOverlay) {
-          emit('click-overlay', e);
           emit('update:visible', false);
           // close();
         }

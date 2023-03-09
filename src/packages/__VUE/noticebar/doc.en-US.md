@@ -249,7 +249,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 | ---------- | --------------------------------------- | ------------ |
 | click      | Emitted when Noticebar is clicked       | event: Event |
 | close      | Emitted when Noticebar is closed        | event: Event |
-
+| across-end | Emitted when across scrolling ends      | event: Event |
 ## Theming
 
 ### CSS Variables
@@ -267,3 +267,4 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-noticebar-wrapable-padding| _16px_ |
 | --nut-noticebar-lefticon-margin| _0px 10px_ |
 | --nut-noticebar-righticon-margin| _0px 10px_ |
+
