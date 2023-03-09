@@ -68,9 +68,9 @@ export default create({
     });
 
     const onClick = (e: MouseEvent) => {
+      emit('click', e);
       if (props.closeOnClickOverlay) {
         emit('update:visible', false);
-        emit('click', e);
       }
     };
 
