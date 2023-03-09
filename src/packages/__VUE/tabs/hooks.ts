@@ -1,17 +1,14 @@
 import { onMounted, reactive, ref } from 'vue';
 import { useTouch } from '@/packages/utils/useTouch';
-import { useTaroRect } from '@/packages/utils/useTaroRect';
-import requestAniFrame from '@/packages/utils/raf';
-import Taro from '@tarojs/taro';
 type TouchPosition = 'left' | 'right' | 'top' | 'bottom' | '';
 
-export const useTabContentTouch = (props: any, tabMethods: any) => {
+export const useTabContentTouch = (props: any, tabMethods: any, taro?: any, useTaroRect?: any) => {
   const tabsContentRef = ref<HTMLElement>();
 
   const tabsContentRefRect = ref({ width: 0, height: 0 });
   const initTaroWidth = async () => {
-    if (Taro.getEnv() !== Taro.ENV_TYPE.WEB) {
-      let rect = await useTaroRect(tabsContentRef, Taro);
+    if (taro && taro.getEnv() !== taro.ENV_TYPE.WEB) {
+      let rect = await useTaroRect(tabsContentRef, taro);
       tabsContentRefRect.value.width = rect.width || 0;
       tabsContentRefRect.value.height = rect.height || 0;
     } else {

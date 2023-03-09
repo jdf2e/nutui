@@ -54,6 +54,8 @@ import raf from '@/packages/utils/raf';
 import Taro from '@tarojs/taro';
 import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
+
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -316,7 +318,7 @@ export default create({
         titleRef.value[index] = el;
       }
     };
-    const { tabsContentRef, touchState, touchMethods } = useTabContentTouch(props, tabMethods);
+    const { tabsContentRef, touchState, touchMethods } = useTabContentTouch(props, tabMethods, Taro, useTaroRect);
     const contentStyle = computed(() => {
       let offsetPercent = currentIndex.value * 100;
       if (touchState.moving) {
