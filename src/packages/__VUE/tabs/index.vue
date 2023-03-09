@@ -55,7 +55,15 @@
         </template>
       </view>
     </template>
-    <view class="nut-tabs__content" :style="contentStyle">
+    <view
+      class="nut-tabs__content"
+      ref="tabsContentRef"
+      :style="contentStyle"
+      @touchstart="onTouchStart"
+      @touchmove="onTouchMove"
+      @touchend="onTouchEnd"
+      @touchcancel="onTouchEnd"
+    >
       <slot name="default"></slot>
     </view>
   </view>
@@ -65,7 +73,7 @@ import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';
 export class Title {
   title: string = '';
@@ -78,6 +86,7 @@ export type TabsSize = 'large' | 'normal' | 'small';
 import Sticky from '../sticky/index.vue';
 const { create } = createComponent('tabs');
 import { JoySmile } from '@nutui/icons-vue';
+import { useTabContentTouch } from './hooks';
 export default create({
   components: { [Sticky.name]: Sticky, JoySmile },
   props: {
@@ -109,6 +118,10 @@ export default create({
       type: Boolean,
       default: true
     },
+    swipeable: {
+      type: Boolean,
+      default: false
+    },
     autoHeight: {
       type: Boolean,
       default: false
@@ -139,8 +152,12 @@ export default create({
   setup(props: any, { emit, slots }: any) {
     const container = ref(null);
     let stickyFixed: boolean;
-    provide('activeKey', { activeKey: computed(() => props.modelValue) });
-    provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
+    provide('tabsOpiton', {
+      activeKey: computed(() => props.modelValue || '0'),
+      autoHeight: computed(() => props.autoHeight),
+      animatedTime: computed(() => props.animatedTime)
+    });
+
     const titles: Ref<Title[]> = ref([]);
     const renderTitles = (vnodes: VNode[]) => {
       vnodes.forEach((vnode: VNode, index: number) => {
@@ -175,9 +192,9 @@ export default create({
     const findTabsIndex = (value: string | number) => {
       let index = titles.value.findIndex((item) => item.paneKey == value);
       if (titles.value.length == 0) {
-        console.error('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
+        console.warn('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
       } else if (index == -1) {
-        // console.error('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
+        // console.warn('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
       } else {
         currentIndex.value = index;
       }
@@ -253,14 +270,54 @@ export default create({
     );
     onMounted(init);
     onActivated(init);
+    const tabMethods = {
+      isBegin: () => {
+        return currentIndex.value == 0;
+      },
+      isEnd: () => {
+        return currentIndex.value == titles.value.length - 1;
+      },
+      next: () => {
+        currentIndex.value += 1;
+        tabMethods.updateValue(titles.value[currentIndex.value]);
+      },
+      prev: () => {
+        currentIndex.value -= 1;
+        tabMethods.updateValue(titles.value[currentIndex.value]);
+      },
+      updateValue: (item: Title) => {
+        emit('update:modelValue', item.paneKey);
+        emit('change', item);
+      },
+      tabChange: (item: Title, index: number) => {
+        emit('click', item);
+        if (item.disabled || currentIndex.value == index) {
+          return;
+        }
+        currentIndex.value = index;
+        tabMethods.updateValue(item);
+      },
+      setTabItemRef: (el: HTMLElement, index: number) => {
+        titleRef.value[index] = el;
+      }
+    };
+    const { tabsContentRef, touchState, touchMethods } = useTabContentTouch(props, tabMethods);
     const contentStyle = computed(() => {
-      return {
+      let offsetPercent = currentIndex.value * 100;
+      if (touchState.moving) {
+        offsetPercent += touchState.offset;
+      }
+      let style: CSSProperties = {
         transform:
           props.direction == 'horizontal'
-            ? `translate3d(-${currentIndex.value * 100}%, 0, 0)`
-            : `translate3d( 0,-${currentIndex.value * 100}%, 0)`,
-        transitionDuration: `${props.animatedTime}ms`
+            ? `translate3d(-${offsetPercent}%, 0, 0)`
+            : `translate3d( 0,-${offsetPercent}%, 0)`,
+        transitionDuration: touchState.moving ? undefined : `${props.animatedTime}ms`
       };
+      if (props.animatedTime == 0) {
+        style = {};
+      }
+      return style;
     });
     const tabsNavStyle = computed(() => {
       return {
@@ -279,22 +336,10 @@ export default create({
         marginRight: pxCheck(props.titleGutter)
       };
     });
-    const methods = {
-      tabChange: (item: Title, index: number) => {
-        emit('click', item);
-        if (item.disabled || currentIndex.value == index) {
-          return;
-        }
-        currentIndex.value = index;
-        emit('update:modelValue', item.paneKey);
-        emit('change', item);
-      },
-      setTabItemRef: (el: HTMLElement, index: number) => {
-        titleRef.value[index] = el;
-      }
-    };
+
     return {
       navRef,
+      tabsContentRef,
       titles,
       contentStyle,
       tabsNavStyle,
@@ -302,7 +347,8 @@ export default create({
       tabsActiveStyle,
       container,
       onStickyScroll,
-      ...methods
+      ...tabMethods,
+      ...touchMethods
     };
   }
 });

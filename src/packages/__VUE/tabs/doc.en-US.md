@@ -43,6 +43,36 @@ export default {
 };
 </script>
 ```
+
+:::
+### Swipeable
+:::demo
+```html
+<template>
+<nut-tabs v-model="state.tab1value" swipeable>
+  <nut-tab-pane title="Tab 1">
+    Tab 1
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 2">
+    Tab 2
+  </nut-tab-pane>
+  <nut-tab-pane title="Tab 3">
+    Tab 3
+  </nut-tab-pane>
+</nut-tabs>
+</template>
+<script lang="ts">
+import { reactive } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      tab1value: '0',
+    });
+    return { state };
+  }
+};
+</script>
+```
 :::
 
 ### Basic Usage - Smile Curve
@@ -201,7 +231,7 @@ export default {
 ```html
 <template>
 <nut-tabs style="height:300px" v-model="state.tab5value" title-scroll direction="vertical">
-  <nut-tab-pane v-for="item in state.list5" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tab-pane>
 </nut-tabs>
@@ -227,7 +257,7 @@ export default {
 ```html
 <template>
 <nut-tabs style="height:300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-  <nut-tab-pane v-for="item in state.list5" :title="'Tab '+ item">
+  <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab '+ item">
     Tab {{item}}
   </nut-tab-pane>
 </nut-tabs>
@@ -333,22 +363,23 @@ export default {
 
 ### Tabs Props
 
-| Attribute     | Description                                                                                                                         | Type             | Default    |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------|------------------|------------|
-| v-model       | Index of active tab                                                                                                                 | number \| string | `0`          |
-| color         | Label selection color                                                                                                               | string           | `#1a1a1a`    |
-| background    | Tab bar background color                                                                                                            | string           | `#f5f5f5`    |
-| direction     | Use landscape orientation optional value `horizontal`、`vertical`                                                                   | string           | `horizontal` |
-| type          | Check the bottom display style optional value `line`、`smile`                                                                       | string           | `line`       |
-| title-scroll  | Is the tab bar scrollable                                                                                                           | boolean          | `false`      |
-| ellipsis      | Whether to omit too long title text                                                                                                 | boolean          | `true`       |
-| animated-time | Switch animation duration, unit ms 0 means no `animation`                                                                             | number \| string | `300`        |
-| title-gutter  | Label gap                                                                                                                           | number \| string | `0`          |
-| size          | Tab bar font size optional value  `large` `normal` `small`                                                                          | string           | `normal`     |
-| auto-height   | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | `false`      |
-| sticky        | Whether to use sticky mode                                                                                                          | boolean          | `false`      |
-| top           | Sticky offset top                                                                                                                   | number           | `0`          |
-| name        | In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar.                              | string | ''        |
+| Attribute        | Description                                                                                                                         | Type             | Default      |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------|------------------|--------------|
+| v-model          | Index of active tab                                                                                                                 | number \| string | `0`          |
+| color            | Label selection color                                                                                                               | string           | `#1a1a1a`    |
+| background       | Tab bar background color                                                                                                            | string           | `#f5f5f5`    |
+| direction        | Use landscape orientation optional value `horizontal`、`vertical`                                                                   | string           | `horizontal` |
+| type             | Check the bottom display style optional value `line`、`smile`                                                                       | string           | `line`       |
+| swipeable`4.0.3` | Whether to enable gestures to slide left and right                                                                                  | boolean          | `false`      |
+| title-scroll     | Is the tab bar scrollable                                                                                                           | boolean          | `false`      |
+| ellipsis         | Whether to omit too long title text                                                                                                 | boolean          | `true`       |
+| animated-time    | Switch animation duration, unit ms 0 means no `animation`                                                                           | number \| string | `300`        |
+| title-gutter     | Label gap                                                                                                                           | number \| string | `0`          |
+| size             | Tab bar font size optional value  `large` `normal` `small`                                                                          | string           | `normal`     |
+| auto-height      | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | `false`      |
+| sticky           | Whether to use sticky mode                                                                                                          | boolean          | `false`      |
+| top              | Sticky offset top                                                                                                                   | number           | `0`          |
+| name             | In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar.                          | string           | ''           |
 
 ### Tabs Slots
 
@@ -385,24 +416,24 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                                | Default Value                                                                      |
-|-----------------------------------------------------|------------------------------------------------------------------------------------|
-| --nut-tabs-tab-smile-color                          | _var(--nut-primary-color)_                                                         |
-| --nut-tabs-titles-border-radius                     | _0_                                                                                |
-| --nut-tabs-titles-item-large-font-size              | _var(--nut-font-size-3)_                                                           |
-| --nut-tabs-titles-item-font-size                    | _var(--nut-font-size-2)_                                                           |
-| --nut-tabs-titles-item-small-font-size              | _var(--nut-font-size-1)_                                                           |
-| --nut-tabs-titles-item-color                        | _var(--nut-title-color)_                                                           |
-| --nut-tabs-titles-item-active-color                 | _var(--nut-title-color)_                                                           |
-| --nut-tabs-titles-background-color                  | _var(--nut-help-color)_                                                            |
+| Name                                                | Default Value                                                                  |
+|-----------------------------------------------------|--------------------------------------------------------------------------------|
+| --nut-tabs-tab-smile-color                          | _var(--nut-primary-color)_                                                     |
+| --nut-tabs-titles-border-radius                     | _0_                                                                            |
+| --nut-tabs-titles-item-large-font-size              | _var(--nut-font-size-3)_                                                       |
+| --nut-tabs-titles-item-font-size                    | _var(--nut-font-size-2)_                                                       |
+| --nut-tabs-titles-item-small-font-size              | _var(--nut-font-size-1)_                                                       |
+| --nut-tabs-titles-item-color                        | _var(--nut-title-color)_                                                       |
+| --nut-tabs-titles-item-active-color                 | _var(--nut-title-color)_                                                       |
+| --nut-tabs-titles-background-color                  | _var(--nut-help-color)_                                                        |
 | --nut-tabs-horizontal-tab-line-color                | _linear-gradient(90deg,var(--nut-primary-color) 0%,rgba(#fa2c19, 0.15) 100%)_  |
-| --nut-tabs-horizontal-titles-height                 | _46px_                                                                             |
-| --nut-tabs-horizontal-titles-item-min-width         | _50px_                                                                             |
-| --nut-tabs-horizontal-titles-item-active-line-width | _40px_                                                                             |
+| --nut-tabs-horizontal-titles-height                 | _46px_                                                                         |
+| --nut-tabs-horizontal-titles-item-min-width         | _50px_                                                                         |
+| --nut-tabs-horizontal-titles-item-active-line-width | _40px_                                                                         |
 | --nut-tabs-vertical-tab-line-color                  | _linear-gradient(180deg,var(--nut-primary-color) 0%,rgba(#fa2c19, 0.15) 100%)_ |
-| --nut-tabs-vertical-titles-item-height              | _40px_                                                                             |
-| --nut-tabs-vertical-titles-item-active-line-height  | _14px_                                                                             |
-| --nut-tabs-vertical-titles-width                    | _100px_                                                                            |
-| --nut-tabs-titles-item-line-border-radius           | _0_                                                                                |
-| --nut-tabs-titles-item-line-opacity                 | _1_                                                                                |
+| --nut-tabs-vertical-titles-item-height              | _40px_                                                                         |
+| --nut-tabs-vertical-titles-item-active-line-height  | _14px_                                                                         |
+| --nut-tabs-vertical-titles-width                    | _100px_                                                                        |
+| --nut-tabs-titles-item-line-border-radius           | _0_                                                                            |
+| --nut-tabs-titles-item-line-opacity                 | _1_                                                                            |
 

@@ -6,6 +6,12 @@
       <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
       <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
+    <h2>{{ translate('swipeable') }}</h2>
+    <nut-tabs v-model="state.tab1value" swipeable>
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
+    </nut-tabs>
     <h2>{{ translate('title1') }}</h2>
     <nut-tabs v-model="state.tab11value" type="smile">
       <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
@@ -40,11 +46,11 @@
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title6') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
     <nut-tabs v-model="state.tab8value" size="large">
@@ -94,6 +100,7 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      swipeable: '手势滑动切换',
       title1: '基础用法-微笑曲线',
       title2: '通过 pane-key 匹配',
       title3: '数据异步渲染 3s',
@@ -107,6 +114,7 @@ const initTranslate = () =>
     },
     'en-US': {
       basic: 'Basic Usage',
+      swipeable: 'Swipeable',
       title1: 'Basic Usage - Smile Curve',
       title2: 'Match by pane-key',
       title3: 'Data is rendered asynchronously for 3s',

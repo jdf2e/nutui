@@ -1,10 +1,10 @@
 <template>
-  <view class="nut-tab-pane" :class="{ inactive: paneKey != activeKey && autoHeight }">
+  <view class="nut-tab-pane" :style="paneStyle" :class="{ inactive: paneKey != activeKey && autoHeight }">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { inject } from 'vue';
+import { computed, CSSProperties, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tab-pane');
 
@@ -25,11 +25,16 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const parent = inject('activeKey') as any;
-    const parentOption = inject('autoHeight') as any;
+    const parentOption = inject('tabsOpiton') as any;
+    const paneStyle = computed(() => {
+      return {
+        display:
+          parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? 'none' : undefined
+      } as CSSProperties;
+    });
     return {
-      activeKey: parent.activeKey,
-      autoHeight: parentOption.autoHeight
+      ...parentOption,
+      paneStyle
     };
   }
 });

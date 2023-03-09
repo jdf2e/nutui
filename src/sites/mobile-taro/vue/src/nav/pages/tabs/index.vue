@@ -1,8 +1,14 @@
 <template>
   <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+    <Header v-if="env === 'WEB'"></Header>
     <h2>基础用法</h2>
     <nut-tabs v-model="state.tab1value">
+      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
+    </nut-tabs>
+    <h2>手势滑动切换</h2>
+    <nut-tabs v-model="state.tab1value" swipeable>
       <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
       <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
       <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
@@ -37,15 +43,15 @@
 
     <h2>数量多,滚动操作</h2>
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
-      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list4" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>左右布局</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>左右布局-微笑曲线</h2>
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>标签栏字体尺寸 large normal small </h2>
     <nut-tabs v-model="state.tab1value" size="large">
