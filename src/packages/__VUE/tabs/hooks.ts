@@ -30,7 +30,6 @@ export const useTabContentTouch = (props: any, tabMethods: any, taro?: any, useT
   let position: TouchPosition = '';
   const setoffset = (deltaX: number, deltaY: number) => {
     let offset = deltaX;
-    console.log(tabsContentRefRect.value.width);
     if (props.direction == 'horizontal') {
       position = deltaX > 0 ? 'right' : 'left';
       // 计算拖拽 百分比
