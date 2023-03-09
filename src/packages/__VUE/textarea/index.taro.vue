@@ -6,6 +6,7 @@
     <textarea
       v-else
       ref="textareaRef"
+      v-bind="$attrs"
       :class="['nut-textarea__textarea', env == 'ALIPAY' && 'nut-textarea__ali']"
       :style="styles"
       :rows="rows"
@@ -37,6 +38,7 @@ export interface InputTarget extends HTMLInputElement {
   composing?: boolean;
 }
 export default create({
+  inheritAttrs: false,
   props: {
     modelValue: {
       type: String,
