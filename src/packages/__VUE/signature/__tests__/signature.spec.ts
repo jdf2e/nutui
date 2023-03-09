@@ -3,7 +3,7 @@ import Signature from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 import NutButton from '../../button/index.vue';
 import { nextTick, reactive, toRefs } from 'vue';
-import { createCanvas } from 'canvas';
+import 'jest-canvas-mock';
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
@@ -42,16 +42,18 @@ test('props custom-class', async () => {
   const signatureWrapper = wrapper.findAll('.nut-signature');
   expect(signatureWrapper[0].classes()).toContain(wrapper.vm.customClass);
 
-  const canvas = createCanvas(200, 200);
+  const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  ctx.lineWidth = wrapper.vm.lineWidth;
-  ctx.strokeStyle = wrapper.vm.strokeStyle;
-  ctx.beginPath();
-  ctx.lineTo(10, 50);
-  ctx.lineTo(80, 120);
-  ctx.stroke();
-  const _img = document.createElement('img');
-  _img.src = canvas.toDataURL();
-  expect(canvas.toDataURL()).not.toBeNull();
-  // expect(wrapper.html()).toMatchSnapshot();
+  if (ctx) {
+    ctx.lineWidth = wrapper.vm.lineWidth;
+    ctx.strokeStyle = wrapper.vm.strokeStyle;
+    ctx.beginPath();
+    ctx.lineTo(10, 50);
+    ctx.lineTo(80, 120);
+    ctx.stroke();
+    const _img = document.createElement('img');
+    _img.src = canvas.toDataURL();
+    expect(canvas.toDataURL()).not.toBeNull();
+    // expect(wrapper.html()).toMatchSnapshot();
+  }
 });
