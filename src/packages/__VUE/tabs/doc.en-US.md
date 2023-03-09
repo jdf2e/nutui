@@ -215,7 +215,7 @@ import { reactive } from 'vue';
 export default {
   setup() {
     const state = reactive({
-      tab1value: '0',
+      tab4value: '0',
       list4: Array.from(new Array(10).keys()),
     });
     return { state };
