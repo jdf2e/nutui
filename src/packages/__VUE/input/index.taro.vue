@@ -170,7 +170,7 @@ export default create({
     const renderInput = (type: InputType) => {
       return h('input', {
         style: styles,
-        type: type != 'textarea' && inputType(type)
+        ...inputType(type)
       });
     };
 
@@ -199,12 +199,18 @@ export default create({
 
     const inputType = (type: InputType) => {
       if (type === 'number') {
-        return 'text';
-      } else if (type === 'digit') {
-        return 'tel';
-      } else {
-        return type;
+        return {
+          type: 'text'
+        };
       }
+
+      if (type === 'digit') {
+        return {
+          type: 'tel'
+        };
+      }
+
+      return { type };
     };
 
     const onInput = (event: Event) => {
@@ -237,10 +243,9 @@ export default create({
         value = props.formatter(value);
       }
 
-      if (inputRef?.value !== value) {
-        inputRef.value = value;
+      if (inputRef?.value.value !== value) {
+        inputRef.value.value = value;
       }
-
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
         // emit('change', value);
