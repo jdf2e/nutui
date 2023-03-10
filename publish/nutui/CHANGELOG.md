@@ -1,3 +1,30 @@
+## v4.0.3
+
+`2023-03-10`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @daofeng-1998 @n0liu @blachworld
+
+* :zap: feat(tabs): add props swipeable 支持手势滑动切换，优化小程序端切换动画 #1984 #1828 @richard1015
+* :zap: feat(noticebar): 增加横向滚动结束时回调事件 (#2135) @daofeng-1998
+* :zap: upd(overlay): 优化组件closeOnClickOverlay属性功能 @szg2008
+* :zap: chore: 移除 canvas 依赖，替换为 jest-canvas-mock (#2160) @eiinu
+* :bug: fix(input): taro input type=number 类型问题修复 (#2171) @lkjh3214
+* :bug: fix(list): demo样式修复 @szg2008
+* :bug: fix(price): add new prop strike-through @Drjingfubo
+* :bug: fix(navbar): change placeholder style @Drjingfubo
+* :bug: fix(usetarorect): method modification import @Drjingfubo
+* :bug: fix(tabs): web env bug @richard1015
+* :bug: fix(tabs): clear log @richard1015
+* :bug: fix: list 虚拟列表 列表少渲染一个item (#2152) @blachworld
+* :bug: fix(input): 修复支付宝小程序 idcard 类型输入问题 @eiinu
+* :bug: fix: 修复 popup 中嵌套 input 高度为 0 的问题 #2144 @eiinu
+* :bug: fix(configprovider): v4 移除字体图标相关功能 #2165 (#2166) @eiinu
+* :bug: fix: input、textarea 原生标签增加透传属性 @eiinu
+* :bug: fix: 修复 resolver 导入问题 #2157 @eiinu
+* :bug: fix: menu 闪动问题处理 @Ymm0008
+* 📖 docs: tabs数量多,滚动操作 doc 更新 (#2158) @n0liu
+
 ## v4.0.2
 
 `2023-02-24`
