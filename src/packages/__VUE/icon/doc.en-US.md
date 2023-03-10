@@ -45,7 +45,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ```ks
 import { createApp } from 'vue';
 import { IconFont } from '@nutui/icons-vue';
-
+import '@nutui/icons-vue/dist/style_iconfont.css';
 const app = createApp();
 app.use(IconFont);
 ```
