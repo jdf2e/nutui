@@ -244,7 +244,7 @@ export default create({
       }
 
       if (inputRef?.value.value !== value) {
-        inputRef.value.value = value;
+        inputRef.value = value;
       }
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
