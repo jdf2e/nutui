@@ -1,6 +1,6 @@
 <template>
   <div class="demo nut-infiniteloading-demo">
-    <nut-tabs v-model="tabsValue" animatedTime="0" @change="chagetabs">
+    <nut-tabs v-model="tabsValue" @change="chagetabs">
       <nut-tab-pane :title="translate('basic')">
         <ul class="infiniteUl">
           <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">

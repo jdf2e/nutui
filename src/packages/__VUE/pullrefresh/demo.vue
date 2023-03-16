@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <nut-tabs v-model="tabsValue" animatedTime="0">
+    <nut-tabs v-model="tabsValue">
       <nut-tab-pane :title="translate('basic')">
         <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
           <div class="pull-block">{{ translate('content') }}</div>
