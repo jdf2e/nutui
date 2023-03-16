@@ -39,6 +39,11 @@
   "peerDependencies": {
     "unplugin-vue-components": "^0.23.0"
   },
+  "peerDependenciesMeta": {
+    "unplugin-vue-components": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "sass": "^1.50.0",
     "@nutui/icons-vue": "^0.0.26"
