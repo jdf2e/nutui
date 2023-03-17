@@ -395,7 +395,6 @@ app.use(TabbarItem);
 | tab-title | 标签页的标题                              | string | --    |
 | name| 标签名称，作为匹配的标识符                             | string | `当前标签的索引值`   |
 | icon      | 标签页显示的[图标名称](#/zh-CN/component/icon)  | string | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`    | string | --     |
 
 
 

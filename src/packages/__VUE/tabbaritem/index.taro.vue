@@ -96,11 +96,6 @@ export default create({
         });
       }
       parent.changeIndex(indexValue ?? key, state.index);
-      let index = indexValue ?? key;
-      if (parent.children[index]?.href) {
-        window.location.href = parent.children[index].href;
-        return;
-      }
     }
     return {
       state,
