@@ -98,7 +98,7 @@ export default create({
     });
 
     const end = computed(() => {
-      return Math.min(state.originStartIndex + visibleCount.value + props.bufferSize, state.list.length - 1);
+      return Math.min(state.originStartIndex + visibleCount.value + props.bufferSize, state.list.length);
     });
 
     const classes = computed(() => {

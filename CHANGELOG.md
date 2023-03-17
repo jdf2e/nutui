@@ -1,3 +1,15 @@
+## v3.3.6
+
+`2023-03-10`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+
+* :bug: fix(list): demo样式修复 @szg2008
+* :bug: fix(list): 列表渲染缺少最后一条数据 #2162 @szg2008
+* :bug: fix: qq小程序tabs修复样式 (#2150) #2099 @Drjingfubo
+* :bug: fix(configprovider): 全局修改自定义icon方法变更 (#2173) @Drjingfubo
+* :bug: fix: input taro 问题修复 (#2172) @lkjh3214
+
 ## v3.3.5
 
 `2023-02-24`

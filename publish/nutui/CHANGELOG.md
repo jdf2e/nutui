@@ -1,3 +1,30 @@
+## v3.3.6
+
+`2023-03-10`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+
+* :bug: fix(list): demo样式修复 @szg2008
+* :bug: fix(list): 列表渲染缺少最后一条数据 #2162 @szg2008
+* :bug: fix: qq小程序tabs修复样式 (#2150) #2099 @Drjingfubo
+* :bug: fix(configprovider): 全局修改自定义icon方法变更 (#2173) @Drjingfubo
+* :bug: fix: input taro 问题修复 (#2172) @lkjh3214
+
+## v3.3.5
+
+`2023-02-24`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @daofeng-1998 
+* :zap: feat(noticebar): 增加横向滚动结束时回调事件 (#2130) @daofeng-1998 
+* :bug: fix(tabs): change event emit bug v3 #1884 @richard1015
+* :bug: fix(popover): 使用 icon 组件错误问题修改 (#2115)  @yangxiaolu1993 
+* :bug: fix(progress): 修复进度条自定义内容无动画问题 (#2120) @daofeng-1998  
+* :bug: feat(list): 优化虚拟列表，支持不固定高度 #1658 #1382 @szg2008
+* :bug: fix(form): modify validation rules (#2134) @Drjingfubo
+* 📖 docs(card): edit style (#2133) @Drjingfubo
+
+
 ## v3.3.4
 
 `2023-02-10`
