@@ -218,9 +218,6 @@ export default create({
           return;
         }
       }
-
-      state.currentIndex = listHeight.length - 2;
-      state.scrollTop = state.listHeight[state.currentIndex];
     };
 
     useExpose({
