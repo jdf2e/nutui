@@ -1,4 +1,4 @@
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component } from 'vue';
+import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component, onBeforeUnmount } from 'vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
 
 export const component = (componentName: string, components: Record<string, Component>): any => {
@@ -153,6 +153,10 @@ export const component = (componentName: string, components: Record<string, Comp
 
       onMounted(() => {
         hasParent.value && parent['relation'](getCurrentInstance());
+      });
+
+      onBeforeUnmount(() => {
+        hasParent.value && parent['relation'](getCurrentInstance(), true);
       });
 
       watch(

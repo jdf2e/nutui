@@ -25,9 +25,21 @@ export default create({
       children: [] as ComponentPublicInstance[]
     });
 
-    const relation = (child: ComponentInternalInstance) => {
+    const relation = (child: ComponentInternalInstance, cancel: boolean = false) => {
       if (child.proxy) {
-        state.children.push(child.proxy);
+        if (!cancel) {
+          state.children.push(child.proxy);
+        } else {
+          let key_1 = state.children.indexOf(child.proxy);
+          if (key_1 > -1) {
+            state.children.splice(key_1, 1);
+          }
+          let key_2 = props.modelValue.indexOf((child.proxy as any)?.label);
+          if (key_2 > -1) {
+            const value = props.modelValue.filter((_, index) => index !== key_2);
+            emit('update:modelValue', value);
+          }
+        }
       }
     };
 
