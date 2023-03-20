@@ -232,19 +232,16 @@ export default create({
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
+      // #2178 & Taro #2642
+      emit('update:modelValue', value);
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
       if (props.type === 'number') {
         value = formatNumber(value, true, true);
       }
-
       if (props.formatter && trigger === props.formatTrigger) {
         value = props.formatter(value);
-      }
-
-      if (inputRef?.value.value !== value) {
-        inputRef.value.value = value;
       }
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
