@@ -225,15 +225,15 @@ export default create({
     const _onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-      if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
-      }
       updateValue(value);
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
       // #2178 & Taro #2642
       emit('update:modelValue', value);
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
