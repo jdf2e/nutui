@@ -10,24 +10,26 @@
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
-      <slot v-if="$slots.titles" name="titles"></slot>
-      <template v-else>
-        <view
-          class="nut-tabs__titles-item taro"
-          :style="titleStyle"
-          @click="tabChange(item, index)"
-          :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
-          v-for="(item, index) in titles"
-          :key="item.paneKey"
-        >
-          <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
-          <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
-            <JoySmile :color="color" />
+      <view class="nut-tabs__list">
+        <slot v-if="$slots.titles" name="titles"></slot>
+        <template v-else>
+          <view
+            class="nut-tabs__titles-item taro"
+            :style="titleStyle"
+            @click="tabChange(item, index)"
+            :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+            v-for="(item, index) in titles"
+            :key="item.paneKey"
+          >
+            <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
+            <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
+              <JoySmile :color="color" />
+            </view>
+            <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
           </view>
-          <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
-        </view>
-        <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
-      </template>
+          <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
+        </template>
+      </view>
     </Nut-Scroll-View>
     <view
       class="nut-tabs__content"
@@ -57,10 +59,10 @@ import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 
 export class Title {
-  title: string = '';
+  title = '';
   titleSlot?: VNode[];
-  paneKey: string = '';
-  disabled: boolean = false;
+  paneKey = '';
+  disabled = false;
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small';
