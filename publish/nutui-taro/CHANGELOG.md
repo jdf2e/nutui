@@ -1,3 +1,19 @@
+## v4.0.4
+
+`2023-03-24`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @ntnyq @hlbj105 
+
+* :zap: feat(picker): 支持透传 picker-view 属性 #2142 #2143 #2161 @eiinu
+* :bug: fix(tabbar): taro remove href props @Drjingfubo
+* :bug: fix: make peer dep optional (#2182) @ntnyq
+* :bug: fix(elevator): 修复 iOS 上错误滑动到底部的问题 #2149 @eiinu
+* :bug: fix(pullRefresh): 修复 @refresh 回调两次的问题 (#2153) @hlbj105
+* :bug: fix(input): 修复 input 校验格式化错误 #2178 (#2193) @eiinu
+* :bug: fix(tabs): 修复京东小程序下 tab 栏布局错误 @eiinu
+* :bug: fix(dialog): 标题暗黑模式适配修复 @eiinu
+
 ## v4.0.3
 
 `2023-03-10`
