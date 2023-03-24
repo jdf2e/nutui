@@ -199,7 +199,7 @@ export default {
 
 ### A large number of scrolling operations
 
-The default horizontal scrolling can be changed to vertical scrolling by setting `direction = "vertical"`.
+The automatic scrolling direction of the title bar can be modified through the `direction` property.
 
 In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar.
 

@@ -199,7 +199,7 @@ export default {
 
 ### 数量多，滚动操作
 
-默认横向滚动，设置`direction="vertical"`可改为纵向滚动。
+可通过`direction`属性修改标题栏自动滚动方向。
 
 在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。
 
