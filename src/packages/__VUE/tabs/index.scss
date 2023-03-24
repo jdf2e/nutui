@@ -51,6 +51,9 @@
       &.scroll-vertical {
         overflow-y: scroll;
         height: auto;
+        .nut-tabs__titles-placeholder {
+          height: 22px;
+        }
       }
       &-item {
         height: $tabs-vertical-titles-item-height;
