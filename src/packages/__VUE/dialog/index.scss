@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-dialog {
+    &__header {
+      color: $dark-color3;
+    }
+  }
+}
+
 .nut-dialog {
   display: flex;
   flex-direction: column;
