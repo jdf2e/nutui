@@ -48,6 +48,10 @@
           padding: 0 10px 0 15px;
         }
       }
+      &.scroll-vertical {
+        overflow-y: scroll;
+        height: auto;
+      }
       &-item {
         height: $tabs-vertical-titles-item-height;
         flex: none;

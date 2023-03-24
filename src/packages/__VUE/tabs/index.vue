@@ -31,7 +31,7 @@
     <template v-else>
       <view
         class="nut-tabs__titles"
-        :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+        :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
         :style="tabsNavStyle"
         ref="navRef"
       >
@@ -200,6 +200,12 @@ export default create({
       }
     };
 
+    const getScrollY = computed(() => {
+      if (props.titleScroll && props.direction === 'vertical') {
+        return true;
+      }
+      return false;
+    });
     const navRef = ref<HTMLElement>();
     const titleRef = ref([]) as Ref<HTMLElement[]>;
     const scrollIntoView = (immediate?: boolean) => {
@@ -209,18 +215,29 @@ export default create({
         return;
       }
       const title = _titles[currentIndex.value];
-      const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
-      scrollLeftTo(nav, to, immediate ? 0 : 0.3);
+
+      let to = 0;
+      if (props.direction === 'vertical') {
+        const runTop = title.offsetTop - nav.offsetTop + 10;
+        to = runTop - (nav.offsetHeight - title.offsetHeight) / 2;
+      } else {
+        to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
+      }
+
+      scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction);
     };
 
-    const scrollLeftTo = (nav: any, to: number, duration: number) => {
+    const scrollDirection = (nav: any, to: number, duration: number, direction: 'horizontal' | 'vertical') => {
       let count = 0;
-      const from = nav.scrollLeft;
-
+      const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop;
       const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
 
       function animate() {
-        nav.scrollLeft += (to - from) / frames;
+        if (direction === 'horizontal') {
+          nav.scrollLeft += (to - from) / frames;
+        } else {
+          nav.scrollTop += (to - from) / frames;
+        }
 
         if (++count < frames) {
           raf(animate);
@@ -346,6 +363,7 @@ export default create({
       titleStyle,
       tabsActiveStyle,
       container,
+      getScrollY,
       onStickyScroll,
       ...tabMethods,
       ...touchMethods
