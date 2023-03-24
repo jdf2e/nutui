@@ -2,12 +2,14 @@
   <view class="nut-tabs" :class="[direction]" ref="container" id="container">
     <Nut-Scroll-View
       :scroll-x="true"
+      :scroll-y="true"
       :scroll-with-animation="scrollWithAnimation"
       :scroll-left="scrollLeft"
+      :scroll-top="scrollTop"
       :enable-flex="true"
       :id="`nut-tabs__titles_${name}`"
       class="nut-tabs__titles tabs-scrollview"
-      :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+      :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
       :style="tabsNavStyle"
     >
       <slot v-if="$slots.titles" name="titles"></slot>
@@ -165,8 +167,15 @@ export default create({
       }
     };
 
+    const getScrollY = computed(() => {
+      if (props.titleScroll && props.direction === 'vertical') {
+        return true;
+      }
+      return false;
+    });
     const titleRef = ref([]) as Ref<HTMLElement[]>;
     const scrollLeft = ref(0);
+    const scrollTop = ref(0);
     const scrollWithAnimation = ref(false);
     const getRect = (selector: string) => {
       return new Promise((resolve) => {
@@ -201,39 +210,60 @@ export default create({
           titleRectRef.value = titleRects;
 
           if (navRectRef.value) {
-            const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
-            if (titlesTotalWidth > navRectRef.value.width) {
-              canShowLabel.value = true;
+            if (props.direction === 'vertical') {
+              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.height, 0);
+              if (titlesTotalHeight > navRectRef.value.height) {
+                canShowLabel.value = true;
+              } else {
+                canShowLabel.value = false;
+              }
             } else {
-              canShowLabel.value = false;
+              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
+              if (titlesTotalWidth > navRectRef.value.width) {
+                canShowLabel.value = true;
+              } else {
+                canShowLabel.value = false;
+              }
             }
           }
 
           const titleRect: RectItem = titleRectRef.value[currentIndex.value];
 
-          const left = titleRects
-            .slice(0, currentIndex.value)
-            .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, 31);
-
-          const to = left - (navRectRef.value.width - titleRect.width) / 2;
+          let to = 0;
+          if (props.direction === 'vertical') {
+            const DEFAULT_PADDING = 11;
+            const top = titleRects
+              .slice(0, currentIndex.value)
+              .reduce((prev: number, curr: RectItem) => prev + curr.height + 0, DEFAULT_PADDING);
+            to = top - (navRectRef.value.height - titleRect.height) / 2;
+          } else {
+            const DEFAULT_PADDING = 31;
+            const left = titleRects
+              .slice(0, currentIndex.value)
+              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, DEFAULT_PADDING);
+            to = left - (navRectRef.value.width - titleRect.width) / 2;
+          }
 
           nextTick(() => {
             scrollWithAnimation.value = true;
           });
 
-          scrollLeftTo(to);
+          scrollDirection(to, props.direction);
         });
       });
     };
 
-    const scrollLeftTo = (to: number) => {
+    const scrollDirection = (to: number, direction: 'horizontal' | 'vertical') => {
       let count = 0;
-      const from = scrollLeft.value;
-
+      const from = direction === 'horizontal' ? scrollLeft.value : scrollTop.value;
       const frames = 1;
 
       function animate() {
-        scrollLeft.value += (to - from) / frames;
+        if (direction === 'horizontal') {
+          scrollLeft.value += (to - from) / frames;
+        } else {
+          scrollTop.value += (to - from) / frames;
+        }
 
         if (++count < frames) {
           raf(animate);
@@ -330,6 +360,8 @@ export default create({
       tabsActiveStyle,
       container,
       scrollLeft,
+      scrollTop,
+      getScrollY,
       scrollWithAnimation,
       onStickyScroll,
       canShowLabel,

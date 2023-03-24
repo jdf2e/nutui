@@ -31,7 +31,7 @@
     <template v-else>
       <view
         class="nut-tabs__titles"
-        :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+        :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
         :style="tabsNavStyle"
         ref="navRef"
       >
