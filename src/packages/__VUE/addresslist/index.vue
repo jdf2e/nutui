@@ -18,10 +18,10 @@
         <slot name="item-infos"></slot>
       </template>
       <template #content-icons>
-        <slot name="itemicon"></slot>
+        <slot name="item-icon"></slot>
       </template>
       <template #content-addrs>
-        <slot name="itemaddr"></slot>
+        <slot name="item-addr"></slot>
       </template>
       <template #longpress-all v-if="longPress">
         <slot name="longpress-btns"></slot>

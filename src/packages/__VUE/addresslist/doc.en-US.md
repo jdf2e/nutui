@@ -262,8 +262,8 @@ The `AddressList` component is divided into several areas by default, and these 
 | Name          | Description                                     | Illustrate  |
 | ------------- | ----------------------------------------------- | ----------- |
 | item-infos     | Address list item name/contact/default one line | public      |
-| itemicon      | address list item icon                          | public      |
-| itemaddr      | Address list item detailed address              | public      |
+| item-icon      | address list item icon                          | public      |
+| item-addr      | Address list item detailed address              | public      |
 | swipe-right    | Address list item right swipe area              | Use with swipe |
 | longpress-btns | Address list item long press to mask content    | Use with long press |
 
