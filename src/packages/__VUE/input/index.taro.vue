@@ -272,7 +272,6 @@ export default create({
 
   emits: [
     'update:modelValue',
-    'change',
     'blur',
     'focus',
     'clear',
@@ -332,13 +331,14 @@ export default create({
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-      if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
-      }
+      emit('update:modelValue', value);
       updateValue(value);
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }
@@ -350,13 +350,8 @@ export default create({
         value = props.formatter(value);
       }
 
-      if (inputRef?.value.value !== value) {
-        inputRef.value.value = value;
-      }
-
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
-        emit('change', value);
       }
     };
 
@@ -381,10 +376,7 @@ export default create({
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
-      if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
-      }
-      updateValue(getModelValue(), 'onBlur');
+      updateValue(value, 'onBlur');
       emit('blur', event);
       emit('update:modelValue', value);
     };
@@ -392,6 +384,7 @@ export default create({
     const clear = (event: Event) => {
       event.stopPropagation();
       if (props.disabled) return;
+      emit('update:modelValue', '', event);
       emit('clear', '', event);
     };
 
