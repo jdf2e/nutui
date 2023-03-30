@@ -31,6 +31,8 @@
         indicator-style="height: 34px;"
         :value="defaultIndexes"
         style="width: 100%; height: 252px"
+        v-bind="$attrs"
+        :immediateChange="true"
         @change="tileChange"
         @pickstart="handlePickstart"
         @pickend="handlePickend"
