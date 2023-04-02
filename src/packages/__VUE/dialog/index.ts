@@ -44,7 +44,7 @@ class DialogFunction {
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
       components: [Popup, Button, Overlay],
-      wrapper: (elWarp: any, root: any) => {
+      wrapper: (elWrap: any, root: any) => {
         return {
           setup() {
             options.onUpdate = (val: boolean) => {

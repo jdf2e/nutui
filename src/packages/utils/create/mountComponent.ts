@@ -2,13 +2,13 @@ import { createApp, Component } from 'vue';
 import { isFunction, isString } from '../util';
 
 export const CreateComponent = (options: any, component: any) => {
-  let elWarp: HTMLElement = document.body;
+  let elWrap: HTMLElement = document.body;
   const teleport = (options.teleport as string) || 'body';
   if (teleport != 'body') {
     if (isString(teleport)) {
-      elWarp = document.querySelector(teleport) as HTMLElement;
+      elWrap = document.querySelector(teleport) as HTMLElement;
     } else {
-      elWarp = options.teleport as HTMLElement;
+      elWrap = options.teleport as HTMLElement;
     }
   }
   const root = document.createElement('view');
@@ -19,7 +19,7 @@ export const CreateComponent = (options: any, component: any) => {
   let Wrapper = {};
 
   if (isFunction(component.wrapper)) {
-    Wrapper = component.wrapper(elWarp, root);
+    Wrapper = component.wrapper(elWrap, root);
   } else {
     Wrapper = component.wrapper;
   }
@@ -33,13 +33,13 @@ export const CreateComponent = (options: any, component: any) => {
       instance.use(comp);
     });
 
-  elWarp.appendChild(root);
+  elWrap.appendChild(root);
 
   return {
     instance: instance.mount(root),
     unmount: () => {
       instance.unmount();
-      elWarp.removeChild(root);
+      elWrap.removeChild(root);
     }
   };
 };

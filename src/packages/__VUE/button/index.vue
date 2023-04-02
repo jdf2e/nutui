@@ -1,6 +1,6 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
-    <view class="nut-button__warp">
+    <view class="nut-button__wrap">
       <Loading class="nut-icon-loading" v-if="loading" />
       <slot name="icon" v-if="$slots.icon && !loading"></slot>
       <view :class="{ 'nut-button__text': $slots.icon || loading }" v-if="$slots.default">

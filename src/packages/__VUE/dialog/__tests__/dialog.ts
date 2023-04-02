@@ -31,13 +31,13 @@ class DialogFunction {
 
   constructor(_options: DialogOptions) {
     let options = Object.assign(this.options, _options);
-    let elWarp: HTMLElement = document.body;
+    let elWrap: HTMLElement = document.body;
     let teleport = options.teleport as string;
     if (teleport != 'body') {
       if (typeof teleport == 'string') {
-        elWarp = document.querySelector(teleport) as HTMLElement;
+        elWrap = document.querySelector(teleport) as HTMLElement;
       } else {
-        elWarp = options.teleport as HTMLElement;
+        elWrap = options.teleport as HTMLElement;
       }
     }
     const root = document.createElement('view');
@@ -46,7 +46,7 @@ class DialogFunction {
       setup() {
         options.onUpdate = (val: boolean) => {
           if (val == false) {
-            elWarp.removeChild(root);
+            elWrap.removeChild(root);
           }
         };
         options.teleport = `#${root.id}`;
@@ -56,7 +56,7 @@ class DialogFunction {
       }
     };
     const instance: any = createVNode(Wrapper);
-    elWarp.appendChild(root);
+    elWrap.appendChild(root);
     render(instance, root);
   }
 

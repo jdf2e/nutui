@@ -81,7 +81,7 @@ describe('Form', () => {
       `
     });
     await nextTick();
-    const form = wrapper.find('.nut-cell-group__warp');
+    const form = wrapper.find('.nut-cell-group__wrap');
     expect(form.exists()).toBe(true);
     const formitem = wrapper.findAll('.nut-form-item');
     expect(formitem.length).toBe(5);
