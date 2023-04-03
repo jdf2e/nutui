@@ -68,5 +68,6 @@ test('custom icon', async () => {
       customIcon: h(Check)
     }
   });
-  expect(wrapper.html()).toMatchSnapshot();
+  const icon = wrapper.find('.nut-icon');
+  expect(icon.html()).toMatchSnapshot();
 });
