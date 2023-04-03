@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`function Dialog > dialog cancelText okText 1`] = `"<view class=\\"nut-button__wrap\\"><!--v-if--><!--v-if--><view class=\\"\\">取消文案自定义</view></view>"`;
+
+exports[`function Dialog > dialog cancelText okText 2`] = `"<view class=\\"nut-button__wrap\\"><!--v-if--><!--v-if--><view class=\\"\\">确定文案自定义</view></view>"`;

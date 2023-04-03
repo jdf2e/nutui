@@ -1,21 +1,6 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Popover from '../index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutOverlay from '../../overlay/index.vue';
-import NutIcon from '../../icon/index.vue';
 import { nextTick, reactive } from 'vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutPopup,
-    NutOverlay
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 const iconItemList = [{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }];
 

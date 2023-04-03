@@ -17,3 +17,5 @@ exports[`render preview image 1`] = `
     </svg><input class=\\"nut-uploader__input\\" type=\\"file\\" accept=\\"*\\" name=\\"file\\"></view>
 </view>"
 `;
+
+exports[`should render base uploader other props 1`] = `[Function]`;

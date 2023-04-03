@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import MarkdownIt from 'markdown-it-container';
@@ -104,11 +104,5 @@ export default defineConfig({
         plugins: []
       }
     }
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    include: ['src/packages/__VUE/**/*.(test|spec).ts'],
-    reporters: ['default', 'html']
   }
 });

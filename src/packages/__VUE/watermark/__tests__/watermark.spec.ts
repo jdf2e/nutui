@@ -1,7 +1,7 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Watermark from '../index.vue';
 import Cell from './../../cell/index.vue';
-import { nextTick, toRefs, reactive } from 'vue';
+import { nextTick } from 'vue';
 
 test('render fullPage props ', async () => {
   const wrapper = mount({

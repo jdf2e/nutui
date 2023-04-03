@@ -1,24 +1,7 @@
-import { config, mount } from '@vue/test-utils';
-import { nextTick, toRefs, reactive } from 'vue';
-import NutIcon from '../../icon/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutInputnumber from '../../inputnumber/index.vue';
-import NutPrice from '../../price/index.vue';
+import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import Sku from '../index.vue';
 import { Sku as SkuData, Goods } from '../data';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutPopup,
-    NutInputnumber,
-    NutPrice
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('sku init render', async () => {
   const wrapper = mount(Sku, {

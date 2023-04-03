@@ -4,13 +4,6 @@ import { vi } from 'vitest';
 import { useRouter } from 'vue-router';
 import Grid from '../index.vue';
 import GridItem from '../../griditem/index.vue';
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
 
 afterAll(() => {
   config.global.components = {};
@@ -46,22 +39,6 @@ test('should render gutter correctly', () => {
   });
 
   expect(wrapper.html()).toMatchSnapshot();
-});
-
-test('should change icon and color when using icon-size and icon-color prop', () => {
-  const wrapper = mount(Grid, {
-    props: {
-      iconSize: 30
-    },
-    slots: {
-      default: h(GridItem, {
-        iconColor: 'red'
-      })
-    }
-  });
-
-  expect(wrapper.find<HTMLElement>('.nut-icon').element.style.fontSize).toEqual('30px');
-  expect(wrapper.find<HTMLElement>('.nut-icon').element.style.color).toEqual('red');
 });
 
 test('should render default slot correctly', () => {

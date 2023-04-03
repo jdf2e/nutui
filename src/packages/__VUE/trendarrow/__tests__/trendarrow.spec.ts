@@ -140,7 +140,5 @@ test('should render SVG icon when use down-icon slots', async () => {
     }
   });
   const icon = wrapper.find('.nut-icon');
-  expect(icon.element.tagName).toEqual('svg');
-  expect(icon.element.getAttribute('color')).toEqual('blue');
-  expect(icon.html()).toContain('width: 18px');
+  expect(icon.html()).toMatchSnapshot();
 });

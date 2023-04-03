@@ -1,6 +1,5 @@
 import { config, mount } from '@vue/test-utils';
 import Picker from '../index.vue';
-import NutIcon from '../../icon/index.vue';
 import NutPupup from '../../popup/index.vue';
 import NutOverlay from '../../overlay/index.vue';
 import NutPickerColumn from '../Column.vue';
@@ -8,7 +7,6 @@ import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
     NutPupup,
     NutPickerColumn,
     NutOverlay

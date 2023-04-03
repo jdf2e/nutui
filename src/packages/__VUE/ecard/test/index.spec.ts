@@ -1,26 +1,6 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { DOMWrapper, mount } from '@vue/test-utils';
 import Ecard from '../index.vue';
-import NutInputnumber from '../../inputnumber/index.vue';
-// inputnumber中有使用icon
-import NutIcon from '../../icon/index.vue';
 import { nextTick } from 'vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-// 所有的测试用例之前执行一次
-beforeAll(() => {
-  config.global.components = {
-    NutInputnumber,
-    NutIcon
-  };
-});
-// 所有的测试用例之后执行一次
-afterAll(() => {
-  config.global.components = {};
-});
 
 const data = [
   {
@@ -96,7 +76,7 @@ test('input change when less than maxValue', async () => {
     }
   });
   const input: DOMWrapper<Element> = wrapper.find('.nut-ecard__list__input');
-  const add = wrapper.find('.nut-icon-plus');
+  const add = wrapper.find('.nut-icon');
   input.trigger('click');
   add.trigger('click');
   await nextTick();

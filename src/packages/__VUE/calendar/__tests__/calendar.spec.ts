@@ -27,9 +27,9 @@ test('show-title prop', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.calendar-title').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-calendar__header-title').exists()).toBeTruthy();
   await wrapper.setProps({ showTitle: false });
-  expect(wrapper.find('.calendar-title').exists()).toBeFalsy();
+  expect(wrapper.find('.nut-calendar__header-title').exists()).toBeFalsy();
 });
 test('show-sub-title prop', async () => {
   const wrapper = mount(Calendar, {
@@ -103,7 +103,7 @@ test('should render slot correctly', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.calendar-top-slot').html()).toContain('<div class="d_div"> 最近七天</div>');
+  expect(wrapper.find('.nut-calendar__header').html()).toMatchSnapshot();
   expect(wrapper.find('.nut-calendar__body').html()).toMatchSnapshot();
 });
 

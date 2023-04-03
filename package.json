@@ -100,6 +100,7 @@
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "vitest": "^0.29.8",
     "@vitest/ui": "^0.29.8",
     "@vue/test-utils": "^2.3.0",
