@@ -93,7 +93,7 @@ test('should emit click correctly', async () => {
 test('should navifation correctly', async () => {
   // 当 `useRouter()` 时返回 `push` 方法
   const push = vi.fn((url: string) => url);
-  (useRouter as vi.Mock).mockImplementationOnce(() => ({
+  (useRouter as any).mockImplementationOnce(() => ({
     push
   }));
 

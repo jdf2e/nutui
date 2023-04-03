@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client", "vitest/globals"],
     "paths": {
       "@/*": ["src/*"]
     }
