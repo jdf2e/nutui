@@ -1,6 +1,7 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import Uploader from '../index.vue';
-import { nextTick, ref } from 'vue';
+import { nextTick } from 'vue';
 import NutIcon from '../../icon/index.vue';
 import NutProgress from '../../progress/index.vue';
 
@@ -260,7 +261,7 @@ test('multiFile upload filter max-size file', async () => {
   const smallFile = new File([new ArrayBuffer(100)], 'small.jpg');
   const input = wrapper.find<HTMLInputElement>('.nut-uploader__input');
   Object.defineProperty(input.element, 'files', {
-    get: jest.fn().mockReturnValue([mockFile, smallFile])
+    get: vi.fn().mockReturnValue([mockFile, smallFile])
   });
   input.trigger('change');
   await sleep();

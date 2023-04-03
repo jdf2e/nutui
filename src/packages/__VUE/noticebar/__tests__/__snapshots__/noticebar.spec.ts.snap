@@ -1,14 +1,22 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`custon scroll list 1`] = `
 "<view class=\\"nut-noticebar\\">
   <!--v-if-->
   <view class=\\"nut-noticebar__vertical\\" style=\\"height: 50px;\\">
     <view class=\\"nut-noticebar__vertical-list\\">
-      <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">惊喜红包免费领</div>
-      <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">爆款准点秒</div>
-      <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">买超值优惠</div>
-      <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">赢百万京豆</div>
+      <div class=\\"showNotica\\">
+        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">惊喜红包免费领</div>
+        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">爆款准点秒</div>
+        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">买超值优惠</div>
+        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">赢百万京豆</div>
+      </div>
+    </view>
+    <view class=\\"nut-noticebar-custom-item\\">
+      <div class=\\"custom-item\\">惊喜红包免费领</div>
+      <div class=\\"custom-item\\">爆款准点秒</div>
+      <div class=\\"custom-item\\">买超值优惠</div>
+      <div class=\\"custom-item\\">赢百万京豆</div>
     </view>
     <view class=\\"go\\">
       <!--v-if-->
@@ -20,9 +28,9 @@ exports[`custon scroll list 1`] = `
 exports[`icon custom 1`] = `
 "<view class=\\"nut-noticebar\\">
   <view class=\\"nut-noticebar__page\\">
-    <view class=\\"nut-noticebar__page-lefticon\\" style=\\"background-image: url(https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png);\\">
-      <!--v-if-->
-    </view>
+    <view class=\\"nut-noticebar__page-lefticon\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1027 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\" size=\\"16px\\">
+        <path d=\\"M940.873 819.2h-85.334V430.933c0-192-153.6-345.6-341.333-345.6s-341.333 153.6-341.333 345.6V819.2H87.539V430.933C87.54 192 279.54 0 514.206 0s426.667 192 426.667 430.933V819.2zM514.633 1024c-68.267 0-132.267-29.867-174.934-85.333-17.066-17.067-12.8-42.667 4.267-59.734 17.067-12.8 46.933-12.8 59.733 8.534 29.867 34.133 68.267 51.2 110.934 51.2s81.066-17.067 106.666-51.2c12.8-17.067 42.667-21.334 59.734-8.534 17.066 12.8 21.333 42.667 8.533 59.734C646.899 994.133 582.899 1024 514.633 1024zm469.333-162.133h-12.8c-294.4-89.6-618.667-89.6-913.067 0-21.333 4.266-46.933-8.534-55.466-29.867-8.534-21.333 4.266-46.933 29.866-51.2 311.467-93.867 652.8-89.6 964.267 0 21.333 8.533 34.133 29.867 29.867 51.2-8.534 21.333-25.6 29.867-42.667 29.867z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      </svg></view>
     <view class=\\"nut-noticebar__page-wrap\\">
       <view class=\\"nut-noticebar__page-wrap-content\\" style=\\"animation-delay: 1s; animation-duration: 0s; transform: translateX(0);\\"><a href=\\"https://www.jd.com\\">京东商城</a></view>
     </view>
@@ -37,10 +45,10 @@ exports[`vertical scroll 1`] = `
   <!--v-if-->
   <view class=\\"nut-noticebar__vertical\\" style=\\"height: 40px;\\">
     <ul class=\\"nut-noticebar__vertical-list\\">
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px;\\">惊喜红包免费领</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px;\\">爆款准点秒</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px;\\">买超值优惠</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px;\\">赢百万京豆</li>
+      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">惊喜红包免费领</li>
+      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">爆款准点秒</li>
+      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">买超值优惠</li>
+      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">赢百万京豆</li>
     </ul>
     <view class=\\"go\\">
       <!--v-if-->

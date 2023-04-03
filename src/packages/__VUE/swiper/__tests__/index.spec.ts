@@ -1,4 +1,5 @@
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import Swiper from '../index.vue';
 import SwiperItem from './../../swiperitem/index.vue';
 import { nextTick, toRefs, reactive } from 'vue';
@@ -160,7 +161,7 @@ test('should render pagination', async () => {
 });
 
 test('should render loop and auto-play', async () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   const wrapper = mount({
     props: {
       onChange
@@ -209,7 +210,7 @@ test('should render loop and auto-play', async () => {
 });
 
 test('should not allow to drag when touchable is false', async () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   const wrapper = mount(Swiper, {
     props: {
       onChange,

@@ -1,9 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render icon dongdong 1`] = `""`;
-
-exports[`should render icon dongdong color 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-dongdong\\" style=\\"color: red;\\" src=\\"\\"></i>"`;
-
-exports[`should render icon dongdong size 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-dongdong\\" style=\\"font-size: 24px; width: 24px; height: 24px;\\" src=\\"\\"></i>"`;
 
 exports[`should render icon image type 1`] = `""`;

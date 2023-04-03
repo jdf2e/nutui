@@ -1,32 +1,32 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should change dot position when using offset prop: -2px 1`] = `""`;
+exports[`should change dot position when using offset prop > -2px 1`] = `""`;
 
-exports[`should change dot position when using offset prop: 4px 1`] = `""`;
+exports[`should change dot position when using offset prop > 4px 1`] = `""`;
 
 exports[`should render content slot correctly 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>Custom Content<view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>Custom Content<view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is empty string 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
+  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
   <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is undefined 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
+  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
   <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
 </view>"
 `;
 
 exports[`should render nothing when content is zero 1`] = `
 "<view class=\\"nut-badge\\">
-  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9;\\"></view>
+  <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
   <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\">0</view>
 </view>"
 `;

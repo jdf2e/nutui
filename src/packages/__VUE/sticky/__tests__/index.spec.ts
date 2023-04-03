@@ -19,7 +19,7 @@ Object.defineProperty(window.HTMLElement.prototype, 'clientHeight', {
 });
 
 function mockStickyRect(wrapper: VueWrapper<ComponentPublicInstance<{}, any>>, rect: Partial<DOMRect>) {
-  const mocked = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue(rect as DOMRect);
+  const mocked = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue(rect as DOMRect);
 
   return () => mocked.mockRestore();
 }

@@ -1,13 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render progress when use props 1`] = `
 "<div class=\\"nut-progress\\">
   <div class=\\"nut-progress-outer nut-progress-outer-part nut-progress-base\\">
-    <div class=\\"nut-progress-inner\\" style=\\"width: 100%;\\">
-      <!--v-if-->
-      <!--v-if-->
-    </div>
+    <div class=\\"nut-progress-inner\\" style=\\"width: 100%;\\"></div>
+    <!--v-if-->
+    <!--v-if-->
   </div>
-  <div class=\\"nut-progress-text\\" style=\\"line-height: px;\\"><span>100%</span></div>
+  <div class=\\"nut-progress-text\\"><span>100%</span></div>
 </div>"
 `;

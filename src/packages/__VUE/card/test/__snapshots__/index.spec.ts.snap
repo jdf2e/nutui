@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`normal props 1`] = `
 "<div class=\\"nut-card\\">
@@ -7,17 +7,17 @@ exports[`normal props 1`] = `
     <div class=\\"nut-card__right__title\\">活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水</div>
     <div class=\\"nut-card__right__price\\">
       <view class=\\"nut-price\\">
-        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
-        <view class=\\"nut-price--large\\">388</view>
-        <view class=\\"nut-price--decimal-large\\">.</view>
-        <view class=\\"nut-price--decimal-large\\">00</view>
+        <view class=\\"nut-price--symbol nut-price--symbol-normal\\">¥</view>
+        <view class=\\"nut-price--normal\\">388</view>
+        <view class=\\"nut-price--decimal-normal\\">.</view>
+        <view class=\\"nut-price--decimal-normal\\">00</view>
         <!--v-if-->
       </view>
       <view class=\\"nut-price nut-card__right__price__origin\\">
-        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
-        <view class=\\"nut-price--large\\">378</view>
-        <view class=\\"nut-price--decimal-large\\">.</view>
-        <view class=\\"nut-price--decimal-large\\">00</view>
+        <view class=\\"nut-price--symbol nut-price--symbol-normal\\">¥</view>
+        <view class=\\"nut-price--normal\\">378</view>
+        <view class=\\"nut-price--decimal-normal\\">.</view>
+        <view class=\\"nut-price--decimal-normal\\">00</view>
         <!--v-if-->
       </view>
     </div>
@@ -38,7 +38,7 @@ exports[`normal props 1`] = `
 
 exports[`render prolist , price and origin slot correctly 1`] = `
 "<div class=\\"nut-card\\">
-  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__left\\"><img alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
     <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">Custom priceCustom origin</div>
     <div class=\\"nut-card__right__other\\">
@@ -58,22 +58,22 @@ exports[`render prolist , price and origin slot correctly 1`] = `
 
 exports[`render shop-tag and footer slot correctly 1`] = `
 "<div class=\\"nut-card\\">
-  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__left\\"><img alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
     <div class=\\"nut-card__right__title\\"></div>
     <div class=\\"nut-card__right__price\\">
       <view class=\\"nut-price\\">
-        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
-        <view class=\\"nut-price--large\\">0</view>
-        <view class=\\"nut-price--decimal-large\\">.</view>
-        <view class=\\"nut-price--decimal-large\\">00</view>
+        <view class=\\"nut-price--symbol nut-price--symbol-normal\\">¥</view>
+        <view class=\\"nut-price--normal\\">0</view>
+        <view class=\\"nut-price--decimal-normal\\">.</view>
+        <view class=\\"nut-price--decimal-normal\\">00</view>
         <!--v-if-->
       </view>
       <view class=\\"nut-price nut-card__right__price__origin\\">
-        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
-        <view class=\\"nut-price--large\\">0</view>
-        <view class=\\"nut-price--decimal-large\\">.</view>
-        <view class=\\"nut-price--decimal-large\\">00</view>
+        <view class=\\"nut-price--symbol nut-price--symbol-normal\\">¥</view>
+        <view class=\\"nut-price--normal\\">0</view>
+        <view class=\\"nut-price--decimal-normal\\">.</view>
+        <view class=\\"nut-price--decimal-normal\\">00</view>
         <!--v-if-->
       </view>
     </div>

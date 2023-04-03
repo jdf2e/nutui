@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render sure actionsheet when use custom props 1`] = `
 "<!--teleport start-->
-<transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\" iswrapteleport=\\"true\\">
+<transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
   <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000;\\"></view>
 </transition-stub>
 <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">

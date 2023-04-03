@@ -1,10 +1,11 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import Cell from '../index.vue';
 import { nextTick } from 'vue';
 
 // mock module
-jest.mock('vue-router', () => ({
-  useRouter: jest.fn()
+vi.mock('vue-router', () => ({
+  useRouter: vi.fn()
 }));
 
 test('prop title desc subtitle', async () => {

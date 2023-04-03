@@ -1,5 +1,6 @@
 import Tag from '../index.vue';
 import { mount, config } from '@vue/test-utils';
+import { vi } from 'vitest';
 import { Close } from '@nutui/icons-vue';
 
 beforeAll(() => {
@@ -33,7 +34,7 @@ test('should hide tag when the show prop is false', () => {
 });
 
 test('should not trigger click event when clicking the close icon', () => {
-  const onClick = jest.fn();
+  const onClick = vi.fn();
   const wrapper = mount(Tag, {
     props: {
       onClick,

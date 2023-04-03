@@ -1,5 +1,6 @@
 import { h, nextTick } from 'vue';
 import { config, mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import { useRouter } from 'vue-router';
 import Grid from '../index.vue';
 import GridItem from '../../griditem/index.vue';
@@ -16,8 +17,8 @@ afterAll(() => {
 });
 
 // mock module
-jest.mock('vue-router', () => ({
-  useRouter: jest.fn()
+vi.mock('vue-router', () => ({
+  useRouter: vi.fn()
 }));
 
 test('should render square correctly', () => {
@@ -91,8 +92,8 @@ test('should emit click correctly', async () => {
 
 test('should navifation correctly', async () => {
   // 当 `useRouter()` 时返回 `push` 方法
-  const push = jest.fn((url: string) => url);
-  (useRouter as jest.Mock).mockImplementationOnce(() => ({
+  const push = vi.fn((url: string) => url);
+  (useRouter as vi.Mock).mockImplementationOnce(() => ({
     push
   }));
 
