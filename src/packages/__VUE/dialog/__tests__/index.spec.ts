@@ -1,15 +1,9 @@
 import { config, mount } from '@vue/test-utils';
 import DialogTemplate from '../index.vue';
-import Icon from '../../icon/index.vue';
-import Popup from '../../popup/index.vue';
-import Button from '../../button/index.vue';
 import Overlay from '../../overlay/index.vue';
 
 beforeAll(() => {
   config.global.components = {
-    [Icon.name]: Icon,
-    [Popup.name]: Popup,
-    [Button.name]: Button,
     [Overlay.name]: Overlay
   };
 });

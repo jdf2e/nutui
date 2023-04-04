@@ -1,33 +1,6 @@
-import { config, mount } from '@vue/test-utils';
-import { nextTick, ref, toRefs, reactive, onMounted } from 'vue';
-import NutIcon from '../../icon/index.vue';
-import NutRange from '../../range/index.vue';
-import NutPicker from '../../picker/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutPickerColumn from '../../picker/Column.vue';
-import NutOverlay from '../../overlay/index.vue';
+import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import DatePicker from '../../datepicker/index.vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutRange,
-    NutPicker,
-    NutPopup,
-    NutPickerColumn,
-    NutOverlay
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('Do not display Chinese', async () => {
   const wrapper = mount(DatePicker, {

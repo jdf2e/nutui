@@ -3,43 +3,31 @@ import Form from '../index.vue';
 import NutCellGroup from '../../cellgroup/index.vue';
 import FormItem from '../../formitem/index.vue';
 import NutCell from '../../cell/index.vue';
-import NutIcon from '../../icon/index.vue';
 import NutButton from '../../button/index.vue';
 import NutTextarea from '../../textarea/index.vue';
 import NutSwitch from '../../switch/index.vue';
 import NutCheckbox from '../../checkbox/index.vue';
-// import NutRadio from '../../radio/index.vue';
-// import NutRadioGroup from '../../radiogroup/index.vue';
 import NutRate from '../../rate/index.vue';
 import NutInputNumber from '../../inputnumber/index.vue';
 import NutRange from '../../range/index.vue';
 import NutUploader from '../../uploader/index.vue';
 import NutAddress from '../../address/index.vue';
-import NutElevator from '../../elevator/index.vue';
-import NutProgress from '../../progress/index.vue';
-import NutPopup from '../../popup/index.vue';
-import { nextTick, toRefs, ref, reactive } from 'vue';
+import { nextTick, ref, reactive } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
     NutCellGroup,
     FormItem,
     NutCell,
-    NutIcon,
     NutButton,
     NutTextarea,
     NutSwitch,
     NutCheckbox,
-    // NutRadio,
-    // NutRadioGroup,
     NutRate,
     NutInputNumber,
     NutRange,
     NutUploader,
-    NutAddress,
-    NutElevator,
-    NutProgress,
-    NutPopup
+    NutAddress
   };
 });
 

@@ -1,20 +1,7 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import NutPopup from '../../popup/index.vue';
-import NutElevator from '../../elevator/index.vue';
 import Address from '../index.vue';
 import { addressListData, addressExistData } from '../address-list';
-
-beforeAll(() => {
-  config.global.components = {
-    NutPopup,
-    NutElevator
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('address render', async () => {
   const wrapper = mount(Address, {

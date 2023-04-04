@@ -1,19 +1,6 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ActionSheet from '../index.vue';
-import NutPopup from '../../popup/index.vue';
-import { Loading } from '@nutui/icons-vue';
 import { nextTick } from 'vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutPopup,
-    Loading
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('should render ActionSheet when visible is true', async () => {
   const wrapper = mount(ActionSheet, {
@@ -68,7 +55,7 @@ test('should render sure actionsheet when use custom props', () => {
   });
 
   expect(wrapper.html()).toMatchSnapshot();
-  let subdesc = wrapper.find('.nut-action-sheet__subdesc');
+  const subdesc = wrapper.find('.nut-action-sheet__subdesc');
   expect(subdesc.html()).toContain('描述信息');
 });
 
@@ -81,7 +68,7 @@ test('should render sure choose when use choose-tag-value', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
+  const item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
   expect(item[0].element.style.color).toContain('238, 10, 36');
 });
 
@@ -95,7 +82,7 @@ test('should render sure color when use color', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
+  const item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
   expect(item[0].element.style.color).toContain('green');
 });
 
@@ -123,8 +110,8 @@ test('should render description when use description', async () => {
       menuItems: [{ name: '选项一', disabled: true }]
     }
   });
-  let desc = wrapper.find('.nut-action-sheet__desc');
-  let title = wrapper.find('.nut-action-sheet__title');
+  const desc = wrapper.find('.nut-action-sheet__desc');
+  const title = wrapper.find('.nut-action-sheet__title');
   expect(desc.exists()).toBeTruthy();
   expect(title.exists()).toBeTruthy();
 });

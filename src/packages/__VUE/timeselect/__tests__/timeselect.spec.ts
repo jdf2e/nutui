@@ -1,29 +1,8 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { reactive, toRefs, getCurrentInstance, nextTick } from 'vue';
 import TimeSelect from '../index.vue';
 import TimePanel from '../../timepannel/index.vue';
 import TimeDetail from '../../timedetail/index.vue';
-import NutOverLay from '../../overlay/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutOverLay,
-    NutPopup,
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 test('props test', async () => {
   const wrapper = mount({

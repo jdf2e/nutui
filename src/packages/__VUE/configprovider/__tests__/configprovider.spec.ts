@@ -1,14 +1,7 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ConfigProvider from '../index.vue';
-import NutIcon from '../../icon/index.vue';
+import { Close } from '@nutui/icons-vue';
 import { h } from 'vue';
-
-// 所有的测试用例之前执行一次
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
 
 test('prop theme & tag', async () => {
   const wrapper = mount(ConfigProvider, {
@@ -17,8 +10,7 @@ test('prop theme & tag', async () => {
       tag: 'div'
     }
   });
-  const html = expect(wrapper.html());
-  expect(wrapper.find<HTMLElement>('.nut-theme-dark'));
+  expect(wrapper.find('div.nut-theme-dark').exists()).toBeTruthy();
 });
 
 test('ConfigProvider prop: fontClassName & classPrefix', async () => {
@@ -30,10 +22,8 @@ test('ConfigProvider prop: fontClassName & classPrefix', async () => {
       classPrefix: 'icon'
     },
     slots: {
-      default: h(NutIcon, {
-        name: 'close'
-      })
+      default: h(Close)
     }
   });
-  expect(wrapper.find<HTMLElement>('.iconfont.icon-close'));
+  expect(wrapper.find('.nut-icon').exists()).toBeTruthy();
 });
