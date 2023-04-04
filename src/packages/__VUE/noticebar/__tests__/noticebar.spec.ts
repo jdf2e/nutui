@@ -1,23 +1,6 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
 import Noticebar from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {
   value: 375
@@ -34,14 +17,14 @@ test('close event', async () => {
       delay: 1
     }
   });
-  const closeDom = wrapper.find('.right-icon');
+  const closeDom = wrapper.find('.nut-noticebar__page-righticon');
   closeDom.trigger('click');
   expect(wrapper.emitted('close')).toBeTruthy();
   wrapper.setProps({
     text: '123'
   });
   await nextTick();
-  const content = wrapper.find('.content');
+  const content = wrapper.find('.nut-noticebar__page-wrap-content');
   expect(content.html()).toContain('123');
 });
 
@@ -62,7 +45,7 @@ test('slot event', async () => {
     }
   });
   await nextTick();
-  const content = wrapper.find('.content');
+  const content = wrapper.find('.nut-noticebar__page-wrap-content');
   expect(content.html()).toContain('Custom Content');
 });
 

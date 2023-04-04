@@ -105,6 +105,7 @@
     "@vitest/ui": "^0.29.8",
     "@vue/test-utils": "^2.3.0",
     "@vitest/coverage-c8": "^0.29.8",
+    "@napi-rs/canvas": "^0.1.39",
     "@vue/compiler-dom": "^3.2.45",
     "@vue/compiler-sfc": "^3.2.45",
     "@vue/eslint-config-prettier": "^6.0.0",

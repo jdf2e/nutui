@@ -2,10 +2,6 @@ import { config, mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import Progress from '../index.vue';
 
-afterAll(() => {
-  config.global.components = {};
-});
-
 test('should render progress when use props', async () => {
   const wrapper = mount(Progress, {
     props: {
@@ -14,6 +10,7 @@ test('should render progress when use props', async () => {
   });
   expect(wrapper.html()).toMatchSnapshot();
 });
+
 test('should render different height and color when use color height props', async () => {
   const wrapper = mount(Progress, {
     props: {
@@ -24,12 +21,12 @@ test('should render different height and color when use color height props', asy
     }
   });
   await nextTick();
-  let inner = wrapper.find<HTMLElement>('.nut-progress-inner');
+  const inner = wrapper.find<HTMLElement>('.nut-progress-inner');
   expect(inner.element.style.background).toEqual('blue');
-  let text = wrapper.find<HTMLElement>('.nut-progress-text');
-  let span = wrapper.find<HTMLElement>('.nut-progress-text span');
+  const outer = wrapper.find<HTMLElement>('.nut-progress-outer');
+  const span = wrapper.find<HTMLElement>('.nut-progress-text span');
   expect(span.element.style.color).toEqual('red');
-  expect(text.element.style.lineHeight).toEqual('20px');
+  expect(outer.element.style.height).toEqual('20px');
 });
 
 test('should hide percentage when use showText props', () => {
@@ -39,7 +36,7 @@ test('should hide percentage when use showText props', () => {
       showText: false
     }
   });
-  let text = wrapper.find<HTMLElement>('.nut-progress-text');
+  const text = wrapper.find<HTMLElement>('.nut-progress-text');
   expect(text.exists()).toBe(false);
 });
 
@@ -50,7 +47,7 @@ test('should render inside percentage when use textInside props', () => {
       textInside: true
     }
   });
-  let text = wrapper.find<HTMLElement>('.nut-progress-insidetext');
+  const text = wrapper.find<HTMLElement>('.nut-progress-insidetext');
   expect(text.exists()).toBe(true);
 });
 
@@ -61,6 +58,6 @@ test('should render custom size when use size props', () => {
       size: 'large'
     }
   });
-  let text = wrapper.find<HTMLElement>('.nut-progress-large');
+  const text = wrapper.find<HTMLElement>('.nut-progress-large');
   expect(text.exists()).toBe(true);
 });

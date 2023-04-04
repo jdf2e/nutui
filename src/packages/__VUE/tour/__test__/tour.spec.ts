@@ -1,29 +1,6 @@
-import { config, mount } from '@vue/test-utils';
-import NutPopover from '../../popover/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutOverlay from '../../overlay/index.vue';
-import NutIcon from '../../icon/index.vue';
+import { mount } from '@vue/test-utils';
 import Tour from '../index.vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutPopup,
-    NutOverlay,
-    NutPopover,
-    NutTour: Tour
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { nextTick } from 'vue';
 
 const steps1 = [
   {
@@ -43,6 +20,7 @@ const steps2 = [
 
 const steps4 = [
   {
+    content: '70+ 高质量组件，覆盖移动端主流场景',
     target: 'target8'
   }
 ];
@@ -79,9 +57,7 @@ test('base render', async () => {
       location: 'bottom-end'
     }
   });
-  await sleep();
   await wrapper.setProps({ visible: true });
-  await sleep(1000);
   expect(wrapper.find('.nut-popover').exists()).toBeTruthy();
   expect(wrapper.find('.nut-popover-content--bottom-end').exists()).toBeTruthy();
 });
@@ -91,7 +67,7 @@ test('custom style', async () => {
   root.id = 'target5';
   const wrapper = mount(Tour, {
     props: {
-      visible: false,
+      visible: true,
       steps: steps1,
       type: 'tile',
       location: 'bottom-end',
@@ -102,20 +78,12 @@ test('custom style', async () => {
       offset: [0, 0]
     }
   });
-  await sleep();
-  await wrapper.setProps({ visible: true });
-  await sleep(1000);
-  const mask: any = wrapper.find('.nut-tour-mask');
 
-  expect(mask.exists()).toBeTruthy();
-  expect(mask.element.style.width).toEqual('50px');
-  expect(mask.element.style.height).toEqual('50px');
+  const arrow = wrapper.find('.nut-popover-arrow');
+  expect(arrow.html()).toContain('border-bottom-color: #f00');
 
-  const arrow: any = wrapper.find('.nut-popover-arrow');
-  expect(arrow.element.style.borderBottomColor).toEqual('#f00');
-
-  const popover: any = wrapper.find('.nut-popover-content');
-  expect(popover.element.style.background).toEqual('rgb(255, 0, 0)');
+  const popover = wrapper.find('.nut-popover-content');
+  expect(popover.html()).toContain('background: rgb(255, 0, 0)');
 });
 
 test('custom offset', async () => {
@@ -132,12 +100,9 @@ test('custom offset', async () => {
       offset: [8, 8]
     }
   });
-  await sleep();
   wrapper.setProps({ visible: true });
-  await sleep(1000);
-
-  const arrow: any = wrapper.find('.nut-popover-arrow');
-  expect(arrow.element.style.right).toEqual('52px');
+  const arrow = wrapper.find('.nut-popover-arrow');
+  expect(arrow.html()).toContain('right: 52px');
 });
 
 test('slot render', async () => {
@@ -157,11 +122,8 @@ test('slot render', async () => {
       default: `nutui 4.x 即将发布，敬请期待`
     }
   });
-  await sleep();
   await wrapper.setProps({ visible: true });
-  await sleep(1000);
-
-  const popover: any = wrapper.find('.nut-popover-content-group');
+  const popover = wrapper.find('.nut-popover-content-group');
   expect(popover.text()).toEqual('nutui 4.x 即将发布，敬请期待');
 });
 
@@ -177,16 +139,14 @@ test('steps render', async () => {
       location: 'bottom-end'
     }
   });
-  await sleep();
   await wrapper.setProps({ visible: true });
-  await sleep(1000);
 
-  const btn: any = wrapper.find('.nut-tour-content-bottom-operate-btn');
+  const btn = wrapper.find('.nut-tour-content-bottom-operate-btn');
   expect(btn.exists()).toBeTruthy();
 
   btn.trigger('click');
-  await sleep(0);
+  await nextTick();
 
-  const btn2: any = wrapper.findAll('.nut-tour-content-bottom-operate-btn');
+  const btn2 = wrapper.findAll('.nut-tour-content-bottom-operate-btn');
   expect(btn2.length).toBe(2);
 });

@@ -11,7 +11,7 @@ import NutCheckbox from '../../checkbox/index.vue';
 // import NutRadio from '../../radio/index.vue';
 // import NutRadioGroup from '../../radiogroup/index.vue';
 import NutRate from '../../rate/index.vue';
-import NutInputnumber from '../../inputnumber/index.vue';
+import NutInputNumber from '../../inputnumber/index.vue';
 import NutRange from '../../range/index.vue';
 import NutUploader from '../../uploader/index.vue';
 import NutAddress from '../../address/index.vue';
@@ -33,7 +33,7 @@ beforeAll(() => {
     // NutRadio,
     // NutRadioGroup,
     NutRate,
-    NutInputnumber,
+    NutInputNumber,
     NutRange,
     NutUploader,
     NutAddress,
@@ -162,35 +162,38 @@ describe('Form', () => {
     await nextTick();
     const formitem = wrapper.findAll('.nut-form-item');
     expect(formitem.length).toBe(2);
+
     const form1 = wrapper.find('.nut-cell__title');
     expect(form1.classes()).toContain('required');
     expect((form1.element as HTMLElement).style.textAlign).toEqual('');
     expect((form1.element as HTMLElement).style.width).toEqual('90px');
+
     const form2 = wrapper.find('.nut-form-item__body__slots');
     expect((form2.element as HTMLElement).style.textAlign).toEqual('center');
+
     const form4 = wrapper.find('.submit');
     form4.trigger('click');
+
     await nextTick();
     const form3 = wrapper.find('.nut-form-item__body__tips');
     expect(form3.exists()).toBe(true);
     const form5 = wrapper.find('.nut-form-item.error.line::before');
     expect(form5.exists()).toBe(false);
-    await nextTick();
     const form6 = wrapper.find('.add');
     form6.trigger('click');
-    setTimeout(() => {
-      expect(formitem.length).toBe(3);
-    }, 0);
+    await nextTick();
+    const formitem2 = wrapper.findAll('.nut-form-item');
+    expect(formitem2.length).toBe(3);
     const form7 = wrapper.find('.remove');
     form7.trigger('click');
-    setTimeout(() => {
-      expect(formitem.length).toBe(1);
-    }, 0);
+    await nextTick();
+    const formitem3 = wrapper.findAll('.nut-form-item');
+    expect(formitem3.length).toBe(2);
     const form8 = wrapper.find('.reset');
     form8.trigger('click');
-    setTimeout(() => {
-      expect(form3.exists()).toBe(false);
-    }, 0);
+    await nextTick();
+    const form9 = wrapper.find('.nut-form-item__body__tips');
+    expect(form9.exists()).toBe(false);
   });
 
   test('base Form verification', async () => {

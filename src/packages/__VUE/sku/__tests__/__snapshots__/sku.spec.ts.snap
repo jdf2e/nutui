@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sku select event 1`] = `
+[
+  {
+    "parentIndex": 0,
+    "parentSku": {
+      "id": 1,
+      "list": [
+        {
+          "active": true,
+          "disable": false,
+          "id": 100016015112,
+          "name": "亮黑色",
+        },
+        {
+          "active": false,
+          "disable": false,
+          "id": 100016015142,
+          "name": "釉白色",
+        },
+        {
+          "active": false,
+          "disable": false,
+          "id": 100016015078,
+          "name": "秘银色",
+        },
+        {
+          "active": false,
+          "disable": false,
+          "id": 100009064831,
+          "name": "夏日胡杨",
+        },
+        {
+          "active": false,
+          "disable": false,
+          "id": 100009064830,
+          "name": "秋日胡杨",
+        },
+      ],
+      "name": "颜色",
+    },
+    "sku": {
+      "active": false,
+      "disable": false,
+      "id": 100016015142,
+      "name": "釉白色",
+    },
+    "skuIndex": 1,
+  },
+]
+`;

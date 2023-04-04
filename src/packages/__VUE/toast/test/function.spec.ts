@@ -10,10 +10,10 @@ describe('function toast', () => {
   test('show loading toast', async () => {
     ToastFunction.loading('加载中');
     expect(document.querySelector('.nut-toast.nut-toast-loading')).toBeTruthy();
-    let text = document.querySelector('.nut-toast .nut-toast-text') as HTMLDivElement;
+    const text = document.querySelector('.nut-toast .nut-toast-text') as HTMLDivElement;
     expect(text.innerHTML).toEqual('加载中');
     await sleep(3000);
-    let loading = document.querySelector('.nut-toast.nut-toast-loading');
+    const loading = document.querySelector('.nut-toast.nut-toast-loading');
     expect(loading).toBeNull();
   });
 
@@ -23,28 +23,25 @@ describe('function toast', () => {
       title: '标题文字'
     });
     await sleep();
-    let textToast = document.querySelector('.nut-toast.nut-toast-center') as HTMLElement;
+    const textToast = document.querySelector('.nut-toast.nut-toast-center') as HTMLElement;
     expect(textToast.innerHTML).toContain('标题文字');
     await sleep(3000);
     expect(textToast.style.display).toEqual('none');
   });
   test('show fail toast', async () => {
-    ToastFunction.fail('文案');
+    ToastFunction.fail('文案', {
+      duration: 0
+    });
     await sleep();
-    let failToast = document.querySelector('.nut-icon-failure') as HTMLElement;
-    expect(failToast.style.fontSize).toEqual('20px');
+    const failToast = document.querySelector('.nut-toast');
+    expect(failToast).toMatchSnapshot();
   });
   test('show warn toast', async () => {
-    ToastFunction.warn('文案');
+    ToastFunction.warn('文案', {
+      duration: 0
+    });
     await sleep();
-    let failToast = document.querySelector('.nut-icon-failure') as HTMLElement;
-    expect(failToast.style.fontSize).toEqual('20px');
-  });
-  test('show fail toast', async () => {
-    ToastFunction.fail('文案');
-    await sleep();
-    let failToast = document.querySelector('.nut-icon-tips') as HTMLElement;
-    expect(failToast.style.fontSize).toEqual('20px');
-    ToastFunction.hide();
+    const failToast = document.querySelector('.nut-toast');
+    expect(failToast).toMatchSnapshot();
   });
 });

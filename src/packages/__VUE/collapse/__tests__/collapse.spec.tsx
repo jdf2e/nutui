@@ -1,5 +1,4 @@
-import { config, mount } from '@vue/test-utils';
-import NutIcon from '../../icon/index.vue';
+import { mount } from '@vue/test-utils';
 import Collapse from '../index.vue';
 import CollapseItem from '../../collapseitem/index.vue';
 import { nextTick, reactive, ref, toRefs } from 'vue';
@@ -8,46 +7,30 @@ function sleep(delay = 0): Promise<void> {
     setTimeout(resolve, delay);
   });
 }
-// 所有的测试用例之前执行一次
-beforeAll(() => {
-  config.global.components = {
-    NutCollapse: Collapse,
-    NutCollapseItem: CollapseItem,
-    NutIcon
-  };
-});
-// 所有的测试用例之后执行一次
-afterAll(() => {
-  config.global.components = {};
-});
+
 test('should props active', async () => {
-  const component = {
-    template: `<nut-collapse v-model:active="active" icon="down-arrow">
-      <nut-collapse-item :name="1">
-        <template v-slot:mTitle>
-          {{ title1 }}
-        </template>
-        NutUI是一套拥有京东风格的轻量级的 Vue 组件库
-      </nut-collapse-item>
-      <nut-collapse-item :title="title2" :name="2">
-        在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
-      </nut-collapse-item>
-    </nut-collapse>`,
-    data() {
-      return {
-        active: [1, 2],
-        title1: '标题1',
-        title2: '标题2'
-      };
-    }
-  };
-  const wrapper = mount(component);
-  expect(wrapper.findAll('.nut-collapse-item')).toHaveLength(2);
+  const wrapper = mount(() => {
+    const active = ref(['1', '2']);
+    return (
+      <Collapse v-model={active}>
+        <CollapseItem name="1">
+          {{
+            mTitle: () => '标题1',
+            default: () => 'NutUI是一套拥有京东风格的轻量级的 Vue 组件库'
+          }}
+        </CollapseItem>
+        <CollapseItem title="标题2" name="2">
+          在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
+        </CollapseItem>
+      </Collapse>
+    );
+  });
+  const items = wrapper.findAll('.nut-collapse-item');
+  expect(items.length).toEqual(2);
   await nextTick();
-  await nextTick();
-  const collapseWrapper = wrapper.findAll('.collapse-item');
-  expect(collapseWrapper[0].classes()).toContain('item-expanded');
-  expect(collapseWrapper[1].classes()).toContain('item-expanded');
+  expect(wrapper.html()).toMatchSnapshot();
+  const icons = wrapper.findAll('.nut-collapse-item__title-icon--expanded');
+  expect(icons.length).toEqual(2);
 });
 
 test('should props accordion', async () => {
@@ -116,8 +99,7 @@ test('should title props ', async () => {
   await nextTick();
   await nextTick();
   const collapseIcon = wrapper.findAll('.nut-icon');
-  expect(collapseIcon[0].classes()).toContain('nut-icon-issue');
-
+  expect(collapseIcon[0].exists()).toBeTruthy();
   const collapseIconEle = collapseIcon[0].element as HTMLElement;
   expect(collapseIconEle.style.color).toEqual(wrapper.vm.titleIconColor);
   expect(collapseIconEle.style.fontSize).toEqual(wrapper.vm.titleIconSize);

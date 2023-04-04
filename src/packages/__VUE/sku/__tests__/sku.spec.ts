@@ -7,7 +7,6 @@ test('sku init render', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }
@@ -20,7 +19,6 @@ test('sku select event', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }
@@ -28,15 +26,13 @@ test('sku select event', async () => {
   await nextTick();
   const skuItem = wrapper.findAll('.nut-sku-select-item-skus-sku');
   skuItem[1].trigger('click');
-  const selectSkuObj = wrapper.emitted().selectSku[0] as [];
-  expect(selectSkuObj.length).toBe(1);
+  expect(wrapper.emitted()['select-sku'][0]).toMatchSnapshot();
 });
 
 test('do not sell', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      teleportDisable: false,
       sku: SkuData,
       goods: Goods,
       btnExtraText: '抱歉，此商品在所选区域暂无存货'
@@ -51,13 +47,13 @@ test('button event', async () => {
   const wrapper = mount(Sku, {
     props: {
       visible: true,
-      teleportDisable: false,
       sku: SkuData,
       goods: Goods
     }
   });
   await nextTick();
-  expect(wrapper.find('.nut-sku-operate-btn-confirm').exists()).toBeTruthy();
-  wrapper.find('.nut-sku-operate-btn-confirm').trigger('click');
-  expect(wrapper.emitted().clickBtnOperate[0]).toEqual([{ type: 'confirm', value: 1 }]);
+  const confirm = wrapper.find('.nut-sku-operate-btn-confirm');
+  expect(confirm.exists()).toBeTruthy();
+  confirm.trigger('click');
+  expect(wrapper.emitted()['click-btn-operate'][0]).toEqual([{ type: 'confirm', value: 1 }]);
 });
