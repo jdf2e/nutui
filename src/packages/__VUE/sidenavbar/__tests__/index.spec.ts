@@ -1,26 +1,8 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import SideNavBar from '../index.vue';
 import SideNavBarItem from '../../sidenavbaritem/index.vue';
 import SubSideNavBar from '../../subsidenavbar/index.vue';
 import { nextTick } from 'vue';
-import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-beforeAll(() => {
-  config.global.components = {
-    ArrowDown2,
-    ArrowUp2
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 const template = `
 <nut-side-navbar offset="30">
@@ -82,8 +64,7 @@ test('subsidenavbar trigger click', async () => {
       'nut-side-navbar-item': SideNavBarItem,
       'nut-sub-side-navbar': SubSideNavBar
     },
-    template,
-    setup: () => {}
+    template
   });
 
   await nextTick();
@@ -92,7 +73,7 @@ test('subsidenavbar trigger click', async () => {
   const subSideNavBarList = wrapper.findAll('.nut-sub-side-navbar__list');
 
   await subSideNavBarTitle[0].trigger('click');
-  await sleep(100);
+  await nextTick();
 
   expect((subSideNavBarList[0].element as HTMLElement).style.height).toEqual('0px');
 });

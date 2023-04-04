@@ -31,7 +31,7 @@ test('should danmu list props', async () => {
     }
   });
   await nextTick();
-  await sleep(4000);
+  await sleep(50);
   const danmuList = wrapper.findAll('.dmitem');
   danmuList.forEach((item) => {
     expect(Number(item.attributes('data-index'))).toBeLessThan(wrapper.vm.list.length);
@@ -63,7 +63,7 @@ test('should danmu rows top', async () => {
   });
   await nextTick();
   wrapper.vm.addDanmu();
-  await sleep(4500);
+  await sleep(50);
   const danmuList = wrapper.findAll('.dmitem');
   const ele = danmuList[1].element as HTMLElement;
   const top = parseFloat(ele.style.top);

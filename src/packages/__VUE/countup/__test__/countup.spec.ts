@@ -60,7 +60,7 @@ test('basic usage props decimal places', async () => {
   const wrapper = mount(component);
   await nextTick();
   const countupWrapper = wrapper.find('.nut-countup').element as Element;
-  await sleep(4000);
+  await sleep(1000);
   const num = countupWrapper.textContent;
   const len = num?.toString().split('.')[1];
   expect(len?.length).toBe(wrapper.vm.toFixed);
@@ -125,7 +125,7 @@ test('custom img size props', async () => {
   };
   const wrapper = mount(component);
   await nextTick();
-  await sleep(2000);
+  await sleep(1000);
   const numberItemList = wrapper.findAll('.nut-countup__numberimg__item');
   const ele = numberItemList[0].element as HTMLElement;
   const _y = Math.abs(parseFloat(ele.style.backgroundPositionY));

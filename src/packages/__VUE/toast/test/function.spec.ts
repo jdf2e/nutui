@@ -19,13 +19,13 @@ describe('function toast', () => {
 
   test('show text toast', async () => {
     ToastFunction.text('文案', {
-      duration: 2000,
+      duration: 50,
       title: '标题文字'
     });
     await sleep();
     const textToast = document.querySelector('.nut-toast.nut-toast-center') as HTMLElement;
     expect(textToast.innerHTML).toContain('标题文字');
-    await sleep(3000);
+    await sleep(100);
     expect(textToast.style.display).toEqual('none');
   });
   test('show fail toast', async () => {

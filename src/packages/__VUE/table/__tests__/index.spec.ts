@@ -1,25 +1,8 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Table from '../index.vue';
 import { nextTick, h } from 'vue';
+import Button from '../../button/index.vue';
 import { Dongdong } from '@nutui/icons-vue';
-import NutButton from '../../button/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    Dongdong,
-    NutButton
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 const columns = [
   {
@@ -82,9 +65,8 @@ const data2 = [
     record: '小学',
     render: () => {
       return h(
-        NutButton,
+        Button,
         {
-          onClick: () => {},
           size: 'small',
           type: 'primary'
         },
@@ -106,7 +88,7 @@ const data2 = [
     record: '高中',
     render: () => {
       return h(
-        NutButton,
+        Button,
         {
           type: 'success',
           size: 'small',
@@ -269,7 +251,7 @@ test('render async', async () => {
 
   expect(bodyTr.length).toBe(0);
 
-  await sleep(2000);
+  await nextTick();
 
   wrapper.setProps({
     data
