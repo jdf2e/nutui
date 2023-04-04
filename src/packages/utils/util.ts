@@ -1,4 +1,4 @@
-export * from './interceptor';
+export * from './Interceptor';
 
 // 变量类型判断
 export const TypeOfFun = (value: any) => {
