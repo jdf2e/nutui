@@ -1,4 +1,4 @@
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch } from 'vue';
+import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
 
 export const component = (componentName: string, nutIcon: object) => {
   return {
@@ -164,6 +164,10 @@ export const component = (componentName: string, nutIcon: object) => {
 
       onMounted(() => {
         hasParent.value && parent['relation'](getCurrentInstance());
+      });
+
+      onBeforeUnmount(() => {
+        hasParent.value && parent['relation'](getCurrentInstance(), true);
       });
 
       watch(
