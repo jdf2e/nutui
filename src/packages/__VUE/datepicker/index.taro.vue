@@ -24,6 +24,7 @@
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import Picker from '../picker/index.taro.vue';
+import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
@@ -112,7 +113,7 @@ export default create({
       default: 36
     }
   },
-  emits: ['click', 'cancel', 'change', 'confirm', 'update:moduleValue'],
+  emits: ['click', 'cancel', 'change', 'confirm', 'update:modelValue'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -239,25 +240,24 @@ export default create({
     }: {
       columnIndex: number;
       selectedValue: (string | number)[];
-      selectedOptions: import('../picker/types').PickerOption[];
+      selectedOptions: PickerOption[];
     }) => {
       if (['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
           formatDate.push(item);
         });
-        if (props.type == 'month-day') {
-          formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
+        if (props.type == 'month-day' && formatDate.length < 3) {
+          formatDate.unshift(new Date(state.currentDate || props.minDate || props.maxDate).getFullYear());
         }
         if (props.type == 'year-month' && formatDate.length < 3) {
-          formatDate.push(new Date(props.modelValue || props.minDate || props.maxDate).getDate());
+          formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
         }
 
         const year = Number(formatDate[0]);
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-
         if (props.type === 'date' || props.type === 'month-day' || props.type === 'year-month') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
@@ -284,9 +284,9 @@ export default create({
       return fOption;
     };
 
+    // min 最小值  max 最大值  val  当前显示的值   type 类型（year、month、day、time）
     const generateValue = (min: number, max: number, val: number | string, type: string, columnIndex: number) => {
-      // if (!(max > min)) return;
-      const arr: Array<import('../picker/types').PickerOption> = [];
+      const arr: Array<PickerOption> = [];
       let index = 0;
       while (min <= max) {
         arr.push(formatterOption(type, min));
@@ -301,7 +301,6 @@ export default create({
           index++;
         }
       }
-
       (state.selectedValue as any)[columnIndex] = arr[index].value;
       return props.filter ? props.filter(type, arr) : arr;
     };
@@ -338,7 +337,21 @@ export default create({
     watch(
       () => props.modelValue,
       (value) => {
-        state.currentDate = formatValue(value);
+        const newValues = formatValue(value);
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(state.currentDate);
+        if (!isSameValue) {
+          state.currentDate = newValues;
+        }
+      }
+    );
+
+    watch(
+      () => state.currentDate,
+      (newValues) => {
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
+        if (!isSameValue) {
+          emit('update:modelValue', newValues);
+        }
       }
     );
 

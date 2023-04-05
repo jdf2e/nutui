@@ -135,16 +135,16 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = (props as any)[`${type}Date`];
+      const boundary = type == 'min' ? props.minDate : props.maxDate;
       const year = boundary.getFullYear();
       let month = 1;
-      let day = 1;
+      let date = 1;
       let hour = 0;
       let minute = 0;
 
       if (type === 'max') {
         month = 12;
-        day = getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
+        date = getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
         hour = 23;
         minute = 59;
       }
@@ -152,29 +152,19 @@ export default create({
       if (value.getFullYear() === year) {
         month = boundary.getMonth() + 1;
         if (value.getMonth() + 1 === month) {
-          day = boundary.getDate();
-          if (value.getDate() === day) {
+          date = boundary.getDate();
+          if (value.getDate() === date) {
             hour = boundary.getHours();
             if (value.getHours() === hour) {
               minute = boundary.getMinutes();
             }
           }
         }
-      } else {
-        return {
-          [`${type}Year`]: year,
-          [`${type}Month`]: month,
-          [`${type}Day`]: day,
-          [`${type}Hour`]: hour,
-          [`${type}Minute`]: minute,
-          [`${type}Seconds`]: seconds
-        };
       }
-
       return {
         [`${type}Year`]: year,
         [`${type}Month`]: month,
-        [`${type}Day`]: day,
+        [`${type}Date`]: date,
         [`${type}Hour`]: hour,
         [`${type}Minute`]: minute,
         [`${type}Seconds`]: seconds
@@ -182,9 +172,9 @@ export default create({
     };
 
     const ranges = computed(() => {
-      const { maxYear, maxDay, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
+      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
 
-      const { minYear, minDay, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
+      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
 
       let result = [
         {
@@ -197,7 +187,7 @@ export default create({
         },
         {
           type: 'day',
-          range: [minDay, maxDay]
+          range: [minDate, maxDate]
         },
         {
           type: 'hour',
@@ -233,7 +223,6 @@ export default create({
           result = result.slice(0, 4);
           break;
       }
-
       return result;
     });
 
@@ -241,7 +230,6 @@ export default create({
       const val = ranges.value.map((res, columnIndex) => {
         return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type, columnIndex);
       });
-
       return val;
     });
 
@@ -262,7 +250,6 @@ export default create({
         if (props.type == 'month-day' && formatDate.length < 3) {
           formatDate.unshift(new Date(state.currentDate || props.minDate || props.maxDate).getFullYear());
         }
-
         if (props.type == 'year-month' && formatDate.length < 3) {
           formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
         }
@@ -280,7 +267,6 @@ export default create({
         }
         state.currentDate = formatValue(date as Date);
       }
-
       emit('change', { columnIndex, selectedValue, selectedOptions });
     };
 
