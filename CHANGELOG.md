@@ -1,3 +1,15 @@
+## v3.3.7
+
+`2023-04-06`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+
+* :bug: fix(checkbox): checkbox 减少时 group 内数据同步更新 (#2190) #2189 @wh-if
+* :bug: fix(tabbar): remove watch (#2196) @Drjingfubo
+* :bug: fix: 修复 npm 包入口文件路径 @eiinu
+* :bug: fix(input): format、clear 功能修复 @eiinu
+* :bug: fix: picker 默认开启 immediate-change @eiinu
+
 ## v3.3.6
 
 `2023-03-10`
