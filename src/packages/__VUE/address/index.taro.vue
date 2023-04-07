@@ -50,7 +50,7 @@
 
         <view class="nut-address__detail" v-if="privateType == 'custom'">
           <div class="nut-address__detail-list">
-            <NutScrollView :scroll-y="true" :style="{ height: '100%' }" :scroll-top="scrollTop" @scroll="scrollChange">
+            <scroll-view :scroll-y="true" :style="{ height: '100%' }" :scroll-top="scrollTop" @scroll="scrollChange">
               <div
                 v-for="(item, index) in regionList"
                 :key="index"
@@ -63,7 +63,7 @@
                   >{{ item.name }}
                 </div>
               </div>
-            </NutScrollView>
+            </scroll-view>
           </div>
         </view>
 
@@ -126,7 +126,6 @@ import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
 import { popupProps } from '../popup/props';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
-import NutScrollView from '../scrollView/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
@@ -140,8 +139,7 @@ export default create({
     Location2,
     Check,
     Close,
-    Left,
-    NutScrollView
+    Left
   },
   inheritAttrs: false,
   props: {

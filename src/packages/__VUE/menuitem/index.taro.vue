@@ -37,7 +37,7 @@
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <Nut-Scroll-View :scroll-y="true">
+      <scroll-view :scroll-y="true">
         <view class="nut-menu-item__content">
           <view
             v-for="(option, index) in options"
@@ -70,7 +70,7 @@
           </view>
           <slot></slot>
         </view>
-      </Nut-Scroll-View>
+      </scroll-view>
     </nut-popup>
   </view>
 </template>
@@ -79,7 +79,6 @@ import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted, 
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
-import NutScrollView from '../scrollView/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
@@ -97,7 +96,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: null as unknown as PropType<unknown>,
+    modelValue: (null as unknown) as PropType<unknown>,
     cols: {
       type: Number,
       default: 1
@@ -111,8 +110,7 @@ export default create({
   },
   components: {
     Check,
-    [Popup.name]: Popup,
-    NutScrollView
+    [Popup.name]: Popup
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
