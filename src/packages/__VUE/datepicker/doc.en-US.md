@@ -216,7 +216,7 @@ app.use(DatePicker);
 ```
 :::
 
-### Choose Hour-Minute
+### Choose Hour-Minute v4.0.5
 :::demo
 ```html
 <template>
@@ -420,7 +420,7 @@ app.use(DatePicker);
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | Default Date                                            | date    | `null`   |
-| type            | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute` | string  | `date` |
+| type            | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute`(`v4.0.5`) | string  | `date` |
 | minute-step     | Option minute step                                        | number  | `1`      |
 | is-show-chinese | Show Chinese                                  | boolean | `false`  |
 | min-date        | Start date                                         | date    | `Ten years ago on January 1` |
