@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" @click="onClick">
     <view class="nut-input-value">
       <view class="nut-input-inner">
         <view class="nut-input-left-box">
@@ -159,7 +159,7 @@ export default create({
     }
   },
   components: { MaskClose },
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -299,6 +299,11 @@ export default create({
       }
       emit('click-input', event);
     };
+
+    const onClick = (event: MouseEvent) => {
+      emit('click', event);
+    };
+
     const startComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         (target as InputTarget)!.composing = true;
@@ -341,6 +346,7 @@ export default create({
       clear,
       startComposing,
       endComposing,
+      onClick,
       onClickInput
     };
   }
