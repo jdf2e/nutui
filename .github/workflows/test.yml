@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - pnpm-update
+      - v4
 
   pull_request:
     branches:
-      - pnpm-update
+      - v4
 
   workflow_dispatch:
 
