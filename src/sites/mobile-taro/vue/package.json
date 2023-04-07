@@ -50,11 +50,11 @@
     "@tarojs/taro": "3.6.2",
     "@tarojs/plugin-html": "3.6.2",
     "@tarojs/plugin-framework-vue3": "3.6.2",
-    "vue": "^3.2.40",
+    "vue": "^3.2.47",
     "@nutui/icons-vue-taro": "^0.0.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.0",
+    "@babel/core": "^7.13.0",
     "@types/webpack-env": "^1.13.6",
     "webpack": "5.69.0",
     "@tarojs/webpack5-runner": "3.6.2",

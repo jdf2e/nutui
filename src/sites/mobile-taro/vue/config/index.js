@@ -13,9 +13,7 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../../../src/packages'),
-    '@nutui/icons-vue-taro': path.resolve(__dirname, '../node_modules/@nutui/icons-vue-taro')
-    // '@tarojs': path.resolve(__dirname, '../node_modules/@tarojs')
+    '@/packages': path.resolve(__dirname, '../../../../../src/packages')
   },
   sass: {
     resource: [path.resolve(__dirname, '../../../../', 'packages/styles/variables.scss')]
