@@ -1,3 +1,18 @@
+## v4.0.5
+
+`2023-04-07`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @gyt95 @wh-if
+
+* :zap: feat(tabs): support vertical automatic scrolling (#2199) @gyt95
+* :zap: feat(datepicker): 支持选择时分 #2167
+* :bug: fix(checkbox): checkbox 减少时 group 内数据同步更新 (#2190) #2189 @wh-if
+* :bug: fix(tabs): 修复最后一项展示不全的问题 #2214
+* :bug: fix(tabs): 限制 tabs 导航滚动方向 #2208
+* :bug: fix(input): 修复透传原生属性后 click 失效的问题
+* :bug: fix(datepicker): 修复手动修改 modelValue 无效问题 #2205
+
 ## v4.0.4
 
 `2023-03-24`
