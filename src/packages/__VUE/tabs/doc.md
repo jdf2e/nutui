@@ -136,7 +136,7 @@ export default {
 ```
 :::
 
-### Tabpane 自动高度
+### TabPane 自动高度
 
 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。
 
@@ -390,7 +390,7 @@ export default {
 | titles  | 自定义导航区域 |
 | default | 自定义内容     |
 
-### Tabpane Props
+### TabPane Props
 
 | 参数     | 说明                    | 类型    | 默认值           |
 |----------|-------------------------|---------|------------------|
@@ -399,7 +399,7 @@ export default {
 | disabled | 是否禁用标签            | boolean | false            |
 
 
-### Tabpane Slots
+### TabPane Slots
 
 | 名称    | 说明       |
 |---------|------------|
