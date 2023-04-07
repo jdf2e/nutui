@@ -1,7 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import Menu from '../index.vue';
 import MenuItem from '../../menuitem/index.vue';
-import NutIcon from '../../icon/index.vue';
 import { mockScrollTop } from './../../../utils/unit';
 import { h, nextTick } from 'vue';
 
@@ -41,7 +40,6 @@ const options3 = [
 // 所有的测试用例之前执行一次
 beforeAll(() => {
   config.global.components = {
-    NutIcon,
     MenuItem,
     NutMenuItem: MenuItem,
     NutMenu: Menu

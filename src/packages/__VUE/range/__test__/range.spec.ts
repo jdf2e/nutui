@@ -9,7 +9,7 @@ test('should render range when used ', async () => {
       modelValue: 30
     }
   });
-  let inner = wrapper.find<HTMLElement>('.nut-range-button .number');
+  const inner = wrapper.find<HTMLElement>('.nut-range-button .number');
   expect(inner.text()).toBe('30');
 });
 
@@ -20,8 +20,8 @@ test('should render two buttons when use range props', async () => {
       range: true
     }
   });
-  let left = wrapper.find<HTMLElement>('.nut-range-button-wrapper-left .number');
-  let right = wrapper.find<HTMLElement>('.nut-range-button-wrapper-right .number');
+  const left = wrapper.find<HTMLElement>('.nut-range-button-wrapper-left .number');
+  const right = wrapper.find<HTMLElement>('.nut-range-button-wrapper-right .number');
   expect(left.text()).toBe('30');
   expect(right.text()).toBe('70');
 });
@@ -36,12 +36,12 @@ test('should set min and max when use min and max props', async () => {
     }
   });
 
-  let min = wrapper.find<HTMLElement>('.min');
-  let max = wrapper.find<HTMLElement>('.max');
-  let btn = wrapper.find<HTMLElement>('.nut-range-button-wrapper-left .number');
+  const min = wrapper.find<HTMLElement>('.nut-range-min');
+  const max = wrapper.find<HTMLElement>('.nut-range-max');
+  const btn = wrapper.find<HTMLElement>('.nut-range-button .number');
   expect(min.text()).toBe('-10');
   expect(max.text()).toBe('10');
-  expect(btn.text()).toBe('');
+  expect(btn.text()).toBe('0');
 });
 
 test('should change color template when use color props', async () => {
@@ -54,9 +54,9 @@ test('should change color template when use color props', async () => {
     }
   });
   await nextTick();
-  let root = wrapper.find<HTMLElement>('.nut-range');
-  let bar = wrapper.find<HTMLElement>('.nut-range-bar');
-  let btn = wrapper.find<HTMLElement>('.nut-range-button');
+  const root = wrapper.find<HTMLElement>('.nut-range');
+  const bar = wrapper.find<HTMLElement>('.nut-range-bar');
+  const btn = wrapper.find<HTMLElement>('.nut-range-button');
   expect(root.element.style.backgroundColor).toEqual('rgb(163, 184, 255)');
   expect(bar.element.style.background).toEqual('rgb(238, 238, 238)');
   expect(btn.element.style.borderColor).toEqual('rgb(52,96,250)');
@@ -71,7 +71,7 @@ test('should render slots template when use slots', async () => {
       button: '<div class="test_div">btn</div>'
     }
   });
-  let btn = wrapper.find<HTMLElement>('.nut-range-button-wrapper');
+  const btn = wrapper.find<HTMLElement>('.nut-range-button-wrapper');
   expect(btn.html()).toContain('<div class="test_div">btn</div>');
 });
 
@@ -96,7 +96,7 @@ test('should not allow to click slider when disabled', async () => {
       disabled: true
     }
   });
-  let range = wrapper.find('.nut-range');
+  const range = wrapper.find('.nut-range');
   trigger(range, 'click', 100, 0);
   expect(wrapper.emitted('change')).toBeFalsy();
 });

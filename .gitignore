@@ -40,3 +40,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# vitest
+/html

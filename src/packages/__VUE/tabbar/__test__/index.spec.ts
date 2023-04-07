@@ -1,24 +1,14 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import Tabbar from '../index.vue';
 import TabbarItem from '../../tabbaritem/index.vue';
-import NutIcon from '../../icon/index.vue';
 import { nextTick } from 'vue';
 
 // 模拟setup导入资源
-jest.mock('vue-router', () => ({
-  useRouter: jest.fn()
+vi.mock('vue-router', () => ({
+  useRouter: vi.fn()
 }));
-// 所有的测试用例之前执行一次
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-// 所有的测试用例之后执行一次
-afterAll(() => {
-  config.global.components = {};
-});
-// 测试用例
+
 test('should render tabbar when default', async () => {
   const wrapper = mount({
     components: {

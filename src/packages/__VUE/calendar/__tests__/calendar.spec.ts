@@ -1,21 +1,7 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Calendar from '../index.vue';
-import { nextTick, toRefs, reactive } from 'vue';
-import Icon from '../../icon/index.vue';
-import PopUp from '../../popup/index.vue';
-import Button from '../../button/index.vue';
-import Overlay from '../../overlay/index.vue';
-import CalendarItem from '../../calendaritem/index.vue';
+import { nextTick } from 'vue';
 
-beforeAll(() => {
-  config.global.components = {
-    [Icon.name]: Icon,
-    [PopUp.name]: PopUp,
-    [Button.name]: Button,
-    [Overlay.name]: Overlay,
-    [CalendarItem.name]: CalendarItem
-  };
-});
 test('show-title prop', async () => {
   const wrapper = mount(Calendar, {
     props: {
@@ -27,9 +13,9 @@ test('show-title prop', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.calendar-title').exists()).toBeTruthy();
+  expect(wrapper.find('.nut-calendar__header-title').exists()).toBeTruthy();
   await wrapper.setProps({ showTitle: false });
-  expect(wrapper.find('.calendar-title').exists()).toBeFalsy();
+  expect(wrapper.find('.nut-calendar__header-title').exists()).toBeFalsy();
 });
 test('show-sub-title prop', async () => {
   const wrapper = mount(Calendar, {
@@ -103,7 +89,7 @@ test('should render slot correctly', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.calendar-top-slot').html()).toContain('<div class="d_div"> 最近七天</div>');
+  expect(wrapper.find('.nut-calendar__header').html()).toMatchSnapshot();
   expect(wrapper.find('.nut-calendar__body').html()).toMatchSnapshot();
 });
 
@@ -121,7 +107,7 @@ test('select event when click item', async () => {
 
   await nextTick();
   wrapper.findAll('.nut-calendar__day')[15].trigger('click');
-  let arr: any = wrapper.emitted<[Date]>('select')![0][0];
+  const arr: any = wrapper.emitted<[Date]>('select')![0][0];
   expect(arr[3]).toEqual('2022-02-14');
 });
 test('choose event when click item', async () => {
@@ -138,6 +124,6 @@ test('choose event when click item', async () => {
 
   await nextTick();
   wrapper.findAll('.nut-calendar__day')[15].trigger('click');
-  let arr2: any = wrapper.emitted<[Date]>('choose')![0][0];
+  const arr2: any = wrapper.emitted<[Date]>('choose')![0][0];
   expect(arr2[3]).toEqual('2022-02-14');
 });

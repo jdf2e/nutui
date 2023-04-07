@@ -1,23 +1,6 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Picker from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-import NutPupup from '../../popup/index.vue';
-import NutOverlay from '../../overlay/index.vue';
-import NutPickerColumn from '../Column.vue';
 import { nextTick } from 'vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutPupup,
-    NutPickerColumn,
-    NutOverlay
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 const simpleColumns = [
   { text: '南京市', value: 'NanJing' },
@@ -112,7 +95,7 @@ test('simple list-data confirm & close event', async () => {
   await nextTick();
   wrapper.find('.nut-picker__left').trigger('click');
   wrapper.find('.nut-picker__right').trigger('click');
-  expect(wrapper.emitted('confirm')![0]).toEqual([
+  expect(wrapper.emitted().confirm[0]).toEqual([
     {
       selectedOptions: [{ text: '南京市', value: 'NanJing' }],
       selectedValue: ['NanJing']
@@ -131,7 +114,7 @@ test('simple columns default checked item', async () => {
   });
   await nextTick();
   wrapper.find('.nut-picker__right').trigger('click');
-  expect(wrapper.emitted('confirm')![0]).toEqual([
+  expect(wrapper.emitted().confirm[0]).toEqual([
     {
       selectedOptions: [{ text: '无锡市', value: 'WuXi' }],
       selectedValue: ['WuXi']

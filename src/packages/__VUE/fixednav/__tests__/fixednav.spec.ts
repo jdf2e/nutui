@@ -1,18 +1,7 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FixedNav from '../index.vue';
 import { nextTick } from 'vue';
-import { Left } from '@nutui/icons-vue';
-import nutOverlay from '../../overlay/index.vue';
-beforeAll(() => {
-  config.global.components = {
-    Left,
-    nutOverlay
-  };
-});
 
-afterAll(() => {
-  config.global.components = {};
-});
 describe('FixedNav', () => {
   test('base nut-fixed-nav', () => {
     const wrapper = mount(FixedNav);
@@ -27,8 +16,8 @@ describe('FixedNav', () => {
         overlay: true
       }
     });
-    const _html: DOMWrapper<Element> = wrapper.find('.nut-fixed-nav__list');
-    expect(_html.exists()).toBe(true);
+    const list = wrapper.find('.nut-fixed-nav__list');
+    expect(list.exists()).toBe(true);
   });
   test('should be displayed after setting the type', () => {
     const wrapper = mount(FixedNav, {
@@ -36,8 +25,8 @@ describe('FixedNav', () => {
         type: 'left'
       }
     });
-    const _html: DOMWrapper<Element> = wrapper.find('.left');
-    expect(_html.exists()).toBe(true);
+    const left = wrapper.find('.left');
+    expect(left.exists()).toBe(true);
   });
 
   test('should be displayed after setting the un-active-text', async () => {
@@ -47,13 +36,13 @@ describe('FixedNav', () => {
         'active-text': '收起'
       }
     });
-    const _html1 = wrapper.find('.nut-overlay');
-    expect(_html1.exists()).toBe(true);
-    const _html = wrapper.find('.nut-fixed-nav__btn');
-    expect(_html.html()).toContain('展开');
+    const overlay = wrapper.find('.nut-overlay');
+    expect(overlay.exists()).toBe(true);
+    const button = wrapper.find('.nut-fixed-nav__btn');
+    expect(button.html()).toContain('展开');
     wrapper.find('.nut-fixed-nav__btn').trigger('click');
     await nextTick();
-    expect(wrapper.emitted('update:visible')![0]).toEqual([true]);
+    expect(wrapper.emitted()['update:visible'][0]).toEqual([true]);
   });
 
   test('should be displayed after setting the position', () => {
@@ -62,7 +51,7 @@ describe('FixedNav', () => {
         position: { top: '210px' }
       }
     });
-    const _html = wrapper.find('.nut-fixed-nav');
-    expect((_html.element as HTMLElement).style.top).toBe('210px');
+    const fixedNav = wrapper.find('.nut-fixed-nav');
+    expect(fixedNav.html()).toContain('top: 210px');
   });
 });

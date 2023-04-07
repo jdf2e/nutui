@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`prop desc-text-align left 1`] = `
 "<view class=\\"nut-cell\\" style=\\"border-radius: px;\\">
@@ -13,7 +13,7 @@ exports[`prop isLink  1`] = `
 "<view class=\\"nut-cell nut-cell--clickable\\" style=\\"border-radius: px;\\">
   <!--v-if-->
   <!--v-if-->
-  <!--v-if--><svg class=\\"nut-cell__link nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+  <!--v-if--><svg class=\\"nut-cell__link nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
     <path d=\\"M381.262 1005.566c-16.132 21.51-45.708 24.198-67.217 8.066-21.51-16.132-24.198-45.708-8.066-67.217C413.526 806.604 518.384 666.792 625.932 529.67c8.066-10.755 8.066-24.198 0-34.953C518.384 354.906 413.526 215.094 305.979 77.972c-16.132-21.51-10.755-51.085 8.066-67.217C335.555-5.377 365.13 0 381.262 18.82c107.547 142.5 212.405 282.311 319.953 419.434 34.952 43.019 34.952 104.858 0 150.566-107.548 139.811-212.406 279.622-319.953 416.745\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
   </svg>
 </view>"

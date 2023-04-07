@@ -1,16 +1,5 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Input from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: '3' } });
@@ -61,7 +50,7 @@ test('should clear when event clear', () => {
   });
 });
 // 测试只能是数字
-test('should format input value when type is number', () => {
+test('should format input value when type is number', async () => {
   const wrapper = mount(Input, {
     props: {
       type: 'number',
@@ -72,18 +61,18 @@ test('should format input value when type is number', () => {
 
   input.element.value = '1';
   input.trigger('input');
-  expect((wrapper.emitted('change') as any)[0][0]).toEqual('1');
+  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
 
   input.element.value = '1.1.';
   input.trigger('input');
-  expect((wrapper.emitted('change') as any)[1][0]).toEqual('1.1');
+  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1.1']);
 
   input.element.value = '111qwe';
   input.trigger('input');
-  expect((wrapper.emitted('change') as any)[2][0]).toEqual('111');
+  expect(wrapper.emitted()['update:modelValue'][2]).toEqual(['111']);
 });
 
-// 测试小数
+// 测试整数
 test('should format input value when type is digit', () => {
   const wrapper = mount(Input, {
     props: {
@@ -95,11 +84,11 @@ test('should format input value when type is digit', () => {
 
   input.element.value = '1';
   input.trigger('input');
-  expect((wrapper.emitted('change') as any)[0][0]).toEqual('1');
+  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
 
-  // input.element.value = '1.1';
-  // input.trigger('input');
-  // expect((wrapper.emitted('change') as any)[1][0]).toEqual('11');
+  input.element.value = '1.1';
+  input.trigger('input');
+  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1']);
 });
 
 test('should require', () => {
@@ -140,7 +129,7 @@ test('should render word limit correctly', () => {
       showWordLimit: true
     }
   });
-  expect(wrapper.find('.nut-input-word-limit').html()).toMatchSnapshot();
+  expect(wrapper.find('.nut-input-box').html()).toMatchSnapshot();
 });
 
 test('should render word limit correctly when modelValue is null', () => {

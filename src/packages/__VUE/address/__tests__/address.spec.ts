@@ -1,22 +1,7 @@
-import { config, mount } from '@vue/test-utils';
-import { nextTick, toRefs, reactive } from 'vue';
-import NutIcon from '../../icon/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutElevator from '../../elevator/index.vue';
+import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import Address from '../index.vue';
 import { addressListData, addressExistData } from '../address-list';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon,
-    NutPopup,
-    NutElevator
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('address render', async () => {
   const wrapper = mount(Address, {
@@ -113,7 +98,7 @@ test('Exist address & list address', async () => {
     }
   });
   await nextTick();
-  const changeBtn = wrapper.find('.choose-other');
+  const changeBtn = wrapper.find('.nut-address__exist-choose-btn');
   expect(changeBtn.exists()).toBeTruthy();
 
   changeBtn.trigger('click');

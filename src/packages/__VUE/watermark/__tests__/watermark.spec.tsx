@@ -1,20 +1,10 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Watermark from '../index.vue';
-import Cell from './../../cell/index.vue';
-import { nextTick, toRefs, reactive } from 'vue';
+import { nextTick } from 'vue';
 
 test('render fullPage props ', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-cell': Cell,
-      'nut-watermark': Watermark
-    },
-    template: `
-      <nut-cell>
-        <nut-watermark  font-color="#fa2c19" content="nut-ui"></nut-watermark>
-      </nut-cell>
-    `,
-    setup() {}
+  const wrapper = mount(() => {
+    return <Watermark font-color="#fa2c19" content="nut-ui"></Watermark>;
   });
   await nextTick();
 

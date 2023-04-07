@@ -1,15 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should render word limit correctly 1`] = `"<view class=\\"nut-input-word-limit\\"><span class=\\"nut-input-word-num\\">3</span>/9999</view>"`;
+exports[`should render word limit correctly 1`] = `
+"<view class=\\"nut-input-box\\"><input style=\\"text-align: left;\\" type=\\"text\\" class=\\"input-text\\" maxlength=\\"\\" placeholder=\\"\\" formattrigger=\\"onChange\\" enterkeyhint=\\"done\\">
+  <!--v-if-->
+</view>"
+`;
 
 exports[`should render word limit correctly when modelValue is null 1`] = `
 "<view class=\\"nut-input nut-input--border\\" maxlength=\\"3\\">
   <view class=\\"nut-input-value\\">
     <view class=\\"nut-input-inner\\">
-      <view class=\\"nut-input-box\\"><input style=\\"text-align: left;\\" type=\\"text\\" class=\\"input-text\\" maxlength=\\"9999\\" placeholder=\\"\\" formattrigger=\\"onChange\\" enterkeyhint=\\"done\\">
-        <view class=\\"nut-input-word-limit\\"><span class=\\"nut-input-word-num\\">0</span>/9999</view>
+      <view class=\\"nut-input-left-box\\"></view>
+      <view class=\\"nut-input-box\\"><input style=\\"text-align: left;\\" type=\\"text\\" class=\\"input-text\\" maxlength=\\"\\" placeholder=\\"\\" formattrigger=\\"onChange\\" enterkeyhint=\\"done\\">
+        <!--v-if-->
       </view>
       <!--v-if-->
+      <view class=\\"nut-input-right-box\\"></view>
     </view>
   </view>
 </view>"

@@ -1,23 +1,6 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import PopUp from '../index.vue';
-import NutOverlay from '../../overlay/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutOverlay
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 test('should change z-index when using z-index prop', async () => {
   const wrapper = mount(PopUp, {
@@ -52,7 +35,7 @@ test('should lock scroll when showed', async () => {
   });
 
   await wrapper.setProps({ visible: true });
-  expect(document.body.classList.contains('nut-overflow-hidden')).toBeFalsy();
+  expect(document.body.classList.contains('nut-overflow-hidden')).toBeTruthy();
 });
 
 test('should not render overlay when overlay prop is false', () => {
@@ -88,7 +71,7 @@ test('pop from top', async () => {
     }
   });
   await nextTick();
-  const pop: any = wrapper.find('.popup-top');
+  const pop: any = wrapper.find('.nut-popup--top');
   expect(pop.exists()).toBeTruthy();
 });
 
@@ -101,7 +84,7 @@ test('pop from bottom', async () => {
     }
   });
   await nextTick();
-  const pop: any = wrapper.find('.popup-bottom');
+  const pop: any = wrapper.find('.nut-popup--bottom');
   expect(pop.exists()).toBeTruthy();
 });
 
@@ -114,7 +97,7 @@ test('pop from left', async () => {
     }
   });
   await nextTick();
-  const pop: any = wrapper.find('.popup-left');
+  const pop: any = wrapper.find('.nut-popup--left');
   expect(pop.exists()).toBeTruthy();
 });
 
@@ -127,7 +110,7 @@ test('pop from right', async () => {
     }
   });
   await nextTick();
-  const pop: any = wrapper.find('.popup-right');
+  const pop: any = wrapper.find('.nut-popup--right');
   expect(pop.exists()).toBeTruthy();
 });
 
@@ -215,7 +198,7 @@ test('event close test', async () => {
     }
   });
   await wrapper.find('.nut-overlay').trigger('click');
-  await sleep(2000);
+  await nextTick();
   expect(wrapper.emitted('click-overlay')).toBeTruthy();
 });
 

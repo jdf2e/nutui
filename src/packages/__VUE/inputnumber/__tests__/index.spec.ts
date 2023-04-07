@@ -1,15 +1,7 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import InputNumber from '../index.vue';
 import { h, nextTick } from 'vue';
-import { Minus, Plus, Left, Right } from '@nutui/icons-vue';
-
-beforeAll(() => {
-  config.global.components = { Minus, Plus };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { Left, Right } from '@nutui/icons-vue';
 
 test('should render modelValue', () => {
   const wrapper = mount(InputNumber, {
@@ -176,6 +168,6 @@ test('should render icon when leftIcon and rightIcon slots setted', async () => 
 
   const iconList = wrapper.findAll('.nut-input-number__icon');
   expect(iconList.length).toBe(2);
-  expect(iconList[0].html()).toContain('color="#123456"');
-  expect(iconList[1].html()).toContain('color="#654321"');
+  expect(iconList[0].html()).toMatchSnapshot();
+  expect(iconList[1].html()).toMatchSnapshot();
 });

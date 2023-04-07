@@ -1,17 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should change avatar shape when using avatarShape prop 1`] = `
 "<view style=\\"width: 50px; height: 50px; background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-square avatarClass avatarClass--square\\">
-  <!--v-if-->
-  <!--v-if-->
   <!-- 折叠头像 -->
   <!--v-if-->
 </view>"
 `;
 
-exports[`should change avatar size when using avatarSize prop: 20px 1`] = `"20px"`;
+exports[`should change avatar size when using avatarSize prop > 20px 1`] = `"20px"`;
 
-exports[`should change avatar size when using avatarSize prop: 20px 2`] = `"20px"`;
+exports[`should change avatar size when using avatarSize prop > 20px 2`] = `"20px"`;
 
 exports[`should render default slot 1`] = `
 "<view class=\\"nut-skeleton\\">
@@ -19,8 +17,8 @@ exports[`should render default slot 1`] = `
   <view class=\\"nut-skeleton-content\\">
     <!--v-if-->
     <view class=\\"nut-skeleton-content__line\\" style=\\"width: 100px;\\">
-      <view class=\\"nut-skeleton-blockTitle\\" style=\\"height: 100px;\\"></view>
-      <view class=\\"nut-skeleton-blockLine\\" style=\\"height: 100px;\\"></view>
+      <view class=\\"nut-skeleton-blockTitle\\" style=\\"height: 15px;\\"></view>
+      <view class=\\"nut-skeleton-blockLine\\" style=\\"height: 15px;\\"></view>
     </view>
   </view>
 </view>"

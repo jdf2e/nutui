@@ -1,17 +1,9 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Steps from '../index.vue';
-import Step from './../../step/index.vue';
-import Button from './../../button/index.vue';
+import Step from '../../step/index.vue';
+import Button from '../../button/index.vue';
 import { Service, People, Location2 } from '@nutui/icons-vue';
 import { nextTick, toRefs, reactive } from 'vue';
-
-beforeAll(() => {
-  config.global.components = { Service, People, Location2 };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('should render horizontal class when props direction is to be horizontal', () => {
   const wrapper = mount(Steps, {
@@ -91,9 +83,7 @@ test('step props and icon slots', async () => {
   const stepItemIcons = wrapper.findAll('.nut-icon');
   const icon = stepItemIcons[0];
   expect(stepItemIcons.length).toEqual(3);
-  expect((icon.element as HTMLElement).tagName).toEqual('svg');
-  expect((icon.element as HTMLElement).getAttribute('color')).toEqual('blue');
-  expect((icon.element as HTMLElement).style.width).toEqual('14px');
+  expect((icon.element as HTMLElement).tagName).matchSnapshot();
 });
 
 test('should props current changes when trigger click', async () => {

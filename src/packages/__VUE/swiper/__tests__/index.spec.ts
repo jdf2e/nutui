@@ -1,4 +1,5 @@
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import Swiper from '../index.vue';
 import SwiperItem from './../../swiperitem/index.vue';
 import { nextTick, toRefs, reactive } from 'vue';
@@ -160,7 +161,7 @@ test('should render pagination', async () => {
 });
 
 test('should render loop and auto-play', async () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   const wrapper = mount({
     props: {
       onChange
@@ -209,7 +210,7 @@ test('should render loop and auto-play', async () => {
 });
 
 test('should not allow to drag when touchable is false', async () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   const wrapper = mount(Swiper, {
     props: {
       onChange,
@@ -240,7 +241,7 @@ test('should not allow to drag when loop is false', async () => {
     setup() {
       const state = reactive({
         page: 3,
-        autoPlay: 100,
+        autoPlay: 50,
         width: 375,
         loop: false,
         list: [
@@ -261,7 +262,7 @@ test('should not allow to drag when loop is false', async () => {
 
   await nextTick();
 
-  await sleep(2000);
+  await sleep(200);
   expect(wrapper.vm.page).toBe(3);
 });
 
@@ -302,7 +303,7 @@ test('should swiper to prev swiper after calling prev method', async () => {
 
   const { swiper } = wrapper.vm.$refs as any;
   swiper.prev();
-  await sleep(1000);
+  await sleep(100);
   expect(wrapper.vm.page).toBe(2);
 });
 
@@ -343,6 +344,6 @@ test('should swiper to swiper after calling to method', async () => {
 
   const { swiper } = wrapper.vm.$refs as any;
   swiper.to(1);
-  await sleep(1000);
+  await sleep(100);
   expect(wrapper.vm.page).toBe(1);
 });

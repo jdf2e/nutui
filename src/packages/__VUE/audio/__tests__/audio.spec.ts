@@ -1,21 +1,11 @@
 import { config, mount } from '@vue/test-utils';
-import { nextTick, ref, toRefs, reactive, onMounted } from 'vue';
-import NutRange from '../../range/index.vue';
+import { nextTick, toRefs, reactive } from 'vue';
 import Audio from '../index.vue';
 import AudioOperate from '../../audiooperate/index.vue';
-import NutButton from '../../button/index.vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 beforeAll(() => {
   config.global.components = {
-    NutRange,
-    AudioOperate,
-    NutButton
+    AudioOperate
   };
 });
 
@@ -38,9 +28,7 @@ test('audio init render', async () => {
   const wrapper = mount({
     components: {
       'nut-audio': Audio,
-      'nut-range': NutRange,
-      'nut-audio-operate': AudioOperate,
-      'nut-button': NutButton
+      'nut-audio-operate': AudioOperate
     },
     template: `
     <nut-audio

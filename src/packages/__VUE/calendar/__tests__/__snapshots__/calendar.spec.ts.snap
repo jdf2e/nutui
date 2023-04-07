@@ -1,277 +1,296 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render slot correctly 1`] = `
-"<view class=\\"viewArea\\" style=\\"transform: translateY(423px);\\">
-  <view class=\\"calendar-month\\">
-    <view class=\\"calendar-month-title\\">2022年02月</view>
-    <view class=\\"calendar-month-con\\">
-      <view class=\\"calendar-month-item\\">
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+"<view class=\\"nut-calendar__header\\">
+  <view class=\\"nut-calendar__header-title\\">日期选择</view>
+  <view class=\\"nut-calendar__header-slot\\">
+    <div class=\\"d_div\\"> 最近七天</div>
+  </view>
+  <view class=\\"nut-calendar__header-subtitle\\">2022年03月</view>
+  <view class=\\"nut-calendar__weekdays\\">
+    <view class=\\"nut-calendar__weekday\\">日</view>
+    <view class=\\"nut-calendar__weekday\\">一</view>
+    <view class=\\"nut-calendar__weekday\\">二</view>
+    <view class=\\"nut-calendar__weekday\\">三</view>
+    <view class=\\"nut-calendar__weekday\\">四</view>
+    <view class=\\"nut-calendar__weekday\\">五</view>
+    <view class=\\"nut-calendar__weekday\\">六</view>
+  </view>
+</view>"
+`;
+
+exports[`should render slot correctly 2`] = `
+"<view class=\\"nut-calendar__body\\" style=\\"transform: translateY(423px);\\">
+  <view class=\\"nut-calendar__month\\">
+    <view class=\\"nut-calendar__month-title\\">2022年02月</view>
+    <view class=\\"nut-calendar__days\\">
+      <view class=\\"nut-calendar__days-item\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom1</view>
+          <view class=\\"nut-calendar__day-value\\">custom1</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom2</view>
+          <view class=\\"nut-calendar__day-value\\">custom2</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom3</view>
+          <view class=\\"nut-calendar__day-value\\">custom3</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom4</view>
+          <view class=\\"nut-calendar__day-value\\">custom4</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom5</view>
+          <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom6</view>
+          <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom7</view>
+          <view class=\\"nut-calendar__day-value\\">custom7</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom8</view>
+          <view class=\\"nut-calendar__day-value\\">custom8</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom9</view>
+          <view class=\\"nut-calendar__day-value\\">custom9</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom10</view>
+          <view class=\\"nut-calendar__day-value\\">custom10</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom11</view>
+          <view class=\\"nut-calendar__day-value\\">custom11</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom12</view>
+          <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom13</view>
+          <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom14</view>
+          <view class=\\"nut-calendar__day-value\\">custom14</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom15</view>
+          <view class=\\"nut-calendar__day-value\\">custom15</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom16</view>
+          <view class=\\"nut-calendar__day-value\\">custom16</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom17</view>
+          <view class=\\"nut-calendar__day-value\\">custom17</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom18</view>
+          <view class=\\"nut-calendar__day-value\\">custom18</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom19</view>
+          <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom20</view>
+          <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom21</view>
+          <view class=\\"nut-calendar__day-value\\">custom21</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom22</view>
+          <view class=\\"nut-calendar__day-value\\">custom22</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom23</view>
+          <view class=\\"nut-calendar__day-value\\">custom23</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom24</view>
+          <view class=\\"nut-calendar__day-value\\">custom24</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom25</view>
+          <view class=\\"nut-calendar__day-value\\">custom25</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom26</view>
+          <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom27</view>
+          <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom28</view>
+          <view class=\\"nut-calendar__day-value\\">custom28</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
@@ -279,303 +298,303 @@ exports[`should render slot correctly 1`] = `
       </view>
     </view>
   </view>
-  <view class=\\"calendar-month\\">
-    <view class=\\"calendar-month-title\\">2022年03月</view>
-    <view class=\\"calendar-month-con\\">
-      <view class=\\"calendar-month-item\\">
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+  <view class=\\"nut-calendar__month\\">
+    <view class=\\"nut-calendar__month-title\\">2022年03月</view>
+    <view class=\\"nut-calendar__days\\">
+      <view class=\\"nut-calendar__days-item\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom1</view>
+          <view class=\\"nut-calendar__day-value\\">custom1</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom2</view>
+          <view class=\\"nut-calendar__day-value\\">custom2</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom3</view>
+          <view class=\\"nut-calendar__day-value\\">custom3</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom4</view>
+          <view class=\\"nut-calendar__day-value\\">custom4</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom5</view>
+          <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom6</view>
+          <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom7</view>
+          <view class=\\"nut-calendar__day-value\\">custom7</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom8</view>
+          <view class=\\"nut-calendar__day-value\\">custom8</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom9</view>
+          <view class=\\"nut-calendar__day-value\\">custom9</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom10</view>
+          <view class=\\"nut-calendar__day-value\\">custom10</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom11</view>
+          <view class=\\"nut-calendar__day-value\\">custom11</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom12</view>
+          <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom13</view>
+          <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom14</view>
+          <view class=\\"nut-calendar__day-value\\">custom14</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom15</view>
+          <view class=\\"nut-calendar__day-value\\">custom15</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom16</view>
+          <view class=\\"nut-calendar__day-value\\">custom16</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom17</view>
+          <view class=\\"nut-calendar__day-value\\">custom17</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-active\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--active\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom18</view>
+          <view class=\\"nut-calendar__day-value\\">custom18</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom19</view>
+          <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom20</view>
+          <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom21</view>
+          <view class=\\"nut-calendar__day-value\\">custom21</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom22</view>
+          <view class=\\"nut-calendar__day-value\\">custom22</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom23</view>
+          <view class=\\"nut-calendar__day-value\\">custom23</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom24</view>
+          <view class=\\"nut-calendar__day-value\\">custom24</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom25</view>
+          <view class=\\"nut-calendar__day-value\\">custom25</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom26</view>
+          <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom27</view>
+          <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom28</view>
+          <view class=\\"nut-calendar__day-value\\">custom28</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom29</view>
+          <view class=\\"nut-calendar__day-value\\">custom29</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom30</view>
+          <view class=\\"nut-calendar__day-value\\">custom30</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom31</view>
+          <view class=\\"nut-calendar__day-value\\">custom31</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
@@ -583,321 +602,321 @@ exports[`should render slot correctly 1`] = `
       </view>
     </view>
   </view>
-  <view class=\\"calendar-month\\">
-    <view class=\\"calendar-month-title\\">2022年04月</view>
-    <view class=\\"calendar-month-con\\">
-      <view class=\\"calendar-month-item\\">
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+  <view class=\\"nut-calendar__month\\">
+    <view class=\\"nut-calendar__month-title\\">2022年04月</view>
+    <view class=\\"nut-calendar__days\\">
+      <view class=\\"nut-calendar__days-item\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day calendar-month-day-disabled\\">
+        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">customundefined</view>
+          <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\"></view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\"></view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom1</view>
+          <view class=\\"nut-calendar__day-value\\">custom1</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom2</view>
+          <view class=\\"nut-calendar__day-value\\">custom2</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom3</view>
+          <view class=\\"nut-calendar__day-value\\">custom3</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom4</view>
+          <view class=\\"nut-calendar__day-value\\">custom4</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom5</view>
+          <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom6</view>
+          <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom7</view>
+          <view class=\\"nut-calendar__day-value\\">custom7</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom8</view>
+          <view class=\\"nut-calendar__day-value\\">custom8</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom9</view>
+          <view class=\\"nut-calendar__day-value\\">custom9</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom10</view>
+          <view class=\\"nut-calendar__day-value\\">custom10</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom11</view>
+          <view class=\\"nut-calendar__day-value\\">custom11</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom12</view>
+          <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom13</view>
+          <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom14</view>
+          <view class=\\"nut-calendar__day-value\\">custom14</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom15</view>
+          <view class=\\"nut-calendar__day-value\\">custom15</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom16</view>
+          <view class=\\"nut-calendar__day-value\\">custom16</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom17</view>
+          <view class=\\"nut-calendar__day-value\\">custom17</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom18</view>
+          <view class=\\"nut-calendar__day-value\\">custom18</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom19</view>
+          <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom20</view>
+          <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom21</view>
+          <view class=\\"nut-calendar__day-value\\">custom21</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom22</view>
+          <view class=\\"nut-calendar__day-value\\">custom22</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom23</view>
+          <view class=\\"nut-calendar__day-value\\">custom23</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom24</view>
+          <view class=\\"nut-calendar__day-value\\">custom24</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom25</view>
+          <view class=\\"nut-calendar__day-value\\">custom25</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom26</view>
+          <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom27</view>
+          <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom28</view>
+          <view class=\\"nut-calendar__day-value\\">custom28</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom29</view>
+          <view class=\\"nut-calendar__day-value\\">custom29</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom30</view>
+          <view class=\\"nut-calendar__day-value\\">custom30</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
@@ -905,285 +924,285 @@ exports[`should render slot correctly 1`] = `
       </view>
     </view>
   </view>
-  <view class=\\"calendar-month\\">
-    <view class=\\"calendar-month-title\\">2022年05月</view>
-    <view class=\\"calendar-month-con\\">
-      <view class=\\"calendar-month-item\\">
-        <view class=\\"calendar-month-day\\">
+  <view class=\\"nut-calendar__month\\">
+    <view class=\\"nut-calendar__month-title\\">2022年05月</view>
+    <view class=\\"nut-calendar__days\\">
+      <view class=\\"nut-calendar__days-item\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom1</view>
+          <view class=\\"nut-calendar__day-value\\">custom1</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom2</view>
+          <view class=\\"nut-calendar__day-value\\">custom2</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom3</view>
+          <view class=\\"nut-calendar__day-value\\">custom3</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom4</view>
+          <view class=\\"nut-calendar__day-value\\">custom4</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom5</view>
+          <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom6</view>
+          <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom7</view>
+          <view class=\\"nut-calendar__day-value\\">custom7</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom8</view>
+          <view class=\\"nut-calendar__day-value\\">custom8</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom9</view>
+          <view class=\\"nut-calendar__day-value\\">custom9</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom10</view>
+          <view class=\\"nut-calendar__day-value\\">custom10</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">上旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">上旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom11</view>
+          <view class=\\"nut-calendar__day-value\\">custom11</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom12</view>
+          <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom13</view>
+          <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom14</view>
+          <view class=\\"nut-calendar__day-value\\">custom14</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom15</view>
+          <view class=\\"nut-calendar__day-value\\">custom15</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom16</view>
+          <view class=\\"nut-calendar__day-value\\">custom16</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom17</view>
+          <view class=\\"nut-calendar__day-value\\">custom17</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom18</view>
+          <view class=\\"nut-calendar__day-value\\">custom18</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom19</view>
+          <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom20</view>
+          <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">中旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">中旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom21</view>
+          <view class=\\"nut-calendar__day-value\\">custom21</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom22</view>
+          <view class=\\"nut-calendar__day-value\\">custom22</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom23</view>
+          <view class=\\"nut-calendar__day-value\\">custom23</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom24</view>
+          <view class=\\"nut-calendar__day-value\\">custom24</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom25</view>
+          <view class=\\"nut-calendar__day-value\\">custom25</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom26</view>
+          <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom27</view>
+          <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom28</view>
+          <view class=\\"nut-calendar__day-value\\">custom28</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom29</view>
+          <view class=\\"nut-calendar__day-value\\">custom29</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom30</view>
+          <view class=\\"nut-calendar__day-value\\">custom30</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"calendar-month-day\\">
+        <view class=\\"nut-calendar__day\\">
           <!-- 日期显示slot -->
-          <view class=\\"calendar-day\\">custom31</view>
+          <view class=\\"nut-calendar__day-value\\">custom31</view>
           <!--v-if-->
-          <view class=\\"calendar-curr-tips calendar-curr-tips-bottom\\">下旬</view>
+          <view class=\\"nut-calendar__day-tips nut-calendar__day-tips--bottom\\">下旬</view>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->

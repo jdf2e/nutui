@@ -1,23 +1,11 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import InfiniteLoading from '../index.vue';
-import NutIcon from '../../icon/index.vue';
 import { toRefs, reactive, ref, onMounted } from 'vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('infiniteloading base', async () => {
   const wrapper = mount({
     components: {
-      'nut-infinite-loading': InfiniteLoading,
-      'nut-icon': NutIcon
+      'nut-infinite-loading': InfiniteLoading
     },
     template: `
     <div class="box" style="height:300px;overflow:auto">

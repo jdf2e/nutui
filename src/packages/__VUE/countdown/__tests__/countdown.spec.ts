@@ -16,18 +16,18 @@ afterAll(() => {
 test('endTime props', async () => {
   const wrapper = mount(Countdown, {
     props: {
-      endTime: Date.now() + 1 * 1000
+      endTime: Date.now() + 1 * 50
     }
   });
   expect(wrapper.emitted('on-end')).toBeFalsy();
-  await sleep(1100);
+  await sleep(51);
   expect(wrapper.emitted('on-end')).toBeTruthy();
 });
 
 test('format props', async () => {
   const wrapper = mount(Countdown, {
     props: {
-      endTime: Date.now() + 1 * 1000,
+      endTime: Date.now() + 1 * 50,
       format: 'DD天HH时mm分ss秒'
     }
   });
@@ -49,7 +49,7 @@ test('paused props', async () => {
     `,
     setup() {
       const state = reactive({
-        endTime: Date.now() + 50 * 1000,
+        endTime: Date.now() + 1 * 50,
         paused: false
       });
 
@@ -65,7 +65,6 @@ test('paused props', async () => {
   const prevSnapShot = wrapper.find('.nut-countdown').html();
   await button.trigger('click');
   await nextTick();
-  await sleep(1000);
   const laterShapShot = wrapper.find('.nut-countdown').html();
   expect(button.text() == 'start').toBe(true);
   expect(prevSnapShot === laterShapShot).toBeTruthy();

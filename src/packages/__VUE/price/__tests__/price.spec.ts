@@ -1,12 +1,5 @@
 import { config, mount } from '@vue/test-utils';
 import Price from '../index.vue';
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
 
 afterAll(() => {
   config.global.components = {};
@@ -26,7 +19,7 @@ test('decimalDigits price', () => {
   const wrapper = mount(Price, {
     props: {
       price: '299.95',
-      decimalDigits: '1'
+      decimalDigits: 1
     }
   });
   const price: any = wrapper.find('.nut-price');

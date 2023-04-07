@@ -1,19 +1,5 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Skeleton from '../index.vue';
-
-import NutAvatar from '../../avatar/index.vue';
-import NutIcon from '../../icon/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutAvatar,
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('should render with row‘s father content width correctly', () => {
   const wrapper = mount(Skeleton, {
@@ -21,7 +7,7 @@ test('should render with row‘s father content width correctly', () => {
       width: '100px'
     }
   });
-  const skeleton: any = wrapper.find('.content-line');
+  const skeleton: any = wrapper.find('.nut-skeleton-content__line');
   expect(skeleton.element.style.width).toBe('100px');
 });
 
@@ -89,8 +75,8 @@ test('should render correctly when title uses false', () => {
     }
   });
 
-  const content = wrapper.find('.content-line');
+  const content = wrapper.find('.nut-skeleton-content__line');
 
-  expect(content.find('.blockTitle').exists()).toBeFalsy();
-  expect(content.findAll('.blockLine').length).toBe(1);
+  expect(content.find('.nut-skeleton-blockTitle').exists()).toBeFalsy();
+  expect(content.findAll('.nut-skeleton-blockLine').length).toBe(1);
 });

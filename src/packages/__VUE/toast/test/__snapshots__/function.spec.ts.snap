@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`function toast > show fail toast 1`] = `
+<view
+  class="nut-toast nut-toast-center nut-toast-has-icon nut-toast-base toast-fade-enter-from toast-fade-enter-active"
+  iconsize="20"
+  style="background-color: rgba(0, 0, 0, 0);"
+>
+  <view
+    class="nut-toast-inner"
+    style="text-align: center; background-color: rgba(0, 0, 0, 0.8);"
+  >
+    <view
+      class="nut-toast-icon-wrapper"
+    >
+      <failure
+        color="#ffffff"
+      />
+    </view>
+    <!--v-if-->
+    <view
+      class="nut-toast-text"
+    >
+      文案
+    </view>
+  </view>
+</view>
+`;
+
+exports[`function toast > show warn toast 1`] = `
+<view
+  class="nut-toast nut-toast-center nut-toast-has-icon nut-toast-base toast-fade-enter-from toast-fade-enter-active"
+  iconsize="20"
+  style="background-color: rgba(0, 0, 0, 0);"
+>
+  <view
+    class="nut-toast-inner"
+    style="text-align: center; background-color: rgba(0, 0, 0, 0.8);"
+  >
+    <view
+      class="nut-toast-icon-wrapper"
+    >
+      <failure
+        color="#ffffff"
+      />
+    </view>
+    <!--v-if-->
+    <view
+      class="nut-toast-text"
+    >
+      文案
+    </view>
+  </view>
+</view>
+`;

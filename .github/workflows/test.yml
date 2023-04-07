@@ -1,14 +1,57 @@
-name: test
+name: CI
 
 on:
   push:
     branches:
-      - next # default branch
+      - vitest
+
+  pull_request:
+    branches:
+      - vitest
+
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install
-      - run: yarn test
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run test cases
+      run: npm run test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Build nutui
+      run: npm run build
+
+    - name: Build nutui-taro
+      run: npm run build:taro:vue
+
+    - name: Build nutui demo
+      run: npm run build:site

@@ -1,27 +1,6 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ImagePreview from '../index.vue';
-import { nextTick, reactive, toRefs } from 'vue';
-import NutOverlay from '../../overlay/index.vue';
-import NutIcon from '../../icon/index.vue';
-import NutPopup from '../../popup/index.vue';
-import NutSwiper from '../../swiper/index.vue';
-import NutSwiperItem from '../../swiperitem/index.vue';
-import NutVideo from '../../video/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutOverlay,
-    NutIcon,
-    NutPopup,
-    NutSwiper,
-    NutSwiperItem,
-    NutVideo
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { nextTick } from 'vue';
 
 const images = [
   {

@@ -1,13 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import PullRefresh from '../index.vue';
-import NutIcon from '../../icon/index.vue';
 import { sleep, trigger, triggerDrag } from '../../../utils/unit';
-
-beforeAll(() => {
-  config.global.components = {
-    NutIcon
-  };
-});
 
 afterAll(() => {
   config.global.components = {};

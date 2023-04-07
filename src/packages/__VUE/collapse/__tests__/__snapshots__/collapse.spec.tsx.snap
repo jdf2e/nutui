@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should props active 1`] = `
+"<view class=\\"nut-collapse\\">
+  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
+    <view class=\\"nut-collapse-item__title\\">
+      <view class=\\"nut-collapse-item__title-main\\">
+        <view class=\\"nut-collapse-item__title-main-value\\">
+          <view class=\\"nut-collapse-item__title-mtitle\\"></view>
+          <!--v-if-->
+        </view>
+      </view>
+      <view class=\\"nut-collapse-item__title-sub\\"></view>
+      <view class=\\"nut-collapse-item__title-icon\\" style=\\"transform: rotate(0deg);\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
+    </view>
+    <!--v-if-->
+    <view class=\\"nut-collapse__item-wrapper\\" style=\\"will-change: height;\\">
+      <view class=\\"nut-collapse__item-wrapper__content nut-collapse__item-wrapper__content--empty\\">NutUI是一套拥有京东风格的轻量级的 Vue 组件库</view>
+    </view>
+  </view>
+  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
+    <view class=\\"nut-collapse-item__title\\">
+      <view class=\\"nut-collapse-item__title-main\\">
+        <view class=\\"nut-collapse-item__title-main-value\\">
+          <view class=\\"nut-collapse-item__title-mtitle\\">标题2</view>
+          <!--v-if-->
+        </view>
+      </view>
+      <view class=\\"nut-collapse-item__title-sub\\"></view>
+      <view class=\\"nut-collapse-item__title-icon\\" style=\\"transform: rotate(0deg);\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+          <path d=\\"M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+        </svg></view>
+    </view>
+    <!--v-if-->
+    <view class=\\"nut-collapse__item-wrapper\\">
+      <view class=\\"nut-collapse__item-wrapper__content nut-collapse__item-wrapper__content--empty\\">在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！</view>
+    </view>
+  </view>
+</view>"
+`;

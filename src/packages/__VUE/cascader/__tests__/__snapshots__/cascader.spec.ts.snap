@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Cascader change tab 1`] = `
+exports[`Cascader > change tab 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000;\\"></view>
@@ -30,50 +30,54 @@ exports[`Cascader change tab 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader change tab 2`] = `
+exports[`Cascader > change tab 2`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000;\\"></view>
@@ -103,50 +107,54 @@ exports[`Cascader change tab 2`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader change tab 3`] = `
+exports[`Cascader > change tab 3`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000;\\"></view>
@@ -176,50 +184,54 @@ exports[`Cascader change tab 3`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue 1`] = `
+exports[`Cascader > modelValue 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -233,30 +245,31 @@ exports[`Cascader modelValue 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue 2`] = `
+exports[`Cascader > modelValue 2`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -286,50 +299,54 @@ exports[`Cascader modelValue 2`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue 3`] = `
+exports[`Cascader > modelValue 3`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -349,30 +366,31 @@ exports[`Cascader modelValue 3`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active disabled\\" aria-checked=\\"true\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue 4`] = `
+exports[`Cascader > modelValue 4`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -392,30 +410,31 @@ exports[`Cascader modelValue 4`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue with lazy 1`] = `
+exports[`Cascader > modelValue with lazy 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -437,15 +456,13 @@ exports[`Cascader modelValue with lazy 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader modelValue with lazy 2`] = `
+exports[`Cascader > modelValue with lazy 2`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -475,54 +492,59 @@ exports[`Cascader modelValue with lazy 2`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">C0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">C0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A11</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A11</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A12</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A12</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A21</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A21</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A22</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A22</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader options 1`] = `
+exports[`Cascader > options 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -552,50 +574,54 @@ exports[`Cascader options 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader options with convertConfig 1`] = `
+exports[`Cascader > options with convertConfig 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -620,34 +646,35 @@ exports[`Cascader options with convertConfig 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">广东省</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">广东省</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">北京</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">北京</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">广州市</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">广州市</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
+exports[`Cascader > options with valueKey/textKey/childrenKey 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -677,50 +704,54 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select 1`] = `
+exports[`Cascader > select 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -745,38 +776,40 @@ exports[`Cascader select 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select 2`] = `
+exports[`Cascader > select 2`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -806,50 +839,54 @@ exports[`Cascader select 2`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select 3`] = `
+exports[`Cascader > select 3`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -879,50 +916,54 @@ exports[`Cascader select 3`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
-              </view>
-            </view>
-          </view>
-          <view class=\\"nut-tab-pane\\">
-            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
-              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福州</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">鼓楼区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福州</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
+              </view>
+            </view>
+          </view>
+          <view class=\\"nut-tab-pane\\">
+            <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
+              <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
+                <view class=\\"nut-cascader-item__title\\">鼓楼区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">台江区</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">台江区</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select 4`] = `
+exports[`Cascader > select 4`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -942,30 +983,31 @@ exports[`Cascader select 4`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 1`] = `
+exports[`Cascader > select with lazy 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -981,15 +1023,13 @@ exports[`Cascader select with lazy 1`] = `
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 2`] = `
+exports[`Cascader > select with lazy 2`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1009,26 +1049,26 @@ exports[`Cascader select with lazy 2`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 3`] = `
+exports[`Cascader > select with lazy 3`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1053,38 +1093,40 @@ exports[`Cascader select with lazy 3`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A11</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A11</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A12</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A12</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 4`] = `
+exports[`Cascader > select with lazy 4`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1114,50 +1156,54 @@ exports[`Cascader select with lazy 4`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A11</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A11</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A12</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A12</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A21</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A21</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A22</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A22</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 5`] = `
+exports[`Cascader > select with lazy 5`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1187,50 +1233,54 @@ exports[`Cascader select with lazy 5`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A11</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A11</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A12</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A12</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A21</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A21</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A22</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A22</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 6`] = `
+exports[`Cascader > select with lazy 6`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1250,26 +1300,26 @@ exports[`Cascader select with lazy 6`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader select with lazy 7`] = `
+exports[`Cascader > select with lazy 7`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1294,38 +1344,40 @@ exports[`Cascader select with lazy 7`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">A0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">A0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B0</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B0</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B11</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B11</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">B12</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">B12</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"
 `;
 
-exports[`Cascader visible 1`] = `
+exports[`Cascader > visible 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
@@ -1345,24 +1397,25 @@ exports[`Cascader visible 1`] = `
           <view class=\\"nut-tab-pane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">浙江</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">浙江</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item disabled\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">湖南</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">湖南</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
-                <view class=\\"nut-cascader-item__title\\">福建</view>
-                <!---->
+                <view class=\\"nut-cascader-item__title\\">福建</view><svg class=\\"nut-cascader-item__icon-check nut-icon nut-icon-checklist\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"checklist\\" role=\\"presentation\\">
+                  <path d=\\"M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+                </svg>
               </view>
             </view>
           </view>
         </view>
       </view>
-      <view class=\\"nut-popup__close-icon nut-popup__close-icon--top-right\\"><svg class=\\"nut-icon\\" style=\\"height: 12px;\\" xmlns=\\"http://www.w3.org/2000/svg\\" color=\\"\\" viewBox=\\"0 0 1026 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
-          <path d=\\"M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
-        </svg></view>
+      <!--v-if-->
     </view>
   </transition-stub>
 </teleport-stub>"

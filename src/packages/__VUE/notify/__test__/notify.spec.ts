@@ -61,10 +61,10 @@ describe('Notify', () => {
       props: {
         teleportDisable: false,
         visible: true,
-        duration: 3000
+        duration: 50
       }
     });
-    await sleep(3001);
+    await sleep(51);
     const notify = wrapper.find('.nut-popup').find('.nut-notify');
     expect((notify.element as HTMLElement).style.display).toEqual('');
   });

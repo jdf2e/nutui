@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render icon when leftIcon and rightIcon slots setted 1`] = `
+"<view class=\\"nut-input-number__icon nut-input-number__left nut-input-number__icon--disabled\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+    <path d=\\"M299.52 460.8h409.6c28.16 0 51.2 23.04 51.2 51.2s-23.04 51.2-51.2 51.2h-409.6c-28.16 0-51.2-23.04-51.2-51.2s23.04-51.2 51.2-51.2z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+  </svg></view>"
+`;
+
+exports[`should render icon when leftIcon and rightIcon slots setted 2`] = `
+"<view class=\\"nut-input-number__icon nut-input-number__right\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+    <path d=\\"M345.6 460.8h409.6q51.2 0 51.2 51.2t-51.2 51.2H345.6q-51.2 0-51.2-51.2t51.2-51.2zM550.4 256q51.2 0 51.2 51.2v409.6q0 51.2-51.2 51.2t-51.2-51.2V307.2q0-51.2 51.2-51.2z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+  </svg></view>"
+`;

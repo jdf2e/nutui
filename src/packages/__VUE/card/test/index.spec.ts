@@ -1,20 +1,5 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { DOMWrapper, mount } from '@vue/test-utils';
 import Card from '../index.vue';
-import NutTag from '../../tag/index.vue';
-import NutIcon from '../../icon/index.vue';
-import NutPrice from '../../price/index.vue';
-
-beforeAll(() => {
-  config.global.components = {
-    NutTag,
-    NutPrice,
-    NutIcon
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
 
 test('title props', () => {
   const wrapper = mount(Card, {
