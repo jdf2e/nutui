@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - vitest
+      - pnpm-update
 
   pull_request:
     branches:
-      - vitest
+      - pnpm-update
 
   workflow_dispatch:
 
@@ -47,11 +47,14 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build nutui
+    - name: Build NutUI
       run: npm run build
 
-    - name: Build nutui-taro
+    - name: Build NutUI-Taro
       run: npm run build:taro:vue
 
-    - name: Build nutui demo
+    - name: Build NutUI Demo
       run: npm run build:site
+
+    - name: Build NutUI-Taro Demo
+      run: npm run build:taro:h5
