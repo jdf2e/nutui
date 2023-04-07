@@ -145,7 +145,7 @@ export default {
           option.text += '月';
           break;
         case 'day':
-          option.text += '月';
+          option.text += '日';
           break;
         case 'hour':
           option.text += '时';
@@ -168,7 +168,7 @@ export default {
           option.text += '月';
           break;
         case 'day':
-          option.text += '月';
+          option.text += '日';
           break;
         case 'hour':
           option.text += '时';
