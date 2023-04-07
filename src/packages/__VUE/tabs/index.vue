@@ -201,10 +201,7 @@ export default create({
     };
 
     const getScrollY = computed(() => {
-      if (props.titleScroll && props.direction === 'vertical') {
-        return true;
-      }
-      return false;
+      return props.titleScroll && props.direction === 'vertical';
     });
     const navRef = ref<HTMLElement>();
     const titleRef = ref([]) as Ref<HTMLElement[]>;

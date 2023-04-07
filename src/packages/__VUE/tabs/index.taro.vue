@@ -1,8 +1,8 @@
 <template>
   <view class="nut-tabs" :class="[direction]" ref="container" id="container">
     <Nut-Scroll-View
-      :scroll-x="true"
-      :scroll-y="true"
+      :scroll-x="getScrollX"
+      :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
       :scroll-left="scrollLeft"
       :scroll-top="scrollTop"
@@ -186,12 +186,11 @@ export default create({
         currentIndex.value = index;
       }
     };
-
+    const getScrollX = computed(() => {
+      return props.titleScroll && props.direction === 'horizontal';
+    });
     const getScrollY = computed(() => {
-      if (props.titleScroll && props.direction === 'vertical') {
-        return true;
-      }
-      return false;
+      return props.titleScroll && props.direction === 'vertical';
     });
     const titleRef = ref([]) as Ref<HTMLElement[]>;
     const scrollLeft = ref(0);
@@ -396,6 +395,7 @@ export default create({
       container,
       scrollLeft,
       scrollTop,
+      getScrollX,
       getScrollY,
       scrollWithAnimation,
       canShowLabel,
