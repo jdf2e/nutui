@@ -216,6 +216,41 @@ app.use(DatePicker);
 ```
 :::
 
+### Choose Hour-Minute
+:::demo
+```html
+<template>
+  <nut-date-picker
+    v-model="currentDate"
+    title="Choose Hour-Minute"
+    type="hour-minute"
+    :min-date="minDate"
+    :max-date="maxDate"
+    @confirm="confirm"
+  ></nut-date-picker>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup(props) {
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        showToast.text(selectedValue.join(':'));
+      }
+      return {
+        currentDate,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm
+      };
+    }
+  };
+</script>
+```
+:::
+
 ### Option Formatter
 :::demo
 ```html
@@ -385,7 +420,7 @@ app.use(DatePicker);
 | Attribute         | Description                             | Type   | Default           |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | Default Date                                            | date    | `null`   |
-| type            | Can be set to `date` `time` `year-month` `month-day` `datehour` | string  | `'date'` |
+| type            | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute` | string  | `date` |
 | minute-step     | Option minute step                                        | number  | `1`      |
 | is-show-chinese | Show Chinese                                  | boolean | `false`  |
 | min-date        | Start date                                         | date    | `Ten years ago on January 1` |

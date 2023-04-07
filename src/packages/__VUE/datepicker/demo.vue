@@ -57,6 +57,17 @@
       :max-date="maxDate"
       @confirm="confirm3"
     ></nut-date-picker>
+    <h2>{{ translate('hourMinute') }}</h2>
+
+    <!-- 选择时分 -->
+    <nut-date-picker
+      v-model="currentDate4"
+      :title="translate('chooseTime')"
+      type="hour-minute"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="confirm3"
+    ></nut-date-picker>
     <h2>{{ translate('format') }}</h2>
 
     <!-- 格式化选项 -->
@@ -110,6 +121,7 @@ const initTranslate = () =>
       mmdd: '选择月日',
       showAll: '选择年月日时分',
       time: '选择时分秒',
+      hourMinute: '选择时分',
       format: '格式化选项',
       stepMins: '分钟数递增步长设置',
       filter: '过滤选项',
@@ -131,6 +143,7 @@ const initTranslate = () =>
       mmdd: 'Choose Month-Day',
       showAll: 'Choose DateTime',
       time: 'Choose Time',
+      hourMinute: 'Choose Hour-Minute',
       format: 'Option Formatter',
       stepMins: 'Option Steps',
       filter: 'Option Filter',

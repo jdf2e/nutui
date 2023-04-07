@@ -222,6 +222,9 @@ export default create({
         case 'datehour':
           result = result.slice(0, 4);
           break;
+        case 'hour-minute':
+          result = result.slice(3, 5);
+          break;
       }
       return result;
     });

@@ -226,6 +226,43 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 ```
 :::
 
+### 选择时分
+:::demo
+```html
+<template>
+  <nut-date-picker
+    v-model="currentDate"
+    title="时间选择"
+    type="hour-minute"
+    :min-date="minDate"
+    :max-date="maxDate"
+    @confirm="confirm"
+  ></nut-date-picker>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import Taro from '@tarojs/taro'
+  export default {
+    setup(props) {
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+         Taro.showToast({
+          title:selectedValue.join(':'),
+          icon:'none'
+        });
+      }
+      return {
+        currentDate,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm
+      };
+    }
+  };
+</script>
+```
+:::
+
 ### 格式化选项
 
 通过传入 `formatter` 函数，可以对选项文字进行格式化处理。 `isShowChinese` 属性同样是也为选项后面添加文案，但 `formatter` 函数的优先级高于 `isShowChinese` 属性。
@@ -405,7 +442,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 | 参数            | 说明                                              | 类型    | 默认值   |
 |-----------------|---------------------------------------------------|---------|----------|
 | v-model         | 初始值                                            | date    | `null`   |
-| type            | 时间类型，可选值 `date` `time` `year-month` `month-day` `datehour` | string  | `'date'` |
+| type            | 时间类型，可选值 `date`(年月日) `time`(时分秒) `year-month`(年月) `month-day`(月日) `datehour`(年月日时) `hour-minute`(时分) | string  | `date` |
 | minute-step     | 分钟步进值                                        | number  | `1`      |
 | is-show-chinese | 每列是否展示中文                                  | boolean | `false`  |
 | min-date        | 开始日期                                          | date    | `十年前` |
