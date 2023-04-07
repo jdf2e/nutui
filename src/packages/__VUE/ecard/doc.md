@@ -86,7 +86,7 @@ app.use(Ecard);
 | data-list         | 电子卡面值列表| Array |        `DataList[]`        |
 | card-amount-min| 其它面值最小值     | number | `1` |
 | card-amount-max        | 其他面值最大值                      | number | `9999`            |
-| card-buy-min        | 购买数量最小值                      | number | `9999`            |
+| card-buy-min        | 购买数量最小值                      | number | `1`            |
 | card-buy-max        | 购买数量最大值                      | number | `9999`            |
 | placeholder        | 其他面值默认提示语                    | string |    `请输入1-5000整数`         |
 | suffix        | 符号标示                      | string | `¥`            |

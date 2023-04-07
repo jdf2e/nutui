@@ -84,7 +84,7 @@ app.use(Ecard);
 | data-list         | Ecard List| Array |        `DataList[]`        |
 | card-amount-min| Other Min Value     | number | `1`|
 | card-amount-max        | Other Max Value                      | number | `9999`            |
-| card-buy-min        | Choose Min Value                      | number | `9999`            |
+| card-buy-min        | Choose Min Value                      | number | `1`            |
 | card-buy-max        | Choose Max Value                      | number | `9999`            |
 | placeholder        | Placeholder                     | string |    `Placeholder`       |
 | suffix        | Symbol mark                      | string | `¥`            |
