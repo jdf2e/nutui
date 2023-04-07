@@ -44,6 +44,10 @@
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
       <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
+    <h2>{{ translate('title10') }}</h2>
+    <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" direction="vertical" style="height: 150px">
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+    </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
       <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
@@ -104,12 +108,13 @@ const initTranslate = () =>
       title1: '基础用法-微笑曲线',
       title2: '通过 pane-key 匹配',
       title3: '数据异步渲染 3s',
-      title4: '数量多,滚动操作',
+      title4: '数量多，滚动操作（横向）',
       title5: '左右布局',
       title6: '左右布局-微笑曲线',
       title7: '标签栏字体尺寸 large normal small',
       title8: '自定义标签栏',
       title9: 'Tabpane 自动高度',
+      title10: '数量多，滚动操作（纵向）',
       custom: (val: string) => `自定义 ${1}`
     },
     'en-US': {
@@ -118,12 +123,13 @@ const initTranslate = () =>
       title1: 'Basic Usage - Smile Curve',
       title2: 'Match by pane-key',
       title3: 'Data is rendered asynchronously for 3s',
-      title4: 'A large number of scrolling operations',
+      title4: 'A large number of scrolling operations(horizontal)',
       title5: 'Left and right layout',
       title6: 'Left and Right Layout - Smile Curve',
       title7: 'tab bar font size large normal small',
       title8: 'custom tab bar',
       title9: 'Tabpane auto height',
+      title10: 'A large number of scrolling operations(vertical)',
       custom: (val: string) => `custom ${1}`
     }
   });
