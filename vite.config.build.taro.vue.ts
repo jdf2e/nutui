@@ -41,7 +41,7 @@ export default defineConfig({
     minify: false,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro', '@tarojs/components', '@nutui/icons-vue-taro'],
+      external: ['vue', 'vue-router', '@tarojs/taro', '@nutui/icons-vue-taro'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {

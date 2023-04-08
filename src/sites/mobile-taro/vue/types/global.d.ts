@@ -1,4 +1,4 @@
-/// <reference path="node_modules/@tarojs/plugin-platform-weapp/types/shims-weapp.d.ts" />
+/// <reference types="@tarojs/taro" />
 
 declare module '*.png';
 declare module '*.gif';
@@ -13,15 +13,6 @@ declare module '*.styl';
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    TARO_ENV:
-      | 'weapp'
-      | 'swan'
-      | 'alipay'
-      | 'h5'
-      | 'rn'
-      | 'tt'
-      | 'quickapp'
-      | 'qq'
-      | 'jd';
+    TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq' | 'jd';
   }
 }

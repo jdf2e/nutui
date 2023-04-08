@@ -1,6 +1,6 @@
 <template>
   <view class="nut-tabs" :class="[direction]" ref="container" id="container">
-    <Nut-Scroll-View
+    <scroll-view
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
@@ -32,7 +32,7 @@
           <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
         </template>
       </view>
-    </Nut-Scroll-View>
+    </scroll-view>
     <view
       class="nut-tabs__content"
       ref="tabsContentRef"
@@ -52,7 +52,6 @@ import { createComponent } from '@/packages/utils/create';
 import { JoySmile } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
-import NutScrollView from '../scrollView/index.taro.vue';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';
 import Taro from '@tarojs/taro';
@@ -71,8 +70,7 @@ export type TabsSize = 'large' | 'normal' | 'small';
 const { create } = createComponent('tabs');
 export default create({
   components: {
-    JoySmile,
-    NutScrollView
+    JoySmile
   },
   props: {
     modelValue: {
