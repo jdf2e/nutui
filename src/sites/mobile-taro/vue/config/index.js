@@ -29,6 +29,18 @@ const config = {
     prebundle: { enable: false }
   },
   mini: {
+    webpackChain(chain, webpack) {
+      chain.merge({
+        module: {
+          rule: [
+            {
+              test: /.js$/,
+              loader: 'babel-loader'
+            }
+          ]
+        }
+      });
+    },
     postcss: {
       pxtransform: {
         enable: true,
