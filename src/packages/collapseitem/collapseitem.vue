@@ -12,7 +12,7 @@
       ></i>
       <i v-else :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"></i>
     </div>
-    <div :class="['collapse-wrapper']" ref="wrapper">
+    <div :class="['collapse-wrapper']" ref="wrapper" @transitionend="onTransitionEnd">
       <div class="collapse-content" ref="content">
         <slot></slot>
       </div>
@@ -108,7 +108,16 @@ export default {
         if (offsetHeight) {
           const contentHeight = `${offsetHeight}px`;
           wrapper.style.willChange = 'height';
-          wrapper.style.height = !this.openExpanded ? 0 : contentHeight;
+          if(!this.openExpanded) {
+            wrapper.style.height = contentHeight;
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                wrapper.style.height = 0;
+              })
+            })
+          } else {
+            wrapper.style.height = contentHeight;
+          }
           if (this.$parent.icon && !this.openExpanded) {
             this.$set(this.iconStyle, 'transform', 'rotate(0deg)');
           } else {
@@ -126,6 +135,9 @@ export default {
     },
     // 清除 willChange 减少性能浪费
     onTransitionEnd() {
+      if (this.openExpanded) {
+        this.$refs.wrapper.style.height = 'auto';
+      }
       this.$refs.wrapper.style.willChange = 'auto';
     },
   },
