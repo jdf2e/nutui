@@ -74,35 +74,43 @@
 * 🍭 单元测试覆盖率超过 80%，保障稳定性
 * 📖 提供 Sketch 设计资源
 
+## 文档
+
+官网：[nutui.jd.com](https://nutui.jd.com)
+
+[@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro)：适用于移动端 H5 页面开发
+
+[@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)：支持开发 Taro 多端小程序（微信、支付宝、京东等小程序）和 Taro-H5 项目
+
 ## 安装
 
 ```bash
-// Vue2 项目 
-npm i @nutui/nutui@2
-```
-
-```bash
-// Vue3 H5 项目
+// H5 项目
 npm i @nutui/nutui
 ```
 
 ```bash
-// Vue3 小程序项目
+// Taro 小程序项目
 npm i @nutui/nutui-taro
 ```
+
+## 版本说明
+
+目前 NutUI 有以下版本：
+* NutUI 4.x，默认推荐版本，定期迭代更新发版。
+* NutUI 3.x，长期维护版本，会同步 V4 版本问题修复，不对 API 做调整，不定期发版。
+* NutUI 2.x，仅修复重要阻塞性问题，不定期发版。
 
 ## 示例
 
 ```js
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from "vue"
+import App from "./App.vue"
 
-// 注意：这种方式将会导入所有组件
-import NutUI from "@nutui/nutui";
-// 采用按需加载时  此全局css样式，需要删除
-import "@nutui/nutui/dist/style.css";
+import NutUI from "@nutui/nutui"
+import "@nutui/nutui/dist/style.css"
 
-createApp(App).use(NutUI).mount("#app");
+createApp(App).use(NutUI).mount("#app")
 ```
 
 ## 学习资源
@@ -114,30 +122,13 @@ createApp(App).use(NutUI).mount("#app");
 
 ## 主题
 
-我们提供了几套官方主题，来自京东内部实际业务，欢迎在项目中使用，如果不能满足需求，你也可以  <a href="https://nutui.jd.com/theme/#/base" target="_blank">自定义主题</a>
+我们提供了几套官方主题，来自京东内部实际业务，欢迎在项目中使用，如果不能满足需求，你也可以使用 ConfigProvider 组件自定义主题。
 
-* <a href="https://nutui.jd.com/#/zh-CN/component/button" target="_blank">京东APP视觉（Vue3，默认）</a>
-* <a href="https://nutui.jd.com/jdt/#/zh-CN/component/button" target="_blank">京东科技视觉（Vue3）</a>
-* <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城主题（Vue3）</a>
-* <a href="https://nutui.jd.com/?jddkh#/zh-CN/component/button" target="_blank">京东企业业务主题（Vue3）</a>
-* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">京东物流视觉（Vue2）</a>
-
-
-## 版本说明
-
-> @nutui/nutui 和 @nutui/nutui-taro 属于并行版本，存在部分差异，版本号始终保持一致。如果兼容 ios 10 以下请使用 @nutui/nutui@2
-
-* NutUI 2x & NutUI-JDL 使用 Vue2 开发，支持现代浏览器及 Android >= 4.0、iOS >= 8.0，仅 H5 应用。
-* NutUI 3x 使用 Vue3 开发，支持现代浏览器及 Chrome >= 51、iOS >= 10.0，可输出 H5 和小程序两类应用。
-
-## 构建版本
-
-> AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。
-
-* es **nutui.es.js**
-
-* umd **nutui.umd.js**
-
+* <a href="https://nutui.jd.com/#/" target="_blank">京东APP视觉（Vue3，默认）</a>
+* <a href="https://nutui.jd.com/h5/vue/4x/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城主题（Vue3）</a>
+* <a href="https://nutui.jd.com/h5/vue/4x/?jddkh#/zh-CN/component/button" target="_blank">京东企业业务主题（Vue3）</a>
+* <a href="https://nutui.jd.com/jdt/#/zh-CN/guide/intro-jdt" target="_blank">京东科技视觉（Vue3，NutUI3.0）</a>
+* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">京东物流视觉（Vue2，NutUI2.0）</a>
 
 ## 使用案例
 
