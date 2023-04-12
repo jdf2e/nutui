@@ -119,7 +119,7 @@ export default create({
     const state = reactive({
       currentDate: new Date(),
       title: props.title,
-      selectedValue: []
+      selectedValue: [] as Array<any>
     });
     const formatValue = (value: Date) => {
       if (!isDate(value)) {
@@ -202,31 +202,7 @@ export default create({
           range: [minSeconds, maxSeconds]
         }
       ];
-
-      switch (props.type) {
-        case 'date':
-          result = result.slice(0, 3);
-          break;
-        case 'datetime':
-          result = result.slice(0, 5);
-          break;
-        case 'time':
-          result = result.slice(3, 6);
-          break;
-        case 'year-month':
-          result = result.slice(0, 2);
-          break;
-        case 'month-day':
-          result = result.slice(1, 3);
-          break;
-        case 'datehour':
-          result = result.slice(0, 4);
-          break;
-        case 'hour-minute':
-          result = result.slice(3, 5);
-          break;
-      }
-      return result;
+      return generateList(result);
     });
 
     const columns = computed(() => {
@@ -333,6 +309,45 @@ export default create({
       emit('confirm', val);
     };
 
+    const generateList = (list: Array<any>) => {
+      switch (props.type) {
+        case 'date':
+          list = list.slice(0, 3);
+          break;
+        case 'datetime':
+          list = list.slice(0, 5);
+          break;
+        case 'time':
+          list = list.slice(3, 6);
+          break;
+        case 'year-month':
+          list = list.slice(0, 2);
+          break;
+        case 'month-day':
+          list = list.slice(1, 3);
+          break;
+        case 'datehour':
+          list = list.slice(0, 4);
+          break;
+        case 'hour-minute':
+          list = list.slice(3, 5);
+          break;
+      }
+      return list;
+    };
+
+    const getSelectedValue = (time: Date) => {
+      const res = [
+        time.getFullYear(),
+        time.getMonth() + 1,
+        time.getDate(),
+        time.getHours(),
+        time.getMinutes(),
+        time.getSeconds()
+      ];
+      return generateList(res.map((i) => String(i)));
+    };
+
     onBeforeMount(() => {
       state.currentDate = formatValue(props.modelValue);
     });
@@ -344,6 +359,7 @@ export default create({
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(state.currentDate);
         if (!isSameValue) {
           state.currentDate = newValues;
+          state.selectedValue = getSelectedValue(newValues);
         }
       }
     );
