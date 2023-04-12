@@ -74,35 +74,36 @@
 * 🍭 80%+ Unit Test Coverage
 * 📖 Provide Sketch Design Resources
 
+## Document
+
+Site: [nutui.jd.com](https://nutui.jd.com)
+
+[@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro): Mobile H5 Components
+
+[@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro): Taro Mini Programs(weapp, alipay, jd...) & Taro-H5
+
 ## Installation
 
 ```bash
-// Vue2
-npm i @nutui/nutui@2
-```
-
-```bash
-// Vue3 H5
+// H5
 npm i @nutui/nutui
 ```
 
 ```bash
-// Vue3 Mini Programs
+// Taro Mini Programs
 npm i @nutui/nutui-taro
 ```
 
 ## Usage
 
 ```js
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from "vue"
+import App from "./App.vue"
 
-// Note: It will import all components in this way.
-import NutUI from "@nutui/nutui";
-// Delete the global style import if you customize for tree shaking.
-import "@nutui/nutui/dist/style.css";
+import NutUI from "@nutui/nutui"
+import "@nutui/nutui/dist/style.css"
 
-createApp(App).use(NutUI).mount("#app");
+createApp(App).use(NutUI).mount("#app")
 ```
 
 ## Resources
@@ -114,30 +115,13 @@ createApp(App).use(NutUI).mount("#app");
 
 ## Themes
 
-NutUI provides several sets of official themes from actual business inside JD.com. If they don't meet your needs, you can use  <a href="https://nutui.jd.com/theme/#/base" target="_blank">Online Theme Editor</a>.
+NutUI provides several sets of official themes from actual business inside JD.com. If they don't meet your needs, you can use `ConfigProvider`.
 
-* <a href="https://nutui.jd.com/#/zh-CN/component/button" target="_blank">JD APP 10.0 Design (Vue3, default)</a>
-* <a href="https://nutui.jd.com/jdt/#/zh-CN/component/button" target="_blank">JDT Design (Vue3)</a>
-* <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button" target="_blank">JD ToB Mall Design (Vue3)</a>
-* <a href="https://nutui.jd.com/?jddkh#" target="_blank">JD Enterprise Business Design (Vue3)</a>
-* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">JDL Design (Vue2)</a>
-
-
-## Version Intros
-
-> `@nutui/nutui` and `@nutui/nutui-taro` are parallel versions with some differences. The version numbers are always the same. If you need compatibility with versions below iOS 10, please use `@nutui/nutui@2` .
-
-* `NutUI 2x` and `NutUI-JDL` are built with Vue2 which support modern browsers, Android >= 4.0, iOS >= 8.0 and only for H5.
-* `NutUI 3x` is built with Vue3 which supports modern browsers, Chrome >= 51 and iOS >= 10.0. You can use it to develop both H5 and mini-programs.
-
-## Build Versions
-
-> If you are using AMD environment or build tools such as Webpack, Vite, etc., we recommend using the `es` version. If it is a non-module environment (such as direct reference through the `<script>` tag), it is recommended to use the `umd` compressed version.
-
-* es **nutui.es.js**
-
-* umd **nutui.umd.js**
-
+* <a href="https://nutui.jd.com" target="_blank">JD APP 10.0 Design (Vue3, default)</a>
+* <a href="https://nutui.jd.com/h5/vue/4x/?jdb#/en-US/component/button" target="_blank">JD ToB Mall Design (Vue3)</a>
+* <a href="https://nutui.jd.com/h5/vue/4x/?jddkh#/en-US/component/button" target="_blank">JD Enterprise Business Design (Vue3)</a>
+* <a href="https://nutui.jd.com/jdt/#/en-US/component/button" target="_blank">JDT Design (Vue3, NutUI3.0)</a>
+* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">JDL Design (Vue2, NutUI4.0)</a>
 
 ## Cases
 
