@@ -41,14 +41,14 @@
           <span
             class="nut-menu-item__span"
             v-if="option.value === modelValue"
-            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            :class="[option.value === modelValue ? activeTitleClass : inactiveTitleClass]"
           >
             <slot name="icon">
               <Check v-bind="$attrs" :color="parent.props.activeColor"></Check>
             </slot>
           </span>
           <view
-            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            :class="[option.value === modelValue ? activeTitleClass : inactiveTitleClass]"
             :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
             >{{ option.text }}</view
           >
