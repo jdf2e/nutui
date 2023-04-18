@@ -355,7 +355,6 @@ app.use(CheckboxGroup);
           state.checkbox10 = true;
         } else if(label.length && label.length < 4){
           state.indeterminate = true;
-          state.checkbox10 = true;
         } else {
           state.checkbox10 = false;
         }

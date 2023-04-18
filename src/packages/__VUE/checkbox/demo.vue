@@ -52,9 +52,9 @@
     <nut-cell-group :title="translate('useGroup')">
       <nut-cell>
         <nut-checkbox-group v-model="checkboxgroup1">
-          <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="1" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
-          <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="3" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
         </nut-checkbox-group>
       </nut-cell>
@@ -66,9 +66,9 @@
     <nut-cell-group :title="translate('disableGroup')">
       <nut-cell>
         <nut-checkbox-group v-model="checkboxgroup2" disabled>
-          <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="1" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
-          <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="3" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
         </nut-checkbox-group>
       </nut-cell>
@@ -82,10 +82,10 @@
         </nut-checkbox-group>
       </nut-cell>
       <nut-cell>
-        <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">
+        <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0;">
           {{ translate('selectAll') }}
         </nut-button>
-        <nut-button type="info" @click="toggleAll(false)" style="margin: 0 20px 0 0">
+        <nut-button type="info" @click="toggleAll(false)" style="margin: 0 20px 0 0;">
           {{ translate('cancel') }}
         </nut-button>
         <nut-button type="warning" @click="toggleReverse()">{{ translate('selectReverse') }}</nut-button>
@@ -94,9 +94,9 @@
     <nut-cell-group :title="translate('useGroupLimit')">
       <nut-cell>
         <nut-checkbox-group v-model="checkboxgroup4" :max="2">
-          <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="1" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
-          <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="3" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="4">{{ translate('combine') }}</nut-checkbox>
         </nut-checkbox-group>
       </nut-cell>
@@ -113,7 +113,7 @@
       </nut-cell>
       <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
         <nut-cell>
-          <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
+          <nut-checkbox label="1" style="margin: 2px 20px 0 0;">{{ translate('combine') }}</nut-checkbox>
         </nut-cell>
         <nut-cell
           ><nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
@@ -248,13 +248,11 @@ export default createDemo({
     };
 
     const changeBox6 = (label: string[]) => {
-      console.log(11);
       if (label.length === 4) {
         data.indeterminate = false;
         data.checkbox10 = true;
       } else if (label.length && label.length < 4) {
         data.indeterminate = true;
-        data.checkbox10 = true;
       } else {
         data.checkbox10 = false;
       }
