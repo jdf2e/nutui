@@ -157,6 +157,7 @@ export default create({
       funInterceptor(props.beforeClose, {
         args: [action],
         done: () => {
+          showPopup.value = false;
           update(false);
           emit('closed');
         }
@@ -166,6 +167,7 @@ export default create({
     const onCancel = () => {
       emit('cancel');
       if (props.cancelAutoClose) {
+        showPopup.value = false;
         closed('cancel');
       }
     };
