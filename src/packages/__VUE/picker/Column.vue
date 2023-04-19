@@ -19,7 +19,7 @@
         <!-- 平铺 -->
         <view
           class="nut-picker-roller-item-tile"
-          :style="{ height: pxCheck(optionHeight) }"
+          :style="{ height: pxCheck(optionHeight), lineHeight: pxCheck(optionHeight) }"
           v-if="item && item.text && !threeDimensional"
         >
           {{ item.text }}
