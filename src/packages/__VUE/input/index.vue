@@ -152,7 +152,7 @@ export default create({
     },
     class: {
       type: String,
-      default: false
+      default: ''
     }
   },
   components: { MaskClose },
