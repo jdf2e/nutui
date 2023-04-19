@@ -156,6 +156,10 @@ export default create({
     showClearIcon: {
       type: Boolean,
       default: false
+    },
+    class: {
+      type: String,
+      default: ''
     }
   },
   components: { MaskClose },
@@ -187,7 +191,8 @@ export default create({
         [`${prefixCls}--disabled`]: props.disabled,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
-        [`${prefixCls}--border`]: props.border
+        [`${prefixCls}--border`]: props.border,
+        [props.class]: !!props.class
       };
     });
 
