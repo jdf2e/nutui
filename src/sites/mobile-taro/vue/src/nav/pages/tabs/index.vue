@@ -34,8 +34,19 @@
       <nut-tabpane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
 
-    <h2>数量多,滚动操作</h2>
+    <h2>数量多，滚动操作（横向）</h2>
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10" name="tab4value">
+      <nut-tabpane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+    </nut-tabs>
+    <h2>数量多，滚动操作（纵向）</h2>
+    <nut-tabs
+      v-model="state.tab4value"
+      title-scroll
+      title-gutter="10"
+      name="tab8value"
+      direction="vertical"
+      style="height: 220px"
+    >
       <nut-tabpane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
     <h2>左右布局</h2>
