@@ -442,6 +442,14 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | clear | Customize the end of the input box to clear the button |
 | left `4.0.1` | Customize the slot content on the left side of the input box |
 | right `4.0.1`| Customize the slot content on the right side of the input box |
+
+### Ref
+| Name  | Description     | 
+|-------|----------|
+| focus `4.0.6` | Focus |
+| blur `4.0.6` | Blur |
+| select `4.0.6`| Selct |
+
 ## Theming
 
 ### CSS Variables
