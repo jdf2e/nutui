@@ -50,6 +50,17 @@
       :title="translate('chooseCity')"
       @confirm="confirm"
     ></nut-picker>
+
+    <h2>{{ translate('columnsKey') }}</h2>
+    <nut-picker
+      :columns="customColumns"
+      :columnsKey="{
+        text: 'cityName',
+        value: 'cityId'
+      }"
+      :title="translate('chooseCity')"
+      @confirm="customConfirm"
+    ></nut-picker>
   </div>
 </template>
 <script lang="ts">
@@ -158,6 +169,15 @@ export default createDemo({
       { text: '2022-12', value: 'December' }
     ]);
     const asyncColumns = ref<PickerOption[]>([]);
+    const customColumns = ref([
+      { cityName: translate('nanJing'), cityId: 'NanJing' },
+      { cityName: translate('wuXi'), cityId: 'WuXi' },
+      { cityName: translate('zangZu'), cityId: 'ZangZu' },
+      { cityName: translate('beiJing'), cityId: 'BeiJing' },
+      { cityName: translate('lianYunGang'), cityId: 'LianYunGang' },
+      { cityName: translate('zheJiang'), cityId: 'ZheJiang' },
+      { cityName: translate('jiangSu'), cityId: 'JiangSu' }
+    ]);
 
     const show = ref(false);
     const popupDesc = ref();
@@ -181,6 +201,10 @@ export default createDemo({
       showToast.text(selectedOptions.map((val: any) => val.text).join(','));
     };
 
+    const customConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+      showToast.text(selectedOptions.map((val: any) => val.cityName).join(','));
+    };
+
     const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
       popupDesc.value = selectedOptions.map((val: any) => val.text).join(',');
       show.value = false;
@@ -194,8 +218,10 @@ export default createDemo({
       multipleColumns,
       cascaderColumns,
       confirm,
+      customConfirm,
       asyncColumns,
       effectColumns,
+      customColumns,
       translate,
       selectedTime,
       selectedCascader,

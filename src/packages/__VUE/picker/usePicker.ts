@@ -1,4 +1,4 @@
-import { ref, reactive, watch, computed, toRefs, PropType } from 'vue';
+import { ref, reactive, watch, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName } = createComponent('picker');
 import { PickerOption } from './types';
@@ -8,8 +8,17 @@ export const usePicker = (props: any, emit: any) => {
     formattedColumns: props.columns
   });
 
+  const keys = computed(() => {
+    return {
+      text: 'text',
+      value: 'value',
+      children: 'children',
+      ...props.columnsKey
+    };
+  });
+
   // 选中项
-  let defaultValues = ref<(number | string)[]>([]);
+  const defaultValues = ref<(number | string)[]>([]);
 
   const pickerColumn = ref<any[]>([]);
 
@@ -27,10 +36,10 @@ export const usePicker = (props: any, emit: any) => {
   });
 
   const selectedOptions = computed(() => {
-    let optins: PickerOption[] = [];
+    const optins: PickerOption[] = [];
     (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
       let currOptions = [];
-      currOptions = column.filter((item) => item.value == defaultValues.value[index]);
+      currOptions = column.filter((item) => item[keys.value.value] == defaultValues.value[index]);
       optins.push(currOptions[0]);
     });
 
@@ -44,7 +53,7 @@ export const usePicker = (props: any, emit: any) => {
       if (Array.isArray(firstColumn)) {
         return 'multiple';
       }
-      if ('children' in firstColumn) {
+      if (keys.value.children in firstColumn) {
         return 'cascade';
       }
     }
@@ -67,20 +76,19 @@ export const usePicker = (props: any, emit: any) => {
   const formatCascade = (columns: PickerOption[], defaultValues: (number | string)[]) => {
     const formatted: PickerOption[][] = [];
     let cursor: PickerOption = {
-      text: '',
-      value: '',
-      children: columns
+      [keys.value.text]: '',
+      [keys.value.value]: '',
+      [keys.value.children]: columns
     };
 
     let columnIndex = 0;
 
-    while (cursor && cursor.children) {
-      const options: PickerOption[] = cursor.children;
+    while (cursor && cursor[keys.value.children]) {
+      const options: PickerOption[] = cursor[keys.value.children];
       const value = defaultValues[columnIndex];
-      let index = options.findIndex((columnItem) => columnItem.value == value);
+      let index = options.findIndex((columnItem) => columnItem[keys.value.value] == value);
       if (index == -1) index = 0;
-      cursor = cursor.children[index];
-
+      cursor = cursor[keys.value.children][index];
       columnIndex++;
       formatted.push(options);
     }
@@ -100,21 +108,21 @@ export const usePicker = (props: any, emit: any) => {
       defaultValues.value = defaultValues.value ? defaultValues.value : [];
 
       if (columnsType.value === 'cascade') {
-        defaultValues.value[columnIndex] = option.value ? option.value : '';
+        defaultValues.value[columnIndex] = option[keys.value.value] ?? '';
         let index = columnIndex;
         let cursor = option;
-        while (cursor && cursor.children && cursor.children[0]) {
-          defaultValues.value[index + 1] = cursor.children[0].value;
+        while (cursor && cursor[keys.value.children] && cursor[keys.value.children][0]) {
+          defaultValues.value[index + 1] = cursor[keys.value.children][0].value;
           index++;
-          cursor = cursor.children[0];
+          cursor = cursor[keys.value.children][0];
         }
 
         // 当前改变列 的 下一列 children 值为空
-        if (cursor && cursor.children && cursor.children.length == 0) {
+        if (cursor && cursor[keys.value.children] && cursor[keys.value.children].length == 0) {
           defaultValues.value = defaultValues.value.slice(0, index + 1);
         }
       } else {
-        defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
+        defaultValues.value[columnIndex] = option[keys.value.value] ?? '';
       }
 
       emit('change', {
@@ -128,7 +136,7 @@ export const usePicker = (props: any, emit: any) => {
   const confirm = () => {
     if (defaultValues.value && !defaultValues.value.length) {
       columnsList.value.forEach((columns) => {
-        defaultValues.value.push(columns[0].value);
+        defaultValues.value.push(columns[0][keys.value.value]);
       });
     }
 
@@ -179,6 +187,7 @@ export const usePicker = (props: any, emit: any) => {
     pickerColumn,
     swipeRef,
     selectedOptions,
-    isSameValue
+    isSameValue,
+    keys
   };
 };

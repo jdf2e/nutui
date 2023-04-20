@@ -13,6 +13,7 @@
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
+          :keys="keys"
           :columnsType="columnsType"
           :value="defaultValues && defaultValues[columnIndex]"
           :threeDimensional="threeDimensional"
@@ -32,12 +33,12 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, computed, PropType, CSSProperties } from 'vue';
+import { ref, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { usePicker } from './usePicker';
 import column from './Column.vue';
 import baseProps from './baseProps';
-const { componentName, create, translate } = createComponent('picker');
+const { create, translate } = createComponent('picker');
 import { PickerOption } from './types';
 
 export default create({
@@ -47,7 +48,10 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, classes, cancel } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, keys, columnsType, classes, cancel } = usePicker(
+      props,
+      emit
+    );
 
     const pickerColumn = ref<any[]>([]);
 
@@ -84,7 +88,8 @@ export default create({
       translate,
       pickerColumn,
       swipeRef,
-      columnStyle
+      columnStyle,
+      keys
     };
   }
 });

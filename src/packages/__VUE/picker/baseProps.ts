@@ -1,5 +1,5 @@
 import { PropType } from 'vue';
-import { PickerOption } from './types';
+import { PickerOption, PickerColumnsKey } from './types';
 export default {
   modelValue: {
     type: Array as PropType<(string | number)[]>,
@@ -22,6 +22,10 @@ export default {
     default: () => {
       return [];
     }
+  },
+  columnsKey: {
+    type: Object as PropType<PickerColumnsKey>,
+    default: () => ({})
   },
   threeDimensional: {
     type: Boolean,

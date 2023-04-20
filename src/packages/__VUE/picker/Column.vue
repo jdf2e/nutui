@@ -6,23 +6,23 @@
       :style="threeDimensional ? touchRollerStyle : touchTileStyle"
       @transitionend="stopMomentum"
     >
-      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+      <template v-for="(item, index) in column" :key="item[keys.value] ? item[keys.value] : index">
         <!-- 3D 效果 -->
         <view
           class="nut-picker-roller-item"
           :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
           :style="setRollerStyle(index + 1)"
-          v-if="item && item.text && threeDimensional"
+          v-if="item && item[keys.text] && threeDimensional"
         >
-          {{ item.text }}
+          {{ item[keys.text] }}
         </view>
         <!-- 平铺 -->
         <view
           class="nut-picker-roller-item-tile"
           :style="{ height: pxCheck(optionHeight) }"
-          v-if="item && item.text && !threeDimensional"
+          v-if="item && item[keys.text] && !threeDimensional"
         >
-          {{ item.text }}
+          {{ item[keys.text] }}
         </view>
       </template>
     </view>
@@ -30,9 +30,9 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted, PropType, CSSProperties } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { PickerOption, TouchParams } from './types';
+import { PickerColumnsKey, PickerOption, TouchParams } from './types';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -46,6 +46,10 @@ export default create({
     column: {
       type: Array as PropType<PickerOption[]>,
       default: () => []
+    },
+    keys: {
+      type: Object as PropType<PickerColumnsKey>,
+      default: () => ({})
     },
     // 是否开启3D效果
     threeDimensional: {
@@ -85,6 +89,8 @@ export default create({
       scrollDistance: 0,
       rotation: 20
     });
+
+    const keys = computed(() => props.keys);
 
     const roller = ref(null);
 
@@ -255,7 +261,7 @@ export default create({
 
     const modifyStatus = (type: boolean) => {
       const { column } = props;
-      let index = column.findIndex((columnItem) => columnItem.value == props.value);
+      let index = column.findIndex((columnItem) => columnItem[keys.value.value] == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * +props.optionHeight;
@@ -312,7 +318,8 @@ export default create({
       setMove,
       stopMomentum,
       pxCheck,
-      maskStyles
+      maskStyles,
+      keys
     };
   }
 });
