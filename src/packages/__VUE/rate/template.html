@@ -1,7 +1,7 @@
 <view :class="classes" @touchstart="onTouchStart" @touchmove="onTouchMove">
   <view class="nut-rate-item" v-for="n in Number(count)" :key="n" ref="rateRefs" :id="'rateRefs-' + refRandomId + n"
     :style="n < Number(count) ? { marginRight: pxCheck(spacing) } : {}">
-    <view>
+    <view class="nut-rate-item__icon--full">
       <component
         :is="renderIcon(customIcon,{width:size,height:size,size,color:n <= modelValue ? activeColor : voidColor})"
         class="nut-rate-item__icon" :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
