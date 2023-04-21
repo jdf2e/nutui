@@ -1,5 +1,6 @@
 import { ref, onMounted, reactive, watch, computed, CSSProperties, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { pxCheck } from '@/packages/utils/pxCheck';
 const { translate } = createComponent('picker');
 import { usePicker } from './usePicker';
 import column from './Column.vue';
@@ -13,8 +14,16 @@ export const componentWeb = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, selectedOptions, columnsType, classes, cancel } =
-      usePicker(props, emit);
+    const {
+      changeHandler,
+      confirm,
+      defaultValues,
+      columnsList,
+      selectedOptions,
+      columnsType,
+      classes,
+      cancel
+    } = usePicker(props, emit);
 
     const state = reactive<{
       ENV: TaroGeneral.ENV_TYPE;
@@ -186,7 +195,8 @@ export const componentWeapp = {
       handlePickstart,
       translate,
       handlePickend,
-      pickerViewStyles
+      pickerViewStyles,
+      pxCheck
     };
   }
 };

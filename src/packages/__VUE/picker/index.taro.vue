@@ -27,7 +27,7 @@
         <view
           class="nut-picker-roller-item-tarotile"
           :style="{
-            lineHeight: `${optionHeight}px`
+            lineHeight: pxCheck(optionHeight)
           }"
           v-for="(item, index) in column"
           :key="item.value ? item.value : index"
