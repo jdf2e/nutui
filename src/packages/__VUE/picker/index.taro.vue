@@ -26,6 +26,9 @@
       <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
         <view
           class="nut-picker-roller-item-tarotile"
+          :style="{
+            lineHeight: pxCheck(optionHeight)
+          }"
           v-for="(item, index) in column"
           :key="item.value ? item.value : index"
         >
