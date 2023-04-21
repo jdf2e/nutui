@@ -1,3 +1,21 @@
+## v4.0.6
+
+`2023-04-21`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @kingyang @blue0728
+
+* :zap: feat(input): add focus, blur, select ref (#2250)
+* :bug: fix(input): 传入 class 被忽略问题 #2242 (#2243) @kingyang
+* :bug: fix(Menu): 修复 MenuItem class 设置无效问题 (#2236) @blue0728
+* :bug: fix(datepicker): 修复小程序下 v-model 修改异常问题
+* :bug: fix(checkbox): fix toggle all demo #2237
+* :bug: fix(rate): 修复定位方式导致的异常空白高度问题 (#2255)
+* :bug: fix(picker): 修复平铺模式下溢出省略失效问题 (#2247)
+* :bug: fix(dialog): remove hidden class after close #2211 (#2241)
+* :rocket: chore: upgrade Taro to 3.6.2+
+* :rocket: chore: move yarn to pnpm for Taro Demo
+
 ## v4.0.5
 
 `2023-04-07`
