@@ -36,16 +36,10 @@
           class="nut-input-clear-box"
           v-if="clearable && !readonly"
           v-show="(active || showClearIcon) && modelValue.length > 0"
+          @click="clear"
         >
           <slot name="clear">
-            <MaskClose
-              class="nut-input-clear"
-              v-bind="$attrs"
-              :size="clearSize"
-              :width="clearSize"
-              :height="clearSize"
-              @click="clear"
-            >
+            <MaskClose class="nut-input-clear" v-bind="$attrs" :size="clearSize" :width="clearSize" :height="clearSize">
             </MaskClose>
           </slot>
         </view>
@@ -158,6 +152,7 @@ export default create({
   components: { MaskClose },
 
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
+  expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -321,6 +316,18 @@ export default create({
       updateValue(getModelValue(), props.formatTrigger);
     });
 
+    const focus = () => {
+      inputRef.value?.focus();
+    };
+
+    const blur = () => {
+      inputRef.value?.blur();
+    };
+
+    const select = () => {
+      inputRef.value?.select();
+    };
+
     return {
       renderInput,
       inputRef,
@@ -335,7 +342,10 @@ export default create({
       startComposing,
       endComposing,
       onClick,
-      onClickInput
+      onClickInput,
+      focus,
+      blur,
+      select
     };
   }
 });

@@ -40,10 +40,10 @@
           class="nut-input-clear-box"
           v-if="clearable && !readonly"
           v-show="(active || showClearIcon) && modelValue.length > 0"
+          @click="clear"
         >
           <slot name="clear">
-            <MaskClose class="nut-input-clear" :size="clearSize" :width="clearSize" :height="clearSize" @click="clear">
-            </MaskClose>
+            <MaskClose class="nut-input-clear" :size="clearSize" :width="clearSize" :height="clearSize"> </MaskClose>
           </slot>
         </view>
         <view class="nut-input-right-box">

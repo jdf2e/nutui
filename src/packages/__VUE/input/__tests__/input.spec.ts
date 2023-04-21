@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Input from '../index.vue';
+import { nextTick } from 'vue';
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: '3' } });
@@ -27,13 +28,12 @@ test('should render clear icon when using clearable prop', async () => {
   });
   const input = wrapper.find('input');
   await input.trigger('focus');
-  // expect(wrapper.find('.nut-input-clear').exists()).toBeTruthy();
   wrapper.find('.nut-input-clear').trigger('click');
-  // expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
-  // expect((wrapper.emitted('handleClear') as any)[0][0]).toBeTruthy();
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
+  expect((wrapper.emitted('clear') as any)[0][0]).toBe('');
 });
 
-test('should clear when event clear', () => {
+test('should clear when event clear', async () => {
   const wrapper = mount(Input, {
     props: {
       clearable: true,
@@ -41,13 +41,14 @@ test('should clear when event clear', () => {
     }
   });
   const input = wrapper.find('input');
-  const clear = wrapper.find('.nut-input-clear');
+  const clear: any = wrapper.find('.nut-input-clear-box');
   wrapper.find('input').trigger('input');
+  expect(input.element.value).toBe('test');
   clear.trigger('click');
-  expect(clear.exists()).toBe(true);
+  expect(clear.element.style.display).toBe('none');
   setTimeout(() => {
     expect(input.element.value).toBe('');
-  });
+  }, 50);
 });
 // 测试只能是数字
 test('should format input value when type is number', async () => {
