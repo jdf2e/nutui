@@ -1,5 +1,6 @@
 .nut-rate {
   display: inline-flex;
+  vertical-align: bottom;
   &-item {
     display: flex;
     flex-shrink: 0;
@@ -11,25 +12,22 @@
 
     &__icon {
       color: $rate-icon-color;
+      flex-shrink: 0;
       cursor: pointer;
-
-      &::before {
-        // position: relative;
-        // top: auto;
-        // left: auto;
-        // transform: none;
-      }
 
       &--disabled {
         color: $rate-icon-void-color;
       }
+      &--full {
+        display: flex;
+      }
       &--half {
+        display: flex;
         position: absolute;
-        width: 50% !important;
+        width: 50%;
         left: 0;
         top: 0;
         overflow: hidden;
-        height: auto !important;
       }
     }
   }
