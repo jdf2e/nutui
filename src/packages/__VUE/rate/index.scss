@@ -12,6 +12,7 @@
 
     &__icon {
       color: $rate-icon-color;
+      flex-shrink: 0;
       cursor: pointer;
 
       &--disabled {
@@ -23,11 +24,10 @@
       &--half {
         display: flex;
         position: absolute;
-        width: 50% !important;
+        width: 50%;
         left: 0;
         top: 0;
         overflow: hidden;
-        height: auto !important;
       }
     }
   }
