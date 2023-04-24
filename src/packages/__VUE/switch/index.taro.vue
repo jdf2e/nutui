@@ -5,8 +5,8 @@
         <Loading1 name="loading1" :color="activeColor" />
       </slot>
       <template v-if="activeText">
-        <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>
-        <view class="nut-switch-label close" v-show="!modelValue">{{ inactiveText }}</view>
+        <view class="nut-switch-label open" v-show="isActive">{{ activeText }}</view>
+        <view class="nut-switch-label close" v-show="!isActive">{{ inactiveText }}</view>
       </template>
     </view>
   </view>
@@ -101,6 +101,7 @@ export default create({
     return {
       classes,
       style,
+      isActive,
       onClick
     };
   }

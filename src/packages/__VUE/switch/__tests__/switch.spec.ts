@@ -51,6 +51,19 @@ test('prop activeText test', () => {
   expect(wrapper.html()).toContain('test text');
 });
 
+test('prop activeValue test', () => {
+  const wrapper = mount(Switch, {
+    props: {
+      modelValue: '0',
+      activeText: '开',
+      activeValue: '1',
+      inactiveText: '关',
+      inactiveValue: '0'
+    }
+  });
+  expect(wrapper.find('.close').isVisible()).toBeTruthy();
+});
+
 test('emit click event', () => {
   const wrapper = mount(Switch);
 
