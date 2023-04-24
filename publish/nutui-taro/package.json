@@ -39,7 +39,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "publish:beta": "npm publish --tag=beta",
+    "publish:beta": "npm publish --tag=beta-v3",
     "publish-release": "npm publish --tag=latest-v3"
   },
   "peerDependencies": {
