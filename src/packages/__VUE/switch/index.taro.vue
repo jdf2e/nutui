@@ -4,8 +4,8 @@
       <nut-icon v-if="loading" v-bind="$attrs" :name="name" :size="size" :color="color"></nut-icon>
       <!-- <view v-show="!modelValue" class="close-line"></view> -->
       <template v-if="activeText">
-        <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>
-        <view class="nut-switch-label close" v-show="!modelValue">{{ inactiveText }}</view>
+        <view class="nut-switch-label open" v-show="isActive">{{ activeText }}</view>
+        <view class="nut-switch-label close" v-show="!isActive">{{ inactiveText }}</view>
       </template>
     </view>
   </view>
@@ -110,7 +110,8 @@ export default create({
     return {
       classes,
       style,
-      onClick
+      onClick,
+      isActive
     };
   }
 });
