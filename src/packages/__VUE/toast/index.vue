@@ -44,7 +44,10 @@ export default create({
       type: Boolean,
       default: true
     },
-    type: String,
+    type: {
+      type: String,
+      default: 'text'
+    },
     customClass: String,
     bottom: {
       type: String,
@@ -56,7 +59,7 @@ export default create({
     },
     icon: {
       type: Object as PropType<Component>,
-      default: () => {}
+      default: null
     },
     textAlignCenter: {
       type: Boolean,
@@ -139,7 +142,7 @@ export default create({
       if (props.type !== 'text') {
         return true;
       } else {
-        return !!props.icon;
+        return props.icon !== null;
       }
     });
     const toastBodyClass = computed(() => {

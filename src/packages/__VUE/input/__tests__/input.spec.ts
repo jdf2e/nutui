@@ -45,7 +45,7 @@ test('should clear when event clear', async () => {
   expect(input.element.value).toBe('test');
   clear.trigger('click');
   expect(clear.element.style.display).toBe('none');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('');
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
 });
 // 测试只能是数字
 test('should format input value when type is number', async () => {

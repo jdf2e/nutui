@@ -4,7 +4,6 @@ import Tabbar from '../index.vue';
 import TabbarItem from '../../tabbaritem/index.vue';
 import { nextTick, ref, h } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
-import { Image } from '@/packages/nutui.vue';
 
 // 模拟setup导入资源
 vi.mock('vue-router', () => ({
@@ -35,9 +34,9 @@ test('should render custom img when using img prop', async () => {
           {{
             icon: (props: any) =>
               props.active ? (
-                <Image src="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg" />
+                <img src="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg" />
               ) : (
-                <Image src="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg" />
+                <img src="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg" />
               )
           }}
         </TabbarItem>
@@ -45,9 +44,9 @@ test('should render custom img when using img prop', async () => {
           {{
             icon: (props: any) =>
               props.active ? (
-                <Image src="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg" />
+                <img src="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg" />
               ) : (
-                <Image src="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg" />
+                <img src="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg" />
               )
           }}
         </TabbarItem>

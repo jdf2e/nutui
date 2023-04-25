@@ -1,4 +1,4 @@
-import { ToastFunction } from './toast';
+import { showToast } from '../index';
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
@@ -8,17 +8,19 @@ function sleep(delay = 0): Promise<void> {
 
 describe('function toast', () => {
   test('show loading toast', async () => {
-    ToastFunction.loading('加载中');
+    showToast.loading('加载中', {
+      duration: 50
+    });
     expect(document.querySelector('.nut-toast.nut-toast-loading')).toBeTruthy();
     const text = document.querySelector('.nut-toast .nut-toast-text') as HTMLDivElement;
     expect(text.innerHTML).toEqual('加载中');
-    await sleep(3000);
+    await sleep(50);
     const loading = document.querySelector('.nut-toast.nut-toast-loading');
     expect(loading).toBeNull();
   });
 
   test('show text toast', async () => {
-    ToastFunction.text('文案', {
+    showToast.text('文案', {
       duration: 50,
       title: '标题文字'
     });
@@ -29,7 +31,7 @@ describe('function toast', () => {
     expect(textToast.style.display).toEqual('none');
   });
   test('show fail toast', async () => {
-    ToastFunction.fail('文案', {
+    showToast.fail('文案', {
       duration: 0
     });
     await sleep();
@@ -37,7 +39,7 @@ describe('function toast', () => {
     expect(failToast).toMatchSnapshot();
   });
   test('show warn toast', async () => {
-    ToastFunction.warn('文案', {
+    showToast.warn('文案', {
       duration: 0
     });
     await sleep();

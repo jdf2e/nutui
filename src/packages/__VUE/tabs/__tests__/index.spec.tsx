@@ -53,24 +53,21 @@ test('base tabs props', async () => {
   expect(_stepItem3.classes()).toContain('scrollable');
 });
 
+// TODO: 存在插槽使用方式警告
 test('base other props', async () => {
-  const wrapper = mount(Tabs, {
-    props: {
-      'animated-time': 500,
-      'title-gutter': '20px'
-    },
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    }
+  const wrapper = mount(() => {
+    return (
+      <Tabs animatedTime={500} titleGutter={20}>
+        <TabPane paneKey={1}>123</TabPane>
+        <TabPane paneKey={2}>456</TabPane>
+      </Tabs>
+    );
   });
   await nextTick();
   const stepItem = wrapper.find('.nut-tabs__content');
   expect((stepItem.element as HTMLElement).style.transitionDuration).toEqual('500ms');
-  setTimeout(() => {
-    const stepItem1 = wrapper.find('.nut-tabs__titles-item');
-    expect((stepItem1.element as HTMLElement).style.marginLeft).toEqual('20px');
-  }, 0);
+  const stepItem1 = wrapper.find('.nut-tabs__titles-item');
+  expect((stepItem1.element as HTMLElement).style.marginLeft).toEqual('20px');
 });
 
 test('base Tabs Slots', async () => {
