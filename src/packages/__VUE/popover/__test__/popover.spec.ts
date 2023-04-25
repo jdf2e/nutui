@@ -14,8 +14,7 @@ test('first render', async () => {
   const wrapper = mount(Popover, {
     props: {
       visible: true,
-      list: iconItemList,
-      teleportDisable: false
+      list: iconItemList
     }
   });
   await nextTick();
@@ -27,7 +26,6 @@ test('Props theme dark', async () => {
     props: {
       visible: true,
       list: iconItemList,
-      teleportDisable: false,
       theme: 'dark'
     }
   });
@@ -39,8 +37,7 @@ test('should not emit select event when the action is disabled', async () => {
   const wrapper = mount(Popover, {
     props: {
       visible: true,
-      list: listDisabled,
-      teleportDisable: false
+      list: listDisabled
     }
   });
   await nextTick();
@@ -54,8 +51,7 @@ test('should close popover when clicking the action', async () => {
   const wrapper = mount(Popover, {
     props: {
       visible: true,
-      list: iconItemList,
-      teleportDisable: false
+      list: iconItemList
     }
   });
   await nextTick();
@@ -73,7 +69,6 @@ test('Set Props Position', async () => {
     props: {
       visible: true,
       list: iconItemList,
-      teleportDisable: false,
       location: 'top-start'
     }
   });

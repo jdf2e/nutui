@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils';
 import Video from '../index.vue';
 
+// JSDOM: Not implemented: HTMLMediaElement.prototype.load
+// https://github.com/jsdom/jsdom/issues/1515
 describe('Video', () => {
   test('video base info', () => {
     const wrapper = mount(Video, {

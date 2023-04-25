@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
-import { nextTick, ref } from 'vue';
+import { nextTick, ref, h } from 'vue';
 import Noticebar from '../index.vue';
+import { Issue } from '@nutui/icons-vue';
 
 Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {
   value: 375
@@ -31,7 +32,8 @@ test('close event', async () => {
 test('across-end event', async () => {
   const wrapper = mount(Noticebar, {
     props: {
-      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+      text:
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
     }
   });
   wrapper.vm.onAnimationEnd();
@@ -50,18 +52,13 @@ test('slot event', async () => {
 });
 
 test('icon custom', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-noticebar': Noticebar
-    },
-    template: `
-        <nut-noticebar
-        left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-        :scrollable="false"
-      >
-        <a href="https://www.jd.com">京东商城</a>
-      </nut-noticebar>
-    `
+  const wrapper = mount(Noticebar, {
+    slots: {
+      ['right-icon']: Issue,
+      default: h('a', {
+        href: 'https://www.jd.com'
+      })
+    }
   });
   await nextTick();
   expect(wrapper.html()).toMatchSnapshot();

@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Notify > base notify message 1`] = `
+"<!--teleport start-->
+<!--v-if-->
+<transition-stub name=\\"nut-popup-slide-top\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <view class=\\"nut-popup nut-popup--top\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
+    <div class=\\"nut-notify nut-notify--danger\\">测试文案</div>
+    <!--v-if-->
+  </view>
+</transition-stub>
+<!--teleport end-->"
+`;

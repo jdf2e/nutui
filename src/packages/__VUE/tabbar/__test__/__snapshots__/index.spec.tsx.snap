@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render fixed element when using bottom prop 1`] = `
+"<div class=\\"\\">
+  <view class=\\"nut-tabbar nut-tabbar-bottom nut-tabbar-safebottom\\"></view>
+</div>"
+`;
+
+exports[`should render tabbar when default 1`] = `
+"<div class=\\"\\">
+  <view class=\\"nut-tabbar\\">
+    <div class=\\"nut-tabbar-item\\">
+      <view class=\\"nut-badge\\">
+        <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+        <view class=\\"nut-tabbar-item_icon-box\\">
+          <!--v-if-->
+          <view><svg class=\\"nut-popover-item-img nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+              <path d=\\"M761.436 1024H262.564c-131.282 0-236.308-105.026-236.308-236.308V404.35c0-52.513 26.257-102.4 68.267-131.282L467.364 21.005c26.257-18.38 60.39-18.38 89.272 0l372.84 252.062c42.011 28.882 68.268 78.769 68.268 131.282v383.343c0 131.282-105.026 236.308-236.308 236.308zM139.159 338.708c-21.005 15.754-34.133 39.384-34.133 65.64v383.344c0 86.646 70.892 157.539 157.538 157.539h498.872c86.646 0 157.538-70.893 157.538-157.539V404.35c0-26.257-13.128-49.887-34.133-65.641L512 86.646 139.159 338.708zm451.61 396.471H433.231c-21.005 0-39.385-18.379-39.385-39.384s18.38-39.385 39.385-39.385h157.538c21.005 0 39.385 18.38 39.385 39.385s-18.38 39.384-39.385 39.384z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+            </svg></view>
+          <view class=\\"nut-tabbar-item_icon-box_nav-word\\">
+            <view>首页</view>
+          </view>
+        </view>
+        <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+      </view>
+    </div>
+    <div class=\\"nut-tabbar-item nut-tabbar-item__icon--unactive\\">
+      <view class=\\"nut-badge\\">
+        <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+        <view class=\\"nut-tabbar-item_icon-box\\">
+          <!--v-if-->
+          <view><svg class=\\"nut-popover-item-img nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+              <path d=\\"M307.2 468.114H160.914C73.143 468.114 0 394.971 0 307.2V160.914C0 73.143 73.143 0 160.914 0H307.2c87.771 0 160.914 73.143 160.914 160.914V307.2c0 87.771-73.143 160.914-160.914 160.914zM160.914 87.771c-40.96 0-73.143 32.183-73.143 73.143V307.2c0 40.96 32.183 73.143 73.143 73.143H307.2c40.96 0 73.143-32.183 73.143-73.143V160.914c0-40.96-32.183-73.143-73.143-73.143H160.914zM307.2 1024H160.914C73.143 1024 0 950.857 0 863.086V716.8c0-87.771 73.143-160.914 160.914-160.914H307.2c87.771 0 160.914 73.143 160.914 160.914v146.286c0 87.771-73.143 160.914-160.914 160.914zM160.914 643.657c-40.96 0-73.143 32.183-73.143 73.143v146.286c0 40.96 32.183 73.143 73.143 73.143H307.2c40.96 0 73.143-32.183 73.143-73.143V716.8c0-40.96-32.183-73.143-73.143-73.143H160.914zm629.029-175.543c-128.732 0-234.057-105.325-234.057-234.057S661.21 0 789.943 0 1024 105.326 1024 234.057 918.674 468.114 789.943 468.114zm0-380.343c-81.92 0-146.286 64.366-146.286 146.286s64.366 146.286 146.286 146.286 146.286-64.366 146.286-146.286S871.863 87.771 789.943 87.771zM863.086 1024H716.8c-87.771 0-160.914-73.143-160.914-160.914V716.8c0-87.771 73.143-160.914 160.914-160.914h146.286c87.771 0 160.914 73.143 160.914 160.914v146.286C1024 950.857 950.857 1024 863.086 1024zM716.8 643.657c-40.96 0-73.143 32.183-73.143 73.143v146.286c0 40.96 32.183 73.143 73.143 73.143h146.286c40.96 0 73.143-32.183 73.143-73.143V716.8c0-40.96-32.183-73.143-73.143-73.143H716.8z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+            </svg></view>
+          <view class=\\"nut-tabbar-item_icon-box_nav-word\\">
+            <view>分类</view>
+          </view>
+        </view>
+        <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+      </view>
+    </div>
+    <div class=\\"nut-tabbar-item nut-tabbar-item__icon--unactive\\">
+      <view class=\\"nut-badge\\">
+        <view class=\\"nut-badge__icon\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+        <view class=\\"nut-tabbar-item_icon-box\\">
+          <!--v-if-->
+          <view><svg class=\\"nut-popover-item-img nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">
+              <path d=\\"M512 1024C230.4 1024 0 793.6 0 512S230.4 0 512 0s512 230.4 512 512-230.4 512-512 512zm0-930.91C281.6 93.09 93.09 281.6 93.09 512S281.6 930.91 512 930.91 930.91 742.4 930.91 512 742.4 93.09 512 93.09zM377.018 695.856c-20.945 0-39.563-11.637-46.545-32.582l-6.982-16.291 6.982-18.618 69.818-186.182c11.636-32.582 37.236-55.855 67.49-67.491l204.8-76.8L691.2 307.2c11.636 4.655 20.945 16.29 25.6 27.927l4.655 16.291-4.655 18.618-69.818 186.182c-11.637 32.582-37.237 55.855-67.491 67.491l-186.182 69.818c-4.654 2.328-11.636 2.328-16.29 2.328zm218.764-267.637-95.418 34.91c-6.982 2.327-11.637 6.981-13.964 13.963l-34.91 95.418 95.42-34.909c6.98-2.327 11.635-6.982 13.963-13.964l34.909-95.418z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+            </svg></view>
+          <view class=\\"nut-tabbar-item_icon-box_nav-word\\">
+            <view>发现</view>
+          </view>
+        </view>
+        <view class=\\"nut-badge__content nut-badge__content--sup\\" style=\\"top: 0px; right: 0px; z-index: 9; display: none;\\"></view>
+      </view>
+    </div>
+  </view>
+</div>"
+`;
