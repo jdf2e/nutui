@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import Address from '../index.vue';
 import { addressListData, addressExistData } from '../address-list';
+import { mockScrollTo } from '@/packages/utils/test';
 
 test('address render', async () => {
   const wrapper = mount(Address, {
@@ -30,8 +31,10 @@ test('choose address item', async () => {
       teleportDisable: false
     }
   });
+  const fn = mockScrollTo();
   wrapper.find('.nut-address__detail-item').trigger('click');
   await nextTick();
+  expect(fn).toHaveBeenCalledTimes(1);
   expect(wrapper.find('.nut-address__region-item ').text()).toEqual('北京');
 });
 

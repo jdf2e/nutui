@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import Input from '../index.vue';
-import { nextTick } from 'vue';
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: '3' } });
@@ -46,9 +45,7 @@ test('should clear when event clear', async () => {
   expect(input.element.value).toBe('test');
   clear.trigger('click');
   expect(clear.element.style.display).toBe('none');
-  setTimeout(() => {
-    expect(input.element.value).toBe('');
-  }, 50);
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
 });
 // 测试只能是数字
 test('should format input value when type is number', async () => {

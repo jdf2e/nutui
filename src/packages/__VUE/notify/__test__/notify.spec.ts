@@ -20,11 +20,13 @@ describe('Notify', () => {
   test('base notify message', async () => {
     const wrapper = mount(Notify, {
       props: {
-        teleportDisable: false,
-        message: '测试文案'
+        teleportDisable: false
+      },
+      slots: {
+        default: '测试文案'
       }
     });
-    expect(wrapper.html()).toContain('<!--teleport start-->');
+    expect(wrapper.html()).toMatchSnapshot();
   });
   test('should be displayed after setting the type', async () => {
     const wrapper = mount(Notify, {
