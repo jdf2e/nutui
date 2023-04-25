@@ -37,10 +37,10 @@ test('should render attract when touch', async () => {
     }
   });
   triggerDrag(wrapper, 200, 0);
-  await sleep(1000);
+  await sleep(500);
   expect(wrapper.element.style.left).toBe('375px');
   triggerDrag(wrapper, 100, 0);
-  await sleep(1000);
+  await sleep(500);
   expect(wrapper.element.style.left).toBe('0px');
 });
 test('boundary touchMove', async () => {
