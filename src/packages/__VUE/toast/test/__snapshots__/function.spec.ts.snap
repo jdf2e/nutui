@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`function toast > show fail toast 1`] = `
+exports[`show fail toast 1`] = `
 <view
   class="nut-toast nut-toast-center nut-toast-has-icon nut-toast-base toast-fade-enter-from toast-fade-enter-active"
   iconsize="20"
@@ -38,9 +38,9 @@ exports[`function toast > show fail toast 1`] = `
 </view>
 `;
 
-exports[`function toast > show warn toast 1`] = `
+exports[`show warn toast 1`] = `
 <view
-  class="nut-toast nut-toast-center nut-toast-has-icon nut-toast-base toast-fade-enter-from toast-fade-enter-active"
+  class="nut-toast nut-toast-center nut-toast-has-icon nut-toast-base"
   iconsize="20"
   style=""
 >

@@ -53,7 +53,6 @@ test('base tabs props', async () => {
   expect(_stepItem3.classes()).toContain('scrollable');
 });
 
-// TODO: 存在插槽使用方式警告
 test('base other props', async () => {
   const wrapper = mount({
     components: {
