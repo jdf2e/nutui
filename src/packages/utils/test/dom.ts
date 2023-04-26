@@ -1,8 +1,7 @@
 import { vi } from 'vitest';
 
-export const mockScrollTo = () => {
+export const mockElementMethod = (element: any, method: string) => {
   const fn = vi.fn();
-  Element.prototype.scrollTo = fn;
+  element.prototype[method] = fn;
   return fn;
 };
-mockScrollTo();

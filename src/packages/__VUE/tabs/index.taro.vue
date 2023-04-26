@@ -177,7 +177,7 @@ export default create({
     const findTabsIndex = (value: string | number) => {
       let index = titles.value.findIndex((item) => item.paneKey == value);
       if (titles.value.length == 0) {
-        console.warn('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
+        // console.warn('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
       } else if (index == -1) {
         // console.warn('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
       } else {

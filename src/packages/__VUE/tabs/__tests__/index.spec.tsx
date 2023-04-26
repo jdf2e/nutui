@@ -1,4 +1,4 @@
-import { config, DOMWrapper, mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
 import Tabs from '../index.vue';
 import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
@@ -55,13 +55,17 @@ test('base tabs props', async () => {
 
 // TODO: 存在插槽使用方式警告
 test('base other props', async () => {
-  const wrapper = mount(() => {
-    return (
-      <Tabs animatedTime={500} titleGutter={20}>
-        <TabPane paneKey={1}>123</TabPane>
-        <TabPane paneKey={2}>456</TabPane>
-      </Tabs>
-    );
+  const wrapper = mount({
+    components: {
+      'nut-tabs': Tabs,
+      'nut-tab-pane': TabPane
+    },
+    template: `
+      <nut-tabs animatedTime="500" titleGutter="20">
+        <nut-tab-pane paneKey="1">123</nut-tab-pane>
+        <nut-tab-pane paneKey="2">456</nut-tab-pane>
+      </nut-tabs>
+    `
   });
   await nextTick();
   const stepItem = wrapper.find('.nut-tabs__content');

@@ -1,11 +1,13 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Rate from '../index.vue';
-import { h } from 'vue';
+import { h, nextTick, ref } from 'vue';
 import { Check } from '@nutui/icons-vue';
 
-afterAll(() => {
-  config.global.components = {};
-});
+const sleep = (delay = 0): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+};
 
 test('base rate', () => {
   const wrapper = mount(Rate);
@@ -32,34 +34,42 @@ test('should have the same count and activeColor', () => {
 });
 
 test('should have click', async () => {
-  const wrapper = mount(Rate);
-  const rate = wrapper.findAll('.nut-rate-item');
-  await rate[3].trigger('click');
-  setTimeout(() => {
-    const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
-    expect(rateDis.length).toBe(2);
-    expect((wrapper.emitted('change') as any)[0][0]).toEqual('3');
-  }, 200);
+  const wrapper = mount(Rate, {
+    props: {
+      modelValue: 1,
+      'onUpdate:modelValue': (val: number) => wrapper.setProps({ modelValue: val })
+    }
+  });
+  const rate = wrapper.findAll('.nut-rate-item svg');
+  rate[2].trigger('click');
+  await nextTick();
+  const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
+  expect(rateDis.length).toBe(2);
+  expect((wrapper.emitted('change') as any)[0][0]).toEqual(3);
 });
 
 test('should have disabled', async () => {
-  const wrapper = mount(Rate, { props: { disabled: true, modelValue: 4 } });
-  const rate = wrapper.findAll('.nut-rate-item');
-  await rate[1].trigger('click');
-  setTimeout(() => {
-    const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
-    expect(rateDis.length).toBe(1);
-  }, 200);
+  const wrapper = mount(Rate, {
+    props: {
+      disabled: true,
+      modelValue: 4,
+      'onUpdate:modelValue': (val: number) => wrapper.setProps({ modelValue: val })
+    }
+  });
+  const rate = wrapper.findAll('.nut-rate-item svg');
+  rate[1].trigger('click');
+  await nextTick();
+  const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
+  expect(rateDis.length).toBe(5);
 });
 
 test('should have readonly', async () => {
   const wrapper = mount(Rate, { props: { readonly: true, modelValue: 4 } });
   const rate = wrapper.findAll('.nut-rate-item');
-  await rate[1].trigger('click');
-  setTimeout(() => {
-    const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
-    expect(rateDis.length).toBe(1);
-  }, 200);
+  rate[1].trigger('click');
+  await nextTick();
+  const rateDis = wrapper.findAll('.nut-rate-item__icon--disabled');
+  expect(rateDis.length).toBe(1);
 });
 
 test('custom icon', async () => {

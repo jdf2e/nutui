@@ -46,10 +46,10 @@ export default create({
     const parent: {
       children: [];
       audioData: any;
-      handleMute: ((payload: MouseEvent) => void) | undefined;
-      forward: ((payload: MouseEvent) => void) | undefined;
-      fastBack: ((payload: MouseEvent) => void) | undefined;
-      changeStatus: ((payload: MouseEvent) => void) | undefined;
+      handleMute: (payload: MouseEvent) => void;
+      forward: (payload: MouseEvent) => void;
+      fastBack: (payload: MouseEvent) => void;
+      changeStatus: (payload: MouseEvent) => void;
     } = reactive(audio);
     const customSlot = ref(useSlots().default);
 
