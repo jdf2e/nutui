@@ -194,7 +194,7 @@
         color: $disable-color;
       }
       &.active {
-        font-weight: 600;
+        font-weight: bold;
         color: $tabs-titles-item-active-color;
         .nut-tabs__titles-item__line {
           content: ' ';
