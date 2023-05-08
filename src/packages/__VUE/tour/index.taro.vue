@@ -2,11 +2,12 @@
   <view :class="classes">
     <view class="nut-tour-masked" v-if="showTour" @click="handleClickMask"></view>
 
-    <view v-for="(step, i) in steps" :key="i" style="height: 0">
+    <view v-for="(step, i) in steps" :key="i" style="height: 0;">
       <view
         class="nut-tour-mask"
         :class="[mask ? (showPopup[i] ? '' : 'nut-tour-mask-hidden') : 'nut-tour-mask-none']"
         :style="maskStyles[i]"
+        v-if="showTour"
         :id="`nut-tour-popid${i}${refRandomId}`"
       ></view>
       <nut-popover
