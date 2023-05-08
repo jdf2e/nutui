@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Animate from '@/packages/__VUE/animate/index.vue';
+import Animate from '../index.vue';
 import { nextTick } from 'vue';
 
 const testType = [
@@ -54,12 +54,6 @@ test('trigger animate with loop', async () => {
     expect(animate.classes('loop')).toBe(true);
     expect(animate.classes(`nut-animate-${typeProp}`)).toBe(true);
     expect(wrapper.vm.clicked).toBe(true);
-
-    setTimeout(() => {
-      expect(animate.classes('loop')).toBe(true);
-      expect(animate.classes(`nut-animate-${typeProp}`)).toBe(true);
-      expect(wrapper.vm.clicked).toBe(true);
-    }, 1500);
   }
 });
 
@@ -86,11 +80,17 @@ test('trigger animate', async () => {
     expect(animate.classes('loop')).toBe(false);
     expect(animate.classes(`nut-animate-${typeProp}`)).toBe(true);
     expect(wrapper.vm.clicked).toBe(true);
-
-    setTimeout(() => {
-      expect(animate.classes('loop')).toBe(false);
-      expect(animate.classes(`nut-animate-${typeProp}`)).toBe(false);
-      expect(wrapper.vm.clicked).toBe(false);
-    }, 1500);
   }
+});
+
+test('animate duration', async () => {
+  const wrapper = mount(Animate, {
+    props: {
+      type: 'jump',
+      duration: 999
+    }
+  });
+
+  const animate: any = wrapper.find('.nut-animate__container');
+  expect(animate.element.style.animationDuration).toBe('999ms');
 });
