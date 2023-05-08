@@ -15,4 +15,4 @@ jobs:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
           body: |       
-            你好 @${{ github.event.issue.user.login }}, 我们需要你提供一个在线的重现实例以便于我们帮你排查问题。你可以通过点击 [此处](https://codesandbox.io/s/eh6ck?resolutionWidth=414&resolutionHeight=736) 创建一个 codesandbox 或者提供一个最小化的 GitHub 仓库。请确保选择准确的版本。
+            你好 @${{ github.event.issue.user.login }}, 我们需要你提供一个最小重现实例以便于我们帮你排查问题。你可以提供一个基于 Taro NutUI4.0 模板项目的 GitHub 仓库链接（`@nutui/nutui-taro`），也可以通过 [CodeSandbox](https://codesandbox.io/s/nutui4-vite-demo-2fw7xh?file=/src/App.vue) 创建一个在线实例（`@nutui/nutui`）。请确保选择准确的版本。

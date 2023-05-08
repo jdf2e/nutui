@@ -22,11 +22,11 @@ https://nutui.jd.com/#/zh-CN/guide/contributing
 
 **这个 PR 涉及以下平台:**
 
-- [ ] NutUI 2.0
-- [ ] NutUI 3.0 H5
-- [ ] NutUI 3.0 小程序
 - [ ] NutUI 4.0 H5
 - [ ] NutUI 4.0 小程序
+- [ ] NutUI 3.0 H5
+- [ ] NutUI 3.0 小程序
+- [ ] NutUI 2.0
 
 **这个 PR 是否已自测:**
 
