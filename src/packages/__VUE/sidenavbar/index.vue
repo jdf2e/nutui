@@ -33,12 +33,14 @@ export default create({
       };
     });
 
-    const setPaddingLeft = (nodeList: any[], level: number = 1) => {
+    const setPaddingLeft = (nodeList: any[], level = 1) => {
       for (let i = 0; i < nodeList.length; i++) {
         let item = nodeList[i];
-        item.children[0].style.paddingLeft = +props.offset * level + 'px';
-        if (!item.className.includes('nut-side-navbar-item')) {
-          setPaddingLeft(Array.from(item.children[1].children), ++state.count);
+        if (item?.children?.[0]) {
+          item.children[0].style.paddingLeft = +props.offset * level + 'px';
+          if (!item.className.includes('nut-side-navbar-item')) {
+            setPaddingLeft(Array.from(item.children[1].children), ++state.count);
+          }
         }
       }
       state.count--;
@@ -67,7 +69,7 @@ export default create({
         attributes: false,
         childList: true,
         characterData: false,
-        subtree: false
+        subtree: true
       });
     });
 
