@@ -1,4 +1,4 @@
-# animate 
+# Animate
 
 ### 介绍
 
@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Animate } from '@nutui/nutui';
 
@@ -37,8 +36,6 @@ app.use(Animate);
 ```
 
 :::
-
-
 
 ### 循环动画
 
@@ -82,6 +79,7 @@ app.use(Animate);
 | type         | 动画类型，见下方 `type` 值说明               | string | `-`                |
 | action         | 触发方式，`initial`-初始化执行;  `click`-点击执行              | string | `initial`             |
 | loop         | 是否循环执行。`true`-循环执行; `false`-执行一次              | boolean | `false`               |
+| duration`4.0.7` | 动画时长，单位 ms | number \| string | - |
 
 ### Events
 
