@@ -1,6 +1,12 @@
 <template>
   <view class="nut-animate">
-    <view :class="classes" @click="handleClick">
+    <view
+      :class="classes"
+      @click="handleClick"
+      :style="{
+        animationDuration: duration ? `${duration}ms` : undefined
+      }"
+    >
       <slot></slot>
     </view>
   </view>
@@ -23,6 +29,9 @@ export default create({
     loop: {
       type: Boolean,
       default: false
+    },
+    duration: {
+      type: [String, Number]
     }
   },
   emits: ['click'],

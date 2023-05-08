@@ -1,4 +1,4 @@
-# animate
+# Animate
 
 ### Intro
 
@@ -7,7 +7,6 @@ Add animation effects to child elements
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Animate } from '@nutui/nutui';
 
@@ -37,8 +36,6 @@ app.use(Animate);
 ```
 
 :::
-
-
 
 ### Loop animation
 
@@ -82,6 +79,7 @@ app.use(Animate);
 | type         | For animation type, see the description of type value below               | string | `-`                |
 | action         | Triggering method,`initial`- initialization execution; `click`- click to execute              | string | `initial`             |
 | loop         | Whether to execute circularly. `true`- loop execution; `false`- execute once              | boolean | `false`               |
+| duration`4.0.7` | AnimationDuration, ms | number \| string | - |
 
 ### Events
 
@@ -90,7 +88,6 @@ app.use(Animate);
 | click  | Triggered when an element is clicked | event: Event |
 
 ### Type value description
-
 
 |    Order  |    Type name     |      Description     |
 |:-------|:------- | :----------|
