@@ -37,7 +37,7 @@ export default create({
       default: {}
     }
   },
-  emits: ['delIcon', 'editIcon', 'itemClick'],
+  emits: ['delIcon', 'editIcon', 'clickItem'],
 
   setup(props, { emit }) {
     const delClick = (event: Event) => {
@@ -49,7 +49,7 @@ export default create({
       event.stopPropagation();
     };
     const contentsClick = (event: Event) => {
-      emit('itemClick', event, props.item);
+      emit('clickItem', event, props.item);
       event.stopPropagation();
     };
 
