@@ -371,7 +371,7 @@ setup(){
 | required            | 是否显示必填字段的标签旁边的红色星号                             | boolean          | `false` |
 | prop                | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | `-`       |
 | rules               | 定义校验规则                                                     | FormItemRule []  | `[]`      |
-| label-width         | 表单项 `label` 宽度，默认单位为`px`                                | number \| string | `90px`  |
+| label-width         | 表单项 `label` 宽度，默认单位为`px`                                | number \| string | `90`  |
 | label-align         | 表单项 `label` 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
 | body-align          | 右侧插槽对齐方式，可选值为 `center` `right`                      | string           | `left`  |
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
