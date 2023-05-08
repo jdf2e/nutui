@@ -375,7 +375,7 @@ setup(){
 | required            | Whether to display the red asterisk next to the label of the required field                 | boolean          | `false` |
 | prop                | The v-model field of the form field is required when the form verification function is used | string           | -       |
 | rules               | Define validation rules                                                                     | FormItemRule []  | []      |
-| label-width         | The width of the form item label. The default unit is `px`                                  | number \| string | `90px`  |
+| label-width         | The width of the form item label. The default unit is `px`                                  | number \| string | `90`  |
 | label-align         | Form item label alignment. The optional values are `center` `right`                         | string           | `left`  |
 | body-align          | Default Solt box alignment. The optional values are `center` `right`                        | string           | `left`  |
 | error-message-align | Error prompt text alignment. The optional values are `center` and `right`                   | string           | `left`  |
