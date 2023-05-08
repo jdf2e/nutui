@@ -19,7 +19,7 @@ export default create({
     }
   },
   emits: [],
-  setup: (props: any, context: any) => {
+  setup: (props) => {
     const list = ref(null) as Ref;
     const state = reactive({
       count: 1
@@ -32,11 +32,11 @@ export default create({
       };
     });
 
-    const setPaddingLeft = (nodeList: any, level: number = 1) => {
+    const setPaddingLeft = (nodeList: any[], level = 1) => {
       for (let i = 0; i < nodeList.length; i++) {
         let item = nodeList[i];
-        if (item.children) {
-          item.children[0].style.paddingLeft = props.offset * level + 'px';
+        if (item?.children?.[0]) {
+          item.children[0].style.paddingLeft = +props.offset * level + 'px';
           if (!item.className.includes('nut-side-navbar-item')) {
             setPaddingLeft(Array.from(item.children[1].children), ++state.count);
           }
@@ -47,7 +47,7 @@ export default create({
 
     const handleSlots = () => {
       let childNodes = list.value.childNodes;
-      if (childNodes && childNodes.length) {
+      if (childNodes?.length) {
         childNodes = Array.from(childNodes)
           .filter((item: any) => item.nodeType !== 3)
           .map((item: any) => {
