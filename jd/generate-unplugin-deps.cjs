@@ -18,8 +18,7 @@ let components = [];
 config.nav.forEach((item) => {
   item.packages.forEach((element) => {
     styleMap.set(element.name, {
-      name: element.name,
-      children: element.styleDeps
+      name: element.name
     });
     // gen entry
     if (element.exclude != true) {
@@ -71,46 +70,10 @@ tasks.push(
   })
 );
 
-styleMap.forEach((value) => {
-  if (value.children && value.children.length > 0) {
-    value.children.forEach((item, index) => {
-      value.children[index] = styleMap.get(item);
-    });
-  }
-});
-
-const getAllDeps = (styleObj, key) => {
-  const value = styleObj;
-  if (value.children?.length === 0) {
-    return [value.name];
-  } else {
-    let deps = [];
-    value.children?.forEach((item) => {
-      if (key === item.name) {
-        console.error('generate-style-deps: 存在循环引用', key);
-        return [];
-      }
-      deps = deps.concat(getAllDeps(item, key));
-    });
-    deps.unshift(value.name);
-    return [...new Set(deps)];
-  }
-};
-
-
 styleMap.forEach((value, key) => {
   const name = key.toLowerCase();
-  let deps = getAllDeps(value, key);
-  deps = deps.filter((component) => {
-    return component !== key;
-  });
   // gen style
-  const outputStyleMjs = `import '../../styles/reset.css';\n${deps
-    .map((component) => {
-      return `import '../${component.toLowerCase()}/index.scss';\n`;
-    })
-    .reverse()
-    .join('')}import './index.scss';\n`;
+  const outputStyleMjs = `import '../../styles/reset.css';\nimport './index.scss';\n`;
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')
