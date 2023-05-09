@@ -4,13 +4,13 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, getCurrentInstance, onMounted, provide, ref, watch } from 'vue';
+import { computed, provide, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     modelValue: {
-      type: [String, Number, Array],
+      type: [String, Number, Array<string | number>],
       default: () => []
     },
     accordion: {
@@ -21,7 +21,6 @@ export default create({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const collapseDom: any = ref(null);
-    const collapseChldren: any = ref([]);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -29,55 +28,44 @@ export default create({
       };
     });
 
-    watch(
-      () => props.modelValue,
-      (newval: number | string | any) => {
-        let doms: any = collapseChldren.value;
-        Array.from(doms).forEach((item: any) => {
-          if (typeof newval == 'number' || typeof newval == 'string') {
-            item.changeOpen(newval == item.name ? true : false);
-          } else if (Object.values(newval) instanceof Array) {
-            const isOpen = newval.indexOf(Number(item.name)) > -1 || newval.indexOf(String(item.name)) > -1;
-            item.changeOpen(isOpen);
-          }
-          item.animation();
-        });
-      }
-    );
-
-    onMounted(() => {
-      collapseChldren.value = (getCurrentInstance() as any).provides.collapseParent.children || [];
-    });
-
-    const changeVal = (val: string | number | Array<string | number>) => {
+    const changeVal = (val: string | number | Array<string | number>, name: string | number, status = true) => {
       emit('update:modelValue', val);
-      emit('change', val);
+      emit('change', val, name, status);
     };
 
-    const changeValAry = (name: string) => {
-      const activeItem: any = props.modelValue instanceof Object ? Object.values(props.modelValue) : props.modelValue;
-      let index = -1;
-      activeItem.forEach((item: string | number, idx: number) => {
-        if (String(item) == String(name)) {
-          index = idx;
+    const updateVal = (name: string | number) => {
+      if (props.accordion) {
+        if (props.modelValue === name) {
+          changeVal("", name, false);
+        } else {
+          changeVal(name, name, true);
         }
-      });
-      index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
-      changeVal(activeItem);
-    };
-
-    const isExpanded = (name: string | number | Array<string | number>) => {
-      const { accordion, modelValue } = props;
-      if (accordion) {
-        return typeof modelValue === 'number' || typeof modelValue === 'string' ? modelValue == name : false;
+      } else {
+        if (Array.isArray(props.modelValue)) {
+          if (props.modelValue.includes(name)) {
+            const newValue = props.modelValue.filter((v: string | number) => v !== name);
+            changeVal(newValue, name, false);
+          } else {
+            const newValue = props.modelValue.concat([name]);
+            changeVal(newValue, name, true);
+          }
+        } else {
+          console.warn('[NutUI] <Collapse> 未开启手风琴模式时 v-model 应为数组');
+        }
       }
+    }
+
+    const isExpanded = (name: string | number) => {
+      if (props.accordion) {
+        return props.modelValue === name;
+      } else if (Array.isArray(props.modelValue)) {
+        return props.modelValue.includes(name);
+      }
+      return false;
     };
 
     provide('collapseParent', {
-      children: [],
-      props,
-      changeValAry,
-      changeVal,
+      updateVal,
       isExpanded
     });
 
