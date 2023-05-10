@@ -23,7 +23,7 @@ app.use(CollapseItem);
 
 ```html
 <template>
-<nut-collapse v-model="activeNames">
+<nut-collapse v-model="activeNames" @change="onChange">
   <nut-collapse-item :name="1">
     <template v-slot:title>
       {{title1}}
@@ -47,7 +47,13 @@ export default {
       title2: '标题2',
       title3: '标题3',
     })
+    const onChange = (modelValue, currName, status) => {
+      // currName: 当前操作的 collapse-item 的 name
+      // status: true 打开 false 关闭
+      console.log(modelValue, currName, status);
+    }
     return {
+      onChange,
       activeNames,
       ...toRefs(title)
     };
@@ -212,7 +218,7 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
-| change | 切换面板时触发 | 类型与 `v-model` 绑定的值一致 |
+| change | 切换面板时触发 | `(modelValue, currName, status)` |
 
 ## Theming
 

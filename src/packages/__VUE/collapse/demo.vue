@@ -21,7 +21,7 @@
       <nut-collapse-item :title="translate('title2')" :name="2"> {{ translate('desc4') }} </nut-collapse-item>
     </nut-collapse> -->
     <h2>{{ translate('basic3') }}</h2>
-    <nut-collapse v-model="active2" :accordion="true">
+    <nut-collapse v-model="active2" accordion @change="change">
       <nut-collapse-item :title="translate('title1')" :name="1"> {{ translate('desc5') }} </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2" :value="translate('subtitle')">
         {{ translate('desc6') }}
@@ -127,7 +127,7 @@ export default createDemo({
   setup(props, context) {
     initTranslate();
     const data = reactive({
-      active1: [1, '2'],
+      active1: [1, 2],
       active2: 1,
       active3: 1,
       active4: 1,
@@ -138,8 +138,8 @@ export default createDemo({
       title3: '标题3',
       subTitle: '副标题'
     });
-    const change = (name: string) => {
-      console.log(`点击了name是${name}的面板`);
+    const change = (current: any, name: string | number, status: boolean) => {
+      console.log(current, name, status);
     };
     return {
       Notice,

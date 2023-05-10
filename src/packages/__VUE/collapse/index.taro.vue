@@ -4,14 +4,14 @@
   </view>
 </template>
 <script lang="ts">
-import { onMounted, provide, ref, watch, getCurrentInstance, computed } from 'vue';
+import { computed, provide, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { nextTick } from '@tarojs/taro';
 const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     modelValue: {
-      type: [String, Number, Array]
+      type: [String, Number, Array<string | number>],
+      default: () => []
     },
     accordion: {
       type: Boolean,
@@ -19,7 +19,7 @@ export default create({
     }
   },
   emits: ['update:modelValue', 'change'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const collapseDom: any = ref(null);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -28,91 +28,47 @@ export default create({
       };
     });
 
-    const changeVal = (val: string | number | Array<string | number>) => {
+    const changeVal = (val: string | number | Array<string | number>, name: string | number, status = true) => {
       emit('update:modelValue', val);
-      emit('change', val);
+      emit('change', val, name, status);
     };
 
-    const changeValAry = (name: string) => {
-      const activeItem: any = props.modelValue;
-      let index = -1;
-      activeItem.forEach((item: string | number, idx: number) => {
-        if (String(item) == String(name)) {
-          index = idx;
+    const updateVal = (name: string | number) => {
+      if (props.accordion) {
+        if (props.modelValue === name) {
+          changeVal("", name, false);
+        } else {
+          changeVal(name, name, true);
         }
-      });
-      index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
-      changeVal(activeItem);
-    };
-
-    const isExpanded = (name: string | number | Array<string | number>) => {
-      const { accordion, modelValue } = props;
-      if (accordion) {
-        return typeof modelValue === 'number' || typeof modelValue === 'string' ? modelValue == name : false;
-      }
-    };
-
-    const activeIndex = () => {
-      const activeCollapse: any = props.modelValue;
-      const childrenList: any = slots.default?.();
-      let act: any = [];
-      childrenList.forEach((item: any, index: number) => {
-        if (typeof activeCollapse == 'number' || typeof activeCollapse == 'string') {
-          if (item.props.name == activeCollapse) {
-            act.push(item.flag);
-            return act;
+      } else {
+        if (Array.isArray(props.modelValue)) {
+          if (props.modelValue.includes(name)) {
+            const newValue = props.modelValue.filter((v: string | number) => v !== name);
+            changeVal(newValue, name, false);
+          } else {
+            const newValue = props.modelValue.concat([name]);
+            changeVal(newValue, name, true);
           }
         } else {
-          let ary = Array.from(activeCollapse);
-          if (ary.includes(String(item.props.name)) || ary.includes(Number(item.props.name))) {
-            act.push(item.flag);
-          }
+          console.warn('[NutUI] <Collapse> 未开启手风琴模式时 v-model 应为数组');
         }
-      });
-      return act;
-    };
-    const childrenDom = ref(null);
-    onMounted(() => {
-      childrenDom.value = (getCurrentInstance() as any).provides.collapseParent.children;
-    });
-
-    watch(
-      () => props.modelValue,
-      (newval: any) => {
-        nextTick(() => {
-          let domsProps: any = slots?.default?.();
-          let doms: any = childrenDom.value;
-          Array.from(doms).forEach((item: any, index: number) => {
-            if (typeof newval == 'number' || typeof newval == 'string') {
-              if (domsProps[index] && domsProps[index].props) {
-                item.changeOpen(newval == domsProps[index].props.name ? true : false);
-              } else {
-                item.changeOpen(newval == item.name ? true : false);
-              }
-            } else if (Object.values(newval) instanceof Array) {
-              const isOpen =
-                newval.indexOf(Number(domsProps[index].props.name)) > -1 ||
-                newval.indexOf(String(domsProps[index].props.name)) > -1;
-              item.changeOpen(isOpen);
-            }
-            item.animation();
-          });
-        });
       }
-    );
+    }
 
-    const getParentChildren = () => {
-      return slots.default?.();
+    const isExpanded = (name: string | number) => {
+      if (props.accordion) {
+        return props.modelValue === name;
+      } else if (Array.isArray(props.modelValue)) {
+        return props.modelValue.includes(name);
+      }
+      return false;
     };
+
     provide('collapseParent', {
-      children: [],
-      props,
-      changeValAry,
-      changeVal,
-      isExpanded,
-      activeIndex,
-      getParentChildren
+      updateVal,
+      isExpanded
     });
+
     return { collapseDom, classes };
   }
 });
