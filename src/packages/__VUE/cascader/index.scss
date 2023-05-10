@@ -1,3 +1,7 @@
+@import '../popup/index.scss';
+@import '../tabs/index.scss';
+@import '../tabpane/index.scss';
+
 .nut-theme-dark {
   .nut-cascader__bar {
     background: $dark-background2;
