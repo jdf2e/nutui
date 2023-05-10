@@ -117,7 +117,7 @@ export default create({
 
     const onTransitionEnd = () => {
       if (expanded.value) {
-        wrapperRef.value.style.height = 'auto';
+        wrapperHeight.value = 'auto';
       }
     };
 
@@ -125,15 +125,15 @@ export default create({
       wrapperHeight.value = '0px';
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          const height = contentRef.value?.offsetHeight || 'auto';
-          wrapperHeight.value = `${height}px`;
+          const height = contentRef.value?.offsetHeight;
+          wrapperHeight.value = height ? `${height}px` : 'auto';
         });
       });
     };
 
     const close = () => {
-      const height = contentRef.value?.offsetHeight || 'auto';
-      wrapperHeight.value = `${height}px`;
+      const height = contentRef.value?.offsetHeight;
+      wrapperHeight.value = height ? `${height}px` : 'auto';
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           wrapperHeight.value = '0px';

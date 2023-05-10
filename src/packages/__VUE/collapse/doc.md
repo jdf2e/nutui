@@ -47,8 +47,10 @@ export default {
       title2: '标题2',
       title3: '标题3',
     })
-    const onChange = (activeList, name, status) => {
-      console.log(activeList, name, status);
+    const onChange = (modelValue, currName, status) => {
+      // currName: 当前操作的 collapse-item 的 name
+      // status: true 打开 false 关闭
+      console.log(modelValue, currName, status);
     }
     return {
       onChange,
@@ -216,7 +218,7 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
-| change | 切换面板时触发 | 打开状态的面板 `name` 值 |
+| change | 切换面板时触发 | `(modelValue, currName, status)` |
 ## 主题定制
 
 ### 样式变量

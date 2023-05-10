@@ -50,8 +50,10 @@ export default {
       title2: 'title2',
       title3: 'title3',
     })
-    const onChange = (activeList, name, status) => {
-      console.log(activeList, name, status);
+    const onChange = (modelValue, currName, status) => {
+      // currName: collapse-item name
+      // status: true open, false close
+      console.log(modelValue, currName, status);
     }
     return {
       onChange,
@@ -220,7 +222,7 @@ export default {
 
 |Event | Description | Callback parameter|
 |------|------|------|
-|change | Triggered when switching panels | The type is consistent with the value bound to the v-model|
+|change | Triggered when switching panels | `(modelValue, currName, status)`|
 
 ## 主题定制
 
