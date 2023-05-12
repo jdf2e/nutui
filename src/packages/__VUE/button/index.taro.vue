@@ -1,5 +1,11 @@
 <template>
-  <button :class="classes" :style="getStyle" @click="handleClick">
+  <button
+    :class="classes"
+    :style="getStyle"
+    @click="handleClick"
+    :type="Taro.getEnv() === Taro.ENV_TYPE.WEB ? formType : undefined"
+    :formType="formType === 'button' ? undefined : formType"
+  >
     <view class="nut-button__wrap">
       <Loading class="nut-icon-loading" v-if="loading" />
       <slot name="icon" v-if="$slots.icon && !loading"></slot>
@@ -14,7 +20,8 @@
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue-taro';
-import { ButtonShape, ButtonType, ButtonSize } from './type';
+import Taro from '@tarojs/taro';
+import { ButtonShape, ButtonType, ButtonSize, ButtonFormType } from './type';
 const { componentName, create } = createComponent('button');
 export default create({
   components: { Loading },
@@ -39,6 +46,10 @@ export default create({
     type: {
       type: String as PropType<ButtonType>,
       default: 'default'
+    },
+    formType: {
+      type: String as PropType<ButtonFormType>,
+      default: 'button'
     },
     size: {
       type: String as PropType<ButtonSize>,
@@ -94,7 +105,8 @@ export default create({
     return {
       handleClick,
       classes,
-      getStyle
+      getStyle,
+      Taro
     };
   }
 });
