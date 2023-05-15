@@ -23,9 +23,9 @@ At each step, set the id of the target element, and the Tour component looks up 
 :::demo
 ```html
 <template>
-  <nut-cell title="try click" @click="showTour3 = true">
+  <nut-cell title="try click">
     <template v-slot:link>
-      <nut-switch id="target7" />
+      <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
     </template>
   </nut-cell>
   <nut-tour
@@ -40,6 +40,7 @@ import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
+      switchValue: false,
       showTour3: false,
       steps3: [{
           content: '70+ 高质量组件，覆盖移动端主流场景',
@@ -65,9 +66,9 @@ Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size,
 :::demo
 ```html
 <template>
-  <nut-cell title="try click" @click="showTour1 = true">
+  <nut-cell title="try click">
     <template v-slot:link>
-      <nut-switch id="target5" />
+      <nut-switch id="target5" v-model="switchValue" @click="showTour1 = true" />
     </template>
   </nut-cell>
 
@@ -90,6 +91,7 @@ import { reactive, toRefs } from 'vue';
 export default {
    setup() {
     const state = reactive({
+      switchValue: false,
       showTour1: false,
       steps1: [{
           content: '70+ 高质量组件，覆盖移动端主流场景',
@@ -176,9 +178,9 @@ Can customize the bubble layer through the slot slot
 :::demo
 ```html
 <template>
-  <nut-cell title="点击试试" @click="showTour4 = true">
+  <nut-cell title="点击试试">
     <template v-slot:link>
-      <nut-switch id="target8" />
+      <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
     </template>
   </nut-cell>
 
@@ -204,6 +206,7 @@ import { reactive, toRefs } from 'vue';
 export default {
   setup() {
     const state = reactive({
+      switchValue: false,
       showTour4: false,
       steps4: [
         {
