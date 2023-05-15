@@ -18,7 +18,7 @@ jobs:
       - name : Sync 
         uses : JamesIves/github-pages-deploy-action@4.1.7 
         with :
-          branch : master # action 应该部署到的分支 。
+          branch : vue-3.x-stable # action 应该部署到的分支 。
           folder : site_docs #操作应该部署的文件夹 。
           clean: false
           repository-name: jdf2e/nutui-docs
