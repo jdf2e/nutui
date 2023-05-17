@@ -44,7 +44,6 @@ export default defineComponent({
 
     const handledemoFromParent = (event: any) => {
       var data = event.data;
-      console.log('data', data);
       switch (data.cmd) {
         case 'refresh':
           if (data.params.state) {
