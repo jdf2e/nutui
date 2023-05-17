@@ -92,7 +92,7 @@ Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自
 
 ```html
 <template>
-  <nut-image width="100" height="100" showLoading>
+  <nut-image width="100" height="100" show-loading>
     <template #loading>
       <Loading width="16px" height="16px" name="loading" />
     </template>
@@ -116,7 +116,7 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 
 ```html
 <template>
-  <nut-image src="https://x" width="100" height="100" showError>
+  <nut-image src="https://x" width="100" height="100" show-error>
     <template #error> 
       <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
@@ -126,6 +126,43 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 import { CircleClose } from '@nutui/icons-vue';
 export default {
   components: { CircleClose }
+}
+</script>
+```
+
+:::
+
+### 懒加载
+
+刷新后滚动 Demo 页面，在控制台中查看图片请求时间。
+
+:::demo
+
+```html
+<template>
+  <nut-cell>
+    <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=2'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=3'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=4'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+</template>
+<script>
+import { ref } from 'vue'
+export default {
+  setup() {
+    const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg')
+    return { src }
+  }
 }
 </script>
 ```
@@ -148,6 +185,7 @@ export default {
 | radius         | 圆角大小               | string \| number | -                |
 | show-error         | 是否展示图片加载失败| boolean | `false`              |
 | show-loading         | 是否展示加载中图片               | boolean | `true`              |
+| lazy-load`4.0.8` | 懒加载 | boolean | `false` |
 
 ### ImageFit 图片填充模式
 

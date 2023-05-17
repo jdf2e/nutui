@@ -93,7 +93,7 @@ The Image component provides a default `loading` prompt and supports custom cont
 
 ```html
 <template>
-  <nut-image width="100" height="100" showLoading>
+  <nut-image width="100" height="100" show-loading>
     <template #loading>
       <Loading width="16px" height="16px" name="loading" />
     </template>
@@ -117,7 +117,7 @@ The Image component provides a default loading failure warning and supports cust
 
 ```html
 <template>
-  <nut-image src="https://x" width="100" height="100" showLoading>
+  <nut-image src="https://x" width="100" height="100" show-loading>
     <template #error>
       <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
@@ -127,6 +127,41 @@ The Image component provides a default loading failure warning and supports cust
 import { CircleClose } from '@nutui/icons-vue';
 export default {
   components: { CircleClose }
+}
+</script>
+```
+
+:::
+
+### LazyLoad
+
+:::demo
+
+```html
+<template>
+  <nut-cell>
+    <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=2'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=3'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=4'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+  <nut-cell>
+    <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
+  </nut-cell>
+</template>
+<script>
+import { ref } from 'vue'
+export default {
+  setup() {
+    const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg')
+    return { src }
+  }
 }
 </script>
 ```
@@ -149,6 +184,7 @@ export default {
 | radius         | Border Raduis               | string \| number | -                |
 | show-error         | Whether to show error placeholder | boolean | `false`              |
 | show-loading         | Whether to show loading placeholder | boolean | `true`              |
+| lazy-load`4.0.8` | lazy load | boolean | `false` |
 
 ### ImageFit 
 
