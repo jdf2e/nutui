@@ -21,7 +21,18 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, PropType, useSlots, watch, CSSProperties, ref, onMounted } from 'vue';
+import {
+  reactive,
+  toRefs,
+  computed,
+  PropType,
+  useSlots,
+  watch,
+  CSSProperties,
+  ref,
+  onMounted,
+  onBeforeUnmount
+} from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '../../utils/pxCheck';
 import { ImageFit, ImagePosition } from './type';
@@ -112,6 +123,10 @@ export default create({
 
     onMounted(() => {
       props.lazyLoad && initObserver();
+    });
+
+    onBeforeUnmount(() => {
+      observer.value && observer.value.disconnect();
     });
 
     const stylebox = computed(() => {
