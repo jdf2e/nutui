@@ -59,10 +59,10 @@ export const component = (componentName: string, components: Record<string, Comp
 
       const color = computed(() => {
         return !pDisabled.value
-          ? !pValue.value
-            ? 'nut-checkbox__icon--unchecked'
-            : state.partialSelect
+          ? state.partialSelect
             ? 'nut-checkbox__icon--indeterminate'
+            : !pValue.value
+            ? 'nut-checkbox__icon--unchecked'
             : 'nut-checkbox__icon'
           : 'nut-checkbox__icon--disable';
       });
@@ -93,10 +93,10 @@ export const component = (componentName: string, components: Record<string, Comp
           Checked: slots.checkedIcon ? slots.checkedIcon : components.Checked,
           CheckDisabled: slots.indeterminate ? slots.indeterminate : components.CheckDisabled
         };
-        const iconNode = !pValue.value
-          ? iconNodeMap.CheckNormal
-          : state.partialSelect
+        const iconNode = state.partialSelect
           ? iconNodeMap.CheckDisabled
+          : !pValue.value
+          ? iconNodeMap.CheckNormal
           : iconNodeMap.Checked;
         const size = pxCheck(iconSize);
         return h(iconNode, {

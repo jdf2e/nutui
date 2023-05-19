@@ -225,7 +225,7 @@ export default createDemo({
         { label: '5', value: translate('combine') },
         { label: '6', value: translate('combine') }
       ],
-      indeterminate: true
+      indeterminate: false
     });
     const changeBox1 = (state: boolean, label: string) => {
       console.log(state, label);
@@ -254,6 +254,7 @@ export default createDemo({
       } else if (label.length && label.length < 4) {
         data.indeterminate = true;
       } else {
+        data.indeterminate = false;
         data.checkbox10 = false;
       }
     };
