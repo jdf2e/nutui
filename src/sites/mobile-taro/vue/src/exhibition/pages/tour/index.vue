@@ -2,9 +2,9 @@
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-cell title="点击试试" @click="showTour3 = true">
+    <nut-cell title="点击试试">
       <template v-slot:link>
-        <nut-switch id="target7" />
+        <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
       </template>
     </nut-cell>
 
@@ -18,9 +18,9 @@
 
     <h2>自定义样式</h2>
 
-    <nut-cell title="点击试试" @click="showTourHandle">
+    <nut-cell title="点击试试">
       <template v-slot:link>
-        <nut-switch id="target5" />
+        <nut-switch id="target5" v-model="switchValue" @click="showTourHandle" />
       </template>
     </nut-cell>
 
@@ -69,9 +69,9 @@
 
     <h2>自定义内容</h2>
 
-    <nut-cell title="点击试试" @click="showTour4 = true">
+    <nut-cell title="点击试试">
       <template v-slot:link>
-        <nut-switch id="target8" />
+        <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
       </template>
     </nut-cell>
 
@@ -125,6 +125,7 @@ export default {
   setup() {
     const env = Taro.getEnv();
     const state = reactive({
+      switchValue: false,
       showTour: false,
       showTour1: false,
       showTour2: false,

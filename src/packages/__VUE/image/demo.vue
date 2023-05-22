@@ -46,11 +46,11 @@
     <nut-cell>
       <nut-row :gutter="10">
         <nut-col :span="8">
-          <nut-image width="100" height="100" showLoading></nut-image>
+          <nut-image width="100" height="100" show-loading></nut-image>
           <div class="text">默认</div>
         </nut-col>
         <nut-col :span="8">
-          <nut-image width="100" height="100" showLoading>
+          <nut-image width="100" height="100" show-loading>
             <template #loading>
               <Loading width="16px" height="16px" name="loading"></Loading>
             </template>
@@ -64,11 +64,11 @@
     <nut-cell>
       <nut-row :gutter="10">
         <nut-col :span="8">
-          <nut-image src="https://x" width="100" height="100" showError></nut-image>
+          <nut-image src="https://x" width="100" height="100" show-error></nut-image>
           <div class="text">默认</div>
         </nut-col>
         <nut-col :span="8">
-          <nut-image src="https://x" width="100" height="100" showLoading>
+          <nut-image src="https://x" width="100" height="100" show-loading>
             <template #error>
               <CircleClose width="16px" height="16px" name="circleClose"></CircleClose>
             </template>
@@ -76,6 +76,23 @@
           <div class="text">自定义</div>
         </nut-col>
       </nut-row>
+    </nut-cell>
+
+    <h2>{{ translate('lazy') }}</h2>
+    <nut-cell>
+      <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
+    </nut-cell>
+    <nut-cell>
+      <nut-image :src="src + '?t=2'" lazy-load height="200" width="100%"></nut-image>
+    </nut-cell>
+    <nut-cell>
+      <nut-image :src="src + '?t=3'" lazy-load height="200" width="100%"></nut-image>
+    </nut-cell>
+    <nut-cell>
+      <nut-image :src="src + '?t=4'" lazy-load height="200" width="100%"></nut-image>
+    </nut-cell>
+    <nut-cell>
+      <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
     </nut-cell>
   </div>
 </template>
@@ -93,7 +110,8 @@ const initTranslate = () =>
       position: '图片位置',
       circle: '圆形图片',
       loading: '加载中提示',
-      error: '加载失败'
+      error: '加载失败',
+      lay: '懒加载'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -101,7 +119,8 @@ const initTranslate = () =>
       position: 'Object Position',
       circle: 'Round',
       loading: 'Loading',
-      error: 'Error'
+      error: 'Error',
+      lazy: 'Lazy Load'
     }
   });
 export default createDemo({

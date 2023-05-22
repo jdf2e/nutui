@@ -1,3 +1,19 @@
+## v4.0.7
+
+`2023-05-12`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @ntnyq
+
+* :zap: feat(animate): add duration property (#2280)
+* :zap: feat(button): add formType for Taro H5 (#2288)
+* :bug: fix(switch): inactiveValue 为非 falsy 值无法显示 (#2258)
+* :bug: fix(tabs): tab-title active font-weight #2268
+* :bug: fix(sidenavbar): style of async data (#2279)
+* :bug: fix(addressList): failed to emit click-item (#2281)
+* :bug: fix(form): reset min-width style for label-width (#2282)
+* :bug: fix(tour): remove mask after close (#2283)
+
 ## v4.0.6
 
 `2023-04-21`
