@@ -81,8 +81,7 @@
           "type": "component",
           "show": true,
           "desc": "按钮用于触发一个操作，如提交表单。",
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -93,8 +92,7 @@
           "type": "component",
           "show": true,
           "desc": "展示列表",
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -106,8 +104,7 @@
           "taro": true,
           "exportEmpty": true,
           "desc": "展示分组列表",
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -119,8 +116,7 @@
           "show": true,
           "desc": "图标",
           "author": "richard1015",
-          "exclude": true,
-          "styleDeps": []
+          "exclude": true
         },
         {
           "version": "3.0.0",
@@ -131,8 +127,7 @@
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
           "sort": 14,
           "show": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -143,8 +138,7 @@
           "type": "component",
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008",
-          "styleDeps": ["Overlay"]
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -156,8 +150,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -168,8 +161,7 @@
           "show": true,
           "tarodoc": true,
           "type": "component",
-          "author": "yangxiaolu",
-          "styleDeps": []
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -186,8 +178,7 @@
           "type": "component",
           "show": true,
           "desc": "简便地创建布局",
-          "author": "undo",
-          "styleDeps": []
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -199,8 +190,7 @@
           "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Col",
-          "author": "undo",
-          "styleDeps": []
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -212,8 +202,7 @@
           "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Row",
-          "author": "undo",
-          "styleDeps": []
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -225,8 +214,7 @@
           "show": true,
           "taro": true,
           "tarodoc": false,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -237,8 +225,7 @@
           "desc": "用于将内容分隔为多个区域。",
           "sort": 23,
           "show": true,
-          "author": "yangjinjun3",
-          "styleDeps": []
+          "author": "yangjinjun3"
         },
         {
           "version": "3.1.13",
@@ -249,8 +236,7 @@
           "sort": 13,
           "taro": true,
           "show": true,
-          "author": "haiweilian",
-          "styleDeps": []
+          "author": "haiweilian"
         },
         {
           "version": "3.1.13",
@@ -263,8 +249,7 @@
           "show": false,
           "exportEmpty": true,
           "exportEmptyTaro": true,
-          "author": "haiweilian",
-          "styleDeps": []
+          "author": "haiweilian"
         }
       ]
     },
@@ -281,8 +266,7 @@
           "type": "componment",
           "show": true,
           "desc": "头部导航",
-          "author": "liqiong43",
-          "styleDeps": []
+          "author": "liqiong43"
         },
         {
           "version": "3.0.0",
@@ -293,8 +277,7 @@
           "taro": true,
           "sort": 9,
           "show": true,
-          "author": "richard1015",
-          "styleDeps": ["Overlay"]
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -305,8 +288,7 @@
           "taro": true,
           "show": true,
           "desc": "下拉菜单组件",
-          "author": "yangjinjun3",
-          "styleDeps": []
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -318,8 +300,7 @@
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "yangjinjun3",
-          "styleDeps": ["Popup"]
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -330,8 +311,7 @@
           "type": "component",
           "show": true,
           "desc": "标签栏",
-          "author": "Drjingfubo",
-          "styleDeps": []
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -344,8 +324,7 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "desc": "标签栏子组件",
-          "author": "Drjingfubo",
-          "styleDeps": ["Badge"]
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -356,8 +335,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -368,8 +346,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "yushuang24",
-          "styleDeps": []
+          "author": "yushuang24"
         },
         {
           "version": "3.1.9",
@@ -380,8 +357,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "author": "richard1015",
-          "styleDeps": ["Sticky"]
+          "author": "richard1015"
         },
         {
           "version": "3.1.9",
@@ -393,8 +369,7 @@
           "exportEmpty": true,
           "taro": true,
           "show": false,
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -405,8 +380,7 @@
           "sort": 11,
           "taro": true,
           "show": true,
-          "author": "senyawang",
-          "styleDeps": []
+          "author": "senyawang"
         },
         {
           "version": "3.1.15",
@@ -417,8 +391,7 @@
           "sort": 14,
           "taro": true,
           "show": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.1.15",
@@ -430,8 +403,7 @@
           "exportEmpty": true,
           "taro": true,
           "show": false,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.1.15",
@@ -443,8 +415,7 @@
           "exportEmpty": true,
           "taro": true,
           "show": false,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         }
       ]
     },
@@ -461,8 +432,7 @@
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 16,
           "show": true,
-          "author": "zy19940510",
-          "styleDeps": []
+          "author": "zy19940510"
         },
         {
           "version": "3.0.0",
@@ -473,8 +443,7 @@
           "sort": 23,
           "show": true,
           "taro": true,
-          "author": "zongyue3",
-          "styleDeps": []
+          "author": "zongyue3"
         },
         {
           "name": "Cascader",
@@ -484,8 +453,7 @@
           "sort": 23,
           "show": true,
           "taro": true,
-          "author": "dongj0316",
-          "styleDeps": ["Popup", "Tabs", "TabPane"]
+          "author": "dongj0316"
         },
         {
           "version": "3.0.0",
@@ -496,8 +464,7 @@
           "desc": "日历组件",
           "sort": 5,
           "show": true,
-          "author": "songchenglin1",
-          "styleDeps": ["Popup", "CalendarItem"]
+          "author": "songchenglin1"
         },
         {
           "version": "3.0.0",
@@ -508,8 +475,7 @@
           "type": "component",
           "show": true,
           "desc": "复选按钮",
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -521,8 +487,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -533,8 +498,7 @@
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
           "sort": 5,
           "show": true,
-          "author": "yangkaixuan",
-          "styleDeps": ["Picker"]
+          "author": "yangkaixuan"
         },
         {
           "version": "3.0.0",
@@ -545,8 +509,7 @@
           "type": "component",
           "show": true,
           "desc": "数字输入框组件",
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -557,8 +520,7 @@
           "type": "component",
           "show": true,
           "desc": "输入框组件",
-          "author": "gxx158",
-          "styleDeps": []
+          "author": "gxx158"
         },
         {
           "version": "3.0.0",
@@ -569,8 +531,7 @@
           "desc": "单选按钮",
           "sort": 9,
           "show": true,
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -582,8 +543,7 @@
           "taro": true,
           "exportEmpty": true,
           "show": false,
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -594,8 +554,7 @@
           "type": "component",
           "show": true,
           "desc": "评分组件",
-          "author": "undo",
-          "styleDeps": []
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -605,8 +564,7 @@
           "desc": "日历子组件",
           "sort": 5,
           "show": false,
-          "author": "songchenglin1",
-          "styleDeps": []
+          "author": "songchenglin1"
         },
         {
           "version": "3.0.0",
@@ -617,8 +575,7 @@
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
           "sort": 5,
           "show": true,
-          "author": "yangkaixuan",
-          "styleDeps": ["Popup"]
+          "author": "yangkaixuan"
         },
         {
           "version": "3.0.0",
@@ -629,8 +586,7 @@
           "desc": "短密码组件",
           "sort": 6,
           "show": true,
-          "author": "Drjingfubo",
-          "styleDeps": ["Popup"]
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -641,8 +597,7 @@
           "desc": "文本输入",
           "sort": 7,
           "show": true,
-          "author": "gx",
-          "styleDeps": []
+          "author": "gx"
         },
         {
           "version": "3.0.0",
@@ -654,8 +609,7 @@
           "type": "component",
           "show": true,
           "desc": "上传文件、图片",
-          "author": "richard1015",
-          "styleDeps": ["Progress", "Button"]
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -666,8 +620,7 @@
           "type": "component",
           "show": true,
           "desc": "虚拟数字键盘",
-          "author": "Drjingfubo",
-          "styleDeps": ["Popup"]
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -678,8 +631,7 @@
           "sort": 21,
           "show": true,
           "taro": true,
-          "author": "richard1015",
-          "styleDeps": ["CellGroup"]
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -691,8 +643,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
-          "author": "richard1015",
-          "styleDeps": ["Cell"]
+          "author": "richard1015"
         }
       ]
     },
@@ -709,8 +660,7 @@
           "desc": "列表项左滑删除场景使用",
           "sort": 4,
           "show": true,
-          "author": "richard1015",
-          "styleDeps": []
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
@@ -721,8 +671,7 @@
           "type": "component",
           "show": true,
           "desc": "底部弹出动作菜单面板",
-          "author": "zhangyufei",
-          "styleDeps": ["Popup"]
+          "author": "zhangyufei"
         },
         {
           "version": "3.0.0",
@@ -734,8 +683,7 @@
           "type": "component",
           "show": true,
           "desc": "较长页面快捷返回顶部",
-          "author": "liqiong43",
-          "styleDeps": []
+          "author": "liqiong43"
         },
         {
           "version": "3.0.0",
@@ -747,8 +695,7 @@
           "desc": "拖拽组件",
           "sort": 16,
           "show": true,
-          "author": "Drjingfubo",
-          "styleDeps": []
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -760,8 +707,7 @@
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
           "sort": 8,
           "show": true,
-          "author": "dsj",
-          "styleDeps": ["Popup", "Button"]
+          "author": "dsj"
         },
         {
           "version": "3.0.0",
@@ -774,8 +720,7 @@
           "show": true,
           "author": "yangxiaolu",
           "exportEmpty": false,
-          "exportEmptyTaro": false,
-          "styleDeps": []
+          "exportEmptyTaro": false
         },
         {
           "version": "3.0.0",
@@ -789,8 +734,7 @@
           "show": true,
           "author": "yangxiaolu",
           "exportEmpty": false,
-          "exportEmptyTaro": false,
-          "styleDeps": []
+          "exportEmptyTaro": false
         },
         {
           "version": "3.0.0",
@@ -802,8 +746,7 @@
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
           "sort": 4,
           "show": true,
-          "author": "wangyue217",
-          "styleDeps": ["Popup"]
+          "author": "wangyue217"
         },
         {
           "version": "3.0.0",
@@ -814,8 +757,7 @@
           "desc": "用来打开或关闭选项",
           "sort": 3,
           "show": true,
-          "author": "zongyue3",
-          "styleDeps": []
+          "author": "zongyue3"
         },
         {
           "version": "3.0.0",
@@ -827,8 +769,7 @@
           "type": "methods",
           "show": true,
           "desc": "轻提示",
-          "author": "undo",
-          "styleDeps": []
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -841,8 +782,7 @@
           "show": true,
           "exportEmpty": false,
           "exportEmptyTaro": false,
-          "author": "yangxiaolu",
-          "styleDeps": ["Range"]
+          "author": "yangxiaolu"
         },
         {
           "version": "3.0.0",
@@ -854,8 +794,7 @@
           "show": false,
           "exportEmpty": false,
           "exportEmptyTaro": false,
-          "author": "yangxiaolu",
-          "styleDeps": ["Button"]
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -872,8 +811,7 @@
           "type": "component",
           "show": true,
           "desc": "头像",
-          "author": "ailululu",
-          "styleDeps": []
+          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -885,8 +823,7 @@
           "show": false,
           "exportEmpty": true,
           "desc": "头像组合组件",
-          "author": "ailululu",
-          "styleDeps": []
+          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -898,8 +835,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -910,8 +846,7 @@
           "type": "component",
           "show": true,
           "desc": "用来展示进度",
-          "author": "Drjingubo",
-          "styleDeps": []
+          "author": "Drjingubo"
         },
         {
           "version": "3.0.0",
@@ -922,8 +857,7 @@
           "type": "component",
           "show": true,
           "desc": "用来展示进度",
-          "author": "Drjingubo",
-          "styleDeps": []
+          "author": "Drjingubo"
         },
         {
           "version": "3.0.0",
@@ -934,8 +868,7 @@
           "sort": 8,
           "show": true,
           "taro": true,
-          "author": "yangxiaolu",
-          "styleDeps": []
+          "author": "yangxiaolu"
         },
         {
           "version": "3.0.0",
@@ -946,8 +879,7 @@
           "desc": "空状态时占位提示",
           "sort": 24,
           "show": true,
-          "author": "wujia8",
-          "styleDeps": []
+          "author": "wujia8"
         },
         {
           "version": "3.0.0",
@@ -961,8 +893,7 @@
           "tarodoc": true,
           "exportEmpty": false,
           "exportEmptyTaro": false,
-          "author": "zy19940510",
-          "styleDeps": []
+          "author": "zy19940510"
         },
         {
           "version": "3.0.0",
@@ -973,8 +904,7 @@
           "type": "component",
           "show": true,
           "desc": "步骤条",
-          "author": "ailululu",
-          "styleDeps": []
+          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -986,8 +916,7 @@
           "taro": true,
           "exportEmpty": true,
           "desc": "步骤条子组件",
-          "author": "ailululu",
-          "styleDeps": []
+          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -998,8 +927,7 @@
           "type": "component",
           "show": true,
           "desc": "轮播",
-          "author": "suzigang",
-          "styleDeps": []
+          "author": "suzigang"
         },
         {
           "version": "3.0.0",
@@ -1012,8 +940,7 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "desc": "轮播图子组件",
-          "author": "suzigang",
-          "styleDeps": []
+          "author": "suzigang"
         },
         {
           "version": "3.0.0",
@@ -1024,8 +951,7 @@
           "type": "component",
           "show": true,
           "desc": "价格组件",
-          "author": "ailululu",
-          "styleDeps": []
+          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -1036,8 +962,7 @@
           "taro": true,
           "sort": 4,
           "show": true,
-          "author": "zongyue3",
-          "styleDeps": ["Popup", "Swiper", "SwiperItem", "Video"]
+          "author": "zongyue3"
         },
         {
           "version": "3.0.0",
@@ -1048,8 +973,7 @@
           "type": "component",
           "show": true,
           "desc": "数字滚动组件，动态变化展示",
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "name": "Countdown",
@@ -1059,8 +983,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "yangxiaolu",
-          "styleDeps": []
+          "author": "yangxiaolu"
         },
         {
           "version": "3.0.0",
@@ -1071,8 +994,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "author": "liqiong",
-          "styleDeps": []
+          "author": "liqiong"
         },
         {
           "version": "3.0.0",
@@ -1083,8 +1005,7 @@
           "sort": 18,
           "show": true,
           "taro": true,
-          "author": "liqiong",
-          "styleDeps": []
+          "author": "liqiong"
         },
         {
           "version": "3.0.0",
@@ -1095,8 +1016,7 @@
           "sort": 19,
           "show": true,
           "taro": true,
-          "author": "liqiong",
-          "styleDeps": ["Popup"]
+          "author": "liqiong"
         },
         {
           "version": "3.0.0",
@@ -1107,8 +1027,7 @@
           "sort": 23,
           "show": true,
           "taro": true,
-          "author": "liqiong",
-          "styleDeps": ["Avatar"]
+          "author": "liqiong"
         },
         {
           "version": "3.0.0",
@@ -1119,8 +1038,7 @@
           "type": "component",
           "show": true,
           "desc": "折叠面板",
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -1133,8 +1051,7 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "desc": "折叠面板-item",
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -1145,8 +1062,7 @@
           "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
           "sort": 9,
           "show": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -1158,8 +1074,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "lijiamiao",
-          "styleDeps": []
+          "author": "lijiamiao"
         },
         {
           "version": "3.0.0",
@@ -1171,8 +1086,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "yangxiaolu3",
-          "styleDeps": []
+          "author": "yangxiaolu3"
         },
         {
           "version": "3.0.0",
@@ -1184,8 +1098,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "liukun",
-          "styleDeps": []
+          "author": "liukun"
         },
         {
           "version": "3.0.0",
@@ -1197,8 +1110,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "liukun",
-          "styleDeps": []
+          "author": "liukun"
         },
         {
           "version": "3.0.0",
@@ -1210,8 +1122,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "yangxiaolu",
-          "styleDeps": ["Popover"]
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -1228,8 +1139,7 @@
           "desc": "地址组件",
           "sort": 1,
           "show": true,
-          "author": "yangxiaolu3",
-          "styleDeps": ["Popup", "Elevator"]
+          "author": "yangxiaolu3"
         },
         {
           "version": "3.0.0",
@@ -1240,8 +1150,7 @@
           "desc": "用于视频弹幕等展示",
           "sort": 2,
           "show": true,
-          "author": "Ymm0008",
-          "styleDeps": []
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
@@ -1253,8 +1162,7 @@
           "desc": "签名组件",
           "sort": 3,
           "show": true,
-          "author": "guoxiaoxiao",
-          "styleDeps": ["Button"]
+          "author": "guoxiaoxiao"
         },
         {
           "version": "3.0.0",
@@ -1265,8 +1173,7 @@
           "desc": "配送时间",
           "sort": 4,
           "show": true,
-          "author": "szg2008",
-          "styleDeps": ["Popup"]
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -1278,8 +1185,7 @@
           "sort": 5,
           "show": false,
           "exportEmpty": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -1291,8 +1197,7 @@
           "sort": 6,
           "show": false,
           "exportEmpty": true,
-          "author": "szg2008",
-          "styleDeps": []
+          "author": "szg2008"
         },
         {
           "version": "3.0.0",
@@ -1303,8 +1208,7 @@
           "desc": "商品规格选择",
           "sort": 1,
           "show": true,
-          "author": "yangxiaolu3",
-          "styleDeps": ["Popup", "InputNumber", "Price"]
+          "author": "yangxiaolu3"
         },
         {
           "version": "3.0.0",
@@ -1315,8 +1219,7 @@
           "desc": "展示商品",
           "sort": 1,
           "show": true,
-          "author": "Drjingfubo",
-          "styleDeps": ["Price", "Tag"]
+          "author": "Drjingfubo"
         },
         {
           "version": "3.0.0",
@@ -1328,8 +1231,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "yangxiaolu",
-          "styleDeps": ["InputNumber"]
+          "author": "yangxiaolu"
         },
         {
           "version": "3.0.0",
@@ -1339,8 +1241,7 @@
           "desc": "展示收货地址列表",
           "show": true,
           "author": "yushuang24",
-          "taro": true,
-          "styleDeps": ["Button", "Swipe"]
+          "taro": true
         },
         {
           "version": "3.0.0",
@@ -1350,8 +1251,7 @@
           "desc": "商品分类展示",
           "show": true,
           "author": "liqiong43",
-          "taro": true,
-          "styleDeps": []
+          "taro": true
         },
         {
           "version": "3.0.0",
@@ -1362,8 +1262,7 @@
           "show": false,
           "exportEmpty": true,
           "author": "liqiong43",
-          "taro": true,
-          "styleDeps": []
+          "taro": true
         },
         {
           "name": "Comment",
@@ -1374,8 +1273,7 @@
           "taro": true,
           "tarodoc": false,
           "type": "component",
-          "author": "yangxiaolu",
-          "styleDeps": ["Rate"]
+          "author": "yangxiaolu"
         },
         {
           "version": "3.0.0",
@@ -1387,8 +1285,7 @@
           "tarodoc": false,
           "type": "component",
           "author": "ailululu",
-          "taro": true,
-          "styleDeps": ["Form", "FormItem", "RadioGroup", "Radio", "Button"]
+          "taro": true
         }
       ]
     }
