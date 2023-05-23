@@ -378,7 +378,7 @@ When the value changes, the `change` event will be triggered
     setup() {
       const group2 = ref(null) as Ref;
       const state = reactive({
-        indeterminate: true,
+        indeterminate: false,
         checkbox10: false,
         checkboxgroup5: [],
       });
@@ -394,6 +394,7 @@ When the value changes, the `change` event will be triggered
         } else if(label.length && label.length < 4){
           state.indeterminate = true;
         } else {
+          data.indeterminate = false;
           state.checkbox10 = false;
         }
       };

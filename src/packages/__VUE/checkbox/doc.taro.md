@@ -340,7 +340,7 @@ app.use(CheckboxGroup);
     setup() {
       const group2 = ref(null) as Ref;
       const state = reactive({
-        indeterminate: true,
+        indeterminate: false,
         checkbox10: false,
         checkboxgroup5: [],
       });
@@ -356,6 +356,7 @@ app.use(CheckboxGroup);
         } else if(label.length && label.length < 4){
           state.indeterminate = true;
         } else {
+          data.indeterminate = false;
           state.checkbox10 = false;
         }
       };
