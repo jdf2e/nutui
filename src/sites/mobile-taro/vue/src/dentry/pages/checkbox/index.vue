@@ -157,7 +157,7 @@ export default {
         { label: '5', value: '组合复选框' },
         { label: '6', value: '组合复选框' }
       ],
-      indeterminate: true
+      indeterminate: false
     });
     const changeBox1 = (state: boolean, label: string) => {
       console.log(state, label);
@@ -186,6 +186,7 @@ export default {
       } else if (label.length && label.length < 4) {
         data.indeterminate = true;
       } else {
+        data.indeterminate = false;
         data.checkbox10 = false;
       }
     };
