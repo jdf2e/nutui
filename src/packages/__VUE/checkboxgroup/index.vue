@@ -25,22 +25,12 @@ export default create({
       children: [] as ComponentPublicInstance[]
     });
 
-    const relation = (child: ComponentInternalInstance, cancel: boolean = false) => {
-      if (child.proxy) {
-        if (!cancel) {
-          state.children.push(child.proxy);
-        } else {
-          let key_1 = state.children.indexOf(child.proxy);
-          if (key_1 > -1) {
-            state.children.splice(key_1, 1);
-          }
-          let key_2 = props.modelValue.indexOf((child.proxy as any)?.label);
-          if (key_2 > -1) {
-            const value = props.modelValue.filter((_, index) => index !== key_2);
-            emit('update:modelValue', value);
-          }
-        }
-      }
+    const link = (child: ComponentInternalInstance) => {
+      child.proxy && state.children.push(child.proxy);
+    };
+
+    const unlink = (child: ComponentInternalInstance) => {
+      child.proxy && (state.children = state.children.filter((p) => p !== child.proxy));
     };
 
     const updateValue = (value: string[]) => {
@@ -49,8 +39,8 @@ export default create({
     };
 
     const toggleAll = (checked: boolean) => {
-      let values: string[] = [];
-      if (!!checked) {
+      const values: string[] = [];
+      if (checked) {
         state.children.forEach((item: any) => {
           if (!item?.disabled) {
             values.push(item?.label);
@@ -61,18 +51,16 @@ export default create({
     };
 
     const toggleReverse = () => {
-      let values = props.modelValue.slice();
-      state.children.forEach((item: any) => {
-        let findIndex = values.findIndex((value: any) => value === item.label);
-        if (findIndex > -1) {
-          values.splice(findIndex, 1);
-        } else {
-          if (!item?.disabled) {
-            values.push(item?.label);
+      const value = state.children
+        .filter((item: any) => {
+          if (item?.disabled) {
+            return false;
+          } else {
+            return !props.modelValue.includes(item.label);
           }
-        }
-      });
-      emit('update:modelValue', values);
+        })
+        .map((item: any) => item.label);
+      emit('update:modelValue', value);
     };
 
     provide('parent', {
@@ -80,7 +68,8 @@ export default create({
       disabled: computed(() => props.disabled),
       max: computed(() => props.max),
       updateValue,
-      relation
+      link,
+      unlink
     });
 
     watch(
