@@ -38,7 +38,7 @@
       <template v-slot:left-icon>
         <img
           src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-          style="width: 20px; height: 20px"
+          style="width: 20px; height: 20px;"
         />
       </template>
       <a href="https://www.jd.com">京东商城</a>
@@ -63,7 +63,7 @@
         :closeMode="true"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
-        height="50"
+        :height="50"
       ></nut-noticebar>
     </div>
 
@@ -95,7 +95,7 @@
           class="custom-item"
           :data-index="index"
           v-for="(item, index) in data1"
-          style="height: 50px; line-height: 50px"
+          style="height: 50px; line-height: 50px;"
           :key="index"
           >{{ item }}</div
         >
@@ -115,7 +115,7 @@
         <template v-slot:right-icon>
           <img
             src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-            style="width: 20px; height: 20px"
+            style="width: 20px; height: 20px;"
           />
         </template>
       </nut-noticebar>
@@ -152,7 +152,8 @@ export default {
         '买超值优惠',
         '赢百万京豆'
       ],
-      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+      text:
+        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
     });
 
     const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
