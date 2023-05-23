@@ -260,8 +260,8 @@ export default create({
 
     watch(
       () => props.text,
-      (value) => {
-        initScrollWrap(value);
+      () => {
+        initScrollWrap();
       }
     );
 
@@ -272,7 +272,18 @@ export default create({
       }
     );
 
-    const initScrollWrap = (value: string) => {
+    const getRect = (selector: string) => {
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .select(selector)
+          .boundingClientRect()
+          .exec((rect = []) => {
+            resolve(rect[0]);
+          });
+      });
+    };
+
+    const initScrollWrap = () => {
       if (state.showNoticebar == false) {
         return;
       }
@@ -284,17 +295,10 @@ export default create({
         let wrapWidth = 0;
         let offsetWidth = 0;
 
-        Taro.createSelectorQuery()
-          .select(`.wrap${state.id}`)
-          .boundingClientRect((rect) => {
-            if (rect.width > 0) wrapWidth = rect.width;
-          })
-          .exec();
-        Taro.createSelectorQuery()
-          .select(`.content${state.id}`)
-          .boundingClientRect((rect) => {
-            if (rect.width > 0) offsetWidth = rect.width;
-
+        getRect(`.wrap${state.id}`).then((rect: any) => {
+          if (rect?.width > 0) wrapWidth = rect.width;
+          getRect(`.content${state.id}`).then((rect: any) => {
+            if (rect?.width > 0) offsetWidth = rect.width;
             state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
             if (state.isCanScroll) {
               state.wrapWidth = wrapWidth;
@@ -305,8 +309,8 @@ export default create({
             } else {
               state.animationClass = '';
             }
-          })
-          .exec();
+          });
+        });
       }, 100);
     };
     const handleClick = (event: Event) => {
@@ -391,7 +395,7 @@ export default create({
           props.complexAm ? startRoll() : startRollEasy();
         }, props.standTime);
       } else {
-        initScrollWrap(props.text);
+        initScrollWrap();
       }
     });
 
