@@ -152,11 +152,11 @@ export const component = (componentName: string, components: Record<string, Comp
       };
 
       onMounted(() => {
-        hasParent.value && parent['relation'](getCurrentInstance());
+        hasParent.value && parent.link(getCurrentInstance());
       });
 
       onBeforeUnmount(() => {
-        hasParent.value && parent['relation'](getCurrentInstance(), true);
+        hasParent.value && parent.unlink(getCurrentInstance());
       });
 
       watch(
