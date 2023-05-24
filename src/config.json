@@ -159,6 +159,7 @@
           "cName": "图片",
           "desc": "图片展示",
           "show": true,
+          "taro": false,
           "tarodoc": true,
           "type": "component",
           "author": "yangxiaolu"
@@ -718,6 +719,7 @@
           "desc": "列表滚动到底部自动加载更多数据",
           "sort": 15,
           "show": true,
+          "taro": false,
           "author": "yangxiaolu",
           "exportEmpty": false,
           "exportEmptyTaro": false
@@ -725,13 +727,13 @@
         {
           "version": "3.0.0",
           "name": "PullRefresh",
-          "taro": false,
           "tarodoc": true,
           "type": "component",
           "cName": "下拉刷新",
           "desc": "在列表中通过手指下拉刷新加载新内容的交互操作",
           "sort": 16,
           "show": true,
+          "taro": false,
           "author": "yangxiaolu",
           "exportEmpty": false,
           "exportEmptyTaro": false
@@ -780,6 +782,7 @@
           "desc": "音频播放器",
           "sort": 25,
           "show": true,
+          "taro": false,
           "exportEmpty": false,
           "exportEmptyTaro": false,
           "author": "yangxiaolu"
@@ -792,6 +795,7 @@
           "desc": "音频操作按钮",
           "sort": 26,
           "show": false,
+          "taro": false,
           "exportEmpty": false,
           "exportEmptyTaro": false,
           "author": "yangxiaolu"

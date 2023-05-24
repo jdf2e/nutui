@@ -4,12 +4,12 @@ import path from 'path';
 import fs from 'fs-extra';
 import configPkg from './src/config.json';
 
-let input = {};
+const input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, exclude } = element;
-    // if (name.toLowerCase().indexOf('calendar') != -1) {
+    const { name, exclude, taro } = element;
+    if (taro === false) return; // 排除非 Taro 组件
     if (exclude != true) {
       const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
       input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;

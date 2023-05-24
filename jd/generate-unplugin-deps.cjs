@@ -20,6 +20,7 @@ config.nav.forEach((item) => {
     styleMap.set(element.name, {
       name: element.name
     });
+    if (target === 'nutui-taro' && element.taro === false) return; // 排除无 Taro 版组件
     // gen entry
     if (element.exclude != true) {
       let outputMjs = '';
