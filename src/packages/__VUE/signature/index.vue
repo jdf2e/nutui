@@ -45,7 +45,6 @@ export default create({
       default: ''
     }
   },
-  components: {},
   emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
@@ -58,10 +57,10 @@ export default create({
         [`${props.customClass}`]: props.customClass
       };
     });
-    const state: any = reactive({
+    const state = reactive({
       canvasHeight: 0,
       canvasWidth: 0,
-      ctx: null,
+      ctx: null as any,
       isSupportTouch: 'ontouchstart' in window,
       events:
         'ontouchstart' in window
@@ -143,7 +142,6 @@ export default create({
       const _canvas = isCanvasBlank(canvas) ? '请绘制签名' : canvas;
       const _filePath = isCanvasBlank(canvas) ? '' : dataurl;
       emit('confirm', _canvas, _filePath);
-      clear();
     };
 
     onMounted(() => {
