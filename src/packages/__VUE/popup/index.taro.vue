@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <view :catch-move="lockScroll">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -27,7 +27,7 @@
         </view>
       </view>
     </Transition>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
