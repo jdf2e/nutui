@@ -2,8 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it')();
 
-const basePath = path.resolve(__dirname, './../../__VUE');
-const cfg = require('./../../../config.json');
+const basePath = path.resolve(__dirname, './../../../src/packages/__VUE');
+const cfg = require('./../../../src/config.json');
 const componentDirs = fs.readdirSync(basePath, 'utf8');
 const TYPE_IDENTIFY_OPEN = 'tbody_open';
 const TYPE_IDENTIFY_CLOSE = 'tbody_close';

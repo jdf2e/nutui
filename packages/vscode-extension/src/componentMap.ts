@@ -289,10 +289,6 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '',
     props: ['']
   },
-  '': {
-    site: '',
-    props: ['']
-  },
   searchbar: {
     site: '/zh-CN/component/searchbar',
     props: ["v-model=''"]
@@ -399,7 +395,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   tour: {
     site: '/zh-CN/component/tour',
-    props: ["visible=''"]
+    props: ["v-model=''"]
   },
   'trend-arrow': {
     site: '/zh-CN/component/trendarrow',
