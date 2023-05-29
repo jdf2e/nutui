@@ -62,9 +62,9 @@ app.use(ConfigProvider);
 这些变量的默认值被定义在 `page` 节点上，如果要转 `H5`，默认值被定义在 `:root` 节点上
 
 ```css
-page, :root {
-    --nut-primary-color: #fa2c19;
-    --nut-primary-color-end: #fa6419;
+:root, page {
+  --nut-primary-color: #fa2c19;
+  --nut-primary-color-end: #fa6419;
 }
 ```
 
@@ -74,7 +74,7 @@ page, :root {
 
 ```css
 /* 添加这段样式后，Primary Button 会变成绿色 */
-page, :root {
+:root, page {
   --nut-button-primary-background-color: green;
 }
 ```
