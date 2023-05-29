@@ -25,7 +25,7 @@
           class="nut-uploader__preview-img__c"
           mode="aspectFit"
           @click="fileItemClick(item)"
-          v-if="['image','video'].includes(item.type as string) && item.url"
+          v-if="(item?.type?.includes('image') || item?.type?.includes('video')) && item.url"
           :src="item.url"
         />
         <view v-else class="nut-uploader__preview-img__file">
