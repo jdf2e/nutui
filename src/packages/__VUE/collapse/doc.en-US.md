@@ -1,4 +1,4 @@
-# Collapse Folding panel
+# Collapse
 
 
 ### Intro
@@ -15,8 +15,6 @@ const app = createApp();
 app.use(Collapse);
 app.use(CollapseItem);
 ```
-
-
 
 ### Basic Usage
 
@@ -41,10 +39,10 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 </nut-collapse>
 </template>
 <script>
-import { reactive, toRefs } from 'vue';
+import { reactive, ref, toRefs } from 'vue';
 export default {
   setup() {
-    const activeNames = reactive([1, 2]);
+    const activeNames = ref([1, 2]);
     const title = reactive({
       title1: 'title1',
       title2: 'title2',
