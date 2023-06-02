@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     minify: true,
+    target: 'es2015',
     lib: {
       entry: path.resolve(__dirname, './src/packages/resolver/index.ts'),
       name: 'name',
