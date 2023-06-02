@@ -1,5 +1,5 @@
 import ImagePreview from './index.vue';
-import { Component, h } from 'vue';
+import { Component, h, nextTick } from 'vue';
 import { ImageInterface } from './types';
 import { CreateComponent } from '@/packages/utils/create';
 import { Interceptor } from '@/packages/utils/util';
@@ -45,7 +45,10 @@ class ImagePreviewFunction {
           setup() {
             return () => {
               options.onClose = () => {
-                unmount();
+                options.show = false;
+                nextTick(() => {
+                  unmount();
+                });
               };
               return h(ImagePreview as Component, options);
             };
