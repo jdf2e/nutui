@@ -21,6 +21,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     minify: false,
+    target: 'es2015',
     lib: {
       entry: '',
       name: 'index',
