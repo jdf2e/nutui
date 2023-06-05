@@ -14,7 +14,7 @@
         :pagination-color="paginationColor"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="onClickImg" />
+          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="closeOnImg" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -132,6 +132,12 @@ export default create({
       }
     };
 
+    const closeOnImg = () => {
+      if (props.contentClose) {
+        onClose();
+      }
+    };
+
     const onClose = () => {
       funInterceptor(props.beforeClose, {
         args: [state.active],
@@ -240,12 +246,6 @@ export default create({
       }
     };
 
-    const onClickImg = () => {
-      if (props.contentClose) {
-        onClose();
-      }
-    };
-
     const init = () => {
       state.eleImg = document.querySelector('.nut-image-preview');
       document.addEventListener('touchmove', onTouchMove);
@@ -279,10 +279,10 @@ export default create({
       ...toRefs(state),
       setActive,
       onClose,
+      closeOnImg,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
-      onClickImg,
       getDistance,
       scaleNow,
       styles
