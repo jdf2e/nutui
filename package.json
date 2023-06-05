@@ -79,7 +79,7 @@
     "@nutui/icons-vue": "^0.0.26",
     "@nutui/icons-vue-taro": "^0.0.9",
     "sass": "^1.50.0",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",

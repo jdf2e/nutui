@@ -48,7 +48,6 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
     initSiteLang();
-    const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const state = reactive({
       fixed: false, // 是否吸顶
       hidden: false, // 是否隐藏
@@ -81,7 +80,7 @@ export default defineComponent({
       const { origin, pathname } = window.location;
       RefData.getInstance().currentRoute.value = router.path as string;
       let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
-      data.demoUrl = url.replace('/zh-CN', '').replace('/en-US', '');
+      data.demoUrl = url.replace('/component', '');
     };
 
     const watchDocMd = (curKey: string) => {
@@ -124,19 +123,7 @@ export default defineComponent({
 
     // 获得组件名称
     const componentTitle = (to?: any) => {
-      if (to?.path) {
-        ['zh-CN/', 'zh-TW/', 'en-US/'].map((file) => {
-          if (to.path.includes(file)) {
-            state.componentName.name = to.path.split(file)[1];
-          }
-        });
-      } else {
-        ['zh-CN/', 'zh-TW/', 'en-US/'].map((file) => {
-          if (route.path.includes(file)) {
-            state.componentName.name = route.path.split(file)[1];
-          }
-        });
-      }
+      state.componentName.name = (to?.path || route?.path)?.split('/').slice(-1)[0];
       nav.forEach((item: any) => {
         item.packages.forEach((sItem: any) => {
           if (sItem.name.toLowerCase() == state.componentName.name) {

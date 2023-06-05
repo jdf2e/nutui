@@ -11,86 +11,45 @@
     </div>
   </div>
   <router-view />
-  <!-- <demo-icon></demo-icon> -->
 </template>
-<script lang="ts">
-import { defineComponent, ref, watch, computed, onMounted } from 'vue';
+<script setup lang="ts">
+import { watch, computed, onBeforeMount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
-import { useThemeEditor } from '@/sites/assets/util/helper';
-import Icon from '@/sites/mobile/components/Icon.vue';
-import { translateChange } from '../assets/util/useTranslate';
+import { translateChange, initSiteLang } from '../assets/util/useTranslate';
 import { Left } from '@nutui/icons-vue';
-export default defineComponent({
-  name: 'app',
-  components: {
-    [Icon.name]: Icon,
-    Left
-  },
-  setup() {
-    const title = ref('NutUI');
-    // 获取当前路由
-    const route = useRoute();
-    const router = useRouter();
-    onMounted(() => {
-      // demo转换index
-      const { origin, hash, pathname } = window.top.location;
-      if (!isMobile && pathname.includes('demo')) {
-        window.location.href = `${origin}/h5/vue/4x/index.html#/zh-CN/${hash.slice(2)}`;
-      }
-      // 接收数据
-      window.addEventListener('message', handledemoFromParent);
-    });
-
-    const handledemoFromParent = (event: any) => {
-      var data = event.data;
-      switch (data.cmd) {
-        case 'refresh':
-          if (data.params.state) {
-            router.go(0);
-          }
-          break;
-        case 'goHome':
-          if (data.params.state) {
-            router.push('/');
-          }
-          break;
-      }
-    };
-
-    useThemeEditor();
-
-    //返回demo页
-    const goBack = () => {
-      router.back();
-    };
-
-    // 是否显示 title
-    const isShow = computed(() => {
-      return title.value && title.value != '/' && !title.value.includes('-taro');
-    });
-    // 当当前路由发生变化时，调用回调函数
-    watch(
-      () => route,
-      () => {
-        // const { origin, hash, pathname } = window.top.location;
-        const { hash } = window.top.location;
-        if (!isMobile && route.hash != hash) {
-          // window.top.location.replace(`${origin}${pathname}#/${route.hash}`);
-          title.value = (route?.meta?.ComponentName as string) || (route.name as string);
-        } else {
-          title.value = (route?.meta?.ComponentName as string) || (route.name as string);
-        }
-      },
-      {
-        immediate: true,
-        deep: true
-      }
-    );
-
-    return { title, isShow, goBack, translateChange };
+const route = useRoute();
+const router = useRouter();
+onBeforeMount(() => {
+  const { origin, hash, pathname } = window.top.location;
+  const lang = hash.includes('zh-CN') ? 'zh-CN' : 'en-US';
+  if (!isMobile && pathname.includes('demo')) {
+    window.location.href = `${origin}/h5/vue/4x/index.html#/${lang}/component/${hash.split('/').slice(-1)[0]}`;
   }
 });
+
+const goBack = () => {
+  router.back();
+};
+
+const title = computed(() => {
+  return route.meta.ComponentName || '';
+});
+
+const isShow = computed(() => {
+  return title.value && title.value != '/';
+});
+
+watch(
+  () => route,
+  () => {
+    initSiteLang();
+  },
+  {
+    immediate: true,
+    deep: true
+  }
+);
 </script>
 
 <style lang="scss">
