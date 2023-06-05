@@ -5,7 +5,7 @@
     <nut-cell isLink :title="translate('showPreview')" :showIcon="true" @click="showFn(1)"></nut-cell>
 
     <h2>{{ translate('withInitNo') }}</h2>
-    <nut-image-preview :show="showPreview2" :images="imgData" :content-close="true" :init-no="3" @close="hideFn(2)" />
+    <nut-image-preview :show="showPreview2" :images="imgData" :init-no="3" @close="hideFn(2)" />
     <nut-cell isLink :title="translate('withInitNo')" :showIcon="true" @click="showFn(2)"></nut-cell>
 
     <h2>{{ translate('withPagination') }}</h2>
@@ -84,7 +84,8 @@ export default createDemo({
       videoData: [
         {
           source: {
-            src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+            src:
+              'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
             type: 'video/mp4'
           },
           options: {
@@ -94,7 +95,8 @@ export default createDemo({
         },
         {
           source: {
-            src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+            src:
+              'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
             type: 'video/mp4'
           },
           options: {
@@ -122,7 +124,6 @@ export default createDemo({
 
     const hideFn = (i: number) => {
       (resData as any)['showPreview' + i] = false;
-      console.log('guansebi');
     };
 
     return {

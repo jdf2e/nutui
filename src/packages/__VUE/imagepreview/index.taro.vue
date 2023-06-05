@@ -1,5 +1,5 @@
 <template>
-  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop" @closed="onClose">
+  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop">
     <view class="nut-image-preview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
@@ -13,9 +13,8 @@
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <nut-swiper-item v-for="(item, index) in images" :key="index" @click="onClose">
-          <image mode="aspectFit" :src="item.src" class="nut-image-preview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
-          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" v-else />
+        <nut-swiper-item v-for="(item, index) in images" :key="index">
+          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="onClickImg" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -50,7 +49,7 @@ export default create({
     },
     contentClose: {
       type: Boolean,
-      default: false
+      default: true
     },
     initNo: {
       type: Number,
@@ -130,13 +129,6 @@ export default create({
       if (active !== state.active) {
         state.active = active;
         emit('change', state.active);
-      }
-    };
-
-    const closeOnImg = () => {
-      // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
-      if (props.contentClose) {
-        onClose();
       }
     };
 
@@ -248,6 +240,12 @@ export default create({
       }
     };
 
+    const onClickImg = () => {
+      if (props.contentClose) {
+        onClose();
+      }
+    };
+
     const init = () => {
       state.eleImg = document.querySelector('.nut-image-preview');
       document.addEventListener('touchmove', onTouchMove);
@@ -281,10 +279,10 @@ export default create({
       ...toRefs(state),
       setActive,
       onClose,
-      closeOnImg,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
+      onClickImg,
       getDistance,
       scaleNow,
       styles

@@ -67,7 +67,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-image-preview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
+    <nut-image-preview :show="showPreview" :images="imgData" :init-no="3" @close="hideFn"/>
     <nut-cell isLink title="With init no" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script lang="ts">
@@ -307,7 +307,7 @@ app.use(ImagePreview);
 | init-no | Init no | number | `1` |
 | pagination-visible | Whether to show pagination    | boolean | `false` |
 | pagination-color   | Pagination color    | string  | `#fff`  |
-| content-close   | Click image to exit preview    | boolean  | `false`  |
+| content-close   | Click image to exit preview    | boolean  | `true`  |
 | show-index   | Whether to show index    | boolean  | `true`  |
 | closeable   | Whether to show close icon    | boolean  | `false`  |
 | close-icon-position   |  Close icon position,can be set to `top-left`   | string  | `top-right`  |  

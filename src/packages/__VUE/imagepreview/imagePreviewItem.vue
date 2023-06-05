@@ -42,6 +42,10 @@ export default create({
     rootHeight: {
       type: Number,
       default: 0
+    },
+    contentClose: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'scale'],
@@ -222,7 +226,9 @@ export default create({
           toggleScale();
         } else {
           doubleTapTimer = setTimeout(() => {
-            emit('close');
+            if (props.contentClose) {
+              emit('close');
+            }
             doubleTapTimer = null;
           }, TAP_TIME);
         }

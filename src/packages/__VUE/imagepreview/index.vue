@@ -30,6 +30,7 @@
           :show="showPop"
           :init-no="active + 1"
           @close="onClose"
+          :content-close="contentClose"
           :maxZoom="maxZoom"
           :minZoom="minZoom"
         ></image-preview-item>
