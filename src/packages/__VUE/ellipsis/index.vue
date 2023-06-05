@@ -86,7 +86,7 @@ export default create({
       createContainer();
     });
 
-    // 创建虚拟 container，内容为 props.contant 的内容
+    // 创建虚拟 container，内容为 props.content 的内容
     const createContainer = () => {
       if (!root.value) return;
       const originStyle = window.getComputedStyle(root.value);
