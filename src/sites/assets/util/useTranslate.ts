@@ -21,6 +21,6 @@ export const translateChange = () => {
 };
 
 export const initSiteLang = () => {
-  let lang = Locale.currentLang.value;
-  location.href = location.href.replace('zh-CN', lang).replace('en-US', lang);
+  const lang = location.href.includes('zh-CN') ? 'zh-CN' : 'en-US';
+  Locale.use(lang);
 };

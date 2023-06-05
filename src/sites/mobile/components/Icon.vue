@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, onMounted, toRefs } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { Home, Refresh, Category } from '@nutui/icons-vue';
 export default defineComponent({
   name: 'demo-icon',

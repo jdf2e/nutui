@@ -10,7 +10,7 @@ import { Hover } from './directive/hover/hover';
 import { isMobile } from '@/sites/assets/util';
 import '@nutui/icons-vue/dist/style_icon.css';
 if (isMobile) {
-  let url = location.hash.replace('/zh-CN/', '').replace('/en-US/', '');
+  const url = location.hash.replace('/component', '');
   location.replace('demo.html' + url);
 }
 
