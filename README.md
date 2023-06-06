@@ -9,39 +9,21 @@
     <a href="http://makeapullrequest.com">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
   </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/codecov/c/github/jdf2e/nutui" alt="coverage"/>
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-    </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
     </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
     </a>
-    <a href="https://travis-ci.org/jdf2e/nutui">
-    <img src="https://img.shields.io/travis/jdf2e/nutui.svg?style=flat-square">
-    </a>  
-
 </p>
 <p align="center">
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/commit-activity/m/jdf2e/nutui" alt="GitHub commit activity">
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
-  </a>
 </p>
 
 <p align="center">
@@ -60,7 +42,7 @@
 
 简体中文 | [English](./README_EN.md)
 
-##  特性
+## 特性
 
 * 🚀 70+ 高质量组件，覆盖移动端主流场景
 * 💪 支持一套代码同时开发 H5+多端小程序
@@ -97,6 +79,7 @@ npm i @nutui/nutui-taro
 ## 版本说明
 
 目前 NutUI 有以下版本：
+
 * NutUI 4.x，默认推荐版本，定期迭代更新发版。
 * NutUI 3.x，长期维护版本，会同步 V4 版本问题修复，不对 API 做调整，不定期发版。
 * NutUI 2.x，仅修复重要阻塞性问题，不定期发版。
@@ -118,7 +101,6 @@ createApp(App).use(NutUI).mount("#app")
 [NutUI 实战快速入门](https://www.bilibili.com/video/BV14r4y1e7LK/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 
 [awesome-nutui](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
-
 
 ## 主题
 
@@ -171,7 +153,6 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 | [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> 回复「NutUI」 | 82957939
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 回复「NutUI」 | 1022545110 |
 
-
 ## 参与共建
 
 #### NutUI 社区共建倡议
@@ -202,15 +183,13 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
   <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
 </a>
 
-
-## Stargazers 
+## Stargazers
 
 [![Stargazers repo roster for @jdf2e/nutui](https://reporoster.com/stars/jdf2e/nutui)](https://github.com/jdf2e/nutui/stargazers)
 
 ## Forkers
 
 [![Forkers repo roster for @jdf2e/nutui](https://reporoster.com/forks/jdf2e/nutui)](https://github.com/jdf2e/nutui/network/members)
-
 
 ## 开发计划
 
@@ -220,7 +199,6 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
 
 本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui/releases)。
 
-## github stargazers 
+## github stargazers
 
 ![stargazers](https://starchart.cc/jdf2e/nutui.svg)
-

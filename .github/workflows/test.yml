@@ -29,7 +29,12 @@ jobs:
       run: pnpm install
 
     - name: Run test cases
-      run: npm run test
+      run: npm run test:c
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     runs-on: ubuntu-latest

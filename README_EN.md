@@ -9,39 +9,21 @@
     <a href="http://makeapullrequest.com">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
   </a>
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/codecov/c/github/jdf2e/nutui" alt="coverage"/>
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-    </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
     </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
     </a>
-    <a href="https://travis-ci.org/jdf2e/nutui">
-    <img src="https://img.shields.io/travis/jdf2e/nutui.svg?style=flat-square">
-    </a>  
-
 </p>
 <p align="center">
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
-    <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/commit-activity/m/jdf2e/nutui" alt="GitHub commit activity">
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
-    </a>  
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
-    </a>
-    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
-  </a>
 </p>
 
 <p align="center">
@@ -111,7 +93,6 @@ createApp(App).use(NutUI).mount("#app")
 [NutUI Quick Start](https://www.bilibili.com/video/BV14r4y1e7LK)
 
 [Awesome-NutUI](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
-
 
 ## Themes
 
@@ -202,7 +183,6 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui/graphs/c
 
 NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui/releases).
 
-## Github Stargazers 
+## Github Stargazers
 
 ![stargazers](https://starchart.cc/jdf2e/nutui.svg)
-
