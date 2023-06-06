@@ -75,7 +75,7 @@ export default create({
 
     const getStyle = computed(() => {
       const style: CSSProperties = {};
-      if (color?.value) {
+      if (color.value) {
         if (plain.value) {
           style.color = color.value;
           style.background = '#fff';
