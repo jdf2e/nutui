@@ -1,5 +1,5 @@
 <template>
-  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop" @closed="onClose">
+  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop">
     <view class="nut-image-preview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
@@ -13,9 +13,8 @@
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <nut-swiper-item v-for="(item, index) in images" :key="index" @click="onClose">
-          <image mode="aspectFit" :src="item.src" class="nut-image-preview-taro-img" v-if="ENV != ENV_TYPE.WEB" />
-          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" v-else />
+        <nut-swiper-item v-for="(item, index) in images" :key="index">
+          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="closeOnImg" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -28,14 +27,14 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType } from 'vue';
+import Taro from '@tarojs/taro';
+import { CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import Popup from '../popup/index.taro.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
-import Taro from '@tarojs/taro';
-import { CircleClose } from '@nutui/icons-vue-taro';
 const { create } = createComponent('image-preview');
 
 export default create({
@@ -50,7 +49,7 @@ export default create({
     },
     contentClose: {
       type: Boolean,
-      default: false
+      default: true
     },
     initNo: {
       type: Number,
@@ -134,7 +133,6 @@ export default create({
     };
 
     const closeOnImg = () => {
-      // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
       if (props.contentClose) {
         onClose();
       }

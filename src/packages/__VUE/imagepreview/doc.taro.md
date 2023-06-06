@@ -67,7 +67,7 @@ app.use(ImagePreview);
 :::demo
 ```html
 <template>
-    <nut-image-preview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
+    <nut-image-preview :show="showPreview" :images="imgData" :init-no="3" @close="hideFn"/>
     <nut-cell isLink title="设置初始页码" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script lang="ts">
@@ -177,7 +177,7 @@ app.use(ImagePreview);
 | init-no | 初始页码 | number | `1` |
 | pagination-visible | 分页指示器是否展示    | boolean | `false` |
 | pagination-color   | 分页指示器选中的颜色    | string  | `#fff`  |
-| content-close   | 点击图片可以退出预览    | boolean  | `false`  |
+| content-close   | 点击图片可以退出预览    | boolean  | `true`  |
 | show-index  | 是否显示页码    | boolean  | `true`  |
 | closeable  | 是否显示关闭图标    | boolean  | `false`  |
 | close-icon-position   | 关闭图标位置，可选值：`top-left`   | string  | `top-right`  |  

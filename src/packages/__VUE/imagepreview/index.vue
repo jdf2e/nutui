@@ -30,6 +30,7 @@
           :show="showPop"
           :init-no="active + 1"
           @close="onClose"
+          :content-close="contentClose"
           :maxZoom="maxZoom"
           :minZoom="minZoom"
         ></image-preview-item>
@@ -46,7 +47,6 @@
 import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
 import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-
 import { isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
