@@ -122,7 +122,7 @@ export default {
 | title                  | 标题                                                          | String                   | -          |
 | content                | 内容，支持HTML和组件                                          | String/VNode             | -          |
 | teleport               | 指定挂载节点                                                  | String                   | "body"     |
-| close-on-click-overlay | 点击蒙层是否关闭对话框                                        | Boolean                  | false      |
+| close-on-click-overlay | 点击蒙层是否关闭对话框                                        | Boolean                  | true      |
 | no-footer              | 是否隐藏底部按钮栏                                            | Boolean                  | false      |
 | no-ok-btn              | 是否隐藏确定按钮                                              | Boolean                  | false      |
 | no-cancel-btn          | 是否隐藏取消按钮                                              | Boolean                  | false      |

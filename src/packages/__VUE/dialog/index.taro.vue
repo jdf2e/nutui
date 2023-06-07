@@ -2,14 +2,14 @@
   <nut-popup
     :teleport="teleport"
     v-model:visible="showPopup"
-    :close-on-click-overlay="closeOnClickOverlay"
+    :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
     :pop-class="popClass"
     :style="popStyle"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"
     round
-    @click-overlay="closed"
+    @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
     <view :class="classes">
@@ -63,7 +63,7 @@ export default create({
     ...popupProps,
     closeOnClickOverlay: {
       type: Boolean,
-      default: false
+      default: true
     },
     title: {
       type: String,
@@ -180,8 +180,14 @@ export default create({
     };
 
     const onOk = () => {
-      closed('ok');
       emit('ok');
+      closed('ok');
+    };
+
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        closed('');
+      }
     };
 
     return {
@@ -190,6 +196,7 @@ export default create({
       onCancel,
       onOk,
       showPopup,
+      onClickOverlay,
       translate
     };
   }

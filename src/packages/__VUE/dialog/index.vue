@@ -2,14 +2,14 @@
   <nut-popup
     :teleport="teleport"
     v-model:visible="showPopup"
-    :close-on-click-overlay="closeOnClickOverlay"
+    :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
     :pop-class="popClass"
     :style="popStyle"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"
     round
-    @click-overlay="closed"
+    @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
     <view :class="classes">
@@ -52,7 +52,6 @@ const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 
-import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
   components: {},
@@ -60,7 +59,7 @@ export default create({
     ...popupProps,
     closeOnClickOverlay: {
       type: Boolean,
-      default: false
+      default: true
     },
     title: {
       type: String,
@@ -170,12 +169,19 @@ export default create({
       closed('ok');
     };
 
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        closed('');
+      }
+    };
+
     return {
       closed,
       classes,
       onCancel,
       onOk,
       showPopup,
+      onClickOverlay,
       translate
     };
   }

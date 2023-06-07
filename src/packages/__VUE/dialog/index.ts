@@ -34,7 +34,8 @@ export class DialogOptions {
   noCancelBtn?: boolean = false;
   okBtnDisabled?: boolean = false;
   closeOnPopstate?: boolean = false;
-  lockScroll?: boolean = false;
+  closeOnClickOverlay?: boolean = true;
+  lockScroll?: boolean = true;
 }
 
 class DialogFunction {
