@@ -2,14 +2,14 @@
   <nut-popup
     :teleport="teleport"
     v-model:visible="showPopup"
-    :close-on-click-overlay="closeOnClickOverlay"
+    :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
     :pop-class="popClass"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"
     :style="popStyle"
     round
-    @click-overlay="closed"
+    @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
     <view :class="classes">
@@ -54,7 +54,6 @@ import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
 import Button from '../button/index.vue';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
-import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
   components: {
@@ -65,7 +64,7 @@ export default create({
     ...popupProps,
     closeOnClickOverlay: {
       type: Boolean,
-      default: false
+      default: true
     },
     title: {
       type: String,
@@ -177,6 +176,12 @@ export default create({
       closed('ok');
     };
 
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        closed('');
+      }
+    };
+
     const contentStyle = computed(() => {
       return {
         textAlign: props.textAlign
@@ -189,6 +194,7 @@ export default create({
       onCancel,
       onOk,
       showPopup,
+      onClickOverlay,
       contentStyle,
       translate
     };
