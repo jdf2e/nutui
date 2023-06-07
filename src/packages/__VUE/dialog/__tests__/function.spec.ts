@@ -1,8 +1,8 @@
-import DialogFunction from './dialog';
+import showDialog from './dialog';
 
 describe('function Dialog', () => {
   test('show dialog base info display ', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: 'title',
       content: 'content'
     });
@@ -26,7 +26,7 @@ describe('function Dialog', () => {
   });
 
   test('show dialog custom info display ', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: 'title',
       content: 'content'
     });
@@ -50,7 +50,7 @@ describe('function Dialog', () => {
   });
 
   test('show dialog custom footer-direction ', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: 'title',
       content: 'content',
       footerDirection: 'vertical'
@@ -61,7 +61,7 @@ describe('function Dialog', () => {
   });
 
   test('hide dialog footer', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: 'title',
       content: 'content',
       noFooter: true
@@ -73,7 +73,7 @@ describe('function Dialog', () => {
   });
 
   test('hide dialog title', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       content: 'content',
       noFooter: true
     });
@@ -83,7 +83,7 @@ describe('function Dialog', () => {
     expect(footer).toBeNull();
   });
   test('tips dialog', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: '温馨提示',
       content: '支持函数调用和组件调用两种方式。',
       noCancelBtn: true
@@ -95,7 +95,7 @@ describe('function Dialog', () => {
   });
 
   test('dialog cancelText okText', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: '温馨提示',
       content: '支持函数调用和组件调用两种方式。',
       cancelText: '取消文案自定义',
@@ -112,7 +112,7 @@ describe('function Dialog', () => {
   });
 
   test('dialog teleport', async () => {
-    const dialog = DialogFunction({
+    const dialog = showDialog({
       title: 't1',
       content: 't2',
       teleport: 'body'
