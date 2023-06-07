@@ -246,7 +246,7 @@ export default {
 | title                  | Title                                                                      | string                   | -          |
 | content                | Content, support HTML                                                      | string                   | -          |
 | teleport               | Specifies a target element where Dialog will be mounted                    | string                   | `"body"`     |
-| close-on-click-overlay | Whether to close when overlay is clicked                                   | boolean                  | `false`      |
+| close-on-click-overlay | Whether to close when overlay is clicked                                   | boolean                  | `true`      |
 | no-footer              | Hide bottom button bar                                                     | boolean                  | `false`      |
 | no-ok-btn              | Hide OK button                                                             | boolean                  | `false`      |
 | no-cancel-btn          | Hide cancel button                                                         | boolean                  | `false`      |
