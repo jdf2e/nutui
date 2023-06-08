@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabs" :class="[direction]" ref="container" id="container">
+  <view class="nut-tabs" :class="[direction]" ref="container">
     <scroll-view
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
@@ -377,6 +377,7 @@ export default create({
       };
     });
     const titleStyle = computed(() => {
+      if (!props.titleGutter) return {};
       const px = pxCheck(props.titleGutter);
       if (props.direction === 'vertical') {
         return { marginTop: px, marginBottom: px };
