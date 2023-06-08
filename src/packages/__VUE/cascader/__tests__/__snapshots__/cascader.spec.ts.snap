@@ -8,19 +8,19 @@ exports[`Cascader > change tab 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -85,19 +85,19 @@ exports[`Cascader > change tab 2`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -162,19 +162,19 @@ exports[`Cascader > change tab 3`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -239,7 +239,7 @@ exports[`Cascader > modelValue 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
           <view class=\\"nut-tab-pane\\">
@@ -277,19 +277,19 @@ exports[`Cascader > modelValue 2`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -354,9 +354,9 @@ exports[`Cascader > modelValue 3`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">湖南</view>
@@ -398,9 +398,9 @@ exports[`Cascader > modelValue 4`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -442,9 +442,9 @@ exports[`Cascader > modelValue with lazy 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">Loading...</view>
@@ -470,19 +470,19 @@ exports[`Cascader > modelValue with lazy 2`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A21</view>
@@ -552,19 +552,19 @@ exports[`Cascader > options 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -629,14 +629,14 @@ exports[`Cascader > options with convertConfig 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">广东省</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">广州市</view>
@@ -682,19 +682,19 @@ exports[`Cascader > options with valueKey/textKey/childrenKey 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -759,14 +759,14 @@ exports[`Cascader > select 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -817,19 +817,19 @@ exports[`Cascader > select 2`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -894,19 +894,19 @@ exports[`Cascader > select 3`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
@@ -971,9 +971,9 @@ exports[`Cascader > select 4`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1015,7 +1015,7 @@ exports[`Cascader > select with lazy 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
           <view class=\\"nut-tab-pane\\">
@@ -1037,9 +1037,9 @@ exports[`Cascader > select with lazy 2`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1076,14 +1076,14 @@ exports[`Cascader > select with lazy 3`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1134,19 +1134,19 @@ exports[`Cascader > select with lazy 4`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1211,19 +1211,19 @@ exports[`Cascader > select with lazy 5`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">A21</view>
@@ -1288,9 +1288,9 @@ exports[`Cascader > select with lazy 6`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1327,14 +1327,14 @@ exports[`Cascader > select with lazy 7`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2000; transition-duration: 0.3s; display: none;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">B0</view>
           </view>
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
@@ -1385,9 +1385,9 @@ exports[`Cascader > visible 1`] = `
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2001; transition-duration: 0.3s;\\">
       <!--v-if-->
-      <view class=\\"nut-tabs horizontal nut-cascader\\" id=\\"container\\">
+      <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
-          <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
+          <view class=\\"nut-tabs__titles-item active\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
             <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>

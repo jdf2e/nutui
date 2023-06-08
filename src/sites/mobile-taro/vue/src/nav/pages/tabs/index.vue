@@ -49,19 +49,18 @@
     <nut-tabs
       v-model="state.tab4value"
       title-scroll
-      title-gutter="10"
       name="tab4valueVertical"
       direction="vertical"
-      style="height: 220px"
+      style="height: 220px;"
     >
       <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>左右布局</h2>
-    <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
+    <nut-tabs style="height: 300px;" v-model="state.tab5value" title-scroll direction="vertical">
       <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>左右布局-微笑曲线</h2>
-    <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
+    <nut-tabs style="height: 300px;" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
       <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>标签栏字体尺寸 large normal small </h2>

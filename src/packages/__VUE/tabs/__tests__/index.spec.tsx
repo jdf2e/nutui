@@ -2,9 +2,8 @@ import { config, mount } from '@vue/test-utils';
 import Tabs from '../index.vue';
 import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
-import { JoySmile } from '@nutui/icons-vue';
+import { JoySmile, Dongdong } from '@nutui/icons-vue';
 import NutSticky from '../../sticky/index.vue';
-import { Dongdong } from '@nutui/icons-vue';
 
 beforeAll(() => {
   config.global.components = {
@@ -193,4 +192,29 @@ test('base click', async () => {
   tab.trigger('click');
   const tab1 = wrapper.find('.nut-tabs__content');
   expect((tab1.element as HTMLElement).style.transform).toEqual('translate3d(-0%, 0, 0)');
+});
+
+test('Tabs: direction=vertical & title-gutter', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-tabs': Tabs,
+      'nut-tab-pane': TabPane
+    },
+    template: `
+    <nut-tabs direction="vertical" title-gutter="10">
+      <nut-tab-pane pane-key="1" title="Tab 1"> Tab 1 </nut-tab-pane>
+      <nut-tab-pane pane-key="2" title="Tab 2"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane pane-key="3" title="Tab 3"> Tab 3 </nut-tab-pane>
+    </nut-tabs>
+    `,
+    setup() {
+      const state = reactive({
+        tab1value: '0'
+      });
+      return { state };
+    }
+  });
+  await nextTick();
+  const tab = wrapper.find('.nut-tabs__titles-item');
+  expect(tab.html()).includes('margin-top: 10px');
 });

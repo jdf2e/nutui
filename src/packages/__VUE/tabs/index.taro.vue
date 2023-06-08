@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabs" :class="[direction]" ref="container" id="container">
+  <view class="nut-tabs" :class="[direction]" ref="container">
     <scroll-view
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
@@ -377,10 +377,12 @@ export default create({
       };
     });
     const titleStyle = computed(() => {
-      return {
-        marginLeft: pxCheck(props.titleGutter),
-        marginRight: pxCheck(props.titleGutter)
-      };
+      if (!props.titleGutter) return {};
+      const px = pxCheck(props.titleGutter);
+      if (props.direction === 'vertical') {
+        return { marginTop: px, marginBottom: px };
+      }
+      return { marginLeft: px, marginRight: px };
     });
     const refRandomId = Math.random().toString(36).slice(-8);
     return {

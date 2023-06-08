@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabs" :class="[direction]" ref="container" id="container">
+  <view class="nut-tabs" :class="[direction]" ref="container">
     <template v-if="sticky">
       <nut-sticky :top="top" :container="container" @scroll="onStickyScroll">
         <view
@@ -345,10 +345,12 @@ export default create({
       };
     });
     const titleStyle = computed(() => {
-      return {
-        marginLeft: pxCheck(props.titleGutter),
-        marginRight: pxCheck(props.titleGutter)
-      };
+      if (!props.titleGutter) return {};
+      const px = pxCheck(props.titleGutter);
+      if (props.direction === 'vertical') {
+        return { marginTop: px, marginBottom: px };
+      }
+      return { marginLeft: px, marginRight: px };
     });
 
     return {
