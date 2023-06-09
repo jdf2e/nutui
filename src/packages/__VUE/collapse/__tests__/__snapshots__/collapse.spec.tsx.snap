@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should event change 1`] = `[Function]`;
+exports[`Collapse: should event change 1`] = `[Function]`;
 
-exports[`should icon props 1`] = `
+exports[`Collapse: should icon props 1`] = `
 "<view class=\\"nut-collapse\\">
   <view class=\\"nut-collapse-item nut-collapse-item__border\\">
     <view class=\\"nut-collapse-item__title\\">
@@ -43,7 +43,7 @@ exports[`should icon props 1`] = `
 </view>"
 `;
 
-exports[`should props active 1`] = `
+exports[`Collapse: should props active 1`] = `
 "<view class=\\"nut-collapse\\">
   <view class=\\"nut-collapse-item nut-collapse-item__border\\">
     <view class=\\"nut-collapse-item__title\\">

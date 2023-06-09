@@ -9,7 +9,7 @@ function sleep(delay = 0): Promise<void> {
   });
 }
 
-test('should props active', async () => {
+test('Collapse: should props active', async () => {
   const wrapper = mount(() => {
     return (
       <Collapse modelValue={['1', '2']}>
@@ -34,7 +34,7 @@ test('should props active', async () => {
   expect(icons.length).toEqual(2);
 });
 
-test('should props accordion', async () => {
+test('Collapse: should props accordion', async () => {
   const wrapper = mount(() => {
     return (
       <Collapse modelValue={2} accordion>
@@ -55,7 +55,7 @@ test('should props accordion', async () => {
   expect(wrapper.findAll('.nut-collapse-item__title-icon--expanded')).toHaveLength(1);
 });
 
-test('should icon props', async () => {
+test('Collapse: should icon props', async () => {
   const wrapper = mount(() => {
     return (
       <Collapse modelValue={1}>
@@ -72,7 +72,7 @@ test('should icon props', async () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('should nut-collapse-item props ', async () => {
+test('Collapse: should nut-collapse-item props ', async () => {
   const wrapper = mount(() => {
     return (
       <Collapse modelValue="activeName">
@@ -96,7 +96,7 @@ test('should nut-collapse-item props ', async () => {
   expect(collapseWrapper[2].classes()).toContain('nut-collapse-item__title--disabled');
 });
 
-test('should event change', async () => {
+test('Collapse: should event change', async () => {
   const wrapper = mount(() => {
     return (
       <Collapse modelValue={1} accordion>
@@ -115,4 +115,33 @@ test('should event change', async () => {
   collapseWrapper[1].trigger('click');
   await sleep(1000);
   expect(wrapper.emitted).toMatchSnapshot();
+});
+
+test('Collapse: v-model is undefined', async () => {
+  const onChange = vitest.fn();
+  const wrapper = mount(() => {
+    return (
+      <Collapse onChange={onChange}>
+        <CollapseItem title="title1" name={111111}>
+          引入Vue3新特性 Composition API、Teleport、Emits 等
+        </CollapseItem>
+        <CollapseItem title="title2" name={222222}>
+          全面使用 TypeScipt
+        </CollapseItem>
+      </Collapse>
+    );
+  });
+  // trigger change
+  await nextTick();
+  const collapseTitles = wrapper.findAll('.nut-collapse-item__title');
+  expect(collapseTitles.length).toBe(2);
+  collapseTitles[1].trigger('click');
+  expect(onChange).toBeCalledWith([222222], 222222, true);
+
+  // collapse-item can expand
+  await sleep(1000);
+  const collapseWrappers = wrapper.findAll('.nut-collapse__item-wrapper');
+  expect(collapseWrappers.length).toBe(2);
+  expect(collapseWrappers[0].html()).includes('height: 0px;');
+  expect(collapseWrappers[1].html()).includes('height: auto;');
 });

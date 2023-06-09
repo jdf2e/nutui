@@ -4,14 +4,14 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, provide, ref } from 'vue';
+import { computed, provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse');
 export default create({
   props: {
     modelValue: {
       type: [String, Number, Array<string | number>],
-      default: () => []
+      default: ''
     },
     accordion: {
       type: Boolean,
@@ -21,6 +21,7 @@ export default create({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const collapseDom: any = ref(null);
+    const innerValue = ref(props.modelValue || (props.accordion ? '' : []));
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -28,25 +29,30 @@ export default create({
       };
     });
 
+    watch(() => props.modelValue, (val) => {
+      innerValue.value = val
+    })
+
     const changeVal = (val: string | number | Array<string | number>, name: string | number, status = true) => {
+      innerValue.value = val;
       emit('update:modelValue', val);
       emit('change', val, name, status);
     };
 
     const updateVal = (name: string | number) => {
       if (props.accordion) {
-        if (props.modelValue === name) {
+        if (innerValue.value === name) {
           changeVal("", name, false);
         } else {
           changeVal(name, name, true);
         }
       } else {
-        if (Array.isArray(props.modelValue)) {
-          if (props.modelValue.includes(name)) {
-            const newValue = props.modelValue.filter((v: string | number) => v !== name);
+        if (Array.isArray(innerValue.value)) {
+          if (innerValue.value.includes(name)) {
+            const newValue = innerValue.value.filter((v: string | number) => v !== name);
             changeVal(newValue, name, false);
           } else {
-            const newValue = props.modelValue.concat([name]);
+            const newValue = innerValue.value.concat([name]);
             changeVal(newValue, name, true);
           }
         } else {
@@ -57,9 +63,9 @@ export default create({
 
     const isExpanded = (name: string | number) => {
       if (props.accordion) {
-        return props.modelValue === name;
-      } else if (Array.isArray(props.modelValue)) {
-        return props.modelValue.includes(name);
+        return innerValue.value === name;
+      } else if (Array.isArray(innerValue.value)) {
+        return innerValue.value.includes(name);
       }
       return false;
     };
