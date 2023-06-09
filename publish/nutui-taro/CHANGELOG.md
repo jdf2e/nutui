@@ -1,3 +1,22 @@
+## v4.0.9
+
+`2023-06-09`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @wenfangdu @blue0728 @zhousg
+
+* :bug: fix(popup): 修复未开启 overlay 时滚动穿透失效问题 (#2311) @wenfangdu
+* :bug: fix(uploader): 修改 Taro-h5 下预览图片显示逻辑
+* :bug: fix(imagepreview): 函数调用结束移除背景锁定样式 (#2326)
+* :bug: fix(imagepreview): 修复 content-close 失效问题 (#2330)
+* :bug: fix(dialog): 修复 close-on-click-overlay 失效问题 (#2337)
+* :bug: fix(tabs): 修复 vertical 方式下 title-gutter 方向错误 (#2339)
+* :bug: fix(collapse): 修复未设置 v-model 时无法触发事件问题 (#2340)
+* :bug: fix: fix code comments (#2328) @zhousg
+* :rocket: chore: bumped unplugin-vue-components peer dep (#2331) @wenfangdu
+* :rocket: chore: vite 构建产物兼容 es2015 (#2322) @blue0728
+* :rocket: chore(vsce): bump to pnpm (#2315)
+
 ## v4.0.8
 
 `2023-05-26`
