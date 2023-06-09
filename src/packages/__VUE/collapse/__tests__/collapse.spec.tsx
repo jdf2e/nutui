@@ -131,9 +131,17 @@ test('Collapse: v-model is undefined', async () => {
       </Collapse>
     );
   });
+  // trigger change
   await nextTick();
-  const collapseWrapper = wrapper.findAll('.nut-collapse-item__title');
-  expect(collapseWrapper.length).toBe(2);
-  collapseWrapper[1].trigger('click');
+  const collapseTitles = wrapper.findAll('.nut-collapse-item__title');
+  expect(collapseTitles.length).toBe(2);
+  collapseTitles[1].trigger('click');
   expect(onChange).toBeCalledWith([222222], 222222, true);
+
+  // collapse-item can expand
+  await sleep(1000);
+  const collapseWrappers = wrapper.findAll('.nut-collapse__item-wrapper');
+  expect(collapseWrappers.length).toBe(2);
+  expect(collapseWrappers[0].html()).includes('height: 0px;');
+  expect(collapseWrappers[1].html()).includes('height: auto;');
 });
