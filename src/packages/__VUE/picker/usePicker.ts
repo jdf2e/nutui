@@ -9,7 +9,7 @@ export const usePicker = (props: any, emit: any) => {
   });
 
   // 选中项
-  let defaultValues = ref<(number | string)[]>([]);
+  const defaultValues = ref<(number | string)[]>([]);
 
   const pickerColumn = ref<any[]>([]);
 
@@ -27,14 +27,9 @@ export const usePicker = (props: any, emit: any) => {
   });
 
   const selectedOptions = computed(() => {
-    let optins: PickerOption[] = [];
-    (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      let currOptions = [];
-      currOptions = column.filter((item) => item.value == defaultValues.value[index]);
-      optins.push(currOptions[0]);
+    return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
+      return column.find((item) => item.value === defaultValues.value[index]);
     });
-
-    return optins;
   });
 
   // 当前类型
@@ -77,8 +72,8 @@ export const usePicker = (props: any, emit: any) => {
     while (cursor && cursor.children) {
       const options: PickerOption[] = cursor.children;
       const value = defaultValues[columnIndex];
-      let index = options.findIndex((columnItem) => columnItem.value == value);
-      if (index == -1) index = 0;
+      let index = options.findIndex((columnItem) => columnItem.value === value);
+      if (index === -1) index = 0;
       cursor = cursor.children[index];
 
       columnIndex++;
@@ -110,7 +105,7 @@ export const usePicker = (props: any, emit: any) => {
         }
 
         // 当前改变列 的 下一列 children 值为空
-        if (cursor && cursor.children && cursor.children.length == 0) {
+        if (cursor && cursor.children && cursor.children.length === 0) {
           defaultValues.value = defaultValues.value.slice(0, index + 1);
         }
       } else {

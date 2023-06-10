@@ -122,6 +122,30 @@ test('simple columns default checked item', async () => {
   ]);
 });
 
+test('the default value is 0', async () => {
+  const wrapper = mount(Picker, {
+    props: {
+      modelValue: [0],
+      visible: true,
+      columns: [
+        { text: 'Empt', value: '' },
+        { text: 'undefined', value: undefined },
+        { text: '0', value: 0 }
+      ],
+      teleportDisable: false
+    }
+  });
+
+  await nextTick();
+  wrapper.find('.nut-picker__right').trigger('click');
+  expect(wrapper.emitted().confirm[0]).toEqual([
+    {
+      selectedOptions: [{ text: '0', value: 0 }],
+      selectedValue: [0]
+    }
+  ]);
+});
+
 test('multiple columns render', async () => {
   const wrapper = mount(Picker, {
     props: {
