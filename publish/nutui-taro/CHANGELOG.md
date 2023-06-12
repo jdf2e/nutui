@@ -1,3 +1,14 @@
+## v3.3.8
+
+`2023-06-12`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+
+* :zap: feat: the title bar supports vertical automatic scrolling (#2200) @gyt95
+* :bug: fix(dialog): 修复 close-on-click-overlay 失效问题 @eiinu
+* :bug: fix(switch): inactiveValue 为非 falsy 值无法显示 (#2258) @ntnyq
+* :bug: fix(signature): 同步 V4 问题修复 @eiinu
+
 ## v3.3.7
 
 `2023-04-06`
