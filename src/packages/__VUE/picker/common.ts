@@ -94,7 +94,7 @@ export const componentWeapp = {
     });
 
     // 选中项的位置  taro
-    let defaultIndexes = ref<number[]>([]);
+    const defaultIndexes = ref<number[]>([]);
 
     const pickerViewStyles = computed(() => {
       const styles: CSSProperties = {};
@@ -104,11 +104,11 @@ export const componentWeapp = {
     });
 
     const defaultValuesConvert = () => {
-      let defaultIndexs: number[] = [];
+      const defaultIndexs: number[] = [];
       if (defaultValues.value.length > 0) {
         defaultValues.value.forEach((value, index) => {
           for (let i = 0; i < columnsList.value[index].length; i++) {
-            if (columnsList.value[index][i].value == value) {
+            if (columnsList.value[index][i].value === value) {
               defaultIndexs.push(i);
               break;
             }
@@ -132,7 +132,7 @@ export const componentWeapp = {
       let changeIndex = 0;
       // 判断变化的是第几个
       data.detail.value.forEach((col: number, index: number) => {
-        if (prevDefaultValue[index] != col) changeIndex = index;
+        if (prevDefaultValue[index] !== col) changeIndex = index;
       });
 
       // 选择的是哪个 option

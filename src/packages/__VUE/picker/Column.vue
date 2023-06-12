@@ -255,7 +255,7 @@ export default create({
 
     const modifyStatus = (type: boolean) => {
       const { column } = props;
-      let index = column.findIndex((columnItem) => columnItem.value == props.value);
+      let index = column.findIndex((columnItem) => columnItem.value === props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * +props.optionHeight;
