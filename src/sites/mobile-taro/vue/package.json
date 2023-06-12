@@ -51,6 +51,7 @@
     "@tarojs/runtime": "3.6.2",
     "@tarojs/shared": "3.6.2",
     "@tarojs/taro": "3.6.2",
+    "default-passive-events": "^2.0.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import './app.scss';
 import NutUI from '@/packages/nutui.taro.vue';
+import 'default-passive-events';
 // import NutUI from '@nutui/nutui-taro';
 // import '@nutui/nutui-taro/dist/style.css';
 import '@/packages/utils/touchEmulator'; // 适配 taro h5 示例桌面端预览

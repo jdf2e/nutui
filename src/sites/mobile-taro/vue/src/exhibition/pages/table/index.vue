@@ -30,6 +30,7 @@
 import { reactive, toRefs, onMounted, onUnmounted, h, defineComponent } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
+import Button from '@/packages/__VUE/button';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
 import { Dongdong } from '@nutui/icons-vue-taro';
 export default defineComponent({
@@ -38,7 +39,7 @@ export default defineComponent({
     Header
   },
   props: {},
-  setup(props, { emit, slot }) {
+  setup() {
     const env = Taro.getEnv();
     const state = reactive({
       bordered1: false,
@@ -183,7 +184,7 @@ export default defineComponent({
           sex: '男',
           record: '小学',
           render: () => {
-            return h(Button, { size: 'small', type: 'primary' }, 'Hello');
+            return h(Button, { size: 'small', type: 'primary' }, () => 'Hello');
           }
         },
         {
@@ -199,7 +200,7 @@ export default defineComponent({
           sex: '男',
           record: '高中',
           render: () => {
-            return h(Button, { type: 'success', size: 'small' }, '编辑按钮');
+            return h(Button, { type: 'success', size: 'small' }, () => '编辑按钮');
           }
         }
       ],
