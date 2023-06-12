@@ -17,9 +17,9 @@ import { IconFont } from '@nutui/icons-vue-taro';
 const app = createApp();
 app.use(IconFont);
 ```
-### 方式一：按需加载使用
+### 方式一：组件方式使用
 
-按需加载组件使用方式，可选项见 @nutui/icons-vue-taro/dist/types/index.d.ts
+可选项见 @nutui/icons-vue-taro/dist/types/index.d.ts
 
 ```js
 import { Add } from '@nutui/icons-vue-taro';
@@ -27,7 +27,7 @@ import { Add } from '@nutui/icons-vue-taro';
 <Add color='red' />
 ```
 
-### 方式二：全量使用
+### 方式二：名称方式使用
 
 ```js
 import { IconFont } from '@nutui/icons-vue-taro';
