@@ -4,7 +4,7 @@
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
-    <view class="nut-searchbar__search-input" :style="{ ...inputSearchbarStyle, ...focusCss }">
+    <view :class="[`nut-searchbar__search-input`, shape]" :style="{ ...inputSearchbarStyle, ...focusCss }">
       <view
         v-if="$slots.leftin"
         class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon"
@@ -60,10 +60,6 @@ import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue';
 import { TextAlign } from './type';
 const { create, translate } = createComponent('searchbar');
-// interface Events {
-//   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
-//   params: (string | number | Event)[];
-// }
 export default create({
   props: {
     modelValue: {
@@ -72,11 +68,15 @@ export default create({
     },
     inputType: {
       type: String,
-      default: 'textarea'
+      default: 'text'
     },
     label: {
       type: String,
       default: ''
+    },
+    shape: {
+      type: String,
+      default: 'round'
     },
     maxLength: {
       type: [String, Number],
@@ -104,8 +104,7 @@ export default create({
     },
     focusStyle: {
       type: Object,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      default: () => {}
+      default: () => ({})
     },
     autofocus: {
       type: Boolean,
@@ -137,7 +136,7 @@ export default create({
     'click-right-icon'
   ],
 
-  setup(props, { slots, emit }) {
+  setup(props, { emit }) {
     const state = reactive({
       active: false
     });

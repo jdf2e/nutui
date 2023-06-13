@@ -37,6 +37,18 @@ app.use(Searchbar);
 ```
 :::
 
+### Search input shape
+
+:::demo
+
+```html
+<template>
+  <nut-searchbar shape="square"></nut-searchbar>
+</template>
+```
+
+:::
+
 ### Search event listening
 :::demo
 ```html
@@ -223,7 +235,7 @@ export default {
 |--------------|---------------------------------- |-------|------------------|
 | v-model | current input value | number /| string | `''` |
 | label| left text of search box | string | `''` |
-| shape | search box shape, optional value is `square` `round` | string | `square` |
+| shape | search box shape, optional value is `square` `round` | string | `round` |
 | max-length | maximum input length | number \| string | `9999` |
 | input-type | input box type | string | `text` |
 | placeholder | The default dark pattern of the input box | string | `Please enter` |
