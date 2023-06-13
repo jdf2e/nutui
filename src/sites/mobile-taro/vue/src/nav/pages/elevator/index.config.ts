@@ -1,4 +1,3 @@
 export default {
-  navigationBarTitleText: 'Elevator',
-  disableScroll: true
+  navigationBarTitleText: 'Elevator'
 };

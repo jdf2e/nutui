@@ -1,4 +1,3 @@
 export default {
-  navigationBarTitleText: 'Category',
-  disableScroll: true
+  navigationBarTitleText: 'Category'
 };

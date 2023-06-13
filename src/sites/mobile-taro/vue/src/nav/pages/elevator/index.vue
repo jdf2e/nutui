@@ -335,6 +335,6 @@ export default defineComponent({
 <style lang="scss">
 .elevator-demo {
   background-color: #fff !important;
-  overflow-y: hidden !important;
+  // overflow-y: hidden !important;
 }
 </style>
