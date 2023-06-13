@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`basic usage 1`] = `
+exports[`Searchbar: basic usage 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
   <!--v-if-->
-  <view class=\\"nut-searchbar__search-input\\">
+  <view class=\\"nut-searchbar__search-input round\\">
     <!--v-if-->
     <view class=\\"nut-searchbar__input-inner\\">
-      <form class=\\"nut-searchbar__input-form\\" action=\\"#\\"><input class=\\"nut-searchbar__input-bar nut-searchbar__input-bar_clear\\" type=\\"textarea\\" maxlength=\\"9999\\" placeholder=\\"请输入\\" style=\\"text-align: left;\\"></form>
+      <form class=\\"nut-searchbar__input-form\\" action=\\"#\\"><input class=\\"nut-searchbar__input-bar nut-searchbar__input-bar_clear\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"请输入\\" style=\\"text-align: left;\\"></form>
     </view>
     <view class=\\"nut-searchbar__input-inner-icon\\">
       <view class=\\"nut-searchbar__search-icon nut-searchbar__input-clear\\" style=\\"display: none;\\"><svg class=\\"nut-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" aria-labelledby=\\"\\" role=\\"presentation\\">

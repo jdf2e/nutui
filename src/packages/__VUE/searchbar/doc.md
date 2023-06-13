@@ -37,6 +37,18 @@ app.use(Searchbar);
 ```
 :::
 
+### 设置搜索框形状
+
+:::demo
+
+```html
+<template>
+  <nut-searchbar shape="square"></nut-searchbar>
+</template>
+```
+
+:::
+
 ### 搜索事件监听
 :::demo
 ```html
@@ -221,7 +233,7 @@ export default {
 |--------------|----------------------------------|--------|------------------|
 | v-model	         | 当前输入的值   | number \| string | `''`     |
 | label| 搜索框左侧文本 | string | `''` |
-| shape | 搜索框形状，可选值为 `square` `round` | string | `square` |
+| shape | 搜索框形状，可选值为 `square` `round` | string | `round` |
 | max-length         | 最大输入长度   | number \| string | `9999`      |
 | input-type    | 输入框类型   | string | `text`      |
 | placeholder        | 输入框默认暗纹  | string | `请输入`   |

@@ -1,11 +1,7 @@
-import { mount, config } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Searchbar from '../index.vue';
 
-afterAll(() => {
-  config.global.components = {};
-});
-
-test('basic usage', () => {
+test('Searchbar: basic usage', () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
@@ -15,7 +11,7 @@ test('basic usage', () => {
   expect(wrapper.find('.nut-searchbar').html()).toMatchSnapshot();
 });
 
-test('should limit maxlength of input value when using maxlength prop', async () => {
+test('Searchbar: should limit maxlength of input value when using maxlength prop', async () => {
   const wrapper = mount(Searchbar, {
     props: {
       maxLength: 3,
@@ -29,7 +25,7 @@ test('should limit maxlength of input value when using maxlength prop', async ()
   input.element.value = '9999';
 });
 
-test('should format input value when type is number', () => {
+test('Searchbar: should format input value when type is number', () => {
   const wrapper = mount(Searchbar, {
     props: {
       type: 'number',
@@ -42,7 +38,7 @@ test('should format input value when type is number', () => {
   input.element.value = '9999';
 });
 
-test('should format input value when type is number', () => {
+test('Searchbar: should format input value when type is number', () => {
   const wrapper = mount(Searchbar, {
     props: {
       type: 'number',
@@ -59,7 +55,7 @@ test('should format input value when type is number', () => {
   expect((wrapper.emitted('change') as any)[1][0]).toEqual('12');
 });
 
-test('backgrounds prop test', () => {
+test('Searchbar: backgrounds prop test', () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: '',
@@ -73,7 +69,7 @@ test('backgrounds prop test', () => {
   expect(inner.element.style.backgroundColor).toEqual('green');
 });
 
-test('change event test', async () => {
+test('Searchbar: change event test', async () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
@@ -85,7 +81,7 @@ test('change event test', async () => {
   expect(wrapper.emitted('change')).toBeTruthy();
 });
 
-test('change event test', async () => {
+test('Searchbar: change event test', async () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
@@ -97,7 +93,7 @@ test('change event test', async () => {
   expect(wrapper.emitted('change')).toBeTruthy();
 });
 
-test('focus event focus', async () => {
+test('Searchbar: focus event focus', async () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
@@ -109,7 +105,7 @@ test('focus event focus', async () => {
   expect(wrapper.emitted('focus')).toBeTruthy();
 });
 
-test('blur event test', async () => {
+test('Searchbar: blur event test', async () => {
   const wrapper = mount(Searchbar, {
     props: {
       modelValue: ''
@@ -121,7 +117,7 @@ test('blur event test', async () => {
   expect(wrapper.emitted('blur')).toBeTruthy();
 });
 
-test('clear event test', async () => {
+test('Searchbar: clear event test', async () => {
   const wrapper = mount(Searchbar, { props: { modelValue: 3 } });
   const input = wrapper.find('input');
   const clear = wrapper.find('.nut-searchbar__input-clear');
@@ -131,4 +127,13 @@ test('clear event test', async () => {
   // 修改update:modelValue
   expect((wrapper.emitted('update:modelValue') as any)[1][0]).toEqual('');
   expect(clear.exists()).toBe(true);
+});
+
+test('Searchbar: props shape', async () => {
+  const wrapper1 = mount(Searchbar, { props: { shape: 'square' } });
+  const wrapper2 = mount(Searchbar);
+  const input1 = wrapper1.find('.nut-searchbar__search-input');
+  const input2 = wrapper2.find('.nut-searchbar__search-input');
+  expect(input1.html()).includes('square');
+  expect(input2.html()).includes('round');
 });

@@ -3,7 +3,7 @@
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
-    <view class="nut-searchbar__search-input" :style="{ ...inputSearchbarStyle, ...focusCss }">
+    <view :class="[`nut-searchbar__search-input`, shape]" :style="{ ...inputSearchbarStyle, ...focusCss }">
       <view v-if="$slots.leftin" class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon">
         <slot name="leftin"></slot>
       </view>
@@ -53,7 +53,6 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
-import Taro from '@tarojs/taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
 import { TextAlign } from './type';
@@ -69,6 +68,10 @@ export default create({
     inputType: {
       type: String,
       default: 'text'
+    },
+    shape: {
+      type: String,
+      default: 'round'
     },
     maxLength: {
       type: [String, Number],
@@ -94,18 +97,13 @@ export default create({
       type: String,
       default: ''
     },
-    confirmType: {
-      type: String as PropType<confirmTextType>,
-      default: 'done'
+    focusStyle: {
+      type: Object,
+      default: () => ({})
     },
     autofocus: {
       type: Boolean,
       default: false
-    },
-    focusStyle: {
-      type: Object,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      default: () => {}
     },
     disabled: {
       type: Boolean,
@@ -118,6 +116,10 @@ export default create({
     inputAlign: {
       type: String,
       default: 'left'
+    },
+    confirmType: {
+      type: String as PropType<confirmTextType>,
+      default: 'done'
     }
   },
 
@@ -211,14 +213,15 @@ export default create({
       };
       return style;
     });
-
     const inputsearch: Ref<HTMLElement | null> = ref(null);
     onMounted(() => {
       if (props.autofocus) {
         (inputsearch.value as HTMLElement).focus();
       }
     });
+
     return {
+      renderIcon,
       inputsearch,
       ...toRefs(state),
       valueChange,
@@ -233,8 +236,7 @@ export default create({
       clickInput,
       leftIconClick,
       rightIconClick,
-      styleSearchbar,
-      renderIcon
+      styleSearchbar
     };
   }
 });

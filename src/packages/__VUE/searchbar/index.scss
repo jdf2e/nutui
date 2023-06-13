@@ -48,6 +48,10 @@
     background: $searchbar-input-background;
     box-sizing: border-box;
 
+    &.square {
+      border-radius: 0;
+    }
+
     .nut-searchbar__input-inner {
       display: flex;
       position: relative;

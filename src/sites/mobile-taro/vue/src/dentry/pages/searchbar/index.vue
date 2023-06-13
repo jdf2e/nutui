@@ -2,10 +2,13 @@
   <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-searchbar v-model="searchValue" :focus-style="{ border: '1px solid red' }"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue" />
+
+    <h2>设置搜索框形状</h2>
+    <nut-searchbar shape="square" />
 
     <h2>搜索事件监听</h2>
-    <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue1" @search="search" />
 
     <h2>显示搜索 icon</h2>
     <nut-searchbar v-model="searchValue2">
@@ -30,7 +33,7 @@
     <h2>自定义清除按钮 icon</h2>
     <nut-searchbar v-model="searchValue6">
       <template v-slot:clear-icon>
-        <img :src="icon" style="width: 20px; height: 20px" />
+        <img :src="icon" style="width: 20px; height: 20px;" />
       </template>
     </nut-searchbar>
 

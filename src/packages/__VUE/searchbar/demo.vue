@@ -4,6 +4,9 @@
     <nut-searchbar v-model="searchValue" :label="translate('word1')" :focus-style="{ outline: '1px solid red' }">
     </nut-searchbar>
 
+    <h2>{{ translate('shape') }}</h2>
+    <nut-searchbar shape="square"></nut-searchbar>
+
     <h2>{{ translate('basic2') }}</h2>
     <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
 
@@ -30,7 +33,7 @@
     <h2>{{ translate('basic7') }}</h2>
     <nut-searchbar v-model="searchValue6">
       <template v-slot:clear-icon>
-        <img :src="icon" style="width: 20px; height: 20px" />
+        <img :src="icon" style="width: 20px; height: 20px;" />
       </template>
     </nut-searchbar>
 
@@ -55,7 +58,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { showToast } from '@/packages/nutui.vue';
+import { showToast } from '../toast';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -71,7 +74,8 @@ const initTranslate = () =>
       basic7: '自定义清除图标 icon',
       word1: '标签',
       word2: '搜索',
-      title3: '标题3'
+      title3: '标题3',
+      shape: '设置搜索框形状'
     },
     'en-US': {
       basic1: 'Basic Usage',
@@ -82,7 +86,8 @@ const initTranslate = () =>
       basic6: 'Show all icons',
       basic7: 'custom clear button icon',
       word1: 'label',
-      word2: 'search'
+      word2: 'search',
+      shape: 'Search input shape'
     }
   });
 export default createDemo({
