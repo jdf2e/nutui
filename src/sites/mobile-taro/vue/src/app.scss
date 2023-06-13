@@ -1,6 +1,15 @@
+page {
+  height: 100%;
+}
+
 page,
 #app {
+  min-width: 100vw;
   .demo {
+    box-sizing: border-box;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #f7f8fa;
     padding: 0 17px 17px 17px;
 
@@ -9,7 +18,7 @@ page,
     }
 
     &.full {
-      padding: 0 0 0 0;
+      padding: 0;
       h2 {
         padding-left: 27px;
       }

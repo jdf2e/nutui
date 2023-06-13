@@ -1,4 +1,3 @@
 export default {
-  navigationBarTitleText: 'Sku',
-  disableScroll: true
+  navigationBarTitleText: 'Sku'
 };

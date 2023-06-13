@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full dragDe" :class="{ web: env === 'WEB' }">
+  <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-drag class="dragDemo">
@@ -37,8 +37,5 @@ export default {
 <style lang="scss">
 .dragDemo {
   margin-left: 20px;
-}
-.dragDe {
-  height: 667px !important;
 }
 </style>
