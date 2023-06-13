@@ -17,7 +17,7 @@ import Taro from '@tarojs/taro';
 import { Left } from '@nutui/icons-vue-taro';
 import config from '../../../../../config.json';
 export default defineComponent({
-  name: 'header',
+  name: 'taro-header',
   components: {
     Left
   },
