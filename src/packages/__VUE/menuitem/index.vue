@@ -1,27 +1,12 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
-    <div
-      v-show="state.isShowPlaceholderElement"
-      @click="handleClickOutside"
-      class="nut-menu-item-placeholder-element"
-      :class="{ up: parent.props.direction === 'up' }"
-      :style="placeholderElementStyle"
-    >
-    </div>
+  <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
     <nut-popup
-      :style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
-      "
-      :overlayStyle="
-        parent.props.direction === 'down'
-          ? { top: parent.offset.value + 'px' }
-          : { bottom: parent.offset.value + 'px', top: 'auto' }
-      "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
+      :style="{ position: 'absolute' }"
+      :overlayStyle="{ position: 'absolute' }"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
-      pop-class="nut-menu__pop"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
       @closed="handleClose"
@@ -61,7 +46,7 @@
 <script lang="ts">
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('menu-item');
+const { create } = createComponent('menu-item');
 import Popup from '../popup/index.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
@@ -76,7 +61,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: null as unknown as PropType<unknown>,
+    modelValue: (null as unknown) as PropType<unknown>,
     cols: {
       type: Number,
       default: 1
@@ -93,12 +78,11 @@ export default create({
     Check
   },
   emits: ['update:modelValue', 'change', 'open', 'close'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const state = reactive({
       showPopup: false,
       transition: true,
-      showWrapper: false,
-      isShowPlaceholderElement: false
+      showWrapper: false
     });
 
     const useParent: any = () => {
@@ -126,21 +110,10 @@ export default create({
 
     const { parent } = useParent();
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
-    const placeholderElementStyle = computed(() => {
-      const heightStyle = { height: parent.offset.value + 'px' };
-
-      if (parent.props.direction === 'down') {
-        return heightStyle;
-      } else {
-        return { ...heightStyle, top: 'auto' };
-      }
+    const style = computed(() => {
+      return parent.props.direction === 'down'
+        ? { top: parent.offset.value + 'px' }
+        : { bottom: parent.offset.value + 'px', top: 'auto' };
     });
 
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
@@ -149,8 +122,6 @@ export default create({
       }
 
       state.showPopup = show;
-      state.isShowPlaceholderElement = show;
-      // state.transition = !options.immediate;
 
       if (show) {
         state.showWrapper = true;
@@ -162,16 +133,12 @@ export default create({
       if (props.title) {
         return props.title;
       }
-
       const match: any = props.options?.find((option: any) => option.value === props.modelValue);
-
       return match ? match.text : '';
     };
 
     const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
-      state.isShowPlaceholderElement = false;
-
       if (option.value !== props.modelValue) {
         emit('update:modelValue', option.value);
         emit('change', option.value);
@@ -181,7 +148,6 @@ export default create({
     const handleClose = () => {
       emit('close');
       state.showWrapper = false;
-      state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {
@@ -190,8 +156,7 @@ export default create({
     };
 
     return {
-      classes,
-      placeholderElementStyle,
+      style,
       renderTitle,
       state,
       parent,

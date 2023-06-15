@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" ref="rootRef">
     <view class="nut-menu__bar" :class="{ opened: opened }" ref="barRef">
       <template v-for="(item, index) in children" :key="index">
         <view
@@ -27,6 +27,7 @@
 import { reactive, provide, computed, ref, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
+import { useClickAway } from '@/packages/utils/useClickAway';
 const { componentName, create } = createComponent('menu');
 import { ArrowUp2, ArrowDown2 } from '@nutui/icons-vue';
 export default create({
@@ -49,10 +50,8 @@ export default create({
     },
     duration: {
       type: [Number, String],
-      default: 0
+      default: 0.3
     },
-    titleIcon: String,
-
     closeOnClickOverlay: {
       type: Boolean,
       default: true
@@ -67,7 +66,8 @@ export default create({
     },
     titleClass: [String]
   },
-  setup(props, { emit, slots }) {
+  setup(props) {
+    const rootRef = ref();
     const barRef = ref<HTMLElement>();
     const offset = ref(0);
     const isScrollFixed = ref(false);
@@ -182,6 +182,16 @@ export default create({
       return str;
     };
 
+    const onClickAway = () => {
+      if (opened.value) {
+        children.forEach((item) => {
+          item.toggle(false, true);
+        });
+      }
+    };
+
+    useClickAway(onClickAway, rootRef);
+
     onMounted(() => {
       const { scrollFixed } = props;
 
@@ -199,6 +209,7 @@ export default create({
     });
 
     return {
+      rootRef,
       toggleItem,
       children,
       opened,

@@ -9,6 +9,12 @@
 }
 
 .nut-menu-item {
+  position: fixed;
+  height: 100%;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  overflow: hidden;
   .active {
     font-weight: $menu-active-item-font-weight;
     color: $menu-item-active-text-color !important;
@@ -37,23 +43,5 @@
       align-items: center;
       margin-right: $menu-item-option-i-margin-right;
     }
-  }
-}
-
-.nut-menu__pop {
-  transition: height linear 3s;
-  transform: none;
-}
-
-.nut-menu-item-placeholder-element {
-  position: fixed;
-  top: $menu-bar-line-height;
-  left: 0;
-  right: 0;
-  z-index: $menu-bar-opened-z-index;
-  background-color: transparent;
-
-  &.up {
-    bottom: $menu-bar-line-height;
   }
 }
