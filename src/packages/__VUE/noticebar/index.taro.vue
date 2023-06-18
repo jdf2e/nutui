@@ -274,13 +274,13 @@ export default create({
         Taro.createSelectorQuery()
           .select(`.wrap${state.id}`)
           .boundingClientRect((rect) => {
-            if (rect.width > 0) wrapWidth = rect.width;
+            if (rect?.width > 0) wrapWidth = rect.width;
           })
           .exec();
         Taro.createSelectorQuery()
           .select(`.content${state.id}`)
           .boundingClientRect((rect) => {
-            if (rect.width > 0) offsetWidth = rect.width;
+            if (rect?.width > 0) offsetWidth = rect.width;
 
             state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
 
