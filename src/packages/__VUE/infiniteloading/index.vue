@@ -181,7 +181,7 @@ export default create({
         state.y = event.touches[0].pageY;
         state.isTouching = true;
 
-        const childHeight = ((state.refreshTop as HTMLElement).firstElementChild as HTMLElement).offsetHeight;
+        const childHeight = ((state.refreshTop as HTMLElement)?.firstElementChild as HTMLElement)?.offsetHeight;
         state.refreshMaxH = Math.floor(childHeight * 1 + 10);
       }
     };
