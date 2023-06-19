@@ -396,7 +396,7 @@ export default {
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
 | scroll-fixed           | 滚动后是否固定，可设置固定位置 | boolean \| string \| number | `false`   |
 | title-class           | 自定义标题样式类               | string                  | -       |
-| lock-scroll           | 背景是否锁定                   | boolean                 | `true`    |
+| lock-scroll`H5/WEAPP`           | 背景是否锁定                   | boolean                 | `true`    |
 
 ### Menu Slots
 | 名称 | 说明 |

@@ -49,10 +49,8 @@ export default create({
     },
     duration: {
       type: [Number, String],
-      default: 0
+      default: 0.3
     },
-    titleIcon: String,
-
     closeOnClickOverlay: {
       type: Boolean,
       default: true

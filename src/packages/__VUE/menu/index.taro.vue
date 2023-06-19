@@ -53,8 +53,6 @@ export default create({
       type: [Number, String],
       default: 0.3
     },
-    titleIcon: String,
-
     closeOnClickOverlay: {
       type: Boolean,
       default: true

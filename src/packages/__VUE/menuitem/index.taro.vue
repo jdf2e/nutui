@@ -1,36 +1,21 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper" :style="{ zIndex: state.zIndex }">
-    <div
+  <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
+    <view
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
       :style="placeholderElementStyle"
+      :catch-move="parent.props.lockScroll"
     >
-    </div>
+    </view>
     <nut-popup
-      :style="
-        parent.props.direction === 'down'
-          ? {
-              top: parent.offset.value + 'px',
-              height: state.showPopup ? contentHeight : 0
-            }
-          : {
-              bottom: parent.offset.value + 'px',
-              height: state.showPopup ? contentHeight : 0
-            }
-      "
-      :overlay-style="
-        parent.props.direction === 'down'
-          ? { top: parent.offset.value + 'px' }
-          : { bottom: parent.offset.value + 'px', top: 'auto' }
-      "
-      transition="none"
+      :style="{ position: 'absolute' }"
+      :overlayStyle="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
-      pop-class="nut-menu__pop"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
@@ -90,17 +75,13 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: null as unknown as PropType<unknown>,
+    modelValue: (null as unknown) as PropType<unknown>,
     cols: {
       type: Number,
       default: 1
     },
     activeTitleClass: String,
-    inactiveTitleClass: String,
-    optionIcon: {
-      type: String,
-      default: 'Check'
-    }
+    inactiveTitleClass: String
   },
   components: {
     Check,
@@ -141,22 +122,27 @@ export default create({
 
     const { parent } = useParent();
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
+    const style = computed(() => {
+      return parent.props.direction === 'down'
+        ? {
+            top: parent.offset.value + 'px',
+            zIndex: state.zIndex
+          }
+        : {
+            bottom: parent.offset.value + 'px',
+            zIndex: state.zIndex
+          };
     });
 
     const placeholderElementStyle = computed(() => {
       const heightStyle = { height: parent.offset.value + 'px' };
-
       if (parent.props.direction === 'down') {
-        return heightStyle;
+        return { ...heightStyle, top: '0px' };
       } else {
-        return { ...heightStyle, top: 'auto' };
+        return { ...heightStyle, bottom: '0px' };
       }
     });
+
     const contentHeight = ref('auto');
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
       if (show) {
@@ -217,7 +203,7 @@ export default create({
     };
 
     return {
-      classes,
+      style,
       placeholderElementStyle,
       renderTitle,
       state,

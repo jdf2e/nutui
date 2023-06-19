@@ -40,13 +40,12 @@ const options3 = [
 // 所有的测试用例之前执行一次
 beforeAll(() => {
   config.global.components = {
-    MenuItem,
     NutMenuItem: MenuItem,
     NutMenu: Menu
   };
 });
 
-test('menu item cols props: nut-menu-item__option flex-basis should be 50%', () => {
+test('Menu: menu item cols props: nut-menu-item__option flex-basis should be 50%', () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
@@ -60,8 +59,11 @@ test('menu item cols props: nut-menu-item__option flex-basis should be 50%', () 
   expect(wrapper.find<HTMLElement>('.nut-menu-item__option').element.style.flexBasis).toEqual('50%');
 });
 
-test('menu item options props: html should contain options3 text', () => {
+test('Menu: menu item options props: html should contain options3 text', () => {
   const wrapper = mount(Menu, {
+    props: {
+      direction: 'up'
+    },
     slots: {
       default: h(MenuItem, {
         modelValue: 0,
@@ -73,7 +75,7 @@ test('menu item options props: html should contain options3 text', () => {
   expect(wrapper.html()).toContain('全部商品');
 });
 
-test('menu item custom text: nut-menu-item__content html should contain custom text', () => {
+test('Menu: menu item custom text: nut-menu-item__content html should contain custom text', () => {
   const component = {
     template: `<nut-menu>
       <nut-menu-item v-model="value1" :options="options1" />
@@ -94,7 +96,7 @@ test('menu item custom text: nut-menu-item__content html should contain custom t
   expect(wrapper.html()).toContain('custom text');
 });
 
-test('menu item disabled props: nut-menu__item classes should contain disabled', async () => {
+test('Menu: menu item disabled props: nut-menu__item classes should contain disabled', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
@@ -110,7 +112,7 @@ test('menu item disabled props: nut-menu__item classes should contain disabled',
   expect(barItem.classes()).toContain('disabled');
 });
 
-test('menu item title props: nut-menu__title-text html should contain custom title', async () => {
+test('Menu: menu item title props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
@@ -124,7 +126,7 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
   expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title');
 });
 
-// test('menu item title icon props: nut-menu__title i classes should contain nut-icon-joy-smile', async () => {
+// test('Menu: menu item title icon props: nut-menu__title i classes should contain nut-icon-joy-smile', async () => {
 //   const wrapper = mount(Menu, {
 //     props: {
 //       titleIcon: 'joy-smile'
@@ -142,7 +144,7 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
 //   expect(titleIcon.classes()).toContain('nut-icon-joy-smile');
 // });
 
-// test('menu item option icon props: nut-menu-item__option i classes should contain nut-icon-checklist', async () => {
+// test('Menu: menu item option icon props: nut-menu-item__option i classes should contain nut-icon-checklist', async () => {
 //   const wrapper = mount(Menu, {
 //     slots: {
 //       default: h(MenuItem, {
@@ -159,7 +161,7 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
 //   expect(optionIcon.classes()).toContain('nut-icon-checklist');
 // });
 
-// test('menu direction props: nut-menu__title i classes should contain nut-icon-arrow-up', async () => {
+// test('Menu: menu direction props: nut-menu__title i classes should contain nut-icon-arrow-up', async () => {
 //   const wrapper = mount(Menu, {
 //     props: {
 //       direction: 'up'
@@ -178,7 +180,7 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
 //   expect(titleIcon.classes()).toContain('nut-icon-arrow-up');
 // });
 
-test('active color props: icon in active nut-menu-item__option color and active nut-menu__item color should be both green', async () => {
+test('Menu: active color props: icon in active nut-menu-item__option color and active nut-menu__item color should be both green', async () => {
   const wrapper = mount(Menu, {
     props: {
       activeColor: 'green'
@@ -198,7 +200,7 @@ test('active color props: icon in active nut-menu-item__option color and active 
   // expect(wrapper.find<HTMLElement>('.nut-menu-item__option.active svg').element.style.color).toEqual('green');
 });
 
-test('menu item change props: value2 should be b after click', async () => {
+test('Menu: menu item change props: value2 should be b after click', async () => {
   const wrapper = mount({
     components: {
       NutMenu: Menu,
@@ -230,7 +232,7 @@ test('menu item change props: value2 should be b after click', async () => {
   expect(wrapper.vm.value2).toBe('b');
 });
 
-test('menu close-on-click-overlay props: ', async () => {
+test('Menu: menu close-on-click-overlay props: ', async () => {
   const wrapper = mount(Menu, {
     props: {
       closeOnClickOverlay: true
@@ -252,7 +254,7 @@ test('menu close-on-click-overlay props: ', async () => {
   expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none');
 });
 
-test('menu scroll-fixed props: nut-menu classes should contain scroll-fixed', async () => {
+test('Menu: menu scroll-fixed props: nut-menu classes should contain scroll-fixed', async () => {
   const wrapper = mount(Menu, {
     props: {
       scrollFixed: 50
@@ -270,7 +272,7 @@ test('menu scroll-fixed props: nut-menu classes should contain scroll-fixed', as
   expect(wrapper.find('.nut-menu').classes()).toContain('scroll-fixed');
 });
 
-test('menu title-class props: nut-menu__title classes should contain custom-title-class', async () => {
+test('Menu: menu title-class props: nut-menu__title classes should contain custom-title-class', async () => {
   const wrapper = mount(Menu, {
     props: {
       titleClass: 'custom-title-class'
@@ -290,7 +292,7 @@ test('menu title-class props: nut-menu__title classes should contain custom-titl
   expect(menuTitle.classes()).toContain('custom-title-class');
 });
 
-test('menu item open and close events: should be both emitted', async () => {
+test('Menu: menu item open and close events: should be both emitted', async () => {
   const wrapper = mount({
     components: {
       NutMenu: Menu,
@@ -323,4 +325,6 @@ test('menu item open and close events: should be both emitted', async () => {
 
   wrapper.find('.nut-menu-item-placeholder-element').trigger('click');
   expect(wrapper.vm.value2).toBe('c');
+
+  wrapper.unmount();
 });
