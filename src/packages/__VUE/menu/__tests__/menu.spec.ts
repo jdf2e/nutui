@@ -323,4 +323,6 @@ test('menu item open and close events: should be both emitted', async () => {
 
   wrapper.find('.nut-menu-item-placeholder-element').trigger('click');
   expect(wrapper.vm.value2).toBe('c');
+
+  wrapper.unmount();
 });
