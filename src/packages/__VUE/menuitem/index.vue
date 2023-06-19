@@ -120,9 +120,7 @@ export default create({
       if (show === state.showPopup) {
         return;
       }
-
       state.showPopup = show;
-
       if (show) {
         state.showWrapper = true;
         emit('open');
@@ -150,11 +148,6 @@ export default create({
       state.showWrapper = false;
     };
 
-    const handleClickOutside = () => {
-      state.showPopup = false;
-      emit('close');
-    };
-
     return {
       style,
       renderTitle,
@@ -162,8 +155,7 @@ export default create({
       parent,
       toggle,
       onClick,
-      handleClose,
-      handleClickOutside
+      handleClose
     };
   }
 });
