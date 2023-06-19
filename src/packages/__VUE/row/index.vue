@@ -1,10 +1,10 @@
 <template>
-  <view :class="getClasses()">
+  <view :class="classes">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { provide } from 'vue';
+import { provide, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('row');
 
@@ -38,17 +38,17 @@ export default create({
     const getClass = (prefix: string, type: string) => {
       return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`;
     };
-    const getClasses = () => {
-      return `
-              ${getClass('', props.type)}
-              ${getClass('justify', props.justify)}
-              ${getClass('align', props.align)}
-              ${getClass('flex', props.flexWrap)}
-              ${prefixCls}
-              `;
-    };
+    const classes = computed(() => {
+      return [
+        prefixCls,
+        getClass('', props.type),
+        getClass('justify', props.justify),
+        getClass('align', props.align),
+        getClass('flex', props.flexWrap)
+      ];
+    });
     return {
-      getClasses
+      classes
     };
   }
 });
