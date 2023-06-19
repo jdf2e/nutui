@@ -36,15 +36,16 @@ export default defineConfig({
           vue: 'Vue'
         },
         exports: 'named',
-        plugins: [],
-        entryFileNames: `nutui.umd.js`
+        plugins: []
       }
     },
     lib: {
       entry: 'src/packages/nutui.vue.build.ts',
       name: 'nutui',
-      fileName: 'nutui',
-      formats: ['umd']
+      fileName: (type) => {
+        return type === 'umd' ? 'nutui.umd.js' : 'nutui.js';
+      },
+      formats: ['umd', 'es']
     }
   }
 });
