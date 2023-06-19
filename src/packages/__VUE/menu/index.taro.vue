@@ -43,18 +43,16 @@ export default create({
     },
     overlay: {
       type: Boolean,
-      default: true as const
+      default: true
     },
     lockScroll: {
       type: Boolean,
-      default: true as const
+      default: true
     },
     duration: {
       type: [Number, String],
       default: 0.3
     },
-    titleIcon: String,
-
     closeOnClickOverlay: {
       type: Boolean,
       default: true
@@ -162,24 +160,19 @@ export default create({
 
     const onScroll = (res: { scrollTop: number }) => {
       const { scrollFixed } = props;
-
       const scrollTop = res.scrollTop;
-
       isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed));
     };
 
     const getClasses = (showPopup: boolean) => {
       let str = '';
       const { titleClass } = props;
-
       if (showPopup) {
         str += 'active';
       }
-
       if (titleClass) {
         str += ` ${titleClass}`;
       }
-
       return str;
     };
 

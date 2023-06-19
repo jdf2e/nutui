@@ -1,36 +1,19 @@
 <template>
   <view :class="classes" v-show="state.showWrapper" :style="{ zIndex: state.zIndex }">
-    <div
-      v-show="state.isShowPlaceholderElement"
+    <view
+      v-show="state.showPopup"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
       :style="placeholderElementStyle"
-    >
-    </div>
+    />
     <nut-popup
-      :style="
-        parent.props.direction === 'down'
-          ? {
-              top: parent.offset.value + 'px',
-              height: state.showPopup ? contentHeight : 0
-            }
-          : {
-              bottom: parent.offset.value + 'px',
-              height: state.showPopup ? contentHeight : 0
-            }
-      "
-      :overlay-style="
-        parent.props.direction === 'down'
-          ? { top: parent.offset.value + 'px' }
-          : { bottom: parent.offset.value + 'px', top: 'auto' }
-      "
-      transition="none"
+      :style="{ position: 'absolute' }"
+      :overlayStyle="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
-      pop-class="nut-menu__pop"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
       :lockScroll="parent.props.lockScroll"
@@ -90,52 +73,40 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: null as unknown as PropType<unknown>,
+    modelValue: (null as unknown) as PropType<unknown>,
     cols: {
       type: Number,
       default: 1
     },
     activeTitleClass: String,
-    inactiveTitleClass: String,
-    optionIcon: {
-      type: String,
-      default: 'Check'
-    }
+    inactiveTitleClass: String
   },
   components: {
     Check,
     [Popup.name]: Popup
   },
   emits: ['update:modelValue', 'change'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const state = reactive({
       zIndex: _zIndex,
       showPopup: false,
       transition: true,
-      showWrapper: false,
-      isShowPlaceholderElement: false
+      showWrapper: false
     });
 
     const useParent: any = () => {
       const parent = inject('menuParent', null);
-
       if (parent) {
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
-
         const { link, removeLink } = parent;
-
         // @ts-ignore
         link(instance);
-
         onUnmounted(() => {
           // @ts-ignore
           removeLink(instance);
         });
-
-        return {
-          parent
-        };
+        return { parent };
       }
     };
 
@@ -178,7 +149,6 @@ export default create({
       }
 
       state.showPopup = show;
-      state.isShowPlaceholderElement = show;
       // state.transition = !options.immediate;
 
       if (show) {
@@ -199,7 +169,6 @@ export default create({
 
     const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
-      state.isShowPlaceholderElement = false;
 
       if (option.value !== props.modelValue) {
         emit('update:modelValue', option.value);
@@ -209,7 +178,6 @@ export default create({
 
     const handleClose = () => {
       state.showWrapper = false;
-      state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {

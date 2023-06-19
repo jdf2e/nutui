@@ -1,5 +1,12 @@
 <template>
   <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
+    <view
+      v-show="state.showPopup"
+      @click="handleClickOutside"
+      class="nut-menu-item-placeholder-element"
+      :class="{ up: parent.props.direction === 'up' }"
+      :style="placeholderElementStyle"
+    />
     <nut-popup
       v-bind="$attrs"
       v-model:visible="state.showPopup"
@@ -67,11 +74,7 @@ export default create({
       default: 1
     },
     activeTitleClass: String,
-    inactiveTitleClass: String,
-    optionIcon: {
-      type: String,
-      default: 'Check'
-    }
+    inactiveTitleClass: String
   },
   components: {
     [Popup.name]: Popup,
@@ -116,6 +119,15 @@ export default create({
         : { bottom: parent.offset.value + 'px', top: 'auto' };
     });
 
+    const placeholderElementStyle = computed(() => {
+      const heightStyle = { height: parent.offset.value + 'px' };
+      if (parent.props.direction === 'down') {
+        return heightStyle;
+      } else {
+        return { ...heightStyle, top: 'auto' };
+      }
+    });
+
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
       if (show === state.showPopup) {
         return;
@@ -148,14 +160,21 @@ export default create({
       state.showWrapper = false;
     };
 
+    const handleClickOutside = () => {
+      state.showPopup = false;
+      emit('close');
+    };
+
     return {
       style,
+      placeholderElementStyle,
       renderTitle,
       state,
       parent,
       toggle,
       onClick,
-      handleClose
+      handleClose,
+      handleClickOutside
     };
   }
 });
