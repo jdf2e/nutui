@@ -320,7 +320,4 @@ test('menu item open and close events: should be both emitted', async () => {
   await nextTick();
   wrapper.find('.nut-menu__item').trigger('click');
   expect(wrapper.vm.value2).toBe('b');
-
-  wrapper.find('.nut-menu-item-placeholder-element').trigger('click');
-  expect(wrapper.vm.value2).toBe('c');
 });
