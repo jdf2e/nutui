@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
+  <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -9,19 +9,12 @@
     >
     </div>
     <nut-popup
-      :style="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
-      "
-      :overlayStyle="
-        parent.props.direction === 'down'
-          ? { top: parent.offset.value + 'px' }
-          : { bottom: parent.offset.value + 'px', top: 'auto' }
-      "
+      :style="{ position: 'absolute' }"
+      :overlayStyle="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
-      pop-class="nut-menu__pop"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
       @closed="handleClose"
@@ -76,17 +69,13 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: null as unknown as PropType<unknown>,
+    modelValue: (null as unknown) as PropType<unknown>,
     cols: {
       type: Number,
       default: 1
     },
     activeTitleClass: String,
-    inactiveTitleClass: String,
-    optionIcon: {
-      type: String,
-      default: 'Check'
-    }
+    inactiveTitleClass: String
   },
   components: {
     [Popup.name]: Popup,
@@ -126,20 +115,22 @@ export default create({
 
     const { parent } = useParent();
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
+    const style = computed(() => {
+      return parent.props.direction === 'down'
+        ? {
+            top: parent.offset.value + 'px'
+          }
+        : {
+            bottom: parent.offset.value + 'px'
+          };
     });
 
     const placeholderElementStyle = computed(() => {
       const heightStyle = { height: parent.offset.value + 'px' };
-
       if (parent.props.direction === 'down') {
-        return heightStyle;
+        return { ...heightStyle, top: '0px' };
       } else {
-        return { ...heightStyle, top: 'auto' };
+        return { ...heightStyle, bottom: '0px' };
       }
     });
 
@@ -190,7 +181,7 @@ export default create({
     };
 
     return {
-      classes,
+      style,
       placeholderElementStyle,
       renderTitle,
       state,
