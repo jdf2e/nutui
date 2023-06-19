@@ -1,13 +1,14 @@
 <template>
   <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
-    <div
+    <view
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
       :style="placeholderElementStyle"
+      :catch-move="parent.props.lockScroll"
     >
-    </div>
+    </view>
     <nut-popup
       :style="{ position: 'absolute' }"
       :overlayStyle="{ position: 'absolute' }"
