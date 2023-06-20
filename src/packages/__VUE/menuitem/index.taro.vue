@@ -1,7 +1,7 @@
 <template>
   <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
     <view
-      v-show="state.isShowPlaceholderElement"
+      v-show="state.showPopup"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
@@ -54,13 +54,12 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted, ref, nextTick } from 'vue';
+import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('menu-item');
+const { create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
 
 let _zIndex = 2000;
 
@@ -88,35 +87,26 @@ export default create({
     [Popup.name]: Popup
   },
   emits: ['update:modelValue', 'change'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const state = reactive({
       zIndex: _zIndex,
       showPopup: false,
-      transition: true,
-      showWrapper: false,
-      isShowPlaceholderElement: false
+      showWrapper: false
     });
 
     const useParent: any = () => {
       const parent = inject('menuParent', null);
-
       if (parent) {
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
-
         const { link, removeLink } = parent;
-
         // @ts-ignore
         link(instance);
-
         onUnmounted(() => {
           // @ts-ignore
           removeLink(instance);
         });
-
-        return {
-          parent
-        };
+        return { parent };
       }
     };
 
@@ -143,30 +133,11 @@ export default create({
       }
     });
 
-    const contentHeight = ref('auto');
-    const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
-      if (show) {
-        nextTick(() => {
-          setTimeout(() => {
-            const query = Taro.createSelectorQuery();
-            query.selectAll('.nut-menu-item__content').boundingClientRect();
-            query.exec((res: any[]) => {
-              const data = res[0];
-              const _height = data.filter((item: { height: number }) => item.height > 0);
-              contentHeight.value = _height[0]['height'] + 'px';
-            });
-          }, 500);
-        });
-      }
-
+    const toggle = (show = !state.showPopup) => {
       if (show === state.showPopup) {
         return;
       }
-
       state.showPopup = show;
-      state.isShowPlaceholderElement = show;
-      // state.transition = !options.immediate;
-
       if (show) {
         state.showWrapper = true;
         state.zIndex = ++_zIndex;
@@ -177,16 +148,12 @@ export default create({
       if (props.title) {
         return props.title;
       }
-
       const match: any = props.options?.find((option: any) => option.value === props.modelValue);
-
       return match ? match.text : '';
     };
 
     const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
-      state.isShowPlaceholderElement = false;
-
       if (option.value !== props.modelValue) {
         emit('update:modelValue', option.value);
         emit('change', option.value);
@@ -195,7 +162,6 @@ export default create({
 
     const handleClose = () => {
       state.showWrapper = false;
-      state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {
@@ -211,8 +177,7 @@ export default create({
       toggle,
       onClick,
       handleClose,
-      handleClickOutside,
-      contentHeight
+      handleClickOutside
     };
   }
 });

@@ -1,7 +1,7 @@
 <template>
   <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
     <div
-      v-show="state.isShowPlaceholderElement"
+      v-show="state.showPopup"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :class="{ up: parent.props.direction === 'up' }"
@@ -54,7 +54,7 @@
 <script lang="ts">
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('menu-item');
+const { create } = createComponent('menu-item');
 import Popup from '../popup/index.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
@@ -82,34 +82,25 @@ export default create({
     Check
   },
   emits: ['update:modelValue', 'change', 'open', 'close'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const state = reactive({
       showPopup: false,
-      transition: true,
-      showWrapper: false,
-      isShowPlaceholderElement: false
+      showWrapper: false
     });
 
     const useParent: any = () => {
       const parent = inject('menuParent', null);
-
       if (parent) {
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
-
         const { link, removeLink } = parent;
-
         // @ts-ignore
         link(instance);
-
         onUnmounted(() => {
           // @ts-ignore
           removeLink(instance);
         });
-
-        return {
-          parent
-        };
+        return { parent };
       }
     };
 
@@ -134,15 +125,11 @@ export default create({
       }
     });
 
-    const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
+    const toggle = (show = !state.showPopup) => {
       if (show === state.showPopup) {
         return;
       }
-
       state.showPopup = show;
-      state.isShowPlaceholderElement = show;
-      // state.transition = !options.immediate;
-
       if (show) {
         state.showWrapper = true;
         emit('open');
@@ -153,16 +140,12 @@ export default create({
       if (props.title) {
         return props.title;
       }
-
       const match: any = props.options?.find((option: any) => option.value === props.modelValue);
-
       return match ? match.text : '';
     };
 
     const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
-      state.isShowPlaceholderElement = false;
-
       if (option.value !== props.modelValue) {
         emit('update:modelValue', option.value);
         emit('change', option.value);
@@ -172,7 +155,6 @@ export default create({
     const handleClose = () => {
       emit('close');
       state.showWrapper = false;
-      state.isShowPlaceholderElement = false;
     };
 
     const handleClickOutside = () => {
