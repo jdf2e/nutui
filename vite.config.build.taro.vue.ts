@@ -54,7 +54,7 @@ export default defineConfig({
     lib: {
       entry: 'src/packages/nutui.taro.vue.build.ts',
       name: 'nutui',
-      fileName: 'nutui',
+      fileName: () => 'nutui.umd.js',
       formats: ['umd']
     }
   }
