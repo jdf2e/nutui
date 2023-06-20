@@ -61,8 +61,6 @@ import Popup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
 
-let _zIndex = 2000;
-
 export default create({
   props: {
     title: String,
@@ -89,7 +87,6 @@ export default create({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const state = reactive({
-      zIndex: _zIndex,
       showPopup: false,
       showWrapper: false
     });
@@ -114,14 +111,8 @@ export default create({
 
     const style = computed(() => {
       return parent.props.direction === 'down'
-        ? {
-            top: parent.offset.value + 'px',
-            zIndex: state.zIndex
-          }
-        : {
-            bottom: parent.offset.value + 'px',
-            zIndex: state.zIndex
-          };
+        ? { top: parent.offset.value + 'px' }
+        : { bottom: parent.offset.value + 'px' };
     });
 
     const placeholderElementStyle = computed(() => {
@@ -140,7 +131,6 @@ export default create({
       state.showPopup = show;
       if (show) {
         state.showWrapper = true;
-        state.zIndex = ++_zIndex;
       }
     };
 
