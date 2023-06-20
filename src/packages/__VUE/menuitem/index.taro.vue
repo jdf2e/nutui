@@ -4,7 +4,6 @@
       v-show="state.showPopup"
       @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
-      :class="{ up: parent.props.direction === 'up' }"
       :style="placeholderElementStyle"
       :catch-move="parent.props.lockScroll"
     >
