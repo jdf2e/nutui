@@ -48,7 +48,7 @@
     "build:site-jdt": "npm run checked && vite build --config vite.config.jdt.ts ",
     "build:site:oss": "npm run checked && vite build --base=/nutui/4x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && vite build --config vite.config.build.resolver.ts && npm run dts && npm run attrs && node jd/generate-unplugin-deps.cjs nutui && node jd/copy-dist.cjs nutui",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && vite build --config vite.config.build.resolver.ts && npm run dts:taro && npm run attrs:taro && node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:themes:taro && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && vite build --config vite.config.build.resolver.ts && npm run dts:taro && npm run attrs:taro && node jd/generate-unplugin-deps.cjs nutui-taro && node jd/copy-dist.cjs nutui-taro",
     "serve": "vite preview",
     "add": "node jd/createComponentMode.js",
     "generate:file": "node jd/generate-nutui.cjs",
@@ -56,6 +56,7 @@
     "generate:types": "rimraf ./dist/types && node jd/generate-types.cjs",
     "generate:types:taro": "rimraf ./dist/types && node jd/generate-types-taro.cjs",
     "generate:themes": "node jd/generate-themes.cjs",
+    "generate:themes:taro": "node jd/generate-themes.cjs taro",
     "prepare": "husky install",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -76,7 +77,7 @@
     }
   },
   "dependencies": {
-    "@nutui/icons-vue": "^0.0.26",
+    "@nutui/icons-vue": "^0.1.0",
     "@nutui/icons-vue-taro": "^0.0.9",
     "sass": "^1.50.0",
     "vue-router": "^4.2.2"

@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "sass": "^1.50.0",
-    "@nutui/icons-vue": "^0.0.26"
+    "@nutui/icons-vue": "^0.1.0"
   },
   "devDependencies": {},
   "repository": {

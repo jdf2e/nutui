@@ -20,7 +20,7 @@ export default defineConfig({
   },
   plugins: [vue()],
   build: {
-    minify: false,
+    minify: true,
     target: 'es2015',
     lib: {
       entry: '',

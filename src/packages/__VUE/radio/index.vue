@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, h, inject } from 'vue';
+import { Component, computed, h, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
@@ -55,10 +55,9 @@ export default create({
       };
       const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
       const size = pxCheck(iconSize);
-      return h(iconNode, {
+      return h(iconNode as Component, {
         width: size,
         height: size,
-        size: size,
         class: color.value
       });
     };

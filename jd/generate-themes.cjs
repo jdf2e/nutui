@@ -1,3 +1,4 @@
+const target = process.argv[2];
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
@@ -19,6 +20,9 @@ config.nav.map((item) => {
         })
         .catch((error) => { })
     );
+    if (!target) {
+      sassFileStr += `@import '@nutui/icons-vue/dist/style_icon.css';\n`;
+    }
   });
 });
 
