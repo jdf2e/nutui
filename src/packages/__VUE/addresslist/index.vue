@@ -15,19 +15,19 @@
       @longDel="clickLongDel"
     >
       <template #content-info>
-        <slot name="item-infos"></slot>
+        <slot name="item-infos" :item="item"></slot>
       </template>
       <template #content-icons>
-        <slot name="item-icon"></slot>
+        <slot name="item-icon" :item="item"></slot>
       </template>
       <template #content-addrs>
-        <slot name="item-addr"></slot>
+        <slot name="item-addr" :item="item"></slot>
       </template>
       <template #longpress-all v-if="longPress">
-        <slot name="longpress-btns"></slot>
+        <slot name="longpress-btns" :item="item"></slot>
       </template>
       <template #swipe-right-btn v-if="swipeEdition">
-        <slot name="swipe-right"></slot>
+        <slot name="swipe-right" :item="item"></slot>
       </template>
     </general-shell>
     <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">

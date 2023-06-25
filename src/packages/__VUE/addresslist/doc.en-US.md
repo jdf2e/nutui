@@ -259,13 +259,13 @@ export default {
 
 The `AddressList` component is divided into several areas by default, and these areas are defined as slots, which can be replaced as needed
 
-| Name          | Description                                     | Illustrate  |
+| Name          | Description                                     | Scoped Slots  |
 | ------------- | ----------------------------------------------- | ----------- |
-| item-infos     | Address list item name/contact/default one line | public      |
-| item-icon      | address list item icon                          | public      |
-| item-addr      | Address list item detailed address              | public      |
-| swipe-right    | Address list item right swipe area              | Use with swipe |
-| longpress-btns | Address list item long press to mask content    | Use with long press |
+| item-infos     | Address list item name/contact/default one line | `{ item }`      |
+| item-icon      | address list item icon                          | `{ item }`      |
+| item-addr      | Address list item detailed address              | `{ item }`      |
+| swipe-right    | Address list item right swipe area              | `{ item }` |
+| longpress-btns | Address list item long press to mask content    | `{ item }` |
 
 ### Each item in the data array is smoothed with the parameters of the dataOptions object
 
