@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@nutui/icons-vue':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@nutui/icons-vue-taro':
         specifier: ^0.0.9
         version: 0.0.9
@@ -3312,8 +3312,8 @@ packages:
     resolution: {integrity: sha512-10VYAtFC+o1X0anGs+y2PgF1NWMeLFz2JVMRw4BWLg6wbtVbYy9wukLxyGhZC6Yf6t39DcwaGVda8paV7K6/Ew==}
     dev: false
 
-  /@nutui/icons-vue@0.1.0:
-    resolution: {integrity: sha512-NBpB5vkZHzzg0HBYm18V2EQLqNYzQtAVDb+Mlu85CNh9xXxNb6kIVqLCPxd1qKxgEdS4vwQnyAAHlkD40SUqVg==}
+  /@nutui/icons-vue@0.1.1:
+    resolution: {integrity: sha512-ekn6R9GNHWNUcV4pxdhQzrI1g1VhZ5zknklXoUJrCzt0RkRRLU0bUXX3ouWT0sl0U3MNJClnXAzZe7iPAvgPtw==}
     dev: false
 
   /@parcel/css@1.14.0:
