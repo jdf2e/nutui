@@ -1,3 +1,20 @@
+## v4.0.10
+
+`2023-06-25`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @alphardex @tolking
+
+* :zap: feat(AddressList): slot 作用域增加列表项数据 (#2372)
+* :bug: fix(Picker): strictly compare the type of value #2341 (#2342) @tolking
+* :bug: fix(Uploader): 修复微信小程序上传图片时 size-type 参数无效的问题 (#2352) @alphardex
+* :bug: fix(Searchbar): 修复 shape 设置无效的问题 (#2346)
+* :bug: fix(Layout): 优化样式逻辑 (#2362)
+* :bug: fix(Menu): 修复 menu 点击闪屏问题 (#2364)
+* :bug: fix(Icon): 修复 click 事件多次触发的问题
+* :rocket: chore: 增加 ESM 全量构建产物 (#2363)
+* :rocket: chore: icons-vue 包更新至 0.1.1 版本
+
 ## v4.0.9
 
 `2023-06-09`
