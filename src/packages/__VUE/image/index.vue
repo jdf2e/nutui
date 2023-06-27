@@ -164,6 +164,7 @@ export default create({
     );
     // 图片加载
     const load = () => {
+      state.isError = false;
       state.loading = false;
       emit('load');
     };
