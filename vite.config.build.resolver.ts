@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
   build: {
-    minify: true,
+    minify: false,
     target: 'es2015',
     lib: {
       entry: path.resolve(__dirname, './src/packages/resolver/index.ts'),

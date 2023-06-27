@@ -13,7 +13,7 @@ let input = {
 export default defineConfig({
   plugins: [vue()],
   build: {
-    minify: true,
+    minify: false,
     target: 'es2015',
     lib: {
       entry: '',

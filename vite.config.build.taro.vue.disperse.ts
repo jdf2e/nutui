@@ -42,7 +42,7 @@ export default defineConfig({
     })
   ],
   build: {
-    minify: true,
+    minify: false,
     target: 'es2015',
     lib: {
       entry: '',
