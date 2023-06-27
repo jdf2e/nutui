@@ -3,6 +3,7 @@
 `2023-06-27`
 
 * :bug: fix(build): 构建 Taro 包时关闭 minify，修复 WEAPP 找不到模板问题
+* :bug: fix(image): 修复 iOS 下懒加载异常问题 #2376
 
 ## v4.0.11
 
