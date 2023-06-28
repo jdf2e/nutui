@@ -1,0 +1,35 @@
+{
+  "name": "@nutui/touch-emulator",
+  "version": "0.0.1",
+  "description": "NutUI Touch Emulator",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "publish:beta": "npm publish --tag=beta",
+    "publish:latest": "npm publish"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git",
+    "directory": "packages/nutui-touch-emulator"
+  },
+  "keywords": [
+    "nutui",
+    "jdf2e"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui/issues"
+  },
+  "homepage": "https://github.com/jdf2e/nutui#readme"
+}
