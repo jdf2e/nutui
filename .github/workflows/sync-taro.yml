@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
       - uses: actions/checkout@v2 
-      - run: yarn install
-      - run: yarn copy:taro
+      - run: pnpm i
+      - run: pnpm copy:taro
       - name : Sync 
         uses : JamesIves/github-pages-deploy-action@4.1.7 
         with :
@@ -24,7 +24,3 @@ jobs:
           repository-name: jdf2e/nutui-docs
           token: ${{ secrets.GIT_ACTION }}
           target-folder: src/docs_vue_taro
-
-     
-
-          
