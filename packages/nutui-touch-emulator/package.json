@@ -10,8 +10,7 @@
   },
   "scripts": {
     "build": "node build.js",
-    "publish:beta": "npm publish --tag=beta",
-    "publish:latest": "npm publish"
+    "prepare": "pnpm build"
   },
   "files": [
     "dist",
