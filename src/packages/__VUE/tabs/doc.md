@@ -375,7 +375,7 @@ export default {
 | swipeable`4.0.3` | 是否开启手势左右滑动切换                                                                           | boolean          | `false`      |
 | title-scroll     | 标签栏是否可以滚动                                                                                 | boolean          | `false`      |
 | ellipsis         | 是否省略过长的标题文字                                                                             | boolean          | `true`       |
-| animated-time    | 切换动画时长,单位 ms 0 代表无动画                                                                  | number \| string | `300`        |
+| animated-time    | 切换动画时长，单位 ms。0 代表无动画，此时必须设置 `pane-key`                                                                  | number \| string | `300`        |
 | title-gutter     | 标签间隙                                                                                           | number \| string | `0`          |
 | size             | 标签栏字体尺寸大小 可选值  large normal small                                                      | string           | `normal`     |
 | auto-height      | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tab-pane 的高度而发生变化。 | boolean          | `false`      |

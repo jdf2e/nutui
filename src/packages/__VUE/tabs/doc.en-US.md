@@ -375,7 +375,7 @@ export default {
 | swipeable`4.0.3` | Whether to enable gestures to slide left and right                                                                                  | boolean          | `false`      |
 | title-scroll     | Is the tab bar scrollable                                                                                                           | boolean          | `false`      |
 | ellipsis         | Whether to omit too long title text                                                                                                 | boolean          | `true`       |
-| animated-time    | Switch animation duration, unit ms 0 means no `animation`                                                                           | number \| string | `300`        |
+| animated-time    | Switch animation duration, unit ms 0 means no `animation` and `pane-key` is required                                                                           | number \| string | `300`        |
 | title-gutter     | Label gap                                                                                                                           | number \| string | `0`          |
 | size             | Tab bar font size optional value  `large` `normal` `small`                                                                          | string           | `normal`     |
 | auto-height      | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean          | `false`      |
