@@ -109,17 +109,19 @@ export const component = (components: any) => {
           if (validator) {
             const result = validator(value, ruleWithoutValidator);
             if (isPromise(result)) {
-              return new Promise((r, j) => {
+              return new Promise((resolve) => {
                 result
-                  .then((res) => {
-                    if (!res) {
-                      tipMessage(errorMsg);
-                      r(errorMsg);
-                    } else {
-                      r(true);
-                    }
+                  .then((res: string) => {
+                    resolve({
+                      prop,
+                      message: res ?? ''
+                    });
                   })
-                  .catch((e) => j(e));
+                  .catch((error) => {
+                    const validateErrorMsg = { prop, message: error };
+                    tipMessage(validateErrorMsg);
+                    resolve(validateErrorMsg);
+                  });
               });
             } else {
               if (!result) {

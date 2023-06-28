@@ -212,19 +212,52 @@ setup(){
         }
       });
     };
-    // 函数校验
-    const customValidator = (val: string) => /^\d+$/.test(val);
-    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
-      return (rule?.reg as RegExp).test(val);
+    // 失去焦点校验
+    const customBlurValidate = (prop: string) => {
+      ruleForm.value.validate(prop).then(({ valid, errors }: any) => {
+        if (valid) {
+          console.log('success', formData);
+        } else {
+          console.log('error submit!!', errors);
+        }
+      });
     };
-    const nameLengthValidator = (val: string) => val?.length >= 2;
+    // 函数校验
+    const customValidator = (val: string) => {
+      if (/^\d+$/.test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
+    };
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      if ((rule?.reg as RegExp).test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
+    };
+    const nameLengthValidator = (val: string) => {
+      if (val.length > 2) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('名称两个字以上');
+      }
+    };
     // Promise 异步校验
     const asyncValidator = (val: string) => {
-      return new Promise((resolve) => {
+      const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+      return new Promise((resolve, reject) => {
         showToast.loading('模拟异步验证中...');
         setTimeout(() => {
           showToast.hide();
-          resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
+          if (!val) {
+            reject('请输入联系电话');
+          } else if (!telReg.test(val)) {
+            reject('联系电话格式不正确');
+          } else {
+            resolve('');
+          }
         }, 1000);
       });
     };
