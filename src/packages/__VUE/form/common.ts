@@ -153,7 +153,6 @@ export const component = (components: any) => {
             });
 
             Promise.all(errors).then((errorRes) => {
-              console.log(errorRes);
               errorRes = errorRes.filter((item) => item !== true);
               const res = { valid: true, errors: [] };
               if (errorRes.length) {
