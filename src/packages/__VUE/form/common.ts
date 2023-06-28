@@ -111,11 +111,8 @@ export const component = (components: any) => {
             if (isPromise(result)) {
               return new Promise((resolve) => {
                 result
-                  .then((res: string) => {
-                    resolve({
-                      prop,
-                      message: res ?? ''
-                    });
+                  .then(() => {
+                    resolve(true);
                   })
                   .catch((error) => {
                     const validateErrorMsg = { prop, message: error };
@@ -156,7 +153,8 @@ export const component = (components: any) => {
             });
 
             Promise.all(errors).then((errorRes) => {
-              errorRes = errorRes.filter((item) => item != true);
+              console.log(errorRes);
+              errorRes = errorRes.filter((item) => item !== true);
               const res = { valid: true, errors: [] };
               if (errorRes.length) {
                 res.valid = false;

@@ -6,5 +6,5 @@ export class FormItemRuleWithoutValidator {
 }
 
 export class FormItemRule extends FormItemRuleWithoutValidator {
-  validator?: (value: any, ruleCfg: FormItemRuleWithoutValidator) => Promise<string>;
+  validator?: (value: any, ruleCfg: FormItemRuleWithoutValidator) => Promise<string | boolean>;
 }
