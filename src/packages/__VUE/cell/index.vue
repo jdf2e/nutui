@@ -46,11 +46,6 @@ export default create({
 
       if (props.to && router) {
         router[props.replace ? 'replace' : 'push'](props.to);
-        // if(props.replace){
-        //   router.replace(props.to)
-        // }else{
-        //    router.push(props.to)
-        // }
       } else if (props.url) {
         props.replace ? location.replace(props.url) : (location.href = props.url);
       }
