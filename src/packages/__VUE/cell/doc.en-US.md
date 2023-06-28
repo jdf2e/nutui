@@ -273,6 +273,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-cell-large-title-desc-font   | _var(--nut-font-size-base)_  |
 | --nut-cell-large-padding           | _15px 16px_                  |
 | --nut-cell-background              | _var(--nut-white)_           |
+| --nut-cell-box-shadow              | _0px 1px 7px 0px rgba(237, 238, 241, 1)_ |
 | --nut-cell-group-title-padding     | _0 10px_                     |
 | --nut-cell-group-title-color       | _#909ca4_                    |
 | --nut-cell-group-title-font-size   | _var(--nut-font-size-2)_     |
