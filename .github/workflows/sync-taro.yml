@@ -12,15 +12,26 @@ jobs:
   copy:
     runs-on: ubuntu-latest  
     steps:
-      - uses: actions/checkout@v2 
-      - run: pnpm i
-      - run: pnpm copy:taro
-      - name : Sync 
-        uses : JamesIves/github-pages-deploy-action@4.1.7 
-        with :
-          branch : new-site # action 应该部署到的分支 。
-          folder : site_docs #操作应该部署的文件夹 。
-          clean: false
-          repository-name: jdf2e/nutui-docs
-          token: ${{ secrets.GIT_ACTION }}
-          target-folder: src/docs_vue_taro
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name : Sync
+      run: pnpm copy:taro
+      uses : JamesIves/github-pages-deploy-action@4.1.7 
+      with :
+        branch : new-site # action 应该部署到的分支 。
+        folder : site_docs #操作应该部署的文件夹 。
+        clean: false
+        repository-name: jdf2e/nutui-docs
+        token: ${{ secrets.GIT_ACTION }}
+        target-folder: src/docs_vue_taro
