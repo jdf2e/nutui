@@ -1,6 +1,6 @@
 {
   "name": "@nutui/touch-emulator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "NutUI Touch Emulator",
   "main": "dist/index.js",
   "module": "dist/index.js",
