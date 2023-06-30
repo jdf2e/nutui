@@ -1380,7 +1380,7 @@ exports[`Cascader > select with lazy 7`] = `
 exports[`Cascader > visible 1`] = `
 "<teleport-stub to=\\"body\\" disabled=\\"true\\">
   <transition-stub name=\\"overlay-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
-    <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2000; display: none;\\"></view>
+    <view class=\\"nut-overlay\\" style=\\"transition-duration: 0.3s; z-index: 2001;\\"></view>
   </transition-stub>
   <transition-stub name=\\"nut-popup-slide-bottom\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <view class=\\"nut-popup round nut-popup--bottom nut-cascader__popup\\" style=\\"z-index: 2001; transition-duration: 0.3s;\\">

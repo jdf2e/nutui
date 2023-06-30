@@ -1,0 +1,28 @@
+{
+  "name": "@nutui/playground",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NutUI Vue SFC Playground",
+  "keywords": [
+    "nutui",
+    "vue3"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.1",
+    "@types/node": "^18.15.13",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.9",
+    "vue": "3.2.47"
+  },
+  "dependencies": {
+    "@vue/repl": "^1.4.1",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.0"
+  }
+}
