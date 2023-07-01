@@ -18,10 +18,10 @@
     "@types/node": "^18.15.13",
     "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.3.9",
-    "vue": "3.2.47"
+    "vue": "^3.3.4"
   },
   "dependencies": {
-    "@vue/repl": "^1.4.1",
+    "@vue/repl": "^2.4.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.0"
   }

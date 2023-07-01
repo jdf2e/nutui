@@ -139,8 +139,8 @@ importers:
   packages/nutui-playground:
     dependencies:
       '@vue/repl':
-        specifier: ^1.4.1
-        version: 1.4.1(vue@3.2.47)
+        specifier: ^2.4.0
+        version: 2.4.0
       file-saver:
         specifier: ^2.0.5
         version: 2.0.5
@@ -153,7 +153,7 @@ importers:
         version: 18.15.13
       '@vitejs/plugin-vue':
         specifier: ^4.2.3
-        version: 4.2.3(vite@4.3.9)(vue@3.2.47)
+        version: 4.2.3(vite@4.3.9)(vue@3.3.4)
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -161,8 +161,8 @@ importers:
         specifier: ^4.3.9
         version: 4.3.9(@types/node@18.15.13)(sass@1.50.0)
       vue:
-        specifier: 3.2.47
-        version: 3.2.47
+        specifier: ^3.3.4
+        version: 3.3.4
 
   packages/nutui-playground/src/download/template:
     dependencies:
@@ -4838,17 +4838,6 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@vitejs/plugin-vue@4.2.3(vite@4.3.9)(vue@3.2.47):
-    resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.0.0
-      vue: ^3.2.25
-    dependencies:
-      vite: 4.3.9(@types/node@18.15.13)(sass@1.50.0)
-      vue: 3.2.47
-    dev: true
-
   /@vitejs/plugin-vue@4.2.3(vite@4.3.9)(vue@3.3.4):
     resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -4856,7 +4845,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.3.9(@types/node@17.0.16)(sass@1.50.0)
+      vite: 4.3.9(@types/node@18.15.13)(sass@1.50.0)
       vue: 3.3.4
     dev: true
 
@@ -5245,12 +5234,8 @@ packages:
     dependencies:
       '@vue/shared': 3.3.4
 
-  /@vue/repl@1.4.1(vue@3.2.47):
-    resolution: {integrity: sha512-7ONz/o1OtS611jW6SdAOZXn4HdN8gfyatcOzcEu+3bDMvgbyr7ZUcbRV6Y4xdkxDARKDBzs+sb3/oz1Na5hAeQ==}
-    peerDependencies:
-      vue: ^3.2.13
-    dependencies:
-      vue: 3.2.47
+  /@vue/repl@2.4.0:
+    resolution: {integrity: sha512-vXXEysYTCZdJo3kECwKDTxd6GI3F9RzJ3dkslY6fpdGn7q+aCizLqcWiEnWaeBjbqOh31rMsPPUxhhC3jhaiXQ==}
     dev: false
 
   /@vue/runtime-core@3.2.47:

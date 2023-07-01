@@ -2,7 +2,7 @@ import { StoreOptions, File, ReplStore } from '@vue/repl';
 
 const style = 'https://cdn.jsdelivr.net/npm/@nutui/nutui/dist/style.css';
 
-const mainFile = `
+const appFileCode = `
 <script setup lang="ts">
 import { showToast } from '@nutui/nutui'
 import { Dongdong } from '@nutui/icons-vue'
@@ -19,16 +19,17 @@ const show = () => {
 </template>
 `.trim();
 
-const CONTAINER_FILE = 'Container.vue';
-const MAIN_FILE = 'App.vue';
-const INSTALL_FILE = 'install-nutui.js';
+const CONTAINER_FILE = 'src/Container.vue';
+const APP_FILE = 'src/App.vue';
+const INSTALL_FILE = 'src/install-nutui.js';
 const IMPORTMAP_FILE = 'import-map.json';
+const TSCONFIG_FILE = 'tsconfig.json';
 
 const containerCode = `\
 <script setup>
 import App from './App.vue'
 import '@nutui/touch-emulator'
-import {installNutUI} from './${INSTALL_FILE}'
+import {installNutUI} from './install-nutui.js'
 
 installNutUI()
 </script>
@@ -80,12 +81,13 @@ export class NutUIStore extends ReplStore {
     if (hash) {
       const saved = JSON.parse(atou(hash));
       for (const filename in saved) {
-        if (!filterFiles.includes(filename)) {
-          this.addFile(new File(filename, saved[filename]));
+        const newName = filename.startsWith('src/') ? filename : `src/${filename}`;
+        if (!filterFiles.includes(newName)) {
+          this.addFile(new File(newName, saved[filename]));
         }
       }
     } else {
-      const main = new File(MAIN_FILE, mainFile, false);
+      const main = new File(APP_FILE, appFileCode, false);
       this.addFile(main);
     }
 
@@ -95,13 +97,14 @@ export class NutUIStore extends ReplStore {
     this.addFile(install);
 
     this.state.mainFile = CONTAINER_FILE;
-    this.setActive(MAIN_FILE);
+    this.setActive(APP_FILE);
   }
   serialize() {
     const files = this.getFiles();
     delete files[IMPORTMAP_FILE];
-    delete files[CONTAINER_FILE];
-    delete files[INSTALL_FILE];
+    delete files[TSCONFIG_FILE];
+    delete files[CONTAINER_FILE.replace('src/', '')];
+    delete files[INSTALL_FILE.replace('src/', '')];
     return '#' + utoa(JSON.stringify(files));
   }
 }
