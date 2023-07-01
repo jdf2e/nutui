@@ -81,10 +81,10 @@ test('should render slot correctly', async () => {
     },
     slots: {
       btn: '<div class="d_div"> 最近七天</div>',
-      day: (date) => {
+      day: (date: any) => {
         return `custom${date.date.day}`;
       },
-      'bottom-info': (date) =>
+      'bottom-info': (date: any) =>
         `${date.date ? (date.date.day <= 10 ? '上旬' : date.date.day <= 20 ? '中旬' : '下旬') : ''}`
     }
   });
