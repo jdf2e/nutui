@@ -182,7 +182,7 @@ test('game machine props', async () => {
   expect(machine).toHaveLength(1);
   const machineItemList = wrapper.findAll('.nut-countup__machine-item');
   expect(machineItemList).toHaveLength(wrapper.vm.machineNum);
-  wrapper.vm.startRole();
+  (wrapper.vm as any).startRole();
   await sleep(4000);
   const ele = machineItemList[0].element as HTMLElement;
   const _y = Math.abs(parseFloat(ele.style.backgroundPositionY));

@@ -45,7 +45,7 @@ test('should render width and height', async () => {
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
   expect(swiperItem.style.height).toEqual(`${wrapper.vm.height}px`);
-  expect(swiperItem.style.width).toEqual(`${window.innerWidth * wrapper.vm.list.length}px`);
+  expect(swiperItem.style.width).toEqual(`${window.innerWidth * (wrapper.vm.list as any).length}px`);
 });
 
 test('should render initpage', async () => {
