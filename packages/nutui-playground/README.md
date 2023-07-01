@@ -1,7 +1,5 @@
 # NutUI Vue SFC Playground
 
-This is deployed at [nutui-playground.vercel.app](https://nutui-playground.vercel.app) or [nutui.eiinu.cn](https://nutui.eiinu.cn).
-
 ## Run and build
 
 ```sh
