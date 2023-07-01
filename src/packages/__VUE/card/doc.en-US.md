@@ -101,22 +101,22 @@ app.use(Card);
   }
 }
 </script>
-<style lang="scss">
-  .search_prolist_attr {
+<style>
+.search_prolist_attr {
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
-  > span {
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
-  }
+}
+.search_prolist_attr > span {
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
 }
 </style>
 ```
@@ -165,7 +165,7 @@ app.use(Card);
   }
 }
 </script>
-<style lang="scss">
+<style>
 .tag {
   display: inline-block;
   vertical-align: middle;
@@ -215,7 +215,7 @@ app.use(Card);
   }
 }
 </script>
-<style lang="scss">
+<style>
 .customize {
   font-size: 12px;
 }

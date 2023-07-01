@@ -70,13 +70,13 @@ app.use(Skeleton);
     <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
   </div>
 </template>
-<style lang="scss">
+<style>
 .pic-compose {
   display: flex;
   justify-content: space-between;
-  .item {
-    width: 47%;
-  }
+}
+.item {
+  width: 47%;
 }
 </style>
 ```
@@ -119,30 +119,29 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.content {
+<style>
   .nut-switch {
+    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {
     display: flex;
-    .right-content {
-      margin-left: 19px;
-      font-family: PingFangSC;
-      display: flex;
-      flex-direction: column;
-      .title {
-        font-size: 14px;
-        color: rgba(51, 51, 51, 1);
-      }
-      .desc {
-        margin-top: 10px;
-        font-size: 13px;
-        color: rgba(154, 155, 157, 1);
-      }
-    }
   }
-}
+  .right-content {
+    margin-left: 19px;
+    font-family: PingFangSC;
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1);
+  }
+  .desc {
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(154, 155, 157, 1);
+  }
 </style>
 
 ```

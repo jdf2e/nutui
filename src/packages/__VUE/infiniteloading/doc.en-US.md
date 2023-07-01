@@ -60,7 +60,7 @@ app.use(InfiniteLoading);
   }
 </script>
 
-<style lang="scss">
+<style>
   .nut-tab-pane {
     padding: 0 !important;
     padding-left: 16px !important;
@@ -131,7 +131,7 @@ app.use(InfiniteLoading);
   }
 </script>
 
-<style lang="scss">
+<style>
   .nut-tab-pane {
     padding: 0 !important;
     padding-left: 16px !important;

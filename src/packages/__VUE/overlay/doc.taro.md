@@ -157,22 +157,22 @@ app.use(Overlay);
     }
   };
 </script>
-<style lang="scss">
+<style>
 .wrapper {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
 }
 </style>
 ```
@@ -207,22 +207,22 @@ app.use(Overlay);
     }
   };
 </script>
-<style lang="scss">
+<style>
 .wrapper {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
 }
 </style>
 ```

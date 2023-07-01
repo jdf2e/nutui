@@ -159,22 +159,22 @@ The default `slot` is supported, and any content can be nested
     }
   };
 </script>
-<style lang="scss" scoped>
+<style>
 .wrapper {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
 }
 </style>
 ```
@@ -209,22 +209,22 @@ Set `close on click override` to control whether the click mask is closed. If it
     }
   };
 </script>
-<style lang="scss" scoped>
+<style>
 .wrapper {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
 }
 </style>
 ```

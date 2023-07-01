@@ -52,13 +52,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -99,13 +99,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -148,13 +148,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -195,13 +195,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 ```
@@ -249,13 +249,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
   .page {
     position: absolute;
@@ -313,13 +313,13 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
   .page {
     position: absolute;
@@ -392,16 +392,16 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .demo-box{
     position: relative;
   }
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  }
+  .nut-swiper-item  img {
+    width: 100%;
+    height: 100%;
   }
   .nut-swiper-btns{
     width: 100%;
@@ -411,14 +411,14 @@ app.use(SwiperItem);
     z-index: 1;
     display: flex;
     justify-content: space-between;
-    span{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 30px;
-      background-color: rgba(0,0,0,.2);
-    }
+  }
+  .nut-swiper-btns span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 30px;
+    background-color: rgba(0,0,0,.2);
   }
 </style>
 ```
@@ -459,24 +459,22 @@ app.use(SwiperItem);
     }
   };
 </script>
-<style lang="scss">
+<style>
   .nut-swiper-item {
     line-height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-    ::v-deep(.nut-swiper-pagination-vertical) {
-      i{
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        &.active{
-          height: 18px;
-          border-radius: 5px;
-        }
-      }
-    }
+  }
+  .nut-swiper-item img {
+    width: 100%;
+    height: 100%;
+  }
+  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i.active{
+    height: 18px;
+    border-radius: 5px;
   }
 </style>
 ```

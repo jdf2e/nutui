@@ -63,8 +63,7 @@ app.use(Backtop);
     }
   };
 </script>
-<style lang="scss" scoped>
-.demo {
+<style>
   .text-data {
     margin: 0 auto;
     margin-top: 15px;
@@ -81,7 +80,6 @@ app.use(Backtop);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 
 ```
@@ -121,8 +119,7 @@ app.use(Backtop);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
+<style>
   .text-data {
     margin: 0 auto;
     margin-top: 15px;
@@ -139,7 +136,6 @@ app.use(Backtop);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 :::
@@ -178,8 +174,7 @@ app.use(Backtop);
   </div>
 </template>
 
-<style lang="scss" scoped>
-.demo {
+<style>
   .text-data {
     margin: 0 auto;
     margin-top: 15px;
@@ -196,7 +191,6 @@ app.use(Backtop);
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 :::

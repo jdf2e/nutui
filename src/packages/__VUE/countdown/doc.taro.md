@@ -232,27 +232,26 @@ app.use(Countdown);
     }
   }
 </script>
-<style lang="scss">
+<style>
 .countdown-part-box {
   display: flex;
   align-items: center;
+}
+.part-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 25px;
+  background: #e8220e;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+}
 
-  .part-item {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 25px;
-    background: #e8220e;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 6px;
-  }
-
-  .part-item-symbol {
-    margin: 0 5px;
-  }
+.part-item-symbol {
+  margin: 0 5px;
 }
 </style>
 

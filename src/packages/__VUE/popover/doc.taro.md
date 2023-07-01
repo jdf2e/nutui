@@ -221,7 +221,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 page{
   padding-top: 200px;
 }
@@ -229,20 +229,20 @@ page{
  width: 195px;
  display: flex;
  flex-wrap: wrap;
- &-item {
-   margin-top: 10px;
-   margin-bottom: 10px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
- }
- &-desc {
-   margin-top: 5px;
-   width: 60px;
-   font-size: 10px;
-   text-align: center;
- }
+}
+.self-content-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.self-content-desc {
+  margin-top: 5px;
+  width: 60px;
+  font-size: 10px;
+  text-align: center;
 }
 </style>
 ```
@@ -359,22 +359,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
+<style>
 .nut-popover-content {
-    width: 120px;
+  width: 120px;
 }
-
 .brickBox {
   margin: 80px 0;
   display: flex;
   justify-content: center;
-  .brick {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
-    border-radius: 10px;
-  }
+}
+.brick {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+  border-radius: 10px;
 }
 </style>
 ```

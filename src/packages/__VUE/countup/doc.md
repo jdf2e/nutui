@@ -141,12 +141,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .btnBtn {
   text-align: center;
-  .nut-button {
-    margin-right: 20px;
-  }
+}
+.nut-button {
+  margin-right: 20px;
 }
 </style>
 ```

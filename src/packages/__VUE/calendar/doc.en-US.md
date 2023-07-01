@@ -119,7 +119,7 @@ export default {
   }  
 };
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -240,7 +240,7 @@ export default {
   }  
 };
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -347,7 +347,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -477,7 +477,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -562,7 +562,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -652,7 +652,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style>
 .test-calendar-wrapper {
   display: flex;
   width: 100%;

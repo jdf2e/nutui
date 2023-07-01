@@ -285,22 +285,23 @@ app.use(TimeDetail);
     }
   };
 </script>
-<style lang="scss">
+<style>
 .timeselect-title {
   height: 50px;
-  p {
-    line-height: 1;
-    padding: 0;
-    margin: 0;
-    &.title {
-      margin: 10px 0;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &.subtitle {
-      color: #999;
-    }
-  }
+}
+.title {
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.subtitle {
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  color: #999;
 }
 </style>
 ```

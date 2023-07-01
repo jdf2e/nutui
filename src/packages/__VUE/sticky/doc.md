@@ -28,7 +28,7 @@ app.use(Sticky);
         </nut-sticky>
     </div>
 </template>
-<style lang="scss">
+<style>
   .demo {
       height: 200vh !important;
   }
@@ -49,7 +49,7 @@ app.use(Sticky);
         </nut-sticky>
     </div>
 </template>
-<style lang="scss">
+<style>
   .demo {
       height: 200vh !important;
   }
@@ -83,7 +83,7 @@ app.use(Sticky);
     }
   };
 </script>
-<style lang="scss">
+<style>
 .demo{
   height: 200vh !important;
 }
@@ -110,7 +110,7 @@ app.use(Sticky);
         </nut-sticky>
     </div>
 </template>
-<style lang="scss">
+<style>
 .demo{
     height: 200vh !important;
 }

@@ -62,8 +62,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.demo {
+<style>
   .text-data {
     margin: 0 auto;
     margin-top: 15px;
@@ -80,7 +79,6 @@ export default {
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 

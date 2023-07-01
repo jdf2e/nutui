@@ -119,7 +119,7 @@ export default {
   }  
 };
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -242,7 +242,7 @@ export default {
   }  
 };
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -349,7 +349,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -483,7 +483,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" >
+<style >
 .nut-cell__value {
   flex: initial;
 }
@@ -494,16 +494,15 @@ export default {
 }
 .d_div {
   margin: 0px 5px;
-  .d_btn {
-    background: #fa3f19;
-    color: #fff;
-    font-size: 12px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: inline-block;
-  }
 }
-
+.d_btn {
+  background: #fa3f19;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
 </style>
 ```
 :::
@@ -568,7 +567,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style>
 .nut-cell__value {
   flex: initial;
 }
@@ -659,7 +658,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" >
+<style >
 .test-calendar-wrapper {
   display: flex;
   width: 100%;

@@ -64,12 +64,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
     </nut-col>
   </nut-row>
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -78,12 +78,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```
@@ -106,12 +106,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
       </nut-col>
   </nut-row>   
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -120,12 +120,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```
@@ -203,12 +203,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
     </nut-col>
   </nut-row>
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -217,12 +217,12 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```

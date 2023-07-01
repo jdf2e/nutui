@@ -57,7 +57,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style>
 body {
   width: 100%;
   height: 100vh;
@@ -66,20 +66,18 @@ body {
   width: 100%;
   height: 100%;
 }
-.demo {
-  .nut-cell {
-    height: 100%;
-  }
-  .nut-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
-    background-color: #f4a8b6;
-    border-radius: 10px;
-  }
+.nut-cell {
+  height: 100%;
+}
+.nut-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  background-color: #f4a8b6;
+  border-radius: 10px;
 }
 </style>
 ```

@@ -62,12 +62,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
     </nut-col>
   </nut-row>
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -76,12 +76,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```
@@ -102,12 +102,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
       </nut-col>
   </nut-row>   
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -116,12 +116,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```
@@ -197,12 +197,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
     </nut-col>
   </nut-row>
 </template>
-<style lang="scss" scoped>
+<style>
 .nut-row {
   overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
   margin-bottom: 15px;
 }
 .flex-content {
@@ -211,12 +211,12 @@ Layout 组件提供 24列栅格，通过在 Col 上添加 span 属性设置列�
   text-align: center;
   border-radius: 6px;
   background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
 }
 </style>
 ```

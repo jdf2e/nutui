@@ -259,7 +259,7 @@ export default {
 
 The `AddressList` component is divided into several areas by default, and these areas are defined as slots, which can be replaced as needed
 
-| Name          | Description                                     | Scoped Slots  |
+| Name          | Description                                     | Slots  |
 | ------------- | ----------------------------------------------- | ----------- |
 | item-infos     | Address list item name/contact/default one line | `{ item }`      |
 | item-icon      | address list item icon                          | `{ item }`      |

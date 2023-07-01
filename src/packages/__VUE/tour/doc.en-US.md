@@ -219,16 +219,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .tour-demo-custom-content {
   padding: 8px;
   display: flex;
   width: max-content;
   align-items: center;
-
-  .nut-divider {
-    border-color: #fff;
-  }
+}
+.nut-divider {
+  border-color: #fff;
 }
 </style>
 

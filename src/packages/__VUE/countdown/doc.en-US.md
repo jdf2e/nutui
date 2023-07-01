@@ -231,11 +231,11 @@ Paused and restarted the countdown with the `paused` attribute
     }
   }
 </script>
-<style lang="scss" scoped>
-.countdown-part-box {
-  display: flex;
-  align-items: center;
-
+<style>
+  .countdown-part-box {
+    display: flex;
+    align-items: center;
+  }
   .part-item {
     flex-shrink: 0;
     display: flex;
@@ -252,7 +252,6 @@ Paused and restarted the countdown with the `paused` attribute
   .part-item-symbol {
     margin: 0 5px;
   }
-}
 </style>
 
 ```

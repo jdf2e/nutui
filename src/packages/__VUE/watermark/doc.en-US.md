@@ -49,22 +49,22 @@ app.use(Watermark);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style>
   .wrap {
     width: 100%;
     height: 240px;
     display: block;
     background: #fff;
-    >img {
-      width: 100%;
-    }
-    .mark1 {
-      width: 100%;
-      top: 50px;
-    }
-    .nut-button{
-      margin-right: 10px;
-    }
+  }
+  .wrap > img {
+    width: 100%;
+  }
+  .mark1 {
+    width: 100%;
+    top: 50px;
+  }
+  .nut-button{
+    margin-right: 10px;
   }
 </style>
 ```
@@ -89,15 +89,15 @@ app.use(Watermark);
     }
   };
 </script>
-<style lang="scss" scoped>
+<style>
   .wrap {
     width: 100%;
     height: 240px;
     display: block;
     background: #fff;
-     > img {
-      width: 100%;
-    }
+  }
+  .wrap > img {
+    width: 100%;
   }
 </style>
 ```
