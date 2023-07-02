@@ -6,7 +6,6 @@ Create a mask layer, which is usually used to prevent users from doing other ope
 
 ### Install
 
-
 ```javascript
 import { createApp } from 'vue';
 import { Overlay } from '@nutui/nutui';
@@ -14,7 +13,6 @@ import { Overlay } from '@nutui/nutui';
 const app = createApp();
 app.use(Overlay);
 ```
-
 
 ### Basic Usage
 
@@ -32,7 +30,7 @@ Use `visible` to control the display/hiding of mask layers
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -141,17 +139,17 @@ The default `slot` is supported, and any content can be nested
 <template>
   <nut-button type="success" @click="show = true">Nested content</nut-button>
   <nut-overlay v-model:visible="show">
-  <div class="wrapper">
-    <div class="content">Here is the text</div>
-  </div>
-</nut-overlay>
+    <div class="wrapper">
+      <div class="content">Here is the text</div>
+    </div>
+  </nut-overlay>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -160,22 +158,22 @@ The default `slot` is supported, and any content can be nested
   };
 </script>
 <style>
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.content {
-  display: flex;
-  width: 150px;
-  height: 150px;
-  background: #fff;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  color: red;
-}
+  .wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 </style>
 ```
 
@@ -201,7 +199,7 @@ Set `close on click override` to control whether the click mask is closed. If it
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -210,22 +208,22 @@ Set `close on click override` to control whether the click mask is closed. If it
   };
 </script>
 <style>
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.content {
-  display: flex;
-  width: 150px;
-  height: 150px;
-  background: #fff;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  color: red;
-}
+  .wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 </style>
 ```
 
@@ -235,27 +233,27 @@ Set `close on click override` to control whether the click mask is closed. If it
 
 ### Props
 
-| Attribute | Description | Type   | Default |
-| ---------------------- | ---------------- | -------------- | ------ |
-| v-model:visible        | Control the display/hide of masks | boolean        | `false`  |
-| z-index                | Custom Mask Level         | string \| number | `2000`   |
-| duration               | Display/hide animation duration, in seconds | string \| number | `0.3`    |
-| overlay-class          | Custom mask class name   | string         | -      |
-| overlay-style          | Custom Mask Style   | CSSProperties  | -      |
-| lock-scroll            | Whether the background is locked when the mask is displayed     | boolean        | `true`  |
-| close-on-click-overlay | Whether to close the mask when clicking. | boolean        | `true`   |
+| Attribute              | Description                                                 | Type             | Default |
+| ---------------------- | ----------------------------------------------------------- | ---------------- | ------- |
+| v-model:visible        | Control the display/hide of masks                           | boolean          | `false` |
+| z-index                | Custom Mask Level                                           | string \| number | `2000`  |
+| duration               | Display/hide animation duration, in seconds                 | string \| number | `0.3`   |
+| overlay-class          | Custom mask class name                                      | string           | -       |
+| overlay-style          | Custom Mask Style                                           | CSSProperties    | -       |
+| lock-scroll            | Whether the background is locked when the mask is displayed | boolean          | `true`  |
+| close-on-click-overlay | Whether to close the mask when clicking.                    | boolean          | `true`  |
 
 ### Events
 
-| Event | Description                  | Arguments   |
-| ------ | ---------- | ------------ |
-| click  | Triggered when clicked.   | event: MouseEvent |
+| Event | Description             | Arguments         |
+| ----- | ----------------------- | ----------------- |
+| click | Triggered when clicked. | event: MouseEvent |
 
 ### Slots
 
-| Name | Description  |
-| ------ | ---------- |
-| default  | Embedded Mask Content Customization |
+| Name    | Description                         |
+| ------- | ----------------------------------- |
+| default | Embedded Mask Content Customization |
 
 ## Theming
 
@@ -263,7 +261,6 @@ Set `close on click override` to control whether the click mask is closed. If it
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --------------------------------------- | -------------------------- |
-| --nut-overlay-bg-color        | _rgba(0, 0, 0, 0.7)_        |
-
+| Name                   | Default Value        |
+| ---------------------- | -------------------- |
+| --nut-overlay-bg-color | _rgba(0, 0, 0, 0.7)_ |

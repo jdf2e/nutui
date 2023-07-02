@@ -6,7 +6,7 @@ The multiple selection button is used to select.
 
 ### Install
 
-``` ts
+```ts
 import { createApp } from 'vue';
 import { Checkbox, CheckboxGroup } from '@nutui/nutui';
 
@@ -92,7 +92,7 @@ app.use(CheckboxGroup);
     setup() {
       const state = reactive({
         checkbox3: false,
-        checkbox4: true,
+        checkbox4: true
       });
       return { ...toRefs(state) };
     }
@@ -118,7 +118,7 @@ app.use(CheckboxGroup);
     setup() {
       const state = reactive({
         checkbox5: true,
-        checkbox6: true,
+        checkbox6: true
       });
       return { ...toRefs(state) };
     }
@@ -129,13 +129,14 @@ app.use(CheckboxGroup);
 :::
 
 ### Custom icon
+
 Customize the icon through the slot, it is recommended to set the `icon` and `checkedIcon` two slots at the same time
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" >
+  <nut-checkbox v-model="checkbox7">
     Custom icon
     <template #icon> <Checklist /> </template>
     <template #checkedIcon> <Checklist color="red" /> </template>
@@ -148,7 +149,7 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
     components: { Checklist },
     setup() {
       const state = reactive({
-        checkbox7: true,
+        checkbox7: true
       });
       return { ...toRefs(state) };
     }
@@ -176,11 +177,11 @@ When the value changes, the `change` event will be triggered
     props: {},
     setup() {
       const state = reactive({
-        checkbox: false,
+        checkbox: false
       });
-      const changeBox3= (state: boolean, label: string) => {
+      const changeBox3 = (state: boolean, label: string) => {
         showToast.text(`${state ? 'selected' : 'cancel'} ${label}`);
-      } 
+      };
       return { ...toRefs(state), changeBox3 };
     }
   };
@@ -212,7 +213,7 @@ When the value changes, the `change` event will be triggered
     props: {},
     setup() {
       const state = reactive({
-        checkboxgroup1: ['2', '3'],
+        checkboxgroup1: ['2', '3']
       });
 
       return { ...toRefs(state) };
@@ -246,7 +247,7 @@ When the value changes, the `change` event will be triggered
     props: {},
     setup() {
       const state = reactive({
-        checkboxgroup1: ['2', '3'],
+        checkboxgroup1: ['2', '3']
       });
 
       return { ...toRefs(state) };
@@ -282,12 +283,12 @@ When the value changes, the `change` event will be triggered
       const state = reactive({
         checkboxgroup3: ['2'],
         checkboxsource: [
-          {label: '1', value: 'Combined check box'},
-          {label: '2', value: 'Combined check box'},
-          {label: '3', value: 'Combined check box'},
-          {label: '4', value: 'Combined check box'},
-          {label: '5', value: 'Combined check box'},
-          {label: '6', value: 'Combined check box'}
+          { label: '1', value: 'Combined check box' },
+          { label: '2', value: 'Combined check box' },
+          { label: '3', value: 'Combined check box' },
+          { label: '4', value: 'Combined check box' },
+          { label: '5', value: 'Combined check box' },
+          { label: '6', value: 'Combined check box' }
         ]
       });
 
@@ -370,7 +371,7 @@ When the value changes, the `change` event will be triggered
   </nut-cell-group>
 </template>
 <script lang="ts">
-  import { reactive, toRefs,ref, Ref } from 'vue';
+  import { reactive, toRefs, ref, Ref } from 'vue';
   import { showToast } from '@nutui/nutui';
   import '@nutui/nutui/dist/packages/toast/style';
   export default {
@@ -380,7 +381,7 @@ When the value changes, the `change` event will be triggered
       const state = reactive({
         indeterminate: false,
         checkbox10: false,
-        checkboxgroup5: [],
+        checkboxgroup5: []
       });
 
       const changeBox5 = (value: boolean) => {
@@ -388,10 +389,10 @@ When the value changes, the `change` event will be triggered
       };
 
       const changeBox6 = (label: string[]) => {
-        if(label.length === 4) {
+        if (label.length === 4) {
           state.indeterminate = false;
           state.checkbox10 = true;
-        } else if(label.length && label.length < 4){
+        } else if (label.length && label.length < 4) {
           state.indeterminate = true;
         } else {
           data.indeterminate = false;
@@ -406,53 +407,55 @@ When the value changes, the `change` event will be triggered
 ```
 
 :::
+
 ## API
+
 ### Checkbox Props
 
-| Attribute | Description | Type   | Default 
-|----- | ----- | ----- | ----- 
-| v-model | If selected | boolean | `false` 
-| disabled | Disable selection | boolean | `false` 
-| text-position | The position of the text, optional value：`left`,`right` | string | `right` 
-| icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` 
-| label | Text content of the check box | string | - 
-| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation       | boolean                  | `false` |
-| shape | Shape, optional values：`button`、`round` | String | `round` |
+| Attribute     | Description                                                                                        | Type             | Default |
+| ------------- | -------------------------------------------------------------------------------------------------- | ---------------- | ------- |
+| v-model       | If selected                                                                                        | boolean          | `false` |
+| disabled      | Disable selection                                                                                  | boolean          | `false` |
+| text-position | The position of the text, optional value：`left`,`right`                                           | string           | `right` |
+| icon-size     | [Icon Size](#/en-US/icon)                                                                          | string \| number | `18`    |
+| label         | Text content of the check box                                                                      | string           | -       |
+| indeterminate | Whether half selection status is currently supported. It is generally used in select all operation | boolean          | `false` |
+| shape         | Shape, optional values：`button`、`round`                                                          | String           | `round` |
 
 ### Checkbox Slots
-| Name | Description |
-|-|-|
-| icon | Icon when not selected |
-| checkedIcon | Icon when selected |
+
+| Name          | Description             |
+| ------------- | ----------------------- |
+| icon          | Icon when not selected  |
+| checkedIcon   | Icon when selected      |
 | indeterminate | Icon when half selected |
+
 ### CheckboxGroup Props
 
-| Attribute | Description | Type   | Default 
-|----- | ----- | ----- | ----- 
-| v-model | Identifier of the currently selected item, corresponding to `label`  | Array | - 
-| disabled | Whether to disable the selection, which will be used for all check boxes under it | boolean | `false` 
-| max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | number | `0`
-
-
+| Attribute | Description                                                                                                             | Type    | Default |
+| --------- | ----------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
+| v-model   | Identifier of the currently selected item, corresponding to `label`                                                     | Array   | -       |
+| disabled  | Whether to disable the selection, which will be used for all check boxes under it                                       | boolean | `false` |
+| max       | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | number  | `0`     |
 
 ### Checkbox Events
 
-| Event | Description                  | Arguments   
-|----- | ----- | ----- 
-| change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value 
+| Event  | Description                      | Arguments                                                                                           |
+| ------ | -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value |
 
 ### CheckboxGroup Events
 
-| Event | Description                  | Arguments   
-|----- | ----- | ----- 
-| change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items 
+| Event  | Description                      | Arguments                                                                              |
+| ------ | -------------------------------- | -------------------------------------------------------------------------------------- |
+| change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items |
 
 ### CheckboxGroup Methods
 
-| methodName | Description | Arguments 
-|----- | ----- | ----- 
-| toggleAll | Select all / cancel | `true`,to select all，`false`,cancel the selection
-| toggleReverse | Reverse selection | -
+| methodName    | Description         | Arguments                                          |
+| ------------- | ------------------- | -------------------------------------------------- |
+| toggleAll     | Select all / cancel | `true`,to select all，`false`,cancel the selection |
+| toggleReverse | Reverse selection   | -                                                  |
 
 ## Theming
 
@@ -460,20 +463,20 @@ When the value changes, the `change` event will be triggered
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --------------------------------------- | -------------------------- |
-| --nut-checkbox-label-color| _#1d1e1e_ |
-| --nut-checkbox-label-disable-color| _#999_ |
-| --nut-checkbox-icon-disable-color| _#d6d6d6_ |
-| --nut-checkbox-label-margin-left| _15px_ |
-| --nut-checkbox-label-font-size| _14px_ |
-| --nut-checkbox-icon-font-size| _18px_ |
-| --nut-checkbox-icon-disable-color2| _var(--nut-help-color)_ |
-| --nut-checkbox-button-padding|  _5px 18px_  |
-| --nut-checkbox-button-font-size|  _12px_  |
-| --nut-checkbox-button-border-radius|  _15px_  |
-| --nut-checkbox-button-border-color|  _#f6f7f9_  |
-| --nut-checkbox-button-background|  _#f6f7f9_  |
-| --nut-checkbox-button-font-color-active|  _var(--nut-primary-color)_  |
-| --nut-checkbox-button-border-color-active|  _var(--nut-primary-color)_  |
-| --nut-checkbox-button-background-active|  _var(--nut-primary-color)_  |
+| Name                                      | Default Value              |
+| ----------------------------------------- | -------------------------- |
+| --nut-checkbox-label-color                | _#1d1e1e_                  |
+| --nut-checkbox-label-disable-color        | _#999_                     |
+| --nut-checkbox-icon-disable-color         | _#d6d6d6_                  |
+| --nut-checkbox-label-margin-left          | _15px_                     |
+| --nut-checkbox-label-font-size            | _14px_                     |
+| --nut-checkbox-icon-font-size             | _18px_                     |
+| --nut-checkbox-icon-disable-color2        | _var(--nut-help-color)_    |
+| --nut-checkbox-button-padding             | _5px 18px_                 |
+| --nut-checkbox-button-font-size           | _12px_                     |
+| --nut-checkbox-button-border-radius       | _15px_                     |
+| --nut-checkbox-button-border-color        | _#f6f7f9_                  |
+| --nut-checkbox-button-background          | _#f6f7f9_                  |
+| --nut-checkbox-button-font-color-active   | _var(--nut-primary-color)_ |
+| --nut-checkbox-button-border-color-active | _var(--nut-primary-color)_ |
+| --nut-checkbox-button-background-active   | _var(--nut-primary-color)_ |

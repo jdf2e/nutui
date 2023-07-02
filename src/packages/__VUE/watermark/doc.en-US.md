@@ -1,11 +1,10 @@
-# watermark 
+# watermark
 
 ### Intro
 
 ### Install
 
-```javascript 
-
+```javascript
 import { createApp } from 'vue';
 import { Watermark } from '@nutui/nutui';
 
@@ -34,10 +33,12 @@ app.use(Watermark);
   </nut-cell>
 </template>
 <script lang="ts">
-  import { ref } from "vue";
+  import { ref } from 'vue';
   export default {
     setup() {
-      const imgSrc = ref('//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png');
+      const imgSrc = ref(
+        '//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
+      );
       const flag = ref(false);
       const showTextMark = () => {
         flag.value = false;
@@ -63,14 +64,16 @@ app.use(Watermark);
     width: 100%;
     top: 50px;
   }
-  .nut-button{
+  .nut-button {
     margin-right: 10px;
   }
 </style>
 ```
+
 :::
 
 ### Part Usage
+
 :::demo
 
 ```html
@@ -81,10 +84,10 @@ app.use(Watermark);
   </nut-cell>
 </template>
 <script lang="ts">
-  import { ref } from "vue";
+  import { ref } from 'vue';
   export default {
     setup() {
-     const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
+      const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
       return { src };
     }
   };
@@ -101,26 +104,29 @@ app.use(Watermark);
   }
 </style>
 ```
+
 :::
+
 ## API
 
 ### Props
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| width       | Width of watermark     | number           | `120`                |
-| height      | Height of watermark               | number           | `64`                 |
-| rotate      | Rotation angle when drawing watermark   | number           | `-22`                |
-| image       | Image source, it is recommended to export 2x or 3x images, and the image rendering watermark is preferred | string           | -                    |
-| image-width  | Width of image                                             | number           | `120`                |
-| image-height | Height of image                                             | number           | `64`                 |
-| z-index      | Z-index of the appended watermark element                             | number           | `2000`               |
-| content     | Watermark text content                                         | string           | -                    |
-| font-color   | Watermark text color                                         | string           | `rgba(0, 0, 0, .15)` |
-| font-size    | Watermark text font size                                             | string \| number | `16`                 |
-| gap-x        | Horizontal spacing between watermarks                                   | number           | `24`                 |
-| gap-y        | Vertical spacing between watermarks                                   | number           | `48`                 |
-| full-page    | Overwrite entire page                                     | boolean          | `true`               |
-| font-family  | Watermark text font family                  | boolean          | `true`               |
+
+| Attribute    | Description                                                                                               | Type             | Default              |
+| ------------ | --------------------------------------------------------------------------------------------------------- | ---------------- | -------------------- |
+| width        | Width of watermark                                                                                        | number           | `120`                |
+| height       | Height of watermark                                                                                       | number           | `64`                 |
+| rotate       | Rotation angle when drawing watermark                                                                     | number           | `-22`                |
+| image        | Image source, it is recommended to export 2x or 3x images, and the image rendering watermark is preferred | string           | -                    |
+| image-width  | Width of image                                                                                            | number           | `120`                |
+| image-height | Height of image                                                                                           | number           | `64`                 |
+| z-index      | Z-index of the appended watermark element                                                                 | number           | `2000`               |
+| content      | Watermark text content                                                                                    | string           | -                    |
+| font-color   | Watermark text color                                                                                      | string           | `rgba(0, 0, 0, .15)` |
+| font-size    | Watermark text font size                                                                                  | string \| number | `16`                 |
+| gap-x        | Horizontal spacing between watermarks                                                                     | number           | `24`                 |
+| gap-y        | Vertical spacing between watermarks                                                                       | number           | `48`                 |
+| full-page    | Overwrite entire page                                                                                     | boolean          | `true`               |
+| font-family  | Watermark text font family                                                                                | boolean          | `true`               |
 
 ## Theming
 
@@ -128,6 +134,6 @@ app.use(Watermark);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | 
-| --------------------------------------- | -------------------------- | 
-| --nut-watermark-z-index        | _2000_        | 
+| Name                    | Default Value |
+| ----------------------- | ------------- |
+| --nut-watermark-z-index | _2000_        |

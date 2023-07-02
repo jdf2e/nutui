@@ -14,16 +14,8 @@ export const componentWeb = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const {
-      changeHandler,
-      confirm,
-      defaultValues,
-      columnsList,
-      selectedOptions,
-      columnsType,
-      classes,
-      cancel
-    } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, selectedOptions, columnsType, classes, cancel } =
+      usePicker(props, emit);
 
     const state = reactive<{
       ENV: TaroGeneral.ENV_TYPE;

@@ -20,17 +20,13 @@ app.use(InfiniteLoading);
 
 ```html
 <template>
-  <nut-tabs v-model="tabsValue" animatedTime="0" >
+  <nut-tabs v-model="tabsValue" animatedTime="0">
     <nut-tab-pane title="Basic Usage">
-        <ul class="infiniteUl">
-           <nut-infinite-loading
-                v-model="infinityValue"
-                :has-more="hasMore"
-                @load-more="loadMore"
-            >
-                <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
-            </nut-infinite-loading>
-        </ul>
+      <ul class="infiniteUl">
+        <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
+          <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
+        </nut-infinite-loading>
+      </ul>
     </nut-tab-pane>
   </nut-tabs>
 </template>
@@ -40,24 +36,49 @@ app.use(InfiniteLoading);
   export default {
     setup(props) {
       let cycle = 0;
-      const tabsValue = ref(0)
-      const infinityValue = ref(false)
+      const tabsValue = ref(0);
+      const infinityValue = ref(false);
       const hasMore = ref(true);
-      const letter = ['A','B','C','D','E','F','G', 'H','IJ','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+      const letter = [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'IJ',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+      ];
       const defultList = ref(letter);
-      const loadMore = done => {  
+      const loadMore = (done) => {
         setTimeout(() => {
-
           defultList.value = defultList.value.concat(letter);
           cycle++;
           if (cycle > 2) hasMore.value = false;
           infinityValue.value = false;
-        }, 1000); 
+        }, 1000);
       };
-      
-      return {tabsValue, loadMore, hasMore, defultList, infinityValue };
+
+      return { tabsValue, loadMore, hasMore, defultList, infinityValue };
     }
-  }
+  };
 </script>
 
 <style>
@@ -83,25 +104,26 @@ app.use(InfiniteLoading);
 ```
 
 :::
+
 ### Custom loading copywriting
 
 :::demo
 
 ```html
 <template>
-  <nut-tabs v-model="tabsValue" animatedTime="0" >
+  <nut-tabs v-model="tabsValue" animatedTime="0">
     <nut-tab-pane title="Custom loading copywriting">
-        <ul class="infiniteUl">
-          <nut-infinite-loading
-              v-model="infinityValue"
-              load-txt="Loading..."
-              load-more-txt="No more ~"
-              :has-more="hasMore"
-              @load-more="loadMore"
-            >
-              <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-            </nut-infinite-loading>
-        </ul>
+      <ul class="infiniteUl">
+        <nut-infinite-loading
+          v-model="infinityValue"
+          load-txt="Loading..."
+          load-more-txt="No more ~"
+          :has-more="hasMore"
+          @load-more="loadMore"
+        >
+          <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
+        </nut-infinite-loading>
+      </ul>
     </nut-tab-pane>
   </nut-tabs>
 </template>
@@ -111,24 +133,49 @@ app.use(InfiniteLoading);
   export default {
     setup(props) {
       let cycle = 0;
-      const tabsValue = ref(0)
-      const infinityValue = ref(false)
+      const tabsValue = ref(0);
+      const infinityValue = ref(false);
       const hasMore = ref(true);
-      const letter = ['A','B','C','D','E','F','G', 'H','IJ','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+      const letter = [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'IJ',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+      ];
       const defultList = ref(letter);
-      const loadMore = done => {  
+      const loadMore = (done) => {
         setTimeout(() => {
-
           defultList.value = defultList.value.concat(letter);
           cycle++;
           if (cycle > 2) hasMore.value = false;
           infinityValue.value = false;
-        }, 1000); 
+        }, 1000);
       };
-      
-      return {tabsValue, loadMore, hasMore, defultList, infinityValue };
+
+      return { tabsValue, loadMore, hasMore, defultList, infinityValue };
     }
-  }
+  };
 </script>
 
 <style>
@@ -159,30 +206,30 @@ app.use(InfiniteLoading);
 
 ### Props
 
-| Attribute        | Description                                                                                                        | Type    | Default          |
-|------------------|--------------------------------------------------------------------------------------------------------------------|---------|------------------|
-| v-model          | Loading status                                                                                                     | boolean | `false`           |
-| has-more         | Has more data                                                                                                      | boolean | `true`           |
-| threshold        | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold   | number  | `200`            |
-| use-capture      | Whether to use capture mode                                                                                        | boolean | `false`          |
-| load-more-txt    | "No more" text                                                                                                     | string  | `Oops, this is the bottom`|
-| load-txt         | Pull on loading text                                                                                                | string  | `Loading...`      |
+| Attribute     | Description                                                                                                      | Type    | Default                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- | ------- | -------------------------- |
+| v-model       | Loading status                                                                                                   | boolean | `false`                    |
+| has-more      | Has more data                                                                                                    | boolean | `true`                     |
+| threshold     | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | number  | `200`                      |
+| use-capture   | Whether to use capture mode                                                                                      | boolean | `false`                    |
+| load-more-txt | "No more" text                                                                                                   | string  | `Oops, this is the bottom` |
+| load-txt      | Pull on loading text                                                                                             | string  | `Loading...`               |
 
 ### Events
 
-| Event          | Description                         | Arguments      |
-|----------------|-------------------------------------|----------------|
-| load-more      | Emitted when continues to load      | -         |
-| scroll-change  | Real-time monitoring of roll height | height         |
+| Event         | Description                         | Arguments |
+| ------------- | ----------------------------------- | --------- |
+| load-more     | Emitted when continues to load      | -         |
+| scroll-change | Real-time monitoring of roll height | height    |
 
 ### Slots
 
-| Name | Description  | 
-|--------|----------------|
-| default  | Custom content |
-| loading  | Loading text |
-| loading-icon  | Custom loading icon |
-| finished  | Finished text |
+| Name         | Description         |
+| ------------ | ------------------- |
+| default      | Custom content      |
+| loading      | Loading text        |
+| loading-icon | Custom loading icon |
+| finished     | Finished text       |
 
 ## Theming
 
@@ -190,6 +237,6 @@ app.use(InfiniteLoading);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | 
-| --------------------------------------- | -------------------------- | 
-| --nut-infiniteloading-bottom-color       | _#c8c8c8_        | 
+| Name                               | Default Value |
+| ---------------------------------- | ------------- |
+| --nut-infiniteloading-bottom-color | _#c8c8c8_     |

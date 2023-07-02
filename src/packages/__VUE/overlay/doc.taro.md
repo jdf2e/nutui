@@ -30,7 +30,7 @@ app.use(Overlay);
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -113,7 +113,7 @@ app.use(Overlay);
   <nut-overlay v-model:visible="show" :lock-scroll="true"></nut-overlay>
 </template>
 <script lang="ts">
-  import { reactive, toRefs} from 'vue';
+  import { reactive, toRefs } from 'vue';
   export default {
     setup() {
       const state = reactive({
@@ -149,7 +149,7 @@ app.use(Overlay);
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -158,22 +158,22 @@ app.use(Overlay);
   };
 </script>
 <style>
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.content {
-  display: flex;
-  width: 150px;
-  height: 150px;
-  background: #fff;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  color: red;
-}
+  .wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 </style>
 ```
 
@@ -199,7 +199,7 @@ app.use(Overlay);
   export default {
     setup() {
       const state = reactive({
-        show: false,
+        show: false
       });
       return {
         ...toRefs(state)
@@ -208,22 +208,22 @@ app.use(Overlay);
   };
 </script>
 <style>
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.content {
-  display: flex;
-  width: 150px;
-  height: 150px;
-  background: #fff;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  color: red;
-}
+  .wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 </style>
 ```
 
@@ -233,27 +233,27 @@ app.use(Overlay);
 
 ### Props
 
-| 参数                   | 说明             | 类型           | 默认值 |
-| ---------------------- | ---------------- | -------------- | ------ |
-| v-model:visible        | 控制遮罩的显示/隐藏 | boolean        | `false`  |
-| z-index                | 自定义遮罩层级         | string \| number | `2000`   |
-| duration               | 显示/隐藏的动画时长，单位秒 | string \| number | `0.3`    |
-| overlay-class          | 自定义遮罩类名   | string         | -      |
-| overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 遮罩显示时的背景是否锁定     | boolean        | `true`  |
-| close-on-click-overlay | 点击遮罩时是否关闭 | boolean    | `true`   |
+| 参数                   | 说明                        | 类型             | 默认值  |
+| ---------------------- | --------------------------- | ---------------- | ------- |
+| v-model:visible        | 控制遮罩的显示/隐藏         | boolean          | `false` |
+| z-index                | 自定义遮罩层级              | string \| number | `2000`  |
+| duration               | 显示/隐藏的动画时长，单位秒 | string \| number | `0.3`   |
+| overlay-class          | 自定义遮罩类名              | string           | -       |
+| overlay-style          | 自定义遮罩样式              | CSSProperties    | -       |
+| lock-scroll            | 遮罩显示时的背景是否锁定    | boolean          | `true`  |
+| close-on-click-overlay | 点击遮罩时是否关闭          | boolean          | `true`  |
 
 ### Events
 
-| 事件名 | 说明       | 回调参数     |
-| ------ | ---------- | ------------ |
-| click  | 点击时触发   | event: MouseEvent |
+| 事件名 | 说明       | 回调参数          |
+| ------ | ---------- | ----------------- |
+| click  | 点击时触发 | event: MouseEvent |
 
 ### Slots
 
-| 名称 | 说明       |
-| ------ | ---------- |
-| default  | 内嵌遮罩内容自定义 |
+| 名称    | 说明               |
+| ------- | ------------------ |
+| default | 内嵌遮罩内容自定义 |
 
 ## 主题定制
 
@@ -261,6 +261,6 @@ app.use(Overlay);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     |
-| --------------------------------------- | -------------------------- |
-| --nut-overlay-bg-color        | _rgba(0, 0, 0, 0.7)_        |
+| 名称                   | 默认值               |
+| ---------------------- | -------------------- |
+| --nut-overlay-bg-color | _rgba(0, 0, 0, 0.7)_ |

@@ -11,7 +11,7 @@ import { createApp } from 'vue';
 import { Popup } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Popup)
+app.use(Popup);
 ```
 
 ### Basic Usage
@@ -67,7 +67,7 @@ Control the pop-up position by setting the value of `position`
         showTop: false,
         showBottom: false,
         showLeft: false,
-        showRight: false,
+        showRight: false
       });
       return { ...toRefs(state) };
     }
@@ -87,10 +87,23 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
 <template>
   <nut-cell title="close icon" is-link @click="showIcon = true"></nut-cell>
   <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="showIcon"></nut-popup>
-  <nut-cell title="icon position" is-link @click="showIconPosition = true" ></nut-cell>
-  <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="showIconPosition" ></nut-popup>
-  <nut-cell title="custom icon" is-link @click="showCloseIcon = true" ></nut-cell>
-  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="showCloseIcon">
+  <nut-cell title="icon position" is-link @click="showIconPosition = true"></nut-cell>
+  <nut-popup
+    position="bottom"
+    closeable
+    close-icon-position="top-left"
+    :style="{ height: '20%' }"
+    v-model:visible="showIconPosition"
+  ></nut-popup>
+  <nut-cell title="custom icon" is-link @click="showCloseIcon = true"></nut-cell>
+  <nut-popup
+    position="bottom"
+    closeable
+    close-icon-position="top-left"
+    close-icon="heart"
+    :style="{ height: '20%' }"
+    v-model:visible="showCloseIcon"
+  >
     <template #close-icon>
       <Heart></Heart>
     </template>
@@ -106,7 +119,7 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
       const state = reactive({
         showIcon: false,
         showIconPosition: false,
-        showCloseIcon: false,
+        showCloseIcon: false
       });
       return { ...toRefs(state) };
     }
@@ -133,7 +146,7 @@ Set `round` to control whether rounded corners are displayed
     props: {},
     setup() {
       const state = reactive({
-        showRound: false,
+        showRound: false
       });
       return { ...toRefs(state) };
     }
@@ -152,7 +165,9 @@ Specify the mount node through `teleport`
 ```html
 <template>
   <nut-cell title="Specify mount node" is-link @click="showTeleport = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport" >app</nut-popup>
+  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport"
+    >app</nut-popup
+  >
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -160,7 +175,7 @@ Specify the mount node through `teleport`
     props: {},
     setup() {
       const state = reactive({
-        showTeleport: false,
+        showTeleport: false
       });
       return { ...toRefs(state) };
     }
@@ -205,48 +220,48 @@ Specify the mount node through `teleport`
 
 ### Props
 
-| Attribute                   | Description                                                        | Type           | Default        |
-|------------------------|-------------------------------------------------------------|----------------|---------------|
-| v-model:visible        | Control the display/hide of the current component                  | boolean        | `false`       |
-| z-index                | Mask level                                                    | string \| number | `2000`        |
-| duration               | Animation duration of component display/hide, in seconds          | string \| number | `0.3`         |
-| overlay-class          | Custom mask classname                                              | string         | -             |
-| overlay-style          | Custom mask style                                             | CSSProperties  | -             |
-| lock-scroll            | Whether the background is locked                                                | boolean        | `true`       |
-| overlay                | Show mask                                                | boolean        | `true`        |
-| close-on-click-overlay | Click to close the mask                                            | boolean        | `true`        |
-| position               | Eject position（top,bottom,left,right,center）                    | string         | `"center"`    |
-| transition             | Animation name                                                      | string         | -             |
-| style                  | Custom pop-up style                                              | CSSProperties  | -             |
-| pop-class              | Custom bullet box classname                                              | string         | -             |
-| closeable              | Show close button                                           | boolean        | `false`        |
-| close-icon-position    | Close button position（top-left,top-right,bottom-left,bottom-right） | string         | `"top-right"` |
-| destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed   | boolean        | `true`        |
-| round                  | Show fillet                                                | boolean        | `false`       |
-| teleport               | Specify the mount node   | string         | `"body"`      |
-| teleport-disable              | Whether the node is allowed to be mounted       | boolean         | `false`      |
-| overlay-class          | Custom mask class name   | string         | -      |
-| overlay-style          | Custom Mask Style   | CSSProperties  | -      |
-| safe-area-inset-bottom	| Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is  `bottom` |	Boolean	|`false`     |
+| Attribute              | Description                                                                                                                | Type             | Default       |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------- |
+| v-model:visible        | Control the display/hide of the current component                                                                          | boolean          | `false`       |
+| z-index                | Mask level                                                                                                                 | string \| number | `2000`        |
+| duration               | Animation duration of component display/hide, in seconds                                                                   | string \| number | `0.3`         |
+| overlay-class          | Custom mask classname                                                                                                      | string           | -             |
+| overlay-style          | Custom mask style                                                                                                          | CSSProperties    | -             |
+| lock-scroll            | Whether the background is locked                                                                                           | boolean          | `true`        |
+| overlay                | Show mask                                                                                                                  | boolean          | `true`        |
+| close-on-click-overlay | Click to close the mask                                                                                                    | boolean          | `true`        |
+| position               | Eject position（top,bottom,left,right,center）                                                                             | string           | `"center"`    |
+| transition             | Animation name                                                                                                             | string           | -             |
+| style                  | Custom pop-up style                                                                                                        | CSSProperties    | -             |
+| pop-class              | Custom bullet box classname                                                                                                | string           | -             |
+| closeable              | Show close button                                                                                                          | boolean          | `false`       |
+| close-icon-position    | Close button position（top-left,top-right,bottom-left,bottom-right）                                                       | string           | `"top-right"` |
+| destroy-on-close       | Will the contents of `slot` be cleared after the bullet layer is closed                                                    | boolean          | `true`        |
+| round                  | Show fillet                                                                                                                | boolean          | `false`       |
+| teleport               | Specify the mount node                                                                                                     | string           | `"body"`      |
+| teleport-disable       | Whether the node is allowed to be mounted                                                                                  | boolean          | `false`       |
+| overlay-class          | Custom mask class name                                                                                                     | string           | -             |
+| overlay-style          | Custom Mask Style                                                                                                          | CSSProperties    | -             |
+| safe-area-inset-bottom | Whether to enable iPhone series full screen bottom safety zone adaptation, which is only valid when `position` is `bottom` | Boolean          | `false`       |
 
 ### Events
 
-| Event | Description                  | Arguments   |
-|------------------|------------------------|----------------|
-| click            | Triggered when clicking the pop-up layer         | `event: Event` |
-| click-close-icon | Triggered when the close icon is clicked     | `event: Event` |
-| open             | Triggered when the pop-up box is opened         | -              |
-| close            | Triggered when the pop-up box is closed         | -              |
-| opend            | Triggered at the end of the mask open animation | `event: Event` |
+| Event            | Description                                           | Arguments      |
+| ---------------- | ----------------------------------------------------- | -------------- |
+| click            | Triggered when clicking the pop-up layer              | `event: Event` |
+| click-close-icon | Triggered when the close icon is clicked              | `event: Event` |
+| open             | Triggered when the pop-up box is opened               | -              |
+| close            | Triggered when the pop-up box is closed               | -              |
+| opend            | Triggered at the end of the mask open animation       | `event: Event` |
 | closed           | Triggered when the mask closes and the animation ends | `event: Event` |
-| click-overlay    | Click mask trigger           | `event: Event` |
+| click-overlay    | Click mask trigger                                    | `event: Event` |
 
 ### Slots
 
-| Name | Description       |
-| ------ | ---------- |
-| default  | Customize Embedded Content |
-| close-icon  | Custom icon for close button |
+| Name       | Description                  |
+| ---------- | ---------------------------- |
+| default    | Customize Embedded Content   |
+| close-icon | Custom icon for close button |
 
 ## Theming
 
@@ -254,7 +269,7 @@ Specify the mount node through `teleport`
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --------------------------------------- | -------------------------- |
-| --nut-popup-close-icon-margin| _16px_  |
-| --nut-popup-border-radius| _20px_  |
+| Name                          | Default Value |
+| ----------------------------- | ------------- |
+| --nut-popup-close-icon-margin | _16px_        |
+| --nut-popup-border-radius     | _20px_        |

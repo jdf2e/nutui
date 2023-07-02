@@ -1,4 +1,4 @@
-#  Swipe 滑动手势
+# Swipe 滑动手势
 
 ## 介绍
 
@@ -7,11 +7,11 @@
 ## 安装
 
 ```javascript
-import { createApp } from 'vue'
-import { Swipe } from '@nutui/nutui'
+import { createApp } from 'vue';
+import { Swipe } from '@nutui/nutui';
 
-const app = createApp()
-app.use(Swipe)
+const app = createApp();
+app.use(Swipe);
 ```
 
 ## 代码演示
@@ -19,6 +19,7 @@ app.use(Swipe)
 ### 基础用法
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -29,12 +30,13 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
-:::
 
+:::
 
 ### 禁止滑动
 
 :::demo
+
 ```html
 <template>
   <nut-swipe disabled>
@@ -45,11 +47,13 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
+
 :::
 
 ### 左右滑动
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -64,18 +68,20 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
+
 :::
 
 ### 异步控制
 
 :::demo
+
 ```html
 <template>
   <nut-swipe ref="refSwipe" @open="open" @close="close">
     <nut-cell title="异步打开关闭">
-    <template v-slot:link>
-      <nut-switch v-model="checked" @change="changSwitch" active-text="开" inactive-text="关" />
-    </template>
+      <template v-slot:link>
+        <nut-switch v-model="checked" @change="changSwitch" active-text="开" inactive-text="关" />
+      </template>
     </nut-cell>
     <template #right>
       <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
@@ -83,34 +89,36 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const refSwipe = ref<HTMLElement>();
-    const checked = ref(false);
-    const changSwitch = (value: boolean) => {
-      if (value) {
-        refSwipe.value?.open('left');
-      } else {
-        refSwipe.value?.close();
-      }
-    };
-    const open = (obj: any) => {
-      console.log(obj);
-    };
-    const close = (obj: any) => {
-      console.log(obj);
-    };
-    return { checked, changSwitch, refSwipe, open, close };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const refSwipe = ref<HTMLElement>();
+      const checked = ref(false);
+      const changSwitch = (value: boolean) => {
+        if (value) {
+          refSwipe.value?.open('left');
+        } else {
+          refSwipe.value?.close();
+        }
+      };
+      const open = (obj: any) => {
+        console.log(obj);
+      };
+      const close = (obj: any) => {
+        console.log(obj);
+      };
+      return { checked, changSwitch, refSwipe, open, close };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### 自定义
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -118,9 +126,9 @@ export default {
       <nut-button shape="square" style="height:100%" type="success">选择</nut-button>
     </template>
     <nut-cell title="商品描述">
-    <template v-slot:link>
-      <nut-input-number v-model="number" />
-    </template>
+      <template v-slot:link>
+        <nut-input-number v-model="number" />
+      </template>
     </nut-cell>
     <template #right>
       <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
@@ -129,15 +137,16 @@ export default {
   </nut-swipe>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const number = ref(0);
-    return { number };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const number = ref(0);
+      return { number };
+    }
+  };
 </script>
 ```
+
 :::
 
 ## Swipe
@@ -153,10 +162,10 @@ export default {
 
 ### Events
 
-| 事件名 | 说明       | 回调参数            |
-| ------ | ---------- | ------------------- |
+| 事件名 | 说明                                      | 回调参数                |
+| ------ | ----------------------------------------- | ----------------------- | --------- |
 | open   | 滑动时触发，left 指向左滑，right 指向右滑 | `name, position: 'left' | 'right' ` |
-| close  | 关闭时触发，同上 | `name, position: 'left' | 'right' ` |
+| close  | 关闭时触发，同上                          | `name, position: 'left' | 'right' ` |
 
 ### Slots
 
@@ -170,7 +179,7 @@ export default {
 
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Swipe` 实例并调用实例方法。
 
-| 方法名 | 说明             | 参数                |
-| ------ | ---------------- | ------------------- |
+| 方法名 | 说明                                            | 参数                    |
+| ------ | ----------------------------------------------- | ----------------------- | --------- |
 | open   | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' | 'right' ` |
-| close  | 收起单元格侧边栏，同上 | `name, position: 'left' | 'right' ` |
+| close  | 收起单元格侧边栏，同上                          | `name, position: 'left' | 'right' ` |

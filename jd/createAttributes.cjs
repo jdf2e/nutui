@@ -19,14 +19,14 @@ const kebabCase = (str) => {
 };
 
 const getCompName = (name) => {
-  if(!packages.length) {
+  if (!packages.length) {
     cfg.nav.forEach((item, index) => {
       packages = packages.concat(item.packages);
     });
   }
   const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
-  return packageName.name
-}
+  return packageName.name;
+};
 
 const getSubSources = (sources) => {
   let sourcesMap = [];
@@ -63,7 +63,7 @@ const genaratorWebTypes = () => {
     let stat = fs.lstatSync(`${basePath}/${componentDir}`);
     if (stat.isDirectory()) {
       let absolutePath = path.join(`${basePath}/${componentDir}`, `doc.md`);
-      if(argv === 'taro') {
+      if (argv === 'taro') {
         absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`);
       }
       let attributes = [];

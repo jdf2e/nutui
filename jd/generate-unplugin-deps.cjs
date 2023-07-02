@@ -47,7 +47,9 @@ export { ${element.name} };`;
     }
   });
 });
-outputFileEntry += components.map(name => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`).join('\n');
+outputFileEntry += components
+  .map((name) => `import { ${name} } from "./packages/${name.toLowerCase()}/index.mjs";`)
+  .join('\n');
 outputFileEntry += `\nexport { Locale } from "./packages/locale/lang";
 export function install(app) {
   const packages = [${components.join(',')}];
