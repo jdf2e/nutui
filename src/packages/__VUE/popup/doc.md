@@ -215,8 +215,6 @@ app.use(Popup);
 
 ## API
 
-> 当前组件内部透传了 [Icon 组件](#/zh-CN/component/icon) 和 [Overlay 组件](#/zh-CN/component/overlay)
-
 ### Props
 
 | 参数                   | 说明                                                                          | 类型             | 默认值        |

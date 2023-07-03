@@ -216,8 +216,6 @@ Specify the mount node through `teleport`
 
 ## API
 
-> The current component transmits [Icon Component](#/en-US/component/icon) and [Overlay Component](#/en-US/component/overlay) internally
-
 ### Props
 
 | Attribute              | Description                                                                                                                | Type             | Default       |
