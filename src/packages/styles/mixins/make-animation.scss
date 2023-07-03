@@ -1,8 +1,4 @@
-@mixin make-animation(
-  $keyframeName,
-  $timingFun: $animation-timing-fun,
-  $duration: $animation-duration
-) {
+@mixin make-animation($keyframeName, $timingFun: $animation-timing-fun, $duration: $animation-duration) {
   .#{$keyframeName}-enter-active,
   .#{$keyframeName}In,
   .#{$keyframeName}-leave-active,

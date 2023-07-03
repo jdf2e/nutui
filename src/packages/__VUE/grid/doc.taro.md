@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { Grid, GridItem } from '@nutui/nutui-taro';
 
@@ -18,6 +18,7 @@ app.use(GridItem);
 ### 基础用法
 
 :::demo
+
 ```html
 <template>
   <nut-grid>
@@ -34,15 +35,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 自定义列数
 
 :::demo
+
 ```html
 <template>
   <nut-grid :column-num="3">
@@ -54,15 +57,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 正方形格子
 
 :::demo
+
 ```html
 <template>
   <nut-grid :column-num="3" square>
@@ -74,15 +79,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 格子间距
 
 :::demo
+
 ```html
 <template>
   <nut-grid :gutter="10">
@@ -99,15 +106,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 内容翻转
 
 :::demo
+
 ```html
 <template>
   <nut-grid reverse>
@@ -120,15 +129,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 内容横向
 
 :::demo
+
 ```html
 <template>
   <nut-grid direction="horizontal">
@@ -141,15 +152,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 图标颜色/大小
 
 :::demo
+
 ```html
 <template>
   <nut-grid :column-num="3">
@@ -163,15 +176,17 @@ app.use(GridItem);
 <script lang="ts">
   import { Dongdong } from '@nutui/icons-vue-taro';
   export default {
-    components: { Dongdong },
+    components: { Dongdong }
   };
 </script>
 ```
+
 :::
 
 ### 自定义内容
 
 :::demo
+
 ```html
 <template>
   <nut-grid :border="false">
@@ -185,40 +200,42 @@ app.use(GridItem);
   </nut-grid>
 </template>
 ```
+
 :::
+
 ## API
+
 ### Grid Props
 
-| 参数          | 说明                                      | 类型                    | 默认值      |
-|---------------|------------------------------------------|------------------------|------------|
-| column-num    | 列数                                     | number \| string         | `4`        |
-| border        | 是否显示边框                               | boolean                | `true`     |
-| gutter        | 格子之间的间距，默认单位为 `px`               | number \| string        | `0`        |
-| center        | 是否将格子内容居中显示                      | boolean                | `true`      |
-| square        | 是否将格子固定为正方形                      | boolean                | `false`     |
-| reverse       | 内容翻转                                  | boolean                | `false`     |
-| direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
-| clickable     | 是否开启格子点击反馈                        | boolean                | `false`     |
+| 参数       | 说明                                      | 类型             | 默认值     |
+| ---------- | ----------------------------------------- | ---------------- | ---------- |
+| column-num | 列数                                      | number \| string | `4`        |
+| border     | 是否显示边框                              | boolean          | `true`     |
+| gutter     | 格子之间的间距，默认单位为 `px`           | number \| string | `0`        |
+| center     | 是否将格子内容居中显示                    | boolean          | `true`     |
+| square     | 是否将格子固定为正方形                    | boolean          | `false`    |
+| reverse    | 内容翻转                                  | boolean          | `false`    |
+| direction  | 格子内容排列的方向，可选值为 `horizontal` | string           | `vertical` |
+| clickable  | 是否开启格子点击反馈                      | boolean          | `false`    |
 
 ### GridItem Props
 
-| 参数                  | 说明                   | 类型               | 默认值      |
-|----------------------|----------------------|--------------------|------------|
-| text                 | 文字        | string             | -          |
+| 参数 | 说明 | 类型   | 默认值 |
+| ---- | ---- | ------ | ------ |
+| text | 文字 | string | -      |
 
 ### GridItem Slots
 
-| 名称                   | 说明                 |
-|-----------------------|----------------------|
-| default               | 自定义所有内容         |
-| text                  | 自定义文字            |
+| 名称    | 说明           |
+| ------- | -------------- |
+| default | 自定义所有内容 |
+| text    | 自定义文字     |
 
 ### GridItem Events
 
-| 事件名                 | 说明                   | 回调参数               |
-|-----------------------|-----------------------|-----------------------|
-| click                 | 点击格子时触发          | event: Event          |
-
+| 事件名 | 说明           | 回调参数     |
+| ------ | -------------- | ------------ |
+| click  | 点击格子时触发 | event: Event |
 
 ## 主题定制
 
@@ -226,11 +243,11 @@ app.use(GridItem);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     |
-| --------------------------------------- | -------------------------- |
-| --nut-grid-border-color| _#f5f6f7_ |
-| --nut-grid-item-content-padding| _16px 8px_ |
-| --nut-grid-item-content-bg-color| _var(--nut-white)_ |
-| --nut-grid-item-text-margin| _8px_ |
-| --nut-grid-item-text-color| _var(--nut-title-color2)_ |
-| --nut-grid-item-text-font-size| _var(--nut-font-size-1)_ |
+| 名称                             | 默认值                    |
+| -------------------------------- | ------------------------- |
+| --nut-grid-border-color          | _#f5f6f7_                 |
+| --nut-grid-item-content-padding  | _16px 8px_                |
+| --nut-grid-item-content-bg-color | _var(--nut-white)_        |
+| --nut-grid-item-text-margin      | _8px_                     |
+| --nut-grid-item-text-color       | _var(--nut-title-color2)_ |
+| --nut-grid-item-text-font-size   | _var(--nut-font-size-1)_  |

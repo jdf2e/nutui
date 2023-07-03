@@ -29,9 +29,12 @@ export default create({
       };
     });
 
-    watch(() => props.modelValue, (val) => {
-      innerValue.value = val
-    })
+    watch(
+      () => props.modelValue,
+      (val) => {
+        innerValue.value = val;
+      }
+    );
 
     const changeVal = (val: string | number | Array<string | number>, name: string | number, status = true) => {
       innerValue.value = val;
@@ -42,7 +45,7 @@ export default create({
     const updateVal = (name: string | number) => {
       if (props.accordion) {
         if (innerValue.value === name) {
-          changeVal("", name, false);
+          changeVal('', name, false);
         } else {
           changeVal(name, name, true);
         }
@@ -59,7 +62,7 @@ export default create({
           console.warn('[NutUI] <Collapse> 未开启手风琴模式时 v-model 应为数组');
         }
       }
-    }
+    };
 
     const isExpanded = (name: string | number) => {
       if (props.accordion) {

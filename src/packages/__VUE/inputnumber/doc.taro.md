@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { InputNumber } from '@nutui/nutui-taro';
 
@@ -14,14 +14,13 @@ const app = createApp();
 app.use(InputNumber);
 ```
 
-
 ### 基础用法
 
 初始化一个默认值
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-input-number v-model="value" />
 </template>
@@ -31,7 +30,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -40,7 +39,7 @@ app.use(InputNumber);
 
 ### 步长设置
 
-设置步长 `step` 5 
+设置步长 `step` 5
 
 :::demo
 
@@ -54,7 +53,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -77,7 +76,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(10);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -100,7 +99,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -123,7 +122,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -132,7 +131,7 @@ app.use(InputNumber);
 
 ### 支持小数点
 
-设置步长 `step` 0.1  `decimal-places` 小数保留1位
+设置步长 `step` 0.1 `decimal-places` 小数保留 1 位
 
 :::demo
 
@@ -146,12 +145,13 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
 
 :::
+
 ### 支持异步修改
 
 通过 `change` 事件和 `model-value` 进行异步修改
@@ -176,19 +176,20 @@ app.use(InputNumber);
         }, 2000);
       };
       return { ...toRefs(state), onChange };
-    },
+    }
   };
 </script>
 ```
 
 :::
+
 ### 自定义按钮大小
 
 :::demo
 
 ```html
 <template>
-  <nut-input-number v-model="value"  button-size="30" input-width="50" />
+  <nut-input-number v-model="value" button-size="30" input-width="50" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -196,12 +197,13 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
 
 :::
+
 ### 自定义按钮图标
 
 :::demo
@@ -225,7 +227,7 @@ app.use(InputNumber);
     setup() {
       const value = ref(1);
       return { value };
-    },
+    }
   };
 </script>
 ```
@@ -237,10 +239,10 @@ app.use(InputNumber);
 ### Props
 
 | 参数           | 说明                       | 类型             | 默认值  |
-|----------------|----------------------------|------------------|---------|
+| -------------- | -------------------------- | ---------------- | ------- |
 | v-model        | 初始值                     | string \| number | -       |
-| input-width    | 输入框宽度                 | string           | ``  |
-| button-size    | 操作符+、-尺寸             | string           | ``  |
+| input-width    | 输入框宽度                 | string           | ``      |
+| button-size    | 操作符+、-尺寸             | string           | ``      |
 | min            | 最小值限制                 | string \| number | `1`     |
 | max            | 最大值限制                 | string \| number | `9999`  |
 | step           | 步长                       | string \| number | `1`     |
@@ -250,15 +252,15 @@ app.use(InputNumber);
 
 ### Slots
 
-| 名称      | 说明           |
-|-----------|----------------|
+| 名称       | 说明           |
+| ---------- | -------------- |
 | left-icon  | 自定义左侧按钮 |
 | right-icon | 自定义右侧按钮 |
 
 ### Events
 
-| 事件名    | 说明                   | 回调参数                                    |
-|-----------|------------------------|---------------------------------------------|
+| 事件名    | 说明                   | 回调参数                                      |
+| --------- | ---------------------- | --------------------------------------------- |
 | add       | 点击增加按钮时触发     | `(event: Event)`                              |
 | reduce    | 点击减少按钮时触发     | `(event: Event)`                              |
 | overlimit | 点击不可用的按钮时触发 | `(event: Event,type:string (reduce or add) )` |
@@ -273,11 +275,11 @@ app.use(InputNumber);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称                                     | 默认值                     |
-|------------------------------------------|----------------------------|
+| ---------------------------------------- | -------------------------- |
 | --nut-inputnumber-icon-color             | _var(--nut-title-color)_   |
 | --nut-inputnumber-icon-void-color        | _var(--nut-disable-color)_ |
-| --nut-inputnumber-icon-size                | _20px_                     |
-| --nut-inputnumber-input-width                | _40px_                     |
+| --nut-inputnumber-icon-size              | _20px_                     |
+| --nut-inputnumber-input-width            | _40px_                     |
 | --nut-inputnumber-input-font-size        | _12px_                     |
 | --nut-inputnumber-input-font-color       | _var(--nut-title-color)_   |
 | --nut-inputnumber-input-background-color | _var(--nut-help-color)_    |

@@ -18,7 +18,7 @@ config.nav.map((item) => {
             sassFileStr += `@import '../../packages/${folderName}/index.scss';\n`;
           }
         })
-        .catch((error) => { })
+        .catch((error) => {})
     );
     if (!target) {
       sassFileStr += `@import '@nutui/icons-vue/dist/style_icon.css';\n`;

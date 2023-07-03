@@ -6,7 +6,7 @@ For content selection and switching
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui';
 
@@ -22,7 +22,7 @@ The left and right display can be controlled by setting `'position'`
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick1">
     <span><label>right</label></span>
@@ -49,7 +49,7 @@ The left and right display can be controlled by setting `'position'`
       const state = reactive({
         show1: false,
         width: '80%',
-        height: '100%',
+        height: '100%'
       });
 
       const handleClick1 = () => {
@@ -61,7 +61,7 @@ The left and right display can be controlled by setting `'position'`
         handleClick1
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -71,14 +71,18 @@ The left and right display can be controlled by setting `'position'`
 
 :::demo
 
-``` html
+```html
 <template>
   <nut-cell @click="handleClick3">
     <span><label>show</label></span>
   </nut-cell>
   <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
     <nut-side-navbar :show="show3">
-      <nut-side-navbar-item ikey="1" title="Face recognition" @click="handleClick4('Face recognition')"></nut-side-navbar-item>
+      <nut-side-navbar-item
+        ikey="1"
+        title="Face recognition"
+        @click="handleClick4('Face recognition')"
+      ></nut-side-navbar-item>
       <nut-side-navbar-item ikey="2" title="natural language processing"></nut-side-navbar-item>
       <nut-sub-side-navbar title="image understanding" ikey="3" :open="false">
         <nut-side-navbar-item ikey="4" title="Dish identification"></nut-side-navbar-item>
@@ -131,9 +135,7 @@ The left and right display can be controlled by setting `'position'`
         }, 2000);
       };
 
-      const handleClick4 = (msg: string) => {
-        
-      }
+      const handleClick4 = (msg: string) => {};
 
       return {
         ...toRefs(state),
@@ -141,7 +143,7 @@ The left and right display can be controlled by setting `'position'`
         handleClick4
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -151,37 +153,36 @@ The left and right display can be controlled by setting `'position'`
 
 ### SideNavbar Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| offset                 | Navigation indent width                                                    | number \| string  | `15`
+| Attribute | Description             | Type             | Default |
+| --------- | ----------------------- | ---------------- | ------- |
+| offset    | Navigation indent width | number \| string | `15`    |
 
 ### SubSideNavbar Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | string  | ``
-| ikey                 | Navigation unique identifier                                                    | number \| string  | ``
-| open                 | Whether navigation is expanded by default                                                    | boolean  | `true`
+| Attribute | Description                               | Type             | Default |
+| --------- | ----------------------------------------- | ---------------- | ------- |
+| title     | Navigation title                          | string           | ``      |
+| ikey      | Navigation unique identifier              | number \| string | ``      |
+| open      | Whether navigation is expanded by default | boolean          | `true`  |
 
 ### SideNavbarItem Props
 
-| Attribute                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| title                 | Navigation title                                                    | string  | `15`
-| ikey                 | Navigation unique identifier                                                    | number \| string  | ``
-
+| Attribute | Description                  | Type             | Default |
+| --------- | ---------------------------- | ---------------- | ------- |
+| title     | Navigation title             | string           | `15`    |
+| ikey      | Navigation unique identifier | number \| string | ``      |
 
 ### SubSideNavbar Events
 
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
-| title-click | Navigation Click | - |
+| Event       | Description      | Arguments |
+| ----------- | ---------------- | --------- |
+| title-click | Navigation Click | -         |
 
 ### SideNavbarItem Events
 
-| Event  | Description     | Arguments    |
-|-------|----------|-------------|
-| click | Navigation Click | - |
+| Event | Description      | Arguments |
+| ----- | ---------------- | --------- |
+| click | Navigation Click | -         |
 
 ## Theming
 
@@ -189,22 +190,20 @@ The left and right display can be controlled by setting `'position'`
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --------------------------------------- | -------------------------- |
-| --nut-sidenavbar-content-bg-color| _var(--nut-white)_  |
-| --nut-sidenavbar-sub-title-border-color| _#f6f6f6_  |
-| --nut-sidenavbar-sub-title-bg-color| _#f6f6f6_  |
-| --nut-sidenavbar-sub-title-font-size| _var(--nut-font-size-large)_  |
-| --nut-sidenavbar-sub-title-radius| _0_  |
-| --nut-sidenavbar-sub-title-border| _0_  |
-| --nut-sidenavbar-sub-title-width| _100%_  |
-| --nut-sidenavbar-sub-title-height| _40px_  |
-| --nut-sidenavbar-sub-title-text-line-height| _40px_  |
-| --nut-sidenavbar-sub-title-text-color| _var(--nut-title-color)_  |
-| --nut-sidenavbar-item-title-color| _#333_  |
-| --nut-sidenavbar-item-title-bg-color| _var(--nut-white)_  |
-| --nut-sidenavbar-item-height| _40px_  |
-| --nut-sidenavbar-item-line-height| _40px_  |
-| --nut-sidenavbar-item-font-size| _16px_  |
-
-
+| Name                                        | Default Value                |
+| ------------------------------------------- | ---------------------------- |
+| --nut-sidenavbar-content-bg-color           | _var(--nut-white)_           |
+| --nut-sidenavbar-sub-title-border-color     | _#f6f6f6_                    |
+| --nut-sidenavbar-sub-title-bg-color         | _#f6f6f6_                    |
+| --nut-sidenavbar-sub-title-font-size        | _var(--nut-font-size-large)_ |
+| --nut-sidenavbar-sub-title-radius           | _0_                          |
+| --nut-sidenavbar-sub-title-border           | _0_                          |
+| --nut-sidenavbar-sub-title-width            | _100%_                       |
+| --nut-sidenavbar-sub-title-height           | _40px_                       |
+| --nut-sidenavbar-sub-title-text-line-height | _40px_                       |
+| --nut-sidenavbar-sub-title-text-color       | _var(--nut-title-color)_     |
+| --nut-sidenavbar-item-title-color           | _#333_                       |
+| --nut-sidenavbar-item-title-bg-color        | _var(--nut-white)_           |
+| --nut-sidenavbar-item-height                | _40px_                       |
+| --nut-sidenavbar-item-line-height           | _40px_                       |
+| --nut-sidenavbar-item-font-size             | _16px_                       |

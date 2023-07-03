@@ -2,6 +2,7 @@ html {
   height: 100vh;
 }
 
-body, #app {
+body,
+#app {
   height: 100%;
 }

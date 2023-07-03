@@ -7,14 +7,12 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Backtop } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Backtop);
 ```
-
 
 ### 基础用法
 
@@ -50,20 +48,19 @@ app.use(Backtop);
   </nut-backtop>
 </view>
 <script>
-export default {
-  setup() {
-    const click = () => {
-      console.log('click');
-    };
+  export default {
+    setup() {
+      const click = () => {
+        console.log('click');
+      };
 
-    return {
-      click
-    };
-  }
-};
+      return {
+        click
+      };
+    }
+  };
 </script>
-<style lang="scss">
-.demo {
+<style>
   .text-data {
     margin: 0 auto;
     margin-top: 15px;
@@ -80,35 +77,33 @@ export default {
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
   }
-}
 </style>
 ```
 
-
-
 ### API
 
-### Props  
+### Props
 
-| 参数            | 说明                 | 类型    | 默认值  |
-|-----------------|------------------------------------------|---------|---------|
-| height           | 滚动区域的高度         | string | `100vh`       |
-| bottom         | 距离页面底部距离    | number  | `20`       |
-| right        | 距离页面右侧距离      | number |  `10`  |
-| distance     | 页面垂直滚动多高后出现   | number  | `200`      |
-| z-index         | 设置组件页面层级   | number  | `10`       |                                          
+| 参数     | 说明                   | 类型   | 默认值  |
+| -------- | ---------------------- | ------ | ------- |
+| height   | 滚动区域的高度         | string | `100vh` |
+| bottom   | 距离页面底部距离       | number | `20`    |
+| right    | 距离页面右侧距离       | number | `10`    |
+| distance | 页面垂直滚动多高后出现 | number | `200`   |
+| z-index  | 设置组件页面层级       | number | `10`    |
 
 ### Events
-| 事件名  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| click | 按钮点击时触发事件 | `event: MouseEvent` |
+
+| 事件名 | 说明               | 回调参数            |
+| ------ | ------------------ | ------------------- |
+| click  | 按钮点击时触发事件 | `event: MouseEvent` |
 
 ### Slots
 
-| 名称    | 说明         |
-|---------|--------------|
-| content | 	滚动容器中包含的内容 |
-| icon | 	返回到顶部，按钮内容 |
+| 名称    | 说明                 |
+| ------- | -------------------- |
+| content | 滚动容器中包含的内容 |
+| icon    | 返回到顶部，按钮内容 |
 
 ## 主题定制
 
@@ -116,6 +111,6 @@ export default {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                    | 默认值                     | 
-| --------------------------------------- | -------------------------- | 
-| --nut-backtop-border-color       | _#e0e0e0_        |
+| 名称                       | 默认值    |
+| -------------------------- | --------- |
+| --nut-backtop-border-color | _#e0e0e0_ |

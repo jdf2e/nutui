@@ -8,8 +8,6 @@ https://nutui.jd.com/#/zh-CN/guide/contributing
 
 **这个 PR 做了什么?** (简要描述所做更改)
 
-
-
 **这个 PR 是什么类型?** (至少选择一个)
 
 - [ ] 错误修复(Bugfix) issue id #

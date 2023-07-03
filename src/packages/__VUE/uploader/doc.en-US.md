@@ -6,7 +6,7 @@ Used to upload local pictures or files to the server.
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { Uploader } from '@nutui/nutui';
 
@@ -14,110 +14,118 @@ const app = createApp();
 app.use(Uploader);
 ```
 
-
 ### Basic Usage
 
 :::demo
+
 ```html
 <template>
   <nut-uploader url="https://xxxx"></nut-uploader>
 </template>
 ```
+
 :::
+
 ### Upload status
 
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
 </template>
 <script lang="ts">
-import { reactive } from 'vue';
-export default {
-  setup() {
-     const uploadUrl = 'https://xxxxx';
-     const defaultFileList = reactive([
-      {
-        name: 'file 1.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'success',
-        message: 'upload success',
-        type: 'image'
-      },
-      {
-        name: 'file 2.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'error',
-        message: 'upload error',
-        type: 'image'
-      },
-      {
-        name: 'file 3.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'uploading',
-        message: 'uploading...',
-        type: 'image'
-      }
-    ]);
-     return {
-      uploadUrl,
-      defaultFileList
-    };
-  }
-}
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const uploadUrl = 'https://xxxxx';
+      const defaultFileList = reactive([
+        {
+          name: 'file 1.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'success',
+          message: 'upload success',
+          type: 'image'
+        },
+        {
+          name: 'file 2.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'error',
+          message: 'upload error',
+          type: 'image'
+        },
+        {
+          name: 'file 3.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'uploading',
+          message: 'uploading...',
+          type: 'image'
+        }
+      ]);
+      return {
+        uploadUrl,
+        defaultFileList
+      };
+    }
+  };
 </script>
 ```
+
 :::
+
 ### Basic usage - upload list display
 
 :::demo
+
 ```html
 <template>
-  <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type='list'>
+  <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
     <nut-button type="success" size="small">Upload files</nut-button>
   </nut-uploader>
 </template>
 <script lang="ts">
-import { reactive } from 'vue';
-export default {
-  setup() {
-     const uploadUrl = 'https://xxxxx';
-     const defaultFileList = reactive([
-      {
-        name: 'file 1.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'success',
-        message: 'upload success',
-        type: 'image'
-      },
-      {
-        name: 'file 2.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'error',
-        message: 'upload error',
-        type: 'image'
-      },
-      {
-        name: 'file 3.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'uploading',
-        message: 'uploading...',
-        type: 'image'
-      }
-    ]);
-     return {
-      uploadUrl,
-      defaultFileList
-    };
-  }
-}
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const uploadUrl = 'https://xxxxx';
+      const defaultFileList = reactive([
+        {
+          name: 'file 1.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'success',
+          message: 'upload success',
+          type: 'image'
+        },
+        {
+          name: 'file 2.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'error',
+          message: 'upload error',
+          type: 'image'
+        },
+        {
+          name: 'file 3.png',
+          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+          status: 'uploading',
+          message: 'uploading...',
+          type: 'image'
+        }
+      ]);
+      return {
+        uploadUrl,
+        defaultFileList
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Custom upload style
 
 :::demo
+
 ```html
 <template>
   <nut-uploader url="https://xxxx">
@@ -125,100 +133,115 @@ export default {
   </nut-uploader>
 </template>
 ```
+
 :::
+
 ### Custom upload uses default progress bar
 
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" @progress="onProgress">
     <nut-button type="success" size="small">Upload files</nut-button>
   </nut-uploader>
   <br />
-  <nut-progress :percentage="progressPercentage"
+  <nut-progress
+    :percentage="progressPercentage"
     stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-    :status="progressPercentage==100?'':'active'">
+    :status="progressPercentage==100?'':'active'"
+  >
   </nut-progress>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-import "@nutui/nutui/dist/packages/toast/style";
-export default {
-  setup() {
-     const uploadUrl = 'https://xxxxx';
-     const progressPercentage = ref<string | number>(0);
-     const onProgress = ({ event, options, percentage }: any) => {
+  import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup() {
+      const uploadUrl = 'https://xxxxx';
+      const progressPercentage = ref<string | number>(0);
+      const onProgress = ({ event, options, percentage }: any) => {
         progressPercentage.value = percentage;
-        showToast.text('progress 事件触发'+ percentage);
-     };
-     return {
-      uploadUrl,
-      onProgress,
-      progressPercentage,
-    };
-  }
-}
+        showToast.text('progress 事件触发' + percentage);
+      };
+      return {
+        uploadUrl,
+        onProgress,
+        progressPercentage
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Directly activate the camera (effective on the mobile terminal)
-    
+
 :::demo
+
 ```html
 <template>
   <nut-uploader url="https://xxxx" capture></nut-uploader>
 </template>
 ```
+
 :::
+
 ### Limit the number of uploads to 5
 
 :::demo
+
 ```html
 <template>
   <nut-uploader url="https://xxxx" multiple maximum="5"></nut-uploader>
 </template>
 ```
+
 :::
 
 ### Limit upload size (up to 50kb per file)
 
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-import "@nutui/nutui/dist/packages/toast/style";
-export default {
-  setup() {
+  import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup() {
       const uploadUrl = 'https://xxxxx';
       const onOversize = (files: File[]) => {
         showToast.text('oversize limit upload size (up to 50kb per file)');
       };
-     return {
-      uploadUrl,
-      onOversize,
-    };
-  }
-}
+      return {
+        uploadUrl,
+        onOversize
+      };
+    }
+  };
 </script>
 ```
+
 :::
+
 ### Image compression (handled in the beforeupload hook)
 
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"></nut-uploader>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
+  import { ref } from 'vue';
+  export default {
+    setup() {
       const uploadUrl = 'https://xxxxx';
       const fileToDataURL = (file: Blob): Promise<any> => {
         return new Promise((resolve) => {
@@ -253,44 +276,48 @@ export default {
         const f = await new File([blob], fileName);
         return [f];
       };
-     return {
-      uploadUrl,
-      beforeUpload,
-    };
-  }
-}
+      return {
+        uploadUrl,
+        beforeUpload
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Custom data FormData , headers
 
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const uploadUrl = 'https://xxxxx';
-    const formData = {
-      custom: 'test'
-    };
-    return {
-      uploadUrl,
-      formData
-    };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const uploadUrl = 'https://xxxxx';
+      const formData = {
+        custom: 'test'
+      };
+      return {
+        uploadUrl,
+        formData
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Customize XHR upload(before-xhr-upload）
 
 :::demo
+
 ```html
 <!-- When the upload method is put, upload the source file stream directly -->
 <template>
@@ -298,29 +325,31 @@ export default {
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
+  import { ref } from 'vue';
+  export default {
+    setup() {
       // source file https://github.com/jdf2e/nutui/blob/v4/src/packages/__VUE/uploader/uploader.ts#L51
-     const beforeXhrUpload=(xhr:XMLHttpRequest,options:any)=>{
+      const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
         if (options.method.toLowerCase() == 'put') {
           xhr.send(options.sourceFile);
-        }else{
+        } else {
           xhr.send(options.formData);
         }
-     }
-     return {
-      beforeXhrUpload
-    };
-  }
-}
+      };
+      return {
+        beforeXhrUpload
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Once the file is selected, manually perform the upload via the button
-    
+
 :::demo
+
 ```html
 <template>
   <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
@@ -329,43 +358,48 @@ export default {
   <nut-button type="danger" size="small" @click="clearUpload">Clear upload</nut-button>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const uploadUrl = 'https://xxxxx';
-    const uploadRef = ref<any>(null);
-    const submitUpload = () => {
-      uploadRef.value.submit();
-    };
-    const clearUpload = () => {
-      uploadRef.value.clearUploadQueue();
-    };
-    return {
-      uploadUrl,
-      uploadRef,
-      submitUpload,
-      clearUpload
-    };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const uploadUrl = 'https://xxxxx';
+      const uploadRef = ref<any>(null);
+      const submitUpload = () => {
+        uploadRef.value.submit();
+      };
+      const clearUpload = () => {
+        uploadRef.value.clearUploadQueue();
+      };
+      return {
+        uploadUrl,
+        uploadRef,
+        submitUpload,
+        clearUpload
+      };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Disabled state
 
 :::demo
+
 ```html
 <template>
   <nut-uploader disabled></nut-uploader>
 </template>
 ```
+
 :::
+
 ## API
+
 ### Props
 
 | Attribute         | Description                                                                                                                                      | Type                                         | Default            |
-|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|--------------------|
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- | ------------------ |
 | auto-upload       | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                | boolean                                      | `true`             |
 | name              | The name of the `input` tag `name`, the file parameter name sent to the background                                                               | string                                       | `"file"`           |
 | url               | The interface address of the upload server                                                                                                       | string                                       | -                  |
@@ -378,7 +412,7 @@ export default {
 | maximize          | You can set the maximum upload file size (bytes)                                                                                                 | number \| string                             | `Number.MAX_VALUE` |
 | maximum           | File upload limit                                                                                                                                | number \| string                             | `1`                |
 | clear-input       | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file                                    | boolean                                      | `true`             |
-| accept            | File types that can be accepted. See [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)       | string                                       | *                  |
+| accept            | File types that can be accepted. See [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)       | string                                       | \*                 |
 | headers           | Set request headers                                                                                                                              | object                                       | `{} `              |
 | data              | Uploading extra params or function which can return uploading extra params                                                                       | object                                       | {}                 |
 | upload-icon-size  | Upload area [icon size] (#/en-US/component/icon) size, such as `20px` `2em` `2rem`                                                               | string \| object                             | -                  |
@@ -391,23 +425,22 @@ export default {
 | before-xhr-upload | Customize the method when uploading XHR                                                                                                          | Function(xhr，option)                        | `null`             |
 | before-delete     | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file,fileList): boolean `丨Promise` | -                  |
 
-
 ### FileItem
 
-| Attribute  | Description                                                        | Default                           |
-|------------|--------------------------------------------------------------------|-----------------------------------|
-| status     | File status value, optional  `ready`,`uploading`,`success`,`error` | `ready`                           |
-| uid        | Unique ID of the file                                              | `new Date().getTime().toString()` |
-| name       | File name                                                          | -                                 |
-| url        | File path                                                          | -                                 |
-| type       | File type                                                          | `"image/jpeg" `                   |
-| formData   | Upload the required data                                           | `new FormData()`                  |
-| percentage | Upload percentage                                                  | `0`                               |
+| Attribute  | Description                                                       | Default                           |
+| ---------- | ----------------------------------------------------------------- | --------------------------------- |
+| status     | File status value, optional `ready`,`uploading`,`success`,`error` | `ready`                           |
+| uid        | Unique ID of the file                                             | `new Date().getTime().toString()` |
+| name       | File name                                                         | -                                 |
+| url        | File path                                                         | -                                 |
+| type       | File type                                                         | `"image/jpeg" `                   |
+| formData   | Upload the required data                                          | `new FormData()`                  |
+| percentage | Upload percentage                                                 | `0`                               |
 
 ### Events
 
 | Event           | Description                                              | Arguments                        |
-|-----------------|----------------------------------------------------------|----------------------------------|
+| --------------- | -------------------------------------------------------- | -------------------------------- |
 | start           | File upload starts                                       | `options`                        |
 | progress        | The progress of the file upload                          | `{event,option,percentage}`      |
 | oversize        | Triggered when the file size exceeds the limit           | `files`                          |
@@ -420,7 +453,7 @@ export default {
 ### Uploader Slots
 
 | Name        | Description                          |
-|-------------|--------------------------------------|
+| ----------- | ------------------------------------ |
 | default     | Default slot                         |
 | upload-icon | Custom Uploader Button Center `icon` |
 | delete-icon | Custom Right Delete Button           |
@@ -430,7 +463,7 @@ export default {
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Uploader instance and call instance methods.
 
 | Name             | Description                                                                                 | Arguments | Return value |
-|------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
+| ---------------- | ------------------------------------------------------------------------------------------- | --------- | ------------ |
 | submit           | Manual upload mode, perform upload operation                                                | -         | -            |
 | clearUploadQueue | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
 
@@ -441,7 +474,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                          | Default Value |
-|-------------------------------|---------------|
+| ----------------------------- | ------------- |
 | --nut-uploader-picture-width  | _100px_       |
 | --nut-uploader-picture-height | _100px_       |
 | --nut-uploader-background     | _#f7f8fa_     |

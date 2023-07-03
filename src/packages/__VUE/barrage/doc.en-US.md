@@ -1,19 +1,18 @@
 # Barrage bullet chat
 
-###  Intro
+### Intro
 
 It is used for the rotation display of words and phrases, which is suitable for video or other similar needs.
 
 ### Install
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 import { Barrage } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Barrage);
 ```
-
 
 ### Basic usage
 
@@ -28,25 +27,25 @@ app.use(Barrage);
   </div>
 </template>
 <script>
-import { ref } from 'vue';
-export default {
-  props: {},
-  setup() {
-    const inputVal = ref('');
-    const danmu = ref();
-    let list = ref(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff']);
-    function addDanmu() {
-      let n = Math.random();
-      danmu.value.add('randomly——' + String(n).substr(2, 10));
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const inputVal = ref('');
+      const danmu = ref();
+      let list = ref(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff']);
+      function addDanmu() {
+        let n = Math.random();
+        danmu.value.add('randomly——' + String(n).substr(2, 10));
+      }
+      return {
+        inputVal,
+        danmu,
+        list,
+        addDanmu
+      };
     }
-    return {
-      inputVal,
-      danmu,
-      list,
-      addDanmu
-    };
-  }
-};
+  };
 </script>
 ```
 
@@ -71,22 +70,21 @@ export default {
 
 :::
 
-
 ## API
 
 ### Props
 
-| Parameter | Description | Type | Default |
-|--------------|---------------------------------- |-------|------------------|
-| danmu | Danmaku list data | Array | `[]` |
-| frequency | the time interval of each barrage in the visible area | number | `500` |
-| speeds | scrolling time of each barrage | number | `5000` |
-| rows | Number of bullet chatting lines, displayed in several lines | number | `3` |
-| top | vertical distance of the barrage | number | `10` |
-| loop | Whether to play in a loop | boolean | `true` |
+| Parameter | Description                                                 | Type    | Default |
+| --------- | ----------------------------------------------------------- | ------- | ------- |
+| danmu     | Danmaku list data                                           | Array   | `[]`    |
+| frequency | the time interval of each barrage in the visible area       | number  | `500`   |
+| speeds    | scrolling time of each barrage                              | number  | `5000`  |
+| rows      | Number of bullet chatting lines, displayed in several lines | number  | `3`     |
+| top       | vertical distance of the barrage                            | number  | `10`    |
+| loop      | Whether to play in a loop                                   | boolean | `true`  |
 
 ### Events
 
-| Event Name | Description | Callback Parameters |
-|--------|----------------|--------------|
-| add | add data(used via ref instance) | - |
+| Event Name | Description                     | Callback Parameters |
+| ---------- | ------------------------------- | ------------------- |
+| add        | add data(used via ref instance) | -                   |

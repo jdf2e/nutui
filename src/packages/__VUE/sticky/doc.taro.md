@@ -9,7 +9,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Sticky } from '@nutui/nutui-taro';
 
@@ -23,16 +22,16 @@ app.use(Sticky);
 
 ```html
 <template>
-    <div class="demo">
-        <nut-sticky top="57">
-            <nut-button type="primary">吸顶按钮</nut-button>
-        </nut-sticky>
-    </div>
+  <div class="demo">
+    <nut-sticky top="57">
+      <nut-button type="primary">吸顶按钮</nut-button>
+    </nut-sticky>
+  </div>
 </template>
-<style lang="scss">
-    .demo {
-        height: 200vh !important;
-    }
+<style>
+  .demo {
+    height: 200vh !important;
+  }
 </style>
 ```
 
@@ -44,15 +43,15 @@ app.use(Sticky);
 
 ```html
 <template>
-    <div class="demo">
-        <nut-sticky top="120">
-            <nut-button type="primary">吸顶距离120px</nut-button>
-        </nut-sticky>
-    </div>
+  <div class="demo">
+    <nut-sticky top="120">
+      <nut-button type="primary">吸顶距离120px</nut-button>
+    </nut-sticky>
+  </div>
 </template>
-<style lang="scss">
+<style>
   .demo {
-      height: 200vh !important;
+    height: 200vh !important;
   }
 </style>
 ```
@@ -63,9 +62,9 @@ app.use(Sticky);
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| position         | 吸附位置（`top`、`bottom`）               | string | `top`                |
-| top         | 吸顶距离               | number | `0`                |
-| z-index         | 吸附时的层级               | number | `2000`               |
-| parent-height         | 设置粘性元素父级高度               | number | `667`               |
+| 参数          | 说明                        | 类型   | 默认值 |
+| ------------- | --------------------------- | ------ | ------ |
+| position      | 吸附位置（`top`、`bottom`） | string | `top`  |
+| top           | 吸顶距离                    | number | `0`    |
+| z-index       | 吸附时的层级                | number | `2000` |
+| parent-height | 设置粘性元素父级高度        | number | `667`  |

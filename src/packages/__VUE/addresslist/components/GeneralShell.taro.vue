@@ -36,7 +36,7 @@
     </div>
     <template #right>
       <slot name="swipe-right-btn">
-        <nut-button shape="square" style="height: 100%;" type="danger" @click="swipeDelClick">删除</nut-button>
+        <nut-button shape="square" style="height: 100%" type="danger" @click="swipeDelClick">删除</nut-button>
       </slot>
     </template>
   </nut-swipe>
