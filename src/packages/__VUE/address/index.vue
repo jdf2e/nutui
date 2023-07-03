@@ -327,7 +327,7 @@ export default create({
       for (let i = tab + 2; i < 4; i++) {
         selectedRegion.value.splice(i, 1);
       }
-      if (tab < 3) {
+      if (tab < 4) {
         tabIndex.value = tab + 1;
 
         lineAnimation();
