@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, nextTick } from 'vue';
 import { VueWrapper, DOMWrapper } from '@vue/test-utils';
+import { Mock, vi } from 'vitest';
 
 function getTouch(el: Element | Window, x: number, y: number) {
   return {
@@ -80,8 +81,8 @@ export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
 }
 
 // mock element method
-export const mockElementMethod = (element: any, method: string) => {
+export function mockElementMethod(element: any, method: string): Mock {
   const fn = vi.fn();
   element.prototype[method] = fn;
   return fn;
-};
+}
