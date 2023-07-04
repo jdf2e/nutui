@@ -346,6 +346,8 @@ export default create({
 
         callBackParams.next = tabName.value[tabIndex.value];
         callBackParams.value = item;
+
+        scrollTo();
       } else {
         handClose();
         emit('update:modelValue');

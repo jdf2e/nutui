@@ -323,6 +323,8 @@ export default create({
       if (regionData[tab + 1]?.length > 0) {
         tabIndex.value = tab + 1;
 
+        lineAnimation();
+
         callBackParams.next = tabName.value[tabIndex.value];
         callBackParams.value = item;
       } else {
