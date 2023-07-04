@@ -119,24 +119,24 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref, h, PropType } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
 import Elevator from '../elevator/index.vue';
-const { componentName, create, translate } = createComponent('address');
+const { create, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
 
 export default create({
   components: {
+    [Popup.name]: Popup,
+    [Elevator.name]: Elevator,
     Location,
     Location2,
     Check,
     Close,
-    Left,
-    [Popup.name]: Popup,
-    [Elevator.name]: Elevator
+    Left
   },
   inheritAttrs: false,
   props: {

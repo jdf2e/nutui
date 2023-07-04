@@ -51,11 +51,13 @@ export async function mockScrollTop(value: number) {
   return nextTick();
 }
 
+// task sleep
 export function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
   });
 }
+
 export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
   let x = relativeX;
   let y = relativeY;
@@ -76,3 +78,10 @@ export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
   trigger(el, 'touchmove', x, y);
   trigger(el, 'touchend', x, y);
 }
+
+// mock element method
+export const mockElementMethod = (element: any, method: string) => {
+  const fn = vi.fn();
+  element.prototype[method] = fn;
+  return fn;
+};

@@ -1,11 +1,7 @@
 import { config, mount } from '@vue/test-utils';
 import Countup from '../index.vue';
 import { nextTick, reactive, ref, toRefs } from 'vue';
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+import { sleep } from '@/packages/utils/unit';
 
 // 所有的测试用例之前执行一次
 beforeAll(() => {

@@ -75,8 +75,7 @@ test('first render', async () => {
   const wrapper = mount(Picker, {
     props: {
       visible: true,
-      listData: simpleColumns,
-      teleportDisable: false
+      listData: simpleColumns
     }
   });
   await nextTick();
@@ -88,8 +87,7 @@ test('simple list-data confirm & close event', async () => {
   const wrapper = mount(Picker, {
     props: {
       visible: true,
-      columns: simpleColumns,
-      teleportDisable: false
+      columns: simpleColumns
     }
   });
   await nextTick();
@@ -108,8 +106,7 @@ test('simple columns default checked item', async () => {
     props: {
       modelValue: ['WuXi'],
       visible: true,
-      columns: simpleColumns,
-      teleportDisable: false
+      columns: simpleColumns
     }
   });
   await nextTick();
@@ -131,8 +128,7 @@ test('the default value is 0', async () => {
         { text: 'Empt', value: '' },
         { text: 'undefined', value: undefined },
         { text: '0', value: 0 }
-      ],
-      teleportDisable: false
+      ]
     }
   });
 
@@ -150,8 +146,7 @@ test('multiple columns render', async () => {
   const wrapper = mount(Picker, {
     props: {
       visible: true,
-      columns: multipleColumns,
-      teleportDisable: false
+      columns: multipleColumns
     }
   });
   await nextTick();

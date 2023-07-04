@@ -3,12 +3,7 @@ import { vi } from 'vitest';
 import Swiper from '../index.vue';
 import SwiperItem from './../../swiperitem/index.vue';
 import { nextTick, toRefs, reactive } from 'vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+import { sleep } from '@/packages/utils/unit';
 
 test('should render width and height', async () => {
   const wrapper = mount({

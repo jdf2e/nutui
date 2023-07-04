@@ -234,7 +234,7 @@ app.use(Popup);
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                               | boolean          | `true`        |
 | round                  | 是否显示圆角                                                                  | boolean          | `false`       |
 | teleport               | 指定挂载节点                                                                  | string           | `"body"`      |
-| teleport-disable       | 是否允许挂载节点                                                              | boolean          | `false`       |
+| teleport-disable       | 是否挂载节点，false 不挂载，true 挂载                                         | boolean          | `false`       |
 | overlay-class          | 自定义遮罩层类名                                                              | string           | ''            |
 | overlay-style          | 自定义遮罩层样式                                                              | string           | ''            |
 | safe-area-inset-bottom | 是否开启 `iphone` 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 | boolean          | `false`       |

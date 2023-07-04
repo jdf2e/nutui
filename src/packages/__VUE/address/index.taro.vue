@@ -34,7 +34,7 @@
       <view class="nut-address__custom" v-if="['custom', 'custom2'].includes(privateType)">
         <view class="nut-address__region" ref="tabRegion">
           <view
-            :class="['nut-address__region-item ', index == tabIndex ? 'active' : '']"
+            :class="['nut-address__region-item', index == tabIndex ? 'active' : '']"
             v-for="(item, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, index)"

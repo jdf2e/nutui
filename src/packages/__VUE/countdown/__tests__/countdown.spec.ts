@@ -1,17 +1,8 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick, toRefs, reactive } from 'vue';
 import Countdown from '../index.vue';
 import Button from '../../button/index.vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { sleep } from '@/packages/utils/unit';
 
 test('endTime props', async () => {
   const wrapper = mount(Countdown, {
