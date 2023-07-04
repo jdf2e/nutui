@@ -4,9 +4,11 @@
   .nut-number-keyboard {
     background-color: $dark-background4;
 
-    .nut-number-keyboard__body .nut-key__wrapper .key {
-      background-color: $dark-background5;
-      color: $dark-color;
+    .nut-key__wrapper {
+      .nut-key {
+        color: $dark-color;
+        background-color: $dark-background5;
+      }
     }
   }
 }

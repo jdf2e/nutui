@@ -16,7 +16,7 @@
   padding: 10px 25px;
   &--disabled {
     .nut-textarea__textarea,
-    .nut-textarea____limit {
+    .nut-textarea__limit {
       cursor: not-allowed;
       color: $textarea-disabled-color !important;
     }
