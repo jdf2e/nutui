@@ -1,8 +1,9 @@
 <script lang="ts">
-import { reactive, computed, h, onMounted, onUnmounted, ref, Ref, unref, PropType, watch, CSSProperties } from 'vue';
+import { computed, h, ref, PropType, watch, CSSProperties, watchEffect, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { getScrollParent } from '@/packages/utils/useScrollParent';
 import { useRect } from '@/packages/utils/useRect';
-const { componentName, create } = createComponent('sticky');
+const { create } = createComponent('sticky');
 export default create({
   props: {
     position: {
@@ -28,138 +29,127 @@ export default create({
   emits: ['change', 'scroll'],
 
   setup(props, { emit, slots }) {
-    const root = ref<HTMLElement>();
-    const state = reactive({
-      width: 0,
-      height: 0,
-      fixed: false,
-      transform: 0
+    const rootRef = ref<HTMLElement>();
+    const stickyRef = ref<HTMLElement>();
+    const isFixed = ref(false);
+    const threshold = computed(() => {
+      return props.position === 'top' ? Number(props.top) : Number(props.bottom);
     });
+    const stickyStyle = ref<CSSProperties>({
+      [props.position]: `${threshold.value}px`,
+      zIndex: Number(props.zIndex)
+    });
+    const rootStyle = ref<CSSProperties>({});
+    watchEffect(() => {
+      if (props.position === 'top') return;
+      const containerEle = props.container as HTMLElement;
 
-    const rootStyle = computed(() => {
-      const { fixed, width, height } = state;
-
-      if (fixed) {
-        return {
-          width: `${width}px`,
-          height: `${height}px`
-        };
+      if (!rootRef.value && !containerEle) return;
+      const rootRect = useRect(rootRef);
+      const containerRect = useRect(containerEle);
+      const clientHeight = document.documentElement.clientHeight;
+      const stCurrent = stickyRef.value as Element;
+      const stickyRect = useRect(stCurrent);
+      let fixed = clientHeight - threshold.value < rootRect.bottom;
+      if (containerEle) {
+        fixed =
+          containerRect.bottom > clientHeight - threshold.value - stickyRect.height &&
+          clientHeight - threshold.value - stickyRect.height > containerRect.top;
       }
+      const defaultPostVal = fixed ? 'fixed' : 'inherit';
+      stickyStyle.value.position = defaultPostVal;
+      isFixed.value = fixed;
     });
+    const handleScroll = () => {
+      const containerEle = props.container as HTMLElement;
 
-    const stickyStyle = computed(() => {
-      if (!state.fixed) return;
+      if (!rootRef.value && !containerEle) return;
 
-      const style: CSSProperties = {
-        width: `${state.width}px`,
-        height: `${state.height}px`,
-        [props.position]: `${offset.value}px`,
-        zIndex: +props.zIndex
+      const rootRect = useRect(rootRef);
+      const stCurrent = stickyRef.value as Element;
+      const stickyRect = useRect(stCurrent);
+      const containerRect = useRect(containerEle);
+      if (rootRect.height) {
+        rootStyle.value.height = rootRect.height;
+      }
+
+      const getFixed = (): { position: 'fixed' | undefined; fixed: boolean } => {
+        let fixed = false;
+        if (props.position === 'top') {
+          fixed = containerEle
+            ? threshold.value > rootRect.top && containerRect.bottom > 0
+            : threshold.value > rootRect.top;
+        } else {
+          const clientHeight = document.documentElement.clientHeight;
+          fixed = containerEle
+            ? containerRect.bottom > 0 && clientHeight - threshold.value - stickyRect.height > containerRect.top
+            : clientHeight - threshold.value < rootRect.bottom;
+        }
+        return {
+          position: fixed ? 'fixed' : undefined,
+          fixed
+        };
       };
 
-      if (state.transform) style.transform = `translate3d(0, ${state.transform}px, 0)`;
+      const getTransform = (): CSSProperties => {
+        if (props.position === 'top') {
+          if (containerEle) {
+            const diff = containerRect.bottom - threshold.value - stickyRect.height;
+            const transform = diff < 0 ? diff : 0;
+            return { transform: `translate3d(0, ${transform}px, 0)` };
+          }
+        } else {
+          if (containerEle) {
+            const clientHeight = document.documentElement.clientHeight;
+            const diff = containerRect.bottom - (clientHeight - threshold.value);
+            const transform = diff < 0 ? diff : 0;
+            return { transform: `translate3d(0, ${transform}px, 0)` };
+          }
+        }
+        return {};
+      };
 
-      return style;
+      const fixed = getFixed();
+      stickyStyle.value = {
+        ...stickyStyle.value,
+        ...getTransform(),
+        position: fixed.position
+      };
+      isFixed.value = fixed.fixed;
+    };
+    watch(
+      () => isFixed,
+      (val) => {
+        emit('change', val.value);
+      }
+    );
+    onMounted(() => {
+      const el = getScrollParent(rootRef.value as HTMLElement);
+      el.addEventListener('scroll', handleScroll, false);
     });
-
-    const offset = computed(() => {
-      return props.position === 'top' ? props.top : props.bottom;
+    onUnmounted(() => {
+      const el = getScrollParent(rootRef.value as HTMLElement);
+      el.removeEventListener('scroll', handleScroll);
     });
-
-    const isHidden = (elementRef: HTMLElement | Ref<HTMLElement | undefined>) => {
-      const el = unref(elementRef);
-      if (!el) return false;
-
-      const style = window.getComputedStyle(el);
-      const hidden = style.display === 'none';
-
-      const parentHidden = el.offsetParent === null && style.position !== 'fixed';
-
-      return hidden || parentHidden;
-    };
-
-    const isExistRoot = () => {
-      if (!root.value || isHidden(root)) return false;
-      return true;
-    };
-
-    const getScrollTop = (el: Element | Window) => {
-      return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset);
-    };
-
     const renderFixed = () => {
       return h(
-        'view',
+        'div',
         {
-          style: stickyStyle.value,
-          class: state.fixed ? `${componentName} nut-sticky--fixed` : componentName
+          class: 'nut-sticky__box',
+          ref: stickyRef,
+          style: stickyStyle.value
         },
         slots.default?.()
       );
     };
 
-    const onScroll = () => {
-      if (!isExistRoot()) return;
-
-      const { container, position } = props;
-
-      const scrollTop = getScrollTop(window);
-
-      const rootRect = useRect(root);
-      if (rootRect.width || rootRect.height) {
-        state.width = rootRect.width;
-        state.height = rootRect.height;
-      }
-
-      if (position === 'top') {
-        if (container) {
-          const containerRect = useRect(container);
-          const diff = containerRect.bottom - +offset.value - state.height;
-          state.fixed = +offset.value > rootRect.top && containerRect.bottom > 0;
-          state.transform = diff < 0 ? diff : 0;
-        } else {
-          state.fixed = offset.value > rootRect.top;
-        }
-      } else if (position === 'bottom') {
-        const clientHeight = document.documentElement.clientHeight;
-        if (container) {
-          const containerRect = useRect(container);
-          const diff = clientHeight - containerRect.top - +offset.value - state.height;
-          state.fixed = clientHeight - +offset.value < rootRect.bottom && clientHeight > containerRect.top;
-          state.transform = diff < 0 ? -diff : 0;
-        } else {
-          state.fixed = clientHeight - +offset.value < rootRect.bottom;
-        }
-      }
-
-      emit('scroll', {
-        top: scrollTop,
-        fixed: state.fixed
-      });
-    };
-
-    watch(
-      () => state.fixed,
-      (val) => {
-        emit('change', val);
-      }
-    );
-
-    onMounted(() => {
-      window.addEventListener('scroll', onScroll);
-      onScroll();
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', onScroll);
-    });
-
     return () => {
       return h(
-        'view',
+        'div',
         {
+          class: 'nut-sticky',
           style: rootStyle.value,
-          ref: root
+          ref: rootRef
         },
         [renderFixed()]
       );
