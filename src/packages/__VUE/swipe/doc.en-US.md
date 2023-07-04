@@ -1,4 +1,4 @@
-#  Swipe
+# Swipe
 
 ## Intro
 
@@ -7,11 +7,11 @@ Used for cell components that can slide left and right to display operation butt
 ## Install
 
 ```javascript
-import { createApp } from 'vue'
-import { Swipe } from '@nutui/nutui'
+import { createApp } from 'vue';
+import { Swipe } from '@nutui/nutui';
 
-const app = createApp()
-app.use(Swipe)
+const app = createApp();
+app.use(Swipe);
 ```
 
 ## Demo
@@ -19,6 +19,7 @@ app.use(Swipe)
 ### Basic usage
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -29,12 +30,13 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
-:::
 
+:::
 
 ### Disable swipe
 
 :::demo
+
 ```html
 <template>
   <nut-swipe disabled>
@@ -45,11 +47,13 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
+
 :::
 
 ### Swipe left and right
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -64,18 +68,20 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 ```
+
 :::
 
 ### Async control swipe
 
 :::demo
+
 ```html
 <template>
   <nut-swipe ref="refSwipe" @open="open" @close="close">
     <nut-cell title="Async on and off">
-    <template v-slot:link>
-      <nut-switch v-model="checked" @change="changSwitch" active-text="on" inactive-text="off" />
-    </template>
+      <template v-slot:link>
+        <nut-switch v-model="checked" @change="changSwitch" active-text="on" inactive-text="off" />
+      </template>
     </nut-cell>
     <template #right>
       <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
@@ -83,34 +89,36 @@ app.use(Swipe)
   </nut-swipe>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const refSwipe = ref<HTMLElement>();
-    const checked = ref(false);
-    const changSwitch = (value: boolean) => {
-      if (value) {
-        refSwipe.value?.open('left');
-      } else {
-        refSwipe.value?.close();
-      }
-    };
-    const open = (obj: any) => {
-      console.log(obj);
-    };
-    const close = (obj: any) => {
-      console.log(obj);
-    };
-    return { checked, changSwitch, refSwipe, open, close };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const refSwipe = ref<HTMLElement>();
+      const checked = ref(false);
+      const changSwitch = (value: boolean) => {
+        if (value) {
+          refSwipe.value?.open('left');
+        } else {
+          refSwipe.value?.close();
+        }
+      };
+      const open = (obj: any) => {
+        console.log(obj);
+      };
+      const close = (obj: any) => {
+        console.log(obj);
+      };
+      return { checked, changSwitch, refSwipe, open, close };
+    }
+  };
 </script>
 ```
+
 :::
 
 ### Custom
 
 :::demo
+
 ```html
 <template>
   <nut-swipe>
@@ -118,9 +126,9 @@ export default {
       <nut-button shape="square" style="height:100%" type="success">Select</nut-button>
     </template>
     <nut-cell title="product description">
-    <template v-slot:link>
-      <nut-input-number v-model="number" />
-    </template>
+      <template v-slot:link>
+        <nut-input-number v-model="number" />
+      </template>
     </nut-cell>
     <template #right>
       <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
@@ -129,15 +137,16 @@ export default {
   </nut-swipe>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const number = ref(0);
-    return { number };
-  }
-}
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const number = ref(0);
+      return { number };
+    }
+  };
 </script>
 ```
+
 :::
 
 ## Swipe
@@ -154,11 +163,12 @@ export default {
 ### Events
 
 | Event | Description                                          | Arguments               |
-| ----- | ---------------------------------------------------- | ----------------------- |
+| ----- | ---------------------------------------------------- | ----------------------- | --------- |
 | open  | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' | 'right' ` |
 | close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' | 'right' ` |
 
 ### Slots
+
 | Name    | Description    |
 | ------- | -------------- |
 | left    | Custom left    |
@@ -170,6 +180,6 @@ export default {
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
 | Name  | Description                         | Arguments               |
-| ----- | ----------------------------------- | ----------------------- |
+| ----- | ----------------------------------- | ----------------------- | --------- |
 | open  | open swipe, swipe left/swipe right  | `name, position: 'left' | 'right' ` |
 | close | close swipe, swipe left/swipe right | `name, position: 'left' | 'right' ` |

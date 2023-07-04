@@ -250,7 +250,7 @@ export default defineComponent({
 
     const onChange = (cal: CalBack, tag: string) => {
       const name = (address as any)[cal.next];
-      if (name.length < 1) {
+      if (name?.length < 1) {
         (showPopup as any)[tag] = false;
       }
     };

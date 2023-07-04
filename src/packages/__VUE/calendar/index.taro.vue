@@ -52,6 +52,7 @@
     :is-auto-back-fill="isAutoBackFill"
     :poppable="poppable"
     :title="title"
+    ref="calendarRef"
     :confirm-text="confirmText"
     :start-text="startText"
     :end-text="endText"

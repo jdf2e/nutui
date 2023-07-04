@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Video from '../index.vue';
-import { mockElementMethod } from '@/packages/utils/test';
+import { mockElementMethod } from '@/packages/utils/unit';
 
 mockElementMethod(HTMLMediaElement, 'load');
 

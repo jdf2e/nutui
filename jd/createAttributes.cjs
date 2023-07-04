@@ -19,14 +19,14 @@ const kebabCase = (str) => {
 };
 
 const getCompName = (name) => {
-  if(!packages.length) {
+  if (!packages.length) {
     cfg.nav.forEach((item, index) => {
       packages = packages.concat(item.packages);
     });
   }
   const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
-  return packageName.name
-}
+  return packageName.name;
+};
 
 const getSubSources = (sources) => {
   let sourcesMap = [];
@@ -63,7 +63,7 @@ const genaratorWebTypes = () => {
     let stat = fs.lstatSync(`${basePath}/${componentDir}`);
     if (stat.isDirectory()) {
       let absolutePath = path.join(`${basePath}/${componentDir}`, `doc.md`);
-      if(argv === 'taro') {
+      if (argv === 'taro') {
         absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`);
       }
       let attributes = [];
@@ -75,10 +75,10 @@ const genaratorWebTypes = () => {
         const inlineItem = sourceMap.filter((source) => source.type === 'inline').length
           ? sourceMap.filter((source) => source.type === 'inline')
           : [];
-        const propItem = inlineItem.length ? `${inlineItem[0].content.replace(/`.*?`/g, '')}` : '';
-        const infoItem = inlineItem.length ? `${inlineItem[1].content}` : '';
-        const typeItem = inlineItem.length ? `${inlineItem[2].content.toLowerCase()}` : '';
-        const defaultItem = inlineItem.length ? `${inlineItem[3].content}` : '';
+        const propItem = inlineItem.length ? `${inlineItem[0]?.content?.replace(/`.*?`/g, '')}` : '';
+        const infoItem = inlineItem.length ? `${inlineItem[1]?.content}` : '';
+        const typeItem = inlineItem.length ? `${inlineItem[2]?.content?.toLowerCase()}` : '';
+        const defaultItem = inlineItem.length ? `${inlineItem[3]?.content}` : '';
         attributes.push({
           name: propItem,
           default: defaultItem,

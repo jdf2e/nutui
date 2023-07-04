@@ -21,6 +21,7 @@
   &__wrap {
     display: inherit;
     border-radius: $cell-border-radius;
+    box-shadow: $cell-box-shadow;
     overflow: hidden;
     background-color: $cell-group-background-color;
     margin: 10px 0;

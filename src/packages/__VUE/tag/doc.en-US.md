@@ -7,7 +7,6 @@ Labels for tagging and classification.
 ### Install
 
 ```javascript
-
 import { createApp } from 'vue';
 import { Tag } from '@nutui/nutui';
 
@@ -18,9 +17,10 @@ app.use(Tag);
 ### Basic Usage
 
 :::demo
+
 ```html
 <template>
- <nut-cell-group title="Basic Usage">
+  <nut-cell-group title="Basic Usage">
     <nut-cell title="primary">
       <template v-slot:link>
         <nut-tag type="primary">Tag</nut-tag>
@@ -44,11 +44,13 @@ app.use(Tag);
   </nut-cell-group>
 </template>
 ```
+
 :::
 
-### Style 
+### Style
 
 :::demo
+
 ```html
 <template>
   <nut-cell-group title="Style">
@@ -76,29 +78,30 @@ app.use(Tag);
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-export default {
-  setup() {
-    const show = ref(true);
-    const close = () => {
-      show.value = false;
-    };
+  export default {
+    setup() {
+      const show = ref(true);
+      const close = () => {
+        show.value = false;
+      };
 
-    return {
-      close,
-      show
-    };
-  }
-};
+      return {
+        close,
+        show
+      };
+    }
+  };
 </script>
 ```
-:::
 
+:::
 
 ### Custom Color
 
 :::demo
+
 ```html
 <template>
   <nut-cell-group title="Custom Color">
@@ -120,14 +123,15 @@ export default {
   </nut-cell-group>
 </template>
 ```
+
 :::
 
-
 ## API
-### Props  
+
+### Props
 
 | Attribute  | Description                                                   | Type    | Default   |
-|------------|---------------------------------------------------------------|---------|-----------|
+| ---------- | ------------------------------------------------------------- | ------- | --------- |
 | type       | Label type，can be set `primary` `success` `danger` `warning` | string  | `default` |
 | color      | Label color                                                   | string  | `-`       |
 | text-color | Text color, which takes precedence over the `color` attribute | string  | `white`   |
@@ -136,17 +140,16 @@ export default {
 | mark       | Whether it is mark                                            | boolean | `false`   |
 | closeable  | Whether it is a closeable tag                                 | boolean | `false`   |
 
-
 ### Slots
 
 | Name    | Description           |
-|---------|-----------------------|
+| ------- | --------------------- |
 | default | Label display content |
 
 ### Events
 
 | Event | Description | Arguments |
-|-------|-------------|-----------|
+| ----- | ----------- | --------- |
 | click | click event | `event`   |
 | close | close event | `event`   |
 
@@ -157,7 +160,7 @@ export default {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                                    | Default Value                                                                                        |
-|-----------------------------------------|------------------------------------------------------------------------------------------------------|
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | --nut-tag-font-size                     | _12px_                                                                                               |
 | --nut-tag-default-border-radius         | _4px_                                                                                                |
 | --nut-tag-round-border-radius           | _8px_                                                                                                |

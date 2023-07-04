@@ -278,7 +278,7 @@ export default createDemo({
     const onChange = (cal: CalBack, tag: string) => {
       console.log('地址选择', cal);
       const name = (address as any)[cal.next];
-      if (name.length < 1) {
+      if (!name) {
         (showPopup as any)[tag] = false;
       }
     };

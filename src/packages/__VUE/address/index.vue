@@ -119,24 +119,24 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref, h, PropType } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
 import Elevator from '../elevator/index.vue';
-const { componentName, create, translate } = createComponent('address');
+const { create, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
 
 export default create({
   components: {
+    [Popup.name]: Popup,
+    [Elevator.name]: Elevator,
     Location,
     Location2,
     Check,
     Close,
-    Left,
-    [Popup.name]: Popup,
-    [Elevator.name]: Elevator
+    Left
   },
   inheritAttrs: false,
   props: {
@@ -206,6 +206,7 @@ export default create({
     const tabName = ref(['province', 'city', 'country', 'town']);
     const scrollDom = ref<null | HTMLElement>(null);
     const scrollDis = ref([0, 0, 0, 0]);
+    const regionData = reactive<Array<RegionData[]>>([]);
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
@@ -262,6 +263,11 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
+      regionData[0] = props.province || [];
+      regionData[1] = props.city || [];
+      regionData[2] = props.country || [];
+      regionData[3] = props.town || [];
+
       const defaultValue = props.modelValue;
       const num = defaultValue.length;
       if (num > 0) {
@@ -271,20 +277,7 @@ export default create({
           return;
         }
         for (let index = 0; index < num; index++) {
-          let arr: RegionData[] = [];
-          switch (index) {
-            case 0:
-              arr = props.province;
-              break;
-            case 1:
-              arr = props.city;
-              break;
-            case 2:
-              arr = props.country;
-              break;
-            default:
-              arr = props.town;
-          }
+          let arr: RegionData[] = regionData[index];
           selectedRegion.value[index] = arr.filter((item: RegionData) => item.id == defaultValue[index])[0];
         }
         lineAnimation();
@@ -324,22 +317,21 @@ export default create({
 
       selectedRegion.value[tab] = item;
 
-      for (let i = tab + 2; i < 4; i++) {
-        selectedRegion.value.splice(i, 1);
-      }
-      if (tab < 3) {
+      // 删除右边已选择数据
+      selectedRegion.value.splice(tab + 1, selectedRegion.value.length - (tab + 1));
+
+      if (regionData[tab + 1]?.length > 0) {
         tabIndex.value = tab + 1;
 
         lineAnimation();
 
         callBackParams.next = tabName.value[tabIndex.value];
         callBackParams.value = item;
-
-        emit('change', callBackParams);
       } else {
         handClose();
         emit('update:modelValue');
       }
+      emit('change', callBackParams);
     };
 
     const changeRegionTab = (item: RegionData, index: number) => {

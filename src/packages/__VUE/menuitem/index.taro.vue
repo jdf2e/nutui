@@ -71,7 +71,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    modelValue: (null as unknown) as PropType<unknown>,
+    modelValue: null as unknown as PropType<unknown>,
     cols: {
       type: Number,
       default: 1

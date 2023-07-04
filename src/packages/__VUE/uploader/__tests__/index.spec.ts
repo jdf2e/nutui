@@ -3,12 +3,7 @@ import { vi } from 'vitest';
 import Uploader from '../index.vue';
 import { nextTick, h } from 'vue';
 import { Dongdong } from '@nutui/icons-vue';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+import { sleep } from '@/packages/utils/unit';
 
 const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
   type: 'test'

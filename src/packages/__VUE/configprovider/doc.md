@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { createApp } from 'vue';
 import { ConfigProvider } from '@nutui/nutui';
 
@@ -26,12 +25,12 @@ app.use(ConfigProvider);
 ```html
 <template>
   <nut-config-provider :theme="theme">
-      <nut-cell title="切换暗黑">
-        <template v-slot:link>
-          <nut-switch v-model="switchChecked" @change="switchChange" />
-        </template>
-      </nut-cell>
-      <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <nut-cell title="切换暗黑">
+      <template v-slot:link>
+        <nut-switch v-model="switchChecked" @change="switchChange" />
+      </template>
+    </nut-cell>
+    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
   </nut-config-provider>
 </template>
 <script lang="ts">
@@ -63,8 +62,8 @@ app.use(ConfigProvider);
 
 ```css
 :root {
-    --nut-primary-color: #fa2c19;
-    --nut-primary-color-end: #fa6419;
+  --nut-primary-color: #fa2c19;
+  --nut-primary-color-end: #fa6419;
 }
 ```
 
@@ -80,18 +79,19 @@ app.use(ConfigProvider);
 ```
 
 #### 通过 ConfigProvider 覆盖
+
 `ConfigProvider` 组件提供了覆盖 `CSS` 变量的能力，你需要在根节点包裹一个 `ConfigProvider` 组件，并通过 `theme-vars` 属性来配置一些主题变量
 :::demo
 
 ```html
 <template>
-    <nut-config-provider :theme-vars="themeVars">
-      <nut-form>
-        <nut-form-item label="滑块">
-          <nut-range hidden-tag v-model="range"></nut-range>
-        </nut-form-item>
-      </nut-form>
-    </nut-config-provider>
+  <nut-config-provider :theme-vars="themeVars">
+    <nut-form>
+      <nut-form-item label="滑块">
+        <nut-range hidden-tag v-model="range"></nut-range>
+      </nut-form-item>
+    </nut-form>
+  </nut-config-provider>
 </template>
 <script lang="ts">
   import { ref, reactive } from 'vue';
@@ -99,8 +99,8 @@ app.use(ConfigProvider);
     setup() {
       const range = ref(30);
       const themeVars = reactive({
-          primaryColor:'#008000',
-          primaryColorEnd:'#008000',
+        primaryColor: '#008000',
+        primaryColorEnd: '#008000'
       });
       // 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
       //  const themeVars = {
@@ -117,8 +117,8 @@ app.use(ConfigProvider);
 
 :::
 
-
 ### 主题变量
+
 #### 基础变量
 
 `NutUI` 中的 `CSS` 变量分为 **基础变量** 和 **组件变量**。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
@@ -132,68 +132,67 @@ app.use(ConfigProvider);
 ```less
 // 如果您仍旧选择使用:root 选择器来进行修改主色调，您还需要修改以下3个组件变量色  primaryColor为设置的主色调
 
---nut-address-region-tab-line: linear-gradient(90deg, primaryColor 0%, rgba(primaryColor,0.15) 100%)  ; 
---nut-tabs-horizontal-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor,0.15) 100%);
---nut-tabs-vertical-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor,0.15) 100%);
+--nut-address-region-tab-line: linear-gradient(90deg, primaryColor 0%, rgba(primaryColor, 0.15) 100%);
+--nut-tabs-horizontal-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor, 0.15) 100%);
+--nut-tabs-vertical-tab-line-color: linear-gradient(180deg, primaryColor 0%, rgba(primaryColor, 0.15) 100%);
 ```
 
 #### 变量列表
 
 下面是所有的基础变量：
+
 ```less
-  // 主色调
-  --nut-primary-color: #fa2c19;
-  --nut-primary-color-end: #fa6419;
-  // 辅助色
-  --nut-help-color: #f5f5f5;
-  // 标题常规文字
-  --nut-title-color: #1a1a1a;
-  // 副标题
-  --nut-title-color2: #666666;
-  // 次内容
-  --nut-text-color: #808080;
-  // 特殊禁用色
-  --nut-disable-color: #cccccc;
-  --nut-white: #fff;
-  --nut-black: #000;
-  --nut-required-color: #fa2c19;
-  // 暗黑模式下颜色
-  --nut-dark-background: #131313;
-  --nut-dark-background2: #1b1b1b;
-  --nut-nut-dark-background3: #141414;
-  --nut-nut-dark-background4: #323233;
-  --nut-dark-background5: #646566;
-  --nut-dark-background6: #380e08;
-  --nut-dark-background7: #707070;
-  --nut-dark-color: var(--nut-white);
-  --nut-dark-color2: #f2270c;
-  --nut-dark-color3: rgba(232, 230, 227, 0.8);
-  --nut-dark-color-gray: var(--nut-text-color);
-  --nut-dark-calendar-choose-color: rgba(227, 227, 227, 0.2);
-  // 字体
-  --nut-font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif;
+// 主色调
+--nut-primary-color: #fa2c19;
+--nut-primary-color-end: #fa6419;
+// 辅助色
+--nut-help-color: #f5f5f5;
+// 标题常规文字
+--nut-title-color: #1a1a1a;
+// 副标题
+--nut-title-color2: #666666;
+// 次内容
+--nut-text-color: #808080;
+// 特殊禁用色
+--nut-disable-color: #cccccc;
+--nut-white: #fff;
+--nut-black: #000;
+--nut-required-color: #fa2c19;
+// 暗黑模式下颜色
+--nut-dark-background: #131313;
+--nut-dark-background2: #1b1b1b;
+--nut-nut-dark-background3: #141414;
+--nut-nut-dark-background4: #323233;
+--nut-dark-background5: #646566;
+--nut-dark-background6: #380e08;
+--nut-dark-background7: #707070;
+--nut-dark-color: var(--nut-white);
+--nut-dark-color2: #f2270c;
+--nut-dark-color3: rgba(232, 230, 227, 0.8);
+--nut-dark-color-gray: var(--nut-text-color);
+--nut-dark-calendar-choose-color: rgba(227, 227, 227, 0.2);
+// 字体
+--nut-font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif;
 
-  // Font
-  --nut-font-size-0: 10px;
-  --nut-font-size-1: 12px;
-  --nut-font-size-2: 14px;
-  --nut-font-size-3: 16px;
-  --nut-font-size-4: 18px;
-  --nut-font-weight-bold: 400;
-  --nut-font-size-small: var(--nut-font-size-1);
-  --nut-font-size-base: var(--nut-font-size-2);
-  --nut-font-size-large: var(--nut-font-size-3);
-  --nut-line-height-base: 1.5;
-
+// Font
+--nut-font-size-0: 10px;
+--nut-font-size-1: 12px;
+--nut-font-size-2: 14px;
+--nut-font-size-3: 16px;
+--nut-font-size-4: 18px;
+--nut-font-weight-bold: 400;
+--nut-font-size-small: var(--nut-font-size-1);
+--nut-font-size-base: var(--nut-font-size-2);
+--nut-font-size-large: var(--nut-font-size-3);
+--nut-line-height-base: 1.5;
 ```
-
 
 ## API
 
 ### Props
 
 | 参数       | 说明                                             | 类型   | 默认值 |
-|------------|--------------------------------------------------|--------|--------|
+| ---------- | ------------------------------------------------ | ------ | ------ |
 | theme      | 主题风格，设置为 `dark` 来开启深色模式，全局生效 | string | -      |
-| theme-vars | 自定义主题变量                        | object | -      |
-| tag        | 根节点对应的 HTML 标签名                         | string | `div`    |
+| theme-vars | 自定义主题变量                                   | object | -      |
+| tag        | 根节点对应的 HTML 标签名                         | string | `div`  |

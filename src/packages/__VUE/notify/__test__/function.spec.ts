@@ -1,10 +1,5 @@
 import { NotifyFunction } from './notify';
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+import { sleep } from '@/packages/utils/unit';
 
 describe('function notify', () => {
   test('show text notify', async () => {

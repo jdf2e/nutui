@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, nextTick } from 'vue';
 import { VueWrapper, DOMWrapper } from '@vue/test-utils';
+import { Mock, vi } from 'vitest';
 
 function getTouch(el: Element | Window, x: number, y: number) {
   return {
@@ -51,11 +52,13 @@ export async function mockScrollTop(value: number) {
   return nextTick();
 }
 
+// task sleep
 export function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
   });
 }
+
 export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
   let x = relativeX;
   let y = relativeY;
@@ -75,4 +78,11 @@ export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
   trigger(el, 'touchmove', x / 2, y / 2);
   trigger(el, 'touchmove', x, y);
   trigger(el, 'touchend', x, y);
+}
+
+// mock element method
+export function mockElementMethod(element: any, method: string): Mock {
+  const fn = vi.fn();
+  element.prototype[method] = fn;
+  return fn;
 }

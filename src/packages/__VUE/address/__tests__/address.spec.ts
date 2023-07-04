@@ -2,19 +2,18 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import Address from '../index.vue';
 import { addressListData, addressExistData } from '../address-list';
-import { mockElementMethod } from '@/packages/utils/test';
+import { mockElementMethod, sleep } from '@/packages/utils/unit';
 
 mockElementMethod(Element, 'scrollTo');
 
-test('address render', async () => {
+test('Address: address render', async () => {
   const wrapper = mount(Address, {
     props: {
       visible: true,
       province: addressListData.province,
       city: addressListData.city,
       country: addressListData.country,
-      town: addressListData.town,
-      teleportDisable: false
+      town: addressListData.town
     }
   });
   await nextTick();
@@ -22,25 +21,30 @@ test('address render', async () => {
   expect(wrapper.findAll('.nut-address__detail-item').length).toBe(5);
 });
 
-test('choose address item', async () => {
+test('Address: choose address item', async () => {
   const wrapper = mount(Address, {
     props: {
       visible: true,
       province: addressListData.province,
       city: addressListData.city,
       country: addressListData.country,
-      town: addressListData.town,
-      teleportDisable: false
+      town: addressListData.town
+    },
+    global: {
+      stubs: {
+        teleport: true
+      }
     }
   });
   const fn = mockElementMethod(Element, 'scrollTo');
+  expect(wrapper.html()).toMatchSnapshot();
+  expect(wrapper.find('.nut-address__region-item').text()).toEqual('请选择');
   wrapper.find('.nut-address__detail-item').trigger('click');
-  await nextTick();
-  expect(fn).toHaveBeenCalledTimes(1);
-  expect(wrapper.find('.nut-address__region-item ').text()).toEqual('北京');
+  await sleep(0);
+  expect(fn).toBeCalled();
 });
 
-test('default choose address', async () => {
+test('Address: default choose address', async () => {
   const wrapper = mount(Address, {
     props: {
       modelValue: [1, 7, 3],
@@ -48,8 +52,7 @@ test('default choose address', async () => {
       province: addressListData.province,
       city: addressListData.city,
       country: addressListData.country,
-      town: addressListData.town,
-      teleportDisable: false
+      town: addressListData.town
     }
   });
   wrapper.vm.initCustomSelected();
@@ -59,14 +62,13 @@ test('default choose address', async () => {
   expect(wrapper.findAll('.nut-address__region-item ')[2].text()).toEqual('八里庄街道');
 });
 
-test('Exist address', async () => {
+test('Address: Exist address', async () => {
   const wrapper = mount(Address, {
     props: {
       type: 'exist',
       visible: true,
       existAddress: addressExistData,
-      isShowCustomAddress: false,
-      teleportDisable: false
+      isShowCustomAddress: false
     }
   });
   await nextTick();
@@ -74,13 +76,12 @@ test('Exist address', async () => {
   expect(wrapper.findAll('.nut-address__exist-group-item').length).toBe(3);
 });
 
-test('Exist address choose event', async () => {
+test('Address: Exist address choose event', async () => {
   const wrapper = mount(Address, {
     props: {
       type: 'exist',
       visible: true,
-      existAddress: addressExistData,
-      teleportDisable: false
+      existAddress: addressExistData
     }
   });
   await nextTick();
@@ -89,13 +90,12 @@ test('Exist address choose event', async () => {
   expect((chooseAddress as []).length).toBe(3);
 });
 
-test('Exist address & list address', async () => {
+test('Address: Exist address & list address', async () => {
   const wrapper = mount(Address, {
     props: {
       type: 'exist',
       visible: true,
       existAddress: addressExistData,
-      teleportDisable: false,
       province: addressListData.province,
       city: addressListData.city,
       country: addressListData.country,

@@ -6,7 +6,6 @@
 
 ### 安装
 
-
 ```javascript
 import { createApp } from 'vue';
 import { Cell, CellGroup } from '@nutui/nutui-taro';
@@ -70,8 +69,6 @@ app.use(CellGroup);
 
 :::
 
-
-
 ### 直接使用插槽（slot title）
 
 :::demo
@@ -79,9 +76,9 @@ app.use(CellGroup);
 ```html
 <template>
   <nut-cell desc="描述文字">
-      <template v-slot:title>
-        <span>Title <b style="color: red">1</b></span>
-      </template>
+    <template v-slot:title>
+      <span>Title <b style="color: red">1</b></span>
+    </template>
   </nut-cell>
 </template>
 ```
@@ -178,6 +175,7 @@ app.use(CellGroup);
 ```
 
 :::
+
 ### 垂直居中
 
 通过 `center` 属性可以让 Cell 的左右内容都垂直居中。
@@ -197,43 +195,42 @@ app.use(CellGroup);
 ### CellGroup Props
 
 | 参数  | 说明     | 类型   | 默认值 |
-|-------|----------|--------|--------|
+| ----- | -------- | ------ | ------ |
 | title | 分组标题 | string | -      |
 | desc  | 分组描述 | string | -      |
 
 ### Cell Props
 
-| 参数            | 说明                                                                                         | 类型    | 默认值 |
-|-----------------|----------------------------------------------------------------------------------------------|---------|--------|
-| title           | 标题名称                                                                                     | string  | -      |
-| sub-title       | 左侧副标题                                                                                   | string  | -      |
-| desc            | 右侧描述                                                                                     | string  | -      |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | string  | `right`  |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                               | boolean | `false`  |
-| round-radius    | 圆角半径                                                                                     | number  | `6px`    |
-| center          | 是否使内容垂直居中                                                                           | boolean | `false`  |
-| size            | 单元格大小，可选值为 `large`                                                                 | string  | -      |
-
+| 参数            | 说明                                                                                         | 类型    | 默认值  |
+| --------------- | -------------------------------------------------------------------------------------------- | ------- | ------- |
+| title           | 标题名称                                                                                     | string  | -       |
+| sub-title       | 左侧副标题                                                                                   | string  | -       |
+| desc            | 右侧描述                                                                                     | string  | -       |
+| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | string  | `right` |
+| is-link         | 是否展示右侧箭头并开启点击反馈                                                               | boolean | `false` |
+| round-radius    | 圆角半径                                                                                     | number  | `6px`   |
+| center          | 是否使内容垂直居中                                                                           | boolean | `false` |
+| size            | 单元格大小，可选值为 `large`                                                                 | string  | -       |
 
 ### Cell Events
 
-| 事件名  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| click | 点击事件 | `event:Event` |
+| 事件名 | 说明     | 回调参数      |
+| ------ | -------- | ------------- |
+| click  | 点击事件 | `event:Event` |
 
 ### Cell Slots
 
-| 名称    | 说明                  |
-|---------|-----------------------|
+| 名称    | 说明                    |
+| ------- | ----------------------- |
 | icon    | 自定义左侧 `icon` 区域  |
-| default | 自定义内容            |
+| default | 自定义内容              |
 | link    | 自定义右侧 `link` 区域  |
 | title   | 自定义 `title` 标题区域 |
 
 ### CellGroup Slots
 
-| 名称  | 说明                  |
-|-------|-----------------------|
+| 名称  | 说明                    |
+| ----- | ----------------------- |
 | title | 自定义 `title` 标题区域 |
 | desc  | 自定义 `desc` 描述区域  |
 
@@ -243,29 +240,30 @@ app.use(CellGroup);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                               | 默认值                       |
-|------------------------------------|------------------------------|
-| --nut-cell-color                   | _var(--nut-title-color2)_    |
-| --nut-cell-title-font              | _var(--nut-font-size-2)_     |
-| --nut-cell-title-desc-font         | _var(--nut-font-size-1)_     |
-| --nut-cell-desc-font               | _var(--nut-font-size-2)_     |
-| --nut-cell-desc-color              | _var(--nut-disable-color)_   |
-| --nut-cell-border-radius           | _6px_                        |
-| --nut-cell-padding                 | _13px 16px_                  |
-| --nut-cell-line-height             | _20px_                       |
-| --nut-cell-after-right             | _16px_                       |
-| --nut-cell-after-border-bottom     | _1px solid #f5f6f7_          |
-| --nut-cell-default-icon-margin     | _0 4px 0 0px_                |
-| --nut-cell-large-title-font        | _var(--nut-font-size-large)_ |
-| --nut-cell-large-title-desc-font   | _var(--nut-font-size-base)_  |
-| --nut-cell-large-padding           | _15px 16px_                  |
-| --nut-cell-background              | _var(--nut-white)_           |
-| --nut-cell-group-title-padding     | _0 10px_                     |
-| --nut-cell-group-title-color       | _#909ca4_                    |
-| --nut-cell-group-title-font-size   | _var(--nut-font-size-2)_     |
-| --nut-cell-group-title-line-height | _20px_                       |
-| --nut-cell-group-desc-padding      | _0 10px_                     |
-| --nut-cell-group-desc-color        | _#909ca4_                    |
-| --nut-cell-group-desc-font-size    | _var(--nut-font-size-1)_     |
-| --nut-cell-group-desc-line-height  | _16px_                       |
-| --nut-cell-group-background-color  | _var(--nut-white)_           |
+| 名称                               | 默认值                                   |
+| ---------------------------------- | ---------------------------------------- |
+| --nut-cell-color                   | _var(--nut-title-color2)_                |
+| --nut-cell-title-font              | _var(--nut-font-size-2)_                 |
+| --nut-cell-title-desc-font         | _var(--nut-font-size-1)_                 |
+| --nut-cell-desc-font               | _var(--nut-font-size-2)_                 |
+| --nut-cell-desc-color              | _var(--nut-disable-color)_               |
+| --nut-cell-border-radius           | _6px_                                    |
+| --nut-cell-padding                 | _13px 16px_                              |
+| --nut-cell-line-height             | _20px_                                   |
+| --nut-cell-after-right             | _16px_                                   |
+| --nut-cell-after-border-bottom     | _1px solid #f5f6f7_                      |
+| --nut-cell-default-icon-margin     | _0 4px 0 0px_                            |
+| --nut-cell-large-title-font        | _var(--nut-font-size-large)_             |
+| --nut-cell-large-title-desc-font   | _var(--nut-font-size-base)_              |
+| --nut-cell-large-padding           | _15px 16px_                              |
+| --nut-cell-background              | _var(--nut-white)_                       |
+| --nut-cell-box-shadow              | _0px 1px 7px 0px rgba(237, 238, 241, 1)_ |
+| --nut-cell-group-title-padding     | _0 10px_                                 |
+| --nut-cell-group-title-color       | _#909ca4_                                |
+| --nut-cell-group-title-font-size   | _var(--nut-font-size-2)_                 |
+| --nut-cell-group-title-line-height | _20px_                                   |
+| --nut-cell-group-desc-padding      | _0 10px_                                 |
+| --nut-cell-group-desc-color        | _#909ca4_                                |
+| --nut-cell-group-desc-font-size    | _var(--nut-font-size-1)_                 |
+| --nut-cell-group-desc-line-height  | _16px_                                   |
+| --nut-cell-group-background-color  | _var(--nut-white)_                       |

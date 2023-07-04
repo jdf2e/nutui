@@ -34,7 +34,7 @@
       <view class="nut-address__custom" v-if="['custom', 'custom2'].includes(privateType)">
         <view class="nut-address__region" ref="tabRegion">
           <view
-            :class="['nut-address__region-item ', index == tabIndex ? 'active' : '']"
+            :class="['nut-address__region-item', index == tabIndex ? 'active' : '']"
             v-for="(item, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, index)"
@@ -224,6 +224,7 @@ export default create({
     const tabName = ref(['province', 'city', 'country', 'town']);
     const scrollDis = ref([0, 0, 0, 0]);
     const scrollTop = ref(0);
+    const regionData = reactive<Array<RegionData[]>>([]);
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
@@ -281,6 +282,11 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
+      regionData[0] = props.province || [];
+      regionData[1] = props.city || [];
+      regionData[2] = props.country || [];
+      regionData[3] = props.town || [];
+
       const defaultValue = props.modelValue;
       const num = defaultValue.length;
       if (num > 0) {
@@ -290,20 +296,7 @@ export default create({
           return;
         }
         for (let index = 0; index < num; index++) {
-          let arr: RegionData[] = [];
-          switch (index) {
-            case 0:
-              arr = props.province;
-              break;
-            case 1:
-              arr = props.city;
-              break;
-            case 2:
-              arr = props.country;
-              break;
-            default:
-              arr = props.town;
-          }
+          let arr: RegionData[] = regionData[index];
           selectedRegion.value[index] = arr.filter((item: RegionData) => item.id == defaultValue[index])[0];
         }
         scrollTo();
@@ -345,22 +338,21 @@ export default create({
 
       selectedRegion.value[tab] = item;
 
-      for (let i = tab + 2; i < 4; i++) {
-        selectedRegion.value.splice(i, 1);
-      }
-      if (tab < 3) {
+      // 删除右边已选择数据
+      selectedRegion.value.splice(tab + 1, selectedRegion.value.length - (tab + 1));
+
+      if (regionData[tab + 1]?.length > 0) {
         tabIndex.value = tab + 1;
 
         callBackParams.next = tabName.value[tabIndex.value];
         callBackParams.value = item;
-
-        emit('change', callBackParams);
 
         scrollTo();
       } else {
         handClose();
         emit('update:modelValue');
       }
+      emit('change', callBackParams);
     };
     //切换地区Tab
     const changeRegionTab = (item: RegionData, index: number) => {

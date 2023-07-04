@@ -1,7 +1,7 @@
 name: GHRS:ghrs
 on:
   schedule:
-    - cron: "0 23 * * *"
+    - cron: '0 23 * * *'
   workflow_dispatch: # Allow for running this manually.
 
 jobs:

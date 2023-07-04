@@ -24,6 +24,7 @@
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
+    <img src="https://data.jsdelivr.com/v1/package/npm/@nutui/nutui/badge" alt="jsdelivr">
 </p>
 
 <p align="center">

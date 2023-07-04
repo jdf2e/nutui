@@ -25,7 +25,7 @@ app.use(Picker);
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const columns = ref([
@@ -37,46 +37,48 @@ app.use(Picker);
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
 
-      return {columns, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { columns, confirm };
     }
   };
 </script>
 ```
+
 :::
 
-### With Popup 
+### With Popup
 
 The Picker is usually filled in as an auxiliary form, which can be paired with a Popup.
 
 :::demo
+
 ```html
 <template>
   <nut-cell title="Choose city" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom"  v-model:visible="show">
-      <nut-picker
-        v-model="popupValue"
-        :columns="columns"
-        title="Choose city"
-        @confirm="popupConfirm"
-        @cancel="show=false"
-      >
+  <nut-popup position="bottom" v-model:visible="show">
+    <nut-picker
+      v-model="popupValue"
+      :columns="columns"
+      title="Choose city"
+      @confirm="popupConfirm"
+      @cancel="show=false"
+    >
       <nut-button block type="primary">Always</nut-button>
-      </nut-picker>
-    </nut-popup>
+    </nut-picker>
+  </nut-popup>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
-      const show = ref(false)
-      const popupDesc = ref()
+      const show = ref(false);
+      const popupDesc = ref();
       const popupValue = ref();
       const columns = ref([
         { text: 'NanJing', value: 'NanJing' },
@@ -87,17 +89,18 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-      const popupConfirm = ( { selectedValue,selectedOptions })=>{
-        popupDesc.value = selectedOptions.map((val: any) => val.text).join(',')
-        show.value = false
-      }
 
-      return {popupValue,show,popupDesc,columns, confirm,popupConfirm};
+      const popupConfirm = ({ selectedValue, selectedOptions }) => {
+        popupDesc.value = selectedOptions.map((val: any) => val.text).join(',');
+        show.value = false;
+      };
+
+      return { popupValue, show, popupDesc, columns, confirm, popupConfirm };
     }
   };
 </script>
 ```
+
 :::
 
 ### Default Index
@@ -108,18 +111,12 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-  <nut-picker
-    v-model="selectedValue"
-    :columns="columns"
-    title="Choose City"
-    @confirm="confirm"
-  >
-  </nut-picker>
+  <nut-picker v-model="selectedValue" :columns="columns" title="Choose City" @confirm="confirm"> </nut-picker>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -132,12 +129,12 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-       const confirm = ( { selectedValue,selectedOptions })=>{
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
 
-      return {columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { columns, selectedValue, confirm };
     }
   };
 </script>
@@ -163,7 +160,7 @@ The default selection is implemented by setting `modelValue`, which is an array 
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const selectedValue = ref(['ZheJiang']);
@@ -176,12 +173,12 @@ The default selection is implemented by setting `modelValue`, which is an array 
         { text: 'ZheJiang', value: 'ZheJiang' },
         { text: 'JiangSu', value: 'JiangSu' }
       ]);
-    
-       const confirm = ( { selectedValue,selectedOptions })=>{
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
 
-      return {columns,selectedValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { columns, selectedValue, confirm };
     }
   };
 </script>
@@ -195,22 +192,16 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 ```html
 <template>
-    <nut-picker
-      v-model="selectedTime"
-      :columns="multipleColumns"
-      title="Choose City"
-      @confirm="confirm"
-      @change="change"
-    >
-    </nut-picker>
+  <nut-picker v-model="selectedTime" :columns="multipleColumns" title="Choose City" @confirm="confirm" @change="change">
+  </nut-picker>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
-       const selectedTime = ref(['Wednesday','Afternoon']);
+      const selectedTime = ref(['Wednesday', 'Afternoon']);
       const multipleColumns = ref([
         // 第一列
         [
@@ -227,15 +218,15 @@ The default selection is implemented by setting `modelValue`, which is an array 
           { text: 'Evening', value: 'Evening' }
         ]
       ]);
-    
-      const confirm = ( { selectedValue,selectedOptions })=>{
-         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
-      const change = ({ selectedValue,selectedOptions }) => {
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+      const change = ({ selectedValue, selectedOptions }) => {
         console.log(selectedValue);
       };
 
-      return {multipleColumns,change, confirm, selectedTime};
+      return { multipleColumns, change, confirm, selectedTime };
     }
   };
 </script>
@@ -251,20 +242,15 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-picker
-    v-model="selectedCascader"
-    :columns="cascaderColumns"
-    title="Choose City"
-    @confirm="confirm"
-  ></nut-picker>
+  <nut-picker v-model="selectedCascader" :columns="cascaderColumns" title="Choose City" @confirm="confirm"></nut-picker>
 </template>
 <script lang="ts">
   import { ref } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
-      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
+      const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
       const cascaderColumns = ref([
         {
           text: 'ZheJiang',
@@ -311,13 +297,12 @@ Use the children field of the Columns attribute to cascade options
           ]
         }
       ]);
-    
-       const confirm = ( { selectedValue,selectedOptions })=>{
-         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
-     
 
-      return {selectedCascader,cascaderColumns, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { selectedCascader, cascaderColumns, confirm };
     }
   };
 </script>
@@ -331,17 +316,12 @@ Use the children field of the Columns attribute to cascade options
 
 ```html
 <template>
-  <nut-picker
-    v-model="asyncValue"
-    :columns="asyncColumns"
-    title="Choose City"
-    @confirm="confirm"
-  ></nut-picker>
+  <nut-picker v-model="asyncValue" :columns="asyncColumns" title="Choose City" @confirm="confirm"></nut-picker>
 </template>
 <script lang="ts">
   import { ref, onMounted } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style'; 
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup(props) {
       const asyncColumns = ref([]);
@@ -363,12 +343,12 @@ Use the children field of the Columns attribute to cascade options
           asyncValue.value = ['ZangZu'];
         }, 500);
       });
-      
-      const confirm = ( { selectedValue,selectedOptions })=>{
-         showToast.text(selectedOptions.map((val: any) => val.text).join(','))
-      }
 
-      return {asyncColumns,asyncValue, confirm};
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { asyncColumns, asyncValue, confirm };
     }
   };
 </script>
@@ -376,48 +356,46 @@ Use the children field of the Columns attribute to cascade options
 
 :::
 
-
 ## API
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| v-model:value         | Default Index               | Array | `[]`              |
-| columns         | Columns data              | PickerOption[] \| PickerOption[][] | -                |
-| title                  | Toolbar title                   | string  | -      |
-| cancel-text            | Text of cancel button               | string  | `cancel`   |
-| ok-text                | Text of confirm button               | string  | `confirm`   |
-| three-dimensional          | Turn on 3D effects      | boolean  | `true`   |
-| swipe-duration          | Duration of the momentum animation        | number \| string  | `1000`   |
-| visible-option-num          | Count of visible columns       | number \| string | `7`              |
-| option-height         | Option height             | number \| string | `36`     |
-| show-toolbar         | Whether to show toolbar             | boolean | `true`    |
-
+| Attribute          | Description                        | Type                               | Default   |
+| ------------------ | ---------------------------------- | ---------------------------------- | --------- |
+| v-model:value      | Default Index                      | Array                              | `[]`      |
+| columns            | Columns data                       | PickerOption[] \| PickerOption[][] | -         |
+| title              | Toolbar title                      | string                             | -         |
+| cancel-text        | Text of cancel button              | string                             | `cancel`  |
+| ok-text            | Text of confirm button             | string                             | `confirm` |
+| three-dimensional  | Turn on 3D effects                 | boolean                            | `true`    |
+| swipe-duration     | Duration of the momentum animation | number \| string                   | `1000`    |
+| visible-option-num | Count of visible columns           | number \| string                   | `7`       |
+| option-height      | Option height                      | number \| string                   | `36`      |
+| show-toolbar       | Whether to show toolbar            | boolean                            | `true`    |
 
 ### Events
 
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| confirm  | Emitted when click confirm button. | `{ selectedValue, selectedOptions }` |
-| cancel  | Emitted when click close button. | `{ selectedValue, selectedOptions }` |
+| Event   | Description                          | Arguments                                         |
+| ------- | ------------------------------------ | ------------------------------------------------- |
+| confirm | Emitted when click confirm button.   | `{ selectedValue, selectedOptions }`              |
+| cancel  | Emitted when click close button.     | `{ selectedValue, selectedOptions }`              |
 | change  | Emitted when current option changed. | `{ columnIndex, selectedValue, selectedOptions }` |
 
 ### Slots
 
-| Name | Description           |
-|--------|----------------|
-| default  | Custom content bottom columns |
-| top  | Custom content top columns |
+| Name    | Description                   |
+| ------- | ----------------------------- |
+| default | Custom content bottom columns |
+| top     | Custom content top columns    |
 
 ### Data Structure of PickerOption
 
-| Key         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| text        | Text of column              | string \| number | -             |
-| value          | Value of column               | string \| number |   -        |
-| children         | Cascader Option              | Array | -                |
-| className                  | Extra CalssName                   | string  |  -    |
+| Key       | Description     | Type             | Default |
+| --------- | --------------- | ---------------- | ------- |
+| text      | Text of column  | string \| number | -       |
+| value     | Value of column | string \| number | -       |
+| children  | Cascader Option | Array            | -       |
+| className | Extra CalssName | string           | -       |
 
 ## Theming
 
@@ -425,17 +403,17 @@ Use the children field of the Columns attribute to cascade options
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --------------------------------------- | -------------------------- | 
-| --nut-picker-cancel-color| _#808080_  | 
-| --nut-picker-ok-color| _var(--nut-primary-color)_  | 
-| --nut-picker-bar-cancel-font-size| _14px_  | 
-| --nut-picker-bar-ok-font-size| _14px_  | 
-| --nut-picker-bar-button-padding| _0 15px_  | 
-| --nut-picker-bar-title-font-size| _16px_  | 
-| --nut-picker-bar-title-color| _var(--nut-title-color)_  | 
-| --nut-picker-bar-title-font-weight| _normal_  | 
-| --nut-picker-item-height| _36px_  | 
-| --nut-picker-item-text-color| _var(--nut-title-color)_  |  
-| --nut-picker-item-text-font-size| _14px_  | 
-| --nut-picker-item-active-line-border| _1px solid #d8d8d8_  | 
+| Name                                 | Default Value              |
+| ------------------------------------ | -------------------------- |
+| --nut-picker-cancel-color            | _#808080_                  |
+| --nut-picker-ok-color                | _var(--nut-primary-color)_ |
+| --nut-picker-bar-cancel-font-size    | _14px_                     |
+| --nut-picker-bar-ok-font-size        | _14px_                     |
+| --nut-picker-bar-button-padding      | _0 15px_                   |
+| --nut-picker-bar-title-font-size     | _16px_                     |
+| --nut-picker-bar-title-color         | _var(--nut-title-color)_   |
+| --nut-picker-bar-title-font-weight   | _normal_                   |
+| --nut-picker-item-height             | _36px_                     |
+| --nut-picker-item-text-color         | _var(--nut-title-color)_   |
+| --nut-picker-item-text-font-size     | _14px_                     |
+| --nut-picker-item-active-line-border | _1px solid #d8d8d8_        |

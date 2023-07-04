@@ -96,9 +96,12 @@ export default create({
       let mouseY = evt.y || evt.clientY;
 
       if (Taro.getEnv() === 'WEB') {
-        let coverPos = spcanvas.value.getBoundingClientRect();
-        mouseX = evt.clientX - coverPos.left;
-        mouseY = evt.clientY - coverPos.top;
+        const canvas = document.getElementById(canvasSetId);
+        const coverPos = canvas?.getBoundingClientRect();
+        if (coverPos) {
+          mouseX = evt.clientX - coverPos.left;
+          mouseY = evt.clientY - coverPos.top;
+        }
       }
       Taro.nextTick(() => {
         state.ctx.lineCap = 'round';

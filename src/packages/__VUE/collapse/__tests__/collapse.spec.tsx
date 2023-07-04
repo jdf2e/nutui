@@ -1,13 +1,9 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
+import { Heart } from '@nutui/icons-vue';
 import Collapse from '../index.vue';
 import CollapseItem from '../../collapseitem/index.vue';
-import { Heart } from '@nutui/icons-vue';
-import { nextTick } from 'vue';
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+import { sleep } from '@/packages/utils/unit';
 
 test('Collapse: should props active', async () => {
   const wrapper = mount(() => {

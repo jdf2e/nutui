@@ -42,7 +42,7 @@ export default defineConfig({
     })
   ],
   build: {
-    minify: false,
+    minify: false, // Taro 相关的构建不能开启，开启后会导致找不到模板
     target: 'es2015',
     lib: {
       entry: '',

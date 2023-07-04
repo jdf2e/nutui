@@ -95,13 +95,13 @@ export default create({
       const query = Taro.createSelectorQuery();
       setTimeout(() => {
         let width = 100;
-        query.select('.nut-barrage--dmBody' + timeId.value).boundingClientRect((rec) => {
-          width = rec.width || 300;
+        query.select('.nut-barrage--dmBody' + timeId.value).boundingClientRect((rec: any) => {
+          width = rec?.width || 300;
         });
         query
           .select('.nut-barrage__item' + index)
-          .boundingClientRect((recs) => {
-            let height = recs.height;
+          .boundingClientRect((recs: any) => {
+            let height = recs?.height;
             let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px';
             styleInfo(index, nodeTop, width);
           })

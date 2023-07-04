@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import ImagePreview from '../index.vue';
 import { nextTick } from 'vue';
+import { sleep } from '@/packages/utils/unit';
 
 const images = [
   {
@@ -86,12 +87,6 @@ test('customize pagination and color', async () => {
   expect(swiperPagination.exists()).toBe(true);
   expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
 });
-
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 test('dynamic images', async () => {
   const wrapper = mount(ImagePreview, {
