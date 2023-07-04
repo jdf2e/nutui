@@ -103,16 +103,6 @@ createApp(App).use(NutUI).mount("#app")
 
 [awesome-nutui](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
 
-## 主题
-
-我们提供了几套官方主题，来自京东内部实际业务，欢迎在项目中使用，如果不能满足需求，你也可以使用 ConfigProvider 组件自定义主题。
-
-* <a href="https://nutui.jd.com/#/" target="_blank">京东APP视觉（Vue3，默认）</a>
-* <a href="https://nutui.jd.com/h5/vue/4x/?jdb#/zh-CN/component/button" target="_blank">京东零售B商城主题（Vue3）</a>
-* <a href="https://nutui.jd.com/h5/vue/4x/?jddkh#/zh-CN/component/button" target="_blank">京东企业业务主题（Vue3）</a>
-* <a href="https://nutui.jd.com/jdt/#/zh-CN/guide/intro-jdt" target="_blank">京东科技视觉（Vue3，NutUI3.0）</a>
-* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">京东物流视觉（Vue2，NutUI2.0）</a>
-
 ## 使用案例
 
 NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使用 NutUI 开发多端应用。
@@ -149,10 +139,9 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 开发交流
 
-| 版本 | 微信群 |内部咚咚群 |
-| --- | --- |--- |
-| [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> 回复「NutUI」 | 82957939
-| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 回复「NutUI」 | 1022545110 |
+| 微信群 |内部咚咚群 |
+| --- |--- |
+| <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> 添加好友并回复「NutUI Vue」 | 82957939
 
 ## 参与共建
 
