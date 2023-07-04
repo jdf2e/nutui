@@ -110,7 +110,10 @@ export const component = (components: any) => {
             const result = validator(value, ruleWithoutValidator);
             if (isPromise(result)) {
               try {
-                await result;
+                const value = await result;
+                if (value === false) {
+                  return _Promise(errorMsg);
+                }
               } catch (error) {
                 const validateErrorMsg = { prop, message: error as string };
                 return _Promise(validateErrorMsg);

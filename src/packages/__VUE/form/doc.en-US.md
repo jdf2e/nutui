@@ -135,6 +135,10 @@ export default {
 
 ### Validate Form
 
+`4.0.13` adds Promise-based custom error message function:
+
+`validator` is a function, and the return value type is `boolean | Promise`. If `false` is returned or the Promise of `resolve(false)` is triggered, it means that the verification fails, and the prompt message set by `message` will be displayed. Returns the Promise that if `reject(error)` is triggered, the `error` is reserved as the prompt text, with a higher priority than `message`.
+
 :::demo
 
 ```html
@@ -443,12 +447,12 @@ export default {
 
 Use the `rules` attribute of FormItem to define verification rules. The optional attributes are as follows:
 
-| Attribute | Default                            | Type                                                              |
-| --------- | ---------------------------------- | ----------------------------------------------------------------- |
-| required  | Is it a required field             | boolean                                                           |
-| message   | Error prompt copy                  | string                                                            |
-| validator | Verification by function           | (value:string,rule?:FormItemRule) => boolean \| string \| Promise |
-| regex     | Verification by regular expression | RegExp                                                            |
+| Attribute | Default                            | Type                                                    |
+| --------- | ---------------------------------- | ------------------------------------------------------- |
+| required  | Is it a required field             | boolean                                                 |
+| message   | Error prompt copy                  | string                                                  |
+| validator | Verification by function           | (value:string,rule?:FormItemRule) => boolean \| Promise |
+| regex     | Verification by regular expression | RegExp                                                  |
 
 ### FormItem Slots
 

@@ -217,7 +217,6 @@ export default {
           dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
         },
         add() {
-          let newIndex = dynamicForm.state.tels.length;
           dynamicForm.state.tels.push({
             key: Date.now(),
             value: ''
@@ -320,18 +319,41 @@ export default {
       });
     };
     // 函数校验
-    const customValidator = (val: string) => /^\d+$/.test(val);
-    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
-      return (rule?.reg as RegExp).test(val);
+    const customValidator = (val: string) => {
+      if (/^\d+$/.test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
     };
-    const nameLengthValidator = (val: string) => val?.length >= 2;
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      if ((rule?.reg as RegExp).test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
+    };
+    const nameLengthValidator = (val: string) => {
+      if (val.length > 2) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('名称两个字以上');
+      }
+    };
     // Promise 异步校验
     const asyncValidator = (val: string) => {
-      return new Promise((resolve) => {
+      const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+      return new Promise((resolve, reject) => {
         console.log('模拟异步验证中...');
         setTimeout(() => {
           console.log('验证完成');
-          resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
+          if (!val) {
+            reject('请输入联系电话');
+          } else if (!telReg.test(val)) {
+            reject('联系电话格式不正确');
+          } else {
+            resolve('');
+          }
         }, 1000);
       });
     };
@@ -356,5 +378,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

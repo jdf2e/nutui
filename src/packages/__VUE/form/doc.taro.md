@@ -133,6 +133,10 @@ export default {
 
 ### 表单校验
 
+`4.0.13` 新增基于 Promise 的自定义错误提示功能：
+
+`validator` 为函数，返回值类型为 `boolean | Promise`。若返回 `false` 或者触发了 `resolve(false)` 的 Promise ，则表示校验失败，会展示 `message` 设置的提示信息。若返回触发了 `reject(error)` 的 Promise，则会将 `error` 作为提示文案，优先级高于 `message`。
+
 :::demo
 
 ```html
@@ -451,12 +455,12 @@ export default {
 
 使用 FormItem 的`rules`属性可以定义校验规则，可选属性如下:
 
-| 键名      | 说明                   | 类型                                                                |
-| --------- | ---------------------- | ------------------------------------------------------------------- |
-| required  | 是否为必选字段         | boolean                                                             |
-| message   | 错误提示文案           | string                                                              |
-| validator | 通过函数进行校验       | (value:string, rule?:FormItemRule ) => boolean \| string \| Promise |
-| regex     | 通过正则表达式进行校验 | RegExp                                                              |
+| 键名      | 说明                   | 类型                                                      |
+| --------- | ---------------------- | --------------------------------------------------------- |
+| required  | 是否为必选字段         | boolean                                                   |
+| message   | 错误提示文案           | string                                                    |
+| validator | 通过函数进行校验       | (value:string, rule?:FormItemRule ) => boolean \| Promise |
+| regex     | 通过正则表达式进行校验 | RegExp                                                    |
 
 ### FormItem Slots
 

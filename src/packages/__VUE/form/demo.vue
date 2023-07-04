@@ -49,13 +49,13 @@
         <nut-input class="nut-input-text" v-model="item.value" :placeholder="translate('telTip') + index" type="text" />
       </nut-form-item>
       <nut-cell>
-        <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.add"
+        <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add"
           >{{ translate('add') }}
         </nut-button>
-        <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.remove"
+        <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove"
           >{{ translate('remove') }}
         </nut-button>
-        <nut-button type="primary" style="margin-right: 10px;" size="small" @click="dynamicForm.methods.submit">
+        <nut-button type="primary" style="margin-right: 10px" size="small" @click="dynamicForm.methods.submit">
           {{ translate('submit') }}
         </nut-button>
         <nut-button size="small" @click="dynamicForm.methods.reset">{{ translate('reset') }}</nut-button>
@@ -126,7 +126,7 @@
         />
       </nut-form-item>
       <nut-cell>
-        <nut-button type="primary" size="small" style="margin-right: 10px;" @click="submit">
+        <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">
           {{ translate('submit') }}
         </nut-button>
         <nut-button size="small" @click="reset"> {{ translate('reset') }}</nut-button>
