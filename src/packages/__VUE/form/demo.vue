@@ -49,13 +49,13 @@
         <nut-input class="nut-input-text" v-model="item.value" :placeholder="translate('telTip') + index" type="text" />
       </nut-form-item>
       <nut-cell>
-        <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add"
+        <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.add"
           >{{ translate('add') }}
         </nut-button>
-        <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove"
+        <nut-button size="small" style="margin-right: 10px;" @click="dynamicForm.methods.remove"
           >{{ translate('remove') }}
         </nut-button>
-        <nut-button type="primary" style="margin-right: 10px" size="small" @click="dynamicForm.methods.submit">
+        <nut-button type="primary" style="margin-right: 10px;" size="small" @click="dynamicForm.methods.submit">
           {{ translate('submit') }}
         </nut-button>
         <nut-button size="small" @click="dynamicForm.methods.reset">{{ translate('reset') }}</nut-button>
@@ -126,7 +126,7 @@
         />
       </nut-form-item>
       <nut-cell>
-        <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">
+        <nut-button type="primary" size="small" style="margin-right: 10px;" @click="submit">
           {{ translate('submit') }}
         </nut-button>
         <nut-button size="small" @click="reset"> {{ translate('reset') }}</nut-button>
@@ -323,7 +323,6 @@ export default createDemo({
           dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
         },
         add() {
-          let newIndex = dynamicForm.state.tels.length;
           dynamicForm.state.tels.push({
             key: Date.now(),
             value: ''
@@ -426,18 +425,41 @@ export default createDemo({
       });
     };
     // 函数校验
-    const customValidator = (val: string) => /^\d+$/.test(val);
-    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
-      return (rule?.reg as RegExp).test(val);
+    const customValidator = (val: string) => {
+      if (/^\d+$/.test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
     };
-    const nameLengthValidator = (val: string) => val?.length >= 2;
+    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+      if ((rule?.reg as RegExp).test(val)) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('必须输入数字');
+      }
+    };
+    const nameLengthValidator = (val: string) => {
+      if (val.length > 2) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('名称两个字以上');
+      }
+    };
     // Promise 异步校验
     const asyncValidator = (val: string) => {
-      return new Promise((resolve) => {
-        showToast.loading(translate('asyncValidator'));
+      const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+      return new Promise((resolve, reject) => {
+        showToast.loading('模拟异步验证中...');
         setTimeout(() => {
           showToast.hide();
-          resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
+          if (!val) {
+            reject('请输入联系电话');
+          } else if (!telReg.test(val)) {
+            reject('联系电话格式不正确');
+          } else {
+            resolve('');
+          }
         }, 1000);
       });
     };
@@ -462,5 +484,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style lang="scss" scoped></style>

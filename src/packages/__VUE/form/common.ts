@@ -69,7 +69,7 @@ export const component = (components: any) => {
         formErrorTip.value[errorMsg.prop] = errorMsg.message;
       };
 
-      const checkRule = (item: FormRule): Promise<ErrorMessage | boolean> => {
+      const checkRule = async (item: FormRule): Promise<ErrorMessage | boolean> => {
         const { rules, prop } = item;
 
         const _Promise = (errorMsg: ErrorMessage): Promise<ErrorMessage> => {
@@ -109,18 +109,12 @@ export const component = (components: any) => {
           if (validator) {
             const result = validator(value, ruleWithoutValidator);
             if (isPromise(result)) {
-              return new Promise((r, j) => {
-                result
-                  .then((res) => {
-                    if (!res) {
-                      tipMessage(errorMsg);
-                      r(errorMsg);
-                    } else {
-                      r(true);
-                    }
-                  })
-                  .catch((e) => j(e));
-              });
+              try {
+                await result;
+              } catch (error) {
+                const validateErrorMsg = { prop, message: error as string };
+                return _Promise(validateErrorMsg);
+              }
             } else {
               if (!result) {
                 return _Promise(errorMsg);
@@ -142,19 +136,14 @@ export const component = (components: any) => {
             const task = findFormItem(slots.default());
 
             const errors = task.map((item) => {
-              if (customProp) {
-                if (customProp == item.prop) {
-                  return checkRule(item);
-                } else {
-                  return Promise.resolve(true);
-                }
-              } else {
-                return checkRule(item);
+              if (customProp && customProp !== item.prop) {
+                return Promise.resolve(true);
               }
+              return checkRule(item);
             });
 
             Promise.all(errors).then((errorRes) => {
-              errorRes = errorRes.filter((item) => item != true);
+              errorRes = errorRes.filter((item) => item !== true);
               const res = { valid: true, errors: [] };
               if (errorRes.length) {
                 res.valid = false;
