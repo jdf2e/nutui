@@ -66,7 +66,7 @@ app.use(Address);
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
@@ -139,7 +139,7 @@ app.use(Address);
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
@@ -215,7 +215,7 @@ app.use(Address);
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
@@ -550,7 +550,7 @@ app.use(Address);
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopupOther.value = false;
         }
       };
