@@ -125,7 +125,7 @@
 import { reactive, ref, toRefs, h } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-import { renderIcon } from '../../../../../../../packages/utils/create';
+import { renderIcon } from '@/packages/utils/create';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
 
 export default {

@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import config from '../../../../../../config.json';
+import config from '@/packages/../config.json';
 import Taro from '@tarojs/taro';
 import { Right } from '@nutui/icons-vue-taro';
 export default {

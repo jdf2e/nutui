@@ -95,16 +95,6 @@ createApp(App).use(NutUI).mount("#app")
 
 [Awesome-NutUI](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
 
-## Themes
-
-NutUI provides several sets of official themes from actual business inside JD.com. If they don't meet your needs, you can use `ConfigProvider`.
-
-* <a href="https://nutui.jd.com" target="_blank">JD APP 10.0 Design (Vue3, default)</a>
-* <a href="https://nutui.jd.com/h5/vue/4x/?jdb#/en-US/component/button" target="_blank">JD ToB Mall Design (Vue3)</a>
-* <a href="https://nutui.jd.com/h5/vue/4x/?jddkh#/en-US/component/button" target="_blank">JD Enterprise Business Design (Vue3)</a>
-* <a href="https://nutui.jd.com/jdt/#/en-US/component/button" target="_blank">JDT Design (Vue3, NutUI3.0)</a>
-* <a href="https://nutui.jd.com/jdl/#/cell" target="_blank">JDL Design (Vue2, NutUI4.0)</a>
-
 ## Cases
 
 NutUI has been used in our production environment, and widely used in the industry for cross-platform development.
@@ -141,10 +131,9 @@ NutUI has been used in our production environment, and widely used in the indust
 
 ## Communication
 
-| Version | WeChat Group | JD Dongdong Group |
-| --- | --- |--- |
-| [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> Reply 'NutUI' after following | 82957939
-| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> Reply 'NutUI' after following | 1022545110 |
+| WeChat Group | JD Dongdong Group |
+| --- |--- |
+| <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> Reply 'NutUI' after following | 82957939
 
 ## Join Us
 

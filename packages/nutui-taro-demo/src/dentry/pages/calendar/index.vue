@@ -215,7 +215,7 @@
 import { reactive, toRefs, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-import Utils from '../../../../../../../packages/utils/date';
+import Utils from '@/packages/utils/date';
 
 interface TestCalendarState {
   isVisible: boolean;

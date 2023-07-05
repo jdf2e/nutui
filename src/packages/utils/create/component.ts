@@ -39,7 +39,7 @@ export function createComponent(name: string) {
         vue.component(_component.name as string, _component as any);
       };
       return defineComponent(_component as any);
-    } as typeof defineComponent,
+    },
     createDemo: function <
       PropsOptions extends Readonly<ComponentPropsOptions>,
       Props extends Readonly<ExtractPropTypes<PropsOptions>>
@@ -56,6 +56,6 @@ export function createComponent(name: string) {
 
       _component.name = 'demo-' + name;
       return defineComponent(_component as any);
-    } as typeof defineComponent
+    }
   };
 }
