@@ -1,13 +1,21 @@
+<template>
+  <div class="nut-sticky" ref="rootRef" :style="rootStyle">
+    <div class="nut-sticky__box" ref="stickyRef" :style="stickyStyle">
+      <slot></slot>
+    </div>
+  </div>
+</template>
 <script lang="ts">
-import { computed, h, ref, PropType, watch, CSSProperties, watchEffect, onMounted, onUnmounted } from 'vue';
+import { computed, ref, PropType, watch, CSSProperties, watchEffect, onMounted, onUnmounted, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { getScrollParent } from '@/packages/utils/useScrollParent';
 import { useRect } from '@/packages/utils/useRect';
+type StickyPosition = 'top' | 'bottom';
 const { create } = createComponent('sticky');
 export default create({
   props: {
     position: {
-      type: String,
+      type: String as PropType<StickyPosition>,
       default: 'top'
     },
     top: {
@@ -23,57 +31,43 @@ export default create({
     },
     zIndex: {
       type: [Number, String],
-      default: 2000
+      default: 99
     }
   },
   emits: ['change', 'scroll'],
-
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const rootRef = ref<HTMLElement>();
     const stickyRef = ref<HTMLElement>();
-    const isFixed = ref(false);
+    const state = reactive({
+      fixed: false,
+      height: 0,
+      transform: 0
+    });
     const threshold = computed(() => {
       return props.position === 'top' ? Number(props.top) : Number(props.bottom);
     });
-    const stickyStyle = ref<CSSProperties>({
-      [props.position]: `${threshold.value}px`,
-      zIndex: Number(props.zIndex)
+    const rootStyle = computed<CSSProperties | undefined>(() => {
+      if (state.fixed) return { height: `${state.height}px` };
     });
-    const rootStyle = ref<CSSProperties>({});
-    watchEffect(() => {
-      if (props.position === 'top') return;
-      const containerEle = props.container as HTMLElement;
-
-      if (!rootRef.value && !containerEle) return;
-      const rootRect = useRect(rootRef);
-      const containerRect = useRect(containerEle);
-      const clientHeight = document.documentElement.clientHeight;
-      const stCurrent = stickyRef.value as Element;
-      const stickyRect = useRect(stCurrent);
-      let fixed = clientHeight - threshold.value < rootRect.bottom;
-      if (containerEle) {
-        fixed =
-          containerRect.bottom > clientHeight - threshold.value - stickyRect.height &&
-          clientHeight - threshold.value - stickyRect.height > containerRect.top;
-      }
-      const defaultPostVal = fixed ? 'fixed' : 'inherit';
-      stickyStyle.value.position = defaultPostVal;
-      isFixed.value = fixed;
+    const stickyStyle = computed<CSSProperties>(() => {
+      if (!state.fixed) return {};
+      return {
+        [props.position]: `${threshold.value}px`,
+        transform: state.transform ? `translate3d(0, ${state.transform}px, 0)` : undefined,
+        position: state.fixed ? 'fixed' : undefined,
+        zIndex: Number(props.zIndex)
+      };
     });
     const handleScroll = () => {
       const containerEle = props.container as HTMLElement;
-
       if (!rootRef.value && !containerEle) return;
-
       const rootRect = useRect(rootRef);
       const stCurrent = stickyRef.value as Element;
       const stickyRect = useRect(stCurrent);
       const containerRect = useRect(containerEle);
-      if (rootRect.height) {
-        rootStyle.value.height = rootRect.height;
-      }
+      state.height = rootRect.height;
 
-      const getFixed = (): { position: 'fixed' | undefined; fixed: boolean } => {
+      const getFixed = (): boolean => {
         let fixed = false;
         if (props.position === 'top') {
           fixed = containerEle
@@ -85,75 +79,41 @@ export default create({
             ? containerRect.bottom > 0 && clientHeight - threshold.value - stickyRect.height > containerRect.top
             : clientHeight - threshold.value < rootRect.bottom;
         }
-        return {
-          position: fixed ? 'fixed' : undefined,
-          fixed
-        };
+        return fixed;
       };
 
-      const getTransform = (): CSSProperties => {
-        if (props.position === 'top') {
-          if (containerEle) {
+      const getTransform = () => {
+        if (containerEle) {
+          if (props.position === 'top') {
             const diff = containerRect.bottom - threshold.value - stickyRect.height;
-            const transform = diff < 0 ? diff : 0;
-            return { transform: `translate3d(0, ${transform}px, 0)` };
-          }
-        } else {
-          if (containerEle) {
+            return diff < 0 ? diff : 0;
+          } else {
             const clientHeight = document.documentElement.clientHeight;
             const diff = containerRect.bottom - (clientHeight - threshold.value);
-            const transform = diff < 0 ? diff : 0;
-            return { transform: `translate3d(0, ${transform}px, 0)` };
+            return diff < 0 ? diff : 0;
           }
         }
-        return {};
+        return 0;
       };
-
-      const fixed = getFixed();
-      stickyStyle.value = {
-        ...stickyStyle.value,
-        ...getTransform(),
-        position: fixed.position
-      };
-      isFixed.value = fixed.fixed;
+      state.transform = getTransform();
+      state.fixed = getFixed();
     };
     watch(
-      () => isFixed,
+      () => state.fixed,
       (val) => {
-        emit('change', val.value);
+        emit('change', val);
       }
     );
     onMounted(() => {
+      handleScroll();
       const el = getScrollParent(rootRef.value as HTMLElement);
-      el.addEventListener('scroll', handleScroll, false);
+      el.addEventListener('scroll', handleScroll, true);
     });
     onUnmounted(() => {
       const el = getScrollParent(rootRef.value as HTMLElement);
       el.removeEventListener('scroll', handleScroll);
     });
-    const renderFixed = () => {
-      return h(
-        'div',
-        {
-          class: 'nut-sticky__box',
-          ref: stickyRef,
-          style: stickyStyle.value
-        },
-        slots.default?.()
-      );
-    };
-
-    return () => {
-      return h(
-        'div',
-        {
-          class: 'nut-sticky',
-          style: rootStyle.value,
-          ref: rootRef
-        },
-        [renderFixed()]
-      );
-    };
+    return { rootRef, rootStyle, stickyRef, stickyStyle };
   }
 });
 </script>
