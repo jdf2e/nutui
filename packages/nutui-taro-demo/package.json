@@ -1,8 +1,8 @@
 {
-  "name": "@nutui/nutui-taro-mobile",
+  "name": "@nutui/nutui-taro-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "nutui-taro-vue",
+  "description": "nutui-taro-demo",
   "templateInfo": {
     "name": "default",
     "typescript": true,

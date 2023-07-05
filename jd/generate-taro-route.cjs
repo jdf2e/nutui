@@ -1,7 +1,7 @@
 const fse = require('fs-extra');
 const config = require('../src/config.json');
-const targetBaseUrl = `${process.cwd()}/src`;
-const taroConfig = `${targetBaseUrl}/sites/mobile-taro/vue/src/app.config.ts`;
+const targetBaseUrl = `${process.cwd()}`;
+const taroConfig = `${targetBaseUrl}/packages/nutui-taro-demo/src/app.config.ts`;
 
 // 创建 config
 const createConfig = async () => {

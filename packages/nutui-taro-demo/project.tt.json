@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "@nutui/nutui-taro-mobile",
+  "projectname": "@nutui/nutui-taro-demo",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,
