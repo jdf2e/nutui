@@ -1,6 +1,6 @@
 const path = require('path');
 const config = {
-  projectName: '@nutui/nutui-taro-mobile',
+  projectName: '@nutui/nutui-taro-demo',
   date: '2021-5-29',
   designWidth: 375,
   deviceRatio: {
@@ -13,10 +13,10 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../../../src/packages')
+    '@/packages': path.resolve(__dirname, '../../../src/packages')
   },
   sass: {
-    resource: [path.resolve(__dirname, '../../../../', 'packages/styles/variables.scss')]
+    resource: [path.resolve(__dirname, '../../../src/packages/styles/variables.scss')]
   },
   defineConstants: {},
   copy: {

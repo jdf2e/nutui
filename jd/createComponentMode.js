@@ -194,11 +194,11 @@ const createDir = () => {
   const componentName = componentConfig.name.toLowerCase();
   const componentType = nav.find((navitem) => navitem.name === componentConfig.cType).enName;
   const sourcePath = path.join(`src/packages/__VUE/${componentName}`);
-  const taroPath = path.join(`src/sites/mobile-taro/vue/src/${componentType}`);
+  const taroPath = path.join(`packages/nutui-taro-demo/src/${componentType}`);
   if (!fs.existsSync(sourcePath)) fs.mkdirSync(sourcePath);
   if (!fs.existsSync(taroPath)) fs.mkdirSync(`${taroPath}/pages`);
   if (!fs.existsSync(`${taroPath}/pages/${componentName}`)) fs.mkdirSync(`${taroPath}/pages/${componentName}`);
-  const taroConfigPath = path.join(`src/sites/mobile-taro/vue/src/app.config.ts`);
+  const taroConfigPath = path.join(`packages/nutui-taro-demo/src/app.config.ts`);
   try {
     const taroConfigData = fs.readFileSync(taroConfigPath, 'utf8');
     const ast = esprima.parseModule(taroConfigData);

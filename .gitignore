@@ -3,7 +3,6 @@ node_modules
 dist
 /libs
 /jd/upload.js
-/publish/**/dist/
 yarn.lock
 package-lock.json
 /cache
@@ -12,14 +11,11 @@ package-lock.json
 /src/packages/nutui.vue.build.ts
 /src/packages/nutui.taro.vue.ts
 /src/packages/nutui.taro.vue.build.ts
-src/packages/vscode-extension/node_modules
 src/packages/vscode-extension/*.vsix
-src/packages/vscode-extension/yarn.lock
 /.nyc_output
 /coverage
 /tsc
 /site_docs
-/src/sites/mobile-taro/vue/src/app.config.ts
 
 # local env files
 .env.local

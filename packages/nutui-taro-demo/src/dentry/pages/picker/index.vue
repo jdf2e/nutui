@@ -43,7 +43,7 @@
 import { onMounted, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-import { PickerOption } from '../../../../../../../packages/__VUE/picker/types';
+import { PickerOption } from '@/packages/__VUE/picker/types';
 export default {
   props: {},
   components: {
