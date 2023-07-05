@@ -164,31 +164,6 @@ importers:
         specifier: ^3.3.4
         version: 3.3.4
 
-  packages/nutui-playground/src/download/template:
-    dependencies:
-      '@nutui/nutui':
-        specifier: ^4.0.12
-        version: link:../../../../..
-      '@nutui/touch-emulator':
-        specifier: ^1.0.0
-        version: link:../../../../nutui-touch-emulator
-      vue:
-        specifier: ^3.3.4
-        version: 3.3.4
-    devDependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^4.2.3
-        version: 4.2.3(vite@4.3.9)(vue@3.3.4)
-      '@vue/compiler-sfc':
-        specifier: ^3.3.4
-        version: 3.3.4
-      unplugin-vue-components:
-        specifier: ^0.25.1
-        version: 0.25.1(vue@3.3.4)
-      vite:
-        specifier: ^4.3.9
-        version: 4.3.9(@types/node@17.0.16)(sass@1.50.0)
-
   packages/nutui-taro-demo:
     dependencies:
       '@babel/runtime':
