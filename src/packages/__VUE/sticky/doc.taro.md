@@ -2,9 +2,9 @@
 
 ### 介绍
 
-效果同 `css` 中的 `position: sticky`,对低端浏览器可使用其做兼容。
+使用 fixed 定位实现的类似 `position: sticky` 的吸顶效果。
 
-> 只支持吸顶效果，也可以使用官方推荐 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
+> 仅支持吸顶效果，也可以使用官方推荐 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
 
 ### 安装
 
@@ -22,17 +22,10 @@ app.use(Sticky);
 
 ```html
 <template>
-  <div class="demo">
-    <nut-sticky top="57">
-      <nut-button type="primary">吸顶按钮</nut-button>
-    </nut-sticky>
-  </div>
+  <nut-sticky>
+    <nut-button type="primary">吸顶按钮</nut-button>
+  </nut-sticky>
 </template>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-</style>
 ```
 
 :::
@@ -43,17 +36,10 @@ app.use(Sticky);
 
 ```html
 <template>
-  <div class="demo">
-    <nut-sticky top="120">
-      <nut-button type="primary">吸顶距离120px</nut-button>
-    </nut-sticky>
-  </div>
+  <nut-sticky top="120">
+    <nut-button type="primary">吸顶距离120px</nut-button>
+  </nut-sticky>
 </template>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-</style>
 ```
 
 :::
@@ -62,9 +48,8 @@ app.use(Sticky);
 
 ### Props
 
-| 参数          | 说明                        | 类型   | 默认值 |
-| ------------- | --------------------------- | ------ | ------ |
-| position      | 吸附位置（`top`、`bottom`） | string | `top`  |
-| top           | 吸顶距离                    | number | `0`    |
-| z-index       | 吸附时的层级                | number | `2000` |
-| parent-height | 设置粘性元素父级高度        | number | `667`  |
+| 参数          | 说明                                         | 类型   | 默认值 |
+| ------------- | -------------------------------------------- | ------ | ------ |
+| top           | 吸顶距离                                     | number | `0`    |
+| z-index       | 吸附时的层级                                 | number | `99`   |
+| parent-height | 设置粘性元素的总高度，用于在脱离文档流时占位 | number | `667`  |
