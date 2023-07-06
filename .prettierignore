@@ -32,6 +32,11 @@ src/packages/vscode-extension/*.vsix
 /tsc
 /site_docs
 
+# packagse
+
+## nutui-taro-demo
+packages/nutui-taro-demo/src/app.config.ts
+
 # local env files
 .env.local
 .env.*.local
