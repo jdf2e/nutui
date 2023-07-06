@@ -14,33 +14,17 @@
     <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
     <h2>垂直分割线</h2>
     <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
-      文本
+      <text>文本</text>
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <text>文本</text>
       <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <text>文本</text>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-
-export default {
-  props: {},
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-
-    return { env };
-  }
-};
+const env = Taro.getEnv();
 </script>
-
-<style lang="scss" scoped>
-.demo {
-}
-</style>

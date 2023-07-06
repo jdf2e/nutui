@@ -24,9 +24,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('divider');
+const { translate } = createComponent('divider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -51,11 +51,5 @@ const initTranslate = () =>
       link: 'Link'
     }
   });
-export default createDemo({
-  props: {},
-  setup() {
-    initTranslate();
-    return { translate };
-  }
-});
+initTranslate();
 </script>

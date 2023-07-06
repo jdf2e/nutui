@@ -1,18 +1,18 @@
 <template>
-  <view :class="classes" v-if="direction === 'horizontal'">
-    <slot></slot>
+  <view :class="classes">
+    <slot v-if="direction === 'horizontal'"></slot>
   </view>
-  <view :class="classes" v-else></view>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { DividerDirection, DividerPosition } from './types';
 const { componentName, create } = createComponent('divider');
 
 export default create({
   props: {
     contentPosition: {
-      type: String,
+      type: String as PropType<DividerPosition>,
       default: 'center'
     },
     dashed: {
@@ -24,25 +24,16 @@ export default create({
       default: true
     },
     direction: {
-      type: String,
+      type: String as PropType<DividerDirection>,
       default: 'horizontal'
     }
   },
-  components: {},
-
   setup(props, context) {
     const classes = computed(() => {
       const prefixCls = componentName;
-
-      let defaultClassesObj = {
-        [prefixCls]: true
-      };
-
-      let classesObj = {};
-
       if (props.direction === 'horizontal') {
-        classesObj = {
-          ...defaultClassesObj,
+        return {
+          [prefixCls]: true,
           [`${prefixCls}-center`]: context.slots.default,
           [`${prefixCls}-left`]: props.contentPosition === 'left',
           [`${prefixCls}-right`]: props.contentPosition === 'right',
@@ -50,15 +41,12 @@ export default create({
           [`${prefixCls}-hairline`]: props.hairline
         };
       } else {
-        classesObj = {
-          ...defaultClassesObj,
+        return {
+          [prefixCls]: true,
           [`${prefixCls}-vertical`]: props.direction === 'vertical'
         };
       }
-
-      return classesObj;
     });
-
     return { classes };
   }
 });

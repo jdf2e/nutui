@@ -92,11 +92,11 @@ app.use(Divider);
 ```html
 <template>
   <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
-    文本
+    <text>文本</text>
     <nut-divider direction="vertical" />
-    <a href="#" :style="{ color: '#1989fa' }">链接</a>
+    <text>文本</text>
     <nut-divider direction="vertical" />
-    <a href="#" :style="{ color: '#1989fa' }">链接</a>
+    <text>文本</text>
   </div>
 </template>
 ```
@@ -107,18 +107,18 @@ app.use(Divider);
 
 ### Props
 
-| 参数             | 说明                               | 类型    | 默认值       |
-| ---------------- | ---------------------------------- | ------- | ------------ |
-| dashed           | 是否使用虚线                       | boolean | `false`      |
-| hairline         | 是否使用 `0.5px` 线                | boolean | `true`       |
-| content-position | 内容位置，可选值为 `left`、`right` | string  | `center`     |
-| direction        | 水平还是垂直类型                   | string  | `horizontal` |
+| 参数             | 说明                                | 类型    | 默认值       |
+| ---------------- | ----------------------------------- | ------- | ------------ |
+| dashed           | 是否使用虚线                        | boolean | `false`      |
+| hairline         | 是否使用 `0.5px` 线                 | boolean | `true`       |
+| content-position | 内容位置，可选值为 `left`、`right`  | string  | `center`     |
+| direction        | 水平还是垂直类型，可选值 `vertical` | string  | `horizontal` |
 
 ### Slots
 
-| 名称    | 说明 |
-| ------- | ---- |
-| default | 内容 |
+| 名称    | 说明                                          |
+| ------- | --------------------------------------------- |
+| default | 内容，仅在 `direction` 为 `horizontal` 时生效 |
 
 ## 主题定制
 
