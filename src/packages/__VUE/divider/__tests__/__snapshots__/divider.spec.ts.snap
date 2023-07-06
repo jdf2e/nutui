@@ -1,7 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Divider: default slot 1`] = `"<view class=\\"nut-divider nut-divider-center nut-divider-hairline\\">custom text</view>"`;
-
-exports[`Divider: slot: html should contain custom text 1`] = `"<view class=\\"nut-divider nut-divider-center nut-divider-hairline\\">custom text</view>"`;
-
-exports[`slot: html should contain custom text 1`] = `"<view class=\\"nut-divider nut-divider-center nut-divider-hairline\\">custom text</view>"`;
