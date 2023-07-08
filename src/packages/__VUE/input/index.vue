@@ -270,7 +270,7 @@ export default create({
 
     const clear = (event: Event) => {
       event.stopPropagation();
-      if (props.disabled) return;
+      if (props.disabled && !props.showClearIcon) return;
       emit('update:modelValue', '', event);
       // emit('change', '', event);
       emit('clear', '', event);
