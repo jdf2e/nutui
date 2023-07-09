@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, ref, PropType, watch, CSSProperties, watchEffect, onMounted, onUnmounted, reactive } from 'vue';
+import { computed, ref, PropType, watch, CSSProperties, onMounted, onUnmounted, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { getScrollParent } from '@/packages/utils/useScrollParent';
 import { useRect } from '@/packages/utils/useRect';

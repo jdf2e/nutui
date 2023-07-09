@@ -4,8 +4,6 @@
 
 使用 fixed 定位实现的类似 `position: sticky` 的吸顶效果。
 
-> 仅支持吸顶效果，也可以使用官方推荐 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
-
 ### 安装
 
 ```js
