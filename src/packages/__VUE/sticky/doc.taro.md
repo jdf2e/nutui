@@ -8,7 +8,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Sticky } from '@nutui/nutui-taro';
 
@@ -20,7 +20,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-sticky>
     <nut-button type="primary">吸顶按钮</nut-button>
@@ -34,7 +34,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-sticky top="120">
     <nut-button type="primary">吸顶距离120px</nut-button>

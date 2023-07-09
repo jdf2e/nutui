@@ -22,10 +22,10 @@
     <div style="height: 100vh"></div>
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('sticky');
+const { translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -44,32 +44,6 @@ const initTranslate = () =>
       content: 'Ceiling button'
     }
   });
-export default createDemo({
-  props: {},
-  setup() {
-    initTranslate();
-    const container = ref(null);
-    return {
-      container,
-      translate
-    };
-  }
-});
+initTranslate();
+const container = ref(null);
 </script>
-<style lang="scss" scoped>
-.nut-theme-dark {
-  .demo {
-    .sticky-container {
-      background-color: #1b1b1b;
-    }
-  }
-}
-.demo {
-  height: 200vh !important;
-}
-.sticky-container {
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-}
-</style>

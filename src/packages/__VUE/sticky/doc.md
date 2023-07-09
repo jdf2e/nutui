@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Sticky } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-sticky>
     <nut-button type="primary">吸顶按钮</nut-button>
@@ -32,7 +32,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-sticky top="120">
     <nut-button type="primary">吸顶距离120px</nut-button>
@@ -46,7 +46,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <div style="width: 100%; height: 150px; background: white" ref="container">
     <nut-sticky top="20" :container="container">
@@ -55,8 +55,8 @@ app.use(Sticky);
   </div>
 </template>
 <script setup>
-  import { ref } from 'vue';
-  const container = ref(null);
+import { ref } from 'vue';
+const container = ref(null);
 </script>
 ```
 
@@ -66,7 +66,7 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-sticky bottom="50" position="bottom">
     <nut-button type="primary">吸底距离 50px</nut-button>
@@ -90,7 +90,6 @@ app.use(Sticky);
 
 ### Events
 
-| 事件名 | 说明               | 回调参数                          |
-| ------ | ------------------ | --------------------------------- |
-| change | 吸附状态改变时触发 | `fixed: boolean`                  |
-| scroll | 滚动时触发         | `{ top: number, fixed: boolean }` |
+| 事件名 | 说明               | 回调参数         |
+| ------ | ------------------ | ---------------- |
+| change | 吸附状态改变时触发 | `fixed: boolean` |

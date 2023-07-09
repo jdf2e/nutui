@@ -34,7 +34,7 @@ export default create({
       default: 99
     }
   },
-  emits: ['change', 'scroll'],
+  emits: ['change'],
   setup(props, { emit }) {
     const rootRef = ref<HTMLElement>();
     const stickyRef = ref<HTMLElement>();
