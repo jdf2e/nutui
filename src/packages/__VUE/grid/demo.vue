@@ -2,65 +2,129 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <nut-grid>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('columnNum') }}</h2>
     <nut-grid :column-num="3">
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('square') }}</h2>
     <nut-grid :column-num="3" square>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('gutter') }}</h2>
     <nut-grid :gutter="10">
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('reverse') }}</h2>
     <nut-grid reverse>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('Horizontal') }}</h2>
     <nut-grid direction="horizontal">
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('iconStyle') }}</h2>
     <nut-grid :column-num="3">
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
       <nut-grid-item :text="translate('text')">
         <Dongdong height="40px" width="40px" color="#478EF2" />
       </nut-grid-item>
-      <nut-grid-item :text="translate('text')"><Dongdong /></nut-grid-item>
+      <nut-grid-item :text="translate('text')">
+        <Dongdong />
+      </nut-grid-item>
     </nut-grid>
 
     <h2>{{ translate('route') }}</h2>
@@ -88,7 +152,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('grid');
+const { translate } = createComponent('grid');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Dongdong, Home, Search } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -122,7 +186,7 @@ const initTranslate = () =>
       url: 'Url'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Dongdong, Home, Search },
   props: {},
   setup() {

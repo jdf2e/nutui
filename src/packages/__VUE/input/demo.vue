@@ -67,7 +67,9 @@
     />
     <h2>{{ translate('title11') }}</h2>
     <nut-input v-model="state.slotsValue" clearable :placeholder="translate('slots')">
-      <template #left> <Ask></Ask> </template>
+      <template #left>
+        <Ask></Ask>
+      </template>
       <template #right>
         <nut-button type="primary" size="small">{{ translate('slotText') }}</nut-button>
       </template>
@@ -76,11 +78,11 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { Close, Ask } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('input');
+const { translate } = createComponent('input');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -165,7 +167,7 @@ const initTranslate = () =>
       placeholder5: 'Input Align'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     Close,
     Ask

@@ -56,9 +56,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('popup');
+const { translate } = createComponent('popup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Heart } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -98,7 +98,7 @@ const initTranslate = () =>
       click: 'Click it'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Heart },
   props: {},
   setup() {

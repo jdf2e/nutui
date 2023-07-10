@@ -89,9 +89,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('progress');
+const { translate } = createComponent('progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Issue } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -123,7 +123,7 @@ const initTranslate = () =>
       add: 'add'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Issue },
   props: {},
   setup() {

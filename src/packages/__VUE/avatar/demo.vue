@@ -20,8 +20,12 @@
     </nut-cell>
     <h2>{{ translate('title2') }}</h2>
     <nut-cell>
-      <nut-avatar shape="square"><My /></nut-avatar>
-      <nut-avatar shape="round"><My /></nut-avatar>
+      <nut-avatar shape="square">
+        <My />
+      </nut-avatar>
+      <nut-avatar shape="round">
+        <My />
+      </nut-avatar>
     </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
@@ -30,21 +34,29 @@
           src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         />
       </nut-avatar>
-      <nut-avatar><My /></nut-avatar>
+      <nut-avatar>
+        <My />
+      </nut-avatar>
       <nut-avatar>王</nut-avatar>
     </nut-cell>
     <h2>{{ translate('title4') }}</h2>
     <nut-cell>
-      <nut-avatar class="demo-avatar" bg-color="#FA2C19"><My color="#fff" /></nut-avatar>
+      <nut-avatar class="demo-avatar" bg-color="#FA2C19">
+        <My color="#fff" />
+      </nut-avatar>
       <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell>
       <nut-badge value="8">
-        <nut-avatar shape="square"><My /></nut-avatar>
+        <nut-avatar shape="square">
+          <My />
+        </nut-avatar>
       </nut-badge>
       <nut-badge dot>
-        <nut-avatar shape="square"><My /></nut-avatar>
+        <nut-avatar shape="square">
+          <My />
+        </nut-avatar>
       </nut-badge>
     </nut-cell>
     <h2>{{ translate('title6') }}</h2>
@@ -55,7 +67,9 @@
             src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
           />
         </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
+        <nut-avatar>
+          <My />
+        </nut-avatar>
         <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
       </nut-avatar-group>
     </nut-cell>
@@ -67,9 +81,13 @@
             src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
           />
         </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
+        <nut-avatar>
+          <My />
+        </nut-avatar>
         <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-        <nut-avatar><My /></nut-avatar>
+        <nut-avatar>
+          <My />
+        </nut-avatar>
       </nut-avatar-group>
     </nut-cell>
     <h2>{{ translate('title7') }}</h2>
@@ -80,21 +98,27 @@
             src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
           />
         </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
+        <nut-avatar>
+          <My />
+        </nut-avatar>
         <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-        <nut-avatar><My /></nut-avatar>
+        <nut-avatar>
+          <My />
+        </nut-avatar>
       </nut-avatar-group>
     </nut-cell>
 
     <h2>{{ translate('title8') }}</h2>
     <nut-cell>
-      <nut-avatar @click="handleClick"><My /></nut-avatar>
+      <nut-avatar @click="handleClick">
+        <My />
+      </nut-avatar>
     </nut-cell>
   </div>
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('cell');
+const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -120,7 +144,7 @@ const initTranslate = () =>
       title8: 'Click on the avatar to trigger the event'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { My },
   props: {},
   setup() {
@@ -136,10 +160,12 @@ export default createDemo({
 .nut-cell {
   align-items: flex-end;
   border-radius: 0;
+
   & > view {
     margin-right: 30px;
   }
 }
+
 .demo-avatar {
   color: #fff;
 }

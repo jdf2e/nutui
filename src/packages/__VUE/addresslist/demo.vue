@@ -42,8 +42,8 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, ref } from 'vue';
-const { createDemo, translate } = createComponent('address-list');
+import { reactive, ref, defineComponent } from 'vue';
+const { translate } = createComponent('address-list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -58,7 +58,7 @@ const initTranslate = () =>
       title2: 'Swipe Function'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

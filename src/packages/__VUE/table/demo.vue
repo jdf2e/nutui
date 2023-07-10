@@ -26,13 +26,13 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
+import { reactive, toRefs, onMounted, onUnmounted, h, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { TableColumnProps } from './types';
 import { showToast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';
 import { Dongdong } from '@nutui/icons-vue';
-const { createDemo, translate } = createComponent('table');
+const { translate } = createComponent('table');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -91,7 +91,7 @@ const initTranslate = () =>
       hangzhou: 'hangzhou'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     Button,
     Dongdong

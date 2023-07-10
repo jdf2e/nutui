@@ -70,9 +70,9 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('configprovider');
+const { translate } = createComponent('configprovider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { reactive, ref } from 'vue';
+import { reactive, ref, defineComponent } from 'vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -127,7 +127,7 @@ const initTranslate = () =>
       asyncValidator: 'Simulating asynchronous verification'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

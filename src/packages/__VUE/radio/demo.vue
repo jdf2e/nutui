@@ -59,13 +59,21 @@
         <nut-radio-group v-model="radioVal5">
           <nut-radio label="1">
             {{ translate('icon') }}
-            <template #icon> <Checklist /> </template>
-            <template #checkedIcon> <Checklist color="red" /> </template>
+            <template #icon>
+              <Checklist />
+            </template>
+            <template #checkedIcon>
+              <Checklist color="red" />
+            </template>
           </nut-radio>
           <nut-radio label="2">
             {{ translate('icon') }}
-            <template #icon> <Checklist /> </template>
-            <template #checkedIcon> <Checklist color="red" /> </template>
+            <template #icon>
+              <Checklist />
+            </template>
+            <template #checkedIcon>
+              <Checklist color="red" />
+            </template>
           </nut-radio>
         </nut-radio-group>
       </nut-cell>
@@ -84,8 +92,8 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs } from 'vue';
-const { createDemo, translate } = createComponent('radio');
+import { reactive, toRefs, defineComponent } from 'vue';
+const { translate } = createComponent('radio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -113,7 +121,7 @@ const initTranslate = () =>
       current: 'Currently selected value'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   components: {
     Checklist

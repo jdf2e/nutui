@@ -22,10 +22,10 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('toast');
+const { translate } = createComponent('toast');
 import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { onUnmounted } from 'vue';
+import { onUnmounted, defineComponent } from 'vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -53,7 +53,7 @@ const initTranslate = () =>
       toastTransparent: 'Loading Transparent Cover'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const textToast = (msg: string) => {

@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('overlay');
+const { translate } = createComponent('overlay');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -71,7 +71,7 @@ const initTranslate = () =>
       closeClickLay: 'Click the mask not to close'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -100,6 +100,7 @@ export default createDemo({
   height: 100%;
   align-items: center;
   justify-content: center;
+
   .content {
     display: flex;
     width: 150px;

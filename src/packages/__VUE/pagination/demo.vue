@@ -22,9 +22,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('pagination');
+const { translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -42,7 +42,7 @@ const initTranslate = () =>
       customButton: 'Custom Button'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Left, Right },
   setup() {
     initTranslate();

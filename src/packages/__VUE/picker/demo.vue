@@ -53,16 +53,16 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption } from './types';
-const { createDemo, translate } = createComponent('picker');
+const { translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
 import { showToast } from '@/packages/nutui.vue';
 
 useTranslate(Internation);
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     const selectedValue = ref(['ZheJiang']);

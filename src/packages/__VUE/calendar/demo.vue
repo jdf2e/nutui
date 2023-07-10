@@ -219,13 +219,13 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref } from 'vue';
+import { reactive, toRefs, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { CalendarRef, Day } from '../calendaritem/type';
 
-const { createDemo, translate } = createComponent('calendar');
+const { translate } = createComponent('calendar');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -306,7 +306,7 @@ interface TestCalendarStateVisible {
   isVisible8: boolean;
   isVisible9: boolean;
 }
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -441,19 +441,23 @@ export default createDemo({
     flex: initial;
   }
 }
+
 .test-calendar-wrapper {
   display: flex;
   width: 100%;
   height: 560px;
   overflow: hidden;
 }
+
 .wrapper {
   display: flex;
   padding: 0 40px;
   justify-content: center;
 }
+
 .d_div {
   margin: 0px 5px;
+
   .d_btn {
     background: #fa3f19;
     color: #fff;
@@ -464,6 +468,7 @@ export default createDemo({
     height: 16px;
   }
 }
+
 .info {
   font-size: 12px;
   line-height: 14px;

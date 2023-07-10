@@ -32,11 +32,11 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { HeartFill, StarFillN } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { createDemo, translate } = createComponent('rate');
+const { translate } = createComponent('rate');
 import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
   useTranslate({
@@ -63,7 +63,7 @@ const initTranslate = () =>
       title8: 'Custom size 35px'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { HeartFill, StarFillN },
   setup() {
     initTranslate();

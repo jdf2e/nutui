@@ -28,9 +28,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('image-preview');
+const { translate } = createComponent('image-preview');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showImagePreview } from '@/packages/nutui.vue';
 const initTranslate = () =>
@@ -52,7 +52,7 @@ const initTranslate = () =>
       functionalCall: 'Functional Call'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

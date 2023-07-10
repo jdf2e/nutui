@@ -47,11 +47,11 @@
 </template>
 
 <script lang="ts">
-import { reactive, getCurrentInstance } from 'vue';
+import { reactive, getCurrentInstance, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Left, Right } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('input-number');
+const { translate } = createComponent('input-number');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -82,7 +82,7 @@ const initTranslate = () =>
       content2: 'Trigger of limit exceeding event'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Left, Right },
   props: {},
   setup() {

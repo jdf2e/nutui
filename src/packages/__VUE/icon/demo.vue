@@ -81,10 +81,10 @@ const initTranslate = () =>
     }
   });
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('icon');
+const { translate } = createComponent('icon');
 import { showToast } from '@/packages/nutui.vue';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { IconFont, Add },
   setup() {
@@ -113,11 +113,13 @@ export default createDemo({
     margin-right: 10px;
   }
 }
+
 ul {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   width: 100%;
+
   li {
     flex: 0 0 25%;
     max-width: 25%;
@@ -131,6 +133,7 @@ ul {
       font-size: 12px;
       text-align: center;
     }
+
     .nutui-iconfont {
       margin: 16px 0 16px;
     }

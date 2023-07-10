@@ -40,13 +40,19 @@
     <div class="steps-wrapper">
       <nut-steps :current="current4">
         <nut-step :title="translate('complete')">
-          <template #icon><Service /></template>
+          <template #icon>
+            <Service />
+          </template>
         </nut-step>
         <nut-step :title="translate('progress')">
-          <template #icon><People /></template>
+          <template #icon>
+            <People />
+          </template>
         </nut-step>
         <nut-step :title="translate('start')">
-          <template #icon><Location2 /></template>
+          <template #icon>
+            <Location2 />
+          </template>
         </nut-step>
       </nut-steps>
       <div class="steps-button" style="margin-top: 10px">
@@ -79,12 +85,12 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, People, Location2 } from '@nutui/icons-vue';
 
-const { createDemo, translate } = createComponent('steps');
+const { translate } = createComponent('steps');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -131,7 +137,7 @@ const initTranslate = () =>
       verstepDot: 'Point steps and vertical orientation'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Service, People, Location2 },
   props: {},
   setup() {
@@ -172,17 +178,21 @@ export default createDemo({
     background-color: #1b1b1b;
   }
 }
+
 .padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
+
   h2 {
     padding-left: 27px !important;
   }
 }
+
 .steps-wrapper {
   width: 100%;
   padding: 15px 0;
   background-color: #fff;
+
   .steps-button {
     text-align: center;
   }

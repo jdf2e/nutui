@@ -13,9 +13,9 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, reactive, toRefs } from 'vue';
+import { onMounted, reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('list');
+const { translate } = createComponent('list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -26,7 +26,7 @@ const initTranslate = () =>
       basic: 'Basic Usage'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -53,6 +53,7 @@ export default createDemo({
   .nut-cell {
     height: 100%;
   }
+
   .nut-list-item {
     display: flex;
     align-items: center;

@@ -47,9 +47,10 @@ export default create({
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('${nameLc}');
+const { translate } = createComponent('${nameLc}');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () => useTranslate({
   'zh-CN': {
@@ -59,18 +60,8 @@ const initTranslate = () => useTranslate({
     basic: 'Basic Usage'
   }
 })
-export default createDemo({
-  props: {},
-  setup() {
-    initTranslate();
-    return { translate };
-  }
-});
+initTranslate();
 </script>
-<style lang="scss" scoped>
-.demo{
-}
-</style>
 `,
     taroDemo: `<template>
   <div class="demo">
@@ -80,14 +71,7 @@ export default createDemo({
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-  props: {},
-  setup() {
-    return {};
-  }
-});
+<script setup lang="ts">
 </script>
 `,
     doc: `# ${nameLc} 
@@ -119,12 +103,7 @@ app.use();
 <template>
   
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
+<script setup>
 </script>
 \`\`\`
 
@@ -171,12 +150,7 @@ app.use();
 <template>
   
 </template>
-<script lang="ts">
-  export default {
-    setup() {
-      return {  };
-    }
-  };
+<script setup>
 </script>
 \`\`\`
 

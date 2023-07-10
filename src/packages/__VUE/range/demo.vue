@@ -83,10 +83,10 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive } from 'vue';
+import { toRefs, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('range');
+const { translate } = createComponent('range');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -118,7 +118,7 @@ const initTranslate = () =>
       title10: 'Marks'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -162,6 +162,7 @@ export default createDemo({
 .cell {
   padding: 40px 18px;
 }
+
 .custom-button {
   width: 26px;
   color: #fff;
@@ -171,9 +172,11 @@ export default createDemo({
   background-color: #ee0a24;
   border-radius: 100px;
 }
+
 .vertical_div {
   height: 180px;
   padding: 10px;
+
   .div {
     width: 150px;
   }

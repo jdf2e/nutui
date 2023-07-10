@@ -62,10 +62,10 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { Notice, Follow } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('collapse');
+const { translate } = createComponent('collapse');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -123,7 +123,7 @@ const initTranslate = () =>
       subtitle: 'subtitle'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup(props, context) {
     initTranslate();
     const data = reactive({
