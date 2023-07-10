@@ -21,7 +21,7 @@
         :arrowOffset="step.arrowOffset || 0"
         :duration="0.2"
       >
-        <template v-slot:content>
+        <template #content>
           <slot>
             <view class="nut-tour-content" v-if="type == 'step'">
               <view class="nut-tour-content-top" v-if="showTitleBar">

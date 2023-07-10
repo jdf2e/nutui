@@ -12,14 +12,14 @@
 
     <h2>{{ translate('basic3') }}</h2>
     <nut-searchbar v-model="searchValue2" @click-left-icon="clickLeftIcon">
-      <template v-slot:leftin>
+      <template #leftin>
         <Search2 />
       </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic4') }}</h2>
     <nut-searchbar v-model="searchValue3">
-      <template v-slot:rightout> {{ translate('word2') }} </template>
+      <template #rightout> {{ translate('word2') }} </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic5') }}</h2>
@@ -32,23 +32,23 @@
 
     <h2>{{ translate('basic7') }}</h2>
     <nut-searchbar v-model="searchValue6">
-      <template v-slot:clear-icon>
+      <template #clear-icon>
         <img :src="icon" style="width: 20px; height: 20px" />
       </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic6') }}</h2>
     <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
-      <template v-slot:leftout>
+      <template #leftout>
         <Left @click="clickLeft" />
       </template>
-      <template v-slot:leftin>
+      <template #leftin>
         <Search2 />
       </template>
-      <template v-slot:rightin>
+      <template #rightin>
         <Photograph />
       </template>
-      <template v-slot:rightout>
+      <template #rightout>
         <Message />
       </template>
     </nut-searchbar>

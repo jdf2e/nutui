@@ -2,22 +2,22 @@
   <div class="demo">
     <nut-cell-group :title="translate('title')">
       <nut-cell :title="translate('type1')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag type="primary" @click="click">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('type2')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag type="success">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('type3')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag type="danger">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('type4')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag type="warning">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
@@ -25,22 +25,22 @@
 
     <nut-cell-group :title="translate('title1')">
       <nut-cell :title="translate('plain')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag plain>{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('round')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag round type="primary">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('mark')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag mark type="primary">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('closeable')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag v-if="show" closeable @close="close" type="primary">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
@@ -48,17 +48,17 @@
 
     <nut-cell-group :title="translate('title2')">
       <nut-cell :title="translate('bgColor')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag color="#FA685D">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('textColor')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag color="#E9E9E9" textColor="#999999">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('plaincolor')">
-        <template v-slot:link>
+        <template #link>
           <nut-tag color="#FA2400" plain>{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>

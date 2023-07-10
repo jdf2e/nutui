@@ -28,7 +28,7 @@
     <h2>{{ translate('async') }}</h2>
     <nut-swipe ref="refSwipe" @open="open" @close="close">
       <nut-cell :title="translate('asyncDesc')">
-        <template v-slot:link>
+        <template #link>
           <nut-switch
             v-model="checked"
             @change="changSwitch"
@@ -47,7 +47,7 @@
         <nut-button shape="square" style="height: 100%" type="success">{{ translate('select') }}</nut-button>
       </template>
       <nut-cell :title="translate('desc')">
-        <template v-slot:link>
+        <template #link>
           <nut-input-number v-model="number" />
         </template>
       </nut-cell>
