@@ -31,9 +31,9 @@
         <template #link>
           <nut-switch
             v-model="checked"
-            @change="changSwitch"
             :active-text="translate('open')"
             :inactive-text="translate('close')"
+            @change="changSwitch"
           />
         </template>
       </nut-cell>

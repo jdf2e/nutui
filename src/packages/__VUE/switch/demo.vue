@@ -31,7 +31,7 @@
 
     <h2>{{ translate('title5') }}</h2>
     <nut-cell>
-      <nut-switch :model-value="checkedAsync" @change="changeAsync" :loading="loadingAsync" />
+      <nut-switch :model-value="checkedAsync" :loading="loadingAsync" @change="changeAsync" />
     </nut-cell>
 
     <h2>{{ translate('title6') }}</h2>

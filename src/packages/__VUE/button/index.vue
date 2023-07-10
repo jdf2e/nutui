@@ -1,9 +1,9 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__wrap">
-      <Loading class="nut-icon-loading" v-if="loading" />
-      <slot name="icon" v-if="$slots.icon && !loading"></slot>
-      <view :class="{ 'nut-button__text': $slots.icon || loading }" v-if="$slots.default">
+      <Loading v-if="loading" class="nut-icon-loading" />
+      <slot v-if="$slots.icon && !loading" name="icon"></slot>
+      <view v-if="$slots.default" :class="{ 'nut-button__text': $slots.icon || loading }">
         <slot></slot>
       </view>
     </view>

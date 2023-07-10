@@ -5,15 +5,15 @@
         <view class="nut-collapse-item__title-main-value">
           <slot v-if="$slots.title" name="title"></slot>
           <template v-else>
-            <view v-html="title" class="nut-collapse-item__title-mtitle"></view>
+            <view class="nut-collapse-item__title-mtitle" v-html="title"></view>
           </template>
-          <view class="nut-collapse-item__title-label" v-if="label">{{ label }}</view>
+          <view v-if="label" class="nut-collapse-item__title-label">{{ label }}</view>
         </view>
       </view>
       <view v-if="$slots.value" class="nut-collapse-item__title-sub">
         <slot name="value"></slot>
       </view>
-      <view v-else v-html="value" class="nut-collapse-item__title-sub"></view>
+      <view v-else class="nut-collapse-item__title-sub" v-html="value"></view>
       <view
         :class="['nut-collapse-item__title-icon', { 'nut-collapse-item__title-icon--expanded': expanded }]"
         :style="{ transform: 'rotate(' + (expanded ? rotate : 0) + 'deg)' }"
@@ -28,15 +28,15 @@
       </div>
     </view>
     <view
-      class="nut-collapse__item-wrapper"
       ref="wrapperRef"
+      class="nut-collapse__item-wrapper"
       :style="{
         willChange: 'height',
         height: wrapperHeight
       }"
       @transitionend="onTransitionEnd"
     >
-      <view class="nut-collapse__item-wrapper__content" ref="contentRef">
+      <view ref="contentRef" class="nut-collapse__item-wrapper__content">
         <slot></slot>
       </view>
     </view>

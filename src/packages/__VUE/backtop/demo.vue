@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" id="elId">
+  <div id="elId" class="demo">
     <h2>{{ translate('title') }}</h2>
     <div class="text-data">{{ translate('content') }}1</div>
     <div class="text-data">{{ translate('content') }}2</div>
@@ -25,13 +25,13 @@
     <div class="text-data">{{ translate('content') }}22</div>
     <div class="text-data">{{ translate('content') }}23</div>
     <div class="text-data">{{ translate('content') }}24</div>
-    <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="110">
+    <nut-backtop el-id="elId" :distance="100" :bottom="110" @click="handleClick">
       <view class="backtop-demo">
         <Top width="12px" height="12px" class="nut-backtop-main"></Top>
         <view class="title">{{ translate('backText') }}</view>
       </view>
     </nut-backtop>
-    <nut-backtop @click="handleClick" el-id="elId" :distance="200" :bottom="50"></nut-backtop>
+    <nut-backtop el-id="elId" :distance="200" :bottom="50" @click="handleClick"></nut-backtop>
   </div>
 </template>
 

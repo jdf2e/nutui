@@ -3,36 +3,36 @@
     <div id="test"></div>
     <h2>{{ translate('basic') }}</h2>
     <nut-cell :title="translate('cell1')" is-link @click="showBasic = true"></nut-cell>
-    <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="showBasic" :z-index="100">{{
+    <nut-popup v-model:visible="showBasic" pop-class="popclass" :style="{ padding: '30px 50px' }" :z-index="100">{{
       translate('text')
     }}</nut-popup>
     <h2>{{ translate('position') }}</h2>
     <nut-cell :title="translate('cell2')" is-link @click="showTop = true"></nut-cell>
-    <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="showTop"></nut-popup>
+    <nut-popup v-model:visible="showTop" position="top" :style="{ height: '20%' }"></nut-popup>
     <nut-cell :title="translate('cell3')" is-link @click="showBottom = true"></nut-cell>
-    <nut-popup position="bottom" :style="{ height: '20%' }" v-model:visible="showBottom"></nut-popup>
+    <nut-popup v-model:visible="showBottom" position="bottom" :style="{ height: '20%' }"></nut-popup>
     <nut-cell :title="translate('cell4')" is-link @click="showLeft = true"></nut-cell>
-    <nut-popup position="left" :style="{ width: '20%', height: '100%' }" v-model:visible="showLeft"></nut-popup>
+    <nut-popup v-model:visible="showLeft" position="left" :style="{ width: '20%', height: '100%' }"></nut-popup>
     <nut-cell :title="translate('cell5')" is-link @click="showRight = true"></nut-cell>
-    <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="showRight"></nut-popup>
+    <nut-popup v-model:visible="showRight" position="right" :style="{ width: '20%', height: '100%' }"></nut-popup>
     <h2>{{ translate('close') }}</h2>
     <nut-cell :title="translate('close')" is-link @click="showIcon = true"></nut-cell>
-    <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="showIcon"></nut-popup>
+    <nut-popup v-model:visible="showIcon" position="bottom" closeable :style="{ height: '20%' }"></nut-popup>
     <nut-cell :title="translate('iposition')" is-link @click="showIconPosition = true"></nut-cell>
     <nut-popup
+      v-model:visible="showIconPosition"
       position="bottom"
       closeable
       close-icon-position="top-left"
       :style="{ height: '20%' }"
-      v-model:visible="showIconPosition"
     ></nut-popup>
     <nut-cell :title="translate('cicon')" is-link @click="showCloseIcon = true"></nut-cell>
     <nut-popup
+      v-model:visible="showCloseIcon"
       position="bottom"
       closeable
       close-icon-position="top-left"
       :style="{ height: '20%' }"
-      v-model:visible="showCloseIcon"
     >
       <template #close-icon>
         <Heart></Heart>
@@ -40,18 +40,18 @@
     </nut-popup>
     <h2>{{ translate('circle') }}</h2>
     <nut-cell :title="translate('circle')" is-link @click="showRound = true"></nut-cell>
-    <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
+    <nut-popup v-model:visible="showRound" position="bottom" closeable round :style="{ height: '30%' }"></nut-popup>
     <h2>{{ translate('teleport') }}</h2>
     <nut-cell :title="translate('teleport')" is-link @click="showTeleport = true"></nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport"
+    <nut-popup v-model:visible="showTeleport" :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable
       >app</nut-popup
     >
     <h2>{{ translate('muti') }}</h2>
     <nut-cell :title="translate('muti')" is-link @click="showPop1 = true"></nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
+    <nut-popup v-model:visible="showPop1" :style="{ padding: '30px 50px' }">
       <div @click="showPop2 = true">{{ translate('click') }}</div>
     </nut-popup>
-    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop2">{{ translate('text') }}</nut-popup>
+    <nut-popup v-model:visible="showPop2" :style="{ padding: '30px 50px' }">{{ translate('text') }}</nut-popup>
   </div>
 </template>
 

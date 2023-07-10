@@ -7,8 +7,8 @@
         <div v-if="item?.catType == 1" class="nut-category-pane__childItemList">
           <div
             v-for="(sku, key) in item.childCateList"
-            class="nut-category-pane__childItem"
             :key="key"
+            class="nut-category-pane__childItem"
             @click="onChange(sku)"
           >
             <img class="nut-category-pane__childImg" :src="sku.backImg" />
@@ -26,8 +26,8 @@
         <div v-if="item?.catType == 1" class="nut-category-pane__childItemList">
           <div
             v-for="(sku, key) in item.childCateList"
-            class="nut-category-pane__childItem"
             :key="key"
+            class="nut-category-pane__childItem"
             @click="onChange(sku)"
           >
             <div class="nut-category-pane__skuName">{{ sku?.catName }}</div>
@@ -39,7 +39,7 @@
     <!-- 自定义 -->
 
     <div v-if="type == 'custom'" class="nut-category-pane__selfItemList">
-      <div v-for="(sku, key) in customCategory" class="nut-category-pane__skuName" :key="key" @click="onChange(sku)">
+      <div v-for="(sku, key) in customCategory" :key="key" class="nut-category-pane__skuName" @click="onChange(sku)">
         {{ sku?.catName }}
       </div>
     </div>

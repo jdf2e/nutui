@@ -1,21 +1,21 @@
 <template>
   <!--配合进度条使用 播放时长、 兼容是否支持 、暂停、 开启-->
   <div class="nut-audio-operate">
-    <div class="nut-audio-operate-item" @click="fastBack" v-if="type == 'back'"
-      ><nut-button type="primary" size="small" v-if="!customSlot">{{ translate('back') }}</nut-button
+    <div v-if="type == 'back'" class="nut-audio-operate-item" @click="fastBack"
+      ><nut-button v-if="!customSlot" type="primary" size="small">{{ translate('back') }}</nut-button
       ><slot></slot
     ></div>
-    <div class="nut-audio-operate-item" @click="changeStatus" v-if="type == 'play'"
-      ><nut-button type="primary" size="small" v-if="!customSlot">{{
+    <div v-if="type == 'play'" class="nut-audio-operate-item" @click="changeStatus"
+      ><nut-button v-if="!customSlot" type="primary" size="small">{{
         !audioData.playing ? `${translate('start')}` : `${translate('pause')}`
       }}</nut-button>
       <slot></slot
     ></div>
-    <div class="nut-audio-operate-item" @click="forward" v-if="type == 'forward'"
-      ><nut-button type="primary" size="small" v-if="!customSlot">快进</nut-button><slot></slot
+    <div v-if="type == 'forward'" class="nut-audio-operate-item" @click="forward"
+      ><nut-button v-if="!customSlot" type="primary" size="small">快进</nut-button><slot></slot
     ></div>
-    <div class="nut-audio-operate-item" @click="handleMute" v-if="type == 'mute'"
-      ><nut-button :type="!audioData.hanMuted ? 'primary' : 'default'" size="small" v-if="!customSlot">{{
+    <div v-if="type == 'mute'" class="nut-audio-operate-item" @click="handleMute"
+      ><nut-button v-if="!customSlot" :type="!audioData.hanMuted ? 'primary' : 'default'" size="small">{{
         translate('mute')
       }}</nut-button
       ><slot></slot

@@ -49,11 +49,11 @@
       <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
-    <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
+    <nut-tabs v-model="state.tab5value" style="height: 300px" title-scroll direction="vertical">
       <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title6') }}</h2>
-    <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
+    <nut-tabs v-model="state.tab6value" style="height: 300px" type="smile" title-scroll direction="vertical">
       <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
@@ -76,11 +76,11 @@
     <nut-tabs v-model="state.tab7value">
       <template #titles>
         <div
-          class="nut-tabs__titles-item"
-          @click="state.tab7value = item.paneKey"
-          :class="{ active: state.tab7value == item.paneKey }"
-          :key="item.paneKey"
           v-for="item in state.list6"
+          :key="item.paneKey"
+          class="nut-tabs__titles-item"
+          :class="{ active: state.tab7value == item.paneKey }"
+          @click="state.tab7value = item.paneKey"
         >
           <Dongdong />
           <span class="nut-tabs__titles-item__text">{{ item.title }}</span>

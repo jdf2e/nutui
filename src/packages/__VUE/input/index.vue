@@ -8,8 +8,8 @@
         <view class="nut-input-box">
           <component
             :is="renderInput(type)"
-            class="input-text"
             ref="inputRef"
+            class="input-text"
             :style="styles"
             :maxlength="maxLength"
             :placeholder="placeholder"
@@ -33,9 +33,9 @@
           </view>
         </view>
         <view
-          class="nut-input-clear-box"
           v-if="clearable && !readonly"
           v-show="(active || showClearIcon) && modelValue.length > 0"
+          class="nut-input-clear-box"
           @click="clear"
         >
           <slot name="clear">

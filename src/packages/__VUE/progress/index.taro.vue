@@ -7,19 +7,20 @@
     >
       <div :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']" :style="bgStyle">
         <div
-          class="nut-progress-text nut-progress-insidetext"
+          v-if="showText && textInside && !slotDefault"
           ref="insideText"
+          class="nut-progress-text nut-progress-insidetext"
           :style="{
             lineHeight: height,
             left: `${percentage}%`,
             transform: `translate(-${+percentage}%,-50%)`,
             background: textBackground || strokeColor
           }"
-          v-if="showText && textInside && !slotDefault"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
         </div>
         <div
+          v-if="showText && textInside && slotDefault"
           ref="insideText"
           :style="{
             position: `absolute`,
@@ -27,13 +28,12 @@
             left: `${percentage}%`,
             transform: `translate(-${+percentage}%,-50%)`
           }"
-          v-if="showText && textInside && slotDefault"
         >
           <slot></slot>
         </div>
       </div>
     </div>
-    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
+    <div v-if="showText && !textInside" class="nut-progress-text" :style="{ lineHeight: height }">
       <template v-if="status == 'text' || status == 'active'">
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
       </template>

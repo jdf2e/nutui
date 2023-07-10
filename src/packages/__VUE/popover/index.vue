@@ -1,12 +1,12 @@
 <template>
-  <div class="nut-popover-wrapper" @click="openPopover" ref="popoverRef" v-if="!targetId"
+  <div v-if="!targetId" ref="popoverRef" class="nut-popover-wrapper" @click="openPopover"
     ><slot name="reference"></slot
   ></div>
   <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
     <nut-popup
+      v-model:visible="showPopup"
       :pop-class="`nut-popover-content nut-popover-content--${location}`"
       :style="customStyle"
-      v-model:visible="showPopup"
       position=""
       transition="nut-popover"
       :overlay="overlay"
@@ -16,7 +16,7 @@
       :close-on-click-overlay="closeOnClickOverlay"
     >
       <view ref="popoverContentRef" class="nut-popover-content-group">
-        <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
+        <view v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </view>
         <slot name="content"></slot>
         <view
           v-for="(item, index) in list"
@@ -24,7 +24,7 @@
           :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
           @click.stop="chooseItem(item, index)"
         >
-          <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+          <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
 
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>

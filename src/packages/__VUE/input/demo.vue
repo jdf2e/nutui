@@ -6,11 +6,11 @@
     <h2>{{ translate('title1') }}</h2>
     <nut-input v-model="state.text" :placeholder="translate('textPlaceholder')" />
     <nut-input v-model="state.password" :placeholder="translate('passwordPlaceholder')" type="password" />
-    <nut-input :placeholder="translate('numberPlaceholder')" v-model="state.number" type="number" />
-    <nut-input :placeholder="translate('digitPlaceholder')" v-model="state.digit" type="digit" />
+    <nut-input v-model="state.number" :placeholder="translate('numberPlaceholder')" type="number" />
+    <nut-input v-model="state.digit" :placeholder="translate('digitPlaceholder')" type="digit" />
     <h2>{{ translate('title2') }}</h2>
-    <nut-input :placeholder="translate('readonly')" v-model="state.readonly" readonly />
-    <nut-input :placeholder="translate('disabled')" v-model="state.disabled" disabled />
+    <nut-input v-model="state.readonly" :placeholder="translate('readonly')" readonly />
+    <nut-input v-model="state.disabled" :placeholder="translate('disabled')" disabled />
     <h2>{{ translate('title3') }}</h2>
     <nut-input v-model="state.clear" :placeholder="translate('clear')" clearable clear-size="14" />
     <nut-input

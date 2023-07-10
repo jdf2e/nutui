@@ -46,7 +46,7 @@
 
       <template #content>
         <div class="self-content">
-          <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
+          <div v-for="(item, index) in selfContent" :key="index" class="self-content-item">
             <Service></Service>
             <div class="self-content-desc">{{ item.desc }}</div>
           </div>
@@ -57,18 +57,18 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-popup position="bottom" v-model:visible="showPicker">
+    <nut-popup v-model:visible="showPicker" position="bottom">
       <nut-picker
         :columns="columns"
         title=""
-        @change="change"
         :swipe-duration="500"
+        @change="change"
         @confirm="closePicker"
         @close="closePicker"
       >
         <template #top>
           <div class="brickBox">
-            <div class="brick" id="pickerTarget"></div>
+            <div id="pickerTarget" class="brick"></div>
           </div>
         </template>
       </nut-picker>
@@ -84,7 +84,7 @@
     </nut-popover>
 
     <h2>{{ translate('contentTarget') }}</h2>
-    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">
+    <nut-button id="popid" type="primary" shape="square" @click="clickCustomHandle">
       {{ translate('contentTarget') }}
     </nut-button>
     <nut-popover

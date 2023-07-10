@@ -1,14 +1,14 @@
 <template>
-  <view class="nut-sku-operate" v-if="btnOptions.length > 0">
-    <view class="nut-sku-operate-desc" v-if="btnExtraText">{{ btnExtraText }}</view>
+  <view v-if="btnOptions.length > 0" class="nut-sku-operate">
+    <view v-if="btnExtraText" class="nut-sku-operate-desc">{{ btnExtraText }}</view>
 
     <slot name="operate-btn"></slot>
 
-    <view class="nut-sku-operate-btn" v-if="!getSlots('operate-btn')">
+    <view v-if="!getSlots('operate-btn')" class="nut-sku-operate-btn">
       <view
-        :class="[`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn-item']"
         v-for="(btn, i) in btnOptions"
         :key="i"
+        :class="[`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn-item']"
         @click="clickBtnOperate(btn)"
         >{{ getBtnDesc(btn) }}</view
       >

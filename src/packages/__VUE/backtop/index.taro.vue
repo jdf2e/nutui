@@ -3,9 +3,9 @@
     <scroll-view
       :scroll-y="true"
       :style="{ height }"
-      @scroll="scroll"
       :scroll-top="scrollTop"
       scroll-with-animation="true"
+      @scroll="scroll"
     >
       <slot name="content"></slot>
     </scroll-view>

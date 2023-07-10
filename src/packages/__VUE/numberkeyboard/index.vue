@@ -8,9 +8,9 @@
       :teleport-disable="false"
     >
       <div class="nut-number-keyboard">
-        <div class="nut-number-keyboard__header" v-if="title">
+        <div v-if="title" class="nut-number-keyboard__header">
           <h3 class="nut-number-keyboard__title">{{ title }}</h3>
-          <span class="nut-number-keyboard__close" v-if="type == 'default'" @click="closeBoard()">{{
+          <span v-if="type == 'default'" class="nut-number-keyboard__close" @click="closeBoard()">{{
             translate('done')
           }}</span>
         </div>
@@ -50,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="nut-number-keyboard__sidebar" v-if="type == 'rightColumn'">
+          <div v-if="type == 'rightColumn'" class="nut-number-keyboard__sidebar">
             <div class="nut-key__wrapper">
               <div
                 :class="['nut-key', { active: clickKeyIndex == 'delete' }]"

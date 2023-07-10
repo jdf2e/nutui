@@ -1,7 +1,7 @@
 <template>
   <nut-popup
-    :teleport="teleport"
     v-model:visible="showPopup"
+    :teleport="teleport"
     :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
     :pop-class="popClass"
@@ -21,18 +21,18 @@
       <view class="nut-dialog__content" :style="contentStyle">
         <slot v-if="$slots.default" name="default"></slot>
         <view v-else-if="typeof content === 'string'" v-html="content"></view>
-        <component v-else :is="content" />
+        <component :is="content" v-else />
       </view>
 
-      <view class="nut-dialog__footer" :class="{ [footerDirection]: footerDirection }" v-if="!noFooter">
+      <view v-if="!noFooter" class="nut-dialog__footer" :class="{ [footerDirection]: footerDirection }">
         <slot v-if="$slots.footer" name="footer"></slot>
         <template v-else>
           <nut-button
+            v-if="!noCancelBtn"
             size="small"
             plain
             type="primary"
             class="nut-dialog__footer-cancel"
-            v-if="!noCancelBtn"
             @click="onCancel"
           >
             {{ cancelText || translate('cancel') }}

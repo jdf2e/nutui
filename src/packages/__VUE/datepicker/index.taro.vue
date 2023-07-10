@@ -3,16 +3,16 @@
     v-model="selectedValue"
     :ok-text="okText"
     :cancel-text="cancelText"
-    @cancel="closeHandler"
     :columns="columns"
-    @change="changeHandler"
     :title="title"
-    @confirm="confirm"
     :three-dimensional="threeDimensional"
     :swipe-duration="swipeDuration"
     :show-toolbar="showToolbar"
     :visible-option-num="visibleOptionNum"
     :option-height="optionHeight"
+    @cancel="closeHandler"
+    @change="changeHandler"
+    @confirm="confirm"
   >
     <template #top>
       <slot name="top"></slot>

@@ -1,9 +1,9 @@
 <template>
   <view
+    v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
+    ref="avatarRef"
     :style="!showMax ? styles : maxStyles"
     :class="classes"
-    ref="avatarRef"
-    v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
     <template v-if="!avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount">
       <slot></slot>

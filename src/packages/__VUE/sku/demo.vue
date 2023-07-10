@@ -26,8 +26,8 @@
       :sku="skuData"
       :goods="goodsInfo"
       :btn-extra-text="btnExtraText"
-      @changeStepper="changeStepper"
       :btn-options="['buy', 'cart']"
+      @changeStepper="changeStepper"
       @selectSku="selectSku"
     >
       <template #sku-operate>
@@ -45,9 +45,9 @@
       :stepper-max="7"
       :stepper-min="2"
       :stepper-extra-text="stepperExtraText"
+      :btn-options="['buy', 'cart']"
       @changeStepper="changeStepper"
       @overLimit="overLimit"
-      :btn-options="['buy', 'cart']"
       @selectSku="selectSku"
       @clickBtnOperate="clickBtnOperate"
       @close="close"
@@ -95,10 +95,10 @@
       v-model:visible="showAddressPopup"
       type="exist"
       :exist-address="existAddress"
-      @close="close"
       :is-show-custom-address="false"
-      @selected="selectedAddress"
       exist-address-title="配送至"
+      @close="close"
+      @selected="selectedAddress"
     ></nut-address>
   </div>
 </template>

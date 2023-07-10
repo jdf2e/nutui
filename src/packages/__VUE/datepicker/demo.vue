@@ -6,21 +6,21 @@
       v-model="currentDate"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="confirm"
       :is-show-chinese="true"
       :three-dimensional="false"
+      @confirm="confirm"
     ></nut-date-picker>
 
     <h2>{{ translate('popupDesc') }}</h2>
     <nut-cell :title="translate('basic')" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom" v-model:visible="show">
+    <nut-popup v-model:visible="show" position="bottom">
       <nut-date-picker
         v-model="currentDate"
         :min-date="minDate"
         :max-date="maxDate"
-        @confirm="popupConfirm"
         :is-show-chinese="true"
         :three-dimensional="false"
+        @confirm="popupConfirm"
       >
         <nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button>
       </nut-date-picker>

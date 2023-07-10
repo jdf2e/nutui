@@ -1,22 +1,22 @@
 <template>
   <nut-popup
+    v-model:visible="showPopup"
     position="bottom"
     closeable
     round
-    v-model:visible="showPopup"
+    style="height: 75%"
     @click-close-icon="closePopup('icon')"
     @click-overlay="closePopup('overlay')"
     @close="closePopup('close')"
-    style="height: 75%"
   >
     <view class="nut-sku">
       <slot name="sku-header"></slot>
-      <sku-header :goods="goods" v-if="!getSlots('sku-header')">
-        <template #sku-header-price v-if="getSlots('sku-header-price')">
+      <sku-header v-if="!getSlots('sku-header')" :goods="goods">
+        <template v-if="getSlots('sku-header-price')" #sku-header-price>
           <slot name="sku-header-price"></slot>
         </template>
 
-        <template #sku-header-extra v-if="getSlots('sku-header-extra')">
+        <template v-if="getSlots('sku-header-extra')" #sku-header-extra>
           <slot name="sku-header-extra"></slot>
         </template>
       </sku-header>
@@ -52,7 +52,7 @@
         :confirm-text="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
       >
-        <template #operate-btn v-if="getSlots('sku-operate')">
+        <template v-if="getSlots('sku-operate')" #operate-btn>
           <slot name="sku-operate"></slot>
         </template>
       </sku-operate>

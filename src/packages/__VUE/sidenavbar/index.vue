@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view class="nut-side-navbar__content">
-      <view class="nut-side-navbar__content__list" ref="list">
+      <view ref="list" class="nut-side-navbar__content__list">
         <slot></slot>
       </view>
     </view>

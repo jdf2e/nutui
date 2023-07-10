@@ -4,19 +4,21 @@
     position="bottom"
     :pop-class="popClass"
     :overlay="overlay"
-    @click-overlay="closeBoard()"
     overlay-class="nut-number-keyboard-overlay"
+    @click-overlay="closeBoard()"
   >
-    <div class="nut-number-keyboard" ref="root">
-      <div class="nut-number-keyboard__header" v-if="title">
+    <div ref="root" class="nut-number-keyboard">
+      <div v-if="title" class="nut-number-keyboard__header">
         <h3 class="nut-number-keyboard__title">{{ title }}</h3>
-        <span class="van-number-keyboard__close" v-if="type == 'default'" @click="closeBoard()">{{
+        <span v-if="type == 'default'" class="van-number-keyboard__close" @click="closeBoard()">{{
           translate('done')
         }}</span>
       </div>
       <div class="nut-number-keyboard__body">
         <div class="nut-number-keyboard__keys">
           <div
+            v-for="item of keysList"
+            :key="'key' + item.id"
             :class="[
               'nut-key__wrapper',
               {
@@ -24,8 +26,6 @@
                   item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
               }
             ]"
-            v-for="item of keysList"
-            :key="'key' + item.id"
           >
             <div
               :class="[
@@ -50,7 +50,7 @@
             </div>
           </div>
         </div>
-        <div class="nut-number-keyboard__sidebar" v-if="type == 'rightColumn'">
+        <div v-if="type == 'rightColumn'" class="nut-number-keyboard__sidebar">
           <div class="nut-key__wrapper">
             <div
               :class="['nut-key', { active: clickKeyIndex == 'delete' }]"

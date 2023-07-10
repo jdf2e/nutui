@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <view class="nut-picker__bar" v-if="showToolbar">
+    <view v-if="showToolbar" class="nut-picker__bar">
       <view class="nut-picker__left" @click="cancel">{{ cancelText || translate('cancel') }}</view>
       <view class="nut-picker__title"> {{ title }}</view>
       <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
@@ -9,7 +9,7 @@
     <slot name="top"></slot>
 
     <view class="nut-picker__column" :style="columnStyle">
-      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+      <view v-for="(column, columnIndex) in columnsList" :key="columnIndex" class="nut-picker__columnitem">
         <nut-picker-column
           :ref="swipeRef"
           :column="column"

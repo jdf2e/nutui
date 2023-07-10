@@ -1,6 +1,6 @@
 <template>
   <view class="nut-comment-bottom">
-    <view @click="handleClick" class="nut-comment-bottom__lable">
+    <view class="nut-comment-bottom__lable" @click="handleClick">
       <span v-if="type != 'complex'" style="display: inline">{{ info.size }}</span></view
     >
 
@@ -14,7 +14,7 @@
           </template>
           <template v-if="name == 'more'">
             <MoreX></MoreX>
-            <view class="nut-comment-bottom__cpx-item-popover" v-if="showPopver" @click="operate('popover')">{{
+            <view v-if="showPopver" class="nut-comment-bottom__cpx-item-popover" @click="operate('popover')">{{
               translate('complaintsText')
             }}</view>
           </template>

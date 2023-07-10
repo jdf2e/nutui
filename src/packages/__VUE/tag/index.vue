@@ -1,7 +1,7 @@
 <template>
   <view :class="classes" :style="getStyle()" @click="onClick">
     <slot></slot>
-    <Close class="nut-tag--close" v-if="closeable" width="12px" height="12px" @click="onClose"></Close>
+    <Close v-if="closeable" class="nut-tag--close" width="12px" height="12px" @click="onClose"></Close>
   </view>
 </template>
 

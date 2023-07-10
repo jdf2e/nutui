@@ -8,20 +8,20 @@
   >
     <!-- header -->
     <view class="nut-calendar__header">
-      <view class="nut-calendar__header-title" v-if="showTitle">{{ title || translate('title') }}</view>
-      <view class="nut-calendar__header-slot" v-if="showTopBtn">
+      <view v-if="showTitle" class="nut-calendar__header-title">{{ title || translate('title') }}</view>
+      <view v-if="showTopBtn" class="nut-calendar__header-slot">
         <slot name="btn"> </slot>
       </view>
-      <view class="nut-calendar__header-subtitle" v-if="showSubTitle">{{ yearMonthTitle }}</view>
-      <view class="nut-calendar__weekdays" ref="weeksPanel">
-        <view class="nut-calendar__weekday" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
+      <view v-if="showSubTitle" class="nut-calendar__header-subtitle">{{ yearMonthTitle }}</view>
+      <view ref="weeksPanel" class="nut-calendar__weekdays">
+        <view v-for="(item, index) of weeks" :key="index" class="nut-calendar__weekday">{{ item }}</view>
       </view>
     </view>
     <!-- content-->
-    <view class="nut-calendar__content" ref="months" @scroll="mothsViewScroll">
-      <view class="nut-calendar__panel" ref="monthsPanel">
-        <view class="nut-calendar__body" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="nut-calendar__month" v-for="(month, index) of compConthsData" :key="index">
+    <view ref="months" class="nut-calendar__content" @scroll="mothsViewScroll">
+      <view ref="monthsPanel" class="nut-calendar__panel">
+        <view ref="viewArea" class="nut-calendar__body" :style="{ transform: `translateY(${translateY}px)` }">
+          <view v-for="(month, index) of compConthsData" :key="index" class="nut-calendar__month">
             <view class="nut-calendar__month-title">{{ month.title }}</view>
             <view class="nut-calendar__days">
               <view class="nut-calendar__days-item" :class="type === 'range' ? 'nut-calendar__days-item--range' : ''">
@@ -33,23 +33,23 @@
                         {{ day.type == 'curr' ? day.day : '' }}
                       </slot>
                     </view>
-                    <view class="nut-calendar__day-tips nut-calendar__day-tips--top" v-if="topInfo">
+                    <view v-if="topInfo" class="nut-calendar__day-tips nut-calendar__day-tips--top">
                       <slot name="top-info" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="nut-calendar__day-tips nut-calendar__day-tips--bottom" v-if="bottomInfo">
+                    <view v-if="bottomInfo" class="nut-calendar__day-tips nut-calendar__day-tips--bottom">
                       <slot name="bottom-info" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="nut-calendar__day-tips--curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
+                    <view v-if="!bottomInfo && showToday && isCurrDay(day)" class="nut-calendar__day-tips--curr">
                       {{ translate('today') }}</view
                     >
                     <view
+                      v-if="isStartTip(day, month)"
                       class="nut-calendar__day-tip"
                       :class="{ 'nut-calendar__day-tips--top': rangeTip() }"
-                      v-if="isStartTip(day, month)"
                     >
                       {{ startText || translate('start') }}
                     </view>
-                    <view class="nut-calendar__day-tip" v-if="isEndTip(day, month)">{{
+                    <view v-if="isEndTip(day, month)" class="nut-calendar__day-tip">{{
                       endText || translate('end')
                     }}</view>
                   </view>
@@ -61,7 +61,7 @@
       </view>
     </view>
     <!-- footer-->
-    <view class="nut-calendar__footer" v-if="poppable && !isAutoBackFill">
+    <view v-if="poppable && !isAutoBackFill" class="nut-calendar__footer">
       <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
     </view>
   </view>

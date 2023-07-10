@@ -1,25 +1,25 @@
 <template>
-  <view class="nut-menu-item" v-show="state.showWrapper" :style="style">
+  <view v-show="state.showWrapper" class="nut-menu-item" :style="style">
     <div
       v-show="state.showPopup"
-      @click="handleClickOutside"
       class="nut-menu-item-placeholder-element"
       :style="placeholderElementStyle"
+      @click="handleClickOutside"
     >
     </div>
     <nut-popup
-      :style="{ position: 'absolute' }"
-      :overlay-style="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
+      :style="{ position: 'absolute' }"
+      :overlay-style="{ position: 'absolute' }"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
-      @closed="handleClose"
       :lock-scroll="parent.props.lockScroll"
       :teleport-disable="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
+      @closed="handleClose"
     >
       <view class="nut-menu-item__content nut-menu-item__overflow">
         <view
@@ -31,8 +31,8 @@
           @click="onClick(option)"
         >
           <span
-            class="nut-menu-item__span"
             v-if="option.value === modelValue"
+            class="nut-menu-item__span"
             :class="[option.value === modelValue ? activeTitleClass : inactiveTitleClass]"
           >
             <slot name="icon">

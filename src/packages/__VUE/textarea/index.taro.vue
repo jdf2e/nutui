@@ -13,19 +13,19 @@
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
-      @input="change"
-      @blur="blur"
-      @focus="focus"
       :show-count="false"
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
+      @input="change"
+      @blur="blur"
+      @focus="focus"
       @change="endComposing"
       @compositionend="endComposing"
       @compositionstart="startComposing"
     />
-    <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
-    <view class="nut-textarea__cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
+    <view v-if="limitShow" class="nut-textarea__limit"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
+    <view v-if="autosize" class="nut-textarea__cpoyText" :style="copyTxtStyle">{{ modelValue }}</view>
   </view>
 </template>
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->

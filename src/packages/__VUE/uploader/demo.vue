@@ -3,10 +3,10 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>{{ translate('title1') }}</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" @delete="onDelete" maximum="3" multiple>
+    <nut-uploader v-model:file-list="defaultFileList" :url="uploadUrl" maximum="3" multiple @delete="onDelete">
     </nut-uploader>
     <h2>{{ translate('title2') }}</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList1" maximum="10" multiple list-type="list">
+    <nut-uploader v-model:file-list="defaultFileList1" :url="uploadUrl" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">{{ translate('uploadfile') }}</nut-button>
     </nut-uploader>
     <h2>{{ translate('title3') }}</h2>
@@ -37,7 +37,7 @@
     <h2>{{ translate('title13') }}</h2>
     <nut-uploader :url="uploadUrl" method="put" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>{{ translate('title10') }}</h2>
-    <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+    <nut-uploader ref="uploadRef" :url="uploadUrl" maximum="5" :auto-upload="false"></nut-uploader>
     <br />
     <nut-button type="success" size="small" @click="submitUpload">{{ translate('title11') }}</nut-button>
     <nut-button type="danger" size="small" @click="clearUpload">{{ translate('title14') }}</nut-button>

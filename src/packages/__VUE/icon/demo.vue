@@ -31,7 +31,7 @@
       <IconFont name="dongdong" size="26" />
     </nut-cell>
 
-    <nut-cell-group v-for="item in icons.data" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
+    <nut-cell-group v-for="item in icons.data" :key="item" :title="currentLang == 'zh-CN' ? item.name : item.nameEn">
       <nut-cell>
         <ul>
           <li v-for="_item in item.icons" :key="_item">
@@ -41,7 +41,7 @@
         </ul>
       </nut-cell>
     </nut-cell-group>
-    <nut-cell-group v-for="item in icons.style" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
+    <nut-cell-group v-for="item in icons.style" :key="item" :title="currentLang == 'zh-CN' ? item.name : item.nameEn">
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">

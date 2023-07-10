@@ -12,14 +12,14 @@
 
     <h2>{{ translate('voicePlay') }}</h2>
     <nut-audio
+      ref="audioDemo"
       style="margin-left: 20px"
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
-      @can-play="onCanplay"
       type="none"
-      ref="audioDemo"
+      @can-play="onCanplay"
     >
       <div class="nut-voice">
         <Voice></Voice>

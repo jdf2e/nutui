@@ -2,9 +2,9 @@
   <view :class="`nut-comment-images nut-comment-images--${type}`">
     <!-- videos -->
     <view
-      class="nut-comment-images__item nut-comment-images__item--video"
       v-for="(itV, index) in videos"
       :key="itV.id"
+      class="nut-comment-images__item nut-comment-images__item--video"
       @click="showImages('video', index)"
     >
       <img :src="itV.mainUrl" />
@@ -13,15 +13,15 @@
     <!-- images -->
     <template v-for="(itI, index) in images" :key="itI.id">
       <view
-        class="nut-comment-images__item nut-comment-images__item--imgbox"
         v-if="(type == 'multi' && videos.length + index < 9) || type != 'multi'"
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
         @click="showImages('img', index + videos.length)"
       >
         <img :src="itI.smallImgUrl ? itI.smallImgUrl : itI.imgUrl" />
 
         <view
-          class="nut-comment-images__mask"
           v-if="type == 'multi' && totalImages.length > 9 && videos.length + index > 7"
+          class="nut-comment-images__mask"
         >
           <span>共 {{ totalImages.length }} 张</span>
           <Right style="width: 12px"></Right>

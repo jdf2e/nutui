@@ -39,8 +39,8 @@
 
     <!-- demo 基础用法 -->
     <nut-action-sheet
-      :safe-area-inset-bottom="true"
       v-model:visible="state.isVisible1"
+      :safe-area-inset-bottom="true"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
     >
@@ -59,8 +59,8 @@
       :title="translate('title')"
       :description="desc"
       :menu-items="menuItemsTwo"
-      @choose="chooseItemThree"
       :cancel-txt="translate('cancelTxt')"
+      @choose="chooseItemThree"
     >
     </nut-action-sheet>
     <!-- demo 选项状态-->
@@ -68,8 +68,8 @@
       v-model:visible="state.isVisible4"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsThree"
-      @choose="chooseItemFour"
       :choose-tag-value="chooseTagValue"
+      @choose="chooseItemFour"
     ></nut-action-sheet>
     <!-- 自定义面板-->
     <nut-action-sheet v-model:visible="state.isVisible5" :title="translate('title')">

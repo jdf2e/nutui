@@ -9,7 +9,7 @@
   >
     <nut-badge v-bind="$attrs">
       <view class="nut-tabbar-item_icon-box">
-        <div class="nut-tabbar-item_icon-box_icon" v-if="isHaveSlot('icon')">
+        <div v-if="isHaveSlot('icon')" class="nut-tabbar-item_icon-box_icon">
           <slot name="icon" :active="active"></slot>
         </div>
         <view v-if="icon && !isHaveSlot('icon')">

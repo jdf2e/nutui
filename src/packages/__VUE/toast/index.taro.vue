@@ -1,8 +1,8 @@
 <template>
   <Transition name="toast-fade" @after-leave="onAfterLeave">
     <view
-      :class="toastBodyClass"
       v-show="visible"
+      :class="toastBodyClass"
       :style="{
         bottom: center ? 'auto' : bottom,
         'background-color': coverColor

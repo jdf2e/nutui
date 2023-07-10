@@ -9,7 +9,7 @@
       <nut-button type="primary" style="margin-left: 50px">{{ translate('title1') }} 120px</nut-button>
     </nut-sticky>
     <h2>{{ translate('title2') }}</h2>
-    <div style="width: 100%; height: 150px; background-color: #fff" ref="container">
+    <div ref="container" style="width: 100%; height: 150px; background-color: #fff">
       <nut-sticky top="57" :container="container">
         <nut-button type="info" style="margin-left: 100px">{{ translate('title2') }}</nut-button>
       </nut-sticky>

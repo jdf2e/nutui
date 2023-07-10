@@ -2,7 +2,7 @@
   <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
     <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
-        <slot name="left-show" v-if="leftShow">
+        <slot v-if="leftShow" name="left-show">
           <Left height="12px" color="#979797"></Left>
         </slot>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
@@ -23,7 +23,7 @@
   </view>
   <view v-else :class="classes" :style="styles">
     <view class="nut-navbar__left" @click="handleLeft">
-      <slot name="left-show" v-if="leftShow">
+      <slot v-if="leftShow" name="left-show">
         <Left height="12px" color="#979797"></Left>
       </slot>
       <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>

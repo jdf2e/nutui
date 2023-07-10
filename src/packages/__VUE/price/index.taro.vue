@@ -8,7 +8,7 @@
       v-html="showSymbol"
     ></view>
     <view :class="`nut-price--${size}`">{{ formatThousands(price) }}</view>
-    <view :class="`nut-price--decimal-${size}`" v-if="decimalDigits != 0">.</view>
+    <view v-if="decimalDigits != 0" :class="`nut-price--decimal-${size}`">.</view>
     <view :class="`nut-price--decimal-${size}`">{{ formatDecimal(price) }}</view>
     <view
       v-if="needSymbol && position == 'after'"

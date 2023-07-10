@@ -7,7 +7,7 @@
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
   >
-    <view class="nut-swipe__left" ref="leftRef">
+    <view ref="leftRef" class="nut-swipe__left">
       <slot name="left"></slot>
     </view>
 
@@ -15,7 +15,7 @@
       <slot name="default"></slot>
     </view>
 
-    <view class="nut-swipe__right" ref="rightRef">
+    <view ref="rightRef" class="nut-swipe__right">
       <slot name="right"></slot>
     </view>
   </view>

@@ -5,15 +5,15 @@
     position="bottom"
     round
     :closeable="true"
-    @click-overlay="closePopup"
-    @click-close-icon="closePopup"
     :destroy-on-close="true"
     :style="{ height: '85vh' }"
+    @click-overlay="closePopup"
+    @click-close-icon="closePopup"
   >
     <nut-calendar-item
       v-if="visible"
-      props
       ref="calendarRef"
+      props
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
@@ -24,32 +24,33 @@
       :default-value="defaultValue"
       :start-date="startDate"
       :end-date="endDate"
-      @update="update"
-      @close="close"
-      @choose="choose"
-      @select="select"
       :show-today="showToday"
       :show-title="showTitle"
       :show-sub-title="showSubTitle"
       :to-date-animation="toDateAnimation"
       :first-day-of-week="firstDayOfWeek"
+      @update="update"
+      @close="close"
+      @choose="choose"
+      @select="select"
     >
-      <template #btn v-if="showTopBtn">
+      <template v-if="showTopBtn" #btn>
         <slot name="btn"> </slot>
       </template>
-      <template #day="date" v-if="dayInfo">
+      <template v-if="dayInfo" #day="date">
         <slot name="day" :date="date.date"> </slot>
       </template>
-      <template #top-info="date" v-if="topInfo">
+      <template v-if="topInfo" #top-info="date">
         <slot name="top-info" :date="date.date"> </slot>
       </template>
-      <template #bottom-info="date" v-if="bottomInfo">
+      <template v-if="bottomInfo" #bottom-info="date">
         <slot name="bottom-info" :date="date.date"> </slot>
       </template>
     </nut-calendar-item>
   </nut-popup>
   <nut-calendar-item
     v-else
+    ref="calendarRef"
     :type="type"
     :is-auto-back-fill="isAutoBackFill"
     :poppable="poppable"
@@ -60,27 +61,26 @@
     :default-value="defaultValue"
     :start-date="startDate"
     :end-date="endDate"
-    @update="update"
-    @close="close"
-    @choose="choose"
-    @select="select"
     :show-today="showToday"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
     :to-date-animation="toDateAnimation"
     :first-day-of-week="firstDayOfWeek"
-    ref="calendarRef"
+    @update="update"
+    @close="close"
+    @choose="choose"
+    @select="select"
   >
-    <template #btn v-if="showTopBtn">
+    <template v-if="showTopBtn" #btn>
       <slot name="btn"> </slot>
     </template>
-    <template #day="date" v-if="dayInfo">
+    <template v-if="dayInfo" #day="date">
       <slot name="day" :date="date.date"> </slot>
     </template>
-    <template #top-info="date" v-if="topInfo">
+    <template v-if="topInfo" #top-info="date">
       <slot name="top-info" :date="date.date"> </slot>
     </template>
-    <template #bottom-info="date" v-if="bottomInfo">
+    <template v-if="bottomInfo" #bottom-info="date">
       <slot name="bottom-info" :date="date.date"> </slot>
     </template>
   </nut-calendar-item>

@@ -1,20 +1,20 @@
 <template>
-  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :close-on-click-overlay="closeAbled">
+  <nut-popup :visible="visible" position="bottom" round :close-on-click-overlay="closeAbled" @click-overlay="close">
     <view :class="classes">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
       <view v-if="!slotDefault">
-        <view class="nut-action-sheet__item nut-action-sheet__desc" v-if="description">{{ description }}</view>
-        <view class="nut-action-sheet__menu" v-if="menuItems.length">
+        <view v-if="description" class="nut-action-sheet__item nut-action-sheet__desc">{{ description }}</view>
+        <view v-if="menuItems.length" class="nut-action-sheet__menu">
           <view
             v-for="(item, index) of menuItems"
+            :key="index"
             class="nut-action-sheet__item"
             :class="{
               'nut-action-sheet__item--disabled': item.disable,
               'nut-action-sheet__item--loading': item.loading
             }"
             :style="{ color: isHighlight(item) || item.color }"
-            :key="index"
             @click="chooseItem(item, index)"
           >
             <Loading v-if="item.loading" name="loading"></Loading>
@@ -22,7 +22,7 @@
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
         </view>
-        <view class="nut-action-sheet__cancel" v-if="cancelTxt" @click="cancelActionSheet">
+        <view v-if="cancelTxt" class="nut-action-sheet__cancel" @click="cancelActionSheet">
           {{ cancelTxt }}
         </view>
       </view>

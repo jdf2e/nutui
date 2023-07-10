@@ -1,7 +1,7 @@
 <template>
-  <nut-tabs class="nut-cascader" v-model="tabsCursor" @click="handleTabClick" title-scroll>
+  <nut-tabs v-model="tabsCursor" class="nut-cascader" title-scroll @click="handleTabClick">
     <template v-if="!initLoading && panes.length">
-      <nut-tab-pane v-for="(pane, index) in panes" :title="formatTabTitle(pane)" :key="index">
+      <nut-tab-pane v-for="(pane, index) in panes" :key="index" :title="formatTabTitle(pane)">
         <view role="menu" class="nut-cascader-pane">
           <template v-for="node in pane.nodes" :key="node.value">
             <view

@@ -34,8 +34,8 @@
         :list="horseLamp1"
         :speed="10"
         :stand-time="1000"
-        @click="go"
         :close-mode="true"
+        @click="go"
       ></nut-noticebar>
     </div>
 
@@ -53,11 +53,11 @@
     <div class="interstroll-list">
       <nut-noticebar direction="vertical" :height="50" :speed="10" :stand-time="1000" :list="[]" @close="go">
         <div
+          v-for="(item, index) in data1"
+          :key="index"
           class="custom-item"
           :data-index="index"
-          v-for="(item, index) in data1"
           style="height: 50px; line-height: 50px"
-          :key="index"
           >{{ item }}</div
         >
       </nut-noticebar>

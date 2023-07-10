@@ -32,7 +32,6 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/no-v-text-v-html-on-component': 'off',
     // will be fixed
-    'vue/attributes-order': 'off',
     'vue/v-on-event-hyphenation': 'off',
     'no-unused-vars': 'off',
     'vue/valid-v-for': 'off',

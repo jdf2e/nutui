@@ -6,7 +6,7 @@
     <div class="nut-card__right">
       <div class="nut-card__right__title">{{ title }}</div>
       <slot name="prolist"></slot>
-      <div class="nut-card__right__price" v-if="isNeedPrice">
+      <div v-if="isNeedPrice" class="nut-card__right__price">
         <template v-if="isHaveSlot('price')">
           <slot name="price"></slot>
         </template>
