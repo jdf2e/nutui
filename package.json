@@ -116,8 +116,8 @@
     "pnpm": ">= 7.0.0"
   },
   "lint-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,scss}": "prettier --write"
+    "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {
     "type": "git",

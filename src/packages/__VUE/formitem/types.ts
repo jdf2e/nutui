@@ -1,10 +1,10 @@
-export class FormItemRuleWithoutValidator {
+export interface FormItemRuleWithoutValidator {
   regex?: RegExp;
   required?: boolean;
-  message!: string;
+  message: string;
   [key: string]: any;
 }
 
-export class FormItemRule extends FormItemRuleWithoutValidator {
+export interface FormItemRule extends FormItemRuleWithoutValidator {
   validator?: (value: any, ruleCfg: FormItemRuleWithoutValidator) => boolean | Promise<string | boolean>;
 }
