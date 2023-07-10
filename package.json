@@ -117,7 +117,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
-    "*.{ts,tsx,js,jsx,vue}": "eslint --fix"
+    "src/**/*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {
     "type": "git",
