@@ -12,7 +12,7 @@
       @click-close-icon="close"
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
-      :teleportDisable="false"
+      :teleport-disable="false"
     >
       <view class="nut-short-password-title">{{ title || translate('title') }}</view>
       <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>

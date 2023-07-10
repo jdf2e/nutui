@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
-    <nut-invoice :data="data" :formValue="formValue" @onSubmit="submit"></nut-invoice>
+    <nut-invoice :data="data" :form-value="formValue" @onSubmit="submit"></nut-invoice>
   </div>
 </template>
 

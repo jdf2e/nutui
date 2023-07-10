@@ -13,7 +13,7 @@
     <h2>{{ translate('title1') }}</h2>
     <nut-address-list
       :data="data"
-      long-Press
+      long-press
       :show-bottom-button="false"
       @click-item="clickItem"
       @del-icon="delClick"
@@ -27,7 +27,7 @@
     <h2>{{ translate('title2') }}</h2>
     <nut-address-list
       :data="data"
-      swipeEdition
+      swipe-edition
       show-bottom-button
       @click-item="clickItem"
       @del-icon="delClick"

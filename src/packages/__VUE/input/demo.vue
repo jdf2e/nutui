@@ -12,15 +12,15 @@
     <nut-input :placeholder="translate('readonly')" v-model="state.readonly" readonly />
     <nut-input :placeholder="translate('disabled')" v-model="state.disabled" disabled />
     <h2>{{ translate('title3') }}</h2>
-    <nut-input v-model="state.clear" :placeholder="translate('clear')" clearable clearSize="14" />
+    <nut-input v-model="state.clear" :placeholder="translate('clear')" clearable clear-size="14" />
     <nut-input
       v-model="state.clear2"
       :placeholder="translate('clear2')"
       clearable
-      clearSize="14"
+      clear-size="14"
       show-word-limit
       max-length="50"
-      :showClearIcon="true"
+      :show-clear-icon="true"
     >
       <template #clear>
         <Close width="12" height="12" @click="clearValue"></Close>

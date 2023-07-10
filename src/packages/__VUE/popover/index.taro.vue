@@ -9,16 +9,16 @@
   ></view>
   <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="popoverstyles" ref="popoverbox">
     <nut-popup
-      :popClass="`nut-popover-content nut-popover-content--${location}`"
+      :pop-class="`nut-popover-content nut-popover-content--${location}`"
       :style="customStyle"
       v-model:visible="showPopup"
       position=""
       transition="nut-popover"
       :overlay="overlay"
       :duration="duration"
-      :overlayStyle="overlayStyle"
-      :overlayClass="overlayClass"
-      :closeOnClickOverlay="closeOnClickOverlay"
+      :overlay-style="overlayStyle"
+      :overlay-class="overlayClass"
+      :close-on-click-overlay="closeOnClickOverlay"
     >
       <view ref="popoverContentRef" :id="'popoverContentRef' + refRandomId" class="nut-popover-content-group">
         <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>

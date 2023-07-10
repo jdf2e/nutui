@@ -13,12 +13,12 @@
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
+          :columns-type="columnsType"
           :value="defaultValues && defaultValues[columnIndex]"
-          :threeDimensional="threeDimensional"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="threeDimensional"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
           @change="
             (option:PickerOption) => {
               changeHandler(columnIndex, option);

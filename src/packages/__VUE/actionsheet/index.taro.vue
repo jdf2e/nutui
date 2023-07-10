@@ -1,5 +1,5 @@
 <template>
-  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :closeOnClickOverlay="closeAbled">
+  <nut-popup :visible="visible" position="bottom" round @click-overlay="close" :close-on-click-overlay="closeAbled">
     <view :class="classes">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>

@@ -6,7 +6,7 @@
         :auto-play="autoplay"
         class="nut-image-preview-swiper"
         :loop="isLoop"
-        :is-preventDefault="false"
+        :is-prevent-default="false"
         direction="horizontal"
         @change="setActive"
         :init-page="initNo"

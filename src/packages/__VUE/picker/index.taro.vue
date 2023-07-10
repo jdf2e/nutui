@@ -14,11 +14,11 @@
     <!-- Taro 下转换成 微信小程序 -->
     <picker-view
       v-if="ENV != ENV_TYPE.WEB"
-      :indicatorStyle="`height:${optionHeight}px`"
+      :indicator-style="`height:${optionHeight}px`"
       :value="defaultIndexes"
       :style="pickerViewStyles"
       v-bind="$attrs"
-      :immediateChange="true"
+      :immediate-change="true"
       @change="tileChange"
       @pickstart="handlePickstart"
       @pickend="handlePickend"
@@ -43,12 +43,12 @@
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
+          :columns-type="columnsType"
           :value="defaultValues[columnIndex]"
-          :threeDimensional="false"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="false"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
           @change="
             (option:PickerOption) => {
               changeHandler(columnIndex, option);

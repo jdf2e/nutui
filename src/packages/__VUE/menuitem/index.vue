@@ -9,7 +9,7 @@
     </div>
     <nut-popup
       :style="{ position: 'absolute' }"
-      :overlayStyle="{ position: 'absolute' }"
+      :overlay-style="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
@@ -17,8 +17,8 @@
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
       @closed="handleClose"
-      :lockScroll="parent.props.lockScroll"
-      :teleportDisable="false"
+      :lock-scroll="parent.props.lockScroll"
+      :teleport-disable="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
       <view class="nut-menu-item__content nut-menu-item__overflow">

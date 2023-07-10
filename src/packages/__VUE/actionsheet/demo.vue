@@ -1,19 +1,19 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
+    <nut-cell :show-icon="true" :is-link="true" @click="switchActionSheet('isVisible1')">
       <span
         ><label>{{ translate('basic') }}</label></span
       >
       <div v-html="state.val1"></div>
     </nut-cell>
-    <nut-cell :showIcon="true" :isLink="true" @click="switchActionSheet('isVisible2')">
+    <nut-cell :show-icon="true" :is-link="true" @click="switchActionSheet('isVisible2')">
       <span
         ><label>{{ translate('showCancelButton') }}</label></span
       >
       <div v-html="state.val2"></div>
     </nut-cell>
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
+    <nut-cell :is-link="true" @click="switchActionSheet('isVisible3')">
       <span
         ><label>{{ translate('showDescription') }}</label></span
       >
@@ -21,7 +21,7 @@
     </nut-cell>
     <h2>{{ translate('optionStatus') }}</h2>
 
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
+    <nut-cell :is-link="true" @click="switchActionSheet('isVisible4')">
       <span
         ><label>{{ translate('optionStatus') }}</label></span
       >
@@ -30,7 +30,7 @@
 
     <h2>{{ translate('customContent') }}</h2>
 
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
+    <nut-cell :is-link="true" @click="switchActionSheet('isVisible5')">
       <span
         ><label>{{ translate('customContent') }}</label></span
       >

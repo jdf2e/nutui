@@ -6,7 +6,7 @@
     </div>
     <h2>{{ translate('customWidth') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="50" strokeWidth="10"> </nut-circle-progress>
+      <nut-circle-progress :progress="50" stroke-width="10"> </nut-circle-progress>
     </div>
 
     <h2>{{ translate('Gradient') }}</h2>
