@@ -48,18 +48,20 @@
     <h2>{{ translate('title8') }}</h2>
     <nut-cell>
       <nut-switch v-model="checked8" loading>
-        <template #icon><Loading name="loading" /></template>
+        <template #icon>
+          <Loading name="loading" />
+        </template>
       </nut-switch>
     </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs } from 'vue';
+import { ref, reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('switch');
+const { translate } = createComponent('switch');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -90,7 +92,7 @@ const initTranslate = () =>
       text2: 'Closed'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Loading },
   setup() {
     initTranslate();

@@ -74,7 +74,7 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 
-const { createDemo, translate } = createComponent('animate');
+const { translate } = createComponent('animate');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -109,7 +109,7 @@ const initTranslate = () =>
       float: 'float-float'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

@@ -47,10 +47,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, reactive, toRefs, onMounted, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs, onMounted } from 'vue';
-const { createDemo, translate } = createComponent('countup');
+const { translate } = createComponent('countup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -71,7 +70,7 @@ const initTranslate = () =>
       btn2: 'Not winning'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -136,23 +135,29 @@ export default createDemo({
 #app .demo {
   padding: 57px 0 0 0;
 }
+
 .show-demo {
   background: #ffffff;
 }
+
 .nut-theme-dark {
   .show-demo {
     background: $dark-background;
   }
 }
+
 h2 {
   padding: 0 20px;
 }
+
 .btnBtn {
   text-align: center;
+
   .nut-button {
     margin-right: 20px;
   }
 }
+
 .disabledClick {
   pointer-events: none !important;
   cursor: not-allowed !important;

@@ -110,9 +110,9 @@
 </template>
 
 <script lang="ts">
-import { h, ref } from 'vue';
+import { h, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('tabbar');
+const { translate } = createComponent('tabbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -140,7 +140,7 @@ const initTranslate = () =>
       title: 'tab'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Home, Category, Find, Cart, My },
   props: {},
   setup() {

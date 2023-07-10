@@ -33,9 +33,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('video');
+const { translate } = createComponent('video');
 
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -59,7 +59,7 @@ const initTranslate = () =>
       title6: 'Video switching'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -118,6 +118,7 @@ export default createDemo({
 .demo {
   padding: 57px 0 0 0 !important;
 }
+
 h4 {
   margin-left: 25px;
   margin-top: 20px;
@@ -128,10 +129,12 @@ h4 {
 
 .nut-cell {
   padding: 0;
+
   &::after {
     display: none;
   }
 }
+
 .m-b {
   margin-bottom: 60px;
 }

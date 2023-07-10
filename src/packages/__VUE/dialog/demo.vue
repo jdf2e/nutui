@@ -36,9 +36,9 @@
   </div>
 </template>
 <script lang="ts">
-import { createVNode, ref } from 'vue';
+import { createVNode, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('dialog');
+const { translate } = createComponent('dialog');
 import { showDialog } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -80,7 +80,7 @@ const initTranslate = () =>
       content4: 'Click confirm to close it in 1 second'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const visible = ref(false);

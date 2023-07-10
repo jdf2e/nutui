@@ -47,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('uploader');
+const { translate } = createComponent('uploader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '../toast/index';
 const initTranslate = () =>
@@ -91,7 +91,7 @@ const initTranslate = () =>
       title14: 'Clear upload manually'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';

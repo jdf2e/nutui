@@ -78,10 +78,10 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('short-password');
+const { translate } = createComponent('short-password');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -108,7 +108,7 @@ const initTranslate = () =>
       cancelTips: 'Click the Cancel button to close the popup'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
 

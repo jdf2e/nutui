@@ -115,9 +115,9 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('tour');
+const { translate } = createComponent('tour');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -139,7 +139,7 @@ const initTranslate = () =>
       tryClick: 'Try Click'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
 
@@ -237,21 +237,25 @@ export default createDemo({
   display: flex;
   align-items: center;
   height: 117px;
+
   > img {
     width: 67px;
     height: 67px;
     margin-right: 18px;
     flex-shrink: 0;
   }
+
   .info {
     display: flex;
     flex-direction: column;
+
     h1 {
       margin: 0;
       height: 48px;
       font-size: 34px;
       color: rgba(51, 51, 51, 1);
     }
+
     p {
       height: 18px;
       font-size: 12px;
@@ -273,6 +277,7 @@ export default createDemo({
     margin-right: 10px;
   }
 }
+
 .tour-demo-custom-content {
   padding: 8px;
   display: flex;
@@ -283,6 +288,7 @@ export default createDemo({
     border-color: #fff;
   }
 }
+
 .tour-demo {
   .nut-tabbar-item_icon-box_nav-word {
     font-size: 14px;

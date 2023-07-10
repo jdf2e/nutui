@@ -44,9 +44,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('skeleton');
+const { translate } = createComponent('skeleton');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -70,7 +70,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const checked = ref(false);
@@ -86,20 +86,25 @@ export default createDemo({
 <style lang="scss">
 .content {
   margin-bottom: 20px;
+
   .nut-switch {
     margin: 0 16px 8px 0;
   }
+
   .container {
     display: flex;
+
     .right-content {
       margin-left: 19px;
       font-family: PingFangSC;
       display: flex;
       flex-direction: column;
+
       .title {
         font-size: 14px;
         color: rgba(51, 51, 51, 1);
       }
+
       .desc {
         margin-top: 10px;
         font-size: 13px;
@@ -108,9 +113,11 @@ export default createDemo({
     }
   }
 }
+
 .pic-compose {
   display: flex;
   justify-content: space-between;
+
   .item {
     width: 47%;
   }

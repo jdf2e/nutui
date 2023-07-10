@@ -11,7 +11,7 @@ export const component = (componentName: string, components: any) => {
     props: {
       ...popupProps
     },
-    emits: ['click-pop', 'click-close-icon', 'open', 'close', 'opend', 'closed', 'click-overlay', 'update:visible'],
+    emits: ['click-pop', 'click-close-icon', 'open', 'close', 'opened', 'closed', 'click-overlay', 'update:visible'],
 
     setup(props: any, { emit }: any) {
       const state = reactive({
@@ -85,12 +85,12 @@ export const component = (componentName: string, components: any) => {
         }
       };
 
-      const onOpened = (e: Event) => {
-        emit('opend', e);
+      const onOpened = (el: Element) => {
+        emit('opened', el);
       };
 
-      const onClosed = (e: Event) => {
-        emit('closed', e);
+      const onClosed = (el: Element) => {
+        emit('closed', el);
       };
 
       watch(

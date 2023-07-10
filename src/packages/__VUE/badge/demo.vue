@@ -57,7 +57,7 @@
       </nut-badge>
       <nut-badge>
         <template #icon>
-          <Link color="#ffffff" width="12px" height="12px"></Link>
+          <Link color="#ffffff" width="12px" height="12px"> </Link>
         </template>
         <nut-avatar shape="square"></nut-avatar>
       </nut-badge>
@@ -93,7 +93,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('badge');
+const { translate } = createComponent('badge');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Check, Link, Download } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -115,7 +115,7 @@ const initTranslate = () =>
       title5: 'Standalone'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Check, Download, Link },
   setup() {
     initTranslate();

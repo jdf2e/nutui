@@ -56,11 +56,11 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive } from 'vue';
+import { toRefs, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '../toast';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
-const { createDemo, translate } = createComponent('searchbar');
+const { translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -90,7 +90,7 @@ const initTranslate = () =>
       shape: 'Search input shape'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { Search2, Left, Photograph, Message },
   setup() {

@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('time-select');
-export default createDemo({
+const { defineComponent } = createComponent('time-select');
+export default defineComponent({
   setup() {
     const state = reactive({
       visible1: false,

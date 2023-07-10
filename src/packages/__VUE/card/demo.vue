@@ -71,9 +71,9 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('card');
+const { translate } = createComponent('card');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -108,7 +108,7 @@ const initTranslate = () =>
       question: 'inquiry'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const state = reactive({
@@ -134,6 +134,7 @@ export default createDemo({
   margin: 3px 0 1px;
   height: 15px;
   overflow: hidden;
+
   > span {
     float: left;
     padding: 0 5px;
@@ -146,6 +147,7 @@ export default createDemo({
     margin-right: 5px;
   }
 }
+
 .tag {
   display: inline-block;
   vertical-align: middle;
@@ -153,6 +155,7 @@ export default createDemo({
   margin-left: 2px;
   height: 14px;
 }
+
 .customize {
   font-size: 12px;
 }

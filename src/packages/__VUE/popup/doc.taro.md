@@ -217,8 +217,8 @@ app.use(Popup);
 | click-close-icon | 点击关闭图标时触发     | `event: Event` |
 | open             | 打开弹框时触发         | -              |
 | close            | 关闭弹框时触发         | -              |
-| opend            | 遮罩打开动画结束时触发 | `event: Event` |
-| closed           | 遮罩关闭动画结束时触发 | `event: Event` |
+| opened           | 遮罩打开动画结束时触发 | `el: Element`  |
+| closed           | 遮罩关闭动画结束时触发 | `el: Element`  |
 | click-overlay    | 点击遮罩触发           | `event: Event` |
 
 ### Slots

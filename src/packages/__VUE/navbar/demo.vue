@@ -67,9 +67,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('navbar');
+const { translate } = createComponent('navbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -103,7 +103,7 @@ const initTranslate = () =>
       title3: 'Multi-tab switching navigation'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { ShareN, Cart2, MoreX, HorizontalN },
   setup() {
     initTranslate();

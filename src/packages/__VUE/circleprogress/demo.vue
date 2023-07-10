@@ -33,9 +33,9 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('circle-progress');
+const { translate } = createComponent('circle-progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -61,7 +61,7 @@ const initTranslate = () =>
       add: 'add'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const gradientColor = {
@@ -101,6 +101,7 @@ export default createDemo({
   border-top: 1px solid rgba(234, 240, 251, 1);
   padding-top: 6px;
   background: rgba(255, 255, 255, 1);
+
   .nut-button {
     margin-right: 10px;
   }
@@ -112,6 +113,7 @@ export default createDemo({
   background: rgba(255, 255, 255, 1);
   padding: 10px 0;
 }
+
 .nut-theme-dark {
   .demo__piece,
   .demo__btn {

@@ -59,10 +59,10 @@
 </template>
 
 <script lang="ts">
-import { ref, getCurrentInstance, reactive } from 'vue';
+import { ref, getCurrentInstance, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('number-keyboard');
+const { translate } = createComponent('number-keyboard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -87,7 +87,7 @@ const initTranslate = () =>
       bindValue: 'Bind Value：'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

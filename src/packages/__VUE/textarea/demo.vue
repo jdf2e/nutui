@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('textarea');
+const { translate } = createComponent('textarea');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -43,7 +43,7 @@ const initTranslate = () =>
       desc2: 'Textarea disabled'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const value = ref('');

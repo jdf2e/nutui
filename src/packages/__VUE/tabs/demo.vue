@@ -95,9 +95,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, computed } from 'vue';
+import { reactive, computed, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('tabs');
+const { translate } = createComponent('tabs');
 import { Dongdong } from '@nutui/icons-vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -133,7 +133,7 @@ const initTranslate = () =>
       custom: (val: string) => `custom ${1}`
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { Dongdong },
   setup() {

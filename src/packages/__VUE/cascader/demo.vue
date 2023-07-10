@@ -91,9 +91,9 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('cascader');
+const { translate } = createComponent('cascader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -116,7 +116,7 @@ const initTranslate = () =>
       addressTip1: 'Please select an address'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

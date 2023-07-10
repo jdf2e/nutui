@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('drag');
+const { translate } = createComponent('drag');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -53,7 +53,7 @@ const initTranslate = () =>
       limitBoundaries: 'Limit Boundaries'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     function right() {

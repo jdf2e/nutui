@@ -22,9 +22,9 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('watermark');
+const { translate } = createComponent('watermark');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -41,7 +41,7 @@ const initTranslate = () =>
       btn2: 'Image Watermark'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -68,17 +68,21 @@ export default createDemo({
     display: block;
     position: relative;
     background: #fff;
+
     > img {
       width: 100%;
     }
+
     .mark1 {
       width: 100%;
       top: 50px;
     }
+
     .nut-button {
       margin-right: 10px;
     }
   }
+
   .wrap2 {
     position: relative;
     z-index: 2;

@@ -52,9 +52,9 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('fixednav');
+const { translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Retweet } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -84,7 +84,7 @@ const initTranslate = () =>
       my: 'My'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   components: {
     Retweet

@@ -23,7 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

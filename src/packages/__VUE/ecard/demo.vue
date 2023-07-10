@@ -13,9 +13,9 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('ecard');
+const { translate } = createComponent('ecard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -26,7 +26,7 @@ const initTranslate = () =>
       basic: 'Basic Usage'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const dataList = reactive([

@@ -192,9 +192,9 @@
 
 <script lang="ts">
 import { showToast } from '@/packages/nutui.vue';
-import { reactive, ref } from 'vue';
+import { reactive, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('form');
+const { translate } = createComponent('form');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { FormItemRuleWithoutValidator } from '../formitem/types';
 const initTranslate = () =>
@@ -278,7 +278,7 @@ const initTranslate = () =>
       asyncValidator: 'Simulating asynchronous verification'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

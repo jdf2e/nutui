@@ -97,10 +97,10 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading, CircleClose } from '@nutui/icons-vue';
-const { createDemo, translate } = createComponent('image');
+const { translate } = createComponent('image');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -123,7 +123,7 @@ const initTranslate = () =>
       lazy: 'Lazy Load'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   components: {
     Loading,
@@ -147,6 +147,7 @@ export default createDemo({
     text-align: center;
     color: #999;
   }
+
   .nut-row-flex-wrap {
     .nut-col {
       margin-bottom: 20px;

@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('price');
+const { translate } = createComponent('price');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -59,7 +59,7 @@ const initTranslate = () =>
       symbol: 'RMB'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     return {

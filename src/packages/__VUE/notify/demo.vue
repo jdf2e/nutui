@@ -26,8 +26,8 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { showNotify } from '../../nutui.vue';
-import { ref } from 'vue';
-const { createDemo, translate } = createComponent('notify');
+import { ref, defineComponent } from 'vue';
+const { translate } = createComponent('notify');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -58,7 +58,7 @@ const initTranslate = () =>
       cusBgNotify: 'Customize background and font colors'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const baseNotify = (msg: string) => {

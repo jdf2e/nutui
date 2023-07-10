@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('signature');
+const { translate } = createComponent('signature');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -37,7 +37,7 @@ const initTranslate = () =>
       tips: 'Tips: click the confirm button, and the signature image is displayed below'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -98,6 +98,7 @@ export default createDemo({
 .demo {
   display: flex;
   flex-direction: column;
+
   .demo-tips {
     font-size: 12px;
     color: #666;

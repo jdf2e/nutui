@@ -104,9 +104,9 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, h } from 'vue';
+import { reactive, ref, toRefs, h, defineComponent } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('popover');
+const { translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
 
@@ -139,7 +139,7 @@ const initTranslate = () =>
       contentTarget: 'custom target'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { Service },
   setup() {
     initTranslate();
@@ -317,10 +317,12 @@ export default createDemo({
 .demo > h2 {
   padding: 0;
 }
+
 .brickBox {
   margin: 80px 0;
   display: flex;
   justify-content: center;
+
   .brick {
     width: 60px;
     height: 60px;
@@ -339,10 +341,12 @@ export default createDemo({
   .nut-popover-content {
     width: auto;
   }
+
   .self-content {
     width: 195px;
     display: flex;
     flex-wrap: wrap;
+
     &-item {
       margin-top: 10px;
       margin-bottom: 10px;
@@ -351,6 +355,7 @@ export default createDemo({
       align-items: center;
       flex-direction: column;
     }
+
     &-desc {
       margin-top: 5px;
       width: 60px;

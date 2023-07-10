@@ -73,10 +73,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, onMounted } from 'vue';
+import { reactive, toRefs, onMounted, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('time-select');
+const { translate } = createComponent('time-select');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -99,7 +99,7 @@ const initTranslate = () =>
       content: 'Your choose'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const state = reactive({
@@ -223,15 +223,18 @@ export default createDemo({
 .demo {
   .timeselect-title {
     height: 50px;
+
     p {
       line-height: 1;
       padding: 0;
       margin: 0;
+
       &.title {
         margin: 10px 0;
         font-size: 16px;
         font-weight: bold;
       }
+
       &.subtitle {
         color: #999;
       }
