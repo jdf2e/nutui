@@ -10,7 +10,7 @@ export default create({
     },
     zIndex: {
       type: [Number, String],
-      default: 2000
+      default: 99
     },
     parentHeight: {
       type: [Number],
@@ -19,7 +19,7 @@ export default create({
   },
   emits: ['change', 'scroll'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const root = ref<HTMLElement>();
 
     const rootStyle = computed(() => {

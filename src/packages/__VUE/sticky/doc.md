@@ -2,11 +2,11 @@
 
 ### 介绍
 
-效果同 `css` 中的 `position: sticky`,对低端浏览器可使用其做兼容。
+使用 fixed 定位实现的类似 `position: sticky` 的吸顶效果。
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Sticky } from '@nutui/nutui';
 
@@ -18,19 +18,12 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div class="demo">
-    <nut-sticky top="57">
-      <nut-button type="primary">吸顶按钮</nut-button>
-    </nut-sticky>
-  </div>
+  <nut-sticky>
+    <nut-button type="primary">吸顶按钮</nut-button>
+  </nut-sticky>
 </template>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-</style>
 ```
 
 :::
@@ -39,19 +32,12 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div class="demo">
-    <nut-sticky top="120">
-      <nut-button type="primary">吸顶距离120px</nut-button>
-    </nut-sticky>
-  </div>
+  <nut-sticky top="120">
+    <nut-button type="primary">吸顶距离120px</nut-button>
+  </nut-sticky>
 </template>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-</style>
 ```
 
 :::
@@ -60,37 +46,18 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div class="demo">
-    <div class="sticky-container" ref="container">
-      <nut-sticky top="20" :container="container" z-index="1">
-        <nut-button type="info">指定容器</nut-button>
-      </nut-sticky>
-    </div>
+  <div style="width: 100%; height: 150px; background: white" ref="container">
+    <nut-sticky top="20" :container="container">
+      <nut-button type="info">指定容器</nut-button>
+    </nut-sticky>
   </div>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const container = ref(null);
-      return {
-        container
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const container = ref(null);
 </script>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-  .sticky-container {
-    width: 100%;
-    height: 300px;
-    background-color: rgb(98, 161, 167);
-  }
-</style>
 ```
 
 :::
@@ -99,24 +66,12 @@ app.use(Sticky);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div class="demo">
-    <div class="container"></div>
-    <nut-sticky bottom="100" position="bottom">
-      <nut-button type="primary">吸底距离 100px</nut-button>
-    </nut-sticky>
-  </div>
+  <nut-sticky bottom="50" position="bottom">
+    <nut-button type="primary">吸底距离 50px</nut-button>
+  </nut-sticky>
 </template>
-<style>
-  .demo {
-    height: 200vh !important;
-  }
-  .container {
-    height: 800px;
-    width: 100%;
-  }
-</style>
 ```
 
 :::
@@ -125,17 +80,16 @@ app.use(Sticky);
 
 ### Props
 
-| 参数      | 说明                        | 类型    | 默认值 |
-| --------- | --------------------------- | ------- | ------ |
-| position  | 吸附位置（`top`、`bottom`） | string  | `top`  |
-| top       | 吸顶距离                    | number  | `0`    |
-| bottom    | 吸底距离                    | number  | `0`    |
-| container | 容器的 `HTML` 节点          | Element | -      |
-| z-index   | 吸附时的层级                | number  | `2000` |
+| 参数      | 说明                                    | 类型    | 默认值 |
+| --------- | --------------------------------------- | ------- | ------ |
+| position  | 吸附位置（`top`、`bottom`）             | string  | `top`  |
+| top       | 吸顶距离，`position` 为 `top` 时生效    | number  | `0`    |
+| bottom    | 吸底距离，`position` 为 `bottom` 时生效 | number  | `0`    |
+| container | 容器的 `HTML` 节点                      | Element | -      |
+| z-index   | 吸附时的层级                            | number  | `99`   |
 
 ### Events
 
-| 事件名 | 说明               | 回调参数                          |
-| ------ | ------------------ | --------------------------------- |
-| change | 吸附状态改变时触发 | `val: Boolean`                    |
-| scroll | 滚动时触发         | `{ top: Number, fixed: Boolean }` |
+| 事件名 | 说明               | 回调参数         |
+| ------ | ------------------ | ---------------- |
+| change | 吸附状态改变时触发 | `fixed: boolean` |
