@@ -34,7 +34,6 @@ module.exports = {
     // will be fixed
     'vue/v-on-event-hyphenation': 'off',
     'no-unused-vars': 'off',
-    'vue/valid-v-for': 'off',
-    'no-empty': 'off'
+    'vue/valid-v-for': 'off'
   }
 };

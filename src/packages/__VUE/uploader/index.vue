@@ -104,8 +104,8 @@ export default create({
     maximum: { type: [Number, String], default: 1 },
     clearInput: { type: Boolean, default: true },
     accept: { type: String, default: '*' },
-    headers: { type: Object, default: {} },
-    data: { type: Object, default: {} },
+    headers: { type: Object, default: () => ({}) },
+    data: { type: Object, default: () => ({}) },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
     multiple: { type: Boolean, default: false },
@@ -121,7 +121,7 @@ export default create({
     },
     beforeDelete: {
       type: Function as PropType<Interceptor>,
-      default: (file: FileItem, files: FileItem[]) => {
+      default: () => {
         return true;
       }
     },
@@ -184,7 +184,9 @@ export default create({
       uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       try {
         uploadOption.sourceFile = fileItem.formData.get(props.name);
-      } catch (error) {}
+      } catch (error) {
+        console.warn('[NutUI] <upload> formData.get(name)', error);
+      }
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');
