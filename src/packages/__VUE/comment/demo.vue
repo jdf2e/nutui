@@ -61,10 +61,10 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { createDemo, translate } = createComponent('comment');
+const { translate } = createComponent('comment');
 import { Dongdong } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
@@ -82,7 +82,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { Dongdong },
   setup() {

@@ -75,9 +75,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref, onMounted } from 'vue';
+import { reactive, toRefs, ref, onMounted, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('audio');
+const { translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop, Voice } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -96,7 +96,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   props: {},
   components: {
     Voice,
@@ -177,6 +177,7 @@ export default createDemo({
     }
   }
 }
+
 .demo {
   .nut-voice {
     display: flex;

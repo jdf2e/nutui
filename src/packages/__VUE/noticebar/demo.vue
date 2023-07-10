@@ -77,10 +77,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref } from 'vue';
+import { reactive, toRefs, ref, defineComponent } from 'vue';
 import { Fabulous } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('noticebar');
+const { translate } = createComponent('noticebar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -119,7 +119,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { Fabulous },
   setup() {

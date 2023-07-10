@@ -34,10 +34,10 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
+import { onMounted, ref, reactive, toRefs, getCurrentInstance, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 
-const { createDemo, translate } = createComponent('pull-refresh');
+const { translate } = createComponent('pull-refresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
 
@@ -67,7 +67,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -141,9 +141,11 @@ export default createDemo({
 .nut-tab-pane {
   padding: 0;
 }
+
 .nut-pull-refresh {
   height: calc(100vh - 107px);
 }
+
 .pull-block {
   text-align: center;
   color: #999;

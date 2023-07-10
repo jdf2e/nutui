@@ -76,9 +76,9 @@
 </template>
 
 <script lang="ts">
-import { toRefs, onMounted, ref, reactive } from 'vue';
+import { toRefs, onMounted, ref, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('countdown');
+const { translate } = createComponent('countdown');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -117,7 +117,7 @@ const initTranslate = () =>
       second: ''
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

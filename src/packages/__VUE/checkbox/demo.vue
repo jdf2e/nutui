@@ -39,8 +39,12 @@
       <nut-cell>
         <nut-checkbox v-model="checkbox7">
           {{ translate('icon') }}
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
+          <template #icon>
+            <Checklist />
+          </template>
+          <template #checkedIcon>
+            <Checklist color="red" />
+          </template>
         </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
@@ -137,10 +141,10 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, Ref } from 'vue';
+import { reactive, ref, toRefs, Ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('checkbox');
+const { translate } = createComponent('checkbox');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Checklist } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -192,7 +196,7 @@ const initTranslate = () =>
       useShape: 'Button shape'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     Checklist
   },
@@ -290,13 +294,16 @@ export default createDemo({
 .demo-check {
   margin-right: 10px;
 }
+
 .nut-checkbox-group {
   display: flex;
   flex-wrap: wrap;
 }
+
 .nut-checkbox {
   display: flex;
   margin-right: 20px;
+
   .nut-checkbox__label {
     margin-left: 10px;
   }

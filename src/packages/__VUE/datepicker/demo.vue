@@ -108,9 +108,9 @@
 </template>
 
 <script lang="ts">
-import { toRefs, ref, reactive } from 'vue';
+import { toRefs, ref, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('date-picker');
+const { translate } = createComponent('date-picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
 const initTranslate = () =>
@@ -160,7 +160,7 @@ const initTranslate = () =>
       popupDesc: 'With Popup'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

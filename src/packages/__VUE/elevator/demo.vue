@@ -37,9 +37,9 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, toRefs } from 'vue';
+import { computed, reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('elevator');
+const { translate } = createComponent('elevator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Jd } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -137,7 +137,7 @@ const initTranslate = () =>
       three: 'three'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     Jd
   },
@@ -431,6 +431,7 @@ export default createDemo({
     background-color: #000 !important;
   }
 }
+
 .demo {
   background-color: #fff !important;
 }

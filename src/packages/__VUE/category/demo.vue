@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs, onMounted } from 'vue';
-const { createDemo, translate } = createComponent('cmt');
+import { reactive, toRefs, onMounted, defineComponent } from 'vue';
+const { translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -34,7 +34,7 @@ const initTranslate = () =>
       title3: 'Custom taxonomy'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

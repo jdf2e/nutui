@@ -78,9 +78,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('side-navbar');
+const { translate } = createComponent('side-navbar');
 import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -132,7 +132,7 @@ const initTranslate = () =>
       nest: 'Navigation nesting (up to three layers are recommended), and click the first callback'
     }
   });
-export default createDemo({
+export default defineComponent({
   setup() {
     initTranslate();
     const state = reactive({

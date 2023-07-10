@@ -16,10 +16,10 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('swiper');
-export default createDemo({
+const { defineComponent } = createComponent('swiper');
+export default defineComponent({
   props: {},
   setup() {
     const data = reactive({});

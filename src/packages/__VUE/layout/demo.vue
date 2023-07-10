@@ -129,7 +129,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('layout');
+const { translate } = createComponent('layout');
 import Row from '../row/index.vue';
 import Col from '../col/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -146,7 +146,7 @@ const initTranslate = () =>
       flex: 'Flex layout'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     [Row.name]: Row,
     [Col.name]: Col
@@ -163,12 +163,15 @@ export default createDemo({
   margin-bottom: 20px;
   padding: 20px 0;
 }
+
 .demo .nut-row {
   overflow: hidden;
+
   &:not(:last-child) .nut-col {
     margin-bottom: 15px;
   }
 }
+
 .flex-content {
   line-height: 40px;
   color: #fff;
@@ -176,9 +179,11 @@ export default createDemo({
   border-radius: 6px;
   background: #ff8881;
   font-size: 12px;
+
   &.flex-content-light {
     background: #ffc7c4;
   }
+
   &.flex-content-height {
     height: 50px;
   }

@@ -71,9 +71,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('button');
+const { translate } = createComponent('button');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { StarFill, Star } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -144,7 +144,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   components: { StarFill, Star },
   props: {},
   setup(props) {
@@ -170,14 +170,17 @@ export default createDemo({
 .demo-button-row {
   margin-bottom: 20px;
 }
+
 .demo-button-row2 {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
+
 .nut-button {
   margin-right: 5px;
+
   &:last-child {
     margin-right: 0;
   }

@@ -102,9 +102,9 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { onMounted, reactive, ref, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs, defineComponent } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { createDemo, translate } = createComponent('address');
+const { translate } = createComponent('address');
 import { HeartFill, Heart1, Close } from '@nutui/icons-vue';
 
 const initTranslate = () =>
@@ -163,7 +163,7 @@ interface AddressResult extends AddressList {
   country: RegionData[];
   town: RegionData[];
 }
-export default createDemo({
+export default defineComponent({
   props: {},
   components: { HeartFill, Heart1, Close },
   setup() {
@@ -395,11 +395,13 @@ export default createDemo({
     }
   }
 }
+
 .nut-address-custom-buttom {
   width: 100%;
   height: 54px;
   padding: 6px 0px 0;
   border-top: 1px solid #f2f2f2;
+
   .btn {
     width: 90%;
     height: 42px;

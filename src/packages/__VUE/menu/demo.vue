@@ -50,9 +50,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('menu');
+const { translate } = createComponent('menu');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { TriangleDown, Checked } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -128,7 +128,7 @@ const initTranslate = () =>
       product17: 'Product17'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: {
     TriangleDown,
     Checked

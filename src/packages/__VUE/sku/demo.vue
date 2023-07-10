@@ -104,12 +104,12 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref, toRefs, onMounted } from 'vue';
+import { reactive, ref, toRefs, onMounted, defineComponent } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
-const { createDemo, translate } = createComponent('sku');
+const { translate } = createComponent('sku');
 
 const initTranslate = () =>
   useTranslate({
@@ -154,7 +154,7 @@ interface Data {
   imagePathMap: any;
 }
 
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -321,10 +321,12 @@ export default createDemo({
   .sku-operate-item {
     width: 100%;
     flex-shrink: 1;
+
     &:first-child {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
     }
+
     &:last-child {
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
@@ -334,6 +336,7 @@ export default createDemo({
   .sku-operate-box-dis {
     width: 100%;
     flex-shrink: 1;
+
     &:first-child {
       margin-right: 18px;
     }

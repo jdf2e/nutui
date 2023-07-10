@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('Indicator');
+const { translate } = createComponent('Indicator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -50,7 +50,7 @@ const initTranslate = () =>
       title2: 'Do not make up 0'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();

@@ -27,9 +27,9 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs } from 'vue';
+import { onMounted, ref, reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('infinite-loading');
+const { translate } = createComponent('infinite-loading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const initTranslate = () =>
@@ -50,7 +50,7 @@ const initTranslate = () =>
     }
   });
 
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -165,6 +165,7 @@ export default createDemo({
     padding: 0 !important;
     padding-left: 16px !important;
   }
+
   .infiniteUl {
     width: 100%;
     height: calc(100vh - 120px);
@@ -173,6 +174,7 @@ export default createDemo({
     overflow-y: auto;
     overflow-x: hidden;
   }
+
   .infiniteLi {
     font-size: 14px;
     color: #333;

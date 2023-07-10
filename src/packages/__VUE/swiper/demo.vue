@@ -88,9 +88,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
+import { reactive, toRefs, onMounted, ref, Ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('swiper');
+const { translate } = createComponent('swiper');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Left, Right } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -120,7 +120,7 @@ const initTranslate = () =>
       verticalCenter: 'Vertical center display'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -181,33 +181,40 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-box {
   position: relative;
+
   .nut-swiper-item {
     height: 150px;
+
     img {
       width: 100%;
       height: 100%;
     }
   }
+
   &.vertical-center {
     .nut-swiper-item {
       height: 300px;
+
       img {
         width: 100%;
         height: 100%;
       }
     }
   }
+
   ::v-deep(.nut-swiper-pagination-vertical) {
     i {
       width: 6px;
       height: 6px;
       border-radius: 50%;
+
       &.active {
         height: 18px;
         border-radius: 5px;
       }
     }
   }
+
   .page {
     position: absolute;
     bottom: 0;
@@ -220,6 +227,7 @@ export default createDemo({
     color: #fff;
     font-size: 14px;
   }
+
   .nut-swiper-btns {
     width: 100%;
     position: absolute;
@@ -228,6 +236,7 @@ export default createDemo({
     z-index: 1;
     display: flex;
     justify-content: space-between;
+
     span {
       display: flex;
       align-items: center;

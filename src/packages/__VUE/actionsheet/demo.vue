@@ -79,9 +79,9 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('action-sheet');
+const { translate } = createComponent('action-sheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -127,7 +127,7 @@ interface Item {
   disable?: boolean;
   loading?: boolean;
 }
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -222,12 +222,15 @@ export default createDemo({
   padding: 110px 0;
   text-align: center;
 }
+
 .nut-cell {
   justify-content: space-between;
 }
+
 .custom-content {
   padding: 10px 10px 160px;
 }
+
 .nut-theme-dark {
   .custom-content {
     color: white;

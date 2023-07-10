@@ -69,9 +69,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('cell');
+const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
@@ -125,7 +125,7 @@ const initTranslate = () =>
       displayIcon: 'cell display icon'
     }
   });
-export default createDemo({
+export default defineComponent({
   components: { My },
   setup() {
     initTranslate();

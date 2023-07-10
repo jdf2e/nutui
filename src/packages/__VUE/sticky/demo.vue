@@ -27,9 +27,9 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('sticky');
+const { translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -48,7 +48,7 @@ const initTranslate = () =>
       content: 'Ceiling button'
     }
   });
-export default createDemo({
+export default defineComponent({
   props: {},
   setup() {
     initTranslate();
@@ -68,9 +68,11 @@ export default createDemo({
     }
   }
 }
+
 .demo {
   height: 200vh !important;
 }
+
 .sticky-container {
   width: 100%;
   height: 300px;
