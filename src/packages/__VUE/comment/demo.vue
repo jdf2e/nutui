@@ -84,13 +84,9 @@ const initTranslate = () =>
 
 export default defineComponent({
   props: {},
-  components: { Dongdong },
   setup() {
     initTranslate();
-    let cmt = ref({});
-    const labels = () => {
-      return '<Dongdong color="#fa2c19">';
-    };
+    let cmt = ref<any>({});
 
     const handleclick = (info: any) => {
       console.log('进行跳转', info);
@@ -117,7 +113,6 @@ export default defineComponent({
 
     return {
       cmt,
-      labels,
       handleclick,
       clickImages,
       translate
@@ -125,7 +120,3 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss" scoped>
-.demo {
-}
-</style>

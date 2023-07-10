@@ -85,10 +85,10 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  props: {},
   components: {
     Retweet
   },
+  props: {},
   setup() {
     initTranslate();
     const visible = ref(false);

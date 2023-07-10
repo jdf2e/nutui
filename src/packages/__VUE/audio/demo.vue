@@ -97,7 +97,6 @@ const initTranslate = () =>
   });
 
 export default defineComponent({
-  props: {},
   components: {
     Voice,
     PlayDoubleBack,
@@ -105,6 +104,7 @@ export default defineComponent({
     PlayStart,
     PlayStop
   },
+  props: {},
   setup() {
     initTranslate();
     const audioDemo = ref({

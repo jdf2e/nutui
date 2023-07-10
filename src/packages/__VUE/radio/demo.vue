@@ -122,10 +122,10 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  props: {},
   components: {
     Checklist
   },
+  props: {},
   setup() {
     initTranslate();
     const data = reactive({

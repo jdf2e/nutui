@@ -36,6 +36,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('backtop');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -47,7 +48,7 @@ const initTranslate = () =>
   });
 export default defineComponent({
   components: { Top },
-  setup(props, { emit }) {
+  setup() {
     initTranslate();
     const handleClick = () => {
       console.log(translate('clg'));

@@ -134,8 +134,8 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  props: {},
   components: { Dongdong },
+  props: {},
   setup() {
     initTranslate();
     const state = reactive({

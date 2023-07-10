@@ -48,6 +48,7 @@ export default create({
     });
     const rootStyle = computed<CSSProperties | undefined>(() => {
       if (state.fixed) return { height: `${state.height}px` };
+      return {};
     });
     const stickyStyle = computed<CSSProperties>(() => {
       if (!state.fixed) return {};

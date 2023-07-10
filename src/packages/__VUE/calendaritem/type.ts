@@ -61,14 +61,6 @@ export interface DateInfo {
   month: string;
   day: string;
 }
-
-export interface MonthInfo {
-  curData: string[] | string;
-  title: string;
-  monthData: Day[];
-  cssHeight: number;
-  cssScrollHeight: number;
-}
 export interface CalendarRef extends HTMLElement {
   scrollToDate: (date: string) => void;
   initPosition: () => void;

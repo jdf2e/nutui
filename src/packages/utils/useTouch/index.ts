@@ -36,13 +36,13 @@ export function useTouch() {
     direction.value = '';
   };
 
-  const start = ((event: TouchEvent) => {
+  const start = (event: TouchEvent) => {
     reset();
     startX.value = event.touches[0].clientX;
     startY.value = event.touches[0].clientY;
-  }) as EventListener;
+  };
 
-  const move = ((event: TouchEvent) => {
+  const move = (event: TouchEvent) => {
     const touch = event.touches[0];
     deltaX.value = touch.clientX - startX.value;
     deltaY.value = touch.clientY - startY.value;
@@ -54,7 +54,7 @@ export function useTouch() {
     if (!direction.value) {
       direction.value = getDirection(offsetX.value, offsetY.value);
     }
-  }) as EventListener;
+  };
 
   return {
     move,

@@ -23,7 +23,7 @@
       <nut-tab-pane :title="translate('listenerTxt')">
         <div class="parentpage">
           <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-            <div class="pull-letter" v-for="item in refreshList2">
+            <div class="pull-letter" v-for="item in refreshList2" :key="item">
               <div>{{ item }}</div>
             </div>
           </nut-pull-refresh>
@@ -108,7 +108,7 @@ export default defineComponent({
       customList: [],
       refreshList: new Array(10).fill(11),
 
-      refreshList2: [].concat(letter)
+      refreshList2: ([] as Array<any>).concat(letter)
     });
 
     const refreshFun = () => {

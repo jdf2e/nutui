@@ -1,12 +1,12 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { h, PropType } from 'vue';
-const { componentName, create } = createComponent('config-provider');
+const { create } = createComponent('config-provider');
 export default create({
   props: {
     theme: { type: String, default: '' },
     themeVars: { type: Object, default: {} },
-    tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' }
+    tag: { type: String, default: 'div' }
   },
   setup(props: any, { slots }: any) {
     const kebabCase = (str: string): string => {
@@ -22,14 +22,14 @@ export default create({
       if (sColor && reg.test(sColor)) {
         if (sColor.length === 4) {
           var sColorNew = '#';
-          for (var i = 1; i < 4; i += 1) {
+          for (let i = 1; i < 4; i += 1) {
             sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
           }
           sColor = sColorNew;
         }
         //处理六位的颜色值
         var sColorChange = [];
-        for (var i = 1; i < 7; i += 2) {
+        for (let i = 1; i < 7; i += 2) {
           sColorChange.push(parseInt('0x' + sColor.slice(i, i + 2)));
         }
         return sColorChange.join(',');

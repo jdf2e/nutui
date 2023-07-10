@@ -52,7 +52,7 @@ export default create({
       default: 50
     },
     strokeLinecap: {
-      type: String as PropType<CanvasLineCap>,
+      type: String as PropType<'butt' | 'round' | 'square'>,
       default: 'round'
     },
     color: {

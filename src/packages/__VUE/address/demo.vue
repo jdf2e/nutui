@@ -105,7 +105,7 @@ import { createComponent } from '@/packages/utils/create';
 import { onMounted, reactive, ref, toRefs, defineComponent } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { translate } = createComponent('address');
-import { HeartFill, Heart1, Close } from '@nutui/icons-vue';
+import { HeartFill, Heart1 } from '@nutui/icons-vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -164,8 +164,8 @@ interface AddressResult extends AddressList {
   town: RegionData[];
 }
 export default defineComponent({
+  components: { HeartFill, Heart1 },
   props: {},
-  components: { HeartFill, Heart1, Close },
   setup() {
     initTranslate();
     const address = reactive({

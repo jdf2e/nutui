@@ -10,7 +10,9 @@ const methods = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, type, exclude } = element;
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
+    if (name !== 'Icon') {
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
+    }
     if (type === 'methods') {
       importStr += `import { show${name} } from './__VUE/${name.toLowerCase()}/index';\n`;
       methods.push(`show${name}`);

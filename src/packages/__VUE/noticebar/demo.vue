@@ -120,8 +120,8 @@ const initTranslate = () =>
   });
 
 export default defineComponent({
-  props: {},
   components: { Fabulous },
+  props: {},
   setup() {
     initTranslate();
     const state = reactive({

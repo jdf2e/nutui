@@ -58,6 +58,7 @@
   </div>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('trend-arrow');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

@@ -81,7 +81,7 @@ export const floatData = (format: any, dataOp: any, mapOps: any) => {
 
   if (Object.keys(dataOp).length > 0) {
     Object.keys(mergeFormat).forEach((keys) => {
-      if (mergeMapOps.hasOwnProperty(keys)) {
+      if (Object.prototype.hasOwnProperty.call(mergeMapOps, keys)) {
         const tof = TypeOfFun(mergeMapOps[keys]);
         if (tof == 'function') {
           mergeFormat[keys] = mergeMapOps[keys](dataOp);

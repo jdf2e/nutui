@@ -128,6 +128,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('layout');
 import Row from '../row/index.vue';

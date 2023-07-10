@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": ["@nutui/eslint-config"],
+  "ignorePatterns": [
+    "packages/nutui-playground/dist/**",
+    "packages/nutui-taro-demo/**/*",
+    "packages/nutui-touch-emulator/dist/**",
+    "packages/nutui-vscode-extension/dist/**",
+    "src/sites/**"
+  ]
+}

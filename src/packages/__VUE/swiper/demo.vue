@@ -121,6 +121,7 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
+  components: { Left, Right },
   props: {},
   setup() {
     initTranslate();
@@ -173,8 +174,7 @@ export default defineComponent({
       handleNext,
       translate
     };
-  },
-  components: { Left, Right }
+  }
 });
 </script>
 

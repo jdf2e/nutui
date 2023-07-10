@@ -92,12 +92,8 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  components: {
-    Button,
-    Dongdong
-  },
   props: {},
-  setup(props, { emit, slot }) {
+  setup() {
     initTranslate();
     const state = reactive({
       bordered1: false,
@@ -333,7 +329,7 @@ export default defineComponent({
     onMounted(() => {
       state.timer = setTimeout(() => {
         state.data5 = state.data2.slice() as any;
-      }, 5000);
+      }, 5000) as any;
     });
 
     onUnmounted(() => {

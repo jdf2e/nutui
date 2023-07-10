@@ -7,8 +7,8 @@ declare interface Window {
   webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
 }
 declare module '*.vue' {
-  import type { DefineComponent } from 'vue';
-  const component: DefineComponent<{}, {}, any>;
+  import { defineComponent } from 'vue';
+  const component: ReturnType<typeof defineComponent>;
   export default component;
 }
 

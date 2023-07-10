@@ -107,6 +107,7 @@ export default create({
         default:
           break;
       }
+      return '';
     });
 
     const getStyle = computed(() => {

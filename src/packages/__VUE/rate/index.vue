@@ -98,11 +98,11 @@ export default create({
     };
     const touch = useTouch();
     const touchMethods = {
-      onTouchStart(event: Event) {
+      onTouchStart(event: TouchEvent) {
         if (!props.touchable || props.readonly) return;
         touch.start(event);
       },
-      onTouchMove(event: Event) {
+      onTouchMove(event: TouchEvent) {
         if (!props.touchable) return;
         touch.move(event);
         if (touch.isHorizontal()) {

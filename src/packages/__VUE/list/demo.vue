@@ -3,7 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
       <nut-list :listData="count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item, index }">
+        <template v-slot="{ index }">
           <div class="list-item">
             {{ index }}
           </div>

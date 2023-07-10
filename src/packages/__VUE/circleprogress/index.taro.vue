@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watch, useSlots } from 'vue';
+import { computed, ref, watch, useSlots, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('circle-progress');
 interface Item {
@@ -31,7 +31,7 @@ export default create({
       default: 50
     },
     strokeLinecap: {
-      type: String,
+      type: String as PropType<'butt' | 'round' | 'square'>,
       default: 'round'
     },
     color: {

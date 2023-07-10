@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('drag');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
