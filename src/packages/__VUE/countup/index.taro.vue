@@ -452,7 +452,7 @@ export default create({
           if (data.sortFlag == 'equal') {
             return false;
           }
-          let refsDom: HTMLCollectionOf<Element> = document.getElementsByClassName('nut-countup__number-item');
+          let refsDom = document.getElementsByClassName('nut-countup__number-item');
           let element = refsDom[data.num_total_len - 1];
           runTurn(element);
         });

@@ -60,6 +60,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -85,8 +86,8 @@ const { translate } = createComponent('icon');
 import { showToast } from '@/packages/nutui.vue';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
 export default defineComponent({
-  props: {},
   components: { IconFont, Add },
+  props: {},
   setup() {
     initTranslate();
     const copyTag = (name: string) => {

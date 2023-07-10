@@ -32,6 +32,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('Indicator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

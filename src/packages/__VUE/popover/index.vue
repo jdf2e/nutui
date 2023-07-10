@@ -123,7 +123,7 @@ export default create({
     });
 
     const upperCaseFirst = (str: string) => {
-      var str = str.toLowerCase();
+      str = str.toLowerCase();
       str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1));
       return str;
     };
@@ -143,8 +143,8 @@ export default create({
       let cross = 0;
       let parallel = 0;
       if (isArray(offset) && offset.length == 2) {
-        cross += +offset[1];
-        parallel += +offset[0];
+        cross += Number(offset[1]);
+        parallel += Number(offset[0]);
       }
       if (width) {
         if (['bottom', 'top'].includes(direction)) {

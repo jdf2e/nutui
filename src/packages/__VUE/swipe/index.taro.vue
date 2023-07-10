@@ -138,11 +138,11 @@ export default create({
 
     const touch = useTouch();
     const touchMethods = {
-      onTouchStart(event: Event) {
+      onTouchStart(event: TouchEvent) {
         if (props.disabled) return;
         touch.start(event);
       },
-      async onTouchMove(event: Event) {
+      async onTouchMove(event: TouchEvent) {
         if (props.disabled) return;
         touch.move(event);
         if (touch.isHorizontal()) {

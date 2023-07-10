@@ -114,7 +114,7 @@ test('Collapse: should event change', async () => {
 });
 
 test('Collapse: v-model is undefined', async () => {
-  const onChange = vitest.fn();
+  const onChange = vi.fn();
   const wrapper = mount(() => {
     return (
       <Collapse onChange={onChange}>

@@ -13,8 +13,6 @@
 
 <script lang="ts">
 import { reactive, toRefs, defineComponent } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { defineComponent } = createComponent('time-select');
 export default defineComponent({
   setup() {
     const state = reactive({

@@ -1,13 +1,4 @@
-import {
-  App,
-  defineComponent,
-  ComponentPropsOptions,
-  ComponentOptions,
-  ExtractPropTypes,
-  SetupContext,
-  RenderFunction,
-  Component
-} from 'vue';
+import { App, defineComponent, ComponentOptions } from 'vue';
 import locale from '@/packages/locale';
 import { getPropByPath, isFunction } from '../util';
 

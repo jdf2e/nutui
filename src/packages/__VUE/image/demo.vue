@@ -124,11 +124,11 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  props: {},
   components: {
     Loading,
     CircleClose
   },
+  props: {},
   setup() {
     initTranslate();
     const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');

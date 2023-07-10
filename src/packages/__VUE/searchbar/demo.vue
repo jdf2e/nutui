@@ -91,8 +91,8 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  props: {},
   components: { Search2, Left, Photograph, Message },
+  props: {},
   setup() {
     const icon =
       'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';

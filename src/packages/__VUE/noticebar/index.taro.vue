@@ -43,7 +43,7 @@
           <view class="showNotica">
             <ScrollItem
               v-for="(item, index) in scrollList"
-              v-bind:key="index"
+              :key="index"
               :style="{ height: height + 'px', 'line-height': height + 'px' }"
               :item="item"
             ></ScrollItem>

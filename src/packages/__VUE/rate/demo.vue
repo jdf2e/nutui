@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { reactive, defineComponent } from 'vue';
-import { HeartFill, StarFillN } from '@nutui/icons-vue';
+import { HeartFill } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { translate } = createComponent('rate');
@@ -64,7 +64,6 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  components: { HeartFill, StarFillN },
   setup() {
     initTranslate();
     const state = reactive({
@@ -85,8 +84,7 @@ export default defineComponent({
       state,
       onChange,
       translate,
-      HeartFill,
-      StarFillN
+      HeartFill
     };
   }
 });

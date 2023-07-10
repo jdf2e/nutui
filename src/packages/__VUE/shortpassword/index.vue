@@ -18,7 +18,7 @@
       <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>
       <div class="nut-short-password-wrapper">
         <view class="nut-short-password__list" @touchstart="onTouchStart">
-          <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+          <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" :key="index">
             <view class="nut-short-password__item-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>

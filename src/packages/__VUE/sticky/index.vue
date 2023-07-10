@@ -38,13 +38,13 @@ export default create({
 
     const rootStyle = computed(() => {
       const { fixed, width, height } = state;
-
       if (fixed) {
         return {
           width: `${width}px`,
           height: `${height}px`
         };
       }
+      return {};
     });
 
     const stickyStyle = computed(() => {
@@ -118,7 +118,7 @@ export default create({
           state.fixed = +offset.value > rootRect.top && containerRect.bottom > 0;
           state.transform = diff < 0 ? diff : 0;
         } else {
-          state.fixed = offset.value > rootRect.top;
+          state.fixed = Number(offset.value) > Number(rootRect.top);
         }
       } else if (position === 'bottom') {
         const clientHeight = document.documentElement.clientHeight;

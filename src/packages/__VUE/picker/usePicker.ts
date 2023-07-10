@@ -109,7 +109,7 @@ export const usePicker = (props: any, emit: any) => {
           defaultValues.value = defaultValues.value.slice(0, index + 1);
         }
       } else {
-        defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
+        defaultValues.value[columnIndex] = Object.prototype.hasOwnProperty.call(option, 'value') ? option.value : '';
       }
 
       emit('change', {

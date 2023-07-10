@@ -66,11 +66,11 @@ export const useTabContentTouch = (props: any, tabMethods: any, taro?: any, useT
     touchState.offset = offset;
   };
   const touchMethods = {
-    onTouchStart(event: Event) {
+    onTouchStart(event: TouchEvent) {
       if (!props.swipeable) return;
       touch.start(event);
     },
-    onTouchMove(event: Event) {
+    onTouchMove(event: TouchEvent) {
       if (!props.swipeable) return;
       touch.move(event);
       touchState.moving = true;
