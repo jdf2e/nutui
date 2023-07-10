@@ -2,40 +2,19 @@
   <div class="demo sticky-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-cell>
-      <nut-sticky top="0" :parent-height="1200">
-        <nut-button type="primary">吸顶按钮</nut-button>
-      </nut-sticky>
-    </nut-cell>
+    <nut-sticky top="57">
+      <nut-button type="primary">吸顶按钮</nut-button>
+    </nut-sticky>
+    <view style="height: 100vh"></view>
+    <h2>吸顶距离</h2>
+    <nut-sticky top="120">
+      <nut-button type="primary" style="margin-left: 50px">120px</nut-button>
+    </nut-sticky>
+    <view style="height: 100vh"></view>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-
-export default defineComponent({
-  props: {},
-  components: {
-    Header
-  },
-  setup() {
-    const container = ref(null);
-    const env = Taro.getEnv();
-    return {
-      container,
-      env
-    };
-  }
-});
+const env = Taro.getEnv();
 </script>
-<style lang="scss">
-.sticky-demo {
-  overflow: auto !important;
-}
-.sticky-container {
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-}
-</style>

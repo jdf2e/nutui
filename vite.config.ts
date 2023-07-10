@@ -56,6 +56,13 @@ export default defineConfig({
       markdownItOptions: {
         typographer: false,
         highlight: function (str, lang) {
+          if (lang && lang === 'vue') {
+            try {
+              return hljs.highlight(str, {
+                language: 'html'
+              }).value;
+            } catch (__) {}
+          }
           if (lang && hljs.getLanguage(lang)) {
             try {
               return hljs.highlight(str, {
