@@ -115,7 +115,7 @@
     "vite-plugin-md": "^0.21.5",
     "vitest": "^0.32.2",
     "vue": "^3.3.4",
-    "vue-tsc": "^1.4.4"
+    "vue-tsc": "^1.8.4"
   },
   "eslintConfig": {
     "root": true,

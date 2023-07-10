@@ -250,8 +250,8 @@ Specify the mount node through `teleport`
 | click-close-icon | Triggered when the close icon is clicked              | `event: Event` |
 | open             | Triggered when the pop-up box is opened               | -              |
 | close            | Triggered when the pop-up box is closed               | -              |
-| opend            | Triggered at the end of the mask open animation       | `event: Event` |
-| closed           | Triggered when the mask closes and the animation ends | `event: Event` |
+| opened           | Triggered at the end of the mask open animation       | `el: Element`  |
+| closed           | Triggered when the mask closes and the animation ends | `el: Element`  |
 | click-overlay    | Click mask trigger                                    | `event: Event` |
 
 ### Slots
