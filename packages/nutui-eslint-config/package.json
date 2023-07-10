@@ -1,0 +1,38 @@
+{
+  "name": "@nutui/eslint-config",
+  "version": "0.0.1",
+  "description": "ESLint Config of NutUI Vue",
+  "keywords": [
+    "nutui",
+    "vue",
+    "eslint",
+    "jdf2e"
+  ],
+  "author": "jdf2e",
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git",
+    "directory": "packages/nutui-eslint-config"
+  },
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui/issues"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-vue": "^9.15.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7.32.0 || ^8.44.0"
+  }
+}

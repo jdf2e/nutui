@@ -8,10 +8,10 @@ Touch Emulator for NutUI.
 
 ```sh
 # pnpm
-pnpm i @nutui/touch-emulator
+pnpm add @nutui/touch-emulator
 
 # npm
-npm i @nutui/touch-emulator
+npm install @nutui/touch-emulator
 
 # yarn
 yarn add @nutui/touch-emulator

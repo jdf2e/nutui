@@ -56,8 +56,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:c": "vitest --coverage",
-    "lint": "prettier --check .",
-    "lint:fix": "prettier --write .",
+    "lint": "eslint ./src --ext .js,.jsx,.vue,.ts,.tsx,.scss",
+    "lint:fix": "eslint ./src --fix --ext .js,.jsx,.vue,.ts,.tsx,.scss",
     "copydocs": "node ./jd/copymd.cjs",
     "attrs:taro": "node ./jd/createAttributes.cjs taro",
     "attrs": "node ./jd/createAttributes.cjs",
@@ -84,21 +84,15 @@
     "@napi-rs/canvas": "^0.1.39",
     "@tarojs/taro": "3.6.8",
     "@types/node": "^17.0.16",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-vue": "^4.2.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vitest/coverage-v8": "^0.32.2",
     "@vitest/ui": "^0.32.2",
-    "@vue/eslint-config-prettier": "^7.1.0",
-    "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.4.0",
     "autoprefixer": "^10.3.4",
     "codesandbox": "^2.2.3",
     "eslint": "^8.44.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.15.1",
-    "eslint-visitor-keys": "^3.4.1",
+    "@nutui/eslint-config": "workspace:*",
     "fs-extra": "^9.1.0",
     "highlight.js": "^11.8.0",
     "husky": "^6.0.0",
@@ -116,26 +110,6 @@
     "vitest": "^0.32.2",
     "vue": "^3.3.4",
     "vue-tsc": "^1.8.4"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/typescript/recommended",
-      "@vue/prettier",
-      "@vue/prettier/@typescript-eslint"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
-    "rules": {
-      "vue/no-unused-components": "off",
-      "no-debugger": "off"
-    }
   },
   "engines": {
     "node": ">= 16.0.0",

@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": [
+    "@nutui/eslint-config"
+  ],
+  "overrides": [
+    {
+      "files": "src/**/*"
+    }
+  ]
+}

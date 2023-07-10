@@ -11,9 +11,11 @@ config.nav.map((item) => {
     let { name, exclude, taro } = element;
     if (taro == true) {
       const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
-        fs.existsSync(filePath) ? '.taro' : ''
-      }.vue';\n`;
+      if (name !== 'Icon') {
+        importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
+          fs.existsSync(filePath) ? '.taro' : ''
+        }.vue';\n`;
+      }
       importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
       if (exclude != true) {
         packages.push(name);
@@ -21,7 +23,7 @@ config.nav.map((item) => {
     }
   });
 });
-let installFunction = `function install(app: any) {
+let installFunction = `function install(app: App) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {
     if (item.install) {
