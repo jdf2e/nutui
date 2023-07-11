@@ -37,24 +37,28 @@
     </nut-tabs>
     <h2>{{ translate('title3') }}</h2>
     <nut-tabs v-model="state.tab3value">
-      <nut-tab-pane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list3" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
 
     <h2>{{ translate('title4') }}</h2>
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
-      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title10') }}</h2>
     <nut-tabs v-model="state.tab4value" title-scroll direction="vertical" style="height: 150px">
-      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item" :key="item">
+        Tab {{ item }}
+      </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title6') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item" :key="item">
+        Tab {{ item }}
+      </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
     <nut-tabs v-model="state.tab8value" size="large">
@@ -87,7 +91,7 @@
           <span class="nut-tabs__titles-item__line"></span>
         </div>
       </template>
-      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey">
+      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey" :key="item.paneKey">
         {{ item.title }}
       </nut-tab-pane>
     </nut-tabs>

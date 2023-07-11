@@ -32,7 +32,13 @@
     <h2>{{ translate('byName') }}</h2>
 
     <nut-tabbar v-model="activeName" @tab-switch="tabSwitch">
-      <nut-tabbar-item v-for="item in List" :name="item.name" :tab-title="item.title" :icon="item.icon">
+      <nut-tabbar-item
+        v-for="item in List"
+        :name="item.name"
+        :tab-title="item.title"
+        :icon="item.icon"
+        :key="item.name"
+      >
       </nut-tabbar-item>
     </nut-tabbar>
 
@@ -53,7 +59,8 @@
 
     <h2>{{ translate('customCheck') }}</h2>
     <nut-tabbar v-model="active">
-      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon" :key="item.name">
+      </nut-tabbar-item>
     </nut-tabbar>
 
     <h2>{{ translate('showBadge') }}</h2>
@@ -82,7 +89,8 @@
 
     <h2>{{ translate('customColor') }}</h2>
     <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon" :key="item.name">
+      </nut-tabbar-item>
     </nut-tabbar>
     <h2>{{ translate('customQuantity') }}</h2>
     <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
@@ -104,7 +112,8 @@
     </nut-tabbar>
     <h2>{{ translate('fixedBottom') }}</h2>
     <nut-tabbar bottom safe-area-inset-bottom placeholder>
-      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+      <nut-tabbar-item v-for="item in List" :tab-title="item.title" :icon="item.icon" :key="item.name">
+      </nut-tabbar-item>
     </nut-tabbar>
   </div>
 </template>
