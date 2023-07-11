@@ -5,6 +5,7 @@
     position="bottom"
     round
     closeable
+    v-bind="$attrs"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
     :style="{ height: '85vh' }"
