@@ -9,8 +9,6 @@
   </view>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
-
 import { toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from '@/packages/utils/util';

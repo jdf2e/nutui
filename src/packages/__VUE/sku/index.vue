@@ -70,7 +70,7 @@ import SkuOperate from './components/SkuOperate.vue';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 import Popup from '../popup/index.vue';
-const { componentName, create, translate } = createComponent('sku');
+const { create, translate } = createComponent('sku');
 
 export default create({
   props: {

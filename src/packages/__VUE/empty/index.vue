@@ -27,7 +27,7 @@
 <script lang="ts">
 import { toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('empty');
+const { create, translate } = createComponent('empty');
 
 type statusOptions = {
   [key: string]: string;

@@ -37,24 +37,28 @@
     </nut-tabs>
     <h2>{{ translate('title3') }}</h2>
     <nut-tabs v-model="state.tab3value">
-      <nut-tab-pane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list3" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
 
     <h2>{{ translate('title4') }}</h2>
     <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
-      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title10') }}</h2>
     <nut-tabs v-model="state.tab4value" title-scroll direction="vertical" style="height: 150px">
-      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list4" :title="'Tab ' + item" :key="item"> Tab {{ item }} </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item" :key="item">
+        Tab {{ item }}
+      </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title6') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
-      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
+      <nut-tab-pane v-for="item in state.list5" :pane-key="item" :title="'Tab ' + item" :key="item">
+        Tab {{ item }}
+      </nut-tab-pane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
     <nut-tabs v-model="state.tab8value" size="large">
@@ -74,7 +78,7 @@
     </nut-tabs>
     <h2>{{ translate('title8') }}</h2>
     <nut-tabs v-model="state.tab7value">
-      <template v-slot:titles>
+      <template #titles>
         <div
           class="nut-tabs__titles-item"
           @click="state.tab7value = item.paneKey"
@@ -87,7 +91,7 @@
           <span class="nut-tabs__titles-item__line"></span>
         </div>
       </template>
-      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey">
+      <nut-tab-pane v-for="item in state.list6" :pane-key="item.paneKey" :key="item.paneKey">
         {{ item.title }}
       </nut-tab-pane>
     </nut-tabs>
@@ -115,7 +119,7 @@ const initTranslate = () =>
       title8: '自定义标签栏',
       title9: 'TabPane 自动高度',
       title10: '数量多，滚动操作（纵向）',
-      custom: (val: string) => `自定义 ${1}`
+      custom: () => `自定义 ${1}`
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -130,7 +134,7 @@ const initTranslate = () =>
       title8: 'custom tab bar',
       title9: 'TabPane auto height',
       title10: 'A large number of scrolling operations(vertical)',
-      custom: (val: string) => `custom ${1}`
+      custom: () => `custom ${1}`
     }
   });
 export default defineComponent({

@@ -35,7 +35,7 @@ import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import InputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
-const { componentName, create, translate } = createComponent('ecard');
+const { create, translate } = createComponent('ecard');
 export interface dataList {
   price: string | number;
 }

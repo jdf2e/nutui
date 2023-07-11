@@ -265,8 +265,8 @@ export default create({
 
     watch(
       () => props.text,
-      (value) => {
-        initScrollWrap(value);
+      () => {
+        initScrollWrap();
       }
     );
 
@@ -277,7 +277,7 @@ export default create({
       }
     );
 
-    const initScrollWrap = (value: string) => {
+    const initScrollWrap = () => {
       if (state.showNoticebar == false) {
         return;
       }
@@ -383,7 +383,7 @@ export default create({
           props.complexAm ? startRoll() : startRollEasy();
         }, props.standTime);
       } else {
-        initScrollWrap(props.text);
+        initScrollWrap();
       }
     });
 
@@ -393,7 +393,7 @@ export default create({
 
     const watchSlots = () => {
       setTimeout(() => {
-        var observer = new MutationObserver((slots) => {
+        var observer = new MutationObserver(() => {
           state.showNotica = false;
           setTimeout(() => {
             state.showNotica = true;

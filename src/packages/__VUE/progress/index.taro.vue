@@ -47,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, useSlots, ref, watch } from 'vue';
+import { computed, onMounted, useSlots, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { eventCenter, getCurrentInstance } from '@tarojs/taro';
 import { Checked } from '@nutui/icons-vue-taro';
 const { create } = createComponent('progress');
 export default create({
@@ -101,12 +101,12 @@ export default create({
       default: true
     }
   },
-  setup(props, { emit }) {
+  setup(props) {
     const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');
     const insideText = ref();
     const percentage = computed(() => {
-      return props.percentage >= 100 ? 100 : props.percentage;
+      return Number(props.percentage) >= 100 ? 100 : Number(props.percentage);
     });
     const bgStyle = computed(() => {
       return {

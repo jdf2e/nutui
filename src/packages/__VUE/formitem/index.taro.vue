@@ -24,10 +24,10 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, ref, CSSProperties } from 'vue';
+import { computed, inject, provide, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Cell from '../cell/index.taro.vue';
-const { componentName, create } = createComponent('form-item');
+const { create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
   props: {
@@ -79,7 +79,7 @@ export default create({
   },
   emits: [''],
 
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const parent = inject('formErrorTip') as any;
     provide('form', {
       props

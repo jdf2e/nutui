@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
+import { computed, ref, watch, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 const { create, translate } = createComponent('number-keyboard');
@@ -140,7 +140,7 @@ export default create({
         id: 'lock',
         type: 'lock'
       };
-      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      let customKeys: any = Array.isArray(customKey) ? customKey : [customKey];
       if (customKeys.length === 1) {
         object = {
           id: customKeys[0],
@@ -165,7 +165,7 @@ export default create({
     function genCustomKeys() {
       const keys = getBasicKeys();
       const { customKey } = props;
-      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      let customKeys: any = Array.isArray(customKey) ? customKey : [customKey];
       if (customKeys.length > 2) {
         customKeys = [customKeys[0], customKeys[1]];
       }
@@ -205,7 +205,7 @@ export default create({
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
         emit('input', item.id);
-        if (props.modelValue.length < props.maxlength) {
+        if (props.modelValue.length < Number(props.maxlength)) {
           emit('update:modelValue', props.modelValue + item.id);
         }
       }

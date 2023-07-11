@@ -1,4 +1,4 @@
-import { computed, ComputedRef, watchEffect, reactive, toRefs, ref, watch } from 'vue';
+import { computed, ComputedRef, watchEffect, reactive, toRefs, watch } from 'vue';
 
 import { popupProps } from './props';
 
@@ -95,7 +95,7 @@ export const component = (componentName: string, components: any) => {
 
       watch(
         () => props.visible,
-        (val) => {
+        () => {
           props.visible ? open() : close();
         }
       );

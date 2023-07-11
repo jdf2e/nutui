@@ -121,7 +121,7 @@ export default create({
     },
     beforeDelete: {
       type: Function as PropType<Interceptor>,
-      default: (file: FileItem, files: FileItem[]) => {
+      default: () => {
         return true;
       }
     },
@@ -184,7 +184,9 @@ export default create({
       uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       try {
         uploadOption.sourceFile = fileItem.formData.get(props.name);
-      } catch (error) {}
+      } catch (error) {
+        console.warn('[NutUI] <Uploader> formData.get(name)', error);
+      }
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');
@@ -222,7 +224,7 @@ export default create({
         task.upload();
       } else {
         uploadQueue.push(
-          new Promise((resolve, reject) => {
+          new Promise((resolve) => {
             resolve(task);
           })
         );

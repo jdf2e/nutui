@@ -22,7 +22,7 @@ import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from '
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-const { componentName, create } = createComponent('drag');
+const { create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   props: {
@@ -46,7 +46,7 @@ export default create({
       }
     }
   },
-  setup(props, { emit }) {
+  setup(props) {
     const myDrag = ref();
     const refRandomId = Math.random().toString(36).slice(-8);
 
@@ -83,7 +83,7 @@ export default create({
     });
     const domElem = Taro.getSystemInfoSync();
     async function getInfo() {
-      const rec = await useTaroRect(myDrag, Taro);
+      const rec = await useTaroRect(myDrag);
       state.elWidth = rec.width;
       state.elHeight = rec.height;
       state.initTop = rec.top;

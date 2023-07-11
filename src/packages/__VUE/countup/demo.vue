@@ -92,8 +92,7 @@ export default defineComponent({
       }, 300);
     };
     const run = () => {
-      let timer = null;
-      timer = setInterval(() => {
+      setInterval(() => {
         data.customNumber = Math.floor(Math.random() * (700 - 100 + 1) + 100);
       }, 5000);
     };

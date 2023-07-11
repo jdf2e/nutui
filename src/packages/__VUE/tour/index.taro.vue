@@ -21,7 +21,7 @@
         :arrowOffset="step.arrowOffset || 0"
         :duration="0.2"
       >
-        <template v-slot:content>
+        <template #content>
           <slot>
             <view class="nut-tour-content" v-if="type == 'step'">
               <view class="nut-tour-content-top" v-if="showTitleBar">
@@ -74,7 +74,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component, CSSProperties } from 'vue';
+import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
@@ -227,7 +227,7 @@ export default create({
           const el = document.querySelector(`#${item.target}`) as Element;
           rect = await useRect(el);
         } else {
-          rect = await useTaroRect(item.target, Taro);
+          rect = await useTaroRect(item.target);
         }
         maskRect[i] = rect;
         maskStyle(i);

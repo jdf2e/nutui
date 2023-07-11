@@ -28,7 +28,7 @@ import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
-const { componentName, create, translate } = createComponent('date-picker');
+const { create, translate } = createComponent('date-picker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -276,7 +276,7 @@ export default create({
           min++;
         }
 
-        if (min <= val) {
+        if (min <= Number(val)) {
           index++;
         }
       }

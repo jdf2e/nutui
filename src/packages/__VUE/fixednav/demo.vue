@@ -24,7 +24,7 @@
       @selected="selected"
     />
     <nut-fixed-nav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
-      <template v-slot:list>
+      <template #list>
         <ul class="nut-fixed-nav__list">
           <li class="nut-fixed-nav__list-item">1</li>
           <li class="nut-fixed-nav__list-item">2</li>
@@ -33,7 +33,7 @@
           <li class="nut-fixed-nav__list-item">5</li>
         </ul>
       </template>
-      <template v-slot:btn>
+      <template #btn>
         <Retweet color="#fff" />
         <span class="text">{{ myActive ? translate('cus1') : translate('cus2') }}</span>
       </template>
@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, reactive, ref, defineComponent } from 'vue';
+import { computed, onMounted, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

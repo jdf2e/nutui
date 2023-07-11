@@ -11,7 +11,7 @@ export class DialogOptions {
   footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 
   // function
-  onUpdate?: Function = (value: boolean) => {};
+  onUpdate?: Function = () => {};
   onOk?: Function = () => {};
   onCancel?: Function = () => {};
   onClose?: Function = () => {};
@@ -51,7 +51,7 @@ class DialogFunction {
         };
         options.teleport = `#${root.id}`;
         return () => {
-          return h(Dialog, options);
+          return h(Dialog as any, options);
         };
       }
     };
@@ -66,7 +66,7 @@ class DialogFunction {
     // }
   };
 
-  setDefaultOptions = (options: DialogOptions) => {
+  setDefaultOptions = () => {
     // Object.assign(this.currentOptions, options);
   };
 

@@ -30,7 +30,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted, PropType, CSSProperties } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
 import { preventDefault, clamp } from '@/packages/utils/util';
@@ -272,7 +272,7 @@ export default create({
 
     watch(
       () => props.column,
-      (val) => {
+      () => {
         if (props.column && props.column.length > 0) {
           state.transformY = 0;
           modifyStatus(false);
@@ -285,7 +285,7 @@ export default create({
 
     watch(
       () => props.value,
-      (val) => {
+      () => {
         state.transformY = 0;
         modifyStatus(false);
       },

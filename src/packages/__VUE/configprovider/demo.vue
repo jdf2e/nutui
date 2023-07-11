@@ -3,7 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-config-provider :theme="theme">
       <nut-cell :title="translate('title1')">
-        <template v-slot:link>
+        <template #link>
           <nut-switch v-model="switchChecked" @change="switchChange" />
         </template>
       </nut-cell>
@@ -183,7 +183,7 @@ export default defineComponent({
           { id: 4, name: '常营乡' }
         ],
         town: []
-      },
+      } as any,
       methods: {
         show() {
           addressModule.state.show = !addressModule.state.show;
@@ -191,7 +191,7 @@ export default defineComponent({
             formData2.address = '';
           }
         },
-        onChange({ custom, next, value }: any) {
+        onChange({ next, value }: any) {
           formData2.address += value.name;
           const name = addressModule.state[next];
           if (name.length < 1) {

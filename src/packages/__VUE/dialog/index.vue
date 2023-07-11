@@ -46,7 +46,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
+import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';

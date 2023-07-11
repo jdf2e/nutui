@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { reactive, toRefs, getCurrentInstance, nextTick } from 'vue';
+import { reactive, toRefs, nextTick } from 'vue';
 import TimeSelect from '../index.vue';
 import TimePanel from '../../timepannel/index.vue';
 import TimeDetail from '../../timedetail/index.vue';
@@ -29,7 +29,6 @@ test('props test', async () => {
       </template>
     `,
     setup() {
-      const { proxy } = getCurrentInstance() as any;
       const state = reactive({
         visible1: true,
         currentKey1: 0,
@@ -68,7 +67,7 @@ test('props test', async () => {
         }
       };
 
-      const handleSelected1 = (obj: any) => {};
+      const handleSelected1 = () => {};
 
       return {
         ...toRefs(state),

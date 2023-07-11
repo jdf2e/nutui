@@ -21,7 +21,6 @@
   </view>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
 import { useTouch } from '@/packages/utils/useTouch';
 import { computed, onMounted, reactive, Ref, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
@@ -59,7 +58,7 @@ export default create({
     });
 
     const getRefWidth = async (ref: Ref<HTMLElement | undefined>) => {
-      let rect = await useTaroRect(ref, Taro);
+      let rect = await useTaroRect(ref);
       return rect.width || 0;
     };
 

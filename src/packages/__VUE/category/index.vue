@@ -19,7 +19,7 @@
 <script lang="ts">
 import { PropType, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('category');
+const { create } = createComponent('category');
 
 export type CategoryType = {
   catName?: string;
@@ -40,7 +40,7 @@ export default create({
     }
   },
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const checkIndex = ref(0);
     const categoryLeft = ref(false); //是否显示slot
 

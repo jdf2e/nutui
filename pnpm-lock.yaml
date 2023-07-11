@@ -132,6 +132,9 @@ importers:
       eslint-plugin-vue:
         specifier: ^9.15.1
         version: 9.15.1(eslint@8.44.0)
+      vue-eslint-parser:
+        specifier: ^9.3.1
+        version: 9.3.1(eslint@8.44.0)
     devDependencies:
       eslint:
         specifier: ^8.44.0

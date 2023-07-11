@@ -12,7 +12,7 @@ import { IStyle } from './type';
 const { create, componentName } = createComponent('swiper-item');
 
 export default create({
-  setup(props, { slots }) {
+  setup() {
     const parent = inject('parent') as any;
     parent['relation'](getCurrentInstance());
     const state = reactive({

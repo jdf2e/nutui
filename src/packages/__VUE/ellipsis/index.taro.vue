@@ -28,10 +28,10 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, computed, onMounted, PropType, watch, unref } from 'vue';
+import { ref, reactive, toRefs, computed, onMounted, PropType, unref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import Taro, { nextTick } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';
 
@@ -119,7 +119,7 @@ export default create({
     });
     // 获取省略号宽度
     const getSymbolInfo = async () => {
-      const refe = await useTaroRect(symbolContain, Taro);
+      const refe = await useTaroRect(symbolContain);
       symbolTextWidth = refe.width ? Math.ceil(refe.width) : Math.ceil(widthBase[0] * 0.7921);
     };
 
@@ -156,7 +156,7 @@ export default create({
 
     // 计算省略号的位置
     const calcEllipse = async () => {
-      const refe = await useTaroRect(rootContain, Taro);
+      const refe = await useTaroRect(rootContain);
 
       if (refe.height <= maxHeight) {
         state.exceeded = false;
@@ -186,7 +186,7 @@ export default create({
 
     // 验证省略号
     const verifyEllipsis = async () => {
-      const refe = await useTaroRect(rootContain, Taro);
+      const refe = await useTaroRect(rootContain);
       if (refe && refe.height && refe.height > maxHeight) {
         if (props.direction == 'end') {
           ellipsis.leading = ellipsis.leading?.slice(0, ellipsis.leading.length - 1);

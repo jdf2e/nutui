@@ -38,7 +38,7 @@ import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 import { Tips } from '@nutui/icons-vue-taro';
 const { create, translate } = createComponent('short-password');
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   components: {
     [Popup.name]: Popup,

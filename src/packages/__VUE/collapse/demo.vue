@@ -3,7 +3,7 @@
     <h2>{{ translate('basic1') }}</h2>
     <nut-collapse v-model="active1" @change="change">
       <nut-collapse-item :name="1">
-        <template v-slot:title>
+        <template #title>
           {{ translate('title1') }}
         </template>
         {{ translate('desc1') }}
@@ -33,7 +33,7 @@
     <h2>{{ translate('basic4') }}</h2>
     <nut-collapse v-model="active3" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1" :icon="Notice">
-        <template v-slot:value> {{ translate('title4') }} </template>
+        <template #value> {{ translate('title4') }} </template>
         {{ translate('desc8') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2" :value="translate('title6')" :icon="Follow">
@@ -52,7 +52,7 @@
     <h2>{{ translate('basic6') }}</h2>
     <nut-collapse v-model="active6" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1">
-        <template v-slot:extra>{{ translate('title5') }}</template>
+        <template #extra>{{ translate('title5') }}</template>
         {{ translate('desc1') }}
       </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2">
@@ -124,7 +124,7 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  setup(props, context) {
+  setup() {
     initTranslate();
     const data = reactive({
       active1: [1, 2],

@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, getCurrentInstance, defineComponent } from 'vue';
+import { reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Left, Right } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';

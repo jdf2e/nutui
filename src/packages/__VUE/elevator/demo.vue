@@ -27,7 +27,7 @@
     <h2>{{ translate('customContent') }}</h2>
     <div class="elevator-wrapper">
       <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex">
-        <template v-slot:default="slotProps">
+        <template #default="slotProps">
           <Jd width="12px"></Jd>
           <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
         </template>

@@ -22,7 +22,7 @@ test('should render ecard', async () => {
       dataList: data
     }
   });
-  // expect(wrapper.html()).toMatchSnapshot();
+  expect(wrapper.html()).toMatchSnapshot();
 });
 test('should render correct money', async () => {
   const wrapper = mount(Ecard, {

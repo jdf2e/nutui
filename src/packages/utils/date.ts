@@ -114,6 +114,7 @@ const Utils = {
     }
     return Math.ceil((d + remainder) / 7);
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getYearWeek: function (year: string, month: string, date: string, firstDayOfWeek: number = 0): number {
     const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
     const dateFirst = new Date(Number(year), 0, 1);

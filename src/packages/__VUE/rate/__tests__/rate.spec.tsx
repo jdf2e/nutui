@@ -1,13 +1,7 @@
 import { mount } from '@vue/test-utils';
 import Rate from '../index.vue';
-import { h, nextTick, ref } from 'vue';
+import { h, nextTick } from 'vue';
 import { Check } from '@nutui/icons-vue';
-
-const sleep = (delay = 0): Promise<void> => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-};
 
 test('base rate', () => {
   const wrapper = mount(Rate);

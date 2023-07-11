@@ -15,7 +15,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, ref, reactive, watch, onUnmounted, onDeactivated, useSlots } from 'vue';
+import { computed, onMounted, ref, reactive, watch, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('barrage');
@@ -49,7 +49,7 @@ export default create({
   },
   emits: ['click'],
 
-  setup(props, { slots }) {
+  setup(props) {
     const classTime = new Date().getTime();
 
     const slotDefault = !!useSlots().default;

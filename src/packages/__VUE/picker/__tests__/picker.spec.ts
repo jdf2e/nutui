@@ -24,52 +24,6 @@ const multipleColumns = [
     { text: '晚上', value: 'Evening' }
   ]
 ];
-const multistageColumns = [
-  {
-    text: '浙江',
-    value: 'ZheJiang',
-    children: [
-      {
-        text: '杭州',
-        value: 'HangZhou',
-        children: [
-          { text: '西湖区', value: 'XiHu' },
-          { text: '余杭区', value: 'YuHang' }
-        ]
-      },
-      {
-        text: '温州',
-        value: 'WenZhou',
-        children: [
-          { text: '鹿城区', value: 'LuCheng' },
-          { text: '瓯海区', value: 'OuHai' }
-        ]
-      }
-    ]
-  },
-  {
-    text: '福建',
-    value: 'FuJian',
-    children: [
-      {
-        text: '福州',
-        value: 'FuZhou',
-        children: [
-          { text: '鼓楼区', value: 'GuLou' },
-          { text: '台江区', value: 'TaiJiang' }
-        ]
-      },
-      {
-        text: '厦门',
-        value: 'XiaMen',
-        children: [
-          { text: '思明区', value: 'SiMing' },
-          { text: '海沧区', value: 'HaiCang' }
-        ]
-      }
-    ]
-  }
-];
 
 test('first render', async () => {
   const wrapper = mount(Picker, {

@@ -34,7 +34,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';

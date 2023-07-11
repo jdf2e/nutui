@@ -14,7 +14,7 @@
           inactive-color="#cccccc"
           active-color="#fa2c19"
         >
-          <template v-slot:button>
+          <template #button>
             <div class="nut-audio__button--custom"></div>
           </template>
         </nut-range>
@@ -64,7 +64,7 @@ import { toRefs, ref, onMounted, reactive, watch, provide, Component } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { Service } from '@nutui/icons-vue';
 import Range from '../range/index.vue';
-const { componentName, create } = createComponent('audio');
+const { create } = createComponent('audio');
 
 export default create({
   props: {

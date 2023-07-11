@@ -141,13 +141,6 @@ interface SkuItem {
   [key: string]: any;
 }
 
-interface GoodsProps {
-  skuId: string | number;
-  price: string; // 商品信息展示区，商品价格
-  imagePath?: string;
-  [key: string]: any;
-}
-
 interface Data {
   skuData: Skus[];
   goodsInfo: any;

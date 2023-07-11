@@ -67,7 +67,7 @@ import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import Popup from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('sku');
+const { create, translate } = createComponent('sku');
 
 export default create({
   props: {

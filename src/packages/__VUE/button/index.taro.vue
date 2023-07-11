@@ -61,7 +61,7 @@ export default create({
     }
   },
   emits: ['click'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
 
     const handleClick = (event: MouseEvent) => {

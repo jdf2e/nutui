@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { h, PropType } from 'vue';
+import { h } from 'vue';
 const { create } = createComponent('config-provider');
 export default create({
   props: {

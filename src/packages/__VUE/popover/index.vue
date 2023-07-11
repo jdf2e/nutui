@@ -33,7 +33,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, onMounted, h } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, onMounted } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';

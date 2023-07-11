@@ -1,8 +1,8 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
 import Tabbar from '../index.vue';
 import TabbarItem from '../../tabbaritem/index.vue';
-import { nextTick, ref, h } from 'vue';
+import { nextTick, h } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
 
 // 模拟setup导入资源

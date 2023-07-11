@@ -8,7 +8,7 @@ export const useTabContentTouch = (props: any, tabMethods: any, taro?: any, useT
   const tabsContentRefRect = ref({ width: 0, height: 0 });
   const initTaroWidth = async () => {
     if (taro && taro.getEnv() !== taro.ENV_TYPE.WEB) {
-      let rect = await useTaroRect(tabsContentRef, taro);
+      let rect = await useTaroRect(tabsContentRef);
       tabsContentRefRect.value.width = rect.width || 0;
       tabsContentRefRect.value.height = rect.height || 0;
     } else {

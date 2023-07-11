@@ -46,7 +46,7 @@ export default create({
     }
   },
   emits: ['tab-switch', 'update:modelValue'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const { bottom, placeholder } = toRefs(props);
     const height = ref();
     const mdValue = reactive({

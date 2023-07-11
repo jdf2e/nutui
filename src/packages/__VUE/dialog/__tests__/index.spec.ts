@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import Dialog from '../index.vue';
-import { Overlay } from '@/packages/nutui.vue';
 import { nextTick } from 'vue';
 
 beforeEach(() => {

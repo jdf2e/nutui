@@ -68,6 +68,7 @@ export default create({
       if (props.disabled || props.readonly) return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
+        value = 0;
       } else {
         value = index;
         if (props.allowHalf && e == 2) {

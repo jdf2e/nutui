@@ -1,6 +1,5 @@
-import { mount, VueWrapper, DOMWrapper } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Elevator from '../index.vue';
-import { nextTick, ComponentPublicInstance } from 'vue';
 
 const indexList = [
   {

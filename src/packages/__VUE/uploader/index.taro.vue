@@ -137,7 +137,7 @@ export default create({
     },
     beforeDelete: {
       type: Function as PropType<Interceptor>,
-      default: (file: FileItem, files: FileItem[]) => {
+      default: () => {
         return true;
       }
     },
@@ -222,7 +222,7 @@ export default create({
 
     const onChangeMedia = (res: Taro.chooseMedia.SuccessCallbackResult) => {
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-      const { type, tempFiles } = res;
+      const { tempFiles } = res;
       const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles<Taro.chooseMedia.ChooseMedia>(tempFiles);
       readFile<Taro.chooseMedia.ChooseMedia>(_files);
       emit('change', {
@@ -231,7 +231,7 @@ export default create({
     };
     const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-      const { tempFilePaths, tempFiles } = res;
+      const { tempFiles } = res;
       const _files: Taro.chooseImage.ImageFile[] = filterFiles<Taro.chooseImage.ImageFile>(tempFiles);
       readFile<Taro.chooseImage.ImageFile>(_files);
       emit('change', {
@@ -295,7 +295,7 @@ export default create({
         task.uploadTaro(Taro.uploadFile, Taro.getEnv());
       } else {
         uploadQueue.push(
-          new Promise((resolve, reject) => {
+          new Promise((resolve) => {
             resolve(task);
           })
         );

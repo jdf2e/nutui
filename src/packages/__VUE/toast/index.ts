@@ -78,7 +78,7 @@ const mountToast = (opts: any) => {
   idsMap.push(opts.id);
   optsMap.push(opts);
 
-  const { unmount } = CreateComponent(opts, {
+  CreateComponent(opts, {
     wrapper: Toast
   });
 

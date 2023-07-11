@@ -405,7 +405,7 @@ export default create({
 
     const watchSlots = () => {
       setTimeout(() => {
-        var observer = new MutationObserver((slots) => {
+        var observer = new MutationObserver(() => {
           state.showNotica = false;
           setTimeout(() => {
             state.showNotica = true;

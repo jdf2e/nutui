@@ -163,13 +163,13 @@ export default defineComponent({
     const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
       return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
     };
-    const onOversize = (files: File[]) => {
+    const onOversize = () => {
       showToast.text('oversize 触发 文件大小不能超过 50kb');
     };
-    const onDelete = (obj: any) => {
+    const onDelete = () => {
       showToast.text('delete 事件触发');
     };
-    const onProgress = ({ event, options, percentage }: any) => {
+    const onProgress = ({ percentage }: any) => {
       progressPercentage.value = percentage;
       showToast.text('progress 事件触发' + percentage);
     };

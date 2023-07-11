@@ -37,7 +37,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, ref, onMounted, watch, PropType } from 'vue';
+import { reactive, toRefs, computed, ref, onMounted, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Form from '../form/index.vue';
 import FormItem from '../formitem/index.vue';

@@ -38,7 +38,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted, computed, PropType } from 'vue';
+import { computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('comment');
 import { Right } from '@nutui/icons-vue';

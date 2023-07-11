@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, useSlots, ref, watch } from 'vue';
+import { computed, onMounted, useSlots, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
 import { Checked } from '@nutui/icons-vue';

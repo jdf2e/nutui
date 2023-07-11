@@ -1,6 +1,6 @@
 <template src="./template.html"></template>
 <script lang="ts">
-import { computed, h, Ref, ref } from 'vue';
+import { computed, Ref, ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -73,6 +73,7 @@ export default create({
       if (props.disabled || props.readonly) return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
+        value = 0;
       } else {
         value = index;
         if (props.allowHalf && e == 2) {

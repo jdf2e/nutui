@@ -33,7 +33,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('comment-header');
+const { create } = createComponent('comment-header');
 import Rate from '../../rate/index.taro.vue';
 
 export default create({

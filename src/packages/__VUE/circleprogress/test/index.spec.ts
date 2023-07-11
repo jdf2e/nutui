@@ -1,16 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Circleprogress from '../index.vue';
 
-test('should render component  when using require prop', async () => {
-  const wrapper = mount(Circleprogress, {
-    props: {
-      progress: 30
-    }
-  });
-  //不能生成快照，因其具有随机id
-  // expect(wrapper.html()).toMatchSnapshot();
-});
-
 test('should change stoke when use width props', async () => {
   const wrapper = mount(Circleprogress, {
     props: {

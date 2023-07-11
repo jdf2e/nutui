@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs, getCurrentInstance, defineComponent } from 'vue';
+import { ref, reactive, toRefs, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 
 const { translate } = createComponent('pull-refresh');

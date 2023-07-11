@@ -22,22 +22,20 @@ module.exports = {
     TaroGeneral: true
   },
   rules: {
+    // @typescript-eslint
     '@typescript-eslint/no-explicit-any': 'off',
-    // '@typescript-eslint/no-unused-vars': 'error',
-    // enable type: Function Object
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    // eslint-plugin-vue
     'vue/no-v-html': 'off',
     'vue/first-attribute-linebreak': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-v-text-v-html-on-component': 'off',
-    // will be fixed
+    // will be removed someday
     'vue/attributes-order': 'off',
     'vue/attribute-hyphenation': 'off',
-    'vue/v-on-event-hyphenation': 'off',
-    'vue/v-slot-style': 'off',
-    'no-unused-vars': 'off',
-    'vue/valid-v-for': 'off',
-    'no-empty': 'off'
+    'vue/v-on-event-hyphenation': 'off'
   }
 };

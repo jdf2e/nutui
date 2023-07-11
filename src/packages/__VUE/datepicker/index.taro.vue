@@ -28,7 +28,7 @@ import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
-const { componentName, create } = createComponent('date-picker');
+const { create } = createComponent('date-picker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {

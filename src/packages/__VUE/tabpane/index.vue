@@ -24,7 +24,7 @@ export default create({
     }
   },
   emits: ['click'],
-  setup(props, { emit }) {
+  setup(props) {
     const parentOption = inject('tabsOpiton') as any;
     const paneStyle = computed(() => {
       return {
