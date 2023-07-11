@@ -46,8 +46,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Left, Right } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
@@ -82,47 +82,30 @@ const initTranslate = () =>
       content2: 'Trigger of limit exceeding event'
     }
   });
-export default defineComponent({
-  components: { Left, Right },
-  props: {},
-  setup() {
-    initTranslate();
+initTranslate();
 
-    const state = reactive({
-      val1: 1,
-      val2: 0,
-      val3: 10,
-      val4: 0,
-      val5: 1,
-      val6: 5.5,
-      val7: 1,
-      val8: 1,
-      val9: 1,
-      step: 1.1
-    });
-
-    const onChange = (value: number) => {
-      showToast.loading(translate('content1'));
-      setTimeout(() => {
-        state.val8 = value;
-        showToast.hide();
-      }, 2000);
-    };
-
-    const overlimit = () => {
-      showToast.warn(translate('content2'));
-    };
-
-    return {
-      state,
-      onChange,
-      blur,
-      focus,
-      overlimit,
-      translate
-    };
-  }
+const state = reactive({
+  val1: 1,
+  val2: 0,
+  val3: 10,
+  val4: 0,
+  val5: 1,
+  val6: 5.5,
+  val7: 1,
+  val8: 1,
+  val9: 1,
+  step: 1.1
 });
-</script>
 
-<style lang="scss" scoped></style>
+const onChange = (value: number) => {
+  showToast.loading(translate('content1'));
+  setTimeout(() => {
+    state.val8 = value;
+    showToast.hide();
+  }, 2000);
+};
+
+const overlimit = () => {
+  showToast.warn(translate('content2'));
+};
+</script>

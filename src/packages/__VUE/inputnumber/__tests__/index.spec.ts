@@ -3,7 +3,7 @@ import InputNumber from '../index.vue';
 import { h, nextTick } from 'vue';
 import { Left, Right } from '@nutui/icons-vue';
 
-test('should render modelValue', () => {
+test('InputNumber: should render modelValue', () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 12
@@ -14,7 +14,7 @@ test('should render modelValue', () => {
   expect(input.value).toBe('12');
 });
 
-test('should add step 2 when trigger click right button', async () => {
+test('InputNumber: should add step 2 when trigger click right button', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 1,
@@ -31,7 +31,7 @@ test('should add step 2 when trigger click right button', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('3');
 });
 
-test('should minis step 2 when trigger click left button', async () => {
+test('InputNumber: should minis step 2 when trigger click left button', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 3,
@@ -48,7 +48,7 @@ test('should minis step 2 when trigger click left button', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('1');
 });
 
-test('should render max and min props', async () => {
+test('InputNumber: should render max and min props', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 100,
@@ -75,7 +75,7 @@ test('should render max and min props', async () => {
   expect(wrapper.emitted('change')).toBeFalsy();
 });
 
-test('should not trigger click when disabled props to be true', async () => {
+test('InputNumber: should not trigger click when disabled props to be true', async () => {
   const wrapper = mount(InputNumber, {
     disabled: true,
     modelValue: 1
@@ -90,7 +90,7 @@ test('should not trigger click when disabled props to be true', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('1');
 });
 
-test('should not focus input when readonly props to be true', async () => {
+test('InputNumber: should not focus input when readonly props to be true', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       readonly: true,
@@ -107,7 +107,7 @@ test('should not focus input when readonly props to be true', async () => {
   expect(wrapper.emitted('focus')).toBeFalsy();
 });
 
-test('should render decimal when step props to be 0.2', async () => {
+test('InputNumber: should render decimal when step props to be 0.2', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       step: 0.2,
@@ -122,7 +122,7 @@ test('should render decimal when step props to be 0.2', async () => {
   expect((wrapper.emitted('change')![0] as any[])[0]).toEqual('2.2');
 });
 
-test('should render size when buttonSize and inputWidth props setted', async () => {
+test('InputNumber: should render size when buttonSize and inputWidth props setted', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       buttonSize: '30px',
@@ -138,7 +138,7 @@ test('should render size when buttonSize and inputWidth props setted', async () 
   expect(input.style.width).toEqual('120px');
 });
 
-test('should update input value when inputValue overlimit', async () => {
+test('InputNumber: should update input value when inputValue overlimit', async () => {
   const wrapper = mount(InputNumber, {
     props: {
       modelValue: 2,
@@ -154,7 +154,7 @@ test('should update input value when inputValue overlimit', async () => {
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('100');
 });
 
-test('should render icon when leftIcon and rightIcon slots setted', async () => {
+test('InputNumber: should render icon when leftIcon and rightIcon slots setted', async () => {
   const wrapper = mount(InputNumber, {
     slots: {
       leftIcon: h(Left, {
@@ -170,4 +170,23 @@ test('should render icon when leftIcon and rightIcon slots setted', async () => 
   expect(iconList.length).toBe(2);
   expect(iconList[0].html()).toMatchSnapshot();
   expect(iconList[1].html()).toMatchSnapshot();
+});
+
+test('InputNumber: should change modelValue after props.min was changed', async () => {
+  const wrapper = mount(InputNumber, {
+    props: {
+      min: 3,
+      max: 9,
+      modelValue: 5
+    }
+  });
+  wrapper.setProps({
+    min: 7
+  });
+  await nextTick();
+  const input = wrapper.find('input');
+  expect(input.exists()).toBeTruthy();
+  expect(input.attributes('min')).toBe('7');
+  expect(wrapper.emitted()['update:modelValue']).toHaveLength(1);
+  expect(wrapper.emitted()['update:modelValue'][0]).toStrictEqual(['7', {}]);
 });
