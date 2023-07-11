@@ -2,6 +2,7 @@
   <nut-popup
     position="bottom"
     :lock-scroll="lockScroll"
+    :round="round"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
