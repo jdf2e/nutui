@@ -184,11 +184,11 @@
         :showIcon="true"
         title="自定义周起始日"
         :desc="date8 ? `${date8}` : '请选择'"
-        @click="openSwitch('isVisible')"
+        @click="openSwitch('isVisible8')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible"
+        v-model:visible="isVisible8"
         :default-value="date8"
         @close="closeSwitch('isVisible8')"
         @choose="setChooseValue8"
@@ -217,29 +217,6 @@ import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import Utils from '@/packages/utils/date';
 
-interface TestCalendarState {
-  isVisible: boolean;
-  date: string;
-  dateWeek: string;
-  isVisible1: boolean;
-  isVisible2: boolean;
-  isVisible3: boolean;
-  isVisible4: boolean;
-  isVisible5: boolean;
-  isVisible6: boolean;
-  isVisible7: boolean;
-  isVisible8: boolean;
-  isVisible9: boolean;
-  date1: string[];
-  date2: string;
-  date3: string;
-  date4: string[];
-  date5: string[];
-  date6: string[];
-  date7: string[];
-  date8: string;
-  date9: string[];
-}
 export default {
   props: {},
   components: {
@@ -249,7 +226,7 @@ export default {
     const env = Taro.getEnv();
 
     const calendarRef = ref<any>(null);
-    const state: TestCalendarState = reactive({
+    const state = reactive({
       isVisible: false,
       date: '2022-02-01',
       dateWeek: '',
