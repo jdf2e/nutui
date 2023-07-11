@@ -4,10 +4,10 @@
     :visible="visible"
     position="bottom"
     round
+    v-bind="$attrs"
     :closeable="true"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
-    :destroy-on-close="true"
     :style="{ height: '85vh' }"
   >
     <nut-calendar-item
