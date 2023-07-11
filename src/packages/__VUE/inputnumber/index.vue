@@ -33,7 +33,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Minus, Plus } from '@nutui/icons-vue';
@@ -79,7 +79,6 @@ export default create({
     }
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
-
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -88,30 +87,24 @@ export default create({
         [`${prefixCls}--disabled`]: props.disabled
       };
     });
-
     const fixedDecimalPlaces = (v: string | number): string => {
       return Number(v).toFixed(Number(props.decimalPlaces));
     };
-
     const change = (event: Event) => {
       const input = event.target as HTMLInputElement;
       emit('update:modelValue', input.valueAsNumber, event);
     };
-
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);
       emit('update:modelValue', output_value, event);
       emit('change', output_value, event);
     };
-
     const addAllow = (value = Number(props.modelValue)): boolean => {
       return value < Number(props.max) && !props.disabled;
     };
-
     const reduceAllow = (value = Number(props.modelValue)): boolean => {
       return value > Number(props.min) && !props.disabled;
     };
-
     const reduce = (event: Event) => {
       emit('reduce', event);
       if (reduceAllow()) {
@@ -121,7 +114,6 @@ export default create({
         emit('overlimit', event, 'reduce');
       }
     };
-
     const add = (event: Event) => {
       emit('add', event);
       if (addAllow()) {
@@ -131,20 +123,16 @@ export default create({
         emit('overlimit', event, 'add');
       }
     };
-
     const focus = (event: Event) => {
       if (props.disabled) return;
       if (props.readonly) return;
       emit('focus', event);
     };
-
     const blur = (event: Event) => {
       if (props.disabled) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
-
       let value = input.valueAsNumber;
-
       if (value < Number(props.min)) {
         value = Number(props.min);
       } else if (value > Number(props.max)) {
@@ -153,6 +141,27 @@ export default create({
       emitChange(value, event);
       emit('blur', event);
     };
+    const format = (val: string | number) => {
+      let value = Number(val);
+      if (value < Number(props.min)) {
+        value = Number(props.min);
+      } else if (value > Number(props.max)) {
+        value = Number(props.max);
+      }
+      return value;
+    };
+    watch(
+      () => [props.max, props.min],
+      () => {
+        if (Number(props.min) > Number(props.max)) {
+          console.warn('[NutUI] <InputNumber>', 'props.max < props.min');
+        }
+        const value = format(props.modelValue);
+        if (value !== Number(props.modelValue)) {
+          emitChange(value, {} as Event);
+        }
+      }
+    );
 
     return {
       classes,

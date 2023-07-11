@@ -36,49 +36,30 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  props: {},
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
+const env = Taro.getEnv();
+const state = reactive({
+  val1: 1,
+  val2: 0,
+  val3: 10,
+  val4: 0,
+  val5: 1,
+  val6: 5.5,
+  val7: 1,
+  val8: 1,
+  step: 1.1
+});
+const onChange = (value: number) => {
+  console.log('异步演示 2 秒后更改');
+  setTimeout(() => {
+    state.val8 = value;
+  }, 2000);
+};
 
-    const state = reactive({
-      val1: 1,
-      val2: 0,
-      val3: 10,
-      val4: 0,
-      val5: 1,
-      val6: 5.5,
-      val7: 1,
-      val8: 1,
-      step: 1.1
-    });
-
-    const onChange = (value: number) => {
-      console.log('异步演示 2 秒后更改');
-      setTimeout(() => {
-        state.val8 = value;
-      }, 2000);
-    };
-
-    const overlimit = () => {
-      console.log('超出限制事件触发');
-    };
-
-    return {
-      state,
-      onChange,
-      overlimit,
-      env
-    };
-  }
+const overlimit = () => {
+  console.log('超出限制事件触发');
 };
 </script>
-
-<style lang="scss" scoped></style>
