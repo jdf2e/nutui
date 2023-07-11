@@ -184,7 +184,9 @@ export default create({
       uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       try {
         uploadOption.sourceFile = fileItem.formData.get(props.name);
-      } catch (error) {}
+      } catch (error) {
+        console.warn('[NutUI] <Uploader> formData.get(name)', error);
+      }
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');

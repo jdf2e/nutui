@@ -9,7 +9,9 @@ export const useLockScroll = (isLock: () => boolean) => {
       try {
         !count && body.classList.add(CLSNAME);
         count++;
-      } catch (error) {}
+      } catch (error) {
+        console.warn('[NutUI] <useLockScroll>', error);
+      }
     }
   };
 
@@ -18,7 +20,9 @@ export const useLockScroll = (isLock: () => boolean) => {
       try {
         count--;
         !count && body.classList.remove(CLSNAME);
-      } catch (error) {}
+      } catch (error) {
+        console.warn('[NutUI] <unlock>', error);
+      }
     }
   };
 
