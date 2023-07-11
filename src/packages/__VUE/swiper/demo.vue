@@ -36,7 +36,7 @@
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
-        <template v-slot:page>
+        <template #page>
           <div class="page"> {{ current }}/4 </div>
         </template>
       </nut-swiper>
@@ -47,7 +47,7 @@
         <nut-swiper-item v-for="item in list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
-        <template v-slot:page>
+        <template #page>
           <div class="page"> {{ current1 }}/4 </div>
         </template>
       </nut-swiper>

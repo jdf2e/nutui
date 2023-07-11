@@ -3,7 +3,7 @@
     <h2>{{ translate('title') }}</h2>
 
     <nut-cell :title="translate('tryClick')">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
       </template>
     </nut-cell>
@@ -19,7 +19,7 @@
     <h2>{{ translate('title1') }}</h2>
 
     <nut-cell :title="translate('tryClick')">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target5" v-model="switchValue" @click="showTourHandle" />
       </template>
     </nut-cell>
@@ -40,7 +40,7 @@
     <h2>{{ translate('title2') }}</h2>
 
     <nut-cell :title="translate('tryClick')" @click="showTour2 = true">
-      <template v-slot:link>
+      <template #link>
         <div class="tour-demo-img">
           <img
             id="target6"
@@ -70,7 +70,7 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell :title="translate('tryClick')">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
       </template>
     </nut-cell>

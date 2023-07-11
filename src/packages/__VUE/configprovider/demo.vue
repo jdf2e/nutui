@@ -3,7 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-config-provider :theme="theme">
       <nut-cell :title="translate('title1')">
-        <template v-slot:link>
+        <template #link>
           <nut-switch v-model="switchChecked" @change="switchChange" />
         </template>
       </nut-cell>

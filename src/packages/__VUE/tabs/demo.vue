@@ -74,7 +74,7 @@
     </nut-tabs>
     <h2>{{ translate('title8') }}</h2>
     <nut-tabs v-model="state.tab7value">
-      <template v-slot:titles>
+      <template #titles>
         <div
           class="nut-tabs__titles-item"
           @click="state.tab7value = item.paneKey"

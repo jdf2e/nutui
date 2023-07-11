@@ -14,7 +14,7 @@
     <nut-noticebar :close-mode="true" @click="closeFun">{{ translate('text') }} </nut-noticebar>
     <p />
     <nut-noticebar>
-      <template v-slot:left-icon>
+      <template #left-icon>
         <img
           src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
           style="width: 20px; height: 20px"

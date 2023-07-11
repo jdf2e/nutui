@@ -24,7 +24,7 @@
     <h2>{{ translate('title8') }}</h2>
 
     <nut-cell :desc="translate('desc')">
-      <template v-slot:title>
+      <template #title>
         <span>Title <b style="color: red">1</b></span>
       </template>
     </nut-cell>
@@ -37,7 +37,7 @@
 
     <nut-cell-group :title="translate('customRight')">
       <nut-cell title="Switch">
-        <template v-slot:link>
+        <template #link>
           <nut-switch v-model="switchChecked" />
         </template>
       </nut-cell>
@@ -45,7 +45,7 @@
 
     <nut-cell-group :title="translate('customLeftIcon')">
       <nut-cell :title="translate('image')">
-        <template v-slot:icon>
+        <template #icon>
           <img
             style="width: 20px; height: 20px"
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
@@ -56,7 +56,7 @@
 
     <h2>{{ translate('displayIcon') }}</h2>
     <nut-cell :title="translate('name')" :desc="translate('desc')" isLink>
-      <template v-slot:icon>
+      <template #icon>
         <My />
       </template>
     </nut-cell>

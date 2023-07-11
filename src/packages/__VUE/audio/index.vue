@@ -14,7 +14,7 @@
           inactive-color="#cccccc"
           active-color="#fa2c19"
         >
-          <template v-slot:button>
+          <template #button>
             <div class="nut-audio__button--custom"></div>
           </template>
         </nut-range>

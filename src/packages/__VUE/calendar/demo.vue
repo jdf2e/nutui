@@ -138,7 +138,7 @@
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
-        <template v-slot:btn>
+        <template #btn>
           <div class="wrapper">
             <div class="d_div">
               <span class="d_btn" @click="goDate">{{ translate('goDate') }}</span>
@@ -151,7 +151,7 @@
             </div>
           </div>
         </template>
-        <template v-slot:day="date">
+        <template #day="date">
           <span>{{ date.date.day }}</span>
         </template>
       </nut-calendar>
@@ -177,7 +177,7 @@
         :end-text="translate('leave')"
         :title="translate('please')"
       >
-        <template v-slot:day="date">
+        <template #day="date">
           <span>{{ renderDate(date) }}</span>
         </template>
         <template #bottom-info="date">
