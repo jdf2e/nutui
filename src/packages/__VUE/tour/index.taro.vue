@@ -227,7 +227,7 @@ export default create({
           const el = document.querySelector(`#${item.target}`) as Element;
           rect = await useRect(el);
         } else {
-          rect = await useTaroRect(item.target, Taro);
+          rect = await useTaroRect(item.target);
         }
         maskRect[i] = rect;
         maskStyle(i);

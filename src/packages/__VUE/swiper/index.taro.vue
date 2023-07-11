@@ -340,7 +340,7 @@ export default create({
     const init = async (active: number = +props.initPage) => {
       if (!container.value) return;
       stopAutoPlay();
-      state.rect = await useTaroRect(container, Taro);
+      state.rect = await useTaroRect(container);
       if (state.rect) {
         active = Math.min(childCount.value - 1, active);
         state.width = props.width ? +props.width : (state.rect as DOMRect).width;

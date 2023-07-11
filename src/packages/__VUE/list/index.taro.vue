@@ -133,7 +133,7 @@ export default create({
       const start = nodes[0];
       nodes.forEach(async (node: HTMLDivElement, index: number) => {
         if (!node) return;
-        const rect = await useTaroRect(node, Taro);
+        const rect = await useTaroRect(node);
         if (rect && rect.height) {
           const { height } = rect;
           const oldHeight = state.cachePositions[index + state.start]

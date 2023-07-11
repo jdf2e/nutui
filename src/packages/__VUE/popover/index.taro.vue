@@ -229,10 +229,10 @@ export default create({
         if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
           rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
         } else {
-          rect = await useTaroRect(props.targetId, Taro);
+          rect = await useTaroRect(props.targetId);
         }
       } else {
-        rect = await useTaroRect(popoverRef, Taro);
+        rect = await useTaroRect(popoverRef);
       }
 
       if (!(rootRect.value && rect.top == rootRect.value.top && rect.width == rootRect.value.width)) {
@@ -248,7 +248,7 @@ export default create({
     const getPopoverContentW = async (type: number = 1) => {
       const el = type == 1 ? popoverContentRef : popoverContentRefCopy;
 
-      let rectContent = await useTaroRect(el, Taro);
+      let rectContent = await useTaroRect(el);
 
       conentRootRect = {
         height: rectContent.height,
