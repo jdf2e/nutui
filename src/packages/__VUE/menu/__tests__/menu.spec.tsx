@@ -310,10 +310,10 @@ test('Menu: menu item open and close events: should be both emitted', async () =
       };
     },
     methods: {
-      handleOpen(val: any) {
+      handleOpen() {
         (this as any).value2 = 'b';
       },
-      handleClose(val: any) {
+      handleClose() {
         (this as any).value2 = 'c';
       }
     }

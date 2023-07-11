@@ -119,7 +119,7 @@ const initTranslate = () =>
       title8: '自定义标签栏',
       title9: 'TabPane 自动高度',
       title10: '数量多，滚动操作（纵向）',
-      custom: (val: string) => `自定义 ${1}`
+      custom: () => `自定义 ${1}`
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -134,7 +134,7 @@ const initTranslate = () =>
       title8: 'custom tab bar',
       title9: 'TabPane auto height',
       title10: 'A large number of scrolling operations(vertical)',
-      custom: (val: string) => `custom ${1}`
+      custom: () => `custom ${1}`
     }
   });
 export default defineComponent({

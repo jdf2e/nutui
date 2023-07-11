@@ -9,7 +9,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, computed, watch, reactive, onBeforeMount, onMounted } from 'vue';
+import { toRefs, computed, watch, reactive, onBeforeMount } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { getTimeStamp } from './util';
 import { padZero } from '@/packages/utils/util';
@@ -247,14 +247,14 @@ export default create({
 
     watch(
       () => props.endTime,
-      (value) => {
+      () => {
         initTime();
       }
     );
 
     watch(
       () => props.startTime,
-      (value) => {
+      () => {
         initTime();
       }
     );

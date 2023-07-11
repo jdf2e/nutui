@@ -28,10 +28,10 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, computed, onMounted, PropType, watch, unref } from 'vue';
+import { ref, reactive, toRefs, computed, onMounted, PropType, unref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import Taro, { nextTick } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';
 

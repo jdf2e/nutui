@@ -147,7 +147,7 @@ const initTranslate = () =>
 export default defineComponent({
   components: { StarFill, Star },
   props: {},
-  setup(props) {
+  setup() {
     initTranslate();
     let isLoading = ref(false);
     const changeLoading = () => {

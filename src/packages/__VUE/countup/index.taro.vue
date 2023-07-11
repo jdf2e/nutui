@@ -108,10 +108,10 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, ref, onMounted, onUnmounted, nextTick, watch } from 'vue';
+import { reactive, toRefs, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExtend } from '@/packages/utils/useRelation/useRelation';
-const { componentName, create } = createComponent('countup');
+const { create } = createComponent('countup');
 
 interface IData {
   valFlag: boolean;
@@ -240,7 +240,7 @@ export default create({
     const { startFlag, scrolling, customBgImg, type } = reactive(props);
     watch(
       () => props.customChangeNum,
-      (count, prevCount) => {
+      () => {
         clearIntervalTime();
         // data.customNumber = count;
         countGo(0);
@@ -248,13 +248,13 @@ export default create({
     );
     watch(
       () => props.machinePrizeLevel,
-      (count, prevCount) => {
+      (count) => {
         data.prizeLevelTrun = count;
       }
     );
     watch(
       () => props.initNum,
-      (count, prevCount) => {
+      (count) => {
         data.current = count;
         data.valFlag = false;
         valChange();
@@ -262,7 +262,7 @@ export default create({
     );
     watch(
       () => props.endNum,
-      (count, prevCount) => {
+      () => {
         data.current = props.initNum;
         data.valFlag = false;
         valChange();
@@ -325,7 +325,7 @@ export default create({
     };
     // 数字滚动-到哪里了
     const turnNumber = (index: number) => {
-      let { num_total_len, pointNum, initDigit1, initDigit2, sortFlag } = data;
+      let { num_total_len, pointNum, initDigit1, initDigit2 } = data;
       let idx1 = String(initDigit2)[index - (num_total_len - pointNum)];
       let num =
         index > num_total_len - pointNum - 1
@@ -525,10 +525,10 @@ export default create({
     };
     // 自定义图片
     const imgNumberScroll = () => {
-      let m = 1;
-      if (data.pointNum != 0) {
-        m = Math.pow(10, data.pointNum);
-      }
+      // let m = 1;
+      // if (data.pointNum != 0) {
+      //   m = Math.pow(10, data.pointNum);
+      // }
       nextTick(() => {
         let f = document.getElementsByClassName('nut-countup__numberimg')[0];
         // setTimeout(() => {

@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, computed, provide, ref } from 'vue';
+import { onMounted, computed, provide, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar-group');
 export default create({
@@ -42,13 +42,9 @@ export default create({
       default: 'left'
     }
   },
-  setup(props, { emit, slots }) {
-    const { size } = toRefs(props);
-
+  setup(props) {
     const avatarGroupRef = ref(null);
-
     const index = ref(0);
-
     // const sizeValue = ['large', 'normal', 'small'];
     const classes = computed(() => {
       const prefixCls = componentName;

@@ -1,8 +1,7 @@
-import { mount, config, VueWrapper } from '@vue/test-utils';
+import { mount, VueWrapper } from '@vue/test-utils';
 import { mockScrollTop } from './../../../utils/unit';
 import Sticky from '../index.vue';
 import type { ComponentPublicInstance } from 'vue';
-import NutButton from '../../button/index.vue';
 
 Object.defineProperty(window.HTMLElement.prototype, 'clientHeight', {
   value: 667

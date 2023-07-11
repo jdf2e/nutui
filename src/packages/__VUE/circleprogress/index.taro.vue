@@ -118,7 +118,7 @@ export default create({
 
     watch(
       () => props.progress,
-      (value, oldvalue) => {
+      (value) => {
         currentRate.value = Math.min(Math.max(+value, 0), 100);
         emit('update:progress', format(parseFloat(Number(value).toFixed(1))));
       }

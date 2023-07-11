@@ -23,10 +23,10 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, useSlots, onMounted, reactive, inject } from 'vue';
+import { toRefs, ref, useSlots, reactive, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Button from '../button/index.vue';
-const { componentName, create, translate } = createComponent('audio-operate');
+const { create, translate } = createComponent('audio-operate');
 
 export default create({
   props: {
@@ -41,7 +41,7 @@ export default create({
   },
   emits: ['click'],
 
-  setup(props, { emit }) {
+  setup(props) {
     const audio: any = inject('audioParent');
     const parent: {
       children: [];

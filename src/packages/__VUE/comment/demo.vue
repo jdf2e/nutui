@@ -65,7 +65,6 @@ import { onMounted, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { translate } = createComponent('comment');
-import { Dongdong } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

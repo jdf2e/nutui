@@ -1,4 +1,4 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import Progress from '../index.vue';
 

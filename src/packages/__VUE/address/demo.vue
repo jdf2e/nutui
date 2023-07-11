@@ -309,7 +309,7 @@ export default defineComponent({
         text.two = val.data.addressStr;
       }
     };
-    const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+    const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData) => {
       console.log(prevExistAdd);
       console.log(nowExistAdd);
     };

@@ -20,7 +20,7 @@
           :visibleOptionNum="visibleOptionNum"
           :optionHeight="optionHeight"
           @change="
-            (option:PickerOption) => {
+            (option: any) => {
               changeHandler(columnIndex, option);
             }
           "
@@ -32,13 +32,12 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, computed, PropType, CSSProperties } from 'vue';
+import { ref, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { usePicker } from './usePicker';
 import column from './Column.vue';
 import baseProps from './baseProps';
-const { componentName, create, translate } = createComponent('picker');
-import { PickerOption } from './types';
+const { create, translate } = createComponent('picker');
 
 export default create({
   components: {

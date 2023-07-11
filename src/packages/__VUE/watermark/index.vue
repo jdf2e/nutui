@@ -86,7 +86,7 @@ export default create({
   },
   emits: ['click'],
 
-  setup(props, { emit }) {
+  setup(props) {
     const state = reactive({
       base64Url: ''
     });

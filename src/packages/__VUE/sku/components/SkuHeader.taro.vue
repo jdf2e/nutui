@@ -35,7 +35,7 @@ export default create({
   components: {
     [Price.name]: Price
   },
-  setup(props: any, { emit, slots }) {
+  setup(props, { slots }) {
     const getSlots = (name: string) => slots[name];
 
     const state = reactive({

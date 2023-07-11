@@ -118,7 +118,7 @@ describe('Form', () => {
           }),
           methods: {
             submit() {
-              dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
+              dynamicRefForm.value.validate().then(({ valid }: any) => {
                 if (valid) {
                   // console.log('success', dynamicForm);
                 } else {
@@ -133,7 +133,6 @@ describe('Form', () => {
               dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
             },
             add() {
-              let newIndex = dynamicForm.state.tels.length;
               dynamicForm.state.tels.push({
                 key: Date.now(),
                 value: ''
@@ -212,7 +211,7 @@ describe('Form', () => {
         });
         const ruleForm = ref<any>(null);
         const submit = () => {
-          ruleForm.value.validate().then(({ valid, errors }: any) => {
+          ruleForm.value.validate().then(({ valid }: any) => {
             if (valid) {
               // console.log('success', formData);
             } else {

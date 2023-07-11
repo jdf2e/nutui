@@ -253,7 +253,7 @@ export default create({
       }
     });
     const composing = ref(false);
-    const startComposing = (event: Event) => {
+    const startComposing = () => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         composing.value = true;
         // (event.target as InputTarget)!.composing = true;

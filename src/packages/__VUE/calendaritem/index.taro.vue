@@ -562,7 +562,6 @@ export default create({
       } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
         if (state.currDate.length > 0) {
           let defaultArr: string[] = [];
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           let obj: any = {};
           state.currDate.forEach((item: string) => {
             if (
@@ -742,7 +741,6 @@ export default create({
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mothsViewScroll = (e: any) => {
       if (state.monthsData.length <= 1) {
         return;

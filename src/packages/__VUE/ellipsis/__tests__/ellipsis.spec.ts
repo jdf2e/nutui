@@ -1,5 +1,5 @@
-import { config, mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import Ellipsis from '../index.vue';
 
 const originGetComputedStyle = window.getComputedStyle;

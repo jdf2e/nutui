@@ -370,7 +370,7 @@ export default create({
       }
     };
 
-    const onTouchEnd = (e: TouchEvent) => {
+    const onTouchEnd = () => {
       if (!props.touchable || !state.moving) return;
       const speed = delTa.value / (Date.now() - state.touchTime);
       const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2);

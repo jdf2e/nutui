@@ -28,7 +28,7 @@ export default create({
       default: ''
     }
   },
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     let parent: any = inject('parent', null);
 
     const isCurValue = computed(() => {

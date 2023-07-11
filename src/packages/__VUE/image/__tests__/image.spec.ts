@@ -1,5 +1,4 @@
 import { config, mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
 import ImagePage from '../index.vue';
 import { Loading, CircleClose, Image, ImageError } from '@nutui/icons-vue';
 beforeAll(() => {

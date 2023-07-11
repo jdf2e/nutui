@@ -17,10 +17,9 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
 import Price from '../../price/index.vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('sku-header');
+const { create, translate } = createComponent('sku-header');
 
 export default create({
   props: {
@@ -33,7 +32,7 @@ export default create({
   components: {
     [Price.name]: Price
   },
-  setup(props: any, { emit, slots }) {
+  setup(props, { slots }) {
     const getSlots = (name: string) => slots[name];
 
     return {

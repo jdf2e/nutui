@@ -1,6 +1,6 @@
 <template src="./template.html"></template>
 <script lang="ts">
-import { computed, h, Ref, ref } from 'vue';
+import { computed, Ref, ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';

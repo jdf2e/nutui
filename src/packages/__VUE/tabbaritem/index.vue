@@ -34,16 +34,7 @@
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import Badge from '../badge/index.vue';
-import {
-  Component,
-  ComponentInternalInstance,
-  computed,
-  getCurrentInstance,
-  inject,
-  reactive,
-  watch,
-  PropType
-} from 'vue';
+import { Component, ComponentInternalInstance, computed, getCurrentInstance, inject, reactive, PropType } from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
   components: { [Badge.name]: Badge },
@@ -67,7 +58,7 @@ export default create({
     },
     to: [Object, String]
   },
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };

@@ -32,16 +32,7 @@
 </template>
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import {
-  Component,
-  ComponentInternalInstance,
-  computed,
-  PropType,
-  getCurrentInstance,
-  inject,
-  reactive,
-  watch
-} from 'vue';
+import { Component, ComponentInternalInstance, computed, PropType, getCurrentInstance, inject, reactive } from 'vue';
 import Badge from '../badge/index.taro.vue';
 const { create } = createComponent('tabbar-item');
 export default create({
@@ -67,7 +58,7 @@ export default create({
       default: ''
     }
   },
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };

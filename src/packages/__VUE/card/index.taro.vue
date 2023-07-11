@@ -37,7 +37,6 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Price from '../price/index.taro.vue';
 import Tag from '../tag/index.taro.vue';
@@ -83,7 +82,7 @@ export default create({
     }
   },
 
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };

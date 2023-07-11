@@ -183,7 +183,7 @@ export default defineComponent({
           { id: 4, name: '常营乡' }
         ],
         town: []
-      },
+      } as any,
       methods: {
         show() {
           addressModule.state.show = !addressModule.state.show;
@@ -191,7 +191,7 @@ export default defineComponent({
             formData2.address = '';
           }
         },
-        onChange({ custom, next, value }: any) {
+        onChange({ next, value }: any) {
           formData2.address += value.name;
           const name = addressModule.state[next];
           if (name.length < 1) {

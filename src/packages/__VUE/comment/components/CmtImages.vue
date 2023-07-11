@@ -34,7 +34,7 @@
 import { ref, watch, onMounted, PropType } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('comment-images');
+const { create } = createComponent('comment-images');
 import { Right } from '@nutui/icons-vue';
 
 interface VideosType {

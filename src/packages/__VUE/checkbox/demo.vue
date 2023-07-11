@@ -200,7 +200,7 @@ export default defineComponent({
   components: {
     Checklist
   },
-  setup(props, context) {
+  setup() {
     initTranslate();
     const group = ref(null) as Ref;
     const group2 = ref(null) as Ref;

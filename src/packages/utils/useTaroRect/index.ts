@@ -22,7 +22,7 @@ export interface rectTaro {
   height: number;
 }
 
-export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, taro: any): any => {
+export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>): any => {
   let element = unref(elementRef);
   return new Promise((resolve) => {
     if (Taro.getEnv() === 'WEB') {

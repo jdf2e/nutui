@@ -177,7 +177,7 @@ export default defineComponent({
       currentDate7: new Date(2022, 4, 10, 0, 0)
     });
 
-    const formatter = (type: string, option) => {
+    const formatter = (type: string, option: any) => {
       switch (type) {
         case 'year':
           option.text += '';
@@ -200,7 +200,7 @@ export default defineComponent({
       return option;
     };
 
-    const formatter1 = (type: string, option) => {
+    const formatter1 = (type: string, option: any) => {
       switch (type) {
         case 'year':
           option.text += `${translate('year')}`;
@@ -220,52 +220,28 @@ export default defineComponent({
       return option;
     };
 
-    const filter = (type: string, options) => {
+    const filter = (type: string, options: any) => {
       if (type == 'hour') {
-        return options.filter((option) => Number(option.value) % 6 === 0);
+        return options.filter((option: any) => Number(option.value) % 6 === 0);
       }
       return options;
     };
 
-    const confirm = ({
-      selectedValue,
-      selectedOptions
-    }: {
-      selectedValue: (string | number)[];
-      selectedOptions: any;
-    }) => {
+    const confirm = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
       showToast.text(selectedOptions.map((val: any) => val.text).join(''));
     };
 
-    const confirm2 = ({
-      selectedValue,
-      selectedOptions
-    }: {
-      selectedValue: (string | number)[];
-      selectedOptions: any;
-    }) => {
+    const confirm2 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
       const date = selectedValue.slice(0, 3).join('-');
       const time = selectedValue.slice(3).join(':');
       showToast.text(date + ' ' + time);
     };
 
-    const confirm3 = ({
-      selectedValue,
-      selectedOptions
-    }: {
-      selectedValue: (string | number)[];
-      selectedOptions: any;
-    }) => {
+    const confirm3 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
       showToast.text(selectedValue.join(':'));
     };
 
-    const confirm4 = ({
-      selectedValue,
-      selectedOptions
-    }: {
-      selectedValue: (string | number)[];
-      selectedOptions: any;
-    }) => {
+    const confirm4 = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
       const date = selectedOptions
         .slice(1, 3)
         .map((op: any) => op.text)
@@ -277,17 +253,11 @@ export default defineComponent({
       showToast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
     };
 
-    const confirm5 = ({
-      selectedValue,
-      selectedOptions
-    }: {
-      selectedValue: (string | number)[];
-      selectedOptions: any;
-    }) => {
+    const confirm5 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
       showToast.text(selectedValue.join('-'));
     };
 
-    const popupConfirm = ({ selectedValue, selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+    const popupConfirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
       popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
       show.value = false;
     };

@@ -129,7 +129,7 @@ export default defineComponent({
   components: { My },
   setup() {
     initTranslate();
-    const testClick = (event: Event) => {
+    const testClick = () => {
       console.log('Click Test');
     };
     const switchChecked = ref(true);

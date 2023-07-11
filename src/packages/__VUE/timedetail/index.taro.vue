@@ -1,7 +1,6 @@
 <template>
   <view :class="classes">
     <view class="nut-time-detail__detail nut-time-detail__detail--moring">
-      <!-- <view class="nut-time-detail__detail__time">上午</view> -->
       <view class="nut-time-detail__detail__list">
         <view :class="getClass(item)" v-for="item in renderData" :key="item" @click="handleTime(item)">{{ item }}</view>
       </view>
@@ -27,7 +26,6 @@ export default create({
   setup: (props: any, context: any) => {
     const currentKey = inject('currentKey');
     const currentTime = inject('currentTime');
-    const muti = inject('muti');
 
     const state = reactive({
       currentKey,

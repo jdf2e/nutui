@@ -18,7 +18,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sku-operate');
+const { create } = createComponent('sku-operate');
 
 export default create({
   props: {

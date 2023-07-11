@@ -65,7 +65,7 @@ export default create({
     },
     titleClass: [String]
   },
-  setup(props, { emit, slots }) {
+  setup(props) {
     const barRef = ref<HTMLElement>();
     const offset = ref(0);
     const isScrollFixed = ref(false);

@@ -1,4 +1,4 @@
-import { ref, reactive, watch, computed, toRefs, PropType } from 'vue';
+import { ref, reactive, watch, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName } = createComponent('picker');
 import { PickerOption } from './types';

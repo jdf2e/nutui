@@ -293,13 +293,12 @@ export default create({
       }
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onClick = async (event: any) => {
       if (props.disabled) {
         return;
       }
       const { min, modelValue } = props;
-      const rect = await useTaroRect(root, Taro);
+      const rect = await useTaroRect(root);
       let clientX, clientY;
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         clientX = event.clientX;
@@ -359,7 +358,7 @@ export default create({
       touch.move(event);
       dragStatus.value = 'draging';
 
-      const rect = await useTaroRect(root, Taro);
+      const rect = await useTaroRect(root);
       let delta = touch.deltaX.value;
       let total = rect.width;
       let diff = (delta / total) * scope.value;

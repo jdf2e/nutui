@@ -129,7 +129,7 @@ export const component = (componentName: string, components: Record<string, Comp
         );
       };
 
-      const handleClick = (e: MouseEvent | TouchEvent) => {
+      const handleClick = () => {
         if (pDisabled.value) return;
         if (checked.value && state.partialSelect) {
           state.partialSelect = false;

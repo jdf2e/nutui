@@ -89,7 +89,7 @@ export default create({
     }
   },
   emits: ['sorter'],
-  setup(props: any, { emit, slots }: any) {
+  setup(props: any, { emit }: any) {
     const state = reactive({
       curData: props.data
     });

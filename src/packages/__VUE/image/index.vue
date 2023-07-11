@@ -158,7 +158,7 @@ export default create({
 
     watch(
       () => props.src,
-      (val) => {
+      () => {
         (state.isError = false), (state.loading = true);
       }
     );

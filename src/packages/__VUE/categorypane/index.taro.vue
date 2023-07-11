@@ -48,7 +48,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('category-pane');
+const { create } = createComponent('category-pane');
 
 export type ChildType = {
   catName?: string;

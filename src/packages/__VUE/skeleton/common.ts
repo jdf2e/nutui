@@ -1,4 +1,4 @@
-import { onMounted, computed, toRefs } from 'vue';
+import { computed, toRefs } from 'vue';
 export type avatarShape = 'round' | 'square';
 
 export const component = (components: any) => {

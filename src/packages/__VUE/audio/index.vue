@@ -64,7 +64,7 @@ import { toRefs, ref, onMounted, reactive, watch, provide, Component } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { Service } from '@nutui/icons-vue';
 import Range from '../range/index.vue';
-const { componentName, create } = createComponent('audio');
+const { create } = createComponent('audio');
 
 export default create({
   props: {

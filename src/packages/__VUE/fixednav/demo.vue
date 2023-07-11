@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, reactive, ref, defineComponent } from 'vue';
+import { computed, onMounted, ref, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

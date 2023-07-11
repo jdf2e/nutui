@@ -18,20 +18,6 @@ const images = [
   }
 ];
 
-const videos = [
-  {
-    source: {
-      src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-      type: 'video/mp4'
-    },
-    options: {
-      autoplay: false,
-      muted: false,
-      controls: false
-    }
-  }
-];
-
 test('basic usage test', async () => {
   const wrapper = mount(ImagePreview, {
     props: {

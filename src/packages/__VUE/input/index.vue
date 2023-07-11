@@ -154,7 +154,7 @@ export default create({
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
   expose: ['focus', 'blur', 'select'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const active = ref(false);
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
@@ -243,8 +243,6 @@ export default create({
       if (props.disabled || props.readonly) {
         return;
       }
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
       active.value = true;
       emit('focus', event);
       // emit('update:modelValue', value);

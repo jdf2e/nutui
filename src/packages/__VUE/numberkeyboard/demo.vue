@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import { ref, getCurrentInstance, reactive, defineComponent } from 'vue';
+import { ref, reactive, defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('number-keyboard');
@@ -111,7 +111,7 @@ export default defineComponent({
     function onDelete() {
       showToast.text('删除');
     }
-    function close(index: number) {
+    function close() {
       console.log('关闭');
     }
     function onBlur(index: number) {

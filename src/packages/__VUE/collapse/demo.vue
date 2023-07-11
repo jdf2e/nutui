@@ -124,7 +124,7 @@ const initTranslate = () =>
     }
   });
 export default defineComponent({
-  setup(props, context) {
+  setup() {
     initTranslate();
     const data = reactive({
       active1: [1, 2],
