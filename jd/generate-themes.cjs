@@ -4,6 +4,9 @@ const path = require('path');
 const fs = require('fs-extra');
 let sassFileStr = ``;
 let tasks = [];
+if (!target) {
+  sassFileStr += `@import '@nutui/icons-vue/dist/style_icon.css';\n`;
+}
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let folderName = element.name.toLowerCase();
@@ -20,9 +23,6 @@ config.nav.map((item) => {
         })
         .catch((error) => {})
     );
-    if (!target) {
-      sassFileStr += `@import '@nutui/icons-vue/dist/style_icon.css';\n`;
-    }
   });
 });
 
