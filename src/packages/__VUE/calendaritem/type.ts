@@ -34,7 +34,6 @@ export interface CalendarState {
   defaultRange: number[];
 }
 export interface CalendarTaroState extends CalendarState {
-  compConthsDatas: MonthInfo[];
   scrollTop: number;
   containerHeight: string;
 }

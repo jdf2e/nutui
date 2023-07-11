@@ -40,8 +40,8 @@
                       <slot name="bottom-info" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
                     <view class="nut-calendar__day-tips--curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
-                      {{ translate('today') }}</view
-                    >
+                      {{ translate('today') }}
+                    </view>
                     <view
                       class="nut-calendar__day-tip"
                       :class="{ 'nut-calendar__day-tips--top': rangeTip() }"
@@ -67,7 +67,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, toRefs, computed, PropType } from 'vue';
+import { reactive, ref, watch, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
@@ -77,7 +77,7 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 
 type StringArr = string[];
 
-interface Dateprop {
+interface CalendarDateProp {
   year: string;
   month: string;
 }
@@ -129,7 +129,7 @@ export default create({
       default: ''
     },
     defaultValue: {
-      type: [String, Array] as PropType<string>,
+      type: [String, Array],
       default: ''
     },
     startDate: {
@@ -213,8 +213,8 @@ export default create({
       return Utils.isEqual(state.currDate[1], currDate);
     };
     const isMultiple = (currDate: string) => {
-      if (state.currDate.length > 0) {
-        return (state.currDate as StringArr).some((item: string) => {
+      if (state.currDate?.length > 0) {
+        return (state.currDate as StringArr)?.some((item: string) => {
           return Utils.isEqual(item, currDate);
         });
       } else {
@@ -278,15 +278,15 @@ export default create({
     const chooseDay = (day: Day, month: MonthInfo, isFirst = false) => {
       if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
         const { type } = props;
-        let days = [...month.curData];
         let [y, m] = month.curData;
+        let days = [...month.curData];
         days[2] = Utils.getNumTwoBit(Number(day.day));
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
-          if (state.currDate.length > 0) {
+          if (state.currDate?.length > 0) {
             let hasIndex: number | undefined = undefined;
-            (state.currDate as StringArr).forEach((item: string, index: number) => {
+            (state.currDate as StringArr)?.forEach((item: string, index: number) => {
               if (item == days[3]) {
                 hasIndex = index;
               }
@@ -317,6 +317,7 @@ export default create({
               Array.isArray(state.currDate) && state.currDate.unshift(days[3]);
             }
           }
+
           if (state.chooseData.length == 2 || !state.chooseData.length) {
             state.chooseData = [[...days]];
           } else {
@@ -340,6 +341,7 @@ export default create({
           state.currDate = days[3];
           state.chooseData = [...days];
         }
+
         if (!isFirst) {
           let selectData: any = state.chooseData;
           if (type == 'week') {
@@ -386,7 +388,7 @@ export default create({
     };
 
     // 获取日期状态
-    const getDaysStatus = (days: number, type: string, dateInfo: Dateprop) => {
+    const getDaysStatus = (days: number, type: string, dateInfo: CalendarDateProp) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -402,7 +404,7 @@ export default create({
       });
     };
     // 获取上一个月的最后一周天数，填充当月空白
-    const getPreDaysStatus = (days: number, type: string, dateInfo: Dateprop, preCurrMonthDays: number) => {
+    const getPreDaysStatus = (days: number, type: string, dateInfo: CalendarDateProp, preCurrMonthDays: number) => {
       // 新增：自定义周起始日
       days = days - props.firstDayOfWeek;
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
@@ -446,7 +448,7 @@ export default create({
           ...(getPreDaysStatus(
             preMonthDays,
             'prev',
-            { month: preMonth + '', year: preYear + '' },
+            { month: String(preMonth), year: String(preYear) },
             preCurrMonthDays
           ) as Day[]),
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
@@ -502,7 +504,8 @@ export default create({
 
       // 根据是否存在默认时间，初始化当前日期,
       if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
-        state.currDate = props.type != 'one' ? [...props.defaultValue] : props.defaultValue;
+        state.currDate =
+          props.type !== 'one' ? ([...props.defaultValue] as StringArr) : (props.defaultValue as string | StringArr);
       }
 
       // 判断时间范围内存在多少个月
@@ -604,7 +607,7 @@ export default create({
       state.yearMonthTitle = state.monthsData[state.currentIndex].title;
       if (state.defaultData.length > 0) {
         // 设置当前选中日期
-        if (props.type == 'range') {
+        if (state.isRange) {
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
           chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
         } else if (props.type == 'week') {
@@ -784,7 +787,7 @@ export default create({
     // 初始化数据
     initData();
 
-    // //监听 默认值更改
+    //监听 默认值更改
     watch(
       () => props.defaultValue,
       (val) => {
@@ -810,13 +813,13 @@ export default create({
       chooseDay,
       isCurrDay,
       confirm,
-      monthsPanel,
       months,
-      weeksPanel,
-      viewArea,
       ...toRefs(state),
       ...toRefs(props),
-      translate
+      translate,
+      monthsPanel,
+      weeksPanel,
+      viewArea
     };
   }
 });

@@ -4,23 +4,18 @@
     :visible="visible"
     position="bottom"
     round
+    closeable
     v-bind="$attrs"
-    :closeable="true"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
     :style="{ height: '85vh' }"
   >
     <nut-calendar-item
-      v-if="visible"
-      props
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
       :title="title"
-      :confirm-text="confirmText"
-      :start-text="startText"
-      :end-text="endText"
       :default-value="defaultValue"
       :start-date="startDate"
       :end-date="endDate"
@@ -28,6 +23,9 @@
       @close="close"
       @choose="choose"
       @select="select"
+      :confirm-text="confirmText"
+      :start-text="startText"
+      :end-text="endText"
       :show-today="showToday"
       :show-title="showTitle"
       :show-sub-title="showSubTitle"
@@ -54,6 +52,7 @@
     :is-auto-back-fill="isAutoBackFill"
     :poppable="poppable"
     :title="title"
+    ref="calendarRef"
     :confirm-text="confirmText"
     :start-text="startText"
     :end-text="endText"
@@ -64,12 +63,11 @@
     @close="close"
     @choose="choose"
     @select="select"
-    :show-today="showToday"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
     :to-date-animation="toDateAnimation"
+    :show-today="showToday"
     :first-day-of-week="firstDayOfWeek"
-    ref="calendarRef"
   >
     <template #btn v-if="showTopBtn">
       <slot name="btn"> </slot>
@@ -206,21 +204,21 @@ export default create({
       close();
       emit('choose', param);
     };
-    const select = (param: string) => {
-      // close();
-      emit('select', param);
-    };
 
     const closePopup = () => {
       close();
+    };
+    const select = (param: string) => {
+      // close();
+      emit('select', param);
     };
 
     return {
       closePopup,
       update,
       close,
-      choose,
       select,
+      choose,
       calendarRef,
       showTopBtn,
       topInfo,

@@ -28,7 +28,7 @@
     >
       <view class="nut-calendar__panel" :style="{ height: containerHeight }">
         <view class="nut-calendar__body" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="nut-calendar__month" v-for="(month, index) of compConthsDatas" :key="index">
+          <view class="nut-calendar__month" v-for="(month, index) of compConthsData" :key="index">
             <view class="nut-calendar__month-title">{{ month.title }}</view>
             <view class="nut-calendar__days">
               <view class="nut-calendar__days-item" :class="type === 'range' ? 'nut-calendar__days-item--range' : ''">
@@ -49,8 +49,12 @@
                     <view class="nut-calendar__day-tips--curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
                       {{ translate('today') }}
                     </view>
-                    <view :class="{ 'nut-calendar__day-tips--top': rangeTip(), 'nut-calendar__day-tip': true }">
-                      {{ isStartTip(day, month) ? startText || translate('start') : '' }}
+                    <view
+                      class="nut-calendar__day-tip"
+                      :class="{ 'nut-calendar__day-tips--top': rangeTip() }"
+                      v-if="isStartTip(day, month)"
+                    >
+                      {{ startText || translate('start') }}
                     </view>
                     <view class="nut-calendar__day-tip" v-if="isEndTip(day, month)">{{
                       endText || translate('end')
@@ -75,11 +79,17 @@ import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
 import Utils from '@/packages/utils/date';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
-import { isArray } from '@/packages/utils/util';
+import { useExpose } from '@/packages/utils/useExpose/index';
 const TARO_ENV = Taro.getEnv();
+
+type StringArr = string[];
+
+interface CalendarDateProp {
+  year: string;
+  month: string;
+}
 
 export default create({
   props: {
@@ -129,8 +139,7 @@ export default create({
     },
     defaultValue: {
       type: [String, Array],
-      default: null,
-      valid: (value: string | string[]) => value
+      default: ''
     },
     startDate: {
       type: String,
@@ -153,9 +162,12 @@ export default create({
     const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
     // element refs
     const scalePx = ref(2);
-    const viewHeight = ref(0);
-    const scrollWithAnimation = ref(false);
     const months = ref<null | HTMLElement>(null);
+    const viewHeight = ref(0);
+    const compConthsData = computed(() => {
+      return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
+    });
+    const scrollWithAnimation = ref(false);
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -165,11 +177,10 @@ export default create({
     const bottomInfo = computed(() => {
       return slots['bottom-info'];
     });
-    // state
+
     const state: CalendarTaroState = reactive({
       yearMonthTitle: '',
-      defaultRange: [0, 1],
-      compConthsDatas: [],
+      defaultRange: [],
       containerHeight: '100%',
       currDate: '',
       propStartDate: '',
@@ -212,8 +223,8 @@ export default create({
       return Utils.isEqual(state.currDate[1], currDate);
     };
     const isMultiple = (currDate: string) => {
-      if (isArray(state.currDate) && state.currDate.length > 0) {
-        return state.currDate.some((item: string) => {
+      if (state.currDate?.length > 0) {
+        return (state.currDate as StringArr)?.some((item: string) => {
           return Utils.isEqual(item, currDate);
         });
       } else {
@@ -256,12 +267,10 @@ export default create({
         return `${state.dayPrefix}--disabled`;
       }
     };
-
+    // 确认选择时触发
     const confirm = () => {
       const { type } = props;
       if ((type == 'range' && state.chooseData.length == 2) || type != 'range') {
-        // let chooseData = state.chooseData.slice(0);
-        // emit('choose', chooseData);
         let selectData: any = state.chooseData.slice(0);
         if (type == 'week') {
           selectData = {
@@ -285,9 +294,9 @@ export default create({
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (type == 'multiple') {
-          if (isArray(state.currDate) && state.currDate.length > 0) {
-            let hasIndex = NaN;
-            state.currDate.forEach((item: string, index: number) => {
+          if (state.currDate?.length > 0) {
+            let hasIndex: number | undefined = undefined;
+            (state.currDate as StringArr)?.forEach((item: string, index: number) => {
               if (item == days[3]) {
                 hasIndex = index;
               }
@@ -295,11 +304,11 @@ export default create({
             if (isFirst) {
               state.chooseData.push([...days]);
             } else {
-              if (!isNaN(hasIndex)) {
-                state.currDate.splice(hasIndex, 1);
+              if (hasIndex !== undefined) {
+                (state.currDate as StringArr).splice(hasIndex, 1);
                 state.chooseData.splice(hasIndex, 1);
               } else {
-                state.currDate.push(days[3]);
+                (state.currDate as StringArr).push(days[3]);
                 state.chooseData.push([...days]);
               }
             }
@@ -389,7 +398,7 @@ export default create({
     };
 
     // 获取日期状态
-    const getDaysStatus = (days: number, type: string, dateInfo: { year: string; month: string }) => {
+    const getDaysStatus = (days: number, type: string, dateInfo: CalendarDateProp) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
@@ -405,13 +414,7 @@ export default create({
       });
     };
     // 获取上一个月的最后一周天数，填充当月空白
-    const getPreDaysStatus = (
-      days: number,
-      type: string,
-      dateInfo: { year: string; month: string },
-      preCurrMonthDays: number
-    ) => {
-      // 新增：自定义周起始日}, preCurrMonthDays: number) => {
+    const getPreDaysStatus = (days: number, type: string, dateInfo: CalendarDateProp, preCurrMonthDays: number) => {
       // 新增：自定义周起始日
       days = days - props.firstDayOfWeek;
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
@@ -434,14 +437,14 @@ export default create({
       // 一号为周几
       const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
 
-      let preMonth = +curData[1] - 1;
-      let preYear = +curData[0];
+      let preMonth = Number(curData[1]) - 1;
+      let preYear = Number(curData[0]);
       if (preMonth <= 0) {
         preMonth = 12;
         preYear += 1;
       }
       //当月天数与上个月天数
-      const currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
+      const currMonthDays = Utils.getMonthDays(String(curData[0]), String(curData[1]));
       const preCurrMonthDays = Utils.getMonthDays(preYear + '', preMonth + '');
 
       const title = {
@@ -477,8 +480,8 @@ export default create({
 
       if (state.monthsData.length > 0) {
         cssScrollHeight =
-          state.monthsData[state.monthsData.length - 1].cssScrollHeight +
-          state.monthsData[state.monthsData.length - 1].cssHeight;
+          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssScrollHeight +
+          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssHeight;
       }
       monthInfo.cssScrollHeight = cssScrollHeight;
       if (type == 'next') {
@@ -521,8 +524,9 @@ export default create({
       // 根据是否存在默认时间，初始化当前日期,
       if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
         state.currDate =
-          props.type != 'one' ? ([...props.defaultValue] as string[]) : (props.defaultValue as string | string[]);
+          props.type !== 'one' ? ([...props.defaultValue] as StringArr) : (props.defaultValue as string | StringArr);
       }
+
       // 判断时间范围内存在多少个月
       const startDate = {
         year: Number(state.startData[0]),
@@ -602,7 +606,6 @@ export default create({
           state.defaultData = [...splitDate(state.currDate as string)];
         }
       }
-
       // 设置默认可见区域
       let current = 0;
       let lastCurrent = 0;
@@ -685,23 +688,18 @@ export default create({
       scrollToDate,
       initPosition
     });
+    // 设置当前可见月份
     const setDefaultRange = (monthsNum: number, current: number) => {
-      let rangeArr: number[] = [];
       if (monthsNum >= 3) {
         if (current > 0 && current < monthsNum) {
-          rangeArr = [current - 1, current + 3];
+          state.defaultRange = [current - 1, current + 3];
         } else if (current == 0) {
-          rangeArr = [current, current + 4];
+          state.defaultRange = [current, current + 4];
         } else if (current == monthsNum) {
-          rangeArr = [current - 2, current + 2];
+          state.defaultRange = [current - 2, current + 2];
         }
       } else {
-        rangeArr = [0, monthsNum + 2];
-      }
-      if (JSON.stringify(state.defaultRange) !== JSON.stringify(rangeArr)) {
-        state.defaultRange[0] = rangeArr[0];
-        state.defaultRange[1] = rangeArr[1];
-        state.compConthsDatas = state.monthsData.slice(rangeArr[0], rangeArr[1]);
+        state.defaultRange = [0, monthsNum + 2];
       }
       let defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
       state.translateY = defaultScrollTop;
@@ -733,19 +731,19 @@ export default create({
         return Utils.isEqual(state.currDate[0], state.currDate[1]);
       }
     };
-    // 是否有是当前日期
+    // 是否有 当前日期
     const isCurrDay = (dateInfo: Day) => {
       const date = `${dateInfo.year}-${dateInfo.month}-${
         Number(dateInfo.day) < 10 ? '0' + dateInfo.day : dateInfo.day
       }`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
-
-    const mothsViewScroll = (e: any) => {
+    // 滚动处理事件
+    const mothsViewScroll = (e: Event) => {
       if (state.monthsData.length <= 1) {
         return;
       }
-      const currentScrollTop = e.target.scrollTop;
+      const currentScrollTop = (e.target as Element).scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
@@ -763,9 +761,9 @@ export default create({
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
       }
-
       state.yearMonthTitle = state.monthsData[current].title;
     };
+
     // 重新渲染
     const resetRender = () => {
       state.chooseData.splice(0);
@@ -806,6 +804,7 @@ export default create({
 
     return {
       weeks,
+      compConthsData,
       showTopBtn,
       topInfo,
       bottomInfo,
@@ -820,8 +819,8 @@ export default create({
       months,
       ...toRefs(state),
       ...toRefs(props),
-      scrollWithAnimation,
-      translate
+      translate,
+      scrollWithAnimation
     };
   }
 });

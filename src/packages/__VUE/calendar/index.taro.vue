@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    v-model:visible="show"
+    :visible="visible"
     position="bottom"
     round
     closeable
@@ -11,7 +11,6 @@
     :style="{ height: '85vh' }"
   >
     <nut-calendar-item
-      v-if="show"
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
@@ -84,14 +83,13 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { ref, watch, computed, reactive, toRefs } from 'vue';
+import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
-import Taro from '@tarojs/taro';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
@@ -167,10 +165,6 @@ export default create({
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
   setup(props, { emit, slots }) {
-    const state = reactive({
-      ENV: Taro.getEnv(),
-      ENV_TYPE: Taro.ENV_TYPE
-    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -183,7 +177,6 @@ export default create({
     const bottomInfo = computed(() => {
       return slots['bottom-info'];
     });
-    let show = ref(props.visible);
     // element refs
     const calendarRef = ref<null | CalendarRef>(null);
     const scrollToDate = (date: string) => {
@@ -198,12 +191,10 @@ export default create({
     });
     // methods
     const update = () => {
-      show.value = false;
       emit('update:visible', false);
     };
 
     const close = () => {
-      show.value = false;
       emit('close');
       emit('update:visible', false);
     };
@@ -220,16 +211,8 @@ export default create({
       // close();
       emit('select', param);
     };
-    watch(
-      () => props.visible,
-      (value: boolean) => {
-        show.value = value;
-      }
-    );
 
     return {
-      ...toRefs(state),
-      show,
       closePopup,
       update,
       close,

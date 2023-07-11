@@ -96,7 +96,7 @@ test('should render slot correctly', async () => {
 test('select event when click item', async () => {
   const wrapper = mount(Calendar, {
     props: {
-      poppable: false,
+      poppable: true,
       defaultValue: '2022-03-18',
       showToday: true,
       isAutoBackFill: true,

@@ -279,39 +279,12 @@ const initTranslate = () =>
       selected: 'selected:'
     }
   });
-interface TestCalendarState extends TestCalendarStateVisible {
-  isVisible: boolean;
-  date: string;
-  dateWeek: string;
-
-  date1: string[];
-  date2: string;
-  date3: string;
-  date4: string[];
-  date5: string[];
-  date6: string[];
-  date7: string[];
-  date8: string;
-  date9: string[];
-}
-interface TestCalendarStateVisible {
-  isVisible: boolean;
-  isVisible1: boolean;
-  isVisible2: boolean;
-  isVisible3: boolean;
-  isVisible4: boolean;
-  isVisible5: boolean;
-  isVisible6: boolean;
-  isVisible7: boolean;
-  isVisible8: boolean;
-  isVisible9: boolean;
-}
 export default defineComponent({
   props: {},
   setup() {
     initTranslate();
     const calendarRef = ref<null | CalendarRef>(null);
-    const state: TestCalendarState = reactive({
+    const state = reactive({
       isVisible: false,
       date: '2022-02-01',
       dateWeek: '',
@@ -320,8 +293,8 @@ export default defineComponent({
       date3: '',
       date4: ['2021-12-23', '2021-12-26'],
       date5: ['2021-12-23', '2021-12-26'],
-      date6: [],
-      date7: [],
+      date6: [] as string[],
+      date7: [] as string[],
       date8: '',
       date9: ['2020-01-23', '2020-01-26'],
       isVisible1: false,
@@ -334,12 +307,12 @@ export default defineComponent({
       isVisible8: false,
       isVisible9: false
     });
-    const openSwitch = (param: keyof TestCalendarStateVisible) => {
-      state[`${param}`] = true;
+    const openSwitch = (param: string) => {
+      (state as any)[`${param}`] = true;
     };
 
-    const closeSwitch = (param: keyof TestCalendarStateVisible) => {
-      state[`${param}`] = false;
+    const closeSwitch = (param: string) => {
+      (state as any)[`${param}`] = false;
     };
 
     const setChooseValue = (param: string) => {
