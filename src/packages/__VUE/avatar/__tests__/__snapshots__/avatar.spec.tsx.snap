@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Avatar: avatar group render 1`] = `
-"<view class=\\"nut-avatar-group\\">
-  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">1</view>
-  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">2</view>
-  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">3</view>
-  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">4</view>
-  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">5</view>
-  <!--v-if-->
+"<view class=\\"nut-avatar-group\\" style=\\"margin-left: 8px;\\">
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">1</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">2</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">3</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">4</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">5</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102); margin-left: -8px;\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round avater-fold\\">99</view>
 </view>"
 `;
 

@@ -83,7 +83,7 @@ test('Avatar: avatar group render', () => {
 test('Avatar: avatar group max-count', async () => {
   const wrapper = mount(() => {
     return (
-      <AvatarGroup maxCount={3} span="4" zIndex="99">
+      <AvatarGroup maxCount={3} span="4" zIndex="right">
         <Avatar>1</Avatar>
         <Avatar>2</Avatar>
         <Avatar>3</Avatar>
@@ -94,6 +94,6 @@ test('Avatar: avatar group max-count', async () => {
   });
   await nextTick();
   const list = wrapper.findAllComponents(Avatar);
-  expect(list).toHaveLength(5);
+  expect(list).toHaveLength(6);
   expect(list[4].attributes('style')).includes('display: none');
 });
