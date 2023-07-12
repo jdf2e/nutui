@@ -1,7 +1,16 @@
+<template>
+  <div class="nut-sticky" ref="rootRef" :style="rootStyle">
+    <div class="nut-sticky__box" ref="stickyRef" :style="stickyStyle">
+      <slot></slot>
+    </div>
+  </div>
+</template>
 <script lang="ts">
-import { computed, h, ref, CSSProperties } from 'vue';
+import { computed, ref, watch, CSSProperties, onMounted, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('sticky');
+import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { usePageScroll } from '@tarojs/taro';
+const { create } = createComponent('sticky');
 export default create({
   props: {
     top: {
@@ -11,53 +20,53 @@ export default create({
     zIndex: {
       type: [Number, String],
       default: 99
-    },
-    parentHeight: {
-      type: [Number],
-      default: 667
     }
   },
-  emits: ['change', 'scroll'],
-
-  setup(props, { slots }) {
-    const root = ref<HTMLElement>();
-
-    const rootStyle = computed(() => {
+  emits: ['change'],
+  setup(props, { emit }) {
+    const rootRef = ref<HTMLElement>();
+    const stickyRef = ref<HTMLElement>();
+    const state = reactive({
+      fixed: false,
+      height: 0,
+      width: 0
+    });
+    const threshold = computed(() => {
+      return Number(props.top);
+    });
+    const rootStyle = computed<CSSProperties | undefined>(() => {
+      if (state.fixed) return { height: `${state.height}px` };
+      return {};
+    });
+    const stickyStyle = computed<CSSProperties>(() => {
+      if (!state.fixed) return {};
       return {
-        height: `${props.parentHeight}px`
+        top: `${threshold.value}px`,
+        height: `${state.height}px`,
+        width: `${state.width}px`,
+        position: state.fixed ? 'fixed' : undefined,
+        zIndex: Number(props.zIndex)
       };
     });
-
-    const stickyStyle = computed(() => {
-      const style: CSSProperties = {
-        top: `${props.top}px`,
-        zIndex: +props.zIndex
-      };
-
-      return style;
+    const handleScroll = () => {
+      console.log('handleScroll');
+      useTaroRect(rootRef).then((rootRect: any) => {
+        state.height = rootRect.height;
+        state.width = rootRect.width;
+        state.fixed = threshold.value > rootRect.top;
+      });
+    };
+    watch(
+      () => state.fixed,
+      (val) => {
+        emit('change', val);
+      }
+    );
+    usePageScroll(handleScroll);
+    onMounted(() => {
+      handleScroll();
     });
-
-    const renderFixed = () => {
-      return h(
-        'view',
-        {
-          style: stickyStyle.value,
-          class: `${componentName} nut-sticky--stickyed`
-        },
-        slots.default?.()
-      );
-    };
-
-    return () => {
-      return h(
-        'view',
-        {
-          style: rootStyle.value,
-          ref: root
-        },
-        [renderFixed()]
-      );
-    };
+    return { rootRef, rootStyle, stickyRef, stickyStyle };
   }
 });
 </script>
