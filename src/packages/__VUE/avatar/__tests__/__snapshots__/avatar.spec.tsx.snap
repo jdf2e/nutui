@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Avatar: avatar group render 1`] = `
+"<view class=\\"nut-avatar-group\\">
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">1</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">2</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">3</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">4</view>
+  <view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\">5</view>
+  <!--v-if-->
+</view>"
+`;
+
+exports[`Avatar: default slot 1`] = `"<view style=\\"background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);\\" class=\\"nut-avatar nut-avatar-normal nut-avatar-round\\"><img src=\\"https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png\\"></view>"`;

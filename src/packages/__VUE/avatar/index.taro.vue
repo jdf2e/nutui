@@ -1,23 +1,10 @@
 <template>
-  <view
-    :style="!showMax ? styles : maxStyles"
-    :class="classes"
-    ref="avatarRef"
-    v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
-  >
-    <template v-if="!avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount">
-      <slot></slot>
-    </template>
-    <!-- 折叠头像 -->
-    <template v-if="showMax && avatarGroup?.props?.maxCount">
-      {{
-        avatarGroup?.props?.maxContent ? avatarGroup?.props?.maxContent : `+ ${maxIndex - avatarGroup?.props?.maxCount}`
-      }}
-    </template>
+  <view :style="styles" :class="classes" ref="avatarRef">
+    <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, computed, inject, reactive, ref, Ref } from 'vue';
+import { toRefs, computed, inject, reactive, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar');
 export default create({
@@ -53,13 +40,6 @@ export default create({
       maxIndex: 0 // avatarGroup里的avatar的个数
     });
 
-    onMounted(() => {
-      const children = avatarGroup?.avatarGroupRef?.value?.children;
-      if (children) {
-        avatarLength(children);
-      }
-    });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -77,34 +57,12 @@ export default create({
         color: `${color.value}`,
         marginLeft: state.index != 1 && (avatarGroup?.props?.span ? `${avatarGroup?.props?.span}px` : ''),
         zIndex: avatarGroup?.props?.zIndex == 'right' ? `${Math.abs(state.maxIndex - state.index)}` : ''
-      };
+      } as any;
     });
-
-    const maxStyles = computed(() => {
-      return {
-        backgroundColor: `${avatarGroup?.props?.maxBgColor}`,
-        color: `${avatarGroup?.props?.maxColor}`
-      };
-    });
-
-    const avatarLength = (children: any) => {
-      state.maxIndex = children.length;
-      for (let i = 0; i < children.length; i++) {
-        children[i].setAttribute('data-index', i + 1);
-      }
-
-      if (avatarRef?.value?.props) {
-        state.index = avatarRef?.value?.props['data-index'];
-      }
-      if (state.index == state.maxIndex && state.index != avatarGroup?.props?.maxCount) {
-        state.showMax = true;
-      }
-    };
 
     return {
       classes,
       styles,
-      maxStyles,
       avatarGroup,
       visible,
       avatarRef,
