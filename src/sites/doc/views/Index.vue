@@ -6,7 +6,6 @@
       <div class="doc-title">
         <div class="doc-title-position" :class="{ fixed: fixed, hidden: hidden }">
           <div class="title">{{ componentName.name }}&nbsp;{{ componentName.cName }}</div>
-          <doc-issue class=""></doc-issue>
         </div>
       </div>
       <div class="doc-content-document isComponent">
@@ -27,22 +26,20 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
+import { defineComponent, onMounted, reactive, toRefs } from 'vue';
 import { nav } from '@/config.json';
 import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
-import Header from '@/sites/doc/components/Header.vue';
+import DocHeader from '@/sites/doc/components/DocHeader.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import Issue from '@/sites/doc/components/Issue.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { initSiteLang } from '@/sites/assets/util/useTranslate';
 export default defineComponent({
   name: 'doc',
   components: {
-    [Header.name]: Header,
+    DocHeader,
     [Nav.name]: Nav,
-    [DemoPreview.name]: DemoPreview,
-    [Issue.name]: Issue
+    [DemoPreview.name]: DemoPreview
   },
   setup() {
     const route = useRoute();
