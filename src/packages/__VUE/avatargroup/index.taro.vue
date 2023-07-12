@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-avatar-group" ref="avatarGroupRef">
+  <view class="nut-avatar-group" ref="avatarGroupRef" :style="styles">
     <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
@@ -8,13 +8,14 @@
       :bgColor="maxBgColor"
       :size="size"
       :shape="shape"
+      :style="{ magrinLeft: `${span}px` }"
     >
       {{ maxContent || foldCount }}
     </nut-avatar>
   </view>
 </template>
 <script lang="ts">
-import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType } from 'vue';
+import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
 import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
 import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
@@ -60,28 +61,40 @@ export default create({
   },
   setup(props) {
     const avatarGroupRef = ref<any>(null);
-    const foldCount = ref(0);
+    const foldCount = ref(99);
     const observer = ref<MutationObserver>();
+    const styles = computed(() => {
+      return {
+        marginLeft: -1 * Number(props.span) + 'px'
+      };
+    });
 
     // 折叠头像
     const foldAvatar = (element: any) => {
-      foldCount.value = 0;
+      let count = 0;
 
-      const childrens = element.children;
-      for (let i = props.maxCount as number; i < childrens.length; i++) {
-        const children = childrens[i] as any;
+      const children = element.children;
+      if (props.zIndex === 'right') {
+        for (let i = 0; i < Number(props.maxCount); i++) {
+          const child = children[i];
+          child.style.zIndex = `${99 - i}`;
+        }
+      }
+      for (let i = Number(props.maxCount); i < children.length; i++) {
+        const child = children[i] as any;
         let className;
         if (Taro.getEnv() === 'WEB') {
-          className = children.className;
+          className = child.className;
         } else {
-          className = children.props.class;
+          className = child.props.class;
         }
         if (className.includes('avater-fold')) {
           continue;
         }
-        children.style.display = 'none';
-        foldCount.value += 1;
+        child.style.display = 'none';
+        count++;
       }
+      foldCount.value = count;
     };
 
     // 监听 default slot
@@ -132,6 +145,7 @@ export default create({
     });
 
     return {
+      styles,
       foldCount,
       avatarGroupRef
     };

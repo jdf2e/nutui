@@ -7,8 +7,5 @@
   flex: 0 0 auto; // 防止被压缩
   .nut-avatar {
     border: 1px solid #fff;
-    &:not(:first-of-type) {
-      margin-left: -8px;
-    }
   }
 }

@@ -32,7 +32,6 @@ export default create({
     const sizeValue = ['large', 'normal', 'small'];
     const avatarGroup: any = inject('avatarGroup', null);
     const avatarRef = ref(null);
-    const index = ref(1);
 
     const classes = computed(() => {
       const prefixCls = 'nut-avatar';
@@ -49,8 +48,7 @@ export default create({
         height: size.value in sizeValue ? '' : `${size.value}px`,
         backgroundColor: `${bgColor.value}`,
         color: `${color.value}`,
-        marginLeft: index.value !== 1 && avatarGroup?.props?.span ? `${avatarGroup?.props?.span}px` : '',
-        zIndex: avatarGroup?.props?.zIndex == 'right' ? `${Math.abs(avatarGroup?.props?.maxCount - index.value)}` : ''
+        marginLeft: avatarGroup?.props?.span ? `${avatarGroup?.props?.span}px` : ''
       } as CSSProperties;
     });
 
