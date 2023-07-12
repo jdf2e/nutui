@@ -104,12 +104,15 @@ export default create({
 
       // 当观察到变动时执行的回调函数
       const callback = function (mutations: MutationRecord[]) {
+        let sig = false;
         // Use traditional 'for loops' for IE 11
         for (let mutation of mutations) {
           if (mutation.type === 'childList') {
-            foldAvatar(element);
+            sig = true;
+            break;
           }
         }
+        if (sig) foldAvatar(element);
       };
 
       // 创建一个观察器实例并传入回调函数
