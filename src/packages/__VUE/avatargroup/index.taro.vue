@@ -1,6 +1,6 @@
 <template>
   <view :class="classes" ref="avatarGroupRef">
-    <slot />
+    <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
       class="avater-fold"
@@ -74,30 +74,20 @@ export default create({
     const foldAvatar = (element: any) => {
       foldCount.value = 0;
 
-      if (Taro.getEnv() === 'WEB') {
-        if (element && element.$el) {
-          element = element.$el;
+      const childrens = element.children;
+      for (let i = props.maxCount as number; i < childrens.length; i++) {
+        const children = childrens[i] as any;
+        let className;
+        if (Taro.getEnv() === 'WEB') {
+          className = children.className;
+        } else {
+          className = children.props.class;
         }
-        const childrens = element.children;
-        for (let i = props.maxCount as number; i < childrens.length; i++) {
-          const children = childrens[i] as any;
-          if (children.className.includes('avater-fold')) {
-            continue;
-          }
-          children.style.display = 'none';
-          foldCount.value += 1;
+        if (className.includes('avater-fold')) {
+          continue;
         }
-      } else {
-        const childrens = element.children;
-
-        for (let i = props.maxCount as number; i < childrens.length; i++) {
-          const children = childrens[i] as any;
-          if (children.props.class.includes('avater-fold')) {
-            continue;
-          }
-          children.style.display = 'none';
-          foldCount.value += 1;
-        }
+        children.style.display = 'none';
+        foldCount.value += 1;
       }
     };
 

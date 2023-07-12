@@ -114,10 +114,25 @@
         <My />
       </nut-avatar>
     </nut-cell>
+
+    <h2 class="demo-avatar-group-title"
+      >{{ translate('title9') }}<nut-button @click="addAvatar" size="mini">{{ translate('add') }}</nut-button></h2
+    >
+    <nut-cell>
+      <nut-avatar-group max-count="4" zIndex="right">
+        <nut-avatar v-for="i in avatarCount" :key="i">
+          <My v-if="i % 2 == 0" />
+          <img
+            v-else
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+          />
+        </nut-avatar>
+      </nut-avatar-group>
+    </nut-cell>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -132,7 +147,9 @@ const initTranslate = () =>
       title5: '带徽标的头像',
       title6: '头像组合展现',
       title7: '组合头像可控制层级方向',
-      title8: '点击头像触发事件'
+      title8: '点击头像触发事件',
+      title9: '动态添加头像',
+      add: '添加'
     },
     'en-US': {
       title1: 'Support three sizes：small、normal、large',
@@ -142,7 +159,9 @@ const initTranslate = () =>
       title5: 'Avatar with badge',
       title6: 'Avatar group display',
       title7: 'Avatar group to control hierarchy direction',
-      title8: 'Click on the avatar to trigger the event'
+      title8: 'Click on the avatar to trigger the event',
+      title9: 'Dynamically adding avatars',
+      add: 'add'
     }
   });
 export default defineComponent({
@@ -153,7 +172,13 @@ export default defineComponent({
     const handleClick = () => {
       console.log('Click Test');
     };
-    return { handleClick, translate };
+
+    const avatarCount = ref(4);
+    const addAvatar = () => {
+      avatarCount.value += 1;
+    };
+
+    return { handleClick, translate, avatarCount, addAvatar };
   }
 });
 </script>
@@ -169,5 +194,11 @@ export default defineComponent({
 
 .demo-avatar {
   color: #fff;
+}
+.demo-avatar-group-title {
+  display: flex;
+  align-items: center;
+  row-gap: 8px;
+  column-gap: 8px;
 }
 </style>
