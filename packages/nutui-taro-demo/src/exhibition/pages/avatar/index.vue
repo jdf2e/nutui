@@ -91,12 +91,26 @@
     <nut-cell>
       <nut-avatar @click="handleClick"><My /></nut-avatar>
     </nut-cell>
+
+    <h2 class="demo-avatar-group-title">动态添加头像<nut-button @click="addAvatar" size="mini">添加</nut-button></h2>
+    <nut-cell>
+      <nut-avatar-group max-count="4" zIndex="right">
+        <nut-avatar v-for="i in avatarCount" :key="i">
+          <My v-if="i % 2 == 0" />
+          <img
+            v-else
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+          />
+        </nut-avatar>
+      </nut-avatar-group>
+    </nut-cell>
   </div>
 </template>
 <script lang="ts">
 import { My } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
+import { ref } from 'vue';
 export default {
   components: { My, Header },
   props: {},
@@ -106,7 +120,12 @@ export default {
       console.log('触发点击头像');
     };
 
-    return { handleClick, env };
+    const avatarCount = ref(4);
+    const addAvatar = () => {
+      avatarCount.value += 1;
+    };
+
+    return { handleClick, env, avatarCount, addAvatar };
   }
 };
 </script>
@@ -121,6 +140,12 @@ export default {
   }
   .demo-avatar {
     color: #fff;
+  }
+  .demo-avatar-group-title {
+    display: flex;
+    align-items: center;
+    row-gap: 8px;
+    column-gap: 8px;
   }
 }
 </style>
