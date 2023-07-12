@@ -6,9 +6,9 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
-import { Avatar } from '@nutui/nutui';
+import { Avatar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Avatar);
@@ -20,7 +20,7 @@ app.use(Avatar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar size="large">
     <img
@@ -48,16 +48,13 @@ app.use(Avatar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar shape="square"><My /></nut-avatar>
   <nut-avatar shape="round"><My /></nut-avatar>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -69,7 +66,7 @@ app.use(Avatar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar>
     <img
@@ -79,11 +76,8 @@ app.use(Avatar);
   <nut-avatar><My /></nut-avatar>
   <nut-avatar>王</nut-avatar>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -95,16 +89,13 @@ Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar class="demo-avatar" bg-color="#FA2C19"><My color="#fff" /></nut-avatar>
   <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -114,7 +105,7 @@ Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-badge value="8">
     <nut-avatar shape="square"><My /></nut-avatar>
@@ -123,11 +114,8 @@ Icon 和字符型可以自定义颜色及背景色
     <nut-avatar shape="square"><My /></nut-avatar>
   </nut-badge>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -137,7 +125,7 @@ Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar-group span="-4">
     <nut-avatar>
@@ -159,11 +147,8 @@ Icon 和字符型可以自定义颜色及背景色
     <nut-avatar><My /></nut-avatar>
   </nut-avatar-group>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -173,7 +158,7 @@ Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-avatar-group max-count="3" zIndex="right" max-content="...">
     <nut-avatar>
@@ -186,11 +171,8 @@ Icon 和字符型可以自定义颜色及背景色
     <nut-avatar><My /></nut-avatar>
   </nut-avatar-group>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -200,26 +182,17 @@ Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
     <nut-avatar @click="handleClick"><My /></nut-avatar>
   </nut-cell>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { My },
-    setup() {
-      const handleClick = () => {
-        console.log('触发点击头像');
-      };
-      return {
-        handleClick
-      };
-    }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue-taro';
+const handleClick = () => {
+  console.log('触发点击头像');
+};
 </script>
 ```
 

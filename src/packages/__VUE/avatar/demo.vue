@@ -131,8 +131,8 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -140,7 +140,7 @@ import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
-      title1: '支持三种尺寸：small、normal、large',
+      title1: '支持三种尺寸：large、normal、small',
       title2: '支持两种形状：square、round',
       title3: '支持三种类型：图片、Icon 以及字符',
       title4: 'Icon 和字符型可以自定义颜色及背景色',
@@ -164,23 +164,14 @@ const initTranslate = () =>
       add: 'add'
     }
   });
-export default defineComponent({
-  components: { My },
-  props: {},
-  setup() {
-    initTranslate();
-    const handleClick = () => {
-      console.log('Click Test');
-    };
-
-    const avatarCount = ref(4);
-    const addAvatar = () => {
-      avatarCount.value += 1;
-    };
-
-    return { handleClick, translate, avatarCount, addAvatar };
-  }
-});
+initTranslate();
+const handleClick = () => {
+  console.log('Click Test');
+};
+const avatarCount = ref(4);
+const addAvatar = () => {
+  avatarCount.value += 1;
+};
 </script>
 <style lang="scss" scoped>
 .nut-cell {

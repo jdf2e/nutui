@@ -1,23 +1,25 @@
 <template>
-  <view :class="classes" ref="avatarGroupRef">
+  <view class="nut-avatar-group" ref="avatarGroupRef" :style="styles">
     <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
       class="avater-fold"
       :color="maxColor"
       :bgColor="maxBgColor"
-      :size="size || 'normal'"
-      :shape="shape || 'normal'"
+      :size="size"
+      :shape="shape"
+      :style="{ magrinLeft: `${span}px` }"
     >
       {{ maxContent || foldCount }}
     </nut-avatar>
   </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, provide, ref, nextTick, unref, onUnmounted } from 'vue';
+import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('avatar-group');
+import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
 import Avatar from '../avatar/index.vue';
+const { create } = createComponent('avatar-group');
 export default create({
   components: {
     [Avatar.name]: Avatar
@@ -40,51 +42,54 @@ export default create({
       default: '#666'
     },
     size: {
-      type: String,
-      default: ''
+      type: [String, Number] as PropType<AvatarSize | string | number>,
+      default: 'normal'
     },
     shape: {
-      type: String,
+      type: String as PropType<AvatarShape>,
       default: 'round'
     },
     span: {
-      type: String,
+      type: [String, Number],
       default: '-8'
     },
     zIndex: {
-      type: String,
+      type: String as PropType<AvatarZIndex>,
       default: 'left'
     }
   },
   setup(props) {
     const avatarGroupRef = ref<any>(null);
-    const index = ref(0);
-    const foldCount = ref(0);
+    const foldCount = ref(99);
     const observer = ref<MutationObserver>();
-    // const sizeValue = ['large', 'normal', 'small'];
-    const classes = computed(() => {
-      const prefixCls = componentName;
+    const styles = computed(() => {
       return {
-        [prefixCls]: true
+        marginLeft: -1 * Number(props.span) + 'px'
       };
     });
 
     // 折叠头像
     const foldAvatar = (element: any) => {
-      foldCount.value = 0;
-
+      let count = 0;
       if (element && element.$el) {
         element = element.$el;
       }
-      const childrens = element.children;
-      for (let i = props.maxCount as number; i < childrens.length; i++) {
-        const children = childrens[i] as any;
-        if (children.className.includes('avater-fold')) {
+      const children = element.children;
+      if (props.zIndex === 'right') {
+        for (let i = 0; i < Number(props.maxCount); i++) {
+          const child = children[i];
+          child.style.zIndex = `${99 - i}`;
+        }
+      }
+      for (let i = Number(props.maxCount); i < children.length; i++) {
+        const child = children[i] as any;
+        if (child.className.includes('avater-fold')) {
           continue;
         }
-        children.style.display = 'none';
-        foldCount.value += 1;
+        child.style.display = 'none';
+        count++;
       }
+      foldCount.value = count;
     };
 
     // 监听 default slot
@@ -94,12 +99,15 @@ export default create({
 
       // 当观察到变动时执行的回调函数
       const callback = function (mutations: MutationRecord[]) {
+        let sig = false;
         // Use traditional 'for loops' for IE 11
         for (let mutation of mutations) {
           if (mutation.type === 'childList') {
-            foldAvatar(element);
+            sig = true;
+            break;
           }
         }
+        if (sig) foldAvatar(element);
       };
 
       // 创建一个观察器实例并传入回调函数
@@ -129,15 +137,13 @@ export default create({
 
     provide('avatarGroup', {
       props,
-      avatarGroupRef,
-      index
+      avatarGroupRef
     });
 
     return {
-      classes,
-      // styles,
-      avatarGroupRef,
-      foldCount
+      styles,
+      foldCount,
+      avatarGroupRef
     };
   }
 });
