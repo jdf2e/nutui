@@ -1,23 +1,24 @@
 <template>
-  <view :class="classes" ref="avatarGroupRef">
+  <view class="nut-avatar-group" ref="avatarGroupRef">
     <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
       class="avater-fold"
       :color="maxColor"
       :bgColor="maxBgColor"
-      :size="size || 'normal'"
-      :shape="shape || 'normal'"
+      :size="size"
+      :shape="shape"
     >
       {{ maxContent || foldCount }}
     </nut-avatar>
   </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, provide, ref, nextTick, unref, onUnmounted } from 'vue';
+import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('avatar-group');
+import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
 import Avatar from '../avatar/index.vue';
+const { create } = createComponent('avatar-group');
 export default create({
   components: {
     [Avatar.name]: Avatar
@@ -40,34 +41,26 @@ export default create({
       default: '#666'
     },
     size: {
-      type: String,
-      default: ''
+      type: [String, Number] as PropType<AvatarSize | string | number>,
+      default: 'normal'
     },
     shape: {
-      type: String,
+      type: String as PropType<AvatarShape>,
       default: 'round'
     },
     span: {
-      type: String,
+      type: [String, Number],
       default: '-8'
     },
     zIndex: {
-      type: String,
+      type: String as PropType<AvatarZIndex>,
       default: 'left'
     }
   },
   setup(props) {
     const avatarGroupRef = ref<any>(null);
-    const index = ref(0);
     const foldCount = ref(0);
     const observer = ref<MutationObserver>();
-    // const sizeValue = ['large', 'normal', 'small'];
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     // 折叠头像
     const foldAvatar = (element: any) => {
@@ -129,15 +122,12 @@ export default create({
 
     provide('avatarGroup', {
       props,
-      avatarGroupRef,
-      index
+      avatarGroupRef
     });
 
     return {
-      classes,
-      // styles,
-      avatarGroupRef,
-      foldCount
+      foldCount,
+      avatarGroupRef
     };
   }
 });
