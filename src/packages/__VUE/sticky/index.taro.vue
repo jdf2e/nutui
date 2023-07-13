@@ -1,6 +1,6 @@
 <template>
-  <div class="nut-sticky" ref="rootRef" :style="rootStyle">
-    <div class="nut-sticky__box" ref="stickyRef" :style="stickyStyle">
+  <div class="nut-sticky" ref="rootRef" :style="rootStyle" :id="'rootRef-' + refRandomId">
+    <div class="nut-sticky__box" :style="stickyStyle">
       <slot></slot>
     </div>
   </div>
@@ -20,19 +20,20 @@ export default create({
     zIndex: {
       type: [Number, String],
       default: 99
+    },
+    scrollTop: {
+      type: [Number, String],
+      defualt: -1
     }
   },
   emits: ['change'],
   setup(props, { emit }) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const rootRef = ref<HTMLElement>();
-    const stickyRef = ref<HTMLElement>();
     const state = reactive({
       fixed: false,
       height: 0,
       width: 0
-    });
-    const threshold = computed(() => {
-      return Number(props.top);
     });
     const rootStyle = computed<CSSProperties | undefined>(() => {
       if (state.fixed) return { height: `${state.height}px` };
@@ -41,7 +42,7 @@ export default create({
     const stickyStyle = computed<CSSProperties>(() => {
       if (!state.fixed) return {};
       return {
-        top: `${threshold.value}px`,
+        top: `${props.top}px`,
         height: `${state.height}px`,
         width: `${state.width}px`,
         position: state.fixed ? 'fixed' : undefined,
@@ -49,11 +50,10 @@ export default create({
       };
     });
     const handleScroll = () => {
-      console.log('handleScroll');
       useTaroRect(rootRef).then((rootRect: any) => {
         state.height = rootRect.height;
         state.width = rootRect.width;
-        state.fixed = threshold.value > rootRect.top;
+        state.fixed = Number(props.top) >= rootRect.top;
       });
     };
     watch(
@@ -62,11 +62,13 @@ export default create({
         emit('change', val);
       }
     );
-    usePageScroll(handleScroll);
-    onMounted(() => {
-      handleScroll();
-    });
-    return { rootRef, rootStyle, stickyRef, stickyStyle };
+    if (props.scrollTop !== -1) {
+      usePageScroll(handleScroll);
+    } else {
+      watch(() => props.scrollTop, handleScroll);
+    }
+    onMounted(handleScroll);
+    return { rootRef, rootStyle, stickyStyle, refRandomId };
   }
 });
 </script>
