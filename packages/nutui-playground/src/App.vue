@@ -69,7 +69,7 @@ body {
 .vue-repl {
   --color-branding: #ff2f2b !important;
   --color-branding-dark: #ff2f2b !important;
-  height: calc(var(--vh) - var(--nav-height));
+  height: calc(var(--vh) - var(--nav-height)) !important;
 }
 
 button {
