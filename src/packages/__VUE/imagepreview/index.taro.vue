@@ -165,8 +165,12 @@ export default create({
 
     const onTouchStart = (event: TouchEvent) => {
       const curTouchTime = new Date().getTime();
+      const touches = event.touches;
+      const events = touches[0];
+      const events2 = touches[1];
+      const store = state.store;
+
       if (curTouchTime - state.lastTouchEndTime < 300) {
-        const store = state.store;
         if (store.scale > 1) {
           store.scale = 1;
         } else if (store.scale == 1) {
@@ -175,11 +179,6 @@ export default create({
         scaleNow();
       }
 
-      var touches = event.touches;
-      var events = touches[0];
-      var events2 = touches[1];
-
-      const store = state.store;
       store.moveable = true;
 
       if (events2) {
@@ -204,9 +203,9 @@ export default create({
       }
       const store = state.store;
       // event.preventDefault();
-      var touches = event.touches;
-      var events = touches[0];
-      var events2 = touches[1];
+      const touches = event.touches;
+      const events = touches[0];
+      const events2 = touches[1];
       // 双指移动
       if (events2) {
         // 获得当前两点间的距离
@@ -229,9 +228,7 @@ export default create({
         store.scale = store.originScale * curScale;
 
         // 最大放大 3 倍，缩小后松手要弹回原比例
-        if (store.scale > 3) {
-          store.scale = 3;
-        }
+        state.store.scale = Math.min(state.store.scale, 3);
         scaleNow();
       }
     };
