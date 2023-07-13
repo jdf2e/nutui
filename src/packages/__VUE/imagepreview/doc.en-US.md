@@ -304,7 +304,7 @@ app.use(ImagePreview);
 | videos | Videos Array(Videos are before images, not support in taro) |  VideoArray[] | `[]` |
 | images | Images array | ImageArray[] | `[]` |
 | autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
-| init-no | Init no | number | `1` |
+| init-no | Init no | number | `0` |
 | pagination-visible | Whether to show pagination    | boolean | `false` |
 | pagination-color   | Pagination color    | string  | `#fff`  |
 | content-close   | Click image to exit preview    | boolean  | `true`  |

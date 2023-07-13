@@ -174,7 +174,7 @@ app.use(ImagePreview);
 | show | 是否展示预览图片 | boolean | `false` |
 | images | 预览图片数组 | ImageArray[] | `[]` |
 | autoplay | 自动轮播时长，0表示不会自动轮播 | number \| string  | `3000`  |
-| init-no | 初始页码 | number | `1` |
+| init-no | 初始页码 | number | `0` |
 | pagination-visible | 分页指示器是否展示    | boolean | `false` |
 | pagination-color   | 分页指示器选中的颜色    | string  | `#fff`  |
 | content-close   | 点击图片可以退出预览    | boolean  | `true`  |
