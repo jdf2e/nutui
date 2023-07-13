@@ -8,12 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Navbar, Tabs, TabPane } from '@nutui/nutui-taro';
+import { Navbar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);
-app.use(Tabs);
-app.use(TabPane);
 ```
 
 ### 基础用法
@@ -66,13 +64,13 @@ app.use(TabPane);
     setup() {
       const methods = {
         back() {
-          alert('Click Back');
+          console.log('Click Back');
         },
         title() {
-          alert('Click Title');
+          console.log('Click Title');
         },
         rightClick() {
-          alert('Click Right');
+          console.log('Click Right');
         }
       };
 
@@ -115,13 +113,13 @@ app.use(TabPane);
       const tab1value = ref(0);
       const methods = {
         back() {
-          alert('Click Back');
+          console.log('Click Back');
         },
         title() {
-          alert('Click Title');
+          console.log('Click Title');
         },
         rightClick() {
-          alert('Click Right');
+          console.log('Click Right');
         },
         changeTab(tab: any) {
           tab1value.value = tab.paneKey as number;
@@ -169,7 +167,7 @@ app.use(TabPane);
       const tab2value = ref(0);
       const methods = {
         back() {
-          alert('Click Back');
+          console.log('Click Back');
         },
         changeTabList(tab: any) {
           tab2value.value = tab.paneKey as number;
