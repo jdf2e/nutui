@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType, reactive } from 'vue';
+import { computed, PropType, reactive, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
@@ -113,7 +113,7 @@ export default create({
 
     timeout: { type: [Number, String], default: 1000 * 30 },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
-    fileList: { type: Array, default: () => [] },
+    fileList: { type: Array<any>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },
@@ -155,8 +155,15 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList = reactive(props.fileList) as Array<FileItem>;
-    let uploadQueue: Promise<UploaderTaro>[] = [];
+    const fileList = ref(props.fileList as Array<FileItem>);
+    const uploadQueue = ref<Promise<UploaderTaro>[]>([]);
+
+    watch(
+      () => props.fileList,
+      () => {
+        fileList.value = props.fileList;
+      }
+    );
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -187,7 +194,7 @@ export default create({
         // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
         Taro.chooseMedia({
           /** 最多可以选择的文件个数 */
-          count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
+          count: props.multiple ? Number(props.maximum) - fileList.value.length : 1,
           /** 文件类型 */
           mediaType: props.mediaType as any,
           /** 图片和视频选择的来源 */
@@ -208,7 +215,7 @@ export default create({
       } else {
         Taro.chooseImage({
           // 选择数量
-          count: props.multiple ? (props.maximum as number) * 1 - props.fileList.length : 1,
+          count: props.multiple ? Number(props.maximum) - fileList.value.length : 1,
           // 可以指定是原图还是压缩图，默认二者都有
           sizeType: props.sizeType,
           sourceType: props.sourceType,
@@ -226,7 +233,7 @@ export default create({
       const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles<Taro.chooseMedia.ChooseMedia>(tempFiles);
       readFile<Taro.chooseMedia.ChooseMedia>(_files);
       emit('change', {
-        fileList
+        fileList: fileList.value
       });
     };
     const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
@@ -235,7 +242,7 @@ export default create({
       const _files: Taro.chooseImage.ImageFile[] = filterFiles<Taro.chooseImage.ImageFile>(tempFiles);
       readFile<Taro.chooseImage.ImageFile>(_files);
       emit('change', {
-        fileList
+        fileList: fileList.value
       });
     };
 
@@ -278,7 +285,7 @@ export default create({
           option,
           fileItem
         });
-        emit('update:fileList', fileList);
+        emit('update:fileList', fileList.value);
       };
       uploadOption.onFailure = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'error';
@@ -294,7 +301,7 @@ export default create({
       if (props.autoUpload) {
         task.uploadTaro(Taro.uploadFile, Taro.getEnv());
       } else {
-        uploadQueue.push(
+        uploadQueue.value.push(
           new Promise((resolve) => {
             resolve(task);
           })
@@ -304,14 +311,15 @@ export default create({
 
     const clearUploadQueue = (index = -1) => {
       if (index > -1) {
-        uploadQueue.splice(index, 1);
+        uploadQueue.value.splice(index, 1);
       } else {
-        uploadQueue = [];
-        fileList.splice(0, fileList.length);
+        uploadQueue.value = [];
+        fileList.value = [];
+        emit('update:fileList', fileList.value);
       }
     };
     const submit = () => {
-      Promise.all(uploadQueue).then((res) => {
+      Promise.all(uploadQueue.value).then((res) => {
         res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()));
       });
     };
@@ -358,7 +366,7 @@ export default create({
         if (props.isPreview) {
           fileItem.url = fileType == 'video' ? file.thumbTempFilePath : filepath;
         }
-        fileList.push(fileItem);
+        fileList.value.push(fileItem);
         executeUpload(fileItem, index);
       });
     };
@@ -378,7 +386,7 @@ export default create({
       if (oversizes.length) {
         emit('oversize', oversizes);
       }
-      let currentFileLength = files.length + fileList.length;
+      let currentFileLength = files.length + fileList.value.length;
       if (currentFileLength > maximum) {
         files.splice(files.length - (currentFileLength - maximum));
       }
@@ -386,10 +394,10 @@ export default create({
     };
 
     const deleted = (file: FileItem, index: number) => {
-      fileList.splice(index, 1);
+      fileList.value.splice(index, 1);
       emit('delete', {
         file,
-        fileList,
+        fileList: fileList.value,
         index
       });
     };
@@ -397,7 +405,7 @@ export default create({
     const onDelete = (file: FileItem, index: number) => {
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
-        args: [file, fileList],
+        args: [file, fileList.value],
         done: () => deleted(file, index)
       });
     };
