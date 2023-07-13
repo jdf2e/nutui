@@ -41,6 +41,7 @@ export default create({
     const state = reactive({
       fixed: false,
       height: 0,
+      width: 0,
       transform: 0
     });
     const threshold = computed(() => {
@@ -54,6 +55,8 @@ export default create({
       if (!state.fixed) return {};
       return {
         [props.position]: `${threshold.value}px`,
+        height: `${state.height}px`,
+        width: `${state.width}px`,
         transform: state.transform ? `translate3d(0, ${state.transform}px, 0)` : undefined,
         position: state.fixed ? 'fixed' : undefined,
         zIndex: Number(props.zIndex)
@@ -67,6 +70,7 @@ export default create({
       const stickyRect = useRect(stCurrent);
       const containerRect = useRect(containerEle);
       state.height = rootRect.height;
+      state.width = rootRect.width;
 
       const getFixed = (): boolean => {
         let fixed = false;

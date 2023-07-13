@@ -23,8 +23,9 @@ export interface rectTaro {
 }
 
 export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>): any => {
+  // 小程序下需要 el 具有 id 属性才能查询
   let element = unref(elementRef);
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (Taro.getEnv() === 'WEB') {
       if (element && element.$el) {
         element = element.$el;
@@ -32,7 +33,6 @@ export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element |
       if (isWindow(element)) {
         const width = element.innerWidth;
         const height = element.innerHeight;
-
         resolve({
           top: 0,
           left: 0,
@@ -45,23 +45,24 @@ export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element |
       if (element && element.getBoundingClientRect) {
         resolve(element.getBoundingClientRect());
       }
-
-      resolve({
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: 0,
-        height: 0
-      });
+      reject();
     } else {
       const query = Taro.createSelectorQuery();
-      let el = (element as any).id ? (element as any).id : (element as any);
-
-      query.select(`#${el}`) && query.select(`#${el}`).boundingClientRect();
-      query.exec(function (res: any) {
-        resolve(res[0]);
-      });
+      const id = element?.id;
+      if (id) {
+        query
+          .select(`#${id}`)
+          .boundingClientRect()
+          .exec(function (rect: any) {
+            if (rect[0]) {
+              resolve(rect[0]);
+            } else {
+              reject();
+            }
+          });
+      } else {
+        reject();
+      }
     }
   });
 };
