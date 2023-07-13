@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, h, PropType } from 'vue';
+import { computed, reactive, h, PropType, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
@@ -93,7 +93,7 @@ export default create({
     url: { type: String, default: '' },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
     timeout: { type: [Number, String], default: 1000 * 30 },
-    fileList: { type: Array, default: () => [] },
+    fileList: { type: Array<any>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },
@@ -139,8 +139,15 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList: FileItem[] = reactive(props.fileList) as Array<FileItem>;
-    let uploadQueue: Promise<Uploader>[] = [];
+    const fileList = ref(props.fileList as Array<FileItem>);
+    const uploadQueue = ref<Promise<Uploader>[]>([]);
+
+    watch(
+      () => props.fileList,
+      () => {
+        fileList.value = props.fileList;
+      }
+    );
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -208,7 +215,7 @@ export default create({
           option,
           fileItem
         });
-        emit('update:fileList', fileList);
+        emit('update:fileList', fileList.value);
       };
       uploadOption.onFailure = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'error';
@@ -223,7 +230,7 @@ export default create({
       if (props.autoUpload) {
         task.upload();
       } else {
-        uploadQueue.push(
+        uploadQueue.value.push(
           new Promise((resolve) => {
             resolve(task);
           })
@@ -233,14 +240,15 @@ export default create({
 
     const clearUploadQueue = (index = -1) => {
       if (index > -1) {
-        uploadQueue.splice(index, 1);
+        uploadQueue.value.splice(index, 1);
       } else {
-        uploadQueue = [];
-        fileList.splice(0, fileList.length);
+        uploadQueue.value = [];
+        fileList.value = [];
+        emit('update:fileList', fileList.value);
       }
     };
     const submit = () => {
-      Promise.all(uploadQueue).then((res) => {
+      Promise.all(uploadQueue.value).then((res) => {
         res.forEach((i) => i.upload());
       });
     };
@@ -265,11 +273,11 @@ export default create({
           const reader = new FileReader();
           reader.onload = (event: ProgressEvent<FileReader>) => {
             fileItem.url = (event.target as FileReader).result as string;
-            fileList.push(fileItem);
+            fileList.value.push(fileItem);
           };
           reader.readAsDataURL(file);
         } else {
-          fileList.push(fileItem);
+          fileList.value.push(fileItem);
         }
       });
     };
@@ -289,7 +297,7 @@ export default create({
       if (oversizes.length) {
         emit('oversize', oversizes);
       }
-      let currentFileLength = files.length + fileList.length;
+      let currentFileLength = files.length + fileList.value.length;
       if (currentFileLength > maximum) {
         files.splice(files.length - (currentFileLength - maximum));
       }
@@ -297,10 +305,10 @@ export default create({
     };
 
     const deleted = (file: FileItem, index: number) => {
-      fileList.splice(index, 1);
+      fileList.value.splice(index, 1);
       emit('delete', {
         file,
-        fileList,
+        fileList: fileList.value,
         index
       });
     };
@@ -308,7 +316,7 @@ export default create({
     const onDelete = (file: FileItem, index: number) => {
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
-        args: [file, fileList],
+        args: [file, fileList.value],
         done: () => deleted(file, index)
       });
     };
@@ -327,7 +335,7 @@ export default create({
       }
 
       emit('change', {
-        fileList,
+        fileList: fileList.value,
         event
       });
 
