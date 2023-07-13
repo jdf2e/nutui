@@ -76,18 +76,18 @@ app.use(Textarea);
 
 ### Props
 
-| 参数        | 说明                                                                               | 类型                                                | 默认值         |
-| ----------- | ---------------------------------------------------------------------------------- | --------------------------------------------------- | -------------- |
-| v-model     | 输入值，支持双向绑定                                                               | string                                              | -              |
-| placeholder | 设置占位提示文字                                                                   | string                                              | `'请输入内容'` |
-| max-length  | 限制最长输入字符                                                                   | string \| number                                    | -              |
-| rows        | textarea 的高度，优先级高于 autosize 属性 `仅支持 H5`                              | string \| number                                    | `2`            |
-| limit-show  | textarea 是否展示输入字符。须配合`max-length`使用                                  | boolean                                             | `false`        |
-| autosize    | 是否自适应内容高度，也可传入对象, 如 { maxHeight: 200, minHeight: 100 }，单位为 px | boolean \| {maxHeight?: number; minHeight?: number} | `false`        |
-| text-align  | 文本位置,可选值`left`,`center`,`right`                                             | string                                              | `left`         |
-| readonly    | 只读属性                                                                           | boolean                                             | `false`        |
-| disabled    | 禁用属性                                                                           | boolean                                             | `false`        |
-| autofocus   | 自动获取焦点                                                                       | boolean                                             | `false`        |
+| 参数        | 说明                                                                               | 类型                                                | 默认值     |
+| ----------- | ---------------------------------------------------------------------------------- | --------------------------------------------------- | ---------- |
+| v-model     | 输入值，支持双向绑定                                                               | string                                              | -          |
+| placeholder | 设置占位提示文字                                                                   | string                                              | `'请输入'` |
+| max-length  | 限制最长输入字符                                                                   | string \| number                                    | -          |
+| rows        | textarea 的高度，优先级高于 autosize 属性 `仅支持 H5`                              | string \| number                                    | `2`        |
+| limit-show  | textarea 是否展示输入字符。须配合`max-length`使用                                  | boolean                                             | `false`    |
+| autosize    | 是否自适应内容高度，也可传入对象, 如 { maxHeight: 200, minHeight: 100 }，单位为 px | boolean \| {maxHeight?: number; minHeight?: number} | `false`    |
+| text-align  | 文本位置,可选值`left`,`center`,`right`                                             | string                                              | `left`     |
+| readonly    | 只读属性                                                                           | boolean                                             | `false`    |
+| disabled    | 禁用属性                                                                           | boolean                                             | `false`    |
+| autofocus   | 自动获取焦点                                                                       | boolean                                             | `false`    |
 
 ### Events
 
