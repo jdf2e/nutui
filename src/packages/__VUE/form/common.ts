@@ -1,5 +1,5 @@
 import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
-import { computed, PropType, provide, reactive, VNode, watch } from 'vue';
+import { computed, isVNode, PropType, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules } from './types';
 
@@ -8,11 +8,11 @@ export const component = (components: any) => {
     props: {
       modelValue: {
         type: Object,
-        default: {}
+        default: () => ({})
       },
       rules: {
-        type: Object as PropType<import('./types').FormRules>,
-        default: {}
+        type: Object as PropType<FormRules>,
+        default: () => ({})
       }
     },
     components,
@@ -40,25 +40,30 @@ export const component = (components: any) => {
       );
 
       const findFormItem = (vnodes: VNode[]) => {
-        let task: FormRule[] = [];
-        vnodes.forEach((vnode: VNode) => {
-          let type = vnode.type;
-          type = (type as any).name || type;
-          if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
-            task.push({
-              prop: vnode.props?.['prop'],
-              rules: vnode.props?.['rules'] || []
-            });
-          } else if (Array.isArray(vnode.children) && vnode.children?.length) {
-            task = task.concat(findFormItem(vnode.children as VNode[]));
-          } else if (isObject(vnode.children) && Object.keys(vnode.children)) {
-            // 异步节点获取
-            if ((vnode.children as any)?.default) {
-              vnode.children = (vnode.children as any).default();
-              task = task.concat(findFormItem(vnode.children as VNode[]));
+        const task: FormRule[] = [];
+        const search = (vnode: any) => {
+          if (isVNode(vnode)) {
+            const type = (vnode?.type as any)?.name || vnode?.type;
+            if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
+              task.push({
+                prop: vnode.props?.['prop'],
+                rules: vnode.props?.['rules'] || []
+              });
+            } else if (Array.isArray(vnode.children) && vnode.children?.length) {
+              search(vnode.children);
+            } else if (isObject(vnode.children) && Object.keys(vnode.children)) {
+              // 异步节点获取
+              if ((vnode.children as any)?.default) {
+                search((vnode.children as any).default());
+              }
             }
+          } else if (Array.isArray(vnode)) {
+            vnode.forEach((v: any) => {
+              search(v);
+            });
           }
-        });
+        };
+        search(vnodes);
         return task;
       };
 
