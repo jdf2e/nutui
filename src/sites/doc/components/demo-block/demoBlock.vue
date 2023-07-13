@@ -127,7 +127,7 @@ onMounted(() => {
 const copyCode = () => {
   const sourceValue = decompressText(onlineCode.value.dataset.value);
   copyCodeHtml(sourceValue, () => {
-    alert('复制成功');
+    console.log('复制成功');
   });
 };
 </script>

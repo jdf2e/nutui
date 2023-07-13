@@ -1,6 +1,6 @@
 <template>
-  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" ref="navBarWrap">
-    <view :class="classes" :style="styles" ref="navBarHtml">
+  <view class="nut-navbar--placeholder" :style="rootStyle">
+    <view :class="classes" :style="{ zIndex }" ref="navbarRef">
       <view class="nut-navbar__left" @click="handleLeft">
         <slot name="left-show" v-if="leftShow">
           <Left height="12px" color="#979797"></Left>
@@ -21,33 +21,13 @@
       </view>
     </view>
   </view>
-  <view v-else :class="classes" :style="styles">
-    <view class="nut-navbar__left" @click="handleLeft">
-      <slot name="left-show" v-if="leftShow">
-        <Left height="12px" color="#979797"></Left>
-      </slot>
-      <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
-      <slot name="left"></slot>
-    </view>
-    <view class="nut-navbar__title">
-      <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <view v-if="titleIcon" class="icon" @click="handleCenterIcon">
-        <slot name="title-icon" @click="handleCenterIcon"></slot>
-      </view>
-      <slot name="content"></slot>
-    </view>
-    <view class="nut-navbar__right" @click="handleRight">
-      <view v-if="desc" class="nut-navbar__text">{{ desc }}</view>
-      <slot name="right"></slot>
-    </view>
-  </view>
 </template>
 
 <script lang="ts">
-import { onMounted, computed, toRefs, ref, nextTick, ComputedRef, Ref } from 'vue';
+import { onMounted, computed, toRefs, ref, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('navbar');
 import { Left } from '@nutui/icons-vue';
+const { componentName, create } = createComponent('navbar');
 export default create({
   components: { Left },
   props: {
@@ -80,10 +60,9 @@ export default create({
   },
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
-    const { border, fixed, safeAreaInsetTop, placeholder, zIndex } = toRefs(props);
-    const navBarWrap = ref(null) as Ref;
-    const navBarHtml = ref<HTMLElement | null>(null);
-    let navHeight = ref();
+    const { border, fixed, safeAreaInsetTop, placeholder } = toRefs(props);
+    const navHeight = ref('auto');
+    const navbarRef = ref<HTMLElement>();
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -94,41 +73,51 @@ export default create({
       };
     });
 
-    const styles: ComputedRef = computed(() => {
-      return {
-        zIndex: zIndex.value
-      };
+    const rootStyle = computed(() => {
+      if (fixed.value && placeholder.value) {
+        return {
+          height: navHeight.value
+        };
+      }
+      return {};
     });
+
+    const getNavHeight = () => {
+      if (navbarRef.value) {
+        const rect = navbarRef.value.getBoundingClientRect();
+        navHeight.value = `${rect.height}px`;
+      }
+    };
 
     onMounted(() => {
       if (fixed.value && placeholder.value) {
         nextTick(() => {
-          navHeight.value = navBarHtml?.value?.getBoundingClientRect().height;
-          navBarWrap.value.style.height = navHeight.value + 'px';
+          getNavHeight();
         });
       }
     });
 
-    function handleLeft() {
+    const handleLeft = () => {
       emit('on-click-back');
-    }
+    };
 
-    function handleCenter() {
+    const handleCenter = () => {
       emit('on-click-title');
-    }
-    function handleCenterIcon() {
-      emit('on-click-icon');
-    }
+    };
 
-    function handleRight() {
+    const handleCenterIcon = () => {
+      emit('on-click-icon');
+    };
+
+    const handleRight = () => {
       emit('on-click-right');
-    }
+    };
 
     return {
-      navBarWrap,
-      navBarHtml,
+      navbarRef,
+      rootStyle,
       classes,
-      styles,
+      navHeight,
       handleLeft,
       handleCenter,
       handleCenterIcon,

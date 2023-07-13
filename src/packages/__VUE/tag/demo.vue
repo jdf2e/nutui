@@ -118,7 +118,7 @@ export default defineComponent({
     };
 
     const click = () => {
-      alert('点击事件');
+      console.log('点击事件');
     };
 
     return {
