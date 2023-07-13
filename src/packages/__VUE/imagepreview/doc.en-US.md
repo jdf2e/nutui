@@ -308,23 +308,23 @@ app.use(ImagePreview);
 
 ### Props
 
-| Attribute           | Description                                                 | Type                        | Default            |
-| ------------------- | ----------------------------------------------------------- | --------------------------- | ------------------ | --- |
-| show                | Whether to show preview                                     | boolean                     | `false`            |
-| videos              | Videos Array(Videos are before images, not support in taro) | VideoArray[]                | `[]`               |
-| images              | Images array                                                | ImageArray[]                | `[]`               |
-| autoplay            | Autoplay time, zero means not autoplay                      | number \| string            | `3000`             |
-| init-no             | Init no                                                     | number                      | `0`                |
-| pagination-visible  | Whether to show pagination                                  | boolean                     | `false`            |
-| pagination-color    | Pagination color                                            | string                      | `#fff`             |
-| content-close       | Click image to exit preview                                 | boolean                     | `true`             |
-| show-index          | Whether to show index                                       | boolean                     | `true`             |
-| closeable           | Whether to show close icon                                  | boolean                     | `false`            |
-| close-icon-position | Close icon position,can be set to `top-left`                | string                      | `top-right`        |
-| before-close        | Callback function before close                              | (active: number) => boolean | Promise<`boolean`> | -   |
-| max-zoom            | Max zoom`Taro isn't supported`                              | number                      | `3`                |
-| min-zoom            | Min zoom`Taro isn't supported`                              | number                      | `1/3`              |
-| is-Loop             | Whether to loop                                             | boolean                     | `true`             |
+| Attribute           | Description                                                 | Type                                              | Default     |
+| ------------------- | ----------------------------------------------------------- | ------------------------------------------------- | ----------- |
+| show                | Whether to show preview                                     | boolean                                           | `false`     |
+| videos              | Videos Array(Videos are before images, not support in taro) | VideoArray[]                                      | `[]`        |
+| images              | Images array                                                | ImageArray[]                                      | `[]`        |
+| autoplay            | Autoplay time, zero means not autoplay                      | number \| string                                  | `3000`      |
+| init-no             | Init no                                                     | number                                            | `0`         |
+| pagination-visible  | Whether to show pagination                                  | boolean                                           | `false`     |
+| pagination-color    | Pagination color                                            | string                                            | `#fff`      |
+| content-close       | Click image to exit preview                                 | boolean                                           | `true`      |
+| show-index          | Whether to show index                                       | boolean                                           | `true`      |
+| closeable           | Whether to show close icon                                  | boolean                                           | `false`     |
+| close-icon-position | Close icon position,can be set to `top-left`                | string                                            | `top-right` |
+| before-close        | Callback function before close                              | (active: number) => boolean \| Promise<`boolean`> | -           |
+| max-zoom            | Max zoom`Taro isn't supported`                              | number                                            | `3`         |
+| min-zoom            | Min zoom`Taro isn't supported`                              | number                                            | `1/3`       |
+| is-Loop             | Whether to loop                                             | boolean                                           | `true`      |
 
 ### Data Structure of ImageArray
 
@@ -344,7 +344,7 @@ app.use(ImagePreview);
 | Event  | Description                        | Arguments |
 | ------ | ---------------------------------- | --------- |
 | close  | Emitted when closing ImagePreview  | -         |
-| change | Emitted when current image changed | 无        |
+| change | Emitted when current image changed | index     |
 
 ### Slots
 

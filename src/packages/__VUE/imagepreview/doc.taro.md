@@ -178,20 +178,20 @@ app.use(ImagePreview);
 
 ### Props
 
-| 参数                | 说明                                                          | 类型                        | 默认值             |
-| ------------------- | ------------------------------------------------------------- | --------------------------- | ------------------ | --- |
-| show                | 是否展示预览图片                                              | boolean                     | `false`            |
-| images              | 预览图片数组                                                  | ImageArray[]                | `[]`               |
-| autoplay            | 自动轮播时长，0 表示不会自动轮播                              | number \| string            | `3000`             |
-| init-no             | 初始页码                                                      | number                      | `0`                |
-| pagination-visible  | 分页指示器是否展示                                            | boolean                     | `false`            |
-| pagination-color    | 分页指示器选中的颜色                                          | string                      | `#fff`             |
-| content-close       | 点击图片可以退出预览                                          | boolean                     | `true`             |
-| show-index          | 是否显示页码                                                  | boolean                     | `true`             |
-| closeable           | 是否显示关闭图标                                              | boolean                     | `false`            |
-| close-icon-position | 关闭图标位置，可选值：`top-left`                              | string                      | `top-right`        |
-| before-close        | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | (active: number) => boolean | Promise<`boolean`> | -   |
-| is-Loop             | 是否循环播放                                                  | boolean                     | `true`             |
+| 参数                | 说明                                                          | 类型                                              | 默认值      |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------- | ----------- |
+| show                | 是否展示预览图片                                              | boolean                                           | `false`     |
+| images              | 预览图片数组                                                  | ImageArray[]                                      | `[]`        |
+| autoplay            | 自动轮播时长，0 表示不会自动轮播                              | number \| string                                  | `3000`      |
+| init-no             | 初始页码                                                      | number                                            | `0`         |
+| pagination-visible  | 分页指示器是否展示                                            | boolean                                           | `false`     |
+| pagination-color    | 分页指示器选中的颜色                                          | string                                            | `#fff`      |
+| content-close       | 点击图片可以退出预览                                          | boolean                                           | `true`      |
+| show-index          | 是否显示页码                                                  | boolean                                           | `true`      |
+| closeable           | 是否显示关闭图标                                              | boolean                                           | `false`     |
+| close-icon-position | 关闭图标位置，可选值：`top-left`                              | string                                            | `top-right` |
+| before-close        | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | (active: number) => boolean \| Promise<`boolean`> | -           |
+| is-Loop             | 是否循环播放                                                  | boolean                                           | `true`      |
 
 ### ImageArray 数据结构
 
