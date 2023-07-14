@@ -1,3 +1,33 @@
+## v4.1.0
+
+NutUI 非常感谢您对开源事业做出的贡献！
+本次社区贡献者 @thx125 @wenjuGao @subordon @yang1206 @aooiuu
+
+`2023-07-14`
+
+Features
+
+- 新增 `@nutui/touch-emulator`
+- 新增 `@nutui/playground`
+- form: 支持异步返回的自定义校验文案 (#2380) @subordon
+- cell: 新增 box-shdow 样式变量 (#2382)
+- calendar: 支持透传 Popup 属性 (#2410)
+- address: 新增 round 属性 (#2411)
+
+Bug Fixes
+
+- address: 修复4级地址不触发 onchange 事件 (#2389) @thx125
+- avatar: 修复显示头像折叠元素有错误问题 (#2417) @thx125
+- calendar: 修复平铺展示时丢失 ref 问题 (#2390) @wenjuGao
+- signature: 修复 Taro H5 getRect 方法异常
+- sticky: 重构组件，修复 sticky 失效问题 (#2393)
+- form: 获取子节点方法增加兜底处理，修复 JSX 下报错问题
+- imagepreview: replace var with const (#2423) @subordon
+- uploader: 支持异步修改 file-list (#2421)
+- textarea: docs 文档修改 (#2428) @aooiuu
+- component class name typo (#2392) @yang1206
+- fix case typo (#2429) @subordon
+
 ## v4.0.12
 
 `2023-06-27`
