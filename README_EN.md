@@ -173,6 +173,6 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui/graphs/c
 
 NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui/releases).
 
-## Github Stargazers
+## GitHub Stargazers
 
 ![stargazers](https://starchart.cc/jdf2e/nutui.svg)

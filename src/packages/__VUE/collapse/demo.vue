@@ -111,7 +111,7 @@ const initTranslate = () =>
       desc1: 'Nutui is a lightweight Vue component library with JD style',
       desc2:
         'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-      desc3: 'Introduce new features of vue3, such as composition API, teleport, emits, etc',
+      desc3: 'Introduce new features of vue3, such as Composition API, teleport, emits, etc',
       desc4: 'Full use of typescipt',
       desc5: 'Build scenes based on JD design language system',
       desc6: 'Improve the modularity and generality of the boundary',

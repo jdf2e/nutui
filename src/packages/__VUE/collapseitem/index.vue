@@ -88,7 +88,7 @@ export default create({
     }
   },
   setup(props) {
-    // 获取 Dom 元素
+    // 获取 DOM 元素
     const wrapperRef: any = ref(null);
     const contentRef: any = ref(null);
 

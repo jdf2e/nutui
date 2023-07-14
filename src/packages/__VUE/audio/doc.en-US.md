@@ -243,7 +243,7 @@ export default {
 
 | Attribute | Description              | Type    | Default    |
 | --------- | ------------------------ | ------- | ---------- |
-| url       | Audio Url                | string  | `''`       |
+| url       | Audio URL                | string  | `''`       |
 | muted     | Whether to be muted      | boolean | `false`    |
 | autoplay  | Whether to autoplay      | boolean | `false`    |
 | loop      | Whether to loop playback | boolean | `false`    |

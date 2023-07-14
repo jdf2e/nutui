@@ -10,7 +10,7 @@
 npm i --save @nutui/icons-vue
 ```
 
-### 方式一： Svg 按需使用
+### 方式一： SVG 按需使用
 
 按需加载组件使用方式，可选项见 @nutui/icons-vue/dist/types/index.d.ts
 
@@ -23,7 +23,7 @@ import { Add } from '@nutui/icons-vue';
 <icon-demo />
 
 ```
-其中组件库内部使用 Svg 为
+其中组件库内部使用 SVG 为
 Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
 ```
 
