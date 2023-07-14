@@ -2,7 +2,7 @@
 
 ### Intro
 
-Install the [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) package independently. Two usage modes are provided (Svg on-demand usage and IconFont full usage).
+Install the [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) package independently. Two usage modes are provided (SVG on-demand usage and IconFont full usage).
 
 ### Install
 
@@ -10,7 +10,7 @@ Install the [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) package ind
 npm i --save @nutui/icons-vue
 ```
 
-### Use: Svg import on demand
+### Use: SVG import on demand
 
 Use mode of on-demand loading components, see @nutui/icons-vue/dist/types/index.d.ts
 
@@ -23,7 +23,7 @@ import { Add } from '@nutui/icons-vue';
 <icon-demo />
 
 ```
-The Svg used internally in the component library is
+The SVG used internally in the component library is
 Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
 ```
 

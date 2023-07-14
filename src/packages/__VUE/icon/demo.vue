@@ -66,7 +66,7 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: 'IconFont 基础用法',
-      svg: 'Svg 按需使用',
+      svg: 'SVG 按需使用',
       imageLink: '图片链接',
       iconColor: '图标颜色',
       iconSize: '图标大小',
@@ -74,7 +74,7 @@ const initTranslate = () =>
     },
     'en-US': {
       basic: 'IconFont Basic Usage',
-      svg: 'Svg import on demand',
+      svg: 'SVG import on demand',
       imageLink: 'Image Link',
       iconColor: 'Icon Color',
       iconSize: 'Icon Size',

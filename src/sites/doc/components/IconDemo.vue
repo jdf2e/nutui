@@ -157,8 +157,8 @@
       <span>Footprint</span>
     </li>
     <li>
-      <Github />
-      <span>Github</span>
+      <GitHub />
+      <span>GitHub</span>
     </li>
     <li>
       <HeartFillN />
@@ -543,7 +543,7 @@ import {
   Find,
   Follow,
   Footprint,
-  Github,
+  GitHub,
   HeartFillN,
   HeartFill,
   HeartFill1,

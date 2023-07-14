@@ -184,7 +184,7 @@ const initTranslate = () =>
       route: 'Route',
       customContent: 'Custom Content',
       vueRouter: 'Vue Router',
-      url: 'Url'
+      url: 'URL'
     }
   });
 export default defineComponent({

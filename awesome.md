@@ -20,7 +20,7 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 - [NutUI 组件能力分析和夯实](https://www.bilibili.com/video/BV1UP4y1d7fq/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [NutUI 项目实践 - 开发京东购物小程序之项目搭建](https://www.bilibili.com/video/BV1EB4y1q7hM/?spm_id_from=333.337.search-card.all.click&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [NutUI 一分钟快速在线主题定制](https://www.bilibili.com/video/BV1fi4y1D7qb/?share_source=copy_web&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
-- [NutUI-VSCode 智能提示来了](https://www.bilibili.com/video/BV1xZ4y1h7Pg/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
+- [NutUI-VS Code 智能提示来了](https://www.bilibili.com/video/BV1xZ4y1h7Pg/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [NutUI 和辅助学习路径](https://www.bilibili.com/video/av587127439/?p=4&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
 - [使用 Vue3 的 UI 框架 NutUI](https://haokan.baidu.com/v?pd=wisenatural&vid=2556215112548154993)
 - [大前端-移动端方向-Vue3 && Taro 集成 NutUI 按需加载与定制主题](https://www.bilibili.com/video/BV1wt4y1H7UY/?vd_source=339cf5dcca71ec2905c729fd92bba8a9)
@@ -33,7 +33,7 @@ NutUI 学习资源汇总 [![Awesome](https://awesome.re/badge-flat.svg)](https:/
 - [折叠面板组件的设计与实现](https://jelly.jd.com/article/62aac30d5deaaa01b341e616)
 - [主流移动端组件库的对比和分析](https://jelly.jd.com/article/62cfc23825ea640188105a7f)
 - [可线性渐变的环形进度条的实现探究](https://jelly.jd.com/article/62df9cab05de4d019ec758fd)
-- [开发者的福利 - NutUI-VSCode 智能提示来了](https://jelly.jd.com/article/6278e71f8acc790195e0c254)
+- [开发者的福利 - NutUI-VS Code 智能提示来了](https://jelly.jd.com/article/6278e71f8acc790195e0c254)
 - [Vue 组件库工程探索与实践——按需加载](https://www.jianshu.com/p/a07b1f699c0e)
 
 ## 项目实践

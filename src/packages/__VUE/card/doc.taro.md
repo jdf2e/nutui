@@ -238,7 +238,7 @@ app.use(Card);
 
 | 参数          | 说明             | 类型    | 默认值 |
 | ------------- | ---------------- | ------- | ------ |
-| img-url       | 左侧图片 `Url`   | string  | -      |
+| img-url       | 左侧图片 `URL`   | string  | -      |
 | title         | 标题             | string  | -      |
 | price         | 商品价格         | string  | -      |
 | vip-price     | 会员价格         | string  | -      |
