@@ -162,10 +162,10 @@ app.use(Swipe);
 
 ### Events
 
-| 事件名 | 说明                                      | 回调参数                |
-| ------ | ----------------------------------------- | ----------------------- | --------- |
-| open   | 滑动时触发，left 指向左滑，right 指向右滑 | `name, position: 'left' | 'right' ` |
-| close  | 关闭时触发，同上                          | `name, position: 'left' | 'right' ` |
+| 事件名 | 说明                                      | 回调参数                             |
+| ------ | ----------------------------------------- | ------------------------------------ |
+| open   | 滑动时触发，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right' ` |
+| close  | 关闭时触发，同上                          | `name, position: 'left' \| 'right' ` |
 
 ### Slots
 
@@ -179,7 +179,7 @@ app.use(Swipe);
 
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Swipe` 实例并调用实例方法。
 
-| 方法名 | 说明                                            | 参数                    |
-| ------ | ----------------------------------------------- | ----------------------- | --------- |
-| open   | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' | 'right' ` |
-| close  | 收起单元格侧边栏，同上                          | `name, position: 'left' | 'right' ` |
+| 方法名 | 说明                                            | 参数                                 |
+| ------ | ----------------------------------------------- | ------------------------------------ |
+| open   | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right' ` |
+| close  | 收起单元格侧边栏，同上                          | `name, position: 'left' \| 'right' ` |

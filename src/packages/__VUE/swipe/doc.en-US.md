@@ -162,10 +162,10 @@ app.use(Swipe);
 
 ### Events
 
-| Event | Description                                          | Arguments               |
-| ----- | ---------------------------------------------------- | ----------------------- | --------- |
-| open  | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' | 'right' ` |
-| close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' | 'right' ` |
+| Event | Description                                          | Arguments                            |
+| ----- | ---------------------------------------------------- | ------------------------------------ |
+| open  | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
+| close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
 ### Slots
 
@@ -179,7 +179,7 @@ app.use(Swipe);
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
-| Name  | Description                         | Arguments               |
-| ----- | ----------------------------------- | ----------------------- | --------- |
-| open  | open swipe, swipe left/swipe right  | `name, position: 'left' | 'right' ` |
-| close | close swipe, swipe left/swipe right | `name, position: 'left' | 'right' ` |
+| Name  | Description                         | Arguments                            |
+| ----- | ----------------------------------- | ------------------------------------ |
+| open  | open swipe, swipe left/swipe right  | `name, position: 'left' \| 'right' ` |
+| close | close swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
