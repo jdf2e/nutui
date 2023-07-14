@@ -1,6 +1,6 @@
 import { StoreOptions, File, ReplStore } from '@vue/repl';
 
-const style = 'https://cdn.jsdelivr.net/npm/@nutui/nutui/dist/style.css';
+const style = 'https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/style.css';
 
 const appFileCode = `
 <script setup lang="ts">

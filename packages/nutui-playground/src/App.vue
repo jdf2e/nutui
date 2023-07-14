@@ -22,8 +22,8 @@ const store = new NutUIStore(
 
 store.setImportMap({
   imports: {
-    '@nutui/nutui': 'https://cdn.jsdelivr.net/npm/@nutui/nutui/dist/nutui.js',
-    '@nutui/icons-vue': 'https://cdn.jsdelivr.net/npm/@nutui/icons-vue/dist/lib/index.mjs',
+    '@nutui/nutui': 'https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.js',
+    '@nutui/icons-vue': 'https://cdn.jsdelivr.net/npm/@nutui/icons-vue@latest/dist/lib/index.mjs',
     '@nutui/touch-emulator': 'https://cdn.jsdelivr.net/npm/@nutui/touch-emulator',
     // compatible with Functional Component style import
     '@nutui/nutui/dist/packages/toast/style': './style.js',
