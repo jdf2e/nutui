@@ -133,7 +133,7 @@ export default {
 
 ### 表单校验
 
-`4.0.13` 新增基于 Promise 的自定义错误提示功能：
+`4.1.0` 新增基于 Promise 的自定义错误提示功能：
 
 `validator` 为函数，返回值类型为 `boolean | Promise`。若返回 `false` 或者触发了 `resolve(false)` 的 Promise ，则表示校验失败，会展示 `message` 设置的提示信息。若返回触发了 `reject(error)` 的 Promise，则会将 `error` 作为提示文案，优先级高于 `message`。
 

@@ -135,7 +135,7 @@ export default {
 
 ### Validate Form
 
-`4.0.13` adds Promise-based custom error message function:
+`4.1.0` adds Promise-based custom error message function:
 
 `validator` is a function, and the return value type is `boolean | Promise`. If `false` is returned or the Promise of `resolve(false)` is triggered, it means that the verification fails, and the prompt message set by `message` will be displayed. Returns the Promise that if `reject(error)` is triggered, the `error` is reserved as the prompt text, with a higher priority than `message`.
 
