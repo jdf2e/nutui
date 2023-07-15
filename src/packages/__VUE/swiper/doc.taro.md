@@ -89,7 +89,7 @@ app.use(SwiperItem);
         setTimeout(() => {
           state.list = [
             'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
             'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
             'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
           ];
@@ -134,7 +134,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
@@ -376,10 +376,10 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-        ],
+        ]
       });
       const handlePrev = () => {
         swiper.value.prev();
@@ -474,15 +474,6 @@ app.use(SwiperItem);
   .nut-swiper-item img {
     width: 100%;
     height: 100%;
-  }
-  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-  .nut-swiper-item ::v-deep(.nut-swiper-pagination-vertical) i.active {
-    height: 18px;
-    border-radius: 5px;
   }
 </style>
 ```

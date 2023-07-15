@@ -89,7 +89,7 @@ app.use(SwiperItem);
         setTimeout(() => {
           state.list = [
             'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
             'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
             'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
           ];
@@ -134,7 +134,7 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
@@ -376,10 +376,10 @@ app.use(SwiperItem);
         page: 2,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg,
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-        ],
+        ]
       });
       const handlePrev = () => {
         swiper.value.prev();
