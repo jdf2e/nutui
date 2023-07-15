@@ -342,6 +342,7 @@ export default create({
       stopAutoPlay();
       useTaroRect(container).then(
         (rect: any) => {
+          state.rect = rect;
           active = Math.min(childCount.value - 1, active);
           state.width = props.width ? +props.width : rect?.width;
           state.height = props.height ? +props.height : rect?.height;
