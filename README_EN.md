@@ -65,35 +65,26 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 
 [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro): Taro Mini Programs(weapp, alipay, jd...) & Taro-H5
 
-## Installation
+## Links
 
-```bash
-// H5
-npm i @nutui/nutui
-```
+### Official Ecosystem
 
-```bash
-// Taro Mini Programs
-npm i @nutui/nutui-taro
-```
+| Project | Description |
+| --- | --- |
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI H5 |
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro |
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui` |
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui-taro` |
+| [@nutui/touch-emulator](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-touch-emulator) | Using NutUI in desktop browsers |
+| [@nutui/playground](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-playground) | NutUI Playground |
+| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI Demo |
 
-## Usage
+### Community Ecosystem
 
-```js
-import { createApp } from "vue"
-import App from "./App.vue"
-
-import NutUI from "@nutui/nutui"
-import "@nutui/nutui/dist/style.css"
-
-createApp(App).use(NutUI).mount("#app")
-```
-
-## Resources
-
-[NutUI Quick Start](https://www.bilibili.com/video/BV14r4y1e7LK)
-
-[Awesome-NutUI](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
+| Project | Description |
+| --- | --- |
+| [yang1206/uniapp-nutui](https://github.com/yang1206/uniapp-nutui) | uni-app UI Components based on NutUI 4.x |
+| [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | uni-app UI Components based on NutUI 3.x |
 
 ## Cases
 
@@ -102,46 +93,20 @@ NutUI has been used in our production environment, and widely used in the indust
 <img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" alt="NutUI" />
 </p>
 <p><a href="https://nutui.jd.com/#/case">View more cases</a></p>
-<p>We are collecting more excellent cases, please click <a href="https://get.jd.com/#/survey/index?id=4217247740034539"> here </a> to submit.</p>
-
-## Links
-
-<ul>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/discussions">
-            Discussions (vote with 👍)
-        </a>
-    </li>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">
-            Feature Requests (vote with 👍)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/labels/bug%203.0">
-            Bugs (vote with 👍)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion">
-            Question (vote with 👍)
-        </a>
-    </li>
-</ul>
 
 ## Communication
 
 | WeChat Group | JD Dongdong Group |
 | --- |--- |
-| <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> Reply 'NutUI' after following | 82957939
+| <img src="https://storage.360buyimg.com/nutui-static/image/wx-code.png" width="100" /> Reply 'NutUI' after following | 82957939 |
 
 ## Join Us
 
-#### NutUI Community
+### NutUI Community
 
 [*Welcome To NutUI  Community*](https://github.com/jdf2e/nutui/issues/1789)
 
-#### Contribute to NutUI
+### Contribute to NutUI
 
 There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
 
@@ -165,13 +130,9 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui/graphs/c
   <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
 </a>
 
-## Milestones
-
-[Milestones](https://github.com/jdf2e/nutui/projects)
-
 ## Release Notes
 
-NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui/releases).
+[Release](https://github.com/jdf2e/nutui/releases).
 
 ## GitHub Stargazers
 

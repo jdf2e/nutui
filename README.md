@@ -65,43 +65,30 @@
 
 [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)：支持开发 Taro 多端小程序（微信、支付宝、京东等小程序）和 Taro-H5 项目
 
-## 安装
+## 链接
 
-```bash
-// H5 项目
-npm i @nutui/nutui
-```
+### 官方生态
 
-```bash
-// Taro 小程序项目
-npm i @nutui/nutui-taro
-```
+由 NutUI 官方团队维护的项目如下：
 
-## 版本说明
+| 项目 | 描述 |
+| --- | --- |
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI 移动端 H5 版本 |
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro 多端版本 |
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui` 使用的图标库 |
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui-taro` 使用的图标库 |
+| [@nutui/touch-emulator](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-touch-emulator) | 在桌面端使用 NutUI 的辅助库 |
+| [@nutui/playground](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-playground) | NutUI 在线 Playground |
+| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI 官方示例合集 |
 
-目前 NutUI 有以下版本：
+### 社区生态
 
-* NutUI 4.x，默认推荐版本，定期迭代更新发版。
-* NutUI 3.x，长期维护版本，会同步 V4 版本问题修复，不对 API 做调整，不定期发版。
-* NutUI 2.x，仅修复重要阻塞性问题，不定期发版。
+由社区维护的项目如下，欢迎补充：
 
-## 示例
-
-```js
-import { createApp } from "vue"
-import App from "./App.vue"
-
-import NutUI from "@nutui/nutui"
-import "@nutui/nutui/dist/style.css"
-
-createApp(App).use(NutUI).mount("#app")
-```
-
-## 学习资源
-
-[NutUI 实战快速入门](https://www.bilibili.com/video/BV14r4y1e7LK/?spm_id_from=333.999.0.0&vd_source=339cf5dcca71ec2905c729fd92bba8a9)
-
-[awesome-nutui](https://github.com/jdf2e/nutui/blob/v4/awesome.md)
+| 项目 | 描述 |
+| --- | --- |
+| [yang1206/uniapp-nutui](https://github.com/yang1206/uniapp-nutui) | 基于 NutUI 4.x 版本开发的 uni-app 组件库 |
+| [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | 基于 NutUI 3.x 版本开发的 uni-app 组件库 |
 
 ## 使用案例
 
@@ -110,32 +97,6 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 <img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" alt="NutUI" />
 </p>
 <p><a href="https://nutui.jd.com/#/case">更多案例</a></p>
-<p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集社区优秀案例，欢迎点击提交</a></p>
-
-## 链接
-
-<ul>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/discussions">
-            Discussions  (用👍投票)
-        </a>
-    </li>
-    <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">
-            Feature Requests (用👍投票)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/labels/bug%203.0">
-            Bugs (用👍投票)
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion">
-            Question  (用👍投票)
-        </a>
-    </li>
-</ul>
 
 ## 开发交流
 
@@ -145,11 +106,11 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 参与共建
 
-#### NutUI 社区共建倡议
+### NutUI 社区共建倡议
 
 [NutUI 邀您共建，Contributor 您好](https://github.com/jdf2e/nutui/issues/1789)
 
-#### 为 NutUI 贡献代码
+### 为 NutUI 贡献代码
 
 NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、增加国际化、UI 定制、平台适配、跨端扩展等。
 
@@ -173,22 +134,18 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
   <img src="https://opencollective.com/nutui/contributors.svg?width=890&button=false" alt="contributors">
 </a>
 
-## Stargazers
+## 更新日志
+
+查阅 [Release](https://github.com/jdf2e/nutui/releases)。
+
+## Star
 
 [![Stargazers repo roster for @jdf2e/nutui](https://reporoster.com/stars/jdf2e/nutui)](https://github.com/jdf2e/nutui/stargazers)
 
-## Forkers
+## Fork
 
 [![Forkers repo roster for @jdf2e/nutui](https://reporoster.com/forks/jdf2e/nutui)](https://github.com/jdf2e/nutui/network/members)
 
-## 开发计划
-
-[Milestones](https://github.com/jdf2e/nutui/projects)
-
-## 更新日志
-
-本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui/releases)。
-
-## github stargazers
+## GitHub Stargazaers
 
 ![stargazers](https://starchart.cc/jdf2e/nutui.svg)
