@@ -82,15 +82,18 @@ export default create({
       };
     });
     const domElem = Taro.getSystemInfoSync();
-    async function getInfo() {
-      const rec = await useTaroRect(myDrag);
-      state.elWidth = rec.width;
-      state.elHeight = rec.height;
-      state.initTop = rec.top;
-      state.initLeft = rec.left;
-
-      state.screenWidth = domElem.screenWidth;
-      state.screenHeight = domElem.screenHeight;
+    function getInfo() {
+      useTaroRect(myDrag).then(
+        (rec: any) => {
+          state.elWidth = rec.width;
+          state.elHeight = rec.height;
+          state.initTop = rec.top;
+          state.initLeft = rec.left;
+          state.screenWidth = domElem.screenWidth;
+          state.screenHeight = domElem.screenHeight;
+        },
+        () => {}
+      );
     }
 
     function goLeft() {

@@ -118,9 +118,13 @@ export default create({
       }, 100);
     });
     // 获取省略号宽度
-    const getSymbolInfo = async () => {
-      const refe = await useTaroRect(symbolContain);
-      symbolTextWidth = refe.width ? Math.ceil(refe.width) : Math.ceil(widthBase[0] * 0.7921);
+    const getSymbolInfo = () => {
+      useTaroRect(symbolContain).then(
+        (refe: any) => {
+          symbolTextWidth = refe.width ? Math.ceil(refe.width) : Math.ceil(widthBase[0] * 0.7921);
+        },
+        () => {}
+      );
     };
 
     const getReference = async () => {
@@ -155,50 +159,61 @@ export default create({
     };
 
     // 计算省略号的位置
-    const calcEllipse = async () => {
-      const refe = await useTaroRect(rootContain);
+    const calcEllipse = () => {
+      useTaroRect(rootContain).then(
+        (refe: any) => {
+          if (refe.height <= maxHeight) {
+            state.exceeded = false;
+          } else {
+            const rowNum = Math.floor(props.content.length / (originHeight / lineHeight - 1)); // 每行的字数
 
-      if (refe.height <= maxHeight) {
-        state.exceeded = false;
-      } else {
-        const rowNum = Math.floor(props.content.length / (originHeight / lineHeight - 1)); // 每行的字数
+            if (props.direction === 'middle') {
+              const end = props.content.length;
+              ellipsis.leading = tailorContent(0, rowNum * (Number(props.rows) + 0.5), 'end');
+              ellipsis.tailing = tailorContent(
+                props.content.length - rowNum * (Number(props.rows) + 0.5),
+                end,
+                'start'
+              );
+            } else if (props.direction === 'end') {
+              const end = rowNum * (Number(props.rows) + 0.5);
+              ellipsis.leading = tailorContent(0, end);
+            } else {
+              const start = props.content.length - rowNum * (Number(props.rows) + 0.5) - 5;
 
-        if (props.direction === 'middle') {
-          const end = props.content.length;
-          ellipsis.leading = tailorContent(0, rowNum * (Number(props.rows) + 0.5), 'end');
-          ellipsis.tailing = tailorContent(props.content.length - rowNum * (Number(props.rows) + 0.5), end, 'start');
-        } else if (props.direction === 'end') {
-          const end = rowNum * (Number(props.rows) + 0.5);
-          ellipsis.leading = tailorContent(0, end);
-        } else {
-          const start = props.content.length - rowNum * (Number(props.rows) + 0.5) - 5;
+              ellipsis.tailing = tailorContent(start, props.content.length);
+            }
 
-          ellipsis.tailing = tailorContent(start, props.content.length);
-        }
-
-        // 进行兜底判断，是否符合要求
-        assignContent();
-        setTimeout(() => {
-          verifyEllipsis();
-        }, 100);
-      }
+            // 进行兜底判断，是否符合要求
+            assignContent();
+            setTimeout(() => {
+              verifyEllipsis();
+            }, 100);
+          }
+        },
+        () => {}
+      );
     };
 
     // 验证省略号
     const verifyEllipsis = async () => {
-      const refe = await useTaroRect(rootContain);
-      if (refe && refe.height && refe.height > maxHeight) {
-        if (props.direction == 'end') {
-          ellipsis.leading = ellipsis.leading?.slice(0, ellipsis.leading.length - 1);
-        } else {
-          ellipsis.tailing = ellipsis.tailing?.slice(1, ellipsis.tailing.length);
-        }
+      useTaroRect(rootContain).then(
+        (refe: any) => {
+          if (refe && refe.height && refe.height > maxHeight) {
+            if (props.direction == 'end') {
+              ellipsis.leading = ellipsis.leading?.slice(0, ellipsis.leading.length - 1);
+            } else {
+              ellipsis.tailing = ellipsis.tailing?.slice(1, ellipsis.tailing.length);
+            }
 
-        assignContent();
-        setTimeout(() => {
-          verifyEllipsis();
-        }, 100);
-      }
+            assignContent();
+            setTimeout(() => {
+              verifyEllipsis();
+            }, 100);
+          }
+        },
+        () => {}
+      );
     };
 
     const assignContent = () => {

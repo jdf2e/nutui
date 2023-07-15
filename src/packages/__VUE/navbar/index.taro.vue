@@ -85,9 +85,12 @@ export default create({
     });
 
     const getNavHeight = () => {
-      useTaroRect(navbarRef).then((rect: any) => {
-        navHeight.value = `${rect.height}px`;
-      });
+      useTaroRect(navbarRef).then(
+        (rect: any) => {
+          navHeight.value = `${rect.height}px`;
+        },
+        () => {}
+      );
     };
 
     onMounted(() => {

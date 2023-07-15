@@ -340,18 +340,19 @@ export default create({
     const init = async (active: number = +props.initPage) => {
       if (!container.value) return;
       stopAutoPlay();
-      state.rect = await useTaroRect(container);
-      if (state.rect) {
-        active = Math.min(childCount.value - 1, active);
-        state.width = props.width ? +props.width : (state.rect as DOMRect).width;
-        state.height = props.height ? +props.height : (state.rect as DOMRect).height;
-        state.active = active;
-        state.offset = getOffset(state.active);
-        state.moving = true;
-        getStyle();
-
-        autoplay();
-      }
+      useTaroRect(container).then(
+        (rect: any) => {
+          active = Math.min(childCount.value - 1, active);
+          state.width = props.width ? +props.width : rect?.width;
+          state.height = props.height ? +props.height : rect?.height;
+          state.active = active;
+          state.offset = getOffset(state.active);
+          state.moving = true;
+          getStyle();
+          autoplay();
+        },
+        () => {}
+      );
     };
 
     const onTouchStart = (e: TouchEvent) => {

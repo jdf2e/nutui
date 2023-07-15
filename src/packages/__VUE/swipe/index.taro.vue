@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import { useTouch } from '@/packages/utils/useTouch';
-import { computed, onMounted, reactive, Ref, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('swipe');
@@ -57,19 +57,24 @@ export default create({
       };
     });
 
-    const getRefWidth = async (ref: Ref<HTMLElement | undefined>) => {
-      let rect = await useTaroRect(ref);
-      return rect.width || 0;
-    };
-
     const leftRef = ref<HTMLElement>();
     const leftRefWidth = ref(0);
     const rightRef = ref<HTMLElement>();
     const rightRefWidth = ref(0);
 
-    const initWidth = async () => {
-      leftRefWidth.value = await getRefWidth(leftRef);
-      rightRefWidth.value = await getRefWidth(rightRef);
+    const initWidth = () => {
+      useTaroRect(leftRef).then(
+        (rect: any) => {
+          leftRefWidth.value = rect?.width || 0;
+        },
+        () => {}
+      );
+      useTaroRect(rightRef).then(
+        (rect: any) => {
+          rightRefWidth.value = rect?.width || 0;
+        },
+        () => {}
+      );
     };
 
     onMounted(() => {

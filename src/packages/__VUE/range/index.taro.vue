@@ -298,33 +298,37 @@ export default create({
         return;
       }
       const { min, modelValue } = props;
-      const rect = await useTaroRect(root);
-      let clientX, clientY;
-      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        clientX = event.clientX;
-        clientY = event.clientY;
-      } else {
-        clientX = event.touches[0].clientX;
-        clientY = event.touches[0].clientY;
-      }
-      let delta = clientX - rect.left;
-      let total = rect.width;
-      if (props.vertical) {
-        delta = clientY - rect.top;
-        total = rect.height;
-      }
-      const value = Number(min) + (delta / total) * scope.value;
-      if (isRange(modelValue)) {
-        const [left, right] = modelValue;
-        const middle = (left + right) / 2;
-        if (value <= middle) {
-          updateValue([value, right], true);
-        } else {
-          updateValue([left, value], true);
-        }
-      } else {
-        updateValue(value, true);
-      }
+      useTaroRect(root).then(
+        (rect: any) => {
+          let clientX, clientY;
+          if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+            clientX = event.clientX;
+            clientY = event.clientY;
+          } else {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+          }
+          let delta = clientX - rect.left;
+          let total = rect.width;
+          if (props.vertical) {
+            delta = clientY - rect.top;
+            total = rect.height;
+          }
+          const value = Number(min) + (delta / total) * scope.value;
+          if (isRange(modelValue)) {
+            const [left, right] = modelValue;
+            const middle = (left + right) / 2;
+            if (value <= middle) {
+              updateValue([value, right], true);
+            } else {
+              updateValue([left, value], true);
+            }
+          } else {
+            updateValue(value, true);
+          }
+        },
+        () => {}
+      );
     };
 
     const onTouchStart = (event: TouchEvent) => {
@@ -350,31 +354,33 @@ export default create({
       if (props.disabled) {
         return;
       }
-
+      event.stopPropagation();
+      event.preventDefault();
       if (dragStatus.value === 'start') {
         emit('drag-start');
       }
-
       touch.move(event);
       dragStatus.value = 'draging';
 
-      const rect = await useTaroRect(root);
-      let delta = touch.deltaX.value;
-      let total = rect.width;
-      let diff = (delta / total) * scope.value;
-      if (props.vertical) {
-        delta = touch.deltaY.value;
-        total = rect.height;
-        diff = (delta / total) * scope.value;
-      }
-      if (isRange(startValue)) {
-        (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
-      } else {
-        currentValue = startValue + diff;
-      }
-      updateValue(currentValue);
-      event.stopPropagation();
-      event.preventDefault();
+      useTaroRect(root).then(
+        (rect: any) => {
+          let delta = touch.deltaX.value;
+          let total = rect.width;
+          let diff = (delta / total) * scope.value;
+          if (props.vertical) {
+            delta = touch.deltaY.value;
+            total = rect.height;
+            diff = (delta / total) * scope.value;
+          }
+          if (isRange(startValue)) {
+            (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
+          } else {
+            currentValue = startValue + diff;
+          }
+          updateValue(currentValue);
+        },
+        () => {}
+      );
     };
 
     const onTouchEnd = (event: TouchEvent) => {
