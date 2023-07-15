@@ -133,20 +133,24 @@ export default create({
       const start = nodes[0];
       nodes.forEach(async (node: HTMLDivElement, index: number) => {
         if (!node) return;
-        const rect = await useTaroRect(node);
-        if (rect && rect.height) {
-          const { height } = rect;
-          const oldHeight = state.cachePositions[index + state.start]
-            ? state.cachePositions[index + state.start].height
-            : props.height;
-          const dValue = oldHeight - height;
+        useTaroRect(node).then(
+          (rect: any) => {
+            if (rect && rect.height) {
+              const { height } = rect;
+              const oldHeight = state.cachePositions[index + state.start]
+                ? state.cachePositions[index + state.start].height
+                : props.height;
+              const dValue = oldHeight - height;
 
-          if (dValue && state.cachePositions[index + state.start]) {
-            state.cachePositions[index + state.start].bottom -= dValue;
-            state.cachePositions[index + state.start].height = height;
-            state.cachePositions[index + state.start].dValue = dValue;
-          }
-        }
+              if (dValue && state.cachePositions[index + state.start]) {
+                state.cachePositions[index + state.start].bottom -= dValue;
+                state.cachePositions[index + state.start].height = height;
+                state.cachePositions[index + state.start].dValue = dValue;
+              }
+            }
+          },
+          () => {}
+        );
       });
 
       let startIndex = 0;

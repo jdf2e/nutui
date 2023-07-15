@@ -22,11 +22,35 @@ export interface rectTaro {
   height: number;
 }
 
+export const useTaroRectById = (id: string) => {
+  return new Promise((resolve, reject) => {
+    if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+      const t = document ? document.querySelector(`#${id}`) : '';
+      if (t) {
+        resolve(t?.getBoundingClientRect());
+      }
+      reject();
+    } else {
+      const query = Taro.createSelectorQuery();
+      query
+        .select(`#${id}`)
+        .boundingClientRect()
+        .exec(function (rect: any) {
+          if (rect[0]) {
+            resolve(rect[0]);
+          } else {
+            reject();
+          }
+        });
+    }
+  });
+};
+
 export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>): any => {
   // 小程序下需要 el 具有 id 属性才能查询
   let element = unref(elementRef);
   return new Promise((resolve, reject) => {
-    if (Taro.getEnv() === 'WEB') {
+    if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
       if (element && element.$el) {
         element = element.$el;
       }

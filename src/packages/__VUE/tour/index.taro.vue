@@ -77,14 +77,12 @@
 import { computed, watch, ref, reactive, toRefs, PropType, onMounted, Component } from 'vue';
 import { PopoverLocation } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
-import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
-import { useRect } from '@/packages/utils/useRect';
+import { rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect';
 import { Close } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
 import Popover from '../popover/index.taro.vue';
 
 interface StepOptions {
-  target: Element | string;
+  target: string;
   content: string;
   location?: string;
   popoverOffset?: number[];
@@ -222,15 +220,13 @@ export default create({
 
     const getRootPosition = () => {
       props.steps.forEach(async (item, i) => {
-        let rect;
-        if (Taro.getEnv() === 'WEB') {
-          const el = document.querySelector(`#${item.target}`) as Element;
-          rect = await useRect(el);
-        } else {
-          rect = await useTaroRect(item.target);
-        }
-        maskRect[i] = rect;
-        maskStyle(i);
+        useTaroRectById(item.target).then(
+          (rect: any) => {
+            maskRect[i] = rect;
+            maskStyle(i);
+          },
+          () => {}
+        );
       });
     };
 
