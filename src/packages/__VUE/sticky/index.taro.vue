@@ -50,11 +50,14 @@ export default create({
       };
     });
     const handleScroll = () => {
-      useTaroRect(rootRef).then((rootRect: any) => {
-        state.height = rootRect.height;
-        state.width = rootRect.width;
-        state.fixed = Number(props.top) >= rootRect.top;
-      });
+      useTaroRect(rootRef).then(
+        (rootRect: any) => {
+          state.height = rootRect.height;
+          state.width = rootRect.width;
+          state.fixed = Number(props.top) >= rootRect.top;
+        },
+        () => {}
+      );
     };
     watch(
       () => state.fixed,

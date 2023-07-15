@@ -68,11 +68,9 @@
 import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 const { create } = createComponent('popover');
-import { useTaroRect, rectTaro } from '@/packages/utils/useTaroRect';
-import { useRect } from '@/packages/utils/useRect';
+import { useTaroRect, rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect';
 import { isArray } from '@/packages/utils/util';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
-import Taro from '@tarojs/taro';
 import Popup from '../popup/index.taro.vue';
 
 export default create({
@@ -224,38 +222,44 @@ export default create({
     });
     // 获取宽度
     const getContentWidth = async () => {
-      let rect;
-      if (props.targetId) {
-        if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
-          rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
-        } else {
-          rect = await useTaroRect(props.targetId);
+      const solve = (rect: any) => {
+        if (!(rootRect.value && rect.top == rootRect.value.top && rect.width == rootRect.value.width)) {
+          setTimeout(() => {
+            getContentWidth();
+          }, 100);
         }
+        rootRect.value = rect;
+        getRootPosition();
+      };
+      if (props.targetId) {
+        useTaroRectById(props.targetId).then(
+          (rect: any) => {
+            solve(rect);
+          },
+          () => {}
+        );
       } else {
-        rect = await useTaroRect(popoverRef);
+        useTaroRect(popoverRef).then(
+          (rect: any) => {
+            solve(rect);
+          },
+          () => {}
+        );
       }
-
-      if (!(rootRect.value && rect.top == rootRect.value.top && rect.width == rootRect.value.width)) {
-        setTimeout(() => {
-          getContentWidth();
-        }, 100);
-      }
-      rootRect.value = rect;
-
-      getRootPosition();
     };
 
     const getPopoverContentW = async (type: number = 1) => {
       const el = type == 1 ? popoverContentRef : popoverContentRefCopy;
-
-      let rectContent = await useTaroRect(el);
-
-      conentRootRect = {
-        height: rectContent.height,
-        width: rectContent.width
-      };
-
-      getRootPosition();
+      useTaroRect(el).then(
+        (rect: any) => {
+          conentRootRect = {
+            height: rect.height || 0,
+            width: rect.width || 0
+          };
+          getRootPosition();
+        },
+        () => {}
+      );
     };
     watch(
       () => props.visible,

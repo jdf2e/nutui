@@ -332,7 +332,7 @@ app.use(Tour);
 
 | 键名           | 说明                                                                                             | 类型             | 默认值     |
 | -------------- | ------------------------------------------------------------------------------------------------ | ---------------- | ---------- |
-| target         | 目标对象                                                                                         | Element          | -          |
+| target         | 目标对象                                                                                         | id               | -          |
 | content        | 气泡层内容                                                                                       | string           | ''         |
 | location       | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)         | string           | `'bottom'` |
 | popover-offset | 气泡层偏移量，同 Popopver 的[offset 属性](https://nutui.jd.com/#/zh-CN/component/popover)        | [number, number] | `[0, 12]`  |

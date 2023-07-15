@@ -134,14 +134,17 @@ export default create({
     const updateOffset = (children: any) => {
       if (barRef.value) {
         setTimeout(() => {
-          useTaroRect(barRef).then((rect: any) => {
-            if (props.direction === 'down') {
-              offset.value = rect.bottom;
-            } else {
-              offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
-            }
-            children.toggle();
-          });
+          useTaroRect(barRef).then(
+            (rect: any) => {
+              if (props.direction === 'down') {
+                offset.value = rect.bottom;
+              } else {
+                offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
+              }
+              children.toggle();
+            },
+            () => {}
+          );
         }, 100);
       }
     };

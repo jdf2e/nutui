@@ -332,7 +332,7 @@ Can customize the bubble layer through the slot slot
 
 | Attribute      | Description                                                                    | Type             | Default    |
 | -------------- | ------------------------------------------------------------------------------ | ---------------- | ---------- |
-| target         | target dom                                                                     | Element          | -          |
+| target         | target dom                                                                     | id               | -          |
 | content        | popover content                                                                | string           | ''         |
 | location       | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover) | string           | `'bottom'` |
 | popover-offset | Offset of popopver [offset](https://nutui.jd.com/#/zh-CN/component/popover)    | [number, number] | `[0, 12]`  |
