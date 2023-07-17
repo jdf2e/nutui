@@ -12,60 +12,73 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, PropType } from 'vue';
+import { ref, computed, PropType, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { AnimateType, AnimateAction } from './type';
-const { componentName, create } = createComponent('animate');
+const { create } = createComponent('animate');
 export default create({
   props: {
     type: {
       type: String as PropType<AnimateType>,
       default: ''
     },
+    show: {
+      type: Boolean,
+      defualt: false
+    },
     action: {
       type: String as PropType<AnimateAction>,
-      default: 'initial'
+      default: ''
     },
     loop: {
       type: Boolean,
       default: false
     },
     duration: {
-      type: [String, Number]
+      type: [String, Number],
+      defualt: 500
     }
   },
-  emits: ['click'],
-
+  emits: ['click', 'action'],
   setup(props, { emit }) {
-    const { type, loop, action } = toRefs(props);
-
-    const state = reactive({
-      clicked: false
-    });
-
-    let classes = computed(() => {
-      const prefixCls = componentName;
+    const animated = ref(props.action === 'initial' || props.show === true);
+    const classes = computed(() => {
+      const prefixCls = 'nut-animate';
       return {
         'nut-animate__container': true,
-        [`${prefixCls}-${type.value}`]: action.value === 'initial' || state.clicked ? type.value : false,
-        loop: loop.value
+        [`${prefixCls}-${props.type}`]: animated.value,
+        loop: props.loop
       };
     });
 
-    const handleClick = (event: Event) => {
-      state.clicked = true;
-
-      //如果不是无限循环，清除类名
-      if (!loop.value) {
-        setTimeout(() => {
-          state.clicked = false;
-        }, 1000);
-      }
-
-      emit('click', event);
+    const animate = () => {
+      animated.value = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          animated.value = true;
+        });
+      });
     };
 
-    return { ...toRefs(state), classes, handleClick };
+    const handleClick = (event: Event) => {
+      if (props.action === 'click') {
+        console.log('onClick');
+        animate();
+        emit('click', event);
+      }
+    };
+
+    watch(
+      () => props.show,
+      (val) => {
+        if (val) {
+          animate();
+          emit('action');
+        }
+      }
+    );
+
+    return { classes, handleClick };
   }
 });
 </script>

@@ -10,4 +10,4 @@ export type AnimateType =
   | 'jump'
   | 'twinkle'
   | 'flicker';
-export type AnimateAction = 'initial' | 'click';
+export type AnimateAction = 'initial' | 'click' | '';

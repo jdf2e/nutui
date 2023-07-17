@@ -73,12 +73,13 @@ app.use(Animate);
 
 ### Props
 
-| 参数            | 说明                                             | 类型             | 默认值    |
-| --------------- | ------------------------------------------------ | ---------------- | --------- |
-| type            | 动画类型，见下方 `type` 值说明                   | string           | `-`       |
-| action          | 触发方式，`initial`-初始化执行; `click`-点击执行 | string           | `initial` |
-| loop            | 是否循环执行。`true`-循环执行; `false`-执行一次  | boolean          | `false`   |
-| duration`4.0.7` | 动画时长，单位 ms                                | number \| string | -         |
+| 参数             | 说明                                              | 类型             | 默认值    |
+| ---------------- | ------------------------------------------------- | ---------------- | --------- |
+| show`v4.1.1`     | 控制动画，当值从 false 变为 true 时会触发一次动画 | boolean          | `false`   |
+| type             | 动画类型，见下方 `type` 值说明                    | string           | `-`       |
+| loop             | 是否循环执行。`true`-循环执行; `false`-执行一次   | boolean          | `false`   |
+| duration`v4.0.7` | 动画时长，单位 ms                                 | number \| string | -         |
+| action`不推荐`   | 触发方式，`initial`-初始化执行; `click`-点击执行  | string           | `initial` |
 
 ### Events
 
