@@ -39,9 +39,9 @@ export default create({
       defualt: 500
     }
   },
-  emits: ['click', 'action'],
+  emits: ['click', 'animate'],
   setup(props, { emit }) {
-    const animated = ref(props.action === 'initial' || props.show === true);
+    const animated = ref(props.action === 'initial' || props.show === true || props.loop);
     const classes = computed(() => {
       const prefixCls = 'nut-animate';
       return {
@@ -62,9 +62,9 @@ export default create({
 
     const handleClick = (event: Event) => {
       if (props.action === 'click') {
-        console.log('onClick');
         animate();
         emit('click', event);
+        emit('animate');
       }
     };
 
@@ -73,7 +73,7 @@ export default create({
       (val) => {
         if (val) {
           animate();
-          emit('action');
+          emit('animate');
         }
       }
     );

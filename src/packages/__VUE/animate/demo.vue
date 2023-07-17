@@ -2,34 +2,14 @@
   <div class="demo">
     <h2>{{ translate('show') }}</h2>
     <div class="demo-animate">
-      <nut-animate type="slide-right" :show="show">
-        <nut-button type="primary" @click="onClick">{{ translate('FRTL') }}</nut-button>
-      </nut-animate>
-    </div>
-
-    <h2>{{ translate('click') }}</h2>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-right" action="click">
-        <nut-button type="primary">{{ translate('FRTL') }}</nut-button>
+      <nut-animate type="slide-right" :show="show1">
+        <nut-button type="primary" @click="onClick1">{{ translate('once') }}</nut-button>
       </nut-animate>
     </div>
 
     <div class="demo-animate">
-      <nut-animate type="slide-left" action="click">
-        <nut-button type="primary">{{ translate('FLTR') }}</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-top" action="click">
-        <nut-button type="primary">{{ translate('FTTB') }}</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-bottom" action="click">
-        <nut-button type="primary">{{ translate('FBTT') }}</nut-button>
+      <nut-animate type="slide-right" :show="show2">
+        <nut-button type="primary" @click="onClick2">{{ translate('times') }}</nut-button>
       </nut-animate>
     </div>
 
@@ -76,6 +56,32 @@
         <nut-button type="primary">{{ translate('float') }}</nut-button>
       </nut-animate>
     </div>
+
+    <h2>{{ translate('click') }}</h2>
+
+    <div class="demo-animate">
+      <nut-animate type="slide-right" action="click">
+        <nut-button type="primary">{{ translate('FRTL') }}</nut-button>
+      </nut-animate>
+    </div>
+
+    <div class="demo-animate">
+      <nut-animate type="slide-left" action="click">
+        <nut-button type="primary">{{ translate('FLTR') }}</nut-button>
+      </nut-animate>
+    </div>
+
+    <div class="demo-animate">
+      <nut-animate type="slide-top" action="click">
+        <nut-button type="primary">{{ translate('FTTB') }}</nut-button>
+      </nut-animate>
+    </div>
+
+    <div class="demo-animate">
+      <nut-animate type="slide-bottom" action="click">
+        <nut-button type="primary">{{ translate('FBTT') }}</nut-button>
+      </nut-animate>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -88,6 +94,8 @@ const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       show: '通过 show 控制动画',
+      once: '单次动画',
+      times: '多次触发',
       basic: '循环动画',
       click: '点击触发',
       FRTL: '由右向左划入',
@@ -104,6 +112,8 @@ const initTranslate = () =>
     },
     'en-US': {
       show: 'Trigger animation through show',
+      once: 'Once',
+      times: 'Several times',
       basic: 'Loop animation',
       FRTL: 'From right to left',
       FLTR: 'From left to right',
@@ -120,9 +130,17 @@ const initTranslate = () =>
   });
 initTranslate();
 
-const show = ref(false);
-const onClick = () => {
-  show.value = true;
+const show1 = ref(false);
+const onClick1 = () => {
+  show1.value = true;
+};
+
+const show2 = ref(false);
+const onClick2 = () => {
+  show2.value = true;
+  setTimeout(() => {
+    show2.value = false;
+  }, 500);
 };
 </script>
 <style lang="scss" scoped>
