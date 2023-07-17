@@ -18,7 +18,6 @@
     <nut-uploader :url="uploadUrl" @progress="onProgress">
       <nut-button type="success" size="small">上传文件</nut-button>
     </nut-uploader>
-    <br />
     <nut-progress
       :percentage="progressPercentage"
       stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
@@ -33,7 +32,7 @@
     <h2>直接调起摄像头 camera </h2>
     <nut-uploader :source-type="['camera']"></nut-uploader>
     <h2>使用前摄像头拍摄3s视频并上传(仅支持微信小程序)</h2>
-    <nut-uploader max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
+    <nut-uploader :max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
@@ -46,7 +45,6 @@
     <nut-uploader :url="uploadUrl" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
-    <br />
     <nut-button type="success" size="small" @click="submitUpload">手动执行上传</nut-button>
     <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
     <h2>禁用状态</h2>

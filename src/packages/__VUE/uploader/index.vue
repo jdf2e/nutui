@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-uploader">
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
       <component :is="renderInput" @change="onChange" v-if="Number(maximum) - fileList.length"></component>
@@ -71,14 +71,14 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, h, PropType, ref, watch } from 'vue';
+import { reactive, h, PropType, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
-const { componentName, create, translate } = createComponent('uploader');
+const { create, translate } = createComponent('uploader');
 export default create({
   components: {
     [Progress.name]: Progress,
@@ -148,13 +148,6 @@ export default create({
         fileList.value = props.fileList;
       }
     );
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const renderInput = () => {
       let params: any = {
@@ -353,7 +346,6 @@ export default create({
       onChange,
       onDelete,
       fileList,
-      classes,
       fileItemClick,
       clearUploadQueue,
       submit,

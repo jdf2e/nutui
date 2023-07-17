@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-uploader">
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
       <template v-if="Number(maximum) - fileList.length">
@@ -23,7 +23,7 @@
 
         <img
           class="nut-uploader__preview-img__c"
-          mode="aspectFit"
+          :mode="mode"
           @click="fileItemClick(item)"
           v-if="(item?.type?.includes('image') || item?.type?.includes('video')) && item.url"
           :src="item.url"
@@ -71,14 +71,14 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType, reactive, ref, watch } from 'vue';
+import { PropType, reactive, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import Progress from '../progress/index.taro.vue';
 import Button from '../button/index.taro.vue';
-const { componentName, create, translate } = createComponent('uploader');
+const { create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 export default create({
@@ -141,7 +141,11 @@ export default create({
         return true;
       }
     },
-    onChange: { type: Function }
+    onChange: { type: Function },
+    mode: {
+      type: String,
+      default: 'aspectFit'
+    }
   },
   emits: [
     'start',
@@ -164,13 +168,6 @@ export default create({
         fileList.value = props.fileList;
       }
     );
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const chooseImage = () => {
       if (props.disabled) {
@@ -413,7 +410,6 @@ export default create({
     return {
       onDelete,
       fileList,
-      classes,
       chooseImage,
       fileItemClick,
       clearUploadQueue,
