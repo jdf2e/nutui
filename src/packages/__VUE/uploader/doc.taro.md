@@ -66,7 +66,7 @@ app.use(Uploader);
 ### 使用前摄像头拍摄 3s 视频并上传(仅支持微信小程序)
 
 ```html
-<nut-uploader max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
+<nut-uploader :max-duration="3" :source-type="['camera']" camera="front" :url="uploadUrl"></nut-uploader>
 ```
 
 ### 限制上传数量 5 个
@@ -266,6 +266,7 @@ setup() {
 | multiple                  | 是否支持文件多选                                                                                         | Boolean                           | `true`                      |
 | timeout                   | 超时时间，单位为毫秒                                                                                     | Number \| String                  | `1000 * 30`                 |
 | before-xhr-upload         | 执行 `Taro.uploadFile` 上传时，自定义方式                                                                | Function(Taro.uploadFile，option) | `null`                      |
+| mode`v4.1.1 仅支持小程序` | 预览图片的 mode 属性                                                                                     | string                            | `aspectFit`                 |
 
 ### FileItem
 
