@@ -6,7 +6,7 @@ Add animation effects to child elements
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Animate } from '@nutui/nutui';
 
@@ -14,25 +14,33 @@ const app = createApp(Animate);
 app.use(Animate);
 ```
 
-### Clicking to trigger
+### Trigger animation through show
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-animate type="slide-right" action="click">
-    <nut-button type="primary">From right to left</nut-button>
+  <nut-animate type="slide-right" :show="show1">
+    <nut-button type="primary" @click="onClick1">Once</nut-button>
   </nut-animate>
-  <nut-animate type="slide-left" action="click">
-    <nut-button type="primary">From left to right</nut-button>
-  </nut-animate>
-  <nut-animate type="slide-top" action="click">
-    <nut-button type="primary">From top to bottom</nut-button>
-  </nut-animate>
-  <nut-animate type="slide-bottom" action="click">
-    <nut-button type="primary">From bottom to top</nut-button>
+  <nut-animate type="slide-right" :show="show2">
+    <nut-button type="primary" @click="onClick2">Several Times</nut-button>
   </nut-animate>
 </template>
+<script setup>
+import { ref } from 'vue';
+const show1 = ref(false);
+const onClick1 = () => {
+  show1.value = true;
+};
+const show2 = ref(false);
+const onClick2 = () => {
+  show2.value = true;
+  setTimeout(() => {
+    show2.value = false;
+  }, 500);
+};
+</script>
 ```
 
 :::
@@ -41,7 +49,7 @@ app.use(Animate);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-animate type="shake" :loop="true">
     <nut-button type="primary">shake-shake</nut-button>
@@ -69,22 +77,47 @@ app.use(Animate);
 
 :::
 
+### Clicking to trigger
+
+:::demo
+
+```vue
+<template>
+  <nut-animate type="slide-right" action="click">
+    <nut-button type="primary">From right to left</nut-button>
+  </nut-animate>
+  <nut-animate type="slide-left" action="click">
+    <nut-button type="primary">From left to right</nut-button>
+  </nut-animate>
+  <nut-animate type="slide-top" action="click">
+    <nut-button type="primary">From top to bottom</nut-button>
+  </nut-animate>
+  <nut-animate type="slide-bottom" action="click">
+    <nut-button type="primary">From bottom to top</nut-button>
+  </nut-animate>
+</template>
+```
+
+:::
+
 ## API
 
 ### Props
 
-| Attribute       | Description                                                                      | Type             | Default   |
-| --------------- | -------------------------------------------------------------------------------- | ---------------- | --------- |
-| type            | For animation type, see the description of type value below                      | string           | `-`       |
-| action          | Triggering method,`initial`- initialization execution; `click`- click to execute | string           | `initial` |
-| loop            | Whether to execute circularly. `true`- loop execution; `false`- execute once     | boolean          | `false`   |
-| duration`4.0.7` | AnimationDuration, ms                                                            | number \| string | -         |
+| Attribute       | Description                                                                      | Type             | Default |
+| --------------- | -------------------------------------------------------------------------------- | ---------------- | ------- |
+| show`v4.1.1`    | Trigger animation when show changes from `false` to `true`                       | boolean          | `false` |
+| type            | For animation type, see the description of type value below                      | string           | `-`     |
+| loop            | Whether to execute circularly. `true`- loop execution; `false`- execute once     | boolean          | `false` |
+| duration`4.0.7` | AnimationDuration, ms                                                            | number \| string | -       |
+| action          | Triggering method,`initial`- initialization execution; `click`- click to execute | string           | -       |
 
 ### Events
 
-| Event | Description                          | Arguments    |
-| ----- | ------------------------------------ | ------------ |
-| click | Triggered when an element is clicked | event: Event |
+| Event           | Description                          | Arguments    |
+| --------------- | ------------------------------------ | ------------ |
+| animate`v4.1.1` | Trigger of animation                 | -            |
+| click           | Triggered when an element is clicked | event: Event |
 
 ### Type value description
 
