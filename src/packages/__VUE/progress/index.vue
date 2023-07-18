@@ -2,14 +2,12 @@
   <div class="nut-progress">
     <div
       class="nut-progress-outer"
-      ref="progressOuter"
       :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
-      <div :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']" :style="bgStyle"></div>
+      <div :class="['nut-progress-inner', status === 'active' ? 'nut-active' : '']" :style="bgStyle"></div>
       <div
         class="nut-progress-text nut-progress-insidetext"
-        ref="insideText"
         :style="{
           lineHeight: height,
           left: `${percentage}%`,
@@ -21,7 +19,7 @@
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
       </div>
       <div
-        ref="insideText"
+        class="nut-progress-slot"
         :style="{
           position: `absolute`,
           top: `50%`,
@@ -33,11 +31,11 @@
         <slot></slot>
       </div>
     </div>
-    <div class="nut-progress-text" v-if="showText && !textInside">
-      <template v-if="status == 'active' || status == ''">
-        <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
+    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
+      <template v-if="status === 'text' || status === 'active'">
+        <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
       </template>
-      <template v-else-if="status == 'icon'">
+      <template v-else-if="status === 'icon'">
         <slot name="icon-name">
           <Checked width="15px" height="15px" color="#439422"></Checked>
         </slot>
@@ -47,10 +45,11 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, useSlots, ref } from 'vue';
+import { computed, useSlots, PropType } from 'vue';
+import { Checked } from '@nutui/icons-vue';
+import type { ProgressSize, ProgressStatus } from './types';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
-import { Checked } from '@nutui/icons-vue';
 export default create({
   components: { Checked },
   props: {
@@ -60,12 +59,12 @@ export default create({
       required: true
     },
     size: {
-      type: String,
+      type: String as PropType<ProgressSize>,
       default: 'base'
     },
     status: {
-      type: String,
-      default: ''
+      type: String as PropType<ProgressStatus>,
+      default: 'text'
     },
     strokeWidth: {
       type: [Number, String],
@@ -98,11 +97,14 @@ export default create({
   },
   setup(props) {
     const slotDefault = !!useSlots().default;
-    const height = ref(props.strokeWidth + 'px');
-    const progressOuter = ref();
-    const insideText = ref();
+    const height = computed(() => {
+      if (props.strokeWidth) {
+        return props.strokeWidth + 'px';
+      }
+      return undefined;
+    });
     const percentage = computed(() => {
-      return props.percentage >= 100 ? 100 : props.percentage;
+      return Number(props.percentage) >= 100 ? 100 : Number(props.percentage);
     });
     const bgStyle = computed(() => {
       return {
@@ -115,14 +117,11 @@ export default create({
         color: props.textColor || ''
       };
     });
-    onMounted(() => {});
     return {
       height,
       percentage,
       bgStyle,
       textStyle,
-      progressOuter,
-      insideText,
       slotDefault
     };
   }

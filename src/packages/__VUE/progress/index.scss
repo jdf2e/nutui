@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   display: flex;
+  align-items: center;
   .nut-progress-outer {
     flex: 1;
     background-color: $progress-outer-background-color;
@@ -21,6 +22,11 @@
       flex-direction: column;
       justify-content: center;
       color: #fff;
+    }
+    .nut-progress-slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .nut-active {
       &:before {

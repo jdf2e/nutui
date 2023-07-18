@@ -5,39 +5,37 @@
       :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
-      <div :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']" :style="bgStyle">
-        <div
-          class="nut-progress-text nut-progress-insidetext"
-          ref="insideText"
-          :style="{
-            lineHeight: height,
-            left: `${percentage}%`,
-            transform: `translate(-${+percentage}%,-50%)`,
-            background: textBackground || strokeColor
-          }"
-          v-if="showText && textInside && !slotDefault"
-        >
-          <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
-        </div>
-        <div
-          ref="insideText"
-          :style="{
-            position: `absolute`,
-            top: `50%`,
-            left: `${percentage}%`,
-            transform: `translate(-${+percentage}%,-50%)`
-          }"
-          v-if="showText && textInside && slotDefault"
-        >
-          <slot></slot>
-        </div>
+      <div :class="['nut-progress-inner', status === 'active' ? 'nut-active' : '']" :style="bgStyle"></div>
+      <div
+        class="nut-progress-text nut-progress-insidetext"
+        :style="{
+          lineHeight: height,
+          left: `${percentage}%`,
+          transform: `translate(-${+percentage}%,-50%)`,
+          background: textBackground || strokeColor
+        }"
+        v-if="showText && textInside && !slotDefault"
+      >
+        <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
+      </div>
+      <div
+        class="nut-progress-slot"
+        :style="{
+          position: `absolute`,
+          top: `50%`,
+          left: `${percentage}%`,
+          transform: `translate(-${+percentage}%,-50%)`
+        }"
+        v-if="showText && textInside && slotDefault"
+      >
+        <slot></slot>
       </div>
     </div>
     <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
-      <template v-if="status == 'text' || status == 'active'">
+      <template v-if="status === 'text' || status === 'active'">
         <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
       </template>
-      <template v-else-if="status == 'icon'">
+      <template v-else-if="status === 'icon'">
         <slot name="icon-name">
           <Checked width="15px" height="15px" color="#439422"></Checked>
         </slot>
@@ -47,10 +45,10 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, useSlots, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { computed, useSlots, PropType } from 'vue';
 import { Checked } from '@nutui/icons-vue-taro';
+import type { ProgressSize, ProgressStatus } from './types';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
 export default create({
   components: { Checked },
@@ -61,11 +59,11 @@ export default create({
       required: true
     },
     size: {
-      type: String,
+      type: String as PropType<ProgressSize>,
       default: 'base'
     },
     status: {
-      type: String,
+      type: String as PropType<ProgressStatus>,
       default: 'text'
     },
     strokeWidth: {
@@ -92,10 +90,6 @@ export default create({
       type: String,
       default: ''
     },
-    iconColor: {
-      type: String,
-      default: '#439422'
-    },
     isShowPercentage: {
       type: Boolean,
       default: true
@@ -103,8 +97,12 @@ export default create({
   },
   setup(props) {
     const slotDefault = !!useSlots().default;
-    const height = ref(props.strokeWidth + 'px');
-    const insideText = ref();
+    const height = computed(() => {
+      if (props.strokeWidth) {
+        return props.strokeWidth + 'px';
+      }
+      return undefined;
+    });
     const percentage = computed(() => {
       return Number(props.percentage) >= 100 ? 100 : Number(props.percentage);
     });
@@ -119,16 +117,11 @@ export default create({
         color: props.textColor || ''
       };
     });
-
-    onMounted(() => {
-      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
-    });
     return {
       height,
       percentage,
       bgStyle,
       textStyle,
-      insideText,
       slotDefault
     };
   }

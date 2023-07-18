@@ -6,7 +6,7 @@ Used to show the current progress of the operation.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Progress } from '@nutui/nutui';
 
@@ -18,11 +18,9 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="30" />
-  </nut-cell>
+  <nut-progress percentage="30" />
 </template>
 ```
 
@@ -32,11 +30,9 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
-  </nut-cell>
+  <nut-progress percentage="30" stroke-color="rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
 </template>
 ```
 
@@ -46,25 +42,9 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="50" :show-text="false" stroke-height="24" />
-  </nut-cell>
-</template>
-```
-
-:::
-
-### Show Percentage
-
-:::demo
-
-```html
-<template>
-  <nut-cell>
-    <nut-progress percentage="30" />
-  </nut-cell>
+  <nut-progress percentage="50" :show-text="false" stroke-height="24" />
 </template>
 ```
 
@@ -74,11 +54,9 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="60" :text-inside="true" />
-  </nut-cell>
+  <nut-progress percentage="60" :text-inside="true" />
 </template>
 ```
 
@@ -88,18 +66,15 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="60" :text-inside="true">
-      <img
-        src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-        width="30"
-        height="30"
-        style="display: block"
-      />
-    </nut-progress>
-  </nut-cell>
+  <nut-progress percentage="60" :text-inside="true">
+    <img
+      src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+      width="30"
+      height="30"
+    />
+  </nut-progress>
 </template>
 ```
 
@@ -110,17 +85,11 @@ app.use(Progress);
 **small**，**base**，**large** .
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-progress percentage="30" :text-inside="true" size="small"> </nut-progress>
-  </nut-cell>
-  <nut-cell>
-    <nut-progress percentage="50" :text-inside="true" size="base"> </nut-progress>
-  </nut-cell>
-  <nut-cell>
-    <nut-progress percentage="70" :text-inside="true" size="large"> </nut-progress>
-  </nut-cell>
+  <nut-progress percentage="30" :text-inside="true" size="small"> </nut-progress>
+  <nut-progress percentage="50" :text-inside="true" size="base"> </nut-progress>
+  <nut-progress percentage="70" :text-inside="true" size="large"> </nut-progress>
 </template>
 ```
 
@@ -130,33 +99,28 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div>
-    <nut-cell>
-      <nut-progress
-        percentage="30"
-        stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status="active"
-      />
-    </nut-cell>
-    <nut-cell>
-      <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
-    </nut-cell>
-    <nut-cell>
-      <nut-progress
-        percentage="100"
-        stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-        stroke-width="15"
-        status="icon"
-      >
-        <template #icon-name>
-          <Issue color="red" width="15px" height="15px"></Issue>
-        </template>
-      </nut-progress>
-    </nut-cell>
-  </div>
+  <nut-progress
+    percentage="30"
+    stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+    status="active"
+  />
+  <nut-progress percentage="50" status="icon" />
+  <nut-progress
+    percentage="100"
+    stroke-color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+    stroke-width="15"
+    status="icon"
+  >
+    <template #icon-name>
+      <Issue color="red" width="15px" height="15px"></Issue>
+    </template>
+  </nut-progress>
 </template>
+<script setup>
+import { Issue } from '@nutui/icons-vue';
+</script>
 ```
 
 :::
@@ -165,42 +129,27 @@ app.use(Progress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div>
-    <nut-cell>
-      <nut-progress :percentage="val" />
-    </nut-cell>
-    <nut-cell>
-      <nut-button type="default" @click="setReduceVal">reduce</nut-button>
-      <nut-button type="primary" @click="setAddVal">add</nut-button>
-    </nut-cell>
-  </div>
+  <nut-progress :percentage="val" />
+  <nut-button type="default" @click="setReduceVal">reduce</nut-button>
+  <nut-button type="primary" @click="setAddVal">add</nut-button>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const val = ref(0);
-      const setAddVal = () => {
-        if (val.value >= 100) {
-          return false;
-        }
-        val.value += 10;
-      };
-      const setReduceVal = () => {
-        if (val.value <= 0) {
-          return false;
-        }
-        val.value -= 10;
-      };
-      return {
-        val,
-        setAddVal,
-        setReduceVal
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const val = ref(0);
+const setAddVal = () => {
+  if (val.value >= 100) {
+    return false;
+  }
+  val.value += 10;
+};
+const setReduceVal = () => {
+  if (val.value <= 0) {
+    return false;
+  }
+  val.value -= 10;
+};
 </script>
 ```
 
@@ -210,18 +159,18 @@ app.use(Progress);
 
 ### Props
 
-| Attribute          | Description                                                                                          | Type    | Default                   |
-| ------------------ | ---------------------------------------------------------------------------------------------------- | ------- | ------------------------- |
-| percentage         | percentage                                                                                           | number  | `0`                       |
-| is-show-percentage | Whether to display the percent sign                                                                  | boolean | `true`                    |
-| stroke-color       | Stroke color                                                                                         | string  | `#f30`                    |
-| stroke-width       | Stroke width                                                                                         | string  | `''`                      |
-| size               | Progress bar and text size, small/base/large                                                         | string  | -                         |
-| show-text          | Whether to show text                                                                                 | boolean | `true`                    |
-| text-inside        | Progress bar text display position(false:outside，true:Inside)                                       | boolean | `false`                   |
-| text-color         | Progress bar text color setting                                                                      | string  | `#333`                    |
-| text-background    | Progress bar text background color setting                                                           | string  | `Same progress bar color` |
-| status             | The current state of the progress bar，`active(display animation effect)` `icon(display icon label)` | string  | `text`                    |
+| Attribute          | Description                                                                                          | Type    | Default |
+| ------------------ | ---------------------------------------------------------------------------------------------------- | ------- | ------- |
+| percentage         | percentage                                                                                           | number  | `0`     |
+| is-show-percentage | Whether to display the percent sign                                                                  | boolean | `true`  |
+| stroke-color       | Stroke color                                                                                         | string  | `#f30`  |
+| stroke-width       | Stroke width                                                                                         | string  | -       |
+| size               | Progress bar and text size, small/base/large                                                         | string  | -       |
+| show-text          | Whether to show text                                                                                 | boolean | `true`  |
+| text-inside        | Progress bar text display position(false:outside，true:Inside)                                       | boolean | `false` |
+| text-color         | Progress bar text color setting                                                                      | string  | `#333`  |
+| text-background    | Progress bar text background color setting                                                           | string  | -       |
+| status             | The current state of the progress bar，`active(display animation effect)` `icon(display icon label)` | string  | `text`  |
 
 ### Slots
 
