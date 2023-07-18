@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      v-if="needSymbol && position == 'before'"
+      v-if="needSymbol && position === 'before'"
       class="nut-price--symbol"
       :class="`nut-price--symbol-${size}`"
       v-html="showSymbol"
@@ -14,7 +14,7 @@
       {{ formatDecimal(price) }}
     </view>
     <view
-      v-if="needSymbol && position == 'after'"
+      v-if="needSymbol && position === 'after'"
       class="nut-price--symbol"
       :class="`nut-price--symbol-${size}`"
       v-html="showSymbol"
@@ -23,8 +23,9 @@
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { PricePosition, PriceSize } from './types';
 const { componentName, create } = createComponent('price');
 
 export default create({
@@ -50,11 +51,11 @@ export default create({
       default: false
     },
     position: {
-      type: String,
+      type: String as PropType<PricePosition>,
       default: 'before'
     },
     size: {
-      type: String,
+      type: String as PropType<PriceSize>,
       default: 'normal'
     },
     strikeThrough: {

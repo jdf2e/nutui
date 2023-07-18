@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Price } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="0" size="small" :need-symbol="false" />
   <nut-price :price="0" size="normal" :need-symbol="false" />
@@ -36,7 +36,7 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="8888" :decimal-digits="0" />
 </template>
@@ -48,16 +48,9 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-price
-    :price="8888"
-    decimal-digits="0"
-    size="normal"
-    :need-symbol="true"
-    :thousands="true"
-    :strike-through="true"
-  />
+  <nut-price :price="8888" :decimal-digits="0" size="normal" need-symbol thousands strike-through />
 </template>
 ```
 
@@ -69,7 +62,7 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="10010.01" symbol="¥" />
 </template>
@@ -83,7 +76,7 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="8888.01" position="after" symbol="元" />
 </template>
@@ -97,13 +90,11 @@ app.use(Price);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
+  <nut-price :price="15213.1221" :decimal-digits="3" thousands />
 </template>
 ```
-
-:::
 
 :::
 

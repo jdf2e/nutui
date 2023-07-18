@@ -1,6 +1,6 @@
 <template>
   <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+    <DocHeader />
     <nut-cell-group title="支持三种尺寸：small、normal、large">
       <nut-cell>
         <nut-price :price="0" size="small" :need-symbol="false" />
@@ -18,7 +18,7 @@
     </nut-cell>
     <h2>划线价</h2>
     <nut-cell>
-      <nut-price :price="8888" decimal-digits="0" size="normal" need-symbol thousands strike-through />
+      <nut-price :price="8888" :decimal-digits="0" size="normal" need-symbol thousands strike-through />
     </nut-cell>
     <h2>货币符号</h2>
     <nut-cell>
@@ -30,32 +30,18 @@
     </nut-cell>
     <h2>千位分隔</h2>
     <nut-cell>
-      <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
+      <nut-price :price="15213.1221" :decimal-digits="3" thousands />
     </nut-cell>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const price = ref(0);
-    setInterval(() => {
-      price.value = Math.random() * 10000000;
-      // console.log('price.value1', price.value)
-    }, 1000);
-    return {
-      price,
-      env
-    };
-  }
-};
+import DocHeader from '../../../components/header.vue';
+const env = Taro.getEnv();
+const price = ref(0);
+setInterval(() => {
+  price.value = Math.random() * 10000000;
+}, 1000);
 </script>
-
-<style lang="scss"></style>

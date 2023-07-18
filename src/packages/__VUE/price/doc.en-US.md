@@ -6,7 +6,7 @@ It is used to apply different styles to the parts before and after the decimal p
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Price } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="0" size="small" :need-symbol="false" />
   <nut-price :price="0" size="normal" :need-symbol="false" />
@@ -36,7 +36,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="8888" :decimal-digits="0" />
 </template>
@@ -48,7 +48,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
 </template>
@@ -62,7 +62,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="10010.01" symbol="¥" />
 </template>
@@ -76,7 +76,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-price :price="8888.01" position="after" symbol="RMB" />
 </template>
@@ -90,9 +90,9 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
+  <nut-price :price="15213.1221" :decimal-digits="3" thousands />
 </template>
 ```
 
