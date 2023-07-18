@@ -1,21 +1,27 @@
 <template>
-  <view :class="classes" :style="getStyle()" @click="onClick">
+  <view :class="classes" :style="style" @click="onClick">
     <slot></slot>
     <Close class="nut-tag--close" v-if="closeable" width="12px" height="12px" @click="onClose"></Close>
   </view>
 </template>
 
 <script lang="ts">
-import { PropType, CSSProperties, computed, toRefs } from 'vue';
+import { PropType, CSSProperties, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Close } from '@nutui/icons-vue';
-import { TagType } from './type';
-const { componentName, create } = createComponent('tag');
+import { TagType } from './types';
+const { create } = createComponent('tag');
 
 export default create({
   props: {
-    color: { type: String, default: '' },
-    textColor: { type: String, default: '' },
+    color: {
+      type: String,
+      default: ''
+    },
+    textColor: {
+      type: String,
+      default: ''
+    },
     type: {
       type: String as PropType<TagType>,
       default: 'default'
@@ -42,50 +48,48 @@ export default create({
   },
   emits: ['close', 'click'],
   setup(props, { emit }) {
-    const { type, color, plain, round, mark, textColor } = toRefs(props);
-
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-tag';
       return {
         [prefixCls]: true,
-        [`${prefixCls}--${type.value}`]: type.value,
-        [`${prefixCls}--plain`]: plain.value,
-        [`${prefixCls}--round`]: round.value,
-        [`${prefixCls}--mark`]: mark.value
+        [`${prefixCls}--${props.type}`]: props.type,
+        [`${prefixCls}--plain`]: props.plain,
+        [`${prefixCls}--round`]: props.round,
+        [`${prefixCls}--mark`]: props.mark
       };
     });
 
     // 综合考虑 textColor、color、plain 组合使用时的效果
-    const getStyle = (): CSSProperties => {
+    const style = computed<CSSProperties>(() => {
       const style: CSSProperties = {};
       // 标签内字体颜色
-      if (textColor.value) {
-        style.color = textColor.value;
-      } else if (color.value && plain.value) {
-        style.color = color.value;
+      if (props.textColor) {
+        style.color = props.textColor;
+      } else if (props.color && props.plain) {
+        style.color = props.color;
       }
       // 标签背景与边框颜色
-      if (plain.value) {
+      if (props.plain) {
         style.background = '#fff';
-        style['border-color'] = color.value;
-      } else if (color.value) {
-        style.background = color.value;
+        style['border-color'] = props.color;
+      } else if (props.color) {
+        style.background = props.color;
       }
       return style;
-    };
+    });
 
-    const onClose = (event: MouseEvent) => {
+    const onClose = (event: Event) => {
       event.stopPropagation();
       emit('close', event);
     };
 
-    const onClick = (event: MouseEvent) => {
+    const onClick = (event: Event) => {
       emit('click', event);
     };
 
     return {
       classes,
-      getStyle,
+      style,
       onClose,
       onClick
     };

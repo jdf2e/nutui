@@ -1,19 +1,7 @@
 import Tag from '../index.vue';
-import { mount, config } from '@vue/test-utils';
-import { vi } from 'vitest';
-import { Close } from '@nutui/icons-vue';
+import { mount } from '@vue/test-utils';
 
-beforeAll(() => {
-  config.global.components = {
-    Close
-  };
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
-
-test('should emit close event when clicking the close icon', () => {
+test('Tag: should emit close event when clicking the close icon', () => {
   const wrapper = mount(Tag, {
     props: {
       closeable: true
@@ -24,16 +12,7 @@ test('should emit close event when clicking the close icon', () => {
   expect(wrapper.emitted('close')!.length).toEqual(1);
 });
 
-test('should hide tag when the show prop is false', () => {
-  const wrapper = mount(Tag, {
-    props: {
-      show: false
-    }
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
-
-test('should not trigger click event when clicking the close icon', () => {
+test('Tag: should not trigger click event when clicking the close icon', () => {
   const onClick = vi.fn();
   const wrapper = mount(Tag, {
     props: {
@@ -49,14 +28,25 @@ test('should not trigger click event when clicking the close icon', () => {
   expect(onClick).toHaveBeenCalledTimes(1);
 });
 
-test('should render textColor correctly', () => {
+test('Tag: color & textColor & plain', () => {
   const wrapper = mount(Tag, {
     props: {
       plain: true,
+      color: 'red'
+    }
+  });
+  const tag = wrapper.find('.nut-tag');
+  expect(tag.attributes('style')).includes('color: red');
+});
+
+test('Tag: color & textColor', () => {
+  const wrapper = mount(Tag, {
+    props: {
       color: 'red',
       textColor: 'blue'
     }
   });
-
-  expect(wrapper.html()).toMatchSnapshot();
+  const tag = wrapper.find('.nut-tag');
+  expect(tag.attributes('style')).includes('color: blue');
+  expect(tag.attributes('style')).includes('background: red');
 });

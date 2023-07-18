@@ -3,6 +3,7 @@ import locale from '@/packages/locale';
 import { getPropByPath, isFunction } from '../util';
 
 export function createComponent(name: string) {
+  // TODO: It will be deprecated someday.
   const componentName = 'nut-' + name;
   return {
     componentName,

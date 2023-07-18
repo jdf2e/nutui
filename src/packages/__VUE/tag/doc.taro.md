@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Tag } from '@nutui/nutui-taro';
 
@@ -18,30 +18,13 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="基础用法">
-    <nut-cell title="primary 类型">
-      <template v-slot:link>
-        <nut-tag type="primary">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="success 类型">
-      <template v-slot:link>
-        <nut-tag type="success">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="danger 类型">
-      <template v-slot:link>
-        <nut-tag type="danger">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="warning 类型">
-      <template v-slot:link>
-        <nut-tag type="warning">标签</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag>标签</nut-tag>
+  <nut-tag type="primary">标签</nut-tag>
+  <nut-tag type="success">标签</nut-tag>
+  <nut-tag type="danger">标签</nut-tag>
+  <nut-tag type="warning">标签</nut-tag>
 </template>
 ```
 
@@ -51,48 +34,20 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="样式风格">
-    <nut-cell title="空心样式">
-      <template v-slot:link>
-        <nut-tag plain>标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="圆角样式">
-      <template v-slot:link>
-        <nut-tag round type="primary">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="标记样式">
-      <template v-slot:link>
-        <nut-tag mark type="primary">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="可关闭标签">
-      <template v-slot:link>
-        <nut-tag v-if="show" closeable @close="close" type="primary">标签</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag plain>空心</nut-tag>
+  <nut-tag round type="primary">圆角</nut-tag>
+  <nut-tag mark type="primary">标记</nut-tag>
+  <nut-tag v-if="show" closeable @close="close" type="primary">可关闭</nut-tag>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const show = ref(true);
-      const close = () => {
-        show.value = false;
-      };
-
-      return {
-        close,
-        show
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(true);
+const close = () => {
+  show.value = false;
+};
 </script>
 ```
 
@@ -102,25 +57,11 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="颜色自定义">
-    <nut-cell title="背景颜色">
-      <template v-slot:link>
-        <nut-tag color="#FA685D">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="文字颜色">
-      <template v-slot:link>
-        <nut-tag color="#E9E9E9" textColor="#999999">标签</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="空心颜色">
-      <template v-slot:link>
-        <nut-tag color="#FA2400" plain>标签</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag color="#FA685D">背景颜色</nut-tag>
+  <nut-tag color="#E9E9E9" textColor="#999999">文字颜色</nut-tag>
+  <nut-tag color="#FA2400" plain>空心颜色</nut-tag>
 </template>
 ```
 
@@ -133,7 +74,7 @@ app.use(Tag);
 | 参数       | 说明                                                         | 类型    | 默认值    |
 | ---------- | ------------------------------------------------------------ | ------- | --------- |
 | type       | 标签类型，可选值为 `primary`、`success`、`danger`、`warning` | string  | `default` |
-| color      | 标签颜色                                                     | string  | `- `      |
+| color      | 标签颜色                                                     | string  | -         |
 | text-color | 文本颜色，优先级高于 `color` 属性                            | string  | `white`   |
 | plain      | 是否为空心样式                                               | boolean | `false`   |
 | round      | 是否为圆角样式                                               | boolean | `false`   |

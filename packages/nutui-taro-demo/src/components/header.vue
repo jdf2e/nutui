@@ -1,5 +1,5 @@
 <template>
-  <div class="applets-demo-header">
+  <div class="applets-demo-header" v-if="isH5">
     <div class="back" @click="navigateTo">
       <Left />
     </div>
@@ -11,36 +11,27 @@
     <div>{{ compName }}</div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import Taro from '@tarojs/taro';
 import { Left } from '@nutui/icons-vue-taro';
 import config from '@/packages/../config.json';
-export default defineComponent({
-  name: 'taro-header',
-  components: {
-    Left
-  },
-  setup() {
-    //返回demo页
-    const navigateTo = () => {
-      Taro.navigateBack();
-    };
 
-    const compName = computed(() => {
-      let allComps: any = [];
-      let hashCompName = location.hash.split('pages/')[1].replace('/index', '');
-      config.nav.map((item) => {
-        allComps = [...allComps, ...item.packages];
-      });
+const isH5 = Taro.getEnv() === Taro.ENV_TYPE.WEB;
 
-      let targetComp = allComps.filter((item: any) => hashCompName === item.name.toLowerCase());
+//返回demo页
+const navigateTo = () => {
+  Taro.navigateBack();
+};
 
-      return targetComp[0].name;
-    });
-
-    return { navigateTo, compName };
-  }
+const compName = computed(() => {
+  let allComps: any = [];
+  const hashCompName = location.hash.split('pages/')[1].replace('/index', '');
+  config.nav.map((item) => {
+    allComps = [...allComps, ...item.packages];
+  });
+  const targetComp = allComps.filter((item: any) => hashCompName === item.name.toLowerCase());
+  return targetComp[0].name;
 });
 </script>
 
