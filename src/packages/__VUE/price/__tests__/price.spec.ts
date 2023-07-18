@@ -1,11 +1,7 @@
-import { config, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import Price from '../index.vue';
 
-afterAll(() => {
-  config.global.components = {};
-});
-
-test('base price', () => {
+test('Price: base price', () => {
   const wrapper = mount(Price, {
     props: {
       price: '199.99'
@@ -15,7 +11,7 @@ test('base price', () => {
   expect(price.text()).toBe('¥199.99');
 });
 
-test('decimalDigits price', () => {
+test('Price: decimalDigits price', () => {
   const wrapper = mount(Price, {
     props: {
       price: '299.95',
@@ -26,12 +22,12 @@ test('decimalDigits price', () => {
   expect(price.text()).toBe('¥299.9');
 });
 
-test('default needSymbol props', () => {
+test('Price: default needSymbol props', () => {
   const wrapper = mount(Price);
   const price: any = wrapper.find('.nut-price');
   expect(price.find('.nut-price--symbol').text()).toBe('¥');
 });
-test('needSymbol props', () => {
+test('Price: needSymbol props', () => {
   const wrapper = mount(Price, {
     props: {
       needSymbol: false
@@ -40,7 +36,7 @@ test('needSymbol props', () => {
   const price: any = wrapper.find('.nut-price');
   expect(price.find('.nut-price--symbol').exists()).toBe(false);
 });
-test('symbol props', () => {
+test('Price: symbol props', () => {
   const wrapper = mount(Price, {
     props: {
       symbol: '$'
@@ -50,7 +46,7 @@ test('symbol props', () => {
   expect(price.find('.nut-price--symbol').text()).toBe('$');
 });
 
-test('size props', () => {
+test('Price: size props', () => {
   const wrapper = mount(Price, {
     props: {
       size: 'small'

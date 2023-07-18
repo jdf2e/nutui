@@ -17,7 +17,7 @@
     </nut-cell>
     <h2>{{ translate('titleStrike') }}</h2>
     <nut-cell>
-      <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
+      <nut-price :price="8888" :decimal-digits="0" size="normal" need-symbol thousands strike-through />
     </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
@@ -29,13 +29,12 @@
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell>
-      <nut-price :price="15213.1221" :decimal-digits="3" :thousands="true" />
+      <nut-price :price="15213.1221" :decimal-digits="3" thousands />
     </nut-cell>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('price');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -60,14 +59,5 @@ const initTranslate = () =>
       symbol: 'RMB'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    return {
-      translate
-    };
-  }
-});
+initTranslate();
 </script>
-
-<style lang="scss" scoped></style>

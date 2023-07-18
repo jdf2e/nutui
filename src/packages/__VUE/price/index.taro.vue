@@ -1,28 +1,31 @@
 <template>
   <view :class="classes">
     <view
-      v-if="needSymbol && position == 'before'"
+      v-if="needSymbol && position === 'before'"
       class="nut-price--symbol"
       :class="`nut-price--symbol-${size}`"
-      decode="true"
       v-html="showSymbol"
     ></view>
-    <view :class="`nut-price--${size}`">{{ formatThousands(price) }}</view>
+    <view :class="`nut-price--${size}`">
+      {{ formatThousands(price) }}
+    </view>
     <view :class="`nut-price--decimal-${size}`" v-if="decimalDigits != 0">.</view>
-    <view :class="`nut-price--decimal-${size}`">{{ formatDecimal(price) }}</view>
+    <view :class="`nut-price--decimal-${size}`">
+      {{ formatDecimal(price) }}
+    </view>
     <view
-      v-if="needSymbol && position == 'after'"
+      v-if="needSymbol && position === 'after'"
       class="nut-price--symbol"
       :class="`nut-price--symbol-${size}`"
-      decode="true"
       v-html="showSymbol"
     ></view>
   </view>
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { PricePosition, PriceSize } from './types';
 const { componentName, create } = createComponent('price');
 
 export default create({
@@ -48,11 +51,11 @@ export default create({
       default: false
     },
     position: {
-      type: String,
+      type: String as PropType<PricePosition>,
       default: 'before'
     },
     size: {
-      type: String,
+      type: String as PropType<PriceSize>,
       default: 'normal'
     },
     strikeThrough: {
@@ -68,17 +71,8 @@ export default create({
         [`${componentName}--strike`]: props.strikeThrough
       };
     });
-    const replaceSpecialChar = (url: string) => {
-      url = url.replace(/&quot;/g, '"');
-      url = url.replace(/&amp;/g, '&');
-      url = url.replace(/&lt;/g, '<');
-      url = url.replace(/&gt;/g, '>');
-      url = url.replace(/&nbsp;/g, ' ');
-      url = url.replace(/&yen;/g, '￥');
-      return url;
-    };
     const showSymbol = computed(() => {
-      const symbol = props.needSymbol ? replaceSpecialChar(props.symbol) : '';
+      const symbol = props.needSymbol ? props.symbol : '';
       return symbol;
     });
     const checkPoint = (price: string | number) => {
@@ -121,8 +115,7 @@ export default create({
       showSymbol,
       checkPoint,
       formatThousands,
-      formatDecimal,
-      replaceSpecialChar
+      formatDecimal
     };
   }
 });
