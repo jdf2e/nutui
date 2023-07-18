@@ -6,7 +6,7 @@ Labels for tagging and classification.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Tag } from '@nutui/nutui';
 
@@ -18,30 +18,13 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="Basic Usage">
-    <nut-cell title="primary">
-      <template v-slot:link>
-        <nut-tag type="primary">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="success">
-      <template v-slot:link>
-        <nut-tag type="success">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="danger">
-      <template v-slot:link>
-        <nut-tag type="danger">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="warning">
-      <template v-slot:link>
-        <nut-tag type="warning">Tag</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag>tag</nut-tag>
+  <nut-tag type="primary">tag</nut-tag>
+  <nut-tag type="success">tag</nut-tag>
+  <nut-tag type="danger">tag</nut-tag>
+  <nut-tag type="warning">tag</nut-tag>
 </template>
 ```
 
@@ -51,48 +34,20 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="Style">
-    <nut-cell title="plain">
-      <template v-slot:link>
-        <nut-tag plain>Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="round">
-      <template v-slot:link>
-        <nut-tag round type="primary">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="mark">
-      <template v-slot:link>
-        <nut-tag mark type="primary">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="closeable">
-      <template v-slot:link>
-        <nut-tag v-if="show" closeable @close="close" type="primary">Tag</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag plain>plain</nut-tag>
+  <nut-tag round type="primary">round</nut-tag>
+  <nut-tag mark type="primary">mark</nut-tag>
+  <nut-tag v-if="show" closeable @close="close" type="primary">close</nut-tag>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const show = ref(true);
-      const close = () => {
-        show.value = false;
-      };
-
-      return {
-        close,
-        show
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(true);
+const close = () => {
+  show.value = false;
+};
 </script>
 ```
 
@@ -102,25 +57,11 @@ app.use(Tag);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell-group title="Custom Color">
-    <nut-cell title="background color">
-      <template v-slot:link>
-        <nut-tag color="#FA685D">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="text color">
-      <template v-slot:link>
-        <nut-tag color="#E9E9E9" textColor="#999999">Tag</nut-tag>
-      </template>
-    </nut-cell>
-    <nut-cell title="plain color">
-      <template v-slot:link>
-        <nut-tag color="#FA2400" plain>Tag</nut-tag>
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-tag color="#FA685D">background</nut-tag>
+  <nut-tag color="#E9E9E9" textColor="#999999">text</nut-tag>
+  <nut-tag color="#FA2400" plain>plain</nut-tag>
 </template>
 ```
 
@@ -133,7 +74,7 @@ app.use(Tag);
 | Attribute  | Description                                                   | Type    | Default   |
 | ---------- | ------------------------------------------------------------- | ------- | --------- |
 | type       | Label type，can be set `primary` `success` `danger` `warning` | string  | `default` |
-| color      | Label color                                                   | string  | `-`       |
+| color      | Label color                                                   | string  | -         |
 | text-color | Text color, which takes precedence over the `color` attribute | string  | `white`   |
 | plain      | Whether it is plain                                           | boolean | `false`   |
 | round      | Whether it is round                                           | boolean | `false`   |

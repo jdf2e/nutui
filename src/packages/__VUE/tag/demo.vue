@@ -1,9 +1,14 @@
 <template>
   <div class="demo">
     <nut-cell-group :title="translate('title')">
+      <nut-cell :title="translate('type0')">
+        <template #link>
+          <nut-tag>{{ translate('tag') }}</nut-tag>
+        </template>
+      </nut-cell>
       <nut-cell :title="translate('type1')">
         <template #link>
-          <nut-tag type="primary" @click="click">{{ translate('tag') }}</nut-tag>
+          <nut-tag type="primary">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('type2')">
@@ -66,8 +71,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('tag');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -78,6 +83,7 @@ const initTranslate = () =>
       title: '基础用法',
       title1: '样式风格',
       title2: '颜色自定义',
+      type0: 'defualt 类型',
       type1: 'primary 类型',
       type2: 'success 类型',
       type3: 'danger 类型',
@@ -95,6 +101,7 @@ const initTranslate = () =>
       title: 'Basic Usage',
       title1: 'Style',
       title2: 'Custom Color',
+      type0: 'default',
       type1: 'primary',
       type2: 'success',
       type3: 'danger',
@@ -109,24 +116,9 @@ const initTranslate = () =>
       plaincolor: 'plain color'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const show = ref(true);
-    const close = () => {
-      show.value = false;
-    };
-
-    const click = () => {
-      console.log('点击事件');
-    };
-
-    return {
-      close,
-      click,
-      show,
-      translate
-    };
-  }
-});
+initTranslate();
+const show = ref(true);
+const close = () => {
+  show.value = false;
+};
 </script>
