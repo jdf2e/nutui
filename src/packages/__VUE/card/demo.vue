@@ -70,8 +70,8 @@
   </view>
 </template>
 
-<script lang="ts">
-import { computed, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('card');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -108,24 +108,16 @@ const initTranslate = () =>
       question: 'inquiry'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const state = reactive({
-      imgUrl:
-        '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-      title: computed(() => translate('title')),
-      price: '388',
-      vipPrice: '378',
-      shopDesc: computed(() => translate('desc')),
-      delivery: computed(() => translate('delivery')),
-      shopName: computed(() => translate('shopName'))
-    });
-    return {
-      state,
-      translate
-    };
-  }
+initTranslate();
+const state = reactive({
+  imgUrl:
+    '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  title: computed(() => translate('title')),
+  price: '388',
+  vipPrice: '378',
+  shopDesc: computed(() => translate('desc')),
+  delivery: computed(() => translate('delivery')),
+  shopName: computed(() => translate('shopName'))
 });
 </script>
 

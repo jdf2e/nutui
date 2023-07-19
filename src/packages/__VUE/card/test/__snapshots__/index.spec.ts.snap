@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`normal props 1`] = `
+exports[`Card: normal props 1`] = `
 "<div class=\\"nut-card\\">
   <div class=\\"nut-card__left\\"><img src=\\"//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg\\" alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
@@ -36,9 +36,9 @@ exports[`normal props 1`] = `
 </div>"
 `;
 
-exports[`render prolist , price and origin slot correctly 1`] = `
+exports[`Card: render prolist , price and origin slot correctly 1`] = `
 "<div class=\\"nut-card\\">
-  <div class=\\"nut-card__left\\"><img alt=\\"\\"></div>
+  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
     <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">Custom priceCustom origin</div>
     <div class=\\"nut-card__right__other\\">
@@ -56,9 +56,9 @@ exports[`render prolist , price and origin slot correctly 1`] = `
 </div>"
 `;
 
-exports[`render shop-tag and footer slot correctly 1`] = `
+exports[`Card: render shop-tag and footer slot correctly 1`] = `
 "<div class=\\"nut-card\\">
-  <div class=\\"nut-card__left\\"><img alt=\\"\\"></div>
+  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
     <div class=\\"nut-card__right__title\\"></div>
     <div class=\\"nut-card__right__price\\">

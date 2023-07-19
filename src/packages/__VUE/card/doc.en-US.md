@@ -6,7 +6,7 @@ Used to display product pictures, prices and other information.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Card } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ app.use(Card);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-card
     :img-url="state.imgUrl"
@@ -33,25 +33,17 @@ app.use(Card);
   >
   </nut-card>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        imgUrl:
-          '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-        title: 'title',
-        price: '388',
-        vipPrice: '378',
-        shopDesc: 'desc',
-        delivery: 'delivery',
-        shopName: 'shopName>'
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+const state = reactive({
+  imgUrl:
+    '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  title: 'title',
+  price: '388',
+  vipPrice: '378',
+  shopDesc: 'desc',
+  delivery: 'delivery',
+  shopName: 'shopName>'
+});
 </script>
 ```
 
@@ -61,7 +53,7 @@ app.use(Card);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-card
     :img-url="state.imgUrl"
@@ -81,43 +73,35 @@ app.use(Card);
     </template>
   </nut-card>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        imgUrl:
-          '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-        title: 'title',
-        price: '388',
-        vipPrice: '378',
-        shopDesc: 'desc',
-        delivery: 'delivery',
-        shopName: 'shopName>'
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+const state = reactive({
+  imgUrl:
+    '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  title: 'title',
+  price: '388',
+  vipPrice: '378',
+  shopDesc: 'desc',
+  delivery: 'delivery',
+  shopName: 'shopName>'
+});
 </script>
 <style>
-  .search_prolist_attr {
-    margin: 3px 0 1px;
-    height: 15px;
-    overflow: hidden;
-  }
-  .search_prolist_attr > span {
-    float: left;
-    padding: 0 5px;
-    border-radius: 1px;
-    font-size: 10px;
-    height: 15px;
-    line-height: 15px;
-    color: #999;
-    background-color: #f2f2f7;
-    margin-right: 5px;
-  }
+.search_prolist_attr {
+  margin: 3px 0 1px;
+  height: 15px;
+  overflow: hidden;
+}
+.search_prolist_attr > span {
+  float: left;
+  padding: 0 5px;
+  border-radius: 1px;
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #999;
+  background-color: #f2f2f7;
+  margin-right: 5px;
+}
 </style>
 ```
 
@@ -127,7 +111,7 @@ app.use(Card);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-card
     :img-url="state.imgUrl"
@@ -153,30 +137,22 @@ app.use(Card);
     </template>
   </nut-card>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        imgUrl:
-          '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-        title: 'title',
-        shopName: 'shopName>'
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+const state = reactive({
+  imgUrl:
+    '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  title: 'title',
+  shopName: 'shopName>'
+});
 </script>
 <style>
-  .tag {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
-    margin-left: 2px;
-    height: 14px;
-  }
+.tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 2px;
+  height: 14px;
+}
 </style>
 ```
 
@@ -186,7 +162,7 @@ app.use(Card);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-card
     :img-url="state.imgUrl"
@@ -202,30 +178,22 @@ app.use(Card);
     </template>
   </nut-card>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        imgUrl:
-          '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-        title: 'title',
-        price: '388',
-        vipPrice: '378',
-        shopDesc: 'desc',
-        delivery: 'delivery',
-        shopName: 'shopName>'
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+const state = reactive({
+  imgUrl:
+    '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  title: 'title',
+  price: '388',
+  vipPrice: '378',
+  shopDesc: 'desc',
+  delivery: 'delivery',
+  shopName: 'shopName>'
+});
 </script>
 <style>
-  .customize {
-    font-size: 12px;
-  }
+.customize {
+  font-size: 12px;
+}
 </style>
 ```
 
