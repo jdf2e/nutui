@@ -4,13 +4,13 @@ import { nextTick } from 'vue';
 import Button from '../../button/index.vue';
 import Cell from '../../cell/index.vue';
 
-test('base swipe', () => {
+test('Swipe: base swipe', () => {
   const wrapper = mount(Swipe);
   const swipe: DOMWrapper<Element> = wrapper.find('.nut-swipe');
   expect(swipe.exists()).toBe(true);
 });
 
-test('base swipe props disabled', async () => {
+test('Swipe: base swipe props disabled', async () => {
   const wrapper = mount(() => {
     return (
       <Swipe disabled={false}>
@@ -37,7 +37,7 @@ test('base swipe props disabled', async () => {
   expect(swipe1.text()).toBe('删除');
   expect(swipe2.exists()).toBe(true);
 });
-test('base swipe Slots', async () => {
+test('Swipe: base swipe Slots', async () => {
   const wrapper = mount(() => (
     <Swipe>
       {{
@@ -56,7 +56,7 @@ test('base swipe Slots', async () => {
   expect(swipe.text()).toBe('选择');
   expect(swipe2.exists()).toBe(true);
 });
-test('base swipe content', async () => {
+test('Swipe: base swipe content', async () => {
   const wrapper = mount(() => (
     <Swipe>
       <Cell round-radio="0" desc="左滑右滑都可以哦"></Cell>
