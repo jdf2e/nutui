@@ -56,6 +56,29 @@
         <nut-button shape="square" style="height: 100%" type="info">{{ translate('collect') }}</nut-button>
       </template>
     </nut-swipe>
+    <h2>使用 SwipeGroup 控制 Swipe 之间互斥</h2>
+    <nut-swipe-group lock>
+      <nut-swipe name="11" @click="onClick">
+        <nut-cell round-radius="0" :title="translate('leftDel')" />
+        <template #right>
+          <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+        </template>
+      </nut-swipe>
+      <nut-swipe name="22">
+        <nut-cell round-radius="0" :title="translate('leftDel')" />
+        <template #right>
+          <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+        </template>
+      </nut-swipe>
+      <div>
+        <nut-swipe name="33">
+          <nut-cell round-radius="0" :title="translate('leftDel')" />
+          <template #right>
+            <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+          </template>
+        </nut-swipe>
+      </div>
+    </nut-swipe-group>
   </div>
 </template>
 
@@ -80,7 +103,8 @@ const initTranslate = () =>
       desc: '商品描述',
       delete: '删除',
       select: '选择',
-      collect: '收藏'
+      collect: '收藏',
+      group: '使用 SwipeGroup 控制 Swipe 之间互斥'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -96,7 +120,8 @@ const initTranslate = () =>
       desc: 'product description',
       delete: 'Delelte',
       select: 'Select',
-      collect: 'Collect'
+      collect: 'Collect',
+      group: 'Use SwipeGroup to make swipe exclusive'
     }
   });
 export default defineComponent({

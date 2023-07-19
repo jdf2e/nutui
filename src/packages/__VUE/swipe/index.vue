@@ -1,31 +1,30 @@
 <template>
   <view
-    :class="classes"
+    class="nut-swipe"
     :style="touchStyle"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
   >
-    <view class="nut-swipe__left" ref="leftRef">
+    <view class="nut-swipe__left" ref="leftRef" @click="onClick($event, 'left', true)">
       <slot name="left"></slot>
     </view>
 
-    <view class="nut-swipe__content">
+    <view class="nut-swipe__content" @click="onClick($event, 'content', lockClick)">
       <slot name="default"></slot>
     </view>
 
-    <view class="nut-swipe__right" ref="rightRef">
+    <view class="nut-swipe__right" ref="rightRef" @click="onClick($event, 'right', true)">
       <slot name="right"></slot>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { useTouch } from '@/packages/utils/useTouch';
-import { computed, reactive, Ref, ref } from 'vue';
+import { computed, inject, reactive, watch, Ref, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('swipe');
-
+const { create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
 export default create({
   props: {
@@ -46,19 +45,14 @@ export default create({
       default: false
     }
   },
-  emits: ['open', 'close'],
+  emits: ['open', 'close', 'click'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
     const getRefWidth = (ref: Ref<HTMLElement | undefined>): number => {
       return ref.value?.clientWidth || 0;
     };
+
+    const lockClick = ref(false);
 
     const leftRef = ref<HTMLElement>(),
       leftRefWidth = computed(() => {
@@ -69,7 +63,18 @@ export default create({
         return getRefWidth(rightRef);
       });
 
-    let opened: boolean = false;
+    const parent = inject('swipeGroup', null) as any;
+
+    watch(
+      () => parent?.name?.value,
+      (name) => {
+        if (props.name !== name && parent && parent.lock) {
+          close();
+        }
+      }
+    );
+
+    const opened = ref(false);
     let position: SwipePosition = '';
     let oldPosition: SwipePosition = '';
 
@@ -79,7 +84,8 @@ export default create({
     });
 
     const open = (p: SwipePosition = '') => {
-      opened = true;
+      parent && parent.update(props.name);
+      opened.value = true;
       if (p) {
         state.offset = p === 'left' ? -rightRefWidth.value : leftRefWidth.value;
       }
@@ -91,11 +97,20 @@ export default create({
 
     const close = () => {
       state.offset = 0;
-      opened = false;
+      opened.value = false;
       emit('close', {
         name: props.name,
         position
       });
+    };
+
+    const onClick = (e: Event, position: string, lock: boolean) => {
+      if (lock) {
+        e.stopPropagation();
+      } else {
+        close();
+      }
+      emit('click', position);
     };
 
     const touchStyle = computed(() => {
@@ -109,14 +124,14 @@ export default create({
       let offset = deltaX;
       switch (position) {
         case 'left':
-          if (opened && oldPosition === position) {
+          if (opened.value && oldPosition === position) {
             offset = -rightRefWidth.value;
           } else {
             offset = Math.abs(deltaX) > rightRefWidth.value ? -rightRefWidth.value : deltaX;
           }
           break;
         case 'right':
-          if (opened && oldPosition === position) {
+          if (opened.value && oldPosition === position) {
             offset = leftRefWidth.value;
           } else {
             offset = Math.abs(deltaX) > leftRefWidth.value ? leftRefWidth.value : deltaX;
@@ -136,6 +151,7 @@ export default create({
         if (props.disabled) return;
         touch.move(event);
         if (touch.isHorizontal()) {
+          lockClick.value = true;
           state.moving = true;
           setoffset(touch.deltaX.value);
           if (props.touchMovePreventDefault) {
@@ -168,18 +184,22 @@ export default create({
               }
               break;
           }
+          setTimeout(() => {
+            lockClick.value = false;
+          }, 0);
         }
       }
     };
 
     return {
-      classes,
       touchStyle,
       ...touchMethods,
       leftRef,
       rightRef,
       open,
-      close
+      close,
+      onClick,
+      lockClick
     };
   }
 });

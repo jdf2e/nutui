@@ -52,6 +52,29 @@
         <nut-button shape="square" style="height: 100%" type="info">收藏</nut-button>
       </template>
     </nut-swipe>
+    <h2>使用 SwipeGroup 控制 Swipe 之间互斥</h2>
+    <nut-swipe-group lock>
+      <nut-swipe name="11">
+        <nut-cell round-radius="0" title="左滑删除" />
+        <template #right>
+          <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+        </template>
+      </nut-swipe>
+      <nut-swipe name="22">
+        <nut-cell round-radius="0" title="左滑删除" />
+        <template #right>
+          <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+        </template>
+      </nut-swipe>
+      <div>
+        <nut-swipe name="33">
+          <nut-cell round-radius="0" title="左滑删除" />
+          <template #right>
+            <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+          </template>
+        </nut-swipe>
+      </div>
+    </nut-swipe-group>
   </div>
 </template>
 
