@@ -7,26 +7,18 @@
       <div class="nut-card__right__title">{{ title }}</div>
       <slot name="prolist"></slot>
       <div class="nut-card__right__price" v-if="isNeedPrice">
-        <template v-if="isHaveSlot('price')">
-          <slot name="price"></slot>
-        </template>
-        <nut-price v-else :price="price"></nut-price>
-        <template v-if="isHaveSlot('origin')">
-          <slot name="origin"></slot>
-        </template>
-        <nut-price v-else class="nut-card__right__price__origin" :price="vipPrice"></nut-price>
-        <template v-if="isHaveSlot('tag')">
-          <slot name="tag"></slot>
-        </template>
+        <slot name="price">
+          <nut-price :price="price"></nut-price>
+        </slot>
+        <slot name="origin">
+          <nut-price class="nut-card__right__price__origin" :price="vipPrice"></nut-price>
+        </slot>
       </div>
       <div class="nut-card__right__other">
-        <template v-if="isHaveSlot('shop-tag')">
-          <slot name="shop-tag"></slot>
-        </template>
-        <template v-else>
+        <slot name="shop-tag">
           <nut-tag type="danger">{{ shopDesc }}</nut-tag>
           <nut-tag plain>{{ delivery }}</nut-tag>
-        </template>
+        </slot>
       </div>
       <div class="nut-card__right__shop">
         <div class="nut-card__right__shop__name">{{ shopName }}</div>
@@ -46,7 +38,6 @@ export default create({
     [Price.name]: Price,
     [Tag.name]: Tag
   },
-
   props: {
     imgUrl: {
       type: String,
@@ -80,15 +71,6 @@ export default create({
       type: Boolean,
       default: true
     }
-  },
-
-  setup(props, { slots }) {
-    const isHaveSlot = (slot: string) => {
-      return slots[slot];
-    };
-    return {
-      isHaveSlot
-    };
   }
 });
 </script>

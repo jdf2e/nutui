@@ -1,7 +1,7 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
 import Card from '../index.vue';
 
-test('title props', () => {
+test('Card: title props', () => {
   const wrapper = mount(Card, {
     props: {
       imgUrl:
@@ -12,7 +12,7 @@ test('title props', () => {
   const title: DOMWrapper<Element> = wrapper.find('.nut-card__right__title');
   expect(title.html()).toContain('活生鲜螃蟹现');
 });
-test('normal props', () => {
+test('Card: normal props', () => {
   const wrapper = mount(Card, {
     props: {
       imgUrl:
@@ -32,7 +32,7 @@ test('normal props', () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('render prolist , price and origin slot correctly', () => {
+test('Card: render prolist , price and origin slot correctly', () => {
   const wrapper = mount(Card, {
     slots: {
       prolist: () => 'Custom prolist',
@@ -44,7 +44,7 @@ test('render prolist , price and origin slot correctly', () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('render shop-tag and footer slot correctly', () => {
+test('Card: render shop-tag and footer slot correctly', () => {
   const wrapper = mount(Card, {
     slots: {
       footer: () => 'Custom footer',
