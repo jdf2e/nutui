@@ -1,19 +1,19 @@
 <template>
   <div>
-    <doc-header></doc-header>
-    <doc-nav></doc-nav>
+    <DocHeader></DocHeader>
+    <DocNav></DocNav>
     <div class="doc-content">
       <div class="doc-title">
-        <div class="doc-title-position" :class="{ fixed: fixed, hidden: hidden }">
-          <div class="title">{{ componentName.name }}&nbsp;{{ componentName.cName }}</div>
+        <div class="doc-title-position" :class="{ fixed: state.fixed, hidden: state.hidden }">
+          <div class="title">{{ state.componentName.name }}&nbsp;{{ state.componentName.cName }}</div>
         </div>
       </div>
       <div class="doc-content-document isComponent">
         <div class="doc-content-tabs">
           <div
             class="tab-item"
-            :class="{ cur: curKey === item.key }"
-            v-for="item in tabs"
+            :class="{ cur: data.curKey === item.key }"
+            v-for="item in data.tabs"
             :key="item.key"
             @click="handleTabs(item.key)"
             >{{ item.text }}</div
@@ -21,129 +21,113 @@
         </div>
         <router-view />
       </div>
-      <doc-demo-preview :url="demoUrl" :class="{ fixed: fixed }"></doc-demo-preview>
+      <DocDemoPreview :url="data.demoUrl"></DocDemoPreview>
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, onMounted, reactive, toRefs } from 'vue';
+<script setup lang="ts">
+import { onMounted, reactive } from 'vue';
 import { nav } from '@/config.json';
 import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import DocHeader from '@/sites/doc/components/DocHeader.vue';
-import Nav from '@/sites/doc/components/Nav.vue';
-import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
+import DocNav from '@/sites/doc/components/Nav.vue';
+import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { initSiteLang } from '@/sites/assets/util/useTranslate';
-export default defineComponent({
-  name: 'doc',
-  components: {
-    DocHeader,
-    [Nav.name]: Nav,
-    [DemoPreview.name]: DemoPreview
-  },
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    initSiteLang();
-    const state = reactive({
-      fixed: false, // 是否吸顶
-      hidden: false, // 是否隐藏
-      // 组件名称
-      componentName: {
-        name: '',
-        cName: ''
-      }
-    });
-    const data = reactive({
-      demoUrl: 'demo.html',
-      curKey: 'vue',
-      tabs: [
-        {
-          key: 'vue',
-          text: 'vue'
-        },
-        {
-          key: 'taro',
-          text: 'taro'
-        }
-      ]
-    });
-
-    const isTaro = (router: RouteLocationNormalized) => {
-      return router.path.indexOf('taro') > -1;
-    };
-
-    const watchDemoUrl = (router: RouteLocationNormalized) => {
-      const { origin, pathname } = window.location;
-      RefData.getInstance().currentRoute.value = router.path as string;
-      let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
-      data.demoUrl = url.replace('/component', '');
-    };
-
-    const watchDocMd = (curKey: string) => {
-      const path = route.path;
-      // router.replace(isTaro(route) ? path.substr(0, path.length - 5) : `${path}-taro`);
-      if (curKey.includes('taro')) {
-        router.replace(isTaro(route) ? path : `${path}-taro`);
-      } else {
-        router.replace(isTaro(route) ? path.substr(0, path.length - 5) : path);
-      }
-    };
-
-    const handleTabs = (curKey: string) => {
-      data.curKey = curKey;
-      watchDocMd(curKey);
-    };
-
-    onMounted(() => {
-      componentTitle();
-      watchDemoUrl(route);
-      data.curKey = isTaro(route) ? 'taro' : 'vue';
-      document.addEventListener('scroll', scrollTitle);
-    });
-
-    const scrollTitle = () => {
-      let top = document.documentElement.scrollTop;
-      // console.log('state.hidden', state.hidden)
-      if (top > 127) {
-        state.fixed = true;
-        if (top < 142) {
-          state.hidden = true;
-        } else {
-          state.hidden = false;
-        }
-      } else {
-        state.fixed = false;
-        state.hidden = false;
-      }
-    };
-
-    // 获得组件名称
-    const componentTitle = (to?: any) => {
-      state.componentName.name = (to?.path || route?.path)?.split('/').slice(-1)[0];
-      nav.forEach((item: any) => {
-        item.packages.forEach((sItem: any) => {
-          if (sItem.name.toLowerCase() == state.componentName.name) {
-            state.componentName.name = sItem.name;
-            state.componentName.cName = sItem.cName;
-            return;
-          }
-        });
-      });
-    };
-
-    onBeforeRouteUpdate((to) => {
-      watchDemoUrl(to);
-      data.curKey = isTaro(to) ? 'taro' : 'vue';
-      componentTitle(to);
-    });
-
-    return {
-      ...toRefs(state),
-      ...toRefs(data),
-      handleTabs
-    };
+const route = useRoute();
+const router = useRouter();
+initSiteLang();
+const state = reactive({
+  fixed: false, // 是否吸顶
+  hidden: false, // 是否隐藏
+  // 组件名称
+  componentName: {
+    name: '',
+    cName: ''
   }
+});
+const data = reactive({
+  demoUrl: 'demo.html',
+  curKey: 'vue',
+  tabs: [
+    {
+      key: 'vue',
+      text: 'vue'
+    },
+    {
+      key: 'taro',
+      text: 'taro'
+    }
+  ]
+});
+
+const isTaro = (router: RouteLocationNormalized) => {
+  return router.path.indexOf('taro') > -1;
+};
+
+const watchDemoUrl = (router: RouteLocationNormalized) => {
+  const { origin, pathname } = window.location;
+  RefData.getInstance().currentRoute.value = router.path as string;
+  let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+  data.demoUrl = url.replace('/component', '');
+};
+
+const watchDocMd = (curKey: string) => {
+  const path = route.path;
+  // router.replace(isTaro(route) ? path.substr(0, path.length - 5) : `${path}-taro`);
+  if (curKey.includes('taro')) {
+    router.replace(isTaro(route) ? path : `${path}-taro`);
+  } else {
+    router.replace(isTaro(route) ? path.substr(0, path.length - 5) : path);
+  }
+};
+
+const handleTabs = (curKey: string) => {
+  data.curKey = curKey;
+  watchDocMd(curKey);
+};
+
+onMounted(() => {
+  componentTitle();
+  watchDemoUrl(route);
+  data.curKey = isTaro(route) ? 'taro' : 'vue';
+  document.addEventListener('scroll', scrollTitle);
+});
+
+const scrollTitle = () => {
+  let top = document.documentElement.scrollTop;
+  // console.log('state.hidden', state.hidden)
+  if (top > 127) {
+    state.fixed = true;
+    if (top < 142) {
+      state.hidden = true;
+    } else {
+      state.hidden = false;
+    }
+  } else {
+    state.fixed = false;
+    state.hidden = false;
+  }
+};
+
+// 获得组件名称
+const componentTitle = (to?: any) => {
+  state.componentName.name = (to?.path || route?.path)?.split('/').slice(-1)[0];
+  nav.forEach((item: any) => {
+    item.packages.forEach((sItem: any) => {
+      if (sItem.name.toLowerCase() == state.componentName.name) {
+        state.componentName.name = sItem.name;
+        state.componentName.cName = sItem.cName;
+        return;
+      }
+    });
+  });
+};
+
+onBeforeRouteUpdate((to) => {
+  watchDemoUrl(to);
+  data.curKey = isTaro(to) ? 'taro' : 'vue';
+  componentTitle(to);
 });
 </script>
 
