@@ -6,7 +6,7 @@
 
 ## 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Swipe } from '@nutui/nutui-taro';
 
@@ -20,7 +20,7 @@ app.use(Swipe);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-swipe>
     <nut-cell round-radius="0" title="左滑删除" />
@@ -37,7 +37,7 @@ app.use(Swipe);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-swipe disabled>
     <nut-cell round-radius="0" title="禁止滑动" />
@@ -54,7 +54,7 @@ app.use(Swipe);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-swipe>
     <template #left>
@@ -75,7 +75,7 @@ app.use(Swipe);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-swipe ref="refSwipe" @open="open" @close="close">
     <nut-cell title="异步打开关闭">
@@ -88,28 +88,22 @@ app.use(Swipe);
     </template>
   </nut-swipe>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const refSwipe = ref<HTMLElement>();
-      const checked = ref(false);
-      const changSwitch = (value: boolean) => {
-        if (value) {
-          refSwipe.value?.open('left');
-        } else {
-          refSwipe.value?.close();
-        }
-      };
-      const open = (obj: any) => {
-        console.log(obj);
-      };
-      const close = (obj: any) => {
-        console.log(obj);
-      };
-      return { checked, changSwitch, refSwipe, open, close };
-    }
-  };
+<script setup>
+const refSwipe = ref<HTMLElement>();
+const checked = ref(false);
+const changSwitch = (value) => {
+  if (value) {
+    refSwipe.value?.open('left');
+  } else {
+    refSwipe.value?.close();
+  }
+};
+const open = (obj) => {
+  console.log(obj);
+};
+const close = (obj) => {
+  console.log(obj);
+};
 </script>
 ```
 
@@ -119,7 +113,7 @@ app.use(Swipe);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-swipe>
     <template #left>
@@ -136,15 +130,44 @@ app.use(Swipe);
     </template>
   </nut-swipe>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const number = ref(0);
-      return { number };
-    }
-  };
+<script setup>
+const number = ref(0);
 </script>
+```
+
+:::
+
+### 使用 SwipeGroup 控制 Swipe 之间互斥
+
+此时各个 Swipe 的 name 为必填项。
+
+:::demo
+
+```vue
+<template>
+  <nut-swipe-group lock>
+    <nut-swipe name="11">
+      <nut-cell round-radius="0" title="左滑删除" />
+      <template #right>
+        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+      </template>
+    </nut-swipe>
+    <nut-swipe name="22">
+      <nut-cell round-radius="0" title="左滑删除" />
+      <template #right>
+        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+      </template>
+    </nut-swipe>
+    <div>
+      <nut-swipe name="33">
+        <nut-cell round-radius="0" title="左滑删除" />
+        <template #right>
+          <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
+        </template>
+      </nut-swipe>
+    </div>
+  </nut-swipe-group>
+</template>
 ```
 
 :::
@@ -177,9 +200,18 @@ app.use(Swipe);
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Swipe 实例并调用实例方法。
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Swipe` 实例并调用实例方法。
 
-| 方法名 | 说明                                            | 参数                                |
-| ------ | ----------------------------------------------- | ----------------------------------- |
-| open   | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right'` |
-| close  | 收起单元格侧边栏，同上                          | `name, position: 'left' \| 'right'` |
+| 方法名 | 说明                                            | 参数                                             |
+| ------ | ----------------------------------------------- | ------------------------------------------------ |
+| click  | 点击事件                                        | `name, position: 'left' \| 'content' \| 'right'` |
+| open   | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right'`              |
+| close  | 收起单元格侧边栏，同上                          | `name, position: 'left' \| 'right'`              |
+
+## SwipeGroup
+
+### Props
+
+| 参数         | 说明                                                                         | 类型    | 默认值  |
+| ------------ | ---------------------------------------------------------------------------- | ------- | ------- |
+| lock`v4.1.1` | 控制内部 Swipe 互斥，即滑动打开某一个 Swipe 时，触发其余 Swipe 的 close 方法 | boolean | `false` |

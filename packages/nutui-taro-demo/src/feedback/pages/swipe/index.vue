@@ -78,35 +78,25 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const refSwipe = ref<HTMLElement>();
-    const checked = ref(false);
-    const number = ref(0);
-    const changSwitch = (value: boolean) => {
-      if (value) {
-        refSwipe.value?.open('left');
-      } else {
-        refSwipe.value?.close();
-      }
-    };
-    const open = (obj: any) => {
-      console.log(obj);
-    };
-    const close = (obj: any) => {
-      console.log(obj);
-    };
-    return { checked, number, changSwitch, refSwipe, open, close, env };
+const env = Taro.getEnv();
+const refSwipe = ref<HTMLElement>();
+const checked = ref(false);
+const number = ref(0);
+const changSwitch = (value: boolean) => {
+  if (value) {
+    refSwipe.value?.open('left');
+  } else {
+    refSwipe.value?.close();
   }
 };
+const open = (obj: any) => {
+  console.log(obj);
+};
+const close = (obj: any) => {
+  console.log(obj);
+};
 </script>
-
-<style lang="scss" scoped></style>

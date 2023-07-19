@@ -58,7 +58,7 @@
     </nut-swipe>
     <h2>使用 SwipeGroup 控制 Swipe 之间互斥</h2>
     <nut-swipe-group lock>
-      <nut-swipe name="11" @click="onClick">
+      <nut-swipe name="11">
         <nut-cell round-radius="0" :title="translate('leftDel')" />
         <template #right>
           <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
@@ -82,8 +82,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('swipe');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -124,29 +124,21 @@ const initTranslate = () =>
       group: 'Use SwipeGroup to make swipe exclusive'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const refSwipe = ref<HTMLElement>();
-    const checked = ref(false);
-    const number = ref(0);
-    const changSwitch = (value: boolean) => {
-      if (value) {
-        refSwipe.value?.open('left');
-      } else {
-        refSwipe.value?.close();
-      }
-    };
-    const open = (obj: any) => {
-      console.log(obj);
-    };
-    const close = (obj: any) => {
-      console.log(obj);
-    };
-    return { checked, number, changSwitch, refSwipe, open, close, translate };
+initTranslate();
+const refSwipe = ref<HTMLElement>();
+const checked = ref(false);
+const number = ref(0);
+const changSwitch = (value: boolean) => {
+  if (value) {
+    refSwipe.value?.open('left');
+  } else {
+    refSwipe.value?.close();
   }
-});
+};
+const open = (obj: any) => {
+  console.log(obj);
+};
+const close = (obj: any) => {
+  console.log(obj);
+};
 </script>
-
-<style lang="scss" scoped></style>
