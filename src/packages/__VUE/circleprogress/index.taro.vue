@@ -1,17 +1,19 @@
 <template>
-  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
+  <div class="nut-circle-progress" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
     <div class="nut-circle-progress__text">
-      <slot></slot>
-      <span v-if="!slotDefault">{{ progress }}%</span>
+      <slot>
+        <span>{{ progress }}%</span>
+      </slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ref, watch, useSlots, PropType } from 'vue';
+import { computed, ref, watch, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('circle-progress');
+import { CircleProgressStrokeLinecap } from './types';
+const { create } = createComponent('circle-progress');
 interface Item {
   key?: string;
   value?: string;
@@ -20,7 +22,7 @@ export default create({
   props: {
     progress: {
       type: [Number, String],
-      required: true
+      default: 0
     },
     strokeWidth: {
       type: [Number, String],
@@ -31,7 +33,7 @@ export default create({
       default: 50
     },
     strokeLinecap: {
-      type: String as PropType<'butt' | 'round' | 'square'>,
+      type: String as PropType<CircleProgressStrokeLinecap>,
       default: 'round'
     },
     color: {
@@ -47,15 +49,7 @@ export default create({
       default: true
     }
   },
-  emits: ['update:progress'],
-  setup(props, { emit }) {
-    const slotDefault = !!useSlots().default;
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
+  setup(props) {
     const currentRate = ref(props.progress);
     const refRandomId = Math.random().toString(36).slice(-8);
     const isObject = (val: unknown): val is Record<any, any> => val !== null && typeof val === 'object';
@@ -120,15 +114,12 @@ export default create({
       () => props.progress,
       (value) => {
         currentRate.value = Math.min(Math.max(+value, 0), 100);
-        emit('update:progress', format(parseFloat(Number(value).toFixed(1))));
       }
     );
     return {
-      slotDefault,
       style,
       currentRate,
       refRandomId,
-      classes,
       stop
     };
   }

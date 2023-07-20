@@ -2,38 +2,38 @@
   <div class="demo full">
     <h2>{{ translate('basic') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="20"> </nut-circle-progress>
+      <nut-circle-progress progress="20" />
     </div>
     <h2>{{ translate('customWidth') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="50" strokeWidth="10"> </nut-circle-progress>
+      <nut-circle-progress progress="50" strokeWidth="10" />
     </div>
 
     <h2>{{ translate('Gradient') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="50" color="red" />
-      <nut-circle-progress :progress="100" :color="gradientColor" />
+      <nut-circle-progress progress="50" color="red" />
+      <nut-circle-progress progress="100" :color="gradientColor" />
     </div>
     <h2>{{ translate('customSize') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="50" radius="60"></nut-circle-progress>
+      <nut-circle-progress progress="50" radius="60" />
     </div>
     <h2>{{ translate('customContent') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="50" radius="60">{{ translate('custom') }}</nut-circle-progress>
+      <nut-circle-progress progress="50" radius="60">{{ translate('custom') }}</nut-circle-progress>
     </div>
     <h2>{{ translate('dynamicChange') }}</h2>
     <div class="demo__piece">
-      <nut-circle-progress :progress="percent"> </nut-circle-progress>
+      <nut-circle-progress :progress="percent" />
     </div>
     <div class="demo__btn">
-      <nut-button type="primary" @click="setReduceVal">{{ translate('reduce') }}</nut-button>
-      <nut-button type="primary" @click="setAddVal">{{ translate('add') }}</nut-button>
+      <nut-button type="primary" @click="reduce">{{ translate('reduce') }}</nut-button>
+      <nut-button type="primary" @click="add">{{ translate('add') }}</nut-button>
     </div>
   </div>
 </template>
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('circle-progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -61,36 +61,18 @@ const initTranslate = () =>
       add: 'add'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const gradientColor = {
-      '0%': '#FF5E5E',
-      '100%': '#FFA062'
-    };
-    const percent = ref(30);
-    const setAddVal = () => {
-      if (percent.value >= 100) {
-        return;
-      }
-      percent.value += 10;
-    };
-    const setReduceVal = () => {
-      if (percent.value - 10 <= 0) {
-        percent.value = 0;
-        return;
-      }
-      percent.value -= 10;
-    };
-    return {
-      setAddVal,
-      setReduceVal,
-      percent,
-      gradientColor,
-      translate
-    };
-  }
-});
+initTranslate();
+const gradientColor = {
+  '0%': '#FF5E5E',
+  '100%': '#FFA062'
+};
+const percent = ref(30);
+const add = () => {
+  percent.value = Math.min(100, percent.value + 10);
+};
+const reduce = () => {
+  percent.value = Math.max(0, percent.value - 10);
+};
 </script>
 
 <style lang="scss" scoped>
