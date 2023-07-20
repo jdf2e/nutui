@@ -49,7 +49,7 @@ export default create({
 
   setup(props, { emit }) {
     const getRefWidth = (ref: Ref<HTMLElement | undefined>): number => {
-      return ref.value?.clientWidth || 0;
+      return ref.value?.getBoundingClientRect().width || 0;
     };
 
     const lockClick = ref(false);

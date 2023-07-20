@@ -86,3 +86,10 @@ export function mockElementMethod(element: any, method: string): Mock {
   element.prototype[method] = fn;
   return fn;
 }
+
+// mock getBoundingClientRect
+export function mockGetBoundingClientRect(rect: any): () => void {
+  const spy = vi.spyOn(Element.prototype, 'getBoundingClientRect');
+  spy.mockReturnValue(rect);
+  return () => spy.mockRestore();
+}
