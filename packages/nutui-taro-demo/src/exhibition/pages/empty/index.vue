@@ -23,11 +23,10 @@
 
     <h2>自定义图片</h2>
     <div class="show">
-      <nut-empty description="无优惠券">
-        <template #image>
-          <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
-        </template>
-      </nut-empty>
+      <nut-empty
+        image="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
+        description="无优惠券"
+      ></nut-empty>
     </div>
 
     <h2>底部内容</h2>
@@ -41,21 +40,12 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const tabValue = ref(0);
-    return {
-      tabValue,
-      env
-    };
-  }
-};
+const env = Taro.getEnv();
+const tabValue = ref(0);
 </script>
 
 <style lang="scss">
