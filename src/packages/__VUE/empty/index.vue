@@ -1,42 +1,26 @@
 <template>
   <view class="nut-empty">
-    <!-- 占位图 -->
-    <view class="nut-empty__box" :style="imgStyle">
-      <template v-if="$slots.image">
-        <slot name="image"></slot>
-      </template>
-      <template v-else>
-        <img v-if="imageUrl" class="nut-empty__box--img" :src="imageUrl" />
-      </template>
+    <view class="nut-empty__box" :style="style">
+      <slot name="image">
+        <img v-if="src" class="nut-empty__box--img" :src="src" />
+      </slot>
     </view>
 
-    <!-- 文本区 -->
-    <template v-if="$slots.description">
-      <slot name="description"></slot>
-    </template>
-    <template v-else>
+    <slot name="description">
       <view class="nut-empty__description">{{ description || translate('noData') }}</view>
-    </template>
+    </slot>
 
-    <!-- 自定义slot -->
-    <template v-if="$slots.default">
-      <slot></slot>
-    </template>
+    <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { EmptyImage } from './types';
+import { pxCheck } from '@/packages/utils/pxCheck';
 const { create, translate } = createComponent('empty');
 
-type statusOptions = {
-  [key: string]: string;
-};
-
-/**
- * 内置图片地址
- */
-const defaultStatus: statusOptions = {
+const defaultStatus: any = {
   empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
   error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
   network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png'
@@ -45,44 +29,38 @@ const defaultStatus: statusOptions = {
 export default create({
   props: {
     image: {
-      type: String,
-      default: 'empty' //默认empty
+      type: String as PropType<EmptyImage>,
+      default: 'empty'
     },
     imageSize: {
-      type: [Number, String], // 图片大小，正方形
+      type: [Number, String],
       default: ''
     },
     description: {
-      type: String, // 文字区
+      type: String,
       default: ''
     }
   },
-
   setup(props) {
-    const { image, imageSize } = toRefs(props);
-
-    /**
-     * 根据imgSize计算行内样式
-     */
-    const imgStyle = computed(() => {
-      if (!imageSize.value) {
-        return '';
+    const style = computed(() => {
+      if (props.imageSize) {
+        return {
+          width: pxCheck(props.imageSize),
+          height: pxCheck(props.imageSize)
+        };
       }
-      if (typeof imageSize.value === 'number') {
-        return `width:${imageSize.value}px;height:${imageSize.value}px`;
-      }
-      return `width:${imageSize.value};height:${imageSize.value}`;
+      return {};
     });
 
-    const isHttpUrl =
-      image.value.startsWith('https://') || image.value.startsWith('http://') || image.value.startsWith('//');
-    const imageUrl = isHttpUrl ? image.value : defaultStatus[image.value];
+    const src = computed(() => {
+      if (props.image.startsWith('https://') || props.image.startsWith('http://') || props.image.startsWith('//')) {
+        return props.image;
+      } else {
+        return defaultStatus[props.image];
+      }
+    });
 
-    return {
-      imageUrl,
-      imgStyle,
-      translate
-    };
+    return { src, style, translate };
   }
 });
 </script>

@@ -22,10 +22,10 @@
 
     <h2>{{ translate('customImg') }}</h2>
     <div class="show">
-      <nut-empty :description="translate('description')">
-        <template #image>
-          <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
-        </template>
+      <nut-empty
+        image="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
+        :description="translate('description')"
+      >
       </nut-empty>
     </div>
 
@@ -40,8 +40,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('empty');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -74,17 +74,8 @@ const initTranslate = () =>
       retry: 'Retry'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const tabValue = ref(0);
-    return {
-      tabValue,
-      translate
-    };
-  }
-});
+initTranslate();
+const tabValue = ref(0);
 </script>
 
 <style lang="scss" scoped>

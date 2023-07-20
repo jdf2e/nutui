@@ -6,7 +6,7 @@ Occupation reminder when empty.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Empty } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Empty);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-empty description="no data"></nut-empty>
 </template>
@@ -30,7 +30,7 @@ app.use(Empty);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabs v-model="tabValue">
     <nut-tab-pane title="empty">
@@ -44,16 +44,8 @@ app.use(Empty);
     </nut-tab-pane>
   </nut-tabs>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const tabValue = ref(0);
-      return {
-        tabValue
-      };
-    }
-  };
+<script setup>
+const tabValue = ref(0);
 </script>
 ```
 
@@ -63,13 +55,12 @@ app.use(Empty);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-empty description="Description">
-    <template #image>
-      <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
-    </template>
-  </nut-empty>
+  <nut-empty
+    image="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
+    description="Description"
+  ></nut-empty>
 </template>
 ```
 
@@ -79,7 +70,7 @@ app.use(Empty);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-empty image="error" description="Failed to load">
     <div style="margin-top: 10px">
@@ -91,7 +82,7 @@ app.use(Empty);
 
 :::
 
-## API
+## Empty
 
 ### Props
 
