@@ -1,37 +1,36 @@
 <template>
   <view :class="classes">
     <template v-for="item in size" :key="item">
-      <view v-if="item === current" :class="`${componentName}--number`">
+      <view v-if="item === current" class="nut-indicator--number">
         {{ (fillZero && padZero(item)) || item }}
       </view>
-      <view v-else :class="`${componentName}--dot`"></view>
+      <view v-else class="nut-indicator--dot"></view>
     </template>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from '@/packages/utils/util';
-const { componentName, create } = createComponent('indicator');
+import { IndicatorAlign } from './types';
+const { create } = createComponent('indicator');
 
 export default create({
   props: {
     size: {
       type: Number,
-      default: 3,
-      required: true
+      default: 3
     },
     current: {
       type: Number,
-      default: 1,
-      required: true
+      default: 1
     },
     block: {
       type: Boolean,
       default: false
     },
     align: {
-      type: String,
+      type: String as PropType<IndicatorAlign>,
       default: 'center'
     },
     fillZero: {
@@ -40,18 +39,15 @@ export default create({
     }
   },
   setup(props) {
-    const { block, align } = toRefs(props);
-
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-indicator';
       return {
         [prefixCls]: true,
-        [`${prefixCls}--block`]: block.value,
-        [`${prefixCls}--align__${align.value}`]: block.value && align.value
+        [`${prefixCls}--block`]: props.block,
+        [`${prefixCls}--align__${props.align}`]: props.block && props.align
       };
     });
-
-    return { classes, componentName, padZero };
+    return { classes, padZero };
   }
 });
 </script>
