@@ -10,3 +10,9 @@ const isJDDKH = () => {
   return window.parent.location.href.includes('jddkh');
 };
 export { isMobile, isJDT, isJDB, isJDDKH };
+
+export const reorder = (packages: Array<any>) => {
+  return packages.sort(function (x: any, y: any) {
+    return x['name'].localeCompare(y['name']);
+  });
+};

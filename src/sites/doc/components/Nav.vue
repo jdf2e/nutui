@@ -3,7 +3,11 @@
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
-        <template :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
+        <template
+          :class="{ active: isActive(_package.name) }"
+          v-for="_package in reorder(_nav.packages)"
+          :key="_package"
+        >
           <li v-if="_package.show">
             <router-link :to="_package.name.toLowerCase()" :class="{ active: isActive(_package.name) }">
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
@@ -18,6 +22,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { nav } from '@/config.json';
+import { reorder } from '../../assets/util/index';
 const fixed = ref(false);
 const isActive = computed(() => {
   return function (name: string) {
