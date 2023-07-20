@@ -35,5 +35,5 @@ https://github.com/jdf2e/nutui/issues/1671
 
 **这个 PR 是否已自测:**
 
-- [ ] 自测 Vite 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/vite-ts)
-- [ ] 自测 Taro 脚手架使用小程序 & Taro-H5 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/master/taro)
+- [ ] 自测 Vite 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/nutui4-vue/vite-ts)
+- [ ] 自测 Taro 脚手架使用小程序 & Taro-H5 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/nutui4-vue/taro)
