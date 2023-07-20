@@ -118,11 +118,13 @@ export default create({
 
     const close = () => {
       state.offset = 0;
-      opened.value = false;
-      emit('close', {
-        name: props.name,
-        position
-      });
+      if (opened.value) {
+        opened.value = false;
+        emit('close', {
+          name: props.name,
+          position
+        });
+      }
     };
 
     const onClick = (e: Event, position: string, lock: boolean) => {
