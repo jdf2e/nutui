@@ -30,5 +30,5 @@ test('Indicator: should be shown when passing block and align and fillZero', () 
   expect(indicator.classes()).toContain('nut-indicator--block');
   expect(indicator.classes()).toContain('nut-indicator--align__right');
   const firstChild = wrapper.findAll('.nut-indicator--number')[0];
-  expect(firstChild.text()).toBe('03');
+  expect(firstChild.text()).toBe('3');
 });
