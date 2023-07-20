@@ -6,7 +6,7 @@ Circular progress bar component,
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { CircleProgress } from '@nutui/nutui';
 
@@ -18,11 +18,9 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-circle-progress :progress="20"> </nut-circle-progress>
-  </nut-cell>
+  <nut-circle-progress progress="20" />
 </template>
 ```
 
@@ -32,11 +30,9 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-circle-progress :progress="50" strokeWidth="10"> </nut-circle-progress>
-  </nut-cell>
+  <nut-circle-progress progress="50" strokeWidth="10" />
 </template>
 ```
 
@@ -46,26 +42,16 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-circle-progress :progress="50" color="red" />
-    <nut-circle-progress :progress="100" :color="gradientColor" />
-  </nut-cell>
+  <nut-circle-progress progress="50" color="red" />
+  <nut-circle-progress progress="100" :color="gradientColor" />
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const gradientColor = {
-        '0%': '#FF5E5E',
-        '100%': '#FFA062'
-      };
-      return {
-        gradientColor
-      };
-    }
-  };
+<script setup>
+const gradientColor = {
+  '0%': '#FF5E5E',
+  '100%': '#FFA062'
+};
 </script>
 ```
 
@@ -75,11 +61,9 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-circle-progress :progress="50" radius="60"></nut-circle-progress>
-  </nut-cell>
+  <nut-circle-progress progress="50" radius="60" />
 </template>
 ```
 
@@ -89,11 +73,9 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-circle-progress :progress="50" radius="60">content</nut-circle-progress>
-  </nut-cell>
+  <nut-circle-progress progress="50" radius="60">content</nut-circle-progress>
 </template>
 ```
 
@@ -103,41 +85,22 @@ app.use(CircleProgress);
 
 :::demo
 
-```html
+```vue
 <template>
-  <div>
-    <nut-circle-progress :progress="percent"></nut-circle-progress>
-  </div>
-  <div>
-    <nut-button type="primary" @click="setReduceVal">reduce</nut-button>
-    <nut-button type="primary" @click="setAddVal">add</nut-button>
-  </div>
+  <nut-circle-progress :progress="percent"></nut-circle-progress>
+  <nut-button type="primary" @click="reduce">reduce</nut-button>
+  <nut-button type="primary" @click="add">add</nut-button>
 </template>
-<script>
-  import { reactive, ref } from 'vue';
-  export default {
-    setup() {
-      const percent = ref(30);
-      const setAddVal = () => {
-        if (percent.value >= 100) {
-          return;
-        }
-        percent.value += 10;
-      };
-      const setReduceVal = () => {
-        if (percent.value - 10 <= 0) {
-          percent.value = 0;
-          return;
-        }
-        percent.value -= 10;
-      };
-      return {
-        setAddVal,
-        setReduceVal,
-        percent
-      };
-    }
-  };
+<script setup>
+import { reactive, ref } from 'vue';
+const percent = ref(30);
+const percent = ref(30);
+const add = () => {
+  percent.value = Math.min(100, percent.value + 10);
+};
+const reduce = () => {
+  percent.value = Math.max(0, percent.value - 10);
+};
 </script>
 ```
 
@@ -147,15 +110,15 @@ app.use(CircleProgress);
 
 ### Props
 
-| Attribute      | Description                                       | Type             | Default                    |
-| -------------- | ------------------------------------------------- | ---------------- | -------------------------- |
-| progress       | Progress Rate                                     | number \| string | Required, no default value |
-| stroke-width   | Stroke width                                      | number \| string | `5`                        |
-| radius         | radius                                            | number \| string | `50`                       |
-| color          | Progress color, passing object to render gradient | object \| string | `'#fa2c19'`                |
-| path-color     | Track Color                                       | string           | `'#d9d9d9'`                |
-| stroke-linecap | Stroke linecap, can be set to square butt         | String           | `'round'`                  |
-| clockwise      | Whether to be clockwise                           | boolean          | `true`                     |
+| Attribute      | Description                                       | Type             | Default   |
+| -------------- | ------------------------------------------------- | ---------------- | --------- |
+| progress       | Progress Rate                                     | number \| string | `0`       |
+| stroke-width   | Stroke width                                      | number \| string | `5`       |
+| radius         | radius                                            | number \| string | `50`      |
+| color          | Progress color, passing object to render gradient | object \| string | `#fa2c19` |
+| path-color     | Track Color                                       | string           | `#d9d9d9` |
+| stroke-linecap | Stroke linecap, can be set to square butt         | String           | `round`   |
+| clockwise      | Whether to be clockwise                           | boolean          | `true`    |
 
 ### Slots
 

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
+  <div class="nut-circle-progress" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <svg viewBox="0 0 100 100">
       <defs>
         <linearGradient :id="refRandomId" x1="100%" y1="0%" x2="0%" y2="0%">
@@ -20,18 +20,19 @@
       ></path>
     </svg>
     <div class="nut-circle-progress__text">
-      <slot></slot>
-      <div v-if="!slotDefault">{{ progress }}%</div>
+      <slot>
+        <div>{{ progress }}%</div>
+      </slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isObject } from '@/packages/utils/util';
-const { componentName, create } = createComponent('circle-progress');
-import type { PropType } from 'vue';
+const { create } = createComponent('circle-progress');
+import { CircleProgressStrokeLinecap } from './types';
 export interface stopArr {
   key: string;
   value: string;
@@ -41,7 +42,7 @@ export default create({
   props: {
     progress: {
       type: [Number, String],
-      required: true
+      defualt: 0
     },
     strokeWidth: {
       type: [Number, String],
@@ -52,7 +53,7 @@ export default create({
       default: 50
     },
     strokeLinecap: {
-      type: String as PropType<'butt' | 'round' | 'square'>,
+      type: String as PropType<CircleProgressStrokeLinecap>,
       default: 'round'
     },
     color: {
@@ -70,14 +71,7 @@ export default create({
   },
 
   setup(props) {
-    const slotDefault = !!useSlots().default;
     const refRandomId = Math.random().toString(36).slice(-8);
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
     const path = computed(() => {
       const isWise = props.clockwise ? 1 : 0;
       return `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`;
@@ -118,13 +112,11 @@ export default create({
     });
 
     return {
-      classes,
       hoverStyle,
       pathStyle,
       path,
       hoverColor,
       stop,
-      slotDefault,
       refRandomId
     };
   }
