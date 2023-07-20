@@ -77,12 +77,9 @@ app.use(Swipe);
 
 ```vue
 <template>
-  <nut-swipe ref="refSwipe" @open="open" @close="close">
-    <nut-cell title="Async on and off">
-      <template v-slot:link>
-        <nut-switch v-model="checked" @change="changSwitch" active-text="on" inactive-text="off" />
-      </template>
-    </nut-cell>
+  <nut-switch v-model="checked" @change="changSwitch" />
+  <nut-swipe ref="refSwipe">
+    <nut-cell title="Async on and off"></nut-cell>
     <template #right>
       <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
     </template>
@@ -97,12 +94,6 @@ const changSwitch = (value) => {
   } else {
     refSwipe.value?.close();
   }
-};
-const open = (obj) => {
-  console.log(obj);
-};
-const close = (obj) => {
-  console.log(obj);
 };
 </script>
 ```

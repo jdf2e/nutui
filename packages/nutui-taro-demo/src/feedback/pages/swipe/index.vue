@@ -26,13 +26,9 @@
         <nut-button shape="square" style="height: 100%" type="info">收藏</nut-button>
       </template>
     </nut-swipe>
-    <h2>异步控制</h2>
-    <nut-swipe ref="refSwipe" @open="open" @close="close">
-      <nut-cell title="异步打开关闭">
-        <template v-slot:link>
-          <nut-switch v-model="checked" @change="changSwitch" active-text="开" inactive-text="关" />
-        </template>
-      </nut-cell>
+    <h2>异步控制 <nut-switch v-model="checked" @change="changSwitch" /></h2>
+    <nut-swipe ref="refSwipe">
+      <nut-cell title="异步打开关闭"></nut-cell>
       <template #right>
         <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
       </template>
@@ -92,11 +88,5 @@ const changSwitch = (value: boolean) => {
   } else {
     refSwipe.value?.close();
   }
-};
-const open = (obj: any) => {
-  console.log(obj);
-};
-const close = (obj: any) => {
-  console.log(obj);
 };
 </script>
