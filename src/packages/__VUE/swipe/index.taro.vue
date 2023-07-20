@@ -1,31 +1,36 @@
 <template>
   <view
-    :class="classes"
+    class="nut-swipe"
     :style="touchStyle"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
   >
-    <view class="nut-swipe__left" ref="leftRef" :id="'leftRef-' + refRandomId">
+    <view class="nut-swipe__left" ref="leftRef" :id="'leftRef-' + refRandomId" @click="onClick($event, 'left', true)">
       <slot name="left"></slot>
     </view>
 
-    <view class="nut-swipe__content">
+    <view class="nut-swipe__content" @click="onClick($event, 'content', lockClick)">
       <slot name="default"></slot>
     </view>
 
-    <view class="nut-swipe__right" ref="rightRef" :id="'rightRef-' + refRandomId">
+    <view
+      class="nut-swipe__right"
+      ref="rightRef"
+      :id="'rightRef-' + refRandomId"
+      @click="onClick($event, 'right', true)"
+    >
       <slot name="right"></slot>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { useTouch } from '@/packages/utils/useTouch';
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, inject, watch, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-const { componentName, create } = createComponent('swipe');
+const { create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
 export default create({
   props: {
@@ -46,21 +51,17 @@ export default create({
       default: false
     }
   },
-  emits: ['open', 'close'],
+  emits: ['open', 'close', 'click'],
 
   setup(props, { emit }) {
     const refRandomId = Math.random().toString(36).slice(-8);
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const leftRef = ref<HTMLElement>();
     const leftRefWidth = ref(0);
     const rightRef = ref<HTMLElement>();
     const rightRefWidth = ref(0);
+
+    const lockClick = ref(false);
 
     const initWidth = () => {
       useTaroRect(leftRef).then(
@@ -77,13 +78,24 @@ export default create({
       );
     };
 
+    const parent = inject('swipeGroup', null) as any;
+
+    watch(
+      () => parent?.name?.value,
+      (name) => {
+        if (props.name !== name && parent && parent.lock) {
+          close();
+        }
+      }
+    );
+
     onMounted(() => {
       setTimeout(() => {
         initWidth();
       }, 100);
     });
 
-    let opened: boolean = false;
+    const opened = ref(false);
     let position: SwipePosition = '';
     let oldPosition: SwipePosition = '';
 
@@ -93,7 +105,8 @@ export default create({
     });
 
     const open = (p: SwipePosition = '') => {
-      opened = true;
+      parent && parent.update(props.name);
+      opened.value = true;
       if (p) {
         state.offset = p === 'left' ? -rightRefWidth.value : leftRefWidth.value;
       }
@@ -105,11 +118,22 @@ export default create({
 
     const close = () => {
       state.offset = 0;
-      opened = false;
-      emit('close', {
-        name: props.name,
-        position
-      });
+      if (opened.value) {
+        opened.value = false;
+        emit('close', {
+          name: props.name,
+          position
+        });
+      }
+    };
+
+    const onClick = (e: Event, position: string, lock: boolean) => {
+      if (lock) {
+        e.stopPropagation();
+      } else {
+        close();
+      }
+      emit('click', position);
     };
 
     const touchStyle = computed(() => {
@@ -123,14 +147,14 @@ export default create({
       let offset = deltaX;
       switch (position) {
         case 'left':
-          if (opened && oldPosition === position) {
+          if (opened.value && oldPosition === position) {
             offset = -rightRefWidth.value;
           } else {
             offset = Math.abs(deltaX) > rightRefWidth.value ? -rightRefWidth.value : deltaX;
           }
           break;
         case 'right':
-          if (opened && oldPosition === position) {
+          if (opened.value && oldPosition === position) {
             offset = leftRefWidth.value;
           } else {
             offset = Math.abs(deltaX) > leftRefWidth.value ? leftRefWidth.value : deltaX;
@@ -146,10 +170,11 @@ export default create({
         if (props.disabled) return;
         touch.start(event);
       },
-      async onTouchMove(event: TouchEvent) {
+      onTouchMove(event: TouchEvent) {
         if (props.disabled) return;
         touch.move(event);
         if (touch.isHorizontal()) {
+          lockClick.value = true;
           state.moving = true;
           setoffset(touch.deltaX.value);
           if (props.touchMovePreventDefault) {
@@ -182,19 +207,23 @@ export default create({
               }
               break;
           }
+          setTimeout(() => {
+            lockClick.value = false;
+          }, 0);
         }
       }
     };
 
     return {
-      classes,
       touchStyle,
       ...touchMethods,
       leftRef,
       rightRef,
       refRandomId,
       open,
-      close
+      close,
+      onClick,
+      lockClick
     };
   }
 });

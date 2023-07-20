@@ -664,6 +664,16 @@
           "author": "richard1015"
         },
         {
+          "name": "SwipeGroup",
+          "taro": true,
+          "cName": "滑动手势",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "Swipe 的集合，用于控制互斥",
+          "author": "eiinu"
+        },
+        {
           "version": "3.0.0",
           "name": "ActionSheet",
           "taro": true,

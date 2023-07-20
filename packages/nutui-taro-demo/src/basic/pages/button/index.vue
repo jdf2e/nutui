@@ -103,18 +103,25 @@ export default {
 <style lang="scss">
 .demo-button-row {
   margin-bottom: 20px;
+  .nut-button {
+    margin-right: 15px;
+    &:last-child {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+  }
 }
 .demo-button-row2 {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-}
-.nut-button {
-  margin-right: 15px;
-  &:last-child {
-    margin-bottom: 0;
-    margin-right: 0;
+  .nut-button {
+    margin-right: 15px;
+    &:last-child {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
   }
 }
 </style>
