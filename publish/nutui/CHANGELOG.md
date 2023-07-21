@@ -1,3 +1,19 @@
+## v4.1.1
+
+`2023-07-21`
+
+Features
+
+- swipe: 新增 swipe-group 组件用于控制 swipe 操作互斥 (#2439)
+- animate: 新增 show 属性与 animate 事件 (#2434)
+- uploader: 小程序下新增预览图片 mode 属性 (#2435)
+
+Bug Fixes
+
+- utils: useTaroRect 方法增加异常处理 (#2431)
+- button: 优化边框与渐变色背景样式问题
+- type: 修复部分组件类型文件丢失问题
+
 ## v4.1.0
 
 NutUI 非常感谢您对开源事业做出的贡献！
