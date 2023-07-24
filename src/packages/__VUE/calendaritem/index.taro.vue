@@ -250,7 +250,7 @@ export default create({
       const res = [];
       if (
         typeof index === 'number' &&
-        (((index % 7) + 1 + props.firstDayOfWeek) % 7 === 0 || ((index % 7) + props.firstDayOfWeek) % 7 === 0)
+        ((index + 1 + props.firstDayOfWeek) % 7 === 0 || (index + props.firstDayOfWeek) % 7 === 0)
       ) {
         res.push('weekend');
       }
