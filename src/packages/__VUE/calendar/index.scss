@@ -139,12 +139,6 @@
 
       .nut-calendar__days {
         overflow: hidden;
-        .nut-calendar__days-item {
-          .nut-calendar__day:nth-child(7n + 0),
-          .nut-calendar__day:nth-child(7n + 1) {
-            color: $calendar-day67-font-color;
-          }
-        }
         .nut-calendar__day {
           float: left;
           width: 14.28%;
@@ -155,6 +149,10 @@
           justify-content: center;
           flex-direction: column;
           position: relative;
+
+          &--weekend {
+            color: $calendar-day67-font-color;
+          }
 
           .nut-calendar__day-tips {
             position: absolute;
