@@ -14,7 +14,13 @@
       </view>
       <view class="nut-calendar__header-subtitle" v-if="showSubTitle">{{ yearMonthTitle }}</view>
       <view class="nut-calendar__weekdays" ref="weeksPanel">
-        <view class="nut-calendar__weekday" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
+        <view
+          class="nut-calendar__weekday"
+          :class="{ weekend: item.weekend }"
+          v-for="(item, index) of weeks"
+          :key="index"
+          >{{ item.day }}</view
+        >
       </view>
     </view>
     <!-- content-->
@@ -26,7 +32,7 @@
             <view class="nut-calendar__days">
               <view class="nut-calendar__days-item" :class="type === 'range' ? 'nut-calendar__days-item--range' : ''">
                 <template v-for="(day, i) of month.monthData" :key="i">
-                  <view class="nut-calendar__day" :class="getClass(day, month)" @click="chooseDay(day, month)">
+                  <view class="nut-calendar__day" :class="getClass(day, month, i)" @click="chooseDay(day, month)">
                     <!-- 日期显示slot -->
                     <view class="nut-calendar__day-value">
                       <slot name="day" :date="day.type == 'curr' ? day : ''">
@@ -149,7 +155,10 @@ export default create({
 
   setup(props, { emit, slots }) {
     // 新增：自定义周起始日
-    const weekdays = translate('weekdays');
+    const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
+      day: day,
+      weekend: index === 0 || index === 6
+    }));
     const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
     // element refs
     const months = ref<null | HTMLElement>(null);
@@ -227,7 +236,14 @@ export default create({
     };
 
     // 获取样式
-    const getClass = (day: Day, month: MonthInfo) => {
+    const getClass = (day: Day, month: MonthInfo, index?: number) => {
+      const res = [];
+      if (
+        typeof index === 'number' &&
+        ((index + 1 + props.firstDayOfWeek) % 7 === 0 || (index + props.firstDayOfWeek) % 7 === 0)
+      ) {
+        res.push('weekend');
+      }
       const currDate = getCurrDate(day, month);
       const { type } = props;
       if (day.type == 'curr') {
@@ -236,12 +252,12 @@ export default create({
           ((type == 'range' || type == 'week') && (isStart(currDate) || isEnd(currDate))) ||
           (type == 'multiple' && isMultiple(currDate))
         ) {
-          return `${state.dayPrefix}--active`;
+          res.push(`${state.dayPrefix}--active`);
         } else if (
           (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
           (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
         ) {
-          return `${state.dayPrefix}--disabled`;
+          res.push(`${state.dayPrefix}--disabled`);
         } else if (
           (type == 'range' || type == 'week') &&
           Array.isArray(state.currDate) &&
@@ -249,13 +265,12 @@ export default create({
           Utils.compareDate(state.currDate[0], currDate) &&
           Utils.compareDate(currDate, state.currDate[1])
         ) {
-          return `${state.dayPrefix}--choose`;
-        } else {
-          return null;
+          res.push(`${state.dayPrefix}--choose`);
         }
       } else {
-        return `${state.dayPrefix}--disabled`;
+        res.push(`${state.dayPrefix}--disabled`);
       }
+      return res;
     };
     // 确认选择时触发
     const confirm = () => {
@@ -276,7 +291,7 @@ export default create({
 
     // 选中数据
     const chooseDay = (day: Day, month: MonthInfo, isFirst = false) => {
-      if (getClass(day, month) != `${state.dayPrefix}--disabled`) {
+      if (!getClass(day, month).includes(`${state.dayPrefix}--disabled`)) {
         const { type } = props;
         let [y, m] = month.curData;
         let days = [...month.curData];
@@ -704,7 +719,7 @@ export default create({
       return (
         (props.type == 'range' || props.type == 'week') &&
         day.type == 'curr' &&
-        getClass(day, month) == 'nut-calendar__day--active'
+        getClass(day, month).includes('nut-calendar__day--active')
       );
     };
 

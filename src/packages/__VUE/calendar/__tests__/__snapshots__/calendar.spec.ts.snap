@@ -8,13 +8,13 @@ exports[`should render slot correctly 1`] = `
   </view>
   <view class=\\"nut-calendar__header-subtitle\\">2022年03月</view>
   <view class=\\"nut-calendar__weekdays\\">
-    <view class=\\"nut-calendar__weekday\\">日</view>
+    <view class=\\"nut-calendar__weekday weekend\\">日</view>
     <view class=\\"nut-calendar__weekday\\">一</view>
     <view class=\\"nut-calendar__weekday\\">二</view>
     <view class=\\"nut-calendar__weekday\\">三</view>
     <view class=\\"nut-calendar__weekday\\">四</view>
     <view class=\\"nut-calendar__weekday\\">五</view>
-    <view class=\\"nut-calendar__weekday\\">六</view>
+    <view class=\\"nut-calendar__weekday weekend\\">六</view>
   </view>
 </view>"
 `;
@@ -25,7 +25,7 @@ exports[`should render slot correctly 2`] = `
     <view class=\\"nut-calendar__month-title\\">2022年02月</view>
     <view class=\\"nut-calendar__days\\">
       <view class=\\"nut-calendar__days-item\\">
-        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
+        <view class=\\"nut-calendar__day weekend nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
@@ -79,7 +79,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
@@ -88,7 +88,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
@@ -142,7 +142,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
@@ -151,7 +151,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
@@ -205,7 +205,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
@@ -214,7 +214,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
@@ -268,7 +268,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
@@ -277,7 +277,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
@@ -302,7 +302,7 @@ exports[`should render slot correctly 2`] = `
     <view class=\\"nut-calendar__month-title\\">2022年03月</view>
     <view class=\\"nut-calendar__days\\">
       <view class=\\"nut-calendar__days-item\\">
-        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
+        <view class=\\"nut-calendar__day weekend nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
@@ -356,7 +356,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom5</view>
           <!--v-if-->
@@ -365,7 +365,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom6</view>
           <!--v-if-->
@@ -419,7 +419,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom12</view>
           <!--v-if-->
@@ -428,7 +428,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom13</view>
           <!--v-if-->
@@ -482,7 +482,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom19</view>
           <!--v-if-->
@@ -491,7 +491,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom20</view>
           <!--v-if-->
@@ -545,7 +545,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom26</view>
           <!--v-if-->
@@ -554,7 +554,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom27</view>
           <!--v-if-->
@@ -606,7 +606,7 @@ exports[`should render slot correctly 2`] = `
     <view class=\\"nut-calendar__month-title\\">2022年04月</view>
     <view class=\\"nut-calendar__days\\">
       <view class=\\"nut-calendar__days-item\\">
-        <view class=\\"nut-calendar__day nut-calendar__day--disabled\\">
+        <view class=\\"nut-calendar__day weekend nut-calendar__day--disabled\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">customundefined</view>
           <!--v-if-->
@@ -660,7 +660,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom2</view>
           <!--v-if-->
@@ -669,7 +669,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom3</view>
           <!--v-if-->
@@ -723,7 +723,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom9</view>
           <!--v-if-->
@@ -732,7 +732,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom10</view>
           <!--v-if-->
@@ -786,7 +786,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom16</view>
           <!--v-if-->
@@ -795,7 +795,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom17</view>
           <!--v-if-->
@@ -849,7 +849,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom23</view>
           <!--v-if-->
@@ -858,7 +858,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom24</view>
           <!--v-if-->
@@ -912,7 +912,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom30</view>
           <!--v-if-->
@@ -928,7 +928,7 @@ exports[`should render slot correctly 2`] = `
     <view class=\\"nut-calendar__month-title\\">2022年05月</view>
     <view class=\\"nut-calendar__days\\">
       <view class=\\"nut-calendar__days-item\\">
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom1</view>
           <!--v-if-->
@@ -982,7 +982,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom7</view>
           <!--v-if-->
@@ -991,7 +991,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom8</view>
           <!--v-if-->
@@ -1045,7 +1045,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom14</view>
           <!--v-if-->
@@ -1054,7 +1054,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom15</view>
           <!--v-if-->
@@ -1108,7 +1108,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom21</view>
           <!--v-if-->
@@ -1117,7 +1117,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom22</view>
           <!--v-if-->
@@ -1171,7 +1171,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom28</view>
           <!--v-if-->
@@ -1180,7 +1180,7 @@ exports[`should render slot correctly 2`] = `
           <!--v-if-->
           <!--v-if-->
         </view>
-        <view class=\\"nut-calendar__day\\">
+        <view class=\\"nut-calendar__day weekend\\">
           <!-- 日期显示slot -->
           <view class=\\"nut-calendar__day-value\\">custom29</view>
           <!--v-if-->
