@@ -14,7 +14,13 @@
       </view>
       <view class="nut-calendar__header-subtitle" v-if="showSubTitle">{{ yearMonthTitle }}</view>
       <view class="nut-calendar__weekdays">
-        <view class="nut-calendar__weekday" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
+        <view
+          class="nut-calendar__weekday"
+          :class="{ weekend: item.weekend }"
+          v-for="(item, index) of weeks"
+          :key="index"
+          >{{ item.day }}</view
+        >
       </view>
     </view>
     <!-- content-->
@@ -158,7 +164,10 @@ export default create({
 
   setup(props, { emit, slots }) {
     // 新增：自定义周起始日
-    const weekdays = translate('weekdays');
+    const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
+      day: day,
+      weekend: index === 0 || index === 6
+    }));
     const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
     // element refs
     const scalePx = ref(2);
