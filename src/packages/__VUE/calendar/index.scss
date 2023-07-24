@@ -150,7 +150,7 @@
           flex-direction: column;
           position: relative;
 
-          &--weekend {
+          &.weekend {
             color: $calendar-day67-font-color;
           }
 

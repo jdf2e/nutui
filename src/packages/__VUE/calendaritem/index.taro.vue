@@ -252,7 +252,7 @@ export default create({
         typeof index === 'number' &&
         (((index % 7) + 1 + props.firstDayOfWeek) % 7 === 0 || ((index % 7) + props.firstDayOfWeek) % 7 === 0)
       ) {
-        res.push(`${state.dayPrefix}--weekend`);
+        res.push('weekend');
       }
       const currDate = getCurrDate(day, month);
       const { type } = props;
