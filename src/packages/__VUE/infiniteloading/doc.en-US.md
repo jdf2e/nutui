@@ -6,7 +6,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { InfiniteLoading } from '@nutui/nutui';
 
@@ -18,88 +18,35 @@ app.use(InfiniteLoading);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-tabs v-model="tabsValue" animatedTime="0">
-    <nut-tab-pane title="Basic Usage">
-      <ul class="infiniteUl">
-        <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
-          <div class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</div>
-        </nut-infinite-loading>
-      </ul>
-    </nut-tab-pane>
-  </nut-tabs>
+  <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
+    <div class="test" v-for="(item, index) in sum" :key="index">{{ index }}</div>
+  </nut-infinite-loading>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      let cycle = 0;
-      const tabsValue = ref(0);
-      const infinityValue = ref(false);
-      const hasMore = ref(true);
-      const letter = [
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'IJ',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-        'R',
-        'S',
-        'T',
-        'U',
-        'V',
-        'W',
-        'X',
-        'Y',
-        'Z'
-      ];
-      const defultList = ref(letter);
-      const loadMore = (done) => {
-        setTimeout(() => {
-          defultList.value = defultList.value.concat(letter);
-          cycle++;
-          if (cycle > 2) hasMore.value = false;
-          infinityValue.value = false;
-        }, 1000);
-      };
-
-      return { tabsValue, loadMore, hasMore, defultList, infinityValue };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const cycle = ref(0);
+const tabsValue = ref(0);
+const sum = ref(24);
+const infinityValue = ref(false);
+const hasMore = ref(true);
+const loadMore = (done) => {
+  setTimeout(() => {
+    sum.value = sum.value + 24;
+    cycle.value++;
+    if (cycle.value > 2) hasMore.value = false;
+    infinityValue.value = false;
+  }, 1000);
+};
 </script>
 
 <style>
-  .nut-tab-pane {
-    padding: 0 !important;
-    padding-left: 16px !important;
-  }
-  .infiniteUl {
-    width: 100%;
-    height: calc(100vh - 120px);
-    padding: 0;
-    margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  .infiniteLi {
-    font-size: 14px;
-    color: #333;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-  }
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
 </style>
 ```
 
@@ -109,94 +56,88 @@ app.use(InfiniteLoading);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-tabs v-model="tabsValue" animatedTime="0">
-    <nut-tab-pane title="Custom loading copywriting">
-      <ul class="infiniteUl">
-        <nut-infinite-loading
-          v-model="infinityValue"
-          load-txt="Loading..."
-          load-more-txt="No more ~"
-          :has-more="hasMore"
-          @load-more="loadMore"
-        >
-          <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
-        </nut-infinite-loading>
-      </ul>
-    </nut-tab-pane>
-  </nut-tabs>
+  <nut-infinite-loading
+    v-model="infinityValue"
+    load-txt="Loading..."
+    load-more-txt="End~"
+    :has-more="hasMore"
+    @load-more="loadMore"
+  >
+    <div class="test" v-for="(item, index) in sum" :key="index">{{ index }}</div>
+  </nut-infinite-loading>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      let cycle = 0;
-      const tabsValue = ref(0);
-      const infinityValue = ref(false);
-      const hasMore = ref(true);
-      const letter = [
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'IJ',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-        'R',
-        'S',
-        'T',
-        'U',
-        'V',
-        'W',
-        'X',
-        'Y',
-        'Z'
-      ];
-      const defultList = ref(letter);
-      const loadMore = (done) => {
-        setTimeout(() => {
-          defultList.value = defultList.value.concat(letter);
-          cycle++;
-          if (cycle > 2) hasMore.value = false;
-          infinityValue.value = false;
-        }, 1000);
-      };
-
-      return { tabsValue, loadMore, hasMore, defultList, infinityValue };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const cycle = ref(0);
+const tabsValue = ref(0);
+const sum = ref(24);
+const infinityValue = ref(false);
+const hasMore = ref(true);
+const loadMore = (done) => {
+  setTimeout(() => {
+    sum.value = sum.value + 24;
+    cycle.value++;
+    if (cycle.value > 2) hasMore.value = false;
+    infinityValue.value = false;
+  }, 1000);
+};
 </script>
 
 <style>
-  .nut-tab-pane {
-    padding: 0 !important;
-    padding-left: 16px !important;
-  }
-  .infiniteUl {
-    width: 100%;
-    height: calc(100vh - 120px);
-    padding: 0;
-    margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  .infiniteLi {
-    font-size: 14px;
-    color: #333;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-  }
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+</style>
+```
+
+:::
+
+### Use with PullRefresh
+
+:::demo
+
+```vue
+<template>
+  <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
+    <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
+      <div class="test" v-for="(item, index) in sum" :key="index">{{ index }}</div>
+    </nut-pull-refresh>
+  </nut-infinite-loading>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+const cycle = ref(0);
+const tabsValue = ref(0);
+const sum = ref(24);
+const infinityValue = ref(false);
+const hasMore = ref(true);
+const loadMore = (done) => {
+  setTimeout(() => {
+    sum.value = sum.value + 24;
+    cycle.value++;
+    if (cycle.value > 2) hasMore.value = false;
+    infinityValue.value = false;
+  }, 1000);
+};
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+    sum.value = 24;
+  }, 3000);
+};
+</script>
+
+<style>
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
 </style>
 ```
 
