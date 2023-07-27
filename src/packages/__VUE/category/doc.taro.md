@@ -25,7 +25,7 @@ data 数据格式可参考
 ```html
 <template>
   <nut-category :category="category" @change="change">
-    <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
+    <nut-category-pane :categoryChild="categoryChild" @change="onChange"> </nut-category-pane>
   </nut-category>
 </template>
 <script lang="ts">
@@ -70,7 +70,7 @@ data 数据格式可参考
 ```html
 <template>
   <nut-category :category="category" @change="changeText">
-    <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
+    <nut-category-pane type="text" :categoryChild="categoryChild" @change="onChange"> </nut-category-pane
   ></nut-category>
 </template>
 <script lang="ts">
@@ -108,44 +108,6 @@ data 数据格式可参考
 
 :::
 
-### 自定义分类
-
-:::demo
-
-```html
-<template>
-  <nut-category @change="changeCustom"
-    ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
-  ></nut-category>
-</template>
-<script lang="ts">
-  import { reactive, toRefs, onMounted } from 'vue';
-  import { categoryInfo, categoryChild, customCategory } from './data';
-
-  export default {
-    setup() {
-      const data = reactive({
-        customCategory: [{}]
-      });
-      onMounted(() => {
-        setTimeout(() => {
-          getData();
-        }, 500);
-      });
-      const changeCustom = () => {
-        console.log('点击分类数据');
-      };
-      return {
-        changeCustom,
-        ...toRefs(data)
-      };
-    }
-  };
-</script>
-```
-
-:::
-
 ## API
 
 ### Category Props
@@ -172,9 +134,9 @@ data 数据格式可参考
 
 ### CategoryPane Events
 
-| 事件名    | 说明                 | 回调参数   |
-| --------- | -------------------- | ---------- |
-| on-change | 点击右侧分类数据触发 | 点击的数据 |
+| 事件名 | 说明                 | 回调参数   |
+| ------ | -------------------- | ---------- |
+| change | 点击右侧分类数据触发 | 点击的数据 |
 
 ### CategoryPane Slots
 

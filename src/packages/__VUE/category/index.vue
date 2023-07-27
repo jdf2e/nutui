@@ -1,59 +1,43 @@
 <template>
   <div class="nut-category">
-    <div class="nut-category__cateList">
-      <div v-if="type == 'classify' || type == 'text'">
-        <div class="nut-category__cateListLeft" v-for="(item, index) in category" :key="index">
-          <div
-            :class="[checkIndex == index ? 'nut-category__cateListItemChecked' : 'nut-category__cateListItem']"
-            @click="getChildList(index)"
-          >
-            {{ item.catName }}
-          </div>
+    <div class="nut-category__nav" v-if="type == 'classify' || type == 'text'">
+      <div class="nut-category__cateListLeft" v-for="(item, index) in category" :key="index">
+        <div
+          :class="[checkIndex == index ? 'nut-category__cateListItemChecked' : 'nut-category__cateListItem']"
+          @click="getChildList(index)"
+        >
+          {{ item?.catName }}
         </div>
       </div>
-
-      <slot></slot>
     </div>
+
+    <slot></slot>
   </div>
 </template>
 <script lang="ts">
 import { PropType, ref } from 'vue';
+import { CategoryType } from './types';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('category');
 
-export type CategoryType = {
-  catName?: string;
-  [key: string]: any;
-};
-
 export default create({
   props: {
-    //分类模式
     type: {
-      type: String,
+      type: String as PropType<CategoryType>,
       default: 'classify'
     },
-    //左侧导航栏
     category: {
-      type: Array as PropType<CategoryType>,
-      default: []
+      type: Array,
+      default: () => []
     }
   },
-
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const checkIndex = ref(0);
-    const categoryLeft = ref(false); //是否显示slot
-
     const getChildList = (index: any) => {
       checkIndex.value = index;
       emit('change', index);
     };
-
-    return {
-      getChildList,
-      checkIndex,
-      categoryLeft
-    };
+    return { getChildList, checkIndex };
   }
 });
 </script>

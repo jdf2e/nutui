@@ -48,6 +48,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { CategoryType } from '../category/types';
 const { create } = createComponent('category-pane');
 
 export type ChildType = {
@@ -62,33 +63,26 @@ export type CustomType = {
 
 export default create({
   props: {
-    //分类模式
     type: {
-      type: String,
+      type: String as PropType<CategoryType>,
       default: 'classify'
     },
-
-    //右侧导航数据
     categoryChild: {
       type: Array as PropType<ChildType>,
       default: () => []
     },
-
-    //模式传入自定义数据
     customCategory: {
       type: Array as PropType<CustomType>,
       default: () => []
     }
   },
-
-  setup(props, { emit }) {
-    const onChange = (sku: string) => {
-      emit('onChange', sku);
+  emits: ['change', 'onChange'],
+  setup(_, { emit }) {
+    const onChange = (sku: any) => {
+      emit('change', sku);
+      emit('onChange', sku); // will be deprecated
     };
-
-    return {
-      onChange
-    };
+    return { onChange };
   }
 });
 </script>

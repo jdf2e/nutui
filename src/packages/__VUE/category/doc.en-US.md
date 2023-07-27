@@ -25,7 +25,7 @@ data defination
 ```html
 <template>
   <nut-category :category="category" @change="change">
-    <nut-category-pane :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane>
+    <nut-category-pane :categoryChild="categoryChild" @change="onChange"> </nut-category-pane>
   </nut-category>
 </template>
 <script lang="ts">
@@ -82,7 +82,7 @@ data defination
 ```html
 <template>
   <nut-category :category="category" @change="changeText">
-    <nut-category-pane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-category-pane
+    <nut-category-pane type="text" :categoryChild="categoryChild" @change="onChange"> </nut-category-pane
   ></nut-category>
 </template>
 <script lang="ts">
@@ -134,52 +134,6 @@ data defination
 
 :::
 
-### Custom taxonomy
-
-:::demo
-
-```html
-<template>
-  <nut-category @change="changeCustom"
-    ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
-  ></nut-category>
-</template>
-<script lang="ts">
-  import { reactive, toRefs, onMounted } from 'vue';
-
-  export default {
-    setup() {
-      const data = reactive({
-        customCategory: [{}]
-      });
-      onMounted(() => {
-        setTimeout(() => {
-          getData();
-        }, 500);
-      });
-      const getData = () => {
-        fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-          .then((response) => response.json())
-          .then((res) => {
-            const { customCategory } = res;
-            data.customCategory = customCategory;
-          })
-          .catch((err) => console.log('Oh, error', err));
-      };
-      const changeCustom = () => {
-        console.log('Click to categorize data');
-      };
-      return {
-        changeCustom,
-        ...toRefs(data)
-      };
-    }
-  };
-</script>
-```
-
-:::
-
 ## API
 
 ### Category Props
@@ -206,9 +160,9 @@ data defination
 
 ### CategoryPane Events
 
-| Event     | Description                                | Arguments    |
-| --------- | ------------------------------------------ | ------------ |
-| on-change | Click on the right classified data trigger | Clicked data |
+| Event  | Description                                | Arguments    |
+| ------ | ------------------------------------------ | ------------ |
+| change | Click on the right classified data trigger | Clicked data |
 
 ### CategoryPane Slots
 

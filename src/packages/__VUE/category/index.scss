@@ -1,8 +1,6 @@
 .nut-theme-dark {
   .nut-category {
-    &__cateList {
-      background: $dark-background2;
-    }
+    background: $dark-background2;
 
     &__cateListLeft {
       background: $dark-background4;
@@ -20,9 +18,12 @@
   }
 }
 .nut-category {
-  &__cateList {
-    display: flex;
-    background: $category-bg-color;
+  display: flex;
+  background: $category-bg-color;
+
+  &__nav {
+    min-width: 100px;
+    overflow-y: auto;
   }
 
   &__cateListLeft {
@@ -34,7 +35,6 @@
     width: 100px;
     height: 50px;
     font-size: 13px;
-    font-family: PingFangSC;
     font-weight: normal;
     color: $category-list-item-color;
     display: flex;

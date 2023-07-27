@@ -1,24 +1,33 @@
 <template>
-  <div class="demo">
-    <h2>{{ translate('title1') }}</h2>
-    <nut-category :category="category" @change="change">
-      <nut-category-pane :categoryChild="categoryChild1" @onChange="onChange"> </nut-category-pane>
-    </nut-category>
-    <h2>{{ translate('title2') }}</h2>
-    <nut-category :category="category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="categoryChild2" @onChange="onChange"> </nut-category-pane
-    ></nut-category>
+  <div class="demo full category-demo">
+    <div v-if="tabIndex === 0">
+      <nut-category :category="category" @change="change" style="height: 500px">
+        <nut-category-pane :categoryChild="data.categoryChild1" @change="onChange"></nut-category-pane>
+      </nut-category>
+    </div>
 
-    <h2>{{ translate('title3') }}</h2>
-    <nut-category
-      ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
-    ></nut-category>
+    <template v-if="tabIndex === 1">
+      <nut-category :category="category" @change="changeText">
+        <nut-category-pane type="text" :categoryChild="data.categoryChild2" @change="onChange"> </nut-category-pane
+      ></nut-category>
+    </template>
+
+    <Tabbar safeAreaInsetBottom bottom placeholder v-model="tabIndex">
+      <nut-tabbar-item
+        v-for="item in List"
+        :tab-title="item.title"
+        :icon="item.icon"
+        :key="item.title"
+      ></nut-tabbar-item>
+    </Tabbar>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs, onMounted, defineComponent } from 'vue';
+import { reactive, h, ref, onMounted } from 'vue';
+import { Tabbar } from '@/packages/nutui.vue';
+import { Home, Category } from '@nutui/icons-vue';
 const { translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -34,71 +43,56 @@ const initTranslate = () =>
       title3: 'Custom taxonomy'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const data = reactive({
-      categoryInfo1: {},
-      category: [{}],
-      categoryChild1: [{}],
-      customCategory: [{}],
-      categoryInfo2: {},
-      categoryChild2: [{}]
-    });
-
-    onMounted(() => {
-      setTimeout(() => {
-        getData();
-      }, 500);
-    });
-
-    const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { categoryInfo, categoryChild, customCategory } = res;
-          data.categoryInfo1 = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild1 = categoryChild;
-          data.customCategory = customCategory;
-          data.categoryInfo2 = categoryInfo;
-          data.categoryChild2 = categoryChild;
-        })
-        .catch((err) => console.log('Oh, error', err));
-    };
-
-    const change = (index: any) => {
-      data.categoryChild1 = [].concat(data?.categoryInfo1?.category[index]?.children as any);
-    };
-
-    const changeText = (index: any) => {
-      data.categoryChild2 = [].concat(data.categoryInfo2.category[index].children as any);
-    };
-
-    const changeCustom = (v: any) => {
-      console.log('点击分类数据:' + JSON.stringify(v));
-    };
-
-    const onChange = (v: any) => {
-      console.log('当前分类数据:' + JSON.stringify(v));
-    };
-
-    return {
-      change,
-      onChange,
-      changeText,
-      changeCustom,
-      ...toRefs(data),
-      translate
-    };
-  }
+initTranslate();
+const category = ref([]);
+const data = reactive({
+  categoryInfo1: {},
+  category: [{}],
+  categoryChild1: [{}],
+  categoryInfo2: {},
+  categoryChild2: [{}]
 });
-</script>
+const tabIndex = ref(0);
+onMounted(() => {
+  setTimeout(() => {
+    getData();
+  }, 500);
+});
 
-<style lang="scss" scoped>
-.demo {
-  padding-left: 0 !important;
-  padding-right: 0px !important;
-}
-</style>
+const List = [
+  {
+    title: translate('title1'),
+    icon: h(Home)
+  },
+  {
+    title: translate('title2'),
+    icon: h(Category)
+  }
+];
+
+const getData = () => {
+  fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
+    .then((response) => response.json())
+    .then((res) => {
+      const { categoryInfo, categoryChild } = res;
+      data.categoryInfo1 = categoryInfo;
+      category.value = categoryInfo.category;
+      data.categoryChild1 = categoryChild;
+      data.categoryInfo2 = categoryInfo;
+      data.categoryChild2 = categoryChild;
+    })
+    .catch((err) => console.log('Oh, error', err));
+};
+
+const change = (index: number) => {
+  data.categoryChild1 = data?.categoryInfo1?.category[index]?.children;
+};
+
+const changeText = (index: number) => {
+  data.categoryChild2 = data.categoryInfo2.category[index].children;
+};
+
+const onChange = (v: any) => {
+  console.log('当前分类数据:', v);
+};
+</script>
