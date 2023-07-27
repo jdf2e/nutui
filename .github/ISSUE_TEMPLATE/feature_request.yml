@@ -1,0 +1,35 @@
+name: "\U0001F680 新功能请求 Feature Request"
+description: 对组件库的建议
+labels: ["Feature Request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **在开始之前...**
+
+        这个表单仅用于新功能请求。如果你有使用上的问题，或者不确定它是否是一个 bug，请先：
+
+        - 查看组件文档 [@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro) [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)
+        - 在 [Issue](https://github.com/jdf2e/nutui/issues) 列表中查找解决方案
+        - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/discussions/2356)
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: 这个功能解决了什么问题？
+      description: |
+        请尽可能详尽地说明这个需求的用例和场景。最重要的是：解释清楚是怎样的用户体验需求催生了这个功能上的需求。
+
+        通常来说，我们只考虑添加在现有的 API 下无法轻松实现的功能。新功能的用例也应当足够常见。
+      placeholder: 请填写问题描述
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-API
+    attributes:
+      label: 你期望的 API 是怎样的？
+      description: |
+        描述一下你期望这个新功能的 API 是如何使用的，并提供一些代码示例。请务必使用 Markdown 格式化你的代码片段。
+      placeholder: Assumed API
+    validations:
+      required: true
