@@ -134,41 +134,36 @@ data defination
 
 :::
 
-## API
+## Category
 
-### Category Props
+### Props
 
-| Attribute | Description                                       | Type   | Default    |
-| --------- | ------------------------------------------------- | ------ | ---------- |
-| type      | Classification mode: `classify`, `text`, `custom` | string | `classify` |
-| category  | Left navigation bar data list                     | Array  | `[]`       |
+| Attribute        | Description                             | Type   | Default                                  |
+| ---------------- | --------------------------------------- | ------ | ---------------------------------------- |
+| type             | Classification mode: `classify`, `text` | string | `classify`                               |
+| category         | Left navigation bar data list           | Array  | `[]`                                     |
+| optionKey`4.1.3` | Custom keys in `category`               | Object | `{ catId: 'catId', catName: 'catName' }` |
 
-### Category Events
+### Events
 
-| Event         | Description                                                                                     | Arguments        |
-| ------------- | ----------------------------------------------------------------------------------------------- | ---------------- |
-| change        | Classic classification, click on the left navigation bar to get the data list on the right      | Clicked data     |
-| change-text   | In text classification mode, click on the left navigation bar to get the data list on the right | Input data       |
-| change-custom | Customize, click the left navigation bar to get the data list on the right                      | Current quantity |
+| Event  | Description                                                                                | Arguments    |
+| ------ | ------------------------------------------------------------------------------------------ | ------------ |
+| change | Classic classification, click on the left navigation bar to get the data list on the right | Clicked data |
 
-### CategoryPane Props
+## CategoryPane
+
+### Props
 
 | Attribute       | Description                                               | Type  | Default |
 | --------------- | --------------------------------------------------------- | ----- | ------- |
 | category-child  | The current classification data is displayed on the right | Array | `[]`    |
 | custom-category | Custom categorical data                                   | Array | `[]`    |
 
-### CategoryPane Events
+### Events
 
 | Event  | Description                                | Arguments    |
 | ------ | ------------------------------------------ | ------------ |
 | change | Click on the right classified data trigger | Clicked data |
-
-### CategoryPane Slots
-
-| Name    | Description    |
-| ------- | -------------- |
-| default | Custom content |
 
 ## Theming
 
