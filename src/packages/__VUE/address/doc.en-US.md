@@ -66,7 +66,7 @@ app.use(Address);
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
@@ -101,7 +101,6 @@ If you want to select a province, you need to set the region ID in the order of 
     @change="onChange"
     @close="close"
     custom-address-title="Choose City"
-    :columns-placeholder="placeholder"
   ></nut-address>
 </template>
 <script>
@@ -109,6 +108,7 @@ If you want to select a province, you need to set the region ID in the order of 
   export default {
     setup() {
       const showPopup = ref(false);
+      const value = ref([1, 7, 3]);
       const address = reactive({
         province: [
           { id: 1, name: '北京' },
@@ -131,7 +131,6 @@ If you want to select a province, you need to set the region ID in the order of 
       });
 
       const text = ref('Balizhuang Street, Chaoyang District, Beijing');
-      const value = ref([1, 7, 3]);
 
       const showAddress = () => {
         showPopup.value = !showPopup.value;
@@ -139,12 +138,11 @@ If you want to select a province, you need to set the region ID in the order of 
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
       const close = (val) => {
-        console.log(val);
         text.value = val.data.addressStr;
         value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
       };
@@ -215,7 +213,7 @@ If you want to select a province, you need to set the region ID in the order of 
 
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopup.value = false;
         }
       };
@@ -328,10 +326,9 @@ If you want to select a province, you need to set the region ID in the order of 
   <nut-address
     v-model:visible="showPopupCustomImg"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     @close="close"
     :is-show-custom-address="false"
-    @selected="selected3"
   >
     <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
@@ -409,10 +406,29 @@ If you want to select a province, you need to set the region ID in the order of 
         console.log(nowExistAdd);
       };
 
-      return { showPopupCustomImg, existAddress, text, showCustomImg, close, selected, ...toRefs(icon) };
+      return { showPopupCustomImg, existAddress, text, showCustomImg, close, selected };
     }
   };
 </script>
+<style>
+  .nut-address-custom-buttom {
+    width: 100%;
+    height: 54px;
+    padding: 6px 0px 0;
+    border-top: 1px solid #f2f2f2;
+  }
+  .btn {
+    width: 90%;
+    height: 42px;
+    line-height: 42px;
+    margin: auto;
+    text-align: center;
+    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+    border-radius: 21px;
+    font-size: 15px;
+    color: white;
+  }
+</style>
 ```
 
 :::
@@ -528,10 +544,9 @@ If you want to select a province, you need to set the region ID in the order of 
           console.log('点击了自定义地址左上角的返回按钮');
         }
       };
-
       const onChange = (cal) => {
         const name = address[cal.next];
-        if (name.length < 1) {
+        if (!name || name.length < 1) {
           showPopupOther.value = false;
         }
       };

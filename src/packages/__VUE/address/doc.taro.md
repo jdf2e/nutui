@@ -58,7 +58,7 @@ app.use(Address);
         town: []
       });
 
-      const text = ref('请选择地址');
+      const text = ref('选择地址');
 
       const showAddress = () => {
         showPopup.value = !showPopup.value;
@@ -101,7 +101,6 @@ app.use(Address);
     @change="onChange"
     @close="close"
     custom-address-title="请选择所在地区"
-    :columns-placeholder="placeholder"
   ></nut-address>
 </template>
 <script>
@@ -109,6 +108,7 @@ app.use(Address);
   export default {
     setup() {
       const showPopup = ref(false);
+      const value = ref([1, 7, 3]);
       const address = reactive({
         province: [
           { id: 1, name: '北京' },
@@ -131,7 +131,6 @@ app.use(Address);
       });
 
       const text = ref('北京朝阳区八里庄街道');
-      const value = ref([1, 7, 3]);
 
       const showAddress = () => {
         showPopup.value = !showPopup.value;
@@ -173,7 +172,6 @@ app.use(Address);
     :town="town"
     @change="onChange"
     @close="close"
-    custom-address-title="请选择所在地区"
     height="270px"
   ></nut-address>
 </template>
@@ -290,7 +288,7 @@ app.use(Address);
         }
       ]);
 
-      const text = ref('请选择地址');
+      const text = ref('选择地址');
 
       const showAddressExist = () => {
         showPopupExist.value = true;
@@ -328,10 +326,9 @@ app.use(Address);
   <nut-address
     v-model:visible="showPopupCustomImg"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     @close="close"
     :is-show-custom-address="false"
-    @selected="selected3"
   >
     <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>
@@ -389,7 +386,7 @@ app.use(Address);
         }
       ]);
 
-      const text = ref('请选择地址');
+      const text = ref('选择地址');
 
       const showCustomImg = () => {
         showPopupCustomImg.value = true;
@@ -520,7 +517,7 @@ app.use(Address);
         }
       ]);
       const backBtnIcon = ref('left');
-      const text = ref('请选择地址');
+      const text = ref('选择地址');
 
       const showAddressOther = () => {
         showPopupOther.value = true;
@@ -547,7 +544,6 @@ app.use(Address);
           console.log('点击了自定义地址左上角的返回按钮');
         }
       };
-
       const onChange = (cal) => {
         const name = address[cal.next];
         if (!name || name.length < 1) {
