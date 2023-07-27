@@ -52,7 +52,7 @@
             :city="addressModule.state.city"
             :country="addressModule.state.country"
             :town="addressModule.state.town"
-            @change="addressModule.methods.onChange"
+            @close="addressModule.methods.onClose"
             :custom-address-title="translate('addressTip2')"
           ></nut-address>
         </nut-form-item>
@@ -191,12 +191,9 @@ export default defineComponent({
             formData2.address = '';
           }
         },
-        onChange({ next, value }: any) {
-          formData2.address += value.name;
-          const name = addressModule.state[next];
-          if (name.length < 1) {
-            addressModule.state.show = false;
-          }
+        onClose({ data }: any) {
+          formData2.address = data.addressStr;
+          addressModule.state.show = false;
         }
       }
     });
