@@ -86,7 +86,8 @@ app.use(Swipe);
   </nut-swipe>
 </template>
 <script setup>
-const refSwipe = ref<HTMLElement>();
+import { ref } from 'vue';
+const refSwipe = ref();
 const checked = ref(false);
 const changSwitch = (value) => {
   if (value) {
@@ -122,6 +123,7 @@ const changSwitch = (value) => {
   </nut-swipe>
 </template>
 <script setup>
+import { ref } from 'vue';
 const number = ref(0);
 </script>
 ```
