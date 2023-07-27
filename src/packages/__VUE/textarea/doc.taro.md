@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Textarea } from '@nutui/nutui-taro';
 
@@ -18,18 +18,13 @@ app.use(Textarea);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-textarea v-model="value" />
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref('');
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref('');
 </script>
 ```
 
@@ -39,10 +34,14 @@ app.use(Textarea);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-textarea v-model="value" limit-show max-length="20" />
 </template>
+<script setup>
+import { ref } from 'vue';
+const value = ref('');
+</script>
 ```
 
 :::
@@ -51,10 +50,14 @@ app.use(Textarea);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-textarea v-model="value" autosize />
 </template>
+<script setup>
+import { ref } from 'vue';
+const value = ref('');
+</script>
 ```
 
 :::
@@ -63,7 +66,7 @@ app.use(Textarea);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-textarea readonly model-value="textarea 只读状态" />
   <nut-textarea disabled model-value="textarea 禁用状态" />
