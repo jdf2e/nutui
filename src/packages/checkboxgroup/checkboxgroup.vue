@@ -25,12 +25,12 @@ export default {
     name: String,
     checkBoxData: {
       type: Array,
-      required: true
+      required: true,
     },
 
     value: {
       type: Array,
-      required: true
+      required: true,
     },
     keys: {
       type: Object,
@@ -41,49 +41,49 @@ export default {
           class: 'class',
           label: 'label',
           value: 'value',
-          disabled: 'disabled'
+          disabled: 'disabled',
         };
-      }
+      },
     },
     customClass: {
       type: String,
-      default: ''
+      default: '',
     },
     label: {
       type: [String, Number, Boolean],
-      default: ''
+      default: '',
     },
     size: {
       type: [String, Number],
-      default: 'base'
+      default: 'base',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     vertical: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       ignoreChange: false,
       checkboxValues: [],
-      initialValue: []
+      initialValue: [],
     };
   },
   components: {
-    [nutcheckbox.name]: nutcheckbox
+    [nutcheckbox.name]: nutcheckbox,
   },
   watch: {
     value() {
       this.init();
-    }
+    },
   },
   mounted() {
     this.init();
@@ -91,7 +91,7 @@ export default {
   methods: {
     init() {
       this.initialValue = this.value;
-      this.checkBoxData.map(item => {
+      this.checkBoxData.map((item) => {
         if (typeof item === 'object') {
           item.checked = this.isOptionCheckedByDefault(item);
         }
@@ -125,7 +125,12 @@ export default {
       const e = args[2];
 
       let value = [];
-      const itemValue = item[this.keys.value] || item;
+      let itemValue;
+      if (item[this.keys.value] === undefined) {
+        itemValue = item;
+      } else {
+        itemValue = item[this.keys.value];
+      }
       const i = this.looseIndexOf(this.value, itemValue);
 
       if (checked && i < 0) {
@@ -145,19 +150,19 @@ export default {
         return;
       }
       if (checked === true) {
-        this.checkBoxData.map(item => {
+        this.checkBoxData.map((item) => {
           item.checked = true;
         });
       }
       if (!checked) {
-        this.checkBoxData.map(item => {
+        this.checkBoxData.map((item) => {
           item.checked = !item.checked;
         });
       }
 
       let value = [],
         label = [];
-      let resData = this.checkBoxData.filter(item => {
+      let resData = this.checkBoxData.filter((item) => {
         if (item.checked) {
           value.push(item.value);
           label.push(item.label);
@@ -166,7 +171,7 @@ export default {
       });
       this.$emit('input', value);
       this.$emit('change', value, label, null);
-    }
-  }
+    },
+  },
 };
 </script>

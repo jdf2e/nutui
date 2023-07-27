@@ -8,8 +8,6 @@ coverage/
 .vscode/
 sites/doc/view
 sites/doc/page
-package-lock.json
-yarn.lock
 docshashCache.text
 srchashCache.text
 localsrc.cache
@@ -20,5 +18,4 @@ cache/docs.cache
 lib/plugin/cli/dist_cli/
 lib/plugin/cli/site/doc/view/
 lib/plugin/cli/site/doc/page/
-yarn.lock
 /test_script
