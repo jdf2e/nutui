@@ -20,9 +20,11 @@ app.use(Sticky);
 
 ```vue
 <template>
-  <nut-sticky>
-    <nut-button type="primary">吸顶按钮</nut-button>
-  </nut-sticky>
+  <view style="height: 200vh; padding-top: 100px;">
+    <nut-sticky>
+      <nut-button type="primary">吸顶按钮</nut-button>
+    </nut-sticky>
+  </view>
 </template>
 ```
 
@@ -34,9 +36,11 @@ app.use(Sticky);
 
 ```vue
 <template>
-  <nut-sticky top="120">
-    <nut-button type="primary">吸顶距离120px</nut-button>
-  </nut-sticky>
+  <div style="height: 200vh; padding-top: 200px;">
+    <nut-sticky top="120">
+      <nut-button type="primary">吸顶距离120px</nut-button>
+    </nut-sticky>
+  </div>
 </template>
 ```
 
