@@ -6,7 +6,7 @@ Signature component based on canvas.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Signature } from '@nutui/nutui';
 
@@ -18,31 +18,26 @@ app.use(Signature);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-signature @confirm="confirm" @clear="clear"></nut-signature>
   <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
 </template>
-<script>
-  export default {
-    props: {},
-    setup() {
-      const demoSignUrl = ref('');
-      const confirm = (canvas, data) => {
-        if (data === '') {
-          console.log(canvas);
-          return false;
-        }
-        demoSignUrl.value = data;
-        console.log('The map`s address', canvas, data);
-      };
-      const clear = () => {
-        demoSignUrl.value = '';
-        console.log('clear event');
-      };
-      return { confirm, clear, demoSignUrl };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const demoSignUrl = ref('');
+const confirm = (canvas, data) => {
+  if (data === '') {
+    console.log(canvas);
+    return false;
+  }
+  demoSignUrl.value = data;
+  console.log('img data', canvas, data);
+};
+const clear = () => {
+  demoSignUrl.value = '';
+  console.log('clear');
+};
 </script>
 ```
 
@@ -52,36 +47,35 @@ app.use(Signature);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @confirm="confirm" @clear="clear"></nut-signature>
+  <nut-signature
+    :lineWidth="state.lineWidth"
+    :strokeStyle="state.strokeStyle"
+    @confirm="confirm"
+    @clear="clear"
+  ></nut-signature>
   <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        lineWidth: 4,
-        strokeStyle: 'green'
-      });
-      const demoSignUrl = ref('');
-      const confirm = (canvas, data) => {
-        if (data === '') {
-          console.log(canvas);
-          return false;
-        }
-        demoSignUrl.value = data;
-        console.log('The map`s address', canvas, data);
-      };
-      const clear = () => {
-        demoSignUrl.value = '';
-        console.log('clear event');
-      };
-      return { ...state, demoSignUrl, confirm, clear };
-    }
-  };
+<script setup>
+import { ref, reactive } from 'vue';
+const state = reactive({
+  lineWidth: 4,
+  strokeStyle: 'green'
+});
+const demoSignUrl = ref('');
+const confirm = (canvas, data) => {
+  if (data === '') {
+    console.log(canvas);
+    return false;
+  }
+  demoSignUrl.value = data;
+  console.log('img data', canvas, data);
+};
+const clear = () => {
+  demoSignUrl.value = '';
+  console.log('clear');
+};
 </script>
 ```
 
