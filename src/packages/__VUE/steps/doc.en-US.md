@@ -6,7 +6,7 @@ Split and display the steps of a process, guide users to complete tasks accordin
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Steps, Step } from '@nutui/nutui';
 
@@ -19,7 +19,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current1" @click-step="handleClickStep">
     <nut-step title="Step One">
@@ -30,19 +30,12 @@ app.use(Step);
     <nut-step title="Not started">3</nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current1: 1
-      });
-      const handleClickStep = (index: number) => {
-        console.log(index);
-      };
-      return { ...toRefs(state), handleClickStep };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const current1 = ref(1);
+const handleClickStep = (index) => {
+  console.log(index);
+};
 </script>
 ```
 
@@ -52,7 +45,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current2" progress-dot>
     <nut-step></nut-step>
@@ -63,19 +56,12 @@ app.use(Step);
     <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
   </div>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current2: 1
-      });
-      const handleClickStep = (index: number) => {
-        console.log(index);
-      };
-      return { ...toRefs(state), handleClickStep };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const curren2 = ref(1);
+const handleClickStep = (index) => {
+  console.log(index);
+};
 </script>
 ```
 
@@ -85,7 +71,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current2">
     <nut-step title="Completed" content="Step description">1</nut-step>
@@ -93,16 +79,9 @@ app.use(Step);
     <nut-step title="Not started" content="Step description">3</nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current2: 1
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const curren2 = ref(1);
 </script>
 ```
 
@@ -112,7 +91,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps current="1">
     <nut-step title="Completed">
@@ -126,11 +105,8 @@ app.use(Step);
     </nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { Service, People, Location2 } from '@nutui/icons-vue';
-  export default {
-    components: { Service, People, Location2 }
-  };
+<script setup>
+import { Service, People, Location2 } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -140,7 +116,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps direction="vertical" current="2">
     <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>
@@ -160,7 +136,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps direction="vertical" progress-dot current="2">
     <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>

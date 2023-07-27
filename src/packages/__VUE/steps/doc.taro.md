@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Steps, Step } from '@nutui/nutui-taro';
 
@@ -19,7 +19,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current1" @click-step="handleClickStep">
     <nut-step title="步骤一">
@@ -30,19 +30,12 @@ app.use(Step);
     <nut-step title="未开始">3</nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current1: 1
-      });
-      const handleClickStep = (index: number) => {
-        console.log(index);
-      };
-      return { ...toRefs(state), handleClickStep };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const current1 = ref(1);
+const handleClickStep = (index) => {
+  console.log(index);
+};
 </script>
 ```
 
@@ -52,7 +45,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current2" progress-dot>
     <nut-step></nut-step>
@@ -63,19 +56,12 @@ app.use(Step);
     <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
   </div>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current2: 1
-      });
-      const handleClickStep = (index: number) => {
-        console.log(index);
-      };
-      return { ...toRefs(state), handleClickStep };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const curren2 = ref(1);
+const handleClickStep = (index) => {
+  console.log(index);
+};
 </script>
 ```
 
@@ -85,7 +71,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps :current="current2">
     <nut-step title="已完成" content="步骤描述">1</nut-step>
@@ -93,16 +79,9 @@ app.use(Step);
     <nut-step title="未开始" content="步骤描述">3</nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        current2: 1
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const curren2 = ref(1);
 </script>
 ```
 
@@ -112,7 +91,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps current="1">
     <nut-step title="已完成">
@@ -126,11 +105,8 @@ app.use(Step);
     </nut-step>
   </nut-steps>
 </template>
-<script lang="ts">
-  import { Service, People, Location2 } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Service, People, Location2 }
-  };
+<script setup>
+import { Service, People, Location2 } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -140,7 +116,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps direction="vertical" current="2">
     <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
@@ -156,7 +132,7 @@ app.use(Step);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-steps direction="vertical" progress-dot current="2">
     <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
