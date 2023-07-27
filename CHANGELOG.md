@@ -1,5 +1,11 @@
 ## 2.3.13
 
+`2023-7-27`
+
+* :bug: fix(checkboxgroup): value 为 0 时 change 事件传参错误  @eiinu
+
+## 2.3.13
+
 `2023-2-6`
 
 * :sparkles: feat(uploader): add props capture 直接调起摄像头  @richard1015
