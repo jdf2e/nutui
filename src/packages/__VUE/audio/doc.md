@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Audio } from '@nutui/nutui';
 
@@ -18,30 +18,10 @@ app.use(Audio);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-audio
-    url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-    :muted="muted"
-    :autoplay="autoplay"
-    :loop="true"
-    type="icon"
-  ></nut-audio>
+  <nut-audio url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav" :loop="true" type="icon"></nut-audio>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const data = reactive({
-        muted: false,
-        autoplay: false
-      });
-      return {
-        ...toRefs(data)
-      };
-    }
-  };
-</script>
 ```
 
 :::
@@ -52,47 +32,23 @@ app.use(Audio);
 
 ```vue
 <template>
-  <nut-audio
-    url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-    :muted="muted"
-    :autoplay="autoplay"
-    :loop="false"
-    type="none"
-    ref="audioDemo"
-  >
+  <nut-audio url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav" :loop="false" type="none" ref="audioDemo">
     <div class="nut-voice">
       <div><Voice></Voice></div>
       <div>{{ duration }}"</div>
     </div>
   </nut-audio>
 </template>
-<script lang="ts">
-import { reactive, toRefs, onMounted } from 'vue';
+<script setup>
+import { ref, onMounted } from 'vue';
 import { Voice } from '@nutui/icons-vue';
-export default {
-  components: {
-    Voice
-  },
-  setup() {
-    const audioDemo = ref(null);
-    const data = reactive({
-      muted: false,
-      autoplay: false
-    });
-    const duration = ref(0);
-    onMounted(() => {
-      setTimeout(() => {
-        duration.value = audioDemo.value.second.toFixed();
-      }, 500);
-    });
-
-    return {
-      ...toRefs(data),
-      duration,
-      audioDemo
-    };
-  }
-};
+const audioDemo = ref(null);
+const duration = ref(0);
+onMounted(() => {
+  setTimeout(() => {
+    duration.value = audioDemo.value.second.toFixed();
+  }, 500);
+});
 </script>
 
 <style>
@@ -114,15 +70,9 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-audio
-    url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-    :muted="muted"
-    :autoplay="autoplay"
-    :loop="true"
-    type="progress"
-  >
+  <nut-audio url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav" :loop="true" type="progress">
     <div class="nut-audio-operate-group">
       <nut-audio-operate type="back"></nut-audio-operate>
       <nut-audio-operate type="play"></nut-audio-operate>
@@ -131,20 +81,6 @@ export default {
     </div>
   </nut-audio>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const data = reactive({
-        muted: false,
-        autoplay: false
-      });
-      return {
-        ...toRefs(data)
-      };
-    }
-  };
-</script>
 ```
 
 :::
@@ -157,8 +93,6 @@ export default {
 <template>
   <nut-audio
     url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-    :muted="muted"
-    :autoplay="autoplay"
     :loop="false"
     type="progress"
     @forward="forward"
@@ -181,56 +115,25 @@ export default {
     </div>
   </nut-audio>
 </template>
-<script lang="ts">
-import { reactive, toRefs } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop } from '@nutui/icons-vue';
-export default {
-  components: {
-    PlayDoubleBack,
-    PlayDoubleForward,
-    PlayStart,
-    PlayStop
-  },
-  setup() {
-    const data = reactive({
-      muted: false,
-      autoplay: false
-    });
-    const playing = ref(false);
-
-    const fastBack = () => {
-      console.log('倒退');
-    };
-
-    const forward = (progress: number) => {
-      console.log('快进', '当前时间' + progress);
-    };
-
-    const changeStatus = (status: boolean) => {
-      console.log('当前播放状态', status);
-      playing.value = status;
-    };
-
-    const ended = () => {
-      console.log('播放结束');
-    };
-
-    const changeProgress = (val: number) => {
-      console.log('改变进度条', val);
-    };
-
-    return {
-      ...toRefs(data),
-      playing,
-      fastBack,
-      forward,
-      changeStatus,
-      audioDemo,
-      ended,
-      duration,
-      changeProgress
-    };
-  }
+const playing = ref(false);
+const fastBack = () => {
+  console.log('倒退');
+};
+const forward = (progress) => {
+  console.log('快进', '当前时间' + progress);
+};
+const changeStatus = (status) => {
+  console.log('当前播放状态', status);
+  playing.value = status;
+};
+const ended = () => {
+  console.log('播放结束');
+};
+const changeProgress = (val) => {
+  console.log('改变进度条', val);
 };
 </script>
 ```
