@@ -26,10 +26,8 @@ app.use(Backtop);
 </view>
 <style>
   .test {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    border: 1px solid gray;
+    padding: 12px 0 12px 20px;
+    border-top: 1px solid #eee;
   }
 </style>
 ```

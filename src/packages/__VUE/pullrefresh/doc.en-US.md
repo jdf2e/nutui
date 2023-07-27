@@ -6,7 +6,7 @@ Used to provide interactive operations for pull-down refresh.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { PullRefresh } from '@nutui/nutui';
 
@@ -20,27 +20,30 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-    <div class="pull-block">Try to pull down!</div>
+    <div>Try to pull down!</div>
+    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
   </nut-pull-refresh>
 </template>
 
-<script>
-  import { ref, reactive, onMounted, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const refresh = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
+
+<style>
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+</style>
 ```
 
 :::
@@ -51,30 +54,33 @@ The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，res
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pull-refresh v-model="refresh2" loosingTxt="Relax" loadingTxt="Desperate loading..." @refresh="refreshFun">
-    <template #pullingTxt>
+  <nut-pull-refresh v-model="refresh2" loosing-txt="Relax" loading-txt="Desperate loading..." @refresh="refreshFun">
+    <template #pulling-txt>
       <div>Pull</div>
     </template>
-    <div class="pull-block">Try to pull down!</div>
+    <div>Try to pull down!</div>
+    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
   </nut-pull-refresh>
 </template>
 
-<script>
-  import { ref, reactive, onMounted, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const refresh2 = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh2.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
+
+<style>
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+</style>
 ```
 
 :::
@@ -85,39 +91,30 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="parentpage">
     <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-      <div class="pull-letter" v-for="item in refreshList2">
-        <div>{{item}}</div>
-      </div>
+      <div v-for="(item, index) in 24" class="test">{{ index }}</div>
     </nut-pull-refresh>
   </div>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      setup(props) {
-      const refresh = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-    }
-  }
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
 
 <style>
-  .parentpage {
-    height: 600px;
-    overflow: auto;
-  }
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
 </style>
 ```
 
