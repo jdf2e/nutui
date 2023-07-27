@@ -222,7 +222,6 @@ app.use(AddressList);
         clickItem,
         delClick,
         editClick,
-        setClick,
         delClickSwipe,
         addAddress,
         dataOptions
