@@ -20,9 +20,11 @@ app.use(Sticky);
 
 ```vue
 <template>
-  <nut-sticky>
-    <nut-button type="primary">吸顶按钮</nut-button>
-  </nut-sticky>
+  <div style="height: 200vh; padding-top: 100px;">
+    <nut-sticky>
+      <nut-button type="primary">吸顶按钮</nut-button>
+    </nut-sticky>
+  </div>
 </template>
 ```
 
@@ -34,9 +36,11 @@ app.use(Sticky);
 
 ```vue
 <template>
-  <nut-sticky top="120">
-    <nut-button type="primary">吸顶距离120px</nut-button>
-  </nut-sticky>
+  <div style="height: 200vh; padding-top: 200px;">
+    <nut-sticky top="120">
+      <nut-button type="primary">吸顶距离120px</nut-button>
+    </nut-sticky>
+  </div>
 </template>
 ```
 
@@ -48,10 +52,12 @@ app.use(Sticky);
 
 ```vue
 <template>
-  <div style="width: 100%; height: 150px; background: white" ref="container">
-    <nut-sticky top="20" :container="container">
-      <nut-button type="info">指定容器</nut-button>
-    </nut-sticky>
+  <div style="height: 200vh; padding-top: 100px">
+    <div style="width: 100%; height: 150px; background: pink" ref="container">
+      <nut-sticky top="20" :container="container">
+        <nut-button type="info">指定容器</nut-button>
+      </nut-sticky>
+    </div>
   </div>
 </template>
 <script setup>
@@ -68,9 +74,11 @@ const container = ref(null);
 
 ```vue
 <template>
-  <nut-sticky bottom="50" position="bottom">
-    <nut-button type="primary">吸底距离 50px</nut-button>
-  </nut-sticky>
+  <div style="height: 100vh; padding-top: 100vh">
+    <nut-sticky bottom="50" position="bottom">
+      <nut-button type="primary">吸底距离 50px</nut-button>
+    </nut-sticky>
+  </div>
 </template>
 ```
 

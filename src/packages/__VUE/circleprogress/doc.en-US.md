@@ -92,8 +92,7 @@ const gradientColor = {
   <nut-button type="primary" @click="add">add</nut-button>
 </template>
 <script setup>
-import { reactive, ref } from 'vue';
-const percent = ref(30);
+import { ref } from 'vue';
 const percent = ref(30);
 const add = () => {
   percent.value = Math.min(100, percent.value + 10);

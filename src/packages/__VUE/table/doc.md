@@ -412,7 +412,7 @@ app.use(Table);
                   size: 'small',
                   type: 'primary'
                 },
-                'Hello'
+                () => 'Hello'
               );
             }
           },
@@ -438,7 +438,7 @@ app.use(Table);
                     window.open('https://www.jd.com');
                   }
                 },
-                '跳转到京东'
+                () => '跳转到京东'
               );
             }
           }

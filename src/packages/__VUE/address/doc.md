@@ -101,7 +101,6 @@ app.use(Address);
     @change="onChange"
     @close="close"
     custom-address-title="请选择所在地区"
-    :columns-placeholder="placeholder"
   ></nut-address>
 </template>
 <script>
@@ -132,7 +131,6 @@ app.use(Address);
       });
 
       const text = ref('北京朝阳区八里庄街道');
-      const value = ref([1, 7, 3]);
 
       const showAddress = () => {
         showPopup.value = !showPopup.value;
@@ -331,7 +329,6 @@ app.use(Address);
     :exist-address="existAddress"
     @close="close"
     :is-show-custom-address="false"
-    @selected="selected3"
   >
     <template #unselected-icon>
       <Heart1 style="margin-right:8px"></Heart1>

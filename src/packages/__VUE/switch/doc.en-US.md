@@ -6,7 +6,7 @@ Used to turn options on or off.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Switch } from '@nutui/nutui';
 
@@ -18,18 +18,13 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch v-model="checked" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -39,18 +34,13 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch v-model="checked" disable />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -60,18 +50,13 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-switch v-model="checked" loading active-color />
+  <nut-switch v-model="checked" loading active-color="red" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -81,27 +66,16 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch v-model="checked" @change="change" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-
-  export default {
-    setup() {
-      const checked = ref(true);
-      const change = (value: boolean, event: Event) => {
-        showToast.text(`value：${value}`);
-      };
-      return {
-        checked,
-        change
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
+const change = (value, event) => {
+  console.log(`value：${value}`);
+};
 </script>
 ```
 
@@ -111,31 +85,19 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch :model-value="checkedAsync" @change="changeAsync" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-
-  export default {
-    setup() {
-      const checkedAsync = ref(true);
-      const changeAsync = (value: boolean, event: Event) => {
-        showToast.text(`after 2 second： ${value}`);
-        setTimeout(() => {
-          checkedAsync.value = value;
-        }, 2000);
-      };
-
-      return {
-        checkedAsync,
-        changeAsync
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checkedAsync = ref(true);
+const changeAsync = (value, event) => {
+  console.log(`2s ${value}`);
+  setTimeout(() => {
+    checkedAsync.value = value;
+  }, 2000);
+};
 </script>
 ```
 
@@ -145,18 +107,13 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch v-model="checked" active-color="blue" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -166,18 +123,13 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-switch v-model="checked" active-text="Open" inactive-text="Closed" />
+  <nut-switch v-model="checked" active-text="open" inactive-text="close" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -187,21 +139,16 @@ app.use(Switch);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-switch v-model="checked" loading>
     <template #icon><Loading name="loading" /></template>
   </nut-switch>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { Loading } from '@nutui/icons-vue';
-  export default {
-    setup() {
-      const checked = ref(true);
-      return { checked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { Loading } from '@nutui/icons-vue';
+const checked = ref(true);
 </script>
 ```
 

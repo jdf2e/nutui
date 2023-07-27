@@ -114,7 +114,6 @@ app.use(Invoice);
       };
 
       return {
-        translate,
         data,
         formValue,
         submit,

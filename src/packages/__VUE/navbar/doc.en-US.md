@@ -6,7 +6,7 @@ Provide navigation function, often used at the top of the page.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Navbar } from '@nutui/nutui';
 
@@ -18,14 +18,14 @@ app.use(Navbar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-navbar @on-click-back="back" @on-click-title="title" title="Order details">
     <template #left>
       <div>Back</div>
     </template>
     <template #right>
-      <ShareN width="16px"></ShareN>
+      <ShareN width="16px" />
     </template>
   </nut-navbar>
 
@@ -48,37 +48,28 @@ app.use(Navbar);
     desc="Edit"
   >
     <template #title-icon>
-      <Cart2 width="16px"></Cart2>
+      <Cart2 width="16px" />
     </template>
     <template #right>
-      <MoreX class="right" width="16px"></MoreX>
+      <MoreX class="right" width="16px" />
     </template>
   </nut-navbar>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-  import { ShareN, Cart2, MoreX } from '@nutui/icons-vue';
-  export default {
-    components: { ShareN, Cart2, MoreX },
-    setup() {
-      const methods = {
-        back() {
-          console.log('Click Back');
-        },
-        title() {
-          console.log('Click Title');
-        },
-        rightClick() {
-          console.log('Click Right');
-        }
-      };
-
-      return {
-        ...methods
-      };
-    }
-  };
+<script setup>
+import { ShareN, Cart2, MoreX } from '@nutui/icons-vue';
+const back = () => {
+  console.log('Click Back');
+};
+const title = () => {
+  console.log('Click Title');
+};
+const rightClick = () => {
+  console.log('Click Right');
+};
+const icon = () => {
+  console.log('Click Icon');
+};
 </script>
 ```
 
@@ -88,7 +79,7 @@ app.use(Navbar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="Edit">
     <template #content>
@@ -104,34 +95,22 @@ app.use(Navbar);
   </nut-navbar>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-  import { MoreX } from '@nutui/icons-vue';
-  export default {
-    components: { MoreX },
-    setup() {
-      const tab1value = ref(0);
-      const methods = {
-        back() {
-          console.log('Click Back');
-        },
-        title() {
-          console.log('Click Title');
-        },
-        rightClick() {
-          console.log('Click Right');
-        },
-        changeTab(tab: any) {
-          tab1value.value = tab.paneKey as number;
-        }
-      };
-
-      return {
-        tab1value,
-        ...methods
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { MoreX } from '@nutui/icons-vue';
+const tab1value = ref(0);
+const back = () => {
+  console.log('Click Back');
+};
+const title = () => {
+  console.log('Click Title');
+};
+const rightClick = () => {
+  console.log('Click Right');
+};
+const changeTab = (tab) => {
+  tab1value.value = tab.paneKey;
+};
 </script>
 ```
 
@@ -141,7 +120,7 @@ app.use(Navbar);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-navbar @on-click-back="back">
     <template #content>
@@ -158,27 +137,16 @@ app.use(Navbar);
   </nut-navbar>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-  import { HorizontalN } from '@nutui/icons-vue';
-  export default {
-    components: { HorizontalN },
-    setup() {
-      const tab2value = ref(0);
-      const methods = {
-        back() {
-          console.log('Click Back');
-        },
-        changeTabList(tab: any) {
-          tab2value.value = tab.paneKey as number;
-        }
-      };
-      return {
-        tab2value,
-        ...methods
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { HorizontalN } from '@nutui/icons-vue';
+const tab2value = ref(0);
+const back = () => {
+  console.log('Click Back');
+};
+const changeTabList = (tab) => {
+  tab2value.value = tab.paneKey;
+};
 </script>
 ```
 

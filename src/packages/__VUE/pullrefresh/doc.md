@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { PullRefresh } from '@nutui/nutui';
 
@@ -20,27 +20,30 @@ app.use(PullRefresh);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-    <div class="pull-block">向下拉试试吧！</div>
+    <div>向下拉试试吧！</div>
+    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
   </nut-pull-refresh>
 </template>
 
-<script>
-  import { ref, reactive, onMounted, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const refresh = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
+
+<style>
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+</style>
 ```
 
 :::
@@ -51,30 +54,33 @@ app.use(PullRefresh);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pull-refresh v-model="refresh2" loosingTxt="松开吧" loadingTxt="玩命加载中..." @refresh="refreshFun">
-    <template #pullingTxt>
+  <nut-pull-refresh v-model="refresh" loosing-txt="松开吧" loading-txt="玩命加载中..." @refresh="refreshFun">
+    <template #pulling-txt>
       <div>用力拉</div>
     </template>
-    <div class="pull-block">向下拉试试吧！</div>
+    <div>向下拉试试吧！</div>
+    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
   </nut-pull-refresh>
 </template>
 
-<script>
-  import { ref, reactive, onMounted, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const refresh2 = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh2.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
+
+<style>
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
+</style>
 ```
 
 :::
@@ -85,39 +91,30 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="parentpage">
     <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-      <div class="pull-letter" v-for="item in refreshList2">
-        <div>{{item}}</div>
-      </div>
+      <div v-for="(item, index) in 24" class="test">{{ index }}</div>
     </nut-pull-refresh>
   </div>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      setup(props) {
-      const refresh = ref(false);
-      const refreshFun = () => {
-        setTimeout(() => {
-          refresh.value = false;
-        }, 3000);
-      };
-      return { refresh, refreshFun };
-    }
-    }
-  }
+<script setup>
+import { ref } from 'vue';
+const refresh = ref(false);
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+  }, 3000);
+};
 </script>
 
 <style>
-  .parentpage {
-    height: 600px;
-    overflow: auto;
-  }
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
 </style>
 ```
 

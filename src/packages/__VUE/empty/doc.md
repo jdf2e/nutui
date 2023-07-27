@@ -45,6 +45,7 @@ app.use(Empty);
   </nut-tabs>
 </template>
 <script setup>
+import { ref } from 'vue';
 const tabValue = ref(0);
 </script>
 ```

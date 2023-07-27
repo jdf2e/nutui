@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Rate } from '@nutui/nutui-taro';
 
@@ -18,20 +18,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" />
-  </nut-cell>
+  <nut-rate v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -41,20 +34,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate allow-half v-model="value"></nut-rate>
-  </nut-cell>
+  <nut-rate allow-half v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3.5);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3.5);
 </script>
 ```
 
@@ -64,22 +50,14 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate :custom-icon="HeartFill" v-model="value" />
-  </nut-cell>
+  <nut-rate :custom-icon="HeartFill" v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { HeartFill } from '@nutui/icons-vue-taro';
-  export default {
-    components: { HeartFill },
-    setup() {
-      const value = ref(3);
-      return { value, HeartFill };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { HeartFill } from '@nutui/icons-vue-taro';
+const value = ref(3);
 </script>
 ```
 
@@ -89,20 +67,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate :count="6" v-model="value" />
-  </nut-cell>
+  <nut-rate count="10" v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -112,20 +83,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" active-color="#FFC800" />
-  </nut-cell>
+  <nut-rate v-model="value" active-color="#FFC800" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -135,20 +99,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate disabled v-model="value" />
-  </nut-cell>
+  <nut-rate disabled v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -158,20 +115,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" readonly />
-  </nut-cell>
+  <nut-rate v-model="value" readonly />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -181,23 +131,16 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" @change="onChange" />
-  </nut-cell>
+  <nut-rate v-model="value" @change="onChange" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      const onChange = (val) => {
-        console.log(val);
-      };
-      return { value, onChange };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
+const onChange = (val) => {
+  console.log(val);
+};
 </script>
 ```
 
@@ -207,20 +150,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" size="35" />
-  </nut-cell>
+  <nut-rate v-model="value" size="35" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -234,11 +170,11 @@ app.use(Rate);
 | ------------ | --------------------------------------------------------------------------------------------------- | ---------------- | ----------- |
 | v-model      | 当前 `star` 数，可使用 `v-model` 双向绑定数据                                                       | number \| string | -           |
 | count        | `star` 总数                                                                                         | number \| string | `5`         |
-| active-color | 图标选中颜色                                                                                        | string           | `#fa200c `  |
+| active-color | 图标选中颜色                                                                                        | string           | `#fa200c`   |
 | void-color   | 图标未选中颜色                                                                                      | string           | `#ccc`      |
-| allow-half   | 是否半星                                                                                            | Boolean          | `false`     |
-| readonly     | 是否只读                                                                                            | Boolean          | `false`     |
-| disabled     | 是否禁用                                                                                            | Boolean          | `false`     |
+| allow-half   | 是否半星                                                                                            | boolean          | `false`     |
+| readonly     | 是否只读                                                                                            | boolean          | `false`     |
+| disabled     | 是否禁用                                                                                            | boolean          | `false`     |
 | spacing      | 间距                                                                                                | number \| string | `20`        |
 | size         | `Icon` 尺寸大小，如 `20px` `2em` `2rem`                                                             | number \| string | -           |
 | custom-icon  | 自定义 `Icon`, 传入 [VNode](https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes) | VNode            | `StarFillN` |
