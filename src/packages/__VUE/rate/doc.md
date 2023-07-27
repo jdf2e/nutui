@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Rate } from '@nutui/nutui';
 
@@ -18,20 +18,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" />
-  </nut-cell>
+  <nut-rate v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -41,20 +34,13 @@ app.use(Rate);
 
 :::demo
 
-```html
+```vue
 <template>
-    <nut-cell class="cell">
-        <nut-rate allow-half v-model="value"></nut-rate>
-    <nut-cell>
+  <nut-rate allow-half v-model="value" />
 </template>
-<script lang="ts">
+<script setup>
 import { ref } from 'vue';
-export default {
-    setup() {
-        const value = ref(3.5);
-        return { value }
-    }
-}
+const value = ref(3.5);
 </script>
 ```
 
@@ -64,22 +50,14 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate :custom-icon="HeartFill" v-model="value" />
-  </nut-cell>
+  <nut-rate :custom-icon="HeartFill" v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { HeartFill } from '@nutui/icons-vue';
-  export default {
-    components: { HeartFill },
-    setup() {
-      const value = ref(3);
-      return { value, HeartFill };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { HeartFill } from '@nutui/icons-vue';
+const value = ref(3);
 </script>
 ```
 
@@ -89,20 +67,13 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate count="10" v-model="value" />
-  </nut-cell>
+  <nut-rate count="10" v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -112,20 +83,13 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" active-color="#FFC800" />
-  </nut-cell>
+  <nut-rate v-model="value" active-color="#FFC800" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -135,20 +99,13 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate disabled v-model="value" />
-  </nut-cell>
+  <nut-rate disabled v-model="value" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -158,20 +115,13 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" readonly />
-  </nut-cell>
+  <nut-rate v-model="value" readonly />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
@@ -181,25 +131,16 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" @change="onChange" />
-  </nut-cell>
+  <nut-rate v-model="value" @change="onChange" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const value = ref(3);
-      const onChange = (val) => {
-        showToast.text(val);
-      };
-      return { value, onChange };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
+const onChange = (val) => {
+  console.log(val);
+};
 </script>
 ```
 
@@ -209,20 +150,13 @@ export default {
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell class="cell">
-    <nut-rate v-model="value" size="35" />
-  </nut-cell>
+  <nut-rate v-model="value" size="35" />
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref(3);
-      return { value };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(3);
 </script>
 ```
 
