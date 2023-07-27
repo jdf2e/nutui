@@ -65,70 +65,82 @@ app.use(FormItem);
 <template>
   <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
     <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
-      <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="Please enter your name" type="text" />
+      <nut-input
+        class="nut-input-text"
+        v-model="dynamicForm.state.name"
+        placeholder="Please enter your name"
+        type="text"
+      />
     </nut-form-item>
-    <nut-form-item :label="'Tel'+index" :prop="'tels.' + index + '.value'" required
-      :rules="[{ required: true, message: 'Please enter tel'+index }]" :key="item.key"
-      v-for="(item,index) in dynamicForm.state.tels">
+    <nut-form-item
+      :label="'Tel'+index"
+      :prop="'tels.' + index + '.value'"
+      required
+      :rules="[{ required: true, message: 'Please enter tel'+index }]"
+      :key="item.key"
+      v-for="(item,index) in dynamicForm.state.tels"
+    >
       <nut-input class="nut-input-text" v-model="item.value" :placeholder="'Please enter tel'+index" type="text" />
     </nut-form-item>
     <nut-cell>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">Add</nut-button>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove">Remove</nut-button>
-      <nut-button type="primary" style="margin-right: 10px" size="small" @click="dynamicForm.methods.submit">Submit</nut-button>
+      <nut-button type="primary" style="margin-right: 10px" size="small" @click="dynamicForm.methods.submit"
+        >Submit</nut-button
+      >
       <nut-button size="small" @click="dynamicForm.methods.reset">Reset prompt status</nut-button>
     </nut-cell>
   </nut-form>
 </template>
 <script lang="ts">
-import { ref,reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
-export default {
-  setup(){
-    const dynamicRefForm = ref<any>(null);
-    const dynamicForm = {
-      state: reactive({
-        name: '',
-        tels: new Array({
-          key: 1,
-          value: ''
-        })
-      }),
-
-      methods: {
-        submit() {
-          dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
-            if (valid) {
-              console.log('success', dynamicForm);
-            } else {
-              showToast.warn(errors[0].message);
-              console.log('error submit!!', errors);
-            }
-          });
-        },
-        reset() {
-          dynamicRefForm.value.reset();
-        },
-        remove() {
-          dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
-        },
-        add() {
-          let newIndex = dynamicForm.state.tels.length;
-          dynamicForm.state.tels.push({
-            key: Date.now(),
+  import { ref, reactive } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup() {
+      const dynamicRefForm = ref<any>(null);
+      const dynamicForm = {
+        state: reactive({
+          name: '',
+          tels: new Array({
+            key: 1,
             value: ''
-          });
+          })
+        }),
+
+        methods: {
+          submit() {
+            dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
+              if (valid) {
+                console.log('success', dynamicForm);
+              } else {
+                showToast.warn(errors[0].message);
+                console.log('error submit!!', errors);
+              }
+            });
+          },
+          reset() {
+            dynamicRefForm.value.reset();
+          },
+          remove() {
+            dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
+          },
+          add() {
+            let newIndex = dynamicForm.state.tels.length;
+            dynamicForm.state.tels.push({
+              key: Date.now(),
+              value: ''
+            });
+          }
         }
-      }
-    };
-    return {
-      dynamicForm,
-      dynamicRefForm
-    };
-  }
-}
-</>
+      };
+      return {
+        dynamicForm,
+        dynamicRefForm
+      };
+    }
+  };
+</script>
 ```
 
 :::
