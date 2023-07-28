@@ -1,4 +1,5 @@
 export interface PickerOption {
+  [key: string]: any;
   text: string | number;
   value: string | number;
   disabled?: string;
@@ -22,3 +23,9 @@ export type TouchParams = {
   lastY: number;
   lastTime: number;
 };
+
+export interface FieldNames {
+  text?: string;
+  value?: string;
+  children?: string;
+}

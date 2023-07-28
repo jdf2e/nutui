@@ -101,6 +101,68 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
 </script>
 ```
 
+### Custom Columns Field
+
+:::demo
+
+```html
+<template>
+  <nut-picker
+    v-model="selectedValue"
+    :columns="columns"
+    :field-names="fieldNames"
+    title="Choose city"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup(props) {
+      const selectedValue = ref([]);
+      const fieldNames = ref({
+        text: 'name',
+        value: 'code',
+        children: 'list'
+      });
+      const customColumns = ref([
+        {
+          name: 'ZheJiang',
+          code: 'ZheJiang',
+          list: [
+            {
+              name: 'HangZhou',
+              code: 'HangZhou',
+              list: [
+                { name: 'XiHu', code: 'XiHu' },
+                { name: 'YuHang', code: 'YuHang' }
+              ]
+            },
+            {
+              name: 'WenZhou',
+              code: 'WenZhou',
+              list: [
+                { name: 'LuCheng', code: 'LuCheng' },
+                { name: 'OuHai', code: 'OuHai' }
+              ]
+            }
+          ]
+        }
+      ]);
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { columns, selectedValue, confirm };
+    }
+  };
+</script>
+```
+
 :::
 
 ### Default Index
@@ -360,18 +422,19 @@ Use the children field of the Columns attribute to cascade options
 
 ### Props
 
-| Attribute          | Description                        | Type                               | Default   |
-| ------------------ | ---------------------------------- | ---------------------------------- | --------- |
-| v-model:value      | Default Index                      | Array                              | `[]`      |
-| columns            | Columns data                       | PickerOption[] \| PickerOption[][] | -         |
-| title              | Toolbar title                      | string                             | -         |
-| cancel-text        | Text of cancel button              | string                             | `cancel`  |
-| ok-text            | Text of confirm button             | string                             | `confirm` |
-| three-dimensional  | Turn on 3D effects                 | boolean                            | `true`    |
-| swipe-duration     | Duration of the momentum animation | number \| string                   | `1000`    |
-| visible-option-num | Count of visible columns           | number \| string                   | `7`       |
-| option-height      | Option height                      | number \| string                   | `36`      |
-| show-toolbar       | Whether to show toolbar            | boolean                            | `true`    |
+| Attribute          | Description                        | Type                               | Default                                                  |
+| ------------------ | ---------------------------------- | ---------------------------------- | -------------------------------------------------------- |
+| v-model:value      | Default Index                      | Array                              | `[]`                                                     |
+| columns            | Columns data                       | PickerOption[] \| PickerOption[][] | -                                                        |
+| field-names        | custom columns field               | object                             | `{ text: 'text', value: 'value', children: 'children' }` |
+| title              | Toolbar title                      | string                             | -                                                        |
+| cancel-text        | Text of cancel button              | string                             | `cancel`                                                 |
+| ok-text            | Text of confirm button             | string                             | `confirm`                                                |
+| three-dimensional  | Turn on 3D effects                 | boolean                            | `true`                                                   |
+| swipe-duration     | Duration of the momentum animation | number \| string                   | `1000`                                                   |
+| visible-option-num | Count of visible columns           | number \| string                   | `7`                                                      |
+| option-height      | Option height                      | number \| string                   | `36`                                                     |
+| show-toolbar       | Whether to show toolbar            | boolean                            | `true`                                                   |
 
 ### Events
 
