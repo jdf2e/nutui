@@ -45,7 +45,7 @@ export const usePicker = (props: any, emit: any) => {
     });
   });
 
-  const childrenField = computed(() => props.fieldNames.children);
+  const childrenField = computed(() => columnFieldNames.value.children);
 
   // 当前类型
   const columnsType = computed(() => {
