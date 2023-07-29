@@ -1,5 +1,6 @@
-name: "\U0001F680 新功能请求 Feature Request"
-description: 对组件库的建议
+name: 🚀 新功能请求 Feature Request
+description: 对组件库或者仓库本身的建议和想法。
+title: "[FR]: "
 labels: ["Feature Request"]
 body:
   - type: markdown
@@ -11,8 +12,8 @@ body:
 
         - 查看组件文档 [@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro) [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)
         - 在 [Issue](https://github.com/jdf2e/nutui/issues) 列表中查找解决方案
-        - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/discussions/2356)
-
+        - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/issues/2461)
+  
   - type: textarea
     id: problem-description
     attributes:
@@ -20,16 +21,17 @@ body:
       description: |
         请尽可能详尽地说明这个需求的用例和场景。最重要的是：解释清楚是怎样的用户体验需求催生了这个功能上的需求。
 
-        通常来说，我们只考虑添加在现有的 API 下无法轻松实现的功能。新功能的用例也应当足够常见。
-      placeholder: 请填写问题描述
+        通常来说，我们只考虑添加在现有的组件方式无法轻松实现的功能。新功能的用例也应当足够常见。
+      placeholder: 请填写
     validations:
       required: true
+
   - type: textarea
     id: proposed-API
     attributes:
-      label: 你期望的 API 是怎样的？
+      label: 你期望的组件设计是怎样的？
       description: |
         描述一下你期望这个新功能的 API 是如何使用的，并提供一些代码示例。请务必使用 Markdown 格式化你的代码片段。
-      placeholder: Assumed API
+      placeholder: 请填写
     validations:
       required: true

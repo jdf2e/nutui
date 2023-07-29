@@ -1,0 +1,111 @@
+name: 🐛 错误报告 Bug Report
+description: 创建一个 Issue 帮助我们改进组件库。
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **在开始之前……**
+
+        这个表单仅用于错误报告。对于在使用中遇到的问题，请优先使用以下方式寻找解决方案：
+
+        - 查看组件文档 [@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro) [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)
+        - 在 [Issue](https://github.com/jdf2e/nutui/issues) 列表中查找解决方案
+        - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/issues/2461)
+
+        注意：如果你发现一个已关闭 issue 的问题在最新版本中仍然存在，请不要在旧 issue 下面留言，而应该使用当前的表单创建新的 issue。
+
+  - type: dropdown
+    id: npm
+    attributes:
+      label: NutUI 包名
+      description: 选择使用的 NutUI NPM 包名
+      options:
+        - "@nutui/nutui"
+        - "@nutui/nutui-taro"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: NutUI 版本号
+      description: 输入使用的 NutUI 版本号
+      placeholder: 例如：4.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 平台
+      multiple: true
+      description: 选择对应的平台
+      options:
+        - h5
+        - weapp
+        - alipay
+        - jd
+        - tt
+        - 其他小程序
+    validations:
+      required: true
+
+  - type: input
+    id: reproduce-link
+    attributes:
+      label: 重现链接
+      description: |
+        请提供一个 **最小化** **可复现** 的代码实例。
+        - 最小化：意味着它应该只包含与问题相关的代码与配置，而不是一个庞大的、难以排查问题的仓库。
+        - 可复现：这是创建 issue 的基础要求。
+
+        1、你可以通过 [Playground](https://nutui.jd.com/playground/) 创建一个可复现实例，它基于组件库最新版本的代码。
+
+        2、你也可以通过 [CodeSandbox](https://codesandbox.io/s/nutui4-vite-demo-2fw7xh?file=/src/App.vue) 创建一个可复现实例，它支持选择特定版本的 NutUI。
+
+        3、对于 `@nutui/nutui-taro` 中的问题，建议提供代码仓库。
+
+        请不要乱填一个链接，那只会让你的 issue 被直接关闭。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: 重现步骤
+      description: |
+        简洁清晰的重现步骤能够帮助我们更迅速地定位问题所在。
+        
+        请使用 Markdown 语法格式化步骤中涉及的列表、代码片段等，否则它将会非常丑陋。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望的结果是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: actually-happening
+    attributes:
+      label: 实际的结果是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: taro
+    attributes:
+      label: 环境信息
+      description: |
+        对于 `@nutui/nutui-taro`，你可以在项目根目录执行 `taro info`，并将结果粘贴在这里。
+
+        对于 `@nutui/nutui`，你可以执行 `npx envinfo --system --npmPackages @nutui/nutui --binaries --browsers`。
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 其他补充信息
+      description: |
+        请在这里补充你认为可能产生关联的信息：比如 Vue 版本、webpack/vite 版本、Node 版本等，或者进行了哪些配置，使用了哪些插件等信息。
