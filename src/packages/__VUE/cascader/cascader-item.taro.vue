@@ -3,21 +3,23 @@
     <template v-if="!initLoading && panes.length">
       <nut-tab-pane v-for="(pane, index) in panes" :title="formatTabTitle(pane)" :key="index">
         <view role="menu" class="nut-cascader-pane">
-          <template v-for="node in pane.nodes" :key="node.value">
-            <view
-              class="nut-cascader-item"
-              :aria-checked="isSelected(pane, node)"
-              :aria-disabled="node.disabled || undefined"
-              :class="{ active: isSelected(pane, node), disabled: node.disabled }"
-              role="menuitemradio"
-              @click="handleNode(node, false)"
-            >
-              <view class="nut-cascader-item__title">{{ node.text }}</view>
+          <scroll-view :scrollY="true" style="height: 100%">
+            <template v-for="node in pane.nodes" :key="node.value">
+              <view
+                class="nut-cascader-item"
+                :aria-checked="isSelected(pane, node)"
+                :aria-disabled="node.disabled || undefined"
+                :class="{ active: isSelected(pane, node), disabled: node.disabled }"
+                role="menuitemradio"
+                @click="handleNode(node, false)"
+              >
+                <view class="nut-cascader-item__title">{{ node.text }}</view>
 
-              <Loading v-if="node.loading" class="nut-cascader-item__icon-loading" name="loading" />
-              <Checklist v-else class="nut-cascader-item__icon-check" name="checklist" />
-            </view>
-          </template>
+                <Loading v-if="node.loading" class="nut-cascader-item__icon-loading" name="loading" />
+                <Checklist v-else class="nut-cascader-item__icon-check" name="checklist" />
+              </view>
+            </template>
+          </scroll-view>
         </view>
       </nut-tab-pane>
     </template>
