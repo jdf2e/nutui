@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <view :class="classes">
     <div :class="['nut-signature-inner', 'spcanvas_WEAPP']">
       <canvas
         ref="spcanvas"
@@ -16,7 +16,7 @@
     </div>
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
     <nut-button class="nut-signature-btn" type="primary" @click="confirm()">{{ translate('confirm') }}</nut-button>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import Taro from '@tarojs/taro';

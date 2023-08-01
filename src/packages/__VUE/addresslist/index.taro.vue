@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <view :class="classes">
     <general-shell
       v-for="(item, index) of dataArray"
       :key="index"
@@ -33,7 +33,7 @@
     <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { reactive, onMounted, ref, watch, computed } from 'vue';

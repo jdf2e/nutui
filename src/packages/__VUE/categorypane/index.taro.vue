@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-category-pane">
+  <view class="nut-category-pane">
     <div v-if="type == 'classify'" class="nut-category-pane__cateListRight">
       <div v-for="(item, index) in categoryChild" :key="index">
         <div class="nut-category-pane__childTitle">{{ item?.catName }}</div>
@@ -43,7 +43,7 @@
         {{ sku?.catName }}
       </div>
     </div>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { PropType } from 'vue';

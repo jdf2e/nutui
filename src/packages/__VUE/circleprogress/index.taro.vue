@@ -1,12 +1,12 @@
 <template>
-  <div class="nut-circle-progress" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
+  <view class="nut-circle-progress" :style="{ height: Number(radius) * 2 + 'px', width: Number(radius) * 2 + 'px' }">
     <div :style="style"></div>
     <div class="nut-circle-progress__text">
       <slot>
         <span>{{ progress }}%</span>
       </slot>
     </div>
-  </div>
+  </view>
 </template>
 
 <script lang="ts">

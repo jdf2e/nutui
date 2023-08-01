@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height: height + 'px' }">
+  <view :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height: height + 'px' }">
     <view
       ref="nutTabbar"
       class="nut-tabbar"
@@ -7,7 +7,7 @@
     >
       <slot></slot>
     </view>
-  </div>
+  </view>
 </template>
 
 <script lang="ts">
