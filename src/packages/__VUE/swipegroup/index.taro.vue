@@ -1,7 +1,7 @@
 <template>
-  <div class="nut-swipe-group" ref="swipeGroupRef">
+  <view class="nut-swipe-group" ref="swipeGroupRef">
     <slot></slot>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { provide, ref } from 'vue';

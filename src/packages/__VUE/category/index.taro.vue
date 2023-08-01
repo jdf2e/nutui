@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-category">
+  <view class="nut-category">
     <div class="nut-category__cateList">
       <div v-if="type == 'classify' || type == 'text'">
         <div class="nut-category__cateListLeft" v-for="(item, index) in category" :key="index">
@@ -14,7 +14,7 @@
 
       <slot></slot>
     </div>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { PropType, ref } from 'vue';

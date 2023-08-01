@@ -1,5 +1,5 @@
 <template>
-  <div
+  <view
     class="nut-tabbar-item"
     :class="{ 'nut-tabbar-item__icon--unactive': !active }"
     :style="{
@@ -28,7 +28,7 @@
         </view>
       </view>
     </nut-badge>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';

@@ -1,9 +1,9 @@
 <template>
-  <div class="nut-sticky" ref="rootRef" :style="rootStyle" :id="'rootRef-' + refRandomId">
-    <div class="nut-sticky__box" :style="stickyStyle">
+  <view class="nut-sticky" ref="rootRef" :style="rootStyle" :id="'rootRef-' + refRandomId">
+    <view class="nut-sticky__box" :style="stickyStyle">
       <slot></slot>
-    </div>
-  </div>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import { computed, ref, watch, CSSProperties, onMounted, reactive } from 'vue';

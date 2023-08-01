@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-progress">
+  <view class="nut-progress">
     <div
       class="nut-progress-outer"
       :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
@@ -41,7 +41,7 @@
         </slot>
       </template>
     </div>
-  </div>
+  </view>
 </template>
 
 <script lang="ts">

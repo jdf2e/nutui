@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-card">
+  <view class="nut-card">
     <div class="nut-card__left">
       <img :src="imgUrl" alt="" />
     </div>
@@ -25,7 +25,7 @@
         <slot name="footer"></slot>
       </div>
     </div>
-  </div>
+  </view>
 </template>
 
 <script lang="ts">
