@@ -36,6 +36,9 @@ importers:
       '@nutui/eslint-config':
         specifier: workspace:*
         version: link:packages/nutui-eslint-config
+      '@tarojs/components':
+        specifier: 3.6.8
+        version: 3.6.8(vue@3.3.4)
       '@tarojs/taro':
         specifier: 3.6.8
         version: 3.6.8(vue@3.3.4)
@@ -14722,6 +14725,7 @@ packages:
 
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+    requiresBuild: true
     dev: true
     optional: true
 
