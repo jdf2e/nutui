@@ -32,7 +32,7 @@
 <script lang="ts">
 import { computed, reactive, toRefs, watch, watchEffect } from 'vue';
 import { Close } from '@nutui/icons-vue-taro';
-import OverLay from '../overlay/index.taro.vue';
+import Overlay from '../overlay/index.taro.vue';
 import { popupProps } from './props';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popup');
@@ -42,7 +42,7 @@ let _zIndex = initIndex;
 
 export default create({
   components: {
-    [OverLay.name]: OverLay,
+    [Overlay.name]: Overlay,
     Close
   },
   props: popupProps,
