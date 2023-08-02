@@ -1,5 +1,5 @@
 <template>
-  <scroll-view
+  <nut-scroll-view
     :class="classes"
     :scroll-y="true"
     :style="{ height: `${getContainerHeight}px` }"
@@ -29,18 +29,22 @@
         <slot :item="item" :index="index + start"></slot>
       </div>
     </div>
-  </scroll-view>
+  </nut-scroll-view>
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
+import { ScrollView } from '@tarojs/components';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 const { componentName, create } = createComponent('list');
 const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
 
 export default create({
+  components: {
+    'nut-scroll-view': ScrollView
+  },
   props: {
     height: {
       type: [Number],

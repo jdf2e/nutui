@@ -51,7 +51,12 @@
 
         <view class="nut-address__detail" v-if="privateType == 'custom'">
           <div class="nut-address__detail-list">
-            <scroll-view :scroll-y="true" :style="{ height: '100%' }" :scroll-top="scrollTop" @scroll="scrollChange">
+            <nut-scroll-view
+              :scroll-y="true"
+              :style="{ height: '100%' }"
+              :scroll-top="scrollTop"
+              @scroll="scrollChange"
+            >
               <div
                 v-for="(item, index) in regionList"
                 :key="index"
@@ -64,7 +69,7 @@
                   >{{ item.name }}
                 </div>
               </div>
-            </scroll-view>
+            </nut-scroll-view>
           </div>
         </view>
 
@@ -131,6 +136,7 @@ import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
+import { ScrollView } from '@tarojs/components';
 
 export default create({
   components: {
@@ -140,7 +146,8 @@ export default create({
     Location2,
     Check,
     Close,
-    Left
+    Left,
+    'nut-scroll-view': ScrollView
   },
   inheritAttrs: false,
   props: {

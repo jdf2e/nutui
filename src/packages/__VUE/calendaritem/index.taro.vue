@@ -24,7 +24,7 @@
       </view>
     </view>
     <!-- content-->
-    <scroll-view
+    <nut-scroll-view
       :scroll-top="scrollTop"
       :scroll-y="true"
       class="nut-calendar__content"
@@ -72,7 +72,7 @@
           </view>
         </view>
       </view>
-    </scroll-view>
+    </nut-scroll-view>
     <!-- footer-->
     <view class="nut-calendar__footer" v-if="poppable && !isAutoBackFill">
       <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
@@ -84,6 +84,7 @@ import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
+import { ScrollView } from '@tarojs/components';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
@@ -98,6 +99,9 @@ interface CalendarDateProp {
 }
 
 export default create({
+  components: {
+    'nut-scroll-view': ScrollView
+  },
   props: {
     type: {
       type: String,

@@ -21,7 +21,7 @@
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <scroll-view :scroll-y="true">
+      <nut-scroll-view :scroll-y="true">
         <view class="nut-menu-item__content">
           <view
             v-for="(option, index) in options"
@@ -48,7 +48,7 @@
           </view>
           <slot></slot>
         </view>
-      </scroll-view>
+      </nut-scroll-view>
     </nut-popup>
   </view>
 </template>
@@ -59,6 +59,7 @@ const { create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
+import { ScrollView } from '@tarojs/components';
 
 export default create({
   props: {
@@ -81,7 +82,8 @@ export default create({
   },
   components: {
     Check,
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    'nut-scroll-view': ScrollView
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {

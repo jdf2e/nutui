@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <scroll-view
+    <nut-scroll-view
       class="nut-elevator__list nut-elevator__list--mini"
       :scroll-top="scrollTop"
       :scroll-y="true"
@@ -35,7 +35,7 @@
           <slot :item="subitem" v-else></slot>
         </view>
       </view>
-    </scroll-view>
+    </nut-scroll-view>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
       {{ indexList[codeIndex][acceptKey] }}
     </view>
@@ -62,8 +62,12 @@ import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
 
 import Taro from '@tarojs/taro';
+import { ScrollView } from '@tarojs/components';
 
 export default create({
+  components: {
+    'nut-scroll-view': ScrollView
+  },
   props: {
     height: {
       type: [Number, String],
