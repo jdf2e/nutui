@@ -1,7 +1,7 @@
 import { ref, reactive, watch, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName } = createComponent('picker');
-import { PickerOption, FieldNames } from './types';
+import { PickerOption, PickerFieldNames } from './types';
 
 const DEFAULT_FILED_NAMES = {
   text: 'text',
@@ -17,7 +17,7 @@ export const usePicker = (props: any, emit: any) => {
   const columnFieldNames = computed(() => {
     return {
       ...DEFAULT_FILED_NAMES,
-      ...(props.fieldNames as FieldNames)
+      ...(props.fieldNames as PickerFieldNames)
     };
   });
 
@@ -41,7 +41,7 @@ export const usePicker = (props: any, emit: any) => {
 
   const selectedOptions = computed(() => {
     return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      return column.find((item) => item.value === defaultValues.value[index]);
+      return column.find((item) => item[columnFieldNames.value.value] === defaultValues.value[index]);
     });
   });
 
@@ -78,7 +78,7 @@ export const usePicker = (props: any, emit: any) => {
         result = [state.formattedColumns] as PickerOption[][];
         break;
     }
-    return transformColumns(result, columnFieldNames.value);
+    return result;
   });
 
   // 级联数据格式化
@@ -105,22 +105,6 @@ export const usePicker = (props: any, emit: any) => {
     return formatted;
   };
 
-  const transformColumns = <T extends PickerOption[] | PickerOption[][]>(
-    column: T,
-    fieldNames: Required<FieldNames>
-  ): T => {
-    return column.map((item) => {
-      if (Array.isArray(item)) {
-        return transformColumns(item, fieldNames) as PickerOption[];
-      }
-      return {
-        ...item,
-        text: item[fieldNames.text],
-        value: item[fieldNames.value]
-      } as PickerOption;
-    }) as T;
-  };
-
   const cancel = () => {
     emit('cancel', {
       selectedValue: defaultValues.value,
@@ -133,7 +117,7 @@ export const usePicker = (props: any, emit: any) => {
       defaultValues.value = defaultValues.value ? defaultValues.value : [];
 
       if (columnsType.value === 'cascade') {
-        defaultValues.value[columnIndex] = option.value ? option.value : '';
+        defaultValues.value[columnIndex] = option[columnFieldNames.value.value] ?? '';
         let index = columnIndex;
         let cursor = option;
         while (cursor && cursor[childrenField.value] && cursor[childrenField.value][0]) {
@@ -147,7 +131,9 @@ export const usePicker = (props: any, emit: any) => {
           defaultValues.value = defaultValues.value.slice(0, index + 1);
         }
       } else {
-        defaultValues.value[columnIndex] = Object.prototype.hasOwnProperty.call(option, 'value') ? option.value : '';
+        defaultValues.value[columnIndex] = Object.prototype.hasOwnProperty.call(option, columnFieldNames.value.value)
+          ? option[columnFieldNames.value.value]
+          : '';
       }
 
       emit('change', {
@@ -161,7 +147,7 @@ export const usePicker = (props: any, emit: any) => {
   const confirm = () => {
     if (defaultValues.value && !defaultValues.value.length) {
       columnsList.value.forEach((columns) => {
-        defaultValues.value.push(columns[0].value);
+        defaultValues.value.push(columns[0][columnFieldNames.value.value]);
       });
     }
 
@@ -205,6 +191,7 @@ export const usePicker = (props: any, emit: any) => {
     ...toRefs(state),
     columnsType,
     columnsList,
+    columnFieldNames,
     cancel,
     changeHandler,
     confirm,

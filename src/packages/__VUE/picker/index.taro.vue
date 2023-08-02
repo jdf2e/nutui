@@ -30,9 +30,9 @@
             lineHeight: pxCheck(optionHeight)
           }"
           v-for="(item, index) in column"
-          :key="item.value ? item.value : index"
+          :key="item[columnFieldNames.value] ?? index"
         >
-          {{ item.text }}
+          {{ item[columnFieldNames.text] }}
         </view>
       </picker-view-column>
     </picker-view>
@@ -49,6 +49,7 @@
           :swipeDuration="swipeDuration"
           :visibleOptionNum="visibleOptionNum"
           :optionHeight="optionHeight"
+          :filedNames="columnFieldNames"
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);

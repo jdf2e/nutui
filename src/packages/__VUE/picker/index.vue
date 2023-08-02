@@ -14,6 +14,7 @@
           :ref="swipeRef"
           :column="column"
           :columnsType="columnsType"
+          :fieldNames="columnFieldNames"
           :value="defaultValues && defaultValues[columnIndex]"
           :threeDimensional="threeDimensional"
           :swipeDuration="swipeDuration"
@@ -46,7 +47,8 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, classes, cancel } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, classes, cancel } =
+      usePicker(props, emit);
 
     const pickerColumn = ref<any[]>([]);
 
@@ -76,6 +78,7 @@ export default create({
       column,
       columnsType,
       columnsList,
+      columnFieldNames,
       cancel,
       changeHandler,
       confirmHandler,

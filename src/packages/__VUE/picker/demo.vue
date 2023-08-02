@@ -26,7 +26,7 @@
         children: 'list'
       }"
       :title="translate('chooseCity')"
-      @confirm="confirm"
+      @confirm="customCloumnConfirm"
     >
     </nut-picker>
 
@@ -201,6 +201,10 @@ onMounted(() => {
 
 const confirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
   showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+};
+
+const customCloumnConfirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+  showToast.text(selectedOptions.map((val: any) => val.name).join(','));
 };
 
 const popupConfirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
