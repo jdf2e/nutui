@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { reactive, computed, toRefs } from 'vue';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
 import { Top } from '@nutui/icons-vue-taro';

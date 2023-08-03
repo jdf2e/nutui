@@ -136,7 +136,7 @@ import Popup from '../popup/index.taro.vue';
 import Elevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   components: {

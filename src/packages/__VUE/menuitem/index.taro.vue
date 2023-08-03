@@ -59,7 +59,7 @@ const { create } = createComponent('menu-item');
 import Popup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   props: {

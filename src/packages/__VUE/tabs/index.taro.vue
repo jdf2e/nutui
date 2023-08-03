@@ -58,7 +58,7 @@ import Taro from '@tarojs/taro';
 import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 
 export class Title {
   title = '';

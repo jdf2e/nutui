@@ -62,7 +62,7 @@ import { ElevatorData } from './type';
 const { componentName, create } = createComponent('elevator');
 
 import Taro from '@tarojs/taro';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   components: {

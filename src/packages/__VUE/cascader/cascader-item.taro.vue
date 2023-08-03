@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';

@@ -35,7 +35,7 @@
 import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
-import { ScrollView } from '@tarojs/components';
+import ScrollView from '../scroll-view/index.taro.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 const { componentName, create } = createComponent('list');
