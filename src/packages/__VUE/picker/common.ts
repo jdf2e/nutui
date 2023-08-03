@@ -14,7 +14,8 @@ export const componentWeb = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, classes, cancel } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, classes, cancel } =
+      usePicker(props, emit);
 
     const state = reactive<{
       ENV: TaroGeneral.ENV_TYPE;
@@ -54,6 +55,7 @@ export const componentWeb = {
       column,
       columnsType,
       columnsList,
+      columnFieldNames,
       cancel,
       changeHandler,
       confirmHandler,
@@ -73,10 +75,17 @@ export const componentWeapp = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, isSameValue, columnsType, classes, cancel } = usePicker(
-      props,
-      emit
-    );
+    const {
+      changeHandler,
+      confirm,
+      defaultValues,
+      columnsList,
+      isSameValue,
+      columnsType,
+      columnFieldNames,
+      classes,
+      cancel
+    } = usePicker(props, emit);
     const state = reactive({
       show: false,
       picking: false,
@@ -96,10 +105,11 @@ export const componentWeapp = {
 
     const defaultValuesConvert = () => {
       const defaultIndexs: number[] = [];
+      const fields = columnFieldNames.value;
       if (defaultValues.value.length > 0) {
         defaultValues.value.forEach((value, index) => {
           for (let i = 0; i < columnsList.value[index].length; i++) {
-            if (columnsList.value[index][i].value === value) {
+            if (columnsList.value[index][i][fields.value] === value) {
               defaultIndexs.push(i);
               break;
             }
@@ -109,7 +119,7 @@ export const componentWeapp = {
         if (columnsList && columnsList.value.length > 0) {
           columnsList.value.forEach((item) => {
             defaultIndexs.push(0);
-            item.length > 0 && defaultValues.value.push(item[0].value);
+            item.length > 0 && defaultValues.value.push(item[0][fields.value]);
           });
         }
       }
@@ -177,6 +187,7 @@ export const componentWeapp = {
       column,
       columnsType,
       columnsList,
+      columnFieldNames,
       cancel,
       changeHandler,
       confirmHandler,

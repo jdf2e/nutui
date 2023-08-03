@@ -23,7 +23,11 @@
       @pickstart="handlePickstart"
       @pickend="handlePickend"
     >
-      <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+      <picker-view-column
+        v-for="(column, columnIndex) in columnsList"
+        :key="columnIndex"
+        :filedNames="columnFieldNames"
+      >
         <view
           class="nut-picker-roller-item-tarotile"
           :style="{
@@ -44,12 +48,12 @@
           :ref="swipeRef"
           :column="column"
           :columnsType="columnsType"
+          :filedNames="columnFieldNames"
           :value="defaultValues[columnIndex]"
           :threeDimensional="false"
           :swipeDuration="swipeDuration"
           :visibleOptionNum="visibleOptionNum"
           :optionHeight="optionHeight"
-          :filedNames="columnFieldNames"
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);
