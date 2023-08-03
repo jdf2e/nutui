@@ -2,7 +2,7 @@
   <view :class="classes" @click="onClick">
     <view class="nut-input-value">
       <view class="nut-input-inner">
-        <view class="nut-input-left-box">
+        <view v-if="$slots.left" class="nut-input-left-box">
           <slot name="left"></slot>
         </view>
         <view class="nut-input-box">
