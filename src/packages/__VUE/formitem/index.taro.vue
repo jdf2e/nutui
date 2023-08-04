@@ -25,6 +25,7 @@
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, CSSProperties } from 'vue';
+import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
 import Cell from '../cell/index.taro.vue';
 const { create } = createComponent('form-item');
@@ -40,10 +41,8 @@ export default create({
       default: ''
     },
     rules: {
-      type: Array as PropType<import('./types').FormItemRule[]>,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<FormItemRule[]>,
+      default: () => []
     },
     required: {
       type: Boolean,
