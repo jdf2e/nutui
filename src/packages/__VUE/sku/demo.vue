@@ -16,8 +16,8 @@
       v-model:visible="base"
       :sku="skuData"
       :goods="goodsInfo"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
       @close="close"
     ></nut-sku>
 
@@ -26,9 +26,9 @@
       :sku="skuData"
       :goods="goodsInfo"
       :btnExtraText="btnExtraText"
-      @changeStepper="changeStepper"
+      @change-stepper="changeStepper"
       :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
+      @select-sku="selectSku"
     >
       <template #sku-operate>
         <div class="sku-operate-box">
@@ -45,11 +45,11 @@
       :stepperMax="7"
       :stepperMin="2"
       :stepperExtraText="stepperExtraText"
-      @changeStepper="changeStepper"
-      @overLimit="overLimit"
+      @change-stepper="changeStepper"
+      @over-limit="overLimit"
       :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
       @close="close"
     ></nut-sku>
 
@@ -58,8 +58,8 @@
       :sku="skuData"
       :goods="goodsInfo"
       :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
     >
       <template #sku-header-price>
         <div>

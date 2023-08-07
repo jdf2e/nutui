@@ -23,7 +23,7 @@
           :class="wrapContentClass"
           :style="contentStyle"
           @animationend="onAnimationEnd"
-          @webkitAnimationEnd="onAnimationEnd"
+          @webkit-animation-end="onAnimationEnd"
           ><slot>{{ text }}</slot>
         </view>
       </view>
