@@ -6,13 +6,13 @@
       :item="item"
       :longPress="longPress"
       :swipeEdition="swipeEdition"
-      @delIcon="clickDelIcon"
-      @editIcon="clickEditIcon"
-      @clickItem="clickContentItem"
-      @swipeDel="clickSwipeDel"
-      @longCopy="clickLongCopy"
-      @longSet="clickLongSet"
-      @longDel="clickLongDel"
+      @del-icon="clickDelIcon"
+      @edit-icon="clickEditIcon"
+      @click-item="clickContentItem"
+      @swipe-del="clickSwipeDel"
+      @long-copy="clickLongCopy"
+      @long-set="clickLongSet"
+      @long-del="clickLongDel"
     >
       <template #content-info>
         <slot name="item-infos" :item="item"></slot>

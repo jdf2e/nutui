@@ -1,7 +1,7 @@
 <template>
   <view :class="classes" v-if="info && Object.keys(info)">
     <!-- 根据展示信息的多少，分为3种展示风格：simple，base，complex -->
-    <comment-header :type="headerType" :info="info" :labels="labels" @handleClick="handleClick">
+    <comment-header :type="headerType" :info="info" :labels="labels" @handle-click="handleClick">
       <template #labels>
         <slot name="comment-labels"></slot>
       </template>
@@ -16,7 +16,7 @@
       v-html="info.content"
     ></view>
 
-    <comment-images :images="images" :videos="videos" :type="imagesRows" @clickImages="clickImages"></comment-images>
+    <comment-images :images="images" :videos="videos" :type="imagesRows" @click-images="clickImages"></comment-images>
 
     <view class="nut-comment__follow" v-if="follow && follow.days > 0" @click="handleClick">
       <view class="nut-comment__follow-title">{{ translate('additionalReview', follow.days) }}</view>
@@ -30,8 +30,8 @@
       :type="headerType"
       :info="info"
       :operation="operation"
-      @clickOperate="clickOperate"
-      @handleClick="handleClick"
+      @click-operate="clickOperate"
+      @handle-click="handleClick"
     ></comment-bottom>
 
     <slot name="comment-shop-reply"></slot>
