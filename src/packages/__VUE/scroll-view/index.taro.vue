@@ -1,8 +1,8 @@
 <template>
   <template v-if="Taro.getEnv() === Taro.ENV_TYPE.WEB">
-    <NutTaroScrollView v-bind="$attrs">
+    <taro-scroll-view-core v-bind="$attrs">
       <slot></slot>
-    </NutTaroScrollView>
+    </taro-scroll-view-core>
   </template>
   <template v-else>
     <scroll-view v-bind="$attrs">
@@ -12,5 +12,4 @@
 </template>
 <script setup lang="ts">
 import Taro from '@tarojs/taro';
-import { ScrollView as NutTaroScrollView } from '@tarojs/components';
 </script>

@@ -24,6 +24,8 @@ export default defineConfig({
         compilerOptions: {
           isCustomElement: (tag) => {
             return (
+              tag.startsWith('taro-') ||
+              tag.startsWith('scroll-view') ||
               tag.startsWith('swiper') ||
               tag.startsWith('swiper-item') ||
               tag.startsWith('scroll-view') ||

@@ -36,9 +36,6 @@ importers:
       '@nutui/eslint-config':
         specifier: workspace:*
         version: link:packages/nutui-eslint-config
-      '@tarojs/components':
-        specifier: 3.6.8
-        version: 3.6.8(vue@3.3.4)
       '@tarojs/taro':
         specifier: 3.6.8
         version: 3.6.8(vue@3.3.4)
