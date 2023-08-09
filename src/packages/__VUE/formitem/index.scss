@@ -37,12 +37,14 @@
     font-size: $form-item-label-font-size;
     font-weight: normal;
     width: $form-item-label-width;
-    min-width: auto;
     margin-right: $form-item-label-margin-right;
     flex: none !important;
     display: inline-block !important;
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
+    &.nut-cell__title {
+      min-width: auto;
+    }
     &.required {
       &::before {
         content: '*';

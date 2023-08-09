@@ -53,10 +53,10 @@
       :loop="false"
       type="progress"
       @forward="forward"
-      @fastBack="fastBack"
+      @fast-back="fastBack"
       @play="changeStatus"
       @ended="ended"
-      @changeProgress="changeProgress"
+      @change-progress="changeProgress"
     >
       <div class="nut-audio-operate-group">
         <nut-audio-operate type="back">

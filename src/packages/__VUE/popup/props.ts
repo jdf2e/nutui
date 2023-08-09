@@ -1,4 +1,3 @@
-import { PropType, CSSProperties } from 'vue';
 export const popupProps = {
   visible: {
     type: Boolean,
@@ -29,8 +28,8 @@ export const popupProps = {
     default: ''
   },
   style: {
-    type: Object as PropType<CSSProperties>,
-    default: {}
+    type: Object,
+    default: () => ({})
   },
   popClass: {
     type: String,
@@ -77,7 +76,7 @@ export const popupProps = {
     default: ''
   },
   overlayStyle: {
-    type: Object as PropType<CSSProperties>,
-    default: {}
+    type: Object,
+    default: () => ({})
   }
 };

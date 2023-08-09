@@ -13,7 +13,7 @@
       v-model:visible="demo1.visible"
       v-model="demo1.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="demo1.options"
     ></nut-cascader>
 
@@ -30,7 +30,7 @@
       v-model="demo2.value"
       labelKey="text"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       valueKey="text"
       childrenKey="items"
       :options="demo2.options"
@@ -48,7 +48,7 @@
       v-model:visible="demo3.visible"
       v-model="demo3.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       lazy
       :lazyLoad="demo3.lazyLoad"
     ></nut-cascader>
@@ -65,7 +65,7 @@
       v-model:visible="demo4.visible"
       v-model="demo4.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="demo4.options"
       lazy
       :lazyLoad="demo4.lazyLoad"
@@ -83,7 +83,7 @@
       v-model:visible="demo5.visible"
       v-model="demo5.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="demo5.options"
       :convertConfig="demo5.convertConfig"
     ></nut-cascader>

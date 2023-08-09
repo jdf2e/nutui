@@ -25,7 +25,7 @@
         <slot name="sku-select-top"></slot>
 
         <slot name="sku-select"></slot>
-        <SkuSelect v-if="!getSlots('sku-select')" :sku="sku" @selectSku="selectSku"></SkuSelect>
+        <SkuSelect v-if="!getSlots('sku-select')" :sku="sku" @select-sku="selectSku"></SkuSelect>
 
         <slot name="sku-stepper"></slot>
         <sku-stepper
@@ -37,8 +37,8 @@
           :stepperExtraText="stepperExtraText"
           @add="add"
           @reduce="reduce"
-          @changeStepper="changeStepper"
-          @overLimit="stepperOverLimit"
+          @change-stepper="changeStepper"
+          @over-limit="stepperOverLimit"
         ></sku-stepper>
 
         <slot name="sku-stepper-bottom"></slot>
@@ -50,7 +50,7 @@
         :buyText="buyText || translate('buyNow')"
         :addCartText="addCartText || translate('addToCart')"
         :confirmText="confirmText || translate('confirm')"
-        @clickBtnOperate="clickBtnOperate"
+        @click-btn-operate="clickBtnOperate"
       >
         <template #operate-btn v-if="getSlots('sku-operate')">
           <slot name="sku-operate"></slot>

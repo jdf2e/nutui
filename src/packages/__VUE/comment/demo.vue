@@ -7,7 +7,7 @@
         :videos="cmt.videos"
         :info="cmt.info"
         @click="handleclick"
-        @clickImages="clickImages"
+        @click-images="clickImages"
         :operation="['replay']"
       >
         <template #comment-labels>
@@ -28,7 +28,7 @@
         :videos="cmt.videos"
         :info="cmt.info"
         ellipsis="6"
-        @clickImages="clickImages"
+        @click-images="clickImages"
       >
         <template #comment-labels>
           <img
@@ -55,7 +55,7 @@
         :videos="cmt.videos"
         :info="cmt.info"
         :follow="cmt.follow"
-        @clickImages="clickImages"
+        @click-images="clickImages"
       ></nut-comment>
     </nut-cell>
   </div>
