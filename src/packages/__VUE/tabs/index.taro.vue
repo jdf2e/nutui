@@ -1,6 +1,6 @@
 <template>
   <view class="nut-tabs" :class="[direction]" ref="container">
-    <scroll-view
+    <nut-scroll-view
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
@@ -32,7 +32,7 @@
           <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
         </template>
       </view>
-    </scroll-view>
+    </nut-scroll-view>
     <view
       class="nut-tabs__content"
       ref="tabsContentRef"
@@ -58,6 +58,7 @@ import Taro from '@tarojs/taro';
 import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import ScrollView from '../scroll-view/index.taro.vue';
 
 export class Title {
   title = '';
@@ -70,7 +71,8 @@ export type TabsSize = 'large' | 'normal' | 'small';
 const { create } = createComponent('tabs');
 export default create({
   components: {
-    JoySmile
+    JoySmile,
+    'nut-scroll-view': ScrollView
   },
   props: {
     modelValue: {

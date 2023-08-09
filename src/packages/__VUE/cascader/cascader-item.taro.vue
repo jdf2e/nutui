@@ -3,7 +3,7 @@
     <template v-if="!initLoading && panes.length">
       <nut-tab-pane v-for="(pane, index) in panes" :title="formatTabTitle(pane)" :key="index">
         <view role="menu" class="nut-cascader-pane">
-          <scroll-view :scrollY="true" style="height: 100%">
+          <nut-scroll-view :scrollY="true" style="height: 100%">
             <template v-for="node in pane.nodes" :key="node.value">
               <view
                 class="nut-cascader-item"
@@ -19,7 +19,7 @@
                 <Checklist v-else class="nut-cascader-item__icon-check" name="checklist" />
               </view>
             </template>
-          </scroll-view>
+          </nut-scroll-view>
         </view>
       </nut-tab-pane>
     </template>
@@ -32,6 +32,7 @@
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
+import ScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
@@ -46,7 +47,8 @@ export default create({
     Loading,
     Checklist,
     [Tabs.name]: Tabs,
-    [TabPane.name]: TabPane
+    [TabPane.name]: TabPane,
+    'nut-scroll-view': ScrollView
   },
   props: {
     visible: Boolean,
