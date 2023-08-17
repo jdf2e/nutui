@@ -36,7 +36,7 @@ test('across-end event', async () => {
     }
   });
   wrapper.vm.onAnimationEnd();
-  expect(wrapper.emitted('across-end')).toBeTruthy();
+  expect(wrapper.emitted('acrossEnd')).toBeTruthy();
 });
 
 test('slot event', async () => {

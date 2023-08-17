@@ -10,9 +10,9 @@ test('endTime props', async () => {
       endTime: Date.now() + 1 * 50
     }
   });
-  expect(wrapper.emitted('on-end')).toBeFalsy();
+  expect(wrapper.emitted('onEnd')).toBeFalsy();
   await sleep(51);
-  expect(wrapper.emitted('on-end')).toBeTruthy();
+  expect(wrapper.emitted('onEnd')).toBeTruthy();
 });
 
 test('format props', async () => {

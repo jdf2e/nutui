@@ -156,7 +156,7 @@ export default create({
     'change',
     'delete',
     'update:fileList',
-    'file-item-click'
+    'fileItemClick'
   ],
   setup(props, { emit }) {
     const fileList = ref(props.fileList as Array<FileItem>);
@@ -244,7 +244,7 @@ export default create({
     };
 
     const fileItemClick = (fileItem: FileItem) => {
-      emit('file-item-click', { fileItem });
+      emit('fileItemClick', { fileItem });
     };
 
     const executeUpload = (fileItem: FileItem, index: number) => {
