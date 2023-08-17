@@ -97,6 +97,64 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 :::
 
+### 自定义字段名
+
+可以使用 `fieldNames` 属性自定义`columns`中数据的格式。
+
+:::demo
+
+```html
+<template>
+  <nut-picker v-model="selectedValue" :columns="columns" :field-names="fieldNames" title="城市选择" @confirm="confirm">
+  </nut-picker>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
+  export default {
+    setup(props) {
+      const selectedValue = ref([]);
+      const fieldNames = ref({
+        text: 'name',
+        value: 'code',
+        children: 'list'
+      });
+      const customColumns = ref([
+        {
+          name: '浙江',
+          code: 'ZheJiang',
+          list: [
+            {
+              name: '杭州',
+              code: 'HangZhou',
+              list: [
+                { name: '西湖', code: 'XiHu' },
+                { name: '余杭区', code: 'YuHang' }
+              ]
+            },
+            {
+              name: '温州',
+              code: 'WenZhou',
+              list: [
+                { name: '鹿城区', code: 'LuCheng' },
+                { name: '瓯海区', code: 'OuHai' }
+              ]
+            }
+          ]
+        }
+      ]);
+
+      const confirm = ({ selectedValue, selectedOptions }) => {
+        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
+      };
+
+      return { columns, selectedValue, confirm };
+    }
+  };
+</script>
+```
+
 ### 默认选中项
 
 通过设置 `modelValue` 实现默认选中项，`modelValue` 是一个包含每项配置 value 值的数组。
@@ -353,18 +411,19 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 ### Props
 
-| 参数               | 说明                           | 类型                               | 默认值 |
-| ------------------ | ------------------------------ | ---------------------------------- | ------ |
-| v-model:value      | 默认选中项                     | Array                              | `[]`   |
-| columns            | 对象数组，配置每一列显示的数据 | PickerOption[] \| PickerOption[][] | -      |
-| title              | 设置标题                       | string                             | -      |
-| cancel-text        | 取消按钮文案                   | string                             | `取消` |
-| ok-text            | 确定按钮文案                   | string                             | `确定` |
-| three-dimensional  | 是否开启 3D 效果               | boolean                            | `true` |
-| swipe-duration     | 惯性滚动时长                   | number \| string                   | `1000` |
-| visible-option-num | 可见的选项个数                 | number \| string                   | `7`    |
-| option-height      | 选项高度                       | number \| string                   | `36`   |
-| show-toolbar       | 是否显示顶部导航               | boolean                            | `true` |
+| 参数               | 说明                           | 类型                               | 默认值                                                   |
+| ------------------ | ------------------------------ | ---------------------------------- | -------------------------------------------------------- |
+| v-model:value      | 默认选中项                     | Array                              | `[]`                                                     |
+| columns            | 对象数组，配置每一列显示的数据 | PickerOption[] \| PickerOption[][] | -                                                        |
+| field-names        | 自定义 columns 中的字段        | object                             | `{ text: 'text', value: 'value', children: 'children' }` |
+| title              | 设置标题                       | string                             | -                                                        |
+| cancel-text        | 取消按钮文案                   | string                             | `取消`                                                   |
+| ok-text            | 确定按钮文案                   | string                             | `确定`                                                   |
+| three-dimensional  | 是否开启 3D 效果               | boolean                            | `true`                                                   |
+| swipe-duration     | 惯性滚动时长                   | number \| string                   | `1000`                                                   |
+| visible-option-num | 可见的选项个数                 | number \| string                   | `7`                                                      |
+| option-height      | 选项高度                       | number \| string                   | `36`                                                     |
+| show-toolbar       | 是否显示顶部导航               | boolean                            | `true`                                                   |
 
 ### Events
 

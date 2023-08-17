@@ -6,23 +6,23 @@
       :style="threeDimensional ? touchRollerStyle : touchTileStyle"
       @transitionend="stopMomentum"
     >
-      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+      <template v-for="(item, index) in column" :key="item[fieldNames.value] ?? index">
         <!-- 3D 效果 -->
         <view
           class="nut-picker-roller-item"
           :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
           :style="setRollerStyle(index + 1)"
-          v-if="item && item.text && threeDimensional"
+          v-if="item && item[fieldNames.text] && threeDimensional"
         >
-          {{ item.text }}
+          {{ item[fieldNames.text] }}
         </view>
         <!-- 平铺 -->
         <view
           class="nut-picker-roller-item-tile"
           :style="{ height: pxCheck(optionHeight), lineHeight: pxCheck(optionHeight) }"
-          v-if="item && item.text && !threeDimensional"
+          v-if="item && item[fieldNames.text] && !threeDimensional"
         >
-          {{ item.text }}
+          {{ item[fieldNames.text] }}
         </view>
       </template>
     </view>
@@ -32,7 +32,7 @@
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { PickerOption, TouchParams } from './types';
+import { PickerOption, TouchParams, PickerFieldNames } from './types';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -63,6 +63,10 @@ export default create({
     optionHeight: {
       type: [Number, String],
       default: 36
+    },
+    fieldNames: {
+      type: Object as PropType<Required<PickerFieldNames>>,
+      default: () => ({})
     }
   },
 
@@ -255,7 +259,7 @@ export default create({
 
     const modifyStatus = (type: boolean) => {
       const { column } = props;
-      let index = column.findIndex((columnItem) => columnItem.value === props.value);
+      let index = column.findIndex((columnItem) => columnItem[props.fieldNames.value] === props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * +props.optionHeight;

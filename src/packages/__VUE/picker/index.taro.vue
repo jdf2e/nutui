@@ -23,16 +23,20 @@
       @pickstart="handlePickstart"
       @pickend="handlePickend"
     >
-      <picker-view-column v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+      <picker-view-column
+        v-for="(column, columnIndex) in columnsList"
+        :key="columnIndex"
+        :filedNames="columnFieldNames"
+      >
         <view
           class="nut-picker-roller-item-tarotile"
           :style="{
             lineHeight: pxCheck(optionHeight)
           }"
           v-for="(item, index) in column"
-          :key="item.value ? item.value : index"
+          :key="item[columnFieldNames.value] ?? index"
         >
-          {{ item.text }}
+          {{ item[columnFieldNames.text] }}
         </view>
       </picker-view-column>
     </picker-view>
@@ -44,6 +48,7 @@
           :ref="swipeRef"
           :column="column"
           :columnsType="columnsType"
+          :filedNames="columnFieldNames"
           :value="defaultValues[columnIndex]"
           :threeDimensional="false"
           :swipeDuration="swipeDuration"
