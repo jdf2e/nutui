@@ -67,7 +67,7 @@ export default create({
       default: true
     }
   },
-  emits: ['onSubmit', 'scroll-bottom'],
+  emits: ['onSubmit', 'scrollBottom'],
 
   setup(props, { emit }) {
     const formRef = ref();

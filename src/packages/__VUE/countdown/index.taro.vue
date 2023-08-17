@@ -64,7 +64,7 @@ export default create({
       default: 0
     }
   },
-  emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
+  emits: ['input', 'onEnd', 'onRestart', 'onPaused', 'update:modelValue'],
 
   setup(props: any, { emit, slots }) {
     const state = reactive({
@@ -106,7 +106,7 @@ export default create({
             if (!remainTime) {
               state.counting = false;
               pause();
-              emit('on-end');
+              emit('onEnd');
             }
 
             if (remainTime > 0) {
@@ -192,14 +192,14 @@ export default create({
         state.counting = true;
         state.handleEndTime = Date.now() + Number(state.restTime);
         tick();
-        emit('on-restart', state.restTime);
+        emit('onRestart', state.restTime);
       }
     };
     // 暂定
     const pause = () => {
       cancelAnimationFrame(state.timer as any);
       state.counting = false;
-      emit('on-paused', state.restTime);
+      emit('onPaused', state.restTime);
     };
 
     //重置
@@ -240,7 +240,7 @@ export default create({
             state.handleEndTime = Date.now() + Number(state.restTime);
             tick();
           }
-          emit('on-restart', state.restTime);
+          emit('onRestart', state.restTime);
         }
       }
     );

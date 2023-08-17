@@ -73,7 +73,7 @@ export default create({
       default: 10
     }
   },
-  emits: ['scroll-up', 'scroll-down', 'scroll-bottom'],
+  emits: ['scrollUp', 'scrollDown', 'scrollBottom'],
 
   setup(props, { emit }) {
     const list = ref(null) as Ref;
@@ -227,10 +227,10 @@ export default create({
         state.originStartIndex = currentIndex;
         state.start = Math.max(state.originStartIndex - props.bufferSize, 0);
         if (end.value >= state.list.length - 1) {
-          emit('scroll-bottom');
+          emit('scrollBottom');
         }
       }
-      emit(scrollTop > state.scrollTop ? 'scroll-up' : 'scroll-down', scrollTop);
+      emit(scrollTop > state.scrollTop ? 'scrollUp' : 'scrollDown', scrollTop);
       state.scrollTop = scrollTop;
     };
 

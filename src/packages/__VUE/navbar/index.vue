@@ -58,7 +58,7 @@ export default create({
       default: 10
     }
   },
-  emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
+  emits: ['onClickBack', 'onClickTitle', 'onClickIcon', 'onClickRight'],
   setup(props, { emit }) {
     const { border, fixed, safeAreaInsetTop, placeholder } = toRefs(props);
     const navHeight = ref('auto');
@@ -98,19 +98,19 @@ export default create({
     });
 
     const handleLeft = () => {
-      emit('on-click-back');
+      emit('onClickBack');
     };
 
     const handleCenter = () => {
-      emit('on-click-title');
+      emit('onClickTitle');
     };
 
     const handleCenterIcon = () => {
-      emit('on-click-icon');
+      emit('onClickIcon');
     };
 
     const handleRight = () => {
-      emit('on-click-right');
+      emit('onClickRight');
     };
 
     return {

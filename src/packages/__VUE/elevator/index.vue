@@ -74,7 +74,7 @@ export default create({
       default: 35
     }
   },
-  emits: ['click-item', 'click-index', 'change'],
+  emits: ['clickItem', 'clickIndex', 'change'],
   setup(props, context) {
     const listview: Ref<any> = ref(null);
     const state = reactive({
@@ -168,13 +168,13 @@ export default create({
     };
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      context.emit('click-item', key, item);
+      context.emit('clickItem', key, item);
       state.currentData = item;
       state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
-      context.emit('click-index', key);
+      context.emit('clickIndex', key);
     };
 
     const listViewScroll = (e: Event) => {

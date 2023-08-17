@@ -110,7 +110,7 @@ export default create({
     Service,
     [Range.name]: Range as Component
   },
-  emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],
+  emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'canPlay'],
 
   setup(props, { emit, slots }) {
     const audioRef = ref(null);
@@ -165,7 +165,7 @@ export default create({
       audioData.second = audioR.duration;
       audioData.duration = formatSeconds(audioR.duration);
 
-      emit('can-play', e);
+      emit('canPlay', e);
     };
 
     //播放时间

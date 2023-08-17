@@ -38,7 +38,7 @@ export default create({
     }
   },
   components: { ArrowDown2, ArrowUp2 },
-  emits: ['title-click'],
+  emits: ['titleClick'],
   setup: (props: any, context: any) => {
     const state = reactive({
       direction: ''
@@ -55,7 +55,7 @@ export default create({
       };
     });
     const handleClick = () => {
-      context.emit('title-click');
+      context.emit('titleClick');
       state.direction = !state.direction ? 'up' : '';
     };
     onMounted(() => {

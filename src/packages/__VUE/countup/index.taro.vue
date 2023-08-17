@@ -212,7 +212,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['click', 'scroll-end'],
+  emits: ['click', 'scrollEnd'],
   setup(props, { emit }) {
     const data: IData = reactive({
       valFlag: false,
@@ -347,7 +347,7 @@ export default create({
             //数字减小，有可能导致current小于speed
             data.current = Number(endNum.toFixed(toFixed));
             clearInterval(countTimer);
-            emit('scroll-end');
+            emit('scrollEnd');
             data.valFlag = false;
           } else {
             data.current = Number((parseFloat(String(data.current)) - parseFloat(String(speed))).toFixed(toFixed));
@@ -357,7 +357,7 @@ export default create({
           if (data.current >= endNum) {
             data.current = Number(endNum.toFixed(toFixed));
             clearInterval(countTimer);
-            emit('scroll-end');
+            emit('scrollEnd');
             data.valFlag = false;
           } else {
             data.current = Number((parseFloat(String(data.current)) + parseFloat(String(speed))).toFixed(toFixed));
@@ -475,7 +475,7 @@ export default create({
         // that.totalCount--;
         if (data.totalCount <= 0) {
           clearIntervalTime();
-          emit('scroll-end');
+          emit('scrollEnd');
           data.valFlag = false;
         }
       }, props.during);
@@ -535,7 +535,7 @@ export default create({
         //   data.relNum = calculation(data.relNum, m * props.speed, '+');
         // }, props.during);
         f.addEventListener('webkitTransitionEnd', () => {
-          emit('scroll-end');
+          emit('scrollEnd');
           data.valFlag = false;
           // setTimeout(() => {
           //   data.relNum = calculation(data.relNum, m * props.speed, '+');
@@ -611,10 +611,10 @@ export default create({
             setTimeout(() => {
               data.finshMachine = 0;
               if (data.prizeLevelTrun < 0) {
-                emit('scroll-end', false);
+                emit('scrollEnd', false);
                 data.valFlag = false;
               } else {
-                emit('scroll-end', true);
+                emit('scrollEnd', true);
                 data.valFlag = false;
               }
             }, 130);
