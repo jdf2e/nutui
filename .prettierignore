@@ -17,7 +17,7 @@ publish/
 node_modules
 dist
 /libs
-/jd/upload.js
+/scripts/upload.js
 yarn.lock
 package-lock.json
 /cache
