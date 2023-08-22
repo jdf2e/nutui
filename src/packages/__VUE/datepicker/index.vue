@@ -134,6 +134,20 @@ export default create({
     function getMonthEndDay(year: number, month: number): number {
       return 32 - new Date(year, month - 1, 32).getDate();
     }
+    function getQuarter(v: Date) {
+      return Math.ceil((v.getMonth() + 1) / 3);
+    }
+    function getQuarterValue(v: Date, b: Date) {
+      let currentQuarter = getQuarter(v);
+      let quarterDiff = Math.ceil(((v.getFullYear() - b.getFullYear()) * 12 + (v.getMonth() - b.getMonth())) / 3);
+      let a = currentQuarter - quarterDiff;
+      if (a > 4) {
+        a = 4;
+      } else if (a < 1) {
+        a = 1;
+      }
+      return a;
+    }
     const getBoundary = (type: string, value: Date) => {
       const boundary = type == 'min' ? props.minDate : props.maxDate;
       const year = boundary.getFullYear();
@@ -141,12 +155,14 @@ export default create({
       let date = 1;
       let hour = 0;
       let minute = 0;
+      let quarter = getQuarterValue(value, boundary);
 
       if (type === 'max') {
         month = 12;
         date = getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
         hour = 23;
         minute = 59;
+        quarter = getQuarterValue(value, boundary);
       }
       const seconds = minute;
       if (value.getFullYear() === year) {
@@ -167,14 +183,21 @@ export default create({
         [`${type}Date`]: date,
         [`${type}Hour`]: hour,
         [`${type}Minute`]: minute,
-        [`${type}Seconds`]: seconds
+        [`${type}Seconds`]: seconds,
+        [`${type}Quarter`]: quarter
       };
     };
 
     const ranges = computed(() => {
-      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
+      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds, maxQuarter } = getBoundary(
+        'max',
+        state.currentDate
+      );
 
-      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
+      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds, minQuarter } = getBoundary(
+        'min',
+        state.currentDate
+      );
 
       let result = [
         {
@@ -200,6 +223,10 @@ export default create({
         {
           type: 'seconds',
           range: [minSeconds, maxSeconds]
+        },
+        {
+          type: 'quarter',
+          range: [minQuarter, maxQuarter]
         }
       ];
       return generateList(result);
@@ -221,7 +248,7 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      if (['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(props.type)) {
+      if (['date', 'datetime', 'datehour', 'month-day', 'year-month', 'year-quarter'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
           formatDate.push(item);
@@ -232,12 +259,22 @@ export default create({
         if (props.type == 'year-month' && formatDate.length < 3) {
           formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
         }
+        if (props.type == 'year-quarter') {
+          let month = (Number(formatDate[1]) - 1) * 3 + 1;
+          formatDate[1] = month < 10 ? '0' + month : month + '';
+          formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
+        }
 
         const year = Number(formatDate[0]);
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-        if (props.type === 'date' || props.type === 'month-day' || props.type === 'year-month') {
+        if (
+          props.type === 'date' ||
+          props.type === 'month-day' ||
+          props.type === 'year-month' ||
+          props.type === 'year-quarter'
+        ) {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
           date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
@@ -297,6 +334,8 @@ export default create({
         return state.currentDate.getMinutes();
       } else if (type === 'seconds') {
         return state.currentDate.getSeconds();
+      } else if (type === 'quarter') {
+        return getQuarter(state.currentDate);
       }
       return 0;
     };
@@ -331,6 +370,12 @@ export default create({
           break;
         case 'hour-minute':
           list = list.slice(3, 5);
+          break;
+        case 'year-quarter':
+          list = [list[0], list[list.length - 1]];
+          break;
+        case 'year':
+          list = list.slice(0, 1);
           break;
       }
       return list;

@@ -70,6 +70,28 @@
     ></nut-date-picker>
     <h2>{{ translate('format') }}</h2>
 
+    <!-- 选择年 -->
+    <nut-date-picker
+      v-model="currentDate8"
+      type="year"
+      :title="translate('basic')"
+      :min-date="new Date(2022, 11, 1)"
+      :max-date="new Date(2024, 5, 1)"
+      :formatter="formatter2"
+      @confirm="confirm5"
+    ></nut-date-picker>
+
+    <!-- 选择年季度 -->
+    <nut-date-picker
+      v-model="currentDate8"
+      type="year-quarter"
+      :title="translate('basic')"
+      :min-date="new Date(2022, 11, 1)"
+      :max-date="new Date(2024, 5, 1)"
+      :formatter="formatter2"
+      @confirm="confirm5"
+    ></nut-date-picker>
+
     <!-- 格式化选项 -->
     <nut-date-picker
       v-model="currentDate5"
@@ -135,6 +157,7 @@ const initTranslate = () =>
       hour: '时',
       min: '分',
       seconds: '秒',
+      quarter: '季度',
       popupDesc: '搭配 Popup 使用'
     },
     'en-US': {
@@ -157,6 +180,7 @@ const initTranslate = () =>
       hour: 'Hour',
       min: 'Minute',
       seconds: 'Second',
+      quarter: 'Quarter',
       popupDesc: 'With Popup'
     }
   });
@@ -174,7 +198,8 @@ export default defineComponent({
       currentDate4: new Date(2022, 4, 10, 10, 10),
       currentDate5: new Date(2022, 4, 10, 10, 10),
       currentDate6: new Date(2022, 4, 10, 10, 10),
-      currentDate7: new Date(2022, 4, 10, 0, 0)
+      currentDate7: new Date(2022, 4, 10, 0, 0),
+      currentDate8: new Date(2024, 4, 1)
     });
 
     const formatter = (type: string, option: any) => {
@@ -213,6 +238,26 @@ export default defineComponent({
           break;
         case 'hour':
           option.text += `${translate('hour')}`;
+          break;
+        default:
+          option.text += '';
+      }
+      return option;
+    };
+
+    const formatter2 = (type: string, option: any) => {
+      const f = {
+        '01': '第一',
+        '02': '第二',
+        '03': '第三',
+        '04': '第四'
+      };
+      switch (type) {
+        case 'year':
+          option.text += `${translate('year')}`;
+          break;
+        case 'quarter':
+          option.text = `${f[option.text]}${translate('quarter')}`;
           break;
         default:
           option.text += '';
@@ -275,6 +320,7 @@ export default defineComponent({
       confirm,
       formatter,
       formatter1,
+      formatter2,
       filter,
       alwaysFun,
       translate,
