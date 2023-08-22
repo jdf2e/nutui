@@ -248,9 +248,9 @@ app.use(AddressList);
 ### Events
 
 | Event      | Description                                | Arguments         | Remark                                |
-| ---------- | ------------------------------------------ | ----------------- | ------------------------------------- | --- |
+| ---------- | ------------------------------------------ | ----------------- | ------------------------------------- |
 | del-icon   | Click the delete icon                      | event: Event,item | public                                |
-| edit-icon  | Click the edit icon                        | event: Event,item | public                                |     |
+| edit-icon  | Click the edit icon                        | event: Event,item | public                                |
 | click-item | Click on each item in the address list     | event: Event,item | public                                |
 | add        | Click the Add Address button at the bottom | event: Event      | public                                |
 | long-copy  | Click the Copy Address button              | event: Event,item | Click event under long press function |
