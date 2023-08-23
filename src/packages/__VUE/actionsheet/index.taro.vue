@@ -89,7 +89,7 @@ export default create({
       default: true
     }
   },
-  emits: ['cancel', 'choose', 'update:visible', 'close'],
+  emits: ['cancel', 'close', 'choose', 'update:visible'],
 
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
@@ -117,8 +117,10 @@ export default create({
     };
 
     const close = (e: Event) => {
-      emit('close', e);
-      emit('update:visible', false);
+      if (props.closeAbled) {
+        emit('close', e);
+        emit('update:visible', false);
+      }
     };
 
     return {
