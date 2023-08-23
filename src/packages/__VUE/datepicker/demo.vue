@@ -28,6 +28,14 @@
       <nut-cell :title="translate('chooseTime')" :desc="desc7" @click="show7 = true"></nut-cell>
     </nut-cell-group>
 
+    <nut-cell-group :title="translate('chooseQuarter')">
+      <nut-cell :title="translate('chooseTime')" :desc="desc8" @click="show8 = true"></nut-cell>
+    </nut-cell-group>
+
+    <nut-cell-group :title="translate('chooseYear')">
+      <nut-cell :title="translate('chooseTime')" :desc="desc9" @click="show9 = true"></nut-cell>
+    </nut-cell-group>
+
     <!-- 选择年月日 -->
     <nut-datepicker
       v-model="currentDate"
@@ -131,6 +139,36 @@
       "
       v-model:visible="show7"
     ></nut-datepicker>
+    <!-- 选择年季度 -->
+    <nut-datepicker
+      v-model="currentDate8"
+      type="year-quarter"
+      :title="translate('basic')"
+      :min-date="new Date(2022, 11, 1)"
+      :max-date="new Date(2022, 12, 1)"
+      :formatter="formatter2"
+      @confirm="
+        (val) => {
+          confirm(7, val);
+        }
+      "
+      v-model:visible="show8"
+    ></nut-datepicker>
+    <!-- 选择年 -->
+    <nut-datepicker
+      v-model="currentDate8"
+      type="year"
+      :title="translate('basic')"
+      :min-date="new Date(2022, 11, 1)"
+      :max-date="new Date(2024, 5, 1)"
+      :formatter="formatter2"
+      @confirm="
+        (val) => {
+          confirm(8, val);
+        }
+      "
+      v-model:visible="show9"
+    ></nut-datepicker>
   </div>
 </template>
 
@@ -159,7 +197,10 @@ const initTranslate = () =>
       day: '日',
       hour: '时',
       min: '分',
-      seconds: '秒'
+      seconds: '秒',
+      quarter: '季度',
+      chooseQuarter: '选择季度',
+      chooseYear: '选择年度'
     },
     'en-US': {
       basic: 'Choose Date',
@@ -179,7 +220,10 @@ const initTranslate = () =>
       day: 'Day',
       hour: 'Hour',
       min: 'Minute',
-      seconds: 'Second'
+      seconds: 'Second',
+      quarter: 'Quarter',
+      chooseQuarter: 'chooseQuarter',
+      chooseYear: 'chooseYear'
     }
   });
 export default createDemo({
@@ -193,6 +237,8 @@ export default createDemo({
     const show5 = ref(false);
     const show6 = ref(false);
     const show7 = ref(false);
+    const show8 = ref(false);
+    const show9 = ref(false);
 
     const CurrentDate = reactive({
       currentDate: new Date(2022, 4, 10, 10, 10),
@@ -201,7 +247,8 @@ export default createDemo({
       currentDate4: new Date(2022, 4, 10, 10, 10),
       currentDate5: new Date(2022, 4, 10, 10, 10),
       currentDate6: new Date(2022, 4, 10, 10, 10),
-      currentDate7: new Date(2022, 4, 10, 0, 0)
+      currentDate7: new Date(2022, 4, 10, 0, 0),
+      currentDate8: new Date(2024, 4, 1, 0, 0)
     });
 
     const desc1 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')}`);
@@ -211,7 +258,9 @@ export default createDemo({
     const desc5 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')} 10:10`);
     const desc6 = ref('10:10:00');
     const desc7 = ref(`2022${translate('year')} 05${translate('month')} 10${translate('day')} 00${translate('hour')}`);
-    const descList = [desc1, desc2, desc3, desc4, desc5, desc6, desc7];
+    const desc8 = ref(`2024${translate('year')}02${translate('quarter')}`);
+    const desc9 = ref(`2024${translate('year')}`);
+    const descList = [desc1, desc2, desc3, desc4, desc5, desc6, desc7, desc8, desc9];
 
     const formatter = (type: string, option) => {
       switch (type) {
@@ -249,6 +298,26 @@ export default createDemo({
           break;
         case 'hour':
           option.text += `${translate('hour')}`;
+          break;
+        default:
+          option.text += '';
+      }
+      return option;
+    };
+
+    const formatter2 = (type: string, option) => {
+      const f = {
+        '01': '第一',
+        '02': '第二',
+        '03': '第三',
+        '04': '第四'
+      };
+      switch (type) {
+        case 'year':
+          option.text += `${translate('year')}`;
+          break;
+        case 'quarter':
+          option.text = `${f[option.text]}${translate('quarter')}`;
           break;
         default:
           option.text += '';
@@ -295,6 +364,12 @@ export default createDemo({
             .join(':');
           descList[index].value = selectedOptions[0].text + translate('year') + date + ' ' + time;
           break;
+        case 7:
+          descList[index].value = selectedValue[0] + translate('year') + selectedValue[1] + translate('quarter');
+          break;
+        case 8:
+          descList[index].value = selectedValue[0] + translate('year');
+          break;
         default:
           descList[index].value = selectedValue.join('-');
       }
@@ -312,6 +387,8 @@ export default createDemo({
       show5,
       show6,
       show7,
+      show8,
+      show9,
       desc1,
       desc2,
       desc3,
@@ -319,12 +396,15 @@ export default createDemo({
       desc5,
       desc6,
       desc7,
+      desc8,
+      desc9,
       ...toRefs(CurrentDate),
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
       confirm,
       formatter,
       formatter1,
+      formatter2,
       filter,
       alwaysFun,
       translate
