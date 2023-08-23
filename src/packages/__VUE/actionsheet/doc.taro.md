@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { ActionSheet } from '@nutui/nutui-taro';
 
@@ -18,49 +18,35 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
-    <span><label>基础用法</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>基础用法</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo 基础用法 -->
-  <nut-action-sheet v-model:visible="state.isVisible1" :menu-items="menuItemsOne" @choose="chooseItem">
-  </nut-action-sheet>
+  <nut-action-sheet v-model:visible="visible" :menu-items="menuItems" @choose="choose" />
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible1: false,
-        val: ''
-      });
-      const menuItemsOne = [
-        {
-          name: '选项一'
-        },
-        {
-          name: '选项二'
-        },
-        {
-          name: '选项三'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible1 = !state.isVisible1;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItemsOne,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: '选项一'
+  },
+  {
+    name: '选项二'
+  },
+  {
+    name: '选项三'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -70,49 +56,36 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>展示取消按钮</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>展示取消按钮</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo 展示取消按钮 -->
-  <nut-action-sheet v-model:visible="state.isVisible" :menu-items="menuItems" cancel-txt="取消" @choose="chooseItem">
+  <nut-action-sheet v-model:visible="visible" :menu-items="menuItems" cancel-txt="取消" @choose="choose">
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: '选项一'
-        },
-        {
-          name: '选项二'
-        },
-        {
-          name: '选项三'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: '选项一'
+  },
+  {
+    name: '选项二'
+  },
+  {
+    name: '选项三'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -122,56 +95,43 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>展示描述信息</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>展示描述信息</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo 展示描述信息 -->
   <nut-action-sheet
-    v-model:visible="state.isVisible"
+    v-model:visible="visible"
     cancel-txt="取消"
     description="这是一段展示信息"
     :menu-items="menuItems"
-    @choose="chooseItem"
+    @choose="choose"
   >
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: '选项一'
-        },
-        {
-          name: '选项二'
-        },
-        {
-          name: '选项三',
-          subname: '描述信息'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: '选项一'
+  },
+  {
+    name: '选项二'
+  },
+  {
+    name: '选项三',
+    subname: '描述信息'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -181,53 +141,40 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>选项状态</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>选项状态</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo 选项状态 -->
   <nut-action-sheet
-    v-model:visible="state.isVisible"
+    v-model:visible="visible"
     :menu-items="menuItems"
     choose-tag-value="着色选项"
-    @choose="chooseItem"
+    @choose="choose"
     cancel-txt="取消"
   >
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: '着色选项'
-        },
-        {
-          name: '禁用选项',
-          disable: true
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: '着色选项'
+  },
+  {
+    name: '禁用选项',
+    disable: true
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -237,37 +184,27 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>自定义内容</label></span>
+  <nut-cell is-link @click="click">
+    <div>自定义内容</div>
   </nut-cell>
-  <nut-action-sheet v-model:visible="state.isVisible" title="标题">
+  <nut-action-sheet v-model:visible="visible" title="标题">
     <div class="custom-content">自定义内容</div>
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      return {
-        state,
-        switchActionSheet
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const click = (param) => {
+  visible.value = !visible.value;
+};
 </script>
 <style>
-  .custom-content {
-    padding: 10px 10px 160px;
-  }
+.custom-content {
+  padding: 10px 10px 160px;
+}
 </style>
 ```
 

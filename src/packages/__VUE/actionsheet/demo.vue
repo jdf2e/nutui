@@ -1,59 +1,32 @@
 <template>
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
-    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
-      <span
-        ><label>{{ translate('basic') }}</label></span
-      >
-      <div v-html="state.val1"></div>
+    <nut-cell is-link @click="switchActionSheet('isVisible1')">
+      <div>{{ translate('basic') }}</div>
+      <div>{{ state.val1 }}</div>
     </nut-cell>
-    <nut-cell :showIcon="true" :isLink="true" @click="switchActionSheet('isVisible2')">
-      <span
-        ><label>{{ translate('showCancelButton') }}</label></span
-      >
-      <div v-html="state.val2"></div>
-    </nut-cell>
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
-      <span
-        ><label>{{ translate('showDescription') }}</label></span
-      >
-      <div v-html="state.val3"></div>
-    </nut-cell>
-    <h2>{{ translate('optionStatus') }}</h2>
-
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
-      <span
-        ><label>{{ translate('optionStatus') }}</label></span
-      >
-      <div v-html="state.val4"></div>
-    </nut-cell>
-
-    <h2>{{ translate('customContent') }}</h2>
-
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
-      <span
-        ><label>{{ translate('customContent') }}</label></span
-      >
-      <div></div>
-    </nut-cell>
-
-    <!-- demo 基础用法 -->
     <nut-action-sheet
       :safe-area-inset-bottom="true"
       v-model:visible="state.isVisible1"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
-    >
-    </nut-action-sheet>
-    <!-- demo(带取消按钮） -->
+    />
+
+    <nut-cell is-link @click="switchActionSheet('isVisible2')">
+      <div>{{ translate('showCancelButton') }}</div>
+      <div>{{ state.val2 }}</div>
+    </nut-cell>
     <nut-action-sheet
       v-model:visible="state.isVisible2"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
-    >
-    </nut-action-sheet>
-    <!-- 展示描述信息 -->
+    />
+
+    <nut-cell is-link @click="switchActionSheet('isVisible3')">
+      <div>{{ translate('showDescription') }}</div>
+      <div>{{ state.val3 }}</div>
+    </nut-cell>
     <nut-action-sheet
       v-model:visible="state.isVisible3"
       :title="translate('title')"
@@ -61,25 +34,33 @@
       :menu-items="menuItemsTwo"
       @choose="chooseItemThree"
       :cancel-txt="translate('cancelTxt')"
-    >
-    </nut-action-sheet>
-    <!-- demo 选项状态-->
+    />
+
+    <h2>{{ translate('optionStatus') }}</h2>
+    <nut-cell is-link @click="switchActionSheet('isVisible4')">
+      <div>{{ translate('optionStatus') }}</div>
+      <div>{{ state.val4 }}</div>
+    </nut-cell>
     <nut-action-sheet
       v-model:visible="state.isVisible4"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsThree"
       @choose="chooseItemFour"
       :choose-tag-value="chooseTagValue"
-    ></nut-action-sheet>
-    <!-- 自定义面板-->
+    />
+
+    <h2>{{ translate('customContent') }}</h2>
+    <nut-cell is-link @click="switchActionSheet('isVisible5')">
+      <div>{{ translate('customContent') }}</div>
+    </nut-cell>
     <nut-action-sheet v-model:visible="state.isVisible5" :title="translate('title')">
       <div class="custom-content">{{ translate('customContent') }}</div>
     </nut-action-sheet>
   </div>
 </template>
 
-<script lang="ts">
-import { computed, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('action-sheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -127,102 +108,77 @@ interface Item {
   disable?: boolean;
   loading?: boolean;
 }
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      isVisible1: false,
-      isVisible2: false,
-      isVisible3: false,
-      isVisible4: false,
-      isVisible5: false,
-      val1: '',
-      val2: '',
-      val3: '',
-      val4: ''
-    });
-    const chooseTagValue = computed(() => translate('checkOption'));
-    const desc = computed(() => translate('showDesc'));
-    const menuItemsOne = computed(() => [
-      {
-        name: translate('optionOne')
-      },
-      {
-        name: translate('optionTwo')
-      },
-      {
-        name: translate('optionThree')
-      }
-    ]);
-    const menuItemsTwo = computed(() => [
-      {
-        name: translate('optionOne')
-      },
-      {
-        name: translate('optionTwo')
-      },
-      {
-        name: translate('optionThree'),
-        color: 'red',
-        subname: translate('desc')
-      }
-    ]);
-    const menuItemsThree = computed(() => [
-      {
-        name: translate('checkOption')
-      },
-      {
-        name: translate('disableOption'),
-        disable: true
-      },
-      {
-        name: translate('loadOptions'),
-        loading: true
-      }
-    ]);
-    const switchActionSheet = (param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4') => {
-      state[param] = !state[param];
-    };
-
-    const chooseItem = (itemParams: any) => {
-      state.val1 = itemParams.name;
-    };
-
-    function chooseItemTwo(itemParams: Item) {
-      state.val2 = itemParams.name;
-    }
-    function chooseItemThree(itemParams: Item) {
-      state.val3 = itemParams.name;
-    }
-    function chooseItemFour(itemParams: Item) {
-      state.val4 = itemParams.name;
-    }
-
-    return {
-      state,
-      menuItemsOne,
-      menuItemsTwo,
-      menuItemsThree,
-      chooseTagValue,
-      desc,
-      translate,
-      chooseItem,
-      chooseItemTwo,
-      chooseItemThree,
-      chooseItemFour,
-      switchActionSheet
-    };
-  }
+initTranslate();
+const state = reactive({
+  isVisible1: false,
+  isVisible2: false,
+  isVisible3: false,
+  isVisible4: false,
+  isVisible5: false,
+  val1: '',
+  val2: '',
+  val3: '',
+  val4: ''
 });
+const chooseTagValue = computed(() => translate('checkOption'));
+const desc = computed(() => translate('showDesc'));
+const menuItemsOne = computed(() => [
+  {
+    name: translate('optionOne')
+  },
+  {
+    name: translate('optionTwo')
+  },
+  {
+    name: translate('optionThree')
+  }
+]);
+const menuItemsTwo = computed(() => [
+  {
+    name: translate('optionOne')
+  },
+  {
+    name: translate('optionTwo')
+  },
+  {
+    name: translate('optionThree'),
+    color: 'red',
+    subname: translate('desc')
+  }
+]);
+const menuItemsThree = computed(() => [
+  {
+    name: translate('checkOption')
+  },
+  {
+    name: translate('disableOption'),
+    disable: true
+  },
+  {
+    name: translate('loadOptions'),
+    loading: true
+  }
+]);
+const switchActionSheet = (param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4' | 'isVisible5') => {
+  state[param] = !state[param];
+};
+
+const chooseItem = (itemParams: any) => {
+  state.val1 = itemParams.name;
+};
+
+function chooseItemTwo(itemParams: Item) {
+  state.val2 = itemParams.name;
+}
+function chooseItemThree(itemParams: Item) {
+  state.val3 = itemParams.name;
+}
+function chooseItemFour(itemParams: Item) {
+  state.val4 = itemParams.name;
+}
 </script>
 
 <style lang="scss" scoped>
-.custom-wrap {
-  padding: 110px 0;
-  text-align: center;
-}
-
 .nut-cell {
   justify-content: space-between;
 }
