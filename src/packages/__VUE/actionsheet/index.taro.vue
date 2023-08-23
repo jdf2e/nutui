@@ -33,10 +33,10 @@
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 import type { PropType } from 'vue';
-const { componentName, create } = createComponent('action-sheet');
-import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
+import Popup from '../popup/index.taro.vue';
 import { Loading } from '@nutui/icons-vue-taro';
+const { componentName, create } = createComponent('action-sheet');
 export interface menuItems {
   disable: boolean;
   loading: boolean;
