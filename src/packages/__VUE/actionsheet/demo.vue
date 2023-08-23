@@ -5,12 +5,7 @@
       <div>{{ translate('basic') }}</div>
       <div>{{ state.val1 }}</div>
     </nut-cell>
-    <nut-action-sheet
-      :safe-area-inset-bottom="true"
-      v-model:visible="state.isVisible1"
-      :menu-items="menuItemsOne"
-      @choose="chooseItem"
-    />
+    <nut-action-sheet v-model:visible="state.isVisible1" :menu-items="menuItemsOne" @choose="chooseItem" />
 
     <nut-cell is-link @click="switchActionSheet('isVisible2')">
       <div>{{ translate('showCancelButton') }}</div>
