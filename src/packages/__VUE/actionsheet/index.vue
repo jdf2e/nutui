@@ -117,8 +117,10 @@ export default create({
     };
 
     const close = (e: Event) => {
-      emit('close', e);
-      emit('update:visible', false);
+      if (props.closeAbled) {
+        emit('close', e);
+        emit('update:visible', false);
+      }
     };
 
     return {

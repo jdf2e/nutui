@@ -33,10 +33,10 @@
 import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 import type { PropType } from 'vue';
-const { componentName, create } = createComponent('action-sheet');
-import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
+import Popup from '../popup/index.taro.vue';
 import { Loading } from '@nutui/icons-vue-taro';
+const { componentName, create } = createComponent('action-sheet');
 export interface menuItems {
   disable: boolean;
   loading: boolean;
@@ -89,7 +89,7 @@ export default create({
       default: true
     }
   },
-  emits: ['cancel', 'choose', 'update:visible', 'close'],
+  emits: ['cancel', 'close', 'choose', 'update:visible'],
 
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
@@ -117,8 +117,10 @@ export default create({
     };
 
     const close = (e: Event) => {
-      emit('close', e);
-      emit('update:visible', false);
+      if (props.closeAbled) {
+        emit('close', e);
+        emit('update:visible', false);
+      }
     };
 
     return {
