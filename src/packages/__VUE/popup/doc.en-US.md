@@ -6,7 +6,7 @@ The pop-up layer container is used to display pop-up windows, information prompt
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Popup } from '@nutui/nutui';
 
@@ -20,22 +20,14 @@ Control display/hide by setting `visible`
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Display pop-up layer" is-link @click="showBasic = true"></nut-cell>
   <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showBasic">text</nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showBasic: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -47,7 +39,7 @@ Control the pop-up position by setting the value of `position`
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Top Eject" is-link @click="showTop = true"></nut-cell>
   <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="showTop"></nut-popup>
@@ -58,20 +50,12 @@ Control the pop-up position by setting the value of `position`
   <nut-cell title="Right Eject" is-link @click="showRight = true"></nut-cell>
   <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="showRight"></nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showTop: false,
-        showBottom: false,
-        showLeft: false,
-        showRight: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const showTop = ref(false);
+const showBottom = ref(false);
+const showLeft = ref(false);
+const showRight = ref(false);
 </script>
 ```
 
@@ -83,7 +67,7 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="close icon" is-link @click="showIcon = true"></nut-cell>
   <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="showIcon"></nut-popup>
@@ -109,21 +93,12 @@ The `closeable` controls whether the icon can be closed. The `close-icon-positio
     </template>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  import { Heart } from '@nutui/icons-vue';
-  export default {
-    components: { Heart },
-    props: {},
-    setup() {
-      const state = reactive({
-        showIcon: false,
-        showIconPosition: false,
-        showCloseIcon: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { Heart } from '@nutui/icons-vue';
+const showIcon = ref(false);
+const showIconPosition = ref(false);
+const showCloseIcon = ref(false);
 </script>
 ```
 
@@ -135,22 +110,14 @@ Set `round` to control whether rounded corners are displayed
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="rounded pop-up" is-link @click="showRound = true"></nut-cell>
   <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showRound: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -162,24 +129,16 @@ Specify the mount node through `teleport`
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Specify mount node" is-link @click="showTeleport = true"></nut-cell>
   <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="showTeleport"
     >app</nut-popup
   >
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showTeleport: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -189,7 +148,7 @@ Specify the mount node through `teleport`
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Multi stack" is-link @click="showPop1 = true"></nut-cell>
   <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
@@ -197,18 +156,10 @@ Specify the mount node through `teleport`
   </nut-popup>
   <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop2">Text</nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showPop1: false,
-        showPop2: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const showPop1 = ref(false);
+const showPop2 = ref(false);
 </script>
 ```
 
@@ -223,8 +174,6 @@ Specify the mount node through `teleport`
 | v-model:visible        | Control the display/hide of the current component                                                                          | boolean          | `false`       |
 | z-index                | Mask level                                                                                                                 | string \| number | `2000`        |
 | duration               | Animation duration of component display/hide, in seconds                                                                   | string \| number | `0.3`         |
-| overlay-class          | Custom mask classname                                                                                                      | string           | -             |
-| overlay-style          | Custom mask style                                                                                                          | CSSProperties    | -             |
 | lock-scroll            | Whether the background is locked                                                                                           | boolean          | `true`        |
 | overlay                | Show mask                                                                                                                  | boolean          | `true`        |
 | close-on-click-overlay | Click to close the mask                                                                                                    | boolean          | `true`        |
@@ -246,7 +195,7 @@ Specify the mount node through `teleport`
 
 | Event            | Description                                           | Arguments      |
 | ---------------- | ----------------------------------------------------- | -------------- |
-| click            | Triggered when clicking the pop-up layer              | `event: Event` |
+| click-pop        | Triggered when clicking the pop-up layer              | `event: Event` |
 | click-close-icon | Triggered when the close icon is clicked              | `event: Event` |
 | open             | Triggered when the pop-up box is opened               | -              |
 | close            | Triggered when the pop-up box is closed               | -              |
