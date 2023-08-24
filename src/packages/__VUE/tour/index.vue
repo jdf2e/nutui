@@ -14,12 +14,12 @@
         <nut-popover
           v-model:visible="showPopup"
           :location="step.location || location"
-          targetId="nut-tour-popid"
-          :bgColor="bgColor"
+          target-id="nut-tour-popid"
+          :bg-color="bgColor"
           :theme="theme"
           :close-on-click-outside="false"
           :offset="step.popoverOffset || [0, 12]"
-          :arrowOffset="step.arrowOffset || 0"
+          :arrow-offset="step.arrowOffset || 0"
         >
           <template #content>
             <slot>

@@ -9,9 +9,9 @@
       <nut-tab-pane :title="translate('customTxt')">
         <nut-pull-refresh
           v-model="refresh2"
-          :loosingTxt="translate('loose')"
-          :loadingTxt="translate('load')"
-          :completeTxt="translate('ok')"
+          :loosing-txt="translate('loose')"
+          :loading-txt="translate('load')"
+          :complete-txt="translate('ok')"
           @refresh="refreshFun"
         >
           <template #pulling>

@@ -16,7 +16,7 @@
             :disabled="disabled"
             :readonly="readonly"
             :value="modelValue"
-            :formatTrigger="formatTrigger"
+            :format-trigger="formatTrigger"
             :autofocus="autofocus"
             :enterkeyhint="confirmType"
             @input="onInput"

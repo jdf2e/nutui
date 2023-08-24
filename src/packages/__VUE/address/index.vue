@@ -7,7 +7,7 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
-    :teleportDisable="teleportDisable"
+    :teleport-disable="teleportDisable"
     :teleport="teleport"
   >
     <view class="nut-address">

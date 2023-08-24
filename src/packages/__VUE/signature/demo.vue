@@ -10,8 +10,8 @@
       <nut-signature
         @confirm="confirm2"
         @clear="clear2"
-        :lineWidth="lineWidth"
-        :strokeStyle="strokeStyle"
+        :line-width="lineWidth"
+        :stroke-style="strokeStyle"
         @end="end"
       ></nut-signature>
       <img :src="demoSignUrl2" class="demoSignUrl" v-if="demoSignUrl2" />

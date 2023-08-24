@@ -39,7 +39,7 @@
       v-model="selectedTileValue"
       :columns="columns"
       :title="translate('chooseCity')"
-      :threeDimensional="false"
+      :three-dimensional="false"
       @confirm="confirm"
     >
     </nut-picker>

@@ -2,7 +2,7 @@
   <nut-popup
     v-model:visible="show"
     position="bottom"
-    :popClass="popClass"
+    :pop-class="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
     overlay-class="nut-number-keyboard-overlay"

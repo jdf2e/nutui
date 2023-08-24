@@ -31,10 +31,10 @@
         <sku-stepper
           v-if="!getSlots('sku-stepper')"
           :goods="goods"
-          :stepperTitle="stepperTitle || translate('buyNumber')"
-          :stepperMax="stepperMax"
-          :stepperMin="stepperMin"
-          :stepperExtraText="stepperExtraText"
+          :stepper-title="stepperTitle || translate('buyNumber')"
+          :stepper-max="stepperMax"
+          :stepper-min="stepperMin"
+          :stepper-extra-text="stepperExtraText"
           @add="add"
           @reduce="reduce"
           @change-stepper="changeStepper"
@@ -45,11 +45,11 @@
       </view>
 
       <sku-operate
-        :btnExtraText="btnExtraText"
-        :btnOptions="btnOptions"
-        :buyText="buyText || translate('buyNow')"
-        :addCartText="addCartText || translate('addToCart')"
-        :confirmText="confirmText || translate('confirm')"
+        :btn-extra-text="btnExtraText"
+        :btn-options="btnOptions"
+        :buy-text="buyText || translate('buyNow')"
+        :add-cart-text="addCartText || translate('addToCart')"
+        :confirm-text="confirmText || translate('confirm')"
         @click-btn-operate="clickBtnOperate"
       >
         <template #operate-btn v-if="getSlots('sku-operate')">

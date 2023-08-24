@@ -5,7 +5,7 @@
       v-if="foldCount > 0"
       class="avater-fold"
       :color="maxColor"
-      :bgColor="maxBgColor"
+      :bg-color="maxBgColor"
       :size="size"
       :shape="shape"
       :style="{ magrinLeft: `${span}px` }"

@@ -16,7 +16,7 @@
       <nut-cascader-item
         @change="onChange"
         @path-change="onPathChange"
-        :modelValue="innerValue"
+        :model-value="innerValue"
         :options="options"
         :lazy="lazy"
         :lazy-load="lazyLoad"
@@ -32,7 +32,7 @@
     <nut-cascader-item
       @change="onChange"
       @path-change="onPathChange"
-      :modelValue="innerValue"
+      :model-value="innerValue"
       :options="options"
       :lazy="lazy"
       :lazy-load="lazyLoad"

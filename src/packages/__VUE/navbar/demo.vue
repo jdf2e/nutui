@@ -25,7 +25,7 @@
       @on-click-icon="icon"
       @on-click-right="rightClick"
       :title="translate('navTitle3')"
-      :titleIcon="true"
+      :title-icon="true"
       :desc="translate('desc2')"
     >
       <template #title-icon>

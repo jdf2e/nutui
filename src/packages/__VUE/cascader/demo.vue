@@ -28,11 +28,11 @@
       :title="translate('addressTip')"
       v-model:visible="demo2.visible"
       v-model="demo2.value"
-      labelKey="text"
+      label-key="text"
       @change="events.change"
       @path-change="events.pathChange"
-      valueKey="text"
-      childrenKey="items"
+      value-key="text"
+      children-key="items"
       :options="demo2.options"
     ></nut-cascader>
 
@@ -50,7 +50,7 @@
       @change="events.change"
       @path-change="events.pathChange"
       lazy
-      :lazyLoad="demo3.lazyLoad"
+      :lazy-load="demo3.lazyLoad"
     ></nut-cascader>
 
     <h2>{{ translate('title3') }}</h2>
@@ -68,7 +68,7 @@
       @path-change="events.pathChange"
       :options="demo4.options"
       lazy
-      :lazyLoad="demo4.lazyLoad"
+      :lazy-load="demo4.lazyLoad"
     ></nut-cascader>
 
     <h2>{{ translate('title4') }}</h2>
@@ -85,7 +85,7 @@
       @change="events.change"
       @path-change="events.pathChange"
       :options="demo5.options"
-      :convertConfig="demo5.convertConfig"
+      :convert-config="demo5.convertConfig"
     ></nut-cascader>
   </div>
 </template>

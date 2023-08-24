@@ -1,6 +1,12 @@
 <template>
   <div ref="root">
-    <nut-popup v-model:visible="show" position="bottom" :popClass="popClass" :overlay="false" :teleportDisable="false">
+    <nut-popup
+      v-model:visible="show"
+      position="bottom"
+      :pop-class="popClass"
+      :overlay="false"
+      :teleport-disable="false"
+    >
       <div class="nut-number-keyboard">
         <div class="nut-number-keyboard__header" v-if="title">
           <h3 class="nut-number-keyboard__title">{{ title }}</h3>

@@ -41,7 +41,6 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/no-v-text-v-html-on-component': 'off',
     // will be removed someday
-    'vue/attributes-order': 'off',
-    'vue/attribute-hyphenation': 'off'
+    'vue/attributes-order': 'off'
   }
 };

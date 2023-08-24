@@ -30,11 +30,11 @@
       :steps="steps1"
       location="bottom-end"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       :offset="[0, 0]"
-      maskWidth="50"
-      maskHeight="50"
+      mask-width="50"
+      mask-height="50"
     ></nut-tour>
 
     <h2>{{ translate('title2') }}</h2>
@@ -61,7 +61,7 @@
       v-model="showTour2"
       :steps="steps2"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
@@ -83,7 +83,7 @@
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
-      :closeOnClickOverlay="false"
+      :close-on-click-overlay="false"
     >
       <div class="tour-demo-custom-content">
         <div>nutui 4.x 即将发布，敬请期待</div>
@@ -109,8 +109,8 @@
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="60"
-      maskHeight="50"
+      mask-width="60"
+      mask-height="50"
     ></nut-tour>
   </div>
 </template>

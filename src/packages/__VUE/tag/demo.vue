@@ -59,7 +59,7 @@
       </nut-cell>
       <nut-cell :title="translate('textColor')">
         <template #link>
-          <nut-tag color="#E9E9E9" textColor="#999999">{{ translate('tag') }}</nut-tag>
+          <nut-tag color="#E9E9E9" text-color="#999999">{{ translate('tag') }}</nut-tag>
         </template>
       </nut-cell>
       <nut-cell :title="translate('plaincolor')">

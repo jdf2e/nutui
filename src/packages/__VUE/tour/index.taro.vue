@@ -13,12 +13,12 @@
       <nut-popover
         v-model:visible="showPopup[i]"
         :location="step.location || location"
-        :targetId="`nut-tour-popid${i}${refRandomId}`"
-        :bgColor="bgColor"
+        :target-id="`nut-tour-popid${i}${refRandomId}`"
+        :bg-color="bgColor"
         :theme="theme"
         :close-on-click-outside="false"
         :offset="step.popoverOffset || [0, 12]"
-        :arrowOffset="step.arrowOffset || 0"
+        :arrow-offset="step.arrowOffset || 0"
         :duration="0.2"
       >
         <template #content>

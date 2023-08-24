@@ -2,7 +2,7 @@
   <nut-popup
     pop-class="nut-image-preview-custom-pop"
     v-model:visible="showPop"
-    :teleportDisable="teleportDisable"
+    :teleport-disable="teleportDisable"
     :teleport="teleport"
     @closed="onClose"
     lock-scroll
@@ -13,7 +13,7 @@
         :auto-play="autoplay"
         class="nut-image-preview-swiper"
         :loop="isLoop"
-        :is-preventDefault="false"
+        :is-prevent-default="false"
         direction="horizontal"
         @change="setActive"
         :init-page="initNo"
@@ -25,14 +25,14 @@
           :key="index"
           :video="index < videos.length ? item : {}"
           :image="index >= videos.length ? item : {}"
-          :rootHeight="rootHeight"
-          :rootWidth="rootWidth"
+          :root-height="rootHeight"
+          :root-width="rootWidth"
           :show="showPop"
           :init-no="active + 1"
           @close="onClose"
           :content-close="contentClose"
-          :maxZoom="maxZoom"
-          :minZoom="minZoom"
+          :max-zoom="maxZoom"
+          :min-zoom="minZoom"
         ></image-preview-item>
       </nut-swiper>
     </view>

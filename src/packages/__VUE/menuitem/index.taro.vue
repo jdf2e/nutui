@@ -10,14 +10,14 @@
     </view>
     <nut-popup
       :style="{ position: 'absolute' }"
-      :overlayStyle="{ position: 'absolute' }"
+      :overlay-style="{ position: 'absolute' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       :destroy-on-close="false"
       :overlay="parent.props.overlay"
-      :lockScroll="parent.props.lockScroll"
+      :lock-scroll="parent.props.lockScroll"
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >

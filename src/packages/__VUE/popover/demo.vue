@@ -76,7 +76,7 @@
 
     <nut-popover
       v-model:visible="customPositon"
-      targetId="pickerTarget"
+      target-id="pickerTarget"
       :location="curPostion"
       theme="dark"
       :list="positionList"
@@ -89,14 +89,14 @@
     </nut-button>
     <nut-popover
       v-model:visible="customTarget"
-      targetId="popid"
+      target-id="popid"
       :list="iconItemList"
       location="top-start"
     ></nut-popover>
 
     <h2>{{ translate('contentColor') }}</h2>
 
-    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bgColor="#f00" theme="dark">
+    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bg-color="#f00" theme="dark">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('contentColor') }}</nut-button>
       </template>

@@ -14,11 +14,11 @@
     <!-- Taro 下转换成 微信小程序 -->
     <picker-view
       v-if="ENV != ENV_TYPE.WEB"
-      :indicatorStyle="`height:${optionHeight}px`"
+      :indicator-style="`height:${optionHeight}px`"
       :value="defaultIndexes"
       :style="pickerViewStyles"
       v-bind="$attrs"
-      :immediateChange="true"
+      :immediate-change="true"
       @change="tileChange"
       @pickstart="handlePickstart"
       @pickend="handlePickend"
@@ -26,7 +26,7 @@
       <picker-view-column
         v-for="(column, columnIndex) in columnsList"
         :key="columnIndex"
-        :filedNames="columnFieldNames"
+        :filed-names="columnFieldNames"
       >
         <view
           class="nut-picker-roller-item-tarotile"
@@ -47,13 +47,13 @@
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
-          :filedNames="columnFieldNames"
+          :columns-type="columnsType"
+          :filed-names="columnFieldNames"
           :value="defaultValues[columnIndex]"
-          :threeDimensional="false"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="false"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);
