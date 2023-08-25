@@ -23,6 +23,7 @@ app.use(Picker);
   <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
 <script setup>
+import { ref } from 'vue';
 const columns = ref([
   { text: '南京', value: 'NanJing' },
   { text: '无锡', value: 'WuXi' },
