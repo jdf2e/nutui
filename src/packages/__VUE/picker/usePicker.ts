@@ -1,6 +1,4 @@
 import { ref, reactive, watch, computed, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName } = createComponent('picker');
 import { PickerOption, PickerFieldNames } from './types';
 
 const DEFAULT_FILED_NAMES = {
@@ -39,17 +37,10 @@ export const usePicker = (props: any, emit: any) => {
     }
   };
 
-  const classes = computed(() => {
-    const prefixCls = componentName;
-    return {
-      [prefixCls]: true
-    };
-  });
-
   const selectedOptions = computed(() => {
     const fields = columnFieldNames.value;
     return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      return column.find((item) => item[fields.value] === defaultValues.value[index]);
+      return column.find((item) => item[fields.value] === defaultValues.value[index]) || column[0];
     });
   });
 
@@ -197,7 +188,6 @@ export const usePicker = (props: any, emit: any) => {
   );
 
   return {
-    classes,
     ...toRefs(state),
     columnsType,
     columnsList,

@@ -17,29 +17,16 @@
       </nut-picker>
     </nut-popup>
 
-    <h2>{{ translate('customFieldNames') }}</h2>
-    <nut-picker
-      :columns="customColumns"
-      :field-names="{
-        text: 'name',
-        value: 'code',
-        children: 'list'
-      }"
-      :title="translate('chooseCity')"
-      @confirm="customCloumnConfirm"
-    >
-    </nut-picker>
-
     <h2>{{ translate('defaultSelected') }}</h2>
     <nut-picker v-model="selectedValue" :columns="columns" :title="translate('chooseCity')" @confirm="confirm">
     </nut-picker>
 
-    <h2>{{ translate('tileDesc') }}</h2>
+    <h2>{{ translate('3d') }}</h2>
     <nut-picker
       v-model="selectedTileValue"
       :columns="columns"
       :title="translate('chooseCity')"
-      :threeDimensional="false"
+      three-dimensional
       @confirm="confirm"
     >
     </nut-picker>
@@ -63,6 +50,19 @@
       :title="translate('chooseCity')"
       @confirm="confirm"
     ></nut-picker>
+
+    <h2>{{ translate('customFieldNames') }}</h2>
+    <nut-picker
+      :columns="customColumns"
+      :field-names="{
+        text: 'name',
+        value: 'code',
+        children: 'list'
+      }"
+      :title="translate('chooseCity')"
+      @confirm="customCloumnConfirm"
+    >
+    </nut-picker>
   </div>
 </template>
 <script setup lang="ts">

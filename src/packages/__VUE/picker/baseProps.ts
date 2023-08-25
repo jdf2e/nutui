@@ -25,7 +25,7 @@ export default {
   },
   threeDimensional: {
     type: Boolean,
-    default: true
+    default: false
   },
   swipeDuration: {
     type: [Number, String],

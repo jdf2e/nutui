@@ -1,9 +1,9 @@
 <template>
-  <div :class="classes">
+  <div class="nut-picker">
     <view class="nut-picker__bar" v-if="showToolbar">
       <view class="nut-picker__left" @click="cancel">{{ cancelText || translate('cancel') }}</view>
       <view class="nut-picker__title"> {{ title }}</view>
-      <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
+      <view class="nut-picker__right" @click="confirmHandler">{{ okText || translate('confirm') }}</view>
     </view>
 
     <slot name="top"></slot>
@@ -13,13 +13,13 @@
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
-          :fieldNames="columnFieldNames"
+          :columns-type="columnsType"
+          :field-names="columnFieldNames"
           :value="defaultValues && defaultValues[columnIndex]"
-          :threeDimensional="threeDimensional"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="threeDimensional"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);
@@ -47,8 +47,10 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, classes, cancel } =
-      usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
+      props,
+      emit
+    );
 
     const pickerColumn = ref<any[]>([]);
 
@@ -74,7 +76,6 @@ export default create({
     };
 
     return {
-      classes,
       column,
       columnsType,
       columnsList,

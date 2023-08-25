@@ -14,8 +14,10 @@ export const componentWeb = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, classes, cancel } =
-      usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
+      props,
+      emit
+    );
 
     const state = reactive<{
       ENV: TaroGeneral.ENV_TYPE;
@@ -50,7 +52,6 @@ export const componentWeb = {
     });
 
     return {
-      classes,
       ...toRefs(state),
       column,
       columnsType,
@@ -83,7 +84,6 @@ export const componentWeapp = {
       columnsList,
       columnsType,
       columnFieldNames,
-      classes,
       cancel
     } = usePicker(props, emit);
     const state = reactive({
@@ -137,7 +137,6 @@ export const componentWeapp = {
     };
 
     return {
-      classes,
       ...toRefs(state),
       column,
       columnsType,

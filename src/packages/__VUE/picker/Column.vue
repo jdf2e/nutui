@@ -67,6 +67,11 @@ export default create({
     fieldNames: {
       type: Object as PropType<Required<PickerFieldNames>>,
       default: () => ({})
+    },
+    // 特殊环境判断
+    taro: {
+      type: Boolean,
+      defualt: false
     }
   },
 
@@ -134,8 +139,8 @@ export default create({
 
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
-      if (moving.value) {
-        let dom = roller.value as any;
+      if (moving.value && !props.taro) {
+        const dom = roller.value as any;
         const { transform } = window.getComputedStyle(dom);
         if (props.threeDimensional) {
           const circle = Math.floor(parseInt(touchDeg.value as string) / 360);
