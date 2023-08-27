@@ -1,6 +1,7 @@
-import { StoreOptions, File, ReplStore } from '@vue/repl';
+import { StoreOptions, File, ReplStore, compileFile } from '@vue/repl';
+import { ref, computed } from 'vue';
 
-const style = 'https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/style.css';
+const style = ref('https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/style.css');
 
 const appFileCode = `
 <script setup lang="ts">
@@ -38,8 +39,8 @@ installNutUI()
   <App />
 </template>
 `;
-const installCode = `
-import NutUI from '@nutui/nutui'
+const installCode = computed(
+  () => `import NutUI from '@nutui/nutui'
 import { getCurrentInstance } from 'vue'
 
 const appendStyle = () => {
@@ -50,7 +51,7 @@ const appendStyle = () => {
 
     const link = document.createElement('link')
     link.rel = 'stylesheet'
-    link.href = '${style}'
+    link.href = '${style.value}'
     link.onload = resolve
     link.onerror = reject
     document.body.appendChild(link)
@@ -63,7 +64,8 @@ export const installNutUI = () => {
   const instance = getCurrentInstance()
   instance.appContext.app.use(NutUI)
 }
-`;
+`
+);
 
 const utoa = (data: string) => {
   return btoa(unescape(encodeURIComponent(data)));
@@ -93,7 +95,7 @@ export class NutUIStore extends ReplStore {
 
     const container = new File(CONTAINER_FILE, containerCode, true);
     this.addFile(container);
-    const install = new File(INSTALL_FILE, installCode, true);
+    const install = new File(INSTALL_FILE, installCode.value, true);
     this.addFile(install);
 
     this.state.mainFile = CONTAINER_FILE;
@@ -106,5 +108,23 @@ export class NutUIStore extends ReplStore {
     delete files[CONTAINER_FILE.replace('src/', '')];
     delete files[INSTALL_FILE.replace('src/', '')];
     return '#' + utoa(JSON.stringify(files));
+  }
+  setNutUIVersion(v: string) {
+    style.value = `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/style.css`;
+    const install = new File(INSTALL_FILE, installCode.value, true);
+    this.addFile(install);
+    compileFile(this, install).then((errs) => this.state.errors.push(...errs));
+    this.setImportMap({
+      imports: {
+        '@nutui/nutui': `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/nutui.js`,
+        '@nutui/icons-vue': 'https://cdn.jsdelivr.net/npm/@nutui/icons-vue@latest/dist/lib/index.mjs',
+        '@nutui/touch-emulator': 'https://cdn.jsdelivr.net/npm/@nutui/touch-emulator',
+        // compatible with Functional Component style import
+        '@nutui/nutui/dist/packages/toast/style': './style.js',
+        '@nutui/nutui/dist/packages/dialog/style': './style.js',
+        '@nutui/nutui/dist/packages/imagepreview/style': './style.js',
+        '@nutui/nutui/dist/packages/notify/style': './style.js'
+      }
+    });
   }
 }
