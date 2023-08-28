@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Need Reproduce
         if: github.event.label.name == 'Need Reproduce'
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
