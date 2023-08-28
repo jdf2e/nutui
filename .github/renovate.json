@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base", "schedule:weekly", "group:allNonMajor"
+  ],
+  "labels": ["dependencies"],
+  "ignorePaths": [
+    "src/**",
+    "publish/**"
+  ],
+  "ignoreDeps": [
+    "node",
+    "typescript"
+  ]
+}
