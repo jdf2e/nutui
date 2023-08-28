@@ -94,7 +94,7 @@
     "@nutui/eslint-config": "workspace:*",
     "fs-extra": "^9.1.0",
     "highlight.js": "^11.8.0",
-    "husky": "^6.0.0",
+    "husky": "^8.0.0",
     "inquirer": "^8.2.0",
     "lint-staged": "^14.0.0",
     "lzutf8": "^0.6.3",
