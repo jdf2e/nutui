@@ -96,7 +96,7 @@
     "highlight.js": "^11.8.0",
     "husky": "^6.0.0",
     "inquirer": "^8.2.0",
-    "lint-staged": "^10.5.0",
+    "lint-staged": "^14.0.0",
     "lzutf8": "^0.6.3",
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
