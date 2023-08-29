@@ -100,7 +100,7 @@ export default create({
       default: 'default'
     },
     customKey: {
-      type: Array,
+      type: Array<string>,
       default: () => []
     },
     modelValue: {
@@ -213,7 +213,7 @@ export default create({
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
         emit('input', item.id);
-        if (props.modelValue.length < props.maxlength) {
+        if (props.modelValue.length < +props.maxlength) {
           emit('update:modelValue', props.modelValue + item.id);
         }
       }

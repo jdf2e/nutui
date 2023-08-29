@@ -144,7 +144,7 @@ export default create({
       const list = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
-        .filter((point) => point >= min && point <= max);
+        .filter((point) => point >= +min && point <= +max);
       return list;
     });
     const scope = computed(() => Number(props.max) - Number(props.min));
@@ -224,7 +224,7 @@ export default create({
       } else {
         upperBound = modelValue;
       }
-      let isActive = mark <= upperBound && mark >= lowerBound;
+      let isActive = mark <= +upperBound && mark >= lowerBound;
       return {
         [`${classPrefix}-text`]: true,
         [`${classPrefix}-text-active`]: isActive

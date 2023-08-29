@@ -326,7 +326,7 @@ export default create({
     };
 
     const autoplay = () => {
-      if (props.autoPlay <= 0 || childCount.value <= 1) return;
+      if (+props.autoPlay <= 0 || childCount.value <= 1) return;
       stopAutoPlay();
 
       state.autoplayTimer = setTimeout(() => {
@@ -436,7 +436,7 @@ export default create({
     watch(
       () => props.autoPlay,
       (val) => {
-        val > 0 ? autoplay() : stopAutoPlay();
+        +val > 0 ? autoplay() : stopAutoPlay();
       }
     );
 
