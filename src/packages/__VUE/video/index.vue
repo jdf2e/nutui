@@ -239,15 +239,15 @@ export default create({
     };
     const timeFormat = (t: number) => {
       var h = Math.floor(t / 3600) as string | number;
-      if (h < 10) {
+      if (+h < 10) {
         h = '0' + h;
       }
       var m = Math.floor((t % 3600) / 60) as string | number;
-      if (m < 10) {
+      if (+m < 10) {
         m = '0' + m;
       }
       var s = Math.round((t % 3600) % 60) as string | number;
-      if (s < 10) {
+      if (+s < 10) {
         s = '0' + s;
       }
       var str = '';

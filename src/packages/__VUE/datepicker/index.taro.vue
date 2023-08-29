@@ -276,7 +276,7 @@ export default create({
           min++;
         }
 
-        if (min <= val) {
+        if (min <= +val) {
           index++;
         }
       }
