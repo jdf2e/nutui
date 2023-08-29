@@ -9,17 +9,17 @@
       :duration="duration"
       :overlay-class="overlayClass"
       :overlay-style="overlayStyle"
-      @click="onClickOverlay"
       v-bind="$attrs"
+      @click="onClickOverlay"
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closed"
-          @click="onClickCloseIcon"
           class="nut-popup__close-icon"
           :class="'nut-popup__close-icon--' + closeIconPosition"
+          @click="onClickCloseIcon"
         >
           <slot name="close-icon">
             <Close height="12px"></Close>

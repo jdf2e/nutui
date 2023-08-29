@@ -1,10 +1,10 @@
 <template>
-  <div :class="classes" ref="scroller" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+  <div ref="scroller" :class="classes" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <div class="nut-pull-refresh-container" :style="getStyle">
       <div class="nut-pull-refresh-container-topbox" :style="getHeightStyle">
         <Loading
-          class="nut-icon-loading nut-pull-refresh-container-topbox-icon"
           v-if="status == 'loading' && !slots.loading"
+          class="nut-icon-loading nut-pull-refresh-container-topbox-icon"
         ></Loading>
 
         <div class="nut-pull-refresh-container-topbox-text">{{ getPullStatus }}</div>

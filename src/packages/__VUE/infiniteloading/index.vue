@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" ref="scroller">
+  <view ref="scroller" :class="classes">
     <view class="nut-infinite__container">
       <slot></slot>
     </view>

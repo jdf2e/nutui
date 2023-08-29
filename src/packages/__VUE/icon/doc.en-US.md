@@ -10,7 +10,7 @@ Install the [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) package ind
 npm i --save @nutui/icons-vue
 ```
 
-### Use: SVG import on demand
+## Use: SVG import on demand
 
 Use mode of on-demand loading components, see @nutui/icons-vue/dist/types/index.d.ts
 
@@ -42,7 +42,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 | ----- | ---------------------------- | ------------ |
 | click | Emitted when icon is clicked | event: Event |
 
-### Use: Full use of IconFont
+## Use: Full use of IconFont
 
 ```ks
 import { createApp } from 'vue';
@@ -69,7 +69,7 @@ Use `name` prop to set icon name or icon URL.
 
 :::
 
-#### Icon Color
+### Icon Color
 
 Use `color` prop to set icon color.
 
@@ -85,7 +85,7 @@ Use `color` prop to set icon color.
 
 :::
 
-#### Icon Size
+### Icon Size
 
 Use `size` prop to set icon size default unit is `px` .
 
@@ -101,7 +101,7 @@ Use `size` prop to set icon size default unit is `px` .
 
 :::
 
-#### Universal motion icons
+### Universal motion icons
 
 Adding the specified class class can realize the dynamic effect of the picture. The default is to play once, and adding the `nut-icon-am-infinite` class can realize the loop playback. By setting css, the delay interval before the animation starts, and how long the animation will be completed
 
@@ -128,72 +128,6 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 
 :::
 
-#### custom iconfont
-
-If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then you can use it directly in the Icon component.
-
-> use [iconfont](https://www.iconfont.cn/) recommend
-
-1：first in [iconfont](https://www.iconfont.cn/) generate your custom Icon file and download it to the local project [Docs](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
-
-```bash
-/assets/font/demo.css
-/assets/font/demo_index.html
-/assets/font/iconfont.css
-/assets/font/iconfont.js
-/assets/font/iconfont.json
-/assets/font/iconfont.ttf
-/assets/font/iconfont.woff
-/assets/font/iconfont.woff2
-```
-
-2：project entry file main.js add `iconfont.css`
-
-```javascript
-import './assets/font/iconfont.css';
-```
-
-3：use
-
-```html
-<!-- 
-  font-class-name  iconfont
-  class-prefix  icon
-  name The name value is filled in according to the value in iconfont.css 
--->
-<IconFont font-class-name="iconfont" class-prefix="icon" name="close" />
-```
-
-> Use a third-party custom font library
-
-```css
-/* Introduce third-party or custom font icon styles */
-@font-face {
-  font-family: 'my-icon';
-  src: url('./my-icon.ttf') format('truetype');
-}
-
-.my-icon {
-  font-family: 'my-icon';
-}
-
-.my-icon-extra::before {
-  content: '\e626';
-}
-```
-
-```html
-<!-- 
-  font-class-name  my-icon
-  class-prefix  my-icon
--->
-<IconFont font-class-name="my-icon" class-prefix="my-icon" name="extra" />
-```
-
-custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15)
-
-## API
-
 ### Props
 
 | Attribute       | Description                                          | Type             | Default          |
@@ -210,3 +144,13 @@ custom iconfont [Demo](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/
 | Event | Description                  | Arguments    |
 | ----- | ---------------------------- | ------------ |
 | click | Emitted when icon is clicked | event: Event |
+
+## Use: other icons
+
+The number of icons provided by `@nutui/icons-vue` itself is limited. If it cannot meet the needs, you can consider using a more versatile and larger number of icon libraries.
+
+- Recommended icon format: SVG
+
+- Recommended icon library: [iconify](https://iconify.design/), which provides more than 150,000 open source icons.
+
+- Recommended icon scheme: [unplugin-icons](https://github.com/antfu/unplugin-icons), which provides a way to introduce `iconify` on demand.

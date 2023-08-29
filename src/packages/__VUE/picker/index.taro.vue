@@ -1,11 +1,11 @@
 <template>
-  <view :class="classes">
-    <view class="nut-picker__bar" v-if="showToolbar">
+  <view class="nut-picker">
+    <view v-if="showToolbar" class="nut-picker__bar">
       <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="cancel">{{
         cancelText || translate('cancel')
       }}</view>
       <view class="nut-picker__title"> {{ title }}</view>
-      <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
+      <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler">{{
         okText || translate('confirm')
       }}</view>
     </view>
@@ -14,11 +14,11 @@
     <!-- Taro 下转换成 微信小程序 -->
     <picker-view
       v-if="ENV != ENV_TYPE.WEB"
-      :indicatorStyle="`height:${optionHeight}px`"
+      :indicator-style="`height:${optionHeight}px`"
       :value="defaultIndexes"
       :style="pickerViewStyles"
       v-bind="$attrs"
-      :immediateChange="true"
+      :immediate-change="true"
       @change="tileChange"
       @pickstart="handlePickstart"
       @pickend="handlePickend"
@@ -29,12 +29,12 @@
         :filedNames="columnFieldNames"
       >
         <view
+          v-for="(item, index) in column"
+          :key="item[columnFieldNames.value] ?? index"
           class="nut-picker-roller-item-tarotile"
           :style="{
             lineHeight: pxCheck(optionHeight)
           }"
-          v-for="(item, index) in column"
-          :key="item[columnFieldNames.value] ?? index"
         >
           {{ item[columnFieldNames.text] }}
         </view>
@@ -42,18 +42,19 @@
     </picker-view>
 
     <!-- Taro 下转换成 H5 -->
-    <view class="nut-picker__column" :style="columnStyle" v-if="ENV == ENV_TYPE.WEB">
-      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+    <view v-if="ENV == ENV_TYPE.WEB" class="nut-picker__column" :style="columnStyle">
+      <view v-for="(column, columnIndex) in columnsList" :key="columnIndex" class="nut-picker__columnitem">
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
-          :filedNames="columnFieldNames"
+          :columns-type="columnsType"
+          :field-names="columnFieldNames"
           :value="defaultValues[columnIndex]"
-          :threeDimensional="false"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="false"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
+          taro
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);

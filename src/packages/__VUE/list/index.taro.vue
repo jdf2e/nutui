@@ -1,30 +1,30 @@
 <template>
   <nut-scroll-view
+    :id="'list' + refRandomId"
+    ref="list"
     :class="classes"
     :scroll-y="true"
     :style="{ height: `${getContainerHeight}px` }"
     scroll-top="0"
     @scroll="handleScrollEvent"
-    ref="list"
-    :id="'list' + refRandomId"
   >
     <div
+      :id="'phantom' + refRandomId"
+      ref="phantom"
       class="nut-list-phantom"
       :style="{ height: phantomHeight + 'px' }"
-      ref="phantom"
-      :id="'phantom' + refRandomId"
     ></div>
     <div
+      :id="'actualContent' + refRandomId"
+      ref="actualContent"
       class="nut-list-container"
       :style="{ transform: getTransform() }"
-      ref="actualContent"
-      :id="'actualContent' + refRandomId"
     >
       <div
-        class="nut-list-item"
         v-for="(item, index) in visibleData"
-        :key="item"
         :id="'list-item-' + Number(index + start)"
+        :key="item"
+        class="nut-list-item"
       >
         <slot :item="item" :index="index + start"></slot>
       </div>

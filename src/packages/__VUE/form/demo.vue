@@ -24,7 +24,7 @@
       </nut-form-item>
     </nut-form>
     <h2>{{ translate('title1') }}</h2>
-    <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
+    <nut-form ref="dynamicRefForm" :model-value="dynamicForm.state">
       <nut-form-item
         :label="translate('name')"
         prop="name"
@@ -32,21 +32,21 @@
         :rules="[{ required: true, message: translate('nameTip') }]"
       >
         <nut-input
-          class="nut-input-text"
           v-model="dynamicForm.state.name"
+          class="nut-input-text"
           :placeholder="translate('nameTip')"
           type="text"
         />
       </nut-form-item>
       <nut-form-item
+        v-for="(item, index) in dynamicForm.state.tels"
+        :key="item.key"
         :label="translate('tel') + index"
         :prop="'tels.' + index + '.value'"
         required
         :rules="[{ required: true, message: translate('telTip') + index }]"
-        :key="item.key"
-        v-for="(item, index) in dynamicForm.state.tels"
       >
-        <nut-input class="nut-input-text" v-model="item.value" :placeholder="translate('telTip') + index" type="text" />
+        <nut-input v-model="item.value" class="nut-input-text" :placeholder="translate('telTip') + index" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add"
@@ -63,6 +63,7 @@
     </nut-form>
     <h2>{{ translate('title2') }}</h2>
     <nut-form
+      ref="ruleForm"
       :model-value="formData"
       :rules="{
         name: [
@@ -72,7 +73,6 @@
           }
         ]
       }"
-      ref="ruleForm"
     >
       <nut-form-item
         :label="translate('name')"
@@ -81,11 +81,11 @@
         :rules="[{ required: true, message: translate('nameTip') }]"
       >
         <nut-input
-          class="nut-input-text"
-          @blur="customBlurValidate('name')"
           v-model="formData.name"
+          class="nut-input-text"
           :placeholder="translate('nameTip1')"
           type="text"
+          @blur="customBlurValidate('name')"
         />
       </nut-form-item>
       <nut-form-item
@@ -99,7 +99,7 @@
           { regex: /^(\d{1,2}|1\d{2}|200)$/, message: translate('ageTip3') }
         ]"
       >
-        <nut-input class="nut-input-text" v-model="formData.age" :placeholder="translate('ageTip1')" type="text" />
+        <nut-input v-model="formData.age" class="nut-input-text" :placeholder="translate('ageTip1')" type="text" />
       </nut-form-item>
       <nut-form-item
         :label="translate('tel')"
@@ -110,7 +110,7 @@
           { validator: asyncValidator, message: translate('telTip2') }
         ]"
       >
-        <nut-input class="nut-input-text" v-model="formData.tel" :placeholder="translate('telTip1')" type="text" />
+        <nut-input v-model="formData.tel" class="nut-input-text" :placeholder="translate('telTip1')" type="text" />
       </nut-form-item>
       <nut-form-item
         :label="translate('address')"
@@ -119,8 +119,8 @@
         :rules="[{ required: true, message: translate('addressTip') }]"
       >
         <nut-input
-          class="nut-input-text"
           v-model="formData.address"
+          class="nut-input-text"
           :placeholder="translate('addressTip')"
           type="text"
         />
@@ -141,7 +141,7 @@
         <nut-checkbox v-model="formData2.checkbox">{{ translate('checkbox') }}</nut-checkbox>
       </nut-form-item>
       <nut-form-item :label="translate('radiogroup')">
-        <nut-radio-group direction="horizontal" v-model="formData2.radio">
+        <nut-radio-group v-model="formData2.radio" direction="horizontal">
           <nut-radio label="1">{{ translate('option', 1) }}</nut-radio>
           <nut-radio disabled label="2">{{ translate('option', 2) }}</nut-radio>
           <nut-radio label="3">{{ translate('option', 3) }}</nut-radio>
@@ -154,13 +154,13 @@
         <nut-input-number v-model="formData2.number" />
       </nut-form-item>
       <nut-form-item :label="translate('range')">
-        <nut-range hidden-tag v-model="formData2.range"></nut-range>
+        <nut-range v-model="formData2.range" hidden-tag></nut-range>
       </nut-form-item>
       <nut-form-item :label="translate('uploader')">
         <nut-uploader
+          v-model:file-list="formData2.defaultFileList"
           url="http://apiurl"
           accept="image/*"
-          v-model:file-list="formData2.defaultFileList"
           maximum="3"
           multiple
         >
@@ -168,12 +168,12 @@
       </nut-form-item>
       <nut-form-item :label="translate('address')">
         <nut-input
-          class="nut-input-text"
           v-model="formData2.address"
-          @click="addressModule.methods.show"
+          class="nut-input-text"
           readonly
           :placeholder="translate('addressTip1')"
           type="text"
+          @click="addressModule.methods.show"
         />
         <!-- nut-address -->
         <nut-address
@@ -182,8 +182,8 @@
           :city="addressModule.state.city"
           :country="addressModule.state.country"
           :town="addressModule.state.town"
-          @change="addressModule.methods.onChange"
           :custom-address-title="translate('addressTip2')"
+          @change="addressModule.methods.onChange"
         ></nut-address>
       </nut-form-item>
     </nut-form>

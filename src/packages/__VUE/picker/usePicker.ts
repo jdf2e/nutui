@@ -1,6 +1,4 @@
 import { ref, reactive, watch, computed, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName } = createComponent('picker');
 import { PickerOption, PickerFieldNames } from './types';
 
 const DEFAULT_FILED_NAMES = {
@@ -23,6 +21,13 @@ export const usePicker = (props: any, emit: any) => {
 
   // 选中项
   const defaultValues = ref<(number | string)[]>([]);
+  const defaultIndexes = computed(() => {
+    const fields = columnFieldNames.value;
+    return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
+      const targetIndex = column.findIndex((item) => item[fields.value] === defaultValues.value[index]);
+      return targetIndex === -1 ? 0 : targetIndex;
+    });
+  });
 
   const pickerColumn = ref<any[]>([]);
 
@@ -32,17 +37,10 @@ export const usePicker = (props: any, emit: any) => {
     }
   };
 
-  const classes = computed(() => {
-    const prefixCls = componentName;
-    return {
-      [prefixCls]: true
-    };
-  });
-
   const selectedOptions = computed(() => {
     const fields = columnFieldNames.value;
     return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      return column.find((item) => item[fields.value] === defaultValues.value[index]);
+      return column.find((item) => item[fields.value] === defaultValues.value[index]) || column[0];
     });
   });
 
@@ -96,7 +94,7 @@ export const usePicker = (props: any, emit: any) => {
     while (cursor && cursor[fields.children]) {
       const options: PickerOption[] = cursor[fields.children];
       const value = defaultValues[columnIndex];
-      let index = options.findIndex((columnItem) => columnItem.value === value);
+      let index = options.findIndex((columnItem) => columnItem[fields.value] === value);
       if (index === -1) index = 0;
       cursor = cursor[fields.children][index];
 
@@ -123,7 +121,7 @@ export const usePicker = (props: any, emit: any) => {
         let index = columnIndex;
         let cursor = option;
         while (cursor && cursor[fields.children] && cursor[fields.children][0]) {
-          defaultValues.value[index + 1] = cursor[fields.children][0].value;
+          defaultValues.value[index + 1] = cursor[fields.children][0][fields.value];
           index++;
           cursor = cursor[fields.children][0];
         }
@@ -190,7 +188,6 @@ export const usePicker = (props: any, emit: any) => {
   );
 
   return {
-    classes,
     ...toRefs(state),
     columnsType,
     columnsList,
@@ -199,6 +196,7 @@ export const usePicker = (props: any, emit: any) => {
     changeHandler,
     confirm,
     defaultValues,
+    defaultIndexes,
     pickerColumn,
     swipeRef,
     selectedOptions,

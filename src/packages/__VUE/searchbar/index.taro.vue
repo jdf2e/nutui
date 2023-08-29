@@ -19,21 +19,21 @@
             :confirm-type="confirmType"
             :disabled="disabled"
             :readonly="readonly"
+            :style="styleSearchbar"
             @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
             @confirm="handleSubmit"
-            :style="styleSearchbar"
           />
         </form>
       </view>
       <view :class="['nut-searchbar__input-inner-icon', $slots.rightin && 'nut-searchbar__input-inner-icon-absolute']">
         <view
-          @click="handleClear"
-          class="nut-searchbar__search-icon nut-searchbar__input-clear"
           v-if="clearable"
           v-show="String(modelValue).length > 0"
+          class="nut-searchbar__search-icon nut-searchbar__input-clear"
+          @click="handleClear"
         >
           <template v-if="$slots['clear-icon']">
             <slot name="clear-icon"></slot>

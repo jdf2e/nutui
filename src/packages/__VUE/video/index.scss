@@ -37,7 +37,10 @@
     border: 0;
     background-color: rgba(0, 0, 0, 0.45);
     color: #fff;
-    transition: border-color 0.4s, outline 0.4s, background-color 0.4s;
+    transition:
+      border-color 0.4s,
+      outline 0.4s,
+      background-color 0.4s;
     position: absolute;
     top: 50%;
     left: 50%;

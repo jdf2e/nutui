@@ -1,6 +1,6 @@
 <template>
   <Transition name="overlay-fade">
-    <view :class="classes" @click.stop="onClick" :style="style" v-show="visible">
+    <view v-show="visible" :class="classes" :style="style" @click.stop="onClick">
       <slot></slot>
     </view>
   </Transition>

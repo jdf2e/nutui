@@ -1,6 +1,6 @@
 <template>
   <view class="nut-searchbar" :style="searchbarStyle">
-    <span class="nut-searchbar__search-label" v-if="label">{{ label }}</span>
+    <span v-if="label" class="nut-searchbar__search-label">{{ label }}</span>
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
@@ -23,20 +23,20 @@
             :value="modelValue"
             :disabled="disabled"
             :readonly="readonly"
+            :style="styleSearchbar"
             @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
-            :style="styleSearchbar"
           />
         </form>
       </view>
       <view :class="['nut-searchbar__input-inner-icon', $slots.rightin && 'nut-searchbar__input-inner-icon-absolute']">
         <view
-          @click="handleClear"
-          class="nut-searchbar__search-icon nut-searchbar__input-clear"
           v-if="clearable"
           v-show="String(modelValue).length > 0"
+          class="nut-searchbar__search-icon nut-searchbar__input-clear"
+          @click="handleClear"
         >
           <template v-if="$slots['clear-icon']">
             <slot name="clear-icon"></slot>

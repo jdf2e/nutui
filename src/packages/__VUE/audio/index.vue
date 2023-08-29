@@ -3,16 +3,16 @@
 
   <div class="nut-audio">
     <!-- 进度条 -->
-    <div class="nut-audio__progress" v-if="type == 'progress'">
+    <div v-if="type == 'progress'" class="nut-audio__progress">
       <!-- 时间显示 -->
       <div class="nut-audio__time">{{ currentDuration }}</div>
       <div class="nut-audio__bar">
         <nut-range
           v-model="percent"
           hidden-range
-          @change="progressChange"
           inactive-color="#cccccc"
           active-color="#fa2c19"
+          @change="progressChange"
         >
           <template #button>
             <div class="nut-audio__button--custom"></div>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- 自定义 -->
-    <div class="nut-audio__icon" v-if="type == 'icon'">
+    <div v-if="type == 'icon'" class="nut-audio__icon">
       <div
         :class="['nut-audio__icon--box', playing ? 'nut-audio__icon--play' : 'nut-audio__icon--stop']"
         @click="changeStatus"
@@ -44,17 +44,17 @@
     </template>
 
     <audio
+      ref="audioRef"
       class="audioMain"
       :controls="type == 'controls'"
-      ref="audioRef"
       :src="url"
       :preload="preload"
       :autoplay="autoplay"
       :loop="loop"
+      :muted="hanMuted"
       @timeupdate="onTimeupdate"
       @canplay="onCanplay"
       @ended="audioEnd"
-      :muted="hanMuted"
     >
     </audio>
   </div>

@@ -1,24 +1,24 @@
 <template>
   <nut-popup
+    v-model:visible="showPopup"
     position="bottom"
     closeable
     round
-    v-model:visible="showPopup"
-    @click-close-icon="closePopup('icon')"
-    @click-overlay="closePopup('overlay')"
-    @close="closePopup('close')"
     style="height: 75%"
     :teleportDisable="teleportDisable"
     :teleport="teleport"
+    @click-close-icon="closePopup('icon')"
+    @click-overlay="closePopup('overlay')"
+    @close="closePopup('close')"
   >
     <view class="nut-sku">
       <slot name="sku-header"></slot>
-      <sku-header :goods="goods" v-if="!getSlots('sku-header')">
-        <template #sku-header-price v-if="getSlots('sku-header-price')">
+      <sku-header v-if="!getSlots('sku-header')" :goods="goods">
+        <template v-if="getSlots('sku-header-price')" #sku-header-price>
           <slot name="sku-header-price"></slot>
         </template>
 
-        <template #sku-header-extra v-if="getSlots('sku-header-extra')">
+        <template v-if="getSlots('sku-header-extra')" #sku-header-extra>
           <slot name="sku-header-extra"></slot>
         </template>
       </sku-header>
@@ -54,7 +54,7 @@
         :confirmText="confirmText || translate('confirm')"
         @click-btn-operate="clickBtnOperate"
       >
-        <template #operate-btn v-if="getSlots('sku-operate')">
+        <template v-if="getSlots('sku-operate')" #operate-btn>
           <slot name="sku-operate"></slot>
         </template>
       </sku-operate>

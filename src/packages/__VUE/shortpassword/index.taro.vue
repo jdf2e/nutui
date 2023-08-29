@@ -1,30 +1,30 @@
 <template>
   <view class="nut-short-password">
     <nut-popup
+      v-model:visible="show"
       :style="{
         padding: '30px 24px 20px 24px',
         borderRadius: '12px',
         textAlign: 'center',
         top: '45%'
       }"
-      v-model:visible="show"
       :closeable="true"
-      @click-close-icon="close"
       :close-on-click-overlay="closeOnClickOverlay"
+      @click-close-icon="close"
       @click-overlay="close"
     >
       <view class="nut-short-password-title">{{ title || translate('title') }}</view>
       <view class="nut-short-password-subtitle">{{ desc || translate('desc') }}</view>
       <view class="nut-short-password-wrapper">
         <view class="nut-short-password__list" @touchstart="focus">
-          <view class="nut-short-password__item" v-for="(sublen, index) in new Array(comLen)" :key="index">
-            <view class="nut-short-password__item-icon" v-if="String(realInput).length > index"></view>
+          <view v-for="(sublen, index) in new Array(comLen)" :key="index" class="nut-short-password__item">
+            <view v-if="String(realInput).length > index" class="nut-short-password__item-icon"></view>
           </view>
         </view>
       </view>
       <view class="nut-short-password__message">
         <view class="nut-short-password--error">{{ errorMsg }}</view>
-        <view class="nut-short-password--forget" @click="onTips" v-if="tips || translate('tips')">
+        <view v-if="tips || translate('tips')" class="nut-short-password--forget" @click="onTips">
           <tips class="icon" size="11px"></tips>
           <view>{{ tips || translate('tips') }}</view>
         </view>

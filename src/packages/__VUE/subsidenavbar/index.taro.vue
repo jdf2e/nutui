@@ -8,10 +8,10 @@
       </span>
     </view>
     <view
+      v-show="!direction"
       class="nut-sub-side-navbar__list"
       :class="!direction ? 'nutFadeIn' : 'nutFadeOut'"
       :style="style"
-      v-show="!direction"
     >
       <slot></slot>
     </view>

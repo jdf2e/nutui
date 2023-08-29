@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click.stop="handleClick" :ikey="ikey">
+  <view :class="classes" :ikey="ikey" @click.stop="handleClick">
     <span class="nut-side-navbar-item__title">
       {{ title }}
     </span>

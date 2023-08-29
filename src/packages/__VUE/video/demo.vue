@@ -28,7 +28,7 @@
     <nut-cell class="cell">
       <nut-video :source="source1" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <nut-button type="primary" @click="changeVideo" class="m-b">{{ translate('title6') }}</nut-button>
+    <nut-button type="primary" class="m-b" @click="changeVideo">{{ translate('title6') }}</nut-button>
   </div>
 </template>
 

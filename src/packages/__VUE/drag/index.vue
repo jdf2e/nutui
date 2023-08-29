@@ -1,7 +1,7 @@
 <template>
   <view
-    :class="classes"
     ref="myDrag"
+    :class="classes"
     @touchstart="touchStart($event)"
     @touchmove="touchMove($event)"
     @touchend="touchEnd($event)"

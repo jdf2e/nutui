@@ -3,16 +3,16 @@
     v-model="selectedValue"
     :okText="okText"
     :cancelText="cancelText"
-    @cancel="closeHandler"
     :columns="columns"
-    @change="changeHandler"
     :title="title"
-    @confirm="confirm"
     :threeDimensional="threeDimensional"
     :swipeDuration="swipeDuration"
     :showToolbar="showToolbar"
     :visibleOptionNum="visibleOptionNum"
     :optionHeight="optionHeight"
+    @cancel="closeHandler"
+    @change="changeHandler"
+    @confirm="confirm"
   >
     <template #top>
       <slot name="top"></slot>
@@ -276,7 +276,7 @@ export default create({
           min++;
         }
 
-        if (min <= val) {
+        if (min <= +val) {
           index++;
         }
       }

@@ -22,8 +22,8 @@
     <nut-short-password
       v-model="state.value2"
       v-model:visible="state.visible2"
-      @focus="state.showKeyboard2 = true"
       :length="state.length"
+      @focus="state.showKeyboard2 = true"
       @complete="methods.complete"
     >
     </nut-short-password>
@@ -62,8 +62,8 @@
     <nut-short-password
       v-model="state.value4"
       v-model:visible="state.visible4"
-      @focus="state.showKeyboard4 = true"
       :error-msg="state.errorMsg"
+      @focus="state.showKeyboard4 = true"
       @complete="methods.complete"
       @tips="methods.onTips"
     >

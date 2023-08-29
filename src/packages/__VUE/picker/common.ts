@@ -1,4 +1,4 @@
-import { ref, onMounted, reactive, watch, computed, CSSProperties, toRefs } from 'vue';
+import { ref, reactive, computed, CSSProperties, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { translate } = createComponent('picker');
@@ -14,8 +14,10 @@ export const componentWeb = {
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, classes, cancel } =
-      usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
+      props,
+      emit
+    );
 
     const state = reactive<{
       ENV: TaroGeneral.ENV_TYPE;
@@ -50,7 +52,6 @@ export const componentWeb = {
     });
 
     return {
-      classes,
       ...toRefs(state),
       column,
       columnsType,
@@ -79,11 +80,10 @@ export const componentWeapp = {
       changeHandler,
       confirm,
       defaultValues,
+      defaultIndexes,
       columnsList,
-      isSameValue,
       columnsType,
       columnFieldNames,
-      classes,
       cancel
     } = usePicker(props, emit);
     const state = reactive({
@@ -93,9 +93,6 @@ export const componentWeapp = {
       ENV_TYPE: Taro.ENV_TYPE
     });
 
-    // 选中项的位置  taro
-    const defaultIndexes = ref<number[]>([]);
-
     const pickerViewStyles = computed(() => {
       const styles: CSSProperties = {};
       styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
@@ -103,44 +100,20 @@ export const componentWeapp = {
       return styles;
     });
 
-    const defaultValuesConvert = () => {
-      const defaultIndexs: number[] = [];
-      const fields = columnFieldNames.value;
-      if (defaultValues.value.length > 0) {
-        defaultValues.value.forEach((value, index) => {
-          for (let i = 0; i < columnsList.value[index].length; i++) {
-            if (columnsList.value[index][i][fields.value] === value) {
-              defaultIndexs.push(i);
-              break;
-            }
-          }
-        });
-      } else {
-        if (columnsList && columnsList.value.length > 0) {
-          columnsList.value.forEach((item) => {
-            defaultIndexs.push(0);
-            item.length > 0 && defaultValues.value.push(item[0][fields.value]);
-          });
-        }
-      }
-
-      return defaultIndexs;
-    };
-
     // 平铺展示时，滚动选择
     const tileChange = (data: any) => {
       const prevDefaultValue = defaultIndexes.value;
       let changeIndex = 0;
       // 判断变化的是第几个
-      data.detail.value.forEach((col: number, index: number) => {
-        if (prevDefaultValue[index] !== col) changeIndex = index;
-      });
+      for (let i = 0; i < data.detail.value?.length; i++) {
+        if (prevDefaultValue[i] !== data.detail.value?.[i]) {
+          changeIndex = i;
+          break;
+        }
+      }
 
       // 选择的是哪个 option
       changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
-      // console.log('设置默认值');
-
-      defaultIndexes.value = defaultValuesConvert();
     };
 
     // 确定
@@ -163,26 +136,7 @@ export const componentWeapp = {
       state.picking = false;
     };
 
-    onMounted(() => {
-      if (defaultValues.value.length > 0) {
-        defaultIndexes.value = defaultValuesConvert();
-      }
-    });
-
-    watch(
-      () => props.modelValue,
-      (newValues) => {
-        if (!isSameValue(newValues, defaultValues.value)) {
-          setTimeout(() => {
-            defaultIndexes.value = defaultValuesConvert();
-          }, 100);
-        }
-      },
-      { deep: true }
-    );
-
     return {
-      classes,
       ...toRefs(state),
       column,
       columnsType,

@@ -11,14 +11,14 @@
       <slot></slot>
     </view>
     <slot name="page"></slot>
-    <view :class="classesPagination" v-if="paginationVisible && !$slots.page">
+    <view v-if="paginationVisible && !$slots.page" :class="classesPagination">
       <i
+        v-for="(item, index) in state.children.length"
+        :key="index"
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
         :class="{ active: activePagination === index }"
-        v-for="(item, index) in state.children.length"
-        :key="index"
       />
     </view>
   </view>
@@ -326,7 +326,7 @@ export default create({
     };
 
     const autoplay = () => {
-      if (props.autoPlay <= 0 || childCount.value <= 1) return;
+      if (+props.autoPlay <= 0 || childCount.value <= 1) return;
       stopAutoPlay();
 
       state.autoplayTimer = setTimeout(() => {
@@ -436,7 +436,7 @@ export default create({
     watch(
       () => props.autoPlay,
       (val) => {
-        val > 0 ? autoplay() : stopAutoPlay();
+        +val > 0 ? autoplay() : stopAutoPlay();
       }
     );
 

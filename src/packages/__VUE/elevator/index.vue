@@ -1,36 +1,36 @@
 <template>
   <view :class="classes">
-    <view class="nut-elevator__list" ref="listview" :style="{ height: isNaN(+height) ? height : `${height}px` }">
-      <view class="nut-elevator__list__item" v-for="item in indexList" :key="item[acceptKey]" :ref="setListGroup">
+    <view ref="listview" class="nut-elevator__list" :style="{ height: isNaN(+height) ? height : `${height}px` }">
+      <view v-for="item in indexList" :key="item[acceptKey]" :ref="setListGroup" class="nut-elevator__list__item">
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
+          v-for="subitem in item.list"
+          :key="subitem['id']"
           class="nut-elevator__list__item__name"
           :class="{
             'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id && currentKey === item[acceptKey]
           }"
-          v-for="subitem in item.list"
-          :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
         >
-          <span v-html="subitem.name" v-if="!$slots.default"></span>
-          <slot :item="subitem" v-else></slot>
+          <span v-if="!$slots.default" v-html="subitem.name"></span>
+          <slot v-else :item="subitem"></slot>
         </view>
       </view>
-      <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
+      <view v-show="scrollY > 0" v-if="isSticky" class="nut-elevator__list__fixed" :style="fixedStyle">
         <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
       </view>
     </view>
-    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">{{
+    <view v-show="scrollStart" v-if="indexList.length" class="nut-elevator__code--current">{{
       indexList[codeIndex][acceptKey]
     }}</view>
     <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
       <view class="nut-elevator__bars__inner">
         <view
+          v-for="(item, index) in indexList"
+          :key="item[acceptKey]"
           class="nut-elevator__bars__inner__item"
           :class="{ active: item[acceptKey] === indexList[currentIndex][acceptKey] }"
           :data-index="index"
-          v-for="(item, index) in indexList"
-          :key="item[acceptKey]"
           @click="handleClickIndex(item[acceptKey])"
           >{{ item[acceptKey] }}</view
         >

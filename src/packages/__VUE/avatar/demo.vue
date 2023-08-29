@@ -116,7 +116,7 @@
     </nut-cell>
 
     <h2 class="demo-avatar-group-title"
-      >{{ translate('title9') }}<nut-button @click="addAvatar" size="mini">{{ translate('add') }}</nut-button></h2
+      >{{ translate('title9') }}<nut-button size="mini" @click="addAvatar">{{ translate('add') }}</nut-button></h2
     >
     <nut-cell>
       <nut-avatar-group max-count="4" zIndex="right">

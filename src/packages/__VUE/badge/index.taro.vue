@@ -1,15 +1,15 @@
 <template>
   <view class="nut-badge">
-    <view class="nut-badge__icon" v-show="!hidden && !dot && $slots.icon" :style="stl">
+    <view v-show="!hidden && !dot && $slots.icon" class="nut-badge__icon" :style="stl">
       <slot name="icon"></slot>
     </view>
     <slot></slot>
     <view
       v-show="!hidden && (content || dot)"
-      v-text="content"
       class="nut-badge__content nut-badge__content--sup"
       :class="{ 'nut-badge__content--dot': dot, 'nut-badge__content--bubble': !dot && bubble }"
       :style="stl"
+      v-text="content"
     >
     </view>
   </view>

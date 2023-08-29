@@ -6,19 +6,19 @@
     </nut-cell>
 
     <h2>{{ translate('title1') }}</h2>
-    <nut-cell class="cell"><nut-rate allow-half v-model="state.val1"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val1" allow-half></nut-rate></nut-cell>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-cell class="cell"><nut-rate :custom-icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val2" :custom-icon="HeartFill"></nut-rate></nut-cell>
 
     <h2>{{ translate('title3') }}</h2>
-    <nut-cell class="cell"><nut-rate count="10" v-model="state.val3"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val3" count="10"></nut-rate></nut-cell>
 
     <h2>{{ translate('title4') }}</h2>
-    <nut-cell class="cell"><nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val4" active-color="#FFC800"></nut-rate></nut-cell>
 
     <h2>{{ translate('title5') }}</h2>
-    <nut-cell class="cell"><nut-rate disabled v-model="state.val5"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val5" disabled></nut-rate></nut-cell>
 
     <h2>{{ translate('title6') }}</h2>
     <nut-cell class="cell"><nut-rate v-model="state.val6" readonly></nut-rate></nut-cell>

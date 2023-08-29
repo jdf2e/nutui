@@ -1,5 +1,5 @@
 <template>
-  <nut-popup pop-class="nut-image-preview-custom-pop" v-model:visible="showPop">
+  <nut-popup v-model:visible="showPop" pop-class="nut-image-preview-custom-pop">
     <view class="nut-image-preview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
@@ -8,10 +8,10 @@
         :loop="isLoop"
         :is-preventDefault="false"
         direction="horizontal"
-        @change="setActive"
         :init-page="initNo"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
+        @change="setActive"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
           <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="closeOnImg" />
@@ -19,8 +19,8 @@
       </nut-swiper>
     </view>
 
-    <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ images.length }} </view>
-    <view class="nut-image-preview-close-icon" @click="onClose" :style="styles" v-if="closeable"
+    <view v-if="showIndex" class="nut-image-preview-index"> {{ active + 1 }} / {{ images.length }} </view>
+    <view v-if="closeable" class="nut-image-preview-close-icon" :style="styles" @click="onClose"
       ><CircleClose color="#ffffff"></CircleClose
     ></view>
   </nut-popup>

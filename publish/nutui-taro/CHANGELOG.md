@@ -1,3 +1,20 @@
+## v4.1.4
+
+`2023-08-25`
+
+Features
+
+- picker: 支持自定义 column fieldNames (#2460) @subordon
+
+Bug Fixes
+
+- popup: 修复内容无法滑动问题
+- form: 调整 label 中 min-width 样式权重 (#2478)
+- addresslist: update docs (#2495) @subordon
+- actionsheet: 修复 close-abled 失效问题 (#2496)
+- picker: 修复 field-names 在级联模式下的问题
+- 修复组件内 scroll-view 标签在 taro-h5 端的兼容问题 (#2470)
+
 ## v4.1.3
 
 `2023-08-04`

@@ -8,17 +8,17 @@
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
-      @input="change"
-      @blur="blur"
-      @focus="focus"
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :autofocus="autofocus"
+      @input="change"
+      @blur="blur"
+      @focus="focus"
       @change="endComposing"
       @compositionend="endComposing"
       @compositionstart="startComposing"
     />
-    <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
+    <view v-if="limitShow" class="nut-textarea__limit"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
   </view>
 </template>
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->

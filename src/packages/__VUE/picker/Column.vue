@@ -1,26 +1,26 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
     <view
-      class="nut-picker-roller"
       ref="roller"
+      class="nut-picker-roller"
       :style="threeDimensional ? touchRollerStyle : touchTileStyle"
       @transitionend="stopMomentum"
     >
       <template v-for="(item, index) in column" :key="item[fieldNames.value] ?? index">
         <!-- 3D 效果 -->
         <view
+          v-if="item && item[fieldNames.text] && threeDimensional"
           class="nut-picker-roller-item"
           :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
           :style="setRollerStyle(index + 1)"
-          v-if="item && item[fieldNames.text] && threeDimensional"
         >
           {{ item[fieldNames.text] }}
         </view>
         <!-- 平铺 -->
         <view
+          v-if="item && item[fieldNames.text] && !threeDimensional"
           class="nut-picker-roller-item-tile"
           :style="{ height: pxCheck(optionHeight), lineHeight: pxCheck(optionHeight) }"
-          v-if="item && item[fieldNames.text] && !threeDimensional"
         >
           {{ item[fieldNames.text] }}
         </view>
@@ -67,6 +67,11 @@ export default create({
     fieldNames: {
       type: Object as PropType<Required<PickerFieldNames>>,
       default: () => ({})
+    },
+    // 特殊环境判断
+    taro: {
+      type: Boolean,
+      defualt: false
     }
   },
 
@@ -134,8 +139,8 @@ export default create({
 
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
-      if (moving.value) {
-        let dom = roller.value as any;
+      if (moving.value && !props.taro) {
+        const dom = roller.value as any;
         const { transform } = window.getComputedStyle(dom);
         if (props.threeDimensional) {
           const circle = Math.floor(parseInt(touchDeg.value as string) / 360);

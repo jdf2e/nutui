@@ -2,6 +2,7 @@
   <view :class="classes">
     <view
       v-show="showNoticebar"
+      v-if="direction == 'across'"
       class="nut-noticebar__page"
       :class="{
         'nut-noticebar__page--withicon': closeMode,
@@ -10,7 +11,6 @@
       }"
       :style="barStyle"
       @click="handleClick"
-      v-if="direction == 'across'"
     >
       <view class="nut-noticebar__page-lefticon">
         <slot name="left-icon">
@@ -34,8 +34,8 @@
     </view>
 
     <view
-      class="nut-noticebar__vertical"
       v-if="scrollList.length > 0 && direction == 'vertical' && showNoticebar"
+      class="nut-noticebar__vertical"
       :style="barStyle"
     >
       <template v-if="slots.default">
@@ -58,9 +58,9 @@
       <template v-else>
         <ul class="nut-noticebar__vertical-list" :style="horseLampStyle">
           <li
-            class="nut-noticebar__vertical-item"
             v-for="(item, index) in scrollList"
             :key="index"
+            class="nut-noticebar__vertical-item"
             :style="{ height: pxCheck(height), lineHeight: pxCheck(height) }"
             @click="go(item)"
           >
@@ -342,20 +342,26 @@ export default create({
     };
     const showhorseLamp = () => {
       state.animate = true;
-      setTimeout(() => {
-        state.scrollList.push(state.scrollList[0]);
-        state.scrollList.shift();
-        state.animate = false;
-      }, ~~(props.height / props.speed / 4) * 1000);
+      setTimeout(
+        () => {
+          state.scrollList.push(state.scrollList[0]);
+          state.scrollList.shift();
+          state.animate = false;
+        },
+        ~~(props.height / props.speed / 4) * 1000
+      );
     };
 
     const startRoll = () => {
-      (state.timer as any) = setInterval(() => {
-        let chunk = 100;
-        for (let i = 0; i < chunk; i++) {
-          scroll(i, i < chunk - 1 ? false : true);
-        }
-      }, props.standTime + 100 * props.speed);
+      (state.timer as any) = setInterval(
+        () => {
+          let chunk = 100;
+          for (let i = 0; i < chunk; i++) {
+            scroll(i, i < chunk - 1 ? false : true);
+          }
+        },
+        props.standTime + 100 * props.speed
+      );
     };
     const scroll = (n: number, last: boolean) => {
       setTimeout(() => {

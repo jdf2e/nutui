@@ -60,7 +60,7 @@ export default create({
         style.paddingTop = `${100 / +parent.columnNum}%`;
       } else if (parent.gutter) {
         style.paddingRight = pxCheck(parent.gutter);
-        if (index.value >= parent.columnNum) {
+        if (index.value >= +parent.columnNum) {
           style.marginTop = pxCheck(parent.gutter);
         }
       }
