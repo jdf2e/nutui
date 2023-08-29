@@ -3,12 +3,12 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
+      <nut-menu-item v-model="state.value2" :options="options2" @change="handleChange" />
     </nut-menu>
     <h2>{{ translate('customMenuContent') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item :title="translate('screen')" ref="item">
+      <nut-menu-item ref="item" :title="translate('screen')">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
           <div :style="{ marginRight: '10px' }">{{ translate('customContent') }}</div>
           <nut-button @click="onConfirm">{{ translate('confirm') }}</nut-button>
@@ -22,7 +22,7 @@
     <h2>{{ translate('customActiveColor') }}</h2>
     <nut-menu active-color="green">
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
+      <nut-menu-item v-model="state.value2" :options="options2" @change="handleChange" />
     </nut-menu>
     <h2>{{ translate('customIcons') }}</h2>
     <nut-menu>
@@ -30,7 +30,7 @@
         <TriangleDown />
       </template>
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2">
+      <nut-menu-item v-model="state.value2" :options="options2" @change="handleChange">
         <template #icon>
           <Checked></Checked>
         </template>
@@ -39,12 +39,12 @@
     <h2>{{ translate('expandDirection') }}</h2>
     <nut-menu direction="up">
       <nut-menu-item v-model="state.value1" :options="options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
+      <nut-menu-item v-model="state.value2" :options="options2" @change="handleChange" />
     </nut-menu>
     <h2>{{ translate('disableMenu') }}</h2>
     <nut-menu>
-      <nut-menu-item disabled v-model="state.value1" :options="options1" />
-      <nut-menu-item disabled v-model="state.value2" :options="options2" />
+      <nut-menu-item v-model="state.value1" disabled :options="options1" />
+      <nut-menu-item v-model="state.value2" disabled :options="options2" />
     </nut-menu>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('title1') }}</h2>
-    <nut-navbar @on-click-back="back" @on-click-title="title" :title="translate('navTitle1')">
+    <nut-navbar :title="translate('navTitle1')" @on-click-back="back" @on-click-title="title">
       <template #left>
         <div>{{ translate('back') }}</div>
       </template>
@@ -11,22 +11,22 @@
     </nut-navbar>
 
     <nut-navbar
+      :title="translate('navTitle2')"
+      :desc="translate('desc1')"
       @on-click-back="back"
       @on-click-title="title"
       @on-click-right="rightClick"
-      :title="translate('navTitle2')"
-      :desc="translate('desc1')"
     ></nut-navbar>
 
     <nut-navbar
       :left-show="false"
+      :title="translate('navTitle3')"
+      :titleIcon="true"
+      :desc="translate('desc2')"
       @on-click-back="back"
       @on-click-title="title"
       @on-click-icon="icon"
       @on-click-right="rightClick"
-      :title="translate('navTitle3')"
-      :titleIcon="true"
-      :desc="translate('desc2')"
     >
       <template #title-icon>
         <Cart2 width="16px"></Cart2>
@@ -37,7 +37,7 @@
     </nut-navbar>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" :desc="translate('desc2')">
+    <nut-navbar :desc="translate('desc2')" @on-click-back="back" @on-click-title="title" @on-click-right="rightClick">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tab-pane :title="translate('tab1')"> </nut-tab-pane>

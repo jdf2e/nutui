@@ -6,9 +6,9 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
+        :operation="['replay']"
         @click="handleclick"
         @click-images="clickImages"
-        :operation="['replay']"
       >
         <template #comment-labels>
           <img

@@ -23,9 +23,9 @@
       :city="city"
       :country="country"
       :town="town"
+      :columns-placeholder="placeholder"
       @change="(cal) => onChange(cal, 'select')"
       @close="close6"
-      :columns-placeholder="placeholder"
     ></nut-address>
 
     <h2>{{ translate('customAddress2') }}</h2>
@@ -51,8 +51,8 @@
       v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
-      @close="close2"
       :is-show-custom-address="false"
+      @close="close2"
       @selected="selected"
     ></nut-address>
 
@@ -63,8 +63,8 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @close="close3"
       :is-show-custom-address="false"
+      @close="close3"
       @selected="selected"
     >
       <template #unselected-icon>

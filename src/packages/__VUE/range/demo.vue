@@ -6,7 +6,7 @@
     </nut-cell>
     <h2>{{ translate('title1') }}</h2>
     <nut-cell class="cell">
-      <nut-range range v-model="value2" @change="onChange"></nut-range>
+      <nut-range v-model="value2" range @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title2') }}</h2>
     <nut-cell class="cell">
@@ -18,24 +18,24 @@
     </nut-cell>
     <h2>{{ translate('title4') }}</h2>
     <nut-cell class="cell">
-      <nut-range hidden-range v-model="value5" @change="onChange"></nut-range>
+      <nut-range v-model="value5" hidden-range @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell class="cell">
-      <nut-range hidden-tag v-model="value6" @change="onChange"></nut-range>
+      <nut-range v-model="value6" hidden-tag @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell class="cell">
-      <nut-range disabled v-model="value7"></nut-range>
+      <nut-range v-model="value7" disabled></nut-range>
     </nut-cell>
     <h2>{{ translate('title7') }}</h2>
     <nut-cell class="cell">
       <nut-range
         v-model="value8"
-        @change="onChange"
         inactive-color="rgba(163,184,255,1)"
         button-color="rgba(52,96,250,1)"
         active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+        @change="onChange"
       ></nut-range>
     </nut-cell>
     <h2>{{ translate('title8') }}</h2>
@@ -50,32 +50,32 @@
     <h2>{{ translate('title9') }}</h2>
     <nut-cell class="vertical_div">
       <view class="div">
-        <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
+        <nut-range v-model="value10" :vertical="true" @change="onChange"></nut-range>
       </view>
       <view class="div">
-        <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
+        <nut-range v-model="value11" range :vertical="true" @change="onChange"></nut-range>
       </view>
     </nut-cell>
     <h2>{{ translate('title10') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value12" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+      <nut-range v-model="value12" :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
     </nut-cell>
     <nut-cell class="cell">
-      <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+      <nut-range v-model="value13" range :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
     </nut-cell>
 
     <nut-cell class="vertical_div">
       <view class="div">
-        <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
+        <nut-range v-model="value14" :vertical="true" :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
       </view>
       <view class="div">
         <nut-range
-          range
           v-model="value15"
-          @change="onChange"
+          range
           :vertical="true"
           :marks="marks"
           :hiddenRange="true"
+          @change="onChange"
         ></nut-range>
       </view>
     </nut-cell>

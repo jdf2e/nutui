@@ -39,8 +39,8 @@
       >
       </nut-countup>
       <div class="btnBtn">
-        <nut-button type="danger" @click="startRole" :disabled="startFlag">{{ translate('btn1') }}</nut-button>
-        <nut-button type="danger" @click="startRole2" :disabled="startFlag">{{ translate('btn2') }}</nut-button>
+        <nut-button type="danger" :disabled="startFlag" @click="startRole">{{ translate('btn1') }}</nut-button>
+        <nut-button type="danger" :disabled="startFlag" @click="startRole2">{{ translate('btn2') }}</nut-button>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <view class="nut-picker">
-    <view class="nut-picker__bar" v-if="showToolbar">
+    <view v-if="showToolbar" class="nut-picker__bar">
       <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="cancel">{{
         cancelText || translate('cancel')
       }}</view>
@@ -29,12 +29,12 @@
         :filedNames="columnFieldNames"
       >
         <view
+          v-for="(item, index) in column"
+          :key="item[columnFieldNames.value] ?? index"
           class="nut-picker-roller-item-tarotile"
           :style="{
             lineHeight: pxCheck(optionHeight)
           }"
-          v-for="(item, index) in column"
-          :key="item[columnFieldNames.value] ?? index"
         >
           {{ item[columnFieldNames.text] }}
         </view>
@@ -42,8 +42,8 @@
     </picker-view>
 
     <!-- Taro 下转换成 H5 -->
-    <view class="nut-picker__column" :style="columnStyle" v-if="ENV == ENV_TYPE.WEB">
-      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+    <view v-if="ENV == ENV_TYPE.WEB" class="nut-picker__column" :style="columnStyle">
+      <view v-for="(column, columnIndex) in columnsList" :key="columnIndex" class="nut-picker__columnitem">
         <nut-picker-column
           :ref="swipeRef"
           :column="column"

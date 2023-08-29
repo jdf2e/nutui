@@ -1,26 +1,26 @@
 <template>
   <view
-    ref="container"
     :id="'container-' + refRandomId"
+    ref="container"
     :class="classes"
+    :catch-move="isPreventDefault"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
-    :catch-move="isPreventDefault"
   >
     <view :class="classesInner" :style="state.style">
       <slot></slot>
     </view>
     <slot name="page"></slot>
-    <view :class="classesPagination" v-if="paginationVisible && !$slots.page">
+    <view v-if="paginationVisible && !$slots.page" :class="classesPagination">
       <i
+        v-for="(item, index) in state.children.length"
+        :key="index"
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
         :class="{ active: activePagination === index }"
-        v-for="(item, index) in state.children.length"
-        :key="index"
       />
     </view>
   </view>

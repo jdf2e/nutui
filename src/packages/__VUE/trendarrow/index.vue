@@ -3,10 +3,10 @@
     <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
-    <slot name="up-icon" v-if="Number(rate) !== 0 && rateTrend">
+    <slot v-if="Number(rate) !== 0 && rateTrend" name="up-icon">
       <TriangleUp :color="riseColor" />
     </slot>
-    <slot name="down-icon" v-if="Number(rate) !== 0 && !rateTrend">
+    <slot v-if="Number(rate) !== 0 && !rateTrend" name="down-icon">
       <TriangleDown :color="dropColor" />
     </slot>
     <span v-if="arrowLeft" class="nut-trend-arrow-icon-after nut-trend-arrow-rate" :style="calcStyle">{{

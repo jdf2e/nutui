@@ -1,14 +1,14 @@
 <template>
   <view class="nut-sku-select">
-    <view class="nut-sku-select-item" :key="item.id" v-for="(item, index) in skuInfo">
+    <view v-for="(item, index) in skuInfo" :key="item.id" class="nut-sku-select-item">
       <view class="nut-sku-select-item-title">{{ item.name }}</view>
       <view class="nut-sku-select-item-skus">
         <view
-          class="nut-sku-select-item-skus-sku"
-          @click="changeSaleChild(itemAttr, itemAttrIndex, item, index)"
-          :class="[{ active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }]"
-          :key="itemAttr.name"
           v-for="(itemAttr, itemAttrIndex) in item.list"
+          :key="itemAttr.name"
+          class="nut-sku-select-item-skus-sku"
+          :class="[{ active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }]"
+          @click="changeSaleChild(itemAttr, itemAttrIndex, item, index)"
         >
           {{ itemAttr.name }}
         </view>

@@ -1,6 +1,6 @@
 <template>
-  <div class="nut-sticky" ref="rootRef" :style="rootStyle">
-    <div class="nut-sticky__box" ref="stickyRef" :style="stickyStyle">
+  <div ref="rootRef" class="nut-sticky" :style="rootStyle">
+    <div ref="stickyRef" class="nut-sticky__box" :style="stickyStyle">
       <slot></slot>
     </div>
   </div>

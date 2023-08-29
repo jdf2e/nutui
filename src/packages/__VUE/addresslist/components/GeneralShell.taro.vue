@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-address-list-general" v-if="!swipeEdition">
+  <div v-if="!swipeEdition" class="nut-address-list-general">
     <component :is="renderCompontent()" @touchstart="holddownstart" @touchend="holddownend" @touchmove="holddownmove">
       <template #content-top>
         <slot name="content-info"></slot>
@@ -11,14 +11,14 @@
         <slot name="content-addrs"></slot>
       </template>
     </component>
-    <div class="nut-address-list-general__mask" v-if="longPress && showMaskRef" @click="maskClick">
+    <div v-if="longPress && showMaskRef" class="nut-address-list-general__mask" @click="maskClick">
       <slot name="longpress-all">
         <div class="nut-address-list-general__mask-copy" @click="copyCLick"> 复制地址 </div>
         <div class="nut-address-list-general__mask-set" @click="setDefault"> 设置默认 </div>
         <div class="nut-address-list-general__mask-del" @click="delLongClick"> 删除地址 </div>
       </slot>
     </div>
-    <div class="nut-address-list__mask-bottom" v-if="showMaskRef" @click="hideMaskClick"></div>
+    <div v-if="showMaskRef" class="nut-address-list__mask-bottom" @click="hideMaskClick"></div>
   </div>
   <nut-swipe v-else>
     <div class="nut-address-list-swipe">

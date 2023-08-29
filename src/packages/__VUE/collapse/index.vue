@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" ref="collapseDom">
+  <view ref="collapseDom" :class="classes">
     <slot></slot>
   </view>
 </template>

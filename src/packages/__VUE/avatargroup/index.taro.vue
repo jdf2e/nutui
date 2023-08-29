@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-avatar-group" ref="avatarGroupRef" :style="styles">
+  <view ref="avatarGroupRef" class="nut-avatar-group" :style="styles">
     <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
