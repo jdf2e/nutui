@@ -6,7 +6,8 @@
   "labels": ["dependencies"],
   "ignorePaths": [
     "src/**",
-    "publish/**"
+    "publish/**",
+    "packages/nutui-vscode-extension/**"
   ],
   "ignoreDeps": [
     "node",
