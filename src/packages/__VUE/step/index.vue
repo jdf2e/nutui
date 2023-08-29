@@ -42,7 +42,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['click-step'],
+  emits: ['clickStep'],
 
   setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;

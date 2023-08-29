@@ -141,15 +141,15 @@ export default create({
   },
   emits: [
     'update:visible',
-    'select-sku',
-    'change-stepper',
-    'click-btn-operate',
-    'click-close-icon',
-    'click-overlay',
+    'selectSku',
+    'changeStepper',
+    'clickBtnOperate',
+    'clickCloseIcon',
+    'clickOverlay',
     'close',
     'reduce',
     'add',
-    'over-limit'
+    'overLimit'
   ],
 
   components: {
@@ -189,14 +189,14 @@ export default create({
 
     // 商品规格 sku 选择
     const selectSku = (skus: any) => {
-      emit('select-sku', skus);
+      emit('selectSku', skus);
     };
 
     // 数量计步器变化
     const changeStepper = (value: number) => {
       goodsCount.value = value;
 
-      emit('change-stepper', value);
+      emit('changeStepper', value);
     };
 
     // 修改购买数量 add 加  reduce 减
@@ -210,12 +210,12 @@ export default create({
 
     // 触发极限值
     const stepperOverLimit = (count: any) => {
-      emit('over-limit', count);
+      emit('overLimit', count);
     };
 
     // 点击 button 操作
     const clickBtnOperate = (btn: string) => {
-      emit('click-btn-operate', {
+      emit('clickBtnOperate', {
         type: btn,
         value: goodsCount.value
       });
@@ -224,11 +224,11 @@ export default create({
     // 关闭
     const closePopup = (type: string) => {
       if (type == 'icon') {
-        emit('click-close-icon');
+        emit('clickCloseIcon');
       }
 
       if (type == 'overlay') {
-        emit('click-overlay');
+        emit('clickOverlay');
       }
 
       if (type == 'close') {

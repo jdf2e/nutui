@@ -31,7 +31,6 @@ export default create({
       default: {}
     }
   },
-  emits: [],
   components: {
     [Price.name]: Price
   },

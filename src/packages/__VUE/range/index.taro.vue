@@ -130,7 +130,7 @@ export default create({
     }
   },
 
-  emits: ['change', 'drag-end', 'drag-start', 'update:modelValue'],
+  emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
     const buttonIndex = ref(0);
@@ -357,7 +357,7 @@ export default create({
       event.stopPropagation();
       event.preventDefault();
       if (dragStatus.value === 'start') {
-        emit('drag-start');
+        emit('dragStart');
       }
       touch.move(event);
       dragStatus.value = 'draging';
@@ -389,7 +389,7 @@ export default create({
       }
       if (dragStatus.value === 'draging') {
         updateValue(currentValue, true);
-        emit('drag-end');
+        emit('dragEnd');
       }
       dragStatus.value = '';
       event.stopPropagation();

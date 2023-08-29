@@ -18,7 +18,6 @@ export default create({
       default: 15
     }
   },
-  emits: [],
   setup: (props) => {
     const list = ref(null) as Ref;
     const state = reactive({

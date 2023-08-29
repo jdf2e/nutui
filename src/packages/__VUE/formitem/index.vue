@@ -76,8 +76,6 @@ export default create({
   components: {
     [Cell.name]: Cell
   },
-  emits: [''],
-
   setup(props, { slots }) {
     const parent = inject('formErrorTip') as any;
     provide('form', {

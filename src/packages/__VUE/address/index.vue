@@ -195,7 +195,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
+  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'closeMask', 'switchModule'],
 
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
@@ -424,7 +424,7 @@ export default create({
       if (closeWay.value == 'self') {
         emit('close', callBackParams);
       } else {
-        emit('close-mask', { closeWay: closeWay });
+        emit('closeMask', { closeWay: closeWay });
       }
 
       emit('update:visible', false);
@@ -435,7 +435,7 @@ export default create({
       const type = privateType.value;
       privateType.value = type == 'exist' ? 'custom' : 'exist';
       initAddress();
-      emit('switch-module', { type: privateType.value });
+      emit('switchModule', { type: privateType.value });
     };
 
     const handleElevatorItem = (key: string, item: RegionData) => {

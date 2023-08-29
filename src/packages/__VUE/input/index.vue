@@ -151,7 +151,7 @@ export default create({
   },
   components: { MaskClose },
 
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
@@ -285,7 +285,7 @@ export default create({
       if (props.disabled) {
         return;
       }
-      emit('click-input', event);
+      emit('clickInput', event);
     };
 
     const onClick = (event: MouseEvent) => {
