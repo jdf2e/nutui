@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watch, Ref } from 'vue';
+import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 const { create, translate } = createComponent('number-keyboard');
@@ -105,7 +105,7 @@ export default create({
       default: 'default'
     },
     customKey: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: () => []
     },
     modelValue: {
