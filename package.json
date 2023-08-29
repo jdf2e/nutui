@@ -92,7 +92,7 @@
     "codesandbox": "^2.2.3",
     "eslint": "^8.44.0",
     "@nutui/eslint-config": "workspace:*",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^11.0.0",
     "highlight.js": "^11.8.0",
     "husky": "^8.0.0",
     "inquirer": "^8.2.0",
