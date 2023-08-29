@@ -45,7 +45,7 @@ export default create({
       default: false
     }
   },
-  emits: ['tab-switch', 'update:modelValue'],
+  emits: ['tabSwitch', 'update:modelValue'],
   setup(props, { emit }) {
     const { bottom, placeholder } = toRefs(props);
     const height = ref();
@@ -57,7 +57,7 @@ export default create({
     function changeIndex(index: number, active: number | string) {
       emit('update:modelValue', active);
       parentData.modelValue = active;
-      emit('tab-switch', parentData.children[index], active);
+      emit('tabSwitch', parentData.children[index], active);
     }
     let parentData = reactive({
       children: mdValue.children,

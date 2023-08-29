@@ -130,9 +130,9 @@ export default create({
     'focus',
     'clear',
     'search',
-    'click-input',
-    'click-left-icon',
-    'click-right-icon'
+    'clickInput',
+    'clickLeftIcon',
+    'clickRightIcon'
   ],
 
   setup(props, { emit }) {
@@ -196,15 +196,15 @@ export default create({
     };
 
     const clickInput = (event: Event) => {
-      emit('click-input', event);
+      emit('clickInput', event);
     };
 
     const leftIconClick = (event: Event) => {
-      emit('click-left-icon', props.modelValue, event);
+      emit('clickLeftIcon', props.modelValue, event);
     };
 
     const rightIconClick = (event: Event) => {
-      emit('click-right-icon', props.modelValue, event);
+      emit('clickRightIcon', props.modelValue, event);
     };
 
     const styleSearchbar = computed(() => {
