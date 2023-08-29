@@ -331,20 +331,26 @@ export default create({
     };
     const showhorseLamp = () => {
       state.animate = true;
-      setTimeout(() => {
-        state.scrollList.push(state.scrollList[0]);
-        state.scrollList.shift();
-        state.animate = false;
-      }, ~~((props.height / props.speed / 4) * 1000));
+      setTimeout(
+        () => {
+          state.scrollList.push(state.scrollList[0]);
+          state.scrollList.shift();
+          state.animate = false;
+        },
+        ~~((props.height / props.speed / 4) * 1000)
+      );
     };
 
     const startRoll = () => {
-      (state.timer as any) = setInterval(() => {
-        let chunk = 100;
-        for (let i = 0; i < chunk; i++) {
-          scroll(i, i < chunk - 1 ? false : true);
-        }
-      }, props.standTime + 100 * props.speed);
+      (state.timer as any) = setInterval(
+        () => {
+          let chunk = 100;
+          for (let i = 0; i < chunk; i++) {
+            scroll(i, i < chunk - 1 ? false : true);
+          }
+        },
+        props.standTime + 100 * props.speed
+      );
     };
     const scroll = (n: number, last: boolean) => {
       setTimeout(() => {
