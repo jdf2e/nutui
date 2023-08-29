@@ -187,7 +187,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :column-num="2">
     <nut-grid-item text="Vue Router" to="/">
@@ -198,11 +198,8 @@ app.use(GridItem);
     </nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Home, Search } from '@nutui/icons-vue';
-  export default {
-    components: { Home, Search }
-  };
+<script setup>
+import { Home, Search } from '@nutui/icons-vue';
 </script>
 ```
 

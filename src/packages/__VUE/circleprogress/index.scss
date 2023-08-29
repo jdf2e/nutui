@@ -9,7 +9,9 @@
 
   &__hover {
     stroke: $circleprogress-primary-color;
-    transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
+    transition:
+      stroke-dasharray 0.6s ease 0s,
+      stroke 0.6s ease 0s;
   }
 
   &__path {
