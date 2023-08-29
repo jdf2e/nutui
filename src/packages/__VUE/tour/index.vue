@@ -1,15 +1,15 @@
 <template>
   <div :class="classes">
-    <div class="nut-tour-masked" v-show="showTour" @click="handleClickMask"></div>
+    <div v-show="showTour" class="nut-tour-masked" @click="handleClickMask"></div>
 
     <div v-for="(step, i) in steps" :key="i" style="height: 0">
       <template v-if="i == active">
         <div
+          v-if="showTour"
+          id="nut-tour-popid"
           class="nut-tour-mask"
           :class="[mask ? '' : 'nut-tour-mask-none']"
           :style="maskStyle"
-          v-if="showTour"
-          id="nut-tour-popid"
         ></div>
         <nut-popover
           v-model:visible="showPopup"
@@ -23,8 +23,8 @@
         >
           <template #content>
             <slot>
-              <div class="nut-tour-content" v-if="type == 'step'">
-                <div class="nut-tour-content-top" v-if="showTitleBar">
+              <div v-if="type == 'step'" class="nut-tour-content">
+                <div v-if="showTitleBar" class="nut-tour-content-top">
                   <div @click="close">
                     <Close class="nut-tour-content-top-close" />
                   </div>
@@ -37,24 +37,24 @@
                   <div class="nut-tour-content-bottom-operate">
                     <slot name="prev-step">
                       <div
+                        v-if="active != 0 && showPrevStep"
                         class="nut-tour-content-bottom-operate-btn"
                         @click="changeStep('prev')"
-                        v-if="active != 0 && showPrevStep"
                         >{{ prevStepTxt }}</div
                       >
                     </slot>
 
                     <div
+                      v-if="steps.length - 1 == active"
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="close"
-                      v-if="steps.length - 1 == active"
                       >{{ completeTxt }}</div
                     >
                     <slot name="next-step">
                       <div
+                        v-if="steps.length - 1 != active"
                         class="nut-tour-content-bottom-operate-btn active"
                         @click="changeStep('next')"
-                        v-if="steps.length - 1 != active"
                         >{{ nextStepTxt }}</div
                       >
                     </slot>
@@ -62,7 +62,7 @@
                 </div>
               </div>
 
-              <div class="nut-tour-content nut-tour-content-tile" v-if="type == 'tile'">
+              <div v-if="type == 'tile'" class="nut-tour-content nut-tour-content-tile">
                 <div class="nut-tour-content-inner">
                   {{ step.content }}
                 </div>

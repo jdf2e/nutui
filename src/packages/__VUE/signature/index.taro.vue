@@ -2,9 +2,9 @@
   <view :class="classes">
     <div :class="['nut-signature-inner', 'spcanvas_WEAPP']">
       <canvas
+        :id="canvasSetId"
         ref="spcanvas"
         class="spcanvas"
-        :id="canvasSetId"
         :canvasId="canvasSetId"
         type="2d"
         disable-scroll="true"

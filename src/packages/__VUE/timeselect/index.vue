@@ -14,7 +14,7 @@
       <view class="nut-time-select__title">
         <view class="nut-time-select__title__fixed">
           <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
-          <slot name="title" v-else></slot>
+          <slot v-else name="title"></slot>
         </view>
       </view>
       <view class="nut-time-select__content">

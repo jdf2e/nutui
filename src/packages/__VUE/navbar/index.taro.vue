@@ -1,8 +1,8 @@
 <template>
   <view class="nut-navbar--placeholder" :style="rootStyle">
-    <view :id="'navbarRef-' + refRandomId" :class="classes" :style="{ zIndex }" ref="navbarRef">
+    <view :id="'navbarRef-' + refRandomId" ref="navbarRef" :class="classes" :style="{ zIndex }">
       <view class="nut-navbar__left" @click="handleLeft">
-        <slot name="left-show" v-if="leftShow">
+        <slot v-if="leftShow" name="left-show">
           <Left height="12px" color="#979797"></Left>
         </slot>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>

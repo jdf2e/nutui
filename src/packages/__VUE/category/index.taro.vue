@@ -2,7 +2,7 @@
   <view class="nut-category">
     <div class="nut-category__cateList">
       <div v-if="type == 'classify' || type == 'text'">
-        <div class="nut-category__cateListLeft" v-for="(item, index) in category" :key="index">
+        <div v-for="(item, index) in category" :key="index" class="nut-category__cateListLeft">
           <div
             :class="[checkIndex == index ? 'nut-category__cateListItemChecked' : 'nut-category__cateListItem']"
             @click="getChildList(index)"

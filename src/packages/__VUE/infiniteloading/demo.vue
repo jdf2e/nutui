@@ -4,7 +4,7 @@
       <nut-tab-pane :title="translate('basic')">
         <ul class="infiniteUl">
           <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
-            <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
+            <li v-for="(item, index) in defultList" :key="index" class="infiniteLi">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
       </nut-tab-pane>
@@ -18,7 +18,7 @@
             :has-more="customHasMore"
             @load-more="customLoadMore"
           >
-            <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
+            <li v-for="(item, index) in customList" :key="index" class="infiniteLi">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
       </nut-tab-pane>

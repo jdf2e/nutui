@@ -27,8 +27,8 @@
       :title="translate('title')"
       :description="desc"
       :menu-items="menuItemsTwo"
-      @choose="chooseItemThree"
       :cancel-txt="translate('cancelTxt')"
+      @choose="chooseItemThree"
     />
 
     <h2>{{ translate('optionStatus') }}</h2>
@@ -40,8 +40,8 @@
       v-model:visible="state.isVisible4"
       :cancel-txt="translate('cancelTxt')"
       :menu-items="menuItemsThree"
-      @choose="chooseItemFour"
       :choose-tag-value="chooseTagValue"
+      @choose="chooseItemFour"
     />
 
     <h2>{{ translate('customContent') }}</h2>

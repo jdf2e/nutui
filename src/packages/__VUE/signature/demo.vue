@@ -2,19 +2,19 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <div>
-      <nut-signature ref="demo" @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
-      <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
+      <nut-signature ref="demo" custom-class="test" @confirm="confirm" @clear="clear" @start="start"></nut-signature>
+      <img v-if="demoSignUrl" :src="demoSignUrl" class="demoSignUrl" />
     </div>
     <h2>{{ translate('title') }}</h2>
     <div>
       <nut-signature
-        @confirm="confirm2"
-        @clear="clear2"
         :lineWidth="lineWidth"
         :strokeStyle="strokeStyle"
+        @confirm="confirm2"
+        @clear="clear2"
         @end="end"
       ></nut-signature>
-      <img :src="demoSignUrl2" class="demoSignUrl" v-if="demoSignUrl2" />
+      <img v-if="demoSignUrl2" :src="demoSignUrl2" class="demoSignUrl" />
     </div>
   </div>
 </template>

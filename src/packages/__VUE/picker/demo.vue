@@ -5,7 +5,7 @@
 
     <h2>{{ translate('popupDesc') }}</h2>
     <nut-cell :title="translate('chooseCity')" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom" v-model:visible="show">
+    <nut-popup v-model:visible="show" position="bottom">
       <nut-picker
         v-model="popupValue"
         :columns="columns"

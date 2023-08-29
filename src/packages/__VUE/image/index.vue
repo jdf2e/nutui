@@ -6,15 +6,15 @@
       :src="lazyLoad ? (show ? src : undefined) : src"
       :date-src="lazyLoad ? (show ? undefined : src) : undefined"
       :alt="alt"
+      :style="styles"
       @load="load"
       @error="error"
-      :style="styles"
     />
-    <div class="nut-img-loading" v-if="loading">
+    <div v-if="loading" class="nut-img-loading">
       <Image v-if="!slotLoding" width="16px" height="20px" name="image"></Image>
       <slot name="loading"></slot>
     </div>
-    <div class="nut-img-error" v-if="isError && !loading">
+    <div v-if="isError && !loading" class="nut-img-error">
       <ImageError v-if="!slotError" width="16px" height="20px" name="imageError"></ImageError>
       <slot name="error"></slot>
     </div>

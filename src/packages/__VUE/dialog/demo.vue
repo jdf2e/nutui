@@ -12,19 +12,19 @@
     <nut-cell-group :title="translate('title1')">
       <nut-cell :title="translate('title1')" @click="componentClick"></nut-cell>
       <nut-dialog
+        v-model:visible="visible"
         teleport="#app"
         :title="translate('title1')"
         :content="translate('content')"
-        v-model:visible="visible"
       >
       </nut-dialog>
       <nut-cell :title="translate('title')" @click="componentvVrticalClick"></nut-cell>
       <nut-dialog
+        v-model:visible="visible1"
         footer-direction="vertical"
         teleport="#app"
         :title="translate('title1')"
         :content="translate('content')"
-        v-model:visible="visible1"
       >
       </nut-dialog>
     </nut-cell-group>

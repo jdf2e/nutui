@@ -11,14 +11,14 @@
       <slot></slot>
     </view>
     <slot name="page"></slot>
-    <view :class="classesPagination" v-if="paginationVisible && !$slots.page">
+    <view v-if="paginationVisible && !$slots.page" :class="classesPagination">
       <i
+        v-for="(item, index) in state.children.length"
+        :key="index"
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
         :class="{ active: activePagination === index }"
-        v-for="(item, index) in state.children.length"
-        :key="index"
       />
     </view>
   </view>

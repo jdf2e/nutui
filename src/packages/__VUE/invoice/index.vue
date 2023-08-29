@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <nut-form :model-value="formValue" ref="formRef">
+    <nut-form ref="formRef" :model-value="formValue">
       <nut-form-item
         v-for="(item, index) of list"
         :key="index"
@@ -23,9 +23,9 @@
         </template>
         <template v-else>
           <input
+            v-model="formValue[item.formItemProp]"
             class="nut-input-text"
             :placeholder="item.placeholder"
-            v-model="formValue[item.formItemProp]"
             type="text"
           />
         </template>

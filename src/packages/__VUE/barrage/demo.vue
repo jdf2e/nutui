@@ -5,7 +5,7 @@
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <nut-button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</nut-button>
+      <nut-button class="add nut-button--primary" @click="addDanmu">{{ translate('btn1') }}</nut-button>
     </div>
     <h2>{{ translate('slotTitle') }}</h2>
     <nut-cell class="danmu-box">

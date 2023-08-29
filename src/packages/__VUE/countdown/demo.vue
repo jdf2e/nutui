@@ -58,7 +58,7 @@
 
     <h2>{{ translate('handleControl') }}</h2>
     <nut-cell>
-      <nut-countdown time="20000" ref="Countdown" :autoStart="false" format="ss:SS" />
+      <nut-countdown ref="Countdown" time="20000" :autoStart="false" format="ss:SS" />
     </nut-cell>
 
     <nut-grid :column-num="3">

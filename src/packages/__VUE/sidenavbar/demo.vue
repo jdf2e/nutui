@@ -6,7 +6,7 @@
         ><label>{{ translate('right') }}</label></span
       >
     </nut-cell>
-    <nut-popup position="right" v-model:visible="show1" :style="{ width, height }">
+    <nut-popup v-model:visible="show1" position="right" :style="{ width, height }">
       <nut-side-navbar>
         <nut-sub-side-navbar :title="translate('title1')" ikey="6">
           <nut-sub-side-navbar :title="translate('title2')" ikey="9">
@@ -25,7 +25,7 @@
         ><label>{{ translate('left') }}</label></span
       >
     </nut-cell>
-    <nut-popup position="left" v-model:visible="show2" :style="{ width, height }">
+    <nut-popup v-model:visible="show2" position="left" :style="{ width, height }">
       <nut-side-navbar>
         <nut-sub-side-navbar :title="translate('title7')" ikey="3" :open="false">
           <nut-side-navbar-item ikey="4" :title="translate('title8')"></nut-side-navbar-item>
@@ -44,7 +44,7 @@
           ><label>{{ translate('show') }}</label></span
         >
       </nut-cell>
-      <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
+      <nut-popup v-model:visible="show3" position="right" :style="{ width, height }">
         <nut-side-navbar :show="show3">
           <nut-side-navbar-item
             ikey="1"
