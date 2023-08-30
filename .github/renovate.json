@@ -11,11 +11,13 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^(?=.*taro).*$"],
+      "matchPackagePatterns": ["^@tarojs"],
       "enabled": false
     }
   ],
   "ignoreDeps": [
+    "eslint-config-taro",
+    "babel-preset-taro",
     "node",
     "typescript"
   ]
