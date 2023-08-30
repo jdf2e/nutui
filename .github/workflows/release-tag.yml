@@ -2,6 +2,8 @@ name: Create Release Tag
 
 on:
   push:
+    branches:
+      - 'v4'
     tags:
       - 'v*'
 
@@ -30,5 +32,4 @@ jobs:
         id: release_tag
         uses: ncipollo/release-action@v1
         with:
-          draft: true
           bodyFile: '.github/changelog.md'
