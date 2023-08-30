@@ -28,7 +28,7 @@
       v-model:visible="demo2.visible"
       v-model="demo2.value"
       :title="translate('addressTip')"
-      labelKey="text"
+      textKey="text"
       valueKey="text"
       childrenKey="items"
       :options="demo2.options"
