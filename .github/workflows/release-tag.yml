@@ -2,8 +2,6 @@ name: Create Release Tag
 
 on:
   push:
-    branches:
-      - 'v4'
     tags:
       - 'v*'
 
