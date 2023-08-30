@@ -20,7 +20,7 @@
       title="地址选择"
       v-model:visible="demo2.visible"
       v-model="demo2.value"
-      labelKey="text"
+      textKey="text"
       @change="events.change"
       @pathChange="events.pathChange"
       valueKey="text"

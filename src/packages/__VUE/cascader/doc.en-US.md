@@ -126,7 +126,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
     title="select address"
     v-model:visible="demo2.visible"
     v-model="demo2.value"
-    labelKey="text"
+    textKey="text"
     @change="events.change"
     @pathChange="events.pathChange"
     valueKey="text"
