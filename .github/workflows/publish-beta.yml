@@ -1,0 +1,40 @@
+name: Release NutUI Beta
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        run: corepack enable
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build NutUI Vue
+        run: pnpm build
+
+      - name: Publish NutUI Vue
+        run: pnpm publish:h5:beta
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Build NutUI Vue Taro
+        run: pnpm build:taro:vue
+
+      - name: Publish NutUI Vue Taro
+        run: pnpm publish:taro:beta
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
