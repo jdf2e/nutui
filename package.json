@@ -64,12 +64,8 @@
     "dts": "rimraf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.json && pnpm generate:types",
     "dts:taro": "rimraf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && pnpm generate:types:taro",
     "copy:h5": "node ./scripts/copyh5.cjs",
-    "copy:taro": "node ./scripts/copytaro.cjs"
-  },
-  "standard-version": {
-    "scripts": {
-      "postchangelog": "node ./scripts/updateChangelog.js"
-    }
+    "copy:taro": "node ./scripts/copytaro.cjs",
+    "changelog": "node ./scripts/generate-changelog.cjs"
   },
   "dependencies": {
     "@nutui/icons-vue": "^0.1.1",
