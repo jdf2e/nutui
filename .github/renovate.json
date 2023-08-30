@@ -11,7 +11,7 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@tarojs"],
+      "matchPackagePatterns": ["^(?=.*taro).*$"],
       "enabled": false
     }
   ],
