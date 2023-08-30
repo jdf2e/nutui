@@ -9,6 +9,12 @@
     "publish/**",
     "packages/nutui-vscode-extension/**"
   ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@tarojs"],
+      "enabled": false
+    }
+  ],
   "ignoreDeps": [
     "node",
     "typescript"
