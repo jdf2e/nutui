@@ -67,7 +67,12 @@ export default create({
       default: true
     }
   },
-  emits: ['onSubmit', 'scrollBottom'],
+  emits: [
+    'submit',
+    'scrollBottom',
+    // will be deprecated
+    'onSubmit'
+  ],
 
   setup(props, { emit }) {
     const formRef = ref();
@@ -95,6 +100,7 @@ export default create({
 
     const submitFun = () => {
       formRef.value.validate().then(({ valid, errors }: any) => {
+        emit('submit', valid, errors);
         emit('onSubmit', valid, errors);
       });
     };

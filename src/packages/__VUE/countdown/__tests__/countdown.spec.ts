@@ -10,9 +10,9 @@ test('endTime props', async () => {
       endTime: Date.now() + 1 * 50
     }
   });
-  expect(wrapper.emitted('onEnd')).toBeFalsy();
+  expect(wrapper.emitted('end')).toBeFalsy();
   await sleep(51);
-  expect(wrapper.emitted('onEnd')).toBeTruthy();
+  expect(wrapper.emitted('end')).toBeTruthy();
 });
 
 test('format props', async () => {
@@ -63,7 +63,7 @@ test('paused props', async () => {
       'nut-button': Button
     },
     template: `
-      <nut-countdown  :endTime="endTime" :paused="paused" />
+      <nut-countdown  :end-time="endTime" :paused="paused" />
       <nut-button  @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
     `,
     setup() {
