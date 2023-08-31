@@ -7,7 +7,7 @@
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
-      :threeDimensional="false"
+      :three-dimensional="false"
       @confirm="confirm"
     ></nut-date-picker>
 
@@ -19,7 +19,7 @@
         :min-date="minDate"
         :max-date="maxDate"
         :is-show-chinese="true"
-        :threeDimensional="false"
+        :three-dimensional="false"
         @confirm="popupConfirm"
       >
         <nut-button block type="primary" @click="alwaysFun">{{ translate('forever') }}</nut-button>

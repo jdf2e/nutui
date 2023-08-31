@@ -3,7 +3,7 @@
     position="bottom"
     closeable
     round
-    :teleportDisable="teleportDisable"
+    :teleport-disable="teleportDisable"
     :visible="visible"
     :style="popStyle"
     :lock-scroll="lockScroll"

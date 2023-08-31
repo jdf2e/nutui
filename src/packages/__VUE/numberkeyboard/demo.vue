@@ -1,9 +1,9 @@
 <template>
   <div class="demo">
-    <nut-cell :isLink="true" :title="translate('basic')" @touchstart.stop="showKeyBoard(1)"></nut-cell>
+    <nut-cell :is-link="true" :title="translate('basic')" @touchstart.stop="showKeyBoard(1)"></nut-cell>
     <nut-number-keyboard v-model:visible="visible1" @blur="onBlur(1)" @input="input" @delete="onDelete">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" :title="translate('sidebar')" @touchstart.stop="showKeyBoard(2)"></nut-cell>
+    <nut-cell :is-link="true" :title="translate('sidebar')" @touchstart.stop="showKeyBoard(2)"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible2"
       type="rightColumn"
@@ -14,11 +14,11 @@
       @blur="onBlur(2)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" :title="translate('randomKeyOrder')" @touchstart.stop="showKeyBoard(3)"></nut-cell>
+    <nut-cell :is-link="true" :title="translate('randomKeyOrder')" @touchstart.stop="showKeyBoard(3)"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible3"
       type="rightColumn"
-      :randomKeys="true"
+      :random-keys="true"
       :custom-key="customKey1"
       @input="input"
       @close="close(3)"
@@ -26,7 +26,7 @@
     >
     </nut-number-keyboard>
 
-    <nut-cell :isLink="true" :title="translate('withTitle')" @touchstart.stop="showKeyBoard(4)"></nut-cell>
+    <nut-cell :is-link="true" :title="translate('withTitle')" @touchstart.stop="showKeyBoard(4)"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible4"
       :title="translate('title')"
@@ -37,7 +37,7 @@
     >
     </nut-number-keyboard>
 
-    <nut-cell :isLink="true" :title="translate('idNumberKeyboard')" @touchstart.stop="showKeyBoard(6)"></nut-cell>
+    <nut-cell :is-link="true" :title="translate('idNumberKeyboard')" @touchstart.stop="showKeyBoard(6)"></nut-cell>
     <nut-number-keyboard
       v-model:visible="visible6"
       :custom-key="customKey3"
@@ -47,7 +47,7 @@
     >
     </nut-number-keyboard>
     <nut-cell
-      :isLink="true"
+      :is-link="true"
       desc-text-align="left"
       :desc="value"
       :title="translate('bindValue')"

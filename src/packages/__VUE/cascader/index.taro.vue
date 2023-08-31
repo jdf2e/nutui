@@ -16,7 +16,7 @@
       </template>
 
       <nut-cascader-item
-        :modelValue="innerValue"
+        :model-value="innerValue"
         :options="options"
         :lazy="lazy"
         :lazy-load="lazyLoad"
@@ -33,7 +33,7 @@
 
   <template v-else>
     <nut-cascader-item
-      :modelValue="innerValue"
+      :model-value="innerValue"
       :options="options"
       :lazy="lazy"
       :lazy-load="lazyLoad"

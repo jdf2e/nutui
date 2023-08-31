@@ -21,7 +21,7 @@
     <nut-navbar
       :left-show="false"
       :title="translate('navTitle3')"
-      :titleIcon="true"
+      :title-icon="true"
       :desc="translate('desc2')"
       @on-click-back="back"
       @on-click-title="title"

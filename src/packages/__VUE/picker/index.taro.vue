@@ -26,7 +26,7 @@
       <picker-view-column
         v-for="(column, columnIndex) in columnsList"
         :key="columnIndex"
-        :filedNames="columnFieldNames"
+        :filed-names="columnFieldNames"
       >
         <view
           v-for="(item, index) in column"

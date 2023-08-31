@@ -5,7 +5,7 @@
     closeable
     round
     style="height: 75%"
-    :teleportDisable="teleportDisable"
+    :teleport-disable="teleportDisable"
     :teleport="teleport"
     @click-close-icon="closePopup('icon')"
     @click-overlay="closePopup('overlay')"
@@ -33,10 +33,10 @@
         <sku-stepper
           v-if="!getSlots('sku-stepper')"
           :goods="goods"
-          :stepperTitle="stepperTitle || translate('buyNumber')"
-          :stepperMax="stepperMax"
-          :stepperMin="stepperMin"
-          :stepperExtraText="stepperExtraText"
+          :stepper-title="stepperTitle || translate('buyNumber')"
+          :stepper-max="stepperMax"
+          :stepper-min="stepperMin"
+          :stepper-extra-text="stepperExtraText"
           @add="add"
           @reduce="reduce"
           @change-stepper="changeStepper"
@@ -47,11 +47,11 @@
       </view>
 
       <sku-operate
-        :btnOptions="btnOptions"
-        :btnExtraText="btnExtraText"
-        :buyText="buyText || translate('buyNow')"
-        :addCartText="addCartText || translate('addToCart')"
-        :confirmText="confirmText || translate('confirm')"
+        :btn-options="btnOptions"
+        :btn-extra-text="btnExtraText"
+        :buy-text="buyText || translate('buyNow')"
+        :add-cart-text="addCartText || translate('addToCart')"
+        :confirm-text="confirmText || translate('confirm')"
         @click-btn-operate="clickBtnOperate"
       >
         <template v-if="getSlots('sku-operate')" #operate-btn>

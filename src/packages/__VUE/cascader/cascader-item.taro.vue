@@ -3,7 +3,7 @@
     <template v-if="!initLoading && panes.length">
       <nut-tab-pane v-for="(pane, index) in panes" :key="index" :title="formatTabTitle(pane)">
         <view role="menu" class="nut-cascader-pane">
-          <nut-scroll-view :scrollY="true" style="height: 100%">
+          <nut-scroll-view :scroll-y="true" style="height: 100%">
             <template v-for="node in pane.nodes" :key="node.value">
               <view
                 class="nut-cascader-item"

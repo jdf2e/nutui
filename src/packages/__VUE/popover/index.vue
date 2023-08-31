@@ -5,15 +5,15 @@
   <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
     <nut-popup
       v-model:visible="showPopup"
-      :popClass="`nut-popover-content nut-popover-content--${location}`"
+      :pop-class="`nut-popover-content nut-popover-content--${location}`"
       :style="customStyle"
       position=""
       transition="nut-popover"
       :overlay="overlay"
       :duration="duration"
-      :overlayStyle="overlayStyle"
-      :overlayClass="overlayClass"
-      :closeOnClickOverlay="closeOnClickOverlay"
+      :overlay-style="overlayStyle"
+      :overlay-class="overlayClass"
+      :close-on-click-overlay="closeOnClickOverlay"
     >
       <view ref="popoverContentRef" class="nut-popover-content-group">
         <view v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </view>

@@ -39,8 +39,6 @@ module.exports = {
     'vue/no-v-html': 'off',
     'vue/first-attribute-linebreak': 'off',
     'vue/multi-word-component-names': 'off',
-    'vue/no-v-text-v-html-on-component': 'off',
-    // will be removed someday
-    'vue/attribute-hyphenation': 'off'
+    'vue/no-v-text-v-html-on-component': 'off'
   }
 };

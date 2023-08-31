@@ -10,7 +10,7 @@
       }"
       :closeable="true"
       :close-on-click-overlay="closeOnClickOverlay"
-      :teleportDisable="false"
+      :teleport-disable="false"
       @click-close-icon="close"
       @click-overlay="close"
     >
