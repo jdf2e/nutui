@@ -3,7 +3,7 @@
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-countdown :endTime="end" @on-end="onend"></nut-countdown>
+      <nut-countdown :endTime="end" @end="onend"></nut-countdown>
     </nut-cell>
     <h2>自定义格式</h2>
     <nut-cell>
@@ -31,7 +31,7 @@
     <h2>控制开始和暂停的倒计时</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
+      <nut-countdown :endTime="end" :paused="paused" @paused="onpaused" @restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
         <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
       </div>
