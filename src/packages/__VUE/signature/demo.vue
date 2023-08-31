@@ -8,8 +8,8 @@
     <h2>{{ translate('title') }}</h2>
     <div>
       <nut-signature
-        :lineWidth="lineWidth"
-        :strokeStyle="strokeStyle"
+        :line-width="lineWidth"
+        :stroke-style="strokeStyle"
         @confirm="confirm2"
         @clear="clear2"
         @end="end"

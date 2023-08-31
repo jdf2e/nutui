@@ -2,12 +2,12 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-countdown :endTime="end" @on-end="onend"></nut-countdown>
+      <nut-countdown :end-time="end" @on-end="onend"></nut-countdown>
     </nut-cell>
     <h2>{{ translate('format') }}</h2>
     <nut-cell>
       <nut-countdown
-        :endTime="end"
+        :end-time="end"
         :format="`DD ${translate('day')} HH ${translate('hour')} mm ${translate('minute')} ss ${translate('second')}`"
       />
     </nut-cell>
@@ -15,25 +15,25 @@
     <h2>{{ translate('millisecond') }}</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="end" millisecond format="HH:mm:ss:SS" />
+      <nut-countdown :end-time="end" millisecond format="HH:mm:ss:SS" />
     </nut-cell>
 
     <h2>{{ translate('serverTime') }}</h2>
 
     <nut-cell>
-      <nut-countdown :startTime="serverTime" :endTime="end" />
+      <nut-countdown :start-time="serverTime" :end-time="end" />
     </nut-cell>
 
     <h2>{{ translate('async') }}</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="asyncEnd" />
+      <nut-countdown :end-time="asyncEnd" />
     </nut-cell>
 
     <h2>{{ translate('controlTime') }}</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
+      <nut-countdown :end-time="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
         <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
       </div>
@@ -43,7 +43,7 @@
 
     <nut-cell>
       <span>
-        <nut-countdown v-model="resetTime" :endTime="end">
+        <nut-countdown v-model="resetTime" :end-time="end">
           <div class="countdown-part-box">
             <div class="part-item-symbol">{{ resetTime.d }}{{ translate('day') }}</div>
             <div class="part-item h">{{ resetTime.h }}</div>
@@ -58,7 +58,7 @@
 
     <h2>{{ translate('handleControl') }}</h2>
     <nut-cell>
-      <nut-countdown ref="Countdown" time="20000" :autoStart="false" format="ss:SS" />
+      <nut-countdown ref="Countdown" time="20000" :auto-start="false" format="ss:SS" />
     </nut-cell>
 
     <nut-grid :column-num="3">

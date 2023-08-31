@@ -4,7 +4,7 @@
     position="bottom"
     :lock-scroll="lockScroll"
     :round="round"
-    :teleportDisable="teleportDisable"
+    :teleport-disable="teleportDisable"
     :teleport="teleport"
     @close="close"
     @click-overlay="clickOverlay"

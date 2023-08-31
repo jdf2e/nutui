@@ -25,8 +25,8 @@
       v-model:visible="notSell"
       :sku="skuData"
       :goods="goodsInfo"
-      :btnExtraText="btnExtraText"
-      :btnOptions="['buy', 'cart']"
+      :btn-extra-text="btnExtraText"
+      :btn-options="['buy', 'cart']"
       @change-stepper="changeStepper"
       @select-sku="selectSku"
     >
@@ -42,10 +42,10 @@
       v-model:visible="customStepper"
       :sku="skuData"
       :goods="goodsInfo"
-      :stepperMax="7"
-      :stepperMin="2"
-      :stepperExtraText="stepperExtraText"
-      :btnOptions="['buy', 'cart']"
+      :stepper-max="7"
+      :stepper-min="2"
+      :stepper-extra-text="stepperExtraText"
+      :btn-options="['buy', 'cart']"
       @change-stepper="changeStepper"
       @over-limit="overLimit"
       @select-sku="selectSku"
@@ -57,13 +57,13 @@
       v-model:visible="customBySlot"
       :sku="skuData"
       :goods="goodsInfo"
-      :btnOptions="['buy', 'cart']"
+      :btn-options="['buy', 'cart']"
       @select-sku="selectSku"
       @click-btn-operate="clickBtnOperate"
     >
       <template #sku-header-price>
         <div>
-          <nut-price :price="goodsInfo.price" :needSymbol="true" :thousands="false"> </nut-price>
+          <nut-price :price="goodsInfo.price" :need-symbol="true" :thousands="false"> </nut-price>
           <span class="tag"></span>
         </div>
       </template>

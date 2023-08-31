@@ -58,15 +58,21 @@
     </nut-cell>
     <h2>{{ translate('title10') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value12" :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
+      <nut-range v-model="value12" :marks="marks" :hidden-range="true" @change="onChange"></nut-range>
     </nut-cell>
     <nut-cell class="cell">
-      <nut-range v-model="value13" range :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
+      <nut-range v-model="value13" range :marks="marks" :hidden-range="true" @change="onChange"></nut-range>
     </nut-cell>
 
     <nut-cell class="vertical_div">
       <view class="div">
-        <nut-range v-model="value14" :vertical="true" :marks="marks" :hiddenRange="true" @change="onChange"></nut-range>
+        <nut-range
+          v-model="value14"
+          :vertical="true"
+          :marks="marks"
+          :hidden-range="true"
+          @change="onChange"
+        ></nut-range>
       </view>
       <view class="div">
         <nut-range
@@ -74,7 +80,7 @@
           range
           :vertical="true"
           :marks="marks"
-          :hiddenRange="true"
+          :hidden-range="true"
           @change="onChange"
         ></nut-range>
       </view>
