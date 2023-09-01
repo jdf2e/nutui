@@ -17,26 +17,26 @@
     </nut-cell>
     <view class="title">{{ translate('title3') }}</view>
     <nut-cell>
-      <nut-trend-arrow arrowLeft :rate="0.2535" />
-      <nut-trend-arrow arrowLeft :rate="-0.2535" />
+      <nut-trend-arrow arrow-left :rate="0.2535" />
+      <nut-trend-arrow arrow-left :rate="-0.2535" />
     </nut-cell>
     <view class="title">{{ translate('title4') }}</view>
     <nut-cell>
-      <nut-trend-arrow showSign :rate="1" />
-      <nut-trend-arrow showSign :rate="-0.2535" />
+      <nut-trend-arrow show-sign :rate="1" />
+      <nut-trend-arrow show-sign :rate="-0.2535" />
     </nut-cell>
     <view class="title">{{ translate('title5') }}</view>
     <nut-cell>
-      <nut-trend-arrow showSign :rate="0" />
-      <nut-trend-arrow showSign showZero :rate="0" />
+      <nut-trend-arrow show-sign :rate="0" />
+      <nut-trend-arrow show-sign show-zero :rate="0" />
     </nut-cell>
     <view class="title">{{ translate('title6') }}</view>
     <nut-cell>
       <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)" />
-      <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)" />
+      <nut-trend-arrow :rate="-0.2535" show-sign drop-color="rgb(255, 190, 13)" />
       <nut-trend-arrow
         :sync-text-color="false"
-        showSign
+        show-sign
         :rate="-0.2535"
         text-color="rgb(39,197,48)"
         drop-color="rgb(255, 190, 13)"

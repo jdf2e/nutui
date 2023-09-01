@@ -82,7 +82,7 @@ test('should render base uploader other props', async () => {
   const toast2 = wrapper.find('.nut-uploader__preview-img__c');
   expect(toast2.exists()).toBe(true);
   toast2.trigger('click');
-  expect(wrapper.emitted('file-item-click')).toBeTruthy();
+  expect(wrapper.emitted('fileItemClick')).toBeTruthy();
   expect(toast2.attributes().src).toBe(
     'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
   );

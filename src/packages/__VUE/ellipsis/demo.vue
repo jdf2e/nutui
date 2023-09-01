@@ -22,13 +22,13 @@
 
     <h2>{{ translate('expand') }}</h2>
     <nut-cell>
-      <nut-ellipsis :content="content" direction="start" expandText="展开" collapseText="收起"></nut-ellipsis>
+      <nut-ellipsis :content="content" direction="start" expand-text="展开" collapse-text="收起"></nut-ellipsis>
     </nut-cell>
     <nut-cell>
-      <nut-ellipsis :content="content" direction="middle" expandText="展开" collapseText="收起"></nut-ellipsis>
+      <nut-ellipsis :content="content" direction="middle" expand-text="展开" collapse-text="收起"></nut-ellipsis>
     </nut-cell>
     <nut-cell>
-      <nut-ellipsis :content="content" direction="end" rows="3" expandText="展开" collapseText="收起"></nut-ellipsis>
+      <nut-ellipsis :content="content" direction="end" rows="3" expand-text="展开" collapse-text="收起"></nut-ellipsis>
     </nut-cell>
   </div>
 </template>

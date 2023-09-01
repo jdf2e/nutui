@@ -1,24 +1,25 @@
 <template>
-  <div :class="classes">
-    <view class="nut-picker__bar" v-if="showToolbar">
+  <div class="nut-picker">
+    <view v-if="showToolbar" class="nut-picker__bar">
       <view class="nut-picker__left" @click="cancel">{{ cancelText || translate('cancel') }}</view>
       <view class="nut-picker__title"> {{ title }}</view>
-      <view class="nut-picker__right" @click="confirmHandler()">{{ okText || translate('confirm') }}</view>
+      <view class="nut-picker__right" @click="confirmHandler">{{ okText || translate('confirm') }}</view>
     </view>
 
     <slot name="top"></slot>
 
     <view class="nut-picker__column" :style="columnStyle">
-      <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+      <view v-for="(column, columnIndex) in columnsList" :key="columnIndex" class="nut-picker__columnitem">
         <nut-picker-column
           :ref="swipeRef"
           :column="column"
-          :columnsType="columnsType"
+          :columns-type="columnsType"
+          :field-names="columnFieldNames"
           :value="defaultValues && defaultValues[columnIndex]"
-          :threeDimensional="threeDimensional"
-          :swipeDuration="swipeDuration"
-          :visibleOptionNum="visibleOptionNum"
-          :optionHeight="optionHeight"
+          :three-dimensional="threeDimensional"
+          :swipe-duration="swipeDuration"
+          :visible-option-num="visibleOptionNum"
+          :option-height="optionHeight"
           @change="
             (option: any) => {
               changeHandler(columnIndex, option);
@@ -46,7 +47,10 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, classes, cancel } = usePicker(props, emit);
+    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
+      props,
+      emit
+    );
 
     const pickerColumn = ref<any[]>([]);
 
@@ -72,10 +76,10 @@ export default create({
     };
 
     return {
-      classes,
       column,
       columnsType,
       columnsList,
+      columnFieldNames,
       cancel,
       changeHandler,
       confirmHandler,

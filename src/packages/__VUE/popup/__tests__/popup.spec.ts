@@ -150,7 +150,7 @@ test('event click pop test', async () => {
   await nextTick();
   const popup: any = wrapper.find('.nut-popup');
   await popup.trigger('click');
-  expect(wrapper.emitted('click-pop')).toBeTruthy();
+  expect(wrapper.emitted('clickPop')).toBeTruthy();
 });
 
 test('event click-close-icon test', async () => {
@@ -161,7 +161,7 @@ test('event click-close-icon test', async () => {
     }
   });
   await wrapper.find('.nut-popup__close-icon').trigger('click');
-  expect(wrapper.emitted('click-close-icon')).toBeTruthy();
+  expect(wrapper.emitted('clickCloseIcon')).toBeTruthy();
 });
 
 test('should emit open event when prop visible is set to true', async () => {
@@ -183,7 +183,7 @@ test('event close test', async () => {
   });
   await wrapper.find('.nut-overlay').trigger('click');
   await nextTick();
-  expect(wrapper.emitted('click-overlay')).toBeTruthy();
+  expect(wrapper.emitted('clickOverlay')).toBeTruthy();
 });
 
 test('event click-overlay test', async () => {
@@ -195,5 +195,5 @@ test('event click-overlay test', async () => {
 
   const overlay: any = wrapper.find('.nut-overlay');
   await overlay.trigger('click');
-  expect(wrapper.emitted('click-overlay')).toBeTruthy();
+  expect(wrapper.emitted('clickOverlay')).toBeTruthy();
 });

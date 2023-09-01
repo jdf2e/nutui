@@ -14,11 +14,11 @@
         <view>{{ otherValueText || translate('otherValueText') }}</view>
         <view class="nut-ecard__list__input--con">
           <input
-            type="text"
             v-model="inputValue"
-            @input="change"
+            type="text"
             class="nut-ecard-input"
             :placeholder="placeholder || translate('placeholder')"
+            @input="change"
           />
           {{ suffix }}
         </view>

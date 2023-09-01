@@ -6,7 +6,7 @@ Action menu panel that pops up from the bottom.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { ActionSheet } from '@nutui/nutui';
 
@@ -18,48 +18,35 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>Basic Usage</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>Basic Usage</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo Basic Usage -->
-  <nut-action-sheet v-model:visible="state.isVisible" :menu-items="menuItems" @choose="chooseItem"> </nut-action-sheet>
+  <nut-action-sheet v-model:visible="visible" :menu-items="menuItems" @choose="choose" />
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: 'option one'
-        },
-        {
-          name: 'option two'
-        },
-        {
-          name: 'option three'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: 'option one'
+  },
+  {
+    name: 'optione two'
+  },
+  {
+    name: 'option three'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -69,49 +56,36 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>Show Cancel Button</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>Show Cancel Button</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo Show Cancel Button -->
-  <nut-action-sheet v-model:visible="state.isVisible" :menu-items="menuItems" cancel-txt="cancel" @choose="chooseItem">
+  <nut-action-sheet v-model:visible="visible" :menu-items="menuItems" cancel-txt="取消" @choose="choose">
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: 'option one'
-        },
-        {
-          name: 'option two'
-        },
-        {
-          name: 'option three'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: 'option one'
+  },
+  {
+    name: 'option two'
+  },
+  {
+    name: 'option three'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -121,56 +95,43 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>Show Description</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>Show Description</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo Show Description -->
   <nut-action-sheet
-    v-model:visible="state.isVisible"
+    v-model:visible="visible"
     cancel-txt="cancel"
     description="This is a presentation"
     :menu-items="menuItems"
-    @choose="chooseItem"
+    @choose="choose"
   >
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: 'option one'
-        },
-        {
-          name: 'option two'
-        },
-        {
-          name: 'option three',
-          subname: 'Description'
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: 'option one'
+  },
+  {
+    name: 'option two'
+  },
+  {
+    name: 'option three',
+    subname: 'Description'
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -180,53 +141,40 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>Option Status</label></span>
-    <div v-html="state.val"></div>
+  <nut-cell is-link @click="click">
+    <div>Option Status</div>
+    <div>{{ val }}</div>
   </nut-cell>
-  <!-- demo Option Status -->
   <nut-action-sheet
-    v-model:visible="state.isVisible"
+    v-model:visible="visible"
     :menu-items="menuItems"
     choose-tag-value="Shading Options"
-    @choose="chooseItem"
+    @choose="choose"
     cancel-txt="cancel"
   >
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const menuItems = [
-        {
-          name: 'Shading Options'
-        },
-        {
-          name: 'Disable option',
-          disable: true
-        }
-      ];
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      const chooseItem = (itemParams) => {
-        state.val = itemParams.name;
-      };
-      return {
-        state,
-        switchActionSheet,
-        menuItems,
-        chooseItem
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const menuItems = [
+  {
+    name: 'Shading Options'
+  },
+  {
+    name: 'Disable option',
+    disable: true
+  }
+];
+const click = (param) => {
+  visible.value = !visible.value;
+};
+const choose = (item) => {
+  val.value = item.name;
+};
 </script>
 ```
 
@@ -236,37 +184,27 @@ app.use(ActionSheet);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible')">
-    <span><label>Custom Content</label></span>
+  <nut-cell is-link @click="click">
+    <div>Custom Content</div>
   </nut-cell>
-  <nut-action-sheet v-model:visible="state.isVisible" title="title">
+  <nut-action-sheet v-model:visible="visible" title="标题">
     <div class="custom-content">Custom Content</div>
   </nut-action-sheet>
 </template>
-<script>
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        isVisible: false,
-        val: ''
-      });
-      const switchActionSheet = (param) => {
-        state.isVisible = !state.isVisible;
-      };
-      return {
-        state,
-        switchActionSheet
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const val = ref('');
+const click = (param) => {
+  visible.value = !visible.value;
+};
 </script>
 <style>
-  .custom-content {
-    padding: 10px 10px 160px;
-  }
+.custom-content {
+  padding: 10px 10px 160px;
+}
 </style>
 ```
 

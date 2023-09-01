@@ -11,7 +11,7 @@
     <h2>{{ translate('title3') }}</h2>
     <nut-textarea disabled :model-value="translate('desc2')" limit-show max-length="20" />
     <h2>{{ translate('title4') }}</h2>
-    <nut-textarea autofocus v-model="value4" />
+    <nut-textarea v-model="value4" autofocus />
   </div>
 </template>
 

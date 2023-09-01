@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <view class="nut-side-navbar__content">
-      <view class="nut-side-navbar__content__list" ref="list">
+      <view ref="list" class="nut-side-navbar__content__list">
         <slot></slot>
       </view>
     </view>
@@ -18,7 +18,6 @@ export default create({
       default: 15
     }
   },
-  emits: [],
   setup: (props) => {
     const list = ref(null) as Ref;
     const state = reactive({

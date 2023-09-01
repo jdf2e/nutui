@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-if="info && Object.keys(info)">
+  <view v-if="info && Object.keys(info)" :class="classes">
     <!-- 根据展示信息的多少，分为3种展示风格：simple，base，complex -->
     <comment-header :type="headerType" :info="info" :labels="labels" @handle-click="handleClick">
       <template #labels>
@@ -18,10 +18,10 @@
 
     <comment-images :images="images" :videos="videos" :type="imagesRows" @click-images="clickImages"></comment-images>
 
-    <view class="nut-comment__follow" v-if="follow && follow.days > 0" @click="handleClick">
+    <view v-if="follow && follow.days > 0" class="nut-comment__follow" @click="handleClick">
       <view class="nut-comment__follow-title">购买{{ follow.days }}天后追评</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
-      <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
+      <view v-if="follow.images && follow.images.length > 0" class="nut-comment__follow-img"
         >{{ follow.images.length }} 张追评图片 <Right size="12px"></Right
       ></view>
     </view>

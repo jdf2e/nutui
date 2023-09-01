@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-swipe-group" ref="swipeGroupRef">
+  <view ref="swipeGroupRef" class="nut-swipe-group">
     <slot></slot>
   </view>
 </template>

@@ -1,8 +1,8 @@
 <template>
-  <div :class="classes" :style="{ height: `${getContainerHeight}px` }" @scroll.passive="handleScrollEvent" ref="list">
-    <div class="nut-list-phantom" :style="{ height: phantomHeight + 'px' }" ref="phantom"></div>
-    <div class="nut-list-container" :style="{ transform: getTransform() }" ref="actualContent">
-      <div class="nut-list-item" v-for="(item, index) in visibleData" :key="item">
+  <div ref="list" :class="classes" :style="{ height: `${getContainerHeight}px` }" @scroll.passive="handleScrollEvent">
+    <div ref="phantom" class="nut-list-phantom" :style="{ height: phantomHeight + 'px' }"></div>
+    <div ref="actualContent" class="nut-list-container" :style="{ transform: getTransform() }">
+      <div v-for="(item, index) in visibleData" :key="item" class="nut-list-item">
         <slot :item="item" :index="index + start"></slot>
       </div>
     </div>
@@ -41,7 +41,7 @@ export default create({
       default: 10
     }
   },
-  emits: ['scroll-up', 'scroll-down', 'scroll-bottom'],
+  emits: ['scrollUp', 'scrollDown', 'scrollBottom'],
 
   setup(props, { emit }) {
     const list = ref(null) as Ref;
@@ -186,10 +186,10 @@ export default create({
         state.originStartIndex = currentIndex;
         state.start = Math.max(state.originStartIndex - props.bufferSize, 0);
         if (end.value >= state.list.length - 1) {
-          emit('scroll-bottom');
+          emit('scrollBottom');
         }
       }
-      emit(scrollTop > state.scrollTop ? 'scroll-up' : 'scroll-down', scrollTop);
+      emit(scrollTop > state.scrollTop ? 'scrollUp' : 'scrollDown', scrollTop);
       state.scrollTop = scrollTop;
     };
 

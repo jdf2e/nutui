@@ -9,9 +9,9 @@
       <nut-tab-pane :title="translate('customTxt')">
         <nut-pull-refresh
           v-model="refresh2"
-          :loosingTxt="translate('loose')"
-          :loadingTxt="translate('load')"
-          :completeTxt="translate('ok')"
+          :loosing-txt="translate('loose')"
+          :loading-txt="translate('load')"
+          :complete-txt="translate('ok')"
           @refresh="refreshFun"
         >
           <template #pulling>
@@ -23,7 +23,7 @@
       <nut-tab-pane :title="translate('listenerTxt')">
         <div class="parentpage">
           <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-            <div class="pull-letter" v-for="item in refreshList2" :key="item">
+            <div v-for="item in refreshList2" :key="item" class="pull-letter">
               <div>{{ item }}</div>
             </div>
           </nut-pull-refresh>

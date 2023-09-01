@@ -1,18 +1,18 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :okText="okText"
-    :cancelText="cancelText"
-    @cancel="closeHandler"
+    :ok-text="okText"
+    :cancel-text="cancelText"
     :columns="columns"
-    @change="changeHandler"
     :title="title"
+    :three-dimensional="threeDimensional"
+    :swipe-duration="swipeDuration"
+    :show-toolbar="showToolbar"
+    :visible-option-num="visibleOptionNum"
+    :option-height="optionHeight"
+    @cancel="closeHandler"
+    @change="changeHandler"
     @confirm="confirm"
-    :threeDimensional="threeDimensional"
-    :swipeDuration="swipeDuration"
-    :showToolbar="showToolbar"
-    :visibleOptionNum="visibleOptionNum"
-    :optionHeight="optionHeight"
   >
     <template #top>
       <slot name="top"></slot>
@@ -276,7 +276,7 @@ export default create({
           min++;
         }
 
-        if (min <= val) {
+        if (min <= +val) {
           index++;
         }
       }

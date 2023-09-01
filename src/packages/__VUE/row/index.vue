@@ -31,7 +31,6 @@ export default create({
       default: 'nowrap'
     }
   },
-  emits: [],
   setup(props) {
     const prefixCls = componentName;
     provide('gutter', props.gutter);

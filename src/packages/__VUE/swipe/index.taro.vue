@@ -7,7 +7,7 @@
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
   >
-    <view class="nut-swipe__left" ref="leftRef" :id="'leftRef-' + refRandomId" @click="onClick($event, 'left', true)">
+    <view :id="'leftRef-' + refRandomId" ref="leftRef" class="nut-swipe__left" @click="onClick($event, 'left', true)">
       <slot name="left"></slot>
     </view>
 
@@ -16,9 +16,9 @@
     </view>
 
     <view
-      class="nut-swipe__right"
-      ref="rightRef"
       :id="'rightRef-' + refRandomId"
+      ref="rightRef"
+      class="nut-swipe__right"
       @click="onClick($event, 'right', true)"
     >
       <slot name="right"></slot>

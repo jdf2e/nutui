@@ -33,25 +33,31 @@
         direction="vertical"
         :list="horseLamp1"
         :speed="10"
-        :standTime="1000"
-        @click="go"
+        :stand-time="1000"
         :close-mode="true"
+        @click="go"
       ></nut-noticebar>
     </div>
 
     <h2>{{ translate('complexAm') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar direction="vertical" :list="data1" :speed="10" :standTime="2000" :complexAm="true"></nut-noticebar>
+      <nut-noticebar
+        direction="vertical"
+        :list="data1"
+        :speed="10"
+        :stand-time="2000"
+        :complex-am="true"
+      ></nut-noticebar>
     </div>
     <h2>{{ translate('customAm') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar direction="vertical" :height="50" :speed="10" :standTime="1000" :list="[]" @close="go">
+      <nut-noticebar direction="vertical" :height="50" :speed="10" :stand-time="1000" :list="[]" @close="go">
         <div
+          v-for="(item, index) in data1"
+          :key="index"
           class="custom-item"
           :data-index="index"
-          v-for="(item, index) in data1"
           style="height: 50px; line-height: 50px"
-          :key="index"
           >{{ item }}</div
         >
       </nut-noticebar>
@@ -59,7 +65,7 @@
 
     <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
+      <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :stand-time="1000">
         <template #right-icon>
           <Fabulous />
         </template>

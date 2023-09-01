@@ -12,10 +12,10 @@
       <nut-calendar
         v-model:visible="isVisible"
         :default-value="date"
-        @close="closeSwitch('isVisible')"
-        @choose="setChooseValue"
         :start-date="`2022-01-11`"
         :end-date="`2022-11-30`"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
         :show-clear="true"
       >
       </nut-calendar>
@@ -77,6 +77,7 @@
         type="week"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
+        :first-day-of-week="1"
         @close="closeSwitch('isVisible9')"
         @choose="setChooseValue9"
         @select="select"
@@ -96,12 +97,12 @@
       </nut-cell>
       <nut-calendar
         v-model:visible="isVisible3"
-        @close="closeSwitch('isVisible3')"
-        @choose="setChooseValue3"
         :default-value="date3"
         :start-date="null"
         :end-date="null"
         :is-auto-back-fill="true"
+        @close="closeSwitch('isVisible3')"
+        @choose="setChooseValue3"
       >
       </nut-calendar>
     </div>
@@ -109,8 +110,8 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        @click="openSwitch('isVisible4')"
         :desc="date4 ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
+        @click="openSwitch('isVisible4')"
       >
       </nut-cell>
       <nut-calendar
@@ -119,9 +120,9 @@
         type="range"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
+        :is-auto-back-fill="true"
         @close="closeSwitch('isVisible4')"
         @choose="setChooseValue4"
-        :is-auto-back-fill="true"
       >
       </nut-calendar>
     </div>
@@ -173,14 +174,14 @@
         v-model:visible="isVisible6"
         :default-value="date6"
         type="range"
-        @close="closeSwitch('isVisible6')"
-        @choose="setChooseValue6"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
         confirm-text="submit"
         :start-text="translate('enter')"
         :end-text="translate('leave')"
         :title="translate('please')"
+        @close="closeSwitch('isVisible6')"
+        @choose="setChooseValue6"
         :show-clear="true"
       >
         <template #day="date">
@@ -203,6 +204,7 @@
       <nut-calendar
         v-model:visible="isVisible8"
         :default-value="date8"
+        :first-day-of-week="2"
         @close="closeSwitch('isVisible8')"
         @choose="setChooseValue8"
         :first-day-of-week="2"
@@ -216,9 +218,9 @@
         :poppable="false"
         :default-value="date2"
         :is-auto-back-fill="true"
-        @choose="setChooseValue2"
         :start-date="`2020-02-01`"
         :end-date="`2020-12-30`"
+        @choose="setChooseValue2"
       >
       </nut-calendar>
     </div>

@@ -4,8 +4,8 @@
       v-for="(item, index) of dataArray"
       :key="index"
       :item="item"
-      :longPress="longPress"
-      :swipeEdition="swipeEdition"
+      :long-press="longPress"
+      :swipe-edition="swipeEdition"
       @del-icon="clickDelIcon"
       @edit-icon="clickEditIcon"
       @click-item="clickContentItem"
@@ -23,14 +23,14 @@
       <template #content-addrs>
         <slot name="item-addr" :item="item"></slot>
       </template>
-      <template #longpress-all v-if="longPress">
+      <template v-if="longPress" #longpress-all>
         <slot name="longpress-btns" :item="item"></slot>
       </template>
-      <template #swipe-right-btn v-if="swipeEdition">
+      <template v-if="swipeEdition" #swipe-right-btn>
         <slot name="swipe-right" :item="item"></slot>
       </template>
     </general-shell>
-    <div class="nut-address-list__bottom" v-if="showBottomButton" @click="addAddress">
+    <div v-if="showBottomButton" class="nut-address-list__bottom" @click="addAddress">
       <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
   </view>

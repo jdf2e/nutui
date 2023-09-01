@@ -9,8 +9,8 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="showTour3"
+      class="nut-custom-tour nut-customword-tour"
       :steps="steps3"
       type="tile"
       location="bottom-end"
@@ -25,16 +25,16 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
       v-model="showTour1"
+      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
       :steps="steps1"
       location="bottom-end"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       :offset="[0, 0]"
-      maskWidth="50"
-      maskHeight="50"
+      mask-width="50"
+      mask-height="50"
     ></nut-tour>
 
     <h2>{{ translate('title2') }}</h2>
@@ -57,11 +57,11 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="showTour2"
+      class="nut-custom-tour nut-customword-tour"
       :steps="steps2"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
@@ -76,14 +76,14 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="showTour4"
+      class="nut-custom-tour nut-customword-tour"
       :steps="steps4"
       type="tile"
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
-      :closeOnClickOverlay="false"
+      :close-on-click-overlay="false"
     >
       <div class="tour-demo-custom-content">
         <div>nutui 4.x 即将发布，敬请期待</div>
@@ -104,13 +104,13 @@
     </nut-tabbar>
 
     <nut-tour
-      class="nut-custom-tour"
       v-model="showTour"
+      class="nut-custom-tour"
       :steps="steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="60"
-      maskHeight="50"
+      mask-width="60"
+      mask-height="50"
     ></nut-tour>
   </div>
 </template>

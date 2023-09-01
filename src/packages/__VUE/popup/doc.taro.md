@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Popup } from '@nutui/nutui-taro';
 
@@ -20,22 +20,14 @@ app.use(Popup);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell title="展示弹出层" is-link @click="showBasic = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showBasic">正文</nut-popup>
+  <nut-cell title="展示弹出层" is-link @click="show = true"></nut-cell>
+  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="show">正文</nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showBasic: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -47,7 +39,7 @@ app.use(Popup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="顶部弹出" is-link @click="showTop = true"></nut-cell>
   <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="showTop"></nut-popup>
@@ -58,20 +50,12 @@ app.use(Popup);
   <nut-cell title="右侧弹出" is-link @click="showRight = true"></nut-cell>
   <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="showRight"></nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showTop: false,
-        showBottom: false,
-        showLeft: false,
-        showRight: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const showTop = ref(false);
+const showBottom = ref(false);
+const showLeft = ref(false);
+const showRight = ref(false);
 </script>
 ```
 
@@ -79,11 +63,11 @@ app.use(Popup);
 
 ### 图标
 
-通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 来自定义显示图标，详情可参照[图标](#/zh-CN/component/icon)
+通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 来自定义显示图标
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="关闭图标" is-link @click="showIcon = true"></nut-cell>
   <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="showIcon"></nut-popup>
@@ -108,21 +92,12 @@ app.use(Popup);
     </template>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  import { Heart } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Heart },
-    props: {},
-    setup() {
-      const state = reactive({
-        showIcon: false,
-        showIconPosition: false,
-        showCloseIcon: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { Heart } from '@nutui/icons-vue-taro';
+const showIcon = ref(false);
+const showIconPosition = ref(false);
+const showCloseIcon = ref(false);
 </script>
 ```
 
@@ -134,24 +109,18 @@ app.use(Popup);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell title="圆角弹框" is-link @click="showRound = true"></nut-cell>
-  <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="showRound"></nut-popup>
+  <nut-cell title="圆角弹框" is-link @click="show = true"></nut-cell>
+  <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="show"></nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showRound: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
+
+:::
 
 :::
 
@@ -159,7 +128,7 @@ app.use(Popup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="多层堆叠" is-link @click="showPop1 = true"></nut-cell>
   <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
@@ -167,18 +136,10 @@ app.use(Popup);
   </nut-popup>
   <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop2">正文</nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const state = reactive({
-        showPop1: false,
-        showPop2: false
-      });
-      return { ...toRefs(state) };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const showPop1 = ref(false);
+const showPop2 = ref(false);
 </script>
 ```
 
@@ -202,7 +163,6 @@ app.use(Popup);
 | pop-class              | 自定义弹框类名                                                              | string           | -             |
 | closeable              | 是否显示关闭按钮                                                            | boolean          | `false`       |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right）                 | string           | `"top-right"` |
-| close-icon             | [图标名称](#/zh-CN/component/icon) 或图片链接                               | string           | `"close"`     |
 | destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                             | boolean          | `true`        |
 | round                  | 是否显示圆角                                                                | boolean          | `false`       |
 | overlay-class          | 自定义遮罩层类名                                                            | string           | ''            |

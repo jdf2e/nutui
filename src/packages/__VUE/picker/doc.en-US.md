@@ -6,7 +6,7 @@ The picker component is usually used with Popup Component.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Picker } from '@nutui/nutui';
 
@@ -18,33 +18,25 @@ app.use(Picker);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
+  <nut-picker :columns="columns" title="Choose City" @confirm="confirm"></nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const columns = ref([
-        { text: 'NanJing', value: 'NanJing' },
-        { text: 'WuXi', value: 'WuXi' },
-        { text: 'ZangZu', value: 'ZangZu' },
-        { text: 'BeiJing', value: 'BeiJing' },
-        { text: 'LianYunGang', value: 'LianYunGang' },
-        { text: 'ZheJiang', value: 'ZheJiang' },
-        { text: 'JiangSu', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const columns = ref([
+  { text: 'NanJing', value: 'NanJing' },
+  { text: 'WuXi', value: 'WuXi' },
+  { text: 'ZangZu', value: 'ZangZu' },
+  { text: 'BeiJing', value: 'BeiJing' },
+  { text: 'LianYunGang', value: 'LianYunGang' },
+  { text: 'ZheJiang', value: 'ZheJiang' },
+  { text: 'JiangSu', value: 'JiangSu' }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
-
-      return { columns, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -56,48 +48,34 @@ The Picker is usually filled in as an auxiliary form, which can be paired with a
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell title="Choose city" :desc="popupDesc" @click="show = true"></nut-cell>
+  <nut-cell title="Choose City" :desc="desc" @click="show = true"></nut-cell>
   <nut-popup position="bottom" v-model:visible="show">
-    <nut-picker
-      v-model="popupValue"
-      :columns="columns"
-      title="Choose city"
-      @confirm="popupConfirm"
-      @cancel="show=false"
-    >
-      <nut-button block type="primary">Always</nut-button>
+    <nut-picker v-model="value" :columns="columns" title="Choose City" @confirm="confirm" @cancel="show = false">
+      <nut-button block type="primary">Button</nut-button>
     </nut-picker>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const show = ref(false);
-      const popupDesc = ref();
-      const popupValue = ref();
-      const columns = ref([
-        { text: 'NanJing', value: 'NanJing' },
-        { text: 'WuXi', value: 'WuXi' },
-        { text: 'ZangZu', value: 'ZangZu' },
-        { text: 'BeiJing', value: 'BeiJing' },
-        { text: 'LianYunGang', value: 'LianYunGang' },
-        { text: 'ZheJiang', value: 'ZheJiang' },
-        { text: 'JiangSu', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
+const desc = ref();
+const value = ref();
+const columns = ref([
+  { text: 'NanJing', value: 'NanJing' },
+  { text: 'WuXi', value: 'WuXi' },
+  { text: 'ZangZu', value: 'ZangZu' },
+  { text: 'BeiJing', value: 'BeiJing' },
+  { text: 'LianYunGang', value: 'LianYunGang' },
+  { text: 'ZheJiang', value: 'ZheJiang' },
+  { text: 'JiangSu', value: 'JiangSu' }
+]);
 
-      const popupConfirm = ({ selectedValue, selectedOptions }) => {
-        popupDesc.value = selectedOptions.map((val: any) => val.text).join(',');
-        show.value = false;
-      };
-
-      return { popupValue, show, popupDesc, columns, confirm, popupConfirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  desc.value = selectedOptions.map((val) => val.text).join(',');
+  show.value = false;
+};
 </script>
 ```
 
@@ -109,78 +87,55 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedValue" :columns="columns" title="Choose City" @confirm="confirm"> </nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="Choose City" @confirm="confirm"> </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const selectedValue = ref(['ZheJiang']);
-      const columns = ref([
-        { text: 'NanJing', value: 'NanJing' },
-        { text: 'WuXi', value: 'WuXi' },
-        { text: 'ZangZu', value: 'ZangZu' },
-        { text: 'BeiJing', value: 'BeiJing' },
-        { text: 'LianYunGang', value: 'LianYunGang' },
-        { text: 'ZheJiang', value: 'ZheJiang' },
-        { text: 'JiangSu', value: 'JiangSu' }
-      ]);
-
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
-
-      return { columns, selectedValue, confirm };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(['ZheJiang']);
+const columns = ref([
+  { text: 'NanJing', value: 'NanJing' },
+  { text: 'WuXi', value: 'WuXi' },
+  { text: 'ZangZu', value: 'ZangZu' },
+  { text: 'BeiJing', value: 'BeiJing' },
+  { text: 'LianYunGang', value: 'LianYunGang' },
+  { text: 'ZheJiang', value: 'ZheJiang' },
+  { text: 'JiangSu', value: 'JiangSu' }
+]);
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
 :::
 
-### Tile
+### 3D
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker
-    v-model="selectedValue"
-    :columns="columns"
-    title="Choose City"
-    :threeDimensional="false"
-    @confirm="confirm"
-  >
+  <nut-picker v-model="value" :columns="columns" title="Choose City" :threeDimensional="false" @confirm="confirm">
   </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const selectedValue = ref(['ZheJiang']);
-      const columns = ref([
-        { text: 'NanJing', value: 'NanJing' },
-        { text: 'WuXi', value: 'WuXi' },
-        { text: 'ZangZu', value: 'ZangZu' },
-        { text: 'BeiJing', value: 'BeiJing' },
-        { text: 'LianYunGang', value: 'LianYunGang' },
-        { text: 'ZheJiang', value: 'ZheJiang' },
-        { text: 'JiangSu', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['ZheJiang']);
+const columns = ref([
+  { text: 'NanJing', value: 'NanJing' },
+  { text: 'WuXi', value: 'WuXi' },
+  { text: 'ZangZu', value: 'ZangZu' },
+  { text: 'BeiJing', value: 'BeiJing' },
+  { text: 'LianYunGang', value: 'LianYunGang' },
+  { text: 'ZheJiang', value: 'ZheJiang' },
+  { text: 'JiangSu', value: 'JiangSu' }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
-
-      return { columns, selectedValue, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -190,45 +145,34 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedTime" :columns="multipleColumns" title="Choose City" @confirm="confirm" @change="change">
-  </nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="Choose City" @confirm="confirm" @change="change"> </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const selectedTime = ref(['Wednesday', 'Afternoon']);
-      const multipleColumns = ref([
-        // 第一列
-        [
-          { text: 'Monday', value: 'Monday' },
-          { text: 'Tuesday', value: 'Tuesday' },
-          { text: 'Wednesday', value: 'Wednesday' },
-          { text: 'Thursday', value: 'Thursday' },
-          { text: 'Friday', value: 'Friday' }
-        ],
-        // 第二列
-        [
-          { text: 'Morning', value: 'Morning' },
-          { text: 'Afternoon', value: 'Afternoon' },
-          { text: 'Evening', value: 'Evening' }
-        ]
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['Wednesday', 'Afternoon']);
+const columns = ref([
+  [
+    { text: 'Monday', value: 'Monday' },
+    { text: 'Tuesday', value: 'Tuesday' },
+    { text: 'Wednesday', value: 'Wednesday' },
+    { text: 'Thursday', value: 'Thursday' },
+    { text: 'Friday', value: 'Friday' }
+  ],
+  [
+    { text: 'Morning', value: 'Morning' },
+    { text: 'Afternoon', value: 'Afternoon' },
+    { text: 'Evening', value: 'Evening' }
+  ]
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
-      const change = ({ selectedValue, selectedOptions }) => {
-        console.log(selectedValue);
-      };
-
-      return { multipleColumns, change, confirm, selectedTime };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
+const change = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedValue);
+};
 </script>
 ```
 
@@ -240,71 +184,63 @@ Use the children field of the Columns attribute to cascade options
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedCascader" :columns="cascaderColumns" title="Choose City" @confirm="confirm"></nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="Choose City" @confirm="confirm"></nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
-      const cascaderColumns = ref([
-        {
-          text: 'ZheJiang',
-          value: 'ZheJiang',
-          children: [
-            {
-              text: 'HangZhou',
-              value: 'HangZhou',
-              children: [
-                { text: 'XiHu', value: 'XiHu' },
-                { text: 'YuHang', value: 'YuHang' }
-              ]
-            },
-            {
-              text: 'WenZhou',
-              value: 'WenZhou',
-              children: [
-                { text: 'LuCheng', value: 'LuCheng' },
-                { text: 'OuHai', value: 'OuHai' }
-              ]
-            }
-          ]
-        },
-        {
-          text: 'FuJian',
-          value: 'FuJian',
-          children: [
-            {
-              text: 'FuZhou',
-              value: 'FuZhou',
-              children: [
-                { text: 'GuLou', value: 'GuLou' },
-                { text: 'TaiJiang', value: 'TaiJiang' }
-              ]
-            },
-            {
-              text: 'XiaMen',
-              value: 'XiaMen',
-              children: [
-                { text: 'SiMing', value: 'SiMing' },
-                { text: 'HaiCang', value: 'HaiCang' }
-              ]
-            }
-          ]
-        }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['FuJian', 'FuZhou', 'TaiJiang']);
+const columns = ref([
+  {
+    text: 'ZheJiang',
+    value: 'ZheJiang',
+    children: [
+      {
+        text: 'HangZhou',
+        value: 'HangZhou',
+        children: [
+          { text: 'XiHu', value: 'XiHu' },
+          { text: 'YuHang', value: 'YuHang' }
+        ]
+      },
+      {
+        text: 'WenZhou',
+        value: 'WenZhou',
+        children: [
+          { text: 'LuCheng', value: 'LuCheng' },
+          { text: 'OuHai', value: 'OuHai' }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'FuJian',
+    value: 'FuJian',
+    children: [
+      {
+        text: 'FuZhou',
+        value: 'FuZhou',
+        children: [
+          { text: 'GuLou', value: 'GuLou' },
+          { text: 'TaiJiang', value: 'TaiJiang' }
+        ]
+      },
+      {
+        text: 'XiaMen',
+        value: 'XiaMen',
+        children: [
+          { text: 'SiMing', value: 'SiMing' },
+          { text: 'HaiCang', value: 'HaiCang' }
+        ]
+      }
+    ]
+  }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
-
-      return { selectedCascader, cascaderColumns, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -314,43 +250,83 @@ Use the children field of the Columns attribute to cascade options
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="asyncValue" :columns="asyncColumns" title="Choose City" @confirm="confirm"></nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="Choose City" @confirm="confirm"></nut-picker>
 </template>
 <script lang="ts">
-  import { ref, onMounted } from 'vue';
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup(props) {
-      const asyncColumns = ref([]);
-      const asyncValue = ref<string[]>([]);
+import { ref, onMounted } from 'vue';
+const columns = ref([]);
+const value = ref<string[]>([]);
+onMounted(() => {
+  setTimeout(() => {
+    columns.value = [
+      { text: 'NanJing', value: 'NanJing' },
+      { text: 'WuXi', value: 'WuXi' },
+      { text: 'ZangZu', value: 'ZangZu' },
+      { text: 'BeiJing', value: 'BeiJing' },
+      { text: 'LianYunGang', value: 'LianYunGang' },
+      { text: 'ZheJiang', value: 'ZheJiang' },
+      { text: 'JiangSu', value: 'JiangSu' }
+    ];
 
-      onMounted(() => {
-        // 用于模拟接口请求
-        setTimeout(() => {
-          asyncColumns.value = [
-            { text: 'NanJing', value: 'NanJing' },
-            { text: 'WuXi', value: 'WuXi' },
-            { text: 'ZangZu', value: 'ZangZu' },
-            { text: 'BeiJing', value: 'BeiJing' },
-            { text: 'LianYunGang', value: 'LianYunGang' },
-            { text: 'ZheJiang', value: 'ZheJiang' },
-            { text: 'JiangSu', value: 'JiangSu' }
-          ];
+    value.value = ['ZangZu'];
+  }, 500);
+});
 
-          asyncValue.value = ['ZangZu'];
-        }, 500);
-      });
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
+</script>
+```
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        showToast.text(selectedOptions.map((val: any) => val.text).join(','));
-      };
+:::
 
-      return { asyncColumns, asyncValue, confirm };
-    }
-  };
+### Custom Columns Field v4.1.4
+
+:::demo
+
+```vue
+<template>
+  <nut-picker v-model="value" :columns="columns" :field-names="fieldNames" title="Choose City" @confirm="confirm">
+  </nut-picker>
+</template>
+<script setup>
+import { ref } from 'vue';
+const value = ref([]);
+const fieldNames = ref({
+  text: 'name',
+  value: 'code',
+  children: 'list'
+});
+const columns = ref([
+  {
+    name: 'ZheJiang',
+    code: 'ZheJiang',
+    list: [
+      {
+        name: 'HangZhou',
+        code: 'HangZhou',
+        list: [
+          { name: 'XiHu', code: 'XiHu' },
+          { name: 'YuHang', code: 'YuHang' }
+        ]
+      },
+      {
+        name: 'WenZhou',
+        code: 'WenZhou',
+        list: [
+          { name: 'LuCheng', code: 'LuCheng' },
+          { name: 'OuHai', code: 'OuHai' }
+        ]
+      }
+    ]
+  }
+]);
+
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -360,18 +336,19 @@ Use the children field of the Columns attribute to cascade options
 
 ### Props
 
-| Attribute          | Description                        | Type                               | Default   |
-| ------------------ | ---------------------------------- | ---------------------------------- | --------- |
-| v-model:value      | Default Index                      | Array                              | `[]`      |
-| columns            | Columns data                       | PickerOption[] \| PickerOption[][] | -         |
-| title              | Toolbar title                      | string                             | -         |
-| cancel-text        | Text of cancel button              | string                             | `cancel`  |
-| ok-text            | Text of confirm button             | string                             | `confirm` |
-| three-dimensional  | Turn on 3D effects                 | boolean                            | `true`    |
-| swipe-duration     | Duration of the momentum animation | number \| string                   | `1000`    |
-| visible-option-num | Count of visible columns           | number \| string                   | `7`       |
-| option-height      | Option height                      | number \| string                   | `36`      |
-| show-toolbar       | Whether to show toolbar            | boolean                            | `true`    |
+| Attribute           | Description                        | Type                               | Default                                                  |
+| ------------------- | ---------------------------------- | ---------------------------------- | -------------------------------------------------------- |
+| v-model:value       | Default Index                      | Array                              | `[]`                                                     |
+| columns             | Columns data                       | PickerOption[] \| PickerOption[][] | -                                                        |
+| field-names`v4.1.4` | custom columns field               | object                             | `{ text: 'text', value: 'value', children: 'children' }` |
+| title               | Toolbar title                      | string                             | -                                                        |
+| cancel-text         | Text of cancel button              | string                             | `cancel`                                                 |
+| ok-text             | Text of confirm button             | string                             | `confirm`                                                |
+| three-dimensional   | Turn on 3D effects                 | boolean                            | `false`                                                  |
+| swipe-duration      | Duration of the momentum animation | number \| string                   | `1000`                                                   |
+| visible-option-num  | Count of visible columns           | number \| string                   | `7`                                                      |
+| option-height       | Option height                      | number \| string                   | `36`                                                     |
+| show-toolbar        | Whether to show toolbar            | boolean                            | `true`                                                   |
 
 ### Events
 

@@ -55,7 +55,7 @@
     </nut-cell-group>
 
     <h2>{{ translate('displayIcon') }}</h2>
-    <nut-cell :title="translate('name')" :desc="translate('desc')" isLink>
+    <nut-cell :title="translate('name')" :desc="translate('desc')" is-link>
       <template #icon>
         <My />
       </template>

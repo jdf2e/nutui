@@ -26,7 +26,7 @@ test('sku select event', async () => {
   await nextTick();
   const skuItem = wrapper.findAll('.nut-sku-select-item-skus-sku');
   skuItem[1].trigger('click');
-  expect(wrapper.emitted()['select-sku'][0]).toMatchSnapshot();
+  expect(wrapper.emitted()['selectSku'][0]).toMatchSnapshot();
 });
 
 test('do not sell', async () => {
@@ -55,5 +55,5 @@ test('button event', async () => {
   const confirm = wrapper.find('.nut-sku-operate-btn-confirm');
   expect(confirm.exists()).toBeTruthy();
   confirm.trigger('click');
-  expect(wrapper.emitted()['click-btn-operate'][0]).toEqual([{ type: 'confirm', value: 1 }]);
+  expect(wrapper.emitted()['clickBtnOperate'][0]).toEqual([{ type: 'confirm', value: 1 }]);
 });

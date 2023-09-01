@@ -4,12 +4,12 @@
       <view class="nut-table__main__head">
         <view class="nut-table__main__head__tr">
           <span
-            class="nut-table__main__head__tr__th"
-            :class="cellClasses(item)"
             v-for="item in columns"
             :key="item.key"
-            @click="handleSorterClick(item)"
+            class="nut-table__main__head__tr__th"
+            :class="cellClasses(item)"
             :style="item.stylehead"
+            @click="handleSorterClick(item)"
           >
             {{ item.title }}
             <slot name="icon"></slot>
@@ -18,18 +18,18 @@
         </view>
       </view>
       <view class="nut-table__main__body">
-        <view class="nut-table__main__body__tr" v-for="item in curData" :key="item">
+        <view v-for="item in curData" :key="item" class="nut-table__main__body__tr">
           <span
-            class="nut-table__main__body__tr__td"
-            :class="cellClasses(getColumnItem(value))"
             v-for="[value, render] in sortDataItem()"
             :key="value"
+            class="nut-table__main__body__tr__td"
+            :class="cellClasses(getColumnItem(value))"
             :style="getColumnItemStyle(value)"
           >
             <RenderColumn
+              v-if="typeof item[value] === 'function' || typeof render === 'function'"
               :slots="[render, item[value]]"
               :record="item"
-              v-if="typeof item[value] === 'function' || typeof render === 'function'"
             ></RenderColumn>
             <view v-else>
               {{ item[value] }}
@@ -38,10 +38,10 @@
         </view>
       </view>
     </view>
-    <view class="nut-table__summary" v-if="summary">
+    <view v-if="summary" class="nut-table__summary">
       <span class="nut-table__summary__text" v-html="summary().value"></span>
     </view>
-    <view class="nut-table__nodata" v-if="!curData.length">
+    <view v-if="!curData.length" class="nut-table__nodata">
       <div class="nut-table__nodata" :class="{ 'nut-table__nodata--border': bordered }">
         <slot name="nodata"></slot>
         <div v-if="!$slots.nodata" class="nut-table__nodata__text"> {{ translate('noData') }} </div>

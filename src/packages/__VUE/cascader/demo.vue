@@ -9,12 +9,12 @@
     >
     </nut-cell>
     <nut-cascader
-      :title="translate('addressTip')"
       v-model:visible="demo1.visible"
       v-model="demo1.value"
+      :title="translate('addressTip')"
+      :options="demo1.options"
       @change="events.change"
       @path-change="events.pathChange"
-      :options="demo1.options"
     ></nut-cascader>
 
     <h2>{{ translate('title1') }}</h2>
@@ -25,15 +25,15 @@
     >
     </nut-cell>
     <nut-cascader
-      :title="translate('addressTip')"
       v-model:visible="demo2.visible"
       v-model="demo2.value"
-      labelKey="text"
+      :title="translate('addressTip')"
+      text-key="text"
+      value-key="text"
+      children-key="items"
+      :options="demo2.options"
       @change="events.change"
       @path-change="events.pathChange"
-      valueKey="text"
-      childrenKey="items"
-      :options="demo2.options"
     ></nut-cascader>
 
     <h2>{{ translate('title2') }}</h2>
@@ -44,13 +44,13 @@
     >
     </nut-cell>
     <nut-cascader
-      :title="translate('addressTip')"
       v-model:visible="demo3.visible"
       v-model="demo3.value"
+      :title="translate('addressTip')"
+      lazy
+      :lazy-load="demo3.lazyLoad"
       @change="events.change"
       @path-change="events.pathChange"
-      lazy
-      :lazyLoad="demo3.lazyLoad"
     ></nut-cascader>
 
     <h2>{{ translate('title3') }}</h2>
@@ -61,14 +61,14 @@
     >
     </nut-cell>
     <nut-cascader
-      :title="translate('addressTip')"
       v-model:visible="demo4.visible"
       v-model="demo4.value"
-      @change="events.change"
-      @path-change="events.pathChange"
+      :title="translate('addressTip')"
       :options="demo4.options"
       lazy
-      :lazyLoad="demo4.lazyLoad"
+      :lazy-load="demo4.lazyLoad"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
 
     <h2>{{ translate('title4') }}</h2>
@@ -79,13 +79,13 @@
     >
     </nut-cell>
     <nut-cascader
-      :title="translate('addressTip')"
       v-model:visible="demo5.visible"
       v-model="demo5.value"
+      :title="translate('addressTip')"
+      :options="demo5.options"
+      :convert-config="demo5.convertConfig"
       @change="events.change"
       @path-change="events.pathChange"
-      :options="demo5.options"
-      :convertConfig="demo5.convertConfig"
     ></nut-cascader>
   </div>
 </template>

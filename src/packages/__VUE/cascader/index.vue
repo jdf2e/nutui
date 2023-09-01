@@ -14,9 +14,7 @@
       </template>
 
       <nut-cascader-item
-        @change="onChange"
-        @path-change="onPathChange"
-        :modelValue="innerValue"
+        :model-value="innerValue"
         :options="options"
         :lazy="lazy"
         :lazy-load="lazyLoad"
@@ -25,14 +23,14 @@
         :children-key="childrenKey"
         :convert-config="convertConfig"
         :visible="innerVisible"
+        @change="onChange"
+        @path-change="onPathChange"
       />
     </nut-popup>
   </template>
   <template v-else>
     <nut-cascader-item
-      @change="onChange"
-      @path-change="onPathChange"
-      :modelValue="innerValue"
+      :model-value="innerValue"
       :options="options"
       :lazy="lazy"
       :lazy-load="lazyLoad"
@@ -41,6 +39,8 @@
       :children-key="childrenKey"
       :convert-config="convertConfig"
       :visible="innerVisible"
+      @change="onChange"
+      @path-change="onPathChange"
     />
   </template>
 </template>

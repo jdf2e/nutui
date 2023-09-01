@@ -8,15 +8,15 @@
         <view class="nut-input-box">
           <component
             :is="renderInput(type)"
-            class="input-text"
             ref="inputRef"
+            class="input-text"
             :style="styles"
             :maxlength="maxLength"
             :placeholder="placeholder"
             :disabled="disabled"
             :readonly="readonly"
             :value="modelValue"
-            :formatTrigger="formatTrigger"
+            :format-trigger="formatTrigger"
             :autofocus="autofocus"
             :enterkeyhint="confirmType"
             @input="onInput"
@@ -33,9 +33,9 @@
           </view>
         </view>
         <view
-          class="nut-input-clear-box"
           v-if="clearable && !readonly"
           v-show="(active || showClearIcon) && modelValue.length > 0"
+          class="nut-input-clear-box"
           @click="clear"
         >
           <slot name="clear">
@@ -151,7 +151,7 @@ export default create({
   },
   components: { MaskClose },
 
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
@@ -285,7 +285,7 @@ export default create({
       if (props.disabled) {
         return;
       }
-      emit('click-input', event);
+      emit('clickInput', event);
     };
 
     const onClick = (event: MouseEvent) => {

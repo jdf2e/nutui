@@ -9,17 +9,17 @@
       :duration="duration"
       :overlay-class="overlayClass"
       :overlay-style="overlayStyle"
-      @click="onClickOverlay"
       v-bind="$attrs"
+      @click="onClickOverlay"
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closed"
-          @click="onClickCloseIcon"
           class="nut-popup__close-icon"
           :class="'nut-popup__close-icon--' + closeIconPosition"
+          @click="onClickCloseIcon"
         >
           <slot name="close-icon">
             <Close height="12px"></Close>
@@ -46,7 +46,7 @@ export default create({
     Close
   },
   props: popupProps,
-  emits: ['click-pop', 'click-close-icon', 'open', 'close', 'opened', 'closed', 'click-overlay', 'update:visible'],
+  emits: ['clickPop', 'clickCloseIcon', 'open', 'close', 'opened', 'closed', 'clickOverlay', 'update:visible'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -102,18 +102,18 @@ export default create({
     };
 
     const onClick = (e: Event) => {
-      emit('click-pop', e);
+      emit('clickPop', e);
     };
 
     const onClickCloseIcon = (e: Event) => {
       e.stopPropagation();
-      emit('click-close-icon', e);
+      emit('clickCloseIcon', e);
       emit('update:visible', false);
       // close();
     };
 
     const onClickOverlay = (e: Event) => {
-      emit('click-overlay', e);
+      emit('clickOverlay', e);
       if (props.closeOnClickOverlay) {
         emit('update:visible', false);
         // close();

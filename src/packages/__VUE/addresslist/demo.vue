@@ -3,38 +3,38 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-address-list
       :data="data"
+      :show-bottom-button="false"
+      :data-options="dataOptions"
       @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
-      :show-bottom-button="false"
-      :data-options="dataOptions"
     >
     </nut-address-list>
     <h2>{{ translate('title1') }}</h2>
     <nut-address-list
       :data="data"
-      long-Press
+      long-press
       :show-bottom-button="false"
+      :data-options="dataOptions"
       @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
       @long-copy="copyClick"
       @long-set="setClick"
       @long-del="delClickLong"
-      :data-options="dataOptions"
     >
     </nut-address-list>
     <h2>{{ translate('title2') }}</h2>
     <nut-address-list
       :data="data"
-      swipeEdition
+      swipe-edition
       show-bottom-button
+      :data-options="dataOptions"
       @click-item="clickItem"
       @del-icon="delClick"
       @edit-icon="editClick"
       @swipe-del="delClickSwipe"
       @add="addAddress"
-      :data-options="dataOptions"
     >
     </nut-address-list>
   </div>

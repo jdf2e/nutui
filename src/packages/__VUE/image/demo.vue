@@ -5,7 +5,7 @@
 
     <h2>{{ translate('fill') }}</h2>
     <nut-row :gutter="10" flex-wrap="wrap">
-      <nut-col :span="8" v-for="fit in fits" :key="fit">
+      <nut-col v-for="fit in fits" :key="fit" :span="8">
         <nut-image :src="src" width="100" height="100" :fit="fit"></nut-image>
         <div class="text">{{ fit }}</div>
       </nut-col>
@@ -13,13 +13,13 @@
 
     <h2>{{ translate('position') }}</h2>
     <nut-row :gutter="10" flex-wrap="wrap">
-      <nut-col :span="8" v-for="pos in position2" :key="pos">
+      <nut-col v-for="pos in position2" :key="pos" :span="8">
         <nut-image :src="src" width="100" height="100" fit="contain" :position="pos"></nut-image>
         <div class="text">contain</div>
         <div class="text">{{ pos }}</div>
       </nut-col>
 
-      <nut-col :span="8" v-for="pos in position1" :key="pos">
+      <nut-col v-for="pos in position1" :key="pos" :span="8">
         <nut-image :src="src" width="100" height="100" fit="cover" :position="pos"></nut-image>
         <div class="text">cover</div>
         <div class="text">{{ pos }}</div>

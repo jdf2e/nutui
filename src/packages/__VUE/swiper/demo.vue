@@ -43,7 +43,7 @@
     </view>
     <h2>{{ translate('indicator1') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :loop="true" @change="change1" auto-play="2000">
+      <nut-swiper :init-page="page" :loop="true" auto-play="2000" @change="change1">
         <nut-swiper-item v-for="item in list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -54,7 +54,7 @@
     </view>
     <h2>{{ translate('btns') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :loop="true" ref="swiper">
+      <nut-swiper ref="swiper" :init-page="page" :loop="true">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>

@@ -6,9 +6,9 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
+        :operation="['replay']"
         @click="handleclick"
         @click-images="clickImages"
-        :operation="['replay']"
       >
         <template #comment-labels>
           <img
@@ -22,8 +22,8 @@
     <h2>{{ translate('multiRow') }}</h2>
     <nut-cell>
       <nut-comment
-        headerType="complex"
-        imagesRows="multi"
+        header-type="complex"
+        images-rows="multi"
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
@@ -50,7 +50,7 @@
     <h2>{{ translate('additionalReviewd') }}</h2>
     <nut-cell>
       <nut-comment
-        imagesRows="multi"
+        images-rows="multi"
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"

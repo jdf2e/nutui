@@ -4,11 +4,9 @@
 
 提供多个选项集合供用户选择其中一项，通常与弹出层组件配合使用。
 
-> Picker 组件暂时只支持微信小程序、H5，暂不支持支付宝小程序、钉钉小程序、百度小程序等
-
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Picker } from '@nutui/nutui-taro';
 
@@ -20,35 +18,25 @@ app.use(Picker);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const columns = ref([
-        { text: '南京市', value: 'NanJing' },
-        { text: '无锡市', value: 'WuXi' },
-        { text: '海北藏族自治区', value: 'ZangZu' },
-        { text: '北京市', value: 'BeiJing' },
-        { text: '连云港市', value: 'LianYunGang' },
-        { text: '浙江市', value: 'ZheJiang' },
-        { text: '江苏市', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const columns = ref([
+  { text: '南京', value: 'NanJing' },
+  { text: '无锡', value: 'WuXi' },
+  { text: '海北', value: 'ZangZu' },
+  { text: '北京', value: 'BeiJing' },
+  { text: '连云港', value: 'LianYunGang' },
+  { text: '浙江', value: 'ZheJiang' },
+  { text: '江苏', value: 'JiangSu' }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
-
-      return { columns, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -60,40 +48,34 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell title="请选择城市" :desc="popupDesc" @click="show = true"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="show = true"></nut-cell>
   <nut-popup position="bottom" v-model:visible="show">
-    <nut-picker v-model="popupValue" :columns="columns" title="请选择城市" @confirm="popupConfirm" @cancel="show=false">
-      <nut-button block type="primary">永远有效</nut-button>
+    <nut-picker v-model="value" :columns="columns" title="请选择城市" @confirm="confirm" @cancel="show = false">
+      <nut-button block type="primary">底部按钮</nut-button>
     </nut-picker>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      const show = ref(false);
-      const popupDesc = ref();
-      const popupValue = ref();
-      const columns = ref([
-        { text: '南京市', value: 'NanJing' },
-        { text: '无锡市', value: 'WuXi' },
-        { text: '海北藏族自治区', value: 'ZangZu' },
-        { text: '北京市', value: 'BeiJing' },
-        { text: '连云港市', value: 'LianYunGang' },
-        { text: '浙江市', value: 'ZheJiang' },
-        { text: '江苏市', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
+const desc = ref();
+const value = ref();
+const columns = ref([
+  { text: '南京', value: 'NanJing' },
+  { text: '无锡', value: 'WuXi' },
+  { text: '海北', value: 'ZangZu' },
+  { text: '北京', value: 'BeiJing' },
+  { text: '连云港', value: 'LianYunGang' },
+  { text: '浙江', value: 'ZheJiang' },
+  { text: '江苏', value: 'JiangSu' }
+]);
 
-      const popupConfirm = ({ selectedValue, selectedOptions }) => {
-        popupDesc.value = selectedOptions.map((val: any) => val.text).join(',');
-        show.value = false;
-      };
-
-      return { show, popupDesc, columns, confirm, popupConfirm, popupValue };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  desc.value = selectedOptions.map((val) => val.text).join(',');
+  show.value = false;
+};
 </script>
 ```
 
@@ -101,82 +83,61 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 ### 默认选中项
 
-通过设置 `modelValue` 实现默认选中项，`modelValue` 是一个包含每项配置 value 值的数组。
+通过设置 `v-model` 实现默认选中项，`v-model` 是一个包含每项配置 value 值的数组。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedValue" :columns="columns" title="城市选择" @confirm="confirm"> </nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"> </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const selectedValue = ref(['ZheJiang']);
-      const columns = ref([
-        { text: '南京市', value: 'NanJing' },
-        { text: '无锡市', value: 'WuXi' },
-        { text: '海北藏族自治区', value: 'ZangZu' },
-        { text: '北京市', value: 'BeiJing' },
-        { text: '连云港市', value: 'LianYunGang' },
-        { text: '浙江市', value: 'ZheJiang' },
-        { text: '江苏市', value: 'JiangSu' }
-      ]);
-
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
-
-      return { columns, selectedValue, confirm };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const value = ref(['ZheJiang']);
+const columns = ref([
+  { text: '南京', value: 'NanJing' },
+  { text: '无锡', value: 'WuXi' },
+  { text: '海北', value: 'ZangZu' },
+  { text: '北京', value: 'BeiJing' },
+  { text: '连云港', value: 'LianYunGang' },
+  { text: '浙江', value: 'ZheJiang' },
+  { text: '江苏', value: 'JiangSu' }
+]);
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
 :::
 
-### 平铺展示
+### 3D 展示
 
-属性 `threeDimensional` 可关闭 3D 滚动效果。
+属性 `three-dimensional` 可用于开启 3D 滚动效果。开启后可能会影响性能。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedValue" :columns="columns" title="城市选择" :threeDimensional="false" @confirm="confirm">
+  <nut-picker v-model="value" :columns="columns" title="城市选择" :threeDimensional="false" @confirm="confirm">
   </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const selectedValue = ref(['ZheJiang']);
-      const columns = ref([
-        { text: '南京市', value: 'NanJing' },
-        { text: '无锡市', value: 'WuXi' },
-        { text: '海北藏族自治区', value: 'ZangZu' },
-        { text: '北京市', value: 'BeiJing' },
-        { text: '连云港市', value: 'LianYunGang' },
-        { text: '浙江市', value: 'ZheJiang' },
-        { text: '江苏市', value: 'JiangSu' }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['ZheJiang']);
+const columns = ref([
+  { text: '南京', value: 'NanJing' },
+  { text: '无锡', value: 'WuXi' },
+  { text: '海北', value: 'ZangZu' },
+  { text: '北京', value: 'BeiJing' },
+  { text: '连云港', value: 'LianYunGang' },
+  { text: '浙江', value: 'ZheJiang' },
+  { text: '江苏', value: 'JiangSu' }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
-
-      return { columns, selectedValue, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -188,47 +149,34 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedTime" :columns="multipleColumns" title="城市选择" @confirm="confirm" @change="change">
-  </nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm" @change="change"> </nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const selectedTime = ref(['Wednesday', 'Afternoon']);
-      const multipleColumns = ref([
-        // 第一列
-        [
-          { text: '周一', value: 'Monday' },
-          { text: '周二', value: 'Tuesday' },
-          { text: '周三', value: 'Wednesday' },
-          { text: '周四', value: 'Thursday' },
-          { text: '周五', value: 'Friday' }
-        ],
-        // 第二列
-        [
-          { text: '上午', value: 'Morning' },
-          { text: '下午', value: 'Afternoon' },
-          { text: '晚上', value: 'Evening' }
-        ]
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['Wednesday', 'Afternoon']);
+const columns = ref([
+  [
+    { text: '周一', value: 'Monday' },
+    { text: '周二', value: 'Tuesday' },
+    { text: '周三', value: 'Wednesday' },
+    { text: '周四', value: 'Thursday' },
+    { text: '周五', value: 'Friday' }
+  ],
+  [
+    { text: '上午', value: 'Morning' },
+    { text: '下午', value: 'Afternoon' },
+    { text: '晚上', value: 'Evening' }
+  ]
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
-      const change = ({ selectedValue, selectedOptions }) => {
-        console.log(selectedValue);
-      };
-
-      return { multipleColumns, change, confirm, selectedTime };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
+const change = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedValue);
+};
 </script>
 ```
 
@@ -240,73 +188,63 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="selectedCascader" :columns="cascaderColumns" title="城市选择" @confirm="confirm"></nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
-      const cascaderColumns = ref([
-        {
-          text: '浙江',
-          value: 'ZheJiang',
-          children: [
-            {
-              text: '杭州',
-              value: 'HangZhou',
-              children: [
-                { text: '西湖区', value: 'XiHu' },
-                { text: '余杭区', value: 'YuHang' }
-              ]
-            },
-            {
-              text: '温州',
-              value: 'WenZhou',
-              children: [
-                { text: '鹿城区', value: 'LuCheng' },
-                { text: '瓯海区', value: 'OuHai' }
-              ]
-            }
-          ]
-        },
-        {
-          text: '福建',
-          value: 'FuJian',
-          children: [
-            {
-              text: '福州',
-              value: 'FuZhou',
-              children: [
-                { text: '鼓楼区', value: 'GuLou' },
-                { text: '台江区', value: 'TaiJiang' }
-              ]
-            },
-            {
-              text: '厦门',
-              value: 'XiaMen',
-              children: [
-                { text: '思明区', value: 'SiMing' },
-                { text: '海沧区', value: 'HaiCang' }
-              ]
-            }
-          ]
-        }
-      ]);
+<script setup>
+import { ref } from 'vue';
+const value = ref(['FuJian', 'FuZhou', 'TaiJiang']);
+const columns = ref([
+  {
+    text: '浙江',
+    value: 'ZheJiang',
+    children: [
+      {
+        text: '杭州',
+        value: 'HangZhou',
+        children: [
+          { text: '西湖区', value: 'XiHu' },
+          { text: '余杭区', value: 'YuHang' }
+        ]
+      },
+      {
+        text: '温州',
+        value: 'WenZhou',
+        children: [
+          { text: '鹿城区', value: 'LuCheng' },
+          { text: '瓯海区', value: 'OuHai' }
+        ]
+      }
+    ]
+  },
+  {
+    text: '福建',
+    value: 'FuJian',
+    children: [
+      {
+        text: '福州',
+        value: 'FuZhou',
+        children: [
+          { text: '鼓楼区', value: 'GuLou' },
+          { text: '台江区', value: 'TaiJiang' }
+        ]
+      },
+      {
+        text: '厦门',
+        value: 'XiaMen',
+        children: [
+          { text: '思明区', value: 'SiMing' },
+          { text: '海沧区', value: 'HaiCang' }
+        ]
+      }
+    ]
+  }
+]);
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
-
-      return { selectedCascader, cascaderColumns, confirm };
-    }
-  };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -318,44 +256,86 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-picker v-model="asyncValue" :columns="asyncColumns" title="城市选择" @confirm="confirm"></nut-picker>
+  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
 <script lang="ts">
-  import { ref, onMounted } from 'vue';
-  import Taro from '@tarojs/taro';
-  export default {
-    setup(props) {
-      const asyncColumns = ref([]);
-      const asyncValue = ref<string[]>([]);
-      onMounted(() => {
-        // 用于模拟接口请求
-        setTimeout(() => {
-          asyncColumns.value = [
-            { text: '南京市', value: 'NanJing' },
-            { text: '无锡市', value: 'WuXi' },
-            { text: '海北藏族自治区', value: 'ZangZu' },
-            { text: '北京市', value: 'BeiJing' },
-            { text: '连云港市', value: 'LianYunGang' },
-            { text: '浙江市', value: 'ZheJiang' },
-            { text: '江苏市', value: 'JiangSu' }
-          ];
+import { ref, onMounted } from 'vue';
+const columns = ref([]);
+const value = ref<string[]>([]);
+onMounted(() => {
+  // 用于模拟接口请求
+  setTimeout(() => {
+    columns.value = [
+      { text: '南京', value: 'NanJing' },
+      { text: '无锡', value: 'WuXi' },
+      { text: '海北', value: 'ZangZu' },
+      { text: '北京', value: 'BeiJing' },
+      { text: '连云港', value: 'LianYunGang' },
+      { text: '浙江', value: 'ZheJiang' },
+      { text: '江苏', value: 'JiangSu' }
+    ];
 
-          asyncValue.value = ['ZangZu'];
-        }, 500);
-      });
+    value.value = ['ZangZu'];
+  }, 500);
+});
 
-      const confirm = ({ selectedValue, selectedOptions }) => {
-        Taro.showToast({
-          title: selectedOptions.map((val: any) => val.text).join(','),
-          icon: 'none'
-        });
-      };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
+</script>
+```
 
-      return { asyncColumns, asyncValue, confirm };
-    }
-  };
+:::
+
+### 自定义字段名 v4.1.4
+
+可以使用 `field-names` 属性自定义 `columns` 中数据的格式。
+
+:::demo
+
+```vue
+<template>
+  <nut-picker v-model="value" :columns="columns" :field-names="fieldNames" title="城市选择" @confirm="confirm">
+  </nut-picker>
+</template>
+<script setup>
+import { ref } from 'vue';
+const value = ref([]);
+const fieldNames = ref({
+  text: 'name',
+  value: 'code',
+  children: 'list'
+});
+const columns = ref([
+  {
+    name: '浙江',
+    code: 'ZheJiang',
+    list: [
+      {
+        name: '杭州',
+        code: 'HangZhou',
+        list: [
+          { name: '西湖', code: 'XiHu' },
+          { name: '余杭区', code: 'YuHang' }
+        ]
+      },
+      {
+        name: '温州',
+        code: 'WenZhou',
+        list: [
+          { name: '鹿城区', code: 'LuCheng' },
+          { name: '瓯海区', code: 'OuHai' }
+        ]
+      }
+    ]
+  }
+]);
+
+const confirm = ({ selectedValue, selectedOptions }) => {
+  console.log(selectedOptions.map((val) => val.text).join(','));
+};
 </script>
 ```
 
@@ -365,18 +345,19 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 ### Props
 
-| 参数               | 说明                           | 类型                               | 默认值 |
-| ------------------ | ------------------------------ | ---------------------------------- | ------ |
-| v-model:value      | 默认选中项                     | Array                              | `[]`   |
-| columns            | 对象数组，配置每一列显示的数据 | PickerOption[] \| PickerOption[][] | -      |
-| title              | 设置标题                       | string                             | -      |
-| cancel-text        | 取消按钮文案                   | string                             | `取消` |
-| ok-text            | 确定按钮文案                   | string                             | `确定` |
-| three-dimensional  | 是否开启 3D 效果               | boolean                            | `true` |
-| swipe-duration     | 惯性滚动时长                   | number \| string                   | `1000` |
-| visible-option-num | 可见的选项个数                 | number \| string                   | `7`    |
-| option-height      | 选项高度                       | number \| string                   | `36`   |
-| show-toolbar       | 是否显示顶部导航               | boolean                            | `true` |
+| 参数                | 说明                           | 类型                               | 默认值                                                   |
+| ------------------- | ------------------------------ | ---------------------------------- | -------------------------------------------------------- |
+| v-model:value       | 默认选中项                     | Array                              | `[]`                                                     |
+| columns             | 对象数组，配置每一列显示的数据 | PickerOption[] \| PickerOption[][] | -                                                        |
+| field-names`v4.1.4` | 自定义 columns 中的字段        | object                             | `{ text: 'text', value: 'value', children: 'children' }` |
+| title               | 设置标题                       | string                             | -                                                        |
+| cancel-text         | 取消按钮文案                   | string                             | `取消`                                                   |
+| ok-text             | 确定按钮文案                   | string                             | `确定`                                                   |
+| three-dimensional   | 是否开启 3D 效果               | boolean                            | `false`                                                  |
+| swipe-duration      | 惯性滚动时长                   | number \| string                   | `1000`                                                   |
+| visible-option-num  | 可见的选项个数                 | number \| string                   | `7`                                                      |
+| option-height       | 选项高度                       | number \| string                   | `36`                                                     |
+| show-toolbar        | 是否显示顶部导航               | boolean                            | `true`                                                   |
 
 ### Events
 

@@ -1,10 +1,16 @@
 <template>
   <div ref="root">
-    <nut-popup v-model:visible="show" position="bottom" :popClass="popClass" :overlay="false" :teleportDisable="false">
+    <nut-popup
+      v-model:visible="show"
+      position="bottom"
+      :pop-class="popClass"
+      :overlay="false"
+      :teleport-disable="false"
+    >
       <div class="nut-number-keyboard">
-        <div class="nut-number-keyboard__header" v-if="title">
+        <div v-if="title" class="nut-number-keyboard__header">
           <h3 class="nut-number-keyboard__title">{{ title }}</h3>
-          <span class="nut-number-keyboard__close" v-if="type == 'default'" @click="closeBoard()">{{
+          <span v-if="type == 'default'" class="nut-number-keyboard__close" @click="closeBoard()">{{
             translate('done')
           }}</span>
         </div>
@@ -44,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="nut-number-keyboard__sidebar" v-if="type == 'rightColumn'">
+          <div v-if="type == 'rightColumn'" class="nut-number-keyboard__sidebar">
             <div class="nut-key__wrapper">
               <div
                 :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
@@ -70,7 +76,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watch, Ref } from 'vue';
+import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 const { create, translate } = createComponent('number-keyboard');
@@ -100,7 +106,7 @@ export default create({
       default: 'default'
     },
     customKey: {
-      type: Array,
+      type: Array as PropType<string[]>,
       default: () => []
     },
     modelValue: {
@@ -213,7 +219,7 @@ export default create({
       clickKeyIndex.value = item.id;
       if (item.type == 'number' || item.type == 'custom') {
         emit('input', item.id);
-        if (props.modelValue.length < props.maxlength) {
+        if (props.modelValue.length < +props.maxlength) {
           emit('update:modelValue', props.modelValue + item.id);
         }
       }

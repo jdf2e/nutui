@@ -83,7 +83,7 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 
 | Project | Description |
 | --- | --- |
-| [yang1206/uniapp-nutui](https://github.com/yang1206/uniapp-nutui) | uni-app UI Components based on NutUI 4.x |
+| [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | uni-app UI Components based on NutUI 4.x |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | uni-app UI Components based on NutUI 3.x |
 
 ## Cases

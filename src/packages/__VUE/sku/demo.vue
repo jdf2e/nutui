@@ -25,9 +25,9 @@
       v-model:visible="notSell"
       :sku="skuData"
       :goods="goodsInfo"
-      :btnExtraText="btnExtraText"
+      :btn-extra-text="btnExtraText"
+      :btn-options="['buy', 'cart']"
       @change-stepper="changeStepper"
-      :btnOptions="['buy', 'cart']"
       @select-sku="selectSku"
     >
       <template #sku-operate>
@@ -42,12 +42,12 @@
       v-model:visible="customStepper"
       :sku="skuData"
       :goods="goodsInfo"
-      :stepperMax="7"
-      :stepperMin="2"
-      :stepperExtraText="stepperExtraText"
+      :stepper-max="7"
+      :stepper-min="2"
+      :stepper-extra-text="stepperExtraText"
+      :btn-options="['buy', 'cart']"
       @change-stepper="changeStepper"
       @over-limit="overLimit"
-      :btnOptions="['buy', 'cart']"
       @select-sku="selectSku"
       @click-btn-operate="clickBtnOperate"
       @close="close"
@@ -57,13 +57,13 @@
       v-model:visible="customBySlot"
       :sku="skuData"
       :goods="goodsInfo"
-      :btnOptions="['buy', 'cart']"
+      :btn-options="['buy', 'cart']"
       @select-sku="selectSku"
       @click-btn-operate="clickBtnOperate"
     >
       <template #sku-header-price>
         <div>
-          <nut-price :price="goodsInfo.price" :needSymbol="true" :thousands="false"> </nut-price>
+          <nut-price :price="goodsInfo.price" :need-symbol="true" :thousands="false"> </nut-price>
           <span class="tag"></span>
         </div>
       </template>
@@ -95,10 +95,10 @@
       v-model:visible="showAddressPopup"
       type="exist"
       :exist-address="existAddress"
-      @close="close"
       :is-show-custom-address="false"
-      @selected="selectedAddress"
       exist-address-title="配送至"
+      @close="close"
+      @selected="selectedAddress"
     ></nut-address>
   </div>
 </template>

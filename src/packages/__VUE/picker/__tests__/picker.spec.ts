@@ -25,6 +25,14 @@ const multipleColumns = [
   ]
 ];
 
+const customColumns = [
+  { label: '周一', value: 'Monday' },
+  { label: '周二', value: 'Tuesday' },
+  { label: '周三', value: 'Wednesday' },
+  { label: '周四', value: 'Thursday' },
+  { label: '周五', value: 'Friday' }
+];
+
 test('first render', async () => {
   const wrapper = mount(Picker, {
     props: {
@@ -106,4 +114,27 @@ test('multiple columns render', async () => {
   await nextTick();
   const columnItems = wrapper.findAll('.nut-picker__columnitem');
   expect(columnItems.length).toEqual(2);
+});
+
+test('custom columns field', async () => {
+  const wrapper = mount(Picker, {
+    props: {
+      visible: true,
+      columns: customColumns,
+      fieldNames: {
+        text: 'label',
+        value: 'value'
+      }
+    }
+  });
+  await nextTick();
+  const columnItems = wrapper.findAll('.nut-picker__columnitem');
+  expect(columnItems.length).toEqual(1);
+  wrapper.find('.nut-picker__right').trigger('click');
+  expect(wrapper.emitted().confirm[0]).toEqual([
+    {
+      selectedOptions: [{ label: '周一', value: 'Monday' }],
+      selectedValue: ['Monday']
+    }
+  ]);
 });
