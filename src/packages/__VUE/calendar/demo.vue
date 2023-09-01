@@ -16,6 +16,7 @@
         @choose="setChooseValue"
         :start-date="`2022-01-11`"
         :end-date="`2022-11-30`"
+        :show-clear="true"
       >
       </nut-calendar>
     </div>
@@ -24,7 +25,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date1 ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
+        :desc="date1.length ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
@@ -35,6 +36,7 @@
         type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
+        :show-clear="true"
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
@@ -55,6 +57,7 @@
         type="multiple"
         :start-date="`2022-01-01`"
         :end-date="`2022-09-10`"
+        :show-clear="true"
         @close="closeSwitch('isVisible7')"
         @choose="setChooseValue7"
       >
@@ -64,7 +67,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('week')"
-        :desc="date9 ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
+        :desc="date9.length ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
         @click="openSwitch('isVisible9')"
       >
       </nut-cell>
@@ -78,6 +81,7 @@
         @choose="setChooseValue9"
         @select="select"
         :first-day-of-week="1"
+        :show-clear="true"
       >
       </nut-calendar>
     </div>
@@ -135,6 +139,7 @@
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
+        :show-clear="true"
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
       >
@@ -176,6 +181,7 @@
         :start-text="translate('enter')"
         :end-text="translate('leave')"
         :title="translate('please')"
+        :show-clear="true"
       >
         <template #day="date">
           <span>{{ renderDate(date) }}</span>
@@ -200,6 +206,7 @@
         @close="closeSwitch('isVisible8')"
         @choose="setChooseValue8"
         :first-day-of-week="2"
+        :show-clear="true"
       >
       </nut-calendar>
     </div>
@@ -341,9 +348,17 @@ export default defineComponent({
     };
 
     const setChooseValue5 = (param: string) => {
+      if (!param.length) {
+        state.date5 = [];
+        return;
+      }
       state.date5 = [...[param[0][3], param[1][3]]];
     };
     const setChooseValue6 = (param: string) => {
+      if (!param.length) {
+        state.date6 = [];
+        return;
+      }
       state.date6 = [...[param[0][3], param[1][3]]];
     };
     const setChooseValue7 = (chooseData: any) => {
@@ -356,6 +371,10 @@ export default defineComponent({
       state.date8 = param[3];
     };
     const setChooseValue9 = (param: any) => {
+      if (!param.weekDate) {
+        state.date9 = [];
+        return;
+      }
       let { weekDate } = param;
       state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
     };

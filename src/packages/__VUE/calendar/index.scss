@@ -5,10 +5,12 @@
   .nut-calendar {
     background: $dark-background;
     color: $dark-color;
+
     .nut-calendar__header {
       background: $dark-background;
       color: $dark-color;
     }
+
     .nut-calendar__content {
       .nut-calendar__panel {
         .nut-calendar__days {
@@ -21,12 +23,14 @@
         }
       }
     }
+
     .nut-calendar__footer {
       background: $dark-background2;
       color: $dark-color;
     }
   }
 }
+
 .nut-calendar {
   position: relative;
   display: flex;
@@ -37,6 +41,7 @@
   overflow: hidden;
   height: 100%;
   flex-direction: column;
+
   &.nut-calendar--nopop {
     .nut-calendar__header {
       .nut-calendar__header-title {
@@ -44,12 +49,15 @@
       }
     }
   }
+
   .popup-box {
     height: 100%;
   }
+
   .nut-calendar__content {
     overflow-y: auto;
   }
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -67,9 +75,11 @@
       font-weight: $calendar-title-font-weight;
       line-height: 44px;
     }
+
     .nut-calendar__header-slot {
       min-height: 24px;
     }
+
     .nut-calendar__header-subtitle {
       padding: 7px 0;
       line-height: 22px;
@@ -97,15 +107,18 @@
     flex: 1;
     width: 100%;
     display: block;
+
     .nut-calendar__panel {
       position: relative;
       width: 100%;
       height: auto;
       display: block;
       box-sizing: border-box;
+
       .nut-calendar__body {
         display: block;
       }
+
       .nut-calendar__month {
         display: flex;
         flex-direction: column;
@@ -139,6 +152,7 @@
 
       .nut-calendar__days {
         overflow: hidden;
+
         .nut-calendar__day {
           float: left;
           width: 14.28%;
@@ -166,6 +180,7 @@
             font-size: 12px;
             line-height: 14px;
           }
+
           .nut-calendar__day-tip {
             position: absolute;
             bottom: 6px;
@@ -174,12 +189,15 @@
             line-height: 14px;
             color: $calendar-primary-color;
           }
+
           .nut-calendar__day-tips--top {
             top: 6px;
           }
+
           .nut-calendar__day-tips--bottom {
             bottom: 6px;
           }
+
           &--active {
             background-color: $calendar-primary-color;
             color: $white !important;
@@ -188,9 +206,11 @@
             .nut-calendar__day-tips {
               visibility: hidden;
             }
+
             .nut-calendar__day-tips--curr {
               visibility: hidden;
             }
+
             .nut-calendar__day-tip {
               color: $white;
             }
@@ -202,6 +222,7 @@
 
           &--choose {
             color: $calendar-choose-font-color;
+
             &::after {
               position: absolute;
               top: 0;
@@ -236,6 +257,17 @@
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;
+      color: $white;
+      text-align: center;
+      line-height: 44px;
+    }
+
+    .nut-calendar__clear {
+      height: 44px;
+      width: 100%;
+      margin: 10px 18px;
+      border-radius: 22px;
+      background: $button-warning-background-color;
       color: $white;
       text-align: center;
       line-height: 44px;

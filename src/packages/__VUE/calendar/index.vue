@@ -31,6 +31,7 @@
       :show-sub-title="showSubTitle"
       :to-date-animation="toDateAnimation"
       :first-day-of-week="firstDayOfWeek"
+      :show-clear="showClear"
     >
       <template #btn v-if="showTopBtn">
         <slot name="btn"> </slot>
@@ -162,6 +163,10 @@ export default create({
       type: Number,
       default: 0,
       validator: (val: number) => val >= 0 && val <= 6
+    },
+    showClear: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['choose', 'close', 'update:visible', 'select'],

@@ -69,6 +69,7 @@
     <!-- footer-->
     <view class="nut-calendar__footer" v-if="poppable && !isAutoBackFill">
       <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
+      <view v-if="showClear" class="nut-calendar__clear" @click="reset">{{ translate('clear') }}</view>
     </view>
   </view>
 </template>
@@ -80,6 +81,16 @@ import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+
+useTranslate({
+  'zh-CN': {
+    clear: '清除'
+  },
+  'en-US': {
+    clear: 'Clear'
+  }
+});
 
 type StringArr = string[];
 
@@ -149,6 +160,10 @@ export default create({
     firstDayOfWeek: {
       type: Number,
       default: 0
+    },
+    showClear: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['choose', 'update', 'close', 'select'],
@@ -286,6 +301,18 @@ export default create({
         if (props.poppable) {
           emit('update');
         }
+      }
+    };
+    // 清除时触发
+    const reset = () => {
+      const { type } = props;
+      if (type !== 'week') {
+        emit('choose', []);
+      } else {
+        emit('choose', {});
+      }
+      if (props.poppable) {
+        emit('update');
       }
     };
 
@@ -834,7 +861,8 @@ export default create({
       translate,
       monthsPanel,
       weeksPanel,
-      viewArea
+      viewArea,
+      reset
     };
   }
 });
