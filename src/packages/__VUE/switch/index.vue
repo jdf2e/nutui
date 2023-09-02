@@ -1,12 +1,12 @@
 <template>
-  <view :class="classes" @click="onClick" :style="style">
+  <view :class="classes" :style="style" @click="onClick">
     <view class="nut-switch-button">
-      <slot name="icon" v-if="loading">
+      <slot v-if="loading" name="icon">
         <Loading1 name="loading" :color="activeColor" />
       </slot>
       <template v-if="activeText">
-        <view class="nut-switch-label open" v-show="isActive">{{ activeText }}</view>
-        <view class="nut-switch-label close" v-show="!isActive">{{ inactiveText }}</view>
+        <view v-show="isActive" class="nut-switch-label open">{{ activeText }}</view>
+        <view v-show="!isActive" class="nut-switch-label close">{{ inactiveText }}</view>
       </template>
     </view>
   </view>

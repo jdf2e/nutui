@@ -9,17 +9,19 @@
           <component
             :is="renderInput(type)"
             v-bind="$attrs"
-            class="input-text"
             ref="inputRef"
+            class="input-text"
             :style="styles"
             :maxlength="maxLength ? maxLength : undefined"
             :placeholder="placeholder"
             :disabled="disabled"
             :readonly="readonly"
             :value="modelValue"
-            :formatTrigger="formatTrigger"
+            :format-trigger="formatTrigger"
             :autofocus="autofocus ? true : undefined"
             :enterkeyhint="confirmType"
+            :adjust-position="adjustPosition"
+            :always-system="alwaysSystem"
             @input="onInput"
             @focus="onFocus"
             @blur="onBlur"
@@ -27,8 +29,6 @@
             @change="endComposing"
             @compositionend="endComposing"
             @compositionstart="startComposing"
-            :adjust-position="adjustPosition"
-            :always-system="alwaysSystem"
           ></component>
           <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
@@ -37,9 +37,9 @@
           </view>
         </view>
         <view
-          class="nut-input-clear-box"
           v-if="clearable && !readonly"
           v-show="(active || showClearIcon) && modelValue.length > 0"
+          class="nut-input-clear-box"
           @click="clear"
         >
           <slot name="clear">
@@ -163,7 +163,7 @@ export default create({
     }
   },
   components: { MaskClose },
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'click-input'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
 
   setup(props, { emit }) {
     const active = ref(false);
@@ -300,7 +300,7 @@ export default create({
       if (props.disabled) {
         return;
       }
-      emit('click-input', event);
+      emit('clickInput', event);
     };
 
     const onClick = (event: MouseEvent) => {

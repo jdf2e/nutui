@@ -1,17 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { downloadProject } from './download/download';
 import Sun from './icons/Sun.vue';
 import Moon from './icons/Moon.vue';
 import Share from './icons/Share.vue';
 import Download from './icons/Download.vue';
 import GitHub from './icons/GitHub.vue';
-import type { ReplStore } from '@vue/repl';
+import VersionSelect from './VersionSelect.vue';
+import type { NutUIStore } from './store';
 
 const props = defineProps<{
-  store: ReplStore;
+  store: NutUIStore;
 }>();
+const nutuiVersion = ref(`latest`);
 
-const { store } = props;
+async function setNutUIVersion(v: string) {
+  nutuiVersion.value = `loading...`;
+  props.store.setNutUIVersion(v);
+  nutuiVersion.value = `v${v}`;
+}
 
 async function copyLink() {
   await navigator.clipboard.writeText(location.href);
@@ -35,6 +42,13 @@ function toggleDark() {
       <span>NutUI Playground</span>
     </h1>
     <div class="links">
+      <VersionSelect
+        :model-value="nutuiVersion"
+        @update:model-value="setNutUIVersion"
+        pkg="@nutui/nutui"
+        label="NutUI Version"
+      >
+      </VersionSelect>
       <button title="Toggle dark mode" class="toggle-dark" @click="toggleDark">
         <Sun class="light" />
         <Moon class="dark" />
@@ -138,6 +152,37 @@ h1 img {
 .links button:hover,
 .links button:hover a {
   color: var(--highlight);
+}
+
+.versions {
+  display: none;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  list-style-type: none;
+  padding: 8px;
+  margin: 0;
+  max-height: calc(100vh - 70px);
+  overflow: scroll;
+}
+
+.versions a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--base);
+}
+
+.versions a:hover {
+  color: var(--green);
+}
+
+.versions.expanded {
+  display: block;
 }
 
 .links > * {

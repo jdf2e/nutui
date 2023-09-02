@@ -1,8 +1,8 @@
 <template>
   <view :class="containerClasses">
-    <view class="nut-range-min" v-if="!hiddenRange">{{ +min }}</view>
+    <view v-if="!hiddenRange" class="nut-range-min">{{ +min }}</view>
     <view ref="root" :style="wrapperStyle" :class="classes" @click.stop="onClick">
-      <view class="nut-range-mark" v-if="marksList.length > 0">
+      <view v-if="marksList.length > 0" class="nut-range-mark">
         <span v-for="marks in marksList" :key="marks" :class="markClassName(marks)" :style="marksStyle(marks)">
           {{ marks }}
           <span class="nut-range-tick" :style="tickStyle(marks)"></span>
@@ -38,8 +38,8 @@
             @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
-            <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{ curValue(index) }}</view>
+            <view v-else class="nut-range-button" :style="buttonStyle">
+              <view v-if="!hiddenTag" class="number">{{ curValue(index) }}</view>
             </view>
           </view>
         </template>
@@ -63,14 +63,14 @@
             @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
-            <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{ curValue() }}</view>
+            <view v-else class="nut-range-button" :style="buttonStyle">
+              <view v-if="!hiddenTag" class="number">{{ curValue() }}</view>
             </view>
           </view>
         </template>
       </view>
     </view>
-    <view class="nut-range-max" v-if="!hiddenRange">{{ +max }}</view>
+    <view v-if="!hiddenRange" class="nut-range-max">{{ +max }}</view>
   </view>
 </template>
 <script lang="ts">
@@ -127,7 +127,7 @@ export default create({
     }
   },
 
-  emits: ['change', 'drag-end', 'drag-start', 'update:modelValue'],
+  emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
     const buttonIndex = ref(0);
@@ -144,7 +144,7 @@ export default create({
       const list = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
-        .filter((point) => point >= min && point <= max);
+        .filter((point) => point >= +min && point <= +max);
       return list;
     });
     const scope = computed(() => Number(props.max) - Number(props.min));
@@ -224,7 +224,7 @@ export default create({
       } else {
         upperBound = modelValue;
       }
-      let isActive = mark <= upperBound && mark >= lowerBound;
+      let isActive = mark <= +upperBound && mark >= lowerBound;
       return {
         [`${classPrefix}-text`]: true,
         [`${classPrefix}-text-active`]: isActive
@@ -340,7 +340,7 @@ export default create({
       }
 
       if (dragStatus.value === 'start') {
-        emit('drag-start');
+        emit('dragStart');
       }
 
       touch.move(event);
@@ -371,7 +371,7 @@ export default create({
       }
       if (dragStatus.value === 'draging') {
         updateValue(currentValue, true);
-        emit('drag-end');
+        emit('dragEnd');
       }
       dragStatus.value = '';
     };

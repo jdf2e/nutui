@@ -1,11 +1,11 @@
 <template>
-  <view class="nut-avatar-group" ref="avatarGroupRef" :style="styles">
+  <view ref="avatarGroupRef" class="nut-avatar-group" :style="styles">
     <slot></slot>
     <nut-avatar
       v-if="foldCount > 0"
       class="avater-fold"
       :color="maxColor"
-      :bgColor="maxBgColor"
+      :bg-color="maxBgColor"
       :size="size"
       :shape="shape"
       :style="{ magrinLeft: `${span}px` }"

@@ -1,7 +1,7 @@
 <template>
   <div ref="dmBody" :class="classes">
     <div ref="dmContainer" :class="['dmContainer', $slots.default && 'slotContainer']">
-      <div :class="['slotBody', 'slotBody' + classTime]" v-if="$slots.default">
+      <div v-if="$slots.default" :class="['slotBody', 'slotBody' + classTime]">
         <slot></slot>
       </div>
     </div>

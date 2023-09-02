@@ -4,9 +4,9 @@
       <template v-if="type == 'machine'">
         <view class="nut-countup__machine" :style="{ height: numHeight + 'px' }">
           <view
-            class="nut-countup__machine-item"
             v-for="(val, index) of machineNum"
             :key="'mImg' + index"
+            class="nut-countup__machine-item"
             :style="{
               width: numWidth + 'px',
               height: numHeight + 'px',
@@ -19,9 +19,9 @@
       <template v-else>
         <view class="nut-countup__numberimg" :style="{ height: numHeight + 'px' }">
           <view
-            class="nut-countup__numberimg__item"
             v-for="(val, index) of num_total_len"
             :key="'cImg' + index"
+            class="nut-countup__numberimg__item"
             :style="{
               width: numWidth + 'px',
               height: numHeight + 'px',
@@ -64,10 +64,10 @@
         }"
       >
         <view
-          ref="nut-countup__number-item"
-          class="nut-countup__number-item"
           v-for="(val, index) of num_total_len"
+          ref="nut-countup__number-item"
           :key="val"
+          class="nut-countup__number-item"
           :style="{
             all: turnNumber(index) as any,
             top: topNumber(index),
@@ -77,8 +77,8 @@
         >
           <view
             v-for="(item, idx) of to0_10"
-            class="nut-countup__number-item__span"
             :key="'dote' + idx"
+            class="nut-countup__number-item__span"
             :style="{
               width: numWidth + 'px',
               height: numHeight + 'px',
@@ -212,7 +212,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['click', 'scroll-end'],
+  emits: ['click', 'scrollEnd'],
   setup(props, { emit }) {
     const data: IData = reactive({
       valFlag: false,
@@ -347,7 +347,7 @@ export default create({
             //数字减小，有可能导致current小于speed
             data.current = Number(endNum.toFixed(toFixed));
             clearInterval(countTimer);
-            emit('scroll-end');
+            emit('scrollEnd');
             data.valFlag = false;
           } else {
             data.current = Number((parseFloat(String(data.current)) - parseFloat(String(speed))).toFixed(toFixed));
@@ -357,7 +357,7 @@ export default create({
           if (data.current >= endNum) {
             data.current = Number(endNum.toFixed(toFixed));
             clearInterval(countTimer);
-            emit('scroll-end');
+            emit('scrollEnd');
             data.valFlag = false;
           } else {
             data.current = Number((parseFloat(String(data.current)) + parseFloat(String(speed))).toFixed(toFixed));
@@ -475,7 +475,7 @@ export default create({
         // that.totalCount--;
         if (data.totalCount <= 0) {
           clearIntervalTime();
-          emit('scroll-end');
+          emit('scrollEnd');
           data.valFlag = false;
         }
       }, props.during);
@@ -535,7 +535,7 @@ export default create({
         //   data.relNum = calculation(data.relNum, m * props.speed, '+');
         // }, props.during);
         f.addEventListener('webkitTransitionEnd', () => {
-          emit('scroll-end');
+          emit('scrollEnd');
           data.valFlag = false;
           // setTimeout(() => {
           //   data.relNum = calculation(data.relNum, m * props.speed, '+');
@@ -611,10 +611,10 @@ export default create({
             setTimeout(() => {
               data.finshMachine = 0;
               if (data.prizeLevelTrun < 0) {
-                emit('scroll-end', false);
+                emit('scrollEnd', false);
                 data.valFlag = false;
               } else {
-                emit('scroll-end', true);
+                emit('scrollEnd', true);
                 data.valFlag = false;
               }
             }, 130);

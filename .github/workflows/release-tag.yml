@@ -10,16 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        run: corepack enable
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate Changlog
+        run: pnpm changelog
 
       - name: Create Release Tag
         id: release_tag
-        uses: yyx990803/release-tag@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          body: |
-            更新内容请查看 [CHANGELOG](https://github.com/jdf2e/nutui/blob/v4/CHANGELOG.md)。
-
-            Please refer to [CHANGELOG](https://github.com/jdf2e/nutui/blob/v4/CHANGELOG.md) for details.
+          bodyFile: '.github/changelog.md'

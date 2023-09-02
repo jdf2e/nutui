@@ -2,16 +2,16 @@
   <div class="demo">
     <h2>{{ translate('title1') }}</h2>
     <nut-category :category="category" @change="change">
-      <nut-category-pane :categoryChild="categoryChild1" @on-change="onChange"> </nut-category-pane>
+      <nut-category-pane :category-child="categoryChild1" @on-change="onChange"> </nut-category-pane>
     </nut-category>
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="categoryChild2" @on-change="onChange"> </nut-category-pane
+      <nut-category-pane type="text" :category-child="categoryChild2" @on-change="onChange"> </nut-category-pane
     ></nut-category>
 
     <h2>{{ translate('title3') }}</h2>
     <nut-category
-      ><nut-category-pane type="custom" :customCategory="customCategory" @on-change="changeCustom"> </nut-category-pane
+      ><nut-category-pane type="custom" :custom-category="customCategory" @on-change="changeCustom"> </nut-category-pane
     ></nut-category>
   </div>
 </template>

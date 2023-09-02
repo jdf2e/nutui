@@ -1,8 +1,8 @@
 <template>
   <div :class="classes">
-    <div class="nut-signature-inner" ref="wrap">
-      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-show="isCanvasSupported()"></canvas>
-      <p class="nut-signature-unsopport" v-if="!isCanvasSupported()">{{ unSupportTpl || translate('unSupportTpl') }}</p>
+    <div ref="wrap" class="nut-signature-inner">
+      <canvas v-show="isCanvasSupported()" ref="canvas" :height="canvasHeight" :width="canvasWidth"></canvas>
+      <p v-if="!isCanvasSupported()" class="nut-signature-unsopport">{{ unSupportTpl || translate('unSupportTpl') }}</p>
     </div>
 
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>

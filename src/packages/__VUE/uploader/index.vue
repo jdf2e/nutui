@@ -1,32 +1,32 @@
 <template>
   <view class="nut-uploader">
-    <view class="nut-uploader__slot" v-if="$slots.default">
+    <view v-if="$slots.default" class="nut-uploader__slot">
       <slot></slot>
-      <component :is="renderInput" @change="onChange" v-if="Number(maximum) - fileList.length"></component>
+      <component :is="renderInput" v-if="Number(maximum) - fileList.length" @change="onChange"></component>
     </view>
 
-    <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
-      <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
-        <view class="nut-uploader__preview__progress" v-if="item.status != 'success'">
+    <view v-for="(item, index) in fileList" :key="item.uid" class="nut-uploader__preview" :class="[listType]">
+      <view v-if="listType == 'picture' && !$slots.default" class="nut-uploader__preview-img">
+        <view v-if="item.status != 'success'" class="nut-uploader__preview__progress">
           <template v-if="item.status != 'ready'">
-            <Failure color="#fff" v-if="item.status == 'error'" />
-            <Loading name="loading" color="#fff" v-else />
+            <Failure v-if="item.status == 'error'" color="#fff" />
+            <Loading v-else name="loading" color="#fff" />
           </template>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
 
-        <view class="close" v-if="isDeletable" @click="onDelete(item, index)">
+        <view v-if="isDeletable" class="close" @click="onDelete(item, index)">
           <slot name="delete-icon"> <Failure /></slot>
         </view>
 
         <img
-          class="nut-uploader__preview-img__c"
-          @click="fileItemClick(item)"
           v-if="item?.type?.includes('image') && item.url"
+          class="nut-uploader__preview-img__c"
           :src="item.url"
+          @click="fileItemClick(item)"
         />
         <view v-else class="nut-uploader__preview-img__file">
-          <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
+          <view class="nut-uploader__preview-img__file__name" @click="fileItemClick(item)">
             <view class="file__name_tips">{{ item.name }}</view>
           </view>
         </view>
@@ -34,8 +34,8 @@
         <view class="tips">{{ item.name }}</view>
       </view>
 
-      <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
-        <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
+      <view v-else-if="listType == 'list'" class="nut-uploader__preview-list">
+        <view class="nut-uploader__preview-img__file__name" :class="[item.status]" @click="fileItemClick(item)">
           <Link class="nut-uploader__preview-img__file__link" />
           <view class="file__name_tips">{{ item.name }}</view>
           <Del
@@ -47,9 +47,9 @@
         </view>
 
         <nut-progress
+          v-if="item.status == 'uploading'"
           size="small"
           :percentage="item.percentage"
-          v-if="item.status == 'uploading'"
           stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
           :show-text="false"
         >
@@ -58,9 +58,9 @@
     </view>
 
     <view
+      v-if="listType == 'picture' && !$slots.default && Number(maximum) - fileList.length"
       class="nut-uploader__upload"
       :class="[listType]"
-      v-if="listType == 'picture' && !$slots.default && Number(maximum) - fileList.length"
     >
       <slot name="upload-icon">
         <Photograph color="#808080" />
@@ -136,7 +136,7 @@ export default create({
     'change',
     'delete',
     'update:fileList',
-    'file-item-click'
+    'fileItemClick'
   ],
   setup(props, { emit }) {
     const fileList = ref(props.fileList as Array<FileItem>);
@@ -169,7 +169,7 @@ export default create({
     };
 
     const fileItemClick = (fileItem: FileItem) => {
-      emit('file-item-click', { fileItem });
+      emit('fileItemClick', { fileItem });
     };
 
     const executeUpload = (fileItem: FileItem, index: number) => {

@@ -1,5 +1,5 @@
 <template>
-  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleportDisable="teleportDisable">
+  <nut-popup v-model:visible="isShowPopup" :position="position" :overlay="false" :teleport-disable="teleportDisable">
     <div
       :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"

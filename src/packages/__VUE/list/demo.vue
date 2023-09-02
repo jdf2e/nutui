@@ -2,7 +2,7 @@
   <div class="demo demo-list">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-list :listData="count" @scroll-bottom="handleScroll">
+      <nut-list :list-data="count" @scroll-bottom="handleScroll">
         <template #default="{ index }">
           <div class="list-item">
             {{ index }}

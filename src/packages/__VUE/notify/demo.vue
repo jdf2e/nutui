@@ -1,21 +1,21 @@
 <template>
   <div class="demo">
     <nut-cell-group :title="translate('basic')">
-      <nut-cell is-Link @click="baseNotify(translate('basic'))">{{ translate('basic') }}</nut-cell>
+      <nut-cell is-link @click="baseNotify(translate('basic'))">{{ translate('basic') }}</nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('t1')">
-      <nut-cell is-Link @click="primaryNotify(translate('primaryNotify'))">{{ translate('primaryNotify') }}</nut-cell>
-      <nut-cell is-Link @click="successNotify(translate('successNotify'))">{{ translate('successNotify') }}</nut-cell>
-      <nut-cell is-Link @click="errorNotify(translate('errorNotify'))">{{ translate('errorNotify') }}</nut-cell>
-      <nut-cell is-Link @click="warningNotify(translate('warningNotify'))">{{ translate('warningNotify') }}</nut-cell>
+      <nut-cell is-link @click="primaryNotify(translate('primaryNotify'))">{{ translate('primaryNotify') }}</nut-cell>
+      <nut-cell is-link @click="successNotify(translate('successNotify'))">{{ translate('successNotify') }}</nut-cell>
+      <nut-cell is-link @click="errorNotify(translate('errorNotify'))">{{ translate('errorNotify') }}</nut-cell>
+      <nut-cell is-link @click="warningNotify(translate('warningNotify'))">{{ translate('warningNotify') }}</nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('t2')">
-      <nut-cell is-Link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
-      <nut-cell is-Link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
-      <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
+      <nut-cell is-link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
+      <nut-cell is-link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
+      <nut-cell is-link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('useTemplate')">
-      <nut-cell is-Link @click="onClick">{{ translate('useTemplate') }}</nut-cell>
+      <nut-cell is-link @click="onClick">{{ translate('useTemplate') }}</nut-cell>
       <nut-notify v-model:visible="show" :duration="2000">
         <span>Content</span>
       </nut-notify>

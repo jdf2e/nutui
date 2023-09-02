@@ -1,27 +1,27 @@
 <template>
   <view
+    v-if="!targetId"
+    :id="'popoverRef' + refRandomId"
+    ref="popoverRef"
     class="nut-popover-wrapper"
     @click="openPopover"
-    v-if="!targetId"
-    ref="popoverRef"
-    :id="'popoverRef' + refRandomId"
     ><slot name="reference"></slot
   ></view>
-  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="popoverstyles" ref="popoverbox">
+  <view ref="popoverbox" :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="popoverstyles">
     <nut-popup
-      :popClass="`nut-popover-content nut-popover-content--${location}`"
-      :style="customStyle"
       v-model:visible="showPopup"
+      :pop-class="`nut-popover-content nut-popover-content--${location}`"
+      :style="customStyle"
       position=""
       transition="nut-popover"
       :overlay="overlay"
       :duration="duration"
-      :overlayStyle="overlayStyle"
-      :overlayClass="overlayClass"
-      :closeOnClickOverlay="closeOnClickOverlay"
+      :overlay-style="overlayStyle"
+      :overlay-class="overlayClass"
+      :close-on-click-overlay="closeOnClickOverlay"
     >
-      <view ref="popoverContentRef" :id="'popoverContentRef' + refRandomId" class="nut-popover-content-group">
-        <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
+      <view :id="'popoverContentRef' + refRandomId" ref="popoverContentRef" class="nut-popover-content-group">
+        <view v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </view>
         <slot name="content"></slot>
         <view
           v-for="(item, index) in list"
@@ -34,19 +34,19 @@
           ]"
           @click.stop="chooseItem(item, index)"
         >
-          <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+          <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
           <view class="nut-popover-menu-item-name">{{ item.name }}</view>
         </view>
       </view>
     </nut-popup>
 
-    <view class="nut-popover-content-bg" v-if="showPopup" @touchmove="clickAway" @click="clickAway"></view>
+    <view v-if="showPopup" class="nut-popover-content-bg" @touchmove="clickAway" @click="clickAway"></view>
   </view>
   <!-- 用于计算大小 -->
   <!-- TODO -->
   <view :class="`nut-popover-content nut-popover-content-copy`">
-    <view ref="popoverContentRefCopy" :id="'popoverContentRefCopy' + refRandomId" class="nut-popover-content-group">
-      <view :class="popoverArrow" v-if="showArrow" :style="popoverArrowStyle"> </view>
+    <view :id="'popoverContentRefCopy' + refRandomId" ref="popoverContentRefCopy" class="nut-popover-content-group">
+      <view v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </view>
       <slot name="content"></slot>
       <view
         v-for="(item, index) in list"
@@ -58,7 +58,7 @@
           'nut-popover-menu-taroitem'
         ]"
       >
-        <component v-if="item.icon" :is="renderIcon(item.icon)" class="nut-popover-item-img"></component>
+        <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
         <view class="nut-popover-menu-item-name">{{ item.name }}</view>
       </view>
     </view>

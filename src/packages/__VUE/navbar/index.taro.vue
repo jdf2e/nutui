@@ -1,8 +1,8 @@
 <template>
   <view class="nut-navbar--placeholder" :style="rootStyle">
-    <view :id="'navbarRef-' + refRandomId" :class="classes" :style="{ zIndex }" ref="navbarRef">
+    <view :id="'navbarRef-' + refRandomId" ref="navbarRef" :class="classes" :style="{ zIndex }">
       <view class="nut-navbar__left" @click="handleLeft">
-        <slot name="left-show" v-if="leftShow">
+        <slot v-if="leftShow" name="left-show">
           <Left height="12px" color="#979797"></Left>
         </slot>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
@@ -59,7 +59,7 @@ export default create({
       default: 10
     }
   },
-  emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
+  emits: ['onClickBack', 'onClickTitle', 'onClickIcon', 'onClickRight'],
   setup(props, { emit }) {
     const { border, fixed, safeAreaInsetTop, placeholder } = toRefs(props);
     const refRandomId = Math.random().toString(36).slice(-8);
@@ -102,19 +102,19 @@ export default create({
     });
 
     const handleLeft = () => {
-      emit('on-click-back');
+      emit('onClickBack');
     };
 
     const handleCenter = () => {
-      emit('on-click-title');
+      emit('onClickTitle');
     };
 
     const handleCenterIcon = () => {
-      emit('on-click-icon');
+      emit('onClickIcon');
     };
 
     const handleRight = () => {
-      emit('on-click-right');
+      emit('onClickRight');
     };
 
     return {

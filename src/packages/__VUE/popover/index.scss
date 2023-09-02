@@ -96,7 +96,9 @@
     color: #333;
     box-shadow: 0 2px 12px #3232331f;
     opacity: 1;
-    transition: opacity 0.15s, transform 0.15s;
+    transition:
+      opacity 0.15s,
+      transform 0.15s;
     max-height: initial;
     overflow-y: initial;
 

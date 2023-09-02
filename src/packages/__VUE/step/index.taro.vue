@@ -18,7 +18,7 @@
         <span v-if="!$slots.title">{{ title }}</span>
         <slot name="title"></slot>
       </view>
-      <view class="nut-step-content" v-if="content || $slots.content">
+      <view v-if="content || $slots.content" class="nut-step-content">
         <span v-if="!$slots.content" v-html="content"></span>
         <slot name="content"></slot>
       </view>
@@ -42,7 +42,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['click-step'],
+  emits: ['clickStep'],
 
   setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;

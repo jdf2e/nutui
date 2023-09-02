@@ -1,5 +1,5 @@
 <template>
-  <view :style="styles" :class="classes" ref="avatarRef">
+  <view ref="avatarRef" :style="styles" :class="classes">
     <slot></slot>
   </view>
 </template>

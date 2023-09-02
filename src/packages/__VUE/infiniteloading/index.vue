@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" ref="scroller">
+  <view ref="scroller" :class="classes">
     <view class="nut-infinite__container">
       <slot></slot>
     </view>
@@ -68,7 +68,7 @@ export default create({
       default: false
     }
   },
-  emits: ['scroll-change', 'load-more', 'update:modelValue'],
+  emits: ['scrollChange', 'loadMore', 'update:modelValue'],
   components: {
     Loading
   },
@@ -123,7 +123,7 @@ export default create({
 
       state.beforeScrollTop = resScrollTop;
 
-      emit('scroll-change', resScrollTop);
+      emit('scrollChange', resScrollTop);
 
       return offsetDistance <= props.threshold && direction == 'down';
     };
@@ -135,7 +135,7 @@ export default create({
         } else {
           state.isInfiniting = true;
           emit('update:modelValue', true);
-          nextTick(() => emit('load-more'));
+          nextTick(() => emit('loadMore'));
         }
       });
     };

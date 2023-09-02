@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-sticky" ref="rootRef" :style="rootStyle" :id="'rootRef-' + refRandomId">
+  <view :id="'rootRef-' + refRandomId" ref="rootRef" class="nut-sticky" :style="rootStyle">
     <view class="nut-sticky__box" :style="stickyStyle">
       <slot></slot>
     </view>

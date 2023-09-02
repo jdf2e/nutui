@@ -1,12 +1,12 @@
 <template>
   <view :class="classes">
-    <view class="nut-menu__bar" :class="{ opened: opened }" ref="barRef">
+    <view ref="barRef" class="nut-menu__bar" :class="{ opened: opened }">
       <template v-for="(item, index) in children" :key="index">
         <view
           class="nut-menu__item"
-          @click="!item.disabled && toggleItem(index)"
           :class="{ disabled: item.disabled, active: item.state.showPopup }"
           :style="{ color: item.state.showPopup ? activeColor : '' }"
+          @click="!item.disabled && toggleItem(index)"
         >
           <view class="nut-menu__title" :class="getClasses(item.state.showPopup)">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>

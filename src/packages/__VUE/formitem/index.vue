@@ -5,9 +5,9 @@
     :style="$attrs.style"
   >
     <view
+      v-if="label || getSlots('label')"
       class="nut-cell__title nut-form-item__label"
       :style="labelStyle"
-      v-if="label || getSlots('label')"
       :class="{ required: required }"
     >
       <slot name="label">{{ label }}</slot>
@@ -16,7 +16,7 @@
       <view class="nut-form-item__body__slots" :style="bodyStyle">
         <slot></slot>
       </view>
-      <view class="nut-form-item__body__tips" :style="errorMessageStyle" v-if="parent[prop] && showErrorMessage">
+      <view v-if="parent[prop] && showErrorMessage" class="nut-form-item__body__tips" :style="errorMessageStyle">
         {{ parent[prop] }}</view
       >
     </view>
@@ -76,8 +76,6 @@ export default create({
   components: {
     [Cell.name]: Cell
   },
-  emits: [''],
-
   setup(props, { slots }) {
     const parent = inject('formErrorTip') as any;
     provide('form', {

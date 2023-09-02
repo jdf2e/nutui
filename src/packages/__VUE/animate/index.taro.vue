@@ -2,10 +2,10 @@
   <view class="nut-animate">
     <view
       :class="classes"
-      @click="handleClick"
       :style="{
         animationDuration: duration ? `${duration}ms` : undefined
       }"
+      @click="handleClick"
     >
       <slot></slot>
     </view>

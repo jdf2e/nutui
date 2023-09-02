@@ -1,44 +1,44 @@
 <template>
   <nut-popup
-    pop-class="nut-image-preview-custom-pop"
     v-model:visible="showPop"
-    :teleportDisable="teleportDisable"
+    pop-class="nut-image-preview-custom-pop"
+    :teleport-disable="teleportDisable"
     :teleport="teleport"
-    @closed="onClose"
     lock-scroll
+    @closed="onClose"
   >
-    <view class="nut-image-preview" ref="swipeRef">
+    <view ref="swipeRef" class="nut-image-preview">
       <nut-swiper
         v-if="showPop"
         :auto-play="autoplay"
         class="nut-image-preview-swiper"
         :loop="isLoop"
-        :is-preventDefault="false"
+        :is-prevent-default="false"
         direction="horizontal"
-        @change="setActive"
         :init-page="initNo"
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
+        @change="setActive"
       >
         <image-preview-item
           v-for="(item, index) in mergeImages"
           :key="index"
           :video="index < videos.length ? item : {}"
           :image="index >= videos.length ? item : {}"
-          :rootHeight="rootHeight"
-          :rootWidth="rootWidth"
+          :root-height="rootHeight"
+          :root-width="rootWidth"
           :show="showPop"
           :init-no="active + 1"
-          @close="onClose"
           :content-close="contentClose"
-          :maxZoom="maxZoom"
-          :minZoom="minZoom"
+          :max-zoom="maxZoom"
+          :min-zoom="minZoom"
+          @close="onClose"
         ></image-preview-item>
       </nut-swiper>
     </view>
-    <view class="nut-image-preview-index" v-if="showIndex"> {{ active + 1 }} / {{ mergeImages.length }} </view>
+    <view v-if="showIndex" class="nut-image-preview-index"> {{ active + 1 }} / {{ mergeImages.length }} </view>
 
-    <view :class="iconClasses" @click="onClose" v-if="closeable">
+    <view v-if="closeable" :class="iconClasses" @click="onClose">
       <slot name="close-icon"><CircleClose color="#ffffff"></CircleClose></slot>
     </view>
   </nut-popup>

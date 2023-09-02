@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-video" ref="videocon">
+  <div ref="videocon" class="nut-video">
     <video
       ref="root"
       class="nut-video-player"
@@ -13,23 +13,23 @@
     >
       <source :src="source.src" :type="source.type" />
     </video>
-    <div class="nut-video-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
+    <div v-if="showToolbox && !isDisabled" ref="touchMask" class="nut-video-mask" @click="play"></div>
     <div
-      class="nut-video-play-btn"
       v-if="showToolbox && !isDisabled"
-      ref="palyBtn"
       v-show="!state.playing"
+      ref="palyBtn"
+      class="nut-video-play-btn"
       @click="play"
     ></div>
     <div
-      class="nut-video-controller"
       v-show="showToolbox && !isDisabled"
+      class="nut-video-controller"
       :class="{ 'nut-video-controller--show': !state.playing, 'nut-video-controller--hide': state.playing }"
     >
       <div class="nut-video-controller__playbtn" @click="play"></div>
       <div class="nut-video-controller__now">{{ videoSet.displayTime }}</div>
       <div class="nut-video-controller__progress">
-        <div class="nut-video-controller__progress-value" ref="progressBar">
+        <div ref="progressBar" class="nut-video-controller__progress-value">
           <div class="buffered" :style="{ width: `${videoSet.loaded}%` }"></div>
           <div
             class="nut-video-controller__ball"
@@ -42,15 +42,15 @@
           >
             <div class="nut-video-controller__ball-move"></div>
           </div>
-          <div class="nut-video-controller__played" ref="playedBar"></div>
+          <div ref="playedBar" class="nut-video-controller__played"></div>
         </div>
       </div>
       <div class="nut-video-controller__total">{{ videoSet.totalTime }}</div>
-      <div class="nut-video-controller__volume" @click="handleMuted" :class="{ muted: state.isMuted }"></div>
+      <div class="nut-video-controller__volume" :class="{ muted: state.isMuted }" @click="handleMuted"></div>
       <div class="nut-video-controller__full" @click="fullScreen"></div>
     </div>
     <!-- 错误弹窗 -->
-    <div class="nut-video-error" v-show="state.isError">
+    <div v-show="state.isError" class="nut-video-error">
       <p class="nut-video-error-tip">{{ translate('errorTip') }}</p>
       <p class="nut-video-error-retry" @click="retry">{{ translate('clickRetry') }}</p>
     </div>
@@ -239,15 +239,15 @@ export default create({
     };
     const timeFormat = (t: number) => {
       var h = Math.floor(t / 3600) as string | number;
-      if (h < 10) {
+      if (+h < 10) {
         h = '0' + h;
       }
       var m = Math.floor((t % 3600) / 60) as string | number;
-      if (m < 10) {
+      if (+m < 10) {
         m = '0' + m;
       }
       var s = Math.round((t % 3600) % 60) as string | number;
-      if (s < 10) {
+      if (+s < 10) {
         s = '0' + s;
       }
       var str = '';

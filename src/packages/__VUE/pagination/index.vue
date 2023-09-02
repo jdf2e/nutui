@@ -8,7 +8,7 @@
         {{ prevText || translate('prev') }}
       </slot>
     </view>
-    <view class="nut-pagination-contain" v-if="mode == 'multi'">
+    <view v-if="mode == 'multi'" class="nut-pagination-contain">
       <view
         v-for="(item, index) of pages"
         :key="index + 'pagination'"
@@ -20,7 +20,7 @@
         </slot>
       </view>
     </view>
-    <view class="nut-pagination-contain" v-if="mode == 'simple'">
+    <view v-if="mode == 'simple'" class="nut-pagination-contain">
       <view class="nut-pagination-simple">{{ modelValue }}/{{ countRef }}</view>
     </view>
     <view

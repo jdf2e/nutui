@@ -1,12 +1,12 @@
 <template>
   <nut-popup
+    v-model:visible="showPopup"
     position="bottom"
     :lock-scroll="lockScroll"
     :round="round"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
-    v-model:visible="showPopup"
   >
     <view class="nut-address">
       <view class="nut-address__header">
@@ -32,24 +32,24 @@
       </view>
 
       <!-- 请选择 -->
-      <view class="nut-address__custom" v-if="['custom', 'custom2'].includes(privateType)">
-        <view class="nut-address__region" ref="tabRegion">
+      <view v-if="['custom', 'custom2'].includes(privateType)" class="nut-address__custom">
+        <view ref="tabRegion" class="nut-address__region">
           <view
-            :class="['nut-address__region-item', index == tabIndex ? 'active' : '']"
             v-for="(item, index) in selectedRegion"
             :key="index"
+            :class="['nut-address__region-item', index == tabIndex ? 'active' : '']"
             @click="changeRegionTab(item, index)"
           >
             <view>{{ getTabName(item, index) }} </view>
             <view :class="{ 'nut-address__region-line--mini': true, active: index == tabIndex }"></view>
           </view>
-          <view class="active nut-address__region-item" v-if="tabIndex == selectedRegion.length">
+          <view v-if="tabIndex == selectedRegion.length" class="active nut-address__region-item">
             <view>{{ getTabName(null, selectedRegion.length) }} </view>
             <view class="nut-address__region-line--mini active"></view>
           </view>
         </view>
 
-        <view class="nut-address__detail" v-if="privateType == 'custom'">
+        <view v-if="privateType == 'custom'" class="nut-address__detail">
           <div class="nut-address__detail-list">
             <nut-scroll-view
               :scroll-y="true"
@@ -64,7 +64,7 @@
                 @click="nextAreaList(item)"
               >
                 <div>
-                  <slot name="icon" v-if="selectedRegion[tabIndex]?.id == item.id">
+                  <slot v-if="selectedRegion[tabIndex]?.id == item.id" name="icon">
                     <Check class="nut-address-select-icon" width="13px"></Check> </slot
                   >{{ item.name }}
                 </div>
@@ -73,7 +73,7 @@
           </div>
         </view>
 
-        <view class="nut-address__elevator-group" v-else>
+        <view v-else class="nut-address__elevator-group">
           <nut-elevator
             :height="height"
             :index-list="transformData(regionList)"
@@ -83,26 +83,26 @@
       </view>
 
       <!-- 配送至 -->
-      <view class="nut-address__exist" v-else-if="privateType == 'exist'">
+      <view v-else-if="privateType == 'exist'" class="nut-address__exist">
         <div class="nut-address__exist-group">
           <ul class="nut-address__exist-group-list">
             <li
-              class="nut-address__exist-group-item"
-              :class="[item.selectedAddress ? 'active' : '']"
               v-for="(item, index) in existAddress"
               :key="index"
+              class="nut-address__exist-group-item"
+              :class="[item.selectedAddress ? 'active' : '']"
               @click="selectedExist(item)"
             >
-              <slot name="unselected-icon" v-if="!item.selectedAddress">
+              <slot v-if="!item.selectedAddress" name="unselected-icon">
                 <Location2 class="nut-address-select-icon" width="13px"></Location2>
               </slot>
 
-              <slot name="icon" v-if="item.selectedAddress">
+              <slot v-if="item.selectedAddress" name="icon">
                 <Check class="nut-address-select-icon" width="13px"></Check>
               </slot>
 
               <div class="nut-address__exist-item-info">
-                <div class="nut-address__exist-item-info-top" v-if="item.name && item.phone">
+                <div v-if="item.name && item.phone" class="nut-address__exist-item-info-top">
                   <div class="nut-address__exist-item-info-name">{{ item.name }}</div>
                   <div class="nut-address__exist-item-info-phone">{{ item.phone }}</div>
                 </div>
@@ -115,7 +115,7 @@
             </li>
           </ul>
         </div>
-        <div class="nut-address__exist-choose" @click="switchModule" v-if="isShowCustomAddress">
+        <div v-if="isShowCustomAddress" class="nut-address__exist-choose" @click="switchModule">
           <div class="nut-address__exist-choose-btn">{{
             customAndExistTitle || translate('chooseAnotherAddress')
           }}</div>
@@ -209,7 +209,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
+  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'closeMask', 'switchModule'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -439,7 +439,7 @@ export default create({
       if (closeWay.value == 'self') {
         emit('close', callBackParams);
       } else {
-        emit('close-mask', { closeWay: closeWay });
+        emit('closeMask', { closeWay: closeWay });
       }
 
       emit('update:visible', false);
@@ -450,7 +450,7 @@ export default create({
       const type = privateType.value;
       privateType.value = type == 'exist' ? 'custom' : 'exist';
       initAddress();
-      emit('switch-module', { type: privateType.value });
+      emit('switchModule', { type: privateType.value });
     };
 
     const handleElevatorItem = (key: string, item: RegionData) => {

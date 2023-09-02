@@ -1,12 +1,12 @@
 <template>
   <view>
-    <view class="nut-comment-header" @click="handleClick" v-if="info">
+    <view v-if="info" class="nut-comment-header" @click="handleClick">
       <view class="nut-comment-header__user">
         <view class="nut-comment-header__user-avter">
           <img v-if="info.avatar" :src="info.avatar" />
         </view>
 
-        <view :class="[`nut-comment-header__user-${type}`]" v-if="type == 'default'">
+        <view v-if="type == 'default'" :class="[`nut-comment-header__user-${type}`]">
           <view :class="[`nut-comment-header__user-${type}-name`]">
             <span>{{ info.nickName }}</span>
             <slot name="labels"></slot>
@@ -17,14 +17,14 @@
           </view>
         </view>
 
-        <view :class="[`nut-comment-header__user-${type}`]" v-else>
+        <view v-else :class="[`nut-comment-header__user-${type}`]">
           <span :class="[`nut-comment-header__user-${type}-name`]">{{ info.nickName }}</span>
           <slot name="labels"></slot>
         </view>
       </view>
-      <view class="nut-comment-header__time" v-if="info.time">{{ info.time }}</view>
+      <view v-if="info.time" class="nut-comment-header__time">{{ info.time }}</view>
     </view>
-    <view :class="[`nut-comment-header__${type}-score`]" v-if="type == 'complex'">
+    <view v-if="type == 'complex'" :class="[`nut-comment-header__${type}-score`]">
       <nut-rate v-model="info.score" size="12" spacing="3" readonly />
       <i :class="[`nut-comment-header__${type}-score-i`]"></i>
       <view :class="[`nut-comment-header__${type}-score-size`]">{{ info.size }}</view>

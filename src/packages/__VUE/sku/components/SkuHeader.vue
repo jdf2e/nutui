@@ -5,12 +5,12 @@
       <template v-if="getSlots('sku-header-price')">
         <slot name="sku-header-price"></slot>
       </template>
-      <nut-price v-else :price="goods.price" :needSymbol="true" :thousands="false"> </nut-price>
+      <nut-price v-else :price="goods.price" :need-symbol="true" :thousands="false"> </nut-price>
 
       <template v-if="getSlots('sku-header-extra')">
         <slot name="sku-header-extra"></slot>
       </template>
-      <view class="nut-sku-header-right-extra" v-if="goods.skuId && !getSlots('sku-header-extra')"
+      <view v-if="goods.skuId && !getSlots('sku-header-extra')" class="nut-sku-header-right-extra"
         >{{ translate('skuId') }}&nbsp;:&nbsp;{{ goods.skuId }}</view
       >
     </view>

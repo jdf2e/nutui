@@ -1,52 +1,52 @@
 <template>
   <view :class="classes">
     <nut-scroll-view
+      ref="listview"
       class="nut-elevator__list nut-elevator__list--mini"
       :scroll-top="scrollTop"
       :scroll-y="true"
       :scroll-with-animation="true"
       :scroll-anchoring="true"
-      ref="listview"
       :style="{ height: isNaN(+height) ? height : `${height}px` }"
       @scroll="listViewScroll"
     >
-      <view :style="fixedStyle" class="nut-elevator__list__fixed__wrapper" v-show="scrollY > 0">
-        <view class="nut-elevator__list__fixed nut-elevator__list__fixed--mini" v-if="isSticky">
+      <view v-show="scrollY > 0" :style="fixedStyle" class="nut-elevator__list__fixed__wrapper">
+        <view v-if="isSticky" class="nut-elevator__list__fixed nut-elevator__list__fixed--mini">
           <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
         </view>
       </view>
       <view
-        :class="['nut-elevator__list__item', `elevator__item__${index}`]"
         v-for="(item, index) in indexList"
         :key="item[acceptKey]"
         :ref="setListGroup"
+        :class="['nut-elevator__list__item', `elevator__item__${index}`]"
       >
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
+          v-for="subitem in item.list"
+          :key="subitem['id']"
           class="nut-elevator__list__item__name"
           :class="{
             'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id && currentKey === item[acceptKey]
           }"
-          v-for="subitem in item.list"
-          :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
         >
-          <span v-html="subitem.name" v-if="!$slots.default"></span>
-          <slot :item="subitem" v-else></slot>
+          <span v-if="!$slots.default" v-html="subitem.name"></span>
+          <slot v-else :item="subitem"></slot>
         </view>
       </view>
     </nut-scroll-view>
-    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
+    <view v-show="scrollStart" v-if="indexList.length > 0" class="nut-elevator__code--current">
       {{ indexList[codeIndex][acceptKey] }}
     </view>
     <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
       <view class="nut-elevator__bars__inner">
         <view
+          v-for="(item, index) in indexList"
+          :key="item[acceptKey]"
           class="nut-elevator__bars__inner__item"
           :class="{ active: item[acceptKey] === indexList[currentIndex][acceptKey] }"
           :data-index="index"
-          v-for="(item, index) in indexList"
-          :key="item[acceptKey]"
           @click="handleClickIndex(item[acceptKey])"
           >{{ item[acceptKey] }}</view
         >
@@ -96,7 +96,7 @@ export default create({
       default: 35
     }
   },
-  emits: ['click-item', 'click-index', 'change'],
+  emits: ['clickItem', 'clickIndex', 'change'],
   setup(props, context) {
     const spaceHeight = 23;
     const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>;
@@ -196,13 +196,13 @@ export default create({
     };
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      context.emit('click-item', key, item);
+      context.emit('clickItem', key, item);
       state.currentData = item;
       state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
-      context.emit('click-index', key);
+      context.emit('clickIndex', key);
     };
 
     const listViewScroll = (e: Event) => {

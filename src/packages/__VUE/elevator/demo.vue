@@ -9,7 +9,7 @@
       <nut-elevator
         :index-list="dataList2"
         :height="220"
-        :acceptKey="acceptKey"
+        :accept-key="acceptKey"
         @click-item="clickItem"
         @click-index="clickIndex"
       ></nut-elevator>

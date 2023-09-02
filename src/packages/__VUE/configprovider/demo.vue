@@ -17,7 +17,7 @@
           <nut-checkbox v-model="formData2.checkbox">{{ translate('checkbox') }}</nut-checkbox>
         </nut-form-item>
         <nut-form-item :label="translate('radiogroup')">
-          <nut-radio-group direction="horizontal" v-model="formData2.radio">
+          <nut-radio-group v-model="formData2.radio" direction="horizontal">
             <nut-radio label="1">{{ translate('option', 1) }}</nut-radio>
             <nut-radio disabled label="2">{{ translate('option', 2) }}</nut-radio>
             <nut-radio label="3">{{ translate('option', 3) }}</nut-radio>
@@ -30,20 +30,20 @@
           <nut-input-number v-model="formData2.number" />
         </nut-form-item>
         <nut-form-item :label="translate('range')">
-          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+          <nut-range v-model="formData2.range" hidden-tag></nut-range>
         </nut-form-item>
         <nut-form-item :label="translate('uploader')">
-          <nut-uploader url="http://apiurl" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+          <nut-uploader v-model:file-list="formData2.defaultFileList" url="http://apiurl" maximum="3" multiple>
           </nut-uploader>
         </nut-form-item>
         <nut-form-item :label="translate('address')">
           <input
-            class="nut-input-text"
             v-model="formData2.address"
-            @click="addressModule.methods.show"
+            class="nut-input-text"
             readonly
             :placeholder="translate('addressTip1')"
             type="text"
+            @click="addressModule.methods.show"
           />
           <!-- nut-address -->
           <nut-address
@@ -52,8 +52,8 @@
             :city="addressModule.state.city"
             :country="addressModule.state.country"
             :town="addressModule.state.town"
-            @close="addressModule.methods.onClose"
             :custom-address-title="translate('addressTip2')"
+            @close="addressModule.methods.onClose"
           ></nut-address>
         </nut-form-item>
       </nut-form>
@@ -62,7 +62,7 @@
     <nut-config-provider :theme-vars="themeVars">
       <nut-form>
         <nut-form-item :label="translate('range')">
-          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+          <nut-range v-model="formData2.range" hidden-tag></nut-range>
         </nut-form-item>
       </nut-form>
     </nut-config-provider>

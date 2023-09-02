@@ -1,17 +1,17 @@
 <template>
   <view
-    :class="classes"
-    ref="myDrag"
     :id="'myDrag' + refRandomId"
+    ref="myDrag"
+    :class="classes"
     class="myDrag"
-    @touchstart="touchStart($event)"
-    @touchmove.prevent="touchMove($event)"
     catchtouchmove="true"
     :style="{
       transform: ` translate(${state.left + 'px'}, ${state.top + 'px'})`,
       top: state.top + 'px',
       left: state.left + 'px'
     }"
+    @touchstart="touchStart($event)"
+    @touchmove.prevent="touchMove($event)"
   >
     <slot></slot>
   </view>

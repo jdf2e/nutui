@@ -1,25 +1,25 @@
 <template>
-  <view class="nut-tabs" :class="[direction]" ref="container">
+  <view ref="container" class="nut-tabs" :class="[direction]">
     <template v-if="sticky">
       <nut-sticky :top="top" :container="container" @scroll="onStickyScroll">
         <view
+          ref="navRef"
           class="nut-tabs__titles"
           :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
           :style="tabsNavStyle"
-          ref="navRef"
         >
           <slot v-if="$slots.titles" name="titles"></slot>
           <template v-else>
             <view
-              class="nut-tabs__titles-item"
-              :style="titleStyle"
-              @click="tabChange(item, index)"
-              :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
               v-for="(item, index) in titles"
               :key="item.paneKey"
+              class="nut-tabs__titles-item"
+              :style="titleStyle"
+              :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+              @click="tabChange(item, index)"
             >
-              <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
-              <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
+              <view v-if="type == 'line'" class="nut-tabs__titles-item__line" :style="tabsActiveStyle"></view>
+              <view v-if="type == 'smile'" class="nut-tabs__titles-item__smile" :style="tabsActiveStyle">
                 <JoySmile :color="color" />
               </view>
               <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
@@ -30,24 +30,24 @@
     </template>
     <template v-else>
       <view
+        ref="navRef"
         class="nut-tabs__titles"
         :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
         :style="tabsNavStyle"
-        ref="navRef"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
         <template v-else>
           <view
-            class="nut-tabs__titles-item"
-            :style="titleStyle"
-            @click="tabChange(item, index)"
-            :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
             v-for="(item, index) in titles"
             :key="item.paneKey"
             :ref="(e) => setTabItemRef(e as HTMLElement, index)"
+            class="nut-tabs__titles-item"
+            :style="titleStyle"
+            :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+            @click="tabChange(item, index)"
           >
-            <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
-            <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
+            <view v-if="type == 'line'" class="nut-tabs__titles-item__line" :style="tabsActiveStyle"></view>
+            <view v-if="type == 'smile'" class="nut-tabs__titles-item__smile" :style="tabsActiveStyle">
               <JoySmile :color="color" />
             </view>
             <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
@@ -56,8 +56,8 @@
       </view>
     </template>
     <view
-      class="nut-tabs__content"
       ref="tabsContentRef"
+      class="nut-tabs__content"
       :style="contentStyle"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"

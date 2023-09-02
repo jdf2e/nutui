@@ -84,7 +84,7 @@ test('should list item highlight when clickItem trigger click', async () => {
     'nut-elevator__list__item__name--highcolor'
   );
 
-  expect((wrapper.emitted('click-item') as any)[0][0]).toBe('B');
+  expect((wrapper.emitted('clickItem') as any)[0][0]).toBe('B');
 });
 
 test('clickIndex trigger click', async () => {
@@ -97,7 +97,7 @@ test('clickIndex trigger click', async () => {
   const listItem = wrapper.findAll('.nut-elevator__bars__inner__item')[2];
   await listItem.trigger('click');
 
-  expect((wrapper.emitted('click-index') as any)[0][0]).toBe('G');
+  expect((wrapper.emitted('clickIndex') as any)[0][0]).toBe('G');
 });
 
 test('index is sticky', async () => {
