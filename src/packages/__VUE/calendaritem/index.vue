@@ -278,6 +278,9 @@ export default create({
       if ((type == 'range' && state.chooseData.length == 2) || type != 'range') {
         let selectData: any = state.chooseData.slice(0);
         if (type == 'week') {
+          if (state.chooseData.length !== 2) {
+            return;
+          }
           selectData = {
             weekDate: [handleWeekDate(state.chooseData[0] as string[]), handleWeekDate(state.chooseData[1] as string[])]
           };
