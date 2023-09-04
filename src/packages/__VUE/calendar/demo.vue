@@ -24,7 +24,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date1 ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
+        :desc="date1.length ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
@@ -105,7 +105,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date4 ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
+        :desc="date4.length ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
         @click="openSwitch('isVisible4')"
       >
       </nut-cell>
