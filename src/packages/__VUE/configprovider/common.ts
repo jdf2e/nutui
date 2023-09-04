@@ -1,27 +1,24 @@
-export const colorRgb = (str: string) => {
-  if (!str) return;
-  let sColor = str.toLowerCase();
+export const hexToRgb = (color: string) => {
   //十六进制颜色值的正则表达式
   const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+  if (!reg.test(color)) return '';
+  color = color.toLowerCase();
   // 如果是16进制颜色
-  if (reg.test(sColor)) {
-    if (sColor.length === 4) {
-      sColor =
-        '#' +
-        str
-          .slice(1)
-          .split('')
-          .map((char) => char + char)
-          .join('');
-    }
-    //处理六位的颜色值
-    const sColorChange = [];
-    for (let i = 1; i < 7; i += 2) {
-      sColorChange.push(parseInt('0x' + sColor.slice(i, i + 2)));
-    }
-    return sColorChange.join(',');
+  if (color.length === 4) {
+    color =
+      '#' +
+      color
+        .slice(1)
+        .split('')
+        .map((char) => char + char)
+        .join('');
   }
-  return '';
+  //处理六位的颜色值
+  const colors = [];
+  for (let i = 1; i < 7; i += 2) {
+    colors.push(parseInt('0x' + color.slice(i, i + 2)));
+  }
+  return colors.join(',');
 };
 
 export const kebabCase = (str: string): string => {
@@ -35,7 +32,7 @@ export const mapThemeVarsToCSSVars = (themeVars: Record<string, string>) => {
   const primaryColor = themeVars?.primaryColor;
   // 为了处理一些组件的rgba透明颜色
   if (primaryColor) {
-    const primaryColorRgb = colorRgb(primaryColor);
+    const primaryColorRgb = hexToRgb(primaryColor);
     cssVars[
       '--nut-address-region-tab-line'
     ] = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
