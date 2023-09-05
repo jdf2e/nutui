@@ -12,7 +12,6 @@
       :close-on-click-overlay="closeOnClickOverlay"
       :teleport-disable="false"
       :lock-scroll="lockScroll"
-      :catch-move="lockScroll"
       @click-close-icon="close"
       @click-overlay="close"
     >

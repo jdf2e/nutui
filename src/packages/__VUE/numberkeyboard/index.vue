@@ -6,7 +6,6 @@
       :pop-class="popClass"
       :overlay="false"
       :lock-scroll="lockScroll"
-      :catch-move="lockScroll"
       :teleport-disable="false"
     >
       <div class="nut-number-keyboard">

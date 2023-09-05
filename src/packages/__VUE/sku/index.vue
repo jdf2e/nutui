@@ -6,7 +6,6 @@
     round
     style="height: 75%"
     :lock-scroll="lockScroll"
-    :catch-move="lockScroll"
     :teleport-disable="teleportDisable"
     :teleport="teleport"
     @click-close-icon="closePopup('icon')"

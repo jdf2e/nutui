@@ -8,7 +8,6 @@
     v-bind="$attrs"
     :style="{ height: '85vh' }"
     :lock-scroll="lockScroll"
-    :catch-move="lockScroll"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
   >
