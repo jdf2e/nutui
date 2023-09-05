@@ -48,13 +48,13 @@ test('Navbar: emit click-left & click-right', () => {
   });
 
   wrapper.find('.nut-navbar__left').trigger('click');
-  expect(wrapper.emitted('onClickBack')).toBeTruthy();
+  expect(wrapper.emitted('clickBack')).toBeTruthy();
   wrapper.find('.nut-navbar__right').trigger('click');
-  expect(wrapper.emitted('onClickRight')).toBeTruthy();
+  expect(wrapper.emitted('clickRight')).toBeTruthy();
   wrapper.find('.nut-navbar__title .title').trigger('click');
-  expect(wrapper.emitted('onClickTitle')).toBeTruthy();
+  expect(wrapper.emitted('clickTitle')).toBeTruthy();
   wrapper.find('.nut-navbar__title .icon').trigger('click');
-  expect(wrapper.emitted('onClickIcon')).toBeTruthy();
+  expect(wrapper.emitted('clickIcon')).toBeTruthy();
 });
 
 test('Navbar: should change z-index when using z-index prop', async () => {

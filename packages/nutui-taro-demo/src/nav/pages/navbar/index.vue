@@ -3,7 +3,7 @@
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
 
-    <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+    <nut-navbar @click-back="back" @click-title="title" title="订单详情">
       <template #left>
         <div>返回</div>
       </template>
@@ -13,19 +13,19 @@
     </nut-navbar>
 
     <nut-navbar
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-right="rightClick"
+      @click-back="back"
+      @click-title="title"
+      @click-right="rightClick"
       title="浏览记录"
       desc="清空"
     ></nut-navbar>
 
     <nut-navbar
       :left-show="false"
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-icon="icon"
-      @on-click-right="rightClick"
+      @click-back="back"
+      @click-title="title"
+      @click-icon="icon"
+      @click-right="rightClick"
       title="购物车"
       :titleIcon="true"
       desc="编辑"
@@ -39,7 +39,7 @@
     </nut-navbar>
 
     <h2>自定义导航栏中间内容</h2>
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
+    <nut-navbar @click-back="back" @click-title="title" @click-right="rightClick" desc="编辑">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tab-pane title="商品"> </nut-tab-pane>
@@ -53,7 +53,7 @@
     </nut-navbar>
 
     <h2>多tab切换导航</h2>
-    <nut-navbar @on-click-back="back">
+    <nut-navbar @click-back="back">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tab-pane title="商品"> </nut-tab-pane>

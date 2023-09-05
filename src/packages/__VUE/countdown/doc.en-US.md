@@ -6,7 +6,7 @@ Used to display the countdown value in real time, and precision supports millise
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Countdown } from '@nutui/nutui';
 
@@ -18,25 +18,14 @@ app.use(Countdown);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-countdown :end-time="end"></nut-countdown>
-  </nut-cell>
+  <nut-countdown :end-time="end"></nut-countdown>
 </template>
 
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        end: Date.now() + 60 * 1000
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const end = ref(Date.now() + 60 * 1000);
 </script>
 ```
 
@@ -48,24 +37,14 @@ Different countdown display text can be realized by setting the `format` attribu
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-countdown :endTime="end" format="DD Day HH : mm : ss" />
-  </nut-cell>
+  <nut-countdown :end-time="end" format="DD Day HH : mm : ss" />
 </template>
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        end: Date.now() + 60 * 1000
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+
+<script setup>
+import { ref } from 'vue';
+const end = ref(Date.now() + 60 * 1000);
 </script>
 ```
 
@@ -75,24 +54,14 @@ Different countdown display text can be realized by setting the `format` attribu
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-countdown :endTime="end" millisecond format="HH:mm:ss:SS" />
-  </nut-cell>
+  <nut-countdown :end-time="end" millisecond format="HH:mm:ss:SS" />
 </template>
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        end: Date.now() + 60 * 1000
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+
+<script setup>
+import { ref } from 'vue';
+const end = ref(Date.now() + 60 * 1000);
 </script>
 ```
 
@@ -102,26 +71,15 @@ Different countdown display text can be realized by setting the `format` attribu
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-countdown :startTime="serverTime" :endTime="end"></nut-countdown>
-  </nut-cell>
+  <nut-countdown :start-time="serverTime" :end-time="end" />
 </template>
 
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        serverTime: Date.now() - 20 * 1000,
-        end: Date.now() + 60 * 1000
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const serverTime = ref(Date.now() - 20 * 1000);
+const end = ref(Date.now() + 60 * 1000);
 </script>
 ```
 
@@ -131,29 +89,19 @@ Different countdown display text can be realized by setting the `format` attribu
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell>
-    <nut-countdown :end-time="asyncEnd"></nut-countdown>
-  </nut-cell>
+  <nut-countdown :end-time="asyncEnd" />
 </template>
 
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        asyncEnd: 0
-      });
-      // 模拟异步时间
-      setTimeout(() => {
-        state.asyncEnd = Date.now() + 30 * 1000;
-      }, 3000);
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref, onMounted } from 'vue';
+const asyncEnd = ref(0);
+onMounted(() => {
+  setTimeout(() => {
+    asyncEnd.value = Date.now() + 30 * 1000;
+  }, 3000);
+});
 </script>
 ```
 
@@ -165,41 +113,29 @@ Paused and restarted the countdown with the `paused` attribute
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
-    <nut-countdown :endTime="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
+    <nut-countdown :end-time="end" :paused="paused" @paused="onPaused" @restart="onRestart" />
     <div style="position:absolute;right:10px;top:9px">
       <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
     </div>
   </nut-cell>
 </template>
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        paused: false,
-        end: Date.now() + 60 * 1000
-      });
+<script setup>
+import { ref } from 'vue';
+const paused = ref(false);
+const end = ref(Date.now() + 60 * 1000);
 
-      const toggle = () => {
-        state.paused = !state.paused;
-      };
-      const onpaused = (v) => {
-        console.log('paused: ', v);
-      };
-      const onrestart = (v) => {
-        console.log('restart: ', v);
-      };
-      return {
-        toggle,
-        onpaused,
-        onrestart,
-        ...toRefs(state)
-      };
-    }
-  };
+const toggle = () => {
+  state.paused = !state.paused;
+};
+const onPaused = (v) => {
+  console.log('paused: ', v);
+};
+const onRestart = (v) => {
+  console.log('restart: ', v);
+};
 </script>
 ```
 
@@ -209,12 +145,12 @@ Paused and restarted the countdown with the `paused` attribute
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
-    <nut-countdown v-model="resetTime" :endTime="end">
+    <nut-countdown v-model="resetTime" :end-time="end">
       <div class="countdown-part-box">
-        <div class="part-item-symbol">{{ resetTime.d }}Day</div>
+        <div class="part-item-symbol">{{ resetTime.d }}天</div>
         <div class="part-item h">{{ resetTime.h }}</div>
         <span class="part-item-symbol">:</span>
         <div class="part-item m">{{ resetTime.m }}</div>
@@ -224,46 +160,37 @@ Paused and restarted the countdown with the `paused` attribute
     </nut-countdown>
   </nut-cell>
 </template>
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const state = reactive({
-        end: Date.now() + 60 * 1000,
-        resetTime: {
-          d: '1',
-          h: '00',
-          m: '00',
-          s: '00'
-        }
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref, reactive } from 'vue';
+const end = ref(Date.now() + 60 * 1000);
+const resetTime = reactive({
+  d: '1',
+  h: '00',
+  m: '00',
+  s: '00'
+});
 </script>
 <style>
-  .countdown-part-box {
-    display: flex;
-    align-items: center;
-  }
-  .part-item {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 25px;
-    background: #e8220e;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 6px;
-  }
+.countdown-part-box {
+  display: flex;
+  align-items: center;
+}
+.part-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 25px;
+  background: #e8220e;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+}
 
-  .part-item-symbol {
-    margin: 0 5px;
-  }
+.part-item-symbol {
+  margin: 0 5px;
+}
 </style>
 ```
 
@@ -273,34 +200,29 @@ Paused and restarted the countdown with the `paused` attribute
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
-    <nut-countdown time="20000" ref="Countdown" :autoStart="false" format="ss:SS" />
+    <nut-countdown time="20000" ref="Countdown" :auto-start="false" format="ss:SS" />
   </nut-cell>
   <nut-grid :column-num="3">
-    <nut-grid-item><nut-button type="primary" @click="start">Start</nut-button></nut-grid-item>
-    <nut-grid-item><nut-button type="primary" @click="pause">Pause</nut-button></nut-grid-item>
-    <nut-grid-item><nut-button type="primary" @click="reset">Reset</nut-button></nut-grid-item>
+    <nut-grid-item><nut-button type="primary" @click="start">开始</nut-button></nut-grid-item>
+    <nut-grid-item><nut-button type="primary" @click="pause">暂停</nut-button></nut-grid-item>
+    <nut-grid-item><nut-button type="primary" @click="reset">重置</nut-button></nut-grid-item>
   </nut-grid>
 </template>
-<script>
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup(props) {
-      const Countdown = ref(null);
-      const start = () => {
-        Countdown.value.start();
-      };
-      const pause = () => {
-        Countdown.value.pause();
-      };
-      const reset = () => {
-        Countdown.value.reset();
-      };
-      return { Countdown, start, pause, reset };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const Countdown = ref(null);
+const start = () => {
+  Countdown.value.start();
+};
+const pause = () => {
+  Countdown.value.pause();
+};
+const reset = () => {
+  Countdown.value.reset();
+};
 </script>
 ```
 
@@ -337,11 +259,14 @@ Paused and restarted the countdown with the `paused` attribute
 
 ### Events
 
-| Event      | Description                     | Arguments          |
-| ---------- | ------------------------------- | ------------------ |
-| on-end     | Emitted when count down end     | Residual Timestamp |
-| on-paused  | Emitted when count down paused  | Residual Timestamp |
-| on-restart | Emitted when count down restart | Residual Timestamp |
+| Event           | Description                     | Arguments          |
+| --------------- | ------------------------------- | ------------------ |
+| end`v4.1.5`     | Emitted when count down end     | Residual Timestamp |
+| paused`v4.1.5`  | Emitted when count down paused  | Residual Timestamp |
+| restart`v4.1.5` | Emitted when count down restart | Residual Timestamp |
+| on-end          | Emitted when count down end     | Residual Timestamp |
+| on-paused       | Emitted when count down paused  | Residual Timestamp |
+| on-restart      | Emitted when count down restart | Residual Timestamp |
 
 ### Methods
 

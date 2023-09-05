@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-countdown :end-time="end" @on-end="onend"></nut-countdown>
+      <nut-countdown :end-time="end" @end="onend"></nut-countdown>
     </nut-cell>
     <h2>{{ translate('format') }}</h2>
     <nut-cell>
@@ -33,7 +33,7 @@
     <h2>{{ translate('controlTime') }}</h2>
 
     <nut-cell>
-      <nut-countdown :end-time="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
+      <nut-countdown :end-time="end" :paused="paused" @paused="onpaused" @restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
         <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
       </div>

@@ -20,7 +20,7 @@ app.use(Navbar);
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" title="Order details">
+  <nut-navbar @click-back="back" @click-title="title" title="Order details">
     <template #left>
       <div>Back</div>
     </template>
@@ -30,19 +30,19 @@ app.use(Navbar);
   </nut-navbar>
 
   <nut-navbar
-    @on-click-back="back"
-    @on-click-title="title"
-    @on-click-right="rightClick"
+    @click-back="back"
+    @click-title="title"
+    @click-right="rightClick"
     title="Browsing history"
     desc="Clear"
   ></nut-navbar>
 
   <nut-navbar
     :left-show="false"
-    @on-click-back="back"
-    @on-click-title="title"
-    @on-click-icon="icon"
-    @on-click-right="rightClick"
+    @click-back="back"
+    @click-title="title"
+    @click-icon="icon"
+    @click-right="rightClick"
     title="Cart"
     :titleIcon="true"
     desc="Edit"
@@ -81,7 +81,7 @@ const icon = () => {
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="Edit">
+  <nut-navbar @click-back="back" @click-title="title" @click-right="rightClick" desc="Edit">
     <template #content>
       <nut-tabs v-model="tab1value" @click="changeTab">
         <nut-tab-pane title="Title1"> </nut-tab-pane>
@@ -122,7 +122,7 @@ const changeTab = (tab) => {
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back">
+  <nut-navbar @click-back="back">
     <template #content>
       <nut-tabs v-model="tab2value" @click="changeTabList">
         <nut-tab-pane title="Title1"> </nut-tab-pane>
@@ -171,12 +171,16 @@ const changeTabList = (tab) => {
 
 ### Events
 
-| Event          | Description                     | Arguments   |
-| -------------- | ------------------------------- | ----------- |
-| on-click-title | Click page title event          | event:Event |
-| on-click-icon  | Click the page title icon event | event:Event |
-| on-click-right | Click right button event        | event:Event |
-| on-click-back  | Click left Icon event           | event:Event |
+| Event              | Description                     | Arguments   |
+| ------------------ | ------------------------------- | ----------- |
+| click-title`4.1.5` | Click page title event          | event:Event |
+| click-icon`4.1.5`  | Click the page title icon event | event:Event |
+| click-right`4.1.5` | Click right button event        | event:Event |
+| click-back`4.1.5`  | Click left Icon event           | event:Event |
+| on-click-title     | Click page title event          | event:Event |
+| on-click-icon      | Click the page title icon event | event:Event |
+| on-click-right     | Click right button event        | event:Event |
+| on-click-back      | Click left Icon event           | event:Event |
 
 ### Slots
 

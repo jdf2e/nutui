@@ -14,7 +14,6 @@ import { createComponent } from '@/packages/utils/create';
 import { getTimeStamp } from './util';
 import { padZero } from '@/packages/utils/util';
 const { componentName, create, translate } = createComponent('countdown');
-
 export default create({
   props: {
     modelValue: {
@@ -64,7 +63,17 @@ export default create({
       default: 0
     }
   },
-  emits: ['input', 'onEnd', 'onRestart', 'onPaused', 'update:modelValue'],
+  emits: [
+    'input',
+    'update:modelValue',
+    'end',
+    'restart',
+    'paused',
+    // will be deprecated
+    'onEnd',
+    'onRestart',
+    'onPaused'
+  ],
 
   setup(props: any, { emit, slots }) {
     const state = reactive({
@@ -106,6 +115,7 @@ export default create({
             if (!remainTime) {
               state.counting = false;
               pause();
+              emit('end');
               emit('onEnd');
             }
 
@@ -192,6 +202,7 @@ export default create({
         state.counting = true;
         state.handleEndTime = Date.now() + Number(state.restTime);
         tick();
+        emit('restart', state.restTime);
         emit('onRestart', state.restTime);
       }
     };
@@ -199,6 +210,7 @@ export default create({
     const pause = () => {
       cancelAnimationFrame(state.timer as any);
       state.counting = false;
+      emit('paused', state.restTime);
       emit('onPaused', state.restTime);
     };
 
@@ -240,6 +252,7 @@ export default create({
             state.handleEndTime = Date.now() + Number(state.restTime);
             tick();
           }
+          emit('restart', state.restTime);
           emit('onRestart', state.restTime);
         }
       }
