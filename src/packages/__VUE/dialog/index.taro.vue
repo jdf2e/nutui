@@ -4,6 +4,7 @@
     :teleport="teleport"
     :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
+    :catch-move="lockScroll"
     :pop-class="popClass"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"

@@ -24,7 +24,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date1 ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
+        :desc="date1.length ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
@@ -64,7 +64,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('week')"
-        :desc="date9 ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
+        :desc="date9.length ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
         @click="openSwitch('isVisible9')"
       >
       </nut-cell>
@@ -105,7 +105,7 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date4 ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
+        :desc="date4.length ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
         @click="openSwitch('isVisible4')"
       >
       </nut-cell>
@@ -296,7 +296,7 @@ export default defineComponent({
       date6: [] as string[],
       date7: [] as string[],
       date8: '',
-      date9: ['2020-01-23', '2020-01-26'],
+      date9: [] as string[],
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
