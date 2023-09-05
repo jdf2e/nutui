@@ -147,22 +147,30 @@ const showPop2 = ref(false);
 
 ### 禁止滚动穿透
 
-> 仅适用于微信小程序
+> 4.1.5 版本更新，仅适用于 H5 与微信小程序
 
 使用这类全局遮罩类型的组件时，滑动组件可能会出现底层页面一起滑动的问题。
 
-开启 `lock-scroll` 可以阻止 Popup 的背景遮罩层的滚动穿透问题。
+开启 `lock-scroll` 可以阻止 Popup 的背景遮罩层的滚动穿透问题，已默认开启。
 
-开启 `catch-move` 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滚动。
-
-在此基础上再增加 `scroll-view` 组件则可以避免这个问题。
-
-以下为推荐方案：
+使用 Taro 提供的 [catch-move](https://taro-docs.jd.com/docs/vue-overall#%E4%BA%8Ccatchmove) 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滑动。
 
 ```vue
 <template>
-  <nut-popup :lock-scroll="true" :catch-move="true">
-    <scroll-view>同时开启 lock-scroll 与 catch-move，且内部使用 scroll-view 包裹</scroll-view>
+  <nut-popup :catch-move="true">
+    <view>在该内容区域溢出时，无法滑动</view>
+  </nut-popup>
+</template>
+```
+
+如果需要内容支持溢出滚动，则需要包裹一层 `scroll-view` 组件。
+
+```vue
+<template>
+  <nut-popup :catch-move="true">
+    <scroll-view>
+      <view>在该内容溢出时，则可以正常滑动</view>
+    </scroll-view>
   </nut-popup>
 </template>
 ```
