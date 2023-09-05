@@ -27,4 +27,11 @@ test('ConfigProvider: props themeVars', async () => {
     }
   });
   expect(wrapper.html()).toMatchSnapshot();
+
+  await wrapper.setProps({
+    themeVars: {
+      primaryColor: '#ff'
+    }
+  });
+  expect(wrapper.html()).toMatchSnapshot();
 });
