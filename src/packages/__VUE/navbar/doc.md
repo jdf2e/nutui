@@ -20,7 +20,7 @@ app.use(Navbar);
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+  <nut-navbar @click-back="back" @click-title="title" title="订单详情">
     <template #left>
       <div>返回</div>
     </template>
@@ -30,19 +30,19 @@ app.use(Navbar);
   </nut-navbar>
 
   <nut-navbar
-    @on-click-back="back"
-    @on-click-title="title"
-    @on-click-right="rightClick"
+    @click-back="back"
+    @click-title="title"
+    @click-right="rightClick"
     title="浏览记录"
     desc="清空"
   ></nut-navbar>
 
   <nut-navbar
     :left-show="false"
-    @on-click-back="back"
-    @on-click-title="title"
-    @on-click-icon="icon"
-    @on-click-right="rightClick"
+    @click-back="back"
+    @click-title="title"
+    @click-icon="icon"
+    @click-right="rightClick"
     title="购物车"
     :titleIcon="true"
     desc="编辑"
@@ -81,7 +81,7 @@ const icon = () => {
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
+  <nut-navbar @click-back="back" @click-title="title" @click-right="rightClick" desc="编辑">
     <template #content>
       <nut-tabs v-model="tab1value" @click="changeTab">
         <nut-tab-pane title="标题1"> </nut-tab-pane>
@@ -122,7 +122,7 @@ const changeTab = (tab) => {
 
 ```vue
 <template>
-  <nut-navbar @on-click-back="back">
+  <nut-navbar @click-back="back">
     <template #content>
       <nut-tabs v-model="tab2value" @click="changeTabList">
         <nut-tab-pane title="标题1"> </nut-tab-pane>
@@ -171,12 +171,16 @@ const changeTabList = (tab) => {
 
 ### Events
 
-| 事件名         | 说明                     | 回调参数    |
-| -------------- | ------------------------ | ----------- |
-| on-click-title | 点击页面标题事件         | event:Event |
-| on-click-icon  | 点击页面标题 `icon` 事件 | event:Event |
-| on-click-right | 点击右侧按钮事件         | event:Event |
-| on-click-back  | 点击左侧图标事件         | event:Event |
+| 事件名             | 说明                     | 回调参数    |
+| ------------------ | ------------------------ | ----------- |
+| click-title`4.1.5` | 点击页面标题事件         | event:Event |
+| click-icon`4.1.5`  | 点击页面标题 `icon` 事件 | event:Event |
+| click-right`4.1.5` | 点击右侧按钮事件         | event:Event |
+| click-back`4.1.5`  | 点击左侧图标事件         | event:Event |
+| on-click-title     | 点击页面标题事件         | event:Event |
+| on-click-icon      | 点击页面标题 `icon` 事件 | event:Event |
+| on-click-right     | 点击右侧按钮事件         | event:Event |
+| on-click-back      | 点击左侧图标事件         | event:Event |
 
 ### Slots
 
