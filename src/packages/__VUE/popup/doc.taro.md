@@ -145,6 +145,28 @@ const showPop2 = ref(false);
 
 :::
 
+### 禁止滚动穿透
+
+> 仅适用于微信小程序
+
+使用这类全局遮罩类型的组件时，滑动组件可能会出现底层页面一起滑动的问题。
+
+开启 `lock-scroll` 可以阻止 Popup 的背景遮罩层的滚动穿透问题。
+
+开启 `catch-move` 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滚动。
+
+在此基础上再增加 `scroll-view` 组件则可以避免这个问题。
+
+以下为推荐方案：
+
+```vue
+<template>
+  <nut-popup :lock-scroll="true" :catch-move="true">
+    <scroll-view>同时开启 lock-scroll 与 catch-move，且内部使用 scroll-view 包裹</scroll-view>
+  </nut-popup>
+</template>
+```
+
 ## API
 
 ### Props

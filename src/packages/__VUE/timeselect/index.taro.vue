@@ -6,6 +6,7 @@
     :visible="visible"
     :style="popStyle"
     :lock-scroll="lockScroll"
+    :catch-move="lockScroll"
     @click-overlay="close"
     @click-close-icon="close"
   >

@@ -10,6 +10,8 @@
       }"
       :closeable="true"
       :close-on-click-overlay="closeOnClickOverlay"
+      :lock-scroll="lockScroll"
+      :catch-move="lockScroll"
       @click-close-icon="close"
       @click-overlay="close"
     >
@@ -76,6 +78,10 @@ export default create({
     length: {
       type: [String, Number], //4～6
       default: 6
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],

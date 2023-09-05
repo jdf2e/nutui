@@ -19,6 +19,7 @@
       :overlay="parent.props.overlay"
       :lock-scroll="parent.props.lockScroll"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
+      :catch-move="parent.props.lockScroll"
       @closed="handleClose"
     >
       <nut-scroll-view :scroll-y="true">

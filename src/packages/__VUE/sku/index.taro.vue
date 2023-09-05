@@ -5,6 +5,8 @@
     closeable
     round
     style="height: 75%"
+    :lock-scroll="lockScroll"
+    :catch-move="lockScroll"
     @click-close-icon="closePopup('icon')"
     @click-overlay="closePopup('overlay')"
     @close="closePopup('close')"
@@ -137,6 +139,11 @@ export default create({
     confirmText: {
       type: String,
       default: ''
+    },
+
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: [

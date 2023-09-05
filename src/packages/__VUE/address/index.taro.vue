@@ -3,6 +3,7 @@
     v-model:visible="showPopup"
     position="bottom"
     :lock-scroll="lockScroll"
+    :catch-move="lockScroll"
     :round="round"
     @close="close"
     @click-overlay="clickOverlay"

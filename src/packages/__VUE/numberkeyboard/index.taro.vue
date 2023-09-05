@@ -5,6 +5,8 @@
     :pop-class="popClass"
     :overlay="overlay"
     overlay-class="nut-number-keyboard-overlay"
+    :lock-scroll="lockScroll"
+    :catch-move="lockScroll"
     @click-overlay="closeBoard()"
   >
     <div ref="root" class="nut-number-keyboard">
@@ -127,6 +129,10 @@ export default create({
     popClass: {
       type: String,
       default: ''
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['input', 'delete', 'close', 'update:modelValue', 'update:visible'],

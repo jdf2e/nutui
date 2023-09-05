@@ -7,6 +7,7 @@
     closeable
     v-bind="$attrs"
     :style="{ height: '85vh' }"
+    :lock-scroll="lockScroll"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
   >
@@ -162,6 +163,10 @@ export default create({
       type: Number,
       default: 0,
       validator: (val: number) => val >= 0 && val <= 6
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
