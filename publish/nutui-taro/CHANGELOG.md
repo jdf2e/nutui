@@ -1,3 +1,19 @@
+## v4.1.5
+
+`2023-09-05`
+
+Bug Fixes
+
+- countdown: millisecond format (#2514) @subordon
+- calendar: 修复周选择时 weekDate 相关报错 (#2538) @iCheng
+- calendar: 修正 demo 默认文案显示条件 (#2539) @iCheng
+- fix: 部分组件增加 catch-move 阻止滚动穿透 (#2543)
+- fix: countdown/invoice/navbar 优化事件命名 (#2536)
+
+Refactor
+
+- configprovider: move common logic to common file (#2540) @subordon
+
 ## v4.1.4
 
 `2023-08-25`

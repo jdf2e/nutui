@@ -87,7 +87,7 @@
 
 | 项目 | 描述 |
 | --- | --- |
-| [yang1206/uniapp-nutui](https://github.com/yang1206/uniapp-nutui) | 基于 NutUI 4.x 版本开发的 uni-app 组件库 |
+| [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | 基于 NutUI 4.x 版本开发的 uni-app 组件库 |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | 基于 NutUI 3.x 版本开发的 uni-app 组件库 |
 
 ## 使用案例
