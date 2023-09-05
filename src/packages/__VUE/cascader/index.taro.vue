@@ -10,6 +10,7 @@
       :destroy-on-close="false"
       :close-icon-position="closeIconPosition"
       :lock-scroll="lockScroll"
+      :catch-move="lockScroll"
     >
       <template v-if="title">
         <view class="nut-cascader__bar" v-html="title"></view>

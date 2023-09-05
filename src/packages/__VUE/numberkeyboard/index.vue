@@ -5,6 +5,8 @@
       position="bottom"
       :pop-class="popClass"
       :overlay="false"
+      :lock-scroll="lockScroll"
+      :catch-move="lockScroll"
       :teleport-disable="false"
     >
       <div class="nut-number-keyboard">
@@ -124,6 +126,10 @@ export default create({
     popClass: {
       type: String,
       default: ''
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['input', 'delete', 'close', 'blur', 'update:modelValue', 'update:visible'],
