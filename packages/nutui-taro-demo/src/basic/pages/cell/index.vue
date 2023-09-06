@@ -4,7 +4,7 @@
     <h2>基础用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
     <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
-    <nut-cell title="点击测试" @click="testClick"></nut-cell>
+    <nut-cell title="点击测试" @click="click"></nut-cell>
     <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 
     <h2>尺寸设置 large</h2>
@@ -37,7 +37,7 @@
     <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
       <nut-cell title="Switch">
         <template v-slot:link>
-          <nut-switch v-model="switchChecked" />
+          <nut-switch v-model="checked" />
         </template>
       </nut-cell>
     </nut-cell-group>
@@ -66,20 +66,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { My } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: { My, Header },
-  setup() {
-    const testClick = (event: Event) => {
-      // console.log('点击事件');
-    };
-    const env = Taro.getEnv();
-    const switchChecked = ref(true);
-    return { testClick, switchChecked, env };
-  }
+const click = () => {
+  console.log('点击事件');
 };
+const env = Taro.getEnv();
+const checked = ref(true);
 </script>

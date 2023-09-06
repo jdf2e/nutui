@@ -3,7 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <nut-cell :title="translate('title')" :desc="translate('desc')"></nut-cell>
     <nut-cell :title="translate('title')" :sub-title="translate('title1')" :desc="translate('desc')"></nut-cell>
-    <nut-cell :title="translate('title3')" @click="testClick"></nut-cell>
+    <nut-cell :title="translate('title3')" @click="click"></nut-cell>
     <nut-cell :title="translate('title4')" round-radius="0"></nut-cell>
 
     <h2>{{ translate('title9') }}</h2>
@@ -38,7 +38,7 @@
     <nut-cell-group :title="translate('customRight')">
       <nut-cell title="Switch">
         <template #link>
-          <nut-switch v-model="switchChecked" />
+          <nut-switch v-model="checked" />
         </template>
       </nut-cell>
     </nut-cell-group>
@@ -68,11 +68,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import NutCell from './index.vue';
+import NutCellGroup from '../cellgroup/index.vue';
 import { My } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
@@ -125,17 +127,9 @@ const initTranslate = () =>
       displayIcon: 'cell display icon'
     }
   });
-export default defineComponent({
-  components: { My },
-  setup() {
-    initTranslate();
-    const testClick = () => {
-      console.log('Click Test');
-    };
-    const switchChecked = ref(true);
-    return { testClick, switchChecked, translate };
-  }
-});
+initTranslate();
+const click = () => {
+  console.log('Click Test');
+};
+const checked = ref(true);
 </script>
-
-<style lang="scss" scoped></style>
