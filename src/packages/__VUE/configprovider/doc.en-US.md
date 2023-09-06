@@ -26,7 +26,7 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
 <template>
   <nut-config-provider :theme="theme">
     <nut-cell title="Switch Dark Mode">
-      <template v-slot:link>
+      <template #link>
         <nut-switch v-model="switchChecked" @change="switchChange" />
       </template>
     </nut-cell>

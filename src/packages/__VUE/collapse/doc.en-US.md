@@ -25,7 +25,7 @@ Control the expanded panel list through 'V-model', and 'activenames' is in array
 <template>
   <nut-collapse v-model="activeNames" @change="onChange">
     <nut-collapse-item :name="1">
-      <template v-slot:title> {{title1}} </template>
+      <template #title> {{title1}} </template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -114,7 +114,7 @@ Set custom icons through icon and rotate to set the rotation angle of icons
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:value> text test </template>
+      <template #value> text test </template>
       NUTUI3. 0 rethink its internal consistency and composability
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2" :icon="Follow">
@@ -155,7 +155,7 @@ Set content through slot: extra
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extra>fixed content</template>
+      <template #extra>fixed content</template>
       Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">

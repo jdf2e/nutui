@@ -3,7 +3,7 @@
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell title="点击试试">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
       </template>
     </nut-cell>
@@ -19,7 +19,7 @@
     <h2>自定义样式</h2>
 
     <nut-cell title="点击试试">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target5" v-model="switchValue" @click="showTourHandle" />
       </template>
     </nut-cell>
@@ -40,7 +40,7 @@
     <h2>设置偏移量</h2>
 
     <nut-cell title="点击试试" @click="showTour2 = true">
-      <template v-slot:link>
+      <template #link>
         <div class="tour-demo-img">
           <img
             id="target6"
@@ -70,7 +70,7 @@
     <h2>自定义内容</h2>
 
     <nut-cell title="点击试试">
-      <template v-slot:link>
+      <template #link>
         <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
       </template>
     </nut-cell>

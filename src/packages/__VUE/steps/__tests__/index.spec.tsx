@@ -166,7 +166,7 @@ test('render step slot', async () => {
     },
     template: `
       <nut-steps :current="current">
-        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"><template v-slot:title>步骤一</template></nut-step>
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"><template #title>步骤一</template></nut-step>
         <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
         <nut-step title="未开始">
           <template #content>

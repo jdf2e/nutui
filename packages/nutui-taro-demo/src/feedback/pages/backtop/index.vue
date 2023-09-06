@@ -2,7 +2,7 @@
   <view class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <nut-backtop @click="click">
-      <template v-slot:content>
+      <template #content>
         <div class="text-data">我是测试数据1</div>
         <div class="text-data">我是测试数据2</div>
         <div class="text-data">我是测试数据3</div>

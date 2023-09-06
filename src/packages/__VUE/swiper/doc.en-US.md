@@ -210,7 +210,7 @@ Support dynamic addition / deletion of pictures
 
 ### Custom paging indicator
 
-`v-slot:page` Represents a custom indicator
+`#page` Represents a custom indicator
 
 :::demo
 
@@ -229,7 +229,7 @@ Support dynamic addition / deletion of pictures
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
     </nut-swiper-item>
-    <template v-slot:page>
+    <template #page>
       <div class="page"> {{ current }}/4 </div>
     </template>
   </nut-swiper>
@@ -293,7 +293,7 @@ Support dynamic addition / deletion of pictures
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
     </nut-swiper-item>
-    <template v-slot:page>
+    <template #page>
       <div class="page"> {{ current1 }}/4 </div>
     </template>
   </nut-swiper>

@@ -19,7 +19,7 @@
 
     <h2>直接使用插槽(slot title)</h2>
     <nut-cell desc="描述文字">
-      <template v-slot:title>
+      <template #title>
         <span>Title <b style="color: red">1</b></span>
       </template>
     </nut-cell>
@@ -36,7 +36,7 @@
     </nut-cell-group> -->
     <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
       <nut-cell title="Switch">
-        <template v-slot:link>
+        <template #link>
           <nut-switch v-model="checked" />
         </template>
       </nut-cell>
@@ -44,7 +44,7 @@
 
     <nut-cell-group title="自定义左侧 Icon 区域">
       <nut-cell title="图片">
-        <template v-slot:icon>
+        <template #icon>
           <img
             class="nut-icon"
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
@@ -55,7 +55,7 @@
 
     <h2>展示图标</h2>
     <nut-cell title="姓名" icon="my" desc="张三" isLink>
-      <template v-slot:icon>
+      <template #icon>
         <My />
       </template>
     </nut-cell>

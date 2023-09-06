@@ -210,7 +210,7 @@ app.use(SwiperItem);
 
 ### 自定义分页指示器
 
-`v-slot:page` 表示自定义指示器
+`#page` 表示自定义指示器
 
 :::demo
 
@@ -229,7 +229,7 @@ app.use(SwiperItem);
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
     </nut-swiper-item>
-    <template v-slot:page>
+    <template #page>
       <div class="page"> {{ current }}/4 </div>
     </template>
   </nut-swiper>
@@ -293,7 +293,7 @@ app.use(SwiperItem);
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
     </nut-swiper-item>
-    <template v-slot:page>
+    <template #page>
       <div class="page"> {{ current1 }}/4 </div>
     </template>
   </nut-swiper>

@@ -35,7 +35,7 @@
 
     <h2>通告栏模式--链接模式</h2>
     <nut-noticebar :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
-      <template v-slot:left-icon>
+      <template #left-icon>
         <img
           src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
           style="width: 20px; height: 20px"
@@ -112,7 +112,7 @@
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
       >
-        <template v-slot:right-icon>
+        <template #right-icon>
           <img
             src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
             style="width: 20px; height: 20px"

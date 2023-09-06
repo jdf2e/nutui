@@ -494,7 +494,7 @@ app.use(FormItem);
 ```html
 插槽使用方式
 <nut-form-item>
-  <template v-slot:label>slot label</template>
+  <template #label>slot label</template>
 </nut-form-item>
 ```
 

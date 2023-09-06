@@ -19,7 +19,7 @@ app.use(Backtop);
 ```html
 <view class="demo">
   <nut-backtop>
-    <template v-slot:content>
+    <template #content>
       <div v-for="(item, index) in 24" class="test">{{index}}</div>
     </template>
   </nut-backtop>

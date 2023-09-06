@@ -26,7 +26,7 @@ app.use(ConfigProvider);
 <template>
   <nut-config-provider :theme="theme">
     <nut-cell title="切换暗黑">
-      <template v-slot:link>
+      <template #link>
         <nut-switch v-model="switchChecked" @change="switchChange" />
       </template>
     </nut-cell>

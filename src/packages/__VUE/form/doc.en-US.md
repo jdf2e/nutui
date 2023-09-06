@@ -476,7 +476,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 ```html
 use slot
 <nut-form-item>
-  <template v-slot:label>slot label</template>
+  <template #label>slot label</template>
 </nut-form-item>
 ```
 
