@@ -69,34 +69,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { StarFill, Star } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  props: {},
-  components: {
-    StarFill,
-    Star,
-    Header
-  },
-  setup(props) {
-    const env = Taro.getEnv();
-    let isLoading = ref(false);
-    const changeLoading = () => {
-      isLoading.value = true;
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 3000);
-    };
-
-    return {
-      isLoading,
-      changeLoading,
-      env
-    };
-  }
+const env = Taro.getEnv();
+const isLoading = ref(false);
+const changeLoading = () => {
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000);
 };
 </script>
 

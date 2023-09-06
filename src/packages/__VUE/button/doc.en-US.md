@@ -6,7 +6,7 @@ Buttons are used to trigger an action, such as submitting a form.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Button } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ The button supports six types: `default`, `primary`, `info`, `warning`, `danger`
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary">Primary</nut-button>
   <nut-button type="info">Info</nut-button>
@@ -39,7 +39,7 @@ The button is set as a plain button through the `plain` property, the text of th
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button plain type="primary">Plain</nut-button>
   <nut-button plain type="info">Plain</nut-button>
@@ -54,7 +54,7 @@ The button is disabled through the `disabled` property, and the button cannot be
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button disabled type="primary">Disabled</nut-button>
   <nut-button plain disabled type="info">Disabled</nut-button>
@@ -70,7 +70,7 @@ Set the button shape through the `shape` property, support circle and square but
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button shape="square" type="primary">Square</nut-button>
   <nut-button type="info">Round</nut-button>
@@ -83,30 +83,22 @@ Set the button shape through the `shape` property, support circle and square but
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button loading type="info"></nut-button>
   <nut-button loading type="warning">Loading...</nut-button>
   <nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      let isLoading = ref(false);
-      const changeLoading = () => {
-        isLoading.value = true;
-        setTimeout(() => {
-          isLoading.value = false;
-        }, 3000);
-      };
-      return {
-        isLoading,
-        changeLoading
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const isLoading = ref(false);
+const changeLoading = () => {
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000);
+};
 </script>
 ```
 
@@ -116,7 +108,7 @@ Set the button shape through the `shape` property, support circle and square but
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button shape="square" plain type="primary">
     <template #icon>
@@ -130,11 +122,8 @@ Set the button shape through the `shape` property, support circle and square but
     Star
   </nut-button>
 </template>
-<script lang="ts">
-  import { StarFill, Star } from '@nutui/icons-vue';
-  export default {
-    components: { StarFill, Star }
-  };
+<script setup>
+import { StarFill, Star } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -146,7 +135,7 @@ Support `large`, `normal`, `small`, `mini` four sizes, the default is `normal`.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button size="large" type="primary">Large</nut-button>
   <nut-button type="primary">Normal</nut-button>
@@ -163,7 +152,7 @@ By default, the button is an inline block-level element. The `block` attribute c
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button block type="primary">Block Element</nut-button>
 </template>
@@ -177,7 +166,7 @@ The color of the button can be customized through the color property.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button color="#7232dd">Pure</nut-button>
   <nut-button color="#7232dd" plain>Pure</nut-button>

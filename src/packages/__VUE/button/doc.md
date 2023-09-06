@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Button } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary">主要按钮</nut-button>
   <nut-button type="info">信息按钮</nut-button>
@@ -39,7 +39,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button plain type="primary">朴素按钮</nut-button>
   <nut-button plain type="info">朴素按钮</nut-button>
@@ -54,7 +54,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button disabled type="primary">禁用状态</nut-button>
   <nut-button plain disabled type="info">禁用状态</nut-button>
@@ -70,7 +70,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button shape="square" type="primary">方形按钮</nut-button>
   <nut-button type="info">圆形按钮</nut-button>
@@ -83,30 +83,22 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button loading type="info"></nut-button>
   <nut-button loading type="warning">加载中...</nut-button>
   <nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
 </template>
 
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup(props) {
-      let isLoading = ref(false);
-      const changeLoading = () => {
-        isLoading.value = true;
-        setTimeout(() => {
-          isLoading.value = false;
-        }, 3000);
-      };
-      return {
-        isLoading,
-        changeLoading
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const isLoading = ref(false);
+const changeLoading = () => {
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000);
+};
 </script>
 ```
 
@@ -116,7 +108,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button shape="square" plain type="primary">
     <template #icon>
@@ -130,11 +122,8 @@ app.use(Button);
     收藏
   </nut-button>
 </template>
-<script lang="ts">
-  import { StarFill, Star } from '@nutui/icons-vue';
-  export default {
-    components: { StarFill, Star }
-  };
+<script setup>
+import { StarFill, Star } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -146,7 +135,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button size="large" type="primary">大号按钮</nut-button>
   <nut-button type="primary">普通按钮</nut-button>
@@ -163,7 +152,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button block type="primary">块级元素</nut-button>
 </template>
@@ -176,7 +165,7 @@ app.use(Button);
 通过 color 属性可以自定义按钮的颜色。
 :::demo
 
-```html
+```vue
 <template>
   <nut-button color="#7232dd">单色按钮</nut-button>
   <nut-button color="#7232dd" plain>单色按钮</nut-button>
