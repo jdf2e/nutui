@@ -16,12 +16,12 @@
   "devDependencies": {
     "rimraf": "^5.0.1",
     "@types/node": "^18.17.1",
-    "@vitejs/plugin-vue": "^4.3.1",
+    "@vitejs/plugin-vue": "^4.3.4",
     "vite": "^4.4.9",
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "@vue/repl": "^2.4.0",
+    "@vue/repl": "^2.5.8",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1"
   }
