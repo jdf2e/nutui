@@ -86,6 +86,10 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 | [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | uni-app UI Components based on NutUI 4.x |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | uni-app UI Components based on NutUI 3.x |
 
+## Status
+
+![Alt](https://repobeats.axiom.co/api/embed/fd45cb2c6840153af6328b050e87ce01d785b72b.svg "Repobeats analytics image")
+
 ## Cases
 
 NutUI has been used in our production environment, and widely used in the industry for cross-platform development.
