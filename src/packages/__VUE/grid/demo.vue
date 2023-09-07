@@ -150,8 +150,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import NutGrid from './index.vue';
+import NutGridItem from '../griditem/index.vue';
+import NutAvatar from '../avatar/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('grid');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -187,22 +189,5 @@ const initTranslate = () =>
       url: 'URL'
     }
   });
-export default defineComponent({
-  components: { Dongdong, Home, Search },
-  props: {},
-  setup() {
-    initTranslate();
-    let a = new Map([
-      ['Michael', 95],
-      ['Bob', 75],
-      ['Tracy', 85]
-    ]);
-    a.set('Adam', 67);
-    console.log(a);
-
-    return {
-      translate
-    };
-  }
-});
+initTranslate();
 </script>
