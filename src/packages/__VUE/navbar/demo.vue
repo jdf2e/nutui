@@ -66,8 +66,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
+import NutNavbar from './index.vue';
+import NutTabs from '../tabs/index.vue';
+import NutTabPane from '../tabpane/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('navbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -103,42 +106,28 @@ const initTranslate = () =>
       title3: 'Multi-tab switching navigation'
     }
   });
-export default defineComponent({
-  components: { ShareN, Cart2, MoreX, HorizontalN },
-  setup() {
-    initTranslate();
-    const tab1value = ref(0);
-    const tab2value = ref(0);
-    const methods = {
-      back() {
-        console.log('header头部， 点击返回');
-      },
-      title() {
-        console.log('header头部， 点击title');
-      },
-      icon() {
-        console.log('icon');
-      },
+initTranslate();
+const tab1value = ref(0);
+const tab2value = ref(0);
+const back = () => {
+  console.log('header头部， 点击返回');
+};
+const title = () => {
+  console.log('header头部， 点击title');
+};
+const icon = () => {
+  console.log('icon');
+};
 
-      rightClick() {
-        console.log('右侧点击事件');
-      },
-      changeTab(tab: any) {
-        tab1value.value = tab.paneKey as number;
-      },
-      changeTabList(tab: any) {
-        tab2value.value = tab.paneKey as number;
-      }
-    };
-
-    return {
-      translate,
-      tab1value,
-      tab2value,
-      ...methods
-    };
-  }
-});
+const rightClick = () => {
+  console.log('右侧点击事件');
+};
+const changeTab = (tab: any) => {
+  tab1value.value = tab.paneKey as number;
+};
+const changeTabList = (tab: any) => {
+  tab2value.value = tab.paneKey as number;
+};
 </script>
 
 <style lang="scss" scoped>

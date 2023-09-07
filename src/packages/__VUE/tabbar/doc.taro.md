@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Tabbar, TabbarItem } from '@nutui/nutui-taro';
 
@@ -17,38 +17,43 @@ app.use(TabbarItem);
 
 ### 基础用法
 
-如果需要在现有 Icon 的基础上使用更多图标，请参考下方自定义 Icon 图标插槽。
-
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="标签" :icon="Home"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="Category"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="Find"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="Cart"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="My"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <Category></Category>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <Find></Find>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <Cart></Cart>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <My></My>
+      </template>
+    </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      function tabSwitch(item, index) {
-        console.log(item, index);
-      }
-      return {
-        tabSwitch,
-        Home,
-        Category,
-        Find,
-        Cart,
-        My
-      };
-    }
-  };
+<script setup>
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+const tabSwitch = (item, index) => {
+  console.log(item, index);
+};
 </script>
 ```
 
@@ -58,57 +63,47 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar v-model="activeName" @tab-switch="tabSwitch">
-    <nut-tabbar-item v-for="(item,index) in List" :name="item.name" :tab-title="item.title" :icon="item.icon">
+    <nut-tabbar-item v-for="(item, index) in List" :name="item.name" :tab-title="item.title" :icon="item.icon">
     </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { ref, h } from 'vue';
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      const activeName = ref('category');
-      const List = [
-        {
-          title: '标签',
-          icon: h(Home),
-          name: 'home'
-        },
-        {
-          title: '标签',
-          icon: h(Category),
-          name: 'category'
-        },
-        {
-          title: '标签',
-          icon: h(Find),
-          name: 'find'
-        },
-        {
-          title: '标签',
-          icon: h(Cart),
-          name: 'cart'
-        },
-        {
-          title: '标签',
-          icon: h(My),
-          name: 'my'
-        }
-      ];
-      function tabSwitch(item, index) {
-        console.log(item, index);
-      }
-      return {
-        tabSwitch,
-        List,
-        activeName
-      };
-    }
-  };
+<script setup>
+import { h, ref } from 'vue';
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+const activeName = ref('category');
+const List = [
+  {
+    title: '标签',
+    icon: h(Home),
+    name: 'home'
+  },
+  {
+    title: '标签',
+    icon: h(Category),
+    name: 'category'
+  },
+  {
+    title: '标签',
+    icon: h(Find),
+    name: 'find'
+  },
+  {
+    title: '标签',
+    icon: h(Cart),
+    name: 'cart'
+  },
+  {
+    title: '标签',
+    icon: h(My),
+    name: 'my'
+  }
+];
+const tabSwitch = (item, index) => {
+  console.log(item, index);
+};
 </script>
 ```
 
@@ -120,48 +115,34 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar @tab-switch="tabSwitch">
     <nut-tabbar-item tab-title="标签">
       <template #icon="props">
-        <img v-if="props.active" :src="icon.active" />
-        <img v-else :src="icon.unactive" />
+        <img :src="props.active ? icon.active : icon.unactive" alt="" />
       </template>
     </nut-tabbar-item>
     <nut-tabbar-item tab-title="标签">
       <template #icon="props">
-        <img v-if="props.active" :src="icon.active" />
-        <img v-else :src="icon.unactive" />
+        <img :src="props.active ? icon.active : icon.unactive" alt="" />
       </template>
     </nut-tabbar-item>
     <nut-tabbar-item tab-title="标签">
-      <template #icon>
-        <Home></Home>
+      <template #icon="props">
+        <img :src="props.active ? icon.active : icon.unactive" alt="" />
       </template>
     </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { Home } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home },
-    setup() {
-      function tabSwitch(item, index) {
-        console.log(item, index);
-      }
-      const icon = {
-        active:
-          'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
-        unactive:
-          'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
-      };
-      return {
-        icon,
-        tabSwitch
-      };
-    }
-  };
+<script setup>
+const tabSwitch = (item, index) => {
+  console.log(item, index);
+};
+const icon = {
+  active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
+  unactive: 'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
+};
 </script>
 ```
 
@@ -171,56 +152,46 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar v-model="active">
-    <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { ref, h } from 'vue';
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      const active = ref(2);
-      const List = [
-        {
-          title: '标签',
-          icon: h(Home),
-          name: 'home'
-        },
-        {
-          title: '标签',
-          icon: h(Category),
-          name: 'category'
-        },
-        {
-          title: '标签',
-          icon: h(Find),
-          name: 'find'
-        },
-        {
-          title: '标签',
-          icon: h(Cart),
-          name: 'cart'
-        },
-        {
-          title: '标签',
-          icon: h(My),
-          name: 'my'
-        }
-      ];
-      function tabSwitch(item, index) {
-        console.log(item, index);
-      }
-      return {
-        tabSwitch,
-        List,
-        active
-      };
-    }
-  };
+<script setup>
+import { h, ref } from 'vue';
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+const active = ref(2);
+const List = [
+  {
+    title: '标签',
+    icon: h(Home),
+    name: 'home'
+  },
+  {
+    title: '标签',
+    icon: h(Category),
+    name: 'category'
+  },
+  {
+    title: '标签',
+    icon: h(Find),
+    name: 'find'
+  },
+  {
+    title: '标签',
+    icon: h(Cart),
+    name: 'cart'
+  },
+  {
+    title: '标签',
+    icon: h(My),
+    name: 'my'
+  }
+];
+const tabSwitch = (item, index) => {
+  console.log(item, index);
+};
 </script>
 ```
 
@@ -233,30 +204,33 @@ app.use(TabbarItem);
 内部使用了 bardge 徽标组件，可将其属性直接作用于 TabbarItem props。
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar>
-    <nut-tabbar-item tab-title="首页" :icon="Home" :value="11"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" :icon="Category" :dot="true"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="发现" :icon="Find" :value="110"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="购物车" :icon="Cart"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="我的" :icon="My"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :value="11">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :dot="true">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :value="110">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      return {
-        Home,
-        Category,
-        Find,
-        Cart,
-        My
-      };
-    }
-  };
+<script setup>
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -266,50 +240,42 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { h } from 'vue';
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      const List = [
-        {
-          title: '标签',
-          icon: h(Home),
-          name: 'home'
-        },
-        {
-          title: '标签',
-          icon: h(Category),
-          name: 'category'
-        },
-        {
-          title: '标签',
-          icon: h(Find),
-          name: 'find'
-        },
-        {
-          title: '标签',
-          icon: h(Cart),
-          name: 'cart'
-        },
-        {
-          title: '标签',
-          icon: h(My),
-          name: 'my'
-        }
-      ];
-      return {
-        List
-      };
-    }
-  };
+<script setup>
+import { h, ref } from 'vue';
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+const List = [
+  {
+    title: '标签',
+    icon: h(Home),
+    name: 'home'
+  },
+  {
+    title: '标签',
+    icon: h(Category),
+    name: 'category'
+  },
+  {
+    title: '标签',
+    icon: h(Find),
+    name: 'find'
+  },
+  {
+    title: '标签',
+    icon: h(Cart),
+    name: 'cart'
+  },
+  {
+    title: '标签',
+    icon: h(My),
+    name: 'my'
+  }
+];
 </script>
 ```
 
@@ -319,24 +285,28 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="标签" :icon="Home" :value="11"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="Home" :dot="true"> </nut-tabbar-item>
-    <nut-tabbar-item tab-title="标签" :icon="Home" :value="110"> </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :value="11">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :dot="true">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
+    <nut-tabbar-item tab-title="标签" :value="110">
+      <template #icon>
+        <Home></Home>
+      </template>
+    </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { Home } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home },
-    setup() {
-      return {
-        Home
-      };
-    }
-  };
+<script setup>
+import { Home } from '@nutui/icons-vue-taro';
 </script>
 ```
 
@@ -346,45 +316,37 @@ app.use(TabbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-tabbar bottom safe-area-inset-bottom placeholder>
-    <nut-tabbar-item v-for="(item,index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
+    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
   </nut-tabbar>
 </template>
-<script>
-  import { h } from 'vue';
-  import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-  export default {
-    components: { Home, Category, Find, Cart, My },
-    setup() {
-      const List = [
-        {
-          title: '标签',
-          icon: h(Home)
-        },
-        {
-          title: '标签',
-          icon: h(Category)
-        },
-        {
-          title: '标签',
-          icon: h(Find)
-        },
-        {
-          title: '标签',
-          icon: h(Cart)
-        },
-        {
-          title: '标签',
-          icon: h(My)
-        }
-      ];
-      return {
-        List
-      };
-    }
-  };
+<script setup>
+import { h } from 'vue';
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+const List = [
+  {
+    title: '标签',
+    icon: h(Home)
+  },
+  {
+    title: '标签',
+    icon: h(Category)
+  },
+  {
+    title: '标签',
+    icon: h(Find)
+  },
+  {
+    title: '标签',
+    icon: h(Cart)
+  },
+  {
+    title: '标签',
+    icon: h(My)
+  }
+];
 </script>
 ```
 

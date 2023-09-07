@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Menu, MenuItem } from '@nutui/nutui-taro';
 
@@ -19,7 +19,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value1" :options="state.options1" />
@@ -27,36 +27,26 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        options2: [
-          { text: '默认排序', value: 'a' },
-          { text: '好评排序', value: 'b' },
-          { text: '销量排序', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -68,46 +58,35 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item title="筛选" ref="item">
-      <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
-        <div :style="{ marginRight: '10px'}">自定义内容</div>
+      <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
+        <div :style="{ marginRight: '10px' }">自定义内容</div>
         <nut-button @click="onConfirm">确认</nut-button>
       </div>
     </nut-menu-item>
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  value1: 0
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        value1: 0
-      });
+const item = ref();
 
-      const item = ref('');
-
-      const onConfirm = () => {
-        item.value.toggle();
-      };
-
-      return {
-        state,
-        item,
-        onConfirm
-      };
-    }
-  };
+const onConfirm = () => {
+  item.value.toggle();
+};
 </script>
 ```
 
@@ -117,47 +96,38 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-
-  export default {
-    setup() {
-      const state = reactive({
-        options3: [
-          { text: '全部商品', value: 0 },
-          { text: '家庭清洁/纸品', value: 1 },
-          { text: '个人护理', value: 2 },
-          { text: '美妆护肤', value: 3 },
-          { text: '食品饮料', value: 4 },
-          { text: '家用电器', value: 5 },
-          { text: '母婴', value: 6 },
-          { text: '数码', value: 7 },
-          { text: '电脑、办公', value: 8 },
-          { text: '运动户外', value: 9 },
-          { text: '厨具', value: 10 },
-          { text: '医疗保健', value: 11 },
-          { text: '酒类', value: 12 },
-          { text: '生鲜', value: 13 },
-          { text: '家具', value: 14 },
-          { text: '传统滋补', value: 15 },
-          { text: '汽车用品', value: 16 },
-          { text: '家居日用', value: 17 }
-        ],
-        value3: 0
-      });
-
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options3: [
+    { text: '全部商品', value: 0 },
+    { text: '家庭清洁/纸品', value: 1 },
+    { text: '个人护理', value: 2 },
+    { text: '美妆护肤', value: 3 },
+    { text: '食品饮料', value: 4 },
+    { text: '家用电器', value: 5 },
+    { text: '母婴', value: 6 },
+    { text: '数码', value: 7 },
+    { text: '电脑、办公', value: 8 },
+    { text: '运动户外', value: 9 },
+    { text: '厨具', value: 10 },
+    { text: '医疗保健', value: 11 },
+    { text: '酒类', value: 12 },
+    { text: '生鲜', value: 13 },
+    { text: '家具', value: 14 },
+    { text: '传统滋补', value: 15 },
+    { text: '汽车用品', value: 16 },
+    { text: '家居日用', value: 17 }
+  ],
+  value3: 0
+});
 </script>
 ```
 
@@ -167,7 +137,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu active-color="green">
     <nut-menu-item v-model="state.value1" :options="state.options1" />
@@ -175,36 +145,26 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        options2: [
-          { text: '默认排序', value: 'a' },
-          { text: '好评排序', value: 'b' },
-          { text: '销量排序', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -214,7 +174,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <template #icon>
@@ -229,41 +189,27 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-  import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
+<script setup>
+import { reactive, ref } from 'vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    components: {
-      TriangleDown,
-      Checked
-    },
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        options2: [
-          { text: '默认排序', value: 'a' },
-          { text: '好评排序', value: 'b' },
-          { text: '销量排序', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -273,7 +219,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="blank"></div>
   <nut-menu direction="up">
@@ -282,42 +228,32 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        options2: [
-          { text: '默认排序', value: 'a' },
-          { text: '好评排序', value: 'b' },
-          { text: '销量排序', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 <style>
-  .blank {
-    width: 200px;
-    height: 200px;
-  }
+.blank {
+  width: 200px;
+  height: 200px;
+}
 </style>
 ```
 
@@ -327,7 +263,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
@@ -335,52 +271,43 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive } from 'vue';
-
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: '全部商品', value: 0 },
-          { text: '新款商品', value: 1 },
-          { text: '活动商品', value: 2 }
-        ],
-        options2: [
-          { text: '默认排序', value: 'a' },
-          { text: '好评排序', value: 'b' },
-          { text: '销量排序', value: 'c' }
-        ],
-        options3: [
-          { text: '全部商品', value: 0 },
-          { text: '家庭清洁/纸品', value: 1 },
-          { text: '个人护理', value: 2 },
-          { text: '美妆护肤', value: 3 },
-          { text: '食品饮料', value: 4 },
-          { text: '家用电器', value: 5 },
-          { text: '母婴', value: 6 },
-          { text: '数码', value: 7 },
-          { text: '电脑、办公', value: 8 },
-          { text: '运动户外', value: 9 },
-          { text: '厨具', value: 10 },
-          { text: '医疗保健', value: 11 },
-          { text: '酒类', value: 12 },
-          { text: '生鲜', value: 13 },
-          { text: '家具', value: 14 },
-          { text: '传统滋补', value: 15 },
-          { text: '汽车用品', value: 16 },
-          { text: '家居日用', value: 17 }
-        ],
-        value1: 0,
-        value2: 'a',
-        value3: 0
-      });
-
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  options3: [
+    { text: '全部商品', value: 0 },
+    { text: '家庭清洁/纸品', value: 1 },
+    { text: '个人护理', value: 2 },
+    { text: '美妆护肤', value: 3 },
+    { text: '食品饮料', value: 4 },
+    { text: '家用电器', value: 5 },
+    { text: '母婴', value: 6 },
+    { text: '数码', value: 7 },
+    { text: '电脑、办公', value: 8 },
+    { text: '运动户外', value: 9 },
+    { text: '厨具', value: 10 },
+    { text: '医疗保健', value: 11 },
+    { text: '酒类', value: 12 },
+    { text: '生鲜', value: 13 },
+    { text: '家具', value: 14 },
+    { text: '传统滋补', value: 15 },
+    { text: '汽车用品', value: 16 },
+    { text: '家居日用', value: 17 }
+  ],
+  value1: 0,
+  value2: 'a',
+  value3: 0
+});
 </script>
 ```
 
@@ -411,7 +338,7 @@ app.use(MenuItem);
 | title                | 菜单项标题                       | string  | `当前选中项文字` |
 | options              | 选项数组                         | Array   | -                |
 | disabled             | 是否禁用菜单                     | boolean | `false`          |
-| cols                 | 可以设置一行展示多少列 `options` | number  | `1`              |
+| cols                 | 可以设置一行展示多少列 `options` | number  | `1 `             |
 | direction            | 菜单展开方向，可选值为 `up`      | string  | `down`           |
 | active-title-class   | 选项选中时自定义标题样式类       | string  | -                |
 | inactive-title-class | 选项非选中时自定义标题样式类     | string  | -                |
@@ -426,7 +353,7 @@ app.use(MenuItem);
 
 | 事件名 | 说明                                                             | 回调参数       |
 | ------ | ---------------------------------------------------------------- | -------------- |
-| change | 选择 `option` 之后触发                                           | 选择的 `value` |
+| change | 选择 `option` 之后触发                                           | 选择的 value   |
 | toggle | 切换菜单展示状态，传 `true` 为显示，`false` 为隐藏，不传参为取反 | show?: boolean |
 | open   | 打开菜单栏时触发                                                 | -              |
 | close  | 关闭菜单栏时触发                                                 | -              |

@@ -70,48 +70,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default defineComponent({
-  components: { ShareN, Cart2, MoreX, HorizontalN, Header },
-  setup({}) {
-    const env = Taro.getEnv();
+const env = Taro.getEnv();
+const tab1value = ref(0);
+const tab2value = ref(0);
+const back = () => {
+  console.log('header头部， 点击返回');
+};
+const title = () => {
+  console.log('header头部， 点击title');
+};
+const icon = () => {
+  console.log('icon');
+};
 
-    const tab1value = ref(0);
-    const tab2value = ref(0);
-    const methods = {
-      back() {
-        console.log('header头部， 点击返回');
-      },
-      title() {
-        console.log('header头部， 点击title');
-      },
-      icon() {
-        console.log('icon');
-      },
-
-      rightClick() {
-        console.log('右侧点击事件');
-      },
-      changeTab(tab: any) {
-        tab1value.value = tab.paneKey as number;
-      },
-      changeTabList(tab: any) {
-        tab2value.value = tab.paneKey as number;
-      }
-    };
-
-    return {
-      tab1value,
-      tab2value,
-      ...methods,
-      env
-    };
-  }
-});
+const rightClick = () => {
+  console.log('右侧点击事件');
+};
+const changeTab = (tab: any) => {
+  tab1value.value = tab.paneKey as number;
+};
+const changeTabList = (tab: any) => {
+  tab2value.value = tab.paneKey as number;
+};
 </script>
 
 <style lang="scss">

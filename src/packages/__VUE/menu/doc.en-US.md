@@ -6,7 +6,7 @@ The menu list that pops down downwards.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Menu, MenuItem } from '@nutui/nutui';
 
@@ -19,7 +19,7 @@ app.use(MenuItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value1" :options="state.options1" />
@@ -27,36 +27,26 @@ app.use(MenuItem);
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  options2: [
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        options2: [
-          { text: 'Default Sort', value: 'a' },
-          { text: 'Praise Sort', value: 'b' },
-          { text: 'Sales Volume Sort', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -68,46 +58,35 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item title="Screen" ref="item">
-      <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
-        <div :style="{ marginRight: '10px'}">Custom content</div>
+      <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
+        <div :style="{ marginRight: '10px' }">Custom content</div>
         <nut-button @click="onConfirm">Confirm</nut-button>
       </div>
     </nut-menu-item>
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  value1: 0
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        value1: 0
-      });
+const item = ref('');
 
-      const item = ref('');
-
-      const onConfirm = () => {
-        item.value.toggle();
-      };
-
-      return {
-        state,
-        item,
-        onConfirm
-      };
-    }
-  };
+const onConfirm = () => {
+  item.value.toggle();
+};
 </script>
 ```
 
@@ -117,47 +96,38 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-
-  export default {
-    setup() {
-      const state = reactive({
-        options3: [
-          { text: 'All Products', value: 0 },
-          { text: 'Product1', value: 1 },
-          { text: 'Product2', value: 2 },
-          { text: 'Product3', value: 3 },
-          { text: 'Product4', value: 4 },
-          { text: 'Product5', value: 5 },
-          { text: 'Product6', value: 6 },
-          { text: 'Product7', value: 7 },
-          { text: 'Product8', value: 8 },
-          { text: 'Product9', value: 9 },
-          { text: 'Product10', value: 10 },
-          { text: 'Product11', value: 11 },
-          { text: 'Product12', value: 12 },
-          { text: 'Product13', value: 13 },
-          { text: 'Product14', value: 14 },
-          { text: 'Product15', value: 15 },
-          { text: 'Product16', value: 16 },
-          { text: 'Product17', value: 17 }
-        ],
-        value3: 0
-      });
-
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options3: [
+    { text: 'All Products', value: 0 },
+    { text: 'Product1', value: 1 },
+    { text: 'Product2', value: 2 },
+    { text: 'Product3', value: 3 },
+    { text: 'Product4', value: 4 },
+    { text: 'Product5', value: 5 },
+    { text: 'Product6', value: 6 },
+    { text: 'Product7', value: 7 },
+    { text: 'Product8', value: 8 },
+    { text: 'Product9', value: 9 },
+    { text: 'Product10', value: 10 },
+    { text: 'Product11', value: 11 },
+    { text: 'Product12', value: 12 },
+    { text: 'Product13', value: 13 },
+    { text: 'Product14', value: 14 },
+    { text: 'Product15', value: 15 },
+    { text: 'Product16', value: 16 },
+    { text: 'Product17', value: 17 }
+  ],
+  value3: 0
+});
 </script>
 ```
 
@@ -167,7 +137,7 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu active-color="green">
     <nut-menu-item v-model="state.value1" :options="state.options1" />
@@ -175,36 +145,26 @@ Popup can be closed with toggle method in menu instance.
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  options2: [
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        options2: [
-          { text: 'Default Sort', value: 'a' },
-          { text: 'Praise Sort', value: 'b' },
-          { text: 'Sales Volume Sort', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -214,7 +174,7 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <template #icon>
@@ -229,41 +189,27 @@ Popup can be closed with toggle method in menu instance.
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-  import { TriangleDown, Checked } from '@nutui/icons-vue';
+<script setup>
+import { reactive, ref } from 'vue';
+import { TriangleDown, Checked } from '@nutui/icons-vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  options2: [
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    components: {
-      TriangleDown,
-      Checked
-    },
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        options2: [
-          { text: 'Default Sort', value: 'a' },
-          { text: 'Praise Sort', value: 'b' },
-          { text: 'Sales Volume Sort', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 ```
 
@@ -273,7 +219,7 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="blank"></div>
   <nut-menu direction="up">
@@ -282,42 +228,32 @@ Popup can be closed with toggle method in menu instance.
   </nut-menu>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
+<script setup>
+import { reactive, ref } from 'vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  options2: [
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ],
+  value1: 0,
+  value2: 'a'
+});
 
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        options2: [
-          { text: 'Default Sort', value: 'a' },
-          { text: 'Praise Sort', value: 'b' },
-          { text: 'Sales Volume Sort', value: 'c' }
-        ],
-        value1: 0,
-        value2: 'a'
-      });
-
-      const handleChange = (val) => {
-        console.log('val', val);
-      };
-
-      return {
-        state,
-        handleChange
-      };
-    }
-  };
+const handleChange = (val) => {
+  console.log('val', val);
+};
 </script>
 <style>
-  .blank {
-    width: 200px;
-    height: 200px;
-  }
+.blank {
+  width: 200px;
+  height: 200px;
+}
 </style>
 ```
 
@@ -327,7 +263,7 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-menu>
     <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
@@ -335,52 +271,43 @@ Popup can be closed with toggle method in menu instance.
   </nut-menu>
 </template>
 
-<script>
-  import { reactive } from 'vue';
-
-  export default {
-    setup() {
-      const state = reactive({
-        options1: [
-          { text: 'All Products', value: 0 },
-          { text: 'New Products', value: 1 },
-          { text: 'Activity Products', value: 2 }
-        ],
-        options2: [
-          { text: 'Default Sort', value: 'a' },
-          { text: 'Praise Sort', value: 'b' },
-          { text: 'Sales Volume Sort', value: 'c' }
-        ],
-        options3: [
-          { text: 'All Products', value: 0 },
-          { text: 'Product1', value: 1 },
-          { text: 'Product2', value: 2 },
-          { text: 'Product3', value: 3 },
-          { text: 'Product4', value: 4 },
-          { text: 'Product5', value: 5 },
-          { text: 'Product6', value: 6 },
-          { text: 'Product7', value: 7 },
-          { text: 'Product8', value: 8 },
-          { text: 'Product9', value: 9 },
-          { text: 'Product10', value: 10 },
-          { text: 'Product11', value: 11 },
-          { text: 'Product12', value: 12 },
-          { text: 'Product13', value: 13 },
-          { text: 'Product14', value: 14 },
-          { text: 'Product15', value: 15 },
-          { text: 'Product16', value: 16 },
-          { text: 'Product17', value: 17 }
-        ],
-        value1: 0,
-        value2: 'a',
-        value3: 0
-      });
-
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  options1: [
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ],
+  options2: [
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ],
+  options3: [
+    { text: 'All Products', value: 0 },
+    { text: 'Product1', value: 1 },
+    { text: 'Product2', value: 2 },
+    { text: 'Product3', value: 3 },
+    { text: 'Product4', value: 4 },
+    { text: 'Product5', value: 5 },
+    { text: 'Product6', value: 6 },
+    { text: 'Product7', value: 7 },
+    { text: 'Product8', value: 8 },
+    { text: 'Product9', value: 9 },
+    { text: 'Product10', value: 10 },
+    { text: 'Product11', value: 11 },
+    { text: 'Product12', value: 12 },
+    { text: 'Product13', value: 13 },
+    { text: 'Product14', value: 14 },
+    { text: 'Product15', value: 15 },
+    { text: 'Product16', value: 16 },
+    { text: 'Product17', value: 17 }
+  ],
+  value1: 0,
+  value2: 'a',
+  value3: 0
+});
 </script>
 ```
 

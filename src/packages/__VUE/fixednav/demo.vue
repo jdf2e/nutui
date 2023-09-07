@@ -51,8 +51,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, onMounted, ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed, onMounted, ref } from 'vue';
+import NutFixedNav from './index.vue';
+import NutDrag from '../drag/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -84,61 +86,43 @@ const initTranslate = () =>
       my: 'My'
     }
   });
-export default defineComponent({
-  components: {
-    Retweet
-  },
-  props: {},
-  setup() {
-    initTranslate();
-    const visible = ref(false);
-    const visible1 = ref(false);
-    const visible2 = ref(false);
-    const visible3 = ref(false);
-    const myActive = ref(false);
+initTranslate();
+const visible = ref(false);
+const visible1 = ref(false);
+const visible2 = ref(false);
+const visible3 = ref(false);
+const myActive = ref(false);
 
-    onMounted(() => {
-      setTimeout(() => {
-        visible2.value = true;
-      }, 1000);
-    });
-
-    const navList = computed(() => [
-      {
-        id: 1,
-        text: translate('index'),
-        icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
-      },
-      {
-        id: 2,
-        text: translate('category'),
-        icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
-      },
-      {
-        id: 3,
-        text: translate('cart'),
-        num: 2,
-        icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
-      },
-      {
-        id: 4,
-        text: translate('my'),
-        icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
-      }
-    ]);
-    const selected = (res: any) => {
-      console.log(res);
-    };
-    return {
-      visible,
-      visible1,
-      visible2,
-      visible3,
-      myActive,
-      navList,
-      selected,
-      translate
-    };
-  }
+onMounted(() => {
+  setTimeout(() => {
+    visible2.value = true;
+  }, 1000);
 });
+
+const navList = computed(() => [
+  {
+    id: 1,
+    text: translate('index'),
+    icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
+  },
+  {
+    id: 2,
+    text: translate('category'),
+    icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
+  },
+  {
+    id: 3,
+    text: translate('cart'),
+    num: 2,
+    icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
+  },
+  {
+    id: 4,
+    text: translate('my'),
+    icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
+  }
+]);
+const selected = (res: any) => {
+  console.log(res);
+};
 </script>

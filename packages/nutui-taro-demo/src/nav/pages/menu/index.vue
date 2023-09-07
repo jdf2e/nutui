@@ -50,75 +50,56 @@
   </div>
 </template>
 
-<script>
-import { ref, reactive, toRefs } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
 import { TriangleDown, Checked } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    TriangleDown,
-    Checked,
-    Header
-  },
-  props: {},
-  setup() {
-    const env = Taro.getEnv();
+const env = Taro.getEnv();
+const state = reactive({
+  options1: [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 }
+  ],
+  options2: [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' }
+  ],
+  options3: [
+    { text: '全部商品', value: 0 },
+    { text: '家庭清洁/纸品', value: 1 },
+    { text: '个人护理', value: 2 },
+    { text: '美妆护肤', value: 3 },
+    { text: '食品饮料', value: 4 },
+    { text: '家用电器', value: 5 },
+    { text: '母婴', value: 6 },
+    { text: '数码', value: 7 },
+    { text: '电脑、办公', value: 8 },
+    { text: '运动户外', value: 9 },
+    { text: '厨具', value: 10 },
+    { text: '医疗保健', value: 11 },
+    { text: '酒类', value: 12 },
+    { text: '生鲜', value: 13 },
+    { text: '家具', value: 14 },
+    { text: '传统滋补', value: 15 },
+    { text: '汽车用品', value: 16 },
+    { text: '家居日用', value: 17 }
+  ],
+  value1: 0,
+  value2: 'a',
+  value3: 0
+});
 
-    const state = reactive({
-      options1: [
-        { text: '全部商品', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 }
-      ],
-      options2: [
-        { text: '默认排序', value: 'a' },
-        { text: '好评排序', value: 'b' },
-        { text: '销量排序', value: 'c' }
-      ],
-      options3: [
-        { text: '全部商品', value: 0 },
-        { text: '家庭清洁/纸品', value: 1 },
-        { text: '个人护理', value: 2 },
-        { text: '美妆护肤', value: 3 },
-        { text: '食品饮料', value: 4 },
-        { text: '家用电器', value: 5 },
-        { text: '母婴', value: 6 },
-        { text: '数码', value: 7 },
-        { text: '电脑、办公', value: 8 },
-        { text: '运动户外', value: 9 },
-        { text: '厨具', value: 10 },
-        { text: '医疗保健', value: 11 },
-        { text: '酒类', value: 12 },
-        { text: '生鲜', value: 13 },
-        { text: '家具', value: 14 },
-        { text: '传统滋补', value: 15 },
-        { text: '汽车用品', value: 16 },
-        { text: '家居日用', value: 17 }
-      ],
-      value1: 0,
-      value2: 'a',
-      value3: 0
-    });
+const item = ref('');
 
-    const item = ref('');
+const onConfirm = () => {
+  item.value.toggle();
+};
 
-    const onConfirm = () => {
-      item.value.toggle();
-    };
-
-    const handleChange = (val) => {
-      console.log('val', val);
-    };
-
-    return {
-      state,
-      item,
-      onConfirm,
-      handleChange,
-      env
-    };
-  }
+const handleChange = (val) => {
+  console.log('val', val);
 };
 </script>
 

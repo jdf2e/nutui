@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Pagination } from '@nutui/nutui-taro';
 
@@ -19,33 +19,17 @@ app.use(Pagination);
 通过 v-model 来绑定当前页码。
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pagination v-model="currentPage" :total-items="25" :items-per-page="5" @change="pageChange" />
+  <nut-pagination v-model="page" :total-items="25" :items-per-page="5" @change="pageChange" />
 </template>
-<script lang="ts">
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        currentPage: 1
-      });
-      const pageChange = (value: number) => {
-        console.log(value);
-      };
-
-      return {
-        ...toRefs(state),
-        pageChange
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const page = ref(1);
+const pageChange = (value) => {
+  console.log(value);
+};
 </script>
-<style>
-  .nut-pagination {
-    margin-left: 20px;
-  }
-</style>
 ```
 
 :::
@@ -55,33 +39,17 @@ app.use(Pagination);
  将 mode 设置为 simple 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pagination v-model="currentPage1" :page-count="12" mode="simple" @change="pageChange" />
+  <nut-pagination v-model="page" :page-count="12" mode="simple" @change="pageChange" />
 </template>
-<script lang="ts">
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        currentPage1: 1
-      });
-      const pageChange = (value: number) => {
-        console.log(value);
-      };
-
-      return {
-        ...toRefs(state),
-        pageChange
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const page = ref(1);
+const pageChange = (value) => {
+  console.log(value);
+};
 </script>
-<style>
-  .nut-pagination {
-    margin-left: 20px;
-  }
-</style>
 ```
 
 :::
@@ -91,33 +59,17 @@ app.use(Pagination);
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pagination v-model="currentPage2" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
+  <nut-pagination v-model="page" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
 </template>
-<script lang="ts">
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        currentPage2: 1
-      });
-      const pageChange = (value: number) => {
-        console.log(value);
-      };
-
-      return {
-        ...toRefs(state),
-        pageChange
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const page = ref(1);
+const pageChange = (value) => {
+  console.log(value);
+};
 </script>
-<style>
-  .nut-pagination {
-    margin-left: 20px;
-  }
-</style>
 ```
 
 :::
@@ -127,9 +79,9 @@ app.use(Pagination);
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 :::demo
 
-```html
+```vue
 <template>
-  <nut-pagination v-model="currentPage3" :total-items="500" @change="pageChange" :show-page-size="5">
+  <nut-pagination v-model="page" :total-items="500" @change="pageChange" :show-page-size="5">
     <template #prev-text>
       <Left size="10px" />
     </template>
@@ -139,31 +91,14 @@ app.use(Pagination);
     <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
   </nut-pagination>
 </template>
-<script lang="ts">
-  import { Left, Right } from '@nutui/icons-vue-taro';
-  import { ref, reactive, toRefs } from 'vue';
-  export default {
-    components: { Left, Right },
-    setup() {
-      const state = reactive({
-        currentPage3: 1
-      });
-      const pageChange = (value: number) => {
-        console.log(value);
-      };
-
-      return {
-        ...toRefs(state),
-        pageChange
-      };
-    }
-  };
+<script setup>
+import { Left, Right } from '@nutui/icons-vue-taro';
+import { ref } from 'vue';
+const page = ref(1);
+const pageChange = (value) => {
+  console.log(value);
+};
 </script>
-<style>
-  .nut-pagination {
-    margin-left: 20px;
-  }
-</style>
 ```
 
 :::

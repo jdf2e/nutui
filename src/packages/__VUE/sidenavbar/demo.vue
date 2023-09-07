@@ -6,7 +6,7 @@
         ><label>{{ translate('right') }}</label></span
       >
     </nut-cell>
-    <nut-popup v-model:visible="show1" position="right" :style="{ width, height }">
+    <nut-popup v-model:visible="show1" position="right" style="width: 80%; height: 100%">
       <nut-side-navbar>
         <nut-sub-side-navbar :title="translate('title1')" ikey="6">
           <nut-sub-side-navbar :title="translate('title2')" ikey="9">
@@ -25,7 +25,7 @@
         ><label>{{ translate('left') }}</label></span
       >
     </nut-cell>
-    <nut-popup v-model:visible="show2" position="left" :style="{ width, height }">
+    <nut-popup v-model:visible="show2" position="left" style="width: 80%; height: 100%">
       <nut-side-navbar>
         <nut-sub-side-navbar :title="translate('title7')" ikey="3" :open="false">
           <nut-side-navbar-item ikey="4" :title="translate('title8')"></nut-side-navbar-item>
@@ -44,7 +44,7 @@
           ><label>{{ translate('show') }}</label></span
         >
       </nut-cell>
-      <nut-popup v-model:visible="show3" position="right" :style="{ width, height }">
+      <nut-popup v-model:visible="show3" position="right" style="width: 80%; height: 100%">
         <nut-side-navbar :show="show3">
           <nut-side-navbar-item
             ikey="1"
@@ -77,8 +77,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
+import NutSideNavbar from './index.vue';
+import NutSideNavbarItem from '../sidenavbaritem/index.vue';
+import NutSubSideNavbar from '../subsidenavbar/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('side-navbar');
 import { showToast } from '@/packages/nutui.vue';
@@ -132,58 +137,40 @@ const initTranslate = () =>
       nest: 'Navigation nesting (up to three layers are recommended), and click the first callback'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const state = reactive({
-      show1: false,
-      show2: false,
-      show3: false,
-      width: '80%',
-      height: '100%',
-      navs: [] as any[]
-    });
+initTranslate();
 
-    const handleClick1 = () => {
-      state.show1 = true;
-    };
+const show1 = ref(false);
+const show2 = ref(false);
+const show3 = ref(false);
+const navs = ref<any>([]);
 
-    const handleClick2 = () => {
-      state.show2 = true;
-    };
+const handleClick1 = () => {
+  show1.value = true;
+};
 
-    const handleClick3 = () => {
-      state.show3 = true;
-      setTimeout(() => {
-        state.navs = [
-          {
-            id: 16,
-            name: '异步加载1',
-            arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
-          },
-          {
-            id: 17,
-            name: '异步加载2',
-            arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
-          }
-        ];
-      }, 2000);
-    };
+const handleClick2 = () => {
+  show2.value = true;
+};
 
-    const handleClick4 = (msg: string) => {
-      showToast.text(msg);
-    };
+const handleClick3 = () => {
+  show3.value = true;
+  setTimeout(() => {
+    navs.value = [
+      {
+        id: 16,
+        name: '异步加载1',
+        arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
+      },
+      {
+        id: 17,
+        name: '异步加载2',
+        arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
+      }
+    ];
+  }, 2000);
+};
 
-    return {
-      ...toRefs(state),
-      handleClick1,
-      handleClick2,
-      handleClick3,
-      handleClick4,
-      translate
-    };
-  }
-});
+const handleClick4 = (msg: string) => {
+  showToast.text(msg);
+};
 </script>
-
-<style lang="scss" scoped></style>

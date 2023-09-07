@@ -18,12 +18,6 @@
       <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
       <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
     </nut-tabs>
-    <h2>{{ translate('title2') }}</h2>
-    <nut-tabs v-model="state.tab2value">
-      <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
-      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-    </nut-tabs>
     <h2>{{ translate('title9') }}</h2>
     <nut-tabs v-model="state.tab2value" :auto-height="true">
       <nut-tab-pane title="Tab 1" pane-key="0">
@@ -98,8 +92,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, computed, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, computed } from 'vue';
+import NutTabs from './index.vue';
+import NutTabPane from '../tabpane/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('tabs');
 import { Dongdong } from '@nutui/icons-vue';
@@ -110,7 +106,6 @@ const initTranslate = () =>
       basic: '基础用法',
       swipeable: '手势滑动切换',
       title1: '基础用法-微笑曲线',
-      title2: '通过 pane-key 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多，滚动操作（横向）',
       title5: '左右布局',
@@ -125,7 +120,6 @@ const initTranslate = () =>
       basic: 'Basic Usage',
       swipeable: 'Swipeable',
       title1: 'Basic Usage - Smile Curve',
-      title2: 'Match by pane-key',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations(horizontal)',
       title5: 'Left and right layout',
@@ -137,48 +131,38 @@ const initTranslate = () =>
       custom: () => `custom ${1}`
     }
   });
-export default defineComponent({
-  components: { Dongdong },
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      tab1value: '0',
-      tab11value: '0',
-      tab2value: '0',
-      tab3value: '0',
-      tab4value: '0',
-      tab5value: '0',
-      tab6value: '0',
-      tab7value: 'c1',
-      tab8value: '0',
-      list3: Array.from(new Array(2).keys()),
-      list4: Array.from(new Array(10).keys()),
-      list5: Array.from(new Array(2).keys()),
-      list6: computed(() => [
-        {
-          title: translate('custom', 1),
-          paneKey: 'c1',
-          icon: 'dongdong'
-        },
-        {
-          title: translate('custom', 2),
-          paneKey: 'c2',
-          icon: 'JD'
-        },
-        {
-          title: translate('custom', 3),
-          paneKey: 'c3'
-        }
-      ])
-    });
-    setTimeout(() => {
-      state.list3.push(999);
-    }, 3000);
-
-    return { state, translate };
-  }
+initTranslate();
+const state = reactive({
+  tab1value: '0',
+  tab11value: '0',
+  tab2value: '0',
+  tab3value: '0',
+  tab4value: '0',
+  tab5value: '0',
+  tab6value: '0',
+  tab7value: 'c1',
+  tab8value: '0',
+  list3: Array.from(new Array(2).keys()),
+  list4: Array.from(new Array(10).keys()),
+  list5: Array.from(new Array(2).keys()),
+  list6: computed(() => [
+    {
+      title: translate('custom', 1),
+      paneKey: 'c1',
+      icon: 'dongdong'
+    },
+    {
+      title: translate('custom', 2),
+      paneKey: 'c2',
+      icon: 'JD'
+    },
+    {
+      title: translate('custom', 3),
+      paneKey: 'c3'
+    }
+  ])
 });
+setTimeout(() => {
+  state.list3.push(999);
+}, 3000);
 </script>
-
-<style lang="scss" scoped></style>

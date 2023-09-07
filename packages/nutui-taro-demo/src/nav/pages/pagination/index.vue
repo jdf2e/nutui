@@ -22,31 +22,17 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { Left, Right } from '@nutui/icons-vue-taro';
-import { reactive, toRefs, defineComponent } from 'vue';
+import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default defineComponent({
-  components: { Left, Right, Header },
-  setup() {
-    const env = Taro.getEnv();
-
-    const state = reactive({
-      currentPage: 1,
-      currentPage1: 1,
-      currentPage2: 1,
-      currentPage3: 1
-    });
-    const pageChange = (value: number) => {
-      console.log(value);
-    };
-
-    return {
-      ...toRefs(state),
-      pageChange,
-      env
-    };
-  }
-});
+const env = Taro.getEnv();
+const currentPage = ref(1);
+const currentPage1 = ref(1);
+const currentPage2 = ref(1);
+const currentPage3 = ref(1);
+const pageChange = (value: number) => {
+  console.log(value);
+};
 </script>
