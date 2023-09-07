@@ -100,71 +100,48 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref, h } from 'vue';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: { Home, Category, Find, Cart, My, Header },
-  props: {},
-  setup() {
-    const env = Taro.getEnv();
-
-    const active = ref(2);
-    const activeName = ref('category');
-    function tabSwitch(item: object, index: number) {
-      console.log(item, index);
-    }
-    const activeImg = ref(
-      'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png'
-    );
-    const unactiveImg = ref(
-      'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
-    );
-    const List = [
-      {
-        title: '标签',
-        icon: h(Home),
-        name: 'home'
-      },
-      {
-        title: '标签',
-        icon: h(Category),
-        name: 'category'
-      },
-      {
-        title: '标签',
-        icon: h(Find),
-        name: 'find'
-      },
-      {
-        title: '标签',
-        icon: Cart,
-        name: 'cart'
-      },
-      {
-        title: '标签',
-        icon: h(My),
-        name: 'my'
-      }
-    ];
-    return {
-      active,
-      activeImg,
-      unactiveImg,
-      activeName,
-      List,
-      My,
-      Home,
-      Find,
-      Cart,
-      Category,
-      tabSwitch,
-      env
-    };
+const env = Taro.getEnv();
+const active = ref(2);
+const activeName = ref('category');
+function tabSwitch(item: object, index: number) {
+  console.log(item, index);
+}
+const activeImg = ref(
+  'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png'
+);
+const unactiveImg = ref(
+  'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
+);
+const List = [
+  {
+    title: '标签',
+    icon: h(Home),
+    name: 'home'
+  },
+  {
+    title: '标签',
+    icon: h(Category),
+    name: 'category'
+  },
+  {
+    title: '标签',
+    icon: h(Find),
+    name: 'find'
+  },
+  {
+    title: '标签',
+    icon: Cart,
+    name: 'cart'
+  },
+  {
+    title: '标签',
+    icon: h(My),
+    name: 'my'
   }
-};
+];
 </script>
-
-<style lang="scss"></style>

@@ -118,8 +118,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { h, ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { h, ref } from 'vue';
+import NutTabbar from './index.vue';
+import NutTabbarItem from '../tabbaritem/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('tabbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -149,56 +151,41 @@ const initTranslate = () =>
       title: 'tab'
     }
   });
-export default defineComponent({
-  components: { Home, Category, Find, Cart, My },
-  props: {},
-  setup() {
-    initTranslate();
-    const active = ref(2);
-    const activeName = ref('category');
-    function tabSwitch(item: Record<string, unknown>, index: number) {
-      console.log(item, index);
-    }
-    const icon = {
-      active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
-      unactive:
-        'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
-    };
-    const List = [
-      {
-        title: '标签',
-        icon: h(Home),
-        name: 'home'
-      },
-      {
-        title: '标签',
-        icon: h(Category),
-        name: 'category'
-      },
-      {
-        title: '标签',
-        icon: h(Find),
-        name: 'find'
-      },
-      {
-        title: '标签',
-        icon: Cart,
-        name: 'cart'
-      },
-      {
-        title: '标签',
-        icon: h(My),
-        name: 'my'
-      }
-    ];
-    return {
-      active,
-      icon,
-      activeName,
-      List,
-      tabSwitch,
-      translate
-    };
+initTranslate();
+const active = ref(2);
+const activeName = ref('category');
+function tabSwitch(item: Record<string, unknown>, index: number) {
+  console.log(item, index);
+}
+const icon = {
+  active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
+  unactive: 'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
+};
+const List = [
+  {
+    title: '标签',
+    icon: h(Home),
+    name: 'home'
+  },
+  {
+    title: '标签',
+    icon: h(Category),
+    name: 'category'
+  },
+  {
+    title: '标签',
+    icon: h(Find),
+    name: 'find'
+  },
+  {
+    title: '标签',
+    icon: Cart,
+    name: 'cart'
+  },
+  {
+    title: '标签',
+    icon: h(My),
+    name: 'my'
   }
-});
+];
 </script>
