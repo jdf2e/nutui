@@ -78,6 +78,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import NutSwipe from './index.vue';
+import NutSwipeGroup from '../swipegroup/index.vue';
+import NutCell from '../cell/index.vue';
+import NutButton from '../button/index.vue';
+import NutInputNumber from '../inputnumber/index.vue';
+import NutSwitch from '../switch/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('swipe');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
