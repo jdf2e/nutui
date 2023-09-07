@@ -49,57 +49,57 @@ app.use(Dialog);
 
 <script setup>
 import { ref } from 'vue';
-    const visible1 = ref(false);
-    const visible2 = ref(false);
-    const visible3 = ref(false);
-    const visible4 = ref(false);
-    const visible5 = ref(false);
-    const closeContent = ref('');
-    const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
-    const countDown = (second: number) => `倒计时 ${second} 秒`;
+const visible1 = ref(false);
+const visible2 = ref(false);
+const visible3 = ref(false);
+const visible4 = ref(false);
+const visible5 = ref(false);
+const closeContent = ref('');
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
+const countDown = (second: number) => `倒计时 ${second} 秒`;
 
-    const onCancel = () => {
-      console.log('event cancel');
-    };
-    const onOk = () => {
-      console.log('event ok');
-    };
-    const onOkAsync = () => {
-      sleep()
-        .then(() => {
-          closeContent.value = countDown(2);
-          return sleep();
-        })
-        .then(() => {
-          closeContent.value = countDown(1);
-          return sleep();
-        })
-        .then(() => {
-          closeContent.value = countDown(0);
-        })
-        .then(() => {
-          visible4.value = false;
-        });
-    };
+const onCancel = () => {
+  console.log('event cancel');
+};
+const onOk = () => {
+  console.log('event ok');
+};
+const onOkAsync = () => {
+  sleep()
+    .then(() => {
+      closeContent.value = countDown(2);
+      return sleep();
+    })
+    .then(() => {
+      closeContent.value = countDown(1);
+      return sleep();
+    })
+    .then(() => {
+      closeContent.value = countDown(0);
+    })
+    .then(() => {
+      visible4.value = false;
+    });
+};
 
-    const baseClick = (): void => {
-      visible1.value = true;
-    };
-    const noTitleClick = () => {
-      visible2.value = true;
-    };
-    const tipsClick = () => {
-      visible3.value = true;
-    };
+const baseClick = (): void => {
+  visible1.value = true;
+};
+const noTitleClick = () => {
+  visible2.value = true;
+};
+const tipsClick = () => {
+  visible3.value = true;
+};
 
-    const componentClick = () => {
-      closeContent.value = `点击确定时3s后关闭`;
-      visible4.value = true;
-    };
+const componentClick = () => {
+  closeContent.value = `点击确定时3s后关闭`;
+  visible4.value = true;
+};
 
-    const verticalClick = () => {
-      visible5.value = true;
-    };
+const verticalClick = () => {
+  visible5.value = true;
+};
 </script>
 ```
 

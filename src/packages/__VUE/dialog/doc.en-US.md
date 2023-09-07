@@ -36,78 +36,78 @@ app.use(Dialog);
 import { ref, createVNode } from 'vue';
 import { showDialog } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/dialog/style';
-    const onCancel = () => {
-      console.log('event cancel');
-    };
-    const onOk = () => {
-      console.log('event ok');
-    };
-    const baseClick = (): void => {
-      showDialog({
-        title: 'Basic spring frame',
-        content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
-        onCancel,
-        onOk
+const onCancel = () => {
+  console.log('event cancel');
+};
+const onOk = () => {
+  console.log('event ok');
+};
+const baseClick = (): void => {
+  showDialog({
+    title: 'Basic spring frame',
+    content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
+    onCancel,
+    onOk
+  });
+};
+const transparentClick = (): void => {
+  showDialog({
+    overlayStyle: { background: 'rgba(0,0,0,0)' },
+    title: 'Transparent Dialog',
+    content: 'Content',
+    onCancel,
+    onOk
+  });
+};
+const htmlClick = (): void => {
+  showDialog({
+    title: 'Use html',
+    content:
+      "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+    onCancel,
+    onOk
+  });
+};
+const beforeCloseClick = (): void => {
+  showDialog({
+    title: 'Before Close',
+    content: 'Click confirm to close it in 1 second',
+    onCancel,
+    onOk,
+    beforeClose: (action: string) => {
+      return new Promise((r) => {
+        setTimeout(() => {
+          r(action == 'ok');
+        }, 1000);
       });
-    };
-    const transparentClick = (): void => {
-      showDialog({
-        overlayStyle: { background: 'rgba(0,0,0,0)' },
-        title: 'Transparent Dialog',
-        content: 'Content',
-        onCancel,
-        onOk
-      });
-    };
-    const htmlClick = (): void => {
-      showDialog({
-        title: 'Use html',
-        content:
-          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-        onCancel,
-        onOk
-      });
-    };
-    const beforeCloseClick = (): void => {
-      showDialog({
-        title: 'Before Close',
-        content: 'Click confirm to close it in 1 second',
-        onCancel,
-        onOk,
-        beforeClose: (action: string) => {
-          return new Promise((r) => {
-            setTimeout(() => {
-              r(action == 'ok');
-            }, 1000);
-          });
-        }
-      });
-    };
-    const noTitleClick = () => {
-      showDialog({
-        content: 'Content',
-        onCancel,
-        onOk
-      });
-    };
-    const tipsClick = () => {
-      showDialog({
-        title: 'Title',
-        content: 'Function call and component call are supported.',
-        noCancelBtn: true,
-        onCancel,
-        onOk
-      });
-    };
-    const verticalClick = () => {
-      showDialog({
-        title: 'Title',
-        content: 'Support vertical arrangement of bottom buttons.',
-        footerDirection: 'vertical',
-        onCancel,
-        onOk
-      });
-    };
+    }
+  });
+};
+const noTitleClick = () => {
+  showDialog({
+    content: 'Content',
+    onCancel,
+    onOk
+  });
+};
+const tipsClick = () => {
+  showDialog({
+    title: 'Title',
+    content: 'Function call and component call are supported.',
+    noCancelBtn: true,
+    onCancel,
+    onOk
+  });
+};
+const verticalClick = () => {
+  showDialog({
+    title: 'Title',
+    content: 'Support vertical arrangement of bottom buttons.',
+    footerDirection: 'vertical',
+    onCancel,
+    onOk
+  });
+};
 </script>
 ```
 
@@ -169,18 +169,18 @@ const componentvVrticalClick = () => {
 <script setup>
 import { showDialog } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/dialog/style';
-    const onCancel = () => {
-      console.log('event cancel');
-    };
-    const teleportClick = (teleport: string) => {
-      showDialog({
-        teleport,
-        title: 'teleport to ' + teleport,
-        content: 'Open the developer tool and take a look at the Elements tab',
-        noCancelBtn: true,
-        onCancel
-      });
-    };
+const onCancel = () => {
+  console.log('event cancel');
+};
+const teleportClick = (teleport: string) => {
+  showDialog({
+    teleport,
+    title: 'teleport to ' + teleport,
+    content: 'Open the developer tool and take a look at the Elements tab',
+    noCancelBtn: true,
+    onCancel
+  });
+};
 </script>
 ```
 
