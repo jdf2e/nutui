@@ -6,7 +6,7 @@ Used to separate into equal-width blocks for page navigation.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Grid, GridItem } from '@nutui/nutui';
 
@@ -19,7 +19,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid>
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -32,11 +32,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -46,7 +43,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :column-num="3">
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -54,11 +51,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -68,7 +62,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :column-num="3" square>
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -76,11 +70,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -90,7 +81,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :gutter="10">
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -103,11 +94,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -117,7 +105,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid reverse>
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -126,11 +114,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -140,7 +125,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid direction="horizontal">
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -149,11 +134,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -163,7 +145,7 @@ app.use(GridItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :column-num="3">
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
@@ -173,11 +155,8 @@ app.use(GridItem);
     <nut-grid-item text="text"><Dongdong /></nut-grid-item>
   </nut-grid>
 </template>
-<script lang="ts">
-  import { Dongdong } from '@nutui/icons-vue';
-  export default {
-    components: { Dongdong }
-  };
+<script setup>
+import { Dongdong } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -209,7 +188,7 @@ import { Home, Search } from '@nutui/icons-vue';
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-grid :border="false">
     <nut-grid-item v-for="i in 4" :key="i">

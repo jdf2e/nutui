@@ -127,12 +127,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import NutRow from '../row/index.vue';
+import NutCol from '../col/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('layout');
-import Row from '../row/index.vue';
-import Col from '../col/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -147,16 +146,7 @@ const initTranslate = () =>
       flex: 'Flex layout'
     }
   });
-export default defineComponent({
-  components: {
-    [Row.name]: Row,
-    [Col.name]: Col
-  },
-  setup() {
-    initTranslate();
-    return { translate };
-  }
-});
+initTranslate();
 </script>
 
 <style lang="scss" scoped>

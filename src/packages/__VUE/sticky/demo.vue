@@ -24,6 +24,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
+import NutSticky from './index.vue';
+import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

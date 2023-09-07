@@ -117,22 +117,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-
-export default {
-  components: {
-    Header
-  },
-  setup(props) {
-    const env = Taro.getEnv();
-
-    return {
-      env
-    };
-  }
-};
+const env = Taro.getEnv();
 </script>
 
 <style lang="scss">

@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Divider } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider />
 </template>
@@ -34,7 +34,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider>文本</nut-divider>
 </template>
@@ -48,7 +48,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider content-position="left">文本</nut-divider>
   <nut-divider content-position="right">文本</nut-divider>
@@ -63,7 +63,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider dashed>文本</nut-divider>
 </template>
@@ -77,7 +77,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
 </template>
@@ -89,7 +89,7 @@ app.use(Divider);
 
 :::demo
 
-```html
+```vue
 <template>
   <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
     文本
