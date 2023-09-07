@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Notify } from '@nutui/nutui';
 
@@ -18,31 +18,24 @@ app.use(Notify);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showNotify } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/notify/style';
-  export default {
-    setup() {
-      const baseNotify = (msg: string) => {
-        showNotify.text(msg, {
-          onClose: () => {
-            console.log('close');
-          },
-          onClick: () => {
-            console.log('click');
-          }
-        });
-      };
-      return {
-        baseNotify
-      };
+<script setup>
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+const baseNotify = (msg) => {
+  showNotify.text(msg, {
+    onClose: () => {
+      console.log('close');
+    },
+    onClick: () => {
+      console.log('click');
     }
-  };
+  });
+};
 </script>
 ```
 
@@ -52,7 +45,7 @@ app.use(Notify);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="通知类型">
     <nut-cell is-Link @click="primaryNotify('主要通知')">主要通知</nut-cell>
@@ -61,32 +54,22 @@ app.use(Notify);
     <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showNotify } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/notify/style';
-  export default {
-    setup() {
-      const primaryNotify = (msg: string) => {
-        showNotify.primary(msg);
-      };
-      const successNotify = (msg: string) => {
-        showNotify.success(msg);
-      };
-      const errorNotify = (msg: string) => {
-        showNotify.danger(msg);
-      };
-      const warningNotify = (msg: string) => {
-        showNotify.warn(msg);
-      };
-      return {
-        primaryNotify,
-        successNotify,
-        errorNotify,
-        warningNotify
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+const primaryNotify = (msg) => {
+  showNotify.primary(msg);
+};
+const successNotify = (msg) => {
+  showNotify.success(msg);
+};
+const errorNotify = (msg) => {
+  showNotify.danger(msg);
+};
+const warningNotify = (msg) => {
+  showNotify.warn(msg);
+};
 </script>
 ```
 
@@ -96,7 +79,7 @@ app.use(Notify);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="自定义背景色和字体颜色">
     <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">自定义背景色和字体颜色</nut-cell>
@@ -108,28 +91,19 @@ app.use(Notify);
     <nut-cell is-Link @click="positionNotify('自定义位置')">自定义位置</nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showNotify } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/notify/style';
-  export default {
-    setup() {
-      const cusBgNotify = (msg: string) => {
-        showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-      };
-      const timeNotify = (msg: string) => {
-        showNotify.text(msg, { duration: 10000 });
-      };
-      const positionNotify = (msg: string) => {
-        showNotify.text(msg, { position: 'bottom' });
-      };
-      return {
-        cusBgNotify,
-        timeNotify,
-        positionNotify
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+const cusBgNotify = (msg) => {
+  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+};
+const timeNotify = (msg) => {
+  showNotify.text(msg, { duration: 10000 });
+};
+const positionNotify = (msg) => {
+  showNotify.text(msg, { position: 'bottom' });
+};
 </script>
 ```
 
@@ -139,7 +113,7 @@ app.use(Notify);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="组件调用">
     <nut-cell is-Link @click="onClick">组件调用</nut-cell>
@@ -148,22 +122,14 @@ app.use(Notify);
     </nut-notify>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { showNotify } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/notify/style';
-  export default {
-    setup() {
-      const show = ref(false);
-      const onClick = () => {
-        show.value = true;
-      };
-      return {
-        show,
-        onClick
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { showNotify } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/notify/style';
+const show = ref(false);
+const onClick = () => {
+  show.value = true;
+};
 </script>
 ```
 

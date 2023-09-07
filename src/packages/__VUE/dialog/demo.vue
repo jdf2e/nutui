@@ -35,11 +35,14 @@
     </nut-cell-group>
   </div>
 </template>
-<script lang="ts">
-import { createVNode, ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { createVNode, ref } from 'vue';
+import NutDialog from './index.vue';
+import { showDialog } from './index';
+import NutCell from '../cell/index.vue';
+import NutCellGroup from '../cellgroup/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('dialog');
-import { showDialog } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -80,123 +83,102 @@ const initTranslate = () =>
       content4: 'Click confirm to close it in 1 second'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const visible = ref(false);
-    const visible1 = ref(false);
+initTranslate();
+const visible = ref(false);
+const visible1 = ref(false);
 
-    const onCancel = () => {
-      console.log('event cancel');
-    };
-    const onOk = () => {
-      console.log('event ok');
-    };
+const onCancel = () => {
+  console.log('event cancel');
+};
+const onOk = () => {
+  console.log('event ok');
+};
 
-    const baseClick = (): void => {
-      showDialog({
-        title: translate('basic'),
-        content: createVNode('span', { style: { color: 'red' } }, translate('content3')),
-        onCancel,
-        onOk
+const baseClick = (): void => {
+  showDialog({
+    title: translate('basic'),
+    content: createVNode('span', { style: { color: 'red' } }, translate('content3')),
+    onCancel,
+    onOk
+  });
+};
+
+const transparentClick = (): void => {
+  showDialog({
+    overlayStyle: { background: 'rgba(0,0,0,0)' },
+    title: translate('transparent'),
+    content: 'Content',
+    onCancel,
+    onOk
+  });
+};
+
+const htmlClick = (): void => {
+  showDialog({
+    title: translate('html'),
+    content:
+      "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+    onCancel,
+    onOk
+  });
+};
+
+const beforeCloseClick = (): void => {
+  showDialog({
+    title: translate('beforeClose'),
+    content: translate('content4'),
+    onCancel,
+    onOk,
+    beforeClose: (action: string) => {
+      return new Promise((r) => {
+        setTimeout(() => {
+          r(action == 'ok');
+        }, 1000);
       });
-    };
+    }
+  });
+};
 
-    const transparentClick = (): void => {
-      showDialog({
-        overlayStyle: { background: 'rgba(0,0,0,0)' },
-        title: translate('transparent'),
-        content: 'Content',
-        onCancel,
-        onOk
-      });
-    };
+const noTitleClick = () => {
+  showDialog({
+    content: translate('noTitle'),
+    onCancel,
+    onOk
+  });
+};
+const tipsClick = () => {
+  showDialog({
+    title: translate('tips'),
+    content: translate('content'),
+    noCancelBtn: true,
+    onCancel,
+    onOk
+  });
+};
+const verticalClick = () => {
+  showDialog({
+    title: translate('tips'),
+    content: translate('content1'),
+    footerDirection: 'vertical',
+    onCancel,
+    onOk
+  });
+};
 
-    const htmlClick = (): void => {
-      showDialog({
-        title: translate('html'),
-        content:
-          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-        onCancel,
-        onOk
-      });
-    };
+const componentClick = () => {
+  visible.value = true;
+};
+const componentvVrticalClick = () => {
+  visible1.value = true;
+};
 
-    const beforeCloseClick = (): void => {
-      showDialog({
-        title: translate('beforeClose'),
-        content: translate('content4'),
-        onCancel,
-        onOk,
-        beforeClose: (action: string) => {
-          return new Promise((r) => {
-            setTimeout(() => {
-              r(action == 'ok');
-            }, 1000);
-          });
-        }
-      });
-    };
-
-    const noTitleClick = () => {
-      showDialog({
-        content: translate('noTitle'),
-        onCancel,
-        onOk
-      });
-    };
-    const tipsClick = () => {
-      showDialog({
-        title: translate('tips'),
-        content: translate('content'),
-        noCancelBtn: true,
-        onCancel,
-        onOk
-      });
-    };
-    const verticalClick = () => {
-      showDialog({
-        title: translate('tips'),
-        content: translate('content1'),
-        footerDirection: 'vertical',
-        onCancel,
-        onOk
-      });
-    };
-
-    const componentClick = () => {
-      visible.value = true;
-    };
-    const componentvVrticalClick = () => {
-      visible1.value = true;
-    };
-
-    const teleportClick = (teleport: string) => {
-      showDialog({
-        teleport,
-        title: 'teleport to ' + teleport,
-        content: translate('content2'),
-        noCancelBtn: true,
-        onCancel
-      });
-    };
-
-    return {
-      visible,
-      visible1,
-      baseClick,
-      transparentClick,
-      htmlClick,
-      beforeCloseClick,
-      noTitleClick,
-      componentClick,
-      componentvVrticalClick,
-      tipsClick,
-      verticalClick,
-      teleportClick,
-      translate
-    };
-  }
-});
+const teleportClick = (teleport: string) => {
+  showDialog({
+    teleport,
+    title: 'teleport to ' + teleport,
+    content: translate('content2'),
+    noCancelBtn: true,
+    onCancel
+  });
+};
 </script>
-<style lang="scss"></style>

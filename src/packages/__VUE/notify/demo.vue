@@ -23,10 +23,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue';
+import NutNotify from './index.vue';
+import { showNotify } from './index';
+import NutCell from '../cell/index.vue';
+import NutCellGroup from '../cellgroup/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import { showNotify } from '../../nutui.vue';
-import { ref, defineComponent } from 'vue';
 const { translate } = createComponent('notify');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
@@ -58,59 +61,40 @@ const initTranslate = () =>
       cusBgNotify: 'Customize background and font colors'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const baseNotify = (msg: string) => {
-      showNotify.text(msg, {
-        onClose: () => {
-          console.log('close');
-        },
-        onClick: () => {
-          console.log('click');
-        }
-      });
-    };
-    const primaryNotify = (msg: string) => {
-      showNotify.primary(msg, { duration: 1000 });
-    };
-    const successNotify = (msg: string) => {
-      showNotify.success(msg);
-    };
-    const errorNotify = (msg: string) => {
-      showNotify.danger(msg);
-    };
-    const warningNotify = (msg: string) => {
-      showNotify.warn(msg);
-    };
-    const cusBgNotify = (msg: string) => {
-      showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-    };
-    const timeNotify = (msg: string) => {
-      showNotify.text(msg, { duration: 1000 });
-    };
-    const positionNotify = (msg: string) => {
-      showNotify.text(msg, { position: 'bottom' });
-    };
-    const show = ref(false);
-    const onClick = () => {
-      show.value = true;
-    };
-    return {
-      baseNotify,
-      primaryNotify,
-      successNotify,
-      errorNotify,
-      warningNotify,
-      cusBgNotify,
-      timeNotify,
-      positionNotify,
-      show,
-      onClick,
-      translate
-    };
-  }
-});
+initTranslate();
+const baseNotify = (msg: string) => {
+  showNotify.text(msg, {
+    onClose: () => {
+      console.log('close');
+    },
+    onClick: () => {
+      console.log('click');
+    }
+  });
+};
+const primaryNotify = (msg: string) => {
+  showNotify.primary(msg, { duration: 1000 });
+};
+const successNotify = (msg: string) => {
+  showNotify.success(msg);
+};
+const errorNotify = (msg: string) => {
+  showNotify.danger(msg);
+};
+const warningNotify = (msg: string) => {
+  showNotify.warn(msg);
+};
+const cusBgNotify = (msg: string) => {
+  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+};
+const timeNotify = (msg: string) => {
+  showNotify.text(msg, { duration: 1000 });
+};
+const positionNotify = (msg: string) => {
+  showNotify.text(msg, { position: 'bottom' });
+};
+const show = ref(false);
+const onClick = () => {
+  show.value = true;
+};
 </script>
-
-<style lang="scss" scoped></style>

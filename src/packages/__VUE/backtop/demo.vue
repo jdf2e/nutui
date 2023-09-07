@@ -1,30 +1,7 @@
 <template>
   <div id="elId" class="demo">
     <h2>{{ translate('title') }}</h2>
-    <div class="text-data">{{ translate('content') }}1</div>
-    <div class="text-data">{{ translate('content') }}2</div>
-    <div class="text-data">{{ translate('content') }}3</div>
-    <div class="text-data">{{ translate('content') }}4</div>
-    <div class="text-data">{{ translate('content') }}5</div>
-    <div class="text-data">{{ translate('content') }}6</div>
-    <div class="text-data">{{ translate('content') }}7</div>
-    <div class="text-data">{{ translate('content') }}8</div>
-    <div class="text-data">{{ translate('content') }}9</div>
-    <div class="text-data">{{ translate('content') }}10</div>
-    <div class="text-data">{{ translate('content') }}11</div>
-    <div class="text-data">{{ translate('content') }}12</div>
-    <div class="text-data">{{ translate('content') }}13</div>
-    <div class="text-data">{{ translate('content') }}14</div>
-    <div class="text-data">{{ translate('content') }}15</div>
-    <div class="text-data">{{ translate('content') }}16</div>
-    <div class="text-data">{{ translate('content') }}17</div>
-    <div class="text-data">{{ translate('content') }}18</div>
-    <div class="text-data">{{ translate('content') }}19</div>
-    <div class="text-data">{{ translate('content') }}20</div>
-    <div class="text-data">{{ translate('content') }}21</div>
-    <div class="text-data">{{ translate('content') }}22</div>
-    <div class="text-data">{{ translate('content') }}23</div>
-    <div class="text-data">{{ translate('content') }}24</div>
+    <div v-for="(_, index) in 24" :key="index" class="text-data">{{ translate('content') + index }}</div>
     <nut-backtop el-id="elId" :distance="100" :bottom="110" @click="handleClick">
       <view class="backtop-demo">
         <Top width="12px" height="12px" class="nut-backtop-main"></Top>
@@ -35,8 +12,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import NutBacktop from './index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('backtop');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -46,20 +23,10 @@ const initTranslate = () =>
     'zh-CN': { title: '基础用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
     'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
   });
-export default defineComponent({
-  components: { Top },
-  setup() {
-    initTranslate();
-    const handleClick = () => {
-      console.log(translate('clg'));
-    };
-
-    return {
-      handleClick,
-      translate
-    };
-  }
-});
+initTranslate();
+const handleClick = () => {
+  console.log(translate('clg'));
+};
 </script>
 
 <style lang="scss" scoped>

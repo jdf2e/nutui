@@ -32,24 +32,12 @@
   </view>
 </template>
 
-<script>
+<script setup lang="ts">
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const click = () => {
-      console.log('click');
-    };
-
-    return {
-      click,
-      env
-    };
-  }
+const env = Taro.getEnv();
+const click = () => {
+  console.log('click');
 };
 </script>
 

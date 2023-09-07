@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked1" />
+      <nut-switch v-model="data.checked1" />
     </nut-cell>
 
     <h2>{{ translate('title1') }}</h2>
@@ -16,17 +16,17 @@
 
     <h2>{{ translate('title2') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked2" disable />
+      <nut-switch v-model="data.checked2" disable />
     </nut-cell>
 
     <h2>{{ translate('title3') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked3" loading active-color="red" />
+      <nut-switch v-model="data.checked3" loading active-color="red" />
     </nut-cell>
 
     <h2>{{ translate('title4') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked4" @change="change" />
+      <nut-switch v-model="data.checked4" @change="change" />
     </nut-cell>
 
     <h2>{{ translate('title5') }}</h2>
@@ -36,13 +36,13 @@
 
     <h2>{{ translate('title6') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked6" active-color="blue" />
+      <nut-switch v-model="data.checked6" active-color="blue" />
     </nut-cell>
 
     <h2>{{ translate('title7') }}</h2>
     <nut-cell>
       <nut-switch
-        v-model="checked7"
+        v-model="data.checked7"
         :active-text="translate('text1')"
         :inactive-text="translate('text2')"
         class="switch-demo1"
@@ -51,7 +51,7 @@
 
     <h2>{{ translate('title8') }}</h2>
     <nut-cell>
-      <nut-switch v-model="checked8" loading>
+      <nut-switch v-model="data.checked8" loading>
         <template #icon>
           <Loading name="loading" />
         </template>
@@ -60,8 +60,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
+import NutSwitch from './index.vue';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
@@ -96,51 +98,31 @@ const initTranslate = () =>
       text2: 'Closed'
     }
   });
-export default defineComponent({
-  components: { Loading },
-  setup() {
-    initTranslate();
-    const data = reactive({
-      checked1: true,
-      checked2: true,
-      checked3: true,
-      checked4: true,
-      checked6: true,
-      checked7: true,
-      checked8: true
-    });
-    const checkedAsync = ref(true);
-    const loadingAsync = ref(false);
-
-    // const checkedStr = ref('开');
-
-    const change = (value: boolean) => {
-      showToast.text(`value：${value}`);
-    };
-
-    const changeAsync = (value: boolean) => {
-      showToast.text(`after 2 second： ${value}`);
-      loadingAsync.value = true;
-      setTimeout(() => {
-        checkedAsync.value = value;
-        loadingAsync.value = false;
-      }, 2000);
-    };
-
-    return {
-      ...toRefs(data),
-      checkedAsync,
-      // checkedStr,
-      loadingAsync,
-      change,
-      changeAsync,
-      translate
-    };
-  }
+initTranslate();
+const data = reactive({
+  checked1: true,
+  checked2: true,
+  checked3: true,
+  checked4: true,
+  checked6: true,
+  checked7: true,
+  checked8: true
 });
+const checkedAsync = ref(true);
+const loadingAsync = ref(false);
+
+// const checkedStr = ref('开');
+
+const change = (value: boolean) => {
+  showToast.text(`value：${value}`);
+};
+
+const changeAsync = (value: boolean) => {
+  showToast.text(`after 2 second： ${value}`);
+  loadingAsync.value = true;
+  setTimeout(() => {
+    checkedAsync.value = value;
+    loadingAsync.value = false;
+  }, 2000);
+};
 </script>
-<style lang="scss" scoped>
-.switch-demo1 {
-  // width: 50px;
-}
-</style>

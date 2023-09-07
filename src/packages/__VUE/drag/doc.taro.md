@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Drag } from '@nutui/nutui-taro';
 
@@ -16,27 +16,31 @@ app.use(Drag);
 
 ### 基础用法
 
-```html
-<nut-drag>
-  <div class="touch-dom">可点击，可拖拽</div>
-</nut-drag>
+:::demo
+
+```vue
+<template>
+  <nut-drag>
+    <nut-button type="primary">触摸移动</nut-button>
+  </nut-drag>
+</template>
 ```
+
+:::
 
 ### 限制拖拽方向
 
-```html
-<nut-drag direction="x">
-  <div class="touch-dom">只能在X轴拖动</div>
-</nut-drag>
+:::demo
+
+```vue
+<template>
+  <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
+    <nut-button type="primary">只能X轴拖拽</nut-button>
+  </nut-drag>
+</template>
 ```
 
-### 限制拖拽方向
-
-```html
-<nut-drag direction="y">
-  <div class="touch-dom">只能在Y轴拖动</div>
-</nut-drag>
-```
+:::
 
 ## API
 

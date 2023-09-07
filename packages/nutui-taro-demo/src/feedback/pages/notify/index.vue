@@ -51,78 +51,61 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { reactive, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const onClosed = () => console.log('closed');
-    const onClick = () => console.log('click');
+const env = Taro.getEnv();
+const onClosed = () => console.log('closed');
+const onClick = () => console.log('click');
 
-    const baseState = {
-      state: reactive({
-        show: false,
-        desc: '基础用法'
-      }),
-      methods: {
-        cellClick() {
-          baseState.state.show = true;
-        }
-      }
-    };
-
-    const notifyState = {
-      state: reactive({
-        show: false,
-        desc: '',
-        type: 'primary'
-      }),
-      methods: {
-        cellClick(type: string, desc: string) {
-          notifyState.state.show = true;
-          notifyState.state.type = type;
-          notifyState.state.desc = desc;
-        }
-      }
-    };
-    const customState = {
-      state: reactive({
-        show: false,
-        desc: '',
-        type: 'primary',
-        duration: 3000
-      }),
-      methods: {
-        cellClick(type: string, desc: string, duration: number) {
-          customState.state.show = true;
-          customState.state.type = type;
-          customState.state.desc = desc;
-          customState.state.duration = duration;
-        }
-      }
-    };
-    const show = ref(false);
-    const showNotify = () => {
-      show.value = true;
-      setTimeout(() => {
-        show.value = false;
-      }, 2000);
-    };
-    return {
-      baseState,
-      notifyState,
-      customState,
-      onClosed,
-      onClick,
-      show,
-      showNotify,
-      env
-    };
+const baseState = {
+  state: reactive({
+    show: false,
+    desc: '基础用法'
+  }),
+  methods: {
+    cellClick() {
+      baseState.state.show = true;
+    }
   }
+};
+
+const notifyState = {
+  state: reactive({
+    show: false,
+    desc: '',
+    type: 'primary'
+  }),
+  methods: {
+    cellClick(type: string, desc: string) {
+      notifyState.state.show = true;
+      notifyState.state.type = type;
+      notifyState.state.desc = desc;
+    }
+  }
+};
+const customState = {
+  state: reactive({
+    show: false,
+    desc: '',
+    type: 'primary',
+    duration: 3000
+  }),
+  methods: {
+    cellClick(type: string, desc: string, duration: number) {
+      customState.state.show = true;
+      customState.state.type = type;
+      customState.state.desc = desc;
+      customState.state.duration = duration;
+    }
+  }
+};
+const show = ref(false);
+const showNotify = () => {
+  show.value = true;
+  setTimeout(() => {
+    show.value = false;
+  }, 2000);
 };
 </script>

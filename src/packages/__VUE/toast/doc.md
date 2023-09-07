@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Toast } from '@nutui/nutui';
 
@@ -18,23 +18,16 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Text 文字提示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.text(msg);
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.text(msg);
+};
 </script>
 ```
 
@@ -44,25 +37,18 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 标题展示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.text(msg, {
-          title: '标题文字'
-        });
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.text(msg, {
+    title: '标题文字'
+  });
+};
 </script>
 ```
 
@@ -72,23 +58,16 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 成功提示" is-link @click="textToast('成功提示')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.success(msg);
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.success(msg);
+};
 </script>
 ```
 
@@ -98,23 +77,16 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 失败提示" is-link @click="textToast('失败提示')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.fail(msg);
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.fail(msg);
+};
 </script>
 ```
 
@@ -124,23 +96,16 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 警告提示" is-link @click="textToast('警告提示')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.warn(msg);
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.warn(msg);
+};
 </script>
 ```
 
@@ -150,23 +115,16 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 加载提示" is-link @click="textToast('加载中')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.loading(msg);
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.loading(msg);
+};
 </script>
 ```
 
@@ -176,25 +134,18 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast不消失" is-link @click="textToast('Toast不消失')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.text(msg, {
-          duration: 0
-        });
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.text(msg, {
+    duration: 0
+  });
+};
 </script>
 ```
 
@@ -204,26 +155,19 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Toast 自定义底部高度" is-link @click="textToast('自定义距离')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.text(msg, {
-          center: false,
-          bottom: '10%'
-        });
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.text(msg, {
+    center: false,
+    bottom: '10%'
+  });
+};
 </script>
 ```
 
@@ -233,25 +177,18 @@ app.use(Toast);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Loading带透明罩" is-link @click="textToast('加载中')"></nut-cell>
 </template>
-<script>
-  import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
-  export default {
-    setup() {
-      const textToast = (msg) => {
-        showToast.loading(msg, {
-          cover: true
-        });
-      };
-      return {
-        textToast
-      };
-    }
-  };
+<script setup>
+import { showToast } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/toast/style';
+const textToast = (msg) => {
+  showToast.loading(msg, {
+    cover: true
+  });
+};
 </script>
 ```
 
@@ -259,7 +196,7 @@ app.use(Toast);
 
 ### 支持在 JS 模块中导入使用
 
-```javascript
+```js
 import { showToast } from '@nutui/nutui';
 import '@nutui/nutui/dist/packages/toast/style';
 showToast.text('在js模块中使用');

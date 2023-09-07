@@ -56,6 +56,8 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
+import NutActionSheet from './index.vue';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('action-sheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
