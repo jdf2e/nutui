@@ -74,8 +74,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, ref, onMounted, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import NutAudio from './index.vue';
+import NutAudioOperate from '../audiooperate/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -96,71 +98,43 @@ const initTranslate = () =>
     }
   });
 
-export default defineComponent({
-  components: {
-    Voice,
-    PlayDoubleBack,
-    PlayDoubleForward,
-    PlayStart,
-    PlayStop
-  },
-  props: {},
-  setup() {
-    initTranslate();
-    const audioDemo = ref({
-      second: 0
-    });
-    const playing = ref(false);
-    const duration = ref<string>('');
-    const data = reactive({
-      muted: false,
-      autoplay: false
-    });
+initTranslate();
+const audioDemo = ref({
+  second: 0
+});
+const playing = ref(false);
+const duration = ref<string>('');
+const muted = ref(false);
+const autoplay = ref(false);
 
-    const fastBack = () => {
-      console.log('倒退');
-    };
+const fastBack = () => {
+  console.log('倒退');
+};
 
-    const forward = (progress: number) => {
-      console.log('快进', '当前时间' + progress);
-    };
+const forward = (progress: number) => {
+  console.log('快进', '当前时间' + progress);
+};
 
-    const changeStatus = (status: boolean) => {
-      console.log('当前播放状态', status);
-      playing.value = status;
-    };
+const changeStatus = (status: boolean) => {
+  console.log('当前播放状态', status);
+  playing.value = status;
+};
 
-    const ended = () => {
-      console.log('播放结束');
-    };
+const ended = () => {
+  console.log('播放结束');
+};
 
-    const changeProgress = (val: number) => {
-      console.log('改变进度条', val);
-    };
+const changeProgress = (val: number) => {
+  console.log('改变进度条', val);
+};
 
-    const onCanplay = (e: Event) => {
-      duration.value = audioDemo.value.second.toFixed();
-      console.log(e, duration.value);
-    };
+const onCanplay = (e: Event) => {
+  duration.value = audioDemo.value.second.toFixed();
+  console.log(e, duration.value);
+};
 
-    onMounted(() => {
-      console.log(audioDemo.value);
-    });
-
-    return {
-      ...toRefs(data),
-      playing,
-      fastBack,
-      forward,
-      changeStatus,
-      audioDemo,
-      ended,
-      duration,
-      changeProgress,
-      translate,
-      onCanplay
-    };
-  }
+onMounted(() => {
+  console.log(audioDemo.value);
 });
 </script>
 <style lang="scss" scoped>
