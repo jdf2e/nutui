@@ -8,7 +8,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp, createVNode } from 'vue';
 import { Dialog } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ app.use(Dialog);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="函数式调用">
     <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
@@ -32,95 +32,82 @@ app.use(Dialog);
     <nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref, createVNode } from 'vue';
-  import { showDialog } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/dialog/style';
-  export default {
-    setup() {
-      const onCancel = () => {
-        console.log('event cancel');
-      };
-      const onOk = () => {
-        console.log('event ok');
-      };
-      const baseClick = (): void => {
-        showDialog({
-          title: '基础弹框',
-          content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
-          onCancel,
-          onOk
-        });
-      };
-      const transparentClick = (): void => {
-        showDialog({
-          overlayStyle: { background: 'rgba(0,0,0,0)' },
-          title: '透明弹框',
-          content: 'Content',
-          onCancel,
-          onOk
-        });
-      };
-      const htmlClick = (): void => {
-        showDialog({
-          title: '支持富文本 html',
-          content:
-            "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-          onCancel,
-          onOk
-        });
-      };
-      const beforeCloseClick = (): void => {
-        showDialog({
-          title: '异步关闭',
-          content: '点击确认后，1秒后关闭',
-          onCancel,
-          onOk,
-          beforeClose: (action: string) => {
-            return new Promise((r) => {
-              setTimeout(() => {
-                r(action == 'ok');
-              }, 1000);
-            });
-          }
-        });
-      };
-      const noTitleClick = () => {
-        showDialog({
-          content: '无标题弹框',
-          onCancel,
-          onOk
-        });
-      };
-      const tipsClick = () => {
-        showDialog({
-          title: '温馨提示',
-          content: '支持函数调用和组件调用两种方式。',
-          noCancelBtn: true,
-          onCancel,
-          onOk
-        });
-      };
-      const verticalClick = () => {
-        showDialog({
-          title: '温馨提示',
-          content: '支持底部按钮纵向排列。',
-          footerDirection: 'vertical',
-          onCancel,
-          onOk
-        });
-      };
-      return {
-        baseClick,
-        transparentClick,
-        htmlClick,
-        beforeCloseClick,
-        noTitleClick,
-        tipsClick,
-        verticalClick
-      };
-    }
-  };
+<script setup>
+import { ref, createVNode } from 'vue';
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const onOk = () => {
+      console.log('event ok');
+    };
+    const baseClick = (): void => {
+      showDialog({
+        title: '基础弹框',
+        content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
+        onCancel,
+        onOk
+      });
+    };
+    const transparentClick = (): void => {
+      showDialog({
+        overlayStyle: { background: 'rgba(0,0,0,0)' },
+        title: '透明弹框',
+        content: 'Content',
+        onCancel,
+        onOk
+      });
+    };
+    const htmlClick = (): void => {
+      showDialog({
+        title: '支持富文本 html',
+        content:
+          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+        onCancel,
+        onOk
+      });
+    };
+    const beforeCloseClick = (): void => {
+      showDialog({
+        title: '异步关闭',
+        content: '点击确认后，1秒后关闭',
+        onCancel,
+        onOk,
+        beforeClose: (action: string) => {
+          return new Promise((r) => {
+            setTimeout(() => {
+              r(action == 'ok');
+            }, 1000);
+          });
+        }
+      });
+    };
+    const noTitleClick = () => {
+      showDialog({
+        content: '无标题弹框',
+        onCancel,
+        onOk
+      });
+    };
+    const tipsClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持函数调用和组件调用两种方式。',
+        noCancelBtn: true,
+        onCancel,
+        onOk
+      });
+    };
+    const verticalClick = () => {
+      showDialog({
+        title: '温馨提示',
+        content: '支持底部按钮纵向排列。',
+        footerDirection: 'vertical',
+        onCancel,
+        onOk
+      });
+    };
 </script>
 ```
 
@@ -130,7 +117,7 @@ app.use(Dialog);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="标签式使用">
     <nut-cell title="标签式使用" @click="componentClick"></nut-cell>
@@ -152,21 +139,16 @@ app.use(Dialog);
     </nut-dialog>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const visible = ref(false);
-      const visible1 = ref(false);
-      const componentClick = () => {
-        visible.value = true;
-      };
-      const componentvVrticalClick = () => {
-        visible1.value = true;
-      };
-      return { visible, visible1, componentClick, componentvVrticalClick };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const visible = ref(false);
+const visible1 = ref(false);
+const componentClick = () => {
+  visible.value = true;
+};
+const componentvVrticalClick = () => {
+  visible1.value = true;
+};
 </script>
 ```
 
@@ -176,7 +158,7 @@ app.use(Dialog);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="Teleport 使用，挂载到指定节点">
     <nut-cell title="body element node" @click="teleportClick('body')"></nut-cell>
@@ -184,28 +166,21 @@ app.use(Dialog);
     <nut-cell title="demo class element node" @click="teleportClick('.demo')"></nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { showDialog } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/dialog/style';
-  export default {
-    setup() {
-      const onCancel = () => {
-        console.log('event cancel');
-      };
-      const teleportClick = (teleport: string) => {
-        showDialog({
-          teleport,
-          title: 'teleport to ' + teleport,
-          content: '打开开发者工具看一下 Elements Tab',
-          noCancelBtn: true,
-          onCancel
-        });
-      };
-      return {
-        teleportClick
-      };
-    }
-  };
+<script setup>
+import { showDialog } from '@nutui/nutui';
+import '@nutui/nutui/dist/packages/dialog/style';
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const teleportClick = (teleport: string) => {
+      showDialog({
+        teleport,
+        title: 'teleport to ' + teleport,
+        content: '打开开发者工具看一下 Elements Tab',
+        noCancelBtn: true,
+        onCancel
+      });
+    };
 </script>
 ```
 

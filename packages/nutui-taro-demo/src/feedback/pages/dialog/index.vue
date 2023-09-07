@@ -30,85 +30,60 @@
     <nut-dialog title="异步关闭" :content="closeContent" :visible="visible4" @cancel="onCancel" @ok="onOkAsync" />
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const visible1 = ref(false);
-    const visible2 = ref(false);
-    const visible3 = ref(false);
-    const visible4 = ref(false);
-    const visible5 = ref(false);
-    const closeContent = ref('');
-    const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
-    const countDown = (second: number) => `倒计时 ${second} 秒`;
+const env = Taro.getEnv();
+const visible1 = ref(false);
+const visible2 = ref(false);
+const visible3 = ref(false);
+const visible4 = ref(false);
+const visible5 = ref(false);
+const closeContent = ref('');
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
+const countDown = (second: number) => `倒计时 ${second} 秒`;
 
-    const onCancel = () => {
-      console.log('event cancel');
-    };
-    const onOk = () => {
-      console.log('event ok');
-    };
-    const onOkAsync = () => {
-      sleep()
-        .then(() => {
-          closeContent.value = countDown(2);
-          return sleep();
-        })
-        .then(() => {
-          closeContent.value = countDown(1);
-          return sleep();
-        })
-        .then(() => {
-          closeContent.value = countDown(0);
-        })
-        .then(() => {
-          visible4.value = false;
-        });
-    };
+const onCancel = () => {
+  console.log('event cancel');
+};
+const onOk = () => {
+  console.log('event ok');
+};
+const onOkAsync = () => {
+  sleep()
+    .then(() => {
+      closeContent.value = countDown(2);
+      return sleep();
+    })
+    .then(() => {
+      closeContent.value = countDown(1);
+      return sleep();
+    })
+    .then(() => {
+      closeContent.value = countDown(0);
+    })
+    .then(() => {
+      visible4.value = false;
+    });
+};
 
-    const baseClick = (): void => {
-      visible1.value = true;
-    };
-    const noTitleClick = () => {
-      visible2.value = true;
-    };
-    const tipsClick = () => {
-      visible3.value = true;
-    };
+const baseClick = (): void => {
+  visible1.value = true;
+};
+const noTitleClick = () => {
+  visible2.value = true;
+};
+const tipsClick = () => {
+  visible3.value = true;
+};
 
-    const componentClick = () => {
-      closeContent.value = `点击确定时3s后关闭`;
-      visible4.value = true;
-    };
+const componentClick = () => {
+  closeContent.value = `点击确定时3s后关闭`;
+  visible4.value = true;
+};
 
-    const verticalClick = () => {
-      visible5.value = true;
-    };
-
-    return {
-      visible1,
-      visible2,
-      visible3,
-      visible4,
-      visible5,
-      onCancel,
-      onOk,
-      closeContent,
-      onOkAsync,
-      baseClick,
-      noTitleClick,
-      componentClick,
-      tipsClick,
-      verticalClick,
-      env
-    };
-  }
+const verticalClick = () => {
+  visible5.value = true;
 };
 </script>

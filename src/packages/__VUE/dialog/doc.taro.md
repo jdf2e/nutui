@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Dialog } from '@nutui/nutui-taro';
 
@@ -16,40 +16,39 @@ app.use(Dialog);
 
 ### 使用方式
 
-```html
-<nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-<nut-dialog title="基础弹框" content="这是基础弹框。" v-model:visible="visible1" @cancel="onCancel" @ok="onOk" />
+```vue
+<template>
+  <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
+  <nut-dialog title="基础弹框" content="这是基础弹框。" v-model:visible="visible1" @cancel="onCancel" @ok="onOk" />
 
-<nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-<nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
+  <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
+  <nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
 
-<nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
-<nut-dialog
-  no-cancel-btn
-  title="温馨提示"
-  content="这是提示弹框。"
-  v-model:visible="visible3"
-  @cancel="onCancel"
-  @ok="onOk"
-/>
+  <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
+  <nut-dialog
+    no-cancel-btn
+    title="温馨提示"
+    content="这是提示弹框。"
+    v-model:visible="visible3"
+    @cancel="onCancel"
+    @ok="onOk"
+  />
 
-<nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
-<nut-dialog
-  footer-direction="vertical"
-  teleport="#app"
-  title="温馨提示"
-  content="这是提示弹框。"
-  v-model:visible="visible5"
-/>
+  <nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
+  <nut-dialog
+    footer-direction="vertical"
+    teleport="#app"
+    title="温馨提示"
+    content="这是提示弹框。"
+    v-model:visible="visible5"
+  />
 
-<nut-cell title="异步关闭" @click="componentClick"></nut-cell>
-<nut-dialog title="异步关闭" :content="closeContent" :visible="visible4" @cancel="onCancel" @ok="onOkAsync" />
-```
+  <nut-cell title="异步关闭" @click="componentClick"></nut-cell>
+  <nut-dialog title="异步关闭" :content="closeContent" :visible="visible4" @cancel="onCancel" @ok="onOkAsync" />
+</template>
 
-```javascript
+<script setup>
 import { ref } from 'vue';
-export default {
-  setup() {
     const visible1 = ref(false);
     const visible2 = ref(false);
     const visible3 = ref(false);
@@ -101,25 +100,7 @@ export default {
     const verticalClick = () => {
       visible5.value = true;
     };
-
-    return {
-      visible1,
-      visible2,
-      visible3,
-      visible4,
-      visible5,
-      onCancel,
-      onOk,
-      closeContent,
-      onOkAsync,
-      baseClick,
-      noTitleClick,
-      componentClick,
-      tipsClick,
-      verticalClick
-    };
-  }
-};
+</script>
 ```
 
 ## API
