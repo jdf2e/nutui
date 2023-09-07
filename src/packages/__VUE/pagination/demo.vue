@@ -21,8 +21,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
+import NutPagination from './index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -42,25 +43,12 @@ const initTranslate = () =>
       customButton: 'Custom Button'
     }
   });
-export default defineComponent({
-  components: { Left, Right },
-  setup() {
-    initTranslate();
-    const state = reactive({
-      currentPage: 1,
-      currentPage1: 1,
-      currentPage2: 1,
-      currentPage3: 1
-    });
-    const pageChange = (value: number) => {
-      console.log('page change', value);
-    };
-
-    return {
-      ...toRefs(state),
-      pageChange,
-      translate
-    };
-  }
-});
+initTranslate();
+const currentPage = ref(1);
+const currentPage1 = ref(1);
+const currentPage2 = ref(1);
+const currentPage3 = ref(1);
+const pageChange = (value: number) => {
+  console.log(value);
+};
 </script>
