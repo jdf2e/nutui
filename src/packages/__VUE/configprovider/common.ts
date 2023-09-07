@@ -63,7 +63,6 @@ export const component = (tag: string) => {
       };
 
       const themeStyle = computed(() => mapThemeVarsToCSSVars(props.themeVars));
-      const defaultSlots = slots.default?.();
 
       return () => {
         return h(
@@ -72,7 +71,7 @@ export const component = (tag: string) => {
             class: `nut-theme-${props.theme}`,
             style: themeStyle.value
           },
-          defaultSlots
+          slots.default?.()
         );
       };
     }
