@@ -1,10 +1,10 @@
 <template>
   <div class="demo nut-infiniteloading-demo">
-    <nut-tabs v-model="tabsValue" @change="chagetabs">
+    <nut-tabs v-model="data.tabsValue" @change="chagetabs">
       <nut-tab-pane :title="translate('basic')">
         <ul class="infiniteUl">
-          <nut-infinite-loading v-model="infinityValue" :has-more="hasMore" @load-more="loadMore">
-            <li v-for="(item, index) in defultList" :key="index" class="infiniteLi">{{ item }}</li>
+          <nut-infinite-loading v-model="data.infinityValue" :has-more="hasMore" @load-more="loadMore">
+            <li v-for="(item, index) in data.defaultList" :key="index" class="infiniteLi">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
       </nut-tab-pane>
@@ -12,13 +12,13 @@
       <nut-tab-pane :title="translate('customTxt')">
         <ul class="infiniteUl">
           <nut-infinite-loading
-            v-model="infinityValue2"
+            v-model="data.infinityValue2"
             load-txt="Loading..."
             :load-more-txt="translate('none')"
             :has-more="customHasMore"
             @load-more="customLoadMore"
           >
-            <li v-for="(item, index) in customList" :key="index" class="infiniteLi">{{ item }}</li>
+            <li v-for="(item, index) in data.customList" :key="index" class="infiniteLi">{{ item }}</li>
           </nut-infinite-loading>
         </ul>
       </nut-tab-pane>
@@ -26,8 +26,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { onMounted, ref, reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref, reactive } from 'vue';
+import NutInfiniteLoading from './index.vue';
+import NutTabs from '../tabs/index.vue';
+import NutTabPane from '../tabpane/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('infinite-loading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -50,98 +53,81 @@ const initTranslate = () =>
     }
   });
 
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const letter: any[] = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'IJ',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
+initTranslate();
+const letter: string[] = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'IJ',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z'
+];
 
-    const hasMore = ref(true);
-    const customHasMore = ref(true);
-    const refreshHasMore = ref(true);
+const hasMore = ref(true);
+const customHasMore = ref(true);
 
-    const data = reactive({
-      tabsValue: 0,
-      infinityValue: false,
-      infinityValue2: false,
-      defultList: [],
-      customList: [],
-      refreshList: []
-    });
+const data = reactive({
+  tabsValue: 0,
+  infinityValue: false,
+  infinityValue2: false,
+  defaultList: [] as string[],
+  customList: [] as string[],
+  refreshList: []
+});
 
-    let cycle = 0;
-    let cycle2 = 0;
+let cycle = 0;
+let cycle2 = 0;
 
-    const loadMore = () => {
-      setTimeout(() => {
-        data.defultList = data.defultList.concat(letter);
-        cycle++;
-        if (cycle > 2) hasMore.value = false;
-        data.infinityValue = false;
-      }, 1000);
-    };
+const loadMore = () => {
+  setTimeout(() => {
+    data.defaultList = data.defaultList.concat(letter);
+    cycle++;
+    if (cycle > 2) hasMore.value = false;
+    data.infinityValue = false;
+  }, 1000);
+};
 
-    const customLoadMore = () => {
-      setTimeout(() => {
-        data.customList = data.customList.concat(letter);
-        cycle2++;
+const customLoadMore = () => {
+  setTimeout(() => {
+    data.customList = data.customList.concat(letter);
+    cycle2++;
 
-        console.log(cycle2, data.customList);
-        if (cycle2 > 2) customHasMore.value = false;
+    console.log(cycle2, data.customList);
+    if (cycle2 > 2) customHasMore.value = false;
 
-        data.infinityValue2 = false;
-      }, 1000);
-    };
+    data.infinityValue2 = false;
+  }, 1000);
+};
 
-    const chagetabs = () => {
-      data.defultList = [].concat(letter);
-      data.customList = [].concat(letter);
-      data.infinityValue2 = false;
-      data.infinityValue = false;
-      customHasMore.value = true;
-      hasMore.value = true;
-    };
-    onMounted(() => {
-      chagetabs();
-    });
-
-    return {
-      loadMore,
-      hasMore,
-      customHasMore,
-      customLoadMore,
-      refreshHasMore,
-      translate,
-      ...toRefs(data),
-      chagetabs
-    };
-  }
+const chagetabs = () => {
+  data.defaultList = letter.slice();
+  data.customList = letter.slice();
+  data.infinityValue2 = false;
+  data.infinityValue = false;
+  customHasMore.value = true;
+  hasMore.value = true;
+};
+onMounted(() => {
+  chagetabs();
 });
 </script>
 

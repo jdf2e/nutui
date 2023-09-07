@@ -13,63 +13,47 @@
           @load-more="loadMore"
           @refresh="refresh"
         >
-          <view class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</view>
+          <view class="infiniteLi" v-for="(item, index) in defaultList" :key="index">{{ item }}</view>
         </nut-infinite-loading>
       </view>
     </nut-cell>
   </view>
 </template>
 
-<script lang="ts">
-import { onMounted, ref, reactive, toRefs } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+const hasMore = ref(true);
+const defaultList = ref(['']);
 
-export default {
-  props: {},
-  setup() {
-    const hasMore = ref(true);
+const loadMore = (done) => {
+  setTimeout(() => {
+    const curLen = defaultList.value.length;
 
-    const data = reactive({
-      defultList: ['']
-    });
+    for (let i = curLen; i < curLen + 10; i++) {
+      defaultList.value.push(`${i}`);
+    }
 
-    const loadMore = (done) => {
-      setTimeout(() => {
-        const curLen = data.defultList.length;
+    if (defaultList.value.length > 30) hasMore.value = false;
 
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.defultList.push(`${i}`);
-        }
+    done();
+  }, 500);
+};
 
-        if (data.defultList.length > 30) hasMore.value = false;
+const refresh = (done) => {
+  setTimeout(() => {
+    console.log('刷新成功');
+    done();
+  }, 1000);
+};
 
-        done();
-      }, 500);
-    };
-
-    const refresh = (done) => {
-      setTimeout(() => {
-        console.log('刷新成功');
-        done();
-      }, 1000);
-    };
-
-    const init = () => {
-      for (let i = 0; i < 20; i++) {
-        data.defultList.push(`${i}`);
-      }
-    };
-    onMounted(() => {
-      init();
-    });
-
-    return {
-      loadMore,
-      hasMore,
-      refresh,
-      ...toRefs(data)
-    };
+const init = () => {
+  for (let i = 0; i < 20; i++) {
+    defaultList.value.push(`${i}`);
   }
 };
+onMounted(() => {
+  init();
+});
 </script>
 
 <style>
