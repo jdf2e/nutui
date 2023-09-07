@@ -32,18 +32,18 @@
       <IconFont name="dongdong" size="26"></IconFont>
     </nut-cell>
 
-    <nut-cell-group v-for="item in icons.data" :title="item.name" :key="item">
+    <nut-cell-group v-for="item in (IconFontConfig as any).data" :title="item.name" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="item in item.icons" :key="item">
-            <IconFont :name="item"></IconFont>
-            <span>{{ item }}</span>
+          <li v-for="it in item.icons" :key="it">
+            <IconFont :name="it"></IconFont>
+            <span>{{ it }}</span>
           </li>
         </ul>
       </nut-cell>
     </nut-cell-group>
 
-    <nut-cell-group v-for="item in icons.style" :title="item.name" :key="item">
+    <nut-cell-group v-for="item in (IconFontConfig as any).style" :title="item.name" :key="item">
       <nut-cell>
         <ul class="icon-ul">
           <li v-for="it in item.icons" :key="it" class="icon-li">
@@ -59,19 +59,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  props: {},
-  components: { IconFont, Add, Header },
-  setup() {
-    const env = Taro.getEnv();
-
-    return { icons: IconFontConfig, env };
-  }
-};
+const env = Taro.getEnv();
 </script>
 
 <style lang="scss">

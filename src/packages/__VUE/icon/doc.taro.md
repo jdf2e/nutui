@@ -38,7 +38,7 @@ import { IconFont } from '@nutui/icons-vue-taro';
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong"></IconFont>
   <IconFont name="JD"></IconFont>
@@ -57,7 +57,7 @@ import { IconFont } from '@nutui/icons-vue-taro';
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong" color="#fa2c19"></IconFont>
   <IconFont name="dongdong" color="#64b578"></IconFont>
@@ -73,7 +73,7 @@ import { IconFont } from '@nutui/icons-vue-taro';
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong"></IconFont>
   <IconFont name="dongdong" size="24"></IconFont>
@@ -89,7 +89,7 @@ import { IconFont } from '@nutui/icons-vue-taro';
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></IconFont>
   <IconFont name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></IconFont>
@@ -101,10 +101,10 @@ import { IconFont } from '@nutui/icons-vue-taro';
 </template>
 
 <style>
-  .nut-icon {
-    --animate-duration: 1s;
-    --animate-delay: 0s;
-  }
+.nut-icon {
+  --animate-duration: 1s;
+  --animate-delay: 0s;
+}
 </style>
 ```
 
@@ -137,7 +137,7 @@ import './assets/font/iconfont.css';
 
 第三步：
 
-```html
+```vue
 <!-- 
   font-class-name 指定类名为默认 iconfont
   class-prefix 指定默认 icon
@@ -164,7 +164,7 @@ import './assets/font/iconfont.css';
 }
 ```
 
-```html
+```vue
 <!-- 
   font-class-name 指定类名为默认 my-icon
   class-prefix 指定默认 my-icon

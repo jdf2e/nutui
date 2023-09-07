@@ -56,7 +56,7 @@ app.use(IconFont);
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong"></IconFont>
   <IconFont name="JD"></IconFont>
@@ -75,7 +75,7 @@ app.use(IconFont);
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong" color="#fa2c19"></IconFont>
   <IconFont name="dongdong" color="#64b578"></IconFont>
@@ -91,7 +91,7 @@ app.use(IconFont);
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dongdong"></IconFont>
   <IconFont name="dongdong" size="24"></IconFont>
@@ -107,7 +107,7 @@ app.use(IconFont);
 
 :::demo
 
-```html
+```vue
 <template>
   <IconFont name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></IconFont>
   <IconFont name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></IconFont>
@@ -119,10 +119,10 @@ app.use(IconFont);
 </template>
 
 <style>
-  .nut-icon {
-    --animate-duration: 1s;
-    --animate-delay: 0s;
-  }
+.nut-icon {
+  --animate-duration: 1s;
+  --animate-delay: 0s;
+}
 </style>
 ```
 
