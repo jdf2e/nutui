@@ -16,19 +16,22 @@ app.use(Backtop);
 
 ### 基础用法
 
-```html
-<view class="demo">
-  <nut-backtop>
-    <template #content>
-      <div v-for="(item, index) in 24" class="test">{{index}}</div>
-    </template>
-  </nut-backtop>
-</view>
+```vue
+<template>
+  <view class="demo">
+    <nut-backtop>
+      <template #content>
+        <div v-for="(item, index) in 24" class="test">{{ index }}</div>
+      </template>
+    </nut-backtop>
+  </view>
+</template>
+
 <style>
-  .test {
-    padding: 12px 0 12px 20px;
-    border-top: 1px solid #eee;
-  }
+.test {
+  padding: 12px 0 12px 20px;
+  border-top: 1px solid #eee;
+}
 </style>
 ```
 
