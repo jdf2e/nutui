@@ -16,6 +16,8 @@ app.use(Dialog);
 
 ### 使用方式
 
+:::
+
 ```vue
 <template>
   <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
@@ -102,6 +104,8 @@ const verticalClick = () => {
 };
 </script>
 ```
+
+:::
 
 ## API
 
