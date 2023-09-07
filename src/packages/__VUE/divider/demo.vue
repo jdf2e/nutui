@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import NutDivider from './index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('divider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

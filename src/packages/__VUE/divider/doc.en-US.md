@@ -6,7 +6,7 @@ Separate content into multiple areas.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Divider } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ Default render one horizontal divider line.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider />
 </template>
@@ -34,7 +34,7 @@ Insert text into divider with default slot.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider>text</nut-divider>
 </template>
@@ -48,7 +48,7 @@ Set Content Position with content-position attribute.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider content-position="left">text</nut-divider>
   <nut-divider content-position="right">text</nut-divider>
@@ -63,7 +63,7 @@ Render dashed divider line with dashed attribute.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider dashed>text</nut-divider>
 </template>
@@ -77,7 +77,7 @@ User can custom divider style with style attribute.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">text</nut-divider>
 </template>
@@ -89,7 +89,7 @@ User can custom divider style with style attribute.
 
 :::demo
 
-```html
+```vue
 <template>
   <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
     Text
