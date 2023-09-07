@@ -6,7 +6,7 @@ Enhanced img tag with multiple image fill modes, support for loading hint, loadi
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Image } from '@nutui/nutui';
 
@@ -20,13 +20,13 @@ The basic usage is the same as that of the native IMG tag. You can set the nativ
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
     width="100"
     height="100"
-  ></nut-image>
+  />
 </template>
 ```
 
@@ -38,7 +38,7 @@ The `fit` attribute is used to set the image filling mode, which is equivalent t
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -57,7 +57,7 @@ The position property can be used to set the position of the picture, which is e
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -77,7 +77,7 @@ The round attribute allows you to set the image to be round. Note that if the im
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -96,7 +96,7 @@ The Image component provides a default `loading` prompt and supports custom cont
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image width="100" height="100" show-loading>
     <template #loading>
@@ -104,11 +104,8 @@ The Image component provides a default `loading` prompt and supports custom cont
     </template>
   </nut-image>
 </template>
-<script lang="ts">
-  import { Loading } from '@nutui/icons-vue';
-  export default {
-    components: { Loading }
-  };
+<script setup>
+import { Loading } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -120,19 +117,16 @@ The Image component provides a default loading failure warning and supports cust
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-image src="https://x" width="100" height="100" show-loading>
+  <nut-image src="https://x" width="100" height="100" show-error>
     <template #error>
       <CircleClose width="16px" height="16px" name="circleClose" />
     </template>
   </nut-image>
 </template>
-<script lang="ts">
-  import { CircleClose } from '@nutui/icons-vue';
-  export default {
-    components: { CircleClose }
-  };
+<script setup>
+import { CircleClose } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -142,7 +136,7 @@ The Image component provides a default loading failure warning and supports cust
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
     <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
@@ -160,16 +154,9 @@ The Image component provides a default loading failure warning and supports cust
     <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
   </nut-cell>
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const src = ref(
-        'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
-      );
-      return { src };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
 </script>
 ```
 

@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Image } from '@nutui/nutui';
 
@@ -20,13 +20,13 @@ app.use();
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
     width="100"
     height="100"
-  ></nut-image>
+  />
 </template>
 ```
 
@@ -38,7 +38,7 @@ app.use();
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -57,7 +57,7 @@ app.use();
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -77,7 +77,7 @@ app.use();
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image
     src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
@@ -96,7 +96,7 @@ Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image width="100" height="100" show-loading>
     <template #loading>
@@ -104,11 +104,8 @@ Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自
     </template>
   </nut-image>
 </template>
-<script lang="ts">
-  import { Loading } from '@nutui/icons-vue';
-  export default {
-    components: { Loading }
-  };
+<script setup>
+import { Loading } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -120,7 +117,7 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-image src="https://x" width="100" height="100" show-error>
     <template #error>
@@ -128,11 +125,8 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
     </template>
   </nut-image>
 </template>
-<script lang="ts">
-  import { CircleClose } from '@nutui/icons-vue';
-  export default {
-    components: { CircleClose }
-  };
+<script setup>
+import { CircleClose } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -144,7 +138,7 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
     <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
@@ -162,16 +156,9 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
     <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
   </nut-cell>
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const src = ref(
-        'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
-      );
-      return { src };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
 </script>
 ```
 
