@@ -68,7 +68,9 @@
     </view>
     <!-- footer-->
     <view v-if="poppable && !isAutoBackFill" class="nut-calendar__footer">
-      <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
+      <slot name="footer-info" :date="chooseData">
+        <view class="nut-calendar__confirm" @click="confirm">{{ confirmText || translate('confirm') }}</view>
+      </slot>
     </view>
   </view>
 </template>
