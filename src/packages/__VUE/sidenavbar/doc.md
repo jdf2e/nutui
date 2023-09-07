@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui';
 
@@ -22,12 +22,12 @@ app.use(SideNavbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell @click="handleClick1">
+  <nut-cell @click="handleClick">
     <span><label>右侧</label></span>
   </nut-cell>
-  <nut-popup position="right" v-model:visible="show1" :style="{ width, height }">
+  <nut-popup position="right" v-model:visible="show" style="width: 80%; height: 100%">
     <nut-side-navbar>
       <nut-sub-side-navbar title="智能城市AI" ikey="6">
         <nut-sub-side-navbar title="人体识别1" ikey="9">
@@ -42,26 +42,12 @@ app.use(SideNavbarItem);
     </nut-side-navbar>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show1: false,
-        width: '80%',
-        height: '100%'
-      });
-
-      const handleClick1 = () => {
-        state.show1 = true;
-      };
-
-      return {
-        ...toRefs(state),
-        handleClick1
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
+const handleClick = () => {
+  show.value = true;
+};
 </script>
 ```
 
@@ -71,14 +57,14 @@ app.use(SideNavbarItem);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-cell @click="handleClick3">
+  <nut-cell @click="handleClick">
     <span><label>显示</label></span>
   </nut-cell>
-  <nut-popup position="right" v-model:visible="show3" :style="{ width, height }">
-    <nut-side-navbar :show="show3">
-      <nut-side-navbar-item ikey="1" title="人脸识别" @click="handleClick4('人脸识别')"></nut-side-navbar-item>
+  <nut-popup position="right" v-model:visible="show" style="width: 80%; height: 100%">
+    <nut-side-navbar :show="show">
+      <nut-side-navbar-item ikey="1" title="人脸识别"></nut-side-navbar-item>
       <nut-side-navbar-item ikey="2" title="自然语言处理"></nut-side-navbar-item>
       <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
         <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
@@ -102,44 +88,27 @@ app.use(SideNavbarItem);
     </nut-side-navbar>
   </nut-popup>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show3: false,
-        width: '80%',
-        height: '100%',
-        navs: [] as any[]
-      });
-
-      const handleClick3 = () => {
-        state.show3 = true;
-        setTimeout(() => {
-          state.navs = [
-            {
-              id: 16,
-              name: '异步加载1',
-              arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
-            },
-            {
-              id: 17,
-              name: '异步加载2',
-              arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
-            }
-          ];
-        }, 2000);
-      };
-
-      const handleClick4 = (msg: string) => {};
-
-      return {
-        ...toRefs(state),
-        handleClick3,
-        handleClick4
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
+const navs = ref([]);
+const handleClick = () => {
+  show.value = true;
+  setTimeout(() => {
+    navs.value = [
+      {
+        id: 16,
+        name: '异步加载1',
+        arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
+      },
+      {
+        id: 17,
+        name: '异步加载2',
+        arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
+      }
+    ];
+  }, 2000);
+};
 </script>
 ```
 
