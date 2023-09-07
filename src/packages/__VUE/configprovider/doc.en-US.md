@@ -6,7 +6,7 @@ Used to configure NutUI components globally, provide dark mode and dynamic theme
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { ConfigProvider } from '@nutui/nutui';
 
@@ -22,30 +22,24 @@ Dark mode takes effect globally, making all NutUI components on the page dark.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-config-provider :theme="theme">
     <nut-cell title="Switch Dark Mode">
       <template #link>
-        <nut-switch v-model="switchChecked" @change="switchChange" />
+        <nut-switch v-model="checked" @change="change" />
       </template>
     </nut-cell>
     <nut-cell title="Title" sub-title="Subtitle Description" desc="Description"></nut-cell>
   </nut-config-provider>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const switchChecked = ref(false);
-      const theme = ref('');
-      const switchChange = (v: boolean) => {
-        theme.value = v ? 'dark' : '';
-      };
-
-      return { switchChecked, switchChange, theme };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(false);
+const theme = ref('');
+const change = (v) => {
+  theme.value = v ? 'dark' : '';
+};
 </script>
 ```
 
@@ -83,36 +77,29 @@ You can directly override these CSS variables in the code, and the style of the 
 The ConfigProvider component provides the ability to override CSS variables. You need to wrap a ConfigProvider component at the root node and configure some CSS variables through the theme-vars property.
 :::demo
 
-```html
+```vue
 <template>
   <nut-config-provider :theme-vars="themeVars">
     <nut-form>
-      <nut-form-item :label="Range">
+      <nut-form-item label="Range">
         <nut-range hidden-tag v-model="range"></nut-range>
       </nut-form-item>
     </nut-form>
   </nut-config-provider>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const range = ref(30);
-      const themeVars = reactive({
-        primaryColor: 'green',
-        primaryColorEnd: 'green',
-        activeColor: 'rgba(0,128,0,0.15)'
-      });
-      // Of course, you can also choose to use component variables to replace. If both basic variables and component variables are set, the component variables will overwrite the basic variables
-      //  const themeVars = {
-      //   rangeBgColor: 'rgba(25,137,250,0.15)',
-      //   rangeBarBgColor: '#0289fa',
-      //   rangeBarBtnBorder: '1px solid #0289fa'
-      // };
-
-      return { range, themeVars };
-    }
-  };
+<script setup>
+import { ref, reactive } from 'vue';
+const range = ref(30);
+const themeVars = reactive({
+  primaryColor: '#008000',
+  primaryColorEnd: '#008000'
+});
+// Of course, you can also choose to use component variables to replace. If both basic variables and component variables are set, the component variables will overwrite the basic variables
+//  const themeVars = {
+//   rangeBgColor: 'rgba(25,137,250,0.15)',
+//   rangeBarBgColor: '#0289fa',
+//   rangeBarBtnBorder: '1px solid #0289fa'
+// }
 </script>
 ```
 
