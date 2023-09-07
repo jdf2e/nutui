@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Row, Col } from '@nutui/nutui-taro';
 
@@ -21,7 +21,7 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-row>
     <nut-col :span="24">
@@ -63,26 +63,26 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
   </nut-row>
 </template>
 <style>
-  .nut-row {
-    overflow: hidden;
-    margin-bottom: 15px;
-  }
-  .nut-row:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
-  .flex-content {
-    line-height: 40px;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    background: #ff8881;
-  }
-  .flex-content-light {
-    background: #ffc7c4;
-  }
-  .flex-content-height {
-    height: 50px;
-  }
+.nut-row {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
+  margin-bottom: 15px;
+}
+.flex-content {
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  background: #ff8881;
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
+}
 </style>
 ```
 
@@ -92,7 +92,7 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-row :gutter="10">
     <nut-col :span="8">
@@ -107,26 +107,26 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
   </nut-row>
 </template>
 <style>
-  .nut-row {
-    overflow: hidden;
-    margin-bottom: 15px;
-  }
-  .nut-row:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
-  .flex-content {
-    line-height: 40px;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    background: #ff8881;
-  }
-  .flex-content-light {
-    background: #ffc7c4;
-  }
-  .flex-content-height {
-    height: 50px;
-  }
+.nut-row {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
+  margin-bottom: 15px;
+}
+.flex-content {
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  background: #ff8881;
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
+}
 </style>
 ```
 
@@ -136,7 +136,7 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-row type="flex" wrap="nowrap">
     <nut-col :span="6">
@@ -206,26 +206,26 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
   </nut-row>
 </template>
 <style>
-  .nut-row {
-    overflow: hidden;
-    margin-bottom: 15px;
-  }
-  .nut-row:not(:last-child) .nut-col {
-    margin-bottom: 15px;
-  }
-  .flex-content {
-    line-height: 40px;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    background: #ff8881;
-  }
-  .flex-content-light {
-    background: #ffc7c4;
-  }
-  .flex-content-height {
-    height: 50px;
-  }
+.nut-row {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.nut-row:not(:last-child) .nut-col {
+  margin-bottom: 15px;
+}
+.flex-content {
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  background: #ff8881;
+}
+.flex-content-light {
+  background: #ffc7c4;
+}
+.flex-content-height {
+  height: 50px;
+}
 </style>
 ```
 
