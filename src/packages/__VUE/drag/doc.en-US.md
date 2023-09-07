@@ -6,7 +6,7 @@ Implement draggable arbitrary elements
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Drag } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Drag);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-drag>
     <nut-button type="primary">Button</nut-button>
@@ -32,7 +32,7 @@ app.use(Drag);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
     <nut-button type="primary">Button</nut-button>
@@ -46,7 +46,7 @@ app.use(Drag);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-drag direction="x" :attract="true">
     <nut-button type="primary">Button</nut-button>
@@ -60,39 +60,31 @@ app.use(Drag);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="drag-boundary"></div>
   <nut-drag :boundary="{ top: 100, left: 9, bottom: bottom(), right: right() }" :style="{ top: '100px', left: '50px' }">
     <nut-button type="primary">Button</nut-button>
   </nut-drag>
 </template>
-<script>
-  export default {
-    setup() {
-      function right() {
-        return document.documentElement.clientWidth - 300 - 9;
-      }
-      function bottom() {
-        return document.documentElement.clientHeight - 300;
-      }
-      return {
-        right,
-        bottom
-      };
-    }
-  };
+<script setup>
+const right = () => {
+  return document.documentElement.clientWidth - 300 - 9;
+};
+const bottom = () => {
+  return document.documentElement.clientHeight - 300;
+};
 </script>
 
 <style>
-  .drag-boundary {
-    position: absolute;
-    top: 100px;
-    left: 8px;
-    width: 300px;
-    height: 200px;
-    border: 1px solid red;
-  }
+.drag-boundary {
+  position: absolute;
+  top: 100px;
+  left: 8px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid red;
+}
 </style>
 ```
 

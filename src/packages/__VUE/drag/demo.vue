@@ -26,8 +26,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import NutDrag from './index.vue';
+import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('drag');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -54,22 +55,13 @@ const initTranslate = () =>
       limitBoundaries: 'Limit Boundaries'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    function right() {
-      return document.documentElement.clientWidth - 300 - 9;
-    }
-    function bottom() {
-      return document.documentElement.clientHeight - 559;
-    }
-    return {
-      right,
-      bottom,
-      translate
-    };
-  }
-});
+initTranslate();
+const right = () => {
+  return document.documentElement.clientWidth - 300 - 9;
+};
+const bottom = () => {
+  return document.documentElement.clientHeight - 559;
+};
 </script>
 
 <style lang="scss" scoped>
