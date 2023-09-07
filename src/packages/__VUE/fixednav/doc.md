@@ -179,7 +179,7 @@ const navList = reactive([
 ```vue
 <template>
   <nut-fixed-nav :position="{ top: '280px' }" type="left" v-model:visible="myActive">
-    <template v-slot:list>
+    <template #list>
       <ul class="nut-fixed-nav__list">
         <li class="nut-fixed-nav__list-item">1</li>
         <li class="nut-fixed-nav__list-item">2</li>
@@ -188,7 +188,7 @@ const navList = reactive([
         <li class="nut-fixed-nav__list-item">5</li>
       </ul>
     </template>
-    <template v-slot:btn>
+    <template #btn>
       <Retweet color="#fff" />
       <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
     </template>

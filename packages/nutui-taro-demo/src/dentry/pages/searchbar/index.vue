@@ -12,14 +12,14 @@
 
     <h2>显示搜索 icon</h2>
     <nut-searchbar v-model="searchValue2">
-      <template v-slot:leftin>
+      <template #leftin>
         <Search2 />
       </template>
     </nut-searchbar>
 
     <h2>右侧添加搜索文字</h2>
     <nut-searchbar v-model="searchValue3" :confirm-type="confirmType">
-      <template v-slot:rightout> 搜索 </template>
+      <template #rightout> 搜索 </template>
     </nut-searchbar>
 
     <h2>更改输入框内部及外部的背景样式</h2>
@@ -32,23 +32,23 @@
 
     <h2>自定义清除按钮 icon</h2>
     <nut-searchbar v-model="searchValue6">
-      <template v-slot:clear-icon>
+      <template #clear-icon>
         <img :src="icon" style="width: 20px; height: 20px" />
       </template>
     </nut-searchbar>
 
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">
-      <template v-slot:leftout>
+      <template #leftout>
         <Left />
       </template>
-      <template v-slot:leftin>
+      <template #leftin>
         <Search2 />
       </template>
-      <template v-slot:rightin>
+      <template #rightin>
         <Photograph />
       </template>
-      <template v-slot:rightout>
+      <template #rightout>
         <Message />
       </template>
     </nut-searchbar>

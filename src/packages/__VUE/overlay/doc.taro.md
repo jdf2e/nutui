@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Overlay } from '@nutui/nutui-taro';
 
@@ -20,23 +20,14 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" @click="show = true">显示遮罩层</nut-button>
   <nut-overlay v-model:visible="show"></nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -48,26 +39,17 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" @click="show = true">遮罩样式</nut-button>
   <nut-overlay v-model:visible="show" :overlay-style="overlayStyle"></nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false,
-        overlayStyle: {
-          backgroundColor: 'rgba(0, 0, 0, .2)'
-        }
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
+const overlayStyle = ref({
+  backgroundColor: 'rgba(0, 0, 0, .2)'
+});
 </script>
 ```
 
@@ -79,23 +61,14 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" @click="show = true">设置动画时间</nut-button>
   <nut-overlay v-model:visible="show" :duration="2.5"></nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -107,23 +80,14 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" @click="show = true">锁定背景滚动</nut-button>
   <nut-overlay v-model:visible="show" :lock-scroll="true"></nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 ```
 
@@ -135,7 +99,7 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="success" @click="show = true">嵌套内容</nut-button>
   <nut-overlay v-model:visible="show">
@@ -144,36 +108,27 @@ app.use(Overlay);
     </div>
   </nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 <style>
-  .wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+.wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
 </style>
 ```
 
@@ -185,45 +140,36 @@ app.use(Overlay);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" @click="show = true">点击遮罩不关闭</nut-button>
   <nut-overlay v-model:visible="show" :close-on-click-overlay="false">
     <div class="wrapper">
-      <div class="content" @click.stop="show = false;">close</div>
+      <div class="content" @click.stop="show = false">close</div>
     </div>
   </nut-overlay>
 </template>
-<script lang="ts">
-  import { reactive, toRefs } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        show: false
-      });
-      return {
-        ...toRefs(state)
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const show = ref(false);
 </script>
 <style>
-  .wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .content {
-    display: flex;
-    width: 150px;
-    height: 150px;
-    background: #fff;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    color: red;
-  }
+.wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
 </style>
 ```
 

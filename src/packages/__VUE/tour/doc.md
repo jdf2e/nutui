@@ -23,7 +23,7 @@ app.use(Tour);
 ```html
 <template>
   <nut-cell title="点击试试">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
     </template>
   </nut-cell>
@@ -65,7 +65,7 @@ app.use(Tour);
 ```html
 <template>
   <nut-cell title="点击试试">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target5" v-model="switchValue" @click="showTour1 = true" />
     </template>
   </nut-cell>
@@ -120,7 +120,7 @@ app.use(Tour);
 ```html
 <template>
   <nut-cell title="点击试试" @click="showTour2 = true">
-    <template v-slot:link>
+    <template #link>
       <div class="tour-demo-img" v-for="i in [1,2,3]">
         <img
           style="width:20px;margin-right:10px"
@@ -179,7 +179,7 @@ app.use(Tour);
 ```html
 <template>
   <nut-cell title="点击试试">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
     </template>
   </nut-cell>

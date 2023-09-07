@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { ConfigProvider } from '@nutui/nutui-taro';
 
@@ -22,30 +22,24 @@ app.use(ConfigProvider);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-config-provider :theme="theme">
     <nut-cell title="切换暗黑">
-      <template v-slot:link>
-        <nut-switch v-model="switchChecked" @change="switchChange" />
+      <template #link>
+        <nut-switch v-model="checked" @change="change" />
       </template>
     </nut-cell>
     <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
   </nut-config-provider>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const switchChecked = ref(false);
-      const theme = ref('');
-      const switchChange = (v: boolean) => {
-        theme.value = v ? 'dark' : '';
-      };
-
-      return { switchChecked, switchChange, theme };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(false);
+const theme = ref('');
+const change = (v) => {
+  theme.value = v ? 'dark' : '';
+};
 </script>
 ```
 
@@ -85,7 +79,7 @@ page {
 `ConfigProvider` 组件提供了覆盖 `CSS` 变量的能力，你需要在根节点包裹一个 `ConfigProvider` 组件，并通过 `theme-vars` 属性来配置一些主题变量
 :::demo
 
-```html
+```vue
 <template>
   <nut-config-provider :theme-vars="themeVars">
     <nut-form>
@@ -95,25 +89,19 @@ page {
     </nut-form>
   </nut-config-provider>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const range = ref(30);
-      const themeVars = reactive({
-        primaryColor: '#008000',
-        primaryColorEnd: '#008000'
-      });
-      // 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
-      //  const themeVars = {
-      //   rangeBgColor: 'rgba(25,137,250,0.15)',
-      //   rangeBarBgColor: '#0289fa',
-      //   rangeBarBtnBorder: '1px solid #0289fa'
-      // };
-
-      return { range, themeVars };
-    }
-  };
+<script setup>
+import { ref, reactive } from 'vue';
+const range = ref(30);
+const themeVars = reactive({
+  primaryColor: '#008000',
+  primaryColorEnd: '#008000'
+});
+// 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
+//  const themeVars = {
+//   rangeBgColor: 'rgba(25,137,250,0.15)',
+//   rangeBarBgColor: '#0289fa',
+//   rangeBarBtnBorder: '1px solid #0289fa'
+// }
 </script>
 ```
 

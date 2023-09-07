@@ -4,7 +4,7 @@
     <nut-config-provider :theme="theme">
       <nut-cell :title="translate('title1')">
         <template #link>
-          <nut-switch v-model="switchChecked" @change="switchChange" />
+          <nut-switch v-model="checked" @change="change" />
         </template>
       </nut-cell>
       <nut-cell :title="translate('title2')" :sub-title="translate('title3')" :desc="translate('desc')"></nut-cell>
@@ -70,6 +70,19 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
+import NutConfigProvider from './index.vue';
+import NutCell from '../cell/index.vue';
+import NutForm from '../form/index.vue';
+import NutFormItem from '../formitem/index.vue';
+import NutRange from '../range/index.vue';
+import NutSwitch from '../switch/index.vue';
+import NutRate from '../rate/index.vue';
+import NutInputNumber from '../inputnumber/index.vue';
+import NutUploader from '../uploader/index.vue';
+import NutAddress from '../address/index.vue';
+import NutRadio from '../radio/index.vue';
+import NutCheckbox from '../checkbox/index.vue';
+import NutRadioGroup from '../radiogroup/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('configprovider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -130,9 +143,9 @@ const initTranslate = () =>
   });
 
 initTranslate();
-const switchChecked = ref(false);
+const checked = ref(false);
 const theme = ref('');
-const switchChange = (v: boolean) => {
+const change = (v: boolean) => {
   theme.value = v ? 'dark' : '';
 };
 const formData2 = reactive({

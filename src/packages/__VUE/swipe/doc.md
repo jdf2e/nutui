@@ -112,7 +112,7 @@ const changSwitch = (value) => {
       <nut-button shape="square" style="height:100%" type="success">选择</nut-button>
     </template>
     <nut-cell title="商品描述">
-      <template v-slot:link>
+      <template #link>
         <nut-input-number v-model="number" />
       </template>
     </nut-cell>

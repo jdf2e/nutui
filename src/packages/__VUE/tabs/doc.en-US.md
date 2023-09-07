@@ -312,7 +312,7 @@ In the `taro` environment, `name` must be set to enable the automatic scrolling 
 ```html
 <template>
   <nut-tabs v-model="state.tab7value">
-    <template v-slot:titles>
+    <template #titles>
       <div
         class="nut-tabs__titles-item"
         @click="state.tab7value=item.paneKey"

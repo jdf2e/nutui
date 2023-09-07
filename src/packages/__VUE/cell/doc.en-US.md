@@ -6,7 +6,7 @@ The cell is a single display item in the list.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Cell, CellGroup } from '@nutui/nutui';
 
@@ -19,24 +19,17 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Title" desc="Description"></nut-cell>
   <nut-cell title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
-  <nut-cell title="Click Test" @click="testClick"></nut-cell>
+  <nut-cell title="Click Test" @click="click"></nut-cell>
   <nut-cell title="Round Radius 0" round-radius="0"></nut-cell>
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const switchChecked = ref(true);
-      const testClick = (event) => {
-        console.log('Click Test');
-      };
-      return { testClick, switchChecked };
-    }
-  };
+<script setup>
+const click = () => {
+  console.log('Click');
+};
 </script>
 ```
 
@@ -46,7 +39,7 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell size="large" title="Title" desc="Description"></nut-cell>
   <nut-cell size="large" title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
@@ -59,7 +52,7 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell>
     <div>Content</div>
@@ -73,10 +66,10 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell desc="Description">
-    <template v-slot:title>
+    <template #title>
       <span>Title <b style="color: red">1</b></span>
     </template>
   </nut-cell>
@@ -89,7 +82,7 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="Link | CellGroup Usage" desc="Usage nut-cell-group support title desc slots">
     <nut-cell title="Link Usage" is-link></nut-cell>
@@ -105,27 +98,19 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="Customize the right arrow area">
     <nut-cell title="Switch">
-      <template v-slot:link>
-        <nut-switch v-model="switchChecked" />
+      <template #link>
+        <nut-switch v-model="checked" />
       </template>
     </nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const testClick = (event: Event) => {
-        console.log('Click Test');
-      };
-      const switchChecked = ref(true);
-      return { testClick, switchChecked };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(true);
 </script>
 ```
 
@@ -135,11 +120,11 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="Customize the left Icon area">
     <nut-cell title="Image">
-      <template v-slot:icon>
+      <template #icon>
         <img
           style="width:20px;height: 20px;"
           src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
@@ -156,22 +141,16 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="Name" desc="Description">
-    <template v-slot:icon>
+    <template #icon>
       <My />
     </template>
   </nut-cell>
 </template>
-<script lang="ts">
-  import { My } from '@nutui/icons-vue';
-  export default {
-    components: { My },
-    setup() {
-      return { My };
-    }
-  };
+<script setup>
+import { My } from '@nutui/icons-vue';
 </script>
 ```
 
@@ -181,7 +160,7 @@ app.use(CellGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell desc-text-align="left" desc="Description"></nut-cell>
 </template>
@@ -195,7 +174,7 @@ You can center the left and right contents of the cell vertically through the 'c
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell center title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
 </template>

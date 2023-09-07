@@ -31,7 +31,11 @@
       <IconFont name="dongdong" size="26" />
     </nut-cell>
 
-    <nut-cell-group v-for="item in icons.data" :key="item" :title="currentLang == 'zh-CN' ? item.name : item.nameEn">
+    <nut-cell-group
+      v-for="item in (IconFontConfig as any).data"
+      :key="item"
+      :title="currentLang == 'zh-CN' ? item.name : item.nameEn"
+    >
       <nut-cell>
         <ul>
           <li v-for="_item in item.icons" :key="_item">
@@ -41,7 +45,11 @@
         </ul>
       </nut-cell>
     </nut-cell-group>
-    <nut-cell-group v-for="item in icons.style" :key="item" :title="currentLang == 'zh-CN' ? item.name : item.nameEn">
+    <nut-cell-group
+      v-for="item in (IconFontConfig as any).style"
+      :key="item"
+      :title="currentLang == 'zh-CN' ? item.name : item.nameEn"
+    >
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">
@@ -59,8 +67,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import NutCell from '../cell/index.vue';
+import NutCellGroup from '../cellgroup/index.vue';
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -85,27 +94,20 @@ import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('icon');
 import { showToast } from '@/packages/nutui.vue';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
-export default defineComponent({
-  components: { IconFont, Add },
-  props: {},
-  setup() {
-    initTranslate();
-    const copyTag = (name: string) => {
-      const text = `<IconFont name="${name}"></IconFont>`;
-      const displayText = `&lt;Icon name="${name}"&gt;&lt;/Icon&gt;`;
-      const input = document.createElement('input');
-      document.body.appendChild(input);
-      input.setAttribute('value', text);
-      input.select();
-      if (document.execCommand('copy')) {
-        document.execCommand('copy');
-        showToast.text(`${translate('copyToast')}: <br/>${displayText}`);
-      }
-      document.body.removeChild(input);
-    };
-    return { icons: IconFontConfig, translate, currentLang, copyTag };
+initTranslate();
+const copyTag = (name: string) => {
+  const text = `<IconFont name="${name}"></IconFont>`;
+  const displayText = `&lt;IconFont name="${name}"&gt;&lt;/IconFont&gt;`;
+  const input = document.createElement('input');
+  document.body.appendChild(input);
+  input.setAttribute('value', text);
+  input.select();
+  if (document.execCommand('copy')) {
+    document.execCommand('copy');
+    showToast.text(`${translate('copyToast')}: <br/>${displayText}`);
   }
-});
+  document.body.removeChild(input);
+};
 </script>
 
 <style lang="scss" scoped>

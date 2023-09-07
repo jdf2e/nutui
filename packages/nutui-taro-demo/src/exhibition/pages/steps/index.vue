@@ -6,7 +6,7 @@
       <nut-steps :current="current1">
         <nut-step title="步骤一">
           1
-          <template v-slot:title>步骤一</template>
+          <template #title>步骤一</template>
         </nut-step>
         <nut-step title="步骤二">2</nut-step>
         <nut-step title="步骤三">3</nut-step>
@@ -60,7 +60,7 @@
         <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
         <nut-step title="未开始"
           >3
-          <template v-slot:content>
+          <template #content>
             <p>收货地址为：</p>
             <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
           </template>

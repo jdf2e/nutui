@@ -24,7 +24,7 @@ app.use(CollapseItem);
 <template>
   <nut-collapse v-model="activeNames" @change="onChange">
     <nut-collapse-item :name="1">
-      <template v-slot:title> {{title1}} </template>
+      <template #title> {{title1}} </template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
@@ -109,7 +109,7 @@ app.use(CollapseItem);
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1" :icon="Notice">
-      <template v-slot:value> 文本测试 </template>
+      <template #value> 文本测试 </template>
       NUTUI3.0重新思考其内在的一致性和可组合性
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2" :icon="Follow">
@@ -149,7 +149,7 @@ app.use(CollapseItem);
 <template>
   <nut-collapse v-model="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extra>固定内容</template>
+      <template #extra>固定内容</template>
       NutUI是一套拥有京东风格的轻量级的 Vue 组件库
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">

@@ -92,7 +92,7 @@ app.use(Searchbar);
 ````html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:leftin>
+    <template #leftin>
       <Search2 />
     </template>
   </nut-searchbar>
@@ -116,7 +116,7 @@ app.use(Searchbar);
 ``` ::: ### Add search text to the right :::demo ```html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:rightout> Search </template>
+    <template #rightout> Search </template>
   </nut-searchbar>
 </template>
 <script lang="ts">
@@ -155,7 +155,7 @@ app.use(Searchbar);
 ``` ::: ### Custom Clear Button icon :::demo ```html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:clear-icon>
+    <template #clear-icon>
       <img :src="icon" style="width: 10px; height: 10px" />
     </template>
   </nut-searchbar>
@@ -180,16 +180,16 @@ app.use(Searchbar);
 ``` ::: ### Show all icons :::demo ```html
 <template>
   <nut-searchbar v-model="searchValue">
-    <template v-slot:leftout>
+    <template #leftout>
       <Left />
     </template>
-    <template v-slot:leftin>
+    <template #leftin>
       <Search2 />
     </template>
-    <template v-slot:rightin>
+    <template #rightin>
       <Photograph />
     </template>
-    <template v-slot:rightout>
+    <template #rightout>
       <Message />
     </template>
   </nut-searchbar>

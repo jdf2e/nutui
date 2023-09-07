@@ -23,7 +23,7 @@ At each step, set the id of the target element, and the Tour component looks up 
 ```html
 <template>
   <nut-cell title="try click">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
     </template>
   </nut-cell>
@@ -65,7 +65,7 @@ Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size,
 ```html
 <template>
   <nut-cell title="try click">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target5" v-model="switchValue" @click="showTour1 = true" />
     </template>
   </nut-cell>
@@ -120,7 +120,7 @@ Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size,
 ```html
 <template>
   <nut-cell title="点击试试" @click="showTour2 = true">
-    <template v-slot:link>
+    <template #link>
       <div class="tour-demo-img" v-for="i in [1,2,3]">
         <img
           style="width:20px;margin-right:10px"
@@ -180,7 +180,7 @@ Can customize the bubble layer through the slot slot
 ```html
 <template>
   <nut-cell title="点击试试">
-    <template v-slot:link>
+    <template #link>
       <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
     </template>
   </nut-cell>

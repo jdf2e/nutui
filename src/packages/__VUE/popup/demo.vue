@@ -67,6 +67,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import NutPopup from './index.vue';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('popup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';

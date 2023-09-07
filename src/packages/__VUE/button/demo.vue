@@ -70,9 +70,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import NutButton from './index.vue';
 const { translate } = createComponent('button');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { StarFill, Star } from '@nutui/icons-vue';
@@ -143,27 +144,14 @@ const initTranslate = () =>
       gradient: 'Gradient'
     }
   });
-
-export default defineComponent({
-  components: { StarFill, Star },
-  props: {},
-  setup() {
-    initTranslate();
-    let isLoading = ref(false);
-    const changeLoading = () => {
-      isLoading.value = true;
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 3000);
-    };
-
-    return {
-      isLoading,
-      changeLoading,
-      translate
-    };
-  }
-});
+initTranslate();
+let isLoading = ref(false);
+const changeLoading = () => {
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000);
+};
 </script>
 
 <style lang="scss" scoped>

@@ -2,28 +2,28 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="show = true">{{ translate('btn1') }}</nut-button>
-      <nut-overlay v-model:visible="show" :z-index="2020" lock-scroll></nut-overlay>
+      <nut-button type="primary" @click="state.show = true">{{ translate('btn1') }}</nut-button>
+      <nut-overlay v-model:visible="state.show" :z-index="2020" lock-scroll></nut-overlay>
     </nut-cell>
     <h2>{{ translate('style') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="show3 = true">{{ translate('style') }}</nut-button>
-      <nut-overlay v-model:visible="show3" :z-index="2000" :overlay-style="overlayStyle"></nut-overlay>
+      <nut-button type="primary" @click="state.show3 = true">{{ translate('style') }}</nut-button>
+      <nut-overlay v-model:visible="state.show3" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
     </nut-cell>
     <h2>{{ translate('duration') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="show4 = true">{{ translate('duration') }}</nut-button>
-      <nut-overlay v-model:visible="show4" :duration="2.5"></nut-overlay>
+      <nut-button type="primary" @click="state.show4 = true">{{ translate('duration') }}</nut-button>
+      <nut-overlay v-model:visible="state.show4" :duration="2.5"></nut-overlay>
     </nut-cell>
     <h2>{{ translate('lockscroll') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="show5 = true">{{ translate('lockscroll') }}</nut-button>
-      <nut-overlay v-model:visible="show5" lock-scroll></nut-overlay>
+      <nut-button type="primary" @click="state.show5 = true">{{ translate('lockscroll') }}</nut-button>
+      <nut-overlay v-model:visible="state.show5" lock-scroll></nut-overlay>
     </nut-cell>
     <h2>{{ translate('content') }}</h2>
     <nut-cell>
-      <nut-button type="success" @click="show2 = true">{{ translate('btn2') }}</nut-button>
-      <nut-overlay v-model:visible="show2" :z-index="2000">
+      <nut-button type="success" @click="state.show2 = true">{{ translate('btn2') }}</nut-button>
+      <nut-overlay v-model:visible="state.show2" :z-index="2000">
         <div class="wrapper">
           <div class="content">{{ translate('text') }}</div>
         </div>
@@ -31,18 +31,21 @@
     </nut-cell>
     <h2>{{ translate('closeClickLay') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="show6 = true">{{ translate('closeClickLay') }}</nut-button>
-      <nut-overlay v-model:visible="show6" lock-scroll :close-on-click-overlay="false">
+      <nut-button type="primary" @click="state.show6 = true">{{ translate('closeClickLay') }}</nut-button>
+      <nut-overlay v-model:visible="state.show6" lock-scroll :close-on-click-overlay="false">
         <div class="wrapper">
-          <div class="content" @click.stop="show6 = false">close</div>
+          <div class="content" @click.stop="state.show6 = false">close</div>
         </div>
       </nut-overlay>
     </nut-cell>
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
+import NutOverlay from './index.vue';
+import NutButton from '../button/index.vue';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('overlay');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -71,25 +74,16 @@ const initTranslate = () =>
       closeClickLay: 'Click the mask not to close'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      show: false,
-      show2: false,
-      show3: false,
-      show4: false,
-      show5: false,
-      show6: false,
-      overlayStyle: {
-        backgroundColor: 'rgba(0, 0, 0, .2)'
-      }
-    });
-    return {
-      ...toRefs(state),
-      translate
-    };
+initTranslate();
+const state = reactive({
+  show: false,
+  show2: false,
+  show3: false,
+  show4: false,
+  show5: false,
+  show6: false,
+  overlayStyle: {
+    backgroundColor: 'rgba(0, 0, 0, .2)'
   }
 });
 </script>
