@@ -35,53 +35,40 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const page = {
-      state: reactive({
-        msg: 'toast',
-        type: 'text',
-        show: false,
-        cover: false,
-        title: '',
-        bottom: '',
-        center: true
-      }),
+const env = Taro.getEnv();
+const page = {
+  state: reactive({
+    msg: 'toast',
+    type: 'text',
+    show: false,
+    cover: false,
+    title: '',
+    bottom: '',
+    center: true
+  }),
 
-      methods: {
-        openToast: (
-          type: string,
-          msg: string,
-          cover: boolean = false,
-          title: string,
-          bottom: string,
-          center: boolean = true
-        ) => {
-          page.state.show = true;
-          page.state.msg = msg;
-          page.state.type = type;
-          page.state.cover = cover;
-          page.state.title = title;
-          page.state.bottom = bottom;
-          page.state.center = center;
-        },
-        onClosed: () => console.log('closed')
-      }
-    };
-    return {
-      page,
-      env
-    };
+  methods: {
+    openToast: (
+      type: string,
+      msg: string = '',
+      cover: boolean = false,
+      title: string = '',
+      bottom: string = '',
+      center: boolean = true
+    ) => {
+      page.state.show = true;
+      page.state.msg = msg;
+      page.state.type = type;
+      page.state.cover = cover;
+      page.state.title = title;
+      page.state.bottom = bottom;
+      page.state.center = center;
+    },
+    onClosed: () => console.log('closed')
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

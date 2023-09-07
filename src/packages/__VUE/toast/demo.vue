@@ -20,12 +20,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { onUnmounted } from 'vue';
+import { showToast } from './index';
+import NutCell from '../cell/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('toast');
-import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { onUnmounted, defineComponent } from 'vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -53,66 +54,48 @@ const initTranslate = () =>
       toastTransparent: 'Loading Transparent Cover'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const textToast = (msg: string) => {
-      showToast.text(msg);
-    };
-    const titleToast = (msg: string) => {
-      showToast.text(msg, {
-        title: translate('toastTitle')
-      });
-    };
-    const successToast = (msg: string) => {
-      showToast.success(msg);
-    };
-    const errorToast = (msg: string) => {
-      showToast.fail(msg);
-    };
-    const warningToast = (msg: string) => {
-      showToast.warn(msg);
-    };
-    const loadingToast = (msg: string) => {
-      showToast.loading(msg);
-    };
-    let t: any;
-    const NoToast = (msg: string) => {
-      t = showToast.text(msg, {
-        duration: 0
-      });
-    };
+initTranslate();
+const textToast = (msg: string) => {
+  showToast.text(msg);
+};
+const titleToast = (msg: string) => {
+  showToast.text(msg, {
+    title: translate('toastTitle')
+  });
+};
+const successToast = (msg: string) => {
+  showToast.success(msg);
+};
+const errorToast = (msg: string) => {
+  showToast.fail(msg);
+};
+const warningToast = (msg: string) => {
+  showToast.warn(msg);
+};
+const loadingToast = (msg: string) => {
+  showToast.loading(msg);
+};
+let t: any;
+const NoToast = (msg: string) => {
+  t = showToast.text(msg, {
+    duration: 0
+  });
+};
 
-    onUnmounted(() => {
-      t && t.hide();
-    });
-
-    const BottomToast = (msg: string) => {
-      showToast.text(msg, {
-        id: 'taset11',
-        center: false,
-        bottom: '10%'
-      });
-    };
-    const NoLoading = (msg: string) => {
-      showToast.loading(msg, {
-        cover: true
-      });
-    };
-    return {
-      textToast,
-      titleToast,
-      successToast,
-      errorToast,
-      warningToast,
-      loadingToast,
-      NoToast,
-      NoLoading,
-      BottomToast,
-      translate
-    };
-  }
+onUnmounted(() => {
+  t && t.hide();
 });
-</script>
 
-<style lang="scss" scoped></style>
+const BottomToast = (msg: string) => {
+  showToast.text(msg, {
+    id: 'taset11',
+    center: false,
+    bottom: '10%'
+  });
+};
+const NoLoading = (msg: string) => {
+  showToast.loading(msg, {
+    cover: true
+  });
+};
+</script>
