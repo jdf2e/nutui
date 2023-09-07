@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <nut-tabs v-model="tabsValue">
+    <nut-tabs v-model="data.tabsValue">
       <nut-tab-pane :title="translate('basic')">
         <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
           <div class="pull-block">{{ translate('content') }}</div>
@@ -23,7 +23,7 @@
       <nut-tab-pane :title="translate('listenerTxt')">
         <div class="parentpage">
           <nut-pull-refresh v-model="refresh" @refresh="refreshFun">
-            <div v-for="item in refreshList2" :key="item" class="pull-letter">
+            <div v-for="item in data.refreshList2" :key="item" class="pull-letter">
               <div>{{ item }}</div>
             </div>
           </nut-pull-refresh>
@@ -33,10 +33,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
+import NutPullRefresh from './index.vue';
+import NutTabs from '../tabs/index.vue';
+import NutTabPane from '../tabpane/index.vue';
 import { createComponent } from '@/packages/utils/create';
-
 const { translate } = createComponent('pull-refresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
@@ -67,68 +69,54 @@ const initTranslate = () =>
     }
   });
 
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
+initTranslate();
 
-    const letter: any[] = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'IJ',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
+const letter: any[] = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'IJ',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z'
+];
 
-    const refresh = ref(false);
-    const refresh2 = ref(false);
+const refresh = ref(false);
+const refresh2 = ref(false);
 
-    const data = reactive({
-      tabsValue: 0,
-      customList: [],
-      refreshList: new Array(10).fill(11),
-
-      refreshList2: ([] as Array<any>).concat(letter)
-    });
-
-    const refreshFun = () => {
-      setTimeout(() => {
-        refresh.value = false;
-        refresh2.value = false;
-
-        showToast.text('刷新成功！');
-      }, 3000);
-    };
-
-    return {
-      refreshFun,
-      refresh,
-      refresh2,
-      translate,
-      ...toRefs(data)
-    };
-  }
+const data = reactive({
+  tabsValue: 0,
+  customList: [],
+  refreshList: new Array(10).fill(11),
+  refreshList2: ([] as Array<any>).concat(letter)
 });
+
+const refreshFun = () => {
+  setTimeout(() => {
+    refresh.value = false;
+    refresh2.value = false;
+
+    showToast.text('刷新成功！');
+  }, 3000);
+};
 </script>
 
 <style lang="scss" scoped>
