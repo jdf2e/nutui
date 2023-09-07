@@ -49,8 +49,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, ref, computed, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, ref, computed } from 'vue';
+import NutMenu from './index.vue';
+import NutMenuItem from '../menuitem/index.vue';
+import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('menu');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -128,73 +131,53 @@ const initTranslate = () =>
       product17: 'Product17'
     }
   });
-export default defineComponent({
-  components: {
-    TriangleDown,
-    Checked
-  },
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      value1: 0,
-      value2: 'a',
-      value3: 0
-    });
-
-    const options1 = computed(() => [
-      { text: translate('allProducts'), value: 0 },
-      { text: translate('newProducts'), value: 1 },
-      { text: translate('activityProducts'), value: 2 }
-    ]);
-
-    const options2 = computed(() => [
-      { text: translate('defaultSort'), value: 'a' },
-      { text: translate('praiseSort'), value: 'b' },
-      { text: translate('salesVolumeSort'), value: 'c' }
-    ]);
-
-    const options3 = computed(() => [
-      { text: translate('allProducts'), value: 0 },
-      { text: translate('product1'), value: 1 },
-      { text: translate('product2'), value: 2 },
-      { text: translate('product3'), value: 3 },
-      { text: translate('product4'), value: 4 },
-      { text: translate('product5'), value: 5 },
-      { text: translate('product6'), value: 6 },
-      { text: translate('product7'), value: 7 },
-      { text: translate('product8'), value: 8 },
-      { text: translate('product9'), value: 9 },
-      { text: translate('product10'), value: 10 },
-      { text: translate('product11'), value: 11 },
-      { text: translate('product12'), value: 12 },
-      { text: translate('product13'), value: 13 },
-      { text: translate('product14'), value: 14 },
-      { text: translate('product15'), value: 15 },
-      { text: translate('product16'), value: 16 },
-      { text: translate('product17'), value: 17 }
-    ]);
-
-    const item = ref('');
-
-    const onConfirm = () => {
-      item.value.toggle();
-    };
-
-    const handleChange = (val) => {
-      console.log('val', val);
-    };
-
-    return {
-      state,
-      item,
-      options1,
-      options2,
-      options3,
-      onConfirm,
-      handleChange,
-      translate
-    };
-  }
+initTranslate();
+const state = reactive({
+  value1: 0,
+  value2: 'a',
+  value3: 0
 });
+
+const options1 = computed(() => [
+  { text: translate('allProducts'), value: 0 },
+  { text: translate('newProducts'), value: 1 },
+  { text: translate('activityProducts'), value: 2 }
+]);
+
+const options2 = computed(() => [
+  { text: translate('defaultSort'), value: 'a' },
+  { text: translate('praiseSort'), value: 'b' },
+  { text: translate('salesVolumeSort'), value: 'c' }
+]);
+
+const options3 = computed(() => [
+  { text: translate('allProducts'), value: 0 },
+  { text: translate('product1'), value: 1 },
+  { text: translate('product2'), value: 2 },
+  { text: translate('product3'), value: 3 },
+  { text: translate('product4'), value: 4 },
+  { text: translate('product5'), value: 5 },
+  { text: translate('product6'), value: 6 },
+  { text: translate('product7'), value: 7 },
+  { text: translate('product8'), value: 8 },
+  { text: translate('product9'), value: 9 },
+  { text: translate('product10'), value: 10 },
+  { text: translate('product11'), value: 11 },
+  { text: translate('product12'), value: 12 },
+  { text: translate('product13'), value: 13 },
+  { text: translate('product14'), value: 14 },
+  { text: translate('product15'), value: 15 },
+  { text: translate('product16'), value: 16 },
+  { text: translate('product17'), value: 17 }
+]);
+
+const item = ref();
+
+const onConfirm = () => {
+  item.value.toggle();
+};
+
+const handleChange = (val: any) => {
+  console.log('val', val);
+};
 </script>
