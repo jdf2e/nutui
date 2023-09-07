@@ -101,52 +101,42 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { Dongdong } from '@nutui/icons-vue-taro';
 import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  props: {},
-  components: { Dongdong, Header },
-  setup() {
-    const env = Taro.getEnv();
-
-    const state = reactive({
-      tab1value: '0',
-      tab11value: '0',
-      tab2value: '0',
-      tab3value: '0',
-      tab4value: '0',
-      tab5value: '0',
-      tab6value: '0',
-      tab7value: 'c1',
-      list3: Array.from(new Array(2).keys()),
-      list4: Array.from(new Array(10).keys()),
-      list5: Array.from(new Array(2).keys()),
-      list6: [
-        {
-          title: '自定义 1',
-          paneKey: 'c1',
-          icon: 'dongdong'
-        },
-        {
-          title: '自定义 2',
-          paneKey: 'c2',
-          icon: 'JD'
-        },
-        {
-          title: '自定义 3',
-          paneKey: 'c3'
-        }
-      ]
-    });
-    setTimeout(() => {
-      state.list3.push(999);
-    }, 3000);
-    return { state, env };
-  }
-};
+const env = Taro.getEnv();
+const state = reactive({
+  tab1value: '0',
+  tab11value: '0',
+  tab2value: '0',
+  tab3value: '0',
+  tab4value: '0',
+  tab5value: '0',
+  tab6value: '0',
+  tab7value: 'c1',
+  list3: Array.from(new Array(2).keys()),
+  list4: Array.from(new Array(10).keys()),
+  list5: Array.from(new Array(2).keys()),
+  list6: [
+    {
+      title: '自定义 1',
+      paneKey: 'c1',
+      icon: 'dongdong'
+    },
+    {
+      title: '自定义 2',
+      paneKey: 'c2',
+      icon: 'JD'
+    },
+    {
+      title: '自定义 3',
+      paneKey: 'c3'
+    }
+  ]
+});
+setTimeout(() => {
+  state.list3.push(999);
+}, 3000);
 </script>
-
-<style lang="scss" scoped></style>
