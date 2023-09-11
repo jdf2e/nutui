@@ -329,3 +329,13 @@ Reset the video when the video address changes
 | pause   | pause event                                                                           | -                             |
 | playend | Playback completion callback                                                          | -                             |
 | time    | Triggered when playing(current is the current playback time，total is the total time) | (current:string,total:string) |
+
+### Ref
+
+| Event   | Description |
+| ------- | ----------- |
+| play    | play        |
+| pause   | pause       |
+| stop    | stop        |
+| muted   | muted       |
+| unmuted | unmuted     |
