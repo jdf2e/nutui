@@ -185,6 +185,29 @@
         </template>
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        :title="translate('custom_footer')"
+        :desc="date10 ? `${date10}` : translate('please')"
+        @click="openSwitch('isVisible10')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible10"
+        :default-value="date10"
+        :poppable="true"
+        :is-auto-back-fill="false"
+        @close="closeSwitch('isVisible10')"
+        @select="setSelectalue10"
+      >
+        <template #footer-info="dateInfo">
+          <nut-button size="large" block round type="primary" :disabled="disabled10" @click="clickBtn10(dateInfo)">{{
+            disabled10 ? translate('custom_footer_text1') : translate('custom_footer_text2')
+          }}</nut-button>
+        </template>
+      </nut-calendar>
+    </div>
     <h2>{{ translate('title3') }}</h2>
     <div>
       <nut-cell
@@ -244,6 +267,9 @@ const initTranslate = () =>
       conjunction: '至',
       custom_btn: '自定义按钮',
       timeText: '自定义时间文案',
+      custom_footer: '自定义底部',
+      custom_footer_text1: '偶数的日期不能选择',
+      custom_footer_text2: '奇数的日期可以选择',
 
       goDate: '去某个月',
       seven: '最近七天',
@@ -269,6 +295,9 @@ const initTranslate = () =>
       conjunction: '-',
       custom_btn: 'Custom Button',
       timeText: 'Custom Date Text',
+      custom_footer: 'Custom Footer',
+      custom_footer_text1: 'Even dates cannot be selected',
+      custom_footer_text2: 'Odd dates can be selected',
 
       goDate: 'Go Date',
       seven: 'Last Seven Days',
@@ -297,6 +326,7 @@ export default defineComponent({
       date7: [] as string[],
       date8: '',
       date9: [] as string[],
+      date10: '2023-09-03',
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
@@ -305,7 +335,9 @@ export default defineComponent({
       isVisible6: false,
       isVisible7: false,
       isVisible8: false,
-      isVisible9: false
+      isVisible9: false,
+      isVisible10: false,
+      disabled10: false
     });
     const openSwitch = (param: string) => {
       (state as any)[`${param}`] = true;
@@ -359,6 +391,10 @@ export default defineComponent({
       let { weekDate } = param;
       state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
     };
+    const setSelectalue10 = (param: any) => {
+      state.disabled10 = param[2] % 2 === 0;
+    };
+
     const clickBtn = () => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -382,6 +418,10 @@ export default defineComponent({
     const renderDate = (date: { date: Day }) => {
       return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
     };
+    const clickBtn10 = (dateInfo: any) => {
+      state.date10 = dateInfo.date[3];
+      state.isVisible10 = false;
+    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -396,13 +436,15 @@ export default defineComponent({
       setChooseValue6,
       setChooseValue8,
       setChooseValue9,
+      setSelectalue10,
       clickBtn,
       clickBtn1,
       goDate,
       calendarRef,
       select,
       translate,
-      renderDate
+      renderDate,
+      clickBtn10
     };
   }
 });

@@ -45,6 +45,9 @@
       <template v-if="bottomInfo" #bottom-info="date">
         <slot name="bottom-info" :date="date.date"> </slot>
       </template>
+      <template v-if="footerInfo" #footer-info="date">
+        <slot name="footer-info" :date="date.date"> </slot>
+      </template>
     </nut-calendar-item>
   </nut-popup>
   <nut-calendar-item
@@ -183,6 +186,9 @@ export default create({
     const bottomInfo = computed(() => {
       return slots['bottom-info'];
     });
+    const footerInfo = computed(() => {
+      return slots['footer-info'];
+    });
     // element refs
     const calendarRef = ref<null | CalendarRef>(null);
     const scrollToDate = (date: string) => {
@@ -228,7 +234,8 @@ export default create({
       showTopBtn,
       topInfo,
       dayInfo,
-      bottomInfo
+      bottomInfo,
+      footerInfo
     };
   }
 });
