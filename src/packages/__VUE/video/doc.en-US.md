@@ -254,6 +254,44 @@ Reset the video when the video address changes
 
 :::
 
+### Ref Control play, pause, stop, muted, unmuted
+
+:::demo
+
+```html
+<template>
+  <nut-video ref="videoRef" :source="source" :options="options" @play="play" @pause="pause" @playend="playend">
+  </nut-video>
+  <nut-button type="success" class="m-b" @click="videoRef.play();">play</nut-button>
+  <nut-button type="warning" class="m-b" @click="videoRef.pause();">pause</nut-button>
+  <nut-button type="danger" class="m-b" @click="videoRef.stop();">stop</nut-button>
+  <nut-button type="success" class="m-b" @click="videoRef.muted();">muted</nut-button>
+  <nut-button type="danger" class="m-b" @click="videoRef.unmuted();">unmuted</nut-button>
+</template>
+<script lang="ts">
+  import { toRefs, reactive, ref, Ref } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          controls: true
+        }
+      });
+      const videoRef = ref(null) as Ref;
+      const play = (elm: any) => console.log('play', elm);
+      const pause = (elm: any) => console.log('pause', elm);
+      const playend = (elm: any) => console.log('playend', elm);
+
+      return { ...toRefs(state), play, pause, playend, videoRef };
+    }
+  };
+</script>
+```
+
 ## API
 
 ### Props

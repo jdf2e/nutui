@@ -254,6 +254,46 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 :::
 
+### Ref控制播放，暂停，结束，静音，取消静音
+
+:::demo
+
+```html
+<template>
+  <nut-video ref="videoRef" :source="source" :options="options" @play="play" @pause="pause" @playend="playend">
+  </nut-video>
+  <nut-button type="success" class="m-b" @click="videoRef.play();">播放</nut-button>
+  <nut-button type="warning" class="m-b" @click="videoRef.pause();">暂停</nut-button>
+  <nut-button type="danger" class="m-b" @click="videoRef.stop();">结束</nut-button>
+  <nut-button type="success" class="m-b" @click="videoRef.muted();">静音</nut-button>
+  <nut-button type="danger" class="m-b" @click="videoRef.unmuted();">取消静音</nut-button>
+</template>
+<script lang="ts">
+  import { toRefs, reactive, ref, Ref } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          controls: true
+        }
+      });
+      const videoRef = ref(null) as Ref;
+      const play = (elm: any) => console.log('play', elm);
+      const pause = (elm: any) => console.log('pause', elm);
+      const playend = (elm: any) => console.log('playend', elm);
+
+      return { ...toRefs(state), play, pause, playend, videoRef };
+    }
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Props
