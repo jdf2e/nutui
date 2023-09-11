@@ -220,15 +220,17 @@ background | external background of the input box | string | `#fff` | | input-ba
 string | `#f7f7f7` | | autofocus | Whether to automatically focus | boolean | `false` | | focus-style | search box style
 when focused | Object | `-` | | disabled | Whether to disable the input box | boolean | `false` | | readonly| input
 field is read only | boolean | `false` | | input-align| alignment, optional `left` `center` `right` | string | `left` |
-### Events | Event Name | Description | Callback Parameters | |--------|----------------|--------------| | change |
-fires when something is entered | `val, event` | | focus | fires on focus | `val, event` | | blur | Triggered when out
-of focus | `val, event` | | clear | Triggered when click clear | `val` | | search | fires when the ENTER key is pressed
-| `val, event` | | click-input| Fired when the input field is clicked | `event` | | click-left-icon| Fires when the left
-icon is clicked | `val, event` | | click-right-icon| Fires when the right icon is clicked | `val, event` | ### Slots |
-Name | Description | |---------------|----------------------| |leftIn | left icon in the input box| |leftout | left Icon
-outside the input box| |rightin | right icon in the input box| |rightout | right icon outside the input box| ## Theming
-### CSS Variables The component provides the following CSS variables, which can be used to customize styles. Please
-refer to [ConfigProvider component](#/en-US/component/configprovider). | Name | Default Value | |
+| safe-area-inset-bottom | Whether to enable the security zone at the bottom of the full screen of iphone series |
+boolean | `false` | ### Events | Event Name | Description | Callback Parameters |
+|--------|----------------|--------------| | change | fires when something is entered | `val, event` | | focus | fires
+on focus | `val, event` | | blur | Triggered when out of focus | `val, event` | | clear | Triggered when click clear |
+`val` | | search | fires when the ENTER key is pressed | `val, event` | | click-input| Fired when the input field is
+clicked | `event` | | click-left-icon| Fires when the left icon is clicked | `val, event` | | click-right-icon| Fires
+when the right icon is clicked | `val, event` | ### Slots | Name | Description |
+|---------------|----------------------| |leftIn | left icon in the input box| |leftout | left Icon outside the input
+box| |rightin | right icon in the input box| |rightout | right icon outside the input box| ## Theming ### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles. Please refer to
+[ConfigProvider component](#/en-US/component/configprovider). | Name | Default Value | |
 --------------------------------------- | -------------------------- | | --nut-searchbar-background| _var(--nut-white)_
 | | --nut-searchbar-right-out-color| _var(--nut-black)_ | | --nut-searchbar-padding| _9px 16px_ | |
 --nut-searchbar-width| _100%_ | | --nut-searchbar-input-background| _#f7f7f7_ | | --nut-searchbar-input-padding| _0 0 0

@@ -28,6 +28,22 @@
   box-sizing: border-box;
   color: $searchbar-input-bar-color;
 
+  &.safe-area-inset-bottom {
+    position: relative;
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: constant(safe-area-inset-bottom);
+      height: env(safe-area-inset-bottom);
+      background: $searchbar-background;
+    }
+  }
+
   &::placeholder {
     color: $searchbar-input-bar-placeholder-color;
   }

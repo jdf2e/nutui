@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-searchbar" :style="searchbarStyle">
+  <view class="nut-searchbar" :class="{ 'safe-area-inset-bottom': safeAreaInsetBottom }" :style="searchbarStyle">
     <span v-if="label" class="nut-searchbar__search-label">{{ label }}</span>
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
@@ -121,6 +121,10 @@ export default create({
     inputAlign: {
       type: String,
       default: 'left'
+    },
+    safeAreaInsetBottom: {
+      type: Boolean,
+      default: false
     }
   },
 
