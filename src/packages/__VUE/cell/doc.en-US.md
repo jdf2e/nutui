@@ -78,6 +78,22 @@ const click = () => {
 
 :::
 
+### Use Slots desc
+
+:::demo
+
+```vue
+<template>
+  <nut-cell title="Title">
+    <template #desc>
+      <span>Desc <b style="color: red">2</b></span>
+    </template>
+  </nut-cell>
+</template>
+```
+
+:::
+
 ### Link | CellGroup Usage
 
 :::demo
@@ -221,6 +237,7 @@ You can center the left and right contents of the cell vertically through the 'c
 | default | Default slot        |
 | link    | Custom Right `link` |
 | title   | Custom `title` slot |
+| desc    | Custom `desc` slot  |
 
 ### CellGroup Slots
 

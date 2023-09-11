@@ -68,9 +68,25 @@ const click = () => {
 
 ```vue
 <template>
-  <nut-cell desc="描述文字">
-    <template #title>
-      <span>Title <b style="color: red">1</b></span>
+  <nut-cell title="描述文字">
+    <template #desc>
+      <span>描述文字 <b style="color: red">1</b></span>
+    </template>
+  </nut-cell>
+</template>
+```
+
+:::
+
+### 直接使用插槽（slot desc）
+
+:::demo
+
+```vue
+<template>
+  <nut-cell title="我是标题">
+    <template #desc>
+      <span>描述文字 <b style="color: red">2</b></span>
     </template>
   </nut-cell>
 </template>
@@ -218,6 +234,7 @@ import { My } from '@nutui/icons-vue-taro';
 | default | 自定义内容              |
 | link    | 自定义右侧 `link` 区域  |
 | title   | 自定义 `title` 标题区域 |
+| desc    | 自定义 `desc` 描述区域  |
 
 ### CellGroup Slots
 
