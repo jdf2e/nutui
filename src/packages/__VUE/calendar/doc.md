@@ -583,6 +583,71 @@ app.use(Calendar);
 
 :::
 
+### 自定义底部区域
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :show-icon="true"
+    title="自定义底部区域"
+    :desc="date ? `${date}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    :poppable="true"
+    :is-auto-back-fill="false"
+    @close="closeSwitch('isVisible')"
+    @select="setSelectalue"
+  >
+    <template #footer-info="dateInfo">
+      <nut-button size="large" block round type="primary" :disabled="disabled" @click="clickBtn(dateInfo)"
+        >{{ disabled?'偶数的日期不能选择':'奇数的日期可以选择' }}</nut-button
+      >
+    </template>
+  </nut-calendar>
+</template>
+
+<script lang="ts">
+  import { reactive, toRefs, ref } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        date: '2023-09-03',
+        isVisible: false,
+        disabled: false
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setSelectalue = (param: any) => {
+        state.disabled = param[2] % 2 === 0;
+      };
+      const clickBtn = (dateInfo: any) => {
+        state.date = dateInfo.date[3];
+        state.isVisible = false;
+      };
+      return {
+        ...toRefs(state),
+        setSelectalue,
+        openSwitch,
+        closeSwitch,
+        clickBtn
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### 自定义周起始日
 
 :::demo
@@ -726,6 +791,7 @@ app.use(Calendar);
 | day         | 日期信息                                 |
 | top-info    | 日期顶部信息                             |
 | bottom-info | 日期底部信息                             |
+| footer-info | 日历自定义底部，替代confirm按钮          |
 
 ### Methods
 
