@@ -29,6 +29,13 @@
       </template>
     </nut-cell>
 
+    <h2>{{ translate('title10') }}</h2>
+    <nut-cell :title="translate('title')">
+      <template #desc>
+        <span>{{ translate('desc') }} <b style="color: red">2</b></span>
+      </template>
+    </nut-cell>
+
     <nut-cell-group :title="translate('title5')" :desc="translate('desc1')">
       <nut-cell :title="translate('link')" is-link></nut-cell>
       <nut-cell :title="translate('urlJump')" desc="https://m.jd.com" is-link url="https://m.jd.com"></nut-cell>
@@ -92,6 +99,7 @@ const initTranslate = () =>
       title7: '垂直居中',
       title8: '直接使用插槽(slot title)',
       title9: '尺寸设置 large',
+      title10: '直接使用插槽(slot desc)',
       link: '链接',
       urlJump: 'URL 跳转',
       routerJump: '路由跳转 ’/‘ ',
