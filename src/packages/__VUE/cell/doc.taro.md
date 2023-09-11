@@ -68,9 +68,25 @@ const click = () => {
 
 ```vue
 <template>
-  <nut-cell desc="描述文字">
-    <template #title>
-      <span>Title <b style="color: red">1</b></span>
+  <nut-cell title="描述文字">
+    <template #desc>
+      <span>描述文字 <b style="color: red">1</b></span>
+    </template>
+  </nut-cell>
+</template>
+```
+
+:::
+
+### 直接使用插槽（slot desc）
+
+:::demo
+
+```vue
+<template>
+  <nut-cell title="我是标题">
+    <template #desc>
+      <span>描述文字 <b style="color: red">2</b></span>
     </template>
   </nut-cell>
 </template>

@@ -78,6 +78,22 @@ const click = () => {
 
 :::
 
+### 直接使用插槽（slot desc）
+
+:::demo
+
+```vue
+<template>
+  <nut-cell title="我是标题">
+    <template #desc>
+      <span>描述文字 <b style="color: red">2</b></span>
+    </template>
+  </nut-cell>
+</template>
+```
+
+:::
+
 ### 链接 | 分组用法
 
 :::demo

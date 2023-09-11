@@ -17,9 +17,13 @@
                 </slot>
             </template>
         </view>
-        <view v-if="desc" class="nut-cell__value"
+        <view v-if="desc || $slots.desc" class="nut-cell__value"
             :class="{ 'nut-cell__value--alone': (!title && !subTitle && !$slots.title) }"
-            :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
+            :style="{ 'text-align': descTextAlign }">
+            <slot name="desc">
+                {{ desc }}
+            </slot>        
+        </view>
         <slot name="link">
             <Right v-if="isLink || to" class="nut-cell__link"></Right>
         </slot>
