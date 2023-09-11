@@ -234,6 +234,7 @@ import { My } from '@nutui/icons-vue-taro';
 | default | 自定义内容              |
 | link    | 自定义右侧 `link` 区域  |
 | title   | 自定义 `title` 标题区域 |
+| desc    | 自定义 `desc` 描述区域  |
 
 ### CellGroup Slots
 
