@@ -632,6 +632,71 @@ When set to week selection, the start and end dates of the week will be determin
 
 :::
 
+### Custom Footer
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :show-icon="true"
+    title="Custom Footer"
+    :desc="date ? `${date}` : 'Please Select Date'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    :poppable="true"
+    :is-auto-back-fill="false"
+    @close="closeSwitch('isVisible')"
+    @select="setSelectalue"
+  >
+    <template #footer-info="dateInfo">
+      <nut-button size="large" block round type="primary" :disabled="disabled" @click="clickBtn(dateInfo)"
+        >{{ disabled?'Even dates cannot be selected':'Odd dates can be selected' }}</nut-button
+      >
+    </template>
+  </nut-calendar>
+</template>
+
+<script lang="ts">
+  import { reactive, toRefs, ref } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        date: '2023-09-03',
+        isVisible: false,
+        disabled: false
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setSelectalue = (param: any) => {
+        state.disabled = param[2] % 2 === 0;
+      };
+      const clickBtn = (dateInfo: any) => {
+        state.date = dateInfo.date[3];
+        state.isVisible = false;
+      };
+      return {
+        ...toRefs(state),
+        setSelectalue,
+        openSwitch,
+        closeSwitch,
+        clickBtn
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### Tiled Display
 
 :::demo
@@ -716,6 +781,7 @@ When set to week selection, the start and end dates of the week will be determin
 | day         | Date information                                             |
 | top-info    | Date top information                                         |
 | bottom-info | Date bottom information                                      |
+| footer-info | Custom calendar Footer, replace confirm btn                  |
 
 ### Methods
 
