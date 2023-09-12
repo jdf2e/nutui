@@ -43,6 +43,7 @@
     "dev:taro:alipay": "pnpm --dir ./packages/nutui-taro-demo dev:alipay",
     "dev:taro:jd": "pnpm --dir ./packages/nutui-taro-demo dev:jd",
     "dev:taro:h5": "pnpm --dir ./packages/nutui-taro-demo dev:h5",
+    "dev:taro:tt": "pnpm --dir ./packages/nutui-taro-demo dev:tt",
     "build:taro:h5": "pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:weapp": "pnpm --dir ./packages/nutui-taro-demo build:weapp",
     "build:site": "vite build",
