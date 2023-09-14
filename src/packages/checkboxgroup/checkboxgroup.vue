@@ -9,7 +9,7 @@
         :size="item.size ? item.size : size"
         :id="item[keys.id]"
         :checked.sync="item.checked"
-        v-model="checkboxValues[index]"
+        v-model="checkboxValues[item[keys.id]]"
         @change="changeEvt(arguments, item)"
         >{{ item[keys.label] || item[keys.value] || item }}
       </nut-checkbox>
@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       ignoreChange: false,
-      checkboxValues: [],
+      checkboxValues: {},
       initialValue: [],
     };
   },
