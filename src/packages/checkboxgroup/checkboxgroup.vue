@@ -84,6 +84,9 @@ export default {
     value() {
       this.init();
     },
+    checkBoxData() {
+      this.init();
+    },
   },
   mounted() {
     this.init();
