@@ -159,7 +159,10 @@ export default create({
         disabled: props.disabled
       };
 
-      if (props.capture) params.capture = 'camera';
+      if (props.capture) {
+        params.capture = 'camera';
+        params.accept = 'image/*';
+      }
 
       return h('input', params);
     };
