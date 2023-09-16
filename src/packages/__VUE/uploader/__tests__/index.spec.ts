@@ -28,9 +28,9 @@ test('should render base uploader props', async () => {
     }
   });
   const toast = wrapper.find('.nut-uploader__input');
-  expect(toast.attributes().capture).toBe('.jpg');
+  expect(toast.attributes().capture).toBe('camera');
   expect(toast.attributes().name).toBe('files');
-  expect(toast.attributes().accept).toBe('image/*');
+  expect(toast.attributes().accept).toBe('.jpg');
   expect(toast.exists()).toBe(true);
   toast.trigger('click');
   expect(wrapper.emitted('change'));
