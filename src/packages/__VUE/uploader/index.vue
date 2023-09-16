@@ -161,7 +161,9 @@ export default create({
 
       if (props.capture) {
         params.capture = 'camera';
-        params.accept = 'image/*';
+        if (!params.accept) {
+          params.accept = 'image/*';
+        }
       }
 
       return h('input', params);
