@@ -1,6 +1,6 @@
 <template>
   <div :class="['nut-checkboxgroup', { vertical: vertical }, customClass]">
-    <div class="checkbox-item" v-for="(item, index) in checkBoxData" :key="item[keys.id]">
+    <div class="checkbox-item" v-for="(item, index) in list" :key="item[keys.id]">
       <nut-checkbox
         :name="name || item[keys.name]"
         :disabled="disabled || item[keys.disabled]"
@@ -9,7 +9,7 @@
         :size="item.size ? item.size : size"
         :id="item[keys.id]"
         :checked.sync="item.checked"
-        v-model="checkboxValues[item[keys.id]]"
+        :value="item.checked"
         @change="changeEvt(arguments, item)"
         >{{ item[keys.label] || item[keys.value] || item }}
       </nut-checkbox>
@@ -73,33 +73,22 @@ export default {
   data() {
     return {
       ignoreChange: false,
-      checkboxValues: {},
-      initialValue: [],
     };
   },
   components: {
     [nutcheckbox.name]: nutcheckbox,
   },
-  watch: {
-    value() {
-      this.init();
-    },
-    checkBoxData() {
-      this.init();
-    },
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      this.initialValue = this.value;
-      this.checkBoxData.map((item) => {
+  computed: {
+    list() {
+      return this.checkBoxData.map((item) => {
         if (typeof item === 'object') {
           item.checked = this.isOptionCheckedByDefault(item);
         }
+        return item;
       });
     },
+  },
+  methods: {
     isObject(obj) {
       return obj !== null && typeof obj === 'object';
     },
@@ -113,7 +102,7 @@ export default {
       return -1;
     },
     isOptionCheckedByDefault(item) {
-      return this.looseIndexOf(this.initialValue, item[this.keys.value] || item) > -1;
+      return this.looseIndexOf(this.value, item[this.keys.value] || item) > -1;
     },
     looseEqual(a, b) {
       return a == b || (this.isObject(a) && this.isObject(b) ? JSON.stringify(a) === JSON.stringify(b) : false);
@@ -153,19 +142,19 @@ export default {
         return;
       }
       if (checked === true) {
-        this.checkBoxData.map((item) => {
+        this.list.map((item) => {
           item.checked = true;
         });
       }
       if (!checked) {
-        this.checkBoxData.map((item) => {
+        this.list.map((item) => {
           item.checked = !item.checked;
         });
       }
 
       let value = [],
         label = [];
-      let resData = this.checkBoxData.filter((item) => {
+      let resData = this.list.filter((item) => {
         if (item.checked) {
           value.push(item.value);
           label.push(item.label);

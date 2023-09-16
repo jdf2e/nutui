@@ -5,10 +5,18 @@
       <nut-cell>
         <span slot="title"><nut-checkboxgroup ref="checkboxGroup" :checkBoxData="data1" v-model="group1"></nut-checkboxgroup></span>
       </nut-cell>
-      <p>{{ group1 }}</p>
       <nut-button small @click="checkAll(true)">全选</nut-button>
       <nut-button small @click="checkAll(false)">取消全选</nut-button>
       <nut-button small @click="checkAll()">反选</nut-button>
+      <nut-button
+        small
+        @click="
+          data8 = data1;
+          data1 = [...data11];
+        "
+        >修改list</nut-button
+      >
+      <nut-button small @click="data1 = [...data8]">返回</nut-button>
     </div>
 
     <h4>禁用状态</h4>
@@ -84,34 +92,41 @@ export default {
         { id: 11, value: '选项A', label: '选项A' },
         { id: 12, value: '选项B', label: '选项B' },
         { id: 13, value: '选项C', label: '选项C' },
-        { id: 14, value: '选项D', label: '选项D' }
+        { id: 14, value: '选项D', label: '选项D' },
+      ],
+      data11: [
+        { id: 111, value: '选项A1', label: '选项A1' },
+        { id: 121, value: '选项B1', label: '选项B1' },
+        { id: 131, value: '选项C1', label: '选项C1' },
+        { id: 141, value: '选项D1', label: '选项D1' },
       ],
       data2: [
         { id: 21, value: '选项1', label: '选项1', disabled: true },
-        { id: 22, value: '选项2', label: '选项2', disabled: true }
+        { id: 22, value: '选项2', label: '选项2', disabled: true },
       ],
       data3: [{ id: 31, value: '备选项', label: '备选项' }],
       data33: [{ id: 31, value: '备选项', label: '备选项', size: 'large' }],
       data4: [
         { id: 41, value: '选项1', label: '选项1' },
-        { id: 42, value: '选项2', label: '选项2' }
+        { id: 42, value: '选项2', label: '选项2' },
       ],
       data5: [
         { id: 51, value: 'A', label: '选项1' },
         { id: 52, value: 'B', label: '选项2' },
         { id: 53, value: 'C', label: '选项3' },
-        { id: 54, value: 'D', label: '选项4' }
+        { id: 54, value: 'D', label: '选项4' },
       ],
       data6: [
         { id: 51, value: '选项1', label: '选项1' },
         { id: 52, value: '选项2', label: '选项2' },
         { id: 53, value: '选项3', label: '选项3' },
-        { id: 54, value: '选项4', label: '选项4' }
+        { id: 54, value: '选项4', label: '选项4' },
       ],
       data7: [
         { id: 41, value: '选项1', label: '选项1' },
-        { id: 42, value: '选项2', label: '选项2' }
-      ]
+        { id: 42, value: '选项2', label: '选项2' },
+      ],
+      data8: [],
     };
   },
   mounted() {
@@ -126,8 +141,8 @@ export default {
     },
     checkAll(state) {
       this.$refs.checkboxGroup.toggleAll(state);
-    }
-  }
+    },
+  },
 };
 </script>
 
