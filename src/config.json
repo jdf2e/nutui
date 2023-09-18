@@ -1300,6 +1300,16 @@
           "type": "component",
           "author": "ailululu",
           "taro": true
+        },
+        {
+          "version": "1.0.0",
+          "name": "AvatarCropper",
+          "type": "component",
+          "show": true,
+          "cName": "头像裁剪",
+          "desc": "头像裁剪",
+          "exportEmpty": true,
+          "author": "Marvin"
         }
       ]
     }
