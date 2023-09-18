@@ -5,18 +5,10 @@
       <nut-cell>
         <span slot="title"><nut-checkboxgroup ref="checkboxGroup" :checkBoxData="data1" v-model="group1"></nut-checkboxgroup></span>
       </nut-cell>
+      <p>{{ group1 }}</p>
       <nut-button small @click="checkAll(true)">全选</nut-button>
       <nut-button small @click="checkAll(false)">取消全选</nut-button>
       <nut-button small @click="checkAll()">反选</nut-button>
-      <nut-button
-        small
-        @click="
-          data8 = data1;
-          data1 = [...data11];
-        "
-        >修改list</nut-button
-      >
-      <nut-button small @click="data1 = [...data8]">返回</nut-button>
     </div>
 
     <h4>禁用状态</h4>
@@ -94,12 +86,6 @@ export default {
         { id: 13, value: '选项C', label: '选项C' },
         { id: 14, value: '选项D', label: '选项D' },
       ],
-      data11: [
-        { id: 111, value: '选项A1', label: '选项A1' },
-        { id: 121, value: '选项B1', label: '选项B1' },
-        { id: 131, value: '选项C1', label: '选项C1' },
-        { id: 141, value: '选项D1', label: '选项D1' },
-      ],
       data2: [
         { id: 21, value: '选项1', label: '选项1', disabled: true },
         { id: 22, value: '选项2', label: '选项2', disabled: true },
@@ -126,7 +112,6 @@ export default {
         { id: 41, value: '选项1', label: '选项1' },
         { id: 42, value: '选项2', label: '选项2' },
       ],
-      data8: [],
     };
   },
   mounted() {
