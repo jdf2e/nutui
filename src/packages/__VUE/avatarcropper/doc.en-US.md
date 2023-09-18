@@ -41,20 +41,68 @@ const cutImage = (url: string) => {
 
 :::
 
+### Clipping region bottom slots
+
+Customize the clipping area toolbar, and BNs-position controls the toolbar position
+
+:::demo
+
+```vue
+<template>
+  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" @confirm="cutImage">
+    <nut-avatar size="large">
+      <img :src="imageUrl" />
+    </nut-avatar>
+    <template #bottom>
+      <div class="bottom">
+        <nut-button type="primary" @click="avatarCropperRef.cancel()">cancel</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.resetAngle()">reset</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.setAngle()">spin</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.confirm()">confirm</nut-button>
+      </div>
+    </template>
+  </nut-avatar-cropper>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const imageUrl = ref(
+  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+);
+const avatarCropperRef = ref();
+const cutImage = (url: string) => {
+  imageUrl.value = url;
+};
+</script>
+
+<style lang="scss">
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### AvatarCropper Props
 
-| Attribute | Description                                         | Type   | Default |
-| --------- | --------------------------------------------------- | ------ | ------- |
-| maxZoom   | Maximum zoom                                        | number | 3       |
-| space     | The gap reserved on both sides of the clipping area | number | 20      |
+| Attribute     | Description                                                                         | Type   | Default |
+| ------------- | ----------------------------------------------------------------------------------- | ------ | ------- |
+| maxZoom       | Maximum zoom                                                                        | number | 3       |
+| space         | The gap reserved on both sides of the clipping area                                 | number | 20      |
+| btnsPosition  | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | string | bottom  |
+| cancelText    | Cancel button text                                                                  | string | 取消    |
+| cancelConfirm | Confirm button text                                                                 | string | 确认    |
 
 ### AvatarCropper Slots
 
-| Name    | Description                                                           |
-| ------- | --------------------------------------------------------------------- |
-| default | The default slot for placing elements such as images, ICONS, and text |
+| Name    | Description                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| default | The default slot for placing elements such as images, ICONS, and text                                                                        |
+| bottom  | After selecting the file, crop the bottom element of the pop-up window can be customized, and invoke the method of the component through ref |
 
 ### AvatarCropper Events
 
@@ -62,3 +110,12 @@ const cutImage = (url: string) => {
 | ------- | --------------------------------------- | ---------------------- |
 | confirm | Click Confirm to trigger after cropping | url:The trimmed base64 |
 | cancel  | Click cancel trigger                    | -                      |
+
+### AvatarCropper Ref
+
+| Event      | Explain            |
+| ---------- | ------------------ |
+| cancel     | uncrop             |
+| resetAngle | Reset to 0 degrees |
+| setAngle   | Rotate 90 degrees  |
+| confirm    | Definite cut       |

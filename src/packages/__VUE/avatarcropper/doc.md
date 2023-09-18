@@ -41,20 +41,68 @@ const cutImage = (url: string) => {
 
 :::
 
+### 裁剪区域bottom插槽
+
+自定义裁剪区域工具栏，btns-position控制工具栏位置
+
+:::demo
+
+```vue
+<template>
+  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" @confirm="cutImage">
+    <nut-avatar size="large">
+      <img :src="imageUrl" />
+    </nut-avatar>
+    <template #bottom>
+      <div class="bottom">
+        <nut-button type="primary" @click="avatarCropperRef.cancel()">取消</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.resetAngle()">重置</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.setAngle()">旋转</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.confirm()">确认</nut-button>
+      </div>
+    </template>
+  </nut-avatar-cropper>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const imageUrl = ref(
+  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+);
+const avatarCropperRef = ref();
+const cutImage = (url: string) => {
+  imageUrl.value = url;
+};
+</script>
+
+<style lang="scss">
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### AvatarCropper Props
 
-| 参数    | 说明                   | 类型   | 默认值 |
-| ------- | ---------------------- | ------ | ------ |
-| maxZoom | 最大缩放倍数           | number | 3      |
-| space   | 裁剪区域两边预留的间隙 | number | 20     |
+| 参数          | 说明                                        | 类型   | 默认值 |
+| ------------- | ------------------------------------------- | ------ | ------ |
+| maxZoom       | 最大缩放倍数                                | number | 3      |
+| space         | 裁剪区域两边预留的间隙                      | number | 10     |
+| btnsPosition  | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
+| cancelText    | 取消按钮的文字                              | string | 取消   |
+| cancelConfirm | 确认按钮的文字                              | string | 确认   |
 
 ### AvatarCropper Slots
 
-| 名称    | 描述                                   |
-| ------- | -------------------------------------- |
-| default | 默认插槽，可放置图片、图标、文本等元素 |
+| 名称    | 描述                                                        |
+| ------- | ----------------------------------------------------------- |
+| default | 默认插槽，可放置图片、图标、文本等元素                      |
+| bottom  | 选择文件后裁剪弹窗底部元素可以自定义，通过ref调用组件的方法 |
 
 ### AvatarCropper Events
 
@@ -62,3 +110,12 @@ const cutImage = (url: string) => {
 | ------- | ------------------ | ------------------ |
 | confirm | 裁剪后点击确认触发 | url:裁剪后的base64 |
 | cancel  | 点击取消触发       | -                  |
+
+### AvatarCropper Ref
+
+| 事件名     | 说明      |
+| ---------- | --------- |
+| cancel     | 取消裁剪  |
+| resetAngle | 重置为0度 |
+| setAngle   | 旋转90度  |
+| confirm    | 确定裁剪  |

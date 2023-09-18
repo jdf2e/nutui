@@ -8,6 +8,22 @@
         </nut-avatar>
       </nut-avatar-cropper>
     </nut-cell>
+    <h2>裁剪区域bottom插槽</h2>
+    <nut-cell>
+      <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" cancel-text="关闭" @confirm="cutImage">
+        <nut-avatar size="large">
+          <img :src="imageUrl" />
+        </nut-avatar>
+        <template #bottom>
+          <div class="bottom">
+            <nut-button type="primary" @click="avatarCropperRef.cancel()">取消</nut-button>
+            <nut-button type="primary" @click="avatarCropperRef.resetAngle()">重置</nut-button>
+            <nut-button type="primary" @click="avatarCropperRef.setAngle()">旋转</nut-button>
+            <nut-button type="primary" @click="avatarCropperRef.confirm()">确认</nut-button>
+          </div>
+        </template>
+      </nut-avatar-cropper>
+    </nut-cell>
   </div>
 </template>
 
@@ -16,7 +32,15 @@ import { ref } from 'vue';
 const imageUrl = ref(
   'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
 );
+const avatarCropperRef = ref();
 const cutImage = (url: string) => {
   imageUrl.value = url;
 };
 </script>
+
+<style lang="scss">
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

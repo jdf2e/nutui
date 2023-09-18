@@ -20,27 +20,31 @@
     >
       <view class="highlight" :style="highlightStyle"></view>
     </view>
-    <view class="nut-cropper-popup__btns">
-      <view class="nut-cropper-popup__btns-item" @click="close()">
-        <nut-button type="danger">取消</nut-button>
-      </view>
-      <view class="nut-cropper-popup__btns-item" @click="resetAngle()">
-        <Refresh2 color="#fff" />
-      </view>
-      <view class="nut-cropper-popup__btns-item" @click="setAngle()">
-        <Retweet color="#fff" />
-      </view>
-      <view class="nut-cropper-popup__btns-item" @click="cropImage()">
-        <nut-button type="success">确定</nut-button>
+    <view class="nut-cropper-popup__btns" :class="[btnsPosition]">
+      <slot v-if="$slots.bottom" name="bottom"></slot>
+      <view v-else class="flex-sb">
+        <view class="nut-cropper-popup__btns-item" @click="cancel()">
+          <nut-button type="danger">{{ cancelText }}</nut-button>
+        </view>
+        <view class="nut-cropper-popup__btns-item" @click="resetAngle()">
+          <Refresh2 color="#fff" />
+        </view>
+        <view class="nut-cropper-popup__btns-item" @click="setAngle()">
+          <Retweet color="#fff" />
+        </view>
+        <view class="nut-cropper-popup__btns-item" @click="confirm()">
+          <nut-button type="success">{{ confirmText }}</nut-button>
+        </view>
       </view>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import { watch, ref, reactive, toRefs, computed, Ref } from 'vue';
+import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
 import Button from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
+import type { BtnsPosition } from './types';
 const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -59,10 +63,22 @@ export default create({
     space: {
       type: Number,
       default: 10
+    },
+    btnsPosition: {
+      type: String as PropType<BtnsPosition>,
+      default: 'bottom'
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    },
+    confirmText: {
+      type: String,
+      default: '确定'
     }
   },
   emits: ['confirm', 'cancel'],
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const state = reactive({
       visible: false,
       defScale: 1,
@@ -340,7 +356,7 @@ export default create({
     };
 
     // 关闭
-    const close = (isEmit: Boolean = true) => {
+    const cancel = (isEmit: Boolean = true) => {
       state.visible = false;
       resetScale();
       inputImageRef.value.value = '';
@@ -348,7 +364,7 @@ export default create({
     };
 
     // 裁剪图片
-    const cropImage = () => {
+    const confirm = () => {
       const canvas = canvasRef.value;
       const { sx, sy, swidth } = drawImage.value;
       const width = swidth;
@@ -366,7 +382,7 @@ export default create({
       // 将裁剪后的内容转换为图片格式
       const imageDataURL = croppedCanvas.toDataURL('image/png');
       emit('confirm', imageDataURL);
-      close(false);
+      cancel(false);
     };
 
     watch(
@@ -403,6 +419,13 @@ export default create({
       }
     );
 
+    expose({
+      cancel,
+      resetAngle,
+      setAngle,
+      confirm
+    });
+
     return {
       ...toRefs(state),
       canvasRef,
@@ -411,8 +434,8 @@ export default create({
       inputImageChange,
       resetAngle,
       setAngle,
-      close,
-      cropImage,
+      cancel,
+      confirm,
       onTouchStart,
       onTouchMove,
       onTouchEnd
