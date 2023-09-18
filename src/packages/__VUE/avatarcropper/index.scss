@@ -1,7 +1,7 @@
 .nut-avatar-cropper {
   position: relative;
   &::after {
-    content: '编辑';
+    content: attr(data-edit-text);
     position: absolute;
     top: 0;
     left: 0;
@@ -53,6 +53,7 @@
       bottom: inherit;
     }
     .flex-sb {
+      width: 100%;
       display: flex;
       justify-content: space-between;
     }

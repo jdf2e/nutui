@@ -60,6 +60,9 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   expect(wrapper.vm.angle).toBe(90);
   setAngle.trigger('click');
   expect(wrapper.vm.angle).toBe(180);
+  setAngle.trigger('click');
+  setAngle.trigger('click');
+  expect(wrapper.vm.angle).toBe(0);
 
   const confirm = btns[3];
   confirm.trigger('click');

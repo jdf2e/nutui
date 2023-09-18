@@ -49,7 +49,7 @@ const cutImage = (url: string) => {
 
 ```vue
 <template>
-  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" @confirm="cutImage">
+  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" edit-text="修改" @confirm="cutImage">
     <nut-avatar size="large">
       <img :src="imageUrl" />
     </nut-avatar>
@@ -94,6 +94,7 @@ const cutImage = (url: string) => {
 | maxZoom       | 最大缩放倍数                                | number | 3      |
 | space         | 裁剪区域两边预留的间隙                      | number | 10     |
 | btnsPosition  | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
+| editText      | 中间的文字内容                              | string | 编辑   |
 | cancelText    | 取消按钮的文字                              | string | 取消   |
 | cancelConfirm | 确认按钮的文字                              | string | 确认   |
 

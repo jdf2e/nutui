@@ -10,7 +10,7 @@
     </nut-cell>
     <h2>裁剪区域bottom插槽</h2>
     <nut-cell>
-      <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" cancel-text="关闭" @confirm="cutImage">
+      <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" edit-text="修改" @confirm="cutImage">
         <nut-avatar size="large">
           <img :src="imageUrl" />
         </nut-avatar>

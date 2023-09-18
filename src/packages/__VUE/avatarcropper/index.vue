@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-avatar-cropper">
+  <view class="nut-avatar-cropper" :data-edit-text="editText">
     <slot></slot>
     <input
       ref="inputImageRef"
@@ -67,6 +67,10 @@ export default create({
     btnsPosition: {
       type: String as PropType<BtnsPosition>,
       default: 'bottom'
+    },
+    editText: {
+      type: String,
+      default: '编辑'
     },
     cancelText: {
       type: String,

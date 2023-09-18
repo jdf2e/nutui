@@ -49,7 +49,7 @@ Customize the clipping area toolbar, and BNs-position controls the toolbar posit
 
 ```vue
 <template>
-  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" @confirm="cutImage">
+  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" edit-text="修改" @confirm="cutImage">
     <nut-avatar size="large">
       <img :src="imageUrl" />
     </nut-avatar>
@@ -94,6 +94,7 @@ const cutImage = (url: string) => {
 | maxZoom       | Maximum zoom                                                                        | number | 3       |
 | space         | The gap reserved on both sides of the clipping area                                 | number | 20      |
 | btnsPosition  | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | string | bottom  |
+| editText      | The text content in the middle                                                      | string | 编辑    |
 | cancelText    | Cancel button text                                                                  | string | 取消    |
 | cancelConfirm | Confirm button text                                                                 | string | 确认    |
 
