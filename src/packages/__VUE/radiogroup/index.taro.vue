@@ -24,7 +24,7 @@ export default create({
 
     provide('parent', {
       label: readonly(computed(() => props.modelValue)),
-      position: props.textPosition,
+      position: readonly(computed(() => props.textPosition)),
       updateValue
     });
 
