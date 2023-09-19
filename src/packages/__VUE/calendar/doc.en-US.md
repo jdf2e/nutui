@@ -632,7 +632,7 @@ When set to week selection, the start and end dates of the week will be determin
 
 :::
 
-### Custom Footer
+### Custom Footer v4.1.6
 
 :::demo
 
@@ -775,13 +775,13 @@ When set to week selection, the start and end dates of the week will be determin
 
 ### Slots
 
-| Name        | Description                                                  |
-| ----------- | ------------------------------------------------------------ |
-| btn         | Below the custom calendar header, you can add custom actions |
-| day         | Date information                                             |
-| top-info    | Date top information                                         |
-| bottom-info | Date bottom information                                      |
-| footer-info | Custom calendar Footer, replace confirm btn                  |
+| Name                | Description                                                  |
+| ------------------- | ------------------------------------------------------------ |
+| btn                 | Below the custom calendar header, you can add custom actions |
+| day                 | Date information                                             |
+| top-info            | Date top information                                         |
+| bottom-info         | Date bottom information                                      |
+| footer-info`v4.1.6` | Custom calendar Footer, replace confirm btn                  |
 
 ### Methods
 

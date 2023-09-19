@@ -254,7 +254,7 @@ Reset the video when the video address changes
 
 :::
 
-### Ref Control play, pause, stop, muted, unmuted
+### Ref Control play, pause, stop, muted, unmuted v4.1.6
 
 :::demo
 
@@ -330,7 +330,7 @@ Reset the video when the video address changes
 | playend | Playback completion callback                                                          | -                             |
 | time    | Triggered when playing(current is the current playback time，total is the total time) | (current:string,total:string) |
 
-### Ref
+### Ref v4.1.6
 
 | Event   | Description |
 | ------- | ----------- |

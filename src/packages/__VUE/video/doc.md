@@ -254,7 +254,7 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 :::
 
-### Ref控制播放，暂停，结束，静音，取消静音
+### Ref 控制播放，暂停，结束，静音，取消静音 v4.1.6
 
 :::demo
 
@@ -332,7 +332,7 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 | playend | 播放完成回调                                       | videoElm                      |
 | time    | 播放时触发(current 为当前播放时间，total 为总时间) | (current:string,total:string) |
 
-### Ref
+### Ref v4.1.6
 
 | 事件名  | 说明     |
 | ------- | -------- |
