@@ -15,7 +15,7 @@
     <input
       v-else
       class="nut-input-number__text--input"
-      type="number"
+      type="digit"
       :min="min"
       :max="max"
       :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
