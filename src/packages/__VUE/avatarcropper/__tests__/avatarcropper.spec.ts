@@ -41,30 +41,30 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   const canvas = wrapper.find('.nut-cropper-popup__canvas');
   expect(canvas.exists()).toBe(true);
 
-  const btns = wrapper.findAll('.nut-cropper-popup__btns-item');
-  expect(btns.length).toBe(4);
+  const toolbar = wrapper.findAll('.nut-cropper-popup__toolbar-item');
+  expect(toolbar.length).toBe(4);
 
-  const cancel = btns[0];
+  const cancel = toolbar[0];
   cancel.trigger('click');
   expect(wrapper.emitted('cancel')).toBeTruthy();
   expect(input.element.value).toBe('');
   await sleep();
   expect(wrapper.find('.nut-cropper-popup').exists()).toBe(false);
 
-  const resetAngle = btns[1];
-  resetAngle.trigger('click');
+  const reset = toolbar[1];
+  reset.trigger('click');
   expect(wrapper.vm.angle).toBe(0);
 
-  const setAngle = btns[2];
-  setAngle.trigger('click');
+  const rotate = toolbar[2];
+  rotate.trigger('click');
   expect(wrapper.vm.angle).toBe(90);
-  setAngle.trigger('click');
+  rotate.trigger('click');
   expect(wrapper.vm.angle).toBe(180);
-  setAngle.trigger('click');
-  setAngle.trigger('click');
+  rotate.trigger('click');
+  rotate.trigger('click');
   expect(wrapper.vm.angle).toBe(0);
 
-  const confirm = btns[3];
+  const confirm = toolbar[3];
   confirm.trigger('click');
   expect(wrapper.emitted('confirm')).toBeTruthy();
 });

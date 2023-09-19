@@ -41,23 +41,23 @@ const cutImage = (url: string) => {
 
 :::
 
-### 裁剪区域bottom插槽
+### 裁剪区域toolbar插槽
 
-自定义裁剪区域工具栏，btns-position控制工具栏位置
+自定义裁剪区域工具栏，toolbar-position控制工具栏位置
 
 :::demo
 
 ```vue
 <template>
-  <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" edit-text="修改" @confirm="cutImage">
+  <nut-avatar-cropper ref="avatarCropperRef" toolbar-position="top" edit-text="修改" @confirm="cutImage">
     <nut-avatar size="large">
       <img :src="imageUrl" />
     </nut-avatar>
-    <template #bottom>
-      <div class="bottom">
+    <template #toolbar>
+      <div class="toolbar">
         <nut-button type="primary" @click="avatarCropperRef.cancel()">取消</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.resetAngle()">重置</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.setAngle()">旋转</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.reset()">重置</nut-button>
+        <nut-button type="primary" @click="avatarCropperRef.rotate()">旋转</nut-button>
         <nut-button type="primary" @click="avatarCropperRef.confirm()">确认</nut-button>
       </div>
     </template>
@@ -76,7 +76,7 @@ const cutImage = (url: string) => {
 </script>
 
 <style lang="scss">
-.bottom {
+.toolbar {
   display: flex;
   justify-content: space-between;
 }
@@ -89,21 +89,21 @@ const cutImage = (url: string) => {
 
 ### AvatarCropper Props
 
-| 参数          | 说明                                        | 类型   | 默认值 |
-| ------------- | ------------------------------------------- | ------ | ------ |
-| maxZoom       | 最大缩放倍数                                | number | 3      |
-| space         | 裁剪区域两边预留的间隙                      | number | 10     |
-| btnsPosition  | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
-| editText      | 中间的文字内容                              | string | 编辑   |
-| cancelText    | 取消按钮的文字                              | string | 取消   |
-| cancelConfirm | 确认按钮的文字                              | string | 确认   |
+| 参数             | 说明                                        | 类型   | 默认值 |
+| ---------------- | ------------------------------------------- | ------ | ------ |
+| max-zoom         | 最大缩放倍数                                | number | 3      |
+| space            | 裁剪区域两边预留的间隙                      | number | 10     |
+| toolbar-position | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
+| edit-text        | 中间的文字内容                              | string | 编辑   |
+| cancel-text      | 取消按钮的文字                              | string | 取消   |
+| cancel-confirm   | 确认按钮的文字                              | string | 确认   |
 
 ### AvatarCropper Slots
 
 | 名称    | 描述                                                        |
 | ------- | ----------------------------------------------------------- |
 | default | 默认插槽，可放置图片、图标、文本等元素                      |
-| bottom  | 选择文件后裁剪弹窗底部元素可以自定义，通过ref调用组件的方法 |
+| toolbar | 选择文件后裁剪弹窗底部元素可以自定义，通过ref调用组件的方法 |
 
 ### AvatarCropper Events
 
@@ -114,9 +114,9 @@ const cutImage = (url: string) => {
 
 ### AvatarCropper Ref
 
-| 事件名     | 说明      |
-| ---------- | --------- |
-| cancel     | 取消裁剪  |
-| resetAngle | 重置为0度 |
-| setAngle   | 旋转90度  |
-| confirm    | 确定裁剪  |
+| 事件名  | 说明      |
+| ------- | --------- |
+| cancel  | 取消裁剪  |
+| reset   | 重置为0度 |
+| rotate  | 旋转90度  |
+| confirm | 确定裁剪  |

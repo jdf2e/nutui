@@ -1,1 +1,1 @@
-export type BtnsPosition = 'top' | 'bottom';
+export type AvatarCropperToolbarPosition = 'top' | 'bottom';

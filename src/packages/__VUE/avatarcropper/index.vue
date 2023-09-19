@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-avatar-cropper" :data-edit-text="editText">
+  <div class="nut-avatar-cropper" :data-edit-text="editText">
     <slot></slot>
     <input
       ref="inputImageRef"
@@ -8,43 +8,43 @@
       class="nut-avatar-cropper__input"
       @change="inputImageChange"
     />
-  </view>
-  <view v-if="visible" class="nut-cropper-popup">
+  </div>
+  <div v-if="visible" class="nut-cropper-popup">
     <canvas ref="canvasRef" class="nut-cropper-popup__canvas"></canvas>
-    <view
+    <div
       class="nut-cropper-popup__highlight"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <view class="highlight" :style="highlightStyle"></view>
-    </view>
-    <view class="nut-cropper-popup__btns" :class="[btnsPosition]">
-      <slot v-if="$slots.bottom" name="bottom"></slot>
-      <view v-else class="flex-sb">
-        <view class="nut-cropper-popup__btns-item" @click="cancel()">
+      <div class="highlight" :style="highlightStyle"></div>
+    </div>
+    <div class="nut-cropper-popup__toolbar" :class="[toolbarPosition]">
+      <slot v-if="$slots.toolbar" name="toolbar"></slot>
+      <div v-else class="flex-sb">
+        <div class="nut-cropper-popup__toolbar-item" @click="cancel()">
           <nut-button type="danger">{{ cancelText }}</nut-button>
-        </view>
-        <view class="nut-cropper-popup__btns-item" @click="resetAngle()">
+        </div>
+        <div class="nut-cropper-popup__toolbar-item" @click="reset">
           <Refresh2 color="#fff" />
-        </view>
-        <view class="nut-cropper-popup__btns-item" @click="setAngle()">
+        </div>
+        <div class="nut-cropper-popup__toolbar-item" @click="rotate">
           <Retweet color="#fff" />
-        </view>
-        <view class="nut-cropper-popup__btns-item" @click="confirm()">
+        </div>
+        <div class="nut-cropper-popup__toolbar-item" @click="confirm">
           <nut-button type="success">{{ confirmText }}</nut-button>
-        </view>
-      </view>
-    </view>
-  </view>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
 import Button from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import type { BtnsPosition } from './types';
+import type { AvatarCropperToolbarPosition } from './types';
 const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -64,8 +64,8 @@ export default create({
       type: Number,
       default: 10
     },
-    btnsPosition: {
-      type: String as PropType<BtnsPosition>,
+    toolbarPosition: {
+      type: String as PropType<AvatarCropperToolbarPosition>,
       default: 'bottom'
     },
     editText: {
@@ -346,12 +346,12 @@ export default create({
     };
 
     // 重置角度
-    const resetAngle = () => {
+    const reset = () => {
       state.angle = 0;
     };
 
     // 设置角度
-    const setAngle = () => {
+    const rotate = () => {
       if (state.angle === 270) {
         state.angle = 0;
         return;
@@ -425,8 +425,8 @@ export default create({
 
     expose({
       cancel,
-      resetAngle,
-      setAngle,
+      reset,
+      rotate,
       confirm
     });
 
@@ -436,8 +436,8 @@ export default create({
       inputImageRef,
       highlightStyle,
       inputImageChange,
-      resetAngle,
-      setAngle,
+      reset,
+      rotate,
       cancel,
       confirm,
       onTouchStart,

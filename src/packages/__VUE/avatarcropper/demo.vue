@@ -8,17 +8,17 @@
         </nut-avatar>
       </nut-avatar-cropper>
     </nut-cell>
-    <h2>裁剪区域bottom插槽</h2>
+    <h2>裁剪区域toolbar插槽</h2>
     <nut-cell>
-      <nut-avatar-cropper ref="avatarCropperRef" btns-position="top" edit-text="修改" @confirm="cutImage">
+      <nut-avatar-cropper ref="avatarCropperRef" toolbar-position="top" edit-text="修改" @confirm="cutImage">
         <nut-avatar size="large">
           <img :src="imageUrl" />
         </nut-avatar>
-        <template #bottom>
-          <div class="bottom">
+        <template #toolbar>
+          <div class="toolbar">
             <nut-button type="primary" @click="avatarCropperRef.cancel()">取消</nut-button>
-            <nut-button type="primary" @click="avatarCropperRef.resetAngle()">重置</nut-button>
-            <nut-button type="primary" @click="avatarCropperRef.setAngle()">旋转</nut-button>
+            <nut-button type="primary" @click="avatarCropperRef.reset()">重置</nut-button>
+            <nut-button type="primary" @click="avatarCropperRef.rotate()">旋转</nut-button>
             <nut-button type="primary" @click="avatarCropperRef.confirm()">确认</nut-button>
           </div>
         </template>
@@ -39,7 +39,7 @@ const cutImage = (url: string) => {
 </script>
 
 <style lang="scss">
-.bottom {
+.toolbar {
   display: flex;
   justify-content: space-between;
 }
