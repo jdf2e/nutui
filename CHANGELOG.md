@@ -1,3 +1,20 @@
+## v4.1.6
+
+`2023-09-19`
+
+Features
+
+- calendar: 日历底部增加插槽 (#2550) @Arch94
+- cell: 新增 desc slot (#2503) (#2556) @yi-boide
+- searchbar: 增加safe-area-inset-bottom 属性 (#2265) (#2558) @yi-boide
+- video: 增加播放，暂停，停止，静音，取消静音方法 (#2447) (#2555) @yi-boide
+
+Bug Fixes
+
+- searchbar: 修复抖音小程序下输入抖动的问题 (#2552) @junjun666
+- uploader: 修复安卓环境下无法唤起摄像头问题 (#2567) @developeryvan
+- configprovider: 修复 slot 的响应式问题 @eiinu
+
 ## v4.1.5
 
 `2023-09-05`
