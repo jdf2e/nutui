@@ -28,12 +28,12 @@ Use the avatar component directly in the middle, and the image content will be r
     </nut-avatar>
   </nut-avatar-cropper>
 </template>
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue';
 const imageUrl = ref(
   'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
 );
-const cutImage = (url: string) => {
+const cutImage = (url) => {
   imageUrl.value = url;
 };
 </script>
@@ -64,18 +64,18 @@ Customize the clipping area toolbar, and toolbar-position controls the toolbar p
   </nut-avatar-cropper>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue';
 const imageUrl = ref(
   'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
 );
 const avatarCropperRef = ref();
-const cutImage = (url: string) => {
+const cutImage = (url) => {
   imageUrl.value = url;
 };
 </script>
 
-<style lang="scss">
+<style>
 .toolbar {
   display: flex;
   justify-content: space-between;

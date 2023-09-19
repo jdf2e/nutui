@@ -38,7 +38,7 @@ const cutImage = (url: string) => {
 };
 </script>
 
-<style lang="scss">
+<style>
 .toolbar {
   display: flex;
   justify-content: space-between;
