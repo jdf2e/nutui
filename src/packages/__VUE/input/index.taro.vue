@@ -161,7 +161,25 @@ export default create({
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
 
-    const renderInput = (type: InputType) => h('input', { type });
+    const renderInput = (type: InputType) => {
+      let inputType: any = { type };
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        // Taro H5 端与小程序端效果保持一致
+        if (type === 'number') {
+          inputType = {
+            type: 'tel',
+            inputmode: 'numeric'
+          };
+        }
+        if (type === 'digit') {
+          inputType = {
+            type: 'text',
+            inputmode: 'decimal'
+          };
+        }
+      }
+      return h('input', inputType);
+    };
 
     const state = reactive({
       focused: false,
