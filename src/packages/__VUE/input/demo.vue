@@ -77,13 +77,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { Close, Ask } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('input');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -167,65 +168,48 @@ const initTranslate = () =>
       placeholder5: 'Input Align'
     }
   });
-export default defineComponent({
-  components: {
-    Close,
-    Ask
-  },
-  setup() {
-    initTranslate();
-    const state = reactive({
-      val1: '',
-      val2: '',
-      text: '',
-      password: '',
-      number: '',
-      digit: '',
-      tel: '',
-      readonly: '',
-      disabled: '',
-      showIcon: '',
-      required: '',
-      error1: '',
-      error2: '',
-      buttonVal: '',
-      format1: '',
-      format2: '',
-      textarea: '',
-      align1: '',
-      align2: '',
-      noBorder1: '',
-      noBorder2: '',
-      clear: '',
-      clear2: '',
-      event: '',
-      slotsValue: ''
-    });
-    setTimeout(function () {
-      // state.val1 = '异步数据';
-    }, 2000);
-    const clear = (event: Event) => {
-      showToast.text('clear');
-      console.log('clear:', event);
-    };
-    const clickInput = (event: Event) => {
-      showToast.text('clickInput');
-      console.log('clickInput:', event);
-    };
-    const clearValue = () => {
-      state.clear2 = '';
-    };
-    const formatter = (value: string) => value.replace(/\d/g, '');
-    return {
-      state,
-      clear,
-      clickInput,
-      formatter,
-      translate,
-      clearValue
-    };
-  }
+
+initTranslate();
+const state = reactive({
+  val1: '',
+  val2: '',
+  text: '',
+  password: '',
+  number: '',
+  digit: '',
+  tel: '',
+  readonly: '',
+  disabled: '',
+  showIcon: '',
+  required: '',
+  error1: '',
+  error2: '',
+  buttonVal: '',
+  format1: '',
+  format2: '',
+  textarea: '',
+  align1: '',
+  align2: '',
+  noBorder1: '',
+  noBorder2: '',
+  clear: '',
+  clear2: '',
+  event: '',
+  slotsValue: ''
 });
+
+const clear = (event: Event) => {
+  showToast.text('clear');
+  console.log('clear:', event);
+};
+const clickInput = (event: Event) => {
+  showToast.text('clickInput');
+  console.log('clickInput:', event);
+};
+const clearValue = () => {
+  state.clear2 = '';
+};
+const formatter = (value: string) => value.replace(/\d/g, '');
 </script>
 
 <style lang="scss" scoped></style>
