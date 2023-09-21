@@ -2,13 +2,16 @@
   .nut-radio {
     &__label {
       color: $dark-color;
+
       &--disabled {
         color: $radio-label-disable-color;
       }
     }
+
     &__button {
       background: $dark-background;
       color: $dark-color;
+
       &--disabled {
         color: $radio-label-disable-color;
         border: 1px solid $radio-label-disable-color;
@@ -16,6 +19,7 @@
     }
   }
 }
+
 .nut-radio {
   display: flex;
   align-items: center;
@@ -27,6 +31,8 @@
   }
 
   &--reverse {
+    flex-direction: row-reverse;
+
     .nut-radio__label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
@@ -43,11 +49,13 @@
     color: $radio-label-font-color;
     box-sizing: border-box;
     border: 1px solid #f6f7f9;
+
     &--active {
       background: transparent;
       color: $radio-label-font-active-color;
       border: 1px solid $radio-label-button-border-color;
       position: relative;
+
       &::after {
         position: absolute;
         top: 0;
@@ -61,6 +69,7 @@
         content: '';
       }
     }
+
     &--disabled {
       color: $radio-label-disable-color;
       border: none;
@@ -72,6 +81,7 @@
     margin-left: $radio-label-margin-left;
     font-size: $radio-label-font-size;
     color: $radio-label-font-color;
+
     &--disabled {
       color: $radio-label-disable-color;
     }
@@ -82,9 +92,11 @@
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
   }
+
   &__icon--unchecked {
     color: $radio-icon-disable-color;
   }
+
   &__icon--disable {
     color: $radio-icon-disable-color2;
   }
