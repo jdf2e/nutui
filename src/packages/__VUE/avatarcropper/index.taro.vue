@@ -51,14 +51,13 @@
 import { watch, ref, reactive, toRefs, computed, PropType, onMounted } from 'vue';
 import Button from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarCropperToolbarPosition } from './types';
+import type { AvatarCropperToolbarPosition, AvatarCropperSizeType, AvatarCropperSourceType } from './types';
 const { create } = createComponent('avatar-cropper');
 import { IconFont } from '@nutui/icons-vue-taro';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
-import { AvatarCropperSizeType, AvatarCropperSourceType } from './types';
 import Taro from '@tarojs/taro';
-import { easySetFillStyle } from './canvas-util';
+import { easySetFillStyle } from '@/packages/utils/canvas';
 
 export default create({
   components: {

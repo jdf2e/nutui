@@ -8,7 +8,7 @@
 
 ```js
 import { createApp } from 'vue';
-import { AvatarCropper } from '@nutui/nutui';
+import { AvatarCropper } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(AvatarCropper);
