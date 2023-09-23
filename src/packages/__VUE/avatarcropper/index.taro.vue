@@ -4,18 +4,11 @@
     <view class="nut-avatar-cropper__edit-text" @click.stop="chooseImage">{{ editText }}</view>
   </view>
   <view v-show="visible" class="nut-cropper-popup">
-    <canvas
-      :id="canvasId"
-      :canvas-id="canvasId"
-      :style="canvasStyle"
-      type="2d"
-      class="nut-cropper-popup__canvas"
-    ></canvas>
+    <canvas :id="canvasId" :canvas-id="canvasId" :style="canvasStyle" class="nut-cropper-popup__canvas"></canvas>
     <canvas
       :id="cutCanvasId"
       :canvas-id="cutCanvasId"
       :style="cutCanvasStyle"
-      type="2d"
       class="nut-cropper-popup__cut-canvas"
     ></canvas>
     <view
@@ -145,9 +138,10 @@ export default create({
     const touch = useTouch();
     // 获取系统信息
     const systemInfo: Taro.getSystemInfoSync.Result = Taro.getSystemInfoSync();
-    state.displayWidth = systemInfo.windowWidth;
-    state.displayHeight = systemInfo.windowHeight;
-    state.cropperWidth = state.cropperHeight = state.displayWidth - props.space * 2;
+    const pixelRatio = Taro.getEnv() === 'WEB' ? systemInfo.pixelRatio : 1;
+    state.displayWidth = systemInfo.windowWidth * pixelRatio;
+    state.displayHeight = systemInfo.windowHeight * pixelRatio;
+    state.cropperWidth = state.cropperHeight = state.displayWidth - props.space * pixelRatio * 2;
 
     // 初始化canvas
     onMounted(() => {
@@ -162,8 +156,8 @@ export default create({
 
     // 高亮框样式
     const highlightStyle = computed(() => {
-      const { displayWidth } = state;
-      const width = displayWidth - props.space * 2 + 'px';
+      const { cropperWidth } = state;
+      const width = cropperWidth / pixelRatio + 'px';
       const height = width;
       return {
         width,
@@ -174,18 +168,18 @@ export default create({
     const canvasStyle = computed(() => {
       const { displayWidth, displayHeight } = state;
       return {
-        width: `${displayWidth}px`,
-        height: `${displayHeight}px`
+        width: `${displayWidth / pixelRatio}px`,
+        height: `${displayHeight / pixelRatio}px`
       };
     });
 
     const cutCanvasStyle = computed(() => {
       const { displayWidth, displayHeight, cropperWidth } = state;
       return {
-        top: `${(displayHeight - cropperWidth) / 2}px`,
-        left: `${(displayWidth - cropperWidth) / 2}px`,
-        width: `${cropperWidth}px`,
-        height: `${cropperWidth}px`
+        top: `${(displayHeight / pixelRatio - cropperWidth / pixelRatio) / 2}px`,
+        left: `${(displayWidth / pixelRatio - cropperWidth / pixelRatio) / 2}px`,
+        width: `${cropperWidth / pixelRatio}px`,
+        height: `${cropperWidth / pixelRatio}px`
       };
     });
 
@@ -218,6 +212,7 @@ export default create({
       });
     };
 
+    // web绘制
     const webDraw = () => {
       const { src, width, height, x, y } = drawImage.value;
       const { moveX, moveY, scale, angle, displayWidth, displayHeight, cropperWidth } = state;
@@ -235,7 +230,7 @@ export default create({
       ctx.fillStyle = '#666';
       ctx.fillRect(0, 0, displayWidth, displayHeight);
       ctx.fillStyle = '#000';
-      ctx.fillRect(props.space, (displayHeight - cropperWidth) / 2, cropperWidth, cropperWidth);
+      ctx.fillRect(props.space * pixelRatio, (displayHeight - cropperWidth) / 2, cropperWidth, cropperWidth);
 
       // 绘制偏移量
       ctx.translate(displayWidth / 2 + moveX, displayHeight / 2 + moveY);
@@ -486,7 +481,7 @@ export default create({
       canvas &&
         croppedCtx.drawImage(
           canvas,
-          props.space,
+          props.space * pixelRatio,
           (displayHeight - cropperWidth) / 2,
           width,
           height,
@@ -508,7 +503,6 @@ export default create({
         confirmWEB();
         return;
       }
-      const { pixelRatio } = systemInfo;
       const { cropperWidth, displayWidth, displayHeight } = state;
       const { cropperCutCanvasContext, canvasId, cutCanvasId } = canvasAll;
       // 将编辑后的canvas内容转成图片
@@ -544,8 +538,8 @@ export default create({
             y: 0,
             width: cropperWidth,
             height: cropperWidth,
-            destWidth: cropperWidth * pixelRatio,
-            destHeight: cropperWidth * pixelRatio,
+            destWidth: cropperWidth * systemInfo.pixelRatio,
+            destHeight: cropperWidth * systemInfo.pixelRatio,
             success: (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
               let filePath = res.tempFilePath;
 
