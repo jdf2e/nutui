@@ -206,7 +206,7 @@ $inputnumber-border-radius: var(--nut-inputnumber-border-radius, 0) !default;
 $inputnumber-height: var(--nut-inputnumber-height, auto) !default;
 $inputnumber-line-height: var(--nut-inputnumber-line-height, normal) !default;
 $inputnumber-border-box: var(--nut-inputnumber-border-box, content-box) !default;
-$inputnumber-display: var(--nut-inputnumber-display, flex) !default;
+$inputnumber-display: var(--nut-inputnumber-display, inline-flex) !default;
 
 // actionsheet
 $actionsheet-light-color: var(--nut-actionsheet-light-color, #f6f6f6) !default;
@@ -451,6 +451,8 @@ $checkbox-button-background: var(--nut-checkbox-button-background, #f6f7f9) !def
 $checkbox-button-font-color-active: var(--nut-checkbox-button-font-color-active, $primary-color) !default;
 $checkbox-button-border-color-active: var(--nut-checkbox-button-border-color-active, $primary-color) !default;
 $checkbox-button-background-active: var(--nut-checkbox-button-background-active, $primary-color) !default;
+$checkbox-display: var(--nut-checkbox-display, inline-flex) !default;
+$checkbox-margin-right: var(--nut-checkbox-margin-right, 20px) !default;
 
 //radio
 $radio-label-font-color: var(--nut-radio-label-font-color, rgba(0, 0, 0, 0.85)) !default;

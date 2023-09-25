@@ -301,9 +301,6 @@ export default defineComponent({
 }
 
 .nut-checkbox {
-  display: flex;
-  margin-right: 20px;
-
   .nut-checkbox__label {
     margin-left: 10px;
   }
