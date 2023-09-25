@@ -1,8 +1,10 @@
 <template>
   <view :class="classes">
-    <view v-if="readonly" class="nut-textarea__textarea nut-textarea__textarea__readonly">
-      {{ modelValue }}
-    </view>
+    <rich-text
+      v-if="readonly"
+      class="nut-textarea__textarea nut-textarea__textarea__readonly"
+      :nodes="readonlyValue"
+    ></rich-text>
     <textarea
       v-else
       ref="textareaRef"
@@ -110,6 +112,10 @@ export default create({
     const copyTxtStyle: any = ref({
       'word-break': 'break-all',
       width: '0'
+    });
+
+    const readonlyValue = computed(() => {
+      return props.modelValue.replace(/\\n/g, '<br/>');
     });
 
     const emitChange = (value: string, event: Event) => {
@@ -281,7 +287,8 @@ export default create({
       translate,
       copyTxtStyle,
       startComposing,
-      endComposing
+      endComposing,
+      readonlyValue
     };
   }
 });
