@@ -4,12 +4,12 @@
     <view class="nut-avatar-cropper__edit-text" @click.stop="chooseImage">{{ editText }}</view>
   </view>
   <view v-show="visible" class="nut-cropper-popup">
-    <canvas :id="canvasId" :canvas-id="canvasId" :style="canvasStyle" class="nut-cropper-popup__canvas"></canvas>
     <canvas
-      :id="cutCanvasId"
-      :canvas-id="cutCanvasId"
-      :style="cutCanvasStyle"
-      class="nut-cropper-popup__cut-canvas"
+      :id="canvasId"
+      :canvas-id="canvasId"
+      :type="showAlipayCanvas2D ? '2d' : undefined"
+      :style="canvasStyle"
+      class="nut-cropper-popup__canvas"
     ></canvas>
     <view
       class="nut-cropper-popup__highlight"
@@ -49,7 +49,7 @@ const { create } = createComponent('avatar-cropper');
 import { IconFont } from '@nutui/icons-vue-taro';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
-import Taro from '@tarojs/taro';
+import Taro, { useReady } from '@tarojs/taro';
 import { easySetFillStyle } from '@/packages/utils/canvas';
 
 export default create({
@@ -116,15 +116,13 @@ export default create({
     }
     interface CanvasAll {
       canvasId: string;
-      cutCanvasId: string;
+      cropperCanvas: any | null;
       cropperCanvasContext: Taro.CanvasContext | null;
-      cropperCutCanvasContext: Taro.CanvasContext | null;
     }
     const canvasAll = reactive<CanvasAll>({
       canvasId: `canvas-${Date.now()}`,
-      cutCanvasId: `cut-canvas-${Date.now()}`,
-      cropperCanvasContext: null,
-      cropperCutCanvasContext: null
+      cropperCanvas: null,
+      cropperCanvasContext: null
     });
     // 绘制图片
     const drawImage = ref<DrawImage>({
@@ -138,17 +136,36 @@ export default create({
     const touch = useTouch();
     // 获取系统信息
     const systemInfo: Taro.getSystemInfoSync.Result = Taro.getSystemInfoSync();
-    const pixelRatio = Taro.getEnv() === 'WEB' ? systemInfo.pixelRatio : 1;
+    // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
+    const showAlipayCanvas2D = computed(() => {
+      return Taro.getEnv() === 'ALIPAY' && parseInt((Taro as any).SDKVersion.replace(/\./g, '')) >= 270;
+    });
+    const showPixelRatio = Taro.getEnv() === 'WEB' || showAlipayCanvas2D.value;
+    const pixelRatio = showPixelRatio ? systemInfo.pixelRatio : 1;
     state.displayWidth = systemInfo.windowWidth * pixelRatio;
     state.displayHeight = systemInfo.windowHeight * pixelRatio;
     state.cropperWidth = state.cropperHeight = state.displayWidth - props.space * pixelRatio * 2;
 
+    useReady(() => {
+      if (showAlipayCanvas2D.value) {
+        const { canvasId } = canvasAll;
+        Taro.createSelectorQuery()
+          .select(`#${canvasId}`)
+          .node(({ node: canvas }) => {
+            canvas.width = state.displayWidth;
+            canvas.height = state.displayHeight;
+            canvasAll.cropperCanvas = canvas;
+          })
+          .exec();
+      }
+    });
+
     // 初始化canvas
     onMounted(() => {
-      const { canvasId, cutCanvasId } = canvasAll;
+      const { canvasId } = canvasAll;
       canvasAll.cropperCanvasContext = Taro.createCanvasContext(canvasId);
-      canvasAll.cropperCutCanvasContext = Taro.createCanvasContext(cutCanvasId);
     });
+
     // 是否是横向
     const isAngle = computed(() => {
       return state.angle === 90 || state.angle === 270;
@@ -212,20 +229,19 @@ export default create({
       });
     };
 
-    // web绘制
-    const webDraw = () => {
+    // base64转图片(canvasImage)
+    const dataURLToCanvasImage = (canvas: any, dataURL: string): Promise<HTMLImageElement> => {
+      return new Promise((resolve) => {
+        const img = new canvas.createImage();
+        img.onload = () => resolve(img);
+        img.src = dataURL;
+      });
+    };
+
+    const canvas2dDraw = (ctx: CanvasRenderingContext2D) => {
+      if (!ctx) return;
       const { src, width, height, x, y } = drawImage.value;
       const { moveX, moveY, scale, angle, displayWidth, displayHeight, cropperWidth } = state;
-      const canvasDom: HTMLElement | null = document.getElementById(canvasAll.canvasId);
-      let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement;
-      if (canvasDom?.tagName !== 'CANVAS') {
-        canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
-        canvas.width = displayWidth;
-        canvas.height = displayHeight;
-      }
-
-      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-      if (!ctx) return;
       ctx.clearRect(0, 0, displayWidth, displayHeight);
       ctx.fillStyle = '#666';
       ctx.fillRect(0, 0, displayWidth, displayHeight);
@@ -242,10 +258,36 @@ export default create({
       ctx.drawImage(src as HTMLImageElement, x, y, width, height);
     };
 
+    // web绘制
+    const webDraw = () => {
+      const { displayWidth, displayHeight } = state;
+      const canvasDom: HTMLElement | null = document.getElementById(canvasAll.canvasId);
+      let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement;
+      if (canvasDom?.tagName !== 'CANVAS') {
+        canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+      }
+
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+      canvas2dDraw(ctx);
+    };
+
+    const alipayDraw = () => {
+      const { cropperCanvas } = canvasAll;
+      let ctx = cropperCanvas.getContext('2d') as CanvasRenderingContext2D;
+      ctx && ctx.resetTransform();
+      canvas2dDraw(ctx);
+    };
+
     // 绘制显示的canvas内容
     const draw = () => {
       if (Taro.getEnv() === 'WEB') {
         webDraw();
+        return;
+      }
+      if (showAlipayCanvas2D.value) {
+        alipayDraw();
         return;
       }
       const { src, width, height, x, y } = drawImage.value;
@@ -272,7 +314,7 @@ export default create({
       ctx.scale(scale, scale);
       // 绘制图片
       ctx.drawImage(src as string, x, y, width, height);
-      ctx.draw(false);
+      ctx.draw();
     };
 
     // 设置绘制图片
@@ -284,6 +326,9 @@ export default create({
       drawImg.src = image.path;
       if (Taro.getEnv() === 'WEB') {
         drawImg.src = await dataURLToImage(image.path);
+      }
+      if (showAlipayCanvas2D.value) {
+        drawImg.src = await dataURLToCanvasImage(canvasAll.cropperCanvas, image.path);
       }
 
       const isPortrait = imgHeight > imgWidth;
@@ -461,6 +506,7 @@ export default create({
       isEmit && emit('cancel');
     };
 
+    // web裁剪图片
     const confirmWEB = () => {
       const { cropperWidth, displayHeight } = state;
       const canvasDom: HTMLElement | null = document.getElementById(canvasAll.canvasId);
@@ -497,56 +543,54 @@ export default create({
       cancel(false);
     };
 
+    // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
+    const confirmALIPAY = () => {
+      const { cropperWidth, displayHeight } = state;
+      const { cropperCanvas } = canvasAll;
+      Taro.canvasToTempFilePath({
+        canvas: cropperCanvas,
+        x: props.space,
+        y: (displayHeight - cropperWidth) / 2,
+        width: cropperWidth,
+        height: cropperWidth,
+        destWidth: cropperWidth,
+        destHeight: cropperWidth,
+        success: async (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
+          let filePath = res.tempFilePath;
+          emit('confirm', filePath);
+          cancel(false);
+          return;
+        }
+      });
+    };
+
     // 裁剪图片
     const confirm = () => {
       if (Taro.getEnv() === 'WEB') {
         confirmWEB();
         return;
       }
-      const { cropperWidth, displayWidth, displayHeight } = state;
-      const { cropperCutCanvasContext, canvasId, cutCanvasId } = canvasAll;
+      if (showAlipayCanvas2D.value) {
+        confirmALIPAY();
+        return;
+      }
+      const { cropperWidth, displayHeight } = state;
+      const { canvasId } = canvasAll;
       // 将编辑后的canvas内容转成图片
       Taro.canvasToTempFilePath({
         canvasId,
-        x: 0,
-        y: 0,
-        width: displayWidth,
-        height: displayHeight,
-        destWidth: displayWidth,
-        destHeight: displayHeight,
+        x: props.space,
+        y: (displayHeight - cropperWidth) / 2,
+        width: cropperWidth,
+        height: cropperWidth,
+        destWidth: cropperWidth * systemInfo.pixelRatio,
+        destHeight: cropperWidth * systemInfo.pixelRatio,
         success: async (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
           let filePath = res.tempFilePath;
-          // 绘制裁剪的canvas内容
-          const ctx = cropperCutCanvasContext;
-          if (!ctx) return;
-          ctx.drawImage(
-            filePath,
-            props.space,
-            (displayHeight - cropperWidth) / 2,
-            cropperWidth,
-            cropperWidth,
-            0,
-            0,
-            cropperWidth,
-            cropperWidth
-          );
-          ctx.draw();
-          // 将裁剪的canvas内容转成图片
-          Taro.canvasToTempFilePath({
-            canvasId: cutCanvasId,
-            x: 0,
-            y: 0,
-            width: cropperWidth,
-            height: cropperWidth,
-            destWidth: cropperWidth * systemInfo.pixelRatio,
-            destHeight: cropperWidth * systemInfo.pixelRatio,
-            success: (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
-              let filePath = res.tempFilePath;
 
-              emit('confirm', filePath);
-              cancel(false);
-            }
-          });
+          emit('confirm', filePath);
+          cancel(false);
+          return;
         }
       });
     };
@@ -595,6 +639,7 @@ export default create({
     return {
       ...toRefs(state),
       ...toRefs(canvasAll),
+      showAlipayCanvas2D,
       highlightStyle,
       canvasStyle,
       cutCanvasStyle,

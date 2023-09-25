@@ -104,4 +104,4 @@ function easySetFillStyle(
   );
 }
 
-export { easySetStrokeStyle, easySetLineWidth, easySetFillStyle };
+export { compareVersion, easySetStrokeStyle, easySetLineWidth, easySetFillStyle };
