@@ -1,5 +1,14 @@
 import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
-import { computed, isVNode, PropType, provide, reactive, VNode, watch } from 'vue';
+import {
+  computed,
+  isVNode,
+  PropType,
+  provide,
+  reactive,
+  watch,
+  getCurrentInstance,
+  type VNodeNormalizedChildren
+} from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules } from './types';
 
@@ -18,7 +27,7 @@ export const component = (components: any) => {
     components,
     emits: ['validate'],
 
-    setup(props: any, { emit, slots }: any) {
+    setup(props: any, { emit }: any) {
       const formErrorTip = computed(() => reactive<any>({}));
       provide('formErrorTip', formErrorTip);
       const clearErrorTips = () => {
@@ -39,31 +48,39 @@ export const component = (components: any) => {
         { immediate: true }
       );
 
-      const findFormItem = (vnodes: VNode[]) => {
+      const findFormItem = (vNodeChildren: VNodeNormalizedChildren) => {
         const task: FormRule[] = [];
-        const search = (vnode: any) => {
-          if (isVNode(vnode)) {
-            const type = (vnode?.type as any)?.name || vnode?.type;
+
+        const search = (vNode: VNodeNormalizedChildren) => {
+          if (isVNode(vNode)) {
+            const type = (vNode?.type as any)?.name || vNode?.type;
             if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
               task.push({
-                prop: vnode.props?.['prop'],
-                rules: vnode.props?.['rules'] || []
+                prop: vNode.props?.['prop'],
+                rules: vNode.props?.['rules'] || []
               });
-            } else if (Array.isArray(vnode.children) && vnode.children?.length) {
-              search(vnode.children);
-            } else if (isObject(vnode.children) && Object.keys(vnode.children)) {
-              // 异步节点获取
-              if ((vnode.children as any)?.default) {
-                search((vnode.children as any).default());
+            } else if (vNode.component?.subTree) {
+              const childSubTree = vNode.component?.subTree;
+              search(childSubTree.children);
+              if (isObject(childSubTree.children) && Object.keys(childSubTree.children)) {
+                // 异步节点获取
+                if ((childSubTree.children as any)?.default) {
+                  search((childSubTree.children as any).default());
+                }
+              } else {
+                search(childSubTree.children);
               }
+            } else if (vNode.children) {
+              search(vNode.children);
             }
-          } else if (Array.isArray(vnode)) {
-            vnode.forEach((v: any) => {
+          } else if (Array.isArray(vNode)) {
+            vNode.forEach((v: any) => {
               search(v);
             });
           }
         };
-        search(vnodes);
+
+        search(vNodeChildren);
         return task;
       };
 
@@ -133,6 +150,9 @@ export const component = (components: any) => {
         return Promise.resolve(true);
       };
 
+      // only setup get
+      const instance = getCurrentInstance()!;
+
       /**
        * 校验
        * @param customProp 指定校验，用于用户自定义场景时触发，例如 blur、change 事件
@@ -141,7 +161,8 @@ export const component = (components: any) => {
       const validate = (customProp = '') => {
         return new Promise((resolve, reject) => {
           try {
-            const task = findFormItem(slots.default());
+            // 改用当前组件树subtree
+            const task = findFormItem(instance.subTree.children);
 
             const errors = task.map((item) => {
               if (customProp && customProp !== item.prop) {
