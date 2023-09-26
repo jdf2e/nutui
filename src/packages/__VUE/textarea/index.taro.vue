@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
     <rich-text
-      v-if="readonly"
+      v-if="readonly && env !== 'WEB'"
       class="nut-textarea__textarea nut-textarea__textarea__readonly"
       :nodes="readonlyValue"
     ></rich-text>
