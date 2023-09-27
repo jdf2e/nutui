@@ -60,7 +60,29 @@ test('datepicker: Test cancelled, change props value', async () => {
       title: '选中日期',
       type: 'date',
       visible: true,
-      isShowChinese: false
+      isShowChinese: false,
+      formatter: (type: string, option: any) => {
+        switch (type) {
+          case 'year':
+            option.text += '年';
+            break;
+          case 'month':
+            option.text += `月`;
+            break;
+          case 'day':
+            option.text += `日`;
+            break;
+          case 'hour':
+            option.text += `时`;
+            break;
+          case 'minute':
+            option.text += `分`;
+            break;
+          default:
+            option.text += '秒';
+        }
+        return option;
+      }
     }
   });
   await nextTick();
