@@ -441,24 +441,24 @@ app.use(DatePicker);
 
 ### Props
 
-| Attribute          | Description                                                                             | Type                                                   | Default                          |
-| ------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------------------------------- |
-| v-model            | Default Date                                                                            | date                                                   | `null`                           |
-| type               | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute`(`v4.0.5`) | string                                                 | `date`                           |
-| minute-step        | Option minute step                                                                      | number                                                 | `1`                              |
-| is-show-chinese    | Show Chinese                                                                            | boolean                                                | `false`                          |
-| min-date           | Start date                                                                              | date                                                   | `Ten years ago on January 1`     |
-| max-date           | End date                                                                                | date                                                   | `Ten years later on December 31` |
-| formatter          | Option text formatter                                                                   | (type: string, option: PickerOption) => PickerOption   |                                  |
-| filter             | Option filter                                                                           | (type: string, option: PickerOption) => PickerOption[] |                                  |
-| title              | Title                                                                                   | string                                                 | `null`                           |
-| ok-text            | Text of confirm button                                                                  | string                                                 | `confirm`                        |
-| cancel-text        | Text of cancel button                                                                   | string                                                 | `cancel`                         |
-| three-dimensional  | Turn on 3D effects                                                                      | boolean                                                | `true`                           |
-| swipe-duration     | Duration of the momentum animation                                                      | number \| string                                       | `1000`                           |
-| visible-option-num | Count of visible columns                                                                | number \| string                                       | `7`                              |
-| option-height      | Option height                                                                           | number \| string                                       | `36`                             |
-| show-toolbar       | Whether to show toolbar                                                                 | boolean                                                | `true`                           |
+| Attribute          | Description                                                                                                   | Type                                                   | Default                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------------------------------- |
+| v-model            | Default Date                                                                                                  | date                                                   | `null`                           |
+| type               | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute`(`v4.0.5`) `datetime` `dateTime` | string                                                 | `date`                           |
+| minute-step        | Option minute step                                                                                            | number                                                 | `1`                              |
+| is-show-chinese    | Show Chinese                                                                                                  | boolean                                                | `false`                          |
+| min-date           | Start date                                                                                                    | date                                                   | `Ten years ago on January 1`     |
+| max-date           | End date                                                                                                      | date                                                   | `Ten years later on December 31` |
+| formatter          | Option text formatter                                                                                         | (type: string, option: PickerOption) => PickerOption   |                                  |
+| filter             | Option filter                                                                                                 | (type: string, option: PickerOption) => PickerOption[] |                                  |
+| title              | Title                                                                                                         | string                                                 | `null`                           |
+| ok-text            | Text of confirm button                                                                                        | string                                                 | `confirm`                        |
+| cancel-text        | Text of cancel button                                                                                         | string                                                 | `cancel`                         |
+| three-dimensional  | Turn on 3D effects                                                                                            | boolean                                                | `true`                           |
+| swipe-duration     | Duration of the momentum animation                                                                            | number \| string                                       | `1000`                           |
+| visible-option-num | Count of visible columns                                                                                      | number \| string                                       | `7`                              |
+| option-height      | Option height                                                                                                 | number \| string                                       | `36`                             |
+| show-toolbar       | Whether to show toolbar                                                                                       | boolean                                                | `true`                           |
 
 ### Events
 

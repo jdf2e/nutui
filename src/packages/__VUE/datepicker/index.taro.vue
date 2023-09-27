@@ -221,7 +221,7 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      if (['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(props.type)) {
+      if (['date', 'datetime', 'datehour', 'month-day', 'year-month', 'dateTime'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
           formatDate.push(item);
@@ -239,6 +239,8 @@ export default create({
         let date: Date | null = null;
         if (props.type === 'date' || props.type === 'month-day' || props.type === 'year-month') {
           date = new Date(year, month, day);
+        } else if (props.type === 'dateTime') {
+          date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]), Number(formatDate[5]));
         } else if (props.type === 'datetime') {
           date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
         } else if (props.type === 'datehour') {
