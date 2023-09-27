@@ -53,7 +53,34 @@ test('Increment step setting', async () => {
   expect(yearItem.length).toBe(12);
 });
 
-test('datepicker: test dateTime', async () => {
+test('datepicker: test type datetime', async () => {
+  const wrapper = mount(DatePicker, {
+    props: {
+      modelValue: new Date(2020, 0, 1, 0, 1),
+      type: 'datetime',
+      visible: true
+    }
+  });
+  await nextTick();
+  const yearItem = wrapper.find('.nut-picker__list').findAll('.nut-picker-roller-item');
+  expect(yearItem.length).toBe(21);
+  const confirm = wrapper.find('.nut-picker__right');
+  confirm.trigger('click');
+  expect(wrapper.emitted().confirm[0]).toEqual([
+    {
+      selectedValue: ['2020', '01', '01', '00', '01'],
+      selectedOptions: [
+        { text: '2020', value: '2020' },
+        { text: '01', value: '01' },
+        { text: '01', value: '01' },
+        { text: '00', value: '00' },
+        { text: '01', value: '01' }
+      ]
+    }
+  ]);
+});
+
+test('datepicker: test type dateTime', async () => {
   const wrapper = mount(DatePicker, {
     props: {
       modelValue: new Date(2020, 0, 1, 0, 0, 1),
@@ -75,6 +102,32 @@ test('datepicker: test dateTime', async () => {
         { text: '01', value: '01' },
         { text: '00', value: '00' },
         { text: '00', value: '00' },
+        { text: '01', value: '01' }
+      ]
+    }
+  ]);
+});
+
+test('datepicker: test type datehour', async () => {
+  const wrapper = mount(DatePicker, {
+    props: {
+      modelValue: new Date(2020, 0, 1, 1),
+      type: 'datehour',
+      visible: true
+    }
+  });
+  await nextTick();
+  const yearItem = wrapper.find('.nut-picker__list').findAll('.nut-picker-roller-item');
+  expect(yearItem.length).toBe(21);
+  const confirm = wrapper.find('.nut-picker__right');
+  confirm.trigger('click');
+  expect(wrapper.emitted().confirm[0]).toEqual([
+    {
+      selectedValue: ['2020', '01', '01', '01'],
+      selectedOptions: [
+        { text: '2020', value: '2020' },
+        { text: '01', value: '01' },
+        { text: '01', value: '01' },
         { text: '01', value: '01' }
       ]
     }
