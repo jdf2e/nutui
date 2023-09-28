@@ -287,20 +287,16 @@ export default create({
     };
 
     const getDateIndex = (type: string) => {
-      if (type === 'year') {
-        return state.currentDate.getFullYear();
-      } else if (type === 'month') {
-        return state.currentDate.getMonth() + 1;
-      } else if (type === 'day') {
-        return state.currentDate.getDate();
-      } else if (type === 'hour') {
-        return state.currentDate.getHours();
-      } else if (type === 'minute') {
-        return state.currentDate.getMinutes();
-      } else if (type === 'seconds') {
-        return state.currentDate.getSeconds();
-      }
-      return 0;
+      const indices: Record<string, number> = {
+        year: state.currentDate.getFullYear(),
+        month: state.currentDate.getMonth() + 1,
+        day: state.currentDate.getDate(),
+        hour: state.currentDate.getHours(),
+        minute: state.currentDate.getMinutes(),
+        seconds: state.currentDate.getSeconds()
+      };
+
+      return indices[type] || 0;
     };
 
     const closeHandler = (val: any) => {
@@ -312,30 +308,18 @@ export default create({
     };
 
     const generateList = (list: Array<any>) => {
-      switch (props.type) {
-        case 'date':
-          list = list.slice(0, 3);
-          break;
-        case 'datetime':
-          list = list.slice(0, 5);
-          break;
-        case 'time':
-          list = list.slice(3, 6);
-          break;
-        case 'year-month':
-          list = list.slice(0, 2);
-          break;
-        case 'month-day':
-          list = list.slice(1, 3);
-          break;
-        case 'datehour':
-          list = list.slice(0, 4);
-          break;
-        case 'hour-minute':
-          list = list.slice(3, 5);
-          break;
-      }
-      return list;
+      const listMapping: Record<string, [number, number]> = {
+        date: [0, 3],
+        datetime: [0, 5],
+        time: [3, 6],
+        'year-month': [0, 2],
+        'month-day': [1, 3],
+        datehour: [0, 4],
+        'hour-minute': [3, 5]
+      };
+
+      const [start, end] = listMapping[props.type] || [0, list.length];
+      return list.slice(start, end);
     };
 
     const getSelectedValue = (time: Date) => {
