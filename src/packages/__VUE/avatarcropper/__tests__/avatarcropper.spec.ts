@@ -50,8 +50,9 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
 
   trigger(track, 'touchstart', 0, 0);
   trigger(track, 'touchmove', 0, 20);
-  trigger(track, 'touchend', 0, 100);
-  triggerDrag(track, 0, 100);
+  trigger(track, 'touchmove', 20, 20);
+  trigger(track, 'touchend', 20, 100);
+  triggerDrag(track, 20, 100);
 
   const toolbar = wrapper.findAll('.nut-cropper-popup__toolbar-item');
   expect(toolbar.length).toBe(4);
