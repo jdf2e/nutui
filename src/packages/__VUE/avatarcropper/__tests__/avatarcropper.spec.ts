@@ -38,7 +38,8 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
     get: vi.fn().mockReturnValue([mockFile, smallFile])
   });
   expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', 'display: none;');
-  await input.trigger('change', { target: { files: [mockFile] } });
+  input.elemnt.value = vi.fn().mockReturnValue([mockFile, smallFile]);
+  await input.trigger('change');
   await sleep();
   expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', '');
   const canvas = wrapper.find('.nut-cropper-popup__canvas');
