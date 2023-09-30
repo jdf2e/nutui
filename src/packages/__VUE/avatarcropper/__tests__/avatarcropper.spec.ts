@@ -48,12 +48,11 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
 
   const track = wrapper.find('.nut-cropper-popup__highlight');
 
-  trigger(track, 'touchstart', 0, 0);
-  trigger(track, 'touchmove', 0, 20);
-  trigger(track, 'touchmove', 20, 20);
-  trigger(track, 'touchend', 20, 100);
-  triggerDrag(track, 20, 100);
+  trigger(track, 'touchstart', 0, 0, { x: 0, y: 0 });
+  trigger(track, 'touchmove', 20, 20, { x: 40, y: 60 });
+  trigger(track, 'touchend', 20, 100, { x: 40, y: 60 });
 
+  triggerDrag(track, 50, 60);
   const toolbar = wrapper.findAll('.nut-cropper-popup__toolbar-item');
   expect(toolbar.length).toBe(4);
 
@@ -71,6 +70,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   const rotate = toolbar[2];
   rotate.trigger('click');
   expect(wrapper.vm.angle).toBe(90);
+  triggerDrag(track, 1000, 2000);
   rotate.trigger('click');
   expect(wrapper.vm.angle).toBe(180);
   rotate.trigger('click');
