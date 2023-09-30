@@ -9,7 +9,7 @@
       @change="inputImageChange"
     />
   </div>
-  <div v-if="visible" class="nut-cropper-popup">
+  <div v-show="visible" ref="cropperPopupRef" class="nut-cropper-popup">
     <canvas ref="canvasRef" class="nut-cropper-popup__canvas"></canvas>
     <div
       class="nut-cropper-popup__highlight"
@@ -49,6 +49,7 @@ const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
+import { useRect } from '@/packages/utils/useRect';
 export default create({
   components: {
     [Button.name]: Button,
@@ -108,6 +109,7 @@ export default create({
     };
     // 绘制图片
     const drawImage = ref({ ...defDrawImage });
+    const cropperPopupRef = ref() as Ref<HTMLElement>;
     // canvas
     const canvasRef = ref() as Ref<HTMLCanvasElement>;
     // input
@@ -195,8 +197,8 @@ export default create({
 
     // 设置绘制图片
     const setDrawImg = (image: HTMLImageElement) => {
-      const nutCutPopup = document.querySelector('.nut-cropper-popup') as HTMLElement;
-      const { clientWidth, clientHeight } = nutCutPopup;
+      const rect = useRect(cropperPopupRef.value);
+      const { width: clientWidth, height: clientHeight } = rect;
       const canvasWidth = (state.displayWidth = clientWidth * devicePixelRatio);
       const canvasHeight = (state.displayHeight = clientHeight * devicePixelRatio);
 
@@ -232,10 +234,8 @@ export default create({
       const base64 = await fileToDataURL(files[0]);
       const image = await dataURLToImage(base64);
 
-      setTimeout(() => {
-        setDrawImg(image);
-        draw();
-      }, 200);
+      setDrawImg(image);
+      draw();
     };
 
     // 重设缩放
@@ -432,6 +432,7 @@ export default create({
 
     return {
       ...toRefs(state),
+      cropperPopupRef,
       canvasRef,
       inputImageRef,
       highlightStyle,
