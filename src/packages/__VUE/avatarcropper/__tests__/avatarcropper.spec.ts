@@ -4,7 +4,9 @@ import AvatarCropper from '../index.vue';
 import { sleep, trigger, triggerDrag } from '@/packages/utils/unit';
 import { h } from 'vue';
 
-const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', { type: 'image/ipg' });
+const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
+  type: 'image/jpg'
+});
 
 test('layout default slot', () => {
   const wrapper = mount(AvatarCropper, {
@@ -38,7 +40,6 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
     get: vi.fn().mockReturnValue([mockFile, smallFile])
   });
   expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', 'display: none;');
-  input.elemnt.value = vi.fn().mockReturnValue([mockFile, smallFile]);
   await input.trigger('change');
   await sleep();
   expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', '');
