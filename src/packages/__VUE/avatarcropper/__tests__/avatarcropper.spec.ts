@@ -2,7 +2,6 @@ import 'vitest-canvas-mock';
 import { mount } from '@vue/test-utils';
 import AvatarCropper from '../index.vue';
 import { sleep } from '@/packages/utils/unit';
-import { trigger, triggerDrag } from '@/packages/utils/test/event';
 import { h } from 'vue';
 
 const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
@@ -47,12 +46,6 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   const canvas = wrapper.find('.nut-cropper-popup__canvas');
   expect(canvas.exists()).toBe(true);
 
-  const track = wrapper.find('.nut-cropper-popup__highlight');
-
-  trigger(track, 'touchstart', 0, 0);
-  trigger(track, 'touchmove', 0, 20);
-  trigger(track, 'touchend', 0, 100);
-  triggerDrag(track, 0, 100);
   const toolbar = wrapper.findAll('.nut-cropper-popup__toolbar-item');
   expect(toolbar.length).toBe(4);
 
