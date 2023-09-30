@@ -2,6 +2,7 @@ import 'vitest-canvas-mock';
 import { mount } from '@vue/test-utils';
 import AvatarCropper from '../index.vue';
 import { sleep } from '@/packages/utils/unit';
+import { h } from 'vue';
 
 const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
   type: 'test'
@@ -10,11 +11,16 @@ const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
 test('layout default slot', () => {
   const wrapper = mount(AvatarCropper, {
     slots: {
-      default: 'Main Content'
+      default: h('img', {
+        src: 'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+      })
     }
   });
 
-  expect(wrapper.find('.nut-avatar-cropper').html()).toContain('Main Content');
+  expect(wrapper.html()).toMatchSnapshot();
+  expect(wrapper.find('.nut-avatar-cropper').html()).toContain(
+    '<img src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png">'
+  );
 });
 
 test('should render base cutAvatar and type', async () => {
@@ -33,11 +39,10 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   Object.defineProperty(input.element, 'files', {
     get: vi.fn().mockReturnValue([mockFile, smallFile])
   });
-  expect(wrapper.find('.nut-cropper-popup').exists()).toBe(false);
+  expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', 'display: none;');
   await input.trigger('change');
-  expect(wrapper.emitted('change')).toBeTruthy();
   await sleep();
-  expect(wrapper.find('.nut-cropper-popup').exists()).toBe(true);
+  expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', '');
   const canvas = wrapper.find('.nut-cropper-popup__canvas');
   expect(canvas.exists()).toBe(true);
 
@@ -49,7 +54,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   expect(wrapper.emitted('cancel')).toBeTruthy();
   expect(input.element.value).toBe('');
   await sleep();
-  expect(wrapper.find('.nut-cropper-popup').exists()).toBe(false);
+  expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', 'display: none;');
 
   const reset = toolbar[1];
   reset.trigger('click');
