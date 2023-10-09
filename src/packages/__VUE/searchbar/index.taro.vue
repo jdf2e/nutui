@@ -20,6 +20,7 @@
             :disabled="disabled"
             :readonly="readonly"
             :style="styleSearchbar"
+            :cursor-spacing="cursorSpacing"
             @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
@@ -124,6 +125,10 @@ export default create({
     safeAreaInsetBottom: {
       type: Boolean,
       default: false
+    },
+    cursorSpacing: {
+      type: Number,
+      default: 0
     }
   },
 
