@@ -83,8 +83,10 @@ export default create({
         // 获取子组件自己的实例
         const instance = getCurrentInstance()!;
         const { link, removeLink } = parent;
+        // @ts-ignore
         link(instance);
         onUnmounted(() => {
+          // @ts-ignore
           removeLink(instance);
         });
         return { parent };
