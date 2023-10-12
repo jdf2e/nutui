@@ -480,3 +480,5 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-checkbox-button-font-color-active   | _var(--nut-primary-color)_ |
 | --nut-checkbox-button-border-color-active | _var(--nut-primary-color)_ |
 | --nut-checkbox-button-background-active   | _var(--nut-primary-color)_ |
+| --nut-checkbox-display                    | _inline-flex_              |
+| --nut-checkbox-margin-right               | _20px_                     |

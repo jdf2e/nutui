@@ -452,6 +452,8 @@ $checkbox-button-background: var(--nut-checkbox-button-background, #f6f7f9) !def
 $checkbox-button-font-color-active: var(--nut-checkbox-button-font-color-active, $primary-color) !default;
 $checkbox-button-border-color-active: var(--nut-checkbox-button-border-color-active, $primary-color) !default;
 $checkbox-button-background-active: var(--nut-checkbox-button-background-active, $primary-color) !default;
+$checkbox-display: var(--nut-checkbox-display, inline-flex) !default;
+$checkbox-margin-right: var(--nut-checkbox-margin-right, 20px) !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;

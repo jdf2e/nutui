@@ -17,8 +17,9 @@
   }
 }
 .nut-checkbox {
-  display: flex;
+  display: $checkbox-display;
   align-items: center;
+  margin-right: $checkbox-margin-right;
   &--reverse {
     flex-direction: row-reverse;
     .nut-checkbox__label {
