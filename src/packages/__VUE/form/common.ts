@@ -1,14 +1,5 @@
-import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
-import {
-  computed,
-  isVNode,
-  PropType,
-  provide,
-  reactive,
-  watch,
-  getCurrentInstance,
-  type VNodeNormalizedChildren
-} from 'vue';
+import { getPropByPath, isPromise } from '@/packages/utils/util';
+import { computed, PropType, provide, reactive, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules } from './types';
 
@@ -28,6 +19,55 @@ export const component = (components: any) => {
     emits: ['validate'],
 
     setup(props: any, { emit }: any) {
+      const useChildren = () => {
+        const publicChildren: any[] = reactive([]);
+        const internalChildren: any[] = reactive([]);
+
+        const linkChildren = (value?: any) => {
+          const link = (child: any) => {
+            if (child.proxy) {
+              internalChildren.push(child);
+              publicChildren.push(child.proxy as any);
+            }
+          };
+
+          const removeLink = (child: any) => {
+            if (child.proxy) {
+              let internalIndex = internalChildren.indexOf(child);
+              if (internalIndex > -1) {
+                internalChildren.splice(internalIndex, 1);
+              }
+
+              let publicIndex = publicChildren.indexOf(child.proxy);
+              if (internalIndex > -1) {
+                publicChildren.splice(publicIndex, 1);
+              }
+            }
+          };
+
+          provide(
+            'NutFormParent',
+            Object.assign(
+              {
+                removeLink,
+                link,
+                children: publicChildren,
+                internalChildren
+              },
+              value
+            )
+          );
+        };
+
+        return {
+          children: publicChildren,
+          linkChildren
+        };
+      };
+
+      const { children, linkChildren } = useChildren();
+      linkChildren({ props });
+
       const formErrorTip = computed(() => reactive<any>({}));
       provide('formErrorTip', formErrorTip);
       const clearErrorTips = () => {
@@ -48,39 +88,14 @@ export const component = (components: any) => {
         { immediate: true }
       );
 
-      const findFormItem = (vNodeChildren: VNodeNormalizedChildren) => {
+      const getTaskFromChildren = () => {
         const task: FormRule[] = [];
-
-        const search = (vNode: VNodeNormalizedChildren) => {
-          if (isVNode(vNode)) {
-            const type = (vNode?.type as any)?.name || vNode?.type;
-            if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
-              task.push({
-                prop: vNode.props?.['prop'],
-                rules: vNode.props?.['rules'] || []
-              });
-            } else if (vNode.component?.subTree) {
-              const childSubTree = vNode.component?.subTree;
-              search(childSubTree.children);
-              if (isObject(childSubTree.children) && Object.keys(childSubTree.children)) {
-                // 异步节点获取
-                if ((childSubTree.children as any)?.default) {
-                  search((childSubTree.children as any).default());
-                }
-              } else {
-                search(childSubTree.children);
-              }
-            } else if (vNode.children) {
-              search(vNode.children);
-            }
-          } else if (Array.isArray(vNode)) {
-            vNode.forEach((v: any) => {
-              search(v);
-            });
-          }
-        };
-
-        search(vNodeChildren);
+        children.forEach((item) => {
+          task.push({
+            prop: item?.['prop'],
+            rules: item?.['rules'] || []
+          });
+        });
         return task;
       };
 
@@ -150,9 +165,6 @@ export const component = (components: any) => {
         return Promise.resolve(true);
       };
 
-      // only setup get
-      const instance = getCurrentInstance()!;
-
       /**
        * 校验
        * @param customProp 指定校验，用于用户自定义场景时触发，例如 blur、change 事件
@@ -161,8 +173,7 @@ export const component = (components: any) => {
       const validate = (customProp = '') => {
         return new Promise((resolve, reject) => {
           try {
-            // 改用当前组件树subtree
-            const task = findFormItem(instance.subTree.children);
+            const task = getTaskFromChildren();
 
             const errors = task.map((item) => {
               if (customProp && customProp !== item.prop) {
