@@ -89,16 +89,13 @@ export const component = (components: any) => {
       );
 
       const getTaskFromChildren = () => {
-        console.log('children', children);
         const task: FormRule[] = [];
-
         children.forEach((item) => {
           task.push({
             prop: item?.['prop'],
             rules: item?.['rules'] || []
           });
         });
-
         return task;
       };
 
