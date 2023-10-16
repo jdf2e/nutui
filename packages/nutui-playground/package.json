@@ -14,10 +14,10 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "rimraf": "^5.0.1",
-    "@types/node": "^18.17.1",
-    "@vitejs/plugin-vue": "^4.3.4",
-    "vite": "^4.4.9",
+    "@types/node": "^18.18.5",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "rimraf": "^5.0.5",
+    "vite": "^4.4.11",
     "vue": "^3.3.4"
   },
   "dependencies": {
