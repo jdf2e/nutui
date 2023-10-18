@@ -75,6 +75,9 @@ importers:
       inquirer:
         specifier: ^9.2.11
         version: 9.2.11
+      linguist-languages:
+        specifier: ^7.26.1
+        version: 7.26.1
       lint-staged:
         specifier: ^15.0.1
         version: 15.0.1
@@ -10321,6 +10324,10 @@ packages:
 
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
+    dev: true
+
+  /linguist-languages@7.26.1:
+    resolution: {integrity: sha512-B9O5pDocOkfswmA0qKrqdfeua1TxeQ5PPWdsuo5QRXFv2N0tB3plY+DVWvSWiGkjdqKNU3KBjJYHs/jRXG0adw==}
     dev: true
 
   /linkify-it@3.0.3:
