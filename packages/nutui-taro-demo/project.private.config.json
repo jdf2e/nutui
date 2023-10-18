@@ -7,6 +7,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "AvatarCropper",
+          "pathName": "business/pages/avatarcropper/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "exhibition/pages/imagepreview/index",
           "pathName": "exhibition/pages/imagepreview/index",
           "query": "",
