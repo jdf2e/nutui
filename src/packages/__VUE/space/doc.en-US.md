@@ -2,7 +2,7 @@
 
 ### Intro
 
-Sets the spacing between elements.
+Sets the spacing between elements. Available in `NutUI` >= 4.2.0.
 
 ### Install
 
@@ -107,14 +107,14 @@ In horizontal mode, the wrap property controls whether child elements are wrappe
 
 ### Props
 
-| Property  | Description                                                                                                                         | Type                                                                | Default    |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------- |
-| direction | Spacing direction                                                                                                                   | ` vertical \|   horizontal`                                         | horizontal |
-| align     | Cross axis alignment                                                                                                                | `start \| end \|center \| baseline`                                 | `-`        |
-| justify   | Spindle alignment                                                                                                                   | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-`        |
-| wrap      | Whether to wrap lines automatically. This parameter is valid only when horizontal                                                   | `boolean / false`                                                   | `-`        |
-| fill      | Whether to make Space a block-level element and fill the entire parent element                                                      | `boolean / false`                                                   | `-`        |
-| gutter    | Spacing size, such as 20px 2em, the default unit is px, and supports array form to set horizontal and vertical spacing respectively | `number \| string \| number[] \| string[]`                          | `-`        |
+| Property  | Description                                                                                                                         | Type                                     | Default      |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------ |
+| direction | Spacing direction, `vertical` `horizontal`                                                                                          | string                                   | `horizontal` |
+| align     | Cross axis alignment, `start` `end` `center` `baseline`                                                                             | string                                   | `-`          |
+| justify   | Spindle alignment, `start` `end` `center` `between` `around` `evenly` `stretch`                                                     | string                                   | `-`          |
+| wrap      | Whether to wrap lines automatically. This parameter is valid only when horizontal                                                   | boolean                                  | `false`      |
+| fill      | Whether to make Space a block-level element and fill the entire parent element                                                      | boolean                                  | `false`      |
+| gutter    | Spacing size, such as 20px 2em, the default unit is px, and supports array form to set horizontal and vertical spacing respectively | number \| string \| number[] \| string[] | `-`          |
 
 ### Slots
 
