@@ -39,7 +39,15 @@ export default defineConfig({
     Components({
       resolvers: [NutUIResolver()]
     })
-  ]
+  ],
+  // 配置全局样式变量
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
+  }
 });
 ```
 
@@ -57,6 +65,14 @@ module.exports = {
         resolvers: [NutUIResolver()]
       })
     ]
+  },
+  // 配置全局样式变量
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
   }
 };
 ```
@@ -73,6 +89,24 @@ module.exports = {
     Components({
       resolvers: [NutUIResolver()]
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            // 配置全局样式变量
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+            }
+          }
+        ]
+      }
+    ]
+  }
 };
 ```
