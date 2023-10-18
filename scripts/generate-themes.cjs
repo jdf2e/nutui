@@ -10,17 +10,15 @@ if (!target) {
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let folderName = element.name.toLowerCase();
+    if (element.exclude != true) {
+      sassFileStr += `@import '../../packages/${folderName}/index.scss';\n`;
+    }
     tasks.push(
       fs
         .copy(
           path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`),
           path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
         )
-        .then((success) => {
-          if (element.exclude != true) {
-            sassFileStr += `@import '../../packages/${folderName}/index.scss';\n`;
-          }
-        })
         .catch((error) => {})
     );
   });

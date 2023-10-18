@@ -78,7 +78,7 @@ const click = () => {
 
 :::
 
-### Use Slots desc
+### Use Slots desc v4.1.6
 
 :::demo
 
@@ -231,13 +231,13 @@ You can center the left and right contents of the cell vertically through the 'c
 
 ### Cell Slots
 
-| Name    | Description         |
-| ------- | ------------------- |
-| icon    | Custom Left `icon`  |
-| default | Default slot        |
-| link    | Custom Right `link` |
-| title   | Custom `title` slot |
-| desc    | Custom `desc` slot  |
+| Name         | Description         |
+| ------------ | ------------------- |
+| icon         | Custom Left `icon`  |
+| default      | Default slot        |
+| link         | Custom Right `link` |
+| title        | Custom `title` slot |
+| desc`v4.1.6` | Custom `desc` slot  |
 
 ### CellGroup Slots
 

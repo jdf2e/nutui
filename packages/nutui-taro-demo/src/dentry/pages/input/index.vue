@@ -7,8 +7,8 @@
     <h2>自定义类型</h2>
     <nut-input v-model="state.text" placeholder="文本" />
     <nut-input v-model="state.password" type="password" placeholder="密码" />
-    <nut-input v-model="state.number" type="number" placeholder="数字" />
-    <nut-input v-model="state.digit" type="digit" placeholder="整数" />
+    <nut-input v-model="state.digit" type="digit" placeholder="数字（支持小数）" />
+    <nut-input v-model="state.number" type="number" placeholder="整数" />
 
     <h2>禁用和只读</h2>
     <nut-input v-model="state.readonly" readonly placeholder="只读" />
@@ -80,76 +80,58 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { reactive } from 'vue';
 import { Close, Ask } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: {
-    Close,
-    Ask,
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
 
-    const state = reactive({
-      val1: '',
-      val2: '',
-      text: '',
-      password: '',
-      number: '',
-      digit: '',
-      tel: '',
-      readonly: '',
-      disabled: '',
-      showIcon: '',
-      required: '',
-      error1: '',
-      error2: '',
-      buttonVal: '',
-      format1: '',
-      format2: '',
-      textarea: '',
-      align1: '',
-      align2: '',
-      event: '',
-      slotsValue: '',
-      clear: '',
-      clear2: '',
-      adjustPosition: false,
-      show: false,
-      msg: ''
-    });
-    setTimeout(function () {
-      // state.val1 = '异步数据';
-    }, 2000);
-    const clear = (value: string | number, event: Event) => {
-      console.log('clear:', value, event);
-      showToast('clear');
-    };
-    const showToast = (msg: string) => {
-      state.show = true;
-      state.msg = msg;
-    };
-    const clickInput = (value: string | number) => {
-      console.log('clickInput:', value);
-      showToast('clickInput');
-    };
-    const formatter = (value: string) => value.replace(/\d/g, '');
-    const clearValue = () => {
-      state.clear2 = '';
-    };
-    return {
-      state,
-      clear,
-      clickInput,
-      formatter,
-      clearValue,
-      env
-    };
-  }
+const env = Taro.getEnv();
+
+const state = reactive({
+  val1: '',
+  val2: '',
+  text: '',
+  password: '',
+  number: '',
+  digit: '',
+  tel: '',
+  readonly: '',
+  disabled: '禁用',
+  showIcon: '',
+  required: '',
+  error1: '',
+  error2: '',
+  buttonVal: '',
+  format1: '',
+  format2: '',
+  textarea: '',
+  align1: '',
+  align2: '',
+  event: '',
+  slotsValue: '',
+  clear: '',
+  clear2: '',
+  adjustPosition: false,
+  show: false,
+  msg: ''
+});
+
+const clear = (value: string | number, event: Event) => {
+  console.log('clear:', value, event);
+  showToast('clear');
+};
+const showToast = (msg: string) => {
+  state.show = true;
+  state.msg = msg;
+};
+const clickInput = (value: string | number) => {
+  console.log('clickInput:', value);
+  showToast('clickInput');
+};
+const formatter = (value: string) => value.replace(/\d/g, '');
+const clearValue = () => {
+  state.clear2 = '';
 };
 </script>
 

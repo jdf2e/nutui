@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-searchbar" :style="searchbarStyle">
+  <view class="nut-searchbar" :class="{ 'safe-area-inset-bottom': safeAreaInsetBottom }" :style="searchbarStyle">
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
@@ -20,6 +20,7 @@
             :disabled="disabled"
             :readonly="readonly"
             :style="styleSearchbar"
+            :cursor-spacing="cursorSpacing"
             @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
@@ -120,6 +121,14 @@ export default create({
     confirmType: {
       type: String as PropType<confirmTextType>,
       default: 'done'
+    },
+    safeAreaInsetBottom: {
+      type: Boolean,
+      default: false
+    },
+    cursorSpacing: {
+      type: Number,
+      default: 0
     }
   },
 

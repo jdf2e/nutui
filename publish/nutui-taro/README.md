@@ -90,6 +90,10 @@
 | [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | 基于 NutUI 4.x 版本开发的 uni-app 组件库 |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | 基于 NutUI 3.x 版本开发的 uni-app 组件库 |
 
+## 项目状态
+
+![Alt](https://repobeats.axiom.co/api/embed/fd45cb2c6840153af6328b050e87ce01d785b72b.svg "Repobeats analytics image")
+
 ## 使用案例
 
 NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使用 NutUI 开发多端应用。

@@ -291,4 +291,4 @@ app.use(InputNumber);
 | --nut-inputnumber-height                 | _auto_                     |
 | --nut-inputnumber-line-height            | _normal_                   |
 | --nut-inputnumber-border-box             | _content-box_              |
-| --nut-inputnumber-display                | _flex_                     |
+| --nut-inputnumber-display                | _inline-flex_              |

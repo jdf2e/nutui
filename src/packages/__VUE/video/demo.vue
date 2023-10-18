@@ -29,11 +29,21 @@
       <nut-video :source="source1" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <nut-button type="primary" class="m-b" @click="changeVideo">{{ translate('title6') }}</nut-button>
+    <h4>{{ translate('title7') }}</h4>
+    <nut-cell class="cell">
+      <nut-video ref="videoRef" :source="source" :options="options" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
+    </nut-cell>
+    <nut-button type="success" class="m-b" @click="videoRef.play()">{{ translate('title8') }}</nut-button>
+    <nut-button type="warning" class="m-b" @click="videoRef.pause()">{{ translate('title9') }}</nut-button>
+    <nut-button type="danger" class="m-b" @click="videoRef.stop()">{{ translate('title10') }}</nut-button>
+    <nut-button type="success" class="m-b" @click="videoRef.muted()">{{ translate('title11') }}</nut-button>
+    <nut-button type="danger" class="m-b" @click="videoRef.unmuted()">{{ translate('title12') }}</nut-button>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+import { reactive, toRefs, defineComponent, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('video');
 
@@ -47,7 +57,13 @@ const initTranslate = () =>
       title3: '视频封面海报设置',
       title4: '行内播放',
       title5: '设置视频为背景图',
-      title6: '视频切换'
+      title6: '视频切换',
+      title7: 'Ref控制播放，暂停，结束，静音，取消静音',
+      title8: '播放',
+      title9: '暂停',
+      title10: '结束',
+      title11: '静音',
+      title12: '取消静音'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -56,7 +72,13 @@ const initTranslate = () =>
       title3: 'Video cover poster settings',
       title4: 'play inline',
       title5: 'Set video as background',
-      title6: 'Video switching'
+      title6: 'Video switching',
+      title7: 'Ref Control play, pause, stop, muted, unmuted',
+      title8: 'play',
+      title9: 'pause',
+      title10: 'stop',
+      title11: 'muted',
+      title12: 'unmuted'
     }
   });
 export default defineComponent({
@@ -102,14 +124,14 @@ export default defineComponent({
         loop: true
       }
     });
+    const videoRef = ref('null') as Ref;
     const play = (elm: any) => console.log('play', elm);
     const pause = (elm: any) => console.log('pause', elm);
     const playend = (elm: any) => console.log('playend', elm);
     const changeVideo = () => {
       state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
     };
-
-    return { play, pause, playend, ...toRefs(state), changeVideo, translate };
+    return { play, pause, playend, ...toRefs(state), changeVideo, translate, videoRef };
   }
 });
 </script>

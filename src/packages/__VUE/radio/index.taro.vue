@@ -43,10 +43,6 @@ export default create({
         : 'nut-radio__icon--disable';
     });
 
-    const position = computed(() => {
-      return parent.position;
-    });
-
     const renderIcon = () => {
       const { iconSize } = props;
       const iconNodeMap = {
@@ -89,22 +85,18 @@ export default create({
       parent.updateValue(props.label);
     };
 
-    let reverseState = position.value === 'left';
+    const reverseState = computed(() => parent.position.value === 'left');
 
     return () => {
       return h(
         'view',
         {
-          class: `${componentName} ${componentName}--${props.shape} ${reverseState ? `${componentName}--reverse` : ''}`,
+          class: `${componentName} ${componentName}--${props.shape} ${
+            reverseState.value ? `${componentName}--reverse` : ''
+          }`,
           onClick: handleClick
         },
-        [
-          props.shape == 'button'
-            ? renderButton()
-            : reverseState
-            ? [renderLabel(), renderIcon()]
-            : [renderIcon(), renderLabel()]
-        ]
+        [props.shape == 'button' ? renderButton() : [renderIcon(), renderLabel()]]
       );
     };
   }

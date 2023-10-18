@@ -44,7 +44,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
+import { toRefs, reactive, watch, onMounted, ref, computed, nextTick } from 'vue';
 import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
@@ -148,7 +148,9 @@ export default create({
 
         if (val) {
           setActive(props.initNo);
-          init();
+          nextTick(() => {
+            init();
+          });
         }
       }
     );

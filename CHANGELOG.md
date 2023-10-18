@@ -1,3 +1,39 @@
+## v4.1.7
+
+`2023-10-13`
+
+Features
+
+- searchbar: 增加 cursor-spacing 属性(#2458) (#2587) @yi-boide
+
+Bug Fixes
+
+- image-preview: 修复图片放大不能滑动 (#2136) (#2574) @yi-boide
+- radio: 修复 radio-group 的 text-position 属性响应式问题 (#2572) @mikasayw
+- radio: 修复按钮类型激活背景边框样式问题 (#2579) @eiinu
+- textarea: 修复 readonly 时换行符的显示问题（#2566）(#2583) @yi-boide
+- tabs: 修复 disabled 情况下能滑动过去的问题(#2486) (#2559) @yi-boide
+- checkbox/input-number: 调整为内联元素 (#2581) @yi-boide
+- form: use subtree to validate nut-form (#2582) @mikasayw
+- form: validate 获取子节点规则方式调整 (#2593) @eiinu
+
+## v4.1.6
+
+`2023-09-19`
+
+Features
+
+- calendar: 日历底部增加插槽 (#2550) @Arch94
+- cell: 新增 desc slot (#2503) (#2556) @yi-boide
+- searchbar: 增加safe-area-inset-bottom 属性 (#2265) (#2558) @yi-boide
+- video: 增加播放，暂停，停止，静音，取消静音方法 (#2447) (#2555) @yi-boide
+
+Bug Fixes
+
+- searchbar: 修复抖音小程序下输入抖动的问题 (#2552) @junjun666
+- uploader: 修复安卓环境下无法唤起摄像头问题 (#2567) @developeryvan
+- configprovider: 修复 slot 的响应式问题 @eiinu
+
 ## v4.1.5
 
 `2023-09-05`

@@ -92,7 +92,7 @@ export default create({
   components: {},
   emits: ['click', 'play', 'pause', 'playend', 'time'],
 
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const state = reactive({
       videoElm: null,
       initial: true, //控制封面的显示
@@ -343,6 +343,35 @@ export default create({
         (document as any).webkitCancelFullScreen();
       }
     };
+
+    const pause = () => {
+      state.state.playing = false;
+      (state.videoElm as any).pause();
+      emit('pause', state.videoElm as any);
+    };
+
+    const stop = () => {
+      playEnded();
+      (state.videoElm as any).pause();
+    };
+
+    const muted = () => {
+      state.state.isMuted = true;
+      (state.videoElm as any).muted = true;
+    };
+
+    const unmuted = () => {
+      state.state.isMuted = false;
+      (state.videoElm as any).muted = false;
+    };
+
+    expose({
+      play,
+      pause,
+      stop,
+      muted,
+      unmuted
+    });
 
     onMounted(() => {
       init();

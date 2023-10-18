@@ -294,4 +294,4 @@ The component provides the following CSS variables, which can be used to customi
 | --nut-inputnumber-height                 | _auto_                     |
 | --nut-inputnumber-line-height            | _normal_                   |
 | --nut-inputnumber-border-box             | _content-box_              |
-| --nut-inputnumber-display                | _flex_                     |
+| --nut-inputnumber-display                | _inline-flex_              |

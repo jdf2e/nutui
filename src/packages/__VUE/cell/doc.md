@@ -78,7 +78,7 @@ const click = () => {
 
 :::
 
-### 直接使用插槽（slot desc）
+### 直接使用插槽（slot desc）v4.1.6
 
 :::demo
 
@@ -231,13 +231,13 @@ import { My } from '@nutui/icons-vue';
 
 ### Cell Slots
 
-| 名称    | 说明                    |
-| ------- | ----------------------- |
-| icon    | 自定义左侧 `icon` 区域  |
-| default | 自定义内容              |
-| link    | 自定义右侧 `link` 区域  |
-| title   | 自定义 `title` 标题区域 |
-| desc    | 自定义 `desc` 描述区域  |
+| 名称         | 说明                    |
+| ------------ | ----------------------- |
+| icon         | 自定义左侧 `icon` 区域  |
+| default      | 自定义内容              |
+| link         | 自定义右侧 `link` 区域  |
+| title        | 自定义 `title` 标题区域 |
+| desc`v4.1.6` | 自定义 `desc` 描述区域  |
 
 ### CellGroup Slots
 

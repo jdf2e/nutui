@@ -293,10 +293,28 @@ export default create({
       },
       next: () => {
         currentIndex.value += 1;
+        const nextDisabled = titles.value[currentIndex.value].disabled;
+        if (tabMethods.isEnd() && nextDisabled) {
+          tabMethods.prev();
+          return;
+        }
+        if (nextDisabled && currentIndex.value < titles.value.length - 1) {
+          tabMethods.next();
+          return;
+        }
         tabMethods.updateValue(titles.value[currentIndex.value]);
       },
       prev: () => {
         currentIndex.value -= 1;
+        const prevDisabled = titles.value[currentIndex.value].disabled;
+        if (tabMethods.isBegin() && prevDisabled) {
+          tabMethods.next();
+          return;
+        }
+        if (prevDisabled && currentIndex.value > 0) {
+          tabMethods.prev();
+          return;
+        }
         tabMethods.updateValue(titles.value[currentIndex.value]);
       },
       updateValue: (item: Title) => {
