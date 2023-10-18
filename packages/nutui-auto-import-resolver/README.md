@@ -32,7 +32,7 @@ bun add @nutui/auto-import-resolver unplugin-vue-components -D
 ```ts
 // vite.config.ts
 import Components from 'unplugin-vue-components/vite';
-import { NutUIResolver } from '@nutui/auto-import-resolver';
+import NutUIResolver from '@nutui/auto-import-resolver';
 
 export default defineConfig({
   plugins: [
@@ -56,7 +56,7 @@ export default defineConfig({
 ```ts
 // vue.config.js
 import Components from 'unplugin-vue-components/webpack';
-import { NutUIResolver } from '@nutui/auto-import-resolver';
+const NutUIResolver = require('@nutui/auto-import-resolver');
 
 module.exports = {
   configureWebpack: {
@@ -82,7 +82,7 @@ module.exports = {
 ```ts
 // webpack.config.js
 import Components from 'unplugin-vue-components/webpack';
-import { NutUIResolver } from '@nutui/auto-import-resolver';
+const NutUIResolver = require('@nutui/auto-import-resolver');
 
 module.exports = {
   plugins: [
