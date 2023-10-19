@@ -7,6 +7,7 @@ English | [简体中文](./README.zh-CN.md)
 ### 特性
 
 - 支持 `Vite`, `Webpack`,`Vue CLI` 等
+- 样式文件支持CSS，SASS，默认CSS
 - 支持自动引入组件对应的 CSS 样式
 
 ### 安装
@@ -25,7 +26,7 @@ pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
 bun add @nutui/auto-import-resolver unplugin-vue-components -D
 ```
 
-## 使用
+## 默认使用
 
 ### Vite
 
@@ -38,6 +39,58 @@ export default defineConfig({
   plugins: [
     Components({
       resolvers: [NutUIResolver()]
+    })
+  ]
+});
+```
+
+### Vue CLI
+
+```ts
+// vue.config.js
+import Components from 'unplugin-vue-components/webpack';
+const NutUIResolver = require('@nutui/auto-import-resolver');
+
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      Components({
+        resolvers: [NutUIResolver()]
+      })
+    ]
+  }
+};
+```
+
+### Webpack
+
+```ts
+// webpack.config.js
+import Components from 'unplugin-vue-components/webpack';
+const NutUIResolver = require('@nutui/auto-import-resolver');
+
+module.exports = {
+  plugins: [
+    Components({
+      resolvers: [NutUIResolver()]
+    })
+  ]
+};
+```
+
+## 使用（Sass）
+
+### Vite
+
+```ts
+// vite.config.ts
+import Components from 'unplugin-vue-components/vite';
+import NutUIResolver from '@nutui/auto-import-resolver';
+
+export default defineConfig({
+  plugins: [
+    Components({
+      resolvers: [NutUIResolver({ importStyle: 'sass' })]
     })
   ],
   // 配置全局样式变量
@@ -62,7 +115,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       Components({
-        resolvers: [NutUIResolver()]
+        resolvers: [NutUIResolver({ importStyle: 'sass' })]
       })
     ]
   },
@@ -87,7 +140,7 @@ const NutUIResolver = require('@nutui/auto-import-resolver');
 module.exports = {
   plugins: [
     Components({
-      resolvers: [NutUIResolver()]
+      resolvers: [NutUIResolver({ importStyle: 'sass' })]
     })
   ],
   module: {

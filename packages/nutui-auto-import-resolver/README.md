@@ -7,6 +7,7 @@
 ### Features
 
 - Supports `Vite`, `Webpack`, `Vue CLI`, and more.
+- Style files support CSS, SASS, default CSS
 - Automatically imports the corresponding CSS styles for the components.
 
 ### Installation
@@ -25,7 +26,7 @@ pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
 bun add @nutui/auto-import-resolver unplugin-vue-components -D
 ```
 
-## Usage
+## Usage Default
 
 ### Vite
 
@@ -39,6 +40,58 @@ export default defineConfig({
     Components({
       resolvers: [NutUIResolver()],
     }),
+  ]
+});
+```
+
+### Vue CLI
+
+```ts
+// vue.config.js
+import Components from 'unplugin-vue-components/webpack';
+const NutUIResolver = require('@nutui/auto-import-resolver');
+
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      Components({
+        resolvers: [NutUIResolver()],
+      }),
+    ],
+  }
+};
+```
+
+### Webpack
+
+```ts
+// webpack.config.js
+import Components from 'unplugin-vue-components/webpack';
+const NutUIResolver = require('@nutui/auto-import-resolver');
+
+module.exports = {
+  plugins: [
+    Components({
+      resolvers: [NutUIResolver()],
+    }),
+  ]
+};
+```
+
+## 使用（Sass）
+
+### Vite
+
+```ts
+// vite.config.ts
+import Components from 'unplugin-vue-components/vite';
+import NutUIResolver from '@nutui/auto-import-resolver';
+
+export default defineConfig({
+  plugins: [
+    Components({
+      resolvers: [NutUIResolver({ importStyle: 'sass' })]
+    })
   ],
   // 配置全局样式变量
   css: {
@@ -62,17 +115,17 @@ module.exports = {
   configureWebpack: {
     plugins: [
       Components({
-        resolvers: [NutUIResolver()],
-      }),
-    ],
+        resolvers: [NutUIResolver({ importStyle: 'sass' })]
+      })
+    ]
   },
   // 配置全局样式变量
   css: {
     loaderOptions: {
       scss: {
-        additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`,
-      },
-    },
+        additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
   }
 };
 ```
@@ -87,26 +140,26 @@ const NutUIResolver = require('@nutui/auto-import-resolver');
 module.exports = {
   plugins: [
     Components({
-      resolvers: [NutUIResolver()],
-    }),
+      resolvers: [NutUIResolver({ importStyle: 'sass' })]
+    })
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader',
           {
             // 配置全局样式变量
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`,
-            },
-          },
-        ],
-      },
-    ],
+              additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+            }
+          }
+        ]
+      }
+    ]
   }
 };
 ```
