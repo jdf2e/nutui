@@ -48,7 +48,7 @@ const sassTocss = (themes = 'default') => {
           // 写入main.scss，引入变量文件variables.scss和组件样式index.scss
           fs.outputFile(
             filePath,
-            `@import '../../../styles/${themesEnum[themes]}.scss';\n@import '../index.scss';\n`,
+            `@import '../../styles/${themesEnum[themes]}.scss';\n@import './index.scss';\n`,
             'utf8',
             (error) => {
               if (error) return console.error(error);
