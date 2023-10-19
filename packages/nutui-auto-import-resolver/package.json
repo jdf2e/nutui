@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/jdf2e/nutui/issues"
   },
-  "author": "marvin",
+  "author": "jdf2e",
   "license": "MIT",
   "devDependencies": {
     "rimraf": "^5.0.0",
