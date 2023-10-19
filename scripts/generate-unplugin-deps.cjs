@@ -77,25 +77,17 @@ styleMap.forEach((value, key) => {
   const name = key.toLowerCase();
   // gen style
   const outputStyleMjs = `import '../../../styles/reset.css';\nimport '../index.scss';\n`;
+  const outputStyleCssMjs = `import '../../../styles/reset.css';\nimport '../index.css';\n`;
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style/index.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')
     })
   );
-  const themesEnum = {
-    'base': 'css',
-    'base-jdt': 'css-jdt',
-    'base-jdb': 'css-jdb',
-    'base-jddkh': 'css-jddkh'
-  }
-  Object.keys(themesEnum).forEach((theme) => {
-    let outputStyleCssMjs = `import '../../../styles/reset.css';\nimport '../../../styles/${theme}.css';\nimport '../index.css';\n`;
-    tasks.push(
-      fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style/${themesEnum[theme]}.mjs`), outputStyleCssMjs, 'utf8', () => {
-        // console.log('')
-      })
-    );
-  })
+  tasks.push(
+    fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style/css.mjs`), outputStyleCssMjs, 'utf8', () => {
+      // console.log('')
+    })
+  );
 });
 
 Promise.all(tasks);
