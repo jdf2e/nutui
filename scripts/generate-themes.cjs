@@ -53,14 +53,8 @@ const sassTocss = (themes = 'default') => {
             (error) => {
               if (error) return console.error(error);
               try {
-                const sassOptions = {
-                  file: filePath,
-                  outputStyle: 'compressed',
-                  includePaths: [path.resolve(__dirname, '../dist/styles')]
-                };
-
                 // 编译sass为css
-                const result = sass.renderSync(sassOptions);
+                const result = sass.compile(filePath, { style: 'compressed' });
                 // 删除main.scss
                 fs.unlinkSync(filePath);
                 // 写入index.css
@@ -122,14 +116,8 @@ const parseFile = (filename, theme = 'default') => {
       'utf8',
       (error) => {
         if (error) return console.error(error)
-
-        const sassOptions = {
-          file: filePath,
-          outputStyle: 'compressed',
-          includePaths: [path.resolve(__dirname, '../dist/styles')]
-        };
         // 编译sass为css
-        const result = sass.renderSync(sassOptions);
+        const result = sass.compile(filePath, { style: 'compressed' });
         // base.scss
         fs.unlinkSync(filePath);
         // 写入index.css
