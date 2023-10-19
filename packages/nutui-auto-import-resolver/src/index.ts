@@ -34,10 +34,10 @@ function getNutResolved(name: string, options: NutUIResolverOptions): ComponentR
 
   const componentName = autoImport ? name.slice(4) : name;
 
-  let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/css`;
+  let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/css`;
 
   if (importStyle === 'sass') {
-    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`;
+    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/index`;
   }
 
   return {
