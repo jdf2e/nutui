@@ -77,7 +77,7 @@ styleMap.forEach((value, key) => {
   const name = key.toLowerCase();
   // gen style
   const outputStyleMjs = `import '../../styles/reset.css';\nimport './index.scss';\n`;
-  const outputStyleCssMjs = `import '../../styles/reset.css';\nimport './index.css';\n`;
+  const outputStyleCssMjs = `import '../../../styles/reset.css';\nimport '../index.css';\n`;
   tasks.push(
     fs.outputFile(path.resolve(__dirname, `../dist/packages/${name}/style.mjs`), outputStyleMjs, 'utf8', () => {
       // console.log('')
