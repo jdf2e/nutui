@@ -30,9 +30,9 @@ tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resol
 
 const themesEnum = {
   'default': 'variables',
-  // 'jdt': 'variables-jdt',
-  // 'jdb': 'variables-jdb',
-  // 'jddkh': 'variables-jddkh'
+  'jdt': 'variables-jdt',
+  'jdb': 'variables-jdb',
+  'jddkh': 'variables-jddkh'
 };
 
 // 将scss文件额外转换一份css
@@ -88,6 +88,76 @@ const sassTocss = (themes = 'default') => {
   });
 }
 
+// 解析scss文件，生成css变量
+const parseFile = (filename, theme = 'default') => {
+  return fs.readFile(filename, 'utf-8', (err, data) => {
+    if (err) {
+      console.error(`无法读取文件: ${err}`);
+      return;
+    }
+
+    const variables = {};
+    const lines = data.split('\n');
+    lines.forEach((line) => {
+      if (line.startsWith('$')) {
+        const trimmedLine = line.trim().replace(';', '');
+        const [key, value] = trimmedLine.split(': ');
+        variables[key] = value;
+      }
+    });
+
+    let fileContent = `@import './${themesEnum[theme]}.scss';\n:root {\n`;
+    for (const key in variables) {
+      if (Object.prototype.hasOwnProperty.call(variables, key)) {
+        const variableName = key.slice(1);
+        // const variableValue = variables[key];
+        fileContent += `  --nut-${variableName}: #{$${variableName}};\n`;
+      }
+    }
+    fileContent += `}`;
+    const base = theme === 'default' ? 'base' : `base-${theme}`;
+    const filePath = path.resolve(__dirname, `../dist/styles/${base}.scss`);
+    fs.outputFile(
+      filePath,
+      fileContent,
+      'utf8',
+      (error) => {
+        if (error) return console.error(error)
+
+        const sassOptions = {
+          file: filePath,
+          // outputStyle: 'compressed',
+          includePaths: [path.resolve(__dirname, '../dist/styles')]
+        };
+        // 编译sass为css
+        const result = sass.renderSync(sassOptions);
+        // base.scss
+        fs.unlinkSync(filePath);
+        // 写入index.css
+        fs.outputFile(
+          path.resolve(__dirname, `../dist/styles/${base}.css`),
+          result.css,
+          'utf8',
+          (error) => {
+            if (error) return console.log(error);
+          }
+        )
+      }
+    );
+  });
+}
+
+// 循环themesEnum，生成不同的css变量主题
+const variablesResolver = () => {
+  let variablesResolverTasks = [];
+  Object.keys(themesEnum).forEach((theme) => {
+    variablesResolverTasks.push(parseFile(path.resolve(__dirname, `../dist/styles/${themesEnum[theme]}.scss`), theme))
+  });
+  Promise.all(variablesResolverTasks).then(() => {
+    console.log('base文件写入成功')
+  })
+}
+
 Promise.all(tasks).then(() => {
   let themes = [
     { file: 'default.scss', sourcePath: `@import '../variables.scss';` },
@@ -110,8 +180,7 @@ Promise.all(tasks).then(() => {
   });
   Promise.all(tasks).then(() => {
     console.log(`sass文件写入成功`);
-    Object.keys(themesEnum).forEach((item) => {
-      sassTocss(item);
-    });
+    sassTocss();
+    variablesResolver()
   });
 });
