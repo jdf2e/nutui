@@ -2,6 +2,13 @@ import type { ComponentResolveResult, ComponentResolver } from 'unplugin-vue-com
 
 export interface NutUIResolverOptions {
   /**
+   * import style css or sass with components
+   *
+   * @default 'css'
+   */
+  importStyle?: boolean | 'css' | 'sass';
+
+  /**
    * NutUI or NutUI-Taro
    *
    * @default false
@@ -19,13 +26,19 @@ export interface NutUIResolverOptions {
 const nutFunctions = ['showToast', 'showNotify', 'showDialog', 'showImagePreview'];
 
 function getNutResolved(name: string, options: NutUIResolverOptions): ComponentResolveResult {
-  const { taro = false, autoImport = false } = options;
+  const { importStyle = true, taro = false, autoImport = false } = options;
 
   const packageName = taro ? '@nutui/nutui-taro' : '@nutui/nutui';
 
+  if (!importStyle) return { name, from: packageName };
+
   const componentName = autoImport ? name.slice(4) : name;
 
-  const style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`;
+  let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/css`;
+
+  if (importStyle === 'sass') {
+    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`;
+  }
 
   return {
     name,
