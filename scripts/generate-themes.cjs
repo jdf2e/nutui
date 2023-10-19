@@ -110,7 +110,6 @@ const parseFile = (filename, theme = 'default') => {
     for (const key in variables) {
       if (Object.prototype.hasOwnProperty.call(variables, key)) {
         const variableName = key.slice(1);
-        // const variableValue = variables[key];
         fileContent += `  --nut-${variableName}: #{$${variableName}};\n`;
       }
     }
@@ -126,7 +125,7 @@ const parseFile = (filename, theme = 'default') => {
 
         const sassOptions = {
           file: filePath,
-          // outputStyle: 'compressed',
+          outputStyle: 'compressed',
           includePaths: [path.resolve(__dirname, '../dist/styles')]
         };
         // 编译sass为css
