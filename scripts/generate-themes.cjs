@@ -2,6 +2,8 @@ const target = process.argv[2];
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
+const sass = require('sass');
+
 let sassFileStr = ``;
 let tasks = [];
 if (!target) {
@@ -19,30 +21,97 @@ config.nav.map((item) => {
           path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`),
           path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
         )
-        .catch((error) => {})
+        .catch((error) => { console.error(error) })
     );
   });
 });
 
 tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/styles')));
 
-Promise.all(tasks).then((res) => {
+const themesEnum = {
+  'default': 'variables',
+  // 'jdt': 'variables-jdt',
+  // 'jdb': 'variables-jdb',
+  // 'jddkh': 'variables-jddkh'
+};
+
+// 将scss文件额外转换一份css
+const sassTocss = (themes = 'default') => {
+  let sassTocssTasks = [];
+  config.nav.map((item) => {
+    item.packages.forEach((element) => {
+      let folderName = element.name.toLowerCase();
+
+      try {
+        const filePath = path.resolve(__dirname, `../dist/packages/${folderName}/main-${themesEnum[themes]}.scss`);
+        sassTocssTasks.push(
+          // 写入main.scss，引入变量文件variables.scss和组件样式index.scss
+          fs.outputFile(
+            filePath,
+            `@import '../../styles/${themesEnum[themes]}.scss';\n@import './index.scss';\n`,
+            'utf8',
+            (error) => {
+              if (error) return console.error(error);
+              try {
+                const sassOptions = {
+                  file: filePath,
+                  outputStyle: 'compressed',
+                  includePaths: [path.resolve(__dirname, '../dist/styles')]
+                };
+
+                // 编译sass为css
+                const result = sass.renderSync(sassOptions);
+                // 删除main.scss
+                fs.unlinkSync(filePath);
+                // 写入index.css
+                fs.outputFile(
+                  path.resolve(__dirname, `../dist/packages/${folderName}/${themes === 'default' ? 'index' : themesEnum[themes]}.css`),
+                  result.css,
+                  'utf8',
+                  (error) => {
+                    if (error) return console.log(error);
+                  }
+                )
+              } catch (err) {
+                console.error(err);
+              }
+            }
+          )
+        )
+      } catch (err) {
+        console.error(err);
+      }
+    })
+  })
+  Promise.all(sassTocssTasks).then(() => {
+    console.log(`css文件写入成功`);
+  });
+}
+
+Promise.all(tasks).then(() => {
   let themes = [
     { file: 'default.scss', sourcePath: `@import '../variables.scss';` },
     { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';` },
     { file: 'jdb.scss', sourcePath: `@import '../variables-jdb.scss';` },
     { file: 'jddkh.scss', sourcePath: `@import '../variables-jddkh.scss';` }
   ];
-
+  tasks = [];
   themes.forEach((item) => {
-    fs.outputFile(
-      path.resolve(__dirname, `../dist/styles/themes/${item.file}`),
-      `${item.sourcePath}
-${sassFileStr}`,
-      'utf8',
-      (error) => {
-        // logger.success(`文件写入成功`);
-      }
-    );
+    tasks.push(
+      fs.outputFile(
+        path.resolve(__dirname, `../dist/styles/themes/${item.file}`),
+        `${item.sourcePath}\n${sassFileStr}`,
+        'utf8',
+        (error) => {
+          if (error) return console.error(error)
+        }
+      )
+    )
+  });
+  Promise.all(tasks).then(() => {
+    console.log(`sass文件写入成功`);
+    Object.keys(themesEnum).forEach((item) => {
+      sassTocss(item);
+    });
   });
 });
