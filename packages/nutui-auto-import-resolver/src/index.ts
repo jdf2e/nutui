@@ -37,7 +37,7 @@ function getNutResolved(name: string, options: NutUIResolverOptions): ComponentR
   let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/css`;
 
   if (importStyle === 'sass') {
-    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/index`;
+    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`;
   }
 
   return {
