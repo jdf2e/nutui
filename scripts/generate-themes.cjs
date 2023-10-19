@@ -29,26 +29,25 @@ config.nav.map((item) => {
 tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/styles')));
 
 const themesEnum = {
-  'default': 'variables',
   'jdt': 'variables-jdt',
   'jdb': 'variables-jdb',
   'jddkh': 'variables-jddkh'
 };
 
 // 将scss文件额外转换一份css
-const sassTocss = (themes = 'default') => {
+const sassTocss = () => {
   let sassTocssTasks = [];
   config.nav.map((item) => {
     item.packages.forEach((element) => {
       let folderName = element.name.toLowerCase();
 
       try {
-        const filePath = path.resolve(__dirname, `../dist/packages/${folderName}/main-${themesEnum[themes]}.scss`);
+        const filePath = path.resolve(__dirname, `../dist/packages/${folderName}/main.scss`);
         sassTocssTasks.push(
           // 写入main.scss，引入变量文件variables.scss和组件样式index.scss
           fs.outputFile(
             filePath,
-            `@import '../../styles/${themesEnum[themes]}.scss';\n@import './index.scss';\n`,
+            `@import '../../styles/variables.scss';\n@import './index.scss';\n`,
             'utf8',
             (error) => {
               if (error) return console.error(error);
@@ -59,7 +58,7 @@ const sassTocss = (themes = 'default') => {
                 fs.unlinkSync(filePath);
                 // 写入index.css
                 fs.outputFile(
-                  path.resolve(__dirname, `../dist/packages/${folderName}/${themes === 'default' ? 'index' : themesEnum[themes]}.css`),
+                  path.resolve(__dirname, `../dist/packages/${folderName}/index.css`),
                   result.css,
                   'utf8',
                   (error) => {
