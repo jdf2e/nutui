@@ -1,6 +1,6 @@
 {
   "name": "@nutui/auto-import-resolver",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "nutui auto import resolver based on unplugin-vue-components",
   "keywords": [
     "nutui",
@@ -18,6 +18,12 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN",
+    "package.json"
+  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
@@ -32,6 +38,7 @@
     "url": "https://github.com/jdf2e/nutui.git",
     "directory": "packages/nutui-auto-import-resolver"
   },
+  "homepage": "https://github.com/jdf2e/nutui/tree/v4/packages/nutui-auto-import-resolver",
   "bugs": {
     "url": "https://github.com/jdf2e/nutui/issues"
   },
