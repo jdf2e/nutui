@@ -1,6 +1,6 @@
 # NutUI Auto Import Resolver
 
-[English](./README.md) | 简体中文
+English | [简体中文](./README.zh-CN.md)
 
 `@nutui/auto-import-resolver` is a resolver for [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) that enables on-demand importing of NutUI components.
 
@@ -13,14 +13,14 @@
 ### Installation
 
 ```shell
+# via pnpm
+pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
+
 # via npm
 npm i @nutui/auto-import-resolver unplugin-vue-components -D
 
 # via yarn
 yarn add @nutui/auto-import-resolver unplugin-vue-components -D
-
-# via pnpm
-pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
 
 # via Bun
 bun add @nutui/auto-import-resolver unplugin-vue-components -D
@@ -78,7 +78,7 @@ module.exports = {
 };
 ```
 
-## 使用（Sass）
+## Usage Sass
 
 ### Vite
 

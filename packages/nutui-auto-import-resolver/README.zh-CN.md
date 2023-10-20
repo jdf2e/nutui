@@ -1,26 +1,26 @@
 # Nutui Auto Import Resolver
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
-`@nutui/auto-import-resolver` 是 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 的一个解析器，用于实现 Nutui 按需引入。
+`@nutui/auto-import-resolver` 是 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 的一个解析器，用于实现 NutUI 按需引入。
 
 ### 特性
 
-- 支持 `Vite`, `Webpack`,`Vue CLI` 等
-- 样式文件支持CSS，SASS，默认CSS
+- 支持 `Vite`, `Webpack`, `Vue CLI` 等
+- 样式文件支持 CSS，SASS，默认 CSS
 - 支持自动引入组件对应的 CSS 样式
 
 ### 安装
 
 ```shell
+# via pnpm
+pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
+
 # via npm
 npm i @nutui/auto-import-resolver unplugin-vue-components -D
 
 # via yarn
 yarn add @nutui/auto-import-resolver unplugin-vue-components -D
-
-# via pnpm
-pnpm add @nutui/auto-import-resolver unplugin-vue-components -D
 
 # via Bun
 bun add @nutui/auto-import-resolver unplugin-vue-components -D
@@ -78,7 +78,7 @@ module.exports = {
 };
 ```
 
-## 使用（Sass）
+## 使用 Sass
 
 ### Vite
 
