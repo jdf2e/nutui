@@ -21,7 +21,7 @@
   "files": [
     "dist",
     "README.md",
-    "README.zh-CN",
+    "README.zh-CN.md",
     "package.json"
   ],
   "scripts": {
