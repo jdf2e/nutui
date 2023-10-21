@@ -107,8 +107,8 @@ export default create({
     };
     const reduce = (event: Event) => {
       emit('reduce', event);
-      if (reduceAllow()) {
-        let output_value = Number(props.modelValue) - Number(props.step);
+      let output_value = Number(props.modelValue) - Number(props.step);
+      if (reduceAllow() && output_value >= Number(props.min)) {
         emitChange(output_value, event);
       } else {
         emit('overlimit', event, 'reduce');
@@ -116,8 +116,8 @@ export default create({
     };
     const add = (event: Event) => {
       emit('add', event);
-      if (addAllow()) {
-        let output_value = Number(props.modelValue) + Number(props.step);
+      let output_value = Number(props.modelValue) + Number(props.step);
+      if (addAllow() && output_value <= Number(props.max)) {
         emitChange(output_value, event);
       } else {
         emit('overlimit', event, 'add');
