@@ -102,7 +102,7 @@ export default create({
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);
       emit('update:modelValue', output_value, event);
-      emit('change', output_value, event);
+      if (Number(props.modelValue) !== Number(output_value)) emit('change', output_value, event);
     };
     const addAllow = (value = Number(props.modelValue)): boolean => {
       return value < Number(props.max) && !props.disabled;
@@ -116,6 +116,7 @@ export default create({
       if (reduceAllow() && output_value >= Number(props.min)) {
         emitChange(output_value, event);
       } else {
+        emitChange(Number(props.min), event);
         emit('overlimit', event, 'reduce');
       }
     };
@@ -125,6 +126,7 @@ export default create({
       if (addAllow() && output_value <= Number(props.max)) {
         emitChange(output_value, event);
       } else {
+        emitChange(Number(props.max), event);
         emit('overlimit', event, 'add');
       }
     };
