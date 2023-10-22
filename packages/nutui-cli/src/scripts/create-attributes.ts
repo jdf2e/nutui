@@ -1,26 +1,30 @@
-const path = require('path');
-const fs = require('fs');
-const MarkdownIt = require('markdown-it')();
+import fs from 'fs-extra';
+import { logger } from 'rslog';
+import { CONFIG_DIR, DIST_DIR, PKG_DIR, VUE_DIR } from '../common/constant.js';
+import { getPath } from '../common/index.js';
+import MarkdownIt from 'markdown-it';
+import type { ConfigJson } from '../common/types.js';
+import { join } from 'node:path';
+import Token from 'markdown-it/lib/token.js';
 
-const basePath = path.resolve(__dirname, './../src/packages/__VUE');
+const basePath = VUE_DIR;
 const componentDirs = fs.readdirSync(basePath, 'utf8');
-const config = require('../package.json');
-const cfg = require('./../src/config.json');
+const config = await fs.readJSON(PKG_DIR);
+const cfg: ConfigJson = await fs.readJSON(CONFIG_DIR);
 const TYPE_IDENTIFY_OPEN = 'tbody_open';
 const TYPE_IDENTIFY_CLOSE = 'tbody_close';
 const TR_TYPE_IDENTIFY_OPEN = 'tr_open';
 const TR_TYPE_IDENTIFY_CLOSE = 'tr_close';
-const argv = process.argv[2];
-let packages = [];
+let packages: any[] = [];
 
-const kebabCase = (str) => {
+const kebabCase = (str: string) => {
   str = str.replace(str.charAt(0), str.charAt(0).toLocaleLowerCase());
   return str.replace(/([a-z])([A-Z])/g, (_, p1, p2) => p1 + '-' + p2.toLowerCase());
 };
 
-const getCompName = (name) => {
+const getCompName = (name: string) => {
   if (!packages.length) {
-    cfg.nav.forEach((item, index) => {
+    cfg.nav.forEach((item) => {
       packages = packages.concat(item.packages);
     });
   }
@@ -28,21 +32,21 @@ const getCompName = (name) => {
   return packageName.name;
 };
 
-const getSubSources = (sources) => {
+const getSubSources = (sources: Token[]) => {
   let sourcesMap = [];
-  const startIndex = sources.findIndex((source) => source.type === TYPE_IDENTIFY_OPEN);
-  const endIndex = sources.findIndex((source) => source.type === TYPE_IDENTIFY_CLOSE);
+  const startIndex = sources.findIndex((source: { type: string }) => source.type === TYPE_IDENTIFY_OPEN);
+  const endIndex = sources.findIndex((source: { type: string }) => source.type === TYPE_IDENTIFY_CLOSE);
   sources = sources.slice(startIndex, endIndex + 1);
-  while (sources.filter((source) => source.type === TR_TYPE_IDENTIFY_OPEN).length) {
-    let trStartIndex = sources.findIndex((source) => source.type === TR_TYPE_IDENTIFY_OPEN);
-    let trEndIndex = sources.findIndex((source) => source.type === TR_TYPE_IDENTIFY_CLOSE);
+  while (sources.filter((source: { type: string }) => source.type === TR_TYPE_IDENTIFY_OPEN).length) {
+    let trStartIndex = sources.findIndex((source: { type: string }) => source.type === TR_TYPE_IDENTIFY_OPEN);
+    let trEndIndex = sources.findIndex((source: { type: string }) => source.type === TR_TYPE_IDENTIFY_CLOSE);
     sourcesMap.push(sources.slice(trStartIndex, trEndIndex + 1));
     sources.splice(trStartIndex, trEndIndex - trStartIndex + 1);
   }
   return sourcesMap;
 };
 
-const genaratorWebTypes = () => {
+const genaratorWebTypes = (type?: 'taro') => {
   let typesData = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
@@ -62,18 +66,19 @@ const genaratorWebTypes = () => {
   for (let componentDir of componentDirs) {
     let stat = fs.lstatSync(`${basePath}/${componentDir}`);
     if (stat.isDirectory()) {
-      let absolutePath = path.join(`${basePath}/${componentDir}`, `doc.md`);
-      if (argv === 'taro') {
-        absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`);
+      let absolutePath = join(`${basePath}/${componentDir}`, `doc.md`);
+      if (type === 'taro') {
+        absolutePath = join(`${basePath}/${componentDir}`, `doc.taro.md`);
       }
       let attributes = [];
       if (!fs.existsSync(absolutePath)) continue;
       const data = fs.readFileSync(absolutePath, 'utf8');
-      let sources = MarkdownIt.parse(data, {});
+      const md = new MarkdownIt();
+      let sources = md.parse(data, {});
       let sourcesMap = getSubSources(sources);
       for (let sourceMap of sourcesMap) {
-        const inlineItem = sourceMap.filter((source) => source.type === 'inline').length
-          ? sourceMap.filter((source) => source.type === 'inline')
+        const inlineItem = sourceMap.filter((source: { type: string }) => source.type === 'inline').length
+          ? sourceMap.filter((source: { type: string }) => source.type === 'inline')
           : [];
         const propItem = inlineItem.length ? `${inlineItem[0]?.content?.replace(/`.*?`/g, '')}` : '';
         const infoItem = inlineItem.length ? `${inlineItem[1]?.content}` : '';
@@ -90,7 +95,7 @@ const genaratorWebTypes = () => {
         });
       }
       let compoName = kebabCase(getCompName(componentDir));
-      typesData.contributions.html.tags.push({
+      (typesData.contributions.html.tags as any[]).push({
         name: `nut-${compoName}`,
         slots: [],
         events: [],
@@ -102,15 +107,14 @@ const genaratorWebTypes = () => {
   return typesData;
 };
 
-const writeWebTypes = () => {
-  const typesData = genaratorWebTypes();
+export const createAttributes = async (type?: 'taro') => {
+  const typesData = genaratorWebTypes(type);
   let innerText = `${JSON.stringify(typesData, null, 2)}`;
-  const distPath = path.resolve(__dirname, './../dist');
-  const componentWebTypespPath = path.resolve(__dirname, './../dist/smartips/web-types.json');
-  if (!fs.existsSync(path.join(distPath + '/smartips'))) {
-    fs.mkdirSync(path.join(distPath + '/smartips'));
+  const distPath = DIST_DIR;
+  const componentWebTypespPath = getPath('dist/smartips/web-types.json');
+  if (!fs.existsSync(join(distPath + '/smartips'))) {
+    fs.mkdirSync(join(distPath + '/smartips'));
   }
   fs.writeFileSync(componentWebTypespPath, innerText);
+  logger.success('create-attributes success');
 };
-
-writeWebTypes();

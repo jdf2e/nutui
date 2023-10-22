@@ -1,4 +1,4 @@
-var demoModel = function (nameLc) {
+export default function (nameLc: string) {
   var teml = {
     source: `<template>
   <view :class="classes" @click="handleClick">
@@ -173,5 +173,4 @@ app.use();
   };
 
   return teml;
-};
-module.exports = demoModel;
+}

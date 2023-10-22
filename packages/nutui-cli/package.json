@@ -1,0 +1,62 @@
+{
+  "name": "@nutui/cli",
+  "version": "1.0.0",
+  "description": "Script management tool for nutui。",
+  "keywords": [
+    "nutui",
+    "nutui-cli",
+    "nutui script",
+    "jdf2e"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "bin": {
+    "nutui-cli": "./bin.js"
+  },
+  "engines": {
+    "node": "^14.16.0 || >=16.0.0"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rimraf ./dist && tsc"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git",
+    "directory": "packages/nutui-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui/issues"
+  },
+  "author": "jdf2e",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/escodegen": "^0.0.9",
+    "@types/esprima": "^4.0.5",
+    "@types/estraverse": "^5.1.5",
+    "@types/fs-extra": "^11.0.1",
+    "@types/inquirer": "^9.0.6",
+    "@types/markdown-it": "^13.0.4",
+    "@types/sass": "^1.45.0",
+    "rimraf": "^5.0.0",
+    "vue": "^3.3.4"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "escodegen": "^2.1.0",
+    "esprima": "^4.0.1",
+    "estraverse": "^5.3.0",
+    "fs-extra": "^11.1.0",
+    "inquirer": "^9.2.11",
+    "markdown-it": "^13.0.2",
+    "ora": "^7.0.1",
+    "rslog": "^1.1.0",
+    "sass": "^1.69.3",
+    "typescript": "^5.0.4"
+  }
+}

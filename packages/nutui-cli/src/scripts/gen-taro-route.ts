@@ -1,17 +1,21 @@
-const fse = require('fs-extra');
-const config = require('../src/config.json');
-const targetBaseUrl = `${process.cwd()}`;
-const taroConfig = `${targetBaseUrl}/packages/nutui-taro-demo/src/app.config.ts`;
+import fse from 'fs-extra';
+import { logger } from 'rslog';
+import { getPath } from '../common/index.js';
+import { CONFIG_DIR } from '../common/constant.js';
+import type { ConfigJson } from '../common/types';
+
+const config: ConfigJson = await fse.readJson(CONFIG_DIR);
+const taroConfig = getPath(`/packages/nutui-taro-demo/src/app.config.ts`);
 
 // 创建 config
 const createConfig = async () => {
-  let configRef = [];
+  let configRef: any[] = [];
 
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     config.nav.map((item) => {
       let co = {
         root: item.enName,
-        pages: []
+        pages: [] as string[]
       };
 
       item.packages.map((it) => {
@@ -27,7 +31,7 @@ const createConfig = async () => {
   });
 };
 
-const create = async () => {
+export const genTaroRoute = async () => {
   const subpackages = await createConfig();
 
   fse.writeFileSync(
@@ -46,6 +50,5 @@ export default {
 }`,
     'utf8'
   );
+  logger.success('app.config.ts 创建成功');
 };
-
-create();

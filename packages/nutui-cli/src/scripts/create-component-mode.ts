@@ -1,17 +1,25 @@
 // 创建模板
-const inquirer = require('inquirer');
-const ora = require('ora');
-const fs = require('fs');
-const path = require('path');
-const esprima = require('esprima');
-const estraverse = require('estraverse');
-const escodegen = require('escodegen');
-const demoModel = require('./demo');
-const config = require('../src/config.json');
+import fs from 'fs-extra';
+import { join } from 'node:path';
+import inquirer from 'inquirer';
+import ora, { Ora } from 'ora';
+import esprima from 'esprima';
+import estraverse from 'estraverse';
+import escodegen from 'escodegen';
+import demoModel from './demo.js';
+import { CONFIG_DIR } from '../common/constant.js';
+import type { ConfigJson } from '../common/types.js';
+
+type FilePath = {
+  sourcePath: string;
+  taroPath: string;
+};
+
+const config: ConfigJson = await fs.readJSON(CONFIG_DIR);
 
 const nav = config.nav;
 
-let spinner;
+let spinner: Ora;
 
 let componentConfig = {
   version: '3.0.0', //版本
@@ -19,7 +27,7 @@ let componentConfig = {
   cType: '', //组件属于哪种类型
   cName: '', //组件中文名称
   desc: '', //组件描述
-  show: '', //组件是否显示在demo/文档中
+  show: true, //组件是否显示在demo/文档中
   tarodoc: false, //是否显示taro文档
   type: 'component',
   // taro: true, //是否生成.taro.vue文件，因为目前默认组件都会生成，所以，此项目前用不到
@@ -33,7 +41,7 @@ const questions = [
     type: 'input',
     name: 'name',
     message: '组件英文名(每个单词的首字母都大写，例如InputNumber)：',
-    validate(value) {
+    validate(value: any) {
       value = value.trim();
       if (!value) return '组件名称不能为空';
       if (!/^[A-Z][a-zA-Z]*$/.test(value)) return '组件名称采用驼峰式命名，且首字母大写，如InputNumber';
@@ -49,7 +57,7 @@ const questions = [
     type: 'input',
     name: 'cName',
     message: '组件中文名(10字以内)：',
-    validate(value) {
+    validate(value: any) {
       value = value.trim();
       if (value && value.length <= 10) return true;
       return `组件名称不能为空，并且在10字以内`;
@@ -59,7 +67,7 @@ const questions = [
     type: 'input',
     name: 'desc',
     message: '组件描述(50字以内)：',
-    validate(value) {
+    validate(value: any) {
       value = value.trim();
       if (value && value.length <= 50) return true;
       return `组件描述不能为空，并且在50字以内`;
@@ -70,7 +78,7 @@ const questions = [
     name: 'cType',
     message: '请选择组件的分类',
     choices: nav.map((item) => `${item.name}`),
-    validate(value) {
+    validate(value: any) {
       value = +value.trim();
       if (value && /\d+$/.test(value) && value <= nav.length) return true;
       return `您的输入有误，请输入编号`;
@@ -95,15 +103,17 @@ const questions = [
   }
 ];
 
-const traverseAst = (ast, componentName, componentType) => {
+const traverseAst = (ast: esprima.Program, componentName: string, componentType?: string) => {
   estraverse.traverse(ast, {
-    enter: (node) => {
+    enter: (node: any) => {
       if (node.type === 'VariableDeclarator' && node.id.name === 'subpackages') {
-        node.init.elements.forEach((item) => {
-          const itemKey = item.properties.find((value) => value.key.value === 'root').value.value;
-          const itemValue = item.properties.find((value) => value.key.value === 'pages').value.elements;
+        node.init.elements.forEach((item: { properties: any[] }) => {
+          const itemKey = item.properties.find((value: { key: { value: string } }) => value.key.value === 'root').value
+            .value;
+          const itemValue = item.properties.find((value: { key: { value: string } }) => value.key.value === 'pages')
+            .value.elements;
           const path = `pages/${componentName}/index`;
-          if (itemKey === componentType && !itemValue.find((subItem) => subItem.value === path)) {
+          if (itemKey === componentType && !itemValue.find((subItem: { value: string }) => subItem.value === path)) {
             itemValue.push({
               type: 'Literal',
               value: path,
@@ -116,92 +126,92 @@ const traverseAst = (ast, componentName, componentType) => {
   });
 };
 
-const generateToFile = (ast, taroConfigPath) => {
+const generateToFile = (ast: esprima.Program, taroConfigPath: string) => {
   const code = escodegen.generate(ast);
   fs.writeFileSync(taroConfigPath, code, 'utf8');
 };
 
-const createSource = async (paths) => {
+const createSource = async (paths: FilePath) => {
   /**生成 vue .taro.vue 文件 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
   const content = demoModel(name).source;
-  const filePath = path.join(sourcePath, 'index.vue');
-  const taroFilePath = path.join(sourcePath, 'index.taro.vue');
+  const filePath = join(sourcePath, 'index.vue');
+  const taroFilePath = join(sourcePath, 'index.taro.vue');
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, content);
   if (!fs.existsSync(taroFilePath)) fs.writeFileSync(taroFilePath, content);
 };
 
-const createDemo = (paths) => {
+const createDemo = (paths: FilePath) => {
   /**生成 demo tarodemo taro配置文件 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
   const taroPath = `${paths.taroPath}/pages/${name}`;
   const demo = demoModel(name).demo;
   const taroDemo = demoModel(name).taroDemo;
-  const filePath = path.join(sourcePath, 'demo.vue');
-  const taroFilePath = path.join(taroPath, 'index.vue');
-  const taroConfigPath = path.join(taroPath, 'index.config.ts');
+  const filePath = join(sourcePath, 'demo.vue');
+  const taroFilePath = join(taroPath, 'index.vue');
+  const taroConfigPath = join(taroPath, 'index.config.ts');
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, demo);
   if (!fs.existsSync(taroFilePath)) fs.writeFileSync(taroFilePath, taroDemo);
   if (!fs.existsSync(taroConfigPath))
     fs.writeFileSync(taroConfigPath, `export default { navigationBarTitleText: '${componentConfig.name}' }`);
 };
 
-const createDoc = (paths) => {
+const createDoc = (paths: FilePath) => {
   /**生成doc,中英文文档 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
   const doc = demoModel(name).doc;
   const docEN = demoModel(name).docEN;
-  const filePath = path.join(sourcePath, 'doc.md');
-  const filePathEN = path.join(sourcePath, 'doc.en-US.md');
+  const filePath = join(sourcePath, 'doc.md');
+  const filePathEN = join(sourcePath, 'doc.en-US.md');
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, doc);
   if (!fs.existsSync(filePathEN)) fs.writeFileSync(filePathEN, docEN);
 };
 
-const createScss = (paths) => {
+const createScss = (paths: FilePath) => {
   /**生成scss文件 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
   const scss = `.nut-${name} {}`;
-  const filePath = path.join(sourcePath, 'index.scss');
+  const filePath = join(sourcePath, 'index.scss');
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, scss);
 };
 
-const createTest = (paths) => {
+const createTest = (paths: FilePath) => {
   /**生成测试文件 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
-  const testPath = path.join(`src/packages/__VUE/${name}/__tests__`);
+  const testPath = join(`src/packages/__VUE/${name}/__tests__`);
   if (!fs.existsSync(testPath)) fs.mkdirSync(testPath);
-  const testFilePath = path.join(testPath, `${name}.spec.ts`);
+  const testFilePath = join(testPath, `${name}.spec.ts`);
   if (!fs.existsSync(testFilePath)) fs.writeFileSync(testFilePath, `import { mount } from '@vue/test-utils';`);
 };
 
 const updateConfig = () => {
   /**更新 config 文件 */
   const componentTypeItem = nav.find((navitem) => navitem.name === componentConfig.cType);
-  if (!componentTypeItem.packages.find((item) => item.name === componentConfig.name)) {
-    componentTypeItem.packages.push(componentConfig);
+  if (!componentTypeItem?.packages.find((item) => item.name === componentConfig.name)) {
+    componentTypeItem?.packages.push(componentConfig);
   }
-  const filePath = path.join(`src/config.json`);
+  const filePath = join(`src/config.json`);
   const tempfile = JSON.stringify(config, null, 2);
   fs.writeFileSync(filePath, tempfile);
 };
 
-const createDir = () => {
+const createDir = (): FilePath => {
   const componentName = componentConfig.name.toLowerCase();
-  const componentType = nav.find((navitem) => navitem.name === componentConfig.cType).enName;
-  const sourcePath = path.join(`src/packages/__VUE/${componentName}`);
-  const taroPath = path.join(`packages/nutui-taro-demo/src/${componentType}`);
+  const componentType = nav.find((navitem) => navitem?.name === componentConfig.cType)?.enName;
+  const sourcePath = join(`src/packages/__VUE/${componentName}`);
+  const taroPath = join(`packages/nutui-taro-demo/src/${componentType}`);
   if (!fs.existsSync(sourcePath)) fs.mkdirSync(sourcePath);
   if (!fs.existsSync(taroPath)) fs.mkdirSync(`${taroPath}/pages`);
   if (!fs.existsSync(`${taroPath}/pages/${componentName}`)) fs.mkdirSync(`${taroPath}/pages/${componentName}`);
-  const taroConfigPath = path.join(`packages/nutui-taro-demo/src/app.config.ts`);
+  const taroConfigPath = join(`packages/nutui-taro-demo/src/app.config.ts`);
   try {
     const taroConfigData = fs.readFileSync(taroConfigPath, 'utf8');
-    const ast = esprima.parseModule(taroConfigData);
+    const ast: esprima.Program = esprima.parseModule(taroConfigData);
     traverseAst(ast, componentName, componentType);
     generateToFile(ast, taroConfigPath);
   } catch (err) {
@@ -214,7 +224,7 @@ const createDir = () => {
   };
 };
 
-const createFile = (filePath) => {
+const createFile = (filePath: FilePath) => {
   createSource(filePath);
   createDemo(filePath);
   createDoc(filePath);
@@ -240,8 +250,6 @@ const init = () => {
   });
 };
 
-const createComponent = () => {
+export const createComponentMode = async () => {
   init();
 };
-
-createComponent();
