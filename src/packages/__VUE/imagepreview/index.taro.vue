@@ -14,7 +14,13 @@
         @change="setActive"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="closeOnImg" />
+          <img
+            :src="item.src"
+            mode="aspectFit"
+            class="nut-image-preview-img"
+            @longPress="longPress(item)"
+            @click.stop="closeOnImg"
+          />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -243,6 +249,23 @@ export default create({
       }
     };
 
+    const longPress = (image: ImageInterface) => {
+      Taro.getImageInfo({
+        src: image.src,
+        success: (res) => {
+          console.log(res.path);
+          Taro.saveImageToPhotosAlbum({
+            filePath: res.path,
+            success: () => {
+              Taro.showToast({
+                title: '保存成功'
+              });
+            }
+          });
+        }
+      });
+    };
+
     const init = () => {
       state.eleImg = document.querySelector('.nut-image-preview');
       document.addEventListener('touchmove', onTouchMove);
@@ -282,6 +305,7 @@ export default create({
       onTouchEnd,
       getDistance,
       scaleNow,
+      longPress,
       styles
     };
   }
