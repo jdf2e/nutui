@@ -78,9 +78,9 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@nutui/cli": "workspace:*",
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
+    "@nutui/cli": "workspace:*",
     "@nutui/eslint-config": "workspace:*",
     "@nutui/prettier-plugin": "workspace:^",
     "@tarojs/taro": "3.6.14",
@@ -96,7 +96,6 @@
     "fs-extra": "^11.1.1",
     "highlight.js": "^11.9.0",
     "husky": "^8.0.3",
-    "inquirer": "^9.2.11",
     "lint-staged": "^15.0.1",
     "lzutf8": "^0.6.3",
     "markdown-it": "^13.0.2",
