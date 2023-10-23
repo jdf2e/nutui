@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install && pnpm --dir ./packages/nutui-cli build && npx nutui-cli gen-nutui && npx nutui-cli gen-nutui && npx nutui-cli gen-taro-route",
+    "prepare": "husky install && pnpm --dir ./packages/nutui-cli build && npx nutui-cli gen-nutui && npx nutui-cli gen-nutui taro && npx nutui-cli gen-taro-route",
     "dev": "vite --open --force",
     "dev:taro:weapp": "pnpm --dir ./packages/nutui-taro-demo dev:weapp",
     "dev:taro:alipay": "pnpm --dir ./packages/nutui-taro-demo dev:alipay",
