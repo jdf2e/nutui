@@ -260,6 +260,76 @@ When set to week selection, the start and end dates of the week will be determin
 
 :::
 
+### Customize the disable date
+
+By configuring the `disabled-date` function callback, you can customize to disable certain dates from being selected.
+When the type is `range`, if this function is set, you need to filter out the disabled date after selecting the result
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="Customize the disable date"
+    :desc="date ? `${date}` : 'Please Select Date'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2022-01-01`"
+    :end-date="`2022-11-30`"
+    :disabled-date="disabledDate"
+  >
+  </nut-calendar>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        isVisible: false,
+        date: ''
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setChooseValue = (param) => {
+        state.date = param[3];
+      };
+      const disabledDate = (date) => {
+        const disabledDate = {
+          '2022-01-05': true,
+          '2022-01-06': true,
+          '2022-01-10': true,
+          '2022-01-11': true,
+          '2022-01-12': true,
+          '2022-01-13': true,
+          '2022-01-14': true
+        };
+        return disabledDate[date];
+      };
+      return {
+        ...toRefs(state),
+        openSwitch,
+        closeSwitch,
+        setChooseValue,
+        disabledDate
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### Quick Select Single Date
 
 :::demo
@@ -746,24 +816,25 @@ When set to week selection, the start and end dates of the week will be determin
 
 ### Props
 
-| Attribute         | Description                                                     | Type               | Default               |
-| ----------------- | --------------------------------------------------------------- | ------------------ | --------------------- |
-| v-model:visible   | whether to show                                                 | boolean            | `false`               |
-| type              | Calendar type ：`one` `range` `multiple` `week(V4.0.1)`         | string             | `one`                 |
-| poppable          | Whether to display the pop-up window                            | boolean            | `true`                |
-| is-auto-back-fill | Automatic backfill                                              | boolean            | `false`               |
-| title             | whether to show title                                           | string             | `Calendar`            |
-| default-value     | Default value, select single date : `string`，other: `string[]` | string \| string[] | `null`                |
-| start-date        | The start date                                                  | string             | `Today`               |
-| end-date          | The end date                                                    | string             | `365 days from today` |
-| show-today        | Whether to show today's mark                                    | boolean            | `true`                |
-| start-text        | Range selection, start part of the text                         | string             | `Start`               |
-| end-text          | Range selection, end part of the text                           | string             | `End`                 |
-| confirm-text      | Bottom confirm button text                                      | string             | `Confirm`             |
-| show-title        | Whether to show the calendar title                              | boolean            | `true`                |
-| show-sub-title    | Whether to display the date title                               | boolean            | `true`                |
-| to-date-animation | Whether to use scroll animation                                 | boolean            | `true`                |
-| first-day-of-week | Set the start day of week                                       | 0-6                | `0`                   |
+| Attribute         | Description                                                                                                                              | Type               | Default               |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | --------------------- |
+| v-model:visible   | whether to show                                                                                                                          | boolean            | `false`               |
+| type              | Calendar type ：`one` `range` `multiple` `week(V4.0.1)`                                                                                  | string             | `one`                 |
+| poppable          | Whether to display the pop-up window                                                                                                     | boolean            | `true`                |
+| is-auto-back-fill | Automatic backfill                                                                                                                       | boolean            | `false`               |
+| title             | whether to show title                                                                                                                    | string             | `Calendar`            |
+| default-value     | Default value, select single date : `string`，other: `string[]`                                                                          | string \| string[] | `null`                |
+| start-date        | The start date                                                                                                                           | string             | `Today`               |
+| end-date          | The end date                                                                                                                             | string             | `365 days from today` |
+| show-today        | Whether to show today's mark                                                                                                             | boolean            | `true`                |
+| start-text        | Range selection, start part of the text                                                                                                  | string             | `Start`               |
+| end-text          | Range selection, end part of the text                                                                                                    | string             | `End`                 |
+| confirm-text      | Bottom confirm button text                                                                                                               | string             | `Confirm`             |
+| show-title        | Whether to show the calendar title                                                                                                       | boolean            | `true`                |
+| show-sub-title    | Whether to display the date title                                                                                                        | boolean            | `true`                |
+| to-date-animation | Whether to use scroll animation                                                                                                          | boolean            | `true`                |
+| first-day-of-week | Set the start day of week                                                                                                                | 0-6                | `0`                   |
+| disabled-date     | A function that determines whether the date is disabled takes a `year - month - day` as an argument. A Boolean value should be returned. | function           | -                     |
 
 ### Events
 

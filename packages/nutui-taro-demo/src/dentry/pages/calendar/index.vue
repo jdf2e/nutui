@@ -82,6 +82,26 @@
       >
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="自定义禁用日期"
+        :desc="date ? `${date}` : '请选择'"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-11-30`"
+        :disabled-date="disabledDate"
+      >
+      </nut-calendar>
+    </div>
+
     <h2>快捷选择</h2>
     <div>
       <nut-cell
@@ -320,6 +340,18 @@ export default {
         calendarRef.value.scrollToDate(Utils.date2Str(date1));
       }
     };
+    const disabledDate = (date) => {
+      const disabledDate = {
+        '2022-01-05': true,
+        '2022-01-06': true,
+        '2022-01-10': true,
+        '2022-01-11': true,
+        '2022-01-12': true,
+        '2022-01-13': true,
+        '2022-01-14': true
+      };
+      return disabledDate[date];
+    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -339,7 +371,8 @@ export default {
       goDate,
       calendarRef,
       select,
-      env
+      env,
+      disabledDate
     };
   }
 };

@@ -260,6 +260,76 @@ app.use(Calendar);
 
 :::
 
+### 自定义禁用日期
+
+通过配置`disabled-date`函数回调可实现自定义禁用某些日期为不可选中状态。
+当type类型为`日期区间(range)`时，若是设置了该函数，则需要在选中结果后，自行过滤掉禁用的日期
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="自定义禁用日期"
+    :desc="date ? `${date}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2022-01-01`"
+    :end-date="`2022-11-30`"
+    :disabled-date="disabledDate"
+  >
+  </nut-calendar>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        isVisible: false,
+        date: ''
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setChooseValue = (param) => {
+        state.date = param[3];
+      };
+      const disabledDate = (date) => {
+        const disabledDate = {
+          '2022-01-05': true,
+          '2022-01-06': true,
+          '2022-01-10': true,
+          '2022-01-11': true,
+          '2022-01-12': true,
+          '2022-01-13': true,
+          '2022-01-14': true
+        };
+        return disabledDate[date];
+      };
+      return {
+        ...toRefs(state),
+        openSwitch,
+        closeSwitch,
+        setChooseValue,
+        disabledDate
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### 快捷选择-单选
 
 :::demo
@@ -756,24 +826,25 @@ app.use(Calendar);
 
 ### Props
 
-| 参数              | 说明                                                                           | 类型               | 默认值            |
-| ----------------- | ------------------------------------------------------------------------------ | ------------------ | ----------------- |
-| v-model:visible   | 是否可见                                                                       | boolean            | `false`           |
-| type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`,周选择`week`(`v4.0.1`) | string             | '`one`'           |
-| poppable          | 是否弹窗状态展示                                                               | boolean            | `true`            |
-| is-auto-back-fill | 自动回填                                                                       | boolean            | `false`           |
-| title             | 显示标题                                                                       | string             | `日期选择`        |
-| default-value     | 默认值，单个日期选择 `string`，其他为 `string[]`                               | string \| string[] | `null`            |
-| start-date        | 开始日期                                                                       | string             | `今天`            |
-| end-date          | 结束日期                                                                       | string             | `距离今天 365 天` |
-| show-today        | 是否展示今天标记                                                               | boolean            | `true`            |
-| start-text        | 范围选择，开始信息文案                                                         | string             | `开始`            |
-| end-text          | 范围选择，结束信息文案                                                         | string             | `结束`            |
-| confirm-text      | 底部确认按钮文案                                                               | string             | `确认`            |
-| show-title        | 是否在展示日历标题                                                             | boolean            | `true`            |
-| show-sub-title    | 是否展示日期标题                                                               | boolean            | `true`            |
-| to-date-animation | 是否启动滚动动画                                                               | boolean            | `true`            |
-| first-day-of-week | 设置周起始日                                                                   | 0-6                | `0`               |
+| 参数              | 说明                                                                                       | 类型               | 默认值            |
+| ----------------- | ------------------------------------------------------------------------------------------ | ------------------ | ----------------- |
+| v-model:visible   | 是否可见                                                                                   | boolean            | `false`           |
+| type              | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`,周选择`week`(`v4.0.1`)             | string             | '`one`'           |
+| poppable          | 是否弹窗状态展示                                                                           | boolean            | `true`            |
+| is-auto-back-fill | 自动回填                                                                                   | boolean            | `false`           |
+| title             | 显示标题                                                                                   | string             | `日期选择`        |
+| default-value     | 默认值，单个日期选择 `string`，其他为 `string[]`                                           | string \| string[] | `null`            |
+| start-date        | 开始日期                                                                                   | string             | `今天`            |
+| end-date          | 结束日期                                                                                   | string             | `距离今天 365 天` |
+| show-today        | 是否展示今天标记                                                                           | boolean            | `true`            |
+| start-text        | 范围选择，开始信息文案                                                                     | string             | `开始`            |
+| end-text          | 范围选择，结束信息文案                                                                     | string             | `结束`            |
+| confirm-text      | 底部确认按钮文案                                                                           | string             | `确认`            |
+| show-title        | 是否在展示日历标题                                                                         | boolean            | `true`            |
+| show-sub-title    | 是否展示日期标题                                                                           | boolean            | `true`            |
+| to-date-animation | 是否启动滚动动画                                                                           | boolean            | `true`            |
+| first-day-of-week | 设置周起始日                                                                               | 0-6                | `0`               |
+| disabled-date     | 一个用来判断该日期是否被禁用的函数，接受一个`年-月-日`作为参数。 应该返回一个 Boolean 值。 | function           | -                 |
 
 ### Events
 

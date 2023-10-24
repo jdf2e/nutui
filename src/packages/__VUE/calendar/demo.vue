@@ -81,6 +81,25 @@
       >
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        :title="translate('disabledDate')"
+        :desc="date ? `${date}` : translate('please')"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-11-30`"
+        :disabled-date="disabledDate"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+      >
+      </nut-calendar>
+    </div>
     <h2>{{ translate('title1') }}</h2>
     <div>
       <nut-cell
@@ -263,6 +282,7 @@ const initTranslate = () =>
       range: '选择日期区间',
       multiple: '选择多个日期',
       week: '选择周',
+      disabledDate: '自定义禁用日期',
 
       conjunction: '至',
       custom_btn: '自定义按钮',
@@ -422,6 +442,20 @@ export default defineComponent({
       state.date10 = dateInfo.date[3];
       state.isVisible10 = false;
     };
+    const disabledDate = (date: string) => {
+      const disabledDate: {
+        [key: string]: boolean | undefined;
+      } = {
+        '2022-01-05': true,
+        '2022-01-06': true,
+        '2022-01-10': true,
+        '2022-01-11': true,
+        '2022-01-12': true,
+        '2022-01-13': true,
+        '2022-01-14': true
+      };
+      return disabledDate[date];
+    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -444,7 +478,8 @@ export default defineComponent({
       select,
       translate,
       renderDate,
-      clickBtn10
+      clickBtn10,
+      disabledDate
     };
   }
 });
