@@ -19,6 +19,7 @@
             mode="aspectFit"
             class="nut-image-preview-img"
             @longPress="longPress(item)"
+            @longTap="longPress(item)"
             @click.stop="closeOnImg"
           />
         </nut-swiper-item>
