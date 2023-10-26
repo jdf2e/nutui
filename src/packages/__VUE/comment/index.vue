@@ -21,7 +21,10 @@
     <view v-if="follow && follow.days > 0" class="nut-comment__follow" @click="handleClick">
       <view class="nut-comment__follow-title">{{ translate('additionalReview', follow.days) }}</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
-      <view v-if="follow.images && follow.images.length > 0" class="nut-comment__follow-img"
+      <view
+        v-if="follow.images && follow.images.length > 0"
+        class="nut-comment__follow-img"
+        @click="clickImages(follow.images)"
         >{{ translate('additionalImages', follow.images.length) }} <Right width="12px"></Right
       ></view>
     </view>
