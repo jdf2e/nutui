@@ -31,11 +31,10 @@ function pluginPrint(path, options, print) {
 }
 
 function printTable(path, options, print) {
-  const columnMaxWidths = [];
   const contents = path.map(
     () =>
       path.map(() => {
-        const text = print().flat();
+        const text = print().flat(Infinity).join('');
         return { text };
       }, 'children'),
     'children'
@@ -48,23 +47,26 @@ function printTable(path, options, print) {
     /** @type{Doc[]} */
     const parts = [printRow(contents[0]), printAlign()];
     if (contents.length > 1) {
-      parts.push(contents.slice(1).map((rowContents) => printRow(rowContents)));
+      for (let i = 1; i < contents.length - 1; i++) {
+        parts.push(printRow(contents[i]));
+      }
+      parts.push(printRow(contents[contents.length - 1], true));
     }
     return parts;
   }
 
   function printAlign() {
-    const align = columnMaxWidths.map(() => {
+    const align = contents[0].map(() => {
       return ` --- `;
     });
 
     return `| ${align.join(' | ')} |\n`;
   }
 
-  function printRow(rowContents) {
+  function printRow(rowContents, end = false) {
     const columns = rowContents.map(({ text }) => {
       return ` ${text} `;
     });
-    return `|${columns.join('|')}|\n`;
+    return end ? `|${columns.join('|')}|` : `|${columns.join('|')}|\n`;
   }
 }

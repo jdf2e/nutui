@@ -81,6 +81,7 @@
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@nutui/eslint-config": "workspace:*",
+    "@nutui/prettier-plugin": "workspace:^",
     "@tarojs/taro": "3.6.14",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
@@ -95,7 +96,6 @@
     "highlight.js": "^11.9.0",
     "husky": "^8.0.3",
     "inquirer": "^9.2.11",
-    "linguist-languages": "^7.26.1",
     "lint-staged": "^15.0.1",
     "lzutf8": "^0.6.3",
     "markdown-it": "^13.0.2",
@@ -115,7 +115,7 @@
     "pnpm": ">= 8.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
+    "*.{ts,tsx,js,jsx,vue,scss}": "prettier --write",
     "src/**/*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {
