@@ -118,6 +118,18 @@ importers:
         specifier: 1.8.15
         version: 1.8.15(typescript@5.2.2)
 
+  packages/nutui-auto-import-resolver:
+    devDependencies:
+      rimraf:
+        specifier: ^5.0.0
+        version: 5.0.5
+      typescript:
+        specifier: ^5.0.4
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.11(@types/node@18.18.5)(sass@1.69.3)
+
   packages/nutui-eslint-config:
     dependencies:
       '@typescript-eslint/eslint-plugin':
