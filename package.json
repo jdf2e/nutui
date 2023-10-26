@@ -115,7 +115,7 @@
     "pnpm": ">= 8.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,vue,scss}": "prettier --write",
+    "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
     "src/**/*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {
