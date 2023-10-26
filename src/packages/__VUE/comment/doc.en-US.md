@@ -175,32 +175,32 @@ The value of `headerType` allows you to set the image to be displayed in multipl
 
 ### Props
 
-| Attribute   | Description                         | Type             | Default                      |
-| ----------- | ----------------------------------- | ---------------- | ---------------------------- |
-| header-type | Header type                         | string           | `default`                    |
-| images-rows | Comment picture shows type of lines | string           | `one`                        |
-| ellipsis    | Ellipsis number                     | string \| number | `2`                          |
-| videos      | Videos data                         | Array            | `[]`                         |
-| images      | Images data                         | Array            | `[]`                         |
-| info        | Comment data                        | object           | `{}`                         |
-| follow      | Additional review data              | object           | `{}`                         |
-| operation   | Bottom button                       | Array            | `["replay", "like", "more"]` |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| header-type | Header type | string | `default` |
+| images-rows | Comment picture shows type of lines | string | `one` |
+| ellipsis | Ellipsis number | string \| number | `2` |
+| videos | Videos data | Array | `[]` |
+| images | Images data | Array | `[]` |
+| info | Comment data | object | `{}` |
+| follow | Additional review data | object | `{}` |
+| operation | Bottom button | Array | `["replay", "like", "more"]` |
 
 ### Events
 
-| Event         | Description                            | Arguments            |
-| ------------- | -------------------------------------- | -------------------- |
-| click-operate | Emitted when to click bottom button    | `type`               |
-| click         | Emitted when to click comment          | `type`               |
-| click-images  | Emitted when to click images or videos | `{type,index,value}` |
+| Event | Description | Arguments |
+|  ---  |  ---  |  ---  |
+| click-operate | Emitted when to click bottom button | `type` |
+| click | Emitted when to click comment | `type` |
+| click-images | Emitted when to click images or videos | `{type,index,value}` |
 
 ### Slots
 
 Slots are defined in some areas and can be replaced as required
 
-| Name               | Description                                                            |
-| ------------------ | ---------------------------------------------------------------------- |
-| comment-labels     | Comment user label                                                     |
+| Name | Description |
+|  ---  |  ---  |
+| comment-labels | Comment user label |
 | comment-shop-reply | At the bottom of the comment is the display of the merchant's response |
 
 ### images data
@@ -259,9 +259,9 @@ const follow = {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                 | Default Value              |
-| ------------------------------------ | -------------------------- |
-| --nut-comment-header-user-name-color | _rgba(51, 51, 51, 1)_      |
-| --nut-comment-header-time-color      | _rgba(153, 153, 153, 1)_   |
-| --nut-comment-bottom-label-color     | _rgba(153, 153, 153, 1)_   |
-| --nut-comment-shop-color             | _var(--nut-primary-color)_ |
+| Name | Default Value |
+|  ---  |  ---  |
+| --nut-comment-header-user-name-color | _rgba(51, 51, 51, 1)_ |
+| --nut-comment-header-time-color | _rgba(153, 153, 153, 1)_ |
+| --nut-comment-bottom-label-color | _rgba(153, 153, 153, 1)_ |
+| --nut-comment-shop-color | _var(--nut-primary-color)_ |

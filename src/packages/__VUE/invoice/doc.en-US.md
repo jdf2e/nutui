@@ -118,32 +118,32 @@ app.use(Invoice);
 
 ### Props
 
-| Attribute | Description                                              | Type    | Default |
-| --------- | -------------------------------------------------------- | ------- | ------- |
-| data      | Invoice data                                             | Array   | `[]`    |
-| formValue | Form data object (required when using form verification) | object  | -       |
-| submit    | Whether to show the submit button                        | boolean | `true`  |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| data | Invoice data | Array | `[]` |
+| formValue | Form data object (required when using form verification) | object | - |
+| submit | Whether to show the submit button | boolean | `true` |
 
 ### Data Structure of Data
 
 The optional attributes are as follows:
 
-| Attribute      | Description                                                        | Type    |
-| -------------- | ------------------------------------------------------------------ | ------- |
-| type           | Type, eg `input`、`radio`                                          | string  |
-| label          | Label                                                              | string  |
-| placeholder    | Input placeholder                                                  | string  |
-| radio-label    | Radio label                                                        | string  |
-| form-item-prop | The v-model field of the form field is required                    | string  |
-| rules          | Check rules，[Refer to FormItem Rule data structure](#/en-US/form) | Array   |
-| required       | Is it a required field                                             | boolean |
+| Attribute | Description | Type |
+|  ---  |  ---  |  ---  |
+| type | Type, eg `input`、`radio` | string |
+| label | Label | string |
+| placeholder | Input placeholder | string |
+| radio-label | Radio label | string |
+| form-item-prop | The v-model field of the form field is required | string |
+| rules | Check rules，[Refer to FormItem Rule data structure](#/en-US/form) | Array |
+| required | Is it a required field | boolean |
 
 ### Events
 
-| Event          | Description                                | Arguments |
-| -------------- | ------------------------------------------ | --------- |
-| submit`v4.1.5` | Method of submitting form for verification | Promise   |
-| on-submit      | Method of submitting form for verification | Promise   |
+| Event | Description | Arguments |
+|  ---  |  ---  |  ---  |
+| submit`v4.1.5` | Method of submitting form for verification | Promise |
+| on-submit | Method of submitting form for verification | Promise |
 
 ## Theming
 
@@ -151,6 +151,6 @@ The optional attributes are as follows:
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                  | Default Value     |
-| --------------------- | ----------------- |
+| Name | Default Value |
+|  ---  |  ---  |
 | --nut-invoice-padding | _ 10px 10px 20px_ |

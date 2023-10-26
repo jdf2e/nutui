@@ -89,34 +89,34 @@ const cutImage = (url) => {
 
 ### AvatarCropper Props
 
-| Attribute        | Description                                                                         | Type   | Default |
-| ---------------- | ----------------------------------------------------------------------------------- | ------ | ------- |
-| max-zoom         | Maximum zoom                                                                        | number | 3       |
-| space            | The gap reserved on both sides of the clipping area                                 | number | 20      |
-| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | string | bottom  |
-| edit-text        | The text content in the middle                                                      | string | 编辑    |
-| cancel-text      | Cancel button text                                                                  | string | 取消    |
-| cancel-confirm   | Confirm button text                                                                 | string | 确认    |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| max-zoom | Maximum zoom | number | 3 |
+| space | The gap reserved on both sides of the clipping area | number | 20 |
+| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | string | bottom |
+| edit-text | The text content in the middle | string | 编辑 |
+| cancel-text | Cancel button text | string | 取消 |
+| cancel-confirm | Confirm button text | string | 确认 |
 
 ### AvatarCropper Slots
 
-| Name    | Description                                                                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| default | The default slot for placing elements such as images, ICONS, and text                                                                        |
+| Name | Description |
+|  ---  |  ---  |
+| default | The default slot for placing elements such as images, ICONS, and text |
 | toolbar | After selecting the file, crop the bottom element of the pop-up window can be customized, and invoke the method of the component through ref |
 
 ### AvatarCropper Events
 
-| Name    | Description                             | Callback Arguments     |
-| ------- | --------------------------------------- | ---------------------- |
+| Name | Description | Callback Arguments |
+|  ---  |  ---  |  ---  |
 | confirm | Click Confirm to trigger after cropping | url:The trimmed base64 |
-| cancel  | Click cancel trigger                    | -                      |
+| cancel | Click cancel trigger | - |
 
 ### AvatarCropper Ref
 
-| Event   | Explain            |
-| ------- | ------------------ |
-| cancel  | uncrop             |
-| reset   | Reset to 0 degrees |
-| rotate  | Rotate 90 degrees  |
-| confirm | Definite cut       |
+| Event | Explain |
+|  ---  |  ---  |
+| cancel | uncrop |
+| reset | Reset to 0 degrees |
+| rotate | Rotate 90 degrees |
+| confirm | Definite cut |

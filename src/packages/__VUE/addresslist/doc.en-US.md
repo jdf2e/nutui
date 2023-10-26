@@ -237,38 +237,38 @@ app.use(AddressList);
 
 ### Props
 
-| Attribute          | Description                                                    | Type    | Default |
-| ------------------ | -------------------------------------------------------------- | ------- | ------- |
-| data               | Address array                                                  | Array   | -       |
-| long-press         | Long Press Function                                            | boolean | `false` |
-| swipe-edition      | Swipe right                                                    | boolean | `false` |
-| show-bottom-button | Whether to show the bottom button                              | boolean | `true`  |
-| data-options       | When customizing the `key` value, set the mapping relationship |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| data | Address array | Array | - |
+| long-press | Long Press Function | boolean | `false` |
+| swipe-edition | Swipe right | boolean | `false` |
+| show-bottom-button | Whether to show the bottom button | boolean | `true` |
+| data-options | When customizing the `key` value, set the mapping relationship |
 
 ### Events
 
-| Event      | Description                                | Arguments         | Remark                                |
-| ---------- | ------------------------------------------ | ----------------- | ------------------------------------- |
-| del-icon   | Click the delete icon                      | event: Event,item | public                                |
-| edit-icon  | Click the edit icon                        | event: Event,item | public                                |
-| click-item | Click on each item in the address list     | event: Event,item | public                                |
-| add        | Click the Add Address button at the bottom | event: Event      | public                                |
-| long-copy  | Click the Copy Address button              | event: Event,item | Click event under long press function |
-| long-set   | Click the Set Default button               | event: Event,item | Click event under long press function |
-| long-del   | Click the Delete Address button            | event: Event,item | Click event under long press function |
-| swipe-del  | Default right swipe delete button          | event: Event,item | Click event under swipe function      |
+| Event | Description | Arguments | Remark |
+|  ---  |  ---  |  ---  |  ---  |
+| del-icon | Click the delete icon | event: Event,item | public |
+| edit-icon | Click the edit icon | event: Event,item | public |
+| click-item | Click on each item in the address list | event: Event,item | public |
+| add | Click the Add Address button at the bottom | event: Event | public |
+| long-copy | Click the Copy Address button | event: Event,item | Click event under long press function |
+| long-set | Click the Set Default button | event: Event,item | Click event under long press function |
+| long-del | Click the Delete Address button | event: Event,item | Click event under long press function |
+| swipe-del | Default right swipe delete button | event: Event,item | Click event under swipe function |
 
 ### Slots
 
 The `AddressList` component is divided into several areas by default, and these areas are defined as slots, which can be replaced as needed
 
-| Name           | Description                                     | Slots      |
-| -------------- | ----------------------------------------------- | ---------- |
-| item-infos     | Address list item name/contact/default one line | `{ item }` |
-| item-icon      | address list item icon                          | `{ item }` |
-| item-addr      | Address list item detailed address              | `{ item }` |
-| swipe-right    | Address list item right swipe area              | `{ item }` |
-| longpress-btns | Address list item long press to mask content    | `{ item }` |
+| Name | Description | Slots |
+|  ---  |  ---  |  ---  |
+| item-infos | Address list item name/contact/default one line | `{ item }` |
+| item-icon | address list item icon | `{ item }` |
+| item-addr | Address list item detailed address | `{ item }` |
+| swipe-right | Address list item right swipe area | `{ item }` |
+| longpress-btns | Address list item long press to mask content | `{ item }` |
 
 ### Each item in the data array is smoothed with the parameters of the dataOptions object
 
@@ -300,16 +300,16 @@ const dataOptions = {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                      | Default Value              |
-| ----------------------------------------- | -------------------------- |
-| --nut-addresslist-bg                      | _#fff_                     |
-| --nut-addresslist-border                  | _#f0f0f0_                  |
-| --nut-addresslist-font-color              | _#333333_                  |
-| --nut-addresslist-font-size               | _16px_                     |
-| --nut-addresslist-mask-bg                 | _rgba(0, 0, 0, 0.4)_       |
-| --nut-addresslist-addr-font-color         | _#666666_                  |
-| --nut-addresslist-addr-font-size          | _12px_                     |
-| --nut-addresslist-set-bg                  | _#f5a623_                  |
-| --nut-addresslist-del-bg                  | _#e1251b_                  |
+| Name | Default Value |
+|  ---  |  ---  |
+| --nut-addresslist-bg | _#fff_ |
+| --nut-addresslist-border | _#f0f0f0_ |
+| --nut-addresslist-font-color | _#333333_ |
+| --nut-addresslist-font-size | _16px_ |
+| --nut-addresslist-mask-bg | _rgba(0, 0, 0, 0.4)_ |
+| --nut-addresslist-addr-font-color | _#666666_ |
+| --nut-addresslist-addr-font-size | _12px_ |
+| --nut-addresslist-set-bg | _#f5a623_ |
+| --nut-addresslist-del-bg | _#e1251b_ |
 | --nut-addresslist-contnts-contact-default | _var(--nut-primary-color)_ |
-| --nut-addresslist-contnts-contact-color   | _var(--nut-white)_         |
+| --nut-addresslist-contnts-contact-color | _var(--nut-white)_ |

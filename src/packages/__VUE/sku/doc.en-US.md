@@ -427,49 +427,49 @@ The default partition is divided into several areas, which are defined as slots 
 
 ### Props
 
-| Attribute          | Description                                   | Type                | Default        |
-| ------------------ | --------------------------------------------- | ------------------- | -------------- |
-| v-model:visible    | Whether to open popup                         | boolean             | `false`        |
-| sku                | Sku data                                      | Array               | `[]`           |
-| goods              | Product Info                                  | object              | -              |
-| stepper-max        | Stepper max                                   | string \| number    | `99999`        |
-| stepper-min        | Stepper min                                   | string \| number    | `1`            |
-| btn-options        | Bottom button                                 | Array               | `[confirm]`    |
-| btn-extra-text     | Add text above button                         | string              | -              |
-| stepper-title      | Stepper left text                             | string              | `Buy Num`      |
-| stepper-extra-text | The text between the stepper and the headline | Function \| boolean | `false`        |
-| buy-text           | Buy button text                               | string              | `Buy It Now`   |
-| add-cart-text      | Add cart button text                          | string              | `Add  To cart` |
-| confirm-text       | Confirm button text                           | string              | `Confirm`      |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| v-model:visible | Whether to open popup | boolean | `false` |
+| sku | Sku data | Array | `[]` |
+| goods | Product Info | object | - |
+| stepper-max | Stepper max | string \| number | `99999` |
+| stepper-min | Stepper min | string \| number | `1` |
+| btn-options | Bottom button | Array | `[confirm]` |
+| btn-extra-text | Add text above button | string | - |
+| stepper-title | Stepper left text | string | `Buy Num` |
+| stepper-extra-text | The text between the stepper and the headline | Function \| boolean | `false` |
+| buy-text | Buy button text | string | `Buy It Now` |
+| add-cart-text | Add cart button text | string | `Add  To cart` |
+| confirm-text | Confirm button text | string | `Confirm` |
 
 ### Events
 
-| Attribute         | Description                                | Arguments                                  |
-| ----------------- | ------------------------------------------ | ------------------------------------------ |
-| select-sku        | Emitted when select sku                    | {sku,skuIndex,parentSku,parentIndex}       |
-| add               | Emitted when click stepper add button      | value                                      |
-| reduce            | Emitted when click stepper reduce button   | value                                      |
-| overLimit         | Emitted when click stepper disabled button | value                                      |
-| change-stepper    | Emitted when click stepper change          | value                                      |
-| click-btn-operate | Emitted when click bottom button           | {type:'confirm',value:'inputNumber value'} |
-| click-close-icon  | Emitted when click close button            | -                                          |
-| click-overlay     | Emitted when click mask                    | -                                          |
-| close             | Emitted when popup close                   | -                                          |
+| Attribute | Description | Arguments |
+|  ---  |  ---  |  ---  |
+| select-sku | Emitted when select sku | {sku,skuIndex,parentSku,parentIndex} |
+| add | Emitted when click stepper add button | value |
+| reduce | Emitted when click stepper reduce button | value |
+| overLimit | Emitted when click stepper disabled button | value |
+| change-stepper | Emitted when click stepper change | value |
+| click-btn-operate | Emitted when click bottom button | {type:'confirm',value:'inputNumber value'} |
+| click-close-icon | Emitted when click close button | - |
+| click-overlay | Emitted when click mask | - |
+| close | Emitted when popup close | - |
 
 ### Slots
 
 The default partition is divided into several areas, which are defined as slots that can be replaced as required。
 
-| Event              | Description                     |
-| ------------------ | ------------------------------- |
-| sku-header         | Custom header                   |
-| sku-header-price   | Custom header price area        |
-| sku-header-extra   | Extra header area               |
-| sku-select-top     | Custom select top               |
-| sku-select         | Custom sku                      |
-| sku-stepper        | Custom stepper                  |
-| sku-stepper-bottom | Custom stepper bottom           |
-| sku-operate        | Custom stepper bottom operation |
+| Event | Description |
+|  ---  |  ---  |
+| sku-header | Custom header |
+| sku-header-price | Custom header price area |
+| sku-header-extra | Extra header area |
+| sku-select-top | Custom select top |
+| sku-select | Custom sku |
+| sku-stepper | Custom stepper |
+| sku-stepper-bottom | Custom stepper bottom |
+| sku-operate | Custom stepper bottom operation |
 
 ### goods Data Structure
 
@@ -581,30 +581,30 @@ sku: [
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                   | Default Value                                                                                           |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| --nut-sku-item-border                  | _1px solid var(--nut-primary-color)_                                                                    |
-| --nut-sku-item-disable-line            | _line-through_                                                                                          |
-| --nut-sku-opetate-bg-default           | _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_                   |
-| --nut-sku-item-active-bg               | _var(--nut-primary-color)_                                                                              |
-| --nut-sku-opetate-bg-buy               | _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_ |
-| --nut-sku-spec-height                  | _30px_                                                                                                  |
-| --nut-sku-spec-line-height             | _var(--nut-sku-spec-height)_                                                                            |
-| --nut-sku-spec-font-size               | _11px_                                                                                                  |
-| --nut-sku-spec-background              | _rgba(242, 242, 242, 1)_                                                                                |
-| --nut-sku-spec-color                   | _var(--nut-black)_                                                                                      |
-| --nut-sku-spec-margin-right            | _12px_                                                                                                  |
-| --nut-sku-spec-padding                 | _0 18px_                                                                                                |
-| --nut-sku-spec-title-font-weight       | _bold_                                                                                                  |
-| --nut-sku-spec-title-font-size         | _13px_                                                                                                  |
-| --nut-sku-spec-title-color             | _var(--nut-black)_                                                                                      |
-| --nut-sku-spec-title-margin-bottom     | _18px_                                                                                                  |
-| --nut-sku-operate-btn-height           | _54px_                                                                                                  |
-| --nut-sku-operate-btn-border-top       | _0_                                                                                                     |
-| --nut-sku-operate-btn-item-height      | _40px_                                                                                                  |
-| --nut-sku-operate-btn-item-line-height | _var(--nut-sku-operate-btn-item-height)_                                                                |
-| --nut-sku-operate-btn-item-font-size   | _15px_                                                                                                  |
-| --nut-sku-operate-btn-item-font-weight | _normal_                                                                                                |
-| --nut-sku-product-img-width            | _100px_                                                                                                 |
-| --nut-sku-product-img-height           | _var(--nut-sku-product-img-width)_                                                                      |
-| --nut-sku-product-img-border-radius    | _0_                                                                                                     |
+| Name | Default Value |
+|  ---  |  ---  |
+| --nut-sku-item-border | _1px solid var(--nut-primary-color)_ |
+| --nut-sku-item-disable-line | _line-through_ |
+| --nut-sku-opetate-bg-default | _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_ |
+| --nut-sku-item-active-bg | _var(--nut-primary-color)_ |
+| --nut-sku-opetate-bg-buy | _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_ |
+| --nut-sku-spec-height | _30px_ |
+| --nut-sku-spec-line-height | _var(--nut-sku-spec-height)_ |
+| --nut-sku-spec-font-size | _11px_ |
+| --nut-sku-spec-background | _rgba(242, 242, 242, 1)_ |
+| --nut-sku-spec-color | _var(--nut-black)_ |
+| --nut-sku-spec-margin-right | _12px_ |
+| --nut-sku-spec-padding | _0 18px_ |
+| --nut-sku-spec-title-font-weight | _bold_ |
+| --nut-sku-spec-title-font-size | _13px_ |
+| --nut-sku-spec-title-color | _var(--nut-black)_ |
+| --nut-sku-spec-title-margin-bottom | _18px_ |
+| --nut-sku-operate-btn-height | _54px_ |
+| --nut-sku-operate-btn-border-top | _0_ |
+| --nut-sku-operate-btn-item-height | _40px_ |
+| --nut-sku-operate-btn-item-line-height | _var(--nut-sku-operate-btn-item-height)_ |
+| --nut-sku-operate-btn-item-font-size | _15px_ |
+| --nut-sku-operate-btn-item-font-weight | _normal_ |
+| --nut-sku-product-img-width | _100px_ |
+| --nut-sku-product-img-height | _var(--nut-sku-product-img-width)_ |
+| --nut-sku-product-img-border-radius | _0_ |

@@ -159,23 +159,23 @@ app.use(Skeleton);
 
 ### Props
 
-| 参数         | 说明                      | 类型    | 默认值    |
-| ------------ | ------------------------- | ------- | --------- |
-| loading      | 是否显示骨架屏            | boolean | `true`    |
-| width        | 每行宽度                  | string  | `default` |
-| height       | 每行高度                  | string  | `15px`    |
-| animated     | 是否开启骨架屏动画        | boolean | `false`   |
-| avatar       | 是否显示头像              | boolean | `false`   |
-| avatar-shape | 头像形状：正方形/圆形     | string  | `round`   |
-| avatar-size  | 头像大小                  | string  | `50px`    |
-| round        | 标题/段落是否采用圆角风格 | boolean | `false`   |
-| row          | 设置段落行数              | string  | `1`       |
-| title        | 是否显示段落标题          | boolean | `true`    |
+| 参数 | 说明 | 类型 | 默认值 |
+|  ---  |  ---  |  ---  |  ---  |
+| loading | 是否显示骨架屏 | boolean | `true` |
+| width | 每行宽度 | string | `default` |
+| height | 每行高度 | string | `15px` |
+| animated | 是否开启骨架屏动画 | boolean | `false` |
+| avatar | 是否显示头像 | boolean | `false` |
+| avatar-shape | 头像形状：正方形/圆形 | string | `round` |
+| avatar-size | 头像大小 | string | `50px` |
+| round | 标题/段落是否采用圆角风格 | boolean | `false` |
+| row | 设置段落行数 | string | `1` |
+| title | 是否显示段落标题 | boolean | `true` |
 
 ### Slots
 
-| 名称    | 说明           |
-| ------- | -------------- |
+| 名称 | 说明 |
+|  ---  |  ---  |
 | default | 骨架屏显示内容 |
 
 ## 主题定制
@@ -184,8 +184,8 @@ app.use(Skeleton);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                           | 默认值                                                                                             |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| --nut-skeleton-content-avatar-background-color | _#efefef_                                                                                          |
-| --nut-skeleton-content-line-background-color   | _#efefef_                                                                                          |
-| --nut-skeleton-animation-background-color      | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |
+| 名称 | 默认值 |
+|  ---  |  ---  |
+| --nut-skeleton-content-avatar-background-color | _#efefef_ |
+| --nut-skeleton-content-line-background-color | _#efefef_ |
+| --nut-skeleton-animation-background-color | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |

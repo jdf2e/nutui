@@ -74,17 +74,17 @@ app.use(Barrage);
 
 ### Props
 
-| Parameter | Description                                                 | Type    | Default |
-| --------- | ----------------------------------------------------------- | ------- | ------- |
-| danmu     | Danmaku list data                                           | Array   | `[]`    |
-| frequency | the time interval of each barrage in the visible area       | number  | `500`   |
-| speeds    | scrolling time of each barrage                              | number  | `5000`  |
-| rows      | Number of bullet chatting lines, displayed in several lines | number  | `3`     |
-| top       | vertical distance of the barrage                            | number  | `10`    |
-| loop      | Whether to play in a loop                                   | boolean | `true`  |
+| Parameter | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| danmu | Danmaku list data | Array | `[]` |
+| frequency | the time interval of each barrage in the visible area | number | `500` |
+| speeds | scrolling time of each barrage | number | `5000` |
+| rows | Number of bullet chatting lines, displayed in several lines | number | `3` |
+| top | vertical distance of the barrage | number | `10` |
+| loop | Whether to play in a loop | boolean | `true` |
 
 ### Events
 
-| Event Name | Description                     | Callback Parameters |
-| ---------- | ------------------------------- | ------------------- |
-| add        | add data(used via ref instance) | -                   |
+| Event Name | Description | Callback Parameters |
+|  ---  |  ---  |  ---  |
+| add | add data(used via ref instance) | - |

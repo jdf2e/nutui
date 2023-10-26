@@ -577,66 +577,66 @@ If you want to select a province, you need to set the region ID in the order of 
 
 # API
 
-| Attribute              | Description                                                   | Type             | Default                  |
-| ---------------------- | ------------------------------------------------------------- | ---------------- | ------------------------ |
-| v-model:visible        | Whether to open address                                       | boolean          | `false`                  |
-| v-model:value          | Default value                                                 | Array            | `[]`                     |
-| type                   | Choose type: `exist/custom/custom2`                           | string           | `custom`                 |
-| province               | Province data                                                 | Array            | `[]`                     |
-| city                   | City data                                                     | Array            | `[]`                     |
-| country                | Country data                                                  | Array            | `[]`                     |
-| town                   | Town dta                                                      | Array            | `[]`                     |
-| height                 | Popup height                                                  | string \| number | `200px`                  |
-| exist-address          | Exist address list data                                       | Array            | `[]`                     |
-| is-show-custom-address | Whether to change custom address                              | boolean          | `true`                   |
-| custom-address-title   | Custom address title                                          | string           | `Select Region`          |
-| exist-address-title    | Exist address title                                           | string           | `Delivery To`            |
-| custom-and-exist-title | Custom address and existing address switch button copywriting | string           | `Choose Another Address` |
-| columns-placeholder    | Columns placeholder text                                      | string \| Array  | `Select`                 |
-| lock-scroll            | Whether the background is locked                              | boolean          | `true`                   |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| v-model:visible | Whether to open address | boolean | `false` |
+| v-model:value | Default value | Array | `[]` |
+| type | Choose type: `exist/custom/custom2` | string | `custom` |
+| province | Province data | Array | `[]` |
+| city | City data | Array | `[]` |
+| country | Country data | Array | `[]` |
+| town | Town dta | Array | `[]` |
+| height | Popup height | string \| number | `200px` |
+| exist-address | Exist address list data | Array | `[]` |
+| is-show-custom-address | Whether to change custom address | boolean | `true` |
+| custom-address-title | Custom address title | string | `Select Region` |
+| exist-address-title | Exist address title | string | `Delivery To` |
+| custom-and-exist-title | Custom address and existing address switch button copywriting | string | `Choose Another Address` |
+| columns-placeholder | Columns placeholder text | string \| Array | `Select` |
+| lock-scroll | Whether the background is locked | boolean | `true` |
 
 ## Event
 
-| Event         | Description                                                                                                      | Arguments                         |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| change        | Emitted when to selected custom address                                                                          | reference `onChange`              |
-| selected      | Emitted when to selected exist address                                                                           | reference `selected`              |
-| close         | Emitted when to close                                                                                            | reference `close`                 |
-| close-mask    | Emitted when to close mask                                                                                       | {closeWay:'mask'/'cross'}         |
+| Event | Description | Arguments |
+|  ---  |  ---  |  ---  |
+| change | Emitted when to selected custom address | reference `onChange` |
+| selected | Emitted when to selected exist address | reference `selected` |
+| close | Emitted when to close | reference `close` |
+| close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'} |
 | switch-module | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'} |
 
 ## change
 
-| Attribute | Description                                                   | Options                            |
-| --------- | ------------------------------------------------------------- | ---------------------------------- |
-| custom    | The administrative region currently clicked                   | `province / city / country / town` |
-| next      | The next level of the administrative region currently clicked | `province / city / country / town` |
-| value     | The value of the currently clicked administrative region      | `{}`                               |
+| Attribute | Description | Options |
+|  ---  |  ---  |  ---  |
+| custom | The administrative region currently clicked | `province / city / country / town` |
+| next | The next level of the administrative region currently clicked | `province / city / country / town` |
+| value | The value of the currently clicked administrative region | `{}` |
 
 ## selected
 
-| Attribute                    | Description                               | Options |
-| ---------------------------- | ----------------------------------------- | ------- |
-| First Option（prevExistAdd） | Select the previously selected address    | `{}`    |
-| Second Option（nowExistAdd） | Currently selected address                | `{}`    |
-| Third Option（arr）          | After selecting the existing address list | `{}`    |
+| Attribute | Description | Options |
+|  ---  |  ---  |  ---  |
+| First Option（prevExistAdd） | Select the previously selected address | `{}` |
+| Second Option（nowExistAdd） | Currently selected address | `{}` |
+| Third Option（arr） | After selecting the existing address list | `{}` |
 
 ## close
 
-| Attribute | Description   | Options                |
-| --------- | ------------- | ---------------------- |
-| type      | Selected Type | `exist/custom/custom2` |
-| data      | Selected Data | `{}`                   |
+| Attribute | Description | Options |
+|  ---  |  ---  |  ---  |
+| type | Selected Type | `exist/custom/custom2` |
+| data | Selected Data | `{}` |
 
 ## Slot
 
-| Name            | Description          |
-| --------------- | -------------------- |
-| bottom          | Bottom slot          |
-| icon            | Selected icon slot   |
+| Name | Description |
+|  ---  |  ---  |
+| bottom | Bottom slot |
+| icon | Selected icon slot |
 | unselected-icon | Unselected icon slot |
-| close-icon      | Close icon slot      |
-| back-icon       | Change icon slot     |
+| close-icon | Close icon slot |
+| back-icon | Change icon slot |
 
 ## Theming
 
@@ -644,17 +644,17 @@ If you want to select a province, you need to set the region ID in the order of 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                             | Default Value                                                                   |
-| ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| --nut-address-region-tab-line                    | _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_ |
-| --nut-address-icon-color                         | _var(--nut-primary-color)_                                                      |
-| --nut-address-header-title-font-size             | _18px_                                                                          |
-| --nut-address-header-title-color                 | _#262626_                                                                       |
-| --nut-address-region-tab-font-size               | _13px_                                                                          |
-| --nut-address-region-tab-color                   | _#1d1e1e_                                                                       |
-| --nut-address-region-tab-active-item-font-weight | _bold_                                                                          |
-| --nut-address-region-tab-line-border-radius      | _0_                                                                             |
-| --nut-address-region-tab-line-opacity            | _1_                                                                             |
-| --nut-address-region-item-color                  | _#333_                                                                          |
-| --nut-address-region-item-font-size              | _var(--nut-font-size-1)_                                                        |
-| --nut-address-item-margin-right                  | _9px_                                                                           |
+| Name | Default Value |
+|  ---  |  ---  |
+| --nut-address-region-tab-line | _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_ |
+| --nut-address-icon-color | _var(--nut-primary-color)_ |
+| --nut-address-header-title-font-size | _18px_ |
+| --nut-address-header-title-color | _#262626_ |
+| --nut-address-region-tab-font-size | _13px_ |
+| --nut-address-region-tab-color | _#1d1e1e_ |
+| --nut-address-region-tab-active-item-font-weight | _bold_ |
+| --nut-address-region-tab-line-border-radius | _0_ |
+| --nut-address-region-tab-line-opacity | _1_ |
+| --nut-address-region-item-color | _#333_ |
+| --nut-address-region-item-font-size | _var(--nut-font-size-1)_ |
+| --nut-address-item-margin-right | _9px_ |

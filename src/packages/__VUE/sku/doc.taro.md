@@ -433,49 +433,49 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
 
 ### Props
 
-| 参数               | 说明                                                                        | 类型                | 默认值        |
-| ------------------ | --------------------------------------------------------------------------- | ------------------- | ------------- |
-| v-model:visible    | 是否显示商品规格弹框                                                        | boolean             | `false`       |
-| sku                | 商品 sku 数据                                                               | Array               | `[]`          |
-| goods              | 商品信息                                                                    | object              | -             |
-| stepper-max        | 设置 inputNumber 最大值                                                     | string \| number    | `99999`       |
-| stepper-min        | 设置 inputNumber 最小值                                                     | string \| number    | `1`           |
-| btn-options        | 底部按钮设置。[`confirm`, `buy`, `cart`] 分别对应确定、立即购买、加入购物车 | Array               | `[confirm]`   |
-| btn-extra-text     | 按钮上部添加文案，默认为空，有值时显示                                      | string              | -             |
-| stepper-title      | 数量选择组件左侧文案                                                        | string              | `购买数量`    |
-| stepper-extra-text | InputNumber 与标题之间的文案                                                | Function \| boolean | `false`       |
-| buy-text           | 立即购买按钮文案                                                            | string              | `立即购买`    |
-| add-cart-text      | 加入购物车按钮文案                                                          | string              | `加入购物车 ` |
-| confirm-text       | 确定按钮文案                                                                | string              | `确定`        |
+| 参数 | 说明 | 类型 | 默认值 |
+|  ---  |  ---  |  ---  |  ---  |
+| v-model:visible | 是否显示商品规格弹框 | boolean | `false` |
+| sku | 商品 sku 数据 | Array | `[]` |
+| goods | 商品信息 | object | - |
+| stepper-max | 设置 inputNumber 最大值 | string \| number | `99999` |
+| stepper-min | 设置 inputNumber 最小值 | string \| number | `1` |
+| btn-options | 底部按钮设置。[`confirm`, `buy`, `cart`] 分别对应确定、立即购买、加入购物车 | Array | `[confirm]` |
+| btn-extra-text | 按钮上部添加文案，默认为空，有值时显示 | string | - |
+| stepper-title | 数量选择组件左侧文案 | string | `购买数量` |
+| stepper-extra-text | InputNumber 与标题之间的文案 | Function \| boolean | `false` |
+| buy-text | 立即购买按钮文案 | string | `立即购买` |
+| add-cart-text | 加入购物车按钮文案 | string | `加入购物车 ` |
+| confirm-text | 确定按钮文案 | string | `确定` |
 
 ### Events
 
-| 事件名            | 说明                               | 回调参数                                   |
-| ----------------- | ---------------------------------- | ------------------------------------------ |
-| select-sku        | 切换规格类目时触发                 | {sku,skuIndex,parentSku,parentIndex}       |
-| add               | InputNumber 点击增加按钮时触发     | value                                      |
-| reduce            | InputNumber 点击减少按钮时触发     | value                                      |
-| overLimit         | InputNumber 点击不可用的按钮时触发 | value                                      |
-| change-stepper    | 购买变化时触发                     | value                                      |
-| click-btn-operate | 点击底部按钮时触发                 | {type:'confirm',value:'inputNumber value'} |
-| click-close-icon  | 点击左上角关闭 icon 时触发         | -                                          |
-| click-overlay     | 点击遮罩时触发                     | -                                          |
-| close             | 关闭弹层时触发                     | -                                          |
+| 事件名 | 说明 | 回调参数 |
+|  ---  |  ---  |  ---  |
+| select-sku | 切换规格类目时触发 | {sku,skuIndex,parentSku,parentIndex} |
+| add | InputNumber 点击增加按钮时触发 | value |
+| reduce | InputNumber 点击减少按钮时触发 | value |
+| overLimit | InputNumber 点击不可用的按钮时触发 | value |
+| change-stepper | 购买变化时触发 | value |
+| click-btn-operate | 点击底部按钮时触发 | {type:'confirm',value:'inputNumber value'} |
+| click-close-icon | 点击左上角关闭 icon 时触发 | - |
+| click-overlay | 点击遮罩时触发 | - |
+| close | 关闭弹层时触发 | - |
 
 ### Slots
 
 Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换。
 
-| 名称               | 说明                                                   |
-| ------------------ | ------------------------------------------------------ |
-| sku-header         | 商品信息展示区，包含商品图片、价格、编号               |
-| sku-header-price   | 商品信息展示区，价格区域展示                           |
-| sku-header-extra   | 商品信息展示区，编号区域展示                           |
-| sku-select-top     | Sku 展示区上方与商品信息展示区下方区域，无默认展示内容 |
-| sku-select         | Sku 展示区                                             |
-| sku-stepper        | 数量选择区                                             |
-| sku-stepper-bottom | 数量选择区下方区域                                     |
-| sku-operate        | 底部按钮操作区域                                       |
+| 名称 | 说明 |
+|  ---  |  ---  |
+| sku-header | 商品信息展示区，包含商品图片、价格、编号 |
+| sku-header-price | 商品信息展示区，价格区域展示 |
+| sku-header-extra | 商品信息展示区，编号区域展示 |
+| sku-select-top | Sku 展示区上方与商品信息展示区下方区域，无默认展示内容 |
+| sku-select | Sku 展示区 |
+| sku-stepper | 数量选择区 |
+| sku-stepper-bottom | 数量选择区下方区域 |
+| sku-operate | 底部按钮操作区域 |
 
 ### goods 对象结构
 
@@ -587,30 +587,30 @@ sku: [
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                   | 默认值                                                                                                  |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| --nut-sku-item-border                  | _1px solid var(--nut-primary-color)_                                                                    |
-| --nut-sku-item-disable-line            | _line-through_                                                                                          |
-| --nut-sku-opetate-bg-default           | _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_                   |
-| --nut-sku-item-active-bg               | _var(--nut-primary-color)_                                                                              |
-| --nut-sku-opetate-bg-buy               | _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_ |
-| --nut-sku-spec-height                  | _30px_                                                                                                  |
-| --nut-sku-spec-line-height             | _var(--nut-sku-spec-height)_                                                                            |
-| --nut-sku-spec-font-size               | _11px_                                                                                                  |
-| --nut-sku-spec-background              | _rgba(242, 242, 242, 1)_                                                                                |
-| --nut-sku-spec-color                   | _var(--nut-black)_                                                                                      |
-| --nut-sku-spec-margin-right            | _12px_                                                                                                  |
-| --nut-sku-spec-padding                 | _0 18px_                                                                                                |
-| --nut-sku-spec-title-font-weight       | _bold_                                                                                                  |
-| --nut-sku-spec-title-font-size         | _13px_                                                                                                  |
-| --nut-sku-spec-title-color             | _var(--nut-black)_                                                                                      |
-| --nut-sku-spec-title-margin-bottom     | _18px_                                                                                                  |
-| --nut-sku-operate-btn-height           | _54px_                                                                                                  |
-| --nut-sku-operate-btn-border-top       | _0_                                                                                                     |
-| --nut-sku-operate-btn-item-height      | _40px_                                                                                                  |
-| --nut-sku-operate-btn-item-line-height | _var(--nut-sku-operate-btn-item-height)_                                                                |
-| --nut-sku-operate-btn-item-font-size   | _15px_                                                                                                  |
-| --nut-sku-operate-btn-item-font-weight | _normal_                                                                                                |
-| --nut-sku-product-img-width            | _100px_                                                                                                 |
-| --nut-sku-product-img-height           | _var(--nut-sku-product-img-width)_                                                                      |
-| --nut-sku-product-img-border-radius    | _0_                                                                                                     |
+| 名称 | 默认值 |
+|  ---  |  ---  |
+| --nut-sku-item-border | _1px solid var(--nut-primary-color)_ |
+| --nut-sku-item-disable-line | _line-through_ |
+| --nut-sku-opetate-bg-default | _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_ |
+| --nut-sku-item-active-bg | _var(--nut-primary-color)_ |
+| --nut-sku-opetate-bg-buy | _linear-gradient(135deg,rgba(255, 186, 13, 1) 0%,rgba(255, 195, 13, 1) 69%,rgba(255, 207, 13, 1) 100%)_ |
+| --nut-sku-spec-height | _30px_ |
+| --nut-sku-spec-line-height | _var(--nut-sku-spec-height)_ |
+| --nut-sku-spec-font-size | _11px_ |
+| --nut-sku-spec-background | _rgba(242, 242, 242, 1)_ |
+| --nut-sku-spec-color | _var(--nut-black)_ |
+| --nut-sku-spec-margin-right | _12px_ |
+| --nut-sku-spec-padding | _0 18px_ |
+| --nut-sku-spec-title-font-weight | _bold_ |
+| --nut-sku-spec-title-font-size | _13px_ |
+| --nut-sku-spec-title-color | _var(--nut-black)_ |
+| --nut-sku-spec-title-margin-bottom | _18px_ |
+| --nut-sku-operate-btn-height | _54px_ |
+| --nut-sku-operate-btn-border-top | _0_ |
+| --nut-sku-operate-btn-item-height | _40px_ |
+| --nut-sku-operate-btn-item-line-height | _var(--nut-sku-operate-btn-item-height)_ |
+| --nut-sku-operate-btn-item-font-size | _15px_ |
+| --nut-sku-operate-btn-item-font-weight | _normal_ |
+| --nut-sku-product-img-width | _100px_ |
+| --nut-sku-product-img-height | _var(--nut-sku-product-img-width)_ |
+| --nut-sku-product-img-border-radius | _0_ |

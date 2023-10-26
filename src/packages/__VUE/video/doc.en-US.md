@@ -296,46 +296,46 @@ Reset the video when the video address changes
 
 ### Props
 
-| Attribute | Description                       | Type         | Default |
-| --------- | --------------------------------- | ------------ | ------- |
-| source    | Video url and type settings       | VideoSource  | {}      |
-| options   | Control video playback properties | VideoOptions | {}      |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| source | Video url and type settings | VideoSource | {} |
+| options | Control video playback properties | VideoOptions | {} |
 
 ### VideoSource 数据结构
 
-| 键名 | 说明       | 类型    |
-| ---- | ---------- | ------- |
-| src  | Video Src  | boolean |
-| type | Video Type | string  |
+| 键名 | 说明 | 类型 |
+|  ---  |  ---  |  ---  |
+| src | Video Src | boolean |
+| type | Video Type | string |
 
 ### VideoOptions 数据结构
 
-| key         | Description                                                                        | Type    | Default |
-| ----------- | ---------------------------------------------------------------------------------- | ------- | ------- |
-| autoplay    | Auto play                                                                          | boolean | `false` |
-| poster      | Poster settings                                                                    | string  | -       |
-| loop        | Poster loop                                                                        | boolean | `false` |
-| controls    | Show operation control                                                             | boolean | `true`  |
-| muted       | Mute                                                                               | boolean | `false` |
-| volume      | Volume control                                                                     | number  | `0.5`   |
-| disabled    | Disable operation (e.g. background image of circular playback, prohibit operation) | boolean | `false` |
-| playsinline | Whether to set as inline playback element (solve Android compatibility problem)    | boolean | `false` |
+| key | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| autoplay | Auto play | boolean | `false` |
+| poster | Poster settings | string | - |
+| loop | Poster loop | boolean | `false` |
+| controls | Show operation control | boolean | `true` |
+| muted | Mute | boolean | `false` |
+| volume | Volume control | number | `0.5` |
+| disabled | Disable operation (e.g. background image of circular playback, prohibit operation) | boolean | `false` |
+| playsinline | Whether to set as inline playback element (solve Android compatibility problem) | boolean | `false` |
 
 ### Events
 
-| Event   | Description                                                                           | Arguments                     |
-| ------- | ------------------------------------------------------------------------------------- | ----------------------------- |
-| play    | play event                                                                            | -                             |
-| pause   | pause event                                                                           | -                             |
-| playend | Playback completion callback                                                          | -                             |
-| time    | Triggered when playing(current is the current playback time，total is the total time) | (current:string,total:string) |
+| Event | Description | Arguments |
+|  ---  |  ---  |  ---  |
+| play | play event | - |
+| pause | pause event | - |
+| playend | Playback completion callback | - |
+| time | Triggered when playing(current is the current playback time，total is the total time) | (current:string,total:string) |
 
 ### Ref v4.1.6
 
-| Event   | Description |
-| ------- | ----------- |
-| play    | play        |
-| pause   | pause       |
-| stop    | stop        |
-| muted   | muted       |
-| unmuted | unmuted     |
+| Event | Description |
+|  ---  |  ---  |
+| play | play |
+| pause | pause |
+| stop | stop |
+| muted | muted |
+| unmuted | unmuted |

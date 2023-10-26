@@ -88,16 +88,16 @@ const container = ref(null);
 
 ### Props
 
-| Attribute | Description                                       | Type    | Default |
-| --------- | ------------------------------------------------- | ------- | ------- |
-| position  | Adsorption position（`top`、`bottom`）            | string  | `top`   |
-| top       | Ceiling distance, enable when `position = top`    | number  | `0`     |
-| bottom    | Suction distance, enable when `position = bottom` | number  | `0`     |
-| container | The 'HTML' node of the container                  | Element | -       |
-| z-index   | Level of adsorption                               | number  | `99`    |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| position | Adsorption position（`top`、`bottom`） | string | `top` |
+| top | Ceiling distance, enable when `position = top` | number | `0` |
+| bottom | Suction distance, enable when `position = bottom` | number | `0` |
+| container | The 'HTML' node of the container | Element | - |
+| z-index | Level of adsorption | number | `99` |
 
 ### Events
 
-| Event  | Description                                 | Arguments        |
-| ------ | ------------------------------------------- | ---------------- |
+| Event | Description | Arguments |
+|  ---  |  ---  |  ---  |
 | change | Triggered when the adsorption state changes | `fixed: boolean` |

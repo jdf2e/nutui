@@ -94,8 +94,8 @@ const bottom = () => {
 
 ### Props
 
-| Attribute | Description                                                         | Type    | Default                               |
-| :-------- | :------------------------------------------------------------------ | :------ | :------------------------------------ |
-| attract   | Whether to enable automatic edge suction                            | boolean | `false`                               |
-| direction | The drag direction limit of the dragged element **x**/**y**/**all** | string  | `'all' `                              |
-| boundary  | The drag boundary of the dragged element                            | object  | `{top: 0,left: 0,right: 0,bottom: 0}` |
+| Attribute | Description | Type | Default |
+|  ---  |  ---  |  ---  |  ---  |
+| attract | Whether to enable automatic edge suction | boolean | `false` |
+| direction | The drag direction limit of the dragged element **x**/**y**/**all** | string | `'all' ` |
+| boundary | The drag boundary of the dragged element | object | `{top: 0,left: 0,right: 0,bottom: 0}` |
