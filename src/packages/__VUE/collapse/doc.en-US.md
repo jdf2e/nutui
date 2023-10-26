@@ -212,6 +212,7 @@ Set content through slot: extra
 | title | Content slot on the left side of the title bar |
 | alue  | Right content slot of the title bar            |
 | extra | Set fixed content under the title (no folding) |
+| icon  | Set a custom icon                              |
 
 ### Events
 
