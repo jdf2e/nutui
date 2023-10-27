@@ -6,13 +6,12 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
-import { Input, Button } from '@nutui/nutui-taro';
+import { Input } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
-app.use(Button);
 ```
 
 ### 基础用法
@@ -21,22 +20,13 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.text" placeholder="请输入文本" />
+  <nut-input v-model="val" placeholder="请输入文本" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const val = ref('');
 </script>
 ```
 
@@ -52,28 +42,21 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input placeholder="请输入文本" v-model="state.text" />
   <nut-input placeholder="请输入密码" v-model="state.password" type="password" />
   <nut-input placeholder="请输入数字（支持小数）" v-model="state.digit" type="digit" />
   <nut-input placeholder="请输入整数" v-model="state.number" type="number" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: '',
-        password: '',
-        number: '',
-        digit: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  text: '',
+  password: '',
+  number: '',
+  digit: ''
+});
 </script>
 ```
 
@@ -85,24 +68,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input placeholder="输入框只读" v-model="state.readonly" readonly />
   <nut-input placeholder="输入框已禁用" v-model="state.disabled" disabled />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        readonly: '',
-        disabled: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  readonly: '',
+  disabled: ''
+});
 </script>
 ```
 
@@ -114,7 +90,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input v-model="state.clear" placeholder="显示清除图标" clearable clearSize="14" />
   <nut-input
@@ -131,28 +107,16 @@ app.use(Button);
     </template>
   </nut-input>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Close } from '@nutui/icons-vue-taro';
-
-  export default {
-    components: {
-      Close
-    },
-    setup() {
-      const state = reactive({
-        clear: '',
-        clear2: ''
-      });
-      const clearValue = () => {
-        state.clear2 = '';
-      };
-      return {
-        state,
-        clearValue
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Close } from '@nutui/icons-vue-taro';
+const state = reactive({
+  clear: '',
+  clear2: ''
+});
+const clearValue = () => {
+  state.clear2 = '';
+};
 </script>
 ```
 
@@ -164,7 +128,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form :model-value="state">
     <nut-form-item label="文本" label-align="center">
@@ -172,18 +136,11 @@ app.use(Button);
     </nut-form-item>
   </nut-form>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        val1: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  val1: ''
+});
 </script>
 ```
 
@@ -195,7 +152,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input
     v-model="state.format1"
@@ -205,21 +162,13 @@ app.use(Button);
   />
   <nut-input v-model="state.format2" placeholder="在失焦时执行格式化" :formatter="formatter" format-trigger="onBlur" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        format1: '',
-        format2: ''
-      });
-      const formatter = (value: string) => value.replace(/\d/g, '');
-      return {
-        state,
-        formatter
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  format1: '',
+  format2: ''
+});
+const formatter = (value) => value.replace(/\d/g, '');
 </script>
 ```
 
@@ -231,22 +180,13 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.text" type="text" show-word-limit rows="2" max-length="50" placeholder="请输入留言" />
+  <nut-input v-model="val" type="text" show-word-limit rows="2" max-length="50" placeholder="请输入留言" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const val = ref('');
 </script>
 ```
 
@@ -258,24 +198,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.noBorder1" :border="false" placeholder="输入框无边框" />
-  <nut-input v-model="state.noBorder2" :border="false" placeholder="输入框无边框" />
+  <nut-input v-model="state.val1" :border="false" placeholder="输入框无边框" />
+  <nut-input v-model="state.val2" :border="false" placeholder="输入框无边框" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        noBorder1: '',
-        noBorder2: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  val1: '',
+  val2: ''
+});
 </script>
 ```
 
@@ -285,43 +218,29 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.event" clearable placeholder="事件演示" @clear="clear" @click-input="clickInput" />
+  <nut-input v-model="state.val" clearable placeholder="事件演示" @clear="clear" @click-input="clickInput" />
   <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Toast } from '@nutui/nutui-taro';
-  export default {
-    components: {
-      Toast
-    },
-    setup() {
-      const state = reactive({
-        event: '',
-        show: false,
-        msg: ''
-      });
-      const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event);
-        showToast('clear');
-      };
-      const showToast = (msg: string) => {
-        state.show = true;
-        state.msg = msg;
-      };
-      const clickInput = (value: string | number) => {
-        console.log('clickInput:', value);
-        showToast('clickInput');
-      };
-      return {
-        state,
-        clear,
-        clickInput
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui-taro';
+const state = reactive({
+  val: '',
+  show: false,
+  msg: ''
+});
+const showToast = (msg) => {
+  state.show = true;
+  state.msg = msg;
+};
+const clear = () => {
+  showToast('clear');
+};
+const clickInput = () => {
+  showToast('clickInput');
+};
 </script>
 ```
 
@@ -331,30 +250,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.slotValue" placeholder="插槽演示" clearable>
+  <nut-input v-model="val" placeholder="插槽演示" clearable>
     <template #left> <Ask></Ask> </template>
     <template #right> <nut-button type="primary" size="small">获取验证码</nut-button> </template>
   </nut-input>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Ask } from '@nutui/icons-vue-taro';
-
-  export default {
-    components: {
-      Ask
-    },
-    setup() {
-      const state = reactive({
-        slotValue: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Ask } from '@nutui/icons-vue-taro';
+const val = ref('');
 </script>
 ```
 
