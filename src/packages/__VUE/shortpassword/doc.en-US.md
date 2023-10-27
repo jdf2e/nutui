@@ -67,7 +67,6 @@ app.use(NumberKeyboard);
 <script>
   import { reactive } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       const state = reactive({
@@ -113,7 +112,6 @@ app.use(NumberKeyboard);
 <script>
   import { reactive } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       const state = reactive({
@@ -162,7 +160,6 @@ app.use(NumberKeyboard);
 <script>
   import { reactive } from 'vue';
   import { showToast } from '@nutui/nutui';
-  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       const state = reactive({
@@ -194,24 +191,24 @@ app.use(NumberKeyboard);
 
 ### Props
 
-| Attribute              | Description                           | Type             | Default                   |
-| ---------------------- | ------------------------------------- | ---------------- | ------------------------- |
-| v-model                | Current value                         | string           |                           |
-| v-model:visible        | Whether to show shortpassword         | boolean          | `false`                   |
-| title                  | title                                 | string           | `Please enter password  ` |
-| desc                   | description                           | string           | `Verify`                  |
-| tips                   | Bottom right prompt                   | string           | `Forget password  `       |
-| close-on-click-overlay | Click to close the mask               | boolean          | `true`                    |
-| length                 | ShortPassword lenght The value is 4~6 | string \| number | `6`                       |
-| error-msg              | Error message                         | string           | `''`                      |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| v-model | Current value | string |  |
+| v-model:visible | Whether to show shortpassword | boolean | `false` |
+| title | title | string | `Please enter password  ` |
+| desc | description | string | `Verify` |
+| tips | Bottom right prompt | string | `Forget password  ` |
+| close-on-click-overlay | Click to close the mask | boolean | `true` |
+| length | ShortPassword lenght The value is 4~6 | string \| number | `6` |
+| error-msg | Error message | string | `''` |
 
 ### Events
 
-| Event    | Description                                     | Arguments      |
-| -------- | ----------------------------------------------- | -------------- |
-| close    | Trigger an event when the close icon is clicked | -              |
-| complete | Input complete callback                         | `value:string` |
-| focus    | Emitted when input is focused                   | -              |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| close | Trigger an event when the close icon is clicked | - |
+| complete | Input complete callback | `value:string` |
+| focus | Emitted when input is focused | - |
 
 ## Theming
 
@@ -221,9 +218,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value | Description |
 
-| 名称                                 | 默认值                     |
-| ------------------------------------ | -------------------------- |
-| --nut-shortpassword-background-color | _rgba(245, 245, 245, 1)_   |
-| --nut-shortpassword-border-color     | _#ddd_                     |
-| --nut-shortpassword-error            | _var(--nut-primary-color)_ |
-| --nut-shortpassword-forget           | _rgba(128, 128, 128, 1)_   |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-shortpassword-background-color | _rgba(245, 245, 245, 1)_ |
+| --nut-shortpassword-border-color | _#ddd_ |
+| --nut-shortpassword-error | _var(--nut-primary-color)_ |
+| --nut-shortpassword-forget | _rgba(128, 128, 128, 1)_ |
