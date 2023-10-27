@@ -26,6 +26,7 @@
             @change="endComposing"
             @compositionend="endComposing"
             @compositionstart="startComposing"
+            @keyup="onKeyup"
           ></component>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
             <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -141,7 +142,7 @@ export default create({
   },
   components: { MaskClose },
 
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
@@ -293,6 +294,12 @@ export default create({
       inputRef.value?.select();
     };
 
+    const onKeyup = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        emit('confirm', e);
+      }
+    };
+
     return {
       renderInput,
       inputRef,
@@ -309,7 +316,8 @@ export default create({
       onClickInput,
       focus,
       blur,
-      select
+      select,
+      onKeyup
     };
   }
 });

@@ -281,6 +281,7 @@ const val = ref('');
 | clear | Emitted when the clear icon is clicked | `event` |
 | click | Emitted when component is clicked | `event` |
 | click-input | Emitted when the input is clicked | `event` |
+| confirm | Triggered when you click the soft keyboard to confirm ｜ `event` |
 
 ### Slots
 

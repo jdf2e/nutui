@@ -39,3 +39,9 @@ export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean;
 }
+
+export interface InputEvent extends Event {
+  detail: {
+    value: any;
+  };
+}
