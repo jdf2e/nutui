@@ -207,12 +207,12 @@ Set content through slot: extra
 
 ### CollapseItem Slots
 
-| Name  | Description                                    |
-| ----- | ---------------------------------------------- |
-| title | Content slot on the left side of the title bar |
-| alue  | Right content slot of the title bar            |
-| extra | Set fixed content under the title (no folding) |
-| icon  | Set a custom icon                              |
+| Name        | Description                                    |
+| ----------- | ---------------------------------------------- |
+| title       | Content slot on the left side of the title bar |
+| alue        | Right content slot of the title bar            |
+| extra       | Set fixed content under the title (no folding) |
+| icon`4.2.0` | Set a custom icon                              |
 
 ### Events
 
