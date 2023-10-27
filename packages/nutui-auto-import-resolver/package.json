@@ -1,6 +1,6 @@
 {
   "name": "@nutui/auto-import-resolver",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "nutui auto import resolver based on unplugin-vue-components",
   "keywords": [
     "nutui",
