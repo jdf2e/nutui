@@ -542,6 +542,7 @@ app.use(Table);
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
   import { showToast } from '@nutui/nutui';
+  import '@nutui/nutui/dist/packages/toast/style';
   export default {
     setup() {
       const state = reactive({
@@ -609,30 +610,30 @@ app.use(Table);
 
 ### Props
 
-| Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
-| bordered | Show border | boolean | `true` |
-| columns | Header data | TableColumnProps[] | `[]` |
-| data | Table data | object[] | `[]` |
-| summary | Show profile | Function | - |
-| striped | Whether the stripes alternate light and dark | boolean | `false` |
+| Attribute | Description                                  | Type               | Default |
+| --------- | -------------------------------------------- | ------------------ | ------- |
+| bordered  | Show border                                  | boolean            | `true`  |
+| columns   | Header data                                  | TableColumnProps[] | `[]`    |
+| data      | Table data                                   | object[]           | `[]`    |
+| summary   | Show profile                                 | Function           | -       |
+| striped   | Whether the stripes alternate light and dark | boolean            | `false` |
 
 ### TableColumnProps
 
-| Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
-| key | Unique identification of the column | string | `` |
-| title | Header title | string | `` |
-| stylehead | Header style | string | `` |
-| stylecolumn | Column style | string | `` |
-| align | Alignment of columns, optional values`left`,`center`,`right` | string | `left` |
-| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | boolean \| Function \| string | - |
-| render | Custom render column data, high priority | Function(record) | - |
+| Attribute   | Description                                                                                                                                                                                                                                             | Type                          | Default |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------- |
+| key         | Unique identification of the column                                                                                                                                                                                                                     | string                        | ``      |
+| title       | Header title                                                                                                                                                                                                                                            | string                        | ``      |
+| stylehead   | Header style                                                                                                                                                                                                                                            | string                        | ``      |
+| stylecolumn | Column style                                                                                                                                                                                                                                            | string                        | ``      |
+| align       | Alignment of columns, optional values`left`,`center`,`right`                                                                                                                                                                                            | string                        | `left`  |
+| sorter      | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | boolean \| Function \| string | -       |
+| render      | Custom render column data, high priority                                                                                                                                                                                                                | Function(record)              | -       |
 
 ### Events
 
-| Event | Description | Arguments |
-| --- | --- | --- |
+| Event  | Description                      | Arguments                                  |
+| ------ | -------------------------------- | ------------------------------------------ |
 | sorter | Click the sort button to trigger | item: Data of the currently clicked header |
 
 ## Theming
@@ -641,9 +642,9 @@ app.use(Table);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --nut-table-border-color | _#ececec_ | - |
-| --nut-table-cols-padding | _10px_ | - |
-| --nut-table-tr-even-bg-color | _#f3f3f3_ | - |
-| --nut-table-tr-odd-bg-color | _var(--nut-white)_ | - |
+| Name                         | Default Value      | Description |
+| ---------------------------- | ------------------ | ----------- |
+| --nut-table-border-color     | _#ececec_          | -           |
+| --nut-table-cols-padding     | _10px_             | -           |
+| --nut-table-tr-even-bg-color | _#f3f3f3_          | -           |
+| --nut-table-tr-odd-bg-color  | _var(--nut-white)_ | -           |
