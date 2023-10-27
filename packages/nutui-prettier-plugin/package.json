@@ -1,6 +1,7 @@
 {
   "name": "@nutui/prettier-plugin",
   "version": "0.0.1",
+  "private": "true",
   "description": "",
   "type": "module",
   "main": "index.js",
