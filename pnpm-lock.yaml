@@ -33,6 +33,9 @@ importers:
       '@nutui/eslint-config':
         specifier: workspace:*
         version: link:packages/nutui-eslint-config
+      '@nutui/prettier-plugin':
+        specifier: workspace:^
+        version: link:packages/nutui-prettier-plugin
       '@tarojs/taro':
         specifier: 3.6.14
         version: 3.6.14(postcss@8.4.31)(vue@3.3.4)
@@ -179,6 +182,15 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.3.4
+
+  packages/nutui-prettier-plugin:
+    devDependencies:
+      linguist-languages:
+        specifier: ^7.27.0
+        version: 7.27.0
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
 
   packages/nutui-taro-demo:
     dependencies:
@@ -10328,6 +10340,10 @@ packages:
 
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
+    dev: true
+
+  /linguist-languages@7.27.0:
+    resolution: {integrity: sha512-Wzx/22c5Jsv2ag+uKy+ITanGA5hzvBZngrNGDXLTC7ZjGM6FLCYGgomauTkxNJeP9of353OM0pWqngYA180xgw==}
     dev: true
 
   /linkify-it@3.0.3:

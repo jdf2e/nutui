@@ -81,6 +81,7 @@
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@nutui/eslint-config": "workspace:*",
+    "@nutui/prettier-plugin": "workspace:^",
     "@tarojs/taro": "3.6.14",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
