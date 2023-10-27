@@ -100,13 +100,15 @@ $dark-color3: rgba(232, 230, 227, 0.8) !default;
 $dark-color-gray: $text-color !default;
 $dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
 
-$font-family:
+$font-family: var(
+  --nut-font-family,
   PingFang SC,
   Microsoft YaHei,
   Helvetica,
   Hiragino Sans GB,
   SimSun,
-  sans-serif !default;
+  sans-serif
+) !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -975,5 +977,8 @@ $invoice-padding: 10px 10px 20px !default;
 // TrendArrow
 $trendarrow-font-size: 14px !default;
 $trendarrow-before-icon-margin: 4px !default;
+
+// Space
+$space-gap: var(--nut-space-gap, 8px) !default;
 
 @import './mixins/index';

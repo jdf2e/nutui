@@ -206,6 +206,7 @@ app.use(CollapseItem);
 | title | 标题栏左侧内容插槽           |
 | value | 标题栏右侧内容插槽           |
 | extra | 设置标题下固定内容（不折叠） |
+| icon  | 设置自定义图标               |
 
 ### Events
 

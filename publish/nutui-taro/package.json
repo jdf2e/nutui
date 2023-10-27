@@ -7,7 +7,7 @@
   "style": "dist/style.css",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
-    "dist/packages/**/style.mjs",
+    "dist/packages/**/style/*.mjs",
     "*.scss",
     "*.css"
   ],
