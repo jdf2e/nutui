@@ -26,10 +26,10 @@
       box-sizing: border-box;
       content: ' ';
       pointer-events: none;
-      right: 16px;
+      right: $collapse-item-border-bottom-line-right;
       bottom: 0;
-      left: 16px;
-      border-bottom: 1px solid #ebedf0;
+      left: $collapse-item-border-bottom-line-left;
+      border-bottom: 1px solid $collapse-item-border-bottom-line-color;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
