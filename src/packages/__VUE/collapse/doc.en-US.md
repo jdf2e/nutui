@@ -187,37 +187,37 @@ Set content through slot: extra
 
 ### Collapse Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| v-model | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-` |
-| accordion | Whether to enable accordion mode | boolean | `false` |
+| Attribute | Description                            | Type                                                                         | Default |
+| --------- | -------------------------------------- | ---------------------------------------------------------------------------- | ------- |
+| v-model   | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-`     |
+| accordion | Whether to enable accordion mode       | boolean                                                                      | `false` |
 
 ### CollapseItem Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| name | unique identifier, required | string \| number | `-1` |
-| title | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string | `-` |
-| value | The content on the right side of the title bar, support slot input (`props` input has a higher priority) | string | `-` |
-| icon | The icon component on the left side of the title bar, equivalent to the `nutui-icon` component | - | `-` |
-| label | title bar description | number \| string | `-` |
-| rotate | Click the rotation angle of folding and unfolding, effective in the custom icon mode | string \| number | `180` |
-| disabled | whether the title bar is disabled | boolean | `false` |
-| border | Whether to display borders | boolean | `true` |
+| Attribute | Description                                                                                              | Type             | Default |
+| --------- | -------------------------------------------------------------------------------------------------------- | ---------------- | ------- |
+| name      | unique identifier, required                                                                              | string \| number | `-1`    |
+| title     | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string           | `-`     |
+| value     | The content on the right side of the title bar, support slot input (`props` input has a higher priority) | string           | `-`     |
+| icon      | The icon component on the left side of the title bar, equivalent to the `nutui-icon` component           | -                | `-`     |
+| label     | title bar description                                                                                    | number \| string | `-`     |
+| rotate    | Click the rotation angle of folding and unfolding, effective in the custom icon mode                     | string \| number | `180`   |
+| disabled  | whether the title bar is disabled                                                                        | boolean          | `false` |
+| border    | Whether to display borders                                                                               | boolean          | `true`  |
 
 ### CollapseItem Slots
 
-| Name | Description |
-|  ---  |  ---  |
+| Name  | Description                                    |
+| ----- | ---------------------------------------------- |
 | title | Content slot on the left side of the title bar |
-| alue | Right content slot of the title bar |
+| alue  | Right content slot of the title bar            |
 | extra | Set fixed content under the title (no folding) |
-| icon | Set a custom icon |
+| icon  | Set a custom icon                              |
 
 ### Events
 
-| Event | Description | Callback parameter |
-|  ---  |  ---  |  ---  |
+| Event  | Description                     | Callback parameter               |
+| ------ | ------------------------------- | -------------------------------- |
 | change | Triggered when switching panels | `(modelValue, currName, status)` |
 
 ## 主题定制
@@ -226,18 +226,18 @@ Set content through slot: extra
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-|  ---  |  ---  |
-| --nut-collapse-item-padding | _13px 36px 13px 26px_ |
-| --nut-collapse-item-color | _#666666_ |
-| --nut-collapse-item-disabled-color | _#c8c9cc_ |
-| --nut-collapse-item-icon-color | _#666666_ |
-| --nut-collapse-item-font-size | _var(--nut-font-size-2)_ |
-| --nut-collapse-item-line-height | _24px_ |
-| --nut-collapse-item-sub-title-color | _#666666_ |
-| --nut-collapse-wrapper-content-padding | _12px 26px_ |
-| --nut-collapse-wrapper-empty-content-padding | _0 26px_ |
-| --nut-collapse-wrapper-content-color | _#666666_ |
-| --nut-collapse-wrapper-content-font-size | _var(--nut-font-size-2)_ |
-| --nut-collapse-wrapper-content-line-height | _1.5_ |
-| --nut-collapse-wrapper-content-background-color | _var(--nut-white)_ |
+| 名称                                            | 默认值                   |
+| ----------------------------------------------- | ------------------------ |
+| --nut-collapse-item-padding                     | _13px 36px 13px 26px_    |
+| --nut-collapse-item-color                       | _#666666_                |
+| --nut-collapse-item-disabled-color              | _#c8c9cc_                |
+| --nut-collapse-item-icon-color                  | _#666666_                |
+| --nut-collapse-item-font-size                   | _var(--nut-font-size-2)_ |
+| --nut-collapse-item-line-height                 | _24px_                   |
+| --nut-collapse-item-sub-title-color             | _#666666_                |
+| --nut-collapse-wrapper-content-padding          | _12px 26px_              |
+| --nut-collapse-wrapper-empty-content-padding    | _0 26px_                 |
+| --nut-collapse-wrapper-content-color            | _#666666_                |
+| --nut-collapse-wrapper-content-font-size        | _var(--nut-font-size-2)_ |
+| --nut-collapse-wrapper-content-line-height      | _1.5_                    |
+| --nut-collapse-wrapper-content-background-color | _var(--nut-white)_       |

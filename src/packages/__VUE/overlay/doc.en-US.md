@@ -179,26 +179,26 @@ const show = ref(false);
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| v-model:visible | Control the display/hide of masks | boolean | `false` |
-| z-index | Custom Mask Level | string \| number | `2000` |
-| duration | Display/hide animation duration, in seconds | string \| number | `0.3` |
-| overlay-class | Custom mask class name | string | - |
-| overlay-style | Custom Mask Style | CSSProperties | - |
-| lock-scroll | Whether the background is locked when the mask is displayed | boolean | `true` |
-| close-on-click-overlay | Whether to close the mask when clicking. | boolean | `true` |
+| Attribute              | Description                                                 | Type             | Default |
+| ---------------------- | ----------------------------------------------------------- | ---------------- | ------- |
+| v-model:visible        | Control the display/hide of masks                           | boolean          | `false` |
+| z-index                | Custom Mask Level                                           | string \| number | `2000`  |
+| duration               | Display/hide animation duration, in seconds                 | string \| number | `0.3`   |
+| overlay-class          | Custom mask class name                                      | string           | -       |
+| overlay-style          | Custom Mask Style                                           | CSSProperties    | -       |
+| lock-scroll            | Whether the background is locked when the mask is displayed | boolean          | `true`  |
+| close-on-click-overlay | Whether to close the mask when clicking.                    | boolean          | `true`  |
 
 ### Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| Event | Description             | Arguments         |
+| ----- | ----------------------- | ----------------- |
 | click | Triggered when clicked. | event: MouseEvent |
 
 ### Slots
 
-| Name | Description |
-|  ---  |  ---  |
+| Name    | Description                         |
+| ------- | ----------------------------------- |
 | default | Embedded Mask Content Customization |
 
 ## Theming
@@ -207,6 +207,6 @@ const show = ref(false);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-|  ---  |  ---  |
+| Name                   | Default Value        |
+| ---------------------- | -------------------- |
 | --nut-overlay-bg-color | _rgba(0, 0, 0, 0.7)_ |

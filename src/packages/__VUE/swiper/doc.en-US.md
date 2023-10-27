@@ -492,40 +492,40 @@ You can manually switch through `api` (`prev`, `next`)
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| width | Width of rotation card | number \| string | `window.innerWidth ` |
-| height | Height of rotation card | number \| string | `0` |
-| direction | Rotation direction, optional value：`horizontal`,`vertical` | string | `'horizontal'` |
-| pagination-visible | Is the paging indicator displayed | boolean | `false` |
-| pagination-color | The color selected by the pagination indicator | string | `'#fff'` |
-| loop | Whether to rotate | boolean | `true` |
-| duration | Animation duration（Unit ms） | number \| string | `500` |
-| auto-play | Automatic rotation duration, 0 means no automatic rotation | number \| string | `0` |
-| init-page | Initialize index value | number \| string | `0` |
-| touchable | if touchable to slide | boolean | `true` |
-| is-prevent-default | Disable default events during sliding | boolean | `true` |
-| is-stop-propagation | Is bubbling prohibited during sliding | boolean | `true` |
+| Attribute           | Description                                                 | Type             | Default              |
+| ------------------- | ----------------------------------------------------------- | ---------------- | -------------------- |
+| width               | Width of rotation card                                      | number \| string | `window.innerWidth ` |
+| height              | Height of rotation card                                     | number \| string | `0`                  |
+| direction           | Rotation direction, optional value：`horizontal`,`vertical` | string           | `'horizontal'`       |
+| pagination-visible  | Is the paging indicator displayed                           | boolean          | `false`              |
+| pagination-color    | The color selected by the pagination indicator              | string           | `'#fff'`             |
+| loop                | Whether to rotate                                           | boolean          | `true`               |
+| duration            | Animation duration（Unit ms）                               | number \| string | `500`                |
+| auto-play           | Automatic rotation duration, 0 means no automatic rotation  | number \| string | `0`                  |
+| init-page           | Initialize index value                                      | number \| string | `0`                  |
+| touchable           | if touchable to slide                                       | boolean          | `true`               |
+| is-prevent-default  | Disable default events during sliding                       | boolean          | `true`               |
+| is-stop-propagation | Is bubbling prohibited during sliding                       | boolean          | `true`               |
 
 ### Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| Event  | Description            | Arguments           |
+| ------ | ---------------------- | ------------------- |
 | change | Callback after sliding | Current index value |
 
 ### Slots
 
-| Name | Description |
-|  ---  |  ---  |
+| Name | Description      |
+| ---- | ---------------- |
 | page | Custom Indicator |
 
 ### Methods
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
-| prev | Switch to previous page | - |
-| next | Switch to next page | - |
-| to | Switch to the specified rotation | `index:number` |
+| Event | Description                      | Arguments      |
+| ----- | -------------------------------- | -------------- |
+| prev  | Switch to previous page          | -              |
+| next  | Switch to next page              | -              |
+| to    | Switch to the specified rotation | `index:number` |
 
 ## Theming
 
@@ -533,9 +533,9 @@ You can manually switch through `api` (`prev`, `next`)
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-|  ---  |  ---  |
-| --nut-swiper-pagination-item-width | _8px_ |
-| --nut-swiper-pagination-item-height | _3px_ |
-| --nut-swiper-pagination-item-margin-right | _7px_ |
-| --nut-swiper-pagination-item-border-radius | _2px_ |
+| Name                                       | Default Value |
+| ------------------------------------------ | ------------- |
+| --nut-swiper-pagination-item-width         | _8px_         |
+| --nut-swiper-pagination-item-height        | _3px_         |
+| --nut-swiper-pagination-item-margin-right  | _7px_         |
+| --nut-swiper-pagination-item-border-radius | _2px_         |

@@ -29,17 +29,17 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| name | Icon name or URL | string | - |
-| color | Icon color | string | - |
-| width | Icon size , eg `20px` `2em` `2rem` | string \| object | - |
-| height | Icon size , eg `20px` `2em` `2rem` | string \| object | - |
+| Attribute | Description                        | Type             | Default |
+| --------- | ---------------------------------- | ---------------- | ------- |
+| name      | Icon name or URL                   | string           | -       |
+| color     | Icon color                         | string           | -       |
+| width     | Icon size , eg `20px` `2em` `2rem` | string \| object | -       |
+| height    | Icon size , eg `20px` `2em` `2rem` | string \| object | -       |
 
 ### Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| Event | Description                  | Arguments    |
+| ----- | ---------------------------- | ------------ |
 | click | Emitted when icon is clicked | event: Event |
 
 ## Use: Full use of IconFont
@@ -130,19 +130,19 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| name | Icon name or URL | string | - |
-| color | Icon color | string | - |
-| size | Icon size , eg `20px` `2em` `2rem` | string \| object | - |
-| font-class-name | Custom icon font base class name | string | `nutui-iconfont` |
-| class-prefix | Custom icon class name prefix for using custom icons | string | `nut-icon` |
-| tag | HTML Tag of root element | string | `i` |
+| Attribute       | Description                                          | Type             | Default          |
+| --------------- | ---------------------------------------------------- | ---------------- | ---------------- |
+| name            | Icon name or URL                                     | string           | -                |
+| color           | Icon color                                           | string           | -                |
+| size            | Icon size , eg `20px` `2em` `2rem`                   | string \| object | -                |
+| font-class-name | Custom icon font base class name                     | string           | `nutui-iconfont` |
+| class-prefix    | Custom icon class name prefix for using custom icons | string           | `nut-icon`       |
+| tag             | HTML Tag of root element                             | string           | `i`              |
 
 ### Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| Event | Description                  | Arguments    |
+| ----- | ---------------------------- | ------------ |
 | click | Emitted when icon is clicked | event: Event |
 
 ## Use: other icons

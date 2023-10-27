@@ -89,25 +89,25 @@ app.use();
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| height | The height/estimated height of the list item, supports unfixed height | Number | `80` |
-| list-data | List data | any[] | `[]` |
-| container-height | Container height(The maximum value cannot exceed the viewable area) | Number | `Visual area height` |
-| buffer-size | data buffer length | Number | `5` |
-| margin | The gap between the lists is consistent with the custom style | Number | `10` |
+| Attribute        | Description                                                           | Type   | Default              |
+| ---------------- | --------------------------------------------------------------------- | ------ | -------------------- |
+| height           | The height/estimated height of the list item, supports unfixed height | Number | `80`                 |
+| list-data        | List data                                                             | any[]  | `[]`                 |
+| container-height | Container height(The maximum value cannot exceed the viewable area)   | Number | `Visual area height` |
+| buffer-size      | data buffer length                                                    | Number | `5`                  |
+| margin           | The gap between the lists is consistent with the custom style         | Number | `10`                 |
 
 ### Slots
 
-| Attribute | Description | Type |
-|  ---  |  ---  |  ---  |
-| item | List item data | Object |
-| index | Indexes | Number |
+| Attribute | Description    | Type   |
+| --------- | -------------- | ------ |
+| item      | List item data | Object |
+| index     | Indexes        | Number |
 
 ### Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
-| scroll-bottom | Triggered when scrolling to the bottom | - |
-| scroll-up | scroll up | - |
-| scroll-down | scroll down | - |
+| Event         | Description                            | Arguments |
+| ------------- | -------------------------------------- | --------- |
+| scroll-bottom | Triggered when scrolling to the bottom | -         |
+| scroll-up     | scroll up                              | -         |
+| scroll-down   | scroll down                            | -         |

@@ -190,74 +190,74 @@ const teleportClick = (teleport: string) => {
 
 ### DialogOptions
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| title | Title | string | - |
-| id | Identifier, share one instance at the same time, default to multiple instances | string \| object | `new Date().getTime()` |
-| content | Content, support HTML | string | - |
-| teleport | Specifies a target element where Dialog will be mounted | string | `"body"` |
-| closeOnClickOverlay | Whether to close when overlay is clicked | boolean | `false` |
-| noFooter | Hide bottom button bar | boolean | `false` |
-| noOkBtn | Hide OK button | boolean | `false` |
-| noCancelBtn | Hide cancel button | boolean | `false` |
-| cancelText | Cancel button text | string | `"Cancel"` |
-| okText | OK button text | string | `"Confirm"` |
-| cancelAutoClose | Click Cancel to close the popup | boolean | `true` |
-| textAlign | Text alignment direction, the optional value is the same as css text-align | string | `"center"` |
-| closeOnPopstate | Whether to close when popstate | boolean | `false` |
-| customClass | Custom dialog class | string |  |
-| overlayClass | Custom mask classname | string | - |
-| overlayStyle | Custom mask styles | CSSProperties | - |
-| popClass | Custom popup classname | string | - |
-| popStyle | Custom popup styles | CSSProperties | - |
-| onUpdate | Update | boolean | `false` |
-| onOk | Emitted when the confirm button is clicked | Function | - |
-| onCancel | Emitted when the cancel button is clicked | Function | - |
-| onOpened | Emitted when Dialog is opened | Function | - |
-| onClosed | Emitted when Dialog is closed | Function | - |
-| beforeClose | Callback function before close support return `promise` | Function(action: string) | - |
+| Attribute           | Description                                                                    | Type                     | Default                |
+| ------------------- | ------------------------------------------------------------------------------ | ------------------------ | ---------------------- |
+| title               | Title                                                                          | string                   | -                      |
+| id                  | Identifier, share one instance at the same time, default to multiple instances | string \| object         | `new Date().getTime()` |
+| content             | Content, support HTML                                                          | string                   | -                      |
+| teleport            | Specifies a target element where Dialog will be mounted                        | string                   | `"body"`               |
+| closeOnClickOverlay | Whether to close when overlay is clicked                                       | boolean                  | `false`                |
+| noFooter            | Hide bottom button bar                                                         | boolean                  | `false`                |
+| noOkBtn             | Hide OK button                                                                 | boolean                  | `false`                |
+| noCancelBtn         | Hide cancel button                                                             | boolean                  | `false`                |
+| cancelText          | Cancel button text                                                             | string                   | `"Cancel"`             |
+| okText              | OK button text                                                                 | string                   | `"Confirm"`            |
+| cancelAutoClose     | Click Cancel to close the popup                                                | boolean                  | `true`                 |
+| textAlign           | Text alignment direction, the optional value is the same as css text-align     | string                   | `"center"`             |
+| closeOnPopstate     | Whether to close when popstate                                                 | boolean                  | `false`                |
+| customClass         | Custom dialog class                                                            | string                   |                        |
+| overlayClass        | Custom mask classname                                                          | string                   | -                      |
+| overlayStyle        | Custom mask styles                                                             | CSSProperties            | -                      |
+| popClass            | Custom popup classname                                                         | string                   | -                      |
+| popStyle            | Custom popup styles                                                            | CSSProperties            | -                      |
+| onUpdate            | Update                                                                         | boolean                  | `false`                |
+| onOk                | Emitted when the confirm button is clicked                                     | Function                 | -                      |
+| onCancel            | Emitted when the cancel button is clicked                                      | Function                 | -                      |
+| onOpened            | Emitted when Dialog is opened                                                  | Function                 | -                      |
+| onClosed            | Emitted when Dialog is closed                                                  | Function                 | -                      |
+| beforeClose         | Callback function before close support return `promise`                        | Function(action: string) | -                      |
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| title | Title | string | - |
-| content | Content, support HTML | string | - |
-| teleport | Specifies a target element where Dialog will be mounted | string | `"body"` |
-| close-on-click-overlay | Whether to close when overlay is clicked | boolean | `true` |
-| no-footer | Hide bottom button bar | boolean | `false` |
-| no-ok-btn | Hide OK button | boolean | `false` |
-| no-cancel-btn | Hide cancel button | boolean | `false` |
-| cancel-text | Cancel button text | string | `"Cancel"` |
-| ok-text | OK button text | string | `"Confirm"` |
-| cancel-auto-close | Click Cancel to close the popup | boolean | `true` |
-| text-align | Text alignment direction, the optional value is the same as css text-align | string | `"center"` |
-| close-on-popstate | Whether to close when popstate | boolean | `false` |
-| lock-scroll | Whether to lock background scroll | boolean | `false` |
-| footer-direction | Use `horizontal` and `vertical` optional values | string | `horizontal` |
-| overlay-class | Custom mask classname | string | - |
-| overlay-style | Custom mask styles | CSSProperties | - |
-| pop-class | Custom popup classname | string | - |
-| pop-style | Custom popup styles | CSSProperties | - |
-| custom-class | Custom dialog class | string | - |
-| before-close | Callback function before close support return `promise` | Function(action: string) | - |
+| Attribute              | Description                                                                | Type                     | Default      |
+| ---------------------- | -------------------------------------------------------------------------- | ------------------------ | ------------ |
+| title                  | Title                                                                      | string                   | -            |
+| content                | Content, support HTML                                                      | string                   | -            |
+| teleport               | Specifies a target element where Dialog will be mounted                    | string                   | `"body"`     |
+| close-on-click-overlay | Whether to close when overlay is clicked                                   | boolean                  | `true`       |
+| no-footer              | Hide bottom button bar                                                     | boolean                  | `false`      |
+| no-ok-btn              | Hide OK button                                                             | boolean                  | `false`      |
+| no-cancel-btn          | Hide cancel button                                                         | boolean                  | `false`      |
+| cancel-text            | Cancel button text                                                         | string                   | `"Cancel"`   |
+| ok-text                | OK button text                                                             | string                   | `"Confirm"`  |
+| cancel-auto-close      | Click Cancel to close the popup                                            | boolean                  | `true`       |
+| text-align             | Text alignment direction, the optional value is the same as css text-align | string                   | `"center"`   |
+| close-on-popstate      | Whether to close when popstate                                             | boolean                  | `false`      |
+| lock-scroll            | Whether to lock background scroll                                          | boolean                  | `false`      |
+| footer-direction       | Use `horizontal` and `vertical` optional values                            | string                   | `horizontal` |
+| overlay-class          | Custom mask classname                                                      | string                   | -            |
+| overlay-style          | Custom mask styles                                                         | CSSProperties            | -            |
+| pop-class              | Custom popup classname                                                     | string                   | -            |
+| pop-style              | Custom popup styles                                                        | CSSProperties            | -            |
+| custom-class           | Custom dialog class                                                        | string                   | -            |
+| before-close           | Callback function before close support return `promise`                    | Function(action: string) | -            |
 
 ### Events
 
-| Event | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| ok | Emitted when the confirm button is clicked | Function | - |
-| cancel | Emitted when the cancel button is clicked | Function | - |
-| closed | Emitted when Dialog is closed | Function | - |
-| opened | Emitted when Dialog is Opened | Function | - |
+| Event  | Description                                | Type     | Default |
+| ------ | ------------------------------------------ | -------- | ------- |
+| ok     | Emitted when the confirm button is clicked | Function | -       |
+| cancel | Emitted when the cancel button is clicked  | Function | -       |
+| closed | Emitted when Dialog is closed              | Function | -       |
+| opened | Emitted when Dialog is Opened              | Function | -       |
 
 ### Slots
 
-| Name | Description |
-|  ---  |  ---  |
-| header | Custom title |
+| Name    | Description    |
+| ------- | -------------- |
+| header  | Custom title   |
 | default | Custom default |
-| footer | Custom footer |
+| footer  | Custom footer  |
 
 ## Theming
 
@@ -265,9 +265,9 @@ const teleportClick = (teleport: string) => {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-|  ---  |  ---  |
-| --nut-dialog-width | _296px_ |
-| --nut-dialog-header-font-weight | _normal_ |
-| --nut-dialog-header-color | _rgba(38, 38, 38, 1)_ |
-| --nut-dialog-footer-justify-content | _space-around_ |
+| Name                                | Default Value         |
+| ----------------------------------- | --------------------- |
+| --nut-dialog-width                  | _296px_               |
+| --nut-dialog-header-font-weight     | _normal_              |
+| --nut-dialog-header-color           | _rgba(38, 38, 38, 1)_ |
+| --nut-dialog-footer-justify-content | _space-around_        |

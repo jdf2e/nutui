@@ -124,29 +124,29 @@ const refreshFun = () => {
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
-| v-model | 是否触发下拉刷新 | boolean | `false` |
-| pull-distance | 触发下拉刷新的距离 | number \| string | `50` |
-| head-height | 顶部内容高度 | number \| string | `50` |
-| loading-icon | 加载中状态时，`loading` 图标。为空表示去掉 | string | `loading` |
-| pulling-txt | 下拉过程提示文案 | string | `下拉刷新` |
-| loosing-txt | 释放过程提示文案 | string | `释放刷新` |
-| loading-txt | 加载过程提示文案 | string | `加载中...` |
-| duration | 下拉动画加载时长 | number | `0.3 ` |
+| 参数          | 说明                                       | 类型             | 默认值      |
+| ------------- | ------------------------------------------ | ---------------- | ----------- |
+| v-model       | 是否触发下拉刷新                           | boolean          | `false`     |
+| pull-distance | 触发下拉刷新的距离                         | number \| string | `50`        |
+| head-height   | 顶部内容高度                               | number \| string | `50`        |
+| loading-icon  | 加载中状态时，`loading` 图标。为空表示去掉 | string           | `loading`   |
+| pulling-txt   | 下拉过程提示文案                           | string           | `下拉刷新`  |
+| loosing-txt   | 释放过程提示文案                           | string           | `释放刷新`  |
+| loading-txt   | 加载过程提示文案                           | string           | `加载中...` |
+| duration      | 下拉动画加载时长                           | number           | `0.3 `      |
 
 ### Events
 
-| 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
-| change | 下拉过程或状态改变时触发 | {status:string,distance:number} |
-| refresh | 下拉刷新事件回调 | - |
+| 事件名  | 说明                     | 回调参数                        |
+| ------- | ------------------------ | ------------------------------- |
+| change  | 下拉过程或状态改变时触发 | {status:string,distance:number} |
+| refresh | 下拉刷新事件回调         | -                               |
 
 ### Slots
 
-| 名称 | 说明 |
-|  ---  |  ---  |
+| 名称    | 说明               |
+| ------- | ------------------ |
 | pulling | 下拉过程的顶部内容 |
 | loosing | 释放过程中顶部内容 |
 | loading | 加载过程中顶部内容 |
-| default | 自定义内容 |
+| default | 自定义内容         |

@@ -213,32 +213,32 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 ### Radio Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| disabled | Disable selection | boolean | `false` |
-| icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` |
-| label | Radio box ID | string \| number \| boolean | - |
-| shape | Shape, optional values are `button`、`round` | string | `round` |
+| Attribute | Description                                  | Type                        | Default |
+| --------- | -------------------------------------------- | --------------------------- | ------- |
+| disabled  | Disable selection                            | boolean                     | `false` |
+| icon-size | [Icon Size](#/en-US/icon)                    | string \| number            | `18`    |
+| label     | Radio box ID                                 | string \| number \| boolean | -       |
+| shape     | Shape, optional values are `button`、`round` | string                      | `round` |
 
 ### Radio Slots
 
-| Name | Description |
-|  ---  |  ---  |
-| icon | Icon when not selected |
-| checkedIcon | Icon when selected |
+| Name        | Description            |
+| ----------- | ---------------------- |
+| icon        | Icon when not selected |
+| checkedIcon | Icon when selected     |
 
 ### RadioGroup Props
 
-| Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
-| v-model | The identifier of the currently selected item is selected when it is consistent with the `label` value | string \| number \| boolean | - |
-| text-position | The position of the text, optional value：`left`,`right` | string | `right` |
-| direction | Use horizontal and vertical optional values `horizontal`、`vertical` | string | `vertical` |
+| Attribute     | Description                                                                                            | Type                        | Default    |
+| ------------- | ------------------------------------------------------------------------------------------------------ | --------------------------- | ---------- |
+| v-model       | The identifier of the currently selected item is selected when it is consistent with the `label` value | string \| number \| boolean | -          |
+| text-position | The position of the text, optional value：`left`,`right`                                               | string                      | `right`    |
+| direction     | Use horizontal and vertical optional values `horizontal`、`vertical`                                   | string                      | `vertical` |
 
 ### RadioGroup Events
 
-| Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| Event  | Description                      | Arguments                                                                                                   |
+| ------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | change | Triggered when the value changes | Currently selected item value（label）【There is a value after setting `label`, which is empty by default】 |
 
 ## Theming
@@ -247,17 +247,17 @@ Customize the icon through the slot, it is recommended to set the `icon` and `ch
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-|  ---  |  ---  |
-| --nut-radio-label-font-color | _#1d1e1e_ |
-| --nut-radio-label-font-active-color | _var(--nut-primary-color)_ |
-| --nut-radio-label-disable-color | _#999_ |
-| --nut-radio-icon-disable-color | _#d6d6d6_ |
+| Name                                  | Default Value              |
+| ------------------------------------- | -------------------------- |
+| --nut-radio-label-font-color          | _#1d1e1e_                  |
+| --nut-radio-label-font-active-color   | _var(--nut-primary-color)_ |
+| --nut-radio-label-disable-color       | _#999_                     |
+| --nut-radio-icon-disable-color        | _#d6d6d6_                  |
 | --nut-radio-label-button-border-color | _var(--nut-primary-color)_ |
-| --nut-radio-label-button-background | _var(--nut-primary-color)_ |
-| --nut-radio-label-margin-left | _15px_ |
-| --nut-radio-button-border-radius | _15px_ |
-| --nut-radio-label-font-size | _14px_ |
-| --nut-radio-button-font-size | _12px_ |
-| --nut-radio-button-padding | _5px 18px_ |
-| --nut-radio-icon-disable-color2 | _var(--nut-help-color)_ |
+| --nut-radio-label-button-background   | _var(--nut-primary-color)_ |
+| --nut-radio-label-margin-left         | _15px_                     |
+| --nut-radio-button-border-radius      | _15px_                     |
+| --nut-radio-label-font-size           | _14px_                     |
+| --nut-radio-button-font-size          | _12px_                     |
+| --nut-radio-button-padding            | _5px 18px_                 |
+| --nut-radio-icon-disable-color2       | _var(--nut-help-color)_    |
