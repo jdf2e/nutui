@@ -2,7 +2,7 @@
 
 ### introduce
 
-Used to cut the profile picture to create a new image.
+Used to cut the profile picture to create a new image. Available in `NutUI` >= 4.2.0.
 
 ### install
 
