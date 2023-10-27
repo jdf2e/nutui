@@ -57,7 +57,7 @@ function printTable(path, options, print) {
 
   function printAlign() {
     const align = contents[0].map(() => {
-      return ` --- `;
+      return `---`;
     });
 
     return `| ${align.join(' | ')} |\n`;
