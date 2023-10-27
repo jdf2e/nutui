@@ -17,6 +17,11 @@ test('should emit blur event when input is blur', () => {
   wrapper.find('input').trigger('blur');
   expect(wrapper.emitted('blur')).toBeTruthy();
 });
+test('should emit confirm event when input is confirm', () => {
+  const wrapper = mount(Input);
+  wrapper.find('input').trigger('keyup', { keyCode: 13, key: 'Enter' });
+  expect(wrapper.emitted('keyup')).toBeTruthy();
+});
 
 test('should render clear icon when using clearable prop', async () => {
   const wrapper = mount(Input, {
