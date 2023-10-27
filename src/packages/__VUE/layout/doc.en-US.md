@@ -236,7 +236,7 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 ### Row Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | type | layout method, optional value is `flex` | string | `-` |
 | gutter | spacing between column elements (`px`) | string \| number | `-` |
 | justify | Flex main axis alignment, optional values are `start` `end` `center` `space-around` `space-between` `space-evenly` | string | `start` |
@@ -246,18 +246,18 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 ### Col Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | span | column element width (divided into 24 parts in total, for example, if there are 3 in a row, then the span value is 8) | string \| number | `24` |
 | offset | column element offset distance | string \| number | `0` |
 
 ### Row Events
 
 | Event | Description | callback parameter |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | Triggered when clicked | `event: MouseEvent` |
 
 ### Col Events
 
 | Event | Description | callback parameter |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | Triggered when clicked | `event: MouseEvent` |

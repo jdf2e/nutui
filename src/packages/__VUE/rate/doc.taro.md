@@ -167,7 +167,7 @@ const value = ref(3);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 当前 `star` 数，可使用 `v-model` 双向绑定数据 | number \| string | - |
 | count | `star` 总数 | number \| string | `5` |
 | active-color | 图标选中颜色 | string | `#fa200c` |
@@ -182,7 +182,7 @@ const value = ref(3);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 当前分值修改时时触发的事件 | 当前值 |
 
 ## 主题定制
@@ -192,6 +192,6 @@ const value = ref(3);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-rate-icon-color | _var(--nut-primary-color)_ |
 | --nut-rate-icon-void-color | _var(--nut-disable-color)_ |

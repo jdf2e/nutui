@@ -114,7 +114,7 @@ app.use(Watermark);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | width | 水印的宽度 | number | `120` |
 | height | 水印的高度 | number | `64` |
 | rotate | 水印绘制时，旋转的角度 | number | `-22` |
@@ -137,5 +137,5 @@ app.use(Watermark);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-watermark-z-index | _2000_ |

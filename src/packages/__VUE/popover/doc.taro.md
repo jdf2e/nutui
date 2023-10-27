@@ -493,7 +493,7 @@ Popopver 提供了 2 种主题色，同样可以通过 `bgColor` 属性改变背
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | list | 选项列表 | List[] | `[]` |
 | visible | 是否展示气泡弹出层 | boolean | `false` |
 | theme | 主题风格，可选值为 dark | string | `light` |
@@ -517,7 +517,7 @@ Popopver 提供了 2 种主题色，同样可以通过 `bgColor` 属性改变背
 List 属性是一个由对象构成的数组，数组中的每个对象配置一列，对象可以包含以下值：
 
 | 键名 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | name | 选项文字 | string | `-` |
 | icon | `@nutui/icons-vue-taro` 图标 | VNode | `-` |
 | disabled | 是否为禁用状态 | boolean | `false` |
@@ -526,14 +526,14 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | content | 自定义气泡组件菜单内容 |
 | reference | 触发 Popover 显示的元素内容 |
 
 ### Events
 
 | 事件名 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | choose | 点击选项时触发 |
 | open | 打开菜单时触发 |
 | close | 关闭菜单时触发 |
@@ -545,7 +545,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-popover-white-background-color | _rgba(255, 255, 255, 1)_ |
 | --nut-popover-dark-background-color | _rgba(75, 76, 77, 1)_ |
 | --nut-popover-border-bottom-color | _rgba(229, 229, 229, 1)_ |

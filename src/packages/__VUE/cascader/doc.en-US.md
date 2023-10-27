@@ -395,7 +395,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Selected value, bidirectional binding | Array | - |
 | v-model:visible | selected layer | boolean | `false` |
 | options | Cascade data | Array | - |
@@ -413,7 +413,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Triggered when the selected value changes | `(value, pathNodes)` |
 | path-change | Triggered when the selected item changes | `(pathNodes) ` |
 
@@ -424,7 +424,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-cascader-font-size | _var(--nut-font-size-2)_ |
 | --nut-cascader-line-height | _22px_ |
 | --nut-cascader-tabs-item-padding | _0 10px_ |

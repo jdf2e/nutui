@@ -357,7 +357,7 @@ const List = [
 ### Tabbar Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 选中标签的索引值或者名称 | number | `0` |
 | bottom | 是否固定在页面底部 | boolean | `false` |
 | unactive-color | icon 未激活的颜色 | string | `#7d7e80` |
@@ -368,7 +368,7 @@ const List = [
 ### TabbarItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | tab-title | 标签页的标题 | string | -- |
 | name | 标签名称，作为匹配的标识符 | string | `当前标签的索引值` |
 | icon | 标签页显示的[图标名称](#/zh-CN/component/icon) | string | -- |
@@ -376,13 +376,13 @@ const List = [
 ### TabbarItem Slots
 
 | 事件名 | 说明 | 参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | icon | 自定义图标 | active: boolean |
 
 ### Tabbar Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
 
 ## 主题定制
@@ -392,7 +392,7 @@ const List = [
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-tabbar-active-color | _var(--nut-primary-color)_ |
 | --nut-tabbar-unactive-color | _var(--nut-primary-color)_ |
 | --nut-tabbar-border-top | _1px solid #eee_ |

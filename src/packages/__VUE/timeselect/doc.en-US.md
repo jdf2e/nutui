@@ -337,7 +337,7 @@ app.use(TimeDetail);
 ### TimeSelect Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | visible | Whether to display elastic layer | boolean | `false` |
 | height | Height of bomb layer | string | `20%` |
 | title | Bomb layer title | string | `Pickup Time` |
@@ -349,7 +349,7 @@ app.use(TimeDetail);
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | title | Change Title |
 | pannel | List for left |
 | detail | Detail Content for right |
@@ -357,32 +357,32 @@ app.use(TimeDetail);
 ### TimePannel Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | name | Name of display | string | `` |
 | pannel-key | Unique ID, which identifies the currently selected day together with `current-key` | string \| number | `0` |
 
 ### TimeDetail Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | times | Selectable time, the same as array elements `current-time` | Array | `[]` |
 
 ### TimeSelect Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | select | Callback after closing mask | `key: string \| number, list: []` |
 
 ### TimePannel Event
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Click the callback of the content | `pannelKey: string ｜ number` |
 
 ### TimeDetail Event
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | select | Callback of click time | `time: string` |
 
 ## Theming
@@ -392,7 +392,7 @@ app.use(TimeDetail);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-timeselect-title-font-size | _var(--nut-font-size-2)_ |
 | --nut-timeselect-title-color | _var(--nut-title-color)_ |
 | --nut-timeselect-title-width | _100%_ |

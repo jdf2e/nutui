@@ -222,7 +222,7 @@ app.use(Noticebar);
 ### Props
 
 | 字段 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | direction | 滚动的方向，可选 `across`、`vertical ` | string | `across` |
 | text | 提示的信息 | string | - |
 | close-mode | 是否启用关闭模式 | boolean | `false` |
@@ -237,7 +237,7 @@ app.use(Noticebar);
 ### Props（direction=vertical）
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | list | 纵向滚动数据列表 | array | `[]` |
 | speed | 滚动的速度 | number | `50` |
 | stand-time | 停留时间(毫秒) | number | `1000` |
@@ -248,7 +248,7 @@ app.use(Noticebar);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 通知文本的内容 |
 | right-icon | 自定义右侧图标 |
 | left-icon | 自定义左侧图标, 滚动方向为 `across` 生效 |
@@ -256,7 +256,7 @@ app.use(Noticebar);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 外层点击事件回调 | event: Event |
 | close | 关闭通知栏时触发 | event: Event |
 
@@ -267,7 +267,7 @@ app.use(Noticebar);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-noticebar-background | _rgba(251, 248, 220, 1)_ |
 | --nut-noticebar-color | _#d9500b_ |
 | --nut-noticebar-font-size | _14px_ |

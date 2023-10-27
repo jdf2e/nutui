@@ -156,7 +156,7 @@ app.use(TrendArrow);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | rate | 数值，大于 0 时箭头向上，小于 0 时箭头向下 | number | - |
 | digits | 小数位精度 | number | `2` |
 | show-sign | 是否显示加减号 | boolean | `false` |
@@ -170,7 +170,7 @@ app.use(TrendArrow);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | up-icon | 自定义向上箭头图标，默认使用 `TriangleUp` |
 | down-icon | 自定义向下箭头图标，默认使用 `TriangleDown` |
 
@@ -181,6 +181,6 @@ app.use(TrendArrow);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-trendarrow-font-size | _14px_ |
 | --nut-trendarrow-before-icon-margin | _4px_ |

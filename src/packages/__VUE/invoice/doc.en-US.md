@@ -119,7 +119,7 @@ app.use(Invoice);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | data | Invoice data | Array | `[]` |
 | formValue | Form data object (required when using form verification) | object | - |
 | submit | Whether to show the submit button | boolean | `true` |
@@ -129,7 +129,7 @@ app.use(Invoice);
 The optional attributes are as follows:
 
 | Attribute | Description | Type |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | type | Type, eg `input`、`radio` | string |
 | label | Label | string |
 | placeholder | Input placeholder | string |
@@ -141,7 +141,7 @@ The optional attributes are as follows:
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | submit`v4.1.5` | Method of submitting form for verification | Promise |
 | on-submit | Method of submitting form for verification | Promise |
 
@@ -152,5 +152,5 @@ The optional attributes are as follows:
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-invoice-padding | _ 10px 10px 20px_ |

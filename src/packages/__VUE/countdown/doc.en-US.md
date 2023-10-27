@@ -233,7 +233,7 @@ const reset = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Current Time | object | `{}` |
 | start-time | Start Time | string \| number | `Date.now()` |
 | end-time | End Time | string \| number | `Date.now()` |
@@ -248,7 +248,7 @@ const reset = () => {
 ### Format
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | DD | Day |
 | HH | Hour |
 | mm | Minute |
@@ -260,7 +260,7 @@ const reset = () => {
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | end`v4.1.5` | Emitted when count down end | Residual Timestamp |
 | paused`v4.1.5` | Emitted when count down paused | Residual Timestamp |
 | restart`v4.1.5` | Emitted when count down restart | Residual Timestamp |
@@ -271,7 +271,7 @@ const reset = () => {
 ### Methods
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | start | Count Down Start |
 | pause | Count Down Pause |
 | reset | Count Down Reset |
@@ -283,7 +283,7 @@ const reset = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-countdown-display | _flex_ |
 | --nut-countdown-color | _inherit_ |
 | --nut-countdown-font-size | _initial_ |

@@ -277,7 +277,7 @@ app.use(NumberKeyboard);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | 是否显示键盘 | boolean | `false` |
 | v-model | 当前输入值 | string | - |
 | title | 键盘标题 | string | - |
@@ -291,7 +291,7 @@ app.use(NumberKeyboard);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | input | 点击按键时触发 | 按键内容 |
 | delete | 点击删除键时触发 | - |
 | close | 点击关闭按钮时触发 | - |
@@ -304,7 +304,7 @@ app.use(NumberKeyboard);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-numberkeyboard-width | _100%_ |
 | --nut-numberkeyboard-padding | _0_ |
 | --nut-numberkeyboard-background-color | _#f2f3f5_ |

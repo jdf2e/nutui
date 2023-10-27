@@ -611,7 +611,7 @@ app.use(Table);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | bordered | Show border | boolean | `true` |
 | columns | Header data | TableColumnProps[] | `[]` |
 | data | Table data | object[] | `[]` |
@@ -621,7 +621,7 @@ app.use(Table);
 ### TableColumnProps
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | key | Unique identification of the column | string | `` |
 | title | Header title | string | `` |
 | stylehead | Header style | string | `` |
@@ -633,7 +633,7 @@ app.use(Table);
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | sorter | Click the sort button to trigger | item: Data of the currently clicked header |
 
 ## Theming
@@ -643,7 +643,7 @@ app.use(Table);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value | Description |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | --nut-table-border-color | _#ececec_ | - |
 | --nut-table-cols-padding | _10px_ | - |
 | --nut-table-tr-even-bg-color | _#f3f3f3_ | - |

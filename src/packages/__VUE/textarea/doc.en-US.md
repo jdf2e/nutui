@@ -80,7 +80,7 @@ const value = ref('');
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | input value, support two-way binding | string | - |
 | placeholder | set placeholder prompt text | string | `'Placeholder'` |
 | max-length | limit the maximum input characters | string, number | - |
@@ -95,7 +95,7 @@ const value = ref('');
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Triggered when the value of the input box changes | `value` |
 | focus | Triggered when focusing | `event` |
 | blur | Triggered when out of focus | `value,event` |
@@ -107,7 +107,7 @@ const value = ref('');
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-textarea-font | _var(--nut-font-size-2)_ |
 | --nut-textarea-limit-color | _var(--nut-text-color)_ |
 | --nut-textarea-text-color | _var(--nut-title-color)_ |

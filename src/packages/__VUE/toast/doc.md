@@ -210,7 +210,7 @@ toast.hide();
 ### 方法
 
 | 方法名 | 说明 | 参数 | 返回值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | showToast.text | 展示文字提示 | message ｜ options | toast 实例(message 支持传入 HTML) |
 | showToast.success | 展示成功提示 | message ｜ options | toast 实例 |
 | showToast.fail | 展示失败提示 | message ｜ options | toast 实例 |
@@ -221,7 +221,7 @@ toast.hide();
 ### ToastOptions 数据结构
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | id | 标识符，相同时共用一个实例，默认为多个实例 | string \| number | - |
 | duration | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失 | number | `2000` |
 | title | 标题 | string | - |
@@ -246,7 +246,7 @@ toast.hide();
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-toast-title-font-size | _16px_ |
 | --nut-toast-text-font-size | _14px_ |
 | --nut-toast-font-color | _var(--nut-white)_ |

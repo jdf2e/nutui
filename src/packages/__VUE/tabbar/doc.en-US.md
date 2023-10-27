@@ -357,7 +357,7 @@ const List = [
 ### Tabbar Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | The index value of the selected label | number | `0` |
 | bottom | Whether to fix the bottom | boolean | `false` |
 | unactive-color | Color of unactive tab item | string | `#7d7e80` |
@@ -368,7 +368,7 @@ const List = [
 ### TabbarItem Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | tab-title | title | string | -- |
 | name | Identifier | string | `Item index` |
 | icon | icon name | string | -- |
@@ -378,13 +378,13 @@ const List = [
 ### TabbarItem Slots
 
 | Name | Description | SlotProps |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | icon | Custom Icon | active: boolean |
 
 ### Tabbar Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | tab-switch | Emitted when changing active tab | item,index |
 
 ## Theming
@@ -394,7 +394,7 @@ const List = [
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-tabbar-active-color | _var(--nut-primary-color)_ |
 | --nut-tabbar-unactive-color | _var(--nut-primary-color)_ |
 | --nut-tabbar-border-top | _1px solid #eee_ |

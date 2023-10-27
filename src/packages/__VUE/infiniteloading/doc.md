@@ -148,7 +148,7 @@ const refreshFun = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 是否触发滚动加载 | boolean | `false` |
 | has-more | 是否还有更多数据 | boolean | `true` |
 | threshold | 滚动条与底部距离小于 `threshold` 时触发 `loadMore` 事件 | number | `200` |
@@ -159,14 +159,14 @@ const refreshFun = () => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | load-more | 继续加载的回调函数 | - |
 | scroll-change | 实时监听滚动高度 | 滚动高度 |
 
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义加载内容 |
 | loading | 自定义底部加载中提示 |
 | loading-icon | 自定义底部加载中图标 |
@@ -179,5 +179,5 @@ const refreshFun = () => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-infiniteloading-bottom-color | _#c8c8c8_ |

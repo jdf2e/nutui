@@ -215,7 +215,7 @@ const click = (param) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | Whether to show ActionSheet | boolean | `false` |
 | menu-items | Options | MenuItems[] | `[ ]` |
 | option-tag | Custom Options tag key | string | `'name'` |
@@ -230,7 +230,7 @@ const click = (param) => {
 ### MenuItems
 
 | Key | Description | Type |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | name | Title | string |
 | subname | Subtitle | string |
 | color | Text color（Check Item Color Hierarchy > Option Font Color） | string |
@@ -240,7 +240,7 @@ const click = (param) => {
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | choose | Triggered after selection | item, index |
 | cancel | Triggered when cancel copy is clicked | - |
 | close | Triggered when the mask layer is clicked | event: Event |
@@ -252,7 +252,7 @@ const click = (param) => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component]()。
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-actionsheet-light-color | _#f6f6f6_ |
 | --nut-actionsheet-item-border-bottom | _none_ |
 | --nut-actionsheet-item-font-size | _var(--nut-font-size-2)_ |

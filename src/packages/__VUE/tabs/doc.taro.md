@@ -266,7 +266,7 @@ const list = ref([
 ### Tabs Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 绑定当前选中标签的标识符 | number \| string | `0` |
 | color | 标签选中色 | string | `#1a1a1a ` |
 | background | 标签栏背景颜色 | string | `#f5f5f5` |
@@ -284,14 +284,14 @@ const list = ref([
 ### Tabs Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | titles | 自定义导航区域 |
 | default | 自定义内容 |
 
 ### TabPane Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | title | 标题 | string |  |
 | pane-key | 标签 Key , 匹配的标识符 | string | 默认索引 0,1,2... |
 | disabled | 是否禁用标签 | boolean | false |
@@ -299,13 +299,13 @@ const list = ref([
 ### TabPane Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义内容 |
 
 ### Tabs Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 点击标签时触发 | {title,paneKey,disabled} |
 | change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
 
@@ -316,7 +316,7 @@ const list = ref([
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-tabs-tab-smile-color | _var(--nut-primary-color)_ |
 | --nut-tabs-titles-border-radius | _0_ |
 | --nut-tabs-titles-item-large-font-size | _var(--nut-font-size-3)_ |

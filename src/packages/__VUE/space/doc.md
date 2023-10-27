@@ -108,7 +108,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | direction | 间距方向 | ` vertical \|   horizontal` | horizontal |
 | align | 交叉轴对齐方式 | `start \| end \|center \| baseline` | `-` |
 | justify | 主轴对齐方式 | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-` |
@@ -119,7 +119,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Default slot |
 
 ## 主题定制
@@ -129,5 +129,5 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 | 描述 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | \--nutui-space-gap | `8px` | 间距大小 |

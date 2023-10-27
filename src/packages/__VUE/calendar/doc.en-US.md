@@ -747,7 +747,7 @@ When set to week selection, the start and end dates of the week will be determin
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | whether to show | boolean | `false` |
 | type | Calendar type ：`one` `range` `multiple` `week(V4.0.1)` | string | `one` |
 | poppable | Whether to display the pop-up window | boolean | `true` |
@@ -768,7 +768,7 @@ When set to week selection, the start and end dates of the week will be determin
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | choose | Triggered after selection or by clicking the confirm button,Array of dates (including year, month, day and week) | `(string \| string[])[]` |
 | close | Triggered when closed | - |
 | select | Triggered after click/select | `(string \| string[])[]` |
@@ -776,7 +776,7 @@ When set to week selection, the start and end dates of the week will be determin
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | btn | Below the custom calendar header, you can add custom actions |
 | day | Date information |
 | top-info | Date top information |
@@ -788,7 +788,7 @@ When set to week selection, the start and end dates of the week will be determin
 Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can get the Calendar instance and call the instance method.
 
 | Name | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | scrollToDate | Scroll to the month of the specified date:'2021-12-30' | `string` |
 | initPosition `v4.0.1` | Initialize scroll position |  |
 
@@ -799,7 +799,7 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-calendar-primary-color | _var(--nut-primary-color)_ |
 | --nut-calendar-choose-color | _var(--nut-primary-color)_ |
 | --nut-calendar-choose-font-color | _var(--nut-primary-color)_ |

@@ -86,7 +86,7 @@ const clear = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | custom-class | custom `class` | string | `-` |
 | line-width | line width | number | `3` |
 | stroke-style | drawing stroke color | string | `#000` |
@@ -96,7 +96,7 @@ const clear = () => {
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | start | Signature start callback function (refers to the start of a certain stroke) | `-` |
 | signing | The callback function that is signing (referring to a certain stroke in progress) | `event` |
 | end | Signature end callback function (referring to the end of a certain stroke) | `-` |

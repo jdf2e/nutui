@@ -185,14 +185,14 @@ data 数据格式可参考
 ### Category Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | type | 分类模式：`classify`，`text`，`custom` | string | `classify` |
 | category | 左侧导航栏数据列表 | Array | `[]` |
 
 ### Category Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 经典分类，点击左侧导航栏，获取右侧数据列表 | 点击的数据 |
 | change-text | 文本分类模式，更点击左侧导航栏，获取右侧数据列表 | 输入的数据 |
 | change-custom | 自定义，点击左侧导航栏，获取右侧数据列表 | 当前数量 |
@@ -200,20 +200,20 @@ data 数据格式可参考
 ### CategoryPane Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | category-child | 右侧展示当前分类数据 | Array | `[]` |
 | custom-category | 自定义分类数据 | Array | `[]` |
 
 ### CategoryPane Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | on-change | 点击右侧分类数据触发 | 点击的数据 |
 
 ### CategoryPane Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义内容 |
 
 ## 主题定制
@@ -223,7 +223,7 @@ data 数据格式可参考
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-category-bg-color | _rgba(255, 255, 255, 1)_ |
 | --nut-category-list-left-bg-color | _rgba(246, 247, 249, 1)_ |
 | --nut-category-list-item-color | _var(--nut-title-color)_ |

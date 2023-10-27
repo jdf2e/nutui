@@ -399,7 +399,7 @@ app.use(Uploader);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | auto-upload | 是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传 | boolean | `true` |
 | name | `input` 标签 `name` 的名称，发到后台的文件参数名 | string | `"file"` |
 | url | 上传服务器的接口地址 | string | - |
@@ -429,7 +429,7 @@ app.use(Uploader);
 ### FileItem
 
 | 名称 | 说明 | 默认值 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | status | 文件状态值，可选 `ready`,`uploading`,`success`,`error` | `ready` |
 | uid | 文件的唯一标识 | `new Date().getTime().toString()` |
 | name | 文件名称 | - |
@@ -441,7 +441,7 @@ app.use(Uploader);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | start | 文件上传开始 | `options` |
 | progress | 文件上传的进度 | `{event,option,percentage}` |
 | oversize | 文件大小超过限制时触发 | `files` |
@@ -454,7 +454,7 @@ app.use(Uploader);
 ### Uploader Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 默认插槽自定义内容 |
 | upload-icon | 自定义上传按钮中间`icon`区域 |
 | delete-icon | 自定义右上角删除按钮区域 |
@@ -464,7 +464,7 @@ app.use(Uploader);
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Uploader 实例并调用实例方法
 
 | 方法名 | 说明 | 参数 | 返回值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | submit | 手动上传模式，执行上传操作 | - | - |
 | clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | - |
 
@@ -475,7 +475,7 @@ app.use(Uploader);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-uploader-picture-width | _100px_ |
 | --nut-uploader-picture-height | _100px_ |
 | --nut-uploader-background | _#f7f8fa_ |

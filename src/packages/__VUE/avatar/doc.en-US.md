@@ -203,7 +203,7 @@ const handleClick = () => {
 ### Avatar Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | size | The size of the avatar，eg `large`、`normal`、`small`，and numbers | string \| number | `normal` |
 | shape | shape of avatar，eg `square`、`round ` | string | `round` |
 | color | color of text | string | `#666` |
@@ -212,7 +212,7 @@ const handleClick = () => {
 ### AvatarGroup Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | max-count | Max avatars to show | string \| number | - |
 | max-content | When the number of avatars exceeds, a avatar folding element will appear，<br />The content of this element can be `...`、`more`、`+N` | string | `+N` |
 | size | The size of the avatar，eg `large`、`normal`、`small`，支持直接输入数字 | string \| number | `normal` |
@@ -225,7 +225,7 @@ const handleClick = () => {
 ### Avatar Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | default slot for img, icon or text |
 
 ## Theming
@@ -235,7 +235,7 @@ const handleClick = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-actionsheet-light-color | _#f6f6f6_ |
 | --nut-avatar-square | _5px_ |
 | --nut-avatar-large-width | _60px_ |

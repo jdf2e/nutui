@@ -345,7 +345,7 @@ const confirm = ({ selectedValue, selectedOptions }) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:value | 默认选中项 | Array | `[]` |
 | columns | 对象数组，配置每一列显示的数据 | PickerOption[] \| PickerOption[][] | - |
 | field-names`v4.1.4` | 自定义 columns 中的字段 | object | `{ text: 'text', value: 'value', children: 'children' }` |
@@ -361,7 +361,7 @@ const confirm = ({ selectedValue, selectedOptions }) => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | confirm | 点击确定按钮时触发 | `{ selectedValue, selectedOptions }` |
 | cancel | 点击取消按钮时触发 | `{ selectedValue, selectedOptions }` |
 | change | 选项发生改变时触发 | `{ columnIndex, selectedValue, selectedOptions }` |
@@ -369,14 +369,14 @@ const confirm = ({ selectedValue, selectedOptions }) => {
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义滑动数据底部区域 |
 | top | 自定义滑动数据顶部区域 |
 
 ### PickerOption 数据结构
 
 | 键名 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | text | 选项的文字内容 | string \| number | - |
 | value | 选项对应的值，且唯一 | string \| number | - |
 | children | 用于级联选项 | Array | - |
@@ -389,7 +389,7 @@ const confirm = ({ selectedValue, selectedOptions }) => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-picker-cancel-color | _#808080_ |
 | --nut-picker-ok-color | _var(--nut-primary-color)_ |
 | --nut-picker-bar-cancel-font-size | _14px_ |

@@ -318,7 +318,7 @@ const state = reactive({
 ### Menu Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | active-color | 选项的选中态图标颜色 | string | `#F2270C` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | boolean | `true` |
 | scroll-fixed | 滚动后是否固定，可设置固定位置 | boolean \| string \| number | `false` |
@@ -328,13 +328,13 @@ const state = reactive({
 ### Menu Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | icon | 自定义标题图标 |
 
 ### MenuItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | title | 菜单项标题 | string | `当前选中项文字` |
 | options | 选项数组 | Array | - |
 | disabled | 是否禁用菜单 | boolean | `false` |
@@ -346,13 +346,13 @@ const state = reactive({
 ### MenuItem Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | icon | 自定义选项图标 |
 
 ### MenuItem Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 选择 `option` 之后触发 | 选择的 value |
 | toggle | 切换菜单展示状态，传 `true` 为显示，`false` 为隐藏，不传参为取反 | show?: boolean |
 | open | 打开菜单栏时触发 | - |
@@ -365,7 +365,7 @@ const state = reactive({
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-menu-bar-line-height | _48px_ |
 | --nut-menu-item-font-size | _var(--nut-font-size-2)_ |
 | --nut-menu-item-text-color | _var(--nut-title-color)_ |

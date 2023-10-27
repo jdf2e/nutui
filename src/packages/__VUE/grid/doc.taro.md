@@ -187,7 +187,7 @@ import { Dongdong } from '@nutui/icons-vue-taro';
 ### Grid Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | column-num | 列数 | number \| string | `4` |
 | border | 是否显示边框 | boolean | `true` |
 | gutter | 格子之间的间距，默认单位为 `px` | number \| string | `0` |
@@ -200,20 +200,20 @@ import { Dongdong } from '@nutui/icons-vue-taro';
 ### GridItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | text | 文字 | string | - |
 
 ### GridItem Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义所有内容 |
 | text | 自定义文字 |
 
 ### GridItem Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 点击格子时触发 | event: Event |
 
 ## 主题定制
@@ -223,7 +223,7 @@ import { Dongdong } from '@nutui/icons-vue-taro';
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-grid-border-color | _#f5f6f7_ |
 | --nut-grid-item-content-padding | _16px 8px_ |
 | --nut-grid-item-content-bg-color | _var(--nut-white)_ |

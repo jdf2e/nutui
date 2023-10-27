@@ -77,7 +77,7 @@ app.use(Indicator);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | current | Current step | number | `1` |
 | size | Step length | number | `3` |
 | block | Enable block level layout | boolean | `false` |
@@ -91,7 +91,7 @@ app.use(Indicator);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-indicator-bg-color | _var(--nut-primary-color)_ |
 | --nut-indicator-dot-color | _var(--nut-disable-color)_ |
 | --nut-indicator-color | _var(--nut-white)_ |

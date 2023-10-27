@@ -316,7 +316,7 @@ app.use(Tour);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 是否展示引导弹出层 | boolean | `false` |
 | type | 引导类型 | string | `step` |
 | steps | 引导步骤内容 | StepOptions[] | `[]` |
@@ -339,7 +339,7 @@ app.use(Tour);
 ### StepOptions
 
 | 键名 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | target | 目标对象 | id | - |
 | content | 气泡层内容 | string | '' |
 | location | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover) | string | `'bottom'` |
@@ -349,7 +349,7 @@ app.use(Tour);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义气泡层内容 |
 | prev-step | 自定义上一步内容 |
 | next-step | 自定义下一步内容 |
@@ -357,6 +357,6 @@ app.use(Tour);
 ### Events
 
 | 事件名 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | change | 切换步骤时触发 |
 | close | 气泡层关闭时触发 |

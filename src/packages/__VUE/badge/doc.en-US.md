@@ -219,7 +219,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | value | content | string | `-` |
 | max | When value is a numeric value, the maximum value | number | `10000` |
 | z-index | badge z-index | number | `10` |
@@ -233,7 +233,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Default slot |
 | icon | Icon slot |
 
@@ -244,7 +244,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-badge-background-color | _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ |
 | --nut-badge-color | _#fff_ |
 | --nut-badge-font-size | _var(--nut-font-size-1)_ |

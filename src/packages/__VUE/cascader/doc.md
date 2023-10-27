@@ -370,7 +370,7 @@ app.use(Cascader);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 选中值，双向绑定 | Array | - |
 | v-model:visible | 显示选择层 | boolean | `false` |
 | options | 级联数据 | Array | - |
@@ -388,7 +388,7 @@ app.use(Cascader);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 选中值改变时触发 | `(value, pathNodes)` |
 | path-change | 选中项改变时触发 | `(pathNodes)` |
 
@@ -399,7 +399,7 @@ app.use(Cascader);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-cascader-font-size | _var(--nut-font-size-2)_ |
 | --nut-cascader-line-height | _22px_ |
 | --nut-cascader-tabs-item-padding | _0 10px_ |

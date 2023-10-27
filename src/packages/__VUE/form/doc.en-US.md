@@ -431,20 +431,20 @@ app.use(FormItem);
 ### Form Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | model-value | Form data object (required when using form verification) | object |  |
 | rules | Unified configuration FormItem attr rules | { prop: FormItemRule[] } | `{}` |
 
 ### Form Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | validate | Triggered after any single table item fails to be verified | The `prop` value of the form item to be verified, whether the verification is passed, and the error message (if any) |
 
 ### FormItem Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | required | Whether to display the red asterisk next to the label of the required field | boolean | `false` |
 | prop | The v-model field of the form field is required when the form verification function is used | string | - |
 | rules | Define validation rules | FormItemRule [] | [] |
@@ -460,7 +460,7 @@ app.use(FormItem);
 Use the `rules` attribute of FormItem to define verification rules. The optional attributes are as follows:
 
 | Attribute | Default | Type |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | required | Is it a required field | boolean |
 | message | Error prompt copy | string |
 | validator | Verification by function | (value:string,rule?:FormItemRule) => boolean \| Promise |
@@ -469,7 +469,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 ### FormItem Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Default slot |
 | label | Custom `label` slot |
 
@@ -485,7 +485,7 @@ use slot
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Form instance and call instance methods.
 
 | Name | Description | Arguments | Return value |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | submit | Method of submitting form for verification | - | - |
 | reset | Clear verification results | - | - |
 | validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | - |
@@ -497,7 +497,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-form-item-error-line-color | _var(--nut-required-color)_ |
 | --nut-form-item-required-color | _var(--nut-required-color)_ |
 | --nut-form-item-error-message-color | _var(--nut-required-color)_ |

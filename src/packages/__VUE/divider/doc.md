@@ -108,7 +108,7 @@ app.use(Divider);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | dashed | 是否使用虚线 | boolean | `false` |
 | hairline | 是否使用 `0.5px` 线 | boolean | `true` |
 | content-position | 内容位置，可选值为 `left`、`right` | string | `center` |
@@ -117,7 +117,7 @@ app.use(Divider);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 内容，仅在 `direction` 为 `horizontal` 时生效 |
 
 ## 主题定制
@@ -127,7 +127,7 @@ app.use(Divider);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-divider-margin | _16px 0_ |
 | --nut-divider-text-font-size | _var(--nut-font-size-2)_ |
 | --nut-divider-text-color | _#909ca4_ |

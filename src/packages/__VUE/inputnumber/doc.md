@@ -242,7 +242,7 @@ app.use(InputNumber);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 初始值 | string \| number | - |
 | input-width | 输入框宽度 | string | `` |
 | button-size | 操作符+、-尺寸 | string | `` |
@@ -256,14 +256,14 @@ app.use(InputNumber);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | left-icon | 自定义左侧按钮 |
 | right-icon | 自定义右侧按钮 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | add | 点击增加按钮时触发 | `(event: Event)` |
 | reduce | 点击减少按钮时触发 | `(event: Event) ` |
 | overlimit | 点击不可用的按钮时触发 | `(event: Event,type:string (reduce or add) )` |
@@ -278,7 +278,7 @@ app.use(InputNumber);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-inputnumber-icon-color | _var(--nut-title-color)_ |
 | --nut-inputnumber-icon-void-color | _var(--nut-disable-color)_ |
 | --nut-inputnumber-icon-size | _20px_ |

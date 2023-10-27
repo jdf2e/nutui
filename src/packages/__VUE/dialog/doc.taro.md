@@ -112,7 +112,7 @@ const verticalClick = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | title | 标题 | string | - |
 | content | 内容，支持 `HTML` 和组件 | string \| VNode | - |
 | teleport | 指定挂载节点 | string | `"body"` |
@@ -137,7 +137,7 @@ const verticalClick = () => {
 ### Events
 
 | 事件名 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | ok | 确定按钮回调 | Function | - |
 | cancel | 取消按钮回调 | Function | - |
 | closed | 关闭弹框回调 | Function | - |
@@ -146,7 +146,7 @@ const verticalClick = () => {
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | header | 自定义标题区域 |
 | default | 自定义内容 |
 | footer | 自定义底部按钮区域 |
@@ -158,7 +158,7 @@ const verticalClick = () => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-dialog-width | _296px_ |
 | --nut-dialog-header-font-weight | _normal_ |
 | --nut-dialog-header-color | _rgba(38, 38, 38, 1)_ |

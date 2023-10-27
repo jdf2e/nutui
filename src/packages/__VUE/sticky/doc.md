@@ -89,7 +89,7 @@ const container = ref(null);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | position | 吸附位置（`top`、`bottom`） | string | `top` |
 | top | 吸顶距离，`position` 为 `top` 时生效 | number | `0` |
 | bottom | 吸底距离，`position` 为 `bottom` 时生效 | number | `0` |
@@ -99,5 +99,5 @@ const container = ref(null);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 吸附状态改变时触发 | `fixed: boolean` |

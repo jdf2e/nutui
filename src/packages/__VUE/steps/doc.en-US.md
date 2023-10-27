@@ -159,7 +159,7 @@ import { Service, People, Location2 } from '@nutui/icons-vue';
 ### Steps Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | direction | Show direction，`horizontal`,`vertical` | string | `horizontal` |
 | current | Current step | number \| string | `0` |
 | progress-dot | Dot step bar | boolean | `false` |
@@ -167,20 +167,20 @@ import { Service, People, Location2 } from '@nutui/icons-vue';
 ### Steps Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click-step | Triggered when the title or icon of the step is clicked | index: number |
 
 ### Step Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | title | Title of the process step | string | `Step` |
 | content | Descriptive text of process steps (supporting HTML structure) | String | `Step description` |
 
 ### Step Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | title | Step title |
 | content | Step content |
 | icon | Step icon |
@@ -192,7 +192,7 @@ import { Service, People, Location2 } from '@nutui/icons-vue';
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-steps-base-icon-width | _25px_ |
 | --nut-steps-base-icon-height | _25px_ |
 | --nut-steps-base-icon-line-height | _25px_ |

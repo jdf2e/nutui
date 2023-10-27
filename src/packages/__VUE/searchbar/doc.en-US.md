@@ -251,7 +251,7 @@ app.use(Searchbar);
 ### Props
 
 | Parameter | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | current input value | number / | string | `''` |
 | label | left text of search box | string | `''` |
 | shape | search box shape, optional value is `square` `round` | string | `round` |
@@ -272,7 +272,7 @@ app.use(Searchbar);
 ### Events
 
 | Event Name | Description | Callback Parameters |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | fires when something is entered | `val, event` |
 | focus | fires on focus | `val, event` |
 | blur | Triggered when out of focus | `val, event` |
@@ -285,7 +285,7 @@ app.use(Searchbar);
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | leftin | left icon in the input box |
 | leftout | left Icon outside the input box |
 | rightin | right icon in the input box |
@@ -299,7 +299,7 @@ The component provides the following CSS variables, which can be used to customi
 [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-searchbar-background | _var(--nut-white)_ |
 | --nut-searchbar-right-out-color | _var(--nut-black)_ |
 | --nut-searchbar-padding | _9px 16px_ |

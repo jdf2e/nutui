@@ -154,7 +154,7 @@ app.use(TrendArrow);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | rate | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0 | number | - |
 | digits | decimal precision | number | `2` |
 | show-sign | Whether to display plus and minus signs | boolean | `false` |
@@ -168,7 +168,7 @@ app.use(TrendArrow);
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | up-icon | custom up icon |
 | down-icon | custom down icon |
 
@@ -179,6 +179,6 @@ app.use(TrendArrow);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-trendarrow-font-size | _14px_ |
 | --nut-trendarrow-before-icon-margin | _4px_ |

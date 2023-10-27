@@ -414,7 +414,7 @@ const clickIndex = (key) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | height | 电梯区域的高度 | number \| string | `200px` |
 | accept-key | 索引 key 值 | string | `title` |
 | index-list | 索引列表 | Array（`item` 需包含 `id`、`name` 属性, `name` 支持传入 `html` 结构） | `[{id: 0, name: ''}]` |
@@ -425,13 +425,13 @@ const clickIndex = (key) => {
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 自定义左侧索引下每条数据的内容 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click-item | 点击内容 | `key: string, item: { id: 0, name: '' }` |
 | click-index | 点击索引 | `key: string` |
 | change | 索引改变 | `index: number` |
@@ -439,7 +439,7 @@ const clickIndex = (key) => {
 ### Methods
 
 | 方法名 | 说明 | 参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | scrollTo | 滚动到对应索引的位置 | `index:number` |
 
 ## 主题定制
@@ -449,7 +449,7 @@ const clickIndex = (key) => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-elevator-list-item-highcolor | _var(--nut-primary-color)_ |
 | --nut-elevator-list-item-font-size | _12px_ |
 | --nut-elevator-list-item-font-color | _#333333_ |

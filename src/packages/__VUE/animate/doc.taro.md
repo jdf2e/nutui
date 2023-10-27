@@ -105,7 +105,7 @@ const onClick2 = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | show`v4.1.1` | 控制动画，当值从 false 变为 true 时会触发一次动画 | boolean | `false` |
 | type | 动画类型，见下方 `type` 值说明 | string | `-` |
 | loop | 是否循环执行。`true`-循环执行; `false`-执行一次 | boolean | `false` |
@@ -115,14 +115,14 @@ const onClick2 = () => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | animate`v4.1.1` | 动画触发 | - |
 | click | 点击元素时触发 | event: Event |
 
 ### type 值说明
 
 | 序号 | 参数名称 | 参数说明 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | 1 | shake | 抖动，建议 loop 为 true |
 | 2 | ripple | 不循环则是放大后缩小，循环则是心跳 |
 | 3 | breath | 呼吸灯，建议 loop 为 true |

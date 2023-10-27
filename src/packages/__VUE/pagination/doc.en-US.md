@@ -108,7 +108,7 @@ const pageChange = (value) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Current page number | number | `1` |
 | mode | Mode, can be set to simple or multi | string | `multi` |
 | prev-text | Previous text | string | `Previous` |
@@ -122,13 +122,13 @@ const pageChange = (value) => {
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Emitted when current page changed | value |
 
 ### Slots
 
 | Name | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | prev-text | Custom prev text | - |
 | next-text | Custom next text | - |
 | page | Custom pagination item | - |
@@ -140,7 +140,7 @@ const pageChange = (value) => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-pagination-color | _var(--nut-primary-color)_ |
 | --nut-pagination-font-size | _var(--nut-font-size-2)_ |
 | --nut-pagination-item-border-color | _#e4e7eb_ |

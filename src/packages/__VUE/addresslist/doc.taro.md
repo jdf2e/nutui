@@ -238,7 +238,7 @@ app.use(AddressList);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | data | 地址数组 | Array | - |
 | long-press | 长按功能 | boolean | `false` |
 | swipe-edition | 右滑功能 | boolean | `false` |
@@ -248,7 +248,7 @@ app.use(AddressList);
 ### Events
 
 | 事件名 | 说明 | 回调参数 | 备注 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | del-icon | 点击删除图标 | event: Event,item | 公共 |
 | edit-icon | 点击编辑图标 | event: Event,item | 公共 |
 | click-item | 点击地址列表每一项 | event: Event,item | 公共 |
@@ -263,7 +263,7 @@ app.use(AddressList);
 `AddressList` 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换
 
 | 名称 | 说明 | 作用域参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | item-infos | 地址列表项姓名/联系方式/默认一行 | `{ item }` |
 | item-icon | 地址列表项图标 | `{ item }` |
 | item-addr | 地址列表项详细地址 | `{ item }` |
@@ -301,7 +301,7 @@ const dataOptions = {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-addresslist-bg | _#fff_ |
 | --nut-addresslist-border | _#f0f0f0_ |
 | --nut-addresslist-font-color | _#333333_ |

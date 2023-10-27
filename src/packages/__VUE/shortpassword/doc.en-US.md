@@ -195,7 +195,7 @@ app.use(NumberKeyboard);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Current value | string |  |
 | v-model:visible | Whether to show shortpassword | boolean | `false` |
 | title | title | string | `Please enter password  ` |
@@ -208,7 +208,7 @@ app.use(NumberKeyboard);
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | close | Trigger an event when the close icon is clicked | - |
 | complete | Input complete callback | `value:string` |
 | focus | Emitted when input is focused | - |
@@ -222,7 +222,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value | Description |
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-shortpassword-background-color | _rgba(245, 245, 245, 1)_ |
 | --nut-shortpassword-border-color | _#ddd_ |
 | --nut-shortpassword-error | _var(--nut-primary-color)_ |

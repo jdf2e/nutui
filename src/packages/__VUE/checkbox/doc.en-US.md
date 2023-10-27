@@ -413,7 +413,7 @@ When the value changes, the `change` event will be triggered
 ### Checkbox Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | If selected | boolean | `false` |
 | disabled | Disable selection | boolean | `false` |
 | text-position | The position of the text, optional value：`left`,`right` | string | `right` |
@@ -425,7 +425,7 @@ When the value changes, the `change` event will be triggered
 ### Checkbox Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | icon | Icon when not selected |
 | checkedIcon | Icon when selected |
 | indeterminate | Icon when half selected |
@@ -433,7 +433,7 @@ When the value changes, the `change` event will be triggered
 ### CheckboxGroup Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Identifier of the currently selected item, corresponding to `label` | Array | - |
 | disabled | Whether to disable the selection, which will be used for all check boxes under it | boolean | `false` |
 | max | Limit the number of choices. It cannot be used with select all / cancel / invert selection. `0 'means there is no limit | number | `0` |
@@ -441,19 +441,19 @@ When the value changes, the `change` event will be triggered
 ### Checkbox Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value |
 
 ### CheckboxGroup Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items |
 
 ### CheckboxGroup Methods
 
 | methodName | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | toggleAll | Select all / cancel | `true`,to select all，`false`,cancel the selection |
 | toggleReverse | Reverse selection | - |
 
@@ -464,7 +464,7 @@ When the value changes, the `change` event will be triggered
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-checkbox-label-color | _#1d1e1e_ |
 | --nut-checkbox-label-disable-color | _#999_ |
 | --nut-checkbox-icon-disable-color | _#d6d6d6_ |

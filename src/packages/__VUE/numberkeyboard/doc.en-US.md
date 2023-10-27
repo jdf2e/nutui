@@ -278,7 +278,7 @@ For online debugging, please change the browser to mobile mode
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | Whether to show keyboard | boolean | `false` |
 | v-model | Current value | string | - |
 | title | Keyboard title | string | - |
@@ -293,7 +293,7 @@ For online debugging, please change the browser to mobile mode
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | input | Emitted when a key is pressed | key: string |
 | delete | Emitted when the delete key is pressed | - |
 | close | Emitted when the close button or non-keyboard area is clicked is clicked | - |
@@ -306,7 +306,7 @@ For online debugging, please change the browser to mobile mode
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-numberkeyboard-width | _100%_ |
 | --nut-numberkeyboard-padding | _0_ |
 | --nut-numberkeyboard-background-color | _#f2f3f5_ |

@@ -399,7 +399,7 @@ app.use(Uploader);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | auto-upload | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload | boolean | `true` |
 | name | The name of the `input` tag `name`, the file parameter name sent to the background | string | `"file"` |
 | url | The interface address of the upload server | string | - |
@@ -428,7 +428,7 @@ app.use(Uploader);
 ### FileItem
 
 | Attribute | Description | Default |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | status | File status value, optional `ready`,`uploading`,`success`,`error` | `ready` |
 | uid | Unique ID of the file | `new Date().getTime().toString()` |
 | name | File name | - |
@@ -440,7 +440,7 @@ app.use(Uploader);
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | start | File upload starts | `options` |
 | progress | The progress of the file upload | `{event,option,percentage}` |
 | oversize | Triggered when the file size exceeds the limit | `files` |
@@ -453,7 +453,7 @@ app.use(Uploader);
 ### Uploader Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Default slot |
 | upload-icon | Custom Uploader Button Center `icon` |
 | delete-icon | Custom Right Delete Button |
@@ -463,7 +463,7 @@ app.use(Uploader);
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Uploader instance and call instance methods.
 
 | Name | Description | Arguments | Return value |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | submit | Manual upload mode, perform upload operation | - | - |
 | clearUploadQueue | Empty the selected file queue (this method is generally used when uploading in manual mode) | index | - |
 
@@ -474,7 +474,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-uploader-picture-width | _100px_ |
 | --nut-uploader-picture-height | _100px_ |
 | --nut-uploader-background | _#f7f8fa_ |

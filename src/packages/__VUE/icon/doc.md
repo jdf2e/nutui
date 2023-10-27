@@ -30,7 +30,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | name | 图标名称或图片链接 | string | - |
 | color | 图标颜色 | string | - |
 | width | 图标大小，如 `20px` `2em` `2rem` | string \| object | - |
@@ -39,7 +39,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 点击图标时触发 | event: Event |
 
 ## 方式二： IconFont 全量使用
@@ -131,7 +131,7 @@ app.use(IconFont);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | name | 图标名称或图片链接 | string | - |
 | color | 图标颜色 | string | - |
 | size | 图标大小，如 `20px` `2em` `2rem` | string \| object | - |
@@ -142,7 +142,7 @@ app.use(IconFont);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 点击图标时触发 | event: Event |
 
 ## 方式三：使用自定义图标库

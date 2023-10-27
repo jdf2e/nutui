@@ -155,7 +155,7 @@ import { Service, People, Location2 } from '@nutui/icons-vue-taro';
 ### Steps Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | direction | 显示方向，`horizontal`,`vertical` | string | `horizontal` |
 | current | 当前所在的步骤 | number \| string | `0` |
 | progress-dot | 点状步骤条 | boolean | `false` |
@@ -163,20 +163,20 @@ import { Service, People, Location2 } from '@nutui/icons-vue-taro';
 ### Steps Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click-step | 点击步骤的标题或图标时触发 | index: number |
 
 ### Step Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | title | 流程步骤的标题 | string | `步骤` |
 | content | 流程步骤的描述性文字(支持 html 结构) | string | `步骤描述` |
 
 ### Step Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | title | 步骤标题 |
 | content | 步骤内容 |
 | icon | 步骤图标 |
@@ -188,7 +188,7 @@ import { Service, People, Location2 } from '@nutui/icons-vue-taro';
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-steps-base-icon-width | _25px_ |
 | --nut-steps-base-icon-height | _25px_ |
 | --nut-steps-base-icon-line-height | _25px_ |

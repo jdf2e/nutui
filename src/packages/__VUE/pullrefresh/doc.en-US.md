@@ -125,7 +125,7 @@ const refreshFun = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | Loading status | boolean | `false` |
 | pull-distance | The distance to trigger the pull refresh | number \| string | `50` |
 | head-height | Height of head | number \| string | `50` |
@@ -138,14 +138,14 @@ const refreshFun = () => {
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | Emitted when draging or status changed | {status:string,distance:number} |
 | refresh | Emitted after pulling refresh | - |
 
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | pulling | Content of head when at pulling |
 | loosing | Content of head when at loosing |
 | loading | Content of head when at loading |

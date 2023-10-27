@@ -160,7 +160,7 @@ const setReduceVal = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | percentage | 百分比 | number | `0` |
 | is-show-percentage | 是否需要展示百分号 | boolean | `true` |
 | stroke-color | 进度条背景色 | string | `#f30` |
@@ -175,7 +175,7 @@ const setReduceVal = () => {
 ### Slots
 
 | 名称 | 说明 | 作用域参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | icon-name | 右侧 `icon` 内容 | - |
 
 ## 主题定制
@@ -185,7 +185,7 @@ const setReduceVal = () => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-progress-inner-background-color | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_ |
 | --nut-progress-insidetext-background | _var(--nut-progress-inner-background-color)_ |
 | --nut-progress-outer-background-color | _#f3f3f3_ |

@@ -110,7 +110,7 @@ const reduce = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | progress | Progress Rate | number \| string | `0` |
 | stroke-width | Stroke width | number \| string | `5` |
 | radius | radius | number \| string | `50` |
@@ -122,7 +122,7 @@ const reduce = () => {
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Custom Content |
 
 ## Theming
@@ -132,7 +132,7 @@ const reduce = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-circleprogress-primary-color | _var(--nut-primary-color)_ |
 | --nut-circleprogress-path-color | _#e5e9f2_ |
 | --nut-circleprogress-text-color | _#000000_ |

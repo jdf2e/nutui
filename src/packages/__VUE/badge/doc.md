@@ -219,7 +219,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | value | 显示的内容 | string | `-` |
 | max | `value` 为数值时，最大值 | number | `10000` |
 | z-index | 徽标的 `z-index` 值 | number | `10` |
@@ -233,7 +233,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | default | 徽标包裹的子元素 |
 | icon | 徽标自定义 |
 
@@ -244,7 +244,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-badge-background-color | _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ |
 | --nut-badge-color | _#fff_ |
 | --nut-badge-font-size | _var(--nut-font-size-1)_ |

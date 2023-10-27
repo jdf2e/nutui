@@ -684,7 +684,7 @@ app.use(Calendar);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | 是否可见 | boolean | `false` |
 | type `v4.0.1` | 类型，日期单择`one`，区间选择`range`,日期多选`multiple`,周选择`week`(`v4.0.1`) | string | '`one`' |
 | poppable | 是否弹窗状态展示 | boolean | `true` |
@@ -705,7 +705,7 @@ app.use(Calendar);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | choose | 选择之后或是点击确认按钮触发,日期数组（包含年月日和星期） | `(string \| string[])[]` |
 | close | 关闭时触发 | - |
 | select | 点击/选择后触发 | `(string \| string[])[]` |
@@ -713,7 +713,7 @@ app.use(Calendar);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | btn | 自定义日历标题下部，可用以添加自定义操作 |
 | day | 日期信息 |
 | top-info | 日期顶部信息 |
@@ -725,7 +725,7 @@ app.use(Calendar);
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 `Calendar` 实例并调用实例方法。
 
 | 方法名 | 说明 | 参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | scrollToDate | 滚动到指定日期所在月,如：'2021-12-30' | `string` |
 | initPosition `v4.0.1` | 初始化滚动位置 | 无 |
 
@@ -736,7 +736,7 @@ app.use(Calendar);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-calendar-primary-color | _var(--nut-primary-color)_ |
 | --nut-calendar-choose-color | _var(--nut-primary-color)_ |
 | --nut-calendar-choose-font-color | _var(--nut-primary-color)_ |

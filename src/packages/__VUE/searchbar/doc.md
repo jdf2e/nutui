@@ -251,7 +251,7 @@ app.use(Searchbar);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 当前输入的值 | number \| string | `''` |
 | label | 搜索框左侧文本 | string | `''` |
 | shape | 搜索框形状，可选值为 `square` `round` | string | `round` |
@@ -272,7 +272,7 @@ app.use(Searchbar);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 输入内容时触发 | `val, event` |
 | focus | 聚焦时触发 | `val, event` |
 | blur | 失焦时触发 | `val, event` |
@@ -285,7 +285,7 @@ app.use(Searchbar);
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | leftin | 输入框内 左 icon |
 | leftout | 输入框外 左 icon |
 | rightin | 输入框内 右 icon |
@@ -298,7 +298,7 @@ app.use(Searchbar);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-searchbar-background | _var(--nut-white)_ |
 | --nut-searchbar-right-out-color | _var(--nut-black)_ |
 | --nut-searchbar-padding | _9px 16px_ |

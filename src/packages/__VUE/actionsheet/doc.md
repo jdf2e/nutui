@@ -215,7 +215,7 @@ const click = (param) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | 是否展示动作面板 | boolean | `false` |
 | menu-items | 列表项 | MenuItems[] | `[ ] ` |
 | option-tag | 设置列表项标题展示使用参数 | string | `'name'` |
@@ -230,7 +230,7 @@ const click = (param) => {
 ### MenuItems 数据结构
 
 | 键名 | 说明 | 类型 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | name | 标题 | string |
 | subname | 二级标题 | string |
 | color | 选项字体颜色（选中项颜色层级>选项字体颜色） | string |
@@ -240,7 +240,7 @@ const click = (param) => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | choose | 选择之后触发 | 选中列表项 `item`, 选中的索引值 `index` |
 | cancel | 点击取消文案时触发 | - |
 | close | 点击遮罩层时触发 | event: Event |
@@ -252,7 +252,7 @@ const click = (param) => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-actionsheet-light-color | _#f6f6f6_ |
 | --nut-actionsheet-item-border-bottom | _none_ |
 | --nut-actionsheet-item-font-size | _var(--nut-font-size-2)_ |

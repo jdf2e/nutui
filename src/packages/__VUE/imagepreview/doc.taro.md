@@ -179,7 +179,7 @@ app.use(ImagePreview);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | show | 是否展示预览图片 | boolean | `false` |
 | images | 预览图片数组 | ImageArray[] | `[]` |
 | autoplay | 自动轮播时长，0 表示不会自动轮播 | number \| string | `3000` |
@@ -196,25 +196,25 @@ app.use(ImagePreview);
 ### ImageArray 数据结构
 
 | 键名 | 说明 | 类型 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | src | 预览图片链接 | string |
 
 ### VideoArray 数据结构
 
 | 键名 | 说明 | 类型 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | source | 视频地址和类型设置，等同于 Video 组件的 [source 属性](#/zh-CN/video) | object |
 | options | 控制视频播放属性，等同于 Video 组件的 [options 属性](#/zh-CN/video) | object |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | close | 点击遮罩关闭图片预览时触发 | 无 |
 | change | 切换图片时触发 | index:当前图片索引 |
 
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | closeIcon | 自定义关闭图片 |

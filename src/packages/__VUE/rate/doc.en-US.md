@@ -167,7 +167,7 @@ const value = ref(3);
 ### Props
 
 | Attribute | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | The current number of stars, you can use v-model to bind data in both directions | number \| string | - |
 | count | Total number \| string of stars | number \| string | `5` |
 | active-color | Icon selection color | string | `#fa200c` |
@@ -183,7 +183,7 @@ const value = ref(3);
 ### Events
 
 | Event | Description | Arguments |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | An event that fires whenever the current score is modified | val |
 
 ## Theming
@@ -193,6 +193,6 @@ const value = ref(3);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-rate-icon-color | _var(--nut-primary-color)_ |
 | --nut-rate-icon-void-color | _var(--nut-disable-color)_ |

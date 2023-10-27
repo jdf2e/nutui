@@ -209,7 +209,7 @@ const state = reactive({
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | img-url | 左侧图片 `URL` | string | - |
 | title | 标题 | string | - |
 | price | 商品价格 | string | - |
@@ -222,13 +222,13 @@ const state = reactive({
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | click | 点击事件 | event: MouseEvent |
 
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | prolist | 自定义商品介绍 |
 | price | 价格自定义内容 |
 | origin | 价格后方自定义内容 |
@@ -242,7 +242,7 @@ const state = reactive({
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-card-font-size-0 | _var(--nut-font-size-0)_ |
 | --nut-card-font-size-1 | _var(--nut-font-size-1)_ |
 | --nut-card-font-size-2 | _var(--nut-font-size-2)_ |

@@ -108,7 +108,7 @@ In horizontal mode, the wrap property controls whether child elements are wrappe
 ### Props
 
 | Property | Description | Type | Default |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | direction | Spacing direction | ` vertical \|   horizontal` | horizontal |
 | align | Cross axis alignment | `start \| end \|center \| baseline` | `-` |
 | justify | Spindle alignment | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-` |
@@ -119,7 +119,7 @@ In horizontal mode, the wrap property controls whether child elements are wrappe
 ### Slots
 
 | Name | Description |
-|  ---  |  ---  |
+| --- | --- |
 | default | Default slot |
 
 ## Theming
@@ -130,5 +130,5 @@ The component provides the following CSS variables, which can be used to customi
 to [ConfigProvider component](#/zh-CN/component/configprovider)。
 
 | Name | Default | Description |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | \--nutui-space-gap | `8px` | Spacing size |

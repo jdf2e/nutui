@@ -580,7 +580,7 @@ app.use(Address);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model:visible | 是否打开地址选择 | boolean | `false` |
 | v-model:value | 设置默认选中值 | Array | `[]` |
 | type | 地址选择类型 `exist/custom/custom2` | string | `custom` |
@@ -607,7 +607,7 @@ app.use(Address);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 自定义选择地址时，选择地区时触发 | 参考 `onChange` |
 | selected | 选择已有地址列表时触发 | 参考 `selected` |
 | close | 地址选择弹框关闭时触发 | 参考 `close` |
@@ -617,7 +617,7 @@ app.use(Address);
 ### change 回调参数
 
 | 参数 | 说明 | 可选值 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | custom | 当前点击的行政区域 | `province(省) / city(市) / country(县) / town(乡)` |
 | next | 当前点击的行政区域的下一级 | `province(省) / city(市) / country(县) / town(乡)` |
 | value | 当前点击的行政区域的值（返回传入的值） | `{}` |
@@ -625,7 +625,7 @@ app.use(Address);
 ### selected 回调参数
 
 | 参数 | 说明 | 可能值 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | 第一个参数`（prevExistAdd）` | 选择前选中的地址 | `{}` |
 | 第二个参数`（nowExistAdd）` | 当前选中的地址 | `{}` |
 | 第三个参数`（arr）` | 选择完之后的已有地址列表（`selectedAddress` 值发生改变） | `{}` |
@@ -633,14 +633,14 @@ app.use(Address);
 ### close 回调参数
 
 | 参数 | 说明 | 可能值 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | type | 地址选择类型 `exist/custom/custom2` | `exist/custom/custom2` |
 | data | 选择地址的值,`custom` 时，`addressStr` 为选择的地址组合 | `{}` |
 
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | bottom | 可自定义底部 |
 | icon | 自定义选中项的图标 |
 | unselected-icon | 未选中地址时的图标 |
@@ -654,7 +654,7 @@ app.use(Address);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-|  ---  |  ---  |
+| --- | --- |
 | --nut-address-region-tab-line | _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_ |
 | --nut-address-icon-color | _var(--nut-primary-color)_ |
 | --nut-address-header-title-font-size | _18px_ |

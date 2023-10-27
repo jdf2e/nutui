@@ -125,7 +125,7 @@ const refreshFun = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-|  ---  |  ---  |  ---  |  ---  |
+| --- | --- | --- | --- |
 | v-model | 是否触发下拉刷新 | boolean | `false` |
 | pull-distance | 触发下拉刷新的距离 | number \| string | `50` |
 | head-height | 顶部内容高度 | number \| string | `50` |
@@ -138,14 +138,14 @@ const refreshFun = () => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-|  ---  |  ---  |  ---  |
+| --- | --- | --- |
 | change | 下拉过程或状态改变时触发 | {status:string,distance:number} |
 | refresh | 下拉刷新事件回调 | - |
 
 ### Slots
 
 | 名称 | 说明 |
-|  ---  |  ---  |
+| --- | --- |
 | pulling | 下拉过程的顶部内容 |
 | loosing | 释放过程中顶部内容 |
 | loading | 加载过程中顶部内容 |
