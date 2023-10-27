@@ -78,7 +78,7 @@ app.use(Ecard);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | modelValue | 购买电子卡所需价钱 | number | `0` |
 | choose-text | 选择面值文案 | string | `请选择电子卡面值` |
 | other-value-text | 其他面值文案 | string | `其他面值` |
@@ -93,7 +93,7 @@ app.use(Ecard);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | 选中电子卡事件 | 点击的数据 |
 | input-change | 更改 `input` 框触发事件 | 输入的数据 |
 | change-step | 更改数量时触发 | 当前数量，当前选中的卡面值 |
@@ -101,7 +101,7 @@ app.use(Ecard);
 ### DataList 数据结构
 
 | 键名 | 说明 | 类型 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | price | 每张电子卡价格 | string |
 
 ## 主题定制
@@ -111,5 +111,5 @@ app.use(Ecard);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-ecard-bg-color | _#f0f2f5_ |

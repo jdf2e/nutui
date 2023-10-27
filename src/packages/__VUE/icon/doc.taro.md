@@ -179,7 +179,7 @@ import './assets/font/iconfont.css';
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | 图标名称或图片链接 | string | - |
 | color | 图标颜色 | string | - |
 | size | 图标大小，如 `20px` `2em` `2rem` | string \| object | - |
@@ -190,5 +190,5 @@ import './assets/font/iconfont.css';
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击图标时触发 | event: Event |

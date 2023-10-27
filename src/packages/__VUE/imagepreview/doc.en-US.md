@@ -309,7 +309,7 @@ app.use(ImagePreview);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | show | Whether to show preview | boolean | `false` |
 | videos | Videos Array(Videos are before images, not support in taro) | VideoArray[] | `[]` |
 | images | Images array | ImageArray[] | `[]` |
@@ -329,25 +329,25 @@ app.use(ImagePreview);
 ### Data Structure of ImageArray
 
 | Key | Description | Type |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | src | img url | string |
 
 ### Data Structure of VideoArray
 
 | Key | Description | Type |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | source | Video url and type settings | object |
 | options | Control video playback properties | object |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | close | Emitted when closing ImagePreview | - |
 | change | Emitted when current image changed | index |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | closeIcon | Custom close icon |

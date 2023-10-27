@@ -578,7 +578,7 @@ If you want to select a province, you need to set the region ID in the order of 
 # API
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model:visible | Whether to open address | boolean | `false` |
 | v-model:value | Default value | Array | `[]` |
 | type | Choose type: `exist/custom/custom2` | string | `custom` |
@@ -598,7 +598,7 @@ If you want to select a province, you need to set the region ID in the order of 
 ## Event
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Emitted when to selected custom address | reference `onChange` |
 | selected | Emitted when to selected exist address | reference `selected` |
 | close | Emitted when to close | reference `close` |
@@ -608,7 +608,7 @@ If you want to select a province, you need to set the region ID in the order of 
 ## change
 
 | Attribute | Description | Options |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | custom | The administrative region currently clicked | `province / city / country / town` |
 | next | The next level of the administrative region currently clicked | `province / city / country / town` |
 | value | The value of the currently clicked administrative region | `{}` |
@@ -616,7 +616,7 @@ If you want to select a province, you need to set the region ID in the order of 
 ## selected
 
 | Attribute | Description | Options |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | First Option（prevExistAdd） | Select the previously selected address | `{}` |
 | Second Option（nowExistAdd） | Currently selected address | `{}` |
 | Third Option（arr） | After selecting the existing address list | `{}` |
@@ -624,14 +624,14 @@ If you want to select a province, you need to set the region ID in the order of 
 ## close
 
 | Attribute | Description | Options |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | type | Selected Type | `exist/custom/custom2` |
 | data | Selected Data | `{}` |
 
 ## Slot
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | bottom | Bottom slot |
 | icon | Selected icon slot |
 | unselected-icon | Unselected icon slot |
@@ -645,7 +645,7 @@ If you want to select a province, you need to set the region ID in the order of 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-address-region-tab-line | _linear-gradient(90deg, var(--nut-primary-color) 0%, rgba(#fa2c19, 0.15) 100%)_ |
 | --nut-address-icon-color | _var(--nut-primary-color)_ |
 | --nut-address-header-title-font-size | _18px_ |

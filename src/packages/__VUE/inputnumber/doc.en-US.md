@@ -242,7 +242,7 @@ Asynchronous modification through `change` event and `model-value`
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Initial value | string \| number | - |
 | input-width | Input box width | string | `` |
 | button-size | Operators +, - Dimensions | string | `` |
@@ -256,14 +256,14 @@ Asynchronous modification through `change` event and `model-value`
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | left-icon | Custom left icon |
 | right-icon | Custom right icon |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | add | Triggered when the Add button is clicked | `event: Event ` |
 | reduce | Triggered when the decrease button is clicked | `event: Event` |
 | overlimit | Triggered when an unavailable button is clicked | `event: Event,type:string (reduce or add)` |
@@ -278,7 +278,7 @@ Asynchronous modification through `change` event and `model-value`
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-inputnumber-icon-color | _var(--nut-title-color)_ |
 | --nut-inputnumber-icon-void-color | _var(--nut-disable-color)_ |
 | --nut-inputnumber-icon-size | _20px_ |

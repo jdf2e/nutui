@@ -191,7 +191,7 @@ const teleportClick = (teleport: string) => {
 ### DialogOptions
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Title | string | - |
 | id | Identifier, share one instance at the same time, default to multiple instances | string \| object | `new Date().getTime()` |
 | content | Content, support HTML | string | - |
@@ -220,7 +220,7 @@ const teleportClick = (teleport: string) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Title | string | - |
 | content | Content, support HTML | string | - |
 | teleport | Specifies a target element where Dialog will be mounted | string | `"body"` |
@@ -245,7 +245,7 @@ const teleportClick = (teleport: string) => {
 ### Events
 
 | Event | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | ok | Emitted when the confirm button is clicked | Function | - |
 | cancel | Emitted when the cancel button is clicked | Function | - |
 | closed | Emitted when Dialog is closed | Function | - |
@@ -254,7 +254,7 @@ const teleportClick = (teleport: string) => {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | header | Custom title |
 | default | Custom default |
 | footer | Custom footer |
@@ -266,7 +266,7 @@ const teleportClick = (teleport: string) => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-dialog-width | _296px_ |
 | --nut-dialog-header-font-weight | _normal_ |
 | --nut-dialog-header-color | _rgba(38, 38, 38, 1)_ |

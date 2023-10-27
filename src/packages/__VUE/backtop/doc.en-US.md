@@ -89,7 +89,7 @@ const handleClick = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | el-id | Get the parent element of the listening element | string | - |
 | bottom | Distance from bottom of page | number | `20` |
 | right | Distance from the right side of the page | number | `10` |
@@ -101,13 +101,13 @@ const handleClick = () => {
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when component is clicked | `event: MouseEvent` |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | The default slot is used to customize the content |
 
 ## Theming

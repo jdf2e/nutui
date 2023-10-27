@@ -493,7 +493,7 @@ You can manually switch through `api` (`prev`, `next`)
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | width | Width of rotation card | number \| string | `window.innerWidth ` |
 | height | Height of rotation card | number \| string | `0` |
 | direction | Rotation direction, optional value：`horizontal`,`vertical` | string | `'horizontal'` |
@@ -510,19 +510,19 @@ You can manually switch through `api` (`prev`, `next`)
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Callback after sliding | Current index value |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | page | Custom Indicator |
 
 ### Methods
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | prev | Switch to previous page | - |
 | next | Switch to next page | - |
 | to | Switch to the specified rotation | `index:number` |
@@ -534,7 +534,7 @@ You can manually switch through `api` (`prev`, `next`)
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-swiper-pagination-item-width | _8px_ |
 | --nut-swiper-pagination-item-height | _3px_ |
 | --nut-swiper-pagination-item-margin-right | _7px_ |

@@ -343,7 +343,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Input value, two-way binding | string | - |
 | type | Input type, support all native types and `number` `digit` type | string | `text` |
 | placeholder | Placeholder when the input box is empty | string | - |
@@ -366,7 +366,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | update:model-value | Emitted when input value changed | `val` |
 | focus | Emitted when input is focused | `event` |
 | blur | Emitted when input is blurred | `event` |
@@ -377,7 +377,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | clear | Customize the end of the input box to clear the button |
 | left `4.0.1` | Customize the slot content on the left side of the input box |
 | right `4.0.1` | Customize the slot content on the right side of the input box |
@@ -385,7 +385,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 ### Ref
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | focus `4.0.6` | Focus |
 | blur `4.0.6` | Blur |
 | select `4.0.6` | Selct |
@@ -397,7 +397,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-input-border-bottom | _#eaf0fb_ |
 | --nut-input-disabled-color | _#c8c9cc_ |
 | --nut-input-required-color | _var(--nut-required-color)_ |

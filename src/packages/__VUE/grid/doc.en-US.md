@@ -209,7 +209,7 @@ import { Home, Search } from '@nutui/icons-vue';
 ### Grid Props
 
 | Attribute | Description | Type | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | column-num | Column Num | number \| string | `4` |
 | border | Whether to show border | boolean | `true` |
 | gutter | Gutter,The default unit is `px` | number \| string | `0` |
@@ -222,7 +222,7 @@ import { Home, Search } from '@nutui/icons-vue';
 ### GridItem Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | text | text | string | - |
 | url | Link URL | string | `''` |
 | to | Target route of the link, same as [to](https://router.vuejs.org/zh/api/#to) of vue-router | string \| object | - |
@@ -231,14 +231,14 @@ import { Home, Search } from '@nutui/icons-vue';
 ### GridItem Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom content |
 | text | Custom text |
 
 ### GridItem Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when component is clicked | event: Event |
 
 ## Theming
@@ -248,7 +248,7 @@ import { Home, Search } from '@nutui/icons-vue';
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-grid-border-color | _#f5f6f7_ |
 | --nut-grid-item-content-padding | _16px 8px_ |
 | --nut-grid-item-content-bg-color | _var(--nut-white)_ |

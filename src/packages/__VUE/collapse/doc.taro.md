@@ -182,14 +182,14 @@ app.use(CollapseItem);
 ### Collapse Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 当前展开面板的 `name` | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | `-` |
 | accordion | 是否开启手风琴模式 | boolean | `false` |
 
 ### CollapseItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | 唯一标识符，必填 | string \| number | `-1` |
 | title | 标题栏左侧内容，支持插槽传入（`props` 传入的优先级更高） | string | `-` |
 | value | 标题栏右侧内容，支持插槽传入（`props` 传入的优先级更高） | string | `-` |
@@ -202,7 +202,7 @@ app.use(CollapseItem);
 ### CollapseItem Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | title | 标题栏左侧内容插槽 |
 | value | 标题栏右侧内容插槽 |
 | extra | 设置标题下固定内容（不折叠） |
@@ -211,7 +211,7 @@ app.use(CollapseItem);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | 切换面板时触发 | `(modelValue, currName, status)` |
 
 ## Theming
@@ -221,7 +221,7 @@ app.use(CollapseItem);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-collapse-item-padding | _13px 36px 13px 26px_ |
 | --nut-collapse-item-color | _#666666_ |
 | --nut-collapse-item-disabled-color | _#c8c9cc_ |

@@ -108,7 +108,7 @@ User can custom divider style with style attribute.
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | dashed | Whether to use dashed border | boolean | `false` |
 | hairline | Whether to use hairline | boolean | `true` |
 | content-position | Content position, can be set to `left` or `right` | string | `center` |
@@ -117,7 +117,7 @@ User can custom divider style with style attribute.
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Default slot, when `direction` = `horizontal` |
 
 ## Theming
@@ -127,7 +127,7 @@ User can custom divider style with style attribute.
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-divider-margin | _16px 0_ |
 | --nut-divider-text-font-size | _var(--nut-font-size-2)_ |
 | --nut-divider-text-color | _#909ca4_ |

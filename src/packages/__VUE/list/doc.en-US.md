@@ -90,7 +90,7 @@ app.use();
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | height | The height/estimated height of the list item, supports unfixed height | Number | `80` |
 | list-data | List data | any[] | `[]` |
 | container-height | Container height(The maximum value cannot exceed the viewable area) | Number | `Visual area height` |
@@ -100,14 +100,14 @@ app.use();
 ### Slots
 
 | Attribute | Description | Type |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | item | List item data | Object |
 | index | Indexes | Number |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | scroll-bottom | Triggered when scrolling to the bottom | - |
 | scroll-up | scroll up | - |
 | scroll-down | scroll down | - |

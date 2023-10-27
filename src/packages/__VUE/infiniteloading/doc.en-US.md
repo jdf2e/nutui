@@ -148,7 +148,7 @@ const refreshFun = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Loading status | boolean | `false` |
 | has-more | Has more data | boolean | `true` |
 | threshold | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | number | `200` |
@@ -159,14 +159,14 @@ const refreshFun = () => {
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | load-more | Emitted when continues to load | - |
 | scroll-change | Real-time monitoring of roll height | height |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom content |
 | loading | Loading text |
 | loading-icon | Custom loading icon |
@@ -179,5 +179,5 @@ const refreshFun = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-infiniteloading-bottom-color | _#c8c8c8_ |

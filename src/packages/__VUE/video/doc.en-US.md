@@ -297,21 +297,21 @@ Reset the video when the video address changes
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | source | Video url and type settings | VideoSource | {} |
 | options | Control video playback properties | VideoOptions | {} |
 
 ### VideoSource 数据结构
 
 | 键名 | 说明 | 类型 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | src | Video Src | boolean |
 | type | Video Type | string |
 
 ### VideoOptions 数据结构
 
 | key | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | autoplay | Auto play | boolean | `false` |
 | poster | Poster settings | string | - |
 | loop | Poster loop | boolean | `false` |
@@ -324,7 +324,7 @@ Reset the video when the video address changes
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | play | play event | - |
 | pause | pause event | - |
 | playend | Playback completion callback | - |
@@ -333,7 +333,7 @@ Reset the video when the video address changes
 ### Ref v4.1.6
 
 | Event | Description |
-| --- | --- |
+|  ---  |  ---  |
 | play | play |
 | pause | pause |
 | stop | stop |

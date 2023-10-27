@@ -108,7 +108,7 @@ const pageChange = (value) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 当前页码 | number | `1` |
 | mode | 显示模式,可选值为 `simple` | string | `multi` |
 | prev-text | 上一页按钮文字 | string | `上一页` |
@@ -122,13 +122,13 @@ const pageChange = (value) => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | 页码改变时触发 | value |
 
 ### Slots
 
 | 名称 | 描述 | 参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | prev-text | 自定义上一页按钮内容 | - |
 | next-text | 自定义下一页按钮内容 | - |
 | page | 自定义页码 | - |
@@ -140,7 +140,7 @@ const pageChange = (value) => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-pagination-color | _var(--nut-primary-color)_ |
 | --nut-pagination-font-size | _var(--nut-font-size-2)_ |
 | --nut-pagination-item-border-color | _#e4e7eb_ |

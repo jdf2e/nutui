@@ -436,7 +436,7 @@ app.use(Range);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | current progress percentage | number \| number[] | `0` |
 | range | Whether to enable dual slider mode | boolean | `false` |
 | max | maximum | number \| string | `100` |
@@ -454,7 +454,7 @@ app.use(Range);
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Triggered when the progress changes and the drag is over | `value: number \| number[]` |
 | drag-start | Triggered when dragging starts | - |
 | drag-end | Triggered when the drag is over | - |
@@ -462,7 +462,7 @@ app.use(Range);
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | button | custom slide button |
 
 ## Theming
@@ -472,7 +472,7 @@ app.use(Range);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-range-tip-font-color | _#333333_ |
 | --nut-range-bg-color | _var(--nut-primary-color)_ |
 | --nut-range-bg-color-tick | _#fa958c_ |

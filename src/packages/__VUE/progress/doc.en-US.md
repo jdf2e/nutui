@@ -160,7 +160,7 @@ const setReduceVal = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | percentage | percentage | number | `0` |
 | is-show-percentage | Whether to display the percent sign | boolean | `true` |
 | stroke-color | Stroke color | string | `#f30` |
@@ -175,7 +175,7 @@ const setReduceVal = () => {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | icon-name | Right icon content |
 
 ## Theming
@@ -185,7 +185,7 @@ const setReduceVal = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Deault Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-progress-inner-background-color | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_ |
 | --nut-progress-insidetext-background | _var(--nut-progress-inner-background-color)_ |
 | --nut-progress-outer-background-color | _#f3f3f3_ |

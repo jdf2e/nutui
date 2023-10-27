@@ -210,7 +210,7 @@ toast.hide();
 ### Methods
 
 | Methods | Description | Attribute | Return value |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | showToast.text | Show text toast | message ｜ options | toast instance(message support incoming HTML) |
 | showToast.success | Show success toast | message ｜ options | toast instance |
 | showToast.fail | Show fail toast | message ｜ options | toast instance |
@@ -221,7 +221,7 @@ toast.hide();
 ### ToastOptions
 
 | 字段 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | id | Identifier, share one instance at the same time, default to multiple instances | string \| number | - |
 | duration | Toast duration(ms), won't disappear if value is 0 | number | `2000` |
 | title | title | string | - |
@@ -246,7 +246,7 @@ toast.hide();
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-toast-title-font-size | _16px_ |
 | --nut-toast-text-font-size | _14px_ |
 | --nut-toast-font-color | _var(--nut-white)_ |

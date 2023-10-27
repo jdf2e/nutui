@@ -442,7 +442,7 @@ app.use(DatePicker);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Default Date | date | `null` |
 | type | Can be set to `date` `time` `year-month` `month-day` `datehour` `hour-minute`(`v4.0.5`) | string | `date` |
 | minute-step | Option minute step | number | `1` |
@@ -463,7 +463,7 @@ app.use(DatePicker);
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | confirm | Emitted when click confirm button. | `{ selectedValue, selectedOptions }` |
 | cancel | Emitted when click cancel button. | `{ selectedValue, selectedOptions }` |
 | change | Emitted when current option changed. | `{ columnIndex, selectedValue, selectedOptions }` |
@@ -471,14 +471,14 @@ app.use(DatePicker);
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom content bottom columns |
 | top | Custom content top columns |
 
 ### Data Structure of PickerOption
 
 | Key | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | text | Text of column | string \| number | - |
 | value | Value of column | string \| number | - |
 | children | Cascader Option | Array | - |
@@ -491,7 +491,7 @@ app.use(DatePicker);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-picker-cancel-color | _#808080_ |
 | --nut-picker-ok-color | _var(--nut-primary-color)_ |
 | --nut-picker-bar-cancel-font-size | _14px_ |

@@ -114,7 +114,7 @@ const customState = {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | 提示的信息类型，可选值为`primary` `success` `danger` `warning` | string | `danger` |
 | visible | 显示与否 | boolean | `false` |
 | msg | 展示文案，支持通过`\n`换行 | string | `''` |
@@ -127,7 +127,7 @@ const customState = {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击事件回调 | `-` |
 | closed | 关闭事件回调 | `-` |
 
@@ -138,7 +138,7 @@ const customState = {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-notify-text-color | _var(--nut-white)_ |
 | --nut-notify-padding | _12px 0_ |
 | --nut-notify-font-size | _14px_ |

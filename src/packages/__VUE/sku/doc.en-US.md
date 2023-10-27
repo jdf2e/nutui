@@ -428,7 +428,7 @@ The default partition is divided into several areas, which are defined as slots 
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model:visible | Whether to open popup | boolean | `false` |
 | sku | Sku data | Array | `[]` |
 | goods | Product Info | object | - |
@@ -445,7 +445,7 @@ The default partition is divided into several areas, which are defined as slots 
 ### Events
 
 | Attribute | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | select-sku | Emitted when select sku | {sku,skuIndex,parentSku,parentIndex} |
 | add | Emitted when click stepper add button | value |
 | reduce | Emitted when click stepper reduce button | value |
@@ -461,7 +461,7 @@ The default partition is divided into several areas, which are defined as slots 
 The default partition is divided into several areas, which are defined as slots that can be replaced as required。
 
 | Event | Description |
-| --- | --- |
+|  ---  |  ---  |
 | sku-header | Custom header |
 | sku-header-price | Custom header price area |
 | sku-header-extra | Extra header area |
@@ -582,7 +582,7 @@ sku: [
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-sku-item-border | _1px solid var(--nut-primary-color)_ |
 | --nut-sku-item-disable-line | _line-through_ |
 | --nut-sku-opetate-bg-default | _linear-gradient(90deg, var(--nut-primary-color), var(--nut-primary-color-end) 100%)_ |

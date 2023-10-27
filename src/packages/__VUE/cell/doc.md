@@ -203,14 +203,14 @@ import { My } from '@nutui/icons-vue';
 ### CellGroup Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | 分组标题 | string | - |
 | desc | 分组描述 | string | - |
 
 ### Cell Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | 标题名称 | string | - |
 | sub-title | 左侧副标题 | string | - |
 | desc | 右侧描述 | string | - |
@@ -226,13 +226,13 @@ import { My } from '@nutui/icons-vue';
 ### Cell Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击事件 | `event:Event` |
 
 ### Cell Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | icon | 自定义左侧 `icon` 区域 |
 | default | 自定义内容 |
 | link | 自定义右侧 `link` 区域 |
@@ -242,7 +242,7 @@ import { My } from '@nutui/icons-vue';
 ### CellGroup Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | title | 自定义 `title` 标题区域 |
 | desc | 自定义 `desc` 描述区域 |
 
@@ -253,7 +253,7 @@ import { My } from '@nutui/icons-vue';
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-cell-color | _var(--nut-title-color2)_ |
 | --nut-cell-title-font | _var(--nut-font-size-2)_ |
 | --nut-cell-title-desc-font | _var(--nut-font-size-1)_ |

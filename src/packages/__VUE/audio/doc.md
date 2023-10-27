@@ -145,7 +145,7 @@ const changeProgress = (val) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | url | 语音播放的连接 | string | `''` |
 | muted | 是否静音 | boolean | `false` |
 | autoplay | 是否自动播放 | boolean | `false` |
@@ -156,7 +156,7 @@ const changeProgress = (val) => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | fast-back | 触发语音快退 | 返回当前播放时长（单位：毫秒） |
 | forward | 触发语音快进 | 返回当前播放时长（单位：毫秒） |
 | play | 触发播放/暂停语音 | 返回当前播放状态 |

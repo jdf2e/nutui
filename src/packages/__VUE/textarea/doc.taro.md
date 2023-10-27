@@ -80,7 +80,7 @@ const value = ref('');
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 输入值，支持双向绑定 | string | - |
 | placeholder | 设置占位提示文字 | string | `请输入` |
 | max-length | 限制最长输入字符 | string \| number | - |
@@ -95,7 +95,7 @@ const value = ref('');
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | 输入框值改变时触发 | `value` |
 | focus | 聚焦时触发 | `event` |
 | blur | 失焦时触发 | `value,event` |
@@ -107,7 +107,7 @@ const value = ref('');
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-textarea-font | _var(--nut-font-size-2)_ |
 | --nut-textarea-limit-color | _var(--nut-text-color)_ |
 | --nut-textarea-text-color | _var(--nut-title-color)_ |

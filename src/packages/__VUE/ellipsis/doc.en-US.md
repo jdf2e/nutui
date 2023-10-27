@@ -97,7 +97,7 @@ app.use(Ellipsis);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | content | Content | string | - |
 | direction | Direction, `start` \| `end` \| `middle` | string | `end` |
 | rows | Rows | number | `1` |
@@ -109,7 +109,7 @@ app.use(Ellipsis);
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when the content is clicked | - |
 | change | Emitted when expand or collapse is clicked | `expand` or `collapse` |
 
@@ -120,5 +120,5 @@ app.use(Ellipsis);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-ellipsis-expand-collapse-color | _#3460fa_ |

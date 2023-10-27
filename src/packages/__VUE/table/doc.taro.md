@@ -609,7 +609,7 @@ app.use(Table);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | bordered | 是否显示边框 | boolean | `true` |
 | columns | 表头数据 | TableColumnProps[] | `[]` |
 | data | 表格数据 | object[] | `[]` |
@@ -619,7 +619,7 @@ app.use(Table);
 ### TableColumnProps
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | key | 列的唯一标识 | string | `` |
 | title | 表头标题 | string | `` |
 | stylehead | 表头样式 | string | `` |
@@ -631,7 +631,7 @@ app.use(Table);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | sorter | 点击排序按钮触发 | item: 当前点击的表头的数据 |
 
 ## 主题定制
@@ -641,7 +641,7 @@ app.use(Table);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-table-border-color | _#ececec_ |
 | --nut-table-cols-padding | _10px_ |
 | --nut-table-tr-even-bg-color | _#f3f3f3_ |

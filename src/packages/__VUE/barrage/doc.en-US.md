@@ -75,7 +75,7 @@ app.use(Barrage);
 ### Props
 
 | Parameter | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | danmu | Danmaku list data | Array | `[]` |
 | frequency | the time interval of each barrage in the visible area | number | `500` |
 | speeds | scrolling time of each barrage | number | `5000` |
@@ -86,5 +86,5 @@ app.use(Barrage);
 ### Events
 
 | Event Name | Description | Callback Parameters |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | add | add data(used via ref instance) | - |

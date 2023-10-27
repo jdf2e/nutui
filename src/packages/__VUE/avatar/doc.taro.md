@@ -203,7 +203,7 @@ const handleClick = () => {
 ### Avatar Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | size | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字 | string \| number | `normal` |
 | shape | 头像的形状，可选值为：`square`、`round ` | string | `round` |
 | color | 字体颜色 | string | `#666` |
@@ -212,7 +212,7 @@ const handleClick = () => {
 ### AvatarGroup Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | max-count | 显示的最大头像个数 | string \| number | - |
 | max-content | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | string | `+N` |
 | size | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字 | string \| number | `normal` |
@@ -225,7 +225,7 @@ const handleClick = () => {
 ### Avatar Slots
 
 | 名称 | 描述 |
-| --- | --- |
+|  ---  |  ---  |
 | default | 默认插槽，可放置图片、图标、文本等元素 |
 
 ## 主题定制
@@ -235,7 +235,7 @@ const handleClick = () => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件]()。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-actionsheet-light-color | _#f6f6f6_ |
 | --nut-avatar-square | _5px_ |
 | --nut-avatar-large-width | _60px_ |

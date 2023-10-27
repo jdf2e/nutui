@@ -119,7 +119,7 @@ app.use(Invoice);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | data | 发票数据 | Array | - |
 | form-value | 表单数据对象(使用表单校验时，_必填_) | object | - |
 | submit | 是否显示提交按钮 | boolean | `true` |
@@ -129,7 +129,7 @@ app.use(Invoice);
 可选属性如下:
 
 | 键名 | 说明 | 类型 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | type | 类型，可选值有 `input`、`radio` | string |
 | label | 表单项 `label` | string |
 | placeholder | 输入框 `placeholder` | string |
@@ -141,7 +141,7 @@ app.use(Invoice);
 ### Events
 
 | 事件名 | 说明 | 参数 | 返回值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | submit`v4.1.5` | 提交表单的方法 | - | Promise |
 | on-submit | 提交表单的方法 | - | Promise |
 
@@ -152,5 +152,5 @@ app.use(Invoice);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-invoice-padding | _ 10px 10px 20px_ |

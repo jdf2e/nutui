@@ -180,7 +180,7 @@ import { StarFill, Star } from '@nutui/icons-vue';
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | 类型，可选值为 `primary` `info` `warning` `danger` `success` `default` | string | `default` |
 | size | 尺寸，可选值为 `large` `small` `mini` `normal` | string | `normal` |
 | shape | 形状，可选值为 `square` `round` | string | `round` |
@@ -193,14 +193,14 @@ import { StarFill, Star } from '@nutui/icons-vue';
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | default | 按钮内容 |
 | icon | 按钮图标 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击按钮时触发 | `event: MouseEvent` |
 
 ## 主题定制
@@ -210,7 +210,7 @@ import { StarFill, Star } from '@nutui/icons-vue';
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-button-border-radius | _25px_ |
 | --nut-button-border-width | _1px_ |
 | --nut-button-icon-width | _16px_ |

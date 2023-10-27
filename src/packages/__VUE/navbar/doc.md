@@ -157,7 +157,7 @@ const changeTabList = (tab) => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | 标题名称 | string | - |
 | left-text | 左侧文案 | string | - |
 | desc | 右侧描述 | string | - |
@@ -172,7 +172,7 @@ const changeTabList = (tab) => {
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click-title`4.1.5` | 点击页面标题事件 | event:Event |
 | click-icon`4.1.5` | 点击页面标题 `icon` 事件 | event:Event |
 | click-right`4.1.5` | 点击右侧按钮事件 | event:Event |
@@ -185,7 +185,7 @@ const changeTabList = (tab) => {
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | left | 自定义左侧内容 |
 | right | 自定义右侧内容 |
 | content | 自定义导航栏中间内容 |
@@ -199,7 +199,7 @@ const changeTabList = (tab) => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-navbar-height | _44px_ |
 | --nut-navbar-margin-bottom | _20px_ |
 | --nut-navbar-padding | _0 16px_ |

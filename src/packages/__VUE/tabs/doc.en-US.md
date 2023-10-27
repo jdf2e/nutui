@@ -266,7 +266,7 @@ const list = ref([
 ### Tabs Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Index of active tab | number \| string | `0` |
 | color | Label selection color | string | `#1a1a1a` |
 | background | Tab bar background color | string | `#f5f5f5` |
@@ -286,14 +286,14 @@ const list = ref([
 ### Tabs Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | titles | Custom Titles Area |
 | default | Custom Default Content |
 
 ### TabPane Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | title | string |  |
 | pane-key | Tag Key , the matching identifier | string | 默认索引 0,1,2... |
 | disabled | whether to disable tabs | boolean | false |
@@ -301,13 +301,13 @@ const list = ref([
 ### TabPane Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom Default Content |
 
 ### Tabs Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Triggered when the label is clicked | {title,paneKey,disabled} |
 | change | Fired when the currently active tab changes | {title,paneKey,disabled} |
 
@@ -318,7 +318,7 @@ const list = ref([
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-tabs-tab-smile-color | _var(--nut-primary-color)_ |
 | --nut-tabs-titles-border-radius | _0_ |
 | --nut-tabs-titles-item-large-font-size | _var(--nut-font-size-3)_ |

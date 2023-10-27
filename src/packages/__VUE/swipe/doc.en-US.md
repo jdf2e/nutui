@@ -170,7 +170,7 @@ The prop `name` of Swipe is required.
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | identifies | string | - |
 | disabled | Whether to disabled swipe | string | `false` |
 | touch-move-prevent-default | Whether to stop touchmove event preventdefault | boolean | `false` |
@@ -179,14 +179,14 @@ The prop `name` of Swipe is required.
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | open | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 | close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | left | Custom left |
 | default | Custom default |
 | right | Custom right |
@@ -196,7 +196,7 @@ The prop `name` of Swipe is required.
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
 | Name | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | click event | `name, position: 'left' \| 'content' \| 'right'` |
 | open | open swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 | close | close swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
@@ -206,5 +206,5 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | lock`v4.1.1` | When a child Swipe opens, others will close. | boolean | `false` |

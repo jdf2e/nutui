@@ -188,14 +188,14 @@ Set content through slot: extra
 ### Collapse Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | `name` of the currently expanded panel | accordion-mode: string \| number<br>non-accordion-mode: (string \| number)[] | `-` |
 | accordion | Whether to enable accordion mode | boolean | `false` |
 
 ### CollapseItem Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | unique identifier, required | string \| number | `-1` |
 | title | The content on the left side of the title bar, supports slot input (`props` input has a higher priority) | string | `-` |
 | value | The content on the right side of the title bar, support slot input (`props` input has a higher priority) | string | `-` |
@@ -208,7 +208,7 @@ Set content through slot: extra
 ### CollapseItem Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | title | Content slot on the left side of the title bar |
 | alue | Right content slot of the title bar |
 | extra | Set fixed content under the title (no folding) |
@@ -217,7 +217,7 @@ Set content through slot: extra
 ### Events
 
 | Event | Description | Callback parameter |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Triggered when switching panels | `(modelValue, currName, status)` |
 
 ## 主题定制
@@ -227,7 +227,7 @@ Set content through slot: extra
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-collapse-item-padding | _13px 36px 13px 26px_ |
 | --nut-collapse-item-color | _#666666_ |
 | --nut-collapse-item-disabled-color | _#c8c9cc_ |

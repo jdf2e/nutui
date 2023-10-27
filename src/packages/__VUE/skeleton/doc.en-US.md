@@ -157,7 +157,7 @@ export default {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | loading | Whether to display skeleton screen | boolean | `true` |
 | width | Width per row | string | `default` |
 | height | Height of each row | string | `15px` |
@@ -172,7 +172,7 @@ export default {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Skeleton screen display content |
 
 ## Theming
@@ -182,7 +182,7 @@ export default {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-skeleton-content-avatar-background-color | _#efefef_ |
 | --nut-skeleton-content-line-background-color | _#efefef_ |
 | --nut-skeleton-animation-background-color | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |

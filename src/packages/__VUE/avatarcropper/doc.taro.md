@@ -90,7 +90,7 @@ const cutImage = (url) => {
 ### AvatarCropper Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | max-zoom | 最大缩放倍数 | number | 3 |
 | space | 裁剪区域两边预留的间隙 | number | 10 |
 | toolbar-position | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
@@ -103,21 +103,21 @@ const cutImage = (url) => {
 ### AvatarCropper Slots
 
 | 名称 | 描述 |
-| --- | --- |
+|  ---  |  ---  |
 | default | 默认插槽，可放置图片、图标、文本等元素 |
 | toolbar | 选择文件后裁剪弹窗底部元素可以自定义，通过ref调用组件的方法 |
 
 ### AvatarCropper Events
 
 | 名称 | 描述 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | confirm | 裁剪后点击确认触发 | url:裁剪后的base64 |
 | cancel | 点击取消触发 | - |
 
 ### AvatarCropper Ref
 
 | 事件名 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | cancel | 取消裁剪 |
 | reset | 重置为0度 |
 | rotate | 旋转90度 |

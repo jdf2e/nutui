@@ -436,7 +436,7 @@ app.use(Range);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 当前进度百分比 | number \| number[] | `0` |
 | range | 是否开启双滑块模式 | boolean | `false` |
 | max | 最大值 | number \| string | `100` |
@@ -454,7 +454,7 @@ app.use(Range);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | 进度变化且结束拖动后触发 | `value: number \| number[]` |
 | drag-start | 开始拖动时触发 | - |
 | drag-end | 结束拖动时触发 | - |
@@ -462,7 +462,7 @@ app.use(Range);
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | button | 自定义滑动按钮 |
 
 ## 主题定制
@@ -472,7 +472,7 @@ app.use(Range);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-range-tip-font-color | _#333333_ |
 | --nut-range-bg-color | _var(--nut-primary-color)_ |
 | --nut-range-bg-color-tick | _#fa958c_ |

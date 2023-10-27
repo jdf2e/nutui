@@ -30,7 +30,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | Icon name or URL | string | - |
 | color | Icon color | string | - |
 | width | Icon size , eg `20px` `2em` `2rem` | string \| object | - |
@@ -39,7 +39,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when icon is clicked | event: Event |
 
 ## Use: Full use of IconFont
@@ -131,7 +131,7 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | Icon name or URL | string | - |
 | color | Icon color | string | - |
 | size | Icon size , eg `20px` `2em` `2rem` | string \| object | - |
@@ -142,7 +142,7 @@ Adding the specified class class can realize the dynamic effect of the picture. 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when icon is clicked | event: Event |
 
 ## Use: other icons

@@ -119,13 +119,13 @@ const handleClick = () => {
 ### SideNavbar Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | offset | Navigation indent width | number \| string | `15` |
 
 ### SubSideNavbar Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Navigation title | string | `` |
 | ikey | Navigation unique identifier | number \| string | `` |
 | open | Whether navigation is expanded by default | boolean | `true` |
@@ -133,20 +133,20 @@ const handleClick = () => {
 ### SideNavbarItem Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Navigation title | string | `15` |
 | ikey | Navigation unique identifier | number \| string | `` |
 
 ### SubSideNavbar Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | title-click | Navigation Click | - |
 
 ### SideNavbarItem Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Navigation Click | - |
 
 ## Theming
@@ -156,7 +156,7 @@ const handleClick = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-sidenavbar-content-bg-color | _var(--nut-white)_ |
 | --nut-sidenavbar-sub-title-border-color | _#f6f6f6_ |
 | --nut-sidenavbar-sub-title-bg-color | _#f6f6f6_ |

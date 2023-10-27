@@ -181,7 +181,7 @@ The color of the button can be customized through the color property.
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | Can be set to `primary` `info` `warning` `danger` `success` `default` | string | `default` |
 | size | Can be set to `large` `small` `mini` `normal` | string | `normal` |
 | shape | Can be set to `square` `round` | string | `round` |
@@ -194,14 +194,14 @@ The color of the button can be customized through the color property.
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | button content |
 | icon | button icon |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when component is clicked | `event: MouseEvent` |
 
 ## Theming
@@ -211,7 +211,7 @@ The color of the button can be customized through the color property.
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-button-border-radius | _25px_ |
 | --nut-button-border-width | _1px_ |
 | --nut-button-icon-width | _16px_ |

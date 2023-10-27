@@ -89,7 +89,7 @@ const container = ref(null);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | position | Adsorption position（`top`、`bottom`） | string | `top` |
 | top | Ceiling distance, enable when `position = top` | number | `0` |
 | bottom | Suction distance, enable when `position = bottom` | number | `0` |
@@ -99,5 +99,5 @@ const container = ref(null);
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Triggered when the adsorption state changes | `fixed: boolean` |

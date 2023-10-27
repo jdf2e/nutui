@@ -40,7 +40,7 @@ app.use(Backtop);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | height | 滚动区域的高度 | string | `100vh` |
 | bottom | 距离页面底部距离 | number | `20` |
 | right | 距离页面右侧距离 | number | `10` |
@@ -50,13 +50,13 @@ app.use(Backtop);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 按钮点击时触发事件 | `event: MouseEvent` |
 
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | content | 滚动容器中包含的内容 |
 | icon | 返回到顶部，按钮内容 |
 
@@ -67,5 +67,5 @@ app.use(Backtop);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-backtop-border-color | _#e0e0e0_ |

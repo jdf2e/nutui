@@ -72,7 +72,7 @@ const close = () => {
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | 标签类型，可选值为 `primary`、`success`、`danger`、`warning` | string | `default` |
 | color | 标签颜色 | string | - |
 | text-color | 文本颜色，优先级高于 `color` 属性 | string | `white` |
@@ -84,13 +84,13 @@ const close = () => {
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | default | 标签显示内容 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击事件 | `event` |
 | close | 关闭事件 | `event` |
 
@@ -101,7 +101,7 @@ const close = () => {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-tag-font-size | _12px_ |
 | --nut-tag-default-border-radius | _4px_ |
 | --nut-tag-round-border-radius | _8px_ |

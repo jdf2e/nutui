@@ -167,7 +167,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | src | Src | string | - |
 | fit | Fit mode, same as object-fit | ImageFit | `fill` |
 | position | Position, same as object-position | ImagePosition | `center` |
@@ -183,7 +183,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### ImageFit
 
 | Attribute | Description |
-| --- | --- |
+|  ---  |  ---  |
 | contain | Keep aspect ratio, fully display the long side of the image |
 | cover | Keep aspect ratio, fully display the short side of the image, cutting the long side |
 | fill | Stretch and resize image to fill the content box |
@@ -193,7 +193,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### ImagePosition
 
 | Attribute | Description |
-| --- | --- |
+|  ---  |  ---  |
 | center | Align Center |
 | top | Align Top |
 | right | Align Right |
@@ -203,14 +203,14 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | loading | Custom loading placeholder |
 | error | Custom error placeholder |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when image is clicked | event: Event |
 | load | Emitted when image loaded | - |
 | error | Emitted when image load failed | - |

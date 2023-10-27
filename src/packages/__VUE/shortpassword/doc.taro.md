@@ -204,7 +204,7 @@ app.use(NumberKeyboard);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 密码初始值 | string |  |
 | v-model:visible | 是否展示短密码框 | boolean | `false` |
 | title | 标题 | string | `请输入密码` |
@@ -217,7 +217,7 @@ app.use(NumberKeyboard);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | close | 点击关闭图标或者遮罩时触发事件 | - |
 | complete | 输入完成的回调 | `value:string` |
 | focus | 输入框聚焦时触发 | - |
@@ -229,7 +229,7 @@ app.use(NumberKeyboard);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-shortpassword-background-color | _rgba(245, 245, 245, 1)_ |
 | --nut-shortpassword-border-color | _#ddd_ |
 | --nut-shortpassword-error | _var(--nut-primary-color)_ |

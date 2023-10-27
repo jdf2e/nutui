@@ -157,7 +157,7 @@ const changeTabList = (tab) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Title | string | - |
 | left-text | Left Text | string | - |
 | desc | Desc | string | - |
@@ -172,7 +172,7 @@ const changeTabList = (tab) => {
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click-title`4.1.5` | Click page title event | event:Event |
 | click-icon`4.1.5` | Click the page title icon event | event:Event |
 | click-right`4.1.5` | Click right button event | event:Event |
@@ -185,7 +185,7 @@ const changeTabList = (tab) => {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | left | Customize left content |
 | right | Customize the content on the right |
 | content | Customize the middle content of the navigation bar |
@@ -199,7 +199,7 @@ const changeTabList = (tab) => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-navbar-height | _44px_ |
 | --nut-navbar-margin-bottom | _20px_ |
 | --nut-navbar-padding | _0 16px_ |

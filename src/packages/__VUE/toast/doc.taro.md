@@ -71,7 +71,7 @@ const onClosed = () => console.log('closed');
 ### Props
 
 | 字段 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | msg | 消息文本内容,支持传入 HTML | string \| VNode | `""` |
 | duration | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading 类型默认为 0） | number | `2000` |
 | title | 标题 | string | `''` |
@@ -98,7 +98,7 @@ const onClosed = () => console.log('closed');
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-toast-title-font-size | _16px_ |
 | --nut-toast-text-font-size | _14px_ |
 | --nut-toast-font-color | _var(--nut-white)_ |

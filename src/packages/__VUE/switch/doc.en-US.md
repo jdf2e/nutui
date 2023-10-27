@@ -159,7 +159,7 @@ const checked = ref(true);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Status of Switch | boolean \| string \| number | `false` |
 | disable | Disable status | boolean | `false` |
 | loading | Loading status | boolean | `false` |
@@ -173,13 +173,13 @@ const checked = ref(true);
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | icon | loading icon slot |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Emitted when check status changed | (value: boolean,event: Event) |
 
 ## Theming
@@ -189,7 +189,7 @@ const checked = ref(true);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-switch-close-bg-color | _#ebebeb_ |
 | --nut-switch-close-cline-bg-color | _#f0f0f0_ |
 | --nut-switch-width | _36px_ |

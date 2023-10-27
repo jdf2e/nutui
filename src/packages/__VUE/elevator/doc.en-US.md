@@ -414,7 +414,7 @@ const clickIndex = (key) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | height | Height of elevator area | number \| string | `200px` |
 | accept-key | Index key value | string | `title` |
 | index-list | Index list | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure） | `[{id: 0, name: ''}]` |
@@ -425,13 +425,13 @@ const clickIndex = (key) => {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Customize the contents of each data under the left index |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click-item | Click content | `key: string, item: { id: 0, name: '' }` |
 | click-index | Click index | `key: string` |
 | change | Change index | `index: number` |
@@ -439,7 +439,7 @@ const clickIndex = (key) => {
 ### Methods
 
 | Name | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | scrollTo | Scroll to the location of the corresponding index | `index:number` |
 
 ## Theming
@@ -449,7 +449,7 @@ const clickIndex = (key) => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-elevator-list-item-highcolor | _var(--nut-primary-color)_ |
 | --nut-elevator-list-item-font-size | _12px_ |
 | --nut-elevator-list-item-font-color | _#333333_ |

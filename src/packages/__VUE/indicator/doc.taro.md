@@ -77,7 +77,7 @@ app.use(Indicator);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | current | 当前步骤 | number | `1` |
 | size | 步骤长度 | number | `3` |
 | block | 是否启用块级布局 | boolean | `false` |
@@ -91,7 +91,7 @@ app.use(Indicator);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-indicator-bg-color | _var(--nut-primary-color)_ |
 | --nut-indicator-dot-color | _var(--nut-disable-color)_ |
 | --nut-indicator-color | _var(--nut-white)_ |

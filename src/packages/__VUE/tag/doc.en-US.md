@@ -72,7 +72,7 @@ const close = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | Label type，can be set `primary` `success` `danger` `warning` | string | `default` |
 | color | Label color | string | - |
 | text-color | Text color, which takes precedence over the `color` attribute | string | `white` |
@@ -84,13 +84,13 @@ const close = () => {
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Label display content |
 
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | click event | `event` |
 | close | close event | `event` |
 
@@ -101,7 +101,7 @@ const close = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-tag-font-size | _12px_ |
 | --nut-tag-default-border-radius | _4px_ |
 | --nut-tag-round-border-radius | _8px_ |

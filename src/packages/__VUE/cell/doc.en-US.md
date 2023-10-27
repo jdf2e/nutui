@@ -203,14 +203,14 @@ You can center the left and right contents of the cell vertically through the 'c
 ### CellGroup Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Title | string | - |
 | desc | Description | string | - |
 
 ### Cell Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | title | Title | string | - |
 | sub-title | Subtitle | string | - |
 | desc | Description | string | - |
@@ -226,13 +226,13 @@ You can center the left and right contents of the cell vertically through the 'c
 ### Cell Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when cell is clicked | `event:Event` |
 
 ### Cell Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | icon | Custom Left `icon` |
 | default | Default slot |
 | link | Custom Right `link` |
@@ -242,7 +242,7 @@ You can center the left and right contents of the cell vertically through the 'c
 ### CellGroup Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | title | Custom `title` slot |
 | desc | Custom `desc` slot |
 
@@ -253,7 +253,7 @@ You can center the left and right contents of the cell vertically through the 'c
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-cell-color | _var(--nut-title-color2)_ |
 | --nut-cell-title-font | _var(--nut-font-size-2)_ |
 | --nut-cell-title-desc-font | _var(--nut-font-size-1)_ |

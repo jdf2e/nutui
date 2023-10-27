@@ -112,7 +112,7 @@ app.use(Watermark);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | width | Width of watermark | number | `120` |
 | height | Height of watermark | number | `64` |
 | rotate | Rotation angle when drawing watermark | number | `-22` |
@@ -135,5 +135,5 @@ app.use(Watermark);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-watermark-z-index | _2000_ |

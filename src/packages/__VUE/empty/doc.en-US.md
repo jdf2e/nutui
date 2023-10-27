@@ -88,7 +88,7 @@ const tabValue = ref(0);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | image | Image type, can be set to `empty`, `error`, `network` or image `URL` | string | `empty` |
 | image-size | Image size | number \| string | `-` |
 | description | Description | string | `-` |
@@ -96,7 +96,7 @@ const tabValue = ref(0);
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom bottom content |
 | image | Custom image |
 | description | Custom description |
@@ -108,7 +108,7 @@ const tabValue = ref(0);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-empty-padding | _32px 0_ |
 | --nut-empty-image-size | _170px_ |
 | --nut-empty-description-margin-top | _4px_ |

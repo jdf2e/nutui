@@ -489,7 +489,7 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | list | list of options | List[] | `[]` |
 | visible | whether to show | boolean | `false` |
 | theme | Theme style, can be set to `dark` `light` | string | `light` |
@@ -513,7 +513,7 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 The List property is an array of objects, each object in the array is configured with a column, and the object can contain the following values:
 
 | Key | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | name | option text | string | `-` |
 | icon | @nutui/icons-vue name | VNode | `-` |
 | disabled | whether to disable | boolean | `false` |
@@ -522,14 +522,14 @@ The List property is an array of objects, each object in the array is configured
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | content | Customize Bubble Component Menu Content |
 | reference | The content of the element that triggers the Popover to display |
 
 ### Events
 
 | Event | Description |
-| --- | --- |
+|  ---  |  ---  |
 | choose | Triggered when an option is clicked |
 | open | Triggered when the menu is opened |
 | close | Fired when the menu is closed |
@@ -541,7 +541,7 @@ The List property is an array of objects, each object in the array is configured
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-popover-white-background-color | _rgba(255, 255, 255, 1)_ |
 | --nut-popover-dark-background-color | _rgba(75, 76, 77, 1)_ |
 | --nut-popover-border-bottom-color | _rgba(229, 229, 229, 1)_ |

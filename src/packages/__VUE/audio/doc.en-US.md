@@ -145,7 +145,7 @@ const changeProgress = (val) => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | url | Audio URL | string | `''` |
 | muted | Whether to be muted | boolean | `false` |
 | autoplay | Whether to autoplay | boolean | `false` |
@@ -156,7 +156,7 @@ const changeProgress = (val) => {
 ### Events
 
 | Attribute | Description | CallBack |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | fast-back | Emitted when audio back | play time（millisecond） |
 | forward | Emitted when audio forward | play time（millisecond） |
 | play | Emitted when audio play or pause | play status |

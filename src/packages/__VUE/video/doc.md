@@ -299,21 +299,21 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | source | 视频地址和类型设置 | VideoSource | {} |
 | options | 控制视频播放属性 | VideoOptions | {} |
 
 ### VideoSource 数据结构
 
 | 键名 | 说明 | 类型 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | src | 视频链接 | boolean |
 | type | 视频类型 | string |
 
 ### VideoOptions 数据结构
 
 | 键名 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | autoplay | 是否自动播放 | boolean | `false` |
 | poster | 海报设置 | string | - |
 | loop | 是否循环播放 | boolean | `false` |
@@ -326,7 +326,7 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | play | 播放 | videoElm |
 | pause | 暂停 | videoElm |
 | playend | 播放完成回调 | videoElm |
@@ -335,7 +335,7 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 ### Ref v4.1.6
 
 | 事件名 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | play | 播放 |
 | pause | 暂停 |
 | stop | 结束 |

@@ -170,7 +170,7 @@ const showPop2 = ref(false);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model:visible | Control the display/hide of the current component | boolean | `false` |
 | z-index | Mask level | string \| number | `2000` |
 | duration | Animation duration of component display/hide, in seconds | string \| number | `0.3` |
@@ -194,7 +194,7 @@ const showPop2 = ref(false);
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click-pop | Triggered when clicking the pop-up layer | `event: Event` |
 | click-close-icon | Triggered when the close icon is clicked | `event: Event` |
 | open | Triggered when the pop-up box is opened | - |
@@ -206,7 +206,7 @@ const showPop2 = ref(false);
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Customize Embedded Content |
 | close-icon | Custom icon for close button |
 
@@ -217,6 +217,6 @@ const showPop2 = ref(false);
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-popup-close-icon-margin | _16px_ |
 | --nut-popup-border-radius | _20px_ |

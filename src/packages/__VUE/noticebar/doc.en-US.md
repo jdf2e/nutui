@@ -209,7 +209,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | direction | Rolling direction | string | `across` |
 | text | Notice text content | string | - |
 | close-mode | Whether to enable the off mode | boolean | `false` |
@@ -224,7 +224,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 ### Props（direction=vertical）
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | list | List | array | `[]` |
 | speed | Scrolling speed | number | `50` |
 | stand-time | Show time(millisecond) | number | `1000` |
@@ -235,7 +235,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Notice text content |
 | right-icon | Custom right icon |
 | left-icon | Custom left icon, Scroll direction 'across' takes effect |
@@ -243,7 +243,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 ### Events
 
 | Attribute | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when Noticebar is clicked | event: Event |
 | close | Emitted when Noticebar is closed | event: Event |
 | across-end | Emitted when across scrolling ends | event: Event |
@@ -255,7 +255,7 @@ When text is long, you can enable multi-line display by setting the wrapable pro
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-noticebar-background | _rgba(251, 248, 220, 1)_ |
 | --nut-noticebar-color | _#d9500b_ |
 | --nut-noticebar-font-size | _14px_ |

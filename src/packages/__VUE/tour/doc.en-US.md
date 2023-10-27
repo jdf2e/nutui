@@ -308,7 +308,7 @@ Can customize the bubble layer through the slot slot
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | Whether to display the boot eject layer | boolean | `false` |
 | type | Tour type | string | `step` |
 | steps | Boot Step Content | StepOptions[] | `[]` |
@@ -331,7 +331,7 @@ Can customize the bubble layer through the slot slot
 ### StepOptions
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | target | target dom | id | - |
 | content | popover content | string | '' |
 | location | Location of popover,[location](https://nutui.jd.com/#/zh-CN/component/popover) | string | `'bottom'` |
@@ -341,7 +341,7 @@ Can customize the bubble layer through the slot slot
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom popover content |
 | prev-step | Custom prev strep content |
 | next-step | Custom prev strep content |
@@ -349,6 +349,6 @@ Can customize the bubble layer through the slot slot
 ### Events
 
 | Event | Description |
-| --- | --- |
+|  ---  |  ---  |
 | change | Emit when step change |
 | close | Emit when popover close |

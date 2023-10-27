@@ -185,14 +185,14 @@ data defination
 ### Category Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | Classification mode: `classify`, `text`, `custom` | string | `classify` |
 | category | Left navigation bar data list | Array | `[]` |
 
 ### Category Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | change | Classic classification, click on the left navigation bar to get the data list on the right | Clicked data |
 | change-text | In text classification mode, click on the left navigation bar to get the data list on the right | Input data |
 | change-custom | Customize, click the left navigation bar to get the data list on the right | Current quantity |
@@ -200,20 +200,20 @@ data defination
 ### CategoryPane Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | category-child | The current classification data is displayed on the right | Array | `[]` |
 | custom-category | Custom categorical data | Array | `[]` |
 
 ### CategoryPane Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | on-change | Click on the right classified data trigger | Clicked data |
 
 ### CategoryPane Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | default | Custom content |
 
 ## Theming
@@ -223,7 +223,7 @@ data defination
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-category-bg-color | _rgba(255, 255, 255, 1)_ |
 | --nut-category-list-left-bg-color | _rgba(246, 247, 249, 1)_ |
 | --nut-category-list-item-color | _var(--nut-title-color)_ |

@@ -351,7 +351,7 @@ app.use(Button);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 输入值，双向绑定 | string | - |
 | type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | string | `text` |
 | placeholder | 输入框为空时占位符 | string | - |
@@ -373,7 +373,7 @@ app.use(Button);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | update:model-value | 输入框内容变化时触发 | `val` |
 | focus | 输入框聚焦时触发 | `event` |
 | blur | 输入框失焦时触发 | `event` |
@@ -384,7 +384,7 @@ app.use(Button);
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | clear | 自定义输入框尾部清除按钮 |
 | left `4.0.1` | 自定义输入框左侧插槽内容 |
 | right `4.0.1` | 自定义输入框右侧插槽内容 |
@@ -392,7 +392,7 @@ app.use(Button);
 ### Ref
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | focus `4.0.6` | 获取焦点 |
 | blur `4.0.6` | 失去焦点 |
 | select `4.0.6` | 选择文字 |
@@ -404,7 +404,7 @@ app.use(Button);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-input-border-bottom | _#eaf0fb_ |
 | --nut-input-disabled-color | _#c8c9cc_ |
 | --nut-input-required-color | _var(--nut-required-color)_ |

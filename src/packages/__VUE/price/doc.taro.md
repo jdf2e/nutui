@@ -103,7 +103,7 @@ app.use(Price);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | price | 价格数量 | number \| string | `0` |
 | need-symbol | 是否需要加上 `symbol` 符号 | boolean | `true` |
 | symbol | 符号类型 | string | `&yen;` |
@@ -120,7 +120,7 @@ app.use(Price);
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-price-symbol-big-size | _18px_ |
 | --nut-price-big-size | _24px_ |
 | --nut-price-decimal-big-size | _18px_ |

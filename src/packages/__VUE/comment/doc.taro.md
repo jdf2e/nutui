@@ -179,7 +179,7 @@ app.use(Comment);
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | header-type | 头部样式展示类型，可选： `default`，`complex` | string | `default` |
 | images-rows | 评论图片展示行数，可选： `one`，`multi` | string | `one` |
 | ellipsis | 设置评论内容省略行数 | string \| number | `2` |
@@ -192,7 +192,7 @@ app.use(Comment);
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click-operate | 点击底部操作按钮回调函数 | `type` |
 | click | 点击评论内容回调函数 | `type` |
 | click-images | 点击图片或视频触发 | `{type,index,value}` |
@@ -202,7 +202,7 @@ app.use(Comment);
 `Comment` 组件在某些区域定义了插槽，可以按照需求进行替换。
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | comment-labels | 评论用户的标签 |
 | comment-shop-reply | 评论最底部，用于展示商家回复 |
 
@@ -267,7 +267,7 @@ const follow = {
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-comment-header-user-name-color | _rgba(51, 51, 51, 1)_ |
 | --nut-comment-header-time-color | _rgba(153, 153, 153, 1)_ |
 | --nut-comment-bottom-label-color | _rgba(153, 153, 153, 1)_ |

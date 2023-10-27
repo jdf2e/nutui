@@ -157,7 +157,7 @@ app.use(Countup);
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | init-num | initial number | number | `0` |
 | end-num | end number | number | `0` |
 | speed | interval number, currently only supports basic usage | number | `1` |
@@ -180,5 +180,5 @@ app.use(Countup);
 ### Events
 
 | Event | description | callback parameter |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | scroll-end | callback function after scrolling ends | - |

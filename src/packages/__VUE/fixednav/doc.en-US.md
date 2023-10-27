@@ -230,7 +230,7 @@ const navList = reactive([
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | visible | visible is | boolean | `false` |
 | nav-list | Suspended list content data | Array | `[]` |
 | active-color | list active button color | string | `#fa2c19 Inherit theme color` |
@@ -243,13 +243,13 @@ const navList = reactive([
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | selected | Triggered after selection | `{item:item,$event:Event}` |
 
 ### Slots
 
 | Name | Description |
-| --- | --- |
+|  ---  |  ---  |
 | btn | slot custom button |
 | list | slot custom expanded list content |
 
@@ -260,7 +260,7 @@ const navList = reactive([
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-fixednav-bg-color | _var(--nut-white)_ |
 | --nut-fixednav-font-color | _var(--nut-black)_ |
 | --nut-fixednav-index | _201_ |

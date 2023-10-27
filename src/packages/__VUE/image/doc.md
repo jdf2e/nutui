@@ -169,7 +169,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | src | 图片链接 | string | - |
 | fit | 图片填充模式，等同于原生的 `object-fit` 属性 | ImageFit | `fill` |
 | position | 图片位置，等同于原生的 `object-position` 属性 | ImagePosition | `center` |
@@ -185,7 +185,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### ImageFit 图片填充模式
 
 | 参数 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | contain | 保持宽高缩放图片，使图片的长边能完全显示出来 |
 | cover | 保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边 |
 | fill | 拉伸图片，使图片填满元素 |
@@ -195,7 +195,7 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### ImagePosition 图片位置
 
 | 参数 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | center | 居中对齐 |
 | top | 顶部对齐 |
 | right | 右侧对齐 |
@@ -205,14 +205,14 @@ const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/6
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | loading | 自定义加载中的提示内容 |
 | error | 自定义记载失败的提示内容 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | 点击图片时触发 | event: Event |
 | load | 图片加载完后触发 | -- |
 | error | 图片加载失败后触发 | -- |

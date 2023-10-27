@@ -448,7 +448,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | v-model | 初始值 | date | `null` |
 | type | 时间类型，可选值 `date`(年月日) `time`(时分秒) `year-month`(年月) `month-day`(月日) `datehour`(年月日时) `hour-minute`(时分`v4.0.5`) | string | `date` |
 | minute-step | 分钟步进值 | number | `1` |
@@ -469,7 +469,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | confirm | 点击确定按钮时触发 | `{ selectedValue, selectedOptions }` |
 | cancel | 点击取消按钮时触发 | `{ selectedValue, selectedOptions }` |
 | change | 选项改变时触发 | `{ columnIndex, selectedValue, selectedOptions }` |
@@ -477,14 +477,14 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 ### Slots
 
 | 名称 | 说明 |
-| --- | --- |
+|  ---  |  ---  |
 | default | 自定义滑动数据底部区域 |
 | top | 自定义滑动数据顶部区域 |
 
 ### PickerOption 数据结构
 
 | 键名 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | text | 选项的文字内容 | string \| number | - |
 | value | 选项对应的值，且唯一 | string \| number | - |
 | children | 用于级联选项 | Array | - |
@@ -497,7 +497,7 @@ DatetimePicker 通过 `type` 属性来定义需要选择的时间类型。将 `t
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-picker-cancel-color | _#808080_ |
 | --nut-picker-ok-color | _var(--nut-primary-color)_ |
 | --nut-picker-bar-cancel-font-size | _14px_ |

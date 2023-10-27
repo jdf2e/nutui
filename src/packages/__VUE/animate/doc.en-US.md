@@ -105,7 +105,7 @@ const onClick2 = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | show`v4.1.1` | Trigger animation when show changes from `false` to `true` | boolean | `false` |
 | type | For animation type, see the description of type value below | string | `-` |
 | loop | Whether to execute circularly. `true`- loop execution; `false`- execute once | boolean | `false` |
@@ -115,14 +115,14 @@ const onClick2 = () => {
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | animate`v4.1.1` | Trigger of animation | - |
 | click | Triggered when an element is clicked | event: Event |
 
 ### Type value description
 
 | Order | Type name | Description |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | 1 | shake | shake，It is recommended that loop be true |
 | 2 | ripple | ripple |
 | 3 | breath | breath，It is recommended that loop be true |

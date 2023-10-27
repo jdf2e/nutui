@@ -103,7 +103,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | price | Price | number \| string | `0` |
 | need-symbol | Add symbol | boolean | `true` |
 | symbol | Symbol type | string | `&yen;` |
@@ -120,7 +120,7 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-price-symbol-big-size | _18px_ |
 | --nut-price-big-size | _24px_ |
 | --nut-price-decimal-big-size | _18px_ |

@@ -142,7 +142,7 @@ const onClick = () => {
 ### Props
 
 | Attribute | Description | Type | Default |
-| --- | --- | --- | --- |
+|  ---  |  ---  |  ---  |  ---  |
 | type | The information type of the prompt, the optional values are `primary` `success` `danger` `warning` | string | `danger` |
 | visible | Display or not | boolean | `false` |
 | msg | Display content, support line feed through `\n` | string | `''` |
@@ -157,7 +157,7 @@ const onClick = () => {
 ### Events
 
 | Event | Description | Arguments |
-| --- | --- | --- |
+|  ---  |  ---  |  ---  |
 | click | Emitted when notify is clicked | `-` |
 | closed | Emitted when notify is closed | `-` |
 
@@ -168,7 +168,7 @@ const onClick = () => {
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Default Value |
-| --- | --- |
+|  ---  |  ---  |
 | --nut-notify-text-color | _var(--nut-white)_ |
 | --nut-notify-padding | _12px 0_ |
 | --nut-notify-font-size | _14px_ |
