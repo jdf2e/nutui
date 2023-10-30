@@ -353,5 +353,6 @@ test('should change props height', async () => {
     height: 300
   });
   await nextTick();
-  expect(wrapper.vm.height).toBe(300);
+  await sleep(100);
+  expect(wrapper.vm.state.height).toBe(300);
 });
