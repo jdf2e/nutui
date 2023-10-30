@@ -423,12 +423,12 @@ export default create({
 
     watch(
       () => props.initPage,
-      (val) => {
+      () => {
         Taro.nextTick(() => {
-          init(+val);
+          init();
         });
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-          init(+val);
+          init();
         });
       }
     );

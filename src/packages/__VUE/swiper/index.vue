@@ -426,9 +426,9 @@ export default create({
 
     watch(
       () => props.height,
-      (val) => {
+      () => {
         nextTick(() => {
-          init(Number(val));
+          init();
         });
       }
     );
