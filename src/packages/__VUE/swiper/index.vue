@@ -425,6 +425,15 @@ export default create({
     );
 
     watch(
+      () => props.height,
+      (val) => {
+        nextTick(() => {
+          init(Number(val));
+        });
+      }
+    );
+
+    watch(
       () => state.children.length,
       () => {
         nextTick(() => {
