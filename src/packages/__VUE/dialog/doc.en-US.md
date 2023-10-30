@@ -42,7 +42,7 @@ const onCancel = () => {
 const onOk = () => {
   console.log('event ok');
 };
-const baseClick = (): void => {
+const baseClick = () => {
   showDialog({
     title: 'Basic spring frame',
     content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
@@ -50,7 +50,7 @@ const baseClick = (): void => {
     onOk
   });
 };
-const transparentClick = (): void => {
+const transparentClick = () => {
   showDialog({
     overlayStyle: { background: 'rgba(0,0,0,0)' },
     title: 'Transparent Dialog',
@@ -59,7 +59,7 @@ const transparentClick = (): void => {
     onOk
   });
 };
-const htmlClick = (): void => {
+const htmlClick = () => {
   showDialog({
     title: 'Use html',
     content:
@@ -68,13 +68,13 @@ const htmlClick = (): void => {
     onOk
   });
 };
-const beforeCloseClick = (): void => {
+const beforeCloseClick = () => {
   showDialog({
     title: 'Before Close',
     content: 'Click confirm to close it in 1 second',
     onCancel,
     onOk,
-    beforeClose: (action: string) => {
+    beforeClose: (action) => {
       return new Promise((r) => {
         setTimeout(() => {
           r(action == 'ok');
@@ -172,7 +172,7 @@ import '@nutui/nutui/dist/packages/dialog/style';
 const onCancel = () => {
   console.log('event cancel');
 };
-const teleportClick = (teleport: string) => {
+const teleportClick = (teleport) => {
   showDialog({
     teleport,
     title: 'teleport to ' + teleport,
@@ -203,7 +203,7 @@ const teleportClick = (teleport: string) => {
 | cancelText | Cancel button text | string | `"Cancel"` |
 | okText | OK button text | string | `"Confirm"` |
 | cancelAutoClose | Click Cancel to close the popup | boolean | `true` |
-| okAutoClose | Check whether the button closes the popup by default | boolean | `true` |
+| okAutoClose`4.2.1` | Check whether the button closes the popup by default | boolean | `true` |
 | textAlign | Text alignment direction, the optional value is the same as css text-align | string | `"center"` |
 | closeOnPopstate | Whether to close when popstate | boolean | `false` |
 | customClass | Custom dialog class | string |  |
@@ -232,6 +232,7 @@ const teleportClick = (teleport: string) => {
 | cancel-text | Cancel button text | string | `"Cancel"` |
 | ok-text | OK button text | string | `"Confirm"` |
 | cancel-auto-close | Click Cancel to close the popup | boolean | `true` |
+| ok-auto-close`4.2.1` | Check whether the button closes the popup by default | boolean | `true` |
 | text-align | Text alignment direction, the optional value is the same as css text-align | string | `"center"` |
 | close-on-popstate | Whether to close when popstate | boolean | `false` |
 | lock-scroll | Whether to lock background scroll | boolean | `false` |

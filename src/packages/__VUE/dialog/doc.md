@@ -42,7 +42,7 @@ const onCancel = () => {
 const onOk = () => {
   console.log('event ok');
 };
-const baseClick = (): void => {
+const baseClick = () => {
   showDialog({
     title: '基础弹框',
     content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
@@ -50,7 +50,7 @@ const baseClick = (): void => {
     onOk
   });
 };
-const transparentClick = (): void => {
+const transparentClick = () => {
   showDialog({
     overlayStyle: { background: 'rgba(0,0,0,0)' },
     title: '透明弹框',
@@ -59,7 +59,7 @@ const transparentClick = (): void => {
     onOk
   });
 };
-const htmlClick = (): void => {
+const htmlClick = () => {
   showDialog({
     title: '支持富文本 html',
     content:
@@ -68,13 +68,13 @@ const htmlClick = (): void => {
     onOk
   });
 };
-const beforeCloseClick = (): void => {
+const beforeCloseClick = () => {
   showDialog({
     title: '异步关闭',
     content: '点击确认后，1秒后关闭',
     onCancel,
     onOk,
-    beforeClose: (action: string) => {
+    beforeClose: (action) => {
       return new Promise((r) => {
         setTimeout(() => {
           r(action == 'ok');
@@ -172,7 +172,7 @@ import '@nutui/nutui/dist/packages/dialog/style';
 const onCancel = () => {
   console.log('event cancel');
 };
-const teleportClick = (teleport: string) => {
+const teleportClick = (teleport) => {
   showDialog({
     teleport,
     title: 'teleport to ' + teleport,
@@ -203,6 +203,7 @@ const teleportClick = (teleport: string) => {
 | cancelText | 取消按钮文案 | string | `”取消“` |
 | okText | 确定按钮文案 | string | `”确定“` |
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | boolean | `true` |
+| okAutoClose`4.2.1` | 确认按钮是否默认关闭弹窗 | boolean | `true` |
 | textAlign | 文字对齐方向，可选值同 `css` 的 `text-align` | string | `"center"` |
 | closeOnPopstate | 是否在页面回退时自动关闭 | boolean | `false` |
 | customClass | 自定义 `class` | string | - |
@@ -231,7 +232,7 @@ const teleportClick = (teleport: string) => {
 | cancel-text | 取消按钮文案 | string | `”取消“` |
 | ok-text | 确定按钮文案 | string | `”确 定“` |
 | cancel-auto-close | 取消按钮是否默认关闭弹窗 | boolean | `true` |
-| ok-auto-close | 确认按钮是否默认关闭弹窗 | boolean | `true` |
+| ok-auto-close`4.2.1` | 确认按钮是否默认关闭弹窗 | boolean | `true` |
 | text-align | 文字对齐方向，可选值同 css 的 text-align | string | `"center"` |
 | close-on-popstate | 是否在页面回退时自动关闭 | boolean | `false` |
 | lock-scroll | 背景是否锁定 | boolean | `true` |
