@@ -27,14 +27,17 @@ export class DialogOptions {
   onClosed?: () => void;
   beforeClose?: (action: string) => any;
 
-  visible?: boolean = true;
-  noFooter?: boolean = false;
-  noOkBtn?: boolean = false;
-  noCancelBtn?: boolean = false;
-  okBtnDisabled?: boolean = false;
-  closeOnPopstate?: boolean = false;
-  closeOnClickOverlay?: boolean = true;
-  lockScroll?: boolean = true;
+  visible? = true;
+  noFooter? = false;
+  noOkBtn? = false;
+  noCancelBtn? = false;
+  okBtnDisabled? = false;
+  closeOnPopstate? = false;
+  closeOnClickOverlay? = true;
+  lockScroll? = true;
+
+  cancelAutoClose? = true;
+  okAutoClose? = true;
 }
 
 class DialogFunction {

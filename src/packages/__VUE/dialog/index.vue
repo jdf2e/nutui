@@ -98,6 +98,10 @@ export default create({
       type: Boolean,
       default: true
     },
+    okAutoClose: {
+      type: Boolean,
+      default: true
+    },
     textAlign: {
       type: String as PropType<TextAlign>,
       default: 'center'
@@ -173,7 +177,9 @@ export default create({
 
     const onOk = () => {
       emit('ok');
-      closed('ok');
+      if (props.okAutoClose) {
+        closed('ok');
+      }
     };
 
     const onClickOverlay = () => {
