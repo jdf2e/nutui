@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import Markdown from 'unplugin-vue-markdown/vite';
-import MarkdownIt from 'markdown-it-container';
 import path from 'path';
 import config from './package.json';
-import hljs from 'highlight.js';
 import autoprefixer from 'autoprefixer';
-import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
+import Inspect from 'vite-plugin-inspect';
+import { markdown } from '@nutui/vite-plugins';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -47,52 +45,12 @@ export default defineConfig({
     }
   },
   plugins: [
+    Inspect(),
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    Markdown({
-      // default options passed to markdown-it
-      // see: https://markdown-it.github.io/markdown-it/
-      markdownItOptions: {
-        typographer: false,
-        highlight: function (str, lang) {
-          if (lang && lang === 'vue') {
-            try {
-              return hljs.highlight(str, {
-                language: 'html'
-              }).value;
-            } catch (__) {}
-          }
-          if (lang && hljs.getLanguage(lang)) {
-            try {
-              return hljs.highlight(str, {
-                language: lang
-              }).value;
-            } catch (__) {}
-          }
-
-          return ''; // 使用额外的默认转义
-        }
-      },
-      markdownItSetup(md) {
-        md.use(MarkdownIt, 'demo', {
-          validate: function (params) {
-            return params.match(/^demo\s*(.*)$/);
-          },
-
-          render: function (tokens, idx) {
-            const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
-            if (tokens[idx].nesting === 1) {
-              // opening tag
-              const contentHtml = compressText(tokens[idx + 1].content);
-              return `<demo-block data-type="vue" data-value="${contentHtml}">` + md.utils.escapeHtml(m[1]) + '\n';
-            } else {
-              // closing tag
-              return '</demo-block>\n';
-            }
-          }
-        });
-      }
+    markdown({
+      docRoot: path.resolve(__dirname, './src/packages/__VUE')
     })
   ],
   build: {
