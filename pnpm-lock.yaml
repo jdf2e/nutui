@@ -72,9 +72,6 @@ importers:
       fs-extra:
         specifier: ^11.1.1
         version: 11.1.1
-      highlight.js:
-        specifier: ^11.9.0
-        version: 11.9.0
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -90,9 +87,6 @@ importers:
       markdown-it:
         specifier: ^13.0.2
         version: 13.0.2
-      markdown-it-container:
-        specifier: ^3.0.0
-        version: 3.0.0
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
@@ -105,9 +99,6 @@ importers:
       unplugin-vue-components:
         specifier: ^0.25.2
         version: 0.25.2(vue@3.3.4)
-      unplugin-vue-markdown:
-        specifier: ^0.24.3
-        version: 0.24.3(vite@4.5.0)
       vite:
         specifier: ^4.5.0
         version: 4.5.0(@types/node@18.18.5)(sass@1.69.3)
@@ -2391,6 +2382,7 @@ packages:
     dependencies:
       '@types/markdown-it': 13.0.2
       markdown-it: 13.0.2
+    dev: false
 
   /@mdit-vue/plugin-frontmatter@0.12.1:
     resolution: {integrity: sha512-C6ycNjrJ+T4JgbVxwo9cUkfLacOO841Yl8ogqd5PJmAVpc5cM2OLBkqqkZxNRXos3g9xM1VvIQ7gK/047UNADg==}
@@ -2399,9 +2391,11 @@ packages:
       '@types/markdown-it': 13.0.2
       gray-matter: 4.0.3
       markdown-it: 13.0.2
+    dev: false
 
   /@mdit-vue/types@0.12.0:
     resolution: {integrity: sha512-mrC4y8n88BYvgcgzq9bvTlDgFyi2zuvzmPilRvRc3Uz1iIvq8mDhxJ0rHKFUNzPEScpDvJdIujqiDrulMqiudA==}
+    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -9001,6 +8995,7 @@ packages:
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
+    dev: false
 
   /growl@1.10.5:
     resolution: {integrity: sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==}
@@ -9108,6 +9103,7 @@ packages:
   /highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
+    dev: false
 
   /history@5.3.0:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
@@ -10791,6 +10787,7 @@ packages:
 
   /markdown-it-container@3.0.0:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
+    dev: false
 
   /markdown-it@12.3.2:
     resolution: {integrity: sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==}
@@ -13517,6 +13514,7 @@ packages:
     dependencies:
       extend-shallow: 2.0.1
       kind-of: 6.0.3
+    dev: false
 
   /seek-bzip@1.0.6:
     resolution: {integrity: sha512-e1QtP3YL5tWww8uKaOCQ18UxIT2laNBXHjV/S2WYCiK4udiv8lkG89KRIoCjUagnAmCBurjF4zEVX2ByBbnCjQ==}
@@ -14097,6 +14095,7 @@ packages:
   /strip-bom-string@1.0.0:
     resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
     engines: {node: '>=0.10.0'}
+    dev: false
 
   /strip-bom@2.0.0:
     resolution: {integrity: sha512-kwrX1y7czp1E69n2ajbG65mIo9dqvJ+8aBQXOGVxqwvNbsXdFM6Lq37dLAY3mknUwru8CfcCbfOLL/gMo+fi3g==}
@@ -15046,6 +15045,7 @@ packages:
       vite: 4.5.0(@types/node@18.18.5)(sass@1.69.3)
     transitivePeerDependencies:
       - rollup
+    dev: false
 
   /unplugin@1.5.0:
     resolution: {integrity: sha512-9ZdRwbh/4gcm1JTOkp9lAkIDrtOyOxgHmY7cjuwI8L/2RTikMcVG25GsZwNAgRuap3iDw2jeq7eoqtAsz5rW3A==}
