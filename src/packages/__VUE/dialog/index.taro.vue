@@ -10,6 +10,7 @@
     :overlay-style="overlayStyle"
     :style="popStyle"
     round
+    :z-index="zIndex"
     @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
