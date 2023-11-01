@@ -254,7 +254,6 @@ export default create({
       Taro.getImageInfo({
         src: image.src,
         success: (res) => {
-          console.log(res.path);
           Taro.saveImageToPhotosAlbum({
             filePath: res.path,
             success: () => {
