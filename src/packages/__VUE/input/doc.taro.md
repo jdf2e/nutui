@@ -302,6 +302,7 @@ const val = ref('');
 | clear | 点击清除按钮时触发 | `event` |
 | click | 点击组件时触发 | `event` |
 | click-input | 点击输入区域时触发 | `event` |
+| confirm`4.2.1` | 点击软键盘确认时触发 ｜ `event` |
 
 ### Slots
 
