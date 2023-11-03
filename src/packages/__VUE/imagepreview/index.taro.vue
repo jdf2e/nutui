@@ -92,7 +92,7 @@ export default create({
       default: true
     }
   },
-  emits: ['close', 'change'],
+  emits: ['close', 'change', 'longPress'],
   components: {
     [Popup.name]: Popup,
     [Swiper.name]: Swiper,
@@ -251,19 +251,7 @@ export default create({
     };
 
     const longPress = (image: ImageInterface) => {
-      Taro.getImageInfo({
-        src: image.src,
-        success: (res) => {
-          Taro.saveImageToPhotosAlbum({
-            filePath: res.path,
-            success: () => {
-              Taro.showToast({
-                title: '保存成功'
-              });
-            }
-          });
-        }
-      });
+      emit('longPress', image);
     };
 
     const init = () => {

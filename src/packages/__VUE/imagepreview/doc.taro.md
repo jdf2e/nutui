@@ -174,6 +174,69 @@ app.use(ImagePreview);
 
 :::
 
+### 长按图片事件，保存到相册
+
+小程序中，需要给这两个API：`getImageInfo`,`saveImageToPhotosAlbum`，设置隐私权限；网络图片需先配置download域名才能生效。
+
+:::demo
+
+```html
+<template>
+  <nut-image-preview :show="showPreview" :images="imgData" @close="hideFn" @long-press="longPress" />
+  <nut-cell isLink title="长按图片事件，保存到相册" :showIcon="true" @click="showFn"></nut-cell>
+</template>
+
+<script lang="ts" setup>
+  import { reactive, toRefs } from 'vue';
+  import Taro from '@tarojs/taro';
+  const resData = reactive({
+    showPreview: false,
+    imgData: [
+      {
+        src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg'
+      },
+      {
+        src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png'
+      },
+      {
+        src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg'
+      },
+      {
+        src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
+      }
+    ]
+  });
+
+  const { showPreview, imgData } = toRefs(resData);
+
+  const showFn = () => {
+    resData.showPreview = true;
+  };
+
+  const hideFn = () => {
+    resData.showPreview = false;
+  };
+
+  const longPress = (image: { src: string }) => {
+    Taro.getImageInfo({
+      src: image.src,
+      success: (res) => {
+        Taro.saveImageToPhotosAlbum({
+          filePath: res.path,
+          success: () => {
+            Taro.showToast({
+              title: '保存成功'
+            });
+          }
+        });
+      }
+    });
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Props
@@ -208,10 +271,11 @@ app.use(ImagePreview);
 
 ### Events
 
-| 事件名 | 说明                       | 回调参数           |
-| ------ | -------------------------- | ------------------ |
-| close  | 点击遮罩关闭图片预览时触发 | 无                 |
-| change | 切换图片时触发             | index:当前图片索引 |
+| 事件名     | 说明                       | 回调参数                         |
+| ---------- | -------------------------- | -------------------------------- |
+| close      | 点击遮罩关闭图片预览时触发 | 无                               |
+| change     | 切换图片时触发             | index:当前图片索引               |
+| long-press | 小程序长按图片触发的事件   | (image: { src: string }) => void |
 
 ### Slots
 
