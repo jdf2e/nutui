@@ -29,6 +29,7 @@ export class ImagePreviewOptions {
   isLoop?: boolean = true;
   onClose?(): void;
   onChange?(index: number): void;
+  onLongPress?(image: ImageInterface): void;
   teleport?: string | HTMLElement = 'body';
 }
 
