@@ -19,6 +19,16 @@
     />
     <nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn(3)"></nut-cell>
 
+    <h2>长按图片事件，保存到相册</h2>
+    <nut-image-preview
+      :show="showPreview5"
+      :images="imgData"
+      @close="hideFn(5)"
+      :isLoop="false"
+      @long-press="longPress"
+    />
+    <nut-cell isLink title="长按图片事件，保存到相册" :showIcon="true" @click="showFn(5)"></nut-cell>
+
     <!-- <h2>视频、图片预览</h2>
     <nut-image-preview :show="showPreview4" :videos="videoData" :images="imgData" @close="hideFn(4)" />
     <nut-cell isLink title="视频、图片预览" :showIcon="true" @click="showFn(4)"></nut-cell> -->
@@ -41,6 +51,7 @@ export default {
       showPreview2: false,
       showPreview3: false,
       showPreview4: false,
+      showPreview5: false,
       imgData: [
         {
           src: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg'
@@ -78,9 +89,9 @@ export default {
         }
       ]
     });
-    const onClose = () => {
-      console.log('imagepreview closed');
-    };
+    // const onClose = () => {
+    //   console.log('imagepreview closed');
+    // };
 
     const showFn = (i: number) => {
       (resData as any)['showPreview' + i] = true;
@@ -98,11 +109,28 @@ export default {
       (resData as any)['showPreview' + i] = false;
     };
 
+    const longPress = (image: { src: string }) => {
+      Taro.getImageInfo({
+        src: image.src,
+        success: (res) => {
+          Taro.saveImageToPhotosAlbum({
+            filePath: res.path,
+            success: () => {
+              Taro.showToast({
+                title: '保存成功'
+              });
+            }
+          });
+        }
+      });
+    };
+
     return {
       ...toRefs(resData),
       showFn,
       hideFn,
-      env
+      env,
+      longPress
       // fnShow
     };
   }

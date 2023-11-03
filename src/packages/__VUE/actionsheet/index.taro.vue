@@ -6,6 +6,7 @@
     :close-on-click-overlay="closeAbled"
     :lock-scroll="lockScroll"
     :catch-move="lockScroll"
+    :z-index="zIndex"
     @click-overlay="close"
   >
     <view :class="classes">

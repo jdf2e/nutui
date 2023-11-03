@@ -6,6 +6,7 @@
     :round="round"
     :teleport-disable="teleportDisable"
     :teleport="teleport"
+    :z-index="zIndex"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"

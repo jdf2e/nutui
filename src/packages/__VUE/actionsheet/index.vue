@@ -5,6 +5,7 @@
     round
     :close-on-click-overlay="closeAbled"
     :lock-scroll="lockScroll"
+    :z-index="zIndex"
     @click-overlay="close"
   >
     <view :class="classes">

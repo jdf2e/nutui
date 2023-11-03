@@ -8,6 +8,7 @@
       :closeable="closeable"
       :destroy-on-close="false"
       :close-icon-position="closeIconPosition"
+      :z-index="zIndex"
     >
       <template v-if="title">
         <view class="nut-cascader__bar" v-html="title"></view>
