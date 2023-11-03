@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Skeleton } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
 </template>
@@ -30,7 +30,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
 </template>
@@ -42,7 +42,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="60px" row="3"> </nut-skeleton>
 </template>
@@ -54,7 +54,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
 </template>
@@ -66,7 +66,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="pic-compose">
     <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
@@ -74,13 +74,13 @@ app.use(Skeleton);
   </div>
 </template>
 <style>
-  .pic-compose {
-    display: flex;
-    justify-content: space-between;
-    .item {
-      width: 47%;
-    }
+.pic-compose {
+  display: flex;
+  justify-content: space-between;
+  .item {
+    width: 47%;
   }
+}
 </style>
 ```
 
@@ -90,7 +90,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="content">
     <nut-switch v-model="checked" />
@@ -112,41 +112,34 @@ app.use(Skeleton);
   </div>
 </template>
 
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const checked = ref(false);
-      return {
-        checked
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const checked = ref(false);
 </script>
 
 <style>
-  .nut-switch {
-    display: flex;
-    margin: 0 16px 8px 0;
-  }
-  .container {
-    display: flex;
-  }
-  .right-content {
-    margin-left: 19px;
-    font-family: PingFangSC;
-    display: flex;
-    flex-direction: column;
-  }
-  .title {
-    font-size: 14px;
-    color: rgba(51, 51, 51, 1);
-  }
-  .desc {
-    margin-top: 10px;
-    font-size: 13px;
-    color: rgba(154, 155, 157, 1);
-  }
+.nut-switch {
+  display: flex;
+  margin: 0 16px 8px 0;
+}
+.container {
+  display: flex;
+}
+.right-content {
+  margin-left: 19px;
+  font-family: PingFangSC;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 14px;
+  color: rgba(51, 51, 51, 1);
+}
+.desc {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(154, 155, 157, 1);
+}
 </style>
 ```
 
@@ -156,23 +149,23 @@ app.use(Skeleton);
 
 ### Props
 
-| 参数         | 说明                           | 类型    | 默认值    |
-| ------------ | ------------------------------ | ------- | --------- |
-| loading      | 是否显示骨架屏                 | boolean | `true`    |
-| width        | 每行宽度                       | string  | `default` |
-| height       | 每行高度                       | string  | `15px`    |
-| animated     | 是否开启骨架屏动画             | boolean | `false`   |
-| avatar       | 是否显示头像                   | boolean | `false`   |
-| avatar-shape | 头像形状：正方形/圆形          | string  | `round`   |
-| avatar-size  | 头像大小                       | string  | `50px`    |
-| round        | 标题/段落是否采用圆角风格      | boolean | `false`   |
-| title        | 是否显示段落标题（第一行显示） | boolean | `true`    |
-| row          | 设置段落行数（title 下方展示） | string  | `1`       |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| loading | 是否显示骨架屏 | boolean | `true` |
+| width | 每行宽度 | string | `default` |
+| height | 每行高度 | string | `15px` |
+| animated | 是否开启骨架屏动画 | boolean | `false` |
+| avatar | 是否显示头像 | boolean | `false` |
+| avatar-shape | 头像形状：正方形/圆形 | string | `round` |
+| avatar-size | 头像大小 | string | `50px` |
+| round | 标题/段落是否采用圆角风格 | boolean | `false` |
+| title | 是否显示段落标题（第一行显示） | boolean | `true` |
+| row | 设置段落行数（title 下方展示） | string | `1` |
 
 ### Slots
 
-| 名称    | 说明           |
-| ------- | -------------- |
+| 名称 | 说明 |
+| --- | --- |
 | default | 骨架屏显示内容 |
 
 ## 主题定制
@@ -181,8 +174,8 @@ app.use(Skeleton);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                           | 默认值                                                                                             |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| --nut-skeleton-content-avatar-background-color | _#efefef_                                                                                          |
-| --nut-skeleton-content-line-background-color   | _#efefef_                                                                                          |
-| --nut-skeleton-animation-background-color      | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-skeleton-content-avatar-background-color | _#efefef_ |
+| --nut-skeleton-content-line-background-color | _#efefef_ |
+| --nut-skeleton-animation-background-color | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |
