@@ -6,7 +6,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Skeleton } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
 </template>
@@ -30,7 +30,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
 </template>
@@ -42,7 +42,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="60px" row="3"> </nut-skeleton>
 </template>
@@ -54,7 +54,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
 </template>
@@ -66,7 +66,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="pic-compose">
     <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
@@ -74,13 +74,13 @@ app.use(Skeleton);
   </div>
 </template>
 <style>
-  .pic-compose {
-    display: flex;
-    justify-content: space-between;
-  }
-  .item {
-    width: 47%;
-  }
+.pic-compose {
+  display: flex;
+  justify-content: space-between;
+}
+.item {
+  width: 47%;
+}
 </style>
 ```
 
@@ -90,7 +90,7 @@ app.use(Skeleton);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="content">
     <nut-switch v-model="checked" />
@@ -111,16 +111,9 @@ app.use(Skeleton);
   </div>
 </template>
 
-<script lang="ts">
+<script setup>
 import { ref } from 'vue';
-export default {
-  setup() {
-    const checked = ref(false);
-    return {
-      checked
-    };
-  }
-};
+const checked = ref(false);
 </script>
 
 <style>
@@ -156,23 +149,23 @@ export default {
 
 ### Props
 
-| Attribute    | Description                                               | Type    | Default   |
-| ------------ | --------------------------------------------------------- | ------- | --------- |
-| loading      | Whether to display skeleton screen                        | boolean | `true`    |
-| width        | Width per row                                             | string  | `default` |
-| height       | Height of each row                                        | string  | `15px`    |
-| animated     | Whether to turn on skeleton screen animation              | boolean | `false`   |
-| avatar       | Show avatar                                               | boolean | `false`   |
-| avatar-shape | Avatar shape: square / round                              | string  | `round`   |
-| avatar-size  | Avatar size                                               | string  | `50px`    |
-| round        | Is the title / paragraph rounded                          | boolean | `false`   |
-| title        | Show paragraph titles (first line displayed)              | boolean | `true`    |
-| row          | Set the number of paragraph lines (shown below the title) | string  | `1`       |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| loading | Whether to display skeleton screen | boolean | `true` |
+| width | Width per row | string | `default` |
+| height | Height of each row | string | `15px` |
+| animated | Whether to turn on skeleton screen animation | boolean | `false` |
+| avatar | Show avatar | boolean | `false` |
+| avatar-shape | Avatar shape: square / round | string | `round` |
+| avatar-size | Avatar size | string | `50px` |
+| round | Is the title / paragraph rounded | boolean | `false` |
+| title | Show paragraph titles (first line displayed) | boolean | `true` |
+| row | Set the number of paragraph lines (shown below the title) | string | `1` |
 
 ### Slots
 
-| Name    | Description                     |
-| ------- | ------------------------------- |
+| Name | Description |
+| --- | --- |
 | default | Skeleton screen display content |
 
 ## Theming
@@ -181,8 +174,8 @@ export default {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                           | Default Value                                                                                      |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| --nut-skeleton-content-avatar-background-color | _#efefef_                                                                                          |
-| --nut-skeleton-content-line-background-color   | _#efefef_                                                                                          |
-| --nut-skeleton-animation-background-color      | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |
+| Name | Default Value |
+| --- | --- |
+| --nut-skeleton-content-avatar-background-color | _#efefef_ |
+| --nut-skeleton-content-line-background-color | _#efefef_ |
+| --nut-skeleton-animation-background-color | _linear-gradient(90deg,hsla(0, 0%, 100%, 0),hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%)_ |
