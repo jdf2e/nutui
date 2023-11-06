@@ -190,8 +190,8 @@ describe('Form', () => {
         'nut-form-item': FormItem
       },
       template: `
-      <nut-form :model-value="formData" ref="ruleForm">
-        <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+      <nut-form :model-value="formData" ref="ruleForm" :rules="{name:[{ required: true, message: '请填写姓名' }]}">
+        <nut-form-item label="姓名" prop="name">
           <input
             class="nut-input-text"
             v-model="formData.name"
@@ -231,6 +231,8 @@ describe('Form', () => {
       }
     });
 
+    const form1 = wrapper.find('.nut-cell__title');
+    expect(form1.classes()).toContain('required');
     // .nut-input-text
     const formitem: DOMWrapper<Element> = wrapper.find('.nut-input-text');
     expect(formitem.exists()).toBe(true);
