@@ -46,8 +46,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('uploader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -91,136 +91,116 @@ const initTranslate = () =>
       title14: 'Clear upload manually'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
-    const progressPercentage = ref<string | number>(0);
-    const formData = {
-      custom: 'test'
-    };
+initTranslate();
+const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
+const progressPercentage = ref<string | number>(0);
+const formData = {
+  custom: 'test'
+};
 
-    const defaultFileList = reactive([
-      {
-        name: 'file 1.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'success',
-        message: translate('success'),
-        type: 'image'
-      },
-      {
-        name: 'file 2.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'error',
-        message: translate('error'),
-        type: 'image'
-      },
-      {
-        name: 'file 3.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'uploading',
-        message: translate('uploading'),
-        type: 'image'
-      }
-    ]);
-    const defaultFileList1 = reactive([
-      {
-        name: 'file 1.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'success',
-        message: translate('success'),
-        type: 'image'
-      },
-      {
-        name: 'file 2.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'error',
-        message: translate('error'),
-        type: 'image'
-      },
-      {
-        name: 'file 3.png',
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-        status: 'uploading',
-        message: translate('uploading'),
-        type: 'image'
-      }
-    ]);
-    const fileToDataURL = (file: Blob): Promise<any> => {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = (e) => resolve((e.target as FileReader).result);
-        reader.readAsDataURL(file);
-      });
-    };
-    const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.src = dataURL;
-      });
-    };
-    const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
-      return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
-    };
-    const onOversize = () => {
-      showToast.text('oversize 触发 文件大小不能超过 50kb');
-    };
-    const onDelete = () => {
-      showToast.text('delete 事件触发');
-    };
-    const onProgress = ({ percentage }: any) => {
-      progressPercentage.value = percentage;
-      showToast.text('progress 事件触发' + percentage);
-    };
-    const beforeUpload = async (file: File[]) => {
-      let fileName = file[0].name;
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-      const base64 = await fileToDataURL(file[0]);
-      const img = await dataURLToImage(base64);
-      canvas.width = img.width;
-      canvas.height = img.height;
-
-      context.clearRect(0, 0, img.width, img.height);
-      context.drawImage(img, 0, 0, img.width, img.height);
-
-      let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob; //quality:0.5可根据实际情况计算
-      const f = await new File([blob], fileName);
-      return [f];
-    };
-    const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-      if (options.method.toLowerCase() == 'put') {
-        xhr.send(options.sourceFile);
-      } else {
-        xhr.send(options.formData);
-      }
-    };
-    const uploadRef = ref<any>(null);
-    const submitUpload = () => {
-      uploadRef.value.submit();
-    };
-    const clearUpload = () => {
-      uploadRef.value.clearUploadQueue();
-    };
-    return {
-      onOversize,
-      beforeUpload,
-      beforeXhrUpload,
-      onDelete,
-      onProgress,
-      progressPercentage,
-      uploadUrl,
-      defaultFileList,
-      defaultFileList1,
-      formData,
-      uploadRef,
-      submitUpload,
-      clearUpload,
-      translate
-    };
+const defaultFileList = reactive([
+  {
+    name: 'file 1.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'success',
+    message: translate('success'),
+    type: 'image'
+  },
+  {
+    name: 'file 2.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'error',
+    message: translate('error'),
+    type: 'image'
+  },
+  {
+    name: 'file 3.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'uploading',
+    message: translate('uploading'),
+    type: 'image'
   }
-});
+]);
+const defaultFileList1 = reactive([
+  {
+    name: 'file 1.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'success',
+    message: translate('success'),
+    type: 'image'
+  },
+  {
+    name: 'file 2.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'error',
+    message: translate('error'),
+    type: 'image'
+  },
+  {
+    name: 'file 3.png',
+    url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    status: 'uploading',
+    message: translate('uploading'),
+    type: 'image'
+  }
+]);
+const fileToDataURL = (file: Blob): Promise<any> => {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = (e) => resolve((e.target as FileReader).result);
+    reader.readAsDataURL(file);
+  });
+};
+const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.src = dataURL;
+  });
+};
+const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
+};
+const onOversize = () => {
+  showToast.text('oversize 触发 文件大小不能超过 50kb');
+};
+const onDelete = () => {
+  showToast.text('delete 事件触发');
+};
+const onProgress = ({ percentage }: any) => {
+  progressPercentage.value = percentage;
+  showToast.text('progress 事件触发' + percentage);
+};
+const beforeUpload = async (file: File[]) => {
+  let fileName = file[0].name;
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+  const base64 = await fileToDataURL(file[0]);
+  const img = await dataURLToImage(base64);
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  context.clearRect(0, 0, img.width, img.height);
+  context.drawImage(img, 0, 0, img.width, img.height);
+
+  let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob; //quality:0.5可根据实际情况计算
+  const f = await new File([blob], fileName);
+  return [f];
+};
+const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
+  if (options.method.toLowerCase() == 'put') {
+    xhr.send(options.sourceFile);
+  } else {
+    xhr.send(options.formData);
+  }
+};
+const uploadRef = ref<any>(null);
+const submitUpload = () => {
+  uploadRef.value.submit();
+};
+const clearUpload = () => {
+  uploadRef.value.clearUploadQueue();
+};
 </script>
 
 <style lang="scss" scoped></style>

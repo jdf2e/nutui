@@ -5,13 +5,13 @@
       <nut-cell
         :show-icon="true"
         :title="translate('single')"
-        :desc="date ? `${date} ${dateWeek}` : translate('please')"
+        :desc="state.date ? `${state.date} ${state.dateWeek}` : translate('please')"
         @click="openSwitch('isVisible')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible"
-        :default-value="date"
+        v-model:visible="state.isVisible"
+        :default-value="state.date"
         :start-date="`2022-01-11`"
         :end-date="`2022-11-30`"
         @close="closeSwitch('isVisible')"
@@ -24,14 +24,16 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date1.length ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
+        :desc="
+          state.date1.length ? `${state.date1[0]}${translate('conjunction')}${state.date1[1]}` : translate('please')
+        "
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
       <nut-calendar
         ref="calendarRef"
-        v-model:visible="isVisible1"
-        :default-value="date1"
+        v-model:visible="state.isVisible1"
+        :default-value="state.date1"
         type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
@@ -45,13 +47,15 @@
       <nut-cell
         :show-icon="true"
         :title="translate('multiple')"
-        :desc="date7 && date7.length ? `${translate('selected')}${date7.length}` : translate('please')"
+        :desc="
+          state.date7 && state.date7.length ? `${translate('selected')}${state.date7.length}` : translate('please')
+        "
         @click="openSwitch('isVisible7')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible7"
-        :default-value="date7"
+        v-model:visible="state.isVisible7"
+        :default-value="state.date7"
         type="multiple"
         :start-date="`2022-01-01`"
         :end-date="`2022-09-10`"
@@ -64,13 +68,15 @@
       <nut-cell
         :show-icon="true"
         :title="translate('week')"
-        :desc="date9.length ? `${date9[0]}${translate('conjunction')}${date9[1]}` : translate('please')"
+        :desc="
+          state.date9.length ? `${state.date9[0]}${translate('conjunction')}${state.date9[1]}` : translate('please')
+        "
         @click="openSwitch('isVisible9')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible9"
-        :default-value="date9"
+        v-model:visible="state.isVisible9"
+        :default-value="state.date9"
         type="week"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
@@ -86,13 +92,13 @@
       <nut-cell
         :show-icon="true"
         :title="translate('single')"
-        :desc="date3 ? date3 : translate('please')"
+        :desc="state.date3 ? state.date3 : translate('please')"
         @click="openSwitch('isVisible3')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible3"
-        :default-value="date3"
+        v-model:visible="state.isVisible3"
+        :default-value="state.date3"
         :start-date="null"
         :end-date="null"
         :is-auto-back-fill="true"
@@ -105,13 +111,15 @@
       <nut-cell
         :show-icon="true"
         :title="translate('range')"
-        :desc="date4.length ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
+        :desc="
+          state.date4.length ? `${state.date4[0]}${translate('conjunction')}${state.date4[1]}` : translate('please')
+        "
         @click="openSwitch('isVisible4')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible4"
-        :default-value="date4"
+        v-model:visible="state.isVisible4"
+        :default-value="state.date4"
         type="range"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
@@ -126,14 +134,18 @@
       <nut-cell
         :show-icon="true"
         :title="translate('custom_btn')"
-        :desc="date5 && date5[0] ? `${date5[0]}${translate('conjunction')}${date5[1]}` : translate('please')"
+        :desc="
+          state.date5 && state.date5[0]
+            ? `${state.date5[0]}${translate('conjunction')}${state.date5[1]}`
+            : translate('please')
+        "
         @click="openSwitch('isVisible5')"
       >
       </nut-cell>
       <nut-calendar
         ref="calendarRef"
-        v-model:visible="isVisible5"
-        :default-value="date5"
+        v-model:visible="state.isVisible5"
+        :default-value="state.date5"
         type="range"
         @close="closeSwitch('isVisible5')"
         @choose="setChooseValue5"
@@ -160,13 +172,17 @@
       <nut-cell
         :show-icon="true"
         :title="translate('timeText')"
-        :desc="date6 && date6[0] ? `${date6[0]}${translate('conjunction')}${date6[1]}` : translate('please')"
+        :desc="
+          state.date6 && state.date6[0]
+            ? `${state.date6[0]}${translate('conjunction')}${state.date6[1]}`
+            : translate('please')
+        "
         @click="openSwitch('isVisible6')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible6"
-        :default-value="date6"
+        v-model:visible="state.isVisible6"
+        :default-value="state.date6"
         type="range"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
@@ -189,22 +205,28 @@
       <nut-cell
         :show-icon="true"
         :title="translate('custom_footer')"
-        :desc="date10 ? `${date10}` : translate('please')"
+        :desc="state.date10 ? `${state.date10}` : translate('please')"
         @click="openSwitch('isVisible10')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible10"
-        :default-value="date10"
+        v-model:visible="state.isVisible10"
+        :default-value="state.date10"
         :poppable="true"
         :is-auto-back-fill="false"
         @close="closeSwitch('isVisible10')"
         @select="setSelectalue10"
       >
         <template #footer-info="dateInfo">
-          <nut-button size="large" block round type="primary" :disabled="disabled10" @click="clickBtn10(dateInfo)">{{
-            disabled10 ? translate('custom_footer_text1') : translate('custom_footer_text2')
-          }}</nut-button>
+          <nut-button
+            size="large"
+            block
+            round
+            type="primary"
+            :disabled="state.disabled10"
+            @click="clickBtn10(dateInfo)"
+            >{{ state.disabled10 ? translate('custom_footer_text1') : translate('custom_footer_text2') }}</nut-button
+          >
         </template>
       </nut-calendar>
     </div>
@@ -213,13 +235,13 @@
       <nut-cell
         :show-icon="true"
         :title="translate('single')"
-        :desc="date8 ? `${date8}` : translate('please')"
+        :desc="state.date8 ? `${state.date8}` : translate('please')"
         @click="openSwitch('isVisible8')"
       >
       </nut-cell>
       <nut-calendar
-        v-model:visible="isVisible8"
-        :default-value="date8"
+        v-model:visible="state.isVisible8"
+        :default-value="state.date8"
         :first-day-of-week="2"
         @close="closeSwitch('isVisible8')"
         @choose="setChooseValue8"
@@ -230,7 +252,7 @@
     <div class="test-calendar-wrapper">
       <nut-calendar
         :poppable="false"
-        :default-value="date2"
+        :default-value="state.date2"
         :is-auto-back-fill="true"
         :start-date="`2020-02-01`"
         :end-date="`2020-12-30`"
@@ -241,8 +263,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -308,146 +330,117 @@ const initTranslate = () =>
       selected: 'selected:'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const calendarRef = ref<null | CalendarRef>(null);
-    const state = reactive({
-      isVisible: false,
-      date: '2022-02-01',
-      dateWeek: '',
-      date1: ['2020-01-23', '2020-01-26'],
-      date2: '2020-07-08',
-      date3: '',
-      date4: ['2021-12-23', '2021-12-26'],
-      date5: ['2021-12-23', '2021-12-26'],
-      date6: [] as string[],
-      date7: [] as string[],
-      date8: '',
-      date9: [] as string[],
-      date10: '2023-09-03',
-      isVisible1: false,
-      isVisible2: false,
-      isVisible3: false,
-      isVisible4: false,
-      isVisible5: false,
-      isVisible6: false,
-      isVisible7: false,
-      isVisible8: false,
-      isVisible9: false,
-      isVisible10: false,
-      disabled10: false
-    });
-    const openSwitch = (param: string) => {
-      (state as any)[`${param}`] = true;
-    };
-
-    const closeSwitch = (param: string) => {
-      (state as any)[`${param}`] = false;
-    };
-
-    const setChooseValue = (param: string) => {
-      state.date = param[3];
-      state.dateWeek = param[4];
-    };
-
-    const select = (param: string) => {
-      console.log(param);
-    };
-    const setChooseValue1 = (chooseData: any) => {
-      let dateArr = chooseData.map((item: any) => {
-        return item[3];
-      });
-      state.date1 = [...dateArr];
-    };
-    const setChooseValue2 = (param: string) => {
-      state.date2 = param[3];
-    };
-
-    const setChooseValue3 = (param: string) => {
-      state.date3 = param[3];
-    };
-    const setChooseValue4 = (param: string) => {
-      state.date4 = [...[param[0][3], param[1][3]]];
-    };
-
-    const setChooseValue5 = (param: string) => {
-      state.date5 = [...[param[0][3], param[1][3]]];
-    };
-    const setChooseValue6 = (param: string) => {
-      state.date6 = [...[param[0][3], param[1][3]]];
-    };
-    const setChooseValue7 = (chooseData: any) => {
-      let dateArr = chooseData.map((item: any) => {
-        return item[3];
-      });
-      state.date7 = [...dateArr];
-    };
-    const setChooseValue8 = (param: string) => {
-      state.date8 = param[3];
-    };
-    const setChooseValue9 = (param: any) => {
-      let { weekDate } = param;
-      state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
-    };
-    const setSelectalue10 = (param: any) => {
-      state.disabled10 = param[2] % 2 === 0;
-    };
-
-    const clickBtn = () => {
-      let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
-      state.date5 = date;
-    };
-    const clickBtn1 = () => {
-      let date = new Date();
-      let year = date.getFullYear();
-      let month: any = date.getMonth() + 1;
-      month = month < 10 ? '0' + month : month + '';
-      let yearMonth = `${year}-${month}`;
-      let currMonthDays = Utils.getMonthDays(year + '', month + '');
-      state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
-    };
-    const goDate = () => {
-      if (calendarRef.value) {
-        var date1 = new Date();
-        date1.setDate(date1.getDate() + 30);
-        calendarRef.value.scrollToDate(Utils.date2Str(date1));
-      }
-    };
-    const renderDate = (date: { date: Day }) => {
-      return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
-    };
-    const clickBtn10 = (dateInfo: any) => {
-      state.date10 = dateInfo.date[3];
-      state.isVisible10 = false;
-    };
-    return {
-      ...toRefs(state),
-      openSwitch,
-      closeSwitch,
-      setChooseValue,
-      setChooseValue1,
-      setChooseValue7,
-      setChooseValue2,
-      setChooseValue3,
-      setChooseValue4,
-      setChooseValue5,
-      setChooseValue6,
-      setChooseValue8,
-      setChooseValue9,
-      setSelectalue10,
-      clickBtn,
-      clickBtn1,
-      goDate,
-      calendarRef,
-      select,
-      translate,
-      renderDate,
-      clickBtn10
-    };
-  }
+initTranslate();
+const calendarRef = ref<null | CalendarRef>(null);
+const state = reactive({
+  isVisible: false,
+  date: '2022-02-01',
+  dateWeek: '',
+  date1: ['2020-01-23', '2020-01-26'],
+  date2: '2020-07-08',
+  date3: '',
+  date4: ['2021-12-23', '2021-12-26'],
+  date5: ['2021-12-23', '2021-12-26'],
+  date6: [] as string[],
+  date7: [] as string[],
+  date8: '',
+  date9: [] as string[],
+  date10: '2023-09-03',
+  isVisible1: false,
+  isVisible2: false,
+  isVisible3: false,
+  isVisible4: false,
+  isVisible5: false,
+  isVisible6: false,
+  isVisible7: false,
+  isVisible8: false,
+  isVisible9: false,
+  isVisible10: false,
+  disabled10: false
 });
+const openSwitch = (param: string) => {
+  (state as any)[`${param}`] = true;
+};
+
+const closeSwitch = (param: string) => {
+  (state as any)[`${param}`] = false;
+};
+
+const setChooseValue = (param: string) => {
+  state.date = param[3];
+  state.dateWeek = param[4];
+};
+
+const select = (param: string) => {
+  console.log(param);
+};
+const setChooseValue1 = (chooseData: any) => {
+  let dateArr = chooseData.map((item: any) => {
+    return item[3];
+  });
+  state.date1 = [...dateArr];
+};
+const setChooseValue2 = (param: string) => {
+  state.date2 = param[3];
+};
+
+const setChooseValue3 = (param: string) => {
+  state.date3 = param[3];
+};
+const setChooseValue4 = (param: string) => {
+  state.date4 = [...[param[0][3], param[1][3]]];
+};
+
+const setChooseValue5 = (param: string) => {
+  state.date5 = [...[param[0][3], param[1][3]]];
+};
+const setChooseValue6 = (param: string) => {
+  state.date6 = [...[param[0][3], param[1][3]]];
+};
+const setChooseValue7 = (chooseData: any) => {
+  let dateArr = chooseData.map((item: any) => {
+    return item[3];
+  });
+  state.date7 = [...dateArr];
+};
+const setChooseValue8 = (param: string) => {
+  state.date8 = param[3];
+};
+const setChooseValue9 = (param: any) => {
+  let { weekDate } = param;
+  state.date9 = [weekDate[0].date[3], weekDate[1].date[3]];
+};
+const setSelectalue10 = (param: any) => {
+  state.disabled10 = param[2] % 2 === 0;
+};
+
+const clickBtn = () => {
+  let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
+  state.date5 = date;
+};
+const clickBtn1 = () => {
+  let date = new Date();
+  let year = date.getFullYear();
+  let month: any = date.getMonth() + 1;
+  month = month < 10 ? '0' + month : month + '';
+  let yearMonth = `${year}-${month}`;
+  let currMonthDays = Utils.getMonthDays(year + '', month + '');
+  state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
+};
+const goDate = () => {
+  if (calendarRef.value) {
+    var date1 = new Date();
+    date1.setDate(date1.getDate() + 30);
+    calendarRef.value.scrollToDate(Utils.date2Str(date1));
+  }
+};
+const renderDate = (date: { date: Day }) => {
+  return +date.date.day <= 9 ? '0' + date.date.day : date.date.day;
+};
+const clickBtn10 = (dateInfo: any) => {
+  state.date10 = dateInfo.date[3];
+  state.isVisible10 = false;
+};
 </script>
 
 <style lang="scss" scoped>

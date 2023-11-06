@@ -31,8 +31,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { HeartFill } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -63,31 +63,21 @@ const initTranslate = () =>
       title8: 'Custom size 35px'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const state = reactive({
-      val: 3,
-      val1: 3.5,
-      val2: 3,
-      val3: 3,
-      val4: 3,
-      val5: 3,
-      val6: 3,
-      val7: 3,
-      val8: 3
-    });
-    const onChange = (val: string) => {
-      showToast.text(val);
-    };
-    return {
-      state,
-      onChange,
-      translate,
-      HeartFill
-    };
-  }
+initTranslate();
+const state = reactive({
+  val: 3,
+  val1: 3.5,
+  val2: 3,
+  val3: 3,
+  val4: 3,
+  val5: 3,
+  val6: 3,
+  val7: 3,
+  val8: 3
 });
+const onChange = (val: string) => {
+  showToast.text(val);
+};
 </script>
 
 <style lang="scss" scoped></style>
