@@ -3,7 +3,7 @@
     <h2>{{ translate('basic') }}</h2>
     <!-- 选择年月日 -->
     <nut-date-picker
-      v-model="currentDate"
+      v-model="state.currentDate"
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
@@ -15,7 +15,7 @@
     <nut-cell :title="translate('basic')" :desc="popupDesc" @click="show = true"></nut-cell>
     <nut-popup v-model:visible="show" position="bottom">
       <nut-date-picker
-        v-model="currentDate"
+        v-model="state.currentDate"
         :min-date="minDate"
         :max-date="maxDate"
         :is-show-chinese="true"
@@ -28,7 +28,7 @@
     <h2>{{ translate('mmdd') }}</h2>
     <!-- 选择月日 -->
     <nut-date-picker
-      v-model="currentDate2"
+      v-model="state.currentDate2"
       type="month-day"
       :title="translate('basic')"
       :min-date="new Date(2022, 0, 1)"
@@ -39,7 +39,7 @@
 
     <!-- 选择年月日时分 -->
     <nut-date-picker
-      v-model="currentDate3"
+      v-model="state.currentDate3"
       :title="translate('chooseDate')"
       type="datetime"
       :min-date="minDate"
@@ -50,7 +50,7 @@
 
     <!-- 选择时分秒 -->
     <nut-date-picker
-      v-model="currentDate4"
+      v-model="state.currentDate4"
       :title="translate('chooseTime')"
       type="time"
       :min-date="minDate"
@@ -61,7 +61,7 @@
 
     <!-- 选择时分 -->
     <nut-date-picker
-      v-model="currentDate4"
+      v-model="state.currentDate4"
       :title="translate('chooseTime')"
       type="hour-minute"
       :min-date="minDate"
@@ -72,7 +72,7 @@
 
     <!-- 格式化选项 -->
     <nut-date-picker
-      v-model="currentDate5"
+      v-model="state.currentDate5"
       :title="translate('chooseTime')"
       type="datetime"
       :min-date="new Date(2022, 0, 1)"
@@ -84,7 +84,7 @@
 
     <!-- 分钟数递增步长设置 -->
     <nut-date-picker
-      v-model="currentDate6"
+      v-model="state.currentDate6"
       :title="translate('chooseTime')"
       type="time"
       :min-date="minDate"
@@ -95,7 +95,7 @@
     <h2>{{ translate('filter') }}</h2>
     <!-- 过滤选项 -->
     <nut-date-picker
-      v-model="currentDate7"
+      v-model="state.currentDate7"
       :title="translate('chooseTime')"
       type="datehour"
       :min-date="minDate"
@@ -107,8 +107,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { toRefs, ref, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('date-picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -160,131 +160,109 @@ const initTranslate = () =>
       popupDesc: 'With Popup'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const show = ref(false);
-    const popupDesc = ref();
+initTranslate();
+const show = ref(false);
+const popupDesc = ref();
 
-    const CurrentDate = reactive({
-      currentDate: new Date(2022, 4, 10, 10, 10),
-      currentDate2: new Date(2022, 4, 10, 10, 10),
-      currentDate3: new Date(2022, 4, 10, 10, 10),
-      currentDate4: new Date(2022, 4, 10, 10, 10),
-      currentDate5: new Date(2022, 4, 10, 10, 10),
-      currentDate6: new Date(2022, 4, 10, 10, 10),
-      currentDate7: new Date(2022, 4, 10, 0, 0)
-    });
-
-    const formatter = (type: string, option: any) => {
-      switch (type) {
-        case 'year':
-          option.text += '';
-          break;
-        case 'month':
-          option.text += `${translate('month')}`;
-          break;
-        case 'day':
-          option.text += `${translate('day')}`;
-          break;
-        case 'hour':
-          option.text += `${translate('hour')}`;
-          break;
-        case 'minute':
-          option.text += `${translate('min')}`;
-          break;
-        default:
-          option.text += '';
-      }
-      return option;
-    };
-
-    const formatter1 = (type: string, option: any) => {
-      switch (type) {
-        case 'year':
-          option.text += `${translate('year')}`;
-          break;
-        case 'month':
-          option.text += `${translate('month')}`;
-          break;
-        case 'day':
-          option.text += `${translate('day')}`;
-          break;
-        case 'hour':
-          option.text += `${translate('hour')}`;
-          break;
-        default:
-          option.text += '';
-      }
-      return option;
-    };
-
-    const filter = (type: string, options: any) => {
-      if (type == 'hour') {
-        return options.filter((option: any) => Number(option.value) % 6 === 0);
-      }
-      return options;
-    };
-
-    const confirm = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
-      showToast.text(selectedOptions.map((val: any) => val.text).join(''));
-    };
-
-    const confirm2 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
-      const date = selectedValue.slice(0, 3).join('-');
-      const time = selectedValue.slice(3).join(':');
-      showToast.text(date + ' ' + time);
-    };
-
-    const confirm3 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
-      showToast.text(selectedValue.join(':'));
-    };
-
-    const confirm4 = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
-      const date = selectedOptions
-        .slice(1, 3)
-        .map((op: any) => op.text)
-        .join('');
-      const time = selectedOptions
-        .slice(3)
-        .map((op: any) => op.value)
-        .join(':');
-      showToast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
-    };
-
-    const confirm5 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
-      showToast.text(selectedValue.join('-'));
-    };
-
-    const popupConfirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
-      popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
-      show.value = false;
-    };
-
-    const alwaysFun = () => {
-      popupDesc.value = '永远有效';
-      show.value = false;
-    };
-    return {
-      show,
-      popupDesc,
-      ...toRefs(CurrentDate),
-      minDate: new Date(2020, 0, 1),
-      maxDate: new Date(2025, 10, 1),
-      confirm,
-      formatter,
-      formatter1,
-      filter,
-      alwaysFun,
-      translate,
-      popupConfirm,
-      confirm2,
-      confirm3,
-      confirm4,
-      confirm5
-    };
-  }
+const state = reactive({
+  currentDate: new Date(2022, 4, 10, 10, 10),
+  currentDate2: new Date(2022, 4, 10, 10, 10),
+  currentDate3: new Date(2022, 4, 10, 10, 10),
+  currentDate4: new Date(2022, 4, 10, 10, 10),
+  currentDate5: new Date(2022, 4, 10, 10, 10),
+  currentDate6: new Date(2022, 4, 10, 10, 10),
+  currentDate7: new Date(2022, 4, 10, 0, 0)
 });
+
+const formatter = (type: string, option: any) => {
+  switch (type) {
+    case 'year':
+      option.text += '';
+      break;
+    case 'month':
+      option.text += `${translate('month')}`;
+      break;
+    case 'day':
+      option.text += `${translate('day')}`;
+      break;
+    case 'hour':
+      option.text += `${translate('hour')}`;
+      break;
+    case 'minute':
+      option.text += `${translate('min')}`;
+      break;
+    default:
+      option.text += '';
+  }
+  return option;
+};
+
+const formatter1 = (type: string, option: any) => {
+  switch (type) {
+    case 'year':
+      option.text += `${translate('year')}`;
+      break;
+    case 'month':
+      option.text += `${translate('month')}`;
+      break;
+    case 'day':
+      option.text += `${translate('day')}`;
+      break;
+    case 'hour':
+      option.text += `${translate('hour')}`;
+      break;
+    default:
+      option.text += '';
+  }
+  return option;
+};
+
+const filter = (type: string, options: any) => {
+  if (type == 'hour') {
+    return options.filter((option: any) => Number(option.value) % 6 === 0);
+  }
+  return options;
+};
+
+const confirm = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
+  showToast.text(selectedOptions.map((val: any) => val.text).join(''));
+};
+
+const confirm2 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
+  const date = selectedValue.slice(0, 3).join('-');
+  const time = selectedValue.slice(3).join(':');
+  showToast.text(date + ' ' + time);
+};
+
+const confirm3 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
+  showToast.text(selectedValue.join(':'));
+};
+
+const confirm4 = ({ selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
+  const date = selectedOptions
+    .slice(1, 3)
+    .map((op: any) => op.text)
+    .join('');
+  const time = selectedOptions
+    .slice(3)
+    .map((op: any) => op.value)
+    .join(':');
+  showToast.text(selectedOptions[0].text + translate('year') + date + ' ' + time);
+};
+
+const confirm5 = ({ selectedValue }: { selectedValue: (string | number)[]; selectedOptions: any }) => {
+  showToast.text(selectedValue.join('-'));
+};
+
+const popupConfirm = ({ selectedOptions }: { selectedValue: string[]; selectedOptions: any }) => {
+  popupDesc.value = selectedOptions.map((val: any) => val.text).join('');
+  show.value = false;
+};
+
+const alwaysFun = () => {
+  popupDesc.value = '永远有效';
+  show.value = false;
+};
+const maxDate = new Date(2025, 10, 1);
+const minDate = new Date(2020, 0, 1);
 </script>
-<style lang="scss" scoped></style>
