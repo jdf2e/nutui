@@ -104,7 +104,8 @@ class Lang extends BaseLang {
   pullrefresh = {
     pulling: 'Pull to refresh...',
     loosing: 'Loose to refresh...',
-    loading: 'Loading...'
+    loading: 'Loading...',
+    complete: 'Refresh successfully'
   };
 }
 export default Lang;
