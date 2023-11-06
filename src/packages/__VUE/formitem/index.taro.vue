@@ -8,7 +8,7 @@
       v-if="label || getSlots('label')"
       class="nut-cell__title nut-form-item__label"
       :style="labelStyle"
-      :class="{ required: required }"
+      :class="{ required: isRequired }"
     >
       <slot name="label">{{ label }}</slot>
     </view>
@@ -92,7 +92,19 @@ export default create({
         return { parent };
       }
     };
-    useParent();
+    const { parent: parentObj } = useParent();
+    const isRequired = computed(() => {
+      const rules = parentObj.props?.rules;
+      let formRequired = false;
+      if (Object.keys(rules).length !== 0) {
+        Object.keys(rules).forEach((key) => {
+          if (key === props.prop) {
+            formRequired = rules[key].some((rule: FormItemRule) => rule.required);
+          }
+        });
+      }
+      return props.required || props.rules.some((rule) => rule.required) || formRequired;
+    });
 
     const parent = inject('formErrorTip') as any;
     provide('form', {
@@ -116,7 +128,7 @@ export default create({
       } as CSSProperties;
     });
     const getSlots = (name: string) => slots[name];
-    return { parent, labelStyle, bodyStyle, errorMessageStyle, getSlots };
+    return { parent, labelStyle, bodyStyle, errorMessageStyle, getSlots, isRequired };
   }
 });
 </script>
