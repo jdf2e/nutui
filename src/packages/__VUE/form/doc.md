@@ -139,6 +139,7 @@ const dynamicForm = {
     :model-value="formData"
     :rules="{
       name: [
+        { required: true, message: '请填写姓名' },
         {
           message: 'name 至少两个字符',
           validator: nameLengthValidator
@@ -147,7 +148,7 @@ const dynamicForm = {
     }"
     ref="ruleForm"
   >
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+    <nut-form-item label="姓名" prop="name">
       <nut-input
         class="nut-input-text"
         @blur="customBlurValidate('name')"
