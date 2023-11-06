@@ -50,13 +50,19 @@ const refreshFun = () => {
 
 ### 自定义文案
 
-下拉刷新有 4 个状态：`'loading' | 'loosing' | 'pulling' `，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
+下拉刷新有 4 个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
 ```vue
 <template>
-  <nut-pull-refresh v-model="refresh" loosing-txt="松开吧" loading-txt="玩命加载中..." @refresh="refreshFun">
+  <nut-pull-refresh
+    v-model="refresh"
+    loosing-txt="松开吧"
+    loading-txt="玩命加载中..."
+    :complete-duration="1000"
+    @refresh="refreshFun"
+  >
     <template #pulling-txt>
       <div>用力拉</div>
     </template>
@@ -134,7 +140,7 @@ const refreshFun = () => {
 | loosing-txt | 释放过程提示文案 | string | `释放刷新` |
 | loading-txt | 加载过程提示文案 | string | `加载中...` |
 | complete-txt | 加载完成提示文案 | string | `刷新成功` |
-| complete-duration | 加载完成时显示文字的持续时间(毫秒) | number | `1000` |
+| complete-duration | 加载完成时显示文字的持续时间(毫秒),为`0`时不展示加载完成文案 | number | `0` |
 | duration | 下拉动画加载时长 | number | `0.3 ` |
 
 ### Events

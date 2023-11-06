@@ -70,7 +70,7 @@ export default create({
     },
     completeDuration: {
       type: Number,
-      default: 1000
+      default: 0
     }
   },
   emits: ['change', 'refresh', 'update:modelValue'],
@@ -217,6 +217,7 @@ export default create({
         if (val) {
           setPullStatus(+props.headHeight, true);
         } else {
+          if (props.completeDuration === 0) setPullStatus(0);
           setPullStatus(+props.headHeight, false, true);
           setTimeout(() => {
             setPullStatus(0);

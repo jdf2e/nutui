@@ -50,13 +50,19 @@ const refreshFun = () => {
 
 ### Custom Tips
 
-The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
+The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，Complex styles can be implemented through slots。
 
 :::demo
 
 ```vue
 <template>
-  <nut-pull-refresh v-model="refresh2" loosing-txt="Relax" loading-txt="Desperate loading..." @refresh="refreshFun">
+  <nut-pull-refresh
+    v-model="refresh2"
+    loosing-txt="Relax"
+    loading-txt="Desperate loading..."
+    :complete-duration="1000"
+    @refresh="refreshFun"
+  >
     <template #pulling-txt>
       <div>Pull</div>
     </template>
@@ -134,7 +140,7 @@ const refreshFun = () => {
 | loosing-txt | Text to show when loosing | string | `Loose to refresh...` |
 | loading-txt | Text to show when loading | string | `Loading...` |
 | complete-txt | Text to show when complete | string | `Refresh successfully` |
-| complete-duration | Duration of text display when loading is complete (milliseconds) | number | `1000` |
+| complete-duration | Duration of text display when loading is complete (milliseconds),Load completion copy is not displayed when it is `0` | number | `0` |
 | duration | Pull down animation duration | number | `0.3` |
 
 ### Events
