@@ -96,12 +96,10 @@ export default create({
     const isRequired = computed(() => {
       const rules = parentObj.props?.rules;
       let formRequired = false;
-      if (Object.keys(rules).length !== 0) {
-        Object.keys(rules).forEach((key) => {
-          if (key === props.prop) {
-            formRequired = rules[key].some((rule: FormItemRule) => rule.required);
-          }
-        });
+      for (const key in rules) {
+        if (Object.prototype.hasOwnProperty.call(rules, key) && key === props.prop && Array.isArray(rules[key])) {
+          formRequired = rules[key].some((rule: FormItemRule) => rule.required);
+        }
       }
       return props.required || props.rules.some((rule) => rule.required) || formRequired;
     });
