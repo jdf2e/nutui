@@ -6,7 +6,7 @@ A red dot, number or text appearing in the upper right corner of the icon or tex
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Badge } from '@nutui/nutui';
 
@@ -18,7 +18,7 @@ app.use(Badge);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge :value="8">
@@ -37,12 +37,12 @@ app.use(Badge);
 </template>
 
 <style>
-  .demo {
-    padding: 30px 17px 0 17px;
-  }
-  .nut-badge {
-    margin-right: 40px;
-  }
+.demo {
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
 </style>
 ```
 
@@ -52,7 +52,7 @@ app.use(Badge);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge :value="200" :max="9">
@@ -68,12 +68,12 @@ app.use(Badge);
 </template>
 
 <style>
-  .demo {
-    padding: 30px 17px 0 17px;
-  }
-  .nut-badge {
-    margin-right: 40px;
-  }
+.demo {
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
 </style>
 ```
 
@@ -83,7 +83,7 @@ app.use(Badge);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge :value="8" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
@@ -102,12 +102,12 @@ app.use(Badge);
 </template>
 
 <style>
-  .demo {
-    padding: 30px 17px 0 17px;
-  }
-  .nut-badge {
-    margin-right: 40px;
-  }
+.demo {
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
 </style>
 ```
 
@@ -117,7 +117,7 @@ app.use(Badge);
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge>
@@ -146,14 +146,13 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 </script>
 
 <style>
-.demo{
+.demo {
   padding: 30px 17px 0 17px;
 }
 .nut-badge {
   margin-right: 40px;
 }
 </style>
-
 ```
 
 :::
@@ -162,7 +161,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge :value="8" top="5" right="5">
@@ -178,12 +177,12 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 </template>
 
 <style>
-  .demo {
-    padding: 30px 17px 0 17px;
-  }
-  .nut-badge {
-    margin-right: 40px;
-  }
+.demo {
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
 </style>
 ```
 
@@ -193,7 +192,7 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 
 :::demo
 
-```html
+```vue
 <template>
   <div class="demo">
     <nut-badge :value="8"> </nut-badge>
@@ -203,12 +202,12 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 </template>
 
 <style>
-  .demo {
-    padding: 30px 17px 0 17px;
-  }
-  .nut-badge {
-    margin-right: 40px;
-  }
+.demo {
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
 </style>
 ```
 
@@ -218,24 +217,24 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 
 ### Props
 
-| Attribute         | Description                                                   | Type    | Default   |
-| ----------------- | ------------------------------------------------------------- | ------- | --------- |
-| value             | content                                                       | string  | `-`       |
-| max               | When value is a numeric value, the maximum value              | number  | `10000`   |
-| z-index           | badge z-index                                                 | number  | `10`      |
-| dot               | whether to dot                                                | boolean | `false`   |
-| bubble(`>v4.0.0`) | whether to bubble                                             | Boolean | `false`   |
-| hidden            | whether to hide                                               | boolean | `false`   |
-| top               | Up and down offset, support unit setting, for example: 5px    | number  | `0`       |
-| right             | Left and right offset, support unit setting, for example: 5px | number  | `0`       |
-| color             | badge background color                                        | string  | `#fa2c19` |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | content | string | `-` |
+| max | When value is a numeric value, the maximum value | number | `10000` |
+| z-index | badge z-index | number | `10` |
+| dot | whether to dot | boolean | `false` |
+| bubble(`>v4.0.0`) | whether to bubble | Boolean | `false` |
+| hidden | whether to hide | boolean | `false` |
+| top | Up and down offset, support unit setting, for example: 5px | number | `0` |
+| right | Left and right offset, support unit setting, for example: 5px | number | `0` |
+| color | badge background color | string | `#fa2c19` |
 
 ### Slots
 
-| Name    | Description  |
-| ------- | ------------ |
+| Name | Description |
+| --- | --- |
 | default | Default slot |
-| icon    | Icon slot    |
+| icon | Icon slot |
 
 ## Theming
 
@@ -243,17 +242,17 @@ import { Check, Link, Download } from '@nutui/icons-vue';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                          | Default Value                                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------------------- |
-| --nut-badge-background-color  | _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ |
-| --nut-badge-color             | _#fff_                                                                                    |
-| --nut-badge-font-size         | _var(--nut-font-size-1)_                                                                  |
-| --nut-badge-border-radius     | _14px_                                                                                    |
-| --nut-badge-icon-padding      | _4px_                                                                                     |
-| --nut-badge-padding           | _0 5px_                                                                                   |
-| --nut-badge-content-transform | _translate(50%, -50%)_                                                                    |
-| --nut-badge-z-index           | _1_                                                                                       |
-| --nut-badge-dot-width         | _7px_                                                                                     |
-| --nut-badge-dot-height        | _7px_                                                                                     |
-| --nut-badge-dot-border-radius | _7px_                                                                                     |
-| --nut-badge-dot-padding       | _0px_                                                                                     |
+| Name | Default Value |
+| --- | --- |
+| --nut-badge-background-color | _linear-gradient(135deg, var(--nut-primary-color) 0%, var(--nut-primary-color-end) 100%)_ |
+| --nut-badge-color | _#fff_ |
+| --nut-badge-font-size | _var(--nut-font-size-1)_ |
+| --nut-badge-border-radius | _14px_ |
+| --nut-badge-icon-padding | _4px_ |
+| --nut-badge-padding | _0 5px_ |
+| --nut-badge-content-transform | _translate(50%, -50%)_ |
+| --nut-badge-z-index | _1_ |
+| --nut-badge-dot-width | _7px_ |
+| --nut-badge-dot-height | _7px_ |
+| --nut-badge-dot-border-radius | _7px_ |
+| --nut-badge-dot-padding | _0px_ |

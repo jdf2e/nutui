@@ -42,25 +42,12 @@
   </view>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const checked = ref(false);
-
-    return {
-      checked,
-      env
-    };
-  }
-};
+const env = Taro.getEnv();
+const checked = ref(false);
 </script>
 
 <style lang="scss">

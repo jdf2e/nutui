@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-collapse v-model="active1" @change="change">
+    <nut-collapse v-model="data.active1" @change="change">
       <nut-collapse-item :name="1">
         <template #title>
           {{ translate('title1') }}
@@ -21,7 +21,7 @@
       <nut-collapse-item :title="translate('title2')" :name="2"> {{ translate('desc4') }} </nut-collapse-item>
     </nut-collapse> -->
     <h2>{{ translate('basic3') }}</h2>
-    <nut-collapse v-model="active2" accordion @change="change">
+    <nut-collapse v-model="data.active2" accordion @change="change">
       <nut-collapse-item :title="translate('title1')" :name="1"> {{ translate('desc5') }} </nut-collapse-item>
       <nut-collapse-item :title="translate('title2')" :name="2" :value="translate('subtitle')">
         {{ translate('desc6') }}
@@ -31,7 +31,7 @@
       </nut-collapse-item>
     </nut-collapse>
     <h2>{{ translate('basic4') }}</h2>
-    <nut-collapse v-model="active3" :accordion="true">
+    <nut-collapse v-model="data.active3" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1" :icon="Notice">
         <template #value> {{ translate('title4') }} </template>
         {{ translate('desc8') }}
@@ -50,7 +50,7 @@
       </nut-collapse-item>
     </nut-collapse> -->
     <h2>{{ translate('basic6') }}</h2>
-    <nut-collapse v-model="active6" :accordion="true">
+    <nut-collapse v-model="data.active6" :accordion="true">
       <nut-collapse-item :title="translate('title1')" :name="1">
         <template #extra>{{ translate('title5') }}</template>
         {{ translate('desc1') }}
@@ -61,8 +61,8 @@
     </nut-collapse>
   </div>
 </template>
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { Notice, Follow } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('collapse');
@@ -123,33 +123,22 @@ const initTranslate = () =>
       subtitle: 'subtitle'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const data = reactive({
-      active1: [1, 2],
-      active2: 1,
-      active3: 1,
-      active4: 1,
-      active5: 1,
-      active6: 1,
-      title1: '标题1',
-      title2: '标题2',
-      title3: '标题3',
-      subTitle: '副标题'
-    });
-    const change = (current: any, name: string | number, status: boolean) => {
-      console.log(current, name, status);
-    };
-    return {
-      Notice,
-      Follow,
-      translate,
-      change,
-      ...toRefs(data)
-    };
-  }
+initTranslate();
+const data = reactive({
+  active1: [1, 2],
+  active2: 1,
+  active3: 1,
+  active4: 1,
+  active5: 1,
+  active6: 1,
+  title1: '标题1',
+  title2: '标题2',
+  title3: '标题3',
+  subTitle: '副标题'
 });
+const change = (current: any, name: string | number, status: boolean) => {
+  console.log(current, name, status);
+};
 </script>
 <style lang="scss">
 .nut-collapse-item .collapse-extraWrapper .collapse-extraRender {

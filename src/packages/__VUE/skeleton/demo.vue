@@ -43,8 +43,8 @@
   </view>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('skeleton');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -70,17 +70,8 @@ const initTranslate = () =>
     }
   });
 
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const checked = ref(false);
-
-    return {
-      checked,
-      translate
-    };
-  }
-});
+initTranslate();
+const checked = ref(false);
 </script>
 
 <style lang="scss">

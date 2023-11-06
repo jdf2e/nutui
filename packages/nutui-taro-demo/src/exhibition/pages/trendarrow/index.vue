@@ -54,19 +54,11 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import { Success, Failure } from '@nutui/icons-vue-taro';
-export default defineComponent({
-  components: { Success, Failure, Header },
-  props: {},
-  setup() {
-    const env = Taro.getEnv();
-    return { env };
-  }
-});
+const env = Taro.getEnv();
 </script>
 <style lang="scss">
 .trendarrow-demo {
