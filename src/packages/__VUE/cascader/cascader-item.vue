@@ -31,13 +31,14 @@
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue';
 import Tabs from '../tabs/index.vue';
 import TabPane from '../tabpane/index.vue';
 import Tree from './tree';
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('cascader-item');
 
 export default create({
   components: {
@@ -72,6 +73,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'pathChange'],
 
   setup(props, { emit }) {
+    const translate = useLocale();
     const configs = computed(() => ({
       lazy: props.lazy,
       lazyLoad: props.lazyLoad,
