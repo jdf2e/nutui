@@ -35,10 +35,15 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
-const { componentName, create, translate } = createComponent('textarea');
+import { useLocale } from '@/packages/utils/useLocale';
+
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean;
 }
+
+const { create } = createComponent('textarea');
+const cN = 'NutTextarea';
+
 export default create({
   inheritAttrs: false,
   props: {
@@ -87,8 +92,9 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-textarea';
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: props.disabled
