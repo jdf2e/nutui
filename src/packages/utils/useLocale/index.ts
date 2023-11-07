@@ -1,8 +1,8 @@
 import locale from '@/packages/locale';
-import { getPropByPath } from '../util';
+import { getPropByPath, isFunction } from '../util';
 
 export const useLocale = (name = '') => {
-  return (keyPath: string) => {
+  return (keyPath: string, ...args: unknown[]) => {
     name = name.toLocaleLowerCase();
     const languages = locale.languages();
     let text = keyPath;
@@ -10,6 +10,6 @@ export const useLocale = (name = '') => {
       text = `${name.slice(3)}.${keyPath}`;
     }
     const res = getPropByPath(languages, text) || getPropByPath(languages, keyPath);
-    return res;
+    return isFunction(res) ? res(...args) : res;
   };
 };
