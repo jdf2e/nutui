@@ -190,9 +190,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { showToast } from '@/packages/nutui.vue';
-import { reactive, ref, defineComponent } from 'vue';
+import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('form');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -278,209 +278,182 @@ const initTranslate = () =>
       asyncValidator: 'Simulating asynchronous verification'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const formData = reactive({
-      name: '',
-      age: '',
-      tel: '',
-      address: ''
-    });
-    const basicData = reactive({
-      name: '',
-      age: '',
-      tel: '',
-      address: ''
-    });
+initTranslate();
+const formData = reactive({
+  name: '',
+  age: '',
+  tel: '',
+  address: ''
+});
+const basicData = reactive({
+  name: '',
+  age: '',
+  tel: '',
+  address: ''
+});
 
-    const dynamicRefForm = ref<any>(null);
-    const dynamicForm = {
-      state: reactive({
-        name: '',
-        tels: new Array({
-          key: 1,
-          value: ''
-        })
-      }),
+const dynamicRefForm = ref<any>(null);
+const dynamicForm = {
+  state: reactive({
+    name: '',
+    tels: new Array({
+      key: 1,
+      value: ''
+    })
+  }),
 
-      methods: {
-        submit() {
-          dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
-            if (valid) {
-              console.log('success', dynamicForm);
-            } else {
-              showToast.warn(errors[0].message);
-              console.log('error submit!!', errors);
-            }
-          });
-        },
-        reset() {
-          dynamicRefForm.value.reset();
-        },
-        remove() {
-          dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
-        },
-        add() {
-          dynamicForm.state.tels.push({
-            key: Date.now(),
-            value: ''
-          });
-        }
-      }
-    };
-
-    const validate = (item: any) => {
-      console.log(item);
-    };
-
-    const formData2 = reactive({
-      switch: false,
-      checkbox: false,
-      radio: 0,
-      number: 0,
-      rate: 3,
-      range: 30,
-      address: '',
-      defaultFileList: [
-        {
-          name: 'file 1.png',
-          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-          status: 'success',
-          message: translate('success'),
-          type: 'image'
-        },
-        {
-          name: 'file 2.png',
-          url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-          status: 'uploading',
-          message: translate('uploading'),
-          type: 'image'
-        }
-      ]
-    });
-
-    const addressModule = reactive({
-      state: {
-        show: false,
-        province: [
-          { id: 1, name: '北京' },
-          { id: 2, name: '广西' },
-          { id: 3, name: '江西' },
-          { id: 4, name: '四川' }
-        ],
-        city: [
-          { id: 7, name: '朝阳区' },
-          { id: 8, name: '崇文区' },
-          { id: 9, name: '昌平区' },
-          { id: 6, name: '石景山区' }
-        ],
-        country: [
-          { id: 3, name: '八里庄街道' },
-          { id: 9, name: '北苑' },
-          { id: 4, name: '常营乡' }
-        ],
-        town: []
-      } as any,
-      methods: {
-        show() {
-          addressModule.state.show = !addressModule.state.show;
-          if (addressModule.state.show) {
-            formData2.address = '';
-          }
-        },
-        onChange({ next, value }: any) {
-          formData2.address += value.name;
-          const name = addressModule.state[next];
-          if (name.length < 1) {
-            addressModule.state.show = false;
-          }
-        }
-      }
-    });
-
-    const ruleForm = ref<any>(null);
-
-    const submit = () => {
-      ruleForm.value.validate().then(({ valid, errors }: any) => {
+  methods: {
+    submit() {
+      dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
         if (valid) {
-          console.log('success', formData);
+          console.log('success', dynamicForm);
         } else {
+          showToast.warn(errors[0].message);
           console.log('error submit!!', errors);
         }
       });
-    };
-    const reset = () => {
-      ruleForm.value.reset();
-    };
-    // 失去焦点校验
-    const customBlurValidate = (prop: string) => {
-      ruleForm.value.validate(prop).then(({ valid, errors }: any) => {
-        if (valid) {
-          console.log('success', formData);
-        } else {
-          console.log('error submit!!', errors);
-        }
+    },
+    reset() {
+      dynamicRefForm.value.reset();
+    },
+    remove() {
+      dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
+    },
+    add() {
+      dynamicForm.state.tels.push({
+        key: Date.now(),
+        value: ''
       });
-    };
-    // 函数校验
-    const customValidator = (val: string) => {
-      if (/^\d+$/.test(val)) {
-        return Promise.resolve();
-      } else {
-        return Promise.reject('必须输入数字');
+    }
+  }
+};
+
+const formData2 = reactive({
+  switch: false,
+  checkbox: false,
+  radio: 0,
+  number: 0,
+  rate: 3,
+  range: 30,
+  address: '',
+  defaultFileList: [
+    {
+      name: 'file 1.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: translate('success'),
+      type: 'image'
+    },
+    {
+      name: 'file 2.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: translate('uploading'),
+      type: 'image'
+    }
+  ]
+});
+
+const addressModule = reactive({
+  state: {
+    show: false,
+    province: [
+      { id: 1, name: '北京' },
+      { id: 2, name: '广西' },
+      { id: 3, name: '江西' },
+      { id: 4, name: '四川' }
+    ],
+    city: [
+      { id: 7, name: '朝阳区' },
+      { id: 8, name: '崇文区' },
+      { id: 9, name: '昌平区' },
+      { id: 6, name: '石景山区' }
+    ],
+    country: [
+      { id: 3, name: '八里庄街道' },
+      { id: 9, name: '北苑' },
+      { id: 4, name: '常营乡' }
+    ],
+    town: []
+  } as any,
+  methods: {
+    show() {
+      addressModule.state.show = !addressModule.state.show;
+      if (addressModule.state.show) {
+        formData2.address = '';
       }
-    };
-    const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
-      if ((rule?.reg as RegExp).test(val)) {
-        return Promise.resolve();
-      } else {
-        return Promise.reject('必须输入数字');
+    },
+    onChange({ next, value }: any) {
+      formData2.address += value.name;
+      const name = addressModule.state[next];
+      if (name.length < 1) {
+        addressModule.state.show = false;
       }
-    };
-    const nameLengthValidator = (val: string) => {
-      if (val.length > 2) {
-        return Promise.resolve();
-      } else {
-        return Promise.reject('名称两个字以上');
-      }
-    };
-    // Promise 异步校验
-    const asyncValidator = (val: string) => {
-      const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
-      return new Promise((resolve, reject) => {
-        showToast.loading('模拟异步验证中...');
-        setTimeout(() => {
-          showToast.hide();
-          if (!val) {
-            reject('请输入联系电话');
-          } else if (!telReg.test(val)) {
-            reject('联系电话格式不正确');
-          } else {
-            resolve('');
-          }
-        }, 1000);
-      });
-    };
-    return {
-      ruleForm,
-      formData,
-      validate,
-      customValidator,
-      customRulePropValidator,
-      nameLengthValidator,
-      asyncValidator,
-      customBlurValidate,
-      submit,
-      reset,
-      formData2,
-      addressModule,
-      dynamicForm,
-      dynamicRefForm,
-      basicData,
-      translate
-    };
+    }
   }
 });
+
+const ruleForm = ref<any>(null);
+
+const submit = () => {
+  ruleForm.value.validate().then(({ valid, errors }: any) => {
+    if (valid) {
+      console.log('success', formData);
+    } else {
+      console.log('error submit!!', errors);
+    }
+  });
+};
+const reset = () => {
+  ruleForm.value.reset();
+};
+// 失去焦点校验
+const customBlurValidate = (prop: string) => {
+  ruleForm.value.validate(prop).then(({ valid, errors }: any) => {
+    if (valid) {
+      console.log('success', formData);
+    } else {
+      console.log('error submit!!', errors);
+    }
+  });
+};
+// 函数校验
+const customValidator = (val: string) => {
+  if (/^\d+$/.test(val)) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('必须输入数字');
+  }
+};
+const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
+  if ((rule?.reg as RegExp).test(val)) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('必须输入数字');
+  }
+};
+const nameLengthValidator = (val: string) => {
+  if (val.length > 2) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('名称两个字以上');
+  }
+};
+// Promise 异步校验
+const asyncValidator = (val: string) => {
+  const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+  return new Promise((resolve, reject) => {
+    showToast.loading('模拟异步验证中...');
+    setTimeout(() => {
+      showToast.hide();
+      if (!val) {
+        reject('请输入联系电话');
+      } else if (!telReg.test(val)) {
+        reject('联系电话格式不正确');
+      } else {
+        resolve('');
+      }
+    }, 1000);
+  });
+};
 </script>

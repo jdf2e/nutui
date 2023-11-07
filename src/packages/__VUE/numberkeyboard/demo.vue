@@ -10,7 +10,7 @@
       :custom-key="customKey1"
       :confirm-text="translate('confirmText')"
       @input="input"
-      @close="close(2)"
+      @close="close"
       @blur="onBlur(2)"
     >
     </nut-number-keyboard>
@@ -21,7 +21,7 @@
       :random-keys="true"
       :custom-key="customKey1"
       @input="input"
-      @close="close(3)"
+      @close="close"
       @blur="onBlur(3)"
     >
     </nut-number-keyboard>
@@ -32,7 +32,7 @@
       :title="translate('title')"
       :custom-key="customKey2"
       @input="input"
-      @close="close(4)"
+      @close="close"
       @blur="onBlur(4)"
     >
     </nut-number-keyboard>
@@ -43,7 +43,7 @@
       :custom-key="customKey3"
       @input="input"
       @blur="onBlur(6)"
-      @close="close(6)"
+      @close="close"
     >
     </nut-number-keyboard>
     <nut-cell
@@ -53,13 +53,13 @@
       :title="translate('bindValue')"
       @touchstart.stop="showKeyBoard(5)"
     ></nut-cell>
-    <nut-number-keyboard v-model:visible="visible5" v-model="value" maxlength="6" @blur="onBlur(5)" @close="close(5)">
+    <nut-number-keyboard v-model:visible="visible5" v-model="value" maxlength="6" @blur="onBlur(5)" @close="close">
     </nut-number-keyboard>
   </div>
 </template>
 
-<script lang="ts">
-import { ref, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('number-keyboard');
@@ -87,57 +87,33 @@ const initTranslate = () =>
       bindValue: 'Bind Value：'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const visible1 = ref(false);
-    const visible2 = ref(false);
-    const visible3 = ref(false);
-    const visible4 = ref(false);
-    const visible6 = ref(false);
-    const visible5 = ref(false);
-    const value = ref('');
-    const customKey1 = reactive(['.']);
-    const customKey2 = reactive(['.']);
-    const customKey3 = reactive(['X']);
-    const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
-    function input(number: any) {
-      showToast.text(`输入：${number}`);
-    }
-    function showKeyBoard(index: number) {
-      visibleArr[index - 1].value = true;
-    }
-    function onDelete() {
-      showToast.text('删除');
-    }
-    function close() {
-      console.log('关闭');
-    }
-    function onBlur(index: number) {
-      visibleArr[index - 1].value = false;
-    }
-
-    return {
-      input,
-      onDelete,
-      close,
-      showKeyBoard,
-      customKey1,
-      customKey2,
-      customKey3,
-      visible1,
-      visible2,
-      visible3,
-      visible4,
-      visible5,
-      visible6,
-      value,
-      onBlur,
-      translate
-    };
-  }
-});
+initTranslate();
+const visible1 = ref(false);
+const visible2 = ref(false);
+const visible3 = ref(false);
+const visible4 = ref(false);
+const visible6 = ref(false);
+const visible5 = ref(false);
+const value = ref('');
+const customKey1 = reactive(['.']);
+const customKey2 = reactive(['.']);
+const customKey3 = reactive(['X']);
+const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
+function input(number: any) {
+  showToast.text(`输入：${number}`);
+}
+function showKeyBoard(index: number) {
+  visibleArr[index - 1].value = true;
+}
+function onDelete() {
+  showToast.text('删除');
+}
+function close() {
+  console.log('关闭');
+}
+function onBlur(index: number) {
+  visibleArr[index - 1].value = false;
+}
 </script>
 
 <style lang="scss" scoped>

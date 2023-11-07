@@ -239,10 +239,10 @@
       box-sizing: border-box;
       border: 4 * 1px solid rgba(255, 255, 255, 0.6);
       position: absolute;
-      border-radius: calc(60 / 2) * 1px;
+      border-radius: calc((60 / 2) * 1px);
       right: 50%;
-      margin-top: calc(-30 / 2) * 1px;
-      margin-right: calc(-60 / 2) * 1px;
+      margin-top: calc(-30 / 2 * 1px);
+      margin-right: calc(-60 / 2 * 1px);
       z-index: 1;
       transform: scale(0);
       animation: twinkle 2s ease-out infinite;

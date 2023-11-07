@@ -163,17 +163,6 @@
           "tarodoc": true,
           "type": "component",
           "author": "yangxiaolu"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Space",
-          "cName": "间距",
-          "desc": "设置元素之间的间距。",
-          "show": true,
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "author": "Marvin"
         }
       ]
     },
@@ -262,6 +251,17 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "author": "haiweilian"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Space",
+          "cName": "间距",
+          "desc": "设置元素之间的间距。",
+          "show": true,
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "author": "Marvin"
         }
       ]
     },

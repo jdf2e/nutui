@@ -423,6 +423,18 @@ export default create({
 
     watch(
       () => props.initPage,
+      () => {
+        Taro.nextTick(() => {
+          init();
+        });
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          init();
+        });
+      }
+    );
+
+    watch(
+      () => props.height,
       (val) => {
         Taro.nextTick(() => {
           init(+val);

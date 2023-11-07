@@ -106,27 +106,19 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import { My } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import { ref } from 'vue';
-export default {
-  components: { My, Header },
-  props: {},
-  setup() {
-    const env = Taro.getEnv();
-    const handleClick = () => {
-      console.log('触发点击头像');
-    };
+const env = Taro.getEnv();
+const handleClick = () => {
+  console.log('触发点击头像');
+};
 
-    const avatarCount = ref(4);
-    const addAvatar = () => {
-      avatarCount.value += 1;
-    };
-
-    return { handleClick, env, avatarCount, addAvatar };
-  }
+const avatarCount = ref(4);
+const addAvatar = () => {
+  avatarCount.value += 1;
 };
 </script>
 <style lang="scss">

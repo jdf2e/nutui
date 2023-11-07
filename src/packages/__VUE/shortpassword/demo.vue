@@ -77,8 +77,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('short-password');
@@ -108,48 +108,36 @@ const initTranslate = () =>
       cancelTips: 'Click the Cancel button to close the popup'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
+initTranslate();
 
-    const state = reactive({
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      showKeyboard1: false,
-      showKeyboard2: false,
-      showKeyboard3: false,
-      showKeyboard4: false,
-      value1: '',
-      value2: '',
-      value3: '',
-      value4: '',
-      errorMsg: '',
-      length: 6
-    });
-    const methods = {
-      complete(value: string) {
-        showToast.text(value);
-      },
-      onTips() {
-        showToast.text(translate('onTips'));
-      },
-      close() {
-        showToast.text(translate('close'));
-      },
-      cancel() {
-        showToast.text(translate('cancelTips'));
-      }
-    };
-
-    return {
-      state,
-      methods,
-      translate
-    };
-  }
+const state = reactive({
+  visible1: false,
+  visible2: false,
+  visible3: false,
+  visible4: false,
+  showKeyboard1: false,
+  showKeyboard2: false,
+  showKeyboard3: false,
+  showKeyboard4: false,
+  value1: '',
+  value2: '',
+  value3: '',
+  value4: '',
+  errorMsg: '',
+  length: 6
 });
+const methods = {
+  complete(value: string) {
+    showToast.text(value);
+  },
+  onTips() {
+    showToast.text(translate('onTips'));
+  },
+  close() {
+    showToast.text(translate('close'));
+  },
+  cancel() {
+    showToast.text(translate('cancelTips'));
+  }
+};
 </script>
-
-<style lang="scss" scoped></style>

@@ -27,9 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.list {
-    }
   }
 
   &__input {
@@ -53,7 +50,7 @@
     justify-content: center;
     margin-right: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 10px 0 rgba(#000, 0.1);
 
     &__progress {
       position: absolute;

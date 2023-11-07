@@ -21,7 +21,8 @@ test('Dialog: basic props', async () => {
       title: 't1',
       content: 'c1',
       cancelText: 'cancelText',
-      okText: 'okText'
+      okText: 'okText',
+      okAutoClose: false
     }
   });
   nextTick(() => {
@@ -33,6 +34,10 @@ test('Dialog: basic props', async () => {
     expect(cancel.html()).includes('cancelText');
     const ok = wrapper.find('.nut-dialog__footer-ok');
     expect(ok.html()).includes('okText');
+    ok.trigger('click');
+    nextTick(() => {
+      expect(wrapper.vm.showPopup).toBeTruthy();
+    });
   });
 });
 

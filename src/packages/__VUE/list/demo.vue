@@ -2,7 +2,7 @@
   <div class="demo demo-list">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-list :list-data="count" @scroll-bottom="handleScroll">
+      <nut-list :list-data="state.count" @scroll-bottom="handleScroll">
         <template #default="{ index }">
           <div class="list-item">
             {{ index }}
@@ -12,8 +12,8 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { onMounted, reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { onMounted, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -26,26 +26,19 @@ const initTranslate = () =>
       basic: 'Basic Usage'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      count: new Array(100).fill(0)
-    });
+initTranslate();
+const state = reactive({
+  count: new Array(100).fill(0)
+});
 
-    const handleScroll = () => {
-      let arr = new Array(100).fill(0);
-      const len = state.count.length;
-      state.count = state.count.concat(arr.map((item: number, index: number) => len + index + 1));
-    };
+const handleScroll = () => {
+  let arr = new Array(100).fill(0);
+  const len = state.count.length;
+  state.count = state.count.concat(arr.map((item: number, index: number) => len + index + 1));
+};
 
-    onMounted(() => {
-      state.count = state.count.map((item: number, index: number) => index + 1);
-    });
-
-    return { ...toRefs(state), handleScroll, translate };
-  }
+onMounted(() => {
+  state.count = state.count.map((item: number, index: number) => index + 1);
 });
 </script>
 <style lang="scss">

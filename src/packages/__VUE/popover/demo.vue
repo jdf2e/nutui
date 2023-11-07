@@ -4,14 +4,19 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="lightTheme" :list="iconItemList" location="bottom-start" @choose="chooseItem">
+        <nut-popover
+          v-model:visible="state.lightTheme"
+          :list="iconItemList"
+          location="bottom-start"
+          @choose="chooseItem"
+        >
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="darkTheme" theme="dark" location="bottom-start" :list="iconItemList">
+        <nut-popover v-model:visible="state.darkTheme" theme="dark" location="bottom-start" :list="iconItemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
@@ -23,14 +28,14 @@
 
     <nut-row type="flex">
       <nut-col :span="8">
-        <nut-popover v-model:visible="showIcon" theme="dark" :list="itemList">
+        <nut-popover v-model:visible="state.showIcon" theme="dark" :list="itemList">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('showIcon') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
-        <nut-popover v-model:visible="disableAction" :list="itemListDisabled" location="right">
+        <nut-popover v-model:visible="state.disableAction" :list="itemListDisabled" location="right">
           <template #reference>
             <nut-button type="primary" shape="square">{{ translate('disableAction') }}</nut-button>
           </template>
@@ -39,7 +44,7 @@
     </nut-row>
 
     <h2>{{ translate('title2') }}</h2>
-    <nut-popover v-model:visible="Customized" location="top-start" custom-class="customClass">
+    <nut-popover v-model:visible="state.Customized" location="top-start" custom-class="customClass">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
@@ -57,7 +62,7 @@
     <h2>{{ translate('title3') }}</h2>
 
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
-    <nut-popup v-model:visible="showPicker" position="bottom">
+    <nut-popup v-model:visible="state.showPicker" position="bottom">
       <nut-picker
         :columns="columns"
         title=""
@@ -75,7 +80,7 @@
     </nut-popup>
 
     <nut-popover
-      v-model:visible="customPositon"
+      v-model:visible="state.customPositon"
       target-id="pickerTarget"
       :location="curPostion"
       theme="dark"
@@ -88,7 +93,7 @@
       {{ translate('contentTarget') }}
     </nut-button>
     <nut-popover
-      v-model:visible="customTarget"
+      v-model:visible="state.customTarget"
       target-id="popid"
       :list="iconItemList"
       location="top-start"
@@ -96,16 +101,22 @@
 
     <h2>{{ translate('contentColor') }}</h2>
 
-    <nut-popover v-model:visible="customColor" :list="iconItemList" location="right-start" bg-color="#f00" theme="dark">
+    <nut-popover
+      v-model:visible="state.customColor"
+      :list="iconItemList"
+      location="right-start"
+      bg-color="#f00"
+      theme="dark"
+    >
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('contentColor') }}</nut-button>
       </template>
     </nut-popover>
   </div>
 </template>
-<script lang="ts">
-import { reactive, ref, toRefs, h, defineComponent } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
+<script setup lang="ts">
+import { reactive, ref, h } from 'vue';
+import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
@@ -139,179 +150,156 @@ const initTranslate = () =>
       contentTarget: 'custom target'
     }
   });
-export default defineComponent({
-  components: { Service },
-  setup() {
-    initTranslate();
+initTranslate();
 
-    const state = reactive({
-      showIcon: false,
-      placement: false,
-      darkTheme: false,
-      lightTheme: false,
-      Customized: false,
-      disableAction: false,
-      topLocation: false, //向上弹出
-      rightLocation: false, //向右弹出
-      leftLocation: false, //向左弹出
-      customPositon: false,
+const state = reactive({
+  showIcon: false,
+  placement: false,
+  darkTheme: false,
+  lightTheme: false,
+  Customized: false,
+  disableAction: false,
+  topLocation: false, //向上弹出
+  rightLocation: false, //向右弹出
+  leftLocation: false, //向左弹出
+  customPositon: false,
 
-      showPicker: false,
+  showPicker: false,
 
-      customTarget: false,
-      customColor: false
-    });
-    const curPostion = ref('top');
-
-    const columns = ref([
-      { text: 'top', value: 'top' },
-      { text: 'top-start', value: 'top-start' },
-      { text: 'top-end', value: 'top-end' },
-      { text: 'right', value: 'right' },
-      { text: 'right-start', value: 'right-start' },
-      { text: 'right-end', value: 'right-end' },
-      { text: 'bottom', value: 'bottom' },
-      { text: 'bottom-start', value: 'bottom-start' },
-      { text: 'bottom-end', value: 'bottom-end' },
-      { text: 'left', value: 'left' },
-      { text: 'left-start', value: 'left-start' },
-      { text: 'left-end', value: 'left-end' }
-    ]);
-
-    const iconItemList = reactive([
-      {
-        name: 'option1'
-      },
-      {
-        name: 'option2'
-      },
-      {
-        name: 'option3'
-      }
-    ]);
-
-    const positionList = reactive([
-      {
-        name: 'option1'
-      },
-      {
-        name: 'option2'
-      }
-    ]);
-
-    const itemList = reactive([
-      {
-        name: 'option1',
-        icon: () => {
-          return h(My2, {
-            width: '14px',
-            color: 'rgba(250, 44, 25, 1)'
-          });
-        }
-      },
-      {
-        name: 'option2',
-        icon: () => {
-          return h(Cart2, {
-            width: '14px'
-          });
-        }
-      },
-      {
-        name: 'option3',
-        icon: () => {
-          return h(Location, {
-            width: '14px'
-          });
-        }
-      }
-    ]);
-
-    const itemListDisabled = reactive([
-      {
-        name: 'option1',
-        disabled: true
-      },
-      {
-        name: 'option2',
-        disabled: true
-      },
-      {
-        name: 'option3'
-      }
-    ]);
-
-    const selfContent = reactive([
-      {
-        name: Service,
-        desc: 'option1'
-      },
-      {
-        name: Notice,
-        desc: 'option2'
-      },
-      {
-        name: Location,
-        desc: 'option3'
-      },
-      {
-        name: Category,
-        desc: 'option4'
-      },
-      {
-        name: Scan2,
-        desc: 'option5'
-      },
-      {
-        name: Message,
-        desc: 'option6'
-      }
-    ]);
-
-    const chooseItem = (item: unknown, index: number) => {
-      console.log(item, index);
-    };
-
-    const handlePicker = () => {
-      state.showPicker = true;
-      setTimeout(() => {
-        state.customPositon = true;
-      }, 0);
-    };
-
-    const change = ({ selectedValue }) => {
-      curPostion.value = selectedValue[0];
-      if (state.showPicker) state.customPositon = true;
-    };
-
-    const clickCustomHandle = () => {
-      state.customTarget = !state.customTarget;
-    };
-
-    const closePicker = () => {
-      state.customPositon = false;
-      state.showPicker = false;
-    };
-
-    return {
-      iconItemList,
-      itemList,
-      ...toRefs(state),
-      itemListDisabled,
-      selfContent,
-      chooseItem,
-      curPostion,
-      positionList,
-      translate,
-      columns,
-      change,
-      handlePicker,
-      clickCustomHandle,
-      renderIcon,
-      closePicker
-    };
-  }
+  customTarget: false,
+  customColor: false
 });
+const curPostion = ref('top');
+
+const columns = ref([
+  { text: 'top', value: 'top' },
+  { text: 'top-start', value: 'top-start' },
+  { text: 'top-end', value: 'top-end' },
+  { text: 'right', value: 'right' },
+  { text: 'right-start', value: 'right-start' },
+  { text: 'right-end', value: 'right-end' },
+  { text: 'bottom', value: 'bottom' },
+  { text: 'bottom-start', value: 'bottom-start' },
+  { text: 'bottom-end', value: 'bottom-end' },
+  { text: 'left', value: 'left' },
+  { text: 'left-start', value: 'left-start' },
+  { text: 'left-end', value: 'left-end' }
+]);
+
+const iconItemList = reactive([
+  {
+    name: 'option1'
+  },
+  {
+    name: 'option2'
+  },
+  {
+    name: 'option3'
+  }
+]);
+
+const positionList = reactive([
+  {
+    name: 'option1'
+  },
+  {
+    name: 'option2'
+  }
+]);
+
+const itemList = reactive([
+  {
+    name: 'option1',
+    icon: () => {
+      return h(My2, {
+        width: '14px',
+        color: 'rgba(250, 44, 25, 1)'
+      });
+    }
+  },
+  {
+    name: 'option2',
+    icon: () => {
+      return h(Cart2, {
+        width: '14px'
+      });
+    }
+  },
+  {
+    name: 'option3',
+    icon: () => {
+      return h(Location, {
+        width: '14px'
+      });
+    }
+  }
+]);
+
+const itemListDisabled = reactive([
+  {
+    name: 'option1',
+    disabled: true
+  },
+  {
+    name: 'option2',
+    disabled: true
+  },
+  {
+    name: 'option3'
+  }
+]);
+
+const selfContent = reactive([
+  {
+    name: Service,
+    desc: 'option1'
+  },
+  {
+    name: Notice,
+    desc: 'option2'
+  },
+  {
+    name: Location,
+    desc: 'option3'
+  },
+  {
+    name: Category,
+    desc: 'option4'
+  },
+  {
+    name: Scan2,
+    desc: 'option5'
+  },
+  {
+    name: Message,
+    desc: 'option6'
+  }
+]);
+
+const chooseItem = (item: unknown, index: number) => {
+  console.log(item, index);
+};
+
+const handlePicker = () => {
+  state.showPicker = true;
+  setTimeout(() => {
+    state.customPositon = true;
+  }, 0);
+};
+
+const change = ({ selectedValue }: any) => {
+  curPostion.value = selectedValue[0];
+  if (state.showPicker) state.customPositon = true;
+};
+
+const clickCustomHandle = () => {
+  state.customTarget = !state.customTarget;
+};
+
+const closePicker = () => {
+  state.customPositon = false;
+  state.showPicker = false;
+};
 </script>
 <style lang="scss">
 .demo > h2 {

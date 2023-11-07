@@ -2,21 +2,21 @@
   <div class="demo full">
     <nut-cell-group :title="translate('basic')">
       <nut-cell>
-        <nut-radio-group v-model="radioVal">
+        <nut-radio-group v-model="state.radioVal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radio-group v-model="radioVal" text-position="left">
+        <nut-radio-group v-model="state.radioVal" text-position="left">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radio-group v-model="radioVal">
+        <nut-radio-group v-model="state.radioVal">
           <nut-radio shape="button" label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
@@ -25,21 +25,21 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('vertical')">
       <nut-cell>
-        <nut-radio-group v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="state.radioVal" direction="horizontal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radio-group v-model="radioVal" text-position="left" direction="horizontal">
+        <nut-radio-group v-model="state.radioVal" text-position="left" direction="horizontal">
           <nut-radio label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>
       </nut-cell>
       <nut-cell>
-        <nut-radio-group v-model="radioVal" direction="horizontal">
+        <nut-radio-group v-model="state.radioVal" direction="horizontal">
           <nut-radio shape="button" label="1">{{ translate('option1') }}</nut-radio>
           <nut-radio shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
@@ -48,7 +48,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('size')">
       <nut-cell>
-        <nut-radio-group v-model="radioVal4">
+        <nut-radio-group v-model="state.radioVal4">
           <nut-radio label="1" icon-size="12">{{ translate('size') }} 12</nut-radio>
           <nut-radio label="2" icon-size="12">{{ translate('size') }} 12</nut-radio>
         </nut-radio-group>
@@ -56,7 +56,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('icon')">
       <nut-cell>
-        <nut-radio-group v-model="radioVal5">
+        <nut-radio-group v-model="state.radioVal5">
           <nut-radio label="1">
             {{ translate('icon') }}
             <template #icon>
@@ -80,19 +80,19 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('trigger')">
       <nut-cell>
-        <nut-radio-group v-model="radioVal6" @change="handleChange">
+        <nut-radio-group v-model="state.radioVal6" @change="handleChange">
           <nut-radio label="1">{{ translate('trigger') }}</nut-radio>
           <nut-radio label="2">{{ translate('trigger') }}</nut-radio>
         </nut-radio-group>
       </nut-cell>
-      <nut-cell :title="translate('current')" :desc="radioVal6"></nut-cell>
+      <nut-cell :title="translate('current')" :desc="state.radioVal6"></nut-cell>
     </nut-cell-group>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { reactive, toRefs, defineComponent } from 'vue';
+import { reactive } from 'vue';
 const { translate } = createComponent('radio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Checklist } from '@nutui/icons-vue';
@@ -121,31 +121,18 @@ const initTranslate = () =>
       current: 'Currently selected value'
     }
   });
-export default defineComponent({
-  components: {
-    Checklist
-  },
-  props: {},
-  setup() {
-    initTranslate();
-    const data = reactive({
-      radioVal: '1',
-      radioVal2: '2',
-      radioVal3: '1',
-      radioVal4: '1',
-      radioVal5: '1',
-      radioVal6: '1'
-    });
-    const handleChange = (value: any) => {
-      console.log(value);
-    };
-    return {
-      ...toRefs(data),
-      handleChange,
-      translate
-    };
-  }
+initTranslate();
+const state = reactive({
+  radioVal: '1',
+  radioVal2: '2',
+  radioVal3: '1',
+  radioVal4: '1',
+  radioVal5: '1',
+  radioVal6: '1'
 });
+const handleChange = (value: any) => {
+  console.log(value);
+};
 </script>
 
 <style lang="scss" scoped></style>

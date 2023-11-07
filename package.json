@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.1.7",
+  "version": "4.2.0",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -81,6 +81,7 @@
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@nutui/eslint-config": "workspace:*",
+    "@nutui/prettier-plugin": "workspace:^",
     "@tarojs/taro": "3.6.14",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",

@@ -42,7 +42,7 @@ const zhCNType: {
   year: translate('year'),
   month: translate('month'),
   hour: translate('hour'),
-  minute: translate('minute'),
+  minute: translate('min'),
   seconds: translate('seconds')
 };
 export default create({
