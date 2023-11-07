@@ -342,3 +342,17 @@ test('should swiper to swiper after calling to method', async () => {
   await sleep(100);
   expect(wrapper.vm.page).toBe(1);
 });
+
+test('should change props height', async () => {
+  const wrapper = mount(Swiper, {
+    props: {
+      height: 200
+    }
+  });
+  wrapper.setProps({
+    height: 300
+  });
+  await nextTick();
+  await sleep(100);
+  expect(wrapper.vm.state.height).toBe(300);
+});

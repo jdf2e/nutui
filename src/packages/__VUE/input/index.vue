@@ -26,6 +26,7 @@
             @change="endComposing"
             @compositionend="endComposing"
             @compositionstart="startComposing"
+            @keyup="onKeyup"
           ></component>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
             <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -51,25 +52,15 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { formatNumber } from './util';
+import { formatNumber, mapInputType } from './util';
 import { MaskClose } from '@nutui/icons-vue';
+
+import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType } from './type';
 
 const { componentName, create } = createComponent('input');
 
-export type InputType = InputHTMLAttributes['type'];
-export type InputAlignType = 'left' | 'center' | 'right'; // text-align
-export type InputFormatTrigger = 'onChange' | 'onBlur'; // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
-export type InputRule = {
-  pattern?: RegExp;
-  message?: string;
-  required?: boolean;
-};
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
-export interface InputTarget extends HTMLInputElement {
-  composing: boolean;
-}
 export default create({
   props: {
     type: {
@@ -85,7 +76,7 @@ export default create({
       default: ''
     },
     inputAlign: {
-      type: String,
+      type: String as PropType<InputAlignType>,
       default: 'left'
     },
     required: {
@@ -151,7 +142,7 @@ export default create({
   },
   components: { MaskClose },
 
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
@@ -159,12 +150,7 @@ export default create({
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
 
-    const renderInput = (type: InputType) => {
-      return h('input', {
-        style: styles,
-        ...inputType(type)
-      });
-    };
+    const renderInput = (type: InputType) => h('input', { ...mapInputType(type) });
 
     const state = reactive({
       focused: false,
@@ -190,22 +176,6 @@ export default create({
       };
     });
 
-    const inputType = (type: InputType) => {
-      if (type === 'number') {
-        return {
-          type: 'text'
-        };
-      }
-
-      if (type === 'digit') {
-        return {
-          type: 'tel'
-        };
-      }
-
-      return { type };
-    };
-
     const onInput = (event: Event) => {
       if (!(event.target as InputTarget)!.composing) {
         const input = event.target as HTMLInputElement;
@@ -218,11 +188,9 @@ export default create({
     };
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
-      if (props.type === 'digit') {
-        value = formatNumber(value, false, false);
-      }
-      if (props.type === 'number') {
-        value = formatNumber(value, true, true);
+      if (['number', 'digit'].includes(props.type)) {
+        const isNumber = props.type === 'number';
+        value = formatNumber(value, isNumber, isNumber);
       }
 
       if (props.formatter && trigger === props.formatTrigger) {
@@ -326,13 +294,18 @@ export default create({
       inputRef.value?.select();
     };
 
+    const onKeyup = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        emit('confirm', e);
+      }
+    };
+
     return {
       renderInput,
       inputRef,
       active,
       classes,
       styles,
-      inputType,
       onInput,
       onFocus,
       onBlur,
@@ -343,7 +316,8 @@ export default create({
       onClickInput,
       focus,
       blur,
-      select
+      select,
+      onKeyup
     };
   }
 });

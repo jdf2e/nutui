@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, CSSProperties } from 'vue';
+import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
 import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
 import Cell from '../cell/index.vue';
@@ -77,6 +77,23 @@ export default create({
     [Cell.name]: Cell
   },
   setup(props, { slots }) {
+    const useParent: any = () => {
+      const parent = inject('NutFormParent', null);
+      if (parent) {
+        // 获取子组件自己的实例
+        const instance = getCurrentInstance()!;
+        const { link, removeLink } = parent;
+        // @ts-ignore
+        link(instance);
+        onUnmounted(() => {
+          // @ts-ignore
+          removeLink(instance);
+        });
+        return { parent };
+      }
+    };
+    useParent();
+
     const parent = inject('formErrorTip') as any;
     provide('form', {
       props

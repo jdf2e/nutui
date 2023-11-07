@@ -1,5 +1,5 @@
-import { getPropByPath, isObject, isPromise } from '@/packages/utils/util';
-import { computed, isVNode, PropType, provide, reactive, VNode, watch } from 'vue';
+import { getPropByPath, isPromise } from '@/packages/utils/util';
+import { computed, PropType, provide, reactive, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules } from './types';
 
@@ -18,7 +18,56 @@ export const component = (components: any) => {
     components,
     emits: ['validate'],
 
-    setup(props: any, { emit, slots }: any) {
+    setup(props: any, { emit }: any) {
+      const useChildren = () => {
+        const publicChildren: any[] = reactive([]);
+        const internalChildren: any[] = reactive([]);
+
+        const linkChildren = (value?: any) => {
+          const link = (child: any) => {
+            if (child.proxy) {
+              internalChildren.push(child);
+              publicChildren.push(child.proxy as any);
+            }
+          };
+
+          const removeLink = (child: any) => {
+            if (child.proxy) {
+              let internalIndex = internalChildren.indexOf(child);
+              if (internalIndex > -1) {
+                internalChildren.splice(internalIndex, 1);
+              }
+
+              let publicIndex = publicChildren.indexOf(child.proxy);
+              if (internalIndex > -1) {
+                publicChildren.splice(publicIndex, 1);
+              }
+            }
+          };
+
+          provide(
+            'NutFormParent',
+            Object.assign(
+              {
+                removeLink,
+                link,
+                children: publicChildren,
+                internalChildren
+              },
+              value
+            )
+          );
+        };
+
+        return {
+          children: publicChildren,
+          linkChildren
+        };
+      };
+
+      const { children, linkChildren } = useChildren();
+      linkChildren({ props });
+
       const formErrorTip = computed(() => reactive<any>({}));
       provide('formErrorTip', formErrorTip);
       const clearErrorTips = () => {
@@ -39,31 +88,14 @@ export const component = (components: any) => {
         { immediate: true }
       );
 
-      const findFormItem = (vnodes: VNode[]) => {
+      const getTaskFromChildren = () => {
         const task: FormRule[] = [];
-        const search = (vnode: any) => {
-          if (isVNode(vnode)) {
-            const type = (vnode?.type as any)?.name || vnode?.type;
-            if (type == 'nut-form-item' || type?.toString().endsWith('form-item')) {
-              task.push({
-                prop: vnode.props?.['prop'],
-                rules: vnode.props?.['rules'] || []
-              });
-            } else if (Array.isArray(vnode.children) && vnode.children?.length) {
-              search(vnode.children);
-            } else if (isObject(vnode.children) && Object.keys(vnode.children)) {
-              // 异步节点获取
-              if ((vnode.children as any)?.default) {
-                search((vnode.children as any).default());
-              }
-            }
-          } else if (Array.isArray(vnode)) {
-            vnode.forEach((v: any) => {
-              search(v);
-            });
-          }
-        };
-        search(vnodes);
+        children.forEach((item) => {
+          task.push({
+            prop: item?.['prop'],
+            rules: item?.['rules'] || []
+          });
+        });
         return task;
       };
 
@@ -141,7 +173,7 @@ export const component = (components: any) => {
       const validate = (customProp = '') => {
         return new Promise((resolve, reject) => {
           try {
-            const task = findFormItem(slots.default());
+            const task = getTaskFromChildren();
 
             const errors = task.map((item) => {
               if (customProp && customProp !== item.prop) {

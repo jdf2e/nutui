@@ -29,6 +29,8 @@
             @change="endComposing"
             @compositionend="endComposing"
             @compositionstart="startComposing"
+            @confirm="onConfirm"
+            @keyup="onKeyup"
           ></component>
           <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
@@ -54,25 +56,15 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, InputHTMLAttributes, h } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 import { MaskClose } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
-const { componentName, create } = createComponent('input');
 
-export type InputType = InputHTMLAttributes['type'];
-export type InputAlignType = 'left' | 'center' | 'right'; // text-align
-export type InputFormatTrigger = 'onChange' | 'onBlur'; // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
-export type InputRule = {
-  pattern?: RegExp;
-  message?: string;
-  required?: boolean;
-};
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
-export interface InputTarget extends HTMLInputElement {
-  composing?: boolean;
-}
+import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType, InputEvent } from './type';
+
+const { componentName, create } = createComponent('input');
 
 export default create({
   inheritAttrs: false,
@@ -90,7 +82,7 @@ export default create({
       default: ''
     },
     inputAlign: {
-      type: String,
+      type: String as PropType<InputAlignType>,
       default: 'left'
     },
     required: {
@@ -163,7 +155,7 @@ export default create({
     }
   },
   components: { MaskClose },
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
     const active = ref(false);
@@ -172,10 +164,23 @@ export default create({
     const getModelValue = () => String(props.modelValue ?? '');
 
     const renderInput = (type: InputType) => {
-      return h('input', {
-        style: styles,
-        ...inputType(type)
-      });
+      let inputType: any = { type };
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        // Taro H5 端与小程序端效果保持一致
+        if (type === 'number') {
+          inputType = {
+            type: 'tel',
+            inputmode: 'numeric'
+          };
+        }
+        if (type === 'digit') {
+          inputType = {
+            type: 'text',
+            inputmode: 'decimal'
+          };
+        }
+      }
+      return h('input', inputType);
     };
 
     const state = reactive({
@@ -202,22 +207,6 @@ export default create({
       };
     });
 
-    const inputType = (type: InputType) => {
-      if (type === 'number') {
-        return {
-          type: 'text'
-        };
-      }
-
-      if (type === 'digit') {
-        return {
-          type: 'tel'
-        };
-      }
-
-      return { type };
-    };
-
     const onInput = (event: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (!(event.target as InputTarget)!.composing) {
@@ -239,11 +228,10 @@ export default create({
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.slice(0, Number(props.maxLength));
       }
-      if (props.type === 'digit') {
-        value = formatNumber(value, false, false);
-      }
-      if (props.type === 'number') {
-        value = formatNumber(value, true, true);
+      // In weapp input digit is decimal keyboard
+      if (['number', 'digit'].includes(props.type)) {
+        const isDigit = props.type === 'digit';
+        value = formatNumber(value, isDigit, isDigit);
       }
       if (props.formatter && trigger === props.formatTrigger) {
         value = props.formatter(value);
@@ -321,6 +309,17 @@ export default create({
         }
       }
     };
+
+    const onKeyup = (e: KeyboardEvent) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB && e.key === 'Enter') {
+        emit('confirm', e);
+      }
+    };
+
+    const onConfirm = (e: InputEvent) => {
+      emit('confirm', e);
+    };
+
     watch(
       () => props.modelValue,
       () => {
@@ -342,7 +341,6 @@ export default create({
       active,
       classes,
       styles,
-      inputType,
       onInput,
       onFocus,
       onBlur,
@@ -350,7 +348,9 @@ export default create({
       startComposing,
       endComposing,
       onClick,
-      onClickInput
+      onClickInput,
+      onConfirm,
+      onKeyup
     };
   }
 });

@@ -7,5 +7,6 @@
   "printWidth": 120,
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "strict",
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "plugins": ["@nutui/prettier-plugin"]
 }

@@ -1,3 +1,49 @@
+## v4.2.0
+
+`2023-10-27`
+
+New Components
+
+- 新增 AvatarCropper 头像裁剪组件 (#2570) @yi-boide
+- 新增 Space 布局组件 (#2584) @yi-boide
+
+Features
+
+- build: 新增 css 样式产物可选 (#2602) @yi-boide
+- build: resolver 配置独立为 @nutui/auto-import-resolver 包 (#2602) @yi-boide
+- collapse: 增加自定义插槽 icon (#2588) (#2612) @yi-boide
+
+Bug Fixes
+
+- input-number: 修复超过 min, max 范围问题 (#2606) (#2607) @Formulaaa
+- picker: 修复 columns 为空时不触发更新的问题 (#2590) (#2611) @yi-boide
+- circle-progress: 修复数值变化在 iOS 下的 border 闪烁问题（#2481） (#2619) @yi-boide
+- comment: 追评中图片增加响应事件 (#2448) (#2620) @yi-boide
+- ellipsis: fix docs typo (#2616) @yang1206
+
+BREAKING CHANGES
+
+- !input: Taro 版组件 type 属性的 `number`、`digit` 与小程序原生 API 对齐，支持调起数字、带小数点键盘 (#2578) @mikasayw
+
+## v4.1.7
+
+`2023-10-13`
+
+Features
+
+- searchbar: 增加 cursor-spacing 属性(#2458) (#2587) @yi-boide
+
+Bug Fixes
+
+- image-preview: 修复图片放大不能滑动 (#2136) (#2574) @yi-boide
+- radio: 修复 radio-group 的 text-position 属性响应式问题 (#2572) @mikasayw
+- radio: 修复按钮类型激活背景边框样式问题 (#2579) @eiinu
+- textarea: 修复 readonly 时换行符的显示问题（#2566）(#2583) @yi-boide
+- tabs: 修复 disabled 情况下能滑动过去的问题(#2486) (#2559) @yi-boide
+- checkbox/input-number: 调整为内联元素 (#2581) @yi-boide
+- form: use subtree to validate nut-form (#2582) @mikasayw
+- form: validate 获取子节点规则方式调整 (#2593) @eiinu
+
 ## v4.1.6
 
 `2023-09-19`

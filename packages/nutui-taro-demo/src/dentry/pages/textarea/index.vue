@@ -13,32 +13,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-
-export default {
-  props: {},
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const value = ref('');
-    const value2 = ref('');
-    const value3 = ref('');
-    const value4 = ref('');
-
-    return {
-      value,
-      value2,
-      value3,
-      value4,
-      env
-    };
-  }
-};
+const env = Taro.getEnv();
+const value = ref('');
+const value2 = ref('');
+const value3 = ref('');
 </script>
 
 <style lang="scss">

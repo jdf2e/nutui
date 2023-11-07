@@ -1,0 +1,52 @@
+{
+  "name": "@nutui/auto-import-resolver",
+  "version": "1.0.0",
+  "description": "nutui auto import resolver based on unplugin-vue-components",
+  "keywords": [
+    "nutui",
+    "vue",
+    "resolver",
+    "jdf2e"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN.md",
+    "package.json"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
+    "build": "pnpm clean && vite build && pnpm build:types"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git",
+    "directory": "packages/nutui-auto-import-resolver"
+  },
+  "homepage": "https://github.com/jdf2e/nutui/tree/v4/packages/nutui-auto-import-resolver",
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui/issues"
+  },
+  "author": "jdf2e",
+  "license": "MIT",
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.4.9"
+  }
+}

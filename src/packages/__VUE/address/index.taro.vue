@@ -5,6 +5,7 @@
     :lock-scroll="lockScroll"
     :catch-move="lockScroll"
     :round="round"
+    :z-index="zIndex"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"

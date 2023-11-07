@@ -32,39 +32,26 @@
   </div>
 </template>
 
-<script>
-import { reactive, getCurrentInstance } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-import { HeartFill, StarFillN } from '@nutui/icons-vue-taro';
+import { HeartFill } from '@nutui/icons-vue-taro';
+const env = Taro.getEnv();
 
-export default {
-  components: { HeartFill, StarFillN, Header },
-  setup() {
-    const env = Taro.getEnv();
-
-    const state = reactive({
-      val: 3,
-      val1: 3.5,
-      val2: 3,
-      val3: 3,
-      val4: 3,
-      val5: 3,
-      val6: 3,
-      val7: 3,
-      val8: 3
-    });
-    const onChange = (val) => {
-      console.log(val);
-    };
-    return {
-      state,
-      onChange,
-      HeartFill,
-      StarFillN,
-      env
-    };
-  }
+const state = reactive({
+  val: 3,
+  val1: 3.5,
+  val2: 3,
+  val3: 3,
+  val4: 3,
+  val5: 3,
+  val6: 3,
+  val7: 3,
+  val8: 3
+});
+const onChange = (val) => {
+  console.log(val);
 };
 </script>
 

@@ -2,12 +2,12 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-countdown :end-time="end" @end="onend"></nut-countdown>
+      <nut-countdown :end-time="state.end" @end="onend"></nut-countdown>
     </nut-cell>
     <h2>{{ translate('format') }}</h2>
     <nut-cell>
       <nut-countdown
-        :end-time="end"
+        :end-time="state.end"
         :format="`DD ${translate('day')} HH ${translate('hour')} mm ${translate('minute')} ss ${translate('second')}`"
       />
     </nut-cell>
@@ -15,27 +15,27 @@
     <h2>{{ translate('millisecond') }}</h2>
 
     <nut-cell>
-      <nut-countdown :end-time="end" millisecond format="HH:mm:ss:SS" />
+      <nut-countdown :end-time="state.end" millisecond format="HH:mm:ss:SS" />
     </nut-cell>
 
     <h2>{{ translate('serverTime') }}</h2>
 
     <nut-cell>
-      <nut-countdown :start-time="serverTime" :end-time="end" />
+      <nut-countdown :start-time="state.serverTime" :end-time="state.end" />
     </nut-cell>
 
     <h2>{{ translate('async') }}</h2>
 
     <nut-cell>
-      <nut-countdown :end-time="asyncEnd" />
+      <nut-countdown :end-time="state.asyncEnd" />
     </nut-cell>
 
     <h2>{{ translate('controlTime') }}</h2>
 
     <nut-cell>
-      <nut-countdown :end-time="end" :paused="paused" @paused="onpaused" @restart="onrestart" />
+      <nut-countdown :end-time="state.end" :paused="state.paused" @paused="onpaused" @restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
-        <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
+        <nut-button type="primary" size="small" @click="toggle">{{ state.paused ? 'start' : 'stop' }}</nut-button>
       </div>
     </nut-cell>
 
@@ -43,14 +43,14 @@
 
     <nut-cell>
       <span>
-        <nut-countdown v-model="resetTime" :end-time="end">
+        <nut-countdown v-model="state.resetTime" :end-time="state.end">
           <div class="countdown-part-box">
-            <div class="part-item-symbol">{{ resetTime.d }}{{ translate('day') }}</div>
-            <div class="part-item h">{{ resetTime.h }}</div>
+            <div class="part-item-symbol">{{ state.resetTime.d }}{{ translate('day') }}</div>
+            <div class="part-item h">{{ state.resetTime.h }}</div>
             <span class="part-item-symbol">:</span>
-            <div class="part-item m">{{ resetTime.m }}</div>
+            <div class="part-item m">{{ state.resetTime.m }}</div>
             <span class="part-item-symbol">:</span>
-            <div class="part-item s">{{ resetTime.s }}</div>
+            <div class="part-item s">{{ state.resetTime.s }}</div>
           </div>
         </nut-countdown>
       </span>
@@ -75,8 +75,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { toRefs, onMounted, ref, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('countdown');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -117,70 +117,52 @@ const initTranslate = () =>
       second: ''
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const Countdown = ref(null);
-    const state = reactive({
-      serverTime: Date.now() - 20 * 1000,
-      end: Date.now() + 60 * 1000,
-      starttime: Date.now(),
-      asyncEnd: 0,
-      paused: false,
-      resetTime: {
-        d: '1',
-        h: '00',
-        m: '00',
-        s: '00'
-      }
-    });
-
-    const toggle = () => {
-      state.paused = !state.paused;
-    };
-    const onend = () => {
-      console.log('countdown: ended.');
-    };
-    const onpaused = (v) => {
-      console.log('paused: ', v);
-    };
-    const onrestart = (v) => {
-      console.log('restart: ', v);
-    };
-    const start = () => {
-      Countdown.value.start();
-    };
-
-    const pause = () => {
-      Countdown.value.pause();
-    };
-
-    const reset = () => {
-      Countdown.value.reset();
-    };
-    onMounted(() => {
-      console.log(Countdown.value);
-    });
-
-    setTimeout(() => {
-      state.asyncEnd = Date.now() + 30 * 1000;
-    }, 3000);
-
-    return {
-      ...toRefs(state),
-      toggle,
-      onend,
-      onpaused,
-      onrestart,
-      Countdown,
-      start,
-      pause,
-      reset,
-      translate
-    };
+initTranslate();
+const Countdown = ref<any>(null);
+const state = reactive({
+  serverTime: Date.now() - 20 * 1000,
+  end: Date.now() + 60 * 1000,
+  starttime: Date.now(),
+  asyncEnd: 0,
+  paused: false,
+  resetTime: {
+    d: '1',
+    h: '00',
+    m: '00',
+    s: '00'
   }
 });
+
+const toggle = () => {
+  state.paused = !state.paused;
+};
+const onend = () => {
+  console.log('countdown: ended.');
+};
+const onpaused = (v: any) => {
+  console.log('paused: ', v);
+};
+const onrestart = (v: any) => {
+  console.log('restart: ', v);
+};
+const start = () => {
+  Countdown.value.start();
+};
+
+const pause = () => {
+  Countdown.value.pause();
+};
+
+const reset = () => {
+  Countdown.value.reset();
+};
+onMounted(() => {
+  console.log(Countdown.value);
+});
+
+setTimeout(() => {
+  state.asyncEnd = Date.now() + 30 * 1000;
+}, 3000);
 </script>
 
 <style lang="scss" scoped>

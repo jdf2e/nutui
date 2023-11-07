@@ -9,6 +9,7 @@
     :overlay-style="overlayStyle"
     :style="popStyle"
     round
+    :z-index="zIndex"
     @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
@@ -46,7 +47,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
+import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
@@ -71,7 +72,7 @@ export default create({
       default: ''
     },
     content: {
-      type: [String, Object] as PropType<string>,
+      type: [String, Object] as PropType<string | VNode>,
       default: ''
     },
     noFooter: {
@@ -95,6 +96,10 @@ export default create({
       default: ''
     },
     cancelAutoClose: {
+      type: Boolean,
+      default: true
+    },
+    okAutoClose: {
       type: Boolean,
       default: true
     },
@@ -173,7 +178,9 @@ export default create({
 
     const onOk = () => {
       emit('ok');
-      closed('ok');
+      if (props.okAutoClose) {
+        closed('ok');
+      }
     };
 
     const onClickOverlay = () => {

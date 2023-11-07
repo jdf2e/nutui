@@ -31,7 +31,7 @@
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
-        :list="horseLamp1"
+        :list="state.horseLamp1"
         :speed="10"
         :stand-time="1000"
         :close-mode="true"
@@ -65,7 +65,7 @@
 
     <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :stand-time="1000">
+      <nut-noticebar direction="vertical" :list="state.horseLamp1" :speed="10" :stand-time="1000">
         <template #right-icon>
           <Fabulous />
         </template>
@@ -75,15 +75,15 @@
     <h2>{{ translate('scrollEvent') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
-        :text="`${translate('text')} - ${translate('scrollCount')}：[${acrossCount}]`"
+        :text="`${translate('text')} - ${translate('scrollCount')}：[${state.acrossCount}]`"
         @across-end="onAcrossEnd"
       />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, ref } from 'vue';
 import { Fabulous } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('noticebar');
@@ -124,54 +124,37 @@ const initTranslate = () =>
       scrollEvent: 'across - scrolling end event'
     }
   });
-
-export default defineComponent({
-  components: { Fabulous },
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      horseLamp1: translate('horseLamp'),
-      horseLamp2: translate('horseLamp'),
-      horseLamp3: translate('horseLamp'),
-      text: translate('text'),
-      acrossCount: 0
-    });
-
-    const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
-
-    const closeFun = () => {
-      console.log('hello world');
-    };
-    const go = (item: any) => {
-      console.log(item);
-    };
-
-    setTimeout(() => {
-      data1.value = [
-        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-        '级联选择 Cascader',
-        '日期选择器 DatePicker',
-        '复选按钮 CheckBox'
-      ];
-    }, 2000);
-
-    const onAcrossEnd = () => {
-      state.acrossCount++;
-      console.log('动画结束');
-    };
-
-    return {
-      ...toRefs(state),
-      closeFun,
-      go,
-      Fabulous,
-      data1,
-      onAcrossEnd,
-      translate
-    };
-  }
+initTranslate();
+const state = reactive({
+  horseLamp1: translate('horseLamp'),
+  horseLamp2: translate('horseLamp'),
+  horseLamp3: translate('horseLamp'),
+  text: translate('text'),
+  acrossCount: 0
 });
+
+const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+
+const closeFun = () => {
+  console.log('hello world');
+};
+const go = (item: any) => {
+  console.log(item);
+};
+
+setTimeout(() => {
+  data1.value = [
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    '级联选择 Cascader',
+    '日期选择器 DatePicker',
+    '复选按钮 CheckBox'
+  ];
+}, 2000);
+
+const onAcrossEnd = () => {
+  state.acrossCount++;
+  console.log('动画结束');
+};
 </script>
 
 <style lang="scss" scoped>

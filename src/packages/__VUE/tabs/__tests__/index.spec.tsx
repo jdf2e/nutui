@@ -166,6 +166,37 @@ test('base Tabpane Props', async () => {
   expect(tab3[0].html()).toContain('Tab 1');
 });
 
+test('base Tabpane disabled swipeable', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-tabs': Tabs,
+      'nut-tab-pane': TabPane
+    },
+    template: `
+    <nut-tabs v-model="state.tab2value" swipeable>
+      <nut-tab-pane title="Tab 1" pane-key="0"> </nut-tab-pane>
+      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
+      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
+    </nut-tabs>
+    `,
+    setup() {
+      const state = reactive({
+        tab2value: '0'
+      });
+      return { state };
+    }
+  });
+  await nextTick();
+  const tab = wrapper.findAll('.nut-tabs__titles-item');
+  expect(tab.length).toBe(3);
+  const tab1 = wrapper.findAll('.nut-tabs__titles-item')[1];
+  expect(tab1.classes()).toContain('disabled');
+  const tab2 = wrapper.findAll('.nut-tabs__titles-item')[0];
+  expect(tab2.classes()).toContain('active');
+  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text');
+  expect(tab3[0].html()).toContain('Tab 1');
+});
+
 test('base click', async () => {
   const wrapper = mount({
     components: {

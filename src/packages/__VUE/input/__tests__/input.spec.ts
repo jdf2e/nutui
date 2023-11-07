@@ -1,5 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { DOMWrapper, mount } from '@vue/test-utils';
 import Input from '../index.vue';
+import { nextTick, ref } from 'vue';
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: '3' } });
@@ -16,6 +17,43 @@ test('should emit blur event when input is blur', () => {
   const wrapper = mount(Input);
   wrapper.find('input').trigger('blur');
   expect(wrapper.emitted('blur')).toBeTruthy();
+});
+test('should emit confirm event when input is confirm', () => {
+  const wrapper = mount(Input);
+  wrapper.find('input').trigger('keyup', { keyCode: 13, key: 'Enter' });
+  expect(wrapper.emitted('keyup')).toBeTruthy();
+});
+test('trigger ref select', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-input': Input
+    },
+    template: `
+      <nut-input ref="inputRef" v-model="value" :show-word-limit="true" max-length="20" />
+      <button class="select-button" @click="onSelect">选中</button>
+    `,
+    setup() {
+      const inputRef = ref<{
+        select: () => void;
+      } | null>(null);
+      const value = ref('Hello');
+      const onSelect = () => {
+        inputRef.value?.select();
+      };
+      return {
+        inputRef,
+        value,
+        onSelect
+      };
+    }
+  });
+  const selectButton: DOMWrapper<Element> = wrapper.find('.select-button');
+  selectButton.trigger('click');
+  await nextTick();
+  expect(selectButton.exists()).toBe(true);
+  const inputElement = wrapper.find('input');
+  expect(inputElement.element.selectionStart).toBe(0);
+  expect(inputElement.element.selectionEnd).toBe(inputElement.element.value.length);
 });
 
 test('should render clear icon when using clearable prop', async () => {
