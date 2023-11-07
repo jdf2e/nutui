@@ -18,6 +18,7 @@
 }
 .nut-checkbox {
   display: $checkbox-display;
+  vertical-align: bottom;
   align-items: center;
   margin-right: $checkbox-margin-right;
   &--reverse {
