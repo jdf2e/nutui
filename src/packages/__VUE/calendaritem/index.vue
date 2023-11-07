@@ -151,7 +151,8 @@ export default create({
     firstDayOfWeek: {
       type: Number,
       default: 0
-    }
+    },
+    disabledDate: Function
   },
   emits: ['choose', 'update', 'close', 'select'],
 
@@ -257,7 +258,8 @@ export default create({
           res.push(`${state.dayPrefix}--active`);
         } else if (
           (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
-          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
+          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate)) ||
+          (props.disabledDate && props.disabledDate(currDate))
         ) {
           res.push(`${state.dayPrefix}--disabled`);
         } else if (

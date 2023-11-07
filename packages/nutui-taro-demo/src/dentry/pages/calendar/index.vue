@@ -82,6 +82,26 @@
       >
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="自定义禁用日期"
+        :desc="date ? `${date}` : '请选择'"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-11-30`"
+        :disabled-date="disabledDate"
+      >
+      </nut-calendar>
+    </div>
+
     <h2>快捷选择</h2>
     <div>
       <nut-cell
@@ -216,6 +236,7 @@ import { reactive, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 import Utils from '@/packages/utils/date';
+import { toRefs } from 'vue';
 const env = Taro.getEnv();
 
 const calendarRef = ref<any>(null);
@@ -242,6 +263,7 @@ const state = reactive({
   isVisible8: false,
   isVisible9: false
 });
+const { isVisible, date } = toRefs(state);
 const openSwitch = (param: string) => {
   state[`${param}`] = true;
 };
@@ -313,6 +335,18 @@ const goDate = () => {
     calendarRef.value.scrollToDate(Utils.date2Str(date1));
   }
 };
+const disabledDate = (date) => {
+  const disabledDate = {
+    '2022-01-05': true,
+    '2022-01-06': true,
+    '2022-01-10': true,
+    '2022-01-11': true,
+    '2022-01-12': true,
+    '2022-01-13': true,
+    '2022-01-14': true
+  };
+  return disabledDate[date];
+};
 </script>
 
 <style lang="scss">
@@ -321,19 +355,23 @@ const goDate = () => {
     flex: initial;
   }
 }
+
 .test-calendar-wrapper {
   display: flex;
   width: 100%;
   height: 560px;
   overflow: hidden;
 }
+
 .wrapper {
   display: flex;
   padding: 0 40px;
   justify-content: center;
 }
+
 .d_div {
   margin: 0px 5px;
+
   .d_btn {
     background: #fa3f19;
     color: #fff;
@@ -344,6 +382,7 @@ const goDate = () => {
     height: 16px;
   }
 }
+
 .info {
   font-size: 12px;
   line-height: 14px;
