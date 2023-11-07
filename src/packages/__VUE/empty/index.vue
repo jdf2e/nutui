@@ -18,7 +18,10 @@ import { computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { EmptyImage } from './types';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { create, translate } = createComponent('empty');
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('empty');
+const cN = 'NutEmpty';
 
 const defaultStatus: any = {
   empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
@@ -42,6 +45,7 @@ export default create({
     }
   },
   setup(props) {
+    const translate = useLocale(cN);
     const style = computed(() => {
       if (props.imageSize) {
         return {
