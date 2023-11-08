@@ -7,9 +7,9 @@
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
-        @click="handleclick"
-        @clickImages="clickImages"
         :operation="['replay']"
+        @click="handleclick"
+        @click-images="clickImages"
       >
         <template #comment-labels>
           <img
@@ -24,13 +24,13 @@
     <h2>评论图片多行展示</h2>
     <nut-cell>
       <nut-comment
-        headerType="complex"
-        imagesRows="multi"
+        header-type="complex"
+        images-rows="multi"
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
         ellipsis="6"
-        @clickImages="clickImages"
+        @click-images="clickImages"
       >
         <template #comment-labels>
           <img
@@ -52,12 +52,12 @@
     <h2>追评</h2>
     <nut-cell>
       <nut-comment
-        imagesRows="multi"
+        images-rows="multi"
         :images="cmt.images"
         :videos="cmt.videos"
         :info="cmt.info"
         :follow="cmt.follow"
-        @clickImages="clickImages"
+        @click-images="clickImages"
       ></nut-comment>
     </nut-cell>
   </div>

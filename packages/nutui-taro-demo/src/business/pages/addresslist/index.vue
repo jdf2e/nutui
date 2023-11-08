@@ -4,38 +4,38 @@
     <h2>基础用法</h2>
     <nut-address-list
       :data="data"
+      :show-bottom-button="false"
+      :data-Options="dataOptions"
       @del-icon="delClick"
       @edit-icon="editClick"
       @click-item="clickItem"
-      :showBottomButton="false"
-      :data-Options="dataOptions"
     >
     </nut-address-list>
     <h2>长按功能</h2>
     <nut-address-list
       :data="data"
-      longPress
-      :showBottomButton="false"
+      long-press
+      :show-bottom-button="false"
+      :data-Options="dataOptions"
       @del-icon="delClick"
       @edit-icon="editClick"
       @click-item="clickItem"
       @long-copy="copyClick"
       @long-set="setClick"
       @long-del="delClickLong"
-      :data-Options="dataOptions"
     >
     </nut-address-list>
     <h2>滑动功能</h2>
     <nut-address-list
       :data="data"
-      swipeEdition
-      showBottomButton
+      swipe-edition
+      show-bottom-button
+      :data-Options="dataOptions"
       @del-icon="delClick"
       @edit-icon="editClick"
       @click-item="clickItem"
       @swipe-del="delClickSwipe"
       @add="addAddress"
-      :data-Options="dataOptions"
     >
     </nut-address-list>
   </div>

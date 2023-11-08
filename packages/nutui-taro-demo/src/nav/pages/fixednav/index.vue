@@ -2,30 +2,30 @@
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <nut-fixed-nav
+      v-model:visible="visible"
       active-text="基础用法"
       :position="{ top: '70px' }"
-      v-model:visible="visible"
       :nav-list="navList"
       @selected="selected"
     />
     <nut-fixed-nav
+      v-model:visible="visible1"
       type="left"
       :position="{ top: '140px' }"
-      v-model:visible="visible1"
       active-text="左侧收起"
       un-active-text="左侧展开"
       :nav-list="navList"
       @selected="selected"
     />
     <nut-fixed-nav
+      v-model:visible="visible2"
       :position="{ top: '210px' }"
       :overlay="false"
-      v-model:visible="visible2"
       :nav-list="navList"
       @selected="selected"
     />
 
-    <nut-fixed-nav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
+    <nut-fixed-nav v-model:visible="myActive" :position="{ top: '280px' }" type="left" @selected="selected">
       <template #list>
         <ul class="nut-fixed-nav__list">
           <li class="nut-fixed-nav__list-item">1</li>

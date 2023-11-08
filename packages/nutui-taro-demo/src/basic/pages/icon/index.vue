@@ -32,7 +32,7 @@
       <IconFont name="dongdong" size="26"></IconFont>
     </nut-cell>
 
-    <nut-cell-group v-for="item in (IconFontConfig as any).data" :title="item.name" :key="item">
+    <nut-cell-group v-for="item in (IconFontConfig as any).data" :key="item" :title="item.name">
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">
@@ -43,7 +43,7 @@
       </nut-cell>
     </nut-cell-group>
 
-    <nut-cell-group v-for="item in (IconFontConfig as any).style" :title="item.name" :key="item">
+    <nut-cell-group v-for="item in (IconFontConfig as any).style" :key="item" :title="item.name">
       <nut-cell>
         <ul class="icon-ul">
           <li v-for="it in item.icons" :key="it" class="icon-li">

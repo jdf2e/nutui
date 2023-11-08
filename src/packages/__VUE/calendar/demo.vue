@@ -182,8 +182,8 @@
             </div>
           </div>
         </template>
-        <template #day="date">
-          <span>{{ date.date.day }}</span>
+        <template #day="d">
+          <span>{{ d.date.day }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -212,11 +212,11 @@
         @close="closeSwitch('isVisible6')"
         @choose="setChooseValue6"
       >
-        <template #day="date">
-          <span>{{ renderDate(date) }}</span>
+        <template #day="d">
+          <span>{{ renderDate(d) }}</span>
         </template>
-        <template #bottom-info="date">
-          <span class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span>
+        <template #bottom-info="d">
+          <span class="info">{{ d.date ? (d.date.day == 10 ? '十' : '') : '' }}</span>
         </template>
       </nut-calendar>
     </div>

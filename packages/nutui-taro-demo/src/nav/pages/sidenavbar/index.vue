@@ -5,7 +5,7 @@
     <nut-cell @click="handleClick1">
       <span><label>右侧</label></span>
     </nut-cell>
-    <nut-popup position="right" v-model:visible="show1" style="width: 80%; height: 100%">
+    <nut-popup v-model:visible="show1" position="right" style="width: 80%; height: 100%">
       <nut-side-navbar>
         <nut-sub-side-navbar title="智能城市AI" ikey="6">
           <nut-sub-side-navbar title="人体识别1" ikey="9">
@@ -22,7 +22,7 @@
     <nut-cell @click="handleClick2">
       <span><label>左侧</label></span>
     </nut-cell>
-    <nut-popup position="left" v-model:visible="show2" style="width: 80%; height: 100%">
+    <nut-popup v-model:visible="show2" position="left" style="width: 80%; height: 100%">
       <nut-side-navbar>
         <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
           <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
@@ -39,7 +39,7 @@
       <nut-cell @click="handleClick3">
         <span><label>显示</label></span>
       </nut-cell>
-      <nut-popup position="right" v-model:visible="show3" style="width: 80%; height: 100%">
+      <nut-popup v-model:visible="show3" position="right" style="width: 80%; height: 100%">
         <nut-side-navbar :show="show3">
           <nut-side-navbar-item ikey="1" title="人脸识别" @click="handleClick4('人脸识别')"></nut-side-navbar-item>
           <nut-side-navbar-item ikey="2" title="云存自然语言处理"></nut-side-navbar-item>

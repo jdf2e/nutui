@@ -3,17 +3,17 @@
     <Header v-if="env === 'WEB'" />
     <h2>经典分类模式</h2>
     <nut-category :category="data.category" @change="change">
-      <nut-category-pane :categoryChild="data.categoryChild1" @onChange="onChange"> </nut-category-pane>
+      <nut-category-pane :category-child="data.categoryChild1" @on-change="onChange"> </nut-category-pane>
     </nut-category>
 
     <h2>只显示文字</h2>
     <nut-category :category="data.category" @change="changeText">
-      <nut-category-pane type="text" :categoryChild="data.categoryChild2" @onChange="onChange"> </nut-category-pane
+      <nut-category-pane type="text" :category-child="data.categoryChild2" @on-change="onChange"> </nut-category-pane
     ></nut-category>
 
     <h2>自定义分类</h2>
     <nut-category
-      ><nut-category-pane type="custom" :customCategory="customCategory" @onChange="changeCustom"> </nut-category-pane
+      ><nut-category-pane type="custom" :custom-category="customCategory" @on-change="changeCustom"> </nut-category-pane
     ></nut-category>
   </div>
 </template>
