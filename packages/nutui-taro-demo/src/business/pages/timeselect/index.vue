@@ -65,8 +65,8 @@
       </template>
     </nut-time-select>
     <nut-toast
-      :msg="toastState.msg"
       v-model:visible="toastState.show"
+      :msg="toastState.msg"
       :type="toastState.type"
       :cover="toastState.cover"
     />

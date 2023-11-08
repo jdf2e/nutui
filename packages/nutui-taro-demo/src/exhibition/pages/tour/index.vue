@@ -9,8 +9,8 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="state.showTour3"
+      class="nut-custom-tour nut-customword-tour"
       :steps="state.steps3"
       type="tile"
       location="bottom-end"
@@ -25,16 +25,16 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
       v-model="state.showTour1"
+      class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
       :steps="state.steps1"
       location="bottom-end"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       :offset="[0, 0]"
-      maskWidth="50"
-      maskHeight="50"
+      mask-width="50"
+      mask-height="50"
     ></nut-tour>
 
     <h2>设置偏移量</h2>
@@ -57,11 +57,11 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="state.showTour2"
+      class="nut-custom-tour nut-customword-tour"
       :steps="state.steps2"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
@@ -76,8 +76,8 @@
     </nut-cell>
 
     <nut-tour
-      class="nut-custom-tour nut-customword-tour"
       v-model="state.showTour4"
+      class="nut-custom-tour nut-customword-tour"
       :steps="state.steps4"
       type="tile"
       theme="dark"
@@ -103,13 +103,13 @@
     </nut-tabbar>
 
     <nut-tour
-      class="nut-customword-tour"
       v-model="state.showTour"
+      class="nut-customword-tour"
       :steps="state.steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="60"
-      maskHeight="50"
+      mask-width="60"
+      mask-height="50"
     ></nut-tour>
   </div>
 </template>

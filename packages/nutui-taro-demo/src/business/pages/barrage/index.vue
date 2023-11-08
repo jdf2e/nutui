@@ -6,7 +6,7 @@
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <nut-button @click="addDanmu" class="add nut-button--primary">随机添加</nut-button>
+      <nut-button class="add nut-button--primary" @click="addDanmu">随机添加</nut-button>
     </div>
   </div>
 </template>

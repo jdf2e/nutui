@@ -2,7 +2,7 @@
   <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>默认用法</h2>
-    <nut-invoice :data="data" :formValue="formValue" @submit="submit"></nut-invoice>
+    <nut-invoice :data="data" :form-value="formValue" @submit="submit"></nut-invoice>
   </div>
 </template>
 

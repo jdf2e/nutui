@@ -62,7 +62,7 @@
     </nut-cell>
 
     <nut-cell>
-      <nut-avatar-group max-count="3" max-color="#fff" max-bgColor="#498ff2">
+      <nut-avatar-group max-count="3" max-color="#fff" max-bg-color="#498ff2">
         <nut-avatar>
           <img
             src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
@@ -75,7 +75,7 @@
     </nut-cell>
     <h2>组合头像可控制层级方向</h2>
     <nut-cell>
-      <nut-avatar-group max-count="3" zIndex="right" max-content="...">
+      <nut-avatar-group max-count="3" z-index="right" max-content="...">
         <nut-avatar>
           <img
             src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
@@ -92,9 +92,9 @@
       <nut-avatar @click="handleClick"><My /></nut-avatar>
     </nut-cell>
 
-    <h2 class="demo-avatar-group-title">动态添加头像<nut-button @click="addAvatar" size="mini">添加</nut-button></h2>
+    <h2 class="demo-avatar-group-title">动态添加头像<nut-button size="mini" @click="addAvatar">添加</nut-button></h2>
     <nut-cell>
-      <nut-avatar-group max-count="4" zIndex="right">
+      <nut-avatar-group max-count="4" z-index="right">
         <nut-avatar v-for="i in avatarCount" :key="i">
           <My v-if="i % 2 == 0" />
           <img

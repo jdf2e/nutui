@@ -2,25 +2,25 @@
   <div class="demo signature-demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-signature @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
-    <image :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
+    <nut-signature custom-class="test" @confirm="confirm" @clear="clear" @start="start"></nut-signature>
+    <image v-if="demoSignUrl" :src="demoSignUrl" class="demoSignUrl" />
 
     <h2>修改颜色和签字粗细</h2>
     <nut-signature
-      :lineWidth="4"
-      strokeStyle="green"
+      :line-width="4"
+      stroke-style="green"
       @confirm="confirm2"
       @clear="clear2"
       @start="start"
       @signing="signing"
       @end="end"
     />
-    <image :src="demoSignUrl2" class="demoSignUrl" v-if="demoSignUrl2" />
+    <image v-if="demoSignUrl2" :src="demoSignUrl2" class="demoSignUrl" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 const env = Taro.getEnv();

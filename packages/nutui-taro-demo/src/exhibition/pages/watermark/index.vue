@@ -18,7 +18,7 @@
     <h2>局部用法</h2>
     <nut-cell class="wrap wrap2">
       <img :src="src" alt="" />
-      <nut-watermark :fullPage="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
+      <nut-watermark :full-page="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
     </nut-cell>
   </div>
 </template>

@@ -13,7 +13,7 @@
 
     <h2>加载状态</h2>
     <nut-cell>
-      <nut-switch v-model="data.checked3" loading activeColor="red" />
+      <nut-switch v-model="data.checked3" loading active-color="red" />
     </nut-cell>
 
     <h2>change事件</h2>
@@ -23,7 +23,7 @@
 
     <h2>异步控制</h2>
     <nut-cell>
-      <nut-switch :model-value="checkedAsync" @change="changeAsync" :loading="loadingAsync" />
+      <nut-switch :model-value="checkedAsync" :loading="loadingAsync" @change="changeAsync" />
     </nut-cell>
 
     <h2>自定义颜色</h2>

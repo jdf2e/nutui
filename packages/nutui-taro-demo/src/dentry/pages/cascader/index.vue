@@ -5,65 +5,65 @@
 
     <nut-cell title="选择地址" :desc="demo1.value.toString() || '请选择地址'" @click="demo1.visible = true"> </nut-cell>
     <nut-cascader
-      title="地址选择"
       v-model:visible="demo1.visible"
       v-model="demo1.value"
-      @change="events.change"
-      @pathChange="events.pathChange"
+      title="地址选择"
       :options="demo1.options"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
 
     <h2>自定义属性名称</h2>
 
     <nut-cell title="选择地址" :desc="demo2.value.toString() || '请选择地址'" @click="demo2.visible = true"> </nut-cell>
     <nut-cascader
-      title="地址选择"
       v-model:visible="demo2.visible"
       v-model="demo2.value"
-      textKey="text"
-      @change="events.change"
-      @pathChange="events.pathChange"
-      valueKey="text"
-      childrenKey="items"
+      title="地址选择"
+      text-key="text"
+      value-key="text"
+      children-key="items"
       :options="demo2.options"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
 
     <h2>动态加载</h2>
     <nut-cell title="选择地址" :desc="demo3.value.toString() || '请选择地址'" @click="demo3.visible = true"> </nut-cell>
     <nut-cascader
-      title="地址选择"
       v-model:visible="demo3.visible"
       v-model="demo3.value"
-      @change="events.change"
-      @pathChange="events.pathChange"
+      title="地址选择"
       lazy
-      :lazyLoad="demo3.lazyLoad"
+      :lazy-load="demo3.lazyLoad"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
 
     <h2>部分数据动态加载</h2>
 
     <nut-cell title="选择地址" :desc="demo4.value.toString() || '请选择地址'" @click="demo4.visible = true"> </nut-cell>
     <nut-cascader
-      title="地址选择"
       v-model:visible="demo4.visible"
       v-model="demo4.value"
-      @change="events.change"
-      @pathChange="events.pathChange"
+      title="地址选择"
       :options="demo4.options"
       lazy
-      :lazyLoad="demo4.lazyLoad"
+      :lazy-load="demo4.lazyLoad"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
 
     <h2>自动转换</h2>
     <nut-cell title="选择地址" :desc="demo5.value.toString() || '请选择地址'" @click="demo5.visible = true"> </nut-cell>
     <nut-cascader
-      title="地址选择"
       v-model:visible="demo5.visible"
       v-model="demo5.value"
-      @change="events.change"
-      @pathChange="events.pathChange"
+      title="地址选择"
       :options="demo5.options"
-      :convertConfig="demo5.convertConfig"
+      :convert-config="demo5.convertConfig"
+      @change="events.change"
+      @path-change="events.pathChange"
     ></nut-cascader>
   </div>
 </template>

@@ -34,8 +34,8 @@
     <nut-tabbar v-model="activeName" @tab-switch="tabSwitch">
       <nut-tabbar-item
         v-for="(item, index) in List"
-        :name="item.name"
         :key="index"
+        :name="item.name"
         :tab-title="item.title"
         :icon="item.icon"
       >
@@ -90,7 +90,7 @@
       <nut-tabbar-item tab-title="发现" :icon="Find"></nut-tabbar-item>
     </nut-tabbar>
     <h2>固定底部，可自由跳转</h2>
-    <nut-tabbar :bottom="true" :safeAreaInsetBottom="true" placeholder>
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" placeholder>
       <nut-tabbar-item tab-title="首页" href="" :icon="Home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" :icon="Category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" :icon="Find"></nut-tabbar-item>

@@ -6,10 +6,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
     </nut-card>
     <h2>自定义商品标签</h2>
@@ -17,10 +17,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #prolist>
         <div class="search_prolist_attr">
@@ -35,10 +35,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #prolist>
         <div class="search_prolist_attr">
@@ -60,10 +60,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #shop-tag>
         <div>这里是自定义区域</div>
@@ -74,10 +74,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #footer>
         <div class="customize">自定义</div>

@@ -20,19 +20,19 @@
       </nut-form-item>
     </nut-form>
     <h2>动态表单</h2>
-    <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
+    <nut-form ref="dynamicRefForm" :model-value="dynamicForm.state">
       <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-        <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+        <nut-input v-model="dynamicForm.state.name" class="nut-input-text" placeholder="请输入姓名" type="text" />
       </nut-form-item>
       <nut-form-item
+        v-for="(item, index) in dynamicForm.state.tels"
+        :key="item.key"
         :label="'联系方式' + index"
         :prop="'tels.' + index + '.value'"
         required
         :rules="[{ required: true, message: '请填写联系方式' + index }]"
-        :key="item.key"
-        v-for="(item, index) in dynamicForm.state.tels"
       >
-        <nut-input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式' + index" type="text" />
+        <nut-input v-model="item.value" class="nut-input-text" :placeholder="'请输入联系方式' + index" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
@@ -45,6 +45,7 @@
     </nut-form>
     <h2>表单校验</h2>
     <nut-form
+      ref="ruleForm"
       :model-value="formData"
       :rules="{
         name: [
@@ -54,15 +55,14 @@
           }
         ]
       }"
-      ref="ruleForm"
     >
       <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
         <nut-input
-          class="nut-input-text"
-          @blur="customBlurValidate('name')"
           v-model="formData.name"
+          class="nut-input-text"
           placeholder="请输入姓名，blur 事件校验"
           type="text"
+          @blur="customBlurValidate('name')"
         />
       </nut-form-item>
       <nut-form-item
@@ -77,8 +77,8 @@
         ]"
       >
         <nut-input
-          class="nut-input-text"
           v-model="formData.age"
+          class="nut-input-text"
           placeholder="请输入年龄，必须数字且0-200区间"
           type="text"
         />
@@ -93,14 +93,14 @@
         ]"
       >
         <nut-input
-          class="nut-input-text"
           v-model="formData.tel"
+          class="nut-input-text"
           placeholder="请输入联系电话，异步校验电话格式"
           type="text"
         />
       </nut-form-item>
       <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-        <nut-input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
+        <nut-input v-model="formData.address" class="nut-input-text" placeholder="请输入地址" type="text" />
       </nut-form-item>
       <nut-cell>
         <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">提交</nut-button>
@@ -116,7 +116,7 @@
         <nut-checkbox v-model="formData2.checkbox">复选框</nut-checkbox>
       </nut-form-item>
       <nut-form-item label="单选按钮">
-        <nut-radio-group direction="horizontal" v-model="formData2.radio">
+        <nut-radio-group v-model="formData2.radio" direction="horizontal">
           <nut-radio label="1">选项1</nut-radio>
           <nut-radio disabled label="2">选项2</nut-radio>
           <nut-radio label="3">选项3</nut-radio>
@@ -129,13 +129,13 @@
         <nut-input-number v-model="formData2.number" />
       </nut-form-item>
       <nut-form-item label="滑块">
-        <nut-range hidden-tag v-model="formData2.range"></nut-range>
+        <nut-range v-model="formData2.range" hidden-tag></nut-range>
       </nut-form-item>
       <nut-form-item label="文件上传">
         <nut-uploader
+          v-model:file-list="formData2.defaultFileList"
           url="http://服务地址"
           accept="image/*"
-          v-model:file-list="formData2.defaultFileList"
           maximum="3"
           multiple
         >
@@ -143,12 +143,12 @@
       </nut-form-item>
       <nut-form-item label="地址">
         <nut-input
-          class="nut-input-text"
           v-model="formData2.address"
-          @click="addressModule.methods.show"
+          class="nut-input-text"
           readonly
           placeholder="请选择地址"
           type="text"
+          @click="addressModule.methods.show"
         />
         <!-- nut-address -->
         <nut-address
@@ -157,8 +157,8 @@
           :city="addressModule.state.city"
           :country="addressModule.state.country"
           :town="addressModule.state.town"
-          @change="addressModule.methods.onChange"
           custom-address-title="请选择所在地区"
+          @change="addressModule.methods.onChange"
         ></nut-address>
       </nut-form-item>
     </nut-form>

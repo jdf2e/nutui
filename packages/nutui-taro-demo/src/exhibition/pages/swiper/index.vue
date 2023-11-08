@@ -46,7 +46,7 @@
     </view>
     <h2>自定义指示器(异步加载3s)</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="state.page" :loop="true" @change="change1" auto-play="2000">
+      <nut-swiper :init-page="state.page" :loop="true" auto-play="2000" @change="change1">
         <nut-swiper-item v-for="item in state.list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -57,7 +57,7 @@
     </view>
     <h2>手动切换</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="state.page" :loop="true" ref="swiper">
+      <nut-swiper ref="swiper" :init-page="state.page" :loop="true">
         <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>

@@ -5,7 +5,7 @@ import NutUI from '@/packages/nutui.taro.vue';
 // import '@nutui/nutui-taro/dist/style.css';
 import '@nutui/touch-emulator'; // 适配 taro h5 示例桌面端预览
 const App = createApp({
-  onShow(options) {}
+  onShow() {}
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro所覆盖
 }).use(NutUI);
 

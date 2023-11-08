@@ -24,9 +24,9 @@
       :city="address.city"
       :country="address.country"
       :town="address.town"
+      :columns-placeholder="placeholder"
       @change="(cal) => onChange(cal, 'select')"
       @close="close6"
-      :columns-placeholder="placeholder"
     ></nut-address>
 
     <h2>选择自定义地址2</h2>
@@ -41,9 +41,9 @@
       :country="address.country"
       :town="address.town"
       height="270px"
+      :columns-placeholder="placeholder"
       @change="(cal) => onChange(cal, 'normal2')"
       @close="close5"
-      :columns-placeholder="placeholder"
     ></nut-address>
 
     <h2>选择已有地址</h2>
@@ -53,9 +53,9 @@
       v-model:visible="showPopup.exist"
       type="exist"
       :exist-address="existAddress"
+      :is-show-custom-address="false"
       @change="(cal) => onChange(cal, 'exist')"
       @close="close2"
-      :is-show-custom-address="false"
       @selected="selected"
     ></nut-address>
 
@@ -66,12 +66,12 @@
       v-model:visible="showPopup.customImg"
       type="exist"
       :exist-address="existAddress"
-      @close="close3"
       :is-show-custom-address="false"
-      @selected="selected"
       :default-icon="icon.defaultIcon"
       :selected-icon="icon.selectedIcon"
       :close-btn-icon="icon.closeBtnIcon"
+      @close="close3"
+      @selected="selected"
     >
       <template #unselected-icon>
         <Heart1 style="margin-right: 8px"></Heart1>

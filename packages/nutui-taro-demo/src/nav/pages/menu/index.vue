@@ -4,12 +4,12 @@
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+      <nut-menu-item v-model="state.value2" :options="state.options2" @change="handleChange" />
     </nut-menu>
     <h2>自定义菜单内容</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item title="筛选" ref="item">
+      <nut-menu-item ref="item" title="筛选">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
           <div :style="{ marginRight: '10px' }">自定义内容</div>
           <nut-button @click="onConfirm">确认</nut-button>
@@ -23,7 +23,7 @@
     <h2>自定义选中态颜色</h2>
     <nut-menu active-color="green">
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+      <nut-menu-item v-model="state.value2" :options="state.options2" @change="handleChange" />
     </nut-menu>
     <h2>自定义图标</h2>
     <nut-menu>
@@ -31,7 +31,7 @@
         <TriangleDown />
       </template>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2">
+      <nut-menu-item v-model="state.value2" :options="state.options2" @change="handleChange">
         <template #icon>
           <Checked></Checked>
         </template>
@@ -40,12 +40,12 @@
     <h2>向上展开</h2>
     <nut-menu direction="up">
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+      <nut-menu-item v-model="state.value2" :options="state.options2" @change="handleChange" />
     </nut-menu>
     <h2>禁用菜单</h2>
     <nut-menu>
-      <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
-      <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
+      <nut-menu-item v-model="state.value1" disabled :options="state.options1" />
+      <nut-menu-item v-model="state.value2" disabled :options="state.options2" @change="handleChange" />
     </nut-menu>
   </div>
 </template>

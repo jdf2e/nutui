@@ -2,28 +2,28 @@
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-    <nut-dialog title="基础弹框" content="这是基础弹框。" v-model:visible="visible1" @cancel="onCancel" @ok="onOk" />
+    <nut-dialog v-model:visible="visible1" title="基础弹框" content="这是基础弹框。" @cancel="onCancel" @ok="onOk" />
 
     <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-    <nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
+    <nut-dialog v-model:visible="visible2" content="这是无标题弹框。" @cancel="onCancel" @ok="onOk" />
 
     <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
     <nut-dialog
+      v-model:visible="visible3"
       no-cancel-btn
       title="温馨提示"
       content="这是提示弹框。"
-      v-model:visible="visible3"
       @cancel="onCancel"
       @ok="onOk"
     />
 
     <nut-cell title="底部按钮 垂直使用" @click="verticalClick"></nut-cell>
     <nut-dialog
+      v-model:visible="visible5"
       footer-direction="vertical"
       teleport="#app"
       title="温馨提示"
       content="这是提示弹框。"
-      v-model:visible="visible5"
     />
 
     <nut-cell title="异步关闭" @click="componentClick"></nut-cell>

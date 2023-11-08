@@ -3,8 +3,8 @@
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="state.count" @scroll-bottom="handleScroll">
-        <template v-slot="{ item }">
+      <nut-list :height="50" :list-data="state.count" @scroll-bottom="handleScroll">
+        <template #default="{ item }">
           <div class="list-item">
             {{ item }}
           </div>

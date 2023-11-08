@@ -5,10 +5,10 @@
     <nut-cell>
       <nut-ecard
         v-model="money"
-        @inputChange="inputChange"
-        @change="change"
-        @changeStep="changeStep"
         :data-list="dataList"
+        @input-change="inputChange"
+        @change="change"
+        @change-step="changeStep"
       ></nut-ecard>
     </nut-cell>
   </div>
