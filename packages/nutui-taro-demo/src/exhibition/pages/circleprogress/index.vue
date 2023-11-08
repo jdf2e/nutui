@@ -7,7 +7,7 @@
     </div>
     <h2>环形进度条自定义宽度</h2>
     <div class="demo__piece">
-      <nut-circle-progress progress="50" strokeWidth="10" />
+      <nut-circle-progress progress="50" stroke-width="10" />
     </div>
 
     <h2>环形进度条自定义颜色(支持渐变色)</h2>

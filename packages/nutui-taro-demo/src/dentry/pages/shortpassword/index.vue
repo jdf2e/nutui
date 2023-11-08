@@ -58,7 +58,7 @@
         state.errorMsg = '请输入正确密码';
       "
     ></nut-cell>
-    <nut-toast msg="忘记密码" v-model:visible="state.show" type="text" :cover="state.cover" />
+    <nut-toast v-model:visible="state.show" msg="忘记密码" type="text" :cover="state.cover" />
     <nut-short-password
       v-model="state.value4"
       v-model:visible="state.visible4"
@@ -72,53 +72,39 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
+const env = Taro.getEnv();
 
-export default {
-  components: {
-    Header
+const state = reactive({
+  visible1: false,
+  visible2: false,
+  visible3: false,
+  visible4: false,
+  showKeyboard1: false,
+  showKeyboard2: false,
+  showKeyboard3: false,
+  showKeyboard4: false,
+  value1: '',
+  value2: '',
+  value3: '',
+  value4: '',
+  errorMsg: '',
+  length: 6,
+  show: false,
+  cover: false
+});
+const methods = {
+  complete(value) {
+    console.log(value);
   },
-  setup() {
-    const env = Taro.getEnv();
-
-    const state = reactive({
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      showKeyboard1: false,
-      showKeyboard2: false,
-      showKeyboard3: false,
-      showKeyboard4: false,
-      value1: '',
-      value2: '',
-      value3: '',
-      value4: '',
-      errorMsg: '',
-      length: 6,
-      show: false,
-      cover: false
-    });
-    const methods = {
-      complete(value) {
-        console.log(value);
-      },
-      onTips() {
-        state.show = true;
-        state.cover = false;
-      },
-      close() {},
-      cancel() {}
-    };
-
-    return {
-      state,
-      methods,
-      env
-    };
-  }
+  onTips() {
+    state.show = true;
+    state.cover = false;
+  },
+  close() {},
+  cancel() {}
 };
 </script>

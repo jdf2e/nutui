@@ -1,44 +1,44 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-searchbar v-model="searchValue" :label="translate('word1')" :focus-style="{ outline: '1px solid red' }">
+    <nut-searchbar v-model="state.searchValue" :label="translate('word1')" :focus-style="{ outline: '1px solid red' }">
     </nut-searchbar>
 
     <h2>{{ translate('shape') }}</h2>
     <nut-searchbar shape="square"></nut-searchbar>
 
     <h2>{{ translate('basic2') }}</h2>
-    <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
+    <nut-searchbar v-model="state.searchValue1" @search="search"> </nut-searchbar>
 
     <h2>{{ translate('basic3') }}</h2>
-    <nut-searchbar v-model="searchValue2" @click-left-icon="clickLeftIcon">
+    <nut-searchbar v-model="state.searchValue2" @click-left-icon="clickLeftIcon">
       <template #leftin>
         <Search2 />
       </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic4') }}</h2>
-    <nut-searchbar v-model="searchValue3">
+    <nut-searchbar v-model="state.searchValue3">
       <template #rightout> {{ translate('word2') }} </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic5') }}</h2>
     <nut-searchbar
-      v-model="searchValue4"
+      v-model="state.searchValue4"
       background="linear-gradient(to right, #9866F0, #EB4D50)"
       input-background="#fff"
     >
     </nut-searchbar>
 
     <h2>{{ translate('basic7') }}</h2>
-    <nut-searchbar v-model="searchValue6">
+    <nut-searchbar v-model="state.searchValue6">
       <template #clear-icon>
         <img :src="icon" style="width: 20px; height: 20px" />
       </template>
     </nut-searchbar>
 
     <h2>{{ translate('basic6') }}</h2>
-    <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
+    <nut-searchbar v-model="state.searchValue5" @click-right-icon="clickRightIcon">
       <template #leftout>
         <Left @click="clickLeft" />
       </template>
@@ -55,8 +55,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { toRefs, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '../toast';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
@@ -90,48 +90,32 @@ const initTranslate = () =>
       shape: 'Search input shape'
     }
   });
-export default defineComponent({
-  components: { Search2, Left, Photograph, Message },
-  props: {},
-  setup() {
-    const icon =
-      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
-    initTranslate();
-    const state = reactive({
-      searchValue: '',
-      searchValue1: '',
-      searchValue2: '',
-      searchValue3: '',
-      searchValue4: '',
-      searchValue5: '',
-      searchValue6: ''
-    });
-
-    const search = function () {
-      showToast.text('搜索触发');
-    };
-
-    const clickLeft = function () {
-      showToast.text('点击回退按钮');
-    };
-    const clickLeftIcon = function (a: string, b: Event) {
-      console.log(a, b);
-    };
-    const clickRightIcon = function (a: string, b: Event) {
-      console.log(a, b);
-    };
-
-    return {
-      icon,
-      clickLeft,
-      clickLeftIcon,
-      clickRightIcon,
-      search,
-      ...toRefs(state),
-      translate
-    };
-  }
+const icon =
+  'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
+initTranslate();
+const state = reactive({
+  searchValue: '',
+  searchValue1: '',
+  searchValue2: '',
+  searchValue3: '',
+  searchValue4: '',
+  searchValue5: '',
+  searchValue6: ''
 });
+
+const search = function () {
+  showToast.text('搜索触发');
+};
+
+const clickLeft = function () {
+  showToast.text('点击回退按钮');
+};
+const clickLeftIcon = function (a: string, b: Event) {
+  console.log(a, b);
+};
+const clickRightIcon = function (a: string, b: Event) {
+  console.log(a, b);
+};
 </script>
 
 <style lang="scss" scoped></style>

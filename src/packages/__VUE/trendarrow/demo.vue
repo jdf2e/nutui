@@ -57,8 +57,7 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('trend-arrow');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -86,14 +85,7 @@ const initTranslate = () =>
       title7: 'Custom icon'
     }
   });
-export default defineComponent({
-  components: { Success, Failure },
-  props: {},
-  setup() {
-    initTranslate();
-    return { translate };
-  }
-});
+initTranslate();
 </script>
 <style lang="scss" scoped>
 .demo {

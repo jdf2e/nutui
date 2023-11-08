@@ -61,7 +61,7 @@
     </nut-cell-group>
 
     <h2>展示图标</h2>
-    <nut-cell title="姓名" icon="my" desc="张三" isLink>
+    <nut-cell title="姓名" icon="my" desc="张三" is-link>
       <template #icon>
         <My />
       </template>

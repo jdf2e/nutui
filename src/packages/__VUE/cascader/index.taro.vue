@@ -11,6 +11,7 @@
       :close-icon-position="closeIconPosition"
       :lock-scroll="lockScroll"
       :catch-move="lockScroll"
+      :z-index="zIndex"
     >
       <template v-if="title">
         <view class="nut-cascader__bar" v-html="title"></view>

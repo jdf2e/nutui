@@ -4,14 +4,14 @@
 
     <nut-cell :title="translate('tryClick')">
       <template #link>
-        <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
+        <nut-switch id="target7" v-model="state.switchValue" @click="state.showTour3 = true" />
       </template>
     </nut-cell>
 
     <nut-tour
-      v-model="showTour3"
+      v-model="state.showTour3"
       class="nut-custom-tour nut-customword-tour"
-      :steps="steps3"
+      :steps="state.steps3"
       type="tile"
       location="bottom-end"
     ></nut-tour>
@@ -20,14 +20,14 @@
 
     <nut-cell :title="translate('tryClick')">
       <template #link>
-        <nut-switch id="target5" v-model="switchValue" @click="showTourHandle" />
+        <nut-switch id="target5" v-model="state.switchValue" @click="showTourHandle" />
       </template>
     </nut-cell>
 
     <nut-tour
-      v-model="showTour1"
+      v-model="state.showTour1"
       class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-      :steps="steps1"
+      :steps="state.steps1"
       location="bottom-end"
       type="tile"
       bg-color="#f00"
@@ -39,7 +39,7 @@
 
     <h2>{{ translate('title2') }}</h2>
 
-    <nut-cell :title="translate('tryClick')" @click="showTour2 = true">
+    <nut-cell :title="translate('tryClick')" @click="state.showTour2 = true">
       <template #link>
         <div class="tour-demo-img">
           <img
@@ -57,9 +57,9 @@
     </nut-cell>
 
     <nut-tour
-      v-model="showTour2"
+      v-model="state.showTour2"
       class="nut-custom-tour nut-customword-tour"
-      :steps="steps2"
+      :steps="state.steps2"
       type="tile"
       bg-color="#f00"
       theme="dark"
@@ -71,14 +71,14 @@
 
     <nut-cell :title="translate('tryClick')">
       <template #link>
-        <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
+        <nut-switch id="target8" v-model="state.switchValue" @click="state.showTour4 = true" />
       </template>
     </nut-cell>
 
     <nut-tour
-      v-model="showTour4"
+      v-model="state.showTour4"
       class="nut-custom-tour nut-customword-tour"
-      :steps="steps4"
+      :steps="state.steps4"
       type="tile"
       theme="dark"
       location="bottom-end"
@@ -88,13 +88,13 @@
       <div class="tour-demo-custom-content">
         <div>nutui 4.x 即将发布，敬请期待</div>
         <nut-divider direction="vertical" />
-        <div @click="showTour4 = false">知道了</div>
+        <div @click="state.showTour4 = false">知道了</div>
       </div>
     </nut-tour>
 
     <h2>{{ translate('title4') }}</h2>
 
-    <nut-cell :title="translate('tryClick')" @click="showTour = true"></nut-cell>
+    <nut-cell :title="translate('tryClick')" @click="state.showTour = true"></nut-cell>
 
     <nut-tabbar :bottom="true">
       <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
@@ -104,9 +104,9 @@
     </nut-tabbar>
 
     <nut-tour
-      v-model="showTour"
+      v-model="state.showTour"
       class="nut-custom-tour"
-      :steps="steps"
+      :steps="state.steps"
       location="top-start"
       :offset="[0, 0]"
       mask-width="60"
@@ -114,8 +114,8 @@
     ></nut-tour>
   </div>
 </template>
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('tour');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -139,86 +139,76 @@ const initTranslate = () =>
       tryClick: 'Try Click'
     }
   });
-export default defineComponent({
-  setup() {
-    initTranslate();
+initTranslate();
 
-    const state = reactive({
-      switchValue: false,
-      showTour: false,
-      showTour1: false,
-      showTour2: false,
-      showTour3: false,
-      showTour4: false,
-      offset: [-3, -8],
-      steps: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target1'
-        },
-        {
-          content: '支持一套代码同时开发多端小程序+H5',
-          target: 'target2'
-        },
-        {
-          content: '基于京东APP 10.0 视觉规范',
-          target: 'target3',
-          location: 'top-end'
-        },
-        {
-          content: '支持定制主题，内置 700+ 个主题变量',
-          target: 'target4',
-          location: 'top-end'
-        }
-      ],
+const state = reactive({
+  switchValue: false,
+  showTour: false,
+  showTour1: false,
+  showTour2: false,
+  showTour3: false,
+  showTour4: false,
+  offset: [-3, -8],
+  steps: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target1'
+    },
+    {
+      content: '支持一套代码同时开发多端小程序+H5',
+      target: 'target2'
+    },
+    {
+      content: '基于京东APP 10.0 视觉规范',
+      target: 'target3',
+      location: 'top-end'
+    },
+    {
+      content: '支持定制主题，内置 700+ 个主题变量',
+      target: 'target4',
+      location: 'top-end'
+    }
+  ],
 
-      steps1: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target5'
-        }
-      ],
+  steps1: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target5'
+    }
+  ],
 
-      steps2: [
-        {
-          content: '支持一套代码同时开发多端小程序+H5',
-          target: 'target6',
-          popoverOffset: [40, 12],
-          arrowOffset: -36
-        }
-      ],
+  steps2: [
+    {
+      content: '支持一套代码同时开发多端小程序+H5',
+      target: 'target6',
+      popoverOffset: [40, 12],
+      arrowOffset: -36
+    }
+  ],
 
-      steps3: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target7'
-        }
-      ],
+  steps3: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target7'
+    }
+  ],
 
-      steps4: [
-        {
-          target: 'target8'
-        }
-      ],
+  steps4: [
+    {
+      target: 'target8'
+    }
+  ],
 
-      type: 'normal'
-    });
-
-    setTimeout(() => {
-      state.showTour = true;
-    }, 100);
-
-    const showTourHandle = () => {
-      state.showTour1 = true;
-    };
-
-    return {
-      translate,
-      ...toRefs(state),
-      showTourHandle
-    };
-  }
+  type: 'normal'
 });
+
+setTimeout(() => {
+  state.showTour = true;
+}, 100);
+
+const showTourHandle = () => {
+  state.showTour1 = true;
+};
 </script>
 <style lang="scss">
 .nut-custom-tour {

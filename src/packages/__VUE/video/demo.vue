@@ -2,36 +2,50 @@
   <div class="demo">
     <h4>{{ translate('basic') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title1') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options1" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options1" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title2') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options2" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options2" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title3') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options3" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options3" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title4') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options4" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options4" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title5') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source" :options="options5" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source" :options="state.options5" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <h4>{{ translate('title6') }}</h4>
     <nut-cell class="cell">
-      <nut-video :source="source1" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
+      <nut-video :source="state.source1" :options="state.options" @play="play" @pause="pause" @playend="playend">
+      </nut-video>
     </nut-cell>
     <nut-button type="primary" class="m-b" @click="changeVideo">{{ translate('title6') }}</nut-button>
     <h4>{{ translate('title7') }}</h4>
     <nut-cell class="cell">
-      <nut-video ref="videoRef" :source="source" :options="options" @play="play" @pause="pause" @playend="playend">
+      <nut-video
+        ref="videoRef"
+        :source="state.source"
+        :options="state.options"
+        @play="play"
+        @pause="pause"
+        @playend="playend"
+      >
       </nut-video>
     </nut-cell>
     <nut-button type="success" class="m-b" @click="videoRef.play()">{{ translate('title8') }}</nut-button>
@@ -42,8 +56,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent, ref, Ref } from 'vue';
+<script setup lang="ts">
+import { reactive, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('video');
 
@@ -81,59 +95,53 @@ const initTranslate = () =>
       title12: 'unmuted'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      source: {
-        src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-        type: 'video/mp4'
-      },
-      source1: {
-        src: 'https://storage.360buyimg.com/nutui/video/legao-%E6%9D%A8%E8%BF%9B%E5%86%9B.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        controls: true
-      },
-      options1: {
-        autoplay: true,
-        muted: true,
-        controls: true
-      },
-      options2: {
-        muted: true,
-        controls: true
-      },
-      options3: {
-        controls: true,
-        poster:
-          'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp'
-      },
-      options4: {
-        controls: true,
-        playsinline: true
-      },
-      options5: {
-        controls: false,
-        autoplay: true,
-        disabled: true,
-        muted: true,
-        playsinline: true,
-        loop: true
-      }
-    });
-    const videoRef = ref('null') as Ref;
-    const play = (elm: any) => console.log('play', elm);
-    const pause = (elm: any) => console.log('pause', elm);
-    const playend = (elm: any) => console.log('playend', elm);
-    const changeVideo = () => {
-      state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
-    };
-    return { play, pause, playend, ...toRefs(state), changeVideo, translate, videoRef };
+initTranslate();
+const state = reactive({
+  source: {
+    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
+    type: 'video/mp4'
+  },
+  source1: {
+    src: 'https://storage.360buyimg.com/nutui/video/legao-%E6%9D%A8%E8%BF%9B%E5%86%9B.mp4',
+    type: 'video/mp4'
+  },
+  options: {
+    controls: true
+  },
+  options1: {
+    autoplay: true,
+    muted: true,
+    controls: true
+  },
+  options2: {
+    muted: true,
+    controls: true
+  },
+  options3: {
+    controls: true,
+    poster:
+      'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp'
+  },
+  options4: {
+    controls: true,
+    playsinline: true
+  },
+  options5: {
+    controls: false,
+    autoplay: true,
+    disabled: true,
+    muted: true,
+    playsinline: true,
+    loop: true
   }
 });
+const videoRef = ref('null') as Ref;
+const play = (elm: any) => console.log('play', elm);
+const pause = (elm: any) => console.log('pause', elm);
+const playend = (elm: any) => console.log('playend', elm);
+const changeVideo = () => {
+  state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
+};
 </script>
 
 <style lang="scss" scoped>

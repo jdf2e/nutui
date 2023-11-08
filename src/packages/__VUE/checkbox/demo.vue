@@ -2,42 +2,42 @@
   <div class="demo">
     <nut-cell-group :title="translate('basic')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" :label="translate('checkbox')" @change="changeBox1">
+        <nut-checkbox v-model="state.checkbox1" :label="translate('checkbox')" @change="changeBox1">
           {{ translate('checkbox') }}
         </nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox2" text-position="left" @change="checkbox2">
+        <nut-checkbox v-model="state.checkbox2" text-position="left" @change="changeBox2">
           {{ translate('checkbox') }}
         </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('semi')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox9" :indeterminate="true" :label="translate('checkbox')">
+        <nut-checkbox v-model="state.checkbox9" :indeterminate="true" :label="translate('checkbox')">
           {{ translate('checkbox') }}
         </nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('disable')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox3" disabled>{{ translate('unselectDisable') }}</nut-checkbox>
+        <nut-checkbox v-model="state.checkbox3" disabled>{{ translate('unselectDisable') }}</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox4" disabled>{{ translate('selectedDisable') }}</nut-checkbox>
+        <nut-checkbox v-model="state.checkbox4" disabled>{{ translate('selectedDisable') }}</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('size')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox5" icon-size="25">{{ translate('size') }}25</nut-checkbox>
+        <nut-checkbox v-model="state.checkbox5" icon-size="25">{{ translate('size') }}25</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox6" icon-size="10">{{ translate('size') }} 10</nut-checkbox>
+        <nut-checkbox v-model="state.checkbox6" icon-size="10">{{ translate('size') }} 10</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('icon')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox7">
+        <nut-checkbox v-model="state.checkbox7">
           {{ translate('icon') }}
           <template #icon>
             <Checklist />
@@ -50,12 +50,12 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('change')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox8" @change="changeBox3">change {{ translate('checkbox') }}</nut-checkbox>
+        <nut-checkbox v-model="state.checkbox8" @change="changeBox3">change {{ translate('checkbox') }}</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('useGroup')">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup1">
+        <nut-checkbox-group v-model="state.checkboxgroup1">
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
@@ -64,12 +64,12 @@
       </nut-cell>
       <nut-cell>
         <div class="demo-check">{{ translate('selected') }}</div>
-        <div>{{ checkboxgroup1 }}</div>
+        <div>{{ state.checkboxgroup1 }}</div>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('disableGroup')">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup2" disabled>
+        <nut-checkbox-group v-model="state.checkboxgroup2" disabled>
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
@@ -79,8 +79,8 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('selectGroup')">
       <nut-cell>
-        <nut-checkbox-group ref="group" v-model="checkboxgroup3" @change="changeBox4">
-          <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">
+        <nut-checkbox-group ref="group" v-model="state.checkboxgroup3" @change="changeBox4">
+          <nut-checkbox v-for="item in state.checkboxsource" :key="item.label" :label="item.label">
             {{ item.value }}
           </nut-checkbox>
         </nut-checkbox-group>
@@ -97,7 +97,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('useGroupLimit')">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup4" :max="2">
+        <nut-checkbox-group v-model="state.checkboxgroup4" :max="2">
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="2">{{ translate('combine') }}</nut-checkbox>
           <nut-checkbox label="3" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
@@ -106,16 +106,16 @@
       </nut-cell>
       <nut-cell>
         <div class="demo-check">{{ translate('selected') }}</div>
-        <div>{{ checkboxgroup4 }}</div>
+        <div>{{ state.checkboxgroup4 }}</div>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group :title="translate('useGroupInte')">
       <nut-cell>
-        <nut-checkbox v-model="checkbox10" :indeterminate="indeterminate" @change="changeBox5">{{
+        <nut-checkbox v-model="state.checkbox10" :indeterminate="state.indeterminate" @change="changeBox5">{{
           translate('selectAll')
         }}</nut-checkbox>
       </nut-cell>
-      <nut-checkbox-group ref="group2" v-model="checkboxgroup5" @change="changeBox6">
+      <nut-checkbox-group ref="group2" v-model="state.checkboxgroup5" @change="changeBox6">
         <nut-cell>
           <nut-checkbox label="1" style="margin: 2px 20px 0 0">{{ translate('combine') }}</nut-checkbox>
         </nut-cell>
@@ -132,7 +132,7 @@
     </nut-cell-group>
     <nut-cell-group :title="translate('useShape')">
       <nut-cell>
-        <nut-checkbox-group v-model="checkboxgroup6">
+        <nut-checkbox-group v-model="state.checkboxgroup6">
           <nut-checkbox label="1" shape="button">{{ translate('useShape') }}</nut-checkbox>
           <nut-checkbox label="2" shape="button">{{ translate('useShape') }}</nut-checkbox>
         </nut-checkbox-group>
@@ -140,8 +140,8 @@
     </nut-cell-group>
   </div>
 </template>
-<script lang="ts">
-import { reactive, ref, toRefs, Ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('checkbox');
@@ -196,99 +196,77 @@ const initTranslate = () =>
       useShape: 'Button shape'
     }
   });
-export default defineComponent({
-  components: {
-    Checklist
-  },
-  setup() {
-    initTranslate();
-    const group = ref(null) as Ref;
-    const group2 = ref(null) as Ref;
-    const data = reactive({
-      checkbox1: true,
-      checkbox2: false,
-      checkbox3: false,
-      checkbox4: true,
-      checkbox5: false,
-      checkbox6: false,
-      checkbox7: false,
-      checkbox8: false,
-      checkbox9: true,
-      checkbox10: false,
-      checkboxgroup1: ['2', '3'],
-      checkboxgroup2: ['2'],
-      checkboxgroup3: ['2'],
-      checkboxgroup4: ['2'],
-      checkboxgroup5: [],
-      checkboxgroup6: [],
-      checkboxsource: [
-        { label: '1', value: translate('combine') },
-        { label: '2', value: translate('combine') },
-        { label: '3', value: translate('combine') },
-        { label: '4', value: translate('combine') },
-        { label: '5', value: translate('combine') },
-        { label: '6', value: translate('combine') }
-      ],
-      indeterminate: false
-    });
-    const changeBox1 = (state: boolean, label: string) => {
-      console.log(state, label);
-    };
-
-    const changeBox2 = (state: boolean, label: string) => {
-      console.log(state, label);
-    };
-
-    const changeBox3 = (state: boolean, label: string) => {
-      showToast.text(`${state ? translate('select') : translate('cancel')} ${label}`);
-    };
-
-    const changeBox4 = (label: any[]) => {
-      console.log(label);
-    };
-
-    const changeBox5 = (value: boolean) => {
-      group2.value.toggleAll(value);
-    };
-
-    const changeBox6 = (label: string[]) => {
-      if (label.length === 4) {
-        data.indeterminate = false;
-        data.checkbox10 = true;
-      } else if (label.length && label.length < 4) {
-        data.indeterminate = true;
-      } else {
-        data.indeterminate = false;
-        data.checkbox10 = false;
-      }
-    };
-
-    const toggleAll = (f: boolean) => {
-      showToast.text(`${f ? translate('selectAll') : translate('cancel')}`);
-      group.value.toggleAll(f);
-    };
-
-    const toggleReverse = () => {
-      showToast.text(`反选`);
-      group.value.toggleReverse();
-    };
-
-    return {
-      changeBox1,
-      changeBox2,
-      changeBox3,
-      changeBox4,
-      changeBox5,
-      changeBox6,
-      toggleAll,
-      toggleReverse,
-      group,
-      group2,
-      translate,
-      ...toRefs(data)
-    };
-  }
+initTranslate();
+const group = ref(null) as Ref;
+const group2 = ref(null) as Ref;
+const state = reactive({
+  checkbox1: true,
+  checkbox2: false,
+  checkbox3: false,
+  checkbox4: true,
+  checkbox5: false,
+  checkbox6: false,
+  checkbox7: false,
+  checkbox8: false,
+  checkbox9: true,
+  checkbox10: false,
+  checkboxgroup1: ['2', '3'],
+  checkboxgroup2: ['2'],
+  checkboxgroup3: ['2'],
+  checkboxgroup4: ['2'],
+  checkboxgroup5: [],
+  checkboxgroup6: [],
+  checkboxsource: [
+    { label: '1', value: translate('combine') },
+    { label: '2', value: translate('combine') },
+    { label: '3', value: translate('combine') },
+    { label: '4', value: translate('combine') },
+    { label: '5', value: translate('combine') },
+    { label: '6', value: translate('combine') }
+  ],
+  indeterminate: false
 });
+const changeBox1 = (state: boolean, label: string) => {
+  console.log(state, label);
+};
+
+const changeBox2 = (state: boolean, label: string) => {
+  console.log(state, label);
+};
+
+const changeBox3 = (state: boolean, label: string) => {
+  showToast.text(`${state ? translate('select') : translate('cancel')} ${label}`);
+};
+
+const changeBox4 = (label: any[]) => {
+  console.log(label);
+};
+
+const changeBox5 = (value: boolean) => {
+  group2.value.toggleAll(value);
+};
+
+const changeBox6 = (label: string[]) => {
+  if (label.length === 4) {
+    state.indeterminate = false;
+    state.checkbox10 = true;
+  } else if (label.length && label.length < 4) {
+    state.indeterminate = true;
+  } else {
+    state.indeterminate = false;
+    state.checkbox10 = false;
+  }
+};
+
+const toggleAll = (f: boolean) => {
+  showToast.text(`${f ? translate('selectAll') : translate('cancel')}`);
+  group.value.toggleAll(f);
+};
+
+const toggleReverse = () => {
+  showToast.text(`反选`);
+  group.value.toggleReverse();
+};
 </script>
 <style lang="scss" scoped>
 .demo-check {

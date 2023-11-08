@@ -21,8 +21,8 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('watermark');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -41,24 +41,16 @@ const initTranslate = () =>
       btn2: 'Image Watermark'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
-    const imgSrc = ref(
-      '//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
-    );
-    const flag = ref(false);
-    const showTextMark = () => {
-      flag.value = false;
-    };
-    const showImageMark = () => {
-      flag.value = true;
-    };
-    return { translate, src, imgSrc, showTextMark, showImageMark, flag };
-  }
-});
+initTranslate();
+const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
+const imgSrc = ref('//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png');
+const flag = ref(false);
+const showTextMark = () => {
+  flag.value = false;
+};
+const showImageMark = () => {
+  flag.value = true;
+};
 </script>
 <style lang="scss" scoped>
 .demo {

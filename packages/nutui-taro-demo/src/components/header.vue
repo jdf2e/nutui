@@ -1,5 +1,5 @@
 <template>
-  <div class="applets-demo-header" v-if="isH5">
+  <div v-if="isH5" class="applets-demo-header">
     <div class="back" @click="navigateTo">
       <Left />
     </div>

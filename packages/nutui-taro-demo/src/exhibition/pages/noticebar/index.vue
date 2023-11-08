@@ -23,12 +23,12 @@
     ></nut-noticebar>
 
     <h2>通告栏模式--关闭模式</h2>
-    <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
+    <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`" @click="hello"
       >NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
       H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
     </nut-noticebar>
     <p />
-    <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
+    <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`" @click="hello"
       >NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
       H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
     </nut-noticebar>
@@ -56,14 +56,14 @@
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
-        :list="horseLamp1"
+        :list="state.horseLamp1"
         :speed="10"
-        :standTime="1000"
-        @click="go"
-        :closeMode="true"
+        :stand-time="1000"
+        :close-mode="true"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
         :height="50"
+        @click="go"
       ></nut-noticebar>
     </div>
 
@@ -71,10 +71,10 @@
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
-        :list="horseLamp2"
+        :list="state.horseLamp2"
         :speed="10"
-        :standTime="2000"
-        :complexAm="true"
+        :stand-time="2000"
+        :complex-am="true"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
       ></nut-noticebar>
@@ -85,18 +85,18 @@
         direction="vertical"
         :height="50"
         :speed="10"
-        :standTime="1000"
+        :stand-time="1000"
         :list="[]"
-        @close="go"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
+        @close="go"
       >
         <div
+          v-for="(item, index) in data1"
+          :key="index"
           class="custom-item"
           :data-index="index"
-          v-for="(item, index) in data1"
           style="height: 50px; line-height: 50px"
-          :key="index"
           >{{ item }}</div
         >
       </nut-noticebar>
@@ -106,9 +106,9 @@
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
-        :list="horseLamp1"
+        :list="state.horseLamp1"
         :speed="10"
-        :standTime="1000"
+        :stand-time="1000"
         :background="`rgba(251, 248, 220, 1)`"
         :color="`#D9500B`"
       >
@@ -123,59 +123,44 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, ref } from 'vue';
-import { Fabulous } from '@nutui/icons-vue-taro';
+<script setup lang="ts">
+import { reactive, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
+const env = Taro.getEnv();
+const state = reactive({
+  horseLamp1: [
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆'
+  ],
+  horseLamp2: [
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆'
+  ],
+  horseLamp3: [
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆'
+  ],
+  text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+});
 
-export default {
-  components: { Fabulous, Header },
-  setup() {
-    const env = Taro.getEnv();
-    const state = reactive({
-      horseLamp1: [
-        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-        '爆款准点秒',
-        '买超值优惠',
-        '赢百万京豆'
-      ],
-      horseLamp2: [
-        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-        '爆款准点秒',
-        '买超值优惠',
-        '赢百万京豆'
-      ],
-      horseLamp3: [
-        'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-        '爆款准点秒',
-        '买超值优惠',
-        '赢百万京豆'
-      ],
-      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-    });
+const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
 
-    const data1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+setTimeout(() => {
+  data1.value = ['公告栏 Noticebar', '级联选择 Cascader', '日期选择器 DatePicker', '复选按钮 CheckBox'];
+}, 2000);
 
-    setTimeout(() => {
-      data1.value = ['公告栏 Noticebar', '级联选择 Cascader', '日期选择器 DatePicker', '复选按钮 CheckBox'];
-    }, 2000);
-
-    const hello = () => {
-      console.log('hello world');
-    };
-    const go = (item: any) => {
-      console.log(item);
-    };
-
-    return {
-      ...toRefs(state),
-      hello,
-      go,
-      env,
-      data1
-    };
-  }
+const hello = () => {
+  console.log('hello world');
+};
+const go = (item: any) => {
+  console.log(item);
 };
 </script>
 
