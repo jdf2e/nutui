@@ -62,46 +62,34 @@
     </nut-cell>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default defineComponent({
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    let cmt = ref({});
+const env = Taro.getEnv();
+let cmt = ref({});
 
-    const handleclick = (info: any) => {
-      console.log('进行跳转', info);
-    };
+const handleclick = (info: any) => {
+  console.log('进行跳转', info);
+};
 
-    onMounted(() => {
-      getData();
-    });
-
-    const getData = () => {
-      Taro.request({
-        method: 'GET',
-        url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json',
-        success: (res) => {
-          res.data.Comment.info.avatar =
-            'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png';
-          cmt.value = res.data.Comment;
-        }
-      });
-    };
-
-    const clickImages = (imgs: any) => {
-      console.log('进行图片展示', imgs);
-    };
-
-    return {
-      cmt,
-      handleclick,
-      clickImages,
-      env
-    };
-  }
+onMounted(() => {
+  getData();
 });
+
+const getData = () => {
+  Taro.request({
+    method: 'GET',
+    url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json',
+    success: (res) => {
+      res.data.Comment.info.avatar =
+        'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png';
+      cmt.value = res.data.Comment;
+    }
+  });
+};
+
+const clickImages = (imgs: any) => {
+  console.log('进行图片展示', imgs);
+};
 </script>

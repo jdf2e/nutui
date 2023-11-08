@@ -7,8 +7,8 @@
 
     <h2>修改颜色和签字粗细</h2>
     <nut-signature
-      :lineWidth="lineWidth"
-      :strokeStyle="strokeStyle"
+      :lineWidth="4"
+      strokeStyle="green"
       @confirm="confirm2"
       @clear="clear2"
       @start="start"
@@ -19,56 +19,45 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref, reactive } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-export default {
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const demoSignUrl = ref('');
-    const demoSignUrl2 = ref('');
-    const state = reactive({
-      lineWidth: 4,
-      strokeStyle: 'green',
-      testimg: ''
-    });
-    const clear = () => {
-      demoSignUrl.value = '';
-      console.log('清除事件');
-    };
-    const clear2 = () => {
-      demoSignUrl2.value = '';
-      console.log('清除事件');
-    };
-    const confirm = (canvas, data: any) => {
-      if (data === '') {
-        console.log(canvas);
-        return false;
-      }
-      demoSignUrl.value = data;
-      console.log('图片地址', canvas, data);
-    };
-    const confirm2 = (canvas, data: any) => {
-      if (data === '') {
-        console.log(canvas);
-        return false;
-      }
-      demoSignUrl2.value = data;
-      console.log('图片地址', canvas, data);
-    };
-    const start = () => {
-      console.log('签名开始');
-    };
-    const signing = (e) => {
-      console.log('签名进行中', e);
-    };
-    const end = () => {
-      console.log('签名结束');
-    };
-    return { ...state, confirm, clear, start, signing, end, demoSignUrl, demoSignUrl2, confirm2, clear2, env };
+const env = Taro.getEnv();
+const demoSignUrl = ref('');
+const demoSignUrl2 = ref('');
+const clear = () => {
+  demoSignUrl.value = '';
+  console.log('清除事件');
+};
+const clear2 = () => {
+  demoSignUrl2.value = '';
+  console.log('清除事件');
+};
+const confirm = (canvas, data: any) => {
+  if (data === '') {
+    console.log(canvas);
+    return false;
   }
+  demoSignUrl.value = data;
+  console.log('图片地址', canvas, data);
+};
+const confirm2 = (canvas, data: any) => {
+  if (data === '') {
+    console.log(canvas);
+    return false;
+  }
+  demoSignUrl2.value = data;
+  console.log('图片地址', canvas, data);
+};
+const start = () => {
+  console.log('签名开始');
+};
+const signing = (e) => {
+  console.log('签名进行中', e);
+};
+const end = () => {
+  console.log('签名结束');
 };
 </script>
 
