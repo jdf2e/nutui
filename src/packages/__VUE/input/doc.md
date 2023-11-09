@@ -259,7 +259,7 @@ const val = ref('');
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 输入值，双向绑定 | string | - |
+| v-model | 输入值，双向绑定 | string \| number | - |
 | type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | string | `text` |
 | placeholder | 输入框为空时占位符 | string | - |
 | input-align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | string | `left` |
