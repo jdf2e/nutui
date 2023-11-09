@@ -29,8 +29,8 @@
       title="标题"
       description="这是一段描述信息"
       :menu-items="menuItemsTwo"
-      @choose="chooseItemThree"
       cancel-txt="取消"
+      @choose="chooseItemThree"
     />
 
     <h2>选项状态</h2>
@@ -42,8 +42,8 @@
       v-model:visible="state.isVisible4"
       cancel-txt="取消"
       :menu-items="menuItemsThree"
-      @choose="chooseItemFour"
       choose-tag-value="选中选项"
+      @choose="chooseItemFour"
     />
 
     <h2>自定义内容</h2>

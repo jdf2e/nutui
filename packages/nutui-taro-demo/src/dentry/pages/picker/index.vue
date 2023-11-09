@@ -5,14 +5,14 @@
     <nut-picker
       :columns="columns"
       title="城市选择"
-      :safeAreaInsetBottom="true"
+      :safe-area-inset-bottom="true"
       @change="change"
       @confirm="confirm"
     ></nut-picker>
 
     <h2>搭配 Popup 使用</h2>
     <nut-cell title="城市选择" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom" v-model:visible="show" :safeAreaInsetBottom="true">
+    <nut-popup v-model:visible="show" position="bottom" :safe-area-inset-bottom="true">
       <nut-picker
         v-model="popupValue"
         :columns="columns"
@@ -49,7 +49,7 @@
     >
     </nut-picker>
 
-    <nut-toast :msg="msg" v-model:visible="showToast" type="text" />
+    <nut-toast v-model:visible="showToast" :msg="msg" type="text" />
   </div>
 </template>
 <script setup lang="ts">

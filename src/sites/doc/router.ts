@@ -71,7 +71,7 @@ const router = createRouter({
     }
   }
 });
-router.afterEach((to, from) => {
+router.afterEach(() => {
   window.scrollTo(0, 0);
 });
 export default router;

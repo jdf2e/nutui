@@ -2,34 +2,34 @@
   <div class="demo" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-cell :title="`基础用法`" desc="" @click="base = true"></nut-cell>
+    <nut-cell :title="`基础用法`" desc="" @click="popup.base = true"></nut-cell>
 
     <h2>不可售</h2>
-    <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>
+    <nut-cell title="不可售" desc="" @click="popup.notSell = true"></nut-cell>
 
     <h2>自定义计步器</h2>
-    <nut-cell title="自定义计步器" desc="" @click="customStepper = true"></nut-cell>
+    <nut-cell title="自定义计步器" desc="" @click="popup.customStepper = true"></nut-cell>
 
     <h2>自定义插槽</h2>
-    <nut-cell title="通过插槽自定义设置" desc="" @click="customBySlot = true"></nut-cell>
+    <nut-cell title="通过插槽自定义设置" desc="" @click="popup.customBySlot = true"></nut-cell>
 
     <nut-sku
-      v-model:visible="base"
-      :sku="skuData"
-      :goods="goodsInfo"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      v-model:visible="popup.base"
+      :sku="data.skuData"
+      :goods="data.goodsInfo"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
       @close="close"
     ></nut-sku>
 
     <nut-sku
-      v-model:visible="notSell"
-      :sku="skuData"
-      :goods="goodsInfo"
-      :btnExtraText="btnExtraText"
-      @changeStepper="changeStepper"
-      :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
+      v-model:visible="popup.notSell"
+      :sku="data.skuData"
+      :goods="data.goodsInfo"
+      :btn-extra-text="btnExtraText"
+      :btn-options="['buy', 'cart']"
+      @change-stepper="changeStepper"
+      @select-sku="selectSku"
       @close="close"
     >
       <template #sku-operate>
@@ -41,38 +41,38 @@
     </nut-sku>
 
     <nut-sku
-      v-model:visible="customStepper"
-      :sku="skuData"
-      :goods="goodsInfo"
-      :stepperMax="7"
-      :stepperMin="2"
-      :stepperExtraText="stepperExtraText"
-      @changeStepper="changeStepper"
-      @overLimit="overLimit"
-      :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      v-model:visible="popup.customStepper"
+      :sku="data.skuData"
+      :goods="data.goodsInfo"
+      :stepper-max="7"
+      :stepper-min="2"
+      :stepper-extra-text="stepperExtraText"
+      :btn-options="['buy', 'cart']"
+      @change-stepper="changeStepper"
+      @over-limit="overLimit"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
       @close="close"
     ></nut-sku>
 
     <nut-sku
-      v-model:visible="customBySlot"
-      :sku="skuData"
-      :goods="goodsInfo"
-      :btnOptions="['buy', 'cart']"
-      @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
+      v-model:visible="popup.customBySlot"
+      :sku="data.skuData"
+      :goods="data.goodsInfo"
+      :btn-options="['buy', 'cart']"
+      @select-sku="selectSku"
+      @click-btn-operate="clickBtnOperate"
       @close="close()"
     >
       <template #sku-header-price>
         <div>
-          <nut-price :price="goodsInfo.price" :needSymbol="true" :thousands="false"> </nut-price>
+          <nut-price :price="data.goodsInfo.price" :need-symbol="true" :thousands="false"> </nut-price>
           <span class="tag"></span>
         </div>
       </template>
 
       <template #sku-header-extra>
-        <span class="nut-sku-header-right-extra">重量：0.1kg 编号：{{ goodsInfo.skuId }} </span>
+        <span class="nut-sku-header-right-extra">重量：0.1kg 编号：{{ data.goodsInfo.skuId }} </span>
       </template>
 
       <template #sku-operate>
@@ -88,26 +88,26 @@
             style="box-shadow: none; padding: 13px 0"
             title="送至"
             :desc="addressDesc"
-            @click="showAddressPopup = true"
+            @click="popup.showAddressPopup = true"
           ></nut-cell>
         </div>
       </template>
     </nut-sku>
 
     <nut-address
-      v-model:visible="showAddressPopup"
+      v-model:visible="popup.showAddressPopup"
       type="exist"
       :exist-address="existAddress"
-      @close="close"
       :is-show-custom-address="false"
-      @selected="selectedAddress"
       exist-address-title="配送至"
+      @close="close"
+      @selected="selectedAddress"
     ></nut-address>
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, ref, toRefs, onMounted, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, ref, onMounted } from 'vue';
 import { Sku, Goods, imagePathMap } from './data';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
@@ -126,160 +126,131 @@ interface SkuItem {
   [key: string]: any;
 }
 
-interface GoodsProps {
-  skuId: string | number;
-  price: string; // 商品信息展示区，商品价格
-  imagePath?: string;
-  [key: string]: any;
-}
-
 interface Data {
   skuData: Skus[];
   goodsInfo: any;
   imagePathMap: any;
 }
+const env = Taro.getEnv();
+const popup = reactive({
+  base: false,
+  notSell: false,
+  customStepper: false,
+  customBySlot: false,
 
-export default defineComponent({
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const popup = reactive({
-      base: false,
-      notSell: false,
-      customStepper: false,
-      customBySlot: false,
-
-      showAddressPopup: false
-    });
-
-    const data = reactive<Data>({
-      skuData: [],
-      goodsInfo: {},
-      imagePathMap: {}
-    });
-
-    const stepperExtraText = () => {
-      return `<view style="width:100%;text-align:right;color:#F00">2 件起售</view>`;
-    };
-
-    const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
-    const addressDesc = ref('(配送地会影响库存，请先确认)');
-    const existAddress = ref([
-      {
-        id: 1,
-        addressDetail: 'th ',
-        cityName: '石景山区',
-        countyName: '城区',
-        provinceName: '北京',
-        selectedAddress: true,
-        townName: ''
-      },
-      {
-        id: 2,
-        addressDetail: '12_ ',
-        cityName: '电饭锅',
-        countyName: '扶绥县',
-        provinceName: '北京',
-        selectedAddress: false,
-        townName: ''
-      },
-      {
-        id: 3,
-        addressDetail: '发大水比 ',
-        cityName: '放到',
-        countyName: '广宁街道',
-        provinceName: '钓鱼岛全区',
-        selectedAddress: false,
-        townName: ''
-      },
-      {
-        id: 4,
-        addressDetail: '还是想吧百度吧 ',
-        cityName: '研发',
-        countyName: '八里庄街道',
-        provinceName: '北京',
-        selectedAddress: false,
-        townName: ''
-      }
-    ]);
-    onMounted(() => {
-      getData();
-    });
-
-    const getData = () => {
-      setTimeout(() => {
-        data.skuData = Sku;
-        data.goodsInfo = Goods;
-        data.imagePathMap = imagePathMap;
-
-        console.log(Goods);
-      }, 500);
-    };
-    const selectSku = (s: any) => {
-      const { sku, parentIndex } = s;
-
-      if (sku.disable) return false;
-
-      data.skuData[parentIndex].list.forEach((s) => {
-        s.active = s.id == sku.id;
-      });
-
-      data.goodsInfo = {
-        skuId: sku.id,
-        price: '4599.00' // 商品信息展示区，商品价格
-      };
-
-      data.skuData[0].list.forEach((el) => {
-        if (el.active && !el.disable) {
-          data.goodsInfo.imagePath = data.imagePathMap[el.id];
-        }
-      });
-    };
-
-    // stepper 更改
-    const changeStepper = (count: number) => {
-      console.log('购买数量', count);
-    };
-
-    // stepper 极限值
-    const overLimit = (val: any) => {
-      if (val.action == 'reduce') {
-        console.log(`至少买${val.value}件哦`);
-      } else {
-        console.log(`最多买${val.value}件哦`);
-      }
-    };
-
-    const clickBtnOperate = (op: string) => {
-      console.log('点击了操作按钮', op);
-    };
-    // 关闭弹框
-    const close = () => {
-      console.log('选择弹框关闭');
-    };
-
-    const selectedAddress = (prevExistAdd: any, nowExistAdd: any) => {
-      const { provinceName, countyName, cityName } = nowExistAdd;
-      addressDesc.value = `${provinceName}${countyName}${cityName}`;
-    };
-
-    return {
-      selectSku,
-      changeStepper,
-      clickBtnOperate,
-      close,
-      existAddress,
-      selectedAddress,
-      addressDesc,
-      stepperExtraText,
-      btnExtraText,
-      overLimit,
-      ...toRefs(popup),
-      ...toRefs(data),
-      env
-    };
-  }
+  showAddressPopup: false
 });
+
+const data = reactive<Data>({
+  skuData: [],
+  goodsInfo: {},
+  imagePathMap: {}
+});
+
+const stepperExtraText = () => {
+  return `<view style="width:100%;text-align:right;color:#F00">2 件起售</view>`;
+};
+
+const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
+const addressDesc = ref('(配送地会影响库存，请先确认)');
+const existAddress = ref([
+  {
+    id: 1,
+    addressDetail: 'th ',
+    cityName: '石景山区',
+    countyName: '城区',
+    provinceName: '北京',
+    selectedAddress: true,
+    townName: ''
+  },
+  {
+    id: 2,
+    addressDetail: '12_ ',
+    cityName: '电饭锅',
+    countyName: '扶绥县',
+    provinceName: '北京',
+    selectedAddress: false,
+    townName: ''
+  },
+  {
+    id: 3,
+    addressDetail: '发大水比 ',
+    cityName: '放到',
+    countyName: '广宁街道',
+    provinceName: '钓鱼岛全区',
+    selectedAddress: false,
+    townName: ''
+  },
+  {
+    id: 4,
+    addressDetail: '还是想吧百度吧 ',
+    cityName: '研发',
+    countyName: '八里庄街道',
+    provinceName: '北京',
+    selectedAddress: false,
+    townName: ''
+  }
+]);
+onMounted(() => {
+  getData();
+});
+
+const getData = () => {
+  setTimeout(() => {
+    data.skuData = Sku;
+    data.goodsInfo = Goods;
+    data.imagePathMap = imagePathMap;
+
+    console.log(Goods);
+  }, 500);
+};
+const selectSku = (s: any) => {
+  const { sku, parentIndex } = s;
+
+  if (sku.disable) return false;
+
+  data.skuData[parentIndex].list.forEach((s) => {
+    s.active = s.id == sku.id;
+  });
+
+  data.goodsInfo = {
+    skuId: sku.id,
+    price: '4599.00' // 商品信息展示区，商品价格
+  };
+
+  data.skuData[0].list.forEach((el) => {
+    if (el.active && !el.disable) {
+      data.goodsInfo.imagePath = data.imagePathMap[el.id];
+    }
+  });
+};
+
+// stepper 更改
+const changeStepper = (count: number) => {
+  console.log('购买数量', count);
+};
+
+// stepper 极限值
+const overLimit = (val: any) => {
+  if (val.action == 'reduce') {
+    console.log(`至少买${val.value}件哦`);
+  } else {
+    console.log(`最多买${val.value}件哦`);
+  }
+};
+
+const clickBtnOperate = (op: string) => {
+  console.log('点击了操作按钮', op);
+};
+// 关闭弹框
+const close = () => {
+  console.log('选择弹框关闭');
+};
+
+const selectedAddress = (_prevExistAdd: any, nowExistAdd: any) => {
+  const { provinceName, countyName, cityName } = nowExistAdd;
+  addressDesc.value = `${provinceName}${countyName}${cityName}`;
+};
 </script>
 
 <style lang="scss">

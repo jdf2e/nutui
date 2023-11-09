@@ -30,7 +30,6 @@
 import { reactive, onMounted, onUnmounted, h } from 'vue';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
-import Button from '@/packages/__VUE/button';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
 import { Dongdong } from '@nutui/icons-vue-taro';
 const env = Taro.getEnv();
@@ -177,7 +176,7 @@ const state = reactive({
       sex: '男',
       record: '小学',
       render: () => {
-        return h(Button, { size: 'small', type: 'primary' }, () => 'Hello');
+        return h('button', {}, () => 'Hello');
       }
     },
     {
@@ -193,7 +192,7 @@ const state = reactive({
       sex: '男',
       record: '高中',
       render: () => {
-        return h(Button, { type: 'success', size: 'small' }, () => '编辑按钮');
+        return h('button', {}, () => '编辑按钮');
       }
     }
   ],

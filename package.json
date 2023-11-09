@@ -57,7 +57,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:c": "vitest --coverage",
-    "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src/",
+    "lint": "eslint ./src ./packages/**/src --ext .vue,.ts,.tsx,.js,.jsx",
     "lint:fix": "pnpm lint --fix",
     "copydocs": "node ./scripts/copymd.cjs",
     "attrs:taro": "node ./scripts/createAttributes.cjs taro",
@@ -116,7 +116,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
-    "src/**/*.{ts,tsx,js,jsx,vue}": "eslint --fix"
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@
   <div class="demo full" :class="{ web: env === 'WEB' }">
     <Header v-if="env === 'WEB'" />
     <h2>基础用法</h2>
-    <nut-input placeholder="文本" v-model="state.val1" />
+    <nut-input v-model="state.val1" placeholder="文本" />
 
     <h2>自定义类型</h2>
     <nut-input v-model="state.text" placeholder="文本" />
@@ -15,15 +15,15 @@
     <nut-input v-model="state.disabled" disabled placeholder="禁用" />
 
     <h2>显示清除图标</h2>
-    <nut-input v-model="state.clear" clearable clearSize="14" placeholder="显示清除图标" />
+    <nut-input v-model="state.clear" clearable clear-size="14" placeholder="显示清除图标" />
     <nut-input
       v-model="state.clear2"
       placeholder="自定义清除图标"
       clearable
-      clearSize="14"
+      clear-size="14"
       show-word-limit
       max-length="50"
-      :showClearIcon="true"
+      :show-clear-icon="true"
     >
       <template #clear>
         <Close width="12" height="12" size="12" @click="clearValue"></Close>
@@ -51,7 +51,7 @@
       type="text"
       show-word-limit
       rows="2"
-      maxLength="50"
+      max-length="50"
       placeholder="留言"
       :adjust-position="state.adjustPosition"
     />
@@ -69,7 +69,7 @@
       @clear="clear"
       @click-input="clickInput"
     />
-    <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
+    <nut-toast v-model:visible="state.show" :msg="state.msg" type="text" />
     <h2>插槽演示</h2>
     <nut-input v-model="state.slotsValue" placeholder="插槽演示" clearable :adjust-position="state.adjustPosition">
       <template #left> <Ask></Ask> </template>

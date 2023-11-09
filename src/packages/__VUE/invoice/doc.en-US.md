@@ -6,7 +6,7 @@ Display the application invoice page.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Invoice } from '@nutui/nutui';
 
@@ -18,97 +18,97 @@ app.use(Invoice);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-invoice :data="data" :form-value="formValue" @submit="submit"></nut-invoice>
 </template>
 <script setup>
-  import { ref, reactive } from 'vue';
-  // Promise 异步校验
-  const asyncValidator = (val: string) => {
-    return new Promise((resolve) => {
-      console.log('模拟异步验证中...');
-      setTimeout(() => {
-        resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
-      }, 1000);
-    });
-  };
-
-  const data: any = ref([
-    {
-      type: 'radio',
-      label: '发票类型',
-      radioLabel: [
-        {
-          label: '企业'
-        },
-        {
-          label: '个人或事业单位'
-        }
-      ],
-      formItemProp: 'type',
-      required: true
-    },
-    {
-      label: '发票抬头',
-      placeholder: '请输入发票抬头',
-      formItemProp: 'name',
-      rules: [{ required: true, message: '请输入发票抬头' }],
-      required: true
-    },
-    {
-      label: '纳税人识别号',
-      placeholder: '请输入纳税人识别号',
-      formItemProp: 'num',
-      rules: [{ message: '请输入纳税人识别号' }]
-    },
-    {
-      label: '注册地址',
-      placeholder: '请输入注册地址',
-      formItemProp: 'adress',
-      rules: [{ required: true, message: '请输入地址' }],
-      required: true
-    },
-    {
-      label: '注册电话',
-      placeholder: '请输入注册电话',
-      formItemProp: 'tel',
-      rules: [
-        { required: true, message: '请输入联系电话' },
-        { validator: asyncValidator, message: '电话格式不正确' }
-      ],
-      required: true
-    },
-    {
-      label: '开户行',
-      placeholder: '请输入开户行',
-      formItemProp: 'bank'
-    },
-    {
-      label: '银行账户',
-      placeholder: '请输入银行账户',
-      formItemProp: 'account'
-    }
-  ]);
-
-  const formValue = reactive({
-    type: '企业',
-    name: '',
-    num: '',
-    adress: '',
-    tel: '',
-    address: '',
-    bank: '',
-    account: ''
+import { ref, reactive } from 'vue';
+// Promise 异步校验
+const asyncValidator = (val) => {
+  return new Promise((resolve) => {
+    console.log('模拟异步验证中...');
+    setTimeout(() => {
+      resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
+    }, 1000);
   });
+};
 
-  const submit = (valid: boolean, errors: []) => {
-    if (valid) {
-      console.log('success', formValue);
-    } else {
-      console.log('error submit!!', errors);
-    }
-  };
+const data = ref([
+  {
+    type: 'radio',
+    label: '发票类型',
+    radioLabel: [
+      {
+        label: '企业'
+      },
+      {
+        label: '个人或事业单位'
+      }
+    ],
+    formItemProp: 'type',
+    required: true
+  },
+  {
+    label: '发票抬头',
+    placeholder: '请输入发票抬头',
+    formItemProp: 'name',
+    rules: [{ required: true, message: '请输入发票抬头' }],
+    required: true
+  },
+  {
+    label: '纳税人识别号',
+    placeholder: '请输入纳税人识别号',
+    formItemProp: 'num',
+    rules: [{ message: '请输入纳税人识别号' }]
+  },
+  {
+    label: '注册地址',
+    placeholder: '请输入注册地址',
+    formItemProp: 'adress',
+    rules: [{ required: true, message: '请输入地址' }],
+    required: true
+  },
+  {
+    label: '注册电话',
+    placeholder: '请输入注册电话',
+    formItemProp: 'tel',
+    rules: [
+      { required: true, message: '请输入联系电话' },
+      { validator: asyncValidator, message: '电话格式不正确' }
+    ],
+    required: true
+  },
+  {
+    label: '开户行',
+    placeholder: '请输入开户行',
+    formItemProp: 'bank'
+  },
+  {
+    label: '银行账户',
+    placeholder: '请输入银行账户',
+    formItemProp: 'account'
+  }
+]);
+
+const formValue = reactive({
+  type: '企业',
+  name: '',
+  num: '',
+  adress: '',
+  tel: '',
+  address: '',
+  bank: '',
+  account: ''
+});
+
+const submit = (valid, errors) => {
+  if (valid) {
+    console.log('success', formValue);
+  } else {
+    console.log('error submit!!', errors);
+  }
+};
 </script>
 ```
 
@@ -118,32 +118,32 @@ app.use(Invoice);
 
 ### Props
 
-| Attribute | Description                                              | Type    | Default |
-| --------- | -------------------------------------------------------- | ------- | ------- |
-| data      | Invoice data                                             | Array   | `[]`    |
-| formValue | Form data object (required when using form verification) | object  | -       |
-| submit    | Whether to show the submit button                        | boolean | `true`  |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| data | Invoice data | Array | `[]` |
+| formValue | Form data object (required when using form verification) | object | - |
+| submit | Whether to show the submit button | boolean | `true` |
 
 ### Data Structure of Data
 
 The optional attributes are as follows:
 
-| Attribute      | Description                                                        | Type    |
-| -------------- | ------------------------------------------------------------------ | ------- |
-| type           | Type, eg `input`、`radio`                                          | string  |
-| label          | Label                                                              | string  |
-| placeholder    | Input placeholder                                                  | string  |
-| radio-label    | Radio label                                                        | string  |
-| form-item-prop | The v-model field of the form field is required                    | string  |
-| rules          | Check rules，[Refer to FormItem Rule data structure](#/en-US/form) | Array   |
-| required       | Is it a required field                                             | boolean |
+| Attribute | Description | Type |
+| --- | --- | --- |
+| type | Type, eg `input`、`radio` | string |
+| label | Label | string |
+| placeholder | Input placeholder | string |
+| radio-label | Radio label | string |
+| form-item-prop | The v-model field of the form field is required | string |
+| rules | Check rules，[Refer to FormItem Rule data structure](#/en-US/form) | Array |
+| required | Is it a required field | boolean |
 
 ### Events
 
-| Event          | Description                                | Arguments |
-| -------------- | ------------------------------------------ | --------- |
-| submit`v4.1.5` | Method of submitting form for verification | Promise   |
-| on-submit      | Method of submitting form for verification | Promise   |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| submit`v4.1.5` | Method of submitting form for verification | Promise |
+| on-submit | Method of submitting form for verification | Promise |
 
 ## Theming
 
@@ -151,6 +151,6 @@ The optional attributes are as follows:
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                  | Default Value     |
-| --------------------- | ----------------- |
+| Name | Default Value |
+| --- | --- |
 | --nut-invoice-padding | _ 10px 10px 20px_ |
