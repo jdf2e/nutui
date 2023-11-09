@@ -1,5 +1,5 @@
 <template>
-  <div ref="dmBody" :class="classes">
+  <div ref="dmBody" class="nut-barrage">
     <div ref="dmContainer" :class="['dmContainer', $slots.default && 'slotContainer']">
       <div v-if="$slots.default" :class="['slotBody', 'slotBody' + classTime]">
         <slot></slot>
@@ -8,9 +8,9 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue';
+import { onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('barrage');
+const { create } = createComponent('barrage');
 
 export default create({
   name: 'barrage',
@@ -43,13 +43,6 @@ export default create({
   setup(props) {
     const classTime = new Date().getTime();
     const slotDefault = !!useSlots().default;
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     let dmBody = ref<HTMLDivElement>(document.createElement('div'));
     let dmContainer = ref<HTMLDivElement>(document.createElement('div'));
@@ -195,7 +188,7 @@ export default create({
         run();
       });
     };
-    return { classTime, classes, danmuList, dmBody, dmContainer, add };
+    return { classTime, danmuList, dmBody, dmContainer, add };
   }
 });
 </script>

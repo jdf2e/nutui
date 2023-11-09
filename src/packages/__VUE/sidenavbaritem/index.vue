@@ -1,14 +1,13 @@
 <template>
-  <view :class="classes" :ikey="ikey" @click.stop="handleClick">
+  <view class="nut-side-navbar-item" :ikey="ikey" @click.stop="handleClick">
     <span class="nut-side-navbar-item__title">
       {{ title }}
     </span>
   </view>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('side-navbar-item');
+const { create } = createComponent('side-navbar-item');
 export default create({
   props: {
     title: {
@@ -21,20 +20,12 @@ export default create({
     }
   },
   emits: ['click'],
-  setup: (props: any, context: any) => {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
+  setup: (props, { emit }) => {
     const handleClick = () => {
-      context.emit('click');
+      emit('click');
     };
 
     return {
-      classes,
       handleClick
     };
   }

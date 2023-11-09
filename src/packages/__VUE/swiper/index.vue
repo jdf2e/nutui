@@ -1,7 +1,7 @@
 <template>
   <view
     ref="container"
-    :class="classes"
+    class="nut-swiper"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
@@ -116,13 +116,6 @@ export default create({
 
     const touch = useTouch();
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
     const isVertical = computed(() => props.direction === 'vertical');
 
     const classesInner = computed(() => {
@@ -219,8 +212,6 @@ export default create({
       if (!props.loop) {
         targetOffset = clamp(targetOffset, minOffset.value, 0);
       }
-
-      // console.log(offset, currentPosition, targetOffset);
 
       return targetOffset;
     };
@@ -451,7 +442,6 @@ export default create({
 
     return {
       state,
-      classes,
       classesInner,
       classesPagination,
       container,

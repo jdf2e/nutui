@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="style">
+  <view class="nut-swiper-item" :style="style">
     <slot></slot>
   </view>
 </template>
@@ -9,7 +9,7 @@ import { computed, reactive, inject, getCurrentInstance, onUnmounted, ComputedRe
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { IStyle } from './type';
-const { create, componentName } = createComponent('swiper-item');
+const { create } = createComponent('swiper-item');
 
 export default create({
   setup() {
@@ -17,13 +17,6 @@ export default create({
     parent['relation'](getCurrentInstance());
     const state = reactive({
       offset: 0
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const style: ComputedRef = computed(() => {
@@ -51,8 +44,7 @@ export default create({
     useExpose({ setOffset });
 
     return {
-      style,
-      classes
+      style
     };
   }
 });

@@ -2,7 +2,7 @@
   <nut-scroll-view
     :id="'list' + refRandomId"
     ref="list"
-    :class="classes"
+    class="nut-list"
     :scroll-y="true"
     :style="{ height: `${getContainerHeight}px` }"
     scroll-top="0"
@@ -38,7 +38,7 @@ import Taro from '@tarojs/taro';
 import ScrollView from '../scroll-view/index.taro.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { CachedPosition, CompareResult, binarySearch } from './type';
-const { componentName, create } = createComponent('list');
+const { create } = createComponent('list');
 const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
 
 export default create({
@@ -99,13 +99,6 @@ export default create({
 
     const end = computed(() => {
       return Math.min(state.originStartIndex + visibleCount.value + props.bufferSize, state.list.length);
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const visibleData: ComputedRef = computed(() => {
@@ -270,7 +263,6 @@ export default create({
       actualContent,
       getTransform,
       visibleData,
-      classes,
       refRandomId,
       getContainerHeight,
       handleScrollEvent

@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-noticebar">
     <view
       v-show="showNoticebar"
       v-if="direction == 'across'"
@@ -82,7 +82,7 @@ import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeac
 import { Notice, CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('noticebar');
+const { create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 
 interface stateProps {
@@ -185,7 +185,6 @@ export default create({
       offsetWidth: 0,
       showNoticebar: true,
       animationClass: '',
-
       animate: false,
       scrollList: [],
       distance: 0,
@@ -194,13 +193,6 @@ export default create({
       isCanScroll: null,
       showNotica: true,
       id: Math.round(Math.random() * 100000)
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const isEllipsis = computed(() => {
@@ -445,10 +437,8 @@ export default create({
     });
 
     return {
-      ...toRefs(props),
       ...toRefs(state),
       isEllipsis,
-      classes,
       barStyle,
       contentStyle,
       horseLampStyle,

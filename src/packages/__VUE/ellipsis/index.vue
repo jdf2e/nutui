@@ -1,5 +1,5 @@
 <template>
-  <view ref="root" :class="classes" @click="handleClick">
+  <view ref="root" class="nut-ellipsis" @click="handleClick">
     <view v-if="!exceeded">{{ content }}</view>
     <view v-if="exceeded && !expanded"
       >{{ ellipsis && ellipsis.leading
@@ -13,9 +13,9 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, reactive, toRefs, computed, onMounted, PropType, watch } from 'vue';
+import { ref, reactive, toRefs, onMounted, PropType, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('ellipsis');
+const { create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';
 
 type EllipsisedValue = {
@@ -64,13 +64,6 @@ export default create({
     const state = reactive({
       exceeded: false, //是否超出
       expanded: false //是否折叠
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     watch(
@@ -225,7 +218,7 @@ export default create({
       emit('click');
     };
 
-    return { ...toRefs(state), root, ellipsis, classes, clickHandle, handleClick };
+    return { ...toRefs(state), root, ellipsis, clickHandle, handleClick };
   }
 });
 </script>
