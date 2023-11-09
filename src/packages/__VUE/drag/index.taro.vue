@@ -2,8 +2,7 @@
   <view
     :id="'myDrag' + refRandomId"
     ref="myDrag"
-    :class="classes"
-    class="myDrag"
+    class="nut-taro-drag myDrag"
     catchtouchmove="true"
     :style="{
       transform: ` translate(${state.left + 'px'}, ${state.top + 'px'})`,
