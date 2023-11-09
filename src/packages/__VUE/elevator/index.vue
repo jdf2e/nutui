@@ -183,7 +183,9 @@ export default create({
     };
 
     onMounted(() => {
-      listview.value.addEventListener('scroll', listViewScroll);
+      if (listview.value) {
+        listview.value.addEventListener('scroll', listViewScroll);
+      }
     });
 
     useExpose({
