@@ -1,10 +1,10 @@
 <template src="./template.html"></template>
 <script lang="ts">
+import { ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
-import { computed, ref } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { create, componentName } = createComponent('rate');
+const { create } = createComponent('rate');
 export default create({
   props: {
     count: {
@@ -52,14 +52,8 @@ export default create({
   },
   components: { StarFillN },
   emits: ['update:modelValue', 'change'],
-  setup(props: any, { emit, slots }: any) {
+  setup(props, { emit, slots }) {
     const rateRefs = ref<HTMLElement[]>([]);
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
     const updateVal = (value: number) => {
       emit('update:modelValue', value);
       emit('change', value);
@@ -79,7 +73,6 @@ export default create({
     };
     const refRandomId = Math.random().toString(36).slice(-8);
     return {
-      classes,
       onClick,
       pxCheck,
       rateRefs,
