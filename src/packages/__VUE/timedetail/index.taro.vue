@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-time-detail">
     <view class="nut-time-detail__detail nut-time-detail__detail--moring">
       <view class="nut-time-detail__detail__list">
         <view v-for="item in renderData" :key="item" :class="getClass(item)" @click="handleTime(item)">{{ item }}</view>
@@ -9,34 +9,25 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, inject, computed } from 'vue';
+import { reactive, toRefs, inject, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('time-detail');
+const { create } = createComponent('time-detail');
 export default create({
   name: 'timedetail',
   props: {
     times: {
-      type: Array,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<any[]>,
+      default: () => []
     }
   },
   emits: ['select'],
-  setup: (props: any, context: any) => {
+  setup: (props, { emit }) => {
     const currentKey = inject('currentKey');
     const currentTime = inject('currentTime');
 
     const state = reactive({
       currentKey,
       currentTime: currentTime as any[]
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const getClass = (item: string) => {
@@ -54,11 +45,10 @@ export default create({
     });
 
     const handleTime = (time: string) => {
-      context.emit('select', time);
+      emit('select', time);
     };
 
     return {
-      classes,
       ...toRefs(state),
       getClass,
       renderData,
