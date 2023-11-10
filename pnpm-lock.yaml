@@ -103,8 +103,8 @@ importers:
         specifier: ^0.25.2
         version: 0.25.2(vue@3.3.4)
       unplugin-vue-markdown:
-        specifier: ^0.24.3
-        version: 0.24.3(vite@4.4.11)
+        specifier: ^0.25.0
+        version: 0.25.0(vite@4.4.11)
       vite:
         specifier: ^4.4.11
         version: 4.4.11(@types/node@18.18.5)(sass@1.69.3)
@@ -2325,24 +2325,24 @@ packages:
       call-bind: 1.0.2
     dev: true
 
-  /@mdit-vue/plugin-component@0.12.1:
-    resolution: {integrity: sha512-L3elbvuKUufXwPLHrmJGd/ijd/QKxfcHXy3kRy4O+P7UIV7HSWePpfB0k+wWee+by3MviYYxjVAi392z+DGy3Q==}
+  /@mdit-vue/plugin-component@1.0.0:
+    resolution: {integrity: sha512-ZXsJwxkG5yyTHARIYbR74cT4AZ0SfMokFFjiHYCbypHIeYWgJhso4+CZ8+3V9EWFG3EHlGoKNGqKp9chHnqntQ==}
     dependencies:
-      '@types/markdown-it': 13.0.2
+      '@types/markdown-it': 13.0.6
       markdown-it: 13.0.2
     dev: true
 
-  /@mdit-vue/plugin-frontmatter@0.12.1:
-    resolution: {integrity: sha512-C6ycNjrJ+T4JgbVxwo9cUkfLacOO841Yl8ogqd5PJmAVpc5cM2OLBkqqkZxNRXos3g9xM1VvIQ7gK/047UNADg==}
+  /@mdit-vue/plugin-frontmatter@1.0.0:
+    resolution: {integrity: sha512-MMA7Ny+YPZA7eDOY1t4E+rKuEWO39mzDdP/M68fKdXJU6VfcGkPr7gnpnJfW2QBJ5qIvMrK/3lDAA2JBy5TfpA==}
     dependencies:
-      '@mdit-vue/types': 0.12.0
-      '@types/markdown-it': 13.0.2
+      '@mdit-vue/types': 1.0.0
+      '@types/markdown-it': 13.0.6
       gray-matter: 4.0.3
       markdown-it: 13.0.2
     dev: true
 
-  /@mdit-vue/types@0.12.0:
-    resolution: {integrity: sha512-mrC4y8n88BYvgcgzq9bvTlDgFyi2zuvzmPilRvRc3Uz1iIvq8mDhxJ0rHKFUNzPEScpDvJdIujqiDrulMqiudA==}
+  /@mdit-vue/types@1.0.0:
+    resolution: {integrity: sha512-xeF5+sHLzRNF7plbksywKCph4qli20l72of2fMlZQQ7RECvXYrRkE9+bjRFQCyULC7B8ydUYbpbkux5xJlVWyw==}
     dev: true
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
@@ -3456,7 +3456,7 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.37.0
-      '@types/estree': 1.0.0
+      '@types/estree': 1.0.2
     dev: true
 
   /@types/eslint-scope@3.7.5:
@@ -3469,7 +3469,7 @@ packages:
   /@types/eslint@8.37.0:
     resolution: {integrity: sha512-Piet7dG2JBuDIfohBngQ3rCt7MgO9xCO4xIMKxBThCq5PNRB91IjlJ10eJVwfoNtvTErmxLzwBZ7rHZtbOMmFQ==}
     dependencies:
-      '@types/estree': 1.0.0
+      '@types/estree': 1.0.2
       '@types/json-schema': 7.0.12
     dev: true
 
@@ -3576,8 +3576,8 @@ packages:
   /@types/lodash@4.14.199:
     resolution: {integrity: sha512-Vrjz5N5Ia4SEzWWgIVwnHNEnb1UE1XMkvY5DGXrAeOGE9imk0hgTHh5GyDjLDJi9OTCn9oo9dXH1uToK1VRfrg==}
 
-  /@types/markdown-it@13.0.2:
-    resolution: {integrity: sha512-Tla7hH9oeXHOlJyBFdoqV61xWE9FZf/y2g+gFVwQ2vE1/eBzjUno5JCd3Hdb5oATve5OF6xNjZ/4VIZhVVx+hA==}
+  /@types/markdown-it@13.0.6:
+    resolution: {integrity: sha512-0VqpvusJn1/lwRegCxcHVdmLfF+wIsprsKMC9xW8UPcTxhFcQtoN/fBU1zMe8pH7D/RuueMh2CaBaNv+GrLqTw==}
     dependencies:
       '@types/linkify-it': 3.0.3
       '@types/mdurl': 1.0.3
@@ -14554,16 +14554,16 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-vue-markdown@0.24.3(vite@4.4.11):
-    resolution: {integrity: sha512-v9fNupSfGnQTYrzpDO51DTppR6IsR/ufNdKycBe7HK0nApuXYiLzo5i5ejG63NSnMauTDFZB1kYOlUjJZ5auvQ==}
+  /unplugin-vue-markdown@0.25.0(vite@4.4.11):
+    resolution: {integrity: sha512-X0G6E1drAM59HKnSEMVZ6WMzfM8IFZvBjd0nlCx988MRFNEj/Pn67aKs2bvHx53O2AyLN0PxnfRqLxGbP2pZ1Q==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0 || ^4.0.0
     dependencies:
-      '@mdit-vue/plugin-component': 0.12.1
-      '@mdit-vue/plugin-frontmatter': 0.12.1
-      '@mdit-vue/types': 0.12.0
+      '@mdit-vue/plugin-component': 1.0.0
+      '@mdit-vue/plugin-frontmatter': 1.0.0
+      '@mdit-vue/types': 1.0.0
       '@rollup/pluginutils': 5.0.5
-      '@types/markdown-it': 13.0.2
+      '@types/markdown-it': 13.0.6
       markdown-it: 13.0.2
       unplugin: 1.5.0
       vite: 4.4.11(@types/node@18.18.5)(sass@1.69.3)
