@@ -42,7 +42,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { Loading } from '@nutui/icons-vue';
 const { create } = createComponent('action-sheet');
 export interface menuItems {
@@ -55,7 +55,7 @@ export interface menuItems {
 }
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Loading
   },
   props: {

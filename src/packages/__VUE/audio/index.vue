@@ -60,10 +60,10 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, onMounted, reactive, watch, provide, Component } from 'vue';
+import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Service } from '@nutui/icons-vue';
-import Range from '../range/index.vue';
+import NutRange from '../range/index.vue';
 const { create } = createComponent('audio');
 
 export default create({
@@ -108,7 +108,7 @@ export default create({
   },
   components: {
     Service,
-    [Range.name]: Range as Component
+    NutRange
   },
   emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'canPlay'],
 

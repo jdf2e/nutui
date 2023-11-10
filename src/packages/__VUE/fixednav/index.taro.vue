@@ -2,12 +2,12 @@
 <script lang="ts">
 import { PropType, computed, ref } from 'vue';
 import { Left } from '@nutui/icons-vue-taro';
-import OverLay from '../overlay/index.taro.vue';
+import NutOverlay from '../overlay/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate, create, componentName } = createComponent('fixed-nav');
 export default create({
   components: {
-    [OverLay.name]: OverLay,
+    NutOverlay,
     Left
   },
   props: {

@@ -54,7 +54,7 @@
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('menu-item');
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
 export default create({
@@ -77,7 +77,7 @@ export default create({
     inactiveTitleClass: String
   },
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Check
   },
   emits: ['update:modelValue', 'change', 'open', 'close'],

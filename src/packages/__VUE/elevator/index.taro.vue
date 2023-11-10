@@ -60,11 +60,11 @@ import { ElevatorData } from './type';
 const { create } = createComponent('elevator');
 
 import Taro from '@tarojs/taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   components: {
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     height: {

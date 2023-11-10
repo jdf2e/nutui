@@ -76,8 +76,8 @@ import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import Progress from '../progress/index.taro.vue';
-import Button from '../button/index.taro.vue';
+import NutProgress from '../progress/index.taro.vue';
+import NutButton from '../button/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 import { useLocale } from '@/packages/utils/useLocale';
@@ -87,8 +87,8 @@ const cN = 'NutUploader';
 
 export default create({
   components: {
-    [Progress.name]: Progress,
-    [Button.name]: Button,
+    NutProgress,
+    NutButton,
     Photograph,
     Failure,
     Loading,

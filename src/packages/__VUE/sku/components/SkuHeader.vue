@@ -17,7 +17,7 @@
   </view>
 </template>
 <script lang="ts">
-import Price from '../../price/index.vue';
+import NutPrice from '../../price/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('sku-header');
 
@@ -30,7 +30,7 @@ export default create({
   },
   emits: [],
   components: {
-    [Price.name]: Price
+    NutPrice
   },
   setup(props, { slots }) {
     const getSlots = (name: string) => slots[name];

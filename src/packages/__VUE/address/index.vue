@@ -126,8 +126,8 @@ import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.vue';
-import Elevator from '../elevator/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutElevator from '../elevator/index.vue';
 import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('address');
@@ -135,8 +135,8 @@ const cN = 'NutAddress';
 
 export default create({
   components: {
-    [Popup.name]: Popup,
-    [Elevator.name]: Elevator,
+    NutPopup,
+    NutElevator,
     Location,
     Location2,
     Check,

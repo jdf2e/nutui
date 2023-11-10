@@ -33,7 +33,7 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import InputNumber from '../inputnumber/index.taro.vue';
+import NutInputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
 import { useLocale } from '@/packages/utils/useLocale';
 
@@ -46,7 +46,7 @@ const cN = 'NutEcard';
 
 export default create({
   components: {
-    [InputNumber.name]: InputNumber
+    NutInputNumber
   },
   props: {
     chooseText: {

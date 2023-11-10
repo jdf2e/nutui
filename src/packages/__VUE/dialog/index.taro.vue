@@ -51,8 +51,8 @@
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.taro.vue';
-import Button from '../button/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
+import NutButton from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
 import { useLocale } from '@/packages/utils/useLocale';
 
@@ -62,8 +62,8 @@ const cN = 'NutDialog';
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
+    NutPopup,
+    NutButton
   },
   props: {
     ...popupProps,

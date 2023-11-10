@@ -30,13 +30,13 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import Price from '../price/index.vue';
-import Tag from '../tag/index.vue';
+import NutPrice from '../price/index.vue';
+import NutTag from '../tag/index.vue';
 const { create } = createComponent('card');
 export default create({
   components: {
-    [Price.name]: Price,
-    [Tag.name]: Tag
+    NutPrice,
+    NutTag
   },
   props: {
     imgUrl: {
