@@ -34,11 +34,11 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('comment-header');
-import Rate from '../../rate/index.taro.vue';
+import NutRate from '../../rate/index.taro.vue';
 
 export default create({
   components: {
-    [Rate.name]: Rate
+    NutRate
   },
   props: {
     type: {

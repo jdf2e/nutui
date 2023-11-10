@@ -35,7 +35,7 @@
 import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 const { create } = createComponent('list');
@@ -43,7 +43,7 @@ const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
 
 export default create({
   components: {
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     height: {

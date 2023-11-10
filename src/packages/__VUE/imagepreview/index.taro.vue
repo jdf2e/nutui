@@ -40,8 +40,8 @@ import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import NutPopup from '../popup/index.taro.vue';
-import Swiper from '../swiper/index.taro.vue';
-import SwiperItem from '../swiperitem/index.taro.vue';
+import NutSwiper from '../swiper/index.taro.vue';
+import NutSwiperItem from '../swiperitem/index.taro.vue';
 const { create } = createComponent('image-preview');
 
 export default create({
@@ -95,8 +95,8 @@ export default create({
   emits: ['close', 'change', 'longPress'],
   components: {
     NutPopup,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
+    NutSwiper,
+    NutSwiperItem,
     CircleClose
   },
 

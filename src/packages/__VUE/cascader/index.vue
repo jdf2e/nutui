@@ -51,12 +51,12 @@ import { CascaderValue, CascaderOption } from './types';
 import { popupProps } from '../popup/props';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('cascader');
-import CascaderItem from './cascader-item.vue';
+import NutCascaderItem from './cascader-item.vue';
 import NutPopup from '../popup/index.vue';
 
 export default create({
   components: {
-    [CascaderItem.name]: CascaderItem,
+    NutCascaderItem,
     NutPopup
   },
   props: {

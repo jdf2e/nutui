@@ -18,11 +18,11 @@
 import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
-import Avatar from '../avatar/index.vue';
+import NutAvatar from '../avatar/index.vue';
 const { create } = createComponent('avatar-group');
 export default create({
   components: {
-    [Avatar.name]: Avatar
+    NutAvatar
   },
   props: {
     maxContent: {

@@ -60,7 +60,7 @@ const { create } = createComponent('menu-item');
 import NutPopup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   props: {
@@ -84,7 +84,7 @@ export default create({
   components: {
     Check,
     NutPopup,
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {

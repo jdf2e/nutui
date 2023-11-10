@@ -34,7 +34,7 @@
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('ecard');
-import InputNumber from '../inputnumber/index.vue';
+import NutInputNumber from '../inputnumber/index.vue';
 import type { PropType } from 'vue';
 
 export interface dataList {
@@ -42,7 +42,7 @@ export interface dataList {
 }
 export default create({
   components: {
-    [InputNumber.name]: InputNumber
+    NutInputNumber
   },
   props: {
     chooseText: {

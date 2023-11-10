@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, PropType, onMounted } from 'vue';
-import Button from '../button/index.vue';
+import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
 import type { AvatarCropperToolbarPosition, AvatarCropperSizeType, AvatarCropperSourceType } from './types';
 const { create } = createComponent('avatar-cropper');
@@ -54,7 +54,7 @@ import { easySetFillStyle } from '@/packages/utils/canvas';
 
 export default create({
   components: {
-    [Button.name]: Button,
+    NutButton,
     IconFont
   },
   props: {
