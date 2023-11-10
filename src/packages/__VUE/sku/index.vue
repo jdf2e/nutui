@@ -67,7 +67,7 @@ import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('sku');
 
@@ -164,7 +164,7 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    NutPopup
   },
 
   setup(props: any, { emit, slots }) {

@@ -43,7 +43,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { Loading } from '@nutui/icons-vue-taro';
 const { create } = createComponent('action-sheet');
 export interface menuItems {
@@ -56,7 +56,7 @@ export interface menuItems {
 }
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Loading
   },
   props: {

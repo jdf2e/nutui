@@ -3,11 +3,11 @@ import { Component, h, nextTick } from 'vue';
 import { ImageInterface } from './types';
 import { CreateComponent } from '@/packages/utils/create';
 import { Interceptor } from '@/packages/utils/util';
-import Popup from '../popup/index.vue';
-import Video from '../video/index.vue';
-import Swiper from '../swiper/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
-import Overlay from '../overlay/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutVideo from '../video/index.vue';
+import NutSwiper from '../swiper/index.vue';
+import NutSwiperItem from '../swiperitem/index.vue';
+import NutOverlay from '../overlay/index.vue';
 
 export class ImagePreviewOptions {
   show = false;
@@ -40,7 +40,7 @@ class ImagePreviewFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'image-preview',
-      components: [Popup, Video, Swiper, SwiperItem, Overlay],
+      components: [NutPopup, NutVideo, NutSwiper, NutSwiperItem, NutOverlay],
       wrapper: () => {
         return {
           setup() {

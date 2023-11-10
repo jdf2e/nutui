@@ -1,8 +1,8 @@
 import Dialog from './index.vue';
 import { h, VNode, CSSProperties, Component, nextTick } from 'vue';
-import Popup from '../popup/index.vue';
-import Button from '../button/index.vue';
-import Overlay from '../overlay/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutButton from '../button/index.vue';
+import NutOverlay from '../overlay/index.vue';
 import { CreateComponent } from '@/packages/utils/create';
 export class DialogOptions {
   title?: string = '';
@@ -47,7 +47,7 @@ class DialogFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
-      components: [Popup, Button, Overlay],
+      components: [NutPopup, NutButton, NutOverlay],
       wrapper: (elWrap: any, root: any) => {
         return {
           setup() {

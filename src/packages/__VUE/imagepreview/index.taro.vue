@@ -39,7 +39,7 @@ import { CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
 const { create } = createComponent('image-preview');
@@ -94,7 +94,7 @@ export default create({
   },
   emits: ['close', 'change', 'longPress'],
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     [Swiper.name]: Swiper,
     [SwiperItem.name]: SwiperItem,
     CircleClose

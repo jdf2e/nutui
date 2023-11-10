@@ -35,16 +35,16 @@ const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue';
-import Tabs from '../tabs/index.vue';
-import TabPane from '../tabpane/index.vue';
+import NutTabs from '../tabs/index.vue';
+import NutTabPane from '../tabpane/index.vue';
 import Tree from './tree';
 
 export default create({
   components: {
     Loading,
     Checklist,
-    [Tabs.name]: Tabs,
-    [TabPane.name]: TabPane
+    NutTabs,
+    NutTabPane
   },
   props: {
     visible: Boolean,

@@ -51,14 +51,14 @@
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
 import Button from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     [Button.name]: Button
   },
   props: {

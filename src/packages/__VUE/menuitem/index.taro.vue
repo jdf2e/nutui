@@ -57,7 +57,7 @@
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('menu-item');
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue-taro';
 import ScrollView from '../scroll-view/index.taro.vue';
@@ -83,7 +83,7 @@ export default create({
   },
   components: {
     Check,
-    [Popup.name]: Popup,
+    NutPopup,
     'nut-scroll-view': ScrollView
   },
   emits: ['update:modelValue', 'change'],
