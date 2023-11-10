@@ -31,11 +31,11 @@
 <script lang="ts">
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 const { create, translate } = createComponent('time-select');
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     visible: {

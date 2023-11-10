@@ -23,7 +23,7 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import Picker from '../picker/index.vue';
+import NutPicker from '../picker/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
@@ -47,7 +47,7 @@ const zhCNType: {
 };
 export default create({
   components: {
-    [Picker.name]: Picker
+    NutPicker
   },
   props: {
     modelValue: null,

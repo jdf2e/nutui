@@ -76,12 +76,12 @@ import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import Progress from '../progress/index.vue';
+import NutProgress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 const { create, translate } = createComponent('uploader');
 export default create({
   components: {
-    [Progress.name]: Progress,
+    NutProgress,
     Photograph,
     Failure,
     Loading,

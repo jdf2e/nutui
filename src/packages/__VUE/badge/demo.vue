@@ -95,7 +95,7 @@
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('badge');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Check, Download } from '@nutui/icons-vue';
+import { Check, Download, Link as IconLink } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

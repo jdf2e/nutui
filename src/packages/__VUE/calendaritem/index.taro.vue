@@ -86,7 +86,7 @@ import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
@@ -102,7 +102,7 @@ interface CalendarDateProp {
 
 export default create({
   components: {
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     type: {

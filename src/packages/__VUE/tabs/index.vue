@@ -83,12 +83,12 @@ export class Title {
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small';
-import Sticky from '../sticky/index.vue';
+import NutSticky from '../sticky/index.vue';
 const { create } = createComponent('tabs');
 import { JoySmile } from '@nutui/icons-vue';
 import { useTabContentTouch } from './hooks';
 export default create({
-  components: { [Sticky.name]: Sticky, JoySmile },
+  components: { NutSticky, JoySmile },
   props: {
     modelValue: {
       type: [String, Number],
@@ -150,7 +150,7 @@ export default create({
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
-    const container = ref(null);
+    const container = ref<any>(null);
     let stickyFixed: boolean;
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),

@@ -52,14 +52,14 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.vue';
-import Button from '../button/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutButton from '../button/index.vue';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
+    NutPopup,
+    NutButton
   },
   props: {
     ...popupProps,

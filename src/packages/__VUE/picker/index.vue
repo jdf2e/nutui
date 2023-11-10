@@ -36,13 +36,13 @@
 import { ref, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { usePicker } from './usePicker';
-import column from './Column.vue';
+import NutPickerColumn from './Column.vue';
 import baseProps from './baseProps';
 const { create, translate } = createComponent('picker');
 
 export default create({
   components: {
-    [column.name]: column
+    NutPickerColumn
   },
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
@@ -76,7 +76,6 @@ export default create({
     };
 
     return {
-      column,
       columnsType,
       columnsList,
       columnFieldNames,

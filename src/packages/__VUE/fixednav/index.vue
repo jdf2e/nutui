@@ -2,12 +2,12 @@
 <script lang="ts">
 import { PropType, computed, ref } from 'vue';
 import { Left } from '@nutui/icons-vue';
-import OverLay from '../overlay/index.vue';
+import NutOverlay from '../overlay/index.vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate, create, componentName } = createComponent('fixed-nav');
 export default create({
   components: {
-    [OverLay.name]: OverLay,
+    NutOverlay,
     Left
   },
   props: {

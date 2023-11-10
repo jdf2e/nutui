@@ -75,24 +75,24 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted, Component } from 'vue';
-import { PopoverLocation } from '../popover/type';
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
+import { PopoverLocation, PopoverTheme } from '../popover/type';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 import { Close } from '@nutui/icons-vue';
-import Popover from '../popover/index.vue';
+import NutPopover from '../popover/index.vue';
 
 interface StepOptions {
   target: Element | string;
   content: string;
-  location?: string;
+  location?: PopoverLocation;
   popoverOffset?: number[];
   arrowOffset?: number;
 }
 const { create } = createComponent('tour');
 export default create({
   components: {
-    [Popover.name]: Popover as Component,
+    NutPopover,
     Close
   },
   props: {
@@ -138,7 +138,7 @@ export default create({
       default: ''
     },
     theme: {
-      type: String,
+      type: String as PropType<PopoverTheme>,
       default: 'light'
     },
     maskWidth: {

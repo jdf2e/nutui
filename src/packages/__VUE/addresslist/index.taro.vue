@@ -41,7 +41,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('address-list');
 import GeneralShell from './components/GeneralShell.taro.vue';
 import { floatData } from '@/packages/utils/util';
-import Button from '../button/index.taro.vue';
+import NutButton from '../button/index.taro.vue';
 export default create({
   props: {
     data: {
@@ -67,7 +67,7 @@ export default create({
   },
   components: {
     GeneralShell,
-    [Button.name]: Button
+    NutButton
   },
   emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
