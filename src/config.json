@@ -1108,7 +1108,7 @@
           "cName": "文本省略",
           "desc": "文本省略",
           "show": true,
-          "taro": true,
+          "taro": false,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu3"
