@@ -16,10 +16,10 @@ const findComponentName = (name: string) => {
 };
 
 /** vite */
-const modulesPage = import.meta.glob('/src/packages/__VUE/**/demo.vue');
+const modulesPage = import.meta.glob(['/src/packages/__VUE/**/demo.vue', '/src/packages/__VUE/**/demo/index.vue']);
 
 for (const path in modulesPage) {
-  const name = (/packages\/__VUE\/(.*)\/demo.vue/.exec(path) as any[])[1];
+  const name = (/packages\/__VUE\/(.*)\/demo/.exec(path) as any[])[1];
   routes.push({
     path: '/zh-CN/' + name,
     component: modulesPage[path],
