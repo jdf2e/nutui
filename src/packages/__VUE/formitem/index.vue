@@ -27,7 +27,7 @@ import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
 import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
-import Cell from '../cell/index.vue';
+import NutCell from '../cell/index.vue';
 const { create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
@@ -74,7 +74,7 @@ export default create({
     }
   },
   components: {
-    [Cell.name]: Cell
+    NutCell
   },
   setup(props, { slots }) {
     const useParent: any = () => {

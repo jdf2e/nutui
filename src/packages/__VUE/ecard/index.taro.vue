@@ -33,7 +33,7 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import InputNumber from '../inputnumber/index.taro.vue';
+import NutInputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
 const { create, translate } = createComponent('ecard');
 export interface dataList {
@@ -41,7 +41,7 @@ export interface dataList {
 }
 export default create({
   components: {
-    [InputNumber.name]: InputNumber
+    NutInputNumber
   },
   props: {
     chooseText: {

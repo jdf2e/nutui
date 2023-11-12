@@ -29,13 +29,13 @@
             @keyup="onKeyup"
           ></component>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-            <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+            <span class="nut-input-word-num">{{ getModelValue() ? getModelValue().length : 0 }}</span
             >/{{ maxLength }}
           </view>
         </view>
         <view
           v-if="clearable && !readonly"
-          v-show="(active || showClearIcon) && modelValue.length > 0"
+          v-show="(active || showClearIcon) && getModelValue().length > 0"
           class="nut-input-clear-box"
           @click="clear"
         >
@@ -68,7 +68,7 @@ export default create({
       default: 'text'
     },
     modelValue: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     placeholder: {
@@ -317,7 +317,8 @@ export default create({
       focus,
       blur,
       select,
-      onKeyup
+      onKeyup,
+      getModelValue
     };
   }
 });

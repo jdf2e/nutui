@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :ikey="ikey">
+  <view class="nut-sub-side-navbar" :ikey="ikey">
     <view class="nut-sub-side-navbar__title" @click.stop="handleClick">
       <span class="nut-sub-side-navbar__title__text">{{ title }}</span>
       <span class="nut-sub-side-navbar__title__icon">
@@ -21,7 +21,7 @@
 import { computed, onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue';
-const { componentName, create } = createComponent('sub-side-navbar');
+const { create } = createComponent('sub-side-navbar');
 export default create({
   props: {
     title: {
@@ -39,15 +39,9 @@ export default create({
   },
   components: { ArrowDown2, ArrowUp2 },
   emits: ['titleClick'],
-  setup: (props: any, context: any) => {
+  setup: (props, { emit }) => {
     const state = reactive({
       direction: ''
-    });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
     const style = computed(() => {
       return {
@@ -55,7 +49,7 @@ export default create({
       };
     });
     const handleClick = () => {
-      context.emit('titleClick');
+      emit('titleClick');
       state.direction = !state.direction ? 'up' : '';
     };
     onMounted(() => {
@@ -63,7 +57,6 @@ export default create({
     });
     return {
       ...toRefs(state),
-      classes,
       style,
       handleClick
     };

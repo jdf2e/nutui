@@ -15,12 +15,12 @@
 <script lang="ts">
 import { ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 const { create } = createComponent('notify');
 
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     id: String,

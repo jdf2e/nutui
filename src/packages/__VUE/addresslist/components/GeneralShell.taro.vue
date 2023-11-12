@@ -46,8 +46,8 @@ import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.taro.vue';
-import Button from '../../button/index.taro.vue';
-import Swipe from '../../swipe/index.taro.vue';
+import NutButton from '../../button/index.taro.vue';
+import NutSwipe from '../../swipe/index.taro.vue';
 
 export default create({
   props: {
@@ -67,8 +67,8 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
   components: {
     ItemContents,
-    [Button.name]: Button,
-    [Swipe.name]: Swipe
+    NutButton,
+    NutSwipe
   },
 
   setup(props, { emit }) {

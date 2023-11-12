@@ -252,7 +252,7 @@ const val = ref('');
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| v-model | Input value, two-way binding | string | - |
+| v-model | Input value, two-way binding | string \| number | - |
 | type | Input type, support all native types and `number` `digit` type | string | `text` |
 | placeholder | Placeholder when the input box is empty | string | - |
 | input-align | Input align, eg `left`、`center`、`right` | string | `left` |

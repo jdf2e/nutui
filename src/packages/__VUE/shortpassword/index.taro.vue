@@ -37,13 +37,13 @@
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { Tips } from '@nutui/icons-vue-taro';
 const { create, translate } = createComponent('short-password');
 import { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Tips
   },
   props: {

@@ -134,22 +134,22 @@ import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
 import { popupProps } from '../popup/props';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
-import Elevator from '../elevator/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
+import NutElevator from '../elevator/index.taro.vue';
 const { create, componentName, translate } = createComponent('address');
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   components: {
-    [Popup.name]: Popup,
-    [Elevator.name]: Elevator,
+    NutPopup,
+    NutElevator,
     Location,
     Location2,
     Check,
     Close,
     Left,
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   inheritAttrs: false,
   props: {

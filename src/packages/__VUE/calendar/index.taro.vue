@@ -93,16 +93,16 @@
 import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
-import CalendarItem from '../calendaritem/index.taro.vue';
-import Popup from '../popup/index.taro.vue';
+import NutCalendarItem from '../calendaritem/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem,
-    [Popup.name]: Popup
+    NutCalendarItem,
+    NutPopup
   },
   props: {
     type: {

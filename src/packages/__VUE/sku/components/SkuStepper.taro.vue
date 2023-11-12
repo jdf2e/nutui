@@ -19,7 +19,7 @@
 import { ref, onMounted } from 'vue';
 import { TypeOfFun } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
-import InputNumber from '../../inputnumber/index.taro.vue';
+import NutInputNumber from '../../inputnumber/index.taro.vue';
 const { create } = createComponent('sku-stepper');
 
 export default create({
@@ -50,7 +50,7 @@ export default create({
   emits: ['click', 'changeSku', 'changeStepper', 'clickBtnOptions', 'overLimit', 'reduce', 'add'],
 
   components: {
-    [InputNumber.name]: InputNumber
+    NutInputNumber
   },
 
   setup(props: any, { emit }) {

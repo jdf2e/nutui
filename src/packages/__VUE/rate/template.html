@@ -1,4 +1,4 @@
-<view :class="classes" @touchstart="onTouchStart" @touchmove="onTouchMove">
+<view class="nut-rate" @touchstart="onTouchStart" @touchmove="onTouchMove">
   <view class="nut-rate-item" v-for="n in Number(count)" :key="n" ref="rateRefs" :id="'rateRefs-' + refRandomId + n"
     :style="n < Number(count) ? { marginRight: pxCheck(spacing) } : {}">
     <view class="nut-rate-item__icon--full">

@@ -37,12 +37,12 @@
 <script lang="ts">
 import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';
 const { create, translate } = createComponent('short-password');
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Tips
   },
   props: {

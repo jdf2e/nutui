@@ -92,7 +92,7 @@
   </view>
 </template>
 <script lang="ts" setup>
-import { Check, Link, Download } from '@nutui/icons-vue';
+import { Check, Link, Download } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import Header from '../../../components/header.vue';
 

@@ -32,23 +32,23 @@
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue-taro';
-import Tabs from '../tabs/index.taro.vue';
-import TabPane from '../tabpane/index.vue';
+import NutTabs from '../tabs/index.taro.vue';
+import NutTabPane from '../tabpane/index.vue';
 import Tree from './tree';
 
 export default create({
   components: {
     Loading,
     Checklist,
-    [Tabs.name]: Tabs,
-    [TabPane.name]: TabPane,
-    'nut-scroll-view': ScrollView
+    NutTabs,
+    NutTabPane,
+    NutScrollView
   },
   props: {
     visible: Boolean,
