@@ -25,11 +25,11 @@ config.nav.forEach((item) => {
     if (element.exclude != true) {
       let outputMjs = '';
       if (element.type == 'methods' && target == 'nutui') {
-        outputMjs = `import ${element.name} from '../_es/${element.name}.js';
-import { show${element.name} } from '../_es/${element.name}.js';
+        outputMjs = `import ${element.name} from './${element.name}.js';
+import { show${element.name} } from './${element.name}.js';
 export { ${element.name}, show${element.name}, ${element.name} as default };`;
       } else {
-        outputMjs = `import ${element.name} from '../_es/${element.name}.js';
+        outputMjs = `import ${element.name} from './${element.name}.js';
 export { ${element.name}, ${element.name} as default };`;
       }
       tasks.push(
