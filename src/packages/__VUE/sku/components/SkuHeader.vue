@@ -19,7 +19,10 @@
 <script lang="ts">
 import NutPrice from '../../price/index.vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('sku-header');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku-header');
+
+const cN = 'NutSkuHeader';
 
 export default create({
   props: {
@@ -28,11 +31,11 @@ export default create({
       default: {}
     }
   },
-  emits: [],
   components: {
     NutPrice
   },
   setup(props, { slots }) {
+    const translate = useLocale(cN);
     const getSlots = (name: string) => slots[name];
 
     return {

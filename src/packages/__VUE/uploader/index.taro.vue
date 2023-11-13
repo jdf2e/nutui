@@ -339,6 +339,7 @@ export default create({
         let fileType = file.type;
         let filepath = (file.tempFilePath || file.path) as string;
         const fileItem = reactive(new FileItem());
+        fileItem.message = translate('ready');
         if (file.fileType) {
           fileType = file.fileType;
         } else {
