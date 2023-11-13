@@ -59,7 +59,11 @@ import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from '
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue';
 import { TextAlign } from './type';
-const { create, translate } = createComponent('searchbar');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('searchbar');
+
+const cN = 'NutSearchbar';
+
 export default create({
   props: {
     modelValue: {
@@ -141,6 +145,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const state = reactive({
       active: false
     });

@@ -80,11 +80,13 @@
 import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.vue';
-const { create, translate } = createComponent('number-keyboard');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;
   type: string;
 }
+const cN = 'NutNumberKeyboard';
 export default create({
   components: {
     NutPopup
@@ -133,6 +135,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'blur', 'update:modelValue', 'update:visible'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
     const root = ref();
