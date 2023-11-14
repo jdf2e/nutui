@@ -39,7 +39,11 @@ import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';
-const { create, translate } = createComponent('short-password');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('short-password');
+
+const cN = 'NutShortPassword';
+
 export default create({
   components: {
     NutPopup,
@@ -85,6 +89,7 @@ export default create({
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const realInput = ref(props.modelValue);
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);

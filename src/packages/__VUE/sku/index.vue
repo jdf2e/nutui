@@ -69,7 +69,10 @@ import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import NutPopup from '../popup/index.vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('sku');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku');
+
+const cN = 'NutSku';
 
 export default create({
   props: {
@@ -168,6 +171,8 @@ export default create({
   },
 
   setup(props: any, { emit, slots }) {
+    const translate = useLocale(cN);
+
     const showPopup = ref(props.visible);
 
     const goodsCount = ref(props.stepperMin);

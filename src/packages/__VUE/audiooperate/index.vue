@@ -26,7 +26,10 @@
 import { toRefs, ref, useSlots, reactive, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button/index.vue';
-const { create, translate } = createComponent('audio-operate');
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('audio-operate');
+const cN = 'NutAudioOperate';
 
 export default create({
   props: {
@@ -42,6 +45,7 @@ export default create({
   emits: ['click'],
 
   setup(props) {
+    const translate = useLocale(cN);
     const audio: any = inject('audioParent');
     const parent: {
       children: [];

@@ -77,11 +77,14 @@
 <script lang="ts">
 import { reactive, ref, watch, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('calendar-item');
+const cN = 'NutCalendarItem';
 
 type StringArr = string[];
 
@@ -157,6 +160,7 @@ export default create({
   emits: ['choose', 'update', 'close', 'select'],
 
   setup(props, { emit, slots }) {
+    const translate = useLocale(cN);
     // 新增：自定义周起始日
     const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
       day: day,
