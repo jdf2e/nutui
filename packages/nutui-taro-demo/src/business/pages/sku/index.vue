@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell :title="`基础用法`" desc="" @click="popup.base = true"></nut-cell>
 
@@ -103,14 +102,12 @@
       @close="close"
       @selected="selectedAddress"
     ></nut-address>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue';
 import { Sku, Goods, imagePathMap } from './data';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 
 interface Skus {
   id: number;
@@ -131,7 +128,6 @@ interface Data {
   goodsInfo: any;
   imagePathMap: any;
 }
-const env = Taro.getEnv();
 const popup = reactive({
   base: false,
   notSell: false,

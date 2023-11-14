@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>按钮类型</h2>
     <div class="demo-button-row">
       <nut-button type="primary">主要按钮</nut-button>
@@ -66,15 +65,12 @@
       <nut-button color="#7232dd" plain>单色按钮</nut-button>
       <nut-button color="linear-gradient(to right, #ff6034, #ee0a24)"> 渐变按钮 </nut-button>
     </div>
-  </div>
+  </Demo>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { StarFill, Star } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const isLoading = ref(false);
 const changeLoading = () => {
   isLoading.value = true;

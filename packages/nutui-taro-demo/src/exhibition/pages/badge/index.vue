@@ -1,6 +1,5 @@
 <template>
-  <view class="demo badge-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="badge-demo">
     <h2>基础用法</h2>
     <nut-row>
       <nut-badge :value="8">
@@ -89,14 +88,10 @@
       <nut-badge :value="76"> </nut-badge>
       <nut-badge value="NEW"> </nut-badge>
     </nut-row>
-  </view>
+  </Demo>
 </template>
 <script lang="ts" setup>
 import { Check, Link, Download } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-
-const env = Taro.getEnv();
 </script>
 
 <style lang="scss">

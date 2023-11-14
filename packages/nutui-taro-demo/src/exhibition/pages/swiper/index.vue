@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <view class="demo-box">
       <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
@@ -87,15 +86,12 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, onMounted, ref, Ref } from 'vue';
 import { Left, Right } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const swiper = ref(null) as Ref;
 const state = reactive({
   page: 2,

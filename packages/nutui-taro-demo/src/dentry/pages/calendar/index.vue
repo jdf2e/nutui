@@ -1,6 +1,5 @@
 <template>
-  <div class="demo calendar_demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="calendar_demo">
     <h2>基础用法</h2>
     <div>
       <nut-cell
@@ -228,16 +227,13 @@
       >
       </nut-calendar>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import Utils from '@/packages/utils/date';
 import { toRefs } from 'vue';
-const env = Taro.getEnv();
 
 const calendarRef = ref<any>(null);
 const state = reactive({

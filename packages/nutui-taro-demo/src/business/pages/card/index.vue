@@ -1,6 +1,6 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <DocHeader />
+  <Demo
+    >=
     <h2>基础用法</h2>
     <nut-card
       :img-url="state.imgUrl"
@@ -83,15 +83,12 @@
         <div class="customize">自定义</div>
       </template>
     </nut-card>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import DocHeader from '../../../components/header.vue';
 
-const env = Taro.getEnv();
 const state = reactive({
   imgUrl:
     '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',

@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-countdown :end-time="state.end" @end="onend"></nut-countdown>
@@ -64,14 +63,11 @@
       <nut-grid-item><nut-button type="primary" @click="pause">暂停</nut-button></nut-grid-item>
       <nut-grid-item><nut-button type="primary" @click="reset">重置</nut-button></nut-grid-item>
     </nut-grid>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const Countdown = ref<any>(null);
 const state = reactive({
   serverTime: Date.now() - 20 * 1000,

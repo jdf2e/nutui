@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <nut-cell :is-link="true" title="默认键盘" @click="showKeyBoard(1)"></nut-cell>
     <nut-number-keyboard v-model:visible="visible1" overlay @input="input" @delete="onDelete" @close="close(1)">
     </nut-number-keyboard>
@@ -42,14 +41,11 @@
     <nut-cell :is-link="true" :desc="value" title="双向绑定" @click="showKeyBoard(5)"></nut-cell>
     <nut-number-keyboard v-model:visible="visible5" v-model="value" overlay maxlength="6" @close="close(5)">
     </nut-number-keyboard>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const visible1 = ref(false);
 const visible2 = ref(false);

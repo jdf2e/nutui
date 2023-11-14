@@ -1,7 +1,5 @@
 <template>
-  <div class="demo actionsheet" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-
+  <Demo class="actionsheet">
     <h2>基础用法</h2>
     <nut-cell is-link @click="switchActionSheet('isVisible1')">
       <div>基础用法</div>
@@ -53,13 +51,11 @@
     <nut-action-sheet v-model:visible="state.isVisible5" title="标题">
       <div class="custom-content">自定义内容</div>
     </nut-action-sheet>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 interface Item {
   name: string;
   subname?: string;
@@ -67,7 +63,6 @@ interface Item {
   disable?: boolean;
   loading?: boolean;
 }
-const env = Taro.getEnv();
 const state = reactive({
   isVisible1: false,
   isVisible2: false,

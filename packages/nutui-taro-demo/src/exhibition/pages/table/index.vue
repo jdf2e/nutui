@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-table :columns="state.columns1" :data="state.data1"></nut-table>
     <h2>是否显示边框，文字对齐</h2>
@@ -23,16 +22,13 @@
     <nut-table :columns="state.columns3" :data="state.data5"> </nut-table>
     <h2>支持排序</h2>
     <nut-table :columns="state.columns6" :data="state.data6" @sorter="handleSorter"> </nut-table>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, onMounted, onUnmounted, h } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { TableColumnProps } from '@/packages/__VUE/table/types';
 import { Dongdong } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 const state = reactive({
   bordered1: false,
   striped: true,
