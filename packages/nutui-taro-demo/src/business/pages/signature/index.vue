@@ -1,6 +1,5 @@
 <template>
-  <div class="demo signature-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="signature-demo">
     <h2>基础用法</h2>
     <nut-signature custom-class="test" @confirm="confirm" @clear="clear" @start="start"></nut-signature>
     <image v-if="demoSignUrl" :src="demoSignUrl" class="demoSignUrl" />
@@ -16,14 +15,11 @@
       @end="end"
     />
     <image v-if="demoSignUrl2" :src="demoSignUrl2" class="demoSignUrl" />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const demoSignUrl = ref('');
 const demoSignUrl2 = ref('');
 const clear = () => {

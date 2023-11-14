@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
 
     <nut-navbar title="订单详情" @click-back="back" @click-title="title">
@@ -67,15 +66,12 @@
         <HorizontalN class="right" width="16px"></HorizontalN>
       </template>
     </nut-navbar>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const tab1value = ref(0);
 const tab2value = ref(0);
 const back = () => {

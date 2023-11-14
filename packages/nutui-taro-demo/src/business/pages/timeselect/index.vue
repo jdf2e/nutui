@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell @click="handleClick1">
       <span><label>请选择配送时间</label></span>
@@ -70,14 +69,11 @@
       :type="toastState.type"
       :cover="toastState.cover"
     />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   visible1: false,
   currentKey1: 0,

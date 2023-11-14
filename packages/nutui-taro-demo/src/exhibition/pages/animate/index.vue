@@ -1,7 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-
+  <Demo>
     <h2>通过 show 控制动画</h2>
 
     <div class="demo-animate">
@@ -85,13 +83,10 @@
         <nut-button type="primary">由下至上划入</nut-button>
       </nut-animate>
     </div>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const show1 = ref(false);
 const onClick1 = () => {
   show1.value = true;

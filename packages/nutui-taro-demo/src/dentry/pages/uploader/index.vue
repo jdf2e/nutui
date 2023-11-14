@@ -1,6 +1,5 @@
 <template>
-  <div class="demo bg-w" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="bg-w">
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
@@ -49,14 +48,11 @@
     <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
     <h2>禁用状态</h2>
     <nut-uploader disabled></nut-uploader>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
 const progressPercentage = ref<string | number>(0);
 const formData = {

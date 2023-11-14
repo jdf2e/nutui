@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>默认用法</h2>
     <nut-noticebar
       text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
@@ -120,14 +119,11 @@
         </template>
       </nut-noticebar>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   horseLamp1: [
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',

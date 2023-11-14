@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-form>
       <nut-form-item label="姓名">
@@ -162,15 +161,12 @@
         ></nut-address>
       </nut-form-item>
     </nut-form>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { FormItemRuleWithoutValidator } from '@/packages/__VUE/formitem/types';
-const env = Taro.getEnv();
 
 const formData = reactive({
   name: '',

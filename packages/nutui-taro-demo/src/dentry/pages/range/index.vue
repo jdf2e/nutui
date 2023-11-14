@@ -1,6 +1,5 @@
 <template>
-  <div class="demo range-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="range-demo">
     <h2>基础用法</h2>
     <nut-cell class="cell">
       <nut-range v-model="state.value1" @change="onChange"></nut-range>
@@ -85,14 +84,11 @@
         ></nut-range>
       </view>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const state = reactive({
   value1: 40,

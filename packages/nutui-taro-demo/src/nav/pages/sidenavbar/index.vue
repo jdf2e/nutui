@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell @click="handleClick1">
       <span><label>右侧</label></span>
@@ -62,14 +61,11 @@
         </nut-side-navbar>
       </nut-popup>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const show1 = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);

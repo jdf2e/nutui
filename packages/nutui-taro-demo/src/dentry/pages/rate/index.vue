@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell class="cell">
       <nut-rate v-model="state.val" />
@@ -29,15 +28,12 @@
 
     <h2>自定义尺寸 35px</h2>
     <nut-cell class="cell"><nut-rate v-model="state.val8" size="35"></nut-rate></nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { HeartFill } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 
 const state = reactive({
   val: 3,

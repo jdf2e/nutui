@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>选择自定义地址</h2>
     <nut-cell title="选择地址" :desc="text.one" is-link @click="showAddress"></nut-cell>
 
@@ -104,13 +103,11 @@
       @switch-module="switchModule"
       @close-mask="closeMask"
     ></nut-address>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { HeartFill, Heart1 } from '@nutui/icons-vue-taro';
 interface CalBack {
   next: string;
@@ -142,7 +139,6 @@ interface AddressResult extends AddressList {
   country: RegionData[];
   town: RegionData[];
 }
-const env = Taro.getEnv();
 const address = reactive({
   province: [
     { id: 1, name: '北京', title: 'B' },

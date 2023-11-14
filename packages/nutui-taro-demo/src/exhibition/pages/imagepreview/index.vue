@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-image-preview :show="state.showPreview1" :images="state.imgData" :is-loop="false" @close="hideFn(1)" />
     <nut-cell is-link title="展示图片预览" :show-icon="true" @click="showFn(1)"></nut-cell>
@@ -35,14 +34,12 @@
 
     <!-- <h2>函数式调用</h2>
     <nut-cell isLink title="函数式调用的图片预览" :showIcon="true" @click="fnShow"></nut-cell> -->
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
 import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   showPreview1: false,
   showPreview2: false,

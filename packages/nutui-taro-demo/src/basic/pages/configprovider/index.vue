@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础使用</h2>
     <nut-config-provider :theme="theme">
       <nut-cell title="切换暗黑">
@@ -67,13 +66,10 @@
         </nut-form-item>
       </nut-form>
     </nut-config-provider>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const switchChecked = ref(false);
 const theme = ref('');
 const switchChange = (v: boolean) => {

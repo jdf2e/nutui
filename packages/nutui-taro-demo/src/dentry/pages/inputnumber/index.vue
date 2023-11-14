@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-input-number v-model="state.val1" />
@@ -33,14 +32,11 @@
     <nut-cell>
       <nut-input-number v-model="state.val7" button-size="30" input-width="50" />
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   val1: 1,
   val2: 0,

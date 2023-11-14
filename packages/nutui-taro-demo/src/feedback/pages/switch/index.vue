@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-switch v-model="data.checked1" />
@@ -40,15 +39,12 @@
     <nut-cell>
       <nut-switch v-model="data.checked8" loading><Loading name="loading" /></nut-switch>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Loading } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 const data = reactive({
   checked1: true,
   checked2: true,

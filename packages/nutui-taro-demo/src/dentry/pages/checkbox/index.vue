@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <nut-cell-group title="基础用法-左右">
       <nut-cell>
         <nut-checkbox v-model="data.checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
@@ -117,14 +116,11 @@
         </nut-checkbox-group>
       </nut-cell>
     </nut-cell-group>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive, ref, Ref } from 'vue';
 import { Checklist } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const group = ref(null) as Ref;
 const group2 = ref(null) as Ref;

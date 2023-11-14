@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <div class="show">
       <nut-empty description="无数据"></nut-empty>
@@ -37,14 +36,11 @@
         </div>
       </nut-empty>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const tabValue = ref(0);
 </script>
 

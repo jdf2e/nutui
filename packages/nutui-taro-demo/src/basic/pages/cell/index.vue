@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
     <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
@@ -70,17 +69,14 @@
     <nut-cell desc-text-align="left" desc="张三"></nut-cell>
     <h2>垂直居中</h2>
     <nut-cell center title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { My } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 const click = () => {
   console.log('点击事件');
 };
-const env = Taro.getEnv();
 const checked = ref(true);
 </script>
