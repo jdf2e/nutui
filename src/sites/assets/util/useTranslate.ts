@@ -1,11 +1,20 @@
 import Locale from '@/packages/locale';
 import { useLocale } from '@/packages/utils/useLocale';
 export const currentLang = Locale.currentLang;
-export const useTranslate = (object: Record<string, any>) => {
+// @type-challenges
+type TupleToUnion<T extends any[]> = T[number];
+export const useTranslate = <T extends string[]>(object: {
+  'zh-CN': {
+    [key in TupleToUnion<T>]: string;
+  };
+  'en-US': {
+    [key in TupleToUnion<T>]: string;
+  };
+}) => {
   for (const [key, value] of Object.entries(object)) {
     Locale.merge(key, value);
   }
-  return useLocale();
+  return useLocale<TupleToUnion<T>>();
 };
 
 export const translateChange = () => {

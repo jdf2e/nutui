@@ -40,7 +40,7 @@ import Icon from './demo/icon.vue';
 import Size from './demo/size.vue';
 import Block from './demo/block.vue';
 import Color from './demo/color.vue';
-const translate = useTranslate({
+const translate = useTranslate<['type', 'plain', 'disabled', 'shape', 'loading', 'icon', 'size', 'block', 'color']>({
   'zh-CN': {
     type: '按钮类型',
     plain: '朴素按钮',
