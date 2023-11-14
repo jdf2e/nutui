@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>按需使用</h2>
     <nut-cell>
       <Add color="red" />
@@ -56,14 +55,11 @@
         </ul>
       </nut-cell>
     </nut-cell-group>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 </script>
 
 <style lang="scss">

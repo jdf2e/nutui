@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-collapse v-model="data.active1" @change="change">
       <nut-collapse-item :title="data.title1" :name="1">
@@ -39,14 +38,11 @@
         在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
       </nut-collapse-item>
     </nut-collapse>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { Notice, Follow } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const data = reactive({
   active1: [1, '2'],
   active2: 1,

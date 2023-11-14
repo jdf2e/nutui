@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-row type="flex">
       <nut-col :span="8">
@@ -124,14 +123,11 @@
         <nut-button type="primary" shape="square">自定义颜色</nut-button>
       </template>
     </nut-popover>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive, ref, h } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 const state = reactive({
   showIcon: false,
   placement: false,

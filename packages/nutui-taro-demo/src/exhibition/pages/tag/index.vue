@@ -1,6 +1,5 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <DemoHeader />
+  <Demo>
     <nut-cell-group title="基础用法">
       <nut-cell title="default 类型">
         <template #link>
@@ -69,15 +68,11 @@
         </template>
       </nut-cell>
     </nut-cell-group>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import DemoHeader from '../../../components/header.vue';
-
-const env = Taro.getEnv();
 const show = ref(true);
 const close = () => {
   show.value = false;

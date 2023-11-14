@@ -1,6 +1,5 @@
 <template>
-  <div class="demo elevator-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="elevator-demo">
     <h2>基础用法</h2>
     <div class="elevator-wrapper">
       <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
@@ -34,15 +33,12 @@
         </template>
       </nut-elevator>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
 import { Jd } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   acceptKey: 'num',
   dataList: [

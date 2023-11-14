@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-input v-model="state.val1" placeholder="文本" />
 
@@ -77,16 +76,12 @@
         <nut-button type="primary" size="small">获取验证码</nut-button>
       </template>
     </nut-input>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { Close, Ask } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-
-const env = Taro.getEnv();
 
 const state = reactive({
   val1: '',

@@ -1,6 +1,5 @@
 <template>
-  <div class="trendarrow-demo demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="trendarrow-demo">
     <h2>基础用法</h2>
     <nut-cell>
       <nut-trend-arrow :sync-text-color="false" :rate="1" />
@@ -52,13 +51,10 @@
         <template #down-icon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Success, Failure } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 </script>
 <style lang="scss">
 .trendarrow-demo {

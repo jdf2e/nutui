@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <nut-cell title="基础用法" is-link @click="state.visible1 = true"></nut-cell>
     <nut-short-password
       v-model="state.value1"
@@ -69,14 +68,11 @@
     >
     </nut-short-password>
     <nut-number-keyboard v-model="state.value4" v-model:visible="state.showKeyboard4"> </nut-number-keyboard>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const state = reactive({
   visible1: false,

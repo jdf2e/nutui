@@ -1,6 +1,5 @@
 <template>
-  <div class="demo padding" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <div class="steps-wrapper">
       <nut-steps :current="state.current1">
@@ -67,14 +66,11 @@
         </nut-step>
       </nut-steps>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   current1: 1,
   current2: 1,

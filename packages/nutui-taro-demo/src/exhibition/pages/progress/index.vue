@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-cell>
       <nut-progress percentage="30" />
@@ -75,15 +74,12 @@
       <nut-button type="default" @click="setReduceVal">减少</nut-button>
       <nut-button type="primary" @click="setAddVal">增加</nut-button>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const val = ref(0);
 const setAddVal = () => {
   if (val.value >= 100) {

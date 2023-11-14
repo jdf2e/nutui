@@ -128,7 +128,7 @@ const paused = ref(false);
 const end = ref(Date.now() + 60 * 1000);
 
 const toggle = () => {
-  state.paused = !state.paused;
+  paused.value = !paused.value;
 };
 const onPaused = (v) => {
   console.log('paused: ', v);
@@ -161,9 +161,9 @@ const onRestart = (v) => {
   </nut-cell>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 const end = ref(Date.now() + 60 * 1000);
-const resetTime = reactive({
+const resetTime = ref({
   d: '1',
   h: '00',
   m: '00',
@@ -234,49 +234,49 @@ const reset = () => {
 
 ### Props
 
-| 参数        | 说明                                                       | 类型             | 默认值       |
-| ----------- | ---------------------------------------------------------- | ---------------- | ------------ |
-| v-model     | 当前时间，自定义展示内容时生效                             | object           | `{}`         |
-| start-time  | 开始时间                                                   | string \| number | `Date.now()` |
-| end-time    | 结束时间                                                   | string \| number | `Date.now()` |
-| format      | 时间格式                                                   | string           | `HH:mm:ss`   |
-| millisecond | 是否开启毫秒级渲染                                         | boolean          | `false`      |
-| auto-start  | 是否自动开始倒计时                                         | boolean          | `true`       |
-| time        | 倒计时显示时间，单位是毫秒。`auto-start` 为 `false` 时生效 | string \| number | `0`          |
-| paused      | 是否暂停                                                   | boolean          | `false`      |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 当前时间，自定义展示内容时生效 | object | `{}` |
+| start-time | 开始时间 | string \| number | `Date.now()` |
+| end-time | 结束时间 | string \| number | `Date.now()` |
+| format | 时间格式 | string | `HH:mm:ss` |
+| millisecond | 是否开启毫秒级渲染 | boolean | `false` |
+| auto-start | 是否自动开始倒计时 | boolean | `true` |
+| time | 倒计时显示时间，单位是毫秒。`auto-start` 为 `false` 时生效 | string \| number | `0` |
+| paused | 是否暂停 | boolean | `false` |
 
 ### format 格式
 
-| 格式 | 说明         |
-| ---- | ------------ |
-| DD   | 天数         |
-| HH   | 小时         |
-| mm   | 分钟         |
-| ss   | 秒数         |
-| S    | 毫秒（1 位） |
-| SS   | 毫秒（2 位） |
-| SSS  | 毫秒（3 位） |
+| 格式 | 说明 |
+| --- | --- |
+| DD | 天数 |
+| HH | 小时 |
+| mm | 分钟 |
+| ss | 秒数 |
+| S | 毫秒（1 位） |
+| SS | 毫秒（2 位） |
+| SSS | 毫秒（3 位） |
 
 ### Events
 
-| 事件名          | 说明         | 回调参数   |
-| --------------- | ------------ | ---------- |
-| end`v4.1.5`     | 倒计时结束时 | 剩余时间戳 |
-| paused`v4.1.5`  | 暂停时       | 剩余时间戳 |
-| restart`v4.1.5` | 暂停时       | 剩余时间戳 |
-| on-end          | 倒计时结束时 | 剩余时间戳 |
-| on-paused       | 暂停时       | 剩余时间戳 |
-| on-restart      | 暂停时       | 剩余时间戳 |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| end`v4.1.5` | 倒计时结束时 | 剩余时间戳 |
+| paused`v4.1.5` | 暂停时 | 剩余时间戳 |
+| restart`v4.1.5` | 暂停时 | 剩余时间戳 |
+| on-end | 倒计时结束时 | 剩余时间戳 |
+| on-paused | 暂停时 | 剩余时间戳 |
+| on-restart | 暂停时 | 剩余时间戳 |
 
 ### Methods
 
 通过 `ref` 可以获取到 `Countdown` 实例并调用实例方法。
 
-| 方法名 | 说明                                                         |
-| ------ | ------------------------------------------------------------ |
-| start  | 开始倒计时                                                   |
-| pause  | 暂停倒计时                                                   |
-| reset  | 重设倒计时，若 `auto-start`为 `true`，重设后会自动开始倒计时 |
+| 方法名 | 说明 |
+| --- | --- |
+| start | 开始倒计时 |
+| pause | 暂停倒计时 |
+| reset | 重设倒计时，若 `auto-start`为 `true`，重设后会自动开始倒计时 |
 
 ## 主题定制
 
@@ -284,8 +284,8 @@ const reset = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                      | 默认值    |
-| ------------------------- | --------- |
-| --nut-countdown-display   | _flex_    |
-| --nut-countdown-color     | _inherit_ |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-countdown-display | _flex_ |
+| --nut-countdown-color | _inherit_ |
 | --nut-countdown-font-size | _initial_ |
