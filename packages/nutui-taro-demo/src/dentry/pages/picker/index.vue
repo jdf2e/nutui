@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-picker
       :columns="columns"
@@ -50,14 +49,11 @@
     </nut-picker>
 
     <nut-toast v-model:visible="showToast" :msg="msg" type="text" />
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { PickerOption } from '@/packages/__VUE/picker/types';
-const env = Taro.getEnv();
 
 const selectedValue = ref(['ZheJiang']);
 const selectedTime = ref(['Wednesday', 'Afternoon']);

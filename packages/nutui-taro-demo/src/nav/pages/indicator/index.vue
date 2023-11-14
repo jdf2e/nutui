@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-indicator :size="3" :current="3">step1</nut-indicator>
@@ -29,11 +28,5 @@
     <nut-cell>
       <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
-
-<script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-</script>

@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>评论图片单行展示</h2>
     <nut-cell>
       <nut-comment
@@ -60,13 +59,11 @@
         @click-images="clickImages"
       ></nut-comment>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 let cmt = ref({});
 
 const handleclick = (info: any) => {

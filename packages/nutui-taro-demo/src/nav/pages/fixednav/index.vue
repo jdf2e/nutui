@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <nut-fixed-nav
       v-model:visible="visible"
       active-text="基础用法"
@@ -40,15 +39,12 @@
         <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
       </template>
     </nut-fixed-nav>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue';
 import { Retweet } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const visible = ref(false);
 const visible1 = ref(false);
 const visible2 = ref(false);

@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell title="点击试试">
       <template #link>
@@ -111,13 +110,10 @@
       mask-width="60"
       mask-height="50"
     ></nut-tour>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   switchValue: false,
   showTour: false,
