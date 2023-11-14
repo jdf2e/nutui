@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
@@ -39,14 +38,11 @@
         </div>
       </nut-overlay>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   show: false,
   show2: false,

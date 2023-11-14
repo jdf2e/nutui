@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-pagination v-model="currentPage" :total-items="25" :items-per-page="5" @change="pageChange" />
     <h2>简单模式</h2>
@@ -19,15 +18,12 @@
         {{ item.number == 3 ? 'hot' : item.text }}
       </template>
     </nut-pagination>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { Left, Right } from '@nutui/icons-vue-taro';
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const currentPage = ref(1);
 const currentPage1 = ref(1);
 const currentPage2 = ref(1);

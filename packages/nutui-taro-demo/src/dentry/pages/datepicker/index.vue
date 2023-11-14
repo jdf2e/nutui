@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>选择年月日</h2>
     <!-- 选择年月日 -->
     <nut-date-picker
@@ -106,14 +105,11 @@
     ></nut-date-picker>
 
     <nut-toast v-model:visible="showToast" :msg="msg" type="text" />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const show = ref(false);
 const popupDesc = ref();

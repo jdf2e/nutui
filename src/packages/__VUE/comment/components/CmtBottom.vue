@@ -25,9 +25,12 @@
 </template>
 <script lang="ts">
 import { ref, onMounted, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('comment-bottom');
 import { Fabulous, Comment, MoreX } from '@nutui/icons-vue';
+import { createComponent } from '@/packages/utils/create';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('comment-bottom');
+const cN = 'NutComment';
 
 export default create({
   props: {
@@ -48,6 +51,7 @@ export default create({
   components: { Fabulous, Comment, MoreX },
   emits: ['clickOperate', 'handleClick'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const showPopver = ref(false);
 
     const mergeOp = ref([]);

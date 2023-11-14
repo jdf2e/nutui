@@ -1,7 +1,6 @@
 <template>
   <view class="nut-sku-header">
-    <image v-if="ENV != ENV_TYPE.WEB" class="nut-sku-header-img" :src="goods.imagePath" />
-    <img v-else class="nut-sku-header-img" :src="goods.imagePath" />
+    <img class="nut-sku-header-img" :src="goods.imagePath" />
     <view class="nut-sku-header-right">
       <template v-if="getSlots('sku-header-price')">
         <slot name="sku-header-price"></slot>
@@ -18,11 +17,12 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
 import NutPrice from '../../price/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
-const { create, translate } = createComponent('sku-header');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku-header');
+
+const cN = 'NutSkuHeader';
 
 export default create({
   props: {
@@ -35,17 +35,12 @@ export default create({
     NutPrice
   },
   setup(props, { slots }) {
+    const translate = useLocale(cN);
     const getSlots = (name: string) => slots[name];
-
-    const state = reactive({
-      ENV: Taro.getEnv(),
-      ENV_TYPE: Taro.ENV_TYPE
-    });
 
     return {
       getSlots,
-      translate,
-      ...toRefs(state)
+      translate
     };
   }
 });

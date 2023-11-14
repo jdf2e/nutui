@@ -78,7 +78,11 @@ import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import NutProgress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
-const { create, translate } = createComponent('uploader');
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('uploader');
+const cN = 'NutUploader';
+
 export default create({
   components: {
     NutProgress,
@@ -139,6 +143,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<Uploader>[]>([]);
 

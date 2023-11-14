@@ -13,7 +13,7 @@
     @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
-    <view :class="classes">
+    <view :class="['nut-dialog', customClass]">
       <view v-if="$slots.header || title" class="nut-dialog__header">
         <slot v-if="$slots.header" name="header"></slot>
         <template v-else>{{ title }}</template>
@@ -49,12 +49,16 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('dialog');
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
 import NutButton from '../button/index.vue';
+import { useLocale } from '@/packages/utils/useLocale';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
+
+const { create } = createComponent('dialog');
+const cN = 'NutDialog';
+
 export default create({
   inheritAttrs: false,
   components: {
@@ -126,6 +130,7 @@ export default create({
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
@@ -144,13 +149,6 @@ export default create({
         }
       }
     );
-
-    const classes = computed(() => {
-      return {
-        [componentName]: true,
-        [props.customClass]: true
-      };
-    });
 
     const update = (val: boolean) => {
       emit('update', val);
@@ -197,7 +195,6 @@ export default create({
 
     return {
       closed,
-      classes,
       onCancel,
       onOk,
       showPopup,

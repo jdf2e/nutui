@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full category-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full category-demo">
     <h2>经典分类模式</h2>
     <nut-category :category="data.category" @change="change">
       <nut-category-pane :category-child="data.categoryChild1" @on-change="onChange"> </nut-category-pane>
@@ -15,16 +14,13 @@
     <nut-category
       ><nut-category-pane type="custom" :custom-category="customCategory" @on-change="changeCustom"> </nut-category-pane
     ></nut-category>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { categoryInfo, categoryChild, customCategory } from './data';
 import { reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 
-const env = Taro.getEnv();
 const data = reactive({
   category: [{}],
   categoryChild1: [{}],

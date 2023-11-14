@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <div class="nut-address-list">
     <general-shell
       v-for="(item, index) of dataArray"
       :key="index"
@@ -36,12 +36,15 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted, ref, watch, computed } from 'vue';
+import { reactive, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('address-list');
+const { create } = createComponent('address-list');
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import NutButton from '../button/index.vue';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutAddressList';
 export default create({
   props: {
     data: {
@@ -72,6 +75,7 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const dataArray = ref([]) as any;
     const dataInfo = reactive({
       id: 2,
@@ -79,12 +83,6 @@ export default create({
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
-    });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
     //磨平参数差异
     const trowelData = () => {
@@ -137,7 +135,6 @@ export default create({
       trowelData();
     });
     return {
-      classes,
       clickDelIcon,
       clickEditIcon,
       clickContentItem,

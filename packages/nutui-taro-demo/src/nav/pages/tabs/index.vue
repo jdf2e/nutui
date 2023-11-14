@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'"></Header>
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-tabs v-model="state.tab1value">
       <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
@@ -102,15 +101,12 @@
         {{ item.title }}
       </nut-tab-pane>
     </nut-tabs>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { Dongdong } from '@nutui/icons-vue-taro';
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const state = reactive({
   tab1value: '0',
   tab11value: '0',

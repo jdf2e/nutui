@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-drag class="dragDemo">
       <nut-button type="primary">触摸移动</nut-button>
@@ -13,14 +12,8 @@
     <nut-drag class="dragDemo" direction="x">
       <nut-button type="primary">X轴移动</nut-button>
     </nut-drag>
-  </div>
+  </Demo>
 </template>
-
-<script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-</script>
 
 <style lang="scss">
 .dragDemo {

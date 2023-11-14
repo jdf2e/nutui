@@ -23,7 +23,10 @@ import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button/index.taro.vue';
-const { componentName, create, translate } = createComponent('signature');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('signature');
+
+const cN = 'NutSignature';
 
 export default create({
   props: {
@@ -54,8 +57,9 @@ export default create({
   emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-signature';
       return {
         [prefixCls]: true,
         [`${props.customClass}`]: props.customClass

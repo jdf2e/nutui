@@ -4,7 +4,11 @@ import { PropType, computed, ref } from 'vue';
 import { Left } from '@nutui/icons-vue-taro';
 import NutOverlay from '../overlay/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-const { translate, create, componentName } = createComponent('fixed-nav');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('fixed-nav');
+
+const cN = 'NutFixedNav';
+
 export default create({
   components: {
     NutOverlay,
@@ -52,8 +56,9 @@ export default create({
   emits: ['update:visible', 'selected'],
 
   setup(props: any, { emit }: any) {
+    const translate = useLocale(cN);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-fixed-nav';
       return {
         [prefixCls]: true,
         active: props.visible,

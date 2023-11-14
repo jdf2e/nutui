@@ -1,5 +1,5 @@
 <template>
-  <view class="demo">
+  <Demo>
     <h2>基础演示</h2>
     <nut-cell>
       <view id="scrollDemo" class="infiniteUl">
@@ -17,7 +17,7 @@
         </nut-infinite-loading>
       </view>
     </nut-cell>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">
