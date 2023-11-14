@@ -52,10 +52,14 @@
 <script lang="ts">
 import { PropType, reactive, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('table');
+const { create } = createComponent('table');
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue-taro';
 import { TableColumnProps } from './types';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutTable';
+
 export default create({
   components: {
     RenderColumn,
@@ -85,6 +89,8 @@ export default create({
   },
   emits: ['sorter'],
   setup(props: any, { emit }) {
+    const translate = useLocale(cN);
+
     const state = reactive({
       curData: props.data
     });

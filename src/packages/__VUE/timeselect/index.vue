@@ -32,7 +32,11 @@
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.vue';
-const { create, translate } = createComponent('time-select');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('time-select');
+
+const cN = 'NutTimeSelect';
+
 export default create({
   components: {
     NutPopup
@@ -71,6 +75,7 @@ export default create({
   },
   emits: ['update:visible', 'select'],
   setup: (props, { emit }) => {
+    const translate = useLocale(cN);
     const popStyle = computed(() => {
       return {
         width: '100%',

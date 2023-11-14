@@ -131,14 +131,17 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
+import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 import { popupProps } from '../popup/props';
 import { RegionData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
 import NutElevator from '../elevator/index.taro.vue';
-const { create, componentName, translate } = createComponent('address');
-import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 import NutScrollView from '../scroll-view/index.taro.vue';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutAddress';
+const { create } = createComponent('address');
 
 export default create({
   components: {
@@ -214,13 +217,7 @@ export default create({
   emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'closeMask', 'switchModule'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
+    const translate = useLocale(cN);
     const tabItemRef = reactive({
       province: ref<null | HTMLElement>(null),
       city: ref<null | HTMLElement>(null),
@@ -476,7 +473,6 @@ export default create({
     );
 
     return {
-      classes,
       showPopup,
       privateType,
       tabIndex,
