@@ -30,19 +30,17 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('button');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import Type from './type.vue';
-import Plain from './plain.vue';
-import Disabled from './disabled.vue';
-import Shape from './shape.vue';
-import Loading from './loading.vue';
-import Icon from './icon.vue';
-import Size from './size.vue';
-import Block from './block.vue';
-import Color from './color.vue';
-useTranslate({
+import Type from './demo/type.vue';
+import Plain from './demo/plain.vue';
+import Disabled from './demo/disabled.vue';
+import Shape from './demo/shape.vue';
+import Loading from './demo/loading.vue';
+import Icon from './demo/icon.vue';
+import Size from './demo/size.vue';
+import Block from './demo/block.vue';
+import Color from './demo/color.vue';
+const translate = useTranslate({
   'zh-CN': {
     type: '按钮类型',
     plain: '朴素按钮',

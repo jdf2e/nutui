@@ -26,14 +26,23 @@ const TransformMarkdownDemo = (options: MarkdownOptions): Plugin => {
         return {
           code: src.replace(/> demo: ([0-9a-z ]*)[\n|\r\n]/g, (_match, $1: string) => {
             const [left, right] = $1.split(' ');
-            const code = fs.readFileSync(path.resolve(options.docRoot, left, 'demo', `${right}.vue`), 'utf-8');
-            return `:::demo
+            let code = '';
+            try {
+              code = fs.readFileSync(path.resolve(options.docRoot, left, 'demo', `${right}.vue`), 'utf-8');
+            } catch (err) {
+              code =
+                '[@nutui/vite-plugins] File not found: ' + path.resolve(options.docRoot, left, 'demo', `${right}.vue`);
+              console.warn(code);
+            }
+            return code
+              ? `:::demo
 
 \`\`\`vue
 ${code}
 \`\`\`
 
-:::\n`;
+:::\n`
+              : '';
           }),
           map: null // 如果可行将提供 source map
         };
