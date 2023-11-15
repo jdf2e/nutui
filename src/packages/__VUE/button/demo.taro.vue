@@ -16,13 +16,13 @@
     <Loading />
 
     <h2>{{ translate('icon') }}</h2>
-    <Icon />
+    <IconDemo />
 
     <h2>{{ translate('size') }}</h2>
     <Size />
 
     <h2>{{ translate('block') }}</h2>
-    <Block />
+    <BlockDemo />
 
     <h2>{{ translate('color') }}</h2>
     <Color />
@@ -36,9 +36,9 @@ import Plain from './demo/plain.vue';
 import Disabled from './demo/disabled.vue';
 import Shape from './demo/shape.vue';
 import Loading from './demo/loading.vue';
-import Icon from './demo/icon.taro.vue';
+import IconDemo from './demo/icon.taro.vue';
 import Size from './demo/size.vue';
-import Block from './demo/block.vue';
+import BlockDemo from './demo/block.vue';
 import Color from './demo/color.vue';
 const translate = useTranslate<['type', 'plain', 'disabled', 'shape', 'loading', 'icon', 'size', 'block', 'color']>({
   'zh-CN': {
