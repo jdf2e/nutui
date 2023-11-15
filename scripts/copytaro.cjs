@@ -1,10 +1,43 @@
 const targetBaseUrl = `${process.cwd()}/site_docs`;
+const fs = require('fs');
 const fse = require('fs-extra');
+const path = require('path');
+const replaceFile = (file) => {
+  fs.readFile(file, 'utf8', function(err, data) {
+    if (err) throw err;
+  
+    // 修改文件内容
+    data = data.replace(/> demo: ([0-9a-z .]*)[\n|\r\n]/g, (_match, $1) => {
+      const [left, right] = $1.split(' ');
+      const target = path.resolve('src/packages/__VUE/', left, 'demo', `${right}.vue`);
+      let code = '';
+      try {
+        code = fs.readFileSync(target, 'utf-8');
+      } catch (err) {
+        code =
+          '[script] copy:h5 File not found: ' + target;
+        console.warn(code);
+      }
+      return code ? `:::demo
+
+\`\`\`vue
+${code}
+\`\`\`
+
+:::\n` : '';
+    });
+  
+    fs.writeFile(file, data, function(err) {
+      if (err) throw err;
+    });
+  });
+}
 const copyFile = (from, to) => {
   fse
     .copy(from, to)
     .then(() => {
       console.log('success!>', to);
+      replaceFile(to);
     })
     .catch((err) => {
       console.error(err);
