@@ -1,28 +1,27 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>选择年月日</h2>
     <!-- 选择年月日 -->
     <nut-date-picker
       v-model="state.currentDate"
       :min-date="minDate"
       :max-date="maxDate"
-      @confirm="confirm"
-      :threeDimensional="false"
+      :three-dimensional="false"
       :is-show-chinese="true"
+      @confirm="confirm"
     ></nut-date-picker>
 
     <h2>配合 Popup 使用</h2>
     <nut-cell title="选择日期" :desc="popupDesc" @click="show = true"></nut-cell>
-    <nut-popup position="bottom" v-model:visible="show">
+    <nut-popup v-model:visible="show" position="bottom">
       <nut-date-picker
         v-model="state.currentDate"
         :min-date="minDate"
         :max-date="maxDate"
+        :is-show-chinese="true"
+        :three-dimensional="false"
         @confirm="popupConfirm"
         @cancel="show = false"
-        :is-show-chinese="true"
-        :threeDimensional="false"
       >
         <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button>
       </nut-date-picker>
@@ -105,15 +104,12 @@
       @confirm="confirm"
     ></nut-date-picker>
 
-    <nut-toast :msg="msg" v-model:visible="showToast" type="text" />
-  </div>
+    <nut-toast v-model:visible="showToast" :msg="msg" type="text" />
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const show = ref(false);
 const popupDesc = ref();

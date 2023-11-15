@@ -1,19 +1,21 @@
 import { ref, reactive, computed, CSSProperties, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { translate } = createComponent('picker');
 import { usePicker } from './usePicker';
-import column from './Column.vue';
+import NutPickerColumn from './Column.vue';
 import Taro from '@tarojs/taro';
 import baseProps from './baseProps';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutPicker';
 
 export const componentWeb = {
   components: {
-    [column.name]: column
+    NutPickerColumn
   },
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
+    const translate = useLocale(cN);
     const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
       props,
       emit
@@ -53,7 +55,6 @@ export const componentWeb = {
 
     return {
       ...toRefs(state),
-      column,
       columnsType,
       columnsList,
       columnFieldNames,
@@ -71,11 +72,12 @@ export const componentWeb = {
 
 export const componentWeapp = {
   components: {
-    [column.name]: column
+    NutPickerColumn
   },
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props: any, { emit }: any) {
+    const translate = useLocale(cN);
     const {
       changeHandler,
       confirm,
@@ -138,7 +140,6 @@ export const componentWeapp = {
 
     return {
       ...toRefs(state),
-      column,
       columnsType,
       columnsList,
       columnFieldNames,

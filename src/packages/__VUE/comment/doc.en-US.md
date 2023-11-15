@@ -6,7 +6,7 @@ Used to display the comment list
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Comment } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ By default, images of reviews for individual items are displayed in a single sli
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-comment
     :images="cmt.images"
@@ -38,32 +38,23 @@ By default, images of reviews for individual items are displayed in a single sli
     </template>
   </nut-comment>
 </template>
-<script lang="ts">
-  import { reactive, ref, onMounted } from 'vue';
-  export default {
-    setup() {
-      let cmt = ref({});
-      onMounted(() => {
-        fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-          .then((response) => response.json())
-          .then((res) => {
-            cmt.value = res.Comment;
-          })
-          .catch((err) => console.log('Oh, error', err));
-      });
-      const handleclick = (info: any) => {
-        console.log('进行跳转', info);
-      };
-      const clickImages = (imgs) => {
-        console.log('进行图片展示', imgs);
-      };
-      return {
-        cmt,
-        handleclick,
-        clickImages
-      };
-    }
-  };
+<script setup>
+import { reactive, ref, onMounted } from 'vue';
+let cmt = ref({});
+onMounted(() => {
+  fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
+    .then((response) => response.json())
+    .then((res) => {
+      cmt.value = res.Comment;
+    })
+    .catch((err) => console.log('Oh, error', err));
+});
+const handleclick = (info) => {
+  console.log('进行跳转', info);
+};
+const clickImages = (imgs) => {
+  console.log('进行图片展示', imgs);
+};
 </script>
 ```
 
@@ -75,7 +66,7 @@ The value of `headerType` allows you to set the image to be displayed in multipl
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-comment
     headerType="complex"
@@ -102,28 +93,20 @@ The value of `headerType` allows you to set the image to be displayed in multipl
     </template>
   </nut-comment>
 </template>
-<script lang="ts">
-  import { reactive, ref, onMounted } from 'vue';
-  export default {
-    setup() {
-      let cmt = ref({});
-      onMounted(() => {
-        fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-          .then((response) => response.json())
-          .then((res) => {
-            cmt.value = res.Comment;
-          })
-          .catch((err) => console.log('Oh, error', err));
-      });
-      const clickImages = (imgs) => {
-        console.log('进行图片展示', imgs);
-      };
-      return {
-        cmt,
-        clickImages
-      };
-    }
-  };
+<script setup>
+import { reactive, ref, onMounted } from 'vue';
+let cmt = ref({});
+onMounted(() => {
+  fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
+    .then((response) => response.json())
+    .then((res) => {
+      cmt.value = res.Comment;
+    })
+    .catch((err) => console.log('Oh, error', err));
+});
+const clickImages = (imgs) => {
+  console.log('进行图片展示', imgs);
+};
 </script>
 ```
 
@@ -133,7 +116,7 @@ The value of `headerType` allows you to set the image to be displayed in multipl
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-comment
     imagesRows="multi"
@@ -144,28 +127,20 @@ The value of `headerType` allows you to set the image to be displayed in multipl
     @clickImages="clickImages"
   ></nut-comment>
 </template>
-<script lang="ts">
-  import { reactive, ref, onMounted } from 'vue';
-  export default {
-    setup() {
-      let cmt = ref({});
-      onMounted(() => {
-        fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-          .then((response) => response.json())
-          .then((res) => {
-            cmt.value = res.Comment;
-          })
-          .catch((err) => console.log('Oh, error', err));
-      });
-      const clickImages = (imgs) => {
-        console.log('进行图片展示', imgs);
-      };
-      return {
-        cmt,
-        clickImages
-      };
-    }
-  };
+<script setup>
+import { reactive, ref, onMounted } from 'vue';
+let cmt = ref({});
+onMounted(() => {
+  fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
+    .then((response) => response.json())
+    .then((res) => {
+      cmt.value = res.Comment;
+    })
+    .catch((err) => console.log('Oh, error', err));
+});
+const clickImages = (imgs) => {
+  console.log('进行图片展示', imgs);
+};
 </script>
 ```
 
@@ -175,32 +150,32 @@ The value of `headerType` allows you to set the image to be displayed in multipl
 
 ### Props
 
-| Attribute   | Description                         | Type             | Default                      |
-| ----------- | ----------------------------------- | ---------------- | ---------------------------- |
-| header-type | Header type                         | string           | `default`                    |
-| images-rows | Comment picture shows type of lines | string           | `one`                        |
-| ellipsis    | Ellipsis number                     | string \| number | `2`                          |
-| videos      | Videos data                         | Array            | `[]`                         |
-| images      | Images data                         | Array            | `[]`                         |
-| info        | Comment data                        | object           | `{}`                         |
-| follow      | Additional review data              | object           | `{}`                         |
-| operation   | Bottom button                       | Array            | `["replay", "like", "more"]` |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| header-type | Header type | string | `default` |
+| images-rows | Comment picture shows type of lines | string | `one` |
+| ellipsis | Ellipsis number | string \| number | `2` |
+| videos | Videos data | Array | `[]` |
+| images | Images data | Array | `[]` |
+| info | Comment data | object | `{}` |
+| follow | Additional review data | object | `{}` |
+| operation | Bottom button | Array | `["replay", "like", "more"]` |
 
 ### Events
 
-| Event         | Description                            | Arguments            |
-| ------------- | -------------------------------------- | -------------------- |
-| click-operate | Emitted when to click bottom button    | `type`               |
-| click         | Emitted when to click comment          | `type`               |
-| click-images  | Emitted when to click images or videos | `{type,index,value}` |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| click-operate | Emitted when to click bottom button | `type` |
+| click | Emitted when to click comment | `type` |
+| click-images | Emitted when to click images or videos | `{type,index,value}` |
 
 ### Slots
 
 Slots are defined in some areas and can be replaced as required
 
-| Name               | Description                                                            |
-| ------------------ | ---------------------------------------------------------------------- |
-| comment-labels     | Comment user label                                                     |
+| Name | Description |
+| --- | --- |
+| comment-labels | Comment user label |
 | comment-shop-reply | At the bottom of the comment is the display of the merchant's response |
 
 ### images data
@@ -259,9 +234,9 @@ const follow = {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                 | Default Value              |
-| ------------------------------------ | -------------------------- |
-| --nut-comment-header-user-name-color | _rgba(51, 51, 51, 1)_      |
-| --nut-comment-header-time-color      | _rgba(153, 153, 153, 1)_   |
-| --nut-comment-bottom-label-color     | _rgba(153, 153, 153, 1)_   |
-| --nut-comment-shop-color             | _var(--nut-primary-color)_ |
+| Name | Default Value |
+| --- | --- |
+| --nut-comment-header-user-name-color | _rgba(51, 51, 51, 1)_ |
+| --nut-comment-header-time-color | _rgba(153, 153, 153, 1)_ |
+| --nut-comment-bottom-label-color | _rgba(153, 153, 153, 1)_ |
+| --nut-comment-shop-color | _var(--nut-primary-color)_ |

@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-tabbar @tab-switch="tabSwitch">
       <nut-tabbar-item tab-title="首页">
@@ -34,8 +33,8 @@
     <nut-tabbar v-model="activeName" @tab-switch="tabSwitch">
       <nut-tabbar-item
         v-for="(item, index) in List"
-        :name="item.name"
         :key="index"
+        :name="item.name"
         :tab-title="item.title"
         :icon="item.icon"
       >
@@ -90,22 +89,19 @@
       <nut-tabbar-item tab-title="发现" :icon="Find"></nut-tabbar-item>
     </nut-tabbar>
     <h2>固定底部，可自由跳转</h2>
-    <nut-tabbar :bottom="true" :safeAreaInsetBottom="true" placeholder>
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" placeholder>
       <nut-tabbar-item tab-title="首页" href="" :icon="Home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" :icon="Category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" :icon="Find"></nut-tabbar-item>
       <nut-tabbar-item tab-title="购物车" :icon="Cart"></nut-tabbar-item>
       <nut-tabbar-item tab-title="我的" :icon="My"></nut-tabbar-item>
     </nut-tabbar>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, h } from 'vue';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const active = ref(2);
 const activeName = ref('category');
 function tabSwitch(item: object, index: number) {

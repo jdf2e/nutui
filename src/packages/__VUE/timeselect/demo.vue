@@ -7,10 +7,10 @@
       >
     </nut-cell>
     <nut-time-select
-      v-model:visible="visible1"
+      v-model:visible="state.visible1"
       height="50%"
-      :current-key="currentKey1"
-      :current-time="currentTime1"
+      :current-key="state.currentKey1"
+      :current-time="state.currentTime1"
       @select="handleSelected1"
     >
       <template #pannel>
@@ -18,7 +18,7 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange1"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-time-detail :times="times1" @select="selectTime1"></nut-time-detail>
+        <nut-time-detail :times="state.times1" @select="selectTime1"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>{{ translate('title') }}</h2>
@@ -28,10 +28,10 @@
       >
     </nut-cell>
     <nut-time-select
-      v-model:visible="visible2"
+      v-model:visible="state.visible2"
       height="50%"
-      :current-key="currentKey2"
-      :current-time="currentTime2"
+      :current-key="state.currentKey2"
+      :current-time="state.currentTime2"
       @select="handleSelected2"
     >
       <template #pannel>
@@ -39,7 +39,7 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
+        <nut-time-detail :times="state.times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
     <h2>{{ translate('changeTitle') }}</h2>
@@ -49,10 +49,10 @@
       >
     </nut-cell>
     <nut-time-select
-      v-model:visible="visible3"
+      v-model:visible="state.visible3"
       height="50%"
-      :current-key="currentKey2"
-      :current-time="currentTime2"
+      :current-key="state.currentKey2"
+      :current-time="state.currentTime2"
       @select="handleSelected2"
     >
       <template #title>
@@ -66,156 +66,136 @@
         <nut-time-pannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-time-pannel>
       </template>
       <template #detail>
-        <nut-time-detail :times="times2" @select="selectTime2"></nut-time-detail>
+        <nut-time-detail :times="state.times2" @select="selectTime2"></nut-time-detail>
       </template>
     </nut-time-select>
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, onMounted, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('time-select');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      deliveryTime: '请选择配送时间',
-      changeTitle: '更改标题',
-      time1: '2月23日(今天)',
-      time2: '2月24日(星期三)',
-      title: '可选择多个日期时间',
-      content: '您选择了'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      deliveryTime: 'Please select the delivery time',
-      changeTitle: 'Change Title',
-      time1: 'February 23rd(Today)',
-      time2: 'February 24th(Wednesday)',
-      title: 'Multiple dates and times can be selected',
-      content: 'Your choose'
-    }
-  });
-export default defineComponent({
-  setup() {
-    initTranslate();
-    const state = reactive({
-      visible1: false,
-      currentKey1: 0,
-      currentTime1: [] as any[],
-      times1: [
-        {
-          key: 0,
-          list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
-        },
-        {
-          key: 1,
-          list: ['9:00-10:00', '10:00-11:00']
-        }
-      ],
-      visible2: false,
-      currentKey2: 0,
-      currentTime2: [] as any[],
-      times2: [
-        {
-          key: 0,
-          list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
-        },
-        {
-          key: 1,
-          list: ['9:00-10:00', '10:00-11:00']
-        }
-      ],
-      visible3: false
-    });
-
-    const handleChange1 = (pannelKey: number) => {
-      state.currentKey1 = pannelKey;
-      state.currentTime1 = [];
-      state.currentTime1.push({
-        key: state.currentKey1,
-        list: []
-      });
-    };
-
-    const handleClick1 = () => {
-      state.visible1 = true;
-    };
-
-    const selectTime1 = (item: string) => {
-      let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
-      if (curTimeIndex === -1) {
-        state.currentTime1[0]['list'].push(item);
-      } else {
-        state.currentTime1[0]['list'].splice(curTimeIndex, 1);
-      }
-    };
-
-    const handleSelected1 = (obj: any) => {
-      showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
-    };
-
-    const handleChange2 = (pannelKey: number) => {
-      state.currentKey2 = pannelKey;
-      let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
-      if (!curTime) {
-        state.currentTime2.push({
-          key: pannelKey,
-          list: []
-        });
-      }
-    };
-
-    const handleClick2 = () => {
-      state.visible2 = true;
-    };
-
-    const selectTime2 = (item: string) => {
-      let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
-      let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
-      if (curTimeIndex === -1) {
-        state.currentTime2[findIndex]['list'].push(item);
-      } else {
-        state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
-      }
-    };
-
-    const handleSelected2 = (obj: any) => {
-      showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
-    };
-
-    const handleClick3 = () => {
-      state.visible3 = true;
-    };
-
-    onMounted(() => {
-      state.currentTime1.push({
-        key: state.currentKey1,
-        list: []
-      });
-      state.currentTime2.push({
-        key: state.currentKey2,
-        list: []
-      });
-    });
-
-    return {
-      ...toRefs(state),
-      handleChange1,
-      handleSelected1,
-      selectTime1,
-      handleClick1,
-      handleChange2,
-      handleSelected2,
-      selectTime2,
-      handleClick2,
-      handleClick3,
-      translate
-    };
+useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    deliveryTime: '请选择配送时间',
+    changeTitle: '更改标题',
+    time1: '2月23日(今天)',
+    time2: '2月24日(星期三)',
+    title: '可选择多个日期时间',
+    content: '您选择了'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    deliveryTime: 'Please select the delivery time',
+    changeTitle: 'Change Title',
+    time1: 'February 23rd(Today)',
+    time2: 'February 24th(Wednesday)',
+    title: 'Multiple dates and times can be selected',
+    content: 'Your choose'
   }
+});
+const state = reactive({
+  visible1: false,
+  currentKey1: 0,
+  currentTime1: [] as any[],
+  times1: [
+    {
+      key: 0,
+      list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
+    },
+    {
+      key: 1,
+      list: ['9:00-10:00', '10:00-11:00']
+    }
+  ],
+  visible2: false,
+  currentKey2: 0,
+  currentTime2: [] as any[],
+  times2: [
+    {
+      key: 0,
+      list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
+    },
+    {
+      key: 1,
+      list: ['9:00-10:00', '10:00-11:00']
+    }
+  ],
+  visible3: false
+});
+
+const handleChange1 = (pannelKey: number) => {
+  state.currentKey1 = pannelKey;
+  state.currentTime1 = [];
+  state.currentTime1.push({
+    key: state.currentKey1,
+    list: []
+  });
+};
+
+const handleClick1 = () => {
+  state.visible1 = true;
+};
+
+const selectTime1 = (item: string) => {
+  let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
+  if (curTimeIndex === -1) {
+    state.currentTime1[0]['list'].push(item);
+  } else {
+    state.currentTime1[0]['list'].splice(curTimeIndex, 1);
+  }
+};
+
+const handleSelected1 = (obj: any) => {
+  showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
+};
+
+const handleChange2 = (pannelKey: number) => {
+  state.currentKey2 = pannelKey;
+  let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
+  if (!curTime) {
+    state.currentTime2.push({
+      key: pannelKey,
+      list: []
+    });
+  }
+};
+
+const handleClick2 = () => {
+  state.visible2 = true;
+};
+
+const selectTime2 = (item: string) => {
+  let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
+  let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
+  if (curTimeIndex === -1) {
+    state.currentTime2[findIndex]['list'].push(item);
+  } else {
+    state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
+  }
+};
+
+const handleSelected2 = (obj: any) => {
+  showToast.text(`${translate('content')}：${JSON.stringify(obj)}`);
+};
+
+const handleClick3 = () => {
+  state.visible3 = true;
+};
+
+onMounted(() => {
+  state.currentTime1.push({
+    key: state.currentKey1,
+    list: []
+  });
+  state.currentTime2.push({
+    key: state.currentKey2,
+    list: []
+  });
 });
 </script>
 

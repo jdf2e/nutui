@@ -51,6 +51,7 @@ const indexList = [
 test('should render elevator list height after height props to be 200', () => {
   const wrapper = mount(Elevator, {
     props: {
+      indexList,
       height: 200
     }
   });

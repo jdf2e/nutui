@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-countdown">
     <template v-if="slots.default">
       <slot></slot>
     </template>
@@ -13,7 +13,11 @@ import { toRefs, computed, watch, reactive, onBeforeMount } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { getTimeStamp } from './util';
 import { padZero } from '@/packages/utils/util';
-const { componentName, create, translate } = createComponent('countdown');
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('countdown');
+const cN = 'NutCountdown';
+
 export default create({
   props: {
     modelValue: {
@@ -76,19 +80,13 @@ export default create({
   ],
 
   setup(props: any, { emit, slots }) {
+    const translate = useLocale(cN);
     const state = reactive({
       restTime: 0, // 倒计时剩余时间时间
       timer: null,
       counting: !props.paused && props.autoStart, // 是否处于倒计时中
       handleEndTime: Date.now(), // 最终截止时间
       diffTime: 0 // 设置了 startTime 时，与 date.now() 的差异
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const renderTime = computed(() => {
@@ -275,7 +273,6 @@ export default create({
     return {
       ...toRefs(props),
       slots,
-      classes,
       start,
       pause,
       renderTime,

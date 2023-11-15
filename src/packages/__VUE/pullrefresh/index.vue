@@ -1,5 +1,5 @@
 <template>
-  <div ref="scroller" :class="classes" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+  <div ref="scroller" class="nut-pull-refresh" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <div class="nut-pull-refresh-container" :style="getStyle">
       <div class="nut-pull-refresh-container-topbox" :style="getHeightStyle">
         <Loading
@@ -21,14 +21,17 @@
 <script lang="ts">
 import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('pull-refresh');
+const { create } = createComponent('pull-refresh');
 import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import { Loading } from '@nutui/icons-vue';
+import { useLocale } from '@/packages/utils/useLocale';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
+
+const cN = 'NutPullRefresh';
 
 export default create({
   props: {
@@ -39,20 +42,20 @@ export default create({
 
     pullingTxt: {
       type: String,
-      default: translate('pulling')
+      default: ''
     },
     loosingTxt: {
       type: String,
-      default: translate('loosing')
+      default: ''
     },
     loadingTxt: {
       type: String,
-      default: translate('loading')
+      default: ''
     },
 
     completeTxt: {
       type: String,
-      default: translate('complete')
+      default: ''
     },
     headHeight: {
       type: [String, Number],
@@ -77,6 +80,7 @@ export default create({
   components: { Loading },
 
   setup(props, { emit, slots }) {
+    const translate = useLocale(cN);
     const touch: any = useTouch();
     const scroller = ref<HTMLElement>();
     const scrollParent = useScrollParent(scroller);
@@ -91,23 +95,16 @@ export default create({
       status: 'normal'
     });
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
     const getPullStatus = computed(() => {
       switch (state.status) {
         case 'pulling':
-          return !slots.pulling ? props.pullingTxt : '';
+          return !slots.pulling ? props.pullingTxt || translate('pulling') : '';
         case 'loosing':
-          return !slots.loosing ? props.loosingTxt : '';
+          return !slots.loosing ? props.loosingTxt || translate('loosing') : '';
         case 'loading':
-          return !slots.loading ? props.loadingTxt : '';
+          return !slots.loading ? props.loadingTxt || translate('loading') : '';
         case 'complete':
-          return !slots.complete ? props.completeTxt : '';
+          return !slots.complete ? props.completeTxt || translate('complete') : '';
         default:
           break;
       }
@@ -227,7 +224,6 @@ export default create({
     );
 
     return {
-      classes,
       scroller,
       ...toRefs(state),
       touchStart,

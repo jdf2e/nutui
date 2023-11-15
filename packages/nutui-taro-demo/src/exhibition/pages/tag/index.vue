@@ -1,6 +1,5 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <DemoHeader />
+  <Demo>
     <nut-cell-group title="基础用法">
       <nut-cell title="default 类型">
         <template #link>
@@ -47,7 +46,7 @@
       >
       <nut-cell title="可关闭标签">
         <template #link>
-          <nut-tag v-if="show" closeable @close="close" type="primary">标签</nut-tag>
+          <nut-tag v-if="show" closeable type="primary" @close="close">标签</nut-tag>
         </template></nut-cell
       >
     </nut-cell-group>
@@ -60,7 +59,7 @@
       >
       <nut-cell title="文字颜色">
         <template #link>
-          <nut-tag color="#E9E9E9" textColor="#999999">标签</nut-tag>
+          <nut-tag color="#E9E9E9" text-color="#999999">标签</nut-tag>
         </template>
       </nut-cell>
       <nut-cell title="空心颜色">
@@ -69,15 +68,11 @@
         </template>
       </nut-cell>
     </nut-cell-group>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import DemoHeader from '../../../components/header.vue';
-
-const env = Taro.getEnv();
 const show = ref(true);
 const close = () => {
   show.value = false;

@@ -1,15 +1,15 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <DocHeader />
+  <Demo
+    >=
     <h2>基础用法</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
     </nut-card>
     <h2>自定义商品标签</h2>
@@ -17,10 +17,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #prolist>
         <div class="search_prolist_attr">
@@ -35,10 +35,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #prolist>
         <div class="search_prolist_attr">
@@ -60,10 +60,10 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #shop-tag>
         <div>这里是自定义区域</div>
@@ -74,24 +74,21 @@
       :img-url="state.imgUrl"
       :title="state.title"
       :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
+      :vip-price="state.vipPrice"
+      :shop-desc="state.shopDesc"
       :delivery="state.delivery"
-      :shopName="state.shopName"
+      :shop-name="state.shopName"
     >
       <template #footer>
         <div class="customize">自定义</div>
       </template>
     </nut-card>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import DocHeader from '../../../components/header.vue';
 
-const env = Taro.getEnv();
 const state = reactive({
   imgUrl:
     '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',

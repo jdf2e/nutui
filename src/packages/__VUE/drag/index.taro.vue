@@ -2,8 +2,7 @@
   <view
     :id="'myDrag' + refRandomId"
     ref="myDrag"
-    :class="classes"
-    class="myDrag"
+    class="nut-taro-drag myDrag"
     catchtouchmove="true"
     :style="{
       transform: ` translate(${state.left + 'px'}, ${state.top + 'px'})`,
@@ -18,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
@@ -75,12 +74,6 @@ export default create({
       } as Record<string, any>
     });
 
-    const classes = computed(() => {
-      const prefixCls = 'nut-taro-drag';
-      return {
-        [prefixCls]: true
-      };
-    });
     const domElem = Taro.getSystemInfoSync();
     function getInfo() {
       useTaroRect(myDrag).then(
@@ -234,7 +227,6 @@ export default create({
       (myDrag as any).value.removeEventListener('touchend', touchEnd);
     });
     return {
-      classes,
       myDrag,
       touchStart,
       touchMove,

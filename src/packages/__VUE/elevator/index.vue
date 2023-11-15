@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-elevator">
     <view ref="listview" class="nut-elevator__list" :style="{ height: isNaN(+height) ? height : `${height}px` }">
       <view v-for="item in indexList" :key="item[acceptKey]" :ref="setListGroup" class="nut-elevator__list__item">
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
@@ -16,9 +16,9 @@
           <slot v-else :item="subitem"></slot>
         </view>
       </view>
-      <view v-show="scrollY > 0" v-if="isSticky" class="nut-elevator__list__fixed" :style="fixedStyle">
-        <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
-      </view>
+    </view>
+    <view v-show="scrollY > 0 && isSticky" class="nut-elevator__list__fixed">
+      <view class="nut-elevator__list__fixed-title">{{ indexList[currentIndex][acceptKey] }}</view>
     </view>
     <view v-show="scrollStart" v-if="indexList.length" class="nut-elevator__code--current">{{
       indexList[codeIndex][acceptKey]
@@ -43,7 +43,7 @@ import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropT
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
-const { componentName, create } = createComponent('elevator');
+const { create } = createComponent('elevator');
 
 export default create({
   props: {
@@ -93,19 +93,6 @@ export default create({
       scrollY: 0,
       diff: -1,
       fixedTop: 0
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
-    const fixedStyle = computed(() => {
-      return {
-        transform: `translate3d(0, ${state.scrollY + state.fixedTop}px, 0)`
-      };
     });
 
     const clientHeight = computed(() => {
@@ -196,7 +183,9 @@ export default create({
     };
 
     onMounted(() => {
-      listview.value.addEventListener('scroll', listViewScroll);
+      if (listview.value) {
+        listview.value.addEventListener('scroll', listViewScroll);
+      }
     });
 
     useExpose({
@@ -232,9 +221,7 @@ export default create({
     );
 
     return {
-      classes,
       ...toRefs(state),
-      fixedStyle,
       clientHeight,
       setListGroup,
       listview,

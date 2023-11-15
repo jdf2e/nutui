@@ -1,55 +1,51 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <nut-cell :isLink="true" @click="showKeyBoard(1)" title="默认键盘"></nut-cell>
-    <nut-number-keyboard overlay v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
+  <Demo>
+    <nut-cell :is-link="true" title="默认键盘" @click="showKeyBoard(1)"></nut-cell>
+    <nut-number-keyboard v-model:visible="visible1" overlay @input="input" @delete="onDelete" @close="close(1)">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(2)" title="带右侧栏键盘"></nut-cell>
+    <nut-cell :is-link="true" title="带右侧栏键盘" @click="showKeyBoard(2)"></nut-cell>
     <nut-number-keyboard
+      v-model:visible="visible2"
       type="rightColumn"
       overlay
-      v-model:visible="visible2"
       :custom-key="customKey1"
       @input="input"
       @close="close(2)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(3)" title="随机数键盘"></nut-cell>
+    <nut-cell :is-link="true" title="随机数键盘" @click="showKeyBoard(3)"></nut-cell>
     <nut-number-keyboard
+      v-model:visible="visible3"
       type="rightColumn"
       overlay
-      v-model:visible="visible3"
-      :randomKeys="true"
+      :random-keys="true"
       :custom-key="customKey1"
       @input="input"
       @close="close(3)"
     >
     </nut-number-keyboard>
 
-    <nut-cell :isLink="true" @click="showKeyBoard(4)" title="带标题栏键盘"></nut-cell>
+    <nut-cell :is-link="true" title="带标题栏键盘" @click="showKeyBoard(4)"></nut-cell>
     <nut-number-keyboard
+      v-model:visible="visible4"
       title="默认键盘"
       overlay
-      v-model:visible="visible4"
       :custom-key="customKey2"
       @input="input"
       @close="close(4)"
     >
     </nut-number-keyboard>
-    <nut-cell :isLink="true" @click="showKeyBoard(6)" title="身份证键盘"></nut-cell>
-    <nut-number-keyboard overlay v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    <nut-cell :is-link="true" title="身份证键盘" @click="showKeyBoard(6)"></nut-cell>
+    <nut-number-keyboard v-model:visible="visible6" overlay :custom-key="customKey3" @input="input" @close="close(6)">
     </nut-number-keyboard>
-    <nut-cell :isLink="true" :desc="value" @click="showKeyBoard(5)" title="双向绑定"></nut-cell>
-    <nut-number-keyboard overlay v-model:visible="visible5" v-model="value" maxlength="6" @close="close(5)">
+    <nut-cell :is-link="true" :desc="value" title="双向绑定" @click="showKeyBoard(5)"></nut-cell>
+    <nut-number-keyboard v-model:visible="visible5" v-model="value" overlay maxlength="6" @close="close(5)">
     </nut-number-keyboard>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const visible1 = ref(false);
 const visible2 = ref(false);

@@ -33,15 +33,20 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import InputNumber from '../inputnumber/index.taro.vue';
+import NutInputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
-const { create, translate } = createComponent('ecard');
+import { useLocale } from '@/packages/utils/useLocale';
+
 export interface dataList {
   price: string | number;
 }
+
+const { create } = createComponent('ecard');
+const cN = 'NutEcard';
+
 export default create({
   components: {
-    [InputNumber.name]: InputNumber
+    NutInputNumber
   },
   props: {
     chooseText: {
@@ -73,7 +78,7 @@ export default create({
       default: 9999
     },
     modelValue: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     placeholder: {
@@ -88,6 +93,7 @@ export default create({
   emits: ['inputChange', 'changeStep', 'inputClick', 'change', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const currentIndex: Ref<number | null | string> = ref(null);
     const currentValue: Ref<number | null | string> = ref(null);
     const inputValue: Ref<string | undefined | number> = ref();

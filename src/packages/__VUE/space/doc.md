@@ -107,19 +107,19 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 ### Props
 
-| 属性      | 说明                                                                              | 类型                                     | 默认值       |
-| --------- | --------------------------------------------------------------------------------- | ---------------------------------------- | ------------ |
-| direction | 间距方向，可选值 `vertical` `horizontal`                                          | string                                   | `horizontal` |
-| align     | 交叉轴对齐方式，可选值 `start` `end` `center` `baseline`                          | string                                   | `-`          |
-| justify   | 主轴对齐方式，可选值 `start` `end` `center` `between` `around` `evenly` `stretch` | string                                   | `-`          |
-| wrap      | 是否自动换行，仅在 horizontal 时有效                                              | boolean                                  | `false`      |
-| fill      | 是否让 Space 变为一个块级元素，填充整个父元素                                     | boolean                                  | `false`      |
-| gutter    | 间距大小，如 20px 2em，默认单位为 px，支持数组形式来分别设置横向和纵向间距        | number \| string \| number[] \| string[] | `-`          |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| direction | 间距方向，可选值 `vertical` `horizontal` | string | `horizontal` |
+| align | 交叉轴对齐方式，可选值 `start` `end` `center` `baseline` | string | `-` |
+| justify | 主轴对齐方式，可选值 `start` `end` `center` `between` `around` `evenly` `stretch` | string | `-` |
+| wrap | 是否自动换行，仅在 horizontal 时有效 | boolean | `false` |
+| fill | 是否让 Space 变为一个块级元素，填充整个父元素 | boolean | `false` |
+| gutter | 间距大小，如 20px 2em，默认单位为 px，支持数组形式来分别设置横向和纵向间距 | number \| string \| number[] \| string[] | `-` |
 
 ### Slots
 
-| Name    | Description  |
-| ------- | ------------ |
+| Name | Description |
+| --- | --- |
 | default | Default slot |
 
 ## 主题定制
@@ -128,6 +128,6 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称               | 默认值 | 描述     |
-| ------------------ | ------ | -------- |
-| \--nutui-space-gap | `8px`  | 间距大小 |
+| 名称 | 默认值 | 描述 |
+| --- | --- | --- |
+| \--nutui-space-gap | `8px` | 间距大小 |

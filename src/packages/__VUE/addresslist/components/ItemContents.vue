@@ -26,9 +26,12 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('address-list-item');
-const { translate } = createComponent('address-list');
 import { Del, Edit } from '@nutui/icons-vue';
+
+const cN = 'NutAddressList';
+
 export default create({
   components: { Del, Edit },
   props: {
@@ -40,6 +43,7 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const delClick = (event: Event) => {
       emit('delIcon', event, props.item);
       event.stopPropagation();

@@ -44,9 +44,9 @@ function toggleDark() {
     <div class="links">
       <VersionSelect
         :model-value="nutuiVersion"
-        @update:model-value="setNutUIVersion"
         pkg="@nutui/nutui"
         label="NutUI Version"
+        @update:model-value="setNutUIVersion"
       >
       </VersionSelect>
       <button title="Toggle dark mode" class="toggle-dark" @click="toggleDark">

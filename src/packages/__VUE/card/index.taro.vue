@@ -30,13 +30,13 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import Price from '../price/index.taro.vue';
-import Tag from '../tag/index.taro.vue';
+import NutPrice from '../price/index.taro.vue';
+import NutTag from '../tag/index.taro.vue';
 const { create } = createComponent('card');
 export default create({
   components: {
-    [Price.name]: Price,
-    [Tag.name]: Tag
+    NutPrice,
+    NutTag
   },
   props: {
     imgUrl: {
