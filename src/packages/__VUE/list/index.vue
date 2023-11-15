@@ -197,6 +197,8 @@ export default create({
           resetAllVirtualParam();
           return;
         }
+      }, {
+        immediate: true
       }
     );
 
