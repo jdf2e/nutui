@@ -13,7 +13,8 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../src/packages')
+    '@/packages': path.resolve(__dirname, '../../../src/packages'),
+    '@/sites': path.resolve(__dirname, '../../../src/sites')
   },
   sass: {
     resource: [path.resolve(__dirname, '../../../src/packages/styles/variables.scss')]
