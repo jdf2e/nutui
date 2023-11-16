@@ -227,6 +227,8 @@ export default create({
       state.scrollTop = scrollTop;
     };
 
+    initCachedPosition();
+
     watch(
       () => props.listData,
       (val: any[]) => {
@@ -240,9 +242,6 @@ export default create({
           resetAllVirtualParam();
           return;
         }
-      },
-      {
-        immediate: true
       }
     );
 
