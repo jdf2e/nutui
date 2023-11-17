@@ -1,7 +1,7 @@
 <template>
   <nut-cell desc="Description">
     <template #title>
-      <span>Title <b style="color: red">1</b></span>
+      <span style="color: red">Title</span>
     </template>
   </nut-cell>
 </template>

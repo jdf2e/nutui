@@ -1,5 +1,5 @@
 <template>
-  <nut-cell title="Name" desc="Description">
+  <nut-cell title="Icon Slot" desc="Description">
     <template #icon>
       <My />
     </template>
