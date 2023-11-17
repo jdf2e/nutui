@@ -21,7 +21,19 @@
       </view>
     </view>
     <view v-if="mode == 'simple'" class="nut-pagination-contain">
-      <view class="nut-pagination-simple">{{ modelValue }}/{{ countRef }}</view>
+      <view class="nut-pagination-simple">
+        <view v-if="!showSkip" class="nut-pagination-simple-page-number" @click="changeState">{{ modelValue }}</view>
+        <input
+          v-if="showSkip"
+          ref="skip"
+          v-model="skipValue"
+          class="nut-pagination-simple-page-input"
+          @input="onInput"
+          @keyup.enter="skipPage"
+          @blur="onBlurInput"
+        />
+        /{{ countRef }}
+      </view>
     </view>
     <view
       :class="['nut-pagination-next', modelValue >= countRef ? 'disabled' : '']"
@@ -34,7 +46,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watchEffect, computed } from 'vue';
+import { toRefs, watchEffect, computed, ref, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('pagination');
@@ -87,6 +99,31 @@ export default create({
   setup(props, { emit }) {
     const translate = useLocale(cN);
     const { modelValue, mode, showPageSize, forceEllipses } = toRefs(props);
+    const skipValue = ref(modelValue.value);
+    const showSkip = ref(false);
+    const skip = ref<HTMLElement>();
+
+    // 点击页码
+    const changeState = () => {
+      skipValue.value = modelValue.value;
+      showSkip.value = true;
+      nextTick(() => {
+        skip.value && skip.value.focus(); //自动聚焦
+      });
+    };
+    // 输入时触发
+    const onInput = (event: any) => {
+      skipValue.value = event.target.value.replace(/\D/g, '');
+    };
+    // 回车跳转对应页码
+    const skipPage = () => {
+      select(Number(skipValue.value), true);
+      showSkip.value = false;
+    };
+    // 输入框失去焦点
+    const onBlurInput = () => {
+      showSkip.value = false;
+    };
 
     //计算页面的数量
     const countRef = computed(() => {
@@ -155,7 +192,14 @@ export default create({
       mode,
       pages,
       forceEllipses,
-      translate
+      translate,
+      changeState,
+      showSkip,
+      skipValue,
+      skipPage,
+      onInput,
+      skip,
+      onBlurInput
     };
   }
 });

@@ -66,4 +66,13 @@
     background-color: $pagination-disable-background-color;
     cursor: not-allowed;
   }
+
+  &-simple-page-number {
+    cursor: pointer;
+  }
+
+  &-simple-page-input {
+    width: 18px;
+    height: 20px;
+  }
 }
