@@ -52,14 +52,16 @@
         margin-right: $form-item-required-margin-right;
       }
     }
-    &.nut-form-item__star-right {
-      &::before {
-        content: none;
-      }
-      &::after {
-        content: '*';
-        color: $form-item-required-color;
-        margin-left: $form-item-required-margin-right;
+    &.required {
+      &.nut-form-item__star-right {
+        &::before {
+          content: none;
+        }
+        &::after {
+          content: '*';
+          color: $form-item-required-color;
+          margin-left: $form-item-required-margin-right;
+        }
       }
     }
   }
