@@ -43,12 +43,12 @@ watchEffect(() => {
 <template>
   <Header :store="store" />
   <Repl
-    @keydown.ctrl.s.prevent
-    @keydown.meta.s.prevent
     :editor="CodeMirror"
     :store="store"
-    :showImportMap="false"
-    :showTsConfig="false"
+    :show-import-map="false"
+    :show-ts-config="false"
+    @keydown.ctrl.s.prevent
+    @keydown.meta.s.prevent
   />
 </template>
 

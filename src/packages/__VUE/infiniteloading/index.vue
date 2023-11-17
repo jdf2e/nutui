@@ -1,5 +1,5 @@
 <template>
-  <view ref="scroller" :class="classes">
+  <view ref="scroller" class="nut-infinite-loading">
     <view class="nut-infinite__container">
       <slot></slot>
     </view>
@@ -22,24 +22,16 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  onActivated,
-  onDeactivated,
-  ref,
-  watch,
-  nextTick
-} from 'vue';
+import { toRefs, onMounted, onUnmounted, reactive, onActivated, onDeactivated, ref, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('infinite-loading');
+const { create } = createComponent('infinite-loading');
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { Loading } from '@nutui/icons-vue';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutInfiniteLoading';
 
 export default create({
   props: {
@@ -73,6 +65,7 @@ export default create({
     Loading
   },
   setup(props, { emit, slots }) {
+    const translate = useLocale(cN);
     const scroller = ref<HTMLElement>();
     const scrollParent = useScrollParent(scroller);
     const state = reactive({
@@ -81,13 +74,6 @@ export default create({
       y: 0,
       x: 0,
       distance: 0
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const calculateTopPosition = (el: HTMLElement): number => {
@@ -180,7 +166,6 @@ export default create({
     );
 
     return {
-      classes,
       scroller,
       ...toRefs(state),
       translate,

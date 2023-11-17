@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <nut-cell-group title="基础用法">
       <nut-cell>
         <nut-radio-group v-model="state.radioVal">
@@ -80,15 +79,12 @@
       </nut-cell>
       <nut-cell title="当前选中值" :desc="state.radioVal6"></nut-cell>
     </nut-cell-group>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { Checklist } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 
 const state = reactive({
   radioVal: '1',

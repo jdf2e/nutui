@@ -60,7 +60,10 @@
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { throttle } from '@/packages/utils/throttle';
-const { create, translate } = createComponent('video');
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('video');
+const cN = 'NutVideo';
 
 export default create({
   props: {
@@ -93,6 +96,7 @@ export default create({
   emits: ['click', 'play', 'pause', 'playend', 'time'],
 
   setup(props, { emit, expose }) {
+    const translate = useLocale(cN);
     const state = reactive({
       videoElm: null,
       initial: true, //控制封面的显示

@@ -71,12 +71,12 @@ const { create } = createComponent('popover');
 import { useTaroRect, rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect';
 import { isArray } from '@/packages/utils/util';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     visible: { type: Boolean, default: false },

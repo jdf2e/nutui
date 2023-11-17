@@ -43,7 +43,7 @@ export default {
     return {
       title: '',
       path: '/pages/index/index',
-      success: function (res) {}
+      success: function () {}
     };
   },
   // onShareTimeline() {

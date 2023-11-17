@@ -28,6 +28,7 @@
       :show-sub-title="showSubTitle"
       :to-date-animation="toDateAnimation"
       :first-day-of-week="firstDayOfWeek"
+      :disabled-date="disabledDate"
       @update="update"
       @close="close"
       @choose="choose"
@@ -68,6 +69,7 @@
     :to-date-animation="toDateAnimation"
     :show-today="showToday"
     :first-day-of-week="firstDayOfWeek"
+    :disabled-date="disabledDate"
     @update="update"
     @close="close"
     @choose="choose"
@@ -91,16 +93,16 @@
 import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
-import CalendarItem from '../calendaritem/index.vue';
-import Popup from '../popup/index.vue';
+import NutCalendarItem from '../calendaritem/index.vue';
+import NutPopup from '../popup/index.vue';
 import Utils from '@/packages/utils/date';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
   components: {
-    [CalendarItem.name]: CalendarItem,
-    [Popup.name]: Popup
+    NutCalendarItem,
+    NutPopup
   },
   props: {
     type: {
@@ -170,7 +172,8 @@ export default create({
     lockScroll: {
       type: Boolean,
       default: true
-    }
+    },
+    disabledDate: Function
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
   setup(props, { emit, slots }) {
@@ -211,7 +214,7 @@ export default create({
       emit('update:visible', false);
     };
 
-    const choose = (param: string) => {
+    const choose = (param: any) => {
       close();
       emit('choose', param);
     };
@@ -219,7 +222,7 @@ export default create({
     const closePopup = () => {
       close();
     };
-    const select = (param: string) => {
+    const select = (param: any) => {
       // close();
       emit('select', param);
     };

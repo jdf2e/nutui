@@ -50,13 +50,19 @@ const refreshFun = () => {
 
 ### 自定义文案
 
-下拉刷新有 4 个状态：`'loading' | 'loosing' | 'pulling' `，分别对应属性 `pullingTxt、loosingTxt、loadingTxt` ，复杂样式可以通过 slot 插槽实现。
+下拉刷新有 4 个状态：`'loading' | 'loosing' | 'pulling' | 'complete'`，分别对应属性 `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，复杂样式可以通过 slot 插槽实现。
 
 :::demo
 
 ```vue
 <template>
-  <nut-pull-refresh v-model="refresh" loosing-txt="松开吧" loading-txt="玩命加载中..." @refresh="refreshFun">
+  <nut-pull-refresh
+    v-model="refresh"
+    loosing-txt="松开吧"
+    loading-txt="玩命加载中..."
+    :complete-duration="1000"
+    @refresh="refreshFun"
+  >
     <template #pulling-txt>
       <div>用力拉</div>
     </template>
@@ -124,29 +130,32 @@ const refreshFun = () => {
 
 ### Props
 
-| 参数          | 说明                                       | 类型             | 默认值      |
-| ------------- | ------------------------------------------ | ---------------- | ----------- |
-| v-model       | 是否触发下拉刷新                           | boolean          | `false`     |
-| pull-distance | 触发下拉刷新的距离                         | number \| string | `50`        |
-| head-height   | 顶部内容高度                               | number \| string | `50`        |
-| loading-icon  | 加载中状态时，`loading` 图标。为空表示去掉 | string           | `loading`   |
-| pulling-txt   | 下拉过程提示文案                           | string           | `下拉刷新`  |
-| loosing-txt   | 释放过程提示文案                           | string           | `释放刷新`  |
-| loading-txt   | 加载过程提示文案                           | string           | `加载中...` |
-| duration      | 下拉动画加载时长                           | number           | `0.3 `      |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 是否触发下拉刷新 | boolean | `false` |
+| pull-distance | 触发下拉刷新的距离 | number \| string | `50` |
+| head-height | 顶部内容高度 | number \| string | `50` |
+| loading-icon | 加载中状态时，`loading` 图标。为空表示去掉 | string | `loading` |
+| pulling-txt | 下拉过程提示文案 | string | `下拉刷新` |
+| loosing-txt | 释放过程提示文案 | string | `释放刷新` |
+| loading-txt | 加载过程提示文案 | string | `加载中...` |
+| complete-txt | 加载完成提示文案 | string | `刷新成功` |
+| complete-duration | 加载完成时显示文字的持续时间(毫秒),为`0`时不展示加载完成文案 | number | `0` |
+| duration | 下拉动画加载时长 | number | `0.3 ` |
 
 ### Events
 
-| 事件名  | 说明                     | 回调参数                        |
-| ------- | ------------------------ | ------------------------------- |
-| change  | 下拉过程或状态改变时触发 | {status:string,distance:number} |
-| refresh | 下拉刷新事件回调         | -                               |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| change | 下拉过程或状态改变时触发 | {status:string,distance:number} |
+| refresh | 下拉刷新事件回调 | - |
 
 ### Slots
 
-| 名称    | 说明               |
-| ------- | ------------------ |
+| 名称 | 说明 |
+| --- | --- |
 | pulling | 下拉过程的顶部内容 |
 | loosing | 释放过程中顶部内容 |
 | loading | 加载过程中顶部内容 |
-| default | 自定义内容         |
+| complete | 完成时头部的内容 |
+| default | 自定义内容 |

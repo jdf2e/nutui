@@ -1,5 +1,5 @@
 <template>
-  <view v-if="info && Object.keys(info)" :class="classes">
+  <view v-if="info && Object.keys(info)" class="nut-comment">
     <!-- 根据展示信息的多少，分为3种展示风格：simple，base，complex -->
     <comment-header :type="headerType" :info="info" :labels="labels" @handle-click="handleClick">
       <template #labels>
@@ -42,12 +42,12 @@
 </template>
 <script lang="ts">
 import { computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('comment');
 import { Right } from '@nutui/icons-vue';
+import { createComponent } from '@/packages/utils/create';
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
+import { useLocale } from '@/packages/utils/useLocale';
 
 interface VideosType {
   id: number | string;
@@ -59,6 +59,9 @@ interface ImagesType {
   bigImgUrl: string;
   imgUrl: string;
 }
+
+const { create } = createComponent('comment');
+const cN = 'NutComment';
 
 export default create({
   props: {
@@ -115,13 +118,7 @@ export default create({
   emits: ['click', 'clickImages', 'clickOperate'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
+    const translate = useLocale(cN);
     const conEllipsis = computed(() => {
       if (props.ellipsis) return props.ellipsis;
 
@@ -139,7 +136,7 @@ export default create({
       emit('clickImages', value);
     };
 
-    return { classes, conEllipsis, clickOperate, handleClick, clickImages, translate };
+    return { conEllipsis, clickOperate, handleClick, clickImages, translate };
   }
 });
 </script>

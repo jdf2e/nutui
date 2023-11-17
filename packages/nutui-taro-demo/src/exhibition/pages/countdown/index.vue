@@ -1,37 +1,36 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-countdown :endTime="state.end" @end="onend"></nut-countdown>
+      <nut-countdown :end-time="state.end" @end="onend"></nut-countdown>
     </nut-cell>
     <h2>自定义格式</h2>
     <nut-cell>
-      <nut-countdown :endTime="state.end" format="DD 天 HH 时 mm 分 ss 秒" />
+      <nut-countdown :end-time="state.end" format="DD 天 HH 时 mm 分 ss 秒" />
     </nut-cell>
 
     <h2>毫秒级渲染</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="state.end" millisecond format="HH:mm:ss:SS" />
+      <nut-countdown :end-time="state.end" millisecond format="HH:mm:ss:SS" />
     </nut-cell>
 
     <h2>以服务端的时间为准</h2>
 
     <nut-cell>
-      <nut-countdown :startTime="state.serverTime" :endTime="state.end" />
+      <nut-countdown :start-time="state.serverTime" :end-time="state.end" />
     </nut-cell>
 
     <h2>异步更新结束时间</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="state.asyncEnd" />
+      <nut-countdown :end-time="state.asyncEnd" />
     </nut-cell>
 
     <h2>控制开始和暂停的倒计时</h2>
 
     <nut-cell>
-      <nut-countdown :endTime="state.end" :paused="state.paused" @paused="onpaused" @restart="onrestart" />
+      <nut-countdown :end-time="state.end" :paused="state.paused" @paused="onpaused" @restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
         <nut-button type="primary" size="small" @click="toggle">{{ state.paused ? 'start' : 'stop' }}</nut-button>
       </div>
@@ -41,7 +40,7 @@
 
     <nut-cell>
       <span>
-        <nut-countdown v-model="state.resetTime" :endTime="state.end">
+        <nut-countdown v-model="state.resetTime" :end-time="state.end">
           <div class="countdown-part-box">
             <div class="part-item-symbol">{{ state.resetTime.d }}天</div>
             <div class="part-item h">{{ state.resetTime.h }}</div>
@@ -56,7 +55,7 @@
 
     <h2>手动控制</h2>
     <nut-cell>
-      <nut-countdown time="20000" ref="Countdown" :autoStart="false" format="ss:SS" />
+      <nut-countdown ref="Countdown" time="20000" :auto-start="false" format="ss:SS" />
     </nut-cell>
 
     <nut-grid :column-num="3">
@@ -64,14 +63,11 @@
       <nut-grid-item><nut-button type="primary" @click="pause">暂停</nut-button></nut-grid-item>
       <nut-grid-item><nut-button type="primary" @click="reset">重置</nut-button></nut-grid-item>
     </nut-grid>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const Countdown = ref<any>(null);
 const state = reactive({
   serverTime: Date.now() - 20 * 1000,

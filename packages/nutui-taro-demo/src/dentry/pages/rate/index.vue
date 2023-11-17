@@ -1,25 +1,24 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell class="cell">
       <nut-rate v-model="state.val" />
     </nut-cell>
 
     <h2>半星</h2>
-    <nut-cell class="cell"><nut-rate allow-half v-model="state.val1"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val1" allow-half></nut-rate></nut-cell>
 
     <h2>自定义 icon </h2>
-    <nut-cell class="cell"><nut-rate :custom-icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val2" :custom-icon="HeartFill"></nut-rate></nut-cell>
 
     <h2>自定义数量</h2>
-    <nut-cell class="cell"><nut-rate count="10" v-model="state.val3"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val3" count="10"></nut-rate></nut-cell>
 
     <h2>自定义颜色</h2>
-    <nut-cell class="cell"><nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val4" active-color="#FFC800"></nut-rate></nut-cell>
 
     <h2>禁用状态</h2>
-    <nut-cell class="cell"><nut-rate disabled v-model="state.val5"></nut-rate></nut-cell>
+    <nut-cell class="cell"><nut-rate v-model="state.val5" disabled></nut-rate></nut-cell>
 
     <h2>只读状态</h2>
     <nut-cell class="cell"><nut-rate v-model="state.val6" readonly></nut-rate></nut-cell>
@@ -29,15 +28,12 @@
 
     <h2>自定义尺寸 35px</h2>
     <nut-cell class="cell"><nut-rate v-model="state.val8" size="35"></nut-rate></nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { HeartFill } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 
 const state = reactive({
   val: 3,

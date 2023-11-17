@@ -32,7 +32,7 @@
 <script lang="ts">
 import { computed, reactive, toRefs, watch, watchEffect } from 'vue';
 import { Close } from '@nutui/icons-vue';
-import Overlay from '../overlay/index.vue';
+import NutOverlay from '../overlay/index.vue';
 import { popupProps } from './props';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popup');
@@ -42,7 +42,7 @@ let _zIndex = initIndex;
 
 export default create({
   components: {
-    [Overlay.name]: Overlay,
+    NutOverlay,
     Close
   },
   props: popupProps,

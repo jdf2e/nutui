@@ -46,8 +46,8 @@ import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.vue';
-import Button from '../../button/index.vue';
-import Swipe from '../../swipe/index.vue';
+import NutButton from '../../button/index.vue';
+import NutSwipe from '../../swipe/index.vue';
 
 export default create({
   props: {
@@ -67,8 +67,8 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem', 'longDown', 'longCopy', 'longSet', 'longDel', 'swipeDel'],
   components: {
     ItemContents,
-    [Button.name]: Button,
-    [Swipe.name]: Swipe
+    NutButton,
+    NutSwipe
   },
 
   setup(props, { emit }) {

@@ -58,7 +58,7 @@ import Taro from '@tarojs/taro';
 import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export class Title {
   title = '';
@@ -72,7 +72,7 @@ const { create } = createComponent('tabs');
 export default create({
   components: {
     JoySmile,
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     modelValue: {

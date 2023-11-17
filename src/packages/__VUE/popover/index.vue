@@ -37,12 +37,12 @@ import { computed, watch, ref, PropType, CSSProperties, onMounted } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
 import { useRect, rect } from '@/packages/utils/useRect';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
 const { create } = createComponent('popover');
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     visible: { type: Boolean, default: false },

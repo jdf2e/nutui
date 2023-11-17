@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-table">
     <view class="nut-table__main" :class="{ 'nut-table__main--striped': striped }">
       <view class="nut-table__main__head">
         <view class="nut-table__main__head__tr">
@@ -50,12 +50,16 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, PropType, reactive, toRefs, watch } from 'vue';
+import { PropType, reactive, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('table');
+const { create } = createComponent('table');
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue-taro';
 import { TableColumnProps } from './types';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutTable';
+
 export default create({
   components: {
     RenderColumn,
@@ -68,15 +72,11 @@ export default create({
     },
     columns: {
       type: Array as PropType<TableColumnProps[]>,
-      default: () => {
-        return [];
-      }
+      default: () => []
     },
     data: {
-      type: Object,
-      default: () => {
-        return {};
-      }
+      type: Object as PropType<any>,
+      default: () => ({})
     },
     summary: {
       type: Function,
@@ -88,15 +88,11 @@ export default create({
     }
   },
   emits: ['sorter'],
-  setup(props: any, { emit }: any) {
+  setup(props: any, { emit }) {
+    const translate = useLocale(cN);
+
     const state = reactive({
       curData: props.data
-    });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const cellClasses = (item: TableColumnProps) => {
@@ -147,7 +143,6 @@ export default create({
 
     return {
       ...toRefs(state),
-      classes,
       cellClasses,
       getColumnItem,
       getColumnItemStyle,

@@ -88,6 +88,7 @@ export abstract class BaseLang {
     pulling: string;
     loosing: string;
     loading: string;
+    complete: string;
   };
 }
 export default BaseLang;

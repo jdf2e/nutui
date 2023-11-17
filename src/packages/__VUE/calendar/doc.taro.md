@@ -218,6 +218,76 @@ const select = (param) => {
 
 :::
 
+### 自定义禁用日期
+
+通过配置`disabled-date`函数回调可实现自定义禁用某些日期为不可选中状态。
+当type类型为`日期区间(range)`时，若是设置了该函数，则需要在选中结果后，自行过滤掉禁用的日期
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="自定义禁用日期"
+    :desc="date ? `${date}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2022-01-01`"
+    :end-date="`2022-11-30`"
+    :disabled-date="disabledDate"
+  >
+  </nut-calendar>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        isVisible: false,
+        date: ''
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setChooseValue = (param) => {
+        state.date = param[3];
+      };
+      const disabledDate = (date) => {
+        const disabledDate = {
+          '2022-01-05': true,
+          '2022-01-06': true,
+          '2022-01-10': true,
+          '2022-01-11': true,
+          '2022-01-12': true,
+          '2022-01-13': true,
+          '2022-01-14': true
+        };
+        return disabledDate[date];
+      };
+      return {
+        ...toRefs(state),
+        openSwitch,
+        closeSwitch,
+        setChooseValue,
+        disabledDate
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### 快捷选择-单选
 
 :::demo
@@ -664,6 +734,7 @@ const setChooseValue = (param) => {
 | show-sub-title | 是否展示日期标题 | boolean | `true` |
 | to-date-animation | 是否启动滚动动画 | boolean | `true` |
 | first-day-of-week | 设置周起始日 | 0-6 | `0` |
+| disabled-date | 一个用来判断该日期是否被禁用的函数，接受一个`年-月-日`作为参数。 应该返回一个 Boolean 值。 | function | `-` |
 
 ### Events
 

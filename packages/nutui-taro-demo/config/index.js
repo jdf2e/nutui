@@ -29,7 +29,7 @@ const config = {
     prebundle: { enable: false }
   },
   mini: {
-    webpackChain(chain, webpack) {
+    webpackChain(chain) {
       chain.merge({
         module: {
           rule: [

@@ -1,6 +1,5 @@
 <template>
-  <div class="demo countup-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="countup-demo">
     <h2>基础用法</h2>
     <div class="show-demo">
       <nut-countup :init-num="0" :end-num="200"></nut-countup>
@@ -35,19 +34,16 @@
       >
       </nut-countup>
       <div class="btnBtn">
-        <nut-button type="danger" @click="startRole" :disabled="data.startFlag">中奖</nut-button>
-        <nut-button type="danger" @click="startRole2" :disabled="data.startFlag">不中奖</nut-button>
+        <nut-button type="danger" :disabled="data.startFlag" @click="startRole">中奖</nut-button>
+        <nut-button type="danger" :disabled="data.startFlag" @click="startRole2">不中奖</nut-button>
       </div>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const data = reactive({
   customNumber: 618,
   bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png',

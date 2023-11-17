@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full">
     <h2>基础用法</h2>
     <nut-textarea v-model="value" />
     <h2>显示字数统计</h2>
@@ -10,14 +9,11 @@
     <h2>只读、禁用</h2>
     <nut-textarea readonly model-value="textarea 只读状态" />
     <nut-textarea disabled model-value="textarea 禁用状态" />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const value = ref('');
 const value2 = ref('');
 const value3 = ref('');

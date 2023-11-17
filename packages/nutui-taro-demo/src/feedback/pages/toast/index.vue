@@ -1,16 +1,15 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-toast
-      :msg="page.state.msg"
       v-model:visible="page.state.show"
+      :msg="page.state.msg"
       :type="page.state.type"
-      @closed="page.methods.onClosed"
       :cover="page.state.cover"
       :title="page.state.title"
       :bottom="page.state.bottom"
       :center="page.state.center"
+      @closed="page.methods.onClosed"
     />
     <nut-cell title="Text 文字提示" is-link @click="page.methods.openToast('text', '网络失败，请稍后再试~')"></nut-cell>
     <nut-cell
@@ -32,14 +31,11 @@
       is-link
       @click="page.methods.openToast('loading', '加载中', true)"
     ></nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const page = {
   state: reactive({
     msg: 'toast',

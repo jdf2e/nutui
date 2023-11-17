@@ -20,8 +20,8 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import { baseProps } from './types';
-import Video from '../video/index.vue';
-import SwiperItem from '../swiperitem/index.vue';
+import NutVideo from '../video/index.vue';
+import NutSwiperItem from '../swiperitem/index.vue';
 const { create } = createComponent('image-preview-item');
 
 export default create({
@@ -50,8 +50,8 @@ export default create({
   },
   emits: ['close', 'scale'],
   components: {
-    [Video.name]: Video,
-    [SwiperItem.name]: SwiperItem
+    NutVideo,
+    NutSwiperItem
   },
 
   setup(props, { emit }) {

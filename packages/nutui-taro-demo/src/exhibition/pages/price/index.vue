@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <DocHeader />
+  <Demo>
     <nut-cell-group title="支持三种尺寸：small、normal、large">
       <nut-cell>
         <nut-price :price="0" size="small" :need-symbol="false" />
@@ -32,14 +31,11 @@
     <nut-cell>
       <nut-price :price="15213.1221" :decimal-digits="3" thousands />
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import DocHeader from '../../../components/header.vue';
-const env = Taro.getEnv();
 const price = ref(0);
 setInterval(() => {
   price.value = Math.random() * 10000000;

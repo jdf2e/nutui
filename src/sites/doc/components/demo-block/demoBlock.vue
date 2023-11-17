@@ -1,5 +1,5 @@
 <template>
-  <div class="online-code" ref="onlineCode">
+  <div ref="onlineCode" class="online-code">
     <slot></slot>
     <div class="online-part">
       <template v-if="codeType === 'vue'">

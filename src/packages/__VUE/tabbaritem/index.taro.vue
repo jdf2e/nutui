@@ -33,11 +33,11 @@
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { Component, ComponentInternalInstance, computed, PropType, getCurrentInstance, inject, reactive } from 'vue';
-import Badge from '../badge/index.taro.vue';
+import NutBadge from '../badge/index.taro.vue';
 const { create } = createComponent('tabbar-item');
 export default create({
   components: {
-    [Badge.name]: Badge
+    NutBadge
   },
   props: {
     tabTitle: {
