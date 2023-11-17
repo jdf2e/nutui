@@ -51,8 +51,6 @@
         color: $form-item-required-color;
         margin-right: $form-item-required-margin-right;
       }
-    }
-    &.required {
       &.nut-form-item__star-right {
         &::before {
           content: none;
