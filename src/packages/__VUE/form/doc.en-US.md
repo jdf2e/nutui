@@ -144,6 +144,7 @@ const dynamicForm = {
     :model-value="formData"
     :rules="{
       name: [
+        { required: true, message: 'Please enter your name' },
         {
           message: 'Name should be at least two characters',
           validator: nameLengthValidator
@@ -152,7 +153,7 @@ const dynamicForm = {
     }"
     ref="ruleForm"
   >
-    <nut-form-item label="Name" prop="name" required :rules="[{ required: true, message: 'Please enter your name' }]">
+    <nut-form-item label="Name" prop="name">
       <nut-input
         class="nut-input-text"
         @blur="customBlurValidate('name')"

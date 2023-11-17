@@ -48,6 +48,7 @@
       :model-value="formData"
       :rules="{
         name: [
+          { required: true, message: '请填写姓名' },
           {
             message: 'Name should be at least two characters',
             validator: nameLengthValidator
@@ -55,7 +56,7 @@
         ]
       }"
     >
-      <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+      <nut-form-item label="姓名" prop="name">
         <nut-input
           v-model="formData.name"
           class="nut-input-text"

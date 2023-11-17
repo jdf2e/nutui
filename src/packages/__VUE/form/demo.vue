@@ -67,6 +67,7 @@
       :model-value="formData"
       :rules="{
         name: [
+          { required: true, message: translate('nameTip') },
           {
             message: '名称两个字以上',
             validator: nameLengthValidator
@@ -74,12 +75,7 @@
         ]
       }"
     >
-      <nut-form-item
-        :label="translate('name')"
-        prop="name"
-        required
-        :rules="[{ required: true, message: translate('nameTip') }]"
-      >
+      <nut-form-item :label="translate('name')" prop="name">
         <nut-input
           v-model="formData.name"
           class="nut-input-text"
