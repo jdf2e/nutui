@@ -13,6 +13,14 @@ export const component = (components: any) => {
       rules: {
         type: Object as PropType<FormRules>,
         default: () => ({})
+      },
+      labelPosition: {
+        type: String as PropType<'left' | 'right' | 'top'>,
+        default: 'left'
+      },
+      starPosition: {
+        type: String as PropType<'left' | 'right'>,
+        default: 'left'
       }
     },
     components,

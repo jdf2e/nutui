@@ -1,14 +1,14 @@
 <template>
   <nut-cell
     class="nut-form-item"
-    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class]"
+    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class, labelPositionClass]"
     :style="$attrs.style"
   >
     <view
       v-if="label || getSlots('label')"
       class="nut-cell__title nut-form-item__label"
       :style="labelStyle"
-      :class="{ required: isRequired }"
+      :class="{ required: isRequired, [starPositionClass]: starPositionClass }"
     >
       <slot name="label">{{ label }}</slot>
     </view>
@@ -71,6 +71,14 @@ export default create({
     bodyAlign: {
       type: String,
       default: ''
+    },
+    labelPosition: {
+      type: String as PropType<'left' | 'right' | 'top'>,
+      default: 'left'
+    },
+    starPosition: {
+      type: String as PropType<'left' | 'right'>,
+      default: 'left'
     }
   },
   components: {
@@ -104,6 +112,18 @@ export default create({
       return props.required || props.rules.some((rule) => rule.required) || formRequired;
     });
 
+    const labelPositionClass = computed(() => {
+      const labelPosition = parentObj.props.labelPosition;
+      const position = props.labelPosition ? props.labelPosition : labelPosition;
+      return position !== 'left' ? `nut-form-item__${position}` : '';
+    });
+
+    const starPositionClass = computed(() => {
+      const starPosition = parentObj.props.starPosition;
+      const position = props.starPosition ? props.starPosition : starPosition;
+      return position !== 'left' ? `nut-form-item__star-${position}` : '';
+    });
+
     const parent = inject('formErrorTip') as any;
     provide('form', {
       props
@@ -126,7 +146,16 @@ export default create({
       } as CSSProperties;
     });
     const getSlots = (name: string) => slots[name];
-    return { parent, labelStyle, bodyStyle, errorMessageStyle, getSlots, isRequired };
+    return {
+      parent,
+      labelStyle,
+      bodyStyle,
+      errorMessageStyle,
+      getSlots,
+      isRequired,
+      labelPositionClass,
+      starPositionClass
+    };
   }
 });
 </script>

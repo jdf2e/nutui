@@ -419,6 +419,8 @@ const addressModule = reactive({
 | --- | --- | --- | --- |
 | model-value | 表单数据对象(使用表单校验时，_必填_) | object |  |
 | rules | 统一配置每个 `FormItem` 的 `rules` | { prop: FormItemRule[] } | `{}` |
+| label-position | 表单项 label 的位置 | `top` \| `left` \| `right` | `left` |
+| star-position | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 
 ### Form Events
 
@@ -439,6 +441,8 @@ const addressModule = reactive({
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | string | `left` |
 | show-error-line | 是否在校验不通过时标红输入框 | boolean | `true` |
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | boolean | `true` |
+| label-position | 表单项 label 的位置，优先级高于form中的label-position | `top` \| `left` \| `right` | `left` |
+| star-position | 必填表单项 label 的红色星标位置，优先级高于form中的star-position | `left` \| `right` | `left` |
 
 ### FormItemRule 数据结构
 

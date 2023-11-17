@@ -52,6 +52,16 @@
         margin-right: $form-item-required-margin-right;
       }
     }
+    &.nut-form-item__star-right {
+      &::before {
+        content: none;
+      }
+      &::after {
+        content: '*';
+        color: $form-item-required-color;
+        margin-left: $form-item-required-margin-right;
+      }
+    }
   }
   &__body {
     flex: 1;
@@ -85,6 +95,19 @@
       text-align: $form-item-tip-text-align;
       font-size: $form-item-tip-font-size;
       color: $form-item-error-message-color;
+    }
+  }
+
+  &__right {
+    --nut-form-item-label-text-align: right;
+  }
+
+  &__top {
+    flex-direction: column;
+    .nut-form-item__label {
+      padding-bottom: 5px;
+      display: block;
+      padding-right: 24px;
     }
   }
 }
