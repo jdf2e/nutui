@@ -103,7 +103,8 @@ class Lang extends BaseLang {
   pullrefresh = {
     pulling: '下拉刷新',
     loosing: '釋放刷新',
-    loading: '加載中...'
+    loading: '加載中...',
+    complete: '刷新成功'
   };
 }
 export default Lang;

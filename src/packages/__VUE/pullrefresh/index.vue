@@ -12,7 +12,7 @@
         <slot v-if="status == 'pulling'" name="pulling"></slot>
         <slot v-if="status == 'loosing'" name="loosing"></slot>
         <slot v-if="status == 'loading'" name="loading"></slot>
-        <!-- <slot v-if="status == 'complete'" name="complete"></slot> -->
+        <slot v-if="status == 'complete'" name="complete"></slot>
       </div>
       <slot></slot>
     </div>
@@ -53,10 +53,10 @@ export default create({
       default: ''
     },
 
-    // completeTxt: {
-    //   type: String,
-    //   default: ''
-    // },
+    completeTxt: {
+      type: String,
+      default: ''
+    },
     headHeight: {
       type: [String, Number],
       default: 50
@@ -70,6 +70,10 @@ export default create({
     duration: {
       type: [String, Number],
       default: 0.3
+    },
+    completeDuration: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['change', 'refresh', 'update:modelValue'],
@@ -99,8 +103,8 @@ export default create({
           return !slots.loosing ? props.loosingTxt || translate('loosing') : '';
         case 'loading':
           return !slots.loading ? props.loadingTxt || translate('loading') : '';
-        // case 'complete':
-        //   return !slots.complete ? props.completeTxt : '';
+        case 'complete':
+          return !slots.complete ? props.completeTxt || translate('complete') : '';
         default:
           break;
       }
@@ -134,12 +138,14 @@ export default create({
       return Math.round(moveDistance);
     };
 
-    const setPullStatus = (distance: number, isLoading?: boolean) => {
+    const setPullStatus = (distance: number, isLoading?: boolean, isComplete?: boolean) => {
       const pullDistance = +(props.pullDistance || props.headHeight);
       state.distance = distance;
 
       if (isLoading) {
         state.status = 'loading';
+      } else if (isComplete) {
+        state.status = 'complete';
       } else if (distance === 0) {
         state.status = 'normal';
       } else if (distance < pullDistance) {
@@ -208,7 +214,11 @@ export default create({
         if (val) {
           setPullStatus(+props.headHeight, true);
         } else {
-          setPullStatus(0);
+          if (props.completeDuration === 0) setPullStatus(0);
+          setPullStatus(+props.headHeight, false, true);
+          setTimeout(() => {
+            setPullStatus(0);
+          }, props.completeDuration);
         }
       }
     );
