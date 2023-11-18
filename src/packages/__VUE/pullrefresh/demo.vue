@@ -9,6 +9,7 @@
       <nut-tab-pane :title="translate('customTxt')">
         <nut-pull-refresh
           v-model="refresh2"
+          :complete-duration="1000"
           :loosing-txt="translate('loose')"
           :loading-txt="translate('load')"
           :complete-txt="translate('ok')"

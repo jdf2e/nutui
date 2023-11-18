@@ -10,7 +10,7 @@ const LINK_REG = /(?<=<nut-)([\w-]+)/g;
 const BIG_LINK_REG = /(?<=<Nut-)([\w-])+/g;
 const files = ['vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
 
-const provideHover = (document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) => {
+const provideHover = (document: vscode.TextDocument, position: vscode.Position) => {
   const line = document.lineAt(position);
   const componentLink = line.text.match(LINK_REG) ?? [];
   const componentBigLink = line.text.match(BIG_LINK_REG) ?? [];

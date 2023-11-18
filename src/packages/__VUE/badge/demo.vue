@@ -91,12 +91,11 @@
   </view>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('badge');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Check, Link, Download } from '@nutui/icons-vue';
+import { Check, Download, Link as IconLink } from '@nutui/icons-vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -116,15 +115,7 @@ const initTranslate = () =>
       title5: 'Standalone'
     }
   });
-export default defineComponent({
-  components: { Check, Download, IconLink: Link },
-  setup() {
-    initTranslate();
-    return {
-      translate
-    };
-  }
-});
+initTranslate();
 </script>
 
 <style lang="scss" scoped>

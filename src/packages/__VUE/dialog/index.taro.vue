@@ -10,10 +10,11 @@
     :overlay-style="overlayStyle"
     :style="popStyle"
     round
+    :z-index="zIndex"
     @click-overlay="onClickOverlay"
     @click-close-icon="closed"
   >
-    <view :class="classes">
+    <view :class="['nut-dialog', customClass]">
       <view v-if="$slots.header || title" class="nut-dialog__header">
         <slot v-if="$slots.header" name="header"></slot>
         <template v-else>{{ title }}</template>
@@ -49,16 +50,20 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('dialog');
-import Popup from '../popup/index.taro.vue';
 import { popupProps } from '../popup/props';
-import Button from '../button/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
+import NutButton from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('dialog');
+const cN = 'NutDialog';
+
 export default create({
   inheritAttrs: false,
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button
+    NutPopup,
+    NutButton
   },
   props: {
     ...popupProps,
@@ -98,6 +103,10 @@ export default create({
       type: Boolean,
       default: true
     },
+    okAutoClose: {
+      type: Boolean,
+      default: true
+    },
     textAlign: {
       type: String,
       default: 'center'
@@ -123,6 +132,7 @@ export default create({
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
@@ -141,13 +151,6 @@ export default create({
         }
       }
     );
-
-    const classes = computed(() => {
-      return {
-        [componentName]: true,
-        [props.customClass]: true
-      };
-    });
 
     const update = (val: boolean) => {
       emit('update', val);
@@ -182,7 +185,9 @@ export default create({
 
     const onOk = () => {
       emit('ok');
-      closed('ok');
+      if (props.okAutoClose) {
+        closed('ok');
+      }
     };
 
     const onClickOverlay = () => {
@@ -199,7 +204,6 @@ export default create({
 
     return {
       closed,
-      classes,
       onCancel,
       onOk,
       showPopup,

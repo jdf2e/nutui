@@ -11,10 +11,10 @@
       <div class="doc-content-document isComponent">
         <div class="doc-content-tabs">
           <div
-            class="tab-item"
-            :class="{ cur: data.curKey === item.key }"
             v-for="item in data.tabs"
             :key="item.key"
+            class="tab-item"
+            :class="{ cur: data.curKey === item.key }"
             @click="handleTabs(item.key)"
             >{{ item.text }}</div
           >

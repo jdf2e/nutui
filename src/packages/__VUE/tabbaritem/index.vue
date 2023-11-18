@@ -33,11 +33,11 @@
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
-import Badge from '../badge/index.vue';
+import NutBadge from '../badge/index.vue';
 import { Component, ComponentInternalInstance, computed, getCurrentInstance, inject, reactive, PropType } from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
-  components: { [Badge.name]: Badge },
+  components: { NutBadge },
   props: {
     tabTitle: {
       // 标签页的标题

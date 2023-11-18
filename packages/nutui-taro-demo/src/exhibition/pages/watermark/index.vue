@@ -1,6 +1,5 @@
 <template>
-  <div class="demo watermark-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="watermark-demo">
     <h2>基础用法</h2>
     <nut-cell class="wrap">
       <nut-button @click="showTextMark">文字水印</nut-button>
@@ -18,32 +17,23 @@
     <h2>局部用法</h2>
     <nut-cell class="wrap wrap2">
       <img :src="src" alt="" />
-      <nut-watermark :fullPage="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
+      <nut-watermark :full-page="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-export default defineComponent({
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
-    const imgSrc = ref(
-      'http://img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
-    );
-    const flag = ref(false);
-    const showTextMark = () => {
-      flag.value = false;
-    };
-    const showImageMark = () => {
-      flag.value = true;
-    };
-    return { src, imgSrc, showTextMark, showImageMark, flag, env };
-  }
-});
+<script setup lang="ts">
+import { ref } from 'vue';
+const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
+const imgSrc = ref(
+  'http://img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
+);
+const flag = ref(false);
+const showTextMark = () => {
+  flag.value = false;
+};
+const showImageMark = () => {
+  flag.value = true;
+};
 </script>
 <style lang="scss">
 .watermark-demo {

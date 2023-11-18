@@ -67,9 +67,12 @@ import SkuHeader from './components/SkuHeader.taro.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('sku');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku');
+
+const cN = 'NutSku';
 
 export default create({
   props: {
@@ -164,10 +167,12 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    NutPopup
   },
 
   setup(props: any, { emit, slots }) {
+    const translate = useLocale(cN);
+
     const showPopup = ref(props.visible);
 
     const goodsCount = ref(props.stepperMin);

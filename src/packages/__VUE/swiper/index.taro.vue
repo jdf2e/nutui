@@ -2,7 +2,7 @@
   <view
     :id="'container-' + refRandomId"
     ref="container"
-    :class="classes"
+    class="nut-swiper"
     :catch-move="isPreventDefault"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
@@ -119,13 +119,6 @@ export default create({
     });
 
     const touch = useTouch();
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const isVertical = computed(() => props.direction === 'vertical');
 
@@ -423,6 +416,18 @@ export default create({
 
     watch(
       () => props.initPage,
+      () => {
+        Taro.nextTick(() => {
+          init();
+        });
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          init();
+        });
+      }
+    );
+
+    watch(
+      () => props.height,
       (val) => {
         Taro.nextTick(() => {
           init(+val);
@@ -457,7 +462,6 @@ export default create({
     return {
       state,
       refRandomId,
-      classes,
       classesPagination,
       classesInner,
       container,

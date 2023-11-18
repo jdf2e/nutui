@@ -10,7 +10,7 @@
     @click-overlay="close"
     @click-close-icon="close"
   >
-    <view :class="classes">
+    <view class="nut-time-select">
       <view class="nut-time-select__title">
         <view class="nut-time-select__title__fixed">
           <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
@@ -31,11 +31,15 @@
 <script lang="ts">
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.vue';
-const { componentName, create, translate } = createComponent('time-select');
+import NutPopup from '../popup/index.vue';
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('time-select');
+
+const cN = 'NutTimeSelect';
+
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     visible: {
@@ -70,14 +74,8 @@ export default create({
     }
   },
   emits: ['update:visible', 'select'],
-  setup: (props: any, context: any) => {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
+  setup: (props, { emit }) => {
+    const translate = useLocale(cN);
     const popStyle = computed(() => {
       return {
         width: '100%',
@@ -90,17 +88,15 @@ export default create({
     const currentTime = computed(() => props.currentTime);
 
     const close = () => {
-      context.emit('update:visible', false);
-      context.emit('select', currentTime.value);
+      emit('update:visible', false);
+      emit('select', currentTime.value);
     };
 
     provide('currentKey', currentKey);
     provide('currentTime', currentTime);
 
     return {
-      classes,
       popStyle,
-      props,
       close,
       translate
     };

@@ -1,5 +1,5 @@
 <template>
-  <div ref="scroller" :class="classes" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+  <div ref="scroller" class="nut-pull-refresh" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <div class="nut-pull-refresh-container" :style="getStyle">
       <div class="nut-pull-refresh-container-topbox" :style="getHeightStyle">
         <Loading
@@ -12,7 +12,7 @@
         <slot v-if="status == 'pulling'" name="pulling"></slot>
         <slot v-if="status == 'loosing'" name="loosing"></slot>
         <slot v-if="status == 'loading'" name="loading"></slot>
-        <!-- <slot v-if="status == 'complete'" name="complete"></slot> -->
+        <slot v-if="status == 'complete'" name="complete"></slot>
       </div>
       <slot></slot>
     </div>
@@ -21,14 +21,17 @@
 <script lang="ts">
 import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('pull-refresh');
+const { create } = createComponent('pull-refresh');
 import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import { Loading } from '@nutui/icons-vue';
+import { useLocale } from '@/packages/utils/useLocale';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
+
+const cN = 'NutPullRefresh';
 
 export default create({
   props: {
@@ -39,21 +42,21 @@ export default create({
 
     pullingTxt: {
       type: String,
-      default: translate('pulling')
+      default: ''
     },
     loosingTxt: {
       type: String,
-      default: translate('loosing')
+      default: ''
     },
     loadingTxt: {
       type: String,
-      default: translate('loading')
+      default: ''
     },
 
-    // completeTxt: {
-    //   type: String,
-    //   default: ''
-    // },
+    completeTxt: {
+      type: String,
+      default: ''
+    },
     headHeight: {
       type: [String, Number],
       default: 50
@@ -67,12 +70,17 @@ export default create({
     duration: {
       type: [String, Number],
       default: 0.3
+    },
+    completeDuration: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['change', 'refresh', 'update:modelValue'],
   components: { Loading },
 
   setup(props, { emit, slots }) {
+    const translate = useLocale(cN);
     const touch: any = useTouch();
     const scroller = ref<HTMLElement>();
     const scrollParent = useScrollParent(scroller);
@@ -87,23 +95,16 @@ export default create({
       status: 'normal'
     });
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
     const getPullStatus = computed(() => {
       switch (state.status) {
         case 'pulling':
-          return !slots.pulling ? props.pullingTxt : '';
+          return !slots.pulling ? props.pullingTxt || translate('pulling') : '';
         case 'loosing':
-          return !slots.loosing ? props.loosingTxt : '';
+          return !slots.loosing ? props.loosingTxt || translate('loosing') : '';
         case 'loading':
-          return !slots.loading ? props.loadingTxt : '';
-        // case 'complete':
-        //   return !slots.complete ? props.completeTxt : '';
+          return !slots.loading ? props.loadingTxt || translate('loading') : '';
+        case 'complete':
+          return !slots.complete ? props.completeTxt || translate('complete') : '';
         default:
           break;
       }
@@ -137,12 +138,14 @@ export default create({
       return Math.round(moveDistance);
     };
 
-    const setPullStatus = (distance: number, isLoading?: boolean) => {
+    const setPullStatus = (distance: number, isLoading?: boolean, isComplete?: boolean) => {
       const pullDistance = +(props.pullDistance || props.headHeight);
       state.distance = distance;
 
       if (isLoading) {
         state.status = 'loading';
+      } else if (isComplete) {
+        state.status = 'complete';
       } else if (distance === 0) {
         state.status = 'normal';
       } else if (distance < pullDistance) {
@@ -211,13 +214,16 @@ export default create({
         if (val) {
           setPullStatus(+props.headHeight, true);
         } else {
-          setPullStatus(0);
+          if (props.completeDuration === 0) setPullStatus(0);
+          setPullStatus(+props.headHeight, false, true);
+          setTimeout(() => {
+            setPullStatus(0);
+          }, props.completeDuration);
         }
       }
     );
 
     return {
-      classes,
       scroller,
       ...toRefs(state),
       touchStart,

@@ -1,18 +1,10 @@
 export interface PickerOption {
   [key: PropertyKey]: any;
-  text: string | number;
-  value: string | number;
+  text?: string | number;
+  value?: string | number;
   disabled?: string;
   children?: PickerOption[];
   className?: string | number;
-}
-
-export interface PickerColumnOption {
-  text: string;
-  value: string;
-  disabled: string;
-  children: PickerOption[];
-  className: string;
 }
 
 export type TouchParams = {

@@ -1,6 +1,5 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-space>
@@ -49,12 +48,5 @@
         <nut-button type="primary" block>按钮</nut-button>
       </nut-space>
     </nut-cell>
-  </view>
+  </Demo>
 </template>
-
-<script setup>
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-console.log(111);
-</script>

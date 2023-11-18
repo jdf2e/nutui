@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础使用</h2>
     <nut-config-provider :theme="theme">
       <nut-cell title="切换暗黑">
@@ -18,7 +17,7 @@
           <nut-checkbox v-model="formData2.checkbox">复选框</nut-checkbox>
         </nut-form-item>
         <nut-form-item label="单选按钮">
-          <nut-radio-group direction="horizontal" v-model="formData2.radio">
+          <nut-radio-group v-model="formData2.radio" direction="horizontal">
             <nut-radio label="1">选项1</nut-radio>
             <nut-radio disabled label="2">选项2</nut-radio>
             <nut-radio label="3">选项3</nut-radio>
@@ -31,20 +30,20 @@
           <nut-input-number v-model="formData2.number" />
         </nut-form-item>
         <nut-form-item label="滑块">
-          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+          <nut-range v-model="formData2.range" hidden-tag></nut-range>
         </nut-form-item>
         <nut-form-item label="文件上传">
-          <nut-uploader url="http://服务地址" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
+          <nut-uploader v-model:file-list="formData2.defaultFileList" url="http://服务地址" maximum="3" multiple>
           </nut-uploader>
         </nut-form-item>
         <nut-form-item label="地址">
           <input
-            class="nut-input-text"
             v-model="formData2.address"
-            @click="addressModule.methods.show"
+            class="nut-input-text"
             readonly
             placeholder="请选择地址"
             type="text"
+            @click="addressModule.methods.show"
           />
           <!-- nut-address -->
           <nut-address
@@ -53,8 +52,8 @@
             :city="addressModule.state.city"
             :country="addressModule.state.country"
             :town="addressModule.state.town"
-            @close="addressModule.methods.onClose"
             custom-address-title="请选择所在地区"
+            @close="addressModule.methods.onClose"
           ></nut-address>
         </nut-form-item>
       </nut-form>
@@ -63,17 +62,14 @@
     <nut-config-provider :theme-vars="themeVars">
       <nut-form>
         <nut-form-item label="滑块">
-          <nut-range hidden-tag v-model="formData2.range"></nut-range>
+          <nut-range v-model="formData2.range" hidden-tag></nut-range>
         </nut-form-item>
       </nut-form>
     </nut-config-provider>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const switchChecked = ref(false);
 const theme = ref('');
 const switchChange = (v: boolean) => {

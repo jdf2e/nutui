@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-noticebar">
     <view
       v-show="showNoticebar"
       v-if="direction == 'across'"
@@ -92,7 +92,7 @@ import {
 } from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('noticebar');
+const { create } = createComponent('noticebar');
 import { pxCheck } from '@/packages/utils/pxCheck';
 
 interface StateProps {
@@ -199,13 +199,6 @@ export default create({
       keepAlive: false,
       isCanScroll: null,
       showNotica: true
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const isEllipsis = computed(() => {
@@ -433,10 +426,8 @@ export default create({
     });
 
     return {
-      ...toRefs(props),
       ...toRefs(state),
       isEllipsis,
-      classes,
       barStyle,
       contentStyle,
       horseLampStyle,

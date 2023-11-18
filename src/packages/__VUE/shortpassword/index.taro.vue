@@ -37,13 +37,17 @@
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { Tips } from '@nutui/icons-vue-taro';
-const { create, translate } = createComponent('short-password');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('short-password');
 import { eventCenter, getCurrentInstance } from '@tarojs/taro';
+
+const cN = 'NutShortPassword';
+
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Tips
   },
   props: {
@@ -86,6 +90,7 @@ export default create({
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const realInput = ref(props.modelValue);
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);

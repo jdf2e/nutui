@@ -11,6 +11,7 @@
       :close-icon-position="closeIconPosition"
       :lock-scroll="lockScroll"
       :catch-move="lockScroll"
+      :z-index="zIndex"
     >
       <template v-if="title">
         <view class="nut-cascader__bar" v-html="title"></view>
@@ -54,13 +55,13 @@ import { CascaderValue, CascaderOption } from './types';
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 const { create } = createComponent('cascader');
-import CascaderItem from './cascader-item.taro.vue';
-import Popup from '../popup/index.taro.vue';
+import NutCascaderItem from './cascader-item.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 
 export default create({
   components: {
-    [CascaderItem.name]: CascaderItem,
-    [Popup.name]: Popup
+    NutCascaderItem,
+    NutPopup
   },
   props: {
     ...popupProps,

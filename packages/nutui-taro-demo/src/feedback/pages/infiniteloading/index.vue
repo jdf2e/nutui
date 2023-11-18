@@ -1,8 +1,8 @@
 <template>
-  <view class="demo">
+  <Demo>
     <h2>基础演示</h2>
     <nut-cell>
-      <view class="infiniteUl" id="scrollDemo">
+      <view id="scrollDemo" class="infiniteUl">
         <nut-infinite-loading
           pull-icon="JD"
           load-txt="loading"
@@ -13,11 +13,11 @@
           @load-more="loadMore"
           @refresh="refresh"
         >
-          <view class="infiniteLi" v-for="(item, index) in defaultList" :key="index">{{ item }}</view>
+          <view v-for="(item, index) in defaultList" :key="index" class="infiniteLi">{{ item }}</view>
         </nut-infinite-loading>
       </view>
     </nut-cell>
-  </view>
+  </Demo>
 </template>
 
 <script setup lang="ts">

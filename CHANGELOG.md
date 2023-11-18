@@ -1,3 +1,56 @@
+## v4.2.1
+
+`2023-11-10`
+
+Features
+
+- dialog: 新增 ok-auto-close 属性 (#2626) (#2627) @yi-boide
+- input: 增加软键盘确认事件 (#2229) (#2622) @yi-boide
+- image-preview: taro 端新增 long-press 事件 & 新增长按保存相册 demo (#2592) @yi-boide @ntnyq
+- calendar: 增加自定义禁用函数 disabled-date (#2502) (#2614) @yi-boide
+- popup 关联组件增加 z-index 属性 (#2632) @eiinu
+- input: modelValue 支持 number 类型 (#2635) (#2638) @yi-boide
+
+Bug Fixes
+
+- swiper: 修复页面中未设置 z-index 的 fixed 元素无法覆盖 swiper 问题 (#2617) @oasis-cloud
+- swiper: 修复动态修改 height 后组件视图未更新问题 (#2485) (#2625) @yi-boide
+- ellipsis: 修复 direction 默认值 (#2631) @swbcnegc
+- date-picker: 修复中文包字段错误 (#2628) @eiinu
+- checkbox: 修复样式对齐问题 (#2641) @eiinu
+- elevator: 修复滚动后无法点击问题 #2603 (#2645) @eiinu
+
+Other Changes
+
+- docs: demo 更新为 script setup 风格 @eiinu
+
+## v4.2.0
+
+`2023-10-27`
+
+New Components
+
+- 新增 AvatarCropper 头像裁剪组件 (#2570) @yi-boide
+- 新增 Space 布局组件 (#2584) @yi-boide
+
+Features
+
+- build: 新增 css 样式产物可选 (#2602) @yi-boide
+- build: resolver 配置独立为 @nutui/auto-import-resolver 包 (#2602) @yi-boide
+- collapse: 增加自定义插槽 icon (#2588) (#2612) @yi-boide
+
+Bug Fixes
+
+- input-number: 修复超过 min, max 范围问题 (#2606) (#2607) @Formulaaa
+- picker: 修复 columns 为空时不触发更新的问题 (#2590) (#2611) @yi-boide
+- circle-progress: 修复数值变化在 iOS 下的 border 闪烁问题（#2481） (#2619) @yi-boide
+- comment: 追评中图片增加响应事件 (#2448) (#2620) @yi-boide
+- ellipsis: fix docs typo (#2616) @yang1206
+
+BREAKING CHANGES
+
+- !input: Taro 版组件 type 属性的 `number`、`digit` 与小程序原生 API 对齐，支持调起数字、带小数点键盘 (#2578) @mikasayw
+
 ## v4.1.7
 
 `2023-10-13`

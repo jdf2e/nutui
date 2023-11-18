@@ -1,17 +1,16 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell title="点击试试">
       <template #link>
-        <nut-switch id="target7" v-model="switchValue" @click="showTour3 = true" />
+        <nut-switch id="target7" v-model="state.switchValue" @click="state.showTour3 = true" />
       </template>
     </nut-cell>
 
     <nut-tour
+      v-model="state.showTour3"
       class="nut-custom-tour nut-customword-tour"
-      v-model="showTour3"
-      :steps="steps3"
+      :steps="state.steps3"
       type="tile"
       location="bottom-end"
     ></nut-tour>
@@ -20,26 +19,26 @@
 
     <nut-cell title="点击试试">
       <template #link>
-        <nut-switch id="target5" v-model="switchValue" @click="showTourHandle" />
+        <nut-switch id="target5" v-model="state.switchValue" @click="showTourHandle" />
       </template>
     </nut-cell>
 
     <nut-tour
+      v-model="state.showTour1"
       class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-      v-model="showTour1"
-      :steps="steps1"
+      :steps="state.steps1"
       location="bottom-end"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       :offset="[0, 0]"
-      maskWidth="50"
-      maskHeight="50"
+      mask-width="50"
+      mask-height="50"
     ></nut-tour>
 
     <h2>设置偏移量</h2>
 
-    <nut-cell title="点击试试" @click="showTour2 = true">
+    <nut-cell title="点击试试" @click="state.showTour2 = true">
       <template #link>
         <div class="tour-demo-img">
           <img
@@ -57,11 +56,11 @@
     </nut-cell>
 
     <nut-tour
+      v-model="state.showTour2"
       class="nut-custom-tour nut-customword-tour"
-      v-model="showTour2"
-      :steps="steps2"
+      :steps="state.steps2"
       type="tile"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       location="bottom-end"
       :offset="[8, 8]"
@@ -71,14 +70,14 @@
 
     <nut-cell title="点击试试">
       <template #link>
-        <nut-switch id="target8" v-model="switchValue" @click="showTour4 = true" />
+        <nut-switch id="target8" v-model="state.switchValue" @click="state.showTour4 = true" />
       </template>
     </nut-cell>
 
     <nut-tour
+      v-model="state.showTour4"
       class="nut-custom-tour nut-customword-tour"
-      v-model="showTour4"
-      :steps="steps4"
+      :steps="state.steps4"
       type="tile"
       theme="dark"
       location="bottom-end"
@@ -87,13 +86,13 @@
       <view class="tour-demo-custom-content">
         <view>nutui 4.x 即将发布，敬请期待</view>
         <nut-divider direction="vertical" />
-        <view @click="showTour4 = false">知道了</view>
+        <view @click="state.showTour4 = false">知道了</view>
       </view>
     </nut-tour>
 
     <h2>步骤引导</h2>
 
-    <nut-cell title="点击试试" @click="showTour = true"></nut-cell>
+    <nut-cell title="点击试试" @click="state.showTour = true"></nut-cell>
 
     <nut-tabbar>
       <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
@@ -103,102 +102,81 @@
     </nut-tabbar>
 
     <nut-tour
+      v-model="state.showTour"
       class="nut-customword-tour"
-      v-model="showTour"
-      :steps="steps"
+      :steps="state.steps"
       location="top-start"
       :offset="[0, 0]"
-      maskWidth="60"
-      maskHeight="50"
+      mask-width="60"
+      mask-height="50"
     ></nut-tour>
-  </div>
+  </Demo>
 </template>
-<script lang="ts">
-import { reactive, toRefs } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
+const state = reactive({
+  switchValue: false,
+  showTour: false,
+  showTour1: false,
+  showTour2: false,
+  showTour3: false,
+  showTour4: false,
+  offset: [-3, -8],
+  steps: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target1'
+    },
+    {
+      content: '支持一套代码同时开发多端小程序',
+      target: 'target2'
+    },
+    {
+      content: '基于京东APP 10.0 视觉规范',
+      target: 'target3',
+      location: 'top-end'
+    },
+    {
+      content: '支持定制主题，内置 700+ 个主题变量',
+      target: 'target4',
+      location: 'top-end'
+    }
+  ],
 
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const state = reactive({
-      switchValue: false,
-      showTour: false,
-      showTour1: false,
-      showTour2: false,
-      showTour3: false,
-      showTour4: false,
-      offset: [-3, -8],
-      steps: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target1'
-        },
-        {
-          content: '支持一套代码同时开发多端小程序',
-          target: 'target2'
-        },
-        {
-          content: '基于京东APP 10.0 视觉规范',
-          target: 'target3',
-          location: 'top-end'
-        },
-        {
-          content: '支持定制主题，内置 700+ 个主题变量',
-          target: 'target4',
-          location: 'top-end'
-        }
-      ],
+  steps1: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target5'
+    }
+  ],
 
-      steps1: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target5'
-        }
-      ],
+  steps2: [
+    {
+      content: '支持一套代码同时开发多端小程序+H5',
+      target: 'target6',
+      popoverOffset: [40, 12],
+      arrowOffset: -36
+    }
+  ],
 
-      steps2: [
-        {
-          content: '支持一套代码同时开发多端小程序+H5',
-          target: 'target6',
-          popoverOffset: [40, 12],
-          arrowOffset: -36
-        }
-      ],
+  steps3: [
+    {
+      content: '70+ 高质量组件，覆盖移动端主流场景',
+      target: 'target7'
+    }
+  ],
 
-      steps3: [
-        {
-          content: '70+ 高质量组件，覆盖移动端主流场景',
-          target: 'target7'
-        }
-      ],
+  steps4: [
+    {
+      target: 'target8'
+    }
+  ],
 
-      steps4: [
-        {
-          target: 'target8'
-        }
-      ],
+  type: 'normal'
+});
 
-      type: 'normal'
-    });
-
-    // setTimeout(() => {
-    //   state.showTour = true;
-    // }, 1000);
-
-    const showTourHandle = () => {
-      state.showTour1 = true;
-    };
-
-    return {
-      ...toRefs(state),
-      showTourHandle,
-      env
-    };
-  }
+const showTourHandle = () => {
+  state.showTour1 = true;
 };
 </script>
 <style lang="scss">

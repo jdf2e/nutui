@@ -6,13 +6,12 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
-import { Input, Button } from '@nutui/nutui-taro';
+import { Input } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
-app.use(Button);
 ```
 
 ### 基础用法
@@ -21,22 +20,13 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.text" placeholder="请输入文本" />
+  <nut-input v-model="val" placeholder="请输入文本" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const val = ref('');
 </script>
 ```
 
@@ -46,30 +36,27 @@ app.use(Button);
 
 根据 `type` 属性定义不同类型的输入框，默认值为 `text`。
 
+> NutUI < 4.2.0 时，number 类型为小数，digit 类型为整数。
+>
+> NutUI >= 4.2.0 时，调整为与小程序原生 input 的类型字段保持一致（如下示例），同时支持调用原生整数键盘、带小数点键盘。
+
 :::demo
 
-```html
+```vue
 <template>
   <nut-input placeholder="请输入文本" v-model="state.text" />
   <nut-input placeholder="请输入密码" v-model="state.password" type="password" />
-  <nut-input placeholder="请输入数字" v-model="state.number" type="number" />
-  <nut-input placeholder="请输入整数" v-model="state.digit" type="digit" />
+  <nut-input placeholder="请输入数字（支持小数）" v-model="state.digit" type="digit" />
+  <nut-input placeholder="请输入整数" v-model="state.number" type="number" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: '',
-        password: '',
-        number: '',
-        digit: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  text: '',
+  password: '',
+  number: '',
+  digit: ''
+});
 </script>
 ```
 
@@ -81,24 +68,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input placeholder="输入框只读" v-model="state.readonly" readonly />
   <nut-input placeholder="输入框已禁用" v-model="state.disabled" disabled />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        readonly: '',
-        disabled: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  readonly: '',
+  disabled: ''
+});
 </script>
 ```
 
@@ -110,7 +90,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input v-model="state.clear" placeholder="显示清除图标" clearable clearSize="14" />
   <nut-input
@@ -127,28 +107,16 @@ app.use(Button);
     </template>
   </nut-input>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Close } from '@nutui/icons-vue-taro';
-
-  export default {
-    components: {
-      Close
-    },
-    setup() {
-      const state = reactive({
-        clear: '',
-        clear2: ''
-      });
-      const clearValue = () => {
-        state.clear2 = '';
-      };
-      return {
-        state,
-        clearValue
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Close } from '@nutui/icons-vue-taro';
+const state = reactive({
+  clear: '',
+  clear2: ''
+});
+const clearValue = () => {
+  state.clear2 = '';
+};
 </script>
 ```
 
@@ -160,7 +128,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form :model-value="state">
     <nut-form-item label="文本" label-align="center">
@@ -168,18 +136,11 @@ app.use(Button);
     </nut-form-item>
   </nut-form>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        val1: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  val1: ''
+});
 </script>
 ```
 
@@ -191,7 +152,7 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-input
     v-model="state.format1"
@@ -201,21 +162,13 @@ app.use(Button);
   />
   <nut-input v-model="state.format2" placeholder="在失焦时执行格式化" :formatter="formatter" format-trigger="onBlur" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        format1: '',
-        format2: ''
-      });
-      const formatter = (value: string) => value.replace(/\d/g, '');
-      return {
-        state,
-        formatter
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  format1: '',
+  format2: ''
+});
+const formatter = (value) => value.replace(/\d/g, '');
 </script>
 ```
 
@@ -227,22 +180,13 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.text" type="text" show-word-limit rows="2" max-length="50" placeholder="请输入留言" />
+  <nut-input v-model="val" type="text" show-word-limit rows="2" max-length="50" placeholder="请输入留言" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        text: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const val = ref('');
 </script>
 ```
 
@@ -254,24 +198,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.noBorder1" :border="false" placeholder="输入框无边框" />
-  <nut-input v-model="state.noBorder2" :border="false" placeholder="输入框无边框" />
+  <nut-input v-model="state.val1" :border="false" placeholder="输入框无边框" />
+  <nut-input v-model="state.val2" :border="false" placeholder="输入框无边框" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  export default {
-    setup() {
-      const state = reactive({
-        noBorder1: '',
-        noBorder2: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const state = reactive({
+  val1: '',
+  val2: ''
+});
 </script>
 ```
 
@@ -281,43 +218,29 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.event" clearable placeholder="事件演示" @clear="clear" @click-input="clickInput" />
+  <nut-input v-model="state.val" clearable placeholder="事件演示" @clear="clear" @click-input="clickInput" />
   <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Toast } from '@nutui/nutui-taro';
-  export default {
-    components: {
-      Toast
-    },
-    setup() {
-      const state = reactive({
-        event: '',
-        show: false,
-        msg: ''
-      });
-      const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event);
-        showToast('clear');
-      };
-      const showToast = (msg: string) => {
-        state.show = true;
-        state.msg = msg;
-      };
-      const clickInput = (value: string | number) => {
-        console.log('clickInput:', value);
-        showToast('clickInput');
-      };
-      return {
-        state,
-        clear,
-        clickInput
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui-taro';
+const state = reactive({
+  val: '',
+  show: false,
+  msg: ''
+});
+const showToast = (msg) => {
+  state.show = true;
+  state.msg = msg;
+};
+const clear = () => {
+  showToast('clear');
+};
+const clickInput = () => {
+  showToast('clickInput');
+};
 </script>
 ```
 
@@ -327,30 +250,17 @@ app.use(Button);
 
 :::demo
 
-```html
+```vue
 <template>
-  <nut-input v-model="state.slotValue" placeholder="插槽演示" clearable>
+  <nut-input v-model="val" placeholder="插槽演示" clearable>
     <template #left> <Ask></Ask> </template>
     <template #right> <nut-button type="primary" size="small">获取验证码</nut-button> </template>
   </nut-input>
 </template>
-<script lang="ts">
-  import { reactive } from 'vue';
-  import { Ask } from '@nutui/icons-vue-taro';
-
-  export default {
-    components: {
-      Ask
-    },
-    setup() {
-      const state = reactive({
-        slotValue: ''
-      });
-      return {
-        state
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Ask } from '@nutui/icons-vue-taro';
+const val = ref('');
 </script>
 ```
 
@@ -360,45 +270,46 @@ app.use(Button);
 
 ### Props
 
-| 参数                  | 说明                                                                                                                        | 类型                      | 默认值     |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------- |
-| v-model               | 输入值，双向绑定                                                                                                            | string                    | -          |
-| type                  | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`                                            | string                    | `text`     |
-| placeholder           | 输入框为空时占位符                                                                                                          | string                    | -          |
-| input-align           | 输入框内容对齐方式，可选值 `left`、`center`、`right`                                                                        | string                    | `left`     |
-| border                | 是否显示下边框                                                                                                              | boolean                   | `true`     |
-| disabled              | 是否禁用                                                                                                                    | boolean                   | `false`    |
-| readonly              | 是否只读                                                                                                                    | boolean                   | `false`    |
-| autofocus             | 是否自动获得焦点，`iOS` 系统不支持该属性                                                                                    | boolean                   | `false`    |
-| max-length            | 限制最长输入字符                                                                                                            | string ｜ number          | -          |
-| clearable             | 展示清除 `Icon`                                                                                                             | boolean                   | `false`    |
-| showClearIcon `4.0.2` | 是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效                                                               | boolean                   | `false`    |
-| clear-size            | 清除图标的 `font-size` 大小                                                                                                 | string                    | `14`       |
-| show-word-limit       | 是否显示限制最长输入字符，需要设置 `max-length` 属性                                                                        | boolean                   | `false`    |
-| error                 | 是否标红                                                                                                                    | boolean                   | `false`    |
-| formatter             | 输入内容格式化函数                                                                                                          | `(val: string) => string` | -          |
-| format-trigger        | 格式化函数触发的时机，可选值为 `onChange`、`onBlur`                                                                         | string                    | `onChange` |
-| confirm-type          | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string                    | `done`     |
-| adjust-position       | 键盘弹起时，是否自动上推页面                                                                                                | boolean                   | `true`     |
-| always-system         | 是否强制使用系统键盘和 `Web-view` 创建的 `input` 元素。为 `true` 时，`confirm-type`、`confirm-hold` 可能失效                | boolean                   | `false`    |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 输入值，双向绑定 | string \| number | - |
+| type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | string | `text` |
+| placeholder | 输入框为空时占位符 | string | - |
+| input-align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | string | `left` |
+| border | 是否显示下边框 | boolean | `true` |
+| disabled | 是否禁用 | boolean | `false` |
+| readonly | 是否只读 | boolean | `false` |
+| autofocus | 是否自动获得焦点，`iOS` 系统不支持该属性 | boolean | `false` |
+| max-length | 限制最长输入字符 | string ｜ number | - |
+| clearable | 展示清除 `Icon` | boolean | `false` |
+| showClearIcon `4.0.2` | 是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效 | boolean | `false` |
+| clear-size | 清除图标的 `font-size` 大小 | string | `14` |
+| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false` |
+| error | 是否标红 | boolean | `false` |
+| formatter | 输入内容格式化函数 | `(val: string) => string` | - |
+| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | `onChange` |
+| confirm-type | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | string | `done` |
+| adjust-position | 键盘弹起时，是否自动上推页面 | boolean | `true` |
+| always-system | 是否强制使用系统键盘和 `Web-view` 创建的 `input` 元素。为 `true` 时，`confirm-type`、`confirm-hold` 可能失效 | boolean | `false` |
 
 ### Events
 
-| 事件名             | 说明                 | 回调参数 |
-| ------------------ | -------------------- | -------- |
-| update:model-value | 输入框内容变化时触发 | `val`    |
-| focus              | 输入框聚焦时触发     | `event`  |
-| blur               | 输入框失焦时触发     | `event`  |
-| clear              | 点击清除按钮时触发   | `event`  |
-| click              | 点击组件时触发       | `event`  |
-| click-input        | 点击输入区域时触发   | `event`  |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| update:model-value | 输入框内容变化时触发 | `val` |
+| focus | 输入框聚焦时触发 | `event` |
+| blur | 输入框失焦时触发 | `event` |
+| clear | 点击清除按钮时触发 | `event` |
+| click | 点击组件时触发 | `event` |
+| click-input | 点击输入区域时触发 | `event` |
+| confirm`4.2.1` | 点击软键盘确认时触发 ｜ `event` |
 
 ### Slots
 
-| 名称          | 说明                     |
-| ------------- | ------------------------ |
-| clear         | 自定义输入框尾部清除按钮 |
-| left `4.0.1`  | 自定义输入框左侧插槽内容 |
+| 名称 | 说明 |
+| --- | --- |
+| clear | 自定义输入框尾部清除按钮 |
+| left `4.0.1` | 自定义输入框左侧插槽内容 |
 | right `4.0.1` | 自定义输入框右侧插槽内容 |
 
 ## 主题定制
@@ -407,9 +318,9 @@ app.use(Button);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                       | 默认值                      |
-| -------------------------- | --------------------------- |
-| --nut-input-border-bottom  | _#eaf0fb_                   |
-| --nut-input-disabled-color | _#c8c9cc_                   |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-input-border-bottom | _#eaf0fb_ |
+| --nut-input-disabled-color | _#c8c9cc_ |
 | --nut-input-required-color | _var(--nut-required-color)_ |
-| --nut-input-font-size      | _var(--nut-font-size-2)_    |
+| --nut-input-font-size | _var(--nut-font-size-2)_ |

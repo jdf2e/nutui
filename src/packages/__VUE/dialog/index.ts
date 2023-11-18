@@ -1,8 +1,8 @@
 import Dialog from './index.vue';
 import { h, VNode, CSSProperties, Component, nextTick } from 'vue';
-import Popup from '../popup/index.vue';
-import Button from '../button/index.vue';
-import Overlay from '../overlay/index.vue';
+import NutPopup from '../popup/index.vue';
+import NutButton from '../button/index.vue';
+import NutOverlay from '../overlay/index.vue';
 import { CreateComponent } from '@/packages/utils/create';
 export class DialogOptions {
   title?: string = '';
@@ -27,14 +27,17 @@ export class DialogOptions {
   onClosed?: () => void;
   beforeClose?: (action: string) => any;
 
-  visible?: boolean = true;
-  noFooter?: boolean = false;
-  noOkBtn?: boolean = false;
-  noCancelBtn?: boolean = false;
-  okBtnDisabled?: boolean = false;
-  closeOnPopstate?: boolean = false;
-  closeOnClickOverlay?: boolean = true;
-  lockScroll?: boolean = true;
+  visible? = true;
+  noFooter? = false;
+  noOkBtn? = false;
+  noCancelBtn? = false;
+  okBtnDisabled? = false;
+  closeOnPopstate? = false;
+  closeOnClickOverlay? = true;
+  lockScroll? = true;
+
+  cancelAutoClose? = true;
+  okAutoClose? = true;
 }
 
 class DialogFunction {
@@ -44,7 +47,7 @@ class DialogFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: 'dialog',
-      components: [Popup, Button, Overlay],
+      components: [NutPopup, NutButton, NutOverlay],
       wrapper: (elWrap: any, root: any) => {
         return {
           setup() {

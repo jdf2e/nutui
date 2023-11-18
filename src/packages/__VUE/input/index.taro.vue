@@ -29,16 +29,18 @@
             @change="endComposing"
             @compositionend="endComposing"
             @compositionstart="startComposing"
+            @confirm="onConfirm"
+            @keyup="onKeyup"
           ></component>
           <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
           <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-            <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+            <span class="nut-input-word-num">{{ getModelValue() ? getModelValue().length : 0 }}</span
             >/{{ maxLength }}
           </view>
         </view>
         <view
           v-if="clearable && !readonly"
-          v-show="(active || showClearIcon) && modelValue.length > 0"
+          v-show="(active || showClearIcon) && getModelValue().length > 0"
           class="nut-input-clear-box"
           @click="clear"
         >
@@ -60,7 +62,7 @@ import { formatNumber } from './util';
 import { MaskClose } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 
-import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType } from './type';
+import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType, InputEvent } from './type';
 
 const { componentName, create } = createComponent('input');
 
@@ -72,7 +74,7 @@ export default create({
       default: 'text'
     },
     modelValue: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     placeholder: {
@@ -153,7 +155,7 @@ export default create({
     }
   },
   components: { MaskClose },
-  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput'],
+  emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
     const active = ref(false);
@@ -307,6 +309,17 @@ export default create({
         }
       }
     };
+
+    const onKeyup = (e: KeyboardEvent) => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB && e.key === 'Enter') {
+        emit('confirm', e);
+      }
+    };
+
+    const onConfirm = (e: InputEvent) => {
+      emit('confirm', e);
+    };
+
     watch(
       () => props.modelValue,
       () => {
@@ -335,7 +348,10 @@ export default create({
       startComposing,
       endComposing,
       onClick,
-      onClickInput
+      onClickInput,
+      onConfirm,
+      onKeyup,
+      getModelValue
     };
   }
 });

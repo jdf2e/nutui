@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Form, FormItem } from '@nutui/nutui-taro';
 
@@ -19,7 +19,7 @@ app.use(FormItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form>
     <nut-form-item label="姓名">
@@ -39,19 +39,14 @@ app.use(FormItem);
     </nut-form-item>
   </nut-form>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const basicData = reactive({
-        name: '',
-        age: '',
-        tel: '',
-        address: ''
-      });
-      return { basicData };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const basicData = reactive({
+  name: '',
+  age: '',
+  tel: '',
+  address: ''
+});
 </script>
 ```
 
@@ -61,21 +56,21 @@ app.use(FormItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
     <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
       <nut-input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
     </nut-form-item>
     <nut-form-item
-      :label="'联系方式'+index"
+      :label="'联系方式' + index"
       :prop="'tels.' + index + '.value'"
       required
-      :rules="[{ required: true, message: '请填写联系方式'+index }]"
+      :rules="[{ required: true, message: '请填写联系方式' + index }]"
       :key="item.key"
-      v-for="(item,index) in dynamicForm.state.tels"
+      v-for="(item, index) in dynamicForm.state.tels"
     >
-      <nut-input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
+      <nut-input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式' + index" type="text" />
     </nut-form-item>
     <nut-cell>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
@@ -87,52 +82,44 @@ app.use(FormItem);
     </nut-cell>
   </nut-form>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const dynamicRefForm = ref<any>(null);
-      const dynamicForm = {
-        state: reactive({
-          name: '',
-          tels: new Array({
-            key: 1,
-            value: ''
-          })
-        }),
+<script setup>
+import { ref, reactive } from 'vue';
+const dynamicRefForm = ref(null);
+const dynamicForm = {
+  state: reactive({
+    name: '',
+    tels: new Array({
+      key: 1,
+      value: ''
+    })
+  }),
 
-        methods: {
-          submit() {
-            dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
-              if (valid) {
-                console.log('success', dynamicForm);
-              } else {
-                console.log(errors[0].message);
-                console.log('error submit!!', errors);
-              }
-            });
-          },
-          reset() {
-            dynamicRefForm.value.reset();
-          },
-          remove() {
-            dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
-          },
-          add() {
-            let newIndex = dynamicForm.state.tels.length;
-            dynamicForm.state.tels.push({
-              key: Date.now(),
-              value: ''
-            });
-          }
+  methods: {
+    submit() {
+      dynamicRefForm.value.validate().then(({ valid, errors }) => {
+        if (valid) {
+          console.log('success', dynamicForm);
+        } else {
+          showToast.warn(errors[0].message);
+          console.log('error submit!!', errors);
         }
-      };
-      return {
-        dynamicForm,
-        dynamicRefForm
-      };
+      });
+    },
+    reset() {
+      dynamicRefForm.value.reset();
+    },
+    remove() {
+      dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
+    },
+    add() {
+      let newIndex = dynamicForm.state.tels.length;
+      dynamicForm.state.tels.push({
+        key: Date.now(),
+        value: ''
+      });
     }
-  };
+  }
+};
 </script>
 ```
 
@@ -146,17 +133,22 @@ app.use(FormItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form
     :model-value="formData"
-    :rules="{name: [{
-            message: 'name 至少两个字符',
-            validator: nameLengthValidator
-          }]}"
+    :rules="{
+      name: [
+        { required: true, message: '请填写姓名' },
+        {
+          message: 'name 至少两个字符',
+          validator: nameLengthValidator
+        }
+      ]
+    }"
     ref="ruleForm"
   >
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+    <nut-form-item label="姓名" prop="name">
       <nut-input
         class="nut-input-text"
         @blur="customBlurValidate('name')"
@@ -170,11 +162,11 @@ app.use(FormItem);
       prop="age"
       required
       :rules="[
-      { required: true, message: '请填写年龄' },
-      { validator: customValidator, message: '必须输入数字' },
-      { validator: customRulePropValidator, message: '必须输入数字', reg: /^\d+$/ },
-      { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
-    ]"
+        { required: true, message: '请填写年龄' },
+        { validator: customValidator, message: '必须输入数字' },
+        { validator: customRulePropValidator, message: '必须输入数字', reg: /^\d+$/ },
+        { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
+      ]"
     >
       <nut-input
         class="nut-input-text"
@@ -188,9 +180,9 @@ app.use(FormItem);
       prop="tel"
       required
       :rules="[
-      { required: true, message: '请填写联系电话' },
-      { validator: asyncValidator, message: '电话格式不正确' }
-    ]"
+        { required: true, message: '请填写联系电话' },
+        { validator: asyncValidator, message: '电话格式不正确' }
+      ]"
     >
       <nut-input
         class="nut-input-text"
@@ -208,96 +200,80 @@ app.use(FormItem);
     </nut-cell>
   </nut-form>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const formData = reactive({
-        name: '',
-        age: '',
-        tel: '',
-        address: ''
-      });
-      const reset = () => {
-        ruleForm.value.reset();
-      };
-      const validate = (item: any) => {
-        console.log(item);
-      };
-      const ruleForm = ref<any>(null);
+<script setup>
+import { ref, reactive } from 'vue';
+const formData = reactive({
+  name: '',
+  age: '',
+  tel: '',
+  address: ''
+});
+const reset = () => {
+  ruleForm.value.reset();
+};
+const validate = (item) => {
+  console.log(item);
+};
+const ruleForm = ref(null);
 
-      const submit = () => {
-        ruleForm.value.validate().then(({ valid, errors }: any) => {
-          if (valid) {
-            console.log('success', formData);
-          } else {
-            console.log('error submit!!', errors);
-          }
-        });
-      };
-      // 失去焦点校验
-      const customBlurValidate = (prop: string) => {
-        ruleForm.value.validate(prop).then(({ valid, errors }: any) => {
-          if (valid) {
-            console.log('success', formData);
-          } else {
-            console.log('error submit!!', errors);
-          }
-        });
-      };
-      // 函数校验
-      const customValidator = (val: string) => {
-        if (/^\d+$/.test(val)) {
-          return Promise.resolve();
-        } else {
-          return Promise.reject('必须输入数字');
-        }
-      };
-      const customRulePropValidator = (val: string, rule: FormItemRuleWithoutValidator) => {
-        if ((rule?.reg as RegExp).test(val)) {
-          return Promise.resolve();
-        } else {
-          return Promise.reject('必须输入数字');
-        }
-      };
-      const nameLengthValidator = (val: string) => {
-        if (val.length > 2) {
-          return Promise.resolve();
-        } else {
-          return Promise.reject('名称两个字以上');
-        }
-      };
-      // Promise 异步校验
-      const asyncValidator = (val: string) => {
-        const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
-        return new Promise((resolve, reject) => {
-          showToast.loading('模拟异步验证中...');
-          setTimeout(() => {
-            showToast.hide();
-            if (!val) {
-              reject('请输入联系电话');
-            } else if (!telReg.test(val)) {
-              reject('联系电话格式不正确');
-            } else {
-              resolve('');
-            }
-          }, 1000);
-        });
-      };
-      return {
-        ruleForm,
-        formData,
-        validate,
-        customValidator,
-        customRulePropValidator,
-        nameLengthValidator,
-        asyncValidator,
-        customBlurValidate,
-        submit,
-        reset
-      };
+const submit = () => {
+  ruleForm.value.validate().then(({ valid, errors }) => {
+    if (valid) {
+      console.log('success', formData);
+    } else {
+      console.log('error submit!!', errors);
     }
-  };
+  });
+};
+// 失去焦点校验
+const customBlurValidate = (prop) => {
+  ruleForm.value.validate(prop).then(({ valid, errors }) => {
+    if (valid) {
+      console.log('success', formData);
+    } else {
+      console.log('error submit!!', errors);
+    }
+  });
+};
+// 函数校验
+const customValidator = (val) => {
+  if (/^\d+$/.test(val)) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('必须输入数字');
+  }
+};
+const customRulePropValidator = (val, rule) => {
+  if ((rule?.reg).test(val)) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('必须输入数字');
+  }
+};
+const nameLengthValidator = (val) => {
+  if (val.length > 2) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject('名称两个字以上');
+  }
+};
+// Promise 异步校验
+const asyncValidator = (val) => {
+  const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+  return new Promise((resolve, reject) => {
+    showToast.loading('模拟异步验证中...');
+    setTimeout(() => {
+      showToast.hide();
+      if (!val) {
+        reject('请输入联系电话');
+      } else if (!telReg.test(val)) {
+        reject('联系电话格式不正确');
+      } else {
+        resolve('');
+      }
+    }, 1000);
+  });
+};
 </script>
 ```
 
@@ -307,7 +283,7 @@ app.use(FormItem);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-form>
     <nut-form-item label="开关">
@@ -364,77 +340,72 @@ app.use(FormItem);
     </nut-form-item>
   </nut-form>
 </template>
-<script lang="ts">
-  import { ref, reactive } from 'vue';
-  export default {
-    setup() {
-      const formData2 = reactive({
-        switch: false,
-        checkbox: false,
-        radio: 0,
-        number: 0,
-        rate: 3,
-        range: 30,
-        address: '',
-        defaultFileList: [
-          {
-            name: '文件1.png',
-            url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-            status: 'success',
-            message: '上传成功',
-            type: 'image'
-          },
-          {
-            name: '文件2.png',
-            url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-            status: 'uploading',
-            message: '上传中...',
-            type: 'image'
-          }
-        ]
-      });
-
-      const addressModule = reactive({
-        state: {
-          show: false,
-          province: [
-            { id: 1, name: '北京' },
-            { id: 2, name: '广西' },
-            { id: 3, name: '江西' },
-            { id: 4, name: '四川' }
-          ],
-          city: [
-            { id: 7, name: '朝阳区' },
-            { id: 8, name: '崇文区' },
-            { id: 9, name: '昌平区' },
-            { id: 6, name: '石景山区' }
-          ],
-          country: [
-            { id: 3, name: '八里庄街道' },
-            { id: 9, name: '北苑' },
-            { id: 4, name: '常营乡' }
-          ],
-          town: []
-        },
-        methods: {
-          show() {
-            addressModule.state.show = !addressModule.state.show;
-            if (addressModule.state.show) {
-              formData2.address = '';
-            }
-          },
-          onChange({ custom, next, value }: any) {
-            formData2.address += value.name;
-            const name = addressModule.state[next];
-            if (name.length < 1) {
-              addressModule.state.show = false;
-            }
-          }
-        }
-      });
-      return { formData2, addressModule };
+<script setup>
+import { ref, reactive } from 'vue';
+const formData2 = reactive({
+  switch: false,
+  checkbox: false,
+  radio: 0,
+  number: 0,
+  rate: 3,
+  range: 30,
+  address: '',
+  defaultFileList: [
+    {
+      name: '文件1.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: '上传成功',
+      type: 'image'
+    },
+    {
+      name: '文件2.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: '上传中...',
+      type: 'image'
     }
-  };
+  ]
+});
+
+const addressModule = reactive({
+  state: {
+    show: false,
+    province: [
+      { id: 1, name: '北京' },
+      { id: 2, name: '广西' },
+      { id: 3, name: '江西' },
+      { id: 4, name: '四川' }
+    ],
+    city: [
+      { id: 7, name: '朝阳区' },
+      { id: 8, name: '崇文区' },
+      { id: 9, name: '昌平区' },
+      { id: 6, name: '石景山区' }
+    ],
+    country: [
+      { id: 3, name: '八里庄街道' },
+      { id: 9, name: '北苑' },
+      { id: 4, name: '常营乡' }
+    ],
+    town: []
+  },
+  methods: {
+    show() {
+      addressModule.state.show = !addressModule.state.show;
+      if (addressModule.state.show) {
+        formData2.address = '';
+      }
+    },
+    onChange({ custom, next, value }) {
+      formData2.address += value.name;
+      const name = addressModule.state[next];
+      if (name.length < 1) {
+        addressModule.state.show = false;
+      }
+    }
+  }
+});
 </script>
 ```
 
@@ -444,50 +415,50 @@ app.use(FormItem);
 
 ### Form Props
 
-| 参数        | 说明                                 | 类型                     | 默认值 |
-| ----------- | ------------------------------------ | ------------------------ | ------ |
-| model-value | 表单数据对象(使用表单校验时，_必填_) | object                   |        |
-| rules       | 统一配置每个 `FormItem` 的 `rules`   | { prop: FormItemRule[] } | `{}`   |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| model-value | 表单数据对象(使用表单校验时，_必填_) | object |  |
+| rules | 统一配置每个 `FormItem` 的 `rules` | { prop: FormItemRule[] } | `{}` |
 
 ### Form Events
 
-| 事件名   | 说明                       | 回调参数                                                     |
-| -------- | -------------------------- | ------------------------------------------------------------ |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
 | validate | 任一表单项被校验失败后触发 | 被校验的表单项 `prop` 值，校验是否通过，错误消息（如果存在） |
 
 ### FormItem Props
 
-| 参数                | 说明                                                               | 类型             | 默认值  |
-| ------------------- | ------------------------------------------------------------------ | ---------------- | ------- |
-| required            | 是否显示必填字段的标签旁边的红色星号                               | boolean          | `false` |
-| prop                | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | `-`     |
-| rules               | 定义校验规则                                                       | FormItemRule []  | `[]`    |
-| label-width         | 表单项 `label` 宽度，默认单位为`px`                                | number \| string | `90`    |
-| label-align         | 表单项 `label` 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
-| body-align          | 右侧插槽对齐方式，可选值为 `center` `right`                        | string           | `left`  |
-| error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`                    | string           | `left`  |
-| show-error-line     | 是否在校验不通过时标红输入框                                       | boolean          | `true`  |
-| show-error-message  | 是否在校验不通过时在输入框下方展示错误提示                         | boolean          | `true`  |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| required | 是否显示必填字段的标签旁边的红色星号 | boolean | `false` |
+| prop | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是必填的 | string | - |
+| rules | 定义校验规则 | FormItemRule [] | [] |
+| label-width | 表单项 `label` 宽度，默认单位为`px` | number \| string | `90` |
+| label-align | 表单项 `label` 对齐方式，可选值为 `center` `right` | string | `left` |
+| body-align | 右侧插槽对齐方式，可选值为 `center` `right` | string | `left` |
+| error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | string | `left` |
+| show-error-line | 是否在校验不通过时标红输入框 | boolean | `true` |
+| show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | boolean | `true` |
 
 ### FormItemRule 数据结构
 
-使用 FormItem 的`rules`属性可以定义校验规则，可选属性如下:
+使用 `FormItem` 的 `rules` 属性可以定义校验规则，可选属性如下:
 
-| 键名      | 说明                   | 类型                                                      |
-| --------- | ---------------------- | --------------------------------------------------------- |
-| required  | 是否为必选字段         | boolean                                                   |
-| message   | 错误提示文案           | string                                                    |
-| validator | 通过函数进行校验       | (value:string, rule?:FormItemRule ) => boolean \| Promise |
-| regex     | 通过正则表达式进行校验 | RegExp                                                    |
+| 键名 | 说明 | 类型 |
+| --- | --- | --- |
+| required | 是否为必选字段 | boolean |
+| message | 错误提示文案 | string |
+| validator | 通过函数进行校验 | (value:string, rule?:FormItemRule ) => boolean \| Promise |
+| regex | 通过正则表达式进行校验 | RegExp |
 
 ### FormItem Slots
 
-| 名称    | 说明                |
-| ------- | ------------------- |
-| default | 自定义内容          |
-| label   | 自定义 `label` 区域 |
+| 名称 | 说明 |
+| --- | --- |
+| default | 自定义内容 |
+| label | 自定义 `label` 区域 |
 
-```html
+```vue
 插槽使用方式
 <nut-form-item>
   <template #label>slot label</template>
@@ -496,13 +467,13 @@ app.use(FormItem);
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Form 实例并调用实例方法
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 `Form` 实例并调用实例方法
 
-| 方法名   | 说明                                                                   | 参数                                          | 返回值 |
-| -------- | ---------------------------------------------------------------------- | --------------------------------------------- | ------ |
-| submit   | 提交表单进行校验的方法                                                 | -                                             | -      |
-| reset    | 清空校验结果                                                           | -                                             | -      |
-| validate | 用户主动触发校验，用于用户自定义场景时触发，例如 `blur`、`change` 事件 | 同 `FormItem prop` 值,不传值会校验全部 `Rule` | -      |
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| submit | 提交表单进行校验的方法 | - | - |
+| reset | 清空校验结果 | - | - |
+| validate | 用户主动触发校验，用于用户自定义场景时触发，例如 `blur`、`change` 事件 | 同 `FormItem prop` 值,不传值会校验全部 `Rule` | - |
 
 ## 主题定制
 
@@ -510,18 +481,18 @@ app.use(FormItem);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                  | 默认值                      |
-| ------------------------------------- | --------------------------- |
-| --nut-form-item-error-line-color      | _var(--nut-required-color)_ |
-| --nut-form-item-required-color        | _var(--nut-required-color)_ |
-| --nut-form-item-error-message-color   | _var(--nut-required-color)_ |
-| --nut-form-item-label-font-size       | _14px_                      |
-| --nut-form-item-label-width           | _90px_                      |
-| --nut-form-item-label-margin-right    | _10px_                      |
-| --nut-form-item-label-text-align      | _left_                      |
-| --nut-form-item-required-margin-right | _4px_                       |
-| --nut-form-item-body-font-size        | _14px_                      |
-| --nut-form-item-body-slots-text-align | _left_                      |
-| --nut-form-item-body-input-text-align | _left_                      |
-| --nut-form-item-tip-font-size         | _10px_                      |
-| --nut-form-item-tip-text-align        | _left_                      |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-form-item-error-line-color | _var(--nut-required-color)_ |
+| --nut-form-item-required-color | _var(--nut-required-color)_ |
+| --nut-form-item-error-message-color | _var(--nut-required-color)_ |
+| --nut-form-item-label-font-size | _14px_ |
+| --nut-form-item-label-width | _90px_ |
+| --nut-form-item-label-margin-right | _10px_ |
+| --nut-form-item-label-text-align | _left_ |
+| --nut-form-item-required-margin-right | _4px_ |
+| --nut-form-item-body-font-size | _14px_ |
+| --nut-form-item-body-slots-text-align | _left_ |
+| --nut-form-item-body-input-text-align | _left_ |
+| --nut-form-item-tip-font-size | _10px_ |
+| --nut-form-item-tip-text-align | _left_ |

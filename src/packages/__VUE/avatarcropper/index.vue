@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
-import Button from '../button/index.vue';
+import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
 import type { AvatarCropperToolbarPosition } from './types';
 const { create } = createComponent('avatar-cropper');
@@ -52,7 +52,7 @@ import { preventDefault, clamp } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 export default create({
   components: {
-    [Button.name]: Button,
+    NutButton,
     Refresh2,
     Retweet
   },

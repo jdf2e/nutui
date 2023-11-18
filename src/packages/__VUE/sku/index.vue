@@ -6,8 +6,7 @@
     round
     style="height: 75%"
     :lock-scroll="lockScroll"
-    :teleport-disable="teleportDisable"
-    :teleport="teleport"
+    :catch-move="lockScroll"
     @click-close-icon="closePopup('icon')"
     @click-overlay="closePopup('overlay')"
     @close="closePopup('close')"
@@ -48,8 +47,8 @@
       </view>
 
       <sku-operate
-        :btn-options="btnOptions"
         :btn-extra-text="btnExtraText"
+        :btn-options="btnOptions"
         :buy-text="buyText || translate('buyNow')"
         :add-cart-text="addCartText || translate('addToCart')"
         :confirm-text="confirmText || translate('confirm')"
@@ -63,19 +62,24 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted, PropType } from 'vue';
+import { ref, watch, PropType } from 'vue';
 import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
+import NutPopup from '../popup/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import { popupProps } from '../popup/props';
-import Popup from '../popup/index.vue';
-const { create, translate } = createComponent('sku');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku');
+
+const cN = 'NutSku';
 
 export default create({
   props: {
-    ...popupProps,
+    visible: {
+      type: Boolean,
+      default: false
+    },
 
     sku: {
       type: Array,
@@ -138,6 +142,11 @@ export default create({
     confirmText: {
       type: String,
       default: ''
+    },
+
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   emits: [
@@ -158,10 +167,12 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    NutPopup
   },
 
   setup(props: any, { emit, slots }) {
+    const translate = useLocale(cN);
+
     const showPopup = ref(props.visible);
 
     const goodsCount = ref(props.stepperMin);
@@ -181,10 +192,6 @@ export default create({
         }
       }
     );
-
-    onMounted(() => {
-      // console.log('更新参数');
-    });
 
     const getSlots = (name: string) => slots[name];
 

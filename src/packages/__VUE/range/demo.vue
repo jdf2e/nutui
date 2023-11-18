@@ -2,36 +2,36 @@
   <div class="demo">
     <h2>{{ translate('title') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value1" @change="onChange"></nut-range>
+      <nut-range v-model="state.value1" @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title1') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value2" range @change="onChange"></nut-range>
+      <nut-range v-model="state.value2" range @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title2') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value3" :max="10" :min="-10" @change="onChange"></nut-range>
+      <nut-range v-model="state.value3" :max="10" :min="-10" @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title3') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value4" :step="5" @change="onChange"></nut-range>
+      <nut-range v-model="state.value4" :step="5" @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title4') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value5" hidden-range @change="onChange"></nut-range>
+      <nut-range v-model="state.value5" hidden-range @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title5') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value6" hidden-tag @change="onChange"></nut-range>
+      <nut-range v-model="state.value6" hidden-tag @change="onChange"></nut-range>
     </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value7" disabled></nut-range>
+      <nut-range v-model="state.value7" disabled></nut-range>
     </nut-cell>
     <h2>{{ translate('title7') }}</h2>
     <nut-cell class="cell">
       <nut-range
-        v-model="value8"
+        v-model="state.value8"
         inactive-color="rgba(163,184,255,1)"
         button-color="rgba(52,96,250,1)"
         active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
@@ -40,9 +40,9 @@
     </nut-cell>
     <h2>{{ translate('title8') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value9" @change="onChange">
+      <nut-range v-model="state.value9" @change="onChange">
         <template #button>
-          <div class="custom-button">{{ value9 }}</div>
+          <div class="custom-button">{{ state.value9 }}</div>
         </template>
       </nut-range>
     </nut-cell>
@@ -50,36 +50,36 @@
     <h2>{{ translate('title9') }}</h2>
     <nut-cell class="vertical_div">
       <view class="div">
-        <nut-range v-model="value10" :vertical="true" @change="onChange"></nut-range>
+        <nut-range v-model="state.value10" :vertical="true" @change="onChange"></nut-range>
       </view>
       <view class="div">
-        <nut-range v-model="value11" range :vertical="true" @change="onChange"></nut-range>
+        <nut-range v-model="state.value11" range :vertical="true" @change="onChange"></nut-range>
       </view>
     </nut-cell>
     <h2>{{ translate('title10') }}</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value12" :marks="marks" :hidden-range="true" @change="onChange"></nut-range>
+      <nut-range v-model="state.value12" :marks="state.marks" :hidden-range="true" @change="onChange"></nut-range>
     </nut-cell>
     <nut-cell class="cell">
-      <nut-range v-model="value13" range :marks="marks" :hidden-range="true" @change="onChange"></nut-range>
+      <nut-range v-model="state.value13" range :marks="state.marks" :hidden-range="true" @change="onChange"></nut-range>
     </nut-cell>
 
     <nut-cell class="vertical_div">
       <view class="div">
         <nut-range
-          v-model="value14"
+          v-model="state.value14"
           :vertical="true"
-          :marks="marks"
+          :marks="state.marks"
           :hidden-range="true"
           @change="onChange"
         ></nut-range>
       </view>
       <view class="div">
         <nut-range
-          v-model="value15"
+          v-model="state.value15"
           range
           :vertical="true"
-          :marks="marks"
+          :marks="state.marks"
           :hidden-range="true"
           @change="onChange"
         ></nut-range>
@@ -88,8 +88,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { toRefs, reactive, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
 const { translate } = createComponent('range');
@@ -124,44 +124,34 @@ const initTranslate = () =>
       title10: 'Marks'
     }
   });
-export default defineComponent({
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      value1: 40,
-      value2: [20, 80],
-      value3: 0,
-      value4: 20,
-      value5: 30,
-      value6: 40,
-      value7: 50,
-      value8: 40,
-      value9: 60,
-      value10: 20,
-      value11: [20, 80],
-      value12: 60,
-      value13: [20, 80],
-      value14: 60,
-      value15: [20, 80],
-      marks: {
-        0: 0,
-        20: 20,
-        40: 40,
-        60: 60,
-        80: 80,
-        100: 100
-      }
-    });
-
-    const onChange = (value: number) => showToast.text('value：' + value);
-    return {
-      ...toRefs(state),
-      onChange,
-      translate
-    };
+initTranslate();
+const state = reactive({
+  value1: 40,
+  value2: [20, 80],
+  value3: 0,
+  value4: 20,
+  value5: 30,
+  value6: 40,
+  value7: 50,
+  value8: 40,
+  value9: 60,
+  value10: 20,
+  value11: [20, 80],
+  value12: 60,
+  value13: [20, 80],
+  value14: 60,
+  value15: [20, 80],
+  marks: {
+    0: 0,
+    20: 20,
+    40: 40,
+    60: 60,
+    80: 80,
+    100: 100
   }
 });
+
+const onChange = (value: number) => showToast.text('value：' + value);
 </script>
 
 <style lang="scss" scoped>

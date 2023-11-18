@@ -1,5 +1,5 @@
 <template>
-  <view v-if="info && Object.keys(info)" :class="classes">
+  <view v-if="info && Object.keys(info)" class="nut-comment">
     <!-- 根据展示信息的多少，分为3种展示风格：simple，base，complex -->
     <comment-header :type="headerType" :info="info" :labels="labels" @handle-click="handleClick">
       <template #labels>
@@ -19,10 +19,13 @@
     <comment-images :images="images" :videos="videos" :type="imagesRows" @click-images="clickImages"></comment-images>
 
     <view v-if="follow && follow.days > 0" class="nut-comment__follow" @click="handleClick">
-      <view class="nut-comment__follow-title">购买{{ follow.days }}天后追评</view>
+      <view class="nut-comment__follow-title">{{ translate('additionalReview', follow.days) }}</view>
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
-      <view v-if="follow.images && follow.images.length > 0" class="nut-comment__follow-img"
-        >{{ follow.images.length }} 张追评图片 <Right size="12px"></Right
+      <view
+        v-if="follow.images && follow.images.length > 0"
+        class="nut-comment__follow-img"
+        @click="clickImages(follow.images)"
+        >{{ translate('additionalImages', follow.images.length) }} <Right size="12px"></Right
       ></view>
     </view>
 
@@ -39,12 +42,12 @@
 </template>
 <script lang="ts">
 import { computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('comment');
 import { Right } from '@nutui/icons-vue-taro';
+import { createComponent } from '@/packages/utils/create';
 import CommentHeader from './components/CmtHeader.taro.vue';
 import CommentImages from './components/CmtImages.taro.vue';
 import CommentBottom from './components/CmtBottom.taro.vue';
+import { useLocale } from '@/packages/utils/useLocale';
 
 interface VideosType {
   id: number | string;
@@ -56,6 +59,9 @@ interface ImagesType {
   bigImgUrl: string;
   imgUrl: string;
 }
+
+const { create } = createComponent('comment');
+const cN = 'NutComment';
 
 export default create({
   props: {
@@ -112,13 +118,7 @@ export default create({
   emits: ['click', 'clickImages', 'clickOperate'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
+    const translate = useLocale(cN);
     const conEllipsis = computed(() => {
       if (props.ellipsis) return props.ellipsis;
 
@@ -136,7 +136,7 @@ export default create({
       emit('clickImages', value);
     };
 
-    return { classes, conEllipsis, clickOperate, handleClick, clickImages };
+    return { conEllipsis, clickOperate, handleClick, clickImages, translate };
   }
 });
 </script>

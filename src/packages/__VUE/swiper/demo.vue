@@ -2,60 +2,60 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in list" :key="item"> <img :src="item" alt="" /> </nut-swiper-item>
+      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+        <nut-swiper-item v-for="item in state.list" :key="item"> <img :src="item" alt="" /> </nut-swiper-item>
       </nut-swiper>
     </view>
     <h2>{{ translate('asyc') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in list1" :key="item">
+      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+        <nut-swiper-item v-for="item in state.list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
     <h2>{{ translate('dynamicDel') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in list2" :key="item">
+      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+        <nut-swiper-item v-for="item in state.list2" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
     <h2>{{ translate('size') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page2" :loop="false" width="300">
-        <nut-swiper-item v-for="item in list" :key="item">
+      <nut-swiper :init-page="state.page2" :loop="false" width="300">
+        <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
     <h2>{{ translate('indicator') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page3" :loop="true" @change="change">
-        <nut-swiper-item v-for="item in list" :key="item">
+      <nut-swiper :init-page="state.page3" :loop="true" @change="change">
+        <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
         <template #page>
-          <div class="page"> {{ current }}/4 </div>
+          <div class="page"> {{ state.current }}/4 </div>
         </template>
       </nut-swiper>
     </view>
     <h2>{{ translate('indicator1') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="page" :loop="true" auto-play="2000" @change="change1">
-        <nut-swiper-item v-for="item in list1" :key="item">
+      <nut-swiper :init-page="state.page" :loop="true" auto-play="2000" @change="change1">
+        <nut-swiper-item v-for="item in state.list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
         <template #page>
-          <div class="page"> {{ current1 }}/4 </div>
+          <div class="page"> {{ state.current1 }}/4 </div>
         </template>
       </nut-swiper>
     </view>
     <h2>{{ translate('btns') }}</h2>
     <view class="demo-box">
-      <nut-swiper ref="swiper" :init-page="page" :loop="true">
-        <nut-swiper-item v-for="item in list" :key="item">
+      <nut-swiper ref="swiper" :init-page="state.page" :loop="true">
+        <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
@@ -71,7 +71,7 @@
     <h2>{{ translate('vertical') }}</h2>
     <view class="demo-box">
       <nut-swiper
-        :init-page="page4"
+        :init-page="state.page4"
         :loop="true"
         auto-play="3000"
         direction="vertical"
@@ -79,7 +79,7 @@
         :pagination-visible="true"
         style="height: 150px"
       >
-        <nut-swiper-item v-for="item in list" :key="item">
+        <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
@@ -87,8 +87,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, onMounted, ref, Ref, defineComponent } from 'vue';
+<script setup lang="ts">
+import { reactive, onMounted, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('swiper');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -120,61 +120,46 @@ const initTranslate = () =>
       verticalCenter: 'Vertical center display'
     }
   });
-export default defineComponent({
-  components: { Left, Right },
-  props: {},
-  setup() {
-    initTranslate();
-    const swiper = ref(null) as Ref;
-    const state = reactive({
-      page: 2,
-      page2: 0,
-      page3: 0,
-      page4: 0,
-      current: 1,
-      current1: 3,
-      list: [
-        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-      ],
-      list2: [
-        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-      ],
-      list1: [] as string[]
-    });
-    const change = (index: number) => {
-      state.current = index + 1;
-    };
-    const change1 = (index: number) => {
-      state.current1 = index + 1;
-    };
-    const handlePrev = () => {
-      swiper.value.prev();
-    };
-    const handleNext = () => {
-      swiper.value.next();
-    };
-    onMounted(() => {
-      setTimeout(() => {
-        state.list1 = state.list.slice();
-        state.list2.splice(1, 1);
-      }, 3000);
-    });
-    return {
-      ...toRefs(state),
-      swiper,
-      change,
-      change1,
-      handlePrev,
-      handleNext,
-      translate
-    };
-  }
+initTranslate();
+const swiper = ref(null) as Ref;
+const state = reactive({
+  page: 2,
+  page2: 0,
+  page3: 0,
+  page4: 0,
+  current: 1,
+  current1: 3,
+  list: [
+    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  ],
+  list2: [
+    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  ],
+  list1: [] as string[]
+});
+const change = (index: number) => {
+  state.current = index + 1;
+};
+const change1 = (index: number) => {
+  state.current1 = index + 1;
+};
+const handlePrev = () => {
+  swiper.value.prev();
+};
+const handleNext = () => {
+  swiper.value.next();
+};
+onMounted(() => {
+  setTimeout(() => {
+    state.list1 = state.list.slice();
+    state.list2.splice(1, 1);
+  }, 3000);
 });
 </script>
 

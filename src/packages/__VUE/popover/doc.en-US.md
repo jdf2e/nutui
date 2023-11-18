@@ -20,7 +20,7 @@ Popover supports both light and dark styles. The default is light style. Set the
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-row type="flex">
     <nut-col :span="8" style="margin-left:20px">
@@ -44,27 +44,19 @@ Popover supports both light and dark styles. The default is light style. Set the
     </nut-col>
   </nut-row>
 </template>
-<script>
-  import { reactive, ref } from 'vue';
-  export default {
-    setup() {
-      const visible = ref({
-        darkTheme: false,
-        lightTheme: false
-      });
-      const iconItemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
-      return {
-        visible,
-        iconItemList
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+const visible = reactive({
+  darkTheme: false,
+  lightTheme: false
+});
+const iconItemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
 </script>
 
 <style>
-  .nut-popover-content {
-    width: 120px;
-  }
+.nut-popover-content {
+  width: 120px;
+}
 </style>
 ```
 
@@ -76,7 +68,7 @@ In the list array, an option can be disabled via the `disabled` field.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-row type="flex">
     <nut-col :span="8" style="margin-left:20px">
@@ -96,66 +88,56 @@ In the list array, an option can be disabled via the `disabled` field.
   </nut-row>
 </template>
 
-<script>
-  import { reactive, ref, h } from 'vue';
-  import { Location, Cart2, My2 } from '@nutui/icons-vue';
-  export default {
-    setup() {
-      const visible = ref({
-        showIcon: false,
-        disableAction: false
+<script setup>
+import { reactive, h } from 'vue';
+import { Location, Cart2, My2 } from '@nutui/icons-vue';
+const visible = reactive({
+  showIcon: false,
+  disableAction: false
+});
+
+const itemList = reactive([
+  {
+    name: 'option1',
+    icon: () => {
+      return h(My2, {
+        width: '14px',
+        color: 'rgba(250, 44, 25, 1)'
       });
-
-      const itemList = reactive([
-        {
-          name: 'option1',
-          icon: () => {
-            return h(My2, {
-              width: '14px',
-              color: 'rgba(250, 44, 25, 1)'
-            });
-          }
-        },
-        {
-          name: 'option2',
-          icon: Cart2
-        },
-        {
-          name: 'option3',
-          icon: Location
-        }
-      ]);
-
-      const itemListDisabled = reactive([
-        {
-          name: 'option1',
-          disabled: true
-        },
-        {
-          name: 'option2',
-          disabled: true
-        },
-        {
-          name: 'option3'
-        }
-      ]);
-
-      return {
-        itemList,
-        visible,
-        itemListDisabled
-      };
     }
-  };
+  },
+  {
+    name: 'option2',
+    icon: Cart2
+  },
+  {
+    name: 'option3',
+    icon: Location
+  }
+]);
+
+const itemListDisabled = reactive([
+  {
+    name: 'option1',
+    disabled: true
+  },
+  {
+    name: 'option2',
+    disabled: true
+  },
+  {
+    name: 'option3'
+  }
+]);
 </script>
 
 <style>
-  .nut-popover-content {
-    width: 120px;
-  }
-  .nut-icon {
-    width: 14px;
-  }
+.nut-popover-content {
+  width: 120px;
+}
+.nut-icon {
+  width: 14px;
+}
 </style>
 ```
 
@@ -167,7 +149,7 @@ Customize the content in the slot named content.
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-popover v-model:visible="visible.customized" location="bottom-start" custom-class="customClass">
     <template #reference>
@@ -185,67 +167,57 @@ Customize the content in the slot named content.
   </nut-popover>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-  import { Service } from '@nutui/icons-vue';
-  export default {
-    components: { Service },
-    setup() {
-      const visible = ref({
-        customized: false
-      });
-      const selfContent = reactive([
-        {
-          desc: 'option1'
-        },
-        {
-          desc: 'option2'
-        },
-        {
-          desc: 'option3'
-        },
-        {
-          desc: 'option4'
-        },
-        {
-          desc: 'option5'
-        },
-        {
-          desc: 'option6'
-        }
-      ]);
-
-      return {
-        visible,
-        selfContent
-      };
-    }
-  };
+<script setup>
+import { reactive } from 'vue';
+import { Service } from '@nutui/icons-vue';
+const visible = ref({
+  customized: false
+});
+const selfContent = reactive([
+  {
+    desc: 'option1'
+  },
+  {
+    desc: 'option2'
+  },
+  {
+    desc: 'option3'
+  },
+  {
+    desc: 'option4'
+  },
+  {
+    desc: 'option5'
+  },
+  {
+    desc: 'option6'
+  }
+]);
 </script>
 
 <style>
-  #app {
-    padding-top: 200px;
-  }
-  .self-content {
-    width: 195px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .self-content-item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .self-content-desc {
-    margin-top: 5px;
-    width: 60px;
-    font-size: 10px;
-    text-align: center;
-  }
+#app {
+  padding-top: 200px;
+}
+.self-content {
+  width: 195px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.self-content-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.self-content-desc {
+  margin-top: 5px;
+  width: 60px;
+  font-size: 10px;
+  text-align: center;
+}
 </style>
 ```
 
@@ -272,7 +244,7 @@ bottom-end    # Bottom right
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
   <nut-popup position="bottom" v-model:visible="showPicker">
@@ -302,84 +274,69 @@ bottom-end    # Bottom right
   </nut-popover>
 </template>
 
-<script lang="ts">
-  import { reactive, ref } from 'vue';
-  export default {
-    setup() {
-      const showPicker = ref(false);
-      const customPositon = ref(false);
-      const curPostion = ref('top');
-      const positionList = reactive([
-        {
-          name: 'option1'
-        },
-        {
-          name: 'option2'
-        }
-      ]);
-      const closePicker = () => {
-        customPositon.value = false;
-        showPicker.value = false;
-      };
+<script setup>
+import { reactive, ref } from 'vue';
+const showPicker = ref(false);
+const customPositon = ref(false);
+const curPostion = ref('top');
+const positionList = reactive([
+  {
+    name: 'option1'
+  },
+  {
+    name: 'option2'
+  }
+]);
+const closePicker = () => {
+  customPositon.value = false;
+  showPicker.value = false;
+};
 
-      const change = ({ selectedValue }) => {
-        curPostion.value = selectedValue[0];
-        if (showPicker.value) customPositon.value = true;
-      };
+const change = ({ selectedValue }) => {
+  curPostion.value = selectedValue[0];
+  if (showPicker.value) customPositon.value = true;
+};
 
-      const handlePicker = () => {
-        showPicker.value = true;
-        setTimeout(() => {
-          customPositon.value = true;
-        }, 0);
-      };
+const handlePicker = () => {
+  showPicker.value = true;
+  setTimeout(() => {
+    customPositon.value = true;
+  }, 0);
+};
 
-      const columns = ref([
-        { text: 'top', value: 'top' },
-        { text: 'top-start', value: 'top-start' },
-        { text: 'top-end', value: 'top-end' },
-        { text: 'right', value: 'right' },
-        { text: 'right-start', value: 'right-start' },
-        { text: 'right-end', value: 'right-end' },
-        { text: 'bottom', value: 'bottom' },
-        { text: 'bottom-start', value: 'bottom-start' },
-        { text: 'bottom-end', value: 'bottom-end' },
-        { text: 'left', value: 'left' },
-        { text: 'left-start', value: 'left-start' },
-        { text: 'left-end', value: 'left-end' }
-      ]);
-
-      return {
-        positionList,
-        showPicker,
-        customPositon,
-        curPostion,
-        closePicker,
-        change,
-        handlePicker,
-        columns
-      };
-    }
-  };
+const columns = ref([
+  { text: 'top', value: 'top' },
+  { text: 'top-start', value: 'top-start' },
+  { text: 'top-end', value: 'top-end' },
+  { text: 'right', value: 'right' },
+  { text: 'right-start', value: 'right-start' },
+  { text: 'right-end', value: 'right-end' },
+  { text: 'bottom', value: 'bottom' },
+  { text: 'bottom-start', value: 'bottom-start' },
+  { text: 'bottom-end', value: 'bottom-end' },
+  { text: 'left', value: 'left' },
+  { text: 'left-start', value: 'left-start' },
+  { text: 'left-end', value: 'left-end' }
+]);
 </script>
 
 <style>
-  .nut-popover-content {
-    width: 120px;
-  }
+.nut-popover-content {
+  width: 120px;
+}
 
-  .brickBox {
-    margin: 80px 0;
-    display: flex;
-    justify-content: center;
-  }
+.brickBox {
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+}
 
-  .brick {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
-    border-radius: 10px;
-  }
+.brick {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+  border-radius: 10px;
+}
 </style>
 ```
 
@@ -391,7 +348,7 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle">custom target</nut-button>
   <nut-popover
@@ -402,35 +359,25 @@ Popover provides the 'targetId' attribute to match the target element by adding 
   ></nut-popover>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-  export default {
-    setup() {
-      const visible = reactive({
-        customTarget: false
-      });
+<script setup>
+import { reactive, ref } from 'vue';
+const visible = reactive({
+  customTarget: false
+});
 
-      const itemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
+const itemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
 
-      const clickCustomHandle = () => {
-        visible.customTarget = !visible.customTarget;
-      };
-
-      return {
-        itemList,
-        visible,
-        clickCustomHandle
-      };
-    }
-  };
+const clickCustomHandle = () => {
+  visible.customTarget = !visible.customTarget;
+};
 </script>
 <style>
-  #app {
-    margin-top: 300px;
-  }
-  .nut-popover-content {
-    width: 120px;
-  }
+#app {
+  margin-top: 300px;
+}
+.nut-popover-content {
+  width: 120px;
+}
 </style>
 ```
 
@@ -440,7 +387,7 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-popover
     v-model:visible="visible.customColor"
@@ -455,30 +402,21 @@ Popover provides the 'targetId' attribute to match the target element by adding 
   </nut-popover>
 </template>
 
-<script>
-  import { reactive, ref } from 'vue';
-  export default {
-    setup() {
-      const visible = reactive({
-        customColor: false
-      });
+<script setup>
+import { reactive, ref } from 'vue';
+const visible = reactive({
+  customColor: false
+});
 
-      const itemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
-
-      return {
-        itemList,
-        visible
-      };
-    }
-  };
+const itemList = reactive([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
 </script>
 <style>
-  #app {
-    margin-top: 300px;
-  }
-  .nut-popover-content {
-    width: 120px;
-  }
+#app {
+  margin-top: 300px;
+}
+.nut-popover-content {
+  width: 120px;
+}
 </style>
 ```
 
@@ -488,51 +426,51 @@ Popover provides the 'targetId' attribute to match the target element by adding 
 
 ### Props
 
-| Attribute              | Description                               | Type             | Default   |
-| ---------------------- | ----------------------------------------- | ---------------- | --------- |
-| list                   | list of options                           | List[]           | `[]`      |
-| visible                | whether to show                           | boolean          | `false`   |
-| theme                  | Theme style, can be set to `dark` `light` | string           | `light`   |
-| location               | pop-up location                           | string           | `bottom`  |
-| offset                 | the offset of the occurrence position     | [number,number]  | `[0, 12]` |
-| show-arrow             | whether to show small arrows              | boolean          | `true`    |
-| custom-class           | custom class                              | string           | `''`      |
-| duration               | Transition duration，Unit second          | number \| string | `0.3`     |
-| overlay                | Whether to show overlay                   | boolean          | `false`   |
-| overlay-class          | Custom overlay class                      | string           | `''`      |
-| overlay-style          | Custom overlay style                      | string           | `''`      |
-| close-on-click-overlay | Whether to close when clicking overlay    | boolean          | `true`    |
-| close-on-click-action  | Whether to close when clicking action     | boolean          | `true`    |
-| close-on-click-outside | Whether to close when clicking outside    | boolean          | `true`    |
-| bg-color               | Custom color                              | string           | `-`       |
-| target-id              | Custom target id                          | string           | `-`       |
-| arrow-offset           | the offset of the arrow                   | number           | `0`       |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| list | list of options | List[] | `[]` |
+| visible | whether to show | boolean | `false` |
+| theme | Theme style, can be set to `dark` `light` | string | `light` |
+| location | pop-up location | string | `bottom` |
+| offset | the offset of the occurrence position | [number,number] | `[0, 12]` |
+| show-arrow | whether to show small arrows | boolean | `true` |
+| custom-class | custom class | string | `''` |
+| duration | Transition duration，Unit second | number \| string | `0.3` |
+| overlay | Whether to show overlay | boolean | `false` |
+| overlay-class | Custom overlay class | string | `''` |
+| overlay-style | Custom overlay style | string | `''` |
+| close-on-click-overlay | Whether to close when clicking overlay | boolean | `true` |
+| close-on-click-action | Whether to close when clicking action | boolean | `true` |
+| close-on-click-outside | Whether to close when clicking outside | boolean | `true` |
+| bg-color | Custom color | string | `-` |
+| target-id | Custom target id | string | `-` |
+| arrow-offset | the offset of the arrow | number | `0` |
 
 ### List data structure
 
 The List property is an array of objects, each object in the array is configured with a column, and the object can contain the following values:
 
-| Key       | Description                                     | Type                      | Default |
-| --------- | ----------------------------------------------- | ------------------------- | ------- |
-| name      | option text                                     | string                    | `-`     |
-| icon      | @nutui/icons-vue name                           | VNode                     | `-`     |
-| disabled  | whether to disable                              | boolean                   | `false` |
-| className | Add extra class names for corresponding options | string \| Array \| object | `-`     |
+| Key | Description | Type | Default |
+| --- | --- | --- | --- |
+| name | option text | string | `-` |
+| icon | @nutui/icons-vue name | VNode | `-` |
+| disabled | whether to disable | boolean | `false` |
+| className | Add extra class names for corresponding options | string \| Array \| object | `-` |
 
 ### Slots
 
-| Name      | Description                                                     |
-| --------- | --------------------------------------------------------------- |
-| content   | Customize Bubble Component Menu Content                         |
+| Name | Description |
+| --- | --- |
+| content | Customize Bubble Component Menu Content |
 | reference | The content of the element that triggers the Popover to display |
 
 ### Events
 
-| Event  | Description                         |
-| ------ | ----------------------------------- |
+| Event | Description |
+| --- | --- |
 | choose | Triggered when an option is clicked |
-| open   | Triggered when the menu is opened   |
-| close  | Fired when the menu is closed       |
+| open | Triggered when the menu is opened |
+| close | Fired when the menu is closed |
 
 ## Theming
 
@@ -540,13 +478,13 @@ The List property is an array of objects, each object in the array is configured
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                 | Default Value            |
-| ------------------------------------ | ------------------------ |
+| Name | Default Value |
+| --- | --- |
 | --nut-popover-white-background-color | _rgba(255, 255, 255, 1)_ |
-| --nut-popover-dark-background-color  | _rgba(75, 76, 77, 1)_    |
-| --nut-popover-border-bottom-color    | _rgba(229, 229, 229, 1)_ |
-| --nut-popover-primary-text-color     | _rgba(51, 51, 51, 1)_    |
-| --nut-popover-disable-color          | _rgba(154, 155, 157, 1)_ |
-| --nut-popover-menu-item-padding      | _8px 0_                  |
-| --nut-popover-menu-item-margin       | _0 8px_                  |
-| --nut-popover-menu-name-line-height  | _normal_                 |
+| --nut-popover-dark-background-color | _rgba(75, 76, 77, 1)_ |
+| --nut-popover-border-bottom-color | _rgba(229, 229, 229, 1)_ |
+| --nut-popover-primary-text-color | _rgba(51, 51, 51, 1)_ |
+| --nut-popover-disable-color | _rgba(154, 155, 157, 1)_ |
+| --nut-popover-menu-item-padding | _8px 0_ |
+| --nut-popover-menu-item-margin | _0 8px_ |
+| --nut-popover-menu-name-line-height | _normal_ |

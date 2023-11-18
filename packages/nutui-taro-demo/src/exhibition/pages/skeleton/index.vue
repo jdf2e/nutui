@@ -1,6 +1,5 @@
 <template>
-  <view class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
 
@@ -39,28 +38,12 @@
         </view>
       </nut-skeleton>
     </view>
-  </view>
+  </Demo>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-
-export default {
-  components: {
-    Header
-  },
-  setup() {
-    const env = Taro.getEnv();
-    const checked = ref(false);
-
-    return {
-      checked,
-      env
-    };
-  }
-};
+const checked = ref(false);
 </script>
 
 <style lang="scss">

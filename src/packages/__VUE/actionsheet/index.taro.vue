@@ -6,9 +6,10 @@
     :close-on-click-overlay="closeAbled"
     :lock-scroll="lockScroll"
     :catch-move="lockScroll"
+    :z-index="zIndex"
     @click-overlay="close"
   >
-    <view :class="classes">
+    <view class="nut-action-sheet">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
       <view v-if="!slotDefault">
@@ -39,12 +40,12 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { computed, useSlots } from 'vue';
+import { useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 import { Loading } from '@nutui/icons-vue-taro';
-const { componentName, create } = createComponent('action-sheet');
+const { create } = createComponent('action-sheet');
 export interface menuItems {
   disable: boolean;
   loading: boolean;
@@ -55,7 +56,7 @@ export interface menuItems {
 }
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Loading
   },
   props: {
@@ -101,12 +102,6 @@ export default create({
 
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const isHighlight = (item: { [x: string]: string | boolean }) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
@@ -136,8 +131,7 @@ export default create({
       isHighlight,
       cancelActionSheet,
       chooseItem,
-      close,
-      classes
+      close
     };
   }
 });

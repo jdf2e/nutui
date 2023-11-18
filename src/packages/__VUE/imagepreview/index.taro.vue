@@ -14,7 +14,14 @@
         @change="setActive"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <img :src="item.src" mode="aspectFit" class="nut-image-preview-img" @click.stop="closeOnImg" />
+          <img
+            :src="item.src"
+            mode="aspectFit"
+            class="nut-image-preview-img"
+            @longPress="longPress(item)"
+            @longTap="longPress(item)"
+            @click.stop="closeOnImg"
+          />
         </nut-swiper-item>
       </nut-swiper>
     </view>
@@ -32,9 +39,9 @@ import { CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
-import Popup from '../popup/index.taro.vue';
-import Swiper from '../swiper/index.taro.vue';
-import SwiperItem from '../swiperitem/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
+import NutSwiper from '../swiper/index.taro.vue';
+import NutSwiperItem from '../swiperitem/index.taro.vue';
 const { create } = createComponent('image-preview');
 
 export default create({
@@ -85,11 +92,11 @@ export default create({
       default: true
     }
   },
-  emits: ['close', 'change'],
+  emits: ['close', 'change', 'longPress'],
   components: {
-    [Popup.name]: Popup,
-    [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem,
+    NutPopup,
+    NutSwiper,
+    NutSwiperItem,
     CircleClose
   },
 
@@ -243,6 +250,10 @@ export default create({
       }
     };
 
+    const longPress = (image: ImageInterface) => {
+      emit('longPress', image);
+    };
+
     const init = () => {
       state.eleImg = document.querySelector('.nut-image-preview');
       document.addEventListener('touchmove', onTouchMove);
@@ -282,6 +293,7 @@ export default create({
       onTouchEnd,
       getDistance,
       scaleNow,
+      longPress,
       styles
     };
   }

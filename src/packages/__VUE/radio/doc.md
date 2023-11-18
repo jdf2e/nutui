@@ -6,7 +6,7 @@
 
 ### 安装
 
-```ts
+```js
 import { createApp } from 'vue';
 import { Radio, RadioGroup } from '@nutui/nutui';
 
@@ -21,7 +21,7 @@ app.use(RadioGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="基础用法">
     <nut-cell>
@@ -47,15 +47,9 @@ app.use(RadioGroup);
     </nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const radioVal = ref('1');
-      return { radioVal };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const radioVal = ref('1');
 </script>
 ```
 
@@ -65,7 +59,7 @@ app.use(RadioGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="水平使用">
     <nut-cell>
@@ -91,15 +85,9 @@ app.use(RadioGroup);
     </nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const radioVal = ref('1');
-      return { radioVal };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const radioVal = ref('1');
 </script>
 ```
 
@@ -109,7 +97,7 @@ app.use(RadioGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="自定义尺寸">
     <nut-cell>
@@ -120,15 +108,9 @@ app.use(RadioGroup);
     </nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const radioVal = ref('1');
-      return { radioVal };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const radioVal = ref('1');
 </script>
 ```
 
@@ -140,7 +122,7 @@ app.use(RadioGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="Radio自定义图标">
     <nut-cell>
@@ -159,18 +141,10 @@ app.use(RadioGroup);
     </nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  import { Checklist } from '@nutui/icons-vue';
-  export default {
-    components: {
-      Checklist
-    },
-    setup() {
-      const radioVal = ref('1');
-      return { radioVal };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+import { Checklist } from '@nutui/icons-vue';
+const radioVal = ref('1');
 </script>
 ```
 
@@ -180,7 +154,7 @@ app.use(RadioGroup);
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-cell-group title="触发事件">
     <nut-cell>
@@ -192,18 +166,12 @@ app.use(RadioGroup);
     <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
   </nut-cell-group>
 </template>
-<script lang="ts">
-  import { ref } from 'vue';
-  export default {
-    props: {},
-    setup() {
-      const radioVal = ref('1');
-      const handleChange = (value: any) => {
-        console.log(value);
-      };
-      return { radioVal, handleChange };
-    }
-  };
+<script setup>
+import { ref } from 'vue';
+const radioVal = ref('1');
+const handleChange = (value) => {
+  console.log(value);
+};
 </script>
 ```
 
@@ -213,32 +181,32 @@ app.use(RadioGroup);
 
 ### Radio Props
 
-| 参数      | 说明                               | 类型                        | 默认值  |
-| --------- | ---------------------------------- | --------------------------- | ------- |
-| disabled  | 是否禁用选择                       | boolean                     | `false` |
-| icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number            | `18`    |
-| label     | 单选框标识                         | string \| number \| boolean | -       |
-| shape     | 形状，可选值为 `button`、`round`   | string                      | `round` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| disabled | 是否禁用选择 | boolean | `false` |
+| icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18` |
+| label | 单选框标识 | string \| number \| boolean | - |
+| shape | 形状，可选值为 `button`、`round` | string | `round` |
 
 ### Radio Slots
 
-| 名称        | 说明           |
-| ----------- | -------------- |
-| icon        | 未选中时的图标 |
-| checkedIcon | 选中时的图标   |
+| 名称 | 说明 |
+| --- | --- |
+| icon | 未选中时的图标 |
+| checkedIcon | 选中时的图标 |
 
 ### RadioGroup Props
 
-| 参数          | 说明                                              | 类型                        | 默认值     |
-| ------------- | ------------------------------------------------- | --------------------------- | ---------- |
-| v-model       | 当前选中项的标识符，与 `label` 值一致时呈选中状态 | string \| number \| boolean | -          |
-| text-position | 文本所在的位置，可选值：`left`,`right`            | string                      | `right`    |
-| direction     | 使用横纵方向 可选值 `horizontal、vertical `       | string                      | `vertical` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 当前选中项的标识符，与 `label` 值一致时呈选中状态 | string \| number \| boolean | - |
+| text-position | 文本所在的位置，可选值：`left`,`right` | string | `right` |
+| direction | 使用横纵方向 可选值 `horizontal、vertical ` | string | `vertical` |
 
 ### RadioGroup Events
 
-| 事件名 | 说明         | 回调参数                                             |
-| ------ | ------------ | ---------------------------------------------------- |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
 | change | 值变化时触发 | 当前选中项值（label）【设置 label 后有值、默认为空】 |
 
 ## 主题定制
@@ -247,17 +215,17 @@ app.use(RadioGroup);
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                  | 默认值                     |
-| ------------------------------------- | -------------------------- |
-| --nut-radio-label-font-color          | _#1d1e1e_                  |
-| --nut-radio-label-font-active-color   | _var(--nut-primary-color)_ |
-| --nut-radio-label-disable-color       | _#999_                     |
-| --nut-radio-icon-disable-color        | _#d6d6d6_                  |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-radio-label-font-color | _#1d1e1e_ |
+| --nut-radio-label-font-active-color | _var(--nut-primary-color)_ |
+| --nut-radio-label-disable-color | _#999_ |
+| --nut-radio-icon-disable-color | _#d6d6d6_ |
 | --nut-radio-label-button-border-color | _var(--nut-primary-color)_ |
-| --nut-radio-label-button-background   | _var(--nut-primary-color)_ |
-| --nut-radio-label-margin-left         | _15px_                     |
-| --nut-radio-button-border-radius      | _15px_                     |
-| --nut-radio-label-font-size           | _14px_                     |
-| --nut-radio-button-font-size          | _12px_                     |
-| --nut-radio-button-padding            | _5px 18px_                 |
-| --nut-radio-icon-disable-color2       | _var(--nut-help-color)_    |
+| --nut-radio-label-button-background | _var(--nut-primary-color)_ |
+| --nut-radio-label-margin-left | _15px_ |
+| --nut-radio-button-border-radius | _15px_ |
+| --nut-radio-label-font-size | _14px_ |
+| --nut-radio-button-font-size | _12px_ |
+| --nut-radio-button-padding | _5px 18px_ |
+| --nut-radio-icon-disable-color2 | _var(--nut-help-color)_ |

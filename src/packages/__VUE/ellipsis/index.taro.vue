@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view :id="'root' + refRandomId" ref="root" :class="classes" @click="handleClick">
+    <view :id="'root' + refRandomId" ref="root" class="nut-ellipsis ell" @click="handleClick">
       <view v-if="!exceeded" class="nut-ellipsis__wordbreak">{{ content }}</view>
 
       <view v-if="exceeded && !expanded" class="nut-ellipsis__wordbreak">
@@ -32,7 +32,7 @@ import { ref, reactive, toRefs, computed, onMounted, PropType, unref } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
-const { componentName, create } = createComponent('ellipsis');
+const { create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';
 
 type EllipsisedValue = {
@@ -48,7 +48,7 @@ export default create({
     },
     direction: {
       type: String as PropType<Direction>,
-      default: 'start'
+      default: 'end'
     },
     rows: {
       type: [Number, String],
@@ -95,14 +95,6 @@ export default create({
     const digitReg = /^[0-9]+$/; // 数字
     const letterUpperReg = /^[A-Z]+$/; //字母
     const letterLowerReg = /^[a-z]+$/; //字母
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        ell: true,
-        [prefixCls]: true
-      };
-    });
 
     const symbolText = computed(() => {
       if (props.direction == 'end' || props.direction == 'middle') {
@@ -299,7 +291,6 @@ export default create({
       rootContain,
       symbolContain,
       ellipsis,
-      classes,
       contantCopy,
       symbolText,
       clickHandle,

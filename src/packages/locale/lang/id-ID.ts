@@ -103,7 +103,8 @@ class Lang extends BaseLang {
   pullrefresh = {
     pulling: 'Tarik ke bawah untuk menyegarkan',
     loosing: 'Lepaskan Refresh',
-    loading: 'Memuat...'
+    loading: 'Memuat...',
+    complete: 'Refresh berhasil'
   };
 }
 export default Lang;

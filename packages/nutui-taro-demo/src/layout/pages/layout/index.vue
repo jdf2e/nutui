@@ -1,6 +1,5 @@
 <template>
-  <div class="demo full layout-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="full layout-demo">
     <h2>基础布局</h2>
     <div class="box-item">
       <nut-row>
@@ -114,14 +113,8 @@
         </nut-col>
       </nut-row>
     </div>
-  </div>
+  </Demo>
 </template>
-
-<script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-</script>
 
 <style lang="scss">
 .box-item {

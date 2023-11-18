@@ -1,9 +1,8 @@
 <template>
-  <div class="demo padding" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current1">
+      <nut-steps :current="state.current1">
         <nut-step title="步骤一">
           1
           <template #title>步骤一</template>
@@ -17,7 +16,7 @@
     </div>
     <h2>基础用法（点状）</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current2" progress-dot>
+      <nut-steps :current="state.current2" progress-dot>
         <nut-step></nut-step>
         <nut-step></nut-step>
         <nut-step></nut-step>
@@ -28,7 +27,7 @@
     </div>
     <h2>标题和描述信息</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current3">
+      <nut-steps :current="state.current3">
         <nut-step title="步骤一" content="步骤描述">1</nut-step>
         <nut-step title="步骤二" content="步骤描述"></nut-step>
         <nut-step title="步骤三" content="步骤描述"></nut-step>
@@ -67,38 +66,24 @@
         </nut-step>
       </nut-steps>
     </div>
-  </div>
+  </Demo>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-export default {
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const state = reactive({
-      current1: 1,
-      current2: 1,
-      current3: 1,
-      current4: 1,
-      current5: 1
-    });
+<script setup lang="ts">
+import { reactive } from 'vue';
+const state = reactive({
+  current1: 1,
+  current2: 1,
+  current3: 1,
+  current4: 1,
+  current5: 1
+});
 
-    const handleStep = (params) => {
-      if (state[params] >= 3) {
-        state[params] = 1;
-      } else {
-        state[params] += 1;
-      }
-    };
-
-    return {
-      ...toRefs(state),
-      handleStep,
-      env
-    };
+const handleStep = (params) => {
+  if (state[params] >= 3) {
+    state[params] = 1;
+  } else {
+    state[params] += 1;
   }
 };
 </script>

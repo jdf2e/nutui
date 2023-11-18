@@ -36,17 +36,21 @@
 import { ref, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { usePicker } from './usePicker';
-import column from './Column.vue';
+import NutPickerColumn from './Column.vue';
 import baseProps from './baseProps';
-const { create, translate } = createComponent('picker');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('picker');
+
+const cN = 'NutPicker';
 
 export default create({
   components: {
-    [column.name]: column
+    NutPickerColumn
   },
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
       props,
       emit
@@ -76,7 +80,6 @@ export default create({
     };
 
     return {
-      column,
       columnsType,
       columnsList,
       columnFieldNames,
