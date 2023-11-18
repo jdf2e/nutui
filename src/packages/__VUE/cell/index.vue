@@ -21,7 +21,7 @@
         v-if="desc || $slots.desc"
         class="nut-cell__value"
         :class="{ 'nut-cell__value--alone': !title && !subTitle && !$slots.title }"
-        :style="{ 'text-align': descTextAlign }"
+        :style="descStyle"
       >
         <slot name="desc">
           {{ desc }}
@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import type { CSSProperties } from 'vue';
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
@@ -75,6 +76,12 @@ export default create({
       };
     });
 
+    const descStyle = computed(() => {
+      return {
+        textAlign: props.descTextAlign
+      } as CSSProperties;
+    });
+
     const handleClick = (event: Event) => {
       emit('click', event);
 
@@ -88,7 +95,8 @@ export default create({
     return {
       handleClick,
       classes,
-      baseStyle
+      baseStyle,
+      descStyle
     };
   }
 });

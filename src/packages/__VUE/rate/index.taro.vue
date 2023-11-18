@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-rate" @touchstart="onTouchStart" @touchmove="onTouchMove">
+  <view class="nut-rate">
     <view
       v-for="n in Number(count)"
       :id="'rateRefs-' + refRandomId + n"
