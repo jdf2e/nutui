@@ -6,3 +6,5 @@ node_modules/
 .DS_Store
 .swc
 src/app.config.ts
+lib
+components.d.ts

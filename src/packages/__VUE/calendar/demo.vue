@@ -118,8 +118,6 @@
       <nut-calendar
         v-model:visible="state.isVisible3"
         :default-value="state.date3"
-        :start-date="null"
-        :end-date="null"
         :is-auto-back-fill="true"
         @close="closeSwitch('isVisible3')"
         @choose="setChooseValue3"

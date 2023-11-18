@@ -119,6 +119,7 @@ import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('tour');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { StepOptions } from './index.vue';
 
 const initTranslate = () =>
   useTranslate({
@@ -168,7 +169,7 @@ const state = reactive({
       target: 'target4',
       location: 'top-end'
     }
-  ],
+  ] as StepOptions[],
 
   steps1: [
     {

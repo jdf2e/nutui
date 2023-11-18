@@ -1,6 +1,7 @@
-export interface RegionData {
-  name: string;
+export interface AddressData {
   [key: string]: any;
+  name: string;
+  id: string | number;
 }
 
 export interface CustomRegionData {

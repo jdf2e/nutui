@@ -47,5 +47,5 @@ const initTranslate = () =>
     }
   });
 initTranslate();
-const container = ref(null);
+const container = ref<HTMLElement>();
 </script>

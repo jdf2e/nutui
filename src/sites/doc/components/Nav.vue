@@ -1,6 +1,6 @@
 <template>
   <div class="doc-nav" :class="{ fixed: fixed }">
-    <ol v-for="_nav in nav" :key="_nav">
+    <ol v-for="_nav in nav" :key="_nav.name">
       <li>{{ _nav.name }}</li>
       <ul>
         <template v-for="_package in reorder(_nav.packages)" :key="_package">

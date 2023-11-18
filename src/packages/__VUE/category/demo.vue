@@ -35,11 +35,11 @@ useTranslate({
   }
 });
 const data = reactive({
-  categoryInfo1: {},
+  categoryInfo1: {} as any,
   category: [{}],
   categoryChild1: [{}],
   customCategory: [{}],
-  categoryInfo2: {},
+  categoryInfo2: {} as any,
   categoryChild2: [{}]
 });
 
