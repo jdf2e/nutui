@@ -133,38 +133,34 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { My } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title1: '支持三种尺寸：large、normal、small',
-      title2: '支持两种形状：square、round',
-      title3: '支持三种类型：图片、Icon 以及字符',
-      title4: 'Icon 和字符型可以自定义颜色及背景色',
-      title5: '带徽标的头像',
-      title6: '头像组合展现',
-      title7: '组合头像可控制层级方向',
-      title8: '点击头像触发事件',
-      title9: '动态添加头像',
-      add: '添加'
-    },
-    'en-US': {
-      title1: 'Support three sizes：small、normal、large',
-      title2: 'Support two shapes：square、round',
-      title3: 'Support three types：picture、icon、letter',
-      title4: 'Icon and letter types can have custom colors and background colors',
-      title5: 'Avatar with badge',
-      title6: 'Avatar group display',
-      title7: 'Avatar group to control hierarchy direction',
-      title8: 'Click on the avatar to trigger the event',
-      title9: 'Dynamically adding avatars',
-      add: 'add'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title1: '支持三种尺寸：large、normal、small',
+    title2: '支持两种形状：square、round',
+    title3: '支持三种类型：图片、Icon 以及字符',
+    title4: 'Icon 和字符型可以自定义颜色及背景色',
+    title5: '带徽标的头像',
+    title6: '头像组合展现',
+    title7: '组合头像可控制层级方向',
+    title8: '点击头像触发事件',
+    title9: '动态添加头像',
+    add: '添加'
+  },
+  'en-US': {
+    title1: 'Support three sizes：small、normal、large',
+    title2: 'Support two shapes：square、round',
+    title3: 'Support three types：picture、icon、letter',
+    title4: 'Icon and letter types can have custom colors and background colors',
+    title5: 'Avatar with badge',
+    title6: 'Avatar group display',
+    title7: 'Avatar group to control hierarchy direction',
+    title8: 'Click on the avatar to trigger the event',
+    title9: 'Dynamically adding avatars',
+    add: 'add'
+  }
+});
 const handleClick = () => {
   console.log('Click Test');
 };

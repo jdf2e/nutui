@@ -26,31 +26,27 @@
 
 <script setup lang="ts">
 import NutDivider from './index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('divider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      withText: '展示文本',
-      contentPosition: '内容位置',
-      dashed: '虚线',
-      customStyle: '自定义样式',
-      verticalDivider: '垂直分割线',
-      text: '文本',
-      link: '链接'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      withText: 'With Text',
-      contentPosition: 'Content Position',
-      dashed: 'Dashed',
-      customStyle: 'Custom Style',
-      verticalDivider: 'Vertical Divider',
-      text: 'Text',
-      link: 'Link'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    withText: '展示文本',
+    contentPosition: '内容位置',
+    dashed: '虚线',
+    customStyle: '自定义样式',
+    verticalDivider: '垂直分割线',
+    text: '文本',
+    link: '链接'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    withText: 'With Text',
+    contentPosition: 'Content Position',
+    dashed: 'Dashed',
+    customStyle: 'Custom Style',
+    verticalDivider: 'Vertical Divider',
+    text: 'Text',
+    link: 'Link'
+  }
+});
 </script>

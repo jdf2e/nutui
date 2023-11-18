@@ -64,41 +64,37 @@
 import { ref, reactive } from 'vue';
 import NutSwitch from './index.vue';
 import NutCell from '../cell/index.vue';
-import { createComponent } from '@/packages/utils/create';
 import { Loading } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('switch');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '值为字符串',
-      title2: '禁用状态',
-      title3: '加载状态',
-      title4: 'change 事件',
-      title5: '异步控制',
-      title6: '自定义颜色',
-      title7: '支持文字',
-      title8: '自定义加载图标',
-      text1: '开',
-      text2: '关'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Value Is String',
-      title2: 'Disabled',
-      title3: 'Loading',
-      title4: 'Change Event',
-      title5: 'Async Control',
-      title6: 'Custom Color',
-      title7: 'Support Text',
-      title8: 'Custom loading icon',
-      text1: 'Open',
-      text2: 'Closed'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '值为字符串',
+    title2: '禁用状态',
+    title3: '加载状态',
+    title4: 'change 事件',
+    title5: '异步控制',
+    title6: '自定义颜色',
+    title7: '支持文字',
+    title8: '自定义加载图标',
+    text1: '开',
+    text2: '关'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Value Is String',
+    title2: 'Disabled',
+    title3: 'Loading',
+    title4: 'Change Event',
+    title5: 'Async Control',
+    title6: 'Custom Color',
+    title7: 'Support Text',
+    title8: 'Custom loading icon',
+    text1: 'Open',
+    text2: 'Closed'
+  }
+});
 const data = reactive({
   checked1: true,
   checked2: true,

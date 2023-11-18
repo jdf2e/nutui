@@ -34,36 +34,32 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { HeartFill } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { translate } = createComponent('rate');
 import { showToast } from '@/packages/nutui.vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '半星',
-      title2: '自定义 icon',
-      title3: '自定义数量',
-      title4: '自定义颜色',
-      title5: '禁用状态',
-      title6: '只读状态',
-      title7: '绑定事件',
-      title8: '自定义尺寸 35px'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Half Star',
-      title2: 'Custom icon',
-      title3: 'Custom quantity',
-      title4: 'Custom color',
-      title5: 'disabled state',
-      title6: 'read-only status',
-      title7: 'bind event',
-      title8: 'Custom size 35px'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '半星',
+    title2: '自定义 icon',
+    title3: '自定义数量',
+    title4: '自定义颜色',
+    title5: '禁用状态',
+    title6: '只读状态',
+    title7: '绑定事件',
+    title8: '自定义尺寸 35px'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Half Star',
+    title2: 'Custom icon',
+    title3: 'Custom quantity',
+    title4: 'Custom color',
+    title5: 'disabled state',
+    title6: 'read-only status',
+    title7: 'bind event',
+    title8: 'Custom size 35px'
+  }
+});
 const state = reactive({
   val: 3,
   val1: 3.5,

@@ -282,73 +282,69 @@
 
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { CalendarRef, Day } from '../calendaritem/type';
 
-const { translate } = createComponent('calendar');
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '快捷选择',
-      title2: '自定义日历',
-      title3: '自定义周起始日',
-      title4: '平铺展示',
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '快捷选择',
+    title2: '自定义日历',
+    title3: '自定义周起始日',
+    title4: '平铺展示',
 
-      please: '请选择',
-      single: '选择单个日期',
-      range: '选择日期区间',
-      multiple: '选择多个日期',
-      week: '选择周',
-      disabledDate: '自定义禁用日期',
+    please: '请选择',
+    single: '选择单个日期',
+    range: '选择日期区间',
+    multiple: '选择多个日期',
+    week: '选择周',
+    disabledDate: '自定义禁用日期',
 
-      conjunction: '至',
-      custom_btn: '自定义按钮',
-      timeText: '自定义时间文案',
-      custom_footer: '自定义底部',
-      custom_footer_text1: '偶数的日期不能选择',
-      custom_footer_text2: '奇数的日期可以选择',
+    conjunction: '至',
+    custom_btn: '自定义按钮',
+    timeText: '自定义时间文案',
+    custom_footer: '自定义底部',
+    custom_footer_text1: '偶数的日期不能选择',
+    custom_footer_text2: '奇数的日期可以选择',
 
-      goDate: '去某个月',
-      seven: '最近七天',
-      current: '当月',
-      enter: '入店',
-      leave: '离店',
-      mid: '中旬',
-      selected: '已选择：'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Quick Select',
-      title2: 'Custom Calendar',
-      title3: 'Custom First Day Of Week',
-      title4: 'Tiled Display',
+    goDate: '去某个月',
+    seven: '最近七天',
+    current: '当月',
+    enter: '入店',
+    leave: '离店',
+    mid: '中旬',
+    selected: '已选择：'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Quick Select',
+    title2: 'Custom Calendar',
+    title3: 'Custom First Day Of Week',
+    title4: 'Tiled Display',
 
-      please: 'Please Select Date',
-      single: 'Select Single Date',
-      range: 'Select Date Range',
-      multiple: 'Select Multiple Date',
-      week: 'Select Week',
+    please: 'Please Select Date',
+    single: 'Select Single Date',
+    range: 'Select Date Range',
+    multiple: 'Select Multiple Date',
+    week: 'Select Week',
 
-      conjunction: '-',
-      custom_btn: 'Custom Button',
-      timeText: 'Custom Date Text',
-      custom_footer: 'Custom Footer',
-      custom_footer_text1: 'Even dates cannot be selected',
-      custom_footer_text2: 'Odd dates can be selected',
+    conjunction: '-',
+    custom_btn: 'Custom Button',
+    timeText: 'Custom Date Text',
+    custom_footer: 'Custom Footer',
+    custom_footer_text1: 'Even dates cannot be selected',
+    custom_footer_text2: 'Odd dates can be selected',
 
-      goDate: 'Go Date',
-      seven: 'Last Seven Days',
-      current: 'This Month',
-      enter: 'enter',
-      leave: 'leave',
-      mid: 'mid',
-      selected: 'selected:'
-    }
-  });
-initTranslate();
+    goDate: 'Go Date',
+    seven: 'Last Seven Days',
+    current: 'This Month',
+    enter: 'enter',
+    leave: 'leave',
+    mid: 'mid',
+    selected: 'selected:'
+  }
+});
 const calendarRef = ref<null | CalendarRef>(null);
 const state = reactive({
   isVisible: false,

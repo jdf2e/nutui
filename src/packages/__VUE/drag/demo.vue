@@ -29,33 +29,29 @@
 <script setup lang="ts">
 import NutDrag from './index.vue';
 import NutButton from '../button/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('drag');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      dragBasic: '触摸移动',
-      direction: '限制拖拽方向',
-      directionX: '只能X轴拖动',
-      directionY: '只能Y轴拖动',
-      attract: '自动吸边',
-      attractText: '按钮',
-      limitBoundaries: '限制拖拽边界'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      dragBasic: 'Button',
-      direction: 'Limit Direction',
-      directionX: 'X axis',
-      directionY: 'Y axis',
-      attract: 'Attract',
-      attractText: 'Button',
-      limitBoundaries: 'Limit Boundaries'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    dragBasic: '触摸移动',
+    direction: '限制拖拽方向',
+    directionX: '只能X轴拖动',
+    directionY: '只能Y轴拖动',
+    attract: '自动吸边',
+    attractText: '按钮',
+    limitBoundaries: '限制拖拽边界'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    dragBasic: 'Button',
+    direction: 'Limit Direction',
+    directionX: 'X axis',
+    directionY: 'Y axis',
+    attract: 'Attract',
+    attractText: 'Button',
+    limitBoundaries: 'Limit Boundaries'
+  }
+});
 const right = () => {
   return document.documentElement.clientWidth - 300 - 9;
 };

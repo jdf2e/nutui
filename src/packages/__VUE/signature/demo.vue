@@ -21,10 +21,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('signature');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     title: '修改颜色和签字粗细',

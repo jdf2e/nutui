@@ -48,41 +48,37 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { Left, Right } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('input-number');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      step: '步长设置',
-      limit: '限制输入范围',
-      disable: '禁用操作',
-      readonly: '只读禁用输入框',
-      decimal: '支持小数',
-      async: '支持异步修改',
-      size: '自定义按钮大小',
-      icon: '自定义图标',
-      content1: '异步演示 2 秒后更改',
-      content2: '超出限制事件触发'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      step: 'Step size setting',
-      limit: 'Limit input range',
-      disable: 'Disable operation',
-      readonly: 'Read only disable input box',
-      decimal: 'Support decimal',
-      async: 'Support asynchronous modification',
-      size: 'Custom button size',
-      icon: 'Custom icon name',
-      content1: 'Asynchronous presentation changes in 2 seconds',
-      content2: 'Trigger of limit exceeding event'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    step: '步长设置',
+    limit: '限制输入范围',
+    disable: '禁用操作',
+    readonly: '只读禁用输入框',
+    decimal: '支持小数',
+    async: '支持异步修改',
+    size: '自定义按钮大小',
+    icon: '自定义图标',
+    content1: '异步演示 2 秒后更改',
+    content2: '超出限制事件触发'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    step: 'Step size setting',
+    limit: 'Limit input range',
+    disable: 'Disable operation',
+    readonly: 'Read only disable input box',
+    decimal: 'Support decimal',
+    async: 'Support asynchronous modification',
+    size: 'Custom button size',
+    icon: 'Custom icon name',
+    content1: 'Asynchronous presentation changes in 2 seconds',
+    content2: 'Trigger of limit exceeding event'
+  }
+});
 
 const state = reactive({
   val1: 1,

@@ -67,14 +67,12 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { PickerOption } from './types';
-const { translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
 import { showToast } from '@/packages/nutui.vue';
 
-useTranslate(Internation);
+const translate = useTranslate(Internation);
 
 const selectedValue = ref(['ZheJiang']);
 const selectedTileValue = ref(['ZheJiang']);
