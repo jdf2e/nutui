@@ -19,37 +19,35 @@ app.use(CellGroup);
 
 > demo: cell basic
 
-:::
-
-### Size setting large
+### Size Large
 
 > demo: cell size
 
-### Use Slots
+### Default Slot
 
 > demo: cell slot
 
-### Use Slots title
-
-> demo: cell title
-
-### Use Slots desc v4.1.6
+### Desc Slot v4.1.6
 
 > demo: cell desc
 
-### Link | CellGroup Usage
+### Title Slot
+
+> demo: cell title
+
+### CellGroup
 
 > demo: cell group
 
-### Customize the right arrow area
+### Link Slot
 
 > demo: cell link
 
-### Customize the left Icon area
+### Icon Slot
 
 > demo: cell icon
 
-### Only display desc , you can adjust the content position through desc-text-align
+### Align Left
 
 > demo: cell align
 

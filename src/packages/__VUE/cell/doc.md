@@ -19,37 +19,35 @@ app.use(CellGroup);
 
 > demo: cell basic
 
-:::
-
 ### 尺寸设置 large
 
 > demo: cell size
 
-### 直接使用插槽（slot）
+### 默认插槽
 
 > demo: cell slot
 
-### 直接使用插槽（slot title）
-
-> demo: cell title
-
-### 直接使用插槽（slot desc）v4.1.6
+### 右侧 desc 插槽 v4.1.6
 
 > demo: cell desc
 
-### 链接 | 分组用法
+### 左侧 title 插槽
+
+> demo: cell title
+
+### CellGroup 分组用法
 
 > demo: cell group
 
-### 自定义右侧箭头区域
+### 右侧 link 插槽
 
 > demo: cell link
 
-### 自定义左侧 Icon 区域
+### 左侧 icon 插槽
 
 > demo: cell icon
 
-### 只展示 desc ，可通过 desc-text-align 调整内容位置
+### 设置 align
 
 > demo: cell align
 

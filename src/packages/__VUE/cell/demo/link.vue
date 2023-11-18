@@ -1,11 +1,9 @@
 <template>
-  <nut-cell-group title="自定义右侧箭头区域">
-    <nut-cell title="Switch">
-      <template #link>
-        <nut-switch v-model="checked" />
-      </template>
-    </nut-cell>
-  </nut-cell-group>
+  <nut-cell title="Switch">
+    <template #link>
+      <nut-switch v-model="checked" />
+    </template>
+  </nut-cell>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
