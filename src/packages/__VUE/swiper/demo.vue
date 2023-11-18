@@ -89,38 +89,34 @@
 
 <script setup lang="ts">
 import { reactive, onMounted, ref, Ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('swiper');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Left, Right } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      asyc: '异步加载(3s)',
-      dynamicDel: '动态加载',
-      size: '自定义大小',
-      indicator: '自定义指示器',
-      indicator1: '自定义指示器(异步3s)',
-      btns: '手动切换',
-      vertical: '垂直方向',
-      horizontalCenter: '水平居中展示',
-      verticalCenter: '垂直居中展示'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      asyc: 'Asynchronous loading(3s)',
-      dynamicDel: 'Dynamic loading',
-      size: 'Custom size',
-      indicator: 'Custom indicator',
-      indicator1: 'Custom indicator(Asynchronous loading(3s))',
-      btns: 'Manual switching',
-      vertical: 'Vertical direction',
-      horizontalCenter: 'Horizontal center display',
-      verticalCenter: 'Vertical center display'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    asyc: '异步加载(3s)',
+    dynamicDel: '动态加载',
+    size: '自定义大小',
+    indicator: '自定义指示器',
+    indicator1: '自定义指示器(异步3s)',
+    btns: '手动切换',
+    vertical: '垂直方向',
+    horizontalCenter: '水平居中展示',
+    verticalCenter: '垂直居中展示'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    asyc: 'Asynchronous loading(3s)',
+    dynamicDel: 'Dynamic loading',
+    size: 'Custom size',
+    indicator: 'Custom indicator',
+    indicator1: 'Custom indicator(Asynchronous loading(3s))',
+    btns: 'Manual switching',
+    vertical: 'Vertical direction',
+    horizontalCenter: 'Horizontal center display',
+    verticalCenter: 'Vertical center display'
+  }
+});
 const swiper = ref(null) as Ref;
 const state = reactive({
   page: 2,

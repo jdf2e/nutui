@@ -154,40 +154,36 @@
 import NutGrid from './index.vue';
 import NutGridItem from '../griditem/index.vue';
 import NutAvatar from '../avatar/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('grid');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Dongdong, Home, Search } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      text: '文字',
-      columnNum: '自定义列数',
-      square: '正方形格子',
-      gutter: '格子间距',
-      reverse: '内容翻转',
-      Horizontal: '内容横向',
-      iconStyle: '图标颜色/大小',
-      route: '页面导航',
-      customContent: '自定义内容',
-      vueRouter: '路由跳转',
-      url: '链接跳转'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      text: 'text',
-      columnNum: 'Column Num',
-      square: 'Square',
-      gutter: 'Gutter',
-      reverse: 'Reverse',
-      horizontal: 'Horizontal',
-      iconStyle: 'Icon Style',
-      route: 'Route',
-      customContent: 'Custom Content',
-      vueRouter: 'Vue Router',
-      url: 'URL'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    text: '文字',
+    columnNum: '自定义列数',
+    square: '正方形格子',
+    gutter: '格子间距',
+    reverse: '内容翻转',
+    Horizontal: '内容横向',
+    iconStyle: '图标颜色/大小',
+    route: '页面导航',
+    customContent: '自定义内容',
+    vueRouter: '路由跳转',
+    url: '链接跳转'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    text: 'text',
+    columnNum: 'Column Num',
+    square: 'Square',
+    gutter: 'Gutter',
+    reverse: 'Reverse',
+    horizontal: 'Horizontal',
+    iconStyle: 'Icon Style',
+    route: 'Route',
+    customContent: 'Custom Content',
+    vueRouter: 'Vue Router',
+    url: 'URL'
+  }
+});
 </script>

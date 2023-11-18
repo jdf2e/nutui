@@ -14,10 +14,8 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('ecard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法'
   },

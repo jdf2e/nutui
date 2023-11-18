@@ -78,27 +78,23 @@
 import { ref, onMounted } from 'vue';
 import NutAudio from './index.vue';
 import NutAudioOperate from '../audiooperate/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('audio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop, Voice } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      voicePlay: '语音播放',
-      progress: '进度条展示',
-      customControl: '自定义操作按钮'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      voicePlay: 'Voice Playing',
-      progress: 'Progress',
-      customControl: 'Custom Control'
-    }
-  });
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    voicePlay: '语音播放',
+    progress: '进度条展示',
+    customControl: '自定义操作按钮'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    voicePlay: 'Voice Playing',
+    progress: 'Progress',
+    customControl: 'Custom Control'
+  }
+});
 
-initTranslate();
 const audioDemo = ref({
   second: 0
 });

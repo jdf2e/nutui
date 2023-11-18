@@ -130,23 +130,19 @@
 <script setup lang="ts">
 import NutRow from '../row/index.vue';
 import NutCol from '../col/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('layout');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      desc: '分栏间隔',
-      flex: 'Flex布局'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      desc: 'Column spacing',
-      flex: 'Flex layout'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    desc: '分栏间隔',
+    flex: 'Flex布局'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    desc: 'Column spacing',
+    flex: 'Flex layout'
+  }
+});
 </script>
 
 <style lang="scss" scoped>

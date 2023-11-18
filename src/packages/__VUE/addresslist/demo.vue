@@ -41,11 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
 import { reactive, ref } from 'vue';
-const { translate } = createComponent('address-list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     title1: '长按功能',

@@ -2,7 +2,7 @@
   <div class="demo padding">
     <h2>{{ translate('basic') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current1" @click-step="handleClickStep">
+      <nut-steps :current="state.current1" @click-step="handleClickStep">
         <nut-step :title="translate('step1')">
           1
           <template #title>{{ translate('step1') }}</template>
@@ -16,7 +16,7 @@
     </div>
     <h2>{{ translate('basicDot') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current2" progress-dot>
+      <nut-steps :current="state.current2" progress-dot>
         <nut-step></nut-step>
         <nut-step></nut-step>
         <nut-step></nut-step>
@@ -27,7 +27,7 @@
     </div>
     <h2>{{ translate('desc') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current3">
+      <nut-steps :current="state.current3">
         <nut-step :content="translate('stepdesc')" :title="translate('step1')">1</nut-step>
         <nut-step :content="translate('stepdesc')" :title="translate('step2')"></nut-step>
         <nut-step :content="translate('stepdesc')" :title="translate('step3')"></nut-step>
@@ -38,7 +38,7 @@
     </div>
     <h2>{{ translate('cicon') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current4">
+      <nut-steps :current="state.current4">
         <nut-step :title="translate('complete')">
           <template #icon>
             <Service />
@@ -84,92 +84,74 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, People, Location2 } from '@nutui/icons-vue';
-
-const { translate } = createComponent('steps');
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      basicDot: '基础用法（点状）',
-      step1: '步骤一',
-      step2: '步骤二',
-      step3: '步骤三',
-      desc: '标题和描述信息',
-      stepdesc: '步骤描述',
-      next: '下一步',
-      cicon: '自定义图标',
-      complete: '已完成',
-      progress: '进行中',
-      start: '未开始',
-      content1: '您的订单已经打包完成，商品已发出',
-      content2: '您的订单正在配送途中',
-      content3: '收货地址为：北京市经济技术开发区科创十一街18号院京东大厦',
-      content4: '收货地址为',
-      content5: '北京市经济技术开发区科创十一街18号院京东大厦',
-      verstep: '竖向步骤条',
-      verstepDot: '点状步骤和垂直方向'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      basicDot: 'Basic Usage(Dot)',
-      step1: 'Step One',
-      step2: 'Step Two',
-      step3: 'Step Three',
-      desc: 'Title and description information',
-      stepdesc: 'Step description',
-      next: 'next step',
-      cicon: 'Custom Icon',
-      complete: 'Completed',
-      progress: 'In progress',
-      start: 'Not started',
-      content1: 'Your order has been packaged and the goods have been delivered',
-      content2: 'Your order is in transit',
-      content3:
-        'The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
-      content4: 'The receiving address is',
-      content5: 'Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
-      verstep: 'Vertical step bar',
-      verstepDot: 'Point steps and vertical orientation'
-    }
-  });
-export default defineComponent({
-  components: { Service, People, Location2 },
-  props: {},
-  setup() {
-    initTranslate();
-    const state = reactive({
-      current1: 1,
-      current2: 1,
-      current3: 1,
-      current4: 1,
-      current5: 1
-    });
-
-    const handleStep = (params: 'current1' | 'current2' | 'current3' | 'current4') => {
-      if (state[params] >= 3) {
-        state[params] = 1;
-      } else {
-        state[params] += 1;
-      }
-    };
-
-    const handleClickStep = (index: number) => {
-      console.log(index);
-    };
-
-    return {
-      ...toRefs(state),
-      handleStep,
-      handleClickStep,
-      translate
-    };
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    basicDot: '基础用法（点状）',
+    step1: '步骤一',
+    step2: '步骤二',
+    step3: '步骤三',
+    desc: '标题和描述信息',
+    stepdesc: '步骤描述',
+    next: '下一步',
+    cicon: '自定义图标',
+    complete: '已完成',
+    progress: '进行中',
+    start: '未开始',
+    content1: '您的订单已经打包完成，商品已发出',
+    content2: '您的订单正在配送途中',
+    content3: '收货地址为：北京市经济技术开发区科创十一街18号院京东大厦',
+    content4: '收货地址为',
+    content5: '北京市经济技术开发区科创十一街18号院京东大厦',
+    verstep: '竖向步骤条',
+    verstepDot: '点状步骤和垂直方向'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    basicDot: 'Basic Usage(Dot)',
+    step1: 'Step One',
+    step2: 'Step Two',
+    step3: 'Step Three',
+    desc: 'Title and description information',
+    stepdesc: 'Step description',
+    next: 'next step',
+    cicon: 'Custom Icon',
+    complete: 'Completed',
+    progress: 'In progress',
+    start: 'Not started',
+    content1: 'Your order has been packaged and the goods have been delivered',
+    content2: 'Your order is in transit',
+    content3:
+      'The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
+    content4: 'The receiving address is',
+    content5: 'Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
+    verstep: 'Vertical step bar',
+    verstepDot: 'Point steps and vertical orientation'
   }
 });
+const state = reactive({
+  current1: 1,
+  current2: 1,
+  current3: 1,
+  current4: 1,
+  current5: 1
+});
+
+const handleStep = (params: 'current1' | 'current2' | 'current3' | 'current4') => {
+  if (state[params] >= 3) {
+    state[params] = 1;
+  } else {
+    state[params] += 1;
+  }
+};
+
+const handleClickStep = (index: number) => {
+  console.log(index);
+};
 </script>
 
 <style lang="scss" scoped>
