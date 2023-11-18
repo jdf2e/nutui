@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Tour from '../index.vue';
+import Tour, { StepOptions } from '../index.vue';
 import { nextTick } from 'vue';
 
 const steps1 = [
@@ -44,7 +44,7 @@ const steps = [
     target: 'target4',
     location: 'top-end'
   }
-];
+] as StepOptions[];
 
 test('base render', async () => {
   const root = document.createElement('div');

@@ -21,10 +21,12 @@ import { Left } from '@nutui/icons-vue';
 const route = useRoute();
 const router = useRouter();
 onBeforeMount(() => {
-  const { origin, hash, pathname } = window.top.location;
-  const lang = hash.includes('zh-CN') ? 'zh-CN' : 'en-US';
-  if (!isMobile && pathname.includes('demo')) {
-    window.location.href = `${origin}/h5/vue/4x/index.html#/${lang}/component/${hash.split('/').slice(-1)[0]}`;
+  if (window.top) {
+    const { origin, hash, pathname } = window.top.location;
+    const lang = hash.includes('zh-CN') ? 'zh-CN' : 'en-US';
+    if (!isMobile && pathname.includes('demo')) {
+      window.location.href = `${origin}/h5/vue/4x/index.html#/${lang}/component/${hash.split('/').slice(-1)[0]}`;
+    }
   }
 });
 
