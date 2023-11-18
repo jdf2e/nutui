@@ -21,7 +21,7 @@
         v-if="desc || $slots.desc"
         class="nut-cell__value"
         :class="{ 'nut-cell__value--alone': !title && !subTitle && !$slots.title }"
-        :style="{ textAlign: descTextAlign }"
+        :style="descStyle"
       >
         <slot name="desc">
           {{ desc }}
@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed } from 'vue';
+import type { PropType, CSSProperties } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Right } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('cell');
-export type CellTextAlign = 'right' | 'left' | 'center';
 export type CellSize = 'normal' | 'large';
 export default create({
   components: { Right },
@@ -50,7 +50,7 @@ export default create({
     subTitle: { type: String, default: '' },
     desc: { type: String, default: '' },
     descTextAlign: {
-      type: String as PropType<CellTextAlign>,
+      type: String,
       default: 'right'
     },
     isLink: { type: Boolean, default: false },
@@ -83,6 +83,12 @@ export default create({
       };
     });
 
+    const descStyle = computed(() => {
+      return {
+        textAlign: props.descTextAlign
+      } as CSSProperties;
+    });
+
     const handleClick = (event: Event) => {
       emit('click', event);
 
@@ -96,7 +102,8 @@ export default create({
     return {
       handleClick,
       classes,
-      baseStyle
+      baseStyle,
+      descStyle
     };
   }
 });

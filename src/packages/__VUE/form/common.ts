@@ -134,7 +134,7 @@ export const component = (components: any) => {
           const rule = _rules.shift() as FormItemRule;
           const { validator, ...ruleWithoutValidator } = rule;
           const { required, regex, message } = ruleWithoutValidator;
-          const errorMsg = { prop, message };
+          const errorMsg = { prop, message: message || '' };
           if (required) {
             if (!value && value !== 0) {
               return _Promise(errorMsg);

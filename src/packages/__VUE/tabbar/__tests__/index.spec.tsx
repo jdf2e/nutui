@@ -63,7 +63,7 @@ test('should render custom color and bage when using prop', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar unactive-color="grey" active-color="blue">
-        <TabbarItem tab-title="首页" icon={h(Home)} value={11}></TabbarItem>
+        <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
         <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
         <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
       </Tabbar>
@@ -90,7 +90,7 @@ test('should match active tabbar by clcik', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar unactive-color="grey" active-color="blue">
-        <TabbarItem tab-title="首页" icon={h(Home)} value="11"></TabbarItem>
+        <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
         <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
         <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
       </Tabbar>

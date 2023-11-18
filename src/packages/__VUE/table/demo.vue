@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { reactive, onMounted, onUnmounted, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { TableColumnProps } from './types';
+import { TableColumns } from './types';
 import { showToast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';
 import { Dongdong } from '@nutui/icons-vue';
@@ -201,7 +201,7 @@ const state = reactive({
         return row1.age - row2.age;
       }
     }
-  ],
+  ] as TableColumns[],
   data1: [
     {
       sex: translate('man'),
@@ -319,7 +319,7 @@ const state = reactive({
   }
 });
 
-const handleSorter = (item: TableColumnProps) => {
+const handleSorter = (item: TableColumns) => {
   (showToast as any).text(`${JSON.stringify(item)}`);
 };
 

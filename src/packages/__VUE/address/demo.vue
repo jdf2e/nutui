@@ -101,12 +101,11 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
 import { onMounted, reactive, ref } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { translate } = createComponent('address');
+import { AddressData } from './type';
 import { HeartFill, Heart1 } from '@nutui/icons-vue';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     title: '选择地址',
@@ -136,16 +135,12 @@ interface CalBack {
   value: string;
   custom: string;
 }
-interface RegionData {
-  name: string;
-  [key: string]: any;
-}
 interface CalResult {
   type: string;
   data: AddressResult;
 }
 interface AddressList {
-  id?: string | number;
+  id: string | number;
   provinceName: string;
   cityName: string;
   countyName: string;
@@ -154,15 +149,15 @@ interface AddressList {
   selectedAddress: boolean;
 }
 interface AddressResult extends AddressList {
-  addressIdStr: string;
-  addressStr: string;
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
+  addressIdStr?: string;
+  addressStr?: string;
+  province: AddressData[];
+  city: AddressData[];
+  country: AddressData[];
+  town: AddressData[];
 }
 const address = reactive({
-  province: [{}],
+  province: [] as AddressData[],
   city: [
     { id: 7, name: '朝阳区', title: 'C' },
     { id: 8, name: '崇文区', title: 'C' },
@@ -176,7 +171,7 @@ const address = reactive({
     { id: 9, name: '北苑', title: 'B' },
     { id: 4, name: '常营乡', title: 'C' }
   ],
-  town: []
+  town: [] as AddressData[]
 });
 
 onMounted(() => {
@@ -272,12 +267,12 @@ const close1 = (val: CalResult) => {
   text.one = val.data.addressStr;
 };
 
-const close5 = (val: CalResult) => {
+const close5 = (val: any) => {
   text.five = val.data.addressStr;
   value2.value = [val.data.province.id, val.data.city.id, val.data.country.id];
 };
 
-const close6 = (val: CalResult) => {
+const close6 = (val: any) => {
   text.six = val.data.addressStr;
   value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
 };
@@ -295,7 +290,7 @@ const close2 = (val: CalResult) => {
     text.two = val.data.addressStr;
   }
 };
-const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData) => {
+const selected = (prevExistAdd: AddressList, nowExistAdd: AddressData) => {
   console.log(prevExistAdd);
   console.log(nowExistAdd);
 };

@@ -133,7 +133,7 @@
 import { reactive, ref, toRefs, watch, computed, PropType } from 'vue';
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue-taro';
 import { popupProps } from '../popup/props';
-import { RegionData, CustomRegionData, existRegionData } from './type';
+import { AddressData, CustomRegionData, existRegionData } from './type';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
 import NutElevator from '../elevator/index.taro.vue';
@@ -174,19 +174,19 @@ export default create({
       default: ''
     },
     province: {
-      type: Array as PropType<RegionData[]>,
+      type: Array as PropType<AddressData[]>,
       default: () => []
     },
     city: {
-      type: Array as PropType<RegionData[]>,
+      type: Array as PropType<AddressData[]>,
       default: () => []
     }, // 市
     country: {
-      type: Array as PropType<RegionData[]>,
+      type: Array as PropType<AddressData[]>,
       default: () => []
     }, // 县
     town: {
-      type: Array as PropType<RegionData[]>,
+      type: Array as PropType<AddressData[]>,
       default: () => []
     }, // 镇
     isShowCustomAddress: {
@@ -231,7 +231,7 @@ export default create({
     const tabName = ref(['province', 'city', 'country', 'town']);
     const scrollDis = ref([0, 0, 0, 0]);
     const scrollTop = ref(0);
-    const regionData = reactive<Array<RegionData[]>>([]);
+    const regionData = reactive<Array<AddressData[]>>([]);
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
@@ -246,12 +246,12 @@ export default create({
       }
     });
 
-    const transformData = (data: RegionData[]) => {
+    const transformData = (data: AddressData[]) => {
       if (!Array.isArray(data)) throw new TypeError('params muse be array.');
 
       if (!data.length) return [];
 
-      data.forEach((item: RegionData) => {
+      data.forEach((item: AddressData) => {
         if (!item.title) {
           console.warn('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
           return;
@@ -260,11 +260,11 @@ export default create({
 
       const newData: CustomRegionData[] = [];
 
-      data = data.sort((a: RegionData, b: RegionData) => {
+      data = data.sort((a: AddressData, b: AddressData) => {
         return a.title.localeCompare(b.title);
       });
 
-      data.forEach((item: RegionData) => {
+      data.forEach((item: AddressData) => {
         const index = newData.findIndex((value: CustomRegionData) => value.title === item.title);
         if (index <= -1) {
           newData.push({
@@ -279,7 +279,7 @@ export default create({
       return newData;
     };
 
-    let selectedRegion = ref<RegionData[]>([]);
+    let selectedRegion = ref<AddressData[]>([]);
 
     let selectedExistAddress = reactive({}); // 当前选择的地址
 
@@ -303,14 +303,14 @@ export default create({
           return;
         }
         for (let index = 0; index < num; index++) {
-          let arr: RegionData[] = regionData[index];
-          selectedRegion.value[index] = arr.filter((item: RegionData) => item.id == defaultValue[index])[0];
+          let arr: AddressData[] = regionData[index];
+          selectedRegion.value[index] = arr.filter((item: AddressData) => item.id == defaultValue[index])[0];
         }
         scrollTo();
       }
     };
 
-    const getTabName = (item: RegionData | null, index: number) => {
+    const getTabName = (item: AddressData | null, index: number) => {
       if (item && item.name) return item.name;
       if (tabIndex.value < index && item) {
         return item.name;
@@ -332,12 +332,12 @@ export default create({
     };
 
     // 切换下一级列表
-    const nextAreaList = (item: RegionData) => {
+    const nextAreaList = (item: AddressData) => {
       const tab = tabIndex.value;
       prevTabIndex.value = tabIndex.value;
       const callBackParams: {
         next?: string;
-        value?: RegionData;
+        value?: AddressData;
         custom: string;
       } = {
         custom: tabName.value[tab]
@@ -362,7 +362,7 @@ export default create({
       emit('change', callBackParams);
     };
     //切换地区Tab
-    const changeRegionTab = (item: RegionData, index: number) => {
+    const changeRegionTab = (item: AddressData, index: number) => {
       prevTabIndex.value = tabIndex.value;
       if (getTabName(item, index)) {
         tabIndex.value = index;
@@ -452,7 +452,7 @@ export default create({
       emit('switchModule', { type: privateType.value });
     };
 
-    const handleElevatorItem = (key: string, item: RegionData) => {
+    const handleElevatorItem = (key: string, item: AddressData) => {
       nextAreaList(item);
     };
 

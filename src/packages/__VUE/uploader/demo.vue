@@ -21,7 +21,7 @@
     <nut-progress
       :percentage="progressPercentage"
       stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-      :status="progressPercentage == 100 ? '' : 'active'"
+      :status="progressPercentage == 100 ? undefined : 'active'"
     >
     </nut-progress>
     <h2>{{ translate('title5') }}</h2>

@@ -125,7 +125,7 @@ const initTranslate = () =>
     }
   });
 initTranslate();
-const refSwipe = ref<HTMLElement>();
+const refSwipe = ref<any>();
 const checked = ref(false);
 const number = ref(0);
 const changSwitch = (value: boolean) => {

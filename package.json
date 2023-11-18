@@ -46,7 +46,7 @@
     "dev:taro:tt": "pnpm --dir ./packages/nutui-taro-demo dev:tt",
     "build:taro:h5": "pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:weapp": "pnpm --dir ./packages/nutui-taro-demo build:weapp",
-    "build:site": "vite build",
+    "build:site": "vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.json && vite build",
     "build": "vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && pnpm generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && vite build --config vite.config.build.resolver.ts && pnpm dts && pnpm attrs && node scripts/generate-unplugin-deps.cjs nutui && node scripts/copy-dist.cjs nutui",
     "build:taro:vue": "vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && pnpm generate:themes:taro && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && vite build --config vite.config.build.resolver.ts && pnpm dts:taro && pnpm attrs:taro && node scripts/generate-unplugin-deps.cjs nutui-taro && node scripts/copy-dist.cjs nutui-taro",
     "add": "node scripts/createComponentMode.js",

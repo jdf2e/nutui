@@ -25,7 +25,7 @@
             :style="{ color: isHighlight(item) || item.color }"
             @click="chooseItem(item, index)"
           >
-            <Loading v-if="item.loading" name="loading"></Loading>
+            <Loading v-if="item.loading"></Loading>
             <view v-else> {{ item[optionTag] }}</view>
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
@@ -45,13 +45,13 @@ import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
 import { Loading } from '@nutui/icons-vue';
 const { create } = createComponent('action-sheet');
-export interface menuItems {
-  disable: boolean;
-  loading: boolean;
-  color: string;
-  name: string;
-  subname: string;
-  [x: string]: string | boolean;
+export interface ActionSheetMenuItems {
+  [key: PropertyKey]: any;
+  name?: string;
+  subname?: string;
+  disable?: boolean;
+  loading?: boolean;
+  color?: string;
 }
 export default create({
   components: {
@@ -89,7 +89,7 @@ export default create({
       default: ''
     },
     menuItems: {
-      type: Array as PropType<menuItems[]>,
+      type: Array as PropType<ActionSheetMenuItems[]>,
       default: () => []
     },
     closeAbled: {
@@ -102,7 +102,7 @@ export default create({
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
 
-    const isHighlight = (item: { [x: string]: string | boolean }) => {
+    const isHighlight = (item: ActionSheetMenuItems) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
     };
 
@@ -111,7 +111,7 @@ export default create({
       emit('update:visible', false);
     };
 
-    const chooseItem = (item: { disable: boolean; loading: boolean }, index: any) => {
+    const chooseItem = (item: ActionSheetMenuItems, index: number) => {
       if (!item.disable && !item.loading) {
         emit('choose', item, index);
         emit('update:visible', false);

@@ -306,8 +306,6 @@ const select = (param) => {
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
     :default-value="state.date"
-    :start-date="null"
-    :end-date="null"
     :is-auto-back-fill="true"
   >
   </nut-calendar>
