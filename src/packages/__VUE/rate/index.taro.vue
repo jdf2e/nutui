@@ -1,4 +1,52 @@
-<template src="./template.html"></template>
+<template>
+  <view class="nut-rate" @touchstart="onTouchStart" @touchmove="onTouchMove">
+    <view
+      v-for="n in Number(count)"
+      :id="'rateRefs-' + refRandomId + n"
+      :key="n"
+      ref="rateRefs"
+      class="nut-rate-item"
+      :style="n < Number(count) ? { marginRight: pxCheck(spacing) } : {}"
+    >
+      <view class="nut-rate-item__icon--full">
+        <component
+          :is="
+            renderIcon(customIcon, {
+              width: size,
+              height: size,
+              size,
+              color: n <= modelValue ? activeColor : voidColor
+            })
+          "
+          class="nut-rate-item__icon"
+          :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
+          @click="onClick(1, n)"
+        ></component>
+      </view>
+      <view v-if="allowHalf && Number(modelValue) + 1 > n" class="nut-rate-item__icon--half">
+        <component
+          :is="
+            renderIcon(customIcon, {
+              width: size,
+              height: size,
+              size,
+              color: n <= Number(modelValue) + 1 ? activeColor : voidColor
+            })
+          "
+          class="nut-rate-item__icon"
+          @click="onClick(2, n)"
+        ></component>
+      </view>
+      <view v-else-if="allowHalf && Number(modelValue) + 1 < n" class="nut-rate-item__icon--half">
+        <component
+          :is="renderIcon(customIcon, { width: size, height: size, size, color: voidColor })"
+          class="nut-rate-item__icon nut-rate-item__icon--disabled"
+          @click="onClick(2, n)"
+        ></component>
+      </view>
+    </view>
+  </view>
+</template>
 <script lang="ts">
 import { ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
