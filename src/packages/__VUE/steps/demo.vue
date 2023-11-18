@@ -150,7 +150,7 @@ export default defineComponent({
       current5: 1
     });
 
-    const handleStep = (params) => {
+    const handleStep = (params: 'current1' | 'current2' | 'current3' | 'current4') => {
       if (state[params] >= 3) {
         state[params] = 1;
       } else {

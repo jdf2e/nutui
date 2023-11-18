@@ -85,46 +85,42 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { Fabulous } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('noticebar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础使用',
-      scrollable: '滚动播放',
-      mode: '通告栏--关闭模式',
-      multiline: '多行展示',
-      vertical: '垂直滚动',
-      complexAm: '纵向--复杂滚动动画',
-      customAm: '纵向--自定义滚动内容',
-      customRightIcon: '纵向--自定义右侧图标',
-      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
-      textShort: 'NutUI 是移动端组件库',
-      horseLamp: ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'],
-      jd: '京东商城',
-      scrollCount: '滚动次数',
-      scrollEvent: '横向 - 滚动结束事件'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      scrollable: 'Scrollable',
-      mode: 'Mode',
-      multiline: 'Wrapable',
-      vertical: 'Vertical Scroll',
-      complexAm: 'Vertical Scroll Complex Animation',
-      customAm: 'Vertical Scroll Custom Style',
-      customRightIcon: 'Vertical Scroll Custom Right Icon',
-      text: 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.',
-      textShort: 'Nutui is a mobile terminal component library.',
-      horseLamp: ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'],
-      jd: 'Jingdong',
-      scrollCount: 'scroll count',
-      scrollEvent: 'across - scrolling end event'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础使用',
+    scrollable: '滚动播放',
+    mode: '通告栏--关闭模式',
+    multiline: '多行展示',
+    vertical: '垂直滚动',
+    complexAm: '纵向--复杂滚动动画',
+    customAm: '纵向--自定义滚动内容',
+    customRightIcon: '纵向--自定义右侧图标',
+    text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    textShort: 'NutUI 是移动端组件库',
+    horseLamp: ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'],
+    jd: '京东商城',
+    scrollCount: '滚动次数',
+    scrollEvent: '横向 - 滚动结束事件'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    scrollable: 'Scrollable',
+    mode: 'Mode',
+    multiline: 'Wrapable',
+    vertical: 'Vertical Scroll',
+    complexAm: 'Vertical Scroll Complex Animation',
+    customAm: 'Vertical Scroll Custom Style',
+    customRightIcon: 'Vertical Scroll Custom Right Icon',
+    text: 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.',
+    textShort: 'Nutui is a mobile terminal component library.',
+    horseLamp: ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'],
+    jd: 'Jingdong',
+    scrollCount: 'scroll count',
+    scrollEvent: 'across - scrolling end event'
+  }
+});
 const state = reactive({
   horseLamp1: translate('horseLamp'),
   horseLamp2: translate('horseLamp'),

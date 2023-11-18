@@ -120,6 +120,7 @@ import { createComponent } from '@/packages/utils/create';
 const { translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
+import { PopoverLocation } from './type';
 
 const initTranslate = () =>
   useTranslate({
@@ -169,7 +170,7 @@ const state = reactive({
   customTarget: false,
   customColor: false
 });
-const curPostion = ref('top');
+const curPostion = ref<PopoverLocation>('top');
 
 const columns = ref([
   { text: 'top', value: 'top' },

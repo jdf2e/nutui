@@ -5,10 +5,10 @@ export const currentLang = Locale.currentLang;
 type TupleToUnion<T extends any[]> = T[number];
 export const useTranslate = <T extends string[]>(object: {
   'zh-CN': {
-    [key in TupleToUnion<T>]: string;
+    [key in TupleToUnion<T>]: string | string[] | Function;
   };
   'en-US': {
-    [key in TupleToUnion<T>]: string;
+    [key in TupleToUnion<T>]: string | string[] | Function;
   };
 }) => {
   for (const [key, value] of Object.entries(object)) {

@@ -5,11 +5,15 @@ const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';
 import Locale from './locale';\n`;
 let importScssStr = `\n`;
+let dts = `export {}
+declare module 'vue' {
+  export interface GlobalComponents {\n`
 const packages = [];
 const methods = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, type, exclude } = element;
+    dts += `    Nut${name}: typeof import('./__VUE/${name.toLowerCase()}/index.vue')['default']\n`
     if (name !== 'Icon') {
       importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
     }
@@ -39,16 +43,15 @@ const version = '${packageConfig.version}';
 export { install, version, Locale, ${packages.join(',')}, ${methods.join(',')}};
 export default { install, version};`;
 
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fileStrBuild, 'utf8', (error) => {
-  // logger.success(`${package_config_path} 文件写入成功`);
-});
+fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fileStrBuild, 'utf8');
 
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
-export const testComponents = { ${packages.join(',')}};
 export { install, Locale, ${packages.join(',')}, ${methods.join(',')}  };
 export default { install, version:'${packageConfig.version}'};`;
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8', (error) => {
-  // logger.success(`${package_config_path} 文件写入成功`);
-});
+fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8');
+
+dts += `  }
+}`
+fs.outputFile(path.resolve(__dirname, '../src/packages/components.d.ts'), dts, 'utf8');

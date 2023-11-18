@@ -78,7 +78,19 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeactivated, ref, watch, h } from 'vue';
+import {
+  toRefs,
+  onMounted,
+  onUnmounted,
+  reactive,
+  computed,
+  onActivated,
+  onDeactivated,
+  ref,
+  watch,
+  h,
+  PropType
+} from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -110,10 +122,8 @@ export default create({
       default: 'across'
     },
     list: {
-      type: Array,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<any[]>,
+      default: () => []
     },
     standTime: {
       type: Number,

@@ -18,7 +18,7 @@
       </view>
     </view>
     <view v-show="scrollY > 0 && isSticky" class="nut-elevator__list__fixed">
-      <view class="nut-elevator__list__fixed-title">{{ indexList[currentIndex][acceptKey] }}</view>
+      <view class="nut-elevator__list__fixed-title">{{ indexList?.[currentIndex]?.[acceptKey] }}</view>
     </view>
     <view v-show="scrollStart" v-if="indexList.length" class="nut-elevator__code--current">{{
       indexList[codeIndex][acceptKey]
@@ -57,9 +57,7 @@ export default create({
     },
     indexList: {
       type: Array as PropType<any[]>,
-      default: () => {
-        return [];
-      }
+      default: () => []
     },
     isSticky: {
       type: [Boolean],
