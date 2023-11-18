@@ -19,8 +19,8 @@
     <div class="nut-fixed-nav__btn" @click="updateValue()">
       <slot name="btn">
         <Left color="#fff" />
-        <view class="text"
-          >{{ visible ? activeText || translate('activeText') : unActiveText || translate('unActiveText') }}
+        <view class="text">
+          {{ visible ? activeText || translate('activeText') : unActiveText || translate('unActiveText') }}
         </view>
       </slot>
     </div>
