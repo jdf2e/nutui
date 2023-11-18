@@ -15,11 +15,11 @@
               width: size,
               height: size,
               size,
-              color: n <= modelValue ? activeColor : voidColor
+              color: n <= Number(modelValue) ? activeColor : voidColor
             })
           "
           class="nut-rate-item__icon"
-          :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
+          :class="{ 'nut-rate-item__icon--disabled': disabled || n > Number(modelValue) }"
           @click="onClick(1, n)"
         ></component>
       </view>
