@@ -113,7 +113,7 @@ const translate = useTranslate({
     circle: '圆形图片',
     loading: '加载中提示',
     error: '加载失败',
-    lay: '懒加载'
+    lazy: '懒加载'
   },
   'en-US': {
     basic: 'Basic Usage',

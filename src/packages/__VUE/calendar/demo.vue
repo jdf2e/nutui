@@ -328,6 +328,7 @@ const translate = useTranslate({
     range: 'Select Date Range',
     multiple: 'Select Multiple Date',
     week: 'Select Week',
+    disabledDate: 'Disabled Date',
 
     conjunction: '-',
     custom_btn: 'Custom Button',

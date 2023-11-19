@@ -1,20 +1,20 @@
 import Locale from '@/packages/locale';
 import { useLocale } from '@/packages/utils/useLocale';
 export const currentLang = Locale.currentLang;
-// @type-challenges
-type TupleToUnion<T extends any[]> = T[number];
-export const useTranslate = <T extends string[]>(object: {
-  'zh-CN': {
-    [key in TupleToUnion<T>]: string | string[] | Function;
-  };
-  'en-US': {
-    [key in TupleToUnion<T>]: string | string[] | Function;
-  };
+
+export const useTranslate = <
+  T1 extends {
+    [key: string]: any;
+  },
+  T2 extends T1
+>(object: {
+  'zh-CN': T1;
+  'en-US': T2;
 }) => {
   for (const [key, value] of Object.entries(object)) {
     Locale.merge(key, value);
   }
-  return useLocale<TupleToUnion<T>>();
+  return useLocale<Extract<Exclude<keyof T1, number | symbol>, keyof T2>>();
 };
 
 export const translateChange = () => {

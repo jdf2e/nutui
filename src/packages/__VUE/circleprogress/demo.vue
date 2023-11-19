@@ -52,6 +52,7 @@ const translate = useTranslate({
     customWidth: 'Custom Width',
     Gradient: 'Gradient',
     custom: 'custom',
+    customSize: 'Custom Size',
     customContent: 'Custom Content',
     dynamicChange: 'Dynamic Change',
     reduce: 'reduce',

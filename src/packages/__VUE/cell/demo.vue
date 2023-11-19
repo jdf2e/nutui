@@ -121,6 +121,7 @@ const translate = useTranslate({
     title7: 'Vertical Center',
     title8: 'Use Slots title',
     title9: 'Size setting large',
+    title10: 'Desc Slot',
     link: 'Link',
     urlJump: 'URL Jump',
     routerJump: 'Router Jump ’/‘ ',

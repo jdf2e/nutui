@@ -112,6 +112,7 @@ const translate = useTranslate({
     once: 'Once',
     times: 'Several times',
     basic: 'Loop animation',
+    click: 'Click',
     FRTL: 'From right to left',
     FLTR: 'From left to right',
     FTTB: 'From top to bottom',
