@@ -67,7 +67,13 @@ const translate = useTranslate({
     title11: '手动执行上传',
     title12: '禁用状态',
     title13: '自定义 xhr 上传方式(before-xhr-upload)',
-    title14: '手动清空上传'
+    title14: '手动清空上传',
+    ready: '准备完成',
+    readyUpload: '准备上传',
+    waitingUpload: '等待上传',
+    uploading: '上传中',
+    success: '上传成功',
+    error: '上传失败'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -85,7 +91,13 @@ const translate = useTranslate({
     title11: 'Manual upload',
     title12: 'Disabled state',
     title13: 'Customize XHR upload (before-xhr-upload)',
-    title14: 'Clear upload manually'
+    title14: 'Clear upload manually',
+    ready: 'Ready',
+    readyUpload: 'Ready to upload',
+    waitingUpload: 'Waiting for upload',
+    uploading: 'Uploading',
+    success: 'Upload successful',
+    error: 'Upload failed'
   }
 });
 const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';

@@ -178,7 +178,7 @@ const translate = useTranslate({
     square: 'Square',
     gutter: 'Gutter',
     reverse: 'Reverse',
-    horizontal: 'Horizontal',
+    Horizontal: 'Horizontal',
     iconStyle: 'Icon Style',
     route: 'Route',
     customContent: 'Custom Content',

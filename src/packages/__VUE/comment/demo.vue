@@ -74,7 +74,7 @@ const translate = useTranslate({
     basic: 'Basic Usage',
     single: 'Single Line Image',
     multiRow: 'Multi Line Image ',
-    review: 'Additional Review'
+    additionalReviewd: 'Additional Review'
   }
 });
 let cmt = ref<any>({});

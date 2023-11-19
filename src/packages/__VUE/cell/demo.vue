@@ -45,7 +45,7 @@ import Icon from './demo/icon.vue';
 import Align from './demo/align.vue';
 import Center from './demo/center.vue';
 
-const translate = useTranslate<['basic', 'size', 'slot', 'desc', 'title', 'group', 'link', 'icon', 'align', 'center']>({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     size: '尺寸设置 large',
