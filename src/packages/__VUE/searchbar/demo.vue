@@ -71,7 +71,6 @@ const translate = useTranslate({
     basic7: '自定义清除图标 icon',
     word1: '标签',
     word2: '搜索',
-    title3: '标题3',
     shape: '设置搜索框形状'
   },
   'en-US': {
