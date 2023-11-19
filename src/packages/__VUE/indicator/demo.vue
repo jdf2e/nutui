@@ -37,23 +37,19 @@ import NutCell from '../cell/index.vue';
 import NutButton from '../button/index.vue';
 import NutCol from '../col/index.vue';
 import NutRow from '../row/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('Indicator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      button: '主要按钮',
-      title: 'block用法',
-      title2: '不补0'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      button: 'Main Button',
-      title: 'Block usage',
-      title2: 'Do not make up 0'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    button: '主要按钮',
+    title: 'block用法',
+    title2: '不补0'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    button: 'Main Button',
+    title: 'Block usage',
+    title2: 'Do not make up 0'
+  }
+});
 </script>

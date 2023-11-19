@@ -46,35 +46,31 @@ import { reactive } from 'vue';
 import NutOverlay from './index.vue';
 import NutButton from '../button/index.vue';
 import NutCell from '../cell/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('overlay');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      style: '遮罩样式',
-      duration: '设置动画时间',
-      lockscroll: '锁定背景滚动',
-      content: '嵌套内容',
-      btn1: '显示遮罩层',
-      btn2: '嵌套内容',
-      text: '这里是正文',
-      closeClickLay: '点击遮罩不关闭'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      style: 'Mask style',
-      duration: 'Set animation time',
-      lockscroll: 'Lock Background Scroll',
-      content: 'Nested content',
-      btn1: 'Show mask layer',
-      btn2: 'Nested content',
-      text: 'Here is the text',
-      closeClickLay: 'Click the mask not to close'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    style: '遮罩样式',
+    duration: '设置动画时间',
+    lockscroll: '锁定背景滚动',
+    content: '嵌套内容',
+    btn1: '显示遮罩层',
+    btn2: '嵌套内容',
+    text: '这里是正文',
+    closeClickLay: '点击遮罩不关闭'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    style: 'Mask style',
+    duration: 'Set animation time',
+    lockscroll: 'Lock Background Scroll',
+    content: 'Nested content',
+    btn1: 'Show mask layer',
+    btn2: 'Nested content',
+    text: 'Here is the text',
+    closeClickLay: 'Click the mask not to close'
+  }
+});
 const state = reactive({
   show: false,
   show2: false,

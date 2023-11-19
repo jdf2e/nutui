@@ -72,10 +72,8 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('card');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     customProduct: '自定义商品标签',

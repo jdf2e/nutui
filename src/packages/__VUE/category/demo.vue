@@ -18,11 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
 import { reactive, onMounted } from 'vue';
-const { translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     title1: '经典分类模式',
     title2: '只显示文字',

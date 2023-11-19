@@ -74,11 +74,9 @@
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('time-select');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     deliveryTime: '请选择配送时间',

@@ -79,40 +79,36 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Issue } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      customStyle: '设置颜色高度',
-      noShowPercentage: '设置百分比不显示',
-      showPercentage: '设置百分比外显',
-      showInsidePercentage: '设置百分比内显',
-      customContent: '设置百分比内显自定义内容',
-      customSize: '自定义尺寸',
-      statusDisplay: '设置状态显示',
-      dynamicChange: '动态改变',
-      reduce: '减少',
-      add: '增加'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      customStyle: 'Custom Style',
-      noShowPercentage: 'Don’t Show Percentage',
-      showPercentage: 'Percentage displayed outside',
-      showInsidePercentage: 'Percentage displayed inside',
-      customContent: 'Custom Content',
-      customSize: 'Custom Size',
-      statusDisplay: 'Status Display',
-      dynamicChange: 'Dynamic Change',
-      reduce: 'reduce',
-      add: 'add'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    customStyle: '设置颜色高度',
+    noShowPercentage: '设置百分比不显示',
+    showPercentage: '设置百分比外显',
+    showInsidePercentage: '设置百分比内显',
+    customContent: '设置百分比内显自定义内容',
+    customSize: '自定义尺寸',
+    statusDisplay: '设置状态显示',
+    dynamicChange: '动态改变',
+    reduce: '减少',
+    add: '增加'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    customStyle: 'Custom Style',
+    noShowPercentage: 'Don’t Show Percentage',
+    showPercentage: 'Percentage displayed outside',
+    showInsidePercentage: 'Percentage displayed inside',
+    customContent: 'Custom Content',
+    customSize: 'Custom Size',
+    statusDisplay: 'Status Display',
+    dynamicChange: 'Dynamic Change',
+    reduce: 'reduce',
+    add: 'add'
+  }
+});
 const val = ref(0);
 const setAddVal = () => {
   if (val.value >= 100) {

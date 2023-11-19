@@ -24,26 +24,22 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import NutPagination from './index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Left, Right } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      simpleMode: '简单模式',
-      showEllipses: '显示省略号',
-      customButton: '自定义按钮'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      simpleMode: 'Simple Mode',
-      showEllipses: 'Show ellipses',
-      customButton: 'Custom Button'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    simpleMode: '简单模式',
+    showEllipses: '显示省略号',
+    customButton: '自定义按钮'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    simpleMode: 'Simple Mode',
+    showEllipses: 'Show ellipses',
+    customButton: 'Custom Button'
+  }
+});
 const currentPage = ref(1);
 const currentPage1 = ref(1);
 const currentPage2 = ref(1);

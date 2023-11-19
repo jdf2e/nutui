@@ -116,31 +116,27 @@
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('tour');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { StepOptions } from './index.vue';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '自定义样式',
-      title2: '设置偏移量',
-      title3: '自定义内容',
-      title4: '步骤引导',
-      tryClick: '点击试试'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Custom Style',
-      title2: 'Custom Offset',
-      title3: 'Custom Content',
-      title4: 'Steps',
-      tryClick: 'Try Click'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '自定义样式',
+    title2: '设置偏移量',
+    title3: '自定义内容',
+    title4: '步骤引导',
+    tryClick: '点击试试'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Custom Style',
+    title2: 'Custom Offset',
+    title3: 'Custom Content',
+    title4: 'Steps',
+    tryClick: 'Try Click'
+  }
+});
 
 const state = reactive({
   switchValue: false,

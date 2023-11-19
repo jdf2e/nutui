@@ -62,10 +62,8 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const { translate } = createComponent('comment');
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     single: '评论图片单行展示',

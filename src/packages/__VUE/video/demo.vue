@@ -58,44 +58,39 @@
 
 <script setup lang="ts">
 import { reactive, ref, Ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('video');
-
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '自动播放',
-      title2: '初始化静音',
-      title3: '视频封面海报设置',
-      title4: '行内播放',
-      title5: '设置视频为背景图',
-      title6: '视频切换',
-      title7: 'Ref控制播放，暂停，结束，静音，取消静音',
-      title8: '播放',
-      title9: '暂停',
-      title10: '结束',
-      title11: '静音',
-      title12: '取消静音'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Auto play',
-      title2: 'Initialize mute',
-      title3: 'Video cover poster settings',
-      title4: 'play inline',
-      title5: 'Set video as background',
-      title6: 'Video switching',
-      title7: 'Ref Control play, pause, stop, muted, unmuted',
-      title8: 'play',
-      title9: 'pause',
-      title10: 'stop',
-      title11: 'muted',
-      title12: 'unmuted'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '自动播放',
+    title2: '初始化静音',
+    title3: '视频封面海报设置',
+    title4: '行内播放',
+    title5: '设置视频为背景图',
+    title6: '视频切换',
+    title7: 'Ref控制播放，暂停，结束，静音，取消静音',
+    title8: '播放',
+    title9: '暂停',
+    title10: '结束',
+    title11: '静音',
+    title12: '取消静音'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Auto play',
+    title2: 'Initialize mute',
+    title3: 'Video cover poster settings',
+    title4: 'play inline',
+    title5: 'Set video as background',
+    title6: 'Video switching',
+    title7: 'Ref Control play, pause, stop, muted, unmuted',
+    title8: 'play',
+    title9: 'pause',
+    title10: 'stop',
+    title11: 'muted',
+    title12: 'unmuted'
+  }
+});
 const state = reactive({
   source: {
     src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',

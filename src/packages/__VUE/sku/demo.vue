@@ -105,11 +105,9 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('sku');
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     noSell: '不可售',

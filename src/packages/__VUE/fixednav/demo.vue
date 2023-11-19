@@ -55,38 +55,34 @@
 import { computed, onMounted, ref } from 'vue';
 import NutFixedNav from './index.vue';
 import NutDrag from '../drag/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('fixednav');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Retweet } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      left1: '左侧收起',
-      left2: '左侧展开',
-      cus1: '关',
-      cus2: '开',
-      drag: '支持拖拽',
-      index: '首页',
-      category: '分类',
-      cart: '购物车',
-      my: '我的'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      left1: 'Left Closed',
-      left2: 'Left Open',
-      cus1: 'Closed',
-      cus2: 'Open',
-      drag: 'Drag',
-      index: 'Index',
-      category: 'Category',
-      cart: 'Cart',
-      my: 'My'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    left1: '左侧收起',
+    left2: '左侧展开',
+    cus1: '关',
+    cus2: '开',
+    drag: '支持拖拽',
+    index: '首页',
+    category: '分类',
+    cart: '购物车',
+    my: '我的'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    left1: 'Left Closed',
+    left2: 'Left Open',
+    cus1: 'Closed',
+    cus2: 'Open',
+    drag: 'Drag',
+    index: 'Index',
+    category: 'Category',
+    cart: 'Cart',
+    my: 'My'
+  }
+});
 const visible = ref(false);
 const visible1 = ref(false);
 const visible2 = ref(false);

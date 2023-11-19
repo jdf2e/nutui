@@ -31,29 +31,25 @@ import { onMounted, ref, reactive } from 'vue';
 import NutInfiniteLoading from './index.vue';
 import NutTabs from '../tabs/index.vue';
 import NutTabPane from '../tabpane/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('infinite-loading');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      pullRefresh: '下拉刷新',
-      customTxt: '自定义加载文案',
-      none: '没有啦~',
-      success: '刷新成功'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      pullRefresh: 'Pull to refresh',
-      customTxt: 'Custom loading copywriting',
-      none: 'No more',
-      success: 'Refresh success'
-    }
-  });
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    pullRefresh: '下拉刷新',
+    customTxt: '自定义加载文案',
+    none: '没有啦~',
+    success: '刷新成功'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    pullRefresh: 'Pull to refresh',
+    customTxt: 'Custom loading copywriting',
+    none: 'No more',
+    success: 'Refresh success'
+  }
+});
 
-initTranslate();
 const letter: string[] = [
   'A',
   'B',
