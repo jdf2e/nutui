@@ -14,7 +14,7 @@ export const useTranslate = <
   for (const [key, value] of Object.entries(object)) {
     Locale.merge(key, value);
   }
-  return useLocale<Extract<Exclude<keyof T1, number | symbol>, keyof T2>>();
+  return useLocale<Exclude<Extract<keyof T1, keyof T2>, number | symbol>>();
 };
 
 export const translateChange = () => {
