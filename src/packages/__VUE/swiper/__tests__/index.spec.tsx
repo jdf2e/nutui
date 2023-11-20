@@ -12,7 +12,7 @@ test('should render width and height', async () => {
       'nut-swiper-item': SwiperItem
     },
     template: `
-        <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000" :height="height">
+        <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000" :height="height" :width="width">
           <nut-swiper-item v-for="item in list" :key="item">
             <img :src="item" alt="" />
           </nut-swiper-item>
@@ -21,7 +21,8 @@ test('should render width and height', async () => {
     setup() {
       const state = reactive({
         page: 1,
-        height: '500',
+        width: 300,
+        height: 500,
         list: [
           'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
           'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -40,7 +41,7 @@ test('should render width and height', async () => {
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
   expect(swiperItem.style.height).toEqual(`${wrapper.vm.height}px`);
-  expect(swiperItem.style.width).toEqual(`${window.innerWidth * (wrapper.vm.list as any).length}px`);
+  expect(swiperItem.style.width).toEqual(`${wrapper.vm.width * (wrapper.vm.list as any).length}px`);
 });
 
 test('should render initpage', async () => {

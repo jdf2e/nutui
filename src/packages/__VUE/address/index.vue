@@ -255,8 +255,6 @@ export default create({
         }
       });
 
-      console.log('new', newData);
-
       return newData;
     };
 

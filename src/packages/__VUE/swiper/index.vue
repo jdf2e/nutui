@@ -47,12 +47,10 @@ const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
     width: {
-      type: [Number, String],
-      default: window.innerWidth
+      type: [Number, String]
     },
     height: {
-      type: [Number, String],
-      default: 0
+      type: [Number, String]
     },
     direction: {
       type: String,
