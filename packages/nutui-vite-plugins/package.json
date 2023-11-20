@@ -30,7 +30,7 @@
   "dependencies": {
     "lzutf8": "^0.6.3",
     "markdown-it-container": "^3.0.0",
-    "unplugin-vue-markdown": "^0.24.3",
+    "unplugin-vue-markdown": "^0.25.0",
     "highlight.js": "^11.9.0",
     "fs-extra": "^11.1.1"
   },
