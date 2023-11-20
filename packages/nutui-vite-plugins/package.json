@@ -35,7 +35,7 @@
     "fs-extra": "^11.1.1"
   },
   "devDependencies": {
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.0.4",
     "@types/markdown-it-container": "^2.0.8",
     "@types/fs-extra": "^11.0.3"
