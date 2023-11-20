@@ -34,7 +34,7 @@ export default defineConfig({
       input,
       output: {
         paths: {
-          '@/packages/locale': '../locale/lang'
+          '@/packages/locale': '@nutui/nutui/dist/packages/locale/lang'
         },
         dir: path.resolve(__dirname, './dist/packages'),
         entryFileNames: (chunkInfo) => `${chunkInfo.name.toLowerCase()}/${chunkInfo.name}.js`,
