@@ -47,12 +47,10 @@ const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
     width: {
-      type: [Number, String],
-      default: window.innerWidth
+      type: [Number, String]
     },
     height: {
-      type: [Number, String],
-      default: 0
+      type: [Number, String]
     },
     direction: {
       type: String,
@@ -329,6 +327,7 @@ export default create({
     const init = (active: number = +props.initPage) => {
       stopAutoPlay();
       state.rect = container.value.getBoundingClientRect();
+      console.log('rect', state.rect);
       active = Math.min(childCount.value - 1, active);
       state.width = props.width ? +props.width : (state.rect as DOMRect).width;
       state.height = props.height ? +props.height : (state.rect as DOMRect).height;
