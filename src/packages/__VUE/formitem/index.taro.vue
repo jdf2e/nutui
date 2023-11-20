@@ -24,10 +24,12 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
+import { computed, inject, provide, PropType, CSSProperties } from 'vue';
 import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
 import NutCell from '../cell/index.taro.vue';
+import { FORM_KEY } from '../form/types';
+import { useParent } from '@/packages/utils/useRelation';
 const { create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
@@ -77,22 +79,7 @@ export default create({
     NutCell
   },
   setup(props, { slots }) {
-    const useParent: any = () => {
-      const parent = inject('NutFormParent', null);
-      if (parent) {
-        // 获取子组件自己的实例
-        const instance = getCurrentInstance()!;
-        const { link, removeLink } = parent;
-        // @ts-ignore
-        link(instance);
-        onUnmounted(() => {
-          // @ts-ignore
-          removeLink(instance);
-        });
-        return { parent };
-      }
-    };
-    const { parent: parentObj } = useParent();
+    const { parent: parentObj } = useParent(FORM_KEY);
     const isRequired = computed(() => {
       const rules = parentObj.props?.rules;
       let formRequired = false;

@@ -15,8 +15,8 @@ import { computed, CSSProperties } from 'vue';
 import { useRouter } from '@/packages/utils/useRoute';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { useInject } from '@/packages/utils/useRelation/useInject';
-import { GRID_KEY, GridProps } from '../grid/common';
+import { GRID_KEY } from '../grid/common';
+import { useParent } from '@/packages/utils/useRelation';
 const { create, componentName } = createComponent('grid-item');
 
 export default create({
@@ -39,8 +39,7 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY);
-    if (!Parent.parent) return {} as any;
+    const Parent: any = useParent(GRID_KEY);
     const index = Parent.index;
     const parent = Parent.parent.props;
 
