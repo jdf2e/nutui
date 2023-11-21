@@ -14,6 +14,17 @@ body:
         - 在 [Issue](https://github.com/jdf2e/nutui/issues) 列表中查找解决方案
         - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/issues/2461)
   
+  - type: dropdown
+    id: npm
+    attributes:
+      label: NutUI 包名
+      description: 选择使用的 NutUI NPM 包名
+      options:
+        - "@nutui/nutui"
+        - "@nutui/nutui-taro"
+    validations:
+      required: true
+
   - type: textarea
     id: problem-description
     attributes:
