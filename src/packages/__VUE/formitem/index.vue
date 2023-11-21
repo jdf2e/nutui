@@ -25,7 +25,7 @@
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
-import type { FormItemRule } from './types';
+import type { FormItemRule, FormItemLabelPosition, FormItemStarPosition } from './types';
 import { createComponent } from '@/packages/utils/create';
 import NutCell from '../cell/index.vue';
 const { create } = createComponent('form-item');
@@ -73,11 +73,11 @@ export default create({
       default: ''
     },
     labelPosition: {
-      type: String as PropType<'left' | 'right' | 'top'>,
+      type: String as PropType<FormItemLabelPosition>,
       default: 'left'
     },
     starPosition: {
-      type: String as PropType<'left' | 'right'>,
+      type: String as PropType<FormItemStarPosition>,
       default: 'left'
     }
   },

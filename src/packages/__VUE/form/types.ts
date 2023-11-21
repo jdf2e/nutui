@@ -1,4 +1,4 @@
-import { FormItemRule } from '../formitem/types';
+import { FormItemRule, FormItemLabelPosition, FormItemStarPosition } from '../formitem/types';
 
 export type FormRules = {
   [key: string]: FormItemRule[];
@@ -13,3 +13,6 @@ export type ErrorMessage = {
   prop: string;
   message: string;
 };
+
+export type FormLabelPosition = FormItemLabelPosition;
+export type FormStarPosition = FormItemStarPosition;
