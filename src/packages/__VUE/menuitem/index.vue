@@ -51,12 +51,13 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
+import { reactive, PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('menu-item');
 import NutPopup from '../popup/index.vue';
-import { MenuItemOption } from './type';
 import { Check } from '@nutui/icons-vue';
+import { useParent } from '@/packages/utils/useRelation';
+import { MENU_KEY, MenuItemOption } from '../menu/types';
 export default create({
   props: {
     title: String,
@@ -87,23 +88,7 @@ export default create({
       showWrapper: false
     });
 
-    const useParent: any = () => {
-      const parent = inject('menuParent', null);
-      if (parent) {
-        // 获取子组件自己的实例
-        const instance = getCurrentInstance()!;
-        const { link, removeLink } = parent;
-        // @ts-ignore
-        link(instance);
-        onUnmounted(() => {
-          // @ts-ignore
-          removeLink(instance);
-        });
-        return { parent };
-      }
-    };
-
-    const { parent } = useParent();
+    const { parent } = useParent(MENU_KEY);
 
     const style = computed(() => {
       return parent.props.direction === 'down'
