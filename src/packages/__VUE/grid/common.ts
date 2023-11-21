@@ -57,7 +57,7 @@ export type GridProps = ExtractPropTypes<typeof gridProps>;
 export const component = {
   props: gridProps,
   setup(props: GridProps, { slots }: SetupContext): RenderFunction {
-    useProvide(GRID_KEY, `${componentName}-item`)({ props });
+    useProvide(GRID_KEY, `NutGridItem`)({ props });
 
     const rootClass = computed(() => {
       const prefixCls = componentName;
