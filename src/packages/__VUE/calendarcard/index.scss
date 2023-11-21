@@ -1,0 +1,104 @@
+.nut-calendarcard {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 16px;
+  color: #262626;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: normal;
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      margin: 16px;
+      line-height: 1;
+
+      .left {
+        margin-left: 8px;
+      }
+      .right {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 14.27%;
+    height: 48px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    text-align: center;
+
+    &.header {
+      cursor: auto;
+    }
+
+    &-top,
+    &-bottom {
+      width: 100%;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+    &.active,
+    &.start,
+    &.end {
+      background-color: $primary-color;
+      color: $white !important;
+      border-radius: $calendar-day-active-border-radius;
+    }
+
+    &.start {
+      border-radius: 0px;
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-radius: 0px;
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.mid {
+      background-color: red;
+      color: $calendar-choose-color;
+    }
+
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
+    .nut-calendar-day-info {
+      color: $primary-color;
+    }
+
+    // 上个月、下个月
+    &.prev,
+    &.next,
+    &.disabled {
+      color: $calendar-disable-color;
+      cursor: not-allowed;
+    }
+  }
+}
