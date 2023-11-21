@@ -60,7 +60,7 @@ const { create } = createComponent('menu-item');
 import NutPopup from '../popup/index.taro.vue';
 import { Check } from '@nutui/icons-vue-taro';
 import NutScrollView from '../scroll-view/index.taro.vue';
-import { useParent } from '@/packages/utils/useRelation';
+import { useParent } from '@/packages/utils';
 import { MENU_KEY, MenuItemOption } from '../menu/types';
 
 export default create({

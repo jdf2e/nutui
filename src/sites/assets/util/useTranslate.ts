@@ -1,5 +1,5 @@
 import Locale from '@/packages/locale';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 export const currentLang = Locale.currentLang;
 
 export const useTranslate = <

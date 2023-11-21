@@ -40,7 +40,7 @@ import { Loading, Checklist } from '@nutui/icons-vue-taro';
 import NutTabs from '../tabs/index.taro.vue';
 import NutTabPane from '../tabpane/index.vue';
 import Tree from './tree';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 const { create } = createComponent('cascader-item');
 
 export default create({

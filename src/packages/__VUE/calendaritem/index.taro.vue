@@ -90,7 +90,7 @@ import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('calendar-item');
 const cN = 'NutCalendarItem';

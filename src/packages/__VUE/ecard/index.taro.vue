@@ -35,7 +35,7 @@ import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutInputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 export interface dataList {
   price: string | number;

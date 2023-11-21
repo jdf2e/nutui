@@ -39,7 +39,7 @@ import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 const { create } = createComponent('short-password');
 
 const cN = 'NutShortPassword';

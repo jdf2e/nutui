@@ -35,7 +35,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean;

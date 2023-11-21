@@ -56,7 +56,7 @@ const { create } = createComponent('table');
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue-taro';
 import { TableColumns } from './types';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const cN = 'NutTable';
 

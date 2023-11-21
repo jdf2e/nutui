@@ -27,7 +27,7 @@
 import { ref, onMounted, PropType } from 'vue';
 import { Fabulous, Comment, MoreX } from '@nutui/icons-vue-taro';
 import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('comment-bottom');
 const cN = 'NutComment';
