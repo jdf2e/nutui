@@ -24,12 +24,10 @@
         <nut-button type="primary">按钮</nut-button>
         <nut-button type="primary">按钮</nut-button>
         <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
       </nut-space>
     </nut-cell>
     <nut-cell :style="{ '--nut-space-gap': '30px' }">
       <nut-space>
-        <nut-button type="primary">按钮</nut-button>
         <nut-button type="primary">按钮</nut-button>
         <nut-button type="primary">按钮</nut-button>
         <nut-button type="primary">按钮</nut-button>
