@@ -39,7 +39,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
 import { Tips } from '@nutui/icons-vue-taro';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 const { create } = createComponent('short-password');
 import { eventCenter, getCurrentInstance } from '@tarojs/taro';
 

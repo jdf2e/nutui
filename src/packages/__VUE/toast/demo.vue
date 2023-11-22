@@ -23,8 +23,7 @@
 <script setup lang="ts">
 import { onUnmounted } from 'vue';
 import { showToast } from './index';
-import NutCell from '../cell/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

@@ -16,7 +16,7 @@
 import { watch, computed, onBeforeMount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
-import { translateChange, initSiteLang } from '../assets/util/useTranslate';
+import { translateChange, initSiteLang } from '@/sites/utils';
 import { Left } from '@nutui/icons-vue';
 const route = useRoute();
 const router = useRouter();

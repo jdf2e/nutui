@@ -19,7 +19,7 @@
 <script lang="ts">
 import NutPrice from '../../price/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 const { create } = createComponent('sku-header');
 
 const cN = 'NutSkuHeader';

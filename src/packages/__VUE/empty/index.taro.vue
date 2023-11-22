@@ -18,7 +18,7 @@ import { computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { EmptyImage } from './types';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('empty');
 const cN = 'NutEmpty';

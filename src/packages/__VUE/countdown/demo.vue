@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

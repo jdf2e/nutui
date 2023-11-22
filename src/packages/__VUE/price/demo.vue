@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     title1: '支持三种尺寸：small、normal、large',

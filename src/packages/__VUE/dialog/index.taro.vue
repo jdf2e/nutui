@@ -54,7 +54,7 @@ import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.taro.vue';
 import NutButton from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('dialog');
 const cN = 'NutDialog';

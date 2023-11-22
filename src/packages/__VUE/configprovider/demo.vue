@@ -70,20 +70,7 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import NutConfigProvider from './index.vue';
-import NutCell from '../cell/index.vue';
-import NutForm from '../form/index.vue';
-import NutFormItem from '../formitem/index.vue';
-import NutRange from '../range/index.vue';
-import NutSwitch from '../switch/index.vue';
-import NutRate from '../rate/index.vue';
-import NutInputNumber from '../inputnumber/index.vue';
-import NutUploader from '../uploader/index.vue';
-import NutAddress from '../address/index.vue';
-import NutRadio from '../radio/index.vue';
-import NutCheckbox from '../checkbox/index.vue';
-import NutRadioGroup from '../radiogroup/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 
 const translate = useTranslate({
   'zh-CN': {

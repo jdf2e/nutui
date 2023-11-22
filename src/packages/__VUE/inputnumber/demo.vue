@@ -50,7 +50,7 @@
 import { reactive } from 'vue';
 import { Left, Right } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

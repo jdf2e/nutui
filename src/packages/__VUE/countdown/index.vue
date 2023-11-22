@@ -13,7 +13,7 @@ import { toRefs, computed, watch, reactive, onBeforeMount } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { getTimeStamp } from './util';
 import { padZero } from '@/packages/utils/util';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('countdown');
 const cN = 'NutCountdown';

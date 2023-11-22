@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { HeartFill } from '@nutui/icons-vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { showToast } from '@/packages/nutui.vue';
 const translate = useTranslate({
   'zh-CN': {

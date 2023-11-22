@@ -76,9 +76,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import NutAudio from './index.vue';
-import NutAudioOperate from '../audiooperate/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop, Voice } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

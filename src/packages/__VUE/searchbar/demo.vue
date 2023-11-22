@@ -59,7 +59,7 @@
 import { reactive } from 'vue';
 import { showToast } from '../toast';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic1: '基础用法',

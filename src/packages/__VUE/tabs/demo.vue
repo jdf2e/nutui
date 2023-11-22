@@ -94,10 +94,8 @@
 
 <script setup lang="ts">
 import { reactive, computed } from 'vue';
-import NutTabs from './index.vue';
-import NutTabPane from '../tabpane/index.vue';
 import { Dongdong } from '@nutui/icons-vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

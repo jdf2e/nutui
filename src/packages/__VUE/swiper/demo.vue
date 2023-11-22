@@ -89,7 +89,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted, ref, Ref } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Left, Right } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

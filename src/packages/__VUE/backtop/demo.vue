@@ -13,8 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import NutBacktop from './index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Top } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': { title: '基础用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },

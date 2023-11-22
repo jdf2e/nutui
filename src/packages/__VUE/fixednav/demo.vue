@@ -53,9 +53,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import NutFixedNav from './index.vue';
-import NutDrag from '../drag/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Retweet } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

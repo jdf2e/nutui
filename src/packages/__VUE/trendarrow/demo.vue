@@ -58,7 +58,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Success, Failure } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

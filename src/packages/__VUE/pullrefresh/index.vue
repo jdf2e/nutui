@@ -27,7 +27,7 @@ import { getScrollTopRoot } from '@/packages/utils/util';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import { Loading } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
 

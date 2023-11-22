@@ -68,7 +68,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { PickerOption } from './types';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Internation } from './doc.en';
 import { showToast } from '@/packages/nutui.vue';
 

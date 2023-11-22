@@ -43,10 +43,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import NutOverlay from './index.vue';
-import NutButton from '../button/index.vue';
-import NutCell from '../cell/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

@@ -99,11 +99,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Loading, CircleClose } from '@nutui/icons-vue';
-import NutImage from './index.vue';
-import NutCell from '../cell/index.vue';
-import NutCol from '../col/index.vue';
-import NutRow from '../row/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { ImageFit } from './type';
 const translate = useTranslate({
   'zh-CN': {

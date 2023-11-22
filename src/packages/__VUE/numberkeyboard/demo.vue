@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { showToast } from '@/packages/nutui.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '默认键盘',

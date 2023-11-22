@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     title1: '经典分类模式',

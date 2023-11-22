@@ -189,7 +189,7 @@
 <script setup lang="ts">
 import { showToast } from '@/packages/nutui.vue';
 import { reactive, ref } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { FormItemRuleWithoutValidator } from '../formitem/types';
 const translate = useTranslate({
   'zh-CN': {

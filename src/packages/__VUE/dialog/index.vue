@@ -53,7 +53,7 @@ import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
 import NutButton from '../button/index.vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
 
 const { create } = createComponent('dialog');

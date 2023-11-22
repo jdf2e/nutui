@@ -116,7 +116,7 @@
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { StepOptions } from './index.vue';
 
 const translate = useTranslate({

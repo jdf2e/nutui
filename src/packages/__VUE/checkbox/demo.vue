@@ -143,7 +143,7 @@
 <script setup lang="ts">
 import { reactive, ref, Ref } from 'vue';
 import { showToast } from '@/packages/nutui.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Checklist } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

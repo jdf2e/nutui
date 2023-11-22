@@ -78,7 +78,7 @@ import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import NutProgress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';

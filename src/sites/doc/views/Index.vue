@@ -33,7 +33,7 @@ import DocHeader from '@/sites/doc/components/DocHeader.vue';
 import DocNav from '@/sites/doc/components/Nav.vue';
 import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import { RefData } from '@/sites/assets/util/ref';
-import { initSiteLang } from '@/sites/assets/util/useTranslate';
+import { initSiteLang } from '@/sites/utils';
 const route = useRoute();
 const router = useRouter();
 initSiteLang();

@@ -37,11 +37,8 @@
 </template>
 <script setup lang="ts">
 import { createVNode, ref } from 'vue';
-import NutDialog from './index.vue';
 import { showDialog } from './index';
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     funUse: '函数式调用',

@@ -81,7 +81,7 @@
 import { reactive } from 'vue';
 import { Close, Ask } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 
 const translate = useTranslate({
   'zh-CN': {

@@ -116,7 +116,7 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref, h } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
 import { PopoverLocation } from './type';
 

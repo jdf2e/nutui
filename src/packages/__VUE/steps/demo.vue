@@ -86,7 +86,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Service, People, Location2 } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

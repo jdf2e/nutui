@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基本用法'

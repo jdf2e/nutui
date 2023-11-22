@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 
 const translate = useTranslate({
   'zh-CN': {

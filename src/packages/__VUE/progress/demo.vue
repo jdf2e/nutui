@@ -79,7 +79,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Issue } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

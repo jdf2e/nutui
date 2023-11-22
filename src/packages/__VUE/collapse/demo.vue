@@ -64,7 +64,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { Notice, Follow } from '@nutui/icons-vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic1: '基础用法',

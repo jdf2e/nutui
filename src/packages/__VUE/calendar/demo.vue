@@ -283,7 +283,7 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue';
 import Utils from '@/packages/utils/date';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { CalendarRef, Day } from '../calendaritem/type';
 
 const translate = useTranslate({

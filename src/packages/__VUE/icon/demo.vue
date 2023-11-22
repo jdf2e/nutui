@@ -68,9 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
-import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
+import { useTranslate, currentLang } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {
     basic: 'IconFont 基础用法',

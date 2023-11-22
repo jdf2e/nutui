@@ -38,8 +38,7 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import NutElevator from './index.vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { Jd } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

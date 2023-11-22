@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { showToast } from '../toast/index';
 const translate = useTranslate({
   'zh-CN': {

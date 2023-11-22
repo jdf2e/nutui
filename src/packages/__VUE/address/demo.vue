@@ -102,7 +102,7 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import { AddressData } from './type';
 import { HeartFill, Heart1 } from '@nutui/icons-vue';
 const translate = useTranslate({
