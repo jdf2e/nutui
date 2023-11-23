@@ -15,9 +15,8 @@
 </template>
 <script lang="ts">
 import { computed, PropType } from 'vue';
-import { createComponent, useLocale } from '@/packages/utils';
+import { createComponent, useLocale, pxCheck } from '@/packages/utils';
 import { EmptyImage } from './types';
-import { pxCheck } from '@/packages/utils';
 
 const { create } = createComponent('empty');
 const cN = 'NutEmpty';
