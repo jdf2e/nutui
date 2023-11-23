@@ -78,7 +78,6 @@
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
-    "prettier-plugin-organize-imports": "^3.2.4",
     "@nutui/eslint-config": "workspace:*",
     "@nutui/prettier-plugin": "workspace:*",
     "@nutui/vite-plugins": "workspace:*",
