@@ -1,10 +1,9 @@
 import { ref, reactive, computed, CSSProperties, toRefs } from 'vue';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck, useLocale } from '@/packages/utils';
 import { usePicker } from './usePicker';
 import NutPickerColumn from './Column.vue';
 import Taro from '@tarojs/taro';
 import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils';
 
 const cN = 'NutPicker';
 

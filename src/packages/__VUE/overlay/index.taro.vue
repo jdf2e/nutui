@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { CSSProperties, PropType, computed, ComputedRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('overlay');
 
 export default create({

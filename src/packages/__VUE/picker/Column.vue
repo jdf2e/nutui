@@ -31,10 +31,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { PickerOption, TouchParams, PickerFieldNames } from './types';
 import { preventDefault, clamp } from '@/packages/utils/util';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 

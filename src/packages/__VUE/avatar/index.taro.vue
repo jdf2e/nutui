@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { toRefs, computed, inject, ref, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import type { AvatarShape, AvatarSize } from './types';
 const { create } = createComponent('avatar');
 export default create({

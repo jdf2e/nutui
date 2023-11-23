@@ -48,7 +48,7 @@
 import { computed, useSlots, PropType } from 'vue';
 import { Checked } from '@nutui/icons-vue-taro';
 import type { ProgressSize, ProgressStatus } from './types';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('progress');
 export default create({
   components: { Checked },

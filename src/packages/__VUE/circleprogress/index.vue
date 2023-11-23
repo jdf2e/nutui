@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { isObject } from '@/packages/utils/util';
 const { create } = createComponent('circle-progress');
 import { CircleProgressStrokeLinecap } from './types';

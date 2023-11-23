@@ -38,7 +38,7 @@ import {
   watch,
   VNode
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch/index';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { clamp } from '@/packages/utils/util';

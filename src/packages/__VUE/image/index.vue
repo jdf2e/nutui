@@ -33,7 +33,7 @@ import {
   onMounted,
   onBeforeUnmount
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { pxCheck } from '../../utils/pxCheck';
 import { ImageFit, ImagePosition } from './type';
 import { Image, ImageError } from '@nutui/icons-vue';

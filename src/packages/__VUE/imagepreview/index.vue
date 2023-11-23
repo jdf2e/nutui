@@ -46,7 +46,7 @@
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, ref, computed, nextTick } from 'vue';
 import type { PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { isArray } from '@/packages/utils/util';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';

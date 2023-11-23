@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Loading } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import { ButtonShape, ButtonType, ButtonSize, ButtonFormType } from './type';

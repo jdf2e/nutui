@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { provide, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('swipe-group');
 export default create({
   props: {

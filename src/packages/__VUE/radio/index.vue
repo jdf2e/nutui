@@ -1,9 +1,9 @@
 <script lang="ts">
 import { Component, computed, h, inject } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 
 export default create({
   components: {

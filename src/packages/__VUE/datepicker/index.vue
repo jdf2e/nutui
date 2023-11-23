@@ -25,7 +25,7 @@ import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import NutPicker from '../picker/index.vue';
 import { PickerOption } from '../picker/types';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
 const { create } = createComponent('date-picker');

@@ -1,5 +1,5 @@
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component, onBeforeUnmount } from 'vue';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 
 export const component = (componentName: string, components: Record<string, Component>): any => {
   return {

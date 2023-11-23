@@ -1,6 +1,6 @@
 <script lang="ts">
 import { h, provide, computed, readonly, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('radio-group');
 
 export default create({

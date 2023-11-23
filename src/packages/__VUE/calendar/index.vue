@@ -91,7 +91,7 @@
 </template>
 <script lang="ts">
 import { ref, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('calendar');
 import NutCalendarItem from '../calendaritem/index.vue';
 import NutPopup from '../popup/index.vue';

@@ -6,7 +6,7 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('side-navbar-item');
 export default create({
   props: {

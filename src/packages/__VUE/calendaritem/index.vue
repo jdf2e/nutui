@@ -76,12 +76,11 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('calendar-item');
 const cN = 'NutCalendarItem';

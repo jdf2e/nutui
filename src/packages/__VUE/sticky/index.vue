@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { computed, ref, PropType, watch, CSSProperties, onMounted, onUnmounted, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { getScrollParent } from '@/packages/utils/useScrollParent';
 import { useRect } from '@/packages/utils/useRect';
 type StickyPosition = 'top' | 'bottom';

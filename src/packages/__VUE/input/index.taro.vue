@@ -57,7 +57,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { formatNumber } from './util';
 import { MaskClose } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';

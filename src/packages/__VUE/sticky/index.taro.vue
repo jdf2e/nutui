@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { computed, ref, watch, CSSProperties, onMounted, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { usePageScroll } from '@tarojs/taro';
 const { create } = createComponent('sticky');

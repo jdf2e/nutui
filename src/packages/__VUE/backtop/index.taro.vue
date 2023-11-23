@@ -20,7 +20,7 @@
 <script lang="ts">
 import { reactive, computed, toRefs } from 'vue';
 import NutScrollView from '../scroll-view/index.taro.vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('backtop');
 import { Top } from '@nutui/icons-vue-taro';
 export default create({

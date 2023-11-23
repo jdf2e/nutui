@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { provide, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('collapse');
 export default create({
   props: {

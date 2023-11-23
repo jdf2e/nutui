@@ -17,7 +17,7 @@
 </template>
 <script lang="ts">
 import { PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('sku-operate');
 
 export default create({

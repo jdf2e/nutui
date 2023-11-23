@@ -18,8 +18,7 @@
 </template>
 <script lang="ts">
 import NutPrice from '../../price/index.taro.vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('sku-header');
 
 const cN = 'NutSkuHeader';

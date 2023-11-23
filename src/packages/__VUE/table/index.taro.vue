@@ -51,12 +51,11 @@
 </template>
 <script lang="ts">
 import { PropType, reactive, toRefs, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('table');
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue-taro';
 import { TableColumns } from './types';
-import { useLocale } from '@/packages/utils';
 
 const cN = 'NutTable';
 

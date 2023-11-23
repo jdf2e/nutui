@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import { ref, computed, PropType, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { AnimateType, AnimateAction } from './type';
 const { create } = createComponent('animate');
 export default create({

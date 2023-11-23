@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import Taro from '@tarojs/taro';
 
 const { componentName, create } = createComponent('watermark');

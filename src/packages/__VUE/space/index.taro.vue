@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Comment, CSSProperties, Fragment, PropType, Text, h, type VNode } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { SpaceAlign, SpaceJustify, SpaceGutter } from './types';
 const { create, componentName } = createComponent('space');
 export default create({

@@ -37,8 +37,8 @@
 <script lang="ts">
 import type { CSSProperties } from 'vue';
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from '@/packages/utils';
+import { pxCheck } from '@/packages/utils';
 import { Right } from '@nutui/icons-vue-taro';
 const { componentName, create } = createComponent('cell');
 export default create({

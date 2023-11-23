@@ -39,7 +39,7 @@ import {
   watch,
   VNode
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch/index';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useExpose } from '@/packages/utils/useExpose/index';

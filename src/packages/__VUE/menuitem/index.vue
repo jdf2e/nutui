@@ -52,7 +52,7 @@
 </template>
 <script lang="ts">
 import { reactive, PropType, inject, getCurrentInstance, computed, onUnmounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('menu-item');
 import NutPopup from '../popup/index.vue';
 import { MenuItemOption } from './type';

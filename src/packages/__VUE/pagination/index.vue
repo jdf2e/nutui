@@ -35,8 +35,7 @@
 </template>
 <script lang="ts">
 import { toRefs, watchEffect, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('pagination');
 
 const cN = 'NutPagination';

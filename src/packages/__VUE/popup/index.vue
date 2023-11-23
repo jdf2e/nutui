@@ -34,7 +34,7 @@ import { computed, reactive, toRefs, watch, watchEffect } from 'vue';
 import { Close } from '@nutui/icons-vue';
 import NutOverlay from '../overlay/index.vue';
 import { popupProps } from './props';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('popup');
 
 const initIndex = 2000;

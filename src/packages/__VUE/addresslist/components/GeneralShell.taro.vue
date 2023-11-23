@@ -43,7 +43,7 @@
 </template>
 <script lang="ts">
 import { ref, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.taro.vue';
 import NutButton from '../../button/index.taro.vue';

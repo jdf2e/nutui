@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { padZero } from '@/packages/utils/util';
 import { IndicatorAlign } from './types';
 const { create } = createComponent('indicator');

@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Close } from '@nutui/icons-vue';
 import { TagType } from './types';
 const { create } = createComponent('tag');

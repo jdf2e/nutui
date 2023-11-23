@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
 import NutAvatar from '../avatar/index.vue';
 const { create } = createComponent('avatar-group');

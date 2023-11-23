@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import { onMounted, reactive, ref, toRefs, Ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('side-navbar');
 export default create({
   props: {

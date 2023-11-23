@@ -83,14 +83,13 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import Taro from '@tarojs/taro';
 import NutScrollView from '../scroll-view/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('calendar-item');
 const cN = 'NutCalendarItem';

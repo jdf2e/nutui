@@ -40,7 +40,7 @@
 </template>
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
 const { create } = createComponent('elevator');

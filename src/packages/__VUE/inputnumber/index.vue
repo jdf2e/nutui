@@ -34,8 +34,8 @@
 </template>
 <script lang="ts">
 import { computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from '@/packages/utils';
+import { pxCheck } from '@/packages/utils';
 import { Minus, Plus } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('input-number');
 export default create({

@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { reactive, toRefs, inject, computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('time-detail');
 export default create({
   name: 'timedetail',

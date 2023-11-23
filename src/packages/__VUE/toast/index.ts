@@ -1,6 +1,6 @@
 import { createVNode, render } from 'vue';
 import Toast from './index.vue';
-import { CreateComponent } from '@/packages/utils/create';
+import { CreateComponent } from '@/packages/utils';
 import { Failure, Loading, Success, Tips } from '@nutui/icons-vue';
 const defaultOptions = {
   msg: '',

@@ -43,11 +43,10 @@
 <script lang="ts">
 import { computed, PropType } from 'vue';
 import { Right } from '@nutui/icons-vue-taro';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import CommentHeader from './components/CmtHeader.taro.vue';
 import CommentImages from './components/CmtImages.taro.vue';
 import CommentBottom from './components/CmtBottom.taro.vue';
-import { useLocale } from '@/packages/utils';
 
 interface VideosType {
   id?: number | string;

@@ -76,7 +76,7 @@
 <script lang="ts">
 import { computed, watch, ref, reactive, toRefs, PropType, onMounted } from 'vue';
 import { PopoverLocation, PopoverTheme } from '../popover/type';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect';
 import { Close } from '@nutui/icons-vue-taro';
 import NutPopover from '../popover/index.taro.vue';

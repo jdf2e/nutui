@@ -51,7 +51,7 @@
 import { ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 const { create } = createComponent('rate');
 export default create({
   props: {

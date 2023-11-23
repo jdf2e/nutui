@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { ref, reactive, toRefs, computed, onMounted, PropType, unref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
 const { create } = createComponent('ellipsis');

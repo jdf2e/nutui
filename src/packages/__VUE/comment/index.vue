@@ -43,11 +43,10 @@
 <script lang="ts">
 import { computed, PropType } from 'vue';
 import { Right } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
-import { useLocale } from '@/packages/utils';
 
 interface VideosType {
   id?: number | string;

@@ -30,9 +30,8 @@
 </template>
 <script lang="ts">
 import { computed, provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutPopup from '../popup/index.vue';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('time-select');
 
 const cN = 'NutTimeSelect';

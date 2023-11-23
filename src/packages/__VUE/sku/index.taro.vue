@@ -68,8 +68,7 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import NutPopup from '../popup/index.taro.vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('sku');
 
 const cN = 'NutSku';

@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { reactive, toRefs, inject, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('time-pannel');
 export default create({
   name: 'timepannel',

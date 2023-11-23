@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { PricePosition, PriceSize } from './types';
 const { componentName, create } = createComponent('price');
 

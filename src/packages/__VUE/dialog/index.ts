@@ -3,7 +3,7 @@ import { h, VNode, CSSProperties, Component, nextTick } from 'vue';
 import NutPopup from '../popup/index.vue';
 import NutButton from '../button/index.vue';
 import NutOverlay from '../overlay/index.vue';
-import { CreateComponent } from '@/packages/utils/create';
+import { CreateComponent } from '@/packages/utils';
 export class DialogOptions {
   title?: string = '';
   content?: string | VNode = '';

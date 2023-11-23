@@ -23,10 +23,10 @@
   </nut-cell>
 </template>
 <script lang="ts">
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
 import type { FormItemRule } from './types';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import NutCell from '../cell/index.vue';
 const { create } = createComponent('form-item');
 export default create({

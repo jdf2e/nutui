@@ -56,10 +56,9 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
+import { createComponent, renderIcon, useLocale } from '@/packages/utils';
 import { CircleClose } from '@nutui/icons-vue';
 import { TextAlign } from './type';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('searchbar');
 
 const cN = 'NutSearchbar';

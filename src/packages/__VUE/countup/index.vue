@@ -109,7 +109,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, ref, onMounted, onUnmounted, nextTick, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useExtend } from '@/packages/utils/useRelation/useRelation';
 const { create } = createComponent('countup');
 

@@ -77,7 +77,7 @@
 <script lang="ts">
 import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
 import { PopoverLocation, PopoverTheme } from '../popover/type';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useRect } from '@/packages/utils/useRect';
 import { Close } from '@nutui/icons-vue';
 import NutPopover from '../popover/index.vue';

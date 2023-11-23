@@ -93,7 +93,7 @@ import {
 } from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 const { create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 

@@ -49,12 +49,11 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.taro.vue';
 import NutButton from '../button/index.taro.vue';
 import { isPromise } from '@/packages/utils/util';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('dialog');
 const cN = 'NutDialog';

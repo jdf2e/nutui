@@ -36,7 +36,7 @@
 import { toRefs, reactive, watch, onMounted, computed, CSSProperties, PropType } from 'vue';
 import Taro from '@tarojs/taro';
 import { CircleClose } from '@nutui/icons-vue-taro';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { ImageInterface } from './types';
 import NutPopup from '../popup/index.taro.vue';

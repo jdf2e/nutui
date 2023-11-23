@@ -67,7 +67,7 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { componentWeb, componentWeapp } from './common';
 import Taro from '@tarojs/taro';
 const { create } = createComponent('picker');

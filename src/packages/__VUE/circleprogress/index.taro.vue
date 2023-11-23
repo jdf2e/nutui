@@ -12,7 +12,7 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { computed, ref, watch, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { CircleProgressStrokeLinecap } from './types';
 const { create } = createComponent('circle-progress');
 interface Item {

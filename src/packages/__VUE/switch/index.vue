@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Loading1 } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('switch');
 

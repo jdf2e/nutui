@@ -38,7 +38,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, ref, onMounted, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import NutForm from '../form/index.vue';
 import NutFormItem from '../formitem/index.vue';
 import NutRadio from '../radio/index.vue';

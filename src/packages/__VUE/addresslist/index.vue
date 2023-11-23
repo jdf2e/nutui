@@ -37,12 +37,11 @@
 </template>
 <script lang="ts">
 import { reactive, onMounted, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('address-list');
 import GeneralShell from './components/GeneralShell.vue';
 import { floatData } from '@/packages/utils/util';
 import NutButton from '../button/index.vue';
-import { useLocale } from '@/packages/utils';
 
 const cN = 'NutAddressList';
 export default create({

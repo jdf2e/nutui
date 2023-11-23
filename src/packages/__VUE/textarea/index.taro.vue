@@ -33,9 +33,8 @@
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import Taro from '@tarojs/taro';
-import { useLocale } from '@/packages/utils';
 
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean;

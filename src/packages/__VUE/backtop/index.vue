@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('backtop');
 import requestAniFrame, { cancelRaf } from '@/packages/utils/raf';
 import { Top } from '@nutui/icons-vue';

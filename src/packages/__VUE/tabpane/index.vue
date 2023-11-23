@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { computed, CSSProperties, inject } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('tab-pane');
 
 export default create({

@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import { onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('barrage');
 
 export default create({

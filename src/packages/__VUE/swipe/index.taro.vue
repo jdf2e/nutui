@@ -28,7 +28,7 @@
 <script lang="ts">
 import { useTouch } from '@/packages/utils/useTouch';
 import { computed, onMounted, inject, watch, reactive, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';

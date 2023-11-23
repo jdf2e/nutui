@@ -48,9 +48,9 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { JoySmile } from '@nutui/icons-vue-taro';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { TypeOfFun } from '@/packages/utils/util';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';

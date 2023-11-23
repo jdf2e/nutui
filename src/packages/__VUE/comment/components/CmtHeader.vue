@@ -32,7 +32,7 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('comment-header');
 import NutRate from '../../rate/index.vue';
 

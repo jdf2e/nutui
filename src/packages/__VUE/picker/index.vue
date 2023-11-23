@@ -34,11 +34,10 @@
 </template>
 <script lang="ts">
 import { ref, computed, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { usePicker } from './usePicker';
 import NutPickerColumn from './Column.vue';
 import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('picker');
 
 const cN = 'NutPicker';

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('image');
 export default create({
   props: {

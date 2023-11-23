@@ -1,7 +1,7 @@
 import ImagePreview from './index.vue';
 import { Component, h, nextTick } from 'vue';
 import { ImageInterface } from './types';
-import { CreateComponent } from '@/packages/utils/create';
+import { CreateComponent } from '@/packages/utils';
 import { Interceptor } from '@/packages/utils/util';
 import NutPopup from '../popup/index.vue';
 import NutVideo from '../video/index.vue';

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, reactive, inject, getCurrentInstance, onUnmounted, ComputedRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { IStyle } from './type';
 const { create } = createComponent('swiper-item');

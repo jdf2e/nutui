@@ -39,7 +39,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';

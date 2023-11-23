@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import NutAvatar from '../avatar/index.vue';
 import { AvatarShape } from '../avatar/types';
 import { CSSProperties, PropType, computed, toRefs } from 'vue';

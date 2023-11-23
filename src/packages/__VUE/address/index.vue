@@ -123,12 +123,11 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, PropType } from 'vue';
 import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { AddressData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
 import NutElevator from '../elevator/index.vue';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('address');
 const cN = 'NutAddress';

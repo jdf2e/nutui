@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { onMounted, provide, reactive, toRefs, ref, watch, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('tabbar');
 export default create({
   props: {

@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import { computed, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from '@/packages/utils';
+import { pxCheck } from '@/packages/utils';
 import { useInject } from '@/packages/utils/useRelation/useInject';
 import { GRID_KEY, GridProps } from '../grid/common';
 const { create, componentName } = createComponent('grid-item');

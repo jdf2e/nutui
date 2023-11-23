@@ -52,7 +52,7 @@
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { popupProps } from '../popup/props';
 const { create } = createComponent('cascader');
 import NutCascaderItem from './cascader-item.taro.vue';

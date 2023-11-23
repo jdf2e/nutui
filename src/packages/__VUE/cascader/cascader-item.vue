@@ -30,14 +30,13 @@
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue';
 import NutTabs from '../tabs/index.vue';
 import NutTabPane from '../tabpane/index.vue';
 import Tree from './tree';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('cascader-item');
 
 export default create({

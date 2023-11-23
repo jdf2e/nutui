@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { onMounted, computed, toRefs, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Left } from '@nutui/icons-vue-taro';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('navbar');

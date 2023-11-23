@@ -91,9 +91,9 @@ import {
   Slots
 } from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('noticebar');
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { PropType } from 'vue';
 
 interface StateProps {

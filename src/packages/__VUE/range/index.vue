@@ -75,7 +75,7 @@
 </template>
 <script lang="ts">
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';

@@ -7,7 +7,7 @@ var demoModel = function (nameLc) {
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { componentName, create } = createComponent('${nameLc}');
 export default create({
   props: {
@@ -49,7 +49,7 @@ export default create({
 </template>
 <script setup lang="ts">
 import { defineComponent } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTranslate } from '@/sites/utils';
 const translate = useTranslate({
   'zh-CN': {

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { onMounted, onDeactivated, onActivated, reactive, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import requestAniFrame from '@/packages/utils/raf';
 const { create } = createComponent('drag');
 export default create({

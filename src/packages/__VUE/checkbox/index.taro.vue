@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create, componentName } = createComponent('checkbox');
 import { component } from './common';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue-taro';

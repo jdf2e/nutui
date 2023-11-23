@@ -23,13 +23,12 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, onUnmounted, reactive, onActivated, onDeactivated, ref, watch, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('infinite-loading');
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import requestAniFrame from '@/packages/utils/raf';
 import { getScrollTopRoot } from '@/packages/utils/util';
 import { Loading } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils';
 
 const cN = 'NutInfiniteLoading';
 

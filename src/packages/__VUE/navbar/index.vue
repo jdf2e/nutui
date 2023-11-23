@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { onMounted, computed, toRefs, ref, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Left } from '@nutui/icons-vue';
 const { componentName, create } = createComponent('navbar');
 export default create({

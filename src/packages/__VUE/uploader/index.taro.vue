@@ -72,7 +72,7 @@
 
 <script lang="ts">
 import { PropType, reactive, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
@@ -80,7 +80,6 @@ import NutProgress from '../progress/index.taro.vue';
 import NutButton from '../button/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';

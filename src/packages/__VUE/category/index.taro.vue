@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('category');
 
 export type CategoryType = {

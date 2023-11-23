@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { CSSProperties, PropType, computed, watchEffect, ComputedRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useLockScroll } from '@/packages/utils/useLockScroll';
 const { componentName, create } = createComponent('overlay');
 

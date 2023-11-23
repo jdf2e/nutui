@@ -80,7 +80,7 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { SliderValue } from './type';

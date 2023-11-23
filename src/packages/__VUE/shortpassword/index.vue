@@ -36,10 +36,9 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutPopup from '../popup/index.vue';
 import { Tips } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('short-password');
 
 const cN = 'NutShortPassword';

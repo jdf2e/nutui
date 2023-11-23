@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 import { useRect } from '@/packages/utils/useRect';
 const { create } = createComponent('list');

@@ -18,7 +18,7 @@
 <script lang="ts">
 import { ref, onMounted } from 'vue';
 import { TypeOfFun } from '@/packages/utils/util';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import NutInputNumber from '../../inputnumber/index.taro.vue';
 const { create } = createComponent('sku-stepper');
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('icon');
 export default create({});
 </script>

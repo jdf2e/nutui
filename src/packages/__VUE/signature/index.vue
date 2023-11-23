@@ -11,9 +11,8 @@
 </template>
 <script lang="ts">
 import { ref, reactive, onMounted, computed, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutButton from '../button/index.vue';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('signature');
 
 const cN = 'NutSignature';

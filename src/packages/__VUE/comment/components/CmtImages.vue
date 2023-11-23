@@ -33,7 +33,7 @@
 <script lang="ts">
 import { ref, watch, onMounted, PropType } from 'vue';
 
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('comment-images');
 import { Right } from '@nutui/icons-vue';
 

@@ -43,7 +43,7 @@
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
 import NutButton from '../button/index.vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import type { AvatarCropperToolbarPosition } from './types';
 const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';

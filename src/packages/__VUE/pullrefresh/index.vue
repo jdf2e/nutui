@@ -20,14 +20,13 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 const { create } = createComponent('pull-refresh');
 import { useTouch } from '@/packages/utils/useTouch';
 import { getScrollTopRoot } from '@/packages/utils/util';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { useScrollParent } from '@/packages/utils/useScrollParent';
 import { Loading } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils';
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
 

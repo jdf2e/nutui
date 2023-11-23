@@ -49,7 +49,7 @@
 import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
 import { popupProps } from '../popup/props';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('cascader');
 import NutCascaderItem from './cascader-item.vue';
 import NutPopup from '../popup/index.vue';

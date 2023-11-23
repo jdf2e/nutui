@@ -32,10 +32,9 @@
 </template>
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutInputNumber from '../inputnumber/index.taro.vue';
 import type { PropType } from 'vue';
-import { useLocale } from '@/packages/utils';
 
 export interface dataList {
   price: string | number;

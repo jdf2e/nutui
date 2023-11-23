@@ -61,7 +61,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { Service } from '@nutui/icons-vue';
 import NutRange from '../range/index.vue';
 const { create } = createComponent('audio');

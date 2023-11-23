@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, computed, CSSProperties, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch';
 import { preventDefault, clamp } from '@/packages/utils/util';
 import { ImageInterface } from './types';

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { DividerDirection, DividerPosition } from './types';
 const { componentName, create } = createComponent('divider');
 

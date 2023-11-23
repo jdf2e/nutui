@@ -36,10 +36,9 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutPopup from '../popup/index.taro.vue';
 import { Tips } from '@nutui/icons-vue-taro';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('short-password');
 import { eventCenter, getCurrentInstance } from '@tarojs/taro';
 

@@ -6,7 +6,7 @@
   </form>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { component } from './common';
 import NutCellGroup from '../cellgroup/index.vue';
 const { create } = createComponent('form');

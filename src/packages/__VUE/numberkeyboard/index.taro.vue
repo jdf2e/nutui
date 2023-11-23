@@ -78,9 +78,8 @@
 
 <script lang="ts">
 import { computed, ref, watch, Ref, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import NutPopup from '../popup/index.taro.vue';
-import { useLocale } from '@/packages/utils';
 const { create } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;

@@ -58,9 +58,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted, Ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent, useLocale } from '@/packages/utils';
 import { throttle } from '@/packages/utils/throttle';
-import { useLocale } from '@/packages/utils';
 
 const { create } = createComponent('video');
 const cN = 'NutVideo';

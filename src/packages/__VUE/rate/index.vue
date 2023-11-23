@@ -51,7 +51,7 @@
 import { Ref, ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '@/packages/utils';
 import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('rate');
 export default create({

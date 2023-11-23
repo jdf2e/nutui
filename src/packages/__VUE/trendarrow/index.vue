@@ -17,7 +17,7 @@
 <script lang="ts">
 import { reactive, toRefs, computed } from 'vue';
 import { myFixed } from '@/packages/utils/util';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { TriangleUp, TriangleDown } from '@nutui/icons-vue';
 const { create } = createComponent('trend-arrow');
 

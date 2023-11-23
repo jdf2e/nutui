@@ -25,7 +25,7 @@
 </template>
 <script lang="ts">
 import { reactive, provide, computed, ref, onMounted, onUnmounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
 import { ArrowUp2, ArrowDown2 } from '@nutui/icons-vue';

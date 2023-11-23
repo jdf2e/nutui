@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { ref, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 const { create } = createComponent('sku-select');
 
 interface SkuInfo {

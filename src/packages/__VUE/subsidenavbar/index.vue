@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
 import { computed, onMounted, reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '@/packages/utils';
 import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue';
 const { create } = createComponent('sub-side-navbar');
 export default create({
