@@ -419,6 +419,7 @@ const addressModule = reactive({
 | --- | --- | --- | --- |
 | model-value | 表单数据对象(使用表单校验时，_必填_) | object |  |
 | rules | 统一配置每个 `FormItem` 的 `rules` | { prop: FormItemRule[] } | `{}` |
+| disabled | 禁用表单下的所有数据录入组件 | boolean | `false` |
 
 ### Form Events
 

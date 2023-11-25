@@ -424,6 +424,7 @@ const addressModule = reactive({
 | --- | --- | --- | --- |
 | model-value | Form data object (required when using form verification) | object |  |
 | rules | Unified configuration FormItem attr rules | { prop: FormItemRule[] } | `{}` |
+| disabled | Disable all data entry components under the form | boolean | `false` |
 
 ### Form Events
 

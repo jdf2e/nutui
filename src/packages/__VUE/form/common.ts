@@ -1,7 +1,15 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
-import { computed, PropType, provide, reactive, watch } from 'vue';
-import { FormItemRule } from '../formitem/types';
-import { ErrorMessage, FormRule, FormRules } from './types';
+import { computed, inject, provide, reactive, unref, watch } from 'vue';
+import { useProp } from '@/packages/utils/useProp';
+import type { MaybeRef, PropType } from 'vue';
+import type { FormItemRule } from '../formitem/types';
+import type { ErrorMessage, FormRule, FormRules } from './types';
+
+export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
+  const disabled = useProp<boolean>('disabled');
+  const parent = inject('NutFormParent', null) as any;
+  return computed(() => disabled.value || unref(fallback) || parent?.props?.disabled || false);
+};
 
 export const component = (components: any) => {
   return {
@@ -13,6 +21,10 @@ export const component = (components: any) => {
       rules: {
         type: Object as PropType<FormRules>,
         default: () => ({})
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
     components,
