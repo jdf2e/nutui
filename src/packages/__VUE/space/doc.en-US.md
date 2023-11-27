@@ -6,7 +6,7 @@ Sets the spacing between elements. Available in `NutUI` >= 4.2.0.
 
 ### Install
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Space } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ The Space component sets a certain spacing between the subcomponents, the defaul
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space>
     <nut-button type="primary">Button</nut-button>
@@ -39,7 +39,7 @@ By setting the direction property to vertical, you can set the spacing of the ve
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space direction="vertical" fill>
     <nut-button type="primary" block>Button</nut-button>
@@ -59,7 +59,7 @@ You can also set css variables -nut-space-gap control, priority: gutter>css Vari
 
 :::demo
 
-```html
+```vue
 <template>
   <!-- gutter -->
   <nut-space :gutter="20">
@@ -88,7 +88,7 @@ In horizontal mode, the wrap property controls whether child elements are wrappe
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space wrap>
     <nut-button type="primary" block>Button</nut-button>
@@ -127,8 +127,8 @@ In horizontal mode, the wrap property controls whether child elements are wrappe
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer
-to [ConfigProvider component](#/zh-CN/component/configprovider)。
+to [ConfigProvider component](#/en-US/component/configprovider)。
 
 | Name | Default | Description |
 | --- | --- | --- |
-| \--nutui-space-gap | `8px` | Spacing size |
+| \--nut-space-gap | `8px` | Spacing size |
