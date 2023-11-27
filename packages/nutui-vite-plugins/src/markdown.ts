@@ -24,7 +24,7 @@ const TransformMarkdownDemo = (options: MarkdownOptions): Plugin => {
     transform(src, id) {
       if (fileRegex.test(id)) {
         return {
-          code: src.replace(/> demo: ([0-9a-z .]*)[\n|\r\n]/g, (_match, $1: string) => {
+          code: src.replace(/> demo: ([0-9a-zA-Z .]*)[\n|\r\n]/g, (_match, $1: string) => {
             const [left, right] = $1.split(' ');
             let code = '';
             try {

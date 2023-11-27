@@ -89,11 +89,13 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: CalendarCardValue];
-  dayClick: [day: CalendarCardDay];
-  pageChange: [data: CalendarCardMonth];
-}>();
+// const emit = defineEmits<{
+//   'update:modelValue': [value: CalendarCardValue];
+//   change: [value: CalendarCardValue];
+//   dayClick: [day: CalendarCardDay];
+//   pageChange: [data: CalendarCardMonth];
+// }>();
+const emit = defineEmits(['update:modelValue', 'change', 'dayClick', 'pageChange']);
 
 defineSlots<{
   default(props: { day: CalendarCardDay }): any;
@@ -168,9 +170,11 @@ const change = (v: CalendarCardDay[]) => {
   if (props.type === 'single') {
     const date = convertDayToDate(v[0]);
     emit('update:modelValue', date);
+    emit('change', date);
   } else if (props.type === 'multiple' || props.type === 'range' || props.type === 'week') {
     const val = rangeTovalue(v) as CalendarCardValue;
     emit('update:modelValue', val);
+    emit('change', val);
   }
 };
 
@@ -307,6 +311,32 @@ const getClasses = (day: CalendarCardDay) => {
 };
 
 const jumpTo = (y: number, m: number) => {
+  if (props.startDate) {
+    const c = compareDay(
+      {
+        year: y,
+        month: m,
+        date: 31
+      },
+      convertDateToDay(props.startDate) as CalendarCardDay
+    );
+    if (c && c < 0) {
+      return;
+    }
+  }
+  if (props.endDate) {
+    const c = compareDay(
+      {
+        year: y,
+        month: m,
+        date: 1
+      },
+      convertDateToDay(props.endDate) as CalendarCardDay
+    );
+    if (c && c > 0) {
+      return;
+    }
+  }
   month.value = {
     year: y,
     month: m
@@ -320,10 +350,7 @@ const jump = (step = 1) => {
     newMonth = 12;
   }
   const newYear = Math.floor((current + step - newMonth) / 12);
-  month.value = {
-    year: newYear,
-    month: newMonth
-  };
+  jumpTo(newYear, newMonth);
 };
 
 const handleDayClick = (day: CalendarCardDay) => {
