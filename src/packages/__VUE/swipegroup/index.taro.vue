@@ -6,6 +6,7 @@
 <script lang="ts">
 import { provide, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { SWIPE_KEY } from '../swipe/types';
 const { create } = createComponent('swipe-group');
 export default create({
   props: {
@@ -20,7 +21,7 @@ export default create({
     const update = (n: string) => {
       name.value = n;
     };
-    provide('swipeGroup', {
+    provide(SWIPE_KEY, {
       update,
       lock: props.lock,
       name
