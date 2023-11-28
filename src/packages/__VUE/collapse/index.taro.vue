@@ -1,11 +1,13 @@
 <template>
-  <view ref="collapseDom" class="nut-collapse">
+  <view ref="nutCollapseRef" class="nut-collapse">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { provide, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { useChildren } from '@/packages/utils';
+import { COLLAPSE_KEY } from './types';
 const { create } = createComponent('collapse');
 export default create({
   props: {
@@ -20,7 +22,7 @@ export default create({
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
-    const collapseDom: any = ref(null);
+    const nutCollapseRef = ref(null);
     const innerValue = ref(props.modelValue || (props.accordion ? '' : []));
 
     watch(
@@ -67,12 +69,10 @@ export default create({
       return false;
     };
 
-    provide('collapseParent', {
-      updateVal,
-      isExpanded
-    });
+    const { linkChildren } = useChildren(COLLAPSE_KEY);
+    linkChildren({ updateVal, isExpanded });
 
-    return { collapseDom };
+    return { nutCollapseRef };
   }
 });
 </script>
