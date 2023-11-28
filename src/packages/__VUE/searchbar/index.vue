@@ -59,7 +59,7 @@ import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from '
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue';
 import { TextAlign } from './type';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('searchbar');
 
 const cN = 'NutSearchbar';

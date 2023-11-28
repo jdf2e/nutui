@@ -16,7 +16,7 @@ import { useRouter } from '@/packages/utils/useRoute';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { GRID_KEY } from '../grid/common';
-import { useParent } from '@/packages/utils';
+import { useParent } from '@/packages/utils/useRelation';
 const { create, componentName } = createComponent('grid-item');
 
 export default create({

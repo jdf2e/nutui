@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('address-list-item');
 import { Del, Edit } from '@nutui/icons-vue-taro';
 

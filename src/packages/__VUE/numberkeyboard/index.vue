@@ -80,7 +80,7 @@
 import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;

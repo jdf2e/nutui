@@ -81,7 +81,7 @@ import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarState } from './type';
 import { useExpose } from '@/packages/utils/useExpose/index';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('calendar-item');
 const cN = 'NutCalendarItem';

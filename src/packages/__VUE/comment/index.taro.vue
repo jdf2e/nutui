@@ -47,7 +47,7 @@ import { createComponent } from '@/packages/utils/create';
 import CommentHeader from './components/CmtHeader.taro.vue';
 import CommentImages from './components/CmtImages.taro.vue';
 import CommentBottom from './components/CmtBottom.taro.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 interface VideosType {
   id?: number | string;

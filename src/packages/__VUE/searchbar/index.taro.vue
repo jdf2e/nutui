@@ -57,7 +57,7 @@ import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSPropertie
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
 import { TextAlign } from './type';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('searchbar');
 export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 

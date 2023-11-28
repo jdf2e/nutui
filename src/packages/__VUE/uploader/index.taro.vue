@@ -80,7 +80,7 @@ import NutProgress from '../progress/index.taro.vue';
 import NutButton from '../button/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';

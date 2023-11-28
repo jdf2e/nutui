@@ -42,7 +42,7 @@ const { create } = createComponent('address-list');
 import GeneralShell from './components/GeneralShell.taro.vue';
 import { floatData } from '@/packages/utils/util';
 import NutButton from '../button/index.taro.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const cN = 'NutAddressList';
 export default create({

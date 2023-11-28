@@ -38,7 +38,7 @@ import { createComponent } from '@/packages/utils/create';
 import { usePicker } from './usePicker';
 import NutPickerColumn from './Column.vue';
 import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('picker');
 
 const cN = 'NutPicker';

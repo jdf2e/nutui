@@ -13,7 +13,7 @@
 import { ref, reactive, onMounted, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button/index.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('signature');
 
 const cN = 'NutSignature';

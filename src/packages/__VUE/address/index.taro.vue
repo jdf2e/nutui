@@ -138,7 +138,7 @@ import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
 import NutElevator from '../elevator/index.taro.vue';
 import NutScrollView from '../scroll-view/index.taro.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const cN = 'NutAddress';
 const { create } = createComponent('address');

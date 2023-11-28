@@ -26,7 +26,7 @@
 import { toRefs, ref, useSlots, reactive, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button/index.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('audio-operate');
 const cN = 'NutAudioOperate';

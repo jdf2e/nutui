@@ -4,7 +4,7 @@ import { usePicker } from './usePicker';
 import NutPickerColumn from './Column.vue';
 import Taro from '@tarojs/taro';
 import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const cN = 'NutPicker';
 

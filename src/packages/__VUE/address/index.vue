@@ -128,7 +128,7 @@ import { AddressData, CustomRegionData, existRegionData } from './type';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
 import NutElevator from '../elevator/index.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('address');
 const cN = 'NutAddress';

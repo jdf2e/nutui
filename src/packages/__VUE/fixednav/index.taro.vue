@@ -31,7 +31,7 @@ import { PropType, computed, ref } from 'vue';
 import { Left } from '@nutui/icons-vue-taro';
 import NutOverlay from '../overlay/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('fixed-nav');
 
 const cN = 'NutFixedNav';

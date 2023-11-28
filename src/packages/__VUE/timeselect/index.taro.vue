@@ -32,7 +32,7 @@
 import { computed, provide } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('time-select');
 
 const cN = 'NutTimeSelect';

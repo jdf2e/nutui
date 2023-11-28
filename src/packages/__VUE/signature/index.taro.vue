@@ -23,7 +23,7 @@ import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button/index.taro.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('signature');
 
 const cN = 'NutSignature';

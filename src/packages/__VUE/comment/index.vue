@@ -47,7 +47,7 @@ import { createComponent } from '@/packages/utils/create';
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
 import CommentBottom from './components/CmtBottom.vue';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 interface VideosType {
   id?: number | string;

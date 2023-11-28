@@ -25,7 +25,7 @@
 <script lang="ts">
 import { watch, ref, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 export interface InputTarget extends HTMLInputElement {
   composing: boolean;

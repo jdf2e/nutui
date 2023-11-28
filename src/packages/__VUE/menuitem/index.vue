@@ -56,7 +56,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('menu-item');
 import NutPopup from '../popup/index.vue';
 import { Check } from '@nutui/icons-vue';
-import { useParent } from '@/packages/utils';
+import { useParent } from '@/packages/utils/useRelation';
 import { MENU_KEY, MenuItemOption } from '../menu/types';
 export default create({
   props: {

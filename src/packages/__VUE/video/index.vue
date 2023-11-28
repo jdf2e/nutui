@@ -60,7 +60,7 @@
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { throttle } from '@/packages/utils/throttle';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('video');
 const cN = 'NutVideo';

@@ -37,7 +37,7 @@ import { Loading, Checklist } from '@nutui/icons-vue';
 import NutTabs from '../tabs/index.vue';
 import NutTabPane from '../tabpane/index.vue';
 import Tree from './tree';
-import { useLocale } from '@/packages/utils';
+import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('cascader-item');
 
 export default create({
