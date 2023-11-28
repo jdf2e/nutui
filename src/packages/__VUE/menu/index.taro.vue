@@ -30,7 +30,7 @@ import Taro, { usePageScroll } from '@tarojs/taro';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('menu');
 import { RectUp, RectDown } from '@nutui/icons-vue-taro';
-import { useChildren } from '@/packages/utils/useRelation';
+import { useChildren } from '@/packages/utils';
 import { MENU_KEY, MenuDirection } from './types';
 
 export default create({

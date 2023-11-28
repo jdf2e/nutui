@@ -2,7 +2,7 @@ import { getPropByPath, isPromise } from '@/packages/utils/util';
 import { computed, PropType, provide, reactive, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule, FormRules, FORM_KEY } from './types';
-import { useChildren } from '@/packages/utils/useRelation';
+import { useChildren } from '@/packages/utils';
 
 export const component = (components: any) => {
   return {

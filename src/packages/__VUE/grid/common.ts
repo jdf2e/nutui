@@ -2,7 +2,7 @@ import { h, computed } from 'vue';
 import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { useChildren } from '@/packages/utils/useRelation';
+import { useChildren } from '@/packages/utils';
 
 const { componentName } = createComponent('grid');
 

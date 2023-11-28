@@ -30,7 +30,7 @@ import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
 import { RectUp, RectDown } from '@nutui/icons-vue';
 import { MENU_KEY, MenuDirection } from './types';
-import { useChildren } from '@/packages/utils/useRelation';
+import { useChildren } from '@/packages/utils';
 export default create({
   components: {
     RectUp,

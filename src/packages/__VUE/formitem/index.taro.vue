@@ -29,7 +29,7 @@ import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
 import NutCell from '../cell/index.taro.vue';
 import { FORM_KEY } from '../form/types';
-import { useParent } from '@/packages/utils/useRelation';
+import { useParent } from '@/packages/utils';
 const { create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
