@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, CSSProperties } from 'vue';
+import { computed, inject, PropType, CSSProperties } from 'vue';
 import type { FormItemRule } from './types';
 import { createComponent } from '@/packages/utils/create';
 import NutCell from '../cell/index.vue';
@@ -92,9 +92,6 @@ export default create({
     });
 
     const parent = inject('formErrorTip') as any;
-    provide('form', {
-      props
-    });
 
     const labelStyle = computed(() => {
       return {
