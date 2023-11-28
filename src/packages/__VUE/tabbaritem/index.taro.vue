@@ -34,6 +34,7 @@
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { Component, ComponentInternalInstance, computed, PropType, getCurrentInstance, inject, reactive } from 'vue';
 import NutBadge from '../badge/index.taro.vue';
+import { TABBAR_KEY } from '../tabbar/types';
 const { create } = createComponent('tabbar-item');
 export default create({
   components: {
@@ -62,7 +63,7 @@ export default create({
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };
-    const parent: any = inject('parent');
+    const parent: any = inject(TABBAR_KEY);
     const state = reactive({
       unactiveColor: parent.unactiveColor, // 未选中的颜色
       activeColor: parent.activeColor, // 选中的颜色
