@@ -5,6 +5,7 @@ const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { ButtonSize } from './type';
+import { RADIO_KEY } from './types';
 
 export default create({
   components: {
@@ -37,6 +38,7 @@ export default create({
     const { size } = toRefs(props);
 
     let parent: any = inject('parent', null);
+    let parent: any = inject(RADIO_KEY, null);
 
     const isCurValue = computed(() => {
       return parent.label.value === props.label;

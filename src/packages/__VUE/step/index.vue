@@ -29,6 +29,7 @@
 <script lang="ts">
 import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { STEPS_KEY } from '../steps/types';
 const { create, componentName } = createComponent('step');
 
 export default create({
@@ -46,7 +47,7 @@ export default create({
 
   setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-    const parent: any = inject('parent');
+    const parent: any = inject(STEPS_KEY);
     parent['relation'](proxy);
 
     const state = reactive({

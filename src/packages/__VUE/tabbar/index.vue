@@ -13,6 +13,7 @@
 <script lang="ts">
 import { onMounted, provide, reactive, toRefs, ref, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { TABBAR_KEY } from './types';
 const { create } = createComponent('tabbar');
 export default create({
   props: {
@@ -59,14 +60,14 @@ export default create({
       parentData.modelValue = active;
       emit('tabSwitch', parentData.children[index], active);
     }
-    let parentData = reactive({
+    const parentData = reactive({
       children: mdValue.children,
       modelValue: mdValue.val,
       unactiveColor: props.unactiveColor,
       activeColor: props.activeColor,
       changeIndex
     });
-    provide('parent', parentData);
+    provide(TABBAR_KEY, parentData);
     watch(
       () => props.modelValue,
       (value) => {
