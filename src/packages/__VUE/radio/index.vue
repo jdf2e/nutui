@@ -1,9 +1,10 @@
 <script lang="ts">
-import { Component, computed, h, inject } from 'vue';
+import { Component, computed, h, inject, PropType, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { ButtonSize } from './type';
 
 export default create({
   components: {
@@ -26,9 +27,15 @@ export default create({
     iconSize: {
       type: [String, Number],
       default: ''
+    },
+    size: {
+      type: String as PropType<ButtonSize>,
+      default: 'normal'
     }
   },
   setup(props, { slots }) {
+    const { size } = toRefs(props);
+
     let parent: any = inject('parent', null);
 
     const isCurValue = computed(() => {
@@ -72,9 +79,9 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
-            props.disabled ? `${componentName}__button--disabled` : ''
-          }`
+          class: `${componentName}__button ${
+            isCurValue.value && `${componentName}__button--active`
+          } ${componentName}__button--${size.value} ${props.disabled ? `${componentName}__button--disabled` : ''}`
         },
         slots.default?.()
       );
