@@ -4,6 +4,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { RADIO_KEY } from './types';
 
 export default create({
   components: {
@@ -29,7 +30,7 @@ export default create({
     }
   },
   setup(props, { slots }) {
-    let parent: any = inject('parent', null);
+    let parent: any = inject(RADIO_KEY, null);
 
     const isCurValue = computed(() => {
       return parent.label.value === props.label;
