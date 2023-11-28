@@ -2,11 +2,11 @@ import { h, computed } from 'vue';
 import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { useChildren } from '@/packages/utils';
+import { useProvide } from '@/packages/utils/useRelation/useProvide';
 
 const { componentName } = createComponent('grid');
 
-export const GRID_KEY = Symbol('nut-grid');
+export const GRID_KEY = Symbol('grid');
 
 export type GridDirection = 'horizontal' | 'vertical';
 
@@ -57,8 +57,7 @@ export type GridProps = ExtractPropTypes<typeof gridProps>;
 export const component = {
   props: gridProps,
   setup(props: GridProps, { slots }: SetupContext): RenderFunction {
-    const { linkChildren } = useChildren(GRID_KEY);
-    linkChildren({ props });
+    useProvide(GRID_KEY, `NutGridItem`)({ props });
 
     const rootClass = computed(() => {
       const prefixCls = componentName;
