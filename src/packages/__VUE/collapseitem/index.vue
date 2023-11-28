@@ -44,10 +44,9 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, inject } from 'vue';
 import { DownArrow } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import { useParent } from '@/packages/utils';
 import { COLLAPSE_KEY } from '../collapse/types';
 const { create } = createComponent('collapse-item');
 
@@ -95,7 +94,7 @@ export default create({
     const wrapperRef: any = ref(null);
     const contentRef: any = ref(null);
 
-    const { parent } = useParent(COLLAPSE_KEY);
+    const parent = inject(COLLAPSE_KEY);
 
     const classes = computed(() => {
       const prefixCls = 'nut-collapse-item';
@@ -115,7 +114,7 @@ export default create({
     const wrapperHeight = ref(expanded.value ? 'auto' : '0px');
 
     const toggle = () => {
-      parent.updateVal(props.name);
+      parent && parent.updateVal(props.name);
     };
 
     const onTransitionEnd = () => {

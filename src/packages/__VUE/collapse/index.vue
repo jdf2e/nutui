@@ -4,9 +4,8 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch } from 'vue';
+import { provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useChildren } from '@/packages/utils';
 import { COLLAPSE_KEY } from './types';
 const { create } = createComponent('collapse');
 export default create({
@@ -69,8 +68,10 @@ export default create({
       return false;
     };
 
-    const { linkChildren } = useChildren(COLLAPSE_KEY);
-    linkChildren({ updateVal, isExpanded });
+    provide(COLLAPSE_KEY, {
+      updateVal,
+      isExpanded
+    });
 
     return { nutCollapseRef };
   }

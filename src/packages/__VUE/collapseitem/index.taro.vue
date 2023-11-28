@@ -46,11 +46,10 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, inject } from 'vue';
 import { DownArrow } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
-import { useParent } from '@/packages/utils';
 import { COLLAPSE_KEY } from '../collapse/types';
 const { create } = createComponent('collapse-item');
 
@@ -100,7 +99,7 @@ export default create({
     const currentHeight = ref<string>('auto');
     const inAnimation = ref(false);
     const timeoutId = ref<any>('');
-    const { parent } = useParent(COLLAPSE_KEY);
+    const parent = inject(COLLAPSE_KEY);
     const classes = computed(() => {
       const prefixCls = 'nut-collapse-item';
       return {
@@ -154,7 +153,7 @@ export default create({
 
     const handleClick = () => {
       if (!inAnimation.value) {
-        parent.updateVal(props.name);
+        parent && parent.updateVal(props.name);
       }
     };
 
