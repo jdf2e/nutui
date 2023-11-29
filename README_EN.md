@@ -1,30 +1,46 @@
 
 <p align="center">
-    <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
+  <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
 <p align="center">JD-style mobile UI components based on Vue2 & Vue3 that support users to develop H5 and mini-programs.</p>
 
 <p align="center">
-    <a href="http://makeapullrequest.com">
+  <a href="https://github.com/jdf2e/nutui/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
   </a>
+  <a href="https://app.codecov.io/gh/jdf2e/nutui">
     <img src="https://img.shields.io/codecov/c/github/jdf2e/nutui" alt="coverage"/>
+  </a>
+  <a href="https://github.com/jdf2e/nutui/blob/v4/LICENSE">
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
+  </a>
+  <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
-    </a>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
+  </a>
+  <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
-    </a>
+  </a>
 </p>
 <p align="center">
+  <a href="https://github.com/jdf2e/nutui/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/commits">
     <img src="https://img.shields.io/github/commit-activity/m/jdf2e/nutui" alt="GitHub commit activity">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/issues">
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/commits">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/releases">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
+  </a>
+  <a href="https://www.jsdelivr.com/package/npm/@nutui/nutui">
     <img src="https://data.jsdelivr.com/v1/package/npm/@nutui/nutui/badge" alt="jsdelivr">
+  </a>
 </p>
 
 <p align="center">
@@ -69,15 +85,16 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 
 ### Official Ecosystem
 
-| Project | Description |
-| --- | --- |
-| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI H5 |
-| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro |
-| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui` |
-| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui-taro` |
-| [@nutui/touch-emulator](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-touch-emulator) | Using NutUI in desktop browsers |
-| [@nutui/playground](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-playground) | NutUI Playground |
-| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI Demo |
+| Project | Description | Version ｜
+| --- | --- | --- ｜
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI H5 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) ｜
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) ｜
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) ｜
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui-taro` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) ｜
+| [@nutui/touch-emulator](packages/nutui-touch-emulator) | Using NutUI in desktop browsers | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) ｜
+| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | resolver of `unplugin-auto-import` | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) ｜
+| [@nutui/playground](packages/nutui-playground) | NutUI Playground | - |
+| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI Demo | - |
 
 ### Community Ecosystem
 
@@ -137,6 +154,10 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui/graphs/c
 ## Release Notes
 
 [Release](https://github.com/jdf2e/nutui/releases).
+
+## License
+
+[MIT](https://github.com/jdf2e/nutui/blob/v4/LICENSE)
 
 ## GitHub Stargazers
 
