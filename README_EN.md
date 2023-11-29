@@ -85,14 +85,14 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 
 ### Official Ecosystem
 
-| Project | Description | Version ｜
-| --- | --- | --- ｜
-| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI H5 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) ｜
-| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) ｜
-| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) ｜
-| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui-taro` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) ｜
-| [@nutui/touch-emulator](packages/nutui-touch-emulator) | Using NutUI in desktop browsers | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) ｜
-| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | resolver of `unplugin-auto-import` | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) ｜
+| Project | Description | Version |
+| --- | --- | --- |
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI H5 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) |
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) |
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) |
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | icons of `@nutui/nutui-taro` | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) |
+| [@nutui/touch-emulator](packages/nutui-touch-emulator) | Using NutUI in desktop browsers | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) |
+| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | resolver of `unplugin-auto-import` | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) |
 | [@nutui/playground](packages/nutui-playground) | NutUI Playground | - |
 | [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI Demo | - |
 

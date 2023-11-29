@@ -87,14 +87,14 @@
 
 由 NutUI 官方团队维护的项目如下：
 
-| 项目 | 描述 | 版本 ｜
-| --- | --- | --- ｜
-| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI 移动端 H5 版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) ｜
-| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro 多端版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) ｜
-| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) ｜
-| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui-taro` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) ｜
-| [@nutui/touch-emulator](packages/nutui-touch-emulator) | 在桌面端使用 NutUI 的辅助库 | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) ｜
-| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | `unplugin-auto-import` 插件的 reolver 配置 | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) ｜
+| 项目 | 描述 | 版本 |
+| --- | --- | --- |
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI 移动端 H5 版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) |
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro 多端版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) |
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) |
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui-taro` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) |
+| [@nutui/touch-emulator](packages/nutui-touch-emulator) | 在桌面端使用 NutUI 的辅助库 | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) |
+| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | `unplugin-auto-import` 插件的 reolver 配置 | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) |
 | [@nutui/playground](packages/nutui-playground) | NutUI 在线 Playground | - |
 | [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI 官方示例合集 | - |
 
