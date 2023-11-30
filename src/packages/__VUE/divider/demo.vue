@@ -1,52 +1,49 @@
 <template>
   <div class="demo full bg-w">
-    <h2>{{ translate('basic') }}</h2>
-    <nut-divider />
-    <h2>{{ translate('withText') }}</h2>
-    <nut-divider>{{ translate('text') }}</nut-divider>
-    <h2>{{ translate('contentPosition') }}</h2>
-    <nut-divider content-position="left">{{ translate('text') }}</nut-divider>
-    <nut-divider content-position="right">{{ translate('text') }}</nut-divider>
-    <h2>{{ translate('dashed') }}</h2>
-    <nut-divider dashed>{{ translate('text') }}</nut-divider>
-    <h2>{{ translate('customStyle') }}</h2>
-    <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">{{
-      translate('text')
-    }}</nut-divider>
-    <h2>{{ translate('verticalDivider') }}</h2>
-    <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
-      {{ translate('text') }}
-      <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">{{ translate('link') }}</a>
-      <nut-divider direction="vertical" />
-      <a href="#" :style="{ color: '#1989fa' }">{{ translate('link') }}</a>
-    </div>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('text') }}</h2>
+    <Text />
+
+    <h2>{{ t('position') }}</h2>
+    <Position />
+
+    <h2>{{ t('dashed') }}</h2>
+    <Dashed />
+
+    <h2>{{ t('custom') }}</h2>
+    <Custom />
+
+    <h2>{{ t('vertical') }}</h2>
+    <Vertical />
   </div>
 </template>
 
 <script setup lang="ts">
-import NutDivider from './index.vue';
+import Basic from './demo/basic.vue';
+import Text from './demo/text.vue';
+import Position from './demo/position.vue';
+import Dashed from './demo/dashed.vue';
+import Custom from './demo/custom.vue';
+import Vertical from './demo/vertical.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const translate = useTranslate({
+const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
-    withText: '展示文本',
-    contentPosition: '内容位置',
+    text: '展示文本',
+    position: '内容位置',
     dashed: '虚线',
-    customStyle: '自定义样式',
-    verticalDivider: '垂直分割线',
-    text: '文本',
-    link: '链接'
+    custom: '自定义样式',
+    vertical: '垂直分割线'
   },
   'en-US': {
     basic: 'Basic Usage',
-    withText: 'With Text',
-    contentPosition: 'Content Position',
+    text: 'With Text',
+    position: 'Content Position',
     dashed: 'Dashed',
-    customStyle: 'Custom Style',
-    verticalDivider: 'Vertical Divider',
-    text: 'Text',
-    link: 'Link'
+    custom: 'Custom Style',
+    vertical: 'Vertical Divider'
   }
 });
 </script>
