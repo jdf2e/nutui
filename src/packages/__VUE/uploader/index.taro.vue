@@ -408,6 +408,7 @@ export default create({
     };
 
     const onDelete = (file: FileItem, index: number) => {
+      if (disabled.value) return;
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList.value],
