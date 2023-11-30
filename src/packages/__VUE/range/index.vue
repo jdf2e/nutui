@@ -80,6 +80,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
 import { isArray } from '@/packages/utils/util';
 import { SliderValue } from './type';
+import { useFormDisabled } from '../form/common';
 const { componentName, create } = createComponent('range');
 
 export default create({
@@ -130,6 +131,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;
@@ -153,7 +155,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
       };
@@ -291,7 +293,7 @@ export default create({
     };
 
     const onClick = (event: MouseEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -318,7 +320,7 @@ export default create({
     };
 
     const onTouchStart = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -335,7 +337,7 @@ export default create({
     };
 
     const onTouchMove = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -366,7 +368,7 @@ export default create({
     };
 
     const onTouchEnd = () => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       if (dragStatus.value === 'draging') {
@@ -401,7 +403,8 @@ export default create({
       markClassName,
       marksStyle,
       marksList,
-      tickStyle
+      tickStyle,
+      disabled
     };
   }
 });

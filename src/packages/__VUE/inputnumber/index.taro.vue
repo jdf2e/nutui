@@ -42,6 +42,7 @@ import { computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Minus, Plus } from '@nutui/icons-vue-taro';
+import { useFormDisabled } from '../form/common';
 const { componentName, create } = createComponent('input-number');
 export default create({
   components: { Minus, Plus },
@@ -85,11 +86,12 @@ export default create({
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled
+        [`${prefixCls}--disabled`]: disabled.value
       };
     });
     const fixedDecimalPlaces = (v: string | number): string => {
@@ -105,10 +107,10 @@ export default create({
       if (Number(props.modelValue) !== Number(output_value)) emit('change', output_value, event);
     };
     const addAllow = (value = Number(props.modelValue)): boolean => {
-      return value < Number(props.max) && !props.disabled;
+      return value < Number(props.max) && !disabled.value;
     };
     const reduceAllow = (value = Number(props.modelValue)): boolean => {
-      return value > Number(props.min) && !props.disabled;
+      return value > Number(props.min) && !disabled.value;
     };
     const reduce = (event: Event) => {
       emit('reduce', event);
@@ -131,7 +133,7 @@ export default create({
       }
     };
     const focus = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) {
         blur(event);
         return;
@@ -139,7 +141,7 @@ export default create({
       emit('focus', event);
     };
     const blur = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
       let value = Number(input.value);
@@ -175,6 +177,7 @@ export default create({
 
     return {
       classes,
+      disabled,
       change,
       blur,
       focus,

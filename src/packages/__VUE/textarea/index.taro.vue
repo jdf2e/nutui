@@ -36,6 +36,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean;
@@ -92,12 +93,13 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const translate = useLocale(cN);
     const classes = computed(() => {
       const prefixCls = 'nut-textarea';
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled
+        [`${prefixCls}--disabled`]: disabled.value
       };
     });
 
@@ -153,13 +155,13 @@ export default create({
     };
 
     const focus = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) return;
       emit('focus', event);
     };
 
     const blur = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
       let value = input.value;
@@ -287,6 +289,7 @@ export default create({
       textareaRef,
       classes,
       styles,
+      disabled,
       change,
       focus,
       blur,

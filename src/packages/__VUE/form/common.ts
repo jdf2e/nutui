@@ -9,8 +9,9 @@ import type { ErrorMessage, FormRule, FormRules } from './types';
 
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
   const disabled = useProp<boolean>('disabled');
-  const parent = useParent(FORM_KEY) as any;
-  return computed(() => disabled.value || unref(fallback) || parent?.props?.disabled || false);
+  const disable = useProp<boolean>('disable');
+  const { parent } = useParent(FORM_KEY) as any;
+  return computed(() => disabled.value || disable.value || unref(fallback) || parent?.props?.disabled || false);
 };
 
 export const component = (components: any) => {

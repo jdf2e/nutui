@@ -196,7 +196,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled || disabled.value,
+        [`${prefixCls}--disabled`]: disabled.value,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
         [`${prefixCls}--border`]: props.border,
@@ -246,7 +246,7 @@ export default create({
     };
 
     const onFocus = (event: Event) => {
-      if (props.disabled || disabled.value || props.readonly) {
+      if (disabled.value || props.readonly) {
         return;
       }
       active.value = true;
@@ -255,7 +255,7 @@ export default create({
     };
 
     const onBlur = (event: Event) => {
-      if (props.disabled || disabled.value || props.readonly) {
+      if (disabled.value || props.readonly) {
         return;
       }
       setTimeout(() => {
@@ -274,7 +274,7 @@ export default create({
 
     const clear = (event: Event) => {
       event.stopPropagation();
-      if (props.disabled || disabled.value) return;
+      if (disabled.value) return;
       emit('update:modelValue', '', event);
       // emit('change', '', event);
       emit('clear', '', event);
@@ -288,7 +288,7 @@ export default create({
     };
 
     const onClickInput = (event: MouseEvent) => {
-      if (props.disabled || disabled.value) {
+      if (disabled.value) {
         return;
       }
       emit('clickInput', event);

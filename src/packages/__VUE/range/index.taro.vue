@@ -84,6 +84,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { SliderValue } from './type';
+import { useFormDisabled } from '../form/common';
 const { componentName, create } = createComponent('range');
 
 export default create({
@@ -133,6 +134,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;
@@ -156,7 +158,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
       };
@@ -294,7 +296,7 @@ export default create({
     };
 
     const onClick = async (event: any) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       const { min, modelValue } = props;
@@ -332,7 +334,7 @@ export default create({
     };
 
     const onTouchStart = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -351,7 +353,7 @@ export default create({
     };
 
     const onTouchMove = async (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       event.stopPropagation();
@@ -384,7 +386,7 @@ export default create({
     };
 
     const onTouchEnd = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       if (dragStatus.value === 'draging') {
@@ -421,7 +423,8 @@ export default create({
       marksStyle,
       marksList,
       tickStyle,
-      refRandomId
+      refRandomId,
+      disabled
     };
   }
 });

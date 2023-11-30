@@ -79,6 +79,7 @@ import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import NutProgress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';
@@ -143,6 +144,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<Uploader>[]>([]);
@@ -161,7 +163,7 @@ export default create({
         accept: props.accept,
         multiple: props.multiple,
         name: props.name,
-        disabled: props.disabled
+        disabled: disabled.value
       };
 
       if (props.capture) {
@@ -325,7 +327,7 @@ export default create({
     };
 
     const onChange = (event: InputEvent) => {
-      if (props.disabled) {
+      if (props.disabled || disabled.value) {
         return;
       }
       const $el = event.target as HTMLInputElement;

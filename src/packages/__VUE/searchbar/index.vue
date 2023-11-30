@@ -60,6 +60,7 @@ import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue';
 import { TextAlign } from './type';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 const { create } = createComponent('searchbar');
 
 const cN = 'NutSearchbar';
@@ -145,6 +146,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const translate = useLocale(cN);
     const state = reactive({
       active: false
@@ -246,7 +248,8 @@ export default create({
       clickInput,
       leftIconClick,
       rightIconClick,
-      styleSearchbar
+      styleSearchbar,
+      disabled
     };
   }
 });

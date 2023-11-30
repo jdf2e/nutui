@@ -1,6 +1,7 @@
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component, onBeforeUnmount } from 'vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { CHECKBOX_KEY } from './types';
+import { useFormDisabled } from '../form/common';
 
 export const component = (componentName: string, components: Record<string, Component>): any => {
   return {
@@ -37,6 +38,7 @@ export const component = (componentName: string, components: Record<string, Comp
     },
     emits: ['change', 'update:modelValue'],
     setup(props: any, { emit, slots }: any) {
+      const disabled = useFormDisabled();
       const parent: any = inject(CHECKBOX_KEY, null);
       const state = reactive({
         partialSelect: props.indeterminate
@@ -53,7 +55,10 @@ export const component = (componentName: string, components: Record<string, Comp
       });
 
       const pDisabled = computed(() => {
-        return hasParent.value ? (parent.disabled.value ? parent.disabled.value : props.disabled) : props.disabled;
+        return (
+          (hasParent.value ? (parent.disabled.value ? parent.disabled.value : props.disabled) : props.disabled) ||
+          disabled.value
+        );
       });
 
       const checked = computed(() => !!props.modelValue);

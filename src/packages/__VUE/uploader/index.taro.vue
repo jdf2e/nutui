@@ -81,6 +81,7 @@ import NutButton from '../button/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';
@@ -163,6 +164,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const disabled = useFormDisabled();
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<UploaderTaro>[]>([]);
@@ -175,7 +177,7 @@ export default create({
     );
 
     const chooseImage = () => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -416,6 +418,7 @@ export default create({
     return {
       onDelete,
       fileList,
+      disabled,
       chooseImage,
       fileItemClick,
       clearUploadQueue,
