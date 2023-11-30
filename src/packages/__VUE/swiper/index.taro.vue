@@ -46,6 +46,7 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
 import { clamp } from '@/packages/utils/util';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { SWIPER_KEY } from './types';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
@@ -392,7 +393,7 @@ export default create({
       autoplay();
     };
 
-    provide('parent', {
+    provide(SWIPER_KEY, {
       props,
       size,
       relation

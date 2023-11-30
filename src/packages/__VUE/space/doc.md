@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Space } from '@nutui/nutui';
 
@@ -20,7 +20,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space>
     <nut-button type="primary">按钮</nut-button>
@@ -39,7 +39,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space direction="vertical" fill>
     <nut-button type="primary" block>按钮</nut-button>
@@ -59,7 +59,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 :::demo
 
-```html
+```vue
 <template>
   <!-- gutter控制 -->
   <nut-space :gutter="20">
@@ -88,7 +88,7 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 :::demo
 
-```html
+```vue
 <template>
   <nut-space wrap>
     <nut-button type="primary" block>按钮</nut-button>
@@ -130,4 +130,4 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |
-| \--nutui-space-gap | `8px` | 间距大小 |
+| \--nut-space-gap | `8px` | 间距大小 |

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { h, provide, computed, readonly, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { RADIO_KEY } from '../radio/types';
 const { componentName, create } = createComponent('radio-group');
 
 export default create({
@@ -22,7 +23,7 @@ export default create({
   setup(props, { emit, slots }) {
     const updateValue = (value: string | boolean | number) => emit('update:modelValue', value);
 
-    provide('parent', {
+    provide(RADIO_KEY, {
       label: readonly(computed(() => props.modelValue)),
       position: readonly(computed(() => props.textPosition)),
       updateValue

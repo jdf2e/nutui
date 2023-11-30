@@ -1,5 +1,6 @@
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, Component, onBeforeUnmount } from 'vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { CHECKBOX_KEY } from './types';
 
 export const component = (componentName: string, components: Record<string, Component>): any => {
   return {
@@ -36,7 +37,7 @@ export const component = (componentName: string, components: Record<string, Comp
     },
     emits: ['change', 'update:modelValue'],
     setup(props: any, { emit, slots }: any) {
-      const parent: any = inject('parent', null);
+      const parent: any = inject(CHECKBOX_KEY, null);
       const state = reactive({
         partialSelect: props.indeterminate
       });

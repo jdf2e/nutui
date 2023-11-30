@@ -1,13 +1,15 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
-import { computed, inject, provide, reactive, unref, watch } from 'vue';
+import { computed, provide, reactive, unref, watch } from 'vue';
 import { useProp } from '@/packages/utils/useProp';
+import { useChildren, useParent } from '@/packages/utils';
+import { FORM_KEY } from './types';
 import type { MaybeRef, PropType } from 'vue';
 import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules } from './types';
 
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
   const disabled = useProp<boolean>('disabled');
-  const parent = inject('NutFormParent', null) as any;
+  const parent = useParent(FORM_KEY) as any;
   return computed(() => disabled.value || unref(fallback) || parent?.props?.disabled || false);
 };
 
@@ -31,53 +33,7 @@ export const component = (components: any) => {
     emits: ['validate'],
 
     setup(props: any, { emit }: any) {
-      const useChildren = () => {
-        const publicChildren: any[] = reactive([]);
-        const internalChildren: any[] = reactive([]);
-
-        const linkChildren = (value?: any) => {
-          const link = (child: any) => {
-            if (child.proxy) {
-              internalChildren.push(child);
-              publicChildren.push(child.proxy as any);
-            }
-          };
-
-          const removeLink = (child: any) => {
-            if (child.proxy) {
-              let internalIndex = internalChildren.indexOf(child);
-              if (internalIndex > -1) {
-                internalChildren.splice(internalIndex, 1);
-              }
-
-              let publicIndex = publicChildren.indexOf(child.proxy);
-              if (internalIndex > -1) {
-                publicChildren.splice(publicIndex, 1);
-              }
-            }
-          };
-
-          provide(
-            'NutFormParent',
-            Object.assign(
-              {
-                removeLink,
-                link,
-                children: publicChildren,
-                internalChildren
-              },
-              value
-            )
-          );
-        };
-
-        return {
-          children: publicChildren,
-          linkChildren
-        };
-      };
-
-      const { children, linkChildren } = useChildren();
+      const { children, linkChildren } = useChildren(FORM_KEY);
       linkChildren({ props });
 
       const formErrorTip = computed(() => reactive<any>({}));
