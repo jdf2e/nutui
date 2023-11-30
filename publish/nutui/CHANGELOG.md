@@ -1,3 +1,28 @@
+## v4.2.2
+
+`2023-11-24`
+
+Features
+
+- pull-refresh: 新增 complete 状态文案与插槽 (#2636) (#2639) @yi-boide
+- form-item: required 样式支持由 rules 控制 (#2637) (#2640) @yi-boide
+
+Bug Fixes
+
+- input-number: 修复禁用无效问题 (#2680) @iCheng
+- list: 修复滚动滑动触底报错问题 (#2658) @zhangyuanliang
+- swiper: 修复 swiper-item 宽高错误问题 (#2679) @eiinu
+- address: 选择最后一级时 onChange 缺少 value 字段 @eiinu
+- picker: 调整 columns 类型定义 (#2662) @eiinu
+- input: 调整 type 类型定义 @eiinu
+
+Other Changes
+
+- locale: add use-locale (#2642) @eiinu
+- build: adjust dir structure of production (#2654) @eiinu
+- build: componentName kebab-case -> PascalCase @eiinu
+- chore: bump taro v3.6.19 (#2682) @eiinu
+
 ## v4.2.1
 
 `2023-11-10`

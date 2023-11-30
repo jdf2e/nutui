@@ -79,36 +79,32 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('short-password');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      showButtonGroup: '显示按钮组',
-      customPasswordLength: '自定义密码长度',
-      forgetPassword: '忘记密码',
-      errorMessage: '错误提示语',
-      customErrorMsg: '请输入正确密码',
-      onTips: '执行密码忘记逻辑',
-      close: '点击icon关闭弹窗',
-      cancelTips: '点击取消按钮关闭弹窗'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      showButtonGroup: 'Show Button Group',
-      customPasswordLength: 'Custom Password Length',
-      forgetPassword: 'Forget Password',
-      errorMessage: 'Error Message',
-      customErrorMsg: 'Please enter correct password',
-      onTips: 'Execute forgotten password logic',
-      close: 'Click the icon to close the popup',
-      cancelTips: 'Click the Cancel button to close the popup'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    showButtonGroup: '显示按钮组',
+    customPasswordLength: '自定义密码长度',
+    forgetPassword: '忘记密码',
+    errorMessage: '错误提示语',
+    customErrorMsg: '请输入正确密码',
+    onTips: '执行密码忘记逻辑',
+    close: '点击icon关闭弹窗',
+    cancelTips: '点击取消按钮关闭弹窗'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    showButtonGroup: 'Show Button Group',
+    customPasswordLength: 'Custom Password Length',
+    forgetPassword: 'Forget Password',
+    errorMessage: 'Error Message',
+    customErrorMsg: 'Please enter correct password',
+    onTips: 'Execute forgotten password logic',
+    close: 'Click the icon to close the popup',
+    cancelTips: 'Click the Cancel button to close the popup'
+  }
+});
 
 const state = reactive({
   visible1: false,

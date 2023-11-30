@@ -35,29 +35,25 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('price');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title1: '支持三种尺寸：small、normal、large',
-      title2: '不保留小数',
-      title3: '货币符号',
-      title4: '货币符号位置',
-      titleStrike: '划线价',
-      title5: '千位分隔',
-      symbol: '元'
-    },
-    'en-US': {
-      title1: 'Support three sizes：small、normal、large',
-      title2: 'No decimals',
-      title3: 'Currency symbol',
-      title4: 'Currency symbol position',
-      titleStrike: 'Strike Through',
-      title5: 'Separated by thousands',
-      symbol: 'RMB'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title1: '支持三种尺寸：small、normal、large',
+    title2: '不保留小数',
+    title3: '货币符号',
+    title4: '货币符号位置',
+    titleStrike: '划线价',
+    title5: '千位分隔',
+    symbol: '元'
+  },
+  'en-US': {
+    title1: 'Support three sizes：small、normal、large',
+    title2: 'No decimals',
+    title3: 'Currency symbol',
+    title4: 'Currency symbol position',
+    titleStrike: 'Strike Through',
+    title5: 'Separated by thousands',
+    symbol: 'RMB'
+  }
+});
 </script>

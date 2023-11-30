@@ -116,41 +116,38 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref, h } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue';
+import { PopoverLocation } from './type';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '选项配置',
-      title2: '自定义内容',
-      title3: '位置自定义',
-      light: '明朗风格',
-      dark: '暗黑风格',
-      showIcon: '展示图标',
-      disableAction: '禁用选项',
-      content: '自定义内容',
-      contentColor: '自定义颜色',
-      contentTarget: '自定义目标元素'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Option Configuration',
-      title2: 'Custom Content',
-      title3: 'Custom Location',
-      light: 'light',
-      dark: 'dark',
-      showIcon: 'show icon',
-      disableAction: 'disabled',
-      content: 'custom content',
-      contentColor: 'custom color',
-      contentTarget: 'custom target'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '选项配置',
+    title2: '自定义内容',
+    title3: '位置自定义',
+    light: '明朗风格',
+    dark: '暗黑风格',
+    showIcon: '展示图标',
+    disableAction: '禁用选项',
+    content: '自定义内容',
+    contentColor: '自定义颜色',
+    contentTarget: '自定义目标元素'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Option Configuration',
+    title2: 'Custom Content',
+    title3: 'Custom Location',
+    light: 'light',
+    dark: 'dark',
+    showIcon: 'show icon',
+    disableAction: 'disabled',
+    content: 'custom content',
+    contentColor: 'custom color',
+    contentTarget: 'custom target'
+  }
+});
 
 const state = reactive({
   showIcon: false,
@@ -169,7 +166,7 @@ const state = reactive({
   customTarget: false,
   customColor: false
 });
-const curPostion = ref('top');
+const curPostion = ref<PopoverLocation>('top');
 
 const columns = ref([
   { text: 'top', value: 'top' },

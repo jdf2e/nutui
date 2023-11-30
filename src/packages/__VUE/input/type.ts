@@ -26,7 +26,11 @@ export type InputType =
   | 'checkbox'
   | 'password'
   | 'textarea'
-  | 'datetime-local';
+  | 'datetime-local'
+  // weapp
+  | 'idcard'
+  | 'nickname'
+  | 'safe-password';
 
 export type InputRule = {
   pattern?: RegExp;

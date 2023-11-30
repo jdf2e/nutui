@@ -49,26 +49,22 @@
 </template>
 
 <script lang="ts" setup>
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('cell');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title1: '基础用法：默认间距为 8px',
-      title2: '垂直排列',
-      title3: '自定义间距',
-      title4: '自动换行',
-      btn: '按钮'
-    },
-    'en-US': {
-      title1: 'Grammar and Usage：The default spacing is 8px',
-      title2: 'Vertical Alignment',
-      title3: 'Custom spacing',
-      title4: 'word wrap',
-      btn: 'Button'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title1: '基础用法：默认间距为 8px',
+    title2: '垂直排列',
+    title3: '自定义间距',
+    title4: '自动换行',
+    btn: '按钮'
+  },
+  'en-US': {
+    title1: 'Grammar and Usage：The default spacing is 8px',
+    title2: 'Vertical Alignment',
+    title3: 'Custom spacing',
+    title4: 'word wrap',
+    btn: 'Button'
+  }
+});
 </script>

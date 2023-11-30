@@ -94,6 +94,7 @@ import { Notice, CircleClose } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('noticebar');
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { PropType } from 'vue';
 
 interface StateProps {
   wrapWidth: number;
@@ -119,10 +120,8 @@ export default create({
       default: 'across'
     },
     list: {
-      type: Array,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<any[]>,
+      default: () => []
     },
     standTime: {
       type: Number,

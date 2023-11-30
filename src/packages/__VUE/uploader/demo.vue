@@ -21,7 +21,7 @@
     <nut-progress
       :percentage="progressPercentage"
       stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-      :status="progressPercentage == 100 ? '' : 'active'"
+      :status="progressPercentage == 100 ? undefined : 'active'"
     >
     </nut-progress>
     <h2>{{ translate('title5') }}</h2>
@@ -48,50 +48,58 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('uploader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '../toast/index';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      uploadfile: '上传文件',
-      title1: '上传状态',
-      title2: '基础用法-上传列表展示',
-      title3: '自定义上传样式',
-      title4: '自定义上传配合使用默认进度条',
-      title5: '直接调起摄像头（移动端生效）',
-      title6: '限制上传数量5个',
-      title7: '限制上传大小（每个文件最大不超过 50kb）',
-      title8: '图片压缩（在 beforeupload 钩子中处理）',
-      title9: '自定义数据 FormData 、 headers ',
-      title10: '选中文件后，通过按钮手动执行上传',
-      title11: '手动执行上传',
-      title12: '禁用状态',
-      title13: '自定义 xhr 上传方式(before-xhr-upload)',
-      title14: '手动清空上传'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      uploadfile: 'Upload files',
-      title1: 'Upload status',
-      title2: 'Basic usage - upload list display',
-      title3: 'Custom upload style',
-      title4: 'Custom upload uses default progress bar',
-      title5: 'Directly activate the camera (effective on the mobile terminal)',
-      title6: 'Limit the number of uploads to 5',
-      title7: 'Limit upload size (up to 50kb per file)',
-      title8: 'Image compression (handled in the beforeupload hook)',
-      title9: 'Custom data FormData , headers',
-      title10: 'Once the file is selected, manually perform the upload via the button',
-      title11: 'Manual upload',
-      title12: 'Disabled state',
-      title13: 'Customize XHR upload (before-xhr-upload)',
-      title14: 'Clear upload manually'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    uploadfile: '上传文件',
+    title1: '上传状态',
+    title2: '基础用法-上传列表展示',
+    title3: '自定义上传样式',
+    title4: '自定义上传配合使用默认进度条',
+    title5: '直接调起摄像头（移动端生效）',
+    title6: '限制上传数量5个',
+    title7: '限制上传大小（每个文件最大不超过 50kb）',
+    title8: '图片压缩（在 beforeupload 钩子中处理）',
+    title9: '自定义数据 FormData 、 headers ',
+    title10: '选中文件后，通过按钮手动执行上传',
+    title11: '手动执行上传',
+    title12: '禁用状态',
+    title13: '自定义 xhr 上传方式(before-xhr-upload)',
+    title14: '手动清空上传',
+    ready: '准备完成',
+    readyUpload: '准备上传',
+    waitingUpload: '等待上传',
+    uploading: '上传中',
+    success: '上传成功',
+    error: '上传失败'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    uploadfile: 'Upload files',
+    title1: 'Upload status',
+    title2: 'Basic usage - upload list display',
+    title3: 'Custom upload style',
+    title4: 'Custom upload uses default progress bar',
+    title5: 'Directly activate the camera (effective on the mobile terminal)',
+    title6: 'Limit the number of uploads to 5',
+    title7: 'Limit upload size (up to 50kb per file)',
+    title8: 'Image compression (handled in the beforeupload hook)',
+    title9: 'Custom data FormData , headers',
+    title10: 'Once the file is selected, manually perform the upload via the button',
+    title11: 'Manual upload',
+    title12: 'Disabled state',
+    title13: 'Customize XHR upload (before-xhr-upload)',
+    title14: 'Clear upload manually',
+    ready: 'Ready',
+    readyUpload: 'Ready to upload',
+    waitingUpload: 'Waiting for upload',
+    uploading: 'Uploading',
+    success: 'Upload successful',
+    error: 'Upload failed'
+  }
+});
 const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
 const progressPercentage = ref<string | number>(0);
 const formData = {

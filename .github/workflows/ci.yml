@@ -75,10 +75,10 @@ jobs:
         run: pnpm build
 
       - name: Build NutUI-Taro
-        run: pnpm build:taro:vue
+        run: pnpm build:taro
 
       - name: Build NutUI Demo
-        run: pnpm build:site
+        run: pnpm build:demo
 
       - name: Build NutUI-Taro Demo
-        run: pnpm build:taro:h5
+        run: pnpm build:h5

@@ -33,7 +33,7 @@ test('should have click', async () => {
       modelValue: 1,
       'onUpdate:modelValue': (val: number) => wrapper.setProps({ modelValue: val })
     }
-  });
+  }) as any;
   const rate = wrapper.findAll('.nut-rate-item svg');
   rate[2].trigger('click');
   await nextTick();
@@ -49,7 +49,7 @@ test('should have disabled', async () => {
       modelValue: 4,
       'onUpdate:modelValue': (val: number) => wrapper.setProps({ modelValue: val })
     }
-  });
+  }) as any;
   const rate = wrapper.findAll('.nut-rate-item svg');
   rate[1].trigger('click');
   await nextTick();

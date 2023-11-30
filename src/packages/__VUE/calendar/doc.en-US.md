@@ -305,8 +305,6 @@ When the type is `range`, if this function is set, you need to filter out the di
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
     :default-value="state.date"
-    :start-date="null"
-    :end-date="null"
     :is-auto-back-fill="true"
   >
   </nut-calendar>

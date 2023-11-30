@@ -6,7 +6,6 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/**/*.d.ts",
     "src/packages/__VUE/**/index.taro.vue",
     "src/packages/__VUE/**/*.ts",
     "src/packages/nutui.taro.vue.build.ts",

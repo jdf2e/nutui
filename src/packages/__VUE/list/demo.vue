@@ -14,19 +14,15 @@
 </template>
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基本用法'
-    },
-    'en-US': {
-      basic: 'Basic Usage'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基本用法'
+  },
+  'en-US': {
+    basic: 'Basic Usage'
+  }
+});
 const state = reactive({
   count: new Array(100).fill(0)
 });

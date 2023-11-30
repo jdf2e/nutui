@@ -1,7 +1,7 @@
 import { computed, PropType, reactive, toRefs, watch } from 'vue';
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue';
-import { TableColumnProps } from './types';
+import { TableColumns } from './types';
 
 export const component = (componentName: string, translate: Function) => {
   return {
@@ -15,7 +15,7 @@ export const component = (componentName: string, translate: Function) => {
         default: true
       },
       columns: {
-        type: Array as PropType<TableColumnProps[]>,
+        type: Array as PropType<TableColumns[]>,
         default: () => {
           return [];
         }
@@ -47,28 +47,28 @@ export const component = (componentName: string, translate: Function) => {
         };
       });
 
-      const cellClasses = (item: TableColumnProps) => {
+      const cellClasses = (item: TableColumns) => {
         return {
           'nut-table__main__head__tr--border': props.bordered,
           [`nut-table__main__head__tr--align${item.align ? item.align : ''}`]: true
         };
       };
 
-      const stylehead = (item: TableColumnProps) => {
+      const stylehead = (item: TableColumns) => {
         return item.stylehead ? item.stylehead : '';
       };
-      const stylecolumn = (item: TableColumnProps) => {
+      const stylecolumn = (item: TableColumns) => {
         return item.stylecolumn ? item.stylecolumn : '';
       };
 
-      const getColumnItem = (value: string): TableColumnProps => {
-        return props.columns.filter((item: TableColumnProps) => item.key === value)[0];
+      const getColumnItem = (value: string): TableColumns => {
+        return props.columns.filter((item: TableColumns) => item.key === value)[0];
       };
       const getColumnItemStyle = (value: string) => {
-        const style = props.columns.filter((item: TableColumnProps) => item.key === value);
+        const style = props.columns.filter((item: TableColumns) => item.key === value);
         return style[0].stylecolumn ? style[0].stylecolumn : '';
       };
-      const handleSorterClick = (item: TableColumnProps) => {
+      const handleSorterClick = (item: TableColumns) => {
         if (item.sorter) {
           emit('sorter', item);
           state.curData =
@@ -81,7 +81,7 @@ export const component = (componentName: string, translate: Function) => {
       };
 
       const sortDataItem = () => {
-        return props.columns.map((columns: TableColumnProps) => {
+        return props.columns.map((columns: TableColumns) => {
           return [columns.key, columns.render];
         });
       };

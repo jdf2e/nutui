@@ -58,34 +58,30 @@
   </div>
 </template>
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('trend-arrow');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Success, Failure } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '改变文字颜色',
-      title2: '指定小数位',
-      title3: '箭头在前面',
-      title4: '显示正负号',
-      title5: '是否展示0',
-      title6: '自定义颜色',
-      title7: '自定义图标'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Change text color',
-      title2: 'Specify decimal places',
-      title3: 'Arrow ahead',
-      title4: 'show sign',
-      title5: 'Whether to show 0',
-      title6: 'Custom color',
-      title7: 'Custom icon'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '改变文字颜色',
+    title2: '指定小数位',
+    title3: '箭头在前面',
+    title4: '显示正负号',
+    title5: '是否展示0',
+    title6: '自定义颜色',
+    title7: '自定义图标'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Change text color',
+    title2: 'Specify decimal places',
+    title3: 'Arrow ahead',
+    title4: 'show sign',
+    title5: 'Whether to show 0',
+    title6: 'Custom color',
+    title7: 'Custom icon'
+  }
+});
 </script>
 <style lang="scss" scoped>
 .demo {

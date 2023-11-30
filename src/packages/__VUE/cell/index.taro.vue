@@ -1,11 +1,46 @@
-<template src="./template.html"></template>
+<template>
+  <view :class="classes" :style="baseStyle" @click="handleClick">
+    <slot>
+      <view v-if="$slots.icon" class="nut-cell__icon">
+        <slot name="icon"></slot>
+      </view>
+      <view v-if="title || subTitle || $slots.title" class="nut-cell__title">
+        <template v-if="subTitle">
+          <slot name="title">
+            <view class="title">{{ title }}</view>
+          </slot>
+          <view class="nut-cell__title-desc">{{ subTitle }}</view>
+        </template>
+        <template v-else>
+          <slot name="title">
+            {{ title }}
+          </slot>
+        </template>
+      </view>
+      <view
+        v-if="desc || $slots.desc"
+        class="nut-cell__value"
+        :class="{ 'nut-cell__value--alone': !title && !subTitle && !$slots.title }"
+        :style="descStyle"
+      >
+        <slot name="desc">
+          {{ desc }}
+        </slot>
+      </view>
+      <slot name="link">
+        <Right v-if="isLink || to" class="nut-cell__link"></Right>
+      </slot>
+    </slot>
+  </view>
+</template>
 
 <script lang="ts">
+import type { CSSProperties } from 'vue';
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('cell');
 import { Right } from '@nutui/icons-vue-taro';
+const { componentName, create } = createComponent('cell');
 export default create({
   components: { Right },
   props: {
@@ -39,6 +74,12 @@ export default create({
       };
     });
 
+    const descStyle = computed(() => {
+      return {
+        textAlign: props.descTextAlign
+      } as CSSProperties;
+    });
+
     const handleClick = (event: Event) => {
       emit('click', event);
     };
@@ -46,7 +87,8 @@ export default create({
     return {
       handleClick,
       classes,
-      baseStyle
+      baseStyle,
+      descStyle
     };
   }
 });

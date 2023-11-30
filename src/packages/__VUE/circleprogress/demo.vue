@@ -34,34 +34,31 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('circle-progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      customWidth: '自定义宽度',
-      Gradient: '渐变色',
-      customSize: '自定义尺寸',
-      customContent: '自定义内容',
-      custom: '自定义',
-      dynamicChange: '动态改变',
-      reduce: '减少',
-      add: '增加'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      customWidth: 'Custom Width',
-      Gradient: 'Gradient',
-      custom: 'custom',
-      customContent: 'Custom Content',
-      dynamicChange: 'Dynamic Change',
-      reduce: 'reduce',
-      add: 'add'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    customWidth: '自定义宽度',
+    Gradient: '渐变色',
+    customSize: '自定义尺寸',
+    customContent: '自定义内容',
+    custom: '自定义',
+    dynamicChange: '动态改变',
+    reduce: '减少',
+    add: '增加'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    customWidth: 'Custom Width',
+    Gradient: 'Gradient',
+    custom: 'custom',
+    customSize: 'Custom Size',
+    customContent: 'Custom Content',
+    dynamicChange: 'Dynamic Change',
+    reduce: 'reduce',
+    add: 'add'
+  }
+});
 const gradientColor = {
   '0%': '#FF5E5E',
   '100%': '#FFA062'
