@@ -1,6 +1,7 @@
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { STEPS_KEY } from './types';
 const { create, componentName } = createComponent('steps');
 
 export default create({
@@ -41,7 +42,7 @@ export default create({
       emit('clickStep', index);
     };
 
-    provide('parent', {
+    provide(STEPS_KEY, {
       relation,
       state,
       props,

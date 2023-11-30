@@ -9,11 +9,12 @@ import { computed, reactive, inject, getCurrentInstance, onUnmounted, ComputedRe
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { IStyle } from './type';
+import { SWIPER_KEY } from '../swiper/types';
 const { create } = createComponent('swiper-item');
 
 export default create({
   setup() {
-    const parent = inject('parent') as any;
+    const parent = inject(SWIPER_KEY) as any;
     parent['relation'](getCurrentInstance());
     const state = reactive({
       offset: 0

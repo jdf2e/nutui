@@ -1,5 +1,7 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
 import { computed, PropType, provide, reactive, watch } from 'vue';
+import { FORM_KEY } from './types';
+import { useChildren } from '@/packages/utils';
 import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
@@ -27,53 +29,7 @@ export const component = (components: any) => {
     emits: ['validate'],
 
     setup(props: any, { emit }: any) {
-      const useChildren = () => {
-        const publicChildren: any[] = reactive([]);
-        const internalChildren: any[] = reactive([]);
-
-        const linkChildren = (value?: any) => {
-          const link = (child: any) => {
-            if (child.proxy) {
-              internalChildren.push(child);
-              publicChildren.push(child.proxy as any);
-            }
-          };
-
-          const removeLink = (child: any) => {
-            if (child.proxy) {
-              let internalIndex = internalChildren.indexOf(child);
-              if (internalIndex > -1) {
-                internalChildren.splice(internalIndex, 1);
-              }
-
-              let publicIndex = publicChildren.indexOf(child.proxy);
-              if (internalIndex > -1) {
-                publicChildren.splice(publicIndex, 1);
-              }
-            }
-          };
-
-          provide(
-            'NutFormParent',
-            Object.assign(
-              {
-                removeLink,
-                link,
-                children: publicChildren,
-                internalChildren
-              },
-              value
-            )
-          );
-        };
-
-        return {
-          children: publicChildren,
-          linkChildren
-        };
-      };
-
-      const { children, linkChildren } = useChildren();
+      const { children, linkChildren } = useChildren(FORM_KEY);
       linkChildren({ props });
 
       const formErrorTip = computed(() => reactive<any>({}));

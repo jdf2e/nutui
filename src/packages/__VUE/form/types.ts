@@ -1,5 +1,7 @@
 import { FormItemRule, FormItemLabelPosition, FormItemStarPosition } from '../formitem/types';
 
+export const FORM_KEY = Symbol('nut-form');
+
 export type FormRules = {
   [key: string]: FormItemRule[];
 };
