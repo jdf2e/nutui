@@ -74,11 +74,11 @@ export default create({
     },
     labelPosition: {
       type: String as PropType<FormItemLabelPosition>,
-      default: 'left'
+      default: ''
     },
     starPosition: {
       type: String as PropType<FormItemStarPosition>,
-      default: 'left'
+      default: ''
     }
   },
   components: {

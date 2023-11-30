@@ -416,6 +416,35 @@ const addressModule = reactive({
 
 :::
 
+### Customize the Label location
+
+:::demo
+
+```vue
+<template>
+  <nut-form label-position="top" star-position="right">
+    <nut-form-item label="name" required>
+      <nut-input v-model="basicData.name" class="nut-input-text" placeholder="Please enter your name" type="text" />
+    </nut-form-item>
+    <nut-form-item label="age" required>
+      <nut-input v-model="basicData.age" class="nut-input-text" placeholder="Please enter your age" type="text" />
+    </nut-form-item>
+    <nut-form-item label="remark">
+      <nut-textarea placeholder="Please enter remark" type="text" />
+    </nut-form-item>
+  </nut-form>
+</template>
+<script setup>
+import { reactive } from 'vue';
+const basicData = reactive({
+  name: '',
+  age: ''
+});
+</script>
+```
+
+:::
+
 ## API
 
 ### Form Props
