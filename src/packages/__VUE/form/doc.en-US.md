@@ -429,7 +429,7 @@ const addressModule = reactive({
     <nut-form-item label="age" required>
       <nut-input v-model="basicData.age" class="nut-input-text" placeholder="Please enter your age" type="text" />
     </nut-form-item>
-    <nut-form-item label="remark">
+    <nut-form-item label="remark" label-position="left">
       <nut-textarea placeholder="Please enter remark" type="text" />
     </nut-form-item>
   </nut-form>

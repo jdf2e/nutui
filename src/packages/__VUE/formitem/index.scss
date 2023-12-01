@@ -106,6 +106,8 @@
     flex-direction: column;
     .nut-form-item__label {
       padding-bottom: 5px;
+      width: 100%;
+      box-sizing: border-box;
       display: block;
       padding-right: 24px;
     }
