@@ -90,41 +90,37 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('range');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '双滑块',
-      title2: '指定范围',
-      title3: '设置步长',
-      title4: '隐藏范围',
-      title5: '隐藏标签',
-      title6: '禁用',
-      title7: '自定义样式',
-      title8: '自定义按钮',
-      title9: '垂直方向',
-      title10: '刻度标记'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Dual thumb',
-      title2: 'Range',
-      title3: 'Step Size',
-      title4: 'Hidden Range',
-      title5: 'Hidden Tag',
-      title6: 'Disabled',
-      title7: 'Custom Style',
-      title8: 'Custom Button',
-      title9: 'Vertical',
-      title10: 'Marks'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '双滑块',
+    title2: '指定范围',
+    title3: '设置步长',
+    title4: '隐藏范围',
+    title5: '隐藏标签',
+    title6: '禁用',
+    title7: '自定义样式',
+    title8: '自定义按钮',
+    title9: '垂直方向',
+    title10: '刻度标记'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Dual thumb',
+    title2: 'Range',
+    title3: 'Step Size',
+    title4: 'Hidden Range',
+    title5: 'Hidden Tag',
+    title6: 'Disabled',
+    title7: 'Custom Style',
+    title8: 'Custom Button',
+    title9: 'Vertical',
+    title10: 'Marks'
+  }
+});
 const state = reactive({
   value1: 40,
   value2: [20, 80],

@@ -30,6 +30,7 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { computed, onMounted, inject, watch, reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { SWIPE_KEY } from './types';
 const { create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
 export default create({
@@ -78,7 +79,7 @@ export default create({
       );
     };
 
-    const parent = inject('swipeGroup', null) as any;
+    const parent = inject(SWIPE_KEY, null) as any;
 
     watch(
       () => parent?.name?.value,

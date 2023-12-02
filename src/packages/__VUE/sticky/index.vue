@@ -27,7 +27,8 @@ export default create({
       default: 0
     },
     container: {
-      type: Object as PropType<Element>
+      type: Object as PropType<Element>,
+      default: null
     },
     zIndex: {
       type: [Number, String],

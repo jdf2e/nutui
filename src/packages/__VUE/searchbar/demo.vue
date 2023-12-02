@@ -57,42 +57,37 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { showToast } from '../toast';
 import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
-const { translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic1: '基础用法',
-      basic2: '搜索事件监听',
-      basic3: '显示搜索 icon',
-      basic4: '右侧添加搜索文字',
-      basic5: '更改输入框内部及外部的背景样式',
-      basic6: '显示全部 icon',
-      basic7: '自定义清除图标 icon',
-      word1: '标签',
-      word2: '搜索',
-      title3: '标题3',
-      shape: '设置搜索框形状'
-    },
-    'en-US': {
-      basic1: 'Basic Usage',
-      basic2: 'Search event listening',
-      basic3: 'Display search Icon',
-      basic4: 'Add search text to the right',
-      basic5: 'Change the background style inside and outside the input box',
-      basic6: 'Show all icons',
-      basic7: 'custom clear button icon',
-      word1: 'label',
-      word2: 'search',
-      shape: 'Search input shape'
-    }
-  });
+const translate = useTranslate({
+  'zh-CN': {
+    basic1: '基础用法',
+    basic2: '搜索事件监听',
+    basic3: '显示搜索 icon',
+    basic4: '右侧添加搜索文字',
+    basic5: '更改输入框内部及外部的背景样式',
+    basic6: '显示全部 icon',
+    basic7: '自定义清除图标 icon',
+    word1: '标签',
+    word2: '搜索',
+    shape: '设置搜索框形状'
+  },
+  'en-US': {
+    basic1: 'Basic Usage',
+    basic2: 'Search event listening',
+    basic3: 'Display search Icon',
+    basic4: 'Add search text to the right',
+    basic5: 'Change the background style inside and outside the input box',
+    basic6: 'Show all icons',
+    basic7: 'custom clear button icon',
+    word1: 'label',
+    word2: 'search',
+    shape: 'Search input shape'
+  }
+});
 const icon =
   'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
-initTranslate();
 const state = reactive({
   searchValue: '',
   searchValue1: '',

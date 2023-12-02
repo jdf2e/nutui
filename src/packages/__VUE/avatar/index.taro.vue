@@ -6,7 +6,7 @@
 <script lang="ts">
 import { toRefs, computed, inject, ref, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarShape, AvatarSize } from './types';
+import { AVATAR_KEY, type AvatarShape, type AvatarSize } from './types';
 const { create } = createComponent('avatar');
 export default create({
   props: {
@@ -30,7 +30,7 @@ export default create({
   setup(props) {
     const { size, shape, bgColor, color } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];
-    const avatarGroup: any = inject('avatarGroup', null);
+    const avatarGroup: any = inject(AVATAR_KEY, null);
     const avatarRef = ref(null);
 
     const classes = computed(() => {

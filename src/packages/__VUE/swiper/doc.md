@@ -444,8 +444,8 @@ const page = ref(2);
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| width | 轮播卡片的宽度 | number \| string | `window.innerWidth` |
-| height | 轮播卡片的高度 | number \| string | `0` |
+| width | 轮播卡片的宽度 | number \| string | - |
+| height | 轮播卡片的高度 | number \| string | - |
 | direction | 轮播方向,可选值`horizontal`,`vertical` | string | `'horizontal'` |
 | pagination-visible | 分页指示器是否展示 | boolean | `false` |
 | pagination-color | 分页指示器选中的颜色 | string | `'#fff'` |

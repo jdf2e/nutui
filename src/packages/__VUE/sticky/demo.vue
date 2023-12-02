@@ -26,26 +26,22 @@
 import { ref } from 'vue';
 import NutSticky from './index.vue';
 import NutButton from '../button/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '吸顶距离',
-      title2: '指定容器',
-      title3: '吸底距离',
-      content: '吸顶按钮'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Ceiling distance',
-      title2: 'Specify container',
-      title3: 'Suction distance',
-      content: 'Ceiling button'
-    }
-  });
-initTranslate();
-const container = ref(null);
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '吸顶距离',
+    title2: '指定容器',
+    title3: '吸底距离',
+    content: '吸顶按钮'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Ceiling distance',
+    title2: 'Specify container',
+    title3: 'Suction distance',
+    content: 'Ceiling button'
+  }
+});
+const container = ref<HTMLElement>();
 </script>

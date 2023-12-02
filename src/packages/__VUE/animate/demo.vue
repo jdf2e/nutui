@@ -86,49 +86,46 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('animate');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      show: '通过 show 控制动画',
-      once: '单次动画',
-      times: '多次触发',
-      basic: '循环动画',
-      click: '点击触发',
-      FRTL: '由右向左划入',
-      FLTR: '由左向右划入',
-      FTTB: '由上至下划入',
-      FBTT: '由下至上划入',
-      shake: 'shake-抖动',
-      ripple: 'ripple-心跳',
-      breath: 'breath-呼吸灯',
-      twinkle: 'twinkle-水波',
-      flicker: 'flicker-擦亮',
-      jump: 'jump-跳跃',
-      float: 'float-漂浮'
-    },
-    'en-US': {
-      show: 'Trigger animation through show',
-      once: 'Once',
-      times: 'Several times',
-      basic: 'Loop animation',
-      FRTL: 'From right to left',
-      FLTR: 'From left to right',
-      FTTB: 'From top to bottom',
-      FBTT: 'From bottom to top',
-      shake: 'shake',
-      ripple: 'ripple',
-      breath: 'breath',
-      twinkle: 'twinkle',
-      flicker: 'flicker',
-      jump: 'jump',
-      float: 'float'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    show: '通过 show 控制动画',
+    once: '单次动画',
+    times: '多次触发',
+    basic: '循环动画',
+    click: '点击触发',
+    FRTL: '由右向左划入',
+    FLTR: '由左向右划入',
+    FTTB: '由上至下划入',
+    FBTT: '由下至上划入',
+    shake: 'shake-抖动',
+    ripple: 'ripple-心跳',
+    breath: 'breath-呼吸灯',
+    twinkle: 'twinkle-水波',
+    flicker: 'flicker-擦亮',
+    jump: 'jump-跳跃',
+    float: 'float-漂浮'
+  },
+  'en-US': {
+    show: 'Trigger animation through show',
+    once: 'Once',
+    times: 'Several times',
+    basic: 'Loop animation',
+    click: 'Click',
+    FRTL: 'From right to left',
+    FLTR: 'From left to right',
+    FTTB: 'From top to bottom',
+    FBTT: 'From bottom to top',
+    shake: 'shake',
+    ripple: 'ripple',
+    breath: 'breath',
+    twinkle: 'twinkle',
+    flicker: 'flicker',
+    jump: 'jump',
+    float: 'float'
+  }
+});
 
 const show1 = ref(false);
 const onClick1 = () => {

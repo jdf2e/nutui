@@ -7,11 +7,9 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('invoice');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法'
   },

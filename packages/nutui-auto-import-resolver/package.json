@@ -46,7 +46,7 @@
   "license": "MIT",
   "devDependencies": {
     "rimraf": "^5.0.0",
-    "typescript": "^5.0.4",
-    "vite": "^4.4.9"
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2"
   }
 }

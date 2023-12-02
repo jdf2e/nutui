@@ -48,29 +48,25 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('countup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title: '数字滚动',
-      title1: '自定义滚动图片展示',
-      title2: '抽奖（模拟滚动抽奖）',
-      btn1: '中奖',
-      btn2: '不中奖'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title: 'Digital scrolling',
-      title1: 'Custom scrolling picture display',
-      title2: 'Lottery (simulated rolling lottery)',
-      btn1: 'win the lottery',
-      btn2: 'Not winning'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title: '数字滚动',
+    title1: '自定义滚动图片展示',
+    title2: '抽奖（模拟滚动抽奖）',
+    btn1: '中奖',
+    btn2: '不中奖'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title: 'Digital scrolling',
+    title1: 'Custom scrolling picture display',
+    title2: 'Lottery (simulated rolling lottery)',
+    btn1: 'win the lottery',
+    btn2: 'Not winning'
+  }
+});
 const data = reactive({
   customNumber: 618,
   bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png',

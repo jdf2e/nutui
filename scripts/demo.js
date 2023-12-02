@@ -50,9 +50,8 @@ export default create({
 <script setup lang="ts">
 import { defineComponent } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('${nameLc}');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () => useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法'
   },
@@ -60,7 +59,6 @@ const initTranslate = () => useTranslate({
     basic: 'Basic Usage'
   }
 })
-initTranslate();
 </script>
 `,
     taroDemo: `<template>

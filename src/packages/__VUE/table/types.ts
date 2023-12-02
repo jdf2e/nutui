@@ -1,5 +1,5 @@
 import { VNode, VNodeChild } from 'vue';
-export interface TableColumnProps {
+export interface TableColumns {
   key?: string;
   title?: string;
   align?: string;
@@ -11,7 +11,7 @@ export interface TableColumnProps {
 
 export interface TableProps {
   bordered: true;
-  columns: TableColumnProps[];
+  columns: TableColumns[];
   data: object[];
   summary: string;
   striped: boolean;

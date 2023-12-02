@@ -18,11 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
 import { reactive, onMounted } from 'vue';
-const { translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     title1: '经典分类模式',
     title2: '只显示文字',
@@ -35,11 +33,11 @@ useTranslate({
   }
 });
 const data = reactive({
-  categoryInfo1: {},
+  categoryInfo1: {} as any,
   category: [{}],
   categoryChild1: [{}],
   customCategory: [{}],
-  categoryInfo2: {},
+  categoryInfo2: {} as any,
   categoryChild2: [{}]
 });
 

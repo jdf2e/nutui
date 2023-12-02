@@ -84,48 +84,44 @@ import NutCell from '../cell/index.vue';
 import NutButton from '../button/index.vue';
 import NutInputNumber from '../inputnumber/index.vue';
 import NutSwitch from '../switch/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('swipe');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      leftDel: '左滑删除',
-      disable: '禁用滑动',
-      swipeLR: '左右滑动',
-      swipeLRDesc: '左滑右滑都可以哦',
-      async: '异步控制',
-      asyncDesc: '异步打开关闭',
-      open: '开',
-      close: '关',
-      custom: '自定义',
-      desc: '商品描述',
-      delete: '删除',
-      select: '选择',
-      collect: '收藏',
-      group: '使用 SwipeGroup 控制 Swipe 之间互斥'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      leftDel: 'Swipe left to delete',
-      disable: 'Disable swipe',
-      swipeLR: 'Swipe left and right',
-      swipeLRDesc: 'You can swipe left and right',
-      async: 'Async control swipe',
-      asyncDesc: 'Async on and off',
-      open: 'on',
-      close: 'off',
-      custom: 'Custom',
-      desc: 'product description',
-      delete: 'Delelte',
-      select: 'Select',
-      collect: 'Collect',
-      group: 'Use SwipeGroup to make swipe exclusive'
-    }
-  });
-initTranslate();
-const refSwipe = ref<HTMLElement>();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    leftDel: '左滑删除',
+    disable: '禁用滑动',
+    swipeLR: '左右滑动',
+    swipeLRDesc: '左滑右滑都可以哦',
+    async: '异步控制',
+    asyncDesc: '异步打开关闭',
+    open: '开',
+    close: '关',
+    custom: '自定义',
+    desc: '商品描述',
+    delete: '删除',
+    select: '选择',
+    collect: '收藏',
+    group: '使用 SwipeGroup 控制 Swipe 之间互斥'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    leftDel: 'Swipe left to delete',
+    disable: 'Disable swipe',
+    swipeLR: 'Swipe left and right',
+    swipeLRDesc: 'You can swipe left and right',
+    async: 'Async control swipe',
+    asyncDesc: 'Async on and off',
+    open: 'on',
+    close: 'off',
+    custom: 'Custom',
+    desc: 'product description',
+    delete: 'Delelte',
+    select: 'Select',
+    collect: 'Collect',
+    group: 'Use SwipeGroup to make swipe exclusive'
+  }
+});
+const refSwipe = ref<any>();
 const checked = ref(false);
 const number = ref(0);
 const changSwitch = (value: boolean) => {

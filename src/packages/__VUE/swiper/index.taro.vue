@@ -46,16 +46,15 @@ import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
 import { clamp } from '@/packages/utils/util';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { SWIPER_KEY } from './types';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
     width: {
-      type: [Number, String],
-      default: window.innerWidth
+      type: [Number, String]
     },
     height: {
-      type: [Number, String],
-      default: 0
+      type: [Number, String]
     },
     direction: {
       type: String,
@@ -394,7 +393,7 @@ export default create({
       autoplay();
     };
 
-    provide('parent', {
+    provide(SWIPER_KEY, {
       props,
       size,
       relation
@@ -416,24 +415,24 @@ export default create({
 
     watch(
       () => props.initPage,
-      () => {
-        Taro.nextTick(() => {
-          init();
-        });
-        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-          init();
-        });
-      }
-    );
-
-    watch(
-      () => props.height,
       (val) => {
         Taro.nextTick(() => {
           init(+val);
         });
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
           init(+val);
+        });
+      }
+    );
+
+    watch(
+      () => props.height,
+      () => {
+        Taro.nextTick(() => {
+          init();
+        });
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          init();
         });
       }
     );

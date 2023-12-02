@@ -43,16 +43,15 @@ import { useTouch } from '@/packages/utils/useTouch/index';
 import { useExpose } from '@/packages/utils/useExpose/index';
 import { clamp } from '@/packages/utils/util';
 import requestAniFrame from '@/packages/utils/raf';
+import { SWIPER_KEY } from './types';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
     width: {
-      type: [Number, String],
-      default: window.innerWidth
+      type: [Number, String]
     },
     height: {
-      type: [Number, String],
-      default: 0
+      type: [Number, String]
     },
     direction: {
       type: String,
@@ -386,7 +385,7 @@ export default create({
       autoplay();
     };
 
-    provide('parent', {
+    provide(SWIPER_KEY, {
       props,
       size,
       relation

@@ -50,7 +50,7 @@ import CommentBottom from './components/CmtBottom.taro.vue';
 import { useLocale } from '@/packages/utils/useLocale';
 
 interface VideosType {
-  id: number | string;
+  id?: number | string;
   mainUrl: string;
   videoUrl: string;
 }

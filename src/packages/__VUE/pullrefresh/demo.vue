@@ -39,38 +39,33 @@ import { ref, reactive } from 'vue';
 import NutPullRefresh from './index.vue';
 import NutTabs from '../tabs/index.vue';
 import NutTabPane from '../tabpane/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('pull-refresh');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      pullRefresh: '下拉刷新',
-      customTxt: '自定义文案',
-      listenerTxt: '自定义监听对象',
-      content: '向下拉试试吧！',
-      loose: '松开吧',
-      load: '玩命加载中...',
-      ok: '好啦',
-      pull: '用力拉'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      pullRefresh: 'Pull to refresh',
-      customTxt: 'Custom Tips',
-      listenerTxt: 'Customize the listener',
-      content: 'Try to pull down!',
-      loose: 'Relax',
-      load: 'Desperate loading...',
-      ok: 'Ok!',
-      pull: 'Pull'
-    }
-  });
-
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    pullRefresh: '下拉刷新',
+    customTxt: '自定义文案',
+    listenerTxt: '自定义监听对象',
+    content: '向下拉试试吧！',
+    loose: '松开吧',
+    load: '玩命加载中...',
+    ok: '好啦',
+    pull: '用力拉'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    pullRefresh: 'Pull to refresh',
+    customTxt: 'Custom Tips',
+    listenerTxt: 'Customize the listener',
+    content: 'Try to pull down!',
+    loose: 'Relax',
+    load: 'Desperate loading...',
+    ok: 'Ok!',
+    pull: 'Pull'
+  }
+});
 
 const letter: any[] = [
   'A',

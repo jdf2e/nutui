@@ -60,34 +60,30 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
 import { showToast } from '@/packages/nutui.vue';
-const { translate } = createComponent('number-keyboard');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '默认键盘',
-      sidebar: '带右侧栏键盘',
-      confirmText: '支付',
-      randomKeyOrder: '随机数键盘',
-      title: '标题',
-      withTitle: '带标题栏键盘',
-      idNumberKeyboard: '身份证键盘',
-      bindValue: '双向绑定：'
-    },
-    'en-US': {
-      basic: 'Default Keyboard',
-      sidebar: 'Keyboard With Sidebar',
-      confirmText: 'pay',
-      randomKeyOrder: 'Random Key Order',
-      title: 'title',
-      withTitle: 'Show Keyboard With Title',
-      idNumberKeyboard: 'Show IdNumber Keyboard',
-      bindValue: 'Bind Value：'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '默认键盘',
+    sidebar: '带右侧栏键盘',
+    confirmText: '支付',
+    randomKeyOrder: '随机数键盘',
+    title: '标题',
+    withTitle: '带标题栏键盘',
+    idNumberKeyboard: '身份证键盘',
+    bindValue: '双向绑定：'
+  },
+  'en-US': {
+    basic: 'Default Keyboard',
+    sidebar: 'Keyboard With Sidebar',
+    confirmText: 'pay',
+    randomKeyOrder: 'Random Key Order',
+    title: 'title',
+    withTitle: 'Show Keyboard With Title',
+    idNumberKeyboard: 'Show IdNumber Keyboard',
+    bindValue: 'Bind Value：'
+  }
+});
 const visible1 = ref(false);
 const visible2 = ref(false);
 const visible3 = ref(false);
