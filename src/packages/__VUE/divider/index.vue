@@ -7,7 +7,7 @@
 import { PropType, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { DividerDirection, DividerPosition } from './types';
-const { componentName, create } = createComponent('divider');
+const { create } = createComponent('divider');
 
 export default create({
   props: {
@@ -30,7 +30,7 @@ export default create({
   },
   setup(props, context) {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-divider';
       if (props.direction === 'horizontal') {
         return {
           [prefixCls]: true,
