@@ -42,7 +42,6 @@ import {
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch/index';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import requestAniFrame from '@/packages/utils/raf';
 import { clamp } from '@/packages/utils/util';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
@@ -99,7 +98,7 @@ export default create({
   },
   emits: ['change'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const container = ref<HTMLElement>();
     const refRandomId = Math.random().toString(36).slice(-8);
     const state = reactive({
@@ -399,7 +398,7 @@ export default create({
       relation
     });
 
-    useExpose({
+    expose({
       prev,
       next,
       to
