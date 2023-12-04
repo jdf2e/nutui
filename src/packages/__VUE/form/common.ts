@@ -1,8 +1,9 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
 import { computed, PropType, provide, reactive, watch } from 'vue';
-import { FormItemRule } from '../formitem/types';
-import { ErrorMessage, FormRule, FormRules, FORM_KEY } from './types';
+import { FORM_KEY } from './types';
 import { useChildren } from '@/packages/utils';
+import type { FormItemRule } from '../formitem/types';
+import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
 export const component = (components: any) => {
   return {
@@ -14,6 +15,14 @@ export const component = (components: any) => {
       rules: {
         type: Object as PropType<FormRules>,
         default: () => ({})
+      },
+      labelPosition: {
+        type: String as PropType<FormLabelPosition>,
+        default: 'left'
+      },
+      starPosition: {
+        type: String as PropType<FormStarPosition>,
+        default: 'left'
       }
     },
     components,
