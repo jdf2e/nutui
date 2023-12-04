@@ -155,8 +155,8 @@ importers:
   packages/nutui-playground:
     dependencies:
       '@vue/repl':
-        specifier: ^2.5.8
-        version: 2.5.8
+        specifier: ^3.0.0
+        version: 3.0.0
       file-saver:
         specifier: ^2.0.5
         version: 2.0.5
@@ -4413,8 +4413,8 @@ packages:
     dependencies:
       '@vue/shared': 3.3.4
 
-  /@vue/repl@2.5.8:
-    resolution: {integrity: sha512-IvOlNhka4VKDQZS9FIceFFWyPibzqAUHyjHOoe8cMZmeP7H3H7mfMqvzQ0l1wjMAqqeEcgpFhSzMWsTEL4XZeA==}
+  /@vue/repl@3.0.0:
+    resolution: {integrity: sha512-tGYibiftMo5yEuIKPWVsNuuNDejjJk0JQmvKtTm12KNLFqtGD7fWoGv1qUzcN9EAxwVeDgnT9ljRgqGVgZkyEg==}
     dev: false
 
   /@vue/runtime-core@3.3.4:
