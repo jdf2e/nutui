@@ -46,6 +46,7 @@
     line-height: 20px;
     .taro-textarea {
       font-size: 14px;
+      resize: none;
     }
   }
   &__textarea__readonly {

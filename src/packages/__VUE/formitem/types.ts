@@ -11,3 +11,6 @@ export interface FormItemRule extends FormItemRuleWithoutValidator {
     ruleCfg: FormItemRuleWithoutValidator
   ) => boolean | Promise<string> | Promise<boolean> | Promise<void> | Promise<unknown>;
 }
+
+export type FormItemLabelPosition = 'left' | 'right' | 'top';
+export type FormItemStarPosition = 'left' | 'right';

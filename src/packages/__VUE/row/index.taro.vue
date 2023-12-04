@@ -6,7 +6,8 @@
 <script lang="ts">
 import { provide, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('row');
+import { LAYOUT_KEY } from '../layout/types';
+const { create } = createComponent('row');
 
 export default create({
   props: {
@@ -32,8 +33,8 @@ export default create({
     }
   },
   setup(props) {
-    const prefixCls = componentName;
-    provide('gutter', props.gutter);
+    const prefixCls = 'nut-row';
+    provide(LAYOUT_KEY, props.gutter);
     const getClass = (prefix: string, type: string) => {
       return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`;
     };

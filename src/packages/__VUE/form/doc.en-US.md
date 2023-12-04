@@ -416,6 +416,35 @@ const addressModule = reactive({
 
 :::
 
+### Customize the Label & Star location v4.2.4
+
+:::demo
+
+```vue
+<template>
+  <nut-form label-position="top" star-position="right">
+    <nut-form-item label="name" required>
+      <nut-input v-model="basicData.name" class="nut-input-text" placeholder="Please enter your name" type="text" />
+    </nut-form-item>
+    <nut-form-item label="age" required>
+      <nut-input v-model="basicData.age" class="nut-input-text" placeholder="Please enter your age" type="text" />
+    </nut-form-item>
+    <nut-form-item label="remark" label-position="left">
+      <nut-textarea placeholder="Please enter remark" type="text" />
+    </nut-form-item>
+  </nut-form>
+</template>
+<script setup>
+import { reactive } from 'vue';
+const basicData = reactive({
+  name: '',
+  age: ''
+});
+</script>
+```
+
+:::
+
 ## API
 
 ### Form Props
@@ -424,6 +453,8 @@ const addressModule = reactive({
 | --- | --- | --- | --- |
 | model-value | Form data object (required when using form verification) | object |  |
 | rules | Unified configuration FormItem attr rules | { prop: FormItemRule[] } | `{}` |
+| label-position`v4.2.4` | The location of the form item label | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | The red star position of the single label is required | `left` \| `right` | `left` |
 
 ### Form Events
 
@@ -444,6 +475,8 @@ const addressModule = reactive({
 | error-message-align | Error prompt text alignment. The optional values are `center` and `right` | string | `left` |
 | show-error-line | Whether to mark the input box in red when the verification fails | boolean | `true` |
 | show-error-message | Whether to display the error prompt under the input box when the verification fails | boolean | `true` |
+| label-position`v4.2.4` | The location of the form item label, The priority is higher than that in form label-position | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | The red star position of the single label is required, The priority is higher than that in form star-position | `left` \| `right` | `left` |
 
 ### FormItemRule data structure
 
