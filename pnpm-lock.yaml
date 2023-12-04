@@ -97,14 +97,14 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
       unplugin-vue-components:
-        specifier: ^0.25.2
-        version: 0.25.2(vue@3.3.4)
+        specifier: ^0.26.0
+        version: 0.26.0(vue@3.3.4)
       vite:
         specifier: ^5.0.2
         version: 5.0.2(@types/node@18.18.5)(sass@1.69.3)
       vite-plugin-inspect:
-        specifier: ^0.7.42
-        version: 0.7.42(vite@5.0.2)
+        specifier: ^0.8.0
+        version: 0.8.1(vite@5.0.2)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6(@vitest/ui@0.34.6)(sass@1.69.3)
@@ -14905,8 +14905,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin-vue-components@0.25.2(vue@3.3.4):
-    resolution: {integrity: sha512-OVmLFqILH6w+eM8fyt/d/eoJT9A6WO51NZLf1vC5c1FZ4rmq2bbGxTy8WP2Jm7xwFdukaIdv819+UI7RClPyCA==}
+  /unplugin-vue-components@0.26.0(vue@3.3.4):
+    resolution: {integrity: sha512-s7IdPDlnOvPamjunVxw8kNgKNK8A5KM1YpK5j/p97jEKTjlPNrA0nZBiSfAKKlK1gWZuyWXlKL5dk3EDw874LQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -15224,8 +15224,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-inspect@0.7.42(vite@5.0.2):
-    resolution: {integrity: sha512-JCyX86wr3siQc+p9Kd0t8VkFHAJag0RaQVIpdFGSv5FEaePEVB6+V/RGtz2dQkkGSXQzRWrPs4cU3dRKg32bXw==}
+  /vite-plugin-inspect@0.8.1(vite@5.0.2):
+    resolution: {integrity: sha512-oPBPVGp6tBd5KdY/qY6lrbLXqrbHRG0hZLvEaJfiZ/GQfDB+szRuLHblQh1oi1Hhh8GeLit/50l4xfs2SA+TCA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@nuxt/kit': '*'
