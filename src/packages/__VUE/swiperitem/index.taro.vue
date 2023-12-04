@@ -7,12 +7,13 @@
 <script lang="ts">
 import { computed, reactive, inject, getCurrentInstance, onUnmounted, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { useExpose } from '@/packages/utils/useExpose/index';
 import { IStyle } from './type';
 import { SWIPER_KEY } from '../swiper/types';
 const { create } = createComponent('swiper-item');
 
 export default create({
-  setup(props, { expose }) {
+  setup() {
     const parent = inject(SWIPER_KEY) as any;
     parent['relation'](getCurrentInstance());
     const state = reactive({
@@ -41,7 +42,7 @@ export default create({
       parent['relation'](getCurrentInstance(), 'unmount');
     });
 
-    expose({ setOffset });
+    useExpose({ setOffset });
 
     return {
       style
