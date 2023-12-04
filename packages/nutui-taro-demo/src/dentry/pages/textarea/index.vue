@@ -18,16 +18,3 @@ const value = ref('');
 const value2 = ref('');
 const value3 = ref('');
 </script>
-
-<style lang="scss">
-.nut-textarea__textarea__readonly {
-  background-color: #f9f9f9;
-}
-.nut-textarea--disabled {
-  textarea {
-    padding: 5px 10px;
-    height: 30px;
-    background-color: #f9f9f9;
-  }
-}
-</style>
