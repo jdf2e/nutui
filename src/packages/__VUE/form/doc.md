@@ -411,7 +411,7 @@ const addressModule = reactive({
 
 :::
 
-### 自定义Label位置
+### 自定义 Label & Star 位置 v4.2.4
 
 :::demo
 
@@ -448,8 +448,8 @@ const basicData = reactive({
 | --- | --- | --- | --- |
 | model-value | 表单数据对象(使用表单校验时，_必填_) | object |  |
 | rules | 统一配置每个 `FormItem` 的 `rules` | { prop: FormItemRule[] } | `{}` |
-| label-position | 表单项 label 的位置 | `top` \| `left` \| `right` | `left` |
-| star-position | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
+| label-position`v4.2.4` | 表单项 label 的位置 | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 
 ### Form Events
 
@@ -470,8 +470,8 @@ const basicData = reactive({
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | string | `left` |
 | show-error-line | 是否在校验不通过时标红输入框 | boolean | `true` |
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | boolean | `true` |
-| label-position | 表单项 label 的位置，优先级高于form中的label-position | `top` \| `left` \| `right` | `left` |
-| star-position | 必填表单项 label 的红色星标位置，优先级高于form中的star-position | `left` \| `right` | `left` |
+| label-position`v4.2.4` | 表单项 label 的位置，优先级高于 form 中的 label-position | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | 必填表单项 label 的红色星标位置，优先级高于 form 中的 star-position | `left` \| `right` | `left` |
 
 ### FormItemRule 数据结构
 
