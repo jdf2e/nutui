@@ -53,5 +53,5 @@ test('should find nut-icon class of an svg tag when using icon slot', () => {
 
   const icons = wrapper.findAll('svg');
   expect(icons.length).toEqual(1);
-  expect(icons[0].element.classList).toContain(['nut-icon']);
+  expect(icons[0].element.classList).toContain('nut-icon');
 });

@@ -1,30 +1,30 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Video: base info 1`] = `
-"<div class=\\"nut-video\\"><video class=\\"nut-video-player\\" autoplay=\\"\\" loop=\\"\\" controls=\\"\\" playsinline=\\"true\\" webkit-playsinline=\\"true\\" x5-video-player-type=\\"h5-page\\" x5-video-player-fullscreen=\\"false\\">
-    <source src=\\"https://storage.jd.com/about/big-final.mp4\\" type=\\"video/mp4\\">
+"<div class="nut-video"><video class="nut-video-player" autoplay="" loop="" controls="" playsinline="true" webkit-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false">
+    <source src="https://storage.jd.com/about/big-final.mp4" type="video/mp4">
   </video>
   <!--v-if-->
   <!--v-if-->
-  <div class=\\"nut-video-controller nut-video-controller--show\\" style=\\"display: none;\\">
-    <div class=\\"nut-video-controller__playbtn\\"></div>
-    <div class=\\"nut-video-controller__now\\">00:00</div>
-    <div class=\\"nut-video-controller__progress\\">
-      <div class=\\"nut-video-controller__progress-value\\">
-        <div class=\\"buffered\\" style=\\"width: 0%;\\"></div>
-        <div class=\\"nut-video-controller__ball\\" style=\\"transform: translate3d(0px, -50%, 0);\\">
-          <div class=\\"nut-video-controller__ball-move\\"></div>
+  <div class="nut-video-controller nut-video-controller--show" style="display: none;">
+    <div class="nut-video-controller__playbtn"></div>
+    <div class="nut-video-controller__now">00:00</div>
+    <div class="nut-video-controller__progress">
+      <div class="nut-video-controller__progress-value">
+        <div class="buffered" style="width: 0%;"></div>
+        <div class="nut-video-controller__ball" style="transform: translate3d(0px, -50%, 0);">
+          <div class="nut-video-controller__ball-move"></div>
         </div>
-        <div class=\\"nut-video-controller__played\\"></div>
+        <div class="nut-video-controller__played"></div>
       </div>
     </div>
-    <div class=\\"nut-video-controller__total\\">00:00</div>
-    <div class=\\"nut-video-controller__volume muted\\"></div>
-    <div class=\\"nut-video-controller__full\\"></div>
+    <div class="nut-video-controller__total">00:00</div>
+    <div class="nut-video-controller__volume muted"></div>
+    <div class="nut-video-controller__full"></div>
   </div><!-- 错误弹窗 -->
-  <div class=\\"nut-video-error\\" style=\\"display: none;\\">
-    <p class=\\"nut-video-error-tip\\">视频加载失败</p>
-    <p class=\\"nut-video-error-retry\\">点击重试</p>
+  <div class="nut-video-error" style="display: none;">
+    <p class="nut-video-error-tip">视频加载失败</p>
+    <p class="nut-video-error-retry">点击重试</p>
   </div>
 </div>"
 `;

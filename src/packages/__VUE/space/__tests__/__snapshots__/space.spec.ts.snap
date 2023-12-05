@@ -1,31 +1,31 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`space: should match snapshot 1`] = `
-"<div class=\\"nut-space nut-space-horizontal\\">
-  <div class=\\"nut-space-item\\">
-    <view class=\\"nut-button nut-button--default nut-button--normal nut-button--round\\">
-      <view class=\\"nut-button__wrap\\">
+"<div class="nut-space nut-space-horizontal">
+  <div class="nut-space-item">
+    <view class="nut-button nut-button--default nut-button--normal nut-button--round">
+      <view class="nut-button__wrap">
         <!--v-if-->
         <!--v-if-->
-        <view class=\\"\\">按钮</view>
+        <view class="">按钮</view>
       </view>
     </view>
   </div>
-  <div class=\\"nut-space-item\\">
-    <view class=\\"nut-button nut-button--default nut-button--normal nut-button--round\\">
-      <view class=\\"nut-button__wrap\\">
+  <div class="nut-space-item">
+    <view class="nut-button nut-button--default nut-button--normal nut-button--round">
+      <view class="nut-button__wrap">
         <!--v-if-->
         <!--v-if-->
-        <view class=\\"\\">按钮</view>
+        <view class="">按钮</view>
       </view>
     </view>
   </div>
-  <div class=\\"nut-space-item\\">
-    <view class=\\"nut-button nut-button--default nut-button--normal nut-button--round\\">
-      <view class=\\"nut-button__wrap\\">
+  <div class="nut-space-item">
+    <view class="nut-button nut-button--default nut-button--normal nut-button--round">
+      <view class="nut-button__wrap">
         <!--v-if-->
         <!--v-if-->
-        <view class=\\"\\">按钮</view>
+        <view class="">按钮</view>
       </view>
     </view>
   </div>

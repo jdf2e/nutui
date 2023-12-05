@@ -1,24 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`custon scroll list 1`] = `
-"<view class=\\"nut-noticebar\\">
+"<view class="nut-noticebar">
   <!--v-if-->
-  <view class=\\"nut-noticebar__vertical\\" style=\\"height: 50px;\\">
-    <view class=\\"nut-noticebar__vertical-list\\">
-      <div class=\\"showNotica\\">
-        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">惊喜红包免费领</div>
-        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">爆款准点秒</div>
-        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">买超值优惠</div>
-        <div class=\\"custom-item\\" style=\\"height: 50px; line-height: 50px;\\">赢百万京豆</div>
+  <view class="nut-noticebar__vertical" style="height: 50px;">
+    <view class="nut-noticebar__vertical-list">
+      <div class="showNotica">
+        <div class="custom-item" style="height: 50px; line-height: 50px;">惊喜红包免费领</div>
+        <div class="custom-item" style="height: 50px; line-height: 50px;">爆款准点秒</div>
+        <div class="custom-item" style="height: 50px; line-height: 50px;">买超值优惠</div>
+        <div class="custom-item" style="height: 50px; line-height: 50px;">赢百万京豆</div>
       </div>
     </view>
-    <view class=\\"nut-noticebar-custom-item\\">
-      <div class=\\"custom-item\\">惊喜红包免费领</div>
-      <div class=\\"custom-item\\">爆款准点秒</div>
-      <div class=\\"custom-item\\">买超值优惠</div>
-      <div class=\\"custom-item\\">赢百万京豆</div>
+    <view class="nut-noticebar-custom-item">
+      <div class="custom-item">惊喜红包免费领</div>
+      <div class="custom-item">爆款准点秒</div>
+      <div class="custom-item">买超值优惠</div>
+      <div class="custom-item">赢百万京豆</div>
     </view>
-    <view class=\\"go\\">
+    <view class="go">
       <!--v-if-->
     </view>
   </view>
@@ -26,16 +26,16 @@ exports[`custon scroll list 1`] = `
 `;
 
 exports[`icon custom 1`] = `
-"<view class=\\"nut-noticebar\\">
-  <view class=\\"nut-noticebar__page\\">
-    <view class=\\"nut-noticebar__page-lefticon\\"><svg class=\\"nut-icon nut-icon-notice\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1027 1024\\" role=\\"presentation\\" size=\\"16px\\">
-        <path d=\\"M940.873 819.2h-85.334V430.933c0-192-153.6-345.6-341.333-345.6s-341.333 153.6-341.333 345.6V819.2H87.539V430.933C87.54 192 279.54 0 514.206 0s426.667 192 426.667 430.933V819.2zM514.633 1024c-68.267 0-132.267-29.867-174.934-85.333-17.066-17.067-12.8-42.667 4.267-59.734 17.067-12.8 46.933-12.8 59.733 8.534 29.867 34.133 68.267 51.2 110.934 51.2s81.066-17.067 106.666-51.2c12.8-17.067 42.667-21.334 59.734-8.534 17.066 12.8 21.333 42.667 8.533 59.734C646.899 994.133 582.899 1024 514.633 1024zm469.333-162.133h-12.8c-294.4-89.6-618.667-89.6-913.067 0-21.333 4.266-46.933-8.534-55.466-29.867-8.534-21.333 4.266-46.933 29.866-51.2 311.467-93.867 652.8-89.6 964.267 0 21.333 8.533 34.133 29.867 29.867 51.2-8.534 21.333-25.6 29.867-42.667 29.867z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+"<view class="nut-noticebar">
+  <view class="nut-noticebar__page">
+    <view class="nut-noticebar__page-lefticon"><svg class="nut-icon nut-icon-notice" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1027 1024" role="presentation" size="16px">
+        <path d="M940.873 819.2h-85.334V430.933c0-192-153.6-345.6-341.333-345.6s-341.333 153.6-341.333 345.6V819.2H87.539V430.933C87.54 192 279.54 0 514.206 0s426.667 192 426.667 430.933V819.2zM514.633 1024c-68.267 0-132.267-29.867-174.934-85.333-17.066-17.067-12.8-42.667 4.267-59.734 17.067-12.8 46.933-12.8 59.733 8.534 29.867 34.133 68.267 51.2 110.934 51.2s81.066-17.067 106.666-51.2c12.8-17.067 42.667-21.334 59.734-8.534 17.066 12.8 21.333 42.667 8.533 59.734C646.899 994.133 582.899 1024 514.633 1024zm469.333-162.133h-12.8c-294.4-89.6-618.667-89.6-913.067 0-21.333 4.266-46.933-8.534-55.466-29.867-8.534-21.333 4.266-46.933 29.866-51.2 311.467-93.867 652.8-89.6 964.267 0 21.333 8.533 34.133 29.867 29.867 51.2-8.534 21.333-25.6 29.867-42.667 29.867z" fill="currentColor" fill-opacity="0.9"></path>
       </svg></view>
-    <view class=\\"nut-noticebar__page-wrap\\">
-      <view class=\\"nut-noticebar__page-wrap-content\\" style=\\"animation-delay: 1s; animation-duration: 0s; transform: translateX(0);\\"><a href=\\"https://www.jd.com\\"></a></view>
+    <view class="nut-noticebar__page-wrap">
+      <view class="nut-noticebar__page-wrap-content" style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"><a href="https://www.jd.com"></a></view>
     </view>
-    <view class=\\"nut-noticebar__page-righticon\\"><svg class=\\"nut-icon nut-icon-issue\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-        <path d=\\"M512 1024C229.831 1024 0 794.169 0 512S229.831 0 512 0s512 229.831 512 512-229.831 512-512 512zm0-955.733C266.24 68.267 68.267 266.24 68.267 512S266.24 955.733 512 955.733 955.733 757.76 955.733 512 757.76 68.267 512 68.267zm31.858 377.742c18.204 0 34.133 15.929 34.133 34.133 0 2.276 0 15.93-2.275 18.205l-34.134 195.697h29.582c18.205 0 34.134 15.93 34.134 34.134s-15.93 34.133-34.134 34.133h-91.022c-18.204 0-34.133-15.929-34.133-34.133v-20.48L480.142 512H450.56c-18.204 0-34.133-15.929-34.133-34.133s15.929-34.134 34.133-34.134h93.298zm-34.134-207.076c38.685 0 68.267 29.583 68.267 68.267s-29.582 68.267-68.267 68.267-68.266-29.583-68.266-68.267 29.582-68.267 68.266-68.267z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+    <view class="nut-noticebar__page-righticon"><svg class="nut-icon nut-icon-issue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+        <path d="M512 1024C229.831 1024 0 794.169 0 512S229.831 0 512 0s512 229.831 512 512-229.831 512-512 512zm0-955.733C266.24 68.267 68.267 266.24 68.267 512S266.24 955.733 512 955.733 955.733 757.76 955.733 512 757.76 68.267 512 68.267zm31.858 377.742c18.204 0 34.133 15.929 34.133 34.133 0 2.276 0 15.93-2.275 18.205l-34.134 195.697h29.582c18.205 0 34.134 15.93 34.134 34.134s-15.93 34.133-34.134 34.133h-91.022c-18.204 0-34.133-15.929-34.133-34.133v-20.48L480.142 512H450.56c-18.204 0-34.133-15.929-34.133-34.133s15.929-34.134 34.133-34.134h93.298zm-34.134-207.076c38.685 0 68.267 29.583 68.267 68.267s-29.582 68.267-68.267 68.267-68.266-29.583-68.266-68.267 29.582-68.267 68.266-68.267z" fill="currentColor" fill-opacity="0.9"></path>
       </svg></view>
   </view>
   <!--v-if-->
@@ -43,16 +43,16 @@ exports[`icon custom 1`] = `
 `;
 
 exports[`vertical scroll 1`] = `
-"<view class=\\"nut-noticebar\\">
+"<view class="nut-noticebar">
   <!--v-if-->
-  <view class=\\"nut-noticebar__vertical\\" style=\\"height: 40px;\\">
-    <ul class=\\"nut-noticebar__vertical-list\\">
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">惊喜红包免费领</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">爆款准点秒</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">买超值优惠</li>
-      <li class=\\"nut-noticebar__vertical-item\\" style=\\"height: 40px; line-height: 40px;\\">赢百万京豆</li>
+  <view class="nut-noticebar__vertical" style="height: 40px;">
+    <ul class="nut-noticebar__vertical-list">
+      <li class="nut-noticebar__vertical-item" style="height: 40px; line-height: 40px;">惊喜红包免费领</li>
+      <li class="nut-noticebar__vertical-item" style="height: 40px; line-height: 40px;">爆款准点秒</li>
+      <li class="nut-noticebar__vertical-item" style="height: 40px; line-height: 40px;">买超值优惠</li>
+      <li class="nut-noticebar__vertical-item" style="height: 40px; line-height: 40px;">赢百万京豆</li>
     </ul>
-    <view class=\\"go\\">
+    <view class="go">
       <!--v-if-->
     </view>
   </view>
