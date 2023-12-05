@@ -3,82 +3,82 @@
 exports[`Collapse: should event change 1`] = `[Function]`;
 
 exports[`Collapse: should icon props 1`] = `
-"<view class=\\"nut-collapse\\">
-  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
-    <view class=\\"nut-collapse-item__title\\">
-      <view class=\\"nut-collapse-item__title-main\\">
-        <view class=\\"nut-collapse-item__title-main-value\\">
-          <view class=\\"nut-collapse-item__title-mtitle\\">title1</view>
+"<view class="nut-collapse">
+  <view class="nut-collapse-item nut-collapse-item__border">
+    <view class="nut-collapse-item__title">
+      <view class="nut-collapse-item__title-main">
+        <view class="nut-collapse-item__title-main-value">
+          <view class="nut-collapse-item__title-mtitle">title1</view>
           <!--v-if-->
         </view>
       </view>
-      <view class=\\"nut-collapse-item__title-sub\\"></view>
-      <view class=\\"nut-collapse-item__title-icon\\" style=\\"transform: rotate(0deg);\\"><svg class=\\"nut-icon nut-icon-heart\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1144 1024\\" role=\\"presentation\\">
-          <path d=\\"M1104.113 216.425a336.535 336.535 0 0 0-73.638-107.158 342.167 342.167 0 0 0-108.724-71.83 343.371 343.371 0 0 0-132.518-26.263c-63.76 0-126.012 17.468-180.104 50.477a335.694 335.694 0 0 0-36.894 26.021 337.348 337.348 0 0 0-36.894-26.021 345.63 345.63 0 0 0-180.103-50.507c-45.96 0-90.474 8.794-132.518 26.262a341.444 341.444 0 0 0-108.725 71.83A334.456 334.456 0 0 0 13.161 348.25c0 43.099 8.825 88.004 26.293 133.723 14.607 38.159 35.57 77.763 62.344 117.76 42.466 63.247 100.834 129.265 173.297 196.156 120.109 110.923 239.043 187.543 244.073 190.645l30.69 19.666a41.562 41.562 0 0 0 44.634 0l30.66-19.666c5.06-3.253 123.874-79.722 244.073-190.645 72.494-66.891 130.831-132.91 173.297-196.186 26.805-39.967 47.887-79.571 62.344-117.76 17.498-45.689 26.293-90.594 26.293-133.693a329.487 329.487 0 0 0-27.046-131.855zM572.235 903.831s-460.71-295.153-460.71-555.55c0-131.856 109.087-238.743 243.683-238.743 94.6 0 176.64 52.796 217.027 129.927 40.358-77.13 122.429-129.927 217.028-129.927 134.596 0 243.652 106.887 243.652 238.742.03 260.398-460.68 555.58-460.68 555.58z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <view class="nut-collapse-item__title-sub"></view>
+      <view class="nut-collapse-item__title-icon" style="transform: rotate(0deg);"><svg class="nut-icon nut-icon-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1144 1024" role="presentation">
+          <path d="M1104.113 216.425a336.535 336.535 0 0 0-73.638-107.158 342.167 342.167 0 0 0-108.724-71.83 343.371 343.371 0 0 0-132.518-26.263c-63.76 0-126.012 17.468-180.104 50.477a335.694 335.694 0 0 0-36.894 26.021 337.348 337.348 0 0 0-36.894-26.021 345.63 345.63 0 0 0-180.103-50.507c-45.96 0-90.474 8.794-132.518 26.262a341.444 341.444 0 0 0-108.725 71.83A334.456 334.456 0 0 0 13.161 348.25c0 43.099 8.825 88.004 26.293 133.723 14.607 38.159 35.57 77.763 62.344 117.76 42.466 63.247 100.834 129.265 173.297 196.156 120.109 110.923 239.043 187.543 244.073 190.645l30.69 19.666a41.562 41.562 0 0 0 44.634 0l30.66-19.666c5.06-3.253 123.874-79.722 244.073-190.645 72.494-66.891 130.831-132.91 173.297-196.186 26.805-39.967 47.887-79.571 62.344-117.76 17.498-45.689 26.293-90.594 26.293-133.693a329.487 329.487 0 0 0-27.046-131.855zM572.235 903.831s-460.71-295.153-460.71-555.55c0-131.856 109.087-238.743 243.683-238.743 94.6 0 176.64 52.796 217.027 129.927 40.358-77.13 122.429-129.927 217.028-129.927 134.596 0 243.652 106.887 243.652 238.742.03 260.398-460.68 555.58-460.68 555.58z" fill="currentColor" fill-opacity="0.9"></path>
         </svg></view>
     </view>
     <!--v-if-->
-    <view class=\\"nut-collapse__item-wrapper\\" style=\\"will-change: height; height: 0px;\\">
-      <view class=\\"nut-collapse__item-wrapper__content\\">组件 emits 事件单独提取，增强代码可读性</view>
+    <view class="nut-collapse__item-wrapper" style="will-change: height; height: 0px;">
+      <view class="nut-collapse__item-wrapper__content">组件 emits 事件单独提取，增强代码可读性</view>
     </view>
   </view>
-  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
-    <view class=\\"nut-collapse-item__title\\">
-      <view class=\\"nut-collapse-item__title-main\\">
-        <view class=\\"nut-collapse-item__title-main-value\\">
-          <view class=\\"nut-collapse-item__title-mtitle\\">title2</view>
+  <view class="nut-collapse-item nut-collapse-item__border">
+    <view class="nut-collapse-item__title">
+      <view class="nut-collapse-item__title-main">
+        <view class="nut-collapse-item__title-main-value">
+          <view class="nut-collapse-item__title-mtitle">title2</view>
           <!--v-if-->
         </view>
       </view>
-      <view class=\\"nut-collapse-item__title-sub\\"></view>
-      <view class=\\"nut-collapse-item__title-icon\\" style=\\"transform: rotate(0deg);\\"><svg class=\\"nut-icon nut-icon-down-arrow\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-          <path d=\\"M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <view class="nut-collapse-item__title-sub"></view>
+      <view class="nut-collapse-item__title-icon" style="transform: rotate(0deg);"><svg class="nut-icon nut-icon-down-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+          <path d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867" fill="currentColor" fill-opacity="0.9"></path>
         </svg></view>
     </view>
     <!--v-if-->
-    <view class=\\"nut-collapse__item-wrapper\\" style=\\"will-change: height; height: 0px;\\">
-      <view class=\\"nut-collapse__item-wrapper__content\\">使用 Teleport 新特性重构挂载类组件</view>
+    <view class="nut-collapse__item-wrapper" style="will-change: height; height: 0px;">
+      <view class="nut-collapse__item-wrapper__content">使用 Teleport 新特性重构挂载类组件</view>
     </view>
   </view>
 </view>"
 `;
 
 exports[`Collapse: should props active 1`] = `
-"<view class=\\"nut-collapse\\">
-  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
-    <view class=\\"nut-collapse-item__title\\">
-      <view class=\\"nut-collapse-item__title-main\\">
-        <view class=\\"nut-collapse-item__title-main-value\\">
-          <view class=\\"nut-collapse-item__title-mtitle\\"></view>
+"<view class="nut-collapse">
+  <view class="nut-collapse-item nut-collapse-item__border">
+    <view class="nut-collapse-item__title">
+      <view class="nut-collapse-item__title-main">
+        <view class="nut-collapse-item__title-main-value">
+          <view class="nut-collapse-item__title-mtitle"></view>
           <!--v-if-->
         </view>
       </view>
-      <view class=\\"nut-collapse-item__title-sub\\"></view>
-      <view class=\\"nut-collapse-item__title-icon nut-collapse-item__title-icon--expanded\\" style=\\"transform: rotate(180deg);\\"><svg class=\\"nut-icon nut-icon-down-arrow\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-          <path d=\\"M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <view class="nut-collapse-item__title-sub"></view>
+      <view class="nut-collapse-item__title-icon nut-collapse-item__title-icon--expanded" style="transform: rotate(180deg);"><svg class="nut-icon nut-icon-down-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+          <path d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867" fill="currentColor" fill-opacity="0.9"></path>
         </svg></view>
     </view>
     <!--v-if-->
-    <view class=\\"nut-collapse__item-wrapper\\" style=\\"will-change: height; height: auto;\\">
-      <view class=\\"nut-collapse__item-wrapper__content\\">NutUI是一套拥有京东风格的轻量级的 Vue 组件库</view>
+    <view class="nut-collapse__item-wrapper" style="will-change: height; height: auto;">
+      <view class="nut-collapse__item-wrapper__content">NutUI是一套拥有京东风格的轻量级的 Vue 组件库</view>
     </view>
   </view>
-  <view class=\\"nut-collapse-item nut-collapse-item__border\\">
-    <view class=\\"nut-collapse-item__title\\">
-      <view class=\\"nut-collapse-item__title-main\\">
-        <view class=\\"nut-collapse-item__title-main-value\\">
-          <view class=\\"nut-collapse-item__title-mtitle\\">标题2</view>
+  <view class="nut-collapse-item nut-collapse-item__border">
+    <view class="nut-collapse-item__title">
+      <view class="nut-collapse-item__title-main">
+        <view class="nut-collapse-item__title-main-value">
+          <view class="nut-collapse-item__title-mtitle">标题2</view>
           <!--v-if-->
         </view>
       </view>
-      <view class=\\"nut-collapse-item__title-sub\\"></view>
-      <view class=\\"nut-collapse-item__title-icon nut-collapse-item__title-icon--expanded\\" style=\\"transform: rotate(180deg);\\"><svg class=\\"nut-icon nut-icon-down-arrow\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-          <path d=\\"M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <view class="nut-collapse-item__title-sub"></view>
+      <view class="nut-collapse-item__title-icon nut-collapse-item__title-icon--expanded" style="transform: rotate(180deg);"><svg class="nut-icon nut-icon-down-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+          <path d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867" fill="currentColor" fill-opacity="0.9"></path>
         </svg></view>
     </view>
     <!--v-if-->
-    <view class=\\"nut-collapse__item-wrapper\\" style=\\"will-change: height; height: auto;\\">
-      <view class=\\"nut-collapse__item-wrapper__content\\">在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！</view>
+    <view class="nut-collapse__item-wrapper" style="will-change: height; height: auto;">
+      <view class="nut-collapse__item-wrapper__content">在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！</view>
     </view>
   </view>
 </view>"
