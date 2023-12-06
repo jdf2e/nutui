@@ -354,7 +354,7 @@ export default create({
 
       dragStatus.value = 'start';
       event.stopPropagation();
-      event.preventDefault();
+      if (event.cancelable) event.preventDefault();
     };
 
     // 初始化 range 宽高
@@ -373,7 +373,7 @@ export default create({
         return;
       }
       event.stopPropagation();
-      event.preventDefault();
+      if (event.cancelable) event.preventDefault();
       if (dragStatus.value === 'start') {
         emit('dragStart');
       }
@@ -406,7 +406,7 @@ export default create({
       }
       dragStatus.value = '';
       event.stopPropagation();
-      event.preventDefault();
+      if (event.cancelable) event.preventDefault();
     };
     const curValue = (idx?: number): number => {
       const value =

@@ -362,7 +362,7 @@ export default create({
       }
       updateValue(currentValue);
       event.stopPropagation();
-      event.preventDefault();
+      if (event.cancelable) event.preventDefault();
     };
 
     const onTouchEnd = () => {
