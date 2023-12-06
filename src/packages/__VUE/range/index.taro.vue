@@ -56,14 +56,14 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             :catch-move="true"
-            @touchstart.stop.prevent="
+            @touchstart="
               (e) => {
                 onTouchStart(e);
               }
             "
-            @touchmove.stop.prevent="onTouchMove"
-            @touchend.stop.prevent="onTouchEnd"
-            @touchcancel.stop.prevent="onTouchEnd"
+            @touchmove="onTouchMove"
+            @touchend="onTouchEnd"
+            @touchcancel="onTouchEnd"
             @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
