@@ -78,8 +78,8 @@
   </view>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
-import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
+import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { ref, toRefs, computed, PropType, CSSProperties, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
@@ -133,6 +133,11 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const refRandomId = Math.random().toString(36).slice(-8);
+    const state = ref({
+      width: 0,
+      height: 0
+    });
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;
@@ -350,7 +355,18 @@ export default create({
       event.preventDefault();
     };
 
-    const onTouchMove = async (event: TouchEvent) => {
+    // 初始化 range 宽高
+    const init = () => {
+      useTaroRect(root).then(
+        (rect: any) => {
+          state.value.width = rect?.width;
+          state.value.height = rect?.height;
+        },
+        () => {}
+      );
+    };
+
+    const onTouchMove = (event: TouchEvent) => {
       if (props.disabled) {
         return;
       }
@@ -362,25 +378,20 @@ export default create({
       touch.move(event);
       dragStatus.value = 'draging';
 
-      useTaroRect(root).then(
-        (rect: any) => {
-          let delta = touch.deltaX.value;
-          let total = rect.width;
-          let diff = (delta / total) * scope.value;
-          if (props.vertical) {
-            delta = touch.deltaY.value;
-            total = rect.height;
-            diff = (delta / total) * scope.value;
-          }
-          if (isRange(startValue)) {
-            (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
-          } else {
-            currentValue = startValue + diff;
-          }
-          updateValue(currentValue);
-        },
-        () => {}
-      );
+      let delta = touch.deltaX.value;
+      let total = state.value.width;
+      let diff = (delta / total) * scope.value;
+      if (props.vertical) {
+        delta = touch.deltaY.value;
+        total = state.value.height;
+        diff = (delta / total) * scope.value;
+      }
+      if (isRange(startValue)) {
+        (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
+      } else {
+        currentValue = startValue + diff;
+      }
+      updateValue(currentValue);
     };
 
     const onTouchEnd = (event: TouchEvent) => {
@@ -402,7 +413,16 @@ export default create({
           : Number(props.modelValue);
       return value;
     };
-    const refRandomId = Math.random().toString(36).slice(-8);
+    onMounted(() => {
+      Taro.nextTick(() => {
+        init();
+      });
+      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+        Taro.nextTick(() => {
+          init();
+        });
+      });
+    });
     return {
       root,
       classes,
