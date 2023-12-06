@@ -305,6 +305,8 @@ export default create({
       const { min, modelValue } = props;
       useTaroRect(root).then(
         (rect: any) => {
+          state.value.width = rect.width;
+          state.value.height = rect.height;
           let clientX, clientY;
           if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
             clientX = event.clientX;
