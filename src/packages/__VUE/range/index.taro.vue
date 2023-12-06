@@ -26,7 +26,7 @@
             :aria-valuenow="curValue(index)"
             :aria-valuemax="+max"
             aria-orientation="horizontal"
-            @touchstart.stop.prevent="
+            @touchstart="
               (e) => {
                 if (typeof index === 'number') {
                   // 实时更新当前拖动的按钮索引
@@ -35,9 +35,9 @@
                 onTouchStart(e);
               }
             "
-            @touchmove.stop.prevent="onTouchMove"
-            @touchend.stop.prevent="onTouchEnd"
-            @touchcancel.stop.prevent="onTouchEnd"
+            @touchmove="onTouchMove"
+            @touchend="onTouchEnd"
+            @touchcancel="onTouchEnd"
             @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
@@ -84,6 +84,7 @@ import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { SliderValue } from './type';
+import { preventDefault } from '@/packages/utils/util';
 const { componentName, create } = createComponent('range');
 
 export default create({
@@ -353,8 +354,7 @@ export default create({
       }
 
       dragStatus.value = 'start';
-      event.stopPropagation();
-      if (event.cancelable) event.preventDefault();
+      preventDefault(event, true);
     };
 
     // 初始化 range 宽高
@@ -372,8 +372,7 @@ export default create({
       if (props.disabled) {
         return;
       }
-      event.stopPropagation();
-      if (event.cancelable) event.preventDefault();
+      preventDefault(event, true);
       if (dragStatus.value === 'start') {
         emit('dragStart');
       }
@@ -405,8 +404,7 @@ export default create({
         emit('dragEnd');
       }
       dragStatus.value = '';
-      event.stopPropagation();
-      if (event.cancelable) event.preventDefault();
+      preventDefault(event, true);
     };
     const curValue = (idx?: number): number => {
       const value =

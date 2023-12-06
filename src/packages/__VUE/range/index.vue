@@ -361,8 +361,6 @@ export default create({
         currentValue = startValue + diff;
       }
       updateValue(currentValue);
-      event.stopPropagation();
-      if (event.cancelable) event.preventDefault();
     };
 
     const onTouchEnd = () => {
