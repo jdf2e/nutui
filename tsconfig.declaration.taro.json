@@ -6,17 +6,12 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/packages/__VUE/**/index.taro.vue",
-    "src/packages/__VUE/**/*.ts",
     "src/packages/nutui.taro.vue.build.ts",
     "src/packages/locale",
     "src/packages/utils",
     "src/packages/resolver"
   ],
   "exclude": [
-    "node_modules",
-    "**/test/**/*",
-    "**/demo/**/*",
-    "src/packages/__VUE/**/__tests__/"
+    "node_modules"
   ]
 }

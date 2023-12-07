@@ -7,9 +7,11 @@ let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, type, exclude } = element;
+    const { name, type, exclude, setup } = element;
     if (exclude != true) {
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${
+        type === 'methods' || setup === true ? '.ts' : '.vue'
+      }`;
     }
   });
 });
