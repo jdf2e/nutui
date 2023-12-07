@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import NutBacktop from './index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Top } from '@nutui/icons-vue';
 const translate = useTranslate({

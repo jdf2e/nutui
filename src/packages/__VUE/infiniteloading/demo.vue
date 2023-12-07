@@ -28,9 +28,6 @@
 
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue';
-import NutInfiniteLoading from './index.vue';
-import NutTabs from '../tabs/index.vue';
-import NutTabPane from '../tabpane/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
 const translate = useTranslate({

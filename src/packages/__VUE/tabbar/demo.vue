@@ -120,8 +120,6 @@
 
 <script setup lang="ts">
 import { h, ref } from 'vue';
-import NutTabbar from './index.vue';
-import NutTabbarItem from '../tabbaritem/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
 const translate = useTranslate({

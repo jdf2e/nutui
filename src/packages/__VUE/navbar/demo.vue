@@ -68,9 +68,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutNavbar from './index.vue';
-import NutTabs from '../tabs/index.vue';
-import NutTabPane from '../tabpane/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { ShareN, Cart2, MoreX, HorizontalN } from '@nutui/icons-vue';
 const translate = useTranslate({

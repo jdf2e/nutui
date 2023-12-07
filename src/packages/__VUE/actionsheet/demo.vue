@@ -56,8 +56,6 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import NutActionSheet from './index.vue';
-import NutCell from '../cell/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {
