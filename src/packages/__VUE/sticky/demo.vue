@@ -24,8 +24,6 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutSticky from './index.vue';
-import NutButton from '../button/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {

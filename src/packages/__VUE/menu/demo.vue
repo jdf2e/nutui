@@ -51,9 +51,6 @@
 
 <script setup lang="ts">
 import { reactive, ref, computed } from 'vue';
-import NutMenu from './index.vue';
-import NutMenuItem from '../menuitem/index.vue';
-import NutButton from '../button/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { TriangleDown, Checked } from '@nutui/icons-vue';
 const translate = useTranslate({

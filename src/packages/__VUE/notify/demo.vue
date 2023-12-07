@@ -25,10 +25,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutNotify from './index.vue';
 import { showNotify } from './index';
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {
